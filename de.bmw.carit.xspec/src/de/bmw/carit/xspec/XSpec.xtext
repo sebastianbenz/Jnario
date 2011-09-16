@@ -1,0 +1,43 @@
+grammar de.bmw.carit.xspec.XSpec with org.eclipse.xtext.xbase.Xbase 
+generate xspec "http://www.bmw.carit.de/xspec/XSpec"
+
+import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
+import "http://www.eclipse.org/xtext/common/JavaVMTypes" as jvmTypes
+
+XSpec:
+	moduleName=ID '{'
+ 		specs += Sentence*
+ 	'}'
+;
+
+Sentence:
+	given = Given
+	when = When
+	then = Then
+; 
+
+Step:
+	Given|When|Then
+;
+
+Given:
+	desc=GIVEN_TEXT code=Code?
+;
+
+When:
+	desc=WHEN_TEXT code=Code?
+;
+
+Then:
+	desc=THEN_TEXT code=Code?
+;
+
+Code returns xbase::XBlockExpression:
+	expressions+= XExpressionInsideBlock+
+;
+
+terminal GIVEN_TEXT: 'Given ' -> SENTENCE_ENDING;
+terminal WHEN_TEXT: 'When ' -> SENTENCE_ENDING;
+terminal THEN_TEXT: 'Then ' -> SENTENCE_ENDING;
+
+terminal fragment SENTENCE_ENDING: '.' (' '|'\t')* '\r'? '\n';

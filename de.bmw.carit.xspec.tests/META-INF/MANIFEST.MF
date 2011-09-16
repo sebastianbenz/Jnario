@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: de.bmw.carit.xspec.tests
+Bundle-Vendor: BMW Car IT
+Bundle-Version: 0.1.0.qualifier
+Bundle-SymbolicName: de.bmw.carit.xspec.tests;singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: de.bmw.carit.xspec,
+ de.bmw.carit.xspec.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.xtext,
+ org.eclipse.xtext.junit4,
+ org.eclipse.xtext.ui.junit,
+ org.junit,
+ org.eclipse.ui.workbench;resolution:=optional
+Import-Package: org.apache.commons.logging,
+ org.apache.log4j,
+ org.junit;version="4.8.2"
+Bundle-RequiredExecutionEnvironment: J2SE-1.5

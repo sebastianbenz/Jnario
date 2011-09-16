@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="de.bmw.carit.xspec"
+      label="XSpec Runtime"
+      version="0.1.0.201109161018"
+      provider-name="BMW Car IT">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <plugin
+         id="de.bmw.carit.xspec"
+         download-size="184"
+         install-size="631"
+         version="0.1.0.201109161018"
+         unpack="false"/>
+
+</feature>
