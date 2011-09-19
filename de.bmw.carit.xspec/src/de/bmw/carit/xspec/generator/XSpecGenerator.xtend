@@ -43,13 +43,13 @@ class XSpecGenerator implements IGenerator {
 		public class «spec.moduleName»{
 			
 			«FOR s:spec.specs»
-				«given(s.given, s.given.desc, importManager)»
+				«given(s.given, s.given.desc.extractName, importManager)»
 				
 				@Test
 				public void test(){
-					«var whenName = s.when.desc»
+					«var whenName = s.when.desc.extractName»
 					«whenName»(); 
-					«var thenName = s.then.desc»
+					«var thenName = s.then.desc.extractName»
 					«thenName»();
 				}
 				
@@ -64,32 +64,34 @@ class XSpecGenerator implements IGenerator {
 	
 	def given(Given given, String givenName, ImportManager importManager)'''
 			@Before
-			public void given«givenName»(){
+			public void «givenName»(){
 				«xSpecCompiler.compile(given.code, importManager)»
 			}
 	'''
 // TODO: extract method, as parameter when/then
 // how to treat AND? multiple method calls one after the other?
 	def when(When when, String whenName, ImportManager importManager)'''
-			private void when«whenName»(){
+			private void «whenName»(){
 				«xSpecCompiler.compile(when.code, importManager)» 
 			}
 	'''
 	
 	def then(Then then, String thenName, ImportManager importManager)'''
-			private void then«thenName»(){
+			private void «thenName»(){
 				«xSpecCompiler.compile(then.code, importManager)» 
 			}
 	'''
 	
-	def extractName(String name)'''
-		«var ArrayList<String> wordsList = new ArrayList<String>()»
-		«wordsList.addAll(name.split(" "))»
-		«wordsList.remove(0)»
-		«wordsList.remove(wordsList.size-1)»
-		«var methodName = ""»
-		«FOR word:wordsList»
-			«methodName = methodName + word»
-		«ENDFOR»
-	'''
+	def extractName(String name){
+		var methodName = ""
+		var words = name.split(' ');
+		for(word: words){
+			var upperWord = word.toFirstUpper
+			methodName = methodName + upperWord
+		}
+		var indexOfSentenceEnd = methodName.lastIndexOf(".")
+		methodName = methodName.substring(0, indexOfSentenceEnd);
+		methodName = methodName.toFirstLower
+		return methodName
+	}
 }

@@ -8,25 +8,17 @@
 package de.bmw.carit.xspec.generator;
 
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
-import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.TypesFactory;
-import org.eclipse.xtext.common.types.util.Primitives;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.compiler.ImportManager;
 import org.eclipse.xtext.xbase.compiler.StringBuilderBasedAppendable;
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
 
-import de.bmw.carit.xspec.xspec.Given;
-import de.bmw.carit.xspec.xspec.Sentence;
-import de.bmw.carit.xspec.xspec.XSpec;
-
 /**
- * @author Jan Koehnlein - Initial contribution and API
+ * @author Birgit Engelmann - Initial contribution and API
  */
 public class XSpecCompiler extends XbaseCompiler {
-	
-	private static final JvmTypeReference VOID = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference();
 
 	public String compile(XExpression expression, ImportManager importManager) {
 		StringBuilderBasedAppendable appendable = new StringBuilderBasedAppendable(importManager);

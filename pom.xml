@@ -52,8 +52,14 @@
   
   <build>
      <plugins>
+	  <plugin>
+        <groupId>${tycho-groupid}</groupId>
+        <artifactId>tycho-maven-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <extensions>true</extensions>
+      </plugin>
       <plugin>
-        <groupId>org.sonatype.tycho</groupId>
+        <groupId>${tycho-groupid}</groupId>
         <artifactId>target-platform-configuration</artifactId>
         <version>${tycho-version}</version>
         <configuration>
@@ -90,12 +96,6 @@
             </environment>
           </environments>
         </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.sonatype.tycho</groupId>
-        <artifactId>tycho-maven-plugin</artifactId>
-        <version>0.11.1</version>
-        <extensions>true</extensions>
       </plugin>
     </plugins>
   </build>

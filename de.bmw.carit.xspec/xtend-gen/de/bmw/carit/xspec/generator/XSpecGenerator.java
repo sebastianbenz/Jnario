@@ -7,8 +7,6 @@ import de.bmw.carit.xspec.xspec.Sentence;
 import de.bmw.carit.xspec.xspec.Then;
 import de.bmw.carit.xspec.xspec.When;
 import de.bmw.carit.xspec.xspec.XSpec;
-import java.util.ArrayList;
-import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -16,8 +14,6 @@ import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.compiler.ImportManager;
-import org.eclipse.xtext.xbase.lib.Conversions;
-import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.eclipse.xtext.xtend2.lib.ResourceExtensions;
@@ -72,7 +68,8 @@ public class XSpecGenerator implements IGenerator {
         Given _given = s.getGiven();
         Given _given_1 = s.getGiven();
         String _desc = _given_1.getDesc();
-        StringConcatenation _given_2 = this.given(_given, _desc, importManager);
+        String _extractName = this.extractName(_desc);
+        StringConcatenation _given_2 = this.given(_given, _extractName, importManager);
         _builder.append(_given_2, "	");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
@@ -87,7 +84,8 @@ public class XSpecGenerator implements IGenerator {
         _builder.append("\t");
         When _when = s.getWhen();
         String _desc_1 = _when.getDesc();
-        String whenName = _desc_1;
+        String _extractName_1 = this.extractName(_desc_1);
+        String whenName = _extractName_1;
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("\t");
@@ -98,7 +96,8 @@ public class XSpecGenerator implements IGenerator {
         _builder.append("\t");
         Then _then = s.getThen();
         String _desc_2 = _then.getDesc();
-        String thenName = _desc_2;
+        String _extractName_2 = this.extractName(_desc_2);
+        String thenName = _extractName_2;
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("\t");
@@ -133,7 +132,7 @@ public class XSpecGenerator implements IGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("@Before");
     _builder.newLine();
-    _builder.append("public void given");
+    _builder.append("public void ");
     _builder.append(givenName, "");
     _builder.append("(){");
     _builder.newLineIfNotEmpty();
@@ -149,7 +148,7 @@ public class XSpecGenerator implements IGenerator {
   
   public StringConcatenation when(final When when, final String whenName, final ImportManager importManager) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("private void when");
+    _builder.append("private void ");
     _builder.append(whenName, "");
     _builder.append("(){");
     _builder.newLineIfNotEmpty();
@@ -166,7 +165,7 @@ public class XSpecGenerator implements IGenerator {
   
   public StringConcatenation then(final Then then, final String thenName, final ImportManager importManager) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("private void then");
+    _builder.append("private void ");
     _builder.append(thenName, "");
     _builder.append("(){");
     _builder.newLineIfNotEmpty();
@@ -181,33 +180,26 @@ public class XSpecGenerator implements IGenerator {
     return _builder;
   }
   
-  public StringConcatenation extractName(final String name) {
-    StringConcatenation _builder = new StringConcatenation();
-    ArrayList<String> _arrayList = new ArrayList<String>();
-    ArrayList<String> wordsList = _arrayList;
-    _builder.newLineIfNotEmpty();
-    String[] _split = name.split(" ");
-    boolean _addAll = wordsList.addAll(((Collection<? extends String>)Conversions.doWrapArray(_split)));
-    _builder.append(_addAll, "");
-    _builder.newLineIfNotEmpty();
-    String _remove = wordsList.remove(0);
-    _builder.append(_remove, "");
-    _builder.newLineIfNotEmpty();
-    int _size = wordsList.size();
-    int _operator_minus = IntegerExtensions.operator_minus(((Integer)_size), ((Integer)1));
-    String _remove_1 = wordsList.remove(_operator_minus);
-    _builder.append(_remove_1, "");
-    _builder.newLineIfNotEmpty();
-    String methodName = "";
-    _builder.newLineIfNotEmpty();
+  public String extractName(final String name) {
     {
-      for(String word : wordsList) {
-        String _operator_plus = StringExtensions.operator_plus(methodName, word);
-        String _methodName = methodName = _operator_plus;
-        _builder.append(_methodName, "");
-        _builder.newLineIfNotEmpty();
+      String methodName = "";
+      String[] _split = name.split(" ");
+      String[] words = _split;
+      for (String word : words) {
+        {
+          String _firstUpper = StringExtensions.toFirstUpper(word);
+          String upperWord = _firstUpper;
+          String _operator_plus = StringExtensions.operator_plus(methodName, upperWord);
+          methodName = _operator_plus;
+        }
       }
+      int _lastIndexOf = methodName.lastIndexOf(".");
+      int indexOfSentenceEnd = _lastIndexOf;
+      String _substring = methodName.substring(0, indexOfSentenceEnd);
+      methodName = _substring;
+      String _firstLower = StringExtensions.toFirstLower(methodName);
+      methodName = _firstLower;
+      return methodName;
     }
-    return _builder;
   }
 }
