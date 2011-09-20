@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.bmw.carit.jnario/src-gen"
+    editDirectory="/de.bmw.carit.jnario.edit/src" editorDirectory="/de.bmw.carit.jnario.editor/src"
+    modelPluginID="de.bmw.carit.jnario" forceOverwrite="true" modelName="Jnario" updateClasspath="false"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" complianceLevel="5.0"
+    copyrightFields="false" editPluginID="de.bmw.carit.jnario.edit" editorPluginID="de.bmw.carit.jnario.editor"
+    usedGenPackages="platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase">
+  <genPackages prefix="Jnario" basePackage="de.bmw.carit.jnario" disposableProviderFactory="true"
+      ecorePackage="platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#/">
+    <genClasses ecoreClass="platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Jnario">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Jnario/featureName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Jnario/scenarios"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Scenario">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Scenario/scenarioName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Scenario/spec"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Sentence">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Sentence/given"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Sentence/when"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Sentence/then"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Step">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Step/desc"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Step/code"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Given"/>
+    <genClasses ecoreClass="platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//When"/>
+    <genClasses ecoreClass="platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Then"/>
+  </genPackages>
+</genmodel:GenModel>

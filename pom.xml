@@ -2,8 +2,8 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>de.bmw.carit.xspec</groupId>
-  <artifactId>xspec</artifactId>
+  <groupId>de.bmw.carit.jnario</groupId>
+  <artifactId>jnario</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   
@@ -17,13 +17,13 @@
   </properties>
   
   <modules>
-  	<module>de.bmw.carit.xspec.target</module>
-    <module>de.bmw.carit.xspec</module>
-    <module>de.bmw.carit.xspec-feature</module>
-    <module>de.bmw.carit.xspec.tests</module>
-    <module>de.bmw.carit.xspec.ui</module>
-    <module>de.bmw.carit.xspec.ui-feature</module>
-    <module>de.bmw.carit.xspec.updatesite</module>
+  	<module>de.bmw.carit.jnario.target</module>
+    <module>de.bmw.carit.jnario</module>
+    <module>de.bmw.carit.jnario-feature</module>
+    <module>de.bmw.carit.jnario.tests</module>
+    <module>de.bmw.carit.jnario.ui</module>
+    <module>de.bmw.carit.jnario.ui-feature</module>
+    <module>de.bmw.carit.jnario.updatesite</module>
   </modules>
   
   <repositories>
@@ -66,8 +66,8 @@
           <resolver>p2</resolver>
           <target>
             <artifact>
-              <groupId>de.bmw.carit.xspec</groupId>
-              <artifactId>de.bmw.carit.xspec.target</artifactId>
+              <groupId>de.bmw.carit.jnario</groupId>
+              <artifactId>de.bmw.carit.jnario.target</artifactId>
               <version>0.0.1-SNAPSHOT</version>
               <classifier>indigo</classifier>
             </artifact>
