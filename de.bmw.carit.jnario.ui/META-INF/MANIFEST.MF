@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: de.bmw.carit.jnario.ui
-Bundle-Vendor: My Company
-Bundle-Version: 1.0.0
+Bundle-Vendor: BMW Car IT
+Bundle-Version: 0.1.0.qualifier
 Bundle-SymbolicName: de.bmw.carit.jnario.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: de.bmw.carit.jnario;visibility:=reexport,

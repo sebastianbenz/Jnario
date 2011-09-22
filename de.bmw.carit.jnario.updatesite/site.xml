@@ -1,3 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
+   <feature url="features/de.bmw.carit.jnario_0.1.0.qualifier.jar" id="de.bmw.carit.jnario" version="0.1.0.qualifier">
+      <category name="Jnario update site"/>
+   </feature>
+   <feature url="features/de.bmw.carit.jnario.ui_0.1.0.qualifier.jar" id="de.bmw.carit.jnario.ui" version="0.1.0.qualifier">
+      <category name="Jnario update site"/>
+   </feature>
+   <category-def name="Jnario update site" label="Jnario update site"/>
 </site>

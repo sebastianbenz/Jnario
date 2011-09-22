@@ -2,7 +2,7 @@
 <feature
       id="de.bmw.carit.jnario.ui"
       label="Jnario UI"
-      version="0.0.1.qualifier"
+      version="0.1.0.qualifier"
       provider-name="BMW Car IT">
 
    <description url="http://www.example.com/description">
