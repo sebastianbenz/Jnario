@@ -21,23 +21,23 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	public class JnarioElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Jnario");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cFeatureNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cFeatureNameFEATURE_TEXTTerminalRuleCall_0_0 = (RuleCall)cFeatureNameAssignment_0.eContents().get(0);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameFEATURE_TEXTTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
 		private final Assignment cScenariosAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cScenariosScenarioParserRuleCall_1_0 = (RuleCall)cScenariosAssignment_1.eContents().get(0);
 		
 		//Jnario:
-		//	featureName=FEATURE_TEXT scenarios+=Scenario+;
+		//	name=FEATURE_TEXT scenarios+=Scenario+;
 		public ParserRule getRule() { return rule; }
 
-		//featureName=FEATURE_TEXT scenarios+=Scenario+
+		//name=FEATURE_TEXT scenarios+=Scenario+
 		public Group getGroup() { return cGroup; }
 
-		//featureName=FEATURE_TEXT
-		public Assignment getFeatureNameAssignment_0() { return cFeatureNameAssignment_0; }
+		//name=FEATURE_TEXT
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
 
 		//FEATURE_TEXT
-		public RuleCall getFeatureNameFEATURE_TEXTTerminalRuleCall_0_0() { return cFeatureNameFEATURE_TEXTTerminalRuleCall_0_0; }
+		public RuleCall getNameFEATURE_TEXTTerminalRuleCall_0_0() { return cNameFEATURE_TEXTTerminalRuleCall_0_0; }
 
 		//scenarios+=Scenario+
 		public Assignment getScenariosAssignment_1() { return cScenariosAssignment_1; }
@@ -49,65 +49,45 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	public class ScenarioElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Scenario");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cScenarioNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cScenarioNameSCENARIO_TEXTTerminalRuleCall_0_0 = (RuleCall)cScenarioNameAssignment_0.eContents().get(0);
-		private final Assignment cSpecAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cSpecSentenceParserRuleCall_1_0 = (RuleCall)cSpecAssignment_1.eContents().get(0);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameSCENARIO_TEXTTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final Assignment cGivenAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cGivenGivenParserRuleCall_1_0 = (RuleCall)cGivenAssignment_1.eContents().get(0);
+		private final Assignment cWhenAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cWhenWhenParserRuleCall_2_0 = (RuleCall)cWhenAssignment_2.eContents().get(0);
+		private final Assignment cThenAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cThenThenParserRuleCall_3_0 = (RuleCall)cThenAssignment_3.eContents().get(0);
 		
 		//Scenario:
-		//	scenarioName=SCENARIO_TEXT spec=Sentence;
+		//	name=SCENARIO_TEXT given=Given when=When then=Then;
 		public ParserRule getRule() { return rule; }
 
-		//scenarioName=SCENARIO_TEXT spec=Sentence
+		//name=SCENARIO_TEXT given=Given when=When then=Then
 		public Group getGroup() { return cGroup; }
 
-		//scenarioName=SCENARIO_TEXT
-		public Assignment getScenarioNameAssignment_0() { return cScenarioNameAssignment_0; }
+		//name=SCENARIO_TEXT
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
 
 		//SCENARIO_TEXT
-		public RuleCall getScenarioNameSCENARIO_TEXTTerminalRuleCall_0_0() { return cScenarioNameSCENARIO_TEXTTerminalRuleCall_0_0; }
-
-		//spec=Sentence
-		public Assignment getSpecAssignment_1() { return cSpecAssignment_1; }
-
-		//Sentence
-		public RuleCall getSpecSentenceParserRuleCall_1_0() { return cSpecSentenceParserRuleCall_1_0; }
-	}
-
-	public class SentenceElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Sentence");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cGivenAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cGivenGivenParserRuleCall_0_0 = (RuleCall)cGivenAssignment_0.eContents().get(0);
-		private final Assignment cWhenAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cWhenWhenParserRuleCall_1_0 = (RuleCall)cWhenAssignment_1.eContents().get(0);
-		private final Assignment cThenAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cThenThenParserRuleCall_2_0 = (RuleCall)cThenAssignment_2.eContents().get(0);
-		
-		//Sentence:
-		//	given=Given when=When then=Then;
-		public ParserRule getRule() { return rule; }
-
-		//given=Given when=When then=Then
-		public Group getGroup() { return cGroup; }
+		public RuleCall getNameSCENARIO_TEXTTerminalRuleCall_0_0() { return cNameSCENARIO_TEXTTerminalRuleCall_0_0; }
 
 		//given=Given
-		public Assignment getGivenAssignment_0() { return cGivenAssignment_0; }
+		public Assignment getGivenAssignment_1() { return cGivenAssignment_1; }
 
 		//Given
-		public RuleCall getGivenGivenParserRuleCall_0_0() { return cGivenGivenParserRuleCall_0_0; }
+		public RuleCall getGivenGivenParserRuleCall_1_0() { return cGivenGivenParserRuleCall_1_0; }
 
 		//when=When
-		public Assignment getWhenAssignment_1() { return cWhenAssignment_1; }
+		public Assignment getWhenAssignment_2() { return cWhenAssignment_2; }
 
 		//When
-		public RuleCall getWhenWhenParserRuleCall_1_0() { return cWhenWhenParserRuleCall_1_0; }
+		public RuleCall getWhenWhenParserRuleCall_2_0() { return cWhenWhenParserRuleCall_2_0; }
 
 		//then=Then
-		public Assignment getThenAssignment_2() { return cThenAssignment_2; }
+		public Assignment getThenAssignment_3() { return cThenAssignment_3; }
 
 		//Then
-		public RuleCall getThenThenParserRuleCall_2_0() { return cThenThenParserRuleCall_2_0; }
+		public RuleCall getThenThenParserRuleCall_3_0() { return cThenThenParserRuleCall_3_0; }
 	}
 
 	public class StepElements extends AbstractParserRuleElementFinder {
@@ -137,85 +117,145 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	public class GivenElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Given");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cDescAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cDescGIVEN_TEXTTerminalRuleCall_0_0 = (RuleCall)cDescAssignment_0.eContents().get(0);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameGIVEN_TEXTTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
 		private final Assignment cCodeAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cCodeCodeParserRuleCall_1_0 = (RuleCall)cCodeAssignment_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Assignment cNameAssignment_2_0 = (Assignment)cGroup_2.eContents().get(0);
+		private final RuleCall cNameAND_TEXTTerminalRuleCall_2_0_0 = (RuleCall)cNameAssignment_2_0.eContents().get(0);
+		private final Assignment cCodeAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cCodeCodeParserRuleCall_2_1_0 = (RuleCall)cCodeAssignment_2_1.eContents().get(0);
 		
 		//Given:
-		//	desc=GIVEN_TEXT code=Code?;
+		//	name+=GIVEN_TEXT code+=Code? (name+=AND_TEXT code+=Code?)*;
 		public ParserRule getRule() { return rule; }
 
-		//desc=GIVEN_TEXT code=Code?
+		//name+=GIVEN_TEXT code+=Code? (name+=AND_TEXT code+=Code?)*
 		public Group getGroup() { return cGroup; }
 
-		//desc=GIVEN_TEXT
-		public Assignment getDescAssignment_0() { return cDescAssignment_0; }
+		//name+=GIVEN_TEXT
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
 
 		//GIVEN_TEXT
-		public RuleCall getDescGIVEN_TEXTTerminalRuleCall_0_0() { return cDescGIVEN_TEXTTerminalRuleCall_0_0; }
+		public RuleCall getNameGIVEN_TEXTTerminalRuleCall_0_0() { return cNameGIVEN_TEXTTerminalRuleCall_0_0; }
 
-		//code=Code?
+		//code+=Code?
 		public Assignment getCodeAssignment_1() { return cCodeAssignment_1; }
 
 		//Code
 		public RuleCall getCodeCodeParserRuleCall_1_0() { return cCodeCodeParserRuleCall_1_0; }
+
+		//(name+=AND_TEXT code+=Code?)*
+		public Group getGroup_2() { return cGroup_2; }
+
+		//name+=AND_TEXT
+		public Assignment getNameAssignment_2_0() { return cNameAssignment_2_0; }
+
+		//AND_TEXT
+		public RuleCall getNameAND_TEXTTerminalRuleCall_2_0_0() { return cNameAND_TEXTTerminalRuleCall_2_0_0; }
+
+		//code+=Code?
+		public Assignment getCodeAssignment_2_1() { return cCodeAssignment_2_1; }
+
+		//Code
+		public RuleCall getCodeCodeParserRuleCall_2_1_0() { return cCodeCodeParserRuleCall_2_1_0; }
 	}
 
 	public class WhenElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "When");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cDescAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cDescWHEN_TEXTTerminalRuleCall_0_0 = (RuleCall)cDescAssignment_0.eContents().get(0);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameWHEN_TEXTTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
 		private final Assignment cCodeAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cCodeCodeParserRuleCall_1_0 = (RuleCall)cCodeAssignment_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Assignment cNameAssignment_2_0 = (Assignment)cGroup_2.eContents().get(0);
+		private final RuleCall cNameAND_TEXTTerminalRuleCall_2_0_0 = (RuleCall)cNameAssignment_2_0.eContents().get(0);
+		private final Assignment cCodeAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cCodeCodeParserRuleCall_2_1_0 = (RuleCall)cCodeAssignment_2_1.eContents().get(0);
 		
 		//When:
-		//	desc=WHEN_TEXT code=Code?;
+		//	name+=WHEN_TEXT code+=Code? (name+=AND_TEXT code+=Code?)*;
 		public ParserRule getRule() { return rule; }
 
-		//desc=WHEN_TEXT code=Code?
+		//name+=WHEN_TEXT code+=Code? (name+=AND_TEXT code+=Code?)*
 		public Group getGroup() { return cGroup; }
 
-		//desc=WHEN_TEXT
-		public Assignment getDescAssignment_0() { return cDescAssignment_0; }
+		//name+=WHEN_TEXT
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
 
 		//WHEN_TEXT
-		public RuleCall getDescWHEN_TEXTTerminalRuleCall_0_0() { return cDescWHEN_TEXTTerminalRuleCall_0_0; }
+		public RuleCall getNameWHEN_TEXTTerminalRuleCall_0_0() { return cNameWHEN_TEXTTerminalRuleCall_0_0; }
 
-		//code=Code?
+		//code+=Code?
 		public Assignment getCodeAssignment_1() { return cCodeAssignment_1; }
 
 		//Code
 		public RuleCall getCodeCodeParserRuleCall_1_0() { return cCodeCodeParserRuleCall_1_0; }
+
+		//(name+=AND_TEXT code+=Code?)*
+		public Group getGroup_2() { return cGroup_2; }
+
+		//name+=AND_TEXT
+		public Assignment getNameAssignment_2_0() { return cNameAssignment_2_0; }
+
+		//AND_TEXT
+		public RuleCall getNameAND_TEXTTerminalRuleCall_2_0_0() { return cNameAND_TEXTTerminalRuleCall_2_0_0; }
+
+		//code+=Code?
+		public Assignment getCodeAssignment_2_1() { return cCodeAssignment_2_1; }
+
+		//Code
+		public RuleCall getCodeCodeParserRuleCall_2_1_0() { return cCodeCodeParserRuleCall_2_1_0; }
 	}
 
 	public class ThenElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Then");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cDescAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cDescTHEN_TEXTTerminalRuleCall_0_0 = (RuleCall)cDescAssignment_0.eContents().get(0);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameTHEN_TEXTTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
 		private final Assignment cCodeAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cCodeCodeParserRuleCall_1_0 = (RuleCall)cCodeAssignment_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Assignment cNameAssignment_2_0 = (Assignment)cGroup_2.eContents().get(0);
+		private final RuleCall cNameAND_TEXTTerminalRuleCall_2_0_0 = (RuleCall)cNameAssignment_2_0.eContents().get(0);
+		private final Assignment cCodeAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cCodeCodeParserRuleCall_2_1_0 = (RuleCall)cCodeAssignment_2_1.eContents().get(0);
 		
 		//Then:
-		//	desc=THEN_TEXT code=Code?;
+		//	name+=THEN_TEXT code+=Code? (name+=AND_TEXT code+=Code?)*;
 		public ParserRule getRule() { return rule; }
 
-		//desc=THEN_TEXT code=Code?
+		//name+=THEN_TEXT code+=Code? (name+=AND_TEXT code+=Code?)*
 		public Group getGroup() { return cGroup; }
 
-		//desc=THEN_TEXT
-		public Assignment getDescAssignment_0() { return cDescAssignment_0; }
+		//name+=THEN_TEXT
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
 
 		//THEN_TEXT
-		public RuleCall getDescTHEN_TEXTTerminalRuleCall_0_0() { return cDescTHEN_TEXTTerminalRuleCall_0_0; }
+		public RuleCall getNameTHEN_TEXTTerminalRuleCall_0_0() { return cNameTHEN_TEXTTerminalRuleCall_0_0; }
 
-		//code=Code?
+		//code+=Code?
 		public Assignment getCodeAssignment_1() { return cCodeAssignment_1; }
 
 		//Code
 		public RuleCall getCodeCodeParserRuleCall_1_0() { return cCodeCodeParserRuleCall_1_0; }
+
+		//(name+=AND_TEXT code+=Code?)*
+		public Group getGroup_2() { return cGroup_2; }
+
+		//name+=AND_TEXT
+		public Assignment getNameAssignment_2_0() { return cNameAssignment_2_0; }
+
+		//AND_TEXT
+		public RuleCall getNameAND_TEXTTerminalRuleCall_2_0_0() { return cNameAND_TEXTTerminalRuleCall_2_0_0; }
+
+		//code+=Code?
+		public Assignment getCodeAssignment_2_1() { return cCodeAssignment_2_1; }
+
+		//Code
+		public RuleCall getCodeCodeParserRuleCall_2_1_0() { return cCodeCodeParserRuleCall_2_1_0; }
 	}
 
 	public class CodeElements extends AbstractParserRuleElementFinder {
@@ -237,7 +277,6 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	
 	private JnarioElements pJnario;
 	private ScenarioElements pScenario;
-	private SentenceElements pSentence;
 	private StepElements pStep;
 	private GivenElements pGiven;
 	private WhenElements pWhen;
@@ -248,7 +287,9 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	private TerminalRule tGIVEN_TEXT;
 	private TerminalRule tWHEN_TEXT;
 	private TerminalRule tTHEN_TEXT;
-	private TerminalRule tSENTENCE_ENDING;
+	private TerminalRule tAND_TEXT;
+	private TerminalRule tMULTI_LINE;
+	private TerminalRule tNEW_LINE;
 	
 	private final GrammarProvider grammarProvider;
 
@@ -272,7 +313,7 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Jnario:
-	//	featureName=FEATURE_TEXT scenarios+=Scenario+;
+	//	name=FEATURE_TEXT scenarios+=Scenario+;
 	public JnarioElements getJnarioAccess() {
 		return (pJnario != null) ? pJnario : (pJnario = new JnarioElements());
 	}
@@ -282,23 +323,13 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Scenario:
-	//	scenarioName=SCENARIO_TEXT spec=Sentence;
+	//	name=SCENARIO_TEXT given=Given when=When then=Then;
 	public ScenarioElements getScenarioAccess() {
 		return (pScenario != null) ? pScenario : (pScenario = new ScenarioElements());
 	}
 	
 	public ParserRule getScenarioRule() {
 		return getScenarioAccess().getRule();
-	}
-
-	//Sentence:
-	//	given=Given when=When then=Then;
-	public SentenceElements getSentenceAccess() {
-		return (pSentence != null) ? pSentence : (pSentence = new SentenceElements());
-	}
-	
-	public ParserRule getSentenceRule() {
-		return getSentenceAccess().getRule();
 	}
 
 	//Step:
@@ -312,7 +343,7 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Given:
-	//	desc=GIVEN_TEXT code=Code?;
+	//	name+=GIVEN_TEXT code+=Code? (name+=AND_TEXT code+=Code?)*;
 	public GivenElements getGivenAccess() {
 		return (pGiven != null) ? pGiven : (pGiven = new GivenElements());
 	}
@@ -322,7 +353,7 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//When:
-	//	desc=WHEN_TEXT code=Code?;
+	//	name+=WHEN_TEXT code+=Code? (name+=AND_TEXT code+=Code?)*;
 	public WhenElements getWhenAccess() {
 		return (pWhen != null) ? pWhen : (pWhen = new WhenElements());
 	}
@@ -332,7 +363,7 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Then:
-	//	desc=THEN_TEXT code=Code?;
+	//	name+=THEN_TEXT code+=Code? (name+=AND_TEXT code+=Code?)*;
 	public ThenElements getThenAccess() {
 		return (pThen != null) ? pThen : (pThen = new ThenElements());
 	}
@@ -352,39 +383,51 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//terminal FEATURE_TEXT:
-	//	"Feature "->":";
+	//	"Feature" (" " | "\t")* ":" MULTI_LINE* NEW_LINE;
 	public TerminalRule getFEATURE_TEXTRule() {
 		return (tFEATURE_TEXT != null) ? tFEATURE_TEXT : (tFEATURE_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "FEATURE_TEXT"));
 	} 
 
 	//terminal SCENARIO_TEXT:
-	//	"Scenario "->":";
+	//	"Scenario: " MULTI_LINE* NEW_LINE;
 	public TerminalRule getSCENARIO_TEXTRule() {
 		return (tSCENARIO_TEXT != null) ? tSCENARIO_TEXT : (tSCENARIO_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "SCENARIO_TEXT"));
 	} 
 
 	//terminal GIVEN_TEXT:
-	//	"Given "->SENTENCE_ENDING;
+	//	"Given " MULTI_LINE* NEW_LINE;
 	public TerminalRule getGIVEN_TEXTRule() {
 		return (tGIVEN_TEXT != null) ? tGIVEN_TEXT : (tGIVEN_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "GIVEN_TEXT"));
 	} 
 
 	//terminal WHEN_TEXT:
-	//	"When "->SENTENCE_ENDING;
+	//	"When " MULTI_LINE* NEW_LINE;
 	public TerminalRule getWHEN_TEXTRule() {
 		return (tWHEN_TEXT != null) ? tWHEN_TEXT : (tWHEN_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "WHEN_TEXT"));
 	} 
 
 	//terminal THEN_TEXT:
-	//	"Then "->SENTENCE_ENDING;
+	//	"Then " MULTI_LINE* NEW_LINE;
 	public TerminalRule getTHEN_TEXTRule() {
 		return (tTHEN_TEXT != null) ? tTHEN_TEXT : (tTHEN_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "THEN_TEXT"));
 	} 
 
-	//terminal fragment SENTENCE_ENDING:
-	//	"." (" " | "\t")* "\r"? "\n";
-	public TerminalRule getSENTENCE_ENDINGRule() {
-		return (tSENTENCE_ENDING != null) ? tSENTENCE_ENDING : (tSENTENCE_ENDING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "SENTENCE_ENDING"));
+	//terminal AND_TEXT:
+	//	"And " MULTI_LINE* NEW_LINE;
+	public TerminalRule getAND_TEXTRule() {
+		return (tAND_TEXT != null) ? tAND_TEXT : (tAND_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "AND_TEXT"));
+	} 
+
+	//terminal fragment MULTI_LINE:
+	//	!("\r" | "\n")* "\\" "\r"? "\n";
+	public TerminalRule getMULTI_LINERule() {
+		return (tMULTI_LINE != null) ? tMULTI_LINE : (tMULTI_LINE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "MULTI_LINE"));
+	} 
+
+	//terminal fragment NEW_LINE:
+	//	!("\r" | "\n")* "\r"? "\n";
+	public TerminalRule getNEW_LINERule() {
+		return (tNEW_LINE != null) ? tNEW_LINE : (tNEW_LINE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "NEW_LINE"));
 	} 
 
 	//XExpression:

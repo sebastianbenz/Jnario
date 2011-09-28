@@ -45,15 +45,6 @@ public interface JnarioFactory extends EFactory
   Scenario createScenario();
 
   /**
-   * Returns a new object of class '<em>Sentence</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Sentence</em>'.
-   * @generated
-   */
-  Sentence createSentence();
-
-  /**
    * Returns a new object of class '<em>Step</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

@@ -3,7 +3,7 @@
  */
 package de.bmw.carit.jnario.scoping;
 
-import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
+import org.eclipse.xtext.xbase.scoping.XbaseScopeProvider;
 
 /**
  * This class contains custom scoping description.
@@ -12,6 +12,6 @@ import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
  * on how and when to use it 
  *
  */
-public class JnarioScopeProvider extends AbstractDeclarativeScopeProvider {
+public class JnarioScopeProvider extends XbaseScopeProvider {
 
 }

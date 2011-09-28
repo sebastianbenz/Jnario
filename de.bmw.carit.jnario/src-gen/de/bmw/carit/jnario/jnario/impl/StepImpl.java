@@ -9,14 +9,20 @@ package de.bmw.carit.jnario.jnario.impl;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
 import de.bmw.carit.jnario.jnario.Step;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EDataTypeEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.xtext.xbase.XBlockExpression;
 
@@ -27,7 +33,7 @@ import org.eclipse.xtext.xbase.XBlockExpression;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.bmw.carit.jnario.jnario.impl.StepImpl#getDesc <em>Desc</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.jnario.impl.StepImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.jnario.impl.StepImpl#getCode <em>Code</em>}</li>
  * </ul>
  * </p>
@@ -37,34 +43,24 @@ import org.eclipse.xtext.xbase.XBlockExpression;
 public class StepImpl extends MinimalEObjectImpl.Container implements Step
 {
   /**
-   * The default value of the '{@link #getDesc() <em>Desc</em>}' attribute.
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getDesc()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected static final String DESC_EDEFAULT = null;
+  protected EList<String> name;
 
   /**
-   * The cached value of the '{@link #getDesc() <em>Desc</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getDesc()
-   * @generated
-   * @ordered
-   */
-  protected String desc = DESC_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getCode() <em>Code</em>}' containment reference.
+   * The cached value of the '{@link #getCode() <em>Code</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getCode()
    * @generated
    * @ordered
    */
-  protected XBlockExpression code;
+  protected EList<XBlockExpression> code;
 
   /**
    * <!-- begin-user-doc -->
@@ -92,9 +88,13 @@ public class StepImpl extends MinimalEObjectImpl.Container implements Step
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getDesc()
+  public EList<String> getName()
   {
-    return desc;
+    if (name == null)
+    {
+      name = new EDataTypeEList<String>(String.class, this, JnarioPackage.STEP__NAME);
+    }
+    return name;
   }
 
   /**
@@ -102,60 +102,13 @@ public class StepImpl extends MinimalEObjectImpl.Container implements Step
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setDesc(String newDesc)
+  public EList<XBlockExpression> getCode()
   {
-    String oldDesc = desc;
-    desc = newDesc;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JnarioPackage.STEP__DESC, oldDesc, desc));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public XBlockExpression getCode()
-  {
+    if (code == null)
+    {
+      code = new EObjectContainmentEList<XBlockExpression>(XBlockExpression.class, this, JnarioPackage.STEP__CODE);
+    }
     return code;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetCode(XBlockExpression newCode, NotificationChain msgs)
-  {
-    XBlockExpression oldCode = code;
-    code = newCode;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JnarioPackage.STEP__CODE, oldCode, newCode);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setCode(XBlockExpression newCode)
-  {
-    if (newCode != code)
-    {
-      NotificationChain msgs = null;
-      if (code != null)
-        msgs = ((InternalEObject)code).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.STEP__CODE, null, msgs);
-      if (newCode != null)
-        msgs = ((InternalEObject)newCode).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.STEP__CODE, null, msgs);
-      msgs = basicSetCode(newCode, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JnarioPackage.STEP__CODE, newCode, newCode));
   }
 
   /**
@@ -169,7 +122,7 @@ public class StepImpl extends MinimalEObjectImpl.Container implements Step
     switch (featureID)
     {
       case JnarioPackage.STEP__CODE:
-        return basicSetCode(null, msgs);
+        return ((InternalEList<?>)getCode()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -184,8 +137,8 @@ public class StepImpl extends MinimalEObjectImpl.Container implements Step
   {
     switch (featureID)
     {
-      case JnarioPackage.STEP__DESC:
-        return getDesc();
+      case JnarioPackage.STEP__NAME:
+        return getName();
       case JnarioPackage.STEP__CODE:
         return getCode();
     }
@@ -197,16 +150,19 @@ public class StepImpl extends MinimalEObjectImpl.Container implements Step
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case JnarioPackage.STEP__DESC:
-        setDesc((String)newValue);
+      case JnarioPackage.STEP__NAME:
+        getName().clear();
+        getName().addAll((Collection<? extends String>)newValue);
         return;
       case JnarioPackage.STEP__CODE:
-        setCode((XBlockExpression)newValue);
+        getCode().clear();
+        getCode().addAll((Collection<? extends XBlockExpression>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -222,11 +178,11 @@ public class StepImpl extends MinimalEObjectImpl.Container implements Step
   {
     switch (featureID)
     {
-      case JnarioPackage.STEP__DESC:
-        setDesc(DESC_EDEFAULT);
+      case JnarioPackage.STEP__NAME:
+        getName().clear();
         return;
       case JnarioPackage.STEP__CODE:
-        setCode((XBlockExpression)null);
+        getCode().clear();
         return;
     }
     super.eUnset(featureID);
@@ -242,10 +198,10 @@ public class StepImpl extends MinimalEObjectImpl.Container implements Step
   {
     switch (featureID)
     {
-      case JnarioPackage.STEP__DESC:
-        return DESC_EDEFAULT == null ? desc != null : !DESC_EDEFAULT.equals(desc);
+      case JnarioPackage.STEP__NAME:
+        return name != null && !name.isEmpty();
       case JnarioPackage.STEP__CODE:
-        return code != null;
+        return code != null && !code.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -261,8 +217,8 @@ public class StepImpl extends MinimalEObjectImpl.Container implements Step
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (desc: ");
-    result.append(desc);
+    result.append(" (name: ");
+    result.append(name);
     result.append(')');
     return result.toString();
   }

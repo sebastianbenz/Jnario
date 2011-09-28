@@ -90,13 +90,6 @@ public class JnarioSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JnarioPackage.SENTENCE:
-      {
-        Sentence sentence = (Sentence)theEObject;
-        T result = caseSentence(sentence);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case JnarioPackage.STEP:
       {
         Step step = (Step)theEObject;
@@ -160,22 +153,6 @@ public class JnarioSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseScenario(Scenario object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Sentence</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Sentence</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSentence(Sentence object)
   {
     return null;
   }

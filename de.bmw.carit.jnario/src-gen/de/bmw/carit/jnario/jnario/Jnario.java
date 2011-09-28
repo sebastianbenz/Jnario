@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.bmw.carit.jnario.jnario.Jnario#getFeatureName <em>Feature Name</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.jnario.Jnario#getName <em>Name</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.jnario.Jnario#getScenarios <em>Scenarios</em>}</li>
  * </ul>
  * </p>
@@ -30,30 +30,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface Jnario extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Feature Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Feature Name</em>' attribute isn't clear,
+   * If the meaning of the '<em>Name</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Feature Name</em>' attribute.
-   * @see #setFeatureName(String)
-   * @see de.bmw.carit.jnario.jnario.JnarioPackage#getJnario_FeatureName()
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see de.bmw.carit.jnario.jnario.JnarioPackage#getJnario_Name()
    * @model
    * @generated
    */
-  String getFeatureName();
+  String getName();
 
   /**
-   * Sets the value of the '{@link de.bmw.carit.jnario.jnario.Jnario#getFeatureName <em>Feature Name</em>}' attribute.
+   * Sets the value of the '{@link de.bmw.carit.jnario.jnario.Jnario#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Feature Name</em>' attribute.
-   * @see #getFeatureName()
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
    * @generated
    */
-  void setFeatureName(String value);
+  void setName(String value);
 
   /**
    * Returns the value of the '<em><b>Scenarios</b></em>' containment reference list.

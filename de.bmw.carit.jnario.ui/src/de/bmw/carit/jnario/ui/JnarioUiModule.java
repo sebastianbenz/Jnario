@@ -4,6 +4,10 @@
 package de.bmw.carit.jnario.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
+
+import de.bmw.carit.jnario.ui.highlighting.SemanticHighlightingCalculator;
+import de.bmw.carit.jnario.ui.highlighting.HighlightingConfiguration;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -11,5 +15,13 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 public class JnarioUiModule extends de.bmw.carit.jnario.ui.AbstractJnarioUiModule {
 	public JnarioUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
+	}
+	
+	public Class<? extends org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator() {
+		return SemanticHighlightingCalculator.class;
+	}
+	
+	public Class<? extends IHighlightingConfiguration> bindIHighlightingConfiguration() {
+		return HighlightingConfiguration.class;
 	}
 }

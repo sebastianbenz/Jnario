@@ -6,9 +6,11 @@
  */
 package de.bmw.carit.jnario.jnario.impl;
 
+import de.bmw.carit.jnario.jnario.Given;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
 import de.bmw.carit.jnario.jnario.Scenario;
-import de.bmw.carit.jnario.jnario.Sentence;
+import de.bmw.carit.jnario.jnario.Then;
+import de.bmw.carit.jnario.jnario.When;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -26,8 +28,10 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.bmw.carit.jnario.jnario.impl.ScenarioImpl#getScenarioName <em>Scenario Name</em>}</li>
- *   <li>{@link de.bmw.carit.jnario.jnario.impl.ScenarioImpl#getSpec <em>Spec</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.jnario.impl.ScenarioImpl#getName <em>Name</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.jnario.impl.ScenarioImpl#getGiven <em>Given</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.jnario.impl.ScenarioImpl#getWhen <em>When</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.jnario.impl.ScenarioImpl#getThen <em>Then</em>}</li>
  * </ul>
  * </p>
  *
@@ -36,34 +40,54 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenario
 {
   /**
-   * The default value of the '{@link #getScenarioName() <em>Scenario Name</em>}' attribute.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getScenarioName()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected static final String SCENARIO_NAME_EDEFAULT = null;
+  protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getScenarioName() <em>Scenario Name</em>}' attribute.
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getScenarioName()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected String scenarioName = SCENARIO_NAME_EDEFAULT;
+  protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getSpec() <em>Spec</em>}' containment reference.
+   * The cached value of the '{@link #getGiven() <em>Given</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSpec()
+   * @see #getGiven()
    * @generated
    * @ordered
    */
-  protected Sentence spec;
+  protected Given given;
+
+  /**
+   * The cached value of the '{@link #getWhen() <em>When</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getWhen()
+   * @generated
+   * @ordered
+   */
+  protected When when;
+
+  /**
+   * The cached value of the '{@link #getThen() <em>Then</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getThen()
+   * @generated
+   * @ordered
+   */
+  protected Then then;
 
   /**
    * <!-- begin-user-doc -->
@@ -91,9 +115,9 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getScenarioName()
+  public String getName()
   {
-    return scenarioName;
+    return name;
   }
 
   /**
@@ -101,12 +125,12 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setScenarioName(String newScenarioName)
+  public void setName(String newName)
   {
-    String oldScenarioName = scenarioName;
-    scenarioName = newScenarioName;
+    String oldName = name;
+    name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JnarioPackage.SCENARIO__SCENARIO_NAME, oldScenarioName, scenarioName));
+      eNotify(new ENotificationImpl(this, Notification.SET, JnarioPackage.SCENARIO__NAME, oldName, name));
   }
 
   /**
@@ -114,9 +138,9 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
    * <!-- end-user-doc -->
    * @generated
    */
-  public Sentence getSpec()
+  public Given getGiven()
   {
-    return spec;
+    return given;
   }
 
   /**
@@ -124,13 +148,13 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetSpec(Sentence newSpec, NotificationChain msgs)
+  public NotificationChain basicSetGiven(Given newGiven, NotificationChain msgs)
   {
-    Sentence oldSpec = spec;
-    spec = newSpec;
+    Given oldGiven = given;
+    given = newGiven;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JnarioPackage.SCENARIO__SPEC, oldSpec, newSpec);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JnarioPackage.SCENARIO__GIVEN, oldGiven, newGiven);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -141,20 +165,116 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setSpec(Sentence newSpec)
+  public void setGiven(Given newGiven)
   {
-    if (newSpec != spec)
+    if (newGiven != given)
     {
       NotificationChain msgs = null;
-      if (spec != null)
-        msgs = ((InternalEObject)spec).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.SCENARIO__SPEC, null, msgs);
-      if (newSpec != null)
-        msgs = ((InternalEObject)newSpec).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.SCENARIO__SPEC, null, msgs);
-      msgs = basicSetSpec(newSpec, msgs);
+      if (given != null)
+        msgs = ((InternalEObject)given).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.SCENARIO__GIVEN, null, msgs);
+      if (newGiven != null)
+        msgs = ((InternalEObject)newGiven).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.SCENARIO__GIVEN, null, msgs);
+      msgs = basicSetGiven(newGiven, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JnarioPackage.SCENARIO__SPEC, newSpec, newSpec));
+      eNotify(new ENotificationImpl(this, Notification.SET, JnarioPackage.SCENARIO__GIVEN, newGiven, newGiven));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public When getWhen()
+  {
+    return when;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetWhen(When newWhen, NotificationChain msgs)
+  {
+    When oldWhen = when;
+    when = newWhen;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JnarioPackage.SCENARIO__WHEN, oldWhen, newWhen);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setWhen(When newWhen)
+  {
+    if (newWhen != when)
+    {
+      NotificationChain msgs = null;
+      if (when != null)
+        msgs = ((InternalEObject)when).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.SCENARIO__WHEN, null, msgs);
+      if (newWhen != null)
+        msgs = ((InternalEObject)newWhen).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.SCENARIO__WHEN, null, msgs);
+      msgs = basicSetWhen(newWhen, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JnarioPackage.SCENARIO__WHEN, newWhen, newWhen));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Then getThen()
+  {
+    return then;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetThen(Then newThen, NotificationChain msgs)
+  {
+    Then oldThen = then;
+    then = newThen;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JnarioPackage.SCENARIO__THEN, oldThen, newThen);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setThen(Then newThen)
+  {
+    if (newThen != then)
+    {
+      NotificationChain msgs = null;
+      if (then != null)
+        msgs = ((InternalEObject)then).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.SCENARIO__THEN, null, msgs);
+      if (newThen != null)
+        msgs = ((InternalEObject)newThen).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.SCENARIO__THEN, null, msgs);
+      msgs = basicSetThen(newThen, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JnarioPackage.SCENARIO__THEN, newThen, newThen));
   }
 
   /**
@@ -167,8 +287,12 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
   {
     switch (featureID)
     {
-      case JnarioPackage.SCENARIO__SPEC:
-        return basicSetSpec(null, msgs);
+      case JnarioPackage.SCENARIO__GIVEN:
+        return basicSetGiven(null, msgs);
+      case JnarioPackage.SCENARIO__WHEN:
+        return basicSetWhen(null, msgs);
+      case JnarioPackage.SCENARIO__THEN:
+        return basicSetThen(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -183,10 +307,14 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
   {
     switch (featureID)
     {
-      case JnarioPackage.SCENARIO__SCENARIO_NAME:
-        return getScenarioName();
-      case JnarioPackage.SCENARIO__SPEC:
-        return getSpec();
+      case JnarioPackage.SCENARIO__NAME:
+        return getName();
+      case JnarioPackage.SCENARIO__GIVEN:
+        return getGiven();
+      case JnarioPackage.SCENARIO__WHEN:
+        return getWhen();
+      case JnarioPackage.SCENARIO__THEN:
+        return getThen();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -201,11 +329,17 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
   {
     switch (featureID)
     {
-      case JnarioPackage.SCENARIO__SCENARIO_NAME:
-        setScenarioName((String)newValue);
+      case JnarioPackage.SCENARIO__NAME:
+        setName((String)newValue);
         return;
-      case JnarioPackage.SCENARIO__SPEC:
-        setSpec((Sentence)newValue);
+      case JnarioPackage.SCENARIO__GIVEN:
+        setGiven((Given)newValue);
+        return;
+      case JnarioPackage.SCENARIO__WHEN:
+        setWhen((When)newValue);
+        return;
+      case JnarioPackage.SCENARIO__THEN:
+        setThen((Then)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -221,11 +355,17 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
   {
     switch (featureID)
     {
-      case JnarioPackage.SCENARIO__SCENARIO_NAME:
-        setScenarioName(SCENARIO_NAME_EDEFAULT);
+      case JnarioPackage.SCENARIO__NAME:
+        setName(NAME_EDEFAULT);
         return;
-      case JnarioPackage.SCENARIO__SPEC:
-        setSpec((Sentence)null);
+      case JnarioPackage.SCENARIO__GIVEN:
+        setGiven((Given)null);
+        return;
+      case JnarioPackage.SCENARIO__WHEN:
+        setWhen((When)null);
+        return;
+      case JnarioPackage.SCENARIO__THEN:
+        setThen((Then)null);
         return;
     }
     super.eUnset(featureID);
@@ -241,10 +381,14 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
   {
     switch (featureID)
     {
-      case JnarioPackage.SCENARIO__SCENARIO_NAME:
-        return SCENARIO_NAME_EDEFAULT == null ? scenarioName != null : !SCENARIO_NAME_EDEFAULT.equals(scenarioName);
-      case JnarioPackage.SCENARIO__SPEC:
-        return spec != null;
+      case JnarioPackage.SCENARIO__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case JnarioPackage.SCENARIO__GIVEN:
+        return given != null;
+      case JnarioPackage.SCENARIO__WHEN:
+        return when != null;
+      case JnarioPackage.SCENARIO__THEN:
+        return then != null;
     }
     return super.eIsSet(featureID);
   }
@@ -260,8 +404,8 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (scenarioName: ");
-    result.append(scenarioName);
+    result.append(" (name: ");
+    result.append(name);
     result.append(')');
     return result.toString();
   }

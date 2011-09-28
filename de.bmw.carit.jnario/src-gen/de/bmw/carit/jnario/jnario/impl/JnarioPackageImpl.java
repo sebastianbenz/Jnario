@@ -11,7 +11,6 @@ import de.bmw.carit.jnario.jnario.Jnario;
 import de.bmw.carit.jnario.jnario.JnarioFactory;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
 import de.bmw.carit.jnario.jnario.Scenario;
-import de.bmw.carit.jnario.jnario.Sentence;
 import de.bmw.carit.jnario.jnario.Step;
 import de.bmw.carit.jnario.jnario.Then;
 import de.bmw.carit.jnario.jnario.When;
@@ -46,13 +45,6 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
    * @generated
    */
   private EClass scenarioEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass sentenceEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -163,7 +155,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getJnario_FeatureName()
+  public EAttribute getJnario_Name()
   {
     return (EAttribute)jnarioEClass.getEStructuralFeatures().get(0);
   }
@@ -193,7 +185,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getScenario_ScenarioName()
+  public EAttribute getScenario_Name()
   {
     return (EAttribute)scenarioEClass.getEStructuralFeatures().get(0);
   }
@@ -203,7 +195,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getScenario_Spec()
+  public EReference getScenario_Given()
   {
     return (EReference)scenarioEClass.getEStructuralFeatures().get(1);
   }
@@ -213,9 +205,9 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getSentence()
+  public EReference getScenario_When()
   {
-    return sentenceEClass;
+    return (EReference)scenarioEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -223,29 +215,9 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSentence_Given()
+  public EReference getScenario_Then()
   {
-    return (EReference)sentenceEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getSentence_When()
-  {
-    return (EReference)sentenceEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getSentence_Then()
-  {
-    return (EReference)sentenceEClass.getEStructuralFeatures().get(2);
+    return (EReference)scenarioEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -263,7 +235,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getStep_Desc()
+  public EAttribute getStep_Name()
   {
     return (EAttribute)stepEClass.getEStructuralFeatures().get(0);
   }
@@ -339,20 +311,17 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 
     // Create classes and their features
     jnarioEClass = createEClass(JNARIO);
-    createEAttribute(jnarioEClass, JNARIO__FEATURE_NAME);
+    createEAttribute(jnarioEClass, JNARIO__NAME);
     createEReference(jnarioEClass, JNARIO__SCENARIOS);
 
     scenarioEClass = createEClass(SCENARIO);
-    createEAttribute(scenarioEClass, SCENARIO__SCENARIO_NAME);
-    createEReference(scenarioEClass, SCENARIO__SPEC);
-
-    sentenceEClass = createEClass(SENTENCE);
-    createEReference(sentenceEClass, SENTENCE__GIVEN);
-    createEReference(sentenceEClass, SENTENCE__WHEN);
-    createEReference(sentenceEClass, SENTENCE__THEN);
+    createEAttribute(scenarioEClass, SCENARIO__NAME);
+    createEReference(scenarioEClass, SCENARIO__GIVEN);
+    createEReference(scenarioEClass, SCENARIO__WHEN);
+    createEReference(scenarioEClass, SCENARIO__THEN);
 
     stepEClass = createEClass(STEP);
-    createEAttribute(stepEClass, STEP__DESC);
+    createEAttribute(stepEClass, STEP__NAME);
     createEReference(stepEClass, STEP__CODE);
 
     givenEClass = createEClass(GIVEN);
@@ -400,21 +369,18 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 
     // Initialize classes and features; add operations and parameters
     initEClass(jnarioEClass, Jnario.class, "Jnario", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getJnario_FeatureName(), ecorePackage.getEString(), "featureName", null, 0, 1, Jnario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getJnario_Name(), ecorePackage.getEString(), "name", null, 0, 1, Jnario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getJnario_Scenarios(), this.getScenario(), null, "scenarios", null, 0, -1, Jnario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(scenarioEClass, Scenario.class, "Scenario", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getScenario_ScenarioName(), ecorePackage.getEString(), "scenarioName", null, 0, 1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getScenario_Spec(), this.getSentence(), null, "spec", null, 0, 1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(sentenceEClass, Sentence.class, "Sentence", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getSentence_Given(), this.getGiven(), null, "given", null, 0, 1, Sentence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSentence_When(), this.getWhen(), null, "when", null, 0, 1, Sentence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSentence_Then(), this.getThen(), null, "then", null, 0, 1, Sentence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getScenario_Name(), ecorePackage.getEString(), "name", null, 0, 1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getScenario_Given(), this.getGiven(), null, "given", null, 0, 1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getScenario_When(), this.getWhen(), null, "when", null, 0, 1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getScenario_Then(), this.getThen(), null, "then", null, 0, 1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(stepEClass, Step.class, "Step", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getStep_Desc(), ecorePackage.getEString(), "desc", null, 0, 1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getStep_Code(), theXbasePackage.getXBlockExpression(), null, "code", null, 0, 1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getStep_Name(), ecorePackage.getEString(), "name", null, 0, -1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getStep_Code(), theXbasePackage.getXBlockExpression(), null, "code", null, 0, -1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(givenEClass, Given.class, "Given", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

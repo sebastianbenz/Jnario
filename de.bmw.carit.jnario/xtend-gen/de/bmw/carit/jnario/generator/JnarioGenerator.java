@@ -5,7 +5,6 @@ import de.bmw.carit.jnario.generator.JnarioCompiler;
 import de.bmw.carit.jnario.jnario.Given;
 import de.bmw.carit.jnario.jnario.Jnario;
 import de.bmw.carit.jnario.jnario.Scenario;
-import de.bmw.carit.jnario.jnario.Sentence;
 import de.bmw.carit.jnario.jnario.Then;
 import de.bmw.carit.jnario.jnario.When;
 import org.eclipse.emf.common.util.EList;
@@ -15,7 +14,10 @@ import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.compiler.ImportManager;
+import org.eclipse.xtext.xbase.lib.ComparableExtensions;
+import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.eclipse.xtext.xtend2.lib.ResourceExtensions;
 import org.eclipse.xtext.xtend2.lib.StringConcatenation;
@@ -30,34 +32,36 @@ public class JnarioGenerator implements IGenerator {
     Iterable<EObject> _allContentsIterable = ResourceExtensions.allContentsIterable(resource);
     Iterable<Jnario> _filter = IterableExtensions.<Jnario>filter(_allContentsIterable, de.bmw.carit.jnario.jnario.Jnario.class);
     for (Jnario feature : _filter) {
-      String _featureName = feature.getFeatureName();
-      String _operator_plus = StringExtensions.operator_plus(_featureName, ".java");
-      StringConcatenation _compile = this.compile(feature);
-      fsa.generateFile(_operator_plus, _compile);
+      {
+        String _name = feature.getName();
+        String className = _name;
+        String _replaceAll = className.replaceAll("[^A-Za-z0-9_]", "");
+        className = _replaceAll;
+        String _operator_plus = StringExtensions.operator_plus(className, ".java");
+        StringConcatenation _compile = this.compile(feature, className);
+        fsa.generateFile(_operator_plus, _compile);
+      }
     }
   }
   
-  public StringConcatenation compile(final Jnario spec) {
+  public StringConcatenation compile(final Jnario spec, final String className) {
     StringConcatenation _builder = new StringConcatenation();
     ImportManager _importManager = new ImportManager(true);
     final ImportManager importManager = _importManager;
     _builder.newLineIfNotEmpty();
-    StringConcatenation _steps = this.steps(spec, importManager);
+    StringConcatenation _steps = this.steps(spec, importManager, className);
     _builder.append(_steps, "");
     _builder.newLineIfNotEmpty();
     return _builder;
   }
   
-  public StringConcatenation steps(final Jnario feature, final ImportManager importManager) {
+  public StringConcatenation steps(final Jnario feature, final ImportManager importManager, final String className) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("import org.junit.Test;");
     _builder.newLine();
-    _builder.append("import org.junit.Before;");
-    _builder.newLine();
     _builder.newLine();
     _builder.append("public class ");
-    String _featureName = feature.getFeatureName();
-    _builder.append(_featureName, "");
+    _builder.append(className, "");
     _builder.append("{");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -66,122 +70,69 @@ public class JnarioGenerator implements IGenerator {
       EList<Scenario> _scenarios = feature.getScenarios();
       for(Scenario s : _scenarios) {
         _builder.append("\t");
-        Sentence _spec = s.getSpec();
-        Given _given = _spec.getGiven();
-        Sentence _spec_1 = s.getSpec();
-        Given _given_1 = _spec_1.getGiven();
-        String _desc = _given_1.getDesc();
-        String _extractName = this.extractName(_desc);
-        StringConcatenation _given_2 = this.given(_given, _extractName, importManager);
-        _builder.append(_given_2, "	");
-        _builder.newLineIfNotEmpty();
+        _builder.newLine();
         _builder.append("\t");
         _builder.newLine();
         _builder.append("\t");
         _builder.append("@Test");
         _builder.newLine();
         _builder.append("\t");
-        _builder.append("public void test(){");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t");
-        Sentence _spec_2 = s.getSpec();
-        When _when = _spec_2.getWhen();
-        String _desc_1 = _when.getDesc();
-        String _extractName_1 = this.extractName(_desc_1);
-        String whenName = _extractName_1;
+        _builder.append("public void ");
+        String _name = s.getName();
+        String _extractName = this.extractName(_name);
+        _builder.append(_extractName, "	");
+        _builder.append("(){");
         _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("\t");
-        _builder.append(whenName, "		");
-        _builder.append("(); ");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("\t");
-        Sentence _spec_3 = s.getSpec();
-        Then _then = _spec_3.getThen();
-        String _desc_2 = _then.getDesc();
-        String _extractName_2 = this.extractName(_desc_2);
-        String thenName = _extractName_2;
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("\t");
-        _builder.append(thenName, "		");
-        _builder.append("();");
-        _builder.newLineIfNotEmpty();
+        {
+          Given _given = s.getGiven();
+          EList<XBlockExpression> _code = _given.getCode();
+          for(XBlockExpression givenCode : _code) {
+            {
+              boolean _operator_notEquals = ObjectExtensions.operator_notEquals(givenCode, null);
+              if (_operator_notEquals) {
+                _builder.append("\t");
+                String _compile = this.jnarioCompiler.compile(givenCode, importManager);
+                _builder.append(_compile, "	");
+                _builder.newLineIfNotEmpty();
+              }
+            }
+          }
+        }
+        {
+          When _when = s.getWhen();
+          EList<XBlockExpression> _code_1 = _when.getCode();
+          for(XBlockExpression whenCode : _code_1) {
+            {
+              boolean _operator_notEquals_1 = ObjectExtensions.operator_notEquals(whenCode, null);
+              if (_operator_notEquals_1) {
+                _builder.append("\t");
+                String _compile_1 = this.jnarioCompiler.compile(whenCode, importManager);
+                _builder.append(_compile_1, "	");
+                _builder.newLineIfNotEmpty();
+              }
+            }
+          }
+        }
+        {
+          Then _then = s.getThen();
+          EList<XBlockExpression> _code_2 = _then.getCode();
+          for(XBlockExpression thenCode : _code_2) {
+            {
+              boolean _operator_notEquals_2 = ObjectExtensions.operator_notEquals(thenCode, null);
+              if (_operator_notEquals_2) {
+                _builder.append("\t");
+                String _compile_2 = this.jnarioCompiler.compile(thenCode, importManager);
+                _builder.append(_compile_2, "	");
+                _builder.newLineIfNotEmpty();
+              }
+            }
+          }
+        }
         _builder.append("\t");
         _builder.append("}");
         _builder.newLine();
-        _builder.append("\t");
-        _builder.newLine();
-        _builder.append("\t");
-        Sentence _spec_4 = s.getSpec();
-        When _when_1 = _spec_4.getWhen();
-        StringConcatenation _when_2 = this.when(_when_1, whenName, importManager);
-        _builder.append(_when_2, "	");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.newLine();
-        _builder.append("\t");
-        Sentence _spec_5 = s.getSpec();
-        Then _then_1 = _spec_5.getThen();
-        StringConcatenation _then_2 = this.then(_then_1, thenName, importManager);
-        _builder.append(_then_2, "	");
-        _builder.newLineIfNotEmpty();
       }
     }
-    _builder.append("}");
-    _builder.newLine();
-    return _builder;
-  }
-  
-  public StringConcatenation given(final Given given, final String givenName, final ImportManager importManager) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("@Before");
-    _builder.newLine();
-    _builder.append("public void ");
-    _builder.append(givenName, "");
-    _builder.append("(){");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t");
-    XBlockExpression _code = given.getCode();
-    String _compile = this.jnarioCompiler.compile(_code, importManager);
-    _builder.append(_compile, "	");
-    _builder.newLineIfNotEmpty();
-    _builder.append("}");
-    _builder.newLine();
-    return _builder;
-  }
-  
-  public StringConcatenation when(final When when, final String whenName, final ImportManager importManager) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("private void ");
-    _builder.append(whenName, "");
-    _builder.append("(){");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t");
-    XBlockExpression _code = when.getCode();
-    String _compile = this.jnarioCompiler.compile(_code, importManager);
-    _builder.append(_compile, "	");
-    _builder.append(" ");
-    _builder.newLineIfNotEmpty();
-    _builder.append("}");
-    _builder.newLine();
-    return _builder;
-  }
-  
-  public StringConcatenation then(final Then then, final String thenName, final ImportManager importManager) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("private void ");
-    _builder.append(thenName, "");
-    _builder.append("(){");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t");
-    XBlockExpression _code = then.getCode();
-    String _compile = this.jnarioCompiler.compile(_code, importManager);
-    _builder.append(_compile, "	");
-    _builder.append(" ");
-    _builder.newLineIfNotEmpty();
     _builder.append("}");
     _builder.newLine();
     return _builder;
@@ -202,10 +153,16 @@ public class JnarioGenerator implements IGenerator {
       }
       int _lastIndexOf = methodName.lastIndexOf(".");
       int indexOfSentenceEnd = _lastIndexOf;
-      String _substring = methodName.substring(0, indexOfSentenceEnd);
-      methodName = _substring;
+      int _operator_minus = IntegerExtensions.operator_minus(1);
+      boolean _operator_greaterThan = ComparableExtensions.<Integer>operator_greaterThan(((Integer)indexOfSentenceEnd), ((Integer)_operator_minus));
+      if (_operator_greaterThan) {
+        String _substring = methodName.substring(0, indexOfSentenceEnd);
+        methodName = _substring;
+      }
       String _firstLower = StringExtensions.toFirstLower(methodName);
       methodName = _firstLower;
+      String _replaceAll = methodName.replaceAll("[^A-Za-z0-9_]", "");
+      methodName = _replaceAll;
       return methodName;
     }
   }

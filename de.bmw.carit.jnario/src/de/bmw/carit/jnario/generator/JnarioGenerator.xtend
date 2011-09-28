@@ -27,60 +27,71 @@ class JnarioGenerator implements IGenerator {
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		
 		for(feature: resource.allContentsIterable.filter(typeof(Jnario))) {
-			fsa.generateFile(feature.featureName + ".java", feature.compile)
+						
+			var className = feature.name
+			className = className.replaceAll("[^A-Za-z0-9_]","");
+			fsa.generateFile(className + ".java", feature.compile(className))
 		}
 	}
 	
-	def compile(Jnario spec) '''
+	def compile(Jnario spec, String className) '''
 		«val importManager = new ImportManager(true)»
-		«steps(spec, importManager)»
+		«steps(spec, importManager, className)»
 	'''
 	
-	def steps(Jnario feature, ImportManager importManager) '''
+	def steps(Jnario feature, ImportManager importManager, String className) '''
 		import org.junit.Test;
-		import org.junit.Before;
 		
-		public class «feature.featureName»{
+		public class «className»{
 			
 			«FOR s:feature.scenarios»
-				«given(s.spec.given, s.spec.given.desc.extractName, importManager)»
+				
 				
 				@Test
-				public void test(){
-					«var whenName = s.spec.when.desc.extractName»
-					«whenName»(); 
-					«var thenName = s.spec.then.desc.extractName»
-					«thenName»();
+				public void «s.name.extractName»(){
+				«FOR givenCode: s.given.code»
+					«IF(givenCode != null)»
+						«jnarioCompiler.compile(givenCode, importManager)»
+					«ENDIF»
+				«ENDFOR»
+				«FOR whenCode: s.when.code»
+					«IF(whenCode != null)»
+						«jnarioCompiler.compile(whenCode, importManager)»
+					«ENDIF»
+				«ENDFOR»
+				«FOR thenCode: s.then.code»
+					«IF(thenCode != null)»
+						«jnarioCompiler.compile(thenCode, importManager)»
+					«ENDIF»
+				«ENDFOR»
 				}
-				
-				«when(s.spec.when, whenName, importManager)»
-				
-				«then(s.spec.then, thenName, importManager)»
 			«ENDFOR»
 		}
 	'''
 	
-
-	
-	def given(Given given, String givenName, ImportManager importManager)'''
-			@Before
-			public void «givenName»(){
-				«jnarioCompiler.compile(given.code, importManager)»
-			}
-	'''
-// TODO: extract method, as parameter when/then
-// how to treat AND? multiple method calls one after the other?
-	def when(When when, String whenName, ImportManager importManager)'''
-			private void «whenName»(){
-				«jnarioCompiler.compile(when.code, importManager)» 
-			}
-	'''
-	
-	def then(Then then, String thenName, ImportManager importManager)'''
-			private void «thenName»(){
-				«jnarioCompiler.compile(then.code, importManager)» 
-			}
-	'''
+//	def createMethods(String name, List<XBlockExpression> code){
+//		
+//	}
+//
+//	
+//	def given(Given given, String givenName, ImportManager importManager)'''
+//			public void «givenName»(){
+//				«jnarioCompiler.compile(given.code, importManager)»
+//			}
+//	'''
+//// TODO: extract method, as parameter when/then
+//// how to treat AND? multiple method calls one after the other?
+//	def when(When when, String whenName, ImportManager importManager)'''
+//			private void «whenName»(){
+//				«jnarioCompiler.compile(when.code, importManager)» 
+//			}
+//	'''
+//	
+//	def then(Then then, String thenName, ImportManager importManager)'''
+//			private void «thenName»(){
+//				«jnarioCompiler.compile(then.code, importManager)» 
+//			}
+//	'''
 	
 	def extractName(String name){
 		var methodName = ""
@@ -89,9 +100,14 @@ class JnarioGenerator implements IGenerator {
 			var upperWord = word.toFirstUpper
 			methodName = methodName + upperWord
 		}
+		
+		// TODO: new line wegschneiden
 		var indexOfSentenceEnd = methodName.lastIndexOf(".")
-		methodName = methodName.substring(0, indexOfSentenceEnd);
+		if(indexOfSentenceEnd > -1){
+			methodName = methodName.substring(0, indexOfSentenceEnd);
+		}
 		methodName = methodName.toFirstLower
+		methodName = methodName.replaceAll("[^A-Za-z0-9_]","");
 		return methodName
 	}
 }

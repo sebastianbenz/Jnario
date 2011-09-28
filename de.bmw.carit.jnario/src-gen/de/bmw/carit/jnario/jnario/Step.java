@@ -6,6 +6,8 @@
  */
 package de.bmw.carit.jnario.jnario;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.xtext.xbase.XBlockExpression;
@@ -18,7 +20,7 @@ import org.eclipse.xtext.xbase.XBlockExpression;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.bmw.carit.jnario.jnario.Step#getDesc <em>Desc</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.jnario.Step#getName <em>Name</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.jnario.Step#getCode <em>Code</em>}</li>
  * </ul>
  * </p>
@@ -30,55 +32,35 @@ import org.eclipse.xtext.xbase.XBlockExpression;
 public interface Step extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Desc</b></em>' attribute.
+   * Returns the value of the '<em><b>Name</b></em>' attribute list.
+   * The list contents are of type {@link java.lang.String}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Desc</em>' attribute isn't clear,
+   * If the meaning of the '<em>Name</em>' attribute list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Desc</em>' attribute.
-   * @see #setDesc(String)
-   * @see de.bmw.carit.jnario.jnario.JnarioPackage#getStep_Desc()
-   * @model
+   * @return the value of the '<em>Name</em>' attribute list.
+   * @see de.bmw.carit.jnario.jnario.JnarioPackage#getStep_Name()
+   * @model unique="false"
    * @generated
    */
-  String getDesc();
+  EList<String> getName();
 
   /**
-   * Sets the value of the '{@link de.bmw.carit.jnario.jnario.Step#getDesc <em>Desc</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Desc</em>' attribute.
-   * @see #getDesc()
-   * @generated
-   */
-  void setDesc(String value);
-
-  /**
-   * Returns the value of the '<em><b>Code</b></em>' containment reference.
+   * Returns the value of the '<em><b>Code</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.xtext.xbase.XBlockExpression}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Code</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Code</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Code</em>' containment reference.
-   * @see #setCode(XBlockExpression)
+   * @return the value of the '<em>Code</em>' containment reference list.
    * @see de.bmw.carit.jnario.jnario.JnarioPackage#getStep_Code()
    * @model containment="true"
    * @generated
    */
-  XBlockExpression getCode();
-
-  /**
-   * Sets the value of the '{@link de.bmw.carit.jnario.jnario.Step#getCode <em>Code</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Code</em>' containment reference.
-   * @see #getCode()
-   * @generated
-   */
-  void setCode(XBlockExpression value);
+  EList<XBlockExpression> getCode();
 
 } // Step

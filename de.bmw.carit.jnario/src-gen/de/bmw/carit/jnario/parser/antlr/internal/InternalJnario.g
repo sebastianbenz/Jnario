@@ -79,9 +79,9 @@ ruleJnario returns [EObject current=null]
     @after { leaveRule(); }:
 ((
 (
-		lv_featureName_0_0=RULE_FEATURE_TEXT
+		lv_name_0_0=RULE_FEATURE_TEXT
 		{
-			newLeafNode(lv_featureName_0_0, grammarAccess.getJnarioAccess().getFeatureNameFEATURE_TEXTTerminalRuleCall_0_0()); 
+			newLeafNode(lv_name_0_0, grammarAccess.getJnarioAccess().getNameFEATURE_TEXTTerminalRuleCall_0_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -89,8 +89,8 @@ ruleJnario returns [EObject current=null]
 	        }
        		setWithLastConsumed(
        			$current, 
-       			"featureName",
-        		lv_featureName_0_0, 
+       			"name",
+        		lv_name_0_0, 
         		"FEATURE_TEXT");
 	    }
 
@@ -136,9 +136,9 @@ ruleScenario returns [EObject current=null]
     @after { leaveRule(); }:
 ((
 (
-		lv_scenarioName_0_0=RULE_SCENARIO_TEXT
+		lv_name_0_0=RULE_SCENARIO_TEXT
 		{
-			newLeafNode(lv_scenarioName_0_0, grammarAccess.getScenarioAccess().getScenarioNameSCENARIO_TEXTTerminalRuleCall_0_0()); 
+			newLeafNode(lv_name_0_0, grammarAccess.getScenarioAccess().getNameSCENARIO_TEXTTerminalRuleCall_0_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -146,8 +146,8 @@ ruleScenario returns [EObject current=null]
 	        }
        		setWithLastConsumed(
        			$current, 
-       			"scenarioName",
-        		lv_scenarioName_0_0, 
+       			"name",
+        		lv_name_0_0, 
         		"SCENARIO_TEXT");
 	    }
 
@@ -155,55 +155,16 @@ ruleScenario returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getScenarioAccess().getSpecSentenceParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getScenarioAccess().getGivenGivenParserRuleCall_1_0()); 
 	    }
-		lv_spec_1_0=ruleSentence		{
+		lv_given_1_0=ruleGiven		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getScenarioRule());
 	        }
        		set(
        			$current, 
-       			"spec",
-        		lv_spec_1_0, 
-        		"Sentence");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-))
-;
-
-
-
-
-
-// Entry rule entryRuleSentence
-entryRuleSentence returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getSentenceRule()); }
-	 iv_ruleSentence=ruleSentence 
-	 { $current=$iv_ruleSentence.current; } 
-	 EOF 
-;
-
-// Rule Sentence
-ruleSentence returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-((
-(
-		{ 
-	        newCompositeNode(grammarAccess.getSentenceAccess().getGivenGivenParserRuleCall_0_0()); 
-	    }
-		lv_given_0_0=ruleGiven		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getSentenceRule());
-	        }
-       		set(
-       			$current, 
        			"given",
-        		lv_given_0_0, 
+        		lv_given_1_0, 
         		"Given");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -212,16 +173,16 @@ ruleSentence returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getSentenceAccess().getWhenWhenParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getScenarioAccess().getWhenWhenParserRuleCall_2_0()); 
 	    }
-		lv_when_1_0=ruleWhen		{
+		lv_when_2_0=ruleWhen		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getSentenceRule());
+	            $current = createModelElementForParent(grammarAccess.getScenarioRule());
 	        }
        		set(
        			$current, 
        			"when",
-        		lv_when_1_0, 
+        		lv_when_2_0, 
         		"When");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -230,16 +191,16 @@ ruleSentence returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getSentenceAccess().getThenThenParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getScenarioAccess().getThenThenParserRuleCall_3_0()); 
 	    }
-		lv_then_2_0=ruleThen		{
+		lv_then_3_0=ruleThen		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getSentenceRule());
+	            $current = createModelElementForParent(grammarAccess.getScenarioRule());
 	        }
        		set(
        			$current, 
        			"then",
-        		lv_then_2_0, 
+        		lv_then_3_0, 
         		"Then");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -270,18 +231,18 @@ ruleGiven returns [EObject current=null]
     @after { leaveRule(); }:
 ((
 (
-		lv_desc_0_0=RULE_GIVEN_TEXT
+		lv_name_0_0=RULE_GIVEN_TEXT
 		{
-			newLeafNode(lv_desc_0_0, grammarAccess.getGivenAccess().getDescGIVEN_TEXTTerminalRuleCall_0_0()); 
+			newLeafNode(lv_name_0_0, grammarAccess.getGivenAccess().getNameGIVEN_TEXTTerminalRuleCall_0_0()); 
 		}
 		{
 	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getGivenRule());
 	        }
-       		setWithLastConsumed(
+       		addWithLastConsumed(
        			$current, 
-       			"desc",
-        		lv_desc_0_0, 
+       			"name",
+        		lv_name_0_0, 
         		"GIVEN_TEXT");
 	    }
 
@@ -295,7 +256,7 @@ ruleGiven returns [EObject current=null]
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getGivenRule());
 	        }
-       		set(
+       		add(
        			$current, 
        			"code",
         		lv_code_1_0, 
@@ -304,7 +265,43 @@ ruleGiven returns [EObject current=null]
 	    }
 
 )
-)?)
+)?((
+(
+		lv_name_2_0=RULE_AND_TEXT
+		{
+			newLeafNode(lv_name_2_0, grammarAccess.getGivenAccess().getNameAND_TEXTTerminalRuleCall_2_0_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getGivenRule());
+	        }
+       		addWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_2_0, 
+        		"AND_TEXT");
+	    }
+
+)
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getGivenAccess().getCodeCodeParserRuleCall_2_1_0()); 
+	    }
+		lv_code_3_0=ruleCode		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getGivenRule());
+	        }
+       		add(
+       			$current, 
+       			"code",
+        		lv_code_3_0, 
+        		"Code");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)?)*)
 ;
 
 
@@ -327,18 +324,18 @@ ruleWhen returns [EObject current=null]
     @after { leaveRule(); }:
 ((
 (
-		lv_desc_0_0=RULE_WHEN_TEXT
+		lv_name_0_0=RULE_WHEN_TEXT
 		{
-			newLeafNode(lv_desc_0_0, grammarAccess.getWhenAccess().getDescWHEN_TEXTTerminalRuleCall_0_0()); 
+			newLeafNode(lv_name_0_0, grammarAccess.getWhenAccess().getNameWHEN_TEXTTerminalRuleCall_0_0()); 
 		}
 		{
 	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getWhenRule());
 	        }
-       		setWithLastConsumed(
+       		addWithLastConsumed(
        			$current, 
-       			"desc",
-        		lv_desc_0_0, 
+       			"name",
+        		lv_name_0_0, 
         		"WHEN_TEXT");
 	    }
 
@@ -352,7 +349,7 @@ ruleWhen returns [EObject current=null]
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getWhenRule());
 	        }
-       		set(
+       		add(
        			$current, 
        			"code",
         		lv_code_1_0, 
@@ -361,7 +358,43 @@ ruleWhen returns [EObject current=null]
 	    }
 
 )
-)?)
+)?((
+(
+		lv_name_2_0=RULE_AND_TEXT
+		{
+			newLeafNode(lv_name_2_0, grammarAccess.getWhenAccess().getNameAND_TEXTTerminalRuleCall_2_0_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getWhenRule());
+	        }
+       		addWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_2_0, 
+        		"AND_TEXT");
+	    }
+
+)
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getWhenAccess().getCodeCodeParserRuleCall_2_1_0()); 
+	    }
+		lv_code_3_0=ruleCode		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getWhenRule());
+	        }
+       		add(
+       			$current, 
+       			"code",
+        		lv_code_3_0, 
+        		"Code");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)?)*)
 ;
 
 
@@ -384,18 +417,18 @@ ruleThen returns [EObject current=null]
     @after { leaveRule(); }:
 ((
 (
-		lv_desc_0_0=RULE_THEN_TEXT
+		lv_name_0_0=RULE_THEN_TEXT
 		{
-			newLeafNode(lv_desc_0_0, grammarAccess.getThenAccess().getDescTHEN_TEXTTerminalRuleCall_0_0()); 
+			newLeafNode(lv_name_0_0, grammarAccess.getThenAccess().getNameTHEN_TEXTTerminalRuleCall_0_0()); 
 		}
 		{
 	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getThenRule());
 	        }
-       		setWithLastConsumed(
+       		addWithLastConsumed(
        			$current, 
-       			"desc",
-        		lv_desc_0_0, 
+       			"name",
+        		lv_name_0_0, 
         		"THEN_TEXT");
 	    }
 
@@ -409,7 +442,7 @@ ruleThen returns [EObject current=null]
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getThenRule());
 	        }
-       		set(
+       		add(
        			$current, 
        			"code",
         		lv_code_1_0, 
@@ -418,7 +451,43 @@ ruleThen returns [EObject current=null]
 	    }
 
 )
-)?)
+)?((
+(
+		lv_name_2_0=RULE_AND_TEXT
+		{
+			newLeafNode(lv_name_2_0, grammarAccess.getThenAccess().getNameAND_TEXTTerminalRuleCall_2_0_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getThenRule());
+	        }
+       		addWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_2_0, 
+        		"AND_TEXT");
+	    }
+
+)
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getThenAccess().getCodeCodeParserRuleCall_2_1_0()); 
+	    }
+		lv_code_3_0=ruleCode		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getThenRule());
+	        }
+       		add(
+       			$current, 
+       			"code",
+        		lv_code_3_0, 
+        		"Code");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)?)*)
 ;
 
 
@@ -4740,17 +4809,21 @@ ruleValidID returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()
 
 
 
-RULE_FEATURE_TEXT : 'Feature ' ( options {greedy=false;} : . )*':';
+RULE_FEATURE_TEXT : 'Feature' (' '|'\t')* ':' RULE_MULTI_LINE* RULE_NEW_LINE;
 
-RULE_SCENARIO_TEXT : 'Scenario ' ( options {greedy=false;} : . )*':';
+RULE_SCENARIO_TEXT : 'Scenario: ' RULE_MULTI_LINE* RULE_NEW_LINE;
 
-RULE_GIVEN_TEXT : 'Given ' ( options {greedy=false;} : . )*RULE_SENTENCE_ENDING;
+RULE_GIVEN_TEXT : 'Given ' RULE_MULTI_LINE* RULE_NEW_LINE;
 
-RULE_WHEN_TEXT : 'When ' ( options {greedy=false;} : . )*RULE_SENTENCE_ENDING;
+RULE_WHEN_TEXT : 'When ' RULE_MULTI_LINE* RULE_NEW_LINE;
 
-RULE_THEN_TEXT : 'Then ' ( options {greedy=false;} : . )*RULE_SENTENCE_ENDING;
+RULE_THEN_TEXT : 'Then ' RULE_MULTI_LINE* RULE_NEW_LINE;
 
-fragment RULE_SENTENCE_ENDING : '.' (' '|'\t')* '\r'? '\n';
+RULE_AND_TEXT : 'And ' RULE_MULTI_LINE* RULE_NEW_LINE;
+
+fragment RULE_MULTI_LINE : ~(('\r'|'\n'))* '\\' '\r'? '\n';
+
+fragment RULE_NEW_LINE : ~(('\r'|'\n'))* '\r'? '\n';
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'$'|'_') ('a'..'z'|'A'..'Z'|'$'|'_'|'0'..'9')*;
 

@@ -4,17 +4,13 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="jnario"
     nsURI="http://www.bmw.de/carit/jnario/Jnario" nsPrefix="jnario">
   <eClassifiers xsi:type="ecore:EClass" name="Jnario">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="featureName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" upperBound="-1"
         eType="ecore:EClass platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Scenario"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Scenario">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scenarioName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="spec" eType="ecore:EClass platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Sentence"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Sentence">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="given" eType="ecore:EClass platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Given"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="when" eType="ecore:EClass platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//When"
@@ -23,8 +19,9 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Step">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="desc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="code" eType="ecore:EClass platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore#//XBlockExpression"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" unique="false" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="code" upperBound="-1" eType="ecore:EClass platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore#//XBlockExpression"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Given" eSuperTypes="platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Step"/>

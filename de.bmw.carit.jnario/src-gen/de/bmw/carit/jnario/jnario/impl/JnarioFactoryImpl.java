@@ -70,7 +70,6 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
     {
       case JnarioPackage.JNARIO: return createJnario();
       case JnarioPackage.SCENARIO: return createScenario();
-      case JnarioPackage.SENTENCE: return createSentence();
       case JnarioPackage.STEP: return createStep();
       case JnarioPackage.GIVEN: return createGiven();
       case JnarioPackage.WHEN: return createWhen();
@@ -100,17 +99,6 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
   {
     ScenarioImpl scenario = new ScenarioImpl();
     return scenario;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Sentence createSentence()
-  {
-    SentenceImpl sentence = new SentenceImpl();
-    return sentence;
   }
 
   /**
