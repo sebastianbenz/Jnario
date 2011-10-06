@@ -43,25 +43,24 @@ class JnarioGenerator implements IGenerator {
 		import org.junit.Test;
 		
 		public class «className»{
-			
 			«FOR s:feature.scenarios»
-				
-				
+			
 				@Test
 				public void «s.name.extractName»(){
+				«jnarioCompiler.initializeStringBuilder(importManager)»
 				«FOR givenCode: s.given.code»
 					«IF(givenCode != null)»
-						«jnarioCompiler.compile(givenCode, importManager)»
+						«jnarioCompiler.compile(givenCode)»
 					«ENDIF»
 				«ENDFOR»
 				«FOR whenCode: s.when.code»
 					«IF(whenCode != null)»
-						«jnarioCompiler.compile(whenCode, importManager)»
+						«jnarioCompiler.compile(whenCode)»
 					«ENDIF»
 				«ENDFOR»
 				«FOR thenCode: s.then.code»
 					«IF(thenCode != null)»
-						«jnarioCompiler.compile(thenCode, importManager)»
+						«jnarioCompiler.compile(thenCode)»
 					«ENDIF»
 				«ENDFOR»
 				}

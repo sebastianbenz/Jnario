@@ -31,7 +31,7 @@ public class JnarioGenerator implements IGenerator {
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
     Iterable<EObject> _allContentsIterable = ResourceExtensions.allContentsIterable(resource);
     Iterable<Jnario> _filter = IterableExtensions.<Jnario>filter(_allContentsIterable, de.bmw.carit.jnario.jnario.Jnario.class);
-    for (Jnario feature : _filter) {
+    for (final Jnario feature : _filter) {
       {
         String _name = feature.getName();
         String className = _name;
@@ -64,35 +64,38 @@ public class JnarioGenerator implements IGenerator {
     _builder.append(className, "");
     _builder.append("{");
     _builder.newLineIfNotEmpty();
-    _builder.append("\t");
-    _builder.newLine();
     {
       EList<Scenario> _scenarios = feature.getScenarios();
-      for(Scenario s : _scenarios) {
+      for(final Scenario s : _scenarios) {
         _builder.append("\t");
         _builder.newLine();
         _builder.append("\t");
-        _builder.newLine();
         _builder.append("\t");
         _builder.append("@Test");
         _builder.newLine();
         _builder.append("\t");
+        _builder.append("\t");
         _builder.append("public void ");
         String _name = s.getName();
         String _extractName = this.extractName(_name);
-        _builder.append(_extractName, "	");
+        _builder.append(_extractName, "		");
         _builder.append("(){");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("\t");
+        this.jnarioCompiler.initializeStringBuilder(importManager);
         _builder.newLineIfNotEmpty();
         {
           Given _given = s.getGiven();
           EList<XBlockExpression> _code = _given.getCode();
-          for(XBlockExpression givenCode : _code) {
+          for(final XBlockExpression givenCode : _code) {
             {
               boolean _operator_notEquals = ObjectExtensions.operator_notEquals(givenCode, null);
               if (_operator_notEquals) {
                 _builder.append("\t");
-                String _compile = this.jnarioCompiler.compile(givenCode, importManager);
-                _builder.append(_compile, "	");
+                _builder.append("\t");
+                String _compile = this.jnarioCompiler.compile(givenCode);
+                _builder.append(_compile, "		");
                 _builder.newLineIfNotEmpty();
               }
             }
@@ -101,13 +104,14 @@ public class JnarioGenerator implements IGenerator {
         {
           When _when = s.getWhen();
           EList<XBlockExpression> _code_1 = _when.getCode();
-          for(XBlockExpression whenCode : _code_1) {
+          for(final XBlockExpression whenCode : _code_1) {
             {
               boolean _operator_notEquals_1 = ObjectExtensions.operator_notEquals(whenCode, null);
               if (_operator_notEquals_1) {
                 _builder.append("\t");
-                String _compile_1 = this.jnarioCompiler.compile(whenCode, importManager);
-                _builder.append(_compile_1, "	");
+                _builder.append("\t");
+                String _compile_1 = this.jnarioCompiler.compile(whenCode);
+                _builder.append(_compile_1, "		");
                 _builder.newLineIfNotEmpty();
               }
             }
@@ -116,18 +120,20 @@ public class JnarioGenerator implements IGenerator {
         {
           Then _then = s.getThen();
           EList<XBlockExpression> _code_2 = _then.getCode();
-          for(XBlockExpression thenCode : _code_2) {
+          for(final XBlockExpression thenCode : _code_2) {
             {
               boolean _operator_notEquals_2 = ObjectExtensions.operator_notEquals(thenCode, null);
               if (_operator_notEquals_2) {
                 _builder.append("\t");
-                String _compile_2 = this.jnarioCompiler.compile(thenCode, importManager);
-                _builder.append(_compile_2, "	");
+                _builder.append("\t");
+                String _compile_2 = this.jnarioCompiler.compile(thenCode);
+                _builder.append(_compile_2, "		");
                 _builder.newLineIfNotEmpty();
               }
             }
           }
         }
+        _builder.append("\t");
         _builder.append("\t");
         _builder.append("}");
         _builder.newLine();
@@ -143,7 +149,7 @@ public class JnarioGenerator implements IGenerator {
       String methodName = "";
       String[] _split = name.split(" ");
       String[] words = _split;
-      for (String word : words) {
+      for (final String word : words) {
         {
           String _firstUpper = StringExtensions.toFirstUpper(word);
           String upperWord = _firstUpper;
