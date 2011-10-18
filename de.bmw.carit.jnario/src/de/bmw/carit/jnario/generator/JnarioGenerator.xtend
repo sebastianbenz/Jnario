@@ -26,87 +26,29 @@ class JnarioGenerator implements IGenerator {
 	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		
-		for(feature: resource.allContentsIterable.filter(typeof(Jnario))) {
-						
+		for(feature: resource.allContentsIterable.filter(typeof(Jnario))) {			
 			var className = feature.name
 			className = className.replaceAll("[^A-Za-z0-9_]","");
 			fsa.generateFile(className + ".java", feature.compile(className))
 		}
 	}
 	
-	def compile(Jnario spec, String className) '''
-		«val importManager = new ImportManager(true)»
-		«steps(spec, importManager, className)»
-	'''
-	
-	def steps(Jnario feature, ImportManager importManager, String className) '''
+	def compile(Jnario feature, String className){
+		
+		val importManager = new ImportManager(true)
+		var testClassContent = ""
+		for(Scenario scenario:feature.scenarios){
+			testClassContent = testClassContent + jnarioCompiler.compile(scenario, importManager)
+		}
+		'''
 		import org.junit.Test;
 		
+		«FOR i:importManager.imports»
+			import «i»;
+		«ENDFOR»
 		public class «className»{
-			«FOR s:feature.scenarios»
-			
-				@Test
-				public void «s.name.extractName»(){
-				«jnarioCompiler.initializeStringBuilder(importManager)»
-				«FOR givenCode: s.given.code»
-					«IF(givenCode != null)»
-						«jnarioCompiler.compile(givenCode)»
-					«ENDIF»
-				«ENDFOR»
-				«FOR whenCode: s.when.code»
-					«IF(whenCode != null)»
-						«jnarioCompiler.compile(whenCode)»
-					«ENDIF»
-				«ENDFOR»
-				«FOR thenCode: s.then.code»
-					«IF(thenCode != null)»
-						«jnarioCompiler.compile(thenCode)»
-					«ENDIF»
-				«ENDFOR»
-				}
-			«ENDFOR»
+			«testClassContent»
 		}
-	'''
-	
-//	def createMethods(String name, List<XBlockExpression> code){
-//		
-//	}
-//
-//	
-//	def given(Given given, String givenName, ImportManager importManager)'''
-//			public void «givenName»(){
-//				«jnarioCompiler.compile(given.code, importManager)»
-//			}
-//	'''
-//// TODO: extract method, as parameter when/then
-//// how to treat AND? multiple method calls one after the other?
-//	def when(When when, String whenName, ImportManager importManager)'''
-//			private void «whenName»(){
-//				«jnarioCompiler.compile(when.code, importManager)» 
-//			}
-//	'''
-//	
-//	def then(Then then, String thenName, ImportManager importManager)'''
-//			private void «thenName»(){
-//				«jnarioCompiler.compile(then.code, importManager)» 
-//			}
-//	'''
-	
-	def extractName(String name){
-		var methodName = ""
-		var words = name.split(' ');
-		for(word: words){
-			var upperWord = word.toFirstUpper
-			methodName = methodName + upperWord
-		}
-		
-		// TODO: new line wegschneiden
-		var indexOfSentenceEnd = methodName.lastIndexOf(".")
-		if(indexOfSentenceEnd > -1){
-			methodName = methodName.substring(0, indexOfSentenceEnd);
-		}
-		methodName = methodName.toFirstLower
-		methodName = methodName.replaceAll("[^A-Za-z0-9_]","");
-		return methodName
+		'''
 	}
 }

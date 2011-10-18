@@ -12,7 +12,10 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 
+import de.bmw.carit.jnario.jnario.Examples;
+import de.bmw.carit.jnario.jnario.Jnario;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
+import de.bmw.carit.jnario.jnario.Scenario;
 import de.bmw.carit.jnario.jnario.Step;
 import de.bmw.carit.jnario.jnario.util.JnarioSwitch;
 
@@ -31,19 +34,21 @@ public class SemanticHighlightingCalculator implements
 
 		@Override
 		public Boolean caseStep(Step object) {
-			EList<String> name = object.getName();
-			for(String s: name)
-				highlightFirstWord(object, s);
+			highlightFirstWord(object, object.getName());
 			return Boolean.TRUE;
 		}
 
-		private void highlightFirstWord(Step object, String desc) {
+		private void highlightFirstWord(EObject object, String desc) {
 			int begin = 0;
 			for (; isWhiteSpace(desc, begin); begin++) {
 			}
 			int end = desc.indexOf(' ', begin);
 			if (end > 0) {
 				highlight(desc.substring(begin, end), object);
+			} else{
+				if(desc.length() > 0){
+					highlight(desc, object);
+				}
 			}
 		}
 
@@ -51,14 +56,16 @@ public class SemanticHighlightingCalculator implements
 			return desc.charAt(begin) == ' ' || desc.charAt(begin) == '\t';
 		}
 
-		private void highlight(String string, Step object) {
+		private void highlight(String string, EObject object) {
 			acceptor.addPosition(offset(object), string.length(),
 					HighlightingConfiguration.KEYWORD_ID);
 		}
 
-		private int offset(Step content) {
+		private int offset(EObject content) {
 			List<INode> nodes = NodeModelUtils.findNodesForFeature(content,
 					JnarioPackage.Literals.STEP__NAME);
+			
+			// works only if keyword exists only once in Step
 			return nodes.iterator().next().getOffset();
 		}
 	}

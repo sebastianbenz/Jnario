@@ -6,8 +6,6 @@
  */
 package de.bmw.carit.jnario.jnario;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.xtext.xbase.XBlockExpression;
@@ -32,35 +30,55 @@ import org.eclipse.xtext.xbase.XBlockExpression;
 public interface Step extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute list.
-   * The list contents are of type {@link java.lang.String}.
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Name</em>' attribute list isn't clear,
+   * If the meaning of the '<em>Name</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute list.
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
    * @see de.bmw.carit.jnario.jnario.JnarioPackage#getStep_Name()
-   * @model unique="false"
+   * @model
    * @generated
    */
-  EList<String> getName();
+  String getName();
 
   /**
-   * Returns the value of the '<em><b>Code</b></em>' containment reference list.
-   * The list contents are of type {@link org.eclipse.xtext.xbase.XBlockExpression}.
+   * Sets the value of the '{@link de.bmw.carit.jnario.jnario.Step#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Code</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Code</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Code</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Code</em>' containment reference list.
+   * @return the value of the '<em>Code</em>' containment reference.
+   * @see #setCode(XBlockExpression)
    * @see de.bmw.carit.jnario.jnario.JnarioPackage#getStep_Code()
    * @model containment="true"
    * @generated
    */
-  EList<XBlockExpression> getCode();
+  XBlockExpression getCode();
+
+  /**
+   * Sets the value of the '{@link de.bmw.carit.jnario.jnario.Step#getCode <em>Code</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Code</em>' containment reference.
+   * @see #getCode()
+   * @generated
+   */
+  void setCode(XBlockExpression value);
 
 } // Step

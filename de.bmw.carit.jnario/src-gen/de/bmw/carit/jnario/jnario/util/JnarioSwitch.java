@@ -83,6 +83,13 @@ public class JnarioSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case JnarioPackage.BACKGROUND:
+      {
+        Background background = (Background)theEObject;
+        T result = caseBackground(background);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case JnarioPackage.SCENARIO:
       {
         Scenario scenario = (Scenario)theEObject;
@@ -121,6 +128,36 @@ public class JnarioSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case JnarioPackage.AND:
+      {
+        And and = (And)theEObject;
+        T result = caseAnd(and);
+        if (result == null) result = caseBackground(and);
+        if (result == null) result = caseStep(and);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JnarioPackage.EXAMPLES:
+      {
+        Examples examples = (Examples)theEObject;
+        T result = caseExamples(examples);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JnarioPackage.EXAMPLE_ROW:
+      {
+        ExampleRow exampleRow = (ExampleRow)theEObject;
+        T result = caseExampleRow(exampleRow);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JnarioPackage.EXAMPLE_CELL:
+      {
+        ExampleCell exampleCell = (ExampleCell)theEObject;
+        T result = caseExampleCell(exampleCell);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -137,6 +174,22 @@ public class JnarioSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseJnario(Jnario object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Background</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Background</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBackground(Background object)
   {
     return null;
   }
@@ -217,6 +270,70 @@ public class JnarioSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseThen(Then object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>And</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>And</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAnd(And object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Examples</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Examples</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseExamples(Examples object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Example Row</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Example Row</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseExampleRow(ExampleRow object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Example Cell</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Example Cell</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseExampleCell(ExampleCell object)
   {
     return null;
   }

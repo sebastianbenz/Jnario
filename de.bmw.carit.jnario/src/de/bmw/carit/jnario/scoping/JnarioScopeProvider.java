@@ -10,18 +10,13 @@ import static org.eclipse.xtext.scoping.Scopes.scopeFor;
 
 import java.util.Iterator;
 
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.scoping.IScope;
-import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.scoping.LocalVariableScopeContext;
 import org.eclipse.xtext.xbase.scoping.XbaseScopeProvider;
 
-import com.google.common.collect.UnmodifiableIterator;
-
+import de.bmw.carit.jnario.jnario.And;
 import de.bmw.carit.jnario.jnario.Given;
 import de.bmw.carit.jnario.jnario.Scenario;
 import de.bmw.carit.jnario.jnario.Then;
@@ -41,22 +36,22 @@ public class JnarioScopeProvider extends XbaseScopeProvider {
 	protected IScope createLocalVarScope(IScope parentScope,
 			LocalVariableScopeContext scopeContext) {
 		EObject context = scopeContext.getContext();
-		if (context instanceof Given || context instanceof When || context instanceof Then) {
-			return givenScope(parentScope, scopeContext);
+		if (context instanceof Given || context instanceof When || context instanceof Then || context instanceof And) {
+			return stepScope(parentScope, scopeContext);
 		}else{
 			return super.createLocalVarScope(parentScope, scopeContext);
 		}
-		
 	}
 
-	private IScope givenScope(IScope parentScope,
+	private IScope stepScope(IScope parentScope,
 			LocalVariableScopeContext scopeContext) {
 		EObject context = scopeContext.getContext();
-		Resource resource = context.eResource();
 		Scenario scenario = getContainerOfType(context, Scenario.class);
 		Iterator<EObject> allElementsInResource = scenario.eResource().getAllContents();
 		Iterator<XVariableDeclaration> allVariables = filter(allElementsInResource, XVariableDeclaration.class);
 		return scopeFor(newArrayList(allVariables));
 	}
+	
+	
 	
 }

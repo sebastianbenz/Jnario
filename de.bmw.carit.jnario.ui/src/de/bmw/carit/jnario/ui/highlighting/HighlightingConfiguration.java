@@ -19,6 +19,7 @@ public class HighlightingConfiguration extends DefaultHighlightingConfiguration 
 	public static final String CODE_ID = "Code";
 	public static final String FEATURE_ID = "Feature";
 	public static final String CODE_BOLD_ID = "CodeBold";
+	public static final String STEP_ID = "Step";
 
 	public void configure(IHighlightingConfigurationAcceptor acceptor) {
 		acceptor.acceptDefaultHighlighting(COMMENT_ID, "Comment",
@@ -33,6 +34,7 @@ public class HighlightingConfiguration extends DefaultHighlightingConfiguration 
 				scenarioTextStyle());
 		acceptor.acceptDefaultHighlighting(FEATURE_ID, "Feature",
 				featureTextStyle());
+		acceptor.acceptDefaultHighlighting(STEP_ID, "Step", stepTextStyle());
 		acceptor.acceptDefaultHighlighting(TAG_ID, "Tag", tagTextStyle());
 		acceptor.acceptDefaultHighlighting(CODE_ID, "Code", codeTextStyle());
 		acceptor.acceptDefaultHighlighting(CODE_BOLD_ID, "Code Bold",
@@ -63,12 +65,6 @@ public class HighlightingConfiguration extends DefaultHighlightingConfiguration 
 		return textStyle;
 	}
 
-//	public TextStyle keywordTextStyle() {
-//		TextStyle textStyle = defaultTextStyle().copy();
-//		textStyle.setFontData(fontWithHeight(DEFAULT_FONT_SIZE, SWT.BOLD));
-//		return textStyle;
-//	}
-
 	public TextStyle scenarioTextStyle() {
 		TextStyle textStyle = defaultTextStyle().copy();
 		textStyle.setFontData(fontWithHeight(DEFAULT_FONT_SIZE + 2, SWT.BOLD));
@@ -78,6 +74,13 @@ public class HighlightingConfiguration extends DefaultHighlightingConfiguration 
 	public TextStyle featureTextStyle() {
 		TextStyle textStyle = defaultTextStyle().copy();
 		textStyle.setFontData(fontWithHeight(DEFAULT_FONT_SIZE + 3, SWT.BOLD));
+		return textStyle;
+	}
+	
+	public TextStyle stepTextStyle() {
+		TextStyle textStyle = defaultTextStyle().copy();
+		textStyle.setColor(new RGB(255, 102, 0));
+		textStyle.setStyle(SWT.BOLD);
 		return textStyle;
 	}
 

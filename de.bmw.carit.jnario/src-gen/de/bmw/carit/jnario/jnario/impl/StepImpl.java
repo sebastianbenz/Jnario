@@ -9,20 +9,14 @@ package de.bmw.carit.jnario.jnario.impl;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
 import de.bmw.carit.jnario.jnario.Step;
 
-import java.util.Collection;
-
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EDataTypeEList;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.xtext.xbase.XBlockExpression;
 
@@ -43,24 +37,34 @@ import org.eclipse.xtext.xbase.XBlockExpression;
 public class StepImpl extends MinimalEObjectImpl.Container implements Step
 {
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute list.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getName()
    * @generated
    * @ordered
    */
-  protected EList<String> name;
+  protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getCode() <em>Code</em>}' containment reference list.
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getCode() <em>Code</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getCode()
    * @generated
    * @ordered
    */
-  protected EList<XBlockExpression> code;
+  protected XBlockExpression code;
 
   /**
    * <!-- begin-user-doc -->
@@ -88,12 +92,8 @@ public class StepImpl extends MinimalEObjectImpl.Container implements Step
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<String> getName()
+  public String getName()
   {
-    if (name == null)
-    {
-      name = new EDataTypeEList<String>(String.class, this, JnarioPackage.STEP__NAME);
-    }
     return name;
   }
 
@@ -102,13 +102,60 @@ public class StepImpl extends MinimalEObjectImpl.Container implements Step
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<XBlockExpression> getCode()
+  public void setName(String newName)
   {
-    if (code == null)
-    {
-      code = new EObjectContainmentEList<XBlockExpression>(XBlockExpression.class, this, JnarioPackage.STEP__CODE);
-    }
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JnarioPackage.STEP__NAME, oldName, name));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public XBlockExpression getCode()
+  {
     return code;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetCode(XBlockExpression newCode, NotificationChain msgs)
+  {
+    XBlockExpression oldCode = code;
+    code = newCode;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JnarioPackage.STEP__CODE, oldCode, newCode);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setCode(XBlockExpression newCode)
+  {
+    if (newCode != code)
+    {
+      NotificationChain msgs = null;
+      if (code != null)
+        msgs = ((InternalEObject)code).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.STEP__CODE, null, msgs);
+      if (newCode != null)
+        msgs = ((InternalEObject)newCode).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.STEP__CODE, null, msgs);
+      msgs = basicSetCode(newCode, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JnarioPackage.STEP__CODE, newCode, newCode));
   }
 
   /**
@@ -122,7 +169,7 @@ public class StepImpl extends MinimalEObjectImpl.Container implements Step
     switch (featureID)
     {
       case JnarioPackage.STEP__CODE:
-        return ((InternalEList<?>)getCode()).basicRemove(otherEnd, msgs);
+        return basicSetCode(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -150,19 +197,16 @@ public class StepImpl extends MinimalEObjectImpl.Container implements Step
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
       case JnarioPackage.STEP__NAME:
-        getName().clear();
-        getName().addAll((Collection<? extends String>)newValue);
+        setName((String)newValue);
         return;
       case JnarioPackage.STEP__CODE:
-        getCode().clear();
-        getCode().addAll((Collection<? extends XBlockExpression>)newValue);
+        setCode((XBlockExpression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -179,10 +223,10 @@ public class StepImpl extends MinimalEObjectImpl.Container implements Step
     switch (featureID)
     {
       case JnarioPackage.STEP__NAME:
-        getName().clear();
+        setName(NAME_EDEFAULT);
         return;
       case JnarioPackage.STEP__CODE:
-        getCode().clear();
+        setCode((XBlockExpression)null);
         return;
     }
     super.eUnset(featureID);
@@ -199,9 +243,9 @@ public class StepImpl extends MinimalEObjectImpl.Container implements Step
     switch (featureID)
     {
       case JnarioPackage.STEP__NAME:
-        return name != null && !name.isEmpty();
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case JnarioPackage.STEP__CODE:
-        return code != null && !code.isEmpty();
+        return code != null;
     }
     return super.eIsSet(featureID);
   }

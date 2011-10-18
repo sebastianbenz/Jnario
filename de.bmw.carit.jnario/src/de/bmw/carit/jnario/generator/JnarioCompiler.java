@@ -18,25 +18,71 @@ import org.eclipse.xtext.xbase.compiler.ImportManager;
 import org.eclipse.xtext.xbase.compiler.StringBuilderBasedAppendable;
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
 
+import de.bmw.carit.jnario.jnario.ExampleCell;
+import de.bmw.carit.jnario.jnario.ExampleRow;
+import de.bmw.carit.jnario.jnario.Examples;
+import de.bmw.carit.jnario.jnario.Scenario;
+import de.bmw.carit.jnario.jnario.Step;
+
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
 public class JnarioCompiler extends XbaseCompiler {
-	
-	JnarioStringBuilderBasedAppendable appendable;
 
-	public String compile(XExpression expression) {
-		if(appendable == null){
-			throw new RuntimeException();
+	public String compile(Scenario scenario, ImportManager importManager) {
+		IAppendable appendable = new StringBuilderBasedAppendable(importManager);
+
+		appendable.append("@Test\n");
+		appendable.append("public void ");
+		String methodName = extractMethodName(scenario.getName());
+		appendable.append(methodName);
+		appendable.append("(){\n");
+		if(!scenario.getExamples().isEmpty()){		
+			generateExamples(scenario.getExamples(), scenario.getSteps(), appendable, importManager);
 		}
-		appendable.resetStringBuilder();
-		return compile(expression, appendable, newVoidRef()).toString();
+		for(Step step: scenario.getSteps()){
+			generateStep(step, appendable);
+		}
+
+		appendable.append("\n}\n");
+		return appendable.toString();
 	}
 	
-	public void initializeStringBuilder(ImportManager importManager){
-		appendable = new JnarioStringBuilderBasedAppendable(importManager);
+	protected void generateExamples(EList<Examples> examples, EList<Step> steps,
+			IAppendable appendable, ImportManager importManager) {
+		IAppendable stepAppendable = new StringBuilderBasedAppendable(importManager);
+		for(Step step: steps){
+			generateStep(step, stepAppendable);
+		}
+		String originalCode = stepAppendable.toString();
+		
+		for(Examples example: examples){
+			EList<ExampleCell> exampleHeader = example.getHeading().getParts();
+			for(ExampleRow row: example.getRows()){
+				EList<ExampleCell> exampleRow = row.getParts();
+				if(exampleHeader.size() == exampleRow.size()){
+					String nextCode = originalCode;
+					for(int i = 0; i < exampleHeader.size(); i++){
+						nextCode.replace(exampleHeader.get(i).getValue().replace("|",""), exampleRow.get(i).getValue().replace("|",""));
+					}
+					appendable.append(nextCode);
+				}else{
+					throw new RuntimeException();
+				}
+			}
+		}
+	}
+
+	protected void generateStep(Step step, IAppendable appendable){
+		XBlockExpression code = step.getCode();
+		if(code != null){
+			compile(code, appendable, newVoidRef());
+		}
 	}
 	
+
+
+	// removed "{\n" and "\n}" from original method
 	protected void _toJavaStatement(XBlockExpression expr, IAppendable b, boolean isReferenced) {
 		if (expr.getExpressions().isEmpty())
 			return;
@@ -62,12 +108,35 @@ public class JnarioCompiler extends XbaseCompiler {
 			}
 		}
 		b.decreaseIndentation();
-		}
-	
+	}
+
 	protected JvmTypeReference newVoidRef() {
 		JvmParameterizedTypeReference reference = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference();
 		reference.setType(TypesFactory.eINSTANCE.createJvmVoid());
 		return reference;
+	}
+	
+	private String extractMethodName(String name){
+		String methodName = "";
+		String[] words = name.split(" ");
+		for(String word: words){
+			// make first letter upper case and join them to MethodName
+			String firstLetter = "" + word.charAt(0);
+			firstLetter = firstLetter.toUpperCase();
+			methodName = methodName + firstLetter + word.substring(1);
+		}
+		
+		int indexOfSentenceEnd = methodName.lastIndexOf(".");
+		if(indexOfSentenceEnd > -1){
+			methodName = methodName.substring(0, indexOfSentenceEnd);
+		}
+		
+		String firstLetter = "" + methodName.charAt(0);
+		firstLetter = firstLetter.toLowerCase();
+		methodName = firstLetter + methodName.substring(1);
+		
+		methodName = methodName.replaceAll("[^A-Za-z0-9_]","");
+		return methodName;
 	}
 
 }

@@ -31,11 +31,25 @@ public class AbstractJnarioSyntacticSequencer extends AbstractSyntacticSequencer
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if(ruleCall.getRule() == grammarAccess.getOpSingleAssignRule())
+		if(ruleCall.getRule() == grammarAccess.getBACKGROUND_TEXTRule())
+			return getBACKGROUND_TEXTToken(semanticObject, ruleCall, node);
+		else if(ruleCall.getRule() == grammarAccess.getEXAMPLE_ROW_ENDRule())
+			return getEXAMPLE_ROW_ENDToken(semanticObject, ruleCall, node);
+		else if(ruleCall.getRule() == grammarAccess.getOpSingleAssignRule())
 			return getOpSingleAssignToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
+	protected String getBACKGROUND_TEXTToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "Background:";
+	}
+	protected String getEXAMPLE_ROW_ENDToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "|";
+	}
 	protected String getOpSingleAssignToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);

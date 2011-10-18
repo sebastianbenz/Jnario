@@ -69,11 +69,16 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
     switch (eClass.getClassifierID())
     {
       case JnarioPackage.JNARIO: return createJnario();
+      case JnarioPackage.BACKGROUND: return createBackground();
       case JnarioPackage.SCENARIO: return createScenario();
       case JnarioPackage.STEP: return createStep();
       case JnarioPackage.GIVEN: return createGiven();
       case JnarioPackage.WHEN: return createWhen();
       case JnarioPackage.THEN: return createThen();
+      case JnarioPackage.AND: return createAnd();
+      case JnarioPackage.EXAMPLES: return createExamples();
+      case JnarioPackage.EXAMPLE_ROW: return createExampleRow();
+      case JnarioPackage.EXAMPLE_CELL: return createExampleCell();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -88,6 +93,17 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
   {
     JnarioImpl jnario = new JnarioImpl();
     return jnario;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Background createBackground()
+  {
+    BackgroundImpl background = new BackgroundImpl();
+    return background;
   }
 
   /**
@@ -143,6 +159,50 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
   {
     ThenImpl then = new ThenImpl();
     return then;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public And createAnd()
+  {
+    AndImpl and = new AndImpl();
+    return and;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Examples createExamples()
+  {
+    ExamplesImpl examples = new ExamplesImpl();
+    return examples;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ExampleRow createExampleRow()
+  {
+    ExampleRowImpl exampleRow = new ExampleRowImpl();
+    return exampleRow;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ExampleCell createExampleCell()
+  {
+    ExampleCellImpl exampleCell = new ExampleCellImpl();
+    return exampleCell;
   }
 
   /**

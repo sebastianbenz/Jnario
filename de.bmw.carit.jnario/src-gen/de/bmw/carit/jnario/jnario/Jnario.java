@@ -18,7 +18,9 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link de.bmw.carit.jnario.jnario.Jnario#getImports <em>Imports</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.jnario.Jnario#getName <em>Name</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.jnario.Jnario#getBackground <em>Background</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.jnario.Jnario#getScenarios <em>Scenarios</em>}</li>
  * </ul>
  * </p>
@@ -29,6 +31,22 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Jnario extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Imports</b></em>' attribute list.
+   * The list contents are of type {@link java.lang.String}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Imports</em>' attribute list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Imports</em>' attribute list.
+   * @see de.bmw.carit.jnario.jnario.JnarioPackage#getJnario_Imports()
+   * @model unique="false"
+   * @generated
+   */
+  EList<String> getImports();
+
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
@@ -54,6 +72,32 @@ public interface Jnario extends EObject
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Background</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Background</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Background</em>' containment reference.
+   * @see #setBackground(Background)
+   * @see de.bmw.carit.jnario.jnario.JnarioPackage#getJnario_Background()
+   * @model containment="true"
+   * @generated
+   */
+  Background getBackground();
+
+  /**
+   * Sets the value of the '{@link de.bmw.carit.jnario.jnario.Jnario#getBackground <em>Background</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Background</em>' containment reference.
+   * @see #getBackground()
+   * @generated
+   */
+  void setBackground(Background value);
 
   /**
    * Returns the value of the '<em><b>Scenarios</b></em>' containment reference list.

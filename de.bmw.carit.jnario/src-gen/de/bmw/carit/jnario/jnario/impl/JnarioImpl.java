@@ -6,6 +6,7 @@
  */
 package de.bmw.carit.jnario.jnario.impl;
 
+import de.bmw.carit.jnario.jnario.Background;
 import de.bmw.carit.jnario.jnario.Jnario;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
 import de.bmw.carit.jnario.jnario.Scenario;
@@ -23,6 +24,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -33,7 +35,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link de.bmw.carit.jnario.jnario.impl.JnarioImpl#getImports <em>Imports</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.jnario.impl.JnarioImpl#getName <em>Name</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.jnario.impl.JnarioImpl#getBackground <em>Background</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.jnario.impl.JnarioImpl#getScenarios <em>Scenarios</em>}</li>
  * </ul>
  * </p>
@@ -42,6 +46,16 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class JnarioImpl extends MinimalEObjectImpl.Container implements Jnario
 {
+  /**
+   * The cached value of the '{@link #getImports() <em>Imports</em>}' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getImports()
+   * @generated
+   * @ordered
+   */
+  protected EList<String> imports;
+
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -61,6 +75,16 @@ public class JnarioImpl extends MinimalEObjectImpl.Container implements Jnario
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getBackground() <em>Background</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getBackground()
+   * @generated
+   * @ordered
+   */
+  protected Background background;
 
   /**
    * The cached value of the '{@link #getScenarios() <em>Scenarios</em>}' containment reference list.
@@ -98,6 +122,20 @@ public class JnarioImpl extends MinimalEObjectImpl.Container implements Jnario
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<String> getImports()
+  {
+    if (imports == null)
+    {
+      imports = new EDataTypeEList<String>(String.class, this, JnarioPackage.JNARIO__IMPORTS);
+    }
+    return imports;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public String getName()
   {
     return name;
@@ -114,6 +152,54 @@ public class JnarioImpl extends MinimalEObjectImpl.Container implements Jnario
     name = newName;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, JnarioPackage.JNARIO__NAME, oldName, name));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Background getBackground()
+  {
+    return background;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetBackground(Background newBackground, NotificationChain msgs)
+  {
+    Background oldBackground = background;
+    background = newBackground;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JnarioPackage.JNARIO__BACKGROUND, oldBackground, newBackground);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setBackground(Background newBackground)
+  {
+    if (newBackground != background)
+    {
+      NotificationChain msgs = null;
+      if (background != null)
+        msgs = ((InternalEObject)background).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.JNARIO__BACKGROUND, null, msgs);
+      if (newBackground != null)
+        msgs = ((InternalEObject)newBackground).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.JNARIO__BACKGROUND, null, msgs);
+      msgs = basicSetBackground(newBackground, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JnarioPackage.JNARIO__BACKGROUND, newBackground, newBackground));
   }
 
   /**
@@ -140,6 +226,8 @@ public class JnarioImpl extends MinimalEObjectImpl.Container implements Jnario
   {
     switch (featureID)
     {
+      case JnarioPackage.JNARIO__BACKGROUND:
+        return basicSetBackground(null, msgs);
       case JnarioPackage.JNARIO__SCENARIOS:
         return ((InternalEList<?>)getScenarios()).basicRemove(otherEnd, msgs);
     }
@@ -156,8 +244,12 @@ public class JnarioImpl extends MinimalEObjectImpl.Container implements Jnario
   {
     switch (featureID)
     {
+      case JnarioPackage.JNARIO__IMPORTS:
+        return getImports();
       case JnarioPackage.JNARIO__NAME:
         return getName();
+      case JnarioPackage.JNARIO__BACKGROUND:
+        return getBackground();
       case JnarioPackage.JNARIO__SCENARIOS:
         return getScenarios();
     }
@@ -175,8 +267,15 @@ public class JnarioImpl extends MinimalEObjectImpl.Container implements Jnario
   {
     switch (featureID)
     {
+      case JnarioPackage.JNARIO__IMPORTS:
+        getImports().clear();
+        getImports().addAll((Collection<? extends String>)newValue);
+        return;
       case JnarioPackage.JNARIO__NAME:
         setName((String)newValue);
+        return;
+      case JnarioPackage.JNARIO__BACKGROUND:
+        setBackground((Background)newValue);
         return;
       case JnarioPackage.JNARIO__SCENARIOS:
         getScenarios().clear();
@@ -196,8 +295,14 @@ public class JnarioImpl extends MinimalEObjectImpl.Container implements Jnario
   {
     switch (featureID)
     {
+      case JnarioPackage.JNARIO__IMPORTS:
+        getImports().clear();
+        return;
       case JnarioPackage.JNARIO__NAME:
         setName(NAME_EDEFAULT);
+        return;
+      case JnarioPackage.JNARIO__BACKGROUND:
+        setBackground((Background)null);
         return;
       case JnarioPackage.JNARIO__SCENARIOS:
         getScenarios().clear();
@@ -216,8 +321,12 @@ public class JnarioImpl extends MinimalEObjectImpl.Container implements Jnario
   {
     switch (featureID)
     {
+      case JnarioPackage.JNARIO__IMPORTS:
+        return imports != null && !imports.isEmpty();
       case JnarioPackage.JNARIO__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case JnarioPackage.JNARIO__BACKGROUND:
+        return background != null;
       case JnarioPackage.JNARIO__SCENARIOS:
         return scenarios != null && !scenarios.isEmpty();
     }
@@ -235,7 +344,9 @@ public class JnarioImpl extends MinimalEObjectImpl.Container implements Jnario
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
+    result.append(" (imports: ");
+    result.append(imports);
+    result.append(", name: ");
     result.append(name);
     result.append(')');
     return result.toString();

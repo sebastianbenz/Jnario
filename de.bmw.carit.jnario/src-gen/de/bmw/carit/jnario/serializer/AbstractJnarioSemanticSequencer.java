@@ -2,6 +2,11 @@ package de.bmw.carit.jnario.serializer;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
+import de.bmw.carit.jnario.jnario.And;
+import de.bmw.carit.jnario.jnario.Background;
+import de.bmw.carit.jnario.jnario.ExampleCell;
+import de.bmw.carit.jnario.jnario.ExampleRow;
+import de.bmw.carit.jnario.jnario.Examples;
 import de.bmw.carit.jnario.jnario.Given;
 import de.bmw.carit.jnario.jnario.Jnario;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
@@ -92,6 +97,38 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == JnarioPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case JnarioPackage.AND:
+				if(context == grammarAccess.getAndRule() ||
+				   context == grammarAccess.getBackgroundRule() ||
+				   context == grammarAccess.getStepRule()) {
+					sequence_And(context, (And) semanticObject); 
+					return; 
+				}
+				else break;
+			case JnarioPackage.BACKGROUND:
+				if(context == grammarAccess.getBackgroundRule()) {
+					sequence_Background(context, (Background) semanticObject); 
+					return; 
+				}
+				else break;
+			case JnarioPackage.EXAMPLE_CELL:
+				if(context == grammarAccess.getExampleCellRule()) {
+					sequence_ExampleCell(context, (ExampleCell) semanticObject); 
+					return; 
+				}
+				else break;
+			case JnarioPackage.EXAMPLE_ROW:
+				if(context == grammarAccess.getExampleRowRule()) {
+					sequence_ExampleRow(context, (ExampleRow) semanticObject); 
+					return; 
+				}
+				else break;
+			case JnarioPackage.EXAMPLES:
+				if(context == grammarAccess.getExamplesRule()) {
+					sequence_Examples(context, (Examples) semanticObject); 
+					return; 
+				}
+				else break;
 			case JnarioPackage.GIVEN:
 				if(context == grammarAccess.getGivenRule() ||
 				   context == grammarAccess.getStepRule()) {
@@ -974,6 +1011,31 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     (name=AND_TEXT code=Code?)
+	 *
+	 * Features:
+	 *    name[1, 1]
+	 *    code[0, 1]
+	 */
+	protected void sequence_And(EObject context, And semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     steps+=Given
+	 *
+	 * Features:
+	 *    steps[1, 1]
+	 */
+	protected void sequence_Background(EObject context, Background semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     expressions+=XExpressionInsideBlock+
 	 *
 	 * Features:
@@ -986,11 +1048,56 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name+=GIVEN_TEXT code+=Code? (name+=AND_TEXT code+=Code?)*)
+	 *     value=EXAMPLE_CELL
 	 *
 	 * Features:
-	 *    name[1, *]
-	 *    code[0, *]
+	 *    value[1, 1]
+	 */
+	protected void sequence_ExampleCell(EObject context, ExampleCell semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, JnarioPackage.Literals.EXAMPLE_CELL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JnarioPackage.Literals.EXAMPLE_CELL__VALUE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getExampleCellAccess().getValueEXAMPLE_CELLTerminalRuleCall_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     parts+=ExampleCell+
+	 *
+	 * Features:
+	 *    parts[1, *]
+	 */
+	protected void sequence_ExampleRow(EObject context, ExampleRow semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=EXAMPLE_TEXT heading=ExampleRow rows+=ExampleRow*)
+	 *
+	 * Features:
+	 *    name[1, 1]
+	 *    heading[1, 1]
+	 *    rows[0, *]
+	 */
+	protected void sequence_Examples(EObject context, Examples semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=GIVEN_TEXT code=Code?)
+	 *
+	 * Features:
+	 *    name[1, 1]
+	 *    code[0, 1]
 	 */
 	protected void sequence_Given(EObject context, Given semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -999,10 +1106,12 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=FEATURE_TEXT scenarios+=Scenario+)
+	 *     (imports+=IMPORT_PATH* name=FEATURE_TEXT background=Background? scenarios+=Scenario+)
 	 *
 	 * Features:
+	 *    imports[0, *]
 	 *    name[1, 1]
+	 *    background[0, 1]
 	 *    scenarios[1, *]
 	 */
 	protected void sequence_Jnario(EObject context, Jnario semanticObject) {
@@ -1099,42 +1208,25 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=SCENARIO_TEXT given=Given when=When then=Then)
+	 *     (name=SCENARIO_TEXT steps+=Step* examples+=Examples*)
 	 *
 	 * Features:
 	 *    name[1, 1]
-	 *    given[1, 1]
-	 *    when[1, 1]
-	 *    then[1, 1]
+	 *    steps[0, *]
+	 *    examples[0, *]
 	 */
 	protected void sequence_Scenario(EObject context, Scenario semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, JnarioPackage.Literals.SCENARIO__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JnarioPackage.Literals.SCENARIO__NAME));
-			if(transientValues.isValueTransient(semanticObject, JnarioPackage.Literals.SCENARIO__GIVEN) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JnarioPackage.Literals.SCENARIO__GIVEN));
-			if(transientValues.isValueTransient(semanticObject, JnarioPackage.Literals.SCENARIO__WHEN) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JnarioPackage.Literals.SCENARIO__WHEN));
-			if(transientValues.isValueTransient(semanticObject, JnarioPackage.Literals.SCENARIO__THEN) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JnarioPackage.Literals.SCENARIO__THEN));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getScenarioAccess().getNameSCENARIO_TEXTTerminalRuleCall_0_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getScenarioAccess().getGivenGivenParserRuleCall_1_0(), semanticObject.getGiven());
-		feeder.accept(grammarAccess.getScenarioAccess().getWhenWhenParserRuleCall_2_0(), semanticObject.getWhen());
-		feeder.accept(grammarAccess.getScenarioAccess().getThenThenParserRuleCall_3_0(), semanticObject.getThen());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (name+=THEN_TEXT code+=Code? (name+=AND_TEXT code+=Code?)*)
+	 *     (name=THEN_TEXT code=Code?)
 	 *
 	 * Features:
-	 *    name[1, *]
-	 *    code[0, *]
+	 *    name[1, 1]
+	 *    code[0, 1]
 	 */
 	protected void sequence_Then(EObject context, Then semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1143,11 +1235,11 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name+=WHEN_TEXT code+=Code? (name+=AND_TEXT code+=Code?)*)
+	 *     (name=WHEN_TEXT code=Code?)
 	 *
 	 * Features:
-	 *    name[1, *]
-	 *    code[0, *]
+	 *    name[1, 1]
+	 *    code[0, 1]
 	 */
 	protected void sequence_When(EObject context, When semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

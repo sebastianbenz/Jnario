@@ -71,13 +71,31 @@ public interface JnarioPackage extends EPackage
   int JNARIO = 0;
 
   /**
+   * The feature id for the '<em><b>Imports</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int JNARIO__IMPORTS = 0;
+
+  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int JNARIO__NAME = 0;
+  int JNARIO__NAME = 1;
+
+  /**
+   * The feature id for the '<em><b>Background</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int JNARIO__BACKGROUND = 2;
 
   /**
    * The feature id for the '<em><b>Scenarios</b></em>' containment reference list.
@@ -86,7 +104,7 @@ public interface JnarioPackage extends EPackage
    * @generated
    * @ordered
    */
-  int JNARIO__SCENARIOS = 1;
+  int JNARIO__SCENARIOS = 3;
 
   /**
    * The number of structural features of the '<em>Jnario</em>' class.
@@ -95,7 +113,35 @@ public interface JnarioPackage extends EPackage
    * @generated
    * @ordered
    */
-  int JNARIO_FEATURE_COUNT = 2;
+  int JNARIO_FEATURE_COUNT = 4;
+
+  /**
+   * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.BackgroundImpl <em>Background</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.bmw.carit.jnario.jnario.impl.BackgroundImpl
+   * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getBackground()
+   * @generated
+   */
+  int BACKGROUND = 1;
+
+  /**
+   * The feature id for the '<em><b>Steps</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BACKGROUND__STEPS = 0;
+
+  /**
+   * The number of structural features of the '<em>Background</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BACKGROUND_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.ScenarioImpl <em>Scenario</em>}' class.
@@ -105,7 +151,7 @@ public interface JnarioPackage extends EPackage
    * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getScenario()
    * @generated
    */
-  int SCENARIO = 1;
+  int SCENARIO = 2;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -117,31 +163,22 @@ public interface JnarioPackage extends EPackage
   int SCENARIO__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Given</b></em>' containment reference.
+   * The feature id for the '<em><b>Steps</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SCENARIO__GIVEN = 1;
+  int SCENARIO__STEPS = 1;
 
   /**
-   * The feature id for the '<em><b>When</b></em>' containment reference.
+   * The feature id for the '<em><b>Examples</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SCENARIO__WHEN = 2;
-
-  /**
-   * The feature id for the '<em><b>Then</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SCENARIO__THEN = 3;
+  int SCENARIO__EXAMPLES = 2;
 
   /**
    * The number of structural features of the '<em>Scenario</em>' class.
@@ -150,7 +187,7 @@ public interface JnarioPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SCENARIO_FEATURE_COUNT = 4;
+  int SCENARIO_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.StepImpl <em>Step</em>}' class.
@@ -160,10 +197,10 @@ public interface JnarioPackage extends EPackage
    * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getStep()
    * @generated
    */
-  int STEP = 2;
+  int STEP = 3;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute list.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -172,7 +209,7 @@ public interface JnarioPackage extends EPackage
   int STEP__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Code</b></em>' containment reference list.
+   * The feature id for the '<em><b>Code</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -197,10 +234,10 @@ public interface JnarioPackage extends EPackage
    * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getGiven()
    * @generated
    */
-  int GIVEN = 3;
+  int GIVEN = 4;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute list.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -209,7 +246,7 @@ public interface JnarioPackage extends EPackage
   int GIVEN__NAME = STEP__NAME;
 
   /**
-   * The feature id for the '<em><b>Code</b></em>' containment reference list.
+   * The feature id for the '<em><b>Code</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -234,10 +271,10 @@ public interface JnarioPackage extends EPackage
    * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getWhen()
    * @generated
    */
-  int WHEN = 4;
+  int WHEN = 5;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute list.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -246,7 +283,7 @@ public interface JnarioPackage extends EPackage
   int WHEN__NAME = STEP__NAME;
 
   /**
-   * The feature id for the '<em><b>Code</b></em>' containment reference list.
+   * The feature id for the '<em><b>Code</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -271,10 +308,10 @@ public interface JnarioPackage extends EPackage
    * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getThen()
    * @generated
    */
-  int THEN = 5;
+  int THEN = 6;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute list.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -283,7 +320,7 @@ public interface JnarioPackage extends EPackage
   int THEN__NAME = STEP__NAME;
 
   /**
-   * The feature id for the '<em><b>Code</b></em>' containment reference list.
+   * The feature id for the '<em><b>Code</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -300,6 +337,154 @@ public interface JnarioPackage extends EPackage
    */
   int THEN_FEATURE_COUNT = STEP_FEATURE_COUNT + 0;
 
+  /**
+   * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.AndImpl <em>And</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.bmw.carit.jnario.jnario.impl.AndImpl
+   * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getAnd()
+   * @generated
+   */
+  int AND = 7;
+
+  /**
+   * The feature id for the '<em><b>Steps</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND__STEPS = BACKGROUND__STEPS;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND__NAME = BACKGROUND_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Code</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND__CODE = BACKGROUND_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>And</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_FEATURE_COUNT = BACKGROUND_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.ExamplesImpl <em>Examples</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.bmw.carit.jnario.jnario.impl.ExamplesImpl
+   * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getExamples()
+   * @generated
+   */
+  int EXAMPLES = 8;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXAMPLES__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Heading</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXAMPLES__HEADING = 1;
+
+  /**
+   * The feature id for the '<em><b>Rows</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXAMPLES__ROWS = 2;
+
+  /**
+   * The number of structural features of the '<em>Examples</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXAMPLES_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.ExampleRowImpl <em>Example Row</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.bmw.carit.jnario.jnario.impl.ExampleRowImpl
+   * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getExampleRow()
+   * @generated
+   */
+  int EXAMPLE_ROW = 9;
+
+  /**
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXAMPLE_ROW__PARTS = 0;
+
+  /**
+   * The number of structural features of the '<em>Example Row</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXAMPLE_ROW_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.ExampleCellImpl <em>Example Cell</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.bmw.carit.jnario.jnario.impl.ExampleCellImpl
+   * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getExampleCell()
+   * @generated
+   */
+  int EXAMPLE_CELL = 10;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXAMPLE_CELL__VALUE = 0;
+
+  /**
+   * The number of structural features of the '<em>Example Cell</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXAMPLE_CELL_FEATURE_COUNT = 1;
+
 
   /**
    * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.Jnario <em>Jnario</em>}'.
@@ -310,6 +495,17 @@ public interface JnarioPackage extends EPackage
    * @generated
    */
   EClass getJnario();
+
+  /**
+   * Returns the meta object for the attribute list '{@link de.bmw.carit.jnario.jnario.Jnario#getImports <em>Imports</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Imports</em>'.
+   * @see de.bmw.carit.jnario.jnario.Jnario#getImports()
+   * @see #getJnario()
+   * @generated
+   */
+  EAttribute getJnario_Imports();
 
   /**
    * Returns the meta object for the attribute '{@link de.bmw.carit.jnario.jnario.Jnario#getName <em>Name</em>}'.
@@ -323,6 +519,17 @@ public interface JnarioPackage extends EPackage
   EAttribute getJnario_Name();
 
   /**
+   * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.jnario.Jnario#getBackground <em>Background</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Background</em>'.
+   * @see de.bmw.carit.jnario.jnario.Jnario#getBackground()
+   * @see #getJnario()
+   * @generated
+   */
+  EReference getJnario_Background();
+
+  /**
    * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.jnario.Jnario#getScenarios <em>Scenarios</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -332,6 +539,27 @@ public interface JnarioPackage extends EPackage
    * @generated
    */
   EReference getJnario_Scenarios();
+
+  /**
+   * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.Background <em>Background</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Background</em>'.
+   * @see de.bmw.carit.jnario.jnario.Background
+   * @generated
+   */
+  EClass getBackground();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.jnario.Background#getSteps <em>Steps</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Steps</em>'.
+   * @see de.bmw.carit.jnario.jnario.Background#getSteps()
+   * @see #getBackground()
+   * @generated
+   */
+  EReference getBackground_Steps();
 
   /**
    * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.Scenario <em>Scenario</em>}'.
@@ -355,37 +583,26 @@ public interface JnarioPackage extends EPackage
   EAttribute getScenario_Name();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.jnario.Scenario#getGiven <em>Given</em>}'.
+   * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.jnario.Scenario#getSteps <em>Steps</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Given</em>'.
-   * @see de.bmw.carit.jnario.jnario.Scenario#getGiven()
+   * @return the meta object for the containment reference list '<em>Steps</em>'.
+   * @see de.bmw.carit.jnario.jnario.Scenario#getSteps()
    * @see #getScenario()
    * @generated
    */
-  EReference getScenario_Given();
+  EReference getScenario_Steps();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.jnario.Scenario#getWhen <em>When</em>}'.
+   * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.jnario.Scenario#getExamples <em>Examples</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>When</em>'.
-   * @see de.bmw.carit.jnario.jnario.Scenario#getWhen()
+   * @return the meta object for the containment reference list '<em>Examples</em>'.
+   * @see de.bmw.carit.jnario.jnario.Scenario#getExamples()
    * @see #getScenario()
    * @generated
    */
-  EReference getScenario_When();
-
-  /**
-   * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.jnario.Scenario#getThen <em>Then</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Then</em>'.
-   * @see de.bmw.carit.jnario.jnario.Scenario#getThen()
-   * @see #getScenario()
-   * @generated
-   */
-  EReference getScenario_Then();
+  EReference getScenario_Examples();
 
   /**
    * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.Step <em>Step</em>}'.
@@ -398,10 +615,10 @@ public interface JnarioPackage extends EPackage
   EClass getStep();
 
   /**
-   * Returns the meta object for the attribute list '{@link de.bmw.carit.jnario.jnario.Step#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link de.bmw.carit.jnario.jnario.Step#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Name</em>'.
+   * @return the meta object for the attribute '<em>Name</em>'.
    * @see de.bmw.carit.jnario.jnario.Step#getName()
    * @see #getStep()
    * @generated
@@ -409,10 +626,10 @@ public interface JnarioPackage extends EPackage
   EAttribute getStep_Name();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.jnario.Step#getCode <em>Code</em>}'.
+   * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.jnario.Step#getCode <em>Code</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Code</em>'.
+   * @return the meta object for the containment reference '<em>Code</em>'.
    * @see de.bmw.carit.jnario.jnario.Step#getCode()
    * @see #getStep()
    * @generated
@@ -450,6 +667,101 @@ public interface JnarioPackage extends EPackage
   EClass getThen();
 
   /**
+   * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.And <em>And</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>And</em>'.
+   * @see de.bmw.carit.jnario.jnario.And
+   * @generated
+   */
+  EClass getAnd();
+
+  /**
+   * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.Examples <em>Examples</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Examples</em>'.
+   * @see de.bmw.carit.jnario.jnario.Examples
+   * @generated
+   */
+  EClass getExamples();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.bmw.carit.jnario.jnario.Examples#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see de.bmw.carit.jnario.jnario.Examples#getName()
+   * @see #getExamples()
+   * @generated
+   */
+  EAttribute getExamples_Name();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.jnario.Examples#getHeading <em>Heading</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Heading</em>'.
+   * @see de.bmw.carit.jnario.jnario.Examples#getHeading()
+   * @see #getExamples()
+   * @generated
+   */
+  EReference getExamples_Heading();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.jnario.Examples#getRows <em>Rows</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Rows</em>'.
+   * @see de.bmw.carit.jnario.jnario.Examples#getRows()
+   * @see #getExamples()
+   * @generated
+   */
+  EReference getExamples_Rows();
+
+  /**
+   * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.ExampleRow <em>Example Row</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Example Row</em>'.
+   * @see de.bmw.carit.jnario.jnario.ExampleRow
+   * @generated
+   */
+  EClass getExampleRow();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.jnario.ExampleRow#getParts <em>Parts</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Parts</em>'.
+   * @see de.bmw.carit.jnario.jnario.ExampleRow#getParts()
+   * @see #getExampleRow()
+   * @generated
+   */
+  EReference getExampleRow_Parts();
+
+  /**
+   * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.ExampleCell <em>Example Cell</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Example Cell</em>'.
+   * @see de.bmw.carit.jnario.jnario.ExampleCell
+   * @generated
+   */
+  EClass getExampleCell();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.bmw.carit.jnario.jnario.ExampleCell#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see de.bmw.carit.jnario.jnario.ExampleCell#getValue()
+   * @see #getExampleCell()
+   * @generated
+   */
+  EAttribute getExampleCell_Value();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -483,6 +795,14 @@ public interface JnarioPackage extends EPackage
     EClass JNARIO = eINSTANCE.getJnario();
 
     /**
+     * The meta object literal for the '<em><b>Imports</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute JNARIO__IMPORTS = eINSTANCE.getJnario_Imports();
+
+    /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -491,12 +811,38 @@ public interface JnarioPackage extends EPackage
     EAttribute JNARIO__NAME = eINSTANCE.getJnario_Name();
 
     /**
+     * The meta object literal for the '<em><b>Background</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference JNARIO__BACKGROUND = eINSTANCE.getJnario_Background();
+
+    /**
      * The meta object literal for the '<em><b>Scenarios</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference JNARIO__SCENARIOS = eINSTANCE.getJnario_Scenarios();
+
+    /**
+     * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.BackgroundImpl <em>Background</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.bmw.carit.jnario.jnario.impl.BackgroundImpl
+     * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getBackground()
+     * @generated
+     */
+    EClass BACKGROUND = eINSTANCE.getBackground();
+
+    /**
+     * The meta object literal for the '<em><b>Steps</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BACKGROUND__STEPS = eINSTANCE.getBackground_Steps();
 
     /**
      * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.ScenarioImpl <em>Scenario</em>}' class.
@@ -517,28 +863,20 @@ public interface JnarioPackage extends EPackage
     EAttribute SCENARIO__NAME = eINSTANCE.getScenario_Name();
 
     /**
-     * The meta object literal for the '<em><b>Given</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Steps</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference SCENARIO__GIVEN = eINSTANCE.getScenario_Given();
+    EReference SCENARIO__STEPS = eINSTANCE.getScenario_Steps();
 
     /**
-     * The meta object literal for the '<em><b>When</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Examples</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference SCENARIO__WHEN = eINSTANCE.getScenario_When();
-
-    /**
-     * The meta object literal for the '<em><b>Then</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference SCENARIO__THEN = eINSTANCE.getScenario_Then();
+    EReference SCENARIO__EXAMPLES = eINSTANCE.getScenario_Examples();
 
     /**
      * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.StepImpl <em>Step</em>}' class.
@@ -551,7 +889,7 @@ public interface JnarioPackage extends EPackage
     EClass STEP = eINSTANCE.getStep();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute list feature.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -559,7 +897,7 @@ public interface JnarioPackage extends EPackage
     EAttribute STEP__NAME = eINSTANCE.getStep_Name();
 
     /**
-     * The meta object literal for the '<em><b>Code</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Code</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -595,6 +933,86 @@ public interface JnarioPackage extends EPackage
      * @generated
      */
     EClass THEN = eINSTANCE.getThen();
+
+    /**
+     * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.AndImpl <em>And</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.bmw.carit.jnario.jnario.impl.AndImpl
+     * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getAnd()
+     * @generated
+     */
+    EClass AND = eINSTANCE.getAnd();
+
+    /**
+     * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.ExamplesImpl <em>Examples</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.bmw.carit.jnario.jnario.impl.ExamplesImpl
+     * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getExamples()
+     * @generated
+     */
+    EClass EXAMPLES = eINSTANCE.getExamples();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXAMPLES__NAME = eINSTANCE.getExamples_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Heading</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXAMPLES__HEADING = eINSTANCE.getExamples_Heading();
+
+    /**
+     * The meta object literal for the '<em><b>Rows</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXAMPLES__ROWS = eINSTANCE.getExamples_Rows();
+
+    /**
+     * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.ExampleRowImpl <em>Example Row</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.bmw.carit.jnario.jnario.impl.ExampleRowImpl
+     * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getExampleRow()
+     * @generated
+     */
+    EClass EXAMPLE_ROW = eINSTANCE.getExampleRow();
+
+    /**
+     * The meta object literal for the '<em><b>Parts</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXAMPLE_ROW__PARTS = eINSTANCE.getExampleRow_Parts();
+
+    /**
+     * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.ExampleCellImpl <em>Example Cell</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.bmw.carit.jnario.jnario.impl.ExampleCellImpl
+     * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getExampleCell()
+     * @generated
+     */
+    EClass EXAMPLE_CELL = eINSTANCE.getExampleCell();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXAMPLE_CELL__VALUE = eINSTANCE.getExampleCell_Value();
 
   }
 

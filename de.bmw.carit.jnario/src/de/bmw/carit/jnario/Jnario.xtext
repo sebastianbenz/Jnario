@@ -5,46 +5,76 @@ import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as jvmTypes
 
 Jnario:
+	imports += (IMPORT_PATH)*
 	name=FEATURE_TEXT
+	background = Background?
 	scenarios+=Scenario+
+;
+
+Background:
+	BACKGROUND_TEXT
+	steps+=Given|And
 ;
 
 Scenario:
 	name=SCENARIO_TEXT
-	given = Given
-	when = When
-	then = Then
+	steps+=Step*
+	examples+=Examples*
 ; 
 
 Step:
-	Given|When|Then
+	Given|When|Then|And
 ;
 
 Given:
-	name+=GIVEN_TEXT code+=Code?
-	(name+=AND_TEXT code+=Code?)*
+	name=GIVEN_TEXT code=Code?
 ;
 
 When:
-	name+=WHEN_TEXT code+=Code?
-	(name+=AND_TEXT code+=Code?)*
+	name=WHEN_TEXT code=Code?
 ;
 
 Then:
-	name+=THEN_TEXT code+=Code?
-	(name+=AND_TEXT code+=Code?)*
+	name=THEN_TEXT code=Code?
+;
+
+And:
+	name=AND_TEXT code=Code?
 ;
 
 Code returns xbase::XBlockExpression:
 	expressions+= XExpressionInsideBlock+
 ;
 
-terminal FEATURE_TEXT: 'Feature' (' '|'\t')* ':' (MULTI_LINE)* NEW_LINE;
-terminal SCENARIO_TEXT: 'Scenario: ' (MULTI_LINE)* NEW_LINE;
-terminal GIVEN_TEXT: 'Given ' (MULTI_LINE)* NEW_LINE;
-terminal WHEN_TEXT: 'When ' (MULTI_LINE)* NEW_LINE;
-terminal THEN_TEXT: 'Then ' (MULTI_LINE)* NEW_LINE;
-terminal AND_TEXT: 'And ' (MULTI_LINE)* NEW_LINE;
+Examples:
+	name=EXAMPLE_TEXT
+	heading = ExampleRow
+	(rows += ExampleRow)*
+;
 
-terminal fragment MULTI_LINE: !('\r'|'\n')* '\\' '\r'? '\n' ;
-terminal fragment NEW_LINE: !('\r'|'\n')*  '\r'? '\n';
+ExampleRow:
+	parts+=ExampleCell+ EXAMPLE_ROW_END
+;
+
+ExampleCell:
+	value=EXAMPLE_CELL
+;
+
+terminal FEATURE_TEXT: 'Feature' COLON MNL;
+terminal BACKGROUND_TEXT: 'Background' COLON MNL;
+terminal SCENARIO_TEXT: 'Scenario' COLON MNL;
+terminal GIVEN_TEXT: 'Given ' MNL;
+terminal WHEN_TEXT: 'When ' MNL;
+terminal THEN_TEXT: 'Then ' MNL;
+terminal AND_TEXT: 'And ' MNL;
+terminal EXAMPLE_TEXT: 'Examples' COLON MNL;
+terminal EXAMPLE_ROW_END: '|' SPACES NL;
+terminal EXAMPLE_CELL: '|' !('\r'|'\n' |'|')+;
+terminal IMPORT_PATH: 'import ' 'static '? SPACES ID ('.'ID)* '*'? SPACES ';' SPACES NL;
+
+terminal fragment TEXT_MULTI_LINE: !('\r'|'\n')* '\\' NL;
+terminal fragment TEXT_AND_NL: !('\r'|'\n'|'\\')* NL;
+terminal fragment MNL: (TEXT_MULTI_LINE)* TEXT_AND_NL;
+terminal fragment COLON: (' '|'\t')* ':';
+terminal fragment NL: '\r'? '\n'?;
+terminal fragment SPACES: (' '|'\t')*;

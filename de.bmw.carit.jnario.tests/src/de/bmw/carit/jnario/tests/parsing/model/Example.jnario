@@ -1,0 +1,16 @@
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
+
+Feature: Parsing simple jnario files.
+Scenario: Parse "and" and code.
+Given some variables.
+	var x
+	var y
+	var z
+When I add them
+Then the sum should be the result.
+	
+Examples:
+|x|y|z|
+|1|2|3|
+|3|5|8|

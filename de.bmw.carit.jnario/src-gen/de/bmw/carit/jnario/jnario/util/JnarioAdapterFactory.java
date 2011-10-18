@@ -84,6 +84,11 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
         return createJnarioAdapter();
       }
       @Override
+      public Adapter caseBackground(Background object)
+      {
+        return createBackgroundAdapter();
+      }
+      @Override
       public Adapter caseScenario(Scenario object)
       {
         return createScenarioAdapter();
@@ -107,6 +112,26 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
       public Adapter caseThen(Then object)
       {
         return createThenAdapter();
+      }
+      @Override
+      public Adapter caseAnd(And object)
+      {
+        return createAndAdapter();
+      }
+      @Override
+      public Adapter caseExamples(Examples object)
+      {
+        return createExamplesAdapter();
+      }
+      @Override
+      public Adapter caseExampleRow(ExampleRow object)
+      {
+        return createExampleRowAdapter();
+      }
+      @Override
+      public Adapter caseExampleCell(ExampleCell object)
+      {
+        return createExampleCellAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -141,6 +166,21 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createJnarioAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.Background <em>Background</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.bmw.carit.jnario.jnario.Background
+   * @generated
+   */
+  public Adapter createBackgroundAdapter()
   {
     return null;
   }
@@ -216,6 +256,66 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createThenAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.And <em>And</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.bmw.carit.jnario.jnario.And
+   * @generated
+   */
+  public Adapter createAndAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.Examples <em>Examples</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.bmw.carit.jnario.jnario.Examples
+   * @generated
+   */
+  public Adapter createExamplesAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.ExampleRow <em>Example Row</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.bmw.carit.jnario.jnario.ExampleRow
+   * @generated
+   */
+  public Adapter createExampleRowAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.ExampleCell <em>Example Cell</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.bmw.carit.jnario.jnario.ExampleCell
+   * @generated
+   */
+  public Adapter createExampleCellAdapter()
   {
     return null;
   }
