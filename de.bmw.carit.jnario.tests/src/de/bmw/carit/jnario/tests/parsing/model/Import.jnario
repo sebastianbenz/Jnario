@@ -1,0 +1,12 @@
+import static org.hamcrest.core.Is.is
+import org.junit.Assert.assertThat
+import org.junit.Assert.*
+
+Feature: Parsing simple jnario files.
+Scenario: Import stuff.
+Given some variables.
+	var x
+	var y
+	var z
+When I add them
+Then the sum should be the result.

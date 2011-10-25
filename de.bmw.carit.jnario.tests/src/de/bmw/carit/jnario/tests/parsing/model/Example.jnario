@@ -1,6 +1,3 @@
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
-
 Feature: Parsing simple jnario files.
 Scenario: Parse "and" and code.
 Given some variables.
@@ -14,3 +11,10 @@ Examples:
 |x|y|z|
 |1|2|3|
 |3|5|8|
+
+Examples: some examples
+|x|
+|4|		
+Examples: some other examples
+|x|
+|"y"|

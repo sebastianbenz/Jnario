@@ -6,6 +6,7 @@
  */
 package de.bmw.carit.jnario.jnario.impl;
 
+import de.bmw.carit.jnario.jnario.ExampleHeading;
 import de.bmw.carit.jnario.jnario.ExampleRow;
 import de.bmw.carit.jnario.jnario.Examples;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
@@ -71,7 +72,7 @@ public class ExamplesImpl extends MinimalEObjectImpl.Container implements Exampl
    * @generated
    * @ordered
    */
-  protected ExampleRow heading;
+  protected ExampleHeading heading;
 
   /**
    * The cached value of the '{@link #getRows() <em>Rows</em>}' containment reference list.
@@ -132,7 +133,7 @@ public class ExamplesImpl extends MinimalEObjectImpl.Container implements Exampl
    * <!-- end-user-doc -->
    * @generated
    */
-  public ExampleRow getHeading()
+  public ExampleHeading getHeading()
   {
     return heading;
   }
@@ -142,9 +143,9 @@ public class ExamplesImpl extends MinimalEObjectImpl.Container implements Exampl
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetHeading(ExampleRow newHeading, NotificationChain msgs)
+  public NotificationChain basicSetHeading(ExampleHeading newHeading, NotificationChain msgs)
   {
-    ExampleRow oldHeading = heading;
+    ExampleHeading oldHeading = heading;
     heading = newHeading;
     if (eNotificationRequired())
     {
@@ -159,7 +160,7 @@ public class ExamplesImpl extends MinimalEObjectImpl.Container implements Exampl
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setHeading(ExampleRow newHeading)
+  public void setHeading(ExampleHeading newHeading)
   {
     if (newHeading != heading)
     {
@@ -242,7 +243,7 @@ public class ExamplesImpl extends MinimalEObjectImpl.Container implements Exampl
         setName((String)newValue);
         return;
       case JnarioPackage.EXAMPLES__HEADING:
-        setHeading((ExampleRow)newValue);
+        setHeading((ExampleHeading)newValue);
         return;
       case JnarioPackage.EXAMPLES__ROWS:
         getRows().clear();
@@ -266,7 +267,7 @@ public class ExamplesImpl extends MinimalEObjectImpl.Container implements Exampl
         setName(NAME_EDEFAULT);
         return;
       case JnarioPackage.EXAMPLES__HEADING:
-        setHeading((ExampleRow)null);
+        setHeading((ExampleHeading)null);
         return;
       case JnarioPackage.EXAMPLES__ROWS:
         getRows().clear();

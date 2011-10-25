@@ -8,6 +8,8 @@ package de.bmw.carit.jnario.jnario;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.xtext.xbase.XExpression;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Example Cell</b></em>'.
@@ -16,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.bmw.carit.jnario.jnario.ExampleCell#getValue <em>Value</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.jnario.ExampleCell#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -27,29 +29,29 @@ import org.eclipse.emf.ecore.EObject;
 public interface ExampleCell extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Value</b></em>' attribute.
+   * Returns the value of the '<em><b>Name</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Value</em>' attribute isn't clear,
+   * If the meaning of the '<em>Name</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Value</em>' attribute.
-   * @see #setValue(String)
-   * @see de.bmw.carit.jnario.jnario.JnarioPackage#getExampleCell_Value()
-   * @model
+   * @return the value of the '<em>Name</em>' containment reference.
+   * @see #setName(XExpression)
+   * @see de.bmw.carit.jnario.jnario.JnarioPackage#getExampleCell_Name()
+   * @model containment="true"
    * @generated
    */
-  String getValue();
+  XExpression getName();
 
   /**
-   * Sets the value of the '{@link de.bmw.carit.jnario.jnario.ExampleCell#getValue <em>Value</em>}' attribute.
+   * Sets the value of the '{@link de.bmw.carit.jnario.jnario.ExampleCell#getName <em>Name</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Value</em>' attribute.
-   * @see #getValue()
+   * @param value the new value of the '<em>Name</em>' containment reference.
+   * @see #getName()
    * @generated
    */
-  void setValue(String value);
+  void setName(XExpression value);
 
 } // ExampleCell

@@ -20,6 +20,7 @@ public class HighlightingConfiguration extends DefaultHighlightingConfiguration 
 	public static final String FEATURE_ID = "Feature";
 	public static final String CODE_BOLD_ID = "CodeBold";
 	public static final String STEP_ID = "Step";
+	public static final String STEP_TEXT_ID = "Step_Text";
 
 	public void configure(IHighlightingConfigurationAcceptor acceptor) {
 		acceptor.acceptDefaultHighlighting(COMMENT_ID, "Comment",
@@ -34,7 +35,8 @@ public class HighlightingConfiguration extends DefaultHighlightingConfiguration 
 				scenarioTextStyle());
 		acceptor.acceptDefaultHighlighting(FEATURE_ID, "Feature",
 				featureTextStyle());
-		acceptor.acceptDefaultHighlighting(STEP_ID, "Step", stepTextStyle());
+		acceptor.acceptDefaultHighlighting(STEP_ID, "Step", stepKeyWordStyle());
+		acceptor.acceptDefaultHighlighting(STEP_TEXT_ID, "Step_Text", stepKeyWordStyle());
 		acceptor.acceptDefaultHighlighting(TAG_ID, "Tag", tagTextStyle());
 		acceptor.acceptDefaultHighlighting(CODE_ID, "Code", codeTextStyle());
 		acceptor.acceptDefaultHighlighting(CODE_BOLD_ID, "Code Bold",
@@ -67,20 +69,27 @@ public class HighlightingConfiguration extends DefaultHighlightingConfiguration 
 
 	public TextStyle scenarioTextStyle() {
 		TextStyle textStyle = defaultTextStyle().copy();
-		textStyle.setFontData(fontWithHeight(DEFAULT_FONT_SIZE + 2, SWT.BOLD));
+		textStyle.setColor(new RGB(25, 150, 0));
+		textStyle.setFontData(fontWithHeight(DEFAULT_FONT_SIZE + 1, SWT.BOLD));
 		return textStyle;
 	}
 
 	public TextStyle featureTextStyle() {
 		TextStyle textStyle = defaultTextStyle().copy();
-		textStyle.setFontData(fontWithHeight(DEFAULT_FONT_SIZE + 3, SWT.BOLD));
+		textStyle.setColor(new RGB(25, 150, 0));
+		textStyle.setFontData(fontWithHeight(DEFAULT_FONT_SIZE + 2, SWT.BOLD));
+		return textStyle;
+	}
+	
+	public TextStyle stepKeyWordStyle() {
+		TextStyle textStyle = defaultTextStyle().copy();
+		textStyle.setColor(new RGB(244, 121, 0));
 		return textStyle;
 	}
 	
 	public TextStyle stepTextStyle() {
 		TextStyle textStyle = defaultTextStyle().copy();
-		textStyle.setColor(new RGB(255, 102, 0));
-		textStyle.setStyle(SWT.BOLD);
+		textStyle.setColor(new RGB(244, 121, 0));
 		return textStyle;
 	}
 

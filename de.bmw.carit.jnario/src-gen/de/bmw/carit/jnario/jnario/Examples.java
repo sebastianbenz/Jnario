@@ -65,12 +65,12 @@ public interface Examples extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Heading</em>' containment reference.
-   * @see #setHeading(ExampleRow)
+   * @see #setHeading(ExampleHeading)
    * @see de.bmw.carit.jnario.jnario.JnarioPackage#getExamples_Heading()
    * @model containment="true"
    * @generated
    */
-  ExampleRow getHeading();
+  ExampleHeading getHeading();
 
   /**
    * Sets the value of the '{@link de.bmw.carit.jnario.jnario.Examples#getHeading <em>Heading</em>}' containment reference.
@@ -80,7 +80,7 @@ public interface Examples extends EObject
    * @see #getHeading()
    * @generated
    */
-  void setHeading(ExampleRow value);
+  void setHeading(ExampleHeading value);
 
   /**
    * Returns the value of the '<em><b>Rows</b></em>' containment reference list.

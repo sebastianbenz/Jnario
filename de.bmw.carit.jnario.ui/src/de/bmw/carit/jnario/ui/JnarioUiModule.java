@@ -4,10 +4,12 @@
 package de.bmw.carit.jnario.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 
 import de.bmw.carit.jnario.ui.highlighting.SemanticHighlightingCalculator;
 import de.bmw.carit.jnario.ui.highlighting.HighlightingConfiguration;
+import de.bmw.carit.jnario.ui.highlighting.TokenHighlighting;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -23,5 +25,9 @@ public class JnarioUiModule extends de.bmw.carit.jnario.ui.AbstractJnarioUiModul
 	
 	public Class<? extends IHighlightingConfiguration> bindIHighlightingConfiguration() {
 		return HighlightingConfiguration.class;
+	}
+	
+	public Class<? extends AbstractAntlrTokenToAttributeIdMapper> bindAbstractAntlrTokenToAttributeIdMapper() {
+		return TokenHighlighting.class;
 	}
 }

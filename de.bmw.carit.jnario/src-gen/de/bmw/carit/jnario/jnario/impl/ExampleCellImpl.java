@@ -10,11 +10,15 @@ import de.bmw.carit.jnario.jnario.ExampleCell;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.xtext.xbase.XExpression;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,7 +27,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.bmw.carit.jnario.jnario.impl.ExampleCellImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.jnario.impl.ExampleCellImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -32,24 +36,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class ExampleCellImpl extends MinimalEObjectImpl.Container implements ExampleCell
 {
   /**
-   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The cached value of the '{@link #getName() <em>Name</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected static final String VALUE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getValue()
-   * @generated
-   * @ordered
-   */
-  protected String value = VALUE_EDEFAULT;
+  protected XExpression name;
 
   /**
    * <!-- begin-user-doc -->
@@ -77,9 +71,9 @@ public class ExampleCellImpl extends MinimalEObjectImpl.Container implements Exa
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getValue()
+  public XExpression getName()
   {
-    return value;
+    return name;
   }
 
   /**
@@ -87,12 +81,53 @@ public class ExampleCellImpl extends MinimalEObjectImpl.Container implements Exa
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValue(String newValue)
+  public NotificationChain basicSetName(XExpression newName, NotificationChain msgs)
   {
-    String oldValue = value;
-    value = newValue;
+    XExpression oldName = name;
+    name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JnarioPackage.EXAMPLE_CELL__VALUE, oldValue, value));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JnarioPackage.EXAMPLE_CELL__NAME, oldName, newName);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setName(XExpression newName)
+  {
+    if (newName != name)
+    {
+      NotificationChain msgs = null;
+      if (name != null)
+        msgs = ((InternalEObject)name).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.EXAMPLE_CELL__NAME, null, msgs);
+      if (newName != null)
+        msgs = ((InternalEObject)newName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.EXAMPLE_CELL__NAME, null, msgs);
+      msgs = basicSetName(newName, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JnarioPackage.EXAMPLE_CELL__NAME, newName, newName));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case JnarioPackage.EXAMPLE_CELL__NAME:
+        return basicSetName(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -105,8 +140,8 @@ public class ExampleCellImpl extends MinimalEObjectImpl.Container implements Exa
   {
     switch (featureID)
     {
-      case JnarioPackage.EXAMPLE_CELL__VALUE:
-        return getValue();
+      case JnarioPackage.EXAMPLE_CELL__NAME:
+        return getName();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -121,8 +156,8 @@ public class ExampleCellImpl extends MinimalEObjectImpl.Container implements Exa
   {
     switch (featureID)
     {
-      case JnarioPackage.EXAMPLE_CELL__VALUE:
-        setValue((String)newValue);
+      case JnarioPackage.EXAMPLE_CELL__NAME:
+        setName((XExpression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -138,8 +173,8 @@ public class ExampleCellImpl extends MinimalEObjectImpl.Container implements Exa
   {
     switch (featureID)
     {
-      case JnarioPackage.EXAMPLE_CELL__VALUE:
-        setValue(VALUE_EDEFAULT);
+      case JnarioPackage.EXAMPLE_CELL__NAME:
+        setName((XExpression)null);
         return;
     }
     super.eUnset(featureID);
@@ -155,27 +190,10 @@ public class ExampleCellImpl extends MinimalEObjectImpl.Container implements Exa
   {
     switch (featureID)
     {
-      case JnarioPackage.EXAMPLE_CELL__VALUE:
-        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+      case JnarioPackage.EXAMPLE_CELL__NAME:
+        return name != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (value: ");
-    result.append(value);
-    result.append(')');
-    return result.toString();
   }
 
 } //ExampleCellImpl

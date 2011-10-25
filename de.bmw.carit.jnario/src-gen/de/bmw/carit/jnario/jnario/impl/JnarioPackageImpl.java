@@ -8,10 +8,14 @@ package de.bmw.carit.jnario.jnario.impl;
 
 import de.bmw.carit.jnario.jnario.And;
 import de.bmw.carit.jnario.jnario.Background;
+import de.bmw.carit.jnario.jnario.Code;
 import de.bmw.carit.jnario.jnario.ExampleCell;
+import de.bmw.carit.jnario.jnario.ExampleHeading;
+import de.bmw.carit.jnario.jnario.ExampleHeadingCell;
 import de.bmw.carit.jnario.jnario.ExampleRow;
 import de.bmw.carit.jnario.jnario.Examples;
 import de.bmw.carit.jnario.jnario.Given;
+import de.bmw.carit.jnario.jnario.Import;
 import de.bmw.carit.jnario.jnario.Jnario;
 import de.bmw.carit.jnario.jnario.JnarioFactory;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
@@ -29,6 +33,8 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.xtext.xbase.XbasePackage;
 
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Package</b>.
@@ -43,6 +49,13 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
    * @generated
    */
   private EClass jnarioEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass importEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -98,7 +111,21 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass codeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass examplesEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass exampleHeadingEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -113,6 +140,13 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
    * @generated
    */
   private EClass exampleCellEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass exampleHeadingCellEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -163,6 +197,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
     isInited = true;
 
     // Initialize simple dependencies
+    XAnnotationsPackage.eINSTANCE.eClass();
     XbasePackage.eINSTANCE.eClass();
 
     // Create package meta-data objects
@@ -195,7 +230,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getJnario_Imports()
+  public EAttribute getJnario_Package()
   {
     return (EAttribute)jnarioEClass.getEStructuralFeatures().get(0);
   }
@@ -205,9 +240,19 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getJnario_Imports()
+  {
+    return (EReference)jnarioEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EAttribute getJnario_Name()
   {
-    return (EAttribute)jnarioEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)jnarioEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -217,7 +262,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
    */
   public EReference getJnario_Background()
   {
-    return (EReference)jnarioEClass.getEStructuralFeatures().get(2);
+    return (EReference)jnarioEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -227,7 +272,47 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
    */
   public EReference getJnario_Scenarios()
   {
-    return (EReference)jnarioEClass.getEStructuralFeatures().get(3);
+    return (EReference)jnarioEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getImport()
+  {
+    return importEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getImport_Static()
+  {
+    return (EAttribute)importEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getImport_Extension()
+  {
+    return (EAttribute)importEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getImport_ImportedNamespace()
+  {
+    return (EAttribute)importEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -365,6 +450,36 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getCode()
+  {
+    return codeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCode_Annotations()
+  {
+    return (EReference)codeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCode_BlockExpression()
+  {
+    return (EReference)codeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getExamples()
   {
     return examplesEClass;
@@ -405,6 +520,26 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getExampleHeading()
+  {
+    return exampleHeadingEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getExampleHeading_Parts()
+  {
+    return (EReference)exampleHeadingEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getExampleRow()
   {
     return exampleRowEClass;
@@ -435,9 +570,19 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getExampleCell_Value()
+  public EReference getExampleCell_Name()
   {
-    return (EAttribute)exampleCellEClass.getEStructuralFeatures().get(0);
+    return (EReference)exampleCellEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getExampleHeadingCell()
+  {
+    return exampleHeadingCellEClass;
   }
 
   /**
@@ -471,10 +616,16 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 
     // Create classes and their features
     jnarioEClass = createEClass(JNARIO);
-    createEAttribute(jnarioEClass, JNARIO__IMPORTS);
+    createEAttribute(jnarioEClass, JNARIO__PACKAGE);
+    createEReference(jnarioEClass, JNARIO__IMPORTS);
     createEAttribute(jnarioEClass, JNARIO__NAME);
     createEReference(jnarioEClass, JNARIO__BACKGROUND);
     createEReference(jnarioEClass, JNARIO__SCENARIOS);
+
+    importEClass = createEClass(IMPORT);
+    createEAttribute(importEClass, IMPORT__STATIC);
+    createEAttribute(importEClass, IMPORT__EXTENSION);
+    createEAttribute(importEClass, IMPORT__IMPORTED_NAMESPACE);
 
     backgroundEClass = createEClass(BACKGROUND);
     createEReference(backgroundEClass, BACKGROUND__STEPS);
@@ -496,16 +647,25 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 
     andEClass = createEClass(AND);
 
+    codeEClass = createEClass(CODE);
+    createEReference(codeEClass, CODE__ANNOTATIONS);
+    createEReference(codeEClass, CODE__BLOCK_EXPRESSION);
+
     examplesEClass = createEClass(EXAMPLES);
     createEAttribute(examplesEClass, EXAMPLES__NAME);
     createEReference(examplesEClass, EXAMPLES__HEADING);
     createEReference(examplesEClass, EXAMPLES__ROWS);
 
+    exampleHeadingEClass = createEClass(EXAMPLE_HEADING);
+    createEReference(exampleHeadingEClass, EXAMPLE_HEADING__PARTS);
+
     exampleRowEClass = createEClass(EXAMPLE_ROW);
     createEReference(exampleRowEClass, EXAMPLE_ROW__PARTS);
 
     exampleCellEClass = createEClass(EXAMPLE_CELL);
-    createEAttribute(exampleCellEClass, EXAMPLE_CELL__VALUE);
+    createEReference(exampleCellEClass, EXAMPLE_CELL__NAME);
+
+    exampleHeadingCellEClass = createEClass(EXAMPLE_HEADING_CELL);
   }
 
   /**
@@ -533,6 +693,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
     setNsURI(eNS_URI);
 
     // Obtain other dependent packages
+    XAnnotationsPackage theXAnnotationsPackage = (XAnnotationsPackage)EPackage.Registry.INSTANCE.getEPackage(XAnnotationsPackage.eNS_URI);
     XbasePackage theXbasePackage = (XbasePackage)EPackage.Registry.INSTANCE.getEPackage(XbasePackage.eNS_URI);
 
     // Create type parameters
@@ -545,13 +706,20 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
     thenEClass.getESuperTypes().add(this.getStep());
     andEClass.getESuperTypes().add(this.getBackground());
     andEClass.getESuperTypes().add(this.getStep());
+    exampleHeadingCellEClass.getESuperTypes().add(theXbasePackage.getXVariableDeclaration());
 
     // Initialize classes and features; add operations and parameters
     initEClass(jnarioEClass, Jnario.class, "Jnario", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getJnario_Imports(), ecorePackage.getEString(), "imports", null, 0, -1, Jnario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getJnario_Package(), ecorePackage.getEString(), "package", null, 0, 1, Jnario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getJnario_Imports(), this.getImport(), null, "imports", null, 0, -1, Jnario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getJnario_Name(), ecorePackage.getEString(), "name", null, 0, 1, Jnario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getJnario_Background(), this.getBackground(), null, "background", null, 0, 1, Jnario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getJnario_Scenarios(), this.getScenario(), null, "scenarios", null, 0, -1, Jnario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getImport_Static(), ecorePackage.getEBoolean(), "static", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getImport_Extension(), ecorePackage.getEBoolean(), "extension", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getImport_ImportedNamespace(), ecorePackage.getEString(), "importedNamespace", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(backgroundEClass, Background.class, "Background", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getBackground_Steps(), this.getGiven(), null, "steps", null, 0, -1, Background.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -563,7 +731,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 
     initEClass(stepEClass, Step.class, "Step", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getStep_Name(), ecorePackage.getEString(), "name", null, 0, 1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getStep_Code(), theXbasePackage.getXBlockExpression(), null, "code", null, 0, 1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getStep_Code(), this.getCode(), null, "code", null, 0, 1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(givenEClass, Given.class, "Given", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -573,16 +741,25 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 
     initEClass(andEClass, And.class, "And", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+    initEClass(codeEClass, Code.class, "Code", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCode_Annotations(), theXAnnotationsPackage.getXAnnotation(), null, "annotations", null, 0, -1, Code.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCode_BlockExpression(), theXbasePackage.getXBlockExpression(), null, "blockExpression", null, 0, 1, Code.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(examplesEClass, Examples.class, "Examples", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getExamples_Name(), ecorePackage.getEString(), "name", null, 0, 1, Examples.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getExamples_Heading(), this.getExampleRow(), null, "heading", null, 0, 1, Examples.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExamples_Heading(), this.getExampleHeading(), null, "heading", null, 0, 1, Examples.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExamples_Rows(), this.getExampleRow(), null, "rows", null, 0, -1, Examples.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(exampleHeadingEClass, ExampleHeading.class, "ExampleHeading", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getExampleHeading_Parts(), theXbasePackage.getXVariableDeclaration(), null, "parts", null, 0, -1, ExampleHeading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(exampleRowEClass, ExampleRow.class, "ExampleRow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getExampleRow_Parts(), this.getExampleCell(), null, "parts", null, 0, -1, ExampleRow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(exampleCellEClass, ExampleCell.class, "ExampleCell", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getExampleCell_Value(), ecorePackage.getEString(), "value", null, 0, 1, ExampleCell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExampleCell_Name(), theXbasePackage.getXExpression(), null, "name", null, 0, 1, ExampleCell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(exampleHeadingCellEClass, ExampleHeadingCell.class, "ExampleHeadingCell", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     // Create resource
     createResource(eNS_URI);

@@ -19,7 +19,7 @@ Require-Bundle: de.bmw.carit.jnario;visibility:=reexport,
  org.eclipse.xtext.xbase.ui
 Import-Package: org.apache.log4j,
  org.apache.commons.logging
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: de.bmw.carit.jnario.ui.contentassist.antlr,
  de.bmw.carit.jnario.ui.internal
 Bundle-Activator: de.bmw.carit.jnario.ui.internal.JnarioActivator

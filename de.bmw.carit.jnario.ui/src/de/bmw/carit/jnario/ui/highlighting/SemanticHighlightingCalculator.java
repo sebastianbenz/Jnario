@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
@@ -12,10 +12,8 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 
-import de.bmw.carit.jnario.jnario.Examples;
-import de.bmw.carit.jnario.jnario.Jnario;
+import de.bmw.carit.jnario.jnario.ExampleHeading;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
-import de.bmw.carit.jnario.jnario.Scenario;
 import de.bmw.carit.jnario.jnario.Step;
 import de.bmw.carit.jnario.jnario.util.JnarioSwitch;
 
@@ -37,6 +35,12 @@ public class SemanticHighlightingCalculator implements
 			highlightFirstWord(object, object.getName());
 			return Boolean.TRUE;
 		}
+		
+		@Override
+		public Boolean caseExampleHeading(ExampleHeading object) {
+			// TODO Auto-generated method stub
+			return super.caseExampleHeading(object);
+		}
 
 		private void highlightFirstWord(EObject object, String desc) {
 			int begin = 0;
@@ -57,14 +61,14 @@ public class SemanticHighlightingCalculator implements
 		}
 
 		private void highlight(String string, EObject object) {
-			acceptor.addPosition(offset(object), string.length(),
-					HighlightingConfiguration.KEYWORD_ID);
+			
+			acceptor.addPosition(offset(object, JnarioPackage.Literals.STEP__NAME), string.length(),
+					HighlightingConfiguration.STEP_ID);
 		}
 
-		private int offset(EObject content) {
+		private int offset(EObject content, EAttribute attribute) {
 			List<INode> nodes = NodeModelUtils.findNodesForFeature(content,
-					JnarioPackage.Literals.STEP__NAME);
-			
+					attribute);
 			// works only if keyword exists only once in Step
 			return nodes.iterator().next().getOffset();
 		}

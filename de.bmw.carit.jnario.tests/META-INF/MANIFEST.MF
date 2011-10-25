@@ -10,10 +10,11 @@ Require-Bundle: de.bmw.carit.jnario,
  org.eclipse.core.runtime,
  org.eclipse.xtext,
  org.eclipse.xtext.junit4,
- org.junit,
- org.eclipse.xtext.ui.junit;bundle-version="2.0.1"
+ org.junit;visibility:=reexport,
+ org.eclipse.xtext.ui.junit;bundle-version="2.0.1",
+ org.eclipse.xtext.xbase;bundle-version="2.0.1"
 Import-Package: org.apache.log4j,
  org.apache.commons.logging
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: de.bmw.carit.jnario,
  de.bmw.carit.jnario.tests.util

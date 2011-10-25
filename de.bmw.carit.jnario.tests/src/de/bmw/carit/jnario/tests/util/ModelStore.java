@@ -68,4 +68,8 @@ public class ModelStore implements Iterable<EObject> {
 		return new ModelStore();
 	}
 
+	public Resource parseScenario(String...strings) {
+		return parse("Scenario" + resourceSet.getResources().size() + ".jnario", strings);
+	}
+
 }

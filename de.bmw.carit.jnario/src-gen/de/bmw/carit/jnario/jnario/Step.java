@@ -8,8 +8,6 @@ package de.bmw.carit.jnario.jnario;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.eclipse.xtext.xbase.XBlockExpression;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Step</b></em>'.
@@ -64,12 +62,12 @@ public interface Step extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Code</em>' containment reference.
-   * @see #setCode(XBlockExpression)
+   * @see #setCode(Code)
    * @see de.bmw.carit.jnario.jnario.JnarioPackage#getStep_Code()
    * @model containment="true"
    * @generated
    */
-  XBlockExpression getCode();
+  Code getCode();
 
   /**
    * Sets the value of the '{@link de.bmw.carit.jnario.jnario.Step#getCode <em>Code</em>}' containment reference.
@@ -79,6 +77,6 @@ public interface Step extends EObject
    * @see #getCode()
    * @generated
    */
-  void setCode(XBlockExpression value);
+  void setCode(Code value);
 
 } // Step

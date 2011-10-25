@@ -11,6 +11,7 @@ import com.google.common.collect.Iterators
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
+import org.eclipse.xtext.xbase.typing.ITypeProvider
 import org.eclipse.xtext.xbase.compiler.*
 import org.eclipse.xtext.xbase.*
 import de.bmw.carit.jnario.jnario.*
@@ -19,36 +20,178 @@ import java.util.*
 import com.google.inject.Inject
 import static extension org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
 import org.eclipse.xtext.xtend2.lib.StringConcatenation
+import org.eclipse.xtext.xbase.compiler.IAppendable
+import org.eclipse.xtext.xbase.compiler.StringBuilderBasedAppendable
+
 
 class JnarioGenerator implements IGenerator {
 	
-	@Inject JnarioCompiler jnarioCompiler
+	@Inject 
+	JnarioCompiler jnarioCompiler
+	
+	@Inject
+	ITypeProvider typeProvider
 	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		
 		for(feature: resource.allContentsIterable.filter(typeof(Jnario))) {			
-			var className = feature.name
-			className = className.replaceAll("[^A-Za-z0-9_]","");
-			fsa.generateFile(className + ".java", feature.compile(className))
+			var featureName = feature.name
+			for(scenario: feature.scenarios){
+				var className = generateClassName(feature.name, scenario.name)
+					fsa.generateFile(className + ".java", feature.compileScenario(scenario, className))
+				if(!scenario.examples.empty){
+					fsa.generateFile(className + "Examples.java", scenario.generateExampleContent(className))
+				}
+			}
 		}
 	}
 	
-	def compile(Jnario feature, String className){
+	def generateExampleContent(Scenario scenario, String className){
+		var content = ""
+		for(example: scenario.examples){
+			var methodName = JnarioCompiler::extractMethodName(scenario.name)
+			content = content + compileExamples(className + "Examples", className, example.rows , methodName)		
+		}
+		content
+	}
+	
+	def generateClassName(String featureName, String scenarioName){
+		var className = featureName + scenarioName
+		className = className.replaceAll("[^A-Za-z0-9_]","")
+	}
+	
+	def compileScenario(Jnario feature, Scenario scenario, String className){
 		
 		val importManager = new ImportManager(true)
-		var testClassContent = ""
-		for(Scenario scenario:feature.scenarios){
-			testClassContent = testClassContent + jnarioCompiler.compile(scenario, importManager)
+		var backgroundContent = ""
+		if(feature.background != null){
+			backgroundContent = compileBackground(feature.background, importManager)
+		}
+		var scenarioContent = jnarioCompiler.compileScenario(scenario, importManager)
+		var classContent = backgroundContent + scenarioContent
+		
+		if(!scenario.examples.empty){
+			classContent = compileExampleMain(scenario, className, classContent)
+		}
+		var packageName = feature.^package
+		compileClass(classContent, className, importManager, packageName)
+	}
+	
+	def compileClass(String classContent, String className, ImportManager importManager, String packageName)
+		'''
+		package «packageName»;
+		
+		import org.junit.Test;
+			«compileImports(importManager)»
+		public class «className»{
+			
+			«classContent»
 		}
 		'''
-		import org.junit.Test;
-		
+	
+	def compileImports(ImportManager importManager)
+		'''
 		«FOR i:importManager.imports»
 			import «i»;
 		«ENDFOR»
-		public class «className»{
-			«testClassContent»
+		'''
+	
+	def compileBackground(Background background, ImportManager importManager){
+		jnarioCompiler.compileBackground(background, importManager)
+	}
+	
+
+	def compileExampleMain(Scenario scenario, String className, String classContent){
+
+		var example = scenario.examples.get(0)
+		var variables = getVariablesOrValues(example.heading)
+		
+		var fields = compileFields(example.heading.parts, example.rows.get(0).parts)
+		var constructor = compileConstructor(className, variables)
+		
+		fields + constructor + classContent
+	}
+	
+	def compileExamples(String className, String exampleClassName, List<ExampleRow> rows, String testMethod){
+		var appendable = new StringBuilderBasedAppendable();
+		for(row: rows){
+			declareVariableAndJavaStatement(row, appendable)
+			appendable.append("instance = new " + exampleClassName + "(")
+			getVariables(row, appendable)
+			appendable.append(");\n")
+			appendable.append("instance." + testMethod + "();")
 		}
+		'''
+			import org.junit.Test;
+			
+			public class «className»{
+				@Test
+				public void examplesTest(){
+					«exampleClassName» instance;
+					«appendable.toString»
+				}
+			}
+		'''
+	}
+	
+	def declareVariableAndJavaStatement(ExampleRow row, IAppendable appendable){
+		var iterator = row.parts.iterator
+		while(iterator.hasNext){
+			var expression = iterator.next.name
+			jnarioCompiler.declareVariableAndJavaStatement(expression, appendable)
+			if(iterator.hasNext){
+				appendable.append("\n")
+			}
+		}
+		appendable.toString()
+	}
+	
+	def getVariables(ExampleRow row, IAppendable appendable){
+		var iterator = row.parts.iterator
+		while(iterator.hasNext){
+			var expression = iterator.next.name
+			jnarioCompiler.getVariables(expression, appendable)
+			if(iterator.hasNext){
+				appendable.append(", ")
+			}
+		}
+		appendable.toString()
+	}
+	
+	def getVariablesOrValues(ExampleHeading heading){
+		var values = new ArrayList<String>()
+		for(cell: heading.parts){
+			values.add(cell.name)
+		}
+		values
+	}
+	
+	def compileFields(List<XVariableDeclaration> variables, List<ExampleCell> types){
+
+		var fields = ""
+		var i = 0
+		for(variable: variables){
+			var type = typeProvider.getType(types.get(i).name)
+			type.type.simpleName
+			fields = fields + "private "+ type.simpleName + " " + variable.name + ";\n"
+			i = i+1
+		}
+		fields
+	}
+	
+	def compileConstructor(String className, ArrayList<String> variables){
+		var params = ""
+		var assignments = ""
+		for(variable: variables){
+			params = params + "int " + "_" + variable + ","
+			assignments = assignments + variable + "=" + "_" + variable + ";\n"
+		}
+		params = "" + params.subSequence(0, params.length-1)
+		
+		'''
+			public «className»(«params»){
+				«assignments»
+			}
 		'''
 	}
 }

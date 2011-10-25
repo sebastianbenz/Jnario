@@ -69,6 +69,7 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
     switch (eClass.getClassifierID())
     {
       case JnarioPackage.JNARIO: return createJnario();
+      case JnarioPackage.IMPORT: return createImport();
       case JnarioPackage.BACKGROUND: return createBackground();
       case JnarioPackage.SCENARIO: return createScenario();
       case JnarioPackage.STEP: return createStep();
@@ -76,9 +77,12 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
       case JnarioPackage.WHEN: return createWhen();
       case JnarioPackage.THEN: return createThen();
       case JnarioPackage.AND: return createAnd();
+      case JnarioPackage.CODE: return createCode();
       case JnarioPackage.EXAMPLES: return createExamples();
+      case JnarioPackage.EXAMPLE_HEADING: return createExampleHeading();
       case JnarioPackage.EXAMPLE_ROW: return createExampleRow();
       case JnarioPackage.EXAMPLE_CELL: return createExampleCell();
+      case JnarioPackage.EXAMPLE_HEADING_CELL: return createExampleHeadingCell();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -93,6 +97,17 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
   {
     JnarioImpl jnario = new JnarioImpl();
     return jnario;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Import createImport()
+  {
+    ImportImpl import_ = new ImportImpl();
+    return import_;
   }
 
   /**
@@ -177,10 +192,32 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public Code createCode()
+  {
+    CodeImpl code = new CodeImpl();
+    return code;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Examples createExamples()
   {
     ExamplesImpl examples = new ExamplesImpl();
     return examples;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ExampleHeading createExampleHeading()
+  {
+    ExampleHeadingImpl exampleHeading = new ExampleHeadingImpl();
+    return exampleHeading;
   }
 
   /**
@@ -203,6 +240,17 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
   {
     ExampleCellImpl exampleCell = new ExampleCellImpl();
     return exampleCell;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ExampleHeadingCell createExampleHeadingCell()
+  {
+    ExampleHeadingCellImpl exampleHeadingCell = new ExampleHeadingCellImpl();
+    return exampleHeadingCell;
   }
 
   /**

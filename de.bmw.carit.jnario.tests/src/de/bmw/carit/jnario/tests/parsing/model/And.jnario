@@ -1,0 +1,12 @@
+Feature: Parsing simple jnario files.
+Scenario: And stuff.
+Given some variables.
+	var x
+	var y
+	var z
+And some values.
+	x = 5
+	y = 3
+	z = 8
+When I add them
+Then the sum should be the result.

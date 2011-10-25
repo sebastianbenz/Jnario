@@ -4,10 +4,14 @@ import com.google.inject.Inject;
 import com.google.inject.Provider;
 import de.bmw.carit.jnario.jnario.And;
 import de.bmw.carit.jnario.jnario.Background;
+import de.bmw.carit.jnario.jnario.Code;
 import de.bmw.carit.jnario.jnario.ExampleCell;
+import de.bmw.carit.jnario.jnario.ExampleHeading;
+import de.bmw.carit.jnario.jnario.ExampleHeadingCell;
 import de.bmw.carit.jnario.jnario.ExampleRow;
 import de.bmw.carit.jnario.jnario.Examples;
 import de.bmw.carit.jnario.jnario.Given;
+import de.bmw.carit.jnario.jnario.Import;
 import de.bmw.carit.jnario.jnario.Jnario;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
 import de.bmw.carit.jnario.jnario.Scenario;
@@ -59,7 +63,12 @@ import org.eclipse.xtext.xbase.XUnaryOperation;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.XWhileExpression;
 import org.eclipse.xtext.xbase.XbasePackage;
-import org.eclipse.xtext.xbase.serializer.XbaseSemanticSequencer;
+import org.eclipse.xtext.xbase.annotations.serializer.XbaseWithAnnotationsSemanticSequencer;
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationElementValueBinaryOperation;
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationElementValuePair;
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationValueArray;
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
 import org.eclipse.xtext.xtype.XFunctionTypeRef;
 import org.eclipse.xtext.xtype.XtypePackage;
 
@@ -82,9 +91,9 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	protected ISemanticSequencer genericSequencer;
 	
 	@Inject
-	protected Provider<XbaseSemanticSequencer> superSequencerProvider;
+	protected Provider<XbaseWithAnnotationsSemanticSequencer> superSequencerProvider;
 	 
-	protected XbaseSemanticSequencer superSequencer; 
+	protected XbaseWithAnnotationsSemanticSequencer superSequencer; 
 	
 	@Override
 	public void init(ISemanticSequencer sequencer, ISemanticSequenceAcceptor sequenceAcceptor, Acceptor errorAcceptor) {
@@ -111,9 +120,27 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 					return; 
 				}
 				else break;
+			case JnarioPackage.CODE:
+				if(context == grammarAccess.getCodeRule()) {
+					sequence_Code(context, (Code) semanticObject); 
+					return; 
+				}
+				else break;
 			case JnarioPackage.EXAMPLE_CELL:
 				if(context == grammarAccess.getExampleCellRule()) {
 					sequence_ExampleCell(context, (ExampleCell) semanticObject); 
+					return; 
+				}
+				else break;
+			case JnarioPackage.EXAMPLE_HEADING:
+				if(context == grammarAccess.getExampleHeadingRule()) {
+					sequence_ExampleHeading(context, (ExampleHeading) semanticObject); 
+					return; 
+				}
+				else break;
+			case JnarioPackage.EXAMPLE_HEADING_CELL:
+				if(context == grammarAccess.getExampleHeadingCellRule()) {
+					sequence_ExampleHeadingCell(context, (ExampleHeadingCell) semanticObject); 
 					return; 
 				}
 				else break;
@@ -133,6 +160,12 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 				if(context == grammarAccess.getGivenRule() ||
 				   context == grammarAccess.getStepRule()) {
 					sequence_Given(context, (Given) semanticObject); 
+					return; 
+				}
+				else break;
+			case JnarioPackage.IMPORT:
+				if(context == grammarAccess.getImportRule()) {
+					sequence_Import(context, (Import) semanticObject); 
 					return; 
 				}
 				else break;
@@ -208,6 +241,40 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			}
+		else if(semanticObject.eClass().getEPackage() == XAnnotationsPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case XAnnotationsPackage.XANNOTATION:
+				if(context == grammarAccess.getXAnnotationRule() ||
+				   context == grammarAccess.getXAnnotationElementValueRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationAccess().getXAnnotationElementValueBinaryOperationLeftOperandAction_1_0()) {
+					sequence_XAnnotation(context, (XAnnotation) semanticObject); 
+					return; 
+				}
+				else break;
+			case XAnnotationsPackage.XANNOTATION_ELEMENT_VALUE_BINARY_OPERATION:
+				if(context == grammarAccess.getXAnnotationElementValueRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationAccess().getXAnnotationElementValueBinaryOperationLeftOperandAction_1_0()) {
+					sequence_XAnnotationElementValueStringConcatenation(context, (XAnnotationElementValueBinaryOperation) semanticObject); 
+					return; 
+				}
+				else break;
+			case XAnnotationsPackage.XANNOTATION_ELEMENT_VALUE_PAIR:
+				if(context == grammarAccess.getXAnnotationElementValuePairRule()) {
+					sequence_XAnnotationElementValuePair(context, (XAnnotationElementValuePair) semanticObject); 
+					return; 
+				}
+				else break;
+			case XAnnotationsPackage.XANNOTATION_VALUE_ARRAY:
+				if(context == grammarAccess.getXAnnotationElementValueRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationAccess().getXAnnotationElementValueBinaryOperationLeftOperandAction_1_0() ||
+				   context == grammarAccess.getXAnnotationValueArrayRule()) {
+					sequence_XAnnotationValueArray(context, (XAnnotationValueArray) semanticObject); 
+					return; 
+				}
+				else break;
+			}
 		else if(semanticObject.eClass().getEPackage() == XbasePackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
 			case XbasePackage.XASSIGNMENT:
 				if(context == grammarAccess.getXAdditiveExpressionRule() ||
@@ -274,8 +341,8 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case XbasePackage.XBLOCK_EXPRESSION:
-				if(context == grammarAccess.getCodeRule()) {
-					sequence_Code(context, (XBlockExpression) semanticObject); 
+				if(context == grammarAccess.getBlockExpressionRule()) {
+					sequence_BlockExpression(context, (XBlockExpression) semanticObject); 
 					return; 
 				}
 				else if(context == grammarAccess.getXAdditiveExpressionRule() ||
@@ -315,6 +382,9 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
 				   context == grammarAccess.getXAndExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
+				   context == grammarAccess.getXAnnotationElementValueRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationAccess().getXAnnotationElementValueBinaryOperationLeftOperandAction_1_0() ||
 				   context == grammarAccess.getXAssignmentRule() ||
 				   context == grammarAccess.getXAssignmentAccess().getXBinaryOperationLeftOperandAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXBooleanLiteralRule() ||
@@ -493,7 +563,14 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case XbasePackage.XFEATURE_CALL:
-				if(context == grammarAccess.getXAdditiveExpressionRule() ||
+				if(context == grammarAccess.getXAnnotationElementValueRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationAccess().getXAnnotationElementValueBinaryOperationLeftOperandAction_1_0() ||
+				   context == grammarAccess.getXAnnotationValueFieldReferenceRule()) {
+					sequence_XAnnotationValueFieldReference(context, (XFeatureCall) semanticObject); 
+					return; 
+				}
+				else if(context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
 				   context == grammarAccess.getXAndExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
@@ -628,6 +705,9 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
 				   context == grammarAccess.getXAndExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
+				   context == grammarAccess.getXAnnotationElementValueRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationAccess().getXAnnotationElementValueBinaryOperationLeftOperandAction_1_0() ||
 				   context == grammarAccess.getXAssignmentRule() ||
 				   context == grammarAccess.getXAssignmentAccess().getXBinaryOperationLeftOperandAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXCastedExpressionRule() ||
@@ -761,6 +841,9 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
 				   context == grammarAccess.getXAndExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
+				   context == grammarAccess.getXAnnotationElementValueRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationAccess().getXAnnotationElementValueBinaryOperationLeftOperandAction_1_0() ||
 				   context == grammarAccess.getXAssignmentRule() ||
 				   context == grammarAccess.getXAssignmentAccess().getXBinaryOperationLeftOperandAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXCastedExpressionRule() ||
@@ -894,6 +977,9 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
 				   context == grammarAccess.getXAndExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
+				   context == grammarAccess.getXAnnotationElementValueRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationAccess().getXAnnotationElementValueBinaryOperationLeftOperandAction_1_0() ||
 				   context == grammarAccess.getXAssignmentRule() ||
 				   context == grammarAccess.getXAssignmentAccess().getXBinaryOperationLeftOperandAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXCastedExpressionRule() ||
@@ -1011,11 +1097,11 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=AND_TEXT code=Code?)
+	 *     (name=AND_TEXT code=Code)
 	 *
 	 * Features:
 	 *    name[1, 1]
-	 *    code[0, 1]
+	 *    code[1, 1]
 	 */
 	protected void sequence_And(EObject context, And semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1041,27 +1127,64 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	 * Features:
 	 *    expressions[1, *]
 	 */
-	protected void sequence_Code(EObject context, XBlockExpression semanticObject) {
+	protected void sequence_BlockExpression(EObject context, XBlockExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     value=EXAMPLE_CELL
+	 *     (annotations+=XAnnotation* blockExpression=BlockExpression?)
 	 *
 	 * Features:
-	 *    value[1, 1]
+	 *    annotations[0, *]
+	 *    blockExpression[0, 1]
+	 */
+	protected void sequence_Code(EObject context, Code semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     name=XExpression
+	 *
+	 * Features:
+	 *    name[1, 1]
 	 */
 	protected void sequence_ExampleCell(EObject context, ExampleCell semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, JnarioPackage.Literals.EXAMPLE_CELL__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JnarioPackage.Literals.EXAMPLE_CELL__VALUE));
+			if(transientValues.isValueTransient(semanticObject, JnarioPackage.Literals.EXAMPLE_CELL__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JnarioPackage.Literals.EXAMPLE_CELL__NAME));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getExampleCellAccess().getValueEXAMPLE_CELLTerminalRuleCall_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getExampleCellAccess().getNameXExpressionParserRuleCall_1_0(), semanticObject.getName());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     name=ValidID
+	 *
+	 * Features:
+	 *    name[1, 1]
+	 */
+	protected void sequence_ExampleHeadingCell(EObject context, ExampleHeadingCell semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     parts+=ExampleHeadingCell+
+	 *
+	 * Features:
+	 *    parts[1, *]
+	 */
+	protected void sequence_ExampleHeading(EObject context, ExampleHeading semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -1079,7 +1202,7 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=EXAMPLE_TEXT heading=ExampleRow rows+=ExampleRow*)
+	 *     (name=EXAMPLE_TEXT heading=ExampleHeading rows+=ExampleRow*)
 	 *
 	 * Features:
 	 *    name[1, 1]
@@ -1093,22 +1216,49 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=GIVEN_TEXT code=Code?)
+	 *     (name=GIVEN_TEXT code=Code)
 	 *
 	 * Features:
 	 *    name[1, 1]
-	 *    code[0, 1]
+	 *    code[1, 1]
 	 */
 	protected void sequence_Given(EObject context, Given semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, JnarioPackage.Literals.STEP__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JnarioPackage.Literals.STEP__NAME));
+			if(transientValues.isValueTransient(semanticObject, JnarioPackage.Literals.STEP__CODE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JnarioPackage.Literals.STEP__CODE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getGivenAccess().getNameGIVEN_TEXTTerminalRuleCall_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getGivenAccess().getCodeCodeParserRuleCall_1_0(), semanticObject.getCode());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     ((static?='static' extension?='extension'?)? importedNamespace=QualifiedNameWithWildCard)
+	 *
+	 * Features:
+	 *    static[0, 1]
+	 *         MANDATORY_IF_SET extension
+	 *    extension[0, 1]
+	 *         EXCLUDE_IF_UNSET static
+	 *    importedNamespace[1, 1]
+	 */
+	protected void sequence_Import(EObject context, Import semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (imports+=IMPORT_PATH* name=FEATURE_TEXT background=Background? scenarios+=Scenario+)
+	 *     (package=QualifiedName? imports+=Import* name=FEATURE_TEXT background=Background? scenarios+=Scenario+)
 	 *
 	 * Features:
+	 *    package[0, 1]
 	 *    imports[0, *]
 	 *    name[1, 1]
 	 *    background[0, 1]
@@ -1222,27 +1372,47 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=THEN_TEXT code=Code?)
+	 *     (name=THEN_TEXT code=Code)
 	 *
 	 * Features:
 	 *    name[1, 1]
-	 *    code[0, 1]
+	 *    code[1, 1]
 	 */
 	protected void sequence_Then(EObject context, Then semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, JnarioPackage.Literals.STEP__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JnarioPackage.Literals.STEP__NAME));
+			if(transientValues.isValueTransient(semanticObject, JnarioPackage.Literals.STEP__CODE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JnarioPackage.Literals.STEP__CODE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getThenAccess().getNameTHEN_TEXTTerminalRuleCall_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getThenAccess().getCodeCodeParserRuleCall_1_0(), semanticObject.getCode());
+		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (name=WHEN_TEXT code=Code?)
+	 *     (name=WHEN_TEXT code=Code)
 	 *
 	 * Features:
 	 *    name[1, 1]
-	 *    code[0, 1]
+	 *    code[1, 1]
 	 */
 	protected void sequence_When(EObject context, When semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, JnarioPackage.Literals.STEP__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JnarioPackage.Literals.STEP__NAME));
+			if(transientValues.isValueTransient(semanticObject, JnarioPackage.Literals.STEP__CODE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JnarioPackage.Literals.STEP__CODE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getWhenAccess().getNameWHEN_TEXTTerminalRuleCall_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getWhenAccess().getCodeCodeParserRuleCall_1_0(), semanticObject.getCode());
+		feeder.finish();
 	}
 	
 	
@@ -1265,6 +1435,82 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	 *    rightOperand[0, 8]
 	 */
 	protected void sequence_XAdditiveExpression(EObject context, XBinaryOperation semanticObject) {
+		superSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (element=[JvmOperation|ValidID] value=XAnnotationElementValue)
+	 *
+	 * Features:
+	 *    value[1, 1]
+	 *    element[1, 1]
+	 */
+	protected void sequence_XAnnotationElementValuePair(EObject context, XAnnotationElementValuePair semanticObject) {
+		superSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         leftOperand=XAnnotationElementValueStringConcatenation_XAnnotationElementValueBinaryOperation_1_0 
+	 *         operator='+' 
+	 *         rightOperand=XAnnotationElementValue
+	 *     )
+	 *
+	 * Features:
+	 *    leftOperand[1, 1]
+	 *    rightOperand[1, 1]
+	 *    operator[1, 1]
+	 */
+	protected void sequence_XAnnotationElementValueStringConcatenation(EObject context, XAnnotationElementValueBinaryOperation semanticObject) {
+		superSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (values+=XAnnotationElementValue values+=XAnnotationElementValue*)
+	 *
+	 * Features:
+	 *    values[1, *]
+	 */
+	protected void sequence_XAnnotationValueArray(EObject context, XAnnotationValueArray semanticObject) {
+		superSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (declaringType=[JvmDeclaredType|StaticQualifier]? feature=[JvmIdentifiableElement|IdOrSuper])
+	 *
+	 * Features:
+	 *    feature[1, 1]
+	 *    declaringType[0, 1]
+	 */
+	protected void sequence_XAnnotationValueFieldReference(EObject context, XFeatureCall semanticObject) {
+		superSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         annotationType=[JvmAnnotationType|QualifiedName] 
+	 *         ((elementValuePairs+=XAnnotationElementValuePair elementValuePairs+=XAnnotationElementValuePair*) | value=XAnnotationElementValue)?
+	 *     )
+	 *
+	 * Features:
+	 *    elementValuePairs[0, *]
+	 *         EXCLUDE_IF_SET value
+	 *    annotationType[1, 1]
+	 *    value[0, 1]
+	 *         EXCLUDE_IF_SET elementValuePairs
+	 *         EXCLUDE_IF_SET elementValuePairs
+	 */
+	protected void sequence_XAnnotation(EObject context, XAnnotation semanticObject) {
 		superSequencer.createSequence(context, semanticObject);
 	}
 	

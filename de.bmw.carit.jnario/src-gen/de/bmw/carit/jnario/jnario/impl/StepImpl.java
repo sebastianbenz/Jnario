@@ -6,6 +6,7 @@
  */
 package de.bmw.carit.jnario.jnario.impl;
 
+import de.bmw.carit.jnario.jnario.Code;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
 import de.bmw.carit.jnario.jnario.Step;
 
@@ -17,8 +18,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.xtext.xbase.XBlockExpression;
 
 /**
  * <!-- begin-user-doc -->
@@ -64,7 +63,7 @@ public class StepImpl extends MinimalEObjectImpl.Container implements Step
    * @generated
    * @ordered
    */
-  protected XBlockExpression code;
+  protected Code code;
 
   /**
    * <!-- begin-user-doc -->
@@ -115,7 +114,7 @@ public class StepImpl extends MinimalEObjectImpl.Container implements Step
    * <!-- end-user-doc -->
    * @generated
    */
-  public XBlockExpression getCode()
+  public Code getCode()
   {
     return code;
   }
@@ -125,9 +124,9 @@ public class StepImpl extends MinimalEObjectImpl.Container implements Step
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetCode(XBlockExpression newCode, NotificationChain msgs)
+  public NotificationChain basicSetCode(Code newCode, NotificationChain msgs)
   {
-    XBlockExpression oldCode = code;
+    Code oldCode = code;
     code = newCode;
     if (eNotificationRequired())
     {
@@ -142,7 +141,7 @@ public class StepImpl extends MinimalEObjectImpl.Container implements Step
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setCode(XBlockExpression newCode)
+  public void setCode(Code newCode)
   {
     if (newCode != code)
     {
@@ -206,7 +205,7 @@ public class StepImpl extends MinimalEObjectImpl.Container implements Step
         setName((String)newValue);
         return;
       case JnarioPackage.STEP__CODE:
-        setCode((XBlockExpression)newValue);
+        setCode((Code)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -226,7 +225,7 @@ public class StepImpl extends MinimalEObjectImpl.Container implements Step
         setName(NAME_EDEFAULT);
         return;
       case JnarioPackage.STEP__CODE:
-        setCode((XBlockExpression)null);
+        setCode((Code)null);
         return;
     }
     super.eUnset(featureID);

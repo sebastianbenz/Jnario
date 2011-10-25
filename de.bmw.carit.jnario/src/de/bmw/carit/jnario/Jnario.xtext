@@ -1,14 +1,23 @@
-grammar de.bmw.carit.jnario.Jnario with org.eclipse.xtext.xbase.Xbase 
+grammar de.bmw.carit.jnario.Jnario with org.eclipse.xtext.xbase.annotations.XbaseWithAnnotations
 generate jnario "http://www.bmw.de/carit/jnario/Jnario"
 
 import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as jvmTypes
 
 Jnario:
-	imports += (IMPORT_PATH)*
+	('package' package=QualifiedName)?
+	(imports += Import)*
 	name=FEATURE_TEXT
 	background = Background?
 	scenarios+=Scenario+
+;
+
+Import : 
+	'import' (static?='static' extension?='extension'?)? importedNamespace=QualifiedNameWithWildCard
+;
+
+QualifiedNameWithWildCard :
+	QualifiedName  ('.' '*')?
 ;
 
 Background:
@@ -27,29 +36,43 @@ Step:
 ;
 
 Given:
-	name=GIVEN_TEXT code=Code?
+	name=GIVEN_TEXT code=Code
 ;
 
 When:
-	name=WHEN_TEXT code=Code?
+	name=WHEN_TEXT code=Code
 ;
 
 Then:
-	name=THEN_TEXT code=Code?
+	name=THEN_TEXT code=Code
 ;
 
 And:
-	name=AND_TEXT code=Code?
+	name=AND_TEXT code=Code
 ;
 
-Code returns xbase::XBlockExpression:
+Code:
+	{Code}
+	annotations+=XAnnotation* 
+	blockExpression=BlockExpression?
+;
+
+BlockExpression returns xbase::XBlockExpression:
 	expressions+= XExpressionInsideBlock+
 ;
 
 Examples:
 	name=EXAMPLE_TEXT
-	heading = ExampleRow
+	heading = ExampleHeading
 	(rows += ExampleRow)*
+;
+
+ExampleHeading:
+	parts+=ExampleHeadingCell+ EXAMPLE_ROW_END
+;
+
+ExampleHeadingCell returns xbase::XVariableDeclaration:
+	{ExampleHeadingCell} '|' name=ValidID
 ;
 
 ExampleRow:
@@ -57,7 +80,7 @@ ExampleRow:
 ;
 
 ExampleCell:
-	value=EXAMPLE_CELL
+	'|'name=XExpression
 ;
 
 terminal FEATURE_TEXT: 'Feature' COLON MNL;
@@ -69,8 +92,6 @@ terminal THEN_TEXT: 'Then ' MNL;
 terminal AND_TEXT: 'And ' MNL;
 terminal EXAMPLE_TEXT: 'Examples' COLON MNL;
 terminal EXAMPLE_ROW_END: '|' SPACES NL;
-terminal EXAMPLE_CELL: '|' !('\r'|'\n' |'|')+;
-terminal IMPORT_PATH: 'import ' 'static '? SPACES ID ('.'ID)* '*'? SPACES ';' SPACES NL;
 
 terminal fragment TEXT_MULTI_LINE: !('\r'|'\n')* '\\' NL;
 terminal fragment TEXT_AND_NL: !('\r'|'\n'|'\\')* NL;

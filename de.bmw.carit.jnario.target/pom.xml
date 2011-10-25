@@ -6,14 +6,14 @@ xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLS
 
 <groupId>de.bmw.carit.jnario</groupId>
 <artifactId>de.bmw.carit.jnario.target</artifactId>
-<version>0.0.1-SNAPSHOT</version>
+<version>0.1.0-SNAPSHOT</version>
 <packaging>pom</packaging>
 <name>jnario Target Definition</name>
 
 <parent>
 	<artifactId>jnario</artifactId>
 	<groupId>de.bmw.carit.jnario</groupId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1.0-SNAPSHOT</version>
 </parent>
 
 <build>

@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link de.bmw.carit.jnario.jnario.Jnario#getPackage <em>Package</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.jnario.Jnario#getImports <em>Imports</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.jnario.Jnario#getName <em>Name</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.jnario.Jnario#getBackground <em>Background</em>}</li>
@@ -32,20 +33,46 @@ import org.eclipse.emf.ecore.EObject;
 public interface Jnario extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Imports</b></em>' attribute list.
-   * The list contents are of type {@link java.lang.String}.
+   * Returns the value of the '<em><b>Package</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Imports</em>' attribute list isn't clear,
+   * If the meaning of the '<em>Package</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Imports</em>' attribute list.
-   * @see de.bmw.carit.jnario.jnario.JnarioPackage#getJnario_Imports()
-   * @model unique="false"
+   * @return the value of the '<em>Package</em>' attribute.
+   * @see #setPackage(String)
+   * @see de.bmw.carit.jnario.jnario.JnarioPackage#getJnario_Package()
+   * @model
    * @generated
    */
-  EList<String> getImports();
+  String getPackage();
+
+  /**
+   * Sets the value of the '{@link de.bmw.carit.jnario.jnario.Jnario#getPackage <em>Package</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Package</em>' attribute.
+   * @see #getPackage()
+   * @generated
+   */
+  void setPackage(String value);
+
+  /**
+   * Returns the value of the '<em><b>Imports</b></em>' containment reference list.
+   * The list contents are of type {@link de.bmw.carit.jnario.jnario.Import}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Imports</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Imports</em>' containment reference list.
+   * @see de.bmw.carit.jnario.jnario.JnarioPackage#getJnario_Imports()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Import> getImports();
 
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

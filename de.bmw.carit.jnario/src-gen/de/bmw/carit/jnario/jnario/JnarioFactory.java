@@ -36,6 +36,15 @@ public interface JnarioFactory extends EFactory
   Jnario createJnario();
 
   /**
+   * Returns a new object of class '<em>Import</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Import</em>'.
+   * @generated
+   */
+  Import createImport();
+
+  /**
    * Returns a new object of class '<em>Background</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -99,6 +108,15 @@ public interface JnarioFactory extends EFactory
   And createAnd();
 
   /**
+   * Returns a new object of class '<em>Code</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Code</em>'.
+   * @generated
+   */
+  Code createCode();
+
+  /**
    * Returns a new object of class '<em>Examples</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -106,6 +124,15 @@ public interface JnarioFactory extends EFactory
    * @generated
    */
   Examples createExamples();
+
+  /**
+   * Returns a new object of class '<em>Example Heading</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Example Heading</em>'.
+   * @generated
+   */
+  ExampleHeading createExampleHeading();
 
   /**
    * Returns a new object of class '<em>Example Row</em>'.
@@ -124,6 +151,15 @@ public interface JnarioFactory extends EFactory
    * @generated
    */
   ExampleCell createExampleCell();
+
+  /**
+   * Returns a new object of class '<em>Example Heading Cell</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Example Heading Cell</em>'.
+   * @generated
+   */
+  ExampleHeadingCell createExampleHeadingCell();
 
   /**
    * Returns the package supported by this factory.

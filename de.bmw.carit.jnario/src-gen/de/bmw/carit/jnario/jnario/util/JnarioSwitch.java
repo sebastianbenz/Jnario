@@ -13,6 +13,11 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
+import org.eclipse.xtext.common.types.JvmIdentifiableElement;
+
+import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.XVariableDeclaration;
+
 /**
  * <!-- begin-user-doc -->
  * The <b>Switch</b> for the model's inheritance hierarchy.
@@ -83,6 +88,13 @@ public class JnarioSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case JnarioPackage.IMPORT:
+      {
+        Import import_ = (Import)theEObject;
+        T result = caseImport(import_);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case JnarioPackage.BACKGROUND:
       {
         Background background = (Background)theEObject;
@@ -137,10 +149,24 @@ public class JnarioSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case JnarioPackage.CODE:
+      {
+        Code code = (Code)theEObject;
+        T result = caseCode(code);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case JnarioPackage.EXAMPLES:
       {
         Examples examples = (Examples)theEObject;
         T result = caseExamples(examples);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JnarioPackage.EXAMPLE_HEADING:
+      {
+        ExampleHeading exampleHeading = (ExampleHeading)theEObject;
+        T result = caseExampleHeading(exampleHeading);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -155,6 +181,16 @@ public class JnarioSwitch<T> extends Switch<T>
       {
         ExampleCell exampleCell = (ExampleCell)theEObject;
         T result = caseExampleCell(exampleCell);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JnarioPackage.EXAMPLE_HEADING_CELL:
+      {
+        ExampleHeadingCell exampleHeadingCell = (ExampleHeadingCell)theEObject;
+        T result = caseExampleHeadingCell(exampleHeadingCell);
+        if (result == null) result = caseXVariableDeclaration(exampleHeadingCell);
+        if (result == null) result = caseXExpression(exampleHeadingCell);
+        if (result == null) result = caseJvmIdentifiableElement(exampleHeadingCell);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -174,6 +210,22 @@ public class JnarioSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseJnario(Jnario object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Import</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Import</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseImport(Import object)
   {
     return null;
   }
@@ -291,6 +343,22 @@ public class JnarioSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Code</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Code</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCode(Code object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Examples</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -302,6 +370,22 @@ public class JnarioSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseExamples(Examples object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Example Heading</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Example Heading</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseExampleHeading(ExampleHeading object)
   {
     return null;
   }
@@ -334,6 +418,70 @@ public class JnarioSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseExampleCell(ExampleCell object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Example Heading Cell</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Example Heading Cell</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseExampleHeadingCell(ExampleHeadingCell object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>XExpression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>XExpression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseXExpression(XExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Jvm Identifiable Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Jvm Identifiable Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseJvmIdentifiableElement(JvmIdentifiableElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>XVariable Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>XVariable Declaration</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseXVariableDeclaration(XVariableDeclaration object)
   {
     return null;
   }

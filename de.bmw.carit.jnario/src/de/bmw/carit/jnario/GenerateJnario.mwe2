@@ -44,6 +44,7 @@ Workflow {
             //  platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel,
             //  platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel
             // "
+            	
             }
 
             // Serializer 2.0
@@ -59,9 +60,10 @@ Workflow {
 
             // The antlr parser generator fragment.
             fragment = parser.antlr.XtextAntlrGeneratorFragment {
-            //  options = {
-            //      backtrack = true
-            //  }
+            	options = {
+ 					classSplitting = true
+					fieldsPerClass = "1000"
+				}
             }
 
             // java-based API for validation
@@ -102,7 +104,12 @@ Workflow {
             fragment = contentAssist.JavaBasedContentAssistFragment {}
 
             // generates a more lightweight Antlr parser and lexer tailored for content assist
-            fragment = parser.antlr.XtextAntlrUiGeneratorFragment {}
+            fragment = parser.antlr.XtextAntlrUiGeneratorFragment {
+            	options = {
+ 					classSplitting = true
+					fieldsPerClass = "1000"
+				}
+            }
 
             // generates junit test support classes into Generator#pathTestProject
             fragment = junit.Junit4Fragment {}
