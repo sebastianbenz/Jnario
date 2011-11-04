@@ -72,6 +72,8 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
       case JnarioPackage.IMPORT: return createImport();
       case JnarioPackage.BACKGROUND: return createBackground();
       case JnarioPackage.SCENARIO: return createScenario();
+      case JnarioPackage.ANNOTATION: return createAnnotation();
+      case JnarioPackage.VARIABLE_DECLARATION: return createVariableDeclaration();
       case JnarioPackage.STEP: return createStep();
       case JnarioPackage.GIVEN: return createGiven();
       case JnarioPackage.WHEN: return createWhen();
@@ -82,7 +84,6 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
       case JnarioPackage.EXAMPLE_HEADING: return createExampleHeading();
       case JnarioPackage.EXAMPLE_ROW: return createExampleRow();
       case JnarioPackage.EXAMPLE_CELL: return createExampleCell();
-      case JnarioPackage.EXAMPLE_HEADING_CELL: return createExampleHeadingCell();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -130,6 +131,28 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
   {
     ScenarioImpl scenario = new ScenarioImpl();
     return scenario;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Annotation createAnnotation()
+  {
+    AnnotationImpl annotation = new AnnotationImpl();
+    return annotation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public VariableDeclaration createVariableDeclaration()
+  {
+    VariableDeclarationImpl variableDeclaration = new VariableDeclarationImpl();
+    return variableDeclaration;
   }
 
   /**
@@ -240,17 +263,6 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
   {
     ExampleCellImpl exampleCell = new ExampleCellImpl();
     return exampleCell;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ExampleHeadingCell createExampleHeadingCell()
-  {
-    ExampleHeadingCellImpl exampleHeadingCell = new ExampleHeadingCellImpl();
-    return exampleHeadingCell;
   }
 
   /**

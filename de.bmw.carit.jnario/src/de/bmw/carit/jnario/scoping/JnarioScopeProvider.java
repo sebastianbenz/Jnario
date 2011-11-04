@@ -18,7 +18,6 @@ import org.eclipse.xtext.xbase.scoping.LocalVariableScopeContext;
 import org.eclipse.xtext.xbase.scoping.XbaseScopeProvider;
 
 import de.bmw.carit.jnario.jnario.And;
-import de.bmw.carit.jnario.jnario.Examples;
 import de.bmw.carit.jnario.jnario.Given;
 import de.bmw.carit.jnario.jnario.Scenario;
 import de.bmw.carit.jnario.jnario.Then;
@@ -32,7 +31,7 @@ import de.bmw.carit.jnario.jnario.When;
  *
  */
 public class JnarioScopeProvider extends XbaseScopeProvider {
-	
+
 
 	@Override
 	protected IScope createLocalVarScope(IScope parentScope,
@@ -64,10 +63,11 @@ public class JnarioScopeProvider extends XbaseScopeProvider {
 
 	private IScope stepScope(IScope parentScope,
 			LocalVariableScopeContext scopeContext) {
+
 		EObject context = scopeContext.getContext();
 		Scenario scenario = getContainerOfType(context, Scenario.class);
-		Iterator<EObject> allElementsInResource = scenario.eResource().getAllContents();
-		Iterator<XVariableDeclaration> allVariables = filter(allElementsInResource, XVariableDeclaration.class);
+		Iterator<EObject> eAllContents = scenario.eAllContents();
+		Iterator<XVariableDeclaration> allVariables = filter(eAllContents, XVariableDeclaration.class);
 		return scopeFor(newArrayList(allVariables));
 	}
 }

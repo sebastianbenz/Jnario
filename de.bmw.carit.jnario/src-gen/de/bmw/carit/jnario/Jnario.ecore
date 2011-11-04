@@ -6,14 +6,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="Jnario">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="package" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
-        eType="ecore:EClass platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Import"
-        containment="true"/>
+        eType="#//Import" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="background" eType="ecore:EClass platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Background"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="background" eType="#//Background"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" upperBound="-1"
-        eType="ecore:EClass platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Scenario"
-        containment="true"/>
+        eType="#//Scenario" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Import">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="static" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -22,54 +20,61 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Background">
     <eStructuralFeatures xsi:type="ecore:EReference" name="steps" upperBound="-1"
-        eType="ecore:EClass platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Given"
-        containment="true"/>
+        eType="#//Given" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Scenario">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="annotations" upperBound="-1"
+        eType="#//Annotation" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="steps" upperBound="-1"
-        eType="ecore:EClass platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Step"
-        containment="true"/>
+        eType="#//Step" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="examples" upperBound="-1"
-        eType="ecore:EClass platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Examples"
+        eType="#//Examples" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Annotation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="annotation" eType="ecore:EClass ../../../../../../org.eclipse.xtext.xbase/model/XAnnotations.ecore#//XAnnotation"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="var" eType="#//VariableDeclaration"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VariableDeclaration">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variableDec" eType="ecore:EClass ../../../../../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Step">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="code" eType="ecore:EClass platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Code"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="code" eType="#//Code" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Given" eSuperTypes="platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Step"/>
-  <eClassifiers xsi:type="ecore:EClass" name="When" eSuperTypes="platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Step"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Then" eSuperTypes="platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Step"/>
-  <eClassifiers xsi:type="ecore:EClass" name="And" eSuperTypes="platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Background platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//Step"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Given" eSuperTypes="#//Step"/>
+  <eClassifiers xsi:type="ecore:EClass" name="When" eSuperTypes="#//Step"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Then" eSuperTypes="#//Step"/>
+  <eClassifiers xsi:type="ecore:EClass" name="And" eSuperTypes="#//Background #//Step"/>
   <eClassifiers xsi:type="ecore:EClass" name="Code">
     <eStructuralFeatures xsi:type="ecore:EReference" name="annotations" upperBound="-1"
-        eType="ecore:EClass platform:/resource/org.eclipse.xtext.xbase/model/XAnnotations.ecore#//XAnnotation"
+        eType="ecore:EClass ../../../../../../org.eclipse.xtext.xbase/model/XAnnotations.ecore#//XAnnotation"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="blockExpression" eType="ecore:EClass platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore#//XBlockExpression"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="blockExpression" eType="ecore:EClass ../../../../../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XBlockExpression"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Examples">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="heading" eType="ecore:EClass platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//ExampleHeading"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="heading" eType="#//ExampleHeading"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rows" upperBound="-1" eType="ecore:EClass platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//ExampleRow"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rows" upperBound="-1" eType="#//ExampleRow"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExampleHeading">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parts" upperBound="-1"
-        eType="ecore:EClass platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore#//XVariableDeclaration"
+        eType="ecore:EClass ../../../../../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XVariableDeclaration"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExampleRow">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parts" upperBound="-1"
-        eType="ecore:EClass platform:/resource/de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/Jnario.ecore#//ExampleCell"
-        containment="true"/>
+        eType="#//ExampleCell" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExampleCell">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="ecore:EClass platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="ecore:EClass ../../../../../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ExampleHeadingCell" eSuperTypes="platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore#//XVariableDeclaration"/>
 </ecore:EPackage>

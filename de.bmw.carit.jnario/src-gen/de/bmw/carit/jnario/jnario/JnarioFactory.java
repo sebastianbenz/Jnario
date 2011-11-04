@@ -63,6 +63,24 @@ public interface JnarioFactory extends EFactory
   Scenario createScenario();
 
   /**
+   * Returns a new object of class '<em>Annotation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Annotation</em>'.
+   * @generated
+   */
+  Annotation createAnnotation();
+
+  /**
+   * Returns a new object of class '<em>Variable Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Variable Declaration</em>'.
+   * @generated
+   */
+  VariableDeclaration createVariableDeclaration();
+
+  /**
    * Returns a new object of class '<em>Step</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -151,15 +169,6 @@ public interface JnarioFactory extends EFactory
    * @generated
    */
   ExampleCell createExampleCell();
-
-  /**
-   * Returns a new object of class '<em>Example Heading Cell</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Example Heading Cell</em>'.
-   * @generated
-   */
-  ExampleHeadingCell createExampleHeadingCell();
 
   /**
    * Returns the package supported by this factory.

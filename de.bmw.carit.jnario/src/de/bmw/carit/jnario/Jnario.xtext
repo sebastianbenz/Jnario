@@ -27,8 +27,18 @@ Background:
 
 Scenario:
 	name=SCENARIO_TEXT
+	annotations+=Annotation*
 	steps+=Step*
 	examples+=Examples*
+;
+
+Annotation:
+	annotation=XAnnotation
+	var = VariableDeclaration?
+;
+
+VariableDeclaration:
+	visibility=VISIBILITY variableDec=XVariableDeclaration
 ; 
 
 Step:
@@ -72,7 +82,7 @@ ExampleHeading:
 ;
 
 ExampleHeadingCell returns xbase::XVariableDeclaration:
-	{ExampleHeadingCell} '|' name=ValidID
+	'|' name=ValidID
 ;
 
 ExampleRow:
@@ -92,6 +102,7 @@ terminal THEN_TEXT: 'Then ' MNL;
 terminal AND_TEXT: 'And ' MNL;
 terminal EXAMPLE_TEXT: 'Examples' COLON MNL;
 terminal EXAMPLE_ROW_END: '|' SPACES NL;
+terminal VISIBILITY: 'private' | 'public' | 'protected';
 
 terminal fragment TEXT_MULTI_LINE: !('\r'|'\n')* '\\' NL;
 terminal fragment TEXT_AND_NL: !('\r'|'\n'|'\\')* NL;

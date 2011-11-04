@@ -13,14 +13,11 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.TypesFactory;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
-import org.eclipse.xtext.xbase.annotations.compiler.AnnotationCompiler;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 import org.eclipse.xtext.xbase.compiler.IAppendable;
 import org.eclipse.xtext.xbase.compiler.ImportManager;
 import org.eclipse.xtext.xbase.compiler.StringBuilderBasedAppendable;
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
-
-import com.google.inject.Inject;
 
 import de.bmw.carit.jnario.jnario.Background;
 import de.bmw.carit.jnario.jnario.Code;
@@ -33,13 +30,12 @@ import de.bmw.carit.jnario.jnario.Step;
  */
 public class JnarioCompiler extends XbaseCompiler {
 	
-	@Inject
-	private AnnotationCompiler annotationCompiler;
-
-	public String compileScenario(Scenario scenario, ImportManager importManager) {
+	public String compileScenario(Scenario scenario, ImportManager importManager, boolean withTestAnnotation) {
 		IAppendable appendable = new StringBuilderBasedAppendable(importManager);
 		
-		appendable.append("@Test\n");
+		if(withTestAnnotation){
+			appendable.append("@Test\n");
+		}
 		appendable.append("public void ");
 		String methodName = extractMethodName(scenario.getName());
 		appendable.append(methodName);
@@ -95,7 +91,7 @@ public class JnarioCompiler extends XbaseCompiler {
 	protected void generateStep(Step step, IAppendable appendable){
 		Code code = step.getCode();
 			for(XAnnotation annotation: code.getAnnotations()){
-				annotationCompiler.generate(annotation, appendable);
+				//annotationCompiler.generate(annotation, appendable);
 			}
 			XBlockExpression expression = code.getBlockExpression();
 			if(expression != null){

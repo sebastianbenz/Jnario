@@ -6,6 +6,7 @@
  */
 package de.bmw.carit.jnario.jnario.impl;
 
+import de.bmw.carit.jnario.jnario.Annotation;
 import de.bmw.carit.jnario.jnario.Examples;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
 import de.bmw.carit.jnario.jnario.Scenario;
@@ -35,6 +36,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.bmw.carit.jnario.jnario.impl.ScenarioImpl#getName <em>Name</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.jnario.impl.ScenarioImpl#getAnnotations <em>Annotations</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.jnario.impl.ScenarioImpl#getSteps <em>Steps</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.jnario.impl.ScenarioImpl#getExamples <em>Examples</em>}</li>
  * </ul>
@@ -63,6 +65,16 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getAnnotations() <em>Annotations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAnnotations()
+   * @generated
+   * @ordered
+   */
+  protected EList<Annotation> annotations;
 
   /**
    * The cached value of the '{@link #getSteps() <em>Steps</em>}' containment reference list.
@@ -133,6 +145,20 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<Annotation> getAnnotations()
+  {
+    if (annotations == null)
+    {
+      annotations = new EObjectContainmentEList<Annotation>(Annotation.class, this, JnarioPackage.SCENARIO__ANNOTATIONS);
+    }
+    return annotations;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<Step> getSteps()
   {
     if (steps == null)
@@ -166,6 +192,8 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
   {
     switch (featureID)
     {
+      case JnarioPackage.SCENARIO__ANNOTATIONS:
+        return ((InternalEList<?>)getAnnotations()).basicRemove(otherEnd, msgs);
       case JnarioPackage.SCENARIO__STEPS:
         return ((InternalEList<?>)getSteps()).basicRemove(otherEnd, msgs);
       case JnarioPackage.SCENARIO__EXAMPLES:
@@ -186,6 +214,8 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
     {
       case JnarioPackage.SCENARIO__NAME:
         return getName();
+      case JnarioPackage.SCENARIO__ANNOTATIONS:
+        return getAnnotations();
       case JnarioPackage.SCENARIO__STEPS:
         return getSteps();
       case JnarioPackage.SCENARIO__EXAMPLES:
@@ -207,6 +237,10 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
     {
       case JnarioPackage.SCENARIO__NAME:
         setName((String)newValue);
+        return;
+      case JnarioPackage.SCENARIO__ANNOTATIONS:
+        getAnnotations().clear();
+        getAnnotations().addAll((Collection<? extends Annotation>)newValue);
         return;
       case JnarioPackage.SCENARIO__STEPS:
         getSteps().clear();
@@ -233,6 +267,9 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
       case JnarioPackage.SCENARIO__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case JnarioPackage.SCENARIO__ANNOTATIONS:
+        getAnnotations().clear();
+        return;
       case JnarioPackage.SCENARIO__STEPS:
         getSteps().clear();
         return;
@@ -255,6 +292,8 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
     {
       case JnarioPackage.SCENARIO__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case JnarioPackage.SCENARIO__ANNOTATIONS:
+        return annotations != null && !annotations.isEmpty();
       case JnarioPackage.SCENARIO__STEPS:
         return steps != null && !steps.isEmpty();
       case JnarioPackage.SCENARIO__EXAMPLES:

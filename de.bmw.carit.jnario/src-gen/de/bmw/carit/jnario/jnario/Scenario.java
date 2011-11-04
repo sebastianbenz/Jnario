@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link de.bmw.carit.jnario.jnario.Scenario#getName <em>Name</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.jnario.Scenario#getAnnotations <em>Annotations</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.jnario.Scenario#getSteps <em>Steps</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.jnario.Scenario#getExamples <em>Examples</em>}</li>
  * </ul>
@@ -55,6 +56,22 @@ public interface Scenario extends EObject
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Annotations</b></em>' containment reference list.
+   * The list contents are of type {@link de.bmw.carit.jnario.jnario.Annotation}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Annotations</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Annotations</em>' containment reference list.
+   * @see de.bmw.carit.jnario.jnario.JnarioPackage#getScenario_Annotations()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Annotation> getAnnotations();
 
   /**
    * Returns the value of the '<em><b>Steps</b></em>' containment reference list.

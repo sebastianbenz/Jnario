@@ -23,14 +23,7 @@ public class HighlightingConfiguration extends DefaultHighlightingConfiguration 
 	public static final String STEP_TEXT_ID = "Step_Text";
 
 	public void configure(IHighlightingConfigurationAcceptor acceptor) {
-		acceptor.acceptDefaultHighlighting(COMMENT_ID, "Comment",
-				commentTextStyle());
-		acceptor.acceptDefaultHighlighting(NUMBER_ID, "Number",
-				numberTextStyle());
-		acceptor.acceptDefaultHighlighting(DEFAULT_ID, "Default",
-				defaultTextStyle());
-		acceptor.acceptDefaultHighlighting(INVALID_TOKEN_ID, "Invalid Symbol",
-				errorTextStyle());
+		super.configure(acceptor);
 		acceptor.acceptDefaultHighlighting(SCENARIO_ID, "Scenario",
 				scenarioTextStyle());
 		acceptor.acceptDefaultHighlighting(FEATURE_ID, "Feature",
@@ -41,8 +34,6 @@ public class HighlightingConfiguration extends DefaultHighlightingConfiguration 
 		acceptor.acceptDefaultHighlighting(CODE_ID, "Code", codeTextStyle());
 		acceptor.acceptDefaultHighlighting(CODE_BOLD_ID, "Code Bold",
 				codeBoldTextStyle());
-		acceptor.acceptDefaultHighlighting(KEYWORD_ID, "Keyword",
-				keywordTextStyle());
 	}
 
 	private TextStyle tagTextStyle() {
@@ -69,27 +60,27 @@ public class HighlightingConfiguration extends DefaultHighlightingConfiguration 
 
 	public TextStyle scenarioTextStyle() {
 		TextStyle textStyle = defaultTextStyle().copy();
-		textStyle.setColor(new RGB(25, 150, 0));
+		textStyle.setColor(new RGB(7, 104, 0));
 		textStyle.setFontData(fontWithHeight(DEFAULT_FONT_SIZE + 1, SWT.BOLD));
 		return textStyle;
 	}
 
 	public TextStyle featureTextStyle() {
 		TextStyle textStyle = defaultTextStyle().copy();
-		textStyle.setColor(new RGB(25, 150, 0));
+		textStyle.setColor(new RGB(7, 104, 0));
 		textStyle.setFontData(fontWithHeight(DEFAULT_FONT_SIZE + 2, SWT.BOLD));
 		return textStyle;
 	}
 	
 	public TextStyle stepKeyWordStyle() {
 		TextStyle textStyle = defaultTextStyle().copy();
-		textStyle.setColor(new RGB(244, 121, 0));
+		textStyle.setColor(new RGB(200, 110, 0));
 		return textStyle;
 	}
 	
 	public TextStyle stepTextStyle() {
 		TextStyle textStyle = defaultTextStyle().copy();
-		textStyle.setColor(new RGB(244, 121, 0));
+		textStyle.setColor(new RGB(200, 110, 0));
 		return textStyle;
 	}
 

@@ -4,9 +4,15 @@
 package de.bmw.carit.jnario.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.ui.editor.XtextEditor;
+import org.eclipse.xtext.ui.editor.model.ITokenTypeToPartitionTypeMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 
+import com.google.inject.Binder;
+
+import de.bmw.carit.jnario.ui.editor.JnarioEditor;
+import de.bmw.carit.jnario.ui.editor.TaskTokenTypeToPartitionTypeMapper;
 import de.bmw.carit.jnario.ui.highlighting.SemanticHighlightingCalculator;
 import de.bmw.carit.jnario.ui.highlighting.HighlightingConfiguration;
 import de.bmw.carit.jnario.ui.highlighting.TokenHighlighting;
@@ -19,6 +25,12 @@ public class JnarioUiModule extends de.bmw.carit.jnario.ui.AbstractJnarioUiModul
 		super(plugin);
 	}
 	
+	@Override
+	public void configure(Binder binder) {
+		super.configure(binder);
+		binder.bind(XtextEditor.class).to(JnarioEditor.class);
+	}
+	
 	public Class<? extends org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator() {
 		return SemanticHighlightingCalculator.class;
 	}
@@ -29,5 +41,9 @@ public class JnarioUiModule extends de.bmw.carit.jnario.ui.AbstractJnarioUiModul
 	
 	public Class<? extends AbstractAntlrTokenToAttributeIdMapper> bindAbstractAntlrTokenToAttributeIdMapper() {
 		return TokenHighlighting.class;
+	}
+	
+	public Class<? extends ITokenTypeToPartitionTypeMapper> bindITokenTypeToPartitionTypeMapper() {
+		return TaskTokenTypeToPartitionTypeMapper.class;
 	}
 }

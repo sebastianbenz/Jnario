@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.generator.AbstractFileSystemAccess;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.xbase.XExpression;
@@ -35,7 +36,6 @@ import org.eclipse.xtext.xtend2.lib.StringConcatenation;
 
 @SuppressWarnings("all")
 public class JnarioGenerator implements IGenerator {
-  
   @Inject
   private JnarioCompiler jnarioCompiler;
   
@@ -52,21 +52,40 @@ public class JnarioGenerator implements IGenerator {
         EList<Scenario> _scenarios = feature.getScenarios();
         for (final Scenario scenario : _scenarios) {
           {
+            if ((fsa instanceof AbstractFileSystemAccess)) {
+              {
+                String _package = feature.getPackage();
+                String packageName = _package;
+                boolean _operator_notEquals = ObjectExtensions.operator_notEquals(packageName, null);
+                if (_operator_notEquals) {
+                  {
+                    String _replace = packageName.replace(".", "/");
+                    packageName = _replace;
+                    String _operator_plus = StringExtensions.operator_plus("src-gen/", packageName);
+                    ((AbstractFileSystemAccess) fsa).setOutputPath(_operator_plus);
+                  }
+                }
+              }
+            }
             String _name_1 = feature.getName();
             String _name_2 = scenario.getName();
             String _generateClassName = this.generateClassName(_name_1, _name_2);
             String className = _generateClassName;
-            String _operator_plus = StringExtensions.operator_plus(className, ".java");
-            StringConcatenation _compileScenario = this.compileScenario(feature, scenario, className);
-            fsa.generateFile(_operator_plus, _compileScenario);
+            boolean withTestAnnotation = true;
             EList<Examples> _examples = scenario.getExamples();
             boolean _isEmpty = _examples.isEmpty();
             boolean _operator_not = BooleanExtensions.operator_not(_isEmpty);
             if (_operator_not) {
-              String _operator_plus_1 = StringExtensions.operator_plus(className, "Examples.java");
-              String _generateExampleContent = this.generateExampleContent(scenario, className);
-              fsa.generateFile(_operator_plus_1, _generateExampleContent);
+              {
+                String _operator_plus_1 = StringExtensions.operator_plus(className, "Examples.java");
+                String _generateExampleContent = this.generateExampleContent(scenario, className);
+                fsa.generateFile(_operator_plus_1, _generateExampleContent);
+                withTestAnnotation = false;
+              }
             }
+            String _operator_plus_2 = StringExtensions.operator_plus(className, ".java");
+            StringConcatenation _compileScenario = this.compileScenario(feature, scenario, className, withTestAnnotation);
+            fsa.generateFile(_operator_plus_2, _compileScenario);
           }
         }
       }
@@ -107,7 +126,7 @@ public class JnarioGenerator implements IGenerator {
     return _xblockexpression;
   }
   
-  public StringConcatenation compileScenario(final Jnario feature, final Scenario scenario, final String className) {
+  public StringConcatenation compileScenario(final Jnario feature, final Scenario scenario, final String className, final boolean withTestAnnotation) {
     StringConcatenation _xblockexpression = null;
     {
       ImportManager _importManager = new ImportManager(true);
@@ -120,7 +139,7 @@ public class JnarioGenerator implements IGenerator {
         String _compileBackground = this.compileBackground(_background_1, importManager);
         backgroundContent = _compileBackground;
       }
-      String _compileScenario = this.jnarioCompiler.compileScenario(scenario, importManager);
+      String _compileScenario = this.jnarioCompiler.compileScenario(scenario, importManager, withTestAnnotation);
       String scenarioContent = _compileScenario;
       String _operator_plus = StringExtensions.operator_plus(backgroundContent, scenarioContent);
       String classContent = _operator_plus;
@@ -133,37 +152,49 @@ public class JnarioGenerator implements IGenerator {
       }
       String _package = feature.getPackage();
       String packageName = _package;
-      StringConcatenation _compileClass = this.compileClass(classContent, className, importManager, packageName);
+      boolean _operator_notEquals_1 = ObjectExtensions.operator_notEquals(packageName, null);
+      if (_operator_notEquals_1) {
+        String _operator_plus_1 = StringExtensions.operator_plus("package ", packageName);
+        String _operator_plus_2 = StringExtensions.operator_plus(_operator_plus_1, ";");
+        packageName = _operator_plus_2;
+      }
+      StringConcatenation _compileClass = this.compileClass(classContent, className, importManager, packageName, withTestAnnotation);
       _xblockexpression = (_compileClass);
     }
     return _xblockexpression;
   }
   
-  public StringConcatenation compileClass(final String classContent, final String className, final ImportManager importManager, final String packageName) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("package ");
-    _builder.append(packageName, "");
-    _builder.append(";");
-    _builder.newLineIfNotEmpty();
-    _builder.newLine();
-    _builder.append("import org.junit.Test;");
-    _builder.newLine();
-    _builder.append("\t");
-    StringConcatenation _compileImports = this.compileImports(importManager);
-    _builder.append(_compileImports, "	");
-    _builder.newLineIfNotEmpty();
-    _builder.append("public class ");
-    _builder.append(className, "");
-    _builder.append("{");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append(classContent, "	");
-    _builder.newLineIfNotEmpty();
-    _builder.append("}");
-    _builder.newLine();
-    return _builder;
+  public StringConcatenation compileClass(final String classContent, final String className, final ImportManager importManager, final String packageName, final boolean withTestAnnotation) {
+    StringConcatenation _xblockexpression = null;
+    {
+      StringConcatenation _compileImports = this.compileImports(importManager);
+      String _string = _compileImports.toString();
+      String imports = _string;
+      if (withTestAnnotation) {
+        String _operator_plus = StringExtensions.operator_plus("import org.junit.Test;\n", imports);
+        imports = _operator_plus;
+      }
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append(packageName, "");
+      _builder.newLineIfNotEmpty();
+      _builder.newLine();
+      _builder.append(imports, "");
+      _builder.newLineIfNotEmpty();
+      _builder.newLine();
+      _builder.append("public class ");
+      _builder.append(className, "");
+      _builder.append("{");
+      _builder.newLineIfNotEmpty();
+      _builder.append("\t");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append(classContent, "	");
+      _builder.newLineIfNotEmpty();
+      _builder.append("}");
+      _builder.newLine();
+      _xblockexpression = (_builder);
+    }
+    return _xblockexpression;
   }
   
   public StringConcatenation compileImports(final ImportManager importManager) {

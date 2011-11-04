@@ -22,6 +22,7 @@ import static extension org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
 import org.eclipse.xtext.xtend2.lib.StringConcatenation
 import org.eclipse.xtext.xbase.compiler.IAppendable
 import org.eclipse.xtext.xbase.compiler.StringBuilderBasedAppendable
+import org.eclipse.xtext.generator.AbstractFileSystemAccess
 
 
 class JnarioGenerator implements IGenerator {
@@ -37,11 +38,23 @@ class JnarioGenerator implements IGenerator {
 		for(feature: resource.allContentsIterable.filter(typeof(Jnario))) {			
 			var featureName = feature.name
 			for(scenario: feature.scenarios){
+				if(fsa instanceof AbstractFileSystemAccess){
+					var packageName = feature.^package
+					if(packageName != null){
+						packageName = packageName.replace('.','/')
+						(fsa as AbstractFileSystemAccess).setOutputPath("src-gen/"+packageName)
+						
+					}
+				}
+				
 				var className = generateClassName(feature.name, scenario.name)
-					fsa.generateFile(className + ".java", feature.compileScenario(scenario, className))
+				var withTestAnnotation = true;
 				if(!scenario.examples.empty){
 					fsa.generateFile(className + "Examples.java", scenario.generateExampleContent(className))
+					withTestAnnotation = false;
 				}
+				fsa.generateFile(className + ".java", feature.compileScenario(scenario, className, withTestAnnotation))
+
 			}
 		}
 	}
@@ -60,34 +73,43 @@ class JnarioGenerator implements IGenerator {
 		className = className.replaceAll("[^A-Za-z0-9_]","")
 	}
 	
-	def compileScenario(Jnario feature, Scenario scenario, String className){
+	def compileScenario(Jnario feature, Scenario scenario, String className, boolean withTestAnnotation){
 		
 		val importManager = new ImportManager(true)
 		var backgroundContent = ""
 		if(feature.background != null){
 			backgroundContent = compileBackground(feature.background, importManager)
 		}
-		var scenarioContent = jnarioCompiler.compileScenario(scenario, importManager)
+		var scenarioContent = jnarioCompiler.compileScenario(scenario, importManager, withTestAnnotation)
 		var classContent = backgroundContent + scenarioContent
 		
 		if(!scenario.examples.empty){
 			classContent = compileExampleMain(scenario, className, classContent)
 		}
-		var packageName = feature.^package
-		compileClass(classContent, className, importManager, packageName)
+		var String packageName = feature.^package
+		if(packageName != null){
+			packageName = "package " + packageName + ";"
+		}
+		compileClass(classContent, className, importManager, packageName, withTestAnnotation)
 	}
 	
-	def compileClass(String classContent, String className, ImportManager importManager, String packageName)
-		'''
-		package «packageName»;
+	def compileClass(String classContent, String className, ImportManager importManager, String packageName, boolean withTestAnnotation){
+		var imports = compileImports(importManager).toString
+		if(withTestAnnotation){
+			imports = "import org.junit.Test;\n" + imports
+		}
 		
-		import org.junit.Test;
-			«compileImports(importManager)»
+		'''
+		«packageName»
+		
+		«imports»
+		
 		public class «className»{
 			
 			«classContent»
 		}
 		'''
+	}
 	
 	def compileImports(ImportManager importManager)
 		'''

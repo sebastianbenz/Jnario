@@ -1,22 +1,24 @@
 package de.bmw.carit.jnario.jvmmodel;
 
 import com.google.inject.Inject;
-import java.util.ArrayList;
-import java.util.List;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.common.types.JvmDeclaredType;
-import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator;
-import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
-import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.naming.IQualifiedNameProvider;
+import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer;
+import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 
+/**
+ * <p>Infers a JVM model from the source model.</p>
+ * 
+ * <p>The JVM model should contain all elements that would appear in the Java code
+ * which is generated from the source model. Other models link against the JVM model rather than the source model.</p>
+ */
 @SuppressWarnings("all")
-public class JnarioJvmModelInferrer implements IJvmModelInferrer {
+public class JnarioJvmModelInferrer extends AbstractModelInferrer {
+  /**
+   * conveninence API to build and initialize JvmTypes and their members.
+   */
+  @Inject
+  private JvmTypesBuilder _jvmTypesBuilder;
   
   @Inject
-  private IJvmModelAssociator jvmModelAssociator;
-  
-  public List<? extends JvmDeclaredType> inferJvmModel(final EObject sourceObject) {
-    ArrayList<JvmDeclaredType> _newArrayList = CollectionLiterals.<JvmDeclaredType>newArrayList();
-    return _newArrayList;
-  }
+  private IQualifiedNameProvider _iQualifiedNameProvider;
 }

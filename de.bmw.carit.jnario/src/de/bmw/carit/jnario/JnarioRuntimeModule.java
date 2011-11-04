@@ -3,7 +3,12 @@
  */
 package de.bmw.carit.jnario;
 
+import org.eclipse.xtext.generator.IGenerator;
+import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
+
+import de.bmw.carit.jnario.generator.JnarioGenerator;
+import de.bmw.carit.jnario.scoping.JnarioScopeProvider;
 import de.bmw.carit.jnario.typing.JnarioTypeProvider;
 
 /**
@@ -14,5 +19,15 @@ public class JnarioRuntimeModule extends de.bmw.carit.jnario.AbstractJnarioRunti
 	@Override
 	public Class<? extends ITypeProvider> bindITypeProvider() {
 		return JnarioTypeProvider.class;
+	}
+	
+	@Override
+	public Class<? extends IScopeProvider> bindIScopeProvider() {
+		return JnarioScopeProvider.class;
+	}
+	
+	@Override
+	public Class<? extends IGenerator> bindIGenerator() {
+		return JnarioGenerator.class;
 	}
 }

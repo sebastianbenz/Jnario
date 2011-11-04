@@ -15,11 +15,6 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.eclipse.xtext.common.types.JvmIdentifiableElement;
-
-import org.eclipse.xtext.xbase.XExpression;
-import org.eclipse.xtext.xbase.XVariableDeclaration;
-
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
@@ -104,6 +99,16 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
         return createScenarioAdapter();
       }
       @Override
+      public Adapter caseAnnotation(Annotation object)
+      {
+        return createAnnotationAdapter();
+      }
+      @Override
+      public Adapter caseVariableDeclaration(VariableDeclaration object)
+      {
+        return createVariableDeclarationAdapter();
+      }
+      @Override
       public Adapter caseStep(Step object)
       {
         return createStepAdapter();
@@ -152,26 +157,6 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
       public Adapter caseExampleCell(ExampleCell object)
       {
         return createExampleCellAdapter();
-      }
-      @Override
-      public Adapter caseExampleHeadingCell(ExampleHeadingCell object)
-      {
-        return createExampleHeadingCellAdapter();
-      }
-      @Override
-      public Adapter caseXExpression(XExpression object)
-      {
-        return createXExpressionAdapter();
-      }
-      @Override
-      public Adapter caseJvmIdentifiableElement(JvmIdentifiableElement object)
-      {
-        return createJvmIdentifiableElementAdapter();
-      }
-      @Override
-      public Adapter caseXVariableDeclaration(XVariableDeclaration object)
-      {
-        return createXVariableDeclarationAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -251,6 +236,36 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createScenarioAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.Annotation <em>Annotation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.bmw.carit.jnario.jnario.Annotation
+   * @generated
+   */
+  public Adapter createAnnotationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.VariableDeclaration <em>Variable Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.bmw.carit.jnario.jnario.VariableDeclaration
+   * @generated
+   */
+  public Adapter createVariableDeclarationAdapter()
   {
     return null;
   }
@@ -401,66 +416,6 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createExampleCellAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.ExampleHeadingCell <em>Example Heading Cell</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.bmw.carit.jnario.jnario.ExampleHeadingCell
-   * @generated
-   */
-  public Adapter createExampleHeadingCellAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.xbase.XExpression <em>XExpression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.xtext.xbase.XExpression
-   * @generated
-   */
-  public Adapter createXExpressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.common.types.JvmIdentifiableElement <em>Jvm Identifiable Element</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.xtext.common.types.JvmIdentifiableElement
-   * @generated
-   */
-  public Adapter createJvmIdentifiableElementAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.xbase.XVariableDeclaration <em>XVariable Declaration</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.xtext.xbase.XVariableDeclaration
-   * @generated
-   */
-  public Adapter createXVariableDeclarationAdapter()
   {
     return null;
   }
