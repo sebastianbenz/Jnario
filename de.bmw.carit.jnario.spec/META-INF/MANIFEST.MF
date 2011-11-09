@@ -1,0 +1,35 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: de.bmw.carit.jnario.spec
+Bundle-Vendor: BMW Car IT
+Bundle-Version: 0.1.0.qualifier
+Bundle-SymbolicName: de.bmw.carit.jnario.spec; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext;bundle-version="2.1.0";visibility:=reexport,
+ org.eclipse.xtext.xbase;bundle-version="2.1.0";resolution:=optional;visibility:=reexport,
+ org.apache.log4j;bundle-version="1.2.15";visibility:=reexport,
+ org.apache.commons.logging;bundle-version="1.0.4";resolution:=optional;visibility:=reexport,
+ org.eclipse.xtext.generator;resolution:=optional,
+ org.eclipse.emf.codegen.ecore;resolution:=optional,
+ org.eclipse.emf.mwe.utils;resolution:=optional,
+ org.eclipse.emf.mwe2.launch;resolution:=optional,
+ org.eclipse.xtext.util,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.common,
+ org.antlr.runtime,
+ org.eclipse.xtext.common.types,
+ org.eclipse.xtext.xtend2.lib
+Import-Package: org.apache.log4j,
+ org.apache.commons.logging
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: de.bmw.carit.jnario.spec,
+ de.bmw.carit.jnario.spec.services,
+ de.bmw.carit.jnario.spec.spec,
+ de.bmw.carit.jnario.spec.spec.impl,
+ de.bmw.carit.jnario.spec.spec.util,
+ de.bmw.carit.jnario.spec.serializer,
+ de.bmw.carit.jnario.spec.parser.antlr,
+ de.bmw.carit.jnario.spec.parser.antlr.internal,
+ de.bmw.carit.jnario.spec.validation,
+ de.bmw.carit.jnario.spec.formatting,
+ de.bmw.carit.jnario.spec.jvmmodel
