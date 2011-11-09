@@ -1,7 +1,10 @@
 package de.bmw.carit.jnario.ui.editor;
 
+import java.util.HashSet;
+
 import org.eclipse.xtext.ui.editor.model.TerminalsTokenTypeToPartitionMapper;
 
+import com.google.common.collect.Sets;
 import com.google.inject.Singleton;
 
 @Singleton
@@ -15,7 +18,17 @@ public class TaskTokenTypeToPartitionTypeMapper extends TerminalsTokenTypeToPart
 
 	@Override
 	protected String calculateId(String tokenName, int tokenType) {
-		if ("RULE_CODE".equals(tokenName)) {
+		HashSet<String> noCodeTokens = Sets.newHashSet(
+				"RULE_SCENARIO_TEXT", 
+				"RULE_FEATURE_TEXT",
+				"RULE_GIVEN_TEXT",
+				"RULE_WHEN_TEXT",
+				"RULE_THEN_TEXT",
+				"RULE_AND_TEXT",
+				"RULE_BACKGROUND_TEXT",
+				"RULE_EXAMPLE_TEXT",
+				"RULE_ANY_OTHER");
+		if(!noCodeTokens.contains(tokenName)){
 			return CODE_PARTITION;
 		}
 		return super.calculateId(tokenName, tokenType);

@@ -13,9 +13,9 @@ Workflow {
     bean = StandaloneSetup {
         scanClassPath = true
         platformUri = "${runtimeProject}/.."
+        // The following two lines ca be removed, if Xbase is not used.
         registerGeneratedEPackage = "org.eclipse.xtext.xbase.XbasePackage"
         registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
-		registerGenModelFile = "platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel"
     }
 
     component = DirectoryCleaner {
@@ -45,11 +45,12 @@ Workflow {
             //  platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel,
             //  platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel
             // "
-            	
             }
 
             // Serializer 2.0
-            fragment = serializer.SerializerFragment {}
+            fragment = serializer.SerializerFragment {
+            	generateStub = false
+            }
             
             // the serialization component (1.0)
             // fragment = parseTreeConstructor.ParseTreeConstructorFragment {}
@@ -61,16 +62,15 @@ Workflow {
 
             // The antlr parser generator fragment.
             fragment = parser.antlr.XtextAntlrGeneratorFragment {
-            	options = {
- 					classSplitting = true
-					fieldsPerClass = "1000"
-				}
+            //  options = {
+            //      backtrack = true
+            //  }
             }
 
             // java-based API for validation
             fragment = validation.JavaValidatorFragment {
-                composedCheck = "org.eclipse.xtext.validation.ImportUriValidator"
-                composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
+            //    composedCheck = "org.eclipse.xtext.validation.ImportUriValidator"
+            //    composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
             }
 
             // scoping and exporting API
@@ -84,8 +84,8 @@ Workflow {
 
             // generator API
             fragment = generator.GeneratorFragment {
-                generateMwe = true
-                generateJavaMain = true
+                generateMwe = false
+                generateJavaMain = false
             }
 
             // formatter API
@@ -105,12 +105,7 @@ Workflow {
             fragment = contentAssist.JavaBasedContentAssistFragment {}
 
             // generates a more lightweight Antlr parser and lexer tailored for content assist
-            fragment = parser.antlr.XtextAntlrUiGeneratorFragment {
-            	options = {
- 					classSplitting = true
-					fieldsPerClass = "1000"
-				}
-            }
+            fragment = parser.antlr.XtextAntlrUiGeneratorFragment {}
 
             // generates junit test support classes into Generator#pathTestProject
             fragment = junit.Junit4Fragment {}

@@ -24,7 +24,6 @@ Import-Package: org.apache.commons.logging,
  org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: de.bmw.carit.jnario,
- de.bmw.carit.jnario.generator,
  de.bmw.carit.jnario.jnario,
  de.bmw.carit.jnario.jnario.impl,
  de.bmw.carit.jnario.jnario.util,

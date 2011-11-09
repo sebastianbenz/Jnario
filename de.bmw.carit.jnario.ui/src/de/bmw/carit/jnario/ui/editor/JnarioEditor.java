@@ -10,11 +10,10 @@
  ******************************************************************************/
 package de.bmw.carit.jnario.ui.editor;
 
-//import static de.sebastianbenz.task.ui.editor.TaskTokenTypeToPartitionTypeMapper.CODE_PARTITION;
+import static de.bmw.carit.jnario.ui.editor.TaskTokenTypeToPartitionTypeMapper.CODE_PARTITION;
 import static org.eclipse.jface.text.IDocumentExtension3.DEFAULT_PARTITIONING;
 import static org.eclipse.jface.text.TextUtilities.getContentType;
 
-import org.eclipse.core.resources.IResource;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.jface.text.source.IVerticalRuler;
@@ -29,46 +28,54 @@ import org.eclipse.xtext.ui.editor.XtextEditor;
 //import de.sebastianbenz.task.ui.highlighting.ColorScheme;
 
 public class JnarioEditor extends XtextEditor {
-	
+
 	private static final RGB CODE_COLOR = new RGB(125, 125, 125);
-	
+
 	public class CodeBackgroundColorizer implements LineBackgroundListener {
 		private Color background;
 
 		public void lineGetBackground(LineBackgroundEvent event) {
-			int previousLine = event.lineOffset - 1;
-			if (!isCode(previousLine)) {
+//			int previousLine = event.lineOffset - 1;
+//			if (!isCode(previousLine)) {
+//				return;
+//			}
+			
+			String trimedLine = event.lineText.trim();
+			if(trimedLine.isEmpty()){
 				return;
 			}
+			
+//			int currentLine = event.lineOffset;
+//			if (!isCode(currentLine)) {
+//				return;
+//			}
 
-			int leftContentType = event.lineOffset;
+			int leftContentType = event.lineOffset + event.lineText.length();
 			if (!isCode(leftContentType)) {
 				return;
 			}
 
-			int nextLine = event.lineOffset + event.lineText.length() + 2;
-			if (!isCode(nextLine)) {
-				return;
-			}
+//			int nextLine = event.lineOffset + event.lineText.length() +2;
+//			if (!isCode(nextLine)) {
+//				return;
+//			}
 			event.lineBackground = getBackgroundColor();
 		}
 
 		private Color getBackgroundColor() {
 			if (background == null) {
-				background = new Color(Display.getDefault(), CODE_COLOR);
+				background = new Color(Display.getDefault(), new RGB(245,  245,  245));
 			}
 			return background;
 		}
 
 		private boolean isCode(int offset) {
-			IResource resource = getResource();
-			
-			if (offset <= 0 || offset > getDocument().getLength()) {
+			if (offset < 0 || offset > getDocument().getLength()) {
 				return false;
 			}
 			try {
 				String contentType = getContentType(getDocument(), DEFAULT_PARTITIONING, offset, false);
-				return false;
+				return CODE_PARTITION.equals(contentType);
 			} catch (BadLocationException e) {
 				throw new RuntimeException(e);
 			}
@@ -81,8 +88,7 @@ public class JnarioEditor extends XtextEditor {
 	}
 
 	@Override
-	protected ISourceViewer createSourceViewer(Composite parent,
-			IVerticalRuler ruler, int styles) {
+	protected ISourceViewer createSourceViewer(Composite parent, IVerticalRuler ruler, int styles) {
 		ISourceViewer result = super.createSourceViewer(parent, ruler, styles);
 		result.getTextWidget().setWordWrap(true);
 		result.getTextWidget().addLineBackgroundListener(createBackgroundColorizer());

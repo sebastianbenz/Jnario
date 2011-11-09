@@ -2,6 +2,8 @@ package de.bmw.carit.jnario.ui.highlighting;
 
 import static org.eclipse.jface.resource.JFaceResources.getDefaultFontDescriptor;
 
+import javax.swing.text.StyledEditorKit.BoldAction;
+
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.FontData;
@@ -20,7 +22,7 @@ public class HighlightingConfiguration extends DefaultHighlightingConfiguration 
 	public static final String FEATURE_ID = "Feature";
 	public static final String CODE_BOLD_ID = "CodeBold";
 	public static final String STEP_ID = "Step";
-	public static final String STEP_TEXT_ID = "Step_Text";
+//	public static final String STEP_TEXT_ID = "Step_Text";
 
 	public void configure(IHighlightingConfigurationAcceptor acceptor) {
 		super.configure(acceptor);
@@ -29,7 +31,7 @@ public class HighlightingConfiguration extends DefaultHighlightingConfiguration 
 		acceptor.acceptDefaultHighlighting(FEATURE_ID, "Feature",
 				featureTextStyle());
 		acceptor.acceptDefaultHighlighting(STEP_ID, "Step", stepKeyWordStyle());
-		acceptor.acceptDefaultHighlighting(STEP_TEXT_ID, "Step_Text", stepKeyWordStyle());
+//		acceptor.acceptDefaultHighlighting(STEP_TEXT_ID, "Step_Text", stepKeyWordStyle());
 		acceptor.acceptDefaultHighlighting(TAG_ID, "Tag", tagTextStyle());
 		acceptor.acceptDefaultHighlighting(CODE_ID, "Code", codeTextStyle());
 		acceptor.acceptDefaultHighlighting(CODE_BOLD_ID, "Code Bold",
@@ -60,29 +62,27 @@ public class HighlightingConfiguration extends DefaultHighlightingConfiguration 
 
 	public TextStyle scenarioTextStyle() {
 		TextStyle textStyle = defaultTextStyle().copy();
-		textStyle.setColor(new RGB(7, 104, 0));
-		textStyle.setFontData(fontWithHeight(DEFAULT_FONT_SIZE + 1, SWT.BOLD));
+		textStyle.setFontData(fontWithHeight(DEFAULT_FONT_SIZE + 2, SWT.BOLD));
 		return textStyle;
 	}
 
 	public TextStyle featureTextStyle() {
 		TextStyle textStyle = defaultTextStyle().copy();
-		textStyle.setColor(new RGB(7, 104, 0));
-		textStyle.setFontData(fontWithHeight(DEFAULT_FONT_SIZE + 2, SWT.BOLD));
+		textStyle.setFontData(fontWithHeight(DEFAULT_FONT_SIZE + 3, SWT.BOLD));
 		return textStyle;
 	}
 	
 	public TextStyle stepKeyWordStyle() {
 		TextStyle textStyle = defaultTextStyle().copy();
-		textStyle.setColor(new RGB(200, 110, 0));
+		textStyle.setFontData(fontWithHeight(DEFAULT_FONT_SIZE + 1, SWT.BOLD));
 		return textStyle;
 	}
 	
-	public TextStyle stepTextStyle() {
-		TextStyle textStyle = defaultTextStyle().copy();
-		textStyle.setColor(new RGB(200, 110, 0));
-		return textStyle;
-	}
+//	public TextStyle stepTextStyle() {
+//		TextStyle textStyle = defaultTextStyle().copy();
+//		textStyle.setFontData(fontWithHeight(DEFAULT_FONT_SIZE + 1, SWT.BOLD));
+//		return textStyle;
+//	}
 
 	protected FontData fontWithHeight(int height, int style) {
 		return new FontData(JFaceResources.DIALOG_FONT, height, style);

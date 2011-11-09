@@ -7,68 +7,104 @@
  *******************************************************************************/
 package de.bmw.carit.jnario.generator;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
+import org.eclipse.xtext.common.types.JvmPrimitiveType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.TypesFactory;
-import org.eclipse.xtext.xbase.XBlockExpression;
-import org.eclipse.xtext.xbase.XExpression;
-import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
+import org.eclipse.xtext.common.types.util.Primitives.Primitive;
+import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.compiler.IAppendable;
-import org.eclipse.xtext.xbase.compiler.ImportManager;
-import org.eclipse.xtext.xbase.compiler.StringBuilderBasedAppendable;
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
-
-import de.bmw.carit.jnario.jnario.Background;
-import de.bmw.carit.jnario.jnario.Code;
-import de.bmw.carit.jnario.jnario.Examples;
-import de.bmw.carit.jnario.jnario.Scenario;
-import de.bmw.carit.jnario.jnario.Step;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
 public class JnarioCompiler extends XbaseCompiler {
 	
-	public String compileScenario(Scenario scenario, ImportManager importManager, boolean withTestAnnotation) {
-		IAppendable appendable = new StringBuilderBasedAppendable(importManager);
-		
-		if(withTestAnnotation){
-			appendable.append("@Test\n");
-		}
-		appendable.append("public void ");
-		String methodName = extractMethodName(scenario.getName());
-		appendable.append(methodName);
-		appendable.append("(){\n");
-		if(!scenario.getExamples().isEmpty()){		
-			generateExamples(scenario.getExamples(), scenario.getSteps(), appendable, importManager);
-		}
-		for(Step step: scenario.getSteps()){
-			generateStep(step, appendable);
-		}
-
-		appendable.append("\n}\n");
-		return appendable.toString();
-	}
+//	protected void _toJavaStatement(XVariableDeclaration varDeclaration, IAppendable b, boolean isReferenced) {
+//		if (varDeclaration.getRight() != null) {
+//			internalToJavaStatement(varDeclaration.getRight(), b, true);
+//		}
+//		b.append("\n");
+//		if (!varDeclaration.isWriteable()) {
+//			b.append("final ");
+//		}
+//		JvmTypeReference type = null;
+//		if (varDeclaration.getType() != null) {
+//			type = varDeclaration.getType();
+//		} else {
+//			type = getTypeProvider().getType(varDeclaration.getRight());
+//		}
+//		serialize(type, varDeclaration, b);
+//		b.append(" ");
+//		String variableName = declareNameInVariableScope(varDeclaration, b);
+//		b.append(variableName);
+//		b.append(" = ");
+//		if (varDeclaration.getRight() != null) {
+//			internalToConvertedExpression(varDeclaration.getRight(), b, type);
+//		} else {
+//			if (getPrimitives().isPrimitive(type)) {
+//				Primitive primitiveKind = getPrimitives().primitiveKind((JvmPrimitiveType) type.getType());
+//				switch (primitiveKind) {
+//					case Boolean:
+//						b.append("false");
+//						break;
+//					default:
+//						b.append("0");
+//						break;
+//				}
+//			} else {
+//				b.append("null");
+//			}
+//		}
+//		b.append(";\n");
+////		b.append(type);
+//		b.append(".bind(");
+//		b.append(variableName);
+//		b.append(".toString(), ");
+//		b.append(variableName);
+//		b.append(";");
+//	}
 	
-	public String compileBackground(Background background, ImportManager importManager){
-		IAppendable appendable = new StringBuilderBasedAppendable(importManager);
-		
-		appendable.append("@Before\n");
-		appendable.append("public void setup(){\n");
-		for(Step step: background.getSteps()){
-			generateStep(step, appendable);
-		}
-		appendable.append("\n}\n");
-		return appendable.toString();
-	}
-	
-	protected void generateExamples(EList<Examples> examples, EList<Step> steps,
-			IAppendable appendable, ImportManager importManager) {
-		IAppendable stepAppendable = new StringBuilderBasedAppendable(importManager);
-		for(Step step: steps){
-			generateStep(step, stepAppendable);
-		}
+//	public String compileScenario(Scenario scenario, ImportManager importManager, boolean withTestAnnotation) {
+//		IAppendable appendable = new StringBuilderBasedAppendable(importManager);
+//		
+//		if(withTestAnnotation){
+//			appendable.append("@Test\n");
+//		}
+//		appendable.append("public void ");
+//		String methodName = extractMethodName(scenario.getName());
+//		appendable.append(methodName);
+//		appendable.append("(){\n");
+//		if(!scenario.getExamples().isEmpty()){		
+//			generateExamples(scenario.getExamples(), scenario.getSteps(), appendable, importManager);
+//		}
+//		for(Step step: scenario.getSteps()){
+//			generateStep(step, appendable);
+//		}
+//
+//		appendable.append("\n}\n");
+//		return appendable.toString();
+//	}
+//	
+//	public String compileBackground(Background background, ImportManager importManager){
+//		IAppendable appendable = new StringBuilderBasedAppendable(importManager);
+//		
+//		appendable.append("@Before\n");
+//		appendable.append("public void setup(){\n");
+//		for(Step step: background.getSteps()){
+//			generateStep(step, appendable);
+//		}
+//		appendable.append("\n}\n");
+//		return appendable.toString();
+//	}
+//	
+//	protected void generateExamples(EList<Examples> examples, EList<Step> steps,
+//			IAppendable appendable, ImportManager importManager) {
+//		IAppendable stepAppendable = new StringBuilderBasedAppendable(importManager);
+//		for(Step step: steps){
+//			generateStep(step, stepAppendable);
+//		}
 //		String originalCode = stepAppendable.toString();
 //		
 //		for(Examples example: examples){
@@ -86,48 +122,50 @@ public class JnarioCompiler extends XbaseCompiler {
 //				}
 //			}
 //		}
-	}
+//	}
 
-	protected void generateStep(Step step, IAppendable appendable){
-		Code code = step.getCode();
-			for(XAnnotation annotation: code.getAnnotations()){
-				//annotationCompiler.generate(annotation, appendable);
-			}
-			XBlockExpression expression = code.getBlockExpression();
-			if(expression != null){
-				compile(expression, appendable, newVoidRef());
-			}
-	}
+//	protected void generateStep(Step step, IAppendable appendable){
+//		Code code = step.getCode();
+//			for(XAnnotation annotation: code.getAnnotations()){
+//				//annotationCompiler.generate(annotation, appendable);
+//			}
+//			XBlockExpression expression = code.getBlockExpression();
+//			if(expression != null){
+//				compile(expression, appendable, newVoidRef());
+//			}
+//	}
 	
 
 
-	// removed "{\n" and "\n}" from original method
-	protected void _toJavaStatement(XBlockExpression expr, IAppendable b, boolean isReferenced) {
-		if (expr.getExpressions().isEmpty())
-			return;
-		if (expr.getExpressions().size()==1) {
-			internalToJavaStatement(expr.getExpressions().get(0), b, isReferenced);
-			return;
-		}
-		if (isReferenced)
-			declareLocalVariable(expr, b);
-		b.increaseIndentation();
-		final EList<XExpression> expressions = expr.getExpressions();
-		for (int i = 0; i < expressions.size(); i++) {
-			XExpression ex = expressions.get(i);
-			if (i < expressions.size() - 1) {
-				internalToJavaStatement(ex, b, false);
-			} else {
-				internalToJavaStatement(ex, b, isReferenced);
-				if (isReferenced) {
-					b.append("\n").append(getVarName(expr, b)).append(" = (");
-					internalToConvertedExpression(ex, b, null);
-					b.append(");");
-				}
-			}
-		}
-		b.decreaseIndentation();
-	}
+//	// removed "{\n" and "\n}" from original method
+//	protected void _toJavaStatement(XBlockExpression expr, IAppendable b, boolean isReferenced) {
+//		if (expr.getExpressions().isEmpty())
+//			return;
+//		if (expr.getExpressions().size()==1) {
+//			internalToJavaStatement(expr.getExpressions().get(0), b, isReferenced);
+//			return;
+//		}
+//		if (isReferenced)
+//			declareLocalVariable(expr, b);
+//		b.increaseIndentation();
+//		final EList<XExpression> expressions = expr.getExpressions();
+//		for (int i = 0; i < expressions.size(); i++) {
+//			XExpression ex = expressions.get(i);
+//			if (i < expressions.size() - 1) {
+//				internalToJavaStatement(ex, b, false);
+//			} else {
+//				internalToJavaStatement(ex, b, isReferenced);
+//				if (isReferenced) {
+//					b.append("\n").append(getVarName(expr, b)).append(" = (");
+//					internalToConvertedExpression(ex, b, null);
+//					b.append(");");
+//				}
+//			}
+//		}
+//		b.decreaseIndentation();
+//	}
+	
+	
 
 	protected JvmTypeReference newVoidRef() {
 		JvmParameterizedTypeReference reference = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference();
@@ -158,12 +196,12 @@ public class JnarioCompiler extends XbaseCompiler {
 		return methodName;
 	}
 	
-	public void declareVariableAndJavaStatement(XExpression expression, IAppendable appendable){
-		this.declareNameInVariableScope(expression, appendable);
-		this.toJavaStatement(expression, appendable, true);
-	}
-	
-	public void getVariables(XExpression expression, IAppendable appendable){
-		this.toJavaExpression(expression, appendable);
-	}	
+//	public void declareVariableAndJavaStatement(XExpression expression, IAppendable appendable){
+//		this.declareNameInVariableScope(expression, appendable);
+//		this.toJavaStatement(expression, appendable, true);
+//	}
+//	
+//	public void getVariables(XExpression expression, IAppendable appendable){
+//		this.toJavaExpression(expression, appendable);
+//	}	
 }
