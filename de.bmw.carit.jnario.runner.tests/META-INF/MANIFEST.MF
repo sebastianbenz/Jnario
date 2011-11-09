@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Xspec Core Tests
+Bundle-SymbolicName: de.bmw.carit.jnario.runner.tests
+Bundle-Version: 0.1.0.qualifier
+Bundle-Vendor: BMW
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.junit;bundle-version="4.8.2",
+ de.bmw.carit.jnario.runner;bundle-version="0.1.0",
+ com.google.collect;bundle-version="1.0.0"
