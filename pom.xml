@@ -19,9 +19,14 @@
   <modules>
   	<module>de.bmw.carit.jnario.target</module>
     <module>de.bmw.carit.jnario</module>
+    <module>de.bmw.carit.jnario.runner</module>
+    <module>de.bmw.carit.jnario.spec</module>
     <module>de.bmw.carit.jnario-feature</module>
     <module>de.bmw.carit.jnario.tests</module>
+    <module>de.bmw.carit.jnario.runner.tests</module>
+    <module>de.bmw.carit.jnario.spec.tests</module>
     <module>de.bmw.carit.jnario.ui</module>
+    <module>de.bmw.carit.jnario.spec.ui</module>
     <module>de.bmw.carit.jnario.ui-feature</module>
     <module>de.bmw.carit.jnario.updatesite</module>
   </modules>

@@ -17,8 +17,38 @@
       [Enter License Description here.]
    </license>
 
+   <requires>
+      <import plugin="org.eclipse.xtext" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.log4j" version="1.2.15" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.util"/>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="org.eclipse.emf.common"/>
+      <import plugin="org.antlr.runtime"/>
+      <import plugin="org.eclipse.xtext.common.types"/>
+      <import plugin="org.eclipse.xtext.xbase" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.xbase.lib"/>
+      <import plugin="org.eclipse.xtext.xtend2.lib"/>
+      <import plugin="org.apache.commons.logging"/>
+      <import plugin="org.junit" version="4.8.2" match="greaterOrEqual"/>
+      <import plugin="com.google.collect" version="1.0.0" match="greaterOrEqual"/>
+   </requires>
+
    <plugin
          id="de.bmw.carit.jnario"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="de.bmw.carit.jnario.runner"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="de.bmw.carit.jnario.spec"
          download-size="0"
          install-size="0"
          version="0.0.0"
