@@ -18,32 +18,32 @@ import org.eclipse.xtext.xbase.services.XtypeGrammarAccess;
 public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	
 	
-	public class SpecElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Spec");
+	public class SpecFileElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SpecFile");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cPackageKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameQualifiedNameParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cPackageNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cPackageNameQualifiedNameParserRuleCall_1_0 = (RuleCall)cPackageNameAssignment_1.eContents().get(0);
 		private final Assignment cImportsAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cImportsImportParserRuleCall_2_0 = (RuleCall)cImportsAssignment_2.eContents().get(0);
 		private final Assignment cElementsAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cElementsExampleGroupParserRuleCall_3_0 = (RuleCall)cElementsAssignment_3.eContents().get(0);
 		
-		//Spec:
-		//	"package" name=QualifiedName imports+=Import* elements+=ExampleGroup*;
+		//SpecFile:
+		//	"package" packageName=QualifiedName imports+=Import* elements+=ExampleGroup*;
 		public ParserRule getRule() { return rule; }
 
-		//"package" name=QualifiedName imports+=Import* elements+=ExampleGroup*
+		//"package" packageName=QualifiedName imports+=Import* elements+=ExampleGroup*
 		public Group getGroup() { return cGroup; }
 
 		//"package"
 		public Keyword getPackageKeyword_0() { return cPackageKeyword_0; }
 
-		//name=QualifiedName
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		//packageName=QualifiedName
+		public Assignment getPackageNameAssignment_1() { return cPackageNameAssignment_1; }
 
 		//QualifiedName
-		public RuleCall getNameQualifiedNameParserRuleCall_1_0() { return cNameQualifiedNameParserRuleCall_1_0; }
+		public RuleCall getPackageNameQualifiedNameParserRuleCall_1_0() { return cPackageNameQualifiedNameParserRuleCall_1_0; }
 
 		//imports+=Import*
 		public Assignment getImportsAssignment_2() { return cImportsAssignment_2; }
@@ -315,7 +315,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	
-	private SpecElements pSpec;
+	private SpecFileElements pSpecFile;
 	private ImportElements pImport;
 	private QualifiedNameWithWildCardElements pQualifiedNameWithWildCard;
 	private ExampleGroupElements pExampleGroup;
@@ -345,14 +345,14 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
-	//Spec:
-	//	"package" name=QualifiedName imports+=Import* elements+=ExampleGroup*;
-	public SpecElements getSpecAccess() {
-		return (pSpec != null) ? pSpec : (pSpec = new SpecElements());
+	//SpecFile:
+	//	"package" packageName=QualifiedName imports+=Import* elements+=ExampleGroup*;
+	public SpecFileElements getSpecFileAccess() {
+		return (pSpecFile != null) ? pSpecFile : (pSpecFile = new SpecFileElements());
 	}
 	
-	public ParserRule getSpecRule() {
-		return getSpecAccess().getRule();
+	public ParserRule getSpecFileRule() {
+		return getSpecFileAccess().getRule();
 	}
 
 	//Import:

@@ -2,7 +2,6 @@
  * <copyright>
  * </copyright>
  *
-
  */
 package de.bmw.carit.jnario.spec.spec.util;
 
@@ -79,9 +78,9 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
     new SpecSwitch<Adapter>()
     {
       @Override
-      public Adapter caseSpec(Spec object)
+      public Adapter caseSpecFile(SpecFile object)
       {
-        return createSpecAdapter();
+        return createSpecFileAdapter();
       }
       @Override
       public Adapter caseImport(Import object)
@@ -136,16 +135,16 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
 
 
   /**
-   * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.spec.spec.Spec <em>Spec</em>}'.
+   * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.spec.spec.SpecFile <em>File</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.bmw.carit.jnario.spec.spec.Spec
+   * @see de.bmw.carit.jnario.spec.spec.SpecFile
    * @generated
    */
-  public Adapter createSpecAdapter()
+  public Adapter createSpecFileAdapter()
   {
     return null;
   }

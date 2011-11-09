@@ -2,7 +2,6 @@
  * <copyright>
  * </copyright>
  *
-
  */
 package de.bmw.carit.jnario.spec.spec;
 
@@ -61,23 +60,23 @@ public interface SpecPackage extends EPackage
   SpecPackage eINSTANCE = de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl.init();
 
   /**
-   * The meta object id for the '{@link de.bmw.carit.jnario.spec.spec.impl.SpecImpl <em>Spec</em>}' class.
+   * The meta object id for the '{@link de.bmw.carit.jnario.spec.spec.impl.SpecFileImpl <em>File</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.bmw.carit.jnario.spec.spec.impl.SpecImpl
-   * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getSpec()
+   * @see de.bmw.carit.jnario.spec.spec.impl.SpecFileImpl
+   * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getSpecFile()
    * @generated
    */
-  int SPEC = 0;
+  int SPEC_FILE = 0;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * The feature id for the '<em><b>Package Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SPEC__NAME = 0;
+  int SPEC_FILE__PACKAGE_NAME = 0;
 
   /**
    * The feature id for the '<em><b>Imports</b></em>' containment reference list.
@@ -86,7 +85,7 @@ public interface SpecPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SPEC__IMPORTS = 1;
+  int SPEC_FILE__IMPORTS = 1;
 
   /**
    * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -95,16 +94,16 @@ public interface SpecPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SPEC__ELEMENTS = 2;
+  int SPEC_FILE__ELEMENTS = 2;
 
   /**
-   * The number of structural features of the '<em>Spec</em>' class.
+   * The number of structural features of the '<em>File</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SPEC_FEATURE_COUNT = 3;
+  int SPEC_FILE_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link de.bmw.carit.jnario.spec.spec.impl.ImportImpl <em>Import</em>}' class.
@@ -339,47 +338,47 @@ public interface SpecPackage extends EPackage
 
 
   /**
-   * Returns the meta object for class '{@link de.bmw.carit.jnario.spec.spec.Spec <em>Spec</em>}'.
+   * Returns the meta object for class '{@link de.bmw.carit.jnario.spec.spec.SpecFile <em>File</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Spec</em>'.
-   * @see de.bmw.carit.jnario.spec.spec.Spec
+   * @return the meta object for class '<em>File</em>'.
+   * @see de.bmw.carit.jnario.spec.spec.SpecFile
    * @generated
    */
-  EClass getSpec();
+  EClass getSpecFile();
 
   /**
-   * Returns the meta object for the attribute '{@link de.bmw.carit.jnario.spec.spec.Spec#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link de.bmw.carit.jnario.spec.spec.SpecFile#getPackageName <em>Package Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.bmw.carit.jnario.spec.spec.Spec#getName()
-   * @see #getSpec()
+   * @return the meta object for the attribute '<em>Package Name</em>'.
+   * @see de.bmw.carit.jnario.spec.spec.SpecFile#getPackageName()
+   * @see #getSpecFile()
    * @generated
    */
-  EAttribute getSpec_Name();
+  EAttribute getSpecFile_PackageName();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.spec.spec.Spec#getImports <em>Imports</em>}'.
+   * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.spec.spec.SpecFile#getImports <em>Imports</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Imports</em>'.
-   * @see de.bmw.carit.jnario.spec.spec.Spec#getImports()
-   * @see #getSpec()
+   * @see de.bmw.carit.jnario.spec.spec.SpecFile#getImports()
+   * @see #getSpecFile()
    * @generated
    */
-  EReference getSpec_Imports();
+  EReference getSpecFile_Imports();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.spec.spec.Spec#getElements <em>Elements</em>}'.
+   * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.spec.spec.SpecFile#getElements <em>Elements</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Elements</em>'.
-   * @see de.bmw.carit.jnario.spec.spec.Spec#getElements()
-   * @see #getSpec()
+   * @see de.bmw.carit.jnario.spec.spec.SpecFile#getElements()
+   * @see #getSpecFile()
    * @generated
    */
-  EReference getSpec_Elements();
+  EReference getSpecFile_Elements();
 
   /**
    * Returns the meta object for class '{@link de.bmw.carit.jnario.spec.spec.Import <em>Import</em>}'.
@@ -575,22 +574,22 @@ public interface SpecPackage extends EPackage
   interface Literals
   {
     /**
-     * The meta object literal for the '{@link de.bmw.carit.jnario.spec.spec.impl.SpecImpl <em>Spec</em>}' class.
+     * The meta object literal for the '{@link de.bmw.carit.jnario.spec.spec.impl.SpecFileImpl <em>File</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.bmw.carit.jnario.spec.spec.impl.SpecImpl
-     * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getSpec()
+     * @see de.bmw.carit.jnario.spec.spec.impl.SpecFileImpl
+     * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getSpecFile()
      * @generated
      */
-    EClass SPEC = eINSTANCE.getSpec();
+    EClass SPEC_FILE = eINSTANCE.getSpecFile();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Package Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute SPEC__NAME = eINSTANCE.getSpec_Name();
+    EAttribute SPEC_FILE__PACKAGE_NAME = eINSTANCE.getSpecFile_PackageName();
 
     /**
      * The meta object literal for the '<em><b>Imports</b></em>' containment reference list feature.
@@ -598,7 +597,7 @@ public interface SpecPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference SPEC__IMPORTS = eINSTANCE.getSpec_Imports();
+    EReference SPEC_FILE__IMPORTS = eINSTANCE.getSpecFile_Imports();
 
     /**
      * The meta object literal for the '<em><b>Elements</b></em>' containment reference list feature.
@@ -606,7 +605,7 @@ public interface SpecPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference SPEC__ELEMENTS = eINSTANCE.getSpec_Elements();
+    EReference SPEC_FILE__ELEMENTS = eINSTANCE.getSpecFile_Elements();
 
     /**
      * The meta object literal for the '{@link de.bmw.carit.jnario.spec.spec.impl.ImportImpl <em>Import</em>}' class.

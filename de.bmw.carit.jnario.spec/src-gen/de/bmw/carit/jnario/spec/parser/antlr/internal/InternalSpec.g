@@ -44,7 +44,7 @@ import de.bmw.carit.jnario.spec.services.SpecGrammarAccess;
     
     @Override
     protected String getFirstRuleName() {
-    	return "Spec";	
+    	return "SpecFile";	
    	}
    	
    	@Override
@@ -63,37 +63,37 @@ import de.bmw.carit.jnario.spec.services.SpecGrammarAccess;
 
 
 
-// Entry rule entryRuleSpec
-entryRuleSpec returns [EObject current=null] 
+// Entry rule entryRuleSpecFile
+entryRuleSpecFile returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getSpecRule()); }
-	 iv_ruleSpec=ruleSpec 
-	 { $current=$iv_ruleSpec.current; } 
+	{ newCompositeNode(grammarAccess.getSpecFileRule()); }
+	 iv_ruleSpecFile=ruleSpecFile 
+	 { $current=$iv_ruleSpecFile.current; } 
 	 EOF 
 ;
 
-// Rule Spec
-ruleSpec returns [EObject current=null] 
+// Rule SpecFile
+ruleSpecFile returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
 (	otherlv_0='package' 
     {
-    	newLeafNode(otherlv_0, grammarAccess.getSpecAccess().getPackageKeyword_0());
+    	newLeafNode(otherlv_0, grammarAccess.getSpecFileAccess().getPackageKeyword_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getSpecAccess().getNameQualifiedNameParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getSpecFileAccess().getPackageNameQualifiedNameParserRuleCall_1_0()); 
 	    }
-		lv_name_1_0=ruleQualifiedName		{
+		lv_packageName_1_0=ruleQualifiedName		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getSpecRule());
+	            $current = createModelElementForParent(grammarAccess.getSpecFileRule());
 	        }
        		set(
        			$current, 
-       			"name",
-        		lv_name_1_0, 
+       			"packageName",
+        		lv_packageName_1_0, 
         		"QualifiedName");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -102,11 +102,11 @@ ruleSpec returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getSpecAccess().getImportsImportParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getSpecFileAccess().getImportsImportParserRuleCall_2_0()); 
 	    }
 		lv_imports_2_0=ruleImport		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getSpecRule());
+	            $current = createModelElementForParent(grammarAccess.getSpecFileRule());
 	        }
        		add(
        			$current, 
@@ -120,11 +120,11 @@ ruleSpec returns [EObject current=null]
 )*(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getSpecAccess().getElementsExampleGroupParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getSpecFileAccess().getElementsExampleGroupParserRuleCall_3_0()); 
 	    }
 		lv_elements_3_0=ruleExampleGroup		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getSpecRule());
+	            $current = createModelElementForParent(grammarAccess.getSpecFileRule());
 	        }
        		add(
        			$current, 

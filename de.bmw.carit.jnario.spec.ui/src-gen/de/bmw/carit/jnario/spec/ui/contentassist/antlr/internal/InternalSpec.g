@@ -57,25 +57,25 @@ import de.bmw.carit.jnario.spec.services.SpecGrammarAccess;
 
 
 
-// Entry rule entryRuleSpec
-entryRuleSpec 
+// Entry rule entryRuleSpecFile
+entryRuleSpecFile 
 :
-{ before(grammarAccess.getSpecRule()); }
-	 ruleSpec
-{ after(grammarAccess.getSpecRule()); } 
+{ before(grammarAccess.getSpecFileRule()); }
+	 ruleSpecFile
+{ after(grammarAccess.getSpecFileRule()); } 
 	 EOF 
 ;
 
-// Rule Spec
-ruleSpec
+// Rule SpecFile
+ruleSpecFile
     @init {
 		int stackSize = keepStackSize();
     }
 	:
 (
-{ before(grammarAccess.getSpecAccess().getGroup()); }
-(rule__Spec__Group__0)
-{ after(grammarAccess.getSpecAccess().getGroup()); }
+{ before(grammarAccess.getSpecFileAccess().getGroup()); }
+(rule__SpecFile__Group__0)
+{ after(grammarAccess.getSpecFileAccess().getGroup()); }
 )
 
 ;
@@ -2784,29 +2784,29 @@ finally {
 
 
 
-rule__Spec__Group__0
+rule__SpecFile__Group__0
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__Spec__Group__0__Impl
-	rule__Spec__Group__1
+	rule__SpecFile__Group__0__Impl
+	rule__SpecFile__Group__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Spec__Group__0__Impl
+rule__SpecFile__Group__0__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getSpecAccess().getPackageKeyword_0()); }
+{ before(grammarAccess.getSpecFileAccess().getPackageKeyword_0()); }
 
 	'package' 
 
-{ after(grammarAccess.getSpecAccess().getPackageKeyword_0()); }
+{ after(grammarAccess.getSpecFileAccess().getPackageKeyword_0()); }
 )
 
 ;
@@ -2815,27 +2815,27 @@ finally {
 }
 
 
-rule__Spec__Group__1
+rule__SpecFile__Group__1
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__Spec__Group__1__Impl
-	rule__Spec__Group__2
+	rule__SpecFile__Group__1__Impl
+	rule__SpecFile__Group__2
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Spec__Group__1__Impl
+rule__SpecFile__Group__1__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getSpecAccess().getNameAssignment_1()); }
-(rule__Spec__NameAssignment_1)
-{ after(grammarAccess.getSpecAccess().getNameAssignment_1()); }
+{ before(grammarAccess.getSpecFileAccess().getPackageNameAssignment_1()); }
+(rule__SpecFile__PackageNameAssignment_1)
+{ after(grammarAccess.getSpecFileAccess().getPackageNameAssignment_1()); }
 )
 
 ;
@@ -2844,27 +2844,27 @@ finally {
 }
 
 
-rule__Spec__Group__2
+rule__SpecFile__Group__2
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__Spec__Group__2__Impl
-	rule__Spec__Group__3
+	rule__SpecFile__Group__2__Impl
+	rule__SpecFile__Group__3
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Spec__Group__2__Impl
+rule__SpecFile__Group__2__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getSpecAccess().getImportsAssignment_2()); }
-(rule__Spec__ImportsAssignment_2)*
-{ after(grammarAccess.getSpecAccess().getImportsAssignment_2()); }
+{ before(grammarAccess.getSpecFileAccess().getImportsAssignment_2()); }
+(rule__SpecFile__ImportsAssignment_2)*
+{ after(grammarAccess.getSpecFileAccess().getImportsAssignment_2()); }
 )
 
 ;
@@ -2873,26 +2873,26 @@ finally {
 }
 
 
-rule__Spec__Group__3
+rule__SpecFile__Group__3
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__Spec__Group__3__Impl
+	rule__SpecFile__Group__3__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Spec__Group__3__Impl
+rule__SpecFile__Group__3__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getSpecAccess().getElementsAssignment_3()); }
-(rule__Spec__ElementsAssignment_3)*
-{ after(grammarAccess.getSpecAccess().getElementsAssignment_3()); }
+{ before(grammarAccess.getSpecFileAccess().getElementsAssignment_3()); }
+(rule__SpecFile__ElementsAssignment_3)*
+{ after(grammarAccess.getSpecFileAccess().getElementsAssignment_3()); }
 )
 
 ;
@@ -13561,14 +13561,14 @@ finally {
 
 
 
-rule__Spec__NameAssignment_1
+rule__SpecFile__PackageNameAssignment_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getSpecAccess().getNameQualifiedNameParserRuleCall_1_0()); }
-	ruleQualifiedName{ after(grammarAccess.getSpecAccess().getNameQualifiedNameParserRuleCall_1_0()); }
+{ before(grammarAccess.getSpecFileAccess().getPackageNameQualifiedNameParserRuleCall_1_0()); }
+	ruleQualifiedName{ after(grammarAccess.getSpecFileAccess().getPackageNameQualifiedNameParserRuleCall_1_0()); }
 )
 
 ;
@@ -13576,14 +13576,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Spec__ImportsAssignment_2
+rule__SpecFile__ImportsAssignment_2
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getSpecAccess().getImportsImportParserRuleCall_2_0()); }
-	ruleImport{ after(grammarAccess.getSpecAccess().getImportsImportParserRuleCall_2_0()); }
+{ before(grammarAccess.getSpecFileAccess().getImportsImportParserRuleCall_2_0()); }
+	ruleImport{ after(grammarAccess.getSpecFileAccess().getImportsImportParserRuleCall_2_0()); }
 )
 
 ;
@@ -13591,14 +13591,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Spec__ElementsAssignment_3
+rule__SpecFile__ElementsAssignment_3
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getSpecAccess().getElementsExampleGroupParserRuleCall_3_0()); }
-	ruleExampleGroup{ after(grammarAccess.getSpecAccess().getElementsExampleGroupParserRuleCall_3_0()); }
+{ before(grammarAccess.getSpecFileAccess().getElementsExampleGroupParserRuleCall_3_0()); }
+	ruleExampleGroup{ after(grammarAccess.getSpecFileAccess().getElementsExampleGroupParserRuleCall_3_0()); }
 )
 
 ;

@@ -7,13 +7,13 @@
     <metamodelDeclarations xsi:type="xtext:GeneratedMetamodel" name="spec">
       <ePackage href="http://www.bmw.de/carit/jnario/spec/Spec#/"/>
     </metamodelDeclarations>
-    <rules xsi:type="xtext:ParserRule" name="Spec">
+    <rules xsi:type="xtext:ParserRule" name="SpecFile">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/spec/Spec#//Spec"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/spec/Spec#//SpecFile"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="package"/>
-        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <elements xsi:type="xtext:Assignment" feature="packageName" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.52"/>
         </elements>
         <elements xsi:type="xtext:Assignment" cardinality="*" feature="imports" operator="+=">

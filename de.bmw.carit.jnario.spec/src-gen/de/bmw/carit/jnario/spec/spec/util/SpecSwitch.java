@@ -2,7 +2,6 @@
  * <copyright>
  * </copyright>
  *
-
  */
 package de.bmw.carit.jnario.spec.spec.util;
 
@@ -76,10 +75,10 @@ public class SpecSwitch<T> extends Switch<T>
   {
     switch (classifierID)
     {
-      case SpecPackage.SPEC:
+      case SpecPackage.SPEC_FILE:
       {
-        Spec spec = (Spec)theEObject;
-        T result = caseSpec(spec);
+        SpecFile specFile = (SpecFile)theEObject;
+        T result = caseSpecFile(specFile);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -133,17 +132,17 @@ public class SpecSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Spec</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>File</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Spec</em>'.
+   * @return the result of interpreting the object as an instance of '<em>File</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseSpec(Spec object)
+  public T caseSpecFile(SpecFile object)
   {
     return null;
   }

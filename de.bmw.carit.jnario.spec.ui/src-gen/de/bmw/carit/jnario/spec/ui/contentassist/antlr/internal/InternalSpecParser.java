@@ -136,25 +136,25 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
 
 
 
-    // $ANTLR start "entryRuleSpec"
-    // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:61:1: entryRuleSpec : ruleSpec EOF ;
-    public final void entryRuleSpec() throws RecognitionException {
+    // $ANTLR start "entryRuleSpecFile"
+    // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:61:1: entryRuleSpecFile : ruleSpecFile EOF ;
+    public final void entryRuleSpecFile() throws RecognitionException {
         try {
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:62:1: ( ruleSpec EOF )
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:63:1: ruleSpec EOF
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:62:1: ( ruleSpecFile EOF )
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:63:1: ruleSpecFile EOF
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getSpecRule()); 
+               before(grammarAccess.getSpecFileRule()); 
             }
-            pushFollow(FOLLOW_ruleSpec_in_entryRuleSpec67);
-            ruleSpec();
+            pushFollow(FOLLOW_ruleSpecFile_in_entryRuleSpecFile67);
+            ruleSpecFile();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getSpecRule()); 
+               after(grammarAccess.getSpecFileRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleSpec74); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleSpecFile74); if (state.failed) return ;
 
             }
 
@@ -167,30 +167,30 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "entryRuleSpec"
+    // $ANTLR end "entryRuleSpecFile"
 
 
-    // $ANTLR start "ruleSpec"
-    // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:70:1: ruleSpec : ( ( rule__Spec__Group__0 ) ) ;
-    public final void ruleSpec() throws RecognitionException {
+    // $ANTLR start "ruleSpecFile"
+    // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:70:1: ruleSpecFile : ( ( rule__SpecFile__Group__0 ) ) ;
+    public final void ruleSpecFile() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:74:2: ( ( ( rule__Spec__Group__0 ) ) )
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:75:1: ( ( rule__Spec__Group__0 ) )
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:74:2: ( ( ( rule__SpecFile__Group__0 ) ) )
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:75:1: ( ( rule__SpecFile__Group__0 ) )
             {
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:75:1: ( ( rule__Spec__Group__0 ) )
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:76:1: ( rule__Spec__Group__0 )
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:75:1: ( ( rule__SpecFile__Group__0 ) )
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:76:1: ( rule__SpecFile__Group__0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getSpecAccess().getGroup()); 
+               before(grammarAccess.getSpecFileAccess().getGroup()); 
             }
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:77:1: ( rule__Spec__Group__0 )
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:77:2: rule__Spec__Group__0
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:77:1: ( rule__SpecFile__Group__0 )
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:77:2: rule__SpecFile__Group__0
             {
-            pushFollow(FOLLOW_rule__Spec__Group__0_in_ruleSpec100);
-            rule__Spec__Group__0();
+            pushFollow(FOLLOW_rule__SpecFile__Group__0_in_ruleSpecFile100);
+            rule__SpecFile__Group__0();
 
             state._fsp--;
             if (state.failed) return ;
@@ -198,7 +198,7 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getSpecAccess().getGroup()); 
+               after(grammarAccess.getSpecFileAccess().getGroup()); 
             }
 
             }
@@ -218,7 +218,7 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "ruleSpec"
+    // $ANTLR end "ruleSpecFile"
 
 
     // $ANTLR start "entryRuleImport"
@@ -9100,23 +9100,23 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__JvmWildcardTypeReference__Alternatives_2"
 
 
-    // $ANTLR start "rule__Spec__Group__0"
-    // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2787:1: rule__Spec__Group__0 : rule__Spec__Group__0__Impl rule__Spec__Group__1 ;
-    public final void rule__Spec__Group__0() throws RecognitionException {
+    // $ANTLR start "rule__SpecFile__Group__0"
+    // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2787:1: rule__SpecFile__Group__0 : rule__SpecFile__Group__0__Impl rule__SpecFile__Group__1 ;
+    public final void rule__SpecFile__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2791:1: ( rule__Spec__Group__0__Impl rule__Spec__Group__1 )
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2792:2: rule__Spec__Group__0__Impl rule__Spec__Group__1
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2791:1: ( rule__SpecFile__Group__0__Impl rule__SpecFile__Group__1 )
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2792:2: rule__SpecFile__Group__0__Impl rule__SpecFile__Group__1
             {
-            pushFollow(FOLLOW_rule__Spec__Group__0__Impl_in_rule__Spec__Group__06035);
-            rule__Spec__Group__0__Impl();
+            pushFollow(FOLLOW_rule__SpecFile__Group__0__Impl_in_rule__SpecFile__Group__06035);
+            rule__SpecFile__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Spec__Group__1_in_rule__Spec__Group__06038);
-            rule__Spec__Group__1();
+            pushFollow(FOLLOW_rule__SpecFile__Group__1_in_rule__SpecFile__Group__06038);
+            rule__SpecFile__Group__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -9135,12 +9135,12 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Spec__Group__0"
+    // $ANTLR end "rule__SpecFile__Group__0"
 
 
-    // $ANTLR start "rule__Spec__Group__0__Impl"
-    // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2799:1: rule__Spec__Group__0__Impl : ( 'package' ) ;
-    public final void rule__Spec__Group__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__SpecFile__Group__0__Impl"
+    // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2799:1: rule__SpecFile__Group__0__Impl : ( 'package' ) ;
+    public final void rule__SpecFile__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -9152,11 +9152,11 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
             // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2805:1: 'package'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getSpecAccess().getPackageKeyword_0()); 
+               before(grammarAccess.getSpecFileAccess().getPackageKeyword_0()); 
             }
-            match(input,34,FOLLOW_34_in_rule__Spec__Group__0__Impl6066); if (state.failed) return ;
+            match(input,34,FOLLOW_34_in_rule__SpecFile__Group__0__Impl6066); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getSpecAccess().getPackageKeyword_0()); 
+               after(grammarAccess.getSpecFileAccess().getPackageKeyword_0()); 
             }
 
             }
@@ -9176,26 +9176,26 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Spec__Group__0__Impl"
+    // $ANTLR end "rule__SpecFile__Group__0__Impl"
 
 
-    // $ANTLR start "rule__Spec__Group__1"
-    // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2818:1: rule__Spec__Group__1 : rule__Spec__Group__1__Impl rule__Spec__Group__2 ;
-    public final void rule__Spec__Group__1() throws RecognitionException {
+    // $ANTLR start "rule__SpecFile__Group__1"
+    // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2818:1: rule__SpecFile__Group__1 : rule__SpecFile__Group__1__Impl rule__SpecFile__Group__2 ;
+    public final void rule__SpecFile__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2822:1: ( rule__Spec__Group__1__Impl rule__Spec__Group__2 )
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2823:2: rule__Spec__Group__1__Impl rule__Spec__Group__2
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2822:1: ( rule__SpecFile__Group__1__Impl rule__SpecFile__Group__2 )
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2823:2: rule__SpecFile__Group__1__Impl rule__SpecFile__Group__2
             {
-            pushFollow(FOLLOW_rule__Spec__Group__1__Impl_in_rule__Spec__Group__16097);
-            rule__Spec__Group__1__Impl();
+            pushFollow(FOLLOW_rule__SpecFile__Group__1__Impl_in_rule__SpecFile__Group__16097);
+            rule__SpecFile__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Spec__Group__2_in_rule__Spec__Group__16100);
-            rule__Spec__Group__2();
+            pushFollow(FOLLOW_rule__SpecFile__Group__2_in_rule__SpecFile__Group__16100);
+            rule__SpecFile__Group__2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -9214,30 +9214,30 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Spec__Group__1"
+    // $ANTLR end "rule__SpecFile__Group__1"
 
 
-    // $ANTLR start "rule__Spec__Group__1__Impl"
-    // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2830:1: rule__Spec__Group__1__Impl : ( ( rule__Spec__NameAssignment_1 ) ) ;
-    public final void rule__Spec__Group__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__SpecFile__Group__1__Impl"
+    // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2830:1: rule__SpecFile__Group__1__Impl : ( ( rule__SpecFile__PackageNameAssignment_1 ) ) ;
+    public final void rule__SpecFile__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2834:1: ( ( ( rule__Spec__NameAssignment_1 ) ) )
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2835:1: ( ( rule__Spec__NameAssignment_1 ) )
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2834:1: ( ( ( rule__SpecFile__PackageNameAssignment_1 ) ) )
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2835:1: ( ( rule__SpecFile__PackageNameAssignment_1 ) )
             {
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2835:1: ( ( rule__Spec__NameAssignment_1 ) )
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2836:1: ( rule__Spec__NameAssignment_1 )
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2835:1: ( ( rule__SpecFile__PackageNameAssignment_1 ) )
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2836:1: ( rule__SpecFile__PackageNameAssignment_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getSpecAccess().getNameAssignment_1()); 
+               before(grammarAccess.getSpecFileAccess().getPackageNameAssignment_1()); 
             }
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2837:1: ( rule__Spec__NameAssignment_1 )
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2837:2: rule__Spec__NameAssignment_1
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2837:1: ( rule__SpecFile__PackageNameAssignment_1 )
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2837:2: rule__SpecFile__PackageNameAssignment_1
             {
-            pushFollow(FOLLOW_rule__Spec__NameAssignment_1_in_rule__Spec__Group__1__Impl6127);
-            rule__Spec__NameAssignment_1();
+            pushFollow(FOLLOW_rule__SpecFile__PackageNameAssignment_1_in_rule__SpecFile__Group__1__Impl6127);
+            rule__SpecFile__PackageNameAssignment_1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -9245,7 +9245,7 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getSpecAccess().getNameAssignment_1()); 
+               after(grammarAccess.getSpecFileAccess().getPackageNameAssignment_1()); 
             }
 
             }
@@ -9265,26 +9265,26 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Spec__Group__1__Impl"
+    // $ANTLR end "rule__SpecFile__Group__1__Impl"
 
 
-    // $ANTLR start "rule__Spec__Group__2"
-    // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2847:1: rule__Spec__Group__2 : rule__Spec__Group__2__Impl rule__Spec__Group__3 ;
-    public final void rule__Spec__Group__2() throws RecognitionException {
+    // $ANTLR start "rule__SpecFile__Group__2"
+    // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2847:1: rule__SpecFile__Group__2 : rule__SpecFile__Group__2__Impl rule__SpecFile__Group__3 ;
+    public final void rule__SpecFile__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2851:1: ( rule__Spec__Group__2__Impl rule__Spec__Group__3 )
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2852:2: rule__Spec__Group__2__Impl rule__Spec__Group__3
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2851:1: ( rule__SpecFile__Group__2__Impl rule__SpecFile__Group__3 )
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2852:2: rule__SpecFile__Group__2__Impl rule__SpecFile__Group__3
             {
-            pushFollow(FOLLOW_rule__Spec__Group__2__Impl_in_rule__Spec__Group__26157);
-            rule__Spec__Group__2__Impl();
+            pushFollow(FOLLOW_rule__SpecFile__Group__2__Impl_in_rule__SpecFile__Group__26157);
+            rule__SpecFile__Group__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Spec__Group__3_in_rule__Spec__Group__26160);
-            rule__Spec__Group__3();
+            pushFollow(FOLLOW_rule__SpecFile__Group__3_in_rule__SpecFile__Group__26160);
+            rule__SpecFile__Group__3();
 
             state._fsp--;
             if (state.failed) return ;
@@ -9303,26 +9303,26 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Spec__Group__2"
+    // $ANTLR end "rule__SpecFile__Group__2"
 
 
-    // $ANTLR start "rule__Spec__Group__2__Impl"
-    // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2859:1: rule__Spec__Group__2__Impl : ( ( rule__Spec__ImportsAssignment_2 )* ) ;
-    public final void rule__Spec__Group__2__Impl() throws RecognitionException {
+    // $ANTLR start "rule__SpecFile__Group__2__Impl"
+    // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2859:1: rule__SpecFile__Group__2__Impl : ( ( rule__SpecFile__ImportsAssignment_2 )* ) ;
+    public final void rule__SpecFile__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2863:1: ( ( ( rule__Spec__ImportsAssignment_2 )* ) )
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2864:1: ( ( rule__Spec__ImportsAssignment_2 )* )
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2863:1: ( ( ( rule__SpecFile__ImportsAssignment_2 )* ) )
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2864:1: ( ( rule__SpecFile__ImportsAssignment_2 )* )
             {
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2864:1: ( ( rule__Spec__ImportsAssignment_2 )* )
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2865:1: ( rule__Spec__ImportsAssignment_2 )*
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2864:1: ( ( rule__SpecFile__ImportsAssignment_2 )* )
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2865:1: ( rule__SpecFile__ImportsAssignment_2 )*
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getSpecAccess().getImportsAssignment_2()); 
+               before(grammarAccess.getSpecFileAccess().getImportsAssignment_2()); 
             }
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2866:1: ( rule__Spec__ImportsAssignment_2 )*
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2866:1: ( rule__SpecFile__ImportsAssignment_2 )*
             loop28:
             do {
                 int alt28=2;
@@ -9335,10 +9335,10 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
 
                 switch (alt28) {
             	case 1 :
-            	    // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2866:2: rule__Spec__ImportsAssignment_2
+            	    // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2866:2: rule__SpecFile__ImportsAssignment_2
             	    {
-            	    pushFollow(FOLLOW_rule__Spec__ImportsAssignment_2_in_rule__Spec__Group__2__Impl6187);
-            	    rule__Spec__ImportsAssignment_2();
+            	    pushFollow(FOLLOW_rule__SpecFile__ImportsAssignment_2_in_rule__SpecFile__Group__2__Impl6187);
+            	    rule__SpecFile__ImportsAssignment_2();
 
             	    state._fsp--;
             	    if (state.failed) return ;
@@ -9352,7 +9352,7 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
             } while (true);
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getSpecAccess().getImportsAssignment_2()); 
+               after(grammarAccess.getSpecFileAccess().getImportsAssignment_2()); 
             }
 
             }
@@ -9372,21 +9372,21 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Spec__Group__2__Impl"
+    // $ANTLR end "rule__SpecFile__Group__2__Impl"
 
 
-    // $ANTLR start "rule__Spec__Group__3"
-    // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2876:1: rule__Spec__Group__3 : rule__Spec__Group__3__Impl ;
-    public final void rule__Spec__Group__3() throws RecognitionException {
+    // $ANTLR start "rule__SpecFile__Group__3"
+    // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2876:1: rule__SpecFile__Group__3 : rule__SpecFile__Group__3__Impl ;
+    public final void rule__SpecFile__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2880:1: ( rule__Spec__Group__3__Impl )
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2881:2: rule__Spec__Group__3__Impl
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2880:1: ( rule__SpecFile__Group__3__Impl )
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2881:2: rule__SpecFile__Group__3__Impl
             {
-            pushFollow(FOLLOW_rule__Spec__Group__3__Impl_in_rule__Spec__Group__36218);
-            rule__Spec__Group__3__Impl();
+            pushFollow(FOLLOW_rule__SpecFile__Group__3__Impl_in_rule__SpecFile__Group__36218);
+            rule__SpecFile__Group__3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -9405,26 +9405,26 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Spec__Group__3"
+    // $ANTLR end "rule__SpecFile__Group__3"
 
 
-    // $ANTLR start "rule__Spec__Group__3__Impl"
-    // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2887:1: rule__Spec__Group__3__Impl : ( ( rule__Spec__ElementsAssignment_3 )* ) ;
-    public final void rule__Spec__Group__3__Impl() throws RecognitionException {
+    // $ANTLR start "rule__SpecFile__Group__3__Impl"
+    // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2887:1: rule__SpecFile__Group__3__Impl : ( ( rule__SpecFile__ElementsAssignment_3 )* ) ;
+    public final void rule__SpecFile__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2891:1: ( ( ( rule__Spec__ElementsAssignment_3 )* ) )
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2892:1: ( ( rule__Spec__ElementsAssignment_3 )* )
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2891:1: ( ( ( rule__SpecFile__ElementsAssignment_3 )* ) )
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2892:1: ( ( rule__SpecFile__ElementsAssignment_3 )* )
             {
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2892:1: ( ( rule__Spec__ElementsAssignment_3 )* )
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2893:1: ( rule__Spec__ElementsAssignment_3 )*
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2892:1: ( ( rule__SpecFile__ElementsAssignment_3 )* )
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2893:1: ( rule__SpecFile__ElementsAssignment_3 )*
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getSpecAccess().getElementsAssignment_3()); 
+               before(grammarAccess.getSpecFileAccess().getElementsAssignment_3()); 
             }
-            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2894:1: ( rule__Spec__ElementsAssignment_3 )*
+            // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2894:1: ( rule__SpecFile__ElementsAssignment_3 )*
             loop29:
             do {
                 int alt29=2;
@@ -9437,10 +9437,10 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
 
                 switch (alt29) {
             	case 1 :
-            	    // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2894:2: rule__Spec__ElementsAssignment_3
+            	    // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:2894:2: rule__SpecFile__ElementsAssignment_3
             	    {
-            	    pushFollow(FOLLOW_rule__Spec__ElementsAssignment_3_in_rule__Spec__Group__3__Impl6245);
-            	    rule__Spec__ElementsAssignment_3();
+            	    pushFollow(FOLLOW_rule__SpecFile__ElementsAssignment_3_in_rule__SpecFile__Group__3__Impl6245);
+            	    rule__SpecFile__ElementsAssignment_3();
 
             	    state._fsp--;
             	    if (state.failed) return ;
@@ -9454,7 +9454,7 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
             } while (true);
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getSpecAccess().getElementsAssignment_3()); 
+               after(grammarAccess.getSpecFileAccess().getElementsAssignment_3()); 
             }
 
             }
@@ -9474,7 +9474,7 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Spec__Group__3__Impl"
+    // $ANTLR end "rule__SpecFile__Group__3__Impl"
 
 
     // $ANTLR start "rule__Import__Group__0"
@@ -38783,9 +38783,9 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__JvmLowerBound__Group__1__Impl"
 
 
-    // $ANTLR start "rule__Spec__NameAssignment_1"
-    // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:13564:1: rule__Spec__NameAssignment_1 : ( ruleQualifiedName ) ;
-    public final void rule__Spec__NameAssignment_1() throws RecognitionException {
+    // $ANTLR start "rule__SpecFile__PackageNameAssignment_1"
+    // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:13564:1: rule__SpecFile__PackageNameAssignment_1 : ( ruleQualifiedName ) ;
+    public final void rule__SpecFile__PackageNameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -38797,15 +38797,15 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
             // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:13570:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getSpecAccess().getNameQualifiedNameParserRuleCall_1_0()); 
+               before(grammarAccess.getSpecFileAccess().getPackageNameQualifiedNameParserRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__Spec__NameAssignment_127225);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__SpecFile__PackageNameAssignment_127225);
             ruleQualifiedName();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getSpecAccess().getNameQualifiedNameParserRuleCall_1_0()); 
+               after(grammarAccess.getSpecFileAccess().getPackageNameQualifiedNameParserRuleCall_1_0()); 
             }
 
             }
@@ -38825,12 +38825,12 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Spec__NameAssignment_1"
+    // $ANTLR end "rule__SpecFile__PackageNameAssignment_1"
 
 
-    // $ANTLR start "rule__Spec__ImportsAssignment_2"
-    // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:13579:1: rule__Spec__ImportsAssignment_2 : ( ruleImport ) ;
-    public final void rule__Spec__ImportsAssignment_2() throws RecognitionException {
+    // $ANTLR start "rule__SpecFile__ImportsAssignment_2"
+    // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:13579:1: rule__SpecFile__ImportsAssignment_2 : ( ruleImport ) ;
+    public final void rule__SpecFile__ImportsAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -38842,15 +38842,15 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
             // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:13585:1: ruleImport
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getSpecAccess().getImportsImportParserRuleCall_2_0()); 
+               before(grammarAccess.getSpecFileAccess().getImportsImportParserRuleCall_2_0()); 
             }
-            pushFollow(FOLLOW_ruleImport_in_rule__Spec__ImportsAssignment_227256);
+            pushFollow(FOLLOW_ruleImport_in_rule__SpecFile__ImportsAssignment_227256);
             ruleImport();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getSpecAccess().getImportsImportParserRuleCall_2_0()); 
+               after(grammarAccess.getSpecFileAccess().getImportsImportParserRuleCall_2_0()); 
             }
 
             }
@@ -38870,12 +38870,12 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Spec__ImportsAssignment_2"
+    // $ANTLR end "rule__SpecFile__ImportsAssignment_2"
 
 
-    // $ANTLR start "rule__Spec__ElementsAssignment_3"
-    // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:13594:1: rule__Spec__ElementsAssignment_3 : ( ruleExampleGroup ) ;
-    public final void rule__Spec__ElementsAssignment_3() throws RecognitionException {
+    // $ANTLR start "rule__SpecFile__ElementsAssignment_3"
+    // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:13594:1: rule__SpecFile__ElementsAssignment_3 : ( ruleExampleGroup ) ;
+    public final void rule__SpecFile__ElementsAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -38887,15 +38887,15 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
             // ../de.bmw.carit.jnario.spec.ui/src-gen/de/bmw/carit/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g:13600:1: ruleExampleGroup
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getSpecAccess().getElementsExampleGroupParserRuleCall_3_0()); 
+               before(grammarAccess.getSpecFileAccess().getElementsExampleGroupParserRuleCall_3_0()); 
             }
-            pushFollow(FOLLOW_ruleExampleGroup_in_rule__Spec__ElementsAssignment_327287);
+            pushFollow(FOLLOW_ruleExampleGroup_in_rule__SpecFile__ElementsAssignment_327287);
             ruleExampleGroup();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getSpecAccess().getElementsExampleGroupParserRuleCall_3_0()); 
+               after(grammarAccess.getSpecFileAccess().getElementsExampleGroupParserRuleCall_3_0()); 
             }
 
             }
@@ -38915,7 +38915,7 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Spec__ElementsAssignment_3"
+    // $ANTLR end "rule__SpecFile__ElementsAssignment_3"
 
 
     // $ANTLR start "rule__Import__ImportedNamespaceAssignment_1"
@@ -46663,8 +46663,8 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
     static final String DFA83_acceptS =
         "\31\uffff\1\2\43\uffff\1\1";
     static final String DFA83_specialS =
-        "\1\uffff\1\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1"+
-        "\14\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\45\uffff}>";
+        "\1\uffff\1\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1\14"+
+        "\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\45\uffff}>";
     static final String[] DFA83_transitionS = {
             "\1\1\1\17\1\15\5\uffff\10\31\1\10\2\31\1\4\1\3\4\31\1\2\2\31"+
             "\1\11\1\13\3\uffff\1\6\7\31\1\12\2\31\1\30\1\21\1\31\1\7\3\31"+
@@ -47276,9 +47276,9 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
     }
  
 
-    public static final BitSet FOLLOW_ruleSpec_in_entryRuleSpec67 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleSpec74 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Spec__Group__0_in_ruleSpec100 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSpecFile_in_entryRuleSpecFile67 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleSpecFile74 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SpecFile__Group__0_in_ruleSpecFile100 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleImport_in_entryRuleImport127 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleImport134 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Import__Group__0_in_ruleImport160 = new BitSet(new long[]{0x0000000000000002L});
@@ -47561,17 +47561,17 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_ruleJvmWildcardTypeReference_in_rule__JvmArgumentTypeReference__Alternatives5953 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmWildcardTypeReference__ConstraintsAssignment_2_0_in_rule__JvmWildcardTypeReference__Alternatives_25985 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmWildcardTypeReference__ConstraintsAssignment_2_1_in_rule__JvmWildcardTypeReference__Alternatives_26003 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Spec__Group__0__Impl_in_rule__Spec__Group__06035 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Spec__Group__1_in_rule__Spec__Group__06038 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_34_in_rule__Spec__Group__0__Impl6066 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Spec__Group__1__Impl_in_rule__Spec__Group__16097 = new BitSet(new long[]{0x0000001800000000L});
-    public static final BitSet FOLLOW_rule__Spec__Group__2_in_rule__Spec__Group__16100 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Spec__NameAssignment_1_in_rule__Spec__Group__1__Impl6127 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Spec__Group__2__Impl_in_rule__Spec__Group__26157 = new BitSet(new long[]{0x0000001800000000L});
-    public static final BitSet FOLLOW_rule__Spec__Group__3_in_rule__Spec__Group__26160 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Spec__ImportsAssignment_2_in_rule__Spec__Group__2__Impl6187 = new BitSet(new long[]{0x0000000800000002L});
-    public static final BitSet FOLLOW_rule__Spec__Group__3__Impl_in_rule__Spec__Group__36218 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Spec__ElementsAssignment_3_in_rule__Spec__Group__3__Impl6245 = new BitSet(new long[]{0x0000001000000002L});
+    public static final BitSet FOLLOW_rule__SpecFile__Group__0__Impl_in_rule__SpecFile__Group__06035 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__SpecFile__Group__1_in_rule__SpecFile__Group__06038 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_34_in_rule__SpecFile__Group__0__Impl6066 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SpecFile__Group__1__Impl_in_rule__SpecFile__Group__16097 = new BitSet(new long[]{0x0000001800000000L});
+    public static final BitSet FOLLOW_rule__SpecFile__Group__2_in_rule__SpecFile__Group__16100 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SpecFile__PackageNameAssignment_1_in_rule__SpecFile__Group__1__Impl6127 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SpecFile__Group__2__Impl_in_rule__SpecFile__Group__26157 = new BitSet(new long[]{0x0000001800000000L});
+    public static final BitSet FOLLOW_rule__SpecFile__Group__3_in_rule__SpecFile__Group__26160 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SpecFile__ImportsAssignment_2_in_rule__SpecFile__Group__2__Impl6187 = new BitSet(new long[]{0x0000000800000002L});
+    public static final BitSet FOLLOW_rule__SpecFile__Group__3__Impl_in_rule__SpecFile__Group__36218 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SpecFile__ElementsAssignment_3_in_rule__SpecFile__Group__3__Impl6245 = new BitSet(new long[]{0x0000001000000002L});
     public static final BitSet FOLLOW_rule__Import__Group__0__Impl_in_rule__Import__Group__06284 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_rule__Import__Group__1_in_rule__Import__Group__06287 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_35_in_rule__Import__Group__0__Impl6315 = new BitSet(new long[]{0x0000000000000002L});
@@ -48422,9 +48422,9 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_32_in_rule__JvmLowerBound__Group__0__Impl27126 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmLowerBound__Group__1__Impl_in_rule__JvmLowerBound__Group__127157 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmLowerBound__TypeReferenceAssignment_1_in_rule__JvmLowerBound__Group__1__Impl27184 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__Spec__NameAssignment_127225 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleImport_in_rule__Spec__ImportsAssignment_227256 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleExampleGroup_in_rule__Spec__ElementsAssignment_327287 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__SpecFile__PackageNameAssignment_127225 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleImport_in_rule__SpecFile__ImportsAssignment_227256 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleExampleGroup_in_rule__SpecFile__ElementsAssignment_327287 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleQualifiedNameWithWildCard_in_rule__Import__ImportedNamespaceAssignment_127318 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__ExampleGroup__TargetAssignment_227349 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_STRING_in_rule__ExampleGroup__NameAssignment_327380 = new BitSet(new long[]{0x0000000000000002L});

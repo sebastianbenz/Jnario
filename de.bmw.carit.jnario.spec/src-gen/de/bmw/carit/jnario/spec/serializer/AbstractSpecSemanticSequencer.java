@@ -8,7 +8,7 @@ import de.bmw.carit.jnario.spec.spec.Example;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 import de.bmw.carit.jnario.spec.spec.Import;
 import de.bmw.carit.jnario.spec.spec.Member;
-import de.bmw.carit.jnario.spec.spec.Spec;
+import de.bmw.carit.jnario.spec.spec.SpecFile;
 import de.bmw.carit.jnario.spec.spec.SpecPackage;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmFormalParameter;
@@ -127,9 +127,9 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 					return; 
 				}
 				else break;
-			case SpecPackage.SPEC:
-				if(context == grammarAccess.getSpecRule()) {
-					sequence_Spec(context, (Spec) semanticObject); 
+			case SpecPackage.SPEC_FILE:
+				if(context == grammarAccess.getSpecFileRule()) {
+					sequence_SpecFile(context, (SpecFile) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1128,9 +1128,9 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=QualifiedName imports+=Import* elements+=ExampleGroup*)
+	 *     (packageName=QualifiedName imports+=Import* elements+=ExampleGroup*)
 	 */
-	protected void sequence_Spec(EObject context, Spec semanticObject) {
+	protected void sequence_SpecFile(EObject context, SpecFile semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

@@ -64,7 +64,7 @@ public class SpecParser extends AbstractContentAssistParser {
 					put(grammarAccess.getJvmArgumentTypeReferenceAccess().getAlternatives(), "rule__JvmArgumentTypeReference__Alternatives");
 					put(grammarAccess.getJvmWildcardTypeReferenceAccess().getAlternatives_2(), "rule__JvmWildcardTypeReference__Alternatives_2");
 					put(grammarAccess.getJvmTypeParameterAccess().getAlternatives_1(), "rule__JvmTypeParameter__Alternatives_1");
-					put(grammarAccess.getSpecAccess().getGroup(), "rule__Spec__Group__0");
+					put(grammarAccess.getSpecFileAccess().getGroup(), "rule__SpecFile__Group__0");
 					put(grammarAccess.getImportAccess().getGroup(), "rule__Import__Group__0");
 					put(grammarAccess.getQualifiedNameWithWildCardAccess().getGroup(), "rule__QualifiedNameWithWildCard__Group__0");
 					put(grammarAccess.getQualifiedNameWithWildCardAccess().getGroup_1(), "rule__QualifiedNameWithWildCard__Group_1__0");
@@ -199,9 +199,9 @@ public class SpecParser extends AbstractContentAssistParser {
 					put(grammarAccess.getJvmLowerBoundAccess().getGroup(), "rule__JvmLowerBound__Group__0");
 					put(grammarAccess.getJvmTypeParameterAccess().getGroup(), "rule__JvmTypeParameter__Group__0");
 					put(grammarAccess.getJvmTypeParameterAccess().getGroup_1_0(), "rule__JvmTypeParameter__Group_1_0__0");
-					put(grammarAccess.getSpecAccess().getNameAssignment_1(), "rule__Spec__NameAssignment_1");
-					put(grammarAccess.getSpecAccess().getImportsAssignment_2(), "rule__Spec__ImportsAssignment_2");
-					put(grammarAccess.getSpecAccess().getElementsAssignment_3(), "rule__Spec__ElementsAssignment_3");
+					put(grammarAccess.getSpecFileAccess().getPackageNameAssignment_1(), "rule__SpecFile__PackageNameAssignment_1");
+					put(grammarAccess.getSpecFileAccess().getImportsAssignment_2(), "rule__SpecFile__ImportsAssignment_2");
+					put(grammarAccess.getSpecFileAccess().getElementsAssignment_3(), "rule__SpecFile__ElementsAssignment_3");
 					put(grammarAccess.getImportAccess().getImportedNamespaceAssignment_1(), "rule__Import__ImportedNamespaceAssignment_1");
 					put(grammarAccess.getExampleGroupAccess().getTargetAssignment_2(), "rule__ExampleGroup__TargetAssignment_2");
 					put(grammarAccess.getExampleGroupAccess().getNameAssignment_3(), "rule__ExampleGroup__NameAssignment_3");
@@ -337,7 +337,7 @@ public class SpecParser extends AbstractContentAssistParser {
 	protected Collection<FollowElement> getFollowElements(AbstractInternalContentAssistParser parser) {
 		try {
 			de.bmw.carit.jnario.spec.ui.contentassist.antlr.internal.InternalSpecParser typedParser = (de.bmw.carit.jnario.spec.ui.contentassist.antlr.internal.InternalSpecParser) parser;
-			typedParser.entryRuleSpec();
+			typedParser.entryRuleSpecFile();
 			return typedParser.getFollowElements();
 		} catch(RecognitionException ex) {
 			throw new RuntimeException(ex);

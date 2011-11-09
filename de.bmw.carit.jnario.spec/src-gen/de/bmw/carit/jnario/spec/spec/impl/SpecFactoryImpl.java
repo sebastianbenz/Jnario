@@ -2,7 +2,6 @@
  * <copyright>
  * </copyright>
  *
-
  */
 package de.bmw.carit.jnario.spec.spec.impl;
 
@@ -68,7 +67,7 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
   {
     switch (eClass.getClassifierID())
     {
-      case SpecPackage.SPEC: return createSpec();
+      case SpecPackage.SPEC_FILE: return createSpecFile();
       case SpecPackage.IMPORT: return createImport();
       case SpecPackage.EXAMPLE_GROUP: return createExampleGroup();
       case SpecPackage.ABSTRACT_ELEMENT: return createAbstractElement();
@@ -85,10 +84,10 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Spec createSpec()
+  public SpecFile createSpecFile()
   {
-    SpecImpl spec = new SpecImpl();
-    return spec;
+    SpecFileImpl specFile = new SpecFileImpl();
+    return specFile;
   }
 
   /**

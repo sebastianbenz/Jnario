@@ -126,7 +126,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
         
         @Override
         protected String getFirstRuleName() {
-        	return "Spec";	
+        	return "SpecFile";	
        	}
        	
        	@Override
@@ -136,30 +136,30 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
 
-    // $ANTLR start "entryRuleSpec"
-    // ../de.bmw.carit.jnario.spec/src-gen/de/bmw/carit/jnario/spec/parser/antlr/internal/InternalSpec.g:67:1: entryRuleSpec returns [EObject current=null] : iv_ruleSpec= ruleSpec EOF ;
-    public final EObject entryRuleSpec() throws RecognitionException {
+    // $ANTLR start "entryRuleSpecFile"
+    // ../de.bmw.carit.jnario.spec/src-gen/de/bmw/carit/jnario/spec/parser/antlr/internal/InternalSpec.g:67:1: entryRuleSpecFile returns [EObject current=null] : iv_ruleSpecFile= ruleSpecFile EOF ;
+    public final EObject entryRuleSpecFile() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleSpec = null;
+        EObject iv_ruleSpecFile = null;
 
 
         try {
-            // ../de.bmw.carit.jnario.spec/src-gen/de/bmw/carit/jnario/spec/parser/antlr/internal/InternalSpec.g:68:2: (iv_ruleSpec= ruleSpec EOF )
-            // ../de.bmw.carit.jnario.spec/src-gen/de/bmw/carit/jnario/spec/parser/antlr/internal/InternalSpec.g:69:2: iv_ruleSpec= ruleSpec EOF
+            // ../de.bmw.carit.jnario.spec/src-gen/de/bmw/carit/jnario/spec/parser/antlr/internal/InternalSpec.g:68:2: (iv_ruleSpecFile= ruleSpecFile EOF )
+            // ../de.bmw.carit.jnario.spec/src-gen/de/bmw/carit/jnario/spec/parser/antlr/internal/InternalSpec.g:69:2: iv_ruleSpecFile= ruleSpecFile EOF
             {
             if ( state.backtracking==0 ) {
-               newCompositeNode(grammarAccess.getSpecRule()); 
+               newCompositeNode(grammarAccess.getSpecFileRule()); 
             }
-            pushFollow(FOLLOW_ruleSpec_in_entryRuleSpec75);
-            iv_ruleSpec=ruleSpec();
+            pushFollow(FOLLOW_ruleSpecFile_in_entryRuleSpecFile75);
+            iv_ruleSpecFile=ruleSpecFile();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
-               current =iv_ruleSpec; 
+               current =iv_ruleSpecFile; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleSpec85); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleSpecFile85); if (state.failed) return current;
 
             }
 
@@ -173,16 +173,16 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleSpec"
+    // $ANTLR end "entryRuleSpecFile"
 
 
-    // $ANTLR start "ruleSpec"
-    // ../de.bmw.carit.jnario.spec/src-gen/de/bmw/carit/jnario/spec/parser/antlr/internal/InternalSpec.g:76:1: ruleSpec returns [EObject current=null] : (otherlv_0= 'package' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_imports_2_0= ruleImport ) )* ( (lv_elements_3_0= ruleExampleGroup ) )* ) ;
-    public final EObject ruleSpec() throws RecognitionException {
+    // $ANTLR start "ruleSpecFile"
+    // ../de.bmw.carit.jnario.spec/src-gen/de/bmw/carit/jnario/spec/parser/antlr/internal/InternalSpec.g:76:1: ruleSpecFile returns [EObject current=null] : (otherlv_0= 'package' ( (lv_packageName_1_0= ruleQualifiedName ) ) ( (lv_imports_2_0= ruleImport ) )* ( (lv_elements_3_0= ruleExampleGroup ) )* ) ;
+    public final EObject ruleSpecFile() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
-        AntlrDatatypeRuleToken lv_name_1_0 = null;
+        AntlrDatatypeRuleToken lv_packageName_1_0 = null;
 
         EObject lv_imports_2_0 = null;
 
@@ -192,43 +192,43 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../de.bmw.carit.jnario.spec/src-gen/de/bmw/carit/jnario/spec/parser/antlr/internal/InternalSpec.g:79:28: ( (otherlv_0= 'package' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_imports_2_0= ruleImport ) )* ( (lv_elements_3_0= ruleExampleGroup ) )* ) )
-            // ../de.bmw.carit.jnario.spec/src-gen/de/bmw/carit/jnario/spec/parser/antlr/internal/InternalSpec.g:80:1: (otherlv_0= 'package' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_imports_2_0= ruleImport ) )* ( (lv_elements_3_0= ruleExampleGroup ) )* )
+            // ../de.bmw.carit.jnario.spec/src-gen/de/bmw/carit/jnario/spec/parser/antlr/internal/InternalSpec.g:79:28: ( (otherlv_0= 'package' ( (lv_packageName_1_0= ruleQualifiedName ) ) ( (lv_imports_2_0= ruleImport ) )* ( (lv_elements_3_0= ruleExampleGroup ) )* ) )
+            // ../de.bmw.carit.jnario.spec/src-gen/de/bmw/carit/jnario/spec/parser/antlr/internal/InternalSpec.g:80:1: (otherlv_0= 'package' ( (lv_packageName_1_0= ruleQualifiedName ) ) ( (lv_imports_2_0= ruleImport ) )* ( (lv_elements_3_0= ruleExampleGroup ) )* )
             {
-            // ../de.bmw.carit.jnario.spec/src-gen/de/bmw/carit/jnario/spec/parser/antlr/internal/InternalSpec.g:80:1: (otherlv_0= 'package' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_imports_2_0= ruleImport ) )* ( (lv_elements_3_0= ruleExampleGroup ) )* )
-            // ../de.bmw.carit.jnario.spec/src-gen/de/bmw/carit/jnario/spec/parser/antlr/internal/InternalSpec.g:80:3: otherlv_0= 'package' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_imports_2_0= ruleImport ) )* ( (lv_elements_3_0= ruleExampleGroup ) )*
+            // ../de.bmw.carit.jnario.spec/src-gen/de/bmw/carit/jnario/spec/parser/antlr/internal/InternalSpec.g:80:1: (otherlv_0= 'package' ( (lv_packageName_1_0= ruleQualifiedName ) ) ( (lv_imports_2_0= ruleImport ) )* ( (lv_elements_3_0= ruleExampleGroup ) )* )
+            // ../de.bmw.carit.jnario.spec/src-gen/de/bmw/carit/jnario/spec/parser/antlr/internal/InternalSpec.g:80:3: otherlv_0= 'package' ( (lv_packageName_1_0= ruleQualifiedName ) ) ( (lv_imports_2_0= ruleImport ) )* ( (lv_elements_3_0= ruleExampleGroup ) )*
             {
-            otherlv_0=(Token)match(input,11,FOLLOW_11_in_ruleSpec122); if (state.failed) return current;
+            otherlv_0=(Token)match(input,11,FOLLOW_11_in_ruleSpecFile122); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_0, grammarAccess.getSpecAccess().getPackageKeyword_0());
+                  	newLeafNode(otherlv_0, grammarAccess.getSpecFileAccess().getPackageKeyword_0());
                   
             }
-            // ../de.bmw.carit.jnario.spec/src-gen/de/bmw/carit/jnario/spec/parser/antlr/internal/InternalSpec.g:84:1: ( (lv_name_1_0= ruleQualifiedName ) )
-            // ../de.bmw.carit.jnario.spec/src-gen/de/bmw/carit/jnario/spec/parser/antlr/internal/InternalSpec.g:85:1: (lv_name_1_0= ruleQualifiedName )
+            // ../de.bmw.carit.jnario.spec/src-gen/de/bmw/carit/jnario/spec/parser/antlr/internal/InternalSpec.g:84:1: ( (lv_packageName_1_0= ruleQualifiedName ) )
+            // ../de.bmw.carit.jnario.spec/src-gen/de/bmw/carit/jnario/spec/parser/antlr/internal/InternalSpec.g:85:1: (lv_packageName_1_0= ruleQualifiedName )
             {
-            // ../de.bmw.carit.jnario.spec/src-gen/de/bmw/carit/jnario/spec/parser/antlr/internal/InternalSpec.g:85:1: (lv_name_1_0= ruleQualifiedName )
-            // ../de.bmw.carit.jnario.spec/src-gen/de/bmw/carit/jnario/spec/parser/antlr/internal/InternalSpec.g:86:3: lv_name_1_0= ruleQualifiedName
+            // ../de.bmw.carit.jnario.spec/src-gen/de/bmw/carit/jnario/spec/parser/antlr/internal/InternalSpec.g:85:1: (lv_packageName_1_0= ruleQualifiedName )
+            // ../de.bmw.carit.jnario.spec/src-gen/de/bmw/carit/jnario/spec/parser/antlr/internal/InternalSpec.g:86:3: lv_packageName_1_0= ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                
-              	        newCompositeNode(grammarAccess.getSpecAccess().getNameQualifiedNameParserRuleCall_1_0()); 
+              	        newCompositeNode(grammarAccess.getSpecFileAccess().getPackageNameQualifiedNameParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_ruleSpec143);
-            lv_name_1_0=ruleQualifiedName();
+            pushFollow(FOLLOW_ruleQualifiedName_in_ruleSpecFile143);
+            lv_packageName_1_0=ruleQualifiedName();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               	        if (current==null) {
-              	            current = createModelElementForParent(grammarAccess.getSpecRule());
+              	            current = createModelElementForParent(grammarAccess.getSpecFileRule());
               	        }
                      		set(
                      			current, 
-                     			"name",
-                      		lv_name_1_0, 
+                     			"packageName",
+                      		lv_packageName_1_0, 
                       		"QualifiedName");
               	        afterParserOrEnumRuleCall();
               	    
@@ -259,10 +259,10 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             	    {
             	    if ( state.backtracking==0 ) {
             	       
-            	      	        newCompositeNode(grammarAccess.getSpecAccess().getImportsImportParserRuleCall_2_0()); 
+            	      	        newCompositeNode(grammarAccess.getSpecFileAccess().getImportsImportParserRuleCall_2_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleImport_in_ruleSpec164);
+            	    pushFollow(FOLLOW_ruleImport_in_ruleSpecFile164);
             	    lv_imports_2_0=ruleImport();
 
             	    state._fsp--;
@@ -270,7 +270,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             	    if ( state.backtracking==0 ) {
 
             	      	        if (current==null) {
-            	      	            current = createModelElementForParent(grammarAccess.getSpecRule());
+            	      	            current = createModelElementForParent(grammarAccess.getSpecFileRule());
             	      	        }
             	             		add(
             	             			current, 
@@ -312,10 +312,10 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             	    {
             	    if ( state.backtracking==0 ) {
             	       
-            	      	        newCompositeNode(grammarAccess.getSpecAccess().getElementsExampleGroupParserRuleCall_3_0()); 
+            	      	        newCompositeNode(grammarAccess.getSpecFileAccess().getElementsExampleGroupParserRuleCall_3_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleExampleGroup_in_ruleSpec186);
+            	    pushFollow(FOLLOW_ruleExampleGroup_in_ruleSpecFile186);
             	    lv_elements_3_0=ruleExampleGroup();
 
             	    state._fsp--;
@@ -323,7 +323,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             	    if ( state.backtracking==0 ) {
 
             	      	        if (current==null) {
-            	      	            current = createModelElementForParent(grammarAccess.getSpecRule());
+            	      	            current = createModelElementForParent(grammarAccess.getSpecFileRule());
             	      	        }
             	             		add(
             	             			current, 
@@ -364,7 +364,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleSpec"
+    // $ANTLR end "ruleSpecFile"
 
 
     // $ANTLR start "entryRuleImport"
@@ -16574,9 +16574,9 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
     static final String DFA33_specialS =
         "\1\0\1\1\1\2\31\uffff}>";
     static final String[] DFA33_transitionS = {
-            "\2\5\1\1\11\uffff\1\5\15\uffff\1\5\2\uffff\2\5\3\uffff\1\5"+
-            "\4\uffff\1\2\1\33\1\5\1\4\2\uffff\1\5\1\uffff\1\5\3\uffff\3"+
-            "\5\2\uffff\1\5\1\uffff\10\5\2\uffff\1\3",
+            "\2\5\1\1\11\uffff\1\5\15\uffff\1\5\2\uffff\2\5\3\uffff\1\5\4"+
+            "\uffff\1\2\1\33\1\5\1\4\2\uffff\1\5\1\uffff\1\5\3\uffff\3\5"+
+            "\2\uffff\1\5\1\uffff\10\5\2\uffff\1\3",
             "\1\uffff",
             "\1\uffff",
             "",
@@ -16716,8 +16716,8 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
     static final String DFA35_specialS =
         "\1\uffff\1\0\74\uffff}>";
     static final String[] DFA35_transitionS = {
-            "\3\2\6\uffff\2\2\1\uffff\2\2\1\uffff\32\2\1\1\1\uffff\16\2"+
-            "\1\uffff\13\2",
+            "\3\2\6\uffff\2\2\1\uffff\2\2\1\uffff\32\2\1\1\1\uffff\16\2\1"+
+            "\uffff\13\2",
             "\1\uffff",
             "",
             "",
@@ -16853,8 +16853,8 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
     static final String DFA41_specialS =
         "\1\0\1\1\1\2\33\uffff}>";
     static final String[] DFA41_transitionS = {
-            "\2\5\1\1\11\uffff\1\5\15\uffff\1\5\2\uffff\2\5\3\uffff\1\5"+
-            "\4\uffff\1\2\1\uffff\1\5\1\4\1\5\1\uffff\1\5\1\uffff\1\5\3\uffff"+
+            "\2\5\1\1\11\uffff\1\5\15\uffff\1\5\2\uffff\2\5\3\uffff\1\5\4"+
+            "\uffff\1\2\1\uffff\1\5\1\4\1\5\1\uffff\1\5\1\uffff\1\5\3\uffff"+
             "\6\5\1\uffff\10\5\2\uffff\1\3",
             "\1\uffff",
             "\1\uffff",
@@ -17132,9 +17132,9 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
     static final String DFA63_specialS =
         "\1\0\1\1\1\2\31\uffff}>";
     static final String[] DFA63_transitionS = {
-            "\2\5\1\1\11\uffff\1\5\15\uffff\1\5\2\uffff\2\5\3\uffff\1\5"+
-            "\4\uffff\1\2\1\33\1\5\1\4\2\uffff\1\5\1\uffff\1\5\3\uffff\3"+
-            "\5\2\uffff\1\5\1\uffff\10\5\2\uffff\1\3",
+            "\2\5\1\1\11\uffff\1\5\15\uffff\1\5\2\uffff\2\5\3\uffff\1\5\4"+
+            "\uffff\1\2\1\33\1\5\1\4\2\uffff\1\5\1\uffff\1\5\3\uffff\3\5"+
+            "\2\uffff\1\5\1\uffff\10\5\2\uffff\1\3",
             "\1\uffff",
             "\1\uffff",
             "",
@@ -17274,8 +17274,8 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
     static final String DFA65_specialS =
         "\1\uffff\1\0\74\uffff}>";
     static final String[] DFA65_transitionS = {
-            "\3\2\6\uffff\2\2\1\uffff\2\2\1\uffff\32\2\1\1\1\uffff\16\2"+
-            "\1\uffff\13\2",
+            "\3\2\6\uffff\2\2\1\uffff\2\2\1\uffff\32\2\1\1\1\uffff\16\2\1"+
+            "\uffff\13\2",
             "\1\uffff",
             "",
             "",
@@ -17411,9 +17411,9 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
     static final String DFA71_specialS =
         "\1\0\1\1\1\2\31\uffff}>";
     static final String[] DFA71_transitionS = {
-            "\2\5\1\1\11\uffff\1\5\15\uffff\1\5\2\uffff\2\5\3\uffff\1\5"+
-            "\4\uffff\1\2\1\33\1\5\1\4\2\uffff\1\5\1\uffff\1\5\3\uffff\3"+
-            "\5\2\uffff\1\5\1\uffff\10\5\2\uffff\1\3",
+            "\2\5\1\1\11\uffff\1\5\15\uffff\1\5\2\uffff\2\5\3\uffff\1\5\4"+
+            "\uffff\1\2\1\33\1\5\1\4\2\uffff\1\5\1\uffff\1\5\3\uffff\3\5"+
+            "\2\uffff\1\5\1\uffff\10\5\2\uffff\1\3",
             "\1\uffff",
             "\1\uffff",
             "",
@@ -17553,8 +17553,8 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
     static final String DFA72_specialS =
         "\1\uffff\1\0\74\uffff}>";
     static final String[] DFA72_transitionS = {
-            "\3\2\6\uffff\2\2\1\uffff\2\2\1\uffff\32\2\1\1\1\uffff\16\2"+
-            "\1\uffff\13\2",
+            "\3\2\6\uffff\2\2\1\uffff\2\2\1\uffff\32\2\1\1\1\uffff\16\2\1"+
+            "\uffff\13\2",
             "\1\uffff",
             "",
             "",
@@ -17688,12 +17688,12 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
     static final String DFA74_acceptS =
         "\31\uffff\1\2\43\uffff\1\1";
     static final String DFA74_specialS =
-        "\1\uffff\1\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1"+
-        "\14\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\45\uffff}>";
+        "\1\uffff\1\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1\14"+
+        "\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\45\uffff}>";
     static final String[] DFA74_transitionS = {
-            "\1\17\1\15\1\1\6\uffff\2\31\1\uffff\1\6\1\31\1\uffff\13\31"+
-            "\1\10\2\31\1\4\1\3\3\31\1\2\4\31\1\30\1\31\1\12\1\uffff\2\31"+
-            "\1\21\1\31\1\7\3\31\1\22\1\23\1\24\2\31\1\11\1\uffff\1\5\1\13"+
+            "\1\17\1\15\1\1\6\uffff\2\31\1\uffff\1\6\1\31\1\uffff\13\31\1"+
+            "\10\2\31\1\4\1\3\3\31\1\2\4\31\1\30\1\31\1\12\1\uffff\2\31\1"+
+            "\21\1\31\1\7\3\31\1\22\1\23\1\24\2\31\1\11\1\uffff\1\5\1\13"+
             "\1\14\1\16\1\20\1\25\1\26\1\27\3\31",
             "\1\uffff",
             "\1\uffff",
@@ -18175,8 +18175,8 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
     static final String DFA84_specialS =
         "\1\uffff\1\0\74\uffff}>";
     static final String[] DFA84_transitionS = {
-            "\3\2\6\uffff\2\2\1\uffff\2\2\1\uffff\13\2\1\1\17\2\1\uffff"+
-            "\16\2\1\uffff\13\2",
+            "\3\2\6\uffff\2\2\1\uffff\2\2\1\uffff\13\2\1\1\17\2\1\uffff\16"+
+            "\2\1\uffff\13\2",
             "\1\uffff",
             "",
             "",
@@ -18301,12 +18301,12 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
     }
  
 
-    public static final BitSet FOLLOW_ruleSpec_in_entryRuleSpec75 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleSpec85 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_11_in_ruleSpec122 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleSpec143 = new BitSet(new long[]{0x0000000000009002L});
-    public static final BitSet FOLLOW_ruleImport_in_ruleSpec164 = new BitSet(new long[]{0x0000000000009002L});
-    public static final BitSet FOLLOW_ruleExampleGroup_in_ruleSpec186 = new BitSet(new long[]{0x0000000000008002L});
+    public static final BitSet FOLLOW_ruleSpecFile_in_entryRuleSpecFile75 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleSpecFile85 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_11_in_ruleSpecFile122 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleSpecFile143 = new BitSet(new long[]{0x0000000000009002L});
+    public static final BitSet FOLLOW_ruleImport_in_ruleSpecFile164 = new BitSet(new long[]{0x0000000000009002L});
+    public static final BitSet FOLLOW_ruleExampleGroup_in_ruleSpecFile186 = new BitSet(new long[]{0x0000000000008002L});
     public static final BitSet FOLLOW_ruleImport_in_entryRuleImport223 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleImport233 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_12_in_ruleImport270 = new BitSet(new long[]{0x0000000000000040L});

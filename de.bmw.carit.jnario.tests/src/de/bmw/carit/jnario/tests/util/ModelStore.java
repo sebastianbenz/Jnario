@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.util.StringInputStream;
 import org.junit.Assert;
 
@@ -21,8 +22,13 @@ import com.google.common.collect.Iterators;
 
 public class ModelStore implements Iterable<EObject> {
 
-	private ResourceSet resourceSet = new ResourceSetImpl();
+	
+	private XtextResourceSet resourceSet = new XtextResourceSet();
 
+	public ModelStore() {
+		resourceSet.setClasspathURIContext(getClass());
+	}
+	
 	public List<Resource> load(IUriProvider uriProvider) {
 		for (URI uri : uriProvider.allUris()) {
 			resourceSet.getResource(uri, true);

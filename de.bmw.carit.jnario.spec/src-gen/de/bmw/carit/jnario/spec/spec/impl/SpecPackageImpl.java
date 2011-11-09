@@ -2,7 +2,6 @@
  * <copyright>
  * </copyright>
  *
-
  */
 package de.bmw.carit.jnario.spec.spec.impl;
 
@@ -12,8 +11,8 @@ import de.bmw.carit.jnario.spec.spec.Example;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 import de.bmw.carit.jnario.spec.spec.Import;
 import de.bmw.carit.jnario.spec.spec.Member;
-import de.bmw.carit.jnario.spec.spec.Spec;
 import de.bmw.carit.jnario.spec.spec.SpecFactory;
+import de.bmw.carit.jnario.spec.spec.SpecFile;
 import de.bmw.carit.jnario.spec.spec.SpecPackage;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -40,7 +39,7 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass specEClass = null;
+  private EClass specFileEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -155,9 +154,9 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getSpec()
+  public EClass getSpecFile()
   {
-    return specEClass;
+    return specFileEClass;
   }
 
   /**
@@ -165,9 +164,9 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getSpec_Name()
+  public EAttribute getSpecFile_PackageName()
   {
-    return (EAttribute)specEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)specFileEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -175,9 +174,9 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSpec_Imports()
+  public EReference getSpecFile_Imports()
   {
-    return (EReference)specEClass.getEStructuralFeatures().get(1);
+    return (EReference)specFileEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -185,9 +184,9 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSpec_Elements()
+  public EReference getSpecFile_Elements()
   {
-    return (EReference)specEClass.getEStructuralFeatures().get(2);
+    return (EReference)specFileEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -380,10 +379,10 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
     isCreated = true;
 
     // Create classes and their features
-    specEClass = createEClass(SPEC);
-    createEAttribute(specEClass, SPEC__NAME);
-    createEReference(specEClass, SPEC__IMPORTS);
-    createEReference(specEClass, SPEC__ELEMENTS);
+    specFileEClass = createEClass(SPEC_FILE);
+    createEAttribute(specFileEClass, SPEC_FILE__PACKAGE_NAME);
+    createEReference(specFileEClass, SPEC_FILE__IMPORTS);
+    createEReference(specFileEClass, SPEC_FILE__ELEMENTS);
 
     importEClass = createEClass(IMPORT);
     createEAttribute(importEClass, IMPORT__IMPORTED_NAMESPACE);
@@ -446,10 +445,10 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
     exampleEClass.getESuperTypes().add(this.getAbstractElement());
 
     // Initialize classes and features; add operations and parameters
-    initEClass(specEClass, Spec.class, "Spec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getSpec_Name(), ecorePackage.getEString(), "name", null, 0, 1, Spec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSpec_Imports(), this.getImport(), null, "imports", null, 0, -1, Spec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSpec_Elements(), this.getExampleGroup(), null, "elements", null, 0, -1, Spec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(specFileEClass, SpecFile.class, "SpecFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSpecFile_PackageName(), ecorePackage.getEString(), "packageName", null, 0, 1, SpecFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSpecFile_Imports(), this.getImport(), null, "imports", null, 0, -1, SpecFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSpecFile_Elements(), this.getExampleGroup(), null, "elements", null, 0, -1, SpecFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getImport_ImportedNamespace(), ecorePackage.getEString(), "importedNamespace", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

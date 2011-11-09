@@ -2,7 +2,6 @@
  * <copyright>
  * </copyright>
  *
-
  */
 package de.bmw.carit.jnario.spec.spec;
 
@@ -27,13 +26,13 @@ public interface SpecFactory extends EFactory
   SpecFactory eINSTANCE = de.bmw.carit.jnario.spec.spec.impl.SpecFactoryImpl.init();
 
   /**
-   * Returns a new object of class '<em>Spec</em>'.
+   * Returns a new object of class '<em>File</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Spec</em>'.
+   * @return a new object of class '<em>File</em>'.
    * @generated
    */
-  Spec createSpec();
+  SpecFile createSpecFile();
 
   /**
    * Returns a new object of class '<em>Import</em>'.

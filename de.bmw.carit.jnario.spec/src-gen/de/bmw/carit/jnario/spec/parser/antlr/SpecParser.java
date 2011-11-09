@@ -25,7 +25,7 @@ public class SpecParser extends org.eclipse.xtext.parser.antlr.AbstractAntlrPars
 	
 	@Override 
 	protected String getDefaultRuleName() {
-		return "Spec";
+		return "SpecFile";
 	}
 	
 	public SpecGrammarAccess getGrammarAccess() {
