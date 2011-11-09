@@ -27,7 +27,7 @@ AbstractElement:
 ;
 
 Member:
-	decl = XVariableDeclaration
+	type=JvmTypeReference name=ValidID ('=' right=XExpression)?
 ;
 
 

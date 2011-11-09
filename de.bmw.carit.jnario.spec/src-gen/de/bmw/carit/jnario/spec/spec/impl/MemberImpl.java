@@ -17,6 +17,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.xtext.common.types.JvmTypeReference;
+
 import org.eclipse.xtext.xbase.XExpression;
 
 /**
@@ -26,7 +28,8 @@ import org.eclipse.xtext.xbase.XExpression;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.MemberImpl#getDecl <em>Decl</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.MemberImpl#getType <em>Type</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.MemberImpl#getRight <em>Right</em>}</li>
  * </ul>
  * </p>
  *
@@ -35,14 +38,24 @@ import org.eclipse.xtext.xbase.XExpression;
 public class MemberImpl extends AbstractElementImpl implements Member
 {
   /**
-   * The cached value of the '{@link #getDecl() <em>Decl</em>}' containment reference.
+   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getDecl()
+   * @see #getType()
    * @generated
    * @ordered
    */
-  protected XExpression decl;
+  protected JvmTypeReference type;
+
+  /**
+   * The cached value of the '{@link #getRight() <em>Right</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRight()
+   * @generated
+   * @ordered
+   */
+  protected XExpression right;
 
   /**
    * <!-- begin-user-doc -->
@@ -70,9 +83,9 @@ public class MemberImpl extends AbstractElementImpl implements Member
    * <!-- end-user-doc -->
    * @generated
    */
-  public XExpression getDecl()
+  public JvmTypeReference getType()
   {
-    return decl;
+    return type;
   }
 
   /**
@@ -80,13 +93,13 @@ public class MemberImpl extends AbstractElementImpl implements Member
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetDecl(XExpression newDecl, NotificationChain msgs)
+  public NotificationChain basicSetType(JvmTypeReference newType, NotificationChain msgs)
   {
-    XExpression oldDecl = decl;
-    decl = newDecl;
+    JvmTypeReference oldType = type;
+    type = newType;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SpecPackage.MEMBER__DECL, oldDecl, newDecl);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SpecPackage.MEMBER__TYPE, oldType, newType);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -97,20 +110,68 @@ public class MemberImpl extends AbstractElementImpl implements Member
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setDecl(XExpression newDecl)
+  public void setType(JvmTypeReference newType)
   {
-    if (newDecl != decl)
+    if (newType != type)
     {
       NotificationChain msgs = null;
-      if (decl != null)
-        msgs = ((InternalEObject)decl).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SpecPackage.MEMBER__DECL, null, msgs);
-      if (newDecl != null)
-        msgs = ((InternalEObject)newDecl).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SpecPackage.MEMBER__DECL, null, msgs);
-      msgs = basicSetDecl(newDecl, msgs);
+      if (type != null)
+        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SpecPackage.MEMBER__TYPE, null, msgs);
+      if (newType != null)
+        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SpecPackage.MEMBER__TYPE, null, msgs);
+      msgs = basicSetType(newType, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.MEMBER__DECL, newDecl, newDecl));
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.MEMBER__TYPE, newType, newType));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public XExpression getRight()
+  {
+    return right;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetRight(XExpression newRight, NotificationChain msgs)
+  {
+    XExpression oldRight = right;
+    right = newRight;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SpecPackage.MEMBER__RIGHT, oldRight, newRight);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRight(XExpression newRight)
+  {
+    if (newRight != right)
+    {
+      NotificationChain msgs = null;
+      if (right != null)
+        msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SpecPackage.MEMBER__RIGHT, null, msgs);
+      if (newRight != null)
+        msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SpecPackage.MEMBER__RIGHT, null, msgs);
+      msgs = basicSetRight(newRight, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.MEMBER__RIGHT, newRight, newRight));
   }
 
   /**
@@ -123,8 +184,10 @@ public class MemberImpl extends AbstractElementImpl implements Member
   {
     switch (featureID)
     {
-      case SpecPackage.MEMBER__DECL:
-        return basicSetDecl(null, msgs);
+      case SpecPackage.MEMBER__TYPE:
+        return basicSetType(null, msgs);
+      case SpecPackage.MEMBER__RIGHT:
+        return basicSetRight(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -139,8 +202,10 @@ public class MemberImpl extends AbstractElementImpl implements Member
   {
     switch (featureID)
     {
-      case SpecPackage.MEMBER__DECL:
-        return getDecl();
+      case SpecPackage.MEMBER__TYPE:
+        return getType();
+      case SpecPackage.MEMBER__RIGHT:
+        return getRight();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -155,8 +220,11 @@ public class MemberImpl extends AbstractElementImpl implements Member
   {
     switch (featureID)
     {
-      case SpecPackage.MEMBER__DECL:
-        setDecl((XExpression)newValue);
+      case SpecPackage.MEMBER__TYPE:
+        setType((JvmTypeReference)newValue);
+        return;
+      case SpecPackage.MEMBER__RIGHT:
+        setRight((XExpression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -172,8 +240,11 @@ public class MemberImpl extends AbstractElementImpl implements Member
   {
     switch (featureID)
     {
-      case SpecPackage.MEMBER__DECL:
-        setDecl((XExpression)null);
+      case SpecPackage.MEMBER__TYPE:
+        setType((JvmTypeReference)null);
+        return;
+      case SpecPackage.MEMBER__RIGHT:
+        setRight((XExpression)null);
         return;
     }
     super.eUnset(featureID);
@@ -189,8 +260,10 @@ public class MemberImpl extends AbstractElementImpl implements Member
   {
     switch (featureID)
     {
-      case SpecPackage.MEMBER__DECL:
-        return decl != null;
+      case SpecPackage.MEMBER__TYPE:
+        return type != null;
+      case SpecPackage.MEMBER__RIGHT:
+        return right != null;
     }
     return super.eIsSet(featureID);
   }

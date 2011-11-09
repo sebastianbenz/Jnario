@@ -29,7 +29,6 @@ import org.eclipse.xtext.xbase.XExpression;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleImpl#getFeature <em>Feature</em>}</li>
- *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleImpl#getBody <em>Body</em>}</li>
  * </ul>
  * </p>
@@ -47,26 +46,6 @@ public class ExampleImpl extends AbstractElementImpl implements Example
    * @ordered
    */
   protected JvmIdentifiableElement feature;
-
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference.
@@ -147,29 +126,6 @@ public class ExampleImpl extends AbstractElementImpl implements Example
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.EXAMPLE__NAME, oldName, name));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public XExpression getBody()
   {
     return body;
@@ -242,8 +198,6 @@ public class ExampleImpl extends AbstractElementImpl implements Example
       case SpecPackage.EXAMPLE__FEATURE:
         if (resolve) return getFeature();
         return basicGetFeature();
-      case SpecPackage.EXAMPLE__NAME:
-        return getName();
       case SpecPackage.EXAMPLE__BODY:
         return getBody();
     }
@@ -262,9 +216,6 @@ public class ExampleImpl extends AbstractElementImpl implements Example
     {
       case SpecPackage.EXAMPLE__FEATURE:
         setFeature((JvmIdentifiableElement)newValue);
-        return;
-      case SpecPackage.EXAMPLE__NAME:
-        setName((String)newValue);
         return;
       case SpecPackage.EXAMPLE__BODY:
         setBody((XExpression)newValue);
@@ -286,9 +237,6 @@ public class ExampleImpl extends AbstractElementImpl implements Example
       case SpecPackage.EXAMPLE__FEATURE:
         setFeature((JvmIdentifiableElement)null);
         return;
-      case SpecPackage.EXAMPLE__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case SpecPackage.EXAMPLE__BODY:
         setBody((XExpression)null);
         return;
@@ -308,29 +256,10 @@ public class ExampleImpl extends AbstractElementImpl implements Example
     {
       case SpecPackage.EXAMPLE__FEATURE:
         return feature != null;
-      case SpecPackage.EXAMPLE__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case SpecPackage.EXAMPLE__BODY:
         return body != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //ExampleImpl

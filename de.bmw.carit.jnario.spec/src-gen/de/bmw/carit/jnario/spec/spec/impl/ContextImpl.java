@@ -12,15 +12,12 @@ import de.bmw.carit.jnario.spec.spec.SpecPackage;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -32,7 +29,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ContextImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ContextImpl#getElements <em>Elements</em>}</li>
  * </ul>
  * </p>
@@ -41,26 +37,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class ContextImpl extends AbstractElementImpl implements Context
 {
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -90,29 +66,6 @@ public class ContextImpl extends AbstractElementImpl implements Context
   protected EClass eStaticClass()
   {
     return SpecPackage.Literals.CONTEXT;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.CONTEXT__NAME, oldName, name));
   }
 
   /**
@@ -155,8 +108,6 @@ public class ContextImpl extends AbstractElementImpl implements Context
   {
     switch (featureID)
     {
-      case SpecPackage.CONTEXT__NAME:
-        return getName();
       case SpecPackage.CONTEXT__ELEMENTS:
         return getElements();
     }
@@ -174,9 +125,6 @@ public class ContextImpl extends AbstractElementImpl implements Context
   {
     switch (featureID)
     {
-      case SpecPackage.CONTEXT__NAME:
-        setName((String)newValue);
-        return;
       case SpecPackage.CONTEXT__ELEMENTS:
         getElements().clear();
         getElements().addAll((Collection<? extends AbstractElement>)newValue);
@@ -195,9 +143,6 @@ public class ContextImpl extends AbstractElementImpl implements Context
   {
     switch (featureID)
     {
-      case SpecPackage.CONTEXT__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case SpecPackage.CONTEXT__ELEMENTS:
         getElements().clear();
         return;
@@ -215,29 +160,10 @@ public class ContextImpl extends AbstractElementImpl implements Context
   {
     switch (featureID)
     {
-      case SpecPackage.CONTEXT__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case SpecPackage.CONTEXT__ELEMENTS:
         return elements != null && !elements.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //ContextImpl

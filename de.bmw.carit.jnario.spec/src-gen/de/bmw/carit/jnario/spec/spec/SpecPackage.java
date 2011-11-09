@@ -191,13 +191,22 @@ public interface SpecPackage extends EPackage
   int ABSTRACT_ELEMENT = 3;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ABSTRACT_ELEMENT__NAME = 0;
+
+  /**
    * The number of structural features of the '<em>Abstract Element</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ABSTRACT_ELEMENT_FEATURE_COUNT = 0;
+  int ABSTRACT_ELEMENT_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link de.bmw.carit.jnario.spec.spec.impl.MemberImpl <em>Member</em>}' class.
@@ -210,13 +219,31 @@ public interface SpecPackage extends EPackage
   int MEMBER = 4;
 
   /**
-   * The feature id for the '<em><b>Decl</b></em>' containment reference.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MEMBER__DECL = ABSTRACT_ELEMENT_FEATURE_COUNT + 0;
+  int MEMBER__NAME = ABSTRACT_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MEMBER__TYPE = ABSTRACT_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MEMBER__RIGHT = ABSTRACT_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Member</em>' class.
@@ -225,7 +252,7 @@ public interface SpecPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MEMBER_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 1;
+  int MEMBER_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link de.bmw.carit.jnario.spec.spec.impl.ContextImpl <em>Context</em>}' class.
@@ -244,7 +271,7 @@ public interface SpecPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTEXT__NAME = ABSTRACT_ELEMENT_FEATURE_COUNT + 0;
+  int CONTEXT__NAME = ABSTRACT_ELEMENT__NAME;
 
   /**
    * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -253,7 +280,7 @@ public interface SpecPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTEXT__ELEMENTS = ABSTRACT_ELEMENT_FEATURE_COUNT + 1;
+  int CONTEXT__ELEMENTS = ABSTRACT_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Context</em>' class.
@@ -262,7 +289,7 @@ public interface SpecPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTEXT_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 2;
+  int CONTEXT_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link de.bmw.carit.jnario.spec.spec.impl.ExampleImpl <em>Example</em>}' class.
@@ -275,6 +302,15 @@ public interface SpecPackage extends EPackage
   int EXAMPLE = 6;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXAMPLE__NAME = ABSTRACT_ELEMENT__NAME;
+
+  /**
    * The feature id for the '<em><b>Feature</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -284,22 +320,13 @@ public interface SpecPackage extends EPackage
   int EXAMPLE__FEATURE = ABSTRACT_ELEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXAMPLE__NAME = ABSTRACT_ELEMENT_FEATURE_COUNT + 1;
-
-  /**
    * The feature id for the '<em><b>Body</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXAMPLE__BODY = ABSTRACT_ELEMENT_FEATURE_COUNT + 2;
+  int EXAMPLE__BODY = ABSTRACT_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Example</em>' class.
@@ -308,7 +335,7 @@ public interface SpecPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXAMPLE_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 3;
+  int EXAMPLE_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 2;
 
 
   /**
@@ -429,6 +456,17 @@ public interface SpecPackage extends EPackage
   EClass getAbstractElement();
 
   /**
+   * Returns the meta object for the attribute '{@link de.bmw.carit.jnario.spec.spec.AbstractElement#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see de.bmw.carit.jnario.spec.spec.AbstractElement#getName()
+   * @see #getAbstractElement()
+   * @generated
+   */
+  EAttribute getAbstractElement_Name();
+
+  /**
    * Returns the meta object for class '{@link de.bmw.carit.jnario.spec.spec.Member <em>Member</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -439,15 +477,26 @@ public interface SpecPackage extends EPackage
   EClass getMember();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.spec.spec.Member#getDecl <em>Decl</em>}'.
+   * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.spec.spec.Member#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Decl</em>'.
-   * @see de.bmw.carit.jnario.spec.spec.Member#getDecl()
+   * @return the meta object for the containment reference '<em>Type</em>'.
+   * @see de.bmw.carit.jnario.spec.spec.Member#getType()
    * @see #getMember()
    * @generated
    */
-  EReference getMember_Decl();
+  EReference getMember_Type();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.spec.spec.Member#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see de.bmw.carit.jnario.spec.spec.Member#getRight()
+   * @see #getMember()
+   * @generated
+   */
+  EReference getMember_Right();
 
   /**
    * Returns the meta object for class '{@link de.bmw.carit.jnario.spec.spec.Context <em>Context</em>}'.
@@ -458,17 +507,6 @@ public interface SpecPackage extends EPackage
    * @generated
    */
   EClass getContext();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.bmw.carit.jnario.spec.spec.Context#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.bmw.carit.jnario.spec.spec.Context#getName()
-   * @see #getContext()
-   * @generated
-   */
-  EAttribute getContext_Name();
 
   /**
    * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.spec.spec.Context#getElements <em>Elements</em>}'.
@@ -501,17 +539,6 @@ public interface SpecPackage extends EPackage
    * @generated
    */
   EReference getExample_Feature();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.bmw.carit.jnario.spec.spec.Example#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.bmw.carit.jnario.spec.spec.Example#getName()
-   * @see #getExample()
-   * @generated
-   */
-  EAttribute getExample_Name();
 
   /**
    * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.spec.spec.Example#getBody <em>Body</em>}'.
@@ -644,6 +671,14 @@ public interface SpecPackage extends EPackage
     EClass ABSTRACT_ELEMENT = eINSTANCE.getAbstractElement();
 
     /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ABSTRACT_ELEMENT__NAME = eINSTANCE.getAbstractElement_Name();
+
+    /**
      * The meta object literal for the '{@link de.bmw.carit.jnario.spec.spec.impl.MemberImpl <em>Member</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -654,12 +689,20 @@ public interface SpecPackage extends EPackage
     EClass MEMBER = eINSTANCE.getMember();
 
     /**
-     * The meta object literal for the '<em><b>Decl</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MEMBER__DECL = eINSTANCE.getMember_Decl();
+    EReference MEMBER__TYPE = eINSTANCE.getMember_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MEMBER__RIGHT = eINSTANCE.getMember_Right();
 
     /**
      * The meta object literal for the '{@link de.bmw.carit.jnario.spec.spec.impl.ContextImpl <em>Context</em>}' class.
@@ -670,14 +713,6 @@ public interface SpecPackage extends EPackage
      * @generated
      */
     EClass CONTEXT = eINSTANCE.getContext();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute CONTEXT__NAME = eINSTANCE.getContext_Name();
 
     /**
      * The meta object literal for the '<em><b>Elements</b></em>' containment reference list feature.
@@ -704,14 +739,6 @@ public interface SpecPackage extends EPackage
      * @generated
      */
     EReference EXAMPLE__FEATURE = eINSTANCE.getExample_Feature();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute EXAMPLE__NAME = eINSTANCE.getExample_Name();
 
     /**
      * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.

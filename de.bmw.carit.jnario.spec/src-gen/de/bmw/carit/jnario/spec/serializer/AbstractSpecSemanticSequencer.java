@@ -1119,17 +1119,10 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     decl=XVariableDeclaration
+	 *     (type=JvmTypeReference name=ValidID right=XExpression?)
 	 */
 	protected void sequence_Member(EObject context, Member semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, SpecPackage.Literals.MEMBER__DECL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SpecPackage.Literals.MEMBER__DECL));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getMemberAccess().getDeclXVariableDeclarationParserRuleCall_0(), semanticObject.getDecl());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

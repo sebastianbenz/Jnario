@@ -22,17 +22,18 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//ExampleGroup/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//ExampleGroup/elements"/>
     </genClasses>
-    <genClasses ecoreClass="Spec.ecore#//AbstractElement"/>
+    <genClasses ecoreClass="Spec.ecore#//AbstractElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//AbstractElement/name"/>
+    </genClasses>
     <genClasses ecoreClass="Spec.ecore#//Member">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//Member/decl"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//Member/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//Member/right"/>
     </genClasses>
     <genClasses ecoreClass="Spec.ecore#//Context">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Context/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//Context/elements"/>
     </genClasses>
     <genClasses ecoreClass="Spec.ecore#//Example">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Spec.ecore#//Example/feature"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Example/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//Example/body"/>
     </genClasses>
   </genPackages>

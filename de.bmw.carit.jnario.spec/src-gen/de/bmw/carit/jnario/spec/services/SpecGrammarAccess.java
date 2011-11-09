@@ -188,18 +188,46 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class MemberElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Member");
-		private final Assignment cDeclAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cDeclXVariableDeclarationParserRuleCall_0 = (RuleCall)cDeclAssignment.eContents().get(0);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cTypeJvmTypeReferenceParserRuleCall_0_0 = (RuleCall)cTypeAssignment_0.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameValidIDParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cEqualsSignKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cRightAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cRightXExpressionParserRuleCall_2_1_0 = (RuleCall)cRightAssignment_2_1.eContents().get(0);
 		
 		//Member:
-		//	decl=XVariableDeclaration;
+		//	type=JvmTypeReference name=ValidID ("=" right=XExpression)?;
 		public ParserRule getRule() { return rule; }
 
-		//decl=XVariableDeclaration
-		public Assignment getDeclAssignment() { return cDeclAssignment; }
+		//type=JvmTypeReference name=ValidID ("=" right=XExpression)?
+		public Group getGroup() { return cGroup; }
 
-		//XVariableDeclaration
-		public RuleCall getDeclXVariableDeclarationParserRuleCall_0() { return cDeclXVariableDeclarationParserRuleCall_0; }
+		//type=JvmTypeReference
+		public Assignment getTypeAssignment_0() { return cTypeAssignment_0; }
+
+		//JvmTypeReference
+		public RuleCall getTypeJvmTypeReferenceParserRuleCall_0_0() { return cTypeJvmTypeReferenceParserRuleCall_0_0; }
+
+		//name=ValidID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ValidID
+		public RuleCall getNameValidIDParserRuleCall_1_0() { return cNameValidIDParserRuleCall_1_0; }
+
+		//("=" right=XExpression)?
+		public Group getGroup_2() { return cGroup_2; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_2_0() { return cEqualsSignKeyword_2_0; }
+
+		//right=XExpression
+		public Assignment getRightAssignment_2_1() { return cRightAssignment_2_1; }
+
+		//XExpression
+		public RuleCall getRightXExpressionParserRuleCall_2_1_0() { return cRightXExpressionParserRuleCall_2_1_0; }
 	}
 
 	public class ContextElements extends AbstractParserRuleElementFinder {
@@ -368,7 +396,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Member:
-	//	decl=XVariableDeclaration;
+	//	type=JvmTypeReference name=ValidID ("=" right=XExpression)?;
 	public MemberElements getMemberAccess() {
 		return (pMember != null) ? pMember : (pMember = new MemberElements());
 	}
