@@ -2,6 +2,7 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package de.bmw.carit.jnario.spec.spec;
 
@@ -134,52 +135,6 @@ public interface SpecPackage extends EPackage
   int IMPORT_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link de.bmw.carit.jnario.spec.spec.impl.ExampleGroupImpl <em>Example Group</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.bmw.carit.jnario.spec.spec.impl.ExampleGroupImpl
-   * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getExampleGroup()
-   * @generated
-   */
-  int EXAMPLE_GROUP = 2;
-
-  /**
-   * The feature id for the '<em><b>Target</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXAMPLE_GROUP__TARGET = 0;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXAMPLE_GROUP__NAME = 1;
-
-  /**
-   * The feature id for the '<em><b>Elements</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXAMPLE_GROUP__ELEMENTS = 2;
-
-  /**
-   * The number of structural features of the '<em>Example Group</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXAMPLE_GROUP_FEATURE_COUNT = 3;
-
-  /**
    * The meta object id for the '{@link de.bmw.carit.jnario.spec.spec.impl.AbstractElementImpl <em>Abstract Element</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -206,6 +161,61 @@ public interface SpecPackage extends EPackage
    * @ordered
    */
   int ABSTRACT_ELEMENT_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link de.bmw.carit.jnario.spec.spec.impl.ExampleGroupImpl <em>Example Group</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.bmw.carit.jnario.spec.spec.impl.ExampleGroupImpl
+   * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getExampleGroup()
+   * @generated
+   */
+  int EXAMPLE_GROUP = 2;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXAMPLE_GROUP__NAME = ABSTRACT_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Preamble</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXAMPLE_GROUP__PREAMBLE = ABSTRACT_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Target</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXAMPLE_GROUP__TARGET = ABSTRACT_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Elements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXAMPLE_GROUP__ELEMENTS = ABSTRACT_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Example Group</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXAMPLE_GROUP_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link de.bmw.carit.jnario.spec.spec.impl.MemberImpl <em>Member</em>}' class.
@@ -254,43 +264,6 @@ public interface SpecPackage extends EPackage
   int MEMBER_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link de.bmw.carit.jnario.spec.spec.impl.ContextImpl <em>Context</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.bmw.carit.jnario.spec.spec.impl.ContextImpl
-   * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getContext()
-   * @generated
-   */
-  int CONTEXT = 5;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONTEXT__NAME = ABSTRACT_ELEMENT__NAME;
-
-  /**
-   * The feature id for the '<em><b>Elements</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONTEXT__ELEMENTS = ABSTRACT_ELEMENT_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Context</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONTEXT_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 1;
-
-  /**
    * The meta object id for the '{@link de.bmw.carit.jnario.spec.spec.impl.ExampleImpl <em>Example</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -298,7 +271,7 @@ public interface SpecPackage extends EPackage
    * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getExample()
    * @generated
    */
-  int EXAMPLE = 6;
+  int EXAMPLE = 5;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -310,13 +283,22 @@ public interface SpecPackage extends EPackage
   int EXAMPLE__NAME = ABSTRACT_ELEMENT__NAME;
 
   /**
+   * The feature id for the '<em><b>Preamble</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXAMPLE__PREAMBLE = ABSTRACT_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
    * The feature id for the '<em><b>Feature</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXAMPLE__FEATURE = ABSTRACT_ELEMENT_FEATURE_COUNT + 0;
+  int EXAMPLE__FEATURE = ABSTRACT_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Body</b></em>' containment reference.
@@ -325,7 +307,7 @@ public interface SpecPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXAMPLE__BODY = ABSTRACT_ELEMENT_FEATURE_COUNT + 1;
+  int EXAMPLE__BODY = ABSTRACT_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Example</em>' class.
@@ -334,7 +316,7 @@ public interface SpecPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXAMPLE_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 2;
+  int EXAMPLE_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 3;
 
 
   /**
@@ -412,26 +394,26 @@ public interface SpecPackage extends EPackage
   EClass getExampleGroup();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getTarget <em>Target</em>}'.
+   * Returns the meta object for the attribute '{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getPreamble <em>Preamble</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Target</em>'.
+   * @return the meta object for the attribute '<em>Preamble</em>'.
+   * @see de.bmw.carit.jnario.spec.spec.ExampleGroup#getPreamble()
+   * @see #getExampleGroup()
+   * @generated
+   */
+  EAttribute getExampleGroup_Preamble();
+
+  /**
+   * Returns the meta object for the reference '{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getTarget <em>Target</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Target</em>'.
    * @see de.bmw.carit.jnario.spec.spec.ExampleGroup#getTarget()
    * @see #getExampleGroup()
    * @generated
    */
   EReference getExampleGroup_Target();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.bmw.carit.jnario.spec.spec.ExampleGroup#getName()
-   * @see #getExampleGroup()
-   * @generated
-   */
-  EAttribute getExampleGroup_Name();
 
   /**
    * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getElements <em>Elements</em>}'.
@@ -498,27 +480,6 @@ public interface SpecPackage extends EPackage
   EReference getMember_Right();
 
   /**
-   * Returns the meta object for class '{@link de.bmw.carit.jnario.spec.spec.Context <em>Context</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Context</em>'.
-   * @see de.bmw.carit.jnario.spec.spec.Context
-   * @generated
-   */
-  EClass getContext();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.spec.spec.Context#getElements <em>Elements</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Elements</em>'.
-   * @see de.bmw.carit.jnario.spec.spec.Context#getElements()
-   * @see #getContext()
-   * @generated
-   */
-  EReference getContext_Elements();
-
-  /**
    * Returns the meta object for class '{@link de.bmw.carit.jnario.spec.spec.Example <em>Example</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -527,6 +488,17 @@ public interface SpecPackage extends EPackage
    * @generated
    */
   EClass getExample();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.bmw.carit.jnario.spec.spec.Example#getPreamble <em>Preamble</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Preamble</em>'.
+   * @see de.bmw.carit.jnario.spec.spec.Example#getPreamble()
+   * @see #getExample()
+   * @generated
+   */
+  EAttribute getExample_Preamble();
 
   /**
    * Returns the meta object for the reference '{@link de.bmw.carit.jnario.spec.spec.Example#getFeature <em>Feature</em>}'.
@@ -636,20 +608,20 @@ public interface SpecPackage extends EPackage
     EClass EXAMPLE_GROUP = eINSTANCE.getExampleGroup();
 
     /**
-     * The meta object literal for the '<em><b>Target</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Preamble</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXAMPLE_GROUP__PREAMBLE = eINSTANCE.getExampleGroup_Preamble();
+
+    /**
+     * The meta object literal for the '<em><b>Target</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference EXAMPLE_GROUP__TARGET = eINSTANCE.getExampleGroup_Target();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute EXAMPLE_GROUP__NAME = eINSTANCE.getExampleGroup_Name();
 
     /**
      * The meta object literal for the '<em><b>Elements</b></em>' containment reference list feature.
@@ -704,24 +676,6 @@ public interface SpecPackage extends EPackage
     EReference MEMBER__RIGHT = eINSTANCE.getMember_Right();
 
     /**
-     * The meta object literal for the '{@link de.bmw.carit.jnario.spec.spec.impl.ContextImpl <em>Context</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.bmw.carit.jnario.spec.spec.impl.ContextImpl
-     * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getContext()
-     * @generated
-     */
-    EClass CONTEXT = eINSTANCE.getContext();
-
-    /**
-     * The meta object literal for the '<em><b>Elements</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CONTEXT__ELEMENTS = eINSTANCE.getContext_Elements();
-
-    /**
      * The meta object literal for the '{@link de.bmw.carit.jnario.spec.spec.impl.ExampleImpl <em>Example</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -730,6 +684,14 @@ public interface SpecPackage extends EPackage
      * @generated
      */
     EClass EXAMPLE = eINSTANCE.getExample();
+
+    /**
+     * The meta object literal for the '<em><b>Preamble</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXAMPLE__PREAMBLE = eINSTANCE.getExample_Preamble();
 
     /**
      * The meta object literal for the '<em><b>Feature</b></em>' reference feature.

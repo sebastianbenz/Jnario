@@ -21,41 +21,45 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	public class SpecFileElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SpecFile");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cPackageKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cPackageNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cPackageNameQualifiedNameParserRuleCall_1_0 = (RuleCall)cPackageNameAssignment_1.eContents().get(0);
-		private final Assignment cImportsAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cImportsImportParserRuleCall_2_0 = (RuleCall)cImportsAssignment_2.eContents().get(0);
-		private final Assignment cElementsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cElementsExampleGroupParserRuleCall_3_0 = (RuleCall)cElementsAssignment_3.eContents().get(0);
+		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
+		private final Keyword cPackageKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Assignment cPackageNameAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cPackageNameQualifiedNameParserRuleCall_0_1_0 = (RuleCall)cPackageNameAssignment_0_1.eContents().get(0);
+		private final Assignment cImportsAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cImportsImportParserRuleCall_1_0 = (RuleCall)cImportsAssignment_1.eContents().get(0);
+		private final Assignment cElementsAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cElementsExampleGroupParserRuleCall_2_0 = (RuleCall)cElementsAssignment_2.eContents().get(0);
 		
 		//SpecFile:
-		//	"package" packageName=QualifiedName imports+=Import* elements+=ExampleGroup*;
+		//	("package" packageName=QualifiedName)? imports+=Import* elements+=ExampleGroup*;
 		public ParserRule getRule() { return rule; }
 
-		//"package" packageName=QualifiedName imports+=Import* elements+=ExampleGroup*
+		//("package" packageName=QualifiedName)? imports+=Import* elements+=ExampleGroup*
 		public Group getGroup() { return cGroup; }
 
+		//("package" packageName=QualifiedName)?
+		public Group getGroup_0() { return cGroup_0; }
+
 		//"package"
-		public Keyword getPackageKeyword_0() { return cPackageKeyword_0; }
+		public Keyword getPackageKeyword_0_0() { return cPackageKeyword_0_0; }
 
 		//packageName=QualifiedName
-		public Assignment getPackageNameAssignment_1() { return cPackageNameAssignment_1; }
+		public Assignment getPackageNameAssignment_0_1() { return cPackageNameAssignment_0_1; }
 
 		//QualifiedName
-		public RuleCall getPackageNameQualifiedNameParserRuleCall_1_0() { return cPackageNameQualifiedNameParserRuleCall_1_0; }
+		public RuleCall getPackageNameQualifiedNameParserRuleCall_0_1_0() { return cPackageNameQualifiedNameParserRuleCall_0_1_0; }
 
 		//imports+=Import*
-		public Assignment getImportsAssignment_2() { return cImportsAssignment_2; }
+		public Assignment getImportsAssignment_1() { return cImportsAssignment_1; }
 
 		//Import
-		public RuleCall getImportsImportParserRuleCall_2_0() { return cImportsImportParserRuleCall_2_0; }
+		public RuleCall getImportsImportParserRuleCall_1_0() { return cImportsImportParserRuleCall_1_0; }
 
 		//elements+=ExampleGroup*
-		public Assignment getElementsAssignment_3() { return cElementsAssignment_3; }
+		public Assignment getElementsAssignment_2() { return cElementsAssignment_2; }
 
 		//ExampleGroup
-		public RuleCall getElementsExampleGroupParserRuleCall_3_0() { return cElementsExampleGroupParserRuleCall_3_0; }
+		public RuleCall getElementsExampleGroupParserRuleCall_2_0() { return cElementsExampleGroupParserRuleCall_2_0; }
 	}
 
 	public class ImportElements extends AbstractParserRuleElementFinder {
@@ -113,77 +117,91 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	public class ExampleGroupElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ExampleGroup");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cDescribesKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Action cExampleGroupAction_1 = (Action)cGroup.eContents().get(1);
-		private final Assignment cTargetAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cTargetJvmTypeReferenceParserRuleCall_2_0 = (RuleCall)cTargetAssignment_2.eContents().get(0);
-		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cNameSTRINGTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cElementsAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cElementsAbstractElementParserRuleCall_5_0 = (RuleCall)cElementsAssignment_5.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cPreambleAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Alternatives cPreambleAlternatives_0_0 = (Alternatives)cPreambleAssignment_0.eContents().get(0);
+		private final Keyword cPreambleDescribeKeyword_0_0_0 = (Keyword)cPreambleAlternatives_0_0.eContents().get(0);
+		private final Keyword cPreambleContextKeyword_0_0_1 = (Keyword)cPreambleAlternatives_0_0.eContents().get(1);
+		private final Assignment cTargetAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cTargetJvmIdentifiableElementCrossReference_1_0 = (CrossReference)cTargetAssignment_1.eContents().get(0);
+		private final RuleCall cTargetJvmIdentifiableElementValidIDParserRuleCall_1_0_1 = (RuleCall)cTargetJvmIdentifiableElementCrossReference_1_0.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameSTRINGTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cElementsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cElementsAbstractElementParserRuleCall_4_0 = (RuleCall)cElementsAssignment_4.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//ExampleGroup:
-		//	"describes" {ExampleGroup} target=JvmTypeReference? name=STRING? "{" elements+=AbstractElement* "}";
+		//	preamble=("describe" | "context") target=[types::JvmIdentifiableElement|ValidID]? name=STRING? "{"
+		//	elements+=AbstractElement* "}";
 		public ParserRule getRule() { return rule; }
 
-		//"describes" {ExampleGroup} target=JvmTypeReference? name=STRING? "{" elements+=AbstractElement* "}"
+		//preamble=("describe" | "context") target=[types::JvmIdentifiableElement|ValidID]? name=STRING? "{"
+		//elements+=AbstractElement* "}"
 		public Group getGroup() { return cGroup; }
 
-		//"describes"
-		public Keyword getDescribesKeyword_0() { return cDescribesKeyword_0; }
+		//preamble=("describe" | "context")
+		public Assignment getPreambleAssignment_0() { return cPreambleAssignment_0; }
 
-		//{ExampleGroup}
-		public Action getExampleGroupAction_1() { return cExampleGroupAction_1; }
+		//"describe" | "context"
+		public Alternatives getPreambleAlternatives_0_0() { return cPreambleAlternatives_0_0; }
 
-		//target=JvmTypeReference?
-		public Assignment getTargetAssignment_2() { return cTargetAssignment_2; }
+		//"describe"
+		public Keyword getPreambleDescribeKeyword_0_0_0() { return cPreambleDescribeKeyword_0_0_0; }
 
-		//JvmTypeReference
-		public RuleCall getTargetJvmTypeReferenceParserRuleCall_2_0() { return cTargetJvmTypeReferenceParserRuleCall_2_0; }
+		//"context"
+		public Keyword getPreambleContextKeyword_0_0_1() { return cPreambleContextKeyword_0_0_1; }
+
+		//target=[types::JvmIdentifiableElement|ValidID]?
+		public Assignment getTargetAssignment_1() { return cTargetAssignment_1; }
+
+		//[types::JvmIdentifiableElement|ValidID]
+		public CrossReference getTargetJvmIdentifiableElementCrossReference_1_0() { return cTargetJvmIdentifiableElementCrossReference_1_0; }
+
+		//ValidID
+		public RuleCall getTargetJvmIdentifiableElementValidIDParserRuleCall_1_0_1() { return cTargetJvmIdentifiableElementValidIDParserRuleCall_1_0_1; }
 
 		//name=STRING?
-		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 
 		//STRING
-		public RuleCall getNameSTRINGTerminalRuleCall_3_0() { return cNameSTRINGTerminalRuleCall_3_0; }
+		public RuleCall getNameSTRINGTerminalRuleCall_2_0() { return cNameSTRINGTerminalRuleCall_2_0; }
 
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_4() { return cLeftCurlyBracketKeyword_4; }
+		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
 		//elements+=AbstractElement*
-		public Assignment getElementsAssignment_5() { return cElementsAssignment_5; }
+		public Assignment getElementsAssignment_4() { return cElementsAssignment_4; }
 
 		//AbstractElement
-		public RuleCall getElementsAbstractElementParserRuleCall_5_0() { return cElementsAbstractElementParserRuleCall_5_0; }
+		public RuleCall getElementsAbstractElementParserRuleCall_4_0() { return cElementsAbstractElementParserRuleCall_4_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 	}
 
 	public class AbstractElementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "AbstractElement");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cContextParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cExampleParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cMemberParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cExampleParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cMemberParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cExampleGroupParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//AbstractElement:
-		//	Context | Example | Member;
+		//	Example | Member | ExampleGroup;
 		public ParserRule getRule() { return rule; }
 
-		//Context | Example | Member
+		//Example | Member | ExampleGroup
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//Context
-		public RuleCall getContextParserRuleCall_0() { return cContextParserRuleCall_0; }
-
 		//Example
-		public RuleCall getExampleParserRuleCall_1() { return cExampleParserRuleCall_1; }
+		public RuleCall getExampleParserRuleCall_0() { return cExampleParserRuleCall_0; }
 
 		//Member
-		public RuleCall getMemberParserRuleCall_2() { return cMemberParserRuleCall_2; }
+		public RuleCall getMemberParserRuleCall_1() { return cMemberParserRuleCall_1; }
+
+		//ExampleGroup
+		public RuleCall getExampleGroupParserRuleCall_2() { return cExampleGroupParserRuleCall_2; }
 	}
 
 	public class MemberElements extends AbstractParserRuleElementFinder {
@@ -230,50 +248,13 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getRightXExpressionParserRuleCall_2_1_0() { return cRightXExpressionParserRuleCall_2_1_0; }
 	}
 
-	public class ContextElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Context");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cContextKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameSTRINGTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cElementsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cElementsAbstractElementParserRuleCall_3_0 = (RuleCall)cElementsAssignment_3.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		
-		//Context:
-		//	"context" name=STRING "{" elements+=AbstractElement* "}";
-		public ParserRule getRule() { return rule; }
-
-		//"context" name=STRING "{" elements+=AbstractElement* "}"
-		public Group getGroup() { return cGroup; }
-
-		//"context"
-		public Keyword getContextKeyword_0() { return cContextKeyword_0; }
-
-		//name=STRING
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-
-		//STRING
-		public RuleCall getNameSTRINGTerminalRuleCall_1_0() { return cNameSTRINGTerminalRuleCall_1_0; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
-
-		//elements+=AbstractElement*
-		public Assignment getElementsAssignment_3() { return cElementsAssignment_3; }
-
-		//AbstractElement
-		public RuleCall getElementsAbstractElementParserRuleCall_3_0() { return cElementsAbstractElementParserRuleCall_3_0; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
-	}
-
 	public class ExampleElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Example");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cItKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cPreambleAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Alternatives cPreambleAlternatives_0_0 = (Alternatives)cPreambleAssignment_0.eContents().get(0);
+		private final Keyword cPreambleSpecifyKeyword_0_0_0 = (Keyword)cPreambleAlternatives_0_0.eContents().get(0);
+		private final Keyword cPreambleItKeyword_0_0_1 = (Keyword)cPreambleAlternatives_0_0.eContents().get(1);
 		private final Assignment cFeatureAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final CrossReference cFeatureJvmIdentifiableElementCrossReference_1_0 = (CrossReference)cFeatureAssignment_1.eContents().get(0);
 		private final RuleCall cFeatureJvmIdentifiableElementValidIDParserRuleCall_1_0_1 = (RuleCall)cFeatureJvmIdentifiableElementCrossReference_1_0.eContents().get(1);
@@ -283,14 +264,23 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cBodyXBlockExpressionParserRuleCall_3_0 = (RuleCall)cBodyAssignment_3.eContents().get(0);
 		
 		//Example:
-		//	"it" feature=[types::JvmIdentifiableElement|ValidID]? name=STRING? body=XBlockExpression;
+		//	preamble=("specify" | "it") feature=[types::JvmIdentifiableElement|ValidID]? name=STRING? body=XBlockExpression;
 		public ParserRule getRule() { return rule; }
 
-		//"it" feature=[types::JvmIdentifiableElement|ValidID]? name=STRING? body=XBlockExpression
+		//preamble=("specify" | "it") feature=[types::JvmIdentifiableElement|ValidID]? name=STRING? body=XBlockExpression
 		public Group getGroup() { return cGroup; }
 
+		//preamble=("specify" | "it")
+		public Assignment getPreambleAssignment_0() { return cPreambleAssignment_0; }
+
+		//"specify" | "it"
+		public Alternatives getPreambleAlternatives_0_0() { return cPreambleAlternatives_0_0; }
+
+		//"specify"
+		public Keyword getPreambleSpecifyKeyword_0_0_0() { return cPreambleSpecifyKeyword_0_0_0; }
+
 		//"it"
-		public Keyword getItKeyword_0() { return cItKeyword_0; }
+		public Keyword getPreambleItKeyword_0_0_1() { return cPreambleItKeyword_0_0_1; }
 
 		//feature=[types::JvmIdentifiableElement|ValidID]?
 		public Assignment getFeatureAssignment_1() { return cFeatureAssignment_1; }
@@ -321,7 +311,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	private ExampleGroupElements pExampleGroup;
 	private AbstractElementElements pAbstractElement;
 	private MemberElements pMember;
-	private ContextElements pContext;
 	private ExampleElements pExample;
 	
 	private final GrammarProvider grammarProvider;
@@ -346,7 +335,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//SpecFile:
-	//	"package" packageName=QualifiedName imports+=Import* elements+=ExampleGroup*;
+	//	("package" packageName=QualifiedName)? imports+=Import* elements+=ExampleGroup*;
 	public SpecFileElements getSpecFileAccess() {
 		return (pSpecFile != null) ? pSpecFile : (pSpecFile = new SpecFileElements());
 	}
@@ -376,7 +365,8 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ExampleGroup:
-	//	"describes" {ExampleGroup} target=JvmTypeReference? name=STRING? "{" elements+=AbstractElement* "}";
+	//	preamble=("describe" | "context") target=[types::JvmIdentifiableElement|ValidID]? name=STRING? "{"
+	//	elements+=AbstractElement* "}";
 	public ExampleGroupElements getExampleGroupAccess() {
 		return (pExampleGroup != null) ? pExampleGroup : (pExampleGroup = new ExampleGroupElements());
 	}
@@ -386,7 +376,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//AbstractElement:
-	//	Context | Example | Member;
+	//	Example | Member | ExampleGroup;
 	public AbstractElementElements getAbstractElementAccess() {
 		return (pAbstractElement != null) ? pAbstractElement : (pAbstractElement = new AbstractElementElements());
 	}
@@ -405,18 +395,8 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		return getMemberAccess().getRule();
 	}
 
-	//Context:
-	//	"context" name=STRING "{" elements+=AbstractElement* "}";
-	public ContextElements getContextAccess() {
-		return (pContext != null) ? pContext : (pContext = new ContextElements());
-	}
-	
-	public ParserRule getContextRule() {
-		return getContextAccess().getRule();
-	}
-
 	//Example:
-	//	"it" feature=[types::JvmIdentifiableElement|ValidID]? name=STRING? body=XBlockExpression;
+	//	preamble=("specify" | "it") feature=[types::JvmIdentifiableElement|ValidID]? name=STRING? body=XBlockExpression;
 	public ExampleElements getExampleAccess() {
 		return (pExample != null) ? pExample : (pExample = new ExampleElements());
 	}

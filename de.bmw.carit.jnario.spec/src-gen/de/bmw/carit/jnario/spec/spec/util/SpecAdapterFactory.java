@@ -2,6 +2,7 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package de.bmw.carit.jnario.spec.spec.util;
 
@@ -103,11 +104,6 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
         return createMemberAdapter();
       }
       @Override
-      public Adapter caseContext(Context object)
-      {
-        return createContextAdapter();
-      }
-      @Override
       public Adapter caseExample(Example object)
       {
         return createExampleAdapter();
@@ -205,21 +201,6 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createMemberAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.spec.spec.Context <em>Context</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.bmw.carit.jnario.spec.spec.Context
-   * @generated
-   */
-  public Adapter createContextAdapter()
   {
     return null;
   }

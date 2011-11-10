@@ -2,6 +2,7 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package de.bmw.carit.jnario.spec.spec.impl;
 
@@ -20,12 +21,11 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,45 +34,45 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleGroupImpl#getPreamble <em>Preamble</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleGroupImpl#getTarget <em>Target</em>}</li>
- *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleGroupImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleGroupImpl#getElements <em>Elements</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ExampleGroupImpl extends MinimalEObjectImpl.Container implements ExampleGroup
+public class ExampleGroupImpl extends AbstractElementImpl implements ExampleGroup
 {
   /**
-   * The cached value of the '{@link #getTarget() <em>Target</em>}' containment reference.
+   * The default value of the '{@link #getPreamble() <em>Preamble</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPreamble()
+   * @generated
+   * @ordered
+   */
+  protected static final String PREAMBLE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getPreamble() <em>Preamble</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPreamble()
+   * @generated
+   * @ordered
+   */
+  protected String preamble = PREAMBLE_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getTarget()
    * @generated
    * @ordered
    */
-  protected JvmTypeReference target;
-
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
+  protected JvmIdentifiableElement target;
 
   /**
    * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
@@ -110,7 +110,50 @@ public class ExampleGroupImpl extends MinimalEObjectImpl.Container implements Ex
    * <!-- end-user-doc -->
    * @generated
    */
-  public JvmTypeReference getTarget()
+  public String getPreamble()
+  {
+    return preamble;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setPreamble(String newPreamble)
+  {
+    String oldPreamble = preamble;
+    preamble = newPreamble;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.EXAMPLE_GROUP__PREAMBLE, oldPreamble, preamble));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public JvmIdentifiableElement getTarget()
+  {
+    if (target != null && target.eIsProxy())
+    {
+      InternalEObject oldTarget = (InternalEObject)target;
+      target = (JvmIdentifiableElement)eResolveProxy(oldTarget);
+      if (target != oldTarget)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SpecPackage.EXAMPLE_GROUP__TARGET, oldTarget, target));
+      }
+    }
+    return target;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public JvmIdentifiableElement basicGetTarget()
   {
     return target;
   }
@@ -120,60 +163,12 @@ public class ExampleGroupImpl extends MinimalEObjectImpl.Container implements Ex
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetTarget(JvmTypeReference newTarget, NotificationChain msgs)
+  public void setTarget(JvmIdentifiableElement newTarget)
   {
-    JvmTypeReference oldTarget = target;
+    JvmIdentifiableElement oldTarget = target;
     target = newTarget;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SpecPackage.EXAMPLE_GROUP__TARGET, oldTarget, newTarget);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setTarget(JvmTypeReference newTarget)
-  {
-    if (newTarget != target)
-    {
-      NotificationChain msgs = null;
-      if (target != null)
-        msgs = ((InternalEObject)target).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SpecPackage.EXAMPLE_GROUP__TARGET, null, msgs);
-      if (newTarget != null)
-        msgs = ((InternalEObject)newTarget).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SpecPackage.EXAMPLE_GROUP__TARGET, null, msgs);
-      msgs = basicSetTarget(newTarget, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.EXAMPLE_GROUP__TARGET, newTarget, newTarget));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.EXAMPLE_GROUP__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.EXAMPLE_GROUP__TARGET, oldTarget, target));
   }
 
   /**
@@ -200,8 +195,6 @@ public class ExampleGroupImpl extends MinimalEObjectImpl.Container implements Ex
   {
     switch (featureID)
     {
-      case SpecPackage.EXAMPLE_GROUP__TARGET:
-        return basicSetTarget(null, msgs);
       case SpecPackage.EXAMPLE_GROUP__ELEMENTS:
         return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
     }
@@ -218,10 +211,11 @@ public class ExampleGroupImpl extends MinimalEObjectImpl.Container implements Ex
   {
     switch (featureID)
     {
+      case SpecPackage.EXAMPLE_GROUP__PREAMBLE:
+        return getPreamble();
       case SpecPackage.EXAMPLE_GROUP__TARGET:
-        return getTarget();
-      case SpecPackage.EXAMPLE_GROUP__NAME:
-        return getName();
+        if (resolve) return getTarget();
+        return basicGetTarget();
       case SpecPackage.EXAMPLE_GROUP__ELEMENTS:
         return getElements();
     }
@@ -239,11 +233,11 @@ public class ExampleGroupImpl extends MinimalEObjectImpl.Container implements Ex
   {
     switch (featureID)
     {
-      case SpecPackage.EXAMPLE_GROUP__TARGET:
-        setTarget((JvmTypeReference)newValue);
+      case SpecPackage.EXAMPLE_GROUP__PREAMBLE:
+        setPreamble((String)newValue);
         return;
-      case SpecPackage.EXAMPLE_GROUP__NAME:
-        setName((String)newValue);
+      case SpecPackage.EXAMPLE_GROUP__TARGET:
+        setTarget((JvmIdentifiableElement)newValue);
         return;
       case SpecPackage.EXAMPLE_GROUP__ELEMENTS:
         getElements().clear();
@@ -263,11 +257,11 @@ public class ExampleGroupImpl extends MinimalEObjectImpl.Container implements Ex
   {
     switch (featureID)
     {
-      case SpecPackage.EXAMPLE_GROUP__TARGET:
-        setTarget((JvmTypeReference)null);
+      case SpecPackage.EXAMPLE_GROUP__PREAMBLE:
+        setPreamble(PREAMBLE_EDEFAULT);
         return;
-      case SpecPackage.EXAMPLE_GROUP__NAME:
-        setName(NAME_EDEFAULT);
+      case SpecPackage.EXAMPLE_GROUP__TARGET:
+        setTarget((JvmIdentifiableElement)null);
         return;
       case SpecPackage.EXAMPLE_GROUP__ELEMENTS:
         getElements().clear();
@@ -286,10 +280,10 @@ public class ExampleGroupImpl extends MinimalEObjectImpl.Container implements Ex
   {
     switch (featureID)
     {
+      case SpecPackage.EXAMPLE_GROUP__PREAMBLE:
+        return PREAMBLE_EDEFAULT == null ? preamble != null : !PREAMBLE_EDEFAULT.equals(preamble);
       case SpecPackage.EXAMPLE_GROUP__TARGET:
         return target != null;
-      case SpecPackage.EXAMPLE_GROUP__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case SpecPackage.EXAMPLE_GROUP__ELEMENTS:
         return elements != null && !elements.isEmpty();
     }
@@ -307,8 +301,8 @@ public class ExampleGroupImpl extends MinimalEObjectImpl.Container implements Ex
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
+    result.append(" (preamble: ");
+    result.append(preamble);
     result.append(')');
     return result.toString();
   }

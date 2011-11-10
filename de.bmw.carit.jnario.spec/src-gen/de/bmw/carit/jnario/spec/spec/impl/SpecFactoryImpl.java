@@ -2,6 +2,7 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package de.bmw.carit.jnario.spec.spec.impl;
 
@@ -72,7 +73,6 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
       case SpecPackage.EXAMPLE_GROUP: return createExampleGroup();
       case SpecPackage.ABSTRACT_ELEMENT: return createAbstractElement();
       case SpecPackage.MEMBER: return createMember();
-      case SpecPackage.CONTEXT: return createContext();
       case SpecPackage.EXAMPLE: return createExample();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -132,17 +132,6 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
   {
     MemberImpl member = new MemberImpl();
     return member;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Context createContext()
-  {
-    ContextImpl context = new ContextImpl();
-    return context;
   }
 
   /**

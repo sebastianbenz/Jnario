@@ -3,7 +3,6 @@ package de.bmw.carit.jnario.spec.serializer;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import de.bmw.carit.jnario.spec.services.SpecGrammarAccess;
-import de.bmw.carit.jnario.spec.spec.Context;
 import de.bmw.carit.jnario.spec.spec.Example;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 import de.bmw.carit.jnario.spec.spec.Import;
@@ -94,13 +93,6 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == SpecPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
-			case SpecPackage.CONTEXT:
-				if(context == grammarAccess.getAbstractElementRule() ||
-				   context == grammarAccess.getContextRule()) {
-					sequence_Context(context, (Context) semanticObject); 
-					return; 
-				}
-				else break;
 			case SpecPackage.EXAMPLE:
 				if(context == grammarAccess.getAbstractElementRule() ||
 				   context == grammarAccess.getExampleRule()) {
@@ -109,7 +101,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case SpecPackage.EXAMPLE_GROUP:
-				if(context == grammarAccess.getExampleGroupRule()) {
+				if(context == grammarAccess.getAbstractElementRule() ||
+				   context == grammarAccess.getExampleGroupRule()) {
 					sequence_ExampleGroup(context, (ExampleGroup) semanticObject); 
 					return; 
 				}
@@ -995,16 +988,7 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=STRING elements+=AbstractElement*)
-	 */
-	protected void sequence_Context(EObject context, Context semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (target=JvmTypeReference? name=STRING? elements+=AbstractElement*)
+	 *     ((preamble='describe' | preamble='context') target=[JvmIdentifiableElement|ValidID]? name=STRING? elements+=AbstractElement*)
 	 */
 	protected void sequence_ExampleGroup(EObject context, ExampleGroup semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1013,7 +997,7 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (feature=[JvmIdentifiableElement|ValidID]? name=STRING? body=XBlockExpression)
+	 *     ((preamble='specify' | preamble='it') feature=[JvmIdentifiableElement|ValidID]? name=STRING? body=XBlockExpression)
 	 */
 	protected void sequence_Example(EObject context, Example semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1128,7 +1112,7 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (packageName=QualifiedName imports+=Import* elements+=ExampleGroup*)
+	 *     (packageName=QualifiedName? imports+=Import* elements+=ExampleGroup*)
 	 */
 	protected void sequence_SpecFile(EObject context, SpecFile semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

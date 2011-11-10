@@ -3,9 +3,18 @@
  */
 package de.bmw.carit.jnario.spec;
 
+import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
+
+import de.bmw.carit.jnario.spec.jvmmodel.ExtendedJvmTypesBuilder;
+
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 public class SpecRuntimeModule extends de.bmw.carit.jnario.spec.AbstractSpecRuntimeModule {
 
+	
+	public Class<? extends JvmTypesBuilder> bindJvmTypesBuilder(){
+		return ExtendedJvmTypesBuilder.class;
+	}
+	
 }

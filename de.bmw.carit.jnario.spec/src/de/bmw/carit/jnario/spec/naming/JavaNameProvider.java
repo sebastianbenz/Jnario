@@ -1,17 +1,32 @@
 package de.bmw.carit.jnario.spec.naming;
 
+import org.eclipse.xtext.util.Strings;
+
+import de.bmw.carit.jnario.spec.spec.Example;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 
 public class JavaNameProvider {
 
 	public String getJavaClassName(ExampleGroup exampleGroup) {
+		String name = "Unknown";
 		if(exampleGroup.getTarget() != null){
-			return exampleGroup.getTarget().getSimpleName() + "Spec";
+			name = exampleGroup.getTarget().getSimpleName() ;
 		}
 		if(exampleGroup.getName() != null){
-			return exampleGroup.getName().replaceAll("[^a-zA-Z0-9]","");
+			name = exampleGroup.getName().replaceAll("[^a-zA-Z0-9]","");
 		}
-		return "NullSpec";
+		return Strings.toFirstUpper(name) + "Spec";
+	}
+	
+	public String getExampleMethodName(Example example){
+		String name = "unknown";
+		if(example.getFeature() != null){
+			name = example.getFeature().getSimpleName() + "Spec";
+		}
+		if(example.getName() != null){
+			name = example.getName().replaceAll("[^a-zA-Z0-9]","");
+		}
+		return Strings.toFirstLower(name);
 	}
 
 }

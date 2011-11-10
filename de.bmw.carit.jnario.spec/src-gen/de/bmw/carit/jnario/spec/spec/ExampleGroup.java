@@ -2,14 +2,13 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package de.bmw.carit.jnario.spec.spec;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,8 +18,8 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getPreamble <em>Preamble</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getTarget <em>Target</em>}</li>
- *   <li>{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getName <em>Name</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getElements <em>Elements</em>}</li>
  * </ul>
  * </p>
@@ -29,59 +28,59 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  * @model
  * @generated
  */
-public interface ExampleGroup extends EObject
+public interface ExampleGroup extends AbstractElement
 {
   /**
-   * Returns the value of the '<em><b>Target</b></em>' containment reference.
+   * Returns the value of the '<em><b>Preamble</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Target</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Preamble</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Target</em>' containment reference.
-   * @see #setTarget(JvmTypeReference)
-   * @see de.bmw.carit.jnario.spec.spec.SpecPackage#getExampleGroup_Target()
-   * @model containment="true"
-   * @generated
-   */
-  JvmTypeReference getTarget();
-
-  /**
-   * Sets the value of the '{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getTarget <em>Target</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Target</em>' containment reference.
-   * @see #getTarget()
-   * @generated
-   */
-  void setTarget(JvmTypeReference value);
-
-  /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see de.bmw.carit.jnario.spec.spec.SpecPackage#getExampleGroup_Name()
+   * @return the value of the '<em>Preamble</em>' attribute.
+   * @see #setPreamble(String)
+   * @see de.bmw.carit.jnario.spec.spec.SpecPackage#getExampleGroup_Preamble()
    * @model
    * @generated
    */
-  String getName();
+  String getPreamble();
 
   /**
-   * Sets the value of the '{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getPreamble <em>Preamble</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
+   * @param value the new value of the '<em>Preamble</em>' attribute.
+   * @see #getPreamble()
    * @generated
    */
-  void setName(String value);
+  void setPreamble(String value);
+
+  /**
+   * Returns the value of the '<em><b>Target</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Target</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Target</em>' reference.
+   * @see #setTarget(JvmIdentifiableElement)
+   * @see de.bmw.carit.jnario.spec.spec.SpecPackage#getExampleGroup_Target()
+   * @model
+   * @generated
+   */
+  JvmIdentifiableElement getTarget();
+
+  /**
+   * Sets the value of the '{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getTarget <em>Target</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Target</em>' reference.
+   * @see #getTarget()
+   * @generated
+   */
+  void setTarget(JvmIdentifiableElement value);
 
   /**
    * Returns the value of the '<em><b>Elements</b></em>' containment reference list.

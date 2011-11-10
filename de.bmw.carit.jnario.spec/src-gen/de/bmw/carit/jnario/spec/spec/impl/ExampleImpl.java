@@ -2,6 +2,7 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package de.bmw.carit.jnario.spec.spec.impl;
 
@@ -27,6 +28,7 @@ import org.eclipse.xtext.xbase.XExpression;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleImpl#getPreamble <em>Preamble</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleImpl#getFeature <em>Feature</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleImpl#getBody <em>Body</em>}</li>
  * </ul>
@@ -36,6 +38,26 @@ import org.eclipse.xtext.xbase.XExpression;
  */
 public class ExampleImpl extends AbstractElementImpl implements Example
 {
+  /**
+   * The default value of the '{@link #getPreamble() <em>Preamble</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPreamble()
+   * @generated
+   * @ordered
+   */
+  protected static final String PREAMBLE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getPreamble() <em>Preamble</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPreamble()
+   * @generated
+   * @ordered
+   */
+  protected String preamble = PREAMBLE_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getFeature() <em>Feature</em>}' reference.
    * <!-- begin-user-doc -->
@@ -75,6 +97,29 @@ public class ExampleImpl extends AbstractElementImpl implements Example
   protected EClass eStaticClass()
   {
     return SpecPackage.Literals.EXAMPLE;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getPreamble()
+  {
+    return preamble;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setPreamble(String newPreamble)
+  {
+    String oldPreamble = preamble;
+    preamble = newPreamble;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.EXAMPLE__PREAMBLE, oldPreamble, preamble));
   }
 
   /**
@@ -194,6 +239,8 @@ public class ExampleImpl extends AbstractElementImpl implements Example
   {
     switch (featureID)
     {
+      case SpecPackage.EXAMPLE__PREAMBLE:
+        return getPreamble();
       case SpecPackage.EXAMPLE__FEATURE:
         if (resolve) return getFeature();
         return basicGetFeature();
@@ -213,6 +260,9 @@ public class ExampleImpl extends AbstractElementImpl implements Example
   {
     switch (featureID)
     {
+      case SpecPackage.EXAMPLE__PREAMBLE:
+        setPreamble((String)newValue);
+        return;
       case SpecPackage.EXAMPLE__FEATURE:
         setFeature((JvmIdentifiableElement)newValue);
         return;
@@ -233,6 +283,9 @@ public class ExampleImpl extends AbstractElementImpl implements Example
   {
     switch (featureID)
     {
+      case SpecPackage.EXAMPLE__PREAMBLE:
+        setPreamble(PREAMBLE_EDEFAULT);
+        return;
       case SpecPackage.EXAMPLE__FEATURE:
         setFeature((JvmIdentifiableElement)null);
         return;
@@ -253,12 +306,31 @@ public class ExampleImpl extends AbstractElementImpl implements Example
   {
     switch (featureID)
     {
+      case SpecPackage.EXAMPLE__PREAMBLE:
+        return PREAMBLE_EDEFAULT == null ? preamble != null : !PREAMBLE_EDEFAULT.equals(preamble);
       case SpecPackage.EXAMPLE__FEATURE:
         return feature != null;
       case SpecPackage.EXAMPLE__BODY:
         return body != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (preamble: ");
+    result.append(preamble);
+    result.append(')');
+    return result.toString();
   }
 
 } //ExampleImpl

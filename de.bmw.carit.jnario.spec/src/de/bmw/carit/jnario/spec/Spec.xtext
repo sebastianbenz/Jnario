@@ -5,7 +5,7 @@ import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
 generate spec "http://www.bmw.de/carit/jnario/spec/Spec"
 
 SpecFile:
-'package' packageName=QualifiedName 
+('package' packageName=QualifiedName)? 
 	imports+=Import*
 	elements+=ExampleGroup*
 ;
@@ -16,30 +16,21 @@ Import:
 QualifiedNameWithWildCard :
     QualifiedName  ('.' '*')?;
 
-
-
-ExampleGroup: 'describes' {ExampleGroup} target=JvmTypeReference? name=STRING? '{'
+ExampleGroup: preamble=('describe'|'context') target=[types::JvmIdentifiableElement|ValidID]? name=STRING? '{'
        elements+=AbstractElement*
 '}'
 ;
 
 AbstractElement:
-	Context | Example | Member
+	Example | Member | ExampleGroup
 ;
 
 Member:
 	type=JvmTypeReference name=ValidID ('=' right=XExpression)?
 ;
 
-
-Context:
-	'context' name=STRING '{'
-		elements+=AbstractElement*
-	'}'
-;
-
 Example:
-	'it' feature=[types::JvmIdentifiableElement|ValidID]? name=STRING? 
-		body=XBlockExpression
+	preamble=('specify'|'it') feature=[types::JvmIdentifiableElement|ValidID]? name=STRING? 
+		body=XBlockExpression?
 ;
 

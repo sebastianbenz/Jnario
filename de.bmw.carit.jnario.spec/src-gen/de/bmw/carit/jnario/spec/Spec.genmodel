@@ -18,8 +18,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Import/importedNamespace"/>
     </genClasses>
     <genClasses ecoreClass="Spec.ecore#//ExampleGroup">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//ExampleGroup/target"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//ExampleGroup/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//ExampleGroup/preamble"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Spec.ecore#//ExampleGroup/target"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//ExampleGroup/elements"/>
     </genClasses>
     <genClasses ecoreClass="Spec.ecore#//AbstractElement">
@@ -29,10 +29,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//Member/type"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//Member/right"/>
     </genClasses>
-    <genClasses ecoreClass="Spec.ecore#//Context">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//Context/elements"/>
-    </genClasses>
     <genClasses ecoreClass="Spec.ecore#//Example">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Example/preamble"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Spec.ecore#//Example/feature"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//Example/body"/>
     </genClasses>
