@@ -393,13 +393,31 @@ public interface JnarioPackage extends EPackage
   int GIVEN__CODE = STEP__CODE;
 
   /**
+   * The feature id for the '<em><b>And</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GIVEN__AND = STEP_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>And code</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GIVEN__AND_CODE = STEP_FEATURE_COUNT + 1;
+
+  /**
    * The number of structural features of the '<em>Given</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GIVEN_FEATURE_COUNT = STEP_FEATURE_COUNT + 0;
+  int GIVEN_FEATURE_COUNT = STEP_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.WhenImpl <em>When</em>}' class.
@@ -430,13 +448,31 @@ public interface JnarioPackage extends EPackage
   int WHEN__CODE = STEP__CODE;
 
   /**
+   * The feature id for the '<em><b>And</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WHEN__AND = STEP_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>And code</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WHEN__AND_CODE = STEP_FEATURE_COUNT + 1;
+
+  /**
    * The number of structural features of the '<em>When</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WHEN_FEATURE_COUNT = STEP_FEATURE_COUNT + 0;
+  int WHEN_FEATURE_COUNT = STEP_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.ThenImpl <em>Then</em>}' class.
@@ -467,13 +503,31 @@ public interface JnarioPackage extends EPackage
   int THEN__CODE = STEP__CODE;
 
   /**
+   * The feature id for the '<em><b>And</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int THEN__AND = STEP_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>And code</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int THEN__AND_CODE = STEP_FEATURE_COUNT + 1;
+
+  /**
    * The number of structural features of the '<em>Then</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int THEN_FEATURE_COUNT = STEP_FEATURE_COUNT + 0;
+  int THEN_FEATURE_COUNT = STEP_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.AndImpl <em>And</em>}' class.
@@ -979,6 +1033,28 @@ public interface JnarioPackage extends EPackage
   EClass getGiven();
 
   /**
+   * Returns the meta object for the attribute list '{@link de.bmw.carit.jnario.jnario.Given#getAnd <em>And</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>And</em>'.
+   * @see de.bmw.carit.jnario.jnario.Given#getAnd()
+   * @see #getGiven()
+   * @generated
+   */
+  EAttribute getGiven_And();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.jnario.Given#getAnd_code <em>And code</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>And code</em>'.
+   * @see de.bmw.carit.jnario.jnario.Given#getAnd_code()
+   * @see #getGiven()
+   * @generated
+   */
+  EReference getGiven_And_code();
+
+  /**
    * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.When <em>When</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -989,6 +1065,28 @@ public interface JnarioPackage extends EPackage
   EClass getWhen();
 
   /**
+   * Returns the meta object for the attribute list '{@link de.bmw.carit.jnario.jnario.When#getAnd <em>And</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>And</em>'.
+   * @see de.bmw.carit.jnario.jnario.When#getAnd()
+   * @see #getWhen()
+   * @generated
+   */
+  EAttribute getWhen_And();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.jnario.When#getAnd_code <em>And code</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>And code</em>'.
+   * @see de.bmw.carit.jnario.jnario.When#getAnd_code()
+   * @see #getWhen()
+   * @generated
+   */
+  EReference getWhen_And_code();
+
+  /**
    * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.Then <em>Then</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -997,6 +1095,28 @@ public interface JnarioPackage extends EPackage
    * @generated
    */
   EClass getThen();
+
+  /**
+   * Returns the meta object for the attribute list '{@link de.bmw.carit.jnario.jnario.Then#getAnd <em>And</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>And</em>'.
+   * @see de.bmw.carit.jnario.jnario.Then#getAnd()
+   * @see #getThen()
+   * @generated
+   */
+  EAttribute getThen_And();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.jnario.Then#getAnd_code <em>And code</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>And code</em>'.
+   * @see de.bmw.carit.jnario.jnario.Then#getAnd_code()
+   * @see #getThen()
+   * @generated
+   */
+  EReference getThen_And_code();
 
   /**
    * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.And <em>And</em>}'.
@@ -1402,6 +1522,22 @@ public interface JnarioPackage extends EPackage
     EClass GIVEN = eINSTANCE.getGiven();
 
     /**
+     * The meta object literal for the '<em><b>And</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GIVEN__AND = eINSTANCE.getGiven_And();
+
+    /**
+     * The meta object literal for the '<em><b>And code</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GIVEN__AND_CODE = eINSTANCE.getGiven_And_code();
+
+    /**
      * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.WhenImpl <em>When</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1412,6 +1548,22 @@ public interface JnarioPackage extends EPackage
     EClass WHEN = eINSTANCE.getWhen();
 
     /**
+     * The meta object literal for the '<em><b>And</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute WHEN__AND = eINSTANCE.getWhen_And();
+
+    /**
+     * The meta object literal for the '<em><b>And code</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WHEN__AND_CODE = eINSTANCE.getWhen_And_code();
+
+    /**
      * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.ThenImpl <em>Then</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1420,6 +1572,22 @@ public interface JnarioPackage extends EPackage
      * @generated
      */
     EClass THEN = eINSTANCE.getThen();
+
+    /**
+     * The meta object literal for the '<em><b>And</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute THEN__AND = eINSTANCE.getThen_And();
+
+    /**
+     * The meta object literal for the '<em><b>And code</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference THEN__AND_CODE = eINSTANCE.getThen_And_code();
 
     /**
      * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.AndImpl <em>And</em>}' class.

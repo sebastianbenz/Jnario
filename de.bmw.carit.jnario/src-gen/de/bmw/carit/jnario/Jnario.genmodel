@@ -42,9 +42,18 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jnario.ecore#//Step/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jnario.ecore#//Step/code"/>
     </genClasses>
-    <genClasses ecoreClass="Jnario.ecore#//Given"/>
-    <genClasses ecoreClass="Jnario.ecore#//When"/>
-    <genClasses ecoreClass="Jnario.ecore#//Then"/>
+    <genClasses ecoreClass="Jnario.ecore#//Given">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jnario.ecore#//Given/and"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jnario.ecore#//Given/and_code"/>
+    </genClasses>
+    <genClasses ecoreClass="Jnario.ecore#//When">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jnario.ecore#//When/and"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jnario.ecore#//When/and_code"/>
+    </genClasses>
+    <genClasses ecoreClass="Jnario.ecore#//Then">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jnario.ecore#//Then/and"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jnario.ecore#//Then/and_code"/>
+    </genClasses>
     <genClasses ecoreClass="Jnario.ecore#//And"/>
     <genClasses ecoreClass="Jnario.ecore#//Code">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jnario.ecore#//Code/annotations"/>

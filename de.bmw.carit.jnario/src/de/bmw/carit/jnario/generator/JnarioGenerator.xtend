@@ -18,7 +18,7 @@ import org.eclipse.xtext.xbase.compiler.ImportManager
 import org.eclipse.xtext.xbase.compiler.StringBuilderBasedAppendable
 import org.eclipse.xtext.xbase.typing.ITypeProvider
 import org.eclipse.xtext.generator.IGenerator
-
+import static com.google.common.collect.Iterables.*
 
 class JnarioGenerator{
 	

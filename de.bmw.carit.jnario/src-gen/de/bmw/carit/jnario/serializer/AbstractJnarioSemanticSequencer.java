@@ -1162,7 +1162,7 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (annotations+=XAnnotation* blockExpression=BlockExpression?)
+	 *     (annotations+=XAnnotation* blockExpression=BlockExpression)
 	 */
 	protected void sequence_Code(EObject context, Code semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1232,20 +1232,10 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=GIVEN_TEXT code=Code)
+	 *     (name=GIVEN_TEXT code=Code? (and+=AND_TEXT and_code+=Code?)*)
 	 */
 	protected void sequence_Given(EObject context, Given semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, JnarioPackage.Literals.STEP__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JnarioPackage.Literals.STEP__NAME));
-			if(transientValues.isValueTransient(semanticObject, JnarioPackage.Literals.STEP__CODE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JnarioPackage.Literals.STEP__CODE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getGivenAccess().getNameGIVEN_TEXTTerminalRuleCall_0_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getGivenAccess().getCodeCodeParserRuleCall_1_0(), semanticObject.getCode());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -1341,7 +1331,14 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=SCENARIO_TEXT annotations+=Annotation* steps+=Step* examples+=Examples*)
+	 *     (
+	 *         name=SCENARIO_TEXT 
+	 *         annotations+=Annotation* 
+	 *         steps+=Given? 
+	 *         steps+=When? 
+	 *         steps+=Then? 
+	 *         examples+=Examples*
+	 *     )
 	 */
 	protected void sequence_Scenario(EObject context, Scenario semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1350,20 +1347,10 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=THEN_TEXT code=Code)
+	 *     (name=THEN_TEXT code=Code? (and+=AND_TEXT and_code+=Code?)*)
 	 */
 	protected void sequence_Then(EObject context, Then semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, JnarioPackage.Literals.STEP__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JnarioPackage.Literals.STEP__NAME));
-			if(transientValues.isValueTransient(semanticObject, JnarioPackage.Literals.STEP__CODE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JnarioPackage.Literals.STEP__CODE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getThenAccess().getNameTHEN_TEXTTerminalRuleCall_0_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getThenAccess().getCodeCodeParserRuleCall_1_0(), semanticObject.getCode());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -1388,20 +1375,10 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=WHEN_TEXT code=Code)
+	 *     (name=WHEN_TEXT code=Code? (and+=AND_TEXT and_code+=Code?)*)
 	 */
 	protected void sequence_When(EObject context, When semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, JnarioPackage.Literals.STEP__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JnarioPackage.Literals.STEP__NAME));
-			if(transientValues.isValueTransient(semanticObject, JnarioPackage.Literals.STEP__CODE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JnarioPackage.Literals.STEP__CODE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getWhenAccess().getNameWHEN_TEXTTerminalRuleCall_0_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getWhenAccess().getCodeCodeParserRuleCall_1_0(), semanticObject.getCode());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

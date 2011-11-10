@@ -46,7 +46,7 @@ class SpecJvmModelInferrer extends AbstractModelInferrer {
 	 * @param isPreLinkingPhase - whether the method is called in a pre linking phase, i.e. when the global index isn't fully updated. You
 	 *        must not rely on linking using the index if iPrelinkingPhase is <code>true</code>
 	 */
-	def dispatch void infer(SpecFile spec, 
+	def dispatch void infer(SpecFile spec,  
 	                IAcceptor<JvmDeclaredType> acceptor, 
 	                boolean isPrelinkingPhase) {
 	    

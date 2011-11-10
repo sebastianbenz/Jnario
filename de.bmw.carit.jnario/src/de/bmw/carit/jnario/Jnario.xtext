@@ -28,7 +28,9 @@ Background:
 Scenario:
 	name=SCENARIO_TEXT
 	annotations+=Annotation*
-	steps+=Step*
+	steps+=Given?
+	steps+=When?
+	steps+=Then?
 	examples+=Examples*
 ;
 
@@ -46,15 +48,18 @@ Step:
 ;
 
 Given:
-	name=GIVEN_TEXT code=Code
+	name=GIVEN_TEXT code=Code?
+	(and+=AND_TEXT and_code+=Code?)*
 ;
 
 When:
-	name=WHEN_TEXT code=Code
+	name=WHEN_TEXT code=Code?
+	(and+=AND_TEXT and_code+=Code?)*
 ;
 
 Then:
-	name=THEN_TEXT code=Code
+	name=THEN_TEXT code=Code?
+	(and+=AND_TEXT and_code+=Code?)*
 ;
 
 And:
@@ -62,9 +67,8 @@ And:
 ;
 
 Code:
-	{Code}
 	annotations+=XAnnotation* 
-	blockExpression=BlockExpression?
+	blockExpression=BlockExpression
 ;
 
 BlockExpression returns xbase::XBlockExpression:
