@@ -1,8 +1,8 @@
 package example
 
-describes "Example" {
+describe "Example" {
 
-   it "shouldAdd"{
+   it "should Add"{
    		org::junit::Assert::assertEquals(5, 5) 
    } 
        
