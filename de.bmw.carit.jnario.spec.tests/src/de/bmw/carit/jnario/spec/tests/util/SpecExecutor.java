@@ -1,13 +1,15 @@
-package de.bmw.carit.jnario.spec.tests;
+package de.bmw.carit.jnario.spec.tests.util;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static de.bmw.carit.jnario.tests.util.ClassPathUriProvider.startingFrom;
 import static junit.framework.Assert.assertFalse;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.Collections;
 import java.util.List;
 
 import javax.tools.JavaCompiler;
@@ -20,6 +22,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.resource.XtextResourceSet;
+import org.eclipse.xtext.util.StringInputStream;
 import org.junit.experimental.results.PrintableResult;
 import org.junit.rules.TemporaryFolder;
 import org.junit.runner.JUnitCore;
@@ -35,31 +38,34 @@ import de.bmw.carit.jnario.spec.spec.SpecFile;
 
 public class SpecExecutor {
 
-	public static PrintableResult execute(String fileName) {
+	public static PrintableResult execute(String content) {
 		SpecInjectorProvider injectorProvider = new SpecInjectorProvider();
 		try {
 			injectorProvider.setupRegistry();
 			Injector injector = injectorProvider.getInjector();
 			
-			Resource resource = load(fileName);
+			Resource resource = new XtextResourceSet().createResource(URI.createURI("dummy.spec"));
+			try {
+				resource.load(new StringInputStream(content), Collections.emptyMap());
+			} catch (IOException e) {
+				e.printStackTrace();
+				org.junit.Assert.fail(e.getMessage());
+			}
 			
 			SpecExecutor executor = injector.getInstance(SpecExecutor.class);
 			return executor.run((SpecFile) resource.getContents().get(0));
 		} finally {
 			injectorProvider.restoreRegistry();
 		}
+		
+		
 	}
-
-	private static Resource load(String fileName) {
-		URI uri = startingFrom(SpecExecutor.class).select(fileName).allUris().iterator().next();
-		Resource resource = new XtextResourceSet().getResource(uri,	true);
-		return resource;
-	}
+	
 
 	private final IGenerator generator;
 	private final JavaIoFileSystemAccess fsa;
 	private final TemporaryFolder tempFolder;
-	private final JavaNameProvider javaNameProvider;
+	private final JavaNameProvider nameProvider;
 	private JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
 
 	@Inject
@@ -68,32 +74,49 @@ public class SpecExecutor {
 		this.generator = generator;
 		this.fsa = fsa;
 		this.tempFolder = tempFolder;
-		this.javaNameProvider = javaNameProvider;
+		this.nameProvider = javaNameProvider;
 	}
 
 	public PrintableResult run(SpecFile spec) {
-		List<Failure> failures = newArrayList();
 		try {
-			tempFolder.create();
-			fsa.setOutputPath(tempFolder.getRoot().getAbsolutePath());
-			generator.doGenerate(spec.eResource(), fsa);
-			assertFalse("has no examples", spec.getElements().isEmpty());
-			for (ExampleGroup exampleGroup : spec.getElements()) {
-				String specClassName = javaNameProvider
-						.getJavaClassName(exampleGroup);
-				String file = getGeneratedJavaClassName(spec, specClassName);
-				compiler.run(System.in, System.out, System.err, file);
-				Class<?> testClass = loadGeneratedClass(spec, specClassName);
-				List<Failure> newFailures = execute(testClass);
-				failures.addAll(newFailures);
-			}
+			configureOutlet();
+			generateJavaSpec(spec);
+			return runExamples(spec);
 		} catch (Exception e) {
 			e.printStackTrace();
 			Assert.fail(e.getMessage());
+			return null; // not reachable
 		} finally {
 			tempFolder.delete();
 		}
+	}
+
+	private void configureOutlet() throws IOException {
+		tempFolder.create();
+		fsa.setOutputPath(tempFolder.getRoot().getAbsolutePath());
+	}
+
+	private void generateJavaSpec(SpecFile spec) {
+		generator.doGenerate(spec.eResource(), fsa);
+		assertFalse("has no examples", spec.getElements().isEmpty());
+	}
+
+	private PrintableResult runExamples(SpecFile spec)
+			throws MalformedURLException, ClassNotFoundException {
+		List<Failure> failures = newArrayList();
+		for (ExampleGroup exampleGroup : spec.getElements()) {
+			String specClassName = nameProvider.getJavaClassName(exampleGroup);
+			compileSpecJavaFile(spec, specClassName);
+			Class<?> testClass = loadGeneratedClass(spec, specClassName);
+			List<Failure> newFailures = execute(testClass);
+			failures.addAll(newFailures);
+		}
 		return new PrintableResult(failures);
+	}
+
+	private void compileSpecJavaFile(SpecFile spec, String specClassName) {
+		String specJavaFile = getGeneratedJavaClassName(spec, specClassName);
+		compiler.run(System.in, System.out, System.err, specJavaFile);
 	}
 
 	private List<Failure> execute(Class<?> cls) {

@@ -20,7 +20,9 @@ Require-Bundle: de.bmw.carit.jnario.spec,
  org.eclipse.emf.common,
  org.antlr.runtime,
  org.eclipse.xtext.common.types,
- org.eclipse.xtext.xtend2.lib
+ org.eclipse.xtext.xtend2.lib,
+ org.eclipse.jdt.core;bundle-version="3.7.1"
 Import-Package: org.apache.log4j,
  org.apache.commons.logging
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: de.bmw.carit.jnario.spec.tests.util

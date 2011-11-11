@@ -997,7 +997,7 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     ((preamble='specify' | preamble='it') feature=[JvmIdentifiableElement|ValidID]? name=STRING? body=XBlockExpression)
+	 *     ((preamble='specify' | preamble='it') feature=[JvmIdentifiableElement|ValidID]? name=STRING? body=XBlockExpression?)
 	 */
 	protected void sequence_Example(EObject context, Example semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

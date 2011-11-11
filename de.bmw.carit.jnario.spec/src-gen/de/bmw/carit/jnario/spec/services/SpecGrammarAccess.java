@@ -264,10 +264,10 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cBodyXBlockExpressionParserRuleCall_3_0 = (RuleCall)cBodyAssignment_3.eContents().get(0);
 		
 		//Example:
-		//	preamble=("specify" | "it") feature=[types::JvmIdentifiableElement|ValidID]? name=STRING? body=XBlockExpression;
+		//	preamble=("specify" | "it") feature=[types::JvmIdentifiableElement|ValidID]? name=STRING? body=XBlockExpression?;
 		public ParserRule getRule() { return rule; }
 
-		//preamble=("specify" | "it") feature=[types::JvmIdentifiableElement|ValidID]? name=STRING? body=XBlockExpression
+		//preamble=("specify" | "it") feature=[types::JvmIdentifiableElement|ValidID]? name=STRING? body=XBlockExpression?
 		public Group getGroup() { return cGroup; }
 
 		//preamble=("specify" | "it")
@@ -297,7 +297,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//STRING
 		public RuleCall getNameSTRINGTerminalRuleCall_2_0() { return cNameSTRINGTerminalRuleCall_2_0; }
 
-		//body=XBlockExpression
+		//body=XBlockExpression?
 		public Assignment getBodyAssignment_3() { return cBodyAssignment_3; }
 
 		//XBlockExpression
@@ -312,6 +312,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	private AbstractElementElements pAbstractElement;
 	private MemberElements pMember;
 	private ExampleElements pExample;
+	private TerminalRule tSTRING;
 	
 	private final GrammarProvider grammarProvider;
 
@@ -396,7 +397,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Example:
-	//	preamble=("specify" | "it") feature=[types::JvmIdentifiableElement|ValidID]? name=STRING? body=XBlockExpression;
+	//	preamble=("specify" | "it") feature=[types::JvmIdentifiableElement|ValidID]? name=STRING? body=XBlockExpression?;
 	public ExampleElements getExampleAccess() {
 		return (pExample != null) ? pExample : (pExample = new ExampleElements());
 	}
@@ -404,6 +405,13 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	public ParserRule getExampleRule() {
 		return getExampleAccess().getRule();
 	}
+
+	//terminal STRING:
+	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
+	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	public TerminalRule getSTRINGRule() {
+		return (tSTRING != null) ? tSTRING : (tSTRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "STRING"));
+	} 
 
 	//XExpression:
 	//	XAssignment;
@@ -1076,13 +1084,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//	"0".."9"+;
 	public TerminalRule getINTRule() {
 		return gaXbase.getINTRule();
-	} 
-
-	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
-	public TerminalRule getSTRINGRule() {
-		return gaXbase.getSTRINGRule();
 	} 
 
 	//terminal ML_COMMENT:
