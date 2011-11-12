@@ -3,9 +3,11 @@
  */
 package de.bmw.carit.jnario.spec;
 
+import org.eclipse.xtext.generator.OutputConfigurationProvider;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
+import org.eclipse.xtext.xtend2.compiler.Xtend2OutputConfigurationProvider;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -35,5 +37,11 @@ public class SpecRuntimeModule extends de.bmw.carit.jnario.spec.AbstractSpecRunt
 		binder.bind(IScopeProvider.class).annotatedWith(Names.named(AbstractDeclarativeScopeProvider.NAMED_DELEGATE))
 		.to(SpecImportedNamespaceScopeProvider.class);
 	}
+	
+	
+	public Class<? extends OutputConfigurationProvider> bindOutputConfigurationProvider() {
+		return Xtend2OutputConfigurationProvider.class;
+	}
+	
 	
 }
