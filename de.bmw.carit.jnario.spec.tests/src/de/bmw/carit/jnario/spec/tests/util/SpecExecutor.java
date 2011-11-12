@@ -1,8 +1,9 @@
 package de.bmw.carit.jnario.spec.tests.util;
 
 import static com.google.common.collect.Lists.newArrayList;
-import static de.bmw.carit.jnario.tests.util.ClassPathUriProvider.startingFrom;
 import static junit.framework.Assert.assertFalse;
+import static junit.framework.Assert.assertTrue;
+import static junit.framework.Assert.fail;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,14 +16,16 @@ import java.util.List;
 import javax.tools.JavaCompiler;
 import javax.tools.ToolProvider;
 
-import junit.framework.Assert;
-
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.resource.XtextResourceSet;
+import org.eclipse.xtext.util.CancelIndicator;
 import org.eclipse.xtext.util.StringInputStream;
+import org.eclipse.xtext.validation.CheckMode;
+import org.eclipse.xtext.validation.IResourceValidator;
+import org.eclipse.xtext.validation.Issue;
 import org.junit.experimental.results.PrintableResult;
 import org.junit.rules.TemporaryFolder;
 import org.junit.runner.JUnitCore;
@@ -67,28 +70,36 @@ public class SpecExecutor {
 	private final TemporaryFolder tempFolder;
 	private final JavaNameProvider nameProvider;
 	private JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
+	private IResourceValidator validator;
 
 	@Inject
 	public SpecExecutor(IGenerator generator, JavaIoFileSystemAccess fsa,
-			TemporaryFolder tempFolder, JavaNameProvider javaNameProvider) {
+			TemporaryFolder tempFolder, JavaNameProvider javaNameProvider, IResourceValidator validator) {
 		this.generator = generator;
 		this.fsa = fsa;
 		this.tempFolder = tempFolder;
 		this.nameProvider = javaNameProvider;
+		this.validator = validator;
 	}
 
 	public PrintableResult run(SpecFile spec) {
 		try {
 			configureOutlet();
+			validate(spec);
 			generateJavaSpec(spec);
 			return runExamples(spec);
 		} catch (Exception e) {
 			e.printStackTrace();
-			Assert.fail(e.getMessage());
+			fail(e.getMessage());
 			return null; // not reachable
 		} finally {
 			tempFolder.delete();
 		}
+	}
+
+	private void validate(SpecFile spec) {
+		List<Issue> issues = validator.validate(spec.eResource(), CheckMode.NORMAL_AND_FAST, CancelIndicator.NullImpl);
+		assertTrue("Validation errors: " + issues, issues.isEmpty());
 	}
 
 	private void configureOutlet() throws IOException {

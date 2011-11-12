@@ -6,16 +6,13 @@
     modelPluginID="de.bmw.carit.jnario.spec" forceOverwrite="true" modelName="Spec"
     updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="de.bmw.carit.jnario.spec.edit"
-    editorPluginID="de.bmw.carit.jnario.spec.editor" usedGenPackages="../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types ../../../../../../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase">
+    editorPluginID="de.bmw.carit.jnario.spec.editor" usedGenPackages="../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types ../../../../../../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase ../../../../../../../org.eclipse.xtext.xtend2/model/Xtend2.genmodel#//xtend2">
   <genPackages prefix="Spec" basePackage="de.bmw.carit.jnario.spec" disposableProviderFactory="true"
       ecorePackage="Spec.ecore#/">
     <genClasses ecoreClass="Spec.ecore#//SpecFile">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//SpecFile/packageName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//SpecFile/imports"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//SpecFile/elements"/>
-    </genClasses>
-    <genClasses ecoreClass="Spec.ecore#//Import">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Import/importedNamespace"/>
     </genClasses>
     <genClasses ecoreClass="Spec.ecore#//ExampleGroup">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//ExampleGroup/preamble"/>

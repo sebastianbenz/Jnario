@@ -1,6 +1,7 @@
 grammar de.bmw.carit.jnario.spec.Spec with org.eclipse.xtext.xbase.Xbase
 
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
+import "http://www.eclipse.org/xtext/Xtend2" as xtend2
 
 generate spec "http://www.bmw.de/carit/jnario/spec/Spec"
 
@@ -10,11 +11,16 @@ SpecFile:
 	elements+=ExampleGroup*
 ;
 
-Import:
-    'import' importedNamespace=QualifiedNameWithWildCard;
+Import returns xtend2::XtendImport: 
+	'import' (
+		(static?='static' extension?='extension'? importedType=[types::JvmType|QualifiedName] '.' '*') | 
+		importedType=[types::JvmType|QualifiedName] | 
+		importedNamespace=QualifiedNameWithWildCard
+	)
+;
 
 QualifiedNameWithWildCard :
-    QualifiedName  ('.' '*')?;
+	QualifiedName  '.' '*';
 
 ExampleGroup: preamble=('describe'|'context') target=[types::JvmIdentifiableElement|ValidID]? name=STRING? '{'
        elements+=AbstractElement*

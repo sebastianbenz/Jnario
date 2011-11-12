@@ -106,34 +106,6 @@ public interface SpecPackage extends EPackage
   int SPEC_FILE_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link de.bmw.carit.jnario.spec.spec.impl.ImportImpl <em>Import</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.bmw.carit.jnario.spec.spec.impl.ImportImpl
-   * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getImport()
-   * @generated
-   */
-  int IMPORT = 1;
-
-  /**
-   * The feature id for the '<em><b>Imported Namespace</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IMPORT__IMPORTED_NAMESPACE = 0;
-
-  /**
-   * The number of structural features of the '<em>Import</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IMPORT_FEATURE_COUNT = 1;
-
-  /**
    * The meta object id for the '{@link de.bmw.carit.jnario.spec.spec.impl.AbstractElementImpl <em>Abstract Element</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -141,7 +113,7 @@ public interface SpecPackage extends EPackage
    * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getAbstractElement()
    * @generated
    */
-  int ABSTRACT_ELEMENT = 3;
+  int ABSTRACT_ELEMENT = 2;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -169,7 +141,7 @@ public interface SpecPackage extends EPackage
    * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getExampleGroup()
    * @generated
    */
-  int EXAMPLE_GROUP = 2;
+  int EXAMPLE_GROUP = 1;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -224,7 +196,7 @@ public interface SpecPackage extends EPackage
    * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getMember()
    * @generated
    */
-  int MEMBER = 4;
+  int MEMBER = 3;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -270,7 +242,7 @@ public interface SpecPackage extends EPackage
    * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getExample()
    * @generated
    */
-  int EXAMPLE = 5;
+  int EXAMPLE = 4;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -360,27 +332,6 @@ public interface SpecPackage extends EPackage
    * @generated
    */
   EReference getSpecFile_Elements();
-
-  /**
-   * Returns the meta object for class '{@link de.bmw.carit.jnario.spec.spec.Import <em>Import</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Import</em>'.
-   * @see de.bmw.carit.jnario.spec.spec.Import
-   * @generated
-   */
-  EClass getImport();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.bmw.carit.jnario.spec.spec.Import#getImportedNamespace <em>Imported Namespace</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Imported Namespace</em>'.
-   * @see de.bmw.carit.jnario.spec.spec.Import#getImportedNamespace()
-   * @see #getImport()
-   * @generated
-   */
-  EAttribute getImport_ImportedNamespace();
 
   /**
    * Returns the meta object for class '{@link de.bmw.carit.jnario.spec.spec.ExampleGroup <em>Example Group</em>}'.
@@ -577,24 +528,6 @@ public interface SpecPackage extends EPackage
      * @generated
      */
     EReference SPEC_FILE__ELEMENTS = eINSTANCE.getSpecFile_Elements();
-
-    /**
-     * The meta object literal for the '{@link de.bmw.carit.jnario.spec.spec.impl.ImportImpl <em>Import</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.bmw.carit.jnario.spec.spec.impl.ImportImpl
-     * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getImport()
-     * @generated
-     */
-    EClass IMPORT = eINSTANCE.getImport();
-
-    /**
-     * The meta object literal for the '<em><b>Imported Namespace</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute IMPORT__IMPORTED_NAMESPACE = eINSTANCE.getImport_ImportedNamespace();
 
     /**
      * The meta object literal for the '{@link de.bmw.carit.jnario.spec.spec.impl.ExampleGroupImpl <em>Example Group</em>}' class.

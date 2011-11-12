@@ -34,6 +34,15 @@
             </reference>
          </activeWhen>
       </handler>
+            <handler
+            class="de.bmw.carit.jnario.spec.ui.SpecExecutableExtensionFactory:de.bmw.carit.jnario.spec.ui.edit.OrganizeImportsHandler"
+            commandId="org.eclipse.xtext.xbase.ui.organizeImports">
+           	<activeWhen>
+				<reference
+					definitionId="de.bmw.carit.jnario.spec.Spec.Editor.opened">
+				</reference>
+			</activeWhen>
+      </handler>
     </extension>
     <extension point="org.eclipse.core.expressions.definitions">
         <definition id="de.bmw.carit.jnario.spec.Spec.Editor.opened">
@@ -378,4 +387,29 @@
          </description>
       </shortcut>
     </extension>  
+    
+    <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            contextId="org.eclipse.xtext.ui.XtextEditorScope"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M2+O"
+            commandId="org.eclipse.xtext.xbase.ui.organizeImports">
+      </key>
+   </extension>
+       <extension point="org.eclipse.ui.menus">
+        <menuContribution
+            locationURI="popup:#TextEditorContext?after=group.edit">
+             <command
+                 commandId="org.eclipse.xtext.xbase.ui.organizeImports"
+                 style="push"
+                 tooltip="Organize Imports">
+            <visibleWhen checkEnabled="false">
+                <reference
+					definitionId="de.bmw.carit.jnario.spec.Spec.Editor.opened">
+                </reference>
+            </visibleWhen>
+         </command>  
+         </menuContribution>
+    </extension>
 </plugin>

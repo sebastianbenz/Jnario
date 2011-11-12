@@ -68,7 +68,6 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
     switch (eClass.getClassifierID())
     {
       case SpecPackage.SPEC_FILE: return createSpecFile();
-      case SpecPackage.IMPORT: return createImport();
       case SpecPackage.EXAMPLE_GROUP: return createExampleGroup();
       case SpecPackage.ABSTRACT_ELEMENT: return createAbstractElement();
       case SpecPackage.MEMBER: return createMember();
@@ -87,17 +86,6 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
   {
     SpecFileImpl specFile = new SpecFileImpl();
     return specFile;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Import createImport()
-  {
-    ImportImpl import_ = new ImportImpl();
-    return import_;
   }
 
   /**

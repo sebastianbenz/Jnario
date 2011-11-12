@@ -9,6 +9,8 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.xtext.xtend2.xtend2.XtendImport;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>File</b></em>'.
@@ -57,7 +59,7 @@ public interface SpecFile extends EObject
 
   /**
    * Returns the value of the '<em><b>Imports</b></em>' containment reference list.
-   * The list contents are of type {@link de.bmw.carit.jnario.spec.spec.Import}.
+   * The list contents are of type {@link org.eclipse.xtext.xtend2.xtend2.XtendImport}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Imports</em>' containment reference list isn't clear,
@@ -69,7 +71,7 @@ public interface SpecFile extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<Import> getImports();
+  EList<XtendImport> getImports();
 
   /**
    * Returns the value of the '<em><b>Elements</b></em>' containment reference list.

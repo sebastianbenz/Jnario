@@ -16,7 +16,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import de.bmw.carit.jnario.runner.JnarioRunner
 import de.bmw.carit.jnario.runner.Named
-
+ 
 /**
  * <p>Infers a JVM model from the source model.</p> 
  *

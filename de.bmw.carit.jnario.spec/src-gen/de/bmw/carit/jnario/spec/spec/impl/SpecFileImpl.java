@@ -6,7 +6,6 @@
 package de.bmw.carit.jnario.spec.spec.impl;
 
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
-import de.bmw.carit.jnario.spec.spec.Import;
 import de.bmw.carit.jnario.spec.spec.SpecFile;
 import de.bmw.carit.jnario.spec.spec.SpecPackage;
 
@@ -25,6 +24,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.eclipse.xtext.xtend2.xtend2.XtendImport;
 
 /**
  * <!-- begin-user-doc -->
@@ -71,7 +72,7 @@ public class SpecFileImpl extends MinimalEObjectImpl.Container implements SpecFi
    * @generated
    * @ordered
    */
-  protected EList<Import> imports;
+  protected EList<XtendImport> imports;
 
   /**
    * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
@@ -132,11 +133,11 @@ public class SpecFileImpl extends MinimalEObjectImpl.Container implements SpecFi
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Import> getImports()
+  public EList<XtendImport> getImports()
   {
     if (imports == null)
     {
-      imports = new EObjectContainmentEList<Import>(Import.class, this, SpecPackage.SPEC_FILE__IMPORTS);
+      imports = new EObjectContainmentEList<XtendImport>(XtendImport.class, this, SpecPackage.SPEC_FILE__IMPORTS);
     }
     return imports;
   }
@@ -209,7 +210,7 @@ public class SpecFileImpl extends MinimalEObjectImpl.Container implements SpecFi
         return;
       case SpecPackage.SPEC_FILE__IMPORTS:
         getImports().clear();
-        getImports().addAll((Collection<? extends Import>)newValue);
+        getImports().addAll((Collection<? extends XtendImport>)newValue);
         return;
       case SpecPackage.SPEC_FILE__ELEMENTS:
         getElements().clear();

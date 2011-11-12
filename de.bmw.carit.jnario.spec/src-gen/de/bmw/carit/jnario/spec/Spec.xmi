@@ -4,11 +4,14 @@
     <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel" alias="types">
       <ePackage href="http://www.eclipse.org/xtext/common/JavaVMTypes#/"/>
     </metamodelDeclarations>
+    <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel" alias="xtend2">
+      <ePackage href="http://www.eclipse.org/xtext/Xtend2#/"/>
+    </metamodelDeclarations>
     <metamodelDeclarations xsi:type="xtext:GeneratedMetamodel" name="spec">
       <ePackage href="http://www.bmw.de/carit/jnario/spec/Spec#/"/>
     </metamodelDeclarations>
     <rules xsi:type="xtext:ParserRule" name="SpecFile">
-      <type metamodel="/0/@metamodelDeclarations.1">
+      <type metamodel="/0/@metamodelDeclarations.2">
         <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/spec/Spec#//SpecFile"/>
       </type>
       <alternatives xsi:type="xtext:Group">
@@ -28,12 +31,40 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Import">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/spec/Spec#//Import"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/Xtend2#//XtendImport"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="import"/>
-        <elements xsi:type="xtext:Assignment" feature="importedNamespace" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+        <elements xsi:type="xtext:Alternatives">
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Assignment" feature="static" operator="?=">
+              <terminal xsi:type="xtext:Keyword" value="static"/>
+            </elements>
+            <elements xsi:type="xtext:Assignment" cardinality="?" feature="extension" operator="?=">
+              <terminal xsi:type="xtext:Keyword" value="extension"/>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="importedType" operator="=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.0">
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/common/JavaVMTypes#//JvmType"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.52"/>
+              </terminal>
+            </elements>
+            <elements xsi:type="xtext:Keyword" value="."/>
+            <elements xsi:type="xtext:Keyword" value="*"/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="importedType" operator="=">
+            <terminal xsi:type="xtext:CrossReference">
+              <type metamodel="/0/@metamodelDeclarations.0">
+                <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/common/JavaVMTypes#//JvmType"/>
+              </type>
+              <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.52"/>
+            </terminal>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="importedNamespace" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+          </elements>
         </elements>
       </alternatives>
     </rules>
@@ -43,14 +74,12 @@
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:RuleCall" rule="/1/@rules.52"/>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Keyword" value="."/>
-          <elements xsi:type="xtext:Keyword" value="*"/>
-        </elements>
+        <elements xsi:type="xtext:Keyword" value="."/>
+        <elements xsi:type="xtext:Keyword" value="*"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ExampleGroup">
-      <type metamodel="/0/@metamodelDeclarations.1">
+      <type metamodel="/0/@metamodelDeclarations.2">
         <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/spec/Spec#//ExampleGroup"/>
       </type>
       <alternatives xsi:type="xtext:Group">
@@ -79,7 +108,7 @@
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="AbstractElement">
-      <type metamodel="/0/@metamodelDeclarations.1">
+      <type metamodel="/0/@metamodelDeclarations.2">
         <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/spec/Spec#//AbstractElement"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
@@ -89,7 +118,7 @@
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Member">
-      <type metamodel="/0/@metamodelDeclarations.1">
+      <type metamodel="/0/@metamodelDeclarations.2">
         <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/spec/Spec#//Member"/>
       </type>
       <alternatives xsi:type="xtext:Group">
@@ -108,7 +137,7 @@
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Example">
-      <type metamodel="/0/@metamodelDeclarations.1">
+      <type metamodel="/0/@metamodelDeclarations.2">
         <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/spec/Spec#//Example"/>
       </type>
       <alternatives xsi:type="xtext:Group">

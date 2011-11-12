@@ -3,9 +3,16 @@
  */
 package de.bmw.carit.jnario.spec;
 
+import org.eclipse.xtext.scoping.IScopeProvider;
+import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 
+import com.google.inject.Binder;
+import com.google.inject.name.Names;
+
 import de.bmw.carit.jnario.spec.jvmmodel.ExtendedJvmTypesBuilder;
+import de.bmw.carit.jnario.spec.scoping.SpecImportedNamespaceScopeProvider;
+import de.bmw.carit.jnario.spec.scoping.SpecScopeProvider;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
@@ -15,6 +22,18 @@ public class SpecRuntimeModule extends de.bmw.carit.jnario.spec.AbstractSpecRunt
 	
 	public Class<? extends JvmTypesBuilder> bindJvmTypesBuilder(){
 		return ExtendedJvmTypesBuilder.class;
+	}
+	
+	@Override
+	public java.lang.Class<? extends IScopeProvider> bindIScopeProvider() {
+		return SpecScopeProvider.class;
+	}
+	
+
+	@Override
+	public void configureIScopeProviderDelegate(Binder binder) {
+		binder.bind(IScopeProvider.class).annotatedWith(Names.named(AbstractDeclarativeScopeProvider.NAMED_DELEGATE))
+		.to(SpecImportedNamespaceScopeProvider.class);
 	}
 	
 }

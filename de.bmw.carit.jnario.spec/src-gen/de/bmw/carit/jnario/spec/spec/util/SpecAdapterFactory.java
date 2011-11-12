@@ -83,11 +83,6 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
         return createSpecFileAdapter();
       }
       @Override
-      public Adapter caseImport(Import object)
-      {
-        return createImportAdapter();
-      }
-      @Override
       public Adapter caseExampleGroup(ExampleGroup object)
       {
         return createExampleGroupAdapter();
@@ -140,21 +135,6 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createSpecFileAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.spec.spec.Import <em>Import</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.bmw.carit.jnario.spec.spec.Import
-   * @generated
-   */
-  public Adapter createImportAdapter()
   {
     return null;
   }
