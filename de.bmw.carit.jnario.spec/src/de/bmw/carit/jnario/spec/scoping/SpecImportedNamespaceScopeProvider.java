@@ -7,7 +7,7 @@
  *******************************************************************************/
 package de.bmw.carit.jnario.spec.scoping;
 
-import static java.util.Collections.*;
+import static java.util.Collections.singletonList;
 
 import java.util.Collections;
 import java.util.List;

@@ -5,15 +5,13 @@
  */
 package de.bmw.carit.jnario.spec.spec.impl;
 
-import de.bmw.carit.jnario.spec.spec.AbstractElement;
-import de.bmw.carit.jnario.spec.spec.SpecPackage;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import de.bmw.carit.jnario.spec.spec.AbstractElement;
+import de.bmw.carit.jnario.spec.spec.SpecPackage;
 
 /**
  * <!-- begin-user-doc -->

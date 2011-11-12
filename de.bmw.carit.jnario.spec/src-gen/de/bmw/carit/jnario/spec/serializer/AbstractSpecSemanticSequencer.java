@@ -1,13 +1,5 @@
 package de.bmw.carit.jnario.spec.serializer;
 
-import com.google.inject.Inject;
-import com.google.inject.Provider;
-import de.bmw.carit.jnario.spec.services.SpecGrammarAccess;
-import de.bmw.carit.jnario.spec.spec.Example;
-import de.bmw.carit.jnario.spec.spec.ExampleGroup;
-import de.bmw.carit.jnario.spec.spec.Member;
-import de.bmw.carit.jnario.spec.spec.SpecFile;
-import de.bmw.carit.jnario.spec.spec.SpecPackage;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmFormalParameter;
 import org.eclipse.xtext.common.types.JvmGenericArrayTypeReference;
@@ -56,6 +48,16 @@ import org.eclipse.xtext.xtend2.xtend2.Xtend2Package;
 import org.eclipse.xtext.xtend2.xtend2.XtendImport;
 import org.eclipse.xtext.xtype.XFunctionTypeRef;
 import org.eclipse.xtext.xtype.XtypePackage;
+
+import com.google.inject.Inject;
+import com.google.inject.Provider;
+
+import de.bmw.carit.jnario.spec.services.SpecGrammarAccess;
+import de.bmw.carit.jnario.spec.spec.Example;
+import de.bmw.carit.jnario.spec.spec.ExampleGroup;
+import de.bmw.carit.jnario.spec.spec.Member;
+import de.bmw.carit.jnario.spec.spec.SpecFile;
+import de.bmw.carit.jnario.spec.spec.SpecPackage;
 
 @SuppressWarnings("restriction")
 public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {

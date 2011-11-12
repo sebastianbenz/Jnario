@@ -6,7 +6,6 @@
 package de.bmw.carit.jnario.spec.spec;
 
 import org.eclipse.xtext.common.types.JvmIdentifiableElement;
-
 import org.eclipse.xtext.xbase.XExpression;
 
 /**

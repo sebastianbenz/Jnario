@@ -5,15 +5,19 @@
  */
 package de.bmw.carit.jnario.spec.spec.impl;
 
-import de.bmw.carit.jnario.spec.spec.*;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
+import de.bmw.carit.jnario.spec.spec.AbstractElement;
+import de.bmw.carit.jnario.spec.spec.Example;
+import de.bmw.carit.jnario.spec.spec.ExampleGroup;
+import de.bmw.carit.jnario.spec.spec.Member;
+import de.bmw.carit.jnario.spec.spec.SpecFactory;
+import de.bmw.carit.jnario.spec.spec.SpecFile;
+import de.bmw.carit.jnario.spec.spec.SpecPackage;
 
 /**
  * <!-- begin-user-doc -->

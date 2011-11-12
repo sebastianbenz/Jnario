@@ -5,20 +5,16 @@
  */
 package de.bmw.carit.jnario.spec.spec.impl;
 
-import de.bmw.carit.jnario.spec.spec.Member;
-import de.bmw.carit.jnario.spec.spec.SpecPackage;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.xtext.common.types.JvmTypeReference;
-
 import org.eclipse.xtext.xbase.XExpression;
+
+import de.bmw.carit.jnario.spec.spec.Member;
+import de.bmw.carit.jnario.spec.spec.SpecPackage;
 
 /**
  * <!-- begin-user-doc -->

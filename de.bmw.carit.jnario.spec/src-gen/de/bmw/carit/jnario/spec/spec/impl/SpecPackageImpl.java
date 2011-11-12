@@ -5,6 +5,15 @@
  */
 package de.bmw.carit.jnario.spec.spec.impl;
 
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.eclipse.xtext.common.types.TypesPackage;
+import org.eclipse.xtext.xbase.XbasePackage;
+import org.eclipse.xtext.xtend2.xtend2.Xtend2Package;
+
 import de.bmw.carit.jnario.spec.spec.AbstractElement;
 import de.bmw.carit.jnario.spec.spec.Example;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
@@ -12,19 +21,6 @@ import de.bmw.carit.jnario.spec.spec.Member;
 import de.bmw.carit.jnario.spec.spec.SpecFactory;
 import de.bmw.carit.jnario.spec.spec.SpecFile;
 import de.bmw.carit.jnario.spec.spec.SpecPackage;
-
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.emf.ecore.impl.EPackageImpl;
-
-import org.eclipse.xtext.common.types.TypesPackage;
-
-import org.eclipse.xtext.xbase.XbasePackage;
-
-import org.eclipse.xtext.xtend2.xtend2.Xtend2Package;
 
 /**
  * <!-- begin-user-doc -->
