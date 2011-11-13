@@ -7,12 +7,14 @@ import org.eclipse.xtext.generator.OutputConfigurationProvider;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
+import org.eclipse.xtext.xbase.scoping.featurecalls.StaticMethodsFeatureForTypeProvider.ExtensionClassNameProvider;
 import org.eclipse.xtext.xtend2.compiler.Xtend2OutputConfigurationProvider;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
 
 import de.bmw.carit.jnario.spec.jvmmodel.ExtendedJvmTypesBuilder;
+import de.bmw.carit.jnario.spec.scoping.JnarioExtensionClassNameProvider;
 import de.bmw.carit.jnario.spec.scoping.SpecImportedNamespaceScopeProvider;
 import de.bmw.carit.jnario.spec.scoping.SpecScopeProvider;
 
@@ -41,6 +43,10 @@ public class SpecRuntimeModule extends de.bmw.carit.jnario.spec.AbstractSpecRunt
 	
 	public Class<? extends OutputConfigurationProvider> bindOutputConfigurationProvider() {
 		return Xtend2OutputConfigurationProvider.class;
+	}
+	
+	public Class<? extends ExtensionClassNameProvider> bindExtensionClassNameProvider(){
+		return JnarioExtensionClassNameProvider.class;
 	}
 	
 	
