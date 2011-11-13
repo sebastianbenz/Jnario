@@ -3,10 +3,9 @@
 */
 package de.bmw.carit.jnario.spec.parser.antlr;
 
-import org.eclipse.xtext.parser.antlr.XtextTokenStream;
-
 import com.google.inject.Inject;
 
+import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import de.bmw.carit.jnario.spec.services.SpecGrammarAccess;
 
 public class SpecParser extends org.eclipse.xtext.parser.antlr.AbstractAntlrParser {

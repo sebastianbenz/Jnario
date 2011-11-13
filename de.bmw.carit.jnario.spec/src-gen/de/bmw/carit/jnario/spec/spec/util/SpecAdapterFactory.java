@@ -5,17 +5,14 @@
  */
 package de.bmw.carit.jnario.spec.spec.util;
 
+import de.bmw.carit.jnario.spec.spec.*;
+
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-import org.eclipse.emf.ecore.EObject;
 
-import de.bmw.carit.jnario.spec.spec.AbstractElement;
-import de.bmw.carit.jnario.spec.spec.Example;
-import de.bmw.carit.jnario.spec.spec.ExampleGroup;
-import de.bmw.carit.jnario.spec.spec.Member;
-import de.bmw.carit.jnario.spec.spec.SpecFile;
-import de.bmw.carit.jnario.spec.spec.SpecPackage;
+import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
+
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -91,19 +88,24 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
         return createExampleGroupAdapter();
       }
       @Override
-      public Adapter caseAbstractElement(AbstractElement object)
-      {
-        return createAbstractElementAdapter();
-      }
-      @Override
       public Adapter caseMember(Member object)
       {
         return createMemberAdapter();
       }
       @Override
+      public Adapter caseField(Field object)
+      {
+        return createFieldAdapter();
+      }
+      @Override
       public Adapter caseExample(Example object)
       {
         return createExampleAdapter();
+      }
+      @Override
+      public Adapter caseParameter(Parameter object)
+      {
+        return createParameterAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -158,21 +160,6 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.spec.spec.AbstractElement <em>Abstract Element</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.bmw.carit.jnario.spec.spec.AbstractElement
-   * @generated
-   */
-  public Adapter createAbstractElementAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.spec.spec.Member <em>Member</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -188,6 +175,21 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.spec.spec.Field <em>Field</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.bmw.carit.jnario.spec.spec.Field
+   * @generated
+   */
+  public Adapter createFieldAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.spec.spec.Example <em>Example</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -198,6 +200,21 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createExampleAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.spec.spec.Parameter <em>Parameter</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.bmw.carit.jnario.spec.spec.Parameter
+   * @generated
+   */
+  public Adapter createParameterAdapter()
   {
     return null;
   }

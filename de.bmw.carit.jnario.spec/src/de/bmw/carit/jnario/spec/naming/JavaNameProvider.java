@@ -7,6 +7,18 @@ import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 
 public class JavaNameProvider {
 
+	public String getJavaClassAnnotationValue(ExampleGroup exampleGroup) {
+		StringBuilder result = new StringBuilder();
+		if(exampleGroup.getTarget() != null){
+			result.append(exampleGroup.getTarget().getSimpleName());
+			result.append(" ");
+		}
+		if(exampleGroup.getName() != null){
+			result.append(exampleGroup.getName());
+		}
+		return result.toString();
+	}
+	
 	public String getJavaClassName(ExampleGroup exampleGroup) {
 		String name = "Unknown";
 		if(exampleGroup.getTarget() != null){

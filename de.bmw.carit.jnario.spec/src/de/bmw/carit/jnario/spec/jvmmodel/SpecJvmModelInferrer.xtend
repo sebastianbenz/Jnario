@@ -3,7 +3,7 @@ package de.bmw.carit.jnario.spec.jvmmodel
 import com.google.inject.Inject
 import de.bmw.carit.jnario.spec.naming.JavaNameProvider
 import de.bmw.carit.jnario.spec.spec.Example
-import de.bmw.carit.jnario.spec.spec.Member
+import de.bmw.carit.jnario.spec.spec.Field
 import de.bmw.carit.jnario.spec.spec.SpecFile
 import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.common.types.util.TypeReferences
@@ -55,18 +55,18 @@ class SpecJvmModelInferrer extends AbstractModelInferrer {
 		    	documentation = spec.documentation
 		    	packageName = spec.getPackageName
 		    	annotations += spec.toAnnotation(typeof(RunWith), typeof(JnarioRunner))
-		    	annotations += spec.toAnnotation(typeof(Named), exampleGroup.name)
+		    	annotations += spec.toAnnotation(typeof(Named), exampleGroup.javaClassAnnotationValue)
 				for (element : exampleGroup.elements) {
 			        switch element {
-			          Member : {
-			          	val initMethodName = "create" + element.name.toFirstUpper
-			          	val field = element.toField(element.name, element.type)
+			          de.bmw.carit.jnario.spec.spec.Field : {
+			          	val initMethodName = "create" + element.getName.toFirstUpper
+			          	val field = element.toField(element.getName, element.getType)
 			            members += field
 			            field.final = true
 				        field.initialization[im |
 				        	 initMethodName + "()"
 				        ]
-			            val initCode = element.right
+			            val initCode = element.getRight
 			            if(initCode != null){
 			            	 members += initCode.toMethod(initMethodName, initCode.expectedType)[
 			            		body = initCode
@@ -76,7 +76,7 @@ class SpecJvmModelInferrer extends AbstractModelInferrer {
 			          Example : {
 			            members += element.toMethod(element.exampleMethodName, getTypeForName(Void::TYPE, element)) [
 			              documentation = element.documentation
-			              annotations += spec.toAnnotation(typeof(Named), element.name)
+			              annotations += spec.toAnnotation(typeof(Named), element.getName)
 			              annotations += element.toAnnotation(typeof(Test))
 			              body = element.body
 			            ]

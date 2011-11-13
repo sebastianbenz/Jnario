@@ -6,6 +6,7 @@
 package de.bmw.carit.jnario.spec.spec;
 
 import org.eclipse.xtext.common.types.JvmIdentifiableElement;
+
 import org.eclipse.xtext.xbase.XExpression;
 
 /**
@@ -26,7 +27,7 @@ import org.eclipse.xtext.xbase.XExpression;
  * @model
  * @generated
  */
-public interface Example extends AbstractElement
+public interface Example extends Member
 {
   /**
    * Returns the value of the '<em><b>Preamble</b></em>' attribute.

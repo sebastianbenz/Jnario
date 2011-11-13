@@ -1,5 +1,14 @@
 package de.bmw.carit.jnario.spec.serializer;
 
+import com.google.inject.Inject;
+import com.google.inject.Provider;
+import de.bmw.carit.jnario.spec.services.SpecGrammarAccess;
+import de.bmw.carit.jnario.spec.spec.Example;
+import de.bmw.carit.jnario.spec.spec.ExampleGroup;
+import de.bmw.carit.jnario.spec.spec.Field;
+import de.bmw.carit.jnario.spec.spec.Parameter;
+import de.bmw.carit.jnario.spec.spec.SpecFile;
+import de.bmw.carit.jnario.spec.spec.SpecPackage;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmFormalParameter;
 import org.eclipse.xtext.common.types.JvmGenericArrayTypeReference;
@@ -43,21 +52,16 @@ import org.eclipse.xtext.xbase.XUnaryOperation;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.XWhileExpression;
 import org.eclipse.xtext.xbase.XbasePackage;
-import org.eclipse.xtext.xbase.serializer.XbaseSemanticSequencer;
+import org.eclipse.xtext.xbase.annotations.serializer.XbaseWithAnnotationsSemanticSequencer;
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationElementValueBinaryOperation;
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationElementValuePair;
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationValueArray;
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
 import org.eclipse.xtext.xtend2.xtend2.Xtend2Package;
 import org.eclipse.xtext.xtend2.xtend2.XtendImport;
 import org.eclipse.xtext.xtype.XFunctionTypeRef;
 import org.eclipse.xtext.xtype.XtypePackage;
-
-import com.google.inject.Inject;
-import com.google.inject.Provider;
-
-import de.bmw.carit.jnario.spec.services.SpecGrammarAccess;
-import de.bmw.carit.jnario.spec.spec.Example;
-import de.bmw.carit.jnario.spec.spec.ExampleGroup;
-import de.bmw.carit.jnario.spec.spec.Member;
-import de.bmw.carit.jnario.spec.spec.SpecFile;
-import de.bmw.carit.jnario.spec.spec.SpecPackage;
 
 @SuppressWarnings("restriction")
 public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
@@ -78,9 +82,9 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	protected ISemanticSequencer genericSequencer;
 	
 	@Inject
-	protected Provider<XbaseSemanticSequencer> superSequencerProvider;
+	protected Provider<XbaseWithAnnotationsSemanticSequencer> superSequencerProvider;
 	 
-	protected XbaseSemanticSequencer superSequencer; 
+	protected XbaseWithAnnotationsSemanticSequencer superSequencer; 
 	
 	@Override
 	public void init(ISemanticSequencer sequencer, ISemanticSequenceAcceptor sequenceAcceptor, Acceptor errorAcceptor) {
@@ -94,23 +98,29 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == SpecPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
 			case SpecPackage.EXAMPLE:
-				if(context == grammarAccess.getAbstractElementRule() ||
-				   context == grammarAccess.getExampleRule()) {
+				if(context == grammarAccess.getExampleRule() ||
+				   context == grammarAccess.getMemberRule()) {
 					sequence_Example(context, (Example) semanticObject); 
 					return; 
 				}
 				else break;
 			case SpecPackage.EXAMPLE_GROUP:
-				if(context == grammarAccess.getAbstractElementRule() ||
-				   context == grammarAccess.getExampleGroupRule()) {
+				if(context == grammarAccess.getExampleGroupRule() ||
+				   context == grammarAccess.getMemberRule()) {
 					sequence_ExampleGroup(context, (ExampleGroup) semanticObject); 
 					return; 
 				}
 				else break;
-			case SpecPackage.MEMBER:
-				if(context == grammarAccess.getAbstractElementRule() ||
+			case SpecPackage.FIELD:
+				if(context == grammarAccess.getFieldRule() ||
 				   context == grammarAccess.getMemberRule()) {
-					sequence_Member(context, (Member) semanticObject); 
+					sequence_Field(context, (Field) semanticObject); 
+					return; 
+				}
+				else break;
+			case SpecPackage.PARAMETER:
+				if(context == grammarAccess.getParameterRule()) {
+					sequence_Parameter(context, (Parameter) semanticObject); 
 					return; 
 				}
 				else break;
@@ -175,6 +185,40 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				if(context == grammarAccess.getJvmArgumentTypeReferenceRule() ||
 				   context == grammarAccess.getJvmWildcardTypeReferenceRule()) {
 					sequence_JvmWildcardTypeReference(context, (JvmWildcardTypeReference) semanticObject); 
+					return; 
+				}
+				else break;
+			}
+		else if(semanticObject.eClass().getEPackage() == XAnnotationsPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case XAnnotationsPackage.XANNOTATION:
+				if(context == grammarAccess.getXAnnotationRule() ||
+				   context == grammarAccess.getXAnnotationElementValueRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationAccess().getXAnnotationElementValueBinaryOperationLeftOperandAction_1_0()) {
+					sequence_XAnnotation(context, (XAnnotation) semanticObject); 
+					return; 
+				}
+				else break;
+			case XAnnotationsPackage.XANNOTATION_ELEMENT_VALUE_BINARY_OPERATION:
+				if(context == grammarAccess.getXAnnotationElementValueRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationAccess().getXAnnotationElementValueBinaryOperationLeftOperandAction_1_0()) {
+					sequence_XAnnotationElementValueStringConcatenation(context, (XAnnotationElementValueBinaryOperation) semanticObject); 
+					return; 
+				}
+				else break;
+			case XAnnotationsPackage.XANNOTATION_ELEMENT_VALUE_PAIR:
+				if(context == grammarAccess.getXAnnotationElementValuePairRule()) {
+					sequence_XAnnotationElementValuePair(context, (XAnnotationElementValuePair) semanticObject); 
+					return; 
+				}
+				else break;
+			case XAnnotationsPackage.XANNOTATION_VALUE_ARRAY:
+				if(context == grammarAccess.getXAnnotationElementValueRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationAccess().getXAnnotationElementValueBinaryOperationLeftOperandAction_1_0() ||
+				   context == grammarAccess.getXAnnotationValueArrayRule()) {
+					sequence_XAnnotationValueArray(context, (XAnnotationValueArray) semanticObject); 
 					return; 
 				}
 				else break;
@@ -286,6 +330,9 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
 				   context == grammarAccess.getXAndExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
+				   context == grammarAccess.getXAnnotationElementValueRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationAccess().getXAnnotationElementValueBinaryOperationLeftOperandAction_1_0() ||
 				   context == grammarAccess.getXAssignmentRule() ||
 				   context == grammarAccess.getXAssignmentAccess().getXBinaryOperationLeftOperandAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXBooleanLiteralRule() ||
@@ -464,7 +511,14 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case XbasePackage.XFEATURE_CALL:
-				if(context == grammarAccess.getXAdditiveExpressionRule() ||
+				if(context == grammarAccess.getXAnnotationElementValueRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationAccess().getXAnnotationElementValueBinaryOperationLeftOperandAction_1_0() ||
+				   context == grammarAccess.getXAnnotationValueFieldReferenceRule()) {
+					sequence_XAnnotationValueFieldReference(context, (XFeatureCall) semanticObject); 
+					return; 
+				}
+				else if(context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
 				   context == grammarAccess.getXAndExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
@@ -599,6 +653,9 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
 				   context == grammarAccess.getXAndExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
+				   context == grammarAccess.getXAnnotationElementValueRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationAccess().getXAnnotationElementValueBinaryOperationLeftOperandAction_1_0() ||
 				   context == grammarAccess.getXAssignmentRule() ||
 				   context == grammarAccess.getXAssignmentAccess().getXBinaryOperationLeftOperandAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXCastedExpressionRule() ||
@@ -732,6 +789,9 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
 				   context == grammarAccess.getXAndExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
+				   context == grammarAccess.getXAnnotationElementValueRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationAccess().getXAnnotationElementValueBinaryOperationLeftOperandAction_1_0() ||
 				   context == grammarAccess.getXAssignmentRule() ||
 				   context == grammarAccess.getXAssignmentAccess().getXBinaryOperationLeftOperandAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXCastedExpressionRule() ||
@@ -865,6 +925,9 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
 				   context == grammarAccess.getXAndExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
+				   context == grammarAccess.getXAnnotationElementValueRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationAccess().getXAnnotationElementValueBinaryOperationLeftOperandAction_1_0() ||
 				   context == grammarAccess.getXAssignmentRule() ||
 				   context == grammarAccess.getXAssignmentAccess().getXBinaryOperationLeftOperandAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXCastedExpressionRule() ||
@@ -990,7 +1053,7 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     ((preamble='describe' | preamble='context') target=[JvmIdentifiableElement|ValidID]? name=STRING? elements+=AbstractElement*)
+	 *     (annotations+=XAnnotation* preamble='describe' target=[JvmIdentifiableElement|QualifiedName]? name=STRING? elements+=Member*)
 	 */
 	protected void sequence_ExampleGroup(EObject context, ExampleGroup semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -999,9 +1062,18 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     ((preamble='specify' | preamble='it') feature=[JvmIdentifiableElement|ValidID]? name=STRING? body=XBlockExpression?)
+	 *     (preamble='it' feature=[JvmIdentifiableElement|ValidID]? name=STRING? body=XBlockExpression?)
 	 */
 	protected void sequence_Example(EObject context, Example semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (type=JvmTypeReference name=ValidID right=XExpression?)
+	 */
+	protected void sequence_Field(EObject context, Field semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1102,9 +1174,9 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (type=JvmTypeReference name=ValidID right=XExpression?)
+	 *     (annotations+=XAnnotation* parameterType=JvmTypeReference name=ValidID)
 	 */
-	protected void sequence_Member(EObject context, Member semanticObject) {
+	protected void sequence_Parameter(EObject context, Parameter semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1132,6 +1204,58 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	 *     )
 	 */
 	protected void sequence_XAdditiveExpression(EObject context, XBinaryOperation semanticObject) {
+		superSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (element=[JvmOperation|ValidID] value=XAnnotationElementValue)
+	 */
+	protected void sequence_XAnnotationElementValuePair(EObject context, XAnnotationElementValuePair semanticObject) {
+		superSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         leftOperand=XAnnotationElementValueStringConcatenation_XAnnotationElementValueBinaryOperation_1_0 
+	 *         operator='+' 
+	 *         rightOperand=XAnnotationElementValue
+	 *     )
+	 */
+	protected void sequence_XAnnotationElementValueStringConcatenation(EObject context, XAnnotationElementValueBinaryOperation semanticObject) {
+		superSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (values+=XAnnotationElementValue values+=XAnnotationElementValue*)
+	 */
+	protected void sequence_XAnnotationValueArray(EObject context, XAnnotationValueArray semanticObject) {
+		superSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (declaringType=[JvmDeclaredType|StaticQualifier]? feature=[JvmIdentifiableElement|IdOrSuper])
+	 */
+	protected void sequence_XAnnotationValueFieldReference(EObject context, XFeatureCall semanticObject) {
+		superSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         annotationType=[JvmAnnotationType|QualifiedName] 
+	 *         ((elementValuePairs+=XAnnotationElementValuePair elementValuePairs+=XAnnotationElementValuePair*) | value=XAnnotationElementValue)?
+	 *     )
+	 */
+	protected void sequence_XAnnotation(EObject context, XAnnotation semanticObject) {
 		superSequencer.createSequence(context, semanticObject);
 	}
 	

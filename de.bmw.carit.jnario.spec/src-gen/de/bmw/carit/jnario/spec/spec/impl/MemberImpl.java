@@ -5,16 +5,15 @@
  */
 package de.bmw.carit.jnario.spec.spec.impl;
 
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.xtext.common.types.JvmTypeReference;
-import org.eclipse.xtext.xbase.XExpression;
-
 import de.bmw.carit.jnario.spec.spec.Member;
 import de.bmw.carit.jnario.spec.spec.SpecPackage;
+
+import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.ecore.EClass;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,34 +22,33 @@ import de.bmw.carit.jnario.spec.spec.SpecPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.MemberImpl#getType <em>Type</em>}</li>
- *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.MemberImpl#getRight <em>Right</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.MemberImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class MemberImpl extends AbstractElementImpl implements Member
+public class MemberImpl extends MinimalEObjectImpl.Container implements Member
 {
   /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getType()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected JvmTypeReference type;
+  protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getRight() <em>Right</em>}' containment reference.
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRight()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected XExpression right;
+  protected String name = NAME_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -78,9 +76,9 @@ public class MemberImpl extends AbstractElementImpl implements Member
    * <!-- end-user-doc -->
    * @generated
    */
-  public JvmTypeReference getType()
+  public String getName()
   {
-    return type;
+    return name;
   }
 
   /**
@@ -88,103 +86,12 @@ public class MemberImpl extends AbstractElementImpl implements Member
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetType(JvmTypeReference newType, NotificationChain msgs)
+  public void setName(String newName)
   {
-    JvmTypeReference oldType = type;
-    type = newType;
+    String oldName = name;
+    name = newName;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SpecPackage.MEMBER__TYPE, oldType, newType);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setType(JvmTypeReference newType)
-  {
-    if (newType != type)
-    {
-      NotificationChain msgs = null;
-      if (type != null)
-        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SpecPackage.MEMBER__TYPE, null, msgs);
-      if (newType != null)
-        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SpecPackage.MEMBER__TYPE, null, msgs);
-      msgs = basicSetType(newType, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.MEMBER__TYPE, newType, newType));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public XExpression getRight()
-  {
-    return right;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetRight(XExpression newRight, NotificationChain msgs)
-  {
-    XExpression oldRight = right;
-    right = newRight;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SpecPackage.MEMBER__RIGHT, oldRight, newRight);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setRight(XExpression newRight)
-  {
-    if (newRight != right)
-    {
-      NotificationChain msgs = null;
-      if (right != null)
-        msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SpecPackage.MEMBER__RIGHT, null, msgs);
-      if (newRight != null)
-        msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SpecPackage.MEMBER__RIGHT, null, msgs);
-      msgs = basicSetRight(newRight, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.MEMBER__RIGHT, newRight, newRight));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case SpecPackage.MEMBER__TYPE:
-        return basicSetType(null, msgs);
-      case SpecPackage.MEMBER__RIGHT:
-        return basicSetRight(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.MEMBER__NAME, oldName, name));
   }
 
   /**
@@ -197,10 +104,8 @@ public class MemberImpl extends AbstractElementImpl implements Member
   {
     switch (featureID)
     {
-      case SpecPackage.MEMBER__TYPE:
-        return getType();
-      case SpecPackage.MEMBER__RIGHT:
-        return getRight();
+      case SpecPackage.MEMBER__NAME:
+        return getName();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -215,11 +120,8 @@ public class MemberImpl extends AbstractElementImpl implements Member
   {
     switch (featureID)
     {
-      case SpecPackage.MEMBER__TYPE:
-        setType((JvmTypeReference)newValue);
-        return;
-      case SpecPackage.MEMBER__RIGHT:
-        setRight((XExpression)newValue);
+      case SpecPackage.MEMBER__NAME:
+        setName((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -235,11 +137,8 @@ public class MemberImpl extends AbstractElementImpl implements Member
   {
     switch (featureID)
     {
-      case SpecPackage.MEMBER__TYPE:
-        setType((JvmTypeReference)null);
-        return;
-      case SpecPackage.MEMBER__RIGHT:
-        setRight((XExpression)null);
+      case SpecPackage.MEMBER__NAME:
+        setName(NAME_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -255,12 +154,27 @@ public class MemberImpl extends AbstractElementImpl implements Member
   {
     switch (featureID)
     {
-      case SpecPackage.MEMBER__TYPE:
-        return type != null;
-      case SpecPackage.MEMBER__RIGHT:
-        return right != null;
+      case SpecPackage.MEMBER__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (name: ");
+    result.append(name);
+    result.append(')');
+    return result.toString();
   }
 
 } //MemberImpl

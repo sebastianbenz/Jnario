@@ -1,4 +1,4 @@
-grammar de.bmw.carit.jnario.spec.Spec with org.eclipse.xtext.xbase.Xbase
+grammar de.bmw.carit.jnario.spec.Spec with org.eclipse.xtext.xbase.annotations.XbaseWithAnnotations
 
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
 import "http://www.eclipse.org/xtext/Xtend2" as xtend2
@@ -6,6 +6,7 @@ import "http://www.eclipse.org/xtext/Xtend2" as xtend2
 generate spec "http://www.bmw.de/carit/jnario/spec/Spec"
 
 SpecFile:
+{SpecFile}
 ('package' packageName=QualifiedName)? 
 	imports+=Import*
 	elements+=ExampleGroup*
@@ -22,23 +23,57 @@ Import returns xtend2::XtendImport:
 QualifiedNameWithWildCard :
 	QualifiedName  '.' '*';
 
-ExampleGroup: preamble=('describe'|'context') target=[types::JvmIdentifiableElement|ValidID]? name=STRING? '{'
-       elements+=AbstractElement*
+ExampleGroup: 
+	{ExampleGroup}
+	annotations+=XAnnotation* 
+	preamble=('describe') target=[types::JvmIdentifiableElement|QualifiedName]? name=STRING? '{'
+       (elements+=Member*)
 '}'
 ;
 
-AbstractElement:
-	Example | Member | ExampleGroup
+Member:
+	Example | Field | ExampleGroup
 ;
 
-Member:
+Field:
+	{Field}
+//	annotations+=XAnnotation* 
 	type=JvmTypeReference name=ValidID ('=' right=XExpression)?
 ;
 
 Example:
-	preamble=('specify'|'it') feature=[types::JvmIdentifiableElement|ValidID]? name=STRING? 
+	{Example}
+//	annotations+=XAnnotation* 
+	preamble=('it') feature=[types::JvmIdentifiableElement|ValidID]? name=STRING? 
 		body=XBlockExpression?
 ;
+/*
+Member :
+	{Member} annotations+=XAnnotation* 
+	(
+		{Field.annotationInfo = current}	
+		 	(type=JvmTypeReference name=ValidID (=> '=' right=XExpression)?)
+		
+	|	{Function.annotationInfo = current}
+			('def' 
+			('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')?
+			| =>(returnType=JvmTypeReference name=ValidID '(')
+			| name=ValidID '('
+			(parameters+=Parameter (',' parameters+=Parameter)*)? ')'
+			body=XBlockExpression)
+	|	{Example.annotationInfo = current}
+		(preamble='it' feature=[types::JvmIdentifiableElement|ValidID]? name=STRING? 
+			body=XBlockExpression?)
+	|	{ExampleGroup.annotationInfo = current}
+			(preamble=('describe'|'context') target=[types::JvmIdentifiableElement|QualifiedName]? name=STRING? '{'
+      	//elements+=Member*
+      	'}')
+	 );
+
+Parameter:
+	annotations+=XAnnotation* 
+	parameterType=JvmTypeReference name=ValidID;
+*/
 
 terminal STRING	: 
 			'"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |

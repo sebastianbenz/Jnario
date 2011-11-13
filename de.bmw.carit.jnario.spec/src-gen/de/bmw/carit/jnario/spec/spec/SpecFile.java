@@ -6,7 +6,9 @@
 package de.bmw.carit.jnario.spec.spec;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.xtext.xtend2.xtend2.XtendImport;
 
 /**

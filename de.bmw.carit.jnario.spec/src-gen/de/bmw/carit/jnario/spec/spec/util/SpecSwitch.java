@@ -5,16 +5,12 @@
  */
 package de.bmw.carit.jnario.spec.spec.util;
 
+import de.bmw.carit.jnario.spec.spec.*;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.util.Switch;
 
-import de.bmw.carit.jnario.spec.spec.AbstractElement;
-import de.bmw.carit.jnario.spec.spec.Example;
-import de.bmw.carit.jnario.spec.spec.ExampleGroup;
-import de.bmw.carit.jnario.spec.spec.Member;
-import de.bmw.carit.jnario.spec.spec.SpecFile;
-import de.bmw.carit.jnario.spec.spec.SpecPackage;
+import org.eclipse.emf.ecore.util.Switch;
 
 /**
  * <!-- begin-user-doc -->
@@ -90,14 +86,7 @@ public class SpecSwitch<T> extends Switch<T>
       {
         ExampleGroup exampleGroup = (ExampleGroup)theEObject;
         T result = caseExampleGroup(exampleGroup);
-        if (result == null) result = caseAbstractElement(exampleGroup);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SpecPackage.ABSTRACT_ELEMENT:
-      {
-        AbstractElement abstractElement = (AbstractElement)theEObject;
-        T result = caseAbstractElement(abstractElement);
+        if (result == null) result = caseMember(exampleGroup);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -105,7 +94,14 @@ public class SpecSwitch<T> extends Switch<T>
       {
         Member member = (Member)theEObject;
         T result = caseMember(member);
-        if (result == null) result = caseAbstractElement(member);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SpecPackage.FIELD:
+      {
+        Field field = (Field)theEObject;
+        T result = caseField(field);
+        if (result == null) result = caseMember(field);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -113,7 +109,14 @@ public class SpecSwitch<T> extends Switch<T>
       {
         Example example = (Example)theEObject;
         T result = caseExample(example);
-        if (result == null) result = caseAbstractElement(example);
+        if (result == null) result = caseMember(example);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SpecPackage.PARAMETER:
+      {
+        Parameter parameter = (Parameter)theEObject;
+        T result = caseParameter(parameter);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -154,22 +157,6 @@ public class SpecSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Abstract Element</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Abstract Element</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAbstractElement(AbstractElement object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Member</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -186,6 +173,22 @@ public class SpecSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Field</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Field</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseField(Field object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Example</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -197,6 +200,22 @@ public class SpecSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseExample(Example object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Parameter</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParameter(Parameter object)
   {
     return null;
   }

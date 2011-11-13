@@ -44,15 +44,6 @@ public interface SpecFactory extends EFactory
   ExampleGroup createExampleGroup();
 
   /**
-   * Returns a new object of class '<em>Abstract Element</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Abstract Element</em>'.
-   * @generated
-   */
-  AbstractElement createAbstractElement();
-
-  /**
    * Returns a new object of class '<em>Member</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -62,6 +53,15 @@ public interface SpecFactory extends EFactory
   Member createMember();
 
   /**
+   * Returns a new object of class '<em>Field</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Field</em>'.
+   * @generated
+   */
+  Field createField();
+
+  /**
    * Returns a new object of class '<em>Example</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -69,6 +69,15 @@ public interface SpecFactory extends EFactory
    * @generated
    */
   Example createExample();
+
+  /**
+   * Returns a new object of class '<em>Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parameter</em>'.
+   * @generated
+   */
+  Parameter createParameter();
 
   /**
    * Returns the package supported by this factory.

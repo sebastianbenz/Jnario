@@ -6,7 +6,7 @@
     modelPluginID="de.bmw.carit.jnario.spec" forceOverwrite="true" modelName="Spec"
     updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="de.bmw.carit.jnario.spec.edit"
-    editorPluginID="de.bmw.carit.jnario.spec.editor" usedGenPackages="../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types ../../../../../../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase ../../../../../../../org.eclipse.xtext.xtend2/model/Xtend2.genmodel#//xtend2">
+    editorPluginID="de.bmw.carit.jnario.spec.editor" usedGenPackages="../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types ../../../../../../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xAnnotations ../../../../../../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase ../../../../../../../org.eclipse.xtext.xtend2/model/Xtend2.genmodel#//xtend2">
   <genPackages prefix="Spec" basePackage="de.bmw.carit.jnario.spec" disposableProviderFactory="true"
       ecorePackage="Spec.ecore#/">
     <genClasses ecoreClass="Spec.ecore#//SpecFile">
@@ -15,21 +15,27 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//SpecFile/elements"/>
     </genClasses>
     <genClasses ecoreClass="Spec.ecore#//ExampleGroup">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//ExampleGroup/annotations"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//ExampleGroup/preamble"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Spec.ecore#//ExampleGroup/target"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//ExampleGroup/elements"/>
     </genClasses>
-    <genClasses ecoreClass="Spec.ecore#//AbstractElement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//AbstractElement/name"/>
-    </genClasses>
     <genClasses ecoreClass="Spec.ecore#//Member">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//Member/type"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//Member/right"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Member/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Spec.ecore#//Field">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//Field/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//Field/right"/>
     </genClasses>
     <genClasses ecoreClass="Spec.ecore#//Example">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Example/preamble"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Spec.ecore#//Example/feature"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//Example/body"/>
+    </genClasses>
+    <genClasses ecoreClass="Spec.ecore#//Parameter">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//Parameter/annotations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//Parameter/parameterType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Parameter/name"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -5,16 +5,20 @@
  */
 package de.bmw.carit.jnario.spec.spec.impl;
 
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.xtext.common.types.JvmIdentifiableElement;
-import org.eclipse.xtext.xbase.XExpression;
-
 import de.bmw.carit.jnario.spec.spec.Example;
 import de.bmw.carit.jnario.spec.spec.SpecPackage;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.xtext.common.types.JvmIdentifiableElement;
+
+import org.eclipse.xtext.xbase.XExpression;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,7 +35,7 @@ import de.bmw.carit.jnario.spec.spec.SpecPackage;
  *
  * @generated
  */
-public class ExampleImpl extends AbstractElementImpl implements Example
+public class ExampleImpl extends MemberImpl implements Example
 {
   /**
    * The default value of the '{@link #getPreamble() <em>Preamble</em>}' attribute.

@@ -5,8 +5,7 @@
  */
 package de.bmw.carit.jnario.spec.spec;
 
-import org.eclipse.xtext.common.types.JvmTypeReference;
-import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,8 +15,7 @@ import org.eclipse.xtext.xbase.XExpression;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.bmw.carit.jnario.spec.spec.Member#getType <em>Type</em>}</li>
- *   <li>{@link de.bmw.carit.jnario.spec.spec.Member#getRight <em>Right</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.spec.spec.Member#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -25,58 +23,32 @@ import org.eclipse.xtext.xbase.XExpression;
  * @model
  * @generated
  */
-public interface Member extends AbstractElement
+public interface Member extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Type</b></em>' containment reference.
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Type</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Name</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Type</em>' containment reference.
-   * @see #setType(JvmTypeReference)
-   * @see de.bmw.carit.jnario.spec.spec.SpecPackage#getMember_Type()
-   * @model containment="true"
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see de.bmw.carit.jnario.spec.spec.SpecPackage#getMember_Name()
+   * @model
    * @generated
    */
-  JvmTypeReference getType();
+  String getName();
 
   /**
-   * Sets the value of the '{@link de.bmw.carit.jnario.spec.spec.Member#getType <em>Type</em>}' containment reference.
+   * Sets the value of the '{@link de.bmw.carit.jnario.spec.spec.Member#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type</em>' containment reference.
-   * @see #getType()
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
    * @generated
    */
-  void setType(JvmTypeReference value);
-
-  /**
-   * Returns the value of the '<em><b>Right</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Right</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Right</em>' containment reference.
-   * @see #setRight(XExpression)
-   * @see de.bmw.carit.jnario.spec.spec.SpecPackage#getMember_Right()
-   * @model containment="true"
-   * @generated
-   */
-  XExpression getRight();
-
-  /**
-   * Sets the value of the '{@link de.bmw.carit.jnario.spec.spec.Member#getRight <em>Right</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Right</em>' containment reference.
-   * @see #getRight()
-   * @generated
-   */
-  void setRight(XExpression value);
+  void setName(String value);
 
 } // Member

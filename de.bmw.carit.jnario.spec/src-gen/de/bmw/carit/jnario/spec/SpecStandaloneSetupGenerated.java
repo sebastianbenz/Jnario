@@ -2,8 +2,8 @@
 package de.bmw.carit.jnario.spec;
 
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.ISetup;
+import org.eclipse.emf.ecore.resource.Resource;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -15,7 +15,7 @@ import com.google.inject.Injector;
 public class SpecStandaloneSetupGenerated implements ISetup {
 
 	public Injector createInjectorAndDoEMFRegistration() {
-		org.eclipse.xtext.xbase.XbaseStandaloneSetup.doSetup();
+		org.eclipse.xtext.xbase.annotations.XbaseWithAnnotationsStandaloneSetup.doSetup();
 
 		Injector injector = createInjector();
 		register(injector);

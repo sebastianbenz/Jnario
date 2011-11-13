@@ -2,9 +2,9 @@ package de.bmw.carit.jnario.spec.jvmmodel;
 
 import com.google.inject.Inject;
 import de.bmw.carit.jnario.spec.naming.JavaNameProvider;
-import de.bmw.carit.jnario.spec.spec.AbstractElement;
 import de.bmw.carit.jnario.spec.spec.Example;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
+import de.bmw.carit.jnario.spec.spec.Field;
 import de.bmw.carit.jnario.spec.spec.Member;
 import de.bmw.carit.jnario.spec.spec.SpecFile;
 import org.eclipse.emf.common.util.EList;
@@ -80,25 +80,25 @@ public class SpecJvmModelInferrer extends AbstractModelInferrer {
               JvmAnnotationReference _annotation = SpecJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(spec, org.junit.runner.RunWith.class, de.bmw.carit.jnario.runner.JnarioRunner.class);
               CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
               EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
-              String _name = exampleGroup.getName();
-              JvmAnnotationReference _annotation_1 = SpecJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(spec, de.bmw.carit.jnario.runner.Named.class, _name);
+              String _javaClassAnnotationValue = SpecJvmModelInferrer.this._javaNameProvider.getJavaClassAnnotationValue(exampleGroup);
+              JvmAnnotationReference _annotation_1 = SpecJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(spec, de.bmw.carit.jnario.runner.Named.class, _javaClassAnnotationValue);
               CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
-              EList<AbstractElement> _elements = exampleGroup.getElements();
-              for (final AbstractElement element : _elements) {
-                final AbstractElement element_1 = element;
+              EList<Member> _elements = exampleGroup.getElements();
+              for (final Member element : _elements) {
+                final Member element_1 = element;
                 boolean matched = false;
                 if (!matched) {
-                  if (element_1 instanceof Member) {
-                    final Member element_2 = (Member) element_1;
+                  if (element_1 instanceof Field) {
+                    final Field element_2 = (Field) element_1;
                     matched=true;
                     {
-                      String _name_1 = element_2.getName();
-                      String _firstUpper = StringExtensions.toFirstUpper(_name_1);
+                      String _name = element_2.getName();
+                      String _firstUpper = StringExtensions.toFirstUpper(_name);
                       String _operator_plus = StringExtensions.operator_plus("create", _firstUpper);
                       final String initMethodName = _operator_plus;
-                      String _name_2 = element_2.getName();
+                      String _name_1 = element_2.getName();
                       JvmTypeReference _type = element_2.getType();
-                      JvmField _field = SpecJvmModelInferrer.this._jvmTypesBuilder.toField(element_2, _name_2, _type);
+                      JvmField _field = SpecJvmModelInferrer.this._jvmTypesBuilder.toField(element_2, _name_1, _type);
                       final JvmField field = _field;
                       EList<JvmMember> _members = it.getMembers();
                       CollectionExtensions.<JvmField>operator_add(_members, field);

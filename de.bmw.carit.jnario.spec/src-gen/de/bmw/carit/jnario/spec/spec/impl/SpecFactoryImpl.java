@@ -5,19 +5,15 @@
  */
 package de.bmw.carit.jnario.spec.spec.impl;
 
+import de.bmw.carit.jnario.spec.spec.*;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.impl.EFactoryImpl;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import de.bmw.carit.jnario.spec.spec.AbstractElement;
-import de.bmw.carit.jnario.spec.spec.Example;
-import de.bmw.carit.jnario.spec.spec.ExampleGroup;
-import de.bmw.carit.jnario.spec.spec.Member;
-import de.bmw.carit.jnario.spec.spec.SpecFactory;
-import de.bmw.carit.jnario.spec.spec.SpecFile;
-import de.bmw.carit.jnario.spec.spec.SpecPackage;
+import org.eclipse.emf.ecore.impl.EFactoryImpl;
+
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
  * <!-- begin-user-doc -->
@@ -73,9 +69,10 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
     {
       case SpecPackage.SPEC_FILE: return createSpecFile();
       case SpecPackage.EXAMPLE_GROUP: return createExampleGroup();
-      case SpecPackage.ABSTRACT_ELEMENT: return createAbstractElement();
       case SpecPackage.MEMBER: return createMember();
+      case SpecPackage.FIELD: return createField();
       case SpecPackage.EXAMPLE: return createExample();
+      case SpecPackage.PARAMETER: return createParameter();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -108,17 +105,6 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public AbstractElement createAbstractElement()
-  {
-    AbstractElementImpl abstractElement = new AbstractElementImpl();
-    return abstractElement;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public Member createMember()
   {
     MemberImpl member = new MemberImpl();
@@ -130,10 +116,32 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public Field createField()
+  {
+    FieldImpl field = new FieldImpl();
+    return field;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Example createExample()
   {
     ExampleImpl example = new ExampleImpl();
     return example;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Parameter createParameter()
+  {
+    ParameterImpl parameter = new ParameterImpl();
+    return parameter;
   }
 
   /**
