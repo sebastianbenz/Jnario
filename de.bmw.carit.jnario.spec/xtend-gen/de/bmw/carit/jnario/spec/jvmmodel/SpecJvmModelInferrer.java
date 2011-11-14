@@ -1,22 +1,32 @@
 package de.bmw.carit.jnario.spec.jvmmodel;
 
+import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import de.bmw.carit.jnario.spec.naming.JavaNameProvider;
 import de.bmw.carit.jnario.spec.spec.Example;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 import de.bmw.carit.jnario.spec.spec.Field;
+import de.bmw.carit.jnario.spec.spec.Function;
 import de.bmw.carit.jnario.spec.spec.Member;
+import de.bmw.carit.jnario.spec.spec.Parameter;
 import de.bmw.carit.jnario.spec.spec.SpecFile;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
 import org.eclipse.xtext.common.types.JvmAnnotationType;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.JvmField;
+import org.eclipse.xtext.common.types.JvmFormalParameter;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmMember;
 import org.eclipse.xtext.common.types.JvmOperation;
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
+import org.eclipse.xtext.common.types.JvmTypeParameter;
 import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.common.types.TypesFactory;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.util.IAcceptor;
@@ -25,12 +35,14 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 import org.eclipse.xtext.xbase.compiler.ImportManager;
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
+import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.eclipse.xtext.xbase.lib.CollectionExtensions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
+import org.eclipse.xtext.xtend2.resource.Xtend2Resource;
 
 /**
  * <p>Infers a JVM model from the source model.</p>
@@ -57,6 +69,9 @@ public class SpecJvmModelInferrer extends AbstractModelInferrer {
   
   @Inject
   private ITypeProvider _iTypeProvider;
+  
+  @Inject
+  private TypesFactory _typesFactory;
   
   /**
    * Is called for each instance of the first argument's type contained in a resource.
@@ -112,7 +127,6 @@ public class SpecJvmModelInferrer extends AbstractModelInferrer {
                       final JvmField field = _field;
                       EList<JvmMember> _members = it.getMembers();
                       CollectionExtensions.<JvmField>operator_add(_members, field);
-                      field.setFinal(true);
                       final Function1<ImportManager,String> _function = new Function1<ImportManager,String>() {
                           public String apply(final ImportManager im) {
                             String _operator_plus = StringExtensions.operator_plus(initMethodName, "()");
@@ -141,28 +155,112 @@ public class SpecJvmModelInferrer extends AbstractModelInferrer {
                   if (element_1 instanceof Example) {
                     final Example element_3 = (Example) element_1;
                     matched=true;
-                    EList<JvmMember> _members_2 = it.getMembers();
-                    String _exampleMethodName = SpecJvmModelInferrer.this._javaNameProvider.getExampleMethodName(element_3);
-                    JvmTypeReference _typeForName = SpecJvmModelInferrer.this._typeReferences.getTypeForName(Void.TYPE, element_3);
-                    final Procedure1<JvmOperation> _function_2 = new Procedure1<JvmOperation>() {
-                        public void apply(final JvmOperation it) {
-                          {
-                            String _documentation = SpecJvmModelInferrer.this._jvmTypesBuilder.getDocumentation(element_3);
-                            SpecJvmModelInferrer.this._jvmTypesBuilder.setDocumentation(it, _documentation);
-                            EList<JvmAnnotationReference> _annotations = it.getAnnotations();
-                            String _name = element_3.getName();
-                            JvmAnnotationReference _annotation = SpecJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(spec, de.bmw.carit.jnario.runner.Named.class, _name);
-                            CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
-                            EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
-                            JvmAnnotationReference _annotation_1 = SpecJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(element_3, org.junit.Test.class);
-                            CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
-                            XExpression _body = element_3.getBody();
-                            SpecJvmModelInferrer.this._jvmTypesBuilder.setBody(it, _body);
+                    {
+                      String _exampleMethodName = SpecJvmModelInferrer.this._javaNameProvider.getExampleMethodName(element_3);
+                      JvmTypeReference _typeForName = SpecJvmModelInferrer.this._typeReferences.getTypeForName(Void.TYPE, element_3);
+                      final Procedure1<JvmOperation> _function_2 = new Procedure1<JvmOperation>() {
+                          public void apply(final JvmOperation it) {
+                            {
+                              String _documentation = SpecJvmModelInferrer.this._jvmTypesBuilder.getDocumentation(element_3);
+                              SpecJvmModelInferrer.this._jvmTypesBuilder.setDocumentation(it, _documentation);
+                              EList<JvmAnnotationReference> _annotations = it.getAnnotations();
+                              String _name = element_3.getName();
+                              JvmAnnotationReference _annotation = SpecJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(spec, de.bmw.carit.jnario.runner.Named.class, _name);
+                              CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
+                              EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
+                              JvmAnnotationReference _annotation_1 = SpecJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(element_3, org.junit.Test.class);
+                              CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
+                              EList<XAnnotation> _annotations_2 = element_3.getAnnotations();
+                              Member _annotationInfo = element_3.getAnnotationInfo();
+                              EList<XAnnotation> _annotations_3 = _annotationInfo==null?(EList<XAnnotation>)null:_annotationInfo.getAnnotations();
+                              Iterable<XAnnotation> _concat = Iterables.<XAnnotation>concat(_annotations_2, _annotations_3);
+                              for (final XAnnotation a : _concat) {
+                                EList<JvmAnnotationReference> _annotations_4 = it.getAnnotations();
+                                JvmAnnotationType _annotationType = a.getAnnotationType();
+                                String _qualifiedName = _annotationType.getQualifiedName();
+                                JvmAnnotationReference _annotation_2 = SpecJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(element_3, _qualifiedName);
+                                CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_4, _annotation_2);
+                              }
+                              XExpression _body = element_3.getBody();
+                              SpecJvmModelInferrer.this._jvmTypesBuilder.setBody(it, _body);
+                            }
                           }
-                        }
-                      };
-                    JvmOperation _method_1 = SpecJvmModelInferrer.this._jvmTypesBuilder.toMethod(element_3, _exampleMethodName, _typeForName, _function_2);
-                    CollectionExtensions.<JvmOperation>operator_add(_members_2, _method_1);
+                        };
+                      JvmOperation _method_1 = SpecJvmModelInferrer.this._jvmTypesBuilder.toMethod(element_3, _exampleMethodName, _typeForName, _function_2);
+                      final JvmOperation method = _method_1;
+                      EList<JvmTypeReference> _exceptions = method.getExceptions();
+                      JvmTypeReference _typeForName_1 = SpecJvmModelInferrer.this._typeReferences.getTypeForName(java.lang.Exception.class, element_3);
+                      CollectionExtensions.<JvmTypeReference>operator_add(_exceptions, _typeForName_1);
+                      EList<JvmMember> _members_2 = it.getMembers();
+                      CollectionExtensions.<JvmOperation>operator_add(_members_2, method);
+                    }
+                  }
+                }
+                if (!matched) {
+                  if (element_1 instanceof Function) {
+                    final Function element_4 = (Function) element_1;
+                    matched=true;
+                    {
+                      JvmTypeReference _returnType = element_4.getReturnType();
+                      JvmTypeReference returnType = _returnType;
+                      boolean _operator_or = false;
+                      boolean _operator_equals = ObjectExtensions.operator_equals(returnType, null);
+                      if (_operator_equals) {
+                        _operator_or = true;
+                      } else {
+                        boolean _eIsProxy = returnType.eIsProxy();
+                        _operator_or = BooleanExtensions.operator_or(_operator_equals, _eIsProxy);
+                      }
+                      if (_operator_or) {
+                        JvmParameterizedTypeReference _typeProxy = SpecJvmModelInferrer.this.getTypeProxy(element_4);
+                        returnType = _typeProxy;
+                      } else {
+                        JvmTypeReference _cloneWithProxies = SpecJvmModelInferrer.this._jvmTypesBuilder.cloneWithProxies(returnType);
+                        returnType = _cloneWithProxies;
+                      }
+                      String _name_2 = element_4.getName();
+                      final Procedure1<JvmOperation> _function_3 = new Procedure1<JvmOperation>() {
+                          public void apply(final JvmOperation it) {
+                            {
+                              String _documentation = SpecJvmModelInferrer.this._jvmTypesBuilder.getDocumentation(element_4);
+                              SpecJvmModelInferrer.this._jvmTypesBuilder.setDocumentation(it, _documentation);
+                              EList<JvmTypeParameter> _typeParameters = element_4.getTypeParameters();
+                              for (final JvmTypeParameter t : _typeParameters) {
+                                EList<JvmTypeParameter> _typeParameters_1 = it.getTypeParameters();
+                                CollectionExtensions.<JvmTypeParameter>operator_add(_typeParameters_1, t);
+                              }
+                              EList<Parameter> _parameters = element_4.getParameters();
+                              for (final Parameter p : _parameters) {
+                                EList<JvmFormalParameter> _parameters_1 = it.getParameters();
+                                String _name = p.getName();
+                                JvmTypeReference _parameterType = p.getParameterType();
+                                JvmFormalParameter _parameter = SpecJvmModelInferrer.this._jvmTypesBuilder.toParameter(p, _name, _parameterType);
+                                CollectionExtensions.<JvmFormalParameter>operator_add(_parameters_1, _parameter);
+                              }
+                              EList<XAnnotation> _annotations = element_4.getAnnotations();
+                              Member _annotationInfo = element_4.getAnnotationInfo();
+                              EList<XAnnotation> _annotations_1 = _annotationInfo==null?(EList<XAnnotation>)null:_annotationInfo.getAnnotations();
+                              Iterable<XAnnotation> _concat = Iterables.<XAnnotation>concat(_annotations, _annotations_1);
+                              for (final XAnnotation a : _concat) {
+                                EList<JvmAnnotationReference> _annotations_2 = it.getAnnotations();
+                                JvmAnnotationType _annotationType = a.getAnnotationType();
+                                String _qualifiedName = _annotationType.getQualifiedName();
+                                JvmAnnotationReference _annotation = SpecJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(element_4, _qualifiedName);
+                                CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_2, _annotation);
+                              }
+                              XExpression _expression = element_4.getExpression();
+                              SpecJvmModelInferrer.this._jvmTypesBuilder.setBody(it, _expression);
+                            }
+                          }
+                        };
+                      JvmOperation _method_2 = SpecJvmModelInferrer.this._jvmTypesBuilder.toMethod(element_4, _name_2, returnType, _function_3);
+                      final JvmOperation method_1 = _method_2;
+                      EList<JvmTypeReference> _exceptions_1 = method_1.getExceptions();
+                      JvmTypeReference _typeForName_2 = SpecJvmModelInferrer.this._typeReferences.getTypeForName(java.lang.Exception.class, element_4);
+                      CollectionExtensions.<JvmTypeReference>operator_add(_exceptions_1, _typeForName_2);
+                      EList<JvmMember> _members_3 = it.getMembers();
+                      CollectionExtensions.<JvmOperation>operator_add(_members_3, method_1);
+                    }
                   }
                 }
               }
@@ -172,6 +270,23 @@ public class SpecJvmModelInferrer extends AbstractModelInferrer {
       JvmGenericType _class = this._jvmTypesBuilder.toClass(spec, _javaClassName, _function);
       acceptor.accept(_class);
     }
+  }
+  
+  public JvmParameterizedTypeReference getTypeProxy(final EObject pointer) {
+      JvmParameterizedTypeReference _createJvmParameterizedTypeReference = this._typesFactory.createJvmParameterizedTypeReference();
+      JvmParameterizedTypeReference typeReference = _createJvmParameterizedTypeReference;
+      Resource _eResource = pointer.eResource();
+      final Resource eResource = _eResource;
+      String _uRIFragment = eResource.getURIFragment(pointer);
+      String fragment = _uRIFragment;
+      URI _uRI = eResource.getURI();
+      URI uri = _uRI;
+      String _operator_plus = StringExtensions.operator_plus(Xtend2Resource.FRAGMENT_PREFIX, fragment);
+      URI _appendFragment = uri.appendFragment(_operator_plus);
+      uri = _appendFragment;
+      InternalEObject internalEObject = ((InternalEObject) typeReference);
+      internalEObject.eSetProxyURI(uri);
+      return typeReference;
   }
   
   public void infer(final EObject spec, final IAcceptor<JvmDeclaredType> acceptor, final boolean isPrelinkingPhase) {
