@@ -193,13 +193,13 @@ public class InternalJnarioParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJnario"
-    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:76:1: ruleJnario returns [EObject current=null] : ( (otherlv_0= 'package' ( (lv_package_1_0= ruleQualifiedName ) ) )? ( (lv_imports_2_0= ruleImport ) )* ( (lv_name_3_0= RULE_FEATURE_TEXT ) ) ( (lv_background_4_0= ruleBackground ) )? ( (lv_scenarios_5_0= ruleScenario ) )+ ) ;
+    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:76:1: ruleJnario returns [EObject current=null] : ( (otherlv_0= 'package' ( (lv_packageName_1_0= ruleQualifiedName ) ) )? ( (lv_imports_2_0= ruleImport ) )* ( (lv_name_3_0= RULE_FEATURE_TEXT ) ) ( (lv_background_4_0= ruleBackground ) )? ( (lv_scenarios_5_0= ruleScenario ) )+ ) ;
     public final EObject ruleJnario() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token lv_name_3_0=null;
-        AntlrDatatypeRuleToken lv_package_1_0 = null;
+        AntlrDatatypeRuleToken lv_packageName_1_0 = null;
 
         EObject lv_imports_2_0 = null;
 
@@ -211,13 +211,13 @@ public class InternalJnarioParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:79:28: ( ( (otherlv_0= 'package' ( (lv_package_1_0= ruleQualifiedName ) ) )? ( (lv_imports_2_0= ruleImport ) )* ( (lv_name_3_0= RULE_FEATURE_TEXT ) ) ( (lv_background_4_0= ruleBackground ) )? ( (lv_scenarios_5_0= ruleScenario ) )+ ) )
-            // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:80:1: ( (otherlv_0= 'package' ( (lv_package_1_0= ruleQualifiedName ) ) )? ( (lv_imports_2_0= ruleImport ) )* ( (lv_name_3_0= RULE_FEATURE_TEXT ) ) ( (lv_background_4_0= ruleBackground ) )? ( (lv_scenarios_5_0= ruleScenario ) )+ )
+            // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:79:28: ( ( (otherlv_0= 'package' ( (lv_packageName_1_0= ruleQualifiedName ) ) )? ( (lv_imports_2_0= ruleImport ) )* ( (lv_name_3_0= RULE_FEATURE_TEXT ) ) ( (lv_background_4_0= ruleBackground ) )? ( (lv_scenarios_5_0= ruleScenario ) )+ ) )
+            // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:80:1: ( (otherlv_0= 'package' ( (lv_packageName_1_0= ruleQualifiedName ) ) )? ( (lv_imports_2_0= ruleImport ) )* ( (lv_name_3_0= RULE_FEATURE_TEXT ) ) ( (lv_background_4_0= ruleBackground ) )? ( (lv_scenarios_5_0= ruleScenario ) )+ )
             {
-            // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:80:1: ( (otherlv_0= 'package' ( (lv_package_1_0= ruleQualifiedName ) ) )? ( (lv_imports_2_0= ruleImport ) )* ( (lv_name_3_0= RULE_FEATURE_TEXT ) ) ( (lv_background_4_0= ruleBackground ) )? ( (lv_scenarios_5_0= ruleScenario ) )+ )
-            // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:80:2: (otherlv_0= 'package' ( (lv_package_1_0= ruleQualifiedName ) ) )? ( (lv_imports_2_0= ruleImport ) )* ( (lv_name_3_0= RULE_FEATURE_TEXT ) ) ( (lv_background_4_0= ruleBackground ) )? ( (lv_scenarios_5_0= ruleScenario ) )+
+            // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:80:1: ( (otherlv_0= 'package' ( (lv_packageName_1_0= ruleQualifiedName ) ) )? ( (lv_imports_2_0= ruleImport ) )* ( (lv_name_3_0= RULE_FEATURE_TEXT ) ) ( (lv_background_4_0= ruleBackground ) )? ( (lv_scenarios_5_0= ruleScenario ) )+ )
+            // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:80:2: (otherlv_0= 'package' ( (lv_packageName_1_0= ruleQualifiedName ) ) )? ( (lv_imports_2_0= ruleImport ) )* ( (lv_name_3_0= RULE_FEATURE_TEXT ) ) ( (lv_background_4_0= ruleBackground ) )? ( (lv_scenarios_5_0= ruleScenario ) )+
             {
-            // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:80:2: (otherlv_0= 'package' ( (lv_package_1_0= ruleQualifiedName ) ) )?
+            // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:80:2: (otherlv_0= 'package' ( (lv_packageName_1_0= ruleQualifiedName ) ) )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -226,7 +226,7 @@ public class InternalJnarioParser extends AbstractInternalAntlrParser {
             }
             switch (alt1) {
                 case 1 :
-                    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:80:4: otherlv_0= 'package' ( (lv_package_1_0= ruleQualifiedName ) )
+                    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:80:4: otherlv_0= 'package' ( (lv_packageName_1_0= ruleQualifiedName ) )
                     {
                     otherlv_0=(Token)match(input,27,FOLLOW_27_in_ruleJnario123); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -234,19 +234,19 @@ public class InternalJnarioParser extends AbstractInternalAntlrParser {
                           	newLeafNode(otherlv_0, grammarAccess.getJnarioAccess().getPackageKeyword_0_0());
                           
                     }
-                    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:84:1: ( (lv_package_1_0= ruleQualifiedName ) )
-                    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:85:1: (lv_package_1_0= ruleQualifiedName )
+                    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:84:1: ( (lv_packageName_1_0= ruleQualifiedName ) )
+                    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:85:1: (lv_packageName_1_0= ruleQualifiedName )
                     {
-                    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:85:1: (lv_package_1_0= ruleQualifiedName )
-                    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:86:3: lv_package_1_0= ruleQualifiedName
+                    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:85:1: (lv_packageName_1_0= ruleQualifiedName )
+                    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:86:3: lv_packageName_1_0= ruleQualifiedName
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getJnarioAccess().getPackageQualifiedNameParserRuleCall_0_1_0()); 
+                      	        newCompositeNode(grammarAccess.getJnarioAccess().getPackageNameQualifiedNameParserRuleCall_0_1_0()); 
                       	    
                     }
                     pushFollow(FOLLOW_ruleQualifiedName_in_ruleJnario144);
-                    lv_package_1_0=ruleQualifiedName();
+                    lv_packageName_1_0=ruleQualifiedName();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -257,8 +257,8 @@ public class InternalJnarioParser extends AbstractInternalAntlrParser {
                       	        }
                              		set(
                              			current, 
-                             			"package",
-                              		lv_package_1_0, 
+                             			"packageName",
+                              		lv_packageName_1_0, 
                               		"QualifiedName");
                       	        afterParserOrEnumRuleCall();
                       	    

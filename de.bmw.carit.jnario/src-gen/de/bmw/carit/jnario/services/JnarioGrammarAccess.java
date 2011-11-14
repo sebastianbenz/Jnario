@@ -24,8 +24,8 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
 		private final Keyword cPackageKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
-		private final Assignment cPackageAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
-		private final RuleCall cPackageQualifiedNameParserRuleCall_0_1_0 = (RuleCall)cPackageAssignment_0_1.eContents().get(0);
+		private final Assignment cPackageNameAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cPackageNameQualifiedNameParserRuleCall_0_1_0 = (RuleCall)cPackageNameAssignment_0_1.eContents().get(0);
 		private final Assignment cImportsAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cImportsImportParserRuleCall_1_0 = (RuleCall)cImportsAssignment_1.eContents().get(0);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
@@ -36,23 +36,23 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cScenariosScenarioParserRuleCall_4_0 = (RuleCall)cScenariosAssignment_4.eContents().get(0);
 		
 		//Jnario:
-		//	("package" package=QualifiedName)? imports+=Import* name=FEATURE_TEXT background=Background? scenarios+=Scenario+;
+		//	("package" packageName=QualifiedName)? imports+=Import* name=FEATURE_TEXT background=Background? scenarios+=Scenario+;
 		public ParserRule getRule() { return rule; }
 
-		//("package" package=QualifiedName)? imports+=Import* name=FEATURE_TEXT background=Background? scenarios+=Scenario+
+		//("package" packageName=QualifiedName)? imports+=Import* name=FEATURE_TEXT background=Background? scenarios+=Scenario+
 		public Group getGroup() { return cGroup; }
 
-		//("package" package=QualifiedName)?
+		//("package" packageName=QualifiedName)?
 		public Group getGroup_0() { return cGroup_0; }
 
 		//"package"
 		public Keyword getPackageKeyword_0_0() { return cPackageKeyword_0_0; }
 
-		//package=QualifiedName
-		public Assignment getPackageAssignment_0_1() { return cPackageAssignment_0_1; }
+		//packageName=QualifiedName
+		public Assignment getPackageNameAssignment_0_1() { return cPackageNameAssignment_0_1; }
 
 		//QualifiedName
-		public RuleCall getPackageQualifiedNameParserRuleCall_0_1_0() { return cPackageQualifiedNameParserRuleCall_0_1_0; }
+		public RuleCall getPackageNameQualifiedNameParserRuleCall_0_1_0() { return cPackageNameQualifiedNameParserRuleCall_0_1_0; }
 
 		//imports+=Import*
 		public Assignment getImportsAssignment_1() { return cImportsAssignment_1; }
@@ -734,7 +734,7 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Jnario:
-	//	("package" package=QualifiedName)? imports+=Import* name=FEATURE_TEXT background=Background? scenarios+=Scenario+;
+	//	("package" packageName=QualifiedName)? imports+=Import* name=FEATURE_TEXT background=Background? scenarios+=Scenario+;
 	public JnarioElements getJnarioAccess() {
 		return (pJnario != null) ? pJnario : (pJnario = new JnarioElements());
 	}

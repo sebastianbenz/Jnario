@@ -71,13 +71,13 @@ public interface JnarioPackage extends EPackage
   int JNARIO = 0;
 
   /**
-   * The feature id for the '<em><b>Package</b></em>' attribute.
+   * The feature id for the '<em><b>Package Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int JNARIO__PACKAGE = 0;
+  int JNARIO__PACKAGE_NAME = 0;
 
   /**
    * The feature id for the '<em><b>Imports</b></em>' containment reference list.
@@ -754,15 +754,15 @@ public interface JnarioPackage extends EPackage
   EClass getJnario();
 
   /**
-   * Returns the meta object for the attribute '{@link de.bmw.carit.jnario.jnario.Jnario#getPackage <em>Package</em>}'.
+   * Returns the meta object for the attribute '{@link de.bmw.carit.jnario.jnario.Jnario#getPackageName <em>Package Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Package</em>'.
-   * @see de.bmw.carit.jnario.jnario.Jnario#getPackage()
+   * @return the meta object for the attribute '<em>Package Name</em>'.
+   * @see de.bmw.carit.jnario.jnario.Jnario#getPackageName()
    * @see #getJnario()
    * @generated
    */
-  EAttribute getJnario_Package();
+  EAttribute getJnario_PackageName();
 
   /**
    * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.jnario.Jnario#getImports <em>Imports</em>}'.
@@ -1300,12 +1300,12 @@ public interface JnarioPackage extends EPackage
     EClass JNARIO = eINSTANCE.getJnario();
 
     /**
-     * The meta object literal for the '<em><b>Package</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Package Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute JNARIO__PACKAGE = eINSTANCE.getJnario_Package();
+    EAttribute JNARIO__PACKAGE_NAME = eINSTANCE.getJnario_PackageName();
 
     /**
      * The meta object literal for the '<em><b>Imports</b></em>' containment reference list feature.

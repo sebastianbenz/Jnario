@@ -10,7 +10,7 @@
   <genPackages prefix="Jnario" basePackage="de.bmw.carit.jnario" disposableProviderFactory="true"
       ecorePackage="Jnario.ecore#/">
     <genClasses ecoreClass="Jnario.ecore#//Jnario">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jnario.ecore#//Jnario/package"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jnario.ecore#//Jnario/packageName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jnario.ecore#//Jnario/imports"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jnario.ecore#//Jnario/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jnario.ecore#//Jnario/background"/>

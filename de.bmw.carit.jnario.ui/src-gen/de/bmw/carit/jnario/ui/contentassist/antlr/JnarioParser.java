@@ -227,7 +227,7 @@ public class JnarioParser extends AbstractContentAssistParser {
 					put(grammarAccess.getJvmLowerBoundAccess().getGroup(), "rule__JvmLowerBound__Group__0");
 					put(grammarAccess.getJvmTypeParameterAccess().getGroup(), "rule__JvmTypeParameter__Group__0");
 					put(grammarAccess.getJvmTypeParameterAccess().getGroup_1_0(), "rule__JvmTypeParameter__Group_1_0__0");
-					put(grammarAccess.getJnarioAccess().getPackageAssignment_0_1(), "rule__Jnario__PackageAssignment_0_1");
+					put(grammarAccess.getJnarioAccess().getPackageNameAssignment_0_1(), "rule__Jnario__PackageNameAssignment_0_1");
 					put(grammarAccess.getJnarioAccess().getImportsAssignment_1(), "rule__Jnario__ImportsAssignment_1");
 					put(grammarAccess.getJnarioAccess().getNameAssignment_2(), "rule__Jnario__NameAssignment_2");
 					put(grammarAccess.getJnarioAccess().getBackgroundAssignment_3(), "rule__Jnario__BackgroundAssignment_3");

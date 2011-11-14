@@ -11517,26 +11517,26 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Jnario__Group_0__1__Impl"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3522:1: rule__Jnario__Group_0__1__Impl : ( ( rule__Jnario__PackageAssignment_0_1 ) ) ;
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3522:1: rule__Jnario__Group_0__1__Impl : ( ( rule__Jnario__PackageNameAssignment_0_1 ) ) ;
     public final void rule__Jnario__Group_0__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3526:1: ( ( ( rule__Jnario__PackageAssignment_0_1 ) ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3527:1: ( ( rule__Jnario__PackageAssignment_0_1 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3526:1: ( ( ( rule__Jnario__PackageNameAssignment_0_1 ) ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3527:1: ( ( rule__Jnario__PackageNameAssignment_0_1 ) )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3527:1: ( ( rule__Jnario__PackageAssignment_0_1 ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3528:1: ( rule__Jnario__PackageAssignment_0_1 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3527:1: ( ( rule__Jnario__PackageNameAssignment_0_1 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3528:1: ( rule__Jnario__PackageNameAssignment_0_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getJnarioAccess().getPackageAssignment_0_1()); 
+               before(grammarAccess.getJnarioAccess().getPackageNameAssignment_0_1()); 
             }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3529:1: ( rule__Jnario__PackageAssignment_0_1 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3529:2: rule__Jnario__PackageAssignment_0_1
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3529:1: ( rule__Jnario__PackageNameAssignment_0_1 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3529:2: rule__Jnario__PackageNameAssignment_0_1
             {
-            pushFollow(FOLLOW_rule__Jnario__PackageAssignment_0_1_in_rule__Jnario__Group_0__1__Impl7618);
-            rule__Jnario__PackageAssignment_0_1();
+            pushFollow(FOLLOW_rule__Jnario__PackageNameAssignment_0_1_in_rule__Jnario__Group_0__1__Impl7618);
+            rule__Jnario__PackageNameAssignment_0_1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -11544,7 +11544,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getJnarioAccess().getPackageAssignment_0_1()); 
+               after(grammarAccess.getJnarioAccess().getPackageNameAssignment_0_1()); 
             }
 
             }
@@ -45979,9 +45979,9 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__JvmLowerBound__Group__1__Impl"
 
 
-    // $ANTLR start "rule__Jnario__PackageAssignment_0_1"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:15935:1: rule__Jnario__PackageAssignment_0_1 : ( ruleQualifiedName ) ;
-    public final void rule__Jnario__PackageAssignment_0_1() throws RecognitionException {
+    // $ANTLR start "rule__Jnario__PackageNameAssignment_0_1"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:15935:1: rule__Jnario__PackageNameAssignment_0_1 : ( ruleQualifiedName ) ;
+    public final void rule__Jnario__PackageNameAssignment_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -45993,15 +45993,15 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:15941:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getJnarioAccess().getPackageQualifiedNameParserRuleCall_0_1_0()); 
+               before(grammarAccess.getJnarioAccess().getPackageNameQualifiedNameParserRuleCall_0_1_0()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__Jnario__PackageAssignment_0_132053);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__Jnario__PackageNameAssignment_0_132053);
             ruleQualifiedName();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getJnarioAccess().getPackageQualifiedNameParserRuleCall_0_1_0()); 
+               after(grammarAccess.getJnarioAccess().getPackageNameQualifiedNameParserRuleCall_0_1_0()); 
             }
 
             }
@@ -46021,7 +46021,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Jnario__PackageAssignment_0_1"
+    // $ANTLR end "rule__Jnario__PackageNameAssignment_0_1"
 
 
     // $ANTLR start "rule__Jnario__ImportsAssignment_1"
@@ -56861,7 +56861,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__Jnario__Group_0__1_in_rule__Jnario__Group_0__07532 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_50_in_rule__Jnario__Group_0__0__Impl7560 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Jnario__Group_0__1__Impl_in_rule__Jnario__Group_0__17591 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Jnario__PackageAssignment_0_1_in_rule__Jnario__Group_0__1__Impl7618 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Jnario__PackageNameAssignment_0_1_in_rule__Jnario__Group_0__1__Impl7618 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Import__Group__0__Impl_in_rule__Import__Group__07652 = new BitSet(new long[]{0x0000000000000010L,0x0000000000400000L});
     public static final BitSet FOLLOW_rule__Import__Group__1_in_rule__Import__Group__07655 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_51_in_rule__Import__Group__0__Impl7683 = new BitSet(new long[]{0x0000000000000002L});
@@ -57855,7 +57855,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_48_in_rule__JvmLowerBound__Group__0__Impl31954 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmLowerBound__Group__1__Impl_in_rule__JvmLowerBound__Group__131985 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmLowerBound__TypeReferenceAssignment_1_in_rule__JvmLowerBound__Group__1__Impl32012 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__Jnario__PackageAssignment_0_132053 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__Jnario__PackageNameAssignment_0_132053 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleImport_in_rule__Jnario__ImportsAssignment_132084 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_FEATURE_TEXT_in_rule__Jnario__NameAssignment_232115 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleBackground_in_rule__Jnario__BackgroundAssignment_332146 = new BitSet(new long[]{0x0000000000000002L});

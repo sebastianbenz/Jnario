@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.bmw.carit.jnario.jnario.impl.JnarioImpl#getPackage <em>Package</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.jnario.impl.JnarioImpl#getPackageName <em>Package Name</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.jnario.impl.JnarioImpl#getImports <em>Imports</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.jnario.impl.JnarioImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.jnario.impl.JnarioImpl#getBackground <em>Background</em>}</li>
@@ -48,24 +48,24 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class JnarioImpl extends MinimalEObjectImpl.Container implements Jnario
 {
   /**
-   * The default value of the '{@link #getPackage() <em>Package</em>}' attribute.
+   * The default value of the '{@link #getPackageName() <em>Package Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getPackage()
+   * @see #getPackageName()
    * @generated
    * @ordered
    */
-  protected static final String PACKAGE_EDEFAULT = null;
+  protected static final String PACKAGE_NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getPackage() <em>Package</em>}' attribute.
+   * The cached value of the '{@link #getPackageName() <em>Package Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getPackage()
+   * @see #getPackageName()
    * @generated
    * @ordered
    */
-  protected String package_ = PACKAGE_EDEFAULT;
+  protected String packageName = PACKAGE_NAME_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getImports() <em>Imports</em>}' containment reference list.
@@ -143,9 +143,9 @@ public class JnarioImpl extends MinimalEObjectImpl.Container implements Jnario
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getPackage()
+  public String getPackageName()
   {
-    return package_;
+    return packageName;
   }
 
   /**
@@ -153,12 +153,12 @@ public class JnarioImpl extends MinimalEObjectImpl.Container implements Jnario
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setPackage(String newPackage)
+  public void setPackageName(String newPackageName)
   {
-    String oldPackage = package_;
-    package_ = newPackage;
+    String oldPackageName = packageName;
+    packageName = newPackageName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JnarioPackage.JNARIO__PACKAGE, oldPackage, package_));
+      eNotify(new ENotificationImpl(this, Notification.SET, JnarioPackage.JNARIO__PACKAGE_NAME, oldPackageName, packageName));
   }
 
   /**
@@ -290,8 +290,8 @@ public class JnarioImpl extends MinimalEObjectImpl.Container implements Jnario
   {
     switch (featureID)
     {
-      case JnarioPackage.JNARIO__PACKAGE:
-        return getPackage();
+      case JnarioPackage.JNARIO__PACKAGE_NAME:
+        return getPackageName();
       case JnarioPackage.JNARIO__IMPORTS:
         return getImports();
       case JnarioPackage.JNARIO__NAME:
@@ -315,8 +315,8 @@ public class JnarioImpl extends MinimalEObjectImpl.Container implements Jnario
   {
     switch (featureID)
     {
-      case JnarioPackage.JNARIO__PACKAGE:
-        setPackage((String)newValue);
+      case JnarioPackage.JNARIO__PACKAGE_NAME:
+        setPackageName((String)newValue);
         return;
       case JnarioPackage.JNARIO__IMPORTS:
         getImports().clear();
@@ -346,8 +346,8 @@ public class JnarioImpl extends MinimalEObjectImpl.Container implements Jnario
   {
     switch (featureID)
     {
-      case JnarioPackage.JNARIO__PACKAGE:
-        setPackage(PACKAGE_EDEFAULT);
+      case JnarioPackage.JNARIO__PACKAGE_NAME:
+        setPackageName(PACKAGE_NAME_EDEFAULT);
         return;
       case JnarioPackage.JNARIO__IMPORTS:
         getImports().clear();
@@ -375,8 +375,8 @@ public class JnarioImpl extends MinimalEObjectImpl.Container implements Jnario
   {
     switch (featureID)
     {
-      case JnarioPackage.JNARIO__PACKAGE:
-        return PACKAGE_EDEFAULT == null ? package_ != null : !PACKAGE_EDEFAULT.equals(package_);
+      case JnarioPackage.JNARIO__PACKAGE_NAME:
+        return PACKAGE_NAME_EDEFAULT == null ? packageName != null : !PACKAGE_NAME_EDEFAULT.equals(packageName);
       case JnarioPackage.JNARIO__IMPORTS:
         return imports != null && !imports.isEmpty();
       case JnarioPackage.JNARIO__NAME:
@@ -400,8 +400,8 @@ public class JnarioImpl extends MinimalEObjectImpl.Container implements Jnario
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (package: ");
-    result.append(package_);
+    result.append(" (packageName: ");
+    result.append(packageName);
     result.append(", name: ");
     result.append(name);
     result.append(')');

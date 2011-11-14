@@ -84,16 +84,16 @@ ruleJnario returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getJnarioAccess().getPackageQualifiedNameParserRuleCall_0_1_0()); 
+	        newCompositeNode(grammarAccess.getJnarioAccess().getPackageNameQualifiedNameParserRuleCall_0_1_0()); 
 	    }
-		lv_package_1_0=ruleQualifiedName		{
+		lv_packageName_1_0=ruleQualifiedName		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getJnarioRule());
 	        }
        		set(
        			$current, 
-       			"package",
-        		lv_package_1_0, 
+       			"packageName",
+        		lv_packageName_1_0, 
         		"QualifiedName");
 	        afterParserOrEnumRuleCall();
 	    }

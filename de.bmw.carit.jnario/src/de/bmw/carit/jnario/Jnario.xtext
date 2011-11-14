@@ -5,7 +5,7 @@ import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as jvmTypes
 
 Jnario:
-	('package' package=QualifiedName)?
+	('package' packageName=QualifiedName)?
 	(imports += Import)*
 	name=FEATURE_TEXT
 	background = Background?

@@ -238,7 +238,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getJnario_Package()
+  public EAttribute getJnario_PackageName()
   {
     return (EAttribute)jnarioEClass.getEStructuralFeatures().get(0);
   }
@@ -744,7 +744,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 
     // Create classes and their features
     jnarioEClass = createEClass(JNARIO);
-    createEAttribute(jnarioEClass, JNARIO__PACKAGE);
+    createEAttribute(jnarioEClass, JNARIO__PACKAGE_NAME);
     createEReference(jnarioEClass, JNARIO__IMPORTS);
     createEAttribute(jnarioEClass, JNARIO__NAME);
     createEReference(jnarioEClass, JNARIO__BACKGROUND);
@@ -850,7 +850,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 
     // Initialize classes and features; add operations and parameters
     initEClass(jnarioEClass, Jnario.class, "Jnario", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getJnario_Package(), ecorePackage.getEString(), "package", null, 0, 1, Jnario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getJnario_PackageName(), ecorePackage.getEString(), "packageName", null, 0, 1, Jnario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getJnario_Imports(), this.getImport(), null, "imports", null, 0, -1, Jnario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getJnario_Name(), ecorePackage.getEString(), "name", null, 0, 1, Jnario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getJnario_Background(), this.getBackground(), null, "background", null, 0, 1, Jnario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

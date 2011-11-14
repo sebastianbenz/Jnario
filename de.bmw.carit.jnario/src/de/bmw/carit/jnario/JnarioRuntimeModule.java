@@ -5,10 +5,12 @@ package de.bmw.carit.jnario;
 
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
+import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 
 import de.bmw.carit.jnario.generator.JnarioCompiler;
 import de.bmw.carit.jnario.scoping.JnarioScopeProvider;
+import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder;
 import de.bmw.carit.jnario.typing.JnarioTypeProvider;
 
 /**
@@ -28,5 +30,9 @@ public class JnarioRuntimeModule extends de.bmw.carit.jnario.AbstractJnarioRunti
 	
 	public Class<? extends XbaseCompiler> bindXbaseCompiler() {
 		return JnarioCompiler.class; 
+	}
+	
+	public Class<? extends JvmTypesBuilder> bindJvmTypesBuilder(){
+		return ExtendedJvmTypesBuilder.class;
 	}
 }

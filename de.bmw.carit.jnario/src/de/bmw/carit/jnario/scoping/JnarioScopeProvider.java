@@ -39,27 +39,27 @@ public class JnarioScopeProvider extends XbaseScopeProvider {
 		EObject context = scopeContext.getContext();
 		if (context instanceof Given || context instanceof When || context instanceof Then || context instanceof And) {
 			return stepScope(parentScope, scopeContext);
-		}else if(context instanceof XFeatureCallImplCustom){
-			IScope scope = checkIfInExampleScope(parentScope, scopeContext);
-			if(scope != null) return scope;
-			return super.createLocalVarScope(parentScope, scopeContext);
+//		}else if(context instanceof XFeatureCallImplCustom){
+//			IScope scope = checkIfInExampleScope(parentScope, scopeContext);
+//			if(scope != null) return scope;
+//			return super.createLocalVarScope(parentScope, scopeContext);
 		}else{
 			return super.createLocalVarScope(parentScope, scopeContext);
 		}
 	}
 
-	private IScope checkIfInExampleScope(IScope parentScope,
-			LocalVariableScopeContext scopeContext) {
-//		EObject context = scopeContext.getContext();
-//		Scenario scenario = getContainerOfType(context, Scenario.class);
-//		Examples examples = scenario.getExamples().get(0);
-//		for(ExampleCell cell: examples.getHeading().getParts()){
-//			if(retrieveExampleVariable(cell.getValue()).equals(context.toString())){
-//				return super.createLocalVarScope(parentScope, scopeContext);
-//			}
-//		}
-		return super.createLocalVarScope(parentScope, scopeContext);
-	}
+//	private IScope checkIfInExampleScope(IScope parentScope,
+//			LocalVariableScopeContext scopeContext) {
+////		EObject context = scopeContext.getContext();
+////		Scenario scenario = getContainerOfType(context, Scenario.class);
+////		Examples examples = scenario.getExamples().get(0);
+////		for(ExampleCell cell: examples.getHeading().getParts()){
+////			if(retrieveExampleVariable(cell.getValue()).equals(context.toString())){
+////				return super.createLocalVarScope(parentScope, scopeContext);
+////			}
+////		}
+//		return super.createLocalVarScope(parentScope, scopeContext);
+//	}
 
 	private IScope stepScope(IScope parentScope,
 			LocalVariableScopeContext scopeContext) {

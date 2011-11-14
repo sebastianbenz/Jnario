@@ -3525,9 +3525,9 @@ rule__Jnario__Group_0__1__Impl
     }
 :
 (
-{ before(grammarAccess.getJnarioAccess().getPackageAssignment_0_1()); }
-(rule__Jnario__PackageAssignment_0_1)
-{ after(grammarAccess.getJnarioAccess().getPackageAssignment_0_1()); }
+{ before(grammarAccess.getJnarioAccess().getPackageNameAssignment_0_1()); }
+(rule__Jnario__PackageNameAssignment_0_1)
+{ after(grammarAccess.getJnarioAccess().getPackageNameAssignment_0_1()); }
 )
 
 ;
@@ -15932,14 +15932,14 @@ finally {
 
 
 
-rule__Jnario__PackageAssignment_0_1
+rule__Jnario__PackageNameAssignment_0_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getJnarioAccess().getPackageQualifiedNameParserRuleCall_0_1_0()); }
-	ruleQualifiedName{ after(grammarAccess.getJnarioAccess().getPackageQualifiedNameParserRuleCall_0_1_0()); }
+{ before(grammarAccess.getJnarioAccess().getPackageNameQualifiedNameParserRuleCall_0_1_0()); }
+	ruleQualifiedName{ after(grammarAccess.getJnarioAccess().getPackageNameQualifiedNameParserRuleCall_0_1_0()); }
 )
 
 ;

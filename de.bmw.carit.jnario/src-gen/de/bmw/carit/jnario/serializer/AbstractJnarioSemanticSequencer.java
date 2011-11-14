@@ -1250,7 +1250,7 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (package=QualifiedName? imports+=Import* name=FEATURE_TEXT background=Background? scenarios+=Scenario+)
+	 *     (packageName=QualifiedName? imports+=Import* name=FEATURE_TEXT background=Background? scenarios+=Scenario+)
 	 */
 	protected void sequence_Jnario(EObject context, Jnario semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

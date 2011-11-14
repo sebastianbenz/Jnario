@@ -17,7 +17,7 @@
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Group" cardinality="?">
           <elements xsi:type="xtext:Keyword" value="package"/>
-          <elements xsi:type="xtext:Assignment" feature="package" operator="=">
+          <elements xsi:type="xtext:Assignment" feature="packageName" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.52"/>
           </elements>
         </elements>

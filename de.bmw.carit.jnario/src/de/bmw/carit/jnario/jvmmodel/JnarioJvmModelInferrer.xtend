@@ -1,15 +1,29 @@
 package de.bmw.carit.jnario.jvmmodel
 
 import com.google.inject.Inject
+import de.bmw.carit.jnario.jnario.Jnario
 import de.bmw.carit.jnario.jnario.Scenario
+import de.bmw.carit.jnario.jnario.Step
+import de.bmw.carit.jnario.runner.ScenarioRunner
+import java.util.Iterator
+import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmDeclaredType
-import org.eclipse.xtext.naming.IQualifiedNameProvider
+import org.eclipse.xtext.common.types.JvmGenericType
+import org.eclipse.xtext.common.types.JvmTypeReference
+import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.util.IAcceptor
+import org.eclipse.xtext.xbase.XVariableDeclaration
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import org.eclipse.xtext.common.types.TypesFactory
 import org.eclipse.xtext.xbase.typing.ITypeProvider
-import org.eclipse.xtext.xbase.XVariableDeclaration
+import org.junit.Test
+import de.bmw.carit.jnario.runner.Named
+import org.junit.runner.RunWith
+
+import static com.google.common.collect.Iterators.*
+import static com.google.common.collect.Sets.*
+
+
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -23,9 +37,11 @@ class JnarioJvmModelInferrer extends AbstractModelInferrer {
      * conveninence API to build and initialize JvmTypes and their members.
      */
 	@Inject extension JvmTypesBuilder
-	@Inject extension IQualifiedNameProvider
-	@Inject ITypeProvider typeProvider
+	
+	@Inject	extension TypeReferences
 
+	@Inject extension ITypeProvider
+	
 	/**
 	 * Is called for each instance of the first argument's type contained in a resource.
 	 * 
@@ -35,53 +51,65 @@ class JnarioJvmModelInferrer extends AbstractModelInferrer {
 	 * @param isPreLinkingPhase - whether the method is called in a pre linking phase, i.e. when the global index isn't fully updated. You
 	 *        must not rely on linking using the index if iPrelinkingPhase is <code>true</code>
 	 */
-   	def dispatch infer(Scenario scenario, IAcceptor<JvmDeclaredType> acceptor, boolean isPrelinkingPhase) {
-   		
-   		// Here you explain how your model is mapped to Java elements, by writing the actual translation code.
-   		// An example based on the initial hellow world example could look like this:
-   		
-//   		acceptor.accept(element.toClass("my.company.greeting.MyGreetings") [
-//   			for (greeting : element.greetings) {
-//   				members += greeting.toMethod(greeting.name, greeting.newTypeRef(typeof(String))) [
-//   					it.body ['''
-//   						return "Hello «greeting.name»";
-//   					''']
-//   				]
-//   			}
-//   		])
-		TypesFactory::eINSTANCE.createJvmVoid
-		acceptor.accept(
-			scenario.toClass("Scenario" + scenario.name.extractValidName)[
-				members += scenario.toConstructor("blubb")[]
+   	def dispatch void infer(Jnario jnario, IAcceptor<JvmDeclaredType> acceptor, boolean isPrelinkingPhase) {
+		for(scenario: jnario.scenarios){
+			acceptor.accept(
+				scenario.toClass(scenario.name.extractValidName.toFirstUpper) [
+					annotations += scenario.toAnnotation(typeof(RunWith), typeof(ScenarioRunner))
+					packageName = jnario.packageName
+					documentation = scenario.documentation
+					scenario.generateVariables(it)
+					for (step : scenario.getSteps) {
+						transform(step, it)
+					}
+				]
+			)
+		}
+   	}
+
+	def void generateVariables(Scenario scenario, JvmGenericType inferredJvmType) {
+		var Iterator<EObject> eAllContents = scenario.eAllContents();
+		var allVariables = filter(eAllContents, typeof(XVariableDeclaration))
+		var declaredVariables = newHashSet("");
+		while(allVariables.hasNext){
+			var currentDec = allVariables.next();
+			if(!declaredVariables.contains(currentDec.getQualifiedName())){
+				declaredVariables.add(currentDec.getQualifiedName());
+				
+				var JvmTypeReference type;
+				if (currentDec.getType() != null) {
+					type = currentDec.getType();
+				} else {
+					type = getType(currentDec.getRight());
+				}
+				
+				if(type != null){
+					inferredJvmType.members += toField(scenario, currentDec.simpleName, type)
+				}
+			}
+		}
+	}
+
+	def void transform(Step step, JvmGenericType inferredJvmType) {
+		if(step.getCode() != null){
+			var operation = toMethod(step, step.name.extractValidName.toFirstLower, getTypeForName(Void::TYPE, step))[
+				body = step.code.blockExpression
 			]
-		)
+			inferredJvmType.members += operation
+			operation.annotations += step.toAnnotation(typeof(Test))
+			operation.annotations += step.toAnnotation(typeof(Named), step.name.trim)
+		}
 	}
-	
-	def newVoidRef() {
-		var reference = TypesFactory::eINSTANCE.createJvmParameterizedTypeReference()
-		reference.setType(TypesFactory::eINSTANCE.createJvmVoid())
-		reference
-	}
-	
-	def  extractValidName(String originalName){
+
+	def String extractValidName(String originalName){
 		var name = "";
-		var words = originalName.split(" ")
-		for(String word: words){
-			// make first letter upper case and join them to name
-			var firstLetter = "" + word.charAt(0)
-			firstLetter = firstLetter.toUpperCase()
-			name = name + firstLetter + word.substring(1)
+		var words = originalName.split(" ");
+		for(word: words){
+			if(!word.isEmpty()){
+				name = name + word.toFirstUpper
+			}
 		}
-		
-		var indexOfSentenceEnd = name.lastIndexOf(".")
-		if(indexOfSentenceEnd > -1){
-			name = name.substring(0, indexOfSentenceEnd)
-		}
-		
-		var firstLetter = "" + name.charAt(0)
-		firstLetter = firstLetter.toLowerCase()
-		name = firstLetter + name.substring(1)
-		
-		name = name.replaceAll("[^A-Za-z0-9_]","")
+		return name.replaceAll("[^A-Za-z0-9_]","");
 	}
+
 }

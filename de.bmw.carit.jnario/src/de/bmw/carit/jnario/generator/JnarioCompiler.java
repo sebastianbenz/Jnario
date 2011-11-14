@@ -108,14 +108,6 @@ public class JnarioCompiler extends XbaseCompiler {
 		b.append(";");
 	}
 	
-	@Override
-	public IAppendable compile(XExpression obj, IAppendable appendable, JvmTypeReference expectedReturnType) {
-		if(expectedReturnType == null){
-			return super.compile(obj, appendable, newVoidRef());
-		}
-		return super.compile(obj, appendable, expectedReturnType);
-	}
-	
 //	public String compileScenario(Scenario scenario, ImportManager importManager, boolean withTestAnnotation) {
 //		IAppendable appendable = new StringBuilderBasedAppendable(importManager);
 //		
