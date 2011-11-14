@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Xspec Core Tests
+Bundle-Name: Jnario Lib Tests
 Bundle-SymbolicName: de.bmw.carit.jnario.runner.tests
 Bundle-Version: 0.1.0.qualifier
 Bundle-Vendor: BMW
