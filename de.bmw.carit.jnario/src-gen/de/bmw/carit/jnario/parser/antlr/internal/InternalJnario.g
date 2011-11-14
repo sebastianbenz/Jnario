@@ -1197,9 +1197,9 @@ ruleExampleHeadingCell returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='|' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getExampleHeadingCellAccess().getVerticalLineKeyword_0());
+(this_PIPE_0=RULE_PIPE
+    { 
+    newLeafNode(this_PIPE_0, grammarAccess.getExampleHeadingCellAccess().getPIPETerminalRuleCall_0()); 
     }
 (
 (
@@ -1283,9 +1283,9 @@ ruleExampleCell returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='|' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getExampleCellAccess().getVerticalLineKeyword_0());
+(this_PIPE_0=RULE_PIPE
+    { 
+    newLeafNode(this_PIPE_0, grammarAccess.getExampleCellAccess().getPIPETerminalRuleCall_0()); 
     }
 (
 (
@@ -6336,7 +6336,9 @@ RULE_AND_TEXT : 'And ' RULE_MNL;
 
 RULE_EXAMPLE_TEXT : 'Examples' RULE_COLON RULE_MNL;
 
-RULE_EXAMPLE_ROW_END : '|' RULE_SPACES RULE_NL;
+RULE_PIPE : '|' RULE_SPACES;
+
+RULE_EXAMPLE_ROW_END : RULE_PIPE '\r'? '\n';
 
 RULE_VISIBILITY : ('private'|'public'|'protected');
 

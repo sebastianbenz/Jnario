@@ -122,11 +122,18 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
                 type = _type_1;
               } else {
                 XExpression _right = currentDec.getRight();
-                JvmTypeReference _type_2 = this._iTypeProvider.getType(_right);
-                type = _type_2;
+                boolean _operator_notEquals_1 = ObjectExtensions.operator_notEquals(_right, null);
+                if (_operator_notEquals_1) {
+                  XExpression _right_1 = currentDec.getRight();
+                  JvmTypeReference _type_2 = this._iTypeProvider.getType(_right_1);
+                  type = _type_2;
+                } else {
+                  JvmTypeReference _type_3 = this._iTypeProvider.getType(currentDec, true);
+                  type = _type_3;
+                }
               }
-              boolean _operator_notEquals_1 = ObjectExtensions.operator_notEquals(type, null);
-              if (_operator_notEquals_1) {
+              boolean _operator_notEquals_2 = ObjectExtensions.operator_notEquals(type, null);
+              if (_operator_notEquals_2) {
                 EList<JvmMember> _members = inferredJvmType.getMembers();
                 String _simpleName = currentDec.getSimpleName();
                 JvmField _field = this._jvmTypesBuilder.toField(scenario, _simpleName, type);

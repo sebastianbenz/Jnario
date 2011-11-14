@@ -641,19 +641,19 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	public class ExampleHeadingCellElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ExampleHeadingCell");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cVerticalLineKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final RuleCall cPIPETerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameValidIDParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		
 		//ExampleHeadingCell returns xbase::XVariableDeclaration:
-		//	"|" name=ValidID;
+		//	PIPE name=ValidID;
 		public ParserRule getRule() { return rule; }
 
-		//"|" name=ValidID
+		//PIPE name=ValidID
 		public Group getGroup() { return cGroup; }
 
-		//"|"
-		public Keyword getVerticalLineKeyword_0() { return cVerticalLineKeyword_0; }
+		//PIPE
+		public RuleCall getPIPETerminalRuleCall_0() { return cPIPETerminalRuleCall_0; }
 
 		//name=ValidID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -689,19 +689,19 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	public class ExampleCellElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ExampleCell");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cVerticalLineKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final RuleCall cPIPETerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameXExpressionParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		
 		//ExampleCell:
-		//	"|" name=XExpression;
+		//	PIPE name=XExpression;
 		public ParserRule getRule() { return rule; }
 
-		//"|" name=XExpression
+		//PIPE name=XExpression
 		public Group getGroup() { return cGroup; }
 
-		//"|"
-		public Keyword getVerticalLineKeyword_0() { return cVerticalLineKeyword_0; }
+		//PIPE
+		public RuleCall getPIPETerminalRuleCall_0() { return cPIPETerminalRuleCall_0; }
 
 		//name=XExpression
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -738,6 +738,7 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	private TerminalRule tTHEN_TEXT;
 	private TerminalRule tAND_TEXT;
 	private TerminalRule tEXAMPLE_TEXT;
+	private TerminalRule tPIPE;
 	private TerminalRule tEXAMPLE_ROW_END;
 	private TerminalRule tVISIBILITY;
 	private TerminalRule tTEXT_MULTI_LINE;
@@ -930,7 +931,7 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ExampleHeadingCell returns xbase::XVariableDeclaration:
-	//	"|" name=ValidID;
+	//	PIPE name=ValidID;
 	public ExampleHeadingCellElements getExampleHeadingCellAccess() {
 		return (pExampleHeadingCell != null) ? pExampleHeadingCell : (pExampleHeadingCell = new ExampleHeadingCellElements());
 	}
@@ -950,7 +951,7 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ExampleCell:
-	//	"|" name=XExpression;
+	//	PIPE name=XExpression;
 	public ExampleCellElements getExampleCellAccess() {
 		return (pExampleCell != null) ? pExampleCell : (pExampleCell = new ExampleCellElements());
 	}
@@ -1007,8 +1008,14 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		return (tEXAMPLE_TEXT != null) ? tEXAMPLE_TEXT : (tEXAMPLE_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "EXAMPLE_TEXT"));
 	} 
 
+	//terminal PIPE:
+	//	"|" SPACES;
+	public TerminalRule getPIPERule() {
+		return (tPIPE != null) ? tPIPE : (tPIPE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "PIPE"));
+	} 
+
 	//terminal EXAMPLE_ROW_END:
-	//	"|" SPACES NL;
+	//	PIPE "\r"? "\n";
 	public TerminalRule getEXAMPLE_ROW_ENDRule() {
 		return (tEXAMPLE_ROW_END != null) ? tEXAMPLE_ROW_END : (tEXAMPLE_ROW_END = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "EXAMPLE_ROW_END"));
 	} 

@@ -61,7 +61,6 @@ public class SemanticHighlightingCalculator implements
 		}
 
 		private void highlight(String string, EObject object) {
-			
 			acceptor.addPosition(offset(object, JnarioPackage.Literals.STEP__NAME), string.length(),
 					HighlightingConfiguration.STEP_ID);
 		}

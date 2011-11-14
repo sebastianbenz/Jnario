@@ -46,6 +46,8 @@ public class AbstractJnarioSyntacticSequencer extends AbstractSyntacticSequencer
 			return getEXAMPLE_ROW_ENDToken(semanticObject, ruleCall, node);
 		else if(ruleCall.getRule() == grammarAccess.getOpSingleAssignRule())
 			return getOpSingleAssignToken(semanticObject, ruleCall, node);
+		else if(ruleCall.getRule() == grammarAccess.getPIPERule())
+			return getPIPEToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
@@ -57,12 +59,17 @@ public class AbstractJnarioSyntacticSequencer extends AbstractSyntacticSequencer
 	protected String getEXAMPLE_ROW_ENDToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
-		return "|";
+		return "|\n";
 	}
 	protected String getOpSingleAssignToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return "=";
+	}
+	protected String getPIPEToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "|";
 	}
 	
 	@Override

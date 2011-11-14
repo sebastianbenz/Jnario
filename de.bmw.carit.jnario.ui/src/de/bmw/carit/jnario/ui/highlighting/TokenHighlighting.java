@@ -21,6 +21,8 @@ public class TokenHighlighting extends DefaultAntlrTokenToAttributeIdMapper {
 			return HighlightingConfiguration.STEP_TEXT_ID;
 		}else if("RULE_AND_TEXT".equals(tokenName)) {
 			return HighlightingConfiguration.STEP_TEXT_ID;
+		}else if("RULE_EXAMPLE_TEXT".equals(tokenName)){
+			return HighlightingConfiguration.EXAMPLE_ID;
 		}
 		return super.calculateId(tokenName, tokenType);
 	}

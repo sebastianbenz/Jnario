@@ -10,10 +10,10 @@ import com.google.inject.Singleton;
 @Singleton
 public class TaskTokenTypeToPartitionTypeMapper extends TerminalsTokenTypeToPartitionMapper{
 
-	public static final String CODE_PARTITION = "__code";
+	public static final String NONE_CODE_PARTITION = "__no_code";
 
 	protected static final String[] SUPPORTED_PARTITIONS = new String[]{
-		CODE_PARTITION
+		NONE_CODE_PARTITION
 	};
 
 	@Override
@@ -28,8 +28,8 @@ public class TaskTokenTypeToPartitionTypeMapper extends TerminalsTokenTypeToPart
 				"RULE_BACKGROUND_TEXT",
 				"RULE_EXAMPLE_TEXT",
 				"RULE_ANY_OTHER");
-		if(!noCodeTokens.contains(tokenName)){
-			return CODE_PARTITION;
+		if(noCodeTokens.contains(tokenName)){
+			return NONE_CODE_PARTITION;
 		}
 		return super.calculateId(tokenName, tokenType);
 	}

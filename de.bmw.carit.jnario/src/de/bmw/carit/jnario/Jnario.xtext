@@ -88,9 +88,9 @@ Examples:
 ExampleHeading:
 	parts+=ExampleHeadingCell+ EXAMPLE_ROW_END
 ;
-
+ 
 ExampleHeadingCell returns xbase::XVariableDeclaration:
-	'|' name=ValidID
+	PIPE name=ValidID 
 ;
 
 ExampleRow:
@@ -98,7 +98,7 @@ ExampleRow:
 ;
 
 ExampleCell:
-	'|'name=XExpression
+	PIPE name=XExpression
 ;
 
 terminal FEATURE_TEXT: 'Feature' COLON MNL;
@@ -109,7 +109,11 @@ terminal WHEN_TEXT: 'When ' MNL;
 terminal THEN_TEXT: 'Then ' MNL;
 terminal AND_TEXT: 'And ' MNL;
 terminal EXAMPLE_TEXT: 'Examples' COLON MNL;
-terminal EXAMPLE_ROW_END: '|' SPACES NL;
+
+terminal PIPE : '|' SPACES;
+terminal EXAMPLE_ROW_END: PIPE '\r'? '\n';
+
+
 terminal VISIBILITY: 'private' | 'public' | 'protected';
 
 terminal fragment TEXT_MULTI_LINE: !('\r'|'\n')* '\\' NL;

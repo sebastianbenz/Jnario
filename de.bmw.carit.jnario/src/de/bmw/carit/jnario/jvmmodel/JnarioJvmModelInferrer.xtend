@@ -83,11 +83,17 @@ class JnarioJvmModelInferrer extends AbstractModelInferrer {
 				if (currentDec.getType() != null) {
 					type = currentDec.getType();
 				} else {
-					type = getType(currentDec.getRight());
+					if(currentDec.getRight() != null){
+						type = getType(currentDec.getRight());
+					}
+					else{
+						//for examples
+						type = getType(currentDec, true);
+					}
 				}
 				
 				if(type != null){
-					inferredJvmType.members += toField(scenario, currentDec.simpleName, type)
+					inferredJvmType.members += scenario.toField(currentDec.simpleName, type)
 				}
 			}
 		}

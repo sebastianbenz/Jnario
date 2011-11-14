@@ -5012,11 +5012,9 @@ rule__ExampleHeadingCell__Group__0__Impl
     }
 :
 (
-{ before(grammarAccess.getExampleHeadingCellAccess().getVerticalLineKeyword_0()); }
-
-	'|' 
-
-{ after(grammarAccess.getExampleHeadingCellAccess().getVerticalLineKeyword_0()); }
+{ before(grammarAccess.getExampleHeadingCellAccess().getPIPETerminalRuleCall_0()); }
+	RULE_PIPE
+{ after(grammarAccess.getExampleHeadingCellAccess().getPIPETerminalRuleCall_0()); }
 )
 
 ;
@@ -5143,11 +5141,9 @@ rule__ExampleCell__Group__0__Impl
     }
 :
 (
-{ before(grammarAccess.getExampleCellAccess().getVerticalLineKeyword_0()); }
-
-	'|' 
-
-{ after(grammarAccess.getExampleCellAccess().getVerticalLineKeyword_0()); }
+{ before(grammarAccess.getExampleCellAccess().getPIPETerminalRuleCall_0()); }
+	RULE_PIPE
+{ after(grammarAccess.getExampleCellAccess().getPIPETerminalRuleCall_0()); }
 )
 
 ;
@@ -18691,7 +18687,9 @@ RULE_AND_TEXT : 'And ' RULE_MNL;
 
 RULE_EXAMPLE_TEXT : 'Examples' RULE_COLON RULE_MNL;
 
-RULE_EXAMPLE_ROW_END : '|' RULE_SPACES RULE_NL;
+RULE_PIPE : '|' RULE_SPACES;
+
+RULE_EXAMPLE_ROW_END : RULE_PIPE '\r'? '\n';
 
 RULE_VISIBILITY : ('private'|'public'|'protected');
 

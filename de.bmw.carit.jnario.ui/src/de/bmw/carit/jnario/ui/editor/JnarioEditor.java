@@ -10,7 +10,7 @@
  ******************************************************************************/
 package de.bmw.carit.jnario.ui.editor;
 
-import static de.bmw.carit.jnario.ui.editor.TaskTokenTypeToPartitionTypeMapper.CODE_PARTITION;
+import static de.bmw.carit.jnario.ui.editor.TaskTokenTypeToPartitionTypeMapper.NONE_CODE_PARTITION;
 import static org.eclipse.jface.text.IDocumentExtension3.DEFAULT_PARTITIONING;
 import static org.eclipse.jface.text.TextUtilities.getContentType;
 
@@ -29,7 +29,7 @@ import org.eclipse.xtext.ui.editor.XtextEditor;
 
 public class JnarioEditor extends XtextEditor {
 
-	private static final RGB CODE_COLOR = new RGB(125, 125, 125);
+	private static final RGB NONE_CODE_COLOR = new RGB(125, 125, 125);
 
 	public class CodeBackgroundColorizer implements LineBackgroundListener {
 		private Color background;
@@ -40,18 +40,18 @@ public class JnarioEditor extends XtextEditor {
 //				return;
 //			}
 			
-			String trimedLine = event.lineText.trim();
-			if(trimedLine.isEmpty()){
-				return;
-			}
+//			String trimedLine = event.lineText.trim();
+//			if(trimedLine.isEmpty()){
+//				event.lineBackground = getBackgroundColor();
+//			}
 			
 //			int currentLine = event.lineOffset;
-//			if (!isCode(currentLine)) {
+//			if (isNotCode(currentLine)) {
 //				return;
 //			}
 
 			int leftContentType = event.lineOffset + event.lineText.length();
-			if (!isCode(leftContentType)) {
+			if (!isNotCode(leftContentType)) {
 				return;
 			}
 
@@ -69,13 +69,13 @@ public class JnarioEditor extends XtextEditor {
 			return background;
 		}
 
-		private boolean isCode(int offset) {
+		private boolean isNotCode(int offset) {
 			if (offset < 0 || offset > getDocument().getLength()) {
 				return false;
 			}
 			try {
 				String contentType = getContentType(getDocument(), DEFAULT_PARTITIONING, offset, false);
-				return CODE_PARTITION.equals(contentType);
+				return NONE_CODE_PARTITION.equals(contentType);
 			} catch (BadLocationException e) {
 				throw new RuntimeException(e);
 			}

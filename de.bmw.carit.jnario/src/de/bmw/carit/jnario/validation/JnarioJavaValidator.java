@@ -72,18 +72,20 @@ public class JnarioJavaValidator extends AbstractJnarioJavaValidator {
 	
 	private void hasSameTypesInColumns(EList<ExampleRow> rows){
 		int colNum = 0;
-		for(ExampleCell cell: rows.get(0).getParts()){
-			JvmType type = typeProvider.getType(cell.getName()).getType();
-			//starting with second row
-			for(int rowNum = 1; rowNum < rows.size(); rowNum++){
-				EList<ExampleCell> parts = rows.get(rowNum).getParts();
-				XExpression expression = parts.get(colNum).getName();
-				JvmType compareType = typeProvider.getType(expression).getType();
-				if(!type.equals(compareType)){
-					error("Examples columns have to have the same type - Conflicting types: " + type.getQualifiedName() + ", " + compareType.getQualifiedName(), JnarioPackage.Literals.EXAMPLES__ROWS);
+		if(rows.size() > 0){
+			for(ExampleCell cell: rows.get(0).getParts()){
+				JvmType type = typeProvider.getType(cell.getName()).getType();
+				//starting with second row
+				for(int rowNum = 1; rowNum < rows.size(); rowNum++){
+					EList<ExampleCell> parts = rows.get(rowNum).getParts();
+					XExpression expression = parts.get(colNum).getName();
+					JvmType compareType = typeProvider.getType(expression).getType();
+					if(!type.equals(compareType)){
+						error("Examples columns have to have the same type - Conflicting types: " + type.getQualifiedName() + ", " + compareType.getQualifiedName(), JnarioPackage.Literals.EXAMPLES__ROWS);
+					}
 				}
+				colNum++;
 			}
-			colNum++;
 		}
 	}
 	
