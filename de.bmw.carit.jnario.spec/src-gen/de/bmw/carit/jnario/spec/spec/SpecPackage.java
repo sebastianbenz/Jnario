@@ -116,13 +116,31 @@ public interface SpecPackage extends EPackage
   int MEMBER = 2;
 
   /**
+   * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MEMBER__ANNOTATIONS = 0;
+
+  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MEMBER__NAME = 0;
+  int MEMBER__NAME = 1;
+
+  /**
+   * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MEMBER__ANNOTATION_INFO = 2;
 
   /**
    * The number of structural features of the '<em>Member</em>' class.
@@ -131,7 +149,7 @@ public interface SpecPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MEMBER_FEATURE_COUNT = 1;
+  int MEMBER_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link de.bmw.carit.jnario.spec.spec.impl.ExampleGroupImpl <em>Example Group</em>}' class.
@@ -144,6 +162,15 @@ public interface SpecPackage extends EPackage
   int EXAMPLE_GROUP = 1;
 
   /**
+   * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXAMPLE_GROUP__ANNOTATIONS = MEMBER__ANNOTATIONS;
+
+  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -153,13 +180,13 @@ public interface SpecPackage extends EPackage
   int EXAMPLE_GROUP__NAME = MEMBER__NAME;
 
   /**
-   * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+   * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXAMPLE_GROUP__ANNOTATIONS = MEMBER_FEATURE_COUNT + 0;
+  int EXAMPLE_GROUP__ANNOTATION_INFO = MEMBER__ANNOTATION_INFO;
 
   /**
    * The feature id for the '<em><b>Preamble</b></em>' attribute.
@@ -168,7 +195,7 @@ public interface SpecPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXAMPLE_GROUP__PREAMBLE = MEMBER_FEATURE_COUNT + 1;
+  int EXAMPLE_GROUP__PREAMBLE = MEMBER_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Target</b></em>' reference.
@@ -177,7 +204,7 @@ public interface SpecPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXAMPLE_GROUP__TARGET = MEMBER_FEATURE_COUNT + 2;
+  int EXAMPLE_GROUP__TARGET = MEMBER_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -186,7 +213,7 @@ public interface SpecPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXAMPLE_GROUP__ELEMENTS = MEMBER_FEATURE_COUNT + 3;
+  int EXAMPLE_GROUP__ELEMENTS = MEMBER_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Example Group</em>' class.
@@ -195,7 +222,53 @@ public interface SpecPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXAMPLE_GROUP_FEATURE_COUNT = MEMBER_FEATURE_COUNT + 4;
+  int EXAMPLE_GROUP_FEATURE_COUNT = MEMBER_FEATURE_COUNT + 3;
+
+  /**
+   * The meta object id for the '{@link de.bmw.carit.jnario.spec.spec.impl.ParameterImpl <em>Parameter</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.bmw.carit.jnario.spec.spec.impl.ParameterImpl
+   * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getParameter()
+   * @generated
+   */
+  int PARAMETER = 3;
+
+  /**
+   * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER__ANNOTATIONS = 0;
+
+  /**
+   * The feature id for the '<em><b>Parameter Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER__PARAMETER_TYPE = 1;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER__NAME = 2;
+
+  /**
+   * The number of structural features of the '<em>Parameter</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link de.bmw.carit.jnario.spec.spec.impl.FieldImpl <em>Field</em>}' class.
@@ -205,7 +278,16 @@ public interface SpecPackage extends EPackage
    * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getField()
    * @generated
    */
-  int FIELD = 3;
+  int FIELD = 4;
+
+  /**
+   * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FIELD__ANNOTATIONS = MEMBER__ANNOTATIONS;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -215,6 +297,15 @@ public interface SpecPackage extends EPackage
    * @ordered
    */
   int FIELD__NAME = MEMBER__NAME;
+
+  /**
+   * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FIELD__ANNOTATION_INFO = MEMBER__ANNOTATION_INFO;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -251,7 +342,16 @@ public interface SpecPackage extends EPackage
    * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getExample()
    * @generated
    */
-  int EXAMPLE = 4;
+  int EXAMPLE = 5;
+
+  /**
+   * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXAMPLE__ANNOTATIONS = MEMBER__ANNOTATIONS;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -261,6 +361,15 @@ public interface SpecPackage extends EPackage
    * @ordered
    */
   int EXAMPLE__NAME = MEMBER__NAME;
+
+  /**
+   * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXAMPLE__ANNOTATION_INFO = MEMBER__ANNOTATION_INFO;
 
   /**
    * The feature id for the '<em><b>Preamble</b></em>' attribute.
@@ -299,14 +408,14 @@ public interface SpecPackage extends EPackage
   int EXAMPLE_FEATURE_COUNT = MEMBER_FEATURE_COUNT + 3;
 
   /**
-   * The meta object id for the '{@link de.bmw.carit.jnario.spec.spec.impl.ParameterImpl <em>Parameter</em>}' class.
+   * The meta object id for the '{@link de.bmw.carit.jnario.spec.spec.impl.FunctionImpl <em>Function</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.bmw.carit.jnario.spec.spec.impl.ParameterImpl
-   * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getParameter()
+   * @see de.bmw.carit.jnario.spec.spec.impl.FunctionImpl
+   * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getFunction()
    * @generated
    */
-  int PARAMETER = 5;
+  int FUNCTION = 6;
 
   /**
    * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -315,16 +424,7 @@ public interface SpecPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PARAMETER__ANNOTATIONS = 0;
-
-  /**
-   * The feature id for the '<em><b>Parameter Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PARAMETER__PARAMETER_TYPE = 1;
+  int FUNCTION__ANNOTATIONS = MEMBER__ANNOTATIONS;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -333,16 +433,61 @@ public interface SpecPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PARAMETER__NAME = 2;
+  int FUNCTION__NAME = MEMBER__NAME;
 
   /**
-   * The number of structural features of the '<em>Parameter</em>' class.
+   * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PARAMETER_FEATURE_COUNT = 3;
+  int FUNCTION__ANNOTATION_INFO = MEMBER__ANNOTATION_INFO;
+
+  /**
+   * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION__TYPE_PARAMETERS = MEMBER_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Return Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION__RETURN_TYPE = MEMBER_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION__PARAMETERS = MEMBER_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION__EXPRESSION = MEMBER_FEATURE_COUNT + 3;
+
+  /**
+   * The number of structural features of the '<em>Function</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_FEATURE_COUNT = MEMBER_FEATURE_COUNT + 4;
 
 
   /**
@@ -399,17 +544,6 @@ public interface SpecPackage extends EPackage
   EClass getExampleGroup();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getAnnotations <em>Annotations</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Annotations</em>'.
-   * @see de.bmw.carit.jnario.spec.spec.ExampleGroup#getAnnotations()
-   * @see #getExampleGroup()
-   * @generated
-   */
-  EReference getExampleGroup_Annotations();
-
-  /**
    * Returns the meta object for the attribute '{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getPreamble <em>Preamble</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -453,6 +587,17 @@ public interface SpecPackage extends EPackage
   EClass getMember();
 
   /**
+   * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.spec.spec.Member#getAnnotations <em>Annotations</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Annotations</em>'.
+   * @see de.bmw.carit.jnario.spec.spec.Member#getAnnotations()
+   * @see #getMember()
+   * @generated
+   */
+  EReference getMember_Annotations();
+
+  /**
    * Returns the meta object for the attribute '{@link de.bmw.carit.jnario.spec.spec.Member#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -462,6 +607,60 @@ public interface SpecPackage extends EPackage
    * @generated
    */
   EAttribute getMember_Name();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.spec.spec.Member#getAnnotationInfo <em>Annotation Info</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Annotation Info</em>'.
+   * @see de.bmw.carit.jnario.spec.spec.Member#getAnnotationInfo()
+   * @see #getMember()
+   * @generated
+   */
+  EReference getMember_AnnotationInfo();
+
+  /**
+   * Returns the meta object for class '{@link de.bmw.carit.jnario.spec.spec.Parameter <em>Parameter</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Parameter</em>'.
+   * @see de.bmw.carit.jnario.spec.spec.Parameter
+   * @generated
+   */
+  EClass getParameter();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.spec.spec.Parameter#getAnnotations <em>Annotations</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Annotations</em>'.
+   * @see de.bmw.carit.jnario.spec.spec.Parameter#getAnnotations()
+   * @see #getParameter()
+   * @generated
+   */
+  EReference getParameter_Annotations();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.spec.spec.Parameter#getParameterType <em>Parameter Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Parameter Type</em>'.
+   * @see de.bmw.carit.jnario.spec.spec.Parameter#getParameterType()
+   * @see #getParameter()
+   * @generated
+   */
+  EReference getParameter_ParameterType();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.bmw.carit.jnario.spec.spec.Parameter#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see de.bmw.carit.jnario.spec.spec.Parameter#getName()
+   * @see #getParameter()
+   * @generated
+   */
+  EAttribute getParameter_Name();
 
   /**
    * Returns the meta object for class '{@link de.bmw.carit.jnario.spec.spec.Field <em>Field</em>}'.
@@ -539,47 +738,58 @@ public interface SpecPackage extends EPackage
   EReference getExample_Body();
 
   /**
-   * Returns the meta object for class '{@link de.bmw.carit.jnario.spec.spec.Parameter <em>Parameter</em>}'.
+   * Returns the meta object for class '{@link de.bmw.carit.jnario.spec.spec.Function <em>Function</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Parameter</em>'.
-   * @see de.bmw.carit.jnario.spec.spec.Parameter
+   * @return the meta object for class '<em>Function</em>'.
+   * @see de.bmw.carit.jnario.spec.spec.Function
    * @generated
    */
-  EClass getParameter();
+  EClass getFunction();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.spec.spec.Parameter#getAnnotations <em>Annotations</em>}'.
+   * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.spec.spec.Function#getTypeParameters <em>Type Parameters</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Annotations</em>'.
-   * @see de.bmw.carit.jnario.spec.spec.Parameter#getAnnotations()
-   * @see #getParameter()
+   * @return the meta object for the containment reference list '<em>Type Parameters</em>'.
+   * @see de.bmw.carit.jnario.spec.spec.Function#getTypeParameters()
+   * @see #getFunction()
    * @generated
    */
-  EReference getParameter_Annotations();
+  EReference getFunction_TypeParameters();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.spec.spec.Parameter#getParameterType <em>Parameter Type</em>}'.
+   * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.spec.spec.Function#getReturnType <em>Return Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Parameter Type</em>'.
-   * @see de.bmw.carit.jnario.spec.spec.Parameter#getParameterType()
-   * @see #getParameter()
+   * @return the meta object for the containment reference '<em>Return Type</em>'.
+   * @see de.bmw.carit.jnario.spec.spec.Function#getReturnType()
+   * @see #getFunction()
    * @generated
    */
-  EReference getParameter_ParameterType();
+  EReference getFunction_ReturnType();
 
   /**
-   * Returns the meta object for the attribute '{@link de.bmw.carit.jnario.spec.spec.Parameter#getName <em>Name</em>}'.
+   * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.spec.spec.Function#getParameters <em>Parameters</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.bmw.carit.jnario.spec.spec.Parameter#getName()
-   * @see #getParameter()
+   * @return the meta object for the containment reference list '<em>Parameters</em>'.
+   * @see de.bmw.carit.jnario.spec.spec.Function#getParameters()
+   * @see #getFunction()
    * @generated
    */
-  EAttribute getParameter_Name();
+  EReference getFunction_Parameters();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.spec.spec.Function#getExpression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expression</em>'.
+   * @see de.bmw.carit.jnario.spec.spec.Function#getExpression()
+   * @see #getFunction()
+   * @generated
+   */
+  EReference getFunction_Expression();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -649,14 +859,6 @@ public interface SpecPackage extends EPackage
     EClass EXAMPLE_GROUP = eINSTANCE.getExampleGroup();
 
     /**
-     * The meta object literal for the '<em><b>Annotations</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference EXAMPLE_GROUP__ANNOTATIONS = eINSTANCE.getExampleGroup_Annotations();
-
-    /**
      * The meta object literal for the '<em><b>Preamble</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -691,12 +893,62 @@ public interface SpecPackage extends EPackage
     EClass MEMBER = eINSTANCE.getMember();
 
     /**
+     * The meta object literal for the '<em><b>Annotations</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MEMBER__ANNOTATIONS = eINSTANCE.getMember_Annotations();
+
+    /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EAttribute MEMBER__NAME = eINSTANCE.getMember_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Annotation Info</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MEMBER__ANNOTATION_INFO = eINSTANCE.getMember_AnnotationInfo();
+
+    /**
+     * The meta object literal for the '{@link de.bmw.carit.jnario.spec.spec.impl.ParameterImpl <em>Parameter</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.bmw.carit.jnario.spec.spec.impl.ParameterImpl
+     * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getParameter()
+     * @generated
+     */
+    EClass PARAMETER = eINSTANCE.getParameter();
+
+    /**
+     * The meta object literal for the '<em><b>Annotations</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PARAMETER__ANNOTATIONS = eINSTANCE.getParameter_Annotations();
+
+    /**
+     * The meta object literal for the '<em><b>Parameter Type</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PARAMETER__PARAMETER_TYPE = eINSTANCE.getParameter_ParameterType();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PARAMETER__NAME = eINSTANCE.getParameter_Name();
 
     /**
      * The meta object literal for the '{@link de.bmw.carit.jnario.spec.spec.impl.FieldImpl <em>Field</em>}' class.
@@ -759,38 +1011,46 @@ public interface SpecPackage extends EPackage
     EReference EXAMPLE__BODY = eINSTANCE.getExample_Body();
 
     /**
-     * The meta object literal for the '{@link de.bmw.carit.jnario.spec.spec.impl.ParameterImpl <em>Parameter</em>}' class.
+     * The meta object literal for the '{@link de.bmw.carit.jnario.spec.spec.impl.FunctionImpl <em>Function</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.bmw.carit.jnario.spec.spec.impl.ParameterImpl
-     * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getParameter()
+     * @see de.bmw.carit.jnario.spec.spec.impl.FunctionImpl
+     * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getFunction()
      * @generated
      */
-    EClass PARAMETER = eINSTANCE.getParameter();
+    EClass FUNCTION = eINSTANCE.getFunction();
 
     /**
-     * The meta object literal for the '<em><b>Annotations</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Type Parameters</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PARAMETER__ANNOTATIONS = eINSTANCE.getParameter_Annotations();
+    EReference FUNCTION__TYPE_PARAMETERS = eINSTANCE.getFunction_TypeParameters();
 
     /**
-     * The meta object literal for the '<em><b>Parameter Type</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Return Type</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PARAMETER__PARAMETER_TYPE = eINSTANCE.getParameter_ParameterType();
+    EReference FUNCTION__RETURN_TYPE = eINSTANCE.getFunction_ReturnType();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PARAMETER__NAME = eINSTANCE.getParameter_Name();
+    EReference FUNCTION__PARAMETERS = eINSTANCE.getFunction_Parameters();
+
+    /**
+     * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FUNCTION__EXPRESSION = eINSTANCE.getFunction_Expression();
 
   }
 

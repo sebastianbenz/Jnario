@@ -9,8 +9,6 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 
-import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Example Group</b></em>'.
@@ -19,7 +17,6 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getAnnotations <em>Annotations</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getPreamble <em>Preamble</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getTarget <em>Target</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getElements <em>Elements</em>}</li>
@@ -32,22 +29,6 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
  */
 public interface ExampleGroup extends Member
 {
-  /**
-   * Returns the value of the '<em><b>Annotations</b></em>' containment reference list.
-   * The list contents are of type {@link org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Annotations</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Annotations</em>' containment reference list.
-   * @see de.bmw.carit.jnario.spec.spec.SpecPackage#getExampleGroup_Annotations()
-   * @model containment="true"
-   * @generated
-   */
-  EList<XAnnotation> getAnnotations();
-
   /**
    * Returns the value of the '<em><b>Preamble</b></em>' attribute.
    * <!-- begin-user-doc -->

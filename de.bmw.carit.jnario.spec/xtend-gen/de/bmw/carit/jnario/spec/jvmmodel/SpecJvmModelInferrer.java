@@ -10,6 +10,7 @@ import de.bmw.carit.jnario.spec.spec.SpecFile;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
+import org.eclipse.xtext.common.types.JvmAnnotationType;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmGenericType;
@@ -20,6 +21,7 @@ import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.util.IAcceptor;
 import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 import org.eclipse.xtext.xbase.compiler.ImportManager;
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
@@ -79,10 +81,18 @@ public class SpecJvmModelInferrer extends AbstractModelInferrer {
               EList<JvmAnnotationReference> _annotations = it.getAnnotations();
               JvmAnnotationReference _annotation = SpecJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(spec, org.junit.runner.RunWith.class, de.bmw.carit.jnario.runner.JnarioRunner.class);
               CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
-              EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
+              EList<XAnnotation> _annotations_1 = exampleGroup.getAnnotations();
+              for (final XAnnotation a : _annotations_1) {
+                EList<JvmAnnotationReference> _annotations_2 = it.getAnnotations();
+                JvmAnnotationType _annotationType = a.getAnnotationType();
+                String _qualifiedName = _annotationType.getQualifiedName();
+                JvmAnnotationReference _annotation_1 = SpecJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(spec, _qualifiedName);
+                CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_2, _annotation_1);
+              }
+              EList<JvmAnnotationReference> _annotations_3 = it.getAnnotations();
               String _javaClassAnnotationValue = SpecJvmModelInferrer.this._javaNameProvider.getJavaClassAnnotationValue(exampleGroup);
-              JvmAnnotationReference _annotation_1 = SpecJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(spec, de.bmw.carit.jnario.runner.Named.class, _javaClassAnnotationValue);
-              CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
+              JvmAnnotationReference _annotation_2 = SpecJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(spec, de.bmw.carit.jnario.runner.Named.class, _javaClassAnnotationValue);
+              CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_3, _annotation_2);
               EList<Member> _elements = exampleGroup.getElements();
               for (final Member element : _elements) {
                 final Member element_1 = element;

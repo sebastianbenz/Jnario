@@ -31,49 +31,31 @@ ExampleGroup:
 '}'
 ;
 
-Member:
-	Example | Field | ExampleGroup
-;
-
-Field:
-	{Field}
-//	annotations+=XAnnotation* 
-	type=JvmTypeReference name=ValidID ('=' right=XExpression)?
-;
-
-Example:
-	{Example}
-//	annotations+=XAnnotation* 
-	preamble=('it') feature=[types::JvmIdentifiableElement|ValidID]? name=STRING? 
-		body=XBlockExpression?
-;
-/*
 Member :
 	{Member} annotations+=XAnnotation* 
 	(
 		{Field.annotationInfo = current}	
 		 	(type=JvmTypeReference name=ValidID (=> '=' right=XExpression)?)
 		
-	|	{Function.annotationInfo = current}
-			('def' 
-			('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')?
-			| =>(returnType=JvmTypeReference name=ValidID '(')
-			| name=ValidID '('
-			(parameters+=Parameter (',' parameters+=Parameter)*)? ')'
-			body=XBlockExpression)
 	|	{Example.annotationInfo = current}
 		(preamble='it' feature=[types::JvmIdentifiableElement|ValidID]? name=STRING? 
 			body=XBlockExpression?)
 	|	{ExampleGroup.annotationInfo = current}
 			(preamble=('describe'|'context') target=[types::JvmIdentifiableElement|QualifiedName]? name=STRING? '{'
-      	//elements+=Member*
+      	elements+=Member*
       	'}')
+     |	{Function.annotationInfo = current}
+			('def' 
+			('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')?
+			(=>(returnType=JvmTypeReference name=ValidID '(')
+			| (name=ValidID '('))
+			(parameters+=Parameter (',' parameters+=Parameter)*)? ')'
+			expression=XBlockExpression)
 	 );
 
 Parameter:
 	annotations+=XAnnotation* 
 	parameterType=JvmTypeReference name=ValidID;
-*/
 
 terminal STRING	: 
 			'"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |

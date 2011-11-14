@@ -97,6 +97,13 @@ public class SpecSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case SpecPackage.PARAMETER:
+      {
+        Parameter parameter = (Parameter)theEObject;
+        T result = caseParameter(parameter);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case SpecPackage.FIELD:
       {
         Field field = (Field)theEObject;
@@ -113,10 +120,11 @@ public class SpecSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SpecPackage.PARAMETER:
+      case SpecPackage.FUNCTION:
       {
-        Parameter parameter = (Parameter)theEObject;
-        T result = caseParameter(parameter);
+        Function function = (Function)theEObject;
+        T result = caseFunction(function);
+        if (result == null) result = caseMember(function);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -173,6 +181,22 @@ public class SpecSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Parameter</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParameter(Parameter object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Field</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -205,17 +229,17 @@ public class SpecSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Parameter</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Function</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Parameter</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Function</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseParameter(Parameter object)
+  public T caseFunction(Function object)
   {
     return null;
   }

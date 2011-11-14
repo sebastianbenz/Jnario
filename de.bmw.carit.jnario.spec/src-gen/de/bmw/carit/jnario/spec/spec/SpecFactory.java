@@ -53,6 +53,15 @@ public interface SpecFactory extends EFactory
   Member createMember();
 
   /**
+   * Returns a new object of class '<em>Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parameter</em>'.
+   * @generated
+   */
+  Parameter createParameter();
+
+  /**
    * Returns a new object of class '<em>Field</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -71,13 +80,13 @@ public interface SpecFactory extends EFactory
   Example createExample();
 
   /**
-   * Returns a new object of class '<em>Parameter</em>'.
+   * Returns a new object of class '<em>Function</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Parameter</em>'.
+   * @return a new object of class '<em>Function</em>'.
    * @generated
    */
-  Parameter createParameter();
+  Function createFunction();
 
   /**
    * Returns the package supported by this factory.

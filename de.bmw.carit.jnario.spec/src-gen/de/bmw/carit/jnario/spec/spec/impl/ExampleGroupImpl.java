@@ -26,8 +26,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 
-import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Example Group</b></em>'.
@@ -35,7 +33,6 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleGroupImpl#getAnnotations <em>Annotations</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleGroupImpl#getPreamble <em>Preamble</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleGroupImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleGroupImpl#getElements <em>Elements</em>}</li>
@@ -46,16 +43,6 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
  */
 public class ExampleGroupImpl extends MemberImpl implements ExampleGroup
 {
-  /**
-   * The cached value of the '{@link #getAnnotations() <em>Annotations</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getAnnotations()
-   * @generated
-   * @ordered
-   */
-  protected EList<XAnnotation> annotations;
-
   /**
    * The default value of the '{@link #getPreamble() <em>Preamble</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -115,20 +102,6 @@ public class ExampleGroupImpl extends MemberImpl implements ExampleGroup
   protected EClass eStaticClass()
   {
     return SpecPackage.Literals.EXAMPLE_GROUP;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<XAnnotation> getAnnotations()
-  {
-    if (annotations == null)
-    {
-      annotations = new EObjectContainmentEList<XAnnotation>(XAnnotation.class, this, SpecPackage.EXAMPLE_GROUP__ANNOTATIONS);
-    }
-    return annotations;
   }
 
   /**
@@ -221,8 +194,6 @@ public class ExampleGroupImpl extends MemberImpl implements ExampleGroup
   {
     switch (featureID)
     {
-      case SpecPackage.EXAMPLE_GROUP__ANNOTATIONS:
-        return ((InternalEList<?>)getAnnotations()).basicRemove(otherEnd, msgs);
       case SpecPackage.EXAMPLE_GROUP__ELEMENTS:
         return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
     }
@@ -239,8 +210,6 @@ public class ExampleGroupImpl extends MemberImpl implements ExampleGroup
   {
     switch (featureID)
     {
-      case SpecPackage.EXAMPLE_GROUP__ANNOTATIONS:
-        return getAnnotations();
       case SpecPackage.EXAMPLE_GROUP__PREAMBLE:
         return getPreamble();
       case SpecPackage.EXAMPLE_GROUP__TARGET:
@@ -263,10 +232,6 @@ public class ExampleGroupImpl extends MemberImpl implements ExampleGroup
   {
     switch (featureID)
     {
-      case SpecPackage.EXAMPLE_GROUP__ANNOTATIONS:
-        getAnnotations().clear();
-        getAnnotations().addAll((Collection<? extends XAnnotation>)newValue);
-        return;
       case SpecPackage.EXAMPLE_GROUP__PREAMBLE:
         setPreamble((String)newValue);
         return;
@@ -291,9 +256,6 @@ public class ExampleGroupImpl extends MemberImpl implements ExampleGroup
   {
     switch (featureID)
     {
-      case SpecPackage.EXAMPLE_GROUP__ANNOTATIONS:
-        getAnnotations().clear();
-        return;
       case SpecPackage.EXAMPLE_GROUP__PREAMBLE:
         setPreamble(PREAMBLE_EDEFAULT);
         return;
@@ -317,8 +279,6 @@ public class ExampleGroupImpl extends MemberImpl implements ExampleGroup
   {
     switch (featureID)
     {
-      case SpecPackage.EXAMPLE_GROUP__ANNOTATIONS:
-        return annotations != null && !annotations.isEmpty();
       case SpecPackage.EXAMPLE_GROUP__PREAMBLE:
         return PREAMBLE_EDEFAULT == null ? preamble != null : !PREAMBLE_EDEFAULT.equals(preamble);
       case SpecPackage.EXAMPLE_GROUP__TARGET:

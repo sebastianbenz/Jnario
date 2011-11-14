@@ -8,6 +8,7 @@ package de.bmw.carit.jnario.spec.spec.impl;
 import de.bmw.carit.jnario.spec.spec.Example;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 import de.bmw.carit.jnario.spec.spec.Field;
+import de.bmw.carit.jnario.spec.spec.Function;
 import de.bmw.carit.jnario.spec.spec.Member;
 import de.bmw.carit.jnario.spec.spec.Parameter;
 import de.bmw.carit.jnario.spec.spec.SpecFactory;
@@ -63,6 +64,13 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass parameterEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass fieldEClass = null;
 
   /**
@@ -77,7 +85,7 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass parameterEClass = null;
+  private EClass functionEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -200,19 +208,9 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExampleGroup_Annotations()
-  {
-    return (EReference)exampleGroupEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EAttribute getExampleGroup_Preamble()
   {
-    return (EAttribute)exampleGroupEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)exampleGroupEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -222,7 +220,7 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    */
   public EReference getExampleGroup_Target()
   {
-    return (EReference)exampleGroupEClass.getEStructuralFeatures().get(2);
+    return (EReference)exampleGroupEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -232,7 +230,7 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    */
   public EReference getExampleGroup_Elements()
   {
-    return (EReference)exampleGroupEClass.getEStructuralFeatures().get(3);
+    return (EReference)exampleGroupEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -250,9 +248,69 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getMember_Annotations()
+  {
+    return (EReference)memberEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EAttribute getMember_Name()
   {
-    return (EAttribute)memberEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)memberEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMember_AnnotationInfo()
+  {
+    return (EReference)memberEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getParameter()
+  {
+    return parameterEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getParameter_Annotations()
+  {
+    return (EReference)parameterEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getParameter_ParameterType()
+  {
+    return (EReference)parameterEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getParameter_Name()
+  {
+    return (EAttribute)parameterEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -330,9 +388,9 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getParameter()
+  public EClass getFunction()
   {
-    return parameterEClass;
+    return functionEClass;
   }
 
   /**
@@ -340,9 +398,9 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getParameter_Annotations()
+  public EReference getFunction_TypeParameters()
   {
-    return (EReference)parameterEClass.getEStructuralFeatures().get(0);
+    return (EReference)functionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -350,9 +408,9 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getParameter_ParameterType()
+  public EReference getFunction_ReturnType()
   {
-    return (EReference)parameterEClass.getEStructuralFeatures().get(1);
+    return (EReference)functionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -360,9 +418,19 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getParameter_Name()
+  public EReference getFunction_Parameters()
   {
-    return (EAttribute)parameterEClass.getEStructuralFeatures().get(2);
+    return (EReference)functionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFunction_Expression()
+  {
+    return (EReference)functionEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -401,13 +469,19 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
     createEReference(specFileEClass, SPEC_FILE__ELEMENTS);
 
     exampleGroupEClass = createEClass(EXAMPLE_GROUP);
-    createEReference(exampleGroupEClass, EXAMPLE_GROUP__ANNOTATIONS);
     createEAttribute(exampleGroupEClass, EXAMPLE_GROUP__PREAMBLE);
     createEReference(exampleGroupEClass, EXAMPLE_GROUP__TARGET);
     createEReference(exampleGroupEClass, EXAMPLE_GROUP__ELEMENTS);
 
     memberEClass = createEClass(MEMBER);
+    createEReference(memberEClass, MEMBER__ANNOTATIONS);
     createEAttribute(memberEClass, MEMBER__NAME);
+    createEReference(memberEClass, MEMBER__ANNOTATION_INFO);
+
+    parameterEClass = createEClass(PARAMETER);
+    createEReference(parameterEClass, PARAMETER__ANNOTATIONS);
+    createEReference(parameterEClass, PARAMETER__PARAMETER_TYPE);
+    createEAttribute(parameterEClass, PARAMETER__NAME);
 
     fieldEClass = createEClass(FIELD);
     createEReference(fieldEClass, FIELD__TYPE);
@@ -418,10 +492,11 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
     createEReference(exampleEClass, EXAMPLE__FEATURE);
     createEReference(exampleEClass, EXAMPLE__BODY);
 
-    parameterEClass = createEClass(PARAMETER);
-    createEReference(parameterEClass, PARAMETER__ANNOTATIONS);
-    createEReference(parameterEClass, PARAMETER__PARAMETER_TYPE);
-    createEAttribute(parameterEClass, PARAMETER__NAME);
+    functionEClass = createEClass(FUNCTION);
+    createEReference(functionEClass, FUNCTION__TYPE_PARAMETERS);
+    createEReference(functionEClass, FUNCTION__RETURN_TYPE);
+    createEReference(functionEClass, FUNCTION__PARAMETERS);
+    createEReference(functionEClass, FUNCTION__EXPRESSION);
   }
 
   /**
@@ -450,8 +525,8 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 
     // Obtain other dependent packages
     Xtend2Package theXtend2Package = (Xtend2Package)EPackage.Registry.INSTANCE.getEPackage(Xtend2Package.eNS_URI);
-    XAnnotationsPackage theXAnnotationsPackage = (XAnnotationsPackage)EPackage.Registry.INSTANCE.getEPackage(XAnnotationsPackage.eNS_URI);
     TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
+    XAnnotationsPackage theXAnnotationsPackage = (XAnnotationsPackage)EPackage.Registry.INSTANCE.getEPackage(XAnnotationsPackage.eNS_URI);
     XbasePackage theXbasePackage = (XbasePackage)EPackage.Registry.INSTANCE.getEPackage(XbasePackage.eNS_URI);
 
     // Create type parameters
@@ -462,6 +537,7 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
     exampleGroupEClass.getESuperTypes().add(this.getMember());
     fieldEClass.getESuperTypes().add(this.getMember());
     exampleEClass.getESuperTypes().add(this.getMember());
+    functionEClass.getESuperTypes().add(this.getMember());
 
     // Initialize classes and features; add operations and parameters
     initEClass(specFileEClass, SpecFile.class, "SpecFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -470,13 +546,19 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
     initEReference(getSpecFile_Elements(), this.getExampleGroup(), null, "elements", null, 0, -1, SpecFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(exampleGroupEClass, ExampleGroup.class, "ExampleGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getExampleGroup_Annotations(), theXAnnotationsPackage.getXAnnotation(), null, "annotations", null, 0, -1, ExampleGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getExampleGroup_Preamble(), ecorePackage.getEString(), "preamble", null, 0, 1, ExampleGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExampleGroup_Target(), theTypesPackage.getJvmIdentifiableElement(), null, "target", null, 0, 1, ExampleGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExampleGroup_Elements(), this.getMember(), null, "elements", null, 0, -1, ExampleGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(memberEClass, Member.class, "Member", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMember_Annotations(), theXAnnotationsPackage.getXAnnotation(), null, "annotations", null, 0, -1, Member.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getMember_Name(), ecorePackage.getEString(), "name", null, 0, 1, Member.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMember_AnnotationInfo(), this.getMember(), null, "annotationInfo", null, 0, 1, Member.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getParameter_Annotations(), theXAnnotationsPackage.getXAnnotation(), null, "annotations", null, 0, -1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getParameter_ParameterType(), theTypesPackage.getJvmTypeReference(), null, "parameterType", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getParameter_Name(), ecorePackage.getEString(), "name", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(fieldEClass, Field.class, "Field", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getField_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 0, 1, Field.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -487,10 +569,11 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
     initEReference(getExample_Feature(), theTypesPackage.getJvmIdentifiableElement(), null, "feature", null, 0, 1, Example.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExample_Body(), theXbasePackage.getXExpression(), null, "body", null, 0, 1, Example.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getParameter_Annotations(), theXAnnotationsPackage.getXAnnotation(), null, "annotations", null, 0, -1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getParameter_ParameterType(), theTypesPackage.getJvmTypeReference(), null, "parameterType", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getParameter_Name(), ecorePackage.getEString(), "name", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(functionEClass, Function.class, "Function", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFunction_TypeParameters(), theTypesPackage.getJvmTypeParameter(), null, "typeParameters", null, 0, -1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunction_ReturnType(), theTypesPackage.getJvmTypeReference(), null, "returnType", null, 0, 1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunction_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunction_Expression(), theXbasePackage.getXExpression(), null, "expression", null, 0, 1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

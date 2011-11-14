@@ -55,6 +55,9 @@ class SpecJvmModelInferrer extends AbstractModelInferrer {
 		    	documentation = spec.documentation
 		    	packageName = spec.getPackageName
 		    	annotations += spec.toAnnotation(typeof(RunWith), typeof(JnarioRunner))
+		    	for(a : exampleGroup.annotations){
+			    	annotations += spec.toAnnotation(a.annotationType.qualifiedName)
+		    	}
 		    	annotations += spec.toAnnotation(typeof(Named), exampleGroup.javaClassAnnotationValue)
 				for (element : exampleGroup.elements) {
 			        switch element {

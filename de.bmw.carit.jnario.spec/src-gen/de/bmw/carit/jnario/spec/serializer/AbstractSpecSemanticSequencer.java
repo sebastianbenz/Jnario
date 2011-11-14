@@ -6,6 +6,8 @@ import de.bmw.carit.jnario.spec.services.SpecGrammarAccess;
 import de.bmw.carit.jnario.spec.spec.Example;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 import de.bmw.carit.jnario.spec.spec.Field;
+import de.bmw.carit.jnario.spec.spec.Function;
+import de.bmw.carit.jnario.spec.spec.Member;
 import de.bmw.carit.jnario.spec.spec.Parameter;
 import de.bmw.carit.jnario.spec.spec.SpecFile;
 import de.bmw.carit.jnario.spec.spec.SpecPackage;
@@ -98,23 +100,39 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == SpecPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
 			case SpecPackage.EXAMPLE:
-				if(context == grammarAccess.getExampleRule() ||
-				   context == grammarAccess.getMemberRule()) {
-					sequence_Example(context, (Example) semanticObject); 
+				if(context == grammarAccess.getMemberRule()) {
+					sequence_Member(context, (Example) semanticObject); 
 					return; 
 				}
 				else break;
 			case SpecPackage.EXAMPLE_GROUP:
-				if(context == grammarAccess.getExampleGroupRule() ||
-				   context == grammarAccess.getMemberRule()) {
+				if(context == grammarAccess.getExampleGroupRule()) {
 					sequence_ExampleGroup(context, (ExampleGroup) semanticObject); 
+					return; 
+				}
+				else if(context == grammarAccess.getMemberRule()) {
+					sequence_Member(context, (ExampleGroup) semanticObject); 
 					return; 
 				}
 				else break;
 			case SpecPackage.FIELD:
-				if(context == grammarAccess.getFieldRule() ||
-				   context == grammarAccess.getMemberRule()) {
-					sequence_Field(context, (Field) semanticObject); 
+				if(context == grammarAccess.getMemberRule()) {
+					sequence_Member(context, (Field) semanticObject); 
+					return; 
+				}
+				else break;
+			case SpecPackage.FUNCTION:
+				if(context == grammarAccess.getMemberRule()) {
+					sequence_Member(context, (Function) semanticObject); 
+					return; 
+				}
+				else break;
+			case SpecPackage.MEMBER:
+				if(context == grammarAccess.getMemberAccess().getExampleGroupAnnotationInfoAction_2_2_0() ||
+				   context == grammarAccess.getMemberAccess().getExampleAnnotationInfoAction_2_1_0() ||
+				   context == grammarAccess.getMemberAccess().getFieldAnnotationInfoAction_2_0_0() ||
+				   context == grammarAccess.getMemberAccess().getFunctionAnnotationInfoAction_2_3_0()) {
+					sequence_Member_Field_2_0_0_Example_2_1_0_ExampleGroup_2_2_0_Function_2_3_0(context, (Member) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1062,24 +1080,6 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (preamble='it' feature=[JvmIdentifiableElement|ValidID]? name=STRING? body=XBlockExpression?)
-	 */
-	protected void sequence_Example(EObject context, Example semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (type=JvmTypeReference name=ValidID right=XExpression?)
-	 */
-	protected void sequence_Field(EObject context, Field semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
 	 *     (parameterType=JvmTypeReference name=ValidID)
 	 */
 	protected void sequence_FullJvmFormalParameter(EObject context, JvmFormalParameter semanticObject) {
@@ -1169,6 +1169,62 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	 */
 	protected void sequence_JvmWildcardTypeReference(EObject context, JvmWildcardTypeReference semanticObject) {
 		superSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (annotationInfo=Member_Example_2_1_0 (preamble='it' feature=[JvmIdentifiableElement|ValidID]? name=STRING? body=XBlockExpression?))
+	 */
+	protected void sequence_Member(EObject context, Example semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         annotationInfo=Member_ExampleGroup_2_2_0 
+	 *         ((preamble='describe' | preamble='context') target=[JvmIdentifiableElement|QualifiedName]? name=STRING? elements+=Member*)
+	 *     )
+	 */
+	protected void sequence_Member(EObject context, ExampleGroup semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (annotationInfo=Member_Field_2_0_0 (type=JvmTypeReference name=ValidID right=XExpression?))
+	 */
+	protected void sequence_Member(EObject context, Field semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     annotations+=XAnnotation+
+	 */
+	protected void sequence_Member_Field_2_0_0_Example_2_1_0_ExampleGroup_2_2_0_Function_2_3_0(EObject context, Member semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         annotationInfo=Member_Function_2_3_0 
+	 *         (
+	 *             (typeParameters+=JvmTypeParameter typeParameters+=JvmTypeParameter*)? 
+	 *             ((returnType=JvmTypeReference name=ValidID) | name=ValidID) 
+	 *             (parameters+=Parameter parameters+=Parameter*)? 
+	 *             expression=XBlockExpression
+	 *         )
+	 *     )
+	 */
+	protected void sequence_Member(EObject context, Function semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
