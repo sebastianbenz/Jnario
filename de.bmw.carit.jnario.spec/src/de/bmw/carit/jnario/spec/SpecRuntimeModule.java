@@ -13,8 +13,8 @@ import org.eclipse.xtext.xtend2.compiler.Xtend2OutputConfigurationProvider;
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
 
+import de.bmw.carit.jnario.common.scoping.JnarioExtensionClassNameProvider;
 import de.bmw.carit.jnario.spec.jvmmodel.ExtendedJvmTypesBuilder;
-import de.bmw.carit.jnario.spec.scoping.JnarioExtensionClassNameProvider;
 import de.bmw.carit.jnario.spec.scoping.SpecImportedNamespaceScopeProvider;
 import de.bmw.carit.jnario.spec.scoping.SpecScopeProvider;
 

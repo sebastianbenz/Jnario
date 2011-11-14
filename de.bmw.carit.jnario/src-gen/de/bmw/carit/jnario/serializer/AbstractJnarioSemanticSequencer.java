@@ -11,7 +11,6 @@ import de.bmw.carit.jnario.jnario.ExampleHeading;
 import de.bmw.carit.jnario.jnario.ExampleRow;
 import de.bmw.carit.jnario.jnario.Examples;
 import de.bmw.carit.jnario.jnario.Given;
-import de.bmw.carit.jnario.jnario.Import;
 import de.bmw.carit.jnario.jnario.Jnario;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
 import de.bmw.carit.jnario.jnario.Scenario;
@@ -71,6 +70,8 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationElementValueB
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationElementValuePair;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationValueArray;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
+import org.eclipse.xtext.xtend2.xtend2.Xtend2Package;
+import org.eclipse.xtext.xtend2.xtend2.XtendImport;
 import org.eclipse.xtext.xtype.XFunctionTypeRef;
 import org.eclipse.xtext.xtype.XtypePackage;
 
@@ -162,12 +163,6 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 				if(context == grammarAccess.getGivenRule() ||
 				   context == grammarAccess.getStepRule()) {
 					sequence_Given(context, (Given) semanticObject); 
-					return; 
-				}
-				else break;
-			case JnarioPackage.IMPORT:
-				if(context == grammarAccess.getImportRule()) {
-					sequence_Import(context, (Import) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1111,6 +1106,14 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			}
+		else if(semanticObject.eClass().getEPackage() == Xtend2Package.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case Xtend2Package.XTEND_IMPORT:
+				if(context == grammarAccess.getImportRule()) {
+					sequence_Import(context, (XtendImport) semanticObject); 
+					return; 
+				}
+				else break;
+			}
 		else if(semanticObject.eClass().getEPackage() == XtypePackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
 			case XtypePackage.XFUNCTION_TYPE_REF:
 				if(context == grammarAccess.getJvmArgumentTypeReferenceRule() ||
@@ -1241,9 +1244,13 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     ((static?='static' extension?='extension'?)? importedNamespace=QualifiedNameWithWildCard)
+	 *     (
+	 *         (static?='static' extension?='extension'? importedType=[JvmType|QualifiedName]) | 
+	 *         importedType=[JvmType|QualifiedName] | 
+	 *         importedNamespace=QualifiedNameWithWildCard
+	 *     )
 	 */
-	protected void sequence_Import(EObject context, Import semanticObject) {
+	protected void sequence_Import(EObject context, XtendImport semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

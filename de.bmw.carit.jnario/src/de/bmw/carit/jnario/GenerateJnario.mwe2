@@ -16,6 +16,8 @@ Workflow {
         // The following two lines ca be removed, if Xbase is not used.
         registerGeneratedEPackage = "org.eclipse.xtext.xbase.XbasePackage"
         registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
+        registerGeneratedEPackage = "org.eclipse.xtext.xtend2.xtend2.Xtend2Package"
+        registerGenModelFile = "platform:/resource/org.eclipse.xtext.xtend2/model/Xtend2.genmodel"
     }
 
     component = DirectoryCleaner {

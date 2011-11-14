@@ -5,6 +5,7 @@ import de.bmw.carit.jnario.jnario.Jnario
 import de.bmw.carit.jnario.jnario.Scenario
 import de.bmw.carit.jnario.jnario.Step
 import de.bmw.carit.jnario.runner.ScenarioRunner
+import de.bmw.carit.jnario.naming.JavaNameProvider
 import java.util.Iterator
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmDeclaredType
@@ -42,6 +43,8 @@ class JnarioJvmModelInferrer extends AbstractModelInferrer {
 
 	@Inject extension ITypeProvider
 	
+	@Inject extension JavaNameProvider
+	
 	/**
 	 * Is called for each instance of the first argument's type contained in a resource.
 	 * 
@@ -54,7 +57,7 @@ class JnarioJvmModelInferrer extends AbstractModelInferrer {
    	def dispatch void infer(Jnario jnario, IAcceptor<JvmDeclaredType> acceptor, boolean isPrelinkingPhase) {
 		for(scenario: jnario.scenarios){
 			acceptor.accept(
-				scenario.toClass(scenario.name.extractValidName.toFirstUpper) [
+				scenario.toClass(scenario.name.javaClassName) [
 					annotations += scenario.toAnnotation(typeof(RunWith), typeof(ScenarioRunner))
 					packageName = jnario.packageName
 					documentation = scenario.documentation
@@ -67,7 +70,7 @@ class JnarioJvmModelInferrer extends AbstractModelInferrer {
 		}
    	}
 
-	def void generateVariables(Scenario scenario, JvmGenericType inferredJvmType) {
+	def generateVariables(Scenario scenario, JvmGenericType inferredJvmType) {
 		var Iterator<EObject> eAllContents = scenario.eAllContents();
 		var allVariables = filter(eAllContents, typeof(XVariableDeclaration))
 		var declaredVariables = newHashSet("");
@@ -90,9 +93,9 @@ class JnarioJvmModelInferrer extends AbstractModelInferrer {
 		}
 	}
 
-	def void transform(Step step, JvmGenericType inferredJvmType) {
+	def transform(Step step, JvmGenericType inferredJvmType) {
 		if(step.getCode() != null){
-			var operation = toMethod(step, step.name.extractValidName.toFirstLower, getTypeForName(Void::TYPE, step))[
+			var operation = toMethod(step, step.name.javaMethodName, getTypeForName(Void::TYPE, step))[
 				body = step.code.blockExpression
 			]
 			inferredJvmType.members += operation
@@ -101,15 +104,6 @@ class JnarioJvmModelInferrer extends AbstractModelInferrer {
 		}
 	}
 
-	def String extractValidName(String originalName){
-		var name = "";
-		var words = originalName.split(" ");
-		for(word: words){
-			if(!word.isEmpty()){
-				name = name + word.toFirstUpper
-			}
-		}
-		return name.replaceAll("[^A-Za-z0-9_]","");
-	}
+
 
 }

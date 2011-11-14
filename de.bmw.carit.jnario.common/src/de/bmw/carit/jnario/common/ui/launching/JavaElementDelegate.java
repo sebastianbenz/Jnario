@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package de.bmw.carit.jnario.spec.ui.launching;
+package de.bmw.carit.jnario.common.ui.launching;
 
 import java.util.List;
 

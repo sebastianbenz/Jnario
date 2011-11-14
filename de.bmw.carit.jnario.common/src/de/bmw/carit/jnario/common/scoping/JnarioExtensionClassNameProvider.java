@@ -1,7 +1,5 @@
-package de.bmw.carit.jnario.spec.scoping;
+package de.bmw.carit.jnario.common.scoping;
 
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
-import org.eclipse.xtext.xbase.scoping.featurecalls.StaticMethodsFeatureForTypeProvider;
 import org.eclipse.xtext.xbase.scoping.featurecalls.StaticMethodsFeatureForTypeProvider.ExtensionClassNameProvider;
 
 import com.google.common.collect.Multimap;

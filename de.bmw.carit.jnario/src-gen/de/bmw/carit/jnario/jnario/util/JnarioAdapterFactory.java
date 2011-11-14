@@ -84,11 +84,6 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
         return createJnarioAdapter();
       }
       @Override
-      public Adapter caseImport(Import object)
-      {
-        return createImportAdapter();
-      }
-      @Override
       public Adapter caseBackground(Background object)
       {
         return createBackgroundAdapter();
@@ -191,21 +186,6 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createJnarioAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.Import <em>Import</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.bmw.carit.jnario.jnario.Import
-   * @generated
-   */
-  public Adapter createImportAdapter()
   {
     return null;
   }

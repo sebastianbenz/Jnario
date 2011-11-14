@@ -292,16 +292,16 @@
      <factory 
         class="de.bmw.carit.jnario.spec.ui.SpecExecutableExtensionFactory:de.bmw.carit.jnario.spec.ui.launching.JavaElementDelegateAdapterFactory"
         adaptableType="org.eclipse.ui.IFileEditorInput">
-        <adapter type="de.bmw.carit.jnario.spec.ui.launching.JavaElementDelegate"/>
+        <adapter type="de.bmw.carit.jnario.common.ui.launching.JavaElementDelegate"/>
      </factory>
      <factory 
         class="de.bmw.carit.jnario.spec.ui.SpecExecutableExtensionFactory:de.bmw.carit.jnario.spec.ui.launching.JavaElementDelegateAdapterFactory" 
         adaptableType="org.eclipse.core.resources.IResource">
-        <adapter type="de.bmw.carit.jnario.spec.ui.launching.JavaElementDelegate"/>
+        <adapter type="de.bmw.carit.jnario.common.ui.launching.JavaElementDelegate"/>
      </factory>
      <factory 
         class="de.bmw.carit.jnario.spec.ui.SpecExecutableExtensionFactory:de.bmw.carit.jnario.spec.ui.launching.JavaElementDelegateAdapterFactory"
-        adaptableType="de.bmw.carit.jnario.spec.ui.launching.JavaElementDelegate">
+        adaptableType="de.bmw.carit.jnario.common.ui.launching.JavaElementDelegate">
         <adapter type="org.eclipse.jdt.core.IJavaElement"/>
      </factory>
   </extension>
@@ -312,7 +312,7 @@
             label="%JUnitShortcut.label"
             icon="$nl$/icons/julaunch.gif"
             helpContextId="org.eclipse.jdt.junit.launch_shortcut"
-            class="de.bmw.carit.jnario.spec.ui.launching.JUnitLaunchShortcut"
+            class="de.bmw.carit.jnario.common.ui.launching.JUnitLaunchShortcut"
             modes="run, debug"
             id="de.bmw.carit.jnario.spec.ui.launching.junitShortcut">
          <contextualLaunch>
@@ -322,7 +322,7 @@
                	  <iterate>
                	     <and>
                	       <not><adapt type="org.eclipse.jdt.core.IJavaElement"/></not>
-                       <adapt type="de.bmw.carit.jnario.spec.ui.launching.JavaElementDelegate">
+                       <adapt type="de.bmw.carit.jnario.common.ui.launching.JavaElementDelegate">
 	                     <adapt type="org.eclipse.jdt.core.IJavaElement">
 			                <test property="org.eclipse.jdt.core.isInJavaProject"/>
 			                <test property="org.eclipse.jdt.core.hasTypeOnClasspath" value="junit.framework.Test"/>
@@ -350,7 +350,7 @@
    <extension
          point="org.eclipse.debug.ui.launchShortcuts">
       <shortcut
-            class="de.bmw.carit.jnario.spec.ui.launching.JUnitPDELaunchShortcut"
+            class="de.bmw.carit.jnario.common.ui.launching.JUnitPDELaunchShortcut"
             icon="$nl$/icons/julaunchpgn.gif"
             id="de.bmw.carit.jnario.spec.ui.launching.junitPdeShortcut"
             label="%launcher.junit.name"
@@ -362,7 +362,7 @@
                	  <iterate>
                	     <and>
                	       <not><adapt type="org.eclipse.jdt.core.IJavaElement"/></not>
-                       <adapt type="de.bmw.carit.jnario.spec.ui.launching.JavaElementDelegate">
+                       <adapt type="de.bmw.carit.jnario.common.ui.launching.JavaElementDelegate">
                          <adapt type="org.eclipse.jdt.core.IJavaElement">
 		                   <test property="org.eclipse.jdt.core.isInJavaProjectWithNature" value="org.eclipse.pde.PluginNature"/>
 		                   <test property="org.eclipse.jdt.core.hasTypeOnClasspath" value="junit.framework.Test"/>

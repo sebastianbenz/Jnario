@@ -11,11 +11,23 @@ import static org.eclipse.xtext.scoping.Scopes.scopeFor;
 import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtext.common.types.JvmDeclaredType;
+import org.eclipse.xtext.common.types.JvmIdentifiableElement;
+import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
+import org.eclipse.xtext.util.IAcceptor;
+import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.XFeatureCall;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
-import org.eclipse.xtext.xbase.impl.XFeatureCallImplCustom;
+import org.eclipse.xtext.xbase.XbaseFactory;
+import org.eclipse.xtext.xbase.annotations.scoping.XbaseWithAnnotationsScopeProvider;
 import org.eclipse.xtext.xbase.scoping.LocalVariableScopeContext;
-import org.eclipse.xtext.xbase.scoping.XbaseScopeProvider;
+import org.eclipse.xtext.xbase.scoping.featurecalls.IJvmFeatureDescriptionProvider;
+
+import com.google.inject.Inject;
+import com.google.inject.Provider;
 
 import de.bmw.carit.jnario.jnario.And;
 import de.bmw.carit.jnario.jnario.Given;
@@ -30,40 +42,101 @@ import de.bmw.carit.jnario.jnario.When;
  * on how and when to use it 
  *
  */
-public class JnarioScopeProvider extends XbaseScopeProvider {
-
+public class JnarioScopeProvider extends XbaseWithAnnotationsScopeProvider {
+	
+	private static final int IMPORTED_STATIC_FEATURE_PRIORITY = 50;
+	private static final int IMPLICIT_ARGUMENT_PRIORITY = 400;
+	
+	private static final int STATIC_EXTENSION_PRIORITY_OFFSET = 220;
+	
+	@Inject
+	private Provider<StaticallyImportedFeaturesProvider> staticallyImportedFeaturesProvider;
 
 	@Override
-	protected IScope createLocalVarScope(IScope parentScope,
-			LocalVariableScopeContext scopeContext) {
+	protected void addStaticFeatureDescriptionProviders(
+			Resource resource, 
+			JvmDeclaredType contextType,
+			IAcceptor<IJvmFeatureDescriptionProvider> acceptor) {
+		super.addStaticFeatureDescriptionProviders(resource, contextType, acceptor);
+		
+		StaticallyImportedFeaturesProvider staticProvider = staticallyImportedFeaturesProvider.get();
+		staticProvider.setResourceContext(resource);
+		staticProvider.setExtensionProvider(false);
+		
+		addFeatureDescriptionProviders(contextType, staticProvider, null, null, IMPORTED_STATIC_FEATURE_PRIORITY, true, acceptor);
+	}
+	
+
+	@Override
+	protected void addFeatureDescriptionProviders(
+			Resource resource, 
+			JvmDeclaredType contextType,
+			XExpression implicitReceiver,
+			XExpression implicitArgument,
+			int priority,
+			IAcceptor<IJvmFeatureDescriptionProvider> acceptor) {
+		super.addFeatureDescriptionProviders(resource, contextType, implicitReceiver, implicitArgument, priority, acceptor);
+		
+		if (implicitReceiver == null || implicitArgument != null) {
+			final StaticallyImportedFeaturesProvider staticProvider = staticallyImportedFeaturesProvider.get();
+			staticProvider.setResourceContext(resource);
+			staticProvider.setExtensionProvider(true);
+			if (implicitArgument != null) {
+				// use the implicit argument as implicit receiver
+				SimpleAcceptor casted = (SimpleAcceptor) acceptor;
+				JvmTypeReference implicitArgumentType = getTypeProvider().getType(implicitArgument, true);
+				IAcceptor<IJvmFeatureDescriptionProvider> myAcceptor = casted.getParent().curry(implicitArgumentType, casted.getExpression());
+				addFeatureDescriptionProviders(contextType, staticProvider, implicitArgument, null, priority + STATIC_EXTENSION_PRIORITY_OFFSET, true, myAcceptor);
+			} else {
+				addFeatureDescriptionProviders(contextType, staticProvider, implicitReceiver, implicitArgument, priority + STATIC_EXTENSION_PRIORITY_OFFSET, true, acceptor);
+			}
+		}
+		
+	}
+	
+
+	@Override
+	protected void addFeatureCallScopes(
+			EObject featureCall, 
+			final IScope localVariableScope,
+			final IJvmFeatureScopeAcceptor featureScopeDescriptions) {
+		IEObjectDescription implicitThis = localVariableScope.getSingleElement(THIS);
+		if (implicitThis != null) {
+			EObject implicitReceiver = implicitThis.getEObjectOrProxy();
+			if (implicitReceiver instanceof JvmIdentifiableElement) {
+				JvmTypeReference receiverType = getTypeProvider().getTypeForIdentifiable((JvmIdentifiableElement) implicitReceiver);
+				if (receiverType != null) {
+					XFeatureCall receiver = XbaseFactory.eINSTANCE.createXFeatureCall();
+					receiver.setFeature((JvmIdentifiableElement) implicitReceiver);
+					IEObjectDescription implicitIt = localVariableScope.getSingleElement(IT);
+					if (implicitIt != null) {
+						EObject implicitArgument = implicitIt.getEObjectOrProxy();
+						if (implicitArgument instanceof JvmIdentifiableElement) {
+							JvmTypeReference argumentType = getTypeProvider().getTypeForIdentifiable((JvmIdentifiableElement) implicitArgument);
+							if (argumentType != null) {
+								XFeatureCall argument = XbaseFactory.eINSTANCE.createXFeatureCall();
+								argument.setFeature((JvmIdentifiableElement) implicitArgument);
+								addFeatureScopes(receiverType, featureCall, getContextType(featureCall), receiver, argument, IMPLICIT_ARGUMENT_PRIORITY, featureScopeDescriptions);
+							}
+						}
+					}
+				}
+			}
+		}
+		super.addFeatureCallScopes(featureCall, localVariableScope, featureScopeDescriptions);
+	}
+	
+	@Override
+	protected IScope createLocalVarScope(IScope parentScope, LocalVariableScopeContext scopeContext) {
 		EObject context = scopeContext.getContext();
 		if (context instanceof Given || context instanceof When || context instanceof Then || context instanceof And) {
 			return stepScope(parentScope, scopeContext);
-//		}else if(context instanceof XFeatureCallImplCustom){
-//			IScope scope = checkIfInExampleScope(parentScope, scopeContext);
-//			if(scope != null) return scope;
-//			return super.createLocalVarScope(parentScope, scopeContext);
 		}else{
 			return super.createLocalVarScope(parentScope, scopeContext);
 		}
 	}
 
-//	private IScope checkIfInExampleScope(IScope parentScope,
-//			LocalVariableScopeContext scopeContext) {
-////		EObject context = scopeContext.getContext();
-////		Scenario scenario = getContainerOfType(context, Scenario.class);
-////		Examples examples = scenario.getExamples().get(0);
-////		for(ExampleCell cell: examples.getHeading().getParts()){
-////			if(retrieveExampleVariable(cell.getValue()).equals(context.toString())){
-////				return super.createLocalVarScope(parentScope, scopeContext);
-////			}
-////		}
-//		return super.createLocalVarScope(parentScope, scopeContext);
-//	}
-
-	private IScope stepScope(IScope parentScope,
-			LocalVariableScopeContext scopeContext) {
-
+	private IScope stepScope(IScope parentScope, LocalVariableScopeContext scopeContext) {
 		EObject context = scopeContext.getContext();
 		Scenario scenario = getContainerOfType(context, Scenario.class);
 		Iterator<EObject> eAllContents = scenario.eAllContents();

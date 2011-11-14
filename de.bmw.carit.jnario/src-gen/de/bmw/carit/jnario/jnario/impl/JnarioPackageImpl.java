@@ -15,7 +15,6 @@ import de.bmw.carit.jnario.jnario.ExampleHeading;
 import de.bmw.carit.jnario.jnario.ExampleRow;
 import de.bmw.carit.jnario.jnario.Examples;
 import de.bmw.carit.jnario.jnario.Given;
-import de.bmw.carit.jnario.jnario.Import;
 import de.bmw.carit.jnario.jnario.Jnario;
 import de.bmw.carit.jnario.jnario.JnarioFactory;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
@@ -36,6 +35,8 @@ import org.eclipse.xtext.xbase.XbasePackage;
 
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
 
+import org.eclipse.xtext.xtend2.xtend2.Xtend2Package;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Package</b>.
@@ -50,13 +51,6 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
    * @generated
    */
   private EClass jnarioEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass importEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -205,8 +199,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
     isInited = true;
 
     // Initialize simple dependencies
-    XAnnotationsPackage.eINSTANCE.eClass();
-    XbasePackage.eINSTANCE.eClass();
+    Xtend2Package.eINSTANCE.eClass();
 
     // Create package meta-data objects
     theJnarioPackage.createPackageContents();
@@ -281,46 +274,6 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
   public EReference getJnario_Scenarios()
   {
     return (EReference)jnarioEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getImport()
-  {
-    return importEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getImport_Static()
-  {
-    return (EAttribute)importEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getImport_Extension()
-  {
-    return (EAttribute)importEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getImport_ImportedNamespace()
-  {
-    return (EAttribute)importEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -750,11 +703,6 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
     createEReference(jnarioEClass, JNARIO__BACKGROUND);
     createEReference(jnarioEClass, JNARIO__SCENARIOS);
 
-    importEClass = createEClass(IMPORT);
-    createEAttribute(importEClass, IMPORT__STATIC);
-    createEAttribute(importEClass, IMPORT__EXTENSION);
-    createEAttribute(importEClass, IMPORT__IMPORTED_NAMESPACE);
-
     backgroundEClass = createEClass(BACKGROUND);
     createEReference(backgroundEClass, BACKGROUND__STEPS);
 
@@ -834,6 +782,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
     setNsURI(eNS_URI);
 
     // Obtain other dependent packages
+    Xtend2Package theXtend2Package = (Xtend2Package)EPackage.Registry.INSTANCE.getEPackage(Xtend2Package.eNS_URI);
     XAnnotationsPackage theXAnnotationsPackage = (XAnnotationsPackage)EPackage.Registry.INSTANCE.getEPackage(XAnnotationsPackage.eNS_URI);
     XbasePackage theXbasePackage = (XbasePackage)EPackage.Registry.INSTANCE.getEPackage(XbasePackage.eNS_URI);
 
@@ -851,15 +800,10 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
     // Initialize classes and features; add operations and parameters
     initEClass(jnarioEClass, Jnario.class, "Jnario", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getJnario_PackageName(), ecorePackage.getEString(), "packageName", null, 0, 1, Jnario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getJnario_Imports(), this.getImport(), null, "imports", null, 0, -1, Jnario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getJnario_Imports(), theXtend2Package.getXtendImport(), null, "imports", null, 0, -1, Jnario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getJnario_Name(), ecorePackage.getEString(), "name", null, 0, 1, Jnario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getJnario_Background(), this.getBackground(), null, "background", null, 0, 1, Jnario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getJnario_Scenarios(), this.getScenario(), null, "scenarios", null, 0, -1, Jnario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getImport_Static(), ecorePackage.getEBoolean(), "static", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getImport_Extension(), ecorePackage.getEBoolean(), "extension", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getImport_ImportedNamespace(), ecorePackage.getEString(), "importedNamespace", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(backgroundEClass, Background.class, "Background", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getBackground_Steps(), this.getGiven(), null, "steps", null, 0, -1, Background.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

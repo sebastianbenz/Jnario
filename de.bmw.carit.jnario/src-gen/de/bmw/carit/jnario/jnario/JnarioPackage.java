@@ -125,52 +125,6 @@ public interface JnarioPackage extends EPackage
   int JNARIO_FEATURE_COUNT = 5;
 
   /**
-   * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.ImportImpl <em>Import</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.bmw.carit.jnario.jnario.impl.ImportImpl
-   * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getImport()
-   * @generated
-   */
-  int IMPORT = 1;
-
-  /**
-   * The feature id for the '<em><b>Static</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IMPORT__STATIC = 0;
-
-  /**
-   * The feature id for the '<em><b>Extension</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IMPORT__EXTENSION = 1;
-
-  /**
-   * The feature id for the '<em><b>Imported Namespace</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IMPORT__IMPORTED_NAMESPACE = 2;
-
-  /**
-   * The number of structural features of the '<em>Import</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IMPORT_FEATURE_COUNT = 3;
-
-  /**
    * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.BackgroundImpl <em>Background</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -178,7 +132,7 @@ public interface JnarioPackage extends EPackage
    * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getBackground()
    * @generated
    */
-  int BACKGROUND = 2;
+  int BACKGROUND = 1;
 
   /**
    * The feature id for the '<em><b>Steps</b></em>' containment reference list.
@@ -206,7 +160,7 @@ public interface JnarioPackage extends EPackage
    * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getScenario()
    * @generated
    */
-  int SCENARIO = 3;
+  int SCENARIO = 2;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -261,7 +215,7 @@ public interface JnarioPackage extends EPackage
    * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getAnnotation()
    * @generated
    */
-  int ANNOTATION = 4;
+  int ANNOTATION = 3;
 
   /**
    * The feature id for the '<em><b>Annotation</b></em>' containment reference.
@@ -298,7 +252,7 @@ public interface JnarioPackage extends EPackage
    * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getVariableDeclaration()
    * @generated
    */
-  int VARIABLE_DECLARATION = 5;
+  int VARIABLE_DECLARATION = 4;
 
   /**
    * The feature id for the '<em><b>Visibility</b></em>' attribute.
@@ -335,7 +289,7 @@ public interface JnarioPackage extends EPackage
    * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getStep()
    * @generated
    */
-  int STEP = 6;
+  int STEP = 5;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -372,7 +326,7 @@ public interface JnarioPackage extends EPackage
    * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getGiven()
    * @generated
    */
-  int GIVEN = 7;
+  int GIVEN = 6;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -427,7 +381,7 @@ public interface JnarioPackage extends EPackage
    * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getWhen()
    * @generated
    */
-  int WHEN = 8;
+  int WHEN = 7;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -482,7 +436,7 @@ public interface JnarioPackage extends EPackage
    * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getThen()
    * @generated
    */
-  int THEN = 9;
+  int THEN = 8;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -537,7 +491,7 @@ public interface JnarioPackage extends EPackage
    * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getAnd()
    * @generated
    */
-  int AND = 10;
+  int AND = 9;
 
   /**
    * The feature id for the '<em><b>Steps</b></em>' containment reference list.
@@ -583,7 +537,7 @@ public interface JnarioPackage extends EPackage
    * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getCode()
    * @generated
    */
-  int CODE = 11;
+  int CODE = 10;
 
   /**
    * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -620,7 +574,7 @@ public interface JnarioPackage extends EPackage
    * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getExamples()
    * @generated
    */
-  int EXAMPLES = 12;
+  int EXAMPLES = 11;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -666,7 +620,7 @@ public interface JnarioPackage extends EPackage
    * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getExampleHeading()
    * @generated
    */
-  int EXAMPLE_HEADING = 13;
+  int EXAMPLE_HEADING = 12;
 
   /**
    * The feature id for the '<em><b>Parts</b></em>' containment reference list.
@@ -694,7 +648,7 @@ public interface JnarioPackage extends EPackage
    * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getExampleRow()
    * @generated
    */
-  int EXAMPLE_ROW = 14;
+  int EXAMPLE_ROW = 13;
 
   /**
    * The feature id for the '<em><b>Parts</b></em>' containment reference list.
@@ -722,7 +676,7 @@ public interface JnarioPackage extends EPackage
    * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getExampleCell()
    * @generated
    */
-  int EXAMPLE_CELL = 15;
+  int EXAMPLE_CELL = 14;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' containment reference.
@@ -807,49 +761,6 @@ public interface JnarioPackage extends EPackage
    * @generated
    */
   EReference getJnario_Scenarios();
-
-  /**
-   * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.Import <em>Import</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Import</em>'.
-   * @see de.bmw.carit.jnario.jnario.Import
-   * @generated
-   */
-  EClass getImport();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.bmw.carit.jnario.jnario.Import#isStatic <em>Static</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Static</em>'.
-   * @see de.bmw.carit.jnario.jnario.Import#isStatic()
-   * @see #getImport()
-   * @generated
-   */
-  EAttribute getImport_Static();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.bmw.carit.jnario.jnario.Import#isExtension <em>Extension</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Extension</em>'.
-   * @see de.bmw.carit.jnario.jnario.Import#isExtension()
-   * @see #getImport()
-   * @generated
-   */
-  EAttribute getImport_Extension();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.bmw.carit.jnario.jnario.Import#getImportedNamespace <em>Imported Namespace</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Imported Namespace</em>'.
-   * @see de.bmw.carit.jnario.jnario.Import#getImportedNamespace()
-   * @see #getImport()
-   * @generated
-   */
-  EAttribute getImport_ImportedNamespace();
 
   /**
    * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.Background <em>Background</em>}'.
@@ -1338,40 +1249,6 @@ public interface JnarioPackage extends EPackage
      * @generated
      */
     EReference JNARIO__SCENARIOS = eINSTANCE.getJnario_Scenarios();
-
-    /**
-     * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.ImportImpl <em>Import</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.bmw.carit.jnario.jnario.impl.ImportImpl
-     * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getImport()
-     * @generated
-     */
-    EClass IMPORT = eINSTANCE.getImport();
-
-    /**
-     * The meta object literal for the '<em><b>Static</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute IMPORT__STATIC = eINSTANCE.getImport_Static();
-
-    /**
-     * The meta object literal for the '<em><b>Extension</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute IMPORT__EXTENSION = eINSTANCE.getImport_Extension();
-
-    /**
-     * The meta object literal for the '<em><b>Imported Namespace</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute IMPORT__IMPORTED_NAMESPACE = eINSTANCE.getImport_ImportedNamespace();
 
     /**
      * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.BackgroundImpl <em>Background</em>}' class.

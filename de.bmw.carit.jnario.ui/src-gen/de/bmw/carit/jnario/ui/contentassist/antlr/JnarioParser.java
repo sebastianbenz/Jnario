@@ -37,6 +37,7 @@ public class JnarioParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
+					put(grammarAccess.getImportAccess().getAlternatives_1(), "rule__Import__Alternatives_1");
 					put(grammarAccess.getBackgroundAccess().getAlternatives(), "rule__Background__Alternatives");
 					put(grammarAccess.getStepAccess().getAlternatives(), "rule__Step__Alternatives");
 					put(grammarAccess.getXAnnotationAccess().getAlternatives_3_1(), "rule__XAnnotation__Alternatives_3_1");
@@ -70,9 +71,8 @@ public class JnarioParser extends AbstractContentAssistParser {
 					put(grammarAccess.getJnarioAccess().getGroup(), "rule__Jnario__Group__0");
 					put(grammarAccess.getJnarioAccess().getGroup_0(), "rule__Jnario__Group_0__0");
 					put(grammarAccess.getImportAccess().getGroup(), "rule__Import__Group__0");
-					put(grammarAccess.getImportAccess().getGroup_1(), "rule__Import__Group_1__0");
+					put(grammarAccess.getImportAccess().getGroup_1_0(), "rule__Import__Group_1_0__0");
 					put(grammarAccess.getQualifiedNameWithWildCardAccess().getGroup(), "rule__QualifiedNameWithWildCard__Group__0");
-					put(grammarAccess.getQualifiedNameWithWildCardAccess().getGroup_1(), "rule__QualifiedNameWithWildCard__Group_1__0");
 					put(grammarAccess.getBackgroundAccess().getGroup_0(), "rule__Background__Group_0__0");
 					put(grammarAccess.getScenarioAccess().getGroup(), "rule__Scenario__Group__0");
 					put(grammarAccess.getAnnotationAccess().getGroup(), "rule__Annotation__Group__0");
@@ -232,9 +232,11 @@ public class JnarioParser extends AbstractContentAssistParser {
 					put(grammarAccess.getJnarioAccess().getNameAssignment_2(), "rule__Jnario__NameAssignment_2");
 					put(grammarAccess.getJnarioAccess().getBackgroundAssignment_3(), "rule__Jnario__BackgroundAssignment_3");
 					put(grammarAccess.getJnarioAccess().getScenariosAssignment_4(), "rule__Jnario__ScenariosAssignment_4");
-					put(grammarAccess.getImportAccess().getStaticAssignment_1_0(), "rule__Import__StaticAssignment_1_0");
-					put(grammarAccess.getImportAccess().getExtensionAssignment_1_1(), "rule__Import__ExtensionAssignment_1_1");
-					put(grammarAccess.getImportAccess().getImportedNamespaceAssignment_2(), "rule__Import__ImportedNamespaceAssignment_2");
+					put(grammarAccess.getImportAccess().getStaticAssignment_1_0_0(), "rule__Import__StaticAssignment_1_0_0");
+					put(grammarAccess.getImportAccess().getExtensionAssignment_1_0_1(), "rule__Import__ExtensionAssignment_1_0_1");
+					put(grammarAccess.getImportAccess().getImportedTypeAssignment_1_0_2(), "rule__Import__ImportedTypeAssignment_1_0_2");
+					put(grammarAccess.getImportAccess().getImportedTypeAssignment_1_1(), "rule__Import__ImportedTypeAssignment_1_1");
+					put(grammarAccess.getImportAccess().getImportedNamespaceAssignment_1_2(), "rule__Import__ImportedNamespaceAssignment_1_2");
 					put(grammarAccess.getBackgroundAccess().getStepsAssignment_0_1(), "rule__Background__StepsAssignment_0_1");
 					put(grammarAccess.getScenarioAccess().getNameAssignment_0(), "rule__Scenario__NameAssignment_0");
 					put(grammarAccess.getScenarioAccess().getAnnotationsAssignment_1(), "rule__Scenario__AnnotationsAssignment_1");

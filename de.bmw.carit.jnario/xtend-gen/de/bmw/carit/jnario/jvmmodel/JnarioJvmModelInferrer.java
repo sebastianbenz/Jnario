@@ -8,6 +8,7 @@ import de.bmw.carit.jnario.jnario.Code;
 import de.bmw.carit.jnario.jnario.Jnario;
 import de.bmw.carit.jnario.jnario.Scenario;
 import de.bmw.carit.jnario.jnario.Step;
+import de.bmw.carit.jnario.naming.JavaNameProvider;
 import java.util.HashSet;
 import java.util.Iterator;
 import org.eclipse.emf.common.util.EList;
@@ -31,7 +32,6 @@ import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.eclipse.xtext.xbase.lib.CollectionExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 
 /**
@@ -54,6 +54,9 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
   @Inject
   private ITypeProvider _iTypeProvider;
   
+  @Inject
+  private JavaNameProvider _javaNameProvider;
+  
   /**
    * Is called for each instance of the first argument's type contained in a resource.
    * 
@@ -67,8 +70,7 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
     EList<Scenario> _scenarios = jnario.getScenarios();
     for (final Scenario scenario : _scenarios) {
       String _name = scenario.getName();
-      String _extractValidName = this.extractValidName(_name);
-      String _firstUpper = StringExtensions.toFirstUpper(_extractValidName);
+      String _javaClassName = this._javaNameProvider.getJavaClassName(_name);
       final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
           public void apply(final JvmGenericType it) {
             {
@@ -87,7 +89,7 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
             }
           }
         };
-      JvmGenericType _class = this._jvmTypesBuilder.toClass(scenario, _firstUpper, _function);
+      JvmGenericType _class = this._jvmTypesBuilder.toClass(scenario, _javaClassName, _function);
       acceptor.accept(_class);
     }
   }
@@ -138,14 +140,15 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
       }
   }
   
-  public void transform(final Step step, final JvmGenericType inferredJvmType) {
+  public Boolean transform(final Step step, final JvmGenericType inferredJvmType) {
+    Boolean _xifexpression = null;
     Code _code = step.getCode();
     boolean _operator_notEquals = ObjectExtensions.operator_notEquals(_code, null);
     if (_operator_notEquals) {
+      boolean _xblockexpression = false;
       {
         String _name = step.getName();
-        String _extractValidName = this.extractValidName(_name);
-        String _firstLower = StringExtensions.toFirstLower(_extractValidName);
+        String _javaMethodName = this._javaNameProvider.getJavaMethodName(_name);
         JvmTypeReference _typeForName = this._typeReferences.getTypeForName(Void.TYPE, step);
         final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
             public void apply(final JvmOperation it) {
@@ -154,7 +157,7 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
               JnarioJvmModelInferrer.this._jvmTypesBuilder.setBody(it, _blockExpression);
             }
           };
-        JvmOperation _method = this._jvmTypesBuilder.toMethod(step, _firstLower, _typeForName, _function);
+        JvmOperation _method = this._jvmTypesBuilder.toMethod(step, _javaMethodName, _typeForName, _function);
         JvmOperation operation = _method;
         EList<JvmMember> _members = inferredJvmType.getMembers();
         CollectionExtensions.<JvmOperation>operator_add(_members, operation);
@@ -165,26 +168,12 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
         String _name_1 = step.getName();
         String _trim = _name_1.trim();
         JvmAnnotationReference _annotation_1 = this._jvmTypesBuilder.toAnnotation(step, de.bmw.carit.jnario.runner.Named.class, _trim);
-        CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
+        boolean _operator_add = CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
+        _xblockexpression = (_operator_add);
       }
+      _xifexpression = _xblockexpression;
     }
-  }
-  
-  public String extractValidName(final String originalName) {
-      String name = "";
-      String[] _split = originalName.split(" ");
-      String[] words = _split;
-      for (final String word : words) {
-        boolean _isEmpty = word.isEmpty();
-        boolean _operator_not = BooleanExtensions.operator_not(_isEmpty);
-        if (_operator_not) {
-          String _firstUpper = StringExtensions.toFirstUpper(word);
-          String _operator_plus = StringExtensions.operator_plus(name, _firstUpper);
-          name = _operator_plus;
-        }
-      }
-      String _replaceAll = name.replaceAll("[^A-Za-z0-9_]", "");
-      return _replaceAll;
+    return _xifexpression;
   }
   
   public void infer(final EObject jnario, final IAcceptor<JvmDeclaredType> acceptor, final boolean isPrelinkingPhase) {

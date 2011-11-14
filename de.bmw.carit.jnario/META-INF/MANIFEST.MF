@@ -21,10 +21,14 @@ Require-Bundle: org.eclipse.xtext;bundle-version="2.0.0";visibility:=reexport,
  org.eclipse.xtext.xbase.lib;visibility:=reexport,
  org.eclipse.xtext.xtend2.lib;visibility:=reexport,
  org.junit;bundle-version="4.8.2",
- de.bmw.carit.jnario.runner;bundle-version="0.1.0",
+ de.bmw.carit.jnario.lib;bundle-version="0.1.0",
  de.bmw.carit.jnario.common;bundle-version="0.1.0"
 Import-Package: org.apache.commons.logging,
- org.apache.log4j
+ org.apache.log4j,
+ org.eclipse.xtext.xtend2.compiler,
+ org.eclipse.xtext.xtend2.scoping,
+ org.eclipse.xtext.xtend2.validation,
+ org.eclipse.xtext.xtend2.xtend2
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: de.bmw.carit.jnario,
  de.bmw.carit.jnario.jnario,

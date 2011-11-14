@@ -24,6 +24,12 @@ public class JnarioProposalProvider extends AbstractJnarioProposalProvider {
 	}
 	
 	@Override
+	public void complete_BACKGROUND_TEXT(EObject model, RuleCall ruleCall,
+			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		acceptor.accept(createCompletionProposal("Background: ", context));
+	}
+	
+	@Override
 	public void complete_SCENARIO_TEXT(EObject model, RuleCall ruleCall,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		acceptor.accept(createCompletionProposal("Scenario: ", context));
@@ -45,5 +51,11 @@ public class JnarioProposalProvider extends AbstractJnarioProposalProvider {
 	public void complete_THEN_TEXT(EObject model, RuleCall ruleCall,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		acceptor.accept(createCompletionProposal("Then ", context));
+	}
+	
+	@Override
+	public void complete_EXAMPLE_TEXT(EObject model, RuleCall ruleCall,
+			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		acceptor.accept(createCompletionProposal("Examples: ", context));
 	}
 }

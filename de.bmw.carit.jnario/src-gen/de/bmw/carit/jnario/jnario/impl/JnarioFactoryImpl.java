@@ -69,7 +69,6 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
     switch (eClass.getClassifierID())
     {
       case JnarioPackage.JNARIO: return createJnario();
-      case JnarioPackage.IMPORT: return createImport();
       case JnarioPackage.BACKGROUND: return createBackground();
       case JnarioPackage.SCENARIO: return createScenario();
       case JnarioPackage.ANNOTATION: return createAnnotation();
@@ -98,17 +97,6 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
   {
     JnarioImpl jnario = new JnarioImpl();
     return jnario;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Import createImport()
-  {
-    ImportImpl import_ = new ImportImpl();
-    return import_;
   }
 
   /**

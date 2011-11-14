@@ -108,39 +108,6 @@ public class JnarioCompiler extends XbaseCompiler {
 		b.append(";");
 	}
 	
-//	public String compileScenario(Scenario scenario, ImportManager importManager, boolean withTestAnnotation) {
-//		IAppendable appendable = new StringBuilderBasedAppendable(importManager);
-//		
-//		if(withTestAnnotation){
-//			appendable.append("@Test\n");
-//		}
-//		appendable.append("public void ");
-//		String methodName = extractMethodName(scenario.getName());
-//		appendable.append(methodName);
-//		appendable.append("(){\n");
-//		if(!scenario.getExamples().isEmpty()){		
-//			generateExamples(scenario.getExamples(), scenario.getSteps(), appendable, importManager);
-//		}
-//		for(Step step: scenario.getSteps()){
-//			generateStep(step, appendable);
-//		}
-//
-//		appendable.append("\n}\n");
-//		return appendable.toString();
-//	}
-//	
-//	public String compileBackground(Background background, ImportManager importManager){
-//		IAppendable appendable = new StringBuilderBasedAppendable(importManager);
-//		
-//		appendable.append("@Before\n");
-//		appendable.append("public void setup(){\n");
-//		for(Step step: background.getSteps()){
-//			generateStep(step, appendable);
-//		}
-//		appendable.append("\n}\n");
-//		return appendable.toString();
-//	}
-//	
 //	protected void generateExamples(EList<Examples> examples, EList<Step> steps,
 //			IAppendable appendable, ImportManager importManager) {
 //		IAppendable stepAppendable = new StringBuilderBasedAppendable(importManager);
@@ -166,58 +133,9 @@ public class JnarioCompiler extends XbaseCompiler {
 //		}
 //	}
 
-//	protected void generateStep(Step step, IAppendable appendable){
-//		Code code = step.getCode();
-//			for(XAnnotation annotation: code.getAnnotations()){
-//				//annotationCompiler.generate(annotation, appendable);
-//			}
-//			XBlockExpression expression = code.getBlockExpression();
-//			if(expression != null){
-//				compile(expression, appendable, newVoidRef());
-//			}
-//	}
-	
-
-
-
-	
-	
-
 	protected JvmTypeReference newVoidRef() {
 		JvmParameterizedTypeReference reference = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference();
 		reference.setType(TypesFactory.eINSTANCE.createJvmVoid());
 		return reference;
 	}
-	
-	public static String extractMethodName(String name){
-		String methodName = "";
-		String[] words = name.split(" ");
-		for(String word: words){
-			// make first letter upper case and join them to MethodName
-			String firstLetter = "" + word.charAt(0);
-			firstLetter = firstLetter.toUpperCase();
-			methodName = methodName + firstLetter + word.substring(1);
-		}
-		
-		int indexOfSentenceEnd = methodName.lastIndexOf(".");
-		if(indexOfSentenceEnd > -1){
-			methodName = methodName.substring(0, indexOfSentenceEnd);
-		}
-		
-		String firstLetter = "" + methodName.charAt(0);
-		firstLetter = firstLetter.toLowerCase();
-		methodName = firstLetter + methodName.substring(1);
-		
-		methodName = methodName.replaceAll("[^A-Za-z0-9_]","");
-		return methodName;
-	}
-	
-//	public void declareVariableAndJavaStatement(XExpression expression, IAppendable appendable){
-//		this.declareNameInVariableScope(expression, appendable);
-//		this.toJavaStatement(expression, appendable, true);
-//	}
-//	
-//	public void getVariables(XExpression expression, IAppendable appendable){
-//		this.toJavaExpression(expression, appendable);
-//	}	
 }

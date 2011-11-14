@@ -7,6 +7,9 @@
     <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel" alias="xbase">
       <ePackage href="http://www.eclipse.org/xtext/xbase/Xbase#/"/>
     </metamodelDeclarations>
+    <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel" alias="xtend2">
+      <ePackage href="http://www.eclipse.org/xtext/Xtend2#/"/>
+    </metamodelDeclarations>
     <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel" alias="jvmTypes">
       <ePackage href="http://www.eclipse.org/xtext/common/JavaVMTypes#/"/>
     </metamodelDeclarations>
@@ -36,21 +39,41 @@
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Import">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/Jnario#//Import"/>
+      <type metamodel="/0/@metamodelDeclarations.2">
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/Xtend2#//XtendImport"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="import"/>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Assignment" feature="static" operator="?=">
-            <terminal xsi:type="xtext:Keyword" value="static"/>
+        <elements xsi:type="xtext:Alternatives">
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Assignment" feature="static" operator="?=">
+              <terminal xsi:type="xtext:Keyword" value="static"/>
+            </elements>
+            <elements xsi:type="xtext:Assignment" cardinality="?" feature="extension" operator="?=">
+              <terminal xsi:type="xtext:Keyword" value="extension"/>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="importedType" operator="=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.3">
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/common/JavaVMTypes#//JvmType"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.52"/>
+              </terminal>
+            </elements>
+            <elements xsi:type="xtext:Keyword" value="."/>
+            <elements xsi:type="xtext:Keyword" value="*"/>
           </elements>
-          <elements xsi:type="xtext:Assignment" cardinality="?" feature="extension" operator="?=">
-            <terminal xsi:type="xtext:Keyword" value="extension"/>
+          <elements xsi:type="xtext:Assignment" feature="importedType" operator="=">
+            <terminal xsi:type="xtext:CrossReference">
+              <type metamodel="/0/@metamodelDeclarations.3">
+                <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/common/JavaVMTypes#//JvmType"/>
+              </type>
+              <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.52"/>
+            </terminal>
           </elements>
-        </elements>
-        <elements xsi:type="xtext:Assignment" feature="importedNamespace" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+          <elements xsi:type="xtext:Assignment" feature="importedNamespace" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+          </elements>
         </elements>
       </alternatives>
     </rules>
@@ -60,10 +83,8 @@
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:RuleCall" rule="/2/@rules.52"/>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Keyword" value="."/>
-          <elements xsi:type="xtext:Keyword" value="*"/>
-        </elements>
+        <elements xsi:type="xtext:Keyword" value="."/>
+        <elements xsi:type="xtext:Keyword" value="*"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Background">

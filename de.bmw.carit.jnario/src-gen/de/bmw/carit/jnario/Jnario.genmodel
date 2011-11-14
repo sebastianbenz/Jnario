@@ -6,7 +6,7 @@
     modelPluginID="de.bmw.carit.jnario" forceOverwrite="true" modelName="Jnario" updateClasspath="false"
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" complianceLevel="5.0"
     copyrightFields="false" editPluginID="de.bmw.carit.jnario.edit" editorPluginID="de.bmw.carit.jnario.editor"
-    usedGenPackages="../../../../../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xAnnotations ../../../../../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase">
+    usedGenPackages="../../../../../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xAnnotations ../../../../../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase ../../../../../../org.eclipse.xtext.xtend2/model/Xtend2.genmodel#//xtend2">
   <genPackages prefix="Jnario" basePackage="de.bmw.carit.jnario" disposableProviderFactory="true"
       ecorePackage="Jnario.ecore#/">
     <genClasses ecoreClass="Jnario.ecore#//Jnario">
@@ -15,11 +15,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jnario.ecore#//Jnario/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jnario.ecore#//Jnario/background"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jnario.ecore#//Jnario/scenarios"/>
-    </genClasses>
-    <genClasses ecoreClass="Jnario.ecore#//Import">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jnario.ecore#//Import/static"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jnario.ecore#//Import/extension"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jnario.ecore#//Import/importedNamespace"/>
     </genClasses>
     <genClasses ecoreClass="Jnario.ecore#//Background">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jnario.ecore#//Background/steps"/>

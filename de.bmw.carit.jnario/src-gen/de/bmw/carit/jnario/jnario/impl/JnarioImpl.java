@@ -7,7 +7,6 @@
 package de.bmw.carit.jnario.jnario.impl;
 
 import de.bmw.carit.jnario.jnario.Background;
-import de.bmw.carit.jnario.jnario.Import;
 import de.bmw.carit.jnario.jnario.Jnario;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
 import de.bmw.carit.jnario.jnario.Scenario;
@@ -27,6 +26,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.eclipse.xtext.xtend2.xtend2.XtendImport;
 
 /**
  * <!-- begin-user-doc -->
@@ -75,7 +76,7 @@ public class JnarioImpl extends MinimalEObjectImpl.Container implements Jnario
    * @generated
    * @ordered
    */
-  protected EList<Import> imports;
+  protected EList<XtendImport> imports;
 
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -166,11 +167,11 @@ public class JnarioImpl extends MinimalEObjectImpl.Container implements Jnario
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Import> getImports()
+  public EList<XtendImport> getImports()
   {
     if (imports == null)
     {
-      imports = new EObjectContainmentEList<Import>(Import.class, this, JnarioPackage.JNARIO__IMPORTS);
+      imports = new EObjectContainmentEList<XtendImport>(XtendImport.class, this, JnarioPackage.JNARIO__IMPORTS);
     }
     return imports;
   }
@@ -320,7 +321,7 @@ public class JnarioImpl extends MinimalEObjectImpl.Container implements Jnario
         return;
       case JnarioPackage.JNARIO__IMPORTS:
         getImports().clear();
-        getImports().addAll((Collection<? extends Import>)newValue);
+        getImports().addAll((Collection<? extends XtendImport>)newValue);
         return;
       case JnarioPackage.JNARIO__NAME:
         setName((String)newValue);
