@@ -22,7 +22,12 @@ import static extension com.google.common.collect.Iterables.*
 import org.eclipse.emf.ecore.InternalEObject
 import org.eclipse.xtext.xtend2.resource.Xtend2Resource
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.common.types.TypesFactory 
+import org.eclipse.xtext.common.types.TypesFactory
+import com.google.common.base.Predicates
+import com.google.common.collect.Iterables
+import de.bmw.carit.jnario.spec.spec.Member
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
+import org.eclipse.xtext.common.types.JvmAnnotationTarget 
 /**
  * <p>Infers a JVM model from the source model.</p> 
  *
@@ -63,9 +68,7 @@ class SpecJvmModelInferrer extends AbstractModelInferrer {
 		    	documentation = spec.documentation
 		    	packageName = spec.getPackageName
 		    	annotations += spec.toAnnotation(typeof(RunWith), typeof(JnarioRunner))
-		    	for(a : exampleGroup.annotations){
-			    	annotations += spec.toAnnotation(a.annotationType.qualifiedName)
-		    	}
+		    	addAnnotations(exampleGroup)
 		    	annotations += spec.toAnnotation(typeof(Named), exampleGroup.javaClassAnnotationValue)
 				for (element : exampleGroup.elements) {
 			        switch element {
@@ -89,9 +92,7 @@ class SpecJvmModelInferrer extends AbstractModelInferrer {
 			              documentation = element.documentation
 			              annotations += spec.toAnnotation(typeof(Named), element.getName)
 			              annotations += element.toAnnotation(typeof(Test))
-			              for(a : element.annotations.concat(element.annotationInfo?.annotations)){
-			    			annotations += element.toAnnotation(a.annotationType.qualifiedName)
-		    			  }
+			              addAnnotations(element)
 			              body = element.body
 			            ]
 			            method.exceptions += typeof(Exception).getTypeForName(element)
@@ -112,9 +113,7 @@ class SpecJvmModelInferrer extends AbstractModelInferrer {
 			              for (p : element.parameters) {
                				 parameters += p.toParameter(p.name, p.parameterType)
               			  }
-			              for(a : element.annotations.concat(element.annotationInfo?.annotations)){
-			    			annotations += element.toAnnotation(a.annotationType.qualifiedName)
-		    			  }
+              			  addAnnotations(element)
 			              body = element.expression
 			            ]
 			            method.exceptions += typeof(Exception).getTypeForName(element)
@@ -125,6 +124,14 @@ class SpecJvmModelInferrer extends AbstractModelInferrer {
 				}
 			])
 		}
+	}
+	
+	def addAnnotations(JvmAnnotationTarget target, Member member){
+		var result = member.annotations as Iterable<XAnnotation>
+		if(member.annotationInfo != null){
+			result = concat(result, member.annotationInfo.annotations)
+		}
+		result.translateAnnotationsTo(target)
 	}
 	
 	def getTypeProxy(EObject  pointer) {

@@ -16,8 +16,6 @@ import org.eclipse.xtext.junit4.GlobalRegistries;
 import org.eclipse.xtext.junit4.GlobalRegistries.GlobalStateMemento;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.util.Files;
-import org.junit.Assert;
-import org.junit.experimental.results.ResultMatchers;
 import org.junit.runner.Description;
 import org.junit.runner.Runner;
 import org.junit.runner.notification.Failure;
@@ -26,7 +24,6 @@ import org.junit.runner.notification.RunNotifier;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Maps;
 import com.google.inject.Inject;
-import com.sun.source.tree.AssertTree;
 
 import de.bmw.carit.jnario.spec.SpecStandaloneSetup;
 import de.bmw.carit.jnario.spec.spec.SpecFile;

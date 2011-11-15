@@ -290,17 +290,17 @@
   
      <extension point="org.eclipse.core.runtime.adapters">
      <factory 
-        class="de.bmw.carit.jnario.spec.ui.SpecExecutableExtensionFactory:de.bmw.carit.jnario.spec.ui.launching.JavaElementDelegateAdapterFactory"
+        class="de.bmw.carit.jnario.spec.ui.SpecExecutableExtensionFactory:de.bmw.carit.jnario.common.ui.launching.JavaElementDelegateAdapterFactory"
         adaptableType="org.eclipse.ui.IFileEditorInput">
         <adapter type="de.bmw.carit.jnario.common.ui.launching.JavaElementDelegate"/>
      </factory>
      <factory 
-        class="de.bmw.carit.jnario.spec.ui.SpecExecutableExtensionFactory:de.bmw.carit.jnario.spec.ui.launching.JavaElementDelegateAdapterFactory" 
+        class="de.bmw.carit.jnario.spec.ui.SpecExecutableExtensionFactory:de.bmw.carit.jnario.common.ui.launching.JavaElementDelegateAdapterFactory" 
         adaptableType="org.eclipse.core.resources.IResource">
         <adapter type="de.bmw.carit.jnario.common.ui.launching.JavaElementDelegate"/>
      </factory>
      <factory 
-        class="de.bmw.carit.jnario.spec.ui.SpecExecutableExtensionFactory:de.bmw.carit.jnario.spec.ui.launching.JavaElementDelegateAdapterFactory"
+        class="de.bmw.carit.jnario.spec.ui.SpecExecutableExtensionFactory:de.bmw.carit.jnario.common.ui.launching.JavaElementDelegateAdapterFactory"
         adaptableType="de.bmw.carit.jnario.common.ui.launching.JavaElementDelegate">
         <adapter type="org.eclipse.jdt.core.IJavaElement"/>
      </factory>
@@ -314,7 +314,7 @@
             helpContextId="org.eclipse.jdt.junit.launch_shortcut"
             class="de.bmw.carit.jnario.common.ui.launching.JUnitLaunchShortcut"
             modes="run, debug"
-            id="de.bmw.carit.jnario.spec.ui.launching.junitShortcut">
+            id="de.bmw.carit.jnario.common.ui.launching.junitShortcut">
          <contextualLaunch>
             <enablement>
                <with variable="selection">
@@ -352,7 +352,7 @@
       <shortcut
             class="de.bmw.carit.jnario.common.ui.launching.JUnitPDELaunchShortcut"
             icon="$nl$/icons/julaunchpgn.gif"
-            id="de.bmw.carit.jnario.spec.ui.launching.junitPdeShortcut"
+            id="de.bmw.carit.jnario.common.ui.launching.junitPdeShortcut"
             label="%launcher.junit.name"
             modes="run, debug">
          <contextualLaunch>

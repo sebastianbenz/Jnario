@@ -28,7 +28,6 @@ describe "Spec" {
 		val spec = '
 			package bootstrap
 									
-			import static de.bmw.carit.jnario.lib.JnarioMatchers.*
 			import static org.hamcrest.CoreMatchers.*
 			
 			describe "ExampleGroup" {
@@ -37,7 +36,7 @@ describe "Spec" {
 			
 				it "should be able to declare void helper methods"{
 					inc()
-					i.should(be(1))
+					i.should.be(1)
 				}
 				
 				def void inc(){
@@ -45,7 +44,7 @@ describe "Spec" {
 				} 
 				
 				it "should be able to declare helper methods with param and return type"{
-					inc2(i).should(be(1)) 
+					inc2(i).should.be(1) 
 				}
 				  
 				def inc2(int value){

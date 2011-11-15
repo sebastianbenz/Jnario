@@ -19,7 +19,7 @@ Import returns xtend2::XtendImport:
 		importedNamespace=QualifiedNameWithWildCard
 	)
 ;
-
+ 
 QualifiedNameWithWildCard :
 	QualifiedName  '.' '*';
 

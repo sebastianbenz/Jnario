@@ -4,7 +4,6 @@ import static org.junit.Assert.*
 import static de.bmw.carit.jnario.spec.tests.util.SpecExecutor.*
 import static org.junit.experimental.results.ResultMatchers.*
 import static org.hamcrest.CoreMatchers.*
-import static de.bmw.carit.jnario.lib.JnarioMatchers.*
 
 describe "HelperMethods" {
  
@@ -30,12 +29,11 @@ describe "HelperMethods" {
 			package bootstrap
 
 			import static org.hamcrest.CoreMatchers.*
-			import static de.bmw.carit.jnario.lib.JnarioMatchers.*
 			
 			describe "HelperMethods" {
 			
 				it "should wrap CoreMatchers#is"{
-					"MyString".should(be("MyString")) 
+					"MyString".should.be("MyString")
 				} 
 						
 			}

@@ -1,5 +1,6 @@
 package de.bmw.carit.jnario.spec.tests.util;
 
+import static com.google.common.collect.Iterables.filter;
 import static com.google.common.collect.Lists.newArrayList;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
@@ -18,6 +19,7 @@ import javax.tools.ToolProvider;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.resource.XtextResourceSet;
@@ -31,6 +33,7 @@ import org.junit.rules.TemporaryFolder;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.notification.Failure;
 
+import com.google.common.base.Predicate;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 
@@ -98,8 +101,14 @@ public class SpecExecutor {
 	}
 
 	private void validate(SpecFile spec) {
-		List<Issue> issues = validator.validate(spec.eResource(), CheckMode.NORMAL_AND_FAST, CancelIndicator.NullImpl);
-		assertTrue("Validation errors: " + issues, issues.isEmpty());
+		Iterable<Issue> issues = validator.validate(spec.eResource(), CheckMode.NORMAL_AND_FAST, CancelIndicator.NullImpl);
+		Iterable<Issue> onlyErrors = filter(issues, new Predicate<Issue>() {
+
+			public boolean apply(Issue input) {
+				return input.getSeverity() == Severity.ERROR;
+			}
+		});
+		assertFalse("Validation errors: " + issues, onlyErrors.iterator().hasNext());
 	}
 
 	private void configureOutlet() throws IOException {
@@ -146,7 +155,7 @@ public class SpecExecutor {
 		StringBuilder sb = new StringBuilder();
 		sb.append(tempFolder.getRoot().getAbsolutePath());
 		sb.append(File.separator);
-		sb.append(spec.getPackageName().replaceAll("\\.", File.separator));
+		sb.append(spec.getPackageName().replaceAll("\\.", File.separator + File.separator));
 		sb.append(File.separator);
 		sb.append(specClassName);
 		sb.append(".java");

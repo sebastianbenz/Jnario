@@ -7,4 +7,5 @@ Bundle-Vendor: BMW
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.junit;bundle-version="4.8.2",
  de.bmw.carit.jnario.lib;bundle-version="0.1.0",
- com.google.collect;bundle-version="1.0.0"
+ com.google.collect;bundle-version="1.0.0",
+ de.bmw.carit.jnario.spec.tests;bundle-version="0.1.0"
