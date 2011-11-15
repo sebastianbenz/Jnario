@@ -4,16 +4,25 @@
 
 package de.bmw.carit.jnario.spec.services;
 
-import com.google.inject.Singleton;
-import com.google.inject.Inject;
-
-import org.eclipse.xtext.*;
+import org.eclipse.xtext.Action;
+import org.eclipse.xtext.Alternatives;
+import org.eclipse.xtext.Assignment;
+import org.eclipse.xtext.CrossReference;
+import org.eclipse.xtext.Grammar;
+import org.eclipse.xtext.GrammarUtil;
+import org.eclipse.xtext.Group;
+import org.eclipse.xtext.Keyword;
+import org.eclipse.xtext.ParserRule;
+import org.eclipse.xtext.RuleCall;
+import org.eclipse.xtext.TerminalRule;
+import org.eclipse.xtext.service.AbstractElementFinder.AbstractGrammarElementFinder;
 import org.eclipse.xtext.service.GrammarProvider;
-import org.eclipse.xtext.service.AbstractElementFinder.*;
-
 import org.eclipse.xtext.xbase.annotations.services.XbaseWithAnnotationsGrammarAccess;
 import org.eclipse.xtext.xbase.services.XbaseGrammarAccess;
 import org.eclipse.xtext.xbase.services.XtypeGrammarAccess;
+
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
 @Singleton
 public class SpecGrammarAccess extends AbstractGrammarElementFinder {
@@ -326,6 +335,20 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cExpressionAssignment_2_3_1_5 = (Assignment)cGroup_2_3_1.eContents().get(5);
 		private final RuleCall cExpressionXBlockExpressionParserRuleCall_2_3_1_5_0 = (RuleCall)cExpressionAssignment_2_3_1_5.eContents().get(0);
 		
+		////XCastedExpression returns xbase::XExpression:
+		//
+		////	XInfixOperation (=>({xbase::XCastedExpression.target=current} 'as') type=JvmTypeReference)*
+		//
+		////;
+		//
+		////
+		//
+		////XInfixOperation returns xbase::XExpression:
+		//
+		////	XMemberFeatureCall  (=>({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|ValidID]) rightOperand=XMemberFeatureCall)*
+		//
+		////;
+		//
 		//Member:
 		//	{Member} annotations+=XAnnotation* ({Field.annotationInfo=current} (type=JvmTypeReference name=ValidID ("="
 		//	right=XExpression)?) | {Example.annotationInfo=current} (preamble="it"
@@ -702,6 +725,20 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		return getExampleGroupAccess().getRule();
 	}
 
+	////XCastedExpression returns xbase::XExpression:
+	//
+	////	XInfixOperation (=>({xbase::XCastedExpression.target=current} 'as') type=JvmTypeReference)*
+	//
+	////;
+	//
+	////
+	//
+	////XInfixOperation returns xbase::XExpression:
+	//
+	////	XMemberFeatureCall  (=>({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|ValidID]) rightOperand=XMemberFeatureCall)*
+	//
+	////;
+	//
 	//Member:
 	//	{Member} annotations+=XAnnotation* ({Field.annotationInfo=current} (type=JvmTypeReference name=ValidID ("="
 	//	right=XExpression)?) | {Example.annotationInfo=current} (preamble="it"

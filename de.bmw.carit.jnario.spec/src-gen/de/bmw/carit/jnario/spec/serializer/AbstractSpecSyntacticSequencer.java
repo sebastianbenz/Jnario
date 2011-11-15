@@ -1,8 +1,7 @@
 package de.bmw.carit.jnario.spec.serializer;
 
-import com.google.inject.Inject;
-import de.bmw.carit.jnario.spec.services.SpecGrammarAccess;
 import java.util.List;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
@@ -13,6 +12,10 @@ import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
 import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
+
+import com.google.inject.Inject;
+
+import de.bmw.carit.jnario.spec.services.SpecGrammarAccess;
 
 @SuppressWarnings("restriction")
 public class AbstractSpecSyntacticSequencer extends AbstractSyntacticSequencer {
@@ -30,12 +33,12 @@ public class AbstractSpecSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (SpecGrammarAccess) access;
 		match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a = new TokenAlias(true, true, grammarAccess.getXAnnotationElementValueAccess().getLeftParenthesisKeyword_7_0());
-		match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_p = new TokenAlias(false, true, grammarAccess.getXAnnotationElementValueAccess().getLeftParenthesisKeyword_7_0());
-		match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q = new GroupAlias(true, false, new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getRightParenthesisKeyword_3_2()));
-		match_XBlockExpression_SemicolonKeyword_2_1_q = new TokenAlias(true, false, grammarAccess.getXBlockExpressionAccess().getSemicolonKeyword_2_1());
-		match_XExpressionInClosure_SemicolonKeyword_1_1_q = new TokenAlias(true, false, grammarAccess.getXExpressionInClosureAccess().getSemicolonKeyword_1_1());
+		match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_p = new TokenAlias(true, false, grammarAccess.getXAnnotationElementValueAccess().getLeftParenthesisKeyword_7_0());
+		match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getRightParenthesisKeyword_3_2()));
+		match_XBlockExpression_SemicolonKeyword_2_1_q = new TokenAlias(false, true, grammarAccess.getXBlockExpressionAccess().getSemicolonKeyword_2_1());
+		match_XExpressionInClosure_SemicolonKeyword_1_1_q = new TokenAlias(false, true, grammarAccess.getXExpressionInClosureAccess().getSemicolonKeyword_1_1());
 		match_XParenthesizedExpression_LeftParenthesisKeyword_0_a = new TokenAlias(true, true, grammarAccess.getXParenthesizedExpressionAccess().getLeftParenthesisKeyword_0());
-		match_XParenthesizedExpression_LeftParenthesisKeyword_0_p = new TokenAlias(false, true, grammarAccess.getXParenthesizedExpressionAccess().getLeftParenthesisKeyword_0());
+		match_XParenthesizedExpression_LeftParenthesisKeyword_0_p = new TokenAlias(true, false, grammarAccess.getXParenthesizedExpressionAccess().getLeftParenthesisKeyword_0());
 	}
 	
 	@Override

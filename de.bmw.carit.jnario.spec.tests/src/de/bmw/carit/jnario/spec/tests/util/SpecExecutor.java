@@ -3,7 +3,6 @@ package de.bmw.carit.jnario.spec.tests.util;
 import static com.google.common.collect.Iterables.filter;
 import static com.google.common.collect.Lists.newArrayList;
 import static junit.framework.Assert.assertFalse;
-import static junit.framework.Assert.assertTrue;
 import static junit.framework.Assert.fail;
 
 import java.io.File;
@@ -33,6 +32,7 @@ import org.junit.rules.TemporaryFolder;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.notification.Failure;
 
+import com.google.common.base.Joiner;
 import com.google.common.base.Predicate;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
@@ -48,9 +48,10 @@ public class SpecExecutor {
 		SpecInjectorProvider injectorProvider = new SpecInjectorProvider();
 		try {
 			injectorProvider.setupRegistry();
-			Injector injector = injectorProvider.getInjector();
+			Injector injector = new TestSetup().createInjectorAndDoEMFRegistration();
 			
-			Resource resource = new XtextResourceSet().createResource(URI.createURI("dummy.spec"));
+			XtextResourceSet resourceSet = new XtextResourceSet();
+			Resource resource = resourceSet.createResource(URI.createURI("dummy.spec"));
 			try {
 				resource.load(new StringInputStream(content), Collections.emptyMap());
 			} catch (IOException e) {
@@ -63,8 +64,6 @@ public class SpecExecutor {
 		} finally {
 			injectorProvider.restoreRegistry();
 		}
-		
-		
 	}
 	
 
@@ -102,13 +101,18 @@ public class SpecExecutor {
 
 	private void validate(SpecFile spec) {
 		Iterable<Issue> issues = validator.validate(spec.eResource(), CheckMode.NORMAL_AND_FAST, CancelIndicator.NullImpl);
+		Iterable<Issue> onlyErrors = filterErrors(issues);
+		assertFalse("Validation errors\n" + Joiner.on("\n  ").join(issues), onlyErrors.iterator().hasNext());
+	}
+
+	public Iterable<Issue> filterErrors(Iterable<Issue> issues) {
 		Iterable<Issue> onlyErrors = filter(issues, new Predicate<Issue>() {
 
 			public boolean apply(Issue input) {
 				return input.getSeverity() == Severity.ERROR;
 			}
 		});
-		assertFalse("Validation errors: " + issues, onlyErrors.iterator().hasNext());
+		return onlyErrors;
 	}
 
 	private void configureOutlet() throws IOException {
@@ -148,7 +152,8 @@ public class SpecExecutor {
 		URLClassLoader classLoader = URLClassLoader
 				.newInstance(new URL[] { tempFolder.getRoot().toURI().toURL() });
 		String className = spec.getPackageName() + "." + specClassName;
-		return Class.forName(className, true, classLoader);
+		CompositeClassLoader compositeClassLoader = new CompositeClassLoader(classLoader);
+		return Class.forName(className, true, compositeClassLoader);
 	}
 
 	private String getGeneratedJavaClassName(SpecFile spec, String specClassName) {

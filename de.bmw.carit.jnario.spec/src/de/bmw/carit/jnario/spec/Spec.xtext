@@ -1,5 +1,6 @@
 grammar de.bmw.carit.jnario.spec.Spec with org.eclipse.xtext.xbase.annotations.XbaseWithAnnotations
 
+import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
 import "http://www.eclipse.org/xtext/Xtend2" as xtend2
 
@@ -31,6 +32,14 @@ ExampleGroup:
 '}'
 ;
 
+//XCastedExpression returns xbase::XExpression:
+//	XInfixOperation (=>({xbase::XCastedExpression.target=current} 'as') type=JvmTypeReference)*
+//;
+//
+//XInfixOperation returns xbase::XExpression:
+//	XMemberFeatureCall  (=>({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|ValidID]) rightOperand=XMemberFeatureCall)*
+//;
+
 Member :
 	{Member} annotations+=XAnnotation* 
 	(
@@ -52,6 +61,7 @@ Member :
 			(parameters+=Parameter (',' parameters+=Parameter)*)? ')'
 			expression=XBlockExpression)
 	 );
+
 
 Parameter:
 	annotations+=XAnnotation* 

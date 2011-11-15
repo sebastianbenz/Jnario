@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -23,9 +24,13 @@ import org.junit.runner.notification.RunNotifier;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Maps;
+import com.google.inject.Guice;
 import com.google.inject.Inject;
+import com.google.inject.Injector;
 
+import de.bmw.carit.jnario.spec.SpecRuntimeModule;
 import de.bmw.carit.jnario.spec.SpecStandaloneSetup;
+import de.bmw.carit.jnario.spec.spec.SpecFactory;
 import de.bmw.carit.jnario.spec.spec.SpecFile;
 import de.bmw.carit.jnario.tests.util.ClassPathUriProvider;
 import de.bmw.carit.jnario.tests.util.IUriProvider;
@@ -53,7 +58,7 @@ public class SpecTestRunner extends Runner {
 
 	protected void initializeRegistries() {
 		state = GlobalRegistries.makeCopyOfGlobalState();
-		new SpecStandaloneSetup().createInjectorAndDoEMFRegistration().injectMembers(this);
+		new TestSetup().createInjectorAndDoEMFRegistration().injectMembers(this);
 	}
 
 	@Override
@@ -73,8 +78,7 @@ public class SpecTestRunner extends Runner {
 					new Predicate<URI>() {
 
 						public boolean apply(URI uri) {
-							return uri.fileExtension().toLowerCase()
-									.equals(MODEL_EXTENSION);
+							return uri.fileExtension().toLowerCase().equals(MODEL_EXTENSION);
 						}
 
 					});
@@ -88,8 +92,6 @@ public class SpecTestRunner extends Runner {
 		return descriptions.keySet();
 	}
 
-
-
 	private String stripFileExtension(String name) {
 		return name.substring(0, name.length() - MODEL_EXTENSION.length() - 1);
 	}
@@ -98,7 +100,7 @@ public class SpecTestRunner extends Runner {
 	public void run(RunNotifier notifier) {
 		initializeRegistries();
 		try {
-			for (Entry<Description, URI> entry : descriptions.entrySet()) {
+			for (Entry<Description, URI> entry : allDescriptions()) {
 				Description description = entry.getKey();
 				notifier.fireTestStarted(description);
 				try {
@@ -114,9 +116,13 @@ public class SpecTestRunner extends Runner {
 		}
 	}
 
+	public Set<Entry<Description, URI>> allDescriptions() {
+		getDescription();
+		return descriptions.entrySet();
+	}
+
 	private void run(URI uri) {
 		assertThat(specExecutor.run(load(uri)), isSuccessful());
-		
 	}
 
 	protected SpecFile load(URI input) {

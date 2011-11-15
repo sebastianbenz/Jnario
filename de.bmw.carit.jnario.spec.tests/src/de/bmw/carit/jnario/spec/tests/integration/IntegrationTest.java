@@ -1,10 +1,13 @@
-package de.bmw.carit.jnario.spec.tests.unit.scoping;
+package de.bmw.carit.jnario.spec.tests.integration;
 
 import org.junit.runner.RunWith;
+
+import com.google.inject.Singleton;
 
 import de.bmw.carit.jnario.spec.tests.util.SpecTestRunner;
 
 @RunWith(SpecTestRunner.class)
-public class UnitTests {
+@Singleton
+public class IntegrationTest {
 
 }

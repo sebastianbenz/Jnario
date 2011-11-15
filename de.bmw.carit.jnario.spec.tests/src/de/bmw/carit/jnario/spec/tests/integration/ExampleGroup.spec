@@ -5,6 +5,10 @@ import static org.junit.Assert.*
 import static org.junit.experimental.results.ResultMatchers.*
 
 describe "Spec" {
+
+	it "dummy"{
+	
+	}
  	/*
 	it "should resolve target class"{
 		val spec = '
@@ -22,7 +26,7 @@ describe "Spec" {
 		'
 		assertThat(execute(spec), successful)
 	} 
-	*/
+	
 	
 	it "should be able to declare helper methods"{
 		val spec = '
@@ -55,6 +59,6 @@ describe "Spec" {
 		'
 		assertThat(execute(spec), successful)
 	}
-			
+	*/
 }
 	

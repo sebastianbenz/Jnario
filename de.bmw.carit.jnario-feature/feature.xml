@@ -28,9 +28,13 @@
       <import plugin="org.eclipse.xtext.xbase" version="2.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.xbase.lib"/>
       <import plugin="org.eclipse.xtext.xtend2.lib"/>
-      <import plugin="org.apache.commons.logging"/>
       <import plugin="org.junit" version="4.8.2" match="greaterOrEqual"/>
+      <import plugin="org.apache.commons.logging"/>
       <import plugin="com.google.collect" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.xtend2"/>
+      <import plugin="org.eclipse.xtext" version="2.1.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.xtend2" version="2.1.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.xbase.lib" version="2.1.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
@@ -41,14 +45,21 @@
          unpack="false"/>
 
    <plugin
-         id="de.bmw.carit.jnario.runner"
+         id="de.bmw.carit.jnario.spec"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="de.bmw.carit.jnario.spec"
+         id="de.bmw.carit.jnario.lib"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="de.bmw.carit.jnario.common"
          download-size="0"
          install-size="0"
          version="0.0.0"

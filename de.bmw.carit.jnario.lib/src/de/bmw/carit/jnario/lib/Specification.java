@@ -3,7 +3,6 @@ package de.bmw.carit.jnario.lib;
 import static com.google.common.collect.Iterables.addAll;
 import static java.util.Collections.singletonList;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 
