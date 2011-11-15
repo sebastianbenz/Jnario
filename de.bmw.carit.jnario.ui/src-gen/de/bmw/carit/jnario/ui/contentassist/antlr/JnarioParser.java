@@ -40,6 +40,8 @@ public class JnarioParser extends AbstractContentAssistParser {
 					put(grammarAccess.getImportAccess().getAlternatives_1(), "rule__Import__Alternatives_1");
 					put(grammarAccess.getBackgroundAccess().getAlternatives(), "rule__Background__Alternatives");
 					put(grammarAccess.getStepAccess().getAlternatives(), "rule__Step__Alternatives");
+					put(grammarAccess.getExampleHeadingCellAccess().getAlternatives_0(), "rule__ExampleHeadingCell__Alternatives_0");
+					put(grammarAccess.getExampleCellAccess().getAlternatives_0(), "rule__ExampleCell__Alternatives_0");
 					put(grammarAccess.getXAnnotationAccess().getAlternatives_3_1(), "rule__XAnnotation__Alternatives_3_1");
 					put(grammarAccess.getXAnnotationElementValueAccess().getAlternatives(), "rule__XAnnotationElementValue__Alternatives");
 					put(grammarAccess.getXAssignmentAccess().getAlternatives(), "rule__XAssignment__Alternatives");

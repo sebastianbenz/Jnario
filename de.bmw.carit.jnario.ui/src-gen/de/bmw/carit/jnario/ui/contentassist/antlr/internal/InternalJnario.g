@@ -2543,6 +2543,50 @@ finally {
 }
 
 
+rule__ExampleHeadingCell__Alternatives_0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getExampleHeadingCellAccess().getPIPETerminalRuleCall_0_0()); }
+	RULE_PIPE
+{ after(grammarAccess.getExampleHeadingCellAccess().getPIPETerminalRuleCall_0_0()); }
+)
+
+    |(
+{ before(grammarAccess.getExampleHeadingCellAccess().getPIPE_SPACESTerminalRuleCall_0_1()); }
+	RULE_PIPE_SPACES
+{ after(grammarAccess.getExampleHeadingCellAccess().getPIPE_SPACESTerminalRuleCall_0_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ExampleCell__Alternatives_0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getExampleCellAccess().getPIPETerminalRuleCall_0_0()); }
+	RULE_PIPE
+{ after(grammarAccess.getExampleCellAccess().getPIPETerminalRuleCall_0_0()); }
+)
+
+    |(
+{ before(grammarAccess.getExampleCellAccess().getPIPE_SPACESTerminalRuleCall_0_1()); }
+	RULE_PIPE_SPACES
+{ after(grammarAccess.getExampleCellAccess().getPIPE_SPACESTerminalRuleCall_0_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__XAnnotation__Alternatives_3_1
     @init {
 		int stackSize = keepStackSize();
@@ -5012,9 +5056,9 @@ rule__ExampleHeadingCell__Group__0__Impl
     }
 :
 (
-{ before(grammarAccess.getExampleHeadingCellAccess().getPIPETerminalRuleCall_0()); }
-	RULE_PIPE
-{ after(grammarAccess.getExampleHeadingCellAccess().getPIPETerminalRuleCall_0()); }
+{ before(grammarAccess.getExampleHeadingCellAccess().getAlternatives_0()); }
+(rule__ExampleHeadingCell__Alternatives_0)
+{ after(grammarAccess.getExampleHeadingCellAccess().getAlternatives_0()); }
 )
 
 ;
@@ -5141,9 +5185,9 @@ rule__ExampleCell__Group__0__Impl
     }
 :
 (
-{ before(grammarAccess.getExampleCellAccess().getPIPETerminalRuleCall_0()); }
-	RULE_PIPE
-{ after(grammarAccess.getExampleCellAccess().getPIPETerminalRuleCall_0()); }
+{ before(grammarAccess.getExampleCellAccess().getAlternatives_0()); }
+(rule__ExampleCell__Alternatives_0)
+{ after(grammarAccess.getExampleCellAccess().getAlternatives_0()); }
 )
 
 ;
@@ -18687,9 +18731,11 @@ RULE_AND_TEXT : 'And ' RULE_MNL;
 
 RULE_EXAMPLE_TEXT : 'Examples' RULE_COLON RULE_MNL;
 
-RULE_PIPE : '|' RULE_SPACES;
+RULE_PIPE : '|';
 
-RULE_EXAMPLE_ROW_END : RULE_PIPE '\r'? '\n';
+RULE_PIPE_SPACES : RULE_PIPE (' '|'\t')+;
+
+RULE_EXAMPLE_ROW_END : (RULE_PIPE|RULE_PIPE_SPACES) '\r'? '\n';
 
 RULE_VISIBILITY : ('private'|'public'|'protected');
 
@@ -18699,7 +18745,7 @@ fragment RULE_TEXT_AND_NL : ~(('\r'|'\n'|'\\'))* RULE_NL;
 
 fragment RULE_MNL : RULE_TEXT_MULTI_LINE* RULE_TEXT_AND_NL;
 
-fragment RULE_COLON : (' '|'\t')* ':';
+fragment RULE_COLON : RULE_SPACES ':';
 
 fragment RULE_NL : '\r'? '\n'?;
 

@@ -1197,23 +1197,28 @@ ruleExampleHeadingCell returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(this_PIPE_0=RULE_PIPE
+((this_PIPE_0=RULE_PIPE
     { 
-    newLeafNode(this_PIPE_0, grammarAccess.getExampleHeadingCellAccess().getPIPETerminalRuleCall_0()); 
+    newLeafNode(this_PIPE_0, grammarAccess.getExampleHeadingCellAccess().getPIPETerminalRuleCall_0_0()); 
     }
-(
+
+    |this_PIPE_SPACES_1=RULE_PIPE_SPACES
+    { 
+    newLeafNode(this_PIPE_SPACES_1, grammarAccess.getExampleHeadingCellAccess().getPIPE_SPACESTerminalRuleCall_0_1()); 
+    }
+)(
 (
 		{ 
 	        newCompositeNode(grammarAccess.getExampleHeadingCellAccess().getNameValidIDParserRuleCall_1_0()); 
 	    }
-		lv_name_1_0=ruleValidID		{
+		lv_name_2_0=ruleValidID		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getExampleHeadingCellRule());
 	        }
        		set(
        			$current, 
        			"name",
-        		lv_name_1_0, 
+        		lv_name_2_0, 
         		"ValidID");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -1283,23 +1288,28 @@ ruleExampleCell returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(this_PIPE_0=RULE_PIPE
+((this_PIPE_0=RULE_PIPE
     { 
-    newLeafNode(this_PIPE_0, grammarAccess.getExampleCellAccess().getPIPETerminalRuleCall_0()); 
+    newLeafNode(this_PIPE_0, grammarAccess.getExampleCellAccess().getPIPETerminalRuleCall_0_0()); 
     }
-(
+
+    |this_PIPE_SPACES_1=RULE_PIPE_SPACES
+    { 
+    newLeafNode(this_PIPE_SPACES_1, grammarAccess.getExampleCellAccess().getPIPE_SPACESTerminalRuleCall_0_1()); 
+    }
+)(
 (
 		{ 
 	        newCompositeNode(grammarAccess.getExampleCellAccess().getNameXExpressionParserRuleCall_1_0()); 
 	    }
-		lv_name_1_0=ruleXExpression		{
+		lv_name_2_0=ruleXExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getExampleCellRule());
 	        }
        		set(
        			$current, 
        			"name",
-        		lv_name_1_0, 
+        		lv_name_2_0, 
         		"XExpression");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -6336,9 +6346,11 @@ RULE_AND_TEXT : 'And ' RULE_MNL;
 
 RULE_EXAMPLE_TEXT : 'Examples' RULE_COLON RULE_MNL;
 
-RULE_PIPE : '|' RULE_SPACES;
+RULE_PIPE : '|';
 
-RULE_EXAMPLE_ROW_END : RULE_PIPE '\r'? '\n';
+RULE_PIPE_SPACES : RULE_PIPE (' '|'\t')+;
+
+RULE_EXAMPLE_ROW_END : (RULE_PIPE|RULE_PIPE_SPACES) '\r'? '\n';
 
 RULE_VISIBILITY : ('private'|'public'|'protected');
 
@@ -6348,7 +6360,7 @@ fragment RULE_TEXT_AND_NL : ~(('\r'|'\n'|'\\'))* RULE_NL;
 
 fragment RULE_MNL : RULE_TEXT_MULTI_LINE* RULE_TEXT_AND_NL;
 
-fragment RULE_COLON : (' '|'\t')* ':';
+fragment RULE_COLON : RULE_SPACES ':';
 
 fragment RULE_NL : '\r'? '\n'?;
 

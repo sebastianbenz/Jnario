@@ -5,18 +5,23 @@ import com.google.common.collect.Sets;
 import com.google.common.collect.UnmodifiableIterator;
 import com.google.inject.Inject;
 import de.bmw.carit.jnario.jnario.Code;
+import de.bmw.carit.jnario.jnario.Examples;
 import de.bmw.carit.jnario.jnario.Jnario;
 import de.bmw.carit.jnario.jnario.Scenario;
 import de.bmw.carit.jnario.jnario.Step;
 import de.bmw.carit.jnario.naming.JavaNameProvider;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
+import org.eclipse.xtext.common.types.JvmConstructor;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.JvmField;
+import org.eclipse.xtext.common.types.JvmFormalParameter;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmMember;
 import org.eclipse.xtext.common.types.JvmOperation;
@@ -26,13 +31,17 @@ import org.eclipse.xtext.util.IAcceptor;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
+import org.eclipse.xtext.xbase.compiler.ImportManager;
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.eclipse.xtext.xbase.lib.CollectionExtensions;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
+import org.eclipse.xtext.xtend2.lib.StringConcatenation;
 
 /**
  * <p>Infers a JVM model from the source model.</p>
@@ -69,38 +78,101 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
   protected void _infer(final Jnario jnario, final IAcceptor<JvmDeclaredType> acceptor, final boolean isPrelinkingPhase) {
     EList<Scenario> _scenarios = jnario.getScenarios();
     for (final Scenario scenario : _scenarios) {
-      String _name = scenario.getName();
-      String _javaClassName = this._javaNameProvider.getJavaClassName(_name);
-      final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
-          public void apply(final JvmGenericType it) {
-            {
-              EList<JvmAnnotationReference> _annotations = it.getAnnotations();
-              JvmAnnotationReference _annotation = JnarioJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(scenario, org.junit.runner.RunWith.class, de.bmw.carit.jnario.runner.ScenarioRunner.class);
-              CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
-              String _packageName = jnario.getPackageName();
-              it.setPackageName(_packageName);
-              String _documentation = JnarioJvmModelInferrer.this._jvmTypesBuilder.getDocumentation(scenario);
-              JnarioJvmModelInferrer.this._jvmTypesBuilder.setDocumentation(it, _documentation);
-              JnarioJvmModelInferrer.this.generateVariables(scenario, it);
-              EList<Step> _steps = scenario.getSteps();
-              for (final Step step : _steps) {
-                JnarioJvmModelInferrer.this.transform(step, it);
+      {
+        String _name = jnario.getName();
+        String _javaClassName = this._javaNameProvider.getJavaClassName(_name);
+        String _name_1 = scenario.getName();
+        String _javaClassName_1 = this._javaNameProvider.getJavaClassName(_name_1);
+        String _operator_plus = StringExtensions.operator_plus(_javaClassName, _javaClassName_1);
+        final String className = _operator_plus;
+        final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
+            public void apply(final JvmGenericType it) {
+              {
+                EList<JvmAnnotationReference> _annotations = it.getAnnotations();
+                JvmAnnotationReference _annotation = JnarioJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(scenario, org.junit.runner.RunWith.class, de.bmw.carit.jnario.runner.ScenarioRunner.class);
+                CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
+                String _packageName = jnario.getPackageName();
+                it.setPackageName(_packageName);
+                String _documentation = JnarioJvmModelInferrer.this._jvmTypesBuilder.getDocumentation(scenario);
+                JnarioJvmModelInferrer.this._jvmTypesBuilder.setDocumentation(it, _documentation);
+                HashMap<String,JvmTypeReference> _generateVariables = JnarioJvmModelInferrer.this.generateVariables(scenario);
+                final HashMap<String,JvmTypeReference> variables = _generateVariables;
+                Set<String> _keySet = variables.keySet();
+                for (final String variable : _keySet) {
+                  {
+                    JvmTypeReference _get = variables.get(variable);
+                    JvmTypeReference type = _get;
+                    EList<JvmMember> _members = it.getMembers();
+                    JvmField _field = JnarioJvmModelInferrer.this._jvmTypesBuilder.toField(scenario, variable, type);
+                    CollectionExtensions.<JvmField>operator_add(_members, _field);
+                  }
+                }
+                EList<Examples> _examples = scenario.getExamples();
+                boolean _isEmpty = _examples.isEmpty();
+                boolean _operator_not = BooleanExtensions.operator_not(_isEmpty);
+                if (_operator_not) {
+                  {
+                    final Procedure1<JvmConstructor> _function = new Procedure1<JvmConstructor>() {
+                        public void apply(final JvmConstructor it) {
+                          Set<String> _keySet = variables.keySet();
+                          for (final String variable : _keySet) {
+                            {
+                              JvmTypeReference _get = variables.get(variable);
+                              JvmTypeReference type = _get;
+                              EList<JvmFormalParameter> _parameters = it.getParameters();
+                              JvmFormalParameter _parameter = JnarioJvmModelInferrer.this._jvmTypesBuilder.toParameter(scenario, variable, type);
+                              CollectionExtensions.<JvmFormalParameter>operator_add(_parameters, _parameter);
+                            }
+                          }
+                        }
+                      };
+                    JvmConstructor _constructor = JnarioJvmModelInferrer.this._jvmTypesBuilder.toConstructor(scenario, className, _function);
+                    JvmConstructor constructor = _constructor;
+                    final Function1<ImportManager,StringConcatenation> _function_1 = new Function1<ImportManager,StringConcatenation>() {
+                        public StringConcatenation apply(final ImportManager it) {
+                          StringConcatenation _builder = new StringConcatenation();
+                          {
+                            Set<String> _keySet = variables.keySet();
+                            for(final String variable : _keySet) {
+                              _builder.append("this.");
+                              _builder.append(variable, "");
+                              _builder.append(" = ");
+                              _builder.append(variable, "");
+                              _builder.newLineIfNotEmpty();
+                            }
+                          }
+                          return _builder;
+                        }
+                      };
+                    JnarioJvmModelInferrer.this._jvmTypesBuilder.setBody(constructor, _function_1);
+                    EList<JvmMember> _members_1 = it.getMembers();
+                    CollectionExtensions.<JvmConstructor>operator_add(_members_1, constructor);
+                  }
+                }
+                EList<Step> _steps = scenario.getSteps();
+                for (final Step step : _steps) {
+                  JnarioJvmModelInferrer.this.transform(step, it);
+                }
               }
             }
-          }
-        };
-      JvmGenericType _class = this._jvmTypesBuilder.toClass(scenario, _javaClassName, _function);
-      acceptor.accept(_class);
+          };
+        JvmGenericType _class = this._jvmTypesBuilder.toClass(scenario, className, _function);
+        acceptor.accept(_class);
+      }
     }
   }
   
-  public void generateVariables(final Scenario scenario, final JvmGenericType inferredJvmType) {
+  public HashMap<String,JvmTypeReference> generateVariables(final Scenario scenario) {
+    HashMap<String,JvmTypeReference> _xblockexpression = null;
+    {
       TreeIterator<EObject> _eAllContents = scenario.eAllContents();
       Iterator<EObject> eAllContents = _eAllContents;
       UnmodifiableIterator<XVariableDeclaration> _filter = Iterators.<XVariableDeclaration>filter(eAllContents, org.eclipse.xtext.xbase.XVariableDeclaration.class);
       UnmodifiableIterator<XVariableDeclaration> allVariables = _filter;
       HashSet<String> _newHashSet = Sets.<String>newHashSet("");
       HashSet<String> declaredVariables = _newHashSet;
+      HashMap<String,JvmTypeReference> _hashMap = new HashMap<String,JvmTypeReference>();
+      HashMap<String,JvmTypeReference> variablesMap = _hashMap;
       boolean _hasNext = allVariables.hasNext();
       Boolean _xwhileexpression = _hasNext;
       while (_xwhileexpression) {
@@ -134,10 +206,8 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
               }
               boolean _operator_notEquals_2 = ObjectExtensions.operator_notEquals(type, null);
               if (_operator_notEquals_2) {
-                EList<JvmMember> _members = inferredJvmType.getMembers();
                 String _simpleName = currentDec.getSimpleName();
-                JvmField _field = this._jvmTypesBuilder.toField(scenario, _simpleName, type);
-                CollectionExtensions.<JvmField>operator_add(_members, _field);
+                variablesMap.put(_simpleName, type);
               }
             }
           }
@@ -145,6 +215,9 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
         boolean _hasNext_1 = allVariables.hasNext();
         _xwhileexpression = _hasNext_1;
       }
+      _xblockexpression = (variablesMap);
+    }
+    return _xblockexpression;
   }
   
   public Boolean transform(final Step step, final JvmGenericType inferredJvmType) {
@@ -181,6 +254,14 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
       _xifexpression = _xblockexpression;
     }
     return _xifexpression;
+  }
+  
+  public Object generateExampleConstructor() {
+    return null;
+  }
+  
+  public Object generateExampleClass() {
+    return null;
   }
   
   public void infer(final EObject jnario, final IAcceptor<JvmDeclaredType> acceptor, final boolean isPrelinkingPhase) {

@@ -90,7 +90,7 @@ ExampleHeading:
 ;
  
 ExampleHeadingCell returns xbase::XVariableDeclaration:
-	PIPE name=ValidID 
+	(PIPE | PIPE_SPACES) name=ValidID 
 ;
 
 ExampleRow:
@@ -98,7 +98,7 @@ ExampleRow:
 ;
 
 ExampleCell:
-	PIPE name=XExpression
+	(PIPE | PIPE_SPACES) name=XExpression
 ;
 
 terminal FEATURE_TEXT: 'Feature' COLON MNL;
@@ -110,8 +110,9 @@ terminal THEN_TEXT: 'Then ' MNL;
 terminal AND_TEXT: 'And ' MNL;
 terminal EXAMPLE_TEXT: 'Examples' COLON MNL;
 
-terminal PIPE : '|' SPACES;
-terminal EXAMPLE_ROW_END: PIPE '\r'? '\n';
+terminal PIPE : '|';
+terminal PIPE_SPACES: PIPE (' '|'\t')+;
+terminal EXAMPLE_ROW_END: (PIPE | PIPE_SPACES) '\r'? '\n';
 
 
 terminal VISIBILITY: 'private' | 'public' | 'protected';
@@ -119,6 +120,6 @@ terminal VISIBILITY: 'private' | 'public' | 'protected';
 terminal fragment TEXT_MULTI_LINE: !('\r'|'\n')* '\\' NL;
 terminal fragment TEXT_AND_NL: !('\r'|'\n'|'\\')* NL;
 terminal fragment MNL: (TEXT_MULTI_LINE)* TEXT_AND_NL;
-terminal fragment COLON: (' '|'\t')* ':';
+terminal fragment COLON: SPACES ':';
 terminal fragment NL: '\r'? '\n'?;
 terminal fragment SPACES: (' '|'\t')*;
