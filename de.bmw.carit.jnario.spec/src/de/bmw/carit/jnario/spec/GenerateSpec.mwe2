@@ -67,9 +67,11 @@ Workflow {
 
             // The antlr parser generator fragment.
             fragment = parser.antlr.XtextAntlrGeneratorFragment {
-            //  options = {
-            //      backtrack = true
-            //  }
+              options = {
+                  //backtrack = true
+                  
+              }
+              antlrParam = "-Xconversiontimeout" antlrParam = "10000"
             }
 
             // java-based API for validation

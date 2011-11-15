@@ -1,13 +1,17 @@
 package de.bmw.carit.jnario.lib;
 
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.IsInstanceOf.instanceOf;
 
 import java.util.Collections;
 
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.hamcrest.Description;
+import org.hamcrest.Factory;
 import org.hamcrest.Matcher;
 import org.hamcrest.StringDescription;
+import org.hamcrest.core.Is;
 import org.junit.Assert;
 
 
@@ -28,10 +32,43 @@ public class JnarioObjectExtensions extends ObjectExtensions{
 	public static <T> void should(T actual, Matcher<T> matcher) {
 		Assert.assertThat(actual, matcher);
 	}
+	public static <T> void should(T expected, T value) {
+		Assert.assertEquals(expected, value);
+	}
+	
+    @Factory
+    public static <T> Matcher<T> be(Matcher<T> matcher) {
+        return new Is<T>(matcher);
+    }
+
+    /**
+     * This is a shortcut to the frequently used is(equalTo(x)).
+     *
+     * eg. assertThat(cheese, is(equalTo(smelly)))
+     * vs  assertThat(cheese, is(smelly))
+     */
+    @Factory
+    public static <T> Matcher<T> be(T value) {
+        return is(equalTo(value));
+    }
+
+    /**
+     * This is a shortcut to the frequently used is(instanceOf(SomeClass.class)).
+     *
+     * eg. assertThat(cheese, is(instanceOf(Cheddar.class)))
+     * vs  assertThat(cheese, is(Cheddar.class))
+     */
+    @Factory
+    public static Matcher<Object> be(Class<?> type) {
+        return is(instanceOf(type));
+    }
+    
+	/*
 	
 	public static <T> Specification<T> should(T input) {
 		return new Specification<T>(input, Collections.<Step> emptyList());
 	}
+	
 	
 	public static <T> Specification<T> be(Specification<T> actual, Matcher<T> matcher) {
 		boolean result = matcher.matches(actual.getInput());
@@ -67,5 +104,5 @@ public class JnarioObjectExtensions extends ObjectExtensions{
 	public static <T> Specification<T> be(Specification<T> actual) {
 		return actual;
 	}
-	
+	*/
 }

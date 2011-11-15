@@ -7,6 +7,7 @@ import org.eclipse.xtext.generator.OutputConfigurationProvider;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
+import org.eclipse.xtext.xbase.impl.FeatureCallToJavaMapping;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.scoping.featurecalls.StaticMethodsFeatureForTypeProvider.ExtensionClassNameProvider;
 import org.eclipse.xtext.xtend2.compiler.Xtend2OutputConfigurationProvider;
@@ -17,6 +18,7 @@ import com.google.inject.name.Names;
 
 import de.bmw.carit.jnario.common.scoping.JnarioExtensionClassNameProvider;
 import de.bmw.carit.jnario.spec.jvmmodel.ExtendedJvmTypesBuilder;
+import de.bmw.carit.jnario.spec.jvmmodel.SpecFeatureCallToJavaMapping;
 import de.bmw.carit.jnario.spec.scoping.SpecImportedNamespaceScopeProvider;
 import de.bmw.carit.jnario.spec.scoping.SpecScopeProvider;
 
@@ -54,6 +56,10 @@ public class SpecRuntimeModule extends de.bmw.carit.jnario.spec.AbstractSpecRunt
 	@Override
 	public Class<? extends XtextResource> bindXtextResource() {
 		return Xtend2Resource.class;
+	}
+	
+	public Class<? extends FeatureCallToJavaMapping> bindFeatureCallToJavaMapping(){
+		return SpecFeatureCallToJavaMapping.class;
 	}
 	
 	

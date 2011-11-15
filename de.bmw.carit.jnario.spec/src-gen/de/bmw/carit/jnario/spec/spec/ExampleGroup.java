@@ -2,11 +2,11 @@
  * <copyright>
  * </copyright>
  *
-
  */
 package de.bmw.carit.jnario.spec.spec;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 
 /**

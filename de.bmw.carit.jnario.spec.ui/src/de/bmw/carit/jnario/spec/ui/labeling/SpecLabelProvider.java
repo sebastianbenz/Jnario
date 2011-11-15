@@ -3,8 +3,11 @@
 */
 package de.bmw.carit.jnario.spec.ui.labeling;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.xtext.naming.SimpleNameProvider;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
+import org.eclipse.xtext.util.SimpleAttributeResolver;
 
 import com.google.inject.Inject;
 
@@ -18,6 +21,10 @@ public class SpecLabelProvider extends DefaultEObjectLabelProvider {
 	@Inject
 	public SpecLabelProvider(AdapterFactoryLabelProvider delegate) {
 		super(delegate);
+	}
+	
+	String text(EObject ele){
+		return ele.eClass().getName() + " " + SimpleAttributeResolver.NAME_RESOLVER.apply(ele);
 	}
 
 /*
