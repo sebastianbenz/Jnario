@@ -304,7 +304,7 @@
             helpContextId="org.eclipse.jdt.junit.launch_shortcut"
             class="de.bmw.carit.jnario.common.ui.launching.JUnitLaunchShortcut"
             modes="run, debug"
-            id="de.bmw.carit.jnario.ui.launching.junitShortcut">
+            id="de.bmw.carit.jnario.common.ui.launching.JnariojunitShortcut">
          <contextualLaunch>
             <enablement>
                <with variable="selection">
@@ -317,8 +317,11 @@
 			                <test property="org.eclipse.jdt.core.isInJavaProject"/>
 			                <test property="org.eclipse.jdt.core.hasTypeOnClasspath" value="junit.framework.Test"/>
 			                <test property="org.eclipse.jdt.junit.canLaunchAsJUnit" forcePluginActivation="true"/>
-			             </adapt>
+			             </adapt>	
 		               </adapt>
+		               <adapt type="org.eclipse.core.resources.IResource">
+						    <test property="org.eclipse.core.resources.name" value="*.jnario"/>
+					   </adapt>
 		             </and>
 		          </iterate>
                </with>
@@ -342,7 +345,7 @@
       <shortcut
             class="de.bmw.carit.jnario.common.ui.launching.JUnitPDELaunchShortcut"
             icon="$nl$/icons/julaunchpgn.gif"
-            id="de.bmw.carit.jnario.ui.launching.junitPdeShortcut"
+            id="de.bmw.carit.jnario.common.ui.launching.JnariojunitPdeShortcut"
             label="%launcher.junit.name"
             modes="run, debug">
          <contextualLaunch>
@@ -359,6 +362,9 @@
 		                   <test property="org.eclipse.jdt.junit.canLaunchAsJUnit" forcePluginActivation="true"/>
 		                 </adapt>
                        </adapt>
+                       <adapt type="org.eclipse.core.resources.IResource">
+						   <test property="org.eclipse.core.resources.name" value="*.jnario"/>
+					   </adapt>
                      </and>
 		          </iterate>
                </with>
@@ -376,7 +382,7 @@
                mode="debug">
          </description>
       </shortcut>
-    </extension>  
+    </extension>   
     
     <extension
          point="org.eclipse.ui.bindings">

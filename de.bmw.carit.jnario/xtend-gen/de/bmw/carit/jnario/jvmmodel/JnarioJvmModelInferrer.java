@@ -131,13 +131,16 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
                     final Function1<ImportManager,StringConcatenation> _function_1 = new Function1<ImportManager,StringConcatenation>() {
                         public StringConcatenation apply(final ImportManager it) {
                           StringConcatenation _builder = new StringConcatenation();
-                          _builder.append("\u00B4FOR variable: variables.keySet\u00AA");
-                          _builder.newLine();
-                          _builder.append("\t");
-                          _builder.append("this.\u00B4variable\u00AA = \u00B4variable\u00AA");
-                          _builder.newLine();
-                          _builder.append("\u00B4ENDFOR\u00AA");
-                          _builder.newLine();
+                          {
+                            Set<String> _keySet = variables.keySet();
+                            for(final String variable : _keySet) {
+                              _builder.append("this.");
+                              _builder.append(variable, "");
+                              _builder.append(" = ");
+                              _builder.append(variable, "");
+                              _builder.newLineIfNotEmpty();
+                            }
+                          }
                           return _builder;
                         }
                       };

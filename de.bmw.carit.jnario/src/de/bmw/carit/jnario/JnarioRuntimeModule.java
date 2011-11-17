@@ -7,6 +7,7 @@ import org.eclipse.xtext.generator.OutputConfigurationProvider;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
+import org.eclipse.xtext.xbase.impl.FeatureCallToJavaMapping;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.scoping.featurecalls.StaticMethodsFeatureForTypeProvider.ExtensionClassNameProvider;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
@@ -18,6 +19,7 @@ import com.google.inject.name.Names;
 import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder;
 import de.bmw.carit.jnario.common.scoping.JnarioExtensionClassNameProvider;
 import de.bmw.carit.jnario.generator.JnarioCompiler;
+import de.bmw.carit.jnario.jvmmodel.JnarioFeatureCallToJavaMapping;
 import de.bmw.carit.jnario.scoping.JnarioImportedNamespaceScopeProvider;
 import de.bmw.carit.jnario.scoping.JnarioScopeProvider;
 import de.bmw.carit.jnario.typing.JnarioTypeProvider;
@@ -58,5 +60,9 @@ public class JnarioRuntimeModule extends de.bmw.carit.jnario.AbstractJnarioRunti
 	
 	public Class<? extends ExtensionClassNameProvider> bindExtensionClassNameProvider(){
 		return JnarioExtensionClassNameProvider.class;
+	}
+	
+	public Class<? extends FeatureCallToJavaMapping> bindFeatureCallToJavaMapping(){
+		return JnarioFeatureCallToJavaMapping.class;
 	}
 }

@@ -40,10 +40,10 @@ public class JnarioEditor extends XtextEditor {
 //				return;
 //			}
 			
-//			String trimedLine = event.lineText.trim();
-//			if(trimedLine.isEmpty()){
-//				event.lineBackground = getBackgroundColor();
-//			}
+			String trimedLine = event.lineText.trim();
+			if(trimedLine.isEmpty()){
+				event.lineBackground = getBackgroundColor();
+			}
 			
 //			int currentLine = event.lineOffset;
 //			if (isNotCode(currentLine)) {

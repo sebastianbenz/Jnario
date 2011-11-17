@@ -5,6 +5,7 @@ Bundle-Vendor: BMW Car IT
 Bundle-Version: 0.1.0.qualifier
 Bundle-SymbolicName: de.bmw.carit.jnario.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
+Bundle-Localization: plugin
 Require-Bundle: de.bmw.carit.jnario;visibility:=reexport,
  org.eclipse.xtext.ui,
  org.eclipse.ui.editors;bundle-version="3.5.0",
@@ -25,7 +26,7 @@ Import-Package: org.apache.commons.logging,
  org.eclipse.jdt.core,
  org.eclipse.xtext.xtend2.validation,
  org.eclipse.xtext.xtend2.xtend2
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: de.bmw.carit.jnario.ui.contentassist.antlr,
  de.bmw.carit.jnario.ui.internal
 Bundle-Activator: de.bmw.carit.jnario.ui.internal.JnarioActivator

@@ -3,7 +3,7 @@ generate jnario "http://www.bmw.de/carit/jnario/Jnario"
 
 import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
 import "http://www.eclipse.org/xtext/Xtend2" as xtend2
-import "http://www.eclipse.org/xtext/common/JavaVMTypes" as jvmTypes
+import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
 
 Jnario:
 	('package' packageName=QualifiedName)?
@@ -13,10 +13,10 @@ Jnario:
 	scenarios+=Scenario+
 ;
 
-Import returns xtend2::XtendImport: 
+Import returns xtend2::XtendImport:
 	'import' (
-		(static?='static' extension?='extension'? importedType=[jvmTypes::JvmType|QualifiedName] '.' '*') | 
-		importedType=[jvmTypes::JvmType|QualifiedName] | 
+		(static?='static' extension?='extension'? importedType=[types::JvmType|QualifiedName] '.' '*') | 
+		importedType=[types::JvmType|QualifiedName] | 
 		importedNamespace=QualifiedNameWithWildCard
 	)
 ; 
@@ -100,6 +100,38 @@ ExampleRow:
 ExampleCell:
 	(PIPE | PIPE_SPACES) name=XExpression
 ;
+
+XMemberFeatureCall returns xbase::XExpression:
+	XPrimaryExpression
+	(=>({xbase::XAssignment.assignable=current} '.' feature=[types::JvmIdentifiableElement|ValidID] OpSingleAssign) value=XAssignment
+	|=>({xbase::XMemberFeatureCall.memberCallTarget=current} feature=[types::JvmIdentifiableElement|ValidID]) memberCallArguments+=XExpression
+	|=>({xbase::XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|spreading?="*.")) 
+		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
+		feature=[types::JvmIdentifiableElement|ValidID] (
+			=>explicitOperationCall?='(' 
+				(
+				    memberCallArguments+=XShortClosure
+				  |	memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
+				)? 
+			')')?
+			=>memberCallArguments+=XClosure?
+		)*;
+
+	
+XFeatureCall returns xbase::XFeatureCall:
+	{xbase::XFeatureCall}
+	(=> feature=[types::JvmIdentifiableElement|IdOrSuper]  featureCallArguments+=XExpression
+	|((declaringType=[types::JvmDeclaredType|StaticQualifier])?
+	('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')? 
+	feature=[types::JvmIdentifiableElement|IdOrSuper] 
+	(=>explicitOperationCall?='(' 
+		(
+		    featureCallArguments+=XShortClosure
+		  |	featureCallArguments+=XExpression (',' featureCallArguments+=XExpression)*
+		)? 
+	')')?
+	=>featureCallArguments+=XClosure?));
+
 
 terminal FEATURE_TEXT: 'Feature' COLON MNL;
 terminal BACKGROUND_TEXT: 'Background' COLON MNL;

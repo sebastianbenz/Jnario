@@ -329,6 +329,9 @@
 			                <test property="org.eclipse.jdt.junit.canLaunchAsJUnit" forcePluginActivation="true"/>
 			             </adapt>
 		               </adapt>
+		               <adapt type="org.eclipse.core.resources.IResource">
+							<test property="org.eclipse.core.resources.name" value="*.spec"/>
+					   </adapt>
 		             </and>
 		          </iterate>
                </with>
@@ -367,8 +370,11 @@
 		                   <test property="org.eclipse.jdt.core.isInJavaProjectWithNature" value="org.eclipse.pde.PluginNature"/>
 		                   <test property="org.eclipse.jdt.core.hasTypeOnClasspath" value="junit.framework.Test"/>
 		                   <test property="org.eclipse.jdt.junit.canLaunchAsJUnit" forcePluginActivation="true"/>
-		                 </adapt>
+		                 </adapt>	             
                        </adapt>
+                       <adapt type="org.eclipse.core.resources.IResource">
+							<test property="org.eclipse.core.resources.name" value="*.spec"/>
+					   	 </adapt>
                      </and>
 		          </iterate>
                </with>

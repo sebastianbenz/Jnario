@@ -17,7 +17,7 @@ import com.google.inject.Binder;
 import com.google.inject.name.Names;
 
 import de.bmw.carit.jnario.common.scoping.JnarioExtensionClassNameProvider;
-import de.bmw.carit.jnario.spec.jvmmodel.ExtendedJvmTypesBuilder;
+import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder;
 import de.bmw.carit.jnario.spec.jvmmodel.SpecFeatureCallToJavaMapping;
 import de.bmw.carit.jnario.spec.scoping.SpecImportedNamespaceScopeProvider;
 import de.bmw.carit.jnario.spec.scoping.SpecScopeProvider;

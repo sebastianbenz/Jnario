@@ -10,15 +10,14 @@ import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
-import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
+import org.eclipse.xtext.xbase.ui.highlighting.XbaseHighlightingCalculator;
 
 import de.bmw.carit.jnario.jnario.ExampleHeading;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
 import de.bmw.carit.jnario.jnario.Step;
 import de.bmw.carit.jnario.jnario.util.JnarioSwitch;
 
-public class SemanticHighlightingCalculator implements
-		ISemanticHighlightingCalculator {
+public class SemanticHighlightingCalculator extends XbaseHighlightingCalculator {
 
 	private static final Pattern PLACEHOLDER = Pattern.compile("<[^<\\r\\n]*>");
 
@@ -75,6 +74,7 @@ public class SemanticHighlightingCalculator implements
 
 	public void provideHighlightingFor(XtextResource resource,
 			IHighlightedPositionAcceptor acceptor) {
+		super.provideHighlightingFor(resource, acceptor);
 		if (noNodeModel(resource)) {
 			return;
 		}
