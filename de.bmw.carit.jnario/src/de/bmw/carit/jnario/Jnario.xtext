@@ -6,11 +6,20 @@ import "http://www.eclipse.org/xtext/Xtend2" as xtend2
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
 
 Jnario:
+	feature = Feature;
+	
+Feature:
 	('package' packageName=QualifiedName)?
-	imports+=Import*
 	name=FEATURE_TEXT
+	imports += Import*
+	description=DESCRIPTION?
 	background = Background?
-	scenarios+=Scenario+
+	scenarios+=Scenario+;
+	
+DESCRIPTION:
+	IN_ORDER_TEXT
+	AS_A_TEXT
+	I_WANT_TEXT
 ;
 
 Import returns xtend2::XtendImport:
@@ -18,16 +27,14 @@ Import returns xtend2::XtendImport:
 		(static?='static' extension?='extension'? importedType=[types::JvmType|QualifiedName] '.' '*') | 
 		importedType=[types::JvmType|QualifiedName] | 
 		importedNamespace=QualifiedNameWithWildCard
-	)
-; 
+	); 
 
 QualifiedNameWithWildCard :
 	QualifiedName  '.' '*';
 
 Background:
 	BACKGROUND_TEXT
-	steps+=Given|And
-;
+	steps+=Given;
 
 Scenario:
 	name=SCENARIO_TEXT
@@ -35,102 +42,88 @@ Scenario:
 	steps+=Given?
 	steps+=When?
 	steps+=Then?
-	examples+=Examples*
-;
+	examples+=Examples*;
 
 Annotation:
 	annotation=XAnnotation
-	var = VariableDeclaration?
-;
+	var = VariableDeclaration?;
 
 VariableDeclaration:
-	visibility=VISIBILITY variableDec=XVariableDeclaration
-; 
+	visibility=VISIBILITY variableDec=XVariableDeclaration; 
 
 Step:
-	Given|When|Then|And
-;
+	Given|When|Then|And;
 
 Given:
 	name=GIVEN_TEXT code=Code?
-	(and+=AND_TEXT and_code+=Code?)*
-;
+	and+=And*;
 
 When:
 	name=WHEN_TEXT code=Code?
-	(and+=AND_TEXT and_code+=Code?)*
-;
+	and+=And*;
 
 Then:
 	name=THEN_TEXT code=Code?
-	(and+=AND_TEXT and_code+=Code?)*
-;
-
+	and+=And*;
+	
 And:
-	name=AND_TEXT code=Code
+	name=AND_TEXT code=Code?
 ;
 
 Code:
 	annotations+=XAnnotation* 
-	blockExpression=BlockExpression
-;
+	blockExpression=BlockExpression;
 
 BlockExpression returns xbase::XBlockExpression:
-	expressions+= XExpressionInsideBlock+
-;
+	(expressions+=XExpressionInsideBlock ';'?)+;
 
 Examples:
 	name=EXAMPLE_TEXT
 	heading = ExampleHeading
-	(rows += ExampleRow)*
-;
+	(rows += ExampleRow)*;
 
 ExampleHeading:
-	parts+=ExampleHeadingCell+ EXAMPLE_ROW_END
-;
+	parts+=ExampleHeadingCell+ EXAMPLE_ROW_END;
  
 ExampleHeadingCell returns xbase::XVariableDeclaration:
-	(PIPE | PIPE_SPACES) name=ValidID 
-;
+	(PIPE | PIPE_SPACES) name=ValidID ;
 
 ExampleRow:
-	parts+=ExampleCell+ EXAMPLE_ROW_END
-;
+	parts+=ExampleCell+ EXAMPLE_ROW_END;
 
 ExampleCell:
-	(PIPE | PIPE_SPACES) name=XExpression
-;
+	(PIPE | PIPE_SPACES) name=XExpression;
 
-XMemberFeatureCall returns xbase::XExpression:
-	XPrimaryExpression
-	(=>({xbase::XAssignment.assignable=current} '.' feature=[types::JvmIdentifiableElement|ValidID] OpSingleAssign) value=XAssignment
-	|=>({xbase::XMemberFeatureCall.memberCallTarget=current} feature=[types::JvmIdentifiableElement|ValidID]) memberCallArguments+=XExpression
-	|=>({xbase::XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|spreading?="*.")) 
-		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
-		feature=[types::JvmIdentifiableElement|ValidID] (
-			=>explicitOperationCall?='(' 
-				(
-				    memberCallArguments+=XShortClosure
-				  |	memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-				)? 
-			')')?
-			=>memberCallArguments+=XClosure?
-		)*;
-
-	
-XFeatureCall returns xbase::XFeatureCall:
-	{xbase::XFeatureCall}
-	(=> feature=[types::JvmIdentifiableElement|IdOrSuper]  featureCallArguments+=XExpression
-	|((declaringType=[types::JvmDeclaredType|StaticQualifier])?
-	('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')? 
-	feature=[types::JvmIdentifiableElement|IdOrSuper] 
-	(=>explicitOperationCall?='(' 
-		(
-		    featureCallArguments+=XShortClosure
-		  |	featureCallArguments+=XExpression (',' featureCallArguments+=XExpression)*
-		)? 
-	')')?
-	=>featureCallArguments+=XClosure?));
+//XMemberFeatureCall returns xbase::XExpression:
+//	XPrimaryExpression
+//	(=>({xbase::XAssignment.assignable=current} '.' feature=[types::JvmIdentifiableElement|ValidID] OpSingleAssign) value=XAssignment
+//	|=>({xbase::XMemberFeatureCall.memberCallTarget=current} feature=[types::JvmIdentifiableElement|ValidID]) memberCallArguments+=XExpression
+//	|=>({xbase::XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|spreading?="*.")) 
+//		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
+//		feature=[types::JvmIdentifiableElement|ValidID] (
+//			=>explicitOperationCall?='(' 
+//				(
+//				    memberCallArguments+=XShortClosure
+//				  |	memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
+//				)? 
+//			')')?
+//			=>memberCallArguments+=XClosure?
+//		)*;
+//
+//	
+//XFeatureCall returns xbase::XExpression:
+//	{xbase::XFeatureCall}
+//	(=> feature=[types::JvmIdentifiableElement|IdOrSuper]  featureCallArguments+=XExpression
+//	|((declaringType=[types::JvmDeclaredType|StaticQualifier])?
+//	('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')? 
+//	feature=[types::JvmIdentifiableElement|IdOrSuper] 
+//	(=>explicitOperationCall?='(' 
+//		(
+//		    featureCallArguments+=XShortClosure
+//		  |	featureCallArguments+=XExpression (',' featureCallArguments+=XExpression)*
+//		)? 
+//	')')?
+//	=>featureCallArguments+=XClosure?));
 
 
 terminal FEATURE_TEXT: 'Feature' COLON MNL;
@@ -142,12 +135,16 @@ terminal THEN_TEXT: 'Then ' MNL;
 terminal AND_TEXT: 'And ' MNL;
 terminal EXAMPLE_TEXT: 'Examples' COLON MNL;
 
+terminal IN_ORDER_TEXT: 'In order to' TEXT_AND_NL;
+terminal AS_A_TEXT: 'As a' TEXT_AND_NL;
+terminal I_WANT_TEXT: 'I want' TEXT_AND_NL;
+
+
 terminal PIPE : '|';
 terminal PIPE_SPACES: PIPE (' '|'\t')+;
 terminal EXAMPLE_ROW_END: (PIPE | PIPE_SPACES) '\r'? '\n';
-
-
 terminal VISIBILITY: 'private' | 'public' | 'protected';
+
 
 terminal fragment TEXT_MULTI_LINE: !('\r'|'\n')* '\\' NL;
 terminal fragment TEXT_AND_NL: !('\r'|'\n'|'\\')* NL;

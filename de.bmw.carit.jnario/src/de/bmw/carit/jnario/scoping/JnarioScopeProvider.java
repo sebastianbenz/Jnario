@@ -4,10 +4,10 @@
 package de.bmw.carit.jnario.scoping;
 
 import static com.google.common.collect.Iterators.filter;
-import static com.google.common.collect.Lists.newArrayList;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 import static org.eclipse.xtext.scoping.Scopes.scopeFor;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EObject;
@@ -26,11 +26,14 @@ import org.eclipse.xtext.xbase.annotations.scoping.XbaseWithAnnotationsScopeProv
 import org.eclipse.xtext.xbase.scoping.LocalVariableScopeContext;
 import org.eclipse.xtext.xbase.scoping.featurecalls.IJvmFeatureDescriptionProvider;
 
+import com.google.common.collect.Iterators;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 
 import de.bmw.carit.jnario.jnario.And;
+import de.bmw.carit.jnario.jnario.Background;
 import de.bmw.carit.jnario.jnario.Given;
+import de.bmw.carit.jnario.jnario.Jnario;
 import de.bmw.carit.jnario.jnario.Scenario;
 import de.bmw.carit.jnario.jnario.Then;
 import de.bmw.carit.jnario.jnario.When;
@@ -139,8 +142,21 @@ public class JnarioScopeProvider extends XbaseWithAnnotationsScopeProvider {
 	private IScope stepScope(IScope parentScope, LocalVariableScopeContext scopeContext) {
 		EObject context = scopeContext.getContext();
 		Scenario scenario = getContainerOfType(context, Scenario.class);
-		Iterator<EObject> eAllContents = scenario.eAllContents();
-		Iterator<XVariableDeclaration> allVariables = filter(eAllContents, XVariableDeclaration.class);
-		return scopeFor(newArrayList(allVariables));
+		Iterator<EObject> eAllContents;
+		Iterator<XVariableDeclaration> scenarioVariables;
+		ArrayList<XVariableDeclaration> variables = new ArrayList<XVariableDeclaration>();
+		if(scenario != null){
+			eAllContents = scenario.eAllContents();
+			scenarioVariables = filter(eAllContents, XVariableDeclaration.class);
+			Iterators.addAll(variables, scenarioVariables);
+		}
+		Jnario jnario = getContainerOfType(context, Jnario.class);
+		if(jnario.getFeature().getBackground() != null){
+			Background background = jnario.getFeature().getBackground();
+			eAllContents = background.eAllContents();
+			Iterator<XVariableDeclaration> backgroundVariables = filter(eAllContents, XVariableDeclaration.class);
+			Iterators.addAll(variables, backgroundVariables);
+		}
+		return scopeFor(variables);
 	}
 }

@@ -112,7 +112,7 @@ public class StaticallyImportedFeaturesProvider extends AbstractStaticMethodsFea
 		if (resource.getContents().isEmpty() || !(resource.getContents().get(0) instanceof Jnario))
 			return Collections.emptyList();
 		Jnario file = (Jnario) resource.getContents().get(0);
-		return file.getImports();
+		return file.getFeature().getImports();
 	}
 	
 }

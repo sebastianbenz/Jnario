@@ -6,7 +6,7 @@
  */
 package de.bmw.carit.jnario.jnario.impl;
 
-import de.bmw.carit.jnario.jnario.Code;
+import de.bmw.carit.jnario.jnario.And;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
 import de.bmw.carit.jnario.jnario.When;
 
@@ -19,7 +19,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -31,7 +30,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.bmw.carit.jnario.jnario.impl.WhenImpl#getAnd <em>And</em>}</li>
- *   <li>{@link de.bmw.carit.jnario.jnario.impl.WhenImpl#getAnd_code <em>And code</em>}</li>
  * </ul>
  * </p>
  *
@@ -40,24 +38,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class WhenImpl extends StepImpl implements When
 {
   /**
-   * The cached value of the '{@link #getAnd() <em>And</em>}' attribute list.
+   * The cached value of the '{@link #getAnd() <em>And</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getAnd()
    * @generated
    * @ordered
    */
-  protected EList<String> and;
-
-  /**
-   * The cached value of the '{@link #getAnd_code() <em>And code</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getAnd_code()
-   * @generated
-   * @ordered
-   */
-  protected EList<Code> and_code;
+  protected EList<And> and;
 
   /**
    * <!-- begin-user-doc -->
@@ -85,27 +73,13 @@ public class WhenImpl extends StepImpl implements When
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<String> getAnd()
+  public EList<And> getAnd()
   {
     if (and == null)
     {
-      and = new EDataTypeEList<String>(String.class, this, JnarioPackage.WHEN__AND);
+      and = new EObjectContainmentEList<And>(And.class, this, JnarioPackage.WHEN__AND);
     }
     return and;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<Code> getAnd_code()
-  {
-    if (and_code == null)
-    {
-      and_code = new EObjectContainmentEList<Code>(Code.class, this, JnarioPackage.WHEN__AND_CODE);
-    }
-    return and_code;
   }
 
   /**
@@ -118,8 +92,8 @@ public class WhenImpl extends StepImpl implements When
   {
     switch (featureID)
     {
-      case JnarioPackage.WHEN__AND_CODE:
-        return ((InternalEList<?>)getAnd_code()).basicRemove(otherEnd, msgs);
+      case JnarioPackage.WHEN__AND:
+        return ((InternalEList<?>)getAnd()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -136,8 +110,6 @@ public class WhenImpl extends StepImpl implements When
     {
       case JnarioPackage.WHEN__AND:
         return getAnd();
-      case JnarioPackage.WHEN__AND_CODE:
-        return getAnd_code();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -155,11 +127,7 @@ public class WhenImpl extends StepImpl implements When
     {
       case JnarioPackage.WHEN__AND:
         getAnd().clear();
-        getAnd().addAll((Collection<? extends String>)newValue);
-        return;
-      case JnarioPackage.WHEN__AND_CODE:
-        getAnd_code().clear();
-        getAnd_code().addAll((Collection<? extends Code>)newValue);
+        getAnd().addAll((Collection<? extends And>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -178,9 +146,6 @@ public class WhenImpl extends StepImpl implements When
       case JnarioPackage.WHEN__AND:
         getAnd().clear();
         return;
-      case JnarioPackage.WHEN__AND_CODE:
-        getAnd_code().clear();
-        return;
     }
     super.eUnset(featureID);
   }
@@ -197,27 +162,8 @@ public class WhenImpl extends StepImpl implements When
     {
       case JnarioPackage.WHEN__AND:
         return and != null && !and.isEmpty();
-      case JnarioPackage.WHEN__AND_CODE:
-        return and_code != null && !and_code.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (and: ");
-    result.append(and);
-    result.append(')');
-    return result.toString();
   }
 
 } //WhenImpl

@@ -12,7 +12,6 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.CrossReference;
 import org.eclipse.xtext.common.types.JvmFeature;
-import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.TypesPackage;
 import org.eclipse.xtext.naming.QualifiedName;
@@ -125,7 +124,7 @@ public class JnarioJavaValidator extends AbstractJnarioJavaValidator {
 		final Map<JvmType, XtendImport> staticImports = newHashMap();
 		final Map<String, JvmType> importedNames = newHashMap();
 		
-		for (XtendImport imp : file.getImports()) {
+		for (XtendImport imp : file.getFeature().getImports()) {
 			if (imp.getImportedNamespace() != null) {
 				warning("The use of wildcard imports is deprecated.", imp, null, IssueCodes.IMPORT_WILDCARD_DEPRECATED);
 			} else {
@@ -151,11 +150,11 @@ public class JnarioJavaValidator extends AbstractJnarioJavaValidator {
 				}
 			}
 		}
-		if(file.getScenarios().isEmpty()){
+		if(file.getFeature().getScenarios().isEmpty()){
 			return;
 		}
 		
-		ICompositeNode node = NodeModelUtils.findActualNodeFor(file.getScenarios().get(0));
+		ICompositeNode node = NodeModelUtils.findActualNodeFor(file.getFeature().getScenarios().get(0));
 		for (INode n : node.getAsTreeIterable()) {
 			if (n.getGrammarElement() instanceof CrossReference) {
 				EClassifier classifier = ((CrossReference) n.getGrammarElement()).getType().getClassifier();

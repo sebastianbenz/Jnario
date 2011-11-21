@@ -4,15 +4,20 @@ import com.google.common.collect.Iterators;
 import com.google.common.collect.Sets;
 import com.google.common.collect.UnmodifiableIterator;
 import com.google.inject.Inject;
+import de.bmw.carit.jnario.jnario.And;
+import de.bmw.carit.jnario.jnario.Background;
 import de.bmw.carit.jnario.jnario.Code;
 import de.bmw.carit.jnario.jnario.Examples;
+import de.bmw.carit.jnario.jnario.Feature;
+import de.bmw.carit.jnario.jnario.Given;
 import de.bmw.carit.jnario.jnario.Jnario;
 import de.bmw.carit.jnario.jnario.Scenario;
 import de.bmw.carit.jnario.jnario.Step;
+import de.bmw.carit.jnario.jnario.Then;
+import de.bmw.carit.jnario.jnario.When;
 import de.bmw.carit.jnario.naming.JavaNameProvider;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -76,10 +81,12 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
    *        must not rely on linking using the index if iPrelinkingPhase is <code>true</code>
    */
   protected void _infer(final Jnario jnario, final IAcceptor<JvmDeclaredType> acceptor, final boolean isPrelinkingPhase) {
-    EList<Scenario> _scenarios = jnario.getScenarios();
+    Feature _feature = jnario.getFeature();
+    EList<Scenario> _scenarios = _feature.getScenarios();
     for (final Scenario scenario : _scenarios) {
       {
-        String _name = jnario.getName();
+        Feature _feature_1 = jnario.getFeature();
+        String _name = _feature_1.getName();
         String _javaClassName = this._javaNameProvider.getJavaClassName(_name);
         String _name_1 = scenario.getName();
         String _javaClassName_1 = this._javaNameProvider.getJavaClassName(_name_1);
@@ -91,20 +98,43 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
                 EList<JvmAnnotationReference> _annotations = it.getAnnotations();
                 JvmAnnotationReference _annotation = JnarioJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(scenario, org.junit.runner.RunWith.class, de.bmw.carit.jnario.runner.ScenarioRunner.class);
                 CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
-                String _packageName = jnario.getPackageName();
+                Feature _feature = jnario.getFeature();
+                String _packageName = _feature.getPackageName();
                 it.setPackageName(_packageName);
                 String _documentation = JnarioJvmModelInferrer.this._jvmTypesBuilder.getDocumentation(scenario);
                 JnarioJvmModelInferrer.this._jvmTypesBuilder.setDocumentation(it, _documentation);
                 HashMap<String,JvmTypeReference> _generateVariables = JnarioJvmModelInferrer.this.generateVariables(scenario);
                 final HashMap<String,JvmTypeReference> variables = _generateVariables;
-                Set<String> _keySet = variables.keySet();
-                for (final String variable : _keySet) {
+                Feature _feature_1 = jnario.getFeature();
+                Background _background = _feature_1.getBackground();
+                boolean _operator_notEquals = ObjectExtensions.operator_notEquals(_background, null);
+                if (_operator_notEquals) {
                   {
-                    JvmTypeReference _get = variables.get(variable);
-                    JvmTypeReference type = _get;
-                    EList<JvmMember> _members = it.getMembers();
-                    JvmField _field = JnarioJvmModelInferrer.this._jvmTypesBuilder.toField(scenario, variable, type);
-                    CollectionExtensions.<JvmField>operator_add(_members, _field);
+                    Feature _feature_2 = jnario.getFeature();
+                    Background _background_1 = _feature_2.getBackground();
+                    HashMap<String,JvmTypeReference> _generateVariables_1 = JnarioJvmModelInferrer.this.generateVariables(_background_1);
+                    final HashMap<String,JvmTypeReference> backgroundVariables = _generateVariables_1;
+                    Set<String> _keySet = backgroundVariables.keySet();
+                    for (final String variable : _keySet) {
+                      {
+                        JvmTypeReference _get = backgroundVariables.get(variable);
+                        JvmTypeReference type = _get;
+                        EList<JvmMember> _members = it.getMembers();
+                        JvmField _field = JnarioJvmModelInferrer.this._jvmTypesBuilder.toField(scenario, variable, type);
+                        CollectionExtensions.<JvmField>operator_add(_members, _field);
+                      }
+                    }
+                    variables.putAll(backgroundVariables);
+                  }
+                }
+                Set<String> _keySet_1 = variables.keySet();
+                for (final String variable_1 : _keySet_1) {
+                  {
+                    JvmTypeReference _get_1 = variables.get(variable_1);
+                    JvmTypeReference type_1 = _get_1;
+                    EList<JvmMember> _members_1 = it.getMembers();
+                    JvmField _field_1 = JnarioJvmModelInferrer.this._jvmTypesBuilder.toField(scenario, variable_1, type_1);
+                    CollectionExtensions.<JvmField>operator_add(_members_1, _field_1);
                   }
                 }
                 EList<Examples> _examples = scenario.getExamples();
@@ -145,13 +175,42 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
                         }
                       };
                     JnarioJvmModelInferrer.this._jvmTypesBuilder.setBody(constructor, _function_1);
-                    EList<JvmMember> _members_1 = it.getMembers();
-                    CollectionExtensions.<JvmConstructor>operator_add(_members_1, constructor);
+                    EList<JvmMember> _members_2 = it.getMembers();
+                    CollectionExtensions.<JvmConstructor>operator_add(_members_2, constructor);
                   }
                 }
                 EList<Step> _steps = scenario.getSteps();
                 for (final Step step : _steps) {
-                  JnarioJvmModelInferrer.this.transform(step, it);
+                  {
+                    JnarioJvmModelInferrer.this.transform(step, it);
+                    if ((step instanceof Given)) {
+                      {
+                        Given given = ((Given) step);
+                        EList<And> _and = given.getAnd();
+                        for (final And and : _and) {
+                          JnarioJvmModelInferrer.this.transform(and, it);
+                        }
+                      }
+                    } else {
+                      if ((step instanceof When)) {
+                        {
+                          When when = ((When) step);
+                          EList<And> _and_1 = when.getAnd();
+                          for (final And and_1 : _and_1) {
+                            JnarioJvmModelInferrer.this.transform(and_1, it);
+                          }
+                        }
+                      } else {
+                        {
+                          Then then = ((Then) step);
+                          EList<And> _and_2 = then.getAnd();
+                          for (final And and_2 : _and_2) {
+                            JnarioJvmModelInferrer.this.transform(and_2, it);
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -162,11 +221,11 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
     }
   }
   
-  public HashMap<String,JvmTypeReference> generateVariables(final Scenario scenario) {
+  public HashMap<String,JvmTypeReference> generateVariables(final EObject object) {
     HashMap<String,JvmTypeReference> _xblockexpression = null;
     {
-      TreeIterator<EObject> _eAllContents = scenario.eAllContents();
-      Iterator<EObject> eAllContents = _eAllContents;
+      TreeIterator<EObject> _eAllContents = object.eAllContents();
+      TreeIterator<EObject> eAllContents = _eAllContents;
       UnmodifiableIterator<XVariableDeclaration> _filter = Iterators.<XVariableDeclaration>filter(eAllContents, org.eclipse.xtext.xbase.XVariableDeclaration.class);
       UnmodifiableIterator<XVariableDeclaration> allVariables = _filter;
       HashSet<String> _newHashSet = Sets.<String>newHashSet("");

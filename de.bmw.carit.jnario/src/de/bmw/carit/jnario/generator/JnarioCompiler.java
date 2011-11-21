@@ -8,37 +8,22 @@
 package de.bmw.carit.jnario.generator;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.xtext.common.types.JvmField;
-import org.eclipse.xtext.common.types.JvmFormalParameter;
-import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmPrimitiveType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.TypesFactory;
-import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.common.types.util.Primitives.Primitive;
-import org.eclipse.xtext.xbase.XAbstractFeatureCall;
-import org.eclipse.xtext.xbase.XAssignment;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.compiler.IAppendable;
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
-import org.eclipse.xtext.xbase.controlflow.IEarlyExitComputer;
-
-import com.google.inject.Inject;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
 public class JnarioCompiler extends XbaseCompiler {
-	
-	@Inject
-	private TypeReferences typeReferences;
-	
-	@Inject
-	private IEarlyExitComputer exitComputer;
-	
+
 	// removed "{\n" and "\n}" from original method
 	@Override
 	protected void _toJavaStatement(XBlockExpression expr, IAppendable b, boolean isReferenced) {
@@ -67,7 +52,7 @@ public class JnarioCompiler extends XbaseCompiler {
 		}
 		b.decreaseIndentation();
 	}
-	
+
 	@Override
 	protected void _toJavaStatement(XVariableDeclaration varDeclaration, IAppendable b, boolean isReferenced) {
 		if (varDeclaration.getRight() != null) {
@@ -83,8 +68,8 @@ public class JnarioCompiler extends XbaseCompiler {
 		} else {
 			type = getTypeProvider().getType(varDeclaration.getRight());
 		}
-//		serialize(type, varDeclaration, b);
-//		b.append(" ");
+		//		serialize(type, varDeclaration, b);
+		//		b.append(" ");
 		String variableName = declareNameInVariableScope(varDeclaration, b);
 		b.append(variableName);
 		b.append(" = ");
@@ -94,12 +79,12 @@ public class JnarioCompiler extends XbaseCompiler {
 			if (getPrimitives().isPrimitive(type)) {
 				Primitive primitiveKind = getPrimitives().primitiveKind((JvmPrimitiveType) type.getType());
 				switch (primitiveKind) {
-					case Boolean:
-						b.append("false");
-						break;
-					default:
-						b.append("0");
-						break;
+				case Boolean:
+					b.append("false");
+					break;
+				default:
+					b.append("0");
+					break;
 				}
 			} else {
 				b.append("null");
@@ -107,31 +92,6 @@ public class JnarioCompiler extends XbaseCompiler {
 		}
 		b.append(";");
 	}
-	
-//	protected void generateExamples(EList<Examples> examples, EList<Step> steps,
-//			IAppendable appendable, ImportManager importManager) {
-//		IAppendable stepAppendable = new StringBuilderBasedAppendable(importManager);
-//		for(Step step: steps){
-//			generateStep(step, stepAppendable);
-//		}
-//		String originalCode = stepAppendable.toString();
-//		
-//		for(Examples example: examples){
-//			EList<ExampleCell> exampleHeader = example.getHeading().getParts();
-//			for(ExampleRow row: example.getRows()){
-//				EList<ExampleCell> exampleRow = row.getParts();
-//				if(exampleHeader.size() == exampleRow.size()){
-//					String nextCode = originalCode;
-//					for(int i = 0; i < exampleHeader.size(); i++){
-//						nextCode.replace(exampleHeader.get(i).getValue().replace("|",""), exampleRow.get(i).getValue().replace("|",""));
-//					}
-//					appendable.append(nextCode);
-//				}else{
-//					throw new RuntimeException();
-//				}
-//			}
-//		}
-//	}
 
 	protected JvmTypeReference newVoidRef() {
 		JvmParameterizedTypeReference reference = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference();

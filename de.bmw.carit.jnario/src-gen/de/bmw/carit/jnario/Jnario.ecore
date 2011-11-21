@@ -4,11 +4,16 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="jnario"
     nsURI="http://www.bmw.de/carit/jnario/Jnario" nsPrefix="jnario">
   <eClassifiers xsi:type="ecore:EClass" name="Jnario">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="feature" eType="#//Feature"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Feature">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="packageName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
         eType="ecore:EClass ../../../../../../org.eclipse.xtext.xtend2/model/Xtend2.ecore#//XtendImport"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="background" eType="#//Background"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" upperBound="-1"
@@ -43,24 +48,18 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="code" eType="#//Code" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Given" eSuperTypes="#//Step">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="and" unique="false" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="and_code" upperBound="-1"
-        eType="#//Code" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="and" upperBound="-1" eType="#//And"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="When" eSuperTypes="#//Step">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="and" unique="false" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="and_code" upperBound="-1"
-        eType="#//Code" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="and" upperBound="-1" eType="#//And"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Then" eSuperTypes="#//Step">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="and" unique="false" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="and_code" upperBound="-1"
-        eType="#//Code" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="and" upperBound="-1" eType="#//And"
+        containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="And" eSuperTypes="#//Background #//Step"/>
+  <eClassifiers xsi:type="ecore:EClass" name="And" eSuperTypes="#//Step"/>
   <eClassifiers xsi:type="ecore:EClass" name="Code">
     <eStructuralFeatures xsi:type="ecore:EReference" name="annotations" upperBound="-1"
         eType="ecore:EClass ../../../../../../org.eclipse.xtext.xbase/model/XAnnotations.ecore#//XAnnotation"

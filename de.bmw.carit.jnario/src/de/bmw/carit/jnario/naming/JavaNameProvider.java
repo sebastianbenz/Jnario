@@ -14,14 +14,17 @@ public class JavaNameProvider {
 	
 	private String getValidName(String originalName){
 		String name = "";
-		originalName = originalName.trim();
-		String[] words = originalName.split(" ");
-		for(String word: words){
-			if(!word.isEmpty()){
-				name = name + Strings.toFirstUpper(word);
+		if(originalName == null){
+			return "unknown";
+		}else{
+			originalName = originalName.trim();
+			String[] words = originalName.split(" ");
+			for(String word: words){
+				if(!word.isEmpty()){
+					name = name + Strings.toFirstUpper(word);
+				}
 			}
+			return name.replaceAll("[^A-Za-z0-9]","");
 		}
-		return name.replaceAll("[^A-Za-z0-9]","");
 	}
-
 }

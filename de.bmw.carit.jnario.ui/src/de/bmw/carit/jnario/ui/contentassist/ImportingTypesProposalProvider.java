@@ -81,7 +81,7 @@ public class ImportingTypesProposalProvider extends JdtTypesProposalProvider {
 			}
 			// we could create an import statement if there is no conflict
 			Jnario file = (Jnario) context.getContents().get(0);
-			Scenario clazz = file.getScenarios().isEmpty() ? null : file.getScenarios().get(0);
+			Scenario clazz = file.getFeature().getScenarios().isEmpty() ? null : file.getFeature().getScenarios().get(0);
 			
 			QualifiedName qualifiedName = qualifiedNameConverter.toQualifiedName(typeName);			
 			if (qualifiedName.getSegmentCount() == 1) {
@@ -116,7 +116,7 @@ public class ImportingTypesProposalProvider extends JdtTypesProposalProvider {
 				int offset = 0;
 				boolean startWithLineBreak = true;
 				boolean endWithLineBreak = false;
-				if (file.getImports().isEmpty()) {
+				if (file.getFeature().getImports().isEmpty()) {
 					startWithLineBreak = false;
 					if (clazz == null) {
 						offset = document.getLength();
@@ -126,7 +126,7 @@ public class ImportingTypesProposalProvider extends JdtTypesProposalProvider {
 						endWithLineBreak = true;
 					}
 				} else {
-					ICompositeNode node = NodeModelUtils.getNode(file.getImports().get(file.getImports().size() - 1));
+					ICompositeNode node = NodeModelUtils.getNode(file.getFeature().getImports().get(file.getFeature().getImports().size() - 1));
 					offset = node.getOffset() + node.getLength();
 				}
 				offset = Math.min(proposal.getReplacementOffset(), offset);

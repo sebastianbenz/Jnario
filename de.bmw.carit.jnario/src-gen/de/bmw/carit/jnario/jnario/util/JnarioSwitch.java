@@ -83,6 +83,13 @@ public class JnarioSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case JnarioPackage.FEATURE:
+      {
+        Feature feature = (Feature)theEObject;
+        T result = caseFeature(feature);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case JnarioPackage.BACKGROUND:
       {
         Background background = (Background)theEObject;
@@ -146,7 +153,6 @@ public class JnarioSwitch<T> extends Switch<T>
       {
         And and = (And)theEObject;
         T result = caseAnd(and);
-        if (result == null) result = caseBackground(and);
         if (result == null) result = caseStep(and);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -202,6 +208,22 @@ public class JnarioSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseJnario(Jnario object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Feature</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Feature</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFeature(Feature object)
   {
     return null;
   }

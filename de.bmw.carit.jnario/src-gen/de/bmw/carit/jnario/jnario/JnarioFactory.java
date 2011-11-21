@@ -36,6 +36,15 @@ public interface JnarioFactory extends EFactory
   Jnario createJnario();
 
   /**
+   * Returns a new object of class '<em>Feature</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Feature</em>'.
+   * @generated
+   */
+  Feature createFeature();
+
+  /**
    * Returns a new object of class '<em>Background</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

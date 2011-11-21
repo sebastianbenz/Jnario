@@ -1,17 +1,19 @@
 package de.bmw.carit.jnario.jvmmodel
 
 import com.google.inject.Inject
+import de.bmw.carit.jnario.jnario.Given
 import de.bmw.carit.jnario.jnario.Jnario
-import de.bmw.carit.jnario.jnario.Scenario
 import de.bmw.carit.jnario.jnario.Step
-import de.bmw.carit.jnario.runner.ScenarioRunner
+import de.bmw.carit.jnario.jnario.Then
+import de.bmw.carit.jnario.jnario.When
 import de.bmw.carit.jnario.naming.JavaNameProvider
-import java.util.Iterator
+import de.bmw.carit.jnario.runner.Named
+import de.bmw.carit.jnario.runner.ScenarioRunner
+import java.util.HashMap
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmTypeReference
-import org.eclipse.xtext.common.types.JvmConstructor
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.util.IAcceptor
 import org.eclipse.xtext.xbase.XVariableDeclaration
@@ -19,9 +21,7 @@ import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.eclipse.xtext.xbase.typing.ITypeProvider
 import org.junit.Test
-import de.bmw.carit.jnario.runner.Named
 import org.junit.runner.RunWith
-import java.util.HashMap
 
 import static com.google.common.collect.Iterators.*
 import static com.google.common.collect.Sets.*
@@ -57,18 +57,28 @@ class JnarioJvmModelInferrer extends AbstractModelInferrer {
 	 *        must not rely on linking using the index if iPrelinkingPhase is <code>true</code>
 	 */
    	def dispatch void infer(Jnario jnario, IAcceptor<JvmDeclaredType> acceptor, boolean isPrelinkingPhase) {
-		for(scenario: jnario.scenarios){
-			val className = jnario.name.javaClassName + scenario.name.javaClassName
+		for(scenario: jnario.feature.scenarios){
+			val className = jnario.feature.name.javaClassName + scenario.name.javaClassName
 			acceptor.accept(
 				scenario.toClass(className) [
 					annotations += scenario.toAnnotation(typeof(RunWith), typeof(ScenarioRunner))
-					packageName = jnario.packageName
+					packageName = jnario.feature.packageName
 					documentation = scenario.documentation
-					val variables = scenario.generateVariables()
+					val variables = scenario.generateVariables
+					if(jnario.feature.background != null){
+						val backgroundVariables = jnario.feature.background.generateVariables
+						for(variable: backgroundVariables.keySet){
+							var type = backgroundVariables.get(variable)
+							members += scenario.toField(variable, type)
+						}
+						variables.putAll(backgroundVariables)
+					}
+					
 					for(variable: variables.keySet){
 						var type = variables.get(variable)
 						members += scenario.toField(variable, type)
 					}
+					
 					if(!scenario.examples.empty){
 						var constructor = scenario.toConstructor(className)[
 							for(variable: variables.keySet){
@@ -87,28 +97,44 @@ class JnarioJvmModelInferrer extends AbstractModelInferrer {
 					}
 					for (step : scenario.getSteps) {
 						transform(step, it)
+						if(step instanceof Given){
+							var given = step as Given
+							for(and: given.and){
+								transform(and, it)
+							}
+						}else if(step instanceof When){
+							var when = step as When
+							for(and: when.and){
+								transform(and, it)
+							}
+						}else{
+							var then = step as Then
+							for(and: then.and){
+								transform(and, it)
+							}
+						}				
 					}
 				]
 			)
 		}
    	}
 
-	def generateVariables(Scenario scenario) {
-		var Iterator<EObject> eAllContents = scenario.eAllContents();
+	def generateVariables(EObject object){
+		var eAllContents = object.eAllContents;
 		var allVariables = filter(eAllContents, typeof(XVariableDeclaration))
 		var declaredVariables = newHashSet("");
 		var variablesMap = new HashMap<String, JvmTypeReference>()
 		while(allVariables.hasNext){
 			var currentDec = allVariables.next();
-			if(!declaredVariables.contains(currentDec.getQualifiedName())){
-				declaredVariables.add(currentDec.getQualifiedName());
+			if(!declaredVariables.contains(currentDec.qualifiedName)){
+				declaredVariables.add(currentDec.qualifiedName);
 				
 				var JvmTypeReference type;
-				if (currentDec.getType() != null) {
-					type = currentDec.getType();
+				if (currentDec.type != null) {
+					type = currentDec.type;
 				} else {
-					if(currentDec.getRight() != null){
-						type = getType(currentDec.getRight());
+					if(currentDec.right!= null){
+						type = getType(currentDec.right);
 					}else{
 						//for examples
 						type = getType(currentDec, true);

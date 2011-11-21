@@ -58,7 +58,7 @@ public class JnarioImportedNamespaceScopeProvider extends XbaseImportedNamespace
 			return Collections.emptyList();
 		Jnario file = (Jnario) context;
 		List<ImportNormalizer> importedNamespaceResolvers = Lists.newArrayList();
-		for (XtendImport imp : file.getImports()) {
+		for (XtendImport imp : file.getFeature().getImports()) {
 			if (!imp.isStatic()) {
 				String value = imp.getImportedNamespace();
 				if (value == null)
@@ -68,9 +68,9 @@ public class JnarioImportedNamespaceScopeProvider extends XbaseImportedNamespace
 					importedNamespaceResolvers.add(resolver);
 			}
 		}
-		if (!Strings.isEmpty(((Jnario) context).getPackageName())) {
+		if (!Strings.isEmpty(((Jnario) context).getFeature().getPackageName())) {
 			importedNamespaceResolvers.add(new ImportNormalizer(nameConverter.toQualifiedName(((Jnario) context)
-					.getPackageName()), true, ignoreCase));
+					.getFeature().getPackageName()), true, ignoreCase));
 		}
 		return importedNamespaceResolvers;
 	}

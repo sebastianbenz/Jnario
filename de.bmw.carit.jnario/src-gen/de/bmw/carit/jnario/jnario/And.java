@@ -17,6 +17,6 @@ package de.bmw.carit.jnario.jnario;
  * @model
  * @generated
  */
-public interface And extends Background, Step
+public interface And extends Step
 {
 } // And

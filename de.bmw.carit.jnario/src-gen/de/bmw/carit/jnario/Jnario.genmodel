@@ -10,11 +10,15 @@
   <genPackages prefix="Jnario" basePackage="de.bmw.carit.jnario" disposableProviderFactory="true"
       ecorePackage="Jnario.ecore#/">
     <genClasses ecoreClass="Jnario.ecore#//Jnario">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jnario.ecore#//Jnario/packageName"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jnario.ecore#//Jnario/imports"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jnario.ecore#//Jnario/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jnario.ecore#//Jnario/background"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jnario.ecore#//Jnario/scenarios"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jnario.ecore#//Jnario/feature"/>
+    </genClasses>
+    <genClasses ecoreClass="Jnario.ecore#//Feature">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jnario.ecore#//Feature/packageName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jnario.ecore#//Feature/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jnario.ecore#//Feature/imports"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jnario.ecore#//Feature/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jnario.ecore#//Feature/background"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jnario.ecore#//Feature/scenarios"/>
     </genClasses>
     <genClasses ecoreClass="Jnario.ecore#//Background">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jnario.ecore#//Background/steps"/>
@@ -38,16 +42,13 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jnario.ecore#//Step/code"/>
     </genClasses>
     <genClasses ecoreClass="Jnario.ecore#//Given">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jnario.ecore#//Given/and"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jnario.ecore#//Given/and_code"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jnario.ecore#//Given/and"/>
     </genClasses>
     <genClasses ecoreClass="Jnario.ecore#//When">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jnario.ecore#//When/and"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jnario.ecore#//When/and_code"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jnario.ecore#//When/and"/>
     </genClasses>
     <genClasses ecoreClass="Jnario.ecore#//Then">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jnario.ecore#//Then/and"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jnario.ecore#//Then/and_code"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jnario.ecore#//Then/and"/>
     </genClasses>
     <genClasses ecoreClass="Jnario.ecore#//And"/>
     <genClasses ecoreClass="Jnario.ecore#//Code">

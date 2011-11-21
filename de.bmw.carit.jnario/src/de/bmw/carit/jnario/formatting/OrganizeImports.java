@@ -67,7 +67,7 @@ public class OrganizeImports {
 		final Jnario jnario = getJnario(state);
 		if (jnario == null)
 			return null;
-		acceptor.addImplicitlyImportedPackages(newArrayList("java.lang", jnario.getPackageName()));
+		acceptor.addImplicitlyImportedPackages(newArrayList("java.lang", jnario.getFeature().getPackageName()));
 		collectAllReferences(state, acceptor);
 		StringBuilder importsSection = new StringBuilder();
 		List<String> listofImportedTypeNames = acceptor.getListofImportedTypeNames();
@@ -99,13 +99,13 @@ public class OrganizeImports {
 		if (Jnario == null)
 			return null;
 		List<INode> packDecl = NodeModelUtils
-				.findNodesForFeature(Jnario, JnarioPackage.Literals.JNARIO__PACKAGE_NAME);
+				.findNodesForFeature(Jnario, JnarioPackage.Literals.FEATURE__PACKAGE_NAME);
 		int offset = 0;
 		if (packDecl.size() >= 1)
 			offset = packDecl.get(0).getOffset() + packDecl.get(0).getLength();
-		if (Jnario.getScenarios().isEmpty())
+		if (Jnario.getFeature().getScenarios().isEmpty())
 			return null;
-		ICompositeNode node = NodeModelUtils.getNode(Jnario.getScenarios().get(0));
+		ICompositeNode node = NodeModelUtils.getNode(Jnario.getFeature().getScenarios().get(0));
 		int length = node.getTotalOffset() - offset;
 		return new TextRegion(offset, length);
 	}

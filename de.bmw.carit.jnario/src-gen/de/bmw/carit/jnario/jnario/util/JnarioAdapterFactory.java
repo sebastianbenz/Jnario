@@ -84,6 +84,11 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
         return createJnarioAdapter();
       }
       @Override
+      public Adapter caseFeature(Feature object)
+      {
+        return createFeatureAdapter();
+      }
+      @Override
       public Adapter caseBackground(Background object)
       {
         return createBackgroundAdapter();
@@ -186,6 +191,21 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createJnarioAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.Feature <em>Feature</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.bmw.carit.jnario.jnario.Feature
+   * @generated
+   */
+  public Adapter createFeatureAdapter()
   {
     return null;
   }

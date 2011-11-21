@@ -4,6 +4,7 @@
 package de.bmw.carit.jnario;
 
 import org.eclipse.xtext.generator.OutputConfigurationProvider;
+import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
@@ -12,6 +13,7 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.scoping.featurecalls.StaticMethodsFeatureForTypeProvider.ExtensionClassNameProvider;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.eclipse.xtext.xtend2.compiler.Xtend2OutputConfigurationProvider;
+import org.eclipse.xtext.xtend2.resource.Xtend2Resource;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -64,5 +66,10 @@ public class JnarioRuntimeModule extends de.bmw.carit.jnario.AbstractJnarioRunti
 	
 	public Class<? extends FeatureCallToJavaMapping> bindFeatureCallToJavaMapping(){
 		return JnarioFeatureCallToJavaMapping.class;
+	}
+	
+	@Override
+	public Class<? extends XtextResource> bindXtextResource() {
+		return Xtend2Resource.class;
 	}
 }

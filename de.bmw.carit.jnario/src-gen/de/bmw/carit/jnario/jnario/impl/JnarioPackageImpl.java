@@ -14,6 +14,7 @@ import de.bmw.carit.jnario.jnario.ExampleCell;
 import de.bmw.carit.jnario.jnario.ExampleHeading;
 import de.bmw.carit.jnario.jnario.ExampleRow;
 import de.bmw.carit.jnario.jnario.Examples;
+import de.bmw.carit.jnario.jnario.Feature;
 import de.bmw.carit.jnario.jnario.Given;
 import de.bmw.carit.jnario.jnario.Jnario;
 import de.bmw.carit.jnario.jnario.JnarioFactory;
@@ -51,6 +52,13 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
    * @generated
    */
   private EClass jnarioEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass featureEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -231,9 +239,9 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getJnario_PackageName()
+  public EReference getJnario_Feature()
   {
-    return (EAttribute)jnarioEClass.getEStructuralFeatures().get(0);
+    return (EReference)jnarioEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -241,9 +249,9 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getJnario_Imports()
+  public EClass getFeature()
   {
-    return (EReference)jnarioEClass.getEStructuralFeatures().get(1);
+    return featureEClass;
   }
 
   /**
@@ -251,9 +259,9 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getJnario_Name()
+  public EAttribute getFeature_PackageName()
   {
-    return (EAttribute)jnarioEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)featureEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -261,9 +269,9 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getJnario_Background()
+  public EAttribute getFeature_Name()
   {
-    return (EReference)jnarioEClass.getEStructuralFeatures().get(3);
+    return (EAttribute)featureEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -271,9 +279,39 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getJnario_Scenarios()
+  public EReference getFeature_Imports()
   {
-    return (EReference)jnarioEClass.getEStructuralFeatures().get(4);
+    return (EReference)featureEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getFeature_Description()
+  {
+    return (EAttribute)featureEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFeature_Background()
+  {
+    return (EReference)featureEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFeature_Scenarios()
+  {
+    return (EReference)featureEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -451,19 +489,9 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getGiven_And()
+  public EReference getGiven_And()
   {
-    return (EAttribute)givenEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getGiven_And_code()
-  {
-    return (EReference)givenEClass.getEStructuralFeatures().get(1);
+    return (EReference)givenEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -481,19 +509,9 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getWhen_And()
+  public EReference getWhen_And()
   {
-    return (EAttribute)whenEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getWhen_And_code()
-  {
-    return (EReference)whenEClass.getEStructuralFeatures().get(1);
+    return (EReference)whenEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -511,19 +529,9 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getThen_And()
+  public EReference getThen_And()
   {
-    return (EAttribute)thenEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getThen_And_code()
-  {
-    return (EReference)thenEClass.getEStructuralFeatures().get(1);
+    return (EReference)thenEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -697,11 +705,15 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 
     // Create classes and their features
     jnarioEClass = createEClass(JNARIO);
-    createEAttribute(jnarioEClass, JNARIO__PACKAGE_NAME);
-    createEReference(jnarioEClass, JNARIO__IMPORTS);
-    createEAttribute(jnarioEClass, JNARIO__NAME);
-    createEReference(jnarioEClass, JNARIO__BACKGROUND);
-    createEReference(jnarioEClass, JNARIO__SCENARIOS);
+    createEReference(jnarioEClass, JNARIO__FEATURE);
+
+    featureEClass = createEClass(FEATURE);
+    createEAttribute(featureEClass, FEATURE__PACKAGE_NAME);
+    createEAttribute(featureEClass, FEATURE__NAME);
+    createEReference(featureEClass, FEATURE__IMPORTS);
+    createEAttribute(featureEClass, FEATURE__DESCRIPTION);
+    createEReference(featureEClass, FEATURE__BACKGROUND);
+    createEReference(featureEClass, FEATURE__SCENARIOS);
 
     backgroundEClass = createEClass(BACKGROUND);
     createEReference(backgroundEClass, BACKGROUND__STEPS);
@@ -725,16 +737,13 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
     createEReference(stepEClass, STEP__CODE);
 
     givenEClass = createEClass(GIVEN);
-    createEAttribute(givenEClass, GIVEN__AND);
-    createEReference(givenEClass, GIVEN__AND_CODE);
+    createEReference(givenEClass, GIVEN__AND);
 
     whenEClass = createEClass(WHEN);
-    createEAttribute(whenEClass, WHEN__AND);
-    createEReference(whenEClass, WHEN__AND_CODE);
+    createEReference(whenEClass, WHEN__AND);
 
     thenEClass = createEClass(THEN);
-    createEAttribute(thenEClass, THEN__AND);
-    createEReference(thenEClass, THEN__AND_CODE);
+    createEReference(thenEClass, THEN__AND);
 
     andEClass = createEClass(AND);
 
@@ -794,16 +803,19 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
     givenEClass.getESuperTypes().add(this.getStep());
     whenEClass.getESuperTypes().add(this.getStep());
     thenEClass.getESuperTypes().add(this.getStep());
-    andEClass.getESuperTypes().add(this.getBackground());
     andEClass.getESuperTypes().add(this.getStep());
 
     // Initialize classes and features; add operations and parameters
     initEClass(jnarioEClass, Jnario.class, "Jnario", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getJnario_PackageName(), ecorePackage.getEString(), "packageName", null, 0, 1, Jnario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getJnario_Imports(), theXtend2Package.getXtendImport(), null, "imports", null, 0, -1, Jnario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getJnario_Name(), ecorePackage.getEString(), "name", null, 0, 1, Jnario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getJnario_Background(), this.getBackground(), null, "background", null, 0, 1, Jnario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getJnario_Scenarios(), this.getScenario(), null, "scenarios", null, 0, -1, Jnario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getJnario_Feature(), this.getFeature(), null, "feature", null, 0, 1, Jnario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(featureEClass, Feature.class, "Feature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getFeature_PackageName(), ecorePackage.getEString(), "packageName", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFeature_Name(), ecorePackage.getEString(), "name", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFeature_Imports(), theXtend2Package.getXtendImport(), null, "imports", null, 0, -1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFeature_Description(), ecorePackage.getEString(), "description", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFeature_Background(), this.getBackground(), null, "background", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFeature_Scenarios(), this.getScenario(), null, "scenarios", null, 0, -1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(backgroundEClass, Background.class, "Background", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getBackground_Steps(), this.getGiven(), null, "steps", null, 0, -1, Background.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -827,16 +839,13 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
     initEReference(getStep_Code(), this.getCode(), null, "code", null, 0, 1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(givenEClass, Given.class, "Given", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getGiven_And(), ecorePackage.getEString(), "and", null, 0, -1, Given.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getGiven_And_code(), this.getCode(), null, "and_code", null, 0, -1, Given.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGiven_And(), this.getAnd(), null, "and", null, 0, -1, Given.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(whenEClass, When.class, "When", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getWhen_And(), ecorePackage.getEString(), "and", null, 0, -1, When.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getWhen_And_code(), this.getCode(), null, "and_code", null, 0, -1, When.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getWhen_And(), this.getAnd(), null, "and", null, 0, -1, When.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(thenEClass, Then.class, "Then", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getThen_And(), ecorePackage.getEString(), "and", null, 0, -1, Then.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getThen_And_code(), this.getCode(), null, "and_code", null, 0, -1, Then.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getThen_And(), this.getAnd(), null, "and", null, 0, -1, Then.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(andEClass, And.class, "And", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
