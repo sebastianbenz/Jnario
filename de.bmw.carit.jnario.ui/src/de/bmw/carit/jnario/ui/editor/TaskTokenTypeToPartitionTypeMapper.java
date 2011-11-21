@@ -21,13 +21,17 @@ public class TaskTokenTypeToPartitionTypeMapper extends TerminalsTokenTypeToPart
 		HashSet<String> noCodeTokens = Sets.newHashSet(
 				"RULE_SCENARIO_TEXT", 
 				"RULE_FEATURE_TEXT",
+				"RULE_IN_ORDER_TEXT",
+				"RULE_AS_A_TEXT",
+				"RULE_I_WANT_TEXT",
 				"RULE_GIVEN_TEXT",
 				"RULE_WHEN_TEXT",
 				"RULE_THEN_TEXT",
 				"RULE_AND_TEXT",
 				"RULE_BACKGROUND_TEXT",
 				"RULE_EXAMPLE_TEXT",
-				"RULE_ANY_OTHER");
+				"RULE_ANY_OTHER",
+				"RULE_EXAMPLE_ROW_END");
 		if(noCodeTokens.contains(tokenName)){
 			return NONE_CODE_PARTITION;
 		}

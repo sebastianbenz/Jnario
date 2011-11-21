@@ -29,7 +29,7 @@ import org.eclipse.xtext.ui.editor.XtextEditor;
 
 public class JnarioEditor extends XtextEditor {
 
-	private static final RGB NONE_CODE_COLOR = new RGB(125, 125, 125);
+	private static final RGB NONE_CODE_COLOR = new RGB(245, 245, 245);
 
 	public class CodeBackgroundColorizer implements LineBackgroundListener {
 		private Color background;
@@ -64,7 +64,7 @@ public class JnarioEditor extends XtextEditor {
 
 		private Color getBackgroundColor() {
 			if (background == null) {
-				background = new Color(Display.getDefault(), new RGB(245,  245,  245));
+				background = new Color(Display.getDefault(), NONE_CODE_COLOR);
 			}
 			return background;
 		}
