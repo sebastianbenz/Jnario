@@ -15,50 +15,47 @@ import static org.eclipse.jface.text.IDocumentExtension3.DEFAULT_PARTITIONING;
 import static org.eclipse.jface.text.TextUtilities.getContentType;
 
 import org.eclipse.jface.text.BadLocationException;
+import org.eclipse.jface.text.IDocument;
+import org.eclipse.jface.text.projection.ProjectionMapping;
 import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.jface.text.source.IVerticalRuler;
 import org.eclipse.swt.custom.LineBackgroundEvent;
 import org.eclipse.swt.custom.LineBackgroundListener;
+import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.xtext.ui.editor.XtextEditor;
+import org.eclipse.xtext.ui.editor.XtextSourceViewer;
 
-//import de.sebastianbenz.task.ui.highlighting.ColorScheme;
+import com.google.inject.Inject;
 
 public class JnarioEditor extends XtextEditor {
 
 	private static final RGB NONE_CODE_COLOR = new RGB(245, 245, 245);
+	
 
 	public class CodeBackgroundColorizer implements LineBackgroundListener {
 		private Color background;
 
-		public void lineGetBackground(LineBackgroundEvent event) {
-//			int previousLine = event.lineOffset - 1;
-//			if (!isCode(previousLine)) {
-//				return;
-//			}
+		public void lineGetBackground(LineBackgroundEvent event) {	
 			
 			String trimedLine = event.lineText.trim();
 			if(trimedLine.isEmpty()){
 				event.lineBackground = getBackgroundColor();
 			}
-			
-//			int currentLine = event.lineOffset;
-//			if (isNotCode(currentLine)) {
-//				return;
-//			}
 
-			int leftContentType = event.lineOffset + event.lineText.length();
-			if (!isNotCode(leftContentType)) {
+			// get offset in displayed document
+			int imageDocumentOffset = event.lineOffset + event.lineText.length() - 1;
+			
+			// get offset in original document for matching with contentType
+			XtextSourceViewer viewer = (XtextSourceViewer) getSourceViewer();
+			int originalDocumentOffset = viewer.widgetOffset2ModelOffset(imageDocumentOffset);
+			
+			if (!isNotCode(originalDocumentOffset)) {
 				return;
 			}
-
-//			int nextLine = event.lineOffset + event.lineText.length() +2;
-//			if (!isCode(nextLine)) {
-//				return;
-//			}
 			event.lineBackground = getBackgroundColor();
 		}
 
