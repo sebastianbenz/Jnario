@@ -418,7 +418,7 @@
  </extension>
 	<extension point="org.eclipse.ui.menus">
 		<menuContribution 
-			locationURI="toolbar:org.eclipse.ui.main.toolbar">
+			locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
 			<toolbar
 				id="de.bmw.carit.jnarioToolbar">
 				<command
@@ -427,6 +427,11 @@
           id="de.bmw.carit.jnario.ui.showCodeCommand"
           label="Show/Hide Code"
           style="toggle">
+       <visibleWhen
+                 checkEnabled="false">
+              <reference definitionId="de.bmw.carit.jnario.Jnario.Editor.opened">
+                	</reference>
+           </visibleWhen>
 				</command>
 			</toolbar>
 		</menuContribution>
