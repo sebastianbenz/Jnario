@@ -1,66 +1,59 @@
 package de.bmw.carit.jnario.ui.editor;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.nodemodel.ICompositeNode;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.ui.editor.folding.DefaultFoldingRegionProvider;
 import org.eclipse.xtext.ui.editor.folding.IFoldingRegionAcceptor;
 import org.eclipse.xtext.util.ITextRegion;
+import org.eclipse.xtext.xbase.XBlockExpression;
+import org.eclipse.xtext.xtend2.xtend2.XtendImport;
+
+import de.bmw.carit.jnario.jnario.Code;
+import de.bmw.carit.jnario.jnario.Feature;
+import de.bmw.carit.jnario.jnario.Step;
 
 public class FoldingRegionProvider extends DefaultFoldingRegionProvider {
 
 	protected void computeObjectFolding(EObject eObject, IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor) {
-//		if(eObject instanceof XtendImport){
-//			XtendImport imports = (XtendImport)eObject;
-//			
-//			// fold imports		
-//			if(!imports.ge){
-//				ITextRegion beginRegion = getLocationInFileProvider().getFullTextRegion(jnario);
-//				if(beginRegion != null){
-//					int begin = beginRegion.getOffset() + beginRegion.getLength();
-//					Scenario scenario = jnario.getScenarios().get(0);
-//					if(scenario != null){
-//						ITextRegion endRegion = getLocationInFileProvider().getFullTextRegion(scenario);
-//						int end = endRegion.getOffset() - 1;
-//						foldingRegionAcceptor.accept(begin, end);
-//					}
-//				}
-//			}
-//		}
-		
-//		if(eObject instanceof File){
-//			File file = (File) eObject;
-//			ITextRegion beginRegion = getLocationInFileProvider().getSignificantTextRegion(file);
-//			if(beginRegion != null){
-//				int begin = beginRegion.getLength() - 1;
-//				if(!file.getScenarios().isEmpty()){
-//				Scenario scenario = file.;
-//					if(scenario != null){
-//						ICompositeNode node = NodeModelUtils.getNode(scenario);
-//						int end = node.getOffset() - 10;
-//						foldingRegionAcceptor.accept(begin, end);
-//						return;
-//					}
-//				}
-//			}
-//		}
-		
-//		// don't fold examples
-//		ITextRegion region = locationInFileProvider.getFullTextRegion(eObject);
-//		if (region != null) {
-//			ITextRegion significant = locationInFileProvider.getSignificantTextRegion(eObject);
-//			if (significant == null)
-//				throw new NullPointerException("significant region may not be null");
-//			int offset = region.getOffset();
-//			foldingRegionAcceptor.accept(offset, region.getLength(), significant);
-//		}
-//		
-//		if(container.getChildren().isEmpty()){
-//			return;
-//		}
-		super.computeObjectFolding(eObject, foldingRegionAcceptor);
+		if(eObject instanceof Feature){
+			Feature feature = (Feature)eObject;
+			calculateFolding(feature, foldingRegionAcceptor);
+		}else if(eObject instanceof Step){
+			Step step = (Step)eObject;
+			calculateFolding(step, foldingRegionAcceptor);
+		}
 	}
-	
-	@Override
-	protected boolean shouldProcessContent(EObject object) {
-		return false;
+
+	private void calculateFolding(Feature feature, IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor) {
+		int begin = getBegin(feature);
+		if(begin >= 0 && !feature.getImports().isEmpty()){
+			EList<XtendImport> imports = feature.getImports();
+			XtendImport xtendImport = imports.get(imports.size()-1);
+			setFoldingRegion(xtendImport, begin, foldingRegionAcceptor);
+		}
+	}
+
+	private void calculateFolding(Step step, IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor){
+		int begin = getBegin(step);
+		if(begin >= 0 && step.getCode() != null){
+			Code code = step.getCode();
+			setFoldingRegion(code, begin, foldingRegionAcceptor);
+		}
+	}
+
+	private int getBegin(EObject object){
+		ITextRegion beginRegion = getLocationInFileProvider().getSignificantTextRegion(object);
+		if(beginRegion == null){
+			return -1;
+		}
+		return beginRegion.getOffset() + beginRegion.getLength() - 1;
+	}
+
+	private void setFoldingRegion(EObject object, int begin, IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor){
+		ICompositeNode node = NodeModelUtils.getNode(object);
+		int offset = node.getOffset() + node.getLength() - begin;
+		foldingRegionAcceptor.accept(begin, offset);
 	}
 }

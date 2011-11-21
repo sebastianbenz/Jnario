@@ -410,28 +410,33 @@
     </extension>
 	
  <extension
-       point="org.eclipse.ui.actionSets">
-    <actionSet
-          id="de.bmw.carit.jnario.ui.showHideCodeActionSet"
-          label="showCode"
-          visible="true">
-       <action
-             class="de.bmw.carit.jnario.ui.editor.ShowCodeAction"
-             icon="icons/jnario.gif"
-             id="de.bmw.carit.jnario.ui.showHideCodeAction"
-             label="showCode"
-             menubarPath="test/whatever"
-             state="true"
-             style="push"
-             toolbarPath="Normal/Jnario"
-             tooltip="show/hide code">
-          <enablement>
-			  <and>
-			   <objectClass name="org.eclipse.core.resources.IFile"/>
-			   <objectState name="extension" value="jnario"/>
-			  </and>
-			 </enablement>
-       </action>
-    </actionSet>
+       point="org.eclipse.ui.commands">
+    <command
+          id="de.bmw.carit.jnario.ui.showCodeCommand"
+          name="de.bmw.carit.jnario.ui.showCodeCommand">
+    </command>
  </extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution 
+			locationURI="toolbar:org.eclipse.ui.main.toolbar">
+			<toolbar
+				id="de.bmw.carit.jnarioToolbar">
+				<command
+          commandId="de.bmw.carit.jnario.ui.showCodeCommand"
+          icon="icons/jnario.gif"
+          id="de.bmw.carit.jnario.ui.showCodeCommand"
+          label="Show/Hide Code"
+          style="toggle">
+				</command>
+			</toolbar>
+		</menuContribution>
+ 	 </extension>
+ 	 
+ 	 <extension
+      point="org.eclipse.ui.handlers">
+   <handler
+         class="de.bmw.carit.jnario.ui.editor.ShowCodeHandler"
+         commandId="de.bmw.carit.jnario.ui.showCodeCommand">
+   </handler>
+</extension>
 </plugin>

@@ -63,7 +63,7 @@ public class JnarioObjectExtensions extends ObjectExtensions{
         return is(instanceOf(type));
     }
     
-	/*
+	
 	
 	public static <T> Specification<T> should(T input) {
 		return new Specification<T>(input, Collections.<Step> emptyList());
@@ -104,5 +104,5 @@ public class JnarioObjectExtensions extends ObjectExtensions{
 	public static <T> Specification<T> be(Specification<T> actual) {
 		return actual;
 	}
-	*/
+	
 }
