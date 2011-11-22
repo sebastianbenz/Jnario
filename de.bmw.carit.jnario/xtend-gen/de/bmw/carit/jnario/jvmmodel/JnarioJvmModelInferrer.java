@@ -114,27 +114,17 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
                     Background _background_1 = _feature_2.getBackground();
                     HashMap<String,JvmTypeReference> _generateVariables_1 = JnarioJvmModelInferrer.this.generateVariables(_background_1);
                     final HashMap<String,JvmTypeReference> backgroundVariables = _generateVariables_1;
-                    Set<String> _keySet = backgroundVariables.keySet();
-                    for (final String variable : _keySet) {
-                      {
-                        JvmTypeReference _get = backgroundVariables.get(variable);
-                        JvmTypeReference type = _get;
-                        EList<JvmMember> _members = it.getMembers();
-                        JvmField _field = JnarioJvmModelInferrer.this._jvmTypesBuilder.toField(scenario, variable, type);
-                        CollectionExtensions.<JvmField>operator_add(_members, _field);
-                      }
-                    }
                     variables.putAll(backgroundVariables);
                   }
                 }
-                Set<String> _keySet_1 = variables.keySet();
-                for (final String variable_1 : _keySet_1) {
+                Set<String> _keySet = variables.keySet();
+                for (final String variable : _keySet) {
                   {
-                    JvmTypeReference _get_1 = variables.get(variable_1);
-                    JvmTypeReference type_1 = _get_1;
-                    EList<JvmMember> _members_1 = it.getMembers();
-                    JvmField _field_1 = JnarioJvmModelInferrer.this._jvmTypesBuilder.toField(scenario, variable_1, type_1);
-                    CollectionExtensions.<JvmField>operator_add(_members_1, _field_1);
+                    JvmTypeReference _get = variables.get(variable);
+                    JvmTypeReference type = _get;
+                    EList<JvmMember> _members = it.getMembers();
+                    JvmField _field = JnarioJvmModelInferrer.this._jvmTypesBuilder.toField(scenario, variable, type);
+                    CollectionExtensions.<JvmField>operator_add(_members, _field);
                   }
                 }
                 EList<Examples> _examples = scenario.getExamples();
@@ -175,8 +165,8 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
                         }
                       };
                     JnarioJvmModelInferrer.this._jvmTypesBuilder.setBody(constructor, _function_1);
-                    EList<JvmMember> _members_2 = it.getMembers();
-                    CollectionExtensions.<JvmConstructor>operator_add(_members_2, constructor);
+                    EList<JvmMember> _members_1 = it.getMembers();
+                    CollectionExtensions.<JvmConstructor>operator_add(_members_1, constructor);
                   }
                 }
                 EList<Step> _steps = scenario.getSteps();

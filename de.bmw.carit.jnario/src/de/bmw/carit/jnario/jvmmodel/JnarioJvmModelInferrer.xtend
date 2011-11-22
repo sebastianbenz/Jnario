@@ -67,10 +67,6 @@ class JnarioJvmModelInferrer extends AbstractModelInferrer {
 					val variables = scenario.generateVariables
 					if(jnario.feature.background != null){
 						val backgroundVariables = jnario.feature.background.generateVariables
-						for(variable: backgroundVariables.keySet){
-							var type = backgroundVariables.get(variable)
-							members += scenario.toField(variable, type)
-						}
 						variables.putAll(backgroundVariables)
 					}
 					
