@@ -1,28 +1,7 @@
 package de.bmw.carit.jnario.tests.scoping;
-import java.util.Set;
-
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.xtext.resource.IEObjectDescription;
-import org.eclipse.xtext.scoping.IScope;
-import org.eclipse.xtext.scoping.IScopeProvider;
-import org.eclipse.xtext.xbase.XVariableDeclaration;
-import org.eclipse.xtext.xbase.XbasePackage;
 import org.junit.Test;
 
-import com.google.common.base.Function;
-import com.google.inject.Inject;
-
-import de.bmw.carit.jnario.tests.util.Features;
-import de.bmw.carit.jnario.tests.util.ModelStore;
-import de.bmw.carit.jnario.tests.util.Query;
 import de.bmw.carit.jnario.tests.util.RuntimeTest;
-
-import static com.google.common.collect.Iterables.transform;
-import static com.google.common.collect.Sets.newHashSet;
-import static org.junit.matchers.JUnitMatchers.hasItem;
-import static org.junit.Assert.*;
-import static org.junit.Assert.assertThat;
 
 
 

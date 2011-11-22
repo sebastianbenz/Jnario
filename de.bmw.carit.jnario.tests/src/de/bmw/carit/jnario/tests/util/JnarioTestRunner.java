@@ -1,90 +1,131 @@
 package de.bmw.carit.jnario.tests.util;
 
+import static org.junit.Assert.assertThat;
+import static org.junit.experimental.results.ResultMatchers.isSuccessful;
+
+import java.io.IOException;
+import java.util.Collection;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-import org.eclipse.xtext.junit4.IInjectorProvider;
-import org.eclipse.xtext.junit4.IRegistryConfigurator;
-import org.eclipse.xtext.junit4.InjectWith;
-import org.junit.runners.BlockJUnit4ClassRunner;
-import org.junit.runners.model.FrameworkMethod;
-import org.junit.runners.model.InitializationError;
-import org.junit.runners.model.Statement;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.URIConverter;
+import org.eclipse.xtext.junit4.GlobalRegistries;
+import org.eclipse.xtext.junit4.GlobalRegistries.GlobalStateMemento;
+import org.eclipse.xtext.resource.XtextResourceSet;
+import org.eclipse.xtext.util.Files;
+import org.junit.runner.Description;
+import org.junit.runner.Runner;
+import org.junit.runner.notification.Failure;
+import org.junit.runner.notification.RunNotifier;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Maps;
-import com.google.inject.Injector;
+import com.google.inject.Inject;
 
-public class JnarioTestRunner extends BlockJUnit4ClassRunner {
-	private static Map<Class<?>, IInjectorProvider> injectorProviderClassCache = Maps
-			.newHashMap();
+import de.bmw.carit.jnario.jnario.Jnario;
 
-	public JnarioTestRunner(Class<?> klass) throws InitializationError {
-		super(klass);
-	}
+public class JnarioTestRunner extends Runner {
 
-	@Override
-	protected Object createTest() throws Exception {
-		Object object = super.createTest();
-		IInjectorProvider injectorProvider = getOrCreateInjectorProvider();
-		if (injectorProvider instanceof IRegistryConfigurator) {
-			((IRegistryConfigurator) injectorProvider).setupRegistry();
-		}
-		if (injectorProvider != null) {
-			try {
-				Injector injector = injectorProvider.getInjector();
-				if (injector != null) {
-					injector.injectMembers(object);
-				}
-			} catch (Exception e) {
-				// ignore UI tests
-			}
-		}
-		return object;
-	}
+	private static final String MODEL_EXTENSION = "jnario";
 
-	@Override
-	protected Statement methodBlock(FrameworkMethod method) {
-		final Statement methodBlock = super.methodBlock(method);
-		if (getInjectorProvider() instanceof IRegistryConfigurator) {
-			return new Statement() {
-				@Override
-				public void evaluate() throws Throwable {
-					try {
-						methodBlock.evaluate();
-					} finally {
-						IInjectorProvider injectorProvider = getInjectorProvider();
-						if (injectorProvider instanceof IRegistryConfigurator) {
-							((IRegistryConfigurator) injectorProvider).restoreRegistry();
-						}
-						
-					}
-				}
-			};
-		}
-		return methodBlock;
-	}
+	private Map<Description, URI> descriptions;
 
-	protected IInjectorProvider getOrCreateInjectorProvider() throws Exception {
-		IInjectorProvider injectorProvider = getInjectorProvider();
-		if (injectorProvider == null) {
-			injectorProvider = createInjectorProvider();
-			injectorProviderClassCache.put(getTestClass().getJavaClass(),
-					injectorProvider);
-		}
-		return injectorProvider;
-	}
+	protected final Class<?> klass;
 
-	protected IInjectorProvider getInjectorProvider() {
-		return injectorProviderClassCache.get(getTestClass().getJavaClass());
-	}
+	protected ResourceSet resourceSet = new XtextResourceSet();
+	private Description rootDescription;
 
-	protected IInjectorProvider createInjectorProvider() throws Exception {
-		IInjectorProvider injectorProvider = null;
-		InjectWith injectWith = getTestClass().getJavaClass().getAnnotation(
-				InjectWith.class);
-		if (injectWith != null) {
-			injectorProvider = injectWith.value().newInstance();
-		}
-		return injectorProvider;
-	}
+	private GlobalStateMemento state;
 	
+	@Inject
+	private JnarioExecutor jnarioExecutor;
+
+	public JnarioTestRunner(Class<?> klass) {
+		super();
+		this.klass = klass;
+	}
+
+	protected void initializeRegistries() {
+		state = GlobalRegistries.makeCopyOfGlobalState();
+		new TestSetup().createInjectorAndDoEMFRegistration().injectMembers(this);
+	}
+
+	@Override
+	public Description getDescription() {
+		if (rootDescription == null) {
+			rootDescription = Description.createSuiteDescription(klass
+					.getName());
+			rootDescription.getChildren().addAll(testDescriptions());
+		}
+		return rootDescription;
+	}
+
+	private Collection<? extends Description> testDescriptions() {
+		if (descriptions == null) {
+			descriptions = Maps.newHashMap();
+			IUriProvider uris = ClassPathUriProvider.startingFrom(klass).select(
+					new Predicate<URI>() {
+
+						public boolean apply(URI uri) {
+							return uri.fileExtension().toLowerCase().equals(MODEL_EXTENSION);
+						}
+
+					});
+			for (URI input : uris.allUris()) {
+				descriptions
+						.put(Description.createTestDescription(klass,
+								stripFileExtension(input.lastSegment())), input);
+			}
+
+		}
+		return descriptions.keySet();
+	}
+
+	private String stripFileExtension(String name) {
+		return name.substring(0, name.length() - MODEL_EXTENSION.length() - 1);
+	}
+
+	@Override
+	public void run(RunNotifier notifier) {
+		initializeRegistries();
+		try {
+			for (Entry<Description, URI> entry : allDescriptions()) {
+				Description description = entry.getKey();
+				notifier.fireTestStarted(description);
+				try {
+					run(entry.getValue());
+				} catch (Throwable e) {
+					notifier.fireTestFailure(new Failure(description, e));
+				}
+				resourceSet.getResources().clear();
+				notifier.fireTestFinished(description);
+			}
+		} finally {
+			state.restoreGlobalState();
+		}
+	}
+
+	public Set<Entry<Description, URI>> allDescriptions() {
+		getDescription();
+		return descriptions.entrySet();
+	}
+
+	private void run(URI uri) {
+		assertThat(jnarioExecutor.run(load(uri)), isSuccessful());
+	}
+
+	protected Jnario load(URI input) {
+		Resource resource = resourceSet.getResource(input, true);
+		return (Jnario) resource.getContents().get(0);
+	}
+
+	protected String toString(URI outputPath) throws IOException {
+		return Files.readStreamIntoString(URIConverter.INSTANCE
+				.createInputStream(outputPath));
+	}
+
 }

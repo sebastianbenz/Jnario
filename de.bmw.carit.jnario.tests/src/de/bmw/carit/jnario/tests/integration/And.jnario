@@ -1,9 +1,10 @@
+package de.bmw.carit.jnario.tests
 Feature: Parsing simple jnario files.
 Scenario: And stuff.
 Given some variables.
-	var x
-	var y
-	var z
+	var int x
+	var int y
+	var int z
 And some values.
 	x = 5
 	y = 3

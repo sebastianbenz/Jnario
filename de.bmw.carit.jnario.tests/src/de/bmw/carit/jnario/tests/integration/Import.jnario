@@ -1,0 +1,14 @@
+package de.bmw.carit.jnario.tests
+
+Feature: Parsing simple jnario files.
+	
+	import static org.hamcrest.core.Is.*
+	import org.junit.Assert.*
+	
+	Scenario: Import stuff.
+		Given some variables.
+			var x = 3
+			var y = 4
+			var z = 5
+		When I add them
+		Then the sum should be the result.

@@ -1,12 +1,11 @@
+package de.bmw.carit.jnario.tests
+
 Feature: Parsing simple jnario files.
 Scenario: Parse "and" and code.
 Given some variables.
-	var x
-	var y
-	var z
 When I add them
 Then the sum should be the result.
-	
+	(x + y).should.be(z)
 Examples:
 |x|y|z|
 |1|2|3|

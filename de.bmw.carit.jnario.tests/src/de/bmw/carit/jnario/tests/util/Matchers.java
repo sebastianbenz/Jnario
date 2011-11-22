@@ -18,7 +18,6 @@ import org.hamcrest.Matcher;
 import org.junit.internal.matchers.TypeSafeMatcher;
 
 import com.google.common.base.Predicate;
-import com.google.common.collect.Sets;
 
 @SuppressWarnings("restriction")
 public class Matchers extends CoreMatchers{

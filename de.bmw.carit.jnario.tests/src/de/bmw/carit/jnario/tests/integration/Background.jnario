@@ -1,3 +1,5 @@
+package de.bmw.carit.jnario.tests
+
 Feature: A new feature.
 Background:
 	Given a user name.
