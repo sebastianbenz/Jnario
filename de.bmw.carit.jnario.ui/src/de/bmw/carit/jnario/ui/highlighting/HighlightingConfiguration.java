@@ -2,13 +2,10 @@ package de.bmw.carit.jnario.ui.highlighting;
 
 import static org.eclipse.jface.resource.JFaceResources.getDefaultFontDescriptor;
 
-import javax.swing.text.StyledEditorKit.BoldAction;
-
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.RGB;
-import org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfigurationAcceptor;
 import org.eclipse.xtext.ui.editor.utils.TextStyle;
 import org.eclipse.xtext.xbase.ui.highlighting.XbaseHighlightingConfiguration;

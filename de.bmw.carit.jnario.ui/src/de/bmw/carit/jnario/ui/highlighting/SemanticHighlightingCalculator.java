@@ -2,7 +2,6 @@ package de.bmw.carit.jnario.ui.highlighting;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.regex.Pattern;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
@@ -19,7 +18,7 @@ import de.bmw.carit.jnario.jnario.util.JnarioSwitch;
 
 public class SemanticHighlightingCalculator extends XbaseHighlightingCalculator {
 
-	private static final Pattern PLACEHOLDER = Pattern.compile("<[^<\\r\\n]*>");
+//	private static final Pattern PLACEHOLDER = Pattern.compile("<[^<\\r\\n]*>");
 
 	private class Implementation extends JnarioSwitch<Boolean> {
 
