@@ -17,6 +17,7 @@ public class TestSetup extends JnarioStandaloneSetup {
 				return JnarioTestRunner.class.getClassLoader();
 			}
 			
+			@SuppressWarnings("unused")
 			public Class<? extends BehaviorExecutor> bindBehaviorExecutor() {
 				return JnarioExecutor.class;
 			}

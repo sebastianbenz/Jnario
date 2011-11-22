@@ -17,6 +17,7 @@ public class TestSetup extends SpecStandaloneSetup {
 				return SpecTestRunner.class.getClassLoader();
 			}
 			
+			@SuppressWarnings("unused")
 			public Class<? extends BehaviorExecutor> bindBehaviorExecutor() {
 				return SpecExecutor.class;
 			}
