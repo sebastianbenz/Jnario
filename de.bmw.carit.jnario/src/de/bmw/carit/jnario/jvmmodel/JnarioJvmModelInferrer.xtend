@@ -65,7 +65,11 @@ class JnarioJvmModelInferrer extends AbstractModelInferrer {
 					packageName = jnario.feature.packageName
 					documentation = scenario.documentation
 					val variables = scenario.generateVariables
+					var hasBackground = false
 					if(jnario.feature.background != null){
+						hasBackground = true
+					}
+					if(hasBackground){
 						val backgroundVariables = jnario.feature.background.generateVariables
 						variables.putAll(backgroundVariables)
 					}
@@ -91,6 +95,15 @@ class JnarioJvmModelInferrer extends AbstractModelInferrer {
 						]
 						members += constructor
 					}
+					if(hasBackground){
+						for (step : jnario.feature.background.steps) {
+							transform(step, it)
+							for(and: step.and){
+								transform(and, it)
+							}			
+						}
+					}
+					
 					for (step : scenario.getSteps) {
 						transform(step, it)
 						if(step instanceof Given){

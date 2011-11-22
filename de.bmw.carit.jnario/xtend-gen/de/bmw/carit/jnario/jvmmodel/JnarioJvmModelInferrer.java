@@ -105,10 +105,14 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
                 JnarioJvmModelInferrer.this._jvmTypesBuilder.setDocumentation(it, _documentation);
                 HashMap<String,JvmTypeReference> _generateVariables = JnarioJvmModelInferrer.this.generateVariables(scenario);
                 final HashMap<String,JvmTypeReference> variables = _generateVariables;
+                boolean hasBackground = false;
                 Feature _feature_1 = jnario.getFeature();
                 Background _background = _feature_1.getBackground();
                 boolean _operator_notEquals = ObjectExtensions.operator_notEquals(_background, null);
                 if (_operator_notEquals) {
+                  hasBackground = true;
+                }
+                if (hasBackground) {
                   {
                     Feature _feature_2 = jnario.getFeature();
                     Background _background_1 = _feature_2.getBackground();
@@ -169,33 +173,47 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
                     CollectionExtensions.<JvmConstructor>operator_add(_members_1, constructor);
                   }
                 }
-                EList<Step> _steps = scenario.getSteps();
-                for (final Step step : _steps) {
+                if (hasBackground) {
+                  Feature _feature_3 = jnario.getFeature();
+                  Background _background_2 = _feature_3.getBackground();
+                  EList<Given> _steps = _background_2.getSteps();
+                  for (final Given step : _steps) {
+                    {
+                      JnarioJvmModelInferrer.this.transform(step, it);
+                      EList<And> _and = step.getAnd();
+                      for (final And and : _and) {
+                        JnarioJvmModelInferrer.this.transform(and, it);
+                      }
+                    }
+                  }
+                }
+                EList<Step> _steps_1 = scenario.getSteps();
+                for (final Step step_1 : _steps_1) {
                   {
-                    JnarioJvmModelInferrer.this.transform(step, it);
-                    if ((step instanceof Given)) {
+                    JnarioJvmModelInferrer.this.transform(step_1, it);
+                    if ((step_1 instanceof Given)) {
                       {
-                        Given given = ((Given) step);
-                        EList<And> _and = given.getAnd();
-                        for (final And and : _and) {
-                          JnarioJvmModelInferrer.this.transform(and, it);
+                        Given given = ((Given) step_1);
+                        EList<And> _and_1 = given.getAnd();
+                        for (final And and_1 : _and_1) {
+                          JnarioJvmModelInferrer.this.transform(and_1, it);
                         }
                       }
                     } else {
-                      if ((step instanceof When)) {
+                      if ((step_1 instanceof When)) {
                         {
-                          When when = ((When) step);
-                          EList<And> _and_1 = when.getAnd();
-                          for (final And and_1 : _and_1) {
-                            JnarioJvmModelInferrer.this.transform(and_1, it);
+                          When when = ((When) step_1);
+                          EList<And> _and_2 = when.getAnd();
+                          for (final And and_2 : _and_2) {
+                            JnarioJvmModelInferrer.this.transform(and_2, it);
                           }
                         }
                       } else {
                         {
-                          Then then = ((Then) step);
-                          EList<And> _and_2 = then.getAnd();
-                          for (final And and_2 : _and_2) {
-                            JnarioJvmModelInferrer.this.transform(and_2, it);
+                          Then then = ((Then) step_1);
+                          EList<And> _and_3 = then.getAnd();
+                          for (final And and_3 : _and_3) {
+                            JnarioJvmModelInferrer.this.transform(and_3, it);
                           }
                         }
                       }
