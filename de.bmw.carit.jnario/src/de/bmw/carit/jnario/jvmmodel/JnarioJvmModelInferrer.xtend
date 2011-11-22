@@ -25,6 +25,7 @@ import org.junit.runner.RunWith
 
 import static com.google.common.collect.Iterators.*
 import static com.google.common.collect.Sets.*
+import org.eclipse.emf.ecore.util.EcoreUtil
 
 
 
@@ -57,74 +58,76 @@ class JnarioJvmModelInferrer extends AbstractModelInferrer {
 	 *        must not rely on linking using the index if iPrelinkingPhase is <code>true</code>
 	 */
    	def dispatch void infer(Jnario jnario, IAcceptor<JvmDeclaredType> acceptor, boolean isPrelinkingPhase) {
-		for(scenario: jnario.feature.scenarios){
-			val className = jnario.feature.name.javaClassName + scenario.name.javaClassName
-			acceptor.accept(
-				scenario.toClass(className) [
-					annotations += scenario.toAnnotation(typeof(RunWith), typeof(ScenarioRunner))
-					packageName = jnario.feature.packageName
-					documentation = scenario.documentation
-					val variables = scenario.generateVariables
-					var hasBackground = false
-					if(jnario.feature.background != null){
-						hasBackground = true
-					}
-					if(hasBackground){
-						val backgroundVariables = jnario.feature.background.generateVariables
-						variables.putAll(backgroundVariables)
-					}
-					
-					for(variable: variables.keySet){
-						var type = variables.get(variable)
-						members += scenario.toField(variable, type)
-					}
-					
-					if(!scenario.examples.empty){
-						var constructor = scenario.toConstructor(className)[
-							for(variable: variables.keySet){
-								var type = variables.get(variable)
-								parameters += scenario.toParameter(variable, type)			
-							}	
-						]
-						constructor.setBody()[
-							'''
-							«FOR variable: variables.keySet»
-								this.«variable» = «variable»
-							«ENDFOR»
-							'''
-						]
-						members += constructor
-					}
-					if(hasBackground){
-						for (step : jnario.feature.background.steps) {
-							transform(step, it)
-							for(and: step.and){
-								transform(and, it)
-							}			
+   		if(jnario.feature != null){
+			for(scenario: jnario.feature.scenarios){
+				val className = jnario.feature.name.javaClassName + scenario.name.javaClassName
+				acceptor.accept(
+					scenario.toClass(className) [
+						annotations += scenario.toAnnotation(typeof(RunWith), typeof(ScenarioRunner))
+						packageName = jnario.feature.packageName
+						documentation = scenario.documentation
+						val variables = scenario.generateVariables
+						var hasBackground = false
+						if(jnario.feature.background != null){
+							hasBackground = true
 						}
-					}
-					
-					for (step : scenario.getSteps) {
-						transform(step, it)
-						if(step instanceof Given){
-							var given = step as Given
-							for(and: given.and){
-								transform(and, it)
+						if(hasBackground){
+							val backgroundVariables = jnario.feature.background.generateVariables
+							variables.putAll(backgroundVariables)
+						}
+						
+						for(variable: variables.keySet){
+							var type = variables.get(variable)
+							members += scenario.toField(variable, type)
+						}
+						
+						if(!scenario.examples.empty){
+							var constructor = scenario.toConstructor(className)[
+								for(variable: variables.keySet){
+									var type = variables.get(variable)
+									parameters += scenario.toParameter(variable, type)			
+								}	
+							]
+							constructor.setBody()[
+								'''
+								«FOR variable: variables.keySet»
+									this.«variable» = «variable»
+								«ENDFOR»
+								'''
+							]
+							members += constructor
+						}
+						if(hasBackground){
+							for (step : jnario.feature.background.steps) {
+								transform(step, it)
+								for(and: step.and){
+									transform(and, it)
+								}			
 							}
-						}else if(step instanceof When){
-							var when = step as When
-							for(and: when.and){
-								transform(and, it)
-							}
-						}else{
-							var then = step as Then
-							for(and: then.and){
-								transform(and, it)
-							}
-						}				
-					}
-				]
-			)
+						}
+						
+						for (step : scenario.getSteps) {
+							transform(step, it)
+							if(step instanceof Given){
+								var given = step as Given
+								for(and: given.and){
+									transform(and, it)
+								}
+							}else if(step instanceof When){
+								var when = step as When
+								for(and: when.and){
+									transform(and, it)
+								}
+							}else{
+								var then = step as Then
+								for(and: then.and){
+									transform(and, it)
+								}
+							}				
+						}
+					]
+				)
+			}
 		}
    	}
 
@@ -159,6 +162,7 @@ class JnarioJvmModelInferrer extends AbstractModelInferrer {
 
 	def transform(Step step, JvmGenericType inferredJvmType) {
 		if(step.getCode() != null){
+			//val copiedExpression = EcoreUtil::copy(step.code.blockExpression);
 			var operation = toMethod(step, step.name.javaMethodName, getTypeForName(Void::TYPE, step))[
 				body = step.code.blockExpression
 			]

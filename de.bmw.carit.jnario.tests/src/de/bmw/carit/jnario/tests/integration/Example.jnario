@@ -1,4 +1,4 @@
-package de.bmw.carit.jnario.tests
+/*package de.bmw.carit.jnario.tests
 
 Feature: Parsing simple jnario files.
 Scenario: Parse "and" and code.
@@ -16,4 +16,4 @@ Examples: some examples
 |4|		
 Examples: some other examples
 |x|
-|"y"|
+|"y"|*/

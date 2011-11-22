@@ -1279,17 +1279,10 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     feature=Feature
+	 *     feature=Feature?
 	 */
 	protected void sequence_Jnario(EObject context, Jnario semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, JnarioPackage.Literals.JNARIO__FEATURE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JnarioPackage.Literals.JNARIO__FEATURE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getJnarioAccess().getFeatureFeatureParserRuleCall_0(), semanticObject.getFeature());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

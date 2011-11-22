@@ -126,7 +126,7 @@ public class AbstractJnarioSyntacticSequencer extends AbstractSyntacticSequencer
 	
 	/**
 	 * Syntax:
-	 *     PIPE_SPACES | PIPE
+	 *     PIPE | PIPE_SPACES
 	 */
 	protected void emit_ExampleCell_PIPETerminalRuleCall_0_0_or_PIPE_SPACESTerminalRuleCall_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -134,7 +134,7 @@ public class AbstractJnarioSyntacticSequencer extends AbstractSyntacticSequencer
 	
 	/**
 	 * Syntax:
-	 *     PIPE | PIPE_SPACES
+	 *     PIPE_SPACES | PIPE
 	 */
 	protected void emit_ExampleHeadingCell_PIPETerminalRuleCall_0_0_or_PIPE_SPACESTerminalRuleCall_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

@@ -1,11 +1,11 @@
-package de.bmw.carit.jnario.tests.scoping;
-import de.bmw.carit.jnario.tests.util.RuntimeTest;
-
-
-
-//@SuppressWarnings("restriction")
-public class JnarioScopeProviderTest extends RuntimeTest {
-
+//package de.bmw.carit.jnario.tests.scoping;
+//import de.bmw.carit.jnario.tests.util.RuntimeTest;
+//
+//
+//
+////@SuppressWarnings("restriction")
+//public class JnarioScopeProviderTest extends RuntimeTest {
+//
 //	@Inject
 //	private IScopeProvider fixture;
 //	
@@ -29,5 +29,5 @@ public class JnarioScopeProviderTest extends RuntimeTest {
 //		
 //		assertThat(scopedElements, (hasItem("x")));
 //	}
-	
-}
+//	
+//}

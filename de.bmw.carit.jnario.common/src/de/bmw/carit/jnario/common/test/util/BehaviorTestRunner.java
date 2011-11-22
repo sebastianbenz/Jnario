@@ -113,12 +113,18 @@ public abstract class BehaviorTestRunner extends Runner {
 	}
 
 	private void run(URI uri) {
-		assertThat(behaviorExecutor.run(load(uri)), isSuccessful());
+		EObject object = load(uri);
+		if(object != null){
+			assertThat(behaviorExecutor.run(load(uri)), isSuccessful());
+		}
 	}
 
 	protected EObject load(URI input) {
 		Resource resource = resourceSet.getResource(input, true);
-		return resource.getContents().get(0);
+		if(!resource.getContents().isEmpty()){
+			return resource.getContents().get(0);
+		}
+		return null;		
 	}
 
 	protected String toString(URI outputPath) throws IOException {

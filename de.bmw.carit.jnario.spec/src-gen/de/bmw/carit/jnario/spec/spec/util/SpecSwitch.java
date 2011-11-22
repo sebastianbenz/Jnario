@@ -2,6 +2,7 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package de.bmw.carit.jnario.spec.spec.util;
 

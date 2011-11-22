@@ -74,7 +74,7 @@ ruleJnario
 	:
 (
 { before(grammarAccess.getJnarioAccess().getFeatureAssignment()); }
-(rule__Jnario__FeatureAssignment)
+(rule__Jnario__FeatureAssignment)?
 { after(grammarAccess.getJnarioAccess().getFeatureAssignment()); }
 )
 

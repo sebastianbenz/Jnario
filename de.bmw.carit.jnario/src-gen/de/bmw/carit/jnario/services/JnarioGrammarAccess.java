@@ -25,10 +25,10 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFeatureFeatureParserRuleCall_0 = (RuleCall)cFeatureAssignment.eContents().get(0);
 		
 		//Jnario:
-		//	feature=Feature;
+		//	feature=Feature?;
 		public ParserRule getRule() { return rule; }
 
-		//feature=Feature
+		//feature=Feature?
 		public Assignment getFeatureAssignment() { return cFeatureAssignment; }
 
 		//Feature
@@ -806,7 +806,7 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Jnario:
-	//	feature=Feature;
+	//	feature=Feature?;
 	public JnarioElements getJnarioAccess() {
 		return (pJnario != null) ? pJnario : (pJnario = new JnarioElements());
 	}

@@ -17,7 +17,7 @@
       <type metamodel="/0/@metamodelDeclarations.0">
         <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/Jnario#//Jnario"/>
       </type>
-      <alternatives xsi:type="xtext:Assignment" feature="feature" operator="=">
+      <alternatives xsi:type="xtext:Assignment" cardinality="?" feature="feature" operator="=">
         <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.1"/>
       </alternatives>
     </rules>

@@ -6,7 +6,7 @@ import "http://www.eclipse.org/xtext/Xtend2" as xtend2
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
 
 Jnario:
-	feature = Feature;
+	feature = Feature?;
 	
 Feature:
 	('package' packageName=QualifiedName)?

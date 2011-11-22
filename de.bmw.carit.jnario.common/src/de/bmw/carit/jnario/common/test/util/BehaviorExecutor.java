@@ -1,7 +1,6 @@
 package de.bmw.carit.jnario.common.test.util;
 
 import static com.google.common.collect.Iterables.filter;
-import static com.google.common.collect.Lists.newArrayList;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.fail;
 

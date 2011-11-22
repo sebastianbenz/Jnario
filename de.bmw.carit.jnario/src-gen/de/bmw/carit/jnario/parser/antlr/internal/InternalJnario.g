@@ -95,7 +95,7 @@ ruleJnario returns [EObject current=null]
 	    }
 
 )
-)
+)?
 ;
 
 
