@@ -18,6 +18,8 @@ import org.junit.Assert;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Iterators;
 
+import de.bmw.carit.jnario.common.test.util.IUriProvider;
+
 public class ModelStore implements Iterable<EObject> {
 
 	

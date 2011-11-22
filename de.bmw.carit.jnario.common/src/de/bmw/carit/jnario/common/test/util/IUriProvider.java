@@ -1,4 +1,4 @@
-package de.bmw.carit.jnario.tests.util;
+package de.bmw.carit.jnario.common.test.util;
 
 import org.eclipse.emf.common.util.URI;
 

@@ -1,11 +1,9 @@
 package de.bmw.carit.jnario.tests.scoping;
-import org.junit.Test;
-
 import de.bmw.carit.jnario.tests.util.RuntimeTest;
 
 
 
-@SuppressWarnings("restriction")
+//@SuppressWarnings("restriction")
 public class JnarioScopeProviderTest extends RuntimeTest {
 
 //	@Inject
@@ -31,10 +29,5 @@ public class JnarioScopeProviderTest extends RuntimeTest {
 //		
 //		assertThat(scopedElements, (hasItem("x")));
 //	}
-	
-	@Test
-	public void dummy() throws Exception {
-		
-	}
 	
 }

@@ -1,4 +1,4 @@
-package de.bmw.carit.jnario.tests.util;
+package de.bmw.carit.jnario.common.test.util;
 
 import static com.google.common.collect.Iterables.filter;
 import static com.google.common.collect.Sets.newHashSet;

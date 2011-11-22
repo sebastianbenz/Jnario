@@ -1,4 +1,4 @@
-package de.bmw.carit.jnario.runner.tests;
+package de.bmw.carit.jnario.lib.tests;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;

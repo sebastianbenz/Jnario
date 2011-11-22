@@ -5,6 +5,7 @@ import com.google.inject.Injector;
 
 import de.bmw.carit.jnario.JnarioRuntimeModule;
 import de.bmw.carit.jnario.JnarioStandaloneSetup;
+import de.bmw.carit.jnario.common.test.util.BehaviorExecutor;
 import de.bmw.carit.jnario.jnario.JnarioFactory;
 
 public class TestSetup extends JnarioStandaloneSetup {
@@ -14,6 +15,10 @@ public class TestSetup extends JnarioStandaloneSetup {
 			@Override
 			public ClassLoader bindClassLoaderToInstance() {
 				return JnarioTestRunner.class.getClassLoader();
+			}
+			
+			public Class<? extends BehaviorExecutor> bindBehaviorExecutor() {
+				return JnarioExecutor.class;
 			}
 
 			@SuppressWarnings("unused")

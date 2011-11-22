@@ -14,4 +14,5 @@ Require-Bundle: de.bmw.carit.jnario;bundle-version="0.0.1",
  org.eclipse.xtext.junit;bundle-version="2.0.1",
  org.eclipse.xtext.junit4;bundle-version="2.0.1",
  org.eclipse.xtext.ui.junit;bundle-version="2.0.1",
- org.eclipse.xtext.builder;bundle-version="2.0.1"
+ org.eclipse.xtext.builder;bundle-version="2.0.1",
+ de.bmw.carit.jnario.common;bundle-version="0.1.0"
