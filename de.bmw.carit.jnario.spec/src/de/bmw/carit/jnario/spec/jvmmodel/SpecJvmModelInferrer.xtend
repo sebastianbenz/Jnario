@@ -7,27 +7,27 @@ import de.bmw.carit.jnario.spec.naming.JavaNameProvider
 import de.bmw.carit.jnario.spec.spec.Example
 import de.bmw.carit.jnario.spec.spec.Field
 import de.bmw.carit.jnario.spec.spec.Function
+import de.bmw.carit.jnario.spec.spec.Member
 import de.bmw.carit.jnario.spec.spec.SpecFile
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.InternalEObject
+import org.eclipse.xtext.common.types.JvmAnnotationTarget
 import org.eclipse.xtext.common.types.JvmDeclaredType
+import org.eclipse.xtext.common.types.JvmGenericType
+import org.eclipse.xtext.common.types.TypesFactory
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.util.IAcceptor
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.eclipse.xtext.xbase.typing.ITypeProvider
+import org.eclipse.xtext.xtend2.resource.Xtend2Resource
 import org.junit.Test
 import org.junit.runner.RunWith
 
-import static extension com.google.common.collect.Iterables.*
-import org.eclipse.emf.ecore.InternalEObject
-import org.eclipse.xtext.xtend2.resource.Xtend2Resource
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.common.types.TypesFactory
-import com.google.common.base.Predicates
-import com.google.common.collect.Iterables
-import de.bmw.carit.jnario.spec.spec.Member
-import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
-import org.eclipse.xtext.common.types.JvmAnnotationTarget 
+import static com.google.common.collect.Iterables.*
+import org.eclipse.xtext.common.types.TypesPackage 
 /**
  * <p>Infers a JVM model from the source model.</p> 
  *
@@ -64,7 +64,7 @@ class SpecJvmModelInferrer extends AbstractModelInferrer {
 	                boolean isPrelinkingPhase) {
 	    
 		for( exampleGroup : spec.getElements){
-			acceptor.accept(spec.toClass(exampleGroup.javaClassName) [
+			val newClass = spec.toClass(exampleGroup.javaClassName) [
 		    	documentation = spec.documentation
 		    	packageName = spec.getPackageName
 		    	annotations += spec.toAnnotation(typeof(RunWith), typeof(JnarioRunner))
@@ -72,9 +72,9 @@ class SpecJvmModelInferrer extends AbstractModelInferrer {
 		    	annotations += spec.toAnnotation(typeof(Named), exampleGroup.javaClassAnnotationValue)
 				for (element : exampleGroup.elements) {
 			        switch element {
-			          de.bmw.carit.jnario.spec.spec.Field : {
+			          Field : {
 			          	val initMethodName = "create" + element.getName.toFirstUpper
-			          	val field = element.toField(element.getName, element.getType)
+			          	val field = element.toField(element.getName, element.type)
 			            members += field
 //			            field.final = true
 				        field.initialization[im |
@@ -90,7 +90,7 @@ class SpecJvmModelInferrer extends AbstractModelInferrer {
 			          Example : {
 			            val method = element.toMethod(element.exampleMethodName, getTypeForName(Void::TYPE, element)) [
 			              documentation = element.documentation
-			              annotations += spec.toAnnotation(typeof(Named), element.getName)
+			              annotations += spec.toAnnotation(typeof(Named), element.name)
 			              annotations += element.toAnnotation(typeof(Test))
 			              addAnnotations(element)
 			              body = element.body
@@ -100,12 +100,8 @@ class SpecJvmModelInferrer extends AbstractModelInferrer {
 			          }
 			          Function: {
 			          	var returnType = element.returnType;
-						if (returnType == null || returnType.eIsProxy) {
-							returnType = getTypeProxy(element);
-						} else {
-							returnType = cloneWithProxies(returnType);
-						}
-			          	val method = element.toMethod(element.name, returnType) [
+						
+			          	val method = element.toMethod(element.name, element.returnType) [
 			              documentation = element.documentation
 			              for(t : element.typeParameters){
 			              	typeParameters += t
@@ -115,14 +111,16 @@ class SpecJvmModelInferrer extends AbstractModelInferrer {
               			  }
               			  addAnnotations(element)
 			              body = element.expression
+			              exceptions += typeof(Exception).getTypeForName(element)
+				         
 			            ]
-			            method.exceptions += typeof(Exception).getTypeForName(element)
 			            members += method
 			          }
 			        }
-			        
 				}
-			])
+			]
+			acceptor.accept(newClass)
+			newClass.computeInferredReturnTypes
 		}
 	}
 	
@@ -133,6 +131,15 @@ class SpecJvmModelInferrer extends AbstractModelInferrer {
 		}
 		result.translateAnnotationsTo(target)
 	}
+	
+	def void computeInferredReturnTypes(JvmGenericType inferredJvmType) {
+		var operations = inferredJvmType.getDeclaredOperations();
+		for (jvmOperation : operations) {
+			if (!jvmOperation.eIsSet(TypesPackage::eINSTANCE.jvmOperation_ReturnType))
+				jvmOperation.setReturnType(getTypeProxy(jvmOperation));
+		}
+	}
+	
 	
 	def getTypeProxy(EObject  pointer) {
 		var typeReference = createJvmParameterizedTypeReference();

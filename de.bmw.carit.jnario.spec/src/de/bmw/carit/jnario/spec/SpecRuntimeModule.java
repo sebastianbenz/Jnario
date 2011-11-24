@@ -10,6 +10,7 @@ import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import org.eclipse.xtext.xbase.impl.FeatureCallToJavaMapping;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.scoping.featurecalls.StaticMethodsFeatureForTypeProvider.ExtensionClassNameProvider;
+import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.eclipse.xtext.xtend2.compiler.Xtend2OutputConfigurationProvider;
 import org.eclipse.xtext.xtend2.resource.Xtend2Resource;
 
@@ -60,6 +61,11 @@ public class SpecRuntimeModule extends de.bmw.carit.jnario.spec.AbstractSpecRunt
 	
 	public Class<? extends FeatureCallToJavaMapping> bindFeatureCallToJavaMapping(){
 		return SpecFeatureCallToJavaMapping.class;
+	}
+	
+	@Override
+	public Class<? extends ITypeProvider> bindITypeProvider() {
+		return SpecTypeProvider.class;
 	}
 	
 	
