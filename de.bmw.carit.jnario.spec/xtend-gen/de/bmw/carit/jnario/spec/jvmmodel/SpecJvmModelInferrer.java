@@ -123,27 +123,30 @@ public class SpecJvmModelInferrer extends AbstractModelInferrer {
                         final JvmField field = _field;
                         EList<JvmMember> _members = it.getMembers();
                         CollectionExtensions.<JvmField>operator_add(_members, field);
-                        final Function1<ImportManager,String> _function = new Function1<ImportManager,String>() {
-                            public String apply(final ImportManager im) {
-                              String _operator_plus = StringExtensions.operator_plus(initMethodName, "()");
-                              return _operator_plus;
-                            }
-                          };
-                        SpecJvmModelInferrer.this._jvmTypesBuilder.initialization(field, _function);
                         XExpression _right = element_2.getRight();
                         final XExpression initCode = _right;
                         boolean _operator_notEquals = ObjectExtensions.operator_notEquals(initCode, null);
                         if (_operator_notEquals) {
-                          EList<JvmMember> _members_1 = it.getMembers();
-                          JvmTypeReference _expectedType = SpecJvmModelInferrer.this._iTypeProvider.getExpectedType(initCode);
-                          final Procedure1<JvmOperation> _function_1 = new Procedure1<JvmOperation>() {
-                              public void apply(final JvmOperation it) {
-                                SpecJvmModelInferrer.this._jvmTypesBuilder.setBody(it, initCode);
-                              }
-                            };
-                          JvmOperation _method = SpecJvmModelInferrer.this._jvmTypesBuilder.toMethod(initCode, initMethodName, _expectedType, _function_1);
-                          CollectionExtensions.<JvmOperation>operator_add(_members_1, _method);
+                          {
+                            final Function1<ImportManager,String> _function = new Function1<ImportManager,String>() {
+                                public String apply(final ImportManager im) {
+                                  String _operator_plus = StringExtensions.operator_plus(initMethodName, "()");
+                                  return _operator_plus;
+                                }
+                              };
+                            SpecJvmModelInferrer.this._jvmTypesBuilder.initialization(field, _function);
+                            EList<JvmMember> _members_1 = it.getMembers();
+                            JvmTypeReference _expectedType = SpecJvmModelInferrer.this._iTypeProvider.getExpectedType(initCode);
+                            final Procedure1<JvmOperation> _function_1 = new Procedure1<JvmOperation>() {
+                                public void apply(final JvmOperation it) {
+                                  SpecJvmModelInferrer.this._jvmTypesBuilder.setBody(it, initCode);
+                                }
+                              };
+                            JvmOperation _method = SpecJvmModelInferrer.this._jvmTypesBuilder.toMethod(initCode, initMethodName, _expectedType, _function_1);
+                            CollectionExtensions.<JvmOperation>operator_add(_members_1, _method);
+                          }
                         }
+                        SpecJvmModelInferrer.this.addAnnotations(field, element_2);
                       }
                     }
                   }

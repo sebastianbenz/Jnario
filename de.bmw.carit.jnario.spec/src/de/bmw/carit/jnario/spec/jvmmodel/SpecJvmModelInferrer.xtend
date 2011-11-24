@@ -77,15 +77,16 @@ class SpecJvmModelInferrer extends AbstractModelInferrer {
 			          	val field = element.toField(element.getName, element.type)
 			            members += field
 //			            field.final = true
-				        field.initialization[im |
-				        	 initMethodName + "()"
-				        ]
 			            val initCode = element.getRight
 			            if(initCode != null){
+			            	field.initialization[im|
+					        	 initMethodName + "()"
+					        ]
 			            	 members += initCode.toMethod(initMethodName, initCode.expectedType)[
 			            		body = initCode
 			            	]
 			            } 
+			            field.addAnnotations(element)
 			          }
 			          Example : {
 			            val method = element.toMethod(element.exampleMethodName, getTypeForName(Void::TYPE, element)) [
