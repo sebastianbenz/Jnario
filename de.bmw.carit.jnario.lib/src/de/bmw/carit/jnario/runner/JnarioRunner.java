@@ -7,6 +7,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 import org.junit.runner.Description;
+import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
@@ -14,6 +15,22 @@ import org.junit.runners.model.InitializationError;
 import com.google.common.base.Function;
 
 public class JnarioRunner extends BlockJUnit4ClassRunner {
+
+	private final class RunnerWrapper implements
+			TestInstantiator {
+		@Override
+		public Object createTest(Class<?> klass) throws Exception {
+			return JnarioRunner.this.createTest();
+		}
+
+		@Override
+		public void beforeTestRun() {
+		}
+
+		@Override
+		public void afterTestRun() {
+		}
+	}
 
 	private static final class NamedFrameworkMethod extends FrameworkMethod {
 		
@@ -30,8 +47,25 @@ public class JnarioRunner extends BlockJUnit4ClassRunner {
 		}
 	}
 
+	private TestInstantiator delegate;
+	
 	public JnarioRunner(Class<?> klass) throws InitializationError {
 		super(klass);
+		initializeTestInstantiator(klass);
+	}
+
+	public void initializeTestInstantiator(Class<?> klass)
+			throws InitializationError {
+		InstantiateWith annotation = klass.getAnnotation(InstantiateWith.class);
+		if(annotation == null){
+			delegate = new RunnerWrapper();
+		}else{
+			try {
+				delegate = annotation.value().newInstance();
+			} catch (Exception e) {
+				throw new InitializationError(e);
+			}
+		}
 	}
 	
 	@Override
@@ -59,6 +93,17 @@ public class JnarioRunner extends BlockJUnit4ClassRunner {
 		}));
 	}
 	
+	@Override
+	protected Object createTest() throws Exception {
+		return delegate.createTest(getTestClass().getJavaClass());
+	}
+	
+	@Override
+	protected void runChild(FrameworkMethod method, RunNotifier notifier) {
+		delegate.beforeTestRun();
+		super.runChild(method, notifier);
+		delegate.afterTestRun();
+	}
 	
 	@Override
 	protected String getName() {
