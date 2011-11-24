@@ -3,7 +3,9 @@ package de.bmw.carit.jnario.lib;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
+import static org.junit.internal.matchers.IsCollectionContaining.hasItems;
 
+import java.util.Collection;
 import java.util.Collections;
 
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
@@ -14,7 +16,7 @@ import org.hamcrest.StringDescription;
 import org.hamcrest.core.Is;
 import org.junit.Assert;
 
-
+@SuppressWarnings("restriction")
 public class JnarioObjectExtensions extends ObjectExtensions{
 
 	/**
@@ -63,8 +65,6 @@ public class JnarioObjectExtensions extends ObjectExtensions{
         return is(instanceOf(type));
     }
     
-	
-	
 	public static <T> Specification<T> should(T input) {
 		return new Specification<T>(input, Collections.<Step> emptyList());
 	}
@@ -103,6 +103,14 @@ public class JnarioObjectExtensions extends ObjectExtensions{
 
 	public static <T> Specification<T> be(Specification<T> actual) {
 		return actual;
+	}
+	
+	public static <T> void contain(Specification<? extends Iterable<T>> actual, T... elements){
+		be(actual, hasItems(elements));
+	}
+	
+	public static <T> void contain(Specification<? extends Iterable<T>> actual, Matcher<? extends T>... elementMatchers) {
+		be(actual, hasItems(elementMatchers));
 	}
 	
 }

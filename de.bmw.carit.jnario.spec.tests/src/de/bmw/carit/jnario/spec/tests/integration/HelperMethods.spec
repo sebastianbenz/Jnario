@@ -10,13 +10,11 @@ describe "HelperMethods" {
 	it "'should' wraps org.junit.Assert#assertThat"{
 		val spec = '
 			package bootstrap
-
-			import static org.hamcrest.CoreMatchers.*
 			
 			describe "HelperMethods" {
 			
 				it "should wraps org.junit.Assert#assertThat"{
-					"MyString".should(equalTo("MyString")) 
+					"MyString".should.be("MyString")) 
 				} 
 						
 			}
@@ -27,13 +25,27 @@ describe "HelperMethods" {
 	it "'be' wraps CoreMatchers#is"{
 		val spec = '
 			package bootstrap
-
-			import static org.hamcrest.CoreMatchers.*
 			
 			describe "HelperMethods" {
 			
-				it "should wrap CoreMatchers#is"{
+				it "be should wrap CoreMatchers#is"{
 					"MyString".should.be("MyString")
+				} 
+						
+			}
+		'
+		assertThat(execute(spec), is(successful))
+	} 
+	
+	it "'contains' wraps IsCollectionContaining#hasItem"{
+		val spec = '
+			package bootstrap
+
+			describe "HelperMethods" {
+			
+				it "contains should wrap CoreMatchers#is"{
+					newArrayList("MyString").should.contain("MyString")
+					newArrayList("MyString").should.not.contain("MyOtherString")
 				} 
 						
 			}
