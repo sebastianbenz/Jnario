@@ -8,5 +8,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: de.bmw.carit.jnario.lib,
  de.bmw.carit.jnario.runner
 Require-Bundle: org.junit;bundle-version="4.8.2";visibility:=reexport,
- com.google.collect;bundle-version="1.0.0",
  org.eclipse.xtext.xbase.lib;bundle-version="2.1.0";visibility:=reexport
