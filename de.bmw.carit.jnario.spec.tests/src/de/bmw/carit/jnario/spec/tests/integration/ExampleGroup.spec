@@ -26,12 +26,10 @@ describe "Spec" {
 	
 	*/
 	
-	it "should be able to declare helper methods with return type"{
+	it "should be able to declare helper methods"{
 		val spec = '
 			package bootstrap
 									
-			import static org.hamcrest.CoreMatchers.*
-			
 			describe "ExampleGroup" {
 			
 				int i = 0
