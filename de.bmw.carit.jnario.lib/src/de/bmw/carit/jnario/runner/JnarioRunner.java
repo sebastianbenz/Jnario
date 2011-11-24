@@ -20,7 +20,7 @@ public class JnarioRunner extends BlockJUnit4ClassRunner {
 			TestInstantiator {
 		@Override
 		public Object createTest(Class<?> klass) throws Exception {
-			return JnarioRunner.this.createTest();
+			return JnarioRunner.super.createTest();
 		}
 
 		@Override
