@@ -4,29 +4,9 @@ import static de.bmw.carit.jnario.spec.tests.util.SpecExecutor.*
 import static org.junit.Assert.*
 import static org.junit.experimental.results.ResultMatchers.*
 
-describe "Spec" {
+describe "GuiceBasedTestInstantiator" {
 
- 	/*
-	it "should resolve target class"{
-		val spec = '
-			package bootstrap
-			
-			import static org.junit.Assert.*
-			import org.junit.Assert
-	
-			describe Assert {
-			
-				it "should resolve target class"{
-				} 
-						
-			}
-		'
-		assertThat(execute(spec), successful)
-	} 
-	
-	*/
-	
-	it "should be able to declare helper methods"{
+	it "should demonstrate the injection of Tests"{
 		val spec = '
 			package bootstrap
 			
