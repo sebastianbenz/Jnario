@@ -2,10 +2,8 @@ package de.bmw.carit.jnario.runner;
 
 import static com.google.common.collect.Iterables.transform;
 import static com.google.common.collect.Lists.newArrayList;
-import static java.util.Arrays.asList;
 
-import java.lang.annotation.Annotation;
-import java.util.Iterator;
+import java.lang.reflect.Method;
 import java.util.List;
 
 import org.junit.runner.Description;
@@ -14,9 +12,23 @@ import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
 
 import com.google.common.base.Function;
-import com.google.common.collect.Iterables;
 
 public class JnarioRunner extends BlockJUnit4ClassRunner {
+
+	private static final class NamedFrameworkMethod extends FrameworkMethod {
+		
+		private final String name;
+
+		private NamedFrameworkMethod(Method method, String name) {
+			super(method);
+			this.name = name;
+		}
+
+		@Override
+		public String getName() {
+			return name;
+		}
+	}
 
 	public JnarioRunner(Class<?> klass) throws InitializationError {
 		super(klass);
@@ -42,12 +54,7 @@ public class JnarioRunner extends BlockJUnit4ClassRunner {
 
 			@Override
 			public FrameworkMethod apply(final FrameworkMethod from) {
-				return new FrameworkMethod(from.getMethod()){
-					@Override
-					public String getName() {
-						return nameOf(from);
-					}
-				};
+				return new NamedFrameworkMethod(from.getMethod(), nameOf(from));
 			}
 		}));
 	}
@@ -59,17 +66,15 @@ public class JnarioRunner extends BlockJUnit4ClassRunner {
 	}
 	
 	protected String nameOf(FrameworkMethod method) {
-		Named named = method.getAnnotation(Named.class);
-		if(named == null){
-			return method.getName();
-		}
-		return named.value();
+		return nameOf(method.getAnnotation(Named.class), method.getName());
+	}
+
+	public String nameOf(Named named, String defaultName) {
+		return named == null ? defaultName : named.value();
 	}
 
 	protected String nameOf(Class<?> klass) {
-		Annotation[] annotations = klass.getAnnotations();
-		Iterator<Named> names = Iterables.filter(asList(annotations), Named.class).iterator();
-		return names.hasNext() ? names.next().value() : super.getName();
+		return nameOf(klass.getAnnotation(Named.class), super.getName());
 	}
 
 }
