@@ -16,8 +16,9 @@
     </genClasses>
     <genClasses ecoreClass="Spec.ecore#//ExampleGroup">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//ExampleGroup/preamble"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Spec.ecore#//ExampleGroup/target"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Spec.ecore#//ExampleGroup/targetType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//ExampleGroup/elements"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Spec.ecore#//ExampleGroup/targetOperation"/>
     </genClasses>
     <genClasses ecoreClass="Spec.ecore#//Member">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//Member/annotations"/>
@@ -35,7 +36,6 @@
     </genClasses>
     <genClasses ecoreClass="Spec.ecore#//Example">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Example/preamble"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Spec.ecore#//Example/feature"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//Example/body"/>
     </genClasses>
     <genClasses ecoreClass="Spec.ecore#//Function">

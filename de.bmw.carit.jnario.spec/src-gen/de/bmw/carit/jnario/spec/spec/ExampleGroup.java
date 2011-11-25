@@ -2,13 +2,13 @@
  * <copyright>
  * </copyright>
  *
-
  */
 package de.bmw.carit.jnario.spec.spec;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.xtext.common.types.JvmIdentifiableElement;
+import org.eclipse.xtext.common.types.JvmDeclaredType;
+import org.eclipse.xtext.common.types.JvmOperation;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,8 +19,9 @@ import org.eclipse.xtext.common.types.JvmIdentifiableElement;
  * The following features are supported:
  * <ul>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getPreamble <em>Preamble</em>}</li>
- *   <li>{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getTarget <em>Target</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getTargetType <em>Target Type</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getElements <em>Elements</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getTargetOperation <em>Target Operation</em>}</li>
  * </ul>
  * </p>
  *
@@ -57,30 +58,30 @@ public interface ExampleGroup extends Member
   void setPreamble(String value);
 
   /**
-   * Returns the value of the '<em><b>Target</b></em>' reference.
+   * Returns the value of the '<em><b>Target Type</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Target</em>' reference isn't clear,
+   * If the meaning of the '<em>Target Type</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Target</em>' reference.
-   * @see #setTarget(JvmIdentifiableElement)
-   * @see de.bmw.carit.jnario.spec.spec.SpecPackage#getExampleGroup_Target()
+   * @return the value of the '<em>Target Type</em>' reference.
+   * @see #setTargetType(JvmDeclaredType)
+   * @see de.bmw.carit.jnario.spec.spec.SpecPackage#getExampleGroup_TargetType()
    * @model
    * @generated
    */
-  JvmIdentifiableElement getTarget();
+  JvmDeclaredType getTargetType();
 
   /**
-   * Sets the value of the '{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getTarget <em>Target</em>}' reference.
+   * Sets the value of the '{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getTargetType <em>Target Type</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Target</em>' reference.
-   * @see #getTarget()
+   * @param value the new value of the '<em>Target Type</em>' reference.
+   * @see #getTargetType()
    * @generated
    */
-  void setTarget(JvmIdentifiableElement value);
+  void setTargetType(JvmDeclaredType value);
 
   /**
    * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
@@ -97,5 +98,31 @@ public interface ExampleGroup extends Member
    * @generated
    */
   EList<Member> getElements();
+
+  /**
+   * Returns the value of the '<em><b>Target Operation</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Target Operation</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Target Operation</em>' reference.
+   * @see #setTargetOperation(JvmOperation)
+   * @see de.bmw.carit.jnario.spec.spec.SpecPackage#getExampleGroup_TargetOperation()
+   * @model
+   * @generated
+   */
+  JvmOperation getTargetOperation();
+
+  /**
+   * Sets the value of the '{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getTargetOperation <em>Target Operation</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Target Operation</em>' reference.
+   * @see #getTargetOperation()
+   * @generated
+   */
+  void setTargetOperation(JvmOperation value);
 
 } // ExampleGroup

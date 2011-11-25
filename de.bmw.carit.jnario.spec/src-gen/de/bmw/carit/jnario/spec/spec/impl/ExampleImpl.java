@@ -2,7 +2,6 @@
  * <copyright>
  * </copyright>
  *
-
  */
 package de.bmw.carit.jnario.spec.spec.impl;
 
@@ -17,8 +16,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.xtext.common.types.JvmIdentifiableElement;
-
 import org.eclipse.xtext.xbase.XExpression;
 
 /**
@@ -29,7 +26,6 @@ import org.eclipse.xtext.xbase.XExpression;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleImpl#getPreamble <em>Preamble</em>}</li>
- *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleImpl#getFeature <em>Feature</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleImpl#getBody <em>Body</em>}</li>
  * </ul>
  * </p>
@@ -57,16 +53,6 @@ public class ExampleImpl extends MemberImpl implements Example
    * @ordered
    */
   protected String preamble = PREAMBLE_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getFeature() <em>Feature</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getFeature()
-   * @generated
-   * @ordered
-   */
-  protected JvmIdentifiableElement feature;
 
   /**
    * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference.
@@ -120,49 +106,6 @@ public class ExampleImpl extends MemberImpl implements Example
     preamble = newPreamble;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.EXAMPLE__PREAMBLE, oldPreamble, preamble));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public JvmIdentifiableElement getFeature()
-  {
-    if (feature != null && feature.eIsProxy())
-    {
-      InternalEObject oldFeature = (InternalEObject)feature;
-      feature = (JvmIdentifiableElement)eResolveProxy(oldFeature);
-      if (feature != oldFeature)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SpecPackage.EXAMPLE__FEATURE, oldFeature, feature));
-      }
-    }
-    return feature;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public JvmIdentifiableElement basicGetFeature()
-  {
-    return feature;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setFeature(JvmIdentifiableElement newFeature)
-  {
-    JvmIdentifiableElement oldFeature = feature;
-    feature = newFeature;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.EXAMPLE__FEATURE, oldFeature, feature));
   }
 
   /**
@@ -241,9 +184,6 @@ public class ExampleImpl extends MemberImpl implements Example
     {
       case SpecPackage.EXAMPLE__PREAMBLE:
         return getPreamble();
-      case SpecPackage.EXAMPLE__FEATURE:
-        if (resolve) return getFeature();
-        return basicGetFeature();
       case SpecPackage.EXAMPLE__BODY:
         return getBody();
     }
@@ -262,9 +202,6 @@ public class ExampleImpl extends MemberImpl implements Example
     {
       case SpecPackage.EXAMPLE__PREAMBLE:
         setPreamble((String)newValue);
-        return;
-      case SpecPackage.EXAMPLE__FEATURE:
-        setFeature((JvmIdentifiableElement)newValue);
         return;
       case SpecPackage.EXAMPLE__BODY:
         setBody((XExpression)newValue);
@@ -286,9 +223,6 @@ public class ExampleImpl extends MemberImpl implements Example
       case SpecPackage.EXAMPLE__PREAMBLE:
         setPreamble(PREAMBLE_EDEFAULT);
         return;
-      case SpecPackage.EXAMPLE__FEATURE:
-        setFeature((JvmIdentifiableElement)null);
-        return;
       case SpecPackage.EXAMPLE__BODY:
         setBody((XExpression)null);
         return;
@@ -308,8 +242,6 @@ public class ExampleImpl extends MemberImpl implements Example
     {
       case SpecPackage.EXAMPLE__PREAMBLE:
         return PREAMBLE_EDEFAULT == null ? preamble != null : !PREAMBLE_EDEFAULT.equals(preamble);
-      case SpecPackage.EXAMPLE__FEATURE:
-        return feature != null;
       case SpecPackage.EXAMPLE__BODY:
         return body != null;
     }

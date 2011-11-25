@@ -1071,7 +1071,7 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (annotations+=XAnnotation* preamble='describe' target=[JvmIdentifiableElement|QualifiedName]? name=STRING? elements+=Member*)
+	 *     (annotations+=XAnnotation* preamble='describe' targetType=[JvmDeclaredType|QualifiedName]? name=STRING? elements+=Member*)
 	 */
 	protected void sequence_ExampleGroup(EObject context, ExampleGroup semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1174,7 +1174,7 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (annotationInfo=Member_Example_2_1_0 (preamble='it' feature=[JvmIdentifiableElement|ValidID]? name=STRING? body=XBlockExpression?))
+	 *     (annotationInfo=Member_Example_2_1_0 (preamble='it' name=STRING body=XBlockExpression?))
 	 */
 	protected void sequence_Member(EObject context, Example semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1185,7 +1185,12 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         annotationInfo=Member_ExampleGroup_2_2_0 
-	 *         ((preamble='describe' | preamble='context') target=[JvmIdentifiableElement|QualifiedName]? name=STRING? elements+=Member*)
+	 *         (
+	 *             (preamble='describe' | preamble='context') 
+	 *             (targetType=[JvmDeclaredType|QualifiedName] | targetOperation=[JvmOperation|Method])? 
+	 *             name=STRING? 
+	 *             elements+=Member*
+	 *         )
 	 *     )
 	 */
 	protected void sequence_Member(EObject context, ExampleGroup semanticObject) {

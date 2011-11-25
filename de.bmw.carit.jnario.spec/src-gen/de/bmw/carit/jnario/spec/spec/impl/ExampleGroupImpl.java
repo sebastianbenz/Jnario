@@ -2,7 +2,6 @@
  * <copyright>
  * </copyright>
  *
-
  */
 package de.bmw.carit.jnario.spec.spec.impl;
 
@@ -25,7 +24,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.eclipse.xtext.common.types.JvmIdentifiableElement;
+import org.eclipse.xtext.common.types.JvmDeclaredType;
+import org.eclipse.xtext.common.types.JvmOperation;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,8 +35,9 @@ import org.eclipse.xtext.common.types.JvmIdentifiableElement;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleGroupImpl#getPreamble <em>Preamble</em>}</li>
- *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleGroupImpl#getTarget <em>Target</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleGroupImpl#getTargetType <em>Target Type</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleGroupImpl#getElements <em>Elements</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleGroupImpl#getTargetOperation <em>Target Operation</em>}</li>
  * </ul>
  * </p>
  *
@@ -65,14 +66,14 @@ public class ExampleGroupImpl extends MemberImpl implements ExampleGroup
   protected String preamble = PREAMBLE_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
+   * The cached value of the '{@link #getTargetType() <em>Target Type</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTarget()
+   * @see #getTargetType()
    * @generated
    * @ordered
    */
-  protected JvmIdentifiableElement target;
+  protected JvmDeclaredType targetType;
 
   /**
    * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
@@ -83,6 +84,16 @@ public class ExampleGroupImpl extends MemberImpl implements ExampleGroup
    * @ordered
    */
   protected EList<Member> elements;
+
+  /**
+   * The cached value of the '{@link #getTargetOperation() <em>Target Operation</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTargetOperation()
+   * @generated
+   * @ordered
+   */
+  protected JvmOperation targetOperation;
 
   /**
    * <!-- begin-user-doc -->
@@ -133,19 +144,19 @@ public class ExampleGroupImpl extends MemberImpl implements ExampleGroup
    * <!-- end-user-doc -->
    * @generated
    */
-  public JvmIdentifiableElement getTarget()
+  public JvmDeclaredType getTargetType()
   {
-    if (target != null && target.eIsProxy())
+    if (targetType != null && targetType.eIsProxy())
     {
-      InternalEObject oldTarget = (InternalEObject)target;
-      target = (JvmIdentifiableElement)eResolveProxy(oldTarget);
-      if (target != oldTarget)
+      InternalEObject oldTargetType = (InternalEObject)targetType;
+      targetType = (JvmDeclaredType)eResolveProxy(oldTargetType);
+      if (targetType != oldTargetType)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SpecPackage.EXAMPLE_GROUP__TARGET, oldTarget, target));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SpecPackage.EXAMPLE_GROUP__TARGET_TYPE, oldTargetType, targetType));
       }
     }
-    return target;
+    return targetType;
   }
 
   /**
@@ -153,9 +164,9 @@ public class ExampleGroupImpl extends MemberImpl implements ExampleGroup
    * <!-- end-user-doc -->
    * @generated
    */
-  public JvmIdentifiableElement basicGetTarget()
+  public JvmDeclaredType basicGetTargetType()
   {
-    return target;
+    return targetType;
   }
 
   /**
@@ -163,12 +174,12 @@ public class ExampleGroupImpl extends MemberImpl implements ExampleGroup
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTarget(JvmIdentifiableElement newTarget)
+  public void setTargetType(JvmDeclaredType newTargetType)
   {
-    JvmIdentifiableElement oldTarget = target;
-    target = newTarget;
+    JvmDeclaredType oldTargetType = targetType;
+    targetType = newTargetType;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.EXAMPLE_GROUP__TARGET, oldTarget, target));
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.EXAMPLE_GROUP__TARGET_TYPE, oldTargetType, targetType));
   }
 
   /**
@@ -183,6 +194,49 @@ public class ExampleGroupImpl extends MemberImpl implements ExampleGroup
       elements = new EObjectContainmentEList<Member>(Member.class, this, SpecPackage.EXAMPLE_GROUP__ELEMENTS);
     }
     return elements;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public JvmOperation getTargetOperation()
+  {
+    if (targetOperation != null && targetOperation.eIsProxy())
+    {
+      InternalEObject oldTargetOperation = (InternalEObject)targetOperation;
+      targetOperation = (JvmOperation)eResolveProxy(oldTargetOperation);
+      if (targetOperation != oldTargetOperation)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SpecPackage.EXAMPLE_GROUP__TARGET_OPERATION, oldTargetOperation, targetOperation));
+      }
+    }
+    return targetOperation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public JvmOperation basicGetTargetOperation()
+  {
+    return targetOperation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTargetOperation(JvmOperation newTargetOperation)
+  {
+    JvmOperation oldTargetOperation = targetOperation;
+    targetOperation = newTargetOperation;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.EXAMPLE_GROUP__TARGET_OPERATION, oldTargetOperation, targetOperation));
   }
 
   /**
@@ -213,11 +267,14 @@ public class ExampleGroupImpl extends MemberImpl implements ExampleGroup
     {
       case SpecPackage.EXAMPLE_GROUP__PREAMBLE:
         return getPreamble();
-      case SpecPackage.EXAMPLE_GROUP__TARGET:
-        if (resolve) return getTarget();
-        return basicGetTarget();
+      case SpecPackage.EXAMPLE_GROUP__TARGET_TYPE:
+        if (resolve) return getTargetType();
+        return basicGetTargetType();
       case SpecPackage.EXAMPLE_GROUP__ELEMENTS:
         return getElements();
+      case SpecPackage.EXAMPLE_GROUP__TARGET_OPERATION:
+        if (resolve) return getTargetOperation();
+        return basicGetTargetOperation();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -236,12 +293,15 @@ public class ExampleGroupImpl extends MemberImpl implements ExampleGroup
       case SpecPackage.EXAMPLE_GROUP__PREAMBLE:
         setPreamble((String)newValue);
         return;
-      case SpecPackage.EXAMPLE_GROUP__TARGET:
-        setTarget((JvmIdentifiableElement)newValue);
+      case SpecPackage.EXAMPLE_GROUP__TARGET_TYPE:
+        setTargetType((JvmDeclaredType)newValue);
         return;
       case SpecPackage.EXAMPLE_GROUP__ELEMENTS:
         getElements().clear();
         getElements().addAll((Collection<? extends Member>)newValue);
+        return;
+      case SpecPackage.EXAMPLE_GROUP__TARGET_OPERATION:
+        setTargetOperation((JvmOperation)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -260,11 +320,14 @@ public class ExampleGroupImpl extends MemberImpl implements ExampleGroup
       case SpecPackage.EXAMPLE_GROUP__PREAMBLE:
         setPreamble(PREAMBLE_EDEFAULT);
         return;
-      case SpecPackage.EXAMPLE_GROUP__TARGET:
-        setTarget((JvmIdentifiableElement)null);
+      case SpecPackage.EXAMPLE_GROUP__TARGET_TYPE:
+        setTargetType((JvmDeclaredType)null);
         return;
       case SpecPackage.EXAMPLE_GROUP__ELEMENTS:
         getElements().clear();
+        return;
+      case SpecPackage.EXAMPLE_GROUP__TARGET_OPERATION:
+        setTargetOperation((JvmOperation)null);
         return;
     }
     super.eUnset(featureID);
@@ -282,10 +345,12 @@ public class ExampleGroupImpl extends MemberImpl implements ExampleGroup
     {
       case SpecPackage.EXAMPLE_GROUP__PREAMBLE:
         return PREAMBLE_EDEFAULT == null ? preamble != null : !PREAMBLE_EDEFAULT.equals(preamble);
-      case SpecPackage.EXAMPLE_GROUP__TARGET:
-        return target != null;
+      case SpecPackage.EXAMPLE_GROUP__TARGET_TYPE:
+        return targetType != null;
       case SpecPackage.EXAMPLE_GROUP__ELEMENTS:
         return elements != null && !elements.isEmpty();
+      case SpecPackage.EXAMPLE_GROUP__TARGET_OPERATION:
+        return targetOperation != null;
     }
     return super.eIsSet(featureID);
   }

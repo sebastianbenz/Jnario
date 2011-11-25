@@ -1,5 +1,7 @@
 package de.bmw.carit.jnario.tests.util;
 
+import java.util.Iterator;
+
 import org.eclipse.emf.ecore.EObject;
 
 import com.google.common.base.Predicate;
@@ -22,7 +24,17 @@ public class Query {
 	}
 
 	public <T> T first(Class<T> type) {
-		return type.cast(all(type).iterator().next());
+		return type.cast(allOf(type).next());
+	}
+
+	public <T> Iterator<T> allOf(Class<T> type) {
+		return all(type).iterator();
+	}
+	
+	public <T> T second(Class<T> type) {
+		Iterator<T> elements = allOf(type);
+		elements.next();
+		return type.cast(elements.next());
 	}
 
 	public EObject find(Predicate<EObject> predicate) {

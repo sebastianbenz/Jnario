@@ -2,7 +2,6 @@
  * <copyright>
  * </copyright>
  *
-
  */
 package de.bmw.carit.jnario.spec.spec.impl;
 
@@ -219,7 +218,7 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExampleGroup_Target()
+  public EReference getExampleGroup_TargetType()
   {
     return (EReference)exampleGroupEClass.getEStructuralFeatures().get(1);
   }
@@ -232,6 +231,16 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
   public EReference getExampleGroup_Elements()
   {
     return (EReference)exampleGroupEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getExampleGroup_TargetOperation()
+  {
+    return (EReference)exampleGroupEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -369,19 +378,9 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExample_Feature()
-  {
-    return (EReference)exampleEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getExample_Body()
   {
-    return (EReference)exampleEClass.getEStructuralFeatures().get(2);
+    return (EReference)exampleEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -471,8 +470,9 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 
     exampleGroupEClass = createEClass(EXAMPLE_GROUP);
     createEAttribute(exampleGroupEClass, EXAMPLE_GROUP__PREAMBLE);
-    createEReference(exampleGroupEClass, EXAMPLE_GROUP__TARGET);
+    createEReference(exampleGroupEClass, EXAMPLE_GROUP__TARGET_TYPE);
     createEReference(exampleGroupEClass, EXAMPLE_GROUP__ELEMENTS);
+    createEReference(exampleGroupEClass, EXAMPLE_GROUP__TARGET_OPERATION);
 
     memberEClass = createEClass(MEMBER);
     createEReference(memberEClass, MEMBER__ANNOTATIONS);
@@ -490,7 +490,6 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 
     exampleEClass = createEClass(EXAMPLE);
     createEAttribute(exampleEClass, EXAMPLE__PREAMBLE);
-    createEReference(exampleEClass, EXAMPLE__FEATURE);
     createEReference(exampleEClass, EXAMPLE__BODY);
 
     functionEClass = createEClass(FUNCTION);
@@ -548,8 +547,9 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 
     initEClass(exampleGroupEClass, ExampleGroup.class, "ExampleGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getExampleGroup_Preamble(), ecorePackage.getEString(), "preamble", null, 0, 1, ExampleGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getExampleGroup_Target(), theTypesPackage.getJvmIdentifiableElement(), null, "target", null, 0, 1, ExampleGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExampleGroup_TargetType(), theTypesPackage.getJvmDeclaredType(), null, "targetType", null, 0, 1, ExampleGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExampleGroup_Elements(), this.getMember(), null, "elements", null, 0, -1, ExampleGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExampleGroup_TargetOperation(), theTypesPackage.getJvmOperation(), null, "targetOperation", null, 0, 1, ExampleGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(memberEClass, Member.class, "Member", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMember_Annotations(), theXAnnotationsPackage.getXAnnotation(), null, "annotations", null, 0, -1, Member.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -567,7 +567,6 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 
     initEClass(exampleEClass, Example.class, "Example", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getExample_Preamble(), ecorePackage.getEString(), "preamble", null, 0, 1, Example.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getExample_Feature(), theTypesPackage.getJvmIdentifiableElement(), null, "feature", null, 0, 1, Example.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExample_Body(), theXbasePackage.getXExpression(), null, "body", null, 0, 1, Example.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(functionEClass, Function.class, "Function", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

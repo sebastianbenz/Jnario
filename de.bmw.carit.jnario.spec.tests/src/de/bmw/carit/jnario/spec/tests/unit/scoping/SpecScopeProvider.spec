@@ -11,6 +11,8 @@ import de.bmw.carit.jnario.tests.util.ModelStore
 import de.bmw.carit.jnario.spec.spec.ExampleGroup
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EReference
+import org.eclipse.xtext.scoping.IScope
+import org.eclipse.xtext.naming.QualifiedName
 
 @InstantiateWith(typeof(SpecTestInstantiator))
 describe "SpecScopeProvider" {
@@ -18,7 +20,7 @@ describe "SpecScopeProvider" {
 	@Inject IScopeProvider fixture
 	@Inject ModelStore modelStore
 	
-	it "should resolve target of ExampleGroup"{
+	it "should resolve Jvm type ExampleGroup target"{
 		modelStore.parseSpec('
 			package bootstrap
 			
@@ -30,13 +32,43 @@ describe "SpecScopeProvider" {
 		'    
 		)
 		val exampleGroup = modelStore.query.first(typeof(ExampleGroup))
-		val scope = targetScope(exampleGroup, SpecPackage::eINSTANCE.exampleGroup_Target)
-		scope.should.contain("org.junit.Assert") 
+		val scope = targetType(exampleGroup)
+		contains(scope, "org.junit.Assert") 
+		contains(scope, "Assert") 
 	}    
 	
-	def Iterable<String> targetScope(EObject source, EReference ref){
-		val scope = fixture.getScope(source, ref)
-		return scope.allElements.map[qualifiedName.toString]
+	it "should resolve operations from surrounding ExampleGroup's target"{
+		modelStore.parseSpec('
+			package bootstrap
+			
+			import org.junit.Assert
+
+			describe Assert{
+				describe #assertNotNull(String, Object){
+					it #assertNotNull(String, Object){
+					}
+				}
+			} 
+
+		'    
+		)
+		val exampleGroup = modelStore.query.second(typeof(ExampleGroup))
+		val scope = targetOperation(exampleGroup)
+		contains(scope, "#assertNotNull(String, Object)") 
+	}    
+	
+	 
+	def void contains(IScope scope, String element){
+		val result = scope.getSingleElement(QualifiedName::create(element.split("//.")))
+		assertNotNull("scope did not contain:" + element, result);
+	}
+	
+	def IScope targetType(EObject source){
+		return fixture.getScope(source, SpecPackage::eINSTANCE.exampleGroup_TargetType)
+	}
+	
+	def IScope targetOperation(EObject source){
+		return fixture.getScope(source, SpecPackage::eINSTANCE.exampleGroup_TargetOperation)
 	}
 			
 }

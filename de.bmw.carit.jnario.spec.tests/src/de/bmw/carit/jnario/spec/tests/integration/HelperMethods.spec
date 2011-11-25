@@ -14,7 +14,7 @@ describe "HelperMethods" {
 			describe "HelperMethods" {
 			
 				it "should wraps org.junit.Assert#assertThat"{
-					"MyString".should.be("MyString")) 
+					"MyString".should.be("MyString")
 				} 
 						
 			}

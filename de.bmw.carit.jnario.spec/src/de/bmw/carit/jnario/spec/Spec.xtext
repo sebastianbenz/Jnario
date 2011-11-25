@@ -20,6 +20,7 @@ Import returns xtend2::XtendImport:
 		importedNamespace=QualifiedNameWithWildCard
 	)
 ;
+
  
 QualifiedNameWithWildCard :
 	QualifiedName  '.' '*';
@@ -27,9 +28,21 @@ QualifiedNameWithWildCard :
 ExampleGroup: 
 	{ExampleGroup}
 	annotations+=XAnnotation* 
-	preamble=('describe') target=[types::JvmIdentifiableElement|QualifiedName]? name=STRING? '{'
+	preamble=('describe') targetType=[types::JvmDeclaredType|QualifiedName]? name=STRING? '{'
        (elements+=Member*)
 '}'
+;
+
+Method:
+	'#' ValidID ('(' (TypeName (',' TypeName)*)? ')')?  
+;
+
+TypeName:
+	ValidID ('<' TypeRef (',' TypeRef)* '>')? ('[]')?
+;
+
+TypeRef:
+	('?')? ('extends' | 'super')?  TypeName
 ;
 
 //XCastedExpression returns xbase::XExpression:
@@ -47,11 +60,11 @@ Member :
 		 	(type=JvmTypeReference name=ValidID (=> '=' right=XExpression)?)
 		
 	|	{Example.annotationInfo = current}
-		(preamble='it' feature=[types::JvmIdentifiableElement|ValidID]? name=STRING? 
+		(preamble='it' name=STRING
 			body=XBlockExpression?)
 	|	{ExampleGroup.annotationInfo = current}
-			(preamble=('describe'|'context') target=[types::JvmIdentifiableElement|QualifiedName]? name=STRING? '{'
-      	elements+=Member*
+			(preamble=('describe'|'context') (targetType=[types::JvmDeclaredType|QualifiedName] | targetOperation=[types::JvmOperation|Method])? name=STRING? '{'
+      		elements+=Member*
       	'}')
      |	{Function.annotationInfo = current}
 			('def' 
