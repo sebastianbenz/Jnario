@@ -2,24 +2,32 @@ package de.bmw.carit.jnario.runner;
 
 import static com.google.common.collect.Iterables.transform;
 import static com.google.common.collect.Lists.newArrayList;
+import static com.google.common.collect.Maps.newHashMap;
 
 import java.lang.reflect.Method;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.runner.Description;
 import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
+import org.junit.runners.model.TestClass;
 
 import com.google.common.base.Function;
 
+
+/**
+ * Use {@link ExampleGroupRunner} instead.
+ */
+@Deprecated
 public class JnarioRunner extends BlockJUnit4ClassRunner {
 
 	private final class RunnerWrapper implements
 			TestInstantiator {
 		@Override
-		public Object createTest(Class<?> klass) throws Exception {
+		public Object createTest(TestClass klass) throws Exception {
 			return JnarioRunner.super.createTest();
 		}
 
@@ -32,22 +40,8 @@ public class JnarioRunner extends BlockJUnit4ClassRunner {
 		}
 	}
 
-	private static final class NamedFrameworkMethod extends FrameworkMethod {
-		
-		private final String name;
-
-		private NamedFrameworkMethod(Method method, String name) {
-			super(method);
-			this.name = name;
-		}
-
-		@Override
-		public String getName() {
-			return name;
-		}
-	}
-
 	private TestInstantiator delegate;
+	private Map<String, JnarioRunner> childRunners = newHashMap();
 	
 	public JnarioRunner(Class<?> klass) throws InitializationError {
 		super(klass);
@@ -74,8 +68,17 @@ public class JnarioRunner extends BlockJUnit4ClassRunner {
 		Class<?>[] declaredClasses = getTestClass().getJavaClass().getDeclaredClasses();
 		for (Class<?> subClass : declaredClasses) {
 			try {
-				description.addChild(new JnarioRunner(subClass).getDescription());
+				JnarioRunner childRunner = new JnarioRunner(subClass);
+				Description childDescription = childRunner.getDescription();
+				for (Description methods : childDescription.getChildren()) {
+					String methodName = methods.getMethodName();
+					if(methodName != null){
+						childRunners.put(methodName, childRunner);
+					}
+				}
+				description.addChild(childDescription);
 			} catch (InitializationError e) {
+				e.printStackTrace();
 				// not a test
 			}
 		}
@@ -84,7 +87,11 @@ public class JnarioRunner extends BlockJUnit4ClassRunner {
 	
 	@Override
 	protected List<FrameworkMethod> getChildren() {
-		return newArrayList(transform(super.getChildren(), new Function<FrameworkMethod, FrameworkMethod>(){
+		List<FrameworkMethod> result = super.getChildren();
+//		for (JnarioRunner runner : childRunners.values()) {
+//			result.addAll(runner.getChildren());
+//		}
+		return newArrayList(transform(result, new Function<FrameworkMethod, FrameworkMethod>(){
 
 			@Override
 			public FrameworkMethod apply(final FrameworkMethod from) {
@@ -95,13 +102,18 @@ public class JnarioRunner extends BlockJUnit4ClassRunner {
 	
 	@Override
 	protected Object createTest() throws Exception {
-		return delegate.createTest(getTestClass().getJavaClass());
+		return delegate.createTest(getTestClass());
 	}
 	
 	@Override
 	protected void runChild(FrameworkMethod method, RunNotifier notifier) {
 		delegate.beforeTestRun();
-		super.runChild(method, notifier);
+		JnarioRunner childRunner = childRunners.get(method.getName());
+		if(childRunner == null){
+			super.runChild(method, notifier);
+		}else{
+			childRunner.runChild(method, notifier);
+		}
 		delegate.afterTestRun();
 	}
 	

@@ -11,7 +11,9 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.RunWith;
 import org.junit.runners.model.InitializationError;
+import org.junit.runners.model.TestClass;
 
+import de.bmw.carit.jnario.runner.ExampleGroupRunner;
 import de.bmw.carit.jnario.runner.InstantiateWith;
 import de.bmw.carit.jnario.runner.JnarioRunner;
 import de.bmw.carit.jnario.runner.TestInstantiator;
@@ -26,7 +28,7 @@ public class TestInstantiatorTest {
 	public static class MockTestInstantiator implements TestInstantiator {
 
 		@Override
-		public Object createTest(Class<?> klass) {
+		public Object createTest(TestClass klass) {
 			return new Example() {
 				@Override
 				public void dummy() throws Exception {
@@ -47,7 +49,7 @@ public class TestInstantiatorTest {
 
 	}
 
-	@RunWith(JnarioRunner.class)
+	@RunWith(ExampleGroupRunner.class)
 	@InstantiateWith(MockTestInstantiator.class)
 	public static class Example {
 		@Test

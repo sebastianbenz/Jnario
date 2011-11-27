@@ -97,7 +97,7 @@ public class SpecJvmModelInferrer extends AbstractModelInferrer {
                 String _packageName = spec.getPackageName();
                 it.setPackageName(_packageName);
                 EList<JvmAnnotationReference> _annotations = it.getAnnotations();
-                JvmAnnotationReference _annotation = SpecJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(spec, org.junit.runner.RunWith.class, de.bmw.carit.jnario.runner.JnarioRunner.class);
+                JvmAnnotationReference _annotation = SpecJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(spec, org.junit.runner.RunWith.class, de.bmw.carit.jnario.runner.ExampleGroupRunner.class);
                 CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
                 SpecJvmModelInferrer.this.addAnnotations(it, exampleGroup);
                 EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();

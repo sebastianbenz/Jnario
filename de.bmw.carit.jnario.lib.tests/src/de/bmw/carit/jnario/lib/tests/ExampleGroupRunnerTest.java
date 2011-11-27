@@ -10,13 +10,13 @@ import org.junit.runner.Description;
 import org.junit.runner.RunWith;
 import org.junit.runners.model.InitializationError;
 
-import de.bmw.carit.jnario.runner.JnarioRunner;
+import de.bmw.carit.jnario.runner.ExampleGroupRunner;
 import de.bmw.carit.jnario.runner.Named;
 
 @SuppressWarnings({"unchecked", "restriction"})
-public class JnarioRunnerTest {
+public class ExampleGroupRunnerTest {
 	
-	@RunWith(JnarioRunner.class)
+	@RunWith(ExampleGroupRunner.class)
 	@Named("Example Name")
 	public static class Example {
 		
@@ -32,7 +32,7 @@ public class JnarioRunnerTest {
 		
 	}
 	
-	@RunWith(JnarioRunner.class)
+	@RunWith(ExampleGroupRunner.class)
 	@Named("Example Name")
 	public static class ExampleWithContext {
 		
@@ -41,21 +41,24 @@ public class JnarioRunnerTest {
 			@Test
 			@Named("Test 2")
 			public void firstSubTest() throws Exception {
+				System.out.println("firstSubTest");
 			}
 			
 			@Test
 			@Named("Test 3")
 			public void secondSubTest() throws Exception {
+				System.out.println("secondSubTest");
 			}
 		}
 		
 		@Test
 		@Named("Test 1")
-		public void firstSubTest() throws Exception {
+		public void firstTest() throws Exception {
+			System.out.println("firstTest");
 		}
 	}
 	
-	@RunWith(JnarioRunner.class)
+	@RunWith(ExampleGroupRunner.class)
 	public static class ExampleWithoutAnnotation {
 
 		@Test
@@ -82,16 +85,16 @@ public class JnarioRunnerTest {
 	@Test
 	public void shouldNestContextWithinTestClass() throws Exception {
 		assertThat(describe(ExampleWithContext.class), is(desc("Example Name",
-																	desc("Test 1"),
 																	desc("Context Name",
 																			desc("Test 2"),
 																			desc("Test 3")
-																	)
+																	),
+																	desc("Test 1")
 																)));
 	}
 
 	private Description describe(Class<?> klass) throws InitializationError {
-		JnarioRunner xspecRunner = new JnarioRunner(klass);
+		ExampleGroupRunner xspecRunner = new ExampleGroupRunner(klass);
 		Description description = xspecRunner.getDescription();
 		return description;
 	}

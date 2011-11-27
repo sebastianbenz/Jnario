@@ -1,17 +1,11 @@
 package de.bmw.carit.jnario.runner;
 
-import static java.util.Arrays.asList;
-
-import java.lang.annotation.Annotation;
-import java.util.Iterator;
 import java.util.List;
 
 import org.junit.runner.Runner;
 import org.junit.runners.Suite;
 import org.junit.runners.model.InitializationError;
 import org.junit.runners.model.RunnerBuilder;
-
-import com.google.common.collect.Iterables;
 
 public class JnarioSuite extends Suite
 {
@@ -73,12 +67,7 @@ public class JnarioSuite extends Suite
 	
 	@Override
 	protected String getName() {
-		return nameOf(getTestClass().getJavaClass());
+		return new NameProvider().nameOf(getTestClass());
 	}
 
-	protected String nameOf(Class<?> klass) {
-		Annotation[] annotations = klass.getAnnotations();
-		Iterator<Named> names = Iterables.filter(asList(annotations), Named.class).iterator();
-		return names.hasNext() ? names.next().value() : super.getName();
-	}
 }

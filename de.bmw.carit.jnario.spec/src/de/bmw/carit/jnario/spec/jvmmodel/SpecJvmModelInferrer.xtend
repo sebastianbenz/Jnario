@@ -1,7 +1,7 @@
 package de.bmw.carit.jnario.spec.jvmmodel
 
 import com.google.inject.Inject
-import de.bmw.carit.jnario.runner.JnarioRunner
+import de.bmw.carit.jnario.runner.ExampleGroupRunner
 import de.bmw.carit.jnario.runner.Named
 import de.bmw.carit.jnario.spec.naming.JavaNameProvider
 import de.bmw.carit.jnario.spec.spec.Example
@@ -67,7 +67,7 @@ class SpecJvmModelInferrer extends AbstractModelInferrer {
 			val newClass = spec.toClass(exampleGroup.javaClassName) [
 		    	documentation = spec.documentation
 		    	packageName = spec.getPackageName
-		    	annotations += spec.toAnnotation(typeof(RunWith), typeof(JnarioRunner))
+		    	annotations += spec.toAnnotation(typeof(RunWith), typeof(ExampleGroupRunner))
 		    	addAnnotations(exampleGroup)
 		    	annotations += spec.toAnnotation(typeof(Named), exampleGroup.javaClassAnnotationValue)
 				for (element : exampleGroup.elements) {
