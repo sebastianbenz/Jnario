@@ -51,6 +51,7 @@ import org.eclipse.xtext.xtype.XFunctionTypeRef;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 
+import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 import de.bmw.carit.jnario.spec.spec.SpecFile;
 import de.bmw.carit.jnario.spec.spec.SpecPackage;
 
@@ -163,6 +164,11 @@ public class OrganizeImports {
 				if (member instanceof JvmField) {
 					if (((JvmField) member).isStatic())
 						acceptor.acceptStaticExtensionImport((JvmMember) member);
+				}
+			}else if(next instanceof ExampleGroup){
+				JvmDeclaredType type = ((ExampleGroup)next).getTargetType();
+				if(type != null){
+					acceptor.acceptType(type);
 				}
 			}
 		}

@@ -3,10 +3,24 @@
 */
 package de.bmw.carit.jnario.spec.ui.contentassist;
 
-import de.bmw.carit.jnario.spec.ui.contentassist.AbstractSpecProposalProvider;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.Assignment;
+import org.eclipse.xtext.common.types.xtext.ui.TypeMatchFilters;
+import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
+import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
+
+import de.bmw.carit.jnario.spec.spec.SpecPackage;
 /**
  * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#contentAssist on how to customize content assistant
  */
 public class SpecProposalProvider extends AbstractSpecProposalProvider {
 
+	
+	@Override
+	public void completeExampleGroup_TargetType(EObject model,
+			Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		completeJavaTypes(context, SpecPackage.Literals.EXAMPLE_GROUP__TARGET_TYPE, true, getQualifiedNameValueConverter(), TypeMatchFilters.all(), acceptor);
+	}
+	
 }
