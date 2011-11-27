@@ -3,13 +3,32 @@
 */
 package de.bmw.carit.jnario.spec.ui.labeling;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.xtext.naming.SimpleNameProvider;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.xtext.common.types.JvmAnyTypeReference;
+import org.eclipse.xtext.common.types.JvmField;
+import org.eclipse.xtext.common.types.JvmGenericType;
+import org.eclipse.xtext.common.types.JvmIdentifiableElement;
+import org.eclipse.xtext.common.types.JvmOperation;
+import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
-import org.eclipse.xtext.util.SimpleAttributeResolver;
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
+import org.eclipse.xtext.xbase.typing.ITypeProvider;
+import org.eclipse.xtext.xbase.validation.UIStrings;
+import org.eclipse.xtext.xtend2.ui.labeling.Xtend2Images;
+import org.eclipse.xtext.xtend2.xtend2.XtendClass;
+import org.eclipse.xtext.xtend2.xtend2.XtendField;
+import org.eclipse.xtext.xtend2.xtend2.XtendFile;
+import org.eclipse.xtext.xtend2.xtend2.XtendFunction;
+import org.eclipse.xtext.xtend2.xtend2.XtendImport;
 
+import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
+
+import de.bmw.carit.jnario.spec.spec.ExampleGroup;
+import de.bmw.carit.jnario.spec.spec.Field;
+import de.bmw.carit.jnario.spec.spec.Function;
+import de.bmw.carit.jnario.spec.spec.SpecFile;
 
 /**
  * Provides labels for a EObjects.
@@ -23,19 +42,99 @@ public class SpecLabelProvider extends DefaultEObjectLabelProvider {
 		super(delegate);
 	}
 	
-	String text(EObject ele){
-		return ele.eClass().getName() + " " + SimpleAttributeResolver.NAME_RESOLVER.apply(ele);
+	@Inject
+	private UIStrings uiStrings;
+
+	@Inject
+	private Xtend2Images images;
+
+	@Inject
+	private ITypeProvider typeProvider;
+
+	@Inject
+	private IJvmModelAssociations associations;
+
+	public Image image(SpecFile element) {
+		return images.forFile();
 	}
 
-/*
-	//Labels and icons can be computed like this:
-	
-	String text(MyModel ele) {
-	  return "my "+ele.getName();
+	public Image image(XtendImport element) {
+		return images.forImport();
 	}
-	 
-    String image(MyModel ele) {
-      return "MyModel.gif";
-    }
-*/
+
+	public Image image(ExampleGroup element) {
+		Iterable<JvmGenericType> inferredTypes = Iterables.filter(associations.getJvmElements(element), JvmGenericType.class);
+		for (JvmGenericType inferredType : inferredTypes) {
+			return images.forClass(inferredType.getVisibility());
+		}
+		return null;
+	}
+
+	public Image image(Function element) {
+		Iterable<JvmOperation> inferredOperations = Iterables.filter(associations.getJvmElements(element), JvmOperation.class);
+		for (JvmOperation inferredOperation : inferredOperations) {
+			return images.forFunction(inferredOperation.getVisibility());
+		}
+		return null;
+	}
+
+	public Image image(JvmOperation element) {
+		return images.forDispatcherFunction(element.getVisibility());
+	}
+	
+	public Image image(Field element) {
+		Iterable<JvmField> inferredFields = Iterables.filter(associations.getJvmElements(element), JvmField.class);
+		for (JvmField inferredField : inferredFields) {
+			return images.forField(inferredField.getVisibility(), false);
+		}
+		return null;
+	}
+
+	public String text(SpecFile element) {
+		return element.eResource().getURI().trimFileExtension().lastSegment();
+	}
+
+	public String text(XtendImport element) {
+		return element.getImportedNamespace();
+	}
+
+	public String text(ExampleGroup element) {
+		return element.getName();
+	}
+
+	public String text(Function element) {
+		return signature(element.getName(), getDirectlyInferredOperation(element));
+	}
+	
+	private JvmIdentifiableElement getDirectlyInferredOperation(Function element) {
+		Iterable<JvmOperation> inferredOperations = Iterables.filter(associations.getJvmElements(element), JvmOperation.class);
+		for (JvmOperation inferredOperation : inferredOperations) {
+			return inferredOperation;
+		}
+		return null;
+	}
+
+	public String text(Field element) {
+		if (element.getName() == null )
+			return element.getType().getSimpleName();
+		return element.getName() +" : " +element.getType().getSimpleName();
+	}
+
+	public String text(JvmOperation element) {
+		return signature(element.getSimpleName(), element);
+	}
+
+	protected String signature(String simpleName, JvmIdentifiableElement element) {
+		JvmTypeReference returnType = typeProvider.getTypeForIdentifiable(element);
+		String returnTypeString = "void";
+		if (returnType != null) {
+			if (returnType instanceof JvmAnyTypeReference) {
+				returnTypeString = "Object";
+			} else {
+				returnTypeString = returnType.getSimpleName();
+			}
+		}
+		return simpleName + uiStrings.parameters(element) + " : " + returnTypeString;
+	}
+
 }

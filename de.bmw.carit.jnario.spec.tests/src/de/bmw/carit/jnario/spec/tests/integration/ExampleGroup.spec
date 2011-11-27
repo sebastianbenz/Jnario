@@ -6,7 +6,6 @@ import static org.junit.experimental.results.ResultMatchers.*
 
 describe "Spec" {
 
- 	/*
 	it "should resolve target class"{
 		val spec = '
 			package bootstrap
@@ -23,8 +22,6 @@ describe "Spec" {
 		'
 		assertThat(execute(spec), successful)
 	} 
-	
-	*/
 	
 	it "should be able to declare helper methods"{
 		val spec = '
@@ -43,7 +40,7 @@ describe "Spec" {
 					i = i + 1 
 				} 
 				
-				it "should be able to declare helper methods with param and return type"{
+				it "should be able to declare helper methods with parameter and return type"{
 					inc2(i).should.be(1) 
 				}
 				  
@@ -52,7 +49,7 @@ describe "Spec" {
 				}
 				
 				it "should be able to declare helper methods with inferred return type"{
-					inc3().should.be(5) 
+					inc3().class.should.be(typeof(int))
 				}
 				
 				def int inc3(){

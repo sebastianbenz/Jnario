@@ -4,9 +4,13 @@
 package de.bmw.carit.jnario.spec.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.xtext.common.types.xtext.ui.ITypesProposalProvider;
+import org.eclipse.xtext.ui.editor.outline.impl.OutlineFilterAndSorter.IComparator;
+import org.eclipse.xtext.xtend2.ui.outline.Xtend2OutlinePage;
 
 import de.bmw.carit.jnario.spec.ui.contentassist.ImportingTypesProposalProvider;
+import de.bmw.carit.jnario.spec.ui.outline.SpecOutlineNodeComparator;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -20,5 +24,16 @@ public class SpecUiModule extends de.bmw.carit.jnario.spec.ui.AbstractSpecUiModu
 	@Override
 	public Class<? extends ITypesProposalProvider> bindITypesProposalProvider() {
 		return ImportingTypesProposalProvider.class;
+	}
+	
+	@Override
+	public Class<? extends IContentOutlinePage> bindIContentOutlinePage() {
+		return Xtend2OutlinePage.class;
+	}
+
+	
+	@Override
+	public Class<? extends IComparator> bindOutlineFilterAndSorter$IComparator() {
+		return SpecOutlineNodeComparator.class;
 	}
 }

@@ -27,7 +27,8 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 import static com.google.common.collect.Iterables.*
-import org.eclipse.xtext.common.types.TypesPackage 
+import org.eclipse.xtext.common.types.TypesPackage
+import de.bmw.carit.jnario.spec.spec.ExampleGroup 
 /**
  * <p>Infers a JVM model from the source model.</p> 
  *
@@ -76,12 +77,9 @@ class SpecJvmModelInferrer extends AbstractModelInferrer {
 			          	val initMethodName = "create" + element.getName.toFirstUpper
 			          	val field = element.toField(element.getName, element.type)
 			            members += field
-//			            field.final = true
 			            val initCode = element.getRight
 			            if(initCode != null){
-			            	field.initialization[im|
-					        	 initMethodName + "()"
-					        ]
+			            	field.initialization[initMethodName + "()"]
 			            	 members += initCode.toMethod(initMethodName, initCode.expectedType)[
 			            		body = initCode
 			            	]
@@ -99,9 +97,14 @@ class SpecJvmModelInferrer extends AbstractModelInferrer {
 			            method.exceptions += typeof(Exception).getTypeForName(element)
 			            members += method
 			          }
+			          ExampleGroup: {
+							          	
+			          }
 			          Function: {
 			          	var returnType = element.returnType;
-						
+						if(returnType == null){
+							returnType = element.expression.expectedType
+						}
 			          	val method = element.toMethod(element.name, element.returnType) [
 			              documentation = element.documentation
 			              for(t : element.typeParameters){
@@ -113,7 +116,6 @@ class SpecJvmModelInferrer extends AbstractModelInferrer {
               			  addAnnotations(element)
 			              body = element.expression
 			              exceptions += typeof(Exception).getTypeForName(element)
-				         
 			            ]
 			            members += method
 			          }
