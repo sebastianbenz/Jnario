@@ -1,18 +1,42 @@
 package de.bmw.carit.jnario.spec.tests.util;
 
+import org.eclipse.xtext.junit4.GlobalRegistries;
+import org.eclipse.xtext.junit4.GlobalRegistries.GlobalStateMemento;
 import org.junit.runners.model.TestClass;
 
+import com.google.inject.Injector;
+
 import de.bmw.carit.jnario.runner.TestInstantiator;
-import de.bmw.carit.jnario.spec.SpecInjectorProvider;
 
 public class SpecTestInstantiator implements TestInstantiator {
+	protected GlobalStateMemento globalStateMemento;
+	protected Injector injector;
 
-	private SpecInjectorProvider injectorProvider = new SpecInjectorProvider();
+	static {
+		GlobalRegistries.initializeDefaults();
+	}
+	
+	public Injector getInjector() {
+		if (injector == null) {
+			this.injector = new TestSetup().createInjectorAndDoEMFRegistration();
+		}
+		return injector;
+	}
+	
+	public void restoreRegistry() {
+		globalStateMemento.restoreGlobalState();
+	}
+
+	public void setupRegistry() {
+		globalStateMemento = GlobalRegistries.makeCopyOfGlobalState();
+		if (injector != null)
+			new TestSetup().register(injector);
+	}
 	
 	@Override
 	public Object createTest(TestClass klass) throws Exception {
-		injectorProvider.setupRegistry();
-		return injectorProvider.getInjector().getInstance(klass.getJavaClass());
+		setupRegistry();
+		return getInjector().getInstance(klass.getJavaClass());
 	}
 
 	@Override
@@ -21,7 +45,7 @@ public class SpecTestInstantiator implements TestInstantiator {
 
 	@Override
 	public void afterTestRun() {
-		injectorProvider.restoreRegistry();
+		restoreRegistry();
 	}
 
 }

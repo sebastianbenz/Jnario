@@ -11,7 +11,7 @@ public class JnarioTestRunner extends BehaviorTestRunner {
 	private static final String MODEL_EXTENSION = "jnario";
 
 	protected void injectMembers(){
-		new TestSetup().createInjectorAndDoEMFRegistration().injectMembers(this);
+		new JnarioTestSetup().createInjectorAndDoEMFRegistration().injectMembers(this);
 	}
 
 	@Override

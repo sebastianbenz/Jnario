@@ -8,7 +8,8 @@ import de.bmw.carit.jnario.JnarioStandaloneSetup;
 import de.bmw.carit.jnario.common.test.util.BehaviorExecutor;
 import de.bmw.carit.jnario.jnario.JnarioFactory;
 
-public class TestSetup extends JnarioStandaloneSetup {
+public class JnarioTestSetup extends JnarioStandaloneSetup {
+	
 	@Override
 	public Injector createInjector() {
 		return Guice.createInjector(new JnarioRuntimeModule() {
@@ -26,7 +27,7 @@ public class TestSetup extends JnarioStandaloneSetup {
 			public JnarioFactory bindFactory() {
 				return JnarioFactory.eINSTANCE;
 			}
-
 		});
 	}
+	
 }

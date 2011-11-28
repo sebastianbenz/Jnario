@@ -35,7 +35,7 @@ public class JnarioExecutor extends BehaviorExecutor{
 		JnarioInjectorProvider injectorProvider = new JnarioInjectorProvider();
 		try {
 			injectorProvider.setupRegistry();
-			Injector injector = new TestSetup().createInjectorAndDoEMFRegistration();
+			Injector injector = new JnarioTestSetup().createInjectorAndDoEMFRegistration();
 			
 			XtextResourceSet resourceSet = new XtextResourceSet();
 			Resource resource = resourceSet.createResource(URI.createURI("temp.jnario"));
@@ -69,6 +69,9 @@ public class JnarioExecutor extends BehaviorExecutor{
 		for (Scenario scenario : jnario.getFeature().getScenarios()) {
 			String jnarioClassName = nameProvider.getJavaClassName(jnario.getFeature().getName()) + nameProvider.getJavaClassName(scenario.getName());
 			String packageName = jnario.getFeature().getPackageName();
+			if(packageName == null){
+				packageName = "";
+			}
 			runTestsInClass(jnarioClassName, packageName, failures);
 		}
 		return new PrintableResult(failures);
