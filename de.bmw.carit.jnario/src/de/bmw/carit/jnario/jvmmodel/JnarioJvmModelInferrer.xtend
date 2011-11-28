@@ -7,10 +7,11 @@ import de.bmw.carit.jnario.jnario.Step
 import de.bmw.carit.jnario.jnario.Then
 import de.bmw.carit.jnario.jnario.When
 import de.bmw.carit.jnario.naming.JavaNameProvider
-import de.bmw.carit.jnario.runner.Named
+import de.bmw.carit.jnario.runner.JnarioParameterizedRunner
 import de.bmw.carit.jnario.runner.ScenarioRunner
 import java.util.HashMap
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmTypeReference
@@ -22,10 +23,12 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.eclipse.xtext.xbase.typing.ITypeProvider
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.junit.runners.Parameterized$Parameters
 
 import static com.google.common.collect.Iterators.*
 import static com.google.common.collect.Sets.*
-import org.eclipse.emf.ecore.util.EcoreUtil
+import de.bmw.carit.jnario.runner.Named
+
 
 
 
@@ -63,7 +66,11 @@ class JnarioJvmModelInferrer extends AbstractModelInferrer {
 				val className = jnario.feature.name.javaClassName + scenario.name.javaClassName
 				acceptor.accept(
 					scenario.toClass(className) [
-						annotations += scenario.toAnnotation(typeof(RunWith), typeof(ScenarioRunner))
+						if(scenario.examples.empty){
+							annotations += scenario.toAnnotation(typeof(RunWith), typeof(ScenarioRunner))
+						}else{
+							annotations += scenario.toAnnotation(typeof(RunWith), typeof(JnarioParameterizedRunner))
+						}
 						packageName = jnario.feature.packageName
 						documentation = scenario.documentation
 						val variables = scenario.generateVariables
@@ -82,6 +89,12 @@ class JnarioJvmModelInferrer extends AbstractModelInferrer {
 						}
 						
 						if(!scenario.examples.empty){
+							
+							var arrayRef = (typeof(Object).getTypeForName(scenario)).addArrayTypeDimension.addArrayTypeDimension
+							var field = scenario.toField("exampleData", arrayRef)
+							field.annotations += scenario.toAnnotation(typeof(Parameters))
+							members += field	
+							
 							var constructor = scenario.toConstructor(className)[
 								for(variable: variables.keySet){
 									var type = variables.get(variable)
@@ -162,10 +175,15 @@ class JnarioJvmModelInferrer extends AbstractModelInferrer {
 
 	def transform(Step step, JvmGenericType inferredJvmType) {
 		if(step.getCode() != null){
-			//val copiedExpression = EcoreUtil::copy(step.code.blockExpression);
 			var operation = toMethod(step, step.name.javaMethodName, getTypeForName(Void::TYPE, step))[
-				body = step.code.blockExpression
+					
+//					var copiedExpression = EcoreUtil::copy(step.code.blockExpression)
+//					var rs = step.code.blockExpression.eResource
+//					rs.getContents.add(copiedExpression)
+//					body = copiedExpression
+					body = step.code.blockExpression
 			]
+			val copiedExpression = EcoreUtil::copy(step.code.blockExpression);		
 			inferredJvmType.members += operation
 			operation.annotations += step.toAnnotation(typeof(Test))
 			operation.annotations += step.toAnnotation(typeof(Named), step.name.trim)
