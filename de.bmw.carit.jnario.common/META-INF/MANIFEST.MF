@@ -25,3 +25,4 @@ Export-Package: de.bmw.carit.jnario.common.jvmmodel,
  de.bmw.carit.jnario.common.test.util,
  de.bmw.carit.jnario.common.ui.launching
 Bundle-ActivationPolicy: lazy
+Bundle-Classpath: ., /bin

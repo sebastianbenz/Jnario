@@ -9,12 +9,18 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.tools.JavaCompiler;
 import javax.tools.ToolProvider;
 
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.osgi.framework.adaptor.BundleData;
+import org.eclipse.osgi.framework.internal.core.AbstractBundle;
+import org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader;
+import org.eclipse.xtext.builder.internal.Activator;
 import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
@@ -26,12 +32,17 @@ import org.junit.experimental.results.PrintableResult;
 import org.junit.rules.TemporaryFolder;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.notification.Failure;
+import org.osgi.framework.BundleException;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Predicate;
 import com.google.inject.Inject;
 
 public abstract class BehaviorExecutor {
+	
+	private static final String BUNDLE_REFERENCE = "reference:file:";
+	private static final String PLUGIN_CLASSES_FOLDER = "plugins";
+	private static final String SYSTEM_BUNDLE = "System Bundle";
 
 	private final IGenerator generator;
 	private final JavaIoFileSystemAccess fsa;
@@ -91,9 +102,16 @@ public abstract class BehaviorExecutor {
 	protected abstract PrintableResult runExamples(EObject object)
 			throws MalformedURLException, ClassNotFoundException;
 
-	protected void compileJavaFile(String packageName, String specClassName) {
-		String specJavaFile = getGeneratedJavaClassName(packageName, specClassName);
-		compiler.run(System.in, System.out, System.err, specJavaFile);
+	protected void compileJavaFile(String packageName, String className) {
+		String javaFile = getGeneratedJavaClassName(packageName, className);
+		if(isLoadedAsPlugin()){
+			ArrayList<String> classPath = getClassPath();
+			String pathes = Joiner.on(";").join(classPath.toArray());
+			compiler.run(System.in, System.out, System.err, new String[]{"-classpath", pathes, javaFile});
+		}
+		else{
+			compiler.run(System.in, System.out, System.err, javaFile);
+		}
 	}
 
 	protected List<Failure> execute(Class<?> cls) {
@@ -103,10 +121,9 @@ public abstract class BehaviorExecutor {
 	protected Class<?> loadGeneratedClass(String packageName, String specClassName)
 			throws MalformedURLException, ClassNotFoundException {
 		URLClassLoader classLoader = URLClassLoader
-				.newInstance(new URL[] { tempFolder.getRoot().toURI().toURL() });
+				.newInstance(new URL[] { tempFolder.getRoot().toURI().toURL() }, getClass().getClassLoader());
 		String className = packageName + "." + specClassName;
-		CompositeClassLoader compositeClassLoader = new CompositeClassLoader(classLoader);
-		return Class.forName(className, true, compositeClassLoader);
+		return Class.forName(className, true, classLoader);
 	}
 
 	private String getGeneratedJavaClassName(String packageName, String specClassName) {
@@ -127,6 +144,56 @@ public abstract class BehaviorExecutor {
 		List<Failure> newFailures = execute(testClass);
 		failures.addAll(newFailures);
 		return failures;
+	}
+	
+	private boolean isLoadedAsPlugin(){
+		ClassLoader pluginClassLoader = getClass().getClassLoader();
+		if(pluginClassLoader instanceof DefaultClassLoader){
+			return true;
+		}
+		return false;
+	}
+	
+	private ArrayList<String> getClassPath(){
+		
+		String installLocation = Platform.getInstallLocation().getURL().getPath();
+		
+		AbstractBundle[] bundles = (AbstractBundle[])Activator.getDefault().getBundle().getBundleContext().getBundles();
+		ArrayList<String> classpath = new ArrayList<String>();
+		
+		for(AbstractBundle bundle: bundles){
+			BundleData bundleData = bundle.getBundleData();
+			String pathToBundle = getPathOfBundle(bundleData);
+			try {
+				for(String subFolders: bundleData.getClassPath()){
+					String fullLocation = pathToBundle + File.separator + subFolders;
+					String finalClassPath = getAbsoluteClassPath(fullLocation, installLocation);
+					classpath.add(finalClassPath.replace("/", File.separator));
+				}
+			} catch (BundleException e) {
+				e.printStackTrace();
+			}
+		}
+		return classpath;
+	}
+	
+	private String getPathOfBundle(BundleData bundleData){
+		String pathOfBundle = bundleData.getLocation();
+		int indexOf = pathOfBundle.indexOf(BUNDLE_REFERENCE);
+		if(indexOf >= 0){
+			return pathOfBundle.substring(indexOf + BUNDLE_REFERENCE.length());
+		}
+		return pathOfBundle;
+	}
+	
+	private String getAbsoluteClassPath(String fullLocation, String installLocation){
+		if(fullLocation.contains(SYSTEM_BUNDLE)){
+			return "";
+		}
+		if(fullLocation.contains("..") || fullLocation.startsWith(PLUGIN_CLASSES_FOLDER)){
+			return installLocation + File.separator + fullLocation;
+		}
+		return fullLocation;
 	}
 
 }

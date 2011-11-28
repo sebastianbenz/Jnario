@@ -20,7 +20,12 @@
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
-					<useUIHarness>true</useUIHarness>
+					<useUIHarness>false</useUIHarness>
+<!--					<argLine>-Xdebug -Xnoagent -Xrunjdwp:transport=dt_socket,address=8787,server=y,suspend=y</argLine> -->
+					<explodedBundles> 
+						<!-- Make sure that nested junit.jar can be accessed by PDE/JDT. -->
+						<bundle>org.junit</bundle>
+					</explodedBundles>
 				</configuration>
 			</plugin>
 		</plugins>

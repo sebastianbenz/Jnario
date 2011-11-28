@@ -22,6 +22,7 @@ import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
 import org.eclipse.xtext.common.types.JvmConstructor;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
@@ -98,9 +99,17 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
           final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
               public void apply(final JvmGenericType it) {
                 {
-                  EList<JvmAnnotationReference> _annotations = it.getAnnotations();
-                  JvmAnnotationReference _annotation = JnarioJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(scenario, org.junit.runner.RunWith.class, de.bmw.carit.jnario.runner.ScenarioRunner.class);
-                  CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
+                  EList<Examples> _examples = scenario.getExamples();
+                  boolean _isEmpty = _examples.isEmpty();
+                  if (_isEmpty) {
+                    EList<JvmAnnotationReference> _annotations = it.getAnnotations();
+                    JvmAnnotationReference _annotation = JnarioJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(scenario, org.junit.runner.RunWith.class, de.bmw.carit.jnario.runner.ScenarioRunner.class);
+                    CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
+                  } else {
+                    EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
+                    JvmAnnotationReference _annotation_1 = JnarioJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(scenario, org.junit.runner.RunWith.class, de.bmw.carit.jnario.runner.JnarioParameterizedRunner.class);
+                    CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
+                  }
                   Feature _feature = jnario.getFeature();
                   String _packageName = _feature.getPackageName();
                   it.setPackageName(_packageName);
@@ -134,11 +143,22 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
                       CollectionExtensions.<JvmField>operator_add(_members, _field);
                     }
                   }
-                  EList<Examples> _examples = scenario.getExamples();
-                  boolean _isEmpty = _examples.isEmpty();
-                  boolean _operator_not = BooleanExtensions.operator_not(_isEmpty);
+                  EList<Examples> _examples_1 = scenario.getExamples();
+                  boolean _isEmpty_1 = _examples_1.isEmpty();
+                  boolean _operator_not = BooleanExtensions.operator_not(_isEmpty_1);
                   if (_operator_not) {
                     {
+                      JvmTypeReference _typeForName = JnarioJvmModelInferrer.this._typeReferences.getTypeForName(java.lang.Object.class, scenario);
+                      JvmTypeReference _addArrayTypeDimension = JnarioJvmModelInferrer.this._jvmTypesBuilder.addArrayTypeDimension(_typeForName);
+                      JvmTypeReference _addArrayTypeDimension_1 = JnarioJvmModelInferrer.this._jvmTypesBuilder.addArrayTypeDimension(_addArrayTypeDimension);
+                      JvmTypeReference arrayRef = _addArrayTypeDimension_1;
+                      JvmField _field_1 = JnarioJvmModelInferrer.this._jvmTypesBuilder.toField(scenario, "exampleData", arrayRef);
+                      JvmField field = _field_1;
+                      EList<JvmAnnotationReference> _annotations_2 = field.getAnnotations();
+                      JvmAnnotationReference _annotation_2 = JnarioJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(scenario, org.junit.runners.Parameterized.Parameters.class);
+                      CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_2, _annotation_2);
+                      EList<JvmMember> _members_1 = it.getMembers();
+                      CollectionExtensions.<JvmField>operator_add(_members_1, field);
                       final Procedure1<JvmConstructor> _function = new Procedure1<JvmConstructor>() {
                           public void apply(final JvmConstructor it) {
                             Set<String> _keySet = variables.keySet();
@@ -158,19 +178,22 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
                       final Function1<ImportManager,StringConcatenation> _function_1 = new Function1<ImportManager,StringConcatenation>() {
                           public StringConcatenation apply(final ImportManager it) {
                             StringConcatenation _builder = new StringConcatenation();
-                            _builder.append("\u00B4FOR variable: variables.keySet\u00AA");
-                            _builder.newLine();
-                            _builder.append("\t");
-                            _builder.append("this.\u00B4variable\u00AA = \u00B4variable\u00AA");
-                            _builder.newLine();
-                            _builder.append("\u00B4ENDFOR\u00AA");
-                            _builder.newLine();
+                            {
+                              Set<String> _keySet = variables.keySet();
+                              for(final String variable : _keySet) {
+                                _builder.append("this.");
+                                _builder.append(variable, "");
+                                _builder.append(" = ");
+                                _builder.append(variable, "");
+                                _builder.newLineIfNotEmpty();
+                              }
+                            }
                             return _builder;
                           }
                         };
                       JnarioJvmModelInferrer.this._jvmTypesBuilder.setBody(constructor, _function_1);
-                      EList<JvmMember> _members_1 = it.getMembers();
-                      CollectionExtensions.<JvmConstructor>operator_add(_members_1, constructor);
+                      EList<JvmMember> _members_2 = it.getMembers();
+                      CollectionExtensions.<JvmConstructor>operator_add(_members_2, constructor);
                     }
                   }
                   if (hasBackground) {
@@ -307,6 +330,10 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
           };
         JvmOperation _method = this._jvmTypesBuilder.toMethod(step, _javaMethodName, _typeForName, _function);
         JvmOperation operation = _method;
+        Code _code_1 = step.getCode();
+        XBlockExpression _blockExpression = _code_1.getBlockExpression();
+        XBlockExpression _copy = EcoreUtil.<XBlockExpression>copy(_blockExpression);
+        final XBlockExpression copiedExpression = _copy;
         EList<JvmMember> _members = inferredJvmType.getMembers();
         CollectionExtensions.<JvmOperation>operator_add(_members, operation);
         EList<JvmAnnotationReference> _annotations = operation.getAnnotations();

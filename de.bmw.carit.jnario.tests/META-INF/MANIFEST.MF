@@ -14,9 +14,11 @@ Require-Bundle: de.bmw.carit.jnario,
  org.eclipse.xtext.ui.junit;bundle-version="2.0.1",
  org.eclipse.xtext.xbase;bundle-version="2.0.1",
  org.eclipse.ui.workbench;bundle-version="3.7.0",
- de.bmw.carit.jnario.common;bundle-version="0.1.0"
+ de.bmw.carit.jnario.common;bundle-version="0.1.0",
+ de.bmw.carit.jnario.lib;bundle-version="0.1.0"
 Import-Package: org.apache.log4j,
  org.apache.commons.logging
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: de.bmw.carit.jnario,
  de.bmw.carit.jnario.tests.util
+Bundle-Classpath: ., /bin
