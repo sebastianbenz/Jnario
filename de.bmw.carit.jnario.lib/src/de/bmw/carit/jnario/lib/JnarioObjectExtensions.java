@@ -70,7 +70,7 @@ public class JnarioObjectExtensions extends ObjectExtensions{
 	}
 	
 	
-	public static <T> Specification<T> be(Specification<T> actual, Matcher<T> matcher) {
+	public static <T> Specification<? extends T> be(Specification<? extends T> actual, Matcher<T> matcher) {
 		boolean result = matcher.matches(actual.getInput());
 		result = actual.evaluate(result);
 		if (!result) {
@@ -85,7 +85,7 @@ public class JnarioObjectExtensions extends ObjectExtensions{
 		return actual;
 	}
 
-	public static <T> Specification<T> be(Specification<T> actual, T expected) {
+	public static <T> Specification<? extends T> be(Specification<? extends T> actual, T expected) {
 		return be(actual, is(expected));
 	}
 

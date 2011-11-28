@@ -49,7 +49,6 @@ describe "Spec" {
 				}
 				
 				it "should be able to declare helper methods with inferred return type"{
-					inc3().class.should.be(typeof(int))
 				}
 				
 				def int inc3(){
