@@ -19,10 +19,14 @@ public class JavaNameProvider {
 			result.append(exampleGroup.getTargetType().getSimpleName());
 			result.append(" ");
 		}
+		if(exampleGroup.getTargetOperation() != null){
+			result.append(new OperationNameProvider().apply(exampleGroup.getTargetOperation()));
+			result.append(" ");
+		}
 		if(exampleGroup.getName() != null){
 			result.append(exampleGroup.getName());
 		}
-		return result.toString();
+		return result.toString().replace("(", "[").replace(")", "]").replace("#", "");
 	}
 	
 	public String getJavaClassName(ExampleGroup exampleGroup) {
@@ -30,13 +34,23 @@ public class JavaNameProvider {
 		if(exampleGroup.getTargetType() != null){
 			name = exampleGroup.getTargetType().getSimpleName() ;
 		}
+		if(exampleGroup.getTargetOperation() != null){
+			name = new OperationNameProvider().apply(exampleGroup.getTargetOperation()).toString();
+		}
 		name = appendMemberDescription(exampleGroup, name);
-		return toFirstUpper(name) + "Spec";
+		return toFirstUpper(clean(name)) + "Spec";
+	}
+
+	protected String clean(String name) {
+		if(name == null){
+			name = "Null";
+		}
+		return name.replaceAll("[^a-zA-Z0-9]","");
 	}
 
 	public String appendMemberDescription(Member member, String name) {
 		if(member.getName() != null){
-			name = member.getName().replaceAll("[^a-zA-Z0-9]","");
+			name = member.getName();
 		}
 		return name;
 	}
@@ -44,7 +58,7 @@ public class JavaNameProvider {
 	public String getExampleMethodName(Example example){
 		String name = UNKNOWN_NAME;
 		name = appendMemberDescription(example, name);
-		return toFirstLower(name);
+		return toFirstLower(clean(name));
 	}
 
 }

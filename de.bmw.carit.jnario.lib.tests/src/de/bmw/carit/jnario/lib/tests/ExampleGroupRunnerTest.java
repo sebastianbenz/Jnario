@@ -10,6 +10,7 @@ import org.junit.runner.Description;
 import org.junit.runner.RunWith;
 import org.junit.runners.model.InitializationError;
 
+import de.bmw.carit.jnario.runner.Contains;
 import de.bmw.carit.jnario.runner.ExampleGroupRunner;
 import de.bmw.carit.jnario.runner.Named;
 
@@ -17,7 +18,7 @@ import de.bmw.carit.jnario.runner.Named;
 public class ExampleGroupRunnerTest {
 	
 	@RunWith(ExampleGroupRunner.class)
-	@Named("Example Name")
+	@Named("Example1 Name")
 	public static class Example {
 		
 		@Test
@@ -33,7 +34,7 @@ public class ExampleGroupRunnerTest {
 	}
 	
 	@RunWith(ExampleGroupRunner.class)
-	@Named("Example Name")
+	@Named("Example2 Name")
 	public static class ExampleWithContext {
 		
 		@Named("Context Name")
@@ -59,6 +60,18 @@ public class ExampleGroupRunnerTest {
 	}
 	
 	@RunWith(ExampleGroupRunner.class)
+	@Named("Example3 Name")
+	@Contains({Example.class, ExampleWithContext.class})
+	public static class ParentExample {
+		
+		@Test
+		@Named("Parent Test 1")
+		public void first() throws Exception {
+		}
+		
+	}
+	
+	@RunWith(ExampleGroupRunner.class)
 	public static class ExampleWithoutAnnotation {
 
 		@Test
@@ -67,8 +80,6 @@ public class ExampleGroupRunnerTest {
 		
 	}
 
-	
-
 	@Test
 	public void shouldUseDefaultNameWithoutAnnotation() throws InitializationError {
 		assertThat(describe(ExampleWithoutAnnotation.class), is(desc(ExampleWithoutAnnotation.class.getName())));
@@ -76,22 +87,43 @@ public class ExampleGroupRunnerTest {
 	
 	@Test
 	public void shouldNameTestsAfterNamedAnnotation() throws Exception {
-		assertThat(describe(Example.class), is(desc("Example Name",
-															desc("Test 1"),
-															desc("Test 2")
-														)));
+		assertThat(describe(Example.class), is(
+				desc("Example1 Name",
+					desc("Test 1"),
+					desc("Test 2")
+				)));
 	}
 	
 	@Test
 	public void shouldNestContextWithinTestClass() throws Exception {
-		assertThat(describe(ExampleWithContext.class), is(desc("Example Name",
-																	desc("Context Name",
-																			desc("Test 2"),
-																			desc("Test 3")
-																	),
-																	desc("Test 1")
-																)));
+		assertThat(describe(ExampleWithContext.class), is(
+				desc("Example2 Name",
+					desc("Context Name",
+							desc("Test 2"),
+							desc("Test 3")
+					),
+					desc("Test 1")
+				)));
 	}
+	
+	@Test
+	public void shouldNestContainedClassesWithinTestClass() throws Exception {
+		assertThat(describe(ParentExample.class), is(
+			desc("Example3 Name",	
+				desc("Example1 Name",
+						desc("Test 1"),
+						desc("Test 2")
+					),
+				desc("Example2 Name",
+						desc("Context Name",
+								desc("Test 2"),
+								desc("Test 3")
+						),
+						desc("Test 1")
+					))));
+	}
+	
+	
 
 	private Description describe(Class<?> klass) throws InitializationError {
 		ExampleGroupRunner xspecRunner = new ExampleGroupRunner(klass);
@@ -129,6 +161,5 @@ public class ExampleGroupRunnerTest {
 			}
 		};
 	}
-
 
 }

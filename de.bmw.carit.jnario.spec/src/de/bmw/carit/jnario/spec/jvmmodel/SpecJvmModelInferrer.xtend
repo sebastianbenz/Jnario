@@ -28,7 +28,11 @@ import org.junit.runner.RunWith
 
 import static com.google.common.collect.Iterables.*
 import org.eclipse.xtext.common.types.TypesPackage
-import de.bmw.carit.jnario.spec.spec.ExampleGroup 
+import de.bmw.carit.jnario.spec.spec.ExampleGroup
+import de.bmw.carit.jnario.runner.Contains
+import java.util.List
+import org.eclipse.xtext.common.types.JvmVisibility
+import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder 
 /**
  * <p>Infers a JVM model from the source model.</p> 
  *
@@ -40,7 +44,7 @@ class SpecJvmModelInferrer extends AbstractModelInferrer {
     /**
      * conveninence API to build and initialize JvmTypes and their members.
      */
-	@Inject extension JvmTypesBuilder
+	@Inject extension ExtendedJvmTypesBuilder
   
   	@Inject extension IQualifiedNameProvider
   	
@@ -63,19 +67,25 @@ class SpecJvmModelInferrer extends AbstractModelInferrer {
 	def dispatch void infer(SpecFile spec,  
 	                IAcceptor<JvmDeclaredType> acceptor, 
 	                boolean isPrelinkingPhase) {
-	    
-		for( exampleGroup : spec.getElements){
-			val newClass = spec.toClass(exampleGroup.javaClassName) [
-		    	documentation = spec.documentation
+		for(exampleGroup : spec.getElements){
+			infer(spec, exampleGroup, null, acceptor)
+		}
+	}
+	
+	def infer(SpecFile spec, ExampleGroup exampleGroup, JvmGenericType superClass, IAcceptor<JvmDeclaredType> acceptor) {
+		val List<JvmGenericType> subExamples = newArrayList()
+		val newClass = exampleGroup.toClass(exampleGroup.javaClassName, superClass) [
+		    	documentation = exampleGroup.documentation
 		    	packageName = spec.getPackageName
-		    	annotations += spec.toAnnotation(typeof(RunWith), typeof(ExampleGroupRunner))
+		    	annotations += exampleGroup.toAnnotation(typeof(RunWith), typeof(ExampleGroupRunner))
 		    	addAnnotations(exampleGroup)
-		    	annotations += spec.toAnnotation(typeof(Named), exampleGroup.javaClassAnnotationValue)
+		    	annotations += exampleGroup.toAnnotation(typeof(Named), exampleGroup.javaClassAnnotationValue)
 				for (element : exampleGroup.elements) {
 			        switch element {
 			          Field : {
 			          	val initMethodName = "create" + element.getName.toFirstUpper
 			          	val field = element.toField(element.getName, element.type)
+			          	field.visibility = JvmVisibility::PROTECTED
 			            members += field
 			            val initCode = element.getRight
 			            if(initCode != null){
@@ -86,19 +96,19 @@ class SpecJvmModelInferrer extends AbstractModelInferrer {
 			            } 
 			            field.addAnnotations(element)
 			          }
+			          ExampleGroup: {
+			          	subExamples += infer(spec, element, it, acceptor)
+			          }
 			          Example : {
 			            val method = element.toMethod(element.exampleMethodName, getTypeForName(Void::TYPE, element)) [
 			              documentation = element.documentation
-			              annotations += spec.toAnnotation(typeof(Named), element.name)
+			              annotations += exampleGroup.toAnnotation(typeof(Named), element.name)
 			              annotations += element.toAnnotation(typeof(Test))
 			              addAnnotations(element)
 			              body = element.body
 			            ]
 			            method.exceptions += typeof(Exception).getTypeForName(element)
 			            members += method
-			          }
-			          ExampleGroup: {
-							          	
 			          }
 			          Function: {
 			          	var returnType = element.returnType;
@@ -123,8 +133,12 @@ class SpecJvmModelInferrer extends AbstractModelInferrer {
 				}
 			]
 			acceptor.accept(newClass)
-			newClass.computeInferredReturnTypes
-		}
+			
+			if(!subExamples.empty){
+				newClass.annotations += exampleGroup.toAnnotation(typeof(Contains), subExamples);
+			}
+			newClass.computeInferredReturnTypes    
+			return newClass
 	}
 	
 	def addAnnotations(JvmAnnotationTarget target, Member member){

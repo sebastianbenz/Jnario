@@ -5,7 +5,9 @@ import static com.google.common.collect.Iterables.concat;
 import static com.google.common.collect.Iterables.transform;
 import static com.google.common.collect.Lists.newArrayList;
 import static java.util.Arrays.asList;
+import static java.util.Collections.emptyList;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
@@ -112,7 +114,18 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 	}
 
 	public List<Class<?>> allDeclaredClasses() {
-		return asList(targetClass().getDeclaredClasses());
+		List<Class<?>> declaredClasses = asList(targetClass().getDeclaredClasses());
+		Iterable<? extends Class<?>> containedClasses = allContainedClasses();
+		return newArrayList(concat(declaredClasses, containedClasses));
+	}
+
+	protected Iterable<? extends Class<?>> allContainedClasses() {
+		Iterable<? extends Class<?>> containedClasses = emptyList();
+		Contains contains = targetClass().getAnnotation(Contains.class);
+		if(contains != null){
+			containedClasses = asList(contains.value());
+		}
+		return containedClasses;
 	}
 
 	public Class<?> targetClass() {

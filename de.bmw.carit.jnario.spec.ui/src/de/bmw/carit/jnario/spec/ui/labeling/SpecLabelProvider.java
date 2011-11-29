@@ -14,8 +14,10 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
+import org.eclipse.xtext.xbase.ui.labeling.XbaseLabelProvider;
 import org.eclipse.xtext.xbase.validation.UIStrings;
 import org.eclipse.xtext.xtend2.ui.labeling.Xtend2Images;
+import org.eclipse.xtext.xtend2.ui.labeling.Xtend2LabelProvider;
 import org.eclipse.xtext.xtend2.xtend2.XtendClass;
 import org.eclipse.xtext.xtend2.xtend2.XtendField;
 import org.eclipse.xtext.xtend2.xtend2.XtendFile;
@@ -35,7 +37,7 @@ import de.bmw.carit.jnario.spec.spec.SpecFile;
  * 
  * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#labelProvider
  */
-public class SpecLabelProvider extends DefaultEObjectLabelProvider {
+public class SpecLabelProvider extends Xtend2LabelProvider {
 
 	@Inject
 	public SpecLabelProvider(AdapterFactoryLabelProvider delegate) {
