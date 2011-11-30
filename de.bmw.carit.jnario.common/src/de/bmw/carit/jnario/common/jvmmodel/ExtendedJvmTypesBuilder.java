@@ -71,6 +71,9 @@ public class ExtendedJvmTypesBuilder extends JvmTypesBuilder {
 				((JvmTypeAnnotationValue)annotationValue).getValues().add(references.createTypeRef((JvmGenericType)object));
 			}
 		}
+		if(annotationValue == null){
+			return result;
+		}
 		setAnnotationValueName(valueName, jvmType, annotationValue);
 		result.getValues().add(annotationValue);
 		return result;
