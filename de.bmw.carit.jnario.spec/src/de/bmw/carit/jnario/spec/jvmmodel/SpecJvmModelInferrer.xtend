@@ -79,7 +79,7 @@ class SpecJvmModelInferrer extends AbstractModelInferrer {
 		    	packageName = spec.getPackageName
 		    	annotations += exampleGroup.toAnnotation(typeof(RunWith), typeof(ExampleGroupRunner))
 		    	addAnnotations(exampleGroup)
-		    	annotations += exampleGroup.toAnnotation(typeof(Named), exampleGroup.javaClassAnnotationValue)
+		    	annotations += exampleGroup.toAnnotation(typeof(Named), exampleGroup.describe)
 				for (element : exampleGroup.elements) {
 			        switch element {
 			          Field : {
@@ -102,8 +102,12 @@ class SpecJvmModelInferrer extends AbstractModelInferrer {
 			          Example : {
 			            val method = element.toMethod(element.exampleMethodName, getTypeForName(Void::TYPE, element)) [
 			              documentation = element.documentation
-			              annotations += exampleGroup.toAnnotation(typeof(Named), element.name)
-			              annotations += element.toAnnotation(typeof(Test))
+			              annotations += exampleGroup.toAnnotation(typeof(Named), element.describe)
+			              if(element.exception == null){
+				              annotations += element.toAnnotation(typeof(Test))
+			              }else{
+			              	  annotations += element.toAnnotation(typeof(Test).name, "expected", element.exception)
+			              }
 			              addAnnotations(element)
 			              body = element.body
 			            ]

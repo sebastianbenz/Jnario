@@ -60,7 +60,7 @@ Member :
 		 	(type=JvmTypeReference name=ValidID (=> '=' right=XExpression)?)
 		
 	|	{Example.annotationInfo = current}
-		(preamble='it' name=STRING
+		(preamble='it' ('throws' exception=[types::JvmDeclaredType|QualifiedName])? name=STRING
 			body=XBlockExpression?)
 	|	{ExampleGroup.annotationInfo = current}
 			(preamble=('describe'|'context') (targetType=[types::JvmDeclaredType|QualifiedName] | targetOperation=[types::JvmOperation|Method])? name=STRING? '{'

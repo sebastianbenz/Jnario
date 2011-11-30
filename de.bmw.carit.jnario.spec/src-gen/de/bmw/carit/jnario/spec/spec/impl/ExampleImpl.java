@@ -16,6 +16,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.xtext.common.types.JvmDeclaredType;
+
 import org.eclipse.xtext.xbase.XExpression;
 
 /**
@@ -26,6 +28,7 @@ import org.eclipse.xtext.xbase.XExpression;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleImpl#getPreamble <em>Preamble</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleImpl#getException <em>Exception</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleImpl#getBody <em>Body</em>}</li>
  * </ul>
  * </p>
@@ -53,6 +56,16 @@ public class ExampleImpl extends MemberImpl implements Example
    * @ordered
    */
   protected String preamble = PREAMBLE_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getException() <em>Exception</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getException()
+   * @generated
+   * @ordered
+   */
+  protected JvmDeclaredType exception;
 
   /**
    * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference.
@@ -106,6 +119,49 @@ public class ExampleImpl extends MemberImpl implements Example
     preamble = newPreamble;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.EXAMPLE__PREAMBLE, oldPreamble, preamble));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public JvmDeclaredType getException()
+  {
+    if (exception != null && exception.eIsProxy())
+    {
+      InternalEObject oldException = (InternalEObject)exception;
+      exception = (JvmDeclaredType)eResolveProxy(oldException);
+      if (exception != oldException)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SpecPackage.EXAMPLE__EXCEPTION, oldException, exception));
+      }
+    }
+    return exception;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public JvmDeclaredType basicGetException()
+  {
+    return exception;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setException(JvmDeclaredType newException)
+  {
+    JvmDeclaredType oldException = exception;
+    exception = newException;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.EXAMPLE__EXCEPTION, oldException, exception));
   }
 
   /**
@@ -184,6 +240,9 @@ public class ExampleImpl extends MemberImpl implements Example
     {
       case SpecPackage.EXAMPLE__PREAMBLE:
         return getPreamble();
+      case SpecPackage.EXAMPLE__EXCEPTION:
+        if (resolve) return getException();
+        return basicGetException();
       case SpecPackage.EXAMPLE__BODY:
         return getBody();
     }
@@ -202,6 +261,9 @@ public class ExampleImpl extends MemberImpl implements Example
     {
       case SpecPackage.EXAMPLE__PREAMBLE:
         setPreamble((String)newValue);
+        return;
+      case SpecPackage.EXAMPLE__EXCEPTION:
+        setException((JvmDeclaredType)newValue);
         return;
       case SpecPackage.EXAMPLE__BODY:
         setBody((XExpression)newValue);
@@ -223,6 +285,9 @@ public class ExampleImpl extends MemberImpl implements Example
       case SpecPackage.EXAMPLE__PREAMBLE:
         setPreamble(PREAMBLE_EDEFAULT);
         return;
+      case SpecPackage.EXAMPLE__EXCEPTION:
+        setException((JvmDeclaredType)null);
+        return;
       case SpecPackage.EXAMPLE__BODY:
         setBody((XExpression)null);
         return;
@@ -242,6 +307,8 @@ public class ExampleImpl extends MemberImpl implements Example
     {
       case SpecPackage.EXAMPLE__PREAMBLE:
         return PREAMBLE_EDEFAULT == null ? preamble != null : !PREAMBLE_EDEFAULT.equals(preamble);
+      case SpecPackage.EXAMPLE__EXCEPTION:
+        return exception != null;
       case SpecPackage.EXAMPLE__BODY:
         return body != null;
     }

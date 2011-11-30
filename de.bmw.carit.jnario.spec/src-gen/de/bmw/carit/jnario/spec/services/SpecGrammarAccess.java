@@ -399,10 +399,15 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_2_1_1 = (Group)cGroup_2_1.eContents().get(1);
 		private final Assignment cPreambleAssignment_2_1_1_0 = (Assignment)cGroup_2_1_1.eContents().get(0);
 		private final Keyword cPreambleItKeyword_2_1_1_0_0 = (Keyword)cPreambleAssignment_2_1_1_0.eContents().get(0);
-		private final Assignment cNameAssignment_2_1_1_1 = (Assignment)cGroup_2_1_1.eContents().get(1);
-		private final RuleCall cNameSTRINGTerminalRuleCall_2_1_1_1_0 = (RuleCall)cNameAssignment_2_1_1_1.eContents().get(0);
-		private final Assignment cBodyAssignment_2_1_1_2 = (Assignment)cGroup_2_1_1.eContents().get(2);
-		private final RuleCall cBodyXBlockExpressionParserRuleCall_2_1_1_2_0 = (RuleCall)cBodyAssignment_2_1_1_2.eContents().get(0);
+		private final Group cGroup_2_1_1_1 = (Group)cGroup_2_1_1.eContents().get(1);
+		private final Keyword cThrowsKeyword_2_1_1_1_0 = (Keyword)cGroup_2_1_1_1.eContents().get(0);
+		private final Assignment cExceptionAssignment_2_1_1_1_1 = (Assignment)cGroup_2_1_1_1.eContents().get(1);
+		private final CrossReference cExceptionJvmDeclaredTypeCrossReference_2_1_1_1_1_0 = (CrossReference)cExceptionAssignment_2_1_1_1_1.eContents().get(0);
+		private final RuleCall cExceptionJvmDeclaredTypeQualifiedNameParserRuleCall_2_1_1_1_1_0_1 = (RuleCall)cExceptionJvmDeclaredTypeCrossReference_2_1_1_1_1_0.eContents().get(1);
+		private final Assignment cNameAssignment_2_1_1_2 = (Assignment)cGroup_2_1_1.eContents().get(2);
+		private final RuleCall cNameSTRINGTerminalRuleCall_2_1_1_2_0 = (RuleCall)cNameAssignment_2_1_1_2.eContents().get(0);
+		private final Assignment cBodyAssignment_2_1_1_3 = (Assignment)cGroup_2_1_1.eContents().get(3);
+		private final RuleCall cBodyXBlockExpressionParserRuleCall_2_1_1_3_0 = (RuleCall)cBodyAssignment_2_1_1_3.eContents().get(0);
 		private final Group cGroup_2_2 = (Group)cAlternatives_2.eContents().get(2);
 		private final Action cExampleGroupAnnotationInfoAction_2_2_0 = (Action)cGroup_2_2.eContents().get(0);
 		private final Group cGroup_2_2_1 = (Group)cGroup_2_2.eContents().get(1);
@@ -475,7 +480,8 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//
 		//Member:
 		//	{Member} annotations+=XAnnotation* ({Field.annotationInfo=current} (type=JvmTypeReference name=ValidID ("="
-		//	right=XExpression)?) | {Example.annotationInfo=current} (preamble="it" name=STRING body=XBlockExpression?) |
+		//	right=XExpression)?) | {Example.annotationInfo=current} (preamble="it" ("throws"
+		//	exception=[types::JvmDeclaredType|QualifiedName])? name=STRING body=XBlockExpression?) |
 		//	{ExampleGroup.annotationInfo=current} (preamble=("describe" | "context")
 		//	(targetType=[types::JvmDeclaredType|QualifiedName] | targetOperation=[types::JvmOperation|Method])? name=STRING? "{"
 		//	elements+=Member* "}") | {Function.annotationInfo=current} ("def" ("<" typeParameters+=JvmTypeParameter (","
@@ -484,7 +490,8 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		public ParserRule getRule() { return rule; }
 
 		//{Member} annotations+=XAnnotation* ({Field.annotationInfo=current} (type=JvmTypeReference name=ValidID ("="
-		//right=XExpression)?) | {Example.annotationInfo=current} (preamble="it" name=STRING body=XBlockExpression?) |
+		//right=XExpression)?) | {Example.annotationInfo=current} (preamble="it" ("throws"
+		//exception=[types::JvmDeclaredType|QualifiedName])? name=STRING body=XBlockExpression?) |
 		//{ExampleGroup.annotationInfo=current} (preamble=("describe" | "context")
 		//(targetType=[types::JvmDeclaredType|QualifiedName] | targetOperation=[types::JvmOperation|Method])? name=STRING? "{"
 		//elements+=Member* "}") | {Function.annotationInfo=current} ("def" ("<" typeParameters+=JvmTypeParameter (","
@@ -502,8 +509,8 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getAnnotationsXAnnotationParserRuleCall_1_0() { return cAnnotationsXAnnotationParserRuleCall_1_0; }
 
 		//{Field.annotationInfo=current} (type=JvmTypeReference name=ValidID ("=" right=XExpression)?) |
-		//{Example.annotationInfo=current} (preamble="it" name=STRING body=XBlockExpression?) |
-		//{ExampleGroup.annotationInfo=current} (preamble=("describe" | "context")
+		//{Example.annotationInfo=current} (preamble="it" ("throws" exception=[types::JvmDeclaredType|QualifiedName])?
+		//name=STRING body=XBlockExpression?) | {ExampleGroup.annotationInfo=current} (preamble=("describe" | "context")
 		//(targetType=[types::JvmDeclaredType|QualifiedName] | targetOperation=[types::JvmOperation|Method])? name=STRING? "{"
 		//elements+=Member* "}") | {Function.annotationInfo=current} ("def" ("<" typeParameters+=JvmTypeParameter (","
 		//typeParameters+=JvmTypeParameter)* ">")? (=> (returnType=JvmTypeReference name=ValidID "(") | name=ValidID "(")
@@ -543,13 +550,14 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//XExpression
 		public RuleCall getRightXExpressionParserRuleCall_2_0_1_2_1_0() { return cRightXExpressionParserRuleCall_2_0_1_2_1_0; }
 
-		//{Example.annotationInfo=current} (preamble="it" name=STRING body=XBlockExpression?)
+		//{Example.annotationInfo=current} (preamble="it" ("throws" exception=[types::JvmDeclaredType|QualifiedName])? name=STRING
+		//body=XBlockExpression?)
 		public Group getGroup_2_1() { return cGroup_2_1; }
 
 		//{Example.annotationInfo=current}
 		public Action getExampleAnnotationInfoAction_2_1_0() { return cExampleAnnotationInfoAction_2_1_0; }
 
-		//preamble="it" name=STRING body=XBlockExpression?
+		//preamble="it" ("throws" exception=[types::JvmDeclaredType|QualifiedName])? name=STRING body=XBlockExpression?
 		public Group getGroup_2_1_1() { return cGroup_2_1_1; }
 
 		//preamble="it"
@@ -558,17 +566,32 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//"it"
 		public Keyword getPreambleItKeyword_2_1_1_0_0() { return cPreambleItKeyword_2_1_1_0_0; }
 
+		//("throws" exception=[types::JvmDeclaredType|QualifiedName])?
+		public Group getGroup_2_1_1_1() { return cGroup_2_1_1_1; }
+
+		//"throws"
+		public Keyword getThrowsKeyword_2_1_1_1_0() { return cThrowsKeyword_2_1_1_1_0; }
+
+		//exception=[types::JvmDeclaredType|QualifiedName]
+		public Assignment getExceptionAssignment_2_1_1_1_1() { return cExceptionAssignment_2_1_1_1_1; }
+
+		//[types::JvmDeclaredType|QualifiedName]
+		public CrossReference getExceptionJvmDeclaredTypeCrossReference_2_1_1_1_1_0() { return cExceptionJvmDeclaredTypeCrossReference_2_1_1_1_1_0; }
+
+		//QualifiedName
+		public RuleCall getExceptionJvmDeclaredTypeQualifiedNameParserRuleCall_2_1_1_1_1_0_1() { return cExceptionJvmDeclaredTypeQualifiedNameParserRuleCall_2_1_1_1_1_0_1; }
+
 		//name=STRING
-		public Assignment getNameAssignment_2_1_1_1() { return cNameAssignment_2_1_1_1; }
+		public Assignment getNameAssignment_2_1_1_2() { return cNameAssignment_2_1_1_2; }
 
 		//STRING
-		public RuleCall getNameSTRINGTerminalRuleCall_2_1_1_1_0() { return cNameSTRINGTerminalRuleCall_2_1_1_1_0; }
+		public RuleCall getNameSTRINGTerminalRuleCall_2_1_1_2_0() { return cNameSTRINGTerminalRuleCall_2_1_1_2_0; }
 
 		//body=XBlockExpression?
-		public Assignment getBodyAssignment_2_1_1_2() { return cBodyAssignment_2_1_1_2; }
+		public Assignment getBodyAssignment_2_1_1_3() { return cBodyAssignment_2_1_1_3; }
 
 		//XBlockExpression
-		public RuleCall getBodyXBlockExpressionParserRuleCall_2_1_1_2_0() { return cBodyXBlockExpressionParserRuleCall_2_1_1_2_0; }
+		public RuleCall getBodyXBlockExpressionParserRuleCall_2_1_1_3_0() { return cBodyXBlockExpressionParserRuleCall_2_1_1_3_0; }
 
 		//{ExampleGroup.annotationInfo=current} (preamble=("describe" | "context")
 		//(targetType=[types::JvmDeclaredType|QualifiedName] | targetOperation=[types::JvmOperation|Method])? name=STRING? "{"
@@ -900,7 +923,8 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	//Member:
 	//	{Member} annotations+=XAnnotation* ({Field.annotationInfo=current} (type=JvmTypeReference name=ValidID ("="
-	//	right=XExpression)?) | {Example.annotationInfo=current} (preamble="it" name=STRING body=XBlockExpression?) |
+	//	right=XExpression)?) | {Example.annotationInfo=current} (preamble="it" ("throws"
+	//	exception=[types::JvmDeclaredType|QualifiedName])? name=STRING body=XBlockExpression?) |
 	//	{ExampleGroup.annotationInfo=current} (preamble=("describe" | "context")
 	//	(targetType=[types::JvmDeclaredType|QualifiedName] | targetOperation=[types::JvmOperation|Method])? name=STRING? "{"
 	//	elements+=Member* "}") | {Function.annotationInfo=current} ("def" ("<" typeParameters+=JvmTypeParameter (","

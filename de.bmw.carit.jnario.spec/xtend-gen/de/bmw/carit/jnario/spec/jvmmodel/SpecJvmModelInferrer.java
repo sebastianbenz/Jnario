@@ -111,8 +111,8 @@ public class SpecJvmModelInferrer extends AbstractModelInferrer {
               CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
               SpecJvmModelInferrer.this.addAnnotations(it, exampleGroup);
               EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
-              String _javaClassAnnotationValue = SpecJvmModelInferrer.this._javaNameProvider.getJavaClassAnnotationValue(exampleGroup);
-              JvmAnnotationReference _annotation_1 = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(exampleGroup, de.bmw.carit.jnario.runner.Named.class, _javaClassAnnotationValue);
+              String _describe = SpecJvmModelInferrer.this._javaNameProvider.describe(exampleGroup);
+              JvmAnnotationReference _annotation_1 = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(exampleGroup, de.bmw.carit.jnario.runner.Named.class, _describe);
               CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
               EList<Member> _elements = exampleGroup.getElements();
               for (final Member element : _elements) {
@@ -182,12 +182,22 @@ public class SpecJvmModelInferrer extends AbstractModelInferrer {
                               String _documentation = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.getDocumentation(element_4);
                               SpecJvmModelInferrer.this._extendedJvmTypesBuilder.setDocumentation(it, _documentation);
                               EList<JvmAnnotationReference> _annotations = it.getAnnotations();
-                              String _name = element_4.getName();
-                              JvmAnnotationReference _annotation = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(exampleGroup, de.bmw.carit.jnario.runner.Named.class, _name);
+                              String _describe = SpecJvmModelInferrer.this._javaNameProvider.describe(element_4);
+                              JvmAnnotationReference _annotation = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(exampleGroup, de.bmw.carit.jnario.runner.Named.class, _describe);
                               CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
-                              EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
-                              JvmAnnotationReference _annotation_1 = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(element_4, org.junit.Test.class);
-                              CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
+                              JvmDeclaredType _exception = element_4.getException();
+                              boolean _operator_equals = ObjectExtensions.operator_equals(_exception, null);
+                              if (_operator_equals) {
+                                EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
+                                JvmAnnotationReference _annotation_1 = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(element_4, org.junit.Test.class);
+                                CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
+                              } else {
+                                EList<JvmAnnotationReference> _annotations_2 = it.getAnnotations();
+                                String _name = org.junit.Test.class.getName();
+                                JvmDeclaredType _exception_1 = element_4.getException();
+                                JvmAnnotationReference _annotation_2 = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(element_4, _name, "expected", _exception_1);
+                                CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_2, _annotation_2);
+                              }
                               SpecJvmModelInferrer.this.addAnnotations(it, element_4);
                               XExpression _body = element_4.getBody();
                               SpecJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, _body);

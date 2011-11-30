@@ -53,14 +53,17 @@ describe "SpecScopeProvider" {
 		'    
 		)
 		val exampleGroup = modelStore.query.second(typeof(ExampleGroup))
-		val scope = targetOperation(exampleGroup)
-		contains(scope, "#assertNotNull(String, Object)") 
+		contains(targetOperation(exampleGroup), "#assertNotNull(String, Object)") 
 	}    
 	
-	 
 	def void contains(IScope scope, String element){
 		val result = scope.getSingleElement(QualifiedName::create(element.split("//.")))
 		assertNotNull("scope did not contain:" + element, result);
+	}
+	
+	def void containsNot(IScope scope, String element){
+		val result = scope.getSingleElement(QualifiedName::create(element.split("//.")))
+		assertNull("scope did not contain:" + element, result);
 	}
 	
 	def IScope targetType(EObject source){
@@ -69,6 +72,10 @@ describe "SpecScopeProvider" {
 	
 	def IScope targetOperation(EObject source){
 		return fixture.getScope(source, SpecPackage::eINSTANCE.exampleGroup_TargetOperation)
+	}
+	
+	def IScope throwsDeclaration(EObject source){
+		return fixture.getScope(source, SpecPackage::eINSTANCE.example_Exception)
 	}
 			
 }

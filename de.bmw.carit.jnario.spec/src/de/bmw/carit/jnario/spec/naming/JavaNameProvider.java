@@ -13,7 +13,7 @@ public class JavaNameProvider {
 
 	private static final String UNKNOWN_NAME = "Unknown";
 
-	public String getJavaClassAnnotationValue(ExampleGroup exampleGroup) {
+	public String describe(ExampleGroup exampleGroup) {
 		StringBuilder result = new StringBuilder();
 		if(exampleGroup.getTargetType() != null){
 			result.append(exampleGroup.getTargetType().getSimpleName());
@@ -39,6 +39,17 @@ public class JavaNameProvider {
 		}
 		name = appendMemberDescription(exampleGroup, name);
 		return toFirstUpper(clean(name)) + "Spec";
+	}
+	
+	public String describe(Example example){
+		StringBuilder sb = new StringBuilder();
+		if(example.getException() != null){
+			sb.append("throws ");
+			sb.append(example.getException().getSimpleName());
+			sb.append(" ");
+		}
+		sb.append(example.getName());
+		return sb.toString();
 	}
 
 	protected String clean(String name) {

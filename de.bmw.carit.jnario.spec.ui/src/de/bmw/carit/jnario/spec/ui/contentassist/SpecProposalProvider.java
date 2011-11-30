@@ -14,13 +14,19 @@ import de.bmw.carit.jnario.spec.spec.SpecPackage;
  * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#contentAssist on how to customize content assistant
  */
 public class SpecProposalProvider extends AbstractSpecProposalProvider {
-
 	
 	@Override
 	public void completeExampleGroup_TargetType(EObject model,
 			Assignment assignment, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
 		completeJavaTypes(context, SpecPackage.Literals.EXAMPLE_GROUP__TARGET_TYPE, true, getQualifiedNameValueConverter(), TypeMatchFilters.all(), acceptor);
+	}
+	
+	@Override
+	public void completeMember_Exception(EObject model, Assignment assignment,
+			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeJavaTypes(context, SpecPackage.Literals.EXAMPLE_GROUP__TARGET_TYPE, true, getQualifiedNameValueConverter(), TypeMatchFilters., acceptor);
+		completeJava
 	}
 	
 }

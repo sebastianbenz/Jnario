@@ -9,6 +9,7 @@ import org.eclipse.xtext.common.types.JvmAnnotationReference;
 import org.eclipse.xtext.common.types.JvmAnnotationType;
 import org.eclipse.xtext.common.types.JvmAnnotationValue;
 import org.eclipse.xtext.common.types.JvmGenericType;
+import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmStringAnnotationValue;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeAnnotationValue;
@@ -34,7 +35,7 @@ public class ExtendedJvmTypesBuilder extends JvmTypesBuilder {
 		return result;
 	}
 	
-	public JvmAnnotationReference toAnnotation(EObject sourceElement, String annotationTypeName, Object value) {
+	public JvmAnnotationReference toAnnotation(EObject sourceElement, String annotationTypeName, String valueName, Object value) {
 		JvmAnnotationReference result = TypesFactory.eINSTANCE.createJvmAnnotationReference();
 		JvmType jvmType = references.findDeclaredType(annotationTypeName, sourceElement);
 		if (!(jvmType instanceof JvmAnnotationType)) {
@@ -70,8 +71,23 @@ public class ExtendedJvmTypesBuilder extends JvmTypesBuilder {
 				((JvmTypeAnnotationValue)annotationValue).getValues().add(references.createTypeRef((JvmGenericType)object));
 			}
 		}
+		setAnnotationValueName(valueName, jvmType, annotationValue);
 		result.getValues().add(annotationValue);
 		return result;
+		
+	}
+
+	protected void setAnnotationValueName(String valueName, JvmType jvmType,
+			JvmAnnotationValue annotationValue) {
+		for (JvmOperation  operation: ((JvmAnnotationType)jvmType).getDeclaredOperations()) {
+			if(operation.getSimpleName().equals(valueName)){
+				annotationValue.setOperation(operation);
+			}
+		}
+	}
+	
+	public JvmAnnotationReference toAnnotation(EObject sourceElement, String annotationTypeName, Object value) {
+		return toAnnotation(sourceElement, annotationTypeName, null, value);
 	}
 	
 }

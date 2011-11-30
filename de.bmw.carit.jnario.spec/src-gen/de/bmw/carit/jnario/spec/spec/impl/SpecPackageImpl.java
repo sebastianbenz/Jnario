@@ -378,9 +378,19 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExample_Body()
+  public EReference getExample_Exception()
   {
     return (EReference)exampleEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getExample_Body()
+  {
+    return (EReference)exampleEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -490,6 +500,7 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 
     exampleEClass = createEClass(EXAMPLE);
     createEAttribute(exampleEClass, EXAMPLE__PREAMBLE);
+    createEReference(exampleEClass, EXAMPLE__EXCEPTION);
     createEReference(exampleEClass, EXAMPLE__BODY);
 
     functionEClass = createEClass(FUNCTION);
@@ -567,6 +578,7 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 
     initEClass(exampleEClass, Example.class, "Example", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getExample_Preamble(), ecorePackage.getEString(), "preamble", null, 0, 1, Example.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExample_Exception(), theTypesPackage.getJvmDeclaredType(), null, "exception", null, 0, 1, Example.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExample_Body(), theXbasePackage.getXExpression(), null, "body", null, 0, 1, Example.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(functionEClass, Function.class, "Function", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

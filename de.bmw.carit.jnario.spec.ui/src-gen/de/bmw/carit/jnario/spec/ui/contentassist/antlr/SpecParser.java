@@ -91,6 +91,7 @@ public class SpecParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMemberAccess().getGroup_2_0_1_2(), "rule__Member__Group_2_0_1_2__0");
 					put(grammarAccess.getMemberAccess().getGroup_2_1(), "rule__Member__Group_2_1__0");
 					put(grammarAccess.getMemberAccess().getGroup_2_1_1(), "rule__Member__Group_2_1_1__0");
+					put(grammarAccess.getMemberAccess().getGroup_2_1_1_1(), "rule__Member__Group_2_1_1_1__0");
 					put(grammarAccess.getMemberAccess().getGroup_2_2(), "rule__Member__Group_2_2__0");
 					put(grammarAccess.getMemberAccess().getGroup_2_2_1(), "rule__Member__Group_2_2_1__0");
 					put(grammarAccess.getMemberAccess().getGroup_2_3(), "rule__Member__Group_2_3__0");
@@ -258,8 +259,9 @@ public class SpecParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMemberAccess().getNameAssignment_2_0_1_1(), "rule__Member__NameAssignment_2_0_1_1");
 					put(grammarAccess.getMemberAccess().getRightAssignment_2_0_1_2_1(), "rule__Member__RightAssignment_2_0_1_2_1");
 					put(grammarAccess.getMemberAccess().getPreambleAssignment_2_1_1_0(), "rule__Member__PreambleAssignment_2_1_1_0");
-					put(grammarAccess.getMemberAccess().getNameAssignment_2_1_1_1(), "rule__Member__NameAssignment_2_1_1_1");
-					put(grammarAccess.getMemberAccess().getBodyAssignment_2_1_1_2(), "rule__Member__BodyAssignment_2_1_1_2");
+					put(grammarAccess.getMemberAccess().getExceptionAssignment_2_1_1_1_1(), "rule__Member__ExceptionAssignment_2_1_1_1_1");
+					put(grammarAccess.getMemberAccess().getNameAssignment_2_1_1_2(), "rule__Member__NameAssignment_2_1_1_2");
+					put(grammarAccess.getMemberAccess().getBodyAssignment_2_1_1_3(), "rule__Member__BodyAssignment_2_1_1_3");
 					put(grammarAccess.getMemberAccess().getPreambleAssignment_2_2_1_0(), "rule__Member__PreambleAssignment_2_2_1_0");
 					put(grammarAccess.getMemberAccess().getTargetTypeAssignment_2_2_1_1_0(), "rule__Member__TargetTypeAssignment_2_2_1_1_0");
 					put(grammarAccess.getMemberAccess().getTargetOperationAssignment_2_2_1_1_1(), "rule__Member__TargetOperationAssignment_2_2_1_1_1");

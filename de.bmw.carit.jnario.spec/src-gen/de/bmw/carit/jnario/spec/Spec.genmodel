@@ -36,6 +36,7 @@
     </genClasses>
     <genClasses ecoreClass="Spec.ecore#//Example">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Example/preamble"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Spec.ecore#//Example/exception"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//Example/body"/>
     </genClasses>
     <genClasses ecoreClass="Spec.ecore#//Function">

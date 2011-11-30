@@ -390,13 +390,22 @@ public interface SpecPackage extends EPackage
   int EXAMPLE__PREAMBLE = MEMBER_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Exception</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXAMPLE__EXCEPTION = MEMBER_FEATURE_COUNT + 1;
+
+  /**
    * The feature id for the '<em><b>Body</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXAMPLE__BODY = MEMBER_FEATURE_COUNT + 1;
+  int EXAMPLE__BODY = MEMBER_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Example</em>' class.
@@ -405,7 +414,7 @@ public interface SpecPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXAMPLE_FEATURE_COUNT = MEMBER_FEATURE_COUNT + 2;
+  int EXAMPLE_FEATURE_COUNT = MEMBER_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link de.bmw.carit.jnario.spec.spec.impl.FunctionImpl <em>Function</em>}' class.
@@ -727,6 +736,17 @@ public interface SpecPackage extends EPackage
   EAttribute getExample_Preamble();
 
   /**
+   * Returns the meta object for the reference '{@link de.bmw.carit.jnario.spec.spec.Example#getException <em>Exception</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Exception</em>'.
+   * @see de.bmw.carit.jnario.spec.spec.Example#getException()
+   * @see #getExample()
+   * @generated
+   */
+  EReference getExample_Exception();
+
+  /**
    * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.spec.spec.Example#getBody <em>Body</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1001,6 +1021,14 @@ public interface SpecPackage extends EPackage
      * @generated
      */
     EAttribute EXAMPLE__PREAMBLE = eINSTANCE.getExample_Preamble();
+
+    /**
+     * The meta object literal for the '<em><b>Exception</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXAMPLE__EXCEPTION = eINSTANCE.getExample_Exception();
 
     /**
      * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
