@@ -103,13 +103,15 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
                   boolean _isEmpty = _examples.isEmpty();
                   if (_isEmpty) {
                     EList<JvmAnnotationReference> _annotations = it.getAnnotations();
-                    JvmAnnotationReference _annotation = JnarioJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(scenario, org.junit.runner.RunWith.class, de.bmw.carit.jnario.runner.ScenarioRunner.class);
+                    JvmAnnotationReference _annotation = JnarioJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(scenario, org.junit.runner.RunWith.class, de.bmw.carit.jnario.runner.JnarioRunner.class);
                     CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
                   } else {
-                    EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
-                    JvmAnnotationReference _annotation_1 = JnarioJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(scenario, org.junit.runner.RunWith.class, de.bmw.carit.jnario.runner.JnarioParameterizedRunner.class);
-                    CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
                   }
+                  EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
+                  String _name = scenario.getName();
+                  String _trim = _name.trim();
+                  JvmAnnotationReference _annotation_1 = JnarioJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(scenario, de.bmw.carit.jnario.runner.Named.class, _trim);
+                  CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
                   Feature _feature = jnario.getFeature();
                   String _packageName = _feature.getPackageName();
                   it.setPackageName(_packageName);
@@ -154,9 +156,6 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
                       JvmTypeReference arrayRef = _addArrayTypeDimension_1;
                       JvmField _field_1 = JnarioJvmModelInferrer.this._jvmTypesBuilder.toField(scenario, "exampleData", arrayRef);
                       JvmField field = _field_1;
-                      EList<JvmAnnotationReference> _annotations_2 = field.getAnnotations();
-                      JvmAnnotationReference _annotation_2 = JnarioJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(scenario, org.junit.runners.Parameterized.Parameters.class);
-                      CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_2, _annotation_2);
                       EList<JvmMember> _members_1 = it.getMembers();
                       CollectionExtensions.<JvmField>operator_add(_members_1, field);
                       final Procedure1<JvmConstructor> _function = new Procedure1<JvmConstructor>() {
@@ -178,13 +177,16 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
                       final Function1<ImportManager,StringConcatenation> _function_1 = new Function1<ImportManager,StringConcatenation>() {
                           public StringConcatenation apply(final ImportManager it) {
                             StringConcatenation _builder = new StringConcatenation();
-                            _builder.append("\u00B4FOR variable: variables.keySet\u00AA");
-                            _builder.newLine();
-                            _builder.append("\t");
-                            _builder.append("this.\u00B4variable\u00AA = \u00B4variable\u00AA");
-                            _builder.newLine();
-                            _builder.append("\u00B4ENDFOR\u00AA");
-                            _builder.newLine();
+                            {
+                              Set<String> _keySet = variables.keySet();
+                              for(final String variable : _keySet) {
+                                _builder.append("this.");
+                                _builder.append(variable, "");
+                                _builder.append(" = ");
+                                _builder.append(variable, "");
+                                _builder.newLineIfNotEmpty();
+                              }
+                            }
                             return _builder;
                           }
                         };

@@ -7,7 +7,6 @@ import static com.google.common.collect.Lists.newArrayList;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
@@ -51,6 +50,10 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 	@Override
 	protected List<Runner> getChildren() {
 		return children;
+	}
+	
+	protected NameProvider getNameProvider(){
+		return nameProvider;
 	}
 
 	private Iterable<? extends Runner> exampleGroups() {

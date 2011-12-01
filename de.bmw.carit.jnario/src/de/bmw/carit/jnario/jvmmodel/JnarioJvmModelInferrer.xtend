@@ -7,8 +7,8 @@ import de.bmw.carit.jnario.jnario.Step
 import de.bmw.carit.jnario.jnario.Then
 import de.bmw.carit.jnario.jnario.When
 import de.bmw.carit.jnario.naming.JavaNameProvider
-import de.bmw.carit.jnario.runner.JnarioParameterizedRunner
-import de.bmw.carit.jnario.runner.ScenarioRunner
+import de.bmw.carit.jnario.runner.JnarioRunner
+import de.bmw.carit.jnario.runner.Named
 import java.util.HashMap
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.util.EcoreUtil
@@ -23,11 +23,9 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.eclipse.xtext.xbase.typing.ITypeProvider
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.junit.runners.Parameterized$Parameters
 
 import static com.google.common.collect.Iterators.*
 import static com.google.common.collect.Sets.*
-import de.bmw.carit.jnario.runner.Named
 
 
 
@@ -67,10 +65,11 @@ class JnarioJvmModelInferrer extends AbstractModelInferrer {
 				acceptor.accept(
 					scenario.toClass(className) [
 						if(scenario.examples.empty){
-							annotations += scenario.toAnnotation(typeof(RunWith), typeof(ScenarioRunner))
+							annotations += scenario.toAnnotation(typeof(RunWith), typeof(JnarioRunner))
 						}else{
-							annotations += scenario.toAnnotation(typeof(RunWith), typeof(JnarioParameterizedRunner))
+							//annotations += scenario.toAnnotation(typeof(RunWith), typeof(JnarioExamplesRunner))
 						}
+						annotations += scenario.toAnnotation(typeof(Named), scenario.name.trim)
 						packageName = jnario.feature.packageName
 						documentation = scenario.documentation
 						val variables = scenario.generateVariables
@@ -92,7 +91,7 @@ class JnarioJvmModelInferrer extends AbstractModelInferrer {
 							
 							var arrayRef = (typeof(Object).getTypeForName(scenario)).addArrayTypeDimension.addArrayTypeDimension
 							var field = scenario.toField("exampleData", arrayRef)
-							field.annotations += scenario.toAnnotation(typeof(Parameters))
+						//	field.annotations += scenario.toAnnotation(typeof(Parameters))
 							members += field	
 							
 							var constructor = scenario.toConstructor(className)[
