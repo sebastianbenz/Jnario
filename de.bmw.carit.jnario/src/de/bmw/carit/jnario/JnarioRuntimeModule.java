@@ -7,6 +7,7 @@ import org.eclipse.xtext.generator.OutputConfigurationProvider;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
+import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
 import org.eclipse.xtext.xbase.impl.FeatureCallToJavaMapping;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
@@ -18,6 +19,7 @@ import org.eclipse.xtext.xtend2.resource.Xtend2Resource;
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
 
+import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmModelGenerator;
 import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder;
 import de.bmw.carit.jnario.common.scoping.JnarioExtensionClassNameProvider;
 import de.bmw.carit.jnario.generator.JnarioCompiler;
@@ -47,6 +49,10 @@ public class JnarioRuntimeModule extends de.bmw.carit.jnario.AbstractJnarioRunti
 	
 	public Class<? extends JvmTypesBuilder> bindJvmTypesBuilder(){
 		return ExtendedJvmTypesBuilder.class;
+	}
+	
+	public Class<? extends JvmModelGenerator> bindJvmModelGenerator(){
+		return ExtendedJvmModelGenerator.class;
 	}
 	
 	@Override

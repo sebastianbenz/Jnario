@@ -1,0 +1,28 @@
+package de.bmw.carit.jnario.tests
+
+Feature: Test Runner
+
+	import static extension de.bmw.carit.jnario.tests.util.JnarioExecutor.*
+	import static org.junit.experimental.results.ResultMatchers.*
+
+	Scenario: One test instance of one jnario scenario
+	
+		Given a jnario-file that uses variables in different steps
+		
+			var jnarioFile = "
+				package bootstrap
+				Feature:
+					Scenario:
+						Given 
+							var x = 3
+						When 
+							x = x + 1 
+						Then 
+							x.should.be(4) 
+				"
+				
+		When I run the scenario
+		
+					
+		Then the scenario should pass
+			jnarioFile.execute.should.be(successful)

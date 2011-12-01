@@ -43,6 +43,7 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.eclipse.xtext.xbase.lib.CollectionExtensions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
@@ -195,16 +196,18 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
                       CollectionExtensions.<JvmConstructor>operator_add(_members_2, constructor);
                     }
                   }
+                  int order = 0;
                   if (hasBackground) {
                     Feature _feature_3 = jnario.getFeature();
                     Background _background_2 = _feature_3.getBackground();
                     EList<Given> _steps = _background_2.getSteps();
                     for (final Given step : _steps) {
                       {
-                        JnarioJvmModelInferrer.this.transform(step, it);
+                        JnarioJvmModelInferrer.this.transform(step, it, order);
                         EList<And> _and = step.getAnd();
                         for (final And and : _and) {
-                          JnarioJvmModelInferrer.this.transform(and, it);
+                          int _transform = JnarioJvmModelInferrer.this.transform(and, it, order);
+                          order = _transform;
                         }
                       }
                     }
@@ -212,13 +215,15 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
                   EList<Step> _steps_1 = scenario.getSteps();
                   for (final Step step_1 : _steps_1) {
                     {
-                      JnarioJvmModelInferrer.this.transform(step_1, it);
+                      int _transform_1 = JnarioJvmModelInferrer.this.transform(step_1, it, order);
+                      order = _transform_1;
                       if ((step_1 instanceof Given)) {
                         {
                           Given given = ((Given) step_1);
                           EList<And> _and_1 = given.getAnd();
                           for (final And and_1 : _and_1) {
-                            JnarioJvmModelInferrer.this.transform(and_1, it);
+                            int _transform_2 = JnarioJvmModelInferrer.this.transform(and_1, it, order);
+                            order = _transform_2;
                           }
                         }
                       } else {
@@ -227,7 +232,8 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
                             When when = ((When) step_1);
                             EList<And> _and_2 = when.getAnd();
                             for (final And and_2 : _and_2) {
-                              JnarioJvmModelInferrer.this.transform(and_2, it);
+                              int _transform_3 = JnarioJvmModelInferrer.this.transform(and_2, it, order);
+                              order = _transform_3;
                             }
                           }
                         } else {
@@ -235,7 +241,8 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
                             Then then = ((Then) step_1);
                             EList<And> _and_3 = then.getAnd();
                             for (final And and_3 : _and_3) {
-                              JnarioJvmModelInferrer.this.transform(and_3, it);
+                              int _transform_4 = JnarioJvmModelInferrer.this.transform(and_3, it, order);
+                              order = _transform_4;
                             }
                           }
                         }
@@ -310,44 +317,49 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
     return _xblockexpression;
   }
   
-  public Boolean transform(final Step step, final JvmGenericType inferredJvmType) {
-    Boolean _xifexpression = null;
-    Code _code = step.getCode();
-    boolean _operator_notEquals = ObjectExtensions.operator_notEquals(_code, null);
-    if (_operator_notEquals) {
-      boolean _xblockexpression = false;
-      {
-        String _name = step.getName();
-        String _javaMethodName = this._javaNameProvider.getJavaMethodName(_name);
-        JvmTypeReference _typeForName = this._typeReferences.getTypeForName(Void.TYPE, step);
-        final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
-            public void apply(final JvmOperation it) {
-              Code _code = step.getCode();
-              XBlockExpression _blockExpression = _code.getBlockExpression();
-              JnarioJvmModelInferrer.this._jvmTypesBuilder.setBody(it, _blockExpression);
-            }
-          };
-        JvmOperation _method = this._jvmTypesBuilder.toMethod(step, _javaMethodName, _typeForName, _function);
-        JvmOperation operation = _method;
-        Code _code_1 = step.getCode();
-        XBlockExpression _blockExpression = _code_1.getBlockExpression();
-        XBlockExpression _copy = EcoreUtil.<XBlockExpression>copy(_blockExpression);
-        final XBlockExpression copiedExpression = _copy;
-        EList<JvmMember> _members = inferredJvmType.getMembers();
-        CollectionExtensions.<JvmOperation>operator_add(_members, operation);
-        EList<JvmAnnotationReference> _annotations = operation.getAnnotations();
-        JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(step, org.junit.Test.class);
-        CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
-        EList<JvmAnnotationReference> _annotations_1 = operation.getAnnotations();
-        String _name_1 = step.getName();
-        String _trim = _name_1.trim();
-        JvmAnnotationReference _annotation_1 = this._jvmTypesBuilder.toAnnotation(step, de.bmw.carit.jnario.runner.Named.class, _trim);
-        boolean _operator_add = CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
-        _xblockexpression = (_operator_add);
+  public int transform(final Step step, final JvmGenericType inferredJvmType, final int order) {
+    int _xblockexpression = (int) 0;
+    {
+      Code _code = step.getCode();
+      boolean _operator_notEquals = ObjectExtensions.operator_notEquals(_code, null);
+      if (_operator_notEquals) {
+        {
+          String _name = step.getName();
+          String _javaMethodName = this._javaNameProvider.getJavaMethodName(_name);
+          JvmTypeReference _typeForName = this._typeReferences.getTypeForName(Void.TYPE, step);
+          final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
+              public void apply(final JvmOperation it) {
+                Code _code = step.getCode();
+                XBlockExpression _blockExpression = _code.getBlockExpression();
+                JnarioJvmModelInferrer.this._jvmTypesBuilder.setBody(it, _blockExpression);
+              }
+            };
+          JvmOperation _method = this._jvmTypesBuilder.toMethod(step, _javaMethodName, _typeForName, _function);
+          JvmOperation operation = _method;
+          Code _code_1 = step.getCode();
+          XBlockExpression _blockExpression = _code_1.getBlockExpression();
+          XBlockExpression _copy = EcoreUtil.<XBlockExpression>copy(_blockExpression);
+          final XBlockExpression copiedExpression = _copy;
+          EList<JvmMember> _members = inferredJvmType.getMembers();
+          CollectionExtensions.<JvmOperation>operator_add(_members, operation);
+          EList<JvmAnnotationReference> _annotations = operation.getAnnotations();
+          JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(step, org.junit.Test.class);
+          CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
+          EList<JvmAnnotationReference> _annotations_1 = operation.getAnnotations();
+          int _intValue = ((Integer)order).intValue();
+          JvmAnnotationReference _annotation_1 = this._jvmTypesBuilder.toAnnotation(step, de.bmw.carit.jnario.runner.Order.class, ((Integer)_intValue));
+          CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
+          EList<JvmAnnotationReference> _annotations_2 = operation.getAnnotations();
+          String _name_1 = step.getName();
+          String _trim = _name_1.trim();
+          JvmAnnotationReference _annotation_2 = this._jvmTypesBuilder.toAnnotation(step, de.bmw.carit.jnario.runner.Named.class, _trim);
+          CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_2, _annotation_2);
+        }
       }
-      _xifexpression = _xblockexpression;
+      int _operator_plus = IntegerExtensions.operator_plus(((Integer)order), ((Integer)1));
+      _xblockexpression = (_operator_plus);
     }
-    return _xifexpression;
+    return _xblockexpression;
   }
   
   public Object generateExampleConstructor() {

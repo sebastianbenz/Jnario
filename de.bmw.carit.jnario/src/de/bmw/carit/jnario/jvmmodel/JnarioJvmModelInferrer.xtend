@@ -26,6 +26,7 @@ import org.junit.runner.RunWith
 
 import static com.google.common.collect.Iterators.*
 import static com.google.common.collect.Sets.*
+import de.bmw.carit.jnario.runner.Order
 
 
 
@@ -109,31 +110,32 @@ class JnarioJvmModelInferrer extends AbstractModelInferrer {
 							]
 							members += constructor
 						}
+						var order = 0
 						if(hasBackground){
 							for (step : jnario.feature.background.steps) {
-								transform(step, it)
+								transform(step, it, order)
 								for(and: step.and){
-									transform(and, it)
+									order = transform(and, it, order)
 								}			
 							}
 						}
 						
 						for (step : scenario.getSteps) {
-							transform(step, it)
+							order = transform(step, it, order)
 							if(step instanceof Given){
 								var given = step as Given
 								for(and: given.and){
-									transform(and, it)
+									order = transform(and, it, order)
 								}
 							}else if(step instanceof When){
 								var when = step as When
 								for(and: when.and){
-									transform(and, it)
+									order = transform(and, it, order)
 								}
 							}else{
 								var then = step as Then
 								for(and: then.and){
-									transform(and, it)
+									order = transform(and, it, order)
 								}
 							}				
 						}
@@ -172,7 +174,7 @@ class JnarioJvmModelInferrer extends AbstractModelInferrer {
 		variablesMap
 	}
 
-	def transform(Step step, JvmGenericType inferredJvmType) {
+	def transform(Step step, JvmGenericType inferredJvmType, int order) {
 		if(step.getCode() != null){
 			var operation = toMethod(step, step.name.javaMethodName, getTypeForName(Void::TYPE, step))[
 					
@@ -185,8 +187,10 @@ class JnarioJvmModelInferrer extends AbstractModelInferrer {
 			val copiedExpression = EcoreUtil::copy(step.code.blockExpression);		
 			inferredJvmType.members += operation
 			operation.annotations += step.toAnnotation(typeof(Test))
+			operation.annotations += step.toAnnotation(typeof(Order), order.intValue)
 			operation.annotations += step.toAnnotation(typeof(Named), step.name.trim)
 		}
+		order + 1
 	}
 
 	def generateExampleConstructor(){

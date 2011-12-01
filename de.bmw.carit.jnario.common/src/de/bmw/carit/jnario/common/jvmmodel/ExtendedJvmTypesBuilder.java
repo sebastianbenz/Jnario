@@ -9,13 +9,13 @@ import org.eclipse.xtext.common.types.JvmAnnotationReference;
 import org.eclipse.xtext.common.types.JvmAnnotationType;
 import org.eclipse.xtext.common.types.JvmAnnotationValue;
 import org.eclipse.xtext.common.types.JvmGenericType;
+import org.eclipse.xtext.common.types.JvmIntAnnotationValue;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmStringAnnotationValue;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeAnnotationValue;
 import org.eclipse.xtext.common.types.TypesFactory;
 import org.eclipse.xtext.common.types.util.TypeReferences;
-import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
@@ -69,6 +69,11 @@ public class ExtendedJvmTypesBuilder extends JvmTypesBuilder {
 					annotationValue = TypesFactory.eINSTANCE.createJvmTypeAnnotationValue();
 				}
 				((JvmTypeAnnotationValue)annotationValue).getValues().add(references.createTypeRef((JvmGenericType)object));
+			}else if (value instanceof Integer) {
+				if(annotationValue == null){
+					annotationValue = TypesFactory.eINSTANCE.createJvmIntAnnotationValue();
+				}
+				((JvmIntAnnotationValue)annotationValue).getValues().add((Integer) value);
 			}
 		}
 		if(annotationValue == null){

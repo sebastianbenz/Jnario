@@ -7,6 +7,11 @@ import static com.google.common.collect.Lists.newArrayList;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.junit.Test;
@@ -23,7 +28,7 @@ import com.google.common.collect.Iterables;
 
 
 public class ExampleGroupRunner extends ParentRunner<Runner> {
-
+	
 	private NameProvider nameProvider;
 	private List<Runner> children;
 	
@@ -59,6 +64,27 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 	private Iterable<? extends Runner> exampleGroups() {
 		List<FrameworkMethod> annotatedMethods = getTestClass()
 				.getAnnotatedMethods(Test.class);
+		
+		Collections.sort(annotatedMethods, new Comparator<FrameworkMethod>(){
+
+			@Override
+			public int compare(FrameworkMethod method1, FrameworkMethod method2) {
+				Order o1 = method1.getAnnotation(Order.class);
+				Order o2 = method2.getAnnotation(Order.class);
+				if(o1 == null && o2 == null){
+					return 0;
+				}
+				if(o1 != null && o2 == null){
+					return -1;
+				}
+				if(o1 == null && o2 != null){
+					return 1;
+				}
+				return o1.value() - o2.value();
+			}
+			
+		});
+		
 		return transform(annotatedMethods,
 				new Function<FrameworkMethod, Runner>() {
 
