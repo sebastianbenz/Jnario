@@ -15,8 +15,11 @@ import static org.eclipse.jface.text.IDocumentExtension3.DEFAULT_PARTITIONING;
 import static org.eclipse.jface.text.TextUtilities.getContentType;
 
 import org.eclipse.jface.text.BadLocationException;
+import org.eclipse.jface.text.source.AnnotationPainter.NullStrategy;
 import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.jface.text.source.IVerticalRuler;
+import org.eclipse.jface.text.source.projection.ProjectionSupport;
+import org.eclipse.jface.text.source.projection.ProjectionViewer;
 import org.eclipse.swt.custom.LineBackgroundEvent;
 import org.eclipse.swt.custom.LineBackgroundListener;
 import org.eclipse.swt.graphics.Color;
@@ -95,6 +98,13 @@ public class JnarioEditor extends XtextEditor {
 	public void dispose() {
 		super.dispose();
 		createBackgroundColorizer().dispose();
+	}
+	
+	@Override
+	protected ProjectionSupport installProjectionSupport(ProjectionViewer projectionViewer) {
+		ProjectionSupport projectionSupport = super.installProjectionSupport(projectionViewer);
+		projectionSupport.setAnnotationPainterDrawingStrategy(new NullStrategy());
+		return projectionSupport;
 	}
 
 }
