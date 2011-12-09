@@ -16,6 +16,7 @@ import de.bmw.carit.jnario.jnario.Step;
 import de.bmw.carit.jnario.jnario.Then;
 import de.bmw.carit.jnario.jnario.When;
 import de.bmw.carit.jnario.naming.JavaNameProvider;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
@@ -23,6 +24,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
 import org.eclipse.xtext.common.types.JvmConstructor;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
@@ -48,7 +50,6 @@ import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
-import org.eclipse.xtext.xtend2.lib.StringConcatenation;
 
 /**
  * <p>Infers a JVM model from the source model.</p>
@@ -175,19 +176,16 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
                         };
                       JvmConstructor _constructor = JnarioJvmModelInferrer.this._jvmTypesBuilder.toConstructor(scenario, className, _function);
                       JvmConstructor constructor = _constructor;
-                      final Function1<ImportManager,StringConcatenation> _function_1 = new Function1<ImportManager,StringConcatenation>() {
-                          public StringConcatenation apply(final ImportManager it) {
+                      final Function1<ImportManager,CharSequence> _function_1 = new Function1<ImportManager,CharSequence>() {
+                          public CharSequence apply(final ImportManager it) {
                             StringConcatenation _builder = new StringConcatenation();
-                            {
-                              Set<String> _keySet = variables.keySet();
-                              for(final String variable : _keySet) {
-                                _builder.append("this.");
-                                _builder.append(variable, "");
-                                _builder.append(" = ");
-                                _builder.append(variable, "");
-                                _builder.newLineIfNotEmpty();
-                              }
-                            }
+                            _builder.append("\u00B4FOR variable: variables.keySet\u00AA");
+                            _builder.newLine();
+                            _builder.append("\t");
+                            _builder.append("this.\u00B4variable\u00AA = \u00B4variable\u00AA");
+                            _builder.newLine();
+                            _builder.append("\u00B4ENDFOR\u00AA");
+                            _builder.newLine();
                             return _builder;
                           }
                         };
@@ -271,8 +269,8 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
       HashMap<String,JvmTypeReference> _hashMap = new HashMap<String,JvmTypeReference>();
       HashMap<String,JvmTypeReference> variablesMap = _hashMap;
       boolean _hasNext = allVariables.hasNext();
-      Boolean _xwhileexpression = _hasNext;
-      while (_xwhileexpression) {
+      boolean _while = _hasNext;
+      while (_while) {
         {
           XVariableDeclaration _next = allVariables.next();
           XVariableDeclaration currentDec = _next;
@@ -310,7 +308,7 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
           }
         }
         boolean _hasNext_1 = allVariables.hasNext();
-        _xwhileexpression = _hasNext_1;
+        _while = _hasNext_1;
       }
       _xblockexpression = (variablesMap);
     }
@@ -346,8 +344,8 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
           JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(step, org.junit.Test.class);
           CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
           EList<JvmAnnotationReference> _annotations_1 = operation.getAnnotations();
-          int _intValue = ((Integer)order).intValue();
-          JvmAnnotationReference _annotation_1 = this._jvmTypesBuilder.toAnnotation(step, de.bmw.carit.jnario.runner.Order.class, ((Integer)_intValue));
+          int _intValue = Integer.valueOf(order).intValue();
+          JvmAnnotationReference _annotation_1 = this._jvmTypesBuilder.toAnnotation(step, de.bmw.carit.jnario.runner.Order.class, Integer.valueOf(_intValue));
           CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
           EList<JvmAnnotationReference> _annotations_2 = operation.getAnnotations();
           String _name_1 = step.getName();
@@ -356,7 +354,7 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
           CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_2, _annotation_2);
         }
       }
-      int _operator_plus = IntegerExtensions.operator_plus(((Integer)order), ((Integer)1));
+      int _operator_plus = IntegerExtensions.operator_plus(order, 1);
       _xblockexpression = (_operator_plus);
     }
     return _xblockexpression;
@@ -373,8 +371,11 @@ public class JnarioJvmModelInferrer extends AbstractModelInferrer {
   public void infer(final EObject jnario, final IAcceptor<JvmDeclaredType> acceptor, final boolean isPrelinkingPhase) {
     if (jnario instanceof Jnario) {
       _infer((Jnario)jnario, acceptor, isPrelinkingPhase);
-    } else {
+    } else if (jnario != null) {
       _infer(jnario, acceptor, isPrelinkingPhase);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(jnario, acceptor, isPrelinkingPhase).toString());
     }
   }
 }

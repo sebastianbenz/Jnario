@@ -83,18 +83,12 @@ class SpecJvmModelInferrer extends AbstractModelInferrer {
 				for (element : exampleGroup.elements) {
 			        switch element {
 			          Field : {
-			          	val initMethodName = "create" + element.getName.toFirstUpper
-			          	val field = element.toField(element.getName, element.type)
-			          	field.visibility = JvmVisibility::PROTECTED
+			          	val field = element.toField(element.getName, element.type)[
+			          		visibility = JvmVisibility::PROTECTED
+			            	addAnnotations(element)	
+			            	setInitializer(element.getRight)
+			          	]
 			            members += field
-			            val initCode = element.getRight
-			            if(initCode != null){
-			            	field.initialization[initMethodName + "()"]
-			            	 members += initCode.toMethod(initMethodName, initCode.expectedType)[
-			            		body = initCode
-			            	]
-			            } 
-			            field.addAnnotations(element)
 			          }
 			          ExampleGroup: {
 			          	subExamples += infer(spec, element, it, acceptor)

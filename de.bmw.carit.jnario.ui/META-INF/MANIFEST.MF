@@ -28,5 +28,6 @@ Import-Package: org.apache.commons.logging,
  org.eclipse.xtext.xtend2.xtend2
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: de.bmw.carit.jnario.ui.contentassist.antlr,
- de.bmw.carit.jnario.ui.internal
+ de.bmw.carit.jnario.ui.internal,
+ de.bmw.carit.jnario.ui.contentassist
 Bundle-Activator: de.bmw.carit.jnario.ui.internal.JnarioActivator

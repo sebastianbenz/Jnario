@@ -4,6 +4,7 @@
 package de.bmw.carit.jnario.spec.ui.labeling;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.xtext.common.types.JvmAnyTypeReference;
 import org.eclipse.xtext.common.types.JvmField;
@@ -75,19 +76,19 @@ public class SpecLabelProvider extends Xtend2LabelProvider {
 	public Image image(Function element) {
 		Iterable<JvmOperation> inferredOperations = Iterables.filter(associations.getJvmElements(element), JvmOperation.class);
 		for (JvmOperation inferredOperation : inferredOperations) {
-			return images.forFunction(inferredOperation.getVisibility());
+			return images.forFunction(inferredOperation.getVisibility(), false);
 		}
 		return null;
 	}
 
 	public Image image(JvmOperation element) {
-		return images.forDispatcherFunction(element.getVisibility());
+		return images.forDispatcherFunction(element.getVisibility(), false);
 	}
 	
 	public Image image(Field element) {
 		Iterable<JvmField> inferredFields = Iterables.filter(associations.getJvmElements(element), JvmField.class);
 		for (JvmField inferredField : inferredFields) {
-			return images.forField(inferredField.getVisibility(), false);
+			return images.forField(inferredField.getVisibility(), false, false);
 		}
 		return null;
 	}
@@ -104,7 +105,7 @@ public class SpecLabelProvider extends Xtend2LabelProvider {
 		return element.getName();
 	}
 
-	public String text(Function element) {
+	public StyledString text(Function element) {
 		return signature(element.getName(), getDirectlyInferredOperation(element));
 	}
 	
@@ -122,11 +123,11 @@ public class SpecLabelProvider extends Xtend2LabelProvider {
 		return element.getName() +" : " +element.getType().getSimpleName();
 	}
 
-	public String text(JvmOperation element) {
+	public StyledString text(JvmOperation element) {
 		return signature(element.getSimpleName(), element);
 	}
 
-	protected String signature(String simpleName, JvmIdentifiableElement element) {
+	protected StyledString signature(String simpleName, JvmIdentifiableElement element) {
 		JvmTypeReference returnType = typeProvider.getTypeForIdentifiable(element);
 		String returnTypeString = "void";
 		if (returnType != null) {
@@ -136,7 +137,7 @@ public class SpecLabelProvider extends Xtend2LabelProvider {
 				returnTypeString = returnType.getSimpleName();
 			}
 		}
-		return simpleName + uiStrings.parameters(element) + " : " + returnTypeString;
+		return convertToStyledString(simpleName + uiStrings.parameters(element) + " : " + returnTypeString);
 	}
 
 }

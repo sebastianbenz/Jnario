@@ -1018,65 +1018,35 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	////XMemberFeatureCall returns xbase::XExpression:
-	//
 	////	XPrimaryExpression
-	//
 	////	(=>({xbase::XAssignment.assignable=current} '.' feature=[types::JvmIdentifiableElement|ValidID] OpSingleAssign) value=XAssignment
-	//
 	////	|=>({xbase::XMemberFeatureCall.memberCallTarget=current} feature=[types::JvmIdentifiableElement|ValidID]) memberCallArguments+=XExpression
-	//
 	////	|=>({xbase::XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|spreading?="*.")) 
-	//
 	////		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
-	//
 	////		feature=[types::JvmIdentifiableElement|ValidID] (
-	//
 	////			=>explicitOperationCall?='(' 
-	//
 	////				(
-	//
 	////				    memberCallArguments+=XShortClosure
-	//
 	////				  |	memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-	//
 	////				)? 
-	//
 	////			')')?
-	//
 	////			=>memberCallArguments+=XClosure?
-	//
 	////		)*;
-	//
 	////
-	//
 	////	
-	//
 	////XFeatureCall returns xbase::XExpression:
-	//
 	////	{xbase::XFeatureCall}
-	//
 	////	(=> feature=[types::JvmIdentifiableElement|IdOrSuper]  featureCallArguments+=XExpression
-	//
 	////	|((declaringType=[types::JvmDeclaredType|StaticQualifier])?
-	//
 	////	('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')? 
-	//
 	////	feature=[types::JvmIdentifiableElement|IdOrSuper] 
-	//
 	////	(=>explicitOperationCall?='(' 
-	//
 	////		(
-	//
 	////		    featureCallArguments+=XShortClosure
-	//
 	////		  |	featureCallArguments+=XExpression (',' featureCallArguments+=XExpression)*
-	//
 	////		)? 
-	//
 	////	')')?
-	//
 	////	=>featureCallArguments+=XClosure?));
-	//
 	//terminal FEATURE_TEXT:
 	//	"Feature" COLON MNL;
 	public TerminalRule getFEATURE_TEXTRule() {
@@ -1839,7 +1809,7 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XFunctionTypeRef:
-	//	("(" paramTypes+=JvmTypeReference ("," paramTypes+=JvmTypeReference)* ")")? "=>" returnType=JvmTypeReference;
+	//	("(" (paramTypes+=JvmTypeReference ("," paramTypes+=JvmTypeReference)*)? ")")? "=>" returnType=JvmTypeReference;
 	public XtypeGrammarAccess.XFunctionTypeRefElements getXFunctionTypeRefAccess() {
 		return gaXbaseWithAnnotations.getXFunctionTypeRefAccess();
 	}

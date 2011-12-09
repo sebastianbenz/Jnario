@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.6"?>
 
-<target includeMode="feature" name="RHMI Editor" sequenceNumber="57">
+<target includeMode="feature" name="Jnario Target" sequenceNumber="60">
 <locations>
 <location includeAllPlatforms="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.apache.commons.cli" version="1.2.0.v201105210650"/>
@@ -29,19 +29,21 @@
 </location>
 <location includeAllPlatforms="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.platform.ide" version="3.7.0.I20110613-1736"/>
-<unit id="org.eclipse.rcp.feature.group" version="3.7.0.v20110216-9DB5Fm1FpBGy_AaVz-mFamgY"/>
-<unit id="org.eclipse.rcp.source.feature.group" version="3.7.0.v20110216-9DB5Fm1FpBGy_AaVz-mFamgY"/>
 <repository location="http://download.eclipse.org/eclipse/updates/3.7"/>
 </location>
 <location includeAllPlatforms="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.xtext.xbase.feature.group" version="2.1.1.v201111141332"/>
-<unit id="org.eclipse.xtext.xtend2.sdk.feature.group" version="2.1.1.v201111141332"/>
-<unit id="org.eclipse.xtext.docs.feature.group" version="2.1.1.v201111141332"/>
-<unit id="org.eclipse.xtext.examples.feature.group" version="2.1.1.v201111141332"/>
-<unit id="org.eclipse.xtext.runtime.feature.group" version="2.1.1.v201111141332"/>
-<unit id="org.eclipse.xtext.sdk.feature.group" version="2.1.1.v201111141332"/>
-<unit id="org.eclipse.xtext.ui.feature.group" version="2.1.1.v201111141332"/>
+<unit id="org.eclipse.xtext.xtend2.sdk.feature.group" version="2.2.0.v201112071226"/>
+<unit id="org.eclipse.xtext.xbase.feature.group" version="2.2.0.v201112071226"/>
+<unit id="org.eclipse.xtext.docs.feature.group" version="2.2.0.v201112071226"/>
+<unit id="org.eclipse.xtext.examples.feature.group" version="2.2.0.v201112071226"/>
+<unit id="org.eclipse.xtext.runtime.feature.group" version="2.2.0.v201112071226"/>
+<unit id="org.eclipse.xtext.sdk.feature.group" version="2.2.0.v201112071226"/>
+<unit id="org.eclipse.xtext.ui.feature.group" version="2.2.0.v201112071226"/>
 <repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"/>
+</location>
+<location includeAllPlatforms="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.emf.sdk.feature.group" version="2.7.1.v20110913-1526"/>
+<repository location="http://download.eclipse.org/releases/indigo/"/>
 </location>
 </locations>
 <launcherArgs>

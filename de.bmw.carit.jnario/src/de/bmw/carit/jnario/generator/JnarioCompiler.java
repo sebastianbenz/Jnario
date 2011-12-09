@@ -34,7 +34,7 @@ public class JnarioCompiler extends XbaseCompiler {
 			return;
 		}
 		if (isReferenced)
-			declareLocalVariable(expr, b);
+			declareSyntheticVariable(expr, b);
 		b.increaseIndentation();
 		final EList<XExpression> expressions = expr.getExpressions();
 		for (int i = 0; i < expressions.size(); i++) {
@@ -68,10 +68,9 @@ public class JnarioCompiler extends XbaseCompiler {
 		} else {
 			type = getTypeProvider().getType(varDeclaration.getRight());
 		}
-		//		serialize(type, varDeclaration, b);
-		//		b.append(" ");
-		String variableName = declareNameInVariableScope(varDeclaration, b);
-		b.append(variableName);
+//		serialize(type, varDeclaration, b);
+//		b.append(" ");
+		b.append(b.declareVariable(varDeclaration, varDeclaration.getName()));
 		b.append(" = ");
 		if (varDeclaration.getRight() != null) {
 			internalToConvertedExpression(varDeclaration.getRight(), b, type);
@@ -79,12 +78,12 @@ public class JnarioCompiler extends XbaseCompiler {
 			if (getPrimitives().isPrimitive(type)) {
 				Primitive primitiveKind = getPrimitives().primitiveKind((JvmPrimitiveType) type.getType());
 				switch (primitiveKind) {
-				case Boolean:
-					b.append("false");
-					break;
-				default:
-					b.append("0");
-					break;
+					case Boolean:
+						b.append("false");
+						break;
+					default:
+						b.append("0");
+						break;
 				}
 			} else {
 				b.append("null");
