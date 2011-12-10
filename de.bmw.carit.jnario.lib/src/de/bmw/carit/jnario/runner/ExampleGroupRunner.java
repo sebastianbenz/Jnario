@@ -7,9 +7,6 @@ import static com.google.common.collect.Lists.newArrayList;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -111,7 +108,7 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 	}
 
 	protected TestInstantiator createTestInstantiator() throws InitializationError {
-		InstantiateWith annotation = targetClass().getAnnotation(InstantiateWith.class);
+		InstantiateWith annotation = getInstantiateWithAnnotation();
 		try {
 			if(annotation == null){
 				return new DefaultTestInstantiator();
@@ -121,6 +118,16 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 		} catch (Exception e) {
 			throw new InitializationError(e);
 		}
+	}
+
+	protected InstantiateWith getInstantiateWithAnnotation() {
+		Class<?> klass = targetClass();
+		InstantiateWith annotation = null;
+		while(annotation == null && klass != null){
+			 annotation = klass.getAnnotation(InstantiateWith.class);
+			 klass = klass.getSuperclass();
+		}
+		return annotation;
 	}
 
 	private Iterable<? extends Runner> examples() {
