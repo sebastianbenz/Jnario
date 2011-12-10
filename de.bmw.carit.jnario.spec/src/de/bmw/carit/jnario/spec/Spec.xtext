@@ -1,5 +1,6 @@
 grammar de.bmw.carit.jnario.spec.Spec with org.eclipse.xtext.xtend2.Xtend2
  
+import "http://www.eclipse.org/xtext/Xtend2"
 import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
 

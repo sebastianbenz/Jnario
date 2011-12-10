@@ -32,145 +32,90 @@ import org.eclipse.xtext.common.types.JvmVisibility
 import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder
 import org.eclipse.xtext.xtend2.xtend2.XtendField
 import org.eclipse.xtext.xtend2.xtend2.XtendMember
-import org.eclipse.xtext.xtend2.xtend2.XtendFunction 
+import org.eclipse.xtext.xtend2.xtend2.XtendFunction
+import org.eclipse.xtext.xtend2.jvmmodel.Xtend2JvmModelInferrer
+import org.eclipse.xtext.xtend2.xtend2.XtendAnnotationTarget 
 /**
  * <p>Infers a JVM model from the source model.</p> 
  *
  * <p>The JVM model should contain all elements that would appear in the Java code 
- * which is generated from the source model. Other models link against the JVM model rather than the source model.</p>     
+ * which is generated from the source model. Other models link against the JVM model rather than the source model.</p>		 
  */
-class SpecJvmModelInferrer extends AbstractModelInferrer {
+class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
 
-    /**
-     * conveninence API to build and initialize JvmTypes and their members.
-     */
 	@Inject extension ExtendedJvmTypesBuilder
-  
-  	@Inject extension IQualifiedNameProvider
-  	
-  	@Inject extension TypeReferences
+	
+	@Inject extension TypeReferences
 
 	@Inject extension JavaNameProvider
 	
-	@Inject extension ITypeProvider
+	def dispatch void infer(EObject e, IAcceptor<JvmDeclaredType> acceptor, boolean prelinkingPhase) {
+		for (EObject child : e.eContents()) {
+			infer(child, acceptor, prelinkingPhase);
+		}
+	}
 	
-	@Inject extension TypesFactory 
-	/**
-	 * Is called for each instance of the first argument's type contained in a resource.
-	 * 
-	 * @param element - the model to create one or more JvmDeclaredTypes from.
-	 * @param acceptor - each created JvmDeclaredType without a container should be passed to the acceptor in order get attached to the
-	 *                   current resource.
-	 * @param isPreLinkingPhase - whether the method is called in a pre linking phase, i.e. when the global index isn't fully updated. You
-	 *        must not rely on linking using the index if iPrelinkingPhase is <code>true</code>
-	 */
-	def dispatch void infer(SpecFile spec,  
-	                IAcceptor<JvmDeclaredType> acceptor, 
-	                boolean isPrelinkingPhase) {
+	def dispatch void infer(SpecFile spec, IAcceptor<JvmDeclaredType> acceptor, boolean isPrelinkingPhase) {
 		if(spec.xtendClass == null){
 			return 
 		}
-		associate(spec, infer(spec, spec.xtendClass as ExampleGroup, null, acceptor))
+		infer(spec, spec.xtendClass as ExampleGroup, null, isPrelinkingPhase)
 	}
 	
-	def infer(SpecFile spec, ExampleGroup exampleGroup, JvmGenericType superClass, IAcceptor<JvmDeclaredType> acceptor) {
+	def infer(SpecFile spec, ExampleGroup exampleGroup, JvmGenericType superClass, boolean isPrelinkingPhase) {
 		val List<JvmGenericType> subExamples = newArrayList()
-		val newClass = exampleGroup.toClass(exampleGroup.javaClassName, superClass) [
-		    	documentation = exampleGroup.documentation
-		    	packageName = spec.^package
-		    	annotations += exampleGroup.toAnnotation(typeof(RunWith), typeof(ExampleGroupRunner))
-		    	annotations += exampleGroup.toAnnotation(typeof(Named), exampleGroup.describe)
-		    	addAnnotations(exampleGroup)
-				for (element : exampleGroup.members) {
-			        switch element {
-			          XtendField : {
-			          	val field = element.toField(element.name, element.type)[
-			          		visibility = JvmVisibility::PROTECTED
-			            	addAnnotations(element)	
-			            	setInitializer(element.initialValue)
-			          	]
-			            members += field
-			          }
-			          ExampleGroup: {
-			          	subExamples += infer(spec, element, it, acceptor)
-			          }
-			          Example : {
-			            val method = element.toMethod(element.exampleMethodName, getTypeForName(Void::TYPE, element)) [
-			              documentation = element.documentation
-			              annotations += exampleGroup.toAnnotation(typeof(Named), element.describe)
-			              if(element.exception == null){
-				              annotations += element.toAnnotation(typeof(Test))
-			              }else{
-			              	  annotations += element.toAnnotation(typeof(Test).name, "expected", element.exception)
-			              }
-			              addAnnotations(element)
-			              body = element.body
-			            ]
-			            val anyException = typeof(Exception).getTypeForName(element)
-			              if(anyException != null){
-				              method.exceptions += anyException
-			              }
-			            members += method
-			          }
-			          XtendFunction: {
-			          	var returnType = element.returnType;
-						if(returnType == null){
-							returnType = element.expression.expectedType
-						}
-			          	val method = element.toMethod(element.name, element.returnType) [
-			              documentation = element.documentation
-			              for(t : element.typeParameters){
-			              	typeParameters += t
-			              }
-			              for (p : element.parameters) {
-               				 parameters += p.toParameter(p.name, p.parameterType)
-              			  }
-              			  addAnnotations(element)
-			              body = element.expression
-			              val anyException = typeof(Exception).getTypeForName(element)
-			              if(anyException != null){
-				              exceptions += anyException
-			              }
-			            ]
-			            members += method
-			          }
-			        }
+		exampleGroup.toClass(exampleGroup.javaClassName, superClass) [
+				spec.eResource.contents += it
+				documentation = exampleGroup.documentation
+				packageName = spec.^package
+				
+				if(isPrelinkingPhase){
+					return
 				}
+				
+				annotations += exampleGroup.toAnnotation(typeof(RunWith), typeof(ExampleGroupRunner))
+				annotations += exampleGroup.toAnnotation(typeof(Named), exampleGroup.describe)
+				exampleGroup.annotations.translateAnnotationsTo(it)
+				
+				for (element : exampleGroup.members) {
+					switch element {
+						XtendField : {
+							element.visibility = JvmVisibility::PROTECTED
+							element.transform(it)
+						}
+						ExampleGroup: {
+							subExamples += infer(spec, element, it, isPrelinkingPhase)
+						}
+						Example : {
+							val method = element.toMethod(element.exampleMethodName, getTypeForName(Void::TYPE, element)) [
+								documentation = element.documentation
+								annotations += exampleGroup.toAnnotation(typeof(Named), element.describe)
+								if(element.exception == null){
+									annotations += element.toAnnotation(typeof(Test))
+								}else{
+										annotations += element.toAnnotation(typeof(Test).name, "expected", element.exception)
+								}
+								element.annotations.translateAnnotationsTo(it)
+								body = element.body
+							]
+							val anyException = typeof(Exception).getTypeForName(element)
+								if(anyException != null){
+									method.exceptions += anyException
+								}
+							members += method
+						}
+						XtendFunction: {
+							element.transform(it)
+						}
+					}
+				}
+				
+				if(!subExamples.empty){
+					annotations += exampleGroup.toAnnotation(typeof(Contains), subExamples);
+				}
+				computeInferredReturnTypes()	
 			]
-			acceptor.accept(newClass)
 			
-			if(!subExamples.empty){
-				newClass.annotations += exampleGroup.toAnnotation(typeof(Contains), subExamples);
-			}
-			newClass.computeInferredReturnTypes    
-			return newClass
 	}
 	
-	def addAnnotations(JvmAnnotationTarget target, XtendMember member){
-		var result = member.annotations as Iterable<XAnnotation>
-		if(member.annotations.empty && member.annotationInfo != null){
-			result = concat(result, member.annotationInfo.annotations)
-		}
-		result.translateAnnotationsTo(target)
-	}
-	
-	def void computeInferredReturnTypes(JvmGenericType inferredJvmType) {
-		var operations = inferredJvmType.getDeclaredOperations();
-		for (jvmOperation : operations) {
-			if (!jvmOperation.eIsSet(TypesPackage::eINSTANCE.jvmOperation_ReturnType))
-				jvmOperation.setReturnType(getTypeProxy(jvmOperation));
-		}
-	}
-	
-	
-	def getTypeProxy(EObject  pointer) {
-		var typeReference = createJvmParameterizedTypeReference();
-		val eResource = pointer.eResource();
-		var fragment = eResource.getURIFragment(pointer);
-		var uri = eResource.getURI();
-		uri = uri.appendFragment(Xtend2Resource::FRAGMENT_PREFIX + fragment);
-		var internalEObject = typeReference as InternalEObject
-		internalEObject.eSetProxyURI(uri);
-		return typeReference;
-	}
 }

@@ -5,30 +5,14 @@ import static org.eclipse.xtext.scoping.Scopes.scopeFor;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
-import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.common.types.JvmOperation;
-import org.eclipse.xtext.common.types.JvmTypeReference;
-import org.eclipse.xtext.common.types.util.TypeReferences;
-import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
-import org.eclipse.xtext.scoping.Scopes;
-import org.eclipse.xtext.util.IAcceptor;
-import org.eclipse.xtext.xbase.XExpression;
-import org.eclipse.xtext.xbase.XFeatureCall;
-import org.eclipse.xtext.xbase.XbaseFactory;
-import org.eclipse.xtext.xbase.annotations.scoping.XbaseWithAnnotationsScopeProvider;
-import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
-import org.eclipse.xtext.xbase.scoping.featurecalls.IJvmFeatureDescriptionProvider;
-import org.eclipse.xtext.xtend2.scoping.ExtensionMethodsFeaturesProvider;
 import org.eclipse.xtext.xtend2.scoping.Xtend2ScopeProvider;
 
 import com.google.inject.Inject;
-import com.google.inject.Provider;
 
-import de.bmw.carit.jnario.spec.naming.JavaNameProvider;
 import de.bmw.carit.jnario.spec.naming.OperationNameProvider;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 import de.bmw.carit.jnario.spec.spec.SpecPackage;

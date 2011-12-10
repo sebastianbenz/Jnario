@@ -19,9 +19,13 @@ Workflow {
         registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
         
         registerGeneratedEPackage = "org.eclipse.xtext.xtend2.xtend2.Xtend2Package"
-        
         registerGenModelFile = "platform:/resource/org.eclipse.xtext.xtend2/model/Xtend2.genmodel"
     }
+    
+    component = DirectoryCleaner {
+		directory = "${runtimeProject}/emf-gen"
+	}
+
 
     component = DirectoryCleaner {
         directory = "${runtimeProject}/src-gen"
@@ -31,6 +35,14 @@ Workflow {
         directory = "${runtimeProject}.ui/src-gen"
     }
 
+	component = org.eclipse.emf.mwe2.ecore.EcoreGenerator {
+		generateCustomClasses=true
+		genModel = "platform:/resource/${projectName}/model/Spec.genmodel"
+		srcPath ="platform:/resource/${projectName}/src"
+		srcPath ="platform:/resource/org.eclipse.xtext.common.types/src"
+		srcPath ="platform:/resource/org.eclipse.xtext.xbase/src"
+		srcPath ="platform:/resource/org.eclipse.xtext.xtend2/src"
+	}
     component = Generator {
         pathRtProject = runtimeProject
         pathUiProject = "${runtimeProject}.ui"
@@ -45,13 +57,13 @@ Workflow {
             fragment = grammarAccess.GrammarAccessFragment {}
 
             // generates Java API for the generated EPackages
-            fragment = ecore.EcoreGeneratorFragment {
+            //fragment = ecore.EcoreGeneratorFragment {
             	
             // referencedGenModels = "
             //  platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel,
             //  platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel
             // "
-            }
+            //}
 
             // Serializer 2.0
             fragment = serializer.SerializerFragment {

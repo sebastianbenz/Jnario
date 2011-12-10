@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="ASCII"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xtext="http://www.eclipse.org/2008/Xtext">
   <xtext:Grammar name="de.bmw.carit.jnario.spec.Spec" usedGrammars="/1">
+    <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel">
+      <ePackage href="http://www.eclipse.org/xtext/Xtend2#/"/>
+    </metamodelDeclarations>
     <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel" alias="xbase">
       <ePackage href="http://www.eclipse.org/xtext/xbase/Xbase#/"/>
     </metamodelDeclarations>
     <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel" alias="types">
       <ePackage href="http://www.eclipse.org/xtext/common/JavaVMTypes#/"/>
     </metamodelDeclarations>
-    <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel" alias="xtend2">
-      <ePackage href="http://www.eclipse.org/xtext/Xtend2#/"/>
-    </metamodelDeclarations>
     <metamodelDeclarations xsi:type="xtext:GeneratedMetamodel" name="spec">
       <ePackage href="http://www.bmw.de/carit/jnario/spec/Spec#/"/>
     </metamodelDeclarations>
     <rules xsi:type="xtext:ParserRule" name="SpecFile">
-      <type metamodel="/0/@metamodelDeclarations.2">
+      <type metamodel="/0/@metamodelDeclarations.0">
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/Xtend2#//XtendFile"/>
       </type>
       <alternatives xsi:type="xtext:Group">
@@ -36,7 +36,7 @@
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Import">
-      <type metamodel="/0/@metamodelDeclarations.2">
+      <type metamodel="/0/@metamodelDeclarations.0">
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/Xtend2#//XtendImport"/>
       </type>
       <alternatives xsi:type="xtext:Group">
@@ -51,7 +51,7 @@
             </elements>
             <elements xsi:type="xtext:Assignment" feature="importedType" operator="=">
               <terminal xsi:type="xtext:CrossReference">
-                <type metamodel="/0/@metamodelDeclarations.1">
+                <type metamodel="/0/@metamodelDeclarations.2">
                   <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/common/JavaVMTypes#//JvmType"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.52"/>
@@ -62,7 +62,7 @@
           </elements>
           <elements xsi:type="xtext:Assignment" feature="importedType" operator="=">
             <terminal xsi:type="xtext:CrossReference">
-              <type metamodel="/0/@metamodelDeclarations.1">
+              <type metamodel="/0/@metamodelDeclarations.2">
                 <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/common/JavaVMTypes#//JvmType"/>
               </type>
               <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.52"/>
@@ -85,7 +85,7 @@
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ExampleGroup">
-      <type metamodel="/0/@metamodelDeclarations.2">
+      <type metamodel="/0/@metamodelDeclarations.0">
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/Xtend2#//XtendClass"/>
       </type>
       <alternatives xsi:type="xtext:Group">
@@ -102,7 +102,7 @@
         </elements>
         <elements xsi:type="xtext:Assignment" cardinality="?" feature="targetType" operator="=">
           <terminal xsi:type="xtext:CrossReference">
-            <type metamodel="/0/@metamodelDeclarations.1">
+            <type metamodel="/0/@metamodelDeclarations.2">
               <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/common/JavaVMTypes#//JvmDeclaredType"/>
             </type>
             <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.52"/>
@@ -170,12 +170,12 @@
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Member">
-      <type metamodel="/0/@metamodelDeclarations.2">
+      <type metamodel="/0/@metamodelDeclarations.0">
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/Xtend2#//XtendMember"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Action">
-          <type metamodel="/0/@metamodelDeclarations.2">
+          <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/Xtend2#//XtendMember"/>
           </type>
         </elements>
@@ -197,7 +197,7 @@
                 <elements xsi:type="xtext:Keyword" value="throws"/>
                 <elements xsi:type="xtext:Assignment" feature="exception" operator="=">
                   <terminal xsi:type="xtext:CrossReference">
-                    <type metamodel="/0/@metamodelDeclarations.1">
+                    <type metamodel="/0/@metamodelDeclarations.2">
                       <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/common/JavaVMTypes#//JvmDeclaredType"/>
                     </type>
                     <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.52"/>
@@ -228,7 +228,7 @@
               <elements xsi:type="xtext:Alternatives" cardinality="?">
                 <elements xsi:type="xtext:Assignment" feature="targetType" operator="=">
                   <terminal xsi:type="xtext:CrossReference">
-                    <type metamodel="/0/@metamodelDeclarations.1">
+                    <type metamodel="/0/@metamodelDeclarations.2">
                       <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/common/JavaVMTypes#//JvmDeclaredType"/>
                     </type>
                     <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.52"/>
@@ -236,7 +236,7 @@
                 </elements>
                 <elements xsi:type="xtext:Assignment" feature="targetOperation" operator="=">
                   <terminal xsi:type="xtext:CrossReference">
-                    <type metamodel="/0/@metamodelDeclarations.1">
+                    <type metamodel="/0/@metamodelDeclarations.2">
                       <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/common/JavaVMTypes#//JvmOperation"/>
                     </type>
                     <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.4"/>
@@ -255,7 +255,7 @@
           </elements>
           <elements xsi:type="xtext:Group">
             <elements xsi:type="xtext:Action" feature="annotationInfo" operator="=">
-              <type metamodel="/0/@metamodelDeclarations.2">
+              <type metamodel="/0/@metamodelDeclarations.0">
                 <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/Xtend2#//XtendField"/>
               </type>
             </elements>
@@ -292,7 +292,7 @@
           </elements>
           <elements xsi:type="xtext:Group">
             <elements xsi:type="xtext:Action" feature="annotationInfo" operator="=">
-              <type metamodel="/0/@metamodelDeclarations.2">
+              <type metamodel="/0/@metamodelDeclarations.0">
                 <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/Xtend2#//XtendFunction"/>
               </type>
             </elements>
@@ -397,7 +397,7 @@
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="CreateExtensionInfo">
-      <type metamodel="/0/@metamodelDeclarations.2">
+      <type metamodel="/0/@metamodelDeclarations.0">
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/Xtend2#//CreateExtensionInfo"/>
       </type>
       <alternatives xsi:type="xtext:Group">
@@ -414,7 +414,7 @@
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Parameter">
-      <type metamodel="/0/@metamodelDeclarations.2">
+      <type metamodel="/0/@metamodelDeclarations.0">
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/Xtend2#//XtendParameter"/>
       </type>
       <alternatives xsi:type="xtext:Group">

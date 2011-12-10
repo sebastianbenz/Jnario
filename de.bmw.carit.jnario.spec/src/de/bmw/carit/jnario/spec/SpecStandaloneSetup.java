@@ -8,6 +8,8 @@ import org.eclipse.xtext.xtend2.Xtend2StandaloneSetup;
 
 import com.google.inject.Injector;
 
+import de.bmw.carit.jnario.spec.spec.SpecPackage;
+
 /**
  * Initialization support for running Xtext languages 
  * without equinox extension registry
@@ -23,6 +25,7 @@ public class SpecStandaloneSetup extends SpecStandaloneSetupGenerated{
 		Xtend2StandaloneSetup.doSetup();
 		XbaseStandaloneSetup.doSetup();
 		EPackage.Registry.INSTANCE.put(XAnnotationsPackage.eINSTANCE.getNsURI(),XAnnotationsPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(SpecPackage.eNS_URI, SpecPackage.eINSTANCE);
 		super.register(injector);
 	}
 }

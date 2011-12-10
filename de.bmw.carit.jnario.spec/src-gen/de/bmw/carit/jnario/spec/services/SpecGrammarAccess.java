@@ -32,7 +32,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cXtendClassAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cXtendClassExampleGroupParserRuleCall_4_0 = (RuleCall)cXtendClassAssignment_4.eContents().get(0);
 		
-		//SpecFile returns xtend2::XtendFile:
+		//SpecFile returns XtendFile:
 		//	{SpecFile} "package" package=QualifiedName imports+=Import* xtendClass=ExampleGroup;
 		public ParserRule getRule() { return rule; }
 
@@ -85,7 +85,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cImportedNamespaceAssignment_1_2 = (Assignment)cAlternatives_1.eContents().get(2);
 		private final RuleCall cImportedNamespaceQualifiedNameWithWildCardParserRuleCall_1_2_0 = (RuleCall)cImportedNamespaceAssignment_1_2.eContents().get(0);
 		
-		//Import returns xtend2::XtendImport:
+		//Import returns XtendImport:
 		//	"import" (static?="static" extension?="extension"? importedType=[types::JvmType|QualifiedName] "." "*" |
 		//	importedType=[types::JvmType|QualifiedName] | importedNamespace=QualifiedNameWithWildCard);
 		public ParserRule getRule() { return rule; }
@@ -189,7 +189,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cMembersMemberParserRuleCall_6_0 = (RuleCall)cMembersAssignment_6.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
-		//ExampleGroup returns xtend2::XtendClass:
+		//ExampleGroup returns XtendClass:
 		//	{ExampleGroup} annotations+=XAnnotation* preamble="describe" targetType=[types::JvmDeclaredType|QualifiedName]?
 		//	name=STRING? "{" members+=Member* "}";
 		public ParserRule getRule() { return rule; }
@@ -515,36 +515,36 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//
 		////;
 		//
-		//Member returns xtend2::XtendMember:
-		//	{xtend2::XtendMember} annotations+=XAnnotation* ({Example.annotationInfo=current} (preamble="it" ("throws"
+		//Member returns XtendMember:
+		//	{XtendMember} annotations+=XAnnotation* ({Example.annotationInfo=current} (preamble="it" ("throws"
 		//	exception=[types::JvmDeclaredType|QualifiedName])? name=STRING body=XBlockExpression?) |
 		//	{ExampleGroup.annotationInfo=current} (preamble=("describe" | "context")
 		//	(targetType=[types::JvmDeclaredType|QualifiedName] | targetOperation=[types::JvmOperation|Method])? name=STRING? "{"
-		//	members+=Member* "}") | {xtend2::XtendField.annotationInfo=current} (extension?="extension" type=JvmTypeReference
+		//	members+=Member* "}") | {XtendField.annotationInfo=current} (extension?="extension" type=JvmTypeReference
 		//	name=ValidID? | static?="static"? type=JvmTypeReference name=ValidID) ("=" initialValue=XExpression)? |
-		//	{xtend2::XtendFunction.annotationInfo=current} ("def" | override?="override") static?="static"? dispatch?="dispatch"?
-		//	("<" typeParameters+=JvmTypeParameter ("," typeParameters+=JvmTypeParameter)* ">")? (=> (returnType=JvmTypeReference
+		//	{XtendFunction.annotationInfo=current} ("def" | override?="override") static?="static"? dispatch?="dispatch"? ("<"
+		//	typeParameters+=JvmTypeParameter ("," typeParameters+=JvmTypeParameter)* ">")? (=> (returnType=JvmTypeReference
 		//	createExtensionInfo=CreateExtensionInfo name=ValidID "(") | => (returnType=JvmTypeReference name=ValidID "(") | =>
 		//	(createExtensionInfo=CreateExtensionInfo name=ValidID "(") | name=ValidID "(") (parameters+=Parameter (","
 		//	parameters+=Parameter)*)? ")" ("throws" exceptions+=JvmTypeReference ("," exceptions+=JvmTypeReference)*)?
 		//	expression=XBlockExpression?);
 		public ParserRule getRule() { return rule; }
 
-		//{xtend2::XtendMember} annotations+=XAnnotation* ({Example.annotationInfo=current} (preamble="it" ("throws"
+		//{XtendMember} annotations+=XAnnotation* ({Example.annotationInfo=current} (preamble="it" ("throws"
 		//exception=[types::JvmDeclaredType|QualifiedName])? name=STRING body=XBlockExpression?) |
 		//{ExampleGroup.annotationInfo=current} (preamble=("describe" | "context")
 		//(targetType=[types::JvmDeclaredType|QualifiedName] | targetOperation=[types::JvmOperation|Method])? name=STRING? "{"
-		//members+=Member* "}") | {xtend2::XtendField.annotationInfo=current} (extension?="extension" type=JvmTypeReference
-		//name=ValidID? | static?="static"? type=JvmTypeReference name=ValidID) ("=" initialValue=XExpression)? |
-		//{xtend2::XtendFunction.annotationInfo=current} ("def" | override?="override") static?="static"? dispatch?="dispatch"?
-		//("<" typeParameters+=JvmTypeParameter ("," typeParameters+=JvmTypeParameter)* ">")? (=> (returnType=JvmTypeReference
+		//members+=Member* "}") | {XtendField.annotationInfo=current} (extension?="extension" type=JvmTypeReference name=ValidID?
+		//| static?="static"? type=JvmTypeReference name=ValidID) ("=" initialValue=XExpression)? |
+		//{XtendFunction.annotationInfo=current} ("def" | override?="override") static?="static"? dispatch?="dispatch"? ("<"
+		//typeParameters+=JvmTypeParameter ("," typeParameters+=JvmTypeParameter)* ">")? (=> (returnType=JvmTypeReference
 		//createExtensionInfo=CreateExtensionInfo name=ValidID "(") | => (returnType=JvmTypeReference name=ValidID "(") | =>
 		//(createExtensionInfo=CreateExtensionInfo name=ValidID "(") | name=ValidID "(") (parameters+=Parameter (","
 		//parameters+=Parameter)*)? ")" ("throws" exceptions+=JvmTypeReference ("," exceptions+=JvmTypeReference)*)?
 		//expression=XBlockExpression?)
 		public Group getGroup() { return cGroup; }
 
-		//{xtend2::XtendMember}
+		//{XtendMember}
 		public Action getXtendMemberAction_0() { return cXtendMemberAction_0; }
 
 		//annotations+=XAnnotation*
@@ -556,10 +556,10 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//{Example.annotationInfo=current} (preamble="it" ("throws" exception=[types::JvmDeclaredType|QualifiedName])? name=STRING
 		//body=XBlockExpression?) | {ExampleGroup.annotationInfo=current} (preamble=("describe" | "context")
 		//(targetType=[types::JvmDeclaredType|QualifiedName] | targetOperation=[types::JvmOperation|Method])? name=STRING? "{"
-		//members+=Member* "}") | {xtend2::XtendField.annotationInfo=current} (extension?="extension" type=JvmTypeReference
-		//name=ValidID? | static?="static"? type=JvmTypeReference name=ValidID) ("=" initialValue=XExpression)? |
-		//{xtend2::XtendFunction.annotationInfo=current} ("def" | override?="override") static?="static"? dispatch?="dispatch"?
-		//("<" typeParameters+=JvmTypeParameter ("," typeParameters+=JvmTypeParameter)* ">")? (=> (returnType=JvmTypeReference
+		//members+=Member* "}") | {XtendField.annotationInfo=current} (extension?="extension" type=JvmTypeReference name=ValidID?
+		//| static?="static"? type=JvmTypeReference name=ValidID) ("=" initialValue=XExpression)? |
+		//{XtendFunction.annotationInfo=current} ("def" | override?="override") static?="static"? dispatch?="dispatch"? ("<"
+		//typeParameters+=JvmTypeParameter ("," typeParameters+=JvmTypeParameter)* ">")? (=> (returnType=JvmTypeReference
 		//createExtensionInfo=CreateExtensionInfo name=ValidID "(") | => (returnType=JvmTypeReference name=ValidID "(") | =>
 		//(createExtensionInfo=CreateExtensionInfo name=ValidID "(") | name=ValidID "(") (parameters+=Parameter (","
 		//parameters+=Parameter)*)? ")" ("throws" exceptions+=JvmTypeReference ("," exceptions+=JvmTypeReference)*)?
@@ -672,11 +672,11 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_2_1_1_5() { return cRightCurlyBracketKeyword_2_1_1_5; }
 
-		//{xtend2::XtendField.annotationInfo=current} (extension?="extension" type=JvmTypeReference name=ValidID? |
-		//static?="static"? type=JvmTypeReference name=ValidID) ("=" initialValue=XExpression)?
+		//{XtendField.annotationInfo=current} (extension?="extension" type=JvmTypeReference name=ValidID? | static?="static"?
+		//type=JvmTypeReference name=ValidID) ("=" initialValue=XExpression)?
 		public Group getGroup_2_2() { return cGroup_2_2; }
 
-		//{xtend2::XtendField.annotationInfo=current}
+		//{XtendField.annotationInfo=current}
 		public Action getXtendFieldAnnotationInfoAction_2_2_0() { return cXtendFieldAnnotationInfoAction_2_2_0; }
 
 		//extension?="extension" type=JvmTypeReference name=ValidID? | static?="static"? type=JvmTypeReference name=ValidID
@@ -736,15 +736,15 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//XExpression
 		public RuleCall getInitialValueXExpressionParserRuleCall_2_2_2_1_0() { return cInitialValueXExpressionParserRuleCall_2_2_2_1_0; }
 
-		//{xtend2::XtendFunction.annotationInfo=current} ("def" | override?="override") static?="static"? dispatch?="dispatch"?
-		//("<" typeParameters+=JvmTypeParameter ("," typeParameters+=JvmTypeParameter)* ">")? (=> (returnType=JvmTypeReference
+		//{XtendFunction.annotationInfo=current} ("def" | override?="override") static?="static"? dispatch?="dispatch"? ("<"
+		//typeParameters+=JvmTypeParameter ("," typeParameters+=JvmTypeParameter)* ">")? (=> (returnType=JvmTypeReference
 		//createExtensionInfo=CreateExtensionInfo name=ValidID "(") | => (returnType=JvmTypeReference name=ValidID "(") | =>
 		//(createExtensionInfo=CreateExtensionInfo name=ValidID "(") | name=ValidID "(") (parameters+=Parameter (","
 		//parameters+=Parameter)*)? ")" ("throws" exceptions+=JvmTypeReference ("," exceptions+=JvmTypeReference)*)?
 		//expression=XBlockExpression?
 		public Group getGroup_2_3() { return cGroup_2_3; }
 
-		//{xtend2::XtendFunction.annotationInfo=current}
+		//{XtendFunction.annotationInfo=current}
 		public Action getXtendFunctionAnnotationInfoAction_2_3_0() { return cXtendFunctionAnnotationInfoAction_2_3_0; }
 
 		//"def" | override?="override"
@@ -950,7 +950,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cCreateExpressionAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cCreateExpressionXExpressionParserRuleCall_2_0 = (RuleCall)cCreateExpressionAssignment_2.eContents().get(0);
 		
-		//CreateExtensionInfo returns xtend2::CreateExtensionInfo:
+		//CreateExtensionInfo:
 		//	"create" (name=ValidID ":")? createExpression=XExpression;
 		public ParserRule getRule() { return rule; }
 
@@ -989,7 +989,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameValidIDParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		
-		//Parameter returns xtend2::XtendParameter:
+		//Parameter returns XtendParameter:
 		//	annotations+=XAnnotation* parameterType=JvmTypeReference name=ValidID;
 		public ParserRule getRule() { return rule; }
 
@@ -1049,7 +1049,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
-	//SpecFile returns xtend2::XtendFile:
+	//SpecFile returns XtendFile:
 	//	{SpecFile} "package" package=QualifiedName imports+=Import* xtendClass=ExampleGroup;
 	public SpecFileElements getSpecFileAccess() {
 		return (pSpecFile != null) ? pSpecFile : (pSpecFile = new SpecFileElements());
@@ -1059,7 +1059,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		return getSpecFileAccess().getRule();
 	}
 
-	//Import returns xtend2::XtendImport:
+	//Import returns XtendImport:
 	//	"import" (static?="static" extension?="extension"? importedType=[types::JvmType|QualifiedName] "." "*" |
 	//	importedType=[types::JvmType|QualifiedName] | importedNamespace=QualifiedNameWithWildCard);
 	public ImportElements getImportAccess() {
@@ -1080,7 +1080,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		return getQualifiedNameWithWildCardAccess().getRule();
 	}
 
-	//ExampleGroup returns xtend2::XtendClass:
+	//ExampleGroup returns XtendClass:
 	//	{ExampleGroup} annotations+=XAnnotation* preamble="describe" targetType=[types::JvmDeclaredType|QualifiedName]?
 	//	name=STRING? "{" members+=Member* "}";
 	public ExampleGroupElements getExampleGroupAccess() {
@@ -1135,15 +1135,15 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	////;
 	//
-	//Member returns xtend2::XtendMember:
-	//	{xtend2::XtendMember} annotations+=XAnnotation* ({Example.annotationInfo=current} (preamble="it" ("throws"
+	//Member returns XtendMember:
+	//	{XtendMember} annotations+=XAnnotation* ({Example.annotationInfo=current} (preamble="it" ("throws"
 	//	exception=[types::JvmDeclaredType|QualifiedName])? name=STRING body=XBlockExpression?) |
 	//	{ExampleGroup.annotationInfo=current} (preamble=("describe" | "context")
 	//	(targetType=[types::JvmDeclaredType|QualifiedName] | targetOperation=[types::JvmOperation|Method])? name=STRING? "{"
-	//	members+=Member* "}") | {xtend2::XtendField.annotationInfo=current} (extension?="extension" type=JvmTypeReference
+	//	members+=Member* "}") | {XtendField.annotationInfo=current} (extension?="extension" type=JvmTypeReference
 	//	name=ValidID? | static?="static"? type=JvmTypeReference name=ValidID) ("=" initialValue=XExpression)? |
-	//	{xtend2::XtendFunction.annotationInfo=current} ("def" | override?="override") static?="static"? dispatch?="dispatch"?
-	//	("<" typeParameters+=JvmTypeParameter ("," typeParameters+=JvmTypeParameter)* ">")? (=> (returnType=JvmTypeReference
+	//	{XtendFunction.annotationInfo=current} ("def" | override?="override") static?="static"? dispatch?="dispatch"? ("<"
+	//	typeParameters+=JvmTypeParameter ("," typeParameters+=JvmTypeParameter)* ">")? (=> (returnType=JvmTypeReference
 	//	createExtensionInfo=CreateExtensionInfo name=ValidID "(") | => (returnType=JvmTypeReference name=ValidID "(") | =>
 	//	(createExtensionInfo=CreateExtensionInfo name=ValidID "(") | name=ValidID "(") (parameters+=Parameter (","
 	//	parameters+=Parameter)*)? ")" ("throws" exceptions+=JvmTypeReference ("," exceptions+=JvmTypeReference)*)?
@@ -1156,7 +1156,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		return getMemberAccess().getRule();
 	}
 
-	//CreateExtensionInfo returns xtend2::CreateExtensionInfo:
+	//CreateExtensionInfo:
 	//	"create" (name=ValidID ":")? createExpression=XExpression;
 	public CreateExtensionInfoElements getCreateExtensionInfoAccess() {
 		return (pCreateExtensionInfo != null) ? pCreateExtensionInfo : (pCreateExtensionInfo = new CreateExtensionInfoElements());
@@ -1166,7 +1166,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		return getCreateExtensionInfoAccess().getRule();
 	}
 
-	//Parameter returns xtend2::XtendParameter:
+	//Parameter returns XtendParameter:
 	//	annotations+=XAnnotation* parameterType=JvmTypeReference name=ValidID;
 	public ParameterElements getParameterAccess() {
 		return (pParameter != null) ? pParameter : (pParameter = new ParameterElements());
