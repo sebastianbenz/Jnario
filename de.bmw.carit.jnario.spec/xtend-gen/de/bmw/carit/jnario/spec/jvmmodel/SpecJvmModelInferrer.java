@@ -7,7 +7,6 @@ import de.bmw.carit.jnario.spec.spec.Example;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 import de.bmw.carit.jnario.spec.spec.SpecFile;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -51,24 +50,22 @@ public class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
   @Inject
   private JavaNameProvider _javaNameProvider;
   
-  protected void _infer(final EObject e, final IAcceptor<JvmDeclaredType> acceptor, final boolean prelinkingPhase) {
-    EList<EObject> _eContents = e.eContents();
-    for (final EObject child : _eContents) {
-      this.infer(child, acceptor, prelinkingPhase);
-    }
-  }
-  
-  protected void _infer(final SpecFile spec, final IAcceptor<JvmDeclaredType> acceptor, final boolean isPrelinkingPhase) {
-      XtendClass _xtendClass = spec.getXtendClass();
+  public void infer(final EObject e, final IAcceptor<JvmDeclaredType> acceptor, final boolean isPrelinkingPhase) {
+      boolean _operator_not = BooleanExtensions.operator_not((e instanceof SpecFile));
+      if (_operator_not) {
+        return;
+      }
+      final SpecFile specFile = ((SpecFile) e);
+      XtendClass _xtendClass = specFile.getXtendClass();
       boolean _operator_equals = ObjectExtensions.operator_equals(_xtendClass, null);
       if (_operator_equals) {
         return;
       }
-      XtendClass _xtendClass_1 = spec.getXtendClass();
-      this.infer(spec, ((ExampleGroup) _xtendClass_1), null, isPrelinkingPhase);
+      XtendClass _xtendClass_1 = specFile.getXtendClass();
+      this.transform(((SpecFile) specFile), ((ExampleGroup) _xtendClass_1), null, isPrelinkingPhase);
   }
   
-  public JvmGenericType infer(final SpecFile spec, final ExampleGroup exampleGroup, final JvmGenericType superClass, final boolean isPrelinkingPhase) {
+  public JvmGenericType transform(final SpecFile spec, final ExampleGroup exampleGroup, final JvmGenericType superClass, final boolean isPrelinkingPhase) {
     JvmGenericType _xblockexpression = null;
     {
       ArrayList<JvmGenericType> _newArrayList = CollectionLiterals.<JvmGenericType>newArrayList();
@@ -113,8 +110,8 @@ public class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
                   if (element instanceof ExampleGroup) {
                     final ExampleGroup _exampleGroup = (ExampleGroup)element;
                     matched=true;
-                    JvmGenericType _infer = SpecJvmModelInferrer.this.infer(spec, _exampleGroup, it, isPrelinkingPhase);
-                    CollectionExtensions.<JvmGenericType>operator_add(subExamples, _infer);
+                    JvmGenericType _transform = SpecJvmModelInferrer.this.transform(spec, _exampleGroup, it, isPrelinkingPhase);
+                    CollectionExtensions.<JvmGenericType>operator_add(subExamples, _transform);
                   }
                 }
                 if (!matched) {
@@ -146,22 +143,18 @@ public class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
                                 JvmAnnotationReference _annotation_2 = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(_example, _name, "expected", _exception_1);
                                 CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_2, _annotation_2);
                               }
-                              EList<XAnnotation> _annotations_3 = _example.getAnnotations();
-                              SpecJvmModelInferrer.this._extendedJvmTypesBuilder.translateAnnotationsTo(_annotations_3, it);
                               XExpression _body = _example.getBody();
                               SpecJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, _body);
+                              EList<XAnnotation> _annotations_3 = _example.getAnnotations();
+                              SpecJvmModelInferrer.this._extendedJvmTypesBuilder.translateAnnotationsTo(_annotations_3, it);
+                              EList<JvmTypeReference> _exceptions = it.getExceptions();
+                              JvmTypeReference _typeForName = SpecJvmModelInferrer.this._typeReferences.getTypeForName(java.lang.Exception.class, _example);
+                              CollectionExtensions.<JvmTypeReference>operator_add(_exceptions, _typeForName);
                             }
                           }
                         };
                       JvmOperation _method = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toMethod(_example, _exampleMethodName, _typeForName, _function);
                       final JvmOperation method = _method;
-                      JvmTypeReference _typeForName_1 = SpecJvmModelInferrer.this._typeReferences.getTypeForName(java.lang.Exception.class, _example);
-                      final JvmTypeReference anyException = _typeForName_1;
-                      boolean _operator_notEquals = ObjectExtensions.operator_notEquals(anyException, null);
-                      if (_operator_notEquals) {
-                        EList<JvmTypeReference> _exceptions = method.getExceptions();
-                        CollectionExtensions.<JvmTypeReference>operator_add(_exceptions, anyException);
-                      }
                       EList<JvmMember> _members_1 = it.getMembers();
                       CollectionExtensions.<JvmOperation>operator_add(_members_1, method);
                     }
@@ -190,16 +183,5 @@ public class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
       _xblockexpression = (_class);
     }
     return _xblockexpression;
-  }
-  
-  public void infer(final EObject spec, final IAcceptor<JvmDeclaredType> acceptor, final boolean isPrelinkingPhase) {
-    if (spec instanceof SpecFile) {
-      _infer((SpecFile)spec, acceptor, isPrelinkingPhase);
-    } else if (spec != null) {
-      _infer(spec, acceptor, isPrelinkingPhase);
-    } else {
-      throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(spec, acceptor, isPrelinkingPhase).toString());
-    }
   }
 }

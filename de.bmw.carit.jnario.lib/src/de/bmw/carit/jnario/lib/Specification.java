@@ -37,7 +37,7 @@ public class Specification<T> {
 	
 	@Override
 	public String toString() {
-		return input.toString();
+		return input == null ? "null" : input.toString();
 	}
 
 }
