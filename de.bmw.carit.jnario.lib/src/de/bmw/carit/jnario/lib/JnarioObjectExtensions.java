@@ -5,14 +5,12 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
 import static org.junit.internal.matchers.IsCollectionContaining.hasItems;
 
-import java.util.Collection;
 import java.util.Collections;
 
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
-import org.hamcrest.Description;
 import org.hamcrest.Factory;
 import org.hamcrest.Matcher;
-import org.hamcrest.StringDescription;
+import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.junit.Assert;
 
@@ -34,6 +32,7 @@ public class JnarioObjectExtensions extends ObjectExtensions{
 	public static <T> void should(T actual, Matcher<T> matcher) {
 		Assert.assertThat(actual, matcher);
 	}
+	
 	public static <T> void should(T expected, T value) {
 		Assert.assertEquals(expected, value);
 	}
@@ -65,52 +64,56 @@ public class JnarioObjectExtensions extends ObjectExtensions{
         return is(instanceOf(type));
     }
     
-	public static <T> Specification<T> should(T input) {
+	public static <T> ISpecification<T> should(T input) {
 		return new Specification<T>(input, Collections.<Step> emptyList());
 	}
 	
-	
-	public static <T> Specification<? extends T> be(Specification<? extends T> actual, Matcher<T> matcher) {
-		boolean result = matcher.matches(actual.getInput());
-		result = actual.evaluate(result);
-		if (!result) {
-			Description description = new StringDescription();
-			description.appendText("\nExpected: ");
-			description.appendDescriptionOf(matcher);
-			description.appendText("\n     got: ");
-			description.appendValue(actual);
-			description.appendText("\n");
-			throw new java.lang.AssertionError(description.toString());
-		}
+	public static <T> ISpecification<? extends T> be(ISpecification<? extends T> actual, Matcher<T> matcher) {
+		actual.evaluate(matcher);
 		return actual;
 	}
 
-	public static <T> Specification<? extends T> be(Specification<? extends T> actual, T expected) {
+	public static <T> ISpecification<? extends T> be(ISpecification<? extends T> actual, T expected) {
 		return be(actual, is(expected));
 	}
 
-	public static <T> void any(Specification<T> actual, T... candidates){
+	public static <T> void any(ISpecification<? extends T> actual, T... candidates){
 		throw new UnsupportedOperationException();
 	}
 	
-	public static <T> void not(Specification<T> actual, T expected) {
+	public static <T> void not(ISpecification<? extends T> actual, T expected) {
 		be(actual.append(Step.NOT), expected);
 	}
 
-	public static <T> Specification<T> not(Specification<T> actual) {
+	public static <T> ISpecification<T> not(ISpecification<T> actual) {
 		return actual.append(Step.NOT);
 	}
 
-	public static <T> Specification<T> be(Specification<T> actual) {
+	public static <T> ISpecification<T> be(ISpecification<T> actual) {
 		return actual;
 	}
 	
-	public static <T> void contain(Specification<? extends Iterable<T>> actual, T... elements){
+	public static <T> void contain(ISpecification<? extends Iterable<T>> actual, T... elements){
 		be(actual, hasItems(elements));
 	}
 	
-	public static <T> void contain(Specification<? extends Iterable<T>> actual, Matcher<? extends T>... elementMatchers) {
+	public static <T> void contain(ISpecification<? extends Iterable<T>> actual, Matcher<? extends T>... elementMatchers) {
 		be(actual, hasItems(elementMatchers));
 	}
+
+	public static void startWith(ISpecification<String> actual, String expected) {
+		be(actual, Matchers.startsWith(expected));
+	}
 	
+	public static void endWith(ISpecification<String> actual, String expected) {
+		be(actual, Matchers.endsWith(expected));
+	}
+	
+	public static void contain(ISpecification<String> actual, String expected) {
+		be(actual, Matchers.containsString(expected));
+	}
+	
+	public static <T> ISpecification<T> all(T... inputs) {
+		return new CompositeSpecification<T>(inputs);
+	}
 }
