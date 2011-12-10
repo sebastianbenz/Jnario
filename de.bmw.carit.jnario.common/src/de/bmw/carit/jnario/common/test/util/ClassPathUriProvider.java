@@ -18,7 +18,6 @@ import org.eclipse.emf.common.util.URI;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 
-@SuppressWarnings("restriction")
 public class ClassPathUriProvider implements IUriProvider {
 
 	public static class FileNameIs implements Predicate<URI> {

@@ -47,10 +47,6 @@ public class SpecLabelProvider extends Xtend2LabelProvider {
 	@Inject
 	private IJvmModelAssociations associations;
 
-	public Image image(XtendImport element) {
-		return images.forImport();
-	}
-
 	public Image image(ExampleGroup element) {
 		Iterable<JvmGenericType> inferredTypes = Iterables.filter(associations.getJvmElements(element), JvmGenericType.class);
 		for (JvmGenericType inferredType : inferredTypes) {
@@ -59,34 +55,8 @@ public class SpecLabelProvider extends Xtend2LabelProvider {
 		return null;
 	}
 
-	public Image image(JvmOperation element) {
-		return images.forDispatcherFunction(element.getVisibility(), false);
-	}
-
-
-	public String text(XtendImport element) {
-		return element.getImportedNamespace();
-	}
-
 	public String text(ExampleGroup element) {
 		return element.getName();
-	}
-
-	public StyledString text(JvmOperation element) {
-		return signature(element.getSimpleName(), element);
-	}
-
-	protected StyledString signature(String simpleName, JvmIdentifiableElement element) {
-		JvmTypeReference returnType = typeProvider.getTypeForIdentifiable(element);
-		String returnTypeString = "void";
-		if (returnType != null) {
-			if (returnType instanceof JvmAnyTypeReference) {
-				returnTypeString = "Object";
-			} else {
-				returnTypeString = returnType.getSimpleName();
-			}
-		}
-		return convertToStyledString(simpleName + uiStrings.parameters(element) + " : " + returnTypeString);
 	}
 
 }

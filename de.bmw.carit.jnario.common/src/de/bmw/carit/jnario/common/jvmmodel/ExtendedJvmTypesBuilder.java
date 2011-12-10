@@ -38,8 +38,11 @@ public class ExtendedJvmTypesBuilder extends JvmTypesBuilder {
 	public JvmAnnotationReference toAnnotation(EObject sourceElement, String annotationTypeName, String valueName, Object value) {
 		JvmAnnotationReference result = TypesFactory.eINSTANCE.createJvmAnnotationReference();
 		JvmType jvmType = references.findDeclaredType(annotationTypeName, sourceElement);
+		if(jvmType == null){
+			return null;
+		}
 		if (!(jvmType instanceof JvmAnnotationType)) {
-			throw new IllegalArgumentException("The given class " + annotationTypeName + " is not an annotation type.");
+			return null;
 		}
 		result.setAnnotation((JvmAnnotationType) jvmType);
 		if(value == null){

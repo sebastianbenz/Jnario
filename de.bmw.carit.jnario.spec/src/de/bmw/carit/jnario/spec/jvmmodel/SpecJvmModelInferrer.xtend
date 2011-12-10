@@ -1,40 +1,26 @@
 package de.bmw.carit.jnario.spec.jvmmodel
 
 import com.google.inject.Inject
+import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder
+import de.bmw.carit.jnario.runner.Contains
 import de.bmw.carit.jnario.runner.ExampleGroupRunner
 import de.bmw.carit.jnario.runner.Named
 import de.bmw.carit.jnario.spec.naming.JavaNameProvider
 import de.bmw.carit.jnario.spec.spec.Example
+import de.bmw.carit.jnario.spec.spec.ExampleGroup
 import de.bmw.carit.jnario.spec.spec.SpecFile
+import java.util.List
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.ecore.InternalEObject
-import org.eclipse.xtext.common.types.JvmAnnotationTarget
 import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.common.types.JvmGenericType
-import org.eclipse.xtext.common.types.TypesFactory
-import org.eclipse.xtext.common.types.util.TypeReferences
-import org.eclipse.xtext.naming.IQualifiedNameProvider
-import org.eclipse.xtext.util.IAcceptor
-import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
-import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
-import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import org.eclipse.xtext.xbase.typing.ITypeProvider
-import org.eclipse.xtext.xtend2.resource.Xtend2Resource
-import org.junit.Test
-import org.junit.runner.RunWith
-
-import static com.google.common.collect.Iterables.*
-import org.eclipse.xtext.common.types.TypesPackage
-import de.bmw.carit.jnario.spec.spec.ExampleGroup
-import de.bmw.carit.jnario.runner.Contains
-import java.util.List
 import org.eclipse.xtext.common.types.JvmVisibility
-import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder
-import org.eclipse.xtext.xtend2.xtend2.XtendField
-import org.eclipse.xtext.xtend2.xtend2.XtendMember
-import org.eclipse.xtext.xtend2.xtend2.XtendFunction
+import org.eclipse.xtext.common.types.util.TypeReferences
+import org.eclipse.xtext.util.IAcceptor
 import org.eclipse.xtext.xtend2.jvmmodel.Xtend2JvmModelInferrer
-import org.eclipse.xtext.xtend2.xtend2.XtendAnnotationTarget 
+import org.eclipse.xtext.xtend2.xtend2.XtendField
+import org.eclipse.xtext.xtend2.xtend2.XtendFunction
+import org.junit.Test
+import org.junit.runner.RunWith 
 /**
  * <p>Infers a JVM model from the source model.</p> 
  *
@@ -49,20 +35,20 @@ class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
 
 	@Inject extension JavaNameProvider
 	
-	def dispatch void infer(EObject e, IAcceptor<JvmDeclaredType> acceptor, boolean prelinkingPhase) {
-		for (EObject child : e.eContents()) {
-			infer(child, acceptor, prelinkingPhase);
+	override void infer(EObject e, IAcceptor<JvmDeclaredType> acceptor, boolean isPrelinkingPhase) {
+		if (!(e instanceof SpecFile)){
+			return
 		}
+		val specFile = e as SpecFile
+		
+		if(specFile.xtendClass == null){
+			return
+		}
+		
+		transform(specFile as SpecFile, specFile.xtendClass as ExampleGroup, null, isPrelinkingPhase)
 	}
 	
-	def dispatch void infer(SpecFile spec, IAcceptor<JvmDeclaredType> acceptor, boolean isPrelinkingPhase) {
-		if(spec.xtendClass == null){
-			return 
-		}
-		infer(spec, spec.xtendClass as ExampleGroup, null, isPrelinkingPhase)
-	}
-	
-	def infer(SpecFile spec, ExampleGroup exampleGroup, JvmGenericType superClass, boolean isPrelinkingPhase) {
+	def transform(SpecFile spec, ExampleGroup exampleGroup, JvmGenericType superClass, boolean isPrelinkingPhase) {
 		val List<JvmGenericType> subExamples = newArrayList()
 		exampleGroup.toClass(exampleGroup.javaClassName, superClass) [
 				spec.eResource.contents += it
@@ -84,7 +70,7 @@ class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
 							element.transform(it)
 						}
 						ExampleGroup: {
-							subExamples += infer(spec, element, it, isPrelinkingPhase)
+							subExamples += transform(spec, element, it, isPrelinkingPhase)
 						}
 						Example : {
 							val method = element.toMethod(element.exampleMethodName, getTypeForName(Void::TYPE, element)) [
@@ -93,15 +79,12 @@ class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
 								if(element.exception == null){
 									annotations += element.toAnnotation(typeof(Test))
 								}else{
-										annotations += element.toAnnotation(typeof(Test).name, "expected", element.exception)
+									annotations += element.toAnnotation(typeof(Test).name, "expected", element.exception)
 								}
-								element.annotations.translateAnnotationsTo(it)
 								body = element.body
+								element.annotations.translateAnnotationsTo(it)
+								exceptions += typeof(Exception).getTypeForName(element)
 							]
-							val anyException = typeof(Exception).getTypeForName(element)
-								if(anyException != null){
-									method.exceptions += anyException
-								}
 							members += method
 						}
 						XtendFunction: {
