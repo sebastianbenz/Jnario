@@ -1,8 +1,9 @@
 package de.bmw.carit.jnario.spec.naming;
 
-import static org.eclipse.xtext.util.Strings.toFirstLower;
-import static org.eclipse.xtext.util.Strings.toFirstUpper;
+import static de.bmw.carit.jnario.spec.util.Strings.convertToCamelCase;
+import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 
+import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.util.SimpleAttributeResolver;
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 
@@ -10,8 +11,6 @@ import de.bmw.carit.jnario.spec.spec.Example;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 
 public class JavaNameProvider {
-
-	private static final String UNKNOWN_NAME = "Unknown";
 
 	public String describe(ExampleGroup exampleGroup) {
 		StringBuilder result = new StringBuilder();
@@ -30,15 +29,26 @@ public class JavaNameProvider {
 	}
 	
 	public String getJavaClassName(ExampleGroup exampleGroup) {
-		String name = UNKNOWN_NAME;
+		StringBuilder result = internalGetName(exampleGroup);
+		result.append("Spec");
+		return result.toString();
+	}
+
+	protected StringBuilder internalGetName(ExampleGroup exampleGroup) {
+		StringBuilder result = new StringBuilder();
+		ExampleGroup parent = getContainerOfType(exampleGroup.eContainer(), ExampleGroup.class);
+		if(parent != null){
+			result.append(internalGetName(parent));
+		}
 		if(exampleGroup.getTargetType() != null){
-			name = exampleGroup.getTargetType().getSimpleName() ;
+			result.append(exampleGroup.getTargetType().getSimpleName());
 		}
 		if(exampleGroup.getTargetOperation() != null){
-			name = new OperationNameProvider().apply(exampleGroup.getTargetOperation()).toString();
+			result.append(new OperationNameProvider().apply(exampleGroup.getTargetOperation()).toString());
 		}
-		name = appendMemberDescription(exampleGroup, name);
-		return toFirstUpper(clean(name)) + "Spec";
+		appendMemberDescription(exampleGroup, result);
+		result = convertToCamelCase(result);
+		return result;
 	}
 	
 	public String describe(Example example){
@@ -52,25 +62,17 @@ public class JavaNameProvider {
 		return sb.toString();
 	}
 
-	protected String clean(String name) {
-		if(name == null){
-			name = "Null";
-		}
-		return name.replaceAll("[^a-zA-Z0-9]","");
-	}
-
-	public String appendMemberDescription(XtendMember member, String name) {
+	public void appendMemberDescription(XtendMember member, StringBuilder result) {
 		String newName = SimpleAttributeResolver.NAME_RESOLVER.apply(member);
 		if(newName != null){
-			name = newName;
+			result.append(newName);
 		}
-		return name;
 	}
 	
 	public String getExampleMethodName(Example example){
-		String name = UNKNOWN_NAME;
-		name = appendMemberDescription(example, name);
-		return toFirstLower(clean(name));
+		StringBuilder result = new StringBuilder();
+		appendMemberDescription(example, result);
+		return convertToCamelCase(result).toString();
 	}
 
 }
