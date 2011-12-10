@@ -20,6 +20,8 @@ import org.eclipse.xtext.common.types.JvmDeclaredType;
 
 import org.eclipse.xtext.xbase.XExpression;
 
+import org.eclipse.xtext.xtend2.xtend2.impl.XtendMemberImpl;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Example</b></em>'.
@@ -29,13 +31,14 @@ import org.eclipse.xtext.xbase.XExpression;
  * <ul>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleImpl#getPreamble <em>Preamble</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleImpl#getException <em>Exception</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleImpl#getBody <em>Body</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ExampleImpl extends MemberImpl implements Example
+public class ExampleImpl extends XtendMemberImpl implements Example
 {
   /**
    * The default value of the '{@link #getPreamble() <em>Preamble</em>}' attribute.
@@ -66,6 +69,26 @@ public class ExampleImpl extends MemberImpl implements Example
    * @ordered
    */
   protected JvmDeclaredType exception;
+
+  /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference.
@@ -169,6 +192,29 @@ public class ExampleImpl extends MemberImpl implements Example
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.EXAMPLE__NAME, oldName, name));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public XExpression getBody()
   {
     return body;
@@ -243,6 +289,8 @@ public class ExampleImpl extends MemberImpl implements Example
       case SpecPackage.EXAMPLE__EXCEPTION:
         if (resolve) return getException();
         return basicGetException();
+      case SpecPackage.EXAMPLE__NAME:
+        return getName();
       case SpecPackage.EXAMPLE__BODY:
         return getBody();
     }
@@ -264,6 +312,9 @@ public class ExampleImpl extends MemberImpl implements Example
         return;
       case SpecPackage.EXAMPLE__EXCEPTION:
         setException((JvmDeclaredType)newValue);
+        return;
+      case SpecPackage.EXAMPLE__NAME:
+        setName((String)newValue);
         return;
       case SpecPackage.EXAMPLE__BODY:
         setBody((XExpression)newValue);
@@ -288,6 +339,9 @@ public class ExampleImpl extends MemberImpl implements Example
       case SpecPackage.EXAMPLE__EXCEPTION:
         setException((JvmDeclaredType)null);
         return;
+      case SpecPackage.EXAMPLE__NAME:
+        setName(NAME_EDEFAULT);
+        return;
       case SpecPackage.EXAMPLE__BODY:
         setBody((XExpression)null);
         return;
@@ -309,6 +363,8 @@ public class ExampleImpl extends MemberImpl implements Example
         return PREAMBLE_EDEFAULT == null ? preamble != null : !PREAMBLE_EDEFAULT.equals(preamble);
       case SpecPackage.EXAMPLE__EXCEPTION:
         return exception != null;
+      case SpecPackage.EXAMPLE__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case SpecPackage.EXAMPLE__BODY:
         return body != null;
     }
@@ -328,6 +384,8 @@ public class ExampleImpl extends MemberImpl implements Example
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (preamble: ");
     result.append(preamble);
+    result.append(", name: ");
+    result.append(name);
     result.append(')');
     return result.toString();
   }

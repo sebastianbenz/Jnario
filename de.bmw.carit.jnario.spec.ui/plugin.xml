@@ -35,7 +35,7 @@
          </activeWhen>
       </handler>
             <handler
-            class="de.bmw.carit.jnario.spec.ui.SpecExecutableExtensionFactory:de.bmw.carit.jnario.spec.ui.edit.OrganizeImportsHandler"
+            class="de.bmw.carit.jnario.spec.ui.SpecExecutableExtensionFactory:org.eclipse.xtext.xtend2.ui.edit.OrganizeImportsHandler"
             commandId="org.eclipse.xtext.xbase.ui.organizeImports">
            	<activeWhen>
 				<reference
@@ -288,20 +288,25 @@
   </extension>
   
   
-     <extension point="org.eclipse.core.runtime.adapters">
+   <extension point="org.eclipse.core.runtime.adapters">
      <factory 
-        class="de.bmw.carit.jnario.spec.ui.SpecExecutableExtensionFactory:de.bmw.carit.jnario.common.ui.launching.JavaElementDelegateAdapterFactory"
+        class="de.bmw.carit.jnario.spec.ui.SpecExecutableExtensionFactory:org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegateAdapterFactory"
         adaptableType="org.eclipse.ui.IFileEditorInput">
-        <adapter type="de.bmw.carit.jnario.common.ui.launching.JavaElementDelegate"/>
+        <adapter type="org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegate"/>
      </factory>
      <factory 
-        class="de.bmw.carit.jnario.spec.ui.SpecExecutableExtensionFactory:de.bmw.carit.jnario.common.ui.launching.JavaElementDelegateAdapterFactory" 
+        class="de.bmw.carit.jnario.spec.ui.SpecExecutableExtensionFactory:org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegateAdapterFactory"
+        adaptableType="org.eclipse.ui.IEditorPart">
+        <adapter type="org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegate"/>
+     </factory>
+     <factory 
+        class="de.bmw.carit.jnario.spec.ui.SpecExecutableExtensionFactory:org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegateAdapterFactory" 
         adaptableType="org.eclipse.core.resources.IResource">
-        <adapter type="de.bmw.carit.jnario.common.ui.launching.JavaElementDelegate"/>
+        <adapter type="org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegate"/>
      </factory>
      <factory 
-        class="de.bmw.carit.jnario.spec.ui.SpecExecutableExtensionFactory:de.bmw.carit.jnario.common.ui.launching.JavaElementDelegateAdapterFactory"
-        adaptableType="de.bmw.carit.jnario.common.ui.launching.JavaElementDelegate">
+        class="de.bmw.carit.jnario.spec.ui.SpecExecutableExtensionFactory:org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegateAdapterFactory"
+        adaptableType="org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegate">
         <adapter type="org.eclipse.jdt.core.IJavaElement"/>
      </factory>
   </extension>
@@ -312,9 +317,9 @@
             label="%JUnitShortcut.label"
             icon="$nl$/icons/julaunch.gif"
             helpContextId="org.eclipse.jdt.junit.launch_shortcut"
-            class="de.bmw.carit.jnario.common.ui.launching.JUnitLaunchShortcut"
+            class="org.eclipse.xtext.xtend2.ui.launching.JUnitLaunchShortcut"
             modes="run, debug"
-            id="de.bmw.carit.jnario.common.ui.launching.junitShortcut">
+            id="org.eclipse.xtext.xtend2.ui.launching.junitShortcut">
          <contextualLaunch>
             <enablement>
                <with variable="selection">
@@ -322,16 +327,13 @@
                	  <iterate>
                	     <and>
                	       <not><adapt type="org.eclipse.jdt.core.IJavaElement"/></not>
-                       <adapt type="de.bmw.carit.jnario.common.ui.launching.JavaElementDelegate">
+                       <adapt type="org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegate">
 	                     <adapt type="org.eclipse.jdt.core.IJavaElement">
 			                <test property="org.eclipse.jdt.core.isInJavaProject"/>
 			                <test property="org.eclipse.jdt.core.hasTypeOnClasspath" value="junit.framework.Test"/>
 			                <test property="org.eclipse.jdt.junit.canLaunchAsJUnit" forcePluginActivation="true"/>
 			             </adapt>
 		               </adapt>
-		               <adapt type="org.eclipse.core.resources.IResource">
-							<test property="org.eclipse.core.resources.name" value="*.spec"/>
-					   </adapt>
 		             </and>
 		          </iterate>
                </with>
@@ -353,9 +355,9 @@
    <extension
          point="org.eclipse.debug.ui.launchShortcuts">
       <shortcut
-            class="de.bmw.carit.jnario.common.ui.launching.JUnitPDELaunchShortcut"
+            class="org.eclipse.xtext.xtend2.ui.launching.JUnitPDELaunchShortcut"
             icon="$nl$/icons/julaunchpgn.gif"
-            id="de.bmw.carit.jnario.common.ui.launching.junitPdeShortcut"
+            id="org.eclipse.xtext.xtend2.ui.launching.junitPdeShortcut"
             label="%launcher.junit.name"
             modes="run, debug">
          <contextualLaunch>
@@ -365,16 +367,13 @@
                	  <iterate>
                	     <and>
                	       <not><adapt type="org.eclipse.jdt.core.IJavaElement"/></not>
-                       <adapt type="de.bmw.carit.jnario.common.ui.launching.JavaElementDelegate">
+                       <adapt type="org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegate">
                          <adapt type="org.eclipse.jdt.core.IJavaElement">
 		                   <test property="org.eclipse.jdt.core.isInJavaProjectWithNature" value="org.eclipse.pde.PluginNature"/>
 		                   <test property="org.eclipse.jdt.core.hasTypeOnClasspath" value="junit.framework.Test"/>
 		                   <test property="org.eclipse.jdt.junit.canLaunchAsJUnit" forcePluginActivation="true"/>
-		                 </adapt>	             
+		                 </adapt>
                        </adapt>
-                       <adapt type="org.eclipse.core.resources.IResource">
-							<test property="org.eclipse.core.resources.name" value="*.spec"/>
-					   	 </adapt>
                      </and>
 		          </iterate>
                </with>
@@ -393,11 +392,80 @@
          </description>
       </shortcut>
     </extension>  
-    
+    <extension
+         point="org.eclipse.debug.ui.launchShortcuts">
+      <shortcut
+            class="org.eclipse.xtext.xtend2.ui.launching.JavaApplicationLaunchShortcut"
+            description="%JavaLaunchShortcut.description"
+            helpContextId="org.eclipse.jdt.debug.ui.shortcut_local_java_application"
+            icon="$nl$/icons/full/etool16/java_app.gif"
+            id="org.eclipse.xtext.xtend2.ui.launching.localJavaShortcut"
+            label="%JavaApplicationShortcut.label"
+            modes="run, debug">
+         <contextualLaunch>
+           <enablement>
+             <with variable="selection">
+               <count value="1"/>
+               <iterate>
+                 <and>
+                   <not><adapt type="org.eclipse.jdt.core.IJavaElement"/></not>
+                   <adapt type="org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegate">
+                     <and>
+                       <adapt type="org.eclipse.jdt.core.IJavaElement">
+                         <test property="org.eclipse.jdt.core.isInJavaProject"/>
+                       </adapt>
+                       <or>
+                         <test property="org.eclipse.jdt.launching.hasMain"/>
+                         <test property="org.eclipse.jdt.launching.isContainer"/>
+                         <test property="org.eclipse.jdt.launching.isPackageFragment"/>
+                         <test property="org.eclipse.jdt.launching.isPackageFragmentRoot"/>
+                       </or>
+                     </and> 
+                   </adapt>
+                 </and>
+               </iterate>
+             </with>
+           </enablement>
+           </contextualLaunch>
+         <configurationType
+               id="org.eclipse.jdt.launching.localJavaApplication">
+         </configurationType>
+         <description
+               description="%JavaApplicationShortcut.description.run"
+               mode="run">
+         </description>
+         <description
+               description="%JavaApplicationShortcut.description.debug"
+               mode="debug">
+         </description>
+      </shortcut>
+    </extension>
+    <extension point="org.eclipse.jdt.core.classpathContainerInitializer">            
+   		<classpathContainerInitializer                                          
+			id="org.eclipse.xtend.XTEND_CONTAINER"                                                        
+			class="org.eclipse.xtext.xtend2.ui.buildpath.XtendContainerInitializer"/>                           
+	</extension>
+	<extension
+         point="org.eclipse.jdt.ui.classpathContainerPage">
+      <classpathContainerPage
+            name="%XtendLibrary_name"
+            class="org.eclipse.xtext.xtend2.ui.buildpath.XtendContainerWizardPage"
+            id="org.eclipse.xtend.XTEND_CONTAINER">
+      </classpathContainerPage>
+   </extension>
+       <extension
+         point="org.eclipse.ui.contexts">
+      <context
+            description="%SpecContext_description"
+            id="de.bmw.carit.jnario.spec.ui.SpecEditorScope"
+            name="%SpecContext_name"
+            parentId="org.eclipse.xtext.ui.XtextEditorScope">
+      </context>
+   </extension>
     <extension
          point="org.eclipse.ui.bindings">
       <key
-            contextId="org.eclipse.xtext.ui.XtextEditorScope"
+            contextId="de.bmw.carit.jnario.spec.ui.SpecEditorScope"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
             sequence="M1+M2+O"
             commandId="org.eclipse.xtext.xbase.ui.organizeImports">

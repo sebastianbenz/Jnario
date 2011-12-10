@@ -1,35 +1,31 @@
-grammar de.bmw.carit.jnario.spec.Spec with org.eclipse.xtext.xbase.annotations.XbaseWithAnnotations
-
+grammar de.bmw.carit.jnario.spec.Spec with org.eclipse.xtext.xtend2.Xtend2
+ 
 import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
-import "http://www.eclipse.org/xtext/Xtend2" as xtend2
 
 generate spec "http://www.bmw.de/carit/jnario/spec/Spec"
 
-SpecFile:
+SpecFile returns XtendFile:
 {SpecFile}
-('package' packageName=QualifiedName)? 
+'package' package=QualifiedName 
 	imports+=Import*
-	elements+=ExampleGroup*
+	xtendClass=ExampleGroup
 ;
 
-Import returns xtend2::XtendImport: 
+Import returns XtendImport :  
 	'import' (
-		(static?='static' extension?='extension'? importedType=[types::JvmType|QualifiedName] '.' '*') | 
-		importedType=[types::JvmType|QualifiedName] | 
-		importedNamespace=QualifiedNameWithWildCard
-	)
+		(static?='static' extension?='extension'? importedType=[types::JvmType|QualifiedName] '.' '*') | importedType=[types::JvmType|QualifiedName] | importedNamespace=QualifiedNameWithWildCard)
 ;
 
  
 QualifiedNameWithWildCard :
 	QualifiedName  '.' '*';
 
-ExampleGroup: 
+ExampleGroup returns XtendClass: 
 	{ExampleGroup}
 	annotations+=XAnnotation* 
 	preamble=('describe') targetType=[types::JvmDeclaredType|QualifiedName]? name=STRING? '{'
-       (elements+=Member*)
+       (members+=Member*)
 '}'
 ;
 
@@ -53,30 +49,40 @@ TypeRef:
 //	XMemberFeatureCall  (=>({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|ValidID]) rightOperand=XMemberFeatureCall)*
 //;
 
-Member :
-	{Member} annotations+=XAnnotation* 
+Member returns XtendMember:
+	{XtendMember} annotations+=XAnnotation* 
 	(
-		{Field.annotationInfo = current}	
-		 	(type=JvmTypeReference name=ValidID (=> '=' right=XExpression)?)
 		
-	|	{Example.annotationInfo = current}
+		{Example.annotationInfo = current}
 		(preamble='it' ('throws' exception=[types::JvmDeclaredType|QualifiedName])? name=STRING
 			body=XBlockExpression?)
 	|	{ExampleGroup.annotationInfo = current}
 			(preamble=('describe'|'context') (targetType=[types::JvmDeclaredType|QualifiedName] | targetOperation=[types::JvmOperation|Method])? name=STRING? '{'
-      		elements+=Member*
+      		members+=Member*
       	'}')
-     |	{Function.annotationInfo = current}
-			('def' 
+	|	{XtendField.annotationInfo = current}	
+		 	(extension?='extension' type=JvmTypeReference name=ValidID?
+			| static?='static'? type=JvmTypeReference name=ValidID)
+			('=' initialValue=XExpression)?
+		
+	|	{XtendFunction.annotationInfo = current}
+			('def' | override?='override') static?='static'? (dispatch?='dispatch'?) 
 			('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')?
-			(=>(returnType=JvmTypeReference name=ValidID '(')
-			| (name=ValidID '('))
+			( =>(returnType=JvmTypeReference createExtensionInfo=CreateExtensionInfo name=ValidID '(')
+			| =>(returnType=JvmTypeReference name=ValidID '(')
+			| =>(createExtensionInfo=CreateExtensionInfo name=ValidID '(')
+			| name=ValidID '('
+			)
 			(parameters+=Parameter (',' parameters+=Parameter)*)? ')'
-			expression=XBlockExpression)
+			('throws' exceptions+=JvmTypeReference (',' exceptions+=JvmTypeReference)*)?
+			(expression=XBlockExpression)?
 	 );
 
+CreateExtensionInfo returns CreateExtensionInfo:
+	'create' (name=ValidID ':')? createExpression=XExpression
+;
 
-Parameter:
+Parameter returns XtendParameter:
 	annotations+=XAnnotation* 
 	parameterType=JvmTypeReference name=ValidID;
 

@@ -3,95 +3,14 @@
 */
 package de.bmw.carit.jnario.spec.ui.outline;
 
-import static com.google.common.collect.Iterables.filter;
-import static com.google.common.collect.Lists.newArrayList;
-import static com.google.common.collect.Sets.newHashSet;
-import static java.util.Collections.sort;
-
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
-
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.common.types.JvmGenericType;
-import org.eclipse.xtext.common.types.JvmOperation;
-import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
-import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider;
-import org.eclipse.xtext.ui.editor.outline.impl.DocumentRootNode;
-import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
-import org.eclipse.xtext.xtend2.jvmmodel.DispatchUtil;
-import org.eclipse.xtext.xtend2.ui.labeling.Xtend2Images;
-import org.eclipse.xtext.xtend2.xtend2.XtendClass;
-import org.eclipse.xtext.xtend2.xtend2.XtendFunction;
-import org.eclipse.xtext.xtend2.xtend2.XtendMember;
-
-import com.google.inject.Inject;
-
-import de.bmw.carit.jnario.spec.spec.ExampleGroup;
-import de.bmw.carit.jnario.spec.spec.Function;
-import de.bmw.carit.jnario.spec.spec.Member;
-import de.bmw.carit.jnario.spec.spec.SpecFile;
-import de.bmw.carit.jnario.spec.spec.SpecPackage;
+import org.eclipse.xtext.xtend2.ui.outline.Xtend2OutlineTreeProvider;
 
 /**
  * Customization of the default outline structure.
  * 
  * @author Jan Koehnlein
  */
-public class SpecOutlineTreeProvider extends DefaultOutlineTreeProvider {
+public class SpecOutlineTreeProvider extends Xtend2OutlineTreeProvider {
 
-	@Inject
-	private Xtend2Images images;
-
-	@Inject
-	private IJvmModelAssociations associations;
-
-	@Inject
-	private DispatchUtil dispatchUtil;
-
-	protected void _createChildren(DocumentRootNode parentNode, SpecFile specFile) {
-		if (specFile.getPackageName() != null)
-			createEStructuralFeatureNode(parentNode, specFile, SpecPackage.Literals.SPEC_FILE__PACKAGE_NAME,
-					images.forPackage(), specFile.getPackageName(), true);
-		if (!specFile.getImports().isEmpty())
-			createEStructuralFeatureNode(parentNode, specFile, SpecPackage.Literals.SPEC_FILE__IMPORTS,
-					images.forImportContainer(), "import declarations", false);
-		for (ExampleGroup examplesGroups : specFile.getElements()) {
-			createEObjectNode(parentNode, examplesGroups);
-		}
-	}
-
-	protected void _createChildren(IOutlineNode parentNode, ExampleGroup exampleGroup) {
-		Set<EObject> inferredType = associations.getJvmElements(exampleGroup);
-		if (!inferredType.isEmpty()) {
-			for (Member member : exampleGroup.getElements()) {
-					createEObjectNode(parentNode, member);
-			}
-		} else {
-			for (Member member : exampleGroup.getElements())
-				createEObjectNode(parentNode, member);
-		}
-	}
-
-	protected void _createChildren(IOutlineNode parentNode, JvmOperation inferredOperation) {
-		List<Function> xtendFunctions = newArrayList(filter(associations.getSourceElements(inferredOperation),
-				Function.class));
-		sort(xtendFunctions, new Comparator<Function>() {
-			public int compare(Function arg0, Function arg1) {
-				return index(arg0) - index(arg1);
-			}
-		});
-		for (Function xtendFunction : xtendFunctions) {
-				createEObjectNode(parentNode, xtendFunction);
-		}
-	}
-
-	protected boolean _isLeaf(XtendMember function) {
-		return true;
-	}
-
-	protected int index(Function f) {
-		return ((ExampleGroup) f.eContainer()).getElements().indexOf(f);
-	}
 
 }

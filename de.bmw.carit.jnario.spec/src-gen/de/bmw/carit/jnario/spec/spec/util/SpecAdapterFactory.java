@@ -14,6 +14,11 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.xtext.xtend2.xtend2.XtendAnnotationTarget;
+import org.eclipse.xtext.xtend2.xtend2.XtendClass;
+import org.eclipse.xtext.xtend2.xtend2.XtendFile;
+import org.eclipse.xtext.xtend2.xtend2.XtendMember;
+
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
@@ -88,29 +93,29 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
         return createExampleGroupAdapter();
       }
       @Override
-      public Adapter caseMember(Member object)
-      {
-        return createMemberAdapter();
-      }
-      @Override
-      public Adapter caseParameter(Parameter object)
-      {
-        return createParameterAdapter();
-      }
-      @Override
-      public Adapter caseField(Field object)
-      {
-        return createFieldAdapter();
-      }
-      @Override
       public Adapter caseExample(Example object)
       {
         return createExampleAdapter();
       }
       @Override
-      public Adapter caseFunction(Function object)
+      public Adapter caseXtendFile(XtendFile object)
       {
-        return createFunctionAdapter();
+        return createXtendFileAdapter();
+      }
+      @Override
+      public Adapter caseXtendAnnotationTarget(XtendAnnotationTarget object)
+      {
+        return createXtendAnnotationTargetAdapter();
+      }
+      @Override
+      public Adapter caseXtendClass(XtendClass object)
+      {
+        return createXtendClassAdapter();
+      }
+      @Override
+      public Adapter caseXtendMember(XtendMember object)
+      {
+        return createXtendMemberAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -165,51 +170,6 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.spec.spec.Member <em>Member</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.bmw.carit.jnario.spec.spec.Member
-   * @generated
-   */
-  public Adapter createMemberAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.spec.spec.Parameter <em>Parameter</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.bmw.carit.jnario.spec.spec.Parameter
-   * @generated
-   */
-  public Adapter createParameterAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.spec.spec.Field <em>Field</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.bmw.carit.jnario.spec.spec.Field
-   * @generated
-   */
-  public Adapter createFieldAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.spec.spec.Example <em>Example</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -225,16 +185,61 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.spec.spec.Function <em>Function</em>}'.
+   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.xtend2.xtend2.XtendFile <em>Xtend File</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.bmw.carit.jnario.spec.spec.Function
+   * @see org.eclipse.xtext.xtend2.xtend2.XtendFile
    * @generated
    */
-  public Adapter createFunctionAdapter()
+  public Adapter createXtendFileAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.xtend2.xtend2.XtendAnnotationTarget <em>Xtend Annotation Target</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.xtext.xtend2.xtend2.XtendAnnotationTarget
+   * @generated
+   */
+  public Adapter createXtendAnnotationTargetAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.xtend2.xtend2.XtendClass <em>Xtend Class</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.xtext.xtend2.xtend2.XtendClass
+   * @generated
+   */
+  public Adapter createXtendClassAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.xtend2.xtend2.XtendMember <em>Xtend Member</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.xtext.xtend2.xtend2.XtendMember
+   * @generated
+   */
+  public Adapter createXtendMemberAdapter()
   {
     return null;
   }

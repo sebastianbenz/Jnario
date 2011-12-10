@@ -5,9 +5,6 @@ import de.bmw.carit.jnario.runner.ExampleGroupRunner
 import de.bmw.carit.jnario.runner.Named
 import de.bmw.carit.jnario.spec.naming.JavaNameProvider
 import de.bmw.carit.jnario.spec.spec.Example
-import de.bmw.carit.jnario.spec.spec.Field
-import de.bmw.carit.jnario.spec.spec.Function
-import de.bmw.carit.jnario.spec.spec.Member
 import de.bmw.carit.jnario.spec.spec.SpecFile
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.InternalEObject
@@ -32,7 +29,10 @@ import de.bmw.carit.jnario.spec.spec.ExampleGroup
 import de.bmw.carit.jnario.runner.Contains
 import java.util.List
 import org.eclipse.xtext.common.types.JvmVisibility
-import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder 
+import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder
+import org.eclipse.xtext.xtend2.xtend2.XtendField
+import org.eclipse.xtext.xtend2.xtend2.XtendMember
+import org.eclipse.xtext.xtend2.xtend2.XtendFunction 
 /**
  * <p>Infers a JVM model from the source model.</p> 
  *
@@ -67,26 +67,27 @@ class SpecJvmModelInferrer extends AbstractModelInferrer {
 	def dispatch void infer(SpecFile spec,  
 	                IAcceptor<JvmDeclaredType> acceptor, 
 	                boolean isPrelinkingPhase) {
-		for(exampleGroup : spec.getElements){
-			infer(spec, exampleGroup, null, acceptor)
+		if(spec.xtendClass == null){
+			return 
 		}
+		associate(spec, infer(spec, spec.xtendClass as ExampleGroup, null, acceptor))
 	}
 	
 	def infer(SpecFile spec, ExampleGroup exampleGroup, JvmGenericType superClass, IAcceptor<JvmDeclaredType> acceptor) {
 		val List<JvmGenericType> subExamples = newArrayList()
 		val newClass = exampleGroup.toClass(exampleGroup.javaClassName, superClass) [
 		    	documentation = exampleGroup.documentation
-		    	packageName = spec.getPackageName
+		    	packageName = spec.^package
 		    	annotations += exampleGroup.toAnnotation(typeof(RunWith), typeof(ExampleGroupRunner))
-		    	addAnnotations(exampleGroup)
 		    	annotations += exampleGroup.toAnnotation(typeof(Named), exampleGroup.describe)
-				for (element : exampleGroup.elements) {
+		    	addAnnotations(exampleGroup)
+				for (element : exampleGroup.members) {
 			        switch element {
-			          Field : {
-			          	val field = element.toField(element.getName, element.type)[
+			          XtendField : {
+			          	val field = element.toField(element.name, element.type)[
 			          		visibility = JvmVisibility::PROTECTED
 			            	addAnnotations(element)	
-			            	setInitializer(element.getRight)
+			            	setInitializer(element.initialValue)
 			          	]
 			            members += field
 			          }
@@ -105,10 +106,13 @@ class SpecJvmModelInferrer extends AbstractModelInferrer {
 			              addAnnotations(element)
 			              body = element.body
 			            ]
-			            method.exceptions += typeof(Exception).getTypeForName(element)
+			            val anyException = typeof(Exception).getTypeForName(element)
+			              if(anyException != null){
+				              method.exceptions += anyException
+			              }
 			            members += method
 			          }
-			          Function: {
+			          XtendFunction: {
 			          	var returnType = element.returnType;
 						if(returnType == null){
 							returnType = element.expression.expectedType
@@ -123,7 +127,10 @@ class SpecJvmModelInferrer extends AbstractModelInferrer {
               			  }
               			  addAnnotations(element)
 			              body = element.expression
-			              exceptions += typeof(Exception).getTypeForName(element)
+			              val anyException = typeof(Exception).getTypeForName(element)
+			              if(anyException != null){
+				              exceptions += anyException
+			              }
 			            ]
 			            members += method
 			          }
@@ -139,9 +146,9 @@ class SpecJvmModelInferrer extends AbstractModelInferrer {
 			return newClass
 	}
 	
-	def addAnnotations(JvmAnnotationTarget target, Member member){
+	def addAnnotations(JvmAnnotationTarget target, XtendMember member){
 		var result = member.annotations as Iterable<XAnnotation>
-		if(member.annotationInfo != null){
+		if(member.annotations.empty && member.annotationInfo != null){
 			result = concat(result, member.annotationInfo.annotations)
 		}
 		result.translateAnnotationsTo(target)

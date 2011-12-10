@@ -7,31 +7,21 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.xtext.common.types.JvmAnyTypeReference;
-import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmTypeReference;
-import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
-import org.eclipse.xtext.xbase.ui.labeling.XbaseLabelProvider;
 import org.eclipse.xtext.xbase.validation.UIStrings;
 import org.eclipse.xtext.xtend2.ui.labeling.Xtend2Images;
 import org.eclipse.xtext.xtend2.ui.labeling.Xtend2LabelProvider;
-import org.eclipse.xtext.xtend2.xtend2.XtendClass;
-import org.eclipse.xtext.xtend2.xtend2.XtendField;
-import org.eclipse.xtext.xtend2.xtend2.XtendFile;
-import org.eclipse.xtext.xtend2.xtend2.XtendFunction;
 import org.eclipse.xtext.xtend2.xtend2.XtendImport;
 
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
-import de.bmw.carit.jnario.spec.spec.Field;
-import de.bmw.carit.jnario.spec.spec.Function;
-import de.bmw.carit.jnario.spec.spec.SpecFile;
 
 /**
  * Provides labels for a EObjects.
@@ -57,10 +47,6 @@ public class SpecLabelProvider extends Xtend2LabelProvider {
 	@Inject
 	private IJvmModelAssociations associations;
 
-	public Image image(SpecFile element) {
-		return images.forFile();
-	}
-
 	public Image image(XtendImport element) {
 		return images.forImport();
 	}
@@ -73,29 +59,10 @@ public class SpecLabelProvider extends Xtend2LabelProvider {
 		return null;
 	}
 
-	public Image image(Function element) {
-		Iterable<JvmOperation> inferredOperations = Iterables.filter(associations.getJvmElements(element), JvmOperation.class);
-		for (JvmOperation inferredOperation : inferredOperations) {
-			return images.forFunction(inferredOperation.getVisibility(), false);
-		}
-		return null;
-	}
-
 	public Image image(JvmOperation element) {
 		return images.forDispatcherFunction(element.getVisibility(), false);
 	}
-	
-	public Image image(Field element) {
-		Iterable<JvmField> inferredFields = Iterables.filter(associations.getJvmElements(element), JvmField.class);
-		for (JvmField inferredField : inferredFields) {
-			return images.forField(inferredField.getVisibility(), false, false);
-		}
-		return null;
-	}
 
-	public String text(SpecFile element) {
-		return element.eResource().getURI().trimFileExtension().lastSegment();
-	}
 
 	public String text(XtendImport element) {
 		return element.getImportedNamespace();
@@ -103,24 +70,6 @@ public class SpecLabelProvider extends Xtend2LabelProvider {
 
 	public String text(ExampleGroup element) {
 		return element.getName();
-	}
-
-	public StyledString text(Function element) {
-		return signature(element.getName(), getDirectlyInferredOperation(element));
-	}
-	
-	private JvmIdentifiableElement getDirectlyInferredOperation(Function element) {
-		Iterable<JvmOperation> inferredOperations = Iterables.filter(associations.getJvmElements(element), JvmOperation.class);
-		for (JvmOperation inferredOperation : inferredOperations) {
-			return inferredOperation;
-		}
-		return null;
-	}
-
-	public String text(Field element) {
-		if (element.getName() == null )
-			return element.getType().getSimpleName();
-		return element.getName() +" : " +element.getType().getSimpleName();
 	}
 
 	public StyledString text(JvmOperation element) {

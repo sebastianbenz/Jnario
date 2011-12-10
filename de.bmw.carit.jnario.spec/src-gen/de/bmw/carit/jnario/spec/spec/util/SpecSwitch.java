@@ -12,6 +12,11 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
+import org.eclipse.xtext.xtend2.xtend2.XtendAnnotationTarget;
+import org.eclipse.xtext.xtend2.xtend2.XtendClass;
+import org.eclipse.xtext.xtend2.xtend2.XtendFile;
+import org.eclipse.xtext.xtend2.xtend2.XtendMember;
+
 /**
  * <!-- begin-user-doc -->
  * The <b>Switch</b> for the model's inheritance hierarchy.
@@ -79,6 +84,7 @@ public class SpecSwitch<T> extends Switch<T>
       {
         SpecFile specFile = (SpecFile)theEObject;
         T result = caseSpecFile(specFile);
+        if (result == null) result = caseXtendFile(specFile);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -86,29 +92,9 @@ public class SpecSwitch<T> extends Switch<T>
       {
         ExampleGroup exampleGroup = (ExampleGroup)theEObject;
         T result = caseExampleGroup(exampleGroup);
-        if (result == null) result = caseMember(exampleGroup);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SpecPackage.MEMBER:
-      {
-        Member member = (Member)theEObject;
-        T result = caseMember(member);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SpecPackage.PARAMETER:
-      {
-        Parameter parameter = (Parameter)theEObject;
-        T result = caseParameter(parameter);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SpecPackage.FIELD:
-      {
-        Field field = (Field)theEObject;
-        T result = caseField(field);
-        if (result == null) result = caseMember(field);
+        if (result == null) result = caseXtendClass(exampleGroup);
+        if (result == null) result = caseXtendMember(exampleGroup);
+        if (result == null) result = caseXtendAnnotationTarget(exampleGroup);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -116,15 +102,8 @@ public class SpecSwitch<T> extends Switch<T>
       {
         Example example = (Example)theEObject;
         T result = caseExample(example);
-        if (result == null) result = caseMember(example);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SpecPackage.FUNCTION:
-      {
-        Function function = (Function)theEObject;
-        T result = caseFunction(function);
-        if (result == null) result = caseMember(function);
+        if (result == null) result = caseXtendMember(example);
+        if (result == null) result = caseXtendAnnotationTarget(example);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -165,54 +144,6 @@ public class SpecSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Member</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Member</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseMember(Member object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Parameter</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Parameter</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseParameter(Parameter object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Field</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Field</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseField(Field object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Example</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -229,17 +160,65 @@ public class SpecSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Function</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Xtend File</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Function</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Xtend File</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseFunction(Function object)
+  public T caseXtendFile(XtendFile object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Xtend Annotation Target</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Xtend Annotation Target</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseXtendAnnotationTarget(XtendAnnotationTarget object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Xtend Class</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Xtend Class</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseXtendClass(XtendClass object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Xtend Member</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Xtend Member</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseXtendMember(XtendMember object)
   {
     return null;
   }

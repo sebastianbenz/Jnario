@@ -6,17 +6,12 @@ package de.bmw.carit.jnario.spec.ui.refactoring;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.xbase.ui.jvmmodel.refactoring.AbstractJvmModelRenameStrategy;
+import org.eclipse.xtext.xbase.ui.jvmmodel.refactoring.DefaultJvmModelRenameStrategy;
 
 /**
  * Encapsulates the model changes of a rename refactoring.  
  */
 @SuppressWarnings("restriction")
-public class SpecRenameStrategy extends AbstractJvmModelRenameStrategy {
+public class SpecRenameStrategy extends DefaultJvmModelRenameStrategy {
 
-	@Override
-	protected void setInferredJvmElementName(String name, EObject renamedSourceElement) {
-		/*
-		 * TODO: rename inferred elements as you would in IJvmModelInferrer 
-		 */
-	}
 }

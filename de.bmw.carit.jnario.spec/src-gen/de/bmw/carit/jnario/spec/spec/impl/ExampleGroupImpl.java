@@ -6,26 +6,25 @@
 package de.bmw.carit.jnario.spec.spec.impl;
 
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
-import de.bmw.carit.jnario.spec.spec.Member;
 import de.bmw.carit.jnario.spec.spec.SpecPackage;
-
-import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.JvmOperation;
+
+import org.eclipse.xtext.xtend2.xtend2.Xtend2Package;
+import org.eclipse.xtext.xtend2.xtend2.XtendAnnotationTarget;
+import org.eclipse.xtext.xtend2.xtend2.XtendMember;
+
+import org.eclipse.xtext.xtend2.xtend2.impl.XtendClassImpl;
+import org.eclipse.xtext.xtend2.xtend2.impl.XtendClassImplCustom;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,17 +33,27 @@ import org.eclipse.xtext.common.types.JvmOperation;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleGroupImpl#getAnnotationInfo <em>Annotation Info</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleGroupImpl#getPreamble <em>Preamble</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleGroupImpl#getTargetType <em>Target Type</em>}</li>
- *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleGroupImpl#getElements <em>Elements</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.ExampleGroupImpl#getTargetOperation <em>Target Operation</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ExampleGroupImpl extends MemberImpl implements ExampleGroup
+public class ExampleGroupImpl extends XtendClassImplCustom implements ExampleGroup
 {
+  /**
+   * The cached value of the '{@link #getAnnotationInfo() <em>Annotation Info</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAnnotationInfo()
+   * @generated
+   * @ordered
+   */
+  protected XtendAnnotationTarget annotationInfo;
+
   /**
    * The default value of the '{@link #getPreamble() <em>Preamble</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -76,16 +85,6 @@ public class ExampleGroupImpl extends MemberImpl implements ExampleGroup
   protected JvmDeclaredType targetType;
 
   /**
-   * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getElements()
-   * @generated
-   * @ordered
-   */
-  protected EList<Member> elements;
-
-  /**
    * The cached value of the '{@link #getTargetOperation() <em>Target Operation</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -114,6 +113,54 @@ public class ExampleGroupImpl extends MemberImpl implements ExampleGroup
   protected EClass eStaticClass()
   {
     return SpecPackage.Literals.EXAMPLE_GROUP;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public XtendAnnotationTarget getAnnotationInfo()
+  {
+    return annotationInfo;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetAnnotationInfo(XtendAnnotationTarget newAnnotationInfo, NotificationChain msgs)
+  {
+    XtendAnnotationTarget oldAnnotationInfo = annotationInfo;
+    annotationInfo = newAnnotationInfo;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SpecPackage.EXAMPLE_GROUP__ANNOTATION_INFO, oldAnnotationInfo, newAnnotationInfo);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setAnnotationInfo(XtendAnnotationTarget newAnnotationInfo)
+  {
+    if (newAnnotationInfo != annotationInfo)
+    {
+      NotificationChain msgs = null;
+      if (annotationInfo != null)
+        msgs = ((InternalEObject)annotationInfo).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SpecPackage.EXAMPLE_GROUP__ANNOTATION_INFO, null, msgs);
+      if (newAnnotationInfo != null)
+        msgs = ((InternalEObject)newAnnotationInfo).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SpecPackage.EXAMPLE_GROUP__ANNOTATION_INFO, null, msgs);
+      msgs = basicSetAnnotationInfo(newAnnotationInfo, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.EXAMPLE_GROUP__ANNOTATION_INFO, newAnnotationInfo, newAnnotationInfo));
   }
 
   /**
@@ -187,20 +234,6 @@ public class ExampleGroupImpl extends MemberImpl implements ExampleGroup
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Member> getElements()
-  {
-    if (elements == null)
-    {
-      elements = new EObjectContainmentEList<Member>(Member.class, this, SpecPackage.EXAMPLE_GROUP__ELEMENTS);
-    }
-    return elements;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public JvmOperation getTargetOperation()
   {
     if (targetOperation != null && targetOperation.eIsProxy())
@@ -249,8 +282,8 @@ public class ExampleGroupImpl extends MemberImpl implements ExampleGroup
   {
     switch (featureID)
     {
-      case SpecPackage.EXAMPLE_GROUP__ELEMENTS:
-        return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
+      case SpecPackage.EXAMPLE_GROUP__ANNOTATION_INFO:
+        return basicSetAnnotationInfo(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -265,13 +298,13 @@ public class ExampleGroupImpl extends MemberImpl implements ExampleGroup
   {
     switch (featureID)
     {
+      case SpecPackage.EXAMPLE_GROUP__ANNOTATION_INFO:
+        return getAnnotationInfo();
       case SpecPackage.EXAMPLE_GROUP__PREAMBLE:
         return getPreamble();
       case SpecPackage.EXAMPLE_GROUP__TARGET_TYPE:
         if (resolve) return getTargetType();
         return basicGetTargetType();
-      case SpecPackage.EXAMPLE_GROUP__ELEMENTS:
-        return getElements();
       case SpecPackage.EXAMPLE_GROUP__TARGET_OPERATION:
         if (resolve) return getTargetOperation();
         return basicGetTargetOperation();
@@ -284,21 +317,19 @@ public class ExampleGroupImpl extends MemberImpl implements ExampleGroup
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
+      case SpecPackage.EXAMPLE_GROUP__ANNOTATION_INFO:
+        setAnnotationInfo((XtendAnnotationTarget)newValue);
+        return;
       case SpecPackage.EXAMPLE_GROUP__PREAMBLE:
         setPreamble((String)newValue);
         return;
       case SpecPackage.EXAMPLE_GROUP__TARGET_TYPE:
         setTargetType((JvmDeclaredType)newValue);
-        return;
-      case SpecPackage.EXAMPLE_GROUP__ELEMENTS:
-        getElements().clear();
-        getElements().addAll((Collection<? extends Member>)newValue);
         return;
       case SpecPackage.EXAMPLE_GROUP__TARGET_OPERATION:
         setTargetOperation((JvmOperation)newValue);
@@ -317,14 +348,14 @@ public class ExampleGroupImpl extends MemberImpl implements ExampleGroup
   {
     switch (featureID)
     {
+      case SpecPackage.EXAMPLE_GROUP__ANNOTATION_INFO:
+        setAnnotationInfo((XtendAnnotationTarget)null);
+        return;
       case SpecPackage.EXAMPLE_GROUP__PREAMBLE:
         setPreamble(PREAMBLE_EDEFAULT);
         return;
       case SpecPackage.EXAMPLE_GROUP__TARGET_TYPE:
         setTargetType((JvmDeclaredType)null);
-        return;
-      case SpecPackage.EXAMPLE_GROUP__ELEMENTS:
-        getElements().clear();
         return;
       case SpecPackage.EXAMPLE_GROUP__TARGET_OPERATION:
         setTargetOperation((JvmOperation)null);
@@ -343,16 +374,54 @@ public class ExampleGroupImpl extends MemberImpl implements ExampleGroup
   {
     switch (featureID)
     {
+      case SpecPackage.EXAMPLE_GROUP__ANNOTATION_INFO:
+        return annotationInfo != null;
       case SpecPackage.EXAMPLE_GROUP__PREAMBLE:
         return PREAMBLE_EDEFAULT == null ? preamble != null : !PREAMBLE_EDEFAULT.equals(preamble);
       case SpecPackage.EXAMPLE_GROUP__TARGET_TYPE:
         return targetType != null;
-      case SpecPackage.EXAMPLE_GROUP__ELEMENTS:
-        return elements != null && !elements.isEmpty();
       case SpecPackage.EXAMPLE_GROUP__TARGET_OPERATION:
         return targetOperation != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
+  {
+    if (baseClass == XtendMember.class)
+    {
+      switch (derivedFeatureID)
+      {
+        case SpecPackage.EXAMPLE_GROUP__ANNOTATION_INFO: return Xtend2Package.XTEND_MEMBER__ANNOTATION_INFO;
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
+  {
+    if (baseClass == XtendMember.class)
+    {
+      switch (baseFeatureID)
+      {
+        case Xtend2Package.XTEND_MEMBER__ANNOTATION_INFO: return SpecPackage.EXAMPLE_GROUP__ANNOTATION_INFO;
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
   }
 
   /**

@@ -5,10 +5,11 @@
  */
 package de.bmw.carit.jnario.spec.spec;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.JvmOperation;
+
+import org.eclipse.xtext.xtend2.xtend2.XtendClass;
+import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,7 +21,6 @@ import org.eclipse.xtext.common.types.JvmOperation;
  * <ul>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getPreamble <em>Preamble</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getTargetType <em>Target Type</em>}</li>
- *   <li>{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getElements <em>Elements</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getTargetOperation <em>Target Operation</em>}</li>
  * </ul>
  * </p>
@@ -29,7 +29,7 @@ import org.eclipse.xtext.common.types.JvmOperation;
  * @model
  * @generated
  */
-public interface ExampleGroup extends Member
+public interface ExampleGroup extends XtendClass, XtendMember
 {
   /**
    * Returns the value of the '<em><b>Preamble</b></em>' attribute.
@@ -82,22 +82,6 @@ public interface ExampleGroup extends Member
    * @generated
    */
   void setTargetType(JvmDeclaredType value);
-
-  /**
-   * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
-   * The list contents are of type {@link de.bmw.carit.jnario.spec.spec.Member}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Elements</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Elements</em>' containment reference list.
-   * @see de.bmw.carit.jnario.spec.spec.SpecPackage#getExampleGroup_Elements()
-   * @model containment="true"
-   * @generated
-   */
-  EList<Member> getElements();
 
   /**
    * Returns the value of the '<em><b>Target Operation</b></em>' reference.

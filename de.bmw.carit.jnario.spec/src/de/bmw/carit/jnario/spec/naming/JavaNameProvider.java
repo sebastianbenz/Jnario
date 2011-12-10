@@ -3,11 +3,11 @@ package de.bmw.carit.jnario.spec.naming;
 import static org.eclipse.xtext.util.Strings.toFirstLower;
 import static org.eclipse.xtext.util.Strings.toFirstUpper;
 
-import org.eclipse.xtext.util.Strings;
+import org.eclipse.xtext.util.SimpleAttributeResolver;
+import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 
 import de.bmw.carit.jnario.spec.spec.Example;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
-import de.bmw.carit.jnario.spec.spec.Member;
 
 public class JavaNameProvider {
 
@@ -59,9 +59,10 @@ public class JavaNameProvider {
 		return name.replaceAll("[^a-zA-Z0-9]","");
 	}
 
-	public String appendMemberDescription(Member member, String name) {
-		if(member.getName() != null){
-			name = member.getName();
+	public String appendMemberDescription(XtendMember member, String name) {
+		String newName = SimpleAttributeResolver.NAME_RESOLVER.apply(member);
+		if(newName != null){
+			name = newName;
 		}
 		return name;
 	}

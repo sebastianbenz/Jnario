@@ -4,13 +4,14 @@
 package de.bmw.carit.jnario.spec.ui.labeling;
 
 import org.eclipse.xtext.ui.label.DefaultDescriptionLabelProvider;
+import org.eclipse.xtext.xtend2.ui.labeling.Xtend2DescriptionLabelProvider;
 
 /**
  * Provides labels for a IEObjectDescriptions and IResourceDescriptions.
  * 
  * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#labelProvider
  */
-public class SpecDescriptionLabelProvider extends DefaultDescriptionLabelProvider {
+public class SpecDescriptionLabelProvider extends Xtend2DescriptionLabelProvider {
 
 /*
 	//Labels and icons can be computed like this:

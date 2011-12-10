@@ -15,7 +15,7 @@ import com.google.inject.Injector;
 public class SpecStandaloneSetupGenerated implements ISetup {
 
 	public Injector createInjectorAndDoEMFRegistration() {
-		org.eclipse.xtext.xbase.annotations.XbaseWithAnnotationsStandaloneSetup.doSetup();
+		org.eclipse.xtext.xtend2.Xtend2StandaloneSetup.doSetup();
 
 		Injector injector = createInjector();
 		register(injector);

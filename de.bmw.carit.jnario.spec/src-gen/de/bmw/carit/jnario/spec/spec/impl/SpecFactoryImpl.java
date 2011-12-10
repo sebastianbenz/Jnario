@@ -69,11 +69,7 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
     {
       case SpecPackage.SPEC_FILE: return createSpecFile();
       case SpecPackage.EXAMPLE_GROUP: return createExampleGroup();
-      case SpecPackage.MEMBER: return createMember();
-      case SpecPackage.PARAMETER: return createParameter();
-      case SpecPackage.FIELD: return createField();
       case SpecPackage.EXAMPLE: return createExample();
-      case SpecPackage.FUNCTION: return createFunction();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -106,54 +102,10 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Member createMember()
-  {
-    MemberImpl member = new MemberImpl();
-    return member;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Parameter createParameter()
-  {
-    ParameterImpl parameter = new ParameterImpl();
-    return parameter;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Field createField()
-  {
-    FieldImpl field = new FieldImpl();
-    return field;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public Example createExample()
   {
     ExampleImpl example = new ExampleImpl();
     return example;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Function createFunction()
-  {
-    FunctionImpl function = new FunctionImpl();
-    return function;
   }
 
   /**

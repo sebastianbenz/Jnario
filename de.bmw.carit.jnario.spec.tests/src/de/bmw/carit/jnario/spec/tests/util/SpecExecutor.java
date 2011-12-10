@@ -2,6 +2,7 @@ package de.bmw.carit.jnario.spec.tests.util;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static junit.framework.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -57,11 +58,10 @@ public class SpecExecutor extends BehaviorExecutor{
 			throws MalformedURLException, ClassNotFoundException {
 		List<Failure> failures = newArrayList();
 		SpecFile spec = (SpecFile) object;
-		for (ExampleGroup exampleGroup : spec.getElements()) {
-			String specClassName = nameProvider.getJavaClassName(exampleGroup);
-			String packageName = spec.getPackageName();
-			runTestsInClass(specClassName, packageName, failures);
-		}
+		ExampleGroup exampleGroup = (ExampleGroup) spec.getXtendClass();
+		String specClassName = nameProvider.getJavaClassName(exampleGroup );
+		String packageName = spec.getPackage();
+		runTestsInClass(specClassName, packageName, failures);
 		return new PrintableResult(failures);
 	}
 	
@@ -76,6 +76,6 @@ public class SpecExecutor extends BehaviorExecutor{
 
 	protected void generateJava(EObject object) {
 		super.generateJava(object);
-		assertFalse("has no examples", ((SpecFile)object).getElements().isEmpty());
+		assertNotNull("has no examples", ((SpecFile)object).getXtendClass());
 	}
 }
