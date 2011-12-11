@@ -37,6 +37,7 @@ import com.google.inject.name.Names;
 import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmModelGenerator;
 import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder;
 import de.bmw.carit.jnario.common.scoping.JnarioExtensionClassNameProvider;
+import de.bmw.carit.jnario.spec.conversion.SpecValueConverterService;
 import de.bmw.carit.jnario.spec.jvmmodel.JnarioDispatchUtil;
 import de.bmw.carit.jnario.spec.jvmmodel.SpecJvmModelInferrer;
 import de.bmw.carit.jnario.spec.scoping.SpecScopeProvider;
@@ -81,7 +82,7 @@ public class SpecRuntimeModule extends de.bmw.carit.jnario.spec.AbstractSpecRunt
 	
 	@Override
 	public Class<? extends IValueConverterService> bindIValueConverterService() {
-		return Xtend2ValueConverterService.class;
+		return SpecValueConverterService.class;
 	}
 
 	@Override

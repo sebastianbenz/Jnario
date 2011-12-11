@@ -28,4 +28,11 @@ public class SpecProposalProvider extends AbstractSpecProposalProvider {
 		completeJavaTypes(context, SpecPackage.Literals.EXAMPLE__EXCEPTION, true, getQualifiedNameValueConverter(), TypeMatchFilters.all(), acceptor);
 	}
 	
+	@Override
+	public void completeMember_TargetOperation(EObject model,
+			Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		super.completeMember_TargetOperation(model, assignment, context, acceptor);
+	}
+	
 }
