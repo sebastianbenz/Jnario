@@ -5,6 +5,7 @@ import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.fail;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -39,7 +40,7 @@ import com.google.common.base.Predicate;
 import com.google.inject.Inject;
 
 public abstract class BehaviorExecutor {
-	
+
 	private static final String BUNDLE_REFERENCE = "reference:file:";
 	private static final String PLUGIN_CLASSES_FOLDER = "plugins";
 	private static final String SYSTEM_BUNDLE = "System Bundle";
@@ -62,7 +63,7 @@ public abstract class BehaviorExecutor {
 	public PrintableResult run(EObject object) {
 		try {
 			configureOutlet();
-			validate(object);
+			//validate(object);
 			generateJava(object);
 			return runExamples(object);
 		} catch (Exception e) {
@@ -74,13 +75,15 @@ public abstract class BehaviorExecutor {
 		}
 	}
 
-	private void validate(EObject object) {
-		Iterable<Issue> issues = validator.validate(object.eResource(), CheckMode.NORMAL_AND_FAST, CancelIndicator.NullImpl);
+	protected void validate(EObject object) {
+		Iterable<Issue> issues = validator.validate(object.eResource(),
+				CheckMode.NORMAL_AND_FAST, CancelIndicator.NullImpl);
 		Iterable<Issue> onlyErrors = filterErrors(issues);
-		//assertFalse("Validation errors\n" + Joiner.on("\n  ").join(issues), onlyErrors.iterator().hasNext());
+		assertFalse("Validation errors\n" + Joiner.on("\n  ").join(issues),
+		onlyErrors.iterator().hasNext());
 	}
 
-	public Iterable<Issue> filterErrors(Iterable<Issue> issues) {
+	protected Iterable<Issue> filterErrors(Iterable<Issue> issues) {
 		Iterable<Issue> onlyErrors = filter(issues, new Predicate<Issue>() {
 
 			public boolean apply(Issue input) {
@@ -103,41 +106,71 @@ public abstract class BehaviorExecutor {
 			throws MalformedURLException, ClassNotFoundException;
 
 	protected void compileJavaFile(String packageName, String className) {
-		String javaFile = getGeneratedJavaClassName(packageName, className);
-		if(isLoadedAsPlugin()){
-			ArrayList<String> classPath = getClassPath();
-			String pathes = Joiner.on(";").join(classPath.toArray());
-			compiler.run(System.in, System.out, System.err, new String[]{"-classpath", pathes, javaFile});
+		String[] args = findGeneratedJavaFiles(packageName);
+		if (isLoadedAsPlugin()) {
+			args = addOsgiBundlesToClassPath(args);
 		}
-		else{
-			compiler.run(System.in, System.out, System.err, javaFile);
-		}
+		compiler.run(System.in, System.out, System.err, args);
+	}
+
+	protected String[] addOsgiBundlesToClassPath(String[] args) {
+		String classPathEntries = Joiner.on(";").join(getClassPath());
+		String[] classPathAndJavaFiles = new String[args.length + 2];
+		classPathAndJavaFiles[0] = "-classpath";
+		classPathAndJavaFiles[1] = classPathEntries;
+		System.arraycopy(args, 0, classPathAndJavaFiles, 2, args.length);
+		return classPathAndJavaFiles;
 	}
 
 	protected List<Failure> execute(Class<?> cls) {
 		return JUnitCore.runClasses(cls).getFailures();
 	}
 
-	protected Class<?> loadGeneratedClass(String packageName, String specClassName)
-			throws MalformedURLException, ClassNotFoundException {
-		URLClassLoader classLoader = URLClassLoader
-				.newInstance(new URL[] { tempFolder.getRoot().toURI().toURL() }, getClass().getClassLoader());
+	protected Class<?> loadGeneratedClass(String packageName,
+			String specClassName) throws MalformedURLException,
+			ClassNotFoundException {
+		URLClassLoader classLoader = URLClassLoader.newInstance(
+				new URL[] { tempFolder.getRoot().toURI().toURL() }, getClass()
+						.getClassLoader());
 		String className = packageName + "." + specClassName;
 		return Class.forName(className, true, classLoader);
 	}
 
-	private String getGeneratedJavaClassName(String packageName, String specClassName) {
+	private String[] findGeneratedJavaFiles(String packageName) {
+		File packageDir = resolvePackageDir(packageName);
+		return allJavaFilesIn(packageDir);
+	}
+
+	protected File resolvePackageDir(String packageName) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(tempFolder.getRoot().getAbsolutePath());
 		sb.append(File.separator);
-		sb.append(packageName.replaceAll("\\.", File.separator + File.separator));
+		sb.append(packageName
+				.replaceAll("\\.", File.separator + File.separator));
 		sb.append(File.separator);
-		sb.append(specClassName);
-		sb.append(".java");
-		return sb.toString();
+
+		File packageDir = new File(sb.toString());
+		return packageDir;
 	}
 
-	protected List<Failure> runTestsInClass(String className, String packageName, List<Failure> failures)
+	protected String[] allJavaFilesIn(File packageDir) {
+		File[] allJavaFiles = packageDir.listFiles(new FilenameFilter() {
+
+			@Override
+			public boolean accept(File dir, String name) {
+				return name.endsWith(".java");
+			}
+		});
+		String[] result = new String[allJavaFiles.length];
+		for (int i = 0; i < allJavaFiles.length; i++) {
+			File file = allJavaFiles[i];
+			result[i] = file.getAbsolutePath();
+		}
+		return result;
+	}
+
+	protected List<Failure> runTestsInClass(String className,
+			String packageName, List<Failure> failures)
 			throws MalformedURLException, ClassNotFoundException {
 		compileJavaFile(packageName, className);
 		Class<?> testClass = loadGeneratedClass(packageName, className);
@@ -145,30 +178,33 @@ public abstract class BehaviorExecutor {
 		failures.addAll(newFailures);
 		return failures;
 	}
-	
-	private boolean isLoadedAsPlugin(){
+
+	private boolean isLoadedAsPlugin() {
 		ClassLoader pluginClassLoader = getClass().getClassLoader();
-		if(pluginClassLoader instanceof DefaultClassLoader){
+		if (pluginClassLoader instanceof DefaultClassLoader) {
 			return true;
 		}
 		return false;
 	}
-	
-	private ArrayList<String> getClassPath(){
-		
-		String installLocation = Platform.getInstallLocation().getURL().getPath();
-		
-		AbstractBundle[] bundles = (AbstractBundle[])Activator.getDefault().getBundle().getBundleContext().getBundles();
-		ArrayList<String> classpath = new ArrayList<String>();
-		
-		for(AbstractBundle bundle: bundles){
+
+	private List<String> getClassPath() {
+		String installLocation = Platform.getInstallLocation().getURL()
+				.getPath();
+
+		AbstractBundle[] bundles = (AbstractBundle[]) Activator.getDefault()
+				.getBundle().getBundleContext().getBundles();
+		List<String> classpath = new ArrayList<String>();
+
+		for (AbstractBundle bundle : bundles) {
 			BundleData bundleData = bundle.getBundleData();
 			String pathToBundle = getPathOfBundle(bundleData);
 			try {
-				for(String subFolders: bundleData.getClassPath()){
+				for (String subFolders : bundleData.getClassPath()) {
 					String fullLocation = pathToBundle + File.separator + subFolders;
 					String finalClassPath = getAbsoluteClassPath(fullLocation, installLocation);
-					classpath.add(finalClassPath.replace("/", File.separator));
+					if(finalClassPath.length() > 0){
+						classpath.add(finalClassPath.replace("/", File.separator).replaceAll(".jar//\\.", ".jar"));
+					}
 				}
 			} catch (BundleException e) {
 				e.printStackTrace();
@@ -176,21 +212,23 @@ public abstract class BehaviorExecutor {
 		}
 		return classpath;
 	}
-	
-	private String getPathOfBundle(BundleData bundleData){
+
+	private String getPathOfBundle(BundleData bundleData) {
 		String pathOfBundle = bundleData.getLocation();
 		int indexOf = pathOfBundle.indexOf(BUNDLE_REFERENCE);
-		if(indexOf >= 0){
+		if (indexOf >= 0) {
 			return pathOfBundle.substring(indexOf + BUNDLE_REFERENCE.length());
 		}
 		return pathOfBundle;
 	}
-	
-	private String getAbsoluteClassPath(String fullLocation, String installLocation){
-		if(fullLocation.contains(SYSTEM_BUNDLE)){
+
+	private String getAbsoluteClassPath(String fullLocation,
+			String installLocation) {
+		if (fullLocation.contains(SYSTEM_BUNDLE)) {
 			return "";
 		}
-		if(fullLocation.contains("..") || fullLocation.startsWith(PLUGIN_CLASSES_FOLDER)){
+		if (fullLocation.contains("..")
+				|| fullLocation.startsWith(PLUGIN_CLASSES_FOLDER)) {
 			return installLocation + File.separator + fullLocation;
 		}
 		return fullLocation;
