@@ -53,6 +53,7 @@ describe "SpecScopeProvider" {
 		)
 		val exampleGroup = modelStore.query.second(typeof(ExampleGroup))
 		contains(targetOperation(exampleGroup), "assertNotNull(String, Object)") 
+		contains(targetOperation(exampleGroup), "assertNotNull") 
 	}    
 	
 	def void contains(IScope scope, String element){
