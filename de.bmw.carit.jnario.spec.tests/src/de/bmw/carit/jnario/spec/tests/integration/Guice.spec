@@ -1,10 +1,10 @@
-package de.bmw.carit.jnario.spec.tests
+package de.bmw.carit.jnario.spec.tests.integration
 
 import static de.bmw.carit.jnario.spec.tests.util.SpecExecutor.*
 import static org.junit.Assert.*
 import static org.junit.experimental.results.ResultMatchers.*
 
-describe "GuiceBasedTestInstantiator" {
+describe "Guice" {
 
 	it "should demonstrate the injection of Tests"{
 		val spec = '

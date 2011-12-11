@@ -21,75 +21,75 @@ import com.google.common.collect.Iterables;
 
 public class JnarioParameterizedRunner extends Parameterized{
 
-	private class JnarioTestClassRunnerForParameters extends
-	ScenarioRunner {
-		private final int fParameterSetNumber;
-
-		private final List<Object[]> fParameterList;
-		
-		Object testObject;
-
-		JnarioTestClassRunnerForParameters(Class<?> type,
-				List<Object[]> parameterList, int i) throws InitializationError {
-			super(type);
-			fParameterList= parameterList;
-			fParameterSetNumber= i;
-		}
-
-		@Override
-		public Object createTest() throws Exception {
-			if(testObject == null){
-				testObject = getTestClass().getOnlyConstructor().newInstance(
-					computeParams());
-			}
-			return testObject;
-		}
-
-		private Object[] computeParams() throws Exception {
-			try {
-				return fParameterList.get(fParameterSetNumber);
-			} catch (ClassCastException e) {
-				throw new Exception(String.format(
-						"%s.%s() must return a Collection of arrays.",
-						getTestClass().getName()));
-			}
-		}
-
-		@Override
-		protected String getName() {
-			String params = "";
-			Object[] objects = fParameterList.get(fParameterSetNumber);
-			for(int i = 0; i < objects.length; i++){
-				params += objects[i].toString() + ", ";
-			}
-			return String.format("[Example %s: %s]", fParameterSetNumber, params);
-		}
-
-		@Override
-		protected String testName(final FrameworkMethod method) {
-			return String.format("%s[%s]", method.getName(),
-					fParameterSetNumber);
-		}
-
-		@Override
-		protected void validateConstructor(List<Throwable> errors) {
-			validateOnlyOneConstructor(errors);
-		}
-
-		@Override
-		protected Statement classBlock(RunNotifier notifier) {
-			return childrenInvoker(notifier);
-		}
-	}
+//	private class JnarioTestClassRunnerForParameters extends
+//	ScenarioRunner {
+//		private final int fParameterSetNumber;
+//
+//		private final List<Object[]> fParameterList;
+//		
+//		Object testObject;
+//
+//		JnarioTestClassRunnerForParameters(Class<?> type,
+//				List<Object[]> parameterList, int i) throws InitializationError {
+//			super(type);
+//			fParameterList= parameterList;
+//			fParameterSetNumber= i;
+//		}
+//
+//		@Override
+//		public Object createTest() throws Exception {
+//			if(testObject == null){
+//				testObject = getTestClass().getOnlyConstructor().newInstance(
+//					computeParams());
+//			}
+//			return testObject;
+//		}
+//
+//		private Object[] computeParams() throws Exception {
+//			try {
+//				return fParameterList.get(fParameterSetNumber);
+//			} catch (ClassCastException e) {
+//				throw new Exception(String.format(
+//						"%s.%s() must return a Collection of arrays.",
+//						getTestClass().getName()));
+//			}
+//		}
+//
+//		@Override
+//		protected String getName() {
+//			String params = "";
+//			Object[] objects = fParameterList.get(fParameterSetNumber);
+//			for(int i = 0; i < objects.length; i++){
+//				params += objects[i].toString() + ", ";
+//			}
+//			return String.format("[Example %s: %s]", fParameterSetNumber, params);
+//		}
+//
+//		@Override
+//		protected String testName(final FrameworkMethod method) {
+//			return String.format("%s[%s]", method.getName(),
+//					fParameterSetNumber);
+//		}
+//
+//		@Override
+//		protected void validateConstructor(List<Throwable> errors) {
+//			validateOnlyOneConstructor(errors);
+//		}
+//
+//		@Override
+//		protected Statement classBlock(RunNotifier notifier) {
+//			return childrenInvoker(notifier);
+//		}
+//	}
 	
 	private final ArrayList<Runner> runners= new ArrayList<Runner>();
 
 	public JnarioParameterizedRunner(Class<?> klass) throws Throwable {
 		super(klass);
 		List<Object[]> parametersList= getParametersList(getTestClass());
-		for (int i= 0; i < parametersList.size(); i++)
-			runners.add(new JnarioTestClassRunnerForParameters(getTestClass().getJavaClass(),
-					parametersList, i));
+		for (int i= 0; i < parametersList.size(); i++){
+			//runners.add(new JnarioTestClassRunnerForParameters(getTestClass().getJavaClass(), parametersList, i));
+		}
 	}
 	
 	@Override

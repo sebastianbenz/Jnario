@@ -59,7 +59,7 @@ public class SpecExecutor extends BehaviorExecutor{
 		List<Failure> failures = newArrayList();
 		SpecFile spec = (SpecFile) object;
 		ExampleGroup exampleGroup = (ExampleGroup) spec.getXtendClass();
-		String specClassName = nameProvider.getJavaClassName(exampleGroup );
+		String specClassName = nameProvider.getJavaClassName(exampleGroup);
 		String packageName = spec.getPackage();
 		runTestsInClass(specClassName, packageName, failures);
 		return new PrintableResult(failures);

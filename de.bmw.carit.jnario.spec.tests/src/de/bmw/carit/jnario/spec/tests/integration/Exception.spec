@@ -1,13 +1,12 @@
-package de.bmw.carit.jnario.spec.tests
+package de.bmw.carit.jnario.spec.tests.integration
 
-import static org.junit.Assert.*
-import static extension de.bmw.carit.jnario.spec.tests.util.SpecExecutor.*
 import static org.junit.experimental.results.ResultMatchers.*
-import org.junit.experimental.results.ResultMatchers.*
-import static org.hamcrest.CoreMatchers.*
+
+import static extension de.bmw.carit.jnario.lib.JnarioObjectExtensions.*
+import static extension de.bmw.carit.jnario.spec.tests.util.SpecExecutor.*
 
 
-describe "Exceptions" {
+describe "Exception" {
  
 		it "should except exceptions for examples"{
 			val spec = '

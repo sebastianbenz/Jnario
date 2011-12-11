@@ -31,7 +31,7 @@ ExampleGroup returns XtendClass:
 ;
 
 Method:
-	'#' ValidID ('(' (TypeName (',' TypeName)*)? ')')?  
+	ValidID ('(' (TypeName (',' TypeName)*)? ')')?  
 ;
 
 TypeName:
@@ -58,7 +58,11 @@ Member returns XtendMember:
 		(preamble='it' ('throws' exception=[types::JvmDeclaredType|QualifiedName])? name=STRING
 			body=XBlockExpression?)
 	|	{ExampleGroup.annotationInfo = current}
-			(preamble=('describe'|'context') (targetType=[types::JvmDeclaredType|QualifiedName] | targetOperation=[types::JvmOperation|Method])? name=STRING? '{'
+			(preamble=('describe') targetType=[types::JvmDeclaredType|QualifiedName]? name=STRING? '{'
+      		members+=Member*
+      	'}')
+    |	{ExampleGroup.annotationInfo = current}
+			(preamble=('context') targetOperation=[types::JvmOperation|Method]? name=STRING? '{'
       		members+=Member*
       	'}')
 	|	{XtendField.annotationInfo = current}	

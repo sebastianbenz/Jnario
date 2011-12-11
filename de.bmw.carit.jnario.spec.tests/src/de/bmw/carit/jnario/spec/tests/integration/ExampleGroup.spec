@@ -1,11 +1,12 @@
-package de.bmw.carit.jnario.spec.tests
+package de.bmw.carit.jnario.spec.tests.integration
 
 import static de.bmw.carit.jnario.spec.tests.util.SpecExecutor.*
 import static org.junit.Assert.*
 import static org.junit.experimental.results.ResultMatchers.*
+import de.bmw.carit.jnario.spec.spec.ExampleGroup
 
-describe "Spec" {
-
+describe ExampleGroup {
+  
 	it "should resolve target class"{
 		val spec = '
 			package bootstrap
@@ -16,7 +17,7 @@ describe "Spec" {
 			describe Assert {
 			
 				it "should resolve target class"{
-				} 
+				}  
 						
 			}
 		'

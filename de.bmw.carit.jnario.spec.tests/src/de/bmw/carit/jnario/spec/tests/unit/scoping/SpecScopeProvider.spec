@@ -1,4 +1,4 @@
-package bootstrap
+package de.bmw.carit.jnario.spec.tests.unit.scoping
 			
 import static org.junit.Assert.*
 import de.bmw.carit.jnario.runner.InstantiateWith
@@ -10,7 +10,6 @@ import de.bmw.carit.jnario.spec.spec.SpecPackage
 import de.bmw.carit.jnario.tests.util.ModelStore
 import de.bmw.carit.jnario.spec.spec.ExampleGroup
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.ecore.EReference
 import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.naming.QualifiedName
 
@@ -44,8 +43,8 @@ describe "SpecScopeProvider" {
 			import org.junit.Assert
 
 			describe Assert{
-				describe #assertNotNull(String, Object){
-					it #assertNotNull(String, Object){
+				describe assertNotNull(String, Object){
+					it "assertNotNull(String, Object)"{
 					}
 				}
 			} 
@@ -53,7 +52,7 @@ describe "SpecScopeProvider" {
 		'    
 		)
 		val exampleGroup = modelStore.query.second(typeof(ExampleGroup))
-		contains(targetOperation(exampleGroup), "#assertNotNull(String, Object)") 
+		contains(targetOperation(exampleGroup), "assertNotNull(String, Object)") 
 	}    
 	
 	def void contains(IScope scope, String element){

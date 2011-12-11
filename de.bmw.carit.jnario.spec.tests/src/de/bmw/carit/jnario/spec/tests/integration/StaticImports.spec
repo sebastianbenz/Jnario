@@ -1,6 +1,6 @@
-package de.bmw.carit.jnario.spec.tests
+package de.bmw.carit.jnario.spec.tests.integration
 
-describe "Spec" {
+describe "StaticImports" {
  
 	it "should resolve static imports"{
 		val spec = '

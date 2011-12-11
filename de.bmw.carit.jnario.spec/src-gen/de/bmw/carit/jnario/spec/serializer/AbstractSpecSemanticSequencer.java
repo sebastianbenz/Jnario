@@ -1174,10 +1174,11 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				else break;
 			case Xtend2Package.XTEND_MEMBER:
 				if(context == grammarAccess.getMemberAccess().getExampleGroupAnnotationInfoAction_2_1_0() ||
+				   context == grammarAccess.getMemberAccess().getExampleGroupAnnotationInfoAction_2_2_0() ||
 				   context == grammarAccess.getMemberAccess().getExampleAnnotationInfoAction_2_0_0() ||
-				   context == grammarAccess.getMemberAccess().getXtendFieldAnnotationInfoAction_2_2_0() ||
-				   context == grammarAccess.getMemberAccess().getXtendFunctionAnnotationInfoAction_2_3_0()) {
-					sequence_Member_Example_2_0_0_ExampleGroup_2_1_0_XtendField_2_2_0_XtendFunction_2_3_0(context, (XtendMember) semanticObject); 
+				   context == grammarAccess.getMemberAccess().getXtendFieldAnnotationInfoAction_2_3_0() ||
+				   context == grammarAccess.getMemberAccess().getXtendFunctionAnnotationInfoAction_2_4_0()) {
+					sequence_Member_Example_2_0_0_ExampleGroup_2_1_0_ExampleGroup_2_2_0_XtendField_2_3_0_XtendFunction_2_4_0(context, (XtendMember) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1359,13 +1360,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	/**
 	 * Constraint:
 	 *     (
-	 *         annotationInfo=Member_ExampleGroup_2_1_0 
-	 *         (
-	 *             (preamble='describe' | preamble='context') 
-	 *             (targetType=[JvmDeclaredType|QualifiedName] | targetOperation=[JvmOperation|Method])? 
-	 *             name=STRING? 
-	 *             members+=Member*
-	 *         )
+	 *         (annotationInfo=Member_ExampleGroup_2_1_0 (preamble='describe' targetType=[JvmDeclaredType|QualifiedName]? name=STRING? members+=Member*)) | 
+	 *         (annotationInfo=Member_ExampleGroup_2_2_0 (preamble='context' targetOperation=[JvmOperation|Method]? name=STRING? members+=Member*))
 	 *     )
 	 */
 	protected void sequence_Member(EObject context, ExampleGroup semanticObject) {
@@ -1377,7 +1373,7 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	 * Constraint:
 	 *     annotations+=XAnnotation+
 	 */
-	protected void sequence_Member_Example_2_0_0_ExampleGroup_2_1_0_XtendField_2_2_0_XtendFunction_2_3_0(EObject context, XtendMember semanticObject) {
+	protected void sequence_Member_Example_2_0_0_ExampleGroup_2_1_0_ExampleGroup_2_2_0_XtendField_2_3_0_XtendFunction_2_4_0(EObject context, XtendMember semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1385,7 +1381,7 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	/**
 	 * Constraint:
 	 *     (
-	 *         annotationInfo=Member_XtendField_2_2_0 
+	 *         annotationInfo=Member_XtendField_2_3_0 
 	 *         ((extension?='extension' type=JvmTypeReference name=ValidID?) | (static?='static'? type=JvmTypeReference name=ValidID)) 
 	 *         initialValue=XExpression?
 	 *     )
@@ -1398,7 +1394,7 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	/**
 	 * Constraint:
 	 *     (
-	 *         annotationInfo=Member_XtendFunction_2_3_0 
+	 *         annotationInfo=Member_XtendFunction_2_4_0 
 	 *         override?='override'? 
 	 *         static?='static'? 
 	 *         dispatch?='dispatch'? 

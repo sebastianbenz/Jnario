@@ -2,15 +2,19 @@ package de.bmw.carit.jnario.spec.naming;
 
 import static de.bmw.carit.jnario.spec.util.Strings.convertToCamelCase;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
+import static org.eclipse.xtext.util.Strings.toFirstLower;
 
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.util.SimpleAttributeResolver;
+import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 
 import de.bmw.carit.jnario.spec.spec.Example;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 
 public class JavaNameProvider {
+
+	private OperationNameProvider operationNameProvider = new OperationNameProvider();
 
 	public String describe(ExampleGroup exampleGroup) {
 		StringBuilder result = new StringBuilder();
@@ -44,7 +48,7 @@ public class JavaNameProvider {
 			result.append(exampleGroup.getTargetType().getSimpleName());
 		}
 		if(exampleGroup.getTargetOperation() != null){
-			result.append(new OperationNameProvider().apply(exampleGroup.getTargetOperation()).toString());
+			result.append(Strings.toFirstUpper(operationNameProvider.apply(exampleGroup.getTargetOperation()).toString()));
 		}
 		appendMemberDescription(exampleGroup, result);
 		result = convertToCamelCase(result);
@@ -72,7 +76,7 @@ public class JavaNameProvider {
 	public String getExampleMethodName(Example example){
 		StringBuilder result = new StringBuilder();
 		appendMemberDescription(example, result);
-		return convertToCamelCase(result).toString();
+		return toFirstLower(convertToCamelCase(result).toString());
 	}
 
 }

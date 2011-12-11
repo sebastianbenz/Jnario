@@ -1,4 +1,4 @@
-package de.bmw.carit.jnario.spec.tests
+package de.bmw.carit.jnario.spec.tests.integration
 
 describe "SimpleExample" {
  

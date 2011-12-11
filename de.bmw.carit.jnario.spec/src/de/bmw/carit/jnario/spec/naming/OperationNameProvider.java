@@ -15,7 +15,7 @@ import com.google.common.base.Function;
 public class OperationNameProvider implements Function<JvmOperation, QualifiedName>{
 
 	public QualifiedName apply(JvmOperation from) {
-		StringBuilder sb = new StringBuilder("#");
+		StringBuilder sb = new StringBuilder();
 		sb.append(from.getSimpleName());
 		appendParameters(sb, from.getParameters());
 		return QualifiedName.create(sb.toString());

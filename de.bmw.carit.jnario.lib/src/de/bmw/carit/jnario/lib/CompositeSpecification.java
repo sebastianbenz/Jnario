@@ -8,13 +8,13 @@ import com.google.common.collect.Iterables;
 
 public class CompositeSpecification<T> extends AbstractSpecification<T> {
 
-	private final T[] inputs;
+	private final Iterable<? extends T> inputs;
 
-	public CompositeSpecification(T... inputs) {
+	public CompositeSpecification(Iterable<? extends T> inputs) {
 		this(Collections.<Step>emptyList(), inputs);
 	}
 	
-	public CompositeSpecification(Iterable<Step> steps, T... inputs) {
+	public CompositeSpecification(Iterable<Step> steps, Iterable<? extends T> inputs) {
 		super(steps);
 		this.inputs = inputs;
 	}

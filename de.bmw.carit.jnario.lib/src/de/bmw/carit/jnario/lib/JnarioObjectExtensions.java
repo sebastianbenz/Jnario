@@ -5,6 +5,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
 import static org.junit.internal.matchers.IsCollectionContaining.hasItems;
 
+import java.util.Arrays;
 import java.util.Collections;
 
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
@@ -113,7 +114,11 @@ public class JnarioObjectExtensions extends ObjectExtensions{
 		be(actual, Matchers.containsString(expected));
 	}
 	
-	public static <T> ISpecification<T> all(T... inputs) {
+	public static <T> ISpecification<T> each(T... inputs) {
+		return new CompositeSpecification<T>(Arrays.asList(inputs));
+	}
+	
+	public static <T> ISpecification<T> each(Iterable<? extends T> inputs) {
 		return new CompositeSpecification<T>(inputs);
 	}
 }

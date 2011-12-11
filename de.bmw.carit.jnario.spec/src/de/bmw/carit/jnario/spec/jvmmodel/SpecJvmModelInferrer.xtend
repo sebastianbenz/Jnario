@@ -96,9 +96,9 @@ class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
 				if(!subExamples.empty){
 					annotations += exampleGroup.toAnnotation(typeof(Contains), subExamples);
 				}
-				computeInferredReturnTypes()	
+				computeInferredReturnTypes()
 			]
-			
+						
 	}
 	
 }
