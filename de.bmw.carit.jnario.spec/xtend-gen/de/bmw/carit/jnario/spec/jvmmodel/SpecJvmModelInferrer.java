@@ -2,7 +2,7 @@ package de.bmw.carit.jnario.spec.jvmmodel;
 
 import com.google.inject.Inject;
 import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder;
-import de.bmw.carit.jnario.spec.naming.JavaNameProvider;
+import de.bmw.carit.jnario.spec.naming.ExampleNameProvider;
 import de.bmw.carit.jnario.spec.spec.Example;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 import de.bmw.carit.jnario.spec.spec.SpecFile;
@@ -48,7 +48,7 @@ public class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
   private TypeReferences _typeReferences;
   
   @Inject
-  private JavaNameProvider _javaNameProvider;
+  private ExampleNameProvider _exampleNameProvider;
   
   public void infer(final EObject e, final IAcceptor<JvmDeclaredType> acceptor, final boolean isPrelinkingPhase) {
       boolean _operator_not = BooleanExtensions.operator_not((e instanceof SpecFile));
@@ -70,7 +70,7 @@ public class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
     {
       ArrayList<JvmGenericType> _newArrayList = CollectionLiterals.<JvmGenericType>newArrayList();
       final List<JvmGenericType> subExamples = _newArrayList;
-      String _javaClassName = this._javaNameProvider.getJavaClassName(exampleGroup);
+      String _javaClassName = this._exampleNameProvider.toJavaClassName(exampleGroup);
       final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
           public void apply(final JvmGenericType it) {
             {
@@ -88,7 +88,7 @@ public class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
               JvmAnnotationReference _annotation = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(exampleGroup, org.junit.runner.RunWith.class, de.bmw.carit.jnario.runner.ExampleGroupRunner.class);
               CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
               EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
-              String _describe = SpecJvmModelInferrer.this._javaNameProvider.describe(exampleGroup);
+              String _describe = SpecJvmModelInferrer.this._exampleNameProvider.describe(exampleGroup);
               JvmAnnotationReference _annotation_1 = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(exampleGroup, de.bmw.carit.jnario.runner.Named.class, _describe);
               CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
               EList<XAnnotation> _annotations_2 = exampleGroup.getAnnotations();
@@ -119,7 +119,7 @@ public class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
                     final Example _example = (Example)element;
                     matched=true;
                     {
-                      String _exampleMethodName = SpecJvmModelInferrer.this._javaNameProvider.getExampleMethodName(_example);
+                      String _methodName = SpecJvmModelInferrer.this._exampleNameProvider.toMethodName(_example);
                       JvmTypeReference _typeForName = SpecJvmModelInferrer.this._typeReferences.getTypeForName(Void.TYPE, _example);
                       final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
                           public void apply(final JvmOperation it) {
@@ -127,7 +127,7 @@ public class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
                               String _documentation = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.getDocumentation(_example);
                               SpecJvmModelInferrer.this._extendedJvmTypesBuilder.setDocumentation(it, _documentation);
                               EList<JvmAnnotationReference> _annotations = it.getAnnotations();
-                              String _describe = SpecJvmModelInferrer.this._javaNameProvider.describe(_example);
+                              String _describe = SpecJvmModelInferrer.this._exampleNameProvider.describe(_example);
                               JvmAnnotationReference _annotation = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(exampleGroup, de.bmw.carit.jnario.runner.Named.class, _describe);
                               CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
                               JvmDeclaredType _exception = _example.getException();
@@ -153,7 +153,7 @@ public class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
                             }
                           }
                         };
-                      JvmOperation _method = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toMethod(_example, _exampleMethodName, _typeForName, _function);
+                      JvmOperation _method = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toMethod(_example, _methodName, _typeForName, _function);
                       final JvmOperation method = _method;
                       EList<JvmMember> _members_1 = it.getMembers();
                       CollectionExtensions.<JvmOperation>operator_add(_members_1, method);

@@ -26,7 +26,7 @@ import com.google.inject.Injector;
 
 import de.bmw.carit.jnario.common.test.util.BehaviorExecutor;
 import de.bmw.carit.jnario.spec.SpecInjectorProvider;
-import de.bmw.carit.jnario.spec.naming.JavaNameProvider;
+import de.bmw.carit.jnario.spec.naming.ExampleNameProvider;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 import de.bmw.carit.jnario.spec.spec.SpecFile;
 
@@ -59,17 +59,17 @@ public class SpecExecutor extends BehaviorExecutor{
 		List<Failure> failures = newArrayList();
 		SpecFile spec = (SpecFile) object;
 		ExampleGroup exampleGroup = (ExampleGroup) spec.getXtendClass();
-		String specClassName = nameProvider.getJavaClassName(exampleGroup);
+		String specClassName = nameProvider.toJavaClassName(exampleGroup);
 		String packageName = spec.getPackage();
 		runTestsInClass(specClassName, packageName, failures);
 		return new PrintableResult(failures);
 	}
 	
-	private final JavaNameProvider nameProvider;
+	private final ExampleNameProvider nameProvider;
 
 	@Inject
 	public SpecExecutor(IGenerator generator, JavaIoFileSystemAccess fsa,
-			TemporaryFolder tempFolder, JavaNameProvider javaNameProvider, IResourceValidator validator) {
+			TemporaryFolder tempFolder, ExampleNameProvider javaNameProvider, IResourceValidator validator) {
 		super(generator, fsa, tempFolder, validator);
 		this.nameProvider = javaNameProvider;
 	}
