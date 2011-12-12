@@ -6,12 +6,13 @@
     <extension
             point="org.eclipse.ui.editors">
         <editor
-            class="de.bmw.carit.jnario.spec.ui.SpecExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
-            contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
-            default="true"
-            extensions="spec"
-            id="de.bmw.carit.jnario.spec.Spec"
-            name="Spec Editor">
+              class="de.bmw.carit.jnario.spec.ui.SpecExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+              contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
+              default="true"
+              extensions="spec"
+              icon="icons/spec_file.png"
+              id="de.bmw.carit.jnario.spec.Spec"
+              name="Spec Editor">
         </editor>
     </extension>
     <extension
