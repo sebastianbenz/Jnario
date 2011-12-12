@@ -3,7 +3,6 @@ package de.bmw.carit.jnario.runner;
 import org.junit.runner.manipulation.NoTestsRemainException;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
-import org.junit.runners.model.TestClass;
 
 public class JnarioRunner extends ExampleGroupRunner {
 
@@ -18,7 +17,7 @@ public class JnarioRunner extends ExampleGroupRunner {
 		}
 
 		@Override
-		public Object createTest(TestClass klass) throws Exception {
+		public Object createTest(Class<?> klass) throws Exception {
 			if(test == null){
 				test = instantiator.createTest(klass);
 			}

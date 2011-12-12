@@ -53,7 +53,7 @@ public class JnarioObjectExtensions extends ObjectExtensions{
     public static <T> Matcher<T> be(T value) {
         return is(equalTo(value));
     }
-
+    
     /**
      * This is a shortcut to the frequently used is(instanceOf(SomeClass.class)).
      *
@@ -77,7 +77,7 @@ public class JnarioObjectExtensions extends ObjectExtensions{
 	public static <T> ISpecification<? extends T> be(ISpecification<? extends T> actual, T expected) {
 		return be(actual, is(expected));
 	}
-
+	
 	public static <T> void any(ISpecification<? extends T> actual, T... candidates){
 		throw new UnsupportedOperationException();
 	}

@@ -11,8 +11,10 @@ import org.junit.runner.Description;
 import org.junit.runner.manipulation.NoTestsRemainException;
 import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.BlockJUnit4ClassRunner;
+import org.junit.runners.model.FrameworkField;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
+import org.junit.runners.model.TestClass;
 
 import com.google.common.base.Function;
 
@@ -41,7 +43,26 @@ public class ExampleRunner extends BlockJUnit4ClassRunner {
 	
 	@Override
 	protected Object createTest() throws Exception {
-		return testBuilder.createTest(getTestClass());
+		Object test = newInstanceOf(getTestClass().getJavaClass());
+		initializeSubjects(getTestClass(), test);
+		return test;
+	}
+
+	protected Object newInstanceOf(Class<?> testClass) throws Exception {
+		return testBuilder.createTest(testClass);
+	}
+
+
+	protected void initializeSubjects(TestClass testClass, Object test) throws InitializationError {
+		for (FrameworkField subjectField : testClass.getAnnotatedFields(Subject.class)) {
+			try {
+				Object value = newInstanceOf(subjectField.getField().getType());
+				subjectField.getField().set(test, value);
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw new InitializationError(e);
+			}
+		}
 	}
 
 	@Override

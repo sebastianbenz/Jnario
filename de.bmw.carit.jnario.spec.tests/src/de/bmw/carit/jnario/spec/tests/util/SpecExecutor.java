@@ -1,7 +1,6 @@
 package de.bmw.carit.jnario.spec.tests.util;
 
 import static com.google.common.collect.Lists.newArrayList;
-import static junit.framework.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
 import java.io.IOException;
@@ -32,20 +31,15 @@ import de.bmw.carit.jnario.spec.spec.SpecFile;
 
 public class SpecExecutor extends BehaviorExecutor{
 
+	private final ExampleNameProvider nameProvider;
+
 	public static PrintableResult execute(String content) {
 		SpecInjectorProvider injectorProvider = new SpecInjectorProvider();
 		try {
 			injectorProvider.setupRegistry();
 			Injector injector = new TestSetup().createInjectorAndDoEMFRegistration();
 			
-			XtextResourceSet resourceSet = new XtextResourceSet();
-			Resource resource = resourceSet.createResource(URI.createURI("dummy.spec"));
-			try {
-				resource.load(new StringInputStream(content), Collections.emptyMap());
-			} catch (IOException e) {
-				e.printStackTrace();
-				org.junit.Assert.fail(e.getMessage());
-			}
+			Resource resource = parse(content);
 			
 			SpecExecutor executor = injector.getInstance(SpecExecutor.class);
 			return executor.run(resource.getContents().get(0));
@@ -53,9 +47,20 @@ public class SpecExecutor extends BehaviorExecutor{
 			injectorProvider.restoreRegistry();
 		}
 	}
+
+	public static Resource parse(String content) {
+		XtextResourceSet resourceSet = new XtextResourceSet();
+		Resource resource = resourceSet.createResource(URI.createURI("dummy.spec"));
+		try {
+			resource.load(new StringInputStream(content), Collections.emptyMap());
+		} catch (IOException e) {
+			e.printStackTrace();
+			org.junit.Assert.fail(e.getMessage());
+		}
+		return resource;
+	}
 	
-	protected PrintableResult runExamples(EObject object)
-			throws MalformedURLException, ClassNotFoundException {
+	protected PrintableResult runExamples(EObject object) throws MalformedURLException, ClassNotFoundException {
 		List<Failure> failures = newArrayList();
 		SpecFile spec = (SpecFile) object;
 		ExampleGroup exampleGroup = (ExampleGroup) spec.getXtendClass();
@@ -65,8 +70,6 @@ public class SpecExecutor extends BehaviorExecutor{
 		return new PrintableResult(failures);
 	}
 	
-	private final ExampleNameProvider nameProvider;
-
 	@Inject
 	public SpecExecutor(IGenerator generator, JavaIoFileSystemAccess fsa,
 			TemporaryFolder tempFolder, ExampleNameProvider javaNameProvider, IResourceValidator validator) {

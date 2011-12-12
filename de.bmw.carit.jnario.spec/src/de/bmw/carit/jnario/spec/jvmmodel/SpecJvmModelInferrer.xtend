@@ -5,17 +5,20 @@ import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder
 import de.bmw.carit.jnario.runner.Contains
 import de.bmw.carit.jnario.runner.ExampleGroupRunner
 import de.bmw.carit.jnario.runner.Named
-import de.bmw.carit.jnario.spec.naming.ExampleNameProvider
+import de.bmw.carit.jnario.runner.Subject
 import de.bmw.carit.jnario.spec.spec.Example
 import de.bmw.carit.jnario.spec.spec.ExampleGroup
 import de.bmw.carit.jnario.spec.spec.SpecFile
 import java.util.List
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmDeclaredType
+import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.util.IAcceptor
+import org.eclipse.xtext.xbase.XFeatureCall
+import org.eclipse.xtext.xbase.XMemberFeatureCall
 import org.eclipse.xtext.xtend2.jvmmodel.Xtend2JvmModelInferrer
 import org.eclipse.xtext.xtend2.xtend2.XtendField
 import org.eclipse.xtext.xtend2.xtend2.XtendFunction
@@ -97,8 +100,35 @@ class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
 					annotations += exampleGroup.toAnnotation(typeof(Contains), subExamples);
 				}
 				computeInferredReturnTypes()
+				addImplicitSubject(exampleGroup)
 			]
 						
 	}
 	
+	def void addImplicitSubject(JvmGenericType type, ExampleGroup exampleGroup){
+		val targetType = exampleGroup.targetType
+		if(targetType == null) return;
+		if(targetType.eIsProxy()) return;
+		if(hasSubject(type)) return;
+		if(neverUsesSubject(exampleGroup)) return;
+		
+		type.members.add(0, exampleGroup.toField("subject", targetType.createTypeRef)[
+			annotations += exampleGroup.toAnnotation(typeof(Subject))
+			visibility = JvmVisibility::PUBLIC
+		])
+	}
+	
+	def hasSubject(JvmGenericType type){
+		type.members.filter(typeof(JvmField)).findFirst[simpleName == "subject"] != null
+	}
+	
+	def neverUsesSubject(ExampleGroup exampleGroup){
+		val allFeatureCalls = exampleGroup.eAllContents.filter(typeof(XMemberFeatureCall))
+		null == allFeatureCalls.findFirst(XMemberFeatureCall call| {
+			if(call.memberCallTarget == null) return false
+			if(!(call.memberCallTarget instanceof XFeatureCall)) return false
+			val featureCall = call.memberCallTarget as XFeatureCall
+			return featureCall.concreteSyntaxFeatureName == "subject"
+		})
+	}
 }

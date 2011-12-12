@@ -7,24 +7,33 @@ import de.bmw.carit.jnario.spec.spec.Example;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 import de.bmw.carit.jnario.spec.spec.SpecFile;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
+import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmMember;
 import org.eclipse.xtext.common.types.JvmOperation;
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.util.IAcceptor;
 import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.XFeatureCall;
+import org.eclipse.xtext.xbase.XMemberFeatureCall;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.eclipse.xtext.xbase.lib.CollectionExtensions;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xtend2.jvmmodel.Xtend2JvmModelInferrer;
@@ -176,11 +185,96 @@ public class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
                 CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_3, _annotation_2);
               }
               SpecJvmModelInferrer.this.computeInferredReturnTypes(it);
+              SpecJvmModelInferrer.this.addImplicitSubject(it, exampleGroup);
             }
           }
         };
       JvmGenericType _class = this._extendedJvmTypesBuilder.toClass(exampleGroup, _javaClassName, superClass, _function);
       _xblockexpression = (_class);
+    }
+    return _xblockexpression;
+  }
+  
+  public void addImplicitSubject(final JvmGenericType type, final ExampleGroup exampleGroup) {
+      JvmDeclaredType _targetType = exampleGroup.getTargetType();
+      final JvmDeclaredType targetType = _targetType;
+      boolean _operator_equals = ObjectExtensions.operator_equals(targetType, null);
+      if (_operator_equals) {
+        return;
+      }
+      boolean _eIsProxy = targetType.eIsProxy();
+      if (_eIsProxy) {
+        return;
+      }
+      boolean _hasSubject = this.hasSubject(type);
+      if (_hasSubject) {
+        return;
+      }
+      boolean _neverUsesSubject = this.neverUsesSubject(exampleGroup);
+      if (_neverUsesSubject) {
+        return;
+      }
+      EList<JvmMember> _members = type.getMembers();
+      JvmParameterizedTypeReference _createTypeRef = this._typeReferences.createTypeRef(targetType);
+      final Procedure1<JvmField> _function = new Procedure1<JvmField>() {
+          public void apply(final JvmField it) {
+            {
+              EList<JvmAnnotationReference> _annotations = it.getAnnotations();
+              JvmAnnotationReference _annotation = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(exampleGroup, de.bmw.carit.jnario.runner.Subject.class);
+              CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
+              it.setVisibility(JvmVisibility.PUBLIC);
+            }
+          }
+        };
+      JvmField _field = this._extendedJvmTypesBuilder.toField(exampleGroup, "subject", _createTypeRef, _function);
+      _members.add(0, _field);
+  }
+  
+  public boolean hasSubject(final JvmGenericType type) {
+    EList<JvmMember> _members = type.getMembers();
+    Iterable<JvmField> _filter = IterableExtensions.<JvmField>filter(_members, org.eclipse.xtext.common.types.JvmField.class);
+    final Function1<JvmField,Boolean> _function = new Function1<JvmField,Boolean>() {
+        public Boolean apply(final JvmField it) {
+          String _simpleName = it.getSimpleName();
+          boolean _operator_equals = ObjectExtensions.operator_equals(_simpleName, "subject");
+          return Boolean.valueOf(_operator_equals);
+        }
+      };
+    JvmField _findFirst = IterableExtensions.<JvmField>findFirst(_filter, _function);
+    boolean _operator_notEquals = ObjectExtensions.operator_notEquals(_findFirst, null);
+    return _operator_notEquals;
+  }
+  
+  public boolean neverUsesSubject(final ExampleGroup exampleGroup) {
+    boolean _xblockexpression = false;
+    {
+      TreeIterator<EObject> _eAllContents = exampleGroup.eAllContents();
+      Iterator<XMemberFeatureCall> _filter = IteratorExtensions.<XMemberFeatureCall>filter(_eAllContents, org.eclipse.xtext.xbase.XMemberFeatureCall.class);
+      final Iterator<XMemberFeatureCall> allFeatureCalls = _filter;
+      final Function1<XMemberFeatureCall,Boolean> _function = new Function1<XMemberFeatureCall,Boolean>() {
+          public Boolean apply(final XMemberFeatureCall call) {
+            {
+              XExpression _memberCallTarget = call.getMemberCallTarget();
+              boolean _operator_equals = ObjectExtensions.operator_equals(_memberCallTarget, null);
+              if (_operator_equals) {
+                return Boolean.valueOf(false);
+              }
+              XExpression _memberCallTarget_1 = call.getMemberCallTarget();
+              boolean _operator_not = BooleanExtensions.operator_not((_memberCallTarget_1 instanceof XFeatureCall));
+              if (_operator_not) {
+                return Boolean.valueOf(false);
+              }
+              XExpression _memberCallTarget_2 = call.getMemberCallTarget();
+              final XFeatureCall featureCall = ((XFeatureCall) _memberCallTarget_2);
+              String _concreteSyntaxFeatureName = featureCall.getConcreteSyntaxFeatureName();
+              boolean _operator_equals_1 = ObjectExtensions.operator_equals(_concreteSyntaxFeatureName, "subject");
+              return Boolean.valueOf(_operator_equals_1);
+            }
+          }
+        };
+      XMemberFeatureCall _findFirst = IteratorExtensions.<XMemberFeatureCall>findFirst(allFeatureCalls, _function);
+      boolean _operator_equals = ObjectExtensions.operator_equals(null, _findFirst);
+      _xblockexpression = (_operator_equals);
     }
     return _xblockexpression;
   }

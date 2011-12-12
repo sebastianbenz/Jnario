@@ -2,7 +2,6 @@ package de.bmw.carit.jnario.spec.tests.util;
 
 import org.eclipse.xtext.junit4.GlobalRegistries;
 import org.eclipse.xtext.junit4.GlobalRegistries.GlobalStateMemento;
-import org.junit.runners.model.TestClass;
 
 import com.google.inject.Injector;
 
@@ -34,9 +33,9 @@ public class SpecTestInstantiator implements TestInstantiator {
 	}
 	
 	@Override
-	public Object createTest(TestClass klass) throws Exception {
+	public Object createTest(Class<?> klass) throws Exception {
 		setupRegistry();
-		return getInjector().getInstance(klass.getJavaClass());
+		return getInjector().getInstance(klass);
 	}
 
 	@Override
