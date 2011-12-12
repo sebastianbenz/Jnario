@@ -1,22 +1,7 @@
-package de.bmw.carit.jnario.spec.tests.unit.scoping
-			
-import static org.junit.Assert.*
-import de.bmw.carit.jnario.runner.InstantiateWith
-import com.google.inject.Inject
-import org.eclipse.xtext.scoping.IScopeProvider
-import de.bmw.carit.jnario.spec.tests.util.SpecTestInstantiator
-import static extension de.bmw.carit.jnario.tests.util.Query.*
-import de.bmw.carit.jnario.spec.spec.SpecPackage
-import de.bmw.carit.jnario.tests.util.ModelStore
-import de.bmw.carit.jnario.spec.spec.ExampleGroup
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.scoping.IScope
-import org.eclipse.xtext.naming.QualifiedName
 
 @InstantiateWith(typeof(SpecTestInstantiator))
-describe "SpecScopeProvider" {
+describe SpecScopeProvider {
 	
-	@Inject IScopeProvider fixture
 	@Inject ModelStore modelStore
 	
 	it "should resolve Jvm type ExampleGroup target"{
@@ -67,15 +52,15 @@ describe "SpecScopeProvider" {
 	}
 	
 	def IScope targetType(EObject source){
-		return fixture.getScope(source, SpecPackage::eINSTANCE.exampleGroup_TargetType)
+		return subject.getScope(source, SpecPackage::eINSTANCE.exampleGroup_TargetType)
 	}
 	
 	def IScope targetOperation(EObject source){
-		return fixture.getScope(source, SpecPackage::eINSTANCE.exampleGroup_TargetOperation)
+		return subject.getScope(source, SpecPackage::eINSTANCE.exampleGroup_TargetOperation)
 	}
 	
 	def IScope throwsDeclaration(EObject source){
-		return fixture.getScope(source, SpecPackage::eINSTANCE.example_Exception)
+		return subject.getScope(source, SpecPackage::eINSTANCE.example_Exception)
 	}
 			
 }
