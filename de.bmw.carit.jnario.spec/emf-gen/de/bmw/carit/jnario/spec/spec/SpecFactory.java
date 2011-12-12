@@ -53,6 +53,33 @@ public interface SpecFactory extends EFactory
 	Example createExample();
 
 	/**
+	 * Returns a new object of class '<em>Example Table</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Example Table</em>'.
+	 * @generated
+	 */
+	ExampleTable createExampleTable();
+
+	/**
+	 * Returns a new object of class '<em>Example Heading</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Example Heading</em>'.
+	 * @generated
+	 */
+	ExampleHeading createExampleHeading();
+
+	/**
+	 * Returns a new object of class '<em>Example Row</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Example Row</em>'.
+	 * @generated
+	 */
+	ExampleRow createExampleRow();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

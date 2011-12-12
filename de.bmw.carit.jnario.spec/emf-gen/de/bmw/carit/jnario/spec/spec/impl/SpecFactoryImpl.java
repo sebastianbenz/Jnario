@@ -70,6 +70,9 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
 			case SpecPackage.SPEC_FILE: return createSpecFile();
 			case SpecPackage.EXAMPLE_GROUP: return createExampleGroup();
 			case SpecPackage.EXAMPLE: return createExample();
+			case SpecPackage.EXAMPLE_TABLE: return createExampleTable();
+			case SpecPackage.EXAMPLE_HEADING: return createExampleHeading();
+			case SpecPackage.EXAMPLE_ROW: return createExampleRow();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -106,6 +109,39 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
 	{
 		ExampleImplCustom example = new ExampleImplCustom();
 		return example;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExampleTable createExampleTable()
+	{
+		ExampleTableImplCustom exampleTable = new ExampleTableImplCustom();
+		return exampleTable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExampleHeading createExampleHeading()
+	{
+		ExampleHeadingImplCustom exampleHeading = new ExampleHeadingImplCustom();
+		return exampleHeading;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExampleRow createExampleRow()
+	{
+		ExampleRowImplCustom exampleRow = new ExampleRowImplCustom();
+		return exampleRow;
 	}
 
 	/**

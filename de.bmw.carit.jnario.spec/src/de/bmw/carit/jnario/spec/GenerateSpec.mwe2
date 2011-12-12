@@ -10,30 +10,28 @@ var projectName = "de.bmw.carit.jnario.spec"
 var runtimeProject = "../${projectName}"
 
 Workflow {
-    bean = StandaloneSetup {
+	bean = StandaloneSetup {
+		platformUri = "${runtimeProject}/../.."
+		registerGenModelFile = "platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel"
+		registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
+		registerGenModelFile = "platform:/resource/org.eclipse.xtext.xtend2/model/Xtend2.genmodel"
+	}
+	
+	bean = StandaloneSetup {
+		resourceSet = org.eclipse.xtext.resource.XtextResourceSet : resourceSet {}
         scanClassPath = true
-        platformUri = "${runtimeProject}/.."
         
-        // The following two lines ca be removed, if Xbase is not used.
-        registerGeneratedEPackage = "org.eclipse.xtext.xbase.XbasePackage"
-        registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
-        
-        registerGeneratedEPackage = "org.eclipse.xtext.xtend2.xtend2.Xtend2Package"
-        registerGenModelFile = "platform:/resource/org.eclipse.xtext.xtend2/model/Xtend2.genmodel"
+		registerEcoreFile = "platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore"
+		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xtype.ecore"
+		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore"
+		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/XAnnotations.ecore"
+		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xtend2/model/Xtend2.ecore"        
+		registerEcoreFile = "platform:/resource/${projectName}/model/Spec.ecore"
     }
     
     component = DirectoryCleaner {
 		directory = "${runtimeProject}/emf-gen"
 	}
-
-
-    component = DirectoryCleaner {
-        directory = "${runtimeProject}/src-gen"
-    }
-
-    component = DirectoryCleaner {
-        directory = "${runtimeProject}.ui/src-gen"
-    }
 
 	component = org.eclipse.emf.mwe2.ecore.EcoreGenerator {
 		generateCustomClasses=true
@@ -43,6 +41,15 @@ Workflow {
 		srcPath ="platform:/resource/org.eclipse.xtext.xbase/src"
 		srcPath ="platform:/resource/org.eclipse.xtext.xtend2/src"
 	}
+	
+	component = DirectoryCleaner {
+        directory = "${runtimeProject}/src-gen"
+    }
+
+    component = DirectoryCleaner {
+        directory = "${runtimeProject}.ui/src-gen"
+    }
+    
     component = Generator {
         pathRtProject = runtimeProject
         pathUiProject = "${runtimeProject}.ui"
@@ -50,6 +57,7 @@ Workflow {
         projectNameRt = projectName
         projectNameUi = "${projectName}.ui"
         language = {
+        	forcedResourceSet=resourceSet
             uri = grammarURI
             fileExtensions = file.extensions
 

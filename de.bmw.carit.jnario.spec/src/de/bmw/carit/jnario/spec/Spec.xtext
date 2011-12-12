@@ -1,28 +1,19 @@
 grammar de.bmw.carit.jnario.spec.Spec with org.eclipse.xtext.xtend2.Xtend2
- 
-import "http://www.eclipse.org/xtext/Xtend2"
+
+import "http://www.bmw.de/carit/jnario/spec/Spec" 
+import "http://www.eclipse.org/xtext/Xtend2" as xtend
 import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
 
-generate spec "http://www.bmw.de/carit/jnario/spec/Spec"
 
-SpecFile returns XtendFile:
+SpecFile returns xtend::XtendFile: 
 {SpecFile}
 'package' package=QualifiedName 
 	imports+=Import*
 	xtendClass=ExampleGroup
 ;
 
-Import returns XtendImport :  
-	'import' (
-		(static?='static' extension?='extension'? importedType=[types::JvmType|QualifiedName] '.' '*') | importedType=[types::JvmType|QualifiedName] | importedNamespace=QualifiedNameWithWildCard)
-;
-
- 
-QualifiedNameWithWildCard :
-	QualifiedName  '.' '*';
-
-ExampleGroup returns XtendClass: 
+ExampleGroup returns xtend::XtendClass: 
 	{ExampleGroup}
 	annotations+=XAnnotation* 
 	preamble=('describe') targetType=[types::JvmDeclaredType|QualifiedName]? name=STRING? '{'
@@ -31,27 +22,19 @@ ExampleGroup returns XtendClass:
 ;
 
 Method:
-	ValidID ('(' (TypeName (',' TypeName)*)? ')')?  
+	ID ('(' (TypeName (',' TypeName)*)? ')')?  
 ;
 
 TypeName:
-	ValidID ('<' TypeRef (',' TypeRef)* '>')? ('[]')?
+	ID ('<' TypeRef (',' TypeRef)* '>')? ('[]')?
 ;
 
 TypeRef:
 	('?')? ('extends' | 'super')?  TypeName
 ;
 
-//XCastedExpression returns xbase::XExpression:
-//	XInfixOperation (=>({xbase::XCastedExpression.target=current} 'as') type=JvmTypeReference)*
-//;
-//
-//XInfixOperation returns xbase::XExpression:
-//	XMemberFeatureCall  (=>({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|ValidID]) rightOperand=XMemberFeatureCall)*
-//;
-
-Member returns XtendMember:
-	{XtendMember} annotations+=XAnnotation* 
+Member returns xtend::XtendMember:
+	{xtend::XtendMember} annotations+=XAnnotation* 
 	(
 		
 		{Example.annotationInfo = current}
@@ -65,62 +48,45 @@ Member returns XtendMember:
 			(preamble=('context') targetOperation=[types::JvmOperation|Method]? name=STRING? '{'
       		members+=Member*
       	'}')
-	|	{XtendField.annotationInfo = current}	
-		 	(extension?='extension' type=JvmTypeReference name=ValidID?
-			| static?='static'? type=JvmTypeReference name=ValidID)
+	|	{ExampleTable.annotationInfo = current} ('example' name=STRING? '{'
+      		(
+      			heading = ExampleHeading
+				(rows += ExampleRow)*
+      		)?
+      	'}')
+	|	{xtend::XtendField.annotationInfo = current}	
+		 	(extension?='extension' type=JvmTypeReference name=ID?
+			| static?='static'? type=JvmTypeReference name=ID)
 			('=' initialValue=XExpression)?
 		
-	|	{XtendFunction.annotationInfo = current}
+	|	{xtend::XtendFunction.annotationInfo = current}
 			('def' | override?='override') static?='static'? (dispatch?='dispatch'?) 
 			('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')?
-			( =>(returnType=JvmTypeReference createExtensionInfo=CreateExtensionInfo name=ValidID '(')
-			| =>(returnType=JvmTypeReference name=ValidID '(')
-			| =>(createExtensionInfo=CreateExtensionInfo name=ValidID '(')
-			| name=ValidID '('
+			( =>(returnType=JvmTypeReference createExtensionInfo=CreateExtensionInfo name=ID '(')
+			| =>(returnType=JvmTypeReference name=ID '(')
+			| =>(createExtensionInfo=CreateExtensionInfo name=ID '(')
+			| name=ID '('
 			)
 			(parameters+=Parameter (',' parameters+=Parameter)*)? ')'
 			('throws' exceptions+=JvmTypeReference (',' exceptions+=JvmTypeReference)*)?
 			(expression=XBlockExpression)?
 	 );
 
-CreateExtensionInfo returns CreateExtensionInfo:
-	'create' (name=ValidID ':')? createExpression=XExpression
-;
+ExampleHeading:
+	cells+=ExampleHeadingCell+ EXAMPLE_ROW_END;
+ 
+ExampleHeadingCell returns xbase::XVariableDeclaration:
+	(PIPE | PIPE_SPACES) name=ID ;
 
-Parameter returns XtendParameter:
-	annotations+=XAnnotation* 
-	parameterType=JvmTypeReference name=ValidID;
+ExampleRow:
+	cells+=ExampleCell+ EXAMPLE_ROW_END;
 
-//XMemberFeatureCall returns xbase::XExpression:
-//	XPrimaryExpression
-//	(=>({xbase::XAssignment.assignable=current} '.' feature=[types::JvmIdentifiableElement|ValidID] OpSingleAssign) value=XAssignment
-//	|=>({xbase::XMemberFeatureCall.memberCallTarget=current} feature=[types::JvmIdentifiableElement|ValidID]) memberCallArguments+=XExpression
-//	|=>({xbase::XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|spreading?="*.")) 
-//		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
-//		feature=[types::JvmIdentifiableElement|ValidID] (
-//			=>explicitOperationCall?='(' 
-//				(
-//				    memberCallArguments+=XShortClosure
-//				  |	memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-//				)? 
-//			')')?
-//			=>memberCallArguments+=XClosure?
-//		)*;
-//
-//	
-//XFeatureCall returns xbase::XFeatureCall:
-//	{xbase::XFeatureCall}
-//	(=> feature=[types::JvmIdentifiableElement|IdOrSuper]  featureCallArguments+=XExpression
-//	|((declaringType=[types::JvmDeclaredType|StaticQualifier])?
-//	('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')? 
-//	feature=[types::JvmIdentifiableElement|IdOrSuper] 
-//	(=>explicitOperationCall?='(' 
-//		(
-//		    featureCallArguments+=XShortClosure
-//		  |	featureCallArguments+=XExpression (',' featureCallArguments+=XExpression)*
-//		)? 
-//	')')?
-//	=>featureCallArguments+=XClosure?));
+ExampleCell returns xbase::XExpression:
+	(PIPE | PIPE_SPACES) XExpression;
+
+terminal PIPE : '|';
+terminal PIPE_SPACES: PIPE (' '|'\t')+;
+terminal EXAMPLE_ROW_END: (PIPE | PIPE_SPACES) '\r'? '\n';
 
 terminal STRING	: 
 			'"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |

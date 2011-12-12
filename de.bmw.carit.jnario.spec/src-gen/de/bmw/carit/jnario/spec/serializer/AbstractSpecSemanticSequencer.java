@@ -5,6 +5,9 @@ import com.google.inject.Provider;
 import de.bmw.carit.jnario.spec.services.SpecGrammarAccess;
 import de.bmw.carit.jnario.spec.spec.Example;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
+import de.bmw.carit.jnario.spec.spec.ExampleHeading;
+import de.bmw.carit.jnario.spec.spec.ExampleRow;
+import de.bmw.carit.jnario.spec.spec.ExampleTable;
 import de.bmw.carit.jnario.spec.spec.SpecFile;
 import de.bmw.carit.jnario.spec.spec.SpecPackage;
 import org.eclipse.emf.ecore.EObject;
@@ -123,6 +126,24 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 					return; 
 				}
 				else break;
+			case SpecPackage.EXAMPLE_HEADING:
+				if(context == grammarAccess.getExampleHeadingRule()) {
+					sequence_ExampleHeading(context, (ExampleHeading) semanticObject); 
+					return; 
+				}
+				else break;
+			case SpecPackage.EXAMPLE_ROW:
+				if(context == grammarAccess.getExampleRowRule()) {
+					sequence_ExampleRow(context, (ExampleRow) semanticObject); 
+					return; 
+				}
+				else break;
+			case SpecPackage.EXAMPLE_TABLE:
+				if(context == grammarAccess.getMemberRule()) {
+					sequence_Member(context, (ExampleTable) semanticObject); 
+					return; 
+				}
+				else break;
 			case SpecPackage.SPEC_FILE:
 				if(context == grammarAccess.getSpecFileRule()) {
 					sequence_SpecFile(context, (SpecFile) semanticObject); 
@@ -224,7 +245,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 			}
 		else if(semanticObject.eClass().getEPackage() == XbasePackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
 			case XbasePackage.XASSIGNMENT:
-				if(context == grammarAccess.getRichStringPartRule() ||
+				if(context == grammarAccess.getExampleCellRule() ||
+				   context == grammarAccess.getRichStringPartRule() ||
 				   context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
@@ -257,7 +279,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case XbasePackage.XBINARY_OPERATION:
-				if(context == grammarAccess.getRichStringPartRule() ||
+				if(context == grammarAccess.getExampleCellRule() ||
+				   context == grammarAccess.getRichStringPartRule() ||
 				   context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
@@ -290,7 +313,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case XbasePackage.XBLOCK_EXPRESSION:
-				if(context == grammarAccess.getRichStringPartRule() ||
+				if(context == grammarAccess.getExampleCellRule() ||
+				   context == grammarAccess.getRichStringPartRule() ||
 				   context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
@@ -328,7 +352,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case XbasePackage.XBOOLEAN_LITERAL:
-				if(context == grammarAccess.getRichStringPartRule() ||
+				if(context == grammarAccess.getExampleCellRule() ||
+				   context == grammarAccess.getRichStringPartRule() ||
 				   context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
@@ -372,7 +397,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case XbasePackage.XCASTED_EXPRESSION:
-				if(context == grammarAccess.getRichStringPartRule() ||
+				if(context == grammarAccess.getExampleCellRule() ||
+				   context == grammarAccess.getRichStringPartRule() ||
 				   context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
@@ -411,7 +437,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case XbasePackage.XCLOSURE:
-				if(context == grammarAccess.getRichStringPartRule() ||
+				if(context == grammarAccess.getExampleCellRule() ||
+				   context == grammarAccess.getRichStringPartRule() ||
 				   context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
@@ -450,7 +477,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case XbasePackage.XCONSTRUCTOR_CALL:
-				if(context == grammarAccess.getRichStringPartRule() ||
+				if(context == grammarAccess.getExampleCellRule() ||
+				   context == grammarAccess.getRichStringPartRule() ||
 				   context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
@@ -484,7 +512,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case XbasePackage.XDO_WHILE_EXPRESSION:
-				if(context == grammarAccess.getRichStringPartRule() ||
+				if(context == grammarAccess.getExampleCellRule() ||
+				   context == grammarAccess.getRichStringPartRule() ||
 				   context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
@@ -525,7 +554,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 					sequence_XAnnotationValueFieldReference(context, (XFeatureCall) semanticObject); 
 					return; 
 				}
-				else if(context == grammarAccess.getRichStringPartRule() ||
+				else if(context == grammarAccess.getExampleCellRule() ||
+				   context == grammarAccess.getRichStringPartRule() ||
 				   context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
@@ -559,7 +589,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case XbasePackage.XFOR_LOOP_EXPRESSION:
-				if(context == grammarAccess.getRichStringPartRule() ||
+				if(context == grammarAccess.getExampleCellRule() ||
+				   context == grammarAccess.getRichStringPartRule() ||
 				   context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
@@ -593,7 +624,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case XbasePackage.XIF_EXPRESSION:
-				if(context == grammarAccess.getRichStringPartRule() ||
+				if(context == grammarAccess.getExampleCellRule() ||
+				   context == grammarAccess.getRichStringPartRule() ||
 				   context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
@@ -627,7 +659,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case XbasePackage.XINSTANCE_OF_EXPRESSION:
-				if(context == grammarAccess.getRichStringPartRule() ||
+				if(context == grammarAccess.getExampleCellRule() ||
+				   context == grammarAccess.getRichStringPartRule() ||
 				   context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
@@ -660,7 +693,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case XbasePackage.XINT_LITERAL:
-				if(context == grammarAccess.getRichStringPartRule() ||
+				if(context == grammarAccess.getExampleCellRule() ||
+				   context == grammarAccess.getRichStringPartRule() ||
 				   context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
@@ -698,7 +732,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case XbasePackage.XMEMBER_FEATURE_CALL:
-				if(context == grammarAccess.getRichStringPartRule() ||
+				if(context == grammarAccess.getExampleCellRule() ||
+				   context == grammarAccess.getRichStringPartRule() ||
 				   context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
@@ -731,7 +766,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case XbasePackage.XNULL_LITERAL:
-				if(context == grammarAccess.getRichStringPartRule() ||
+				if(context == grammarAccess.getExampleCellRule() ||
+				   context == grammarAccess.getRichStringPartRule() ||
 				   context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
@@ -761,12 +797,13 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				   context == grammarAccess.getXRelationalExpressionAccess().getXBinaryOperationLeftOperandAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXRelationalExpressionAccess().getXInstanceOfExpressionExpressionAction_1_0_0_0_0() ||
 				   context == grammarAccess.getXUnaryOperationRule()) {
-					sequence_RichStringPart(context, (XNullLiteral) semanticObject); 
+					sequence_ExampleCell(context, (XNullLiteral) semanticObject); 
 					return; 
 				}
 				else break;
 			case XbasePackage.XRETURN_EXPRESSION:
-				if(context == grammarAccess.getRichStringPartRule() ||
+				if(context == grammarAccess.getExampleCellRule() ||
+				   context == grammarAccess.getRichStringPartRule() ||
 				   context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
@@ -800,7 +837,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case XbasePackage.XSTRING_LITERAL:
-				if(context == grammarAccess.getRichStringPartRule() ||
+				if(context == grammarAccess.getExampleCellRule() ||
+				   context == grammarAccess.getRichStringPartRule() ||
 				   context == grammarAccess.getSimpleStringLiteralRule() ||
 				   context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
@@ -839,7 +877,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case XbasePackage.XSWITCH_EXPRESSION:
-				if(context == grammarAccess.getRichStringPartRule() ||
+				if(context == grammarAccess.getExampleCellRule() ||
+				   context == grammarAccess.getRichStringPartRule() ||
 				   context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
@@ -873,7 +912,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case XbasePackage.XTHROW_EXPRESSION:
-				if(context == grammarAccess.getRichStringPartRule() ||
+				if(context == grammarAccess.getExampleCellRule() ||
+				   context == grammarAccess.getRichStringPartRule() ||
 				   context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
@@ -907,7 +947,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case XbasePackage.XTRY_CATCH_FINALLY_EXPRESSION:
-				if(context == grammarAccess.getRichStringPartRule() ||
+				if(context == grammarAccess.getExampleCellRule() ||
+				   context == grammarAccess.getRichStringPartRule() ||
 				   context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
@@ -941,7 +982,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case XbasePackage.XTYPE_LITERAL:
-				if(context == grammarAccess.getRichStringPartRule() ||
+				if(context == grammarAccess.getExampleCellRule() ||
+				   context == grammarAccess.getRichStringPartRule() ||
 				   context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
@@ -979,7 +1021,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case XbasePackage.XUNARY_OPERATION:
-				if(context == grammarAccess.getRichStringPartRule() ||
+				if(context == grammarAccess.getExampleCellRule() ||
+				   context == grammarAccess.getRichStringPartRule() ||
 				   context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
@@ -1012,7 +1055,11 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case XbasePackage.XVARIABLE_DECLARATION:
-				if(context == grammarAccess.getRichStringPartRule() ||
+				if(context == grammarAccess.getExampleHeadingCellRule()) {
+					sequence_ExampleHeadingCell(context, (XVariableDeclaration) semanticObject); 
+					return; 
+				}
+				else if(context == grammarAccess.getRichStringPartRule() ||
 				   context == grammarAccess.getXExpressionInsideBlockRule() ||
 				   context == grammarAccess.getXVariableDeclarationRule()) {
 					sequence_XVariableDeclaration(context, (XVariableDeclaration) semanticObject); 
@@ -1020,7 +1067,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case XbasePackage.XWHILE_EXPRESSION:
-				if(context == grammarAccess.getRichStringPartRule() ||
+				if(context == grammarAccess.getExampleCellRule() ||
+				   context == grammarAccess.getRichStringPartRule() ||
 				   context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
@@ -1066,7 +1114,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 					sequence_InternalRichString(context, (RichString) semanticObject); 
 					return; 
 				}
-				else if(context == grammarAccess.getRichStringRule() ||
+				else if(context == grammarAccess.getExampleCellRule() ||
+				   context == grammarAccess.getRichStringRule() ||
 				   context == grammarAccess.getRichStringPartRule() ||
 				   context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
@@ -1175,10 +1224,11 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 			case Xtend2Package.XTEND_MEMBER:
 				if(context == grammarAccess.getMemberAccess().getExampleGroupAnnotationInfoAction_2_1_0() ||
 				   context == grammarAccess.getMemberAccess().getExampleGroupAnnotationInfoAction_2_2_0() ||
+				   context == grammarAccess.getMemberAccess().getExampleTableAnnotationInfoAction_2_3_0() ||
 				   context == grammarAccess.getMemberAccess().getExampleAnnotationInfoAction_2_0_0() ||
-				   context == grammarAccess.getMemberAccess().getXtendFieldAnnotationInfoAction_2_3_0() ||
-				   context == grammarAccess.getMemberAccess().getXtendFunctionAnnotationInfoAction_2_4_0()) {
-					sequence_Member_Example_2_0_0_ExampleGroup_2_1_0_ExampleGroup_2_2_0_XtendField_2_3_0_XtendFunction_2_4_0(context, (XtendMember) semanticObject); 
+				   context == grammarAccess.getMemberAccess().getXtendFieldAnnotationInfoAction_2_4_0() ||
+				   context == grammarAccess.getMemberAccess().getXtendFunctionAnnotationInfoAction_2_5_0()) {
+					sequence_Member_Example_2_0_0_ExampleGroup_2_1_0_ExampleGroup_2_2_0_ExampleTable_2_3_0_XtendField_2_4_0_XtendFunction_2_5_0(context, (XtendMember) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1223,6 +1273,15 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	 *     (name=ValidID? createExpression=XExpression)
 	 */
 	protected void sequence_CreateExtensionInfo(EObject context, CreateExtensionInfo semanticObject) {
+		superSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {XNullLiteral}
+	 */
+	protected void sequence_ExampleCell(EObject context, XNullLiteral semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1232,6 +1291,33 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	 *     (annotations+=XAnnotation* preamble='describe' targetType=[JvmDeclaredType|QualifiedName]? name=STRING? members+=Member*)
 	 */
 	protected void sequence_ExampleGroup(EObject context, ExampleGroup semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     name=ID
+	 */
+	protected void sequence_ExampleHeadingCell(EObject context, XVariableDeclaration semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     cells+=ExampleHeadingCell+
+	 */
+	protected void sequence_ExampleHeading(EObject context, ExampleHeading semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     cells+=ExampleCell+
+	 */
+	protected void sequence_ExampleRow(EObject context, ExampleRow semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1263,7 +1349,7 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	 *     )
 	 */
 	protected void sequence_Import(EObject context, XtendImport semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		superSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -1371,9 +1457,18 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     (annotationInfo=Member_ExampleTable_2_3_0 (name=STRING? (heading=ExampleHeading rows+=ExampleRow*)?))
+	 */
+	protected void sequence_Member(EObject context, ExampleTable semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     annotations+=XAnnotation+
 	 */
-	protected void sequence_Member_Example_2_0_0_ExampleGroup_2_1_0_ExampleGroup_2_2_0_XtendField_2_3_0_XtendFunction_2_4_0(EObject context, XtendMember semanticObject) {
+	protected void sequence_Member_Example_2_0_0_ExampleGroup_2_1_0_ExampleGroup_2_2_0_ExampleTable_2_3_0_XtendField_2_4_0_XtendFunction_2_5_0(EObject context, XtendMember semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1381,8 +1476,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	/**
 	 * Constraint:
 	 *     (
-	 *         annotationInfo=Member_XtendField_2_3_0 
-	 *         ((extension?='extension' type=JvmTypeReference name=ValidID?) | (static?='static'? type=JvmTypeReference name=ValidID)) 
+	 *         annotationInfo=Member_XtendField_2_4_0 
+	 *         ((extension?='extension' type=JvmTypeReference name=ID?) | (static?='static'? type=JvmTypeReference name=ID)) 
 	 *         initialValue=XExpression?
 	 *     )
 	 */
@@ -1394,16 +1489,16 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	/**
 	 * Constraint:
 	 *     (
-	 *         annotationInfo=Member_XtendFunction_2_4_0 
+	 *         annotationInfo=Member_XtendFunction_2_5_0 
 	 *         override?='override'? 
 	 *         static?='static'? 
 	 *         dispatch?='dispatch'? 
 	 *         (typeParameters+=JvmTypeParameter typeParameters+=JvmTypeParameter*)? 
 	 *         (
-	 *             (returnType=JvmTypeReference createExtensionInfo=CreateExtensionInfo name=ValidID) | 
-	 *             (returnType=JvmTypeReference name=ValidID) | 
-	 *             (createExtensionInfo=CreateExtensionInfo name=ValidID) | 
-	 *             name=ValidID
+	 *             (returnType=JvmTypeReference createExtensionInfo=CreateExtensionInfo name=ID) | 
+	 *             (returnType=JvmTypeReference name=ID) | 
+	 *             (createExtensionInfo=CreateExtensionInfo name=ID) | 
+	 *             name=ID
 	 *         ) 
 	 *         (parameters+=Parameter parameters+=Parameter*)? 
 	 *         (exceptions+=JvmTypeReference exceptions+=JvmTypeReference*)? 
@@ -1420,7 +1515,7 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	 *     (annotations+=XAnnotation* parameterType=JvmTypeReference name=ValidID)
 	 */
 	protected void sequence_Parameter(EObject context, XtendParameter semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		superSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -1491,15 +1586,6 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	 */
 	protected void sequence_RichStringLiteral(EObject context, RichStringLiteral semanticObject) {
 		superSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {XNullLiteral}
-	 */
-	protected void sequence_RichStringPart(EObject context, XNullLiteral semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
