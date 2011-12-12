@@ -10,7 +10,7 @@ import de.bmw.carit.jnario.spec.spec.SpecPackage;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.xtext.xtend2.xtend2.impl.XtendFileImplCustom;
+import org.eclipse.xtext.xtend2.xtend2.impl.XtendFileImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +21,7 @@ import org.eclipse.xtext.xtend2.xtend2.impl.XtendFileImplCustom;
  *
  * @generated
  */
-public class SpecFileImpl extends XtendFileImplCustom implements SpecFile
+public class SpecFileImpl extends XtendFileImpl implements SpecFile
 {
 	/**
 	 * <!-- begin-user-doc -->

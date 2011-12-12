@@ -7,9 +7,6 @@ package de.bmw.carit.jnario.spec.spec.impl;
 
 import de.bmw.carit.jnario.spec.spec.Example;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
-import de.bmw.carit.jnario.spec.spec.ExampleHeading;
-import de.bmw.carit.jnario.spec.spec.ExampleRow;
-import de.bmw.carit.jnario.spec.spec.ExampleTable;
 import de.bmw.carit.jnario.spec.spec.SpecFactory;
 import de.bmw.carit.jnario.spec.spec.SpecFile;
 import de.bmw.carit.jnario.spec.spec.SpecPackage;
@@ -55,27 +52,6 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 	 * @generated
 	 */
 	private EClass exampleEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass exampleTableEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass exampleHeadingEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass exampleRowEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -248,116 +224,6 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getExampleTable()
-	{
-		return exampleTableEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getExampleTable_Heading()
-	{
-		return (EReference)exampleTableEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getExampleTable_Rows()
-	{
-		return (EReference)exampleTableEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getExampleTable_Name()
-	{
-		return (EAttribute)exampleTableEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getExampleHeading()
-	{
-		return exampleHeadingEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getExampleHeading_Table()
-	{
-		return (EReference)exampleHeadingEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getExampleHeading_Values()
-	{
-		return (EReference)exampleHeadingEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getExampleHeading_Cells()
-	{
-		return (EReference)exampleHeadingEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getExampleRow()
-	{
-		return exampleRowEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getExampleRow_Table()
-	{
-		return (EReference)exampleRowEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getExampleRow_Cells()
-	{
-		return (EReference)exampleRowEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public SpecFactory getSpecFactory()
 	{
 		return (SpecFactory)getEFactoryInstance();
@@ -395,20 +261,6 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 		createEReference(exampleEClass, EXAMPLE__EXCEPTION);
 		createEAttribute(exampleEClass, EXAMPLE__NAME);
 		createEReference(exampleEClass, EXAMPLE__BODY);
-
-		exampleTableEClass = createEClass(EXAMPLE_TABLE);
-		createEReference(exampleTableEClass, EXAMPLE_TABLE__HEADING);
-		createEReference(exampleTableEClass, EXAMPLE_TABLE__ROWS);
-		createEAttribute(exampleTableEClass, EXAMPLE_TABLE__NAME);
-
-		exampleHeadingEClass = createEClass(EXAMPLE_HEADING);
-		createEReference(exampleHeadingEClass, EXAMPLE_HEADING__TABLE);
-		createEReference(exampleHeadingEClass, EXAMPLE_HEADING__VALUES);
-		createEReference(exampleHeadingEClass, EXAMPLE_HEADING__CELLS);
-
-		exampleRowEClass = createEClass(EXAMPLE_ROW);
-		createEReference(exampleRowEClass, EXAMPLE_ROW__TABLE);
-		createEReference(exampleRowEClass, EXAMPLE_ROW__CELLS);
 	}
 
 	/**
@@ -449,7 +301,6 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 		exampleGroupEClass.getESuperTypes().add(theXtend2Package.getXtendClass());
 		exampleGroupEClass.getESuperTypes().add(theXtend2Package.getXtendMember());
 		exampleEClass.getESuperTypes().add(theXtend2Package.getXtendMember());
-		exampleTableEClass.getESuperTypes().add(theXtend2Package.getXtendMember());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(specFileEClass, SpecFile.class, "SpecFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -464,20 +315,6 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 		initEReference(getExample_Exception(), theTypesPackage.getJvmDeclaredType(), null, "exception", null, 0, 1, Example.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getExample_Name(), ecorePackage.getEString(), "name", null, 0, 1, Example.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getExample_Body(), theXbasePackage.getXExpression(), null, "body", null, 0, 1, Example.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(exampleTableEClass, ExampleTable.class, "ExampleTable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getExampleTable_Heading(), this.getExampleHeading(), this.getExampleHeading_Table(), "heading", null, 0, 1, ExampleTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getExampleTable_Rows(), this.getExampleRow(), this.getExampleRow_Table(), "rows", null, 0, -1, ExampleTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getExampleTable_Name(), ecorePackage.getEString(), "name", null, 0, 1, ExampleTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(exampleHeadingEClass, ExampleHeading.class, "ExampleHeading", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getExampleHeading_Table(), this.getExampleTable(), this.getExampleTable_Heading(), "table", null, 0, 1, ExampleHeading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getExampleHeading_Values(), theXbasePackage.getXExpression(), null, "values", null, 0, -1, ExampleHeading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getExampleHeading_Cells(), theXbasePackage.getXVariableDeclaration(), null, "cells", null, 0, -1, ExampleHeading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(exampleRowEClass, ExampleRow.class, "ExampleRow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getExampleRow_Table(), this.getExampleTable(), this.getExampleTable_Rows(), "table", null, 0, 1, ExampleRow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getExampleRow_Cells(), theXbasePackage.getXExpression(), null, "cells", null, 0, -1, ExampleRow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

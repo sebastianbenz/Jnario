@@ -107,29 +107,6 @@ public class SpecSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SpecPackage.EXAMPLE_TABLE:
-			{
-				ExampleTable exampleTable = (ExampleTable)theEObject;
-				T result = caseExampleTable(exampleTable);
-				if (result == null) result = caseXtendMember(exampleTable);
-				if (result == null) result = caseXtendAnnotationTarget(exampleTable);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case SpecPackage.EXAMPLE_HEADING:
-			{
-				ExampleHeading exampleHeading = (ExampleHeading)theEObject;
-				T result = caseExampleHeading(exampleHeading);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case SpecPackage.EXAMPLE_ROW:
-			{
-				ExampleRow exampleRow = (ExampleRow)theEObject;
-				T result = caseExampleRow(exampleRow);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -178,54 +155,6 @@ public class SpecSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseExample(Example object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Example Table</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Example Table</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseExampleTable(ExampleTable object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Example Heading</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Example Heading</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseExampleHeading(ExampleHeading object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Example Row</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Example Row</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseExampleRow(ExampleRow object)
 	{
 		return null;
 	}

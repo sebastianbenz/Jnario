@@ -13,7 +13,7 @@ SpecFile returns xtend::XtendFile:
 	xtendClass=ExampleGroup
 ;
 
-ExampleGroup returns xtend::XtendClass: 
+ExampleGroup returns xtend::XtendClass:  
 	{ExampleGroup}
 	annotations+=XAnnotation* 
 	preamble=('describe') targetType=[types::JvmDeclaredType|QualifiedName]? name=STRING? '{'
@@ -48,12 +48,12 @@ Member returns xtend::XtendMember:
 			(preamble=('context') targetOperation=[types::JvmOperation|Method]? name=STRING? '{'
       		members+=Member*
       	'}')
-	|	{ExampleTable.annotationInfo = current} ('example' name=STRING? '{'
-      		(
-      			heading = ExampleHeading
-				(rows += ExampleRow)*
-      		)?
-      	'}')
+//	|	{ExampleTable.annotationInfo = current} ('example' name=STRING? '{'
+//      		(
+//      			heading = ExampleHeading
+//				(rows += ExampleRow)*
+//      		)?
+//      	'}') 
 	|	{xtend::XtendField.annotationInfo = current}	
 		 	(extension?='extension' type=JvmTypeReference name=ID?
 			| static?='static'? type=JvmTypeReference name=ID)
@@ -72,21 +72,21 @@ Member returns xtend::XtendMember:
 			(expression=XBlockExpression)?
 	 );
 
-ExampleHeading:
-	cells+=ExampleHeadingCell+ EXAMPLE_ROW_END;
- 
-ExampleHeadingCell returns xbase::XVariableDeclaration:
-	(PIPE | PIPE_SPACES) name=ID ;
-
-ExampleRow:
-	cells+=ExampleCell+ EXAMPLE_ROW_END;
-
-ExampleCell returns xbase::XExpression:
-	(PIPE | PIPE_SPACES) XExpression;
-
-terminal PIPE : '|';
-terminal PIPE_SPACES: PIPE (' '|'\t')+;
-terminal EXAMPLE_ROW_END: (PIPE | PIPE_SPACES) '\r'? '\n';
+//ExampleHeading:
+//	cells+=ExampleHeadingCell+ EXAMPLE_ROW_END;
+// 
+//ExampleHeadingCell:
+//	{ExampleHeadingCell}(PIPE | PIPE_SPACES) name=ID ;
+//
+//ExampleRow:
+//	cells+=ExampleCell+ EXAMPLE_ROW_END;
+//
+//ExampleCell returns xbase::XExpression:
+//	(PIPE | PIPE_SPACES) XExpression;
+//
+//terminal PIPE : '|';
+//terminal PIPE_SPACES: PIPE (' '|'\t')+;
+//terminal EXAMPLE_ROW_END: (PIPE | PIPE_SPACES) '\r'? '\n';
 
 terminal STRING	: 
 			'"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |

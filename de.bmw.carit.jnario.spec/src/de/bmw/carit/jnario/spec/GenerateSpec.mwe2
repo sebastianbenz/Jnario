@@ -34,7 +34,6 @@ Workflow {
 	}
 
 	component = org.eclipse.emf.mwe2.ecore.EcoreGenerator {
-		generateCustomClasses=true
 		genModel = "platform:/resource/${projectName}/model/Spec.genmodel"
 		srcPath ="platform:/resource/${projectName}/src"
 		srcPath ="platform:/resource/org.eclipse.xtext.common.types/src"
