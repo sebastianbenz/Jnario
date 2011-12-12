@@ -11,6 +11,7 @@ import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.eclipse.xtext.xbase.validation.UIStrings;
@@ -21,6 +22,8 @@ import org.eclipse.xtext.xtend2.xtend2.XtendImport;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 
+import de.bmw.carit.jnario.spec.naming.ExampleNameProvider;
+import de.bmw.carit.jnario.spec.spec.Example;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 
 /**
@@ -46,17 +49,24 @@ public class SpecLabelProvider extends Xtend2LabelProvider {
 
 	@Inject
 	private IJvmModelAssociations associations;
+	
+	@Inject
+	private ExampleNameProvider exampleNameProvider;
 
 	public Image image(ExampleGroup element) {
-		Iterable<JvmGenericType> inferredTypes = Iterables.filter(associations.getJvmElements(element), JvmGenericType.class);
-		for (JvmGenericType inferredType : inferredTypes) {
-			return images.forClass(inferredType.getVisibility());
-		}
-		return null;
+		return images.forClass(JvmVisibility.PUBLIC);
+	}
+	
+	public Image image(Example element) {
+		return images.forFunction(JvmVisibility.PUBLIC, false);
 	}
 
 	public String text(ExampleGroup element) {
-		return element.getName();
+		return exampleNameProvider.describe(element);
+	}
+	
+	public String text(Example element) {
+		return exampleNameProvider.describe(element);
 	}
 
 }
