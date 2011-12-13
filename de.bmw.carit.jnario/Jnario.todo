@@ -3,3 +3,4 @@ TODO:
 	- move de.bmw.carit.jnario.common.test.util.* to test util plugin
 	- delete de.bmw.carit.jnario.common.ui.launching.*
 	- compiler is not working on a mac
+	- add tests for ordering in example runner

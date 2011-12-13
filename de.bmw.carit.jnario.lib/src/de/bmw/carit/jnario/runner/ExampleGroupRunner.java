@@ -37,7 +37,7 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 		super(testClass);
 		this.nameProvider = nameProvider;
 		
-		Iterable<Runner> allExamples = concat(examples(), exampleGroups());
+		Iterable<Runner> allExamples = concat(collectExampleGroups(), collectExamples());
 		this.children = newArrayList(Iterables.filter(allExamples, notNull()));
 		if(children.isEmpty()){
 			throw new InitializationError("No examples");
@@ -58,10 +58,31 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 		return nameProvider;
 	}
 
-	private Iterable<? extends Runner> exampleGroups() {
-		List<FrameworkMethod> annotatedMethods = getTestClass()
-				.getAnnotatedMethods(Test.class);
-		
+	protected Iterable<? extends Runner> collectExamples() {
+		List<FrameworkMethod> annotatedMethods = getTestClass().getAnnotatedMethods(Test.class);
+		orderMethods(annotatedMethods);
+		return createRunners(annotatedMethods);
+	}
+
+	protected Iterable<? extends Runner> createRunners(
+			List<FrameworkMethod> annotatedMethods) {
+		return transform(annotatedMethods,
+				new Function<FrameworkMethod, Runner>() {
+
+					@Override
+					public Runner apply(FrameworkMethod from) {
+						try {
+							return createExampleRunner(from);
+						} catch (InitializationError e) {
+							return null;
+						} catch (NoTestsRemainException e) {
+							throw new Error(e); // should not happen
+						}
+					}
+				});
+	}
+
+	protected void orderMethods(List<FrameworkMethod> annotatedMethods) {
 		Collections.sort(annotatedMethods, new Comparator<FrameworkMethod>(){
 
 			@Override
@@ -81,25 +102,7 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 			}
 			
 		});
-		
-		return transform(annotatedMethods,
-				new Function<FrameworkMethod, Runner>() {
-
-					@Override
-					public Runner apply(FrameworkMethod from) {
-						try {
-							return createExampleRunner(from);
-						} catch (InitializationError e) {
-							return null;
-						} catch (NoTestsRemainException e) {
-							throw new Error(e); // should not happen
-						}
-					}
-
-
-				});
 	}
-	
 	
 	protected ExampleRunner createExampleRunner(
 			FrameworkMethod from) throws InitializationError,
@@ -130,7 +133,7 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 		return annotation;
 	}
 
-	private Iterable<? extends Runner> examples() {
+	protected Iterable<? extends Runner> collectExampleGroups() {
 		return transform(allDeclaredClasses(),
 				new Function<Class<?>, ExampleGroupRunner>() {
 

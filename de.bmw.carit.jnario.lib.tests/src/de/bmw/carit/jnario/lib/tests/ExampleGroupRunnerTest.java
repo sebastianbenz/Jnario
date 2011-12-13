@@ -1,12 +1,21 @@
 package de.bmw.carit.jnario.lib.tests;
 
+import static com.google.common.collect.Lists.newArrayList;
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
+import java.util.List;
+
 import org.hamcrest.Matcher;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.internal.matchers.TypeSafeMatcher;
 import org.junit.runner.Description;
+import org.junit.runner.JUnitCore;
 import org.junit.runner.RunWith;
 import org.junit.runners.model.InitializationError;
 
@@ -21,14 +30,36 @@ public class ExampleGroupRunnerTest {
 	@Named("Example1 Name")
 	public static class Example {
 		
+		@BeforeClass
+		public static void beforeClass(){
+			run("Example#beforeClass");
+		}
+		
+		@Before
+		public void before(){
+			run("Example#before");
+		}
+		
 		@Test
 		@Named("Test 1")
 		public void first() throws Exception {
+			run("Example#first");
 		}
 		
 		@Test
 		@Named("Test 2")
 		public void second() throws Exception {
+			run("Example#second");
+		}
+		
+		@After
+		public void after(){
+			run("Example#after");
+		}
+		
+		@AfterClass
+		public static void afterClass(){
+			run("Example#afterClass");
 		}
 		
 	}
@@ -42,20 +73,20 @@ public class ExampleGroupRunnerTest {
 			@Test
 			@Named("Test 2")
 			public void firstSubTest() throws Exception {
-				System.out.println("firstSubTest");
+				run("SubExample#firstSubTest");
 			}
 			
 			@Test
 			@Named("Test 3")
 			public void secondSubTest() throws Exception {
-				System.out.println("secondSubTest");
+				run("SubExample#secondSubTest");
 			}
 		}
 		
 		@Test
 		@Named("Test 1")
 		public void firstTest() throws Exception {
-			System.out.println("firstTest");
+			run("ExampleWithContext#firstTest");
 		}
 	}
 	
@@ -67,6 +98,7 @@ public class ExampleGroupRunnerTest {
 		@Test
 		@Named("Parent Test 1")
 		public void first() throws Exception {
+			run("ParentExample#first");
 		}
 		
 	}
@@ -75,9 +107,17 @@ public class ExampleGroupRunnerTest {
 	public static class ExampleWithoutAnnotation {
 
 		@Test
-		public void dummy() throws Exception {
+		public void test() throws Exception {
+			run("ExampleWithoutAnnotation#test");
 		}
 		
+	}
+	
+	private static List<String> executedTests = newArrayList();
+	
+	@Before
+	public void clearExecutedTests(){
+		executedTests.clear();
 	}
 
 	@Test
@@ -124,13 +164,45 @@ public class ExampleGroupRunnerTest {
 	}
 	
 	
+	@Test
+	public void shouldExecuteAllTests() throws Exception {
+		List<String> expected = newArrayList(
+				"Example#first",
+				"Example#second",
+				"SubExample#firstSubTest",
+				"SubExample#secondSubTest",
+				"ExampleWithContext#firstTest",
+				"ParentExample#first"
+		);
 
+		new JUnitCore().run(ParentExample.class);
+		
+		assertEquals(expected, executedTests);
+	}
+
+	@Test
+	public void shouldExecuteAllSetupAndTearDownMethods() throws Exception {
+		List<String> expected = newArrayList(
+				"Example#beforeClass",
+				"Example#before",
+				"Example#first",
+				"Example#after",
+				"Example#before",
+				"Example#second",
+				"Example#after",
+				"Example#afterClass"
+		);
+
+		new JUnitCore().run(Example.class);
+		
+		assertEquals(expected, executedTests);
+	}
+	
 	private Description describe(Class<?> klass) throws InitializationError {
 		ExampleGroupRunner xspecRunner = new ExampleGroupRunner(klass);
 		Description description = xspecRunner.getDescription();
 		return description;
 	}
-
 
 	private Matcher<Description> desc(final String displayName, final Matcher<Description>... childrenMatchers) {
 		return new TypeSafeMatcher<Description>() {
@@ -160,6 +232,11 @@ public class ExampleGroupRunnerTest {
 				return desc.getDisplayName().split("\\(")[0];
 			}
 		};
+	}
+	
+	public static void run(String testName){
+		System.out.println("\"" + testName + "\",");
+		executedTests.add(testName);
 	}
 
 }
