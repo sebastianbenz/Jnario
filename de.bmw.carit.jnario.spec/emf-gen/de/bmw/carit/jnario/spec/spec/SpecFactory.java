@@ -53,6 +53,33 @@ public interface SpecFactory extends EFactory
 	Example createExample();
 
 	/**
+	 * Returns a new object of class '<em>Before</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Before</em>'.
+	 * @generated
+	 */
+	Before createBefore();
+
+	/**
+	 * Returns a new object of class '<em>After</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>After</em>'.
+	 * @generated
+	 */
+	After createAfter();
+
+	/**
+	 * Returns a new object of class '<em>Test Function</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Test Function</em>'.
+	 * @generated
+	 */
+	TestFunction createTestFunction();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

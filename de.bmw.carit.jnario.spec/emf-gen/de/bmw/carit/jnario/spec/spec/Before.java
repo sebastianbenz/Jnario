@@ -1,0 +1,54 @@
+/**
+ * <copyright>
+ * </copyright>
+ *
+ */
+package de.bmw.carit.jnario.spec.spec;
+
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Before</b></em>'.
+ * <!-- end-user-doc -->
+ *
+ * <p>
+ * The following features are supported:
+ * <ul>
+ *   <li>{@link de.bmw.carit.jnario.spec.spec.Before#isBeforeAll <em>Before All</em>}</li>
+ * </ul>
+ * </p>
+ *
+ * @see de.bmw.carit.jnario.spec.spec.SpecPackage#getBefore()
+ * @model
+ * @generated
+ */
+public interface Before extends TestFunction
+{
+	/**
+	 * Returns the value of the '<em><b>Before All</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Before All</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Before All</em>' attribute.
+	 * @see #setBeforeAll(boolean)
+	 * @see de.bmw.carit.jnario.spec.spec.SpecPackage#getBefore_BeforeAll()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isBeforeAll();
+
+	/**
+	 * Sets the value of the '{@link de.bmw.carit.jnario.spec.spec.Before#isBeforeAll <em>Before All</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Before All</em>' attribute.
+	 * @see #isBeforeAll()
+	 * @generated
+	 */
+	void setBeforeAll(boolean value);
+
+} // Before

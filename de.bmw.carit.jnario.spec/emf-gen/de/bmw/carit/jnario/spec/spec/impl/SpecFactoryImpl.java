@@ -70,6 +70,9 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
 			case SpecPackage.SPEC_FILE: return createSpecFile();
 			case SpecPackage.EXAMPLE_GROUP: return createExampleGroup();
 			case SpecPackage.EXAMPLE: return createExample();
+			case SpecPackage.BEFORE: return createBefore();
+			case SpecPackage.AFTER: return createAfter();
+			case SpecPackage.TEST_FUNCTION: return createTestFunction();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -106,6 +109,39 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
 	{
 		ExampleImplCustom example = new ExampleImplCustom();
 		return example;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Before createBefore()
+	{
+		BeforeImpl before = new BeforeImpl();
+		return before;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public After createAfter()
+	{
+		AfterImpl after = new AfterImpl();
+		return after;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TestFunction createTestFunction()
+	{
+		TestFunctionImpl testFunction = new TestFunctionImpl();
+		return testFunction;
 	}
 
 	/**

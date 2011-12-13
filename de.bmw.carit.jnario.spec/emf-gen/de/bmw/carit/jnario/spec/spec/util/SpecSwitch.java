@@ -102,8 +102,38 @@ public class SpecSwitch<T> extends Switch<T>
 			{
 				Example example = (Example)theEObject;
 				T result = caseExample(example);
+				if (result == null) result = caseTestFunction(example);
 				if (result == null) result = caseXtendMember(example);
 				if (result == null) result = caseXtendAnnotationTarget(example);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SpecPackage.BEFORE:
+			{
+				Before before = (Before)theEObject;
+				T result = caseBefore(before);
+				if (result == null) result = caseTestFunction(before);
+				if (result == null) result = caseXtendMember(before);
+				if (result == null) result = caseXtendAnnotationTarget(before);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SpecPackage.AFTER:
+			{
+				After after = (After)theEObject;
+				T result = caseAfter(after);
+				if (result == null) result = caseTestFunction(after);
+				if (result == null) result = caseXtendMember(after);
+				if (result == null) result = caseXtendAnnotationTarget(after);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SpecPackage.TEST_FUNCTION:
+			{
+				TestFunction testFunction = (TestFunction)theEObject;
+				T result = caseTestFunction(testFunction);
+				if (result == null) result = caseXtendMember(testFunction);
+				if (result == null) result = caseXtendAnnotationTarget(testFunction);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -155,6 +185,54 @@ public class SpecSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseExample(Example object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Before</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Before</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBefore(Before object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>After</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>After</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAfter(After object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Test Function</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Test Function</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTestFunction(TestFunction object)
 	{
 		return null;
 	}

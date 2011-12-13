@@ -98,6 +98,21 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
 				return createExampleAdapter();
 			}
 			@Override
+			public Adapter caseBefore(Before object)
+			{
+				return createBeforeAdapter();
+			}
+			@Override
+			public Adapter caseAfter(After object)
+			{
+				return createAfterAdapter();
+			}
+			@Override
+			public Adapter caseTestFunction(TestFunction object)
+			{
+				return createTestFunctionAdapter();
+			}
+			@Override
 			public Adapter caseXtendFile(XtendFile object)
 			{
 				return createXtendFileAdapter();
@@ -180,6 +195,51 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createExampleAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.spec.spec.Before <em>Before</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.bmw.carit.jnario.spec.spec.Before
+	 * @generated
+	 */
+	public Adapter createBeforeAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.spec.spec.After <em>After</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.bmw.carit.jnario.spec.spec.After
+	 * @generated
+	 */
+	public Adapter createAfterAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.spec.spec.TestFunction <em>Test Function</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.bmw.carit.jnario.spec.spec.TestFunction
+	 * @generated
+	 */
+	public Adapter createTestFunctionAdapter()
 	{
 		return null;
 	}

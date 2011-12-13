@@ -203,7 +203,12 @@ public abstract class BehaviorExecutor {
 					String fullLocation = pathToBundle + File.separator + subFolders;
 					String finalClassPath = getAbsoluteClassPath(fullLocation, installLocation);
 					if(finalClassPath.length() > 0){
-						classpath.add(finalClassPath.replace("/", File.separator).replaceAll(".jar//\\.", ".jar"));
+						if(finalClassPath.endsWith("//.")){
+							finalClassPath = finalClassPath.substring(0, finalClassPath.length()-3);
+						}else if(finalClassPath.endsWith("/.")){
+							finalClassPath = finalClassPath.substring(0, finalClassPath.length()-2);
+						}
+						classpath.add(finalClassPath.replace("/", File.separator));
 					}
 				}
 			} catch (BundleException e) {
@@ -222,14 +227,13 @@ public abstract class BehaviorExecutor {
 		return pathOfBundle;
 	}
 
-	private String getAbsoluteClassPath(String fullLocation,
+	private String getAbsoluteClassPath(String fullLocation, 
 			String installLocation) {
 		if (fullLocation.contains(SYSTEM_BUNDLE)) {
 			return "";
 		}
-		if (fullLocation.contains("..")
-				|| fullLocation.startsWith(PLUGIN_CLASSES_FOLDER)) {
-			return installLocation + File.separator + fullLocation;
+		if (fullLocation.contains("..")	|| fullLocation.startsWith(PLUGIN_CLASSES_FOLDER)) {
+			return installLocation + fullLocation;
 		}
 		return fullLocation;
 	}

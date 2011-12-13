@@ -9,6 +9,8 @@ import static de.bmw.carit.jnario.tests.util.Query.*
 
 import static extension de.bmw.carit.jnario.lib.JnarioObjectExtensions.*
 import de.bmw.carit.jnario.spec.spec.Example
+import de.bmw.carit.jnario.spec.spec.Before
+import de.bmw.carit.jnario.spec.spec.After
 import de.bmw.carit.jnario.spec.naming.ExampleNameProvider
 
 
@@ -16,8 +18,8 @@ import de.bmw.carit.jnario.spec.naming.ExampleNameProvider
 describe ExampleNameProvider{
 	 
 	ExampleNameProvider subject = new ExampleNameProvider()
-
-	context toJavaClassName{
+ 
+	context toJavaClassName{ 
 		
 		it "should remove all white spaces from ExampleGroup's description"{
 			firstJavaClassName("describe 'My Example'").should.not.contain(" ")
@@ -76,6 +78,68 @@ describe ExampleNameProvider{
 		def firstMethodName(String content){
 			val contentWithContext = "describe 'Context'{" + content + "}"
 			subject.toMethodName(parse(contentWithContext).first(typeof(Example)))
+		}
+  	}
+  	
+  	context toMethodName(Before){
+  		
+  		it "should convert before description to camel case starting in lowercase"{
+			each(
+				firstMethodName("before 'my example'"),
+				firstMethodName("before 'my\nexample'"),
+				firstMethodName("before 'my\texample'"),
+				firstMethodName("before 'my_example'") 
+			).should.be('myExample')
+		} 
+		
+		it "should use before as default name"{
+			firstMethodName("before{}").should.be("before")
+		}
+		
+		it "should enumerate befores without description"{
+			secondMethodName("before{}
+							 before{}").should.be("before2")
+		}
+		
+		def firstMethodName(String content){
+			val contentWithContext = "describe 'Context'{" + content + "}"
+			subject.toMethodName(parse(contentWithContext).first(typeof(Before)))
+		}
+		
+		def secondMethodName(String content){
+			val contentWithContext = "describe 'Context'{" + content + "}"
+			subject.toMethodName(parse(contentWithContext).second(typeof(Before)))
+		}
+  	} 
+  	
+  	context toMethodName(After){
+  		
+  		it "should convert after description to camel case starting in lowercase"{
+			each(
+				firstMethodName("after 'my example'"),
+				firstMethodName("after 'my\nexample'"),
+				firstMethodName("after 'my\texample'"),
+				firstMethodName("after 'my_example'") 
+			).should.be('myExample')
+		} 
+		
+		it "should use after as default name"{
+			firstMethodName("after{}").should.be("after")
+		}
+		
+		it "should enumerate afters without description"{
+			secondMethodName("after{}
+							 after{}").should.be("after2")
+		}
+		
+		def firstMethodName(String content){
+			val contentWithContext = "describe 'Context'{" + content + "}"
+			subject.toMethodName(parse(contentWithContext).first(typeof(After)))
+		}
+		
+		def secondMethodName(String content){
+			val contentWithContext = "describe 'Context'{" + content + "}"
+			subject.toMethodName(parse(contentWithContext).second(typeof(After)))
 		}
   	} 
 

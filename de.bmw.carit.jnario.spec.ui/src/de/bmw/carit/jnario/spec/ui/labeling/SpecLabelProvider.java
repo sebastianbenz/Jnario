@@ -23,8 +23,11 @@ import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 
 import de.bmw.carit.jnario.spec.naming.ExampleNameProvider;
+import de.bmw.carit.jnario.spec.spec.After;
+import de.bmw.carit.jnario.spec.spec.Before;
 import de.bmw.carit.jnario.spec.spec.Example;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
+import de.bmw.carit.jnario.spec.spec.TestFunction;
 
 /**
  * Provides labels for a EObjects.
@@ -57,7 +60,7 @@ public class SpecLabelProvider extends Xtend2LabelProvider {
 		return images.forClass(JvmVisibility.PUBLIC);
 	}
 	
-	public Image image(Example element) {
+	public Image image(TestFunction element) {
 		return images.forFunction(JvmVisibility.PUBLIC, false);
 	}
 
@@ -68,5 +71,9 @@ public class SpecLabelProvider extends Xtend2LabelProvider {
 	public String text(Example element) {
 		return exampleNameProvider.describe(element);
 	}
-
+	
+	public String text(TestFunction element) {
+		return exampleNameProvider.toMethodName(element);
+	}
+	
 }

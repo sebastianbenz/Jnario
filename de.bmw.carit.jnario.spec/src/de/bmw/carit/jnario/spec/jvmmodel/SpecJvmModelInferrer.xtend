@@ -6,11 +6,14 @@ import de.bmw.carit.jnario.runner.Contains
 import de.bmw.carit.jnario.runner.ExampleGroupRunner
 import de.bmw.carit.jnario.runner.Named
 import de.bmw.carit.jnario.runner.Subject
+import de.bmw.carit.jnario.spec.naming.ExampleNameProvider
 import de.bmw.carit.jnario.spec.spec.Example
 import de.bmw.carit.jnario.spec.spec.ExampleGroup
 import de.bmw.carit.jnario.spec.spec.SpecFile
+import de.bmw.carit.jnario.spec.spec.TestFunction
 import java.util.List
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.common.types.JvmAnnotationReference
 import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmGenericType
@@ -22,8 +25,12 @@ import org.eclipse.xtext.xbase.XMemberFeatureCall
 import org.eclipse.xtext.xtend2.jvmmodel.Xtend2JvmModelInferrer
 import org.eclipse.xtext.xtend2.xtend2.XtendField
 import org.eclipse.xtext.xtend2.xtend2.XtendFunction
+import org.junit.AfterClass
+import org.junit.BeforeClass
 import org.junit.Test
-import org.junit.runner.RunWith 
+import org.junit.runner.RunWith
+import de.bmw.carit.jnario.spec.spec.Before
+import de.bmw.carit.jnario.spec.spec.After 
 /**
  * <p>Infers a JVM model from the source model.</p> 
  *
@@ -76,22 +83,35 @@ class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
 							subExamples += transform(spec, element, it, isPrelinkingPhase)
 						}
 						Example : {
-							val method = element.toMethod(element.toMethodName, getTypeForName(Void::TYPE, element)) [
-								documentation = element.documentation
-								annotations += exampleGroup.toAnnotation(typeof(Named), element.describe)
-								if(element.exception == null){
-									annotations += element.toAnnotation(typeof(Test))
-								}else{
-									annotations += element.toAnnotation(typeof(Test).name, "expected", element.exception)
-								}
-								body = element.body
-								element.annotations.translateAnnotationsTo(it)
-								exceptions += typeof(Exception).getTypeForName(element)
-							]
-							members += method
+							val annotations = <JvmAnnotationReference>newArrayList()
+							if(element.exception == null){
+								annotations += element.toAnnotation(typeof(Test))
+							}else{
+								annotations += element.toAnnotation(typeof(Test).name, "expected", element.exception)
+							}
+							annotations += element.toAnnotation(typeof(Named), element.describe)
+							members += toMethod(element, annotations)
 						}
 						XtendFunction: {
 							element.transform(it)
+						}
+						Before:{
+							var Class<?> annotationType = typeof(org.junit.Before)
+							var isStatic = false
+							if(element.beforeAll) {
+								annotationType = typeof(BeforeClass)
+								isStatic = true
+							} 
+							members += element.toMethod(annotationType, isStatic)
+						}
+						After:{
+							var Class<?> annotationType = typeof(org.junit.After)
+							var isStatic = false
+							if(element.afterAll) {
+								annotationType = typeof(AfterClass)
+								isStatic = true
+							} 
+							members += element.toMethod(annotationType, isStatic)
 						}
 					}
 				}
@@ -103,6 +123,22 @@ class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
 				addImplicitSubject(exampleGroup)
 			]
 						
+	}
+	
+	def toMethod(TestFunction element, Class<?> annotation, boolean isStatic){
+		val result = toMethod(element, newArrayList(element.toAnnotation(annotation)))
+		result.setStatic(isStatic)	
+		return result
+	}
+	
+	def toMethod(TestFunction element, List<JvmAnnotationReference> annotations){
+		element.toMethod(element.toMethodName, getTypeForName(Void::TYPE, element)) [
+								documentation = element.documentation
+								body = element.body
+								element.annotations.translateAnnotationsTo(it)
+								exceptions += typeof(Exception).getTypeForName(element)
+								it.annotations.addAll(annotations)
+							]
 	}
 	
 	def void addImplicitSubject(JvmGenericType type, ExampleGroup exampleGroup){

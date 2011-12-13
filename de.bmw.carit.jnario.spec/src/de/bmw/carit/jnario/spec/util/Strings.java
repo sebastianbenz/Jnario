@@ -5,6 +5,10 @@ import static java.lang.Character.toUpperCase;
 
 public class Strings {
 
+	public static String convertToCamelCase(String string) {
+		return convertToCamelCase(new StringBuilder(string)).toString();
+	}
+	
 	public static StringBuilder convertToCamelCase(StringBuilder string) {
 		StringBuilder b = new StringBuilder();
 		if(string == null){

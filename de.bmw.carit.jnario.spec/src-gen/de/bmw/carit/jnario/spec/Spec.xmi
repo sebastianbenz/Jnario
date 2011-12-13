@@ -193,6 +193,50 @@
           <elements xsi:type="xtext:Group">
             <elements xsi:type="xtext:Action" feature="annotationInfo" operator="=">
               <type metamodel="/0/@metamodelDeclarations.0">
+                <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/spec/Spec#//Before"/>
+              </type>
+            </elements>
+            <elements xsi:type="xtext:Group">
+              <elements xsi:type="xtext:Keyword" value="before"/>
+              <elements xsi:type="xtext:Assignment" cardinality="?" feature="beforeAll" operator="?=">
+                <terminal xsi:type="xtext:Keyword" value="all"/>
+              </elements>
+              <elements xsi:type="xtext:Assignment" cardinality="?" feature="name" operator="=">
+                <terminal xsi:type="xtext:Alternatives">
+                  <elements xsi:type="xtext:RuleCall" rule="/0/@rules.6"/>
+                  <elements xsi:type="xtext:RuleCall" rule="/4/@rules.11"/>
+                </terminal>
+              </elements>
+              <elements xsi:type="xtext:Assignment" cardinality="?" feature="body" operator="=">
+                <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.34"/>
+              </elements>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Action" feature="annotationInfo" operator="=">
+              <type metamodel="/0/@metamodelDeclarations.0">
+                <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/spec/Spec#//After"/>
+              </type>
+            </elements>
+            <elements xsi:type="xtext:Group">
+              <elements xsi:type="xtext:Keyword" value="after"/>
+              <elements xsi:type="xtext:Assignment" cardinality="?" feature="afterAll" operator="?=">
+                <terminal xsi:type="xtext:Keyword" value="all"/>
+              </elements>
+              <elements xsi:type="xtext:Assignment" cardinality="?" feature="name" operator="=">
+                <terminal xsi:type="xtext:Alternatives">
+                  <elements xsi:type="xtext:RuleCall" rule="/0/@rules.6"/>
+                  <elements xsi:type="xtext:RuleCall" rule="/4/@rules.11"/>
+                </terminal>
+              </elements>
+              <elements xsi:type="xtext:Assignment" cardinality="?" feature="body" operator="=">
+                <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.34"/>
+              </elements>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Action" feature="annotationInfo" operator="=">
+              <type metamodel="/0/@metamodelDeclarations.0">
                 <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/spec/Spec#//ExampleGroup"/>
               </type>
             </elements>

@@ -235,6 +235,61 @@ public interface SpecPackage extends EPackage
 	int EXAMPLE_GROUP_FEATURE_COUNT = Xtend2Package.XTEND_CLASS_FEATURE_COUNT + 4;
 
 	/**
+	 * The meta object id for the '{@link de.bmw.carit.jnario.spec.spec.impl.TestFunctionImpl <em>Test Function</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.bmw.carit.jnario.spec.spec.impl.TestFunctionImpl
+	 * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getTestFunction()
+	 * @generated
+	 */
+	int TEST_FUNCTION = 5;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_FUNCTION__ANNOTATIONS = Xtend2Package.XTEND_MEMBER__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_FUNCTION__ANNOTATION_INFO = Xtend2Package.XTEND_MEMBER__ANNOTATION_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_FUNCTION__NAME = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Body</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_FUNCTION__BODY = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Test Function</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_FUNCTION_FEATURE_COUNT = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link de.bmw.carit.jnario.spec.spec.impl.ExampleImpl <em>Example</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -251,7 +306,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE__ANNOTATIONS = Xtend2Package.XTEND_MEMBER__ANNOTATIONS;
+	int EXAMPLE__ANNOTATIONS = TEST_FUNCTION__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
@@ -260,25 +315,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE__ANNOTATION_INFO = Xtend2Package.XTEND_MEMBER__ANNOTATION_INFO;
-
-	/**
-	 * The feature id for the '<em><b>Preamble</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE__PREAMBLE = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Exception</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE__EXCEPTION = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 1;
+	int EXAMPLE__ANNOTATION_INFO = TEST_FUNCTION__ANNOTATION_INFO;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -287,7 +324,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE__NAME = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 2;
+	int EXAMPLE__NAME = TEST_FUNCTION__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Body</b></em>' containment reference.
@@ -296,7 +333,25 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE__BODY = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 3;
+	int EXAMPLE__BODY = TEST_FUNCTION__BODY;
+
+	/**
+	 * The feature id for the '<em><b>Preamble</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE__PREAMBLE = TEST_FUNCTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Exception</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE__EXCEPTION = TEST_FUNCTION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Example</em>' class.
@@ -305,7 +360,135 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_FEATURE_COUNT = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 4;
+	int EXAMPLE_FEATURE_COUNT = TEST_FUNCTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link de.bmw.carit.jnario.spec.spec.impl.BeforeImpl <em>Before</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.bmw.carit.jnario.spec.spec.impl.BeforeImpl
+	 * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getBefore()
+	 * @generated
+	 */
+	int BEFORE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEFORE__ANNOTATIONS = TEST_FUNCTION__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEFORE__ANNOTATION_INFO = TEST_FUNCTION__ANNOTATION_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEFORE__NAME = TEST_FUNCTION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Body</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEFORE__BODY = TEST_FUNCTION__BODY;
+
+	/**
+	 * The feature id for the '<em><b>Before All</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEFORE__BEFORE_ALL = TEST_FUNCTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Before</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEFORE_FEATURE_COUNT = TEST_FUNCTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link de.bmw.carit.jnario.spec.spec.impl.AfterImpl <em>After</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.bmw.carit.jnario.spec.spec.impl.AfterImpl
+	 * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getAfter()
+	 * @generated
+	 */
+	int AFTER = 4;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AFTER__ANNOTATIONS = TEST_FUNCTION__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AFTER__ANNOTATION_INFO = TEST_FUNCTION__ANNOTATION_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AFTER__NAME = TEST_FUNCTION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Body</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AFTER__BODY = TEST_FUNCTION__BODY;
+
+	/**
+	 * The feature id for the '<em><b>After All</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AFTER__AFTER_ALL = TEST_FUNCTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>After</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AFTER_FEATURE_COUNT = TEST_FUNCTION_FEATURE_COUNT + 1;
 
 
 	/**
@@ -394,26 +577,78 @@ public interface SpecPackage extends EPackage
 	EReference getExample_Exception();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.bmw.carit.jnario.spec.spec.Example#getName <em>Name</em>}'.
+	 * Returns the meta object for class '{@link de.bmw.carit.jnario.spec.spec.Before <em>Before</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Before</em>'.
+	 * @see de.bmw.carit.jnario.spec.spec.Before
+	 * @generated
+	 */
+	EClass getBefore();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.bmw.carit.jnario.spec.spec.Before#isBeforeAll <em>Before All</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Before All</em>'.
+	 * @see de.bmw.carit.jnario.spec.spec.Before#isBeforeAll()
+	 * @see #getBefore()
+	 * @generated
+	 */
+	EAttribute getBefore_BeforeAll();
+
+	/**
+	 * Returns the meta object for class '{@link de.bmw.carit.jnario.spec.spec.After <em>After</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>After</em>'.
+	 * @see de.bmw.carit.jnario.spec.spec.After
+	 * @generated
+	 */
+	EClass getAfter();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.bmw.carit.jnario.spec.spec.After#isAfterAll <em>After All</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>After All</em>'.
+	 * @see de.bmw.carit.jnario.spec.spec.After#isAfterAll()
+	 * @see #getAfter()
+	 * @generated
+	 */
+	EAttribute getAfter_AfterAll();
+
+	/**
+	 * Returns the meta object for class '{@link de.bmw.carit.jnario.spec.spec.TestFunction <em>Test Function</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Test Function</em>'.
+	 * @see de.bmw.carit.jnario.spec.spec.TestFunction
+	 * @generated
+	 */
+	EClass getTestFunction();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.bmw.carit.jnario.spec.spec.TestFunction#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see de.bmw.carit.jnario.spec.spec.Example#getName()
-	 * @see #getExample()
+	 * @see de.bmw.carit.jnario.spec.spec.TestFunction#getName()
+	 * @see #getTestFunction()
 	 * @generated
 	 */
-	EAttribute getExample_Name();
+	EAttribute getTestFunction_Name();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.spec.spec.Example#getBody <em>Body</em>}'.
+	 * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.spec.spec.TestFunction#getBody <em>Body</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Body</em>'.
-	 * @see de.bmw.carit.jnario.spec.spec.Example#getBody()
-	 * @see #getExample()
+	 * @see de.bmw.carit.jnario.spec.spec.TestFunction#getBody()
+	 * @see #getTestFunction()
 	 * @generated
 	 */
-	EReference getExample_Body();
+	EReference getTestFunction_Body();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -509,12 +744,58 @@ public interface SpecPackage extends EPackage
 		EReference EXAMPLE__EXCEPTION = eINSTANCE.getExample_Exception();
 
 		/**
+		 * The meta object literal for the '{@link de.bmw.carit.jnario.spec.spec.impl.BeforeImpl <em>Before</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.bmw.carit.jnario.spec.spec.impl.BeforeImpl
+		 * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getBefore()
+		 * @generated
+		 */
+		EClass BEFORE = eINSTANCE.getBefore();
+
+		/**
+		 * The meta object literal for the '<em><b>Before All</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BEFORE__BEFORE_ALL = eINSTANCE.getBefore_BeforeAll();
+
+		/**
+		 * The meta object literal for the '{@link de.bmw.carit.jnario.spec.spec.impl.AfterImpl <em>After</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.bmw.carit.jnario.spec.spec.impl.AfterImpl
+		 * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getAfter()
+		 * @generated
+		 */
+		EClass AFTER = eINSTANCE.getAfter();
+
+		/**
+		 * The meta object literal for the '<em><b>After All</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute AFTER__AFTER_ALL = eINSTANCE.getAfter_AfterAll();
+
+		/**
+		 * The meta object literal for the '{@link de.bmw.carit.jnario.spec.spec.impl.TestFunctionImpl <em>Test Function</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.bmw.carit.jnario.spec.spec.impl.TestFunctionImpl
+		 * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getTestFunction()
+		 * @generated
+		 */
+		EClass TEST_FUNCTION = eINSTANCE.getTestFunction();
+
+		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute EXAMPLE__NAME = eINSTANCE.getExample_Name();
+		EAttribute TEST_FUNCTION__NAME = eINSTANCE.getTestFunction_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
@@ -522,7 +803,7 @@ public interface SpecPackage extends EPackage
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EXAMPLE__BODY = eINSTANCE.getExample_Body();
+		EReference TEST_FUNCTION__BODY = eINSTANCE.getTestFunction_Body();
 
 	}
 
