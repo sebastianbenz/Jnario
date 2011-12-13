@@ -10,25 +10,25 @@ import org.eclipse.xtext.util.ITextRegion;
 import org.eclipse.xtext.xtend2.xtend2.XtendImport;
 
 import de.bmw.carit.jnario.jnario.Code;
-import de.bmw.carit.jnario.jnario.Feature;
+import de.bmw.carit.jnario.jnario.Jnario;
 import de.bmw.carit.jnario.jnario.Step;
 
 public class FoldingRegionProvider extends DefaultFoldingRegionProvider {
 
 	protected void computeObjectFolding(EObject eObject, IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor) {
-		if(eObject instanceof Feature){
-			Feature feature = (Feature)eObject;
-			calculateFolding(feature, foldingRegionAcceptor);
+		if(eObject instanceof Jnario){
+			Jnario jnario = (Jnario)eObject;
+			calculateFolding(jnario, foldingRegionAcceptor);
 		}else if(eObject instanceof Step){
 			Step step = (Step)eObject;
 			calculateFolding(step, foldingRegionAcceptor);
 		}
 	}
 
-	private void calculateFolding(Feature feature, IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor) {
-		int startFeature = getBegin(feature);
-		if(startFeature >= 0 && !feature.getImports().isEmpty()){
-			EList<XtendImport> imports = feature.getImports();
+	private void calculateFolding(Jnario jnario, IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor) {
+		int startFeature = getBegin(jnario);
+		if(startFeature >= 0 && !jnario.getImports().isEmpty()){
+			EList<XtendImport> imports = jnario.getImports();
 			XtendImport xtendImport = imports.get(imports.size()-1);
 			setFoldingRegion(xtendImport, startFeature, foldingRegionAcceptor);
 		}

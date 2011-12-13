@@ -4,16 +4,32 @@
 package de.bmw.carit.jnario;
 
 import org.eclipse.xtext.generator.OutputConfigurationProvider;
+import org.eclipse.xtext.naming.IQualifiedNameProvider;
+import org.eclipse.xtext.resource.EObjectAtOffsetHelper;
+import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
+import org.eclipse.xtext.xbase.featurecalls.IdentifiableSimpleNameProvider;
 import org.eclipse.xtext.xbase.impl.FeatureCallToJavaMapping;
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
+import org.eclipse.xtext.xbase.jvmmodel.JvmModelAssociator;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
+import org.eclipse.xtext.xbase.scoping.featurecalls.StaticImplicitMethodsFeatureForTypeProvider.ExtensionClassNameProvider;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
+import org.eclipse.xtext.xbase.validation.EarlyExitValidator;
 import org.eclipse.xtext.xtend2.compiler.Xtend2OutputConfigurationProvider;
+import org.eclipse.xtext.xtend2.featurecalls.Xtend2IdentifiableSimpleNameProvider;
+import org.eclipse.xtext.xtend2.jvmmodel.IXtend2JvmAssociations;
+import org.eclipse.xtext.xtend2.naming.Xtend2QualifiedNameProvider;
 import org.eclipse.xtext.xtend2.resource.Xtend2Resource;
+import org.eclipse.xtext.xtend2.resource.Xtend2ResourceDescriptionStrategy;
+import org.eclipse.xtext.xtend2.resource.XtendEObjectAtOffsetHelper;
+import org.eclipse.xtext.xtend2.scoping.Xtend2ImportedNamespaceScopeProvider;
+import org.eclipse.xtext.xtend2.validation.ClasspathBasedChecks;
+import org.eclipse.xtext.xtend2.validation.XtendEarlyExitValidator;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -23,28 +39,15 @@ import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder;
 import de.bmw.carit.jnario.common.scoping.JnarioExtensionClassNameProvider;
 import de.bmw.carit.jnario.generator.JnarioCompiler;
 import de.bmw.carit.jnario.jvmmodel.JnarioFeatureCallToJavaMapping;
-import de.bmw.carit.jnario.scoping.JnarioImportedNamespaceScopeProvider;
+import de.bmw.carit.jnario.jvmmodel.JnarioJvmModelInferrer;
 import de.bmw.carit.jnario.scoping.JnarioScopeProvider;
 import de.bmw.carit.jnario.typing.JnarioTypeProvider;
+import de.bmw.carit.jnario.validation.JnarioClasspathBasedChecks;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 public class JnarioRuntimeModule extends de.bmw.carit.jnario.AbstractJnarioRuntimeModule {
-	
-	@Override
-	public Class<? extends ITypeProvider> bindITypeProvider() {
-		return JnarioTypeProvider.class;
-	}
-	
-	@Override
-	public Class<? extends IScopeProvider> bindIScopeProvider() {
-		return JnarioScopeProvider.class;
-	}
-	
-	public Class<? extends XbaseCompiler> bindXbaseCompiler() {
-		return JnarioCompiler.class; 
-	}
 	
 	public Class<? extends JvmTypesBuilder> bindJvmTypesBuilder(){
 		return ExtendedJvmTypesBuilder.class;
@@ -55,26 +58,77 @@ public class JnarioRuntimeModule extends de.bmw.carit.jnario.AbstractJnarioRunti
 	}
 	
 	@Override
+	public java.lang.Class<? extends IScopeProvider> bindIScopeProvider() {
+		return JnarioScopeProvider.class;
+	}
+	
+
+	public Class<? extends ExtensionClassNameProvider> bindExtensionClassNameProvider(){
+		return JnarioExtensionClassNameProvider.class;
+	}
+	
+	@Override
+	public Class<? extends ITypeProvider> bindITypeProvider() {
+		return JnarioTypeProvider.class;
+	}
+	
+	
+	@Override
+	public Class<? extends XtextResource> bindXtextResource() {
+		return Xtend2Resource.class;
+	}
+
+	@Override
 	public void configureIScopeProviderDelegate(Binder binder) {
 		binder.bind(IScopeProvider.class).annotatedWith(Names.named(AbstractDeclarativeScopeProvider.NAMED_DELEGATE))
-		.to(JnarioImportedNamespaceScopeProvider.class);
+		.to(Xtend2ImportedNamespaceScopeProvider.class);
+	}
+
+	@Override
+	public Class<? extends IdentifiableSimpleNameProvider> bindIdentifiableSimpleNameProvider() {
+		return Xtend2IdentifiableSimpleNameProvider.class;
+	}
+
+	public Class<? extends IJvmModelInferrer> bindIJvmModelInferrer() {
+		return JnarioJvmModelInferrer.class;
+	}
+
+	@Override
+	public Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider() {
+		return Xtend2QualifiedNameProvider.class;
 	}
 	
+	public Class <? extends IDefaultResourceDescriptionStrategy> bindIDefaultResourceDescriptionStrategy() {
+		return Xtend2ResourceDescriptionStrategy.class;
+	}
+
+	public Class<? extends JvmModelAssociator> bindJvmModelAssociator() {
+		return IXtend2JvmAssociations.Impl.class;
+	}
+
+	public Class<? extends EarlyExitValidator> bindEarlyExitValidator() {
+		return XtendEarlyExitValidator.class;
+	}
 	
+	@Override
+	public Class<? extends EObjectAtOffsetHelper> bindEObjectAtOffsetHelper() {
+		return XtendEObjectAtOffsetHelper.class;
+	}
+	
+	public Class<? extends XbaseCompiler> bindXbaseCompiler() {
+		return JnarioCompiler.class; 
+	}	
+
 	public Class<? extends OutputConfigurationProvider> bindOutputConfigurationProvider() {
 		return Xtend2OutputConfigurationProvider.class;
-	}
-	
-	public Class<? extends org.eclipse.xtext.xbase.scoping.featurecalls.StaticImplicitMethodsFeatureForTypeProvider.ExtensionClassNameProvider> bindExtensionClassNameProvider(){
-		return JnarioExtensionClassNameProvider.class;
 	}
 	
 	public Class<? extends FeatureCallToJavaMapping> bindFeatureCallToJavaMapping(){
 		return JnarioFeatureCallToJavaMapping.class;
 	}
 	
-	@Override
-	public Class<? extends XtextResource> bindXtextResource() {
-		return Xtend2Resource.class;
+	public Class<? extends ClasspathBasedChecks> bindClasspathBasedChecks(){
+		return JnarioClasspathBasedChecks.class;
 	}
+	
 }

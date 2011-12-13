@@ -4,18 +4,19 @@ import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
-import org.eclipse.xtext.xbase.typing.XbaseTypeProvider;
+import org.eclipse.xtext.xtend2.typing.Xtend2TypeProvider;
 
 import com.google.inject.Singleton;
 
 import de.bmw.carit.jnario.jnario.ExampleCell;
 import de.bmw.carit.jnario.jnario.ExampleHeading;
 import de.bmw.carit.jnario.jnario.ExampleRow;
-import de.bmw.carit.jnario.jnario.Examples;
+import de.bmw.carit.jnario.jnario.ExampleTable;
 
 @Singleton
-public class JnarioTypeProvider extends XbaseTypeProvider {
+public class JnarioTypeProvider extends Xtend2TypeProvider {
 
+	@Override
 	protected JvmTypeReference _typeForIdentifiable(XVariableDeclaration variableDec, boolean rawType) {
 		JvmTypeReference type = checkIfVariableDeclarationInExample(variableDec);
 		if(type != null){
@@ -34,7 +35,7 @@ public class JnarioTypeProvider extends XbaseTypeProvider {
 	}
 
 	private JvmTypeReference checkIfVariableDeclarationInExample(XVariableDeclaration variableDec){
-		Examples examples = getContainerOfType(variableDec, Examples.class);
+		ExampleTable examples = getContainerOfType(variableDec, ExampleTable.class);
 		if(examples != null){
 			ExampleHeading heading = examples.getHeading();
 			if(isVariableDeclarationInExample(variableDec)){
@@ -52,7 +53,7 @@ public class JnarioTypeProvider extends XbaseTypeProvider {
 	}
 
 	private boolean isVariableDeclarationInExample(XVariableDeclaration variableDec){
-		Examples examples = getContainerOfType(variableDec, Examples.class);
+		ExampleTable examples = getContainerOfType(variableDec, ExampleTable.class);
 		if(examples != null){
 			ExampleHeading heading = examples.getHeading();
 			if(heading.getParts().contains(variableDec)){

@@ -17,12 +17,12 @@ import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.compiler.IAppendable;
-import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
+import org.eclipse.xtext.xtend2.compiler.Xtend2Compiler;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
-public class JnarioCompiler extends XbaseCompiler {
+public class JnarioCompiler extends Xtend2Compiler {
 
 	// removed "{\n" and "\n}" from original method
 	@Override

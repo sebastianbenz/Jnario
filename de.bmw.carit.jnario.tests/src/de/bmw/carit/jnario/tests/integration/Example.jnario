@@ -1,7 +1,7 @@
-/*package de.bmw.carit.jnario.tests
+package de.bmw.carit.jnario.tests
 
 Feature: Parsing simple jnario files.
-Scenario: Parse "and" and code.
+Scenario: Parse and code.
 Given some variables.
 When I add them
 Then the sum should be the result.
@@ -16,4 +16,4 @@ Examples: some examples
 |4|		
 Examples: some other examples
 |x|
-|"y"|*/
+|"y"|

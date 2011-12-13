@@ -5,9 +5,9 @@ Feature: Test Runner
 	import static extension de.bmw.carit.jnario.tests.util.JnarioExecutor.*
 	import static org.junit.experimental.results.ResultMatchers.*
 
-	Scenario: One test instance of one jnario scenario
+	Scenario: Create only one test instance for one jnario scenario
 	
-		Given a jnario-file that uses variables in different steps
+		Given a jnario-file that uses one variable in different steps
 		
 			var jnarioFile = "
 				package bootstrap
@@ -22,7 +22,7 @@ Feature: Test Runner
 				"
 				
 		When I run the scenario
-		
 					
-		Then the scenario should pass
+		Then the scenario should have no validation errors that the variable was not defined
+		And it should pass
 			jnarioFile.execute.should.be(successful)

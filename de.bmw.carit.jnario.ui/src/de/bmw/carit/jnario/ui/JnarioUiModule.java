@@ -4,7 +4,6 @@
 package de.bmw.carit.jnario.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.eclipse.xtext.common.types.xtext.ui.ITypesProposalProvider;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.folding.DefaultFoldingStructureProvider;
 import org.eclipse.xtext.ui.editor.folding.IFoldingRegionProvider;
@@ -14,13 +13,12 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 
 import com.google.inject.Binder;
 
-import de.bmw.carit.jnario.ui.contentassist.ImportingTypesProposalProvider;
 import de.bmw.carit.jnario.ui.editor.FoldingRegionProvider;
 import de.bmw.carit.jnario.ui.editor.FoldingStructureProvider;
 import de.bmw.carit.jnario.ui.editor.JnarioEditor;
 import de.bmw.carit.jnario.ui.editor.TaskTokenTypeToPartitionTypeMapper;
-import de.bmw.carit.jnario.ui.highlighting.SemanticHighlightingCalculator;
 import de.bmw.carit.jnario.ui.highlighting.HighlightingConfiguration;
+import de.bmw.carit.jnario.ui.highlighting.SemanticHighlightingCalculator;
 import de.bmw.carit.jnario.ui.highlighting.TokenHighlighting;
 
 /**
@@ -51,11 +49,6 @@ public class JnarioUiModule extends de.bmw.carit.jnario.ui.AbstractJnarioUiModul
 	
 	public Class<? extends ITokenTypeToPartitionTypeMapper> bindITokenTypeToPartitionTypeMapper() {
 		return TaskTokenTypeToPartitionTypeMapper.class;
-	}
-	
-	@Override
-	public Class<? extends ITypesProposalProvider> bindITypesProposalProvider() {
-		return ImportingTypesProposalProvider.class;
 	}
 	
 	public Class<? extends IFoldingRegionProvider> bindIFoldingRegionProvider() {

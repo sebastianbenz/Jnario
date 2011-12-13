@@ -66,19 +66,19 @@ public class JnarioExecutor extends BehaviorExecutor{
 			throws MalformedURLException, ClassNotFoundException {
 		List<Failure> failures = newArrayList();
 		Jnario jnario = (Jnario) object;
-		for (Scenario scenario : jnario.getFeature().getScenarios()) {
-			String jnarioClassName = nameProvider.getJavaClassName(jnario.getFeature().getName()) + nameProvider.getJavaClassName(scenario.getName());
-			String packageName = jnario.getFeature().getPackageName();
+//		for (Scenario scenario : jnario.getScenarios()) {
+			String jnarioClassName = nameProvider.getJavaClassName(jnario.getName()) + nameProvider.getJavaClassName(jnario.getXtendClass().getName());
+			String packageName = jnario.getPackage();
 			if(packageName == null){
 				packageName = "";
 			}
 			runTestsInClass(jnarioClassName, packageName, failures);
-		}
+	//	}
 		return new PrintableResult(failures);
 	}
 	
 	protected void generateJava(EObject object) {
 		super.generateJava(object);
-		assertFalse("has no scenarios", ((Jnario)object).getFeature().getScenarios().isEmpty());
+	//	assertFalse("has no scenarios", ((Jnario)object).getClass().isEmpty());
 	}
 }

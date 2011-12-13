@@ -1,4 +1,4 @@
-/*package de.bmw.carit.jnario.tests
+package de.bmw.carit.jnario.tests
 
 Feature: A new feature.
 Background:
@@ -11,7 +11,3 @@ Scenario: A fancy scenario.
 	When I do something fancy
 	Then it should work
 		"PowerUser".should.be("PowerUser")
-Scenario: A not so fancy scenario.
-	When I do something not so fancy
-	Then it should still work
-		"password".should.be("password")*/

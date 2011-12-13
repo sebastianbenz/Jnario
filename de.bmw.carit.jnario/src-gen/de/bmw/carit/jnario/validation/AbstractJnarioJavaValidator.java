@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.xtext.xbase.annotations.validation.XbaseWithAnnotationsJavaValidator;
+import org.eclipse.xtext.xtend2.validation.Xtend2JavaValidator;
 
-public class AbstractJnarioJavaValidator extends XbaseWithAnnotationsJavaValidator {
+public class AbstractJnarioJavaValidator extends Xtend2JavaValidator {
 
 	@Override
 	protected List<EPackage> getEPackages() {

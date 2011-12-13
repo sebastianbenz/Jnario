@@ -15,7 +15,7 @@ import com.google.inject.Injector;
 public class JnarioStandaloneSetupGenerated implements ISetup {
 
 	public Injector createInjectorAndDoEMFRegistration() {
-		org.eclipse.xtext.xbase.annotations.XbaseWithAnnotationsStandaloneSetup.doSetup();
+		org.eclipse.xtext.xtend2.Xtend2StandaloneSetup.doSetup();
 
 		Injector injector = createInjector();
 		register(injector);
@@ -27,9 +27,6 @@ public class JnarioStandaloneSetupGenerated implements ISetup {
 	}
 	
 	public void register(Injector injector) {
-	if (!EPackage.Registry.INSTANCE.containsKey("http://www.bmw.de/carit/jnario/Jnario")) {
-		EPackage.Registry.INSTANCE.put("http://www.bmw.de/carit/jnario/Jnario", de.bmw.carit.jnario.jnario.JnarioPackage.eINSTANCE);
-	}
 
 		org.eclipse.xtext.resource.IResourceFactory resourceFactory = injector.getInstance(org.eclipse.xtext.resource.IResourceFactory.class);
 		org.eclipse.xtext.resource.IResourceServiceProvider serviceProvider = injector.getInstance(org.eclipse.xtext.resource.IResourceServiceProvider.class);

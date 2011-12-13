@@ -1,20 +1,18 @@
-grammar de.bmw.carit.jnario.Jnario with org.eclipse.xtext.xbase.annotations.XbaseWithAnnotations
+grammar de.bmw.carit.jnario.Jnario with org.eclipse.xtext.xtend2.Xtend2
 generate jnario "http://www.bmw.de/carit/jnario/Jnario"
 
 import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
-import "http://www.eclipse.org/xtext/Xtend2" as xtend2
+import "http://www.eclipse.org/xtext/Xtend2" as xtend
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
 
-Jnario:
-	feature = Feature?;
-	
-Feature:
-	('package' packageName=QualifiedName)?
+Jnario returns xtend::XtendFile:
+	{Jnario}
+	('package' package=QualifiedName)?
 	name=FEATURE_TEXT
 	imports += Import*
 	description=DESCRIPTION?
 	background = Background?
-	scenarios+=Scenario+;
+	xtendClass=Scenario;
 	
 DESCRIPTION:
 	IN_ORDER_TEXT
@@ -22,7 +20,7 @@ DESCRIPTION:
 	I_WANT_TEXT
 ;
 
-Import returns xtend2::XtendImport:
+Import returns xtend::XtendImport:
 	'import' (
 		(static?='static' extension?='extension'? importedType=[types::JvmType|QualifiedName] '.' '*') | 
 		importedType=[types::JvmType|QualifiedName] | 
@@ -36,37 +34,42 @@ Background:
 	BACKGROUND_TEXT
 	steps+=Given;
 
-Scenario:
+Scenario returns xtend::XtendClass:
+	{Scenario}
 	name=SCENARIO_TEXT
-	annotations+=Annotation*
+	annotations+=XAnnotation*
 	steps+=Given?
 	steps+=When?
 	steps+=Then?
-	examples+=Examples*;
+	examples+=ExampleTable*;
 
 Annotation:
 	annotation=XAnnotation
 	var = VariableDeclaration?;
 
 VariableDeclaration:
-	visibility=VISIBILITY variableDec=XVariableDeclaration; 
+	visibility=Visibility variableDec=XVariableDeclaration; 
 
-Step:
+Step returns xtend::XtendMember:
 	Given|When|Then|And;
 
-Given:
+Given returns xtend::XtendMember:
+	{Given}
 	name=GIVEN_TEXT code=Code?
 	and+=And*;
 
-When:
+When returns xtend::XtendMember:
+	{When}
 	name=WHEN_TEXT code=Code?
 	and+=And*;
 
-Then:
-	name=THEN_TEXT code=Code?
+Then returns xtend::XtendMember:
+	{Then}
+	name=THEN_TEXT code=Code? 
 	and+=And*;
 	
-And:
+And returns xtend::XtendMember:
+	{And}
 	name=AND_TEXT code=Code?
 ;
 
@@ -77,7 +80,7 @@ Code:
 BlockExpression returns xbase::XBlockExpression:
 	(expressions+=XExpressionInsideBlock ';'?)+;
 
-Examples:
+ExampleTable:
 	name=EXAMPLE_TEXT
 	heading = ExampleHeading
 	(rows += ExampleRow)*;
@@ -143,7 +146,6 @@ terminal I_WANT_TEXT: 'I want' TEXT_AND_NL;
 terminal PIPE : '|';
 terminal PIPE_SPACES: PIPE (' '|'\t')+;
 terminal EXAMPLE_ROW_END: (PIPE | PIPE_SPACES) '\r'? '\n';
-terminal VISIBILITY: 'private' | 'public' | 'protected';
 
 
 terminal fragment TEXT_MULTI_LINE: !('\r'|'\n')* '\\' NL;

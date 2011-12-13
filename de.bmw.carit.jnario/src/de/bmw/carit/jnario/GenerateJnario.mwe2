@@ -13,12 +13,35 @@ Workflow {
     bean = StandaloneSetup {
         scanClassPath = true
         platformUri = "${runtimeProject}/.."
-        // The following two lines ca be removed, if Xbase is not used.
-        registerGeneratedEPackage = "org.eclipse.xtext.xbase.XbasePackage"
-        registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
-        registerGeneratedEPackage = "org.eclipse.xtext.xtend2.xtend2.Xtend2Package"
-        registerGenModelFile = "platform:/resource/org.eclipse.xtext.xtend2/model/Xtend2.genmodel"
+		registerGenModelFile = "platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel"
+		registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
+		registerGenModelFile = "platform:/resource/org.eclipse.xtext.xtend2/model/Xtend2.genmodel"
     }
+    
+    bean = StandaloneSetup {
+		resourceSet = org.eclipse.xtext.resource.XtextResourceSet : resourceSet {}
+        scanClassPath = true
+        
+		registerEcoreFile = "platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore"
+		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xtype.ecore"
+		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore"
+		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/XAnnotations.ecore"
+		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xtend2/model/Xtend2.ecore"        
+		registerEcoreFile = "platform:/resource/${projectName}/model/Jnario.ecore"
+    }
+    
+    component = DirectoryCleaner {
+		directory = "${runtimeProject}/emf-gen"
+	}
+
+	component = org.eclipse.emf.mwe2.ecore.EcoreGenerator {
+		generateCustomClasses=true
+		genModel = "platform:/resource/${projectName}/model/Jnario.genmodel"
+		srcPath ="platform:/resource/${projectName}/src"
+		srcPath ="platform:/resource/org.eclipse.xtext.common.types/src"
+		srcPath ="platform:/resource/org.eclipse.xtext.xbase/src"
+		srcPath ="platform:/resource/org.eclipse.xtext.xtend2/src"
+	}
 
     component = DirectoryCleaner {
         directory = "${runtimeProject}/src-gen"
@@ -35,6 +58,7 @@ Workflow {
         projectNameRt = projectName
         projectNameUi = "${projectName}.ui"
         language = {
+        	forcedResourceSet=resourceSet
             uri = grammarURI
             fileExtensions = file.extensions
 
@@ -42,12 +66,13 @@ Workflow {
             fragment = grammarAccess.GrammarAccessFragment {}
 
             // generates Java API for the generated EPackages
-            fragment = ecore.EcoreGeneratorFragment {
+            //fragment = ecore.EcoreGeneratorFragment {
+            
             // referencedGenModels = "
             //  platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel,
             //  platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel
             // "
-            }
+            //}
 
             // Serializer 2.0
             fragment = serializer.SerializerFragment {
@@ -64,9 +89,11 @@ Workflow {
 
             // The antlr parser generator fragment.
             fragment = parser.antlr.XtextAntlrGeneratorFragment {
-            //  options = {
-            //      backtrack = true
-            //  }
+           	  options = {
+                  //backtrack = true
+                  
+              }
+              antlrParam = "-Xconversiontimeout" antlrParam = "10000"
             }
 
             // java-based API for validation
@@ -122,7 +149,9 @@ Workflow {
             fragment = types.TypesGeneratorFragment {}
 
             // generates the required bindings only if the grammar inherits from Xbase
-            fragment = xbase.XbaseGeneratorFragment {}
+            fragment = xbase.XbaseGeneratorFragment {
+            	generateXtendInferrer=true
+            }
 
             // provides a preference page for template proposals
             fragment = templates.CodetemplatesGeneratorFragment {}

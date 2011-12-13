@@ -22,9 +22,9 @@ import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XFeatureCall;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.XbaseFactory;
-import org.eclipse.xtext.xbase.annotations.scoping.XbaseWithAnnotationsScopeProvider;
 import org.eclipse.xtext.xbase.scoping.LocalVariableScopeContext;
 import org.eclipse.xtext.xbase.scoping.featurecalls.IJvmFeatureDescriptionProvider;
+import org.eclipse.xtext.xtend2.scoping.Xtend2ScopeProvider;
 
 import com.google.common.collect.Iterators;
 import com.google.inject.Inject;
@@ -45,89 +45,7 @@ import de.bmw.carit.jnario.jnario.When;
  * on how and when to use it 
  *
  */
-public class JnarioScopeProvider extends XbaseWithAnnotationsScopeProvider {
-	
-	private static final int IMPORTED_STATIC_FEATURE_PRIORITY = 50;
-	private static final int IMPLICIT_ARGUMENT_PRIORITY = 400;
-	
-	private static final int STATIC_EXTENSION_PRIORITY_OFFSET = 220;
-	
-	@Inject
-	private Provider<StaticallyImportedFeaturesProvider> staticallyImportedFeaturesProvider;
-
-	@Override
-	protected void addStaticFeatureDescriptionProviders(
-			Resource resource, 
-			JvmDeclaredType contextType,
-			IAcceptor<IJvmFeatureDescriptionProvider> acceptor) {
-		super.addStaticFeatureDescriptionProviders(resource, contextType, acceptor);
-		
-		StaticallyImportedFeaturesProvider staticProvider = staticallyImportedFeaturesProvider.get();
-		staticProvider.setResourceContext(resource);
-		staticProvider.setExtensionProvider(false);
-		
-		addFeatureDescriptionProviders(contextType, staticProvider, null, null, IMPORTED_STATIC_FEATURE_PRIORITY, true, acceptor);
-	}
-	
-
-	@Override
-	protected void addFeatureDescriptionProviders(
-			Resource resource, 
-			JvmDeclaredType contextType,
-			XExpression implicitReceiver,
-			XExpression implicitArgument,
-			int priority,
-			IAcceptor<IJvmFeatureDescriptionProvider> acceptor) {
-		super.addFeatureDescriptionProviders(resource, contextType, implicitReceiver, implicitArgument, priority, acceptor);
-		
-		if (implicitReceiver == null || implicitArgument != null) {
-			final StaticallyImportedFeaturesProvider staticProvider = staticallyImportedFeaturesProvider.get();
-			staticProvider.setResourceContext(resource);
-			staticProvider.setExtensionProvider(true);
-			if (implicitArgument != null) {
-				// use the implicit argument as implicit receiver
-				SimpleAcceptor casted = (SimpleAcceptor) acceptor;
-				JvmTypeReference implicitArgumentType = getTypeProvider().getType(implicitArgument, true);
-				IAcceptor<IJvmFeatureDescriptionProvider> myAcceptor = casted.getParent().curry(implicitArgumentType, casted.getExpression());
-				addFeatureDescriptionProviders(contextType, staticProvider, implicitArgument, null, priority + STATIC_EXTENSION_PRIORITY_OFFSET, true, myAcceptor);
-			} else {
-				addFeatureDescriptionProviders(contextType, staticProvider, implicitReceiver, implicitArgument, priority + STATIC_EXTENSION_PRIORITY_OFFSET, true, acceptor);
-			}
-		}
-		
-	}
-	
-
-	@Override
-	protected void addFeatureCallScopes(
-			EObject featureCall, 
-			final IScope localVariableScope,
-			final IJvmFeatureScopeAcceptor featureScopeDescriptions) {
-		IEObjectDescription implicitThis = localVariableScope.getSingleElement(THIS);
-		if (implicitThis != null) {
-			EObject implicitReceiver = implicitThis.getEObjectOrProxy();
-			if (implicitReceiver instanceof JvmIdentifiableElement) {
-				JvmTypeReference receiverType = getTypeProvider().getTypeForIdentifiable((JvmIdentifiableElement) implicitReceiver);
-				if (receiverType != null) {
-					XFeatureCall receiver = XbaseFactory.eINSTANCE.createXFeatureCall();
-					receiver.setFeature((JvmIdentifiableElement) implicitReceiver);
-					IEObjectDescription implicitIt = localVariableScope.getSingleElement(IT);
-					if (implicitIt != null) {
-						EObject implicitArgument = implicitIt.getEObjectOrProxy();
-						if (implicitArgument instanceof JvmIdentifiableElement) {
-							JvmTypeReference argumentType = getTypeProvider().getTypeForIdentifiable((JvmIdentifiableElement) implicitArgument);
-							if (argumentType != null) {
-								XFeatureCall argument = XbaseFactory.eINSTANCE.createXFeatureCall();
-								argument.setFeature((JvmIdentifiableElement) implicitArgument);
-								addFeatureScopes(receiverType, featureCall, getContextType(featureCall), receiver, argument, IMPLICIT_ARGUMENT_PRIORITY, featureScopeDescriptions);
-							}
-						}
-					}
-				}
-			}
-		}
-		super.addFeatureCallScopes(featureCall, localVariableScope, featureScopeDescriptions);
-	}
+public class JnarioScopeProvider extends Xtend2ScopeProvider {
 	
 	@Override
 	protected IScope createLocalVarScope(IScope parentScope, LocalVariableScopeContext scopeContext) {
@@ -151,8 +69,8 @@ public class JnarioScopeProvider extends XbaseWithAnnotationsScopeProvider {
 			Iterators.addAll(variables, scenarioVariables);
 		}
 		Jnario jnario = getContainerOfType(context, Jnario.class);
-		if(jnario.getFeature().getBackground() != null){
-			Background background = jnario.getFeature().getBackground();
+		if(jnario.getBackground() != null){
+			Background background = jnario.getBackground();
 			eAllContents = background.eAllContents();
 			Iterator<XVariableDeclaration> backgroundVariables = filter(eAllContents, XVariableDeclaration.class);
 			Iterators.addAll(variables, backgroundVariables);
