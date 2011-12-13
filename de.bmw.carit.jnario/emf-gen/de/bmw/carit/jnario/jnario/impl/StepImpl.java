@@ -2,7 +2,6 @@
  * <copyright>
  * </copyright>
  *
-
  */
 package de.bmw.carit.jnario.jnario.impl;
 
@@ -18,7 +17,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.xtext.xtend2.xtend2.impl.XtendMemberImplCustom;
+import org.eclipse.xtext.xtend2.xtend2.impl.XtendMemberImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,7 +33,7 @@ import org.eclipse.xtext.xtend2.xtend2.impl.XtendMemberImplCustom;
  *
  * @generated
  */
-public class StepImpl extends XtendMemberImplCustom implements Step
+public class StepImpl extends XtendMemberImpl implements Step
 {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.

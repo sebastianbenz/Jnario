@@ -2,7 +2,6 @@
  * <copyright>
  * </copyright>
  *
-
  */
 package de.bmw.carit.jnario.jnario.impl;
 
@@ -18,7 +17,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.xtext.xtend2.xtend2.impl.XtendFileImplCustom;
+import org.eclipse.xtext.xtend2.xtend2.impl.XtendFileImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,7 +34,7 @@ import org.eclipse.xtext.xtend2.xtend2.impl.XtendFileImplCustom;
  *
  * @generated
  */
-public class JnarioImpl extends XtendFileImplCustom implements Jnario
+public class JnarioImpl extends XtendFileImpl implements Jnario
 {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.

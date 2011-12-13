@@ -2552,19 +2552,19 @@ public class InternalJnarioLexer extends Lexer {
                     if ( (LA10_1=='\'') ) {
                         int LA10_4 = input.LA(3);
 
-                        if ( ((LA10_4>='\u0000' && LA10_4<='&')||(LA10_4>='(' && LA10_4<='\u00AA')||(LA10_4>='\u00AC' && LA10_4<='\uFFFF')) ) {
+                        if ( ((LA10_4>='\u0000' && LA10_4<='&')||(LA10_4>='(' && LA10_4<='\u00B3')||(LA10_4>='\u00B5' && LA10_4<='\uFFFF')) ) {
                             alt10=1;
                         }
 
 
                     }
-                    else if ( ((LA10_1>='\u0000' && LA10_1<='&')||(LA10_1>='(' && LA10_1<='\u00AA')||(LA10_1>='\u00AC' && LA10_1<='\uFFFF')) ) {
+                    else if ( ((LA10_1>='\u0000' && LA10_1<='&')||(LA10_1>='(' && LA10_1<='\u00B3')||(LA10_1>='\u00B5' && LA10_1<='\uFFFF')) ) {
                         alt10=1;
                     }
 
 
                 }
-                else if ( ((LA10_0>='\u0000' && LA10_0<='&')||(LA10_0>='(' && LA10_0<='\u00AA')||(LA10_0>='\u00AC' && LA10_0<='\uFFFF')) ) {
+                else if ( ((LA10_0>='\u0000' && LA10_0<='&')||(LA10_0>='(' && LA10_0<='\u00B3')||(LA10_0>='\u00B5' && LA10_0<='\uFFFF')) ) {
                     alt10=1;
                 }
 
@@ -2675,8 +2675,8 @@ public class InternalJnarioLexer extends Lexer {
         try {
             int _type = RULE_RICH_TEXT_START;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26060:22: ( '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB' )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26060:24: '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB'
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26060:22: ( '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00B4' )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26060:24: '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00B4'
             {
             match("'''"); 
 
@@ -2692,19 +2692,19 @@ public class InternalJnarioLexer extends Lexer {
                     if ( (LA14_1=='\'') ) {
                         int LA14_4 = input.LA(3);
 
-                        if ( ((LA14_4>='\u0000' && LA14_4<='&')||(LA14_4>='(' && LA14_4<='\u00AA')||(LA14_4>='\u00AC' && LA14_4<='\uFFFF')) ) {
+                        if ( ((LA14_4>='\u0000' && LA14_4<='&')||(LA14_4>='(' && LA14_4<='\u00B3')||(LA14_4>='\u00B5' && LA14_4<='\uFFFF')) ) {
                             alt14=1;
                         }
 
 
                     }
-                    else if ( ((LA14_1>='\u0000' && LA14_1<='&')||(LA14_1>='(' && LA14_1<='\u00AA')||(LA14_1>='\u00AC' && LA14_1<='\uFFFF')) ) {
+                    else if ( ((LA14_1>='\u0000' && LA14_1<='&')||(LA14_1>='(' && LA14_1<='\u00B3')||(LA14_1>='\u00B5' && LA14_1<='\uFFFF')) ) {
                         alt14=1;
                     }
 
 
                 }
-                else if ( ((LA14_0>='\u0000' && LA14_0<='&')||(LA14_0>='(' && LA14_0<='\u00AA')||(LA14_0>='\u00AC' && LA14_0<='\uFFFF')) ) {
+                else if ( ((LA14_0>='\u0000' && LA14_0<='&')||(LA14_0>='(' && LA14_0<='\u00B3')||(LA14_0>='\u00B5' && LA14_0<='\uFFFF')) ) {
                     alt14=1;
                 }
 
@@ -2759,7 +2759,7 @@ public class InternalJnarioLexer extends Lexer {
 
             }
 
-            match('\u00AB'); 
+            match('\u00B4'); 
 
             }
 
@@ -2776,10 +2776,10 @@ public class InternalJnarioLexer extends Lexer {
         try {
             int _type = RULE_RICH_TEXT_END;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26062:20: ( '\\u00BB' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26062:22: '\\u00BB' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26062:20: ( '\\u00AA' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26062:22: '\\u00AA' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
             {
-            match('\u00BB'); 
+            match('\u00AA'); 
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26062:31: ( RULE_IN_RICH_STRING )*
             loop17:
             do {
@@ -2792,19 +2792,19 @@ public class InternalJnarioLexer extends Lexer {
                     if ( (LA17_1=='\'') ) {
                         int LA17_4 = input.LA(3);
 
-                        if ( ((LA17_4>='\u0000' && LA17_4<='&')||(LA17_4>='(' && LA17_4<='\u00AA')||(LA17_4>='\u00AC' && LA17_4<='\uFFFF')) ) {
+                        if ( ((LA17_4>='\u0000' && LA17_4<='&')||(LA17_4>='(' && LA17_4<='\u00B3')||(LA17_4>='\u00B5' && LA17_4<='\uFFFF')) ) {
                             alt17=1;
                         }
 
 
                     }
-                    else if ( ((LA17_1>='\u0000' && LA17_1<='&')||(LA17_1>='(' && LA17_1<='\u00AA')||(LA17_1>='\u00AC' && LA17_1<='\uFFFF')) ) {
+                    else if ( ((LA17_1>='\u0000' && LA17_1<='&')||(LA17_1>='(' && LA17_1<='\u00B3')||(LA17_1>='\u00B5' && LA17_1<='\uFFFF')) ) {
                         alt17=1;
                     }
 
 
                 }
-                else if ( ((LA17_0>='\u0000' && LA17_0<='&')||(LA17_0>='(' && LA17_0<='\u00AA')||(LA17_0>='\u00AC' && LA17_0<='\uFFFF')) ) {
+                else if ( ((LA17_0>='\u0000' && LA17_0<='&')||(LA17_0>='(' && LA17_0<='\u00B3')||(LA17_0>='\u00B5' && LA17_0<='\uFFFF')) ) {
                     alt17=1;
                 }
 
@@ -2915,10 +2915,10 @@ public class InternalJnarioLexer extends Lexer {
         try {
             int _type = RULE_RICH_TEXT_INBETWEEN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26064:26: ( '\\u00BB' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB' )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26064:28: '\\u00BB' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB'
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26064:26: ( '\\u00AA' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00B4' )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26064:28: '\\u00AA' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00B4'
             {
-            match('\u00BB'); 
+            match('\u00AA'); 
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26064:37: ( RULE_IN_RICH_STRING )*
             loop21:
             do {
@@ -2931,19 +2931,19 @@ public class InternalJnarioLexer extends Lexer {
                     if ( (LA21_1=='\'') ) {
                         int LA21_4 = input.LA(3);
 
-                        if ( ((LA21_4>='\u0000' && LA21_4<='&')||(LA21_4>='(' && LA21_4<='\u00AA')||(LA21_4>='\u00AC' && LA21_4<='\uFFFF')) ) {
+                        if ( ((LA21_4>='\u0000' && LA21_4<='&')||(LA21_4>='(' && LA21_4<='\u00B3')||(LA21_4>='\u00B5' && LA21_4<='\uFFFF')) ) {
                             alt21=1;
                         }
 
 
                     }
-                    else if ( ((LA21_1>='\u0000' && LA21_1<='&')||(LA21_1>='(' && LA21_1<='\u00AA')||(LA21_1>='\u00AC' && LA21_1<='\uFFFF')) ) {
+                    else if ( ((LA21_1>='\u0000' && LA21_1<='&')||(LA21_1>='(' && LA21_1<='\u00B3')||(LA21_1>='\u00B5' && LA21_1<='\uFFFF')) ) {
                         alt21=1;
                     }
 
 
                 }
-                else if ( ((LA21_0>='\u0000' && LA21_0<='&')||(LA21_0>='(' && LA21_0<='\u00AA')||(LA21_0>='\u00AC' && LA21_0<='\uFFFF')) ) {
+                else if ( ((LA21_0>='\u0000' && LA21_0<='&')||(LA21_0>='(' && LA21_0<='\u00B3')||(LA21_0>='\u00B5' && LA21_0<='\uFFFF')) ) {
                     alt21=1;
                 }
 
@@ -2998,7 +2998,7 @@ public class InternalJnarioLexer extends Lexer {
 
             }
 
-            match('\u00AB'); 
+            match('\u00B4'); 
 
             }
 
@@ -3015,10 +3015,10 @@ public class InternalJnarioLexer extends Lexer {
         try {
             int _type = RULE_COMMENT_RICH_TEXT_INBETWEEN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26066:34: ( '\\u00AB\\u00AB' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB' )? )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26066:36: '\\u00AB\\u00AB' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB' )?
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26066:34: ( '\\u00B4\\u00B4' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00B4' )? )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26066:36: '\\u00B4\\u00B4' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00B4' )?
             {
-            match("\u00AB\u00AB"); 
+            match("\u00B4\u00B4"); 
 
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26066:51: (~ ( ( '\\n' | '\\r' ) ) )*
             loop24:
@@ -3053,7 +3053,7 @@ public class InternalJnarioLexer extends Lexer {
                 }
             } while (true);
 
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26066:67: ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB' )?
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26066:67: ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00B4' )?
             int alt29=2;
             int LA29_0 = input.LA(1);
 
@@ -3062,7 +3062,7 @@ public class InternalJnarioLexer extends Lexer {
             }
             switch (alt29) {
                 case 1 :
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26066:68: ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB'
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26066:68: ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00B4'
                     {
                     // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26066:68: ( '\\r' )?
                     int alt25=2;
@@ -3095,19 +3095,19 @@ public class InternalJnarioLexer extends Lexer {
                             if ( (LA26_1=='\'') ) {
                                 int LA26_4 = input.LA(3);
 
-                                if ( ((LA26_4>='\u0000' && LA26_4<='&')||(LA26_4>='(' && LA26_4<='\u00AA')||(LA26_4>='\u00AC' && LA26_4<='\uFFFF')) ) {
+                                if ( ((LA26_4>='\u0000' && LA26_4<='&')||(LA26_4>='(' && LA26_4<='\u00B3')||(LA26_4>='\u00B5' && LA26_4<='\uFFFF')) ) {
                                     alt26=1;
                                 }
 
 
                             }
-                            else if ( ((LA26_1>='\u0000' && LA26_1<='&')||(LA26_1>='(' && LA26_1<='\u00AA')||(LA26_1>='\u00AC' && LA26_1<='\uFFFF')) ) {
+                            else if ( ((LA26_1>='\u0000' && LA26_1<='&')||(LA26_1>='(' && LA26_1<='\u00B3')||(LA26_1>='\u00B5' && LA26_1<='\uFFFF')) ) {
                                 alt26=1;
                             }
 
 
                         }
-                        else if ( ((LA26_0>='\u0000' && LA26_0<='&')||(LA26_0>='(' && LA26_0<='\u00AA')||(LA26_0>='\u00AC' && LA26_0<='\uFFFF')) ) {
+                        else if ( ((LA26_0>='\u0000' && LA26_0<='&')||(LA26_0>='(' && LA26_0<='\u00B3')||(LA26_0>='\u00B5' && LA26_0<='\uFFFF')) ) {
                             alt26=1;
                         }
 
@@ -3162,7 +3162,7 @@ public class InternalJnarioLexer extends Lexer {
 
                     }
 
-                    match('\u00AB'); 
+                    match('\u00B4'); 
 
                     }
                     break;
@@ -3185,10 +3185,10 @@ public class InternalJnarioLexer extends Lexer {
         try {
             int _type = RULE_COMMENT_RICH_TEXT_END;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26068:28: ( '\\u00AB\\u00AB' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) | EOF ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26068:30: '\\u00AB\\u00AB' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) | EOF )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26068:28: ( '\\u00B4\\u00B4' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) | EOF ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26068:30: '\\u00B4\\u00B4' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) | EOF )
             {
-            match("\u00AB\u00AB"); 
+            match("\u00B4\u00B4"); 
 
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26068:45: (~ ( ( '\\n' | '\\r' ) ) )*
             loop30:
@@ -3267,19 +3267,19 @@ public class InternalJnarioLexer extends Lexer {
                             if ( (LA32_1=='\'') ) {
                                 int LA32_4 = input.LA(3);
 
-                                if ( ((LA32_4>='\u0000' && LA32_4<='&')||(LA32_4>='(' && LA32_4<='\u00AA')||(LA32_4>='\u00AC' && LA32_4<='\uFFFF')) ) {
+                                if ( ((LA32_4>='\u0000' && LA32_4<='&')||(LA32_4>='(' && LA32_4<='\u00B3')||(LA32_4>='\u00B5' && LA32_4<='\uFFFF')) ) {
                                     alt32=1;
                                 }
 
 
                             }
-                            else if ( ((LA32_1>='\u0000' && LA32_1<='&')||(LA32_1>='(' && LA32_1<='\u00AA')||(LA32_1>='\u00AC' && LA32_1<='\uFFFF')) ) {
+                            else if ( ((LA32_1>='\u0000' && LA32_1<='&')||(LA32_1>='(' && LA32_1<='\u00B3')||(LA32_1>='\u00B5' && LA32_1<='\uFFFF')) ) {
                                 alt32=1;
                             }
 
 
                         }
-                        else if ( ((LA32_0>='\u0000' && LA32_0<='&')||(LA32_0>='(' && LA32_0<='\u00AA')||(LA32_0>='\u00AC' && LA32_0<='\uFFFF')) ) {
+                        else if ( ((LA32_0>='\u0000' && LA32_0<='&')||(LA32_0>='(' && LA32_0<='\u00B3')||(LA32_0>='\u00B5' && LA32_0<='\uFFFF')) ) {
                             alt32=1;
                         }
 
@@ -3401,10 +3401,10 @@ public class InternalJnarioLexer extends Lexer {
     // $ANTLR start "RULE_IN_RICH_STRING"
     public final void mRULE_IN_RICH_STRING() throws RecognitionException {
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26070:30: ( ( '\\'\\'' ~ ( ( '\\u00AB' | '\\'' ) ) | '\\'' ~ ( ( '\\u00AB' | '\\'' ) ) | ~ ( ( '\\u00AB' | '\\'' ) ) ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26070:32: ( '\\'\\'' ~ ( ( '\\u00AB' | '\\'' ) ) | '\\'' ~ ( ( '\\u00AB' | '\\'' ) ) | ~ ( ( '\\u00AB' | '\\'' ) ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26070:30: ( ( '\\'\\'' ~ ( ( '\\u00B4' | '\\'' ) ) | '\\'' ~ ( ( '\\u00B4' | '\\'' ) ) | ~ ( ( '\\u00B4' | '\\'' ) ) ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26070:32: ( '\\'\\'' ~ ( ( '\\u00B4' | '\\'' ) ) | '\\'' ~ ( ( '\\u00B4' | '\\'' ) ) | ~ ( ( '\\u00B4' | '\\'' ) ) )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26070:32: ( '\\'\\'' ~ ( ( '\\u00AB' | '\\'' ) ) | '\\'' ~ ( ( '\\u00AB' | '\\'' ) ) | ~ ( ( '\\u00AB' | '\\'' ) ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26070:32: ( '\\'\\'' ~ ( ( '\\u00B4' | '\\'' ) ) | '\\'' ~ ( ( '\\u00B4' | '\\'' ) ) | ~ ( ( '\\u00B4' | '\\'' ) ) )
             int alt37=3;
             int LA37_0 = input.LA(1);
 
@@ -3414,7 +3414,7 @@ public class InternalJnarioLexer extends Lexer {
                 if ( (LA37_1=='\'') ) {
                     alt37=1;
                 }
-                else if ( ((LA37_1>='\u0000' && LA37_1<='&')||(LA37_1>='(' && LA37_1<='\u00AA')||(LA37_1>='\u00AC' && LA37_1<='\uFFFF')) ) {
+                else if ( ((LA37_1>='\u0000' && LA37_1<='&')||(LA37_1>='(' && LA37_1<='\u00B3')||(LA37_1>='\u00B5' && LA37_1<='\uFFFF')) ) {
                     alt37=2;
                 }
                 else {
@@ -3424,7 +3424,7 @@ public class InternalJnarioLexer extends Lexer {
                     throw nvae;
                 }
             }
-            else if ( ((LA37_0>='\u0000' && LA37_0<='&')||(LA37_0>='(' && LA37_0<='\u00AA')||(LA37_0>='\u00AC' && LA37_0<='\uFFFF')) ) {
+            else if ( ((LA37_0>='\u0000' && LA37_0<='&')||(LA37_0>='(' && LA37_0<='\u00B3')||(LA37_0>='\u00B5' && LA37_0<='\uFFFF')) ) {
                 alt37=3;
             }
             else {
@@ -3435,11 +3435,11 @@ public class InternalJnarioLexer extends Lexer {
             }
             switch (alt37) {
                 case 1 :
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26070:33: '\\'\\'' ~ ( ( '\\u00AB' | '\\'' ) )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26070:33: '\\'\\'' ~ ( ( '\\u00B4' | '\\'' ) )
                     {
                     match("''"); 
 
-                    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='\u00AA')||(input.LA(1)>='\u00AC' && input.LA(1)<='\uFFFF') ) {
+                    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='\u00B3')||(input.LA(1)>='\u00B5' && input.LA(1)<='\uFFFF') ) {
                         input.consume();
 
                     }
@@ -3452,10 +3452,10 @@ public class InternalJnarioLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26070:59: '\\'' ~ ( ( '\\u00AB' | '\\'' ) )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26070:59: '\\'' ~ ( ( '\\u00B4' | '\\'' ) )
                     {
                     match('\''); 
-                    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='\u00AA')||(input.LA(1)>='\u00AC' && input.LA(1)<='\uFFFF') ) {
+                    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='\u00B3')||(input.LA(1)>='\u00B5' && input.LA(1)<='\uFFFF') ) {
                         input.consume();
 
                     }
@@ -3468,9 +3468,9 @@ public class InternalJnarioLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26070:83: ~ ( ( '\\u00AB' | '\\'' ) )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:26070:83: ~ ( ( '\\u00B4' | '\\'' ) )
                     {
-                    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='\u00AA')||(input.LA(1)>='\u00AC' && input.LA(1)<='\uFFFF') ) {
+                    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='\u00B3')||(input.LA(1)>='\u00B5' && input.LA(1)<='\uFFFF') ) {
                         input.consume();
 
                     }
@@ -4907,7 +4907,7 @@ public class InternalJnarioLexer extends Lexer {
         "\1\0\2\75\1\11\1\46\1\145\1\141\3\75\1\76\1\56\2\52\1\uffff\1\141"+
         "\1\164\2\141\1\146\4\uffff\1\154\2\uffff\1\150\1\145\1\72\1\117"+
         "\1\114\2\105\1\106\1\40\1\uffff\1\163\2\uffff\1\150\1\145\1\56\1"+
-        "\166\1\151\2\150\2\0\1\u00ab\1\44\2\uffff\1\0\11\uffff\1\11\3\uffff"+
+        "\166\1\151\2\150\2\0\1\u00b4\1\44\2\uffff\1\0\11\uffff\1\11\3\uffff"+
         "\1\146\1\44\1\163\1\uffff\1\145\1\141\1\163\21\uffff\1\154\1\160"+
         "\1\151\1\141\1\154\1\162\1\156\1\142\1\151\1\143\1\160\1\163\1\44"+
         "\4\uffff\1\164\1\163\2\uffff\1\162\1\160\1\165\1\167\1\154\2\uffff"+
@@ -4939,7 +4939,7 @@ public class InternalJnarioLexer extends Lexer {
         "\1\uffff\1\76\1\75\1\174\1\46\1\157\1\162\3\75\1\76\2\56\1\57\1"+
         "\uffff\1\141\1\167\1\157\1\165\1\156\4\uffff\1\170\2\uffff\1\171"+
         "\1\165\1\72\1\145\1\170\1\141\1\143\1\163\1\156\1\uffff\1\163\2"+
-        "\uffff\1\150\1\145\1\56\1\166\1\151\2\150\2\uffff\1\u00ab\1\172"+
+        "\uffff\1\150\1\145\1\56\1\166\1\151\2\150\2\uffff\1\u00b4\1\172"+
         "\2\uffff\1\uffff\11\uffff\1\40\3\uffff\1\146\1\172\1\163\1\uffff"+
         "\1\145\1\141\1\164\21\uffff\1\162\1\160\1\151\1\141\1\154\1\162"+
         "\1\156\1\142\1\157\1\143\1\160\1\163\1\172\4\uffff\1\164\1\163\2"+
@@ -4989,18 +4989,18 @@ public class InternalJnarioLexer extends Lexer {
         "\2\uffff\1\126\1\116\1\33\2\uffff\1\115\1\uffff\1\56\1\45\1\65\1"+
         "\125";
     static final String DFA49_specialS =
-        "\1\15\56\uffff\1\7\1\26\4\uffff\1\4\136\uffff\1\2\1\13\2\uffff"+
-        "\1\10\66\uffff\1\17\1\14\1\12\1\25\1\uffff\1\16\61\uffff\1\24\1"+
-        "\5\2\uffff\1\6\1\0\1\20\52\uffff\1\22\1\1\1\11\1\21\44\uffff\1\3"+
-        "\1\23\76\uffff}>";
+        "\1\15\56\uffff\1\7\1\26\4\uffff\1\4\136\uffff\1\2\1\13\2\uffff\1"+
+        "\10\66\uffff\1\17\1\14\1\12\1\25\1\uffff\1\16\61\uffff\1\24\1\5"+
+        "\2\uffff\1\6\1\0\1\20\52\uffff\1\22\1\1\1\11\1\21\44\uffff\1\3\1"+
+        "\23\76\uffff}>";
     static final String[] DFA49_transitionS = {
-            "\11\67\2\66\2\67\1\66\22\67\1\66\1\7\1\65\1\67\1\63\1\16\1"+
-            "\4\1\57\1\32\1\31\1\14\1\2\1\27\1\12\1\13\1\15\12\64\1\35\1"+
-            "\24\1\11\1\1\1\10\1\52\1\44\1\42\1\40\2\63\1\37\1\36\1\54\1"+
-            "\63\1\43\11\63\1\41\1\56\2\63\1\55\3\63\1\46\1\67\1\47\1\62"+
-            "\1\63\1\67\1\45\1\63\1\6\1\5\1\30\1\21\2\63\1\23\4\63\1\34\1"+
-            "\53\1\22\1\63\1\51\1\20\1\33\1\63\1\17\1\50\3\63\1\25\1\3\1"+
-            "\26\55\67\1\61\17\67\1\60\uff44\67",
+            "\11\67\2\66\2\67\1\66\22\67\1\66\1\7\1\65\1\67\1\63\1\16\1\4"+
+            "\1\57\1\32\1\31\1\14\1\2\1\27\1\12\1\13\1\15\12\64\1\35\1\24"+
+            "\1\11\1\1\1\10\1\52\1\44\1\42\1\40\2\63\1\37\1\36\1\54\1\63"+
+            "\1\43\11\63\1\41\1\56\2\63\1\55\3\63\1\46\1\67\1\47\1\62\1\63"+
+            "\1\67\1\45\1\63\1\6\1\5\1\30\1\21\2\63\1\23\4\63\1\34\1\53\1"+
+            "\22\1\63\1\51\1\20\1\33\1\63\1\17\1\50\3\63\1\25\1\3\1\26\54"+
+            "\67\1\60\11\67\1\61\uff4b\67",
             "\1\70\1\71",
             "\1\73",
             "\1\77\1\100\2\uffff\1\100\22\uffff\1\77\133\uffff\1\75",
@@ -5048,7 +5048,7 @@ public class InternalJnarioLexer extends Lexer {
             "\1\u0090",
             "\1\u0091",
             "\47\u0093\1\u0092\uffd8\u0093",
-            "\47\u0095\1\u0094\u0083\u0095\1\u0097\uff54\u0095",
+            "\47\u0095\1\u0094\u008c\u0095\1\u0097\uff4b\u0095",
             "\1\u0098",
             "\1\106\34\uffff\32\106\4\uffff\1\106\1\uffff\32\106",
             "",
@@ -5152,8 +5152,8 @@ public class InternalJnarioLexer extends Lexer {
             "\1\u00ce",
             "\1\u00cf",
             "",
-            "\47\u00d1\1\u00d0\u0083\u00d1\1\u0097\uff54\u00d1",
-            "\47\u0095\1\u0094\u0083\u0095\1\u0097\uff54\u0095",
+            "\47\u00d1\1\u00d0\u008c\u00d1\1\u0097\uff4b\u00d1",
+            "\47\u0095\1\u0094\u008c\u0095\1\u0097\uff4b\u0095",
             "",
             "",
             "\12\u00d2\1\u00d4\2\u00d2\1\u00d3\ufff2\u00d2",
@@ -5218,12 +5218,12 @@ public class InternalJnarioLexer extends Lexer {
             "\1\u0103",
             "\1\u0104",
             "\1\u0105",
-            "\47\u0107\1\u0106\u0083\u0107\1\u0109\uff54\u0107",
-            "\47\u010a\1\uffff\u0083\u010a\1\u0097\uff54\u010a",
-            "\47\u0095\1\u0094\u0083\u0095\1\u0097\uff54\u0095",
+            "\47\u0107\1\u0106\u008c\u0107\1\u0109\uff4b\u0107",
+            "\47\u010a\1\uffff\u008c\u010a\1\u0097\uff4b\u010a",
+            "\47\u0095\1\u0094\u008c\u0095\1\u0097\uff4b\u0095",
             "\12\u00d2\1\u00d4\2\u00d2\1\u00d3\ufff2\u00d2",
             "\1\u00d4",
-            "\47\u010c\1\u010b\u0083\u010c\1\u00d5\uff54\u010c",
+            "\47\u010c\1\u010b\u008c\u010c\1\u00d5\uff4b\u010c",
             "",
             "\1\u010e",
             "",
@@ -5278,13 +5278,13 @@ public class InternalJnarioLexer extends Lexer {
             "\1\u0134",
             "\1\u0135",
             "\1\u0136",
-            "\47\u0138\1\u0137\u0083\u0138\1\u0109\uff54\u0138",
-            "\47\u0107\1\u0106\u0083\u0107\1\u0109\uff54\u0107",
+            "\47\u0138\1\u0137\u008c\u0138\1\u0109\uff4b\u0138",
+            "\47\u0107\1\u0106\u008c\u0107\1\u0109\uff4b\u0107",
             "",
             "",
-            "\47\u0095\1\u0094\u0083\u0095\1\u0097\uff54\u0095",
-            "\47\u013a\1\u0139\u0083\u013a\1\u00d5\uff54\u013a",
-            "\47\u010c\1\u010b\u0083\u010c\1\u00d5\uff54\u010c",
+            "\47\u0095\1\u0094\u008c\u0095\1\u0097\uff4b\u0095",
+            "\47\u013a\1\u0139\u008c\u013a\1\u00d5\uff4b\u013a",
+            "\47\u010c\1\u010b\u008c\u010c\1\u00d5\uff4b\u010c",
             "",
             "\1\u013b",
             "\1\u013c",
@@ -5335,10 +5335,10 @@ public class InternalJnarioLexer extends Lexer {
             "\1\u015e",
             "",
             "",
-            "\47\u015f\1\uffff\u0083\u015f\1\u0109\uff54\u015f",
-            "\47\u0107\1\u0106\u0083\u0107\1\u0109\uff54\u0107",
-            "\47\u0160\1\uffff\u0083\u0160\1\u00d5\uff54\u0160",
-            "\47\u010c\1\u010b\u0083\u010c\1\u00d5\uff54\u010c",
+            "\47\u015f\1\uffff\u008c\u015f\1\u0109\uff4b\u015f",
+            "\47\u0107\1\u0106\u008c\u0107\1\u0109\uff4b\u0107",
+            "\47\u0160\1\uffff\u008c\u0160\1\u00d5\uff4b\u0160",
+            "\47\u010c\1\u010b\u008c\u010c\1\u00d5\uff4b\u010c",
             "\1\u0161",
             "\1\u0162",
             "\1\106\13\uffff\12\106\7\uffff\32\106\4\uffff\1\106\1\uffff"+
@@ -5386,8 +5386,8 @@ public class InternalJnarioLexer extends Lexer {
             "\32\106",
             "\1\u017b",
             "",
-            "\47\u0107\1\u0106\u0083\u0107\1\u0109\uff54\u0107",
-            "\47\u010c\1\u010b\u0083\u010c\1\u00d5\uff54\u010c",
+            "\47\u0107\1\u0106\u008c\u0107\1\u0109\uff4b\u0107",
+            "\47\u010c\1\u010b\u008c\u010c\1\u00d5\uff4b\u010c",
             "\1\106\13\uffff\12\106\7\uffff\32\106\4\uffff\1\106\1\uffff"+
             "\32\106",
             "\1\u017d",
@@ -5506,9 +5506,9 @@ public class InternalJnarioLexer extends Lexer {
                         s = -1;
                         if ( (LA49_267=='\'') ) {s = 313;}
 
-                        else if ( ((LA49_267>='\u0000' && LA49_267<='&')||(LA49_267>='(' && LA49_267<='\u00AA')||(LA49_267>='\u00AC' && LA49_267<='\uFFFF')) ) {s = 314;}
+                        else if ( ((LA49_267>='\u0000' && LA49_267<='&')||(LA49_267>='(' && LA49_267<='\u00B3')||(LA49_267>='\u00B5' && LA49_267<='\uFFFF')) ) {s = 314;}
 
-                        else if ( (LA49_267=='\u00AB') ) {s = 213;}
+                        else if ( (LA49_267=='\u00B4') ) {s = 213;}
 
                         else s = 269;
 
@@ -5520,9 +5520,9 @@ public class InternalJnarioLexer extends Lexer {
                         s = -1;
                         if ( (LA49_312=='\'') ) {s = 262;}
 
-                        else if ( (LA49_312=='\u00AB') ) {s = 265;}
+                        else if ( (LA49_312=='\u00B4') ) {s = 265;}
 
-                        else if ( ((LA49_312>='\u0000' && LA49_312<='&')||(LA49_312>='(' && LA49_312<='\u00AA')||(LA49_312>='\u00AC' && LA49_312<='\uFFFF')) ) {s = 263;}
+                        else if ( ((LA49_312>='\u0000' && LA49_312<='&')||(LA49_312>='(' && LA49_312<='\u00B3')||(LA49_312>='\u00B5' && LA49_312<='\uFFFF')) ) {s = 263;}
 
                         else s = 264;
 
@@ -5534,9 +5534,9 @@ public class InternalJnarioLexer extends Lexer {
                         s = -1;
                         if ( (LA49_148=='\'') ) {s = 208;}
 
-                        else if ( ((LA49_148>='\u0000' && LA49_148<='&')||(LA49_148>='(' && LA49_148<='\u00AA')||(LA49_148>='\u00AC' && LA49_148<='\uFFFF')) ) {s = 209;}
+                        else if ( ((LA49_148>='\u0000' && LA49_148<='&')||(LA49_148>='(' && LA49_148<='\u00B3')||(LA49_148>='\u00B5' && LA49_148<='\uFFFF')) ) {s = 209;}
 
-                        else if ( (LA49_148=='\u00AB') ) {s = 151;}
+                        else if ( (LA49_148=='\u00B4') ) {s = 151;}
 
                         else s = 150;
 
@@ -5548,9 +5548,9 @@ public class InternalJnarioLexer extends Lexer {
                         s = -1;
                         if ( (LA49_351=='\'') ) {s = 262;}
 
-                        else if ( ((LA49_351>='\u0000' && LA49_351<='&')||(LA49_351>='(' && LA49_351<='\u00AA')||(LA49_351>='\u00AC' && LA49_351<='\uFFFF')) ) {s = 263;}
+                        else if ( ((LA49_351>='\u0000' && LA49_351<='&')||(LA49_351>='(' && LA49_351<='\u00B3')||(LA49_351>='\u00B5' && LA49_351<='\uFFFF')) ) {s = 263;}
 
-                        else if ( (LA49_351=='\u00AB') ) {s = 265;}
+                        else if ( (LA49_351=='\u00B4') ) {s = 265;}
 
                         else s = 264;
 
@@ -5572,9 +5572,9 @@ public class InternalJnarioLexer extends Lexer {
                         s = -1;
                         if ( (LA49_263=='\'') ) {s = 262;}
 
-                        else if ( ((LA49_263>='\u0000' && LA49_263<='&')||(LA49_263>='(' && LA49_263<='\u00AA')||(LA49_263>='\u00AC' && LA49_263<='\uFFFF')) ) {s = 263;}
+                        else if ( ((LA49_263>='\u0000' && LA49_263<='&')||(LA49_263>='(' && LA49_263<='\u00B3')||(LA49_263>='\u00B5' && LA49_263<='\uFFFF')) ) {s = 263;}
 
-                        else if ( (LA49_263=='\u00AB') ) {s = 265;}
+                        else if ( (LA49_263=='\u00B4') ) {s = 265;}
 
                         else s = 264;
 
@@ -5586,9 +5586,9 @@ public class InternalJnarioLexer extends Lexer {
                         s = -1;
                         if ( (LA49_266=='\'') ) {s = 148;}
 
-                        else if ( ((LA49_266>='\u0000' && LA49_266<='&')||(LA49_266>='(' && LA49_266<='\u00AA')||(LA49_266>='\u00AC' && LA49_266<='\uFFFF')) ) {s = 149;}
+                        else if ( ((LA49_266>='\u0000' && LA49_266<='&')||(LA49_266>='(' && LA49_266<='\u00B3')||(LA49_266>='\u00B5' && LA49_266<='\uFFFF')) ) {s = 149;}
 
-                        else if ( (LA49_266=='\u00AB') ) {s = 151;}
+                        else if ( (LA49_266=='\u00B4') ) {s = 151;}
 
                         else s = 150;
 
@@ -5624,9 +5624,9 @@ public class InternalJnarioLexer extends Lexer {
                         int LA49_313 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA49_313>='\u0000' && LA49_313<='&')||(LA49_313>='(' && LA49_313<='\u00AA')||(LA49_313>='\u00AC' && LA49_313<='\uFFFF')) ) {s = 352;}
+                        if ( ((LA49_313>='\u0000' && LA49_313<='&')||(LA49_313>='(' && LA49_313<='\u00B3')||(LA49_313>='\u00B5' && LA49_313<='\uFFFF')) ) {s = 352;}
 
-                        else if ( (LA49_313=='\u00AB') ) {s = 213;}
+                        else if ( (LA49_313=='\u00B4') ) {s = 213;}
 
                         else s = 269;
 
@@ -5638,9 +5638,9 @@ public class InternalJnarioLexer extends Lexer {
                         s = -1;
                         if ( (LA49_209=='\'') ) {s = 148;}
 
-                        else if ( (LA49_209=='\u00AB') ) {s = 151;}
+                        else if ( (LA49_209=='\u00B4') ) {s = 151;}
 
-                        else if ( ((LA49_209>='\u0000' && LA49_209<='&')||(LA49_209>='(' && LA49_209<='\u00AA')||(LA49_209>='\u00AC' && LA49_209<='\uFFFF')) ) {s = 149;}
+                        else if ( ((LA49_209>='\u0000' && LA49_209<='&')||(LA49_209>='(' && LA49_209<='\u00B3')||(LA49_209>='\u00B5' && LA49_209<='\uFFFF')) ) {s = 149;}
 
                         else s = 150;
 
@@ -5652,9 +5652,9 @@ public class InternalJnarioLexer extends Lexer {
                         s = -1;
                         if ( (LA49_149=='\'') ) {s = 148;}
 
-                        else if ( ((LA49_149>='\u0000' && LA49_149<='&')||(LA49_149>='(' && LA49_149<='\u00AA')||(LA49_149>='\u00AC' && LA49_149<='\uFFFF')) ) {s = 149;}
+                        else if ( ((LA49_149>='\u0000' && LA49_149<='&')||(LA49_149>='(' && LA49_149<='\u00B3')||(LA49_149>='\u00B5' && LA49_149<='\uFFFF')) ) {s = 149;}
 
-                        else if ( (LA49_149=='\u00AB') ) {s = 151;}
+                        else if ( (LA49_149=='\u00B4') ) {s = 151;}
 
                         else s = 150;
 
@@ -5664,9 +5664,9 @@ public class InternalJnarioLexer extends Lexer {
                         int LA49_208 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA49_208>='\u0000' && LA49_208<='&')||(LA49_208>='(' && LA49_208<='\u00AA')||(LA49_208>='\u00AC' && LA49_208<='\uFFFF')) ) {s = 266;}
+                        if ( ((LA49_208>='\u0000' && LA49_208<='&')||(LA49_208>='(' && LA49_208<='\u00B3')||(LA49_208>='\u00B5' && LA49_208<='\uFFFF')) ) {s = 266;}
 
-                        else if ( (LA49_208=='\u00AB') ) {s = 151;}
+                        else if ( (LA49_208=='\u00B4') ) {s = 151;}
 
                         else s = 150;
 
@@ -5770,9 +5770,9 @@ public class InternalJnarioLexer extends Lexer {
 
                         else if ( (LA49_0=='\'') ) {s = 47;}
 
-                        else if ( (LA49_0=='\u00BB') ) {s = 48;}
+                        else if ( (LA49_0=='\u00AA') ) {s = 48;}
 
-                        else if ( (LA49_0=='\u00AB') ) {s = 49;}
+                        else if ( (LA49_0=='\u00B4') ) {s = 49;}
 
                         else if ( (LA49_0=='^') ) {s = 50;}
 
@@ -5784,7 +5784,7 @@ public class InternalJnarioLexer extends Lexer {
 
                         else if ( ((LA49_0>='\t' && LA49_0<='\n')||LA49_0=='\r'||LA49_0==' ') ) {s = 54;}
 
-                        else if ( ((LA49_0>='\u0000' && LA49_0<='\b')||(LA49_0>='\u000B' && LA49_0<='\f')||(LA49_0>='\u000E' && LA49_0<='\u001F')||LA49_0=='#'||LA49_0=='\\'||LA49_0=='`'||(LA49_0>='~' && LA49_0<='\u00AA')||(LA49_0>='\u00AC' && LA49_0<='\u00BA')||(LA49_0>='\u00BC' && LA49_0<='\uFFFF')) ) {s = 55;}
+                        else if ( ((LA49_0>='\u0000' && LA49_0<='\b')||(LA49_0>='\u000B' && LA49_0<='\f')||(LA49_0>='\u000E' && LA49_0<='\u001F')||LA49_0=='#'||LA49_0=='\\'||LA49_0=='`'||(LA49_0>='~' && LA49_0<='\u00A9')||(LA49_0>='\u00AB' && LA49_0<='\u00B3')||(LA49_0>='\u00B5' && LA49_0<='\uFFFF')) ) {s = 55;}
 
                         if ( s>=0 ) return s;
                         break;
@@ -5794,9 +5794,9 @@ public class InternalJnarioLexer extends Lexer {
                         s = -1;
                         if ( (LA49_212=='\'') ) {s = 267;}
 
-                        else if ( ((LA49_212>='\u0000' && LA49_212<='&')||(LA49_212>='(' && LA49_212<='\u00AA')||(LA49_212>='\u00AC' && LA49_212<='\uFFFF')) ) {s = 268;}
+                        else if ( ((LA49_212>='\u0000' && LA49_212<='&')||(LA49_212>='(' && LA49_212<='\u00B3')||(LA49_212>='\u00B5' && LA49_212<='\uFFFF')) ) {s = 268;}
 
-                        else if ( (LA49_212=='\u00AB') ) {s = 213;}
+                        else if ( (LA49_212=='\u00B4') ) {s = 213;}
 
                         else s = 269;
 
@@ -5808,9 +5808,9 @@ public class InternalJnarioLexer extends Lexer {
                         s = -1;
                         if ( (LA49_207=='\'') ) {s = 262;}
 
-                        else if ( ((LA49_207>='\u0000' && LA49_207<='&')||(LA49_207>='(' && LA49_207<='\u00AA')||(LA49_207>='\u00AC' && LA49_207<='\uFFFF')) ) {s = 263;}
+                        else if ( ((LA49_207>='\u0000' && LA49_207<='&')||(LA49_207>='(' && LA49_207<='\u00B3')||(LA49_207>='\u00B5' && LA49_207<='\uFFFF')) ) {s = 263;}
 
-                        else if ( (LA49_207=='\u00AB') ) {s = 265;}
+                        else if ( (LA49_207=='\u00B4') ) {s = 265;}
 
                         else s = 264;
 
@@ -5822,9 +5822,9 @@ public class InternalJnarioLexer extends Lexer {
                         s = -1;
                         if ( (LA49_268=='\'') ) {s = 267;}
 
-                        else if ( (LA49_268=='\u00AB') ) {s = 213;}
+                        else if ( (LA49_268=='\u00B4') ) {s = 213;}
 
-                        else if ( ((LA49_268>='\u0000' && LA49_268<='&')||(LA49_268>='(' && LA49_268<='\u00AA')||(LA49_268>='\u00AC' && LA49_268<='\uFFFF')) ) {s = 268;}
+                        else if ( ((LA49_268>='\u0000' && LA49_268<='&')||(LA49_268>='(' && LA49_268<='\u00B3')||(LA49_268>='\u00B5' && LA49_268<='\uFFFF')) ) {s = 268;}
 
                         else s = 269;
 
@@ -5836,9 +5836,9 @@ public class InternalJnarioLexer extends Lexer {
                         s = -1;
                         if ( (LA49_314=='\'') ) {s = 267;}
 
-                        else if ( ((LA49_314>='\u0000' && LA49_314<='&')||(LA49_314>='(' && LA49_314<='\u00AA')||(LA49_314>='\u00AC' && LA49_314<='\uFFFF')) ) {s = 268;}
+                        else if ( ((LA49_314>='\u0000' && LA49_314<='&')||(LA49_314>='(' && LA49_314<='\u00B3')||(LA49_314>='\u00B5' && LA49_314<='\uFFFF')) ) {s = 268;}
 
-                        else if ( (LA49_314=='\u00AB') ) {s = 213;}
+                        else if ( (LA49_314=='\u00B4') ) {s = 213;}
 
                         else s = 269;
 
@@ -5848,9 +5848,9 @@ public class InternalJnarioLexer extends Lexer {
                         int LA49_311 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA49_311>='\u0000' && LA49_311<='&')||(LA49_311>='(' && LA49_311<='\u00AA')||(LA49_311>='\u00AC' && LA49_311<='\uFFFF')) ) {s = 351;}
+                        if ( ((LA49_311>='\u0000' && LA49_311<='&')||(LA49_311>='(' && LA49_311<='\u00B3')||(LA49_311>='\u00B5' && LA49_311<='\uFFFF')) ) {s = 351;}
 
-                        else if ( (LA49_311=='\u00AB') ) {s = 265;}
+                        else if ( (LA49_311=='\u00B4') ) {s = 265;}
 
                         else s = 264;
 
@@ -5862,9 +5862,9 @@ public class InternalJnarioLexer extends Lexer {
                         s = -1;
                         if ( (LA49_352=='\'') ) {s = 267;}
 
-                        else if ( (LA49_352=='\u00AB') ) {s = 213;}
+                        else if ( (LA49_352=='\u00B4') ) {s = 213;}
 
-                        else if ( ((LA49_352>='\u0000' && LA49_352<='&')||(LA49_352>='(' && LA49_352<='\u00AA')||(LA49_352>='\u00AC' && LA49_352<='\uFFFF')) ) {s = 268;}
+                        else if ( ((LA49_352>='\u0000' && LA49_352<='&')||(LA49_352>='(' && LA49_352<='\u00B3')||(LA49_352>='\u00B5' && LA49_352<='\uFFFF')) ) {s = 268;}
 
                         else s = 269;
 
@@ -5876,9 +5876,9 @@ public class InternalJnarioLexer extends Lexer {
                         s = -1;
                         if ( (LA49_262=='\'') ) {s = 311;}
 
-                        else if ( ((LA49_262>='\u0000' && LA49_262<='&')||(LA49_262>='(' && LA49_262<='\u00AA')||(LA49_262>='\u00AC' && LA49_262<='\uFFFF')) ) {s = 312;}
+                        else if ( ((LA49_262>='\u0000' && LA49_262<='&')||(LA49_262>='(' && LA49_262<='\u00B3')||(LA49_262>='\u00B5' && LA49_262<='\uFFFF')) ) {s = 312;}
 
-                        else if ( (LA49_262=='\u00AB') ) {s = 265;}
+                        else if ( (LA49_262=='\u00B4') ) {s = 265;}
 
                         else s = 264;
 
@@ -5904,9 +5904,9 @@ public class InternalJnarioLexer extends Lexer {
                         s = -1;
                         if ( (LA49_48=='\'') ) {s = 148;}
 
-                        else if ( ((LA49_48>='\u0000' && LA49_48<='&')||(LA49_48>='(' && LA49_48<='\u00AA')||(LA49_48>='\u00AC' && LA49_48<='\uFFFF')) ) {s = 149;}
+                        else if ( ((LA49_48>='\u0000' && LA49_48<='&')||(LA49_48>='(' && LA49_48<='\u00B3')||(LA49_48>='\u00B5' && LA49_48<='\uFFFF')) ) {s = 149;}
 
-                        else if ( (LA49_48=='\u00AB') ) {s = 151;}
+                        else if ( (LA49_48=='\u00B4') ) {s = 151;}
 
                         else s = 150;
 

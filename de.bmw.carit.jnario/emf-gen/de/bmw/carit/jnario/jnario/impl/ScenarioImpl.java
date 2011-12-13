@@ -2,7 +2,6 @@
  * <copyright>
  * </copyright>
  *
-
  */
 package de.bmw.carit.jnario.jnario.impl;
 
@@ -23,6 +22,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.xtext.xtend2.xtend2.impl.XtendClassImpl;
 import org.eclipse.xtext.xtend2.xtend2.impl.XtendClassImplCustom;
 
 /**
