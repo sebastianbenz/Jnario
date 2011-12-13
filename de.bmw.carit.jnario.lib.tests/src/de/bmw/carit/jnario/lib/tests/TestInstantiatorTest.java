@@ -14,7 +14,6 @@ import org.junit.runners.model.InitializationError;
 
 import de.bmw.carit.jnario.runner.ExampleGroupRunner;
 import de.bmw.carit.jnario.runner.InstantiateWith;
-import de.bmw.carit.jnario.runner.JnarioRunner;
 import de.bmw.carit.jnario.runner.TestInstantiator;
 
 public class TestInstantiatorTest {

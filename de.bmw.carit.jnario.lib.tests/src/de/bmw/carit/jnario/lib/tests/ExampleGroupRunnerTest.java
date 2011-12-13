@@ -10,6 +10,7 @@ import java.util.List;
 import org.hamcrest.Matcher;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -177,7 +178,9 @@ public class ExampleGroupRunnerTest {
 
 		new JUnitCore().run(ParentExample.class);
 		
-		assertEquals(expected, executedTests);
+		for (String test : expected) {
+			Assert.assertTrue(executedTests.contains(test));
+		}
 	}
 
 	@Test
@@ -235,7 +238,6 @@ public class ExampleGroupRunnerTest {
 	}
 	
 	public static void run(String testName){
-		System.out.println("\"" + testName + "\",");
 		executedTests.add(testName);
 	}
 
