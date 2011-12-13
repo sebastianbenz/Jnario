@@ -1,3 +1,18 @@
+package de.bmw.carit.jnario.spec.tests.unit.spec
+
+import static org.junit.Assert.*
+
+import com.google.inject.Inject
+import de.bmw.carit.jnario.spec.tests.util.SpecTestInstantiator
+import de.bmw.carit.jnario.tests.util.ModelStore
+import de.bmw.carit.jnario.spec.spec.ExampleGroup
+import de.bmw.carit.jnario.spec.spec.SpecPackage
+import org.eclipse.xtext.scoping.IScope
+import org.eclipse.xtext.naming.QualifiedName
+import de.bmw.carit.jnario.runner.InstantiateWith
+import org.eclipse.emf.ecore.EObject
+import de.bmw.carit.jnario.spec.scoping.SpecScopeProvider
+import static extension de.bmw.carit.jnario.tests.util.Query.*
 
 @InstantiateWith(typeof(SpecTestInstantiator))
 describe SpecScopeProvider {
