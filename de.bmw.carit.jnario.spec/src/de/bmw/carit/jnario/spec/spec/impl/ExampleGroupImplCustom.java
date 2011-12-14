@@ -10,4 +10,12 @@ package de.bmw.carit.jnario.spec.spec.impl;
 
 public class ExampleGroupImplCustom extends de.bmw.carit.jnario.spec.spec.impl.ExampleGroupImpl {
 
+	@Override
+	public String getName() {
+		if(name != null && name.length() == 0){
+			return null;
+		}
+		return super.getName();
+	}
+	
 }

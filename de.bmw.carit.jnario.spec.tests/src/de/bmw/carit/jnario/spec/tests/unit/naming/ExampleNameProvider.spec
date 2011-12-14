@@ -169,6 +169,11 @@ describe ExampleNameProvider{
 								 }").should.be("assertTrue[boolean] and more")
 		}
 		
+		it "should escape quotes"{
+			describeSecond('''describe 'Example'{
+										describe 'and "more"'
+								 }''').should.be('and \\"more\\"')
+		}
 		
 		def describeFirst(String content){
 			subject.^describe(parse(content).first(typeof(ExampleGroup)))
