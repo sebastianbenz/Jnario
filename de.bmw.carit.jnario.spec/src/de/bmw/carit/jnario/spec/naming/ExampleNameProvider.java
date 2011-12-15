@@ -79,7 +79,7 @@ public class ExampleNameProvider {
 	
 	public String toMethodName(Example example){
 		StringBuilder result = new StringBuilder();
-		appendMemberDescription(example, result);
+		result.append(memberDescriptionOf(example));
 		return toFirstLower(convertToCamelCase(result).toString());
 	}
 	
@@ -130,16 +130,17 @@ public class ExampleNameProvider {
 			String operationName = operationNameProvider.apply(exampleGroup.getTargetOperation()).toString();
 			result.append(toFirstUpper(operationName));
 		}
-		appendMemberDescription(exampleGroup, result);
+		result.append(toFirstUpper(memberDescriptionOf(exampleGroup)));
 		result = convertToCamelCase(result);
 		return result;
 	}
 	
-	private void appendMemberDescription(XtendMember member, StringBuilder result) {
+	private String memberDescriptionOf(XtendMember member) {
 		String newName = SimpleAttributeResolver.NAME_RESOLVER.apply(member);
-		if(newName != null){
-			result.append(newName);
+		if(newName == null){
+			newName = "";
 		}
+		return newName;
 	}
 
 }

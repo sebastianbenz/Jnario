@@ -13,7 +13,7 @@ import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.resource.XtextResourceSet
 import org.junit.Before
 
-import static extension de.bmw.carit.jnario.lib.JnarioObjectExtensions.*
+
 
 @InstantiateWith(typeof(SpecTestInstantiator))
 describe OperationNameProvider{

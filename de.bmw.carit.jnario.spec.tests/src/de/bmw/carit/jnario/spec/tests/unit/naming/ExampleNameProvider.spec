@@ -7,7 +7,6 @@ import de.bmw.carit.jnario.tests.util.ModelStore
 
 import static de.bmw.carit.jnario.tests.util.Query.*
 
-import static extension de.bmw.carit.jnario.lib.JnarioObjectExtensions.*
 import de.bmw.carit.jnario.spec.spec.Example
 import de.bmw.carit.jnario.spec.spec.Before
 import de.bmw.carit.jnario.spec.spec.After
@@ -46,6 +45,12 @@ describe ExampleNameProvider{
 			secondJavaClassName("describe org.junit.Assert{
 										context assertTrue(boolean) 
 								 }").should.endWith('AssertTrueBooleanSpec')
+		}
+		
+		it "should append the description"{
+			secondJavaClassName("describe org.junit.Assert{
+										context 'assertTrue' 
+								 }").should.endWith('AssertTrueSpec')
 		}
 		
 		it "should prepend the parent ExampleGroup's name"{
