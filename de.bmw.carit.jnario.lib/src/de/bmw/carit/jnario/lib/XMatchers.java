@@ -6,7 +6,6 @@ import static org.hamcrest.Matchers.endsWith;
 import static org.hamcrest.Matchers.startsWith;
 import static org.hamcrest.collection.IsCollectionContaining.hasItems;
 
-
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matcher;
 import org.hamcrest.core.IsNot;
@@ -70,12 +69,14 @@ public class XMatchers {
 		return be(matcherBuilder, CoreMatchers.not(expected));
 	}
 	
+	@SuppressWarnings("unchecked") // incompatibility between javac and JDT compiler
 	public static <T> MatcherChain<? extends Iterable<T>> contain(MatcherChain<? extends Iterable<T>> matcherBuilder, T... expected) {
-		return be(matcherBuilder, hasItems(expected));
+		return be((MatcherChain<Iterable<T>>)matcherBuilder, hasItems(expected));
 	}
-	
+
+	@SuppressWarnings("unchecked") // incompatibility between javac and JDT compiler
 	public static <T> MatcherChain<? extends Iterable<T>> contain(MatcherChain<? extends Iterable<T>> matcherBuilder, Matcher<? extends T>... matchers) {
-		return be(matcherBuilder, hasItems(matchers));
+		return be((MatcherChain<Iterable<T>>)matcherBuilder, hasItems(matchers));
 	}
 	
 	public static MatcherChain<String> startWith(MatcherChain<String> matcherBuilder, String expected) {
