@@ -11,7 +11,7 @@ public class SpecTestRunner extends BehaviorTestRunner {
 	private static final String MODEL_EXTENSION = "spec";
 
 	protected void injectMembers(){
-		new TestSetup().createInjectorAndDoEMFRegistration().injectMembers(this);
+		new SpecStandaloneTestSetup().createInjectorAndDoEMFRegistration().injectMembers(this);
 	}
 
 	@Override

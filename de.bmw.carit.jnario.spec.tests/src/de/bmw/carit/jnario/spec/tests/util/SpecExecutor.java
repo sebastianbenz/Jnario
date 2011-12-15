@@ -37,7 +37,7 @@ public class SpecExecutor extends BehaviorExecutor{
 		SpecInjectorProvider injectorProvider = new SpecInjectorProvider();
 		try {
 			injectorProvider.setupRegistry();
-			Injector injector = new TestSetup().createInjectorAndDoEMFRegistration();
+			Injector injector = new SpecStandaloneTestSetup().createInjectorAndDoEMFRegistration();
 			
 			Resource resource = parse(content);
 			

@@ -17,7 +17,7 @@ public class SpecTestInstantiator implements TestInstantiator {
 	
 	public Injector getInjector() {
 		if (injector == null) {
-			this.injector = new TestSetup().createInjectorAndDoEMFRegistration();
+			this.injector = new SpecStandaloneTestSetup().createInjectorAndDoEMFRegistration();
 		}
 		return injector;
 	}
@@ -29,7 +29,7 @@ public class SpecTestInstantiator implements TestInstantiator {
 	public void setupRegistry() {
 		globalStateMemento = GlobalRegistries.makeCopyOfGlobalState();
 		if (injector != null)
-			new TestSetup().register(injector);
+			new SpecStandaloneTestSetup().register(injector);
 	}
 	
 	@Override

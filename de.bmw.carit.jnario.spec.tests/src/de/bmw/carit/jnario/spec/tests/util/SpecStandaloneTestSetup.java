@@ -8,7 +8,7 @@ import de.bmw.carit.jnario.spec.SpecRuntimeModule;
 import de.bmw.carit.jnario.spec.SpecStandaloneSetup;
 import de.bmw.carit.jnario.spec.spec.SpecFactory;
 
-public class TestSetup extends SpecStandaloneSetup {
+public class SpecStandaloneTestSetup extends SpecStandaloneSetup {
 	@Override
 	public Injector createInjector() {
 		return Guice.createInjector(new SpecRuntimeModule() {
