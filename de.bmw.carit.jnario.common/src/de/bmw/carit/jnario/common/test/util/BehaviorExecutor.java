@@ -63,7 +63,7 @@ public abstract class BehaviorExecutor {
 	public PrintableResult run(EObject object) {
 		try {
 			configureOutlet();
-			//validate(object);
+			validate(object);
 			generateJava(object);
 			return runExamples(object);
 		} catch (Exception e) {
