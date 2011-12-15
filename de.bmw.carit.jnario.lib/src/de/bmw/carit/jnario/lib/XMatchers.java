@@ -30,8 +30,8 @@ public class XMatchers {
 		}
 	}
 
-	public static <T> MatcherChain<T> should(MatcherChain<T> matcherBuilder) {
-		return matcherBuilder;
+	public static <T> MatcherChain<T> should(MatcherChain<T> matcherChain) {
+		return matcherChain;
 	}
 
 	public static <T> MatcherChain<T> should(final T actual) {
@@ -39,58 +39,58 @@ public class XMatchers {
 	}
 	
 
-	public static <T> MatcherChain<T> be(MatcherChain<T> matcherBuilder, T expected) {
-		return be(matcherBuilder, CoreMatchers.equalTo(expected));
+	public static <T> MatcherChain<T> be(MatcherChain<T> matcherChain, T expected) {
+		return be(matcherChain, CoreMatchers.equalTo(expected));
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T> MatcherChain<T> be(MatcherChain<T> matcherBuilder, Class<?> expected) {
-		return matcherBuilder.assertMatches((Matcher<T>) instanceOf(expected));
+	public static <T> MatcherChain<T> be(MatcherChain<T> matcherChain, Class<?> expected) {
+		return matcherChain.assertMatches((Matcher<T>) instanceOf(expected));
 	}
 	
-	public static <T> MatcherChain<T> be(MatcherChain<T> matcherBuilder, Matcher<T> expected) {
-		return matcherBuilder.assertMatches(expected);
+	public static <T> MatcherChain<T> be(MatcherChain<T> matcherChain, Matcher<T> expected) {
+		return matcherChain.assertMatches(expected);
 	}
 
-	public static <T> MatcherChain<T> be(MatcherChain<T> matcherBuilder) {
-		return matcherBuilder.append(new IsFactory<T>());
+	public static <T> MatcherChain<T> be(MatcherChain<T> matcherChain) {
+		return matcherChain.append(new IsFactory<T>());
 	}
 
-	public static <T> MatcherChain<T> not(MatcherChain<T> matcherBuilder, T expected) {
-		be(matcherBuilder, CoreMatchers.not(expected));
-		return matcherBuilder;
+	public static <T> MatcherChain<T> not(MatcherChain<T> matcherChain, T expected) {
+		be(matcherChain, CoreMatchers.not(expected));
+		return matcherChain;
 	}
 
-	public static <T> MatcherChain<T> not(MatcherChain<T> matcherBuilder) {
-		return matcherBuilder.append(new IsNotFactory<T>());
+	public static <T> MatcherChain<T> not(MatcherChain<T> matcherChain) {
+		return matcherChain.append(new IsNotFactory<T>());
 	}
 	
-	public static <T> MatcherChain<T> not(MatcherChain<T> matcherBuilder, Matcher<T> expected) {
-		return be(matcherBuilder, CoreMatchers.not(expected));
+	public static <T> MatcherChain<T> not(MatcherChain<T> matcherChain, Matcher<T> expected) {
+		return be(matcherChain, CoreMatchers.not(expected));
 	}
 	
 	@SuppressWarnings("unchecked") // incompatibility between javac and JDT compiler
-	public static <T> MatcherChain<? extends Iterable<T>> contain(MatcherChain<? extends Iterable<T>> matcherBuilder, T... expected) {
-		return be((MatcherChain<Iterable<T>>)matcherBuilder, hasItems(expected));
+	public static <T> MatcherChain<? extends Iterable<T>> contain(MatcherChain<? extends Iterable<T>> matcherChain, T... expected) {
+		return be((MatcherChain<Iterable<T>>)matcherChain, hasItems(expected));
 	}
 
 	@SuppressWarnings("unchecked") // incompatibility between javac and JDT compiler
-	public static <T> MatcherChain<? extends Iterable<T>> contain(MatcherChain<? extends Iterable<T>> matcherBuilder, Matcher<? extends T>... matchers) {
-		return be((MatcherChain<Iterable<T>>)matcherBuilder, hasItems(matchers));
+	public static <T> MatcherChain<? extends Iterable<T>> contain(MatcherChain<? extends Iterable<T>> matcherChain, Matcher<? extends T>... matchers) {
+		return be((MatcherChain<Iterable<T>>)matcherChain, hasItems(matchers));
 	}
 	
-	public static MatcherChain<String> startWith(MatcherChain<String> matcherBuilder, String expected) {
-		return be(matcherBuilder, startsWith(expected));
+	public static MatcherChain<String> startWith(MatcherChain<String> matcherChain, String expected) {
+		return be(matcherChain, startsWith(expected));
 	}
 	
-	public static MatcherChain<String> endWith(MatcherChain<String> matcherBuilder, String expected) {
-		be(matcherBuilder, endsWith(expected));
-		return matcherBuilder;
+	public static MatcherChain<String> endWith(MatcherChain<String> matcherChain, String expected) {
+		be(matcherChain, endsWith(expected));
+		return matcherChain;
 	}
 	
-	public static MatcherChain<String> contain(MatcherChain<String> matcherBuilder, String expected) {
-		be(matcherBuilder, containsString(expected));
-		return matcherBuilder;
+	public static MatcherChain<String> contain(MatcherChain<String> matcherChain, String expected) {
+		be(matcherChain, containsString(expected));
+		return matcherChain;
 	}
 
 }
