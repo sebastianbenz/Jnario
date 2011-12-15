@@ -2,7 +2,6 @@ package de.bmw.carit.jnario.spec.tests.integration
 
 import static org.junit.experimental.results.ResultMatchers.*
 
-import static extension de.bmw.carit.jnario.lib.JnarioObjectExtensions.*
 import static extension de.bmw.carit.jnario.spec.tests.util.SpecExecutor.*
 
 
