@@ -8,7 +8,7 @@ import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
 
 SpecFile returns xtend::XtendFile: 
 {SpecFile}
-'package' package=QualifiedName 
+('package' package=QualifiedName)? 
 	imports+=Import*
 	xtendClass=ExampleGroup
 ;

@@ -18,4 +18,10 @@ public class ExampleGroupImplCustom extends de.bmw.carit.jnario.spec.spec.impl.E
 		return super.getName();
 	}
 	
+	@Override
+	public String getPackageName() {
+		// TODO Auto-generated method stub
+		return super.getPackageName();
+	}
+	
 }

@@ -10,4 +10,5 @@ package de.bmw.carit.jnario.spec.spec.impl;
 
 public class SpecFileImplCustom extends de.bmw.carit.jnario.spec.spec.impl.SpecFileImpl {
 
+	
 }

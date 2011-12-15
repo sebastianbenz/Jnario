@@ -23,9 +23,11 @@
             <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/spec/Spec#//SpecFile"/>
           </type>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="package"/>
-        <elements xsi:type="xtext:Assignment" feature="package" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.52"/>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Keyword" value="package"/>
+          <elements xsi:type="xtext:Assignment" feature="package" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.52"/>
+          </elements>
         </elements>
         <elements xsi:type="xtext:Assignment" cardinality="*" feature="imports" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.1"/>

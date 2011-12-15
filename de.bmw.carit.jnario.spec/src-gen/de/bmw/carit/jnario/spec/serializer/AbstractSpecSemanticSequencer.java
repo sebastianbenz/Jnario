@@ -1565,7 +1565,7 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (package=QualifiedName imports+=Import* xtendClass=ExampleGroup)
+	 *     (package=QualifiedName? imports+=Import* xtendClass=ExampleGroup)
 	 */
 	protected void sequence_SpecFile(EObject context, SpecFile semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

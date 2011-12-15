@@ -1,4 +1,4 @@
-package de.bmw.carit.jnario.spec.tests.unit.spec
+package de.bmw.carit.jnario.spec.tests.unit.scoping
 
 import static org.junit.Assert.*
 

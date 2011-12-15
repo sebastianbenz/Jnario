@@ -1,4 +1,4 @@
-package de.bmw.carit.jnario.spec.tests.unit.namin
+package de.bmw.carit.jnario.spec.tests.unit.naming
 
 import de.bmw.carit.jnario.runner.InstantiateWith
 import de.bmw.carit.jnario.spec.spec.ExampleGroup
@@ -175,9 +175,10 @@ describe ExampleNameProvider{
 		}
 		
 		it "should escape quotes"{
-			describeSecond('''describe 'Example'{
+			val text = '''describe 'Example'{
 										describe 'and "more"'
-								 }''').should.be('and \\"more\\"')
+								 }'''.toString
+			describeSecond(text).should.be('and \\"more\\"')
 		}
 		
 		def describeFirst(String content){

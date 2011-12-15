@@ -84,14 +84,14 @@ ruleSpecFile returns [EObject current=null]
             grammarAccess.getSpecFileAccess().getSpecFileAction_0(),
             $current);
     }
-)	otherlv_1='package' 
+)(	otherlv_1='package' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getSpecFileAccess().getPackageKeyword_1());
+    	newLeafNode(otherlv_1, grammarAccess.getSpecFileAccess().getPackageKeyword_1_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getSpecFileAccess().getPackageQualifiedNameParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getSpecFileAccess().getPackageQualifiedNameParserRuleCall_1_1_0()); 
 	    }
 		lv_package_2_0=ruleQualifiedName		{
 	        if ($current==null) {
@@ -106,10 +106,10 @@ ruleSpecFile returns [EObject current=null]
 	    }
 
 )
-)(
+))?(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getSpecFileAccess().getImportsImportParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getSpecFileAccess().getImportsImportParserRuleCall_2_0()); 
 	    }
 		lv_imports_3_0=ruleImport		{
 	        if ($current==null) {
@@ -127,7 +127,7 @@ ruleSpecFile returns [EObject current=null]
 )*(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getSpecFileAccess().getXtendClassExampleGroupParserRuleCall_4_0()); 
+	        newCompositeNode(grammarAccess.getSpecFileAccess().getXtendClassExampleGroupParserRuleCall_3_0()); 
 	    }
 		lv_xtendClass_4_0=ruleExampleGroup		{
 	        if ($current==null) {

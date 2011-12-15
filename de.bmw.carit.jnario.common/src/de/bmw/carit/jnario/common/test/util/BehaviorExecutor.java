@@ -50,6 +50,7 @@ public abstract class BehaviorExecutor {
 	private final TemporaryFolder tempFolder;
 	private JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
 	private IResourceValidator validator;
+	protected boolean validate = true;
 
 	@Inject
 	public BehaviorExecutor(IGenerator generator, JavaIoFileSystemAccess fsa,
@@ -63,7 +64,9 @@ public abstract class BehaviorExecutor {
 	public PrintableResult run(EObject object) {
 		try {
 			configureOutlet();
-			validate(object);
+			if(validate){
+				validate(object);
+			}
 			generateJava(object);
 			return runExamples(object);
 		} catch (Exception e) {

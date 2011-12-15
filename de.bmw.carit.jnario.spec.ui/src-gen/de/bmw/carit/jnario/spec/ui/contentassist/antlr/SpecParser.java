@@ -81,6 +81,7 @@ public class SpecParser extends AbstractContentAssistParser {
 					put(grammarAccess.getJvmTypeParameterAccess().getAlternatives_1(), "rule__JvmTypeParameter__Alternatives_1");
 					put(grammarAccess.getVisibilityAccess().getAlternatives(), "rule__Visibility__Alternatives");
 					put(grammarAccess.getSpecFileAccess().getGroup(), "rule__SpecFile__Group__0");
+					put(grammarAccess.getSpecFileAccess().getGroup_1(), "rule__SpecFile__Group_1__0");
 					put(grammarAccess.getExampleGroupAccess().getGroup(), "rule__ExampleGroup__Group__0");
 					put(grammarAccess.getMethodAccess().getGroup(), "rule__Method__Group__0");
 					put(grammarAccess.getMethodAccess().getGroup_1(), "rule__Method__Group_1__0");
@@ -289,9 +290,9 @@ public class SpecParser extends AbstractContentAssistParser {
 					put(grammarAccess.getJvmLowerBoundAccess().getGroup(), "rule__JvmLowerBound__Group__0");
 					put(grammarAccess.getJvmTypeParameterAccess().getGroup(), "rule__JvmTypeParameter__Group__0");
 					put(grammarAccess.getJvmTypeParameterAccess().getGroup_1_0(), "rule__JvmTypeParameter__Group_1_0__0");
-					put(grammarAccess.getSpecFileAccess().getPackageAssignment_2(), "rule__SpecFile__PackageAssignment_2");
-					put(grammarAccess.getSpecFileAccess().getImportsAssignment_3(), "rule__SpecFile__ImportsAssignment_3");
-					put(grammarAccess.getSpecFileAccess().getXtendClassAssignment_4(), "rule__SpecFile__XtendClassAssignment_4");
+					put(grammarAccess.getSpecFileAccess().getPackageAssignment_1_1(), "rule__SpecFile__PackageAssignment_1_1");
+					put(grammarAccess.getSpecFileAccess().getImportsAssignment_2(), "rule__SpecFile__ImportsAssignment_2");
+					put(grammarAccess.getSpecFileAccess().getXtendClassAssignment_3(), "rule__SpecFile__XtendClassAssignment_3");
 					put(grammarAccess.getExampleGroupAccess().getAnnotationsAssignment_1(), "rule__ExampleGroup__AnnotationsAssignment_1");
 					put(grammarAccess.getExampleGroupAccess().getPreambleAssignment_2(), "rule__ExampleGroup__PreambleAssignment_2");
 					put(grammarAccess.getExampleGroupAccess().getTargetTypeAssignment_3(), "rule__ExampleGroup__TargetTypeAssignment_3");

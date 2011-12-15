@@ -1,6 +1,7 @@
 package de.bmw.carit.jnario.spec.tests.util;
 
 import static com.google.common.collect.Lists.newArrayList;
+import static org.eclipse.emf.common.util.URI.createURI;
 import static org.junit.Assert.assertNotNull;
 
 import java.io.IOException;
@@ -31,7 +32,17 @@ import de.bmw.carit.jnario.spec.spec.SpecFile;
 
 public class SpecExecutor extends BehaviorExecutor{
 
+
+	
 	private final ExampleNameProvider nameProvider;
+
+	@Inject
+	public SpecExecutor(IGenerator generator, JavaIoFileSystemAccess fsa,
+			TemporaryFolder tempFolder, ExampleNameProvider javaNameProvider, IResourceValidator validator) {
+		super(generator, fsa, tempFolder, validator);
+		this.nameProvider = javaNameProvider;
+		validate = false;
+	}
 
 	public static PrintableResult execute(String content) {
 		SpecInjectorProvider injectorProvider = new SpecInjectorProvider();
@@ -50,14 +61,22 @@ public class SpecExecutor extends BehaviorExecutor{
 
 	public static Resource parse(String content) {
 		XtextResourceSet resourceSet = new XtextResourceSet();
-		Resource resource = resourceSet.createResource(URI.createURI("dummy.spec"));
+		Resource resource = resourceSet.createResource(createURI("dummy.spec"));
 		try {
 			resource.load(new StringInputStream(content), Collections.emptyMap());
 		} catch (IOException e) {
 			e.printStackTrace();
 			org.junit.Assert.fail(e.getMessage());
 		}
+		setCorrectResourceUri(resource);
 		return resource;
+	}
+
+	protected static void setCorrectResourceUri(Resource resource) {
+		SpecFile file = (SpecFile) resource.getContents().get(0);
+//		String packageName = file.getPackage().replaceAll("\\.", "/");
+		String javaClassName = new ExampleNameProvider().toJavaClassName((ExampleGroup) file.getXtendClass());
+		resource.setURI(URI.createFileURI(javaClassName  + ".spec"));
 	}
 	
 	protected PrintableResult runExamples(EObject object) throws MalformedURLException, ClassNotFoundException {
@@ -70,13 +89,6 @@ public class SpecExecutor extends BehaviorExecutor{
 		return new PrintableResult(failures);
 	}
 	
-	@Inject
-	public SpecExecutor(IGenerator generator, JavaIoFileSystemAccess fsa,
-			TemporaryFolder tempFolder, ExampleNameProvider javaNameProvider, IResourceValidator validator) {
-		super(generator, fsa, tempFolder, validator);
-		this.nameProvider = javaNameProvider;
-	}
-
 	protected void generateJava(EObject object) {
 		super.generateJava(object);
 		assertNotNull("has no examples", ((SpecFile)object).getXtendClass());

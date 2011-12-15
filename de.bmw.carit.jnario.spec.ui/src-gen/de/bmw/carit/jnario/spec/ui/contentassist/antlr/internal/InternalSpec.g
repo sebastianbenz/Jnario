@@ -3867,11 +3867,9 @@ rule__SpecFile__Group__1__Impl
     }
 :
 (
-{ before(grammarAccess.getSpecFileAccess().getPackageKeyword_1()); }
-
-	'package' 
-
-{ after(grammarAccess.getSpecFileAccess().getPackageKeyword_1()); }
+{ before(grammarAccess.getSpecFileAccess().getGroup_1()); }
+(rule__SpecFile__Group_1__0)?
+{ after(grammarAccess.getSpecFileAccess().getGroup_1()); }
 )
 
 ;
@@ -3898,9 +3896,9 @@ rule__SpecFile__Group__2__Impl
     }
 :
 (
-{ before(grammarAccess.getSpecFileAccess().getPackageAssignment_2()); }
-(rule__SpecFile__PackageAssignment_2)
-{ after(grammarAccess.getSpecFileAccess().getPackageAssignment_2()); }
+{ before(grammarAccess.getSpecFileAccess().getImportsAssignment_2()); }
+(rule__SpecFile__ImportsAssignment_2)*
+{ after(grammarAccess.getSpecFileAccess().getImportsAssignment_2()); }
 )
 
 ;
@@ -3915,7 +3913,6 @@ rule__SpecFile__Group__3
     }
 :
 	rule__SpecFile__Group__3__Impl
-	rule__SpecFile__Group__4
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -3927,9 +3924,9 @@ rule__SpecFile__Group__3__Impl
     }
 :
 (
-{ before(grammarAccess.getSpecFileAccess().getImportsAssignment_3()); }
-(rule__SpecFile__ImportsAssignment_3)*
-{ after(grammarAccess.getSpecFileAccess().getImportsAssignment_3()); }
+{ before(grammarAccess.getSpecFileAccess().getXtendClassAssignment_3()); }
+(rule__SpecFile__XtendClassAssignment_3)
+{ after(grammarAccess.getSpecFileAccess().getXtendClassAssignment_3()); }
 )
 
 ;
@@ -3938,26 +3935,37 @@ finally {
 }
 
 
-rule__SpecFile__Group__4
+
+
+
+
+
+
+
+
+rule__SpecFile__Group_1__0
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__SpecFile__Group__4__Impl
+	rule__SpecFile__Group_1__0__Impl
+	rule__SpecFile__Group_1__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__SpecFile__Group__4__Impl
+rule__SpecFile__Group_1__0__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getSpecFileAccess().getXtendClassAssignment_4()); }
-(rule__SpecFile__XtendClassAssignment_4)
-{ after(grammarAccess.getSpecFileAccess().getXtendClassAssignment_4()); }
+{ before(grammarAccess.getSpecFileAccess().getPackageKeyword_1_0()); }
+
+	'package' 
+
+{ after(grammarAccess.getSpecFileAccess().getPackageKeyword_1_0()); }
 )
 
 ;
@@ -3966,10 +3974,32 @@ finally {
 }
 
 
+rule__SpecFile__Group_1__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__SpecFile__Group_1__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
 
+rule__SpecFile__Group_1__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getSpecFileAccess().getPackageAssignment_1_1()); }
+(rule__SpecFile__PackageAssignment_1_1)
+{ after(grammarAccess.getSpecFileAccess().getPackageAssignment_1_1()); }
+)
 
-
-
+;
+finally {
+	restoreStackSize(stackSize);
+}
 
 
 
@@ -21524,14 +21554,14 @@ finally {
 
 
 
-rule__SpecFile__PackageAssignment_2
+rule__SpecFile__PackageAssignment_1_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getSpecFileAccess().getPackageQualifiedNameParserRuleCall_2_0()); }
-	ruleQualifiedName{ after(grammarAccess.getSpecFileAccess().getPackageQualifiedNameParserRuleCall_2_0()); }
+{ before(grammarAccess.getSpecFileAccess().getPackageQualifiedNameParserRuleCall_1_1_0()); }
+	ruleQualifiedName{ after(grammarAccess.getSpecFileAccess().getPackageQualifiedNameParserRuleCall_1_1_0()); }
 )
 
 ;
@@ -21539,14 +21569,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__SpecFile__ImportsAssignment_3
+rule__SpecFile__ImportsAssignment_2
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getSpecFileAccess().getImportsImportParserRuleCall_3_0()); }
-	ruleImport{ after(grammarAccess.getSpecFileAccess().getImportsImportParserRuleCall_3_0()); }
+{ before(grammarAccess.getSpecFileAccess().getImportsImportParserRuleCall_2_0()); }
+	ruleImport{ after(grammarAccess.getSpecFileAccess().getImportsImportParserRuleCall_2_0()); }
 )
 
 ;
@@ -21554,14 +21584,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__SpecFile__XtendClassAssignment_4
+rule__SpecFile__XtendClassAssignment_3
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getSpecFileAccess().getXtendClassExampleGroupParserRuleCall_4_0()); }
-	ruleExampleGroup{ after(grammarAccess.getSpecFileAccess().getXtendClassExampleGroupParserRuleCall_4_0()); }
+{ before(grammarAccess.getSpecFileAccess().getXtendClassExampleGroupParserRuleCall_3_0()); }
+	ruleExampleGroup{ after(grammarAccess.getSpecFileAccess().getXtendClassExampleGroupParserRuleCall_3_0()); }
 )
 
 ;

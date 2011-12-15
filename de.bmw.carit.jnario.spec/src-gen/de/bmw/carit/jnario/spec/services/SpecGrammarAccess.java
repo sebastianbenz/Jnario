@@ -24,44 +24,48 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SpecFile");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cSpecFileAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cPackageKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cPackageAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cPackageQualifiedNameParserRuleCall_2_0 = (RuleCall)cPackageAssignment_2.eContents().get(0);
-		private final Assignment cImportsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cImportsImportParserRuleCall_3_0 = (RuleCall)cImportsAssignment_3.eContents().get(0);
-		private final Assignment cXtendClassAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cXtendClassExampleGroupParserRuleCall_4_0 = (RuleCall)cXtendClassAssignment_4.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cPackageKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cPackageAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cPackageQualifiedNameParserRuleCall_1_1_0 = (RuleCall)cPackageAssignment_1_1.eContents().get(0);
+		private final Assignment cImportsAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cImportsImportParserRuleCall_2_0 = (RuleCall)cImportsAssignment_2.eContents().get(0);
+		private final Assignment cXtendClassAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cXtendClassExampleGroupParserRuleCall_3_0 = (RuleCall)cXtendClassAssignment_3.eContents().get(0);
 		
 		//SpecFile returns xtend::XtendFile:
-		//	{SpecFile} "package" package=QualifiedName imports+=Import* xtendClass=ExampleGroup;
+		//	{SpecFile} ("package" package=QualifiedName)? imports+=Import* xtendClass=ExampleGroup;
 		public ParserRule getRule() { return rule; }
 
-		//{SpecFile} "package" package=QualifiedName imports+=Import* xtendClass=ExampleGroup
+		//{SpecFile} ("package" package=QualifiedName)? imports+=Import* xtendClass=ExampleGroup
 		public Group getGroup() { return cGroup; }
 
 		//{SpecFile}
 		public Action getSpecFileAction_0() { return cSpecFileAction_0; }
 
+		//("package" package=QualifiedName)?
+		public Group getGroup_1() { return cGroup_1; }
+
 		//"package"
-		public Keyword getPackageKeyword_1() { return cPackageKeyword_1; }
+		public Keyword getPackageKeyword_1_0() { return cPackageKeyword_1_0; }
 
 		//package=QualifiedName
-		public Assignment getPackageAssignment_2() { return cPackageAssignment_2; }
+		public Assignment getPackageAssignment_1_1() { return cPackageAssignment_1_1; }
 
 		//QualifiedName
-		public RuleCall getPackageQualifiedNameParserRuleCall_2_0() { return cPackageQualifiedNameParserRuleCall_2_0; }
+		public RuleCall getPackageQualifiedNameParserRuleCall_1_1_0() { return cPackageQualifiedNameParserRuleCall_1_1_0; }
 
 		//imports+=Import*
-		public Assignment getImportsAssignment_3() { return cImportsAssignment_3; }
+		public Assignment getImportsAssignment_2() { return cImportsAssignment_2; }
 
 		//Import
-		public RuleCall getImportsImportParserRuleCall_3_0() { return cImportsImportParserRuleCall_3_0; }
+		public RuleCall getImportsImportParserRuleCall_2_0() { return cImportsImportParserRuleCall_2_0; }
 
 		//xtendClass=ExampleGroup
-		public Assignment getXtendClassAssignment_4() { return cXtendClassAssignment_4; }
+		public Assignment getXtendClassAssignment_3() { return cXtendClassAssignment_3; }
 
 		//ExampleGroup
-		public RuleCall getXtendClassExampleGroupParserRuleCall_4_0() { return cXtendClassExampleGroupParserRuleCall_4_0; }
+		public RuleCall getXtendClassExampleGroupParserRuleCall_3_0() { return cXtendClassExampleGroupParserRuleCall_3_0; }
 	}
 
 	public class ExampleGroupElements extends AbstractParserRuleElementFinder {
@@ -1011,7 +1015,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//SpecFile returns xtend::XtendFile:
-	//	{SpecFile} "package" package=QualifiedName imports+=Import* xtendClass=ExampleGroup;
+	//	{SpecFile} ("package" package=QualifiedName)? imports+=Import* xtendClass=ExampleGroup;
 	public SpecFileElements getSpecFileAccess() {
 		return (pSpecFile != null) ? pSpecFile : (pSpecFile = new SpecFileElements());
 	}
