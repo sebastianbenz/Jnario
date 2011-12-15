@@ -3,7 +3,9 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="spec"
     nsURI="http://www.bmw.de/carit/jnario/spec/Spec" nsPrefix="spec">
-  <eClassifiers xsi:type="ecore:EClass" name="SpecFile" eSuperTypes="platform:/resource/org.eclipse.xtext.xtend2/model/Xtend2.ecore#//XtendFile"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SpecFile" eSuperTypes="platform:/resource/org.eclipse.xtext.xtend2/model/Xtend2.ecore#//XtendFile">
+    <eOperations name="hello"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExampleGroup" eSuperTypes="platform:/resource/org.eclipse.xtext.xtend2/model/Xtend2.ecore#//XtendClass platform:/resource/org.eclipse.xtext.xtend2/model/Xtend2.ecore#//XtendMember">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="preamble" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="targetType" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmDeclaredType"/>

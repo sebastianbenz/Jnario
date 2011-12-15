@@ -19,4 +19,12 @@ import org.eclipse.xtext.xtend2.xtend2.XtendFile;
  */
 public interface SpecFile extends XtendFile
 {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void hello();
+
 } // SpecFile

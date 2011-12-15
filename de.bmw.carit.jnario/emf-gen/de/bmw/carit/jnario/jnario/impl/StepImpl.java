@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.xtext.xtend2.xtend2.impl.XtendMemberImpl;
+import org.eclipse.xtext.xtend2.xtend2.impl.XtendMemberImplCustom;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,7 +33,7 @@ import org.eclipse.xtext.xtend2.xtend2.impl.XtendMemberImpl;
  *
  * @generated
  */
-public class StepImpl extends XtendMemberImpl implements Step
+public class StepImpl extends XtendMemberImplCustom implements Step
 {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.

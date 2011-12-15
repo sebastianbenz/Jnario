@@ -33,7 +33,7 @@ Workflow {
 		directory = "${runtimeProject}/emf-gen"
 	}
 
-	component = org.eclipse.emf.mwe2.ecore.EcoreGenerator {
+	component = de.bmw.carit.jnario.common.PatchedEcoreGenerator {
 		genModel = "platform:/resource/${projectName}/model/Spec.genmodel"
 		srcPath ="platform:/resource/${projectName}/src"
 		srcPath ="platform:/resource/org.eclipse.xtext.common.types/src"
