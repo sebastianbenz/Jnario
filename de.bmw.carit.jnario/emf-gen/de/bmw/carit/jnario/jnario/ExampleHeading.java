@@ -2,6 +2,7 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package de.bmw.carit.jnario.jnario;
 
@@ -9,7 +10,7 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.eclipse.xtext.xbase.XVariableDeclaration;
+import org.eclipse.xtext.xtend2.xtend2.XtendField;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,7 +32,7 @@ public interface ExampleHeading extends EObject
 {
 	/**
 	 * Returns the value of the '<em><b>Parts</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.xtext.xbase.XVariableDeclaration}.
+	 * The list contents are of type {@link org.eclipse.xtext.xtend2.xtend2.XtendField}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Parts</em>' containment reference list isn't clear,
@@ -43,6 +44,6 @@ public interface ExampleHeading extends EObject
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<XVariableDeclaration> getParts();
+	EList<XtendField> getParts();
 
 } // ExampleHeading

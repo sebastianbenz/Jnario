@@ -28,24 +28,16 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cPackageKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final Assignment cPackageAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cPackageQualifiedNameParserRuleCall_1_1_0 = (RuleCall)cPackageAssignment_1_1.eContents().get(0);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameFEATURE_TEXTTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Assignment cImportsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cImportsImportParserRuleCall_3_0 = (RuleCall)cImportsAssignment_3.eContents().get(0);
-		private final Assignment cDescriptionAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cDescriptionDESCRIPTIONParserRuleCall_4_0 = (RuleCall)cDescriptionAssignment_4.eContents().get(0);
-		private final Assignment cBackgroundAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cBackgroundBackgroundParserRuleCall_5_0 = (RuleCall)cBackgroundAssignment_5.eContents().get(0);
-		private final Assignment cXtendClassAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cXtendClassScenarioParserRuleCall_6_0 = (RuleCall)cXtendClassAssignment_6.eContents().get(0);
+		private final Assignment cImportsAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cImportsImportParserRuleCall_2_0 = (RuleCall)cImportsAssignment_2.eContents().get(0);
+		private final Assignment cXtendClassAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cXtendClassFeatureParserRuleCall_3_0 = (RuleCall)cXtendClassAssignment_3.eContents().get(0);
 		
 		//Jnario returns xtend::XtendFile:
-		//	{Jnario} ("package" package=QualifiedName)? name=FEATURE_TEXT imports+=Import* description=DESCRIPTION?
-		//	background=Background? xtendClass=Scenario;
+		//	{Jnario} ("package" package=QualifiedName)? imports+=Import* xtendClass=Feature?;
 		public ParserRule getRule() { return rule; }
 
-		//{Jnario} ("package" package=QualifiedName)? name=FEATURE_TEXT imports+=Import* description=DESCRIPTION?
-		//background=Background? xtendClass=Scenario
+		//{Jnario} ("package" package=QualifiedName)? imports+=Import* xtendClass=Feature?
 		public Group getGroup() { return cGroup; }
 
 		//{Jnario}
@@ -63,35 +55,65 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getPackageQualifiedNameParserRuleCall_1_1_0() { return cPackageQualifiedNameParserRuleCall_1_1_0; }
 
-		//name=FEATURE_TEXT
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
-
-		//FEATURE_TEXT
-		public RuleCall getNameFEATURE_TEXTTerminalRuleCall_2_0() { return cNameFEATURE_TEXTTerminalRuleCall_2_0; }
-
 		//imports+=Import*
-		public Assignment getImportsAssignment_3() { return cImportsAssignment_3; }
+		public Assignment getImportsAssignment_2() { return cImportsAssignment_2; }
 
 		//Import
-		public RuleCall getImportsImportParserRuleCall_3_0() { return cImportsImportParserRuleCall_3_0; }
+		public RuleCall getImportsImportParserRuleCall_2_0() { return cImportsImportParserRuleCall_2_0; }
+
+		//xtendClass=Feature?
+		public Assignment getXtendClassAssignment_3() { return cXtendClassAssignment_3; }
+
+		//Feature
+		public RuleCall getXtendClassFeatureParserRuleCall_3_0() { return cXtendClassFeatureParserRuleCall_3_0; }
+	}
+
+	public class FeatureElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Feature");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cFeatureAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameFEATURE_TEXTTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cDescriptionAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cDescriptionDESCRIPTIONParserRuleCall_2_0 = (RuleCall)cDescriptionAssignment_2.eContents().get(0);
+		private final Assignment cBackgroundAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cBackgroundBackgroundParserRuleCall_3_0 = (RuleCall)cBackgroundAssignment_3.eContents().get(0);
+		private final Assignment cMembersAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cMembersScenarioParserRuleCall_4_0 = (RuleCall)cMembersAssignment_4.eContents().get(0);
+		
+		//Feature returns xtend::XtendClass:
+		//	{Feature} name=FEATURE_TEXT description=DESCRIPTION? background=Background? members+=Scenario*;
+		public ParserRule getRule() { return rule; }
+
+		//{Feature} name=FEATURE_TEXT description=DESCRIPTION? background=Background? members+=Scenario*
+		public Group getGroup() { return cGroup; }
+
+		//{Feature}
+		public Action getFeatureAction_0() { return cFeatureAction_0; }
+
+		//name=FEATURE_TEXT
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//FEATURE_TEXT
+		public RuleCall getNameFEATURE_TEXTTerminalRuleCall_1_0() { return cNameFEATURE_TEXTTerminalRuleCall_1_0; }
 
 		//description=DESCRIPTION?
-		public Assignment getDescriptionAssignment_4() { return cDescriptionAssignment_4; }
+		public Assignment getDescriptionAssignment_2() { return cDescriptionAssignment_2; }
 
 		//DESCRIPTION
-		public RuleCall getDescriptionDESCRIPTIONParserRuleCall_4_0() { return cDescriptionDESCRIPTIONParserRuleCall_4_0; }
+		public RuleCall getDescriptionDESCRIPTIONParserRuleCall_2_0() { return cDescriptionDESCRIPTIONParserRuleCall_2_0; }
 
 		//background=Background?
-		public Assignment getBackgroundAssignment_5() { return cBackgroundAssignment_5; }
+		public Assignment getBackgroundAssignment_3() { return cBackgroundAssignment_3; }
 
 		//Background
-		public RuleCall getBackgroundBackgroundParserRuleCall_5_0() { return cBackgroundBackgroundParserRuleCall_5_0; }
+		public RuleCall getBackgroundBackgroundParserRuleCall_3_0() { return cBackgroundBackgroundParserRuleCall_3_0; }
 
-		//xtendClass=Scenario
-		public Assignment getXtendClassAssignment_6() { return cXtendClassAssignment_6; }
+		//members+=Scenario*
+		public Assignment getMembersAssignment_4() { return cMembersAssignment_4; }
 
 		//Scenario
-		public RuleCall getXtendClassScenarioParserRuleCall_6_0() { return cXtendClassScenarioParserRuleCall_6_0; }
+		public RuleCall getMembersScenarioParserRuleCall_4_0() { return cMembersScenarioParserRuleCall_4_0; }
 	}
 
 	public class DESCRIPTIONElements extends AbstractParserRuleElementFinder {
@@ -255,8 +277,8 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		private final Action cScenarioAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameSCENARIO_TEXTTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Assignment cAnnotationsAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cAnnotationsXAnnotationParserRuleCall_2_0 = (RuleCall)cAnnotationsAssignment_2.eContents().get(0);
+		private final Assignment cMembersAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cMembersMemberParserRuleCall_2_0 = (RuleCall)cMembersAssignment_2.eContents().get(0);
 		private final Assignment cStepsAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cStepsGivenParserRuleCall_3_0 = (RuleCall)cStepsAssignment_3.eContents().get(0);
 		private final Assignment cStepsAssignment_4 = (Assignment)cGroup.eContents().get(4);
@@ -266,12 +288,11 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cExamplesAssignment_6 = (Assignment)cGroup.eContents().get(6);
 		private final RuleCall cExamplesExampleTableParserRuleCall_6_0 = (RuleCall)cExamplesAssignment_6.eContents().get(0);
 		
-		//Scenario returns xtend::XtendClass:
-		//	{Scenario} name=SCENARIO_TEXT annotations+=XAnnotation* steps+=Given? steps+=When? steps+=Then?
-		//	examples+=ExampleTable*;
+		//Scenario returns xtend::XtendMember:
+		//	{Scenario} name=SCENARIO_TEXT members+=Member* steps+=Given? steps+=When? steps+=Then? examples+=ExampleTable*;
 		public ParserRule getRule() { return rule; }
 
-		//{Scenario} name=SCENARIO_TEXT annotations+=XAnnotation* steps+=Given? steps+=When? steps+=Then? examples+=ExampleTable*
+		//{Scenario} name=SCENARIO_TEXT members+=Member* steps+=Given? steps+=When? steps+=Then? examples+=ExampleTable*
 		public Group getGroup() { return cGroup; }
 
 		//{Scenario}
@@ -283,11 +304,11 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		//SCENARIO_TEXT
 		public RuleCall getNameSCENARIO_TEXTTerminalRuleCall_1_0() { return cNameSCENARIO_TEXTTerminalRuleCall_1_0; }
 
-		//annotations+=XAnnotation*
-		public Assignment getAnnotationsAssignment_2() { return cAnnotationsAssignment_2; }
+		//members+=Member*
+		public Assignment getMembersAssignment_2() { return cMembersAssignment_2; }
 
-		//XAnnotation
-		public RuleCall getAnnotationsXAnnotationParserRuleCall_2_0() { return cAnnotationsXAnnotationParserRuleCall_2_0; }
+		//Member
+		public RuleCall getMembersMemberParserRuleCall_2_0() { return cMembersMemberParserRuleCall_2_0; }
 
 		//steps+=Given?
 		public Assignment getStepsAssignment_3() { return cStepsAssignment_3; }
@@ -671,7 +692,7 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameValidIDParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		
-		//ExampleHeadingCell returns xbase::XVariableDeclaration:
+		//ExampleHeadingCell returns xtend::XtendField:
 		//	(PIPE | PIPE_SPACES) name=ValidID;
 		public ParserRule getRule() { return rule; }
 
@@ -752,6 +773,7 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	
 	
 	private JnarioElements pJnario;
+	private FeatureElements pFeature;
 	private DESCRIPTIONElements pDESCRIPTION;
 	private ImportElements pImport;
 	private QualifiedNameWithWildCardElements pQualifiedNameWithWildCard;
@@ -814,14 +836,23 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Jnario returns xtend::XtendFile:
-	//	{Jnario} ("package" package=QualifiedName)? name=FEATURE_TEXT imports+=Import* description=DESCRIPTION?
-	//	background=Background? xtendClass=Scenario;
+	//	{Jnario} ("package" package=QualifiedName)? imports+=Import* xtendClass=Feature?;
 	public JnarioElements getJnarioAccess() {
 		return (pJnario != null) ? pJnario : (pJnario = new JnarioElements());
 	}
 	
 	public ParserRule getJnarioRule() {
 		return getJnarioAccess().getRule();
+	}
+
+	//Feature returns xtend::XtendClass:
+	//	{Feature} name=FEATURE_TEXT description=DESCRIPTION? background=Background? members+=Scenario*;
+	public FeatureElements getFeatureAccess() {
+		return (pFeature != null) ? pFeature : (pFeature = new FeatureElements());
+	}
+	
+	public ParserRule getFeatureRule() {
+		return getFeatureAccess().getRule();
 	}
 
 	//DESCRIPTION:
@@ -865,9 +896,8 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		return getBackgroundAccess().getRule();
 	}
 
-	//Scenario returns xtend::XtendClass:
-	//	{Scenario} name=SCENARIO_TEXT annotations+=XAnnotation* steps+=Given? steps+=When? steps+=Then?
-	//	examples+=ExampleTable*;
+	//Scenario returns xtend::XtendMember:
+	//	{Scenario} name=SCENARIO_TEXT members+=Member* steps+=Given? steps+=When? steps+=Then? examples+=ExampleTable*;
 	public ScenarioElements getScenarioAccess() {
 		return (pScenario != null) ? pScenario : (pScenario = new ScenarioElements());
 	}
@@ -986,7 +1016,7 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		return getExampleHeadingAccess().getRule();
 	}
 
-	//ExampleHeadingCell returns xbase::XVariableDeclaration:
+	//ExampleHeadingCell returns xtend::XtendField:
 	//	(PIPE | PIPE_SPACES) name=ValidID;
 	public ExampleHeadingCellElements getExampleHeadingCellAccess() {
 		return (pExampleHeadingCell != null) ? pExampleHeadingCell : (pExampleHeadingCell = new ExampleHeadingCellElements());
@@ -1017,35 +1047,65 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	////XMemberFeatureCall returns xbase::XExpression:
+	//
 	////	XPrimaryExpression
+	//
 	////	(=>({xbase::XAssignment.assignable=current} '.' feature=[types::JvmIdentifiableElement|ValidID] OpSingleAssign) value=XAssignment
+	//
 	////	|=>({xbase::XMemberFeatureCall.memberCallTarget=current} feature=[types::JvmIdentifiableElement|ValidID]) memberCallArguments+=XExpression
+	//
 	////	|=>({xbase::XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|spreading?="*.")) 
+	//
 	////		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
+	//
 	////		feature=[types::JvmIdentifiableElement|ValidID] (
+	//
 	////			=>explicitOperationCall?='(' 
+	//
 	////				(
+	//
 	////				    memberCallArguments+=XShortClosure
+	//
 	////				  |	memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
+	//
 	////				)? 
+	//
 	////			')')?
+	//
 	////			=>memberCallArguments+=XClosure?
+	//
 	////		)*;
+	//
 	////
+	//
 	////	
+	//
 	////XFeatureCall returns xbase::XExpression:
+	//
 	////	{xbase::XFeatureCall}
+	//
 	////	(=> feature=[types::JvmIdentifiableElement|IdOrSuper]  featureCallArguments+=XExpression
+	//
 	////	|((declaringType=[types::JvmDeclaredType|StaticQualifier])?
+	//
 	////	('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')? 
+	//
 	////	feature=[types::JvmIdentifiableElement|IdOrSuper] 
+	//
 	////	(=>explicitOperationCall?='(' 
+	//
 	////		(
+	//
 	////		    featureCallArguments+=XShortClosure
+	//
 	////		  |	featureCallArguments+=XExpression (',' featureCallArguments+=XExpression)*
+	//
 	////		)? 
+	//
 	////	')')?
+	//
 	////	=>featureCallArguments+=XClosure?));
+	//
 	//terminal FEATURE_TEXT:
 	//	"Feature" COLON MNL;
 	public TerminalRule getFEATURE_TEXTRule() {

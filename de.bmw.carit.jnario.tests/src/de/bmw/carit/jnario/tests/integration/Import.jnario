@@ -1,9 +1,9 @@
 package de.bmw.carit.jnario.tests
 
+import static org.hamcrest.core.Is.*
+import org.junit.Assert.*
+
 Feature: Parsing simple jnario files.
-	
-	import static org.hamcrest.core.Is.*
-	import org.junit.Assert.*
 	
 	Scenario: Import stuff.
 		Given some variables.

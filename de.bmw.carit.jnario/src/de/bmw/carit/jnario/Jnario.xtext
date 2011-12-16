@@ -8,11 +8,16 @@ import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
 Jnario returns xtend::XtendFile:
 	{Jnario}
 	('package' package=QualifiedName)?
-	name=FEATURE_TEXT
 	imports += Import*
+	(xtendClass = Feature)?
+;
+
+Feature returns xtend::XtendClass:
+	{Feature}
+	name=FEATURE_TEXT
 	description=DESCRIPTION?
 	background = Background?
-	xtendClass=Scenario;
+	members+=Scenario*;
 	
 DESCRIPTION:
 	IN_ORDER_TEXT
@@ -34,10 +39,10 @@ Background:
 	BACKGROUND_TEXT
 	steps+=Given;
 
-Scenario returns xtend::XtendClass:
+Scenario returns xtend::XtendMember:
 	{Scenario}
 	name=SCENARIO_TEXT
-	annotations+=XAnnotation*
+	members+=Member*
 	steps+=Given?
 	steps+=When?
 	steps+=Then?
@@ -88,7 +93,7 @@ ExampleTable:
 ExampleHeading:
 	parts+=ExampleHeadingCell+ EXAMPLE_ROW_END;
  
-ExampleHeadingCell returns xbase::XVariableDeclaration:
+ExampleHeadingCell returns xtend::XtendField:
 	(PIPE | PIPE_SPACES) name=ValidID ;
 
 ExampleRow:

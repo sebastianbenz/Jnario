@@ -2,6 +2,7 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package de.bmw.carit.jnario.jnario.util;
 
@@ -83,9 +84,9 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
 		new JnarioSwitch<Adapter>()
 		{
 			@Override
-			public Adapter caseJnario(Jnario object)
+			public Adapter caseFeature(Feature object)
 			{
-				return createJnarioAdapter();
+				return createFeatureAdapter();
 			}
 			@Override
 			public Adapter caseBackground(Background object)
@@ -158,9 +159,9 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
 				return createExampleCellAdapter();
 			}
 			@Override
-			public Adapter caseXtendFile(XtendFile object)
+			public Adapter caseJnario(Jnario object)
 			{
-				return createXtendFileAdapter();
+				return createJnarioAdapter();
 			}
 			@Override
 			public Adapter caseXtendAnnotationTarget(XtendAnnotationTarget object)
@@ -176,6 +177,11 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
 			public Adapter caseXtendMember(XtendMember object)
 			{
 				return createXtendMemberAdapter();
+			}
+			@Override
+			public Adapter caseXtendFile(XtendFile object)
+			{
+				return createXtendFileAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object)
@@ -200,16 +206,16 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.Jnario <em>Jnario</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.Feature <em>Feature</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.bmw.carit.jnario.jnario.Jnario
+	 * @see de.bmw.carit.jnario.jnario.Feature
 	 * @generated
 	 */
-	public Adapter createJnarioAdapter()
+	public Adapter createFeatureAdapter()
 	{
 		return null;
 	}
@@ -425,16 +431,16 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.xtext.xtend2.xtend2.XtendFile <em>Xtend File</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.Jnario <em>Jnario</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.xtext.xtend2.xtend2.XtendFile
+	 * @see de.bmw.carit.jnario.jnario.Jnario
 	 * @generated
 	 */
-	public Adapter createXtendFileAdapter()
+	public Adapter createJnarioAdapter()
 	{
 		return null;
 	}
@@ -480,6 +486,21 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createXtendMemberAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.xtext.xtend2.xtend2.XtendFile <em>Xtend File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.xtext.xtend2.xtend2.XtendFile
+	 * @generated
+	 */
+	public Adapter createXtendFileAdapter()
 	{
 		return null;
 	}

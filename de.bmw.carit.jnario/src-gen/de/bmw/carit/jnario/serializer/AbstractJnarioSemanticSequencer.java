@@ -10,6 +10,7 @@ import de.bmw.carit.jnario.jnario.ExampleCell;
 import de.bmw.carit.jnario.jnario.ExampleHeading;
 import de.bmw.carit.jnario.jnario.ExampleRow;
 import de.bmw.carit.jnario.jnario.ExampleTable;
+import de.bmw.carit.jnario.jnario.Feature;
 import de.bmw.carit.jnario.jnario.Given;
 import de.bmw.carit.jnario.jnario.Jnario;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
@@ -168,6 +169,12 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 			case JnarioPackage.EXAMPLE_TABLE:
 				if(context == grammarAccess.getExampleTableRule()) {
 					sequence_ExampleTable(context, (ExampleTable) semanticObject); 
+					return; 
+				}
+				else break;
+			case JnarioPackage.FEATURE:
+				if(context == grammarAccess.getFeatureRule()) {
+					sequence_Feature(context, (Feature) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1097,11 +1104,7 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case XbasePackage.XVARIABLE_DECLARATION:
-				if(context == grammarAccess.getExampleHeadingCellRule()) {
-					sequence_ExampleHeadingCell(context, (XVariableDeclaration) semanticObject); 
-					return; 
-				}
-				else if(context == grammarAccess.getRichStringPartRule() ||
+				if(context == grammarAccess.getRichStringPartRule() ||
 				   context == grammarAccess.getXExpressionInsideBlockRule() ||
 				   context == grammarAccess.getXVariableDeclarationRule()) {
 					sequence_XVariableDeclaration(context, (XVariableDeclaration) semanticObject); 
@@ -1244,7 +1247,11 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case Xtend2Package.XTEND_FIELD:
-				if(context == grammarAccess.getMemberRule()) {
+				if(context == grammarAccess.getExampleHeadingCellRule()) {
+					sequence_ExampleHeadingCell(context, (XtendField) semanticObject); 
+					return; 
+				}
+				else if(context == grammarAccess.getMemberRule()) {
 					sequence_Member(context, (XtendField) semanticObject); 
 					return; 
 				}
@@ -1385,7 +1392,7 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	 * Constraint:
 	 *     name=ValidID
 	 */
-	protected void sequence_ExampleHeadingCell(EObject context, XVariableDeclaration semanticObject) {
+	protected void sequence_ExampleHeadingCell(EObject context, XtendField semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1413,6 +1420,15 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	 *     (name=EXAMPLE_TEXT heading=ExampleHeading rows+=ExampleRow*)
 	 */
 	protected void sequence_ExampleTable(EObject context, ExampleTable semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=FEATURE_TEXT description=DESCRIPTION? background=Background? members+=Scenario*)
+	 */
+	protected void sequence_Feature(EObject context, Feature semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1468,14 +1484,7 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (
-	 *         package=QualifiedName? 
-	 *         name=FEATURE_TEXT 
-	 *         imports+=Import* 
-	 *         description=DESCRIPTION? 
-	 *         background=Background? 
-	 *         xtendClass=Scenario
-	 *     )
+	 *     (package=QualifiedName? imports+=Import* xtendClass=Feature?)
 	 */
 	protected void sequence_Jnario(EObject context, Jnario semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1749,7 +1758,7 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         name=SCENARIO_TEXT 
-	 *         annotations+=XAnnotation* 
+	 *         members+=Member* 
 	 *         steps+=Given? 
 	 *         steps+=When? 
 	 *         steps+=Then? 

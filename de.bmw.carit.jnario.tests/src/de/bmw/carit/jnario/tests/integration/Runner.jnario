@@ -1,20 +1,23 @@
 package de.bmw.carit.jnario.tests
 
-Feature: Test Runner
+import static extension de.bmw.carit.jnario.tests.util.JnarioExecutor.*
+import static org.junit.experimental.results.ResultMatchers.*
 
-	import static extension de.bmw.carit.jnario.tests.util.JnarioExecutor.*
-	import static org.junit.experimental.results.ResultMatchers.*
+Feature: Test Runner
 
 	Scenario: Create only one test instance for one jnario scenario
 	
+		public String jnarioFile
+	
 		Given a jnario-file that uses one variable in different steps
 		
-			var jnarioFile = "
+			jnarioFile = "
 				package bootstrap
 				Feature:
 					Scenario:
+						public int x
 						Given 
-							var x = 3
+							x = 3
 						When 
 							x = x + 1 
 						Then 
@@ -25,4 +28,4 @@ Feature: Test Runner
 					
 		Then the scenario should have no validation errors that the variable was not defined
 		And it should pass
-			jnarioFile.execute.should.be(successful)
+			jnarioFile.execute.should.be(isSuccessful)

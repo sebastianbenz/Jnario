@@ -1,13 +1,13 @@
 package de.bmw.carit.jnario.jvmmodel;
 
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Sets;
 import com.google.common.collect.UnmodifiableIterator;
 import com.google.inject.Inject;
 import de.bmw.carit.jnario.jnario.And;
 import de.bmw.carit.jnario.jnario.Background;
 import de.bmw.carit.jnario.jnario.Code;
 import de.bmw.carit.jnario.jnario.ExampleTable;
+import de.bmw.carit.jnario.jnario.Feature;
 import de.bmw.carit.jnario.jnario.Given;
 import de.bmw.carit.jnario.jnario.Jnario;
 import de.bmw.carit.jnario.jnario.Scenario;
@@ -15,15 +15,11 @@ import de.bmw.carit.jnario.jnario.Step;
 import de.bmw.carit.jnario.jnario.Then;
 import de.bmw.carit.jnario.jnario.When;
 import de.bmw.carit.jnario.naming.JavaNameProvider;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
-import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmMember;
 import org.eclipse.xtext.common.types.JvmOperation;
@@ -31,18 +27,19 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.util.IAcceptor;
 import org.eclipse.xtext.xbase.XBlockExpression;
-import org.eclipse.xtext.xbase.XExpression;
-import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.eclipse.xtext.xbase.lib.CollectionExtensions;
 import org.eclipse.xtext.xbase.lib.IntegerExtensions;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.eclipse.xtext.xtend2.jvmmodel.Xtend2JvmModelInferrer;
 import org.eclipse.xtext.xtend2.xtend2.XtendClass;
+import org.eclipse.xtext.xtend2.xtend2.XtendField;
+import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 
 /**
  * <p>Infers a JVM model from the source model.</p>
@@ -77,29 +74,36 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
    *        must not rely on linking using the index if iPrelinkingPhase is <code>true</code>
    */
   public void infer(final EObject object, final IAcceptor<JvmDeclaredType> acceptor, final boolean isPrelinkingPhase) {
-      Jnario jnario = ((Jnario) object);
-      boolean _operator_notEquals = ObjectExtensions.operator_notEquals(jnario, null);
+      Jnario jnarioFile = ((Jnario) object);
+      boolean _operator_notEquals = ObjectExtensions.operator_notEquals(jnarioFile, null);
       if (_operator_notEquals) {
         {
-          String _name = jnario.getName();
-          String _javaClassName = this._javaNameProvider.getJavaClassName(_name);
-          XtendClass _xtendClass = jnario.getXtendClass();
-          String _name_1 = _xtendClass.getName();
-          String _javaClassName_1 = this._javaNameProvider.getJavaClassName(_name_1);
-          String _operator_plus = StringExtensions.operator_plus(_javaClassName, _javaClassName_1);
-          final String className = _operator_plus;
-          XtendClass _xtendClass_1 = jnario.getXtendClass();
-          EList<ExampleTable> _examples = ((Scenario) _xtendClass_1).getExamples();
-          boolean _isEmpty = _examples.isEmpty();
-          boolean _operator_not = BooleanExtensions.operator_not(_isEmpty);
-          if (_operator_not) {
-            XtendClass _xtendClass_2 = jnario.getXtendClass();
-            String _operator_plus_1 = StringExtensions.operator_plus("Examples", className);
-            this.createExampleClass(((Scenario) _xtendClass_2), jnario, _operator_plus_1);
+          XtendClass _xtendClass = jnarioFile.getXtendClass();
+          Feature feature = ((Feature) _xtendClass);
+          boolean _operator_notEquals_1 = ObjectExtensions.operator_notEquals(feature, null);
+          if (_operator_notEquals_1) {
+            EList<XtendMember> _members = feature.getMembers();
+            for (final XtendMember member : _members) {
+              {
+                Scenario scenario = ((Scenario) member);
+                String _name = feature.getName();
+                String _javaClassName = this._javaNameProvider.getJavaClassName(_name);
+                String _name_1 = scenario.getName();
+                String _javaClassName_1 = this._javaNameProvider.getJavaClassName(_name_1);
+                String _operator_plus = StringExtensions.operator_plus(_javaClassName, _javaClassName_1);
+                final String className = _operator_plus;
+                EList<ExampleTable> _examples = scenario.getExamples();
+                boolean _isEmpty = _examples.isEmpty();
+                boolean _operator_not = BooleanExtensions.operator_not(_isEmpty);
+                if (_operator_not) {
+                  String _operator_plus_1 = StringExtensions.operator_plus("Examples", className);
+                  this.createExampleClass(scenario, jnarioFile, _operator_plus_1);
+                }
+                JvmGenericType _infer = this.infer(scenario, jnarioFile, className);
+                acceptor.accept(_infer);
+              }
+            }
           }
-          XtendClass _xtendClass_3 = jnario.getXtendClass();
-          JvmGenericType _infer = this.infer(((Scenario) _xtendClass_3), jnario, className);
-          acceptor.accept(_infer);
         }
       }
   }
@@ -120,36 +124,32 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
             it.setPackageName(_package);
             String _documentation = JnarioJvmModelInferrer.this._jvmTypesBuilder.getDocumentation(scenario);
             JnarioJvmModelInferrer.this._jvmTypesBuilder.setDocumentation(it, _documentation);
-            HashMap<String,JvmTypeReference> _generateVariables = JnarioJvmModelInferrer.this.generateVariables(scenario);
-            final HashMap<String,JvmTypeReference> variables = _generateVariables;
             boolean hasBackground = false;
-            Background _background = jnario.getBackground();
+            XtendClass _xtendClass = jnario.getXtendClass();
+            Feature feature = ((Feature) _xtendClass);
+            Background _background = feature.getBackground();
             boolean _operator_notEquals = ObjectExtensions.operator_notEquals(_background, null);
             if (_operator_notEquals) {
               hasBackground = true;
             }
-            if (hasBackground) {
+            TreeIterator<EObject> _eAllContents = scenario.eAllContents();
+            TreeIterator<EObject> eAllContents = _eAllContents;
+            UnmodifiableIterator<XtendField> _filter = Iterators.<XtendField>filter(eAllContents, org.eclipse.xtext.xtend2.xtend2.XtendField.class);
+            UnmodifiableIterator<XtendField> allFields = _filter;
+            Iterable<XtendField> _iterable = IteratorExtensions.<XtendField>toIterable(allFields);
+            for (final XtendField field : _iterable) {
               {
-                Background _background_1 = jnario.getBackground();
-                HashMap<String,JvmTypeReference> _generateVariables_1 = JnarioJvmModelInferrer.this.generateVariables(_background_1);
-                final HashMap<String,JvmTypeReference> backgroundVariables = _generateVariables_1;
-                variables.putAll(backgroundVariables);
-              }
-            }
-            Set<String> _keySet = variables.keySet();
-            for (final String variable : _keySet) {
-              {
-                JvmTypeReference _get = variables.get(variable);
-                JvmTypeReference type = _get;
-                EList<JvmMember> _members = it.getMembers();
-                JvmField _field = JnarioJvmModelInferrer.this._jvmTypesBuilder.toField(scenario, variable, type);
-                CollectionExtensions.<JvmField>operator_add(_members, _field);
+                JvmTypeReference _type = field.getType();
+                boolean _operator_equals = ObjectExtensions.operator_equals(_type, null);
+                if (_operator_equals) {
+                }
+                JnarioJvmModelInferrer.this.transform(field, it);
               }
             }
             int order = 0;
             if (hasBackground) {
-              Background _background_2 = jnario.getBackground();
-              EList<Given> _steps = _background_2.getSteps();
+              Background _background_1 = feature.getBackground();
+              EList<Given> _steps = _background_1.getSteps();
               for (final Given step : _steps) {
                 {
                   JnarioJvmModelInferrer.this.transform(step, it, order);
@@ -162,8 +162,9 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
               }
             }
             EList<Step> _steps_1 = scenario.getSteps();
-            for (final Step step_1 : _steps_1) {
+            for (final Step member : _steps_1) {
               {
+                Step step_1 = ((Step) member);
                 int _transform_1 = JnarioJvmModelInferrer.this.transform(step_1, it, order);
                 order = _transform_1;
                 if ((step_1 instanceof Given)) {
@@ -207,64 +208,6 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
   
   public Object createExampleClass(final Scenario scenario, final Jnario jnario, final String className) {
     return null;
-  }
-  
-  public HashMap<String,JvmTypeReference> generateVariables(final EObject object) {
-    HashMap<String,JvmTypeReference> _xblockexpression = null;
-    {
-      TreeIterator<EObject> _eAllContents = object.eAllContents();
-      TreeIterator<EObject> eAllContents = _eAllContents;
-      UnmodifiableIterator<XVariableDeclaration> _filter = Iterators.<XVariableDeclaration>filter(eAllContents, org.eclipse.xtext.xbase.XVariableDeclaration.class);
-      UnmodifiableIterator<XVariableDeclaration> allVariables = _filter;
-      HashSet<String> _newHashSet = Sets.<String>newHashSet("");
-      HashSet<String> declaredVariables = _newHashSet;
-      HashMap<String,JvmTypeReference> _hashMap = new HashMap<String,JvmTypeReference>();
-      HashMap<String,JvmTypeReference> variablesMap = _hashMap;
-      boolean _hasNext = allVariables.hasNext();
-      boolean _while = _hasNext;
-      while (_while) {
-        {
-          XVariableDeclaration _next = allVariables.next();
-          XVariableDeclaration currentDec = _next;
-          String _qualifiedName = currentDec.getQualifiedName();
-          boolean _contains = declaredVariables.contains(_qualifiedName);
-          boolean _operator_not = BooleanExtensions.operator_not(_contains);
-          if (_operator_not) {
-            {
-              String _qualifiedName_1 = currentDec.getQualifiedName();
-              declaredVariables.add(_qualifiedName_1);
-              JvmTypeReference type = null;
-              JvmTypeReference _type = currentDec.getType();
-              boolean _operator_notEquals = ObjectExtensions.operator_notEquals(_type, null);
-              if (_operator_notEquals) {
-                JvmTypeReference _type_1 = currentDec.getType();
-                type = _type_1;
-              } else {
-                XExpression _right = currentDec.getRight();
-                boolean _operator_notEquals_1 = ObjectExtensions.operator_notEquals(_right, null);
-                if (_operator_notEquals_1) {
-                  XExpression _right_1 = currentDec.getRight();
-                  JvmTypeReference _type_2 = this._iTypeProvider.getType(_right_1);
-                  type = _type_2;
-                } else {
-                  JvmTypeReference _type_3 = this._iTypeProvider.getType(currentDec, true);
-                  type = _type_3;
-                }
-              }
-              boolean _operator_notEquals_2 = ObjectExtensions.operator_notEquals(type, null);
-              if (_operator_notEquals_2) {
-                String _simpleName = currentDec.getSimpleName();
-                variablesMap.put(_simpleName, type);
-              }
-            }
-          }
-        }
-        boolean _hasNext_1 = allVariables.hasNext();
-        _while = _hasNext_1;
-      }
-      _xblockexpression = (variablesMap);
-    }
-    return _xblockexpression;
   }
   
   public int transform(final Step step, final JvmGenericType inferredJvmType, final int order) {

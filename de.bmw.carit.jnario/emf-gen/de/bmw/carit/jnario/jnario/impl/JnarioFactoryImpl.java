@@ -2,6 +2,7 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package de.bmw.carit.jnario.jnario.impl;
 
@@ -67,7 +68,7 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 	{
 		switch (eClass.getClassifierID())
 		{
-			case JnarioPackage.JNARIO: return createJnario();
+			case JnarioPackage.FEATURE: return createFeature();
 			case JnarioPackage.BACKGROUND: return createBackground();
 			case JnarioPackage.SCENARIO: return createScenario();
 			case JnarioPackage.ANNOTATION: return createAnnotation();
@@ -82,6 +83,7 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 			case JnarioPackage.EXAMPLE_HEADING: return createExampleHeading();
 			case JnarioPackage.EXAMPLE_ROW: return createExampleRow();
 			case JnarioPackage.EXAMPLE_CELL: return createExampleCell();
+			case JnarioPackage.JNARIO: return createJnario();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -92,10 +94,10 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Jnario createJnario()
+	public Feature createFeature()
 	{
-		JnarioImplCustom jnario = new JnarioImplCustom();
-		return jnario;
+		FeatureImpl feature = new FeatureImpl();
+		return feature;
 	}
 
 	/**
@@ -250,6 +252,17 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 	{
 		ExampleCellImplCustom exampleCell = new ExampleCellImplCustom();
 		return exampleCell;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Jnario createJnario()
+	{
+		JnarioImpl jnario = new JnarioImpl();
+		return jnario;
 	}
 
 	/**

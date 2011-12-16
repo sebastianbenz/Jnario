@@ -108,35 +108,17 @@ ruleJnario returns [EObject current=null]
 )
 ))?(
 (
-		lv_name_3_0=RULE_FEATURE_TEXT
-		{
-			newLeafNode(lv_name_3_0, grammarAccess.getJnarioAccess().getNameFEATURE_TEXTTerminalRuleCall_2_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getJnarioRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"name",
-        		lv_name_3_0, 
-        		"FEATURE_TEXT");
-	    }
-
-)
-)(
-(
 		{ 
-	        newCompositeNode(grammarAccess.getJnarioAccess().getImportsImportParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getJnarioAccess().getImportsImportParserRuleCall_2_0()); 
 	    }
-		lv_imports_4_0=ruleImport		{
+		lv_imports_3_0=ruleImport		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getJnarioRule());
 	        }
        		add(
        			$current, 
        			"imports",
-        		lv_imports_4_0, 
+        		lv_imports_3_0, 
         		"Import");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -145,16 +127,79 @@ ruleJnario returns [EObject current=null]
 )*(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getJnarioAccess().getDescriptionDESCRIPTIONParserRuleCall_4_0()); 
+	        newCompositeNode(grammarAccess.getJnarioAccess().getXtendClassFeatureParserRuleCall_3_0()); 
 	    }
-		lv_description_5_0=ruleDESCRIPTION		{
+		lv_xtendClass_4_0=ruleFeature		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getJnarioRule());
 	        }
        		set(
        			$current, 
+       			"xtendClass",
+        		lv_xtendClass_4_0, 
+        		"Feature");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)?)
+;
+
+
+
+
+
+// Entry rule entryRuleFeature
+entryRuleFeature returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getFeatureRule()); }
+	 iv_ruleFeature=ruleFeature 
+	 { $current=$iv_ruleFeature.current; } 
+	 EOF 
+;
+
+// Rule Feature
+ruleFeature returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getFeatureAccess().getFeatureAction_0(),
+            $current);
+    }
+)(
+(
+		lv_name_1_0=RULE_FEATURE_TEXT
+		{
+			newLeafNode(lv_name_1_0, grammarAccess.getFeatureAccess().getNameFEATURE_TEXTTerminalRuleCall_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getFeatureRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_1_0, 
+        		"FEATURE_TEXT");
+	    }
+
+)
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getFeatureAccess().getDescriptionDESCRIPTIONParserRuleCall_2_0()); 
+	    }
+		lv_description_2_0=ruleDESCRIPTION		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getFeatureRule());
+	        }
+       		set(
+       			$current, 
        			"description",
-        		lv_description_5_0, 
+        		lv_description_2_0, 
         		"DESCRIPTION");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -163,16 +208,16 @@ ruleJnario returns [EObject current=null]
 )?(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getJnarioAccess().getBackgroundBackgroundParserRuleCall_5_0()); 
+	        newCompositeNode(grammarAccess.getFeatureAccess().getBackgroundBackgroundParserRuleCall_3_0()); 
 	    }
-		lv_background_6_0=ruleBackground		{
+		lv_background_3_0=ruleBackground		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getJnarioRule());
+	            $current = createModelElementForParent(grammarAccess.getFeatureRule());
 	        }
        		set(
        			$current, 
        			"background",
-        		lv_background_6_0, 
+        		lv_background_3_0, 
         		"Background");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -181,22 +226,22 @@ ruleJnario returns [EObject current=null]
 )?(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getJnarioAccess().getXtendClassScenarioParserRuleCall_6_0()); 
+	        newCompositeNode(grammarAccess.getFeatureAccess().getMembersScenarioParserRuleCall_4_0()); 
 	    }
-		lv_xtendClass_7_0=ruleScenario		{
+		lv_members_4_0=ruleScenario		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getJnarioRule());
+	            $current = createModelElementForParent(grammarAccess.getFeatureRule());
 	        }
-       		set(
+       		add(
        			$current, 
-       			"xtendClass",
-        		lv_xtendClass_7_0, 
+       			"members",
+        		lv_members_4_0, 
         		"Scenario");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))
+)*)
 ;
 
 
@@ -486,17 +531,17 @@ ruleScenario returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getScenarioAccess().getAnnotationsXAnnotationParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getScenarioAccess().getMembersMemberParserRuleCall_2_0()); 
 	    }
-		lv_annotations_2_0=ruleXAnnotation		{
+		lv_members_2_0=ruleMember		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getScenarioRule());
 	        }
        		add(
        			$current, 
-       			"annotations",
-        		lv_annotations_2_0, 
-        		"XAnnotation");
+       			"members",
+        		lv_members_2_0, 
+        		"Member");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -8504,17 +8549,17 @@ fragment RULE_SPACES : (' '|'\t')*;
 
 RULE_RICH_TEXT : '\'\'\'' RULE_IN_RICH_STRING* ('\'\'\''|('\'' '\''?)? EOF);
 
-RULE_RICH_TEXT_START : '\'\'\'' RULE_IN_RICH_STRING* ('\'' '\''?)? '\u00B4';
+RULE_RICH_TEXT_START : '\'\'\'' RULE_IN_RICH_STRING* ('\'' '\''?)? '\u00AB';
 
-RULE_RICH_TEXT_END : '\u00AA' RULE_IN_RICH_STRING* ('\'\'\''|('\'' '\''?)? EOF);
+RULE_RICH_TEXT_END : '\u00BB' RULE_IN_RICH_STRING* ('\'\'\''|('\'' '\''?)? EOF);
 
-RULE_RICH_TEXT_INBETWEEN : '\u00AA' RULE_IN_RICH_STRING* ('\'' '\''?)? '\u00B4';
+RULE_RICH_TEXT_INBETWEEN : '\u00BB' RULE_IN_RICH_STRING* ('\'' '\''?)? '\u00AB';
 
-RULE_COMMENT_RICH_TEXT_INBETWEEN : '\u00B4\u00B4' ~(('\n'|'\r'))* ('\r'? '\n' RULE_IN_RICH_STRING* ('\'' '\''?)? '\u00B4')?;
+RULE_COMMENT_RICH_TEXT_INBETWEEN : '\u00AB\u00AB' ~(('\n'|'\r'))* ('\r'? '\n' RULE_IN_RICH_STRING* ('\'' '\''?)? '\u00AB')?;
 
-RULE_COMMENT_RICH_TEXT_END : '\u00B4\u00B4' ~(('\n'|'\r'))* ('\r'? '\n' RULE_IN_RICH_STRING* ('\'\'\''|('\'' '\''?)? EOF)|EOF);
+RULE_COMMENT_RICH_TEXT_END : '\u00AB\u00AB' ~(('\n'|'\r'))* ('\r'? '\n' RULE_IN_RICH_STRING* ('\'\'\''|('\'' '\''?)? EOF)|EOF);
 
-fragment RULE_IN_RICH_STRING : ('\'\'' ~(('\u00B4'|'\''))|'\'' ~(('\u00B4'|'\''))|~(('\u00B4'|'\'')));
+fragment RULE_IN_RICH_STRING : ('\'\'' ~(('\u00AB'|'\''))|'\'' ~(('\u00AB'|'\''))|~(('\u00AB'|'\'')));
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'$'|'_') ('a'..'z'|'A'..'Z'|'$'|'_'|'0'..'9')*;
 

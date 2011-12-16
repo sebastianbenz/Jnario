@@ -83,6 +83,7 @@ public class JnarioParser extends AbstractContentAssistParser {
 					put(grammarAccess.getVisibilityAccess().getAlternatives(), "rule__Visibility__Alternatives");
 					put(grammarAccess.getJnarioAccess().getGroup(), "rule__Jnario__Group__0");
 					put(grammarAccess.getJnarioAccess().getGroup_1(), "rule__Jnario__Group_1__0");
+					put(grammarAccess.getFeatureAccess().getGroup(), "rule__Feature__Group__0");
 					put(grammarAccess.getDESCRIPTIONAccess().getGroup(), "rule__DESCRIPTION__Group__0");
 					put(grammarAccess.getImportAccess().getGroup(), "rule__Import__Group__0");
 					put(grammarAccess.getImportAccess().getGroup_1_0(), "rule__Import__Group_1_0__0");
@@ -295,11 +296,12 @@ public class JnarioParser extends AbstractContentAssistParser {
 					put(grammarAccess.getJvmTypeParameterAccess().getGroup(), "rule__JvmTypeParameter__Group__0");
 					put(grammarAccess.getJvmTypeParameterAccess().getGroup_1_0(), "rule__JvmTypeParameter__Group_1_0__0");
 					put(grammarAccess.getJnarioAccess().getPackageAssignment_1_1(), "rule__Jnario__PackageAssignment_1_1");
-					put(grammarAccess.getJnarioAccess().getNameAssignment_2(), "rule__Jnario__NameAssignment_2");
-					put(grammarAccess.getJnarioAccess().getImportsAssignment_3(), "rule__Jnario__ImportsAssignment_3");
-					put(grammarAccess.getJnarioAccess().getDescriptionAssignment_4(), "rule__Jnario__DescriptionAssignment_4");
-					put(grammarAccess.getJnarioAccess().getBackgroundAssignment_5(), "rule__Jnario__BackgroundAssignment_5");
-					put(grammarAccess.getJnarioAccess().getXtendClassAssignment_6(), "rule__Jnario__XtendClassAssignment_6");
+					put(grammarAccess.getJnarioAccess().getImportsAssignment_2(), "rule__Jnario__ImportsAssignment_2");
+					put(grammarAccess.getJnarioAccess().getXtendClassAssignment_3(), "rule__Jnario__XtendClassAssignment_3");
+					put(grammarAccess.getFeatureAccess().getNameAssignment_1(), "rule__Feature__NameAssignment_1");
+					put(grammarAccess.getFeatureAccess().getDescriptionAssignment_2(), "rule__Feature__DescriptionAssignment_2");
+					put(grammarAccess.getFeatureAccess().getBackgroundAssignment_3(), "rule__Feature__BackgroundAssignment_3");
+					put(grammarAccess.getFeatureAccess().getMembersAssignment_4(), "rule__Feature__MembersAssignment_4");
 					put(grammarAccess.getImportAccess().getStaticAssignment_1_0_0(), "rule__Import__StaticAssignment_1_0_0");
 					put(grammarAccess.getImportAccess().getExtensionAssignment_1_0_1(), "rule__Import__ExtensionAssignment_1_0_1");
 					put(grammarAccess.getImportAccess().getImportedTypeAssignment_1_0_2(), "rule__Import__ImportedTypeAssignment_1_0_2");
@@ -307,7 +309,7 @@ public class JnarioParser extends AbstractContentAssistParser {
 					put(grammarAccess.getImportAccess().getImportedNamespaceAssignment_1_2(), "rule__Import__ImportedNamespaceAssignment_1_2");
 					put(grammarAccess.getBackgroundAccess().getStepsAssignment_1(), "rule__Background__StepsAssignment_1");
 					put(grammarAccess.getScenarioAccess().getNameAssignment_1(), "rule__Scenario__NameAssignment_1");
-					put(grammarAccess.getScenarioAccess().getAnnotationsAssignment_2(), "rule__Scenario__AnnotationsAssignment_2");
+					put(grammarAccess.getScenarioAccess().getMembersAssignment_2(), "rule__Scenario__MembersAssignment_2");
 					put(grammarAccess.getScenarioAccess().getStepsAssignment_3(), "rule__Scenario__StepsAssignment_3");
 					put(grammarAccess.getScenarioAccess().getStepsAssignment_4(), "rule__Scenario__StepsAssignment_4");
 					put(grammarAccess.getScenarioAccess().getStepsAssignment_5(), "rule__Scenario__StepsAssignment_5");

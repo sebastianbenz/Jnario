@@ -2,6 +2,7 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package de.bmw.carit.jnario.jnario.util;
 
@@ -80,11 +81,12 @@ public class JnarioSwitch<T> extends Switch<T>
 	{
 		switch (classifierID)
 		{
-			case JnarioPackage.JNARIO:
+			case JnarioPackage.FEATURE:
 			{
-				Jnario jnario = (Jnario)theEObject;
-				T result = caseJnario(jnario);
-				if (result == null) result = caseXtendFile(jnario);
+				Feature feature = (Feature)theEObject;
+				T result = caseFeature(feature);
+				if (result == null) result = caseXtendClass(feature);
+				if (result == null) result = caseXtendAnnotationTarget(feature);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -99,7 +101,7 @@ public class JnarioSwitch<T> extends Switch<T>
 			{
 				Scenario scenario = (Scenario)theEObject;
 				T result = caseScenario(scenario);
-				if (result == null) result = caseXtendClass(scenario);
+				if (result == null) result = caseXtendMember(scenario);
 				if (result == null) result = caseXtendAnnotationTarget(scenario);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -202,22 +204,30 @@ public class JnarioSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case JnarioPackage.JNARIO:
+			{
+				Jnario jnario = (Jnario)theEObject;
+				T result = caseJnario(jnario);
+				if (result == null) result = caseXtendFile(jnario);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Jnario</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Feature</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Jnario</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Feature</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseJnario(Jnario object)
+	public T caseFeature(Feature object)
 	{
 		return null;
 	}
@@ -447,17 +457,17 @@ public class JnarioSwitch<T> extends Switch<T>
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Xtend File</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Jnario</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Xtend File</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Jnario</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseXtendFile(XtendFile object)
+	public T caseJnario(Jnario object)
 	{
 		return null;
 	}
@@ -506,6 +516,22 @@ public class JnarioSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseXtendMember(XtendMember object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Xtend File</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Xtend File</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseXtendFile(XtendFile object)
 	{
 		return null;
 	}

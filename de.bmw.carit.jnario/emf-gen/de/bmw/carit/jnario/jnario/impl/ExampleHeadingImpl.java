@@ -2,6 +2,7 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package de.bmw.carit.jnario.jnario.impl;
 
@@ -22,7 +23,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.eclipse.xtext.xbase.XVariableDeclaration;
+import org.eclipse.xtext.xtend2.xtend2.XtendField;
 
 /**
  * <!-- begin-user-doc -->
@@ -47,7 +48,7 @@ public class ExampleHeadingImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<XVariableDeclaration> parts;
+	protected EList<XtendField> parts;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -75,11 +76,11 @@ public class ExampleHeadingImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<XVariableDeclaration> getParts()
+	public EList<XtendField> getParts()
 	{
 		if (parts == null)
 		{
-			parts = new EObjectContainmentEList<XVariableDeclaration>(XVariableDeclaration.class, this, JnarioPackage.EXAMPLE_HEADING__PARTS);
+			parts = new EObjectContainmentEList<XtendField>(XtendField.class, this, JnarioPackage.EXAMPLE_HEADING__PARTS);
 		}
 		return parts;
 	}
@@ -129,7 +130,7 @@ public class ExampleHeadingImpl extends MinimalEObjectImpl.Container implements 
 		{
 			case JnarioPackage.EXAMPLE_HEADING__PARTS:
 				getParts().clear();
-				getParts().addAll((Collection<? extends XVariableDeclaration>)newValue);
+				getParts().addAll((Collection<? extends XtendField>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

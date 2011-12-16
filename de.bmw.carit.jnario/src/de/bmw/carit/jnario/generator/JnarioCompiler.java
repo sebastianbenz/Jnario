@@ -53,48 +53,48 @@ public class JnarioCompiler extends Xtend2Compiler {
 		b.decreaseIndentation();
 	}
 
-	@Override
-	protected void _toJavaStatement(XVariableDeclaration varDeclaration, IAppendable b, boolean isReferenced) {
-		if (varDeclaration.getRight() != null) {
-			internalToJavaStatement(varDeclaration.getRight(), b, true);
-		}
-		b.append("\n");
-		if (!varDeclaration.isWriteable()) {
-			b.append("final ");
-		}
-		JvmTypeReference type = null;
-		if (varDeclaration.getType() != null) {
-			type = varDeclaration.getType();
-		} else {
-			type = getTypeProvider().getType(varDeclaration.getRight());
-		}
-//		serialize(type, varDeclaration, b);
-//		b.append(" ");
-		b.append(b.declareVariable(varDeclaration, varDeclaration.getName()));
-		b.append(" = ");
-		if (varDeclaration.getRight() != null) {
-			internalToConvertedExpression(varDeclaration.getRight(), b, type);
-		} else {
-			if (getPrimitives().isPrimitive(type)) {
-				Primitive primitiveKind = getPrimitives().primitiveKind((JvmPrimitiveType) type.getType());
-				switch (primitiveKind) {
-					case Boolean:
-						b.append("false");
-						break;
-					default:
-						b.append("0");
-						break;
-				}
-			} else {
-				b.append("null");
-			}
-		}
-		b.append(";");
-	}
-
-	protected JvmTypeReference newVoidRef() {
-		JvmParameterizedTypeReference reference = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference();
-		reference.setType(TypesFactory.eINSTANCE.createJvmVoid());
-		return reference;
-	}
+//	@Override
+//	protected void _toJavaStatement(XVariableDeclaration varDeclaration, IAppendable b, boolean isReferenced) {
+//		if (varDeclaration.getRight() != null) {
+//			internalToJavaStatement(varDeclaration.getRight(), b, true);
+//		}
+//		b.append("\n");
+//		if (!varDeclaration.isWriteable()) {
+//			b.append("final ");
+//		}
+//		JvmTypeReference type = null;
+//		if (varDeclaration.getType() != null) {
+//			type = varDeclaration.getType();
+//		} else {
+//			type = getTypeProvider().getType(varDeclaration.getRight());
+//		}
+////		serialize(type, varDeclaration, b);
+////		b.append(" ");
+//		b.append(b.declareVariable(varDeclaration, varDeclaration.getName()));
+//		b.append(" = ");
+//		if (varDeclaration.getRight() != null) {
+//			internalToConvertedExpression(varDeclaration.getRight(), b, type);
+//		} else {
+//			if (getPrimitives().isPrimitive(type)) {
+//				Primitive primitiveKind = getPrimitives().primitiveKind((JvmPrimitiveType) type.getType());
+//				switch (primitiveKind) {
+//					case Boolean:
+//						b.append("false");
+//						break;
+//					default:
+//						b.append("0");
+//						break;
+//				}
+//			} else {
+//				b.append("null");
+//			}
+//		}
+//		b.append(";");
+//	}
+//
+//	protected JvmTypeReference newVoidRef() {
+//		JvmParameterizedTypeReference reference = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference();
+//		reference.setType(TypesFactory.eINSTANCE.createJvmVoid());
+//		return reference;
+//	}
 }

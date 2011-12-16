@@ -1,21 +1,20 @@
 package de.bmw.carit.jnario.tests
 
+import static extension de.bmw.carit.jnario.tests.util.JnarioExecutor.*
+import static org.junit.experimental.results.ResultMatchers.*
+
 Feature: Annotations
 
-	import static org.junit.Assert.*
-	import static extension de.bmw.carit.jnario.tests.util.JnarioExecutor.*
-	import static org.junit.experimental.results.ResultMatchers.*
-	import org.junit.experimental.results.ResultMatchers.*
-	import static org.hamcrest.CoreMatchers.*
-
 	Scenario: Parsing annotations inside a code block
+
+		public String jnarioFile
 	
 		Given a jnario-file with annotations
 		
-			var jnarioFile = "
+			jnarioFile = "
 				package bootstrap
+				import org.junit.Rule 
 				Feature:
-					import org.junit.Rule 
 					Scenario:
 						Given 
 							@Rule
@@ -28,4 +27,4 @@ Feature: Annotations
 		
 					
 		Then there should be no parsing error
-			jnarioFile.execute.should.be(successful)
+			jnarioFile.execute.should.be(isSuccessful)

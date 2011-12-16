@@ -2,6 +2,7 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package de.bmw.carit.jnario.jnario;
 
@@ -26,13 +27,13 @@ public interface JnarioFactory extends EFactory
 	JnarioFactory eINSTANCE = de.bmw.carit.jnario.jnario.impl.JnarioFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Jnario</em>'.
+	 * Returns a new object of class '<em>Feature</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Jnario</em>'.
+	 * @return a new object of class '<em>Feature</em>'.
 	 * @generated
 	 */
-	Jnario createJnario();
+	Feature createFeature();
 
 	/**
 	 * Returns a new object of class '<em>Background</em>'.
@@ -159,6 +160,15 @@ public interface JnarioFactory extends EFactory
 	 * @generated
 	 */
 	ExampleCell createExampleCell();
+
+	/**
+	 * Returns a new object of class '<em>Jnario</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Jnario</em>'.
+	 * @generated
+	 */
+	Jnario createJnario();
 
 	/**
 	 * Returns the package supported by this factory.

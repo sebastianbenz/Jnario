@@ -8,6 +8,7 @@ Background:
 		var password = "password"
 	And I am logged in.
 Scenario: A fancy scenario.
+	Given bla
 	When I do something fancy
 	Then it should work
-		"PowerUser".should.be("PowerUser")
+		//"PowerUser".should.be("PowerUser")

@@ -37,6 +37,6 @@ Export-Package: de.bmw.carit.jnario,
  de.bmw.carit.jnario.naming,
  de.bmw.carit.jnario.parser.antlr,
  de.bmw.carit.jnario.parser.antlr.internal,
- de.bmw.carit.jnario.serializer,
  de.bmw.carit.jnario.services,
- de.bmw.carit.jnario.validation
+ de.bmw.carit.jnario.validation,
+ de.bmw.carit.jnario.serializer
