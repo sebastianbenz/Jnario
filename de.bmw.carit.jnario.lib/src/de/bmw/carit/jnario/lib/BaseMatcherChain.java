@@ -70,7 +70,6 @@ public abstract class BaseMatcherChain<T> implements MatcherChain<T> {
 	private List<MatcherFactory<T>> factories = Lists.newArrayList();
 
 	public BaseMatcherChain() {
-		super();
 		append(new XMatchers.IsFactory<T>());
 	}
 

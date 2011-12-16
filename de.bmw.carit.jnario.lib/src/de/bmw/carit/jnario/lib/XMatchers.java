@@ -6,8 +6,14 @@ import static org.hamcrest.Matchers.endsWith;
 import static org.hamcrest.Matchers.startsWith;
 import static org.hamcrest.collection.IsCollectionContaining.hasItems;
 
+import org.eclipse.xtext.xbase.lib.Functions.Function0;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.Pair;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.CoreMatchers;
+import org.hamcrest.Description;
 import org.hamcrest.Matcher;
+import org.hamcrest.TypeSafeMatcher;
 import org.hamcrest.core.IsNot;
 
 public class XMatchers {
@@ -91,6 +97,23 @@ public class XMatchers {
 	public static MatcherChain<String> contain(MatcherChain<String> matcherChain, String expected) {
 		be(matcherChain, containsString(expected));
 		return matcherChain;
+	}
+	
+	public static <T> MatcherChain<T> match(MatcherChain<T> matcherChain, final String stringDescription, final Function1<T, Boolean> matchingFunction) {
+		
+		Matcher<T> expected = new TypeSafeMatcher<T>() {
+
+			@Override
+			public void describeTo(Description description) {
+				description.appendText(stringDescription);
+			}
+
+			@Override
+			public boolean matchesSafely(T item) {
+				return matchingFunction.apply(item);
+			}
+		};
+		return matcherChain.assertMatches(expected);
 	}
 
 }

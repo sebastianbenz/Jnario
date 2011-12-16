@@ -195,6 +195,21 @@ describe XMatchers{
 		
 	}
 	
+	describe "Custom Matchers"{
+		
+		context "matches"{
+			
+			it "accepts custom matcher definition"{
+				"hello".should.match("desc")[String s | "hello" == s]
+			}   
+			
+			it throws AssertionError "if the custom matcher fails"{
+				"hello".should.match("desc")[String s | "world" == s]
+			}
+		}
+		
+	}  
+	
 	def String errorMessage(Procedures$Procedure1<SingleTargetMatcherChain<String>> proc){
 		try{
 			proc.apply(null)
