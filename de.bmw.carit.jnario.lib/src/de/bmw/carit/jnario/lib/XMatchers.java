@@ -6,10 +6,7 @@ import static org.hamcrest.Matchers.endsWith;
 import static org.hamcrest.Matchers.startsWith;
 import static org.hamcrest.collection.IsCollectionContaining.hasItems;
 
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.Pair;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -100,7 +97,6 @@ public class XMatchers {
 	}
 	
 	public static <T> MatcherChain<T> match(MatcherChain<T> matcherChain, final String stringDescription, final Function1<T, Boolean> matchingFunction) {
-		
 		Matcher<T> expected = new TypeSafeMatcher<T>() {
 
 			@Override

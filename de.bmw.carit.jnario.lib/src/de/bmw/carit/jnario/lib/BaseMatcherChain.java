@@ -7,31 +7,18 @@ import org.hamcrest.Matcher;
 import org.hamcrest.SelfDescribing;
 import org.hamcrest.StringDescription;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
 public abstract class BaseMatcherChain<T> implements MatcherChain<T> {
-
-	protected static class TypeMatching<T> extends Matching<T> {
-	
-			public TypeMatching(Matcher<T> buildMatcher, T actual) {
-				super(buildMatcher, actual);
-			}
-	
-			@Override
-			protected Object getActual() {
-				Object actual = super.getActual();
-				if(actual != null){
-					actual = actual.getClass();
-				}
-				return actual;
-			}
-		}
 
 	protected static class Matching<T> implements SelfDescribing{
 	
 			private final Matcher<T> matcher;
 			private final T actual;
 	
+			
+			
 			public Matching(Matcher<T> matcher, T actual) {
 				this.matcher = matcher;
 				this.actual = actual;
@@ -67,10 +54,14 @@ public abstract class BaseMatcherChain<T> implements MatcherChain<T> {
 			
 		}
 
-	private List<MatcherFactory<T>> factories = Lists.newArrayList();
+	private List<MatcherFactory<T>> factories;
 
 	public BaseMatcherChain() {
-		append(new XMatchers.IsFactory<T>());
+		this(ImmutableList.<MatcherFactory<T>>of(new XMatchers.IsFactory<T>()));
+	}
+	
+	public BaseMatcherChain(List<MatcherFactory<T>> factories){
+		this.factories = factories;
 	}
 
 	public MatcherChain<T> append(MatcherFactory<T> factory) {
@@ -94,6 +85,10 @@ public abstract class BaseMatcherChain<T> implements MatcherChain<T> {
 			result = factories.get(i).create(result);
 		}
 		return result;
+	}
+	
+	protected List<MatcherFactory<T>> getFactories() {
+		return factories;
 	}
 
 }

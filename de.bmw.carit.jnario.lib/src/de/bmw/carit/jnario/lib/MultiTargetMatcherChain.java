@@ -1,6 +1,10 @@
 package de.bmw.carit.jnario.lib;
 
+import java.util.List;
+
 import org.hamcrest.Matcher;
+
+import com.google.common.collect.ImmutableList;
 
 public class MultiTargetMatcherChain<T> extends BaseMatcherChain<T> {
 
@@ -9,12 +13,25 @@ public class MultiTargetMatcherChain<T> extends BaseMatcherChain<T> {
 	public MultiTargetMatcherChain(Iterable<? extends T> inputs) {
 		this.inputs = inputs;
 	}
+	
+	public MultiTargetMatcherChain(List<MatcherFactory<T>> newFactories, Iterable<? extends T> inputs) {
+		super(newFactories);
+		this.inputs = inputs;
+	}
 
 	public MatcherChain<T> assertMatches(Matcher<T> expected){
 		for (T actual : inputs) {
 			matchingFor(expected, actual).doAssert();
 		}
 		return this;
+	}
+	
+	@Override
+	public MatcherChain<T> append(MatcherFactory<T> factory) {
+		List<MatcherFactory<T>> newFactories = ImmutableList.<MatcherFactory<T>>builder()
+										.addAll(getFactories())
+										.add(factory).build();
+		return new MultiTargetMatcherChain<T>(newFactories , inputs);
 	}
 
 }
