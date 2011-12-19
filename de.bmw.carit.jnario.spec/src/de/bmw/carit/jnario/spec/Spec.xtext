@@ -1,3 +1,4 @@
+
 grammar de.bmw.carit.jnario.spec.Spec with org.eclipse.xtext.xtend2.Xtend2
 
 import "http://www.bmw.de/carit/jnario/spec/Spec" 
@@ -78,6 +79,20 @@ Member returns xtend::XtendMember:
 			(expression=XBlockExpression)?
 	 );
 
+XLiteral returns xbase::XExpression:
+	XClosure |
+	XBooleanLiteral |
+	XIntLiteral |
+	XNullLiteral |
+	XStringLiteral |
+	XTypeLiteral |
+	XAssert
+;
+	 
+XAssert returns xbase::XExpression: 
+	{Assertion}
+	'assert' expression=XExpression;
+
 //ExampleHeading:
 //	cells+=ExampleHeadingCell+ EXAMPLE_ROW_END;
 // 
@@ -93,8 +108,4 @@ Member returns xtend::XtendMember:
 //terminal PIPE : '|';
 //terminal PIPE_SPACES: PIPE (' '|'\t')+;
 //terminal EXAMPLE_ROW_END: (PIPE | PIPE_SPACES) '\r'? '\n';
-
-terminal STRING	: 
-			'"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |
-			"'" ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|"'") )* "'";
 

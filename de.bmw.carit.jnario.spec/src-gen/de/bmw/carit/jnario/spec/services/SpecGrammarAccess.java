@@ -983,6 +983,192 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//XBlockExpression
 		public RuleCall getExpressionXBlockExpressionParserRuleCall_2_6_9_0() { return cExpressionXBlockExpressionParserRuleCall_2_6_9_0; }
 	}
+
+	public class XLiteralElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "XLiteral");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cXClosureParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cXBooleanLiteralParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cXIntLiteralParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cXNullLiteralParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cXStringLiteralParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cXTypeLiteralParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cXAssertParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
+		
+		//XLiteral returns xbase::XExpression:
+		//	XClosure | XBooleanLiteral | XIntLiteral | XNullLiteral | XStringLiteral | XTypeLiteral | XAssert;
+		public ParserRule getRule() { return rule; }
+
+		//XClosure | XBooleanLiteral | XIntLiteral | XNullLiteral | XStringLiteral | XTypeLiteral | XAssert
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//XClosure
+		public RuleCall getXClosureParserRuleCall_0() { return cXClosureParserRuleCall_0; }
+
+		//XBooleanLiteral
+		public RuleCall getXBooleanLiteralParserRuleCall_1() { return cXBooleanLiteralParserRuleCall_1; }
+
+		//XIntLiteral
+		public RuleCall getXIntLiteralParserRuleCall_2() { return cXIntLiteralParserRuleCall_2; }
+
+		//XNullLiteral
+		public RuleCall getXNullLiteralParserRuleCall_3() { return cXNullLiteralParserRuleCall_3; }
+
+		//XStringLiteral
+		public RuleCall getXStringLiteralParserRuleCall_4() { return cXStringLiteralParserRuleCall_4; }
+
+		//XTypeLiteral
+		public RuleCall getXTypeLiteralParserRuleCall_5() { return cXTypeLiteralParserRuleCall_5; }
+
+		//XAssert
+		public RuleCall getXAssertParserRuleCall_6() { return cXAssertParserRuleCall_6; }
+	}
+
+	public class XAssertElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "XAssert");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cAssertionAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cAssertKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cExpressionAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cExpressionXExpressionParserRuleCall_2_0 = (RuleCall)cExpressionAssignment_2.eContents().get(0);
+		
+		////ExampleHeading:
+		//
+		////	cells+=ExampleHeadingCell+ EXAMPLE_ROW_END;
+		//
+		//// 
+		//
+		////ExampleHeadingCell:
+		//
+		////	{ExampleHeadingCell}(PIPE | PIPE_SPACES) name=ID ;
+		//
+		////
+		//
+		////ExampleRow:
+		//
+		////	cells+=ExampleCell+ EXAMPLE_ROW_END;
+		//
+		////
+		//
+		////ExampleCell returns xbase::XExpression:
+		//
+		////	(PIPE | PIPE_SPACES) XExpression;
+		//
+		////
+		//
+		////terminal PIPE : '|';
+		//
+		////terminal PIPE_SPACES: PIPE (' '|'\t')+;
+		//
+		////terminal EXAMPLE_ROW_END: (PIPE | PIPE_SPACES) '\r'? '\n';
+		//
+		//XAssert returns xbase::XExpression:
+		//	{Assertion} "assert" expression=XExpression;
+		public ParserRule getRule() { return rule; }
+
+		//{Assertion} "assert" expression=XExpression //ExampleHeading:
+		//
+		////	cells+=ExampleHeadingCell+ EXAMPLE_ROW_END;
+		//
+		//// 
+		//
+		////ExampleHeadingCell:
+		//
+		////	{ExampleHeadingCell}(PIPE | PIPE_SPACES) name=ID ;
+		//
+		////
+		//
+		////ExampleRow:
+		//
+		////	cells+=ExampleCell+ EXAMPLE_ROW_END;
+		//
+		////
+		//
+		////ExampleCell returns xbase::XExpression:
+		//
+		////	(PIPE | PIPE_SPACES) XExpression;
+		//
+		////
+		//
+		////terminal PIPE : '|';
+		//
+		////terminal PIPE_SPACES: PIPE (' '|'\t')+;
+		//
+		////terminal EXAMPLE_ROW_END: (PIPE | PIPE_SPACES) '\r'? '\n';
+		public Group getGroup() { return cGroup; }
+
+		//{Assertion}
+		public Action getAssertionAction_0() { return cAssertionAction_0; }
+
+		//"assert"
+		public Keyword getAssertKeyword_1() { return cAssertKeyword_1; }
+
+		////ExampleHeading:
+		//
+		////	cells+=ExampleHeadingCell+ EXAMPLE_ROW_END;
+		//
+		//// 
+		//
+		////ExampleHeadingCell:
+		//
+		////	{ExampleHeadingCell}(PIPE | PIPE_SPACES) name=ID ;
+		//
+		////
+		//
+		////ExampleRow:
+		//
+		////	cells+=ExampleCell+ EXAMPLE_ROW_END;
+		//
+		////
+		//
+		////ExampleCell returns xbase::XExpression:
+		//
+		////	(PIPE | PIPE_SPACES) XExpression;
+		//
+		////
+		//
+		////terminal PIPE : '|';
+		//
+		////terminal PIPE_SPACES: PIPE (' '|'\t')+;
+		//
+		////terminal EXAMPLE_ROW_END: (PIPE | PIPE_SPACES) '\r'? '\n';
+		//
+		//expression=XExpression
+		public Assignment getExpressionAssignment_2() { return cExpressionAssignment_2; }
+
+		////ExampleHeading:
+		//
+		////	cells+=ExampleHeadingCell+ EXAMPLE_ROW_END;
+		//
+		//// 
+		//
+		////ExampleHeadingCell:
+		//
+		////	{ExampleHeadingCell}(PIPE | PIPE_SPACES) name=ID ;
+		//
+		////
+		//
+		////ExampleRow:
+		//
+		////	cells+=ExampleCell+ EXAMPLE_ROW_END;
+		//
+		////
+		//
+		////ExampleCell returns xbase::XExpression:
+		//
+		////	(PIPE | PIPE_SPACES) XExpression;
+		//
+		////
+		//
+		////terminal PIPE : '|';
+		//
+		////terminal PIPE_SPACES: PIPE (' '|'\t')+;
+		//
+		////terminal EXAMPLE_ROW_END: (PIPE | PIPE_SPACES) '\r'? '\n';
+		//
+		//XExpression
+		public RuleCall getExpressionXExpressionParserRuleCall_2_0() { return cExpressionXExpressionParserRuleCall_2_0; }
+	}
 	
 	
 	private SpecFileElements pSpecFile;
@@ -991,7 +1177,8 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	private TypeNameElements pTypeName;
 	private TypeRefElements pTypeRef;
 	private MemberElements pMember;
-	private TerminalRule tSTRING;
+	private XLiteralElements pXLiteral;
+	private XAssertElements pXAssert;
 	
 	private final GrammarProvider grammarProvider;
 
@@ -1099,6 +1286,16 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		return getMemberAccess().getRule();
 	}
 
+	//XLiteral returns xbase::XExpression:
+	//	XClosure | XBooleanLiteral | XIntLiteral | XNullLiteral | XStringLiteral | XTypeLiteral | XAssert;
+	public XLiteralElements getXLiteralAccess() {
+		return (pXLiteral != null) ? pXLiteral : (pXLiteral = new XLiteralElements());
+	}
+	
+	public ParserRule getXLiteralRule() {
+		return getXLiteralAccess().getRule();
+	}
+
 	////ExampleHeading:
 	//
 	////	cells+=ExampleHeadingCell+ EXAMPLE_ROW_END;
@@ -1129,12 +1326,15 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	////terminal EXAMPLE_ROW_END: (PIPE | PIPE_SPACES) '\r'? '\n';
 	//
-	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
-	public TerminalRule getSTRINGRule() {
-		return (tSTRING != null) ? tSTRING : (tSTRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "STRING"));
-	} 
+	//XAssert returns xbase::XExpression:
+	//	{Assertion} "assert" expression=XExpression;
+	public XAssertElements getXAssertAccess() {
+		return (pXAssert != null) ? pXAssert : (pXAssert = new XAssertElements());
+	}
+	
+	public ParserRule getXAssertRule() {
+		return getXAssertAccess().getRule();
+	}
 
 	//File returns XtendFile:
 	//	("package" package=QualifiedName)? imports+=Import* xtendClass=Class?;
@@ -1697,16 +1897,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		return getXPrimaryExpressionAccess().getRule();
 	}
 
-	//XLiteral returns XExpression:
-	//	XClosure | XBooleanLiteral | XIntLiteral | XNullLiteral | XStringLiteral | XTypeLiteral;
-	public XbaseGrammarAccess.XLiteralElements getXLiteralAccess() {
-		return gaXtend2.getXLiteralAccess();
-	}
-	
-	public ParserRule getXLiteralRule() {
-		return getXLiteralAccess().getRule();
-	}
-
 	//XClosure returns XExpression:
 	//	{XClosure} "[" => ((declaredFormalParameters+=JvmFormalParameter ("," declaredFormalParameters+=JvmFormalParameter)*)?
 	//	explicitSyntax?="|")? expression=XExpressionInClosure "]";
@@ -2102,6 +2292,13 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//	"0".."9"+;
 	public TerminalRule getINTRule() {
 		return gaXtend2.getINTRule();
+	} 
+
+	//terminal STRING:
+	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
+	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	public TerminalRule getSTRINGRule() {
+		return gaXtend2.getSTRINGRule();
 	} 
 
 	//terminal ML_COMMENT:

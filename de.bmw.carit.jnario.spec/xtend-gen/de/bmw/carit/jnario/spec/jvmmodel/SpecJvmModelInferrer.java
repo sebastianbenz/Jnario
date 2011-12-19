@@ -93,6 +93,12 @@ public class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
               SpecJvmModelInferrer.this._extendedJvmTypesBuilder.setDocumentation(it, _documentation);
               String _package = spec.getPackage();
               it.setPackageName(_package);
+              boolean _operator_notEquals = ObjectExtensions.operator_notEquals(superClass, null);
+              if (_operator_notEquals) {
+                EList<JvmTypeReference> _superTypes = it.getSuperTypes();
+                JvmParameterizedTypeReference _createTypeRef = SpecJvmModelInferrer.this._typeReferences.createTypeRef(superClass);
+                CollectionExtensions.<JvmParameterizedTypeReference>operator_add(_superTypes, _createTypeRef);
+              }
               if (isPrelinkingPhase) {
                 return;
               }
@@ -213,7 +219,7 @@ public class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
             }
           }
         };
-      JvmGenericType _class = this._extendedJvmTypesBuilder.toClass(exampleGroup, _javaClassName, superClass, _function);
+      JvmGenericType _class = this._extendedJvmTypesBuilder.toClass(exampleGroup, _javaClassName, _function);
       _xblockexpression = (_class);
     }
     return _xblockexpression;

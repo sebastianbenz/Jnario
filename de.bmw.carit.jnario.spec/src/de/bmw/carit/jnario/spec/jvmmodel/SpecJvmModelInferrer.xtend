@@ -60,11 +60,13 @@ class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
 	
 	def transform(SpecFile spec, ExampleGroup exampleGroup, JvmGenericType superClass, boolean isPrelinkingPhase) {
 		val List<JvmGenericType> subExamples = newArrayList()
-		exampleGroup.toClass(exampleGroup.toJavaClassName, superClass) [
+		exampleGroup.toClass(exampleGroup.toJavaClassName) [
 				spec.eResource.contents += it
 				documentation = exampleGroup.documentation
 				packageName = spec.^package
-				
+				if(superClass != null){
+					superTypes += superClass.createTypeRef
+				}
 				if(isPrelinkingPhase){
 					return
 				}

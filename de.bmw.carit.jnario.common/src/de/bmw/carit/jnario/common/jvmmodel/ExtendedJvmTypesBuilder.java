@@ -26,16 +26,7 @@ public class ExtendedJvmTypesBuilder extends JvmTypesBuilder {
 
 	@Inject
 	private TypeReferences references;
-	
-	public JvmGenericType toClass(EObject sourceElement, String name, JvmGenericType superType,
-			Procedure1<JvmGenericType> initializer) {
-		JvmGenericType result = super.toClass(sourceElement, name, initializer);
-		if(superType != null){
-			result.getSuperTypes().add(references.createTypeRef(superType));
-		}
-		return result;
-	}
-	
+		
 	public JvmAnnotationReference toAnnotation(EObject sourceElement, String annotationTypeName, String valueName, Object value) {
 		JvmAnnotationReference result = TypesFactory.eINSTANCE.createJvmAnnotationReference();
 		JvmType jvmType = references.findDeclaredType(annotationTypeName, sourceElement);

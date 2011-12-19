@@ -6,7 +6,6 @@ import static org.eclipse.xtext.scoping.Scopes.scopeFor;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.naming.QualifiedName;
@@ -20,8 +19,6 @@ import de.bmw.carit.jnario.spec.naming.OperationNameProvider;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 import de.bmw.carit.jnario.spec.spec.SpecPackage;
 
-/**
- */
 @SuppressWarnings("restriction")
 public class SpecScopeProvider extends Xtend2ScopeProvider {
 	

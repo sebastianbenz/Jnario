@@ -12,11 +12,13 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
+import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
 import org.eclipse.xtext.xbase.featurecalls.IdentifiableSimpleNameProvider;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.JvmModelAssociator;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.scoping.featurecalls.StaticImplicitMethodsFeatureForTypeProvider.ExtensionClassNameProvider;
+import org.eclipse.xtext.xbase.typing.ITypeArgumentContextHelper;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.eclipse.xtext.xbase.validation.EarlyExitValidator;
 import org.eclipse.xtext.xtend2.compiler.Xtend2OutputConfigurationProvider;
@@ -37,6 +39,7 @@ import com.google.inject.name.Names;
 import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmModelGenerator;
 import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder;
 import de.bmw.carit.jnario.common.scoping.JnarioExtensionClassNameProvider;
+import de.bmw.carit.jnario.spec.compiler.SpecCompiler;
 import de.bmw.carit.jnario.spec.conversion.SpecValueConverterService;
 import de.bmw.carit.jnario.spec.jvmmodel.JnarioDispatchUtil;
 import de.bmw.carit.jnario.spec.jvmmodel.SpecJvmModelInferrer;
@@ -71,6 +74,10 @@ public class SpecRuntimeModule extends de.bmw.carit.jnario.spec.AbstractSpecRunt
 	
 	@Override
 	public Class<? extends ITypeProvider> bindITypeProvider() {
+		return SpecTypeProvider.class;
+	}
+	
+	public Class<? extends ITypeArgumentContextHelper> bindITypeArgumentContextHelper(){
 		return SpecTypeProvider.class;
 	}
 	
@@ -124,6 +131,10 @@ public class SpecRuntimeModule extends de.bmw.carit.jnario.spec.AbstractSpecRunt
 	
 	public Class<? extends OutputConfigurationProvider> bindOutputConfigurationProvider() {
 		return Xtend2OutputConfigurationProvider.class;
+	}
+	
+	public Class<? extends XbaseCompiler> bindXbaseCompiler(){
+		return SpecCompiler.class;
 	}
 	
 }
