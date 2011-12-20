@@ -127,7 +127,7 @@ RULE_FEATURE_TEXT=12
 '*.'=118
 'extension'=114
 '&&'=41
-';'=68
+';'=67
 'return'=106
 'create'=43
 'for'=99
@@ -136,7 +136,7 @@ RULE_FEATURE_TEXT=12
 '+'=52
 '=>'=110
 '.'=59
-'import'=67
+'import'=68
 'static'=113
 'true'=120
 'FOR'=80

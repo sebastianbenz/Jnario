@@ -3,7 +3,7 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="jnario"
     nsURI="http://www.bmw.de/carit/jnario/Jnario" nsPrefix="jnario">
-  <eClassifiers xsi:type="ecore:EClass" name="Feature" eSuperTypes="../../org.eclipse.xtext.xtend2/model/Xtend2.ecore#//XtendClass">
+  <eClassifiers xsi:type="ecore:EClass" name="Feature" eSuperTypes="platform:/resource/org.eclipse.xtext.xtend2/model/Xtend2.ecore#//XtendClass">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="background" eType="#//Background"
         containment="true"/>
@@ -11,29 +11,21 @@
   <eClassifiers xsi:type="ecore:EClass" name="Background">
     <eStructuralFeatures xsi:type="ecore:EReference" name="steps" upperBound="-1"
         eType="#//Given" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
+        eType="ecore:EClass platform:/resource/org.eclipse.xtext.xtend2/model/Xtend2.ecore#//XtendMember"
+        containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Scenario" eSuperTypes="../../org.eclipse.xtext.xtend2/model/Xtend2.ecore#//XtendMember">
+  <eClassifiers xsi:type="ecore:EClass" name="Scenario" eSuperTypes="platform:/resource/org.eclipse.xtext.xtend2/model/Xtend2.ecore#//XtendMember">
     <eStructuralFeatures xsi:type="ecore:EReference" name="examples" upperBound="-1"
         eType="#//ExampleTable" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="steps" upperBound="-1"
         eType="#//Step" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
-        eType="ecore:EClass ../../org.eclipse.xtext.xtend2/model/Xtend2.ecore#//XtendMember"
+        eType="ecore:EClass platform:/resource/org.eclipse.xtext.xtend2/model/Xtend2.ecore#//XtendMember"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Annotation">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="annotation" eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/XAnnotations.ecore#//XAnnotation"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="var" eType="#//VariableDeclaration"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="VariableDeclaration">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="variableDec" eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Step" eSuperTypes="../../org.eclipse.xtext.xtend2/model/Xtend2.ecore#//XtendMember">
+  <eClassifiers xsi:type="ecore:EClass" name="Step" eSuperTypes="platform:/resource/org.eclipse.xtext.xtend2/model/Xtend2.ecore#//XtendMember">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="code" eType="#//Code" containment="true"/>
   </eClassifiers>
@@ -52,9 +44,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="And" eSuperTypes="#//Step"/>
   <eClassifiers xsi:type="ecore:EClass" name="Code">
     <eStructuralFeatures xsi:type="ecore:EReference" name="annotations" upperBound="-1"
-        eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/XAnnotations.ecore#//XAnnotation"
+        eType="ecore:EClass platform:/resource/org.eclipse.xtext.xbase/model/XAnnotations.ecore#//XAnnotation"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="blockExpression" eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XBlockExpression"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="blockExpression" eType="ecore:EClass platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore#//XBlockExpression"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExampleTable">
@@ -66,7 +58,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExampleHeading">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parts" upperBound="-1"
-        eType="ecore:EClass ../../org.eclipse.xtext.xtend2/model/Xtend2.ecore#//XtendField"
+        eType="ecore:EClass platform:/resource/org.eclipse.xtext.xtend2/model/Xtend2.ecore#//XtendField"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExampleRow">
@@ -74,8 +66,8 @@
         eType="#//ExampleCell" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExampleCell">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="ecore:EClass platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Jnario" eSuperTypes="../../org.eclipse.xtext.xtend2/model/Xtend2.ecore#//XtendFile"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Jnario" eSuperTypes="platform:/resource/org.eclipse.xtext.xtend2/model/Xtend2.ecore#//XtendFile"/>
 </ecore:EPackage>

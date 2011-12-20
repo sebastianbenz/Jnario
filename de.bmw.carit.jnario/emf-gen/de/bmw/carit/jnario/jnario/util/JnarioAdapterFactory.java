@@ -99,16 +99,6 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
 				return createScenarioAdapter();
 			}
 			@Override
-			public Adapter caseAnnotation(Annotation object)
-			{
-				return createAnnotationAdapter();
-			}
-			@Override
-			public Adapter caseVariableDeclaration(VariableDeclaration object)
-			{
-				return createVariableDeclarationAdapter();
-			}
-			@Override
 			public Adapter caseStep(Step object)
 			{
 				return createStepAdapter();
@@ -246,36 +236,6 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createScenarioAdapter()
-	{
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.Annotation <em>Annotation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.bmw.carit.jnario.jnario.Annotation
-	 * @generated
-	 */
-	public Adapter createAnnotationAdapter()
-	{
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.VariableDeclaration <em>Variable Declaration</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.bmw.carit.jnario.jnario.VariableDeclaration
-	 * @generated
-	 */
-	public Adapter createVariableDeclarationAdapter()
 	{
 		return null;
 	}

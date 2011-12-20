@@ -71,8 +71,6 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 			case JnarioPackage.FEATURE: return createFeature();
 			case JnarioPackage.BACKGROUND: return createBackground();
 			case JnarioPackage.SCENARIO: return createScenario();
-			case JnarioPackage.ANNOTATION: return createAnnotation();
-			case JnarioPackage.VARIABLE_DECLARATION: return createVariableDeclaration();
 			case JnarioPackage.STEP: return createStep();
 			case JnarioPackage.GIVEN: return createGiven();
 			case JnarioPackage.WHEN: return createWhen();
@@ -120,28 +118,6 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 	{
 		ScenarioImplCustom scenario = new ScenarioImplCustom();
 		return scenario;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Annotation createAnnotation()
-	{
-		AnnotationImplCustom annotation = new AnnotationImplCustom();
-		return annotation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public VariableDeclaration createVariableDeclaration()
-	{
-		VariableDeclarationImplCustom variableDeclaration = new VariableDeclarationImplCustom();
-		return variableDeclaration;
 	}
 
 	/**

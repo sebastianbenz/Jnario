@@ -94,7 +94,12 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 			if(feature.background != null){
 				hasBackground = true
 			}
-			
+			if(hasBackground){
+				var backgroundFields = filter(feature.background.members.iterator, typeof(XtendField))
+				for(field: backgroundFields.toIterable){
+					field.transform(it)
+				}
+			}
 			
 			var eAllContents = scenario.eAllContents;
 			var allFields = filter(eAllContents, typeof(XtendField))

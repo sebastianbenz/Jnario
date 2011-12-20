@@ -10,6 +10,8 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.xtext.xtend2.xtend2.XtendMember;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Background</b></em>'.
@@ -19,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link de.bmw.carit.jnario.jnario.Background#getSteps <em>Steps</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.jnario.Background#getMembers <em>Members</em>}</li>
  * </ul>
  * </p>
  *
@@ -43,5 +46,21 @@ public interface Background extends EObject
 	 * @generated
 	 */
 	EList<Given> getSteps();
+
+	/**
+	 * Returns the value of the '<em><b>Members</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.xtext.xtend2.xtend2.XtendMember}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Members</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Members</em>' containment reference list.
+	 * @see de.bmw.carit.jnario.jnario.JnarioPackage#getBackground_Members()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<XtendMember> getMembers();
 
 } // Background

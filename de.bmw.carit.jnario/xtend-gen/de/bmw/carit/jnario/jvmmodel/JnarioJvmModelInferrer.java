@@ -15,6 +15,7 @@ import de.bmw.carit.jnario.jnario.Step;
 import de.bmw.carit.jnario.jnario.Then;
 import de.bmw.carit.jnario.jnario.When;
 import de.bmw.carit.jnario.naming.JavaNameProvider;
+import java.util.Iterator;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
@@ -132,24 +133,37 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
             if (_operator_notEquals) {
               hasBackground = true;
             }
+            if (hasBackground) {
+              {
+                Background _background_1 = feature.getBackground();
+                EList<XtendMember> _members = _background_1.getMembers();
+                Iterator<XtendMember> _iterator = _members.iterator();
+                UnmodifiableIterator<XtendField> _filter = Iterators.<XtendField>filter(_iterator, org.eclipse.xtext.xtend2.xtend2.XtendField.class);
+                UnmodifiableIterator<XtendField> backgroundFields = _filter;
+                Iterable<XtendField> _iterable = IteratorExtensions.<XtendField>toIterable(backgroundFields);
+                for (final XtendField field : _iterable) {
+                  JnarioJvmModelInferrer.this.transform(field, it);
+                }
+              }
+            }
             TreeIterator<EObject> _eAllContents = scenario.eAllContents();
             TreeIterator<EObject> eAllContents = _eAllContents;
-            UnmodifiableIterator<XtendField> _filter = Iterators.<XtendField>filter(eAllContents, org.eclipse.xtext.xtend2.xtend2.XtendField.class);
-            UnmodifiableIterator<XtendField> allFields = _filter;
-            Iterable<XtendField> _iterable = IteratorExtensions.<XtendField>toIterable(allFields);
-            for (final XtendField field : _iterable) {
+            UnmodifiableIterator<XtendField> _filter_1 = Iterators.<XtendField>filter(eAllContents, org.eclipse.xtext.xtend2.xtend2.XtendField.class);
+            UnmodifiableIterator<XtendField> allFields = _filter_1;
+            Iterable<XtendField> _iterable_1 = IteratorExtensions.<XtendField>toIterable(allFields);
+            for (final XtendField field_1 : _iterable_1) {
               {
-                JvmTypeReference _type = field.getType();
+                JvmTypeReference _type = field_1.getType();
                 boolean _operator_equals = ObjectExtensions.operator_equals(_type, null);
                 if (_operator_equals) {
                 }
-                JnarioJvmModelInferrer.this.transform(field, it);
+                JnarioJvmModelInferrer.this.transform(field_1, it);
               }
             }
             int order = 0;
             if (hasBackground) {
-              Background _background_1 = feature.getBackground();
-              EList<Given> _steps = _background_1.getSteps();
+              Background _background_2 = feature.getBackground();
+              EList<Given> _steps = _background_2.getSteps();
               for (final Given step : _steps) {
                 {
                   JnarioJvmModelInferrer.this.transform(step, it, order);

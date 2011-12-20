@@ -24,6 +24,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.xtext.xtend2.xtend2.XtendMember;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Background</b></em>'.
@@ -32,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.bmw.carit.jnario.jnario.impl.BackgroundImpl#getSteps <em>Steps</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.jnario.impl.BackgroundImpl#getMembers <em>Members</em>}</li>
  * </ul>
  * </p>
  *
@@ -48,6 +51,16 @@ public class BackgroundImpl extends MinimalEObjectImpl.Container implements Back
 	 * @ordered
 	 */
 	protected EList<Given> steps;
+
+	/**
+	 * The cached value of the '{@link #getMembers() <em>Members</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMembers()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<XtendMember> members;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -89,6 +102,20 @@ public class BackgroundImpl extends MinimalEObjectImpl.Container implements Back
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<XtendMember> getMembers()
+	{
+		if (members == null)
+		{
+			members = new EObjectContainmentEList<XtendMember>(XtendMember.class, this, JnarioPackage.BACKGROUND__MEMBERS);
+		}
+		return members;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
 	{
@@ -96,6 +123,8 @@ public class BackgroundImpl extends MinimalEObjectImpl.Container implements Back
 		{
 			case JnarioPackage.BACKGROUND__STEPS:
 				return ((InternalEList<?>)getSteps()).basicRemove(otherEnd, msgs);
+			case JnarioPackage.BACKGROUND__MEMBERS:
+				return ((InternalEList<?>)getMembers()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -112,6 +141,8 @@ public class BackgroundImpl extends MinimalEObjectImpl.Container implements Back
 		{
 			case JnarioPackage.BACKGROUND__STEPS:
 				return getSteps();
+			case JnarioPackage.BACKGROUND__MEMBERS:
+				return getMembers();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -131,6 +162,10 @@ public class BackgroundImpl extends MinimalEObjectImpl.Container implements Back
 				getSteps().clear();
 				getSteps().addAll((Collection<? extends Given>)newValue);
 				return;
+			case JnarioPackage.BACKGROUND__MEMBERS:
+				getMembers().clear();
+				getMembers().addAll((Collection<? extends XtendMember>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -148,6 +183,9 @@ public class BackgroundImpl extends MinimalEObjectImpl.Container implements Back
 			case JnarioPackage.BACKGROUND__STEPS:
 				getSteps().clear();
 				return;
+			case JnarioPackage.BACKGROUND__MEMBERS:
+				getMembers().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -164,6 +202,8 @@ public class BackgroundImpl extends MinimalEObjectImpl.Container implements Back
 		{
 			case JnarioPackage.BACKGROUND__STEPS:
 				return steps != null && !steps.isEmpty();
+			case JnarioPackage.BACKGROUND__MEMBERS:
+				return members != null && !members.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

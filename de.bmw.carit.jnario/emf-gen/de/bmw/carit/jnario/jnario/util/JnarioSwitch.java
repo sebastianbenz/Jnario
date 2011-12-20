@@ -106,20 +106,6 @@ public class JnarioSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case JnarioPackage.ANNOTATION:
-			{
-				Annotation annotation = (Annotation)theEObject;
-				T result = caseAnnotation(annotation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case JnarioPackage.VARIABLE_DECLARATION:
-			{
-				VariableDeclaration variableDeclaration = (VariableDeclaration)theEObject;
-				T result = caseVariableDeclaration(variableDeclaration);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case JnarioPackage.STEP:
 			{
 				Step step = (Step)theEObject;
@@ -260,38 +246,6 @@ public class JnarioSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseScenario(Scenario object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Annotation</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Annotation</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAnnotation(Annotation object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Variable Declaration</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Variable Declaration</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseVariableDeclaration(VariableDeclaration object)
 	{
 		return null;
 	}

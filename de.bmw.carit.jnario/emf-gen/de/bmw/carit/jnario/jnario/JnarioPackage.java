@@ -191,13 +191,22 @@ public interface JnarioPackage extends EPackage
 	int BACKGROUND__STEPS = 0;
 
 	/**
+	 * The feature id for the '<em><b>Members</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BACKGROUND__MEMBERS = 1;
+
+	/**
 	 * The number of structural features of the '<em>Background</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BACKGROUND_FEATURE_COUNT = 1;
+	int BACKGROUND_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.ScenarioImpl <em>Scenario</em>}' class.
@@ -273,80 +282,6 @@ public interface JnarioPackage extends EPackage
 	int SCENARIO_FEATURE_COUNT = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 4;
 
 	/**
-	 * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.AnnotationImpl <em>Annotation</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.bmw.carit.jnario.jnario.impl.AnnotationImpl
-	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getAnnotation()
-	 * @generated
-	 */
-	int ANNOTATION = 3;
-
-	/**
-	 * The feature id for the '<em><b>Annotation</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION__ANNOTATION = 0;
-
-	/**
-	 * The feature id for the '<em><b>Var</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION__VAR = 1;
-
-	/**
-	 * The number of structural features of the '<em>Annotation</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_FEATURE_COUNT = 2;
-
-	/**
-	 * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.VariableDeclarationImpl <em>Variable Declaration</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.bmw.carit.jnario.jnario.impl.VariableDeclarationImpl
-	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getVariableDeclaration()
-	 * @generated
-	 */
-	int VARIABLE_DECLARATION = 4;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_DECLARATION__VISIBILITY = 0;
-
-	/**
-	 * The feature id for the '<em><b>Variable Dec</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_DECLARATION__VARIABLE_DEC = 1;
-
-	/**
-	 * The number of structural features of the '<em>Variable Declaration</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_DECLARATION_FEATURE_COUNT = 2;
-
-	/**
 	 * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.StepImpl <em>Step</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -354,7 +289,7 @@ public interface JnarioPackage extends EPackage
 	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getStep()
 	 * @generated
 	 */
-	int STEP = 5;
+	int STEP = 3;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -409,7 +344,7 @@ public interface JnarioPackage extends EPackage
 	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getGiven()
 	 * @generated
 	 */
-	int GIVEN = 6;
+	int GIVEN = 4;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -473,7 +408,7 @@ public interface JnarioPackage extends EPackage
 	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getWhen()
 	 * @generated
 	 */
-	int WHEN = 7;
+	int WHEN = 5;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -537,7 +472,7 @@ public interface JnarioPackage extends EPackage
 	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getThen()
 	 * @generated
 	 */
-	int THEN = 8;
+	int THEN = 6;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -601,7 +536,7 @@ public interface JnarioPackage extends EPackage
 	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getAnd()
 	 * @generated
 	 */
-	int AND = 9;
+	int AND = 7;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -656,7 +591,7 @@ public interface JnarioPackage extends EPackage
 	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getCode()
 	 * @generated
 	 */
-	int CODE = 10;
+	int CODE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -693,7 +628,7 @@ public interface JnarioPackage extends EPackage
 	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getExampleTable()
 	 * @generated
 	 */
-	int EXAMPLE_TABLE = 11;
+	int EXAMPLE_TABLE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -739,7 +674,7 @@ public interface JnarioPackage extends EPackage
 	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getExampleHeading()
 	 * @generated
 	 */
-	int EXAMPLE_HEADING = 12;
+	int EXAMPLE_HEADING = 10;
 
 	/**
 	 * The feature id for the '<em><b>Parts</b></em>' containment reference list.
@@ -767,7 +702,7 @@ public interface JnarioPackage extends EPackage
 	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getExampleRow()
 	 * @generated
 	 */
-	int EXAMPLE_ROW = 13;
+	int EXAMPLE_ROW = 11;
 
 	/**
 	 * The feature id for the '<em><b>Parts</b></em>' containment reference list.
@@ -795,7 +730,7 @@ public interface JnarioPackage extends EPackage
 	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getExampleCell()
 	 * @generated
 	 */
-	int EXAMPLE_CELL = 14;
+	int EXAMPLE_CELL = 12;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' containment reference.
@@ -823,7 +758,7 @@ public interface JnarioPackage extends EPackage
 	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getJnario()
 	 * @generated
 	 */
-	int JNARIO = 15;
+	int JNARIO = 13;
 
 	/**
 	 * The feature id for the '<em><b>Imports</b></em>' containment reference list.
@@ -916,6 +851,17 @@ public interface JnarioPackage extends EPackage
 	EReference getBackground_Steps();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.jnario.Background#getMembers <em>Members</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Members</em>'.
+	 * @see de.bmw.carit.jnario.jnario.Background#getMembers()
+	 * @see #getBackground()
+	 * @generated
+	 */
+	EReference getBackground_Members();
+
+	/**
 	 * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.Scenario <em>Scenario</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -968,70 +914,6 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 */
 	EReference getScenario_Members();
-
-	/**
-	 * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.Annotation <em>Annotation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Annotation</em>'.
-	 * @see de.bmw.carit.jnario.jnario.Annotation
-	 * @generated
-	 */
-	EClass getAnnotation();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.jnario.Annotation#getAnnotation <em>Annotation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Annotation</em>'.
-	 * @see de.bmw.carit.jnario.jnario.Annotation#getAnnotation()
-	 * @see #getAnnotation()
-	 * @generated
-	 */
-	EReference getAnnotation_Annotation();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.jnario.Annotation#getVar <em>Var</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Var</em>'.
-	 * @see de.bmw.carit.jnario.jnario.Annotation#getVar()
-	 * @see #getAnnotation()
-	 * @generated
-	 */
-	EReference getAnnotation_Var();
-
-	/**
-	 * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.VariableDeclaration <em>Variable Declaration</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Variable Declaration</em>'.
-	 * @see de.bmw.carit.jnario.jnario.VariableDeclaration
-	 * @generated
-	 */
-	EClass getVariableDeclaration();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.bmw.carit.jnario.jnario.VariableDeclaration#getVisibility <em>Visibility</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Visibility</em>'.
-	 * @see de.bmw.carit.jnario.jnario.VariableDeclaration#getVisibility()
-	 * @see #getVariableDeclaration()
-	 * @generated
-	 */
-	EAttribute getVariableDeclaration_Visibility();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.jnario.VariableDeclaration#getVariableDec <em>Variable Dec</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Variable Dec</em>'.
-	 * @see de.bmw.carit.jnario.jnario.VariableDeclaration#getVariableDec()
-	 * @see #getVariableDeclaration()
-	 * @generated
-	 */
-	EReference getVariableDeclaration_VariableDec();
 
 	/**
 	 * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.Step <em>Step</em>}'.
@@ -1354,6 +1236,14 @@ public interface JnarioPackage extends EPackage
 		EReference BACKGROUND__STEPS = eINSTANCE.getBackground_Steps();
 
 		/**
+		 * The meta object literal for the '<em><b>Members</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BACKGROUND__MEMBERS = eINSTANCE.getBackground_Members();
+
+		/**
 		 * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.ScenarioImpl <em>Scenario</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1394,58 +1284,6 @@ public interface JnarioPackage extends EPackage
 		 * @generated
 		 */
 		EReference SCENARIO__MEMBERS = eINSTANCE.getScenario_Members();
-
-		/**
-		 * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.AnnotationImpl <em>Annotation</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.bmw.carit.jnario.jnario.impl.AnnotationImpl
-		 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getAnnotation()
-		 * @generated
-		 */
-		EClass ANNOTATION = eINSTANCE.getAnnotation();
-
-		/**
-		 * The meta object literal for the '<em><b>Annotation</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ANNOTATION__ANNOTATION = eINSTANCE.getAnnotation_Annotation();
-
-		/**
-		 * The meta object literal for the '<em><b>Var</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ANNOTATION__VAR = eINSTANCE.getAnnotation_Var();
-
-		/**
-		 * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.VariableDeclarationImpl <em>Variable Declaration</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.bmw.carit.jnario.jnario.impl.VariableDeclarationImpl
-		 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getVariableDeclaration()
-		 * @generated
-		 */
-		EClass VARIABLE_DECLARATION = eINSTANCE.getVariableDeclaration();
-
-		/**
-		 * The meta object literal for the '<em><b>Visibility</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute VARIABLE_DECLARATION__VISIBILITY = eINSTANCE.getVariableDeclaration_Visibility();
-
-		/**
-		 * The meta object literal for the '<em><b>Variable Dec</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference VARIABLE_DECLARATION__VARIABLE_DEC = eINSTANCE.getVariableDeclaration_VariableDec();
 
 		/**
 		 * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.StepImpl <em>Step</em>}' class.

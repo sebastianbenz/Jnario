@@ -3,7 +3,6 @@ package de.bmw.carit.jnario.serializer;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import de.bmw.carit.jnario.jnario.And;
-import de.bmw.carit.jnario.jnario.Annotation;
 import de.bmw.carit.jnario.jnario.Background;
 import de.bmw.carit.jnario.jnario.Code;
 import de.bmw.carit.jnario.jnario.ExampleCell;
@@ -16,7 +15,6 @@ import de.bmw.carit.jnario.jnario.Jnario;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
 import de.bmw.carit.jnario.jnario.Scenario;
 import de.bmw.carit.jnario.jnario.Then;
-import de.bmw.carit.jnario.jnario.VariableDeclaration;
 import de.bmw.carit.jnario.jnario.When;
 import de.bmw.carit.jnario.services.JnarioGrammarAccess;
 import org.eclipse.emf.ecore.EObject;
@@ -130,12 +128,6 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 					return; 
 				}
 				else break;
-			case JnarioPackage.ANNOTATION:
-				if(context == grammarAccess.getAnnotationRule()) {
-					sequence_Annotation(context, (Annotation) semanticObject); 
-					return; 
-				}
-				else break;
 			case JnarioPackage.BACKGROUND:
 				if(context == grammarAccess.getBackgroundRule()) {
 					sequence_Background(context, (Background) semanticObject); 
@@ -201,12 +193,6 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 				if(context == grammarAccess.getStepRule() ||
 				   context == grammarAccess.getThenRule()) {
 					sequence_Then(context, (Then) semanticObject); 
-					return; 
-				}
-				else break;
-			case JnarioPackage.VARIABLE_DECLARATION:
-				if(context == grammarAccess.getVariableDeclarationRule()) {
-					sequence_VariableDeclaration(context, (VariableDeclaration) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1313,16 +1299,7 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (annotation=XAnnotation var=VariableDeclaration?)
-	 */
-	protected void sequence_Annotation(EObject context, Annotation semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     steps+=Given
+	 *     (members+=Member* steps+=Given)
 	 */
 	protected void sequence_Background(EObject context, Background semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1469,7 +1446,7 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	 *     )
 	 */
 	protected void sequence_Import(EObject context, XtendImport semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		superSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -1785,25 +1762,6 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	 */
 	protected void sequence_Then(EObject context, Then semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (visibility=Visibility variableDec=XVariableDeclaration)
-	 */
-	protected void sequence_VariableDeclaration(EObject context, VariableDeclaration semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, JnarioPackage.Literals.VARIABLE_DECLARATION__VISIBILITY) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JnarioPackage.Literals.VARIABLE_DECLARATION__VISIBILITY));
-			if(transientValues.isValueTransient(semanticObject, JnarioPackage.Literals.VARIABLE_DECLARATION__VARIABLE_DEC) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JnarioPackage.Literals.VARIABLE_DECLARATION__VARIABLE_DEC));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getVariableDeclarationAccess().getVisibilityVisibilityEnumRuleCall_0_0(), semanticObject.getVisibility());
-		feeder.accept(grammarAccess.getVariableDeclarationAccess().getVariableDecXVariableDeclarationParserRuleCall_1_0(), semanticObject.getVariableDec());
-		feeder.finish();
 	}
 	
 	

@@ -2,13 +2,14 @@ package de.bmw.carit.jnario.tests
 
 Feature: A new feature.
 Background:
+	public String username
+	public String password
 	Given a user name.
-		var username = "PowerUser"
+		username = "PowerUser"
 	And a password.
-		var password = "password"
+		password = "password"
 	And I am logged in.
 Scenario: A fancy scenario.
-	Given bla
 	When I do something fancy
 	Then it should work
-		//"PowerUser".should.be("PowerUser")
+		username.should.be("PowerUser")

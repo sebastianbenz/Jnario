@@ -140,135 +140,36 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getI_WANT_TEXTTerminalRuleCall_2() { return cI_WANT_TEXTTerminalRuleCall_2; }
 	}
 
-	public class ImportElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Import");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cImportKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
-		private final Group cGroup_1_0 = (Group)cAlternatives_1.eContents().get(0);
-		private final Assignment cStaticAssignment_1_0_0 = (Assignment)cGroup_1_0.eContents().get(0);
-		private final Keyword cStaticStaticKeyword_1_0_0_0 = (Keyword)cStaticAssignment_1_0_0.eContents().get(0);
-		private final Assignment cExtensionAssignment_1_0_1 = (Assignment)cGroup_1_0.eContents().get(1);
-		private final Keyword cExtensionExtensionKeyword_1_0_1_0 = (Keyword)cExtensionAssignment_1_0_1.eContents().get(0);
-		private final Assignment cImportedTypeAssignment_1_0_2 = (Assignment)cGroup_1_0.eContents().get(2);
-		private final CrossReference cImportedTypeJvmTypeCrossReference_1_0_2_0 = (CrossReference)cImportedTypeAssignment_1_0_2.eContents().get(0);
-		private final RuleCall cImportedTypeJvmTypeQualifiedNameParserRuleCall_1_0_2_0_1 = (RuleCall)cImportedTypeJvmTypeCrossReference_1_0_2_0.eContents().get(1);
-		private final Keyword cFullStopKeyword_1_0_3 = (Keyword)cGroup_1_0.eContents().get(3);
-		private final Keyword cAsteriskKeyword_1_0_4 = (Keyword)cGroup_1_0.eContents().get(4);
-		private final Assignment cImportedTypeAssignment_1_1 = (Assignment)cAlternatives_1.eContents().get(1);
-		private final CrossReference cImportedTypeJvmTypeCrossReference_1_1_0 = (CrossReference)cImportedTypeAssignment_1_1.eContents().get(0);
-		private final RuleCall cImportedTypeJvmTypeQualifiedNameParserRuleCall_1_1_0_1 = (RuleCall)cImportedTypeJvmTypeCrossReference_1_1_0.eContents().get(1);
-		private final Assignment cImportedNamespaceAssignment_1_2 = (Assignment)cAlternatives_1.eContents().get(2);
-		private final RuleCall cImportedNamespaceQualifiedNameWithWildCardParserRuleCall_1_2_0 = (RuleCall)cImportedNamespaceAssignment_1_2.eContents().get(0);
-		
-		//Import returns xtend::XtendImport:
-		//	"import" (static?="static" extension?="extension"? importedType=[types::JvmType|QualifiedName] "." "*" |
-		//	importedType=[types::JvmType|QualifiedName] | importedNamespace=QualifiedNameWithWildCard);
-		public ParserRule getRule() { return rule; }
-
-		//"import" (static?="static" extension?="extension"? importedType=[types::JvmType|QualifiedName] "." "*" |
-		//importedType=[types::JvmType|QualifiedName] | importedNamespace=QualifiedNameWithWildCard)
-		public Group getGroup() { return cGroup; }
-
-		//"import"
-		public Keyword getImportKeyword_0() { return cImportKeyword_0; }
-
-		//static?="static" extension?="extension"? importedType=[types::JvmType|QualifiedName] "." "*" |
-		//importedType=[types::JvmType|QualifiedName] | importedNamespace=QualifiedNameWithWildCard
-		public Alternatives getAlternatives_1() { return cAlternatives_1; }
-
-		//static?="static" extension?="extension"? importedType=[types::JvmType|QualifiedName] "." "*"
-		public Group getGroup_1_0() { return cGroup_1_0; }
-
-		//static?="static"
-		public Assignment getStaticAssignment_1_0_0() { return cStaticAssignment_1_0_0; }
-
-		//"static"
-		public Keyword getStaticStaticKeyword_1_0_0_0() { return cStaticStaticKeyword_1_0_0_0; }
-
-		//extension?="extension"?
-		public Assignment getExtensionAssignment_1_0_1() { return cExtensionAssignment_1_0_1; }
-
-		//"extension"
-		public Keyword getExtensionExtensionKeyword_1_0_1_0() { return cExtensionExtensionKeyword_1_0_1_0; }
-
-		//importedType=[types::JvmType|QualifiedName]
-		public Assignment getImportedTypeAssignment_1_0_2() { return cImportedTypeAssignment_1_0_2; }
-
-		//[types::JvmType|QualifiedName]
-		public CrossReference getImportedTypeJvmTypeCrossReference_1_0_2_0() { return cImportedTypeJvmTypeCrossReference_1_0_2_0; }
-
-		//QualifiedName
-		public RuleCall getImportedTypeJvmTypeQualifiedNameParserRuleCall_1_0_2_0_1() { return cImportedTypeJvmTypeQualifiedNameParserRuleCall_1_0_2_0_1; }
-
-		//"."
-		public Keyword getFullStopKeyword_1_0_3() { return cFullStopKeyword_1_0_3; }
-
-		//"*"
-		public Keyword getAsteriskKeyword_1_0_4() { return cAsteriskKeyword_1_0_4; }
-
-		//importedType=[types::JvmType|QualifiedName]
-		public Assignment getImportedTypeAssignment_1_1() { return cImportedTypeAssignment_1_1; }
-
-		//[types::JvmType|QualifiedName]
-		public CrossReference getImportedTypeJvmTypeCrossReference_1_1_0() { return cImportedTypeJvmTypeCrossReference_1_1_0; }
-
-		//QualifiedName
-		public RuleCall getImportedTypeJvmTypeQualifiedNameParserRuleCall_1_1_0_1() { return cImportedTypeJvmTypeQualifiedNameParserRuleCall_1_1_0_1; }
-
-		//importedNamespace=QualifiedNameWithWildCard
-		public Assignment getImportedNamespaceAssignment_1_2() { return cImportedNamespaceAssignment_1_2; }
-
-		//QualifiedNameWithWildCard
-		public RuleCall getImportedNamespaceQualifiedNameWithWildCardParserRuleCall_1_2_0() { return cImportedNamespaceQualifiedNameWithWildCardParserRuleCall_1_2_0; }
-	}
-
-	public class QualifiedNameWithWildCardElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QualifiedNameWithWildCard");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cQualifiedNameParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final Keyword cFullStopKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cAsteriskKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		
-		//QualifiedNameWithWildCard:
-		//	QualifiedName "." "*";
-		public ParserRule getRule() { return rule; }
-
-		//QualifiedName "." "*"
-		public Group getGroup() { return cGroup; }
-
-		//QualifiedName
-		public RuleCall getQualifiedNameParserRuleCall_0() { return cQualifiedNameParserRuleCall_0; }
-
-		//"."
-		public Keyword getFullStopKeyword_1() { return cFullStopKeyword_1; }
-
-		//"*"
-		public Keyword getAsteriskKeyword_2() { return cAsteriskKeyword_2; }
-	}
-
 	public class BackgroundElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Background");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cBACKGROUND_TEXTTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final Assignment cStepsAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cStepsGivenParserRuleCall_1_0 = (RuleCall)cStepsAssignment_1.eContents().get(0);
+		private final Assignment cMembersAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cMembersMemberParserRuleCall_1_0 = (RuleCall)cMembersAssignment_1.eContents().get(0);
+		private final Assignment cStepsAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cStepsGivenParserRuleCall_2_0 = (RuleCall)cStepsAssignment_2.eContents().get(0);
 		
 		//Background:
-		//	BACKGROUND_TEXT steps+=Given;
+		//	BACKGROUND_TEXT members+=Member* steps+=Given;
 		public ParserRule getRule() { return rule; }
 
-		//BACKGROUND_TEXT steps+=Given
+		//BACKGROUND_TEXT members+=Member* steps+=Given
 		public Group getGroup() { return cGroup; }
 
 		//BACKGROUND_TEXT
 		public RuleCall getBACKGROUND_TEXTTerminalRuleCall_0() { return cBACKGROUND_TEXTTerminalRuleCall_0; }
 
+		//members+=Member*
+		public Assignment getMembersAssignment_1() { return cMembersAssignment_1; }
+
+		//Member
+		public RuleCall getMembersMemberParserRuleCall_1_0() { return cMembersMemberParserRuleCall_1_0; }
+
 		//steps+=Given
-		public Assignment getStepsAssignment_1() { return cStepsAssignment_1; }
+		public Assignment getStepsAssignment_2() { return cStepsAssignment_2; }
 
 		//Given
-		public RuleCall getStepsGivenParserRuleCall_1_0() { return cStepsGivenParserRuleCall_1_0; }
+		public RuleCall getStepsGivenParserRuleCall_2_0() { return cStepsGivenParserRuleCall_2_0; }
 	}
 
 	public class ScenarioElements extends AbstractParserRuleElementFinder {
@@ -333,62 +234,6 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 
 		//ExampleTable
 		public RuleCall getExamplesExampleTableParserRuleCall_6_0() { return cExamplesExampleTableParserRuleCall_6_0; }
-	}
-
-	public class AnnotationElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Annotation");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cAnnotationAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cAnnotationXAnnotationParserRuleCall_0_0 = (RuleCall)cAnnotationAssignment_0.eContents().get(0);
-		private final Assignment cVarAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cVarVariableDeclarationParserRuleCall_1_0 = (RuleCall)cVarAssignment_1.eContents().get(0);
-		
-		//Annotation:
-		//	annotation=XAnnotation var=VariableDeclaration?;
-		public ParserRule getRule() { return rule; }
-
-		//annotation=XAnnotation var=VariableDeclaration?
-		public Group getGroup() { return cGroup; }
-
-		//annotation=XAnnotation
-		public Assignment getAnnotationAssignment_0() { return cAnnotationAssignment_0; }
-
-		//XAnnotation
-		public RuleCall getAnnotationXAnnotationParserRuleCall_0_0() { return cAnnotationXAnnotationParserRuleCall_0_0; }
-
-		//var=VariableDeclaration?
-		public Assignment getVarAssignment_1() { return cVarAssignment_1; }
-
-		//VariableDeclaration
-		public RuleCall getVarVariableDeclarationParserRuleCall_1_0() { return cVarVariableDeclarationParserRuleCall_1_0; }
-	}
-
-	public class VariableDeclarationElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "VariableDeclaration");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cVisibilityAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cVisibilityVisibilityEnumRuleCall_0_0 = (RuleCall)cVisibilityAssignment_0.eContents().get(0);
-		private final Assignment cVariableDecAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cVariableDecXVariableDeclarationParserRuleCall_1_0 = (RuleCall)cVariableDecAssignment_1.eContents().get(0);
-		
-		//VariableDeclaration:
-		//	visibility=Visibility variableDec=XVariableDeclaration;
-		public ParserRule getRule() { return rule; }
-
-		//visibility=Visibility variableDec=XVariableDeclaration
-		public Group getGroup() { return cGroup; }
-
-		//visibility=Visibility
-		public Assignment getVisibilityAssignment_0() { return cVisibilityAssignment_0; }
-
-		//Visibility
-		public RuleCall getVisibilityVisibilityEnumRuleCall_0_0() { return cVisibilityVisibilityEnumRuleCall_0_0; }
-
-		//variableDec=XVariableDeclaration
-		public Assignment getVariableDecAssignment_1() { return cVariableDecAssignment_1; }
-
-		//XVariableDeclaration
-		public RuleCall getVariableDecXVariableDeclarationParserRuleCall_1_0() { return cVariableDecXVariableDeclarationParserRuleCall_1_0; }
 	}
 
 	public class StepElements extends AbstractParserRuleElementFinder {
@@ -775,12 +620,8 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	private JnarioElements pJnario;
 	private FeatureElements pFeature;
 	private DESCRIPTIONElements pDESCRIPTION;
-	private ImportElements pImport;
-	private QualifiedNameWithWildCardElements pQualifiedNameWithWildCard;
 	private BackgroundElements pBackground;
 	private ScenarioElements pScenario;
-	private AnnotationElements pAnnotation;
-	private VariableDeclarationElements pVariableDeclaration;
 	private StepElements pStep;
 	private GivenElements pGiven;
 	private WhenElements pWhen;
@@ -865,29 +706,8 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		return getDESCRIPTIONAccess().getRule();
 	}
 
-	//Import returns xtend::XtendImport:
-	//	"import" (static?="static" extension?="extension"? importedType=[types::JvmType|QualifiedName] "." "*" |
-	//	importedType=[types::JvmType|QualifiedName] | importedNamespace=QualifiedNameWithWildCard);
-	public ImportElements getImportAccess() {
-		return (pImport != null) ? pImport : (pImport = new ImportElements());
-	}
-	
-	public ParserRule getImportRule() {
-		return getImportAccess().getRule();
-	}
-
-	//QualifiedNameWithWildCard:
-	//	QualifiedName "." "*";
-	public QualifiedNameWithWildCardElements getQualifiedNameWithWildCardAccess() {
-		return (pQualifiedNameWithWildCard != null) ? pQualifiedNameWithWildCard : (pQualifiedNameWithWildCard = new QualifiedNameWithWildCardElements());
-	}
-	
-	public ParserRule getQualifiedNameWithWildCardRule() {
-		return getQualifiedNameWithWildCardAccess().getRule();
-	}
-
 	//Background:
-	//	BACKGROUND_TEXT steps+=Given;
+	//	BACKGROUND_TEXT members+=Member* steps+=Given;
 	public BackgroundElements getBackgroundAccess() {
 		return (pBackground != null) ? pBackground : (pBackground = new BackgroundElements());
 	}
@@ -904,26 +724,6 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getScenarioRule() {
 		return getScenarioAccess().getRule();
-	}
-
-	//Annotation:
-	//	annotation=XAnnotation var=VariableDeclaration?;
-	public AnnotationElements getAnnotationAccess() {
-		return (pAnnotation != null) ? pAnnotation : (pAnnotation = new AnnotationElements());
-	}
-	
-	public ParserRule getAnnotationRule() {
-		return getAnnotationAccess().getRule();
-	}
-
-	//VariableDeclaration:
-	//	visibility=Visibility variableDec=XVariableDeclaration;
-	public VariableDeclarationElements getVariableDeclarationAccess() {
-		return (pVariableDeclaration != null) ? pVariableDeclaration : (pVariableDeclaration = new VariableDeclarationElements());
-	}
-	
-	public ParserRule getVariableDeclarationRule() {
-		return getVariableDeclarationAccess().getRule();
 	}
 
 	//Step returns xtend::XtendMember:
@@ -1234,6 +1034,27 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getFileRule() {
 		return getFileAccess().getRule();
+	}
+
+	//Import returns XtendImport:
+	//	"import" (static?="static" extension?="extension"? importedType=[types::JvmType|QualifiedName] "." "*" |
+	//	importedType=[types::JvmType|QualifiedName] | importedNamespace=QualifiedNameWithWildCard);
+	public Xtend2GrammarAccess.ImportElements getImportAccess() {
+		return gaXtend2.getImportAccess();
+	}
+	
+	public ParserRule getImportRule() {
+		return getImportAccess().getRule();
+	}
+
+	//QualifiedNameWithWildCard:
+	//	QualifiedName "." "*";
+	public Xtend2GrammarAccess.QualifiedNameWithWildCardElements getQualifiedNameWithWildCardAccess() {
+		return gaXtend2.getQualifiedNameWithWildCardAccess();
+	}
+	
+	public ParserRule getQualifiedNameWithWildCardRule() {
+		return getQualifiedNameWithWildCardAccess().getRule();
 	}
 
 	//Class returns XtendClass:
