@@ -114,7 +114,7 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 			var order = 0
 			if(hasBackground){
 				for (step : feature.background.steps) {
-					transform(step, it, order)
+					order = transform(step, it, order)
 					for(and: step.and){
 						order = transform(and, it, order)
 					}			
