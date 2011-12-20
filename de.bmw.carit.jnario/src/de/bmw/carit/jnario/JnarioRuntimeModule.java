@@ -28,6 +28,8 @@ import org.eclipse.xtext.xtend2.resource.Xtend2Resource;
 import org.eclipse.xtext.xtend2.resource.Xtend2ResourceDescriptionStrategy;
 import org.eclipse.xtext.xtend2.resource.XtendEObjectAtOffsetHelper;
 import org.eclipse.xtext.xtend2.scoping.Xtend2ImportedNamespaceScopeProvider;
+import org.eclipse.xtext.xtend2.scoping.Xtend2ScopeProvider;
+import org.eclipse.xtext.xtend2.typing.Xtend2TypeProvider;
 import org.eclipse.xtext.xtend2.validation.ClasspathBasedChecks;
 import org.eclipse.xtext.xtend2.validation.XtendEarlyExitValidator;
 
@@ -40,8 +42,6 @@ import de.bmw.carit.jnario.common.scoping.JnarioExtensionClassNameProvider;
 import de.bmw.carit.jnario.generator.JnarioCompiler;
 import de.bmw.carit.jnario.jvmmodel.JnarioFeatureCallToJavaMapping;
 import de.bmw.carit.jnario.jvmmodel.JnarioJvmModelInferrer;
-import de.bmw.carit.jnario.scoping.JnarioScopeProvider;
-import de.bmw.carit.jnario.typing.JnarioTypeProvider;
 import de.bmw.carit.jnario.validation.JnarioClasspathBasedChecks;
 
 /**
@@ -59,19 +59,17 @@ public class JnarioRuntimeModule extends de.bmw.carit.jnario.AbstractJnarioRunti
 	
 	@Override
 	public java.lang.Class<? extends IScopeProvider> bindIScopeProvider() {
-		return JnarioScopeProvider.class;
+		return Xtend2ScopeProvider.class;
 	}
 	
-
 	public Class<? extends ExtensionClassNameProvider> bindExtensionClassNameProvider(){
 		return JnarioExtensionClassNameProvider.class;
 	}
 	
 	@Override
-	public Class<? extends ITypeProvider> bindITypeProvider() {
-		return JnarioTypeProvider.class;
+	public Class<? extends ITypeProvider> bindITypeProvider(){
+		return Xtend2TypeProvider.class;
 	}
-	
 	
 	@Override
 	public Class<? extends XtextResource> bindXtextResource() {

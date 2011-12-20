@@ -1,6 +1,8 @@
 package de.bmw.carit.jnario.jvmmodel
 
 import com.google.inject.Inject
+import de.bmw.carit.jnario.jnario.ExampleHeading
+import de.bmw.carit.jnario.jnario.ExampleTable
 import de.bmw.carit.jnario.jnario.Feature
 import de.bmw.carit.jnario.jnario.Given
 import de.bmw.carit.jnario.jnario.Jnario
@@ -12,23 +14,22 @@ import de.bmw.carit.jnario.naming.JavaNameProvider
 import de.bmw.carit.jnario.runner.JnarioRunner
 import de.bmw.carit.jnario.runner.Named
 import de.bmw.carit.jnario.runner.Order
-import java.util.HashMap
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.common.types.JvmGenericType
-import org.eclipse.xtext.common.types.JvmTypeReference
+import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.util.IAcceptor
-import org.eclipse.xtext.xbase.XVariableDeclaration
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.eclipse.xtext.xbase.typing.ITypeProvider
 import org.eclipse.xtext.xtend2.jvmmodel.Xtend2JvmModelInferrer
+import org.eclipse.xtext.xtend2.xtend2.XtendField
 import org.junit.Test
 import org.junit.runner.RunWith
 
 import static com.google.common.collect.Iterators.*
-import static com.google.common.collect.Sets.*
-import org.eclipse.xtext.xtend2.xtend2.XtendField
+import static org.eclipse.xtext.EcoreUtil2.*
 
 
 
@@ -51,6 +52,9 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 	@Inject extension ITypeProvider
 	
 	@Inject extension JavaNameProvider
+	
+	@Inject
+	private IJvmModelAssociator associator
 	
 	/**
 	 * Is called for each instance of the first argument's type contained in a resource.
@@ -94,10 +98,12 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 			if(feature.background != null){
 				hasBackground = true
 			}
+			var allVariables = <String>newArrayList()
 			if(hasBackground){
 				var backgroundFields = filter(feature.background.members.iterator, typeof(XtendField))
 				for(field: backgroundFields.toIterable){
 					field.transform(it)
+					allVariables.add(field.name)				
 				}
 			}
 			
@@ -105,10 +111,13 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 			var allFields = filter(eAllContents, typeof(XtendField))
 			for(field: allFields.toIterable){
 				if(field.type == null){
-					//field.setType(getType(field, true))
-					//retrieve type for examples -> implement typeprovider for xexpression (initialValue von XtendField)
+					checkIfExampleField(field)
 				}
-				field.transform(it)
+				if(!allVariables.contains(field.name)){
+					field.transform(it)
+					allVariables.add(field.name)
+				}
+				
 			}
 			
 			var order = 0
@@ -119,6 +128,25 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 						order = transform(and, it, order)
 					}			
 				}
+			}
+			if(!scenario.examples.empty){
+				val heading = getAllContentsOfType(scenario, typeof(ExampleHeading)).get(0)
+				members += scenario.toConstructor(className)[
+					
+					for(field: heading.parts){
+						if(field.type == null){
+							checkIfExampleField(field)
+						}
+						parameters += scenario.toParameter(field.name, field.type)
+					}
+					body = [
+						'''
+						«FOR field: heading.parts»
+							this.«field.name» = «field.name»;
+						«ENDFOR»
+						'''
+					]
+				]
 			}
 			
 			for (member : scenario.getSteps) {
@@ -150,15 +178,32 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 
 	def transform(Step step, JvmGenericType inferredJvmType, int order) {
 		if(step.getCode() != null){
-			var operation = toMethod(step, step.name.javaMethodName, getTypeForName(Void::TYPE, step))[
+			inferredJvmType.members += toMethod(step, step.name.javaMethodName, getTypeForName(Void::TYPE, step))[
 				body = step.code.blockExpression
+				annotations += step.toAnnotation(typeof(Test))
+				annotations += step.toAnnotation(typeof(Order), order.intValue)
+				annotations += step.toAnnotation(typeof(Named), step.name.trim)
 			]	
-			inferredJvmType.members += operation
-			operation.annotations += step.toAnnotation(typeof(Test))
-			operation.annotations += step.toAnnotation(typeof(Order), order.intValue)
-			operation.annotations += step.toAnnotation(typeof(Named), step.name.trim)
 		}
 		order + 1
+	}
+	
+	def checkIfExampleField(XtendField field){
+		var examples = getContainerOfType(field, typeof(ExampleTable))
+		if(examples != null){
+			var heading = examples.heading
+			if(heading.parts.contains(field)){
+				var index = heading.parts.indexOf(field)
+				if(examples.rows != null && examples.rows.size > 0){
+					var exampleRow = examples.rows.get(0)
+					if(index < exampleRow.parts.size){
+						var exampleCell = exampleRow.parts.get(index)
+						field.setType(getType(exampleCell.name))
+						field.setVisibility(JvmVisibility::PUBLIC)
+					}
+				}
+			}	
+		}
 	}
 
 	def generateExampleConstructor(){
@@ -167,6 +212,24 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 	
 	def generateExampleClass(){
 		
+	}
+	
+	// copied from Xtend2JvmModelInferrer since it does not use source.getAnnotations()
+	// which checks if annotationInfos is null
+	// but uses source.getAnnotationInfo().getAnnotations()
+	override void transform(XtendField source, JvmGenericType container) {
+		if ((source.isExtension() || source.getName() != null) && source.getType() != null) {
+			var field = typesFactory.createJvmField();
+			field.setSimpleName(computeFieldName(source, container));
+			container.getMembers().add(field);
+			associator.associatePrimary(source, field);
+			field.setVisibility(source.getVisibility());
+			field.setStatic(source.isStatic());
+			field.setType(cloneWithProxies(source.getType()));
+			translateAnnotationsTo(source.getAnnotations(), field);
+			setDocumentation(field, getDocumentation(source));
+			setInitializer(field, source.getInitialValue());
+		}
 	}
 
 }

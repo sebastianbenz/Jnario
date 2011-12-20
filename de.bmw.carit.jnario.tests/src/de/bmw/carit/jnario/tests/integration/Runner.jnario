@@ -28,4 +28,4 @@ Feature: Test Runner
 					
 		Then the scenario should have no validation errors that the variable was not defined
 		And it should pass
-			jnarioFile.execute.should.be(isSuccessful)
+			jnarioFile.execute.should.be(successful)
