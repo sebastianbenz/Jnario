@@ -216,55 +216,7 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
             boolean _isEmpty = _examples.isEmpty();
             boolean _operator_not_1 = BooleanExtensions.operator_not(_isEmpty);
             if (_operator_not_1) {
-              {
-                List<ExampleHeading> _allContentsOfType = EcoreUtil2.<ExampleHeading>getAllContentsOfType(scenario, de.bmw.carit.jnario.jnario.ExampleHeading.class);
-                ExampleHeading _get = _allContentsOfType.get(0);
-                final ExampleHeading heading = _get;
-                EList<JvmMember> _members_1 = it.getMembers();
-                final Procedure1<JvmConstructor> _function = new Procedure1<JvmConstructor>() {
-                    public void apply(final JvmConstructor it) {
-                      {
-                        EList<XtendField> _parts = heading.getParts();
-                        for (final XtendField field : _parts) {
-                          {
-                            JvmTypeReference _type = field.getType();
-                            boolean _operator_equals = ObjectExtensions.operator_equals(_type, null);
-                            if (_operator_equals) {
-                              JnarioJvmModelInferrer.this.checkIfExampleField(field);
-                            }
-                            EList<JvmFormalParameter> _parameters = it.getParameters();
-                            String _name = field.getName();
-                            JvmTypeReference _type_1 = field.getType();
-                            JvmFormalParameter _parameter = JnarioJvmModelInferrer.this._jvmTypesBuilder.toParameter(scenario, _name, _type_1);
-                            CollectionExtensions.<JvmFormalParameter>operator_add(_parameters, _parameter);
-                          }
-                        }
-                        final Function1<ImportManager,CharSequence> _function = new Function1<ImportManager,CharSequence>() {
-                            public CharSequence apply(final ImportManager it) {
-                              StringConcatenation _builder = new StringConcatenation();
-                              {
-                                EList<XtendField> _parts = heading.getParts();
-                                for(final XtendField field : _parts) {
-                                  _builder.append("this.");
-                                  String _name = field.getName();
-                                  _builder.append(_name, "");
-                                  _builder.append(" = ");
-                                  String _name_1 = field.getName();
-                                  _builder.append(_name_1, "");
-                                  _builder.append(";");
-                                  _builder.newLineIfNotEmpty();
-                                }
-                              }
-                              return _builder;
-                            }
-                          };
-                        JnarioJvmModelInferrer.this._jvmTypesBuilder.setBody(it, _function);
-                      }
-                    }
-                  };
-                JvmConstructor _constructor = JnarioJvmModelInferrer.this._jvmTypesBuilder.toConstructor(scenario, className, _function);
-                CollectionExtensions.<JvmConstructor>operator_add(_members_1, _constructor);
-              }
+              JnarioJvmModelInferrer.this.generateExampleConstructor(scenario, className, it);
             }
             EList<Step> _steps_1 = scenario.getSteps();
             for (final Step member : _steps_1) {
@@ -426,8 +378,59 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
     return _xblockexpression;
   }
   
-  public Object generateExampleConstructor() {
-    return null;
+  public boolean generateExampleConstructor(final Scenario scenario, final String className, final JvmGenericType inferredJvmType) {
+    boolean _xblockexpression = false;
+    {
+      List<ExampleHeading> _allContentsOfType = EcoreUtil2.<ExampleHeading>getAllContentsOfType(scenario, de.bmw.carit.jnario.jnario.ExampleHeading.class);
+      ExampleHeading _get = _allContentsOfType.get(0);
+      final ExampleHeading heading = _get;
+      EList<JvmMember> _members = inferredJvmType.getMembers();
+      final Procedure1<JvmConstructor> _function = new Procedure1<JvmConstructor>() {
+          public void apply(final JvmConstructor it) {
+            {
+              EList<XtendField> _parts = heading.getParts();
+              for (final XtendField field : _parts) {
+                {
+                  JvmTypeReference _type = field.getType();
+                  boolean _operator_equals = ObjectExtensions.operator_equals(_type, null);
+                  if (_operator_equals) {
+                    JnarioJvmModelInferrer.this.checkIfExampleField(field);
+                  }
+                  EList<JvmFormalParameter> _parameters = it.getParameters();
+                  String _name = field.getName();
+                  JvmTypeReference _type_1 = field.getType();
+                  JvmFormalParameter _parameter = JnarioJvmModelInferrer.this._jvmTypesBuilder.toParameter(scenario, _name, _type_1);
+                  CollectionExtensions.<JvmFormalParameter>operator_add(_parameters, _parameter);
+                }
+              }
+              final Function1<ImportManager,CharSequence> _function = new Function1<ImportManager,CharSequence>() {
+                  public CharSequence apply(final ImportManager it) {
+                    StringConcatenation _builder = new StringConcatenation();
+                    {
+                      EList<XtendField> _parts = heading.getParts();
+                      for(final XtendField field : _parts) {
+                        _builder.append("this.");
+                        String _name = field.getName();
+                        _builder.append(_name, "");
+                        _builder.append(" = ");
+                        String _name_1 = field.getName();
+                        _builder.append(_name_1, "");
+                        _builder.append(";");
+                        _builder.newLineIfNotEmpty();
+                      }
+                    }
+                    return _builder;
+                  }
+                };
+              JnarioJvmModelInferrer.this._jvmTypesBuilder.setBody(it, _function);
+            }
+          }
+        };
+      JvmConstructor _constructor = this._jvmTypesBuilder.toConstructor(scenario, className, _function);
+      boolean _operator_add = CollectionExtensions.<JvmConstructor>operator_add(_members, _constructor);
+      _xblockexpression = (_operator_add);
+    }
+    return _xblockexpression;
   }
   
   public Object generateExampleClass() {

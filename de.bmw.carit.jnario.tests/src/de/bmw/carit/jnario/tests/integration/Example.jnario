@@ -1,12 +1,11 @@
 package de.bmw.carit.jnario.tests
 
-Feature: Parsing simple jnario files.
-Scenario: Parse and code.
+Feature: Examples.
+Scenario: Example tables.
 Given some variables.
 When I add them
 Then the sum should be the result.
-	var x = 1 //dummy
-	//(x + y).should.be(z)
+	(x + y).should.be(z)
 Examples:
 |x|y|z|
 |1|2|3|
@@ -15,6 +14,6 @@ Examples:
 Examples: some examples
 |x|
 |4|		
-//Examples: some other examples
-//|x|
-//|"y"|
+Examples: some other examples
+|x|
+|"y"|

@@ -75,7 +75,6 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 					val className = feature.name.javaClassName + scenario.name.javaClassName
 					
 					if(!scenario.examples.empty){
-						//annotations += scenario.toAnnotation(typeof(RunWith), typeof(JnarioExamplesRunner))
 						scenario.createExampleClass(jnarioFile, "Examples" + className)
 					}
 					
@@ -130,23 +129,7 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 				}
 			}
 			if(!scenario.examples.empty){
-				val heading = getAllContentsOfType(scenario, typeof(ExampleHeading)).get(0)
-				members += scenario.toConstructor(className)[
-					
-					for(field: heading.parts){
-						if(field.type == null){
-							checkIfExampleField(field)
-						}
-						parameters += scenario.toParameter(field.name, field.type)
-					}
-					body = [
-						'''
-						«FOR field: heading.parts»
-							this.«field.name» = «field.name»;
-						«ENDFOR»
-						'''
-					]
-				]
+				scenario.generateExampleConstructor(className, it)
 			}
 			
 			for (member : scenario.getSteps) {
@@ -173,7 +156,7 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
    	}
    	
    	def createExampleClass(Scenario scenario, Jnario jnario, String className){
-   		
+   		//annotations += scenario.toAnnotation(typeof(RunWith), typeof(JnarioExamplesRunner))
    	}
 
 	def transform(Step step, JvmGenericType inferredJvmType, int order) {
@@ -206,8 +189,24 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 		}
 	}
 
-	def generateExampleConstructor(){
-		
+	def generateExampleConstructor(Scenario scenario, String className,  JvmGenericType inferredJvmType){
+		val heading = getAllContentsOfType(scenario, typeof(ExampleHeading)).get(0)
+		inferredJvmType.members += scenario.toConstructor(className)[
+			
+			for(field: heading.parts){
+				if(field.type == null){
+					checkIfExampleField(field)
+				}
+				parameters += scenario.toParameter(field.name, field.type)
+			}
+			body = [
+				'''
+				«FOR field: heading.parts»
+					this.«field.name» = «field.name»;
+				«ENDFOR»
+				'''
+			]
+		]
 	}
 	
 	def generateExampleClass(){
