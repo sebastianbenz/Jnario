@@ -41,6 +41,7 @@ public class JnarioRunner extends ExampleGroupRunner {
 		super(klass);
 	}
 
+	@Override
 	protected ExampleRunner createExampleRunner(
 			FrameworkMethod from) throws InitializationError,
 			NoTestsRemainException {

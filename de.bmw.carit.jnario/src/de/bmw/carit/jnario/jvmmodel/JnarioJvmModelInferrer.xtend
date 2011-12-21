@@ -1,7 +1,9 @@
 package de.bmw.carit.jnario.jvmmodel
 
 import com.google.inject.Inject
-import de.bmw.carit.jnario.jnario.ExampleHeading
+import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder
+import de.bmw.carit.jnario.generator.JnarioCompiler
+import de.bmw.carit.jnario.jnario.ExampleRow
 import de.bmw.carit.jnario.jnario.ExampleTable
 import de.bmw.carit.jnario.jnario.Feature
 import de.bmw.carit.jnario.jnario.Given
@@ -11,17 +13,19 @@ import de.bmw.carit.jnario.jnario.Step
 import de.bmw.carit.jnario.jnario.Then
 import de.bmw.carit.jnario.jnario.When
 import de.bmw.carit.jnario.naming.JavaNameProvider
+import de.bmw.carit.jnario.runner.JnarioExamplesRunner
 import de.bmw.carit.jnario.runner.JnarioRunner
 import de.bmw.carit.jnario.runner.Named
 import de.bmw.carit.jnario.runner.Order
+import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.util.IAcceptor
+import org.eclipse.xtext.xbase.compiler.StringBuilderBasedAppendable
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator
-import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.eclipse.xtext.xbase.typing.ITypeProvider
 import org.eclipse.xtext.xtend2.jvmmodel.Xtend2JvmModelInferrer
 import org.eclipse.xtext.xtend2.xtend2.XtendField
@@ -30,6 +34,8 @@ import org.junit.runner.RunWith
 
 import static com.google.common.collect.Iterators.*
 import static org.eclipse.xtext.EcoreUtil2.*
+import java.util.List
+import de.bmw.carit.jnario.runner.Contains
 
 
 
@@ -45,13 +51,15 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
     /**
      * conveninence API to build and initialize JvmTypes and their members.
      */
-	@Inject extension JvmTypesBuilder
+	@Inject extension ExtendedJvmTypesBuilder
 	
 	@Inject	extension TypeReferences
 
 	@Inject extension ITypeProvider
 	
 	@Inject extension JavaNameProvider
+	
+	@Inject extension JnarioCompiler
 	
 	@Inject
 	private IJvmModelAssociator associator
@@ -73,14 +81,14 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 				for(member: feature.members){
 					var scenario = member as Scenario
 					val className = feature.name.javaClassName + scenario.name.javaClassName
-					
+					var clazz = scenario.infer(jnarioFile, className)
 					if(!scenario.examples.empty){
-						scenario.createExampleClass(jnarioFile, "Examples" + className)
+						clazz.annotations += scenario.toAnnotation(typeof(RunWith), typeof(JnarioExamplesRunner))
+						// add contains for all examples
+					}else{
+						clazz.annotations += scenario.toAnnotation(typeof(RunWith), typeof(JnarioRunner))
 					}
-					
-					acceptor.accept(
-						scenario.infer(jnarioFile, className)
-					)
+					acceptor.accept(clazz)
 				}
 			}
 		}
@@ -88,7 +96,7 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
    	
    	def infer(Scenario scenario, Jnario jnario, String className){
    		scenario.toClass(className)[
-   			annotations += scenario.toAnnotation(typeof(RunWith), typeof(JnarioRunner))
+   			jnario.eResource.contents += it
 			annotations += scenario.toAnnotation(typeof(Named), scenario.name.trim)
 			packageName = jnario.^package
 			documentation = scenario.documentation
@@ -128,9 +136,6 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 					}			
 				}
 			}
-			if(!scenario.examples.empty){
-				scenario.generateExampleConstructor(className, it)
-			}
 			
 			for (member : scenario.getSteps) {
 				var step = member as Step
@@ -152,16 +157,19 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 					}
 				}				
 			}
+			
+			if(!scenario.examples.empty){
+				val exampleClasses = scenario.generateInnerClasses(jnario, it)
+				if(!exampleClasses.empty){
+					annotations += scenario.toAnnotation(typeof(Contains), exampleClasses);
+				}
+			}
    		]	
    	}
    	
-   	def createExampleClass(Scenario scenario, Jnario jnario, String className){
-   		//annotations += scenario.toAnnotation(typeof(RunWith), typeof(JnarioExamplesRunner))
-   	}
-
 	def transform(Step step, JvmGenericType inferredJvmType, int order) {
 		if(step.getCode() != null){
-			inferredJvmType.members += toMethod(step, step.name.javaMethodName, getTypeForName(Void::TYPE, step))[
+			inferredJvmType.members += step.toMethod(step.name.javaMethodName, getTypeForName(Void::TYPE, step))[
 				body = step.code.blockExpression
 				annotations += step.toAnnotation(typeof(Test))
 				annotations += step.toAnnotation(typeof(Order), order.intValue)
@@ -188,46 +196,68 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 			}	
 		}
 	}
-
-	def generateExampleConstructor(Scenario scenario, String className,  JvmGenericType inferredJvmType){
-		val heading = getAllContentsOfType(scenario, typeof(ExampleHeading)).get(0)
-		inferredJvmType.members += scenario.toConstructor(className)[
+	
+	def generateInnerClasses(Scenario scenario, Jnario jnario, JvmGenericType inferredJvmType){
+		var number = 1
+		val List<JvmGenericType> exampleClasses = newArrayList()
+		for(example: scenario.examples){
 			
-			for(field: heading.parts){
-				if(field.type == null){
-					checkIfExampleField(field)
-				}
-				parameters += scenario.toParameter(field.name, field.type)
+			var fields = example.heading.parts
+			
+			for(row: example.rows){
+				exampleClasses += scenario.createInnerClass(jnario, row, fields, number, inferredJvmType)
+				number = number + 1
 			}
-			body = [
-				'''
-				«FOR field: heading.parts»
-					this.«field.name» = «field.name»;
-				«ENDFOR»
-				'''
-			]
-		]
+		}
+		exampleClasses
 	}
 	
-	def generateExampleClass(){
+	def createInnerClass(Scenario scenario, Jnario jnario, ExampleRow row, EList<XtendField> fields, int number, JvmGenericType inferredJvmType){
+		val className = "Example" + number
 		
+		row.toClass(className, inferredJvmType)[
+			jnario.eResource.contents += it
+			packageName = jnario.^package
+			members += row.generateExampleConstructor(fields, className)
+			annotations += row.toAnnotation(typeof(RunWith), typeof(JnarioRunner))
+		]
+	}
+
+	def generateExampleConstructor(ExampleRow row, EList<XtendField> fields, String className){
+		row.toConstructor(className)[
+			body = [
+				var constructor = new StringBuilder()
+				var i = 0
+				for(field: fields){
+					var appendable = new StringBuilderBasedAppendable()
+					row.parts.get(i).name.toJavaExpression(appendable)
+					constructor.append("super.")
+					constructor.append(field.name)
+					constructor.append(" = ")
+					constructor.append(appendable.toString)
+					constructor.append(";\n")
+					i = i + 1
+				}
+				constructor.toString
+			]
+		]
 	}
 	
 	// copied from Xtend2JvmModelInferrer since it does not use source.getAnnotations()
 	// which checks if annotationInfos is null
 	// but uses source.getAnnotationInfo().getAnnotations()
 	override void transform(XtendField source, JvmGenericType container) {
-		if ((source.isExtension() || source.getName() != null) && source.getType() != null) {
-			var field = typesFactory.createJvmField();
-			field.setSimpleName(computeFieldName(source, container));
-			container.getMembers().add(field);
-			associator.associatePrimary(source, field);
-			field.setVisibility(source.getVisibility());
-			field.setStatic(source.isStatic());
-			field.setType(cloneWithProxies(source.getType()));
-			translateAnnotationsTo(source.getAnnotations(), field);
-			setDocumentation(field, getDocumentation(source));
-			setInitializer(field, source.getInitialValue());
+		if ((source.isExtension || source.name != null) && source.type != null) {
+			var field = typesFactory.createJvmField
+			field.setSimpleName(computeFieldName(source, container))
+			container.members += field
+			associator.associatePrimary(source, field)
+			field.visibility = source.visibility
+			field.^static = source.isStatic
+			field.type = cloneWithProxies(source.type)
+			translateAnnotationsTo(source.annotations, field)
+			setDocumentation(field, getDocumentation(source))
+			setInitializer(field, source.initialValue)
 		}
 	}
 
