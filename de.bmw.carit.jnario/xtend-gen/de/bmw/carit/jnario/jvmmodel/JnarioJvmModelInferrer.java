@@ -457,39 +457,42 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
   public JvmConstructor generateExampleConstructor(final ExampleRow row, final EList<XtendField> fields, final String className) {
     final Procedure1<JvmConstructor> _function = new Procedure1<JvmConstructor>() {
         public void apply(final JvmConstructor it) {
-          final Function1<ImportManager,String> _function = new Function1<ImportManager,String>() {
-              public String apply(final ImportManager it) {
-                String _xblockexpression = null;
-                {
-                  StringBuilder _stringBuilder = new StringBuilder();
-                  StringBuilder constructor = _stringBuilder;
-                  int i = 0;
-                  for (final XtendField field : fields) {
-                    {
-                      StringBuilderBasedAppendable _stringBuilderBasedAppendable = new StringBuilderBasedAppendable();
-                      StringBuilderBasedAppendable appendable = _stringBuilderBasedAppendable;
-                      EList<ExampleCell> _parts = row.getParts();
-                      ExampleCell _get = _parts.get(i);
-                      XExpression _name = _get.getName();
-                      JnarioJvmModelInferrer.this._jnarioCompiler.toJavaExpression(_name, appendable);
-                      constructor.append("super.");
-                      String _name_1 = field.getName();
-                      constructor.append(_name_1);
-                      constructor.append(" = ");
-                      String _string = appendable.toString();
-                      constructor.append(_string);
-                      constructor.append(";\n");
-                      int _operator_plus = IntegerExtensions.operator_plus(i, 1);
-                      i = _operator_plus;
+          {
+            it.setVisibility(JvmVisibility.PUBLIC);
+            final Function1<ImportManager,String> _function = new Function1<ImportManager,String>() {
+                public String apply(final ImportManager it) {
+                  String _xblockexpression = null;
+                  {
+                    StringBuilder _stringBuilder = new StringBuilder();
+                    StringBuilder constructor = _stringBuilder;
+                    int i = 0;
+                    for (final XtendField field : fields) {
+                      {
+                        StringBuilderBasedAppendable _stringBuilderBasedAppendable = new StringBuilderBasedAppendable();
+                        StringBuilderBasedAppendable appendable = _stringBuilderBasedAppendable;
+                        EList<ExampleCell> _parts = row.getParts();
+                        ExampleCell _get = _parts.get(i);
+                        XExpression _name = _get.getName();
+                        JnarioJvmModelInferrer.this._jnarioCompiler.toJavaExpression(_name, appendable);
+                        constructor.append("super.");
+                        String _name_1 = field.getName();
+                        constructor.append(_name_1);
+                        constructor.append(" = ");
+                        String _string = appendable.toString();
+                        constructor.append(_string);
+                        constructor.append(";\n");
+                        int _operator_plus = IntegerExtensions.operator_plus(i, 1);
+                        i = _operator_plus;
+                      }
                     }
+                    String _string_1 = constructor.toString();
+                    _xblockexpression = (_string_1);
                   }
-                  String _string_1 = constructor.toString();
-                  _xblockexpression = (_string_1);
+                  return _xblockexpression;
                 }
-                return _xblockexpression;
-              }
-            };
-          JnarioJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, _function);
+              };
+            JnarioJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, _function);
+          }
         }
       };
     JvmConstructor _constructor = this._extendedJvmTypesBuilder.toConstructor(row, className, _function);

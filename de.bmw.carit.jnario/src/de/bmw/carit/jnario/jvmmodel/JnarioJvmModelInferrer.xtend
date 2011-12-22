@@ -226,6 +226,7 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 
 	def generateExampleConstructor(ExampleRow row, EList<XtendField> fields, String className){
 		row.toConstructor(className)[
+			visibility = JvmVisibility::PUBLIC
 			body = [
 				var constructor = new StringBuilder()
 				var i = 0
