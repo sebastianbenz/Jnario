@@ -215,7 +215,8 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 	def createInnerClass(Scenario scenario, Jnario jnario, ExampleRow row, EList<XtendField> fields, int number, JvmGenericType inferredJvmType){
 		val className = "Example" + number
 		
-		row.toClass(className, inferredJvmType)[
+		row.toClass(className)[
+			superTypes += inferredJvmType.createTypeRef
 			jnario.eResource.contents += it
 			packageName = jnario.^package
 			members += row.generateExampleConstructor(fields, className)

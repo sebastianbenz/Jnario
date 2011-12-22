@@ -35,6 +35,7 @@ import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmMember;
 import org.eclipse.xtext.common.types.JvmOperation;
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.common.types.util.TypeReferences;
@@ -430,6 +431,9 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
       final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
           public void apply(final JvmGenericType it) {
             {
+              EList<JvmTypeReference> _superTypes = it.getSuperTypes();
+              JvmParameterizedTypeReference _createTypeRef = JnarioJvmModelInferrer.this._typeReferences.createTypeRef(inferredJvmType);
+              CollectionExtensions.<JvmParameterizedTypeReference>operator_add(_superTypes, _createTypeRef);
               Resource _eResource = jnario.eResource();
               EList<EObject> _contents = _eResource.getContents();
               CollectionExtensions.<JvmGenericType>operator_add(_contents, it);
@@ -444,7 +448,7 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
             }
           }
         };
-      JvmGenericType _class = this._extendedJvmTypesBuilder.toClass(row, className, inferredJvmType, _function);
+      JvmGenericType _class = this._extendedJvmTypesBuilder.toClass(row, className, _function);
       _xblockexpression = (_class);
     }
     return _xblockexpression;
