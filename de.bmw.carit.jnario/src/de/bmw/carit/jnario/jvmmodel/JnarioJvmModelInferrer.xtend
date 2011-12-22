@@ -198,22 +198,23 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 	}
 	
 	def generateInnerClasses(Scenario scenario, Jnario jnario, JvmGenericType inferredJvmType){
-		var number = 1
+		var exampleTable = 1
 		val List<JvmGenericType> exampleClasses = newArrayList()
 		for(example: scenario.examples){
 			
 			var fields = example.heading.parts
-			
+			var exampleNumber = 1
 			for(row: example.rows){
-				exampleClasses += scenario.createInnerClass(jnario, row, fields, number, inferredJvmType)
-				number = number + 1
+				exampleClasses += scenario.createInnerClass(jnario, row, fields, exampleTable, exampleNumber, inferredJvmType)
+				exampleNumber = exampleNumber + 1
 			}
+			exampleTable = exampleTable + 1
 		}
 		exampleClasses
 	}
 	
-	def createInnerClass(Scenario scenario, Jnario jnario, ExampleRow row, EList<XtendField> fields, int number, JvmGenericType inferredJvmType){
-		val className = "Example" + number
+	def createInnerClass(Scenario scenario, Jnario jnario, ExampleRow row, EList<XtendField> fields, int exampleTable, int exampleNumber, JvmGenericType inferredJvmType){
+		val className = "ExampleTable" + exampleTable + "Example" + exampleNumber
 		
 		row.toClass(className)[
 			superTypes += inferredJvmType.createTypeRef
@@ -221,6 +222,15 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 			packageName = jnario.^package
 			members += row.generateExampleConstructor(fields, className)
 			annotations += row.toAnnotation(typeof(RunWith), typeof(JnarioRunner))
+			
+			var description = "ExampleTable " + exampleTable + ", " + "Example " + exampleNumber + " ["
+			var i = 0
+			for(field: fields){
+				description = description + field.name + " = " + cellToAppendable(row, i) + ", "
+				i = i + 1
+			}
+			description = description.substring(0, description.length - 1 - 1) + "]"
+			annotations += row.toAnnotation(typeof(Named), description)
 		]
 	}
 
@@ -231,18 +241,23 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 				var constructor = new StringBuilder()
 				var i = 0
 				for(field: fields){
-					var appendable = new StringBuilderBasedAppendable()
-					row.parts.get(i).name.toJavaExpression(appendable)
+					
 					constructor.append("super.")
 					constructor.append(field.name)
 					constructor.append(" = ")
-					constructor.append(appendable.toString)
+					constructor.append(cellToAppendable(row, i).toString)
 					constructor.append(";\n")
 					i = i + 1
 				}
 				constructor.toString
 			]
 		]
+	}
+	
+	def cellToAppendable(ExampleRow row, int i){
+		var appendable = new StringBuilderBasedAppendable()
+		row.parts.get(i).name.toJavaExpression(appendable)
+		appendable
 	}
 	
 	// copied from Xtend2JvmModelInferrer since it does not use source.getAnnotations()

@@ -398,7 +398,7 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
   public List<JvmGenericType> generateInnerClasses(final Scenario scenario, final Jnario jnario, final JvmGenericType inferredJvmType) {
     List<JvmGenericType> _xblockexpression = null;
     {
-      int number = 1;
+      int exampleTable = 1;
       ArrayList<JvmGenericType> _newArrayList = CollectionLiterals.<JvmGenericType>newArrayList();
       final List<JvmGenericType> exampleClasses = _newArrayList;
       EList<ExampleTable> _examples = scenario.getExamples();
@@ -407,15 +407,18 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
           ExampleHeading _heading = example.getHeading();
           EList<XtendField> _parts = _heading.getParts();
           EList<XtendField> fields = _parts;
+          int exampleNumber = 1;
           EList<ExampleRow> _rows = example.getRows();
           for (final ExampleRow row : _rows) {
             {
-              JvmGenericType _createInnerClass = this.createInnerClass(scenario, jnario, row, fields, number, inferredJvmType);
+              JvmGenericType _createInnerClass = this.createInnerClass(scenario, jnario, row, fields, exampleTable, exampleNumber, inferredJvmType);
               CollectionExtensions.<JvmGenericType>operator_add(exampleClasses, _createInnerClass);
-              int _operator_plus = IntegerExtensions.operator_plus(number, 1);
-              number = _operator_plus;
+              int _operator_plus = IntegerExtensions.operator_plus(exampleNumber, 1);
+              exampleNumber = _operator_plus;
             }
           }
+          int _operator_plus_1 = IntegerExtensions.operator_plus(exampleTable, 1);
+          exampleTable = _operator_plus_1;
         }
       }
       _xblockexpression = (exampleClasses);
@@ -423,11 +426,13 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
     return _xblockexpression;
   }
   
-  public JvmGenericType createInnerClass(final Scenario scenario, final Jnario jnario, final ExampleRow row, final EList<XtendField> fields, final int number, final JvmGenericType inferredJvmType) {
+  public JvmGenericType createInnerClass(final Scenario scenario, final Jnario jnario, final ExampleRow row, final EList<XtendField> fields, final int exampleTable, final int exampleNumber, final JvmGenericType inferredJvmType) {
     JvmGenericType _xblockexpression = null;
     {
-      String _operator_plus = StringExtensions.operator_plus("Example", Integer.valueOf(number));
-      final String className = _operator_plus;
+      String _operator_plus = StringExtensions.operator_plus("ExampleTable", Integer.valueOf(exampleTable));
+      String _operator_plus_1 = StringExtensions.operator_plus(_operator_plus, "Example");
+      String _operator_plus_2 = StringExtensions.operator_plus(_operator_plus_1, Integer.valueOf(exampleNumber));
+      final String className = _operator_plus_2;
       final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
           public void apply(final JvmGenericType it) {
             {
@@ -445,6 +450,35 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
               EList<JvmAnnotationReference> _annotations = it.getAnnotations();
               JvmAnnotationReference _annotation = JnarioJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(row, org.junit.runner.RunWith.class, de.bmw.carit.jnario.runner.JnarioRunner.class);
               CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
+              String _operator_plus = StringExtensions.operator_plus("ExampleTable ", Integer.valueOf(exampleTable));
+              String _operator_plus_1 = StringExtensions.operator_plus(_operator_plus, ", ");
+              String _operator_plus_2 = StringExtensions.operator_plus(_operator_plus_1, "Example ");
+              String _operator_plus_3 = StringExtensions.operator_plus(_operator_plus_2, Integer.valueOf(exampleNumber));
+              String _operator_plus_4 = StringExtensions.operator_plus(_operator_plus_3, " [");
+              String description = _operator_plus_4;
+              int i = 0;
+              for (final XtendField field : fields) {
+                {
+                  String _name = field.getName();
+                  String _operator_plus_5 = StringExtensions.operator_plus(description, _name);
+                  String _operator_plus_6 = StringExtensions.operator_plus(_operator_plus_5, " = ");
+                  StringBuilderBasedAppendable _cellToAppendable = JnarioJvmModelInferrer.this.cellToAppendable(row, i);
+                  String _operator_plus_7 = StringExtensions.operator_plus(_operator_plus_6, _cellToAppendable);
+                  String _operator_plus_8 = StringExtensions.operator_plus(_operator_plus_7, ", ");
+                  description = _operator_plus_8;
+                  int _operator_plus_9 = IntegerExtensions.operator_plus(i, 1);
+                  i = _operator_plus_9;
+                }
+              }
+              int _length = description.length();
+              int _operator_minus = IntegerExtensions.operator_minus(_length, 1);
+              int _operator_minus_1 = IntegerExtensions.operator_minus(_operator_minus, 1);
+              String _substring = description.substring(0, _operator_minus_1);
+              String _operator_plus_10 = StringExtensions.operator_plus(_substring, "]");
+              description = _operator_plus_10;
+              EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
+              JvmAnnotationReference _annotation_1 = JnarioJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(row, de.bmw.carit.jnario.runner.Named.class, description);
+              CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
             }
           }
         };
@@ -468,17 +502,12 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
                     int i = 0;
                     for (final XtendField field : fields) {
                       {
-                        StringBuilderBasedAppendable _stringBuilderBasedAppendable = new StringBuilderBasedAppendable();
-                        StringBuilderBasedAppendable appendable = _stringBuilderBasedAppendable;
-                        EList<ExampleCell> _parts = row.getParts();
-                        ExampleCell _get = _parts.get(i);
-                        XExpression _name = _get.getName();
-                        JnarioJvmModelInferrer.this._jnarioCompiler.toJavaExpression(_name, appendable);
                         constructor.append("super.");
-                        String _name_1 = field.getName();
-                        constructor.append(_name_1);
+                        String _name = field.getName();
+                        constructor.append(_name);
                         constructor.append(" = ");
-                        String _string = appendable.toString();
+                        StringBuilderBasedAppendable _cellToAppendable = JnarioJvmModelInferrer.this.cellToAppendable(row, i);
+                        String _string = _cellToAppendable.toString();
                         constructor.append(_string);
                         constructor.append(";\n");
                         int _operator_plus = IntegerExtensions.operator_plus(i, 1);
@@ -497,6 +526,20 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
       };
     JvmConstructor _constructor = this._extendedJvmTypesBuilder.toConstructor(row, className, _function);
     return _constructor;
+  }
+  
+  public StringBuilderBasedAppendable cellToAppendable(final ExampleRow row, final int i) {
+    StringBuilderBasedAppendable _xblockexpression = null;
+    {
+      StringBuilderBasedAppendable _stringBuilderBasedAppendable = new StringBuilderBasedAppendable();
+      StringBuilderBasedAppendable appendable = _stringBuilderBasedAppendable;
+      EList<ExampleCell> _parts = row.getParts();
+      ExampleCell _get = _parts.get(i);
+      XExpression _name = _get.getName();
+      this._jnarioCompiler.toJavaExpression(_name, appendable);
+      _xblockexpression = (appendable);
+    }
+    return _xblockexpression;
   }
   
   public void transform(final XtendField source, final JvmGenericType container) {
