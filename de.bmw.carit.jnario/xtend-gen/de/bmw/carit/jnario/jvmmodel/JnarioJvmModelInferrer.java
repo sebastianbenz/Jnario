@@ -36,6 +36,7 @@ import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmMember;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
+import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.common.types.util.TypeReferences;
@@ -190,9 +191,18 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
             Iterable<XtendField> _iterable_1 = IteratorExtensions.<XtendField>toIterable(allFields);
             for (final XtendField field_1 : _iterable_1) {
               {
+                boolean _operator_or = false;
                 JvmTypeReference _type = field_1.getType();
                 boolean _operator_equals = ObjectExtensions.operator_equals(_type, null);
                 if (_operator_equals) {
+                  _operator_or = true;
+                } else {
+                  JvmTypeReference _type_1 = field_1.getType();
+                  JvmType _type_2 = _type_1.getType();
+                  boolean _operator_equals_1 = ObjectExtensions.operator_equals(_type_2, null);
+                  _operator_or = BooleanExtensions.operator_or(_operator_equals, _operator_equals_1);
+                }
+                if (_operator_or) {
                   JnarioJvmModelInferrer.this.checkIfExampleField(field_1);
                 }
                 String _name_2 = field_1.getName();

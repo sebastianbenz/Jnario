@@ -117,7 +117,7 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 			var eAllContents = scenario.eAllContents;
 			var allFields = filter(eAllContents, typeof(XtendField))
 			for(field: allFields.toIterable){
-				if(field.type == null){
+				if(field.type == null || field.type.type == null){
 					checkIfExampleField(field)
 				}
 				if(!allVariables.contains(field.name)){
