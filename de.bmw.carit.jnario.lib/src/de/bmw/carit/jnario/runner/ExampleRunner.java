@@ -33,9 +33,10 @@ public class ExampleRunner extends BlockJUnit4ClassRunner {
 	private final FrameworkMethod method;
 	private TestInstantiator testBuilder;
 
-	public ExampleRunner(final FrameworkMethod method, NameProvider nameProvider, TestInstantiator testBuilder)
+	public ExampleRunner(final Class<?> testClass, final FrameworkMethod method, NameProvider nameProvider, TestInstantiator testBuilder)
 			throws InitializationError, NoTestsRemainException {
-		super(method.getMethod().getDeclaringClass());
+//		super(method.getMethod().getDeclaringClass());
+		super(testClass);
 		this.method = method;
 		this.nameProvider = nameProvider;
 		this.testBuilder = testBuilder;

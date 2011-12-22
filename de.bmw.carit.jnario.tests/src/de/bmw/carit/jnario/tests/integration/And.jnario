@@ -13,4 +13,5 @@ And some values.
 	y = 3
 	z = 8
 When I add them
+	(x+y).should.be(z)
 Then the sum should be the result.

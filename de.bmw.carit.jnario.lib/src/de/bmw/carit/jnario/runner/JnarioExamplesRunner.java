@@ -46,4 +46,9 @@ public class JnarioExamplesRunner extends ExampleGroupRunner{
 			}
 		});
 	}
+	
+	@Override
+	protected List<Runner> getChildren() {
+		return children;
+	}
 }

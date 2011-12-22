@@ -3,6 +3,7 @@ package de.bmw.carit.jnario.runner;
 import org.junit.runner.manipulation.NoTestsRemainException;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
+import org.junit.runners.model.TestClass;
 
 public class JnarioRunner extends ExampleGroupRunner {
 
@@ -42,13 +43,13 @@ public class JnarioRunner extends ExampleGroupRunner {
 	}
 
 	@Override
-	protected ExampleRunner createExampleRunner(
+	protected ExampleRunner createExampleRunner(Class<?> testClass,
 			FrameworkMethod from) throws InitializationError,
 			NoTestsRemainException {
 		if(delegate == null){
 			createTestWrapper();
 		}
-		return new ExampleRunner(from, getNameProvider(), delegate);
+		return new ExampleRunner(testClass, from, getNameProvider(), delegate);
 	}
 	
 	private void createTestWrapper() throws InitializationError{

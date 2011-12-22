@@ -5,15 +5,12 @@ Scenario: Example tables.
 Given some variables.
 When I add them
 Then the sum should be the result.
-	(x + y).should.be(z)
+	(x + y + 1).should.be(z)
 Examples:
 |x|y|z|
-|1|2|3|
-|3|5|8|
+|1|2|4|
+|3|5|9|
 
 Examples: some examples
 |x|
 |4|		
-Examples: some other examples
-|x|
-|"y"|

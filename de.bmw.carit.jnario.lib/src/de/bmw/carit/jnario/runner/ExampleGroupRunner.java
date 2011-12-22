@@ -19,6 +19,7 @@ import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.ParentRunner;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
+import org.junit.runners.model.TestClass;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
@@ -61,10 +62,10 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 	protected Iterable<? extends Runner> collectExamples() {
 		List<FrameworkMethod> annotatedMethods = getTestClass().getAnnotatedMethods(Test.class);
 		orderMethods(annotatedMethods);
-		return createRunners(annotatedMethods);
+		return createRunners(getTestClass().getJavaClass(), annotatedMethods);
 	}
 
-	protected Iterable<? extends Runner> createRunners(
+	protected Iterable<? extends Runner> createRunners(final Class<?> testClass,
 			List<FrameworkMethod> annotatedMethods) {
 		return transform(annotatedMethods,
 				new Function<FrameworkMethod, Runner>() {
@@ -72,7 +73,7 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 					@Override
 					public Runner apply(FrameworkMethod from) {
 						try {
-							return createExampleRunner(from);
+							return createExampleRunner(testClass, from);
 						} catch (InitializationError e) {
 							return null;
 						} catch (NoTestsRemainException e) {
@@ -104,10 +105,10 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 		});
 	}
 	
-	protected ExampleRunner createExampleRunner(
+	protected ExampleRunner createExampleRunner(Class<?> testClass,
 			FrameworkMethod from) throws InitializationError,
 			NoTestsRemainException {
-		return new ExampleRunner(from, nameProvider, createTestInstantiator());
+		return new ExampleRunner(testClass, from, nameProvider, createTestInstantiator());
 	}
 
 	protected TestInstantiator createTestInstantiator() throws InitializationError {
