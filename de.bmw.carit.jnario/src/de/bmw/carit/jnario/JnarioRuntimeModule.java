@@ -22,6 +22,7 @@ import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.eclipse.xtext.xbase.validation.EarlyExitValidator;
 import org.eclipse.xtext.xtend2.compiler.Xtend2OutputConfigurationProvider;
 import org.eclipse.xtext.xtend2.featurecalls.Xtend2IdentifiableSimpleNameProvider;
+import org.eclipse.xtext.xtend2.jvmmodel.DispatchUtil;
 import org.eclipse.xtext.xtend2.jvmmodel.IXtend2JvmAssociations;
 import org.eclipse.xtext.xtend2.naming.Xtend2QualifiedNameProvider;
 import org.eclipse.xtext.xtend2.resource.Xtend2Resource;
@@ -38,6 +39,7 @@ import com.google.inject.name.Names;
 
 import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmModelGenerator;
 import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder;
+import de.bmw.carit.jnario.common.jvmmodel.JnarioDispatchUtil;
 import de.bmw.carit.jnario.common.scoping.JnarioExtensionClassNameProvider;
 import de.bmw.carit.jnario.generator.JnarioCompiler;
 import de.bmw.carit.jnario.jvmmodel.JnarioFeatureCallToJavaMapping;
@@ -127,6 +129,10 @@ public class JnarioRuntimeModule extends de.bmw.carit.jnario.AbstractJnarioRunti
 	
 	public Class<? extends ClasspathBasedChecks> bindClasspathBasedChecks(){
 		return JnarioClasspathBasedChecks.class;
+	}
+	
+	public Class<? extends DispatchUtil> bindDispatchUtil(){
+		return JnarioDispatchUtil.class;
 	}
 	
 }

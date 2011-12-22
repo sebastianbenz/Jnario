@@ -22,7 +22,6 @@ TODO:
 		- background: problem with generation: expressions are not allowed to be reused with jvmmodel, ecoreutil.copy not working @high @bug
 		- example name should be used for description and class name, if none exists numbers should be used @low @feature
 		- for generation java class name conflicts should be shown so different jnario files don't create java classes with the same name @feature @medium
-		- fix Xtend2ResourceDescriptionStrategy error @high @bug
 		- error when changing a jnario file while in an example line @high @bug
 		
 	Editor:
@@ -31,7 +30,3 @@ TODO:
 		
 	Refactoring:
 		- move icons in common and set path @low
-				
-				
-				
-				

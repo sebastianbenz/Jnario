@@ -1,4 +1,4 @@
-package de.bmw.carit.jnario.spec.jvmmodel;
+package de.bmw.carit.jnario.common.jvmmodel;
 
 import static com.google.common.collect.Iterables.filter;
 
