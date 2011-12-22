@@ -19,7 +19,6 @@ import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.ParentRunner;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
-import org.junit.runners.model.TestClass;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;

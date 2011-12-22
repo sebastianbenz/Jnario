@@ -8,14 +8,8 @@
 package de.bmw.carit.jnario.generator;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
-import org.eclipse.xtext.common.types.JvmPrimitiveType;
-import org.eclipse.xtext.common.types.JvmTypeReference;
-import org.eclipse.xtext.common.types.TypesFactory;
-import org.eclipse.xtext.common.types.util.Primitives.Primitive;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
-import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.compiler.IAppendable;
 import org.eclipse.xtext.xtend2.compiler.Xtend2Compiler;
 

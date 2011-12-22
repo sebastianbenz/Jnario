@@ -8,7 +8,6 @@ import org.hamcrest.SelfDescribing;
 import org.hamcrest.StringDescription;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
 
 public abstract class BaseMatcherChain<T> implements MatcherChain<T> {
 
