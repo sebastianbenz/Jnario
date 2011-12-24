@@ -52,12 +52,10 @@ import org.eclipse.xtext.xtend2.ui.editor.RichStringAwareSourceViewer;
 import org.eclipse.xtext.xtend2.ui.editor.RichStringAwareToggleCommentAction;
 import org.eclipse.xtext.xtend2.ui.editor.SingleLineCommentHelper;
 import org.eclipse.xtext.xtend2.ui.editor.Xtend2DoubleClickStrategyProvider;
-import org.eclipse.xtext.xtend2.ui.editor.Xtend2FoldingRegionProvider;
 import org.eclipse.xtext.xtend2.ui.editor.XtendNatureAddingEditorCallback;
 import org.eclipse.xtext.xtend2.ui.highlighting.RichStringAwareTokenScanner;
 import org.eclipse.xtext.xtend2.ui.highlighting.ShowWhitespaceCharactersActionContributor;
 import org.eclipse.xtext.xtend2.ui.highlighting.TokenToAttributeIdMapper;
-import org.eclipse.xtext.xtend2.ui.highlighting.XtendHighlightingCalculator;
 import org.eclipse.xtext.xtend2.ui.highlighting.XtendHighlightingConfiguration;
 import org.eclipse.xtext.xtend2.ui.hover.XtendHoverProvider;
 import org.eclipse.xtext.xtend2.ui.hyperlinking.XtendHyperlinkHelper;
@@ -76,6 +74,7 @@ import de.bmw.carit.jnario.spec.ui.highlighting.SpecHighlightingCalculator;
 /**
  * Use this class to register components to be used within the IDE.
  */
+@SuppressWarnings("restriction")
 public class SpecUiModule extends de.bmw.carit.jnario.spec.ui.AbstractSpecUiModule {
 	public SpecUiModule(AbstractUIPlugin plugin) {
 		super(plugin);

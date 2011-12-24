@@ -358,4 +358,26 @@
          </command>  
          </menuContribution>
     </extension>
+       <extension
+         id="de.bmw.carit.jnario.spec.ui.wizard"
+         name="newSpecClass"
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="de.bmw.carit.jnario.spec.ui.wizards"
+            name="Spec">
+      </category>
+      <wizard
+            category="de.bmw.carit.jnario.spec.ui.wizards"
+            icon="icons/spec_file.png"
+            id="de.bmw.carit.jnario.spec.ui.wizards.NewSpecWizard"
+            name="%NewSpec.label">
+            <class class="de.bmw.carit.jnario.spec.ui.SpecExecutableExtensionFactory">
+				<parameter name="javatype" value="true" />
+				<parameter name="guicekey" value="de.bmw.carit.jnario.spec.ui.wizards.NewSpecWizard" />
+			</class>
+			<description>
+            	%NewSpec.description
+         	</description>
+      </wizard>
+   </extension>
 </plugin>
