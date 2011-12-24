@@ -53,9 +53,16 @@ public class SpecCreator {
 			sb.append(stripPackage(classUnderTest));
 			sb.append(" ");
 		}
-		sb.append("\"");
-		sb.append(description);
-		sb.append("\"");
+		if(!isEmpty(description)){
+			sb.append("\"");
+			sb.append(description);
+			sb.append("\"");
+		}
+		
+		if(isEmpty(classUnderTest) && isEmpty(description)){
+			sb.append("\"\"");
+		}
+		
 		sb.append("{\n");
 		for (IMethod method : contextMethods) {
 			sb.append("\n\tcontext ");
