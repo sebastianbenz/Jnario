@@ -1,4 +1,4 @@
-package de.bmw.carit.jnario.spec;
+package de.bmw.carit.jnario.spec.typing;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -6,19 +6,12 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xtend2.typing.Xtend2TypeProvider;
-import org.eclipse.xtext.xtend2.xtend2.CreateExtensionInfo;
-import org.eclipse.xtext.xtend2.xtend2.RichString;
-import org.eclipse.xtext.xtend2.xtend2.RichStringElseIf;
-import org.eclipse.xtext.xtend2.xtend2.RichStringForLoop;
-import org.eclipse.xtext.xtend2.xtend2.RichStringIf;
-import org.eclipse.xtext.xtend2.xtend2.RichStringLiteral;
-import org.eclipse.xtext.xtend2.xtend2.XtendConstructor;
-import org.eclipse.xtext.xtend2.xtend2.XtendFunction;
 
 import com.google.inject.Singleton;
 
 import de.bmw.carit.jnario.spec.spec.Assertion;
 
+@SuppressWarnings("restriction")
 @Singleton
 public class SpecTypeProvider extends Xtend2TypeProvider {
 	

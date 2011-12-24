@@ -6,7 +6,6 @@ import de.bmw.carit.jnario.runner.Contains
 import de.bmw.carit.jnario.runner.ExampleGroupRunner
 import de.bmw.carit.jnario.runner.Named
 import de.bmw.carit.jnario.runner.Subject
-import de.bmw.carit.jnario.spec.naming.ExampleNameProvider
 import de.bmw.carit.jnario.spec.spec.Example
 import de.bmw.carit.jnario.spec.spec.ExampleGroup
 import de.bmw.carit.jnario.spec.spec.SpecFile

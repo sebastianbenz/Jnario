@@ -6,6 +6,7 @@ import org.eclipse.xtext.xtend2.conversion.Xtend2ValueConverterService;
 
 import com.google.inject.Inject;
 
+@SuppressWarnings("restriction")
 public class SpecValueConverterService extends Xtend2ValueConverterService {
 
 	@Inject

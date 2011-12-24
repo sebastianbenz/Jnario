@@ -14,6 +14,7 @@ import de.bmw.carit.jnario.spec.spec.SpecPackage;
  * Initialization support for running Xtext languages 
  * without equinox extension registry
  */
+@SuppressWarnings("restriction")
 public class SpecStandaloneSetup extends SpecStandaloneSetupGenerated{
 
 	public static void doSetup() {

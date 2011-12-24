@@ -22,7 +22,6 @@ import org.eclipse.xtext.xbase.typing.ITypeArgumentContextHelper;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.eclipse.xtext.xbase.validation.EarlyExitValidator;
 import org.eclipse.xtext.xtend2.compiler.Xtend2OutputConfigurationProvider;
-import org.eclipse.xtext.xtend2.conversion.Xtend2ValueConverterService;
 import org.eclipse.xtext.xtend2.featurecalls.Xtend2IdentifiableSimpleNameProvider;
 import org.eclipse.xtext.xtend2.jvmmodel.DispatchUtil;
 import org.eclipse.xtext.xtend2.jvmmodel.IXtend2JvmAssociations;
@@ -44,10 +43,12 @@ import de.bmw.carit.jnario.spec.compiler.SpecCompiler;
 import de.bmw.carit.jnario.spec.conversion.SpecValueConverterService;
 import de.bmw.carit.jnario.spec.jvmmodel.SpecJvmModelInferrer;
 import de.bmw.carit.jnario.spec.scoping.SpecScopeProvider;
+import de.bmw.carit.jnario.spec.typing.SpecTypeProvider;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
+@SuppressWarnings("restriction")
 public class SpecRuntimeModule extends de.bmw.carit.jnario.spec.AbstractSpecRuntimeModule {
 
 	public Class<? extends DispatchUtil> bindDispatchUtil(){

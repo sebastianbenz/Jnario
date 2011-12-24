@@ -4,27 +4,14 @@
 package de.bmw.carit.jnario.spec.ui.labeling;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.xtext.common.types.JvmAnyTypeReference;
-import org.eclipse.xtext.common.types.JvmGenericType;
-import org.eclipse.xtext.common.types.JvmIdentifiableElement;
-import org.eclipse.xtext.common.types.JvmOperation;
-import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmVisibility;
-import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
-import org.eclipse.xtext.xbase.typing.ITypeProvider;
-import org.eclipse.xtext.xbase.validation.UIStrings;
 import org.eclipse.xtext.xtend2.ui.labeling.Xtend2Images;
 import org.eclipse.xtext.xtend2.ui.labeling.Xtend2LabelProvider;
-import org.eclipse.xtext.xtend2.xtend2.XtendImport;
 
-import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 
 import de.bmw.carit.jnario.spec.naming.ExampleNameProvider;
-import de.bmw.carit.jnario.spec.spec.After;
-import de.bmw.carit.jnario.spec.spec.Before;
 import de.bmw.carit.jnario.spec.spec.Example;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 import de.bmw.carit.jnario.spec.spec.TestFunction;
@@ -34,6 +21,7 @@ import de.bmw.carit.jnario.spec.spec.TestFunction;
  * 
  * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#labelProvider
  */
+@SuppressWarnings("restriction")
 public class SpecLabelProvider extends Xtend2LabelProvider {
 
 	@Inject
@@ -42,17 +30,8 @@ public class SpecLabelProvider extends Xtend2LabelProvider {
 	}
 	
 	@Inject
-	private UIStrings uiStrings;
-
-	@Inject
 	private Xtend2Images images;
 
-	@Inject
-	private ITypeProvider typeProvider;
-
-	@Inject
-	private IJvmModelAssociations associations;
-	
 	@Inject
 	private ExampleNameProvider exampleNameProvider;
 

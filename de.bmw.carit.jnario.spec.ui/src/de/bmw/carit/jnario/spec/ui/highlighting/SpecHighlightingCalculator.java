@@ -5,9 +5,7 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xtend2.ui.highlighting.XtendHighlightingCalculator;
 import org.eclipse.xtext.xtend2.xtend2.Xtend2Package;
-import org.eclipse.xtext.xtend2.xtend2.XtendClass;
 import org.eclipse.xtext.xtend2.xtend2.XtendField;
-import org.eclipse.xtext.xtend2.xtend2.XtendFile;
 import org.eclipse.xtext.xtend2.xtend2.XtendFunction;
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 
@@ -16,6 +14,7 @@ import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 import de.bmw.carit.jnario.spec.spec.SpecFile;
 import de.bmw.carit.jnario.spec.spec.SpecPackage;
 
+@SuppressWarnings("restriction")
 public class SpecHighlightingCalculator extends XtendHighlightingCalculator {
 
 	@Override

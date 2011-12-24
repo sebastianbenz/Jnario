@@ -4,24 +4,17 @@ import static com.google.common.collect.Sets.newHashSet;
 import static org.eclipse.xtext.util.Strings.convertToJavaString;
 
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.serializer.ISerializer;
-import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XBinaryOperation;
 import org.eclipse.xtext.xbase.XBlockExpression;
-import org.eclipse.xtext.xbase.XBooleanLiteral;
 import org.eclipse.xtext.xbase.XExpression;
-import org.eclipse.xtext.xbase.XIntLiteral;
-import org.eclipse.xtext.xbase.XStringLiteral;
 import org.eclipse.xtext.xbase.compiler.IAppendable;
-import org.eclipse.xtext.xbase.impl.FeatureCallToJavaMapping;
 import org.eclipse.xtext.xbase.util.XExpressionHelper;
 import org.eclipse.xtext.xtend2.compiler.Xtend2Compiler;
 

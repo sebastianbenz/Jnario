@@ -4,14 +4,12 @@
 */
 package de.bmw.carit.jnario.spec.ui.refactoring;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.xbase.ui.jvmmodel.refactoring.AbstractJvmModelRenameStrategy;
-import org.eclipse.xtext.xbase.ui.jvmmodel.refactoring.DefaultJvmModelRenameStrategy;
+import org.eclipse.xtext.xtend2.ui.refactoring.Xtend2RenameStrategy;
 
 /**
  * Encapsulates the model changes of a rename refactoring.  
  */
 @SuppressWarnings("restriction")
-public class SpecRenameStrategy extends DefaultJvmModelRenameStrategy {
+public class SpecRenameStrategy extends Xtend2RenameStrategy {
 
 }

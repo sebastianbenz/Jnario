@@ -1,6 +1,5 @@
 package de.bmw.carit.jnario.spec.naming;
 
-import static com.google.common.collect.Iterables.filter;
 import static de.bmw.carit.jnario.spec.util.Strings.convertToCamelCase;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 import static org.eclipse.xtext.util.Strings.convertToJavaString;
@@ -10,7 +9,6 @@ import static org.eclipse.xtext.util.Strings.toFirstUpper;
 import java.util.List;
 
 import org.eclipse.xtext.util.SimpleAttributeResolver;
-import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 
 import de.bmw.carit.jnario.spec.spec.After;
@@ -20,6 +18,7 @@ import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 import de.bmw.carit.jnario.spec.spec.TestFunction;
 import de.bmw.carit.jnario.spec.spec.util.SpecSwitch;
 
+@SuppressWarnings("restriction")
 public class ExampleNameProvider {
 
 	private OperationNameProvider operationNameProvider = new OperationNameProvider();

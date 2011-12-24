@@ -6,6 +6,7 @@ import org.eclipse.xtext.xtend2.ui.editor.Xtend2FoldingRegionProvider;
 
 import de.bmw.carit.jnario.spec.spec.SpecPackage;
 
+@SuppressWarnings("restriction")
 public class SpecFoldingRegionProvider extends Xtend2FoldingRegionProvider {
 
 	@Override

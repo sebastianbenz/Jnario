@@ -13,6 +13,7 @@ import de.bmw.carit.jnario.spec.spec.SpecPackage;
 /**
  * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#contentAssist on how to customize content assistant
  */
+@SuppressWarnings("restriction")
 public class SpecProposalProvider extends AbstractSpecProposalProvider {
 	
 	@Override

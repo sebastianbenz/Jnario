@@ -3,7 +3,6 @@
 */
 package de.bmw.carit.jnario.spec.ui.labeling;
 
-import org.eclipse.xtext.ui.label.DefaultDescriptionLabelProvider;
 import org.eclipse.xtext.xtend2.ui.labeling.Xtend2DescriptionLabelProvider;
 
 /**
@@ -11,6 +10,7 @@ import org.eclipse.xtext.xtend2.ui.labeling.Xtend2DescriptionLabelProvider;
  * 
  * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#labelProvider
  */
+@SuppressWarnings("restriction")
 public class SpecDescriptionLabelProvider extends Xtend2DescriptionLabelProvider {
 
 /*

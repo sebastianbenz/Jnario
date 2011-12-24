@@ -7,6 +7,7 @@ import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 
+@SuppressWarnings("restriction")
 public class SpecOutlineTreeProvider extends Xtend2OutlineTreeProvider {
 
 	@Override
