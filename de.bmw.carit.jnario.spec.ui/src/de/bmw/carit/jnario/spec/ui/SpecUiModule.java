@@ -59,6 +59,7 @@ import org.eclipse.xtext.xtend2.ui.highlighting.TokenToAttributeIdMapper;
 import org.eclipse.xtext.xtend2.ui.highlighting.XtendHighlightingConfiguration;
 import org.eclipse.xtext.xtend2.ui.hover.XtendHoverProvider;
 import org.eclipse.xtext.xtend2.ui.hyperlinking.XtendHyperlinkHelper;
+import org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegate;
 import org.eclipse.xtext.xtend2.ui.outline.Xtend2OutlineNodeComparator;
 import org.eclipse.xtext.xtend2.ui.outline.Xtend2OutlinePage;
 import org.eclipse.xtext.xtend2.ui.outline.Xtend2QuickOutlineFilterAndSorter;
@@ -70,6 +71,7 @@ import com.google.inject.name.Names;
 
 import de.bmw.carit.jnario.spec.ui.editor.SpecFoldingRegionProvider;
 import de.bmw.carit.jnario.spec.ui.highlighting.SpecHighlightingCalculator;
+import de.bmw.carit.jnario.spec.ui.launching.SpecJavaElementDelegate;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -228,6 +230,10 @@ public class SpecUiModule extends de.bmw.carit.jnario.spec.ui.AbstractSpecUiModu
 	
 	public Class<? extends ToggleSLCommentAction.Factory> bindToggleCommentFactory() {
 		return RichStringAwareToggleCommentAction.Factory.class;
+	}
+	
+	public Class<? extends JavaElementDelegate> bindJavaElementDelegate(){
+		return SpecJavaElementDelegate.class;
 	}
 	
 }
