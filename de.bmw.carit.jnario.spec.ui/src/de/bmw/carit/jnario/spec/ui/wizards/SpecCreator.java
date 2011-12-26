@@ -4,6 +4,7 @@ import static com.google.common.collect.Iterables.filter;
 import static org.eclipse.xtext.util.Strings.isEmpty;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.IMethod;
@@ -14,7 +15,7 @@ import org.eclipse.xtext.common.types.access.IJvmTypeProvider;
 import org.eclipse.xtext.common.types.access.IJvmTypeProvider.Factory;
 import org.eclipse.xtext.common.types.access.jdt.JdtTypeProviderFactory;
 import org.eclipse.xtext.common.types.util.jdt.IJavaElementFinder;
-import org.eclipse.xtext.resource.XtextResourceSet;
+import org.eclipse.xtext.ui.resource.XtextResourceSetProvider;
 
 import com.google.inject.Inject;
 
@@ -24,19 +25,24 @@ import de.bmw.carit.jnario.spec.naming.OperationNameProvider;
 public class SpecCreator {
 	
 	private final OperationNameProvider nameProvider;
+	
 	private final Factory typeProviderFactory;
+	
 	private final IJavaElementFinder javaElementFinder;
+	
+	private XtextResourceSetProvider resourceSetProvider;
 
 	@Inject
-	public SpecCreator(JdtTypeProviderFactory typeProviderFactory, OperationNameProvider nameProvider, IJavaElementFinder javaElementFinder){
+	public SpecCreator(JdtTypeProviderFactory typeProviderFactory, OperationNameProvider nameProvider, IJavaElementFinder javaElementFinder, XtextResourceSetProvider resourceSetProvider){
 		this.typeProviderFactory = typeProviderFactory;
 		this.nameProvider = nameProvider;
 		this.javaElementFinder = javaElementFinder;
+		this.resourceSetProvider = resourceSetProvider;
 	}
 
 	public String create(IJavaProject javaProject, String description,
 			IPackageFragment packageFragment, String classUnderTest, IMethod[] contextMethods, IProgressMonitor monitor) {
-		IJvmTypeProvider typeProvider = initTypeProvider(javaProject);
+		IJvmTypeProvider typeProvider = createTypeProvider(javaProject);
 		StringBuffer sb = new StringBuffer();
 		if(packageFragment.getElementName() != null && !packageFragment.getElementName().equals("")){
 			sb.append("package ");
@@ -73,11 +79,9 @@ public class SpecCreator {
 		return sb.toString();
 	}
 
-	protected IJvmTypeProvider initTypeProvider(IJavaProject javaProject) {
-		XtextResourceSet resourceSet = new XtextResourceSet();
-		resourceSet.setClasspathURIContext(javaProject);
-		IJvmTypeProvider typeProvider = typeProviderFactory.createTypeProvider(resourceSet);
-		return typeProvider;
+	protected IJvmTypeProvider createTypeProvider(IJavaProject javaProject) {
+		ResourceSet resourceSet = resourceSetProvider.get(javaProject.getProject());
+		return typeProviderFactory.createTypeProvider(resourceSet);
 	}
 	
 	private String signature(IMethod method, IJvmTypeProvider typeProvider) {
