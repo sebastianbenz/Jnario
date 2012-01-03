@@ -17,7 +17,7 @@ describe "StaticImports" {
 			}
 		'
 		val result = de::bmw::carit::jnario::spec::tests::util::SpecExecutor::execute(spec)
-		org::junit::Assert::assertThat(result, org::junit::experimental::results::ResultMatchers::successful)
+		org::junit::Assert::assertThat(result, de::bmw::carit::jnario::common::test::util::ResultMatchers::successful)
 	} 
 			
 }

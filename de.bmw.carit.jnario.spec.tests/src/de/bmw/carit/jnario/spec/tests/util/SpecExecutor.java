@@ -19,6 +19,7 @@ import org.eclipse.xtext.util.StringInputStream;
 import org.eclipse.xtext.validation.IResourceValidator;
 import org.junit.experimental.results.PrintableResult;
 import org.junit.rules.TemporaryFolder;
+import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
 import com.google.inject.Inject;
@@ -44,7 +45,7 @@ public class SpecExecutor extends BehaviorExecutor{
 		validate = false;
 	}
 
-	public static PrintableResult execute(String content) {
+	public static Result execute(String content) {
 		SpecInjectorProvider injectorProvider = new SpecInjectorProvider();
 		try {
 			injectorProvider.setupRegistry();
@@ -79,14 +80,12 @@ public class SpecExecutor extends BehaviorExecutor{
 		resource.setURI(URI.createFileURI(javaClassName  + ".spec"));
 	}
 	
-	protected PrintableResult runExamples(EObject object) throws MalformedURLException, ClassNotFoundException {
-		List<Failure> failures = newArrayList();
+	protected Result runExamples(EObject object) throws MalformedURLException, ClassNotFoundException {
 		SpecFile spec = (SpecFile) object;
 		ExampleGroup exampleGroup = (ExampleGroup) spec.getXtendClass();
 		String specClassName = nameProvider.toJavaClassName(exampleGroup);
 		String packageName = spec.getPackage();
-		runTestsInClass(specClassName, packageName, failures);
-		return new PrintableResult(failures);
+		return runTestsInClass(specClassName, packageName);
 	}
 	
 	protected void generateJava(EObject object) {

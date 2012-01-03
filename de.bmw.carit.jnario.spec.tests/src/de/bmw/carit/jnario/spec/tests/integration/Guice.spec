@@ -2,7 +2,7 @@ package de.bmw.carit.jnario.spec.tests.integration
 
 import static de.bmw.carit.jnario.spec.tests.util.SpecExecutor.*
 import static org.junit.Assert.*
-import static org.junit.experimental.results.ResultMatchers.*
+import static de.bmw.carit.jnario.common.test.util.ResultMatchers.*
 
 describe "Guice" {
 

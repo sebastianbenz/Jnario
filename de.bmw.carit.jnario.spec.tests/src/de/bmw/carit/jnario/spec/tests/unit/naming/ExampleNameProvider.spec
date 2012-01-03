@@ -193,15 +193,20 @@ describe ExampleNameProvider{
 	context ^describe(Example){
 		
 		it "should use the description"{
-			describeFirst("it 'should do stuff'").should.be("should do stuff")
+			describeFirst("it 'should do stuff' {true}").should.be("should do stuff")
 		}
 		
 		it "should use the exception"{
-			describeFirst("it throws IllegalArgumentException").should.be("throws IllegalArgumentException")
+			describeFirst("it throws IllegalArgumentException {true}").should.be("throws IllegalArgumentException")
 		}
 		
 		it "should combine exception and description"{
-			describeFirst("it throws IllegalArgumentException 'should be described'").should.be("throws IllegalArgumentException should be described")
+			describeFirst("it throws IllegalArgumentException 'should be described' {true}").should.be("throws IllegalArgumentException should be described")
+		}
+		
+		it "apppends Ô[PENDING]' to pending example descriptions"{
+			describeFirst("it 'should do stuff'").should.be("should do stuff [PENDING]")
+			describeFirst("it 'should do stuff'{}").should.be("should do stuff [PENDING]")
 		}
 		
 		def describeFirst(String content){

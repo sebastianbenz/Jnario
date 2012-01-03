@@ -17,8 +17,8 @@ import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.util.StringInputStream;
 import org.eclipse.xtext.validation.IResourceValidator;
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
-import org.junit.experimental.results.PrintableResult;
 import org.junit.rules.TemporaryFolder;
+import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
 import com.google.inject.Inject;
@@ -32,8 +32,8 @@ import de.bmw.carit.jnario.jnario.Scenario;
 import de.bmw.carit.jnario.naming.JavaNameProvider;
 
 public class JnarioExecutor extends BehaviorExecutor{
-
-	public static PrintableResult execute(String content) {
+	
+	public static Result execute(String content) {
 		JnarioInjectorProvider injectorProvider = new JnarioInjectorProvider();
 		try {
 			injectorProvider.setupRegistry();
@@ -64,9 +64,9 @@ public class JnarioExecutor extends BehaviorExecutor{
 		this.nameProvider = javaNameProvider;
 	}
 
-	protected PrintableResult runExamples(EObject object)
+	protected Result runExamples(EObject object)
 			throws MalformedURLException, ClassNotFoundException {
-		List<Failure> failures = newArrayList();
+		CompositeResult result = new CompositeResult();
 		Jnario jnario = (Jnario) object;
 		Feature feature = (Feature)jnario.getXtendClass();
 		for (XtendMember member : feature.getMembers()) {
@@ -76,9 +76,9 @@ public class JnarioExecutor extends BehaviorExecutor{
 			if(packageName == null){
 				packageName = "";
 			}
-			runTestsInClass(jnarioClassName, packageName, failures);
+			result.add(runTestsInClass(jnarioClassName, packageName));
 		}
-		return new PrintableResult(failures);
+		return result;
 	}
 	
 	protected void generateJava(EObject object) {

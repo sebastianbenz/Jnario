@@ -18,7 +18,10 @@ import org.eclipse.xtext.junit4.GlobalRegistries;
 import org.eclipse.xtext.junit4.GlobalRegistries.GlobalStateMemento;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.util.Files;
+import org.junit.experimental.results.PrintableResult;
+import org.junit.experimental.results.ResultMatchers;
 import org.junit.runner.Description;
+import org.junit.runner.Result;
 import org.junit.runner.Runner;
 import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunNotifier;
@@ -115,7 +118,9 @@ public abstract class BehaviorTestRunner extends Runner {
 	private void run(URI uri) {
 		EObject object = load(uri);
 		if(object != null){
-			assertThat(behaviorExecutor.run(load(uri)), isSuccessful());
+			Result result = behaviorExecutor.run(load(uri));
+			PrintableResult printableResult = new PrintableResult(result.getFailures());
+			assertThat(printableResult, isSuccessful());
 		}
 	}
 

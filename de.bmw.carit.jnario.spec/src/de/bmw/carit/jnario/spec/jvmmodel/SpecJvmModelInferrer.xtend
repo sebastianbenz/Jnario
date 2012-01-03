@@ -29,13 +29,9 @@ import org.junit.BeforeClass
 import org.junit.Test
 import org.junit.runner.RunWith
 import de.bmw.carit.jnario.spec.spec.Before
-import de.bmw.carit.jnario.spec.spec.After 
-/**
- * <p>Infers a JVM model from the source model.</p> 
- *
- * <p>The JVM model should contain all elements that would appear in the Java code 
- * which is generated from the source model. Other models link against the JVM model rather than the source model.</p>		 
- */
+import de.bmw.carit.jnario.spec.spec.After
+import org.junit.Ignore
+
 class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
 
 	@Inject extension ExtendedJvmTypesBuilder
@@ -89,6 +85,9 @@ class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
 								annotations += element.toAnnotation(typeof(Test))
 							}else{
 								annotations += element.toAnnotation(typeof(Test).name, "expected", element.exception)
+							}
+							if(element.isPending()){
+								annotations += element.toAnnotation(typeof(Ignore))
 							}
 							annotations += element.toAnnotation(typeof(Named), element.describe)
 							members += toMethod(element, annotations)

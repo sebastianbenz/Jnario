@@ -7,7 +7,22 @@
 *******************************************************************************/
 package de.bmw.carit.jnario.spec.spec.impl;
 
+import org.eclipse.xtext.xbase.XBlockExpression;
 
+@SuppressWarnings("restriction")
 public class ExampleImplCustom extends de.bmw.carit.jnario.spec.spec.impl.ExampleImpl {
 
+	@Override
+	public boolean isPending() {
+		if(body == null){
+			return true;
+		}
+		if(!(body instanceof XBlockExpression)){
+			return false;
+		}
+		XBlockExpression block = (XBlockExpression) body;
+		return block.getExpressions().isEmpty();
+	}
+	
+	
 }

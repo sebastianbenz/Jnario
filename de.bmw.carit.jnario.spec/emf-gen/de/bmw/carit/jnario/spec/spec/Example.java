@@ -78,4 +78,12 @@ public interface Example extends TestFunction
 	 */
 	void setException(JvmDeclaredType value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	boolean isPending();
+
 } // Example

@@ -52,6 +52,10 @@ public class ExampleNameProvider {
 		}
 		if(example.getName() != null){
 			sb.append(example.getName());
+			sb.append(" ");
+		}
+		if(example.isPending()){
+			sb.append("[PENDING]");
 		}
 		return convertToJavaString(sb.toString()).trim();
 	}

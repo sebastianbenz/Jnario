@@ -155,6 +155,18 @@ public class ExampleImpl extends TestFunctionImpl implements Example
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isPending()
+	{
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType)
 	{

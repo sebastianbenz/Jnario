@@ -15,7 +15,7 @@ describe "SimpleExample" {
 			}
 		'
 		val result = de::bmw::carit::jnario::spec::tests::util::SpecExecutor::execute(spec)
-		org::junit::Assert::assertThat(result, org::junit::experimental::results::ResultMatchers::successful)
+		org::junit::Assert::assertThat(result, de::bmw::carit::jnario::common::test::util::ResultMatchers::successful)
 	} 
 	
 	it "should fail"{
@@ -31,7 +31,7 @@ describe "SimpleExample" {
 			}
 		'
 		val result = de::bmw::carit::jnario::spec::tests::util::SpecExecutor::execute(spec)
-		org::junit::Assert::assertThat(result, org::junit::experimental::results::ResultMatchers::hasSingleFailureContaining("reason of failure"))
+		org::junit::Assert::assertThat(result, de::bmw::carit::jnario::common::test::util::ResultMatchers::hasSingleFailureContaining("reason of failure"))
 	}
 			
 }

@@ -1,6 +1,8 @@
 package de.bmw.carit.jnario.common.test.util;
 
+import static com.google.common.collect.Iterables.concat;
 import static com.google.common.collect.Iterables.filter;
+import static com.google.common.collect.Lists.newArrayList;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.fail;
 
@@ -15,6 +17,7 @@ import java.util.List;
 
 import javax.tools.JavaCompiler;
 import javax.tools.ToolProvider;
+import javax.xml.ws.FaultAction;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
@@ -29,9 +32,9 @@ import org.eclipse.xtext.util.CancelIndicator;
 import org.eclipse.xtext.validation.CheckMode;
 import org.eclipse.xtext.validation.IResourceValidator;
 import org.eclipse.xtext.validation.Issue;
-import org.junit.experimental.results.PrintableResult;
 import org.junit.rules.TemporaryFolder;
 import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 import org.osgi.framework.BundleException;
 
@@ -41,6 +44,64 @@ import com.google.inject.Inject;
 
 public abstract class BehaviorExecutor {
 
+	
+	public static class CompositeResult extends Result{
+
+		private List<Result> children = newArrayList();
+
+		public void add(Result child) {
+			children.add(child);
+		}
+		
+		@Override
+		public int getFailureCount() {
+			int failureCount = 0;
+			for (Result child : children) {
+				failureCount += child.getFailureCount();
+			}
+			return failureCount;
+		}
+		
+		@Override
+		public List<Failure> getFailures() {
+			List<Failure> failures = newArrayList();
+			for (Result child : children) {
+				failures.addAll(child.getFailures());
+			}
+			return failures;
+		}
+		
+		@Override
+		public int getIgnoreCount() {
+			int ignoreCount = 0;
+			for (Result child : children) {
+				ignoreCount += child.getIgnoreCount();
+			}
+			return ignoreCount;
+		}
+		
+		@Override
+		public int getRunCount() {
+			int runCount = 0;
+			for (Result child : children) {
+				runCount += child.getRunCount();
+			}
+			return runCount;
+		}
+		
+		@Override
+		public long getRunTime() {
+			long runtime = 0;
+			for (Result child : children) {
+				runtime += child.getRunTime();
+			}
+			return runtime;
+		}
+		
+	}
+
+
+	
 	private static final String BUNDLE_REFERENCE = "reference:file:";
 	private static final String PLUGIN_CLASSES_FOLDER = "plugins";
 	private static final String SYSTEM_BUNDLE = "System Bundle";
@@ -61,7 +122,7 @@ public abstract class BehaviorExecutor {
 		this.validator = validator;
 	}
 
-	public PrintableResult run(EObject object) {
+	public Result run(EObject object) {
 		try {
 			configureOutlet();
 			if(validate){
@@ -105,7 +166,7 @@ public abstract class BehaviorExecutor {
 		generator.doGenerate(object.eResource(), fsa);
 	}
 
-	protected abstract PrintableResult runExamples(EObject object)
+	protected abstract Result runExamples(EObject object)
 			throws MalformedURLException, ClassNotFoundException;
 
 	protected void compileJavaFile(String packageName, String className) {
@@ -125,8 +186,8 @@ public abstract class BehaviorExecutor {
 		return classPathAndJavaFiles;
 	}
 
-	protected List<Failure> execute(Class<?> cls) {
-		return JUnitCore.runClasses(cls).getFailures();
+	protected Result execute(Class<?> cls) {
+		return JUnitCore.runClasses(cls);
 	}
 
 	protected Class<?> loadGeneratedClass(String packageName,
@@ -172,14 +233,12 @@ public abstract class BehaviorExecutor {
 		return result;
 	}
 
-	protected List<Failure> runTestsInClass(String className,
-			String packageName, List<Failure> failures)
+	protected Result runTestsInClass(String className,
+			String packageName)
 			throws MalformedURLException, ClassNotFoundException {
 		compileJavaFile(packageName, className);
 		Class<?> testClass = loadGeneratedClass(packageName, className);
-		List<Failure> newFailures = execute(testClass);
-		failures.addAll(newFailures);
-		return failures;
+		return execute(testClass);
 	}
 
 	private boolean isLoadedAsPlugin() {

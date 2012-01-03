@@ -45,12 +45,6 @@ import org.eclipse.xtext.xtend2.xtend2.XtendField;
 import org.eclipse.xtext.xtend2.xtend2.XtendFunction;
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 
-/**
- * <p>Infers a JVM model from the source model.</p>
- * 
- * <p>The JVM model should contain all elements that would appear in the Java code
- * which is generated from the source model. Other models link against the JVM model rather than the source model.</p>
- */
 @SuppressWarnings("all")
 public class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
   @Inject
@@ -150,9 +144,14 @@ public class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
                         JvmAnnotationReference _annotation_3 = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(_example, _name, "expected", _exception_1);
                         CollectionExtensions.<JvmAnnotationReference>operator_add(annotations, _annotation_3);
                       }
+                      boolean _isPending = _example.isPending();
+                      if (_isPending) {
+                        JvmAnnotationReference _annotation_4 = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(_example, org.junit.Ignore.class);
+                        CollectionExtensions.<JvmAnnotationReference>operator_add(annotations, _annotation_4);
+                      }
                       String _describe_1 = SpecJvmModelInferrer.this._exampleNameProvider.describe(_example);
-                      JvmAnnotationReference _annotation_4 = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(_example, de.bmw.carit.jnario.runner.Named.class, _describe_1);
-                      CollectionExtensions.<JvmAnnotationReference>operator_add(annotations, _annotation_4);
+                      JvmAnnotationReference _annotation_5 = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(_example, de.bmw.carit.jnario.runner.Named.class, _describe_1);
+                      CollectionExtensions.<JvmAnnotationReference>operator_add(annotations, _annotation_5);
                       EList<JvmMember> _members_1 = it.getMembers();
                       JvmOperation _method = SpecJvmModelInferrer.this.toMethod(_example, annotations);
                       CollectionExtensions.<JvmOperation>operator_add(_members_1, _method);
