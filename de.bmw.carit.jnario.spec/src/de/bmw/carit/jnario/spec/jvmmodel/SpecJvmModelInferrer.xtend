@@ -3,7 +3,6 @@ package de.bmw.carit.jnario.spec.jvmmodel
 import com.google.inject.Inject
 import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder
 import de.bmw.carit.jnario.runner.Contains
-import de.bmw.carit.jnario.runner.ExampleGroupRunner
 import de.bmw.carit.jnario.runner.Named
 import de.bmw.carit.jnario.spec.spec.Example
 import de.bmw.carit.jnario.spec.spec.ExampleGroup

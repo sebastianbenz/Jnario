@@ -97,7 +97,7 @@ describe "ImplicitSubject"{
 		assertThat(execute(spec), is(successful))
 	}
 	
-	it "implicit subject won't be created "{
+	it "will be only created in the subexample if it is not used in the parent example group"{
 		val spec = '
 			package bootstrap
 
@@ -117,7 +117,7 @@ describe "ImplicitSubject"{
 		assertThat(execute(spec), is(successful))
 	}
 	
-	it "will only created in the container example if necessary"{
+	it "will not be created in a subexample example if it is used in the parent example group"{
 		val spec = '
 			package bootstrap
 	
