@@ -18,4 +18,5 @@ public class OperationNamesExample {
 	
 	public void operationWithVarArg(String...strings){
 	}
+	
 }

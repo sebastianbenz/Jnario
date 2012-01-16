@@ -5,7 +5,6 @@ import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder
 import de.bmw.carit.jnario.runner.Contains
 import de.bmw.carit.jnario.runner.ExampleGroupRunner
 import de.bmw.carit.jnario.runner.Named
-import de.bmw.carit.jnario.runner.Subject
 import de.bmw.carit.jnario.spec.spec.Example
 import de.bmw.carit.jnario.spec.spec.ExampleGroup
 import de.bmw.carit.jnario.spec.spec.SpecFile
@@ -14,23 +13,19 @@ import java.util.List
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmAnnotationReference
 import org.eclipse.xtext.common.types.JvmDeclaredType
-import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.util.IAcceptor
-import org.eclipse.xtext.xbase.XFeatureCall
-import org.eclipse.xtext.xbase.XMemberFeatureCall
 import org.eclipse.xtext.xtend2.jvmmodel.Xtend2JvmModelInferrer
 import org.eclipse.xtext.xtend2.xtend2.XtendField
 import org.eclipse.xtext.xtend2.xtend2.XtendFunction
-import org.junit.AfterClass
-import org.junit.BeforeClass
-import org.junit.Test
-import org.junit.runner.RunWith
 import de.bmw.carit.jnario.spec.spec.Before
 import de.bmw.carit.jnario.spec.spec.After
-import org.junit.Ignore
+import static de.bmw.carit.jnario.spec.jvmmodel.Constants.*
+import static com.google.common.collect.Iterators.*
+import static org.eclipse.xtext.EcoreUtil2.*
+import de.bmw.carit.jnario.spec.naming.ExampleNameProvider
 
 class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
 
@@ -38,7 +33,11 @@ class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
 	
 	@Inject extension TypeReferences
 
-	@Inject extension de.bmw.carit.jnario.spec.naming.ExampleNameProvider
+	@Inject extension ExampleNameProvider
+	
+	@Inject extension SpecAnnotationProvider annotationProvider
+	
+	@Inject extension ImplicitSubject 
 	
 	override void infer(EObject e, IAcceptor<JvmDeclaredType> acceptor, boolean isPrelinkingPhase) {
 		if (!(e instanceof SpecFile)){
@@ -66,29 +65,24 @@ class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
 					return
 				}
 				
-				annotations += exampleGroup.toAnnotation(typeof(RunWith), typeof(ExampleGroupRunner))
+				annotations += exampleGroup.toAnnotation(runnerAnnotation.key, runnerAnnotation.value)
 				annotations += exampleGroup.toAnnotation(typeof(Named), exampleGroup.describe)
 				exampleGroup.annotations.translateAnnotationsTo(it)
 				
+				for (field : exampleGroup.members.filter(typeof(XtendField))) {
+						field.visibility = JvmVisibility::PROTECTED
+						field.transform(it)
+				}
+				
+				addImplicitSubject(exampleGroup)
+				
 				for (element : exampleGroup.members) {
 					switch element {
-						XtendField : {
-							element.visibility = JvmVisibility::PROTECTED
-							element.transform(it)
-						}
 						ExampleGroup: {
 							subExamples += transform(spec, element, it, isPrelinkingPhase)
 						}
 						Example : {
-							val annotations = <JvmAnnotationReference>newArrayList()
-							if(element.exception == null){
-								annotations += element.toAnnotation(typeof(Test))
-							}else{
-								annotations += element.toAnnotation(typeof(Test).name, "expected", element.exception)
-							}
-							if(element.isPending()){
-								annotations += element.toAnnotation(typeof(Ignore))
-							}
+							val annotations = element.getTestAnnotations()
 							annotations += element.toAnnotation(typeof(Named), element.describe)
 							members += toMethod(element, annotations)
 						}
@@ -96,22 +90,12 @@ class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
 							element.transform(it)
 						}
 						Before:{
-							var Class<?> annotationType = typeof(org.junit.Before)
-							var isStatic = false
-							if(element.beforeAll) {
-								annotationType = typeof(BeforeClass)
-								isStatic = true
-							} 
-							members += element.toMethod(annotationType, isStatic)
+							val annotationType = element.getBeforeAnnotation()
+							members += element.toMethod(annotationType, element.beforeAll)
 						}
 						After:{
-							var Class<?> annotationType = typeof(org.junit.After)
-							var isStatic = false
-							if(element.afterAll) {
-								annotationType = typeof(AfterClass)
-								isStatic = true
-							} 
-							members += element.toMethod(annotationType, isStatic)
+							val annotationType = element.getAfterAnnotation()
+							members += element.toMethod(annotationType, element.afterAll)
 						}
 					}
 				}
@@ -120,7 +104,6 @@ class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
 					annotations += exampleGroup.toAnnotation(typeof(Contains), subExamples);
 				}
 				computeInferredReturnTypes()
-				addImplicitSubject(exampleGroup)
 			]
 						
 	}
@@ -141,30 +124,5 @@ class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
 							]
 	}
 	
-	def void addImplicitSubject(JvmGenericType type, ExampleGroup exampleGroup){
-		val targetType = exampleGroup.targetType
-		if(targetType == null) return;
-		if(targetType.eIsProxy()) return;
-		if(hasSubject(type)) return;
-		if(neverUsesSubject(exampleGroup)) return;
-		
-		type.members.add(0, exampleGroup.toField("subject", targetType.createTypeRef)[
-			annotations += exampleGroup.toAnnotation(typeof(Subject))
-			visibility = JvmVisibility::PUBLIC
-		])
-	}
 	
-	def hasSubject(JvmGenericType type){
-		type.members.filter(typeof(JvmField)).findFirst[simpleName == "subject"] != null
-	}
-	
-	def neverUsesSubject(ExampleGroup exampleGroup){
-		val allFeatureCalls = exampleGroup.eAllContents.filter(typeof(XMemberFeatureCall))
-		null == allFeatureCalls.findFirst(XMemberFeatureCall call| {
-			if(call.memberCallTarget == null) return false
-			if(!(call.memberCallTarget instanceof XFeatureCall)) return false
-			val featureCall = call.memberCallTarget as XFeatureCall
-			return featureCall.concreteSyntaxFeatureName == "subject"
-		})
-	}
 }

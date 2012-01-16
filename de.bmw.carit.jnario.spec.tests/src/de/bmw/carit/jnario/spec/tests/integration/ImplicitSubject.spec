@@ -79,7 +79,7 @@ describe "ImplicitSubject"{
 		assertThat(execute(spec), is(successful))
 	}
 	
-		it "can be overridden from nested ExampleGroups"{
+	it "can be overridden from nested ExampleGroups"{
 		val spec = '
 			package bootstrap
 
@@ -97,5 +97,50 @@ describe "ImplicitSubject"{
 		assertThat(execute(spec), is(successful))
 	}
 	
+	it "implicit subject won't be created "{
+		val spec = '
+			package bootstrap
+
+			describe Integer{
+				
+				describe Integer {
+					
+					Integer subject = 0
+					
+					it "can be manually assigned from within sub specification"{
+						subject.should.be(0)
+					} 
+				}
+				
+			}
+		'
+		assertThat(execute(spec), is(successful))
+	}
 	
+	it "will only created in the container example if necessary"{
+		val spec = '
+			package bootstrap
+	
+			import static org.hamcrest.CoreMatchers.*
+						
+			describe String {
+				describe String{
+					it "should generate subject for superclass"{
+						assert typeof(StringSpec).getDeclaredField("subject") != null
+					}
+					it throws NoSuchFieldException "should not generate subject for subclass"{
+						typeof(StringStringSpec).getDeclaredField("subject")
+					}
+					it "uses subject"{
+					subject.toString
+				}
+				}
+				
+				it "uses subject"{
+					subject.toString
+				}
+			}
+	'
+		assertThat(execute(spec), is(successful))
+	}
 }
