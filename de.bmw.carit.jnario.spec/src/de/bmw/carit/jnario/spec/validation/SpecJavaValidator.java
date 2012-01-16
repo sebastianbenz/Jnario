@@ -115,6 +115,7 @@ import org.eclipse.xtext.xbase.annotations.typing.XAnnotationUtil;
 import org.eclipse.xtext.xbase.annotations.validation.XbaseWithAnnotationsJavaValidator;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
+import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.eclipse.xtext.xbase.validation.UIStrings;
 import org.eclipse.xtext.xtend2.dispatch.DispatchingSupport;
 import org.eclipse.xtext.xtend2.jvmmodel.IXtend2JvmAssociations;
@@ -147,11 +148,15 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
 import com.google.inject.Inject;
+
+import de.bmw.carit.jnario.spec.spec.Assertion;
  
 
 @SuppressWarnings("restriction")
 @ComposedChecks(validators={SpecClassPathBasedChecks.class})
 public class SpecJavaValidator extends XbaseWithAnnotationsJavaValidator {
+	
+	private static final String ILLEGAL_ASSERTION_EXPRESSION = "invalid type: expecting boolean";
 
 	@Inject
 	private FeatureOverridesService featureOverridesService;
@@ -188,7 +193,10 @@ public class SpecJavaValidator extends XbaseWithAnnotationsJavaValidator {
 	
 	@Inject 
 	private UIStrings uiStrings;
-
+	
+	@Inject
+	private ITypeProvider typeProvider;
+	
 	private final Set<EReference> typeConformanceCheckedReferences = ImmutableSet.copyOf(Iterables.concat(
 			super.getTypeConformanceCheckedReferences(), 
 			ImmutableSet.of(
@@ -201,6 +209,16 @@ public class SpecJavaValidator extends XbaseWithAnnotationsJavaValidator {
 	@Override
 	protected List<EPackage> getEPackages() {
 		return newArrayList(Xtend2Package.eINSTANCE, XbasePackage.eINSTANCE, XAnnotationsPackage.eINSTANCE);
+	}
+	
+	@Check
+	public void checkAssertExpressionIsBoolean(Assertion assertion){
+		JvmTypeReference actualType = typeProvider.getType(assertion.getExpression());
+		String actualTypeName = actualType.getQualifiedName();
+		if(!actualTypeName.equals(boolean.class.getName()) && 
+				!actualTypeName.equals(Boolean.class.getName())){
+			error(ILLEGAL_ASSERTION_EXPRESSION, null);
+		}
 	}
 
 	@Override

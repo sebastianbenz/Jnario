@@ -1,11 +1,7 @@
 package de.bmw.carit.jnario.spec.tests.integration
 
 import static de.bmw.carit.jnario.common.test.util.ResultMatchers.*
-
-
 import static extension de.bmw.carit.jnario.spec.tests.util.SpecExecutor.*
-
-
  
 describe "AfterAll" {
  
