@@ -7,7 +7,6 @@
  *******************************************************************************/
 package de.bmw.carit.jnario.common.test.util;
 
-import static com.google.common.collect.Iterables.concat;
 import static com.google.common.collect.Iterables.filter;
 import static com.google.common.collect.Lists.newArrayList;
 import static junit.framework.Assert.assertFalse;
@@ -24,7 +23,6 @@ import java.util.List;
 
 import javax.tools.JavaCompiler;
 import javax.tools.ToolProvider;
-import javax.xml.ws.FaultAction;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
@@ -49,6 +47,7 @@ import com.google.common.base.Joiner;
 import com.google.common.base.Predicate;
 import com.google.inject.Inject;
 
+@SuppressWarnings("restriction")
 public abstract class BehaviorExecutor {
 
 	
@@ -106,8 +105,6 @@ public abstract class BehaviorExecutor {
 		}
 		
 	}
-
-
 	
 	private static final String BUNDLE_REFERENCE = "reference:file:";
 	private static final String PLUGIN_CLASSES_FOLDER = "plugins";
@@ -138,6 +135,7 @@ public abstract class BehaviorExecutor {
 			generateJava(object);
 			return runExamples(object);
 		} catch (Exception e) {
+			validate(object);
 			e.printStackTrace();
 			fail(e.getMessage());
 			return null; // not reachable

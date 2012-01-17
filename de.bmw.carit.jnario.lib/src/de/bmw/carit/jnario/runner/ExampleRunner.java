@@ -44,7 +44,6 @@ public class ExampleRunner extends BlockJUnit4ClassRunner {
 
 	public ExampleRunner(final Class<?> testClass, final FrameworkMethod method, NameProvider nameProvider, TestInstantiator testBuilder)
 			throws InitializationError, NoTestsRemainException {
-//		super(method.getMethod().getDeclaringClass());
 		super(testClass);
 		this.method = method;
 		this.nameProvider = nameProvider;
@@ -62,7 +61,6 @@ public class ExampleRunner extends BlockJUnit4ClassRunner {
 	protected Object newInstanceOf(Class<?> testClass) throws Exception {
 		return testBuilder.createTest(testClass);
 	}
-
 
 	protected void initializeSubjects(TestClass testClass, Object test) throws InitializationError {
 		for (FrameworkField subjectField : testClass.getAnnotatedFields(Subject.class)) {

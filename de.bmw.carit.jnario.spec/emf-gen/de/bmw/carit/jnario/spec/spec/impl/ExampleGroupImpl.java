@@ -21,7 +21,7 @@ import org.eclipse.xtext.xtend2.xtend2.Xtend2Package;
 import org.eclipse.xtext.xtend2.xtend2.XtendAnnotationTarget;
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 
-import org.eclipse.xtext.xtend2.xtend2.impl.XtendClassImpl;
+import org.eclipse.xtext.xtend2.xtend2.impl.XtendClassImplCustom;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,7 +39,7 @@ import org.eclipse.xtext.xtend2.xtend2.impl.XtendClassImpl;
  *
  * @generated
  */
-public class ExampleGroupImpl extends XtendClassImpl implements ExampleGroup
+public class ExampleGroupImpl extends XtendClassImplCustom implements ExampleGroup
 {
 	/**
 	 * The cached value of the '{@link #getAnnotationInfo() <em>Annotation Info</em>}' containment reference.

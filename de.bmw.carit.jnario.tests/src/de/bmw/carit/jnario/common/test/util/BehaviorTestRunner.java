@@ -26,7 +26,6 @@ import org.eclipse.xtext.junit4.GlobalRegistries.GlobalStateMemento;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.util.Files;
 import org.junit.experimental.results.PrintableResult;
-import org.junit.experimental.results.ResultMatchers;
 import org.junit.runner.Description;
 import org.junit.runner.Result;
 import org.junit.runner.Runner;

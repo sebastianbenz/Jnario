@@ -17,6 +17,8 @@ import org.eclipse.xtext.xbase.XMemberFeatureCall
 import static com.google.common.collect.Iterators.*
 import static de.bmw.carit.jnario.spec.jvmmodel.Constants.*
 import static org.eclipse.xtext.EcoreUtil2.*
+import org.eclipse.xtext.xtend2.xtend2.XtendFunction
+import de.bmw.carit.jnario.spec.spec.TestFunction
 /**
  * @author Sebastian Benz
  */
@@ -64,7 +66,10 @@ class ImplicitSubject {
 	
 	def neverUsesSubject(ExampleGroup exampleGroup){
 		var Iterator<XMemberFeatureCall> allFeatureCalls = emptyIterator
-		for(example : exampleGroup.members.filter(typeof(Example))){
+		for(example : exampleGroup.members.filter(typeof(XtendFunction))){
+			allFeatureCalls = concat(allFeatureCalls, example.eAllContents.filter(typeof(XMemberFeatureCall)))
+		}
+		for(example : exampleGroup.members.filter(typeof(TestFunction))){
 			allFeatureCalls = concat(allFeatureCalls, example.eAllContents.filter(typeof(XMemberFeatureCall)))
 		}
 		return null == allFeatureCalls.findFirst(XMemberFeatureCall call| {

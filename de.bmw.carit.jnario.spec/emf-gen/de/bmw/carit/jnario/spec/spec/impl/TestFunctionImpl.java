@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.xtext.xbase.XExpression;
 
-import org.eclipse.xtext.xtend2.xtend2.impl.XtendMemberImpl;
+import org.eclipse.xtext.xtend2.xtend2.impl.XtendMemberImplCustom;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,7 +32,7 @@ import org.eclipse.xtext.xtend2.xtend2.impl.XtendMemberImpl;
  *
  * @generated
  */
-public class TestFunctionImpl extends XtendMemberImpl implements TestFunction
+public class TestFunctionImpl extends XtendMemberImplCustom implements TestFunction
 {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.

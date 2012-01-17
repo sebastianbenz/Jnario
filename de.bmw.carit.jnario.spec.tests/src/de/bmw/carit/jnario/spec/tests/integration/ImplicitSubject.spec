@@ -117,7 +117,7 @@ describe "ImplicitSubject"{
 		assertThat(execute(spec), is(successful))
 	}
 	
-	it "will not be created in a subexample example if it is used in the parent example group"{
+	it "will not be created in a sub example if it is used in the parent example group"{
 		val spec = '
 			package bootstrap
 	

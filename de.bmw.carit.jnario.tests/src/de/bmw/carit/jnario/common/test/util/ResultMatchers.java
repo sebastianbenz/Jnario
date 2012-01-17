@@ -13,6 +13,7 @@ import org.junit.experimental.results.PrintableResult;
 import org.junit.internal.matchers.TypeSafeMatcher;
 import org.junit.runner.Result;
 
+@SuppressWarnings("restriction")
 public class ResultMatchers {
 
 	public static Matcher<Result> ignoreCountIs(final int count) {
