@@ -18,12 +18,13 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-import org.eclipse.core.internal.runtime.Activator;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.emf.common.util.URI;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
+
+import de.bmw.carit.jnario.Activator;
 
 public class ClassPathUriProvider implements IUriProvider {
 

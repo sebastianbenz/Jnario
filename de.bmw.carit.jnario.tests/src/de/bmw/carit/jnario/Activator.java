@@ -2,7 +2,6 @@ package de.bmw.carit.jnario;
 
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
-import org.osgi.framework.BundleReference;
 
 public class Activator extends Plugin {
 
