@@ -4,7 +4,9 @@ import static de.bmw.carit.jnario.spec.tests.util.SpecExecutor.*
 import static org.junit.Assert.*
 import static de.bmw.carit.jnario.common.test.util.ResultMatchers.*
 import de.bmw.carit.jnario.spec.spec.ExampleGroup
-
+/**
+ * @author Sebastian Benz
+ */
 describe ExampleGroup {
   
 	it "should resolve target class"{

@@ -19,6 +19,9 @@ import org.junit.internal.matchers.TypeSafeMatcher;
 
 import com.google.common.base.Predicate;
 
+/**
+ * @author Sebastian Benz
+ */
 @SuppressWarnings("restriction")
 public class Matchers extends CoreMatchers{
 

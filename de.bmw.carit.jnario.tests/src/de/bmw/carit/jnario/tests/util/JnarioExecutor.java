@@ -1,12 +1,10 @@
 package de.bmw.carit.jnario.tests.util;
 
-import static com.google.common.collect.Lists.newArrayList;
 import static junit.framework.Assert.assertFalse;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.Collections;
-import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -19,7 +17,6 @@ import org.eclipse.xtext.validation.IResourceValidator;
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 import org.junit.rules.TemporaryFolder;
 import org.junit.runner.Result;
-import org.junit.runner.notification.Failure;
 
 import com.google.inject.Inject;
 import com.google.inject.Injector;
@@ -31,6 +28,7 @@ import de.bmw.carit.jnario.jnario.Jnario;
 import de.bmw.carit.jnario.jnario.Scenario;
 import de.bmw.carit.jnario.naming.JavaNameProvider;
 
+@SuppressWarnings("restriction")
 public class JnarioExecutor extends BehaviorExecutor{
 	
 	public static Result execute(String content) {

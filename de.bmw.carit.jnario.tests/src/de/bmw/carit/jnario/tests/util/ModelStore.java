@@ -20,6 +20,9 @@ import com.google.common.collect.Iterators;
 
 import de.bmw.carit.jnario.common.test.util.IUriProvider;
 
+/**
+ * @author Sebastian Benz
+ */
 public class ModelStore implements Iterable<EObject> {
 
 	

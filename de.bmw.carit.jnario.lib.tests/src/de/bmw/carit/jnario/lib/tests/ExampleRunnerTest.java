@@ -16,6 +16,9 @@ import de.bmw.carit.jnario.runner.ExampleGroupRunner;
 import de.bmw.carit.jnario.runner.ExampleRunner;
 import de.bmw.carit.jnario.runner.NameProvider;
 
+/**
+ * @author Sebastian Benz
+ */
 public class ExampleRunnerTest {
 	
 	@RunWith(ExampleGroupRunner.class)

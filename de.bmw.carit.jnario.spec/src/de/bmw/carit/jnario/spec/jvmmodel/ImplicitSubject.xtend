@@ -17,7 +17,9 @@ import org.eclipse.xtext.xbase.XMemberFeatureCall
 import static com.google.common.collect.Iterators.*
 import static de.bmw.carit.jnario.spec.jvmmodel.Constants.*
 import static org.eclipse.xtext.EcoreUtil2.*
-
+/**
+ * @author Sebastian Benz
+ */
 class ImplicitSubject {
 	
 	@Inject extension ExtendedJvmTypesBuilder

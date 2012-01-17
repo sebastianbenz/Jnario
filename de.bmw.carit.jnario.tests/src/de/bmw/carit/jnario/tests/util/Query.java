@@ -7,6 +7,9 @@ import org.eclipse.emf.ecore.EObject;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
+/**
+ * @author Sebastian Benz
+ */
 public class Query {
 
 	private final Iterable<EObject> content;

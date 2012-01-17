@@ -2,7 +2,9 @@ package de.bmw.carit.jnario.spec.tests.integration
 
 import org.eclipse.xtext.xbase.lib.Procedures$Procedure1
 import org.junit.Assert
-
+/**
+ * @author Sebastian Benz
+ */
 describe "Assertion"{
 	
 	it "passes if the evaluated expression is true"{

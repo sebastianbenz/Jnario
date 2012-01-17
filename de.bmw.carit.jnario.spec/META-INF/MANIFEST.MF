@@ -1,10 +1,11 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: de.bmw.carit.jnario.spec
-Bundle-Vendor: BMW Car IT
+Bundle-Name: %pluginName
+Bundle-Vendor: %providerName
 Bundle-Version: 0.1.0.qualifier
 Bundle-SymbolicName: de.bmw.carit.jnario.spec; singleton:=true
 Bundle-ActivationPolicy: lazy
+Bundle-Localization: plugin
 Require-Bundle: org.eclipse.xtext;bundle-version="2.1.0";visibility:=reexport,
  org.eclipse.xtext.xbase;bundle-version="2.1.0";resolution:=optional;visibility:=reexport,
  org.apache.log4j;bundle-version="1.2.15";visibility:=reexport,

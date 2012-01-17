@@ -37,9 +37,6 @@ import static org.eclipse.xtext.EcoreUtil2.*
 import java.util.List
 import de.bmw.carit.jnario.runner.Contains
 
-
-
-
 /**
  * <p>Infers a JVM model from the source model.</p> 
  *

@@ -12,7 +12,9 @@ import de.bmw.carit.jnario.spec.spec.After
 import org.junit.AfterClass
 import de.bmw.carit.jnario.runner.ExampleGroupRunner
 import org.junit.runner.RunWith
-
+/**
+ * @author Sebastian Benz
+ */
 class SpecAnnotationProvider {
 	
 	@Inject extension ExtendedJvmTypesBuilder

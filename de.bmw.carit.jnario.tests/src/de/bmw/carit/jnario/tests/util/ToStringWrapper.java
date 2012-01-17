@@ -9,6 +9,9 @@ import java.util.List;
 
 import com.google.common.base.Function;
 
+/**
+ * @author Sebastian Benz
+ */
 public class ToStringWrapper<T> implements InvocationHandler {
 
 	public static class ToStringWrapperBuilder<T> {

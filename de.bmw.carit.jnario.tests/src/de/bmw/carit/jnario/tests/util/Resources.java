@@ -36,6 +36,9 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
+/**
+ * @author Sebastian Benz
+ */
 public class Resources {
 
 	public static String toString(Resource resource) {

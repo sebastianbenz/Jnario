@@ -5,6 +5,9 @@ import org.junit.runner.RunWith;
 
 import de.bmw.carit.jnario.JnarioInjectorProvider;
 
+/**
+ * @author Sebastian Benz
+ */
 @RunWith(JnarioTestRunner.class)
 @InjectWith(JnarioInjectorProvider.class)
 public abstract class RuntimeTest {

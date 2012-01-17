@@ -2,6 +2,9 @@ package de.bmw.carit.jnario.tests.util;
 
 import de.bmw.carit.jnario.common.test.util.BehaviorTestRunner;
 
+/**
+ * @author Sebastian Benz
+ */
 public class JnarioTestRunner extends BehaviorTestRunner {
 
 	public JnarioTestRunner(Class<?> klass) {

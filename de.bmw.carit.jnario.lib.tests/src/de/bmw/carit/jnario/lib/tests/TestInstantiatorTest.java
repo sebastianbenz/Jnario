@@ -16,6 +16,9 @@ import de.bmw.carit.jnario.runner.ExampleGroupRunner;
 import de.bmw.carit.jnario.runner.InstantiateWith;
 import de.bmw.carit.jnario.runner.TestInstantiator;
 
+/**
+ * @author Sebastian Benz
+ */
 public class TestInstantiatorTest {
 
 	private static ArrayList<String> callOrder;

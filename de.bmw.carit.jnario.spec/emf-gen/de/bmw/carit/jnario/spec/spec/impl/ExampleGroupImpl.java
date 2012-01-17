@@ -1,7 +1,5 @@
 /**
- * <copyright>
- * </copyright>
- *
+ * Copyright (c) 2012 BMW Car IT and others. All rights reserved. This program and the accompanying materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
  */
 package de.bmw.carit.jnario.spec.spec.impl;
 
@@ -23,7 +21,7 @@ import org.eclipse.xtext.xtend2.xtend2.Xtend2Package;
 import org.eclipse.xtext.xtend2.xtend2.XtendAnnotationTarget;
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 
-import org.eclipse.xtext.xtend2.xtend2.impl.XtendClassImplCustom;
+import org.eclipse.xtext.xtend2.xtend2.impl.XtendClassImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,7 +39,7 @@ import org.eclipse.xtext.xtend2.xtend2.impl.XtendClassImplCustom;
  *
  * @generated
  */
-public class ExampleGroupImpl extends XtendClassImplCustom implements ExampleGroup
+public class ExampleGroupImpl extends XtendClassImpl implements ExampleGroup
 {
 	/**
 	 * The cached value of the '{@link #getAnnotationInfo() <em>Annotation Info</em>}' containment reference.

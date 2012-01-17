@@ -1,13 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2011 Sebastian Benz.
+ * Copyright (c) 2012 BMW Car IT and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- * Sebastian Benz - initial API and implementation
- ******************************************************************************/
+ *******************************************************************************/
 package de.bmw.carit.jnario.ui.editor;
 
 import static de.bmw.carit.jnario.ui.editor.TaskTokenTypeToPartitionTypeMapper.NONE_CODE_PARTITION;

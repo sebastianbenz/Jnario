@@ -24,6 +24,9 @@ import de.bmw.carit.jnario.runner.Contains;
 import de.bmw.carit.jnario.runner.ExampleGroupRunner;
 import de.bmw.carit.jnario.runner.Named;
 
+/**
+ * @author Sebastian Benz
+ */
 @SuppressWarnings({"unchecked", "restriction"})
 public class ExampleGroupRunnerTest {
 	

@@ -4,6 +4,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.util.SimpleAttributeResolver;
 
 import com.google.common.base.Predicate;
+
+/**
+ * @author Sebastian Benz
+ */
 public class Predicates2 {
 
 	public static <T extends EObject> Predicate<T> nameIs(final String expected) {

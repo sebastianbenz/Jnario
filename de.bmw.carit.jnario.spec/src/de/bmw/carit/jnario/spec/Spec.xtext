@@ -1,4 +1,3 @@
-
 grammar de.bmw.carit.jnario.spec.Spec with org.eclipse.xtext.xtend2.Xtend2
 
 import "http://www.bmw.de/carit/jnario/spec/Spec" 
@@ -6,8 +5,8 @@ import "http://www.eclipse.org/xtext/Xtend2" as xtend
 import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
 
-
-SpecFile returns xtend::XtendFile: 
+ 
+SpecFile returns xtend::XtendFile:
 {SpecFile}
 ('package' package=QualifiedName)? 
 	imports+=Import*
@@ -86,9 +85,9 @@ XLiteral returns xbase::XExpression:
 	XNullLiteral |
 	XStringLiteral |
 	XTypeLiteral |
-	XAssert
+	XAssert 
 ;
-	 
+
 XAssert returns xbase::XExpression: 
 	{Assertion}
 	'assert' expression=XExpression;

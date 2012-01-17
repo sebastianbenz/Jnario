@@ -5,7 +5,9 @@ import static de.bmw.carit.jnario.common.test.util.ResultMatchers.*
 
 import static extension de.bmw.carit.jnario.spec.tests.util.SpecExecutor.*
 
-
+/**
+ * @author Sebastian Benz
+ */
 describe "Exception" {
  
 		it "should except exceptions for examples"{

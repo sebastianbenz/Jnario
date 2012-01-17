@@ -25,7 +25,9 @@ import static de.bmw.carit.jnario.spec.jvmmodel.Constants.*
 import static com.google.common.collect.Iterators.*
 import static org.eclipse.xtext.EcoreUtil2.*
 import de.bmw.carit.jnario.spec.naming.ExampleNameProvider
-
+/**
+ * @author Sebastian Benz
+ */
 class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
 
 	@Inject extension ExtendedJvmTypesBuilder

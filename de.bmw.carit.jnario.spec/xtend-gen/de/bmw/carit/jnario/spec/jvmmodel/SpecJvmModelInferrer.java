@@ -43,6 +43,9 @@ import org.eclipse.xtext.xtend2.xtend2.XtendFunction;
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 import org.junit.runner.RunWith;
 
+/**
+ * @author Sebastian Benz
+ */
 @SuppressWarnings("all")
 public class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
   @Inject

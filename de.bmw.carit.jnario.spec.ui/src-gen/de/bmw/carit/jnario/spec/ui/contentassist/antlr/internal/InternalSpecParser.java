@@ -74856,8 +74856,8 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
     static final String DFA123_specialS =
         "\1\uffff\1\0\117\uffff}>";
     static final String[] DFA123_transitionS = {
-            "\11\2\6\uffff\3\2\1\uffff\25\2\1\uffff\2\2\1\1\2\2\3\uffff\3"+
-            "\2\4\uffff\1\2\2\uffff\3\2\4\uffff\16\2\1\uffff\11\2\1\uffff"+
+            "\11\2\6\uffff\3\2\1\uffff\25\2\1\uffff\2\2\1\1\2\2\3\uffff"+
+            "\3\2\4\uffff\1\2\2\uffff\3\2\4\uffff\16\2\1\uffff\11\2\1\uffff"+
             "\2\2\1\uffff\4\2\1\uffff\2\2\1\uffff\2\2",
             "\1\uffff",
             "",
@@ -75311,8 +75311,8 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
     static final String DFA147_specialS =
         "\1\uffff\1\0\117\uffff}>";
     static final String[] DFA147_transitionS = {
-            "\11\2\6\uffff\3\2\1\uffff\25\2\1\uffff\2\2\1\1\2\2\3\uffff\3"+
-            "\2\4\uffff\1\2\2\uffff\3\2\4\uffff\16\2\1\uffff\11\2\1\uffff"+
+            "\11\2\6\uffff\3\2\1\uffff\25\2\1\uffff\2\2\1\1\2\2\3\uffff"+
+            "\3\2\4\uffff\1\2\2\uffff\3\2\4\uffff\16\2\1\uffff\11\2\1\uffff"+
             "\2\2\1\uffff\4\2\1\uffff\2\2\1\uffff\2\2",
             "\1\uffff",
             "",
@@ -75780,9 +75780,9 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
     static final String DFA157_acceptS =
         "\35\uffff\1\2\62\uffff\1\1";
     static final String DFA157_specialS =
-        "\1\uffff\1\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1\14"+
-        "\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\1\30\1\31"+
-        "\1\32\1\33\64\uffff}>";
+        "\1\uffff\1\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1"+
+        "\14\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\1\30"+
+        "\1\31\1\32\1\33\64\uffff}>";
     static final String[] DFA157_transitionS = {
             "\1\20\1\1\1\21\1\22\4\35\1\16\6\uffff\3\35\1\uffff\1\12\1\35"+
             "\1\2\5\35\1\11\2\35\1\5\1\4\4\35\1\3\2\35\1\14\1\uffff\1\7\1"+

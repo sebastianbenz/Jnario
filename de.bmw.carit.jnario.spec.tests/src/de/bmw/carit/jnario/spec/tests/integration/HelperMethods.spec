@@ -4,7 +4,9 @@ import static org.junit.Assert.*
 import static de.bmw.carit.jnario.spec.tests.util.SpecExecutor.*
 import static de.bmw.carit.jnario.common.test.util.ResultMatchers.*
 import static org.hamcrest.CoreMatchers.*
-
+/**
+ * @author Sebastian Benz
+ */
 describe "HelperMethods" {
  
 	it "'should' wraps org.junit.Assert#assertThat"{

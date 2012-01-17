@@ -5,16 +5,21 @@
       version="0.1.0.qualifier"
       provider-name="BMW Car IT">
 
-   <description url="http://www.example.com/description">
-      [Enter Feature Description here.]
+   <description>
+      %description
    </description>
 
-   <copyright url="http://www.example.com/copyright">
-      [Enter Copyright Description here.]
+   <copyright>
+      Copyright (c) 2012 BMW Car IT (http://www.bmw-carit.de) and others.
+
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License
+v1.0 which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html Description here.
    </copyright>
 
-   <license url="http://www.example.com/license">
-      [Enter License Description here.]
+   <license url="http://www.eclipse.org/legal/epl-v10.html">
+      %license
    </license>
 
    <requires>
@@ -29,12 +34,20 @@
       <import plugin="org.eclipse.xtext.xbase.lib"/>
       <import plugin="org.eclipse.xtext.xtend2.lib"/>
       <import plugin="org.junit" version="4.8.2" match="greaterOrEqual"/>
-      <import plugin="org.apache.commons.logging"/>
-      <import plugin="com.google.collect" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtext.xtend2"/>
-      <import plugin="org.eclipse.xtext" version="2.1.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.xtend2" version="2.1.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.commons.logging"/>
+      <import plugin="org.eclipse.xtext" version="2.1.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.xbase.lib" version="2.1.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtend2.lib" version="2.2.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.xbase" version="2.1.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.ui" version="2.1.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jdt.core"/>
+      <import plugin="org.eclipse.xtext.builder" version="2.1.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jdt.junit"/>
+      <import plugin="org.eclipse.debug.ui"/>
+      <import plugin="org.eclipse.pde.ui"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.xtext.junit4" version="2.1.1" match="greaterOrEqual"/>
    </requires>
 
    <plugin
