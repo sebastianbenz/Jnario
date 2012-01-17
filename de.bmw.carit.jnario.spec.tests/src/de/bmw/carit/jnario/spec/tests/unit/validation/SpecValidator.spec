@@ -1,4 +1,4 @@
-package bootstrap
+package de.bmw.carit.jnario.spec.tests.unit.validation
 
 import static de.bmw.carit.jnario.tests.util.Query.*
 import de.bmw.carit.jnario.runner.InstantiateWith

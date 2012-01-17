@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.osgi.framework.adaptor.BundleData;
 import org.eclipse.osgi.framework.internal.core.AbstractBundle;
 import org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader;
-import org.eclipse.xtext.builder.internal.Activator;
 import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
@@ -46,6 +45,8 @@ import org.osgi.framework.BundleException;
 import com.google.common.base.Joiner;
 import com.google.common.base.Predicate;
 import com.google.inject.Inject;
+
+import de.bmw.carit.jnario.Activator;
 
 @SuppressWarnings("restriction")
 public abstract class BehaviorExecutor {
@@ -135,8 +136,8 @@ public abstract class BehaviorExecutor {
 			generateJava(object);
 			return runExamples(object);
 		} catch (Exception e) {
-			validate(object);
 			e.printStackTrace();
+			validate(object);
 			fail(e.getMessage());
 			return null; // not reachable
 		} finally {
@@ -188,6 +189,7 @@ public abstract class BehaviorExecutor {
 		classPathAndJavaFiles[0] = "-classpath";
 		classPathAndJavaFiles[1] = classPathEntries;
 		System.arraycopy(args, 0, classPathAndJavaFiles, 2, args.length);
+		System.out.println(Joiner.on("\n").join(getClassPath()));
 		return classPathAndJavaFiles;
 	}
 
