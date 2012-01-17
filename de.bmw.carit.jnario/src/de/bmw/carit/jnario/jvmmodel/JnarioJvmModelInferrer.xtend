@@ -147,7 +147,7 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 					for(and: when.and){
 						order = transform(and, it, order)
 					}
-				}else{
+				}else if(step instanceof Then){
 					var then = step as Then
 					for(and: then.and){
 						order = transform(and, it, order)
@@ -156,7 +156,7 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 			}
 			
 			if(!scenario.examples.empty){
-				val exampleClasses = scenario.generateInnerClasses(jnario, it)
+				val exampleClasses = scenario.generateExampleClasses(jnario, it)
 				if(!exampleClasses.empty){
 					annotations += scenario.toAnnotation(typeof(Contains), exampleClasses);
 				}
@@ -194,7 +194,7 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 		}
 	}
 	
-	def generateInnerClasses(Scenario scenario, Jnario jnario, JvmGenericType inferredJvmType){
+	def generateExampleClasses(Scenario scenario, Jnario jnario, JvmGenericType inferredJvmType){
 		var exampleTable = 1
 		val List<JvmGenericType> exampleClasses = newArrayList()
 		for(example: scenario.examples){
@@ -202,7 +202,7 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 			var fields = example.heading.parts
 			var exampleNumber = 1
 			for(row: example.rows){
-				exampleClasses += scenario.createInnerClass(jnario, row, fields, exampleTable, exampleNumber, inferredJvmType)
+				exampleClasses += scenario.createExampleClass(jnario, row, fields, exampleTable, exampleNumber, inferredJvmType)
 				exampleNumber = exampleNumber + 1
 			}
 			exampleTable = exampleTable + 1
@@ -210,7 +210,7 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 		exampleClasses
 	}
 	
-	def createInnerClass(Scenario scenario, Jnario jnario, ExampleRow row, EList<XtendField> fields, int exampleTable, int exampleNumber, JvmGenericType inferredJvmType){
+	def createExampleClass(Scenario scenario, Jnario jnario, ExampleRow row, EList<XtendField> fields, int exampleTable, int exampleNumber, JvmGenericType inferredJvmType){
 		val className = "ExampleTable" + exampleTable + "Example" + exampleNumber
 		
 		row.toClass(className)[

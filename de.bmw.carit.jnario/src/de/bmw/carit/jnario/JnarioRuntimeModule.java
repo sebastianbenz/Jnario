@@ -17,6 +17,7 @@ import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
+import org.eclipse.xtext.validation.IResourceValidator;
 import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
 import org.eclipse.xtext.xbase.featurecalls.IdentifiableSimpleNameProvider;
@@ -31,7 +32,6 @@ import org.eclipse.xtext.xtend2.compiler.Xtend2OutputConfigurationProvider;
 import org.eclipse.xtext.xtend2.featurecalls.Xtend2IdentifiableSimpleNameProvider;
 import org.eclipse.xtext.xtend2.jvmmodel.DispatchUtil;
 import org.eclipse.xtext.xtend2.jvmmodel.IXtend2JvmAssociations;
-import org.eclipse.xtext.xtend2.naming.Xtend2QualifiedNameProvider;
 import org.eclipse.xtext.xtend2.resource.Xtend2Resource;
 import org.eclipse.xtext.xtend2.resource.Xtend2ResourceDescriptionStrategy;
 import org.eclipse.xtext.xtend2.resource.XtendEObjectAtOffsetHelper;
@@ -51,7 +51,9 @@ import de.bmw.carit.jnario.common.scoping.JnarioExtensionClassNameProvider;
 import de.bmw.carit.jnario.generator.JnarioCompiler;
 import de.bmw.carit.jnario.jvmmodel.JnarioFeatureCallToJavaMapping;
 import de.bmw.carit.jnario.jvmmodel.JnarioJvmModelInferrer;
+import de.bmw.carit.jnario.naming.JnarioQualifiedNameProvider;
 import de.bmw.carit.jnario.validation.JnarioClasspathBasedChecks;
+import de.bmw.carit.jnario.validation.JnarioResourceValidator;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
@@ -100,11 +102,6 @@ public class JnarioRuntimeModule extends de.bmw.carit.jnario.AbstractJnarioRunti
 		return JnarioJvmModelInferrer.class;
 	}
 
-	@Override
-	public Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider() {
-		return Xtend2QualifiedNameProvider.class;
-	}
-	
 	public Class <? extends IDefaultResourceDescriptionStrategy> bindIDefaultResourceDescriptionStrategy() {
 		return Xtend2ResourceDescriptionStrategy.class;
 	}
@@ -140,6 +137,15 @@ public class JnarioRuntimeModule extends de.bmw.carit.jnario.AbstractJnarioRunti
 	
 	public Class<? extends DispatchUtil> bindDispatchUtil(){
 		return JnarioDispatchUtil.class;
+	}
+	
+	public Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider(){
+		return JnarioQualifiedNameProvider.class;
+	}
+	
+	
+	public Class<? extends IResourceValidator> bindIResourceValidator(){
+		return JnarioResourceValidator.class;
 	}
 	
 }

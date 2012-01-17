@@ -6,6 +6,8 @@
  */
 package de.bmw.carit.jnario.jnario;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 
 /**
@@ -18,6 +20,7 @@ import org.eclipse.xtext.xtend2.xtend2.XtendMember;
  * <ul>
  *   <li>{@link de.bmw.carit.jnario.jnario.Step#getName <em>Name</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.jnario.Step#getCode <em>Code</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.jnario.Step#getAnd <em>And</em>}</li>
  * </ul>
  * </p>
  *
@@ -78,5 +81,21 @@ public interface Step extends XtendMember
 	 * @generated
 	 */
 	void setCode(Code value);
+
+	/**
+	 * Returns the value of the '<em><b>And</b></em>' containment reference list.
+	 * The list contents are of type {@link de.bmw.carit.jnario.jnario.And}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>And</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>And</em>' containment reference list.
+	 * @see de.bmw.carit.jnario.jnario.JnarioPackage#getStep_And()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<And> getAnd();
 
 } // Step

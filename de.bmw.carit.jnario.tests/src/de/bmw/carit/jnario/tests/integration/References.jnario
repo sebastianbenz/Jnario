@@ -1,0 +1,21 @@
+package de.bmw.carit.jnario.tests
+
+import static extension de.bmw.carit.jnario.tests.util.JnarioExecutor.*
+import static de.bmw.carit.jnario.common.test.util.ResultMatchers.*
+
+Feature: References for steps
+
+	Scenario: Defining a step and using it in the same scenario
+		public String jnarioFile
+		Given a scenario with reused steps
+			jnarioFile = "
+				package bootstrap
+				Feature:
+					Scenario:
+						Given step
+							var x = 3
+						Given step
+				"
+		When I run it it should pass
+			jnarioFile.execute.should.be(successful)
+	

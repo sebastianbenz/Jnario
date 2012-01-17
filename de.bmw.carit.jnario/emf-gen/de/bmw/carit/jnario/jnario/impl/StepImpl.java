@@ -6,19 +6,27 @@
  */
 package de.bmw.carit.jnario.jnario.impl;
 
+import de.bmw.carit.jnario.jnario.And;
 import de.bmw.carit.jnario.jnario.Code;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
 import de.bmw.carit.jnario.jnario.Step;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.xtext.xtend2.xtend2.impl.XtendMemberImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.eclipse.xtext.xtend2.xtend2.impl.XtendMemberImplCustom;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,12 +37,13 @@ import org.eclipse.xtext.xtend2.xtend2.impl.XtendMemberImpl;
  * <ul>
  *   <li>{@link de.bmw.carit.jnario.jnario.impl.StepImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.jnario.impl.StepImpl#getCode <em>Code</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.jnario.impl.StepImpl#getAnd <em>And</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class StepImpl extends XtendMemberImpl implements Step
+public class StepImpl extends XtendMemberImplCustom implements Step
 {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -65,6 +74,16 @@ public class StepImpl extends XtendMemberImpl implements Step
 	 * @ordered
 	 */
 	protected Code code;
+
+	/**
+	 * The cached value of the '{@link #getAnd() <em>And</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAnd()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<And> and;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -163,6 +182,20 @@ public class StepImpl extends XtendMemberImpl implements Step
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<And> getAnd()
+	{
+		if (and == null)
+		{
+			and = new EObjectContainmentEList<And>(And.class, this, JnarioPackage.STEP__AND);
+		}
+		return and;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
 	{
@@ -170,6 +203,8 @@ public class StepImpl extends XtendMemberImpl implements Step
 		{
 			case JnarioPackage.STEP__CODE:
 				return basicSetCode(null, msgs);
+			case JnarioPackage.STEP__AND:
+				return ((InternalEList<?>)getAnd()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -188,6 +223,8 @@ public class StepImpl extends XtendMemberImpl implements Step
 				return getName();
 			case JnarioPackage.STEP__CODE:
 				return getCode();
+			case JnarioPackage.STEP__AND:
+				return getAnd();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -197,6 +234,7 @@ public class StepImpl extends XtendMemberImpl implements Step
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue)
 	{
@@ -207,6 +245,10 @@ public class StepImpl extends XtendMemberImpl implements Step
 				return;
 			case JnarioPackage.STEP__CODE:
 				setCode((Code)newValue);
+				return;
+			case JnarioPackage.STEP__AND:
+				getAnd().clear();
+				getAnd().addAll((Collection<? extends And>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -228,6 +270,9 @@ public class StepImpl extends XtendMemberImpl implements Step
 			case JnarioPackage.STEP__CODE:
 				setCode((Code)null);
 				return;
+			case JnarioPackage.STEP__AND:
+				getAnd().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -246,6 +291,8 @@ public class StepImpl extends XtendMemberImpl implements Step
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case JnarioPackage.STEP__CODE:
 				return code != null;
+			case JnarioPackage.STEP__AND:
+				return and != null && !and.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

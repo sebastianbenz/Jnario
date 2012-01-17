@@ -6,16 +6,19 @@
  */
 package de.bmw.carit.jnario.jnario.impl;
 
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.xtext.xtend2.xtend2.impl.XtendClassImplCustom;
-
 import de.bmw.carit.jnario.jnario.Background;
 import de.bmw.carit.jnario.jnario.Feature;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.xtext.xtend2.xtend2.impl.XtendClassImplCustom;
 
 /**
  * <!-- begin-user-doc -->

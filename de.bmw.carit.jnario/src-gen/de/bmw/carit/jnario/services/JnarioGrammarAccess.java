@@ -72,48 +72,57 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Feature");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cFeatureAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameFEATURE_TEXTTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Assignment cDescriptionAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cDescriptionDESCRIPTIONParserRuleCall_2_0 = (RuleCall)cDescriptionAssignment_2.eContents().get(0);
-		private final Assignment cBackgroundAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cBackgroundBackgroundParserRuleCall_3_0 = (RuleCall)cBackgroundAssignment_3.eContents().get(0);
-		private final Assignment cMembersAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cMembersScenarioParserRuleCall_4_0 = (RuleCall)cMembersAssignment_4.eContents().get(0);
+		private final Assignment cAnnotationsAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cAnnotationsXAnnotationParserRuleCall_1_0 = (RuleCall)cAnnotationsAssignment_1.eContents().get(0);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameFEATURE_TEXTTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Assignment cDescriptionAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cDescriptionDESCRIPTIONParserRuleCall_3_0 = (RuleCall)cDescriptionAssignment_3.eContents().get(0);
+		private final Assignment cBackgroundAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cBackgroundBackgroundParserRuleCall_4_0 = (RuleCall)cBackgroundAssignment_4.eContents().get(0);
+		private final Assignment cMembersAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cMembersScenarioParserRuleCall_5_0 = (RuleCall)cMembersAssignment_5.eContents().get(0);
 		
 		//Feature returns xtend::XtendClass:
-		//	{Feature} name=FEATURE_TEXT description=DESCRIPTION? background=Background? members+=Scenario*;
+		//	{Feature} annotations+=XAnnotation* name=FEATURE_TEXT description=DESCRIPTION? background=Background?
+		//	members+=Scenario*;
 		public ParserRule getRule() { return rule; }
 
-		//{Feature} name=FEATURE_TEXT description=DESCRIPTION? background=Background? members+=Scenario*
+		//{Feature} annotations+=XAnnotation* name=FEATURE_TEXT description=DESCRIPTION? background=Background? members+=Scenario*
 		public Group getGroup() { return cGroup; }
 
 		//{Feature}
 		public Action getFeatureAction_0() { return cFeatureAction_0; }
 
+		//annotations+=XAnnotation*
+		public Assignment getAnnotationsAssignment_1() { return cAnnotationsAssignment_1; }
+
+		//XAnnotation
+		public RuleCall getAnnotationsXAnnotationParserRuleCall_1_0() { return cAnnotationsXAnnotationParserRuleCall_1_0; }
+
 		//name=FEATURE_TEXT
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 
 		//FEATURE_TEXT
-		public RuleCall getNameFEATURE_TEXTTerminalRuleCall_1_0() { return cNameFEATURE_TEXTTerminalRuleCall_1_0; }
+		public RuleCall getNameFEATURE_TEXTTerminalRuleCall_2_0() { return cNameFEATURE_TEXTTerminalRuleCall_2_0; }
 
 		//description=DESCRIPTION?
-		public Assignment getDescriptionAssignment_2() { return cDescriptionAssignment_2; }
+		public Assignment getDescriptionAssignment_3() { return cDescriptionAssignment_3; }
 
 		//DESCRIPTION
-		public RuleCall getDescriptionDESCRIPTIONParserRuleCall_2_0() { return cDescriptionDESCRIPTIONParserRuleCall_2_0; }
+		public RuleCall getDescriptionDESCRIPTIONParserRuleCall_3_0() { return cDescriptionDESCRIPTIONParserRuleCall_3_0; }
 
 		//background=Background?
-		public Assignment getBackgroundAssignment_3() { return cBackgroundAssignment_3; }
+		public Assignment getBackgroundAssignment_4() { return cBackgroundAssignment_4; }
 
 		//Background
-		public RuleCall getBackgroundBackgroundParserRuleCall_3_0() { return cBackgroundBackgroundParserRuleCall_3_0; }
+		public RuleCall getBackgroundBackgroundParserRuleCall_4_0() { return cBackgroundBackgroundParserRuleCall_4_0; }
 
 		//members+=Scenario*
-		public Assignment getMembersAssignment_4() { return cMembersAssignment_4; }
+		public Assignment getMembersAssignment_5() { return cMembersAssignment_5; }
 
 		//Scenario
-		public RuleCall getMembersScenarioParserRuleCall_4_0() { return cMembersScenarioParserRuleCall_4_0; }
+		public RuleCall getMembersScenarioParserRuleCall_5_0() { return cMembersScenarioParserRuleCall_5_0; }
 	}
 
 	public class DESCRIPTIONElements extends AbstractParserRuleElementFinder {
@@ -143,33 +152,37 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	public class BackgroundElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Background");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cBACKGROUND_TEXTTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final Assignment cMembersAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cMembersMemberParserRuleCall_1_0 = (RuleCall)cMembersAssignment_1.eContents().get(0);
-		private final Assignment cStepsAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cStepsGivenParserRuleCall_2_0 = (RuleCall)cStepsAssignment_2.eContents().get(0);
+		private final Action cBackgroundAction_0 = (Action)cGroup.eContents().get(0);
+		private final RuleCall cBACKGROUND_TEXTTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Assignment cMembersAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cMembersMemberParserRuleCall_2_0 = (RuleCall)cMembersAssignment_2.eContents().get(0);
+		private final Assignment cStepsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cStepsGivenStepsParserRuleCall_3_0 = (RuleCall)cStepsAssignment_3.eContents().get(0);
 		
 		//Background:
-		//	BACKGROUND_TEXT members+=Member* steps+=Given;
+		//	{Background} BACKGROUND_TEXT members+=Member* steps+=GivenSteps*;
 		public ParserRule getRule() { return rule; }
 
-		//BACKGROUND_TEXT members+=Member* steps+=Given
+		//{Background} BACKGROUND_TEXT members+=Member* steps+=GivenSteps*
 		public Group getGroup() { return cGroup; }
 
+		//{Background}
+		public Action getBackgroundAction_0() { return cBackgroundAction_0; }
+
 		//BACKGROUND_TEXT
-		public RuleCall getBACKGROUND_TEXTTerminalRuleCall_0() { return cBACKGROUND_TEXTTerminalRuleCall_0; }
+		public RuleCall getBACKGROUND_TEXTTerminalRuleCall_1() { return cBACKGROUND_TEXTTerminalRuleCall_1; }
 
 		//members+=Member*
-		public Assignment getMembersAssignment_1() { return cMembersAssignment_1; }
+		public Assignment getMembersAssignment_2() { return cMembersAssignment_2; }
 
 		//Member
-		public RuleCall getMembersMemberParserRuleCall_1_0() { return cMembersMemberParserRuleCall_1_0; }
+		public RuleCall getMembersMemberParserRuleCall_2_0() { return cMembersMemberParserRuleCall_2_0; }
 
-		//steps+=Given
-		public Assignment getStepsAssignment_2() { return cStepsAssignment_2; }
+		//steps+=GivenSteps*
+		public Assignment getStepsAssignment_3() { return cStepsAssignment_3; }
 
-		//Given
-		public RuleCall getStepsGivenParserRuleCall_2_0() { return cStepsGivenParserRuleCall_2_0; }
+		//GivenSteps
+		public RuleCall getStepsGivenStepsParserRuleCall_3_0() { return cStepsGivenStepsParserRuleCall_3_0; }
 	}
 
 	public class ScenarioElements extends AbstractParserRuleElementFinder {
@@ -181,19 +194,25 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cMembersAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cMembersMemberParserRuleCall_2_0 = (RuleCall)cMembersAssignment_2.eContents().get(0);
 		private final Assignment cStepsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cStepsGivenParserRuleCall_3_0 = (RuleCall)cStepsAssignment_3.eContents().get(0);
+		private final RuleCall cStepsGivenStepsParserRuleCall_3_0 = (RuleCall)cStepsAssignment_3.eContents().get(0);
 		private final Assignment cStepsAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cStepsWhenParserRuleCall_4_0 = (RuleCall)cStepsAssignment_4.eContents().get(0);
+		private final Alternatives cStepsAlternatives_4_0 = (Alternatives)cStepsAssignment_4.eContents().get(0);
+		private final RuleCall cStepsWhenParserRuleCall_4_0_0 = (RuleCall)cStepsAlternatives_4_0.eContents().get(0);
+		private final RuleCall cStepsWhenRefParserRuleCall_4_0_1 = (RuleCall)cStepsAlternatives_4_0.eContents().get(1);
 		private final Assignment cStepsAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cStepsThenParserRuleCall_5_0 = (RuleCall)cStepsAssignment_5.eContents().get(0);
+		private final Alternatives cStepsAlternatives_5_0 = (Alternatives)cStepsAssignment_5.eContents().get(0);
+		private final RuleCall cStepsThenParserRuleCall_5_0_0 = (RuleCall)cStepsAlternatives_5_0.eContents().get(0);
+		private final RuleCall cStepsThenRefParserRuleCall_5_0_1 = (RuleCall)cStepsAlternatives_5_0.eContents().get(1);
 		private final Assignment cExamplesAssignment_6 = (Assignment)cGroup.eContents().get(6);
 		private final RuleCall cExamplesExampleTableParserRuleCall_6_0 = (RuleCall)cExamplesAssignment_6.eContents().get(0);
 		
 		//Scenario returns xtend::XtendMember:
-		//	{Scenario} name=SCENARIO_TEXT members+=Member* steps+=Given? steps+=When? steps+=Then? examples+=ExampleTable*;
+		//	{Scenario} name=SCENARIO_TEXT members+=Member* steps+=GivenSteps* steps+=(When | WhenRef)? steps+=(Then | ThenRef)*
+		//	examples+=ExampleTable*;
 		public ParserRule getRule() { return rule; }
 
-		//{Scenario} name=SCENARIO_TEXT members+=Member* steps+=Given? steps+=When? steps+=Then? examples+=ExampleTable*
+		//{Scenario} name=SCENARIO_TEXT members+=Member* steps+=GivenSteps* steps+=(When | WhenRef)? steps+=(Then | ThenRef)*
+		//examples+=ExampleTable*
 		public Group getGroup() { return cGroup; }
 
 		//{Scenario}
@@ -211,23 +230,35 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		//Member
 		public RuleCall getMembersMemberParserRuleCall_2_0() { return cMembersMemberParserRuleCall_2_0; }
 
-		//steps+=Given?
+		//steps+=GivenSteps*
 		public Assignment getStepsAssignment_3() { return cStepsAssignment_3; }
 
-		//Given
-		public RuleCall getStepsGivenParserRuleCall_3_0() { return cStepsGivenParserRuleCall_3_0; }
+		//GivenSteps
+		public RuleCall getStepsGivenStepsParserRuleCall_3_0() { return cStepsGivenStepsParserRuleCall_3_0; }
 
-		//steps+=When?
+		//steps+=(When | WhenRef)?
 		public Assignment getStepsAssignment_4() { return cStepsAssignment_4; }
 
-		//When
-		public RuleCall getStepsWhenParserRuleCall_4_0() { return cStepsWhenParserRuleCall_4_0; }
+		//When | WhenRef
+		public Alternatives getStepsAlternatives_4_0() { return cStepsAlternatives_4_0; }
 
-		//steps+=Then?
+		//When
+		public RuleCall getStepsWhenParserRuleCall_4_0_0() { return cStepsWhenParserRuleCall_4_0_0; }
+
+		//WhenRef
+		public RuleCall getStepsWhenRefParserRuleCall_4_0_1() { return cStepsWhenRefParserRuleCall_4_0_1; }
+
+		//steps+=(Then | ThenRef)*
 		public Assignment getStepsAssignment_5() { return cStepsAssignment_5; }
 
+		//Then | ThenRef
+		public Alternatives getStepsAlternatives_5_0() { return cStepsAlternatives_5_0; }
+
 		//Then
-		public RuleCall getStepsThenParserRuleCall_5_0() { return cStepsThenParserRuleCall_5_0; }
+		public RuleCall getStepsThenParserRuleCall_5_0_0() { return cStepsThenParserRuleCall_5_0_0; }
+
+		//ThenRef
+		public RuleCall getStepsThenRefParserRuleCall_5_0_1() { return cStepsThenRefParserRuleCall_5_0_1; }
 
 		//examples+=ExampleTable*
 		public Assignment getExamplesAssignment_6() { return cExamplesAssignment_6; }
@@ -243,12 +274,16 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cWhenParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cThenParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cAndParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cGivenRefParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cWhenRefParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cThenRefParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
+		private final RuleCall cAndRefParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
 		
 		//Step returns xtend::XtendMember:
-		//	Given | When | Then | And;
+		//	Given | When | Then | And | GivenRef | WhenRef | ThenRef | AndRef;
 		public ParserRule getRule() { return rule; }
 
-		//Given | When | Then | And
+		//Given | When | Then | And | GivenRef | WhenRef | ThenRef | AndRef
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//Given
@@ -262,6 +297,82 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 
 		//And
 		public RuleCall getAndParserRuleCall_3() { return cAndParserRuleCall_3; }
+
+		//GivenRef
+		public RuleCall getGivenRefParserRuleCall_4() { return cGivenRefParserRuleCall_4; }
+
+		//WhenRef
+		public RuleCall getWhenRefParserRuleCall_5() { return cWhenRefParserRuleCall_5; }
+
+		//ThenRef
+		public RuleCall getThenRefParserRuleCall_6() { return cThenRefParserRuleCall_6; }
+
+		//AndRef
+		public RuleCall getAndRefParserRuleCall_7() { return cAndRefParserRuleCall_7; }
+	}
+
+	public class GivenStepsElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "GivenSteps");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cGivenParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cGivenRefParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//GivenSteps returns xtend::XtendMember:
+		//	Given | GivenRef;
+		public ParserRule getRule() { return rule; }
+
+		//Given | GivenRef
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//Given
+		public RuleCall getGivenParserRuleCall_0() { return cGivenParserRuleCall_0; }
+
+		//GivenRef
+		public RuleCall getGivenRefParserRuleCall_1() { return cGivenRefParserRuleCall_1; }
+	}
+
+	public class GivenRefElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "GivenRef");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cGivenRefAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cReferenceAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cReferenceGivenCrossReference_1_0 = (CrossReference)cReferenceAssignment_1.eContents().get(0);
+		private final RuleCall cReferenceGivenGIVEN_TEXTTerminalRuleCall_1_0_1 = (RuleCall)cReferenceGivenCrossReference_1_0.eContents().get(1);
+		private final Assignment cAndAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final Alternatives cAndAlternatives_2_0 = (Alternatives)cAndAssignment_2.eContents().get(0);
+		private final RuleCall cAndAndParserRuleCall_2_0_0 = (RuleCall)cAndAlternatives_2_0.eContents().get(0);
+		private final RuleCall cAndAndRefParserRuleCall_2_0_1 = (RuleCall)cAndAlternatives_2_0.eContents().get(1);
+		
+		//GivenRef returns xtend::XtendMember:
+		//	{GivenRef} reference=[Given|GIVEN_TEXT] and+=(And | AndRef)*;
+		public ParserRule getRule() { return rule; }
+
+		//{GivenRef} reference=[Given|GIVEN_TEXT] and+=(And | AndRef)*
+		public Group getGroup() { return cGroup; }
+
+		//{GivenRef}
+		public Action getGivenRefAction_0() { return cGivenRefAction_0; }
+
+		//reference=[Given|GIVEN_TEXT]
+		public Assignment getReferenceAssignment_1() { return cReferenceAssignment_1; }
+
+		//[Given|GIVEN_TEXT]
+		public CrossReference getReferenceGivenCrossReference_1_0() { return cReferenceGivenCrossReference_1_0; }
+
+		//GIVEN_TEXT
+		public RuleCall getReferenceGivenGIVEN_TEXTTerminalRuleCall_1_0_1() { return cReferenceGivenGIVEN_TEXTTerminalRuleCall_1_0_1; }
+
+		//and+=(And | AndRef)*
+		public Assignment getAndAssignment_2() { return cAndAssignment_2; }
+
+		//And | AndRef
+		public Alternatives getAndAlternatives_2_0() { return cAndAlternatives_2_0; }
+
+		//And
+		public RuleCall getAndAndParserRuleCall_2_0_0() { return cAndAndParserRuleCall_2_0_0; }
+
+		//AndRef
+		public RuleCall getAndAndRefParserRuleCall_2_0_1() { return cAndAndRefParserRuleCall_2_0_1; }
 	}
 
 	public class GivenElements extends AbstractParserRuleElementFinder {
@@ -273,13 +384,15 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cCodeAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cCodeCodeParserRuleCall_2_0 = (RuleCall)cCodeAssignment_2.eContents().get(0);
 		private final Assignment cAndAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cAndAndParserRuleCall_3_0 = (RuleCall)cAndAssignment_3.eContents().get(0);
+		private final Alternatives cAndAlternatives_3_0 = (Alternatives)cAndAssignment_3.eContents().get(0);
+		private final RuleCall cAndAndParserRuleCall_3_0_0 = (RuleCall)cAndAlternatives_3_0.eContents().get(0);
+		private final RuleCall cAndAndRefParserRuleCall_3_0_1 = (RuleCall)cAndAlternatives_3_0.eContents().get(1);
 		
 		//Given returns xtend::XtendMember:
-		//	{Given} name=GIVEN_TEXT code=Code? and+=And*;
+		//	{Given} name=GIVEN_TEXT code=Code and+=(And | AndRef)*;
 		public ParserRule getRule() { return rule; }
 
-		//{Given} name=GIVEN_TEXT code=Code? and+=And*
+		//{Given} name=GIVEN_TEXT code=Code and+=(And | AndRef)*
 		public Group getGroup() { return cGroup; }
 
 		//{Given}
@@ -291,17 +404,67 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		//GIVEN_TEXT
 		public RuleCall getNameGIVEN_TEXTTerminalRuleCall_1_0() { return cNameGIVEN_TEXTTerminalRuleCall_1_0; }
 
-		//code=Code?
+		//code=Code
 		public Assignment getCodeAssignment_2() { return cCodeAssignment_2; }
 
 		//Code
 		public RuleCall getCodeCodeParserRuleCall_2_0() { return cCodeCodeParserRuleCall_2_0; }
 
-		//and+=And*
+		//and+=(And | AndRef)*
 		public Assignment getAndAssignment_3() { return cAndAssignment_3; }
 
+		//And | AndRef
+		public Alternatives getAndAlternatives_3_0() { return cAndAlternatives_3_0; }
+
 		//And
-		public RuleCall getAndAndParserRuleCall_3_0() { return cAndAndParserRuleCall_3_0; }
+		public RuleCall getAndAndParserRuleCall_3_0_0() { return cAndAndParserRuleCall_3_0_0; }
+
+		//AndRef
+		public RuleCall getAndAndRefParserRuleCall_3_0_1() { return cAndAndRefParserRuleCall_3_0_1; }
+	}
+
+	public class WhenRefElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "WhenRef");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cWhenRefAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cReferenceAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cReferenceWhenCrossReference_1_0 = (CrossReference)cReferenceAssignment_1.eContents().get(0);
+		private final RuleCall cReferenceWhenWHEN_TEXTTerminalRuleCall_1_0_1 = (RuleCall)cReferenceWhenCrossReference_1_0.eContents().get(1);
+		private final Assignment cAndAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final Alternatives cAndAlternatives_2_0 = (Alternatives)cAndAssignment_2.eContents().get(0);
+		private final RuleCall cAndAndParserRuleCall_2_0_0 = (RuleCall)cAndAlternatives_2_0.eContents().get(0);
+		private final RuleCall cAndAndRefParserRuleCall_2_0_1 = (RuleCall)cAndAlternatives_2_0.eContents().get(1);
+		
+		//WhenRef returns xtend::XtendMember:
+		//	{WhenRef} reference=[When|WHEN_TEXT] and+=(And | AndRef)*;
+		public ParserRule getRule() { return rule; }
+
+		//{WhenRef} reference=[When|WHEN_TEXT] and+=(And | AndRef)*
+		public Group getGroup() { return cGroup; }
+
+		//{WhenRef}
+		public Action getWhenRefAction_0() { return cWhenRefAction_0; }
+
+		//reference=[When|WHEN_TEXT]
+		public Assignment getReferenceAssignment_1() { return cReferenceAssignment_1; }
+
+		//[When|WHEN_TEXT]
+		public CrossReference getReferenceWhenCrossReference_1_0() { return cReferenceWhenCrossReference_1_0; }
+
+		//WHEN_TEXT
+		public RuleCall getReferenceWhenWHEN_TEXTTerminalRuleCall_1_0_1() { return cReferenceWhenWHEN_TEXTTerminalRuleCall_1_0_1; }
+
+		//and+=(And | AndRef)*
+		public Assignment getAndAssignment_2() { return cAndAssignment_2; }
+
+		//And | AndRef
+		public Alternatives getAndAlternatives_2_0() { return cAndAlternatives_2_0; }
+
+		//And
+		public RuleCall getAndAndParserRuleCall_2_0_0() { return cAndAndParserRuleCall_2_0_0; }
+
+		//AndRef
+		public RuleCall getAndAndRefParserRuleCall_2_0_1() { return cAndAndRefParserRuleCall_2_0_1; }
 	}
 
 	public class WhenElements extends AbstractParserRuleElementFinder {
@@ -313,13 +476,15 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cCodeAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cCodeCodeParserRuleCall_2_0 = (RuleCall)cCodeAssignment_2.eContents().get(0);
 		private final Assignment cAndAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cAndAndParserRuleCall_3_0 = (RuleCall)cAndAssignment_3.eContents().get(0);
+		private final Alternatives cAndAlternatives_3_0 = (Alternatives)cAndAssignment_3.eContents().get(0);
+		private final RuleCall cAndAndParserRuleCall_3_0_0 = (RuleCall)cAndAlternatives_3_0.eContents().get(0);
+		private final RuleCall cAndAndRefParserRuleCall_3_0_1 = (RuleCall)cAndAlternatives_3_0.eContents().get(1);
 		
 		//When returns xtend::XtendMember:
-		//	{When} name=WHEN_TEXT code=Code? and+=And*;
+		//	{When} name=WHEN_TEXT code=Code and+=(And | AndRef)*;
 		public ParserRule getRule() { return rule; }
 
-		//{When} name=WHEN_TEXT code=Code? and+=And*
+		//{When} name=WHEN_TEXT code=Code and+=(And | AndRef)*
 		public Group getGroup() { return cGroup; }
 
 		//{When}
@@ -331,17 +496,67 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		//WHEN_TEXT
 		public RuleCall getNameWHEN_TEXTTerminalRuleCall_1_0() { return cNameWHEN_TEXTTerminalRuleCall_1_0; }
 
-		//code=Code?
+		//code=Code
 		public Assignment getCodeAssignment_2() { return cCodeAssignment_2; }
 
 		//Code
 		public RuleCall getCodeCodeParserRuleCall_2_0() { return cCodeCodeParserRuleCall_2_0; }
 
-		//and+=And*
+		//and+=(And | AndRef)*
 		public Assignment getAndAssignment_3() { return cAndAssignment_3; }
 
+		//And | AndRef
+		public Alternatives getAndAlternatives_3_0() { return cAndAlternatives_3_0; }
+
 		//And
-		public RuleCall getAndAndParserRuleCall_3_0() { return cAndAndParserRuleCall_3_0; }
+		public RuleCall getAndAndParserRuleCall_3_0_0() { return cAndAndParserRuleCall_3_0_0; }
+
+		//AndRef
+		public RuleCall getAndAndRefParserRuleCall_3_0_1() { return cAndAndRefParserRuleCall_3_0_1; }
+	}
+
+	public class ThenRefElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ThenRef");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cThenRefAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cReferenceAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cReferenceThenCrossReference_1_0 = (CrossReference)cReferenceAssignment_1.eContents().get(0);
+		private final RuleCall cReferenceThenTHEN_TEXTTerminalRuleCall_1_0_1 = (RuleCall)cReferenceThenCrossReference_1_0.eContents().get(1);
+		private final Assignment cAndAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final Alternatives cAndAlternatives_2_0 = (Alternatives)cAndAssignment_2.eContents().get(0);
+		private final RuleCall cAndAndParserRuleCall_2_0_0 = (RuleCall)cAndAlternatives_2_0.eContents().get(0);
+		private final RuleCall cAndAndRefParserRuleCall_2_0_1 = (RuleCall)cAndAlternatives_2_0.eContents().get(1);
+		
+		//ThenRef returns xtend::XtendMember:
+		//	{ThenRef} reference=[Then|THEN_TEXT] and+=(And | AndRef)*;
+		public ParserRule getRule() { return rule; }
+
+		//{ThenRef} reference=[Then|THEN_TEXT] and+=(And | AndRef)*
+		public Group getGroup() { return cGroup; }
+
+		//{ThenRef}
+		public Action getThenRefAction_0() { return cThenRefAction_0; }
+
+		//reference=[Then|THEN_TEXT]
+		public Assignment getReferenceAssignment_1() { return cReferenceAssignment_1; }
+
+		//[Then|THEN_TEXT]
+		public CrossReference getReferenceThenCrossReference_1_0() { return cReferenceThenCrossReference_1_0; }
+
+		//THEN_TEXT
+		public RuleCall getReferenceThenTHEN_TEXTTerminalRuleCall_1_0_1() { return cReferenceThenTHEN_TEXTTerminalRuleCall_1_0_1; }
+
+		//and+=(And | AndRef)*
+		public Assignment getAndAssignment_2() { return cAndAssignment_2; }
+
+		//And | AndRef
+		public Alternatives getAndAlternatives_2_0() { return cAndAlternatives_2_0; }
+
+		//And
+		public RuleCall getAndAndParserRuleCall_2_0_0() { return cAndAndParserRuleCall_2_0_0; }
+
+		//AndRef
+		public RuleCall getAndAndRefParserRuleCall_2_0_1() { return cAndAndRefParserRuleCall_2_0_1; }
 	}
 
 	public class ThenElements extends AbstractParserRuleElementFinder {
@@ -353,13 +568,15 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cCodeAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cCodeCodeParserRuleCall_2_0 = (RuleCall)cCodeAssignment_2.eContents().get(0);
 		private final Assignment cAndAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cAndAndParserRuleCall_3_0 = (RuleCall)cAndAssignment_3.eContents().get(0);
+		private final Alternatives cAndAlternatives_3_0 = (Alternatives)cAndAssignment_3.eContents().get(0);
+		private final RuleCall cAndAndParserRuleCall_3_0_0 = (RuleCall)cAndAlternatives_3_0.eContents().get(0);
+		private final RuleCall cAndAndRefParserRuleCall_3_0_1 = (RuleCall)cAndAlternatives_3_0.eContents().get(1);
 		
 		//Then returns xtend::XtendMember:
-		//	{Then} name=THEN_TEXT code=Code? and+=And*;
+		//	{Then} name=THEN_TEXT code=Code and+=(And | AndRef)*;
 		public ParserRule getRule() { return rule; }
 
-		//{Then} name=THEN_TEXT code=Code? and+=And*
+		//{Then} name=THEN_TEXT code=Code and+=(And | AndRef)*
 		public Group getGroup() { return cGroup; }
 
 		//{Then}
@@ -371,17 +588,51 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		//THEN_TEXT
 		public RuleCall getNameTHEN_TEXTTerminalRuleCall_1_0() { return cNameTHEN_TEXTTerminalRuleCall_1_0; }
 
-		//code=Code?
+		//code=Code
 		public Assignment getCodeAssignment_2() { return cCodeAssignment_2; }
 
 		//Code
 		public RuleCall getCodeCodeParserRuleCall_2_0() { return cCodeCodeParserRuleCall_2_0; }
 
-		//and+=And*
+		//and+=(And | AndRef)*
 		public Assignment getAndAssignment_3() { return cAndAssignment_3; }
 
+		//And | AndRef
+		public Alternatives getAndAlternatives_3_0() { return cAndAlternatives_3_0; }
+
 		//And
-		public RuleCall getAndAndParserRuleCall_3_0() { return cAndAndParserRuleCall_3_0; }
+		public RuleCall getAndAndParserRuleCall_3_0_0() { return cAndAndParserRuleCall_3_0_0; }
+
+		//AndRef
+		public RuleCall getAndAndRefParserRuleCall_3_0_1() { return cAndAndRefParserRuleCall_3_0_1; }
+	}
+
+	public class AndRefElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "AndRef");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cAndRefAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cReferenceAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cReferenceAndCrossReference_1_0 = (CrossReference)cReferenceAssignment_1.eContents().get(0);
+		private final RuleCall cReferenceAndAND_TEXTTerminalRuleCall_1_0_1 = (RuleCall)cReferenceAndCrossReference_1_0.eContents().get(1);
+		
+		//AndRef returns xtend::XtendMember:
+		//	{AndRef} reference=[And|AND_TEXT];
+		public ParserRule getRule() { return rule; }
+
+		//{AndRef} reference=[And|AND_TEXT]
+		public Group getGroup() { return cGroup; }
+
+		//{AndRef}
+		public Action getAndRefAction_0() { return cAndRefAction_0; }
+
+		//reference=[And|AND_TEXT]
+		public Assignment getReferenceAssignment_1() { return cReferenceAssignment_1; }
+
+		//[And|AND_TEXT]
+		public CrossReference getReferenceAndCrossReference_1_0() { return cReferenceAndCrossReference_1_0; }
+
+		//AND_TEXT
+		public RuleCall getReferenceAndAND_TEXTTerminalRuleCall_1_0_1() { return cReferenceAndAND_TEXTTerminalRuleCall_1_0_1; }
 	}
 
 	public class AndElements extends AbstractParserRuleElementFinder {
@@ -394,10 +645,10 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cCodeCodeParserRuleCall_2_0 = (RuleCall)cCodeAssignment_2.eContents().get(0);
 		
 		//And returns xtend::XtendMember:
-		//	{And} name=AND_TEXT code=Code?;
+		//	{And} name=AND_TEXT code=Code;
 		public ParserRule getRule() { return rule; }
 
-		//{And} name=AND_TEXT code=Code?
+		//{And} name=AND_TEXT code=Code
 		public Group getGroup() { return cGroup; }
 
 		//{And}
@@ -409,7 +660,7 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		//AND_TEXT
 		public RuleCall getNameAND_TEXTTerminalRuleCall_1_0() { return cNameAND_TEXTTerminalRuleCall_1_0; }
 
-		//code=Code?
+		//code=Code
 		public Assignment getCodeAssignment_2() { return cCodeAssignment_2; }
 
 		//Code
@@ -623,9 +874,14 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	private BackgroundElements pBackground;
 	private ScenarioElements pScenario;
 	private StepElements pStep;
+	private GivenStepsElements pGivenSteps;
+	private GivenRefElements pGivenRef;
 	private GivenElements pGiven;
+	private WhenRefElements pWhenRef;
 	private WhenElements pWhen;
+	private ThenRefElements pThenRef;
 	private ThenElements pThen;
+	private AndRefElements pAndRef;
 	private AndElements pAnd;
 	private CodeElements pCode;
 	private BlockExpressionElements pBlockExpression;
@@ -687,7 +943,8 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Feature returns xtend::XtendClass:
-	//	{Feature} name=FEATURE_TEXT description=DESCRIPTION? background=Background? members+=Scenario*;
+	//	{Feature} annotations+=XAnnotation* name=FEATURE_TEXT description=DESCRIPTION? background=Background?
+	//	members+=Scenario*;
 	public FeatureElements getFeatureAccess() {
 		return (pFeature != null) ? pFeature : (pFeature = new FeatureElements());
 	}
@@ -707,7 +964,7 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Background:
-	//	BACKGROUND_TEXT members+=Member* steps+=Given;
+	//	{Background} BACKGROUND_TEXT members+=Member* steps+=GivenSteps*;
 	public BackgroundElements getBackgroundAccess() {
 		return (pBackground != null) ? pBackground : (pBackground = new BackgroundElements());
 	}
@@ -717,7 +974,8 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Scenario returns xtend::XtendMember:
-	//	{Scenario} name=SCENARIO_TEXT members+=Member* steps+=Given? steps+=When? steps+=Then? examples+=ExampleTable*;
+	//	{Scenario} name=SCENARIO_TEXT members+=Member* steps+=GivenSteps* steps+=(When | WhenRef)? steps+=(Then | ThenRef)*
+	//	examples+=ExampleTable*;
 	public ScenarioElements getScenarioAccess() {
 		return (pScenario != null) ? pScenario : (pScenario = new ScenarioElements());
 	}
@@ -727,7 +985,7 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Step returns xtend::XtendMember:
-	//	Given | When | Then | And;
+	//	Given | When | Then | And | GivenRef | WhenRef | ThenRef | AndRef;
 	public StepElements getStepAccess() {
 		return (pStep != null) ? pStep : (pStep = new StepElements());
 	}
@@ -736,8 +994,28 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		return getStepAccess().getRule();
 	}
 
+	//GivenSteps returns xtend::XtendMember:
+	//	Given | GivenRef;
+	public GivenStepsElements getGivenStepsAccess() {
+		return (pGivenSteps != null) ? pGivenSteps : (pGivenSteps = new GivenStepsElements());
+	}
+	
+	public ParserRule getGivenStepsRule() {
+		return getGivenStepsAccess().getRule();
+	}
+
+	//GivenRef returns xtend::XtendMember:
+	//	{GivenRef} reference=[Given|GIVEN_TEXT] and+=(And | AndRef)*;
+	public GivenRefElements getGivenRefAccess() {
+		return (pGivenRef != null) ? pGivenRef : (pGivenRef = new GivenRefElements());
+	}
+	
+	public ParserRule getGivenRefRule() {
+		return getGivenRefAccess().getRule();
+	}
+
 	//Given returns xtend::XtendMember:
-	//	{Given} name=GIVEN_TEXT code=Code? and+=And*;
+	//	{Given} name=GIVEN_TEXT code=Code and+=(And | AndRef)*;
 	public GivenElements getGivenAccess() {
 		return (pGiven != null) ? pGiven : (pGiven = new GivenElements());
 	}
@@ -746,8 +1024,18 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		return getGivenAccess().getRule();
 	}
 
+	//WhenRef returns xtend::XtendMember:
+	//	{WhenRef} reference=[When|WHEN_TEXT] and+=(And | AndRef)*;
+	public WhenRefElements getWhenRefAccess() {
+		return (pWhenRef != null) ? pWhenRef : (pWhenRef = new WhenRefElements());
+	}
+	
+	public ParserRule getWhenRefRule() {
+		return getWhenRefAccess().getRule();
+	}
+
 	//When returns xtend::XtendMember:
-	//	{When} name=WHEN_TEXT code=Code? and+=And*;
+	//	{When} name=WHEN_TEXT code=Code and+=(And | AndRef)*;
 	public WhenElements getWhenAccess() {
 		return (pWhen != null) ? pWhen : (pWhen = new WhenElements());
 	}
@@ -756,8 +1044,18 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		return getWhenAccess().getRule();
 	}
 
+	//ThenRef returns xtend::XtendMember:
+	//	{ThenRef} reference=[Then|THEN_TEXT] and+=(And | AndRef)*;
+	public ThenRefElements getThenRefAccess() {
+		return (pThenRef != null) ? pThenRef : (pThenRef = new ThenRefElements());
+	}
+	
+	public ParserRule getThenRefRule() {
+		return getThenRefAccess().getRule();
+	}
+
 	//Then returns xtend::XtendMember:
-	//	{Then} name=THEN_TEXT code=Code? and+=And*;
+	//	{Then} name=THEN_TEXT code=Code and+=(And | AndRef)*;
 	public ThenElements getThenAccess() {
 		return (pThen != null) ? pThen : (pThen = new ThenElements());
 	}
@@ -766,8 +1064,18 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		return getThenAccess().getRule();
 	}
 
+	//AndRef returns xtend::XtendMember:
+	//	{AndRef} reference=[And|AND_TEXT];
+	public AndRefElements getAndRefAccess() {
+		return (pAndRef != null) ? pAndRef : (pAndRef = new AndRefElements());
+	}
+	
+	public ParserRule getAndRefRule() {
+		return getAndRefAccess().getRule();
+	}
+
 	//And returns xtend::XtendMember:
-	//	{And} name=AND_TEXT code=Code?;
+	//	{And} name=AND_TEXT code=Code;
 	public AndElements getAndAccess() {
 		return (pAnd != null) ? pAnd : (pAnd = new AndElements());
 	}
@@ -846,66 +1154,6 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		return getExampleCellAccess().getRule();
 	}
 
-	////XMemberFeatureCall returns xbase::XExpression:
-	//
-	////	XPrimaryExpression
-	//
-	////	(=>({xbase::XAssignment.assignable=current} '.' feature=[types::JvmIdentifiableElement|ValidID] OpSingleAssign) value=XAssignment
-	//
-	////	|=>({xbase::XMemberFeatureCall.memberCallTarget=current} feature=[types::JvmIdentifiableElement|ValidID]) memberCallArguments+=XExpression
-	//
-	////	|=>({xbase::XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|spreading?="*.")) 
-	//
-	////		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
-	//
-	////		feature=[types::JvmIdentifiableElement|ValidID] (
-	//
-	////			=>explicitOperationCall?='(' 
-	//
-	////				(
-	//
-	////				    memberCallArguments+=XShortClosure
-	//
-	////				  |	memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-	//
-	////				)? 
-	//
-	////			')')?
-	//
-	////			=>memberCallArguments+=XClosure?
-	//
-	////		)*;
-	//
-	////
-	//
-	////	
-	//
-	////XFeatureCall returns xbase::XExpression:
-	//
-	////	{xbase::XFeatureCall}
-	//
-	////	(=> feature=[types::JvmIdentifiableElement|IdOrSuper]  featureCallArguments+=XExpression
-	//
-	////	|((declaringType=[types::JvmDeclaredType|StaticQualifier])?
-	//
-	////	('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')? 
-	//
-	////	feature=[types::JvmIdentifiableElement|IdOrSuper] 
-	//
-	////	(=>explicitOperationCall?='(' 
-	//
-	////		(
-	//
-	////		    featureCallArguments+=XShortClosure
-	//
-	////		  |	featureCallArguments+=XExpression (',' featureCallArguments+=XExpression)*
-	//
-	////		)? 
-	//
-	////	')')?
-	//
-	////	=>featureCallArguments+=XClosure?));
-	//
 	//terminal FEATURE_TEXT:
 	//	"Feature" COLON MNL;
 	public TerminalRule getFEATURE_TEXTRule() {

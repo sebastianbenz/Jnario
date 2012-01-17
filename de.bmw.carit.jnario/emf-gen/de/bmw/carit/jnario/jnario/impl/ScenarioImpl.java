@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 
-import org.eclipse.xtext.xtend2.xtend2.impl.XtendMemberImpl;
+import org.eclipse.xtext.xtend2.xtend2.impl.XtendMemberImplCustom;
 
 /**
  * <!-- begin-user-doc -->
@@ -46,7 +46,7 @@ import org.eclipse.xtext.xtend2.xtend2.impl.XtendMemberImpl;
  *
  * @generated
  */
-public class ScenarioImpl extends XtendMemberImpl implements Scenario
+public class ScenarioImpl extends XtendMemberImplCustom implements Scenario
 {
 	/**
 	 * The cached value of the '{@link #getExamples() <em>Examples</em>}' containment reference list.

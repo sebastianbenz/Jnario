@@ -37,7 +37,9 @@ public class SemanticHighlightingCalculator extends XbaseHighlightingCalculator 
 
 		@Override
 		public Boolean caseStep(Step object) {
-			highlightFirstWord(object, object.getName());
+			if(object.getName() != null){
+				highlightFirstWord(object, object.getName());
+			}
 			return Boolean.TRUE;
 		}
 		

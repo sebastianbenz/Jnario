@@ -3,6 +3,7 @@ package de.bmw.carit.jnario.serializer;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import de.bmw.carit.jnario.jnario.And;
+import de.bmw.carit.jnario.jnario.AndRef;
 import de.bmw.carit.jnario.jnario.Background;
 import de.bmw.carit.jnario.jnario.Code;
 import de.bmw.carit.jnario.jnario.ExampleCell;
@@ -11,11 +12,14 @@ import de.bmw.carit.jnario.jnario.ExampleRow;
 import de.bmw.carit.jnario.jnario.ExampleTable;
 import de.bmw.carit.jnario.jnario.Feature;
 import de.bmw.carit.jnario.jnario.Given;
+import de.bmw.carit.jnario.jnario.GivenRef;
 import de.bmw.carit.jnario.jnario.Jnario;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
 import de.bmw.carit.jnario.jnario.Scenario;
 import de.bmw.carit.jnario.jnario.Then;
+import de.bmw.carit.jnario.jnario.ThenRef;
 import de.bmw.carit.jnario.jnario.When;
+import de.bmw.carit.jnario.jnario.WhenRef;
 import de.bmw.carit.jnario.services.JnarioGrammarAccess;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmFormalParameter;
@@ -128,6 +132,13 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 					return; 
 				}
 				else break;
+			case JnarioPackage.AND_REF:
+				if(context == grammarAccess.getAndRefRule() ||
+				   context == grammarAccess.getStepRule()) {
+					sequence_AndRef(context, (AndRef) semanticObject); 
+					return; 
+				}
+				else break;
 			case JnarioPackage.BACKGROUND:
 				if(context == grammarAccess.getBackgroundRule()) {
 					sequence_Background(context, (Background) semanticObject); 
@@ -172,8 +183,17 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 				else break;
 			case JnarioPackage.GIVEN:
 				if(context == grammarAccess.getGivenRule() ||
+				   context == grammarAccess.getGivenStepsRule() ||
 				   context == grammarAccess.getStepRule()) {
 					sequence_Given(context, (Given) semanticObject); 
+					return; 
+				}
+				else break;
+			case JnarioPackage.GIVEN_REF:
+				if(context == grammarAccess.getGivenRefRule() ||
+				   context == grammarAccess.getGivenStepsRule() ||
+				   context == grammarAccess.getStepRule()) {
+					sequence_GivenRef(context, (GivenRef) semanticObject); 
 					return; 
 				}
 				else break;
@@ -196,10 +216,24 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 					return; 
 				}
 				else break;
+			case JnarioPackage.THEN_REF:
+				if(context == grammarAccess.getStepRule() ||
+				   context == grammarAccess.getThenRefRule()) {
+					sequence_ThenRef(context, (ThenRef) semanticObject); 
+					return; 
+				}
+				else break;
 			case JnarioPackage.WHEN:
 				if(context == grammarAccess.getStepRule() ||
 				   context == grammarAccess.getWhenRule()) {
 					sequence_When(context, (When) semanticObject); 
+					return; 
+				}
+				else break;
+			case JnarioPackage.WHEN_REF:
+				if(context == grammarAccess.getStepRule() ||
+				   context == grammarAccess.getWhenRefRule()) {
+					sequence_WhenRef(context, (WhenRef) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1290,7 +1324,16 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=AND_TEXT code=Code?)
+	 *     reference=[And|AND_TEXT]
+	 */
+	protected void sequence_AndRef(EObject context, AndRef semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=AND_TEXT code=Code)
 	 */
 	protected void sequence_And(EObject context, And semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1299,7 +1342,7 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (members+=Member* steps+=Given)
+	 *     (members+=Member* steps+=GivenSteps*)
 	 */
 	protected void sequence_Background(EObject context, Background semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1403,7 +1446,7 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=FEATURE_TEXT description=DESCRIPTION? background=Background? members+=Scenario*)
+	 *     (annotations+=XAnnotation* name=FEATURE_TEXT description=DESCRIPTION? background=Background? members+=Scenario*)
 	 */
 	protected void sequence_Feature(EObject context, Feature semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1430,7 +1473,16 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=GIVEN_TEXT code=Code? and+=And*)
+	 *     (reference=[Given|GIVEN_TEXT] (and+=And | and+=AndRef)*)
+	 */
+	protected void sequence_GivenRef(EObject context, GivenRef semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=GIVEN_TEXT code=Code (and+=And | and+=AndRef)*)
 	 */
 	protected void sequence_Given(EObject context, Given semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1736,9 +1788,9 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	 *     (
 	 *         name=SCENARIO_TEXT 
 	 *         members+=Member* 
-	 *         steps+=Given? 
-	 *         steps+=When? 
-	 *         steps+=Then? 
+	 *         steps+=GivenSteps* 
+	 *         (steps+=When | steps+=WhenRef)? 
+	 *         (steps+=Then | steps+=ThenRef)* 
 	 *         examples+=ExampleTable*
 	 *     )
 	 */
@@ -1758,7 +1810,16 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=THEN_TEXT code=Code? and+=And*)
+	 *     (reference=[Then|THEN_TEXT] (and+=And | and+=AndRef)*)
+	 */
+	protected void sequence_ThenRef(EObject context, ThenRef semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=THEN_TEXT code=Code (and+=And | and+=AndRef)*)
 	 */
 	protected void sequence_Then(EObject context, Then semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1767,7 +1828,16 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=WHEN_TEXT code=Code? and+=And*)
+	 *     (reference=[When|WHEN_TEXT] (and+=And | and+=AndRef)*)
+	 */
+	protected void sequence_WhenRef(EObject context, WhenRef semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=WHEN_TEXT code=Code (and+=And | and+=AndRef)*)
 	 */
 	protected void sequence_When(EObject context, When semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

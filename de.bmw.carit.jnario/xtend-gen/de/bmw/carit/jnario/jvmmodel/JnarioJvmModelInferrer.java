@@ -220,8 +220,8 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
             int order = 0;
             if (hasBackground) {
               Background _background_2 = feature.getBackground();
-              EList<Given> _steps = _background_2.getSteps();
-              for (final Given step : _steps) {
+              EList<Step> _steps = _background_2.getSteps();
+              for (final Step step : _steps) {
                 {
                   int _transform = JnarioJvmModelInferrer.this.transform(step, it, order);
                   order = _transform;
@@ -259,12 +259,14 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
                       }
                     }
                   } else {
-                    {
-                      Then then = ((Then) step_1);
-                      EList<And> _and_3 = then.getAnd();
-                      for (final And and_3 : _and_3) {
-                        int _transform_5 = JnarioJvmModelInferrer.this.transform(and_3, it, order);
-                        order = _transform_5;
+                    if ((step_1 instanceof Then)) {
+                      {
+                        Then then = ((Then) step_1);
+                        EList<And> _and_3 = then.getAnd();
+                        for (final And and_3 : _and_3) {
+                          int _transform_5 = JnarioJvmModelInferrer.this.transform(and_3, it, order);
+                          order = _transform_5;
+                        }
                       }
                     }
                   }
@@ -276,8 +278,8 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
             boolean _operator_not_1 = BooleanExtensions.operator_not(_isEmpty);
             if (_operator_not_1) {
               {
-                List<JvmGenericType> _generateInnerClasses = JnarioJvmModelInferrer.this.generateInnerClasses(scenario, jnario, it);
-                final List<JvmGenericType> exampleClasses = _generateInnerClasses;
+                List<JvmGenericType> _generateExampleClasses = JnarioJvmModelInferrer.this.generateExampleClasses(scenario, jnario, it);
+                final List<JvmGenericType> exampleClasses = _generateExampleClasses;
                 boolean _isEmpty_1 = exampleClasses.isEmpty();
                 boolean _operator_not_2 = BooleanExtensions.operator_not(_isEmpty_1);
                 if (_operator_not_2) {
@@ -405,7 +407,7 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
     return _xblockexpression;
   }
   
-  public List<JvmGenericType> generateInnerClasses(final Scenario scenario, final Jnario jnario, final JvmGenericType inferredJvmType) {
+  public List<JvmGenericType> generateExampleClasses(final Scenario scenario, final Jnario jnario, final JvmGenericType inferredJvmType) {
     List<JvmGenericType> _xblockexpression = null;
     {
       int exampleTable = 1;
@@ -421,8 +423,8 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
           EList<ExampleRow> _rows = example.getRows();
           for (final ExampleRow row : _rows) {
             {
-              JvmGenericType _createInnerClass = this.createInnerClass(scenario, jnario, row, fields, exampleTable, exampleNumber, inferredJvmType);
-              CollectionExtensions.<JvmGenericType>operator_add(exampleClasses, _createInnerClass);
+              JvmGenericType _createExampleClass = this.createExampleClass(scenario, jnario, row, fields, exampleTable, exampleNumber, inferredJvmType);
+              CollectionExtensions.<JvmGenericType>operator_add(exampleClasses, _createExampleClass);
               int _operator_plus = IntegerExtensions.operator_plus(exampleNumber, 1);
               exampleNumber = _operator_plus;
             }
@@ -436,7 +438,7 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
     return _xblockexpression;
   }
   
-  public JvmGenericType createInnerClass(final Scenario scenario, final Jnario jnario, final ExampleRow row, final EList<XtendField> fields, final int exampleTable, final int exampleNumber, final JvmGenericType inferredJvmType) {
+  public JvmGenericType createExampleClass(final Scenario scenario, final Jnario jnario, final ExampleRow row, final EList<XtendField> fields, final int exampleTable, final int exampleNumber, final JvmGenericType inferredJvmType) {
     JvmGenericType _xblockexpression = null;
     {
       String _operator_plus = StringExtensions.operator_plus("ExampleTable", Integer.valueOf(exampleTable));

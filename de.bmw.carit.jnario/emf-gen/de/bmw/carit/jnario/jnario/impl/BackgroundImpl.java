@@ -7,8 +7,8 @@
 package de.bmw.carit.jnario.jnario.impl;
 
 import de.bmw.carit.jnario.jnario.Background;
-import de.bmw.carit.jnario.jnario.Given;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
+import de.bmw.carit.jnario.jnario.Step;
 
 import java.util.Collection;
 
@@ -50,7 +50,7 @@ public class BackgroundImpl extends MinimalEObjectImpl.Container implements Back
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Given> steps;
+	protected EList<Step> steps;
 
 	/**
 	 * The cached value of the '{@link #getMembers() <em>Members</em>}' containment reference list.
@@ -88,11 +88,11 @@ public class BackgroundImpl extends MinimalEObjectImpl.Container implements Back
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Given> getSteps()
+	public EList<Step> getSteps()
 	{
 		if (steps == null)
 		{
-			steps = new EObjectContainmentEList<Given>(Given.class, this, JnarioPackage.BACKGROUND__STEPS);
+			steps = new EObjectContainmentEList<Step>(Step.class, this, JnarioPackage.BACKGROUND__STEPS);
 		}
 		return steps;
 	}
@@ -160,7 +160,7 @@ public class BackgroundImpl extends MinimalEObjectImpl.Container implements Back
 		{
 			case JnarioPackage.BACKGROUND__STEPS:
 				getSteps().clear();
-				getSteps().addAll((Collection<? extends Given>)newValue);
+				getSteps().addAll((Collection<? extends Step>)newValue);
 				return;
 			case JnarioPackage.BACKGROUND__MEMBERS:
 				getMembers().clear();

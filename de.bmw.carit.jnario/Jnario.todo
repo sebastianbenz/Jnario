@@ -5,7 +5,6 @@ TODO:
 		- add support for doubles @medium @feature
 		- move de.bmw.carit.jnario.common.test.util.* to test util plugin @medium
 		- run as with right click in jnario files not working yet @low @bug
-		- doesn't work on Birgit machine for specs -> why? @low @bug
 		- build: compiler is not working on a mac @medium @bug
 
 	Grammar:
@@ -16,6 +15,7 @@ TODO:
 	
 	Jnario Generator/Complier:
 		
+		- object variables have to be declared public -> why? @bug @medium
 		- examples over setters? @low @feature
 		- for empty steps no java methods are generated -> no ouput in junit results -> should be displayed @medium @feature
 		- variable declaration in step description should be possible (maybe also code) -> generate into list/map, depending on existing identifier, usage of subject @medium @feature

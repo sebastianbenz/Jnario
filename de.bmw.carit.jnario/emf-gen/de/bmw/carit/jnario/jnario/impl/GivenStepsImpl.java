@@ -6,28 +6,28 @@
  */
 package de.bmw.carit.jnario.jnario.impl;
 
-import de.bmw.carit.jnario.jnario.Given;
+import de.bmw.carit.jnario.jnario.GivenSteps;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
 
 import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Given</b></em>'.
+ * An implementation of the model object '<em><b>Given Steps</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class GivenImpl extends StepImplCustom implements Given
+public class GivenStepsImpl extends StepImplCustom implements GivenSteps
 {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected GivenImpl()
+	protected GivenStepsImpl()
 	{
 		super();
 	}
@@ -40,7 +40,7 @@ public class GivenImpl extends StepImplCustom implements Given
 	@Override
 	protected EClass eStaticClass()
 	{
-		return JnarioPackage.Literals.GIVEN;
+		return JnarioPackage.Literals.GIVEN_STEPS;
 	}
 
-} //GivenImpl
+} //GivenStepsImpl
