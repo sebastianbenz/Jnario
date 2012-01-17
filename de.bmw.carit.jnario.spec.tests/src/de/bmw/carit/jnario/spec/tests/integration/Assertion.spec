@@ -74,7 +74,7 @@ describe "Assertion"{
 	}      
 	 
 	def is(String actual, CharSequence expected){
-		Assert::assertEquals(expected.toString(), actual)
+		Assert::assertEquals(expected.toString().replaceAll("\r", ""), actual.replaceAll("\r", ""))
 	}
  
 	def String errorMessage(Procedures$Procedure1<Boolean> proc){
