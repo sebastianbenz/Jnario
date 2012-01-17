@@ -10,7 +10,6 @@ package de.bmw.carit.jnario.common.test.util;
 import static com.google.common.collect.Iterables.filter;
 import static com.google.common.collect.Lists.newArrayList;
 import static junit.framework.Assert.assertFalse;
-import static junit.framework.Assert.fail;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -137,9 +136,12 @@ public abstract class BehaviorExecutor {
 			return runExamples(object);
 		} catch (Exception e) {
 			e.printStackTrace();
-			validate(object);
-			fail(e.getMessage());
-			return null; // not reachable
+			try{
+				validate(object);
+			}catch (AssertionError ex) {
+				System.err.println(ex.getMessage());
+			}
+			throw new RuntimeException(e);
 		} finally {
 			tempFolder.delete();
 		}
@@ -189,7 +191,6 @@ public abstract class BehaviorExecutor {
 		classPathAndJavaFiles[0] = "-classpath";
 		classPathAndJavaFiles[1] = classPathEntries;
 		System.arraycopy(args, 0, classPathAndJavaFiles, 2, args.length);
-		System.out.println(Joiner.on("\n").join(getClassPath()));
 		return classPathAndJavaFiles;
 	}
 

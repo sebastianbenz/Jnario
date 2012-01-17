@@ -5,19 +5,13 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package de.bmw.carit.jnario.spec.tests.integration;
+package de.bmw.carit.jnario.spec.tests.unit.naming;
 
 import org.junit.runner.RunWith;
 
-import com.google.inject.Singleton;
-
 import de.bmw.carit.jnario.spec.tests.util.SpecTestRunner;
 
-/**
- * @author Sebastian Benz
- */
 @RunWith(SpecTestRunner.class)
-@Singleton
-public class IntegrationTests {
+public class NamingTest {
 
 }

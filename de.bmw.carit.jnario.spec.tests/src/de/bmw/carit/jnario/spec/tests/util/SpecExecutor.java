@@ -7,14 +7,12 @@
  *******************************************************************************/
 package de.bmw.carit.jnario.spec.tests.util;
 
-import static com.google.common.collect.Lists.newArrayList;
 import static org.eclipse.emf.common.util.URI.createURI;
 import static org.junit.Assert.assertNotNull;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.Collections;
-import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -24,10 +22,8 @@ import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.util.StringInputStream;
 import org.eclipse.xtext.validation.IResourceValidator;
-import org.junit.experimental.results.PrintableResult;
 import org.junit.rules.TemporaryFolder;
 import org.junit.runner.Result;
-import org.junit.runner.notification.Failure;
 
 import com.google.inject.Inject;
 import com.google.inject.Injector;
@@ -38,9 +34,8 @@ import de.bmw.carit.jnario.spec.naming.ExampleNameProvider;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 import de.bmw.carit.jnario.spec.spec.SpecFile;
 
+@SuppressWarnings("restriction")
 public class SpecExecutor extends BehaviorExecutor{
-
-
 	
 	private final ExampleNameProvider nameProvider;
 
@@ -82,7 +77,6 @@ public class SpecExecutor extends BehaviorExecutor{
 
 	protected static void setCorrectResourceUri(Resource resource) {
 		SpecFile file = (SpecFile) resource.getContents().get(0);
-//		String packageName = file.getPackage().replaceAll("\\.", "/");
 		String javaClassName = new ExampleNameProvider().toJavaClassName((ExampleGroup) file.getXtendClass());
 		resource.setURI(URI.createFileURI(javaClassName  + ".spec"));
 	}

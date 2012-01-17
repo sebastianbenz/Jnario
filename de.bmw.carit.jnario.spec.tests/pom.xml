@@ -18,11 +18,13 @@
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>${tycho-version}</version>
-	<!--
 				<configuration>
 					<useUIHarness>true</useUIHarness>
+					<explodedBundles> 
+						<!-- Make sure that nested junit.jar can be accessed by PDE/JDT. -->
+						<bundle>org.junit</bundle>
+					</explodedBundles>
 				</configuration>
- -->
 			</plugin>
 		</plugins>
 	</build>
