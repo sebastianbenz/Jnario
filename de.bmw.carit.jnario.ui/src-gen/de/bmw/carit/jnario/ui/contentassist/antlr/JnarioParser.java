@@ -41,12 +41,7 @@ public class JnarioParser extends AbstractContentAssistParser {
 					put(grammarAccess.getScenarioAccess().getStepsAlternatives_5_0(), "rule__Scenario__StepsAlternatives_5_0");
 					put(grammarAccess.getStepAccess().getAlternatives(), "rule__Step__Alternatives");
 					put(grammarAccess.getGivenStepsAccess().getAlternatives(), "rule__GivenSteps__Alternatives");
-					put(grammarAccess.getGivenRefAccess().getAndAlternatives_2_0(), "rule__GivenRef__AndAlternatives_2_0");
-					put(grammarAccess.getGivenAccess().getAndAlternatives_3_0(), "rule__Given__AndAlternatives_3_0");
-					put(grammarAccess.getWhenRefAccess().getAndAlternatives_2_0(), "rule__WhenRef__AndAlternatives_2_0");
-					put(grammarAccess.getWhenAccess().getAndAlternatives_3_0(), "rule__When__AndAlternatives_3_0");
-					put(grammarAccess.getThenRefAccess().getAndAlternatives_2_0(), "rule__ThenRef__AndAlternatives_2_0");
-					put(grammarAccess.getThenAccess().getAndAlternatives_3_0(), "rule__Then__AndAlternatives_3_0");
+					put(grammarAccess.getAndStepAccess().getAlternatives(), "rule__AndStep__Alternatives");
 					put(grammarAccess.getExampleHeadingCellAccess().getAlternatives_0(), "rule__ExampleHeadingCell__Alternatives_0");
 					put(grammarAccess.getExampleCellAccess().getAlternatives_0(), "rule__ExampleCell__Alternatives_0");
 					put(grammarAccess.getImportAccess().getAlternatives_1(), "rule__Import__Alternatives_1");

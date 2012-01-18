@@ -179,6 +179,11 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
 				return createAndRefAdapter();
 			}
 			@Override
+			public Adapter caseAndStep(AndStep object)
+			{
+				return createAndStepAdapter();
+			}
+			@Override
 			public Adapter caseXtendAnnotationTarget(XtendAnnotationTarget object)
 			{
 				return createXtendAnnotationTargetAdapter();
@@ -501,6 +506,21 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createAndRefAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.AndStep <em>And Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.bmw.carit.jnario.jnario.AndStep
+	 * @generated
+	 */
+	public Adapter createAndStepAdapter()
 	{
 		return null;
 	}

@@ -198,6 +198,15 @@ public interface JnarioFactory extends EFactory
 	AndRef createAndRef();
 
 	/**
+	 * Returns a new object of class '<em>And Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>And Step</em>'.
+	 * @generated
+	 */
+	AndStep createAndStep();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

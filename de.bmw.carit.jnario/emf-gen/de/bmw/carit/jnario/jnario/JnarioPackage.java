@@ -1170,6 +1170,70 @@ public interface JnarioPackage extends EPackage
 	 */
 	int AND_REF_FEATURE_COUNT = STEP_FEATURE_COUNT + 1;
 
+	/**
+	 * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.AndStepImpl <em>And Step</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.bmw.carit.jnario.jnario.impl.AndStepImpl
+	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getAndStep()
+	 * @generated
+	 */
+	int AND_STEP = 19;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND_STEP__ANNOTATIONS = STEP__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND_STEP__ANNOTATION_INFO = STEP__ANNOTATION_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND_STEP__NAME = STEP__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Code</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND_STEP__CODE = STEP__CODE;
+
+	/**
+	 * The feature id for the '<em><b>And</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND_STEP__AND = STEP__AND;
+
+	/**
+	 * The number of structural features of the '<em>And Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND_STEP_FEATURE_COUNT = STEP_FEATURE_COUNT + 0;
+
 
 	/**
 	 * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.Feature <em>Feature</em>}'.
@@ -1615,6 +1679,16 @@ public interface JnarioPackage extends EPackage
 	EReference getAndRef_Reference();
 
 	/**
+	 * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.AndStep <em>And Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>And Step</em>'.
+	 * @see de.bmw.carit.jnario.jnario.AndStep
+	 * @generated
+	 */
+	EClass getAndStep();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2010,6 +2084,16 @@ public interface JnarioPackage extends EPackage
 		 * @generated
 		 */
 		EReference AND_REF__REFERENCE = eINSTANCE.getAndRef_Reference();
+
+		/**
+		 * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.AndStepImpl <em>And Step</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.bmw.carit.jnario.jnario.impl.AndStepImpl
+		 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getAndStep()
+		 * @generated
+		 */
+		EClass AND_STEP = eINSTANCE.getAndStep();
 
 	}
 

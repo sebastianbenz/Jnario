@@ -84,7 +84,7 @@ public interface Step extends XtendMember
 
 	/**
 	 * Returns the value of the '<em><b>And</b></em>' containment reference list.
-	 * The list contents are of type {@link de.bmw.carit.jnario.jnario.And}.
+	 * The list contents are of type {@link de.bmw.carit.jnario.jnario.Step}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>And</em>' containment reference list isn't clear,
@@ -96,6 +96,6 @@ public interface Step extends XtendMember
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<And> getAnd();
+	EList<Step> getAnd();
 
 } // Step

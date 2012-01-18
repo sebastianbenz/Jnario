@@ -59,37 +59,41 @@ GivenSteps returns xtend::XtendMember:
 GivenRef returns xtend::XtendMember:
 	{GivenRef}
 	reference=[Given|GIVEN_TEXT]
-	and+=(And|AndRef)*
+	and+=AndStep*
 ;
 
 Given returns xtend::XtendMember:
 	{Given}
 	name=GIVEN_TEXT code=Code
-	and+=(And|AndRef)*
+	and+=AndStep*
 ;
 	
 WhenRef returns xtend::XtendMember:
 	{WhenRef}
 	reference=[When|WHEN_TEXT]
-	and+=(And|AndRef)*
+	and+=AndStep*
 ;
 
 When returns xtend::XtendMember:
 	{When}
 	name=WHEN_TEXT code=Code
-	and+=(And|AndRef)*
+	and+=AndStep*
 ;
 
 ThenRef returns xtend::XtendMember:
 	{ThenRef}
 	reference=[Then|THEN_TEXT]
-	and+=(And|AndRef)*
+	and+=AndStep*
 ;
 
 Then returns xtend::XtendMember:
 	{Then}
 	name=THEN_TEXT code=Code
-	and+=(And|AndRef)*;
+	and+=AndStep*;
+	
+AndStep returns xtend::XtendMember:
+	And|AndRef
+;
 	
 AndRef returns xtend::XtendMember:
 	{AndRef}

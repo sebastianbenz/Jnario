@@ -6,7 +6,6 @@
  */
 package de.bmw.carit.jnario.jnario.impl;
 
-import de.bmw.carit.jnario.jnario.And;
 import de.bmw.carit.jnario.jnario.Code;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
 import de.bmw.carit.jnario.jnario.Step;
@@ -83,7 +82,7 @@ public class StepImpl extends XtendMemberImplCustom implements Step
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<And> and;
+	protected EList<Step> and;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -182,11 +181,11 @@ public class StepImpl extends XtendMemberImplCustom implements Step
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<And> getAnd()
+	public EList<Step> getAnd()
 	{
 		if (and == null)
 		{
-			and = new EObjectContainmentEList<And>(And.class, this, JnarioPackage.STEP__AND);
+			and = new EObjectContainmentEList<Step>(Step.class, this, JnarioPackage.STEP__AND);
 		}
 		return and;
 	}
@@ -248,7 +247,7 @@ public class StepImpl extends XtendMemberImplCustom implements Step
 				return;
 			case JnarioPackage.STEP__AND:
 				getAnd().clear();
-				getAnd().addAll((Collection<? extends And>)newValue);
+				getAnd().addAll((Collection<? extends Step>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

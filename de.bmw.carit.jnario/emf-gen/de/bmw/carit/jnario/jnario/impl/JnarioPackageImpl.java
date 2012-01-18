@@ -8,6 +8,7 @@ package de.bmw.carit.jnario.jnario.impl;
 
 import de.bmw.carit.jnario.jnario.And;
 import de.bmw.carit.jnario.jnario.AndRef;
+import de.bmw.carit.jnario.jnario.AndStep;
 import de.bmw.carit.jnario.jnario.Background;
 import de.bmw.carit.jnario.jnario.Code;
 import de.bmw.carit.jnario.jnario.ExampleCell;
@@ -181,6 +182,13 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 	 * @generated
 	 */
 	private EClass andRefEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass andStepEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -673,6 +681,16 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getAndStep()
+	{
+		return andStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public JnarioFactory getJnarioFactory()
 	{
 		return (JnarioFactory)getEFactoryInstance();
@@ -758,6 +776,8 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 
 		andRefEClass = createEClass(AND_REF);
 		createEReference(andRefEClass, AND_REF__REFERENCE);
+
+		andStepEClass = createEClass(AND_STEP);
 	}
 
 	/**
@@ -807,6 +827,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 		thenRefEClass.getESuperTypes().add(this.getStep());
 		givenStepsEClass.getESuperTypes().add(this.getStep());
 		andRefEClass.getESuperTypes().add(this.getStep());
+		andStepEClass.getESuperTypes().add(this.getStep());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(featureEClass, Feature.class, "Feature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -826,7 +847,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 		initEClass(stepEClass, Step.class, "Step", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStep_Name(), ecorePackage.getEString(), "name", null, 0, 1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStep_Code(), this.getCode(), null, "code", null, 0, 1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStep_And(), this.getAnd(), null, "and", null, 0, -1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStep_And(), this.getStep(), null, "and", null, 0, -1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(givenEClass, Given.class, "Given", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -869,6 +890,8 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 
 		initEClass(andRefEClass, AndRef.class, "AndRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAndRef_Reference(), this.getAnd(), null, "reference", null, 0, 1, AndRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(andStepEClass, AndStep.class, "AndStep", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

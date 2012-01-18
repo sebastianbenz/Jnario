@@ -623,38 +623,20 @@ ruleGivenRef returns [EObject current=null]
 )
 )(
 (
-(
 		{ 
-	        newCompositeNode(grammarAccess.getGivenRefAccess().getAndAndParserRuleCall_2_0_0()); 
+	        newCompositeNode(grammarAccess.getGivenRefAccess().getAndAndStepParserRuleCall_2_0()); 
 	    }
-		lv_and_2_1=ruleAnd		{
+		lv_and_2_0=ruleAndStep		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getGivenRefRule());
 	        }
        		add(
        			$current, 
        			"and",
-        		lv_and_2_1, 
-        		"And");
+        		lv_and_2_0, 
+        		"AndStep");
 	        afterParserOrEnumRuleCall();
 	    }
-
-    |		{ 
-	        newCompositeNode(grammarAccess.getGivenRefAccess().getAndAndRefParserRuleCall_2_0_1()); 
-	    }
-		lv_and_2_2=ruleAndRef		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getGivenRefRule());
-	        }
-       		add(
-       			$current, 
-       			"and",
-        		lv_and_2_2, 
-        		"AndRef");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
 
 )
 )*)
@@ -722,38 +704,20 @@ ruleGiven returns [EObject current=null]
 )
 )(
 (
-(
 		{ 
-	        newCompositeNode(grammarAccess.getGivenAccess().getAndAndParserRuleCall_3_0_0()); 
+	        newCompositeNode(grammarAccess.getGivenAccess().getAndAndStepParserRuleCall_3_0()); 
 	    }
-		lv_and_3_1=ruleAnd		{
+		lv_and_3_0=ruleAndStep		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getGivenRule());
 	        }
        		add(
        			$current, 
        			"and",
-        		lv_and_3_1, 
-        		"And");
+        		lv_and_3_0, 
+        		"AndStep");
 	        afterParserOrEnumRuleCall();
 	    }
-
-    |		{ 
-	        newCompositeNode(grammarAccess.getGivenAccess().getAndAndRefParserRuleCall_3_0_1()); 
-	    }
-		lv_and_3_2=ruleAndRef		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getGivenRule());
-	        }
-       		add(
-       			$current, 
-       			"and",
-        		lv_and_3_2, 
-        		"AndRef");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
 
 )
 )*)
@@ -798,38 +762,20 @@ ruleWhenRef returns [EObject current=null]
 )
 )(
 (
-(
 		{ 
-	        newCompositeNode(grammarAccess.getWhenRefAccess().getAndAndParserRuleCall_2_0_0()); 
+	        newCompositeNode(grammarAccess.getWhenRefAccess().getAndAndStepParserRuleCall_2_0()); 
 	    }
-		lv_and_2_1=ruleAnd		{
+		lv_and_2_0=ruleAndStep		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getWhenRefRule());
 	        }
        		add(
        			$current, 
        			"and",
-        		lv_and_2_1, 
-        		"And");
+        		lv_and_2_0, 
+        		"AndStep");
 	        afterParserOrEnumRuleCall();
 	    }
-
-    |		{ 
-	        newCompositeNode(grammarAccess.getWhenRefAccess().getAndAndRefParserRuleCall_2_0_1()); 
-	    }
-		lv_and_2_2=ruleAndRef		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getWhenRefRule());
-	        }
-       		add(
-       			$current, 
-       			"and",
-        		lv_and_2_2, 
-        		"AndRef");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
 
 )
 )*)
@@ -897,38 +843,20 @@ ruleWhen returns [EObject current=null]
 )
 )(
 (
-(
 		{ 
-	        newCompositeNode(grammarAccess.getWhenAccess().getAndAndParserRuleCall_3_0_0()); 
+	        newCompositeNode(grammarAccess.getWhenAccess().getAndAndStepParserRuleCall_3_0()); 
 	    }
-		lv_and_3_1=ruleAnd		{
+		lv_and_3_0=ruleAndStep		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getWhenRule());
 	        }
        		add(
        			$current, 
        			"and",
-        		lv_and_3_1, 
-        		"And");
+        		lv_and_3_0, 
+        		"AndStep");
 	        afterParserOrEnumRuleCall();
 	    }
-
-    |		{ 
-	        newCompositeNode(grammarAccess.getWhenAccess().getAndAndRefParserRuleCall_3_0_1()); 
-	    }
-		lv_and_3_2=ruleAndRef		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getWhenRule());
-	        }
-       		add(
-       			$current, 
-       			"and",
-        		lv_and_3_2, 
-        		"AndRef");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
 
 )
 )*)
@@ -973,38 +901,20 @@ ruleThenRef returns [EObject current=null]
 )
 )(
 (
-(
 		{ 
-	        newCompositeNode(grammarAccess.getThenRefAccess().getAndAndParserRuleCall_2_0_0()); 
+	        newCompositeNode(grammarAccess.getThenRefAccess().getAndAndStepParserRuleCall_2_0()); 
 	    }
-		lv_and_2_1=ruleAnd		{
+		lv_and_2_0=ruleAndStep		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getThenRefRule());
 	        }
        		add(
        			$current, 
        			"and",
-        		lv_and_2_1, 
-        		"And");
+        		lv_and_2_0, 
+        		"AndStep");
 	        afterParserOrEnumRuleCall();
 	    }
-
-    |		{ 
-	        newCompositeNode(grammarAccess.getThenRefAccess().getAndAndRefParserRuleCall_2_0_1()); 
-	    }
-		lv_and_2_2=ruleAndRef		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getThenRefRule());
-	        }
-       		add(
-       			$current, 
-       			"and",
-        		lv_and_2_2, 
-        		"AndRef");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
 
 )
 )*)
@@ -1072,41 +982,63 @@ ruleThen returns [EObject current=null]
 )
 )(
 (
-(
 		{ 
-	        newCompositeNode(grammarAccess.getThenAccess().getAndAndParserRuleCall_3_0_0()); 
+	        newCompositeNode(grammarAccess.getThenAccess().getAndAndStepParserRuleCall_3_0()); 
 	    }
-		lv_and_3_1=ruleAnd		{
+		lv_and_3_0=ruleAndStep		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getThenRule());
 	        }
        		add(
        			$current, 
        			"and",
-        		lv_and_3_1, 
-        		"And");
+        		lv_and_3_0, 
+        		"AndStep");
 	        afterParserOrEnumRuleCall();
 	    }
-
-    |		{ 
-	        newCompositeNode(grammarAccess.getThenAccess().getAndAndRefParserRuleCall_3_0_1()); 
-	    }
-		lv_and_3_2=ruleAndRef		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getThenRule());
-	        }
-       		add(
-       			$current, 
-       			"and",
-        		lv_and_3_2, 
-        		"AndRef");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
 
 )
 )*)
+;
+
+
+
+
+
+// Entry rule entryRuleAndStep
+entryRuleAndStep returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getAndStepRule()); }
+	 iv_ruleAndStep=ruleAndStep 
+	 { $current=$iv_ruleAndStep.current; } 
+	 EOF 
+;
+
+// Rule AndStep
+ruleAndStep returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(
+    { 
+        newCompositeNode(grammarAccess.getAndStepAccess().getAndParserRuleCall_0()); 
+    }
+    this_And_0=ruleAnd
+    { 
+        $current = $this_And_0.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getAndStepAccess().getAndRefParserRuleCall_1()); 
+    }
+    this_AndRef_1=ruleAndRef
+    { 
+        $current = $this_AndRef_1.current; 
+        afterParserOrEnumRuleCall();
+    }
+)
 ;
 
 

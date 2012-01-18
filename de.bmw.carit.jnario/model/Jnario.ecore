@@ -28,7 +28,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Step" eSuperTypes="../../org.eclipse.xtext.xtend2/model/Xtend2.ecore#//XtendMember">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="code" eType="#//Code" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="and" upperBound="-1" eType="#//And"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="and" upperBound="-1" eType="#//Step"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Given" eSuperTypes="#//Step"/>
@@ -76,4 +76,5 @@
   <eClassifiers xsi:type="ecore:EClass" name="AndRef" eSuperTypes="#//Step">
     <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//And"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AndStep" eSuperTypes="#//Step"/>
 </ecore:EPackage>
