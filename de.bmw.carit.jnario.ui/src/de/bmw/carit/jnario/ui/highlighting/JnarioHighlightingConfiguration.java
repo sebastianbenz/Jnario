@@ -27,6 +27,7 @@ public class JnarioHighlightingConfiguration extends XtendHighlightingConfigurat
 	public static final String FEATURE_ID = "Feature";
 	public static final String CODE_BOLD_ID = "CodeBold";
 	public static final String STEP_ID = "Step";
+	public static final String STEP_REFERNCE_ID = "StepReference";
 	public static final String STEP_TEXT_ID = "Step_Text";
 	public static final String EXAMPLE_ID = "Example";
 
@@ -44,6 +45,8 @@ public class JnarioHighlightingConfiguration extends XtendHighlightingConfigurat
 				codeBoldTextStyle());
 		acceptor.acceptDefaultHighlighting(EXAMPLE_ID, "Example",
 				exampleWordStyle());
+		acceptor.acceptDefaultHighlighting(STEP_REFERNCE_ID, "StepReference",
+				stepRefKeyWordStyle());
 	}
 
 	private TextStyle tagTextStyle() {
@@ -84,6 +87,13 @@ public class JnarioHighlightingConfiguration extends XtendHighlightingConfigurat
 		TextStyle textStyle = defaultTextStyle().copy();
 		textStyle.setFontData(fontWithHeight(DEFAULT_FONT_SIZE + 1, SWT.BOLD));
 		textStyle.setColor(new RGB(50, 150, 36));
+		return textStyle;
+	}
+	
+	public TextStyle stepRefKeyWordStyle() {
+		TextStyle textStyle = defaultTextStyle().copy();
+		textStyle.setFontData(fontWithHeight(DEFAULT_FONT_SIZE + 1, SWT.BOLD));
+		textStyle.setColor(new RGB(139, 156, 127));
 		return textStyle;
 	}
 	

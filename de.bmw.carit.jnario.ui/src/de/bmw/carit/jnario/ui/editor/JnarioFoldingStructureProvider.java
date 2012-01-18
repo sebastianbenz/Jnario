@@ -9,9 +9,9 @@ package de.bmw.carit.jnario.ui.editor;
 
 import org.eclipse.jface.text.Position;
 import org.eclipse.jface.text.source.projection.ProjectionAnnotation;
-import org.eclipse.xtext.ui.editor.folding.DefaultFoldingStructureProvider;
+import org.eclipse.xtext.xtend2.ui.editor.InitiallyCollapsableAwareFoldingStructureProvider;
 
-public class JnarioFoldingStructureProvider extends DefaultFoldingStructureProvider {
+public class JnarioFoldingStructureProvider extends InitiallyCollapsableAwareFoldingStructureProvider {
 	
 	@Override
 	protected ProjectionAnnotation createProjectionAnnotation(boolean isCollapsed, Position foldedRegion) {

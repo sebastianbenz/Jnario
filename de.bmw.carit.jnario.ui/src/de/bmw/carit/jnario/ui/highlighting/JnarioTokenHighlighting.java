@@ -12,7 +12,7 @@ import org.eclipse.xtext.xtend2.ui.highlighting.TokenToAttributeIdMapper;
 import com.google.inject.Singleton;
 
 @Singleton
-public class JnarioTokenHighlighting extends TokenToAttributeIdMapper {
+public class JnarioTokenHighlighting extends TokenToAttributeIdMapper{
 
 	@Override
 	protected String calculateId(String tokenName, int tokenType) {

@@ -353,7 +353,7 @@
  	 <extension
       point="org.eclipse.ui.handlers">
    <handler
-         class="de.bmw.carit.jnario.ui.editor.ShowCodeHandler"
+         class="de.bmw.carit.jnario.ui.editor.JnarioShowCodeHandler"
          commandId="de.bmw.carit.jnario.ui.showCodeCommand">
    </handler>
 </extension>

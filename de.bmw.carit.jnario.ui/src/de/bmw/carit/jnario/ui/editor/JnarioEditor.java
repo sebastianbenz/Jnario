@@ -7,7 +7,7 @@
  *******************************************************************************/
 package de.bmw.carit.jnario.ui.editor;
 
-import static de.bmw.carit.jnario.ui.editor.TaskTokenTypeToPartitionTypeMapper.NONE_CODE_PARTITION;
+import static de.bmw.carit.jnario.ui.editor.JnarioTaskTokenTypeToPartitionTypeMapper.NONE_CODE_PARTITION;
 import static org.eclipse.jface.text.IDocumentExtension3.DEFAULT_PARTITIONING;
 import static org.eclipse.jface.text.TextUtilities.getContentType;
 
