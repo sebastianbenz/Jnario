@@ -21,7 +21,7 @@ public class JnarioQualifiedNameProvider extends Xtend2QualifiedNameProvider {
 			if(name == null){
 				return null;
 			}
-			return QualifiedName.create(name.trim());
+			return QualifiedName.create(name);
 		}
 		return super.getFullyQualifiedName(obj);
 	}
