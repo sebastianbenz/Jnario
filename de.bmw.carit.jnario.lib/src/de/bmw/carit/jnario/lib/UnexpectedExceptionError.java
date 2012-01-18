@@ -13,10 +13,10 @@ package de.bmw.carit.jnario.lib;
 @SuppressWarnings("serial")
 public class UnexpectedExceptionError extends AssertionError {
 
-	private final Exception cause;
-	private final Class<? extends Exception> expected;
+	private final Throwable cause;
+	private final Class<? extends Throwable> expected;
 
-	public UnexpectedExceptionError(Class<? extends Exception> expected, Exception cause) {
+	public UnexpectedExceptionError(Class<? extends Throwable> expected, Throwable cause) {
 		super(expected);
 		this.expected = expected;
 		this.cause = cause;

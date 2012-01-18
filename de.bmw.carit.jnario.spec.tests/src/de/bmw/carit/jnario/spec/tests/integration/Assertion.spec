@@ -3,7 +3,7 @@ package de.bmw.carit.jnario.spec.tests.integration
 import org.eclipse.xtext.xbase.lib.Procedures$Procedure1
 import org.junit.Assert
 /**
- * @author Sebastian Benz
+ * Jnario provides assertions on steroids.
  */
 describe "Assertion"{
 	
@@ -11,9 +11,19 @@ describe "Assertion"{
 		assert true
 		assert 1 == 1
 	}
+	
+	it "fails if the evaluated expression is false"{
+		expect(typeof(AssertionError))[assert false]
+	} 
 
+	/*
+	 * Assertions are selfexplainable.
+	 */
 	context "prints all expression values"{
-		  
+		
+		/*
+		 * If the assertion fails, it will print the value of all referenced variables.
+		 */
 		it "Variable Access"{ 
 			val y = false
 			errorMessage[assert y].is(  
@@ -21,7 +31,10 @@ describe "Assertion"{
 			Expected y but:
 			     y is false''')
 		}                           
-		                       
+		
+		/*
+		 * Literal values will not be printed.
+		 */               
 		it "Filters literals"{           
 			val x = 0  
 			errorMessage[assert x == 42].is(  
