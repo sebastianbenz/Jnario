@@ -11,6 +11,7 @@
 package de.bmw.carit.jnario.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.builder.IXtextBuilderParticipant;
 import org.eclipse.xtext.common.types.xtext.ui.ITypesProposalProvider;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.folding.DefaultFoldingStructureProvider;
@@ -18,6 +19,7 @@ import org.eclipse.xtext.ui.editor.folding.IFoldingRegionProvider;
 import org.eclipse.xtext.ui.editor.model.ITokenTypeToPartitionTypeMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
+import org.eclipse.xtext.xtend2.ui.builder.XtendBuilderParticipant;
 import org.eclipse.xtext.xtend2.ui.contentassist.ImportingTypesProposalProvider;
 
 import com.google.inject.Binder;
@@ -73,4 +75,8 @@ public class JnarioUiModule extends de.bmw.carit.jnario.ui.AbstractJnarioUiModul
 		return ImportingTypesProposalProvider.class;
 	}
 	
+	@Override
+	public Class<? extends IXtextBuilderParticipant> bindIXtextBuilderParticipant() {
+		return XtendBuilderParticipant.class;
+	}
 }
