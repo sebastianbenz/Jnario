@@ -8,7 +8,6 @@ package de.bmw.carit.jnario.jnario.impl;
 
 import de.bmw.carit.jnario.jnario.And;
 import de.bmw.carit.jnario.jnario.AndRef;
-import de.bmw.carit.jnario.jnario.AndStep;
 import de.bmw.carit.jnario.jnario.Background;
 import de.bmw.carit.jnario.jnario.Code;
 import de.bmw.carit.jnario.jnario.ExampleCell;
@@ -18,7 +17,6 @@ import de.bmw.carit.jnario.jnario.ExampleTable;
 import de.bmw.carit.jnario.jnario.Feature;
 import de.bmw.carit.jnario.jnario.Given;
 import de.bmw.carit.jnario.jnario.GivenRef;
-import de.bmw.carit.jnario.jnario.GivenSteps;
 import de.bmw.carit.jnario.jnario.Jnario;
 import de.bmw.carit.jnario.jnario.JnarioFactory;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
@@ -174,21 +172,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass givenStepsEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass andRefEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass andStepEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -651,16 +635,6 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getGivenSteps()
-	{
-		return givenStepsEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getAndRef()
 	{
 		return andRefEClass;
@@ -674,16 +648,6 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 	public EReference getAndRef_Reference()
 	{
 		return (EReference)andRefEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getAndStep()
-	{
-		return andStepEClass;
 	}
 
 	/**
@@ -772,12 +736,8 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 		thenRefEClass = createEClass(THEN_REF);
 		createEReference(thenRefEClass, THEN_REF__REFERENCE);
 
-		givenStepsEClass = createEClass(GIVEN_STEPS);
-
 		andRefEClass = createEClass(AND_REF);
 		createEReference(andRefEClass, AND_REF__REFERENCE);
-
-		andStepEClass = createEClass(AND_STEP);
 	}
 
 	/**
@@ -825,9 +785,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 		givenRefEClass.getESuperTypes().add(this.getStep());
 		whenRefEClass.getESuperTypes().add(this.getStep());
 		thenRefEClass.getESuperTypes().add(this.getStep());
-		givenStepsEClass.getESuperTypes().add(this.getStep());
 		andRefEClass.getESuperTypes().add(this.getStep());
-		andStepEClass.getESuperTypes().add(this.getStep());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(featureEClass, Feature.class, "Feature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -886,12 +844,8 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 		initEClass(thenRefEClass, ThenRef.class, "ThenRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getThenRef_Reference(), this.getThen(), null, "reference", null, 0, 1, ThenRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(givenStepsEClass, GivenSteps.class, "GivenSteps", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
 		initEClass(andRefEClass, AndRef.class, "AndRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAndRef_Reference(), this.getAnd(), null, "reference", null, 0, 1, AndRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(andStepEClass, AndStep.class, "AndStep", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

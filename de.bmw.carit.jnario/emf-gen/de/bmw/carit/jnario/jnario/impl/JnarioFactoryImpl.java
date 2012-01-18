@@ -85,9 +85,7 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 			case JnarioPackage.GIVEN_REF: return createGivenRef();
 			case JnarioPackage.WHEN_REF: return createWhenRef();
 			case JnarioPackage.THEN_REF: return createThenRef();
-			case JnarioPackage.GIVEN_STEPS: return createGivenSteps();
 			case JnarioPackage.AND_REF: return createAndRef();
-			case JnarioPackage.AND_STEP: return createAndStep();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -285,32 +283,10 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GivenSteps createGivenSteps()
-	{
-		GivenStepsImpl givenSteps = new GivenStepsImpl();
-		return givenSteps;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public AndRef createAndRef()
 	{
 		AndRefImpl andRef = new AndRefImpl();
 		return andRef;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public AndStep createAndStep()
-	{
-		AndStepImpl andStep = new AndStepImpl();
-		return andStep;
 	}
 
 	/**

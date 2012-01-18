@@ -180,15 +180,6 @@ public interface JnarioFactory extends EFactory
 	ThenRef createThenRef();
 
 	/**
-	 * Returns a new object of class '<em>Given Steps</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Given Steps</em>'.
-	 * @generated
-	 */
-	GivenSteps createGivenSteps();
-
-	/**
 	 * Returns a new object of class '<em>And Ref</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -196,15 +187,6 @@ public interface JnarioFactory extends EFactory
 	 * @generated
 	 */
 	AndRef createAndRef();
-
-	/**
-	 * Returns a new object of class '<em>And Step</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>And Step</em>'.
-	 * @generated
-	 */
-	AndStep createAndStep();
 
 	/**
 	 * Returns the package supported by this factory.

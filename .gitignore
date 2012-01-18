@@ -2,3 +2,4 @@ bin
 classes
 target
 .metadata
+org.eclipse.xtext.*

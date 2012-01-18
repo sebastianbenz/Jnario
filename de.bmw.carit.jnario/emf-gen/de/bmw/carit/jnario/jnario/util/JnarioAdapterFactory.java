@@ -169,19 +169,9 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
 				return createThenRefAdapter();
 			}
 			@Override
-			public Adapter caseGivenSteps(GivenSteps object)
-			{
-				return createGivenStepsAdapter();
-			}
-			@Override
 			public Adapter caseAndRef(AndRef object)
 			{
 				return createAndRefAdapter();
-			}
-			@Override
-			public Adapter caseAndStep(AndStep object)
-			{
-				return createAndStepAdapter();
 			}
 			@Override
 			public Adapter caseXtendAnnotationTarget(XtendAnnotationTarget object)
@@ -481,21 +471,6 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.GivenSteps <em>Given Steps</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.bmw.carit.jnario.jnario.GivenSteps
-	 * @generated
-	 */
-	public Adapter createGivenStepsAdapter()
-	{
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.AndRef <em>And Ref</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -506,21 +481,6 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createAndRefAdapter()
-	{
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.AndStep <em>And Step</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.bmw.carit.jnario.jnario.AndStep
-	 * @generated
-	 */
-	public Adapter createAndStepAdapter()
 	{
 		return null;
 	}

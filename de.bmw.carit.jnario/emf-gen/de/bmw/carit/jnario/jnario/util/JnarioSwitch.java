@@ -228,16 +228,6 @@ public class JnarioSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case JnarioPackage.GIVEN_STEPS:
-			{
-				GivenSteps givenSteps = (GivenSteps)theEObject;
-				T result = caseGivenSteps(givenSteps);
-				if (result == null) result = caseStep(givenSteps);
-				if (result == null) result = caseXtendMember(givenSteps);
-				if (result == null) result = caseXtendAnnotationTarget(givenSteps);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case JnarioPackage.AND_REF:
 			{
 				AndRef andRef = (AndRef)theEObject;
@@ -245,16 +235,6 @@ public class JnarioSwitch<T> extends Switch<T>
 				if (result == null) result = caseStep(andRef);
 				if (result == null) result = caseXtendMember(andRef);
 				if (result == null) result = caseXtendAnnotationTarget(andRef);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case JnarioPackage.AND_STEP:
-			{
-				AndStep andStep = (AndStep)theEObject;
-				T result = caseAndStep(andStep);
-				if (result == null) result = caseStep(andStep);
-				if (result == null) result = caseXtendMember(andStep);
-				if (result == null) result = caseXtendAnnotationTarget(andStep);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -535,22 +515,6 @@ public class JnarioSwitch<T> extends Switch<T>
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Given Steps</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Given Steps</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseGivenSteps(GivenSteps object)
-	{
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>And Ref</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -562,22 +526,6 @@ public class JnarioSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseAndRef(AndRef object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>And Step</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>And Step</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAndStep(AndStep object)
 	{
 		return null;
 	}

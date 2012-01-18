@@ -38,13 +38,13 @@ Background:
 	{Background}
 	BACKGROUND_TEXT
 	members+=Member*
-	steps+=GivenSteps*;
+	steps+=(Given|GivenRef)*;
 
 Scenario returns xtend::XtendMember:
 	{Scenario}
 	name=SCENARIO_TEXT
 	members+=Member*
-	steps+=GivenSteps*
+	steps+=(Given|GivenRef)*
 	steps+=(When|WhenRef)?
 	steps+=(Then|ThenRef)*
 	examples+=ExampleTable*;
@@ -52,48 +52,40 @@ Scenario returns xtend::XtendMember:
 Step returns xtend::XtendMember:
 	Given|When|Then|And|GivenRef|WhenRef|ThenRef|AndRef;
 	
-GivenSteps returns xtend::XtendMember:
-	Given|GivenRef
-;
-	
 GivenRef returns xtend::XtendMember:
 	{GivenRef}
 	reference=[Given|GIVEN_TEXT]
-	and+=AndStep*
+	and+=(And|AndRef)*
 ;
 
 Given returns xtend::XtendMember:
 	{Given}
 	name=GIVEN_TEXT code=Code
-	and+=AndStep*
+	and+=(And|AndRef)*
 ;
 	
 WhenRef returns xtend::XtendMember:
 	{WhenRef}
 	reference=[When|WHEN_TEXT]
-	and+=AndStep*
+	and+=(And|AndRef)*
 ;
 
 When returns xtend::XtendMember:
 	{When}
 	name=WHEN_TEXT code=Code
-	and+=AndStep*
+	and+=(And|AndRef)*
 ;
 
 ThenRef returns xtend::XtendMember:
 	{ThenRef}
 	reference=[Then|THEN_TEXT]
-	and+=AndStep*
+	and+=(And|AndRef)*
 ;
 
 Then returns xtend::XtendMember:
 	{Then}
 	name=THEN_TEXT code=Code
-	and+=AndStep*;
-	
-AndStep returns xtend::XtendMember:
-	And|AndRef
-;
+	and+=(And|AndRef)*;
 	
 AndRef returns xtend::XtendMember:
 	{AndRef}
