@@ -32,10 +32,13 @@ import de.bmw.carit.jnario.jnario.ExampleHeading;
 import de.bmw.carit.jnario.jnario.ExampleRow;
 import de.bmw.carit.jnario.jnario.ExampleTable;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
- 
+import de.bmw.carit.jnario.jnario.Ref;
+import de.bmw.carit.jnario.jnario.Scenario;
+import de.bmw.carit.jnario.jnario.Step;
+
 
 public class JnarioJavaValidator extends AbstractJnarioJavaValidator {
-	
+
 	@Inject
 	private ITypeProvider typeProvider;
 
@@ -53,7 +56,7 @@ public class JnarioJavaValidator extends AbstractJnarioJavaValidator {
 			error("Examples rows have to have the same number of columns", JnarioPackage.Literals.EXAMPLE_TABLE__HEADING);
 		}
 	}
-	
+
 	private boolean doRowsHaveSameNumberOfColumns(EList<ExampleRow> rows, int headingColumnNumber){
 		for(ExampleRow row: rows){
 			if(row.getParts().size() != headingColumnNumber){			
@@ -62,7 +65,7 @@ public class JnarioJavaValidator extends AbstractJnarioJavaValidator {
 		}
 		return true;
 	}
-	
+
 	private void hasSameTypesInColumns(EList<ExampleRow> rows){
 		int colNum = 0;
 		if(rows.size() > 0){
@@ -81,14 +84,14 @@ public class JnarioJavaValidator extends AbstractJnarioJavaValidator {
 			}
 		}
 	}
-	
+
 	@Check
 	public void checkVariableDeclaration(XVariableDeclaration declaration) {
 		if(getContainerOfType(declaration, ExampleTable.class) == null){
 			super.checkVariableDeclaration(declaration);
 		}
 	}
-	
+
 	protected void checkDeclaredVariableName(EObject nameDeclarator, EObject attributeHolder, EAttribute attr) {
 		if (nameDeclarator.eContainer() == null)
 			return;
@@ -110,5 +113,22 @@ public class JnarioJavaValidator extends AbstractJnarioJavaValidator {
 			}
 		}
 	}
-	
+
+	@Check
+	public void checkStepDefinitionAndReferences(Step step){
+		Scenario scenario = getContainerOfType(step, Scenario.class);
+		EList<Step> steps = scenario.getSteps();
+
+		if(step instanceof Ref){
+			Ref ref = (Ref) step;
+			for(Step currentStep: steps){
+				if(currentStep instanceof Step){
+					if(ref.getReference().equals(currentStep)){
+						error("Cannot reference a step that was defined in this scenario.", JnarioPackage.Literals.STEP__NAME);
+					}
+				}
+			}
+		}
+	}
+
 }
