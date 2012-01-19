@@ -10,6 +10,7 @@
  */
 package de.bmw.carit.jnario;
 
+import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.OutputConfigurationProvider;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.resource.EObjectAtOffsetHelper;
@@ -49,6 +50,7 @@ import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder;
 import de.bmw.carit.jnario.common.jvmmodel.JnarioDispatchUtil;
 import de.bmw.carit.jnario.common.scoping.JnarioExtensionClassNameProvider;
 import de.bmw.carit.jnario.generator.JnarioCompiler;
+import de.bmw.carit.jnario.generator.JnarioJvmModelGenerator;
 import de.bmw.carit.jnario.jvmmodel.JnarioFeatureCallToJavaMapping;
 import de.bmw.carit.jnario.jvmmodel.JnarioJvmModelInferrer;
 import de.bmw.carit.jnario.naming.JnarioQualifiedNameProvider;
@@ -146,6 +148,11 @@ public class JnarioRuntimeModule extends de.bmw.carit.jnario.AbstractJnarioRunti
 	
 	public Class<? extends IResourceValidator> bindIResourceValidator(){
 		return JnarioResourceValidator.class;
+	}
+	
+	@Override
+	public Class<? extends IGenerator> bindIGenerator() {
+		return JnarioJvmModelGenerator.class;
 	}
 	
 }
