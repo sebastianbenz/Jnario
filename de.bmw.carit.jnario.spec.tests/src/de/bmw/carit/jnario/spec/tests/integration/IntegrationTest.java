@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 
 import com.google.inject.Singleton;
 
-import de.bmw.carit.jnario.spec.tests.util.SpecTestRunner;
+import de.bmw.carit.jnario.tests.util.SpecTestRunner;
 
 /**
  * @author Sebastian Benz

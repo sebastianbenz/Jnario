@@ -2,7 +2,7 @@ package de.bmw.carit.jnario.spec.tests.unit.naming
 
 import de.bmw.carit.jnario.runner.InstantiateWith
 import de.bmw.carit.jnario.spec.spec.ExampleGroup
-import de.bmw.carit.jnario.spec.tests.util.SpecTestInstantiator
+import de.bmw.carit.jnario.tests.util.SpecTestInstantiator
 import de.bmw.carit.jnario.tests.util.ModelStore
 
 import static de.bmw.carit.jnario.tests.util.Query.*

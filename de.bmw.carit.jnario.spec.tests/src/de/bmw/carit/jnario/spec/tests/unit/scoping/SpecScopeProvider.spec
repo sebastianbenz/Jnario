@@ -3,7 +3,7 @@ package de.bmw.carit.jnario.spec.tests.unit.scoping
 import static org.junit.Assert.*
 
 import com.google.inject.Inject
-import de.bmw.carit.jnario.spec.tests.util.SpecTestInstantiator
+import de.bmw.carit.jnario.tests.util.SpecTestInstantiator
 import de.bmw.carit.jnario.tests.util.ModelStore
 import de.bmw.carit.jnario.spec.spec.ExampleGroup
 import de.bmw.carit.jnario.spec.spec.SpecPackage

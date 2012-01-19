@@ -3,7 +3,7 @@ package de.bmw.carit.jnario.spec.tests.unit.naming
 import com.google.inject.Inject
 import de.bmw.carit.jnario.runner.InstantiateWith
 import de.bmw.carit.jnario.spec.naming.OperationNameProvider
-import de.bmw.carit.jnario.spec.tests.util.SpecTestInstantiator
+import de.bmw.carit.jnario.tests.util.SpecTestInstantiator
 import java.util.Map
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EcoreFactory

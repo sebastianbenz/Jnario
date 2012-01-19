@@ -25,6 +25,7 @@ Import-Package: org.apache.log4j,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: de.bmw.carit.jnario,
  de.bmw.carit.jnario.common.test.util,
+ de.bmw.carit.jnario.spec,
  de.bmw.carit.jnario.tests.util
 Bundle-Classpath: ., /bin
 Bundle-Activator: de.bmw.carit.jnario.Activator

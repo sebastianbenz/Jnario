@@ -27,6 +27,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: de.bmw.carit.jnario.spec,
  de.bmw.carit.jnario.spec.tests.integration,
  de.bmw.carit.jnario.spec.tests.unit.naming,
- de.bmw.carit.jnario.spec.tests.unit.scoping,
- de.bmw.carit.jnario.spec.tests.util
+ de.bmw.carit.jnario.spec.tests.unit.scoping
 Bundle-Classpath: ., /bin
