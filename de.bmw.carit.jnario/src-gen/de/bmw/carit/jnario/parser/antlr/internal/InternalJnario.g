@@ -584,6 +584,66 @@ ruleScenario returns [EObject current=null]
 
 
 
+// Entry rule entryRuleRef
+entryRuleRef returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getRefRule()); }
+	 iv_ruleRef=ruleRef 
+	 { $current=$iv_ruleRef.current; } 
+	 EOF 
+;
+
+// Rule Ref
+ruleRef returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(
+    { 
+        newCompositeNode(grammarAccess.getRefAccess().getGivenRefParserRuleCall_0()); 
+    }
+    this_GivenRef_0=ruleGivenRef
+    { 
+        $current = $this_GivenRef_0.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getRefAccess().getWhenRefParserRuleCall_1()); 
+    }
+    this_WhenRef_1=ruleWhenRef
+    { 
+        $current = $this_WhenRef_1.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getRefAccess().getThenRefParserRuleCall_2()); 
+    }
+    this_ThenRef_2=ruleThenRef
+    { 
+        $current = $this_ThenRef_2.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getRefAccess().getAndRefParserRuleCall_3()); 
+    }
+    this_AndRef_3=ruleAndRef
+    { 
+        $current = $this_AndRef_3.current; 
+        afterParserOrEnumRuleCall();
+    }
+)
+;
+
+
+
+
+
 // Entry rule entryRuleGivenRef
 entryRuleGivenRef returns [EObject current=null] 
 	:

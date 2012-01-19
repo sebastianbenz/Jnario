@@ -134,6 +134,7 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 				else break;
 			case JnarioPackage.AND_REF:
 				if(context == grammarAccess.getAndRefRule() ||
+				   context == grammarAccess.getRefRule() ||
 				   context == grammarAccess.getStepRule()) {
 					sequence_AndRef(context, (AndRef) semanticObject); 
 					return; 
@@ -190,6 +191,7 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 				else break;
 			case JnarioPackage.GIVEN_REF:
 				if(context == grammarAccess.getGivenRefRule() ||
+				   context == grammarAccess.getRefRule() ||
 				   context == grammarAccess.getStepRule()) {
 					sequence_GivenRef(context, (GivenRef) semanticObject); 
 					return; 
@@ -215,7 +217,8 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case JnarioPackage.THEN_REF:
-				if(context == grammarAccess.getStepRule() ||
+				if(context == grammarAccess.getRefRule() ||
+				   context == grammarAccess.getStepRule() ||
 				   context == grammarAccess.getThenRefRule()) {
 					sequence_ThenRef(context, (ThenRef) semanticObject); 
 					return; 
@@ -229,7 +232,8 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case JnarioPackage.WHEN_REF:
-				if(context == grammarAccess.getStepRule() ||
+				if(context == grammarAccess.getRefRule() ||
+				   context == grammarAccess.getStepRule() ||
 				   context == grammarAccess.getWhenRefRule()) {
 					sequence_WhenRef(context, (WhenRef) semanticObject); 
 					return; 

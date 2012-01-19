@@ -19,9 +19,9 @@ import org.eclipse.xtext.validation.Issue.IssueImpl;
 import org.eclipse.xtext.validation.ResourceValidatorImpl;
 
 public class JnarioResourceValidator extends ResourceValidatorImpl {
-	
+
 	private static final String REFERENCE_ERROR_MESSAGE = "Couldn't resolve reference to ";
-	
+
 	@Override
 	public List<Issue> validate(Resource resource, CheckMode mode,
 			CancelIndicator mon) {
@@ -30,15 +30,9 @@ public class JnarioResourceValidator extends ResourceValidatorImpl {
 			return null;
 		}
 		for(Issue issue: validate){
-			if(issue.getMessage().startsWith("Couldn't resolve reference to ")){
-				String ref = issue.getMessage().substring(REFERENCE_ERROR_MESSAGE.length());
-				if(ref.startsWith("Given 'Given") ||
-						ref.startsWith("When 'When") || 
-						ref.startsWith("Then 'Then") || 
-						ref.startsWith("And 'And")){
-					IssueImpl issueImpl = (IssueImpl) issue;
-					issueImpl.setSeverity(Severity.WARNING);
-				}
+			if(issue.getMessage().startsWith(REFERENCE_ERROR_MESSAGE + "Step")){
+				IssueImpl issueImpl = (IssueImpl) issue;
+				issueImpl.setSeverity(Severity.WARNING);
 			}
 		}
 		return validate;

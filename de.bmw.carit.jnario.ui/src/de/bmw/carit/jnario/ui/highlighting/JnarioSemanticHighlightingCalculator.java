@@ -50,19 +50,19 @@ public class JnarioSemanticHighlightingCalculator extends XtendHighlightingCalcu
 			else if(object instanceof GivenRef){
 				GivenRef ref = (GivenRef) object;
 				description = getFirstWord(ref.getReference().getName());
-				highlightReference(description, object, JnarioPackage.Literals.GIVEN_REF__REFERENCE);
+				highlightReference(description, object, JnarioPackage.Literals.REF__REFERENCE);
 			}else if(object instanceof WhenRef){
 				WhenRef ref = (WhenRef) object;
 				description = getFirstWord(ref.getReference().getName());
-				highlightReference(description, object, JnarioPackage.Literals.WHEN_REF__REFERENCE);
+				highlightReference(description, object, JnarioPackage.Literals.REF__REFERENCE);
 			}else if(object instanceof ThenRef){
 				ThenRef ref = (ThenRef) object;
 				description = getFirstWord(ref.getReference().getName());
-				highlightReference(description, object, JnarioPackage.Literals.THEN_REF__REFERENCE);
+				highlightReference(description, object, JnarioPackage.Literals.REF__REFERENCE);
 			}else if(object instanceof AndRef){
 				AndRef ref = (AndRef) object;
 				description = getFirstWord(ref.getReference().getName());
-				highlightReference(description, object, JnarioPackage.Literals.AND_REF__REFERENCE);
+				highlightReference(description, object, JnarioPackage.Literals.REF__REFERENCE);
 			}
 			return Boolean.TRUE;
 		}

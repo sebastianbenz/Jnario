@@ -199,6 +199,34 @@ finally {
 
 
 
+// Entry rule entryRuleRef
+entryRuleRef 
+:
+{ before(grammarAccess.getRefRule()); }
+	 ruleRef
+{ after(grammarAccess.getRefRule()); } 
+	 EOF 
+;
+
+// Rule Ref
+ruleRef
+    @init {
+		int stackSize = keepStackSize();
+    }
+	:
+(
+{ before(grammarAccess.getRefAccess().getAlternatives()); }
+(rule__Ref__Alternatives)
+{ after(grammarAccess.getRefAccess().getAlternatives()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
 // Entry rule entryRuleGivenRef
 entryRuleGivenRef 
 :
@@ -3159,6 +3187,40 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+
+rule__Ref__Alternatives
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getRefAccess().getGivenRefParserRuleCall_0()); }
+	ruleGivenRef
+{ after(grammarAccess.getRefAccess().getGivenRefParserRuleCall_0()); }
+)
+
+    |(
+{ before(grammarAccess.getRefAccess().getWhenRefParserRuleCall_1()); }
+	ruleWhenRef
+{ after(grammarAccess.getRefAccess().getWhenRefParserRuleCall_1()); }
+)
+
+    |(
+{ before(grammarAccess.getRefAccess().getThenRefParserRuleCall_2()); }
+	ruleThenRef
+{ after(grammarAccess.getRefAccess().getThenRefParserRuleCall_2()); }
+)
+
+    |(
+{ before(grammarAccess.getRefAccess().getAndRefParserRuleCall_3()); }
+	ruleAndRef
+{ after(grammarAccess.getRefAccess().getAndRefParserRuleCall_3()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
 
 rule__GivenRef__AndAlternatives_2_0
     @init {

@@ -202,6 +202,7 @@ public class JnarioSwitch<T> extends Switch<T>
 			{
 				GivenRef givenRef = (GivenRef)theEObject;
 				T result = caseGivenRef(givenRef);
+				if (result == null) result = caseRef(givenRef);
 				if (result == null) result = caseStep(givenRef);
 				if (result == null) result = caseXtendMember(givenRef);
 				if (result == null) result = caseXtendAnnotationTarget(givenRef);
@@ -212,6 +213,7 @@ public class JnarioSwitch<T> extends Switch<T>
 			{
 				WhenRef whenRef = (WhenRef)theEObject;
 				T result = caseWhenRef(whenRef);
+				if (result == null) result = caseRef(whenRef);
 				if (result == null) result = caseStep(whenRef);
 				if (result == null) result = caseXtendMember(whenRef);
 				if (result == null) result = caseXtendAnnotationTarget(whenRef);
@@ -222,6 +224,7 @@ public class JnarioSwitch<T> extends Switch<T>
 			{
 				ThenRef thenRef = (ThenRef)theEObject;
 				T result = caseThenRef(thenRef);
+				if (result == null) result = caseRef(thenRef);
 				if (result == null) result = caseStep(thenRef);
 				if (result == null) result = caseXtendMember(thenRef);
 				if (result == null) result = caseXtendAnnotationTarget(thenRef);
@@ -232,9 +235,20 @@ public class JnarioSwitch<T> extends Switch<T>
 			{
 				AndRef andRef = (AndRef)theEObject;
 				T result = caseAndRef(andRef);
+				if (result == null) result = caseRef(andRef);
 				if (result == null) result = caseStep(andRef);
 				if (result == null) result = caseXtendMember(andRef);
 				if (result == null) result = caseXtendAnnotationTarget(andRef);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case JnarioPackage.REF:
+			{
+				Ref ref = (Ref)theEObject;
+				T result = caseRef(ref);
+				if (result == null) result = caseStep(ref);
+				if (result == null) result = caseXtendMember(ref);
+				if (result == null) result = caseXtendAnnotationTarget(ref);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -526,6 +540,22 @@ public class JnarioSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseAndRef(AndRef object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ref</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ref</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRef(Ref object)
 	{
 		return null;
 	}

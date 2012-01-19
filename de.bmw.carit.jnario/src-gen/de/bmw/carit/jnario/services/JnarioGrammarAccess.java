@@ -290,16 +290,13 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cWhenParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cThenParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cAndParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cGivenRefParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
-		private final RuleCall cWhenRefParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
-		private final RuleCall cThenRefParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
-		private final RuleCall cAndRefParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
+		private final RuleCall cRefParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		
 		//Step returns xtend::XtendMember:
-		//	Given | When | Then | And | GivenRef | WhenRef | ThenRef | AndRef;
+		//	Given | When | Then | And | Ref;
 		public ParserRule getRule() { return rule; }
 
-		//Given | When | Then | And | GivenRef | WhenRef | ThenRef | AndRef
+		//Given | When | Then | And | Ref
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//Given
@@ -314,17 +311,36 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		//And
 		public RuleCall getAndParserRuleCall_3() { return cAndParserRuleCall_3; }
 
+		//Ref
+		public RuleCall getRefParserRuleCall_4() { return cRefParserRuleCall_4; }
+	}
+
+	public class RefElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Ref");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cGivenRefParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cWhenRefParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cThenRefParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cAndRefParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		
+		//Ref returns xtend::XtendMember:
+		//	GivenRef | WhenRef | ThenRef | AndRef;
+		public ParserRule getRule() { return rule; }
+
+		//GivenRef | WhenRef | ThenRef | AndRef
+		public Alternatives getAlternatives() { return cAlternatives; }
+
 		//GivenRef
-		public RuleCall getGivenRefParserRuleCall_4() { return cGivenRefParserRuleCall_4; }
+		public RuleCall getGivenRefParserRuleCall_0() { return cGivenRefParserRuleCall_0; }
 
 		//WhenRef
-		public RuleCall getWhenRefParserRuleCall_5() { return cWhenRefParserRuleCall_5; }
+		public RuleCall getWhenRefParserRuleCall_1() { return cWhenRefParserRuleCall_1; }
 
 		//ThenRef
-		public RuleCall getThenRefParserRuleCall_6() { return cThenRefParserRuleCall_6; }
+		public RuleCall getThenRefParserRuleCall_2() { return cThenRefParserRuleCall_2; }
 
 		//AndRef
-		public RuleCall getAndRefParserRuleCall_7() { return cAndRefParserRuleCall_7; }
+		public RuleCall getAndRefParserRuleCall_3() { return cAndRefParserRuleCall_3; }
 	}
 
 	public class GivenRefElements extends AbstractParserRuleElementFinder {
@@ -870,6 +886,7 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	private BackgroundElements pBackground;
 	private ScenarioElements pScenario;
 	private StepElements pStep;
+	private RefElements pRef;
 	private GivenRefElements pGivenRef;
 	private GivenElements pGiven;
 	private WhenRefElements pWhenRef;
@@ -980,13 +997,23 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Step returns xtend::XtendMember:
-	//	Given | When | Then | And | GivenRef | WhenRef | ThenRef | AndRef;
+	//	Given | When | Then | And | Ref;
 	public StepElements getStepAccess() {
 		return (pStep != null) ? pStep : (pStep = new StepElements());
 	}
 	
 	public ParserRule getStepRule() {
 		return getStepAccess().getRule();
+	}
+
+	//Ref returns xtend::XtendMember:
+	//	GivenRef | WhenRef | ThenRef | AndRef;
+	public RefElements getRefAccess() {
+		return (pRef != null) ? pRef : (pRef = new RefElements());
+	}
+	
+	public ParserRule getRefRule() {
+		return getRefAccess().getRule();
 	}
 
 	//GivenRef returns xtend::XtendMember:

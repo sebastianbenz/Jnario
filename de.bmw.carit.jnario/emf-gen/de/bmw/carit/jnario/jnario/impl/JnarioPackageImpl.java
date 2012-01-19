@@ -20,6 +20,7 @@ import de.bmw.carit.jnario.jnario.GivenRef;
 import de.bmw.carit.jnario.jnario.Jnario;
 import de.bmw.carit.jnario.jnario.JnarioFactory;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
+import de.bmw.carit.jnario.jnario.Ref;
 import de.bmw.carit.jnario.jnario.Scenario;
 import de.bmw.carit.jnario.jnario.Step;
 import de.bmw.carit.jnario.jnario.Then;
@@ -173,6 +174,13 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 	 * @generated
 	 */
 	private EClass andRefEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass refEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -585,29 +593,9 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getGivenRef_Reference()
-	{
-		return (EReference)givenRefEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getWhenRef()
 	{
 		return whenRefEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getWhenRef_Reference()
-	{
-		return (EReference)whenRefEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -625,16 +613,6 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getThenRef_Reference()
-	{
-		return (EReference)thenRefEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getAndRef()
 	{
 		return andRefEClass;
@@ -645,9 +623,19 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAndRef_Reference()
+	public EClass getRef()
 	{
-		return (EReference)andRefEClass.getEStructuralFeatures().get(0);
+		return refEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRef_Reference()
+	{
+		return (EReference)refEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -728,16 +716,15 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 		jnarioEClass = createEClass(JNARIO);
 
 		givenRefEClass = createEClass(GIVEN_REF);
-		createEReference(givenRefEClass, GIVEN_REF__REFERENCE);
 
 		whenRefEClass = createEClass(WHEN_REF);
-		createEReference(whenRefEClass, WHEN_REF__REFERENCE);
 
 		thenRefEClass = createEClass(THEN_REF);
-		createEReference(thenRefEClass, THEN_REF__REFERENCE);
 
 		andRefEClass = createEClass(AND_REF);
-		createEReference(andRefEClass, AND_REF__REFERENCE);
+
+		refEClass = createEClass(REF);
+		createEReference(refEClass, REF__REFERENCE);
 	}
 
 	/**
@@ -782,10 +769,11 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 		thenEClass.getESuperTypes().add(this.getStep());
 		andEClass.getESuperTypes().add(this.getStep());
 		jnarioEClass.getESuperTypes().add(theXtend2Package.getXtendFile());
-		givenRefEClass.getESuperTypes().add(this.getStep());
-		whenRefEClass.getESuperTypes().add(this.getStep());
-		thenRefEClass.getESuperTypes().add(this.getStep());
-		andRefEClass.getESuperTypes().add(this.getStep());
+		givenRefEClass.getESuperTypes().add(this.getRef());
+		whenRefEClass.getESuperTypes().add(this.getRef());
+		thenRefEClass.getESuperTypes().add(this.getRef());
+		andRefEClass.getESuperTypes().add(this.getRef());
+		refEClass.getESuperTypes().add(this.getStep());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(featureEClass, Feature.class, "Feature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -836,16 +824,15 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 		initEClass(jnarioEClass, Jnario.class, "Jnario", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(givenRefEClass, GivenRef.class, "GivenRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getGivenRef_Reference(), this.getGiven(), null, "reference", null, 0, 1, GivenRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(whenRefEClass, WhenRef.class, "WhenRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getWhenRef_Reference(), this.getWhen(), null, "reference", null, 0, 1, WhenRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(thenRefEClass, ThenRef.class, "ThenRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getThenRef_Reference(), this.getThen(), null, "reference", null, 0, 1, ThenRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(andRefEClass, AndRef.class, "AndRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAndRef_Reference(), this.getAnd(), null, "reference", null, 0, 1, AndRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(refEClass, Ref.class, "Ref", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getRef_Reference(), this.getStep(), null, "reference", null, 0, 1, Ref.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

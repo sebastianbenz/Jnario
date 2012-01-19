@@ -50,7 +50,11 @@ Scenario returns xtend::XtendMember:
 	examples+=ExampleTable*;
 
 Step returns xtend::XtendMember:
-	Given|When|Then|And|GivenRef|WhenRef|ThenRef|AndRef;
+	Given|When|Then|And|Ref;
+	
+Ref returns xtend::XtendMember:
+	GivenRef|WhenRef|ThenRef|AndRef
+;
 	
 GivenRef returns xtend::XtendMember:
 	{GivenRef}

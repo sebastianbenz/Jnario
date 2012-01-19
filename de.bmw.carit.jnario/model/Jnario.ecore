@@ -63,16 +63,11 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Jnario" eSuperTypes="../../org.eclipse.xtext.xtend2/model/Xtend2.ecore#//XtendFile"/>
-  <eClassifiers xsi:type="ecore:EClass" name="GivenRef" eSuperTypes="#//Step">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//Given"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WhenRef" eSuperTypes="#//Step">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//When"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ThenRef" eSuperTypes="#//Step">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//Then"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AndRef" eSuperTypes="#//Step">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//And"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GivenRef" eSuperTypes="#//Ref"/>
+  <eClassifiers xsi:type="ecore:EClass" name="WhenRef" eSuperTypes="#//Ref"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ThenRef" eSuperTypes="#//Ref"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AndRef" eSuperTypes="#//Ref"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Ref" eSuperTypes="#//Step">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//Step"/>
   </eClassifiers>
 </ecore:EPackage>

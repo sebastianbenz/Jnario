@@ -42,6 +42,7 @@ public class JnarioParser extends AbstractContentAssistParser {
 					put(grammarAccess.getScenarioAccess().getStepsAlternatives_4_0(), "rule__Scenario__StepsAlternatives_4_0");
 					put(grammarAccess.getScenarioAccess().getStepsAlternatives_5_0(), "rule__Scenario__StepsAlternatives_5_0");
 					put(grammarAccess.getStepAccess().getAlternatives(), "rule__Step__Alternatives");
+					put(grammarAccess.getRefAccess().getAlternatives(), "rule__Ref__Alternatives");
 					put(grammarAccess.getGivenRefAccess().getAndAlternatives_2_0(), "rule__GivenRef__AndAlternatives_2_0");
 					put(grammarAccess.getGivenAccess().getAndAlternatives_3_0(), "rule__Given__AndAlternatives_3_0");
 					put(grammarAccess.getWhenRefAccess().getAndAlternatives_2_0(), "rule__WhenRef__AndAlternatives_2_0");
