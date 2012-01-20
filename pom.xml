@@ -20,6 +20,7 @@
   	<module>de.bmw.carit.jnario.target</module>
     <module>de.bmw.carit.jnario</module>
     <module>de.bmw.carit.jnario.common</module>
+	<module>de.bmw.carit.jnario.common.ui</module>
     <module>de.bmw.carit.jnario.lib</module>
     <module>de.bmw.carit.jnario.spec</module>
     <module>de.bmw.carit.jnario-feature</module>
