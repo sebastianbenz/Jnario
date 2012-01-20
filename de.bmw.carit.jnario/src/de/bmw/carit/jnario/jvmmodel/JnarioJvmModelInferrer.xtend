@@ -88,7 +88,6 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 				clazz.annotations += scenario.toAnnotation(typeof(RunWith), typeof(JnarioRunner))
 			}else{
 				clazz.annotations += scenario.toAnnotation(typeof(RunWith), typeof(JnarioExamplesRunner))
-				// add contains for all examples
 			}
 			acceptor.accept(clazz)
 		}
@@ -137,25 +136,11 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 				}
 			}
 			
-			for (member : scenario.getSteps) {
-				var step = member as Step
+			for (step : scenario.getSteps) {
 				order = transform(step, it, order)
-				if(step instanceof Given){
-					var given = step as Given
-					for(and: given.and){
-						order = transform(and, it, order)
-					}
-				}else if(step instanceof When){
-					var when = step as When
-					for(and: when.and){
-						order = transform(and, it, order)
-					}
-				}else if(step instanceof Then){
-					var then = step as Then
-					for(and: then.and){
-						order = transform(and, it, order)
-					}
-				}				
+				for(and: step.and){
+					order = transform(and, it, order)
+				}
 			}
 			
 			if(!scenario.examples.empty){
@@ -165,6 +150,10 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 				}
 			}
    		]	
+   	}
+   	
+   	def generateStep(Step step){
+   		
    	}
    	
 	def transform(Step step, JvmGenericType inferredJvmType, int order) {

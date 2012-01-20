@@ -12,12 +12,9 @@ import de.bmw.carit.jnario.jnario.ExampleHeading;
 import de.bmw.carit.jnario.jnario.ExampleRow;
 import de.bmw.carit.jnario.jnario.ExampleTable;
 import de.bmw.carit.jnario.jnario.Feature;
-import de.bmw.carit.jnario.jnario.Given;
 import de.bmw.carit.jnario.jnario.Jnario;
 import de.bmw.carit.jnario.jnario.Scenario;
 import de.bmw.carit.jnario.jnario.Step;
-import de.bmw.carit.jnario.jnario.Then;
-import de.bmw.carit.jnario.jnario.When;
 import de.bmw.carit.jnario.naming.JavaNameProvider;
 import de.bmw.carit.jnario.naming.StepExpressionProvider;
 import de.bmw.carit.jnario.naming.StepNameProvider;
@@ -226,42 +223,14 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
               }
             }
             EList<Step> _steps_1 = scenario.getSteps();
-            for (final Step member : _steps_1) {
+            for (final Step step_1 : _steps_1) {
               {
-                Step step_1 = ((Step) member);
                 int _transform_2 = JnarioJvmModelInferrer.this.transform(step_1, it, order);
                 order = _transform_2;
-                if ((step_1 instanceof Given)) {
-                  {
-                    Given given = ((Given) step_1);
-                    EList<Step> _and_1 = given.getAnd();
-                    for (final Step and_1 : _and_1) {
-                      int _transform_3 = JnarioJvmModelInferrer.this.transform(and_1, it, order);
-                      order = _transform_3;
-                    }
-                  }
-                } else {
-                  if ((step_1 instanceof When)) {
-                    {
-                      When when = ((When) step_1);
-                      EList<Step> _and_2 = when.getAnd();
-                      for (final Step and_2 : _and_2) {
-                        int _transform_4 = JnarioJvmModelInferrer.this.transform(and_2, it, order);
-                        order = _transform_4;
-                      }
-                    }
-                  } else {
-                    if ((step_1 instanceof Then)) {
-                      {
-                        Then then = ((Then) step_1);
-                        EList<Step> _and_3 = then.getAnd();
-                        for (final Step and_3 : _and_3) {
-                          int _transform_5 = JnarioJvmModelInferrer.this.transform(and_3, it, order);
-                          order = _transform_5;
-                        }
-                      }
-                    }
-                  }
+                EList<Step> _and_1 = step_1.getAnd();
+                for (final Step and_1 : _and_1) {
+                  int _transform_3 = JnarioJvmModelInferrer.this.transform(and_1, it, order);
+                  order = _transform_3;
                 }
               }
             }
@@ -286,6 +255,10 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
       };
     JvmGenericType _class = this._extendedJvmTypesBuilder.toClass(scenario, className, _function);
     return _class;
+  }
+  
+  public Object generateStep(final Step step) {
+    return null;
   }
   
   public int transform(final Step step, final JvmGenericType inferredJvmType, final int order) {
