@@ -102,30 +102,33 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
       Jnario jnarioFile = ((Jnario) object);
       XtendClass _xtendClass = jnarioFile==null?(XtendClass)null:jnarioFile.getXtendClass();
       Feature feature = ((Feature) _xtendClass);
-      EList<XtendMember> _members = feature==null?(EList<XtendMember>)null:feature.getMembers();
-      for (final XtendMember member : _members) {
-        {
-          final Scenario scenario = ((Scenario) member);
-          String _name = feature.getName();
-          String _javaClassName = this._javaNameProvider.getJavaClassName(_name);
-          String _name_1 = scenario.getName();
-          String _javaClassName_1 = this._javaNameProvider.getJavaClassName(_name_1);
-          String _operator_plus = StringExtensions.operator_plus(_javaClassName, _javaClassName_1);
-          final String className = _operator_plus;
-          JvmGenericType _infer = this.infer(scenario, jnarioFile, className);
-          final JvmGenericType clazz = _infer;
-          EList<ExampleTable> _examples = scenario.getExamples();
-          boolean _isEmpty = _examples.isEmpty();
-          if (_isEmpty) {
-            EList<JvmAnnotationReference> _annotations = clazz.getAnnotations();
-            JvmAnnotationReference _annotation = this._extendedJvmTypesBuilder.toAnnotation(scenario, org.junit.runner.RunWith.class, de.bmw.carit.jnario.runner.JnarioRunner.class);
-            CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
-          } else {
-            EList<JvmAnnotationReference> _annotations_1 = clazz.getAnnotations();
-            JvmAnnotationReference _annotation_1 = this._extendedJvmTypesBuilder.toAnnotation(scenario, org.junit.runner.RunWith.class, de.bmw.carit.jnario.runner.JnarioExamplesRunner.class);
-            CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
+      boolean _operator_notEquals = ObjectExtensions.operator_notEquals(feature, null);
+      if (_operator_notEquals) {
+        EList<XtendMember> _members = feature.getMembers();
+        for (final XtendMember member : _members) {
+          {
+            final Scenario scenario = ((Scenario) member);
+            String _name = feature.getName();
+            String _javaClassName = this._javaNameProvider.getJavaClassName(_name);
+            String _name_1 = scenario.getName();
+            String _javaClassName_1 = this._javaNameProvider.getJavaClassName(_name_1);
+            String _operator_plus = StringExtensions.operator_plus(_javaClassName, _javaClassName_1);
+            final String className = _operator_plus;
+            JvmGenericType _infer = this.infer(scenario, jnarioFile, className);
+            final JvmGenericType clazz = _infer;
+            EList<ExampleTable> _examples = scenario.getExamples();
+            boolean _isEmpty = _examples.isEmpty();
+            if (_isEmpty) {
+              EList<JvmAnnotationReference> _annotations = clazz.getAnnotations();
+              JvmAnnotationReference _annotation = this._extendedJvmTypesBuilder.toAnnotation(scenario, org.junit.runner.RunWith.class, de.bmw.carit.jnario.runner.JnarioRunner.class);
+              CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
+            } else {
+              EList<JvmAnnotationReference> _annotations_1 = clazz.getAnnotations();
+              JvmAnnotationReference _annotation_1 = this._extendedJvmTypesBuilder.toAnnotation(scenario, org.junit.runner.RunWith.class, de.bmw.carit.jnario.runner.JnarioExamplesRunner.class);
+              CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
+            }
+            acceptor.accept(clazz);
           }
-          acceptor.accept(clazz);
         }
       }
   }
@@ -211,26 +214,17 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
               Background _background_2 = feature.getBackground();
               EList<Step> _steps = _background_2.getSteps();
               for (final Step step : _steps) {
-                {
-                  int _transform = JnarioJvmModelInferrer.this.transform(step, it, order);
-                  order = _transform;
-                  EList<Step> _and = step.getAnd();
-                  for (final Step and : _and) {
-                    int _transform_1 = JnarioJvmModelInferrer.this.transform(and, it, order);
-                    order = _transform_1;
-                  }
-                }
               }
             }
             EList<Step> _steps_1 = scenario.getSteps();
             for (final Step step_1 : _steps_1) {
               {
-                int _transform_2 = JnarioJvmModelInferrer.this.transform(step_1, it, order);
-                order = _transform_2;
-                EList<Step> _and_1 = step_1.getAnd();
-                for (final Step and_1 : _and_1) {
-                  int _transform_3 = JnarioJvmModelInferrer.this.transform(and_1, it, order);
-                  order = _transform_3;
+                int _transform = JnarioJvmModelInferrer.this.transform(step_1, it, order);
+                order = _transform;
+                EList<Step> _and = step_1.getAnd();
+                for (final Step and : _and) {
+                  int _transform_1 = JnarioJvmModelInferrer.this.transform(and, it, order);
+                  order = _transform_1;
                 }
               }
             }
@@ -255,10 +249,6 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
       };
     JvmGenericType _class = this._extendedJvmTypesBuilder.toClass(scenario, className, _function);
     return _class;
-  }
-  
-  public Object generateStep(final Step step) {
-    return null;
   }
   
   public int transform(final Step step, final JvmGenericType inferredJvmType, final int order) {

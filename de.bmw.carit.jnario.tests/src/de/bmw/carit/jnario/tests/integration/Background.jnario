@@ -1,14 +1,37 @@
 package de.bmw.carit.jnario.tests
 
-Feature: A new feature.
-Background:
-	public String username
-	public String password
-	Given a user name.
-		username = "PowerUser"
-	And a password.
-		password = "password"
-Scenario: A fancy scenario.
-	When I do something fancy
-	Then it should work
-		username.should.be("PowerUser")
+import static de.bmw.carit.jnario.common.test.util.ResultMatchers.*
+import static extension de.bmw.carit.jnario.tests.util.JnarioExecutor.*
+
+Feature: Backgrounds
+
+	Scenario: It is possible to add a background to a feature
+		public String jnarioFile
+		Given I have a feature with a background
+			jnarioFile = "
+				package bootstrap
+				Feature: Some feature
+					Background:
+						Given a user name
+					Scenario: Scenario 1
+					Scenario: Scenario 2
+			"
+		When I run the feature
+		Then it should be successful
+			jnarioFile.execute.should.be(successful)
+			
+	Scenario: Given methods from backgrounds are generated in every scenario class
+	
+		public String jnarioFile
+		Given I have a feature with a background
+			jnarioFile = "
+				package bootstrap
+				Feature: Some feature
+					Background:
+						Given a user name
+					Scenario: Scenario 1
+					Scenario: Scenario 2
+			"
+		When I generate the classes
+		Then every class should have a 'givenAUserName' method
+			

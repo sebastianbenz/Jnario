@@ -13,12 +13,9 @@ import de.bmw.carit.jnario.generator.JnarioCompiler
 import de.bmw.carit.jnario.jnario.ExampleRow
 import de.bmw.carit.jnario.jnario.ExampleTable
 import de.bmw.carit.jnario.jnario.Feature
-import de.bmw.carit.jnario.jnario.Given
 import de.bmw.carit.jnario.jnario.Jnario
 import de.bmw.carit.jnario.jnario.Scenario
 import de.bmw.carit.jnario.jnario.Step
-import de.bmw.carit.jnario.jnario.Then
-import de.bmw.carit.jnario.jnario.When
 import de.bmw.carit.jnario.naming.JavaNameProvider
 import de.bmw.carit.jnario.naming.StepExpressionProvider
 import de.bmw.carit.jnario.naming.StepNameProvider
@@ -30,6 +27,7 @@ import de.bmw.carit.jnario.runner.Order
 import java.util.List
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmVisibility
@@ -80,16 +78,18 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
     override void infer(EObject object, IAcceptor<JvmDeclaredType> acceptor, boolean isPrelinkingPhase) {
     	var jnarioFile = object as Jnario
 		var feature = jnarioFile?.xtendClass as Feature
-		for(member: feature?.members){
-			val scenario = member as Scenario
-			val className = feature.name.javaClassName + scenario.name.javaClassName
-			val clazz = scenario.infer(jnarioFile, className)
-			if(scenario.examples.empty){
-				clazz.annotations += scenario.toAnnotation(typeof(RunWith), typeof(JnarioRunner))
-			}else{
-				clazz.annotations += scenario.toAnnotation(typeof(RunWith), typeof(JnarioExamplesRunner))
+		if(feature != null){
+			for(member: feature.members){
+				val scenario = member as Scenario
+				val className = feature.name.javaClassName + scenario.name.javaClassName
+				val clazz = scenario.infer(jnarioFile, className)
+				if(scenario.examples.empty){
+					clazz.annotations += scenario.toAnnotation(typeof(RunWith), typeof(JnarioRunner))
+				}else{
+					clazz.annotations += scenario.toAnnotation(typeof(RunWith), typeof(JnarioExamplesRunner))
+				}
+				acceptor.accept(clazz)
 			}
-			acceptor.accept(clazz)
 		}
    	}
    	
@@ -129,14 +129,16 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 			var order = 0
 			if(hasBackground){
 				for (step : feature.background.steps) {
-					order = transform(step, it, order)
-					for(and: step.and){
-						order = transform(and, it, order)
-					}			
+//					var backgroundStep = EcoreUtil::copy(step)
+//					scenario.steps += backgroundStep
+//					order = transform(backgroundStep, it, order)
+//					for(and: backgroundStep.and){
+//						order = transform(and, it, order)
+//					}			
 				}
 			}
 			
-			for (step : scenario.getSteps) {
+			for (step : scenario.steps) {
 				order = transform(step, it, order)
 				for(and: step.and){
 					order = transform(and, it, order)
@@ -150,10 +152,6 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 				}
 			}
    		]	
-   	}
-   	
-   	def generateStep(Step step){
-   		
    	}
    	
 	def transform(Step step, JvmGenericType inferredJvmType, int order) {

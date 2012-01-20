@@ -2,27 +2,25 @@ TODO:
 	
 	General:
 		- add tests for ordering in example runner
-		- add support for doubles @medium @feature
-		- move de.bmw.carit.jnario.common.test.util.* to test util plugin @medium
-		- run as with right click in jnario files not working yet @low @bug
+		- doubles: add support @medium @feature
+		- run as with right click: in jnario files not working yet @low @bug
 		- build: compiler is not working on a mac @medium @bug
 
 	Grammar:
 		- examples should be possible only with description as placeholders (no heading, no row) @low @feature
-		- reusability of givens, thens, backgrounds , reference to thens over something like "behaves like"? @high @feature
-		- check of annotations @medium @feature
-
+		- rename "code" in grammar to "expression" or sth similar
 	
 	Jnario Generator/Complier:
 		
 		- object variables have to be declared public -> why? @bug @medium
-		- examples over setters? @low @feature
-		- for empty steps no java methods are generated -> no ouput in junit results -> should be displayed @medium @feature
 		- variable declaration in step description should be possible (maybe also code) -> generate into list/map, depending on existing identifier, usage of subject @medium @feature
 		- background: problem with generation: expressions are not allowed to be reused with jvmmodel, ecoreutil.copy not working @high @bug
 		- example name should be used for description and class name, if none exists numbers should be used @low @feature
 		- for generation java class name conflicts should be shown so different jnario files don't create java classes with the same name @feature @medium
 		- error when changing a jnario file while in an example line @high @bug
+		- generate test suite for feature -> all scenarios can be run via that feature suite
+		- remove unnecassary whitespaces, tabs etc for steps
+		- examples over setters? @low @feature
 		
 	Editor:
 		

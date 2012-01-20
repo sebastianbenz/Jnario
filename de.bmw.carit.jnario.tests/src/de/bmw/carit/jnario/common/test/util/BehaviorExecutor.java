@@ -17,16 +17,12 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.tools.JavaCompiler;
 import javax.tools.ToolProvider;
 
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.osgi.framework.adaptor.BundleData;
-import org.eclipse.osgi.framework.internal.core.AbstractBundle;
 import org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader;
 import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.generator.IGenerator;
@@ -39,14 +35,15 @@ import org.junit.rules.TemporaryFolder;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
-import org.osgi.framework.BundleException;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Predicate;
 import com.google.inject.Inject;
 
-import de.bmw.carit.jnario.Activator;
-
+/**
+ * @author Sebastian Benz
+ * @author Birgit Engelmann
+ */
 @SuppressWarnings("restriction")
 public abstract class BehaviorExecutor {
 
@@ -106,9 +103,6 @@ public abstract class BehaviorExecutor {
 		
 	}
 	
-	private static final String BUNDLE_REFERENCE = "reference:file:";
-	private static final String PLUGIN_CLASSES_FOLDER = "plugins";
-	private static final String SYSTEM_BUNDLE = "System Bundle";
 
 	private final IGenerator generator;
 	private final JavaIoFileSystemAccess fsa;
@@ -185,8 +179,8 @@ public abstract class BehaviorExecutor {
 		compiler.run(System.in, System.out, System.err, args);
 	}
 
-	protected String[] addOsgiBundlesToClassPath(String[] args) {
-		String classPathEntries = Joiner.on(";").join(getClassPath());
+	private String[] addOsgiBundlesToClassPath(String[] args) {
+		String classPathEntries = Joiner.on(";").join(BundleClassPathProvider.getClassPath());
 		String[] classPathAndJavaFiles = new String[args.length + 2];
 		classPathAndJavaFiles[0] = "-classpath";
 		classPathAndJavaFiles[1] = classPathEntries;
@@ -261,55 +255,7 @@ public abstract class BehaviorExecutor {
 		return false;
 	}
 
-	private List<String> getClassPath() {
-		String installLocation = Platform.getInstallLocation().getURL()
-				.getPath();
 
-		AbstractBundle[] bundles = (AbstractBundle[]) Activator.getDefault()
-				.getBundle().getBundleContext().getBundles();
-		List<String> classpath = new ArrayList<String>();
 
-		for (AbstractBundle bundle : bundles) {
-			BundleData bundleData = bundle.getBundleData();
-			String pathToBundle = getPathOfBundle(bundleData);
-			try {
-				for (String subFolders : bundleData.getClassPath()) {
-					String fullLocation = pathToBundle + File.separator + subFolders;
-					String finalClassPath = getAbsoluteClassPath(fullLocation, installLocation);
-					if(finalClassPath.length() > 0){
-						if(finalClassPath.endsWith("//.")){
-							finalClassPath = finalClassPath.substring(0, finalClassPath.length()-3);
-						}else if(finalClassPath.endsWith("/.")){
-							finalClassPath = finalClassPath.substring(0, finalClassPath.length()-2);
-						}
-						classpath.add(finalClassPath.replace("/", File.separator));
-					}
-				}
-			} catch (BundleException e) {
-				e.printStackTrace();
-			}
-		}
-		return classpath;
-	}
-
-	private String getPathOfBundle(BundleData bundleData) {
-		String pathOfBundle = bundleData.getLocation();
-		int indexOf = pathOfBundle.indexOf(BUNDLE_REFERENCE);
-		if (indexOf >= 0) {
-			return pathOfBundle.substring(indexOf + BUNDLE_REFERENCE.length());
-		}
-		return pathOfBundle;
-	}
-
-	private String getAbsoluteClassPath(String fullLocation, 
-			String installLocation) {
-		if (fullLocation.contains(SYSTEM_BUNDLE)) {
-			return "";
-		}
-		if (fullLocation.contains("..")	|| fullLocation.startsWith(PLUGIN_CLASSES_FOLDER)) {
-			return installLocation + fullLocation;
-		}
-		return fullLocation;
-	}
 
 }
