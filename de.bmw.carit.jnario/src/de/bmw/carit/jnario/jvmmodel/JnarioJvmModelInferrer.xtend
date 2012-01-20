@@ -1,20 +1,27 @@
+/*******************************************************************************
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
 package de.bmw.carit.jnario.jvmmodel
 
 import com.google.inject.Inject
 import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder
 import de.bmw.carit.jnario.generator.JnarioCompiler
-import de.bmw.carit.jnario.jnario.Code
 import de.bmw.carit.jnario.jnario.ExampleRow
 import de.bmw.carit.jnario.jnario.ExampleTable
 import de.bmw.carit.jnario.jnario.Feature
 import de.bmw.carit.jnario.jnario.Given
 import de.bmw.carit.jnario.jnario.Jnario
-import de.bmw.carit.jnario.jnario.Ref
 import de.bmw.carit.jnario.jnario.Scenario
 import de.bmw.carit.jnario.jnario.Step
 import de.bmw.carit.jnario.jnario.Then
 import de.bmw.carit.jnario.jnario.When
 import de.bmw.carit.jnario.naming.JavaNameProvider
+import de.bmw.carit.jnario.naming.StepExpressionProvider
+import de.bmw.carit.jnario.naming.StepNameProvider
 import de.bmw.carit.jnario.runner.Contains
 import de.bmw.carit.jnario.runner.JnarioExamplesRunner
 import de.bmw.carit.jnario.runner.JnarioRunner
@@ -23,7 +30,6 @@ import de.bmw.carit.jnario.runner.Order
 import java.util.List
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmVisibility
@@ -39,23 +45,12 @@ import org.junit.runner.RunWith
 
 import static com.google.common.collect.Iterators.*
 import static org.eclipse.xtext.EcoreUtil2.*
-import org.eclipse.xtext.nodemodel.util.NodeModelUtils
-import de.bmw.carit.jnario.jnario.JnarioPackage
-import org.eclipse.emf.codegen.ecore.genmodel.impl.Literals
-import de.bmw.carit.jnario.naming.StepNameProvider
-import de.bmw.carit.jnario.naming.StepExpressionProvider
 
 /**
- * <p>Infers a JVM model from the source model.</p> 
- *
- * <p>The JVM model should contain all elements that would appear in the Java code 
- * which is generated from the source model. Other models link against the JVM model rather than the source model.</p>     
+ * @author Birgit Engelmann
  */
 class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 
-    /**
-     * conveninence API to build and initialize JvmTypes and their members.
-     */
 	@Inject extension ExtendedJvmTypesBuilder
 	
 	@Inject	extension TypeReferences
@@ -84,22 +79,18 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 	 */
     override void infer(EObject object, IAcceptor<JvmDeclaredType> acceptor, boolean isPrelinkingPhase) {
     	var jnarioFile = object as Jnario
-   		if(jnarioFile != null){
-   			var feature = jnarioFile.xtendClass as Feature
-   			if(feature != null){
-				for(member: feature.members){
-					var scenario = member as Scenario
-					val className = feature.name.javaClassName + scenario.name.javaClassName
-					var clazz = scenario.infer(jnarioFile, className)
-					if(!scenario.examples.empty){
-						clazz.annotations += scenario.toAnnotation(typeof(RunWith), typeof(JnarioExamplesRunner))
-						// add contains for all examples
-					}else{
-						clazz.annotations += scenario.toAnnotation(typeof(RunWith), typeof(JnarioRunner))
-					}
-					acceptor.accept(clazz)
-				}
+		var feature = jnarioFile?.xtendClass as Feature
+		for(member: feature?.members){
+			val scenario = member as Scenario
+			val className = feature.name.javaClassName + scenario.name.javaClassName
+			val clazz = scenario.infer(jnarioFile, className)
+			if(scenario.examples.empty){
+				clazz.annotations += scenario.toAnnotation(typeof(RunWith), typeof(JnarioRunner))
+			}else{
+				clazz.annotations += scenario.toAnnotation(typeof(RunWith), typeof(JnarioExamplesRunner))
+				// add contains for all examples
 			}
+			acceptor.accept(clazz)
 		}
    	}
    	

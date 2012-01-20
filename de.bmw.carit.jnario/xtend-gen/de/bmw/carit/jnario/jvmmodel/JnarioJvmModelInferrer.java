@@ -64,16 +64,10 @@ import org.eclipse.xtext.xtend2.xtend2.XtendField;
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 
 /**
- * <p>Infers a JVM model from the source model.</p>
- * 
- * <p>The JVM model should contain all elements that would appear in the Java code
- * which is generated from the source model. Other models link against the JVM model rather than the source model.</p>
+ * @author Birgit Engelmann
  */
 @SuppressWarnings("all")
 public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
-  /**
-   * conveninence API to build and initialize JvmTypes and their members.
-   */
   @Inject
   private ExtendedJvmTypesBuilder _extendedJvmTypesBuilder;
   
@@ -109,41 +103,32 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
    */
   public void infer(final EObject object, final IAcceptor<JvmDeclaredType> acceptor, final boolean isPrelinkingPhase) {
       Jnario jnarioFile = ((Jnario) object);
-      boolean _operator_notEquals = ObjectExtensions.operator_notEquals(jnarioFile, null);
-      if (_operator_notEquals) {
+      XtendClass _xtendClass = jnarioFile==null?(XtendClass)null:jnarioFile.getXtendClass();
+      Feature feature = ((Feature) _xtendClass);
+      EList<XtendMember> _members = feature==null?(EList<XtendMember>)null:feature.getMembers();
+      for (final XtendMember member : _members) {
         {
-          XtendClass _xtendClass = jnarioFile.getXtendClass();
-          Feature feature = ((Feature) _xtendClass);
-          boolean _operator_notEquals_1 = ObjectExtensions.operator_notEquals(feature, null);
-          if (_operator_notEquals_1) {
-            EList<XtendMember> _members = feature.getMembers();
-            for (final XtendMember member : _members) {
-              {
-                Scenario scenario = ((Scenario) member);
-                String _name = feature.getName();
-                String _javaClassName = this._javaNameProvider.getJavaClassName(_name);
-                String _name_1 = scenario.getName();
-                String _javaClassName_1 = this._javaNameProvider.getJavaClassName(_name_1);
-                String _operator_plus = StringExtensions.operator_plus(_javaClassName, _javaClassName_1);
-                final String className = _operator_plus;
-                JvmGenericType _infer = this.infer(scenario, jnarioFile, className);
-                JvmGenericType clazz = _infer;
-                EList<ExampleTable> _examples = scenario.getExamples();
-                boolean _isEmpty = _examples.isEmpty();
-                boolean _operator_not = BooleanExtensions.operator_not(_isEmpty);
-                if (_operator_not) {
-                  EList<JvmAnnotationReference> _annotations = clazz.getAnnotations();
-                  JvmAnnotationReference _annotation = this._extendedJvmTypesBuilder.toAnnotation(scenario, org.junit.runner.RunWith.class, de.bmw.carit.jnario.runner.JnarioExamplesRunner.class);
-                  CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
-                } else {
-                  EList<JvmAnnotationReference> _annotations_1 = clazz.getAnnotations();
-                  JvmAnnotationReference _annotation_1 = this._extendedJvmTypesBuilder.toAnnotation(scenario, org.junit.runner.RunWith.class, de.bmw.carit.jnario.runner.JnarioRunner.class);
-                  CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
-                }
-                acceptor.accept(clazz);
-              }
-            }
+          final Scenario scenario = ((Scenario) member);
+          String _name = feature.getName();
+          String _javaClassName = this._javaNameProvider.getJavaClassName(_name);
+          String _name_1 = scenario.getName();
+          String _javaClassName_1 = this._javaNameProvider.getJavaClassName(_name_1);
+          String _operator_plus = StringExtensions.operator_plus(_javaClassName, _javaClassName_1);
+          final String className = _operator_plus;
+          JvmGenericType _infer = this.infer(scenario, jnarioFile, className);
+          final JvmGenericType clazz = _infer;
+          EList<ExampleTable> _examples = scenario.getExamples();
+          boolean _isEmpty = _examples.isEmpty();
+          if (_isEmpty) {
+            EList<JvmAnnotationReference> _annotations = clazz.getAnnotations();
+            JvmAnnotationReference _annotation = this._extendedJvmTypesBuilder.toAnnotation(scenario, org.junit.runner.RunWith.class, de.bmw.carit.jnario.runner.JnarioRunner.class);
+            CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
+          } else {
+            EList<JvmAnnotationReference> _annotations_1 = clazz.getAnnotations();
+            JvmAnnotationReference _annotation_1 = this._extendedJvmTypesBuilder.toAnnotation(scenario, org.junit.runner.RunWith.class, de.bmw.carit.jnario.runner.JnarioExamplesRunner.class);
+            CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
           }
+          acceptor.accept(clazz);
         }
       }
   }
