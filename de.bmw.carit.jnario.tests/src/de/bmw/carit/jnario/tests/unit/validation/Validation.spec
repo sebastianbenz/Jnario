@@ -23,6 +23,7 @@ describe "JnarioValidator"{
 				Scenario: step definition and usage
 					Given some step
 						var x = 3
+						x = 5
 					Given some step
 		')
 		val validationResult = validate(typeof(GivenRef))
