@@ -9,13 +9,14 @@ Feature: References for steps
 		public String jnarioFile
 		Given a scenario with reused steps
 			jnarioFile = "
-				package bootstrap
-				Feature:
-					Scenario:
+				Feature: Test
+					Scenario: TestScenario 1
 						Given step
-							var x = 3
+							throw new RuntimeException()
+						
+					Scenario: TestScenario 2
 						Given step
 				"
-		When I run it it should pass
-			jnarioFile.execute.should.be(successful)
-	
+		When I run it it should fail
+			jnarioFile.execute.failureCount.should.be(2)
+	 

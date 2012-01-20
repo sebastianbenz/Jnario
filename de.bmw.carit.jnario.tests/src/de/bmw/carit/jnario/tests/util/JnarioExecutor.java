@@ -71,9 +71,6 @@ public class JnarioExecutor extends BehaviorExecutor{
 			Scenario scenario = (Scenario) member;
 			String jnarioClassName = nameProvider.getJavaClassName(feature.getName()) + nameProvider.getJavaClassName(scenario.getName());
 			String packageName = jnario.getPackage();
-			if(packageName == null){
-				packageName = "";
-			}
 			result.add(runTestsInClass(jnarioClassName, packageName));
 		}
 		return result;

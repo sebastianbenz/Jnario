@@ -19,6 +19,8 @@ import de.bmw.carit.jnario.jnario.Step;
 import de.bmw.carit.jnario.jnario.Then;
 import de.bmw.carit.jnario.jnario.When;
 import de.bmw.carit.jnario.naming.JavaNameProvider;
+import de.bmw.carit.jnario.naming.StepExpressionProvider;
+import de.bmw.carit.jnario.naming.StepNameProvider;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -86,6 +88,12 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
   
   @Inject
   private JnarioCompiler _jnarioCompiler;
+  
+  @Inject
+  private StepNameProvider _stepNameProvider;
+  
+  @Inject
+  private StepExpressionProvider _stepExpressionProvider;
   
   @Inject
   private IJvmModelAssociator associator;
@@ -298,112 +306,78 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
   public int transform(final Step step, final JvmGenericType inferredJvmType, final int order) {
     int _xblockexpression = (int) 0;
     {
-      Code _code = step.getCode();
-      boolean _operator_notEquals = ObjectExtensions.operator_notEquals(_code, null);
-      if (_operator_notEquals) {
-        EList<JvmMember> _members = inferredJvmType.getMembers();
-        String _name = step.getName();
-        String _javaMethodName = this._javaNameProvider.getJavaMethodName(_name);
-        JvmTypeReference _typeForName = this._typeReferences.getTypeForName(Void.TYPE, step);
-        final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
-            public void apply(final JvmOperation it) {
-              {
-                Code _code = step.getCode();
-                XBlockExpression _blockExpression = _code.getBlockExpression();
-                JnarioJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, _blockExpression);
-                EList<JvmAnnotationReference> _annotations = it.getAnnotations();
-                JvmAnnotationReference _annotation = JnarioJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(step, org.junit.Test.class);
-                CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
-                EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
-                int _intValue = Integer.valueOf(order).intValue();
-                JvmAnnotationReference _annotation_1 = JnarioJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(step, de.bmw.carit.jnario.runner.Order.class, Integer.valueOf(_intValue));
-                CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
-                EList<JvmAnnotationReference> _annotations_2 = it.getAnnotations();
-                String _name = step.getName();
-                String _trim = _name.trim();
-                JvmAnnotationReference _annotation_2 = JnarioJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(step, de.bmw.carit.jnario.runner.Named.class, _trim);
-                CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_2, _annotation_2);
-              }
+      EList<JvmMember> _members = inferredJvmType.getMembers();
+      String _nameOf = this._stepNameProvider.nameOf(step);
+      String _javaMethodName = this._javaNameProvider.getJavaMethodName(_nameOf);
+      JvmTypeReference _typeForName = this._typeReferences.getTypeForName(Void.TYPE, step);
+      final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
+          public void apply(final JvmOperation it) {
+            {
+              Code _expressionOf = JnarioJvmModelInferrer.this._stepExpressionProvider.expressionOf(step);
+              XBlockExpression _blockExpression = _expressionOf==null?(XBlockExpression)null:_expressionOf.getBlockExpression();
+              JnarioJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, _blockExpression);
+              EList<JvmAnnotationReference> _annotations = it.getAnnotations();
+              JvmAnnotationReference _annotation = JnarioJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(step, org.junit.Test.class);
+              CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
+              EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
+              int _intValue = Integer.valueOf(order).intValue();
+              JvmAnnotationReference _annotation_1 = JnarioJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(step, de.bmw.carit.jnario.runner.Order.class, Integer.valueOf(_intValue));
+              CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
+              EList<JvmAnnotationReference> _annotations_2 = it.getAnnotations();
+              String _nameOf = JnarioJvmModelInferrer.this._stepNameProvider.nameOf(step);
+              JvmAnnotationReference _annotation_2 = JnarioJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(step, de.bmw.carit.jnario.runner.Named.class, _nameOf);
+              CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_2, _annotation_2);
             }
-          };
-        JvmOperation _method = this._extendedJvmTypesBuilder.toMethod(step, _javaMethodName, _typeForName, _function);
-        CollectionExtensions.<JvmOperation>operator_add(_members, _method);
-      }
+          }
+        };
+      JvmOperation _method = this._extendedJvmTypesBuilder.toMethod(step, _javaMethodName, _typeForName, _function);
+      CollectionExtensions.<JvmOperation>operator_add(_members, _method);
       int _operator_plus = IntegerExtensions.operator_plus(order, 1);
       _xblockexpression = (_operator_plus);
     }
     return _xblockexpression;
   }
   
-  public Object checkIfExampleField(final XtendField field) {
-    Object _xblockexpression = null;
-    {
+  public void checkIfExampleField(final XtendField field) {
       ExampleTable _containerOfType = EcoreUtil2.<ExampleTable>getContainerOfType(field, de.bmw.carit.jnario.jnario.ExampleTable.class);
       ExampleTable examples = _containerOfType;
-      Object _xifexpression = null;
-      boolean _operator_notEquals = ObjectExtensions.operator_notEquals(examples, null);
-      if (_operator_notEquals) {
-        Object _xblockexpression_1 = null;
-        {
-          ExampleHeading _heading = examples.getHeading();
-          ExampleHeading heading = _heading;
-          Object _xifexpression_1 = null;
-          EList<XtendField> _parts = heading.getParts();
-          boolean _contains = _parts.contains(field);
-          if (_contains) {
-            Object _xblockexpression_2 = null;
-            {
-              EList<XtendField> _parts_1 = heading.getParts();
-              int _indexOf = _parts_1.indexOf(field);
-              int index = _indexOf;
-              Object _xifexpression_2 = null;
-              boolean _operator_and = false;
-              EList<ExampleRow> _rows = examples.getRows();
-              boolean _operator_notEquals_1 = ObjectExtensions.operator_notEquals(_rows, null);
-              if (!_operator_notEquals_1) {
-                _operator_and = false;
-              } else {
-                EList<ExampleRow> _rows_1 = examples.getRows();
-                int _size = _rows_1.size();
-                boolean _operator_greaterThan = IntegerExtensions.operator_greaterThan(_size, 0);
-                _operator_and = BooleanExtensions.operator_and(_operator_notEquals_1, _operator_greaterThan);
-              }
-              if (_operator_and) {
-                Object _xblockexpression_3 = null;
-                {
-                  EList<ExampleRow> _rows_2 = examples.getRows();
-                  ExampleRow _get = _rows_2.get(0);
-                  ExampleRow exampleRow = _get;
-                  Object _xifexpression_3 = null;
-                  EList<ExampleCell> _parts_2 = exampleRow.getParts();
-                  int _size_1 = _parts_2.size();
-                  boolean _operator_lessThan = IntegerExtensions.operator_lessThan(index, _size_1);
-                  if (_operator_lessThan) {
-                    {
-                      EList<ExampleCell> _parts_3 = exampleRow.getParts();
-                      ExampleCell _get_1 = _parts_3.get(index);
-                      ExampleCell exampleCell = _get_1;
-                      XExpression _name = exampleCell.getName();
-                      JvmTypeReference _type = this._iTypeProvider.getType(_name);
-                      field.setType(_type);
-                      field.setVisibility(JvmVisibility.PUBLIC);
-                    }
-                  }
-                  _xblockexpression_3 = (_xifexpression_3);
-                }
-                _xifexpression_2 = _xblockexpression_3;
-              }
-              _xblockexpression_2 = (_xifexpression_2);
-            }
-            _xifexpression_1 = _xblockexpression_2;
-          }
-          _xblockexpression_1 = (_xifexpression_1);
-        }
-        _xifexpression = _xblockexpression_1;
+      boolean _operator_equals = ObjectExtensions.operator_equals(examples, null);
+      if (_operator_equals) {
+        return;
       }
-      _xblockexpression = (_xifexpression);
-    }
-    return _xblockexpression;
+      ExampleHeading _heading = examples.getHeading();
+      ExampleHeading heading = _heading;
+      EList<XtendField> _parts = heading.getParts();
+      boolean _contains = _parts.contains(field);
+      boolean _operator_not = BooleanExtensions.operator_not(_contains);
+      if (_operator_not) {
+        return;
+      }
+      EList<XtendField> _parts_1 = heading.getParts();
+      int _indexOf = _parts_1.indexOf(field);
+      int index = _indexOf;
+      EList<ExampleRow> _rows = examples.getRows();
+      boolean _isEmpty = _rows.isEmpty();
+      if (_isEmpty) {
+        return;
+      }
+      EList<ExampleRow> _rows_1 = examples.getRows();
+      ExampleRow _get = _rows_1.get(0);
+      ExampleRow exampleRow = _get;
+      EList<ExampleCell> _parts_2 = exampleRow.getParts();
+      int _size = _parts_2.size();
+      boolean _operator_lessThan = IntegerExtensions.operator_lessThan(index, _size);
+      if (_operator_lessThan) {
+        {
+          EList<ExampleCell> _parts_3 = exampleRow.getParts();
+          ExampleCell _get_1 = _parts_3.get(index);
+          ExampleCell exampleCell = _get_1;
+          XExpression _name = exampleCell.getName();
+          JvmTypeReference _type = this._iTypeProvider.getType(_name);
+          field.setType(_type);
+          field.setVisibility(JvmVisibility.PUBLIC);
+        }
+      }
   }
   
   public List<JvmGenericType> generateExampleClasses(final Scenario scenario, final Jnario jnario, final JvmGenericType inferredJvmType) {

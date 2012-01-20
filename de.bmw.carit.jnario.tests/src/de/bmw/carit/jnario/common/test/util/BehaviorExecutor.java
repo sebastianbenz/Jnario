@@ -204,8 +204,10 @@ public abstract class BehaviorExecutor {
 		URLClassLoader classLoader = URLClassLoader.newInstance(
 				new URL[] { tempFolder.getRoot().toURI().toURL() }, getClass()
 						.getClassLoader());
-		String className = packageName + "." + specClassName;
-		return Class.forName(className, true, classLoader);
+		if(packageName != null){
+			specClassName = packageName + "." + specClassName;
+		}
+		return Class.forName(specClassName, true, classLoader);
 	}
 
 	private String[] findGeneratedJavaFiles(String packageName) {
@@ -217,9 +219,11 @@ public abstract class BehaviorExecutor {
 		StringBuilder sb = new StringBuilder();
 		sb.append(tempFolder.getRoot().getAbsolutePath());
 		sb.append(File.separator);
-		sb.append(packageName
-				.replaceAll("\\.", File.separator + File.separator));
-		sb.append(File.separator);
+		if(packageName != null){
+			sb.append(packageName
+					.replaceAll("\\.", File.separator + File.separator));
+			sb.append(File.separator);
+		}
 
 		File packageDir = new File(sb.toString());
 		return packageDir;

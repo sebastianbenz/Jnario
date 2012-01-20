@@ -14,7 +14,7 @@ describe "Guice" {
 			
 			import static org.junit.Assert.*
 			import de.bmw.carit.jnario.runner.InstantiateWith
-			import de.bmw.carit.jnario.spec.tests.integration.GuiceBasedTestInstantiator
+			import de.bmw.carit.jnario.lib.GuiceBasedTestInstantiator
 			import com.google.inject.Inject
 			
 			@InstantiateWith(typeof(GuiceBasedTestInstantiator))

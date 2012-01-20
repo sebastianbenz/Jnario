@@ -1,7 +1,6 @@
 package de.bmw.carit.jnario.tests.validation
 
 import com.google.inject.Inject
-import de.bmw.carit.jnario.JnarioStandaloneSetup
 import de.bmw.carit.jnario.runner.InstantiateWith
 import de.bmw.carit.jnario.tests.util.SpecTestInstantiator
 import de.bmw.carit.jnario.tests.util.ModelStore
@@ -15,10 +14,6 @@ import de.bmw.carit.jnario.jnario.GivenRef
 describe "JnarioValidator"{
 
 	@Inject ModelStore modelStore
-	
-	before all{
-		JnarioStandaloneSetup::doSetup
-	}
 	
 	it "returns an error if a step definition and a reference to this step are in the same scenario"{
 		modelStore.parseScenario('

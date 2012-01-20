@@ -10,12 +10,19 @@ package de.bmw.carit.jnario.tests.util;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
+import de.bmw.carit.jnario.JnarioStandaloneSetup;
 import de.bmw.carit.jnario.common.test.util.BehaviorExecutor;
 import de.bmw.carit.jnario.spec.SpecRuntimeModule;
 import de.bmw.carit.jnario.spec.SpecStandaloneSetup;
 import de.bmw.carit.jnario.spec.spec.SpecFactory;
 
 public class SpecStandaloneTestSetup extends SpecStandaloneSetup {
+	
+	@Override
+	public void register(Injector injector) {
+		JnarioStandaloneSetup.doSetup();
+		super.register(injector);
+	}
 	@Override
 	public Injector createInjector() {
 		return Guice.createInjector(new SpecRuntimeModule() {

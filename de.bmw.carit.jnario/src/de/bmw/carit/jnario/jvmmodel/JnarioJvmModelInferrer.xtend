@@ -3,22 +3,27 @@ package de.bmw.carit.jnario.jvmmodel
 import com.google.inject.Inject
 import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder
 import de.bmw.carit.jnario.generator.JnarioCompiler
+import de.bmw.carit.jnario.jnario.Code
 import de.bmw.carit.jnario.jnario.ExampleRow
 import de.bmw.carit.jnario.jnario.ExampleTable
 import de.bmw.carit.jnario.jnario.Feature
 import de.bmw.carit.jnario.jnario.Given
 import de.bmw.carit.jnario.jnario.Jnario
+import de.bmw.carit.jnario.jnario.Ref
 import de.bmw.carit.jnario.jnario.Scenario
 import de.bmw.carit.jnario.jnario.Step
 import de.bmw.carit.jnario.jnario.Then
 import de.bmw.carit.jnario.jnario.When
 import de.bmw.carit.jnario.naming.JavaNameProvider
+import de.bmw.carit.jnario.runner.Contains
 import de.bmw.carit.jnario.runner.JnarioExamplesRunner
 import de.bmw.carit.jnario.runner.JnarioRunner
 import de.bmw.carit.jnario.runner.Named
 import de.bmw.carit.jnario.runner.Order
+import java.util.List
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmVisibility
@@ -34,8 +39,11 @@ import org.junit.runner.RunWith
 
 import static com.google.common.collect.Iterators.*
 import static org.eclipse.xtext.EcoreUtil2.*
-import java.util.List
-import de.bmw.carit.jnario.runner.Contains
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils
+import de.bmw.carit.jnario.jnario.JnarioPackage
+import org.eclipse.emf.codegen.ecore.genmodel.impl.Literals
+import de.bmw.carit.jnario.naming.StepNameProvider
+import de.bmw.carit.jnario.naming.StepExpressionProvider
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -57,6 +65,10 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 	@Inject extension JavaNameProvider
 	
 	@Inject extension JnarioCompiler
+	
+	@Inject extension StepNameProvider
+	
+	@Inject extension StepExpressionProvider
 	
 	@Inject
 	private IJvmModelAssociator associator
@@ -165,32 +177,35 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
    	}
    	
 	def transform(Step step, JvmGenericType inferredJvmType, int order) {
-		if(step.getCode() != null){
-			inferredJvmType.members += step.toMethod(step.name.javaMethodName, getTypeForName(Void::TYPE, step))[
-				body = step.code.blockExpression
+
+			inferredJvmType.members += step.toMethod(step.nameOf.javaMethodName, getTypeForName(Void::TYPE, step))[
+				body = step.expressionOf?.blockExpression
+				
 				annotations += step.toAnnotation(typeof(Test))
 				annotations += step.toAnnotation(typeof(Order), order.intValue)
-				annotations += step.toAnnotation(typeof(Named), step.name.trim)
+				annotations += step.toAnnotation(typeof(Named), step.nameOf)
 			]	
-		}
 		order + 1
 	}
 	
-	def checkIfExampleField(XtendField field){
+	def void checkIfExampleField(XtendField field){
 		var examples = getContainerOfType(field, typeof(ExampleTable))
-		if(examples != null){
-			var heading = examples.heading
-			if(heading.parts.contains(field)){
-				var index = heading.parts.indexOf(field)
-				if(examples.rows != null && examples.rows.size > 0){
-					var exampleRow = examples.rows.get(0)
-					if(index < exampleRow.parts.size){
-						var exampleCell = exampleRow.parts.get(index)
-						field.setType(getType(exampleCell.name))
-						field.setVisibility(JvmVisibility::PUBLIC)
-					}
-				}
-			}	
+		if(examples == null){
+			return
+		}
+		var heading = examples.heading
+		if(!heading.parts.contains(field)){
+			return	
+		}
+		var index = heading.parts.indexOf(field)
+		if(examples.rows.empty){
+			return
+		}
+		var exampleRow = examples.rows.get(0)
+		if(index < exampleRow.parts.size){
+			var exampleCell = exampleRow.parts.get(index)
+			field.setType(getType(exampleCell.name))
+			field.setVisibility(JvmVisibility::PUBLIC)
 		}
 	}
 	
