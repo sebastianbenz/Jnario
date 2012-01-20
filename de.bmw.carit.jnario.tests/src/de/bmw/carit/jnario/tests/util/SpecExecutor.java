@@ -33,6 +33,7 @@ import de.bmw.carit.jnario.spec.SpecInjectorProvider;
 import de.bmw.carit.jnario.spec.naming.ExampleNameProvider;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 import de.bmw.carit.jnario.spec.spec.SpecFile;
+import de.bmw.carit.jnario.validation.JnarioClasspathBasedChecks;
 
 @SuppressWarnings("restriction")
 public class SpecExecutor extends BehaviorExecutor{
@@ -41,8 +42,8 @@ public class SpecExecutor extends BehaviorExecutor{
 
 	@Inject
 	public SpecExecutor(IGenerator generator, JavaIoFileSystemAccess fsa,
-			TemporaryFolder tempFolder, ExampleNameProvider javaNameProvider, IResourceValidator validator) {
-		super(generator, fsa, tempFolder, validator);
+			TemporaryFolder tempFolder, ExampleNameProvider javaNameProvider, IResourceValidator validator, JnarioJavaCompiler javaCompiler) {
+		super(generator, fsa, tempFolder, validator, javaCompiler);
 		this.nameProvider = javaNameProvider;
 		validate = false;
 	}

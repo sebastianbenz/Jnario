@@ -19,11 +19,11 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.List;
 
-import javax.tools.JavaCompiler;
-import javax.tools.ToolProvider;
-
+import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
@@ -31,14 +31,28 @@ import org.eclipse.xtext.util.CancelIndicator;
 import org.eclipse.xtext.validation.CheckMode;
 import org.eclipse.xtext.validation.IResourceValidator;
 import org.eclipse.xtext.validation.Issue;
+import org.eclipse.xtext.xbase.XbasePackage;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
+import org.eclipse.xtext.xtend2.xtend2.Xtend2Package;
+import org.hamcrest.Matcher;
+import org.hamcrest.Matchers;
+import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
+import testdata.Properties1;
+
+import com.google.common.base.Function;
 import com.google.common.base.Joiner;
 import com.google.common.base.Predicate;
 import com.google.inject.Inject;
+
+import de.bmw.carit.jnario.jnario.JnarioPackage;
+import de.bmw.carit.jnario.runner.Named;
+import de.bmw.carit.jnario.spec.spec.SpecPackage;
+import de.bmw.carit.jnario.tests.util.JnarioJavaCompiler;
 
 /**
  * @author Sebastian Benz
@@ -107,17 +121,42 @@ public abstract class BehaviorExecutor {
 	private final IGenerator generator;
 	private final JavaIoFileSystemAccess fsa;
 	private final TemporaryFolder tempFolder;
-	private JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
+
 	private IResourceValidator validator;
 	protected boolean validate = true;
+	private final JnarioJavaCompiler javaCompiler;
 
 	@Inject
 	public BehaviorExecutor(IGenerator generator, JavaIoFileSystemAccess fsa,
-			TemporaryFolder tempFolder, IResourceValidator validator) {
+			TemporaryFolder tempFolder, IResourceValidator validator, JnarioJavaCompiler javaCompiler) {
 		this.generator = generator;
 		this.fsa = fsa;
 		this.tempFolder = tempFolder;
 		this.validator = validator;
+		this.javaCompiler = javaCompiler;
+		initCompiler();
+	}
+
+	protected void initCompiler() {
+		javaCompiler.addClassPathOfClass(getClass());
+		javaCompiler.addClassPathOfClass(StringExtensions.class);
+		javaCompiler.addClassPathOfClass(Notifier.class);
+		javaCompiler.addClassPathOfClass(EcorePackage.class);
+		javaCompiler.addClassPathOfClass(XbasePackage.class);
+		javaCompiler.addClassPathOfClass(Xtend2Package.class);
+		javaCompiler.addClassPathOfClass(Inject.class);
+		javaCompiler.addClassPathOfClass(Properties1.class);
+		javaCompiler.addClassPathOfClass(Function.class);
+		javaCompiler.addClassPathOfClass(StringConcatenation.class);
+		javaCompiler.addClassPathOfClass(Named.class);
+		javaCompiler.addClassPathOfClass(ResultMatchers.class);
+		javaCompiler.addClassPathOfClass(Matcher.class);
+		javaCompiler.addClassPathOfClass(Matchers.class);
+		javaCompiler.addClassPathOfClass(Test.class);
+		javaCompiler.addClassPathOfClass(JnarioPackage.class);
+		javaCompiler.addClassPathOfClass(SpecPackage.class);
+		javaCompiler.addClassPathOfClass(BehaviorExecutor.class);
+		
 	}
 
 	public Result run(EObject object) {
@@ -172,11 +211,8 @@ public abstract class BehaviorExecutor {
 			throws MalformedURLException, ClassNotFoundException;
 
 	protected void compileJavaFile(String packageName, String className) {
-		String[] args = findGeneratedJavaFiles(packageName);
-		if (isLoadedAsPlugin()) {
-			args = addOsgiBundlesToClassPath(args);
-		}
-		compiler.run(System.in, System.out, System.err, args);
+		List<String> args = findGeneratedJavaFiles(packageName);
+		javaCompiler.compile(args);
 	}
 
 	private String[] addOsgiBundlesToClassPath(String[] args) {
@@ -204,7 +240,7 @@ public abstract class BehaviorExecutor {
 		return Class.forName(specClassName, true, classLoader);
 	}
 
-	private String[] findGeneratedJavaFiles(String packageName) {
+	private List<String> findGeneratedJavaFiles(String packageName) {
 		File packageDir = resolvePackageDir(packageName);
 		return allJavaFilesIn(packageDir);
 	}
@@ -223,7 +259,7 @@ public abstract class BehaviorExecutor {
 		return packageDir;
 	}
 
-	protected String[] allJavaFilesIn(File packageDir) {
+	protected List<String> allJavaFilesIn(File packageDir) {
 		File[] allJavaFiles = packageDir.listFiles(new FilenameFilter() {
 
 			@Override
@@ -231,10 +267,14 @@ public abstract class BehaviorExecutor {
 				return name.endsWith(".java");
 			}
 		});
-		String[] result = new String[allJavaFiles.length];
+		List<String> result = newArrayList();
 		for (int i = 0; i < allJavaFiles.length; i++) {
 			File file = allJavaFiles[i];
-			result[i] = file.getAbsolutePath();
+			try {
+				result.add(file.getCanonicalPath());
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
 		}
 		return result;
 	}

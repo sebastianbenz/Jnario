@@ -57,8 +57,8 @@ public class JnarioExecutor extends BehaviorExecutor{
 
 	@Inject
 	public JnarioExecutor(IGenerator generator, JavaIoFileSystemAccess fsa,
-			TemporaryFolder tempFolder, JavaNameProvider javaNameProvider, IResourceValidator validator) {
-		super(generator, fsa, tempFolder, validator);
+			TemporaryFolder tempFolder, JavaNameProvider javaNameProvider, IResourceValidator validator, JnarioJavaCompiler javaCompiler) {
+		super(generator, fsa, tempFolder, validator, javaCompiler);
 		this.nameProvider = javaNameProvider;
 	}
 

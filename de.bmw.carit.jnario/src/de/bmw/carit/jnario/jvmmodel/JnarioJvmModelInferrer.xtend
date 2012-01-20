@@ -91,7 +91,7 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 				acceptor.accept(clazz)
 			}
 		}
-   	}
+   	} 
    	
    	def infer(Scenario scenario, Jnario jnario, String className){
    		scenario.toClass(className)[

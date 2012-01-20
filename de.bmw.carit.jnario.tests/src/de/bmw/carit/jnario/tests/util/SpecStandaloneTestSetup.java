@@ -7,6 +7,9 @@
  *******************************************************************************/
 package de.bmw.carit.jnario.tests.util;
 
+import org.eclipse.xtext.xtend2.validation.ClasspathBasedChecks;
+import org.eclipse.xtext.xtend2.xtend2.XtendFile;
+
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
@@ -39,6 +42,18 @@ public class SpecStandaloneTestSetup extends SpecStandaloneSetup {
 			@SuppressWarnings("unused")
 			public SpecFactory bindFactory() {
 				return SpecFactory.eINSTANCE;
+			}
+			
+			@SuppressWarnings("unused")
+			public ClasspathBasedChecks bindClassPathBasedChecks() {
+				return new ClasspathBasedChecks() {
+					@Override
+					public void checkFileNamingConventions(XtendFile xtendFile) {
+						// disabled
+					}
+					
+					
+				};
 			}
 
 		});

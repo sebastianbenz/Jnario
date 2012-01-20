@@ -48,6 +48,6 @@
 </location>
 </locations>
 <launcherArgs>
-<vmArgs>-Xms128m -Xmx768m -Xss4m -XX:MaxPermSize=256m</vmArgs>
+<vmArgs>-Xms128m -Xmx768m -Xss4m -XX:MaxPermSize=256m -XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgs>
 </launcherArgs>
 </target>
