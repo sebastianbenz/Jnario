@@ -3,6 +3,7 @@ package de.bmw.carit.jnario.tests.util;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.io.Writer;
 import java.util.List;
 
 import org.eclipse.jdt.core.compiler.CompilationProgress;
@@ -14,46 +15,41 @@ import com.google.common.base.Joiner;
 public class JnarioJavaCompiler extends EclipseRuntimeDependentJavaCompiler{
 	
 	
-	private OutputStream errorStream;
+	private final class Progress extends
+			CompilationProgress {
+		@Override
+		public void worked(int workIncrement, int remainingWork) {
+		}
 
-	public boolean compile(List<String> files) {
+		@Override
+		public void setTaskName(String name) {
+		}
+
+		@Override
+		public boolean isCanceled() {
+			return false;
+		}
+
+		@Override
+		public void done() {
+		}
+
+		@Override
+		public void begin(int remainingWork) {
+		}
+	}
+
+
+	public void compile(List<String> files) {
 		StringBuilder sb = new StringBuilder(getComplianceLevelArg());
 		sb.append(" ");
 		sb.append(getClasspathArgs());
 		sb.append(" ");
 		sb.append(Joiner.on(" ").join(files));
-		return getMain().compile(Main.tokenize(sb.toString()), new PrintWriter(System.out), new PrintWriter(System.err), new CompilationProgress() {
-			
-			@Override
-			public void worked(int workIncrement, int remainingWork) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void setTaskName(String name) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public boolean isCanceled() {
-				// TODO Auto-generated method stub
-				return false;
-			}
-			
-			@Override
-			public void done() {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void begin(int remainingWork) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
+		OutputStream errorStream = new ByteArrayOutputStream();
+		if(!Main.compile(Main.tokenize(sb.toString()), new PrintWriter(System.out), new PrintWriter(errorStream ), new Progress())){
+			throw new IllegalArgumentException("Couldn't compile : " + errorStream.toString() + "\n" );
+		}
 	}
 	
 }

@@ -41,4 +41,3 @@ Export-Package: de.bmw.carit.jnario.spec,
  de.bmw.carit.jnario.spec.spec.impl,
  de.bmw.carit.jnario.spec.spec.util,
  de.bmw.carit.jnario.spec.validation
-Bundle-Classpath: ., /bin

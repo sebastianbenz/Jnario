@@ -13,8 +13,6 @@ import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.resource.XtextResourceSet
 import org.junit.Before
 
-
-
 @InstantiateWith(typeof(SpecTestInstantiator))
 describe OperationNameProvider{
 	

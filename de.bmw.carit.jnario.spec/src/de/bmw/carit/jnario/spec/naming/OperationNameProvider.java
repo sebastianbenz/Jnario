@@ -43,7 +43,6 @@ public class OperationNameProvider implements Function<JvmOperation, QualifiedNa
 			}
 			
 		})));
-				
 		sb.append(")");
 	}
 

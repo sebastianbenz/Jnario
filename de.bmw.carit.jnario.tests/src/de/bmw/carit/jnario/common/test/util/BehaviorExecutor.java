@@ -22,11 +22,13 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
+import org.eclipse.xtext.junit4.validation.RegisteredValidatorTester;
+import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.util.CancelIndicator;
 import org.eclipse.xtext.validation.CheckMode;
 import org.eclipse.xtext.validation.IResourceValidator;
@@ -61,7 +63,6 @@ import de.bmw.carit.jnario.tests.util.JnarioJavaCompiler;
 @SuppressWarnings("restriction")
 public abstract class BehaviorExecutor {
 
-	
 	public static class CompositeResult extends Result{
 
 		private List<Result> children = newArrayList();
@@ -156,7 +157,9 @@ public abstract class BehaviorExecutor {
 		javaCompiler.addClassPathOfClass(JnarioPackage.class);
 		javaCompiler.addClassPathOfClass(SpecPackage.class);
 		javaCompiler.addClassPathOfClass(BehaviorExecutor.class);
-		
+		javaCompiler.addClassPathOfClass(JvmOperation.class);
+		javaCompiler.addClassPathOfClass(RegisteredValidatorTester.class);
+		javaCompiler.addClassPathOfClass(QualifiedName.class);		
 	}
 
 	public Result run(EObject object) {
@@ -215,14 +218,6 @@ public abstract class BehaviorExecutor {
 		javaCompiler.compile(args);
 	}
 
-	private String[] addOsgiBundlesToClassPath(String[] args) {
-		String classPathEntries = Joiner.on(";").join(BundleClassPathProvider.getClassPath());
-		String[] classPathAndJavaFiles = new String[args.length + 2];
-		classPathAndJavaFiles[0] = "-classpath";
-		classPathAndJavaFiles[1] = classPathEntries;
-		System.arraycopy(args, 0, classPathAndJavaFiles, 2, args.length);
-		return classPathAndJavaFiles;
-	}
 
 	protected Result execute(Class<?> cls) {
 		return JUnitCore.runClasses(cls);
@@ -286,16 +281,5 @@ public abstract class BehaviorExecutor {
 		Class<?> testClass = loadGeneratedClass(packageName, className);
 		return execute(testClass);
 	}
-
-	private boolean isLoadedAsPlugin() {
-		ClassLoader pluginClassLoader = getClass().getClassLoader();
-		if (pluginClassLoader instanceof DefaultClassLoader) {
-			return true;
-		}
-		return false;
-	}
-
-
-
 
 }
