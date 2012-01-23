@@ -1,4 +1,4 @@
-/*package de.bmw.carit.jnario.tests
+package de.bmw.carit.jnario.tests
 
 import static de.bmw.carit.jnario.common.test.util.ResultMatchers.*
 import static extension de.bmw.carit.jnario.tests.util.JnarioExecutor.*
@@ -18,7 +18,7 @@ Feature: Backgrounds
 			"
 		When I run the feature
 		Then it should be successful
-			jnarioFile.execute.should.be(successful)
+/*			jnarioFile.execute.should.be(successful)
 			
 
 	Scenario: Given methods from backgrounds are generated in every scenario class
