@@ -84,14 +84,22 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 				val className = feature.name.javaClassName + scenario.name.javaClassName
 				val clazz = scenario.infer(jnarioFile, className)
 				if(scenario.examples.empty){
-					clazz.annotations += scenario.toAnnotation(typeof(RunWith), typeof(JnarioRunner))
+					clazz.annotations += scenario.runnerAnnotations
 				}else{
-					clazz.annotations += scenario.toAnnotation(typeof(RunWith), typeof(JnarioExamplesRunner))
+					clazz.annotations += scenario.runnerAnnotations
 				}
 				acceptor.accept(clazz)
 			}
 		}
-   	} 
+   	}
+   	
+   	def runnerAnnotations(Scenario scenario){
+		if(scenario.examples.empty){
+			scenario.toAnnotation(typeof(RunWith), typeof(JnarioRunner))
+		}else{
+			scenario.toAnnotation(typeof(RunWith), typeof(JnarioExamplesRunner))
+		}
+   	}
    	
    	def infer(Scenario scenario, Jnario jnario, String className){
    		scenario.toClass(className)[
@@ -104,46 +112,9 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 			if(feature.background != null){
 				hasBackground = true
 			}
-			var allVariables = <String>newArrayList()
-			if(hasBackground){
-				var backgroundFields = filter(feature.background.members.iterator, typeof(XtendField))
-				for(field: backgroundFields.toIterable){
-					field.transform(it)
-					allVariables.add(field.name)				
-				}
-			}
-			
-			var eAllContents = scenario.eAllContents;
-			var allFields = filter(eAllContents, typeof(XtendField))
-			for(field: allFields.toIterable){
-				if(field.type == null || field.type.type == null){
-					checkIfExampleField(field)
-				}
-				if(!allVariables.contains(field.name)){
-					field.transform(it)
-					allVariables.add(field.name)
-				}
-				
-			}
-			
-			var order = 0
-			if(hasBackground){
-				for (step : feature.background.steps) {
-//					var backgroundStep = EcoreUtil::copy(step)
-//					scenario.steps += backgroundStep
-//					order = transform(backgroundStep, it, order)
-//					for(and: backgroundStep.and){
-//						order = transform(and, it, order)
-//					}			
-				}
-			}
-			
-			for (step : scenario.steps) {
-				order = transform(step, it, order)
-				for(and: step.and){
-					order = transform(and, it, order)
-				}
-			}
+
+			scenario.generateVariables(feature, hasBackground, it)
+			scenario.generateSteps(feature, hasBackground, it)
 			
 			if(!scenario.examples.empty){
 				val exampleClasses = scenario.generateExampleClasses(jnario, it)
@@ -152,6 +123,51 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 				}
 			}
    		]	
+   	}
+   	
+   	def generateVariables(Scenario scenario, Feature feature, boolean hasBackground, JvmGenericType inferredJvmType){
+		var allVariables = <String>newArrayList()
+		if(hasBackground){
+			var backgroundFields = filter(feature.background.members.iterator, typeof(XtendField))
+			for(field: backgroundFields.toIterable){
+				field.transform(inferredJvmType)
+				allVariables.add(field.name)				
+			}
+		}
+		
+		var eAllContents = scenario.eAllContents;
+		var allFields = filter(eAllContents, typeof(XtendField))
+		for(field: allFields.toIterable){
+			if(field.type == null || field.type.type == null){
+				checkIfExampleField(field)
+			}
+			if(!allVariables.contains(field.name)){
+				field.transform(inferredJvmType)
+				allVariables.add(field.name)
+			}
+			
+		}
+   	}
+   	
+   	def generateSteps(Scenario scenario, Feature feature, boolean hasBackground, JvmGenericType inferredJvmType){
+		var order = 0
+		if(hasBackground){
+			for (step : feature.background.steps) {
+//					var backgroundStep = EcoreUtil::copy(step)
+//					scenario.steps += backgroundStep
+//					order = transform(backgroundStep, it, order)
+//					for(and: backgroundStep.and){
+//						order = transform(and, it, order)
+//					}			
+			}
+		}
+		
+		for (step : scenario.steps) {
+			order = transform(step, inferredJvmType, order)
+			for(and: step.and){
+				order = transform(and, inferredJvmType, order)
+			}
+		}
    	}
    	
 	def transform(Step step, JvmGenericType inferredJvmType, int order) {

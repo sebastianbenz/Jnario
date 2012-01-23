@@ -3,7 +3,6 @@ package de.bmw.carit.jnario.tests.util;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.io.Writer;
 import java.util.List;
 
 import org.eclipse.jdt.core.compiler.CompilationProgress;
