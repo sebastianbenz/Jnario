@@ -9,11 +9,18 @@ package de.bmw.carit.jnario.spec.util;
 
 import static java.lang.Character.isLetterOrDigit;
 import static java.lang.Character.toUpperCase;
+
+import java.io.InputStream;
+import java.util.Scanner;
 /**
  * @author Sebastian Benz
  */
 public class Strings {
 
+	public static String convertStreamToString(InputStream is) { 
+	    return new Scanner(is).useDelimiter("\\A").next();
+	}
+	
 	public static String convertToCamelCase(String string) {
 		return convertToCamelCase(new StringBuilder(string)).toString();
 	}
