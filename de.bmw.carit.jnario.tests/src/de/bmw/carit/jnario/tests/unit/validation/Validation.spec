@@ -1,4 +1,4 @@
-package de.bmw.carit.jnario.tests.validation
+package de.bmw.carit.jnario.tests.unit.validation
 
 import com.google.inject.Inject
 import de.bmw.carit.jnario.runner.InstantiateWith

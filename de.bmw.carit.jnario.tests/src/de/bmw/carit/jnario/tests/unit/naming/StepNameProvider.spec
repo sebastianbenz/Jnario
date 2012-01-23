@@ -1,14 +1,14 @@
+package de.bmw.carit.jnario.tests.unit.naming
+
+import com.google.inject.Inject
+import de.bmw.carit.jnario.jnario.JnarioFactory
+import de.bmw.carit.jnario.jnario.Step
+import de.bmw.carit.jnario.runner.InstantiateWith
+import de.bmw.carit.jnario.tests.util.ModelStore
+import de.bmw.carit.jnario.tests.util.SpecTestInstantiator
 
 import static de.bmw.carit.jnario.tests.util.Query.*
 import de.bmw.carit.jnario.naming.StepNameProvider
-import de.bmw.carit.jnario.runner.InstantiateWith
-import de.bmw.carit.jnario.lib.GuiceBasedTestInstantiator
-import com.google.inject.Inject
-import de.bmw.carit.jnario.tests.util.ModelStore
-import de.bmw.carit.jnario.jnario.Step
-import de.bmw.carit.jnario.JnarioStandaloneSetup
-import de.bmw.carit.jnario.tests.util.SpecTestInstantiator
-import de.bmw.carit.jnario.jnario.JnarioFactory
 
 @InstantiateWith(typeof(SpecTestInstantiator))
 describe StepNameProvider{
