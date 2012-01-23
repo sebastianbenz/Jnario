@@ -6,9 +6,9 @@
  */
 package de.bmw.carit.jnario.jnario.impl;
 
-import de.bmw.carit.jnario.jnario.Code;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
 import de.bmw.carit.jnario.jnario.Step;
+import de.bmw.carit.jnario.jnario.StepExpression;
 
 import java.util.Collection;
 
@@ -35,7 +35,7 @@ import org.eclipse.xtext.xtend2.xtend2.impl.XtendMemberImplCustom;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.bmw.carit.jnario.jnario.impl.StepImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.bmw.carit.jnario.jnario.impl.StepImpl#getCode <em>Code</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.jnario.impl.StepImpl#getStepExpression <em>Step Expression</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.jnario.impl.StepImpl#getAnd <em>And</em>}</li>
  * </ul>
  * </p>
@@ -65,14 +65,14 @@ public class StepImpl extends XtendMemberImplCustom implements Step
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getCode() <em>Code</em>}' containment reference.
+	 * The cached value of the '{@link #getStepExpression() <em>Step Expression</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCode()
+	 * @see #getStepExpression()
 	 * @generated
 	 * @ordered
 	 */
-	protected Code code;
+	protected StepExpression stepExpression;
 
 	/**
 	 * The cached value of the '{@link #getAnd() <em>And</em>}' containment reference list.
@@ -133,9 +133,9 @@ public class StepImpl extends XtendMemberImplCustom implements Step
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Code getCode()
+	public StepExpression getStepExpression()
 	{
-		return code;
+		return stepExpression;
 	}
 
 	/**
@@ -143,13 +143,13 @@ public class StepImpl extends XtendMemberImplCustom implements Step
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetCode(Code newCode, NotificationChain msgs)
+	public NotificationChain basicSetStepExpression(StepExpression newStepExpression, NotificationChain msgs)
 	{
-		Code oldCode = code;
-		code = newCode;
+		StepExpression oldStepExpression = stepExpression;
+		stepExpression = newStepExpression;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JnarioPackage.STEP__CODE, oldCode, newCode);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JnarioPackage.STEP__STEP_EXPRESSION, oldStepExpression, newStepExpression);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -160,20 +160,20 @@ public class StepImpl extends XtendMemberImplCustom implements Step
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCode(Code newCode)
+	public void setStepExpression(StepExpression newStepExpression)
 	{
-		if (newCode != code)
+		if (newStepExpression != stepExpression)
 		{
 			NotificationChain msgs = null;
-			if (code != null)
-				msgs = ((InternalEObject)code).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.STEP__CODE, null, msgs);
-			if (newCode != null)
-				msgs = ((InternalEObject)newCode).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.STEP__CODE, null, msgs);
-			msgs = basicSetCode(newCode, msgs);
+			if (stepExpression != null)
+				msgs = ((InternalEObject)stepExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.STEP__STEP_EXPRESSION, null, msgs);
+			if (newStepExpression != null)
+				msgs = ((InternalEObject)newStepExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.STEP__STEP_EXPRESSION, null, msgs);
+			msgs = basicSetStepExpression(newStepExpression, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, JnarioPackage.STEP__CODE, newCode, newCode));
+			eNotify(new ENotificationImpl(this, Notification.SET, JnarioPackage.STEP__STEP_EXPRESSION, newStepExpression, newStepExpression));
 	}
 
 	/**
@@ -200,8 +200,8 @@ public class StepImpl extends XtendMemberImplCustom implements Step
 	{
 		switch (featureID)
 		{
-			case JnarioPackage.STEP__CODE:
-				return basicSetCode(null, msgs);
+			case JnarioPackage.STEP__STEP_EXPRESSION:
+				return basicSetStepExpression(null, msgs);
 			case JnarioPackage.STEP__AND:
 				return ((InternalEList<?>)getAnd()).basicRemove(otherEnd, msgs);
 		}
@@ -220,8 +220,8 @@ public class StepImpl extends XtendMemberImplCustom implements Step
 		{
 			case JnarioPackage.STEP__NAME:
 				return getName();
-			case JnarioPackage.STEP__CODE:
-				return getCode();
+			case JnarioPackage.STEP__STEP_EXPRESSION:
+				return getStepExpression();
 			case JnarioPackage.STEP__AND:
 				return getAnd();
 		}
@@ -242,8 +242,8 @@ public class StepImpl extends XtendMemberImplCustom implements Step
 			case JnarioPackage.STEP__NAME:
 				setName((String)newValue);
 				return;
-			case JnarioPackage.STEP__CODE:
-				setCode((Code)newValue);
+			case JnarioPackage.STEP__STEP_EXPRESSION:
+				setStepExpression((StepExpression)newValue);
 				return;
 			case JnarioPackage.STEP__AND:
 				getAnd().clear();
@@ -266,8 +266,8 @@ public class StepImpl extends XtendMemberImplCustom implements Step
 			case JnarioPackage.STEP__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case JnarioPackage.STEP__CODE:
-				setCode((Code)null);
+			case JnarioPackage.STEP__STEP_EXPRESSION:
+				setStepExpression((StepExpression)null);
 				return;
 			case JnarioPackage.STEP__AND:
 				getAnd().clear();
@@ -288,8 +288,8 @@ public class StepImpl extends XtendMemberImplCustom implements Step
 		{
 			case JnarioPackage.STEP__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case JnarioPackage.STEP__CODE:
-				return code != null;
+			case JnarioPackage.STEP__STEP_EXPRESSION:
+				return stepExpression != null;
 			case JnarioPackage.STEP__AND:
 				return and != null && !and.isEmpty();
 		}

@@ -6,28 +6,28 @@
  */
 package de.bmw.carit.jnario.jnario.impl;
 
+import de.bmw.carit.jnario.jnario.GivenReference;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
-import de.bmw.carit.jnario.jnario.ThenRef;
 
 import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Then Ref</b></em>'.
+ * An implementation of the model object '<em><b>Given Reference</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class ThenRefImpl extends RefImpl implements ThenRef
+public class GivenReferenceImpl extends StepReferenceImpl implements GivenReference
 {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ThenRefImpl()
+	protected GivenReferenceImpl()
 	{
 		super();
 	}
@@ -40,7 +40,7 @@ public class ThenRefImpl extends RefImpl implements ThenRef
 	@Override
 	protected EClass eStaticClass()
 	{
-		return JnarioPackage.Literals.THEN_REF;
+		return JnarioPackage.Literals.GIVEN_REFERENCE;
 	}
 
-} //ThenRefImpl
+} //GivenReferenceImpl

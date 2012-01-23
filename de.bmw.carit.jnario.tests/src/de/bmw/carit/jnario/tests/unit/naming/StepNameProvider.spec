@@ -67,7 +67,7 @@ describe StepNameProvider{
 	}
 	
 	def emptyRef(){
-		return JnarioFactory::eINSTANCE.createGivenRef
+		return JnarioFactory::eINSTANCE.createGivenReference
 	}
 	
 }

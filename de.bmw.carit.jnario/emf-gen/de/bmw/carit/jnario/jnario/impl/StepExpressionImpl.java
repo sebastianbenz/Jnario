@@ -6,8 +6,8 @@
  */
 package de.bmw.carit.jnario.jnario.impl;
 
-import de.bmw.carit.jnario.jnario.Code;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
+import de.bmw.carit.jnario.jnario.StepExpression;
 
 import java.util.Collection;
 
@@ -31,19 +31,19 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Code</b></em>'.
+ * An implementation of the model object '<em><b>Step Expression</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.bmw.carit.jnario.jnario.impl.CodeImpl#getAnnotations <em>Annotations</em>}</li>
- *   <li>{@link de.bmw.carit.jnario.jnario.impl.CodeImpl#getBlockExpression <em>Block Expression</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.jnario.impl.StepExpressionImpl#getAnnotations <em>Annotations</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.jnario.impl.StepExpressionImpl#getBlockExpression <em>Block Expression</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class CodeImpl extends MinimalEObjectImpl.Container implements Code
+public class StepExpressionImpl extends MinimalEObjectImpl.Container implements StepExpression
 {
 	/**
 	 * The cached value of the '{@link #getAnnotations() <em>Annotations</em>}' containment reference list.
@@ -70,7 +70,7 @@ public class CodeImpl extends MinimalEObjectImpl.Container implements Code
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CodeImpl()
+	protected StepExpressionImpl()
 	{
 		super();
 	}
@@ -83,7 +83,7 @@ public class CodeImpl extends MinimalEObjectImpl.Container implements Code
 	@Override
 	protected EClass eStaticClass()
 	{
-		return JnarioPackage.Literals.CODE;
+		return JnarioPackage.Literals.STEP_EXPRESSION;
 	}
 
 	/**
@@ -95,7 +95,7 @@ public class CodeImpl extends MinimalEObjectImpl.Container implements Code
 	{
 		if (annotations == null)
 		{
-			annotations = new EObjectContainmentEList<XAnnotation>(XAnnotation.class, this, JnarioPackage.CODE__ANNOTATIONS);
+			annotations = new EObjectContainmentEList<XAnnotation>(XAnnotation.class, this, JnarioPackage.STEP_EXPRESSION__ANNOTATIONS);
 		}
 		return annotations;
 	}
@@ -121,7 +121,7 @@ public class CodeImpl extends MinimalEObjectImpl.Container implements Code
 		blockExpression = newBlockExpression;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JnarioPackage.CODE__BLOCK_EXPRESSION, oldBlockExpression, newBlockExpression);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JnarioPackage.STEP_EXPRESSION__BLOCK_EXPRESSION, oldBlockExpression, newBlockExpression);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -138,14 +138,14 @@ public class CodeImpl extends MinimalEObjectImpl.Container implements Code
 		{
 			NotificationChain msgs = null;
 			if (blockExpression != null)
-				msgs = ((InternalEObject)blockExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.CODE__BLOCK_EXPRESSION, null, msgs);
+				msgs = ((InternalEObject)blockExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.STEP_EXPRESSION__BLOCK_EXPRESSION, null, msgs);
 			if (newBlockExpression != null)
-				msgs = ((InternalEObject)newBlockExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.CODE__BLOCK_EXPRESSION, null, msgs);
+				msgs = ((InternalEObject)newBlockExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.STEP_EXPRESSION__BLOCK_EXPRESSION, null, msgs);
 			msgs = basicSetBlockExpression(newBlockExpression, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, JnarioPackage.CODE__BLOCK_EXPRESSION, newBlockExpression, newBlockExpression));
+			eNotify(new ENotificationImpl(this, Notification.SET, JnarioPackage.STEP_EXPRESSION__BLOCK_EXPRESSION, newBlockExpression, newBlockExpression));
 	}
 
 	/**
@@ -158,9 +158,9 @@ public class CodeImpl extends MinimalEObjectImpl.Container implements Code
 	{
 		switch (featureID)
 		{
-			case JnarioPackage.CODE__ANNOTATIONS:
+			case JnarioPackage.STEP_EXPRESSION__ANNOTATIONS:
 				return ((InternalEList<?>)getAnnotations()).basicRemove(otherEnd, msgs);
-			case JnarioPackage.CODE__BLOCK_EXPRESSION:
+			case JnarioPackage.STEP_EXPRESSION__BLOCK_EXPRESSION:
 				return basicSetBlockExpression(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -176,9 +176,9 @@ public class CodeImpl extends MinimalEObjectImpl.Container implements Code
 	{
 		switch (featureID)
 		{
-			case JnarioPackage.CODE__ANNOTATIONS:
+			case JnarioPackage.STEP_EXPRESSION__ANNOTATIONS:
 				return getAnnotations();
-			case JnarioPackage.CODE__BLOCK_EXPRESSION:
+			case JnarioPackage.STEP_EXPRESSION__BLOCK_EXPRESSION:
 				return getBlockExpression();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -195,11 +195,11 @@ public class CodeImpl extends MinimalEObjectImpl.Container implements Code
 	{
 		switch (featureID)
 		{
-			case JnarioPackage.CODE__ANNOTATIONS:
+			case JnarioPackage.STEP_EXPRESSION__ANNOTATIONS:
 				getAnnotations().clear();
 				getAnnotations().addAll((Collection<? extends XAnnotation>)newValue);
 				return;
-			case JnarioPackage.CODE__BLOCK_EXPRESSION:
+			case JnarioPackage.STEP_EXPRESSION__BLOCK_EXPRESSION:
 				setBlockExpression((XBlockExpression)newValue);
 				return;
 		}
@@ -216,10 +216,10 @@ public class CodeImpl extends MinimalEObjectImpl.Container implements Code
 	{
 		switch (featureID)
 		{
-			case JnarioPackage.CODE__ANNOTATIONS:
+			case JnarioPackage.STEP_EXPRESSION__ANNOTATIONS:
 				getAnnotations().clear();
 				return;
-			case JnarioPackage.CODE__BLOCK_EXPRESSION:
+			case JnarioPackage.STEP_EXPRESSION__BLOCK_EXPRESSION:
 				setBlockExpression((XBlockExpression)null);
 				return;
 		}
@@ -236,12 +236,12 @@ public class CodeImpl extends MinimalEObjectImpl.Container implements Code
 	{
 		switch (featureID)
 		{
-			case JnarioPackage.CODE__ANNOTATIONS:
+			case JnarioPackage.STEP_EXPRESSION__ANNOTATIONS:
 				return annotations != null && !annotations.isEmpty();
-			case JnarioPackage.CODE__BLOCK_EXPRESSION:
+			case JnarioPackage.STEP_EXPRESSION__BLOCK_EXPRESSION:
 				return blockExpression != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //CodeImpl
+} //StepExpressionImpl

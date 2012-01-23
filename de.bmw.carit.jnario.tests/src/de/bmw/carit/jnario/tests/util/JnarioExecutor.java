@@ -24,7 +24,7 @@ import com.google.inject.Injector;
 import de.bmw.carit.jnario.JnarioInjectorProvider;
 import de.bmw.carit.jnario.common.test.util.BehaviorExecutor;
 import de.bmw.carit.jnario.jnario.Feature;
-import de.bmw.carit.jnario.jnario.Jnario;
+import de.bmw.carit.jnario.jnario.JnarioFile;
 import de.bmw.carit.jnario.jnario.Scenario;
 import de.bmw.carit.jnario.naming.JavaNameProvider;
 
@@ -47,7 +47,7 @@ public class JnarioExecutor extends BehaviorExecutor{
 			}
 			
 			JnarioExecutor executor = injector.getInstance(JnarioExecutor.class);
-			return executor.run((Jnario) resource.getContents().get(0));
+			return executor.run((JnarioFile) resource.getContents().get(0));
 		} finally {
 			injectorProvider.restoreRegistry();
 		}
@@ -65,12 +65,12 @@ public class JnarioExecutor extends BehaviorExecutor{
 	protected Result runExamples(EObject object)
 			throws MalformedURLException, ClassNotFoundException {
 		CompositeResult result = new CompositeResult();
-		Jnario jnario = (Jnario) object;
-		Feature feature = (Feature)jnario.getXtendClass();
+		JnarioFile jnarioFile = (JnarioFile) object;
+		Feature feature = (Feature)jnarioFile.getXtendClass();
 		for (XtendMember member : feature.getMembers()) {
 			Scenario scenario = (Scenario) member;
 			String jnarioClassName = nameProvider.getJavaClassName(feature.getName()) + nameProvider.getJavaClassName(scenario.getName());
-			String packageName = jnario.getPackage();
+			String packageName = jnarioFile.getPackage();
 			result.add(runTestsInClass(jnarioClassName, packageName));
 		}
 		return result;
@@ -78,6 +78,6 @@ public class JnarioExecutor extends BehaviorExecutor{
 	
 	protected void generateJava(EObject object) {
 		super.generateJava(object);
-		assertFalse("has no scenarios", ((Feature)((Jnario)object).getXtendClass()).getMembers().isEmpty());
+		assertFalse("has no scenarios", ((Feature)((JnarioFile)object).getXtendClass()).getMembers().isEmpty());
 	}
 }

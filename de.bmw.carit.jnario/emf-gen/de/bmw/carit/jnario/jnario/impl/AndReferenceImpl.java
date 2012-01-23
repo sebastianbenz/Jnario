@@ -6,30 +6,28 @@
  */
 package de.bmw.carit.jnario.jnario.impl;
 
-import de.bmw.carit.jnario.jnario.Jnario;
+import de.bmw.carit.jnario.jnario.AndReference;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.xtext.xtend2.xtend2.impl.XtendFileImpl;
-
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Jnario</b></em>'.
+ * An implementation of the model object '<em><b>And Reference</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class JnarioImpl extends XtendFileImpl implements Jnario
+public class AndReferenceImpl extends StepReferenceImpl implements AndReference
 {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected JnarioImpl()
+	protected AndReferenceImpl()
 	{
 		super();
 	}
@@ -42,7 +40,7 @@ public class JnarioImpl extends XtendFileImpl implements Jnario
 	@Override
 	protected EClass eStaticClass()
 	{
-		return JnarioPackage.Literals.JNARIO;
+		return JnarioPackage.Literals.AND_REFERENCE;
 	}
 
-} //JnarioImpl
+} //AndReferenceImpl

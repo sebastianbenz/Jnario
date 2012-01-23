@@ -13,8 +13,8 @@ import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
 import "http://www.eclipse.org/xtext/Xtend2" as xtend
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
 
-Jnario returns xtend::XtendFile:
-	{Jnario}
+JnarioFile returns xtend::XtendFile:
+	{JnarioFile}
 	('package' package=QualifiedName)?
 	imports += Import*
 	(xtendClass = Feature)?
@@ -38,70 +38,70 @@ Background:
 	{Background}
 	BACKGROUND_TEXT
 	members+=Member*
-	steps+=(Given|GivenRef)*;
+	steps+=(Given|GivenReference)*;
 
 Scenario returns xtend::XtendMember:
 	{Scenario}
 	name=SCENARIO_TEXT
 	members+=Member*
-	steps+=(Given|GivenRef)*
-	steps+=(When|WhenRef)?
-	steps+=(Then|ThenRef)*
+	steps+=(Given|GivenReference)*
+	steps+=(When|WhenReference)?
+	steps+=(Then|ThenReference)*
 	examples+=ExampleTable*;
 
 Step returns xtend::XtendMember:
-	Given|When|Then|And|Ref;
+	Given|When|Then|And|StepReference;
 	
-Ref returns xtend::XtendMember:
-	GivenRef|WhenRef|ThenRef|AndRef
+StepReference returns xtend::XtendMember:
+	GivenReference|WhenReference|ThenReference|AndReference
 ;
 	
-GivenRef returns xtend::XtendMember:
-	{GivenRef}
+GivenReference returns xtend::XtendMember:
+	{GivenReference}
 	reference=[Given|GIVEN_TEXT]
-	and+=(And|AndRef)*
+	and+=(And|AndReference)*
 ;
 
 Given returns xtend::XtendMember:
 	{Given}
-	name=GIVEN_TEXT code=Code
-	and+=(And|AndRef)*
+	name=GIVEN_TEXT stepExpression=StepExpression
+	and+=(And|AndReference)*
 ;
 	
-WhenRef returns xtend::XtendMember:
-	{WhenRef}
+WhenReference returns xtend::XtendMember:
+	{WhenReference}
 	reference=[When|WHEN_TEXT]
-	and+=(And|AndRef)*
+	and+=(And|AndReference)*
 ;
 
 When returns xtend::XtendMember:
 	{When}
-	name=WHEN_TEXT code=Code
-	and+=(And|AndRef)*
+	name=WHEN_TEXT stepExpression=StepExpression
+	and+=(And|AndReference)*
 ;
 
-ThenRef returns xtend::XtendMember:
-	{ThenRef}
+ThenReference returns xtend::XtendMember:
+	{ThenReference}
 	reference=[Then|THEN_TEXT]
-	and+=(And|AndRef)*
+	and+=(And|AndReference)*
 ;
 
 Then returns xtend::XtendMember:
 	{Then}
-	name=THEN_TEXT code=Code
-	and+=(And|AndRef)*;
+	name=THEN_TEXT stepExpression=StepExpression
+	and+=(And|AndReference)*;
 	
-AndRef returns xtend::XtendMember:
-	{AndRef}
+AndReference returns xtend::XtendMember:
+	{AndReference}
 	reference=[And|AND_TEXT]
 ;
 	
 And returns xtend::XtendMember:
 	{And}
-	name=AND_TEXT code=Code
+	name=AND_TEXT stepExpression=StepExpression
 ;
 
-Code:
+StepExpression:
 	annotations+=XAnnotation* 
 	blockExpression=BlockExpression;
 

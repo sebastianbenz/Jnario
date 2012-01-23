@@ -44,7 +44,7 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 		{
 			EcorePlugin.INSTANCE.log(exception);
 		}
-		return new JnarioFactoryImplCustom();
+		return new JnarioFactoryImpl();
 	}
 
 	/**
@@ -76,17 +76,17 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 			case JnarioPackage.WHEN: return createWhen();
 			case JnarioPackage.THEN: return createThen();
 			case JnarioPackage.AND: return createAnd();
-			case JnarioPackage.CODE: return createCode();
+			case JnarioPackage.STEP_EXPRESSION: return createStepExpression();
 			case JnarioPackage.EXAMPLE_TABLE: return createExampleTable();
 			case JnarioPackage.EXAMPLE_HEADING: return createExampleHeading();
 			case JnarioPackage.EXAMPLE_ROW: return createExampleRow();
 			case JnarioPackage.EXAMPLE_CELL: return createExampleCell();
-			case JnarioPackage.JNARIO: return createJnario();
-			case JnarioPackage.GIVEN_REF: return createGivenRef();
-			case JnarioPackage.WHEN_REF: return createWhenRef();
-			case JnarioPackage.THEN_REF: return createThenRef();
-			case JnarioPackage.AND_REF: return createAndRef();
-			case JnarioPackage.REF: return createRef();
+			case JnarioPackage.JNARIO_FILE: return createJnarioFile();
+			case JnarioPackage.GIVEN_REFERENCE: return createGivenReference();
+			case JnarioPackage.WHEN_REFERENCE: return createWhenReference();
+			case JnarioPackage.THEN_REFERENCE: return createThenReference();
+			case JnarioPackage.AND_REFERENCE: return createAndReference();
+			case JnarioPackage.STEP_REFERENCE: return createStepReference();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -110,7 +110,7 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 	 */
 	public Background createBackground()
 	{
-		BackgroundImplCustom background = new BackgroundImplCustom();
+		BackgroundImpl background = new BackgroundImpl();
 		return background;
 	}
 
@@ -121,7 +121,7 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 	 */
 	public Scenario createScenario()
 	{
-		ScenarioImplCustom scenario = new ScenarioImplCustom();
+		ScenarioImpl scenario = new ScenarioImpl();
 		return scenario;
 	}
 
@@ -132,7 +132,7 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 	 */
 	public Step createStep()
 	{
-		StepImplCustom step = new StepImplCustom();
+		StepImpl step = new StepImpl();
 		return step;
 	}
 
@@ -143,7 +143,7 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 	 */
 	public Given createGiven()
 	{
-		GivenImplCustom given = new GivenImplCustom();
+		GivenImpl given = new GivenImpl();
 		return given;
 	}
 
@@ -154,7 +154,7 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 	 */
 	public When createWhen()
 	{
-		WhenImplCustom when = new WhenImplCustom();
+		WhenImpl when = new WhenImpl();
 		return when;
 	}
 
@@ -165,7 +165,7 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 	 */
 	public Then createThen()
 	{
-		ThenImplCustom then = new ThenImplCustom();
+		ThenImpl then = new ThenImpl();
 		return then;
 	}
 
@@ -176,7 +176,7 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 	 */
 	public And createAnd()
 	{
-		AndImplCustom and = new AndImplCustom();
+		AndImpl and = new AndImpl();
 		return and;
 	}
 
@@ -185,10 +185,10 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Code createCode()
+	public StepExpression createStepExpression()
 	{
-		CodeImplCustom code = new CodeImplCustom();
-		return code;
+		StepExpressionImpl stepExpression = new StepExpressionImpl();
+		return stepExpression;
 	}
 
 	/**
@@ -198,7 +198,7 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 	 */
 	public ExampleTable createExampleTable()
 	{
-		ExampleTableImplCustom exampleTable = new ExampleTableImplCustom();
+		ExampleTableImpl exampleTable = new ExampleTableImpl();
 		return exampleTable;
 	}
 
@@ -209,7 +209,7 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 	 */
 	public ExampleHeading createExampleHeading()
 	{
-		ExampleHeadingImplCustom exampleHeading = new ExampleHeadingImplCustom();
+		ExampleHeadingImpl exampleHeading = new ExampleHeadingImpl();
 		return exampleHeading;
 	}
 
@@ -220,7 +220,7 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 	 */
 	public ExampleRow createExampleRow()
 	{
-		ExampleRowImplCustom exampleRow = new ExampleRowImplCustom();
+		ExampleRowImpl exampleRow = new ExampleRowImpl();
 		return exampleRow;
 	}
 
@@ -231,7 +231,7 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 	 */
 	public ExampleCell createExampleCell()
 	{
-		ExampleCellImplCustom exampleCell = new ExampleCellImplCustom();
+		ExampleCellImpl exampleCell = new ExampleCellImpl();
 		return exampleCell;
 	}
 
@@ -240,10 +240,10 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Jnario createJnario()
+	public JnarioFile createJnarioFile()
 	{
-		JnarioImpl jnario = new JnarioImpl();
-		return jnario;
+		JnarioFileImpl jnarioFile = new JnarioFileImpl();
+		return jnarioFile;
 	}
 
 	/**
@@ -251,10 +251,10 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GivenRef createGivenRef()
+	public GivenReference createGivenReference()
 	{
-		GivenRefImpl givenRef = new GivenRefImpl();
-		return givenRef;
+		GivenReferenceImpl givenReference = new GivenReferenceImpl();
+		return givenReference;
 	}
 
 	/**
@@ -262,10 +262,10 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public WhenRef createWhenRef()
+	public WhenReference createWhenReference()
 	{
-		WhenRefImpl whenRef = new WhenRefImpl();
-		return whenRef;
+		WhenReferenceImpl whenReference = new WhenReferenceImpl();
+		return whenReference;
 	}
 
 	/**
@@ -273,10 +273,10 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ThenRef createThenRef()
+	public ThenReference createThenReference()
 	{
-		ThenRefImpl thenRef = new ThenRefImpl();
-		return thenRef;
+		ThenReferenceImpl thenReference = new ThenReferenceImpl();
+		return thenReference;
 	}
 
 	/**
@@ -284,10 +284,10 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AndRef createAndRef()
+	public AndReference createAndReference()
 	{
-		AndRefImpl andRef = new AndRefImpl();
-		return andRef;
+		AndReferenceImpl andReference = new AndReferenceImpl();
+		return andReference;
 	}
 
 	/**
@@ -295,10 +295,10 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Ref createRef()
+	public StepReference createStepReference()
 	{
-		RefImpl ref = new RefImpl();
-		return ref;
+		StepReferenceImpl stepReference = new StepReferenceImpl();
+		return stepReference;
 	}
 
 	/**

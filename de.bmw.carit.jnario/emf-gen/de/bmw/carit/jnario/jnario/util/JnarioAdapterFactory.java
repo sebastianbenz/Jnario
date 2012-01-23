@@ -124,9 +124,9 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
 				return createAndAdapter();
 			}
 			@Override
-			public Adapter caseCode(Code object)
+			public Adapter caseStepExpression(StepExpression object)
 			{
-				return createCodeAdapter();
+				return createStepExpressionAdapter();
 			}
 			@Override
 			public Adapter caseExampleTable(ExampleTable object)
@@ -149,34 +149,34 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
 				return createExampleCellAdapter();
 			}
 			@Override
-			public Adapter caseJnario(Jnario object)
+			public Adapter caseJnarioFile(JnarioFile object)
 			{
-				return createJnarioAdapter();
+				return createJnarioFileAdapter();
 			}
 			@Override
-			public Adapter caseGivenRef(GivenRef object)
+			public Adapter caseGivenReference(GivenReference object)
 			{
-				return createGivenRefAdapter();
+				return createGivenReferenceAdapter();
 			}
 			@Override
-			public Adapter caseWhenRef(WhenRef object)
+			public Adapter caseWhenReference(WhenReference object)
 			{
-				return createWhenRefAdapter();
+				return createWhenReferenceAdapter();
 			}
 			@Override
-			public Adapter caseThenRef(ThenRef object)
+			public Adapter caseThenReference(ThenReference object)
 			{
-				return createThenRefAdapter();
+				return createThenReferenceAdapter();
 			}
 			@Override
-			public Adapter caseAndRef(AndRef object)
+			public Adapter caseAndReference(AndReference object)
 			{
-				return createAndRefAdapter();
+				return createAndReferenceAdapter();
 			}
 			@Override
-			public Adapter caseRef(Ref object)
+			public Adapter caseStepReference(StepReference object)
 			{
-				return createRefAdapter();
+				return createStepReferenceAdapter();
 			}
 			@Override
 			public Adapter caseXtendAnnotationTarget(XtendAnnotationTarget object)
@@ -341,16 +341,16 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.Code <em>Code</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.StepExpression <em>Step Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.bmw.carit.jnario.jnario.Code
+	 * @see de.bmw.carit.jnario.jnario.StepExpression
 	 * @generated
 	 */
-	public Adapter createCodeAdapter()
+	public Adapter createStepExpressionAdapter()
 	{
 		return null;
 	}
@@ -416,91 +416,91 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.Jnario <em>Jnario</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.JnarioFile <em>File</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.bmw.carit.jnario.jnario.Jnario
+	 * @see de.bmw.carit.jnario.jnario.JnarioFile
 	 * @generated
 	 */
-	public Adapter createJnarioAdapter()
+	public Adapter createJnarioFileAdapter()
 	{
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.GivenRef <em>Given Ref</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.GivenReference <em>Given Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.bmw.carit.jnario.jnario.GivenRef
+	 * @see de.bmw.carit.jnario.jnario.GivenReference
 	 * @generated
 	 */
-	public Adapter createGivenRefAdapter()
+	public Adapter createGivenReferenceAdapter()
 	{
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.WhenRef <em>When Ref</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.WhenReference <em>When Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.bmw.carit.jnario.jnario.WhenRef
+	 * @see de.bmw.carit.jnario.jnario.WhenReference
 	 * @generated
 	 */
-	public Adapter createWhenRefAdapter()
+	public Adapter createWhenReferenceAdapter()
 	{
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.ThenRef <em>Then Ref</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.ThenReference <em>Then Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.bmw.carit.jnario.jnario.ThenRef
+	 * @see de.bmw.carit.jnario.jnario.ThenReference
 	 * @generated
 	 */
-	public Adapter createThenRefAdapter()
+	public Adapter createThenReferenceAdapter()
 	{
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.AndRef <em>And Ref</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.AndReference <em>And Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.bmw.carit.jnario.jnario.AndRef
+	 * @see de.bmw.carit.jnario.jnario.AndReference
 	 * @generated
 	 */
-	public Adapter createAndRefAdapter()
+	public Adapter createAndReferenceAdapter()
 	{
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.Ref <em>Ref</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.StepReference <em>Step Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.bmw.carit.jnario.jnario.Ref
+	 * @see de.bmw.carit.jnario.jnario.StepReference
 	 * @generated
 	 */
-	public Adapter createRefAdapter()
+	public Adapter createStepReferenceAdapter()
 	{
 		return null;
 	}

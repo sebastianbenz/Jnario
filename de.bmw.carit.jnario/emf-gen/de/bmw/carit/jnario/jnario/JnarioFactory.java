@@ -99,13 +99,13 @@ public interface JnarioFactory extends EFactory
 	And createAnd();
 
 	/**
-	 * Returns a new object of class '<em>Code</em>'.
+	 * Returns a new object of class '<em>Step Expression</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Code</em>'.
+	 * @return a new object of class '<em>Step Expression</em>'.
 	 * @generated
 	 */
-	Code createCode();
+	StepExpression createStepExpression();
 
 	/**
 	 * Returns a new object of class '<em>Example Table</em>'.
@@ -144,58 +144,58 @@ public interface JnarioFactory extends EFactory
 	ExampleCell createExampleCell();
 
 	/**
-	 * Returns a new object of class '<em>Jnario</em>'.
+	 * Returns a new object of class '<em>File</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Jnario</em>'.
+	 * @return a new object of class '<em>File</em>'.
 	 * @generated
 	 */
-	Jnario createJnario();
+	JnarioFile createJnarioFile();
 
 	/**
-	 * Returns a new object of class '<em>Given Ref</em>'.
+	 * Returns a new object of class '<em>Given Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Given Ref</em>'.
+	 * @return a new object of class '<em>Given Reference</em>'.
 	 * @generated
 	 */
-	GivenRef createGivenRef();
+	GivenReference createGivenReference();
 
 	/**
-	 * Returns a new object of class '<em>When Ref</em>'.
+	 * Returns a new object of class '<em>When Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>When Ref</em>'.
+	 * @return a new object of class '<em>When Reference</em>'.
 	 * @generated
 	 */
-	WhenRef createWhenRef();
+	WhenReference createWhenReference();
 
 	/**
-	 * Returns a new object of class '<em>Then Ref</em>'.
+	 * Returns a new object of class '<em>Then Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Then Ref</em>'.
+	 * @return a new object of class '<em>Then Reference</em>'.
 	 * @generated
 	 */
-	ThenRef createThenRef();
+	ThenReference createThenReference();
 
 	/**
-	 * Returns a new object of class '<em>And Ref</em>'.
+	 * Returns a new object of class '<em>And Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>And Ref</em>'.
+	 * @return a new object of class '<em>And Reference</em>'.
 	 * @generated
 	 */
-	AndRef createAndRef();
+	AndReference createAndReference();
 
 	/**
-	 * Returns a new object of class '<em>Ref</em>'.
+	 * Returns a new object of class '<em>Step Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Ref</em>'.
+	 * @return a new object of class '<em>Step Reference</em>'.
 	 * @generated
 	 */
-	Ref createRef();
+	StepReference createStepReference();
 
 	/**
 	 * Returns the package supported by this factory.

@@ -155,10 +155,10 @@ public class JnarioSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case JnarioPackage.CODE:
+			case JnarioPackage.STEP_EXPRESSION:
 			{
-				Code code = (Code)theEObject;
-				T result = caseCode(code);
+				StepExpression stepExpression = (StepExpression)theEObject;
+				T result = caseStepExpression(stepExpression);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -190,65 +190,65 @@ public class JnarioSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case JnarioPackage.JNARIO:
+			case JnarioPackage.JNARIO_FILE:
 			{
-				Jnario jnario = (Jnario)theEObject;
-				T result = caseJnario(jnario);
-				if (result == null) result = caseXtendFile(jnario);
+				JnarioFile jnarioFile = (JnarioFile)theEObject;
+				T result = caseJnarioFile(jnarioFile);
+				if (result == null) result = caseXtendFile(jnarioFile);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case JnarioPackage.GIVEN_REF:
+			case JnarioPackage.GIVEN_REFERENCE:
 			{
-				GivenRef givenRef = (GivenRef)theEObject;
-				T result = caseGivenRef(givenRef);
-				if (result == null) result = caseRef(givenRef);
-				if (result == null) result = caseStep(givenRef);
-				if (result == null) result = caseXtendMember(givenRef);
-				if (result == null) result = caseXtendAnnotationTarget(givenRef);
+				GivenReference givenReference = (GivenReference)theEObject;
+				T result = caseGivenReference(givenReference);
+				if (result == null) result = caseStepReference(givenReference);
+				if (result == null) result = caseStep(givenReference);
+				if (result == null) result = caseXtendMember(givenReference);
+				if (result == null) result = caseXtendAnnotationTarget(givenReference);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case JnarioPackage.WHEN_REF:
+			case JnarioPackage.WHEN_REFERENCE:
 			{
-				WhenRef whenRef = (WhenRef)theEObject;
-				T result = caseWhenRef(whenRef);
-				if (result == null) result = caseRef(whenRef);
-				if (result == null) result = caseStep(whenRef);
-				if (result == null) result = caseXtendMember(whenRef);
-				if (result == null) result = caseXtendAnnotationTarget(whenRef);
+				WhenReference whenReference = (WhenReference)theEObject;
+				T result = caseWhenReference(whenReference);
+				if (result == null) result = caseStepReference(whenReference);
+				if (result == null) result = caseStep(whenReference);
+				if (result == null) result = caseXtendMember(whenReference);
+				if (result == null) result = caseXtendAnnotationTarget(whenReference);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case JnarioPackage.THEN_REF:
+			case JnarioPackage.THEN_REFERENCE:
 			{
-				ThenRef thenRef = (ThenRef)theEObject;
-				T result = caseThenRef(thenRef);
-				if (result == null) result = caseRef(thenRef);
-				if (result == null) result = caseStep(thenRef);
-				if (result == null) result = caseXtendMember(thenRef);
-				if (result == null) result = caseXtendAnnotationTarget(thenRef);
+				ThenReference thenReference = (ThenReference)theEObject;
+				T result = caseThenReference(thenReference);
+				if (result == null) result = caseStepReference(thenReference);
+				if (result == null) result = caseStep(thenReference);
+				if (result == null) result = caseXtendMember(thenReference);
+				if (result == null) result = caseXtendAnnotationTarget(thenReference);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case JnarioPackage.AND_REF:
+			case JnarioPackage.AND_REFERENCE:
 			{
-				AndRef andRef = (AndRef)theEObject;
-				T result = caseAndRef(andRef);
-				if (result == null) result = caseRef(andRef);
-				if (result == null) result = caseStep(andRef);
-				if (result == null) result = caseXtendMember(andRef);
-				if (result == null) result = caseXtendAnnotationTarget(andRef);
+				AndReference andReference = (AndReference)theEObject;
+				T result = caseAndReference(andReference);
+				if (result == null) result = caseStepReference(andReference);
+				if (result == null) result = caseStep(andReference);
+				if (result == null) result = caseXtendMember(andReference);
+				if (result == null) result = caseXtendAnnotationTarget(andReference);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case JnarioPackage.REF:
+			case JnarioPackage.STEP_REFERENCE:
 			{
-				Ref ref = (Ref)theEObject;
-				T result = caseRef(ref);
-				if (result == null) result = caseStep(ref);
-				if (result == null) result = caseXtendMember(ref);
-				if (result == null) result = caseXtendAnnotationTarget(ref);
+				StepReference stepReference = (StepReference)theEObject;
+				T result = caseStepReference(stepReference);
+				if (result == null) result = caseStep(stepReference);
+				if (result == null) result = caseXtendMember(stepReference);
+				if (result == null) result = caseXtendAnnotationTarget(stepReference);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -385,17 +385,17 @@ public class JnarioSwitch<T> extends Switch<T>
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Code</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Step Expression</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Code</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Step Expression</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseCode(Code object)
+	public T caseStepExpression(StepExpression object)
 	{
 		return null;
 	}
@@ -465,97 +465,97 @@ public class JnarioSwitch<T> extends Switch<T>
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Jnario</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>File</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Jnario</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>File</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseJnario(Jnario object)
+	public T caseJnarioFile(JnarioFile object)
 	{
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Given Ref</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Given Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Given Ref</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Given Reference</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseGivenRef(GivenRef object)
+	public T caseGivenReference(GivenReference object)
 	{
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>When Ref</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>When Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>When Ref</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>When Reference</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseWhenRef(WhenRef object)
+	public T caseWhenReference(WhenReference object)
 	{
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Then Ref</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Then Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Then Ref</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Then Reference</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseThenRef(ThenRef object)
+	public T caseThenReference(ThenReference object)
 	{
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>And Ref</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>And Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>And Ref</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>And Reference</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseAndRef(AndRef object)
+	public T caseAndReference(AndReference object)
 	{
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Ref</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Step Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Ref</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Step Reference</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseRef(Ref object)
+	public T caseStepReference(StepReference object)
 	{
 		return null;
 	}

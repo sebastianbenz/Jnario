@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class WhenImpl extends StepImplCustom implements When
+public class WhenImpl extends StepImpl implements When
 {
 	/**
 	 * <!-- begin-user-doc -->

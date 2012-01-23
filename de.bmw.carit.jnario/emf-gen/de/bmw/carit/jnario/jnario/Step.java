@@ -19,7 +19,7 @@ import org.eclipse.xtext.xtend2.xtend2.XtendMember;
  * The following features are supported:
  * <ul>
  *   <li>{@link de.bmw.carit.jnario.jnario.Step#getName <em>Name</em>}</li>
- *   <li>{@link de.bmw.carit.jnario.jnario.Step#getCode <em>Code</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.jnario.Step#getStepExpression <em>Step Expression</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.jnario.Step#getAnd <em>And</em>}</li>
  * </ul>
  * </p>
@@ -57,30 +57,30 @@ public interface Step extends XtendMember
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Code</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Step Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Code</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Step Expression</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Code</em>' containment reference.
-	 * @see #setCode(Code)
-	 * @see de.bmw.carit.jnario.jnario.JnarioPackage#getStep_Code()
+	 * @return the value of the '<em>Step Expression</em>' containment reference.
+	 * @see #setStepExpression(StepExpression)
+	 * @see de.bmw.carit.jnario.jnario.JnarioPackage#getStep_StepExpression()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Code getCode();
+	StepExpression getStepExpression();
 
 	/**
-	 * Sets the value of the '{@link de.bmw.carit.jnario.jnario.Step#getCode <em>Code</em>}' containment reference.
+	 * Sets the value of the '{@link de.bmw.carit.jnario.jnario.Step#getStepExpression <em>Step Expression</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Code</em>' containment reference.
-	 * @see #getCode()
+	 * @param value the new value of the '<em>Step Expression</em>' containment reference.
+	 * @see #getStepExpression()
 	 * @generated
 	 */
-	void setCode(Code value);
+	void setStepExpression(StepExpression value);
 
 	/**
 	 * Returns the value of the '<em><b>And</b></em>' containment reference list.

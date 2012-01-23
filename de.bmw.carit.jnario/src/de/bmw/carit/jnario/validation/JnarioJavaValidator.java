@@ -32,9 +32,9 @@ import de.bmw.carit.jnario.jnario.ExampleHeading;
 import de.bmw.carit.jnario.jnario.ExampleRow;
 import de.bmw.carit.jnario.jnario.ExampleTable;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
-import de.bmw.carit.jnario.jnario.Ref;
 import de.bmw.carit.jnario.jnario.Scenario;
 import de.bmw.carit.jnario.jnario.Step;
+import de.bmw.carit.jnario.jnario.StepReference;
 
 
 public class JnarioJavaValidator extends AbstractJnarioJavaValidator {
@@ -119,8 +119,8 @@ public class JnarioJavaValidator extends AbstractJnarioJavaValidator {
 		Scenario scenario = getContainerOfType(step, Scenario.class);
 		EList<Step> steps = scenario.getSteps();
 
-		if(step instanceof Ref){
-			Ref ref = (Ref) step;
+		if(step instanceof StepReference){
+			StepReference ref = (StepReference) step;
 			for(Step currentStep: steps){
 				if(currentStep instanceof Step){
 					if(ref.getReference().equals(currentStep)){

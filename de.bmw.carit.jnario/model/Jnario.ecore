@@ -27,7 +27,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Step" eSuperTypes="../../org.eclipse.xtext.xtend2/model/Xtend2.ecore#//XtendMember">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="code" eType="#//Code" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stepExpression" eType="#//StepExpression"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="and" upperBound="-1" eType="#//Step"
         containment="true"/>
   </eClassifiers>
@@ -35,7 +36,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="When" eSuperTypes="#//Step"/>
   <eClassifiers xsi:type="ecore:EClass" name="Then" eSuperTypes="#//Step"/>
   <eClassifiers xsi:type="ecore:EClass" name="And" eSuperTypes="#//Step"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Code">
+  <eClassifiers xsi:type="ecore:EClass" name="StepExpression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="annotations" upperBound="-1"
         eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/XAnnotations.ecore#//XAnnotation"
         containment="true"/>
@@ -62,12 +63,12 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Jnario" eSuperTypes="../../org.eclipse.xtext.xtend2/model/Xtend2.ecore#//XtendFile"/>
-  <eClassifiers xsi:type="ecore:EClass" name="GivenRef" eSuperTypes="#//Ref"/>
-  <eClassifiers xsi:type="ecore:EClass" name="WhenRef" eSuperTypes="#//Ref"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ThenRef" eSuperTypes="#//Ref"/>
-  <eClassifiers xsi:type="ecore:EClass" name="AndRef" eSuperTypes="#//Ref"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Ref" eSuperTypes="#//Step">
+  <eClassifiers xsi:type="ecore:EClass" name="JnarioFile" eSuperTypes="../../org.eclipse.xtext.xtend2/model/Xtend2.ecore#//XtendFile"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GivenReference" eSuperTypes="#//StepReference"/>
+  <eClassifiers xsi:type="ecore:EClass" name="WhenReference" eSuperTypes="#//StepReference"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ThenReference" eSuperTypes="#//StepReference"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AndReference" eSuperTypes="#//StepReference"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StepReference" eSuperTypes="#//Step">
     <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//Step"/>
   </eClassifiers>
 </ecore:EPackage>

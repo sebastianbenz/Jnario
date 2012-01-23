@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class ThenImpl extends StepImplCustom implements Then
+public class ThenImpl extends StepImpl implements Then
 {
 	/**
 	 * <!-- begin-user-doc -->

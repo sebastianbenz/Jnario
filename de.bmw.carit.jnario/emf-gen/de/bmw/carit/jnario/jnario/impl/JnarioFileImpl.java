@@ -6,28 +6,30 @@
  */
 package de.bmw.carit.jnario.jnario.impl;
 
+import de.bmw.carit.jnario.jnario.JnarioFile;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
-import de.bmw.carit.jnario.jnario.WhenRef;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.xtext.xtend2.xtend2.impl.XtendFileImpl;
+
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>When Ref</b></em>'.
+ * An implementation of the model object '<em><b>File</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class WhenRefImpl extends RefImpl implements WhenRef
+public class JnarioFileImpl extends XtendFileImpl implements JnarioFile
 {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected WhenRefImpl()
+	protected JnarioFileImpl()
 	{
 		super();
 	}
@@ -40,7 +42,7 @@ public class WhenRefImpl extends RefImpl implements WhenRef
 	@Override
 	protected EClass eStaticClass()
 	{
-		return JnarioPackage.Literals.WHEN_REF;
+		return JnarioPackage.Literals.JNARIO_FILE;
 	}
 
-} //WhenRefImpl
+} //JnarioFileImpl

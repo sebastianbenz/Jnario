@@ -25,7 +25,7 @@ public class JnarioParser extends org.eclipse.xtext.parser.antlr.AbstractAntlrPa
 	
 	@Override 
 	protected String getDefaultRuleName() {
-		return "Jnario";
+		return "JnarioFile";
 	}
 	
 	public JnarioGrammarAccess getGrammarAccess() {

@@ -1,8 +1,8 @@
 package de.bmw.carit.jnario.naming;
 
 import de.bmw.carit.jnario.jnario.JnarioPackage;
-import de.bmw.carit.jnario.jnario.Ref;
 import de.bmw.carit.jnario.jnario.Step;
+import de.bmw.carit.jnario.jnario.StepReference;
 import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -17,8 +17,8 @@ import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 @SuppressWarnings("all")
 public class StepNameProvider {
   public String nameOf(final Step step) {
-      if ((step instanceof Ref)) {
-        String _nameOf = this.nameOf(((Ref) step));
+      if ((step instanceof StepReference)) {
+        String _nameOf = this.nameOf(((StepReference) step));
         return _nameOf;
       }
       String _name = step.getName();
@@ -26,7 +26,7 @@ public class StepNameProvider {
       return _trim;
   }
   
-  public String nameOf(final Ref ref) {
+  public String nameOf(final StepReference ref) {
       Step _reference = ref.getReference();
       final Step referencedStep = _reference;
       boolean _operator_equals = ObjectExtensions.operator_equals(referencedStep, null);
@@ -39,8 +39,8 @@ public class StepNameProvider {
         String _nameOf = this.nameOf(referencedStep);
         return _nameOf;
       }
-      EReference _ref_Reference = JnarioPackage.eINSTANCE.getRef_Reference();
-      String _referenceText = this.referenceText(ref, _ref_Reference);
+      EReference _stepReference_Reference = JnarioPackage.eINSTANCE.getStepReference_Reference();
+      String _referenceText = this.referenceText(ref, _stepReference_Reference);
       return _referenceText;
   }
   

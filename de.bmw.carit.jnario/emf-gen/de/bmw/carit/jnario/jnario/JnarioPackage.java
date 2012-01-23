@@ -319,13 +319,13 @@ public interface JnarioPackage extends EPackage
 	int STEP__NAME = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Code</b></em>' containment reference.
+	 * The feature id for the '<em><b>Step Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STEP__CODE = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 1;
+	int STEP__STEP_EXPRESSION = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>And</b></em>' containment reference list.
@@ -383,13 +383,13 @@ public interface JnarioPackage extends EPackage
 	int GIVEN__NAME = STEP__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Code</b></em>' containment reference.
+	 * The feature id for the '<em><b>Step Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GIVEN__CODE = STEP__CODE;
+	int GIVEN__STEP_EXPRESSION = STEP__STEP_EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>And</b></em>' containment reference list.
@@ -447,13 +447,13 @@ public interface JnarioPackage extends EPackage
 	int WHEN__NAME = STEP__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Code</b></em>' containment reference.
+	 * The feature id for the '<em><b>Step Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WHEN__CODE = STEP__CODE;
+	int WHEN__STEP_EXPRESSION = STEP__STEP_EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>And</b></em>' containment reference list.
@@ -511,13 +511,13 @@ public interface JnarioPackage extends EPackage
 	int THEN__NAME = STEP__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Code</b></em>' containment reference.
+	 * The feature id for the '<em><b>Step Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int THEN__CODE = STEP__CODE;
+	int THEN__STEP_EXPRESSION = STEP__STEP_EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>And</b></em>' containment reference list.
@@ -575,13 +575,13 @@ public interface JnarioPackage extends EPackage
 	int AND__NAME = STEP__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Code</b></em>' containment reference.
+	 * The feature id for the '<em><b>Step Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AND__CODE = STEP__CODE;
+	int AND__STEP_EXPRESSION = STEP__STEP_EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>And</b></em>' containment reference list.
@@ -602,14 +602,14 @@ public interface JnarioPackage extends EPackage
 	int AND_FEATURE_COUNT = STEP_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.CodeImpl <em>Code</em>}' class.
+	 * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.StepExpressionImpl <em>Step Expression</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.bmw.carit.jnario.jnario.impl.CodeImpl
-	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getCode()
+	 * @see de.bmw.carit.jnario.jnario.impl.StepExpressionImpl
+	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getStepExpression()
 	 * @generated
 	 */
-	int CODE = 8;
+	int STEP_EXPRESSION = 8;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -618,7 +618,7 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int CODE__ANNOTATIONS = 0;
+	int STEP_EXPRESSION__ANNOTATIONS = 0;
 
 	/**
 	 * The feature id for the '<em><b>Block Expression</b></em>' containment reference.
@@ -627,16 +627,16 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int CODE__BLOCK_EXPRESSION = 1;
+	int STEP_EXPRESSION__BLOCK_EXPRESSION = 1;
 
 	/**
-	 * The number of structural features of the '<em>Code</em>' class.
+	 * The number of structural features of the '<em>Step Expression</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CODE_FEATURE_COUNT = 2;
+	int STEP_EXPRESSION_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.ExampleTableImpl <em>Example Table</em>}' class.
@@ -769,14 +769,14 @@ public interface JnarioPackage extends EPackage
 	int EXAMPLE_CELL_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.JnarioImpl <em>Jnario</em>}' class.
+	 * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.JnarioFileImpl <em>File</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.bmw.carit.jnario.jnario.impl.JnarioImpl
-	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getJnario()
+	 * @see de.bmw.carit.jnario.jnario.impl.JnarioFileImpl
+	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getJnarioFile()
 	 * @generated
 	 */
-	int JNARIO = 13;
+	int JNARIO_FILE = 13;
 
 	/**
 	 * The feature id for the '<em><b>Imports</b></em>' containment reference list.
@@ -785,7 +785,7 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int JNARIO__IMPORTS = Xtend2Package.XTEND_FILE__IMPORTS;
+	int JNARIO_FILE__IMPORTS = Xtend2Package.XTEND_FILE__IMPORTS;
 
 	/**
 	 * The feature id for the '<em><b>Xtend Class</b></em>' containment reference.
@@ -794,7 +794,7 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int JNARIO__XTEND_CLASS = Xtend2Package.XTEND_FILE__XTEND_CLASS;
+	int JNARIO_FILE__XTEND_CLASS = Xtend2Package.XTEND_FILE__XTEND_CLASS;
 
 	/**
 	 * The feature id for the '<em><b>Package</b></em>' attribute.
@@ -803,26 +803,26 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int JNARIO__PACKAGE = Xtend2Package.XTEND_FILE__PACKAGE;
+	int JNARIO_FILE__PACKAGE = Xtend2Package.XTEND_FILE__PACKAGE;
 
 	/**
-	 * The number of structural features of the '<em>Jnario</em>' class.
+	 * The number of structural features of the '<em>File</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JNARIO_FEATURE_COUNT = Xtend2Package.XTEND_FILE_FEATURE_COUNT + 0;
+	int JNARIO_FILE_FEATURE_COUNT = Xtend2Package.XTEND_FILE_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.RefImpl <em>Ref</em>}' class.
+	 * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.StepReferenceImpl <em>Step Reference</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.bmw.carit.jnario.jnario.impl.RefImpl
-	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getRef()
+	 * @see de.bmw.carit.jnario.jnario.impl.StepReferenceImpl
+	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getStepReference()
 	 * @generated
 	 */
-	int REF = 18;
+	int STEP_REFERENCE = 18;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -831,7 +831,7 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int REF__ANNOTATIONS = STEP__ANNOTATIONS;
+	int STEP_REFERENCE__ANNOTATIONS = STEP__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
@@ -840,7 +840,7 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int REF__ANNOTATION_INFO = STEP__ANNOTATION_INFO;
+	int STEP_REFERENCE__ANNOTATION_INFO = STEP__ANNOTATION_INFO;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -849,16 +849,16 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int REF__NAME = STEP__NAME;
+	int STEP_REFERENCE__NAME = STEP__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Code</b></em>' containment reference.
+	 * The feature id for the '<em><b>Step Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REF__CODE = STEP__CODE;
+	int STEP_REFERENCE__STEP_EXPRESSION = STEP__STEP_EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>And</b></em>' containment reference list.
@@ -867,7 +867,7 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int REF__AND = STEP__AND;
+	int STEP_REFERENCE__AND = STEP__AND;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
@@ -876,26 +876,26 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int REF__REFERENCE = STEP_FEATURE_COUNT + 0;
+	int STEP_REFERENCE__REFERENCE = STEP_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Ref</em>' class.
+	 * The number of structural features of the '<em>Step Reference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REF_FEATURE_COUNT = STEP_FEATURE_COUNT + 1;
+	int STEP_REFERENCE_FEATURE_COUNT = STEP_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.GivenRefImpl <em>Given Ref</em>}' class.
+	 * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.GivenReferenceImpl <em>Given Reference</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.bmw.carit.jnario.jnario.impl.GivenRefImpl
-	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getGivenRef()
+	 * @see de.bmw.carit.jnario.jnario.impl.GivenReferenceImpl
+	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getGivenReference()
 	 * @generated
 	 */
-	int GIVEN_REF = 14;
+	int GIVEN_REFERENCE = 14;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -904,7 +904,7 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int GIVEN_REF__ANNOTATIONS = REF__ANNOTATIONS;
+	int GIVEN_REFERENCE__ANNOTATIONS = STEP_REFERENCE__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
@@ -913,7 +913,7 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int GIVEN_REF__ANNOTATION_INFO = REF__ANNOTATION_INFO;
+	int GIVEN_REFERENCE__ANNOTATION_INFO = STEP_REFERENCE__ANNOTATION_INFO;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -922,16 +922,16 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int GIVEN_REF__NAME = REF__NAME;
+	int GIVEN_REFERENCE__NAME = STEP_REFERENCE__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Code</b></em>' containment reference.
+	 * The feature id for the '<em><b>Step Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GIVEN_REF__CODE = REF__CODE;
+	int GIVEN_REFERENCE__STEP_EXPRESSION = STEP_REFERENCE__STEP_EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>And</b></em>' containment reference list.
@@ -940,7 +940,7 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int GIVEN_REF__AND = REF__AND;
+	int GIVEN_REFERENCE__AND = STEP_REFERENCE__AND;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
@@ -949,26 +949,26 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int GIVEN_REF__REFERENCE = REF__REFERENCE;
+	int GIVEN_REFERENCE__REFERENCE = STEP_REFERENCE__REFERENCE;
 
 	/**
-	 * The number of structural features of the '<em>Given Ref</em>' class.
+	 * The number of structural features of the '<em>Given Reference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GIVEN_REF_FEATURE_COUNT = REF_FEATURE_COUNT + 0;
+	int GIVEN_REFERENCE_FEATURE_COUNT = STEP_REFERENCE_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.WhenRefImpl <em>When Ref</em>}' class.
+	 * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.WhenReferenceImpl <em>When Reference</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.bmw.carit.jnario.jnario.impl.WhenRefImpl
-	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getWhenRef()
+	 * @see de.bmw.carit.jnario.jnario.impl.WhenReferenceImpl
+	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getWhenReference()
 	 * @generated
 	 */
-	int WHEN_REF = 15;
+	int WHEN_REFERENCE = 15;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -977,7 +977,7 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int WHEN_REF__ANNOTATIONS = REF__ANNOTATIONS;
+	int WHEN_REFERENCE__ANNOTATIONS = STEP_REFERENCE__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
@@ -986,7 +986,7 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int WHEN_REF__ANNOTATION_INFO = REF__ANNOTATION_INFO;
+	int WHEN_REFERENCE__ANNOTATION_INFO = STEP_REFERENCE__ANNOTATION_INFO;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -995,16 +995,16 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int WHEN_REF__NAME = REF__NAME;
+	int WHEN_REFERENCE__NAME = STEP_REFERENCE__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Code</b></em>' containment reference.
+	 * The feature id for the '<em><b>Step Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WHEN_REF__CODE = REF__CODE;
+	int WHEN_REFERENCE__STEP_EXPRESSION = STEP_REFERENCE__STEP_EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>And</b></em>' containment reference list.
@@ -1013,7 +1013,7 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int WHEN_REF__AND = REF__AND;
+	int WHEN_REFERENCE__AND = STEP_REFERENCE__AND;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
@@ -1022,26 +1022,26 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int WHEN_REF__REFERENCE = REF__REFERENCE;
+	int WHEN_REFERENCE__REFERENCE = STEP_REFERENCE__REFERENCE;
 
 	/**
-	 * The number of structural features of the '<em>When Ref</em>' class.
+	 * The number of structural features of the '<em>When Reference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WHEN_REF_FEATURE_COUNT = REF_FEATURE_COUNT + 0;
+	int WHEN_REFERENCE_FEATURE_COUNT = STEP_REFERENCE_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.ThenRefImpl <em>Then Ref</em>}' class.
+	 * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.ThenReferenceImpl <em>Then Reference</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.bmw.carit.jnario.jnario.impl.ThenRefImpl
-	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getThenRef()
+	 * @see de.bmw.carit.jnario.jnario.impl.ThenReferenceImpl
+	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getThenReference()
 	 * @generated
 	 */
-	int THEN_REF = 16;
+	int THEN_REFERENCE = 16;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1050,7 +1050,7 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int THEN_REF__ANNOTATIONS = REF__ANNOTATIONS;
+	int THEN_REFERENCE__ANNOTATIONS = STEP_REFERENCE__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
@@ -1059,7 +1059,7 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int THEN_REF__ANNOTATION_INFO = REF__ANNOTATION_INFO;
+	int THEN_REFERENCE__ANNOTATION_INFO = STEP_REFERENCE__ANNOTATION_INFO;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1068,16 +1068,16 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int THEN_REF__NAME = REF__NAME;
+	int THEN_REFERENCE__NAME = STEP_REFERENCE__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Code</b></em>' containment reference.
+	 * The feature id for the '<em><b>Step Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int THEN_REF__CODE = REF__CODE;
+	int THEN_REFERENCE__STEP_EXPRESSION = STEP_REFERENCE__STEP_EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>And</b></em>' containment reference list.
@@ -1086,7 +1086,7 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int THEN_REF__AND = REF__AND;
+	int THEN_REFERENCE__AND = STEP_REFERENCE__AND;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
@@ -1095,26 +1095,26 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int THEN_REF__REFERENCE = REF__REFERENCE;
+	int THEN_REFERENCE__REFERENCE = STEP_REFERENCE__REFERENCE;
 
 	/**
-	 * The number of structural features of the '<em>Then Ref</em>' class.
+	 * The number of structural features of the '<em>Then Reference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int THEN_REF_FEATURE_COUNT = REF_FEATURE_COUNT + 0;
+	int THEN_REFERENCE_FEATURE_COUNT = STEP_REFERENCE_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.AndRefImpl <em>And Ref</em>}' class.
+	 * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.AndReferenceImpl <em>And Reference</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.bmw.carit.jnario.jnario.impl.AndRefImpl
-	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getAndRef()
+	 * @see de.bmw.carit.jnario.jnario.impl.AndReferenceImpl
+	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getAndReference()
 	 * @generated
 	 */
-	int AND_REF = 17;
+	int AND_REFERENCE = 17;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1123,7 +1123,7 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int AND_REF__ANNOTATIONS = REF__ANNOTATIONS;
+	int AND_REFERENCE__ANNOTATIONS = STEP_REFERENCE__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
@@ -1132,7 +1132,7 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int AND_REF__ANNOTATION_INFO = REF__ANNOTATION_INFO;
+	int AND_REFERENCE__ANNOTATION_INFO = STEP_REFERENCE__ANNOTATION_INFO;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1141,16 +1141,16 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int AND_REF__NAME = REF__NAME;
+	int AND_REFERENCE__NAME = STEP_REFERENCE__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Code</b></em>' containment reference.
+	 * The feature id for the '<em><b>Step Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AND_REF__CODE = REF__CODE;
+	int AND_REFERENCE__STEP_EXPRESSION = STEP_REFERENCE__STEP_EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>And</b></em>' containment reference list.
@@ -1159,7 +1159,7 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int AND_REF__AND = REF__AND;
+	int AND_REFERENCE__AND = STEP_REFERENCE__AND;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
@@ -1168,16 +1168,16 @@ public interface JnarioPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int AND_REF__REFERENCE = REF__REFERENCE;
+	int AND_REFERENCE__REFERENCE = STEP_REFERENCE__REFERENCE;
 
 	/**
-	 * The number of structural features of the '<em>And Ref</em>' class.
+	 * The number of structural features of the '<em>And Reference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AND_REF_FEATURE_COUNT = REF_FEATURE_COUNT + 0;
+	int AND_REFERENCE_FEATURE_COUNT = STEP_REFERENCE_FEATURE_COUNT + 0;
 
 
 	/**
@@ -1320,15 +1320,15 @@ public interface JnarioPackage extends EPackage
 	EAttribute getStep_Name();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.jnario.Step#getCode <em>Code</em>}'.
+	 * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.jnario.Step#getStepExpression <em>Step Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Code</em>'.
-	 * @see de.bmw.carit.jnario.jnario.Step#getCode()
+	 * @return the meta object for the containment reference '<em>Step Expression</em>'.
+	 * @see de.bmw.carit.jnario.jnario.Step#getStepExpression()
 	 * @see #getStep()
 	 * @generated
 	 */
-	EReference getStep_Code();
+	EReference getStep_StepExpression();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.jnario.Step#getAnd <em>And</em>}'.
@@ -1382,36 +1382,36 @@ public interface JnarioPackage extends EPackage
 	EClass getAnd();
 
 	/**
-	 * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.Code <em>Code</em>}'.
+	 * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.StepExpression <em>Step Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Code</em>'.
-	 * @see de.bmw.carit.jnario.jnario.Code
+	 * @return the meta object for class '<em>Step Expression</em>'.
+	 * @see de.bmw.carit.jnario.jnario.StepExpression
 	 * @generated
 	 */
-	EClass getCode();
+	EClass getStepExpression();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.jnario.Code#getAnnotations <em>Annotations</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.jnario.StepExpression#getAnnotations <em>Annotations</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Annotations</em>'.
-	 * @see de.bmw.carit.jnario.jnario.Code#getAnnotations()
-	 * @see #getCode()
+	 * @see de.bmw.carit.jnario.jnario.StepExpression#getAnnotations()
+	 * @see #getStepExpression()
 	 * @generated
 	 */
-	EReference getCode_Annotations();
+	EReference getStepExpression_Annotations();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.jnario.Code#getBlockExpression <em>Block Expression</em>}'.
+	 * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.jnario.StepExpression#getBlockExpression <em>Block Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Block Expression</em>'.
-	 * @see de.bmw.carit.jnario.jnario.Code#getBlockExpression()
-	 * @see #getCode()
+	 * @see de.bmw.carit.jnario.jnario.StepExpression#getBlockExpression()
+	 * @see #getStepExpression()
 	 * @generated
 	 */
-	EReference getCode_BlockExpression();
+	EReference getStepExpression_BlockExpression();
 
 	/**
 	 * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.ExampleTable <em>Example Table</em>}'.
@@ -1520,75 +1520,75 @@ public interface JnarioPackage extends EPackage
 	EReference getExampleCell_Name();
 
 	/**
-	 * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.Jnario <em>Jnario</em>}'.
+	 * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.JnarioFile <em>File</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Jnario</em>'.
-	 * @see de.bmw.carit.jnario.jnario.Jnario
+	 * @return the meta object for class '<em>File</em>'.
+	 * @see de.bmw.carit.jnario.jnario.JnarioFile
 	 * @generated
 	 */
-	EClass getJnario();
+	EClass getJnarioFile();
 
 	/**
-	 * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.GivenRef <em>Given Ref</em>}'.
+	 * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.GivenReference <em>Given Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Given Ref</em>'.
-	 * @see de.bmw.carit.jnario.jnario.GivenRef
+	 * @return the meta object for class '<em>Given Reference</em>'.
+	 * @see de.bmw.carit.jnario.jnario.GivenReference
 	 * @generated
 	 */
-	EClass getGivenRef();
+	EClass getGivenReference();
 
 	/**
-	 * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.WhenRef <em>When Ref</em>}'.
+	 * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.WhenReference <em>When Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>When Ref</em>'.
-	 * @see de.bmw.carit.jnario.jnario.WhenRef
+	 * @return the meta object for class '<em>When Reference</em>'.
+	 * @see de.bmw.carit.jnario.jnario.WhenReference
 	 * @generated
 	 */
-	EClass getWhenRef();
+	EClass getWhenReference();
 
 	/**
-	 * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.ThenRef <em>Then Ref</em>}'.
+	 * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.ThenReference <em>Then Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Then Ref</em>'.
-	 * @see de.bmw.carit.jnario.jnario.ThenRef
+	 * @return the meta object for class '<em>Then Reference</em>'.
+	 * @see de.bmw.carit.jnario.jnario.ThenReference
 	 * @generated
 	 */
-	EClass getThenRef();
+	EClass getThenReference();
 
 	/**
-	 * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.AndRef <em>And Ref</em>}'.
+	 * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.AndReference <em>And Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>And Ref</em>'.
-	 * @see de.bmw.carit.jnario.jnario.AndRef
+	 * @return the meta object for class '<em>And Reference</em>'.
+	 * @see de.bmw.carit.jnario.jnario.AndReference
 	 * @generated
 	 */
-	EClass getAndRef();
+	EClass getAndReference();
 
 	/**
-	 * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.Ref <em>Ref</em>}'.
+	 * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.StepReference <em>Step Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Ref</em>'.
-	 * @see de.bmw.carit.jnario.jnario.Ref
+	 * @return the meta object for class '<em>Step Reference</em>'.
+	 * @see de.bmw.carit.jnario.jnario.StepReference
 	 * @generated
 	 */
-	EClass getRef();
+	EClass getStepReference();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.bmw.carit.jnario.jnario.Ref#getReference <em>Reference</em>}'.
+	 * Returns the meta object for the reference '{@link de.bmw.carit.jnario.jnario.StepReference#getReference <em>Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Reference</em>'.
-	 * @see de.bmw.carit.jnario.jnario.Ref#getReference()
-	 * @see #getRef()
+	 * @see de.bmw.carit.jnario.jnario.StepReference#getReference()
+	 * @see #getStepReference()
 	 * @generated
 	 */
-	EReference getRef_Reference();
+	EReference getStepReference_Reference();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1726,12 +1726,12 @@ public interface JnarioPackage extends EPackage
 		EAttribute STEP__NAME = eINSTANCE.getStep_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Code</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Step Expression</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STEP__CODE = eINSTANCE.getStep_Code();
+		EReference STEP__STEP_EXPRESSION = eINSTANCE.getStep_StepExpression();
 
 		/**
 		 * The meta object literal for the '<em><b>And</b></em>' containment reference list feature.
@@ -1782,14 +1782,14 @@ public interface JnarioPackage extends EPackage
 		EClass AND = eINSTANCE.getAnd();
 
 		/**
-		 * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.CodeImpl <em>Code</em>}' class.
+		 * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.StepExpressionImpl <em>Step Expression</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.bmw.carit.jnario.jnario.impl.CodeImpl
-		 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getCode()
+		 * @see de.bmw.carit.jnario.jnario.impl.StepExpressionImpl
+		 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getStepExpression()
 		 * @generated
 		 */
-		EClass CODE = eINSTANCE.getCode();
+		EClass STEP_EXPRESSION = eINSTANCE.getStepExpression();
 
 		/**
 		 * The meta object literal for the '<em><b>Annotations</b></em>' containment reference list feature.
@@ -1797,7 +1797,7 @@ public interface JnarioPackage extends EPackage
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CODE__ANNOTATIONS = eINSTANCE.getCode_Annotations();
+		EReference STEP_EXPRESSION__ANNOTATIONS = eINSTANCE.getStepExpression_Annotations();
 
 		/**
 		 * The meta object literal for the '<em><b>Block Expression</b></em>' containment reference feature.
@@ -1805,7 +1805,7 @@ public interface JnarioPackage extends EPackage
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CODE__BLOCK_EXPRESSION = eINSTANCE.getCode_BlockExpression();
+		EReference STEP_EXPRESSION__BLOCK_EXPRESSION = eINSTANCE.getStepExpression_BlockExpression();
 
 		/**
 		 * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.ExampleTableImpl <em>Example Table</em>}' class.
@@ -1896,64 +1896,64 @@ public interface JnarioPackage extends EPackage
 		EReference EXAMPLE_CELL__NAME = eINSTANCE.getExampleCell_Name();
 
 		/**
-		 * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.JnarioImpl <em>Jnario</em>}' class.
+		 * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.JnarioFileImpl <em>File</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.bmw.carit.jnario.jnario.impl.JnarioImpl
-		 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getJnario()
+		 * @see de.bmw.carit.jnario.jnario.impl.JnarioFileImpl
+		 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getJnarioFile()
 		 * @generated
 		 */
-		EClass JNARIO = eINSTANCE.getJnario();
+		EClass JNARIO_FILE = eINSTANCE.getJnarioFile();
 
 		/**
-		 * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.GivenRefImpl <em>Given Ref</em>}' class.
+		 * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.GivenReferenceImpl <em>Given Reference</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.bmw.carit.jnario.jnario.impl.GivenRefImpl
-		 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getGivenRef()
+		 * @see de.bmw.carit.jnario.jnario.impl.GivenReferenceImpl
+		 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getGivenReference()
 		 * @generated
 		 */
-		EClass GIVEN_REF = eINSTANCE.getGivenRef();
+		EClass GIVEN_REFERENCE = eINSTANCE.getGivenReference();
 
 		/**
-		 * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.WhenRefImpl <em>When Ref</em>}' class.
+		 * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.WhenReferenceImpl <em>When Reference</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.bmw.carit.jnario.jnario.impl.WhenRefImpl
-		 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getWhenRef()
+		 * @see de.bmw.carit.jnario.jnario.impl.WhenReferenceImpl
+		 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getWhenReference()
 		 * @generated
 		 */
-		EClass WHEN_REF = eINSTANCE.getWhenRef();
+		EClass WHEN_REFERENCE = eINSTANCE.getWhenReference();
 
 		/**
-		 * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.ThenRefImpl <em>Then Ref</em>}' class.
+		 * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.ThenReferenceImpl <em>Then Reference</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.bmw.carit.jnario.jnario.impl.ThenRefImpl
-		 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getThenRef()
+		 * @see de.bmw.carit.jnario.jnario.impl.ThenReferenceImpl
+		 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getThenReference()
 		 * @generated
 		 */
-		EClass THEN_REF = eINSTANCE.getThenRef();
+		EClass THEN_REFERENCE = eINSTANCE.getThenReference();
 
 		/**
-		 * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.AndRefImpl <em>And Ref</em>}' class.
+		 * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.AndReferenceImpl <em>And Reference</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.bmw.carit.jnario.jnario.impl.AndRefImpl
-		 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getAndRef()
+		 * @see de.bmw.carit.jnario.jnario.impl.AndReferenceImpl
+		 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getAndReference()
 		 * @generated
 		 */
-		EClass AND_REF = eINSTANCE.getAndRef();
+		EClass AND_REFERENCE = eINSTANCE.getAndReference();
 
 		/**
-		 * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.RefImpl <em>Ref</em>}' class.
+		 * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.StepReferenceImpl <em>Step Reference</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.bmw.carit.jnario.jnario.impl.RefImpl
-		 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getRef()
+		 * @see de.bmw.carit.jnario.jnario.impl.StepReferenceImpl
+		 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getStepReference()
 		 * @generated
 		 */
-		EClass REF = eINSTANCE.getRef();
+		EClass STEP_REFERENCE = eINSTANCE.getStepReference();
 
 		/**
 		 * The meta object literal for the '<em><b>Reference</b></em>' reference feature.
@@ -1961,7 +1961,7 @@ public interface JnarioPackage extends EPackage
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference REF__REFERENCE = eINSTANCE.getRef_Reference();
+		EReference STEP_REFERENCE__REFERENCE = eINSTANCE.getStepReference_Reference();
 
 	}
 

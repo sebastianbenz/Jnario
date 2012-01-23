@@ -1,21 +1,21 @@
 package de.bmw.carit.jnario.naming
 
 import de.bmw.carit.jnario.jnario.Step
-import de.bmw.carit.jnario.jnario.Ref
+import de.bmw.carit.jnario.jnario.StepReference
 import org.eclipse.emf.ecore.util.EcoreUtil
 
 class StepExpressionProvider {
 	
 	def expressionOf(Step step){
-		if(step instanceof Ref){
-			getOrCreateExpression(step as Ref)
+		if(step instanceof StepReference){
+			getOrCreateExpression(step as StepReference)
 		}
-		return step.code
+		return step.stepExpression
 	}
 	
-	def getOrCreateExpression(Ref ref){
-		val expr = EcoreUtil::copy(ref?.reference?.code)
-		ref.code = expr
+	def getOrCreateExpression(StepReference ref){
+		val expr = EcoreUtil::copy(ref?.reference?.stepExpression)
+		ref.stepExpression = expr
 		return expr
 	}
 	

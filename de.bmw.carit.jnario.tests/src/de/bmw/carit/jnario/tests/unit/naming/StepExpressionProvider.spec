@@ -1,8 +1,8 @@
 package de.bmw.carit.jnario.tests.unit.naming
 
 import com.google.inject.Inject
-import de.bmw.carit.jnario.jnario.Ref
 import de.bmw.carit.jnario.jnario.Step
+import de.bmw.carit.jnario.jnario.StepReference
 import de.bmw.carit.jnario.runner.InstantiateWith
 import de.bmw.carit.jnario.tests.util.ModelStore
 import de.bmw.carit.jnario.tests.util.SpecTestInstantiator
@@ -22,7 +22,7 @@ describe StepExpressionProvider{
 					Given a step with an implementation
 						"the implementation"
 		''')
-		assert step.code == subject.expressionOf(step)
+		assert step.stepExpression == subject.expressionOf(step)
 	}
 	
 	it "should copy the referenced step's implementation and set it the referencing step"{
@@ -37,8 +37,8 @@ describe StepExpressionProvider{
 		''')
 		val expr = subject.expressionOf(step)
 		assert expr != null
-		assert step.code == expr
-		assert (step as Ref).reference.code != expr
+		assert step.stepExpression == expr
+		assert (step as StepReference).reference.stepExpression != expr
 	}
 	
 	def step(){

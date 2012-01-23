@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class AndImpl extends StepImplCustom implements And
+public class AndImpl extends StepImpl implements And
 {
 	/**
 	 * <!-- begin-user-doc -->

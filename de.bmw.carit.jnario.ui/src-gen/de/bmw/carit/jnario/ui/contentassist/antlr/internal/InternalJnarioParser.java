@@ -181,25 +181,25 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
 
 
 
-    // $ANTLR start "entryRuleJnario"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:61:1: entryRuleJnario : ruleJnario EOF ;
-    public final void entryRuleJnario() throws RecognitionException {
+    // $ANTLR start "entryRuleJnarioFile"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:61:1: entryRuleJnarioFile : ruleJnarioFile EOF ;
+    public final void entryRuleJnarioFile() throws RecognitionException {
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:62:1: ( ruleJnario EOF )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:63:1: ruleJnario EOF
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:62:1: ( ruleJnarioFile EOF )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:63:1: ruleJnarioFile EOF
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getJnarioRule()); 
+               before(grammarAccess.getJnarioFileRule()); 
             }
-            pushFollow(FOLLOW_ruleJnario_in_entryRuleJnario67);
-            ruleJnario();
+            pushFollow(FOLLOW_ruleJnarioFile_in_entryRuleJnarioFile67);
+            ruleJnarioFile();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getJnarioRule()); 
+               after(grammarAccess.getJnarioFileRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleJnario74); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleJnarioFile74); if (state.failed) return ;
 
             }
 
@@ -212,30 +212,30 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "entryRuleJnario"
+    // $ANTLR end "entryRuleJnarioFile"
 
 
-    // $ANTLR start "ruleJnario"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:70:1: ruleJnario : ( ( rule__Jnario__Group__0 ) ) ;
-    public final void ruleJnario() throws RecognitionException {
+    // $ANTLR start "ruleJnarioFile"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:70:1: ruleJnarioFile : ( ( rule__JnarioFile__Group__0 ) ) ;
+    public final void ruleJnarioFile() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:74:2: ( ( ( rule__Jnario__Group__0 ) ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:75:1: ( ( rule__Jnario__Group__0 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:74:2: ( ( ( rule__JnarioFile__Group__0 ) ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:75:1: ( ( rule__JnarioFile__Group__0 ) )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:75:1: ( ( rule__Jnario__Group__0 ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:76:1: ( rule__Jnario__Group__0 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:75:1: ( ( rule__JnarioFile__Group__0 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:76:1: ( rule__JnarioFile__Group__0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getJnarioAccess().getGroup()); 
+               before(grammarAccess.getJnarioFileAccess().getGroup()); 
             }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:77:1: ( rule__Jnario__Group__0 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:77:2: rule__Jnario__Group__0
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:77:1: ( rule__JnarioFile__Group__0 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:77:2: rule__JnarioFile__Group__0
             {
-            pushFollow(FOLLOW_rule__Jnario__Group__0_in_ruleJnario100);
-            rule__Jnario__Group__0();
+            pushFollow(FOLLOW_rule__JnarioFile__Group__0_in_ruleJnarioFile100);
+            rule__JnarioFile__Group__0();
 
             state._fsp--;
             if (state.failed) return ;
@@ -243,7 +243,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getJnarioAccess().getGroup()); 
+               after(grammarAccess.getJnarioFileAccess().getGroup()); 
             }
 
             }
@@ -263,7 +263,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "ruleJnario"
+    // $ANTLR end "ruleJnarioFile"
 
 
     // $ANTLR start "entryRuleFeature"
@@ -606,25 +606,25 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "ruleScenario"
 
 
-    // $ANTLR start "entryRuleRef"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:203:1: entryRuleRef : ruleRef EOF ;
-    public final void entryRuleRef() throws RecognitionException {
+    // $ANTLR start "entryRuleStepReference"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:203:1: entryRuleStepReference : ruleStepReference EOF ;
+    public final void entryRuleStepReference() throws RecognitionException {
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:204:1: ( ruleRef EOF )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:205:1: ruleRef EOF
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:204:1: ( ruleStepReference EOF )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:205:1: ruleStepReference EOF
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getRefRule()); 
+               before(grammarAccess.getStepReferenceRule()); 
             }
-            pushFollow(FOLLOW_ruleRef_in_entryRuleRef369);
-            ruleRef();
+            pushFollow(FOLLOW_ruleStepReference_in_entryRuleStepReference369);
+            ruleStepReference();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getRefRule()); 
+               after(grammarAccess.getStepReferenceRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleRef376); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleStepReference376); if (state.failed) return ;
 
             }
 
@@ -637,30 +637,30 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "entryRuleRef"
+    // $ANTLR end "entryRuleStepReference"
 
 
-    // $ANTLR start "ruleRef"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:212:1: ruleRef : ( ( rule__Ref__Alternatives ) ) ;
-    public final void ruleRef() throws RecognitionException {
+    // $ANTLR start "ruleStepReference"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:212:1: ruleStepReference : ( ( rule__StepReference__Alternatives ) ) ;
+    public final void ruleStepReference() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:216:2: ( ( ( rule__Ref__Alternatives ) ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:217:1: ( ( rule__Ref__Alternatives ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:216:2: ( ( ( rule__StepReference__Alternatives ) ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:217:1: ( ( rule__StepReference__Alternatives ) )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:217:1: ( ( rule__Ref__Alternatives ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:218:1: ( rule__Ref__Alternatives )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:217:1: ( ( rule__StepReference__Alternatives ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:218:1: ( rule__StepReference__Alternatives )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getRefAccess().getAlternatives()); 
+               before(grammarAccess.getStepReferenceAccess().getAlternatives()); 
             }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:219:1: ( rule__Ref__Alternatives )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:219:2: rule__Ref__Alternatives
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:219:1: ( rule__StepReference__Alternatives )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:219:2: rule__StepReference__Alternatives
             {
-            pushFollow(FOLLOW_rule__Ref__Alternatives_in_ruleRef402);
-            rule__Ref__Alternatives();
+            pushFollow(FOLLOW_rule__StepReference__Alternatives_in_ruleStepReference402);
+            rule__StepReference__Alternatives();
 
             state._fsp--;
             if (state.failed) return ;
@@ -668,7 +668,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getRefAccess().getAlternatives()); 
+               after(grammarAccess.getStepReferenceAccess().getAlternatives()); 
             }
 
             }
@@ -688,28 +688,28 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "ruleRef"
+    // $ANTLR end "ruleStepReference"
 
 
-    // $ANTLR start "entryRuleGivenRef"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:231:1: entryRuleGivenRef : ruleGivenRef EOF ;
-    public final void entryRuleGivenRef() throws RecognitionException {
+    // $ANTLR start "entryRuleGivenReference"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:231:1: entryRuleGivenReference : ruleGivenReference EOF ;
+    public final void entryRuleGivenReference() throws RecognitionException {
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:232:1: ( ruleGivenRef EOF )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:233:1: ruleGivenRef EOF
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:232:1: ( ruleGivenReference EOF )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:233:1: ruleGivenReference EOF
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getGivenRefRule()); 
+               before(grammarAccess.getGivenReferenceRule()); 
             }
-            pushFollow(FOLLOW_ruleGivenRef_in_entryRuleGivenRef429);
-            ruleGivenRef();
+            pushFollow(FOLLOW_ruleGivenReference_in_entryRuleGivenReference429);
+            ruleGivenReference();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getGivenRefRule()); 
+               after(grammarAccess.getGivenReferenceRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleGivenRef436); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleGivenReference436); if (state.failed) return ;
 
             }
 
@@ -722,30 +722,30 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "entryRuleGivenRef"
+    // $ANTLR end "entryRuleGivenReference"
 
 
-    // $ANTLR start "ruleGivenRef"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:240:1: ruleGivenRef : ( ( rule__GivenRef__Group__0 ) ) ;
-    public final void ruleGivenRef() throws RecognitionException {
+    // $ANTLR start "ruleGivenReference"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:240:1: ruleGivenReference : ( ( rule__GivenReference__Group__0 ) ) ;
+    public final void ruleGivenReference() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:244:2: ( ( ( rule__GivenRef__Group__0 ) ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:245:1: ( ( rule__GivenRef__Group__0 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:244:2: ( ( ( rule__GivenReference__Group__0 ) ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:245:1: ( ( rule__GivenReference__Group__0 ) )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:245:1: ( ( rule__GivenRef__Group__0 ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:246:1: ( rule__GivenRef__Group__0 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:245:1: ( ( rule__GivenReference__Group__0 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:246:1: ( rule__GivenReference__Group__0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getGivenRefAccess().getGroup()); 
+               before(grammarAccess.getGivenReferenceAccess().getGroup()); 
             }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:247:1: ( rule__GivenRef__Group__0 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:247:2: rule__GivenRef__Group__0
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:247:1: ( rule__GivenReference__Group__0 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:247:2: rule__GivenReference__Group__0
             {
-            pushFollow(FOLLOW_rule__GivenRef__Group__0_in_ruleGivenRef462);
-            rule__GivenRef__Group__0();
+            pushFollow(FOLLOW_rule__GivenReference__Group__0_in_ruleGivenReference462);
+            rule__GivenReference__Group__0();
 
             state._fsp--;
             if (state.failed) return ;
@@ -753,7 +753,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getGivenRefAccess().getGroup()); 
+               after(grammarAccess.getGivenReferenceAccess().getGroup()); 
             }
 
             }
@@ -773,7 +773,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "ruleGivenRef"
+    // $ANTLR end "ruleGivenReference"
 
 
     // $ANTLR start "entryRuleGiven"
@@ -861,25 +861,25 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "ruleGiven"
 
 
-    // $ANTLR start "entryRuleWhenRef"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:287:1: entryRuleWhenRef : ruleWhenRef EOF ;
-    public final void entryRuleWhenRef() throws RecognitionException {
+    // $ANTLR start "entryRuleWhenReference"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:287:1: entryRuleWhenReference : ruleWhenReference EOF ;
+    public final void entryRuleWhenReference() throws RecognitionException {
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:288:1: ( ruleWhenRef EOF )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:289:1: ruleWhenRef EOF
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:288:1: ( ruleWhenReference EOF )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:289:1: ruleWhenReference EOF
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getWhenRefRule()); 
+               before(grammarAccess.getWhenReferenceRule()); 
             }
-            pushFollow(FOLLOW_ruleWhenRef_in_entryRuleWhenRef549);
-            ruleWhenRef();
+            pushFollow(FOLLOW_ruleWhenReference_in_entryRuleWhenReference549);
+            ruleWhenReference();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getWhenRefRule()); 
+               after(grammarAccess.getWhenReferenceRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleWhenRef556); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleWhenReference556); if (state.failed) return ;
 
             }
 
@@ -892,30 +892,30 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "entryRuleWhenRef"
+    // $ANTLR end "entryRuleWhenReference"
 
 
-    // $ANTLR start "ruleWhenRef"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:296:1: ruleWhenRef : ( ( rule__WhenRef__Group__0 ) ) ;
-    public final void ruleWhenRef() throws RecognitionException {
+    // $ANTLR start "ruleWhenReference"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:296:1: ruleWhenReference : ( ( rule__WhenReference__Group__0 ) ) ;
+    public final void ruleWhenReference() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:300:2: ( ( ( rule__WhenRef__Group__0 ) ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:301:1: ( ( rule__WhenRef__Group__0 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:300:2: ( ( ( rule__WhenReference__Group__0 ) ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:301:1: ( ( rule__WhenReference__Group__0 ) )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:301:1: ( ( rule__WhenRef__Group__0 ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:302:1: ( rule__WhenRef__Group__0 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:301:1: ( ( rule__WhenReference__Group__0 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:302:1: ( rule__WhenReference__Group__0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getWhenRefAccess().getGroup()); 
+               before(grammarAccess.getWhenReferenceAccess().getGroup()); 
             }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:303:1: ( rule__WhenRef__Group__0 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:303:2: rule__WhenRef__Group__0
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:303:1: ( rule__WhenReference__Group__0 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:303:2: rule__WhenReference__Group__0
             {
-            pushFollow(FOLLOW_rule__WhenRef__Group__0_in_ruleWhenRef582);
-            rule__WhenRef__Group__0();
+            pushFollow(FOLLOW_rule__WhenReference__Group__0_in_ruleWhenReference582);
+            rule__WhenReference__Group__0();
 
             state._fsp--;
             if (state.failed) return ;
@@ -923,7 +923,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getWhenRefAccess().getGroup()); 
+               after(grammarAccess.getWhenReferenceAccess().getGroup()); 
             }
 
             }
@@ -943,7 +943,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "ruleWhenRef"
+    // $ANTLR end "ruleWhenReference"
 
 
     // $ANTLR start "entryRuleWhen"
@@ -1031,25 +1031,25 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "ruleWhen"
 
 
-    // $ANTLR start "entryRuleThenRef"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:343:1: entryRuleThenRef : ruleThenRef EOF ;
-    public final void entryRuleThenRef() throws RecognitionException {
+    // $ANTLR start "entryRuleThenReference"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:343:1: entryRuleThenReference : ruleThenReference EOF ;
+    public final void entryRuleThenReference() throws RecognitionException {
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:344:1: ( ruleThenRef EOF )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:345:1: ruleThenRef EOF
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:344:1: ( ruleThenReference EOF )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:345:1: ruleThenReference EOF
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getThenRefRule()); 
+               before(grammarAccess.getThenReferenceRule()); 
             }
-            pushFollow(FOLLOW_ruleThenRef_in_entryRuleThenRef669);
-            ruleThenRef();
+            pushFollow(FOLLOW_ruleThenReference_in_entryRuleThenReference669);
+            ruleThenReference();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getThenRefRule()); 
+               after(grammarAccess.getThenReferenceRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleThenRef676); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleThenReference676); if (state.failed) return ;
 
             }
 
@@ -1062,30 +1062,30 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "entryRuleThenRef"
+    // $ANTLR end "entryRuleThenReference"
 
 
-    // $ANTLR start "ruleThenRef"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:352:1: ruleThenRef : ( ( rule__ThenRef__Group__0 ) ) ;
-    public final void ruleThenRef() throws RecognitionException {
+    // $ANTLR start "ruleThenReference"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:352:1: ruleThenReference : ( ( rule__ThenReference__Group__0 ) ) ;
+    public final void ruleThenReference() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:356:2: ( ( ( rule__ThenRef__Group__0 ) ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:357:1: ( ( rule__ThenRef__Group__0 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:356:2: ( ( ( rule__ThenReference__Group__0 ) ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:357:1: ( ( rule__ThenReference__Group__0 ) )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:357:1: ( ( rule__ThenRef__Group__0 ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:358:1: ( rule__ThenRef__Group__0 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:357:1: ( ( rule__ThenReference__Group__0 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:358:1: ( rule__ThenReference__Group__0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getThenRefAccess().getGroup()); 
+               before(grammarAccess.getThenReferenceAccess().getGroup()); 
             }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:359:1: ( rule__ThenRef__Group__0 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:359:2: rule__ThenRef__Group__0
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:359:1: ( rule__ThenReference__Group__0 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:359:2: rule__ThenReference__Group__0
             {
-            pushFollow(FOLLOW_rule__ThenRef__Group__0_in_ruleThenRef702);
-            rule__ThenRef__Group__0();
+            pushFollow(FOLLOW_rule__ThenReference__Group__0_in_ruleThenReference702);
+            rule__ThenReference__Group__0();
 
             state._fsp--;
             if (state.failed) return ;
@@ -1093,7 +1093,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getThenRefAccess().getGroup()); 
+               after(grammarAccess.getThenReferenceAccess().getGroup()); 
             }
 
             }
@@ -1113,7 +1113,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "ruleThenRef"
+    // $ANTLR end "ruleThenReference"
 
 
     // $ANTLR start "entryRuleThen"
@@ -1201,25 +1201,25 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "ruleThen"
 
 
-    // $ANTLR start "entryRuleAndRef"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:399:1: entryRuleAndRef : ruleAndRef EOF ;
-    public final void entryRuleAndRef() throws RecognitionException {
+    // $ANTLR start "entryRuleAndReference"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:399:1: entryRuleAndReference : ruleAndReference EOF ;
+    public final void entryRuleAndReference() throws RecognitionException {
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:400:1: ( ruleAndRef EOF )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:401:1: ruleAndRef EOF
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:400:1: ( ruleAndReference EOF )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:401:1: ruleAndReference EOF
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getAndRefRule()); 
+               before(grammarAccess.getAndReferenceRule()); 
             }
-            pushFollow(FOLLOW_ruleAndRef_in_entryRuleAndRef789);
-            ruleAndRef();
+            pushFollow(FOLLOW_ruleAndReference_in_entryRuleAndReference789);
+            ruleAndReference();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getAndRefRule()); 
+               after(grammarAccess.getAndReferenceRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleAndRef796); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAndReference796); if (state.failed) return ;
 
             }
 
@@ -1232,30 +1232,30 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "entryRuleAndRef"
+    // $ANTLR end "entryRuleAndReference"
 
 
-    // $ANTLR start "ruleAndRef"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:408:1: ruleAndRef : ( ( rule__AndRef__Group__0 ) ) ;
-    public final void ruleAndRef() throws RecognitionException {
+    // $ANTLR start "ruleAndReference"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:408:1: ruleAndReference : ( ( rule__AndReference__Group__0 ) ) ;
+    public final void ruleAndReference() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:412:2: ( ( ( rule__AndRef__Group__0 ) ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:413:1: ( ( rule__AndRef__Group__0 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:412:2: ( ( ( rule__AndReference__Group__0 ) ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:413:1: ( ( rule__AndReference__Group__0 ) )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:413:1: ( ( rule__AndRef__Group__0 ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:414:1: ( rule__AndRef__Group__0 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:413:1: ( ( rule__AndReference__Group__0 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:414:1: ( rule__AndReference__Group__0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getAndRefAccess().getGroup()); 
+               before(grammarAccess.getAndReferenceAccess().getGroup()); 
             }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:415:1: ( rule__AndRef__Group__0 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:415:2: rule__AndRef__Group__0
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:415:1: ( rule__AndReference__Group__0 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:415:2: rule__AndReference__Group__0
             {
-            pushFollow(FOLLOW_rule__AndRef__Group__0_in_ruleAndRef822);
-            rule__AndRef__Group__0();
+            pushFollow(FOLLOW_rule__AndReference__Group__0_in_ruleAndReference822);
+            rule__AndReference__Group__0();
 
             state._fsp--;
             if (state.failed) return ;
@@ -1263,7 +1263,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getAndRefAccess().getGroup()); 
+               after(grammarAccess.getAndReferenceAccess().getGroup()); 
             }
 
             }
@@ -1283,7 +1283,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "ruleAndRef"
+    // $ANTLR end "ruleAndReference"
 
 
     // $ANTLR start "entryRuleAnd"
@@ -1371,25 +1371,25 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "ruleAnd"
 
 
-    // $ANTLR start "entryRuleCode"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:455:1: entryRuleCode : ruleCode EOF ;
-    public final void entryRuleCode() throws RecognitionException {
+    // $ANTLR start "entryRuleStepExpression"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:455:1: entryRuleStepExpression : ruleStepExpression EOF ;
+    public final void entryRuleStepExpression() throws RecognitionException {
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:456:1: ( ruleCode EOF )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:457:1: ruleCode EOF
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:456:1: ( ruleStepExpression EOF )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:457:1: ruleStepExpression EOF
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getCodeRule()); 
+               before(grammarAccess.getStepExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleCode_in_entryRuleCode909);
-            ruleCode();
+            pushFollow(FOLLOW_ruleStepExpression_in_entryRuleStepExpression909);
+            ruleStepExpression();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getCodeRule()); 
+               after(grammarAccess.getStepExpressionRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleCode916); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleStepExpression916); if (state.failed) return ;
 
             }
 
@@ -1402,30 +1402,30 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "entryRuleCode"
+    // $ANTLR end "entryRuleStepExpression"
 
 
-    // $ANTLR start "ruleCode"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:464:1: ruleCode : ( ( rule__Code__Group__0 ) ) ;
-    public final void ruleCode() throws RecognitionException {
+    // $ANTLR start "ruleStepExpression"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:464:1: ruleStepExpression : ( ( rule__StepExpression__Group__0 ) ) ;
+    public final void ruleStepExpression() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:468:2: ( ( ( rule__Code__Group__0 ) ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:469:1: ( ( rule__Code__Group__0 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:468:2: ( ( ( rule__StepExpression__Group__0 ) ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:469:1: ( ( rule__StepExpression__Group__0 ) )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:469:1: ( ( rule__Code__Group__0 ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:470:1: ( rule__Code__Group__0 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:469:1: ( ( rule__StepExpression__Group__0 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:470:1: ( rule__StepExpression__Group__0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getCodeAccess().getGroup()); 
+               before(grammarAccess.getStepExpressionAccess().getGroup()); 
             }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:471:1: ( rule__Code__Group__0 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:471:2: rule__Code__Group__0
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:471:1: ( rule__StepExpression__Group__0 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:471:2: rule__StepExpression__Group__0
             {
-            pushFollow(FOLLOW_rule__Code__Group__0_in_ruleCode942);
-            rule__Code__Group__0();
+            pushFollow(FOLLOW_rule__StepExpression__Group__0_in_ruleStepExpression942);
+            rule__StepExpression__Group__0();
 
             state._fsp--;
             if (state.failed) return ;
@@ -1433,7 +1433,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getCodeAccess().getGroup()); 
+               after(grammarAccess.getStepExpressionAccess().getGroup()); 
             }
 
             }
@@ -1453,7 +1453,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "ruleCode"
+    // $ANTLR end "ruleStepExpression"
 
 
     // $ANTLR start "entryRuleBlockExpression"
@@ -9391,13 +9391,13 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Background__StepsAlternatives_3_0"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3102:1: rule__Background__StepsAlternatives_3_0 : ( ( ruleGiven ) | ( ruleGivenRef ) );
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3102:1: rule__Background__StepsAlternatives_3_0 : ( ( ruleGiven ) | ( ruleGivenReference ) );
     public final void rule__Background__StepsAlternatives_3_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3106:1: ( ( ruleGiven ) | ( ruleGivenRef ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3106:1: ( ( ruleGiven ) | ( ruleGivenReference ) )
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -9450,21 +9450,21 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3113:6: ( ruleGivenRef )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3113:6: ( ruleGivenReference )
                     {
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3113:6: ( ruleGivenRef )
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3114:1: ruleGivenRef
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3113:6: ( ruleGivenReference )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3114:1: ruleGivenReference
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getBackgroundAccess().getStepsGivenRefParserRuleCall_3_0_1()); 
+                       before(grammarAccess.getBackgroundAccess().getStepsGivenReferenceParserRuleCall_3_0_1()); 
                     }
-                    pushFollow(FOLLOW_ruleGivenRef_in_rule__Background__StepsAlternatives_3_06594);
-                    ruleGivenRef();
+                    pushFollow(FOLLOW_ruleGivenReference_in_rule__Background__StepsAlternatives_3_06594);
+                    ruleGivenReference();
 
                     state._fsp--;
                     if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getBackgroundAccess().getStepsGivenRefParserRuleCall_3_0_1()); 
+                       after(grammarAccess.getBackgroundAccess().getStepsGivenReferenceParserRuleCall_3_0_1()); 
                     }
 
                     }
@@ -9490,13 +9490,13 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Scenario__StepsAlternatives_3_0"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3124:1: rule__Scenario__StepsAlternatives_3_0 : ( ( ruleGiven ) | ( ruleGivenRef ) );
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3124:1: rule__Scenario__StepsAlternatives_3_0 : ( ( ruleGiven ) | ( ruleGivenReference ) );
     public final void rule__Scenario__StepsAlternatives_3_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3128:1: ( ( ruleGiven ) | ( ruleGivenRef ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3128:1: ( ( ruleGiven ) | ( ruleGivenReference ) )
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -9549,21 +9549,21 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3135:6: ( ruleGivenRef )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3135:6: ( ruleGivenReference )
                     {
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3135:6: ( ruleGivenRef )
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3136:1: ruleGivenRef
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3135:6: ( ruleGivenReference )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3136:1: ruleGivenReference
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getScenarioAccess().getStepsGivenRefParserRuleCall_3_0_1()); 
+                       before(grammarAccess.getScenarioAccess().getStepsGivenReferenceParserRuleCall_3_0_1()); 
                     }
-                    pushFollow(FOLLOW_ruleGivenRef_in_rule__Scenario__StepsAlternatives_3_06643);
-                    ruleGivenRef();
+                    pushFollow(FOLLOW_ruleGivenReference_in_rule__Scenario__StepsAlternatives_3_06643);
+                    ruleGivenReference();
 
                     state._fsp--;
                     if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getScenarioAccess().getStepsGivenRefParserRuleCall_3_0_1()); 
+                       after(grammarAccess.getScenarioAccess().getStepsGivenReferenceParserRuleCall_3_0_1()); 
                     }
 
                     }
@@ -9589,13 +9589,13 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Scenario__StepsAlternatives_4_0"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3146:1: rule__Scenario__StepsAlternatives_4_0 : ( ( ruleWhen ) | ( ruleWhenRef ) );
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3146:1: rule__Scenario__StepsAlternatives_4_0 : ( ( ruleWhen ) | ( ruleWhenReference ) );
     public final void rule__Scenario__StepsAlternatives_4_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3150:1: ( ( ruleWhen ) | ( ruleWhenRef ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3150:1: ( ( ruleWhen ) | ( ruleWhenReference ) )
             int alt5=2;
             int LA5_0 = input.LA(1);
 
@@ -9648,21 +9648,21 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3157:6: ( ruleWhenRef )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3157:6: ( ruleWhenReference )
                     {
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3157:6: ( ruleWhenRef )
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3158:1: ruleWhenRef
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3157:6: ( ruleWhenReference )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3158:1: ruleWhenReference
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getScenarioAccess().getStepsWhenRefParserRuleCall_4_0_1()); 
+                       before(grammarAccess.getScenarioAccess().getStepsWhenReferenceParserRuleCall_4_0_1()); 
                     }
-                    pushFollow(FOLLOW_ruleWhenRef_in_rule__Scenario__StepsAlternatives_4_06692);
-                    ruleWhenRef();
+                    pushFollow(FOLLOW_ruleWhenReference_in_rule__Scenario__StepsAlternatives_4_06692);
+                    ruleWhenReference();
 
                     state._fsp--;
                     if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getScenarioAccess().getStepsWhenRefParserRuleCall_4_0_1()); 
+                       after(grammarAccess.getScenarioAccess().getStepsWhenReferenceParserRuleCall_4_0_1()); 
                     }
 
                     }
@@ -9688,13 +9688,13 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Scenario__StepsAlternatives_5_0"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3168:1: rule__Scenario__StepsAlternatives_5_0 : ( ( ruleThen ) | ( ruleThenRef ) );
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3168:1: rule__Scenario__StepsAlternatives_5_0 : ( ( ruleThen ) | ( ruleThenReference ) );
     public final void rule__Scenario__StepsAlternatives_5_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3172:1: ( ( ruleThen ) | ( ruleThenRef ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3172:1: ( ( ruleThen ) | ( ruleThenReference ) )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -9747,21 +9747,21 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3179:6: ( ruleThenRef )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3179:6: ( ruleThenReference )
                     {
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3179:6: ( ruleThenRef )
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3180:1: ruleThenRef
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3179:6: ( ruleThenReference )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3180:1: ruleThenReference
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getScenarioAccess().getStepsThenRefParserRuleCall_5_0_1()); 
+                       before(grammarAccess.getScenarioAccess().getStepsThenReferenceParserRuleCall_5_0_1()); 
                     }
-                    pushFollow(FOLLOW_ruleThenRef_in_rule__Scenario__StepsAlternatives_5_06741);
-                    ruleThenRef();
+                    pushFollow(FOLLOW_ruleThenReference_in_rule__Scenario__StepsAlternatives_5_06741);
+                    ruleThenReference();
 
                     state._fsp--;
                     if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getScenarioAccess().getStepsThenRefParserRuleCall_5_0_1()); 
+                       after(grammarAccess.getScenarioAccess().getStepsThenReferenceParserRuleCall_5_0_1()); 
                     }
 
                     }
@@ -9786,14 +9786,14 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Scenario__StepsAlternatives_5_0"
 
 
-    // $ANTLR start "rule__Ref__Alternatives"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3191:1: rule__Ref__Alternatives : ( ( ruleGivenRef ) | ( ruleWhenRef ) | ( ruleThenRef ) | ( ruleAndRef ) );
-    public final void rule__Ref__Alternatives() throws RecognitionException {
+    // $ANTLR start "rule__StepReference__Alternatives"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3191:1: rule__StepReference__Alternatives : ( ( ruleGivenReference ) | ( ruleWhenReference ) | ( ruleThenReference ) | ( ruleAndReference ) );
+    public final void rule__StepReference__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3195:1: ( ( ruleGivenRef ) | ( ruleWhenRef ) | ( ruleThenRef ) | ( ruleAndRef ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3195:1: ( ( ruleGivenReference ) | ( ruleWhenReference ) | ( ruleThenReference ) | ( ruleAndReference ) )
             int alt7=4;
             switch ( input.LA(1) ) {
             case RULE_GIVEN_TEXT:
@@ -9826,21 +9826,21 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
 
             switch (alt7) {
                 case 1 :
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3196:1: ( ruleGivenRef )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3196:1: ( ruleGivenReference )
                     {
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3196:1: ( ruleGivenRef )
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3197:1: ruleGivenRef
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3196:1: ( ruleGivenReference )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3197:1: ruleGivenReference
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getRefAccess().getGivenRefParserRuleCall_0()); 
+                       before(grammarAccess.getStepReferenceAccess().getGivenReferenceParserRuleCall_0()); 
                     }
-                    pushFollow(FOLLOW_ruleGivenRef_in_rule__Ref__Alternatives6774);
-                    ruleGivenRef();
+                    pushFollow(FOLLOW_ruleGivenReference_in_rule__StepReference__Alternatives6774);
+                    ruleGivenReference();
 
                     state._fsp--;
                     if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getRefAccess().getGivenRefParserRuleCall_0()); 
+                       after(grammarAccess.getStepReferenceAccess().getGivenReferenceParserRuleCall_0()); 
                     }
 
                     }
@@ -9849,21 +9849,21 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3202:6: ( ruleWhenRef )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3202:6: ( ruleWhenReference )
                     {
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3202:6: ( ruleWhenRef )
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3203:1: ruleWhenRef
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3202:6: ( ruleWhenReference )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3203:1: ruleWhenReference
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getRefAccess().getWhenRefParserRuleCall_1()); 
+                       before(grammarAccess.getStepReferenceAccess().getWhenReferenceParserRuleCall_1()); 
                     }
-                    pushFollow(FOLLOW_ruleWhenRef_in_rule__Ref__Alternatives6791);
-                    ruleWhenRef();
+                    pushFollow(FOLLOW_ruleWhenReference_in_rule__StepReference__Alternatives6791);
+                    ruleWhenReference();
 
                     state._fsp--;
                     if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getRefAccess().getWhenRefParserRuleCall_1()); 
+                       after(grammarAccess.getStepReferenceAccess().getWhenReferenceParserRuleCall_1()); 
                     }
 
                     }
@@ -9872,21 +9872,21 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 3 :
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3208:6: ( ruleThenRef )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3208:6: ( ruleThenReference )
                     {
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3208:6: ( ruleThenRef )
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3209:1: ruleThenRef
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3208:6: ( ruleThenReference )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3209:1: ruleThenReference
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getRefAccess().getThenRefParserRuleCall_2()); 
+                       before(grammarAccess.getStepReferenceAccess().getThenReferenceParserRuleCall_2()); 
                     }
-                    pushFollow(FOLLOW_ruleThenRef_in_rule__Ref__Alternatives6808);
-                    ruleThenRef();
+                    pushFollow(FOLLOW_ruleThenReference_in_rule__StepReference__Alternatives6808);
+                    ruleThenReference();
 
                     state._fsp--;
                     if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getRefAccess().getThenRefParserRuleCall_2()); 
+                       after(grammarAccess.getStepReferenceAccess().getThenReferenceParserRuleCall_2()); 
                     }
 
                     }
@@ -9895,21 +9895,21 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 4 :
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3214:6: ( ruleAndRef )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3214:6: ( ruleAndReference )
                     {
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3214:6: ( ruleAndRef )
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3215:1: ruleAndRef
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3214:6: ( ruleAndReference )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3215:1: ruleAndReference
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getRefAccess().getAndRefParserRuleCall_3()); 
+                       before(grammarAccess.getStepReferenceAccess().getAndReferenceParserRuleCall_3()); 
                     }
-                    pushFollow(FOLLOW_ruleAndRef_in_rule__Ref__Alternatives6825);
-                    ruleAndRef();
+                    pushFollow(FOLLOW_ruleAndReference_in_rule__StepReference__Alternatives6825);
+                    ruleAndReference();
 
                     state._fsp--;
                     if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getRefAccess().getAndRefParserRuleCall_3()); 
+                       after(grammarAccess.getStepReferenceAccess().getAndReferenceParserRuleCall_3()); 
                     }
 
                     }
@@ -9931,17 +9931,17 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Ref__Alternatives"
+    // $ANTLR end "rule__StepReference__Alternatives"
 
 
-    // $ANTLR start "rule__GivenRef__AndAlternatives_2_0"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3225:1: rule__GivenRef__AndAlternatives_2_0 : ( ( ruleAnd ) | ( ruleAndRef ) );
-    public final void rule__GivenRef__AndAlternatives_2_0() throws RecognitionException {
+    // $ANTLR start "rule__GivenReference__AndAlternatives_2_0"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3225:1: rule__GivenReference__AndAlternatives_2_0 : ( ( ruleAnd ) | ( ruleAndReference ) );
+    public final void rule__GivenReference__AndAlternatives_2_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3229:1: ( ( ruleAnd ) | ( ruleAndRef ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3229:1: ( ( ruleAnd ) | ( ruleAndReference ) )
             int alt8=2;
             int LA8_0 = input.LA(1);
 
@@ -9977,15 +9977,15 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
                     // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3231:1: ruleAnd
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getGivenRefAccess().getAndAndParserRuleCall_2_0_0()); 
+                       before(grammarAccess.getGivenReferenceAccess().getAndAndParserRuleCall_2_0_0()); 
                     }
-                    pushFollow(FOLLOW_ruleAnd_in_rule__GivenRef__AndAlternatives_2_06857);
+                    pushFollow(FOLLOW_ruleAnd_in_rule__GivenReference__AndAlternatives_2_06857);
                     ruleAnd();
 
                     state._fsp--;
                     if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getGivenRefAccess().getAndAndParserRuleCall_2_0_0()); 
+                       after(grammarAccess.getGivenReferenceAccess().getAndAndParserRuleCall_2_0_0()); 
                     }
 
                     }
@@ -9994,21 +9994,21 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3236:6: ( ruleAndRef )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3236:6: ( ruleAndReference )
                     {
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3236:6: ( ruleAndRef )
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3237:1: ruleAndRef
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3236:6: ( ruleAndReference )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3237:1: ruleAndReference
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getGivenRefAccess().getAndAndRefParserRuleCall_2_0_1()); 
+                       before(grammarAccess.getGivenReferenceAccess().getAndAndReferenceParserRuleCall_2_0_1()); 
                     }
-                    pushFollow(FOLLOW_ruleAndRef_in_rule__GivenRef__AndAlternatives_2_06874);
-                    ruleAndRef();
+                    pushFollow(FOLLOW_ruleAndReference_in_rule__GivenReference__AndAlternatives_2_06874);
+                    ruleAndReference();
 
                     state._fsp--;
                     if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getGivenRefAccess().getAndAndRefParserRuleCall_2_0_1()); 
+                       after(grammarAccess.getGivenReferenceAccess().getAndAndReferenceParserRuleCall_2_0_1()); 
                     }
 
                     }
@@ -10030,17 +10030,17 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__GivenRef__AndAlternatives_2_0"
+    // $ANTLR end "rule__GivenReference__AndAlternatives_2_0"
 
 
     // $ANTLR start "rule__Given__AndAlternatives_3_0"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3247:1: rule__Given__AndAlternatives_3_0 : ( ( ruleAnd ) | ( ruleAndRef ) );
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3247:1: rule__Given__AndAlternatives_3_0 : ( ( ruleAnd ) | ( ruleAndReference ) );
     public final void rule__Given__AndAlternatives_3_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3251:1: ( ( ruleAnd ) | ( ruleAndRef ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3251:1: ( ( ruleAnd ) | ( ruleAndReference ) )
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -10093,21 +10093,21 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3258:6: ( ruleAndRef )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3258:6: ( ruleAndReference )
                     {
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3258:6: ( ruleAndRef )
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3259:1: ruleAndRef
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3258:6: ( ruleAndReference )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3259:1: ruleAndReference
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getGivenAccess().getAndAndRefParserRuleCall_3_0_1()); 
+                       before(grammarAccess.getGivenAccess().getAndAndReferenceParserRuleCall_3_0_1()); 
                     }
-                    pushFollow(FOLLOW_ruleAndRef_in_rule__Given__AndAlternatives_3_06923);
-                    ruleAndRef();
+                    pushFollow(FOLLOW_ruleAndReference_in_rule__Given__AndAlternatives_3_06923);
+                    ruleAndReference();
 
                     state._fsp--;
                     if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getGivenAccess().getAndAndRefParserRuleCall_3_0_1()); 
+                       after(grammarAccess.getGivenAccess().getAndAndReferenceParserRuleCall_3_0_1()); 
                     }
 
                     }
@@ -10132,14 +10132,14 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Given__AndAlternatives_3_0"
 
 
-    // $ANTLR start "rule__WhenRef__AndAlternatives_2_0"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3269:1: rule__WhenRef__AndAlternatives_2_0 : ( ( ruleAnd ) | ( ruleAndRef ) );
-    public final void rule__WhenRef__AndAlternatives_2_0() throws RecognitionException {
+    // $ANTLR start "rule__WhenReference__AndAlternatives_2_0"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3269:1: rule__WhenReference__AndAlternatives_2_0 : ( ( ruleAnd ) | ( ruleAndReference ) );
+    public final void rule__WhenReference__AndAlternatives_2_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3273:1: ( ( ruleAnd ) | ( ruleAndRef ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3273:1: ( ( ruleAnd ) | ( ruleAndReference ) )
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -10175,15 +10175,15 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
                     // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3275:1: ruleAnd
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getWhenRefAccess().getAndAndParserRuleCall_2_0_0()); 
+                       before(grammarAccess.getWhenReferenceAccess().getAndAndParserRuleCall_2_0_0()); 
                     }
-                    pushFollow(FOLLOW_ruleAnd_in_rule__WhenRef__AndAlternatives_2_06955);
+                    pushFollow(FOLLOW_ruleAnd_in_rule__WhenReference__AndAlternatives_2_06955);
                     ruleAnd();
 
                     state._fsp--;
                     if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getWhenRefAccess().getAndAndParserRuleCall_2_0_0()); 
+                       after(grammarAccess.getWhenReferenceAccess().getAndAndParserRuleCall_2_0_0()); 
                     }
 
                     }
@@ -10192,21 +10192,21 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3280:6: ( ruleAndRef )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3280:6: ( ruleAndReference )
                     {
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3280:6: ( ruleAndRef )
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3281:1: ruleAndRef
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3280:6: ( ruleAndReference )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3281:1: ruleAndReference
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getWhenRefAccess().getAndAndRefParserRuleCall_2_0_1()); 
+                       before(grammarAccess.getWhenReferenceAccess().getAndAndReferenceParserRuleCall_2_0_1()); 
                     }
-                    pushFollow(FOLLOW_ruleAndRef_in_rule__WhenRef__AndAlternatives_2_06972);
-                    ruleAndRef();
+                    pushFollow(FOLLOW_ruleAndReference_in_rule__WhenReference__AndAlternatives_2_06972);
+                    ruleAndReference();
 
                     state._fsp--;
                     if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getWhenRefAccess().getAndAndRefParserRuleCall_2_0_1()); 
+                       after(grammarAccess.getWhenReferenceAccess().getAndAndReferenceParserRuleCall_2_0_1()); 
                     }
 
                     }
@@ -10228,17 +10228,17 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__WhenRef__AndAlternatives_2_0"
+    // $ANTLR end "rule__WhenReference__AndAlternatives_2_0"
 
 
     // $ANTLR start "rule__When__AndAlternatives_3_0"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3291:1: rule__When__AndAlternatives_3_0 : ( ( ruleAnd ) | ( ruleAndRef ) );
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3291:1: rule__When__AndAlternatives_3_0 : ( ( ruleAnd ) | ( ruleAndReference ) );
     public final void rule__When__AndAlternatives_3_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3295:1: ( ( ruleAnd ) | ( ruleAndRef ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3295:1: ( ( ruleAnd ) | ( ruleAndReference ) )
             int alt11=2;
             int LA11_0 = input.LA(1);
 
@@ -10291,21 +10291,21 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3302:6: ( ruleAndRef )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3302:6: ( ruleAndReference )
                     {
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3302:6: ( ruleAndRef )
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3303:1: ruleAndRef
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3302:6: ( ruleAndReference )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3303:1: ruleAndReference
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getWhenAccess().getAndAndRefParserRuleCall_3_0_1()); 
+                       before(grammarAccess.getWhenAccess().getAndAndReferenceParserRuleCall_3_0_1()); 
                     }
-                    pushFollow(FOLLOW_ruleAndRef_in_rule__When__AndAlternatives_3_07021);
-                    ruleAndRef();
+                    pushFollow(FOLLOW_ruleAndReference_in_rule__When__AndAlternatives_3_07021);
+                    ruleAndReference();
 
                     state._fsp--;
                     if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getWhenAccess().getAndAndRefParserRuleCall_3_0_1()); 
+                       after(grammarAccess.getWhenAccess().getAndAndReferenceParserRuleCall_3_0_1()); 
                     }
 
                     }
@@ -10330,14 +10330,14 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__When__AndAlternatives_3_0"
 
 
-    // $ANTLR start "rule__ThenRef__AndAlternatives_2_0"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3313:1: rule__ThenRef__AndAlternatives_2_0 : ( ( ruleAnd ) | ( ruleAndRef ) );
-    public final void rule__ThenRef__AndAlternatives_2_0() throws RecognitionException {
+    // $ANTLR start "rule__ThenReference__AndAlternatives_2_0"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3313:1: rule__ThenReference__AndAlternatives_2_0 : ( ( ruleAnd ) | ( ruleAndReference ) );
+    public final void rule__ThenReference__AndAlternatives_2_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3317:1: ( ( ruleAnd ) | ( ruleAndRef ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3317:1: ( ( ruleAnd ) | ( ruleAndReference ) )
             int alt12=2;
             int LA12_0 = input.LA(1);
 
@@ -10373,15 +10373,15 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
                     // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3319:1: ruleAnd
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getThenRefAccess().getAndAndParserRuleCall_2_0_0()); 
+                       before(grammarAccess.getThenReferenceAccess().getAndAndParserRuleCall_2_0_0()); 
                     }
-                    pushFollow(FOLLOW_ruleAnd_in_rule__ThenRef__AndAlternatives_2_07053);
+                    pushFollow(FOLLOW_ruleAnd_in_rule__ThenReference__AndAlternatives_2_07053);
                     ruleAnd();
 
                     state._fsp--;
                     if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getThenRefAccess().getAndAndParserRuleCall_2_0_0()); 
+                       after(grammarAccess.getThenReferenceAccess().getAndAndParserRuleCall_2_0_0()); 
                     }
 
                     }
@@ -10390,21 +10390,21 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3324:6: ( ruleAndRef )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3324:6: ( ruleAndReference )
                     {
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3324:6: ( ruleAndRef )
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3325:1: ruleAndRef
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3324:6: ( ruleAndReference )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3325:1: ruleAndReference
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getThenRefAccess().getAndAndRefParserRuleCall_2_0_1()); 
+                       before(grammarAccess.getThenReferenceAccess().getAndAndReferenceParserRuleCall_2_0_1()); 
                     }
-                    pushFollow(FOLLOW_ruleAndRef_in_rule__ThenRef__AndAlternatives_2_07070);
-                    ruleAndRef();
+                    pushFollow(FOLLOW_ruleAndReference_in_rule__ThenReference__AndAlternatives_2_07070);
+                    ruleAndReference();
 
                     state._fsp--;
                     if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getThenRefAccess().getAndAndRefParserRuleCall_2_0_1()); 
+                       after(grammarAccess.getThenReferenceAccess().getAndAndReferenceParserRuleCall_2_0_1()); 
                     }
 
                     }
@@ -10426,17 +10426,17 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__ThenRef__AndAlternatives_2_0"
+    // $ANTLR end "rule__ThenReference__AndAlternatives_2_0"
 
 
     // $ANTLR start "rule__Then__AndAlternatives_3_0"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3335:1: rule__Then__AndAlternatives_3_0 : ( ( ruleAnd ) | ( ruleAndRef ) );
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3335:1: rule__Then__AndAlternatives_3_0 : ( ( ruleAnd ) | ( ruleAndReference ) );
     public final void rule__Then__AndAlternatives_3_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3339:1: ( ( ruleAnd ) | ( ruleAndRef ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3339:1: ( ( ruleAnd ) | ( ruleAndReference ) )
             int alt13=2;
             int LA13_0 = input.LA(1);
 
@@ -10489,21 +10489,21 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3346:6: ( ruleAndRef )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3346:6: ( ruleAndReference )
                     {
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3346:6: ( ruleAndRef )
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3347:1: ruleAndRef
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3346:6: ( ruleAndReference )
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:3347:1: ruleAndReference
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getThenAccess().getAndAndRefParserRuleCall_3_0_1()); 
+                       before(grammarAccess.getThenAccess().getAndAndReferenceParserRuleCall_3_0_1()); 
                     }
-                    pushFollow(FOLLOW_ruleAndRef_in_rule__Then__AndAlternatives_3_07119);
-                    ruleAndRef();
+                    pushFollow(FOLLOW_ruleAndReference_in_rule__Then__AndAlternatives_3_07119);
+                    ruleAndReference();
 
                     state._fsp--;
                     if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getThenAccess().getAndAndRefParserRuleCall_3_0_1()); 
+                       after(grammarAccess.getThenAccess().getAndAndReferenceParserRuleCall_3_0_1()); 
                     }
 
                     }
@@ -15785,23 +15785,23 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Visibility__Alternatives"
 
 
-    // $ANTLR start "rule__Jnario__Group__0"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4552:1: rule__Jnario__Group__0 : rule__Jnario__Group__0__Impl rule__Jnario__Group__1 ;
-    public final void rule__Jnario__Group__0() throws RecognitionException {
+    // $ANTLR start "rule__JnarioFile__Group__0"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4552:1: rule__JnarioFile__Group__0 : rule__JnarioFile__Group__0__Impl rule__JnarioFile__Group__1 ;
+    public final void rule__JnarioFile__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4556:1: ( rule__Jnario__Group__0__Impl rule__Jnario__Group__1 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4557:2: rule__Jnario__Group__0__Impl rule__Jnario__Group__1
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4556:1: ( rule__JnarioFile__Group__0__Impl rule__JnarioFile__Group__1 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4557:2: rule__JnarioFile__Group__0__Impl rule__JnarioFile__Group__1
             {
-            pushFollow(FOLLOW_rule__Jnario__Group__0__Impl_in_rule__Jnario__Group__09948);
-            rule__Jnario__Group__0__Impl();
+            pushFollow(FOLLOW_rule__JnarioFile__Group__0__Impl_in_rule__JnarioFile__Group__09948);
+            rule__JnarioFile__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Jnario__Group__1_in_rule__Jnario__Group__09951);
-            rule__Jnario__Group__1();
+            pushFollow(FOLLOW_rule__JnarioFile__Group__1_in_rule__JnarioFile__Group__09951);
+            rule__JnarioFile__Group__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -15820,12 +15820,12 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Jnario__Group__0"
+    // $ANTLR end "rule__JnarioFile__Group__0"
 
 
-    // $ANTLR start "rule__Jnario__Group__0__Impl"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4564:1: rule__Jnario__Group__0__Impl : ( () ) ;
-    public final void rule__Jnario__Group__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__JnarioFile__Group__0__Impl"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4564:1: rule__JnarioFile__Group__0__Impl : ( () ) ;
+    public final void rule__JnarioFile__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -15837,7 +15837,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4570:1: ()
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getJnarioAccess().getJnarioAction_0()); 
+               before(grammarAccess.getJnarioFileAccess().getJnarioFileAction_0()); 
             }
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4571:1: ()
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4573:1: 
@@ -15845,7 +15845,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getJnarioAccess().getJnarioAction_0()); 
+               after(grammarAccess.getJnarioFileAccess().getJnarioFileAction_0()); 
             }
 
             }
@@ -15861,26 +15861,26 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Jnario__Group__0__Impl"
+    // $ANTLR end "rule__JnarioFile__Group__0__Impl"
 
 
-    // $ANTLR start "rule__Jnario__Group__1"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4583:1: rule__Jnario__Group__1 : rule__Jnario__Group__1__Impl rule__Jnario__Group__2 ;
-    public final void rule__Jnario__Group__1() throws RecognitionException {
+    // $ANTLR start "rule__JnarioFile__Group__1"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4583:1: rule__JnarioFile__Group__1 : rule__JnarioFile__Group__1__Impl rule__JnarioFile__Group__2 ;
+    public final void rule__JnarioFile__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4587:1: ( rule__Jnario__Group__1__Impl rule__Jnario__Group__2 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4588:2: rule__Jnario__Group__1__Impl rule__Jnario__Group__2
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4587:1: ( rule__JnarioFile__Group__1__Impl rule__JnarioFile__Group__2 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4588:2: rule__JnarioFile__Group__1__Impl rule__JnarioFile__Group__2
             {
-            pushFollow(FOLLOW_rule__Jnario__Group__1__Impl_in_rule__Jnario__Group__110009);
-            rule__Jnario__Group__1__Impl();
+            pushFollow(FOLLOW_rule__JnarioFile__Group__1__Impl_in_rule__JnarioFile__Group__110009);
+            rule__JnarioFile__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Jnario__Group__2_in_rule__Jnario__Group__110012);
-            rule__Jnario__Group__2();
+            pushFollow(FOLLOW_rule__JnarioFile__Group__2_in_rule__JnarioFile__Group__110012);
+            rule__JnarioFile__Group__2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -15899,26 +15899,26 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Jnario__Group__1"
+    // $ANTLR end "rule__JnarioFile__Group__1"
 
 
-    // $ANTLR start "rule__Jnario__Group__1__Impl"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4595:1: rule__Jnario__Group__1__Impl : ( ( rule__Jnario__Group_1__0 )? ) ;
-    public final void rule__Jnario__Group__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__JnarioFile__Group__1__Impl"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4595:1: rule__JnarioFile__Group__1__Impl : ( ( rule__JnarioFile__Group_1__0 )? ) ;
+    public final void rule__JnarioFile__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4599:1: ( ( ( rule__Jnario__Group_1__0 )? ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4600:1: ( ( rule__Jnario__Group_1__0 )? )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4599:1: ( ( ( rule__JnarioFile__Group_1__0 )? ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4600:1: ( ( rule__JnarioFile__Group_1__0 )? )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4600:1: ( ( rule__Jnario__Group_1__0 )? )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4601:1: ( rule__Jnario__Group_1__0 )?
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4600:1: ( ( rule__JnarioFile__Group_1__0 )? )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4601:1: ( rule__JnarioFile__Group_1__0 )?
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getJnarioAccess().getGroup_1()); 
+               before(grammarAccess.getJnarioFileAccess().getGroup_1()); 
             }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4602:1: ( rule__Jnario__Group_1__0 )?
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4602:1: ( rule__JnarioFile__Group_1__0 )?
             int alt57=2;
             int LA57_0 = input.LA(1);
 
@@ -15927,10 +15927,10 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             }
             switch (alt57) {
                 case 1 :
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4602:2: rule__Jnario__Group_1__0
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4602:2: rule__JnarioFile__Group_1__0
                     {
-                    pushFollow(FOLLOW_rule__Jnario__Group_1__0_in_rule__Jnario__Group__1__Impl10039);
-                    rule__Jnario__Group_1__0();
+                    pushFollow(FOLLOW_rule__JnarioFile__Group_1__0_in_rule__JnarioFile__Group__1__Impl10039);
+                    rule__JnarioFile__Group_1__0();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -15941,7 +15941,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getJnarioAccess().getGroup_1()); 
+               after(grammarAccess.getJnarioFileAccess().getGroup_1()); 
             }
 
             }
@@ -15961,26 +15961,26 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Jnario__Group__1__Impl"
+    // $ANTLR end "rule__JnarioFile__Group__1__Impl"
 
 
-    // $ANTLR start "rule__Jnario__Group__2"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4612:1: rule__Jnario__Group__2 : rule__Jnario__Group__2__Impl rule__Jnario__Group__3 ;
-    public final void rule__Jnario__Group__2() throws RecognitionException {
+    // $ANTLR start "rule__JnarioFile__Group__2"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4612:1: rule__JnarioFile__Group__2 : rule__JnarioFile__Group__2__Impl rule__JnarioFile__Group__3 ;
+    public final void rule__JnarioFile__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4616:1: ( rule__Jnario__Group__2__Impl rule__Jnario__Group__3 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4617:2: rule__Jnario__Group__2__Impl rule__Jnario__Group__3
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4616:1: ( rule__JnarioFile__Group__2__Impl rule__JnarioFile__Group__3 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4617:2: rule__JnarioFile__Group__2__Impl rule__JnarioFile__Group__3
             {
-            pushFollow(FOLLOW_rule__Jnario__Group__2__Impl_in_rule__Jnario__Group__210070);
-            rule__Jnario__Group__2__Impl();
+            pushFollow(FOLLOW_rule__JnarioFile__Group__2__Impl_in_rule__JnarioFile__Group__210070);
+            rule__JnarioFile__Group__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Jnario__Group__3_in_rule__Jnario__Group__210073);
-            rule__Jnario__Group__3();
+            pushFollow(FOLLOW_rule__JnarioFile__Group__3_in_rule__JnarioFile__Group__210073);
+            rule__JnarioFile__Group__3();
 
             state._fsp--;
             if (state.failed) return ;
@@ -15999,26 +15999,26 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Jnario__Group__2"
+    // $ANTLR end "rule__JnarioFile__Group__2"
 
 
-    // $ANTLR start "rule__Jnario__Group__2__Impl"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4624:1: rule__Jnario__Group__2__Impl : ( ( rule__Jnario__ImportsAssignment_2 )* ) ;
-    public final void rule__Jnario__Group__2__Impl() throws RecognitionException {
+    // $ANTLR start "rule__JnarioFile__Group__2__Impl"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4624:1: rule__JnarioFile__Group__2__Impl : ( ( rule__JnarioFile__ImportsAssignment_2 )* ) ;
+    public final void rule__JnarioFile__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4628:1: ( ( ( rule__Jnario__ImportsAssignment_2 )* ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4629:1: ( ( rule__Jnario__ImportsAssignment_2 )* )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4628:1: ( ( ( rule__JnarioFile__ImportsAssignment_2 )* ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4629:1: ( ( rule__JnarioFile__ImportsAssignment_2 )* )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4629:1: ( ( rule__Jnario__ImportsAssignment_2 )* )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4630:1: ( rule__Jnario__ImportsAssignment_2 )*
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4629:1: ( ( rule__JnarioFile__ImportsAssignment_2 )* )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4630:1: ( rule__JnarioFile__ImportsAssignment_2 )*
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getJnarioAccess().getImportsAssignment_2()); 
+               before(grammarAccess.getJnarioFileAccess().getImportsAssignment_2()); 
             }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4631:1: ( rule__Jnario__ImportsAssignment_2 )*
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4631:1: ( rule__JnarioFile__ImportsAssignment_2 )*
             loop58:
             do {
                 int alt58=2;
@@ -16031,10 +16031,10 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
 
                 switch (alt58) {
             	case 1 :
-            	    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4631:2: rule__Jnario__ImportsAssignment_2
+            	    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4631:2: rule__JnarioFile__ImportsAssignment_2
             	    {
-            	    pushFollow(FOLLOW_rule__Jnario__ImportsAssignment_2_in_rule__Jnario__Group__2__Impl10100);
-            	    rule__Jnario__ImportsAssignment_2();
+            	    pushFollow(FOLLOW_rule__JnarioFile__ImportsAssignment_2_in_rule__JnarioFile__Group__2__Impl10100);
+            	    rule__JnarioFile__ImportsAssignment_2();
 
             	    state._fsp--;
             	    if (state.failed) return ;
@@ -16048,7 +16048,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             } while (true);
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getJnarioAccess().getImportsAssignment_2()); 
+               after(grammarAccess.getJnarioFileAccess().getImportsAssignment_2()); 
             }
 
             }
@@ -16068,21 +16068,21 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Jnario__Group__2__Impl"
+    // $ANTLR end "rule__JnarioFile__Group__2__Impl"
 
 
-    // $ANTLR start "rule__Jnario__Group__3"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4641:1: rule__Jnario__Group__3 : rule__Jnario__Group__3__Impl ;
-    public final void rule__Jnario__Group__3() throws RecognitionException {
+    // $ANTLR start "rule__JnarioFile__Group__3"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4641:1: rule__JnarioFile__Group__3 : rule__JnarioFile__Group__3__Impl ;
+    public final void rule__JnarioFile__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4645:1: ( rule__Jnario__Group__3__Impl )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4646:2: rule__Jnario__Group__3__Impl
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4645:1: ( rule__JnarioFile__Group__3__Impl )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4646:2: rule__JnarioFile__Group__3__Impl
             {
-            pushFollow(FOLLOW_rule__Jnario__Group__3__Impl_in_rule__Jnario__Group__310131);
-            rule__Jnario__Group__3__Impl();
+            pushFollow(FOLLOW_rule__JnarioFile__Group__3__Impl_in_rule__JnarioFile__Group__310131);
+            rule__JnarioFile__Group__3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -16101,26 +16101,26 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Jnario__Group__3"
+    // $ANTLR end "rule__JnarioFile__Group__3"
 
 
-    // $ANTLR start "rule__Jnario__Group__3__Impl"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4652:1: rule__Jnario__Group__3__Impl : ( ( rule__Jnario__XtendClassAssignment_3 )? ) ;
-    public final void rule__Jnario__Group__3__Impl() throws RecognitionException {
+    // $ANTLR start "rule__JnarioFile__Group__3__Impl"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4652:1: rule__JnarioFile__Group__3__Impl : ( ( rule__JnarioFile__XtendClassAssignment_3 )? ) ;
+    public final void rule__JnarioFile__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4656:1: ( ( ( rule__Jnario__XtendClassAssignment_3 )? ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4657:1: ( ( rule__Jnario__XtendClassAssignment_3 )? )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4656:1: ( ( ( rule__JnarioFile__XtendClassAssignment_3 )? ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4657:1: ( ( rule__JnarioFile__XtendClassAssignment_3 )? )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4657:1: ( ( rule__Jnario__XtendClassAssignment_3 )? )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4658:1: ( rule__Jnario__XtendClassAssignment_3 )?
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4657:1: ( ( rule__JnarioFile__XtendClassAssignment_3 )? )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4658:1: ( rule__JnarioFile__XtendClassAssignment_3 )?
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getJnarioAccess().getXtendClassAssignment_3()); 
+               before(grammarAccess.getJnarioFileAccess().getXtendClassAssignment_3()); 
             }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4659:1: ( rule__Jnario__XtendClassAssignment_3 )?
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4659:1: ( rule__JnarioFile__XtendClassAssignment_3 )?
             int alt59=2;
             int LA59_0 = input.LA(1);
 
@@ -16129,10 +16129,10 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             }
             switch (alt59) {
                 case 1 :
-                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4659:2: rule__Jnario__XtendClassAssignment_3
+                    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4659:2: rule__JnarioFile__XtendClassAssignment_3
                     {
-                    pushFollow(FOLLOW_rule__Jnario__XtendClassAssignment_3_in_rule__Jnario__Group__3__Impl10158);
-                    rule__Jnario__XtendClassAssignment_3();
+                    pushFollow(FOLLOW_rule__JnarioFile__XtendClassAssignment_3_in_rule__JnarioFile__Group__3__Impl10158);
+                    rule__JnarioFile__XtendClassAssignment_3();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -16143,7 +16143,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getJnarioAccess().getXtendClassAssignment_3()); 
+               after(grammarAccess.getJnarioFileAccess().getXtendClassAssignment_3()); 
             }
 
             }
@@ -16163,26 +16163,26 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Jnario__Group__3__Impl"
+    // $ANTLR end "rule__JnarioFile__Group__3__Impl"
 
 
-    // $ANTLR start "rule__Jnario__Group_1__0"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4677:1: rule__Jnario__Group_1__0 : rule__Jnario__Group_1__0__Impl rule__Jnario__Group_1__1 ;
-    public final void rule__Jnario__Group_1__0() throws RecognitionException {
+    // $ANTLR start "rule__JnarioFile__Group_1__0"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4677:1: rule__JnarioFile__Group_1__0 : rule__JnarioFile__Group_1__0__Impl rule__JnarioFile__Group_1__1 ;
+    public final void rule__JnarioFile__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4681:1: ( rule__Jnario__Group_1__0__Impl rule__Jnario__Group_1__1 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4682:2: rule__Jnario__Group_1__0__Impl rule__Jnario__Group_1__1
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4681:1: ( rule__JnarioFile__Group_1__0__Impl rule__JnarioFile__Group_1__1 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4682:2: rule__JnarioFile__Group_1__0__Impl rule__JnarioFile__Group_1__1
             {
-            pushFollow(FOLLOW_rule__Jnario__Group_1__0__Impl_in_rule__Jnario__Group_1__010197);
-            rule__Jnario__Group_1__0__Impl();
+            pushFollow(FOLLOW_rule__JnarioFile__Group_1__0__Impl_in_rule__JnarioFile__Group_1__010197);
+            rule__JnarioFile__Group_1__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Jnario__Group_1__1_in_rule__Jnario__Group_1__010200);
-            rule__Jnario__Group_1__1();
+            pushFollow(FOLLOW_rule__JnarioFile__Group_1__1_in_rule__JnarioFile__Group_1__010200);
+            rule__JnarioFile__Group_1__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -16201,12 +16201,12 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Jnario__Group_1__0"
+    // $ANTLR end "rule__JnarioFile__Group_1__0"
 
 
-    // $ANTLR start "rule__Jnario__Group_1__0__Impl"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4689:1: rule__Jnario__Group_1__0__Impl : ( 'package' ) ;
-    public final void rule__Jnario__Group_1__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__JnarioFile__Group_1__0__Impl"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4689:1: rule__JnarioFile__Group_1__0__Impl : ( 'package' ) ;
+    public final void rule__JnarioFile__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -16218,11 +16218,11 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4695:1: 'package'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getJnarioAccess().getPackageKeyword_1_0()); 
+               before(grammarAccess.getJnarioFileAccess().getPackageKeyword_1_0()); 
             }
-            match(input,66,FOLLOW_66_in_rule__Jnario__Group_1__0__Impl10228); if (state.failed) return ;
+            match(input,66,FOLLOW_66_in_rule__JnarioFile__Group_1__0__Impl10228); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getJnarioAccess().getPackageKeyword_1_0()); 
+               after(grammarAccess.getJnarioFileAccess().getPackageKeyword_1_0()); 
             }
 
             }
@@ -16242,21 +16242,21 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Jnario__Group_1__0__Impl"
+    // $ANTLR end "rule__JnarioFile__Group_1__0__Impl"
 
 
-    // $ANTLR start "rule__Jnario__Group_1__1"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4708:1: rule__Jnario__Group_1__1 : rule__Jnario__Group_1__1__Impl ;
-    public final void rule__Jnario__Group_1__1() throws RecognitionException {
+    // $ANTLR start "rule__JnarioFile__Group_1__1"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4708:1: rule__JnarioFile__Group_1__1 : rule__JnarioFile__Group_1__1__Impl ;
+    public final void rule__JnarioFile__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4712:1: ( rule__Jnario__Group_1__1__Impl )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4713:2: rule__Jnario__Group_1__1__Impl
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4712:1: ( rule__JnarioFile__Group_1__1__Impl )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4713:2: rule__JnarioFile__Group_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__Jnario__Group_1__1__Impl_in_rule__Jnario__Group_1__110259);
-            rule__Jnario__Group_1__1__Impl();
+            pushFollow(FOLLOW_rule__JnarioFile__Group_1__1__Impl_in_rule__JnarioFile__Group_1__110259);
+            rule__JnarioFile__Group_1__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -16275,30 +16275,30 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Jnario__Group_1__1"
+    // $ANTLR end "rule__JnarioFile__Group_1__1"
 
 
-    // $ANTLR start "rule__Jnario__Group_1__1__Impl"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4719:1: rule__Jnario__Group_1__1__Impl : ( ( rule__Jnario__PackageAssignment_1_1 ) ) ;
-    public final void rule__Jnario__Group_1__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__JnarioFile__Group_1__1__Impl"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4719:1: rule__JnarioFile__Group_1__1__Impl : ( ( rule__JnarioFile__PackageAssignment_1_1 ) ) ;
+    public final void rule__JnarioFile__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4723:1: ( ( ( rule__Jnario__PackageAssignment_1_1 ) ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4724:1: ( ( rule__Jnario__PackageAssignment_1_1 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4723:1: ( ( ( rule__JnarioFile__PackageAssignment_1_1 ) ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4724:1: ( ( rule__JnarioFile__PackageAssignment_1_1 ) )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4724:1: ( ( rule__Jnario__PackageAssignment_1_1 ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4725:1: ( rule__Jnario__PackageAssignment_1_1 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4724:1: ( ( rule__JnarioFile__PackageAssignment_1_1 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4725:1: ( rule__JnarioFile__PackageAssignment_1_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getJnarioAccess().getPackageAssignment_1_1()); 
+               before(grammarAccess.getJnarioFileAccess().getPackageAssignment_1_1()); 
             }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4726:1: ( rule__Jnario__PackageAssignment_1_1 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4726:2: rule__Jnario__PackageAssignment_1_1
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4726:1: ( rule__JnarioFile__PackageAssignment_1_1 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:4726:2: rule__JnarioFile__PackageAssignment_1_1
             {
-            pushFollow(FOLLOW_rule__Jnario__PackageAssignment_1_1_in_rule__Jnario__Group_1__1__Impl10286);
-            rule__Jnario__PackageAssignment_1_1();
+            pushFollow(FOLLOW_rule__JnarioFile__PackageAssignment_1_1_in_rule__JnarioFile__Group_1__1__Impl10286);
+            rule__JnarioFile__PackageAssignment_1_1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -16306,7 +16306,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getJnarioAccess().getPackageAssignment_1_1()); 
+               after(grammarAccess.getJnarioFileAccess().getPackageAssignment_1_1()); 
             }
 
             }
@@ -16326,7 +16326,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Jnario__Group_1__1__Impl"
+    // $ANTLR end "rule__JnarioFile__Group_1__1__Impl"
 
 
     // $ANTLR start "rule__Feature__Group__0"
@@ -18196,23 +18196,23 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Scenario__Group__6__Impl"
 
 
-    // $ANTLR start "rule__GivenRef__Group__0"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5362:1: rule__GivenRef__Group__0 : rule__GivenRef__Group__0__Impl rule__GivenRef__Group__1 ;
-    public final void rule__GivenRef__Group__0() throws RecognitionException {
+    // $ANTLR start "rule__GivenReference__Group__0"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5362:1: rule__GivenReference__Group__0 : rule__GivenReference__Group__0__Impl rule__GivenReference__Group__1 ;
+    public final void rule__GivenReference__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5366:1: ( rule__GivenRef__Group__0__Impl rule__GivenRef__Group__1 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5367:2: rule__GivenRef__Group__0__Impl rule__GivenRef__Group__1
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5366:1: ( rule__GivenReference__Group__0__Impl rule__GivenReference__Group__1 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5367:2: rule__GivenReference__Group__0__Impl rule__GivenReference__Group__1
             {
-            pushFollow(FOLLOW_rule__GivenRef__Group__0__Impl_in_rule__GivenRef__Group__011558);
-            rule__GivenRef__Group__0__Impl();
+            pushFollow(FOLLOW_rule__GivenReference__Group__0__Impl_in_rule__GivenReference__Group__011558);
+            rule__GivenReference__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__GivenRef__Group__1_in_rule__GivenRef__Group__011561);
-            rule__GivenRef__Group__1();
+            pushFollow(FOLLOW_rule__GivenReference__Group__1_in_rule__GivenReference__Group__011561);
+            rule__GivenReference__Group__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -18231,12 +18231,12 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__GivenRef__Group__0"
+    // $ANTLR end "rule__GivenReference__Group__0"
 
 
-    // $ANTLR start "rule__GivenRef__Group__0__Impl"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5374:1: rule__GivenRef__Group__0__Impl : ( () ) ;
-    public final void rule__GivenRef__Group__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__GivenReference__Group__0__Impl"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5374:1: rule__GivenReference__Group__0__Impl : ( () ) ;
+    public final void rule__GivenReference__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -18248,7 +18248,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5380:1: ()
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getGivenRefAccess().getGivenRefAction_0()); 
+               before(grammarAccess.getGivenReferenceAccess().getGivenReferenceAction_0()); 
             }
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5381:1: ()
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5383:1: 
@@ -18256,7 +18256,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getGivenRefAccess().getGivenRefAction_0()); 
+               after(grammarAccess.getGivenReferenceAccess().getGivenReferenceAction_0()); 
             }
 
             }
@@ -18272,110 +18272,26 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__GivenRef__Group__0__Impl"
+    // $ANTLR end "rule__GivenReference__Group__0__Impl"
 
 
-    // $ANTLR start "rule__GivenRef__Group__1"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5393:1: rule__GivenRef__Group__1 : rule__GivenRef__Group__1__Impl rule__GivenRef__Group__2 ;
-    public final void rule__GivenRef__Group__1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5397:1: ( rule__GivenRef__Group__1__Impl rule__GivenRef__Group__2 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5398:2: rule__GivenRef__Group__1__Impl rule__GivenRef__Group__2
-            {
-            pushFollow(FOLLOW_rule__GivenRef__Group__1__Impl_in_rule__GivenRef__Group__111619);
-            rule__GivenRef__Group__1__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-            pushFollow(FOLLOW_rule__GivenRef__Group__2_in_rule__GivenRef__Group__111622);
-            rule__GivenRef__Group__2();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__GivenRef__Group__1"
-
-
-    // $ANTLR start "rule__GivenRef__Group__1__Impl"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5405:1: rule__GivenRef__Group__1__Impl : ( ( rule__GivenRef__ReferenceAssignment_1 ) ) ;
-    public final void rule__GivenRef__Group__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__GivenReference__Group__1"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5393:1: rule__GivenReference__Group__1 : rule__GivenReference__Group__1__Impl rule__GivenReference__Group__2 ;
+    public final void rule__GivenReference__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5409:1: ( ( ( rule__GivenRef__ReferenceAssignment_1 ) ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5410:1: ( ( rule__GivenRef__ReferenceAssignment_1 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5397:1: ( rule__GivenReference__Group__1__Impl rule__GivenReference__Group__2 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5398:2: rule__GivenReference__Group__1__Impl rule__GivenReference__Group__2
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5410:1: ( ( rule__GivenRef__ReferenceAssignment_1 ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5411:1: ( rule__GivenRef__ReferenceAssignment_1 )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getGivenRefAccess().getReferenceAssignment_1()); 
-            }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5412:1: ( rule__GivenRef__ReferenceAssignment_1 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5412:2: rule__GivenRef__ReferenceAssignment_1
-            {
-            pushFollow(FOLLOW_rule__GivenRef__ReferenceAssignment_1_in_rule__GivenRef__Group__1__Impl11649);
-            rule__GivenRef__ReferenceAssignment_1();
+            pushFollow(FOLLOW_rule__GivenReference__Group__1__Impl_in_rule__GivenReference__Group__111619);
+            rule__GivenReference__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-
-            }
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getGivenRefAccess().getReferenceAssignment_1()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__GivenRef__Group__1__Impl"
-
-
-    // $ANTLR start "rule__GivenRef__Group__2"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5422:1: rule__GivenRef__Group__2 : rule__GivenRef__Group__2__Impl ;
-    public final void rule__GivenRef__Group__2() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5426:1: ( rule__GivenRef__Group__2__Impl )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5427:2: rule__GivenRef__Group__2__Impl
-            {
-            pushFollow(FOLLOW_rule__GivenRef__Group__2__Impl_in_rule__GivenRef__Group__211679);
-            rule__GivenRef__Group__2__Impl();
+            pushFollow(FOLLOW_rule__GivenReference__Group__2_in_rule__GivenReference__Group__111622);
+            rule__GivenReference__Group__2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -18394,26 +18310,110 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__GivenRef__Group__2"
+    // $ANTLR end "rule__GivenReference__Group__1"
 
 
-    // $ANTLR start "rule__GivenRef__Group__2__Impl"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5433:1: rule__GivenRef__Group__2__Impl : ( ( rule__GivenRef__AndAssignment_2 )* ) ;
-    public final void rule__GivenRef__Group__2__Impl() throws RecognitionException {
+    // $ANTLR start "rule__GivenReference__Group__1__Impl"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5405:1: rule__GivenReference__Group__1__Impl : ( ( rule__GivenReference__ReferenceAssignment_1 ) ) ;
+    public final void rule__GivenReference__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5437:1: ( ( ( rule__GivenRef__AndAssignment_2 )* ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5438:1: ( ( rule__GivenRef__AndAssignment_2 )* )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5409:1: ( ( ( rule__GivenReference__ReferenceAssignment_1 ) ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5410:1: ( ( rule__GivenReference__ReferenceAssignment_1 ) )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5438:1: ( ( rule__GivenRef__AndAssignment_2 )* )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5439:1: ( rule__GivenRef__AndAssignment_2 )*
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5410:1: ( ( rule__GivenReference__ReferenceAssignment_1 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5411:1: ( rule__GivenReference__ReferenceAssignment_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getGivenRefAccess().getAndAssignment_2()); 
+               before(grammarAccess.getGivenReferenceAccess().getReferenceAssignment_1()); 
             }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5440:1: ( rule__GivenRef__AndAssignment_2 )*
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5412:1: ( rule__GivenReference__ReferenceAssignment_1 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5412:2: rule__GivenReference__ReferenceAssignment_1
+            {
+            pushFollow(FOLLOW_rule__GivenReference__ReferenceAssignment_1_in_rule__GivenReference__Group__1__Impl11649);
+            rule__GivenReference__ReferenceAssignment_1();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getGivenReferenceAccess().getReferenceAssignment_1()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__GivenReference__Group__1__Impl"
+
+
+    // $ANTLR start "rule__GivenReference__Group__2"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5422:1: rule__GivenReference__Group__2 : rule__GivenReference__Group__2__Impl ;
+    public final void rule__GivenReference__Group__2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5426:1: ( rule__GivenReference__Group__2__Impl )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5427:2: rule__GivenReference__Group__2__Impl
+            {
+            pushFollow(FOLLOW_rule__GivenReference__Group__2__Impl_in_rule__GivenReference__Group__211679);
+            rule__GivenReference__Group__2__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__GivenReference__Group__2"
+
+
+    // $ANTLR start "rule__GivenReference__Group__2__Impl"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5433:1: rule__GivenReference__Group__2__Impl : ( ( rule__GivenReference__AndAssignment_2 )* ) ;
+    public final void rule__GivenReference__Group__2__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5437:1: ( ( ( rule__GivenReference__AndAssignment_2 )* ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5438:1: ( ( rule__GivenReference__AndAssignment_2 )* )
+            {
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5438:1: ( ( rule__GivenReference__AndAssignment_2 )* )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5439:1: ( rule__GivenReference__AndAssignment_2 )*
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getGivenReferenceAccess().getAndAssignment_2()); 
+            }
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5440:1: ( rule__GivenReference__AndAssignment_2 )*
             loop71:
             do {
                 int alt71=2;
@@ -18426,10 +18426,10 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
 
                 switch (alt71) {
             	case 1 :
-            	    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5440:2: rule__GivenRef__AndAssignment_2
+            	    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5440:2: rule__GivenReference__AndAssignment_2
             	    {
-            	    pushFollow(FOLLOW_rule__GivenRef__AndAssignment_2_in_rule__GivenRef__Group__2__Impl11706);
-            	    rule__GivenRef__AndAssignment_2();
+            	    pushFollow(FOLLOW_rule__GivenReference__AndAssignment_2_in_rule__GivenReference__Group__2__Impl11706);
+            	    rule__GivenReference__AndAssignment_2();
 
             	    state._fsp--;
             	    if (state.failed) return ;
@@ -18443,7 +18443,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             } while (true);
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getGivenRefAccess().getAndAssignment_2()); 
+               after(grammarAccess.getGivenReferenceAccess().getAndAssignment_2()); 
             }
 
             }
@@ -18463,7 +18463,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__GivenRef__Group__2__Impl"
+    // $ANTLR end "rule__GivenReference__Group__2__Impl"
 
 
     // $ANTLR start "rule__Given__Group__0"
@@ -18673,26 +18673,26 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Given__Group__2__Impl"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5528:1: rule__Given__Group__2__Impl : ( ( rule__Given__CodeAssignment_2 ) ) ;
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5528:1: rule__Given__Group__2__Impl : ( ( rule__Given__StepExpressionAssignment_2 ) ) ;
     public final void rule__Given__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5532:1: ( ( ( rule__Given__CodeAssignment_2 ) ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5533:1: ( ( rule__Given__CodeAssignment_2 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5532:1: ( ( ( rule__Given__StepExpressionAssignment_2 ) ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5533:1: ( ( rule__Given__StepExpressionAssignment_2 ) )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5533:1: ( ( rule__Given__CodeAssignment_2 ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5534:1: ( rule__Given__CodeAssignment_2 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5533:1: ( ( rule__Given__StepExpressionAssignment_2 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5534:1: ( rule__Given__StepExpressionAssignment_2 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getGivenAccess().getCodeAssignment_2()); 
+               before(grammarAccess.getGivenAccess().getStepExpressionAssignment_2()); 
             }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5535:1: ( rule__Given__CodeAssignment_2 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5535:2: rule__Given__CodeAssignment_2
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5535:1: ( rule__Given__StepExpressionAssignment_2 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5535:2: rule__Given__StepExpressionAssignment_2
             {
-            pushFollow(FOLLOW_rule__Given__CodeAssignment_2_in_rule__Given__Group__2__Impl11894);
-            rule__Given__CodeAssignment_2();
+            pushFollow(FOLLOW_rule__Given__StepExpressionAssignment_2_in_rule__Given__Group__2__Impl11894);
+            rule__Given__StepExpressionAssignment_2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -18700,7 +18700,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getGivenAccess().getCodeAssignment_2()); 
+               after(grammarAccess.getGivenAccess().getStepExpressionAssignment_2()); 
             }
 
             }
@@ -18825,23 +18825,23 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Given__Group__3__Impl"
 
 
-    // $ANTLR start "rule__WhenRef__Group__0"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5581:1: rule__WhenRef__Group__0 : rule__WhenRef__Group__0__Impl rule__WhenRef__Group__1 ;
-    public final void rule__WhenRef__Group__0() throws RecognitionException {
+    // $ANTLR start "rule__WhenReference__Group__0"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5581:1: rule__WhenReference__Group__0 : rule__WhenReference__Group__0__Impl rule__WhenReference__Group__1 ;
+    public final void rule__WhenReference__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5585:1: ( rule__WhenRef__Group__0__Impl rule__WhenRef__Group__1 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5586:2: rule__WhenRef__Group__0__Impl rule__WhenRef__Group__1
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5585:1: ( rule__WhenReference__Group__0__Impl rule__WhenReference__Group__1 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5586:2: rule__WhenReference__Group__0__Impl rule__WhenReference__Group__1
             {
-            pushFollow(FOLLOW_rule__WhenRef__Group__0__Impl_in_rule__WhenRef__Group__011990);
-            rule__WhenRef__Group__0__Impl();
+            pushFollow(FOLLOW_rule__WhenReference__Group__0__Impl_in_rule__WhenReference__Group__011990);
+            rule__WhenReference__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__WhenRef__Group__1_in_rule__WhenRef__Group__011993);
-            rule__WhenRef__Group__1();
+            pushFollow(FOLLOW_rule__WhenReference__Group__1_in_rule__WhenReference__Group__011993);
+            rule__WhenReference__Group__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -18860,12 +18860,12 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__WhenRef__Group__0"
+    // $ANTLR end "rule__WhenReference__Group__0"
 
 
-    // $ANTLR start "rule__WhenRef__Group__0__Impl"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5593:1: rule__WhenRef__Group__0__Impl : ( () ) ;
-    public final void rule__WhenRef__Group__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__WhenReference__Group__0__Impl"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5593:1: rule__WhenReference__Group__0__Impl : ( () ) ;
+    public final void rule__WhenReference__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -18877,7 +18877,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5599:1: ()
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getWhenRefAccess().getWhenRefAction_0()); 
+               before(grammarAccess.getWhenReferenceAccess().getWhenReferenceAction_0()); 
             }
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5600:1: ()
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5602:1: 
@@ -18885,7 +18885,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getWhenRefAccess().getWhenRefAction_0()); 
+               after(grammarAccess.getWhenReferenceAccess().getWhenReferenceAction_0()); 
             }
 
             }
@@ -18901,110 +18901,26 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__WhenRef__Group__0__Impl"
+    // $ANTLR end "rule__WhenReference__Group__0__Impl"
 
 
-    // $ANTLR start "rule__WhenRef__Group__1"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5612:1: rule__WhenRef__Group__1 : rule__WhenRef__Group__1__Impl rule__WhenRef__Group__2 ;
-    public final void rule__WhenRef__Group__1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5616:1: ( rule__WhenRef__Group__1__Impl rule__WhenRef__Group__2 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5617:2: rule__WhenRef__Group__1__Impl rule__WhenRef__Group__2
-            {
-            pushFollow(FOLLOW_rule__WhenRef__Group__1__Impl_in_rule__WhenRef__Group__112051);
-            rule__WhenRef__Group__1__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-            pushFollow(FOLLOW_rule__WhenRef__Group__2_in_rule__WhenRef__Group__112054);
-            rule__WhenRef__Group__2();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__WhenRef__Group__1"
-
-
-    // $ANTLR start "rule__WhenRef__Group__1__Impl"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5624:1: rule__WhenRef__Group__1__Impl : ( ( rule__WhenRef__ReferenceAssignment_1 ) ) ;
-    public final void rule__WhenRef__Group__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__WhenReference__Group__1"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5612:1: rule__WhenReference__Group__1 : rule__WhenReference__Group__1__Impl rule__WhenReference__Group__2 ;
+    public final void rule__WhenReference__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5628:1: ( ( ( rule__WhenRef__ReferenceAssignment_1 ) ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5629:1: ( ( rule__WhenRef__ReferenceAssignment_1 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5616:1: ( rule__WhenReference__Group__1__Impl rule__WhenReference__Group__2 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5617:2: rule__WhenReference__Group__1__Impl rule__WhenReference__Group__2
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5629:1: ( ( rule__WhenRef__ReferenceAssignment_1 ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5630:1: ( rule__WhenRef__ReferenceAssignment_1 )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getWhenRefAccess().getReferenceAssignment_1()); 
-            }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5631:1: ( rule__WhenRef__ReferenceAssignment_1 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5631:2: rule__WhenRef__ReferenceAssignment_1
-            {
-            pushFollow(FOLLOW_rule__WhenRef__ReferenceAssignment_1_in_rule__WhenRef__Group__1__Impl12081);
-            rule__WhenRef__ReferenceAssignment_1();
+            pushFollow(FOLLOW_rule__WhenReference__Group__1__Impl_in_rule__WhenReference__Group__112051);
+            rule__WhenReference__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-
-            }
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getWhenRefAccess().getReferenceAssignment_1()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__WhenRef__Group__1__Impl"
-
-
-    // $ANTLR start "rule__WhenRef__Group__2"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5641:1: rule__WhenRef__Group__2 : rule__WhenRef__Group__2__Impl ;
-    public final void rule__WhenRef__Group__2() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5645:1: ( rule__WhenRef__Group__2__Impl )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5646:2: rule__WhenRef__Group__2__Impl
-            {
-            pushFollow(FOLLOW_rule__WhenRef__Group__2__Impl_in_rule__WhenRef__Group__212111);
-            rule__WhenRef__Group__2__Impl();
+            pushFollow(FOLLOW_rule__WhenReference__Group__2_in_rule__WhenReference__Group__112054);
+            rule__WhenReference__Group__2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -19023,26 +18939,110 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__WhenRef__Group__2"
+    // $ANTLR end "rule__WhenReference__Group__1"
 
 
-    // $ANTLR start "rule__WhenRef__Group__2__Impl"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5652:1: rule__WhenRef__Group__2__Impl : ( ( rule__WhenRef__AndAssignment_2 )* ) ;
-    public final void rule__WhenRef__Group__2__Impl() throws RecognitionException {
+    // $ANTLR start "rule__WhenReference__Group__1__Impl"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5624:1: rule__WhenReference__Group__1__Impl : ( ( rule__WhenReference__ReferenceAssignment_1 ) ) ;
+    public final void rule__WhenReference__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5656:1: ( ( ( rule__WhenRef__AndAssignment_2 )* ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5657:1: ( ( rule__WhenRef__AndAssignment_2 )* )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5628:1: ( ( ( rule__WhenReference__ReferenceAssignment_1 ) ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5629:1: ( ( rule__WhenReference__ReferenceAssignment_1 ) )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5657:1: ( ( rule__WhenRef__AndAssignment_2 )* )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5658:1: ( rule__WhenRef__AndAssignment_2 )*
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5629:1: ( ( rule__WhenReference__ReferenceAssignment_1 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5630:1: ( rule__WhenReference__ReferenceAssignment_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getWhenRefAccess().getAndAssignment_2()); 
+               before(grammarAccess.getWhenReferenceAccess().getReferenceAssignment_1()); 
             }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5659:1: ( rule__WhenRef__AndAssignment_2 )*
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5631:1: ( rule__WhenReference__ReferenceAssignment_1 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5631:2: rule__WhenReference__ReferenceAssignment_1
+            {
+            pushFollow(FOLLOW_rule__WhenReference__ReferenceAssignment_1_in_rule__WhenReference__Group__1__Impl12081);
+            rule__WhenReference__ReferenceAssignment_1();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getWhenReferenceAccess().getReferenceAssignment_1()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__WhenReference__Group__1__Impl"
+
+
+    // $ANTLR start "rule__WhenReference__Group__2"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5641:1: rule__WhenReference__Group__2 : rule__WhenReference__Group__2__Impl ;
+    public final void rule__WhenReference__Group__2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5645:1: ( rule__WhenReference__Group__2__Impl )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5646:2: rule__WhenReference__Group__2__Impl
+            {
+            pushFollow(FOLLOW_rule__WhenReference__Group__2__Impl_in_rule__WhenReference__Group__212111);
+            rule__WhenReference__Group__2__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__WhenReference__Group__2"
+
+
+    // $ANTLR start "rule__WhenReference__Group__2__Impl"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5652:1: rule__WhenReference__Group__2__Impl : ( ( rule__WhenReference__AndAssignment_2 )* ) ;
+    public final void rule__WhenReference__Group__2__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5656:1: ( ( ( rule__WhenReference__AndAssignment_2 )* ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5657:1: ( ( rule__WhenReference__AndAssignment_2 )* )
+            {
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5657:1: ( ( rule__WhenReference__AndAssignment_2 )* )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5658:1: ( rule__WhenReference__AndAssignment_2 )*
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getWhenReferenceAccess().getAndAssignment_2()); 
+            }
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5659:1: ( rule__WhenReference__AndAssignment_2 )*
             loop73:
             do {
                 int alt73=2;
@@ -19055,10 +19055,10 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
 
                 switch (alt73) {
             	case 1 :
-            	    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5659:2: rule__WhenRef__AndAssignment_2
+            	    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5659:2: rule__WhenReference__AndAssignment_2
             	    {
-            	    pushFollow(FOLLOW_rule__WhenRef__AndAssignment_2_in_rule__WhenRef__Group__2__Impl12138);
-            	    rule__WhenRef__AndAssignment_2();
+            	    pushFollow(FOLLOW_rule__WhenReference__AndAssignment_2_in_rule__WhenReference__Group__2__Impl12138);
+            	    rule__WhenReference__AndAssignment_2();
 
             	    state._fsp--;
             	    if (state.failed) return ;
@@ -19072,7 +19072,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             } while (true);
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getWhenRefAccess().getAndAssignment_2()); 
+               after(grammarAccess.getWhenReferenceAccess().getAndAssignment_2()); 
             }
 
             }
@@ -19092,7 +19092,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__WhenRef__Group__2__Impl"
+    // $ANTLR end "rule__WhenReference__Group__2__Impl"
 
 
     // $ANTLR start "rule__When__Group__0"
@@ -19302,26 +19302,26 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__When__Group__2__Impl"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5747:1: rule__When__Group__2__Impl : ( ( rule__When__CodeAssignment_2 ) ) ;
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5747:1: rule__When__Group__2__Impl : ( ( rule__When__StepExpressionAssignment_2 ) ) ;
     public final void rule__When__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5751:1: ( ( ( rule__When__CodeAssignment_2 ) ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5752:1: ( ( rule__When__CodeAssignment_2 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5751:1: ( ( ( rule__When__StepExpressionAssignment_2 ) ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5752:1: ( ( rule__When__StepExpressionAssignment_2 ) )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5752:1: ( ( rule__When__CodeAssignment_2 ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5753:1: ( rule__When__CodeAssignment_2 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5752:1: ( ( rule__When__StepExpressionAssignment_2 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5753:1: ( rule__When__StepExpressionAssignment_2 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getWhenAccess().getCodeAssignment_2()); 
+               before(grammarAccess.getWhenAccess().getStepExpressionAssignment_2()); 
             }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5754:1: ( rule__When__CodeAssignment_2 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5754:2: rule__When__CodeAssignment_2
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5754:1: ( rule__When__StepExpressionAssignment_2 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5754:2: rule__When__StepExpressionAssignment_2
             {
-            pushFollow(FOLLOW_rule__When__CodeAssignment_2_in_rule__When__Group__2__Impl12326);
-            rule__When__CodeAssignment_2();
+            pushFollow(FOLLOW_rule__When__StepExpressionAssignment_2_in_rule__When__Group__2__Impl12326);
+            rule__When__StepExpressionAssignment_2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -19329,7 +19329,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getWhenAccess().getCodeAssignment_2()); 
+               after(grammarAccess.getWhenAccess().getStepExpressionAssignment_2()); 
             }
 
             }
@@ -19454,23 +19454,23 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__When__Group__3__Impl"
 
 
-    // $ANTLR start "rule__ThenRef__Group__0"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5800:1: rule__ThenRef__Group__0 : rule__ThenRef__Group__0__Impl rule__ThenRef__Group__1 ;
-    public final void rule__ThenRef__Group__0() throws RecognitionException {
+    // $ANTLR start "rule__ThenReference__Group__0"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5800:1: rule__ThenReference__Group__0 : rule__ThenReference__Group__0__Impl rule__ThenReference__Group__1 ;
+    public final void rule__ThenReference__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5804:1: ( rule__ThenRef__Group__0__Impl rule__ThenRef__Group__1 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5805:2: rule__ThenRef__Group__0__Impl rule__ThenRef__Group__1
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5804:1: ( rule__ThenReference__Group__0__Impl rule__ThenReference__Group__1 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5805:2: rule__ThenReference__Group__0__Impl rule__ThenReference__Group__1
             {
-            pushFollow(FOLLOW_rule__ThenRef__Group__0__Impl_in_rule__ThenRef__Group__012422);
-            rule__ThenRef__Group__0__Impl();
+            pushFollow(FOLLOW_rule__ThenReference__Group__0__Impl_in_rule__ThenReference__Group__012422);
+            rule__ThenReference__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__ThenRef__Group__1_in_rule__ThenRef__Group__012425);
-            rule__ThenRef__Group__1();
+            pushFollow(FOLLOW_rule__ThenReference__Group__1_in_rule__ThenReference__Group__012425);
+            rule__ThenReference__Group__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -19489,12 +19489,12 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__ThenRef__Group__0"
+    // $ANTLR end "rule__ThenReference__Group__0"
 
 
-    // $ANTLR start "rule__ThenRef__Group__0__Impl"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5812:1: rule__ThenRef__Group__0__Impl : ( () ) ;
-    public final void rule__ThenRef__Group__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__ThenReference__Group__0__Impl"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5812:1: rule__ThenReference__Group__0__Impl : ( () ) ;
+    public final void rule__ThenReference__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -19506,7 +19506,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5818:1: ()
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getThenRefAccess().getThenRefAction_0()); 
+               before(grammarAccess.getThenReferenceAccess().getThenReferenceAction_0()); 
             }
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5819:1: ()
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5821:1: 
@@ -19514,7 +19514,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getThenRefAccess().getThenRefAction_0()); 
+               after(grammarAccess.getThenReferenceAccess().getThenReferenceAction_0()); 
             }
 
             }
@@ -19530,110 +19530,26 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__ThenRef__Group__0__Impl"
+    // $ANTLR end "rule__ThenReference__Group__0__Impl"
 
 
-    // $ANTLR start "rule__ThenRef__Group__1"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5831:1: rule__ThenRef__Group__1 : rule__ThenRef__Group__1__Impl rule__ThenRef__Group__2 ;
-    public final void rule__ThenRef__Group__1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5835:1: ( rule__ThenRef__Group__1__Impl rule__ThenRef__Group__2 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5836:2: rule__ThenRef__Group__1__Impl rule__ThenRef__Group__2
-            {
-            pushFollow(FOLLOW_rule__ThenRef__Group__1__Impl_in_rule__ThenRef__Group__112483);
-            rule__ThenRef__Group__1__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-            pushFollow(FOLLOW_rule__ThenRef__Group__2_in_rule__ThenRef__Group__112486);
-            rule__ThenRef__Group__2();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__ThenRef__Group__1"
-
-
-    // $ANTLR start "rule__ThenRef__Group__1__Impl"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5843:1: rule__ThenRef__Group__1__Impl : ( ( rule__ThenRef__ReferenceAssignment_1 ) ) ;
-    public final void rule__ThenRef__Group__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__ThenReference__Group__1"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5831:1: rule__ThenReference__Group__1 : rule__ThenReference__Group__1__Impl rule__ThenReference__Group__2 ;
+    public final void rule__ThenReference__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5847:1: ( ( ( rule__ThenRef__ReferenceAssignment_1 ) ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5848:1: ( ( rule__ThenRef__ReferenceAssignment_1 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5835:1: ( rule__ThenReference__Group__1__Impl rule__ThenReference__Group__2 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5836:2: rule__ThenReference__Group__1__Impl rule__ThenReference__Group__2
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5848:1: ( ( rule__ThenRef__ReferenceAssignment_1 ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5849:1: ( rule__ThenRef__ReferenceAssignment_1 )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getThenRefAccess().getReferenceAssignment_1()); 
-            }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5850:1: ( rule__ThenRef__ReferenceAssignment_1 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5850:2: rule__ThenRef__ReferenceAssignment_1
-            {
-            pushFollow(FOLLOW_rule__ThenRef__ReferenceAssignment_1_in_rule__ThenRef__Group__1__Impl12513);
-            rule__ThenRef__ReferenceAssignment_1();
+            pushFollow(FOLLOW_rule__ThenReference__Group__1__Impl_in_rule__ThenReference__Group__112483);
+            rule__ThenReference__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-
-            }
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getThenRefAccess().getReferenceAssignment_1()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__ThenRef__Group__1__Impl"
-
-
-    // $ANTLR start "rule__ThenRef__Group__2"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5860:1: rule__ThenRef__Group__2 : rule__ThenRef__Group__2__Impl ;
-    public final void rule__ThenRef__Group__2() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5864:1: ( rule__ThenRef__Group__2__Impl )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5865:2: rule__ThenRef__Group__2__Impl
-            {
-            pushFollow(FOLLOW_rule__ThenRef__Group__2__Impl_in_rule__ThenRef__Group__212543);
-            rule__ThenRef__Group__2__Impl();
+            pushFollow(FOLLOW_rule__ThenReference__Group__2_in_rule__ThenReference__Group__112486);
+            rule__ThenReference__Group__2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -19652,26 +19568,110 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__ThenRef__Group__2"
+    // $ANTLR end "rule__ThenReference__Group__1"
 
 
-    // $ANTLR start "rule__ThenRef__Group__2__Impl"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5871:1: rule__ThenRef__Group__2__Impl : ( ( rule__ThenRef__AndAssignment_2 )* ) ;
-    public final void rule__ThenRef__Group__2__Impl() throws RecognitionException {
+    // $ANTLR start "rule__ThenReference__Group__1__Impl"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5843:1: rule__ThenReference__Group__1__Impl : ( ( rule__ThenReference__ReferenceAssignment_1 ) ) ;
+    public final void rule__ThenReference__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5875:1: ( ( ( rule__ThenRef__AndAssignment_2 )* ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5876:1: ( ( rule__ThenRef__AndAssignment_2 )* )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5847:1: ( ( ( rule__ThenReference__ReferenceAssignment_1 ) ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5848:1: ( ( rule__ThenReference__ReferenceAssignment_1 ) )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5876:1: ( ( rule__ThenRef__AndAssignment_2 )* )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5877:1: ( rule__ThenRef__AndAssignment_2 )*
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5848:1: ( ( rule__ThenReference__ReferenceAssignment_1 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5849:1: ( rule__ThenReference__ReferenceAssignment_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getThenRefAccess().getAndAssignment_2()); 
+               before(grammarAccess.getThenReferenceAccess().getReferenceAssignment_1()); 
             }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5878:1: ( rule__ThenRef__AndAssignment_2 )*
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5850:1: ( rule__ThenReference__ReferenceAssignment_1 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5850:2: rule__ThenReference__ReferenceAssignment_1
+            {
+            pushFollow(FOLLOW_rule__ThenReference__ReferenceAssignment_1_in_rule__ThenReference__Group__1__Impl12513);
+            rule__ThenReference__ReferenceAssignment_1();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getThenReferenceAccess().getReferenceAssignment_1()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__ThenReference__Group__1__Impl"
+
+
+    // $ANTLR start "rule__ThenReference__Group__2"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5860:1: rule__ThenReference__Group__2 : rule__ThenReference__Group__2__Impl ;
+    public final void rule__ThenReference__Group__2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5864:1: ( rule__ThenReference__Group__2__Impl )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5865:2: rule__ThenReference__Group__2__Impl
+            {
+            pushFollow(FOLLOW_rule__ThenReference__Group__2__Impl_in_rule__ThenReference__Group__212543);
+            rule__ThenReference__Group__2__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__ThenReference__Group__2"
+
+
+    // $ANTLR start "rule__ThenReference__Group__2__Impl"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5871:1: rule__ThenReference__Group__2__Impl : ( ( rule__ThenReference__AndAssignment_2 )* ) ;
+    public final void rule__ThenReference__Group__2__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5875:1: ( ( ( rule__ThenReference__AndAssignment_2 )* ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5876:1: ( ( rule__ThenReference__AndAssignment_2 )* )
+            {
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5876:1: ( ( rule__ThenReference__AndAssignment_2 )* )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5877:1: ( rule__ThenReference__AndAssignment_2 )*
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getThenReferenceAccess().getAndAssignment_2()); 
+            }
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5878:1: ( rule__ThenReference__AndAssignment_2 )*
             loop75:
             do {
                 int alt75=2;
@@ -19684,10 +19684,10 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
 
                 switch (alt75) {
             	case 1 :
-            	    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5878:2: rule__ThenRef__AndAssignment_2
+            	    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5878:2: rule__ThenReference__AndAssignment_2
             	    {
-            	    pushFollow(FOLLOW_rule__ThenRef__AndAssignment_2_in_rule__ThenRef__Group__2__Impl12570);
-            	    rule__ThenRef__AndAssignment_2();
+            	    pushFollow(FOLLOW_rule__ThenReference__AndAssignment_2_in_rule__ThenReference__Group__2__Impl12570);
+            	    rule__ThenReference__AndAssignment_2();
 
             	    state._fsp--;
             	    if (state.failed) return ;
@@ -19701,7 +19701,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             } while (true);
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getThenRefAccess().getAndAssignment_2()); 
+               after(grammarAccess.getThenReferenceAccess().getAndAssignment_2()); 
             }
 
             }
@@ -19721,7 +19721,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__ThenRef__Group__2__Impl"
+    // $ANTLR end "rule__ThenReference__Group__2__Impl"
 
 
     // $ANTLR start "rule__Then__Group__0"
@@ -19931,26 +19931,26 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Then__Group__2__Impl"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5966:1: rule__Then__Group__2__Impl : ( ( rule__Then__CodeAssignment_2 ) ) ;
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5966:1: rule__Then__Group__2__Impl : ( ( rule__Then__StepExpressionAssignment_2 ) ) ;
     public final void rule__Then__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5970:1: ( ( ( rule__Then__CodeAssignment_2 ) ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5971:1: ( ( rule__Then__CodeAssignment_2 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5970:1: ( ( ( rule__Then__StepExpressionAssignment_2 ) ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5971:1: ( ( rule__Then__StepExpressionAssignment_2 ) )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5971:1: ( ( rule__Then__CodeAssignment_2 ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5972:1: ( rule__Then__CodeAssignment_2 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5971:1: ( ( rule__Then__StepExpressionAssignment_2 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5972:1: ( rule__Then__StepExpressionAssignment_2 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getThenAccess().getCodeAssignment_2()); 
+               before(grammarAccess.getThenAccess().getStepExpressionAssignment_2()); 
             }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5973:1: ( rule__Then__CodeAssignment_2 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5973:2: rule__Then__CodeAssignment_2
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5973:1: ( rule__Then__StepExpressionAssignment_2 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:5973:2: rule__Then__StepExpressionAssignment_2
             {
-            pushFollow(FOLLOW_rule__Then__CodeAssignment_2_in_rule__Then__Group__2__Impl12758);
-            rule__Then__CodeAssignment_2();
+            pushFollow(FOLLOW_rule__Then__StepExpressionAssignment_2_in_rule__Then__Group__2__Impl12758);
+            rule__Then__StepExpressionAssignment_2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -19958,7 +19958,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getThenAccess().getCodeAssignment_2()); 
+               after(grammarAccess.getThenAccess().getStepExpressionAssignment_2()); 
             }
 
             }
@@ -20083,23 +20083,23 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Then__Group__3__Impl"
 
 
-    // $ANTLR start "rule__AndRef__Group__0"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6019:1: rule__AndRef__Group__0 : rule__AndRef__Group__0__Impl rule__AndRef__Group__1 ;
-    public final void rule__AndRef__Group__0() throws RecognitionException {
+    // $ANTLR start "rule__AndReference__Group__0"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6019:1: rule__AndReference__Group__0 : rule__AndReference__Group__0__Impl rule__AndReference__Group__1 ;
+    public final void rule__AndReference__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6023:1: ( rule__AndRef__Group__0__Impl rule__AndRef__Group__1 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6024:2: rule__AndRef__Group__0__Impl rule__AndRef__Group__1
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6023:1: ( rule__AndReference__Group__0__Impl rule__AndReference__Group__1 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6024:2: rule__AndReference__Group__0__Impl rule__AndReference__Group__1
             {
-            pushFollow(FOLLOW_rule__AndRef__Group__0__Impl_in_rule__AndRef__Group__012854);
-            rule__AndRef__Group__0__Impl();
+            pushFollow(FOLLOW_rule__AndReference__Group__0__Impl_in_rule__AndReference__Group__012854);
+            rule__AndReference__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__AndRef__Group__1_in_rule__AndRef__Group__012857);
-            rule__AndRef__Group__1();
+            pushFollow(FOLLOW_rule__AndReference__Group__1_in_rule__AndReference__Group__012857);
+            rule__AndReference__Group__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -20118,12 +20118,12 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__AndRef__Group__0"
+    // $ANTLR end "rule__AndReference__Group__0"
 
 
-    // $ANTLR start "rule__AndRef__Group__0__Impl"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6031:1: rule__AndRef__Group__0__Impl : ( () ) ;
-    public final void rule__AndRef__Group__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__AndReference__Group__0__Impl"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6031:1: rule__AndReference__Group__0__Impl : ( () ) ;
+    public final void rule__AndReference__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -20135,7 +20135,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6037:1: ()
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getAndRefAccess().getAndRefAction_0()); 
+               before(grammarAccess.getAndReferenceAccess().getAndReferenceAction_0()); 
             }
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6038:1: ()
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6040:1: 
@@ -20143,7 +20143,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getAndRefAccess().getAndRefAction_0()); 
+               after(grammarAccess.getAndReferenceAccess().getAndReferenceAction_0()); 
             }
 
             }
@@ -20159,21 +20159,21 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__AndRef__Group__0__Impl"
+    // $ANTLR end "rule__AndReference__Group__0__Impl"
 
 
-    // $ANTLR start "rule__AndRef__Group__1"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6050:1: rule__AndRef__Group__1 : rule__AndRef__Group__1__Impl ;
-    public final void rule__AndRef__Group__1() throws RecognitionException {
+    // $ANTLR start "rule__AndReference__Group__1"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6050:1: rule__AndReference__Group__1 : rule__AndReference__Group__1__Impl ;
+    public final void rule__AndReference__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6054:1: ( rule__AndRef__Group__1__Impl )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6055:2: rule__AndRef__Group__1__Impl
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6054:1: ( rule__AndReference__Group__1__Impl )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6055:2: rule__AndReference__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__AndRef__Group__1__Impl_in_rule__AndRef__Group__112915);
-            rule__AndRef__Group__1__Impl();
+            pushFollow(FOLLOW_rule__AndReference__Group__1__Impl_in_rule__AndReference__Group__112915);
+            rule__AndReference__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -20192,30 +20192,30 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__AndRef__Group__1"
+    // $ANTLR end "rule__AndReference__Group__1"
 
 
-    // $ANTLR start "rule__AndRef__Group__1__Impl"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6061:1: rule__AndRef__Group__1__Impl : ( ( rule__AndRef__ReferenceAssignment_1 ) ) ;
-    public final void rule__AndRef__Group__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__AndReference__Group__1__Impl"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6061:1: rule__AndReference__Group__1__Impl : ( ( rule__AndReference__ReferenceAssignment_1 ) ) ;
+    public final void rule__AndReference__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6065:1: ( ( ( rule__AndRef__ReferenceAssignment_1 ) ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6066:1: ( ( rule__AndRef__ReferenceAssignment_1 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6065:1: ( ( ( rule__AndReference__ReferenceAssignment_1 ) ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6066:1: ( ( rule__AndReference__ReferenceAssignment_1 ) )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6066:1: ( ( rule__AndRef__ReferenceAssignment_1 ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6067:1: ( rule__AndRef__ReferenceAssignment_1 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6066:1: ( ( rule__AndReference__ReferenceAssignment_1 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6067:1: ( rule__AndReference__ReferenceAssignment_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getAndRefAccess().getReferenceAssignment_1()); 
+               before(grammarAccess.getAndReferenceAccess().getReferenceAssignment_1()); 
             }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6068:1: ( rule__AndRef__ReferenceAssignment_1 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6068:2: rule__AndRef__ReferenceAssignment_1
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6068:1: ( rule__AndReference__ReferenceAssignment_1 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6068:2: rule__AndReference__ReferenceAssignment_1
             {
-            pushFollow(FOLLOW_rule__AndRef__ReferenceAssignment_1_in_rule__AndRef__Group__1__Impl12942);
-            rule__AndRef__ReferenceAssignment_1();
+            pushFollow(FOLLOW_rule__AndReference__ReferenceAssignment_1_in_rule__AndReference__Group__1__Impl12942);
+            rule__AndReference__ReferenceAssignment_1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -20223,7 +20223,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getAndRefAccess().getReferenceAssignment_1()); 
+               after(grammarAccess.getAndReferenceAccess().getReferenceAssignment_1()); 
             }
 
             }
@@ -20243,7 +20243,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__AndRef__Group__1__Impl"
+    // $ANTLR end "rule__AndReference__Group__1__Impl"
 
 
     // $ANTLR start "rule__And__Group__0"
@@ -20448,26 +20448,26 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__And__Group__2__Impl"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6153:1: rule__And__Group__2__Impl : ( ( rule__And__CodeAssignment_2 ) ) ;
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6153:1: rule__And__Group__2__Impl : ( ( rule__And__StepExpressionAssignment_2 ) ) ;
     public final void rule__And__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6157:1: ( ( ( rule__And__CodeAssignment_2 ) ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6158:1: ( ( rule__And__CodeAssignment_2 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6157:1: ( ( ( rule__And__StepExpressionAssignment_2 ) ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6158:1: ( ( rule__And__StepExpressionAssignment_2 ) )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6158:1: ( ( rule__And__CodeAssignment_2 ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6159:1: ( rule__And__CodeAssignment_2 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6158:1: ( ( rule__And__StepExpressionAssignment_2 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6159:1: ( rule__And__StepExpressionAssignment_2 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getAndAccess().getCodeAssignment_2()); 
+               before(grammarAccess.getAndAccess().getStepExpressionAssignment_2()); 
             }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6160:1: ( rule__And__CodeAssignment_2 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6160:2: rule__And__CodeAssignment_2
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6160:1: ( rule__And__StepExpressionAssignment_2 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6160:2: rule__And__StepExpressionAssignment_2
             {
-            pushFollow(FOLLOW_rule__And__CodeAssignment_2_in_rule__And__Group__2__Impl13124);
-            rule__And__CodeAssignment_2();
+            pushFollow(FOLLOW_rule__And__StepExpressionAssignment_2_in_rule__And__Group__2__Impl13124);
+            rule__And__StepExpressionAssignment_2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -20475,7 +20475,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getAndAccess().getCodeAssignment_2()); 
+               after(grammarAccess.getAndAccess().getStepExpressionAssignment_2()); 
             }
 
             }
@@ -20498,23 +20498,23 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__And__Group__2__Impl"
 
 
-    // $ANTLR start "rule__Code__Group__0"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6176:1: rule__Code__Group__0 : rule__Code__Group__0__Impl rule__Code__Group__1 ;
-    public final void rule__Code__Group__0() throws RecognitionException {
+    // $ANTLR start "rule__StepExpression__Group__0"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6176:1: rule__StepExpression__Group__0 : rule__StepExpression__Group__0__Impl rule__StepExpression__Group__1 ;
+    public final void rule__StepExpression__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6180:1: ( rule__Code__Group__0__Impl rule__Code__Group__1 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6181:2: rule__Code__Group__0__Impl rule__Code__Group__1
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6180:1: ( rule__StepExpression__Group__0__Impl rule__StepExpression__Group__1 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6181:2: rule__StepExpression__Group__0__Impl rule__StepExpression__Group__1
             {
-            pushFollow(FOLLOW_rule__Code__Group__0__Impl_in_rule__Code__Group__013160);
-            rule__Code__Group__0__Impl();
+            pushFollow(FOLLOW_rule__StepExpression__Group__0__Impl_in_rule__StepExpression__Group__013160);
+            rule__StepExpression__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Code__Group__1_in_rule__Code__Group__013163);
-            rule__Code__Group__1();
+            pushFollow(FOLLOW_rule__StepExpression__Group__1_in_rule__StepExpression__Group__013163);
+            rule__StepExpression__Group__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -20533,26 +20533,26 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Code__Group__0"
+    // $ANTLR end "rule__StepExpression__Group__0"
 
 
-    // $ANTLR start "rule__Code__Group__0__Impl"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6188:1: rule__Code__Group__0__Impl : ( ( rule__Code__AnnotationsAssignment_0 )* ) ;
-    public final void rule__Code__Group__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__StepExpression__Group__0__Impl"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6188:1: rule__StepExpression__Group__0__Impl : ( ( rule__StepExpression__AnnotationsAssignment_0 )* ) ;
+    public final void rule__StepExpression__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6192:1: ( ( ( rule__Code__AnnotationsAssignment_0 )* ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6193:1: ( ( rule__Code__AnnotationsAssignment_0 )* )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6192:1: ( ( ( rule__StepExpression__AnnotationsAssignment_0 )* ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6193:1: ( ( rule__StepExpression__AnnotationsAssignment_0 )* )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6193:1: ( ( rule__Code__AnnotationsAssignment_0 )* )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6194:1: ( rule__Code__AnnotationsAssignment_0 )*
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6193:1: ( ( rule__StepExpression__AnnotationsAssignment_0 )* )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6194:1: ( rule__StepExpression__AnnotationsAssignment_0 )*
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getCodeAccess().getAnnotationsAssignment_0()); 
+               before(grammarAccess.getStepExpressionAccess().getAnnotationsAssignment_0()); 
             }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6195:1: ( rule__Code__AnnotationsAssignment_0 )*
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6195:1: ( rule__StepExpression__AnnotationsAssignment_0 )*
             loop77:
             do {
                 int alt77=2;
@@ -20565,10 +20565,10 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
 
                 switch (alt77) {
             	case 1 :
-            	    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6195:2: rule__Code__AnnotationsAssignment_0
+            	    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6195:2: rule__StepExpression__AnnotationsAssignment_0
             	    {
-            	    pushFollow(FOLLOW_rule__Code__AnnotationsAssignment_0_in_rule__Code__Group__0__Impl13190);
-            	    rule__Code__AnnotationsAssignment_0();
+            	    pushFollow(FOLLOW_rule__StepExpression__AnnotationsAssignment_0_in_rule__StepExpression__Group__0__Impl13190);
+            	    rule__StepExpression__AnnotationsAssignment_0();
 
             	    state._fsp--;
             	    if (state.failed) return ;
@@ -20582,7 +20582,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             } while (true);
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getCodeAccess().getAnnotationsAssignment_0()); 
+               after(grammarAccess.getStepExpressionAccess().getAnnotationsAssignment_0()); 
             }
 
             }
@@ -20602,21 +20602,21 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Code__Group__0__Impl"
+    // $ANTLR end "rule__StepExpression__Group__0__Impl"
 
 
-    // $ANTLR start "rule__Code__Group__1"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6205:1: rule__Code__Group__1 : rule__Code__Group__1__Impl ;
-    public final void rule__Code__Group__1() throws RecognitionException {
+    // $ANTLR start "rule__StepExpression__Group__1"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6205:1: rule__StepExpression__Group__1 : rule__StepExpression__Group__1__Impl ;
+    public final void rule__StepExpression__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6209:1: ( rule__Code__Group__1__Impl )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6210:2: rule__Code__Group__1__Impl
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6209:1: ( rule__StepExpression__Group__1__Impl )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6210:2: rule__StepExpression__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__Code__Group__1__Impl_in_rule__Code__Group__113221);
-            rule__Code__Group__1__Impl();
+            pushFollow(FOLLOW_rule__StepExpression__Group__1__Impl_in_rule__StepExpression__Group__113221);
+            rule__StepExpression__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -20635,30 +20635,30 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Code__Group__1"
+    // $ANTLR end "rule__StepExpression__Group__1"
 
 
-    // $ANTLR start "rule__Code__Group__1__Impl"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6216:1: rule__Code__Group__1__Impl : ( ( rule__Code__BlockExpressionAssignment_1 ) ) ;
-    public final void rule__Code__Group__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__StepExpression__Group__1__Impl"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6216:1: rule__StepExpression__Group__1__Impl : ( ( rule__StepExpression__BlockExpressionAssignment_1 ) ) ;
+    public final void rule__StepExpression__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6220:1: ( ( ( rule__Code__BlockExpressionAssignment_1 ) ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6221:1: ( ( rule__Code__BlockExpressionAssignment_1 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6220:1: ( ( ( rule__StepExpression__BlockExpressionAssignment_1 ) ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6221:1: ( ( rule__StepExpression__BlockExpressionAssignment_1 ) )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6221:1: ( ( rule__Code__BlockExpressionAssignment_1 ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6222:1: ( rule__Code__BlockExpressionAssignment_1 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6221:1: ( ( rule__StepExpression__BlockExpressionAssignment_1 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6222:1: ( rule__StepExpression__BlockExpressionAssignment_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getCodeAccess().getBlockExpressionAssignment_1()); 
+               before(grammarAccess.getStepExpressionAccess().getBlockExpressionAssignment_1()); 
             }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6223:1: ( rule__Code__BlockExpressionAssignment_1 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6223:2: rule__Code__BlockExpressionAssignment_1
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6223:1: ( rule__StepExpression__BlockExpressionAssignment_1 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6223:2: rule__StepExpression__BlockExpressionAssignment_1
             {
-            pushFollow(FOLLOW_rule__Code__BlockExpressionAssignment_1_in_rule__Code__Group__1__Impl13248);
-            rule__Code__BlockExpressionAssignment_1();
+            pushFollow(FOLLOW_rule__StepExpression__BlockExpressionAssignment_1_in_rule__StepExpression__Group__1__Impl13248);
+            rule__StepExpression__BlockExpressionAssignment_1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -20666,7 +20666,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getCodeAccess().getBlockExpressionAssignment_1()); 
+               after(grammarAccess.getStepExpressionAccess().getBlockExpressionAssignment_1()); 
             }
 
             }
@@ -20686,7 +20686,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Code__Group__1__Impl"
+    // $ANTLR end "rule__StepExpression__Group__1__Impl"
 
 
     // $ANTLR start "rule__BlockExpression__Group__0"
@@ -67060,9 +67060,9 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__JvmTypeParameter__Group_1_0__1__Impl"
 
 
-    // $ANTLR start "rule__Jnario__PackageAssignment_1_1"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:22976:1: rule__Jnario__PackageAssignment_1_1 : ( ruleQualifiedName ) ;
-    public final void rule__Jnario__PackageAssignment_1_1() throws RecognitionException {
+    // $ANTLR start "rule__JnarioFile__PackageAssignment_1_1"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:22976:1: rule__JnarioFile__PackageAssignment_1_1 : ( ruleQualifiedName ) ;
+    public final void rule__JnarioFile__PackageAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -67074,15 +67074,15 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:22982:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getJnarioAccess().getPackageQualifiedNameParserRuleCall_1_1_0()); 
+               before(grammarAccess.getJnarioFileAccess().getPackageQualifiedNameParserRuleCall_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__Jnario__PackageAssignment_1_146243);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__JnarioFile__PackageAssignment_1_146243);
             ruleQualifiedName();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getJnarioAccess().getPackageQualifiedNameParserRuleCall_1_1_0()); 
+               after(grammarAccess.getJnarioFileAccess().getPackageQualifiedNameParserRuleCall_1_1_0()); 
             }
 
             }
@@ -67102,12 +67102,12 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Jnario__PackageAssignment_1_1"
+    // $ANTLR end "rule__JnarioFile__PackageAssignment_1_1"
 
 
-    // $ANTLR start "rule__Jnario__ImportsAssignment_2"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:22991:1: rule__Jnario__ImportsAssignment_2 : ( ruleImport ) ;
-    public final void rule__Jnario__ImportsAssignment_2() throws RecognitionException {
+    // $ANTLR start "rule__JnarioFile__ImportsAssignment_2"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:22991:1: rule__JnarioFile__ImportsAssignment_2 : ( ruleImport ) ;
+    public final void rule__JnarioFile__ImportsAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -67119,15 +67119,15 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:22997:1: ruleImport
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getJnarioAccess().getImportsImportParserRuleCall_2_0()); 
+               before(grammarAccess.getJnarioFileAccess().getImportsImportParserRuleCall_2_0()); 
             }
-            pushFollow(FOLLOW_ruleImport_in_rule__Jnario__ImportsAssignment_246274);
+            pushFollow(FOLLOW_ruleImport_in_rule__JnarioFile__ImportsAssignment_246274);
             ruleImport();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getJnarioAccess().getImportsImportParserRuleCall_2_0()); 
+               after(grammarAccess.getJnarioFileAccess().getImportsImportParserRuleCall_2_0()); 
             }
 
             }
@@ -67147,12 +67147,12 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Jnario__ImportsAssignment_2"
+    // $ANTLR end "rule__JnarioFile__ImportsAssignment_2"
 
 
-    // $ANTLR start "rule__Jnario__XtendClassAssignment_3"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23006:1: rule__Jnario__XtendClassAssignment_3 : ( ruleFeature ) ;
-    public final void rule__Jnario__XtendClassAssignment_3() throws RecognitionException {
+    // $ANTLR start "rule__JnarioFile__XtendClassAssignment_3"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23006:1: rule__JnarioFile__XtendClassAssignment_3 : ( ruleFeature ) ;
+    public final void rule__JnarioFile__XtendClassAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -67164,15 +67164,15 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23012:1: ruleFeature
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getJnarioAccess().getXtendClassFeatureParserRuleCall_3_0()); 
+               before(grammarAccess.getJnarioFileAccess().getXtendClassFeatureParserRuleCall_3_0()); 
             }
-            pushFollow(FOLLOW_ruleFeature_in_rule__Jnario__XtendClassAssignment_346305);
+            pushFollow(FOLLOW_ruleFeature_in_rule__JnarioFile__XtendClassAssignment_346305);
             ruleFeature();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getJnarioAccess().getXtendClassFeatureParserRuleCall_3_0()); 
+               after(grammarAccess.getJnarioFileAccess().getXtendClassFeatureParserRuleCall_3_0()); 
             }
 
             }
@@ -67192,7 +67192,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Jnario__XtendClassAssignment_3"
+    // $ANTLR end "rule__JnarioFile__XtendClassAssignment_3"
 
 
     // $ANTLR start "rule__Feature__AnnotationsAssignment_1"
@@ -67796,9 +67796,9 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Scenario__ExamplesAssignment_6"
 
 
-    // $ANTLR start "rule__GivenRef__ReferenceAssignment_1"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23220:1: rule__GivenRef__ReferenceAssignment_1 : ( ( RULE_GIVEN_TEXT ) ) ;
-    public final void rule__GivenRef__ReferenceAssignment_1() throws RecognitionException {
+    // $ANTLR start "rule__GivenReference__ReferenceAssignment_1"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23220:1: rule__GivenReference__ReferenceAssignment_1 : ( ( RULE_GIVEN_TEXT ) ) ;
+    public final void rule__GivenReference__ReferenceAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -67810,23 +67810,23 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23226:1: ( RULE_GIVEN_TEXT )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getGivenRefAccess().getReferenceGivenCrossReference_1_0()); 
+               before(grammarAccess.getGivenReferenceAccess().getReferenceGivenCrossReference_1_0()); 
             }
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23227:1: ( RULE_GIVEN_TEXT )
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23228:1: RULE_GIVEN_TEXT
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getGivenRefAccess().getReferenceGivenGIVEN_TEXTTerminalRuleCall_1_0_1()); 
+               before(grammarAccess.getGivenReferenceAccess().getReferenceGivenGIVEN_TEXTTerminalRuleCall_1_0_1()); 
             }
-            match(input,RULE_GIVEN_TEXT,FOLLOW_RULE_GIVEN_TEXT_in_rule__GivenRef__ReferenceAssignment_146751); if (state.failed) return ;
+            match(input,RULE_GIVEN_TEXT,FOLLOW_RULE_GIVEN_TEXT_in_rule__GivenReference__ReferenceAssignment_146751); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getGivenRefAccess().getReferenceGivenGIVEN_TEXTTerminalRuleCall_1_0_1()); 
+               after(grammarAccess.getGivenReferenceAccess().getReferenceGivenGIVEN_TEXTTerminalRuleCall_1_0_1()); 
             }
 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getGivenRefAccess().getReferenceGivenCrossReference_1_0()); 
+               after(grammarAccess.getGivenReferenceAccess().getReferenceGivenCrossReference_1_0()); 
             }
 
             }
@@ -67846,30 +67846,30 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__GivenRef__ReferenceAssignment_1"
+    // $ANTLR end "rule__GivenReference__ReferenceAssignment_1"
 
 
-    // $ANTLR start "rule__GivenRef__AndAssignment_2"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23239:1: rule__GivenRef__AndAssignment_2 : ( ( rule__GivenRef__AndAlternatives_2_0 ) ) ;
-    public final void rule__GivenRef__AndAssignment_2() throws RecognitionException {
+    // $ANTLR start "rule__GivenReference__AndAssignment_2"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23239:1: rule__GivenReference__AndAssignment_2 : ( ( rule__GivenReference__AndAlternatives_2_0 ) ) ;
+    public final void rule__GivenReference__AndAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23243:1: ( ( ( rule__GivenRef__AndAlternatives_2_0 ) ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23244:1: ( ( rule__GivenRef__AndAlternatives_2_0 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23243:1: ( ( ( rule__GivenReference__AndAlternatives_2_0 ) ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23244:1: ( ( rule__GivenReference__AndAlternatives_2_0 ) )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23244:1: ( ( rule__GivenRef__AndAlternatives_2_0 ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23245:1: ( rule__GivenRef__AndAlternatives_2_0 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23244:1: ( ( rule__GivenReference__AndAlternatives_2_0 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23245:1: ( rule__GivenReference__AndAlternatives_2_0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getGivenRefAccess().getAndAlternatives_2_0()); 
+               before(grammarAccess.getGivenReferenceAccess().getAndAlternatives_2_0()); 
             }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23246:1: ( rule__GivenRef__AndAlternatives_2_0 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23246:2: rule__GivenRef__AndAlternatives_2_0
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23246:1: ( rule__GivenReference__AndAlternatives_2_0 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23246:2: rule__GivenReference__AndAlternatives_2_0
             {
-            pushFollow(FOLLOW_rule__GivenRef__AndAlternatives_2_0_in_rule__GivenRef__AndAssignment_246786);
-            rule__GivenRef__AndAlternatives_2_0();
+            pushFollow(FOLLOW_rule__GivenReference__AndAlternatives_2_0_in_rule__GivenReference__AndAssignment_246786);
+            rule__GivenReference__AndAlternatives_2_0();
 
             state._fsp--;
             if (state.failed) return ;
@@ -67877,7 +67877,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getGivenRefAccess().getAndAlternatives_2_0()); 
+               after(grammarAccess.getGivenReferenceAccess().getAndAlternatives_2_0()); 
             }
 
             }
@@ -67897,7 +67897,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__GivenRef__AndAssignment_2"
+    // $ANTLR end "rule__GivenReference__AndAssignment_2"
 
 
     // $ANTLR start "rule__Given__NameAssignment_1"
@@ -67941,29 +67941,29 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Given__NameAssignment_1"
 
 
-    // $ANTLR start "rule__Given__CodeAssignment_2"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23270:1: rule__Given__CodeAssignment_2 : ( ruleCode ) ;
-    public final void rule__Given__CodeAssignment_2() throws RecognitionException {
+    // $ANTLR start "rule__Given__StepExpressionAssignment_2"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23270:1: rule__Given__StepExpressionAssignment_2 : ( ruleStepExpression ) ;
+    public final void rule__Given__StepExpressionAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23274:1: ( ( ruleCode ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23275:1: ( ruleCode )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23274:1: ( ( ruleStepExpression ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23275:1: ( ruleStepExpression )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23275:1: ( ruleCode )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23276:1: ruleCode
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23275:1: ( ruleStepExpression )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23276:1: ruleStepExpression
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getGivenAccess().getCodeCodeParserRuleCall_2_0()); 
+               before(grammarAccess.getGivenAccess().getStepExpressionStepExpressionParserRuleCall_2_0()); 
             }
-            pushFollow(FOLLOW_ruleCode_in_rule__Given__CodeAssignment_246850);
-            ruleCode();
+            pushFollow(FOLLOW_ruleStepExpression_in_rule__Given__StepExpressionAssignment_246850);
+            ruleStepExpression();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getGivenAccess().getCodeCodeParserRuleCall_2_0()); 
+               after(grammarAccess.getGivenAccess().getStepExpressionStepExpressionParserRuleCall_2_0()); 
             }
 
             }
@@ -67983,7 +67983,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Given__CodeAssignment_2"
+    // $ANTLR end "rule__Given__StepExpressionAssignment_2"
 
 
     // $ANTLR start "rule__Given__AndAssignment_3"
@@ -68037,9 +68037,9 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Given__AndAssignment_3"
 
 
-    // $ANTLR start "rule__WhenRef__ReferenceAssignment_1"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23301:1: rule__WhenRef__ReferenceAssignment_1 : ( ( RULE_WHEN_TEXT ) ) ;
-    public final void rule__WhenRef__ReferenceAssignment_1() throws RecognitionException {
+    // $ANTLR start "rule__WhenReference__ReferenceAssignment_1"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23301:1: rule__WhenReference__ReferenceAssignment_1 : ( ( RULE_WHEN_TEXT ) ) ;
+    public final void rule__WhenReference__ReferenceAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -68051,23 +68051,23 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23307:1: ( RULE_WHEN_TEXT )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getWhenRefAccess().getReferenceWhenCrossReference_1_0()); 
+               before(grammarAccess.getWhenReferenceAccess().getReferenceWhenCrossReference_1_0()); 
             }
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23308:1: ( RULE_WHEN_TEXT )
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23309:1: RULE_WHEN_TEXT
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getWhenRefAccess().getReferenceWhenWHEN_TEXTTerminalRuleCall_1_0_1()); 
+               before(grammarAccess.getWhenReferenceAccess().getReferenceWhenWHEN_TEXTTerminalRuleCall_1_0_1()); 
             }
-            match(input,RULE_WHEN_TEXT,FOLLOW_RULE_WHEN_TEXT_in_rule__WhenRef__ReferenceAssignment_146918); if (state.failed) return ;
+            match(input,RULE_WHEN_TEXT,FOLLOW_RULE_WHEN_TEXT_in_rule__WhenReference__ReferenceAssignment_146918); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getWhenRefAccess().getReferenceWhenWHEN_TEXTTerminalRuleCall_1_0_1()); 
+               after(grammarAccess.getWhenReferenceAccess().getReferenceWhenWHEN_TEXTTerminalRuleCall_1_0_1()); 
             }
 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getWhenRefAccess().getReferenceWhenCrossReference_1_0()); 
+               after(grammarAccess.getWhenReferenceAccess().getReferenceWhenCrossReference_1_0()); 
             }
 
             }
@@ -68087,30 +68087,30 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__WhenRef__ReferenceAssignment_1"
+    // $ANTLR end "rule__WhenReference__ReferenceAssignment_1"
 
 
-    // $ANTLR start "rule__WhenRef__AndAssignment_2"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23320:1: rule__WhenRef__AndAssignment_2 : ( ( rule__WhenRef__AndAlternatives_2_0 ) ) ;
-    public final void rule__WhenRef__AndAssignment_2() throws RecognitionException {
+    // $ANTLR start "rule__WhenReference__AndAssignment_2"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23320:1: rule__WhenReference__AndAssignment_2 : ( ( rule__WhenReference__AndAlternatives_2_0 ) ) ;
+    public final void rule__WhenReference__AndAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23324:1: ( ( ( rule__WhenRef__AndAlternatives_2_0 ) ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23325:1: ( ( rule__WhenRef__AndAlternatives_2_0 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23324:1: ( ( ( rule__WhenReference__AndAlternatives_2_0 ) ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23325:1: ( ( rule__WhenReference__AndAlternatives_2_0 ) )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23325:1: ( ( rule__WhenRef__AndAlternatives_2_0 ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23326:1: ( rule__WhenRef__AndAlternatives_2_0 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23325:1: ( ( rule__WhenReference__AndAlternatives_2_0 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23326:1: ( rule__WhenReference__AndAlternatives_2_0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getWhenRefAccess().getAndAlternatives_2_0()); 
+               before(grammarAccess.getWhenReferenceAccess().getAndAlternatives_2_0()); 
             }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23327:1: ( rule__WhenRef__AndAlternatives_2_0 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23327:2: rule__WhenRef__AndAlternatives_2_0
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23327:1: ( rule__WhenReference__AndAlternatives_2_0 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23327:2: rule__WhenReference__AndAlternatives_2_0
             {
-            pushFollow(FOLLOW_rule__WhenRef__AndAlternatives_2_0_in_rule__WhenRef__AndAssignment_246953);
-            rule__WhenRef__AndAlternatives_2_0();
+            pushFollow(FOLLOW_rule__WhenReference__AndAlternatives_2_0_in_rule__WhenReference__AndAssignment_246953);
+            rule__WhenReference__AndAlternatives_2_0();
 
             state._fsp--;
             if (state.failed) return ;
@@ -68118,7 +68118,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getWhenRefAccess().getAndAlternatives_2_0()); 
+               after(grammarAccess.getWhenReferenceAccess().getAndAlternatives_2_0()); 
             }
 
             }
@@ -68138,7 +68138,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__WhenRef__AndAssignment_2"
+    // $ANTLR end "rule__WhenReference__AndAssignment_2"
 
 
     // $ANTLR start "rule__When__NameAssignment_1"
@@ -68182,29 +68182,29 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__When__NameAssignment_1"
 
 
-    // $ANTLR start "rule__When__CodeAssignment_2"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23351:1: rule__When__CodeAssignment_2 : ( ruleCode ) ;
-    public final void rule__When__CodeAssignment_2() throws RecognitionException {
+    // $ANTLR start "rule__When__StepExpressionAssignment_2"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23351:1: rule__When__StepExpressionAssignment_2 : ( ruleStepExpression ) ;
+    public final void rule__When__StepExpressionAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23355:1: ( ( ruleCode ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23356:1: ( ruleCode )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23355:1: ( ( ruleStepExpression ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23356:1: ( ruleStepExpression )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23356:1: ( ruleCode )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23357:1: ruleCode
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23356:1: ( ruleStepExpression )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23357:1: ruleStepExpression
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getWhenAccess().getCodeCodeParserRuleCall_2_0()); 
+               before(grammarAccess.getWhenAccess().getStepExpressionStepExpressionParserRuleCall_2_0()); 
             }
-            pushFollow(FOLLOW_ruleCode_in_rule__When__CodeAssignment_247017);
-            ruleCode();
+            pushFollow(FOLLOW_ruleStepExpression_in_rule__When__StepExpressionAssignment_247017);
+            ruleStepExpression();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getWhenAccess().getCodeCodeParserRuleCall_2_0()); 
+               after(grammarAccess.getWhenAccess().getStepExpressionStepExpressionParserRuleCall_2_0()); 
             }
 
             }
@@ -68224,7 +68224,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__When__CodeAssignment_2"
+    // $ANTLR end "rule__When__StepExpressionAssignment_2"
 
 
     // $ANTLR start "rule__When__AndAssignment_3"
@@ -68278,9 +68278,9 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__When__AndAssignment_3"
 
 
-    // $ANTLR start "rule__ThenRef__ReferenceAssignment_1"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23382:1: rule__ThenRef__ReferenceAssignment_1 : ( ( RULE_THEN_TEXT ) ) ;
-    public final void rule__ThenRef__ReferenceAssignment_1() throws RecognitionException {
+    // $ANTLR start "rule__ThenReference__ReferenceAssignment_1"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23382:1: rule__ThenReference__ReferenceAssignment_1 : ( ( RULE_THEN_TEXT ) ) ;
+    public final void rule__ThenReference__ReferenceAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -68292,23 +68292,23 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23388:1: ( RULE_THEN_TEXT )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getThenRefAccess().getReferenceThenCrossReference_1_0()); 
+               before(grammarAccess.getThenReferenceAccess().getReferenceThenCrossReference_1_0()); 
             }
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23389:1: ( RULE_THEN_TEXT )
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23390:1: RULE_THEN_TEXT
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getThenRefAccess().getReferenceThenTHEN_TEXTTerminalRuleCall_1_0_1()); 
+               before(grammarAccess.getThenReferenceAccess().getReferenceThenTHEN_TEXTTerminalRuleCall_1_0_1()); 
             }
-            match(input,RULE_THEN_TEXT,FOLLOW_RULE_THEN_TEXT_in_rule__ThenRef__ReferenceAssignment_147085); if (state.failed) return ;
+            match(input,RULE_THEN_TEXT,FOLLOW_RULE_THEN_TEXT_in_rule__ThenReference__ReferenceAssignment_147085); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getThenRefAccess().getReferenceThenTHEN_TEXTTerminalRuleCall_1_0_1()); 
+               after(grammarAccess.getThenReferenceAccess().getReferenceThenTHEN_TEXTTerminalRuleCall_1_0_1()); 
             }
 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getThenRefAccess().getReferenceThenCrossReference_1_0()); 
+               after(grammarAccess.getThenReferenceAccess().getReferenceThenCrossReference_1_0()); 
             }
 
             }
@@ -68328,30 +68328,30 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__ThenRef__ReferenceAssignment_1"
+    // $ANTLR end "rule__ThenReference__ReferenceAssignment_1"
 
 
-    // $ANTLR start "rule__ThenRef__AndAssignment_2"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23401:1: rule__ThenRef__AndAssignment_2 : ( ( rule__ThenRef__AndAlternatives_2_0 ) ) ;
-    public final void rule__ThenRef__AndAssignment_2() throws RecognitionException {
+    // $ANTLR start "rule__ThenReference__AndAssignment_2"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23401:1: rule__ThenReference__AndAssignment_2 : ( ( rule__ThenReference__AndAlternatives_2_0 ) ) ;
+    public final void rule__ThenReference__AndAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23405:1: ( ( ( rule__ThenRef__AndAlternatives_2_0 ) ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23406:1: ( ( rule__ThenRef__AndAlternatives_2_0 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23405:1: ( ( ( rule__ThenReference__AndAlternatives_2_0 ) ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23406:1: ( ( rule__ThenReference__AndAlternatives_2_0 ) )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23406:1: ( ( rule__ThenRef__AndAlternatives_2_0 ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23407:1: ( rule__ThenRef__AndAlternatives_2_0 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23406:1: ( ( rule__ThenReference__AndAlternatives_2_0 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23407:1: ( rule__ThenReference__AndAlternatives_2_0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getThenRefAccess().getAndAlternatives_2_0()); 
+               before(grammarAccess.getThenReferenceAccess().getAndAlternatives_2_0()); 
             }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23408:1: ( rule__ThenRef__AndAlternatives_2_0 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23408:2: rule__ThenRef__AndAlternatives_2_0
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23408:1: ( rule__ThenReference__AndAlternatives_2_0 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23408:2: rule__ThenReference__AndAlternatives_2_0
             {
-            pushFollow(FOLLOW_rule__ThenRef__AndAlternatives_2_0_in_rule__ThenRef__AndAssignment_247120);
-            rule__ThenRef__AndAlternatives_2_0();
+            pushFollow(FOLLOW_rule__ThenReference__AndAlternatives_2_0_in_rule__ThenReference__AndAssignment_247120);
+            rule__ThenReference__AndAlternatives_2_0();
 
             state._fsp--;
             if (state.failed) return ;
@@ -68359,7 +68359,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getThenRefAccess().getAndAlternatives_2_0()); 
+               after(grammarAccess.getThenReferenceAccess().getAndAlternatives_2_0()); 
             }
 
             }
@@ -68379,7 +68379,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__ThenRef__AndAssignment_2"
+    // $ANTLR end "rule__ThenReference__AndAssignment_2"
 
 
     // $ANTLR start "rule__Then__NameAssignment_1"
@@ -68423,29 +68423,29 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Then__NameAssignment_1"
 
 
-    // $ANTLR start "rule__Then__CodeAssignment_2"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23432:1: rule__Then__CodeAssignment_2 : ( ruleCode ) ;
-    public final void rule__Then__CodeAssignment_2() throws RecognitionException {
+    // $ANTLR start "rule__Then__StepExpressionAssignment_2"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23432:1: rule__Then__StepExpressionAssignment_2 : ( ruleStepExpression ) ;
+    public final void rule__Then__StepExpressionAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23436:1: ( ( ruleCode ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23437:1: ( ruleCode )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23436:1: ( ( ruleStepExpression ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23437:1: ( ruleStepExpression )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23437:1: ( ruleCode )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23438:1: ruleCode
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23437:1: ( ruleStepExpression )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23438:1: ruleStepExpression
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getThenAccess().getCodeCodeParserRuleCall_2_0()); 
+               before(grammarAccess.getThenAccess().getStepExpressionStepExpressionParserRuleCall_2_0()); 
             }
-            pushFollow(FOLLOW_ruleCode_in_rule__Then__CodeAssignment_247184);
-            ruleCode();
+            pushFollow(FOLLOW_ruleStepExpression_in_rule__Then__StepExpressionAssignment_247184);
+            ruleStepExpression();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getThenAccess().getCodeCodeParserRuleCall_2_0()); 
+               after(grammarAccess.getThenAccess().getStepExpressionStepExpressionParserRuleCall_2_0()); 
             }
 
             }
@@ -68465,7 +68465,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Then__CodeAssignment_2"
+    // $ANTLR end "rule__Then__StepExpressionAssignment_2"
 
 
     // $ANTLR start "rule__Then__AndAssignment_3"
@@ -68519,9 +68519,9 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Then__AndAssignment_3"
 
 
-    // $ANTLR start "rule__AndRef__ReferenceAssignment_1"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23463:1: rule__AndRef__ReferenceAssignment_1 : ( ( RULE_AND_TEXT ) ) ;
-    public final void rule__AndRef__ReferenceAssignment_1() throws RecognitionException {
+    // $ANTLR start "rule__AndReference__ReferenceAssignment_1"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23463:1: rule__AndReference__ReferenceAssignment_1 : ( ( RULE_AND_TEXT ) ) ;
+    public final void rule__AndReference__ReferenceAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -68533,23 +68533,23 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23469:1: ( RULE_AND_TEXT )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getAndRefAccess().getReferenceAndCrossReference_1_0()); 
+               before(grammarAccess.getAndReferenceAccess().getReferenceAndCrossReference_1_0()); 
             }
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23470:1: ( RULE_AND_TEXT )
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23471:1: RULE_AND_TEXT
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getAndRefAccess().getReferenceAndAND_TEXTTerminalRuleCall_1_0_1()); 
+               before(grammarAccess.getAndReferenceAccess().getReferenceAndAND_TEXTTerminalRuleCall_1_0_1()); 
             }
-            match(input,RULE_AND_TEXT,FOLLOW_RULE_AND_TEXT_in_rule__AndRef__ReferenceAssignment_147252); if (state.failed) return ;
+            match(input,RULE_AND_TEXT,FOLLOW_RULE_AND_TEXT_in_rule__AndReference__ReferenceAssignment_147252); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getAndRefAccess().getReferenceAndAND_TEXTTerminalRuleCall_1_0_1()); 
+               after(grammarAccess.getAndReferenceAccess().getReferenceAndAND_TEXTTerminalRuleCall_1_0_1()); 
             }
 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getAndRefAccess().getReferenceAndCrossReference_1_0()); 
+               after(grammarAccess.getAndReferenceAccess().getReferenceAndCrossReference_1_0()); 
             }
 
             }
@@ -68569,7 +68569,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__AndRef__ReferenceAssignment_1"
+    // $ANTLR end "rule__AndReference__ReferenceAssignment_1"
 
 
     // $ANTLR start "rule__And__NameAssignment_1"
@@ -68613,29 +68613,29 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__And__NameAssignment_1"
 
 
-    // $ANTLR start "rule__And__CodeAssignment_2"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23497:1: rule__And__CodeAssignment_2 : ( ruleCode ) ;
-    public final void rule__And__CodeAssignment_2() throws RecognitionException {
+    // $ANTLR start "rule__And__StepExpressionAssignment_2"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23497:1: rule__And__StepExpressionAssignment_2 : ( ruleStepExpression ) ;
+    public final void rule__And__StepExpressionAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23501:1: ( ( ruleCode ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23502:1: ( ruleCode )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23501:1: ( ( ruleStepExpression ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23502:1: ( ruleStepExpression )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23502:1: ( ruleCode )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23503:1: ruleCode
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23502:1: ( ruleStepExpression )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23503:1: ruleStepExpression
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getAndAccess().getCodeCodeParserRuleCall_2_0()); 
+               before(grammarAccess.getAndAccess().getStepExpressionStepExpressionParserRuleCall_2_0()); 
             }
-            pushFollow(FOLLOW_ruleCode_in_rule__And__CodeAssignment_247318);
-            ruleCode();
+            pushFollow(FOLLOW_ruleStepExpression_in_rule__And__StepExpressionAssignment_247318);
+            ruleStepExpression();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getAndAccess().getCodeCodeParserRuleCall_2_0()); 
+               after(grammarAccess.getAndAccess().getStepExpressionStepExpressionParserRuleCall_2_0()); 
             }
 
             }
@@ -68655,12 +68655,12 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__And__CodeAssignment_2"
+    // $ANTLR end "rule__And__StepExpressionAssignment_2"
 
 
-    // $ANTLR start "rule__Code__AnnotationsAssignment_0"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23512:1: rule__Code__AnnotationsAssignment_0 : ( ruleXAnnotation ) ;
-    public final void rule__Code__AnnotationsAssignment_0() throws RecognitionException {
+    // $ANTLR start "rule__StepExpression__AnnotationsAssignment_0"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23512:1: rule__StepExpression__AnnotationsAssignment_0 : ( ruleXAnnotation ) ;
+    public final void rule__StepExpression__AnnotationsAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -68672,15 +68672,15 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23518:1: ruleXAnnotation
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getCodeAccess().getAnnotationsXAnnotationParserRuleCall_0_0()); 
+               before(grammarAccess.getStepExpressionAccess().getAnnotationsXAnnotationParserRuleCall_0_0()); 
             }
-            pushFollow(FOLLOW_ruleXAnnotation_in_rule__Code__AnnotationsAssignment_047349);
+            pushFollow(FOLLOW_ruleXAnnotation_in_rule__StepExpression__AnnotationsAssignment_047349);
             ruleXAnnotation();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getCodeAccess().getAnnotationsXAnnotationParserRuleCall_0_0()); 
+               after(grammarAccess.getStepExpressionAccess().getAnnotationsXAnnotationParserRuleCall_0_0()); 
             }
 
             }
@@ -68700,12 +68700,12 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Code__AnnotationsAssignment_0"
+    // $ANTLR end "rule__StepExpression__AnnotationsAssignment_0"
 
 
-    // $ANTLR start "rule__Code__BlockExpressionAssignment_1"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23527:1: rule__Code__BlockExpressionAssignment_1 : ( ruleBlockExpression ) ;
-    public final void rule__Code__BlockExpressionAssignment_1() throws RecognitionException {
+    // $ANTLR start "rule__StepExpression__BlockExpressionAssignment_1"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23527:1: rule__StepExpression__BlockExpressionAssignment_1 : ( ruleBlockExpression ) ;
+    public final void rule__StepExpression__BlockExpressionAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -68717,15 +68717,15 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23533:1: ruleBlockExpression
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getCodeAccess().getBlockExpressionBlockExpressionParserRuleCall_1_0()); 
+               before(grammarAccess.getStepExpressionAccess().getBlockExpressionBlockExpressionParserRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_ruleBlockExpression_in_rule__Code__BlockExpressionAssignment_147380);
+            pushFollow(FOLLOW_ruleBlockExpression_in_rule__StepExpression__BlockExpressionAssignment_147380);
             ruleBlockExpression();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getCodeAccess().getBlockExpressionBlockExpressionParserRuleCall_1_0()); 
+               after(grammarAccess.getStepExpressionAccess().getBlockExpressionBlockExpressionParserRuleCall_1_0()); 
             }
 
             }
@@ -68745,7 +68745,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Code__BlockExpressionAssignment_1"
+    // $ANTLR end "rule__StepExpression__BlockExpressionAssignment_1"
 
 
     // $ANTLR start "rule__BlockExpression__ExpressionsAssignment_0"
@@ -82174,9 +82174,9 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     }
  
 
-    public static final BitSet FOLLOW_ruleJnario_in_entryRuleJnario67 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleJnario74 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Jnario__Group__0_in_ruleJnario100 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJnarioFile_in_entryRuleJnarioFile67 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleJnarioFile74 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JnarioFile__Group__0_in_ruleJnarioFile100 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleFeature_in_entryRuleFeature127 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleFeature134 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Feature__Group__0_in_ruleFeature160 = new BitSet(new long[]{0x0000000000000002L});
@@ -82189,36 +82189,36 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_ruleScenario_in_entryRuleScenario307 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleScenario314 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Scenario__Group__0_in_ruleScenario340 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRef_in_entryRuleRef369 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleRef376 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Ref__Alternatives_in_ruleRef402 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleGivenRef_in_entryRuleGivenRef429 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleGivenRef436 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__GivenRef__Group__0_in_ruleGivenRef462 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStepReference_in_entryRuleStepReference369 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleStepReference376 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__StepReference__Alternatives_in_ruleStepReference402 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleGivenReference_in_entryRuleGivenReference429 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleGivenReference436 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__GivenReference__Group__0_in_ruleGivenReference462 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleGiven_in_entryRuleGiven489 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleGiven496 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Given__Group__0_in_ruleGiven522 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleWhenRef_in_entryRuleWhenRef549 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleWhenRef556 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WhenRef__Group__0_in_ruleWhenRef582 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleWhenReference_in_entryRuleWhenReference549 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleWhenReference556 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__WhenReference__Group__0_in_ruleWhenReference582 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleWhen_in_entryRuleWhen609 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleWhen616 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__When__Group__0_in_ruleWhen642 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleThenRef_in_entryRuleThenRef669 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleThenRef676 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ThenRef__Group__0_in_ruleThenRef702 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleThenReference_in_entryRuleThenReference669 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleThenReference676 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ThenReference__Group__0_in_ruleThenReference702 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleThen_in_entryRuleThen729 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleThen736 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Then__Group__0_in_ruleThen762 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAndRef_in_entryRuleAndRef789 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleAndRef796 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__AndRef__Group__0_in_ruleAndRef822 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAndReference_in_entryRuleAndReference789 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAndReference796 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__AndReference__Group__0_in_ruleAndReference822 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleAnd_in_entryRuleAnd849 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleAnd856 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__And__Group__0_in_ruleAnd882 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCode_in_entryRuleCode909 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleCode916 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Code__Group__0_in_ruleCode942 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStepExpression_in_entryRuleStepExpression909 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleStepExpression916 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__StepExpression__Group__0_in_ruleStepExpression942 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleBlockExpression_in_entryRuleBlockExpression969 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleBlockExpression976 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__BlockExpression__Group__0_in_ruleBlockExpression1004 = new BitSet(new long[]{0x7432080004380042L,0x01800FB950005040L});
@@ -82499,29 +82499,29 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__JvmTypeParameter__Group__0_in_ruleJvmTypeParameter6505 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Visibility__Alternatives_in_ruleVisibility6542 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleGiven_in_rule__Background__StepsAlternatives_3_06577 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleGivenRef_in_rule__Background__StepsAlternatives_3_06594 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleGivenReference_in_rule__Background__StepsAlternatives_3_06594 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleGiven_in_rule__Scenario__StepsAlternatives_3_06626 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleGivenRef_in_rule__Scenario__StepsAlternatives_3_06643 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleGivenReference_in_rule__Scenario__StepsAlternatives_3_06643 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleWhen_in_rule__Scenario__StepsAlternatives_4_06675 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleWhenRef_in_rule__Scenario__StepsAlternatives_4_06692 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleWhenReference_in_rule__Scenario__StepsAlternatives_4_06692 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleThen_in_rule__Scenario__StepsAlternatives_5_06724 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleThenRef_in_rule__Scenario__StepsAlternatives_5_06741 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleGivenRef_in_rule__Ref__Alternatives6774 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleWhenRef_in_rule__Ref__Alternatives6791 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleThenRef_in_rule__Ref__Alternatives6808 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAndRef_in_rule__Ref__Alternatives6825 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAnd_in_rule__GivenRef__AndAlternatives_2_06857 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAndRef_in_rule__GivenRef__AndAlternatives_2_06874 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleThenReference_in_rule__Scenario__StepsAlternatives_5_06741 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleGivenReference_in_rule__StepReference__Alternatives6774 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleWhenReference_in_rule__StepReference__Alternatives6791 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleThenReference_in_rule__StepReference__Alternatives6808 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAndReference_in_rule__StepReference__Alternatives6825 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAnd_in_rule__GivenReference__AndAlternatives_2_06857 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAndReference_in_rule__GivenReference__AndAlternatives_2_06874 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleAnd_in_rule__Given__AndAlternatives_3_06906 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAndRef_in_rule__Given__AndAlternatives_3_06923 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAnd_in_rule__WhenRef__AndAlternatives_2_06955 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAndRef_in_rule__WhenRef__AndAlternatives_2_06972 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAndReference_in_rule__Given__AndAlternatives_3_06923 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAnd_in_rule__WhenReference__AndAlternatives_2_06955 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAndReference_in_rule__WhenReference__AndAlternatives_2_06972 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleAnd_in_rule__When__AndAlternatives_3_07004 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAndRef_in_rule__When__AndAlternatives_3_07021 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAnd_in_rule__ThenRef__AndAlternatives_2_07053 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAndRef_in_rule__ThenRef__AndAlternatives_2_07070 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAndReference_in_rule__When__AndAlternatives_3_07021 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAnd_in_rule__ThenReference__AndAlternatives_2_07053 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAndReference_in_rule__ThenReference__AndAlternatives_2_07070 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleAnd_in_rule__Then__AndAlternatives_3_07102 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAndRef_in_rule__Then__AndAlternatives_3_07119 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAndReference_in_rule__Then__AndAlternatives_3_07119 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_PIPE_in_rule__ExampleHeadingCell__Alternatives_07151 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_PIPE_SPACES_in_rule__ExampleHeadingCell__Alternatives_07168 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_PIPE_in_rule__ExampleCell__Alternatives_07200 = new BitSet(new long[]{0x0000000000000002L});
@@ -82641,21 +82641,21 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_63_in_rule__Visibility__Alternatives9873 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_64_in_rule__Visibility__Alternatives9894 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_65_in_rule__Visibility__Alternatives9915 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Jnario__Group__0__Impl_in_rule__Jnario__Group__09948 = new BitSet(new long[]{0x0000000000001000L,0x0000000002000014L});
-    public static final BitSet FOLLOW_rule__Jnario__Group__1_in_rule__Jnario__Group__09951 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Jnario__Group__1__Impl_in_rule__Jnario__Group__110009 = new BitSet(new long[]{0x0000000000001000L,0x0000000002000014L});
-    public static final BitSet FOLLOW_rule__Jnario__Group__2_in_rule__Jnario__Group__110012 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Jnario__Group_1__0_in_rule__Jnario__Group__1__Impl10039 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Jnario__Group__2__Impl_in_rule__Jnario__Group__210070 = new BitSet(new long[]{0x0000000000001000L,0x0000000002000014L});
-    public static final BitSet FOLLOW_rule__Jnario__Group__3_in_rule__Jnario__Group__210073 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Jnario__ImportsAssignment_2_in_rule__Jnario__Group__2__Impl10100 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Jnario__Group__3__Impl_in_rule__Jnario__Group__310131 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Jnario__XtendClassAssignment_3_in_rule__Jnario__Group__3__Impl10158 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Jnario__Group_1__0__Impl_in_rule__Jnario__Group_1__010197 = new BitSet(new long[]{0x0000080000000040L});
-    public static final BitSet FOLLOW_rule__Jnario__Group_1__1_in_rule__Jnario__Group_1__010200 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_66_in_rule__Jnario__Group_1__0__Impl10228 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Jnario__Group_1__1__Impl_in_rule__Jnario__Group_1__110259 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Jnario__PackageAssignment_1_1_in_rule__Jnario__Group_1__1__Impl10286 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JnarioFile__Group__0__Impl_in_rule__JnarioFile__Group__09948 = new BitSet(new long[]{0x0000000000001000L,0x0000000002000014L});
+    public static final BitSet FOLLOW_rule__JnarioFile__Group__1_in_rule__JnarioFile__Group__09951 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JnarioFile__Group__1__Impl_in_rule__JnarioFile__Group__110009 = new BitSet(new long[]{0x0000000000001000L,0x0000000002000014L});
+    public static final BitSet FOLLOW_rule__JnarioFile__Group__2_in_rule__JnarioFile__Group__110012 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JnarioFile__Group_1__0_in_rule__JnarioFile__Group__1__Impl10039 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JnarioFile__Group__2__Impl_in_rule__JnarioFile__Group__210070 = new BitSet(new long[]{0x0000000000001000L,0x0000000002000014L});
+    public static final BitSet FOLLOW_rule__JnarioFile__Group__3_in_rule__JnarioFile__Group__210073 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JnarioFile__ImportsAssignment_2_in_rule__JnarioFile__Group__2__Impl10100 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__JnarioFile__Group__3__Impl_in_rule__JnarioFile__Group__310131 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JnarioFile__XtendClassAssignment_3_in_rule__JnarioFile__Group__3__Impl10158 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JnarioFile__Group_1__0__Impl_in_rule__JnarioFile__Group_1__010197 = new BitSet(new long[]{0x0000080000000040L});
+    public static final BitSet FOLLOW_rule__JnarioFile__Group_1__1_in_rule__JnarioFile__Group_1__010200 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_66_in_rule__JnarioFile__Group_1__0__Impl10228 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JnarioFile__Group_1__1__Impl_in_rule__JnarioFile__Group_1__110259 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JnarioFile__PackageAssignment_1_1_in_rule__JnarioFile__Group_1__1__Impl10286 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Feature__Group__0__Impl_in_rule__Feature__Group__010320 = new BitSet(new long[]{0x0000000000001000L,0x0000000002000000L});
     public static final BitSet FOLLOW_rule__Feature__Group__1_in_rule__Feature__Group__010323 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Feature__Group__1__Impl_in_rule__Feature__Group__110381 = new BitSet(new long[]{0x0000000000001000L,0x0000000002000000L});
@@ -82709,13 +82709,13 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__Scenario__StepsAssignment_5_in_rule__Scenario__Group__5__Impl11455 = new BitSet(new long[]{0x0000000000010002L});
     public static final BitSet FOLLOW_rule__Scenario__Group__6__Impl_in_rule__Scenario__Group__611486 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Scenario__ExamplesAssignment_6_in_rule__Scenario__Group__6__Impl11513 = new BitSet(new long[]{0x0000000000040002L});
-    public static final BitSet FOLLOW_rule__GivenRef__Group__0__Impl_in_rule__GivenRef__Group__011558 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_rule__GivenRef__Group__1_in_rule__GivenRef__Group__011561 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__GivenRef__Group__1__Impl_in_rule__GivenRef__Group__111619 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_rule__GivenRef__Group__2_in_rule__GivenRef__Group__111622 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__GivenRef__ReferenceAssignment_1_in_rule__GivenRef__Group__1__Impl11649 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__GivenRef__Group__2__Impl_in_rule__GivenRef__Group__211679 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__GivenRef__AndAssignment_2_in_rule__GivenRef__Group__2__Impl11706 = new BitSet(new long[]{0x0000000000020002L});
+    public static final BitSet FOLLOW_rule__GivenReference__Group__0__Impl_in_rule__GivenReference__Group__011558 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_rule__GivenReference__Group__1_in_rule__GivenReference__Group__011561 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__GivenReference__Group__1__Impl_in_rule__GivenReference__Group__111619 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_rule__GivenReference__Group__2_in_rule__GivenReference__Group__111622 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__GivenReference__ReferenceAssignment_1_in_rule__GivenReference__Group__1__Impl11649 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__GivenReference__Group__2__Impl_in_rule__GivenReference__Group__211679 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__GivenReference__AndAssignment_2_in_rule__GivenReference__Group__2__Impl11706 = new BitSet(new long[]{0x0000000000020002L});
     public static final BitSet FOLLOW_rule__Given__Group__0__Impl_in_rule__Given__Group__011743 = new BitSet(new long[]{0x0000000000004000L});
     public static final BitSet FOLLOW_rule__Given__Group__1_in_rule__Given__Group__011746 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Given__Group__1__Impl_in_rule__Given__Group__111804 = new BitSet(new long[]{0x7432080004380040L,0x01800FB952005040L});
@@ -82723,16 +82723,16 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__Given__NameAssignment_1_in_rule__Given__Group__1__Impl11834 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Given__Group__2__Impl_in_rule__Given__Group__211864 = new BitSet(new long[]{0x0000000000020000L});
     public static final BitSet FOLLOW_rule__Given__Group__3_in_rule__Given__Group__211867 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Given__CodeAssignment_2_in_rule__Given__Group__2__Impl11894 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Given__StepExpressionAssignment_2_in_rule__Given__Group__2__Impl11894 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Given__Group__3__Impl_in_rule__Given__Group__311924 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Given__AndAssignment_3_in_rule__Given__Group__3__Impl11951 = new BitSet(new long[]{0x0000000000020002L});
-    public static final BitSet FOLLOW_rule__WhenRef__Group__0__Impl_in_rule__WhenRef__Group__011990 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_rule__WhenRef__Group__1_in_rule__WhenRef__Group__011993 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WhenRef__Group__1__Impl_in_rule__WhenRef__Group__112051 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_rule__WhenRef__Group__2_in_rule__WhenRef__Group__112054 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WhenRef__ReferenceAssignment_1_in_rule__WhenRef__Group__1__Impl12081 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WhenRef__Group__2__Impl_in_rule__WhenRef__Group__212111 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WhenRef__AndAssignment_2_in_rule__WhenRef__Group__2__Impl12138 = new BitSet(new long[]{0x0000000000020002L});
+    public static final BitSet FOLLOW_rule__WhenReference__Group__0__Impl_in_rule__WhenReference__Group__011990 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_rule__WhenReference__Group__1_in_rule__WhenReference__Group__011993 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__WhenReference__Group__1__Impl_in_rule__WhenReference__Group__112051 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_rule__WhenReference__Group__2_in_rule__WhenReference__Group__112054 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__WhenReference__ReferenceAssignment_1_in_rule__WhenReference__Group__1__Impl12081 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__WhenReference__Group__2__Impl_in_rule__WhenReference__Group__212111 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__WhenReference__AndAssignment_2_in_rule__WhenReference__Group__2__Impl12138 = new BitSet(new long[]{0x0000000000020002L});
     public static final BitSet FOLLOW_rule__When__Group__0__Impl_in_rule__When__Group__012175 = new BitSet(new long[]{0x0000000000008000L});
     public static final BitSet FOLLOW_rule__When__Group__1_in_rule__When__Group__012178 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__When__Group__1__Impl_in_rule__When__Group__112236 = new BitSet(new long[]{0x7432080004380040L,0x01800FB952005040L});
@@ -82740,16 +82740,16 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__When__NameAssignment_1_in_rule__When__Group__1__Impl12266 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__When__Group__2__Impl_in_rule__When__Group__212296 = new BitSet(new long[]{0x0000000000020000L});
     public static final BitSet FOLLOW_rule__When__Group__3_in_rule__When__Group__212299 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__When__CodeAssignment_2_in_rule__When__Group__2__Impl12326 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__When__StepExpressionAssignment_2_in_rule__When__Group__2__Impl12326 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__When__Group__3__Impl_in_rule__When__Group__312356 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__When__AndAssignment_3_in_rule__When__Group__3__Impl12383 = new BitSet(new long[]{0x0000000000020002L});
-    public static final BitSet FOLLOW_rule__ThenRef__Group__0__Impl_in_rule__ThenRef__Group__012422 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_rule__ThenRef__Group__1_in_rule__ThenRef__Group__012425 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ThenRef__Group__1__Impl_in_rule__ThenRef__Group__112483 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_rule__ThenRef__Group__2_in_rule__ThenRef__Group__112486 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ThenRef__ReferenceAssignment_1_in_rule__ThenRef__Group__1__Impl12513 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ThenRef__Group__2__Impl_in_rule__ThenRef__Group__212543 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ThenRef__AndAssignment_2_in_rule__ThenRef__Group__2__Impl12570 = new BitSet(new long[]{0x0000000000020002L});
+    public static final BitSet FOLLOW_rule__ThenReference__Group__0__Impl_in_rule__ThenReference__Group__012422 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_rule__ThenReference__Group__1_in_rule__ThenReference__Group__012425 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ThenReference__Group__1__Impl_in_rule__ThenReference__Group__112483 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_rule__ThenReference__Group__2_in_rule__ThenReference__Group__112486 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ThenReference__ReferenceAssignment_1_in_rule__ThenReference__Group__1__Impl12513 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ThenReference__Group__2__Impl_in_rule__ThenReference__Group__212543 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ThenReference__AndAssignment_2_in_rule__ThenReference__Group__2__Impl12570 = new BitSet(new long[]{0x0000000000020002L});
     public static final BitSet FOLLOW_rule__Then__Group__0__Impl_in_rule__Then__Group__012607 = new BitSet(new long[]{0x0000000000010000L});
     public static final BitSet FOLLOW_rule__Then__Group__1_in_rule__Then__Group__012610 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Then__Group__1__Impl_in_rule__Then__Group__112668 = new BitSet(new long[]{0x7432080004380040L,0x01800FB952005040L});
@@ -82757,25 +82757,25 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__Then__NameAssignment_1_in_rule__Then__Group__1__Impl12698 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Then__Group__2__Impl_in_rule__Then__Group__212728 = new BitSet(new long[]{0x0000000000020000L});
     public static final BitSet FOLLOW_rule__Then__Group__3_in_rule__Then__Group__212731 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Then__CodeAssignment_2_in_rule__Then__Group__2__Impl12758 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Then__StepExpressionAssignment_2_in_rule__Then__Group__2__Impl12758 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Then__Group__3__Impl_in_rule__Then__Group__312788 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Then__AndAssignment_3_in_rule__Then__Group__3__Impl12815 = new BitSet(new long[]{0x0000000000020002L});
-    public static final BitSet FOLLOW_rule__AndRef__Group__0__Impl_in_rule__AndRef__Group__012854 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_rule__AndRef__Group__1_in_rule__AndRef__Group__012857 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__AndRef__Group__1__Impl_in_rule__AndRef__Group__112915 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__AndRef__ReferenceAssignment_1_in_rule__AndRef__Group__1__Impl12942 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__AndReference__Group__0__Impl_in_rule__AndReference__Group__012854 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_rule__AndReference__Group__1_in_rule__AndReference__Group__012857 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__AndReference__Group__1__Impl_in_rule__AndReference__Group__112915 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__AndReference__ReferenceAssignment_1_in_rule__AndReference__Group__1__Impl12942 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__And__Group__0__Impl_in_rule__And__Group__012976 = new BitSet(new long[]{0x0000000000020000L});
     public static final BitSet FOLLOW_rule__And__Group__1_in_rule__And__Group__012979 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__And__Group__1__Impl_in_rule__And__Group__113037 = new BitSet(new long[]{0x7432080004380040L,0x01800FB952005040L});
     public static final BitSet FOLLOW_rule__And__Group__2_in_rule__And__Group__113040 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__And__NameAssignment_1_in_rule__And__Group__1__Impl13067 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__And__Group__2__Impl_in_rule__And__Group__213097 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__And__CodeAssignment_2_in_rule__And__Group__2__Impl13124 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Code__Group__0__Impl_in_rule__Code__Group__013160 = new BitSet(new long[]{0x7432080004380040L,0x01800FB952005040L});
-    public static final BitSet FOLLOW_rule__Code__Group__1_in_rule__Code__Group__013163 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Code__AnnotationsAssignment_0_in_rule__Code__Group__0__Impl13190 = new BitSet(new long[]{0x0000000000000002L,0x0000000002000000L});
-    public static final BitSet FOLLOW_rule__Code__Group__1__Impl_in_rule__Code__Group__113221 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Code__BlockExpressionAssignment_1_in_rule__Code__Group__1__Impl13248 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__And__StepExpressionAssignment_2_in_rule__And__Group__2__Impl13124 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__StepExpression__Group__0__Impl_in_rule__StepExpression__Group__013160 = new BitSet(new long[]{0x7432080004380040L,0x01800FB952005040L});
+    public static final BitSet FOLLOW_rule__StepExpression__Group__1_in_rule__StepExpression__Group__013163 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__StepExpression__AnnotationsAssignment_0_in_rule__StepExpression__Group__0__Impl13190 = new BitSet(new long[]{0x0000000000000002L,0x0000000002000000L});
+    public static final BitSet FOLLOW_rule__StepExpression__Group__1__Impl_in_rule__StepExpression__Group__113221 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__StepExpression__BlockExpressionAssignment_1_in_rule__StepExpression__Group__1__Impl13248 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__BlockExpression__Group__0__Impl_in_rule__BlockExpression__Group__013282 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000008L});
     public static final BitSet FOLLOW_rule__BlockExpression__Group__1_in_rule__BlockExpression__Group__013285 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__BlockExpression__ExpressionsAssignment_0_in_rule__BlockExpression__Group__0__Impl13312 = new BitSet(new long[]{0x0000000000000002L});
@@ -84128,9 +84128,9 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__JvmTypeParameter__ConstraintsAssignment_1_0_0_in_rule__JvmTypeParameter__Group_1_0__0__Impl46146 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmTypeParameter__Group_1_0__1__Impl_in_rule__JvmTypeParameter__Group_1_0__146176 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmTypeParameter__ConstraintsAssignment_1_0_1_in_rule__JvmTypeParameter__Group_1_0__1__Impl46203 = new BitSet(new long[]{0x0000000000000002L,0x0001000000000000L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__Jnario__PackageAssignment_1_146243 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleImport_in_rule__Jnario__ImportsAssignment_246274 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFeature_in_rule__Jnario__XtendClassAssignment_346305 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__JnarioFile__PackageAssignment_1_146243 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleImport_in_rule__JnarioFile__ImportsAssignment_246274 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFeature_in_rule__JnarioFile__XtendClassAssignment_346305 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXAnnotation_in_rule__Feature__AnnotationsAssignment_146336 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_FEATURE_TEXT_in_rule__Feature__NameAssignment_246367 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleDESCRIPTION_in_rule__Feature__DescriptionAssignment_346398 = new BitSet(new long[]{0x0000000000000002L});
@@ -84144,26 +84144,26 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__Scenario__StepsAlternatives_4_0_in_rule__Scenario__StepsAssignment_446650 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Scenario__StepsAlternatives_5_0_in_rule__Scenario__StepsAssignment_546683 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleExampleTable_in_rule__Scenario__ExamplesAssignment_646716 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_GIVEN_TEXT_in_rule__GivenRef__ReferenceAssignment_146751 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__GivenRef__AndAlternatives_2_0_in_rule__GivenRef__AndAssignment_246786 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_GIVEN_TEXT_in_rule__GivenReference__ReferenceAssignment_146751 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__GivenReference__AndAlternatives_2_0_in_rule__GivenReference__AndAssignment_246786 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_GIVEN_TEXT_in_rule__Given__NameAssignment_146819 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCode_in_rule__Given__CodeAssignment_246850 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStepExpression_in_rule__Given__StepExpressionAssignment_246850 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Given__AndAlternatives_3_0_in_rule__Given__AndAssignment_346881 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_WHEN_TEXT_in_rule__WhenRef__ReferenceAssignment_146918 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WhenRef__AndAlternatives_2_0_in_rule__WhenRef__AndAssignment_246953 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_WHEN_TEXT_in_rule__WhenReference__ReferenceAssignment_146918 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__WhenReference__AndAlternatives_2_0_in_rule__WhenReference__AndAssignment_246953 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_WHEN_TEXT_in_rule__When__NameAssignment_146986 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCode_in_rule__When__CodeAssignment_247017 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStepExpression_in_rule__When__StepExpressionAssignment_247017 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__When__AndAlternatives_3_0_in_rule__When__AndAssignment_347048 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_THEN_TEXT_in_rule__ThenRef__ReferenceAssignment_147085 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ThenRef__AndAlternatives_2_0_in_rule__ThenRef__AndAssignment_247120 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_THEN_TEXT_in_rule__ThenReference__ReferenceAssignment_147085 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ThenReference__AndAlternatives_2_0_in_rule__ThenReference__AndAssignment_247120 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_THEN_TEXT_in_rule__Then__NameAssignment_147153 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCode_in_rule__Then__CodeAssignment_247184 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStepExpression_in_rule__Then__StepExpressionAssignment_247184 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Then__AndAlternatives_3_0_in_rule__Then__AndAssignment_347215 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_AND_TEXT_in_rule__AndRef__ReferenceAssignment_147252 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_AND_TEXT_in_rule__AndReference__ReferenceAssignment_147252 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_AND_TEXT_in_rule__And__NameAssignment_147287 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCode_in_rule__And__CodeAssignment_247318 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXAnnotation_in_rule__Code__AnnotationsAssignment_047349 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBlockExpression_in_rule__Code__BlockExpressionAssignment_147380 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStepExpression_in_rule__And__StepExpressionAssignment_247318 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXAnnotation_in_rule__StepExpression__AnnotationsAssignment_047349 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBlockExpression_in_rule__StepExpression__BlockExpressionAssignment_147380 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXExpressionInsideBlock_in_rule__BlockExpression__ExpressionsAssignment_047411 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_EXAMPLE_TEXT_in_rule__ExampleTable__NameAssignment_047442 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleExampleHeading_in_rule__ExampleTable__HeadingAssignment_147473 = new BitSet(new long[]{0x0000000000000002L});

@@ -13,14 +13,14 @@
     <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel" alias="types">
       <ePackage href="http://www.eclipse.org/xtext/common/JavaVMTypes#/"/>
     </metamodelDeclarations>
-    <rules xsi:type="xtext:ParserRule" name="Jnario">
+    <rules xsi:type="xtext:ParserRule" name="JnarioFile">
       <type metamodel="/0/@metamodelDeclarations.2">
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/Xtend2#//XtendFile"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
-            <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/Jnario#//Jnario"/>
+            <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/Jnario#//JnarioFile"/>
           </type>
         </elements>
         <elements xsi:type="xtext:Group" cardinality="?">
@@ -147,7 +147,7 @@
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.6"/>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="Ref">
+    <rules xsi:type="xtext:ParserRule" name="StepReference">
       <type metamodel="/0/@metamodelDeclarations.2">
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/Xtend2#//XtendMember"/>
       </type>
@@ -158,14 +158,14 @@
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.13"/>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="GivenRef">
+    <rules xsi:type="xtext:ParserRule" name="GivenReference">
       <type metamodel="/0/@metamodelDeclarations.2">
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/Xtend2#//XtendMember"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
-            <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/Jnario#//GivenRef"/>
+            <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/Jnario#//GivenReference"/>
           </type>
         </elements>
         <elements xsi:type="xtext:Assignment" feature="reference" operator="=">
@@ -197,7 +197,7 @@
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.25"/>
         </elements>
-        <elements xsi:type="xtext:Assignment" feature="code" operator="=">
+        <elements xsi:type="xtext:Assignment" feature="stepExpression" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.15"/>
         </elements>
         <elements xsi:type="xtext:Assignment" cardinality="*" feature="and" operator="+=">
@@ -208,14 +208,14 @@
         </elements>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="WhenRef">
+    <rules xsi:type="xtext:ParserRule" name="WhenReference">
       <type metamodel="/0/@metamodelDeclarations.2">
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/Xtend2#//XtendMember"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
-            <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/Jnario#//WhenRef"/>
+            <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/Jnario#//WhenReference"/>
           </type>
         </elements>
         <elements xsi:type="xtext:Assignment" feature="reference" operator="=">
@@ -247,7 +247,7 @@
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.26"/>
         </elements>
-        <elements xsi:type="xtext:Assignment" feature="code" operator="=">
+        <elements xsi:type="xtext:Assignment" feature="stepExpression" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.15"/>
         </elements>
         <elements xsi:type="xtext:Assignment" cardinality="*" feature="and" operator="+=">
@@ -258,14 +258,14 @@
         </elements>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="ThenRef">
+    <rules xsi:type="xtext:ParserRule" name="ThenReference">
       <type metamodel="/0/@metamodelDeclarations.2">
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/Xtend2#//XtendMember"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
-            <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/Jnario#//ThenRef"/>
+            <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/Jnario#//ThenReference"/>
           </type>
         </elements>
         <elements xsi:type="xtext:Assignment" feature="reference" operator="=">
@@ -297,7 +297,7 @@
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.27"/>
         </elements>
-        <elements xsi:type="xtext:Assignment" feature="code" operator="=">
+        <elements xsi:type="xtext:Assignment" feature="stepExpression" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.15"/>
         </elements>
         <elements xsi:type="xtext:Assignment" cardinality="*" feature="and" operator="+=">
@@ -308,14 +308,14 @@
         </elements>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="AndRef">
+    <rules xsi:type="xtext:ParserRule" name="AndReference">
       <type metamodel="/0/@metamodelDeclarations.2">
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/Xtend2#//XtendMember"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
-            <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/Jnario#//AndRef"/>
+            <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/Jnario#//AndReference"/>
           </type>
         </elements>
         <elements xsi:type="xtext:Assignment" feature="reference" operator="=">
@@ -341,14 +341,14 @@
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
         </elements>
-        <elements xsi:type="xtext:Assignment" feature="code" operator="=">
+        <elements xsi:type="xtext:Assignment" feature="stepExpression" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.15"/>
         </elements>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="Code">
+    <rules xsi:type="xtext:ParserRule" name="StepExpression">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/Jnario#//Code"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/Jnario#//StepExpression"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Assignment" cardinality="*" feature="annotations" operator="+=">

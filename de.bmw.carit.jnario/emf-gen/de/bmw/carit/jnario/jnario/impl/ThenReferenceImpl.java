@@ -6,28 +6,28 @@
  */
 package de.bmw.carit.jnario.jnario.impl;
 
-import de.bmw.carit.jnario.jnario.AndRef;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
+import de.bmw.carit.jnario.jnario.ThenReference;
 
 import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>And Ref</b></em>'.
+ * An implementation of the model object '<em><b>Then Reference</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class AndRefImpl extends RefImpl implements AndRef
+public class ThenReferenceImpl extends StepReferenceImpl implements ThenReference
 {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected AndRefImpl()
+	protected ThenReferenceImpl()
 	{
 		super();
 	}
@@ -40,7 +40,7 @@ public class AndRefImpl extends RefImpl implements AndRef
 	@Override
 	protected EClass eStaticClass()
 	{
-		return JnarioPackage.Literals.AND_REF;
+		return JnarioPackage.Literals.THEN_REFERENCE;
 	}
 
-} //AndRefImpl
+} //ThenReferenceImpl

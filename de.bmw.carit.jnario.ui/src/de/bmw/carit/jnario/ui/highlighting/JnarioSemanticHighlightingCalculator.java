@@ -19,13 +19,13 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.xtend2.ui.highlighting.XtendHighlightingCalculator;
 
-import de.bmw.carit.jnario.jnario.AndRef;
+import de.bmw.carit.jnario.jnario.AndReference;
 import de.bmw.carit.jnario.jnario.ExampleHeading;
-import de.bmw.carit.jnario.jnario.GivenRef;
+import de.bmw.carit.jnario.jnario.GivenReference;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
 import de.bmw.carit.jnario.jnario.Step;
-import de.bmw.carit.jnario.jnario.ThenRef;
-import de.bmw.carit.jnario.jnario.WhenRef;
+import de.bmw.carit.jnario.jnario.ThenReference;
+import de.bmw.carit.jnario.jnario.WhenReference;
 import de.bmw.carit.jnario.jnario.util.JnarioSwitch;
 
 public class JnarioSemanticHighlightingCalculator extends XtendHighlightingCalculator {
@@ -47,22 +47,22 @@ public class JnarioSemanticHighlightingCalculator extends XtendHighlightingCalcu
 				description = getFirstWord(object.getName());
 				highlightStep(description, object, JnarioPackage.Literals.STEP__NAME);
 			}
-			else if(object instanceof GivenRef){
-				GivenRef ref = (GivenRef) object;
+			else if(object instanceof GivenReference){
+				GivenReference ref = (GivenReference) object;
 				description = getFirstWord(ref.getReference().getName());
-				highlightReference(description, object, JnarioPackage.Literals.REF__REFERENCE);
-			}else if(object instanceof WhenRef){
-				WhenRef ref = (WhenRef) object;
+				highlightReference(description, object, JnarioPackage.Literals.STEP_REFERENCE__REFERENCE);
+			}else if(object instanceof WhenReference){
+				WhenReference ref = (WhenReference) object;
 				description = getFirstWord(ref.getReference().getName());
-				highlightReference(description, object, JnarioPackage.Literals.REF__REFERENCE);
-			}else if(object instanceof ThenRef){
-				ThenRef ref = (ThenRef) object;
+				highlightReference(description, object, JnarioPackage.Literals.STEP_REFERENCE__REFERENCE);
+			}else if(object instanceof ThenReference){
+				ThenReference ref = (ThenReference) object;
 				description = getFirstWord(ref.getReference().getName());
-				highlightReference(description, object, JnarioPackage.Literals.REF__REFERENCE);
-			}else if(object instanceof AndRef){
-				AndRef ref = (AndRef) object;
+				highlightReference(description, object, JnarioPackage.Literals.STEP_REFERENCE__REFERENCE);
+			}else if(object instanceof AndReference){
+				AndReference ref = (AndReference) object;
 				description = getFirstWord(ref.getReference().getName());
-				highlightReference(description, object, JnarioPackage.Literals.REF__REFERENCE);
+				highlightReference(description, object, JnarioPackage.Literals.STEP_REFERENCE__REFERENCE);
 			}
 			return Boolean.TRUE;
 		}

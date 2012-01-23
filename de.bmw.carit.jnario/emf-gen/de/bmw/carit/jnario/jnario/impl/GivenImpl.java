@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class GivenImpl extends StepImplCustom implements Given
+public class GivenImpl extends StepImpl implements Given
 {
 	/**
 	 * <!-- begin-user-doc -->

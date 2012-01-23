@@ -13,7 +13,7 @@ import de.bmw.carit.jnario.generator.JnarioCompiler
 import de.bmw.carit.jnario.jnario.ExampleRow
 import de.bmw.carit.jnario.jnario.ExampleTable
 import de.bmw.carit.jnario.jnario.Feature
-import de.bmw.carit.jnario.jnario.Jnario
+import de.bmw.carit.jnario.jnario.JnarioFile
 import de.bmw.carit.jnario.jnario.Scenario
 import de.bmw.carit.jnario.jnario.Step
 import de.bmw.carit.jnario.naming.JavaNameProvider
@@ -27,7 +27,6 @@ import de.bmw.carit.jnario.runner.Order
 import java.util.List
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmVisibility
@@ -76,7 +75,7 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 	 *        must not rely on linking using the index if iPrelinkingPhase is <code>true</code>
 	 */
     override void infer(EObject object, IAcceptor<JvmDeclaredType> acceptor, boolean isPrelinkingPhase) {
-    	var jnarioFile = object as Jnario
+    	var jnarioFile = object as JnarioFile
 		var feature = jnarioFile?.xtendClass as Feature
 		if(feature != null){
 			for(member: feature.members){
@@ -101,14 +100,15 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 		}
    	}
    	
-   	def infer(Scenario scenario, Jnario jnario, String className){
+   	def infer(Scenario scenario, JnarioFile jnarioFile, String className){
    		scenario.toClass(className)[
-   			jnario.eResource.contents += it
+   			jnarioFile.eResource.contents += it
 			annotations += scenario.toAnnotation(typeof(Named), scenario.name.trim)
-			packageName = jnario.^package
+			packageName = jnarioFile.^package
 			documentation = scenario.documentation
+			
 			var hasBackground = false
-			var feature = jnario.xtendClass as Feature
+			var feature = jnarioFile.xtendClass as Feature
 			if(feature.background != null){
 				hasBackground = true
 			}
@@ -117,7 +117,7 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 			scenario.generateSteps(feature, hasBackground, it)
 			
 			if(!scenario.examples.empty){
-				val exampleClasses = scenario.generateExampleClasses(jnario, it)
+				val exampleClasses = scenario.generateExampleClasses(jnarioFile, it)
 				if(!exampleClasses.empty){
 					annotations += scenario.toAnnotation(typeof(Contains), exampleClasses);
 				}
@@ -203,29 +203,30 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 		}
 	}
 	
-	def generateExampleClasses(Scenario scenario, Jnario jnario, JvmGenericType inferredJvmType){
+	def generateExampleClasses(Scenario scenario, JnarioFile jnarioFile, JvmGenericType inferredJvmType){
 		var exampleTable = 1
 		val List<JvmGenericType> exampleClasses = newArrayList()
 		for(example: scenario.examples){
-			
-			var fields = example.heading.parts
+			var fields = example.heading?.parts
 			var exampleNumber = 1
-			for(row: example.rows){
-				exampleClasses += scenario.createExampleClass(jnario, row, fields, exampleTable, exampleNumber, inferredJvmType)
-				exampleNumber = exampleNumber + 1
+			if(!example.rows.empty){
+				for(row: example.rows){
+					exampleClasses += scenario.createExampleClass(jnarioFile, row, fields, exampleTable, exampleNumber, inferredJvmType)
+					exampleNumber = exampleNumber + 1
+				}
 			}
 			exampleTable = exampleTable + 1
 		}
 		exampleClasses
 	}
 	
-	def createExampleClass(Scenario scenario, Jnario jnario, ExampleRow row, EList<XtendField> fields, int exampleTable, int exampleNumber, JvmGenericType inferredJvmType){
+	def createExampleClass(Scenario scenario, JnarioFile jnarioFile, ExampleRow row, EList<XtendField> fields, int exampleTable, int exampleNumber, JvmGenericType inferredJvmType){
 		val className = "ExampleTable" + exampleTable + "Example" + exampleNumber
 		
 		row.toClass(className)[
 			superTypes += inferredJvmType.createTypeRef
-			jnario.eResource.contents += it
-			packageName = jnario.^package
+			jnarioFile.eResource.contents += it
+			packageName = jnarioFile.^package
 			members += row.generateExampleConstructor(fields, className)
 			annotations += row.toAnnotation(typeof(RunWith), typeof(JnarioRunner))
 			

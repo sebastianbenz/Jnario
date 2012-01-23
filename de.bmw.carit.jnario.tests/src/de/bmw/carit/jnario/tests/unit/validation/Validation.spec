@@ -1,14 +1,14 @@
 package de.bmw.carit.jnario.tests.unit.validation
 
 import com.google.inject.Inject
+import de.bmw.carit.jnario.jnario.GivenReference
 import de.bmw.carit.jnario.runner.InstantiateWith
-import de.bmw.carit.jnario.tests.util.SpecTestInstantiator
 import de.bmw.carit.jnario.tests.util.ModelStore
+import de.bmw.carit.jnario.tests.util.SpecTestInstantiator
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.junit4.validation.RegisteredValidatorTester
 
 import static de.bmw.carit.jnario.tests.util.Query.*
-import de.bmw.carit.jnario.jnario.GivenRef
  
 @InstantiateWith(typeof(SpecTestInstantiator))
 describe "JnarioValidator"{
@@ -26,7 +26,7 @@ describe "JnarioValidator"{
 						x = 5
 					Given some step
 		')
-		val validationResult = validate(typeof(GivenRef))
+		val validationResult = validate(typeof(GivenReference))
 		validationResult.assertErrorContains("Cannot reference a step");
 	}
 	
@@ -42,7 +42,7 @@ describe "JnarioValidator"{
 				Scenario: other scenario
 					Given some step
 		')
-		val validationResult = validate(typeof(GivenRef))
+		val validationResult = validate(typeof(GivenReference))
 		validationResult.assertOK();
 	} 
 	

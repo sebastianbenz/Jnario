@@ -6,28 +6,28 @@
  */
 package de.bmw.carit.jnario.jnario.impl;
 
-import de.bmw.carit.jnario.jnario.GivenRef;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
+import de.bmw.carit.jnario.jnario.WhenReference;
 
 import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Given Ref</b></em>'.
+ * An implementation of the model object '<em><b>When Reference</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class GivenRefImpl extends RefImpl implements GivenRef
+public class WhenReferenceImpl extends StepReferenceImpl implements WhenReference
 {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected GivenRefImpl()
+	protected WhenReferenceImpl()
 	{
 		super();
 	}
@@ -40,7 +40,7 @@ public class GivenRefImpl extends RefImpl implements GivenRef
 	@Override
 	protected EClass eStaticClass()
 	{
-		return JnarioPackage.Literals.GIVEN_REF;
+		return JnarioPackage.Literals.WHEN_REFERENCE;
 	}
 
-} //GivenRefImpl
+} //WhenReferenceImpl
