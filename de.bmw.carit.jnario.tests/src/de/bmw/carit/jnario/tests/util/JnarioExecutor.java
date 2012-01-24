@@ -57,8 +57,8 @@ public class JnarioExecutor extends BehaviorExecutor{
 
 	@Inject
 	public JnarioExecutor(IGenerator generator, JavaIoFileSystemAccess fsa,
-			TemporaryFolder tempFolder, JavaNameProvider javaNameProvider, IResourceValidator validator, JnarioJavaCompiler javaCompiler) {
-		super(generator, fsa, tempFolder, validator, javaCompiler);
+			TemporaryFolder tempFolder, JavaNameProvider javaNameProvider, IResourceValidator validator) {
+		super(generator, fsa, tempFolder, validator);
 		this.nameProvider = javaNameProvider;
 	}
 
@@ -78,6 +78,7 @@ public class JnarioExecutor extends BehaviorExecutor{
 	
 	protected void generateJava(EObject object) {
 		super.generateJava(object);
-		assertFalse("has no scenarios", ((Feature)((JnarioFile)object).getXtendClass()).getMembers().isEmpty());
+		assertFalse("has no feature", ((JnarioFile)object).getXtendClass() == null);
+		assertFalse("has no scenarios", ((JnarioFile)object).getXtendClass().getMembers().isEmpty());
 	}
 }

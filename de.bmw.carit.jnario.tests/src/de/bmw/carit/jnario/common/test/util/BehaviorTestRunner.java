@@ -36,6 +36,8 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Maps;
 import com.google.inject.Inject;
 
+import de.bmw.carit.jnario.tests.util.JnarioJavaCompiler;
+
 public abstract class BehaviorTestRunner extends Runner {
 
 	private Map<Description, URI> descriptions;
@@ -53,6 +55,7 @@ public abstract class BehaviorTestRunner extends Runner {
 	public BehaviorTestRunner(Class<?> klass) {
 		super();
 		this.klass = klass;
+		JnarioJavaCompiler.getInstance().addClassPathOfClass(klass);
 	}
 
 	protected void initializeRegistries() {

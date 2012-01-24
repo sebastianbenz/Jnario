@@ -129,12 +129,12 @@ public abstract class BehaviorExecutor {
 
 	@Inject
 	public BehaviorExecutor(IGenerator generator, JavaIoFileSystemAccess fsa,
-			TemporaryFolder tempFolder, IResourceValidator validator, JnarioJavaCompiler javaCompiler) {
+			TemporaryFolder tempFolder, IResourceValidator validator) {
 		this.generator = generator;
 		this.fsa = fsa;
 		this.tempFolder = tempFolder;
 		this.validator = validator;
-		this.javaCompiler = javaCompiler;
+		this.javaCompiler = JnarioJavaCompiler.getInstance();
 		initCompiler();
 	}
 
@@ -159,7 +159,7 @@ public abstract class BehaviorExecutor {
 		javaCompiler.addClassPathOfClass(BehaviorExecutor.class);
 		javaCompiler.addClassPathOfClass(JvmOperation.class);
 		javaCompiler.addClassPathOfClass(RegisteredValidatorTester.class);
-		javaCompiler.addClassPathOfClass(QualifiedName.class);		
+		javaCompiler.addClassPathOfClass(QualifiedName.class);
 	}
 
 	public Result run(EObject object) {

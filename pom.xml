@@ -26,7 +26,6 @@
     <module>de.bmw.carit.jnario-feature</module>
     <module>de.bmw.carit.jnario.tests</module>
     <module>de.bmw.carit.jnario.lib.tests</module>
-    <module>de.bmw.carit.jnario.spec.tests</module>
     <module>de.bmw.carit.jnario.ui</module>
     <module>de.bmw.carit.jnario.spec.ui</module>
     <module>de.bmw.carit.jnario.ui-feature</module>
