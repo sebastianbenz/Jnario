@@ -28,13 +28,68 @@ describe DocGenerator {
 		assert generatedFile("css/prettify.css") != null
 	}
 	
-	it "should generate scenario documentation"{
+	it "should generate scenario title and heading"{
 		generateEmptyExampleDoc()
 		
 		val scenarioDoc = generatedFile("ExampleSpec.html")
 		assert scenarioDoc != null && 
 				scenarioDoc.contains("<title>Example</title>")
 				scenarioDoc.contains("<h1>Example</h1>")
+	}
+	
+	it "should generate scenario documentation"{
+		generateDoc('''
+			/*
+			 * Irrelevant documentation.
+			 */
+			 
+			/*
+			 * This is an example.
+			 */
+			describe 'Example'{
+				
+			} 
+		''')
+		
+		val scenarioDoc = generatedFile("ExampleSpec.html")
+		scenarioDoc.should.contain("<p>This is an example.</p>")
+		scenarioDoc.should.not.contain("Irrelevant documentation.")
+	}
+	
+	it "should generate example documentation"{
+		generateDoc('''
+			describe 'Example'{
+				/*
+				 * Example documentation
+				 */
+				it "should do stuff"{
+					var x = 0
+					x = x + 1
+				}
+			} 
+		''')
+		val scenarioDoc = generatedFile("ExampleSpec.html")
+		println(scenarioDoc)
+		scenarioDoc.should.contain('''
+		<h5>should do stuff</h5>
+		<p>Example documentation</p>
+		<pre class="prettyprint">
+		var x = 0
+		x = x + 1</pre>
+		'''.toString())
+	}
+	
+	it "should support markdown for documentation"{
+		generateDoc('''
+			/*
+			 * #Example Heading
+			 */
+			describe 'Example'{
+				
+			} 
+		''')
+		val scenarioDoc = generatedFile("ExampleSpec.html")
+		scenarioDoc.should.contain("<h1>Example Heading</h1>")
 	}
 	
 	def generateEmptyExampleDoc(){

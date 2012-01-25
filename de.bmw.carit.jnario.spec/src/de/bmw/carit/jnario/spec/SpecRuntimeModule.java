@@ -11,6 +11,7 @@
 package de.bmw.carit.jnario.spec;
 
 import org.eclipse.xtext.conversion.IValueConverterService;
+import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.OutputConfigurationProvider;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.resource.EObjectAtOffsetHelper;
@@ -28,7 +29,6 @@ import org.eclipse.xtext.xbase.scoping.featurecalls.StaticImplicitMethodsFeature
 import org.eclipse.xtext.xbase.typing.ITypeArgumentContextHelper;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.eclipse.xtext.xbase.validation.EarlyExitValidator;
-import org.eclipse.xtext.xtend2.compiler.Xtend2OutputConfigurationProvider;
 import org.eclipse.xtext.xtend2.featurecalls.Xtend2IdentifiableSimpleNameProvider;
 import org.eclipse.xtext.xtend2.jvmmodel.DispatchUtil;
 import org.eclipse.xtext.xtend2.jvmmodel.IXtend2JvmAssociations;
@@ -48,6 +48,8 @@ import de.bmw.carit.jnario.common.jvmmodel.JnarioDispatchUtil;
 import de.bmw.carit.jnario.common.scoping.JnarioExtensionClassNameProvider;
 import de.bmw.carit.jnario.spec.compiler.SpecCompiler;
 import de.bmw.carit.jnario.spec.conversion.SpecValueConverterService;
+import de.bmw.carit.jnario.spec.doc.DocOutputConfigurationProvider;
+import de.bmw.carit.jnario.spec.generator.SpecGenerator;
 import de.bmw.carit.jnario.spec.jvmmodel.SpecJvmModelInferrer;
 import de.bmw.carit.jnario.spec.scoping.SpecScopeProvider;
 import de.bmw.carit.jnario.spec.typing.SpecTypeProvider;
@@ -138,11 +140,16 @@ public class SpecRuntimeModule extends de.bmw.carit.jnario.spec.AbstractSpecRunt
 	}
 	
 	public Class<? extends OutputConfigurationProvider> bindOutputConfigurationProvider() {
-		return Xtend2OutputConfigurationProvider.class;
+		return DocOutputConfigurationProvider.class;
 	}
 	
 	public Class<? extends XbaseCompiler> bindXbaseCompiler(){
 		return SpecCompiler.class;
 	}
 	
+	
+	@Override
+	public Class<? extends IGenerator> bindIGenerator() {
+		return SpecGenerator.class;
+	}
 }

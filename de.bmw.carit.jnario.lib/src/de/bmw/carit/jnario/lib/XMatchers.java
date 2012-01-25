@@ -51,7 +51,6 @@ public class XMatchers {
 		return new SingleTargetMatcherChain<T>(actual);
 	}
 	
-
 	public static <T> MatcherChain<T> be(MatcherChain<T> matcherChain, T expected) {
 		return be(matcherChain, CoreMatchers.equalTo(expected));
 	}
@@ -101,8 +100,8 @@ public class XMatchers {
 		return matcherChain;
 	}
 	
-	public static MatcherChain<String> contain(MatcherChain<String> matcherChain, String expected) {
-		be(matcherChain, containsString(expected));
+	public static MatcherChain<String> contain(MatcherChain<String> matcherChain, CharSequence expected) {
+		be(matcherChain, containsString(expected.toString()));
 		return matcherChain;
 	}
 	
