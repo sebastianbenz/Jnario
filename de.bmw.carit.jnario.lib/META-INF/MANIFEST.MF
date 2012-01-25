@@ -1,15 +1,15 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Xspec Core
+Bundle-Name: Jnario Library
 Bundle-SymbolicName: de.bmw.carit.jnario.lib;singleton:=true
 Bundle-Version: 0.1.0.qualifier
-Bundle-Vendor: BMW
+Bundle-Vendor: BMW Car IT
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: de.bmw.carit.jnario.lib,
  de.bmw.carit.jnario.runner
 Require-Bundle: org.junit;bundle-version="4.8.2";visibility:=reexport,
- org.eclipse.xtext.xbase.lib;bundle-version="2.1.0";visibility:=reexport,
- org.eclipse.xtend2.lib;bundle-version="2.2.0";visibility:=reexport,
- org.hamcrest.library;bundle-version="1.1.0";resolution:=optional;visibility:=reexport,
- org.hamcrest;bundle-version="1.1.0";resolution:=optional;visibility:=reexport,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.2.1";visibility:=reexport,
+ org.eclipse.xtend2.lib;bundle-version="2.2.1";visibility:=reexport,
+ org.hamcrest.library;resolution:=optional;visibility:=reexport,
+ org.hamcrest;resolution:=optional;visibility:=reexport,
  com.google.inject;bundle-version="3.0.0"

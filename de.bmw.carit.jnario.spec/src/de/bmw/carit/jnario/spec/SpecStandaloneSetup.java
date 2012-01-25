@@ -10,6 +10,7 @@ package de.bmw.carit.jnario.spec;
 
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtext.xbase.XbaseStandaloneSetup;
+import org.eclipse.xtext.xbase.XtypeStandaloneSetup;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
 import org.eclipse.xtext.xtend2.Xtend2StandaloneSetup;
 
@@ -31,6 +32,7 @@ public class SpecStandaloneSetup extends SpecStandaloneSetupGenerated{
 	public void register(Injector injector) {
 		Xtend2StandaloneSetup.doSetup();
 		XbaseStandaloneSetup.doSetup();
+		XtypeStandaloneSetup.doSetup();
 		EPackage.Registry.INSTANCE.put(XAnnotationsPackage.eINSTANCE.getNsURI(),XAnnotationsPackage.eINSTANCE);
 		EPackage.Registry.INSTANCE.put(SpecPackage.eNS_URI, SpecPackage.eINSTANCE);
 		super.register(injector);

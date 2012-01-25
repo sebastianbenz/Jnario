@@ -21,7 +21,9 @@
     <module>de.bmw.carit.jnario.common</module>
 	<module>de.bmw.carit.jnario.common.ui</module>
     <module>de.bmw.carit.jnario.lib</module>
+  <!--  <module>de.bmw.carit.jnario.lib.maven</module> -->
     <module>de.bmw.carit.jnario.spec</module>
+     <module>de.bmw.carit.jnario.standalone</module>
     <module>de.bmw.carit.jnario-feature</module>
     <module>de.bmw.carit.jnario.tests</module>
     <module>de.bmw.carit.jnario.lib.tests</module>
@@ -36,6 +38,10 @@
       <id>indigo</id>
       <layout>p2</layout>
       <url>${eclipse-site}</url>
+    </repository>
+     <repository>
+      <id>eclipse.xtend</id>
+      <url>http://build.eclipse.org/common/xtend/maven/</url>
     </repository>
   </repositories>
 
@@ -57,6 +63,20 @@
   
   <build>
      <plugins>
+   
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-source-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <executions>
+          <execution>
+            <id>plugin-source</id>
+            <goals>
+              <goal>plugin-source</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin> 
 	  <plugin>
         <groupId>${tycho-groupid}</groupId>
         <artifactId>tycho-maven-plugin</artifactId>
