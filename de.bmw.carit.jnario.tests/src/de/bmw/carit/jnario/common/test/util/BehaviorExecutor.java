@@ -34,6 +34,7 @@ import org.eclipse.xtext.validation.CheckMode;
 import org.eclipse.xtext.validation.IResourceValidator;
 import org.eclipse.xtext.validation.Issue;
 import org.eclipse.xtext.xbase.XbasePackage;
+import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.eclipse.xtext.xtend2.xtend2.Xtend2Package;
 import org.hamcrest.Matcher;
@@ -119,7 +120,7 @@ public abstract class BehaviorExecutor {
 	}
 	
 
-	private final IGenerator generator;
+	private final JvmModelGenerator generator;
 	private final JavaIoFileSystemAccess fsa;
 	private final TemporaryFolder tempFolder;
 
@@ -128,7 +129,7 @@ public abstract class BehaviorExecutor {
 	private final JnarioJavaCompiler javaCompiler;
 
 	@Inject
-	public BehaviorExecutor(IGenerator generator, JavaIoFileSystemAccess fsa,
+	public BehaviorExecutor(JvmModelGenerator generator, JavaIoFileSystemAccess fsa,
 			TemporaryFolder tempFolder, IResourceValidator validator) {
 		this.generator = generator;
 		this.fsa = fsa;

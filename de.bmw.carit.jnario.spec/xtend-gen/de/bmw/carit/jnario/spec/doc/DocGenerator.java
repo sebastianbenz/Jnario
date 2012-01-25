@@ -329,6 +329,13 @@ public class DocGenerator implements IGenerator {
   
   protected CharSequence _generate(final ExampleGroup exampleGroup, final int level) {
     StringConcatenation _builder = new StringConcatenation();
+    {
+      boolean _operator_greaterThan = IntegerExtensions.operator_greaterThan(level, 1);
+      if (_operator_greaterThan) {
+        _builder.append("<div class=\"level\">");
+        _builder.newLine();
+      }
+    }
     _builder.append("<");
     String _heading = this.heading(level);
     _builder.append(_heading, "");
@@ -340,8 +347,6 @@ public class DocGenerator implements IGenerator {
     _builder.append(_heading_1, "");
     _builder.append(">");
     _builder.newLineIfNotEmpty();
-    _builder.append("<div class=\"level\">");
-    _builder.newLine();
     CharSequence _generateDoc = this.generateDoc(exampleGroup);
     _builder.append(_generateDoc, "");
     _builder.newLineIfNotEmpty();
@@ -354,8 +359,13 @@ public class DocGenerator implements IGenerator {
         _builder.newLineIfNotEmpty();
       }
     }
-    _builder.append("</div>");
-    _builder.newLine();
+    {
+      boolean _operator_greaterThan_1 = IntegerExtensions.operator_greaterThan(level, 1);
+      if (_operator_greaterThan_1) {
+        _builder.append("</div>");
+        _builder.newLine();
+      }
+    }
     return _builder;
   }
   

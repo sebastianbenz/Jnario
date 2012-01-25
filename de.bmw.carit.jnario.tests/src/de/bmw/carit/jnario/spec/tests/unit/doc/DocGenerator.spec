@@ -69,7 +69,6 @@ describe DocGenerator {
 			} 
 		''')
 		val scenarioDoc = generatedFile("ExampleSpec.html")
-		println(scenarioDoc)
 		scenarioDoc.should.contain('''
 		<h5>should do stuff</h5>
 		<p>Example documentation</p>
@@ -106,6 +105,6 @@ describe DocGenerator {
 	}
 	
 	def generatedFile(String name){
-		return fsa.files.get("DEFAULT_OUTPUT/" + name)?.toString
+		return fsa.files.get("DOC_OUTPUT/" + name)?.toString
 	}
 }

@@ -144,13 +144,17 @@ class DocGenerator implements IGenerator {
 	'''
 	
 	def dispatch generate(ExampleGroup exampleGroup, int level)'''
-		<«level.heading»>«exampleGroup.describe»</«level.heading»>
+		«IF level > 1»
 		<div class="level">
+		«ENDIF»
+		<«level.heading»>«exampleGroup.describe»</«level.heading»>
 		«exampleGroup.generateDoc()»
 		«FOR member : exampleGroup.members»
 «generate(member, level + 1)»
 		«ENDFOR»
+		«IF level > 1»
 		</div>
+		«ENDIF»
 	'''
 
 	def dispatch toXtendCode(XExpression expr){

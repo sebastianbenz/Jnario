@@ -30,6 +30,7 @@ Import-Package: org.apache.commons.logging,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: de.bmw.carit.jnario,
  de.bmw.carit.jnario.formatting,
+ de.bmw.carit.jnario.generator,
  de.bmw.carit.jnario.jnario,
  de.bmw.carit.jnario.jnario.impl,
  de.bmw.carit.jnario.jnario.util,
@@ -37,6 +38,6 @@ Export-Package: de.bmw.carit.jnario,
  de.bmw.carit.jnario.naming,
  de.bmw.carit.jnario.parser.antlr,
  de.bmw.carit.jnario.parser.antlr.internal,
+ de.bmw.carit.jnario.serializer,
  de.bmw.carit.jnario.services,
- de.bmw.carit.jnario.validation,
- de.bmw.carit.jnario.serializer
+ de.bmw.carit.jnario.validation

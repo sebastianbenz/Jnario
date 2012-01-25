@@ -10,10 +10,9 @@
    <properties>
    <tycho-version>0.12.0</tycho-version>
     <tycho-groupid>org.eclipse.tycho</tycho-groupid>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
     <platform-version-name>indigo</platform-version-name>
     <eclipse-site>http://download.eclipse.org/releases/${platform-version-name}</eclipse-site>
- 
   </properties>
   
   <modules>
