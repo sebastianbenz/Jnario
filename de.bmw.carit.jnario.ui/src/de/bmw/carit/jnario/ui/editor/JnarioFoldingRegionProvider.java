@@ -11,24 +11,27 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
+import org.eclipse.xtext.ui.editor.folding.DefaultFoldingRegionProvider;
 import org.eclipse.xtext.ui.editor.folding.IFoldingRegionAcceptor;
 import org.eclipse.xtext.util.ITextRegion;
-import org.eclipse.xtext.xtend2.ui.editor.Xtend2FoldingRegionProvider;
 import org.eclipse.xtext.xtend2.xtend2.XtendImport;
+import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 
 import de.bmw.carit.jnario.jnario.JnarioFile;
+import de.bmw.carit.jnario.jnario.Scenario;
 import de.bmw.carit.jnario.jnario.Step;
 import de.bmw.carit.jnario.jnario.StepExpression;
 
-public class JnarioFoldingRegionProvider extends Xtend2FoldingRegionProvider {
+public class JnarioFoldingRegionProvider extends DefaultFoldingRegionProvider {
 
+	@Override
 	protected void computeObjectFolding(EObject eObject, IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor) {
 		if(eObject instanceof JnarioFile){
-			JnarioFile jnarioFile = (JnarioFile)eObject;
-			calculateFolding(jnarioFile, foldingRegionAcceptor);
+			calculateFolding((JnarioFile)eObject, foldingRegionAcceptor);
+		}else if(eObject instanceof Scenario){
+			calculateFolding((Scenario)eObject, foldingRegionAcceptor);
 		}else if(eObject instanceof Step){
-			Step step = (Step)eObject;
-			calculateFolding(step, foldingRegionAcceptor);
+			calculateFolding((Step)eObject, foldingRegionAcceptor);
 		}
 	}
 
@@ -38,6 +41,16 @@ public class JnarioFoldingRegionProvider extends Xtend2FoldingRegionProvider {
 			EList<XtendImport> imports = jnarioFile.getImports();
 			XtendImport xtendImport = imports.get(imports.size()-1);
 			setFoldingRegion(xtendImport, startFeature, foldingRegionAcceptor);
+		}
+	}
+	
+
+	
+	private void calculateFolding(Scenario scenario, IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor){
+		int begin = getBegin(scenario);
+		EList<XtendMember> members = scenario.getMembers();
+		if(begin >= 0 && members != null && !members.isEmpty()){
+			setFoldingRegion(members.get(members.size() - 1), begin, foldingRegionAcceptor);
 		}
 	}
 
