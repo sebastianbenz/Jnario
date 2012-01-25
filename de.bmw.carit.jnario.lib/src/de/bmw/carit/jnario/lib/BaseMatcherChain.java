@@ -24,8 +24,6 @@ public abstract class BaseMatcherChain<T> implements MatcherChain<T> {
 	
 			private final Matcher<T> matcher;
 			private final T actual;
-	
-			
 			
 			public Matching(Matcher<T> matcher, T actual) {
 				this.matcher = matcher;

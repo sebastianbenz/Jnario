@@ -22,12 +22,14 @@ import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.util.StringInputStream;
 import org.eclipse.xtext.validation.IResourceValidator;
+import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
 import org.junit.rules.TemporaryFolder;
 import org.junit.runner.Result;
 
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 
+import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmModelGenerator;
 import de.bmw.carit.jnario.common.test.util.BehaviorExecutor;
 import de.bmw.carit.jnario.spec.SpecInjectorProvider;
 import de.bmw.carit.jnario.spec.naming.ExampleNameProvider;
@@ -40,7 +42,7 @@ public class SpecExecutor extends BehaviorExecutor{
 	private final ExampleNameProvider nameProvider;
 
 	@Inject
-	public SpecExecutor(IGenerator generator, JavaIoFileSystemAccess fsa,
+	public SpecExecutor(ExtendedJvmModelGenerator generator, JavaIoFileSystemAccess fsa,
 			TemporaryFolder tempFolder, ExampleNameProvider javaNameProvider, IResourceValidator validator) {
 		super(generator, fsa, tempFolder, validator);
 		this.nameProvider = javaNameProvider;

@@ -1,14 +1,18 @@
 package de.bmw.carit.jnario.spec.doc;
 
 import com.google.inject.Inject;
+import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder;
+import de.bmw.carit.jnario.spec.doc.DocOutputConfigurationProvider;
+import de.bmw.carit.jnario.spec.doc.WhiteSpaceNormalizer;
 import de.bmw.carit.jnario.spec.naming.ExampleNameProvider;
+import de.bmw.carit.jnario.spec.spec.Example;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 import de.bmw.carit.jnario.spec.spec.SpecFile;
 import de.bmw.carit.jnario.spec.util.Strings;
 import java.io.InputStream;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -16,32 +20,51 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
+import org.eclipse.xtext.serializer.ISerializer;
+import org.eclipse.xtext.xbase.XBlockExpression;
+import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.eclipse.xtext.xtend2.xtend2.XtendClass;
+import org.eclipse.xtext.xtend2.xtend2.XtendMember;
+import org.pegdown.PegDownProcessor;
 
 @SuppressWarnings("all")
 public class DocGenerator implements IGenerator {
   @Inject
   private ExampleNameProvider _exampleNameProvider;
   
-  private Set<String> cssFiles = new Function0<Set<String>>() {
-    public Set<String> apply() {
-      HashSet<String> _newHashSet = CollectionLiterals.<String>newHashSet("bootstrap.min.css", "custom.css", "prettify.css");
-      return _newHashSet;
+  @Inject
+  private ExtendedJvmTypesBuilder _extendedJvmTypesBuilder;
+  
+  @Inject
+  private ISerializer _iSerializer;
+  
+  @Inject
+  private WhiteSpaceNormalizer _whiteSpaceNormalizer;
+  
+  @Inject
+  private PegDownProcessor _pegDownProcessor;
+  
+  private List<String> cssFiles = new Function0<List<String>>() {
+    public List<String> apply() {
+      ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("bootstrap.min.css", "custom.css", "prettify.css");
+      return _newArrayList;
     }
   }.apply();
   
-  private Set<String> jsFiles = new Function0<Set<String>>() {
-    public Set<String> apply() {
-      HashSet<String> _newHashSet = CollectionLiterals.<String>newHashSet("lang-xtend.js", "prettify.js");
-      return _newHashSet;
+  private List<String> jsFiles = new Function0<List<String>>() {
+    public List<String> apply() {
+      ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("lang-xtend.js", "prettify.js");
+      return _newArrayList;
     }
   }.apply();
   
@@ -58,7 +81,7 @@ public class DocGenerator implements IGenerator {
           if (_operator_notEquals) {
             String _fileName = this.fileName(exampleGroup);
             CharSequence _generate = this.generate(exampleGroup);
-            fsa.generateFile(_fileName, _generate);
+            fsa.generateFile(_fileName, DocOutputConfigurationProvider.DOC_OUTPUT, _generate);
           }
         }
       }
@@ -81,13 +104,13 @@ public class DocGenerator implements IGenerator {
       return _operator_plus_3;
   }
   
-  public void copy(final IFileSystemAccess fsa, final String targetFolder, final Set<String> files) {
+  public void copy(final IFileSystemAccess fsa, final String targetFolder, final Iterable<String> files) {
     for (final String file : files) {
       String _operator_plus = StringExtensions.operator_plus("/", targetFolder);
       String _operator_plus_1 = StringExtensions.operator_plus(_operator_plus, "/");
       String _operator_plus_2 = StringExtensions.operator_plus(_operator_plus_1, file);
       String _load = this.load(file);
-      fsa.generateFile(_operator_plus_2, _load);
+      fsa.generateFile(_operator_plus_2, DocOutputConfigurationProvider.DOC_OUTPUT, _load);
     }
   }
   
@@ -168,8 +191,7 @@ public class DocGenerator implements IGenerator {
         String _folder = this.folder("css", exampleGroup);
         _builder.append(_folder, "");
         _builder.append("/");
-        String _folder_1 = this.folder("css", exampleGroup);
-        _builder.append(_folder_1, "");
+        _builder.append(cssFile, "");
         _builder.append("\">");
         _builder.newLineIfNotEmpty();
       }
@@ -177,8 +199,8 @@ public class DocGenerator implements IGenerator {
     {
       for(final String jsFile : this.jsFiles) {
         _builder.append("<script type=\"text/javascript\" src=\"");
-        String _folder_2 = this.folder("css", exampleGroup);
-        _builder.append(_folder_2, "");
+        String _folder_1 = this.folder("js", exampleGroup);
+        _builder.append(_folder_1, "");
         _builder.append("/");
         _builder.append(jsFile, "");
         _builder.append("\"></script>");
@@ -208,9 +230,32 @@ public class DocGenerator implements IGenerator {
     _builder.append("\t\t\t");
     _builder.append("</div>");
     _builder.newLine();
-    _builder.append("\t\t");
+    _builder.append("\t\t\t");
+    _builder.append("<div class=\"row\">");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.append("<div class=\"span10\">");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t");
+    CharSequence _generateDoc = this.generateDoc(exampleGroup);
+    _builder.append(_generateDoc, "					");
+    _builder.newLineIfNotEmpty();
+    {
+      EList<XtendMember> _members = exampleGroup.getMembers();
+      for(final XtendMember member : _members) {
+        CharSequence _generate = this.generate(member, 1);
+        _builder.append(_generate, "");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("\t\t\t\t");
     _builder.append("</div>");
     _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("</div>");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("</div> <!-- /content -->");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("<footer>");
@@ -234,5 +279,147 @@ public class DocGenerator implements IGenerator {
     _builder.append("</html>");
     _builder.newLine();
     return _builder;
+  }
+  
+  public CharSequence generateDoc(final EObject eObject) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      String _documentation = this._extendedJvmTypesBuilder.getDocumentation(eObject);
+      boolean _operator_notEquals = ObjectExtensions.operator_notEquals(_documentation, null);
+      if (_operator_notEquals) {
+        String _documentation_1 = this._extendedJvmTypesBuilder.getDocumentation(eObject);
+        String _markdownToHtml = this._pegDownProcessor.markdownToHtml(_documentation_1);
+        _builder.append(_markdownToHtml, "");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    return _builder;
+  }
+  
+  protected CharSequence _generate(final XtendMember member, final int level) {
+    StringConcatenation _builder = new StringConcatenation();
+    return _builder;
+  }
+  
+  protected CharSequence _generate(final Example example, final int level) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<h5>");
+    String _describe = this._exampleNameProvider.describe(example);
+    _builder.append(_describe, "");
+    _builder.append("</h5>");
+    _builder.newLineIfNotEmpty();
+    CharSequence _generateDoc = this.generateDoc(example);
+    _builder.append(_generateDoc, "");
+    _builder.newLineIfNotEmpty();
+    {
+      boolean _isPending = example.isPending();
+      boolean _operator_not = BooleanExtensions.operator_not(_isPending);
+      if (_operator_not) {
+        _builder.append("<pre class=\"prettyprint\">");
+        _builder.newLine();
+        XExpression _body = example.getBody();
+        String _xtendCode = this.toXtendCode(_body);
+        _builder.append(_xtendCode, "");
+        _builder.append("</pre>");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    return _builder;
+  }
+  
+  protected CharSequence _generate(final ExampleGroup exampleGroup, final int level) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      boolean _operator_greaterThan = IntegerExtensions.operator_greaterThan(level, 1);
+      if (_operator_greaterThan) {
+        _builder.append("<div class=\"level\">");
+        _builder.newLine();
+      }
+    }
+    _builder.append("<");
+    String _heading = this.heading(level);
+    _builder.append(_heading, "");
+    _builder.append(">");
+    String _describe = this._exampleNameProvider.describe(exampleGroup);
+    _builder.append(_describe, "");
+    _builder.append("</");
+    String _heading_1 = this.heading(level);
+    _builder.append(_heading_1, "");
+    _builder.append(">");
+    _builder.newLineIfNotEmpty();
+    CharSequence _generateDoc = this.generateDoc(exampleGroup);
+    _builder.append(_generateDoc, "");
+    _builder.newLineIfNotEmpty();
+    {
+      EList<XtendMember> _members = exampleGroup.getMembers();
+      for(final XtendMember member : _members) {
+        int _operator_plus = IntegerExtensions.operator_plus(level, 1);
+        CharSequence _generate = this.generate(member, _operator_plus);
+        _builder.append(_generate, "");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      boolean _operator_greaterThan_1 = IntegerExtensions.operator_greaterThan(level, 1);
+      if (_operator_greaterThan_1) {
+        _builder.append("</div>");
+        _builder.newLine();
+      }
+    }
+    return _builder;
+  }
+  
+  protected String _toXtendCode(final XExpression expr) {
+    String _serialize = this._iSerializer.serialize(expr);
+    String _trim = _serialize.trim();
+    return _trim;
+  }
+  
+  protected String _toXtendCode(final XBlockExpression expr) {
+      String _serialize = this._iSerializer.serialize(expr);
+      String _trim = _serialize.trim();
+      String code = _trim;
+      int _length = code.length();
+      int _operator_minus = IntegerExtensions.operator_minus(_length, 2);
+      String _substring = code.substring(1, _operator_minus);
+      code = _substring;
+      String _normalize = this._whiteSpaceNormalizer.normalize(code);
+      return _normalize;
+  }
+  
+  public String heading(final int level) {
+    int _xifexpression = (int) 0;
+    boolean _operator_lessEqualsThan = IntegerExtensions.operator_lessEqualsThan(level, 5);
+    if (_operator_lessEqualsThan) {
+      _xifexpression = level;
+    } else {
+      _xifexpression = 5;
+    }
+    String _operator_plus = StringExtensions.operator_plus("h", Integer.valueOf(_xifexpression));
+    return _operator_plus;
+  }
+  
+  public CharSequence generate(final XtendMember example, final int level) {
+    if (example instanceof Example) {
+      return _generate((Example)example, level);
+    } else if (example instanceof ExampleGroup) {
+      return _generate((ExampleGroup)example, level);
+    } else if (example != null) {
+      return _generate(example, level);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(example, level).toString());
+    }
+  }
+  
+  public String toXtendCode(final XExpression expr) {
+    if (expr instanceof XBlockExpression) {
+      return _toXtendCode((XBlockExpression)expr);
+    } else if (expr != null) {
+      return _toXtendCode(expr);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(expr).toString());
+    }
   }
 }

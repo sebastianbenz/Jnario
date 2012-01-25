@@ -12,8 +12,14 @@ Require-Bundle: org.eclipse.xtext;bundle-version="2.1.0",
  org.eclipse.xtext.xbase.lib;bundle-version="2.1.0",
  org.eclipse.xtext.xtend2;bundle-version="2.1.0",
  de.bmw.carit.jnario.lib;bundle-version="0.1.0",
- org.eclipse.emf.mwe2.lib;bundle-version="2.2.0";resolution:=optional
+ org.eclipse.emf.mwe2.lib;bundle-version="2.2.0";resolution:=optional,
+ org.objectweb.asm;bundle-version="3.3.1"
 Export-Package: de.bmw.carit.jnario.common,
  de.bmw.carit.jnario.common.jvmmodel,
- de.bmw.carit.jnario.common.scoping
+ de.bmw.carit.jnario.common.scoping,
+ org.pegdown
 Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: lib/parboiled-core-1.0.2.jar,
+ lib/parboiled-java-1.0.2.jar,
+ lib/pegdown-1.1.0.jar,
+ .

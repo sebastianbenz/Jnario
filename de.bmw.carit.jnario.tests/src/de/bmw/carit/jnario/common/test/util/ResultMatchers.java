@@ -41,7 +41,11 @@ public class ResultMatchers {
 
 			@Override
 			public boolean matchesSafely(Result item) {
-				return item.getFailureCount() == count;
+				boolean isOk = item.getFailureCount() == count;
+				if(!isOk){
+					System.err.println(new PrintableResult(item.getFailures()));
+				}
+				return isOk;
 			}
 		};
 	}
