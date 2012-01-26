@@ -1,0 +1,1 @@
+mvn install:install-file -Dfile=output/de.bmw.carit.jnario.standalone.maven-0.1.0.jar -DgroupId=de.bmw.carit.jnario -DartifactId=de.bmw.carit.jnario.standalone.maven -Dversion=0.1.0 -Dpackaging=jar 

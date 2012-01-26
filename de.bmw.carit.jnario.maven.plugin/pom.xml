@@ -6,12 +6,18 @@
 	<packaging>maven-plugin</packaging>
 	<version>0.1.0-SNAPSHOT</version>
 	<name>Jnario Maven Plugin</name>
+	
 	<repositories>
 		<repository>
 			<id>eclipse.xtend</id>
 			<url>http://build.eclipse.org/common/xtend/maven/</url>
 		</repository>
+		<repository>
+        <id>scala.tools</id>
+        <url>http://scala-tools.org/repo-releases</url>
+     </repository>
 	</repositories>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.eclipse.xtend2</groupId>
@@ -26,7 +32,7 @@
 		<dependency>
 			<groupId>de.bmw.carit.jnario</groupId>
 			<artifactId>de.bmw.carit.jnario.standalone.maven</artifactId>
-			<version>0.1.0-SNAPSHOT</version>
+			<version>0.1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.maven</groupId>
@@ -91,6 +97,18 @@
 			<groupId>com.google.inject</groupId>
 			<artifactId>guice</artifactId>
 			<version>3.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.pegdown</groupId>
+			<artifactId>pegdown</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>asm</groupId>
+			<artifactId>asm-all</artifactId>
+			<version>3.3.1</version>
 		</dependency>
 	</dependencies>
 	<build>

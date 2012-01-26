@@ -20,20 +20,20 @@
 				<expandproperties />
 			</filterchain>
 		</loadfile>
-		<echo file="${output.folder}/de.bmw.carit.jnario.standalone-${maven.version}.pom">${modifiedPomXml}</echo>
-		<echo>Pom stored: ${output.folder}/de.bmw.carit.jnario.standalone-${maven.version}.pom</echo>
+		<echo file="${output.folder}/de.bmw.carit.jnario.standalone.maven-${maven.version}.pom">${modifiedPomXml}</echo>
+		<echo>Pom stored: ${output.folder}/de.bmw.carit.jnario.standalone.maven-${maven.version}.pom</echo>
 		<antcall target="deploy.artifacts" inheritall="true" />
 	</target>
 
 	<!-- - - - - - - - - - - - - - - - - - 
           target: deploy.artifacts                      
          - - - - - - - - - - - - - - - - - -->
-	<target name="deploy.artifacts" if="allow.deploy">
-		<copy verbose="true" todir="/Users/sebastian.benz/.m2/repository/org/eclipse/xtend2/de.bmw.carit.jnario.standalone/0.1.0/">
+	<target name="deploy.artifacts" >
+		<copy verbose="true" todir="c:/Users/sebastian.benz/.m2/repository/de/bmw/carit/jnario/de.bmw.carit.jnario.standalone.maven/0.1.0/">
 			<fileset dir="${output.folder}">
-				<include name="de.bmw.carit.jnario.standalone-${maven.version}.jar" />
-				<include name="de.bmw.carit.jnario.standalone-${maven.version}-sources.jar" />
-				<include name="de.bmw.carit.jnario.standalone-${maven.version}.pom" />
+				<include name="de.bmw.carit.jnario.standalone.maven-${maven.version}.jar" />
+				<include name="de.bmw.carit.jnario.standalone.maven-${maven.version}-sources.jar" />
+				<include name="de.bmw.carit.jnario.standalone.maven-${maven.version}.pom" />
 			</fileset>
 		</copy>
 	</target>
@@ -78,7 +78,7 @@
 		</antcall>
 
 		<!-- Jar uber jar -->
-		<jar destfile="${output.folder}/de.bmw.carit.jnario.standalone-${maven.version}.jar" basedir="${binJarTemp}" />
+		<jar destfile="${output.folder}/de.bmw.carit.jnario.standalone.maven-${maven.version}.jar" basedir="${binJarTemp}" />
 	</target>
 
 
@@ -109,7 +109,7 @@
 		</antcall>
 
 		<!-- Jar uber jar -->
-		<jar destfile="${output.folder}/de.bmw.carit.jnario.standalone-${maven.version}-sources.jar" basedir="${sourceJarTemp}">
+		<jar destfile="${output.folder}/de.bmw.carit.jnario.standalone.maven-${maven.version}-sources.jar" basedir="${sourceJarTemp}">
 			<exclude name="META-INF/*" />
 		</jar>
 	</target>
