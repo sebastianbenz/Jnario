@@ -30,7 +30,6 @@
     <module>de.bmw.carit.jnario.spec.ui</module>
     <module>de.bmw.carit.jnario.ui-feature</module>
     <module>de.bmw.carit.jnario.updatesite</module>
-    <module>test</module>
   </modules>
   
   <repositories>
