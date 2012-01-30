@@ -28,6 +28,7 @@ import de.bmw.carit.jnario.spec.naming.ExampleNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
 import org.eclipse.xtext.common.types.JvmField
 import de.bmw.carit.jnario.runner.Extension
+import de.bmw.carit.jnario.runner.Order
 
 /**
  * @author Sebastian Benz
@@ -82,7 +83,7 @@ class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
 				}
 				
 				addImplicitSubject(exampleGroup)
-				
+				var index = 0
 				for (element : exampleGroup.members) {
 					switch element {
 						ExampleGroup: {
@@ -91,6 +92,7 @@ class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
 						Example : {
 							val annotations = element.getTestAnnotations()
 							annotations += element.toAnnotation(typeof(Named), element.describe)
+							annotations += element.toAnnotation(typeof(Order), index)
 							members += toMethod(element, annotations)
 						}
 						XtendFunction: {
@@ -105,6 +107,7 @@ class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
 							members += element.toMethod(annotationType, element.afterAll)
 						}
 					}
+					index = index + 1
 				}
 				
 				if(!subExamples.empty){

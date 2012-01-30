@@ -18,22 +18,25 @@ describe "Extensions"{
 				extension ExtensionExample = new ExtensionExample()
 
 				it "test 1"{
-					val dummy = 0
+					ExtensionExample::executedMethods += "ExtensionSpec#test1"
 				}
 				
 				it "test 2"{
-					val dummy = 0
+					ExtensionExample::executedMethods += "ExtensionSpec#test2"
 				}
 			}
 		''')
 		
 		executedMethods.should.be(newArrayList(
-						"ExtensionExample#beforeClass", 
-						"ExtensionExample#before",  
-						"ExtensionExample#after",  
-						"ExtensionExample#before",
-						"ExtensionExample#after",
-						"ExtensionExample#afterClass"))
+			"ExtensionExample#beforeClass", 
+			"ExtensionExample#before",  
+			"ExtensionSpec#test1",  
+			"ExtensionExample#after",  
+			"ExtensionExample#before",
+			"ExtensionSpec#test2",  
+			"ExtensionExample#after",
+			"ExtensionExample#afterClass"
+		))
 	}
 
 }

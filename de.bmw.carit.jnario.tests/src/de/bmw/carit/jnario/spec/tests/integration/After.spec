@@ -20,15 +20,12 @@ describe "After" {
 				
 				static int afterExecutionCount = 0
 				
-				@Order(1)
 				it "should be executed after each test (1)"{
 					afterExecutionCount.should.be(0)
 				}	
-				@Order(2)
 				it "should be executed after each test (2)"{
 					afterExecutionCount.should.be(1)
 				}
-				@Order(3)
 				it "should be executed after each test (3)"{
 					afterExecutionCount.should.be(2)
 				}	

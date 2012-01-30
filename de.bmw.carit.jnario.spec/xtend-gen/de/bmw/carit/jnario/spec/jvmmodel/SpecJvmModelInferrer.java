@@ -35,6 +35,7 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.eclipse.xtext.xbase.lib.CollectionExtensions;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Pair;
@@ -131,67 +132,74 @@ public class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
                 }
               }
               SpecJvmModelInferrer.this._implicitSubject.addImplicitSubject(it, exampleGroup);
+              int index = 0;
               EList<XtendMember> _members_1 = exampleGroup.getMembers();
               for (final XtendMember element : _members_1) {
-                boolean matched = false;
-                if (!matched) {
-                  if (element instanceof ExampleGroup) {
-                    final ExampleGroup _exampleGroup = (ExampleGroup)element;
-                    matched=true;
-                    JvmGenericType _transform = SpecJvmModelInferrer.this.transform(spec, _exampleGroup, it, isPrelinkingPhase);
-                    CollectionExtensions.<JvmGenericType>operator_add(subExamples, _transform);
-                  }
-                }
-                if (!matched) {
-                  if (element instanceof Example) {
-                    final Example _example = (Example)element;
-                    matched=true;
-                    {
-                      ArrayList<JvmAnnotationReference> _testAnnotations = SpecJvmModelInferrer.this.annotationProvider.getTestAnnotations(_example);
-                      final ArrayList<JvmAnnotationReference> annotations = _testAnnotations;
-                      String _describe_1 = SpecJvmModelInferrer.this._exampleNameProvider.describe(_example);
-                      JvmAnnotationReference _annotation_2 = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(_example, de.bmw.carit.jnario.runner.Named.class, _describe_1);
-                      CollectionExtensions.<JvmAnnotationReference>operator_add(annotations, _annotation_2);
-                      EList<JvmMember> _members_2 = it.getMembers();
-                      JvmOperation _method = SpecJvmModelInferrer.this.toMethod(_example, annotations);
-                      CollectionExtensions.<JvmOperation>operator_add(_members_2, _method);
+                {
+                  boolean matched = false;
+                  if (!matched) {
+                    if (element instanceof ExampleGroup) {
+                      final ExampleGroup _exampleGroup = (ExampleGroup)element;
+                      matched=true;
+                      JvmGenericType _transform = SpecJvmModelInferrer.this.transform(spec, _exampleGroup, it, isPrelinkingPhase);
+                      CollectionExtensions.<JvmGenericType>operator_add(subExamples, _transform);
                     }
                   }
-                }
-                if (!matched) {
-                  if (element instanceof XtendFunction) {
-                    final XtendFunction _xtendFunction = (XtendFunction)element;
-                    matched=true;
-                    SpecJvmModelInferrer.this.transform(_xtendFunction, it);
-                  }
-                }
-                if (!matched) {
-                  if (element instanceof Before) {
-                    final Before _before = (Before)element;
-                    matched=true;
-                    {
-                      Class<?> _beforeAnnotation = SpecJvmModelInferrer.this.annotationProvider.getBeforeAnnotation(_before);
-                      final Class<?> annotationType = _beforeAnnotation;
-                      EList<JvmMember> _members_2 = it.getMembers();
-                      boolean _isBeforeAll = _before.isBeforeAll();
-                      JvmOperation _method = SpecJvmModelInferrer.this.toMethod(_before, annotationType, _isBeforeAll);
-                      CollectionExtensions.<JvmOperation>operator_add(_members_2, _method);
+                  if (!matched) {
+                    if (element instanceof Example) {
+                      final Example _example = (Example)element;
+                      matched=true;
+                      {
+                        ArrayList<JvmAnnotationReference> _testAnnotations = SpecJvmModelInferrer.this.annotationProvider.getTestAnnotations(_example);
+                        final ArrayList<JvmAnnotationReference> annotations = _testAnnotations;
+                        String _describe_1 = SpecJvmModelInferrer.this._exampleNameProvider.describe(_example);
+                        JvmAnnotationReference _annotation_2 = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(_example, de.bmw.carit.jnario.runner.Named.class, _describe_1);
+                        CollectionExtensions.<JvmAnnotationReference>operator_add(annotations, _annotation_2);
+                        JvmAnnotationReference _annotation_3 = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(_example, de.bmw.carit.jnario.runner.Order.class, Integer.valueOf(index));
+                        CollectionExtensions.<JvmAnnotationReference>operator_add(annotations, _annotation_3);
+                        EList<JvmMember> _members_2 = it.getMembers();
+                        JvmOperation _method = SpecJvmModelInferrer.this.toMethod(_example, annotations);
+                        CollectionExtensions.<JvmOperation>operator_add(_members_2, _method);
+                      }
                     }
                   }
-                }
-                if (!matched) {
-                  if (element instanceof After) {
-                    final After _after = (After)element;
-                    matched=true;
-                    {
-                      Class<?> _afterAnnotation = SpecJvmModelInferrer.this.annotationProvider.getAfterAnnotation(_after);
-                      final Class<?> annotationType = _afterAnnotation;
-                      EList<JvmMember> _members_2 = it.getMembers();
-                      boolean _isAfterAll = _after.isAfterAll();
-                      JvmOperation _method = SpecJvmModelInferrer.this.toMethod(_after, annotationType, _isAfterAll);
-                      CollectionExtensions.<JvmOperation>operator_add(_members_2, _method);
+                  if (!matched) {
+                    if (element instanceof XtendFunction) {
+                      final XtendFunction _xtendFunction = (XtendFunction)element;
+                      matched=true;
+                      SpecJvmModelInferrer.this.transform(_xtendFunction, it);
                     }
                   }
+                  if (!matched) {
+                    if (element instanceof Before) {
+                      final Before _before = (Before)element;
+                      matched=true;
+                      {
+                        Class<?> _beforeAnnotation = SpecJvmModelInferrer.this.annotationProvider.getBeforeAnnotation(_before);
+                        final Class<?> annotationType = _beforeAnnotation;
+                        EList<JvmMember> _members_2 = it.getMembers();
+                        boolean _isBeforeAll = _before.isBeforeAll();
+                        JvmOperation _method = SpecJvmModelInferrer.this.toMethod(_before, annotationType, _isBeforeAll);
+                        CollectionExtensions.<JvmOperation>operator_add(_members_2, _method);
+                      }
+                    }
+                  }
+                  if (!matched) {
+                    if (element instanceof After) {
+                      final After _after = (After)element;
+                      matched=true;
+                      {
+                        Class<?> _afterAnnotation = SpecJvmModelInferrer.this.annotationProvider.getAfterAnnotation(_after);
+                        final Class<?> annotationType = _afterAnnotation;
+                        EList<JvmMember> _members_2 = it.getMembers();
+                        boolean _isAfterAll = _after.isAfterAll();
+                        JvmOperation _method = SpecJvmModelInferrer.this.toMethod(_after, annotationType, _isAfterAll);
+                        CollectionExtensions.<JvmOperation>operator_add(_members_2, _method);
+                      }
+                    }
+                  }
+                  int _operator_plus = IntegerExtensions.operator_plus(index, 1);
+                  index = _operator_plus;
                 }
               }
               boolean _isEmpty = subExamples.isEmpty();
