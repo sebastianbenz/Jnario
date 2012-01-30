@@ -11,11 +11,14 @@ import static com.google.common.base.Predicates.notNull;
 import static com.google.common.collect.Iterables.concat;
 import static com.google.common.collect.Iterables.transform;
 import static com.google.common.collect.Lists.newArrayList;
+import static com.google.common.collect.Lists.newArrayListWithCapacity;
 import static com.google.common.collect.Lists.newArrayListWithExpectedSize;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -37,6 +40,7 @@ import org.junit.runners.model.InitializationError;
 import org.junit.runners.model.Statement;
 
 import com.google.common.base.Function;
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 
@@ -91,9 +95,16 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 	}
 
 	protected Iterable<? extends Runner> collectExamples() {
-		List<FrameworkMethod> annotatedMethods = getTestClass().getAnnotatedMethods(Test.class);
-		orderMethods(annotatedMethods);
-		return createRunners(getTestClass().getJavaClass(), annotatedMethods);
+		List<FrameworkMethod> methods = getTestClass().getAnnotatedMethods(Test.class);
+		methods = newArrayList(Iterables.filter(methods, new Predicate<FrameworkMethod>() {
+
+			@Override
+			public boolean apply(FrameworkMethod input) {
+				return input.getMethod().getDeclaringClass() == getTestClass().getJavaClass();
+			}
+		}));
+		orderMethods(methods);
+		return createRunners(getTestClass().getJavaClass(), methods);
 	}
 
 	protected Iterable<? extends Runner> createRunners(final Class<?> testClass,
