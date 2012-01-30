@@ -9,14 +9,13 @@ package de.bmw.carit.jnario.runner;
 
 import static com.google.common.collect.Iterables.transform;
 import static com.google.common.collect.Lists.newArrayList;
-import static de.bmw.carit.jnario.runner.Annotations.allMethodsWithAnnotation;
 import static org.junit.runner.Description.createTestDescription;
 import static org.junit.runner.manipulation.Filter.matchMethodDescription;
 
 import java.lang.annotation.Annotation;
+import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.eclipse.xtext.xbase.lib.Functions.Function3;
 import org.junit.After;
 import org.junit.Before;
@@ -34,7 +33,6 @@ import org.junit.runners.model.TestClass;
 
 import com.google.common.base.Function;
 
-import de.bmw.carit.jnario.lib.Extension;
 
 /**
  * @author Sebastian Benz
@@ -51,16 +49,23 @@ public class ExampleRunner extends BlockJUnit4ClassRunner {
 	private final NameProvider nameProvider;
 	private final FrameworkMethod method;
 	private TestInstantiator testBuilder;
+	private List<ExtensionClass> extensions;
 
-	public ExampleRunner(final Class<?> testClass, final FrameworkMethod method, NameProvider nameProvider, TestInstantiator testBuilder)
+	public ExampleRunner(final Class<?> testClass, List<ExtensionClass> extensions, final FrameworkMethod method, NameProvider nameProvider, TestInstantiator testBuilder)
 			throws InitializationError, NoTestsRemainException {
 		super(testClass);
+		this.extensions = extensions;
 		this.method = method;
 		this.nameProvider = nameProvider;
 		this.testBuilder = testBuilder;
 		filter(matchMethodDescription(getDescription()));
 	}
 	
+	public ExampleRunner(Class<?> testClass, FrameworkMethod from,
+			NameProvider nameProvider, TestInstantiator delegate) throws InitializationError, NoTestsRemainException {
+		this(testClass, Collections.<ExtensionClass>emptyList(), from, nameProvider, delegate);
+	}
+
 	@Override
 	protected Object createTest() throws Exception {
 		Object test = newInstanceOf(getTestClass().getJavaClass());
@@ -128,16 +133,18 @@ public class ExampleRunner extends BlockJUnit4ClassRunner {
 	
 	
 	private Statement withExtension(Statement next, Class<? extends Annotation> annotationType, Object target, Function3<Statement, List<FrameworkMethod>, Object, Statement> statementFactory) {
-		List<FrameworkField> extensionFields = getTestClass().getAnnotatedFields(Extension.class);
-		for (FrameworkField extensionField : extensionFields) {
-			Class<?> extensionType = extensionField.getField().getType();
-			List<FrameworkMethod> methods = allMethodsWithAnnotation(extensionType, annotationType);
+		for (ExtensionClass extension : extensions) {
+			List<FrameworkMethod> methods = extension.allMethodsWithAnnotation(annotationType);
 			try {
 				if(!methods.isEmpty()){
 					try {
-						next = statementFactory.apply(next, methods, extensionField.get(target));
+						Object extensionValue = extension.get(target);
+						if(extensionValue == null){
+							throw new IllegalStateException(extension.getName() + " is not initialized");
+						}
+						next = statementFactory.apply(next, methods, extensionValue);
 					} catch (IllegalAccessException e) {
-						throw new RuntimeException(e);
+						throw new IllegalStateException(extension.getName() + " is not accessible. Extension fields must be public.");
 					}
 				}
 			} catch (IllegalArgumentException e) {

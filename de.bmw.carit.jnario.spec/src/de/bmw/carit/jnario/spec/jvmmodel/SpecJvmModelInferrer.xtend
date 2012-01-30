@@ -25,6 +25,10 @@ import static de.bmw.carit.jnario.spec.jvmmodel.Constants.*
 import static com.google.common.collect.Iterators.*
 import static org.eclipse.xtext.EcoreUtil2.*
 import de.bmw.carit.jnario.spec.naming.ExampleNameProvider
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
+import org.eclipse.xtext.common.types.JvmField
+import de.bmw.carit.jnario.runner.Extension
+
 /**
  * @author Sebastian Benz
  */
@@ -39,6 +43,8 @@ class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
 	@Inject extension SpecAnnotationProvider annotationProvider
 	
 	@Inject extension ImplicitSubject 
+	
+	@Inject extension IJvmModelAssociations 
 	
 	override void infer(EObject e, IAcceptor<JvmDeclaredType> acceptor, boolean isPrelinkingPhase) {
 		if (!(e instanceof SpecFile)){
@@ -107,6 +113,15 @@ class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
 				computeInferredReturnTypes()
 			]
 						
+	}
+	
+	override protected transform(XtendField source, JvmGenericType container) {
+		super.transform(source, container)
+		if (source.isExtension()){
+			val field = source.jvmElements.head as JvmField
+			field.setVisibility(JvmVisibility::PUBLIC)
+			field.annotations += source.toAnnotation(typeof(Extension))
+		}
 	}
 	
 	def toMethod(TestFunction element, Class<?> annotation, boolean isStatic){

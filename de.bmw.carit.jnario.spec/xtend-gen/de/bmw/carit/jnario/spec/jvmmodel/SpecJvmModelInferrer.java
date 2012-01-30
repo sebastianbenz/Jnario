@@ -14,11 +14,13 @@ import de.bmw.carit.jnario.spec.spec.SpecFile;
 import de.bmw.carit.jnario.spec.spec.TestFunction;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
+import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmMember;
 import org.eclipse.xtext.common.types.JvmOperation;
@@ -29,6 +31,7 @@ import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.util.IAcceptor;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.eclipse.xtext.xbase.lib.CollectionExtensions;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
@@ -62,6 +65,9 @@ public class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
   
   @Inject
   private ImplicitSubject _implicitSubject;
+  
+  @Inject
+  private IJvmModelAssociations _iJvmModelAssociations;
   
   public void infer(final EObject e, final IAcceptor<JvmDeclaredType> acceptor, final boolean isPrelinkingPhase) {
       boolean _operator_not = BooleanExtensions.operator_not((e instanceof SpecFile));
@@ -203,6 +209,22 @@ public class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
       _xblockexpression = (_class);
     }
     return _xblockexpression;
+  }
+  
+  protected void transform(final XtendField source, final JvmGenericType container) {
+      super.transform(source, container);
+      boolean _isExtension = source.isExtension();
+      if (_isExtension) {
+        {
+          Set<EObject> _jvmElements = this._iJvmModelAssociations.getJvmElements(source);
+          EObject _head = IterableExtensions.<EObject>head(_jvmElements);
+          final JvmField field = ((JvmField) _head);
+          field.setVisibility(JvmVisibility.PUBLIC);
+          EList<JvmAnnotationReference> _annotations = field.getAnnotations();
+          JvmAnnotationReference _annotation = this._extendedJvmTypesBuilder.toAnnotation(source, de.bmw.carit.jnario.runner.Extension.class);
+          CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
+        }
+      }
   }
   
   public JvmOperation toMethod(final TestFunction element, final Class<?> annotation, final boolean isStatic) {

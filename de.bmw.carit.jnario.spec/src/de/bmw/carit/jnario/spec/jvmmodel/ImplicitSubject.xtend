@@ -20,10 +20,8 @@ import static extension com.google.common.base.Predicates.*
 import static org.eclipse.xtext.EcoreUtil2.*
 import org.eclipse.xtext.xtend2.xtend2.XtendFunction
 import de.bmw.carit.jnario.spec.spec.TestFunction
-import org.eclipse.emf.ecore.EObject
-import com.google.common.base.Predicate
-import org.eclipse.xtext.xtend2.xtend2.XtendMember
-import de.bmw.carit.jnario.spec.spec.Example
+
+
 /**
  * @author Sebastian Benz
  */

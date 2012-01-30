@@ -11,7 +11,7 @@ import static com.google.common.base.Predicates.notNull;
 import static com.google.common.collect.Iterables.concat;
 import static com.google.common.collect.Iterables.transform;
 import static com.google.common.collect.Lists.newArrayList;
-import static de.bmw.carit.jnario.runner.Annotations.allMethodsWithAnnotation;
+import static com.google.common.collect.Lists.newArrayListWithExpectedSize;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 
@@ -39,7 +39,6 @@ import org.junit.runners.model.Statement;
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 
-import de.bmw.carit.jnario.lib.Extension;
 
 /**
  * @author Sebastian Benz
@@ -48,6 +47,7 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 	
 	private NameProvider nameProvider;
 	private List<Runner> children;
+	private List<ExtensionClass> extensions;
 	
 	public ExampleGroupRunner(Class<?> testClass) throws InitializationError {
 		this(testClass, NameProvider.create());
@@ -56,11 +56,23 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 	public ExampleGroupRunner(Class<?> testClass, NameProvider nameProvider) throws InitializationError {
 		super(testClass);
 		this.nameProvider = nameProvider;
-		
+		setExtensions();
+		setChildren();
+	}
+
+	private void setChildren() throws InitializationError {
 		Iterable<Runner> allExamples = concat(collectExampleGroups(), collectExamples());
 		this.children = newArrayList(Iterables.filter(allExamples, notNull()));
 		if(children.isEmpty()){
 			throw new InitializationError("No examples");
+		}
+	}
+	
+	private void setExtensions() {
+		List<FrameworkField> extensionFields = getTestClass().getAnnotatedFields(Extension.class);
+		extensions = newArrayListWithExpectedSize(extensionFields.size());
+		for (FrameworkField frameworkField : extensionFields) {
+			extensions.add(new ExtensionClass(frameworkField));
 		}
 	}
 
@@ -127,7 +139,7 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 	protected ExampleRunner createExampleRunner(Class<?> testClass,
 			FrameworkMethod from) throws InitializationError,
 			NoTestsRemainException {
-		return new ExampleRunner(testClass, from, nameProvider, createTestInstantiator());
+		return new ExampleRunner(testClass, extensions, from, nameProvider, createTestInstantiator());
 	}
 
 	protected TestInstantiator createTestInstantiator() throws InitializationError {
@@ -212,10 +224,8 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 	}
 	
 	private Statement withExtension(Statement next, Class<? extends Annotation> annotationType, Function2<Statement, List<FrameworkMethod>, Statement> statementFactory) {
-		List<FrameworkField> extensionFields = getTestClass().getAnnotatedFields(Extension.class);
-		for (FrameworkField extensionField : extensionFields) {
-			Class<?> extensionType = extensionField.getField().getType();
-			List<FrameworkMethod> methods = allMethodsWithAnnotation(extensionType, annotationType);
+		for (ExtensionClass extension : extensions) {
+			List<FrameworkMethod> methods = extension.allMethodsWithAnnotation(annotationType);
 			try {
 				if(!methods.isEmpty()){
 					next = statementFactory.apply(next, methods);
