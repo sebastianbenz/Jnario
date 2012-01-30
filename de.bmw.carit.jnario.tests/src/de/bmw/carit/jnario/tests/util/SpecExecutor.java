@@ -47,13 +47,13 @@ public class SpecExecutor extends BehaviorExecutor{
 		validate = false;
 	}
 
-	public static Result execute(String content) {
+	public static Result execute(CharSequence content) {
 		SpecInjectorProvider injectorProvider = new SpecInjectorProvider();
 		try {
 			injectorProvider.setupRegistry();
 			Injector injector = new SpecStandaloneTestSetup().createInjectorAndDoEMFRegistration();
 			
-			Resource resource = parse(content);
+			Resource resource = parse(content.toString());
 			
 			SpecExecutor executor = injector.getInstance(SpecExecutor.class);
 			return executor.run(resource.getContents().get(0));
