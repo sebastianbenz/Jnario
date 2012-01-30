@@ -9,11 +9,19 @@ package de.bmw.carit.jnario.runner;
 
 import static com.google.common.collect.Iterables.transform;
 import static com.google.common.collect.Lists.newArrayList;
+import static de.bmw.carit.jnario.runner.Annotations.allMethodsWithAnnotation;
 import static org.junit.runner.Description.createTestDescription;
 import static org.junit.runner.manipulation.Filter.matchMethodDescription;
 
+import java.lang.annotation.Annotation;
 import java.util.List;
 
+import org.eclipse.xtext.xbase.lib.Functions.Function2;
+import org.eclipse.xtext.xbase.lib.Functions.Function3;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.internal.runners.statements.RunAfters;
+import org.junit.internal.runners.statements.RunBefores;
 import org.junit.runner.Description;
 import org.junit.runner.manipulation.NoTestsRemainException;
 import org.junit.runner.notification.RunNotifier;
@@ -25,6 +33,8 @@ import org.junit.runners.model.Statement;
 import org.junit.runners.model.TestClass;
 
 import com.google.common.base.Function;
+
+import de.bmw.carit.jnario.lib.Extension;
 
 /**
  * @author Sebastian Benz
@@ -102,5 +112,61 @@ public class ExampleRunner extends BlockJUnit4ClassRunner {
 	protected String testName() {
 		return nameProvider.nameOf(method);
 	}
+	
+	@Override
+	protected Statement withBefores(FrameworkMethod method, Object target,
+			Statement statement) {
+		return withExtension(super.withBefores(method, target, statement), Before.class, target, newRunBefores());
+	}
+	
+	@Override
+	protected Statement withAfters(FrameworkMethod method, Object target,
+			Statement statement) {
+		return withExtension(super.withAfters(method, target, statement), After.class, target, newRunAfters());
+	}
+	
+	
+	
+	private Statement withExtension(Statement next, Class<? extends Annotation> annotationType, Object target, Function3<Statement, List<FrameworkMethod>, Object, Statement> statementFactory) {
+		List<FrameworkField> extensionFields = getTestClass().getAnnotatedFields(Extension.class);
+		for (FrameworkField extensionField : extensionFields) {
+			Class<?> extensionType = extensionField.getField().getType();
+			List<FrameworkMethod> methods = allMethodsWithAnnotation(extensionType, annotationType);
+			try {
+				if(!methods.isEmpty()){
+					try {
+						next = statementFactory.apply(next, methods, extensionField.get(target));
+					} catch (IllegalAccessException e) {
+						throw new RuntimeException(e);
+					}
+				}
+			} catch (IllegalArgumentException e) {
+				throw new RuntimeException(e);
+			}
+		}
+		return next;
+	}
+	
+	private Function3<Statement, List<FrameworkMethod>, Object, Statement> newRunBefores(){
+		return new Function3<Statement, List<FrameworkMethod>, Object, Statement>() {
 
+			@Override
+			public Statement apply(Statement next, List<FrameworkMethod> methods, Object target) {
+				return new RunBefores(next, methods, target);
+			}
+		};
+	}
+
+
+	private Function3<Statement, List<FrameworkMethod>, Object, Statement> newRunAfters(){
+		return new Function3<Statement, List<FrameworkMethod>, Object, Statement>() {
+
+			@Override
+			public Statement apply(Statement next, List<FrameworkMethod> methods, Object target) {
+				return new RunAfters(next, methods, target);
+			}
+		};
+	}
+
+	
 }

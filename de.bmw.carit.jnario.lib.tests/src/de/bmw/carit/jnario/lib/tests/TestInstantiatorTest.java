@@ -21,7 +21,7 @@ import de.bmw.carit.jnario.runner.TestInstantiator;
  */
 public class TestInstantiatorTest {
 
-	private static ArrayList<String> callOrder;
+	private static ArrayList<String> callOrder = newArrayList();;
 	private static final String TEST_RUN = "Test";
 	private static final String BEFORE = "Before";
 	private static final String AFTER = "After";
@@ -61,7 +61,7 @@ public class TestInstantiatorTest {
 
 	@Before
 	public void clearFlags() {
-		callOrder = newArrayList();
+		callOrder.clear();
 	}
 
 	@Test

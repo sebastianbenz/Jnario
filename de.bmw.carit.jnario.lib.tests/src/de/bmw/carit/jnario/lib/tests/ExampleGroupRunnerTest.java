@@ -20,9 +20,11 @@ import org.junit.runner.JUnitCore;
 import org.junit.runner.RunWith;
 import org.junit.runners.model.InitializationError;
 
+import de.bmw.carit.jnario.lib.Extension;
 import de.bmw.carit.jnario.runner.Contains;
 import de.bmw.carit.jnario.runner.ExampleGroupRunner;
 import de.bmw.carit.jnario.runner.Named;
+import de.bmw.carit.jnario.runner.Order;
 
 /**
  * @author Sebastian Benz
@@ -45,12 +47,14 @@ public class ExampleGroupRunnerTest {
 		}
 		
 		@Test
+		@Order(1)
 		@Named("Test 1")
 		public void first() throws Exception {
 			run("Example#first");
 		}
 		
 		@Test
+		@Order(2)
 		@Named("Test 2")
 		public void second() throws Exception {
 			run("Example#second");
@@ -75,12 +79,14 @@ public class ExampleGroupRunnerTest {
 		@Named("Context Name")
 		public static class SubExample{
 			@Test
+			@Order(3)
 			@Named("Test 2")
 			public void firstSubTest() throws Exception {
 				run("SubExample#firstSubTest");
 			}
 			
 			@Test
+			@Order(4)
 			@Named("Test 3")
 			public void secondSubTest() throws Exception {
 				run("SubExample#secondSubTest");
@@ -113,6 +119,33 @@ public class ExampleGroupRunnerTest {
 		@Test
 		public void test() throws Exception {
 			run("ExampleWithoutAnnotation#test");
+		}
+		
+	}
+	
+	public static class ExampleExtension{
+		
+		@BeforeClass
+		public static void beforeClass(){
+			
+		}
+	}
+	
+	@RunWith(ExampleGroupRunner.class)
+	public static class ExampleWithExtension {
+
+		@Extension public Example extensionExample = new Example();
+		
+		@Test
+		@Order(1)
+		public void test1() throws Exception {
+			run("ExampleWithExtension#test1");
+		}
+		
+		@Test
+		@Order(2)
+		public void test2() throws Exception {
+			run("ExampleWithExtension#test2");
 		}
 		
 	}
@@ -200,6 +233,24 @@ public class ExampleGroupRunnerTest {
 		);
 
 		new JUnitCore().run(Example.class);
+		
+		assertEquals(expected, executedTests);
+	}
+	
+	@Test
+	public void shouldExecuteSetupAndTeardownMethodsInExtensions() throws Exception {
+		List<String> expected = newArrayList(
+				"Example#beforeClass",
+				"Example#before",
+				"ExampleWithExtension#test1",
+				"Example#after",
+				"Example#before",
+				"ExampleWithExtension#test2",
+				"Example#after",
+				"Example#afterClass"
+		);
+
+		new JUnitCore().run(ExampleWithExtension.class);
 		
 		assertEquals(expected, executedTests);
 	}

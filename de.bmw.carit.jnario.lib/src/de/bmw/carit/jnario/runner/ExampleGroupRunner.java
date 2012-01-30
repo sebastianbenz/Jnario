@@ -11,24 +11,35 @@ import static com.google.common.base.Predicates.notNull;
 import static com.google.common.collect.Iterables.concat;
 import static com.google.common.collect.Iterables.transform;
 import static com.google.common.collect.Lists.newArrayList;
+import static de.bmw.carit.jnario.runner.Annotations.allMethodsWithAnnotation;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 
+import java.lang.annotation.Annotation;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import org.eclipse.xtext.xbase.lib.Functions.Function2;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.internal.runners.statements.RunAfters;
+import org.junit.internal.runners.statements.RunBefores;
 import org.junit.runner.Description;
 import org.junit.runner.Runner;
 import org.junit.runner.manipulation.NoTestsRemainException;
 import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.ParentRunner;
+import org.junit.runners.model.FrameworkField;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
+import org.junit.runners.model.Statement;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
+
+import de.bmw.carit.jnario.lib.Extension;
 
 /**
  * @author Sebastian Benz
@@ -189,5 +200,53 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 	protected void runChild(Runner child, RunNotifier notifier) {
 		child.run(notifier);
 	}
+	
+	@Override
+	protected Statement withAfterClasses(Statement next) {
+		return withExtension(super.withAfterClasses(next), AfterClass.class, newRunAfters());
+	}
+
+	@Override
+	protected Statement withBeforeClasses(Statement next) {
+		return withExtension(super.withBeforeClasses(next), BeforeClass.class, newRunBefores());
+	}
+	
+	private Statement withExtension(Statement next, Class<? extends Annotation> annotationType, Function2<Statement, List<FrameworkMethod>, Statement> statementFactory) {
+		List<FrameworkField> extensionFields = getTestClass().getAnnotatedFields(Extension.class);
+		for (FrameworkField extensionField : extensionFields) {
+			Class<?> extensionType = extensionField.getField().getType();
+			List<FrameworkMethod> methods = allMethodsWithAnnotation(extensionType, annotationType);
+			try {
+				if(!methods.isEmpty()){
+					next = statementFactory.apply(next, methods);
+				}
+			} catch (IllegalArgumentException e) {
+				throw new RuntimeException(e);
+			}
+		}
+		return next;
+	}
+	
+	private Function2<Statement, List<FrameworkMethod>, Statement> newRunBefores(){
+		return new Function2<Statement, List<FrameworkMethod>, Statement>() {
+
+			@Override
+			public Statement apply(Statement next, List<FrameworkMethod> methods) {
+				return new RunBefores(next, methods, null);
+			}
+		};
+	}
+
+
+	private Function2<Statement, List<FrameworkMethod>, Statement> newRunAfters(){
+		return new Function2<Statement, List<FrameworkMethod>, Statement>() {
+	
+			@Override
+			public Statement apply(Statement next, List<FrameworkMethod> methods) {
+				return new RunAfters(next, methods, null);
+			}
+		};
+	}
+
 
 }
