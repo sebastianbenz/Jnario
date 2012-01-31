@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 import de.bmw.carit.jnario.tests.util.SpecTestRunner;
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 @RunWith(SpecTestRunner.class)
 public class UnitTests {

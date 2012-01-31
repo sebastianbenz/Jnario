@@ -11,7 +11,7 @@ import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.TestClass;
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 public class NameProvider {
 	

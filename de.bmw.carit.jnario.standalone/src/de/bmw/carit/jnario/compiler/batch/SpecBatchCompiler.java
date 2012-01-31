@@ -25,7 +25,7 @@ import de.bmw.carit.jnario.spec.naming.ExampleNameProvider;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 public class SpecBatchCompiler extends Xtend2BatchCompiler {
 

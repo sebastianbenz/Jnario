@@ -8,7 +8,7 @@
 package de.bmw.carit.jnario.runner;
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 public class DefaultTestInstantiator implements TestInstantiator {
 

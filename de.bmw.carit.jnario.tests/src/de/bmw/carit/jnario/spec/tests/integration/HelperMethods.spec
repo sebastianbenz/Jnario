@@ -5,7 +5,7 @@ import static de.bmw.carit.jnario.tests.util.SpecExecutor.*
 import static de.bmw.carit.jnario.common.test.util.ResultMatchers.*
 import static org.hamcrest.CoreMatchers.*
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 describe "HelperMethods" {
  

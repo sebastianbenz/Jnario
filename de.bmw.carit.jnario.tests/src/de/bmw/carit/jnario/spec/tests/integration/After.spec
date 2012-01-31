@@ -6,7 +6,7 @@ import static extension de.bmw.carit.jnario.tests.util.SpecExecutor.*
 
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 describe "After" {
  

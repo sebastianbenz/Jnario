@@ -13,7 +13,7 @@ import org.hamcrest.Matcher;
 
 import com.google.common.collect.ImmutableList;
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 public class MultiTargetMatcherChain<T> extends BaseMatcherChain<T> {
 

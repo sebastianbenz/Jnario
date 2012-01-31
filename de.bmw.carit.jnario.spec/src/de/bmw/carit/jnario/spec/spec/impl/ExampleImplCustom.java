@@ -9,7 +9,7 @@ package de.bmw.carit.jnario.spec.spec.impl;
 
 import org.eclipse.xtext.xbase.XBlockExpression;
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
 public class ExampleImplCustom extends de.bmw.carit.jnario.spec.spec.impl.ExampleImpl {

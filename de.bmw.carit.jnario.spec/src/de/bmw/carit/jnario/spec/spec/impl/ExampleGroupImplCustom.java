@@ -13,7 +13,7 @@ import org.eclipse.xtext.EcoreUtil2;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 public class ExampleGroupImplCustom extends de.bmw.carit.jnario.spec.spec.impl.ExampleGroupImpl {
 

@@ -11,7 +11,7 @@ import static org.junit.Assert.fail;
 
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 public class Expectations {
 

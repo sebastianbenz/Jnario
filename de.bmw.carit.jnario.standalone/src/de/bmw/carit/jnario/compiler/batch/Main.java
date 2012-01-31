@@ -10,7 +10,7 @@ import com.google.inject.Injector;
 import de.bmw.carit.jnario.spec.SpecStandaloneSetup;
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 public class Main {
 

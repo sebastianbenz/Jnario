@@ -22,7 +22,7 @@ import de.bmw.carit.jnario.spec.spec.SpecFile;
 import de.bmw.carit.jnario.spec.spec.SpecPackage;
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
 public class SpecHighlightingCalculator extends XtendHighlightingCalculator {

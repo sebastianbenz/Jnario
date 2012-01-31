@@ -22,7 +22,7 @@ import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 import de.bmw.carit.jnario.spec.spec.SpecFile;
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
 public class SpecJvmTypeProvider {

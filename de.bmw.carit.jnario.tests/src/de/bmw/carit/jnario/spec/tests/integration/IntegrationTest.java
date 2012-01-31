@@ -14,7 +14,7 @@ import com.google.inject.Singleton;
 import de.bmw.carit.jnario.tests.util.SpecTestRunner;
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 @RunWith(SpecTestRunner.class)
 @Singleton

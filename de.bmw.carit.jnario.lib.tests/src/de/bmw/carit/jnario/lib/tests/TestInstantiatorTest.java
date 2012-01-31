@@ -17,7 +17,7 @@ import de.bmw.carit.jnario.runner.InstantiateWith;
 import de.bmw.carit.jnario.runner.TestInstantiator;
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 public class TestInstantiatorTest {
 

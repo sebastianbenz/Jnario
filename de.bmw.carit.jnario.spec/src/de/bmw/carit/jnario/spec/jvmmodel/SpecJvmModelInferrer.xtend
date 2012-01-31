@@ -31,7 +31,7 @@ import de.bmw.carit.jnario.runner.Extension
 import de.bmw.carit.jnario.runner.Order
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
 

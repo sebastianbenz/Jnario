@@ -31,7 +31,7 @@ import com.google.inject.Inject;
 import de.bmw.carit.jnario.spec.spec.SpecFile;
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 public class SpecJavaElementDelegate extends JavaElementDelegate {
 	

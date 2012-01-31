@@ -8,7 +8,7 @@
 package de.bmw.carit.jnario.spec.spec.impl;
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 public class SpecFactoryImplCustom extends de.bmw.carit.jnario.spec.spec.impl.SpecFactoryImpl {
 

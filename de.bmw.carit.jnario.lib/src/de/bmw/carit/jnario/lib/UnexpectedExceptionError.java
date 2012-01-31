@@ -8,7 +8,7 @@
 package de.bmw.carit.jnario.lib;
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("serial")
 public class UnexpectedExceptionError extends AssertionError {

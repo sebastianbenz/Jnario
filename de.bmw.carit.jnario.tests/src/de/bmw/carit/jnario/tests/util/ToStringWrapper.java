@@ -10,7 +10,7 @@ import java.util.List;
 import com.google.common.base.Function;
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 public class ToStringWrapper<T> implements InvocationHandler {
 

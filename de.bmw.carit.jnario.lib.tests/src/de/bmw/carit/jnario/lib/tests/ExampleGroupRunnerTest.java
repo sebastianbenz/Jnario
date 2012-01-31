@@ -33,7 +33,7 @@ import de.bmw.carit.jnario.runner.Named;
 import de.bmw.carit.jnario.runner.Order;
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings({"unchecked", "restriction"})
 public class ExampleGroupRunnerTest {

@@ -20,7 +20,7 @@ import org.junit.internal.matchers.TypeSafeMatcher;
 import com.google.common.base.Predicate;
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
 public class Matchers extends CoreMatchers{

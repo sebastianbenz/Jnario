@@ -14,7 +14,7 @@ import org.eclipse.xtext.xtend2.ui.labeling.Xtend2DescriptionLabelProvider;
 
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
 public class SpecDescriptionLabelProvider extends Xtend2DescriptionLabelProvider {

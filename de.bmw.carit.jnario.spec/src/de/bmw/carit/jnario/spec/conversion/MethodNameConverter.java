@@ -10,7 +10,7 @@ package de.bmw.carit.jnario.spec.conversion;
 import org.antlr.runtime.TokenSource;
 import org.eclipse.xtext.conversion.impl.IDValueConverter;
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 public class MethodNameConverter extends IDValueConverter {
 

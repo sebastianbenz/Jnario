@@ -6,7 +6,7 @@ import org.eclipse.xtext.util.SimpleAttributeResolver;
 import com.google.common.base.Predicate;
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 public class Predicates2 {
 

@@ -9,7 +9,7 @@ package de.bmw.carit.jnario.lib;
 
 import org.hamcrest.Matcher;
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 public interface MatcherChain<T> {
 

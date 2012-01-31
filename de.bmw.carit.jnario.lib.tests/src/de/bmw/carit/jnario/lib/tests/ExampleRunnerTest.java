@@ -17,7 +17,7 @@ import de.bmw.carit.jnario.runner.ExampleRunner;
 import de.bmw.carit.jnario.runner.NameProvider;
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 public class ExampleRunnerTest {
 	

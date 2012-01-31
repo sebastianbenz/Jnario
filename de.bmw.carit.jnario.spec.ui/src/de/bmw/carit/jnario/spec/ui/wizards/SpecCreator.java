@@ -29,7 +29,7 @@ import com.google.inject.Inject;
 import de.bmw.carit.jnario.spec.naming.OperationNameProvider;
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
 public class SpecCreator {

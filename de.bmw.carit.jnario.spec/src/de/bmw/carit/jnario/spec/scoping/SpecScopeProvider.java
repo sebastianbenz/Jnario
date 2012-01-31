@@ -26,7 +26,7 @@ import de.bmw.carit.jnario.spec.naming.OperationNameProvider;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 import de.bmw.carit.jnario.spec.spec.SpecPackage;
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
 public class SpecScopeProvider extends Xtend2ScopeProvider {

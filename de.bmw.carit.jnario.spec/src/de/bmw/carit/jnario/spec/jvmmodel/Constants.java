@@ -7,7 +7,7 @@
  *******************************************************************************/
 package de.bmw.carit.jnario.spec.jvmmodel;
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 public interface Constants {
 

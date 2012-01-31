@@ -19,7 +19,7 @@ import com.google.inject.Injector;
 import de.bmw.carit.jnario.spec.spec.SpecPackage;
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
 public class SpecStandaloneSetup extends SpecStandaloneSetupGenerated{

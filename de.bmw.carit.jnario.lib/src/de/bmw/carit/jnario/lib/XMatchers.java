@@ -21,7 +21,7 @@ import org.hamcrest.TypeSafeMatcher;
 import org.hamcrest.core.IsNot;
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 public class XMatchers {
 

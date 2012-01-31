@@ -42,7 +42,7 @@ import com.google.common.collect.Iterables;
 
 
 /**
- * @author Sebastian Benz - Initial Contribution and API
+ * @author Sebastian Benz - Initial contribution and API - Initial Contribution and API
  */
 public class ExampleGroupRunner extends ParentRunner<Runner> {
 	

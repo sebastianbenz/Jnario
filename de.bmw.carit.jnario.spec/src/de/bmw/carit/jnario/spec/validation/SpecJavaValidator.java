@@ -159,7 +159,7 @@ import com.google.inject.Inject;
 import de.bmw.carit.jnario.spec.spec.Assertion;
  
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
 @ComposedChecks(validators={SpecClassPathBasedChecks.class})

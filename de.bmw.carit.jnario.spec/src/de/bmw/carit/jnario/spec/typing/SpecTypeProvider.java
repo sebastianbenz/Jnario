@@ -18,7 +18,7 @@ import com.google.inject.Singleton;
 
 import de.bmw.carit.jnario.spec.spec.Assertion;
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
 @Singleton

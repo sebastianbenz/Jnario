@@ -11,7 +11,7 @@ package de.bmw.carit.jnario.spec.ui.quickfix;
 import org.eclipse.xtext.xtend2.ui.quickfix.Xtend2QuickfixProvider;
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
 public class SpecQuickfixProvider extends Xtend2QuickfixProvider {

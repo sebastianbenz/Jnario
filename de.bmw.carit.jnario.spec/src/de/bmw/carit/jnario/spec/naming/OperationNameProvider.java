@@ -19,7 +19,7 @@ import org.eclipse.xtext.naming.QualifiedName;
 
 import com.google.common.base.Function;
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 public class OperationNameProvider implements Function<JvmOperation, QualifiedName>{
 

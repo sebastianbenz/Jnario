@@ -13,7 +13,7 @@ import static java.lang.Character.toUpperCase;
 import java.io.InputStream;
 import java.util.Scanner;
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 public class Strings {
 

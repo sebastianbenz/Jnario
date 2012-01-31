@@ -16,7 +16,7 @@ import org.hamcrest.StringDescription;
 
 import com.google.common.collect.ImmutableList;
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 public abstract class BaseMatcherChain<T> implements MatcherChain<T> {
 

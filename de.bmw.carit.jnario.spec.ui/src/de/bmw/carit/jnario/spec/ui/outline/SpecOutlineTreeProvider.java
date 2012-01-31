@@ -15,7 +15,7 @@ import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
 public class SpecOutlineTreeProvider extends Xtend2OutlineTreeProvider {

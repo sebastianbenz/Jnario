@@ -15,7 +15,7 @@ import org.eclipse.xtext.xtend2.ui.refactoring.Xtend2RenameStrategy;
 
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
 public class SpecRenameStrategy extends Xtend2RenameStrategy {

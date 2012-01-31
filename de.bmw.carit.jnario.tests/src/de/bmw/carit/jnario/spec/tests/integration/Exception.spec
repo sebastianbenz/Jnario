@@ -6,7 +6,7 @@ import static de.bmw.carit.jnario.common.test.util.ResultMatchers.*
 import static extension de.bmw.carit.jnario.tests.util.SpecExecutor.*
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 describe "Exception" {
  

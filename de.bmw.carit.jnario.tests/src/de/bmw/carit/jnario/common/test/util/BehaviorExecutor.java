@@ -58,7 +58,7 @@ import de.bmw.carit.jnario.spec.spec.SpecPackage;
 import de.bmw.carit.jnario.tests.util.JnarioJavaCompiler;
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  * @author Birgit Engelmann
  */
 @SuppressWarnings("restriction")

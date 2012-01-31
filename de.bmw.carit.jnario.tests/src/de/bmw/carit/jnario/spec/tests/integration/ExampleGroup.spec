@@ -5,7 +5,7 @@ import static org.junit.Assert.*
 import static de.bmw.carit.jnario.common.test.util.ResultMatchers.*
 import de.bmw.carit.jnario.spec.spec.ExampleGroup
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 describe ExampleGroup {
   

@@ -23,7 +23,7 @@ import de.bmw.carit.jnario.spec.spec.TestFunction
 
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 class ImplicitSubject {
 	

@@ -11,7 +11,7 @@ import de.bmw.carit.jnario.spec.SpecStandaloneSetup;
 /**
  * Goal which compiles Xtend2 test sources.
  *
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  * @goal testCompile
  * @phase generate-test-sources
  * @requiresDependencyResolution test

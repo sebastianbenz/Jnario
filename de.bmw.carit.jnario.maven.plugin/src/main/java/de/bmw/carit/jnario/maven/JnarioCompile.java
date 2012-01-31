@@ -14,7 +14,7 @@ import de.bmw.carit.jnario.spec.SpecStandaloneSetup;
 /**
  * Goal which compiles Jnario sources.
  * 
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  * @goal compile
  * @phase generate-sources
  * @requiresDependencyResolution compile

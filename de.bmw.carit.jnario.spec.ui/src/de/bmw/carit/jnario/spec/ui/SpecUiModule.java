@@ -81,7 +81,7 @@ import de.bmw.carit.jnario.spec.ui.highlighting.SpecHighlightingCalculator;
 import de.bmw.carit.jnario.spec.ui.launching.SpecJavaElementDelegate;
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
 public class SpecUiModule extends de.bmw.carit.jnario.spec.ui.AbstractSpecUiModule {

@@ -4,7 +4,7 @@ import static de.bmw.carit.jnario.tests.util.SpecExecutor.*
 import static org.junit.Assert.*
 import static de.bmw.carit.jnario.common.test.util.ResultMatchers.*
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 describe "Guice" {
 

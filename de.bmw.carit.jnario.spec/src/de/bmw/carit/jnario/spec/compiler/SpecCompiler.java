@@ -32,7 +32,7 @@ import de.bmw.carit.jnario.spec.spec.Assertion;
 
 @SuppressWarnings("restriction")
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 public class SpecCompiler extends Xtend2Compiler {
 

@@ -55,7 +55,7 @@ import de.bmw.carit.jnario.spec.scoping.SpecScopeProvider;
 import de.bmw.carit.jnario.spec.typing.SpecTypeProvider;
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
 public class SpecRuntimeModule extends de.bmw.carit.jnario.spec.AbstractSpecRuntimeModule {

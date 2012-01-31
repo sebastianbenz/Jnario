@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 import org.junit.runners.model.FrameworkMethod;
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 public class NamedFrameworkMethod extends FrameworkMethod {
 		

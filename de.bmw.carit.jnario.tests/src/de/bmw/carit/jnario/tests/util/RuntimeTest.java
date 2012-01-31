@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 import de.bmw.carit.jnario.JnarioInjectorProvider;
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 @RunWith(JnarioTestRunner.class)
 @InjectWith(JnarioInjectorProvider.class)

@@ -9,7 +9,7 @@ package de.bmw.carit.jnario.lib;
 
 import java.util.Arrays;
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 public class Each {
 

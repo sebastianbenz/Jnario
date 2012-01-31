@@ -13,7 +13,7 @@ import com.google.inject.util.Modules;
 
 import de.bmw.carit.jnario.runner.TestInstantiator;
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 public class GuiceBasedTestInstantiator implements TestInstantiator{
 

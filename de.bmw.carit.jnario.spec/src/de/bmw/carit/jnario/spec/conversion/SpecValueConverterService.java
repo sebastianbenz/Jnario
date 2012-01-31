@@ -13,7 +13,7 @@ import org.eclipse.xtext.xtend2.conversion.Xtend2ValueConverterService;
 
 import com.google.inject.Inject;
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
 public class SpecValueConverterService extends Xtend2ValueConverterService {

@@ -35,7 +35,7 @@ import com.google.common.base.Function;
 
 
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 public class ExampleRunner extends BlockJUnit4ClassRunner {
 

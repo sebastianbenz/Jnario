@@ -25,7 +25,7 @@ import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 import de.bmw.carit.jnario.spec.spec.TestFunction;
 import de.bmw.carit.jnario.spec.spec.util.SpecSwitch;
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
 public class ExampleNameProvider {

@@ -13,7 +13,7 @@ import org.junit.AfterClass
 import de.bmw.carit.jnario.runner.ExampleGroupRunner
 import org.junit.runner.RunWith
 /**
- * @author Sebastian Benz
+ * @author Sebastian Benz - Initial contribution and API
  */
 class SpecAnnotationProvider {
 	
