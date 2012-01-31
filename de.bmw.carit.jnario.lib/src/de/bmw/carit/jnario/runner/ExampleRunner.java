@@ -129,9 +129,7 @@ public class ExampleRunner extends BlockJUnit4ClassRunner {
 			Statement statement) {
 		return withExtension(super.withAfters(method, target, statement), After.class, target, newRunAfters());
 	}
-	
-	
-	
+
 	private Statement withExtension(Statement next, Class<? extends Annotation> annotationType, Object target, Function3<Statement, List<FrameworkMethod>, Object, Statement> statementFactory) {
 		for (ExtensionClass extension : extensions) {
 			List<FrameworkMethod> methods = extension.allMethodsWithAnnotation(annotationType);
@@ -163,7 +161,6 @@ public class ExampleRunner extends BlockJUnit4ClassRunner {
 			}
 		};
 	}
-
 
 	private Function3<Statement, List<FrameworkMethod>, Object, Statement> newRunAfters(){
 		return new Function3<Statement, List<FrameworkMethod>, Object, Statement>() {

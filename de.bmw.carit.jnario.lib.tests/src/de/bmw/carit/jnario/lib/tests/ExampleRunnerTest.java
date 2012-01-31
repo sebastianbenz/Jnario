@@ -32,6 +32,10 @@ public class ExampleRunnerTest {
 	@RunWith(ExampleGroupRunner.class)
 	public static class ExampleDerivedClass extends ExampleBaseClass{
 		
+		@Test
+		public void test2() throws Exception{
+		}
+		
 	}
 	
 	@Test

@@ -50,6 +50,17 @@ public class JnarioRunner extends ExampleGroupRunner {
 	public JnarioRunner(Class<?> klass) throws InitializationError {
 		super(klass);
 	}
+	
+	@Override
+	protected boolean isTestMethod(FrameworkMethod input) {
+		return true;
+	}
+	
+	@Override
+	protected ExampleGroupRunner createExampleGroupRunner(Class<?> declaredClass)
+			throws InitializationError {
+		return new JnarioRunner(declaredClass);
+	}
 
 	@Override
 	protected ExampleRunner createExampleRunner(Class<?> testClass,
@@ -60,6 +71,7 @@ public class JnarioRunner extends ExampleGroupRunner {
 		}
 		return new ExampleRunner(testClass, from, getNameProvider(), delegate);
 	}
+	
 	
 	private void createTestWrapper() throws InitializationError{
 		TestInstantiator createTestInstantiator = createTestInstantiator();
