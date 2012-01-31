@@ -22,6 +22,9 @@ import de.bmw.carit.jnario.jnario.Scenario;
 import de.bmw.carit.jnario.jnario.Step;
 import de.bmw.carit.jnario.jnario.StepExpression;
 
+/**
+ * @author Birgit Engelmann
+ */
 public class JnarioFoldingRegionProvider extends DefaultFoldingRegionProvider {
 
 	@Override

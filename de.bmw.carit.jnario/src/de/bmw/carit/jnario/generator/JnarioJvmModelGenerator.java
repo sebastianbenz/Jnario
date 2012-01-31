@@ -18,6 +18,7 @@ public class JnarioJvmModelGenerator extends ExtendedJvmModelGenerator {
 
 	@Inject private ILogicalContainerProvider logicalContainerProvider;
 
+	// copied from JvmModelGenerator, changed to generate an empty method instead of "throw UnsupportedOperationException"
 	@Override
 	public CharSequence generateBody(final JvmExecutable op, final ImportManager importManager) {
 

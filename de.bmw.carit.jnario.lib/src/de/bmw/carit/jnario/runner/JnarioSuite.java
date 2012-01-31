@@ -14,6 +14,10 @@ import org.junit.runners.Suite;
 import org.junit.runners.model.InitializationError;
 import org.junit.runners.model.RunnerBuilder;
 
+/**
+ * 
+ * @author Birgit Engelmann
+ */
 public class JnarioSuite extends Suite
 {
 	/**

@@ -21,6 +21,7 @@ import com.google.common.collect.Lists;
 
 public class JnarioFeatureCallToJavaMapping extends FeatureCallToJavaMapping {
 	
+	// copied from FeatureCallToJavaMapping, removed check for constructor
 	public List<XExpression> getActualArguments(
 			XAbstractFeatureCall featureCall, 
 			JvmIdentifiableElement feature, 

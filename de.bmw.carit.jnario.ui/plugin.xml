@@ -280,23 +280,44 @@
   
   <extension point="org.eclipse.core.runtime.adapters">
      <factory 
-        class="de.bmw.carit.jnario.ui.JnarioExecutableExtensionFactory:de.bmw.carit.jnario.common.ui.launching.JavaElementDelegateAdapterFactory"
+        class="de.bmw.carit.jnario.ui.JnarioExecutableExtensionFactory:org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegateAdapterFactory"
         adaptableType="org.eclipse.ui.IFileEditorInput">
-        <adapter type="de.bmw.carit.jnario.common.ui.launching.JavaElementDelegate"/>
+        <adapter type="org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegate"/>
      </factory>
      <factory 
-        class="de.bmw.carit.jnario.ui.JnarioExecutableExtensionFactory:de.bmw.carit.jnario.common.ui.launching.JavaElementDelegateAdapterFactory" 
+        class="de.bmw.carit.jnario.ui.JnarioExecutableExtensionFactory:org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegateAdapterFactory" 
         adaptableType="org.eclipse.core.resources.IResource">
-        <adapter type="de.bmw.carit.jnario.common.ui.launching.JavaElementDelegate"/>
+        <adapter type="org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegate"/>
      </factory>
      <factory 
-        class="de.bmw.carit.jnario.ui.JnarioExecutableExtensionFactory:de.bmw.carit.jnario.common.ui.launching.JavaElementDelegateAdapterFactory"
-        adaptableType="de.bmw.carit.jnario.common.ui.launching.JavaElementDelegate">
+        class="de.bmw.carit.jnario.ui.JnarioExecutableExtensionFactory:org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegateAdapterFactory"
+        adaptableType="org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegate">
         <adapter type="org.eclipse.jdt.core.IJavaElement"/>
      </factory>
   </extension>
-  
-    
+   
+    <extension point="org.eclipse.jdt.core.classpathContainerInitializer">            
+   		<classpathContainerInitializer                                          
+			id="org.eclipse.xtend.XTEND_CONTAINER"                                                        
+			class="org.eclipse.xtext.xtend2.ui.buildpath.XtendContainerInitializer"/>                           
+	</extension>
+<!--	<extension
+         point="org.eclipse.jdt.ui.classpathContainerPage">
+      <classpathContainerPage
+            name="%XtendLibrary_name"
+            class="org.eclipse.xtext.xtend2.ui.buildpath.XtendContainerWizardPage"
+            id="org.eclipse.xtend.XTEND_CONTAINER">
+      </classpathContainerPage>
+   </extension> -->
+       <extension
+         point="org.eclipse.ui.contexts">
+      <context
+            description="%JnarioContext_description"
+            id="de.bmw.carit.jnario.ui.JnarioEditorScope"
+            name="%JnarioContext_name"
+            parentId="org.eclipse.xtext.ui.XtextEditorScope">
+      </context>
+   </extension>
     <extension
          point="org.eclipse.ui.bindings">
       <key
@@ -321,7 +342,48 @@
          </command>  
          </menuContribution>
     </extension>
-	
+<!--	 <extension
+         id="de.bmw.carit.jnario.ui.wizard"
+         name="newJnarioClass"
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="de.bmw.carit.jnario.ui.wizards"
+            name="Jnario">
+      </category>
+      <wizard
+            category="de.bmw.carit.jnario.ui.wizards"
+            icon="icons/jnario_file.png"
+            id="de.bmw.carit.jnario.ui.wizards.NewJnarioWizard"
+            name="%NewJnario.label">
+            <class class="de.bmw.carit.jnario.ui.JnarioExecutableExtensionFactory">
+				<parameter name="javatype" value="true" />
+				<parameter name="guicekey" value="de.bmw.carit.jnario.ui.wizards.NewJnarioWizard" />
+			</class>
+			<description>
+            	%NewJnario.description
+         	</description>
+      </wizard>
+   </extension>
+   <extension point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <newWizardShortcut
+               id="de.bmw.carit.jnario.ui.wizards.NewJnarioWizard">
+         </newWizardShortcut>
+      </perspectiveExtension>
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaBrowsingPerspective">
+         <newWizardShortcut
+               id="de.bmw.carit.jnario.ui.wizards.NewJnarioWizard">
+         </newWizardShortcut>
+      </perspectiveExtension>
+      <perspectiveExtension
+            targetID="org.eclipse.pde.ui.PDEPerspective">
+         <newWizardShortcut
+               id="de.bmw.carit.jnario.ui.wizards.NewJnarioWizard">
+         </newWizardShortcut>
+      </perspectiveExtension>
+   </extension> -->
  <extension
        point="org.eclipse.ui.commands">
     <command
