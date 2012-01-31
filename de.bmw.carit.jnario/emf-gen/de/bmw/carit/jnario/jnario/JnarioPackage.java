@@ -704,13 +704,22 @@ public interface JnarioPackage extends EPackage
 	int EXAMPLE_HEADING__PARTS = 0;
 
 	/**
+	 * The feature id for the '<em><b>Table</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_HEADING__TABLE = 1;
+
+	/**
 	 * The number of structural features of the '<em>Example Heading</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_HEADING_FEATURE_COUNT = 1;
+	int EXAMPLE_HEADING_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.ExampleRowImpl <em>Example Row</em>}' class.
@@ -732,41 +741,22 @@ public interface JnarioPackage extends EPackage
 	int EXAMPLE_ROW__PARTS = 0;
 
 	/**
+	 * The feature id for the '<em><b>Table</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_ROW__TABLE = 1;
+
+	/**
 	 * The number of structural features of the '<em>Example Row</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_ROW_FEATURE_COUNT = 1;
-
-	/**
-	 * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.ExampleCellImpl <em>Example Cell</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.bmw.carit.jnario.jnario.impl.ExampleCellImpl
-	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getExampleCell()
-	 * @generated
-	 */
-	int EXAMPLE_CELL = 12;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_CELL__NAME = 0;
-
-	/**
-	 * The number of structural features of the '<em>Example Cell</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_CELL_FEATURE_COUNT = 1;
+	int EXAMPLE_ROW_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.JnarioFileImpl <em>File</em>}' class.
@@ -776,7 +766,7 @@ public interface JnarioPackage extends EPackage
 	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getJnarioFile()
 	 * @generated
 	 */
-	int JNARIO_FILE = 13;
+	int JNARIO_FILE = 12;
 
 	/**
 	 * The feature id for the '<em><b>Imports</b></em>' containment reference list.
@@ -822,7 +812,7 @@ public interface JnarioPackage extends EPackage
 	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getStepReference()
 	 * @generated
 	 */
-	int STEP_REFERENCE = 18;
+	int STEP_REFERENCE = 17;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -895,7 +885,7 @@ public interface JnarioPackage extends EPackage
 	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getGivenReference()
 	 * @generated
 	 */
-	int GIVEN_REFERENCE = 14;
+	int GIVEN_REFERENCE = 13;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -968,7 +958,7 @@ public interface JnarioPackage extends EPackage
 	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getWhenReference()
 	 * @generated
 	 */
-	int WHEN_REFERENCE = 15;
+	int WHEN_REFERENCE = 14;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1041,7 +1031,7 @@ public interface JnarioPackage extends EPackage
 	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getThenReference()
 	 * @generated
 	 */
-	int THEN_REFERENCE = 16;
+	int THEN_REFERENCE = 15;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1114,7 +1104,7 @@ public interface JnarioPackage extends EPackage
 	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getAndReference()
 	 * @generated
 	 */
-	int AND_REFERENCE = 17;
+	int AND_REFERENCE = 16;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1478,6 +1468,17 @@ public interface JnarioPackage extends EPackage
 	EReference getExampleHeading_Parts();
 
 	/**
+	 * Returns the meta object for the container reference '{@link de.bmw.carit.jnario.jnario.ExampleHeading#getTable <em>Table</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Table</em>'.
+	 * @see de.bmw.carit.jnario.jnario.ExampleHeading#getTable()
+	 * @see #getExampleHeading()
+	 * @generated
+	 */
+	EReference getExampleHeading_Table();
+
+	/**
 	 * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.ExampleRow <em>Example Row</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1499,25 +1500,15 @@ public interface JnarioPackage extends EPackage
 	EReference getExampleRow_Parts();
 
 	/**
-	 * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.ExampleCell <em>Example Cell</em>}'.
+	 * Returns the meta object for the container reference '{@link de.bmw.carit.jnario.jnario.ExampleRow#getTable <em>Table</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Example Cell</em>'.
-	 * @see de.bmw.carit.jnario.jnario.ExampleCell
+	 * @return the meta object for the container reference '<em>Table</em>'.
+	 * @see de.bmw.carit.jnario.jnario.ExampleRow#getTable()
+	 * @see #getExampleRow()
 	 * @generated
 	 */
-	EClass getExampleCell();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.jnario.ExampleCell#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Name</em>'.
-	 * @see de.bmw.carit.jnario.jnario.ExampleCell#getName()
-	 * @see #getExampleCell()
-	 * @generated
-	 */
-	EReference getExampleCell_Name();
+	EReference getExampleRow_Table();
 
 	/**
 	 * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.JnarioFile <em>File</em>}'.
@@ -1860,6 +1851,14 @@ public interface JnarioPackage extends EPackage
 		EReference EXAMPLE_HEADING__PARTS = eINSTANCE.getExampleHeading_Parts();
 
 		/**
+		 * The meta object literal for the '<em><b>Table</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXAMPLE_HEADING__TABLE = eINSTANCE.getExampleHeading_Table();
+
+		/**
 		 * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.ExampleRowImpl <em>Example Row</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1878,22 +1877,12 @@ public interface JnarioPackage extends EPackage
 		EReference EXAMPLE_ROW__PARTS = eINSTANCE.getExampleRow_Parts();
 
 		/**
-		 * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.ExampleCellImpl <em>Example Cell</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.bmw.carit.jnario.jnario.impl.ExampleCellImpl
-		 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getExampleCell()
-		 * @generated
-		 */
-		EClass EXAMPLE_CELL = eINSTANCE.getExampleCell();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Table</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EXAMPLE_CELL__NAME = eINSTANCE.getExampleCell_Name();
+		EReference EXAMPLE_ROW__TABLE = eINSTANCE.getExampleRow_Table();
 
 		/**
 		 * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.JnarioFileImpl <em>File</em>}' class.

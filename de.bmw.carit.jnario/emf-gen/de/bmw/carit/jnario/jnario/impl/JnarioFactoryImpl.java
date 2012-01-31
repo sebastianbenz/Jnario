@@ -80,7 +80,6 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 			case JnarioPackage.EXAMPLE_TABLE: return createExampleTable();
 			case JnarioPackage.EXAMPLE_HEADING: return createExampleHeading();
 			case JnarioPackage.EXAMPLE_ROW: return createExampleRow();
-			case JnarioPackage.EXAMPLE_CELL: return createExampleCell();
 			case JnarioPackage.JNARIO_FILE: return createJnarioFile();
 			case JnarioPackage.GIVEN_REFERENCE: return createGivenReference();
 			case JnarioPackage.WHEN_REFERENCE: return createWhenReference();
@@ -222,17 +221,6 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 	{
 		ExampleRowImpl exampleRow = new ExampleRowImpl();
 		return exampleRow;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ExampleCell createExampleCell()
-	{
-		ExampleCellImpl exampleCell = new ExampleCellImpl();
-		return exampleCell;
 	}
 
 	/**

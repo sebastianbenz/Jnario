@@ -144,11 +144,6 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
 				return createExampleRowAdapter();
 			}
 			@Override
-			public Adapter caseExampleCell(ExampleCell object)
-			{
-				return createExampleCellAdapter();
-			}
-			@Override
 			public Adapter caseJnarioFile(JnarioFile object)
 			{
 				return createJnarioFileAdapter();
@@ -396,21 +391,6 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createExampleRowAdapter()
-	{
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.ExampleCell <em>Example Cell</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.bmw.carit.jnario.jnario.ExampleCell
-	 * @generated
-	 */
-	public Adapter createExampleCellAdapter()
 	{
 		return null;
 	}

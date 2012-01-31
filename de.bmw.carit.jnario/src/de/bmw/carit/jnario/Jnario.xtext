@@ -120,10 +120,7 @@ ExampleHeadingCell returns xtend::XtendField:
 	(PIPE | PIPE_SPACES) name=ValidID ;
 
 ExampleRow:
-	parts+=ExampleCell+ EXAMPLE_ROW_END;
-
-ExampleCell:
-	(PIPE | PIPE_SPACES) name=XExpression;
+	((PIPE | PIPE_SPACES) parts+=XExpression)+ EXAMPLE_ROW_END;
 
 
 terminal FEATURE_TEXT: 'Feature' COLON MNL;

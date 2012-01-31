@@ -27,7 +27,6 @@ import org.eclipse.xtext.xbase.typing.ITypeProvider;
 
 import com.google.inject.Inject;
 
-import de.bmw.carit.jnario.jnario.ExampleCell;
 import de.bmw.carit.jnario.jnario.ExampleHeading;
 import de.bmw.carit.jnario.jnario.ExampleRow;
 import de.bmw.carit.jnario.jnario.ExampleTable;
@@ -69,12 +68,12 @@ public class JnarioJavaValidator extends AbstractJnarioJavaValidator {
 	private void hasSameTypesInColumns(EList<ExampleRow> rows){
 		int colNum = 0;
 		if(rows.size() > 0){
-			for(ExampleCell cell: rows.get(0).getParts()){
-				JvmType type = typeProvider.getType(cell.getName()).getType();
+			for(XExpression cell: rows.get(0).getParts()){
+				JvmType type = typeProvider.getType(cell).getType();
 				//starting with second row
 				for(int rowNum = 1; rowNum < rows.size(); rowNum++){
-					EList<ExampleCell> parts = rows.get(rowNum).getParts();
-					XExpression expression = parts.get(colNum).getName();
+					EList<XExpression> parts = rows.get(rowNum).getParts();
+					XExpression expression = parts.get(colNum);
 					JvmType compareType = typeProvider.getType(expression).getType();
 					if(!type.equals(compareType)){
 						error("Examples columns have to have the same type - Conflicting types: " + type.getQualifiedName() + ", " + compareType.getQualifiedName(), JnarioPackage.Literals.EXAMPLE_TABLE__ROWS);

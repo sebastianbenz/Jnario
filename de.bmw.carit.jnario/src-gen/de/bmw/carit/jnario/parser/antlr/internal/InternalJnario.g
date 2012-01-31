@@ -1552,77 +1552,38 @@ ruleExampleRow returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-((
+(((this_PIPE_0=RULE_PIPE
+    { 
+    newLeafNode(this_PIPE_0, grammarAccess.getExampleRowAccess().getPIPETerminalRuleCall_0_0_0()); 
+    }
+
+    |this_PIPE_SPACES_1=RULE_PIPE_SPACES
+    { 
+    newLeafNode(this_PIPE_SPACES_1, grammarAccess.getExampleRowAccess().getPIPE_SPACESTerminalRuleCall_0_0_1()); 
+    }
+)(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getExampleRowAccess().getPartsExampleCellParserRuleCall_0_0()); 
+	        newCompositeNode(grammarAccess.getExampleRowAccess().getPartsXExpressionParserRuleCall_0_1_0()); 
 	    }
-		lv_parts_0_0=ruleExampleCell		{
+		lv_parts_2_0=ruleXExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getExampleRowRule());
 	        }
        		add(
        			$current, 
        			"parts",
-        		lv_parts_0_0, 
-        		"ExampleCell");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)+this_EXAMPLE_ROW_END_1=RULE_EXAMPLE_ROW_END
-    { 
-    newLeafNode(this_EXAMPLE_ROW_END_1, grammarAccess.getExampleRowAccess().getEXAMPLE_ROW_ENDTerminalRuleCall_1()); 
-    }
-)
-;
-
-
-
-
-
-// Entry rule entryRuleExampleCell
-entryRuleExampleCell returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getExampleCellRule()); }
-	 iv_ruleExampleCell=ruleExampleCell 
-	 { $current=$iv_ruleExampleCell.current; } 
-	 EOF 
-;
-
-// Rule ExampleCell
-ruleExampleCell returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-((this_PIPE_0=RULE_PIPE
-    { 
-    newLeafNode(this_PIPE_0, grammarAccess.getExampleCellAccess().getPIPETerminalRuleCall_0_0()); 
-    }
-
-    |this_PIPE_SPACES_1=RULE_PIPE_SPACES
-    { 
-    newLeafNode(this_PIPE_SPACES_1, grammarAccess.getExampleCellAccess().getPIPE_SPACESTerminalRuleCall_0_1()); 
-    }
-)(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getExampleCellAccess().getNameXExpressionParserRuleCall_1_0()); 
-	    }
-		lv_name_2_0=ruleXExpression		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getExampleCellRule());
-	        }
-       		set(
-       			$current, 
-       			"name",
-        		lv_name_2_0, 
+        		lv_parts_2_0, 
         		"XExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))
+))+this_EXAMPLE_ROW_END_3=RULE_EXAMPLE_ROW_END
+    { 
+    newLeafNode(this_EXAMPLE_ROW_END_3, grammarAccess.getExampleRowAccess().getEXAMPLE_ROW_ENDTerminalRuleCall_1()); 
+    }
+)
 ;
 
 

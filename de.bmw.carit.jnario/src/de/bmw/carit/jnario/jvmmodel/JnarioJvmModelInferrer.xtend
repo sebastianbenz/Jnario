@@ -257,7 +257,7 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 		var exampleRow = examples.rows.get(0)
 		if(index < exampleRow.parts.size){
 			var exampleCell = exampleRow.parts.get(index)
-			field.setType(getType(exampleCell.name))
+			field.setType(getType(exampleCell))
 			field.setVisibility(JvmVisibility::PUBLIC)
 		}
 	}
@@ -322,7 +322,7 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 	
 	def cellToAppendable(ExampleRow row, int i){
 		var appendable = new StringBuilderBasedAppendable()
-		row.parts.get(i).name.toJavaExpression(appendable)
+		row.parts.get(i).toJavaExpression(appendable)
 		appendable
 	}
 	

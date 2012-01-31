@@ -7,10 +7,12 @@
 package de.bmw.carit.jnario.jnario.impl;
 
 import de.bmw.carit.jnario.jnario.ExampleHeading;
+import de.bmw.carit.jnario.jnario.ExampleTable;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -18,9 +20,11 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.xtext.xtend2.xtend2.XtendField;
@@ -33,6 +37,7 @@ import org.eclipse.xtext.xtend2.xtend2.XtendField;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.bmw.carit.jnario.jnario.impl.ExampleHeadingImpl#getParts <em>Parts</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.jnario.impl.ExampleHeadingImpl#getTable <em>Table</em>}</li>
  * </ul>
  * </p>
  *
@@ -90,6 +95,69 @@ public class ExampleHeadingImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ExampleTable getTable()
+	{
+		if (eContainerFeatureID() != JnarioPackage.EXAMPLE_HEADING__TABLE) return null;
+		return (ExampleTable)eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetTable(ExampleTable newTable, NotificationChain msgs)
+	{
+		msgs = eBasicSetContainer((InternalEObject)newTable, JnarioPackage.EXAMPLE_HEADING__TABLE, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTable(ExampleTable newTable)
+	{
+		if (newTable != eInternalContainer() || (eContainerFeatureID() != JnarioPackage.EXAMPLE_HEADING__TABLE && newTable != null))
+		{
+			if (EcoreUtil.isAncestor(this, newTable))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newTable != null)
+				msgs = ((InternalEObject)newTable).eInverseAdd(this, JnarioPackage.EXAMPLE_TABLE__HEADING, ExampleTable.class, msgs);
+			msgs = basicSetTable(newTable, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, JnarioPackage.EXAMPLE_HEADING__TABLE, newTable, newTable));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+	{
+		switch (featureID)
+		{
+			case JnarioPackage.EXAMPLE_HEADING__TABLE:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetTable((ExampleTable)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
 	{
@@ -97,8 +165,26 @@ public class ExampleHeadingImpl extends MinimalEObjectImpl.Container implements 
 		{
 			case JnarioPackage.EXAMPLE_HEADING__PARTS:
 				return ((InternalEList<?>)getParts()).basicRemove(otherEnd, msgs);
+			case JnarioPackage.EXAMPLE_HEADING__TABLE:
+				return basicSetTable(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs)
+	{
+		switch (eContainerFeatureID())
+		{
+			case JnarioPackage.EXAMPLE_HEADING__TABLE:
+				return eInternalContainer().eInverseRemove(this, JnarioPackage.EXAMPLE_TABLE__HEADING, ExampleTable.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -113,6 +199,8 @@ public class ExampleHeadingImpl extends MinimalEObjectImpl.Container implements 
 		{
 			case JnarioPackage.EXAMPLE_HEADING__PARTS:
 				return getParts();
+			case JnarioPackage.EXAMPLE_HEADING__TABLE:
+				return getTable();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -132,6 +220,9 @@ public class ExampleHeadingImpl extends MinimalEObjectImpl.Container implements 
 				getParts().clear();
 				getParts().addAll((Collection<? extends XtendField>)newValue);
 				return;
+			case JnarioPackage.EXAMPLE_HEADING__TABLE:
+				setTable((ExampleTable)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -149,6 +240,9 @@ public class ExampleHeadingImpl extends MinimalEObjectImpl.Container implements 
 			case JnarioPackage.EXAMPLE_HEADING__PARTS:
 				getParts().clear();
 				return;
+			case JnarioPackage.EXAMPLE_HEADING__TABLE:
+				setTable((ExampleTable)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -165,6 +259,8 @@ public class ExampleHeadingImpl extends MinimalEObjectImpl.Container implements 
 		{
 			case JnarioPackage.EXAMPLE_HEADING__PARTS:
 				return parts != null && !parts.isEmpty();
+			case JnarioPackage.EXAMPLE_HEADING__TABLE:
+				return getTable() != null;
 		}
 		return super.eIsSet(featureID);
 	}

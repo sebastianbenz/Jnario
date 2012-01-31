@@ -826,57 +826,41 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	public class ExampleRowElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ExampleRow");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cPartsAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cPartsExampleCellParserRuleCall_0_0 = (RuleCall)cPartsAssignment_0.eContents().get(0);
+		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
+		private final Alternatives cAlternatives_0_0 = (Alternatives)cGroup_0.eContents().get(0);
+		private final RuleCall cPIPETerminalRuleCall_0_0_0 = (RuleCall)cAlternatives_0_0.eContents().get(0);
+		private final RuleCall cPIPE_SPACESTerminalRuleCall_0_0_1 = (RuleCall)cAlternatives_0_0.eContents().get(1);
+		private final Assignment cPartsAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cPartsXExpressionParserRuleCall_0_1_0 = (RuleCall)cPartsAssignment_0_1.eContents().get(0);
 		private final RuleCall cEXAMPLE_ROW_ENDTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
 		
 		//ExampleRow:
-		//	parts+=ExampleCell+ EXAMPLE_ROW_END;
+		//	((PIPE | PIPE_SPACES) parts+=XExpression)+ EXAMPLE_ROW_END;
 		public ParserRule getRule() { return rule; }
 
-		//parts+=ExampleCell+ EXAMPLE_ROW_END
+		//((PIPE | PIPE_SPACES) parts+=XExpression)+ EXAMPLE_ROW_END
 		public Group getGroup() { return cGroup; }
 
-		//parts+=ExampleCell+
-		public Assignment getPartsAssignment_0() { return cPartsAssignment_0; }
+		//((PIPE | PIPE_SPACES) parts+=XExpression)+
+		public Group getGroup_0() { return cGroup_0; }
 
-		//ExampleCell
-		public RuleCall getPartsExampleCellParserRuleCall_0_0() { return cPartsExampleCellParserRuleCall_0_0; }
+		//PIPE | PIPE_SPACES
+		public Alternatives getAlternatives_0_0() { return cAlternatives_0_0; }
+
+		//PIPE
+		public RuleCall getPIPETerminalRuleCall_0_0_0() { return cPIPETerminalRuleCall_0_0_0; }
+
+		//PIPE_SPACES
+		public RuleCall getPIPE_SPACESTerminalRuleCall_0_0_1() { return cPIPE_SPACESTerminalRuleCall_0_0_1; }
+
+		//parts+=XExpression
+		public Assignment getPartsAssignment_0_1() { return cPartsAssignment_0_1; }
+
+		//XExpression
+		public RuleCall getPartsXExpressionParserRuleCall_0_1_0() { return cPartsXExpressionParserRuleCall_0_1_0; }
 
 		//EXAMPLE_ROW_END
 		public RuleCall getEXAMPLE_ROW_ENDTerminalRuleCall_1() { return cEXAMPLE_ROW_ENDTerminalRuleCall_1; }
-	}
-
-	public class ExampleCellElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ExampleCell");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
-		private final RuleCall cPIPETerminalRuleCall_0_0 = (RuleCall)cAlternatives_0.eContents().get(0);
-		private final RuleCall cPIPE_SPACESTerminalRuleCall_0_1 = (RuleCall)cAlternatives_0.eContents().get(1);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameXExpressionParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		
-		//ExampleCell:
-		//	(PIPE | PIPE_SPACES) name=XExpression;
-		public ParserRule getRule() { return rule; }
-
-		//(PIPE | PIPE_SPACES) name=XExpression
-		public Group getGroup() { return cGroup; }
-
-		//PIPE | PIPE_SPACES
-		public Alternatives getAlternatives_0() { return cAlternatives_0; }
-
-		//PIPE
-		public RuleCall getPIPETerminalRuleCall_0_0() { return cPIPETerminalRuleCall_0_0; }
-
-		//PIPE_SPACES
-		public RuleCall getPIPE_SPACESTerminalRuleCall_0_1() { return cPIPE_SPACESTerminalRuleCall_0_1; }
-
-		//name=XExpression
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-
-		//XExpression
-		public RuleCall getNameXExpressionParserRuleCall_1_0() { return cNameXExpressionParserRuleCall_1_0; }
 	}
 	
 	
@@ -901,7 +885,6 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	private ExampleHeadingElements pExampleHeading;
 	private ExampleHeadingCellElements pExampleHeadingCell;
 	private ExampleRowElements pExampleRow;
-	private ExampleCellElements pExampleCell;
 	private TerminalRule tFEATURE_TEXT;
 	private TerminalRule tBACKGROUND_TEXT;
 	private TerminalRule tSCENARIO_TEXT;
@@ -1147,23 +1130,13 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ExampleRow:
-	//	parts+=ExampleCell+ EXAMPLE_ROW_END;
+	//	((PIPE | PIPE_SPACES) parts+=XExpression)+ EXAMPLE_ROW_END;
 	public ExampleRowElements getExampleRowAccess() {
 		return (pExampleRow != null) ? pExampleRow : (pExampleRow = new ExampleRowElements());
 	}
 	
 	public ParserRule getExampleRowRule() {
 		return getExampleRowAccess().getRule();
-	}
-
-	//ExampleCell:
-	//	(PIPE | PIPE_SPACES) name=XExpression;
-	public ExampleCellElements getExampleCellAccess() {
-		return (pExampleCell != null) ? pExampleCell : (pExampleCell = new ExampleCellElements());
-	}
-	
-	public ParserRule getExampleCellRule() {
-		return getExampleCellAccess().getRule();
 	}
 
 	//terminal FEATURE_TEXT:

@@ -50,7 +50,7 @@ public class JnarioParser extends AbstractContentAssistParser {
 					put(grammarAccess.getThenReferenceAccess().getAndAlternatives_2_0(), "rule__ThenReference__AndAlternatives_2_0");
 					put(grammarAccess.getThenAccess().getAndAlternatives_3_0(), "rule__Then__AndAlternatives_3_0");
 					put(grammarAccess.getExampleHeadingCellAccess().getAlternatives_0(), "rule__ExampleHeadingCell__Alternatives_0");
-					put(grammarAccess.getExampleCellAccess().getAlternatives_0(), "rule__ExampleCell__Alternatives_0");
+					put(grammarAccess.getExampleRowAccess().getAlternatives_0_0(), "rule__ExampleRow__Alternatives_0_0");
 					put(grammarAccess.getImportAccess().getAlternatives_1(), "rule__Import__Alternatives_1");
 					put(grammarAccess.getMemberAccess().getAlternatives_2(), "rule__Member__Alternatives_2");
 					put(grammarAccess.getMemberAccess().getAlternatives_2_0_2(), "rule__Member__Alternatives_2_0_2");
@@ -112,7 +112,7 @@ public class JnarioParser extends AbstractContentAssistParser {
 					put(grammarAccess.getExampleHeadingAccess().getGroup(), "rule__ExampleHeading__Group__0");
 					put(grammarAccess.getExampleHeadingCellAccess().getGroup(), "rule__ExampleHeadingCell__Group__0");
 					put(grammarAccess.getExampleRowAccess().getGroup(), "rule__ExampleRow__Group__0");
-					put(grammarAccess.getExampleCellAccess().getGroup(), "rule__ExampleCell__Group__0");
+					put(grammarAccess.getExampleRowAccess().getGroup_0(), "rule__ExampleRow__Group_0__0");
 					put(grammarAccess.getFileAccess().getGroup(), "rule__File__Group__0");
 					put(grammarAccess.getFileAccess().getGroup_0(), "rule__File__Group_0__0");
 					put(grammarAccess.getImportAccess().getGroup(), "rule__Import__Group__0");
@@ -350,8 +350,7 @@ public class JnarioParser extends AbstractContentAssistParser {
 					put(grammarAccess.getExampleTableAccess().getRowsAssignment_2(), "rule__ExampleTable__RowsAssignment_2");
 					put(grammarAccess.getExampleHeadingAccess().getPartsAssignment_0(), "rule__ExampleHeading__PartsAssignment_0");
 					put(grammarAccess.getExampleHeadingCellAccess().getNameAssignment_1(), "rule__ExampleHeadingCell__NameAssignment_1");
-					put(grammarAccess.getExampleRowAccess().getPartsAssignment_0(), "rule__ExampleRow__PartsAssignment_0");
-					put(grammarAccess.getExampleCellAccess().getNameAssignment_1(), "rule__ExampleCell__NameAssignment_1");
+					put(grammarAccess.getExampleRowAccess().getPartsAssignment_0_1(), "rule__ExampleRow__PartsAssignment_0_1");
 					put(grammarAccess.getFileAccess().getPackageAssignment_0_1(), "rule__File__PackageAssignment_0_1");
 					put(grammarAccess.getFileAccess().getImportsAssignment_1(), "rule__File__ImportsAssignment_1");
 					put(grammarAccess.getFileAccess().getXtendClassAssignment_2(), "rule__File__XtendClassAssignment_2");

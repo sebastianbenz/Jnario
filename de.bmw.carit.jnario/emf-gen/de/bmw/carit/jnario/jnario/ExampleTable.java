@@ -58,6 +58,7 @@ public interface ExampleTable extends EObject
 
 	/**
 	 * Returns the value of the '<em><b>Heading</b></em>' containment reference.
+	 * It is bidirectional and its opposite is '{@link de.bmw.carit.jnario.jnario.ExampleHeading#getTable <em>Table</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Heading</em>' containment reference isn't clear,
@@ -67,7 +68,8 @@ public interface ExampleTable extends EObject
 	 * @return the value of the '<em>Heading</em>' containment reference.
 	 * @see #setHeading(ExampleHeading)
 	 * @see de.bmw.carit.jnario.jnario.JnarioPackage#getExampleTable_Heading()
-	 * @model containment="true"
+	 * @see de.bmw.carit.jnario.jnario.ExampleHeading#getTable
+	 * @model opposite="table" containment="true"
 	 * @generated
 	 */
 	ExampleHeading getHeading();
@@ -85,6 +87,7 @@ public interface ExampleTable extends EObject
 	/**
 	 * Returns the value of the '<em><b>Rows</b></em>' containment reference list.
 	 * The list contents are of type {@link de.bmw.carit.jnario.jnario.ExampleRow}.
+	 * It is bidirectional and its opposite is '{@link de.bmw.carit.jnario.jnario.ExampleRow#getTable <em>Table</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Rows</em>' containment reference list isn't clear,
@@ -93,7 +96,8 @@ public interface ExampleTable extends EObject
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Rows</em>' containment reference list.
 	 * @see de.bmw.carit.jnario.jnario.JnarioPackage#getExampleTable_Rows()
-	 * @model containment="true"
+	 * @see de.bmw.carit.jnario.jnario.ExampleRow#getTable
+	 * @model opposite="table" containment="true"
 	 * @generated
 	 */
 	EList<ExampleRow> getRows();

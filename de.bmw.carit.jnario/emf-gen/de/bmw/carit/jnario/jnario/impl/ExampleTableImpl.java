@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -166,9 +166,9 @@ public class ExampleTableImpl extends MinimalEObjectImpl.Container implements Ex
 		{
 			NotificationChain msgs = null;
 			if (heading != null)
-				msgs = ((InternalEObject)heading).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.EXAMPLE_TABLE__HEADING, null, msgs);
+				msgs = ((InternalEObject)heading).eInverseRemove(this, JnarioPackage.EXAMPLE_HEADING__TABLE, ExampleHeading.class, msgs);
 			if (newHeading != null)
-				msgs = ((InternalEObject)newHeading).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.EXAMPLE_TABLE__HEADING, null, msgs);
+				msgs = ((InternalEObject)newHeading).eInverseAdd(this, JnarioPackage.EXAMPLE_HEADING__TABLE, ExampleHeading.class, msgs);
 			msgs = basicSetHeading(newHeading, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -185,9 +185,30 @@ public class ExampleTableImpl extends MinimalEObjectImpl.Container implements Ex
 	{
 		if (rows == null)
 		{
-			rows = new EObjectContainmentEList<ExampleRow>(ExampleRow.class, this, JnarioPackage.EXAMPLE_TABLE__ROWS);
+			rows = new EObjectContainmentWithInverseEList<ExampleRow>(ExampleRow.class, this, JnarioPackage.EXAMPLE_TABLE__ROWS, JnarioPackage.EXAMPLE_ROW__TABLE);
 		}
 		return rows;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+	{
+		switch (featureID)
+		{
+			case JnarioPackage.EXAMPLE_TABLE__HEADING:
+				if (heading != null)
+					msgs = ((InternalEObject)heading).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.EXAMPLE_TABLE__HEADING, null, msgs);
+				return basicSetHeading((ExampleHeading)otherEnd, msgs);
+			case JnarioPackage.EXAMPLE_TABLE__ROWS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRows()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

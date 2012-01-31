@@ -135,15 +135,6 @@ public interface JnarioFactory extends EFactory
 	ExampleRow createExampleRow();
 
 	/**
-	 * Returns a new object of class '<em>Example Cell</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Example Cell</em>'.
-	 * @generated
-	 */
-	ExampleCell createExampleCell();
-
-	/**
 	 * Returns a new object of class '<em>File</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
