@@ -7,12 +7,13 @@
  *******************************************************************************/
 package de.bmw.carit.jnario.runner;
 
+import org.junit.runner.RunWith;
 import org.junit.runner.manipulation.NoTestsRemainException;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
 
 /**
- * @author Sebastian Benz - Initial contribution and API
+ * @author Birgit Engelmann - Initial contribution and API
  */
 public class JnarioRunner extends ExampleGroupRunner {
 
@@ -59,6 +60,9 @@ public class JnarioRunner extends ExampleGroupRunner {
 	@Override
 	protected ExampleGroupRunner createExampleGroupRunner(Class<?> declaredClass)
 			throws InitializationError {
+		if(declaredClass.getAnnotation(RunWith.class) != null && declaredClass.getAnnotation(RunWith.class).value() == JnarioExamplesRunner.class){
+			return new JnarioExamplesRunner(declaredClass);
+		}
 		return new JnarioRunner(declaredClass);
 	}
 
@@ -77,4 +81,5 @@ public class JnarioRunner extends ExampleGroupRunner {
 		TestInstantiator createTestInstantiator = createTestInstantiator();
 		delegate = new RunnerWrapper(createTestInstantiator);
 	}
+	
 }

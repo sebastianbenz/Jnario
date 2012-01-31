@@ -9,6 +9,7 @@ package de.bmw.carit.jnario.runner;
 
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
+
 /**
  * @author Birgit Engelmann
  */

@@ -69,12 +69,9 @@ public class JnarioExecutor extends BehaviorExecutor{
 		CompositeResult result = new CompositeResult();
 		JnarioFile jnarioFile = (JnarioFile) object;
 		Feature feature = (Feature)jnarioFile.getXtendClass();
-		for (XtendMember member : feature.getMembers()) {
-			Scenario scenario = (Scenario) member;
-			String jnarioClassName = nameProvider.getJavaClassName(feature.getName()) + nameProvider.getJavaClassName(scenario.getName());
-			String packageName = jnarioFile.getPackage();
-			result.add(runTestsInClass(jnarioClassName, packageName));
-		}
+		String jnarioClassName = nameProvider.getFeatureClassName(feature.getName());
+		String packageName = jnarioFile.getPackage();
+		result.add(runTestsInClass(jnarioClassName, packageName));
 		return result;
 	}
 	

@@ -9,6 +9,7 @@ Feature: References for steps
 		public String jnarioFile
 		Given a scenario with reused steps
 			jnarioFile = "
+				package bootstrap
 				Feature: Test
 					Scenario: TestScenario 1
 						Given step

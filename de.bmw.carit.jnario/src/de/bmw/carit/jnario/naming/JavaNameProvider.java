@@ -9,7 +9,27 @@ package de.bmw.carit.jnario.naming;
 
 import org.eclipse.xtext.util.Strings;
 
+/**
+ * @author Birgit Engelmann
+ */
 public class JavaNameProvider {
+	
+	private static final String FEATURE = "Feature: ";
+	private static final String SCENARIO = "Scenario: ";
+	
+	public String getFeatureClassName(String featureDescription){
+		if(featureDescription.indexOf(FEATURE) == 0){
+			return "Ft" + getJavaClassName(featureDescription.substring(FEATURE.length()));
+		}
+		else return "unknown";
+	}
+	
+	public String getScenarioClassName(String scenarioDescription){
+		if(scenarioDescription.indexOf(SCENARIO) == 0){
+			return "Sc" + getJavaClassName(scenarioDescription.substring(SCENARIO.length()));
+		}
+		else return "unknown";
+	}
 	
 	public String getJavaClassName(String originalName){
 		return Strings.toFirstUpper(getValidName(originalName));
