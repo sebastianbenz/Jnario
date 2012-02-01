@@ -14,7 +14,6 @@ import de.bmw.carit.jnario.common.validation.CommonJavaValidator;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
-@SuppressWarnings("restriction")
 @ComposedChecks(validators={CommonJavaValidator.class})
 public class SpecJavaValidator extends AbstractSpecJavaValidator {
 }
