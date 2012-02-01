@@ -13,78 +13,25 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmFeature;
-import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.validation.Check;
+import org.eclipse.xtext.validation.ComposedChecks;
 import org.eclipse.xtext.xbase.XBlockExpression;
-import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.XbasePackage;
 import org.eclipse.xtext.xbase.scoping.XbaseScopeProvider;
-import org.eclipse.xtext.xbase.typing.ITypeProvider;
 
-import com.google.inject.Inject;
-
-import de.bmw.carit.jnario.common.CommonPackage;
-import de.bmw.carit.jnario.common.ExampleHeading;
-import de.bmw.carit.jnario.common.ExampleRow;
 import de.bmw.carit.jnario.common.ExampleTable;
+import de.bmw.carit.jnario.common.validation.CommonJavaValidator;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
 import de.bmw.carit.jnario.jnario.Scenario;
 import de.bmw.carit.jnario.jnario.Step;
 import de.bmw.carit.jnario.jnario.StepReference;
 
-
+@ComposedChecks(validators={CommonJavaValidator.class})
 public class JnarioJavaValidator extends AbstractJnarioJavaValidator {
-
-	@Inject
-	private ITypeProvider typeProvider;
-
-	@Check
-	public void checkExampleHeaderAndRowsHaveSameColumnNumber(ExampleTable exampleTable){
-		ExampleHeading heading = exampleTable.getHeading();
-		EList<ExampleRow> rows = exampleTable.getRows();
-		int headingColumnNumber = heading.getParts().size();
-		boolean rowsHaveSameNumberOfColumns = doRowsHaveSameNumberOfColumns(rows, headingColumnNumber);
-
-		if(rowsHaveSameNumberOfColumns){
-			hasSameTypesInColumns(rows);
-		}
-		else{
-			error("Examples rows have to have the same number of columns", CommonPackage.Literals.EXAMPLE_TABLE__HEADING);
-		}
-	}
-
-	private boolean doRowsHaveSameNumberOfColumns(EList<ExampleRow> rows, int headingColumnNumber){
-		for(ExampleRow row: rows){
-			if(row.getParts().size() != headingColumnNumber){			
-				return false;
-			}
-		}
-		return true;
-	}
-
-	private void hasSameTypesInColumns(EList<ExampleRow> rows){
-		int colNum = 0;
-		if(rows.size() > 0){
-			ExampleRow firstRow = rows.get(0);
-			for(XExpression cell: firstRow.getParts()){
-				JvmType type = typeProvider.getType(cell).getType();
-				//starting with second row
-				for(int rowNum = 1; rowNum < rows.size(); rowNum++){
-					EList<XExpression> parts = rows.get(rowNum).getParts();
-					XExpression expression = parts.get(colNum);
-					JvmType compareType = typeProvider.getType(expression).getType();
-					if(!type.equals(compareType)){
-						error("Examples columns have to have the same type - Conflicting types: " + type.getQualifiedName() + ", " + compareType.getQualifiedName(), CommonPackage.Literals.EXAMPLE_TABLE__ROWS);
-					}
-				}
-				colNum++;
-			} 
-		}
-	}
 
 	@Check
 	public void checkVariableDeclaration(XVariableDeclaration declaration) {

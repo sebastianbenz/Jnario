@@ -18,6 +18,7 @@ Export-Package: de.bmw.carit.jnario.common,
  de.bmw.carit.jnario.common.jvmmodel,
  de.bmw.carit.jnario.common.scoping,
  de.bmw.carit.jnario.common.util,
+ de.bmw.carit.jnario.common.validation,
  org.pegdown
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: lib/parboiled-core-1.0.2.jar,

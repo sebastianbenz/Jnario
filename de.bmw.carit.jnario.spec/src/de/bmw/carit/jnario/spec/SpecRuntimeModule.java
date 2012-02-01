@@ -37,6 +37,7 @@ import org.eclipse.xtext.xtend2.resource.Xtend2Resource;
 import org.eclipse.xtext.xtend2.resource.Xtend2ResourceDescriptionStrategy;
 import org.eclipse.xtext.xtend2.resource.XtendEObjectAtOffsetHelper;
 import org.eclipse.xtext.xtend2.scoping.Xtend2ImportedNamespaceScopeProvider;
+import org.eclipse.xtext.xtend2.validation.ClasspathBasedChecks;
 import org.eclipse.xtext.xtend2.validation.XtendEarlyExitValidator;
 
 import com.google.inject.Binder;
@@ -53,6 +54,7 @@ import de.bmw.carit.jnario.spec.generator.SpecGenerator;
 import de.bmw.carit.jnario.spec.jvmmodel.SpecJvmModelInferrer;
 import de.bmw.carit.jnario.spec.scoping.SpecScopeProvider;
 import de.bmw.carit.jnario.spec.typing.SpecTypeProvider;
+import de.bmw.carit.jnario.spec.validation.SpecClassPathBasedChecks;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -151,5 +153,9 @@ public class SpecRuntimeModule extends de.bmw.carit.jnario.spec.AbstractSpecRunt
 	@Override
 	public Class<? extends IGenerator> bindIGenerator() {
 		return SpecGenerator.class;
+	}
+	
+	public Class<? extends ClasspathBasedChecks> bindClassPathBasedChecks(){
+		return SpecClassPathBasedChecks.class;
 	}
 }
