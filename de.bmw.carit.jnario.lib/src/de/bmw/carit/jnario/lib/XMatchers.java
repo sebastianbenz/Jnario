@@ -120,5 +120,20 @@ public class XMatchers {
 		};
 		return matcherChain.assertMatches(expected);
 	}
+	
+	public static <T> Matcher<T> matches(final String desc, final Function1<T, Boolean> matcher){
+		return new TypeSafeMatcher<T>() {
+
+			@Override
+			public void describeTo(Description description) {
+				description.appendText(desc);
+			}
+
+			@Override
+			public boolean matchesSafely(T item) {
+				return matcher.apply(item);
+			}
+		};
+	}
 
 }
