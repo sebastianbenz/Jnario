@@ -2,9 +2,13 @@ package de.bmw.carit.jnario.spec.serializer;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
+import de.bmw.carit.jnario.common.Assertion;
+import de.bmw.carit.jnario.common.CommonPackage;
+import de.bmw.carit.jnario.common.ExampleHeading;
+import de.bmw.carit.jnario.common.ExampleRow;
+import de.bmw.carit.jnario.common.ExampleTable;
 import de.bmw.carit.jnario.spec.services.SpecGrammarAccess;
 import de.bmw.carit.jnario.spec.spec.After;
-import de.bmw.carit.jnario.spec.spec.Assertion;
 import de.bmw.carit.jnario.spec.spec.Before;
 import de.bmw.carit.jnario.spec.spec.Example;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
@@ -112,14 +116,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	}
 	
 	public void createSequence(EObject context, EObject semanticObject) {
-		if(semanticObject.eClass().getEPackage() == SpecPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
-			case SpecPackage.AFTER:
-				if(context == grammarAccess.getMemberRule()) {
-					sequence_Member(context, (After) semanticObject); 
-					return; 
-				}
-				else break;
-			case SpecPackage.ASSERTION:
+		if(semanticObject.eClass().getEPackage() == CommonPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case CommonPackage.ASSERTION:
 				if(context == grammarAccess.getRichStringPartRule() ||
 				   context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
@@ -134,7 +132,6 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				   context == grammarAccess.getXEqualityExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXExpressionRule() ||
 				   context == grammarAccess.getXExpressionInsideBlockRule() ||
-				   context == grammarAccess.getXLiteralRule() ||
 				   context == grammarAccess.getXMemberFeatureCallRule() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXAssignmentAssignableAction_1_0_0_0_0() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCallMemberCallTargetAction_1_1_0_0_0() ||
@@ -151,6 +148,32 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				   context == grammarAccess.getXRelationalExpressionAccess().getXInstanceOfExpressionExpressionAction_1_0_0_0_0() ||
 				   context == grammarAccess.getXUnaryOperationRule()) {
 					sequence_XAssert(context, (Assertion) semanticObject); 
+					return; 
+				}
+				else break;
+			case CommonPackage.EXAMPLE_HEADING:
+				if(context == grammarAccess.getExampleHeadingRule()) {
+					sequence_ExampleHeading(context, (ExampleHeading) semanticObject); 
+					return; 
+				}
+				else break;
+			case CommonPackage.EXAMPLE_ROW:
+				if(context == grammarAccess.getExampleRowRule()) {
+					sequence_ExampleRow(context, (ExampleRow) semanticObject); 
+					return; 
+				}
+				else break;
+			case CommonPackage.EXAMPLE_TABLE:
+				if(context == grammarAccess.getMemberRule()) {
+					sequence_Member(context, (ExampleTable) semanticObject); 
+					return; 
+				}
+				else break;
+			}
+		else if(semanticObject.eClass().getEPackage() == SpecPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case SpecPackage.AFTER:
+				if(context == grammarAccess.getMemberRule()) {
+					sequence_Member(context, (After) semanticObject); 
 					return; 
 				}
 				else break;
@@ -814,7 +837,7 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				   context == grammarAccess.getXRelationalExpressionAccess().getXBinaryOperationLeftOperandAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXRelationalExpressionAccess().getXInstanceOfExpressionExpressionAction_1_0_0_0_0() ||
 				   context == grammarAccess.getXUnaryOperationRule()) {
-					sequence_XLiteral(context, (XNullLiteral) semanticObject); 
+					sequence_XPrimaryExpression(context, (XNullLiteral) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1202,7 +1225,11 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case Xtend2Package.XTEND_FIELD:
-				if(context == grammarAccess.getMemberRule()) {
+				if(context == grammarAccess.getExampleHeadingCellRule()) {
+					sequence_ExampleHeadingCell(context, (XtendField) semanticObject); 
+					return; 
+				}
+				else if(context == grammarAccess.getMemberRule()) {
 					sequence_Member(context, (XtendField) semanticObject); 
 					return; 
 				}
@@ -1230,10 +1257,11 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				   context == grammarAccess.getMemberAccess().getBeforeAnnotationInfoAction_2_2_0() ||
 				   context == grammarAccess.getMemberAccess().getExampleGroupAnnotationInfoAction_2_1_0() ||
 				   context == grammarAccess.getMemberAccess().getExampleGroupAnnotationInfoAction_2_4_0() ||
+				   context == grammarAccess.getMemberAccess().getExampleTableAnnotationInfoAction_2_5_0() ||
 				   context == grammarAccess.getMemberAccess().getExampleAnnotationInfoAction_2_0_0() ||
-				   context == grammarAccess.getMemberAccess().getXtendFieldAnnotationInfoAction_2_5_0() ||
-				   context == grammarAccess.getMemberAccess().getXtendFunctionAnnotationInfoAction_2_6_0()) {
-					sequence_Member_Example_2_0_0_ExampleGroup_2_1_0_Before_2_2_0_After_2_3_0_ExampleGroup_2_4_0_XtendField_2_5_0_XtendFunction_2_6_0(context, (XtendMember) semanticObject); 
+				   context == grammarAccess.getMemberAccess().getXtendFieldAnnotationInfoAction_2_6_0() ||
+				   context == grammarAccess.getMemberAccess().getXtendFunctionAnnotationInfoAction_2_7_0()) {
+					sequence_Member_Example_2_0_0_ExampleGroup_2_1_0_Before_2_2_0_After_2_3_0_ExampleGroup_2_4_0_ExampleTable_2_5_0_XtendField_2_6_0_XtendFunction_2_7_0(context, (XtendMember) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1287,6 +1315,33 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	 *     (annotations+=XAnnotation* preamble='describe' targetType=[JvmDeclaredType|QualifiedName]? name=STRING? members+=Member*)
 	 */
 	protected void sequence_ExampleGroup(EObject context, ExampleGroup semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (type=JvmTypeReference? name=ValidID)
+	 */
+	protected void sequence_ExampleHeadingCell(EObject context, XtendField semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (parts+=ExampleHeadingCell*)
+	 */
+	protected void sequence_ExampleHeading(EObject context, ExampleHeading semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (parts+=XExpression*)
+	 */
+	protected void sequence_ExampleRow(EObject context, ExampleRow semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1444,9 +1499,18 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     (annotationInfo=Member_ExampleTable_2_5_0 (name=STRING? (heading=ExampleHeading rows+=ExampleRow*)?))
+	 */
+	protected void sequence_Member(EObject context, ExampleTable semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     annotations+=XAnnotation+
 	 */
-	protected void sequence_Member_Example_2_0_0_ExampleGroup_2_1_0_Before_2_2_0_After_2_3_0_ExampleGroup_2_4_0_XtendField_2_5_0_XtendFunction_2_6_0(EObject context, XtendMember semanticObject) {
+	protected void sequence_Member_Example_2_0_0_ExampleGroup_2_1_0_Before_2_2_0_After_2_3_0_ExampleGroup_2_4_0_ExampleTable_2_5_0_XtendField_2_6_0_XtendFunction_2_7_0(EObject context, XtendMember semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1454,7 +1518,7 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	/**
 	 * Constraint:
 	 *     (
-	 *         annotationInfo=Member_XtendField_2_5_0 
+	 *         annotationInfo=Member_XtendField_2_6_0 
 	 *         ((extension?='extension' type=JvmTypeReference name=ID?) | (static?='static'? type=JvmTypeReference name=ID)) 
 	 *         initialValue=XExpression?
 	 *     )
@@ -1467,7 +1531,7 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	/**
 	 * Constraint:
 	 *     (
-	 *         annotationInfo=Member_XtendFunction_2_6_0 
+	 *         annotationInfo=Member_XtendFunction_2_7_0 
 	 *         override?='override'? 
 	 *         static?='static'? 
 	 *         dispatch?='dispatch'? 
@@ -1678,8 +1742,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	 */
 	protected void sequence_XAssert(EObject context, Assertion semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, SpecPackage.Literals.ASSERTION__EXPRESSION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SpecPackage.Literals.ASSERTION__EXPRESSION));
+			if(transientValues.isValueTransient(semanticObject, CommonPackage.Literals.ASSERTION__EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CommonPackage.Literals.ASSERTION__EXPRESSION));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
@@ -1842,15 +1906,6 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     {XNullLiteral}
-	 */
-	protected void sequence_XLiteral(EObject context, XNullLiteral semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
 	 *     (
 	 *         memberCallTarget=XMemberFeatureCall_XMemberFeatureCall_1_1_0_0_0 
 	 *         (nullSafe?='?.' | spreading?='*.')? 
@@ -1862,6 +1917,15 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	 */
 	protected void sequence_XMemberFeatureCall(EObject context, XMemberFeatureCall semanticObject) {
 		superSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {XNullLiteral}
+	 */
+	protected void sequence_XPrimaryExpression(EObject context, XNullLiteral semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

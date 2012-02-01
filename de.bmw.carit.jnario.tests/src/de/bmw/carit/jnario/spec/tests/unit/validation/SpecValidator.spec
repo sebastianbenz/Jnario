@@ -7,7 +7,7 @@ import de.bmw.carit.jnario.tests.util.SpecTestInstantiator
 import de.bmw.carit.jnario.tests.util.ModelStore
 import org.eclipse.xtext.junit4.validation.RegisteredValidatorTester
 import org.eclipse.emf.ecore.EObject
-import de.bmw.carit.jnario.spec.spec.Assertion
+import de.bmw.carit.jnario.common.Assertion
 
 @InstantiateWith(typeof(SpecTestInstantiator))
 describe "SpecValidator"{

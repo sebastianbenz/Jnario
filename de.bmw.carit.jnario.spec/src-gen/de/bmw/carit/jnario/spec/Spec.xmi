@@ -13,6 +13,9 @@
     <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel" alias="types">
       <ePackage href="http://www.eclipse.org/xtext/common/JavaVMTypes#/"/>
     </metamodelDeclarations>
+    <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel">
+      <ePackage href="http://www.bmw.de/carit/jnario/Common#/"/>
+    </metamodelDeclarations>
     <rules xsi:type="xtext:ParserRule" name="SpecFile">
       <type metamodel="/0/@metamodelDeclarations.1">
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/Xtend2#//XtendFile"/>
@@ -266,6 +269,29 @@
           </elements>
           <elements xsi:type="xtext:Group">
             <elements xsi:type="xtext:Action" feature="annotationInfo" operator="=">
+              <type metamodel="/0/@metamodelDeclarations.4">
+                <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/Common#//ExampleTable"/>
+              </type>
+            </elements>
+            <elements xsi:type="xtext:Group">
+              <elements xsi:type="xtext:Keyword" value="example"/>
+              <elements xsi:type="xtext:Assignment" cardinality="?" feature="name" operator="=">
+                <terminal xsi:type="xtext:RuleCall" rule="/5/@rules.2"/>
+              </elements>
+              <elements xsi:type="xtext:Keyword" value="{"/>
+              <elements xsi:type="xtext:Group" cardinality="?">
+                <elements xsi:type="xtext:Assignment" feature="heading" operator="=">
+                  <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.8"/>
+                </elements>
+                <elements xsi:type="xtext:Assignment" cardinality="*" feature="rows" operator="+=">
+                  <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.10"/>
+                </elements>
+              </elements>
+              <elements xsi:type="xtext:Keyword" value="}"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Action" feature="annotationInfo" operator="=">
               <type metamodel="/0/@metamodelDeclarations.1">
                 <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/Xtend2#//XtendField"/>
               </type>
@@ -407,17 +433,24 @@
         </elements>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="XLiteral">
+    <rules xsi:type="xtext:ParserRule" name="XPrimaryExpression">
       <type metamodel="/0/@metamodelDeclarations.2">
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/xbase/Xbase#//XExpression"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/3/@rules.24"/>
-        <elements xsi:type="xtext:RuleCall" rule="/3/@rules.43"/>
-        <elements xsi:type="xtext:RuleCall" rule="/3/@rules.45"/>
-        <elements xsi:type="xtext:RuleCall" rule="/3/@rules.44"/>
-        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.9"/>
-        <elements xsi:type="xtext:RuleCall" rule="/3/@rules.47"/>
+        <elements xsi:type="xtext:RuleCall" rule="/3/@rules.42"/>
+        <elements xsi:type="xtext:RuleCall" rule="/3/@rules.34"/>
+        <elements xsi:type="xtext:RuleCall" rule="/3/@rules.29"/>
+        <elements xsi:type="xtext:RuleCall" rule="/3/@rules.39"/>
+        <elements xsi:type="xtext:RuleCall" rule="/3/@rules.23"/>
+        <elements xsi:type="xtext:RuleCall" rule="/3/@rules.28"/>
+        <elements xsi:type="xtext:RuleCall" rule="/3/@rules.31"/>
+        <elements xsi:type="xtext:RuleCall" rule="/3/@rules.32"/>
+        <elements xsi:type="xtext:RuleCall" rule="/3/@rules.33"/>
+        <elements xsi:type="xtext:RuleCall" rule="/3/@rules.48"/>
+        <elements xsi:type="xtext:RuleCall" rule="/3/@rules.49"/>
+        <elements xsi:type="xtext:RuleCall" rule="/3/@rules.50"/>
+        <elements xsi:type="xtext:RuleCall" rule="/3/@rules.27"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
       </alternatives>
     </rules>
@@ -427,13 +460,62 @@
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Action">
-          <type metamodel="/0/@metamodelDeclarations.0">
-            <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/spec/Spec#//Assertion"/>
+          <type metamodel="/0/@metamodelDeclarations.4">
+            <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/Common#//Assertion"/>
           </type>
         </elements>
         <elements xsi:type="xtext:Keyword" value="assert"/>
         <elements xsi:type="xtext:Assignment" feature="expression" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.0"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ExampleHeading">
+      <type metamodel="/0/@metamodelDeclarations.4">
+        <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/Common#//ExampleHeading"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="|"/>
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.4">
+            <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/Common#//ExampleHeading"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="parts" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ExampleHeadingCell">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/Xtend2#//XtendField"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="type" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/4/@rules.0"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="|"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ExampleRow">
+      <type metamodel="/0/@metamodelDeclarations.4">
+        <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/Common#//ExampleRow"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="|"/>
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.4">
+            <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/Common#//ExampleRow"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Assignment" feature="parts" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.0"/>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="|"/>
         </elements>
       </alternatives>
     </rules>
@@ -1859,7 +1941,7 @@
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/xbase/Xbase#//XExpression"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:RuleCall" rule="/3/@rules.22"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.6"/>
         <elements xsi:type="xtext:Alternatives" cardinality="*">
           <elements xsi:type="xtext:Group">
             <elements xsi:type="xtext:Group" predicated="true">
@@ -1963,7 +2045,7 @@
         <elements xsi:type="xtext:RuleCall" rule="/3/@rules.34"/>
         <elements xsi:type="xtext:RuleCall" rule="/3/@rules.29"/>
         <elements xsi:type="xtext:RuleCall" rule="/3/@rules.39"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.6"/>
+        <elements xsi:type="xtext:RuleCall" rule="/3/@rules.23"/>
         <elements xsi:type="xtext:RuleCall" rule="/3/@rules.28"/>
         <elements xsi:type="xtext:RuleCall" rule="/3/@rules.31"/>
         <elements xsi:type="xtext:RuleCall" rule="/3/@rules.32"/>

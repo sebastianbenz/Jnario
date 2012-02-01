@@ -14,6 +14,7 @@ public class AbstractJnarioJavaValidator extends Xtend2JavaValidator {
 	    result.add(de.bmw.carit.jnario.jnario.JnarioPackage.eINSTANCE);
 	    result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.eclipse.org/xtext/Xtend2"));
 	    result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.eclipse.org/xtext/xbase/Xbase"));
+	    result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.bmw.de/carit/jnario/Common"));
 	    result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.eclipse.org/Xtext/Xbase/XAnnotations"));
 	    result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.eclipse.org/xtext/common/JavaVMTypes"));
 	    result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.eclipse.org/xtext/xbase/Xtype"));

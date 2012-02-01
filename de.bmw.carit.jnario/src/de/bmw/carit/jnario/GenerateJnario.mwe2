@@ -16,6 +16,7 @@ Workflow {
 		registerGenModelFile = "platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel"
 		registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
 		registerGenModelFile = "platform:/resource/org.eclipse.xtext.xtend2/model/Xtend2.genmodel"
+		registerGenModelFile = "platform:/resource/de.bmw.carit.jnario.common/model/Common.genmodel"
     }
     
     bean = StandaloneSetup {
@@ -27,6 +28,7 @@ Workflow {
 		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore"
 		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/XAnnotations.ecore"
 		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xtend2/model/Xtend2.ecore"        
+		registerEcoreFile = "platform:/resource/de.bmw.carit.jnario.common/model/Common.ecore"        
 		registerEcoreFile = "platform:/resource/${projectName}/model/Jnario.ecore"
     }
     
@@ -40,6 +42,7 @@ Workflow {
 		srcPath ="platform:/resource/org.eclipse.xtext.common.types/src"
 		srcPath ="platform:/resource/org.eclipse.xtext.xbase/src"
 		srcPath ="platform:/resource/org.eclipse.xtext.xtend2/src"
+		srcPath ="platform:/resource/de.bmw.carit.jnario.common/src"
 	}
 
     component = DirectoryCleaner {

@@ -71,7 +71,6 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
 			case SpecPackage.BEFORE: return createBefore();
 			case SpecPackage.AFTER: return createAfter();
 			case SpecPackage.TEST_FUNCTION: return createTestFunction();
-			case SpecPackage.ASSERTION: return createAssertion();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -141,17 +140,6 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
 	{
 		TestFunctionImpl testFunction = new TestFunctionImpl();
 		return testFunction;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Assertion createAssertion()
-	{
-		AssertionImpl assertion = new AssertionImpl();
-		return assertion;
 	}
 
 	/**

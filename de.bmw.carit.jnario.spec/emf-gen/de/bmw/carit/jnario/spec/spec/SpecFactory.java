@@ -78,15 +78,6 @@ public interface SpecFactory extends EFactory
 	TestFunction createTestFunction();
 
 	/**
-	 * Returns a new object of class '<em>Assertion</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Assertion</em>'.
-	 * @generated
-	 */
-	Assertion createAssertion();
-
-	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

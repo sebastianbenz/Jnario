@@ -2,12 +2,13 @@ package de.bmw.carit.jnario.serializer;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
+import de.bmw.carit.jnario.common.CommonPackage;
+import de.bmw.carit.jnario.common.ExampleHeading;
+import de.bmw.carit.jnario.common.ExampleRow;
+import de.bmw.carit.jnario.common.ExampleTable;
 import de.bmw.carit.jnario.jnario.And;
 import de.bmw.carit.jnario.jnario.AndReference;
 import de.bmw.carit.jnario.jnario.Background;
-import de.bmw.carit.jnario.jnario.ExampleHeading;
-import de.bmw.carit.jnario.jnario.ExampleRow;
-import de.bmw.carit.jnario.jnario.ExampleTable;
 import de.bmw.carit.jnario.jnario.Feature;
 import de.bmw.carit.jnario.jnario.Given;
 import de.bmw.carit.jnario.jnario.GivenReference;
@@ -120,7 +121,27 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	}
 	
 	public void createSequence(EObject context, EObject semanticObject) {
-		if(semanticObject.eClass().getEPackage() == JnarioPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+		if(semanticObject.eClass().getEPackage() == CommonPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case CommonPackage.EXAMPLE_HEADING:
+				if(context == grammarAccess.getExampleHeadingRule()) {
+					sequence_ExampleHeading(context, (ExampleHeading) semanticObject); 
+					return; 
+				}
+				else break;
+			case CommonPackage.EXAMPLE_ROW:
+				if(context == grammarAccess.getExampleRowRule()) {
+					sequence_ExampleRow(context, (ExampleRow) semanticObject); 
+					return; 
+				}
+				else break;
+			case CommonPackage.EXAMPLE_TABLE:
+				if(context == grammarAccess.getExampleTableRule()) {
+					sequence_ExampleTable(context, (ExampleTable) semanticObject); 
+					return; 
+				}
+				else break;
+			}
+		else if(semanticObject.eClass().getEPackage() == JnarioPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
 			case JnarioPackage.AND:
 				if(context == grammarAccess.getAndRule() ||
 				   context == grammarAccess.getStepRule()) {
@@ -139,24 +160,6 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 			case JnarioPackage.BACKGROUND:
 				if(context == grammarAccess.getBackgroundRule()) {
 					sequence_Background(context, (Background) semanticObject); 
-					return; 
-				}
-				else break;
-			case JnarioPackage.EXAMPLE_HEADING:
-				if(context == grammarAccess.getExampleHeadingRule()) {
-					sequence_ExampleHeading(context, (ExampleHeading) semanticObject); 
-					return; 
-				}
-				else break;
-			case JnarioPackage.EXAMPLE_ROW:
-				if(context == grammarAccess.getExampleRowRule()) {
-					sequence_ExampleRow(context, (ExampleRow) semanticObject); 
-					return; 
-				}
-				else break;
-			case JnarioPackage.EXAMPLE_TABLE:
-				if(context == grammarAccess.getExampleTableRule()) {
-					sequence_ExampleTable(context, (ExampleTable) semanticObject); 
 					return; 
 				}
 				else break;

@@ -13,14 +13,15 @@ var memoize = false
 
 Workflow {
 	bean = StandaloneSetup {
-		scanClassPath = true
-		platformUri = "${runtimeProject}/.."
+        scanClassPath = true
+        platformUri = "${runtimeProject}/.."
 		registerGenModelFile = "platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel"
 		registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
 		registerGenModelFile = "platform:/resource/org.eclipse.xtext.xtend2/model/Xtend2.genmodel"
-	}
-	
-	bean = StandaloneSetup {
+		registerGenModelFile = "platform:/resource/de.bmw.carit.jnario.common/model/Common.genmodel"
+    }
+    
+    bean = StandaloneSetup {
 		resourceSet = org.eclipse.xtext.resource.XtextResourceSet : resourceSet {}
         scanClassPath = true
         
@@ -29,6 +30,7 @@ Workflow {
 		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore"
 		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/XAnnotations.ecore"
 		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xtend2/model/Xtend2.ecore"        
+		registerEcoreFile = "platform:/resource/de.bmw.carit.jnario.common/model/Common.ecore"        
 		registerEcoreFile = "platform:/resource/${projectName}/model/Spec.ecore"
     }
     
@@ -42,6 +44,7 @@ Workflow {
 		srcPath ="platform:/resource/org.eclipse.xtext.common.types/src"
 		srcPath ="platform:/resource/org.eclipse.xtext.xbase/src"
 		srcPath ="platform:/resource/org.eclipse.xtext.xtend2/src"
+		srcPath ="platform:/resource/de.bmw.carit.jnario.common/src"
 	}
 	
 	component = DirectoryCleaner {

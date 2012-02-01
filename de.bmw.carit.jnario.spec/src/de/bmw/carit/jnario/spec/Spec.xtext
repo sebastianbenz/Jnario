@@ -4,7 +4,7 @@ import "http://www.bmw.de/carit/jnario/spec/Spec"
 import "http://www.eclipse.org/xtext/Xtend2" as xtend
 import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
-
+import "platform:/resource/de.bmw.carit.jnario.common/model/Common.ecore"
  
 SpecFile returns xtend::XtendFile:
 {SpecFile}
@@ -54,12 +54,10 @@ Member returns xtend::XtendMember:
 			(preamble=('context') targetOperation=[types::JvmOperation|Method]? name=STRING? '{'
       		members+=Member*
       	'}')
-//	|	{ExampleTable.annotationInfo = current} ('example' name=STRING? '{'
-//      		(
-//      			heading = ExampleHeading
-//				(rows += ExampleRow)*
-//      		)?
-//      	'}') 
+	|	{ExampleTable.annotationInfo = current} ('example' name=STRING? '{'
+			(heading = ExampleHeading
+			(rows += ExampleRow)*)?
+      	'}') 
 	|	{xtend::XtendField.annotationInfo = current}	
 		 	(extension?='extension' type=JvmTypeReference name=ID?
 			| static?='static'? type=JvmTypeReference name=ID)
@@ -77,34 +75,37 @@ Member returns xtend::XtendMember:
 			('throws' exceptions+=JvmTypeReference (',' exceptions+=JvmTypeReference)*)?
 			(expression=XBlockExpression)?
 	 );
+	 
+XPrimaryExpression returns xbase::XExpression:
+	XConstructorCall |
+	XBlockExpression |
+	XSwitchExpression |
+	XFeatureCall |
+	XLiteral |
+	XIfExpression |
+	XForLoopExpression |
+	XWhileExpression |
+	XDoWhileExpression |
+	XThrowExpression |
+	XReturnExpression |
+	XTryCatchFinallyExpression |
+	XParenthesizedExpression |
+	XAssert;
 
-XLiteral returns xbase::XExpression:
-	XClosure |
-	XBooleanLiteral |
-	XIntLiteral |
-	XNullLiteral |
-	XStringLiteral |
-	XTypeLiteral |
-	XAssert 
-;
 
 XAssert returns xbase::XExpression: 
 	{Assertion}
 	'assert' expression=XExpression;
 
-//ExampleHeading:
-//	cells+=ExampleHeadingCell+ EXAMPLE_ROW_END;
-// 
-//ExampleHeadingCell:
-//	{ExampleHeadingCell}(PIPE | PIPE_SPACES) name=ID ;
-//
-//ExampleRow:
-//	cells+=ExampleCell+ EXAMPLE_ROW_END;
-//
-//ExampleCell returns xbase::XExpression:
-//	(PIPE | PIPE_SPACES) XExpression;
-//
-//terminal PIPE : '|';
-//terminal PIPE_SPACES: PIPE (' '|'\t')+;
-//terminal EXAMPLE_ROW_END: (PIPE | PIPE_SPACES) '\r'? '\n';
+
+ExampleHeading: 
+	'|' {ExampleHeading} (parts+=ExampleHeadingCell )*
+;
+
+ExampleHeadingCell returns xtend::XtendField:
+	type=JvmTypeReference? name=ValidID '|';
+
+ExampleRow: 
+	'|' {ExampleRow} (parts+=XExpression '|')*
+;
 

@@ -7,6 +7,7 @@
  *******************************************************************************/
 package de.bmw.carit.jnario.spec.validation;
 
+import de.bmw.carit.jnario.common.CommonPackage;
 import static com.google.common.collect.Iterables.concat;
 import static com.google.common.collect.Iterables.filter;
 import static com.google.common.collect.Iterables.isEmpty;
@@ -156,7 +157,7 @@ import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
 import com.google.inject.Inject;
 
-import de.bmw.carit.jnario.spec.spec.Assertion;
+import de.bmw.carit.jnario.common.Assertion;
  
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -217,7 +218,7 @@ public class SpecJavaValidator extends XbaseWithAnnotationsJavaValidator {
 
 	@Override
 	protected List<EPackage> getEPackages() {
-		return newArrayList(Xtend2Package.eINSTANCE, XbasePackage.eINSTANCE, XAnnotationsPackage.eINSTANCE);
+		return newArrayList(Xtend2Package.eINSTANCE, XbasePackage.eINSTANCE, XAnnotationsPackage.eINSTANCE, CommonPackage.eINSTANCE);
 	}
 	
 	@Check

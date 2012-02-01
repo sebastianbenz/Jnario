@@ -1,10 +1,13 @@
 /**
- * Copyright (c) 2012 BMW Car IT and others. All rights reserved. This program and the accompanying materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
  */
-package de.bmw.carit.jnario.spec.spec.impl;
+package de.bmw.carit.jnario.common.impl;
 
-import de.bmw.carit.jnario.spec.spec.Assertion;
-import de.bmw.carit.jnario.spec.spec.SpecPackage;
+import de.bmw.carit.jnario.common.Assertion;
+import de.bmw.carit.jnario.common.CommonPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -25,14 +28,13 @@ import org.eclipse.xtext.xbase.impl.XExpressionImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.bmw.carit.jnario.spec.spec.impl.AssertionImpl#getExpression <em>Expression</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.common.impl.AssertionImpl#getExpression <em>Expression</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class AssertionImpl extends XExpressionImpl implements Assertion
-{
+public class AssertionImpl extends XExpressionImpl implements Assertion {
 	/**
 	 * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -48,8 +50,7 @@ public class AssertionImpl extends XExpressionImpl implements Assertion
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected AssertionImpl()
-	{
+	protected AssertionImpl() {
 		super();
 	}
 
@@ -59,9 +60,8 @@ public class AssertionImpl extends XExpressionImpl implements Assertion
 	 * @generated
 	 */
 	@Override
-	protected EClass eStaticClass()
-	{
-		return SpecPackage.Literals.ASSERTION;
+	protected EClass eStaticClass() {
+		return CommonPackage.Literals.ASSERTION;
 	}
 
 	/**
@@ -69,8 +69,7 @@ public class AssertionImpl extends XExpressionImpl implements Assertion
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public XExpression getExpression()
-	{
+	public XExpression getExpression() {
 		return expression;
 	}
 
@@ -79,13 +78,11 @@ public class AssertionImpl extends XExpressionImpl implements Assertion
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetExpression(XExpression newExpression, NotificationChain msgs)
-	{
+	public NotificationChain basicSetExpression(XExpression newExpression, NotificationChain msgs) {
 		XExpression oldExpression = expression;
 		expression = newExpression;
-		if (eNotificationRequired())
-		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SpecPackage.ASSERTION__EXPRESSION, oldExpression, newExpression);
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CommonPackage.ASSERTION__EXPRESSION, oldExpression, newExpression);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -96,20 +93,18 @@ public class AssertionImpl extends XExpressionImpl implements Assertion
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setExpression(XExpression newExpression)
-	{
-		if (newExpression != expression)
-		{
+	public void setExpression(XExpression newExpression) {
+		if (newExpression != expression) {
 			NotificationChain msgs = null;
 			if (expression != null)
-				msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SpecPackage.ASSERTION__EXPRESSION, null, msgs);
+				msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CommonPackage.ASSERTION__EXPRESSION, null, msgs);
 			if (newExpression != null)
-				msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SpecPackage.ASSERTION__EXPRESSION, null, msgs);
+				msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CommonPackage.ASSERTION__EXPRESSION, null, msgs);
 			msgs = basicSetExpression(newExpression, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.ASSERTION__EXPRESSION, newExpression, newExpression));
+			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.ASSERTION__EXPRESSION, newExpression, newExpression));
 	}
 
 	/**
@@ -118,11 +113,9 @@ public class AssertionImpl extends XExpressionImpl implements Assertion
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-	{
-		switch (featureID)
-		{
-			case SpecPackage.ASSERTION__EXPRESSION:
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case CommonPackage.ASSERTION__EXPRESSION:
 				return basicSetExpression(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -134,11 +127,9 @@ public class AssertionImpl extends XExpressionImpl implements Assertion
 	 * @generated
 	 */
 	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType)
-	{
-		switch (featureID)
-		{
-			case SpecPackage.ASSERTION__EXPRESSION:
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case CommonPackage.ASSERTION__EXPRESSION:
 				return getExpression();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -150,11 +141,9 @@ public class AssertionImpl extends XExpressionImpl implements Assertion
 	 * @generated
 	 */
 	@Override
-	public void eSet(int featureID, Object newValue)
-	{
-		switch (featureID)
-		{
-			case SpecPackage.ASSERTION__EXPRESSION:
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case CommonPackage.ASSERTION__EXPRESSION:
 				setExpression((XExpression)newValue);
 				return;
 		}
@@ -167,11 +156,9 @@ public class AssertionImpl extends XExpressionImpl implements Assertion
 	 * @generated
 	 */
 	@Override
-	public void eUnset(int featureID)
-	{
-		switch (featureID)
-		{
-			case SpecPackage.ASSERTION__EXPRESSION:
+	public void eUnset(int featureID) {
+		switch (featureID) {
+			case CommonPackage.ASSERTION__EXPRESSION:
 				setExpression((XExpression)null);
 				return;
 		}
@@ -184,11 +171,9 @@ public class AssertionImpl extends XExpressionImpl implements Assertion
 	 * @generated
 	 */
 	@Override
-	public boolean eIsSet(int featureID)
-	{
-		switch (featureID)
-		{
-			case SpecPackage.ASSERTION__EXPRESSION:
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case CommonPackage.ASSERTION__EXPRESSION:
 				return expression != null;
 		}
 		return super.eIsSet(featureID);

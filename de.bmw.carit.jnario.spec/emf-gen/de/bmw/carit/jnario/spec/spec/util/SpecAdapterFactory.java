@@ -12,8 +12,6 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.eclipse.xtext.xbase.XExpression;
-
 import org.eclipse.xtext.xtend2.xtend2.XtendAnnotationTarget;
 import org.eclipse.xtext.xtend2.xtend2.XtendClass;
 import org.eclipse.xtext.xtend2.xtend2.XtendFile;
@@ -113,11 +111,6 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
 				return createTestFunctionAdapter();
 			}
 			@Override
-			public Adapter caseAssertion(Assertion object)
-			{
-				return createAssertionAdapter();
-			}
-			@Override
 			public Adapter caseXtendFile(XtendFile object)
 			{
 				return createXtendFileAdapter();
@@ -136,11 +129,6 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
 			public Adapter caseXtendMember(XtendMember object)
 			{
 				return createXtendMemberAdapter();
-			}
-			@Override
-			public Adapter caseXExpression(XExpression object)
-			{
-				return createXExpressionAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object)
@@ -255,21 +243,6 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.spec.spec.Assertion <em>Assertion</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.bmw.carit.jnario.spec.spec.Assertion
-	 * @generated
-	 */
-	public Adapter createAssertionAdapter()
-	{
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.xtext.xtend2.xtend2.XtendFile <em>Xtend File</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -325,21 +298,6 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createXtendMemberAdapter()
-	{
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.xtext.xbase.XExpression <em>XExpression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.xtext.xbase.XExpression
-	 * @generated
-	 */
-	public Adapter createXExpressionAdapter()
 	{
 		return null;
 	}

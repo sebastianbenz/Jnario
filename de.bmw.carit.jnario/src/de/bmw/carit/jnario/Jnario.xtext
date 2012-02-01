@@ -12,6 +12,7 @@ generate jnario "http://www.bmw.de/carit/jnario/Jnario"
 import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
 import "http://www.eclipse.org/xtext/Xtend2" as xtend
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
+import "platform:/resource/de.bmw.carit.jnario.common/model/Common.ecore"
 
 JnarioFile returns xtend::XtendFile:
 	{JnarioFile}
@@ -115,7 +116,7 @@ ExampleTable:
 
 ExampleHeading:
 	parts+=ExampleHeadingCell+ EXAMPLE_ROW_END;
- 
+
 ExampleHeadingCell returns xtend::XtendField:
 	(PIPE | PIPE_SPACES) name=ValidID ;
 

@@ -16,7 +16,7 @@ import org.eclipse.xtext.xtend2.typing.Xtend2TypeProvider;
 
 import com.google.inject.Singleton;
 
-import de.bmw.carit.jnario.spec.spec.Assertion;
+import de.bmw.carit.jnario.common.Assertion;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */

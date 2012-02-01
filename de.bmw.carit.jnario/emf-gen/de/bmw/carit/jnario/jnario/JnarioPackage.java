@@ -639,126 +639,6 @@ public interface JnarioPackage extends EPackage
 	int STEP_EXPRESSION_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.ExampleTableImpl <em>Example Table</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.bmw.carit.jnario.jnario.impl.ExampleTableImpl
-	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getExampleTable()
-	 * @generated
-	 */
-	int EXAMPLE_TABLE = 9;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_TABLE__NAME = 0;
-
-	/**
-	 * The feature id for the '<em><b>Heading</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_TABLE__HEADING = 1;
-
-	/**
-	 * The feature id for the '<em><b>Rows</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_TABLE__ROWS = 2;
-
-	/**
-	 * The number of structural features of the '<em>Example Table</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_TABLE_FEATURE_COUNT = 3;
-
-	/**
-	 * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.ExampleHeadingImpl <em>Example Heading</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.bmw.carit.jnario.jnario.impl.ExampleHeadingImpl
-	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getExampleHeading()
-	 * @generated
-	 */
-	int EXAMPLE_HEADING = 10;
-
-	/**
-	 * The feature id for the '<em><b>Parts</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_HEADING__PARTS = 0;
-
-	/**
-	 * The feature id for the '<em><b>Table</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_HEADING__TABLE = 1;
-
-	/**
-	 * The number of structural features of the '<em>Example Heading</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_HEADING_FEATURE_COUNT = 2;
-
-	/**
-	 * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.ExampleRowImpl <em>Example Row</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.bmw.carit.jnario.jnario.impl.ExampleRowImpl
-	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getExampleRow()
-	 * @generated
-	 */
-	int EXAMPLE_ROW = 11;
-
-	/**
-	 * The feature id for the '<em><b>Parts</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_ROW__PARTS = 0;
-
-	/**
-	 * The feature id for the '<em><b>Table</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_ROW__TABLE = 1;
-
-	/**
-	 * The number of structural features of the '<em>Example Row</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_ROW_FEATURE_COUNT = 2;
-
-	/**
 	 * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.JnarioFileImpl <em>File</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -766,7 +646,7 @@ public interface JnarioPackage extends EPackage
 	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getJnarioFile()
 	 * @generated
 	 */
-	int JNARIO_FILE = 12;
+	int JNARIO_FILE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Imports</b></em>' containment reference list.
@@ -812,7 +692,7 @@ public interface JnarioPackage extends EPackage
 	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getStepReference()
 	 * @generated
 	 */
-	int STEP_REFERENCE = 17;
+	int STEP_REFERENCE = 14;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -885,7 +765,7 @@ public interface JnarioPackage extends EPackage
 	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getGivenReference()
 	 * @generated
 	 */
-	int GIVEN_REFERENCE = 13;
+	int GIVEN_REFERENCE = 10;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -958,7 +838,7 @@ public interface JnarioPackage extends EPackage
 	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getWhenReference()
 	 * @generated
 	 */
-	int WHEN_REFERENCE = 14;
+	int WHEN_REFERENCE = 11;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1031,7 +911,7 @@ public interface JnarioPackage extends EPackage
 	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getThenReference()
 	 * @generated
 	 */
-	int THEN_REFERENCE = 15;
+	int THEN_REFERENCE = 12;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1104,7 +984,7 @@ public interface JnarioPackage extends EPackage
 	 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getAndReference()
 	 * @generated
 	 */
-	int AND_REFERENCE = 16;
+	int AND_REFERENCE = 13;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1404,113 +1284,6 @@ public interface JnarioPackage extends EPackage
 	EReference getStepExpression_BlockExpression();
 
 	/**
-	 * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.ExampleTable <em>Example Table</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Example Table</em>'.
-	 * @see de.bmw.carit.jnario.jnario.ExampleTable
-	 * @generated
-	 */
-	EClass getExampleTable();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.bmw.carit.jnario.jnario.ExampleTable#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see de.bmw.carit.jnario.jnario.ExampleTable#getName()
-	 * @see #getExampleTable()
-	 * @generated
-	 */
-	EAttribute getExampleTable_Name();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.jnario.ExampleTable#getHeading <em>Heading</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Heading</em>'.
-	 * @see de.bmw.carit.jnario.jnario.ExampleTable#getHeading()
-	 * @see #getExampleTable()
-	 * @generated
-	 */
-	EReference getExampleTable_Heading();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.jnario.ExampleTable#getRows <em>Rows</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Rows</em>'.
-	 * @see de.bmw.carit.jnario.jnario.ExampleTable#getRows()
-	 * @see #getExampleTable()
-	 * @generated
-	 */
-	EReference getExampleTable_Rows();
-
-	/**
-	 * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.ExampleHeading <em>Example Heading</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Example Heading</em>'.
-	 * @see de.bmw.carit.jnario.jnario.ExampleHeading
-	 * @generated
-	 */
-	EClass getExampleHeading();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.jnario.ExampleHeading#getParts <em>Parts</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Parts</em>'.
-	 * @see de.bmw.carit.jnario.jnario.ExampleHeading#getParts()
-	 * @see #getExampleHeading()
-	 * @generated
-	 */
-	EReference getExampleHeading_Parts();
-
-	/**
-	 * Returns the meta object for the container reference '{@link de.bmw.carit.jnario.jnario.ExampleHeading#getTable <em>Table</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Table</em>'.
-	 * @see de.bmw.carit.jnario.jnario.ExampleHeading#getTable()
-	 * @see #getExampleHeading()
-	 * @generated
-	 */
-	EReference getExampleHeading_Table();
-
-	/**
-	 * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.ExampleRow <em>Example Row</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Example Row</em>'.
-	 * @see de.bmw.carit.jnario.jnario.ExampleRow
-	 * @generated
-	 */
-	EClass getExampleRow();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.jnario.ExampleRow#getParts <em>Parts</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Parts</em>'.
-	 * @see de.bmw.carit.jnario.jnario.ExampleRow#getParts()
-	 * @see #getExampleRow()
-	 * @generated
-	 */
-	EReference getExampleRow_Parts();
-
-	/**
-	 * Returns the meta object for the container reference '{@link de.bmw.carit.jnario.jnario.ExampleRow#getTable <em>Table</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Table</em>'.
-	 * @see de.bmw.carit.jnario.jnario.ExampleRow#getTable()
-	 * @see #getExampleRow()
-	 * @generated
-	 */
-	EReference getExampleRow_Table();
-
-	/**
 	 * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.JnarioFile <em>File</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1797,92 +1570,6 @@ public interface JnarioPackage extends EPackage
 		 * @generated
 		 */
 		EReference STEP_EXPRESSION__BLOCK_EXPRESSION = eINSTANCE.getStepExpression_BlockExpression();
-
-		/**
-		 * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.ExampleTableImpl <em>Example Table</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.bmw.carit.jnario.jnario.impl.ExampleTableImpl
-		 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getExampleTable()
-		 * @generated
-		 */
-		EClass EXAMPLE_TABLE = eINSTANCE.getExampleTable();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute EXAMPLE_TABLE__NAME = eINSTANCE.getExampleTable_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Heading</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference EXAMPLE_TABLE__HEADING = eINSTANCE.getExampleTable_Heading();
-
-		/**
-		 * The meta object literal for the '<em><b>Rows</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference EXAMPLE_TABLE__ROWS = eINSTANCE.getExampleTable_Rows();
-
-		/**
-		 * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.ExampleHeadingImpl <em>Example Heading</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.bmw.carit.jnario.jnario.impl.ExampleHeadingImpl
-		 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getExampleHeading()
-		 * @generated
-		 */
-		EClass EXAMPLE_HEADING = eINSTANCE.getExampleHeading();
-
-		/**
-		 * The meta object literal for the '<em><b>Parts</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference EXAMPLE_HEADING__PARTS = eINSTANCE.getExampleHeading_Parts();
-
-		/**
-		 * The meta object literal for the '<em><b>Table</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference EXAMPLE_HEADING__TABLE = eINSTANCE.getExampleHeading_Table();
-
-		/**
-		 * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.ExampleRowImpl <em>Example Row</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.bmw.carit.jnario.jnario.impl.ExampleRowImpl
-		 * @see de.bmw.carit.jnario.jnario.impl.JnarioPackageImpl#getExampleRow()
-		 * @generated
-		 */
-		EClass EXAMPLE_ROW = eINSTANCE.getExampleRow();
-
-		/**
-		 * The meta object literal for the '<em><b>Parts</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference EXAMPLE_ROW__PARTS = eINSTANCE.getExampleRow_Parts();
-
-		/**
-		 * The meta object literal for the '<em><b>Table</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference EXAMPLE_ROW__TABLE = eINSTANCE.getExampleRow_Table();
 
 		/**
 		 * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.JnarioFileImpl <em>File</em>}' class.

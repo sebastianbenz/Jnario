@@ -77,9 +77,6 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 			case JnarioPackage.THEN: return createThen();
 			case JnarioPackage.AND: return createAnd();
 			case JnarioPackage.STEP_EXPRESSION: return createStepExpression();
-			case JnarioPackage.EXAMPLE_TABLE: return createExampleTable();
-			case JnarioPackage.EXAMPLE_HEADING: return createExampleHeading();
-			case JnarioPackage.EXAMPLE_ROW: return createExampleRow();
 			case JnarioPackage.JNARIO_FILE: return createJnarioFile();
 			case JnarioPackage.GIVEN_REFERENCE: return createGivenReference();
 			case JnarioPackage.WHEN_REFERENCE: return createWhenReference();
@@ -188,39 +185,6 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 	{
 		StepExpressionImpl stepExpression = new StepExpressionImpl();
 		return stepExpression;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ExampleTable createExampleTable()
-	{
-		ExampleTableImpl exampleTable = new ExampleTableImpl();
-		return exampleTable;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ExampleHeading createExampleHeading()
-	{
-		ExampleHeadingImpl exampleHeading = new ExampleHeadingImpl();
-		return exampleHeading;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ExampleRow createExampleRow()
-	{
-		ExampleRowImpl exampleRow = new ExampleRowImpl();
-		return exampleRow;
 	}
 
 	/**

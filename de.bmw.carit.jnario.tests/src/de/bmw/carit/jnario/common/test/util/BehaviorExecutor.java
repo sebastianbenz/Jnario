@@ -52,6 +52,7 @@ import com.google.common.base.Joiner;
 import com.google.common.base.Predicate;
 import com.google.inject.Inject;
 
+import de.bmw.carit.jnario.common.Assertion;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
 import de.bmw.carit.jnario.runner.Named;
 import de.bmw.carit.jnario.spec.spec.SpecPackage;
@@ -161,6 +162,7 @@ public abstract class BehaviorExecutor {
 		javaCompiler.addClassPathOfClass(JvmOperation.class);
 		javaCompiler.addClassPathOfClass(RegisteredValidatorTester.class);
 		javaCompiler.addClassPathOfClass(QualifiedName.class);
+		javaCompiler.addClassPathOfClass(Assertion.class);
 	}
 
 	public Result run(EObject object) {

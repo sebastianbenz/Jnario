@@ -10,8 +10,6 @@ package de.bmw.carit.jnario.jvmmodel
 import com.google.inject.Inject
 import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder
 import de.bmw.carit.jnario.generator.JnarioCompiler
-import de.bmw.carit.jnario.jnario.ExampleRow
-import de.bmw.carit.jnario.jnario.ExampleTable
 import de.bmw.carit.jnario.jnario.Feature
 import de.bmw.carit.jnario.jnario.JnarioFile
 import de.bmw.carit.jnario.jnario.Scenario
@@ -42,6 +40,8 @@ import org.junit.runner.RunWith
 
 import static com.google.common.collect.Iterators.*
 import static org.eclipse.xtext.EcoreUtil2.*
+import de.bmw.carit.jnario.common.ExampleTable
+import de.bmw.carit.jnario.common.ExampleRow
 
 /**
  * @author Birgit Engelmann
@@ -77,26 +77,27 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
     override void infer(EObject object, IAcceptor<JvmDeclaredType> acceptor, boolean isPrelinkingPhase) {
     	var jnarioFile = object as JnarioFile
 		var feature = jnarioFile?.xtendClass as Feature
-		if(feature != null){
-			
-			var JvmGenericType backgroundClass = null
-			if(feature.background != null){
-				backgroundClass = feature.generateBackground(jnarioFile)
-				acceptor.accept(backgroundClass)
-			}
-			val List<JvmGenericType> scenarios = newArrayList()
-			for(member: feature.members){
-				val scenario = member as Scenario
-				val className = feature.name.featureClassName + scenario.name.scenarioClassName
-				val clazz = scenario.infer(jnarioFile, className, backgroundClass)
-				clazz.annotations += scenario.runnerAnnotations
-				acceptor.accept(clazz)
-				scenarios.add(clazz)
-			}
-			
-			val featureClazz = feature.generateFeatureSuite(jnarioFile, scenarios)
-			acceptor.accept(featureClazz)
+		if(feature == null){
+			return
 		}
+			
+		var JvmGenericType backgroundClass = null
+		if(feature.background != null){
+			backgroundClass = feature.generateBackground(jnarioFile)
+			acceptor.accept(backgroundClass)
+		}
+		val List<JvmGenericType> scenarios = newArrayList()
+		for(member: feature.members){
+			val scenario = member as Scenario
+			val className = feature.name.featureClassName + scenario.name.scenarioClassName
+			val clazz = scenario.infer(jnarioFile, className, backgroundClass)
+			clazz.annotations += scenario.runnerAnnotations
+			acceptor.accept(clazz)
+			scenarios.add(clazz)
+		}
+		
+		val featureClazz = feature.generateFeatureSuite(jnarioFile, scenarios)
+		acceptor.accept(featureClazz)
    	}
    	
    	def generateFeatureSuite(Feature feature, JnarioFile jnarioFile, List<JvmGenericType> scenarios){

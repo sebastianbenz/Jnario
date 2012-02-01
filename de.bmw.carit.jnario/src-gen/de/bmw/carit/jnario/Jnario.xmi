@@ -13,6 +13,9 @@
     <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel" alias="types">
       <ePackage href="http://www.eclipse.org/xtext/common/JavaVMTypes#/"/>
     </metamodelDeclarations>
+    <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel">
+      <ePackage href="http://www.bmw.de/carit/jnario/Common#/"/>
+    </metamodelDeclarations>
     <rules xsi:type="xtext:ParserRule" name="JnarioFile">
       <type metamodel="/0/@metamodelDeclarations.2">
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/Xtend2#//XtendFile"/>
@@ -371,8 +374,8 @@
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ExampleTable">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/Jnario#//ExampleTable"/>
+      <type metamodel="/0/@metamodelDeclarations.4">
+        <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/Common#//ExampleTable"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
@@ -387,8 +390,8 @@
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ExampleHeading">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/Jnario#//ExampleHeading"/>
+      <type metamodel="/0/@metamodelDeclarations.4">
+        <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/Common#//ExampleHeading"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Assignment" cardinality="+" feature="parts" operator="+=">
@@ -412,8 +415,8 @@
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ExampleRow">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/Jnario#//ExampleRow"/>
+      <type metamodel="/0/@metamodelDeclarations.4">
+        <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/Common#//ExampleRow"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Group" cardinality="+">

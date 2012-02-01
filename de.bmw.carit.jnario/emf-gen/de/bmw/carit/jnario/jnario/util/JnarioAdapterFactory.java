@@ -129,21 +129,6 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
 				return createStepExpressionAdapter();
 			}
 			@Override
-			public Adapter caseExampleTable(ExampleTable object)
-			{
-				return createExampleTableAdapter();
-			}
-			@Override
-			public Adapter caseExampleHeading(ExampleHeading object)
-			{
-				return createExampleHeadingAdapter();
-			}
-			@Override
-			public Adapter caseExampleRow(ExampleRow object)
-			{
-				return createExampleRowAdapter();
-			}
-			@Override
 			public Adapter caseJnarioFile(JnarioFile object)
 			{
 				return createJnarioFileAdapter();
@@ -346,51 +331,6 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createStepExpressionAdapter()
-	{
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.ExampleTable <em>Example Table</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.bmw.carit.jnario.jnario.ExampleTable
-	 * @generated
-	 */
-	public Adapter createExampleTableAdapter()
-	{
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.ExampleHeading <em>Example Heading</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.bmw.carit.jnario.jnario.ExampleHeading
-	 * @generated
-	 */
-	public Adapter createExampleHeadingAdapter()
-	{
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.jnario.ExampleRow <em>Example Row</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.bmw.carit.jnario.jnario.ExampleRow
-	 * @generated
-	 */
-	public Adapter createExampleRowAdapter()
 	{
 		return null;
 	}

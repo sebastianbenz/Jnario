@@ -6,12 +6,11 @@
  */
 package de.bmw.carit.jnario.jnario.impl;
 
+import de.bmw.carit.jnario.common.CommonPackage;
+
 import de.bmw.carit.jnario.jnario.And;
 import de.bmw.carit.jnario.jnario.AndReference;
 import de.bmw.carit.jnario.jnario.Background;
-import de.bmw.carit.jnario.jnario.ExampleHeading;
-import de.bmw.carit.jnario.jnario.ExampleRow;
-import de.bmw.carit.jnario.jnario.ExampleTable;
 import de.bmw.carit.jnario.jnario.Feature;
 import de.bmw.carit.jnario.jnario.Given;
 import de.bmw.carit.jnario.jnario.GivenReference;
@@ -116,27 +115,6 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass exampleTableEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass exampleHeadingEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass exampleRowEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass jnarioFileEClass = null;
 
 	/**
@@ -223,7 +201,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 		isInited = true;
 
 		// Initialize simple dependencies
-		Xtend2Package.eINSTANCE.eClass();
+		CommonPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theJnarioPackage.createPackageContents();
@@ -465,106 +443,6 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getExampleTable()
-	{
-		return exampleTableEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getExampleTable_Name()
-	{
-		return (EAttribute)exampleTableEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getExampleTable_Heading()
-	{
-		return (EReference)exampleTableEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getExampleTable_Rows()
-	{
-		return (EReference)exampleTableEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getExampleHeading()
-	{
-		return exampleHeadingEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getExampleHeading_Parts()
-	{
-		return (EReference)exampleHeadingEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getExampleHeading_Table()
-	{
-		return (EReference)exampleHeadingEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getExampleRow()
-	{
-		return exampleRowEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getExampleRow_Parts()
-	{
-		return (EReference)exampleRowEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getExampleRow_Table()
-	{
-		return (EReference)exampleRowEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getJnarioFile()
 	{
 		return jnarioFileEClass;
@@ -691,19 +569,6 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 		createEReference(stepExpressionEClass, STEP_EXPRESSION__ANNOTATIONS);
 		createEReference(stepExpressionEClass, STEP_EXPRESSION__BLOCK_EXPRESSION);
 
-		exampleTableEClass = createEClass(EXAMPLE_TABLE);
-		createEAttribute(exampleTableEClass, EXAMPLE_TABLE__NAME);
-		createEReference(exampleTableEClass, EXAMPLE_TABLE__HEADING);
-		createEReference(exampleTableEClass, EXAMPLE_TABLE__ROWS);
-
-		exampleHeadingEClass = createEClass(EXAMPLE_HEADING);
-		createEReference(exampleHeadingEClass, EXAMPLE_HEADING__PARTS);
-		createEReference(exampleHeadingEClass, EXAMPLE_HEADING__TABLE);
-
-		exampleRowEClass = createEClass(EXAMPLE_ROW);
-		createEReference(exampleRowEClass, EXAMPLE_ROW__PARTS);
-		createEReference(exampleRowEClass, EXAMPLE_ROW__TABLE);
-
 		jnarioFileEClass = createEClass(JNARIO_FILE);
 
 		givenReferenceEClass = createEClass(GIVEN_REFERENCE);
@@ -744,6 +609,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 
 		// Obtain other dependent packages
 		Xtend2Package theXtend2Package = (Xtend2Package)EPackage.Registry.INSTANCE.getEPackage(Xtend2Package.eNS_URI);
+		CommonPackage theCommonPackage = (CommonPackage)EPackage.Registry.INSTANCE.getEPackage(CommonPackage.eNS_URI);
 		XAnnotationsPackage theXAnnotationsPackage = (XAnnotationsPackage)EPackage.Registry.INSTANCE.getEPackage(XAnnotationsPackage.eNS_URI);
 		XbasePackage theXbasePackage = (XbasePackage)EPackage.Registry.INSTANCE.getEPackage(XbasePackage.eNS_URI);
 
@@ -776,7 +642,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 		initEReference(getBackground_Members(), theXtend2Package.getXtendMember(), null, "members", null, 0, -1, Background.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(scenarioEClass, Scenario.class, "Scenario", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getScenario_Examples(), this.getExampleTable(), null, "examples", null, 0, -1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getScenario_Examples(), theCommonPackage.getExampleTable(), null, "examples", null, 0, -1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getScenario_Name(), ecorePackage.getEString(), "name", null, 0, 1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getScenario_Steps(), this.getStep(), null, "steps", null, 0, -1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getScenario_Members(), theXtend2Package.getXtendMember(), null, "members", null, 0, -1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -797,19 +663,6 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage
 		initEClass(stepExpressionEClass, StepExpression.class, "StepExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getStepExpression_Annotations(), theXAnnotationsPackage.getXAnnotation(), null, "annotations", null, 0, -1, StepExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStepExpression_BlockExpression(), theXbasePackage.getXBlockExpression(), null, "blockExpression", null, 0, 1, StepExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(exampleTableEClass, ExampleTable.class, "ExampleTable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getExampleTable_Name(), ecorePackage.getEString(), "name", null, 0, 1, ExampleTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getExampleTable_Heading(), this.getExampleHeading(), this.getExampleHeading_Table(), "heading", null, 0, 1, ExampleTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getExampleTable_Rows(), this.getExampleRow(), this.getExampleRow_Table(), "rows", null, 0, -1, ExampleTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(exampleHeadingEClass, ExampleHeading.class, "ExampleHeading", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getExampleHeading_Parts(), theXtend2Package.getXtendField(), null, "parts", null, 0, -1, ExampleHeading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getExampleHeading_Table(), this.getExampleTable(), this.getExampleTable_Heading(), "table", null, 0, 1, ExampleHeading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(exampleRowEClass, ExampleRow.class, "ExampleRow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getExampleRow_Parts(), theXbasePackage.getXExpression(), null, "parts", null, 0, -1, ExampleRow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getExampleRow_Table(), this.getExampleTable(), this.getExampleTable_Rows(), "table", null, 0, 1, ExampleRow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(jnarioFileEClass, JnarioFile.class, "JnarioFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

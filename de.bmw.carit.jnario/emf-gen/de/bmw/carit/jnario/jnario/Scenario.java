@@ -6,6 +6,8 @@
  */
 package de.bmw.carit.jnario.jnario;
 
+import de.bmw.carit.jnario.common.ExampleTable;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
@@ -33,7 +35,7 @@ public interface Scenario extends XtendMember
 {
 	/**
 	 * Returns the value of the '<em><b>Examples</b></em>' containment reference list.
-	 * The list contents are of type {@link de.bmw.carit.jnario.jnario.ExampleTable}.
+	 * The list contents are of type {@link de.bmw.carit.jnario.common.ExampleTable}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Examples</em>' containment reference list isn't clear,

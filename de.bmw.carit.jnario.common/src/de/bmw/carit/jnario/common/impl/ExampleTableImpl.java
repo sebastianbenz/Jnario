@@ -2,30 +2,26 @@
  * <copyright>
  * </copyright>
  *
-
+ * $Id$
  */
-package de.bmw.carit.jnario.jnario.impl;
-
-import de.bmw.carit.jnario.jnario.ExampleHeading;
-import de.bmw.carit.jnario.jnario.ExampleRow;
-import de.bmw.carit.jnario.jnario.ExampleTable;
-import de.bmw.carit.jnario.jnario.JnarioPackage;
+package de.bmw.carit.jnario.common.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.xtext.xtend2.xtend2.impl.XtendMemberImpl;
+
+import de.bmw.carit.jnario.common.CommonPackage;
+import de.bmw.carit.jnario.common.ExampleHeading;
+import de.bmw.carit.jnario.common.ExampleRow;
+import de.bmw.carit.jnario.common.ExampleTable;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,16 +30,15 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.bmw.carit.jnario.jnario.impl.ExampleTableImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.bmw.carit.jnario.jnario.impl.ExampleTableImpl#getHeading <em>Heading</em>}</li>
- *   <li>{@link de.bmw.carit.jnario.jnario.impl.ExampleTableImpl#getRows <em>Rows</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.common.impl.ExampleTableImpl#getName <em>Name</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.common.impl.ExampleTableImpl#getHeading <em>Heading</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.common.impl.ExampleTableImpl#getRows <em>Rows</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ExampleTableImpl extends MinimalEObjectImpl.Container implements ExampleTable
-{
+public class ExampleTableImpl extends XtendMemberImpl implements ExampleTable {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -89,8 +84,7 @@ public class ExampleTableImpl extends MinimalEObjectImpl.Container implements Ex
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ExampleTableImpl()
-	{
+	protected ExampleTableImpl() {
 		super();
 	}
 
@@ -100,9 +94,8 @@ public class ExampleTableImpl extends MinimalEObjectImpl.Container implements Ex
 	 * @generated
 	 */
 	@Override
-	protected EClass eStaticClass()
-	{
-		return JnarioPackage.Literals.EXAMPLE_TABLE;
+	protected EClass eStaticClass() {
+		return CommonPackage.Literals.EXAMPLE_TABLE;
 	}
 
 	/**
@@ -110,8 +103,7 @@ public class ExampleTableImpl extends MinimalEObjectImpl.Container implements Ex
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getName()
-	{
+	public String getName() {
 		return name;
 	}
 
@@ -120,12 +112,11 @@ public class ExampleTableImpl extends MinimalEObjectImpl.Container implements Ex
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setName(String newName)
-	{
+	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, JnarioPackage.EXAMPLE_TABLE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.EXAMPLE_TABLE__NAME, oldName, name));
 	}
 
 	/**
@@ -133,8 +124,7 @@ public class ExampleTableImpl extends MinimalEObjectImpl.Container implements Ex
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExampleHeading getHeading()
-	{
+	public ExampleHeading getHeading() {
 		return heading;
 	}
 
@@ -143,13 +133,11 @@ public class ExampleTableImpl extends MinimalEObjectImpl.Container implements Ex
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetHeading(ExampleHeading newHeading, NotificationChain msgs)
-	{
+	public NotificationChain basicSetHeading(ExampleHeading newHeading, NotificationChain msgs) {
 		ExampleHeading oldHeading = heading;
 		heading = newHeading;
-		if (eNotificationRequired())
-		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JnarioPackage.EXAMPLE_TABLE__HEADING, oldHeading, newHeading);
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CommonPackage.EXAMPLE_TABLE__HEADING, oldHeading, newHeading);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -160,20 +148,18 @@ public class ExampleTableImpl extends MinimalEObjectImpl.Container implements Ex
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setHeading(ExampleHeading newHeading)
-	{
-		if (newHeading != heading)
-		{
+	public void setHeading(ExampleHeading newHeading) {
+		if (newHeading != heading) {
 			NotificationChain msgs = null;
 			if (heading != null)
-				msgs = ((InternalEObject)heading).eInverseRemove(this, JnarioPackage.EXAMPLE_HEADING__TABLE, ExampleHeading.class, msgs);
+				msgs = ((InternalEObject)heading).eInverseRemove(this, CommonPackage.EXAMPLE_HEADING__TABLE, ExampleHeading.class, msgs);
 			if (newHeading != null)
-				msgs = ((InternalEObject)newHeading).eInverseAdd(this, JnarioPackage.EXAMPLE_HEADING__TABLE, ExampleHeading.class, msgs);
+				msgs = ((InternalEObject)newHeading).eInverseAdd(this, CommonPackage.EXAMPLE_HEADING__TABLE, ExampleHeading.class, msgs);
 			msgs = basicSetHeading(newHeading, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, JnarioPackage.EXAMPLE_TABLE__HEADING, newHeading, newHeading));
+			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.EXAMPLE_TABLE__HEADING, newHeading, newHeading));
 	}
 
 	/**
@@ -181,11 +167,9 @@ public class ExampleTableImpl extends MinimalEObjectImpl.Container implements Ex
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ExampleRow> getRows()
-	{
-		if (rows == null)
-		{
-			rows = new EObjectContainmentWithInverseEList<ExampleRow>(ExampleRow.class, this, JnarioPackage.EXAMPLE_TABLE__ROWS, JnarioPackage.EXAMPLE_ROW__TABLE);
+	public EList<ExampleRow> getRows() {
+		if (rows == null) {
+			rows = new EObjectContainmentWithInverseEList<ExampleRow>(ExampleRow.class, this, CommonPackage.EXAMPLE_TABLE__ROWS, CommonPackage.EXAMPLE_ROW__TABLE);
 		}
 		return rows;
 	}
@@ -197,15 +181,13 @@ public class ExampleTableImpl extends MinimalEObjectImpl.Container implements Ex
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-	{
-		switch (featureID)
-		{
-			case JnarioPackage.EXAMPLE_TABLE__HEADING:
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case CommonPackage.EXAMPLE_TABLE__HEADING:
 				if (heading != null)
-					msgs = ((InternalEObject)heading).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.EXAMPLE_TABLE__HEADING, null, msgs);
+					msgs = ((InternalEObject)heading).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CommonPackage.EXAMPLE_TABLE__HEADING, null, msgs);
 				return basicSetHeading((ExampleHeading)otherEnd, msgs);
-			case JnarioPackage.EXAMPLE_TABLE__ROWS:
+			case CommonPackage.EXAMPLE_TABLE__ROWS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRows()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -217,13 +199,11 @@ public class ExampleTableImpl extends MinimalEObjectImpl.Container implements Ex
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-	{
-		switch (featureID)
-		{
-			case JnarioPackage.EXAMPLE_TABLE__HEADING:
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case CommonPackage.EXAMPLE_TABLE__HEADING:
 				return basicSetHeading(null, msgs);
-			case JnarioPackage.EXAMPLE_TABLE__ROWS:
+			case CommonPackage.EXAMPLE_TABLE__ROWS:
 				return ((InternalEList<?>)getRows()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -235,15 +215,13 @@ public class ExampleTableImpl extends MinimalEObjectImpl.Container implements Ex
 	 * @generated
 	 */
 	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType)
-	{
-		switch (featureID)
-		{
-			case JnarioPackage.EXAMPLE_TABLE__NAME:
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case CommonPackage.EXAMPLE_TABLE__NAME:
 				return getName();
-			case JnarioPackage.EXAMPLE_TABLE__HEADING:
+			case CommonPackage.EXAMPLE_TABLE__HEADING:
 				return getHeading();
-			case JnarioPackage.EXAMPLE_TABLE__ROWS:
+			case CommonPackage.EXAMPLE_TABLE__ROWS:
 				return getRows();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -256,17 +234,15 @@ public class ExampleTableImpl extends MinimalEObjectImpl.Container implements Ex
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public void eSet(int featureID, Object newValue)
-	{
-		switch (featureID)
-		{
-			case JnarioPackage.EXAMPLE_TABLE__NAME:
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case CommonPackage.EXAMPLE_TABLE__NAME:
 				setName((String)newValue);
 				return;
-			case JnarioPackage.EXAMPLE_TABLE__HEADING:
+			case CommonPackage.EXAMPLE_TABLE__HEADING:
 				setHeading((ExampleHeading)newValue);
 				return;
-			case JnarioPackage.EXAMPLE_TABLE__ROWS:
+			case CommonPackage.EXAMPLE_TABLE__ROWS:
 				getRows().clear();
 				getRows().addAll((Collection<? extends ExampleRow>)newValue);
 				return;
@@ -280,17 +256,15 @@ public class ExampleTableImpl extends MinimalEObjectImpl.Container implements Ex
 	 * @generated
 	 */
 	@Override
-	public void eUnset(int featureID)
-	{
-		switch (featureID)
-		{
-			case JnarioPackage.EXAMPLE_TABLE__NAME:
+	public void eUnset(int featureID) {
+		switch (featureID) {
+			case CommonPackage.EXAMPLE_TABLE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case JnarioPackage.EXAMPLE_TABLE__HEADING:
+			case CommonPackage.EXAMPLE_TABLE__HEADING:
 				setHeading((ExampleHeading)null);
 				return;
-			case JnarioPackage.EXAMPLE_TABLE__ROWS:
+			case CommonPackage.EXAMPLE_TABLE__ROWS:
 				getRows().clear();
 				return;
 		}
@@ -303,15 +277,13 @@ public class ExampleTableImpl extends MinimalEObjectImpl.Container implements Ex
 	 * @generated
 	 */
 	@Override
-	public boolean eIsSet(int featureID)
-	{
-		switch (featureID)
-		{
-			case JnarioPackage.EXAMPLE_TABLE__NAME:
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case CommonPackage.EXAMPLE_TABLE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case JnarioPackage.EXAMPLE_TABLE__HEADING:
+			case CommonPackage.EXAMPLE_TABLE__HEADING:
 				return heading != null;
-			case JnarioPackage.EXAMPLE_TABLE__ROWS:
+			case CommonPackage.EXAMPLE_TABLE__ROWS:
 				return rows != null && !rows.isEmpty();
 		}
 		return super.eIsSet(featureID);
@@ -323,8 +295,7 @@ public class ExampleTableImpl extends MinimalEObjectImpl.Container implements Ex
 	 * @generated
 	 */
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());

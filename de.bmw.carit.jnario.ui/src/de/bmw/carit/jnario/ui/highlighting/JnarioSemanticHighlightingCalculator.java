@@ -19,8 +19,8 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.xtend2.ui.highlighting.XtendHighlightingCalculator;
 
+import de.bmw.carit.jnario.common.ExampleHeading;
 import de.bmw.carit.jnario.jnario.AndReference;
-import de.bmw.carit.jnario.jnario.ExampleHeading;
 import de.bmw.carit.jnario.jnario.GivenReference;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
 import de.bmw.carit.jnario.jnario.Step;
@@ -68,13 +68,6 @@ public class JnarioSemanticHighlightingCalculator extends XtendHighlightingCalcu
 		}
 
 
-
-
-		@Override
-		public Boolean caseExampleHeading(ExampleHeading object) {
-			// TODO Auto-generated method stub
-			return super.caseExampleHeading(object);
-		}
 
 		private String getFirstWord(String desc) {
 			if(desc != null){

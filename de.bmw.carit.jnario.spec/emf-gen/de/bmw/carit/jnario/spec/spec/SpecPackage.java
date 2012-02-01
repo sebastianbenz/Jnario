@@ -8,8 +8,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
-import org.eclipse.xtext.xbase.XbasePackage;
-
 import org.eclipse.xtext.xtend2.xtend2.Xtend2Package;
 
 /**
@@ -490,34 +488,6 @@ public interface SpecPackage extends EPackage
 	 */
 	int AFTER_FEATURE_COUNT = TEST_FUNCTION_FEATURE_COUNT + 1;
 
-	/**
-	 * The meta object id for the '{@link de.bmw.carit.jnario.spec.spec.impl.AssertionImpl <em>Assertion</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.bmw.carit.jnario.spec.spec.impl.AssertionImpl
-	 * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getAssertion()
-	 * @generated
-	 */
-	int ASSERTION = 6;
-
-	/**
-	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSERTION__EXPRESSION = XbasePackage.XEXPRESSION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Assertion</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSERTION_FEATURE_COUNT = XbasePackage.XEXPRESSION_FEATURE_COUNT + 1;
-
 
 	/**
 	 * Returns the meta object for class '{@link de.bmw.carit.jnario.spec.spec.SpecFile <em>File</em>}'.
@@ -679,27 +649,6 @@ public interface SpecPackage extends EPackage
 	EReference getTestFunction_Body();
 
 	/**
-	 * Returns the meta object for class '{@link de.bmw.carit.jnario.spec.spec.Assertion <em>Assertion</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Assertion</em>'.
-	 * @see de.bmw.carit.jnario.spec.spec.Assertion
-	 * @generated
-	 */
-	EClass getAssertion();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.spec.spec.Assertion#getExpression <em>Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Expression</em>'.
-	 * @see de.bmw.carit.jnario.spec.spec.Assertion#getExpression()
-	 * @see #getAssertion()
-	 * @generated
-	 */
-	EReference getAssertion_Expression();
-
-	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -853,24 +802,6 @@ public interface SpecPackage extends EPackage
 		 * @generated
 		 */
 		EReference TEST_FUNCTION__BODY = eINSTANCE.getTestFunction_Body();
-
-		/**
-		 * The meta object literal for the '{@link de.bmw.carit.jnario.spec.spec.impl.AssertionImpl <em>Assertion</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.bmw.carit.jnario.spec.spec.impl.AssertionImpl
-		 * @see de.bmw.carit.jnario.spec.spec.impl.SpecPackageImpl#getAssertion()
-		 * @generated
-		 */
-		EClass ASSERTION = eINSTANCE.getAssertion();
-
-		/**
-		 * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ASSERTION__EXPRESSION = eINSTANCE.getAssertion_Expression();
 
 	}
 

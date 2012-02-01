@@ -25,7 +25,7 @@ class StepNameProvider {
 		}
 		return referenceText(ref, JnarioPackage::eINSTANCE.stepReference_Reference)
 	} 
-	
+
 	def referenceText(EObject obj, EReference ref){
 		val nodes = findNodesForFeature(obj, ref)
 		val leafs = nodes.filter(typeof(ILeafNode))

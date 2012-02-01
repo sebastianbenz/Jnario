@@ -3,13 +3,12 @@ package de.bmw.carit.jnario.jvmmodel;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.UnmodifiableIterator;
 import com.google.inject.Inject;
+import de.bmw.carit.jnario.common.ExampleHeading;
+import de.bmw.carit.jnario.common.ExampleRow;
+import de.bmw.carit.jnario.common.ExampleTable;
 import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder;
 import de.bmw.carit.jnario.generator.JnarioCompiler;
 import de.bmw.carit.jnario.jnario.Background;
-import de.bmw.carit.jnario.jnario.ExampleCell;
-import de.bmw.carit.jnario.jnario.ExampleHeading;
-import de.bmw.carit.jnario.jnario.ExampleRow;
-import de.bmw.carit.jnario.jnario.ExampleTable;
 import de.bmw.carit.jnario.jnario.Feature;
 import de.bmw.carit.jnario.jnario.JnarioFile;
 import de.bmw.carit.jnario.jnario.Scenario;
@@ -103,45 +102,44 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
       JnarioFile jnarioFile = ((JnarioFile) object);
       XtendClass _xtendClass = jnarioFile==null?(XtendClass)null:jnarioFile.getXtendClass();
       Feature feature = ((Feature) _xtendClass);
-      boolean _operator_notEquals = ObjectExtensions.operator_notEquals(feature, null);
+      boolean _operator_equals = ObjectExtensions.operator_equals(feature, null);
+      if (_operator_equals) {
+        return;
+      }
+      JvmGenericType backgroundClass = null;
+      Background _background = feature.getBackground();
+      boolean _operator_notEquals = ObjectExtensions.operator_notEquals(_background, null);
       if (_operator_notEquals) {
         {
-          JvmGenericType backgroundClass = null;
-          Background _background = feature.getBackground();
-          boolean _operator_notEquals_1 = ObjectExtensions.operator_notEquals(_background, null);
-          if (_operator_notEquals_1) {
-            {
-              JvmGenericType _generateBackground = this.generateBackground(feature, jnarioFile);
-              backgroundClass = _generateBackground;
-              acceptor.accept(backgroundClass);
-            }
-          }
-          ArrayList<JvmGenericType> _newArrayList = CollectionLiterals.<JvmGenericType>newArrayList();
-          final List<JvmGenericType> scenarios = _newArrayList;
-          EList<XtendMember> _members = feature.getMembers();
-          for (final XtendMember member : _members) {
-            {
-              final Scenario scenario = ((Scenario) member);
-              String _name = feature.getName();
-              String _featureClassName = this._javaNameProvider.getFeatureClassName(_name);
-              String _name_1 = scenario.getName();
-              String _scenarioClassName = this._javaNameProvider.getScenarioClassName(_name_1);
-              String _operator_plus = StringExtensions.operator_plus(_featureClassName, _scenarioClassName);
-              final String className = _operator_plus;
-              JvmGenericType _infer = this.infer(scenario, jnarioFile, className, backgroundClass);
-              final JvmGenericType clazz = _infer;
-              EList<JvmAnnotationReference> _annotations = clazz.getAnnotations();
-              JvmAnnotationReference _runnerAnnotations = this.runnerAnnotations(scenario);
-              CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _runnerAnnotations);
-              acceptor.accept(clazz);
-              scenarios.add(clazz);
-            }
-          }
-          JvmGenericType _generateFeatureSuite = this.generateFeatureSuite(feature, jnarioFile, scenarios);
-          final JvmGenericType featureClazz = _generateFeatureSuite;
-          acceptor.accept(featureClazz);
+          JvmGenericType _generateBackground = this.generateBackground(feature, jnarioFile);
+          backgroundClass = _generateBackground;
+          acceptor.accept(backgroundClass);
         }
       }
+      ArrayList<JvmGenericType> _newArrayList = CollectionLiterals.<JvmGenericType>newArrayList();
+      final List<JvmGenericType> scenarios = _newArrayList;
+      EList<XtendMember> _members = feature.getMembers();
+      for (final XtendMember member : _members) {
+        {
+          final Scenario scenario = ((Scenario) member);
+          String _name = feature.getName();
+          String _featureClassName = this._javaNameProvider.getFeatureClassName(_name);
+          String _name_1 = scenario.getName();
+          String _scenarioClassName = this._javaNameProvider.getScenarioClassName(_name_1);
+          String _operator_plus = StringExtensions.operator_plus(_featureClassName, _scenarioClassName);
+          final String className = _operator_plus;
+          JvmGenericType _infer = this.infer(scenario, jnarioFile, className, backgroundClass);
+          final JvmGenericType clazz = _infer;
+          EList<JvmAnnotationReference> _annotations = clazz.getAnnotations();
+          JvmAnnotationReference _runnerAnnotations = this.runnerAnnotations(scenario);
+          CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _runnerAnnotations);
+          acceptor.accept(clazz);
+          scenarios.add(clazz);
+        }
+      }
+      JvmGenericType _generateFeatureSuite = this.generateFeatureSuite(feature, jnarioFile, scenarios);
+      final JvmGenericType featureClazz = _generateFeatureSuite;
+      acceptor.accept(featureClazz);
   }
   
   public JvmGenericType generateFeatureSuite(final Feature feature, final JnarioFile jnarioFile, final List<JvmGenericType> scenarios) {
@@ -464,7 +462,7 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
   }
   
   public void checkIfExampleField(final XtendField field) {
-      ExampleTable _containerOfType = EcoreUtil2.<ExampleTable>getContainerOfType(field, de.bmw.carit.jnario.jnario.ExampleTable.class);
+      ExampleTable _containerOfType = EcoreUtil2.<ExampleTable>getContainerOfType(field, de.bmw.carit.jnario.common.ExampleTable.class);
       ExampleTable examples = _containerOfType;
       boolean _operator_equals = ObjectExtensions.operator_equals(examples, null);
       if (_operator_equals) {
@@ -489,16 +487,15 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
       EList<ExampleRow> _rows_1 = examples.getRows();
       ExampleRow _get = _rows_1.get(0);
       ExampleRow exampleRow = _get;
-      EList<ExampleCell> _parts_2 = exampleRow.getParts();
+      EList<XExpression> _parts_2 = exampleRow.getParts();
       int _size = _parts_2.size();
       boolean _operator_lessThan = IntegerExtensions.operator_lessThan(index, _size);
       if (_operator_lessThan) {
         {
-          EList<ExampleCell> _parts_3 = exampleRow.getParts();
-          ExampleCell _get_1 = _parts_3.get(index);
-          ExampleCell exampleCell = _get_1;
-          XExpression _name = exampleCell.getName();
-          JvmTypeReference _type = this._iTypeProvider.getType(_name);
+          EList<XExpression> _parts_3 = exampleRow.getParts();
+          XExpression _get_1 = _parts_3.get(index);
+          XExpression exampleCell = _get_1;
+          JvmTypeReference _type = this._iTypeProvider.getType(exampleCell);
           field.setType(_type);
           field.setVisibility(JvmVisibility.PUBLIC);
         }
@@ -655,10 +652,9 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
     {
       StringBuilderBasedAppendable _stringBuilderBasedAppendable = new StringBuilderBasedAppendable();
       StringBuilderBasedAppendable appendable = _stringBuilderBasedAppendable;
-      EList<ExampleCell> _parts = row.getParts();
-      ExampleCell _get = _parts.get(i);
-      XExpression _name = _get.getName();
-      this._jnarioCompiler.toJavaExpression(_name, appendable);
+      EList<XExpression> _parts = row.getParts();
+      XExpression _get = _parts.get(i);
+      this._jnarioCompiler.toJavaExpression(_get, appendable);
       _xblockexpression = (appendable);
     }
     return _xblockexpression;

@@ -28,7 +28,7 @@ import org.eclipse.xtext.xtend2.compiler.Xtend2Compiler;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 
-import de.bmw.carit.jnario.spec.spec.Assertion;
+import de.bmw.carit.jnario.common.Assertion;
 
 @SuppressWarnings("restriction")
 /**

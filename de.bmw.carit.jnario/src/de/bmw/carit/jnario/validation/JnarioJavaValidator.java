@@ -27,9 +27,10 @@ import org.eclipse.xtext.xbase.typing.ITypeProvider;
 
 import com.google.inject.Inject;
 
-import de.bmw.carit.jnario.jnario.ExampleHeading;
-import de.bmw.carit.jnario.jnario.ExampleRow;
-import de.bmw.carit.jnario.jnario.ExampleTable;
+import de.bmw.carit.jnario.common.CommonPackage;
+import de.bmw.carit.jnario.common.ExampleHeading;
+import de.bmw.carit.jnario.common.ExampleRow;
+import de.bmw.carit.jnario.common.ExampleTable;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
 import de.bmw.carit.jnario.jnario.Scenario;
 import de.bmw.carit.jnario.jnario.Step;
@@ -52,7 +53,7 @@ public class JnarioJavaValidator extends AbstractJnarioJavaValidator {
 			hasSameTypesInColumns(rows);
 		}
 		else{
-			error("Examples rows have to have the same number of columns", JnarioPackage.Literals.EXAMPLE_TABLE__HEADING);
+			error("Examples rows have to have the same number of columns", CommonPackage.Literals.EXAMPLE_TABLE__HEADING);
 		}
 	}
 
@@ -68,7 +69,8 @@ public class JnarioJavaValidator extends AbstractJnarioJavaValidator {
 	private void hasSameTypesInColumns(EList<ExampleRow> rows){
 		int colNum = 0;
 		if(rows.size() > 0){
-			for(XExpression cell: rows.get(0).getParts()){
+			ExampleRow firstRow = rows.get(0);
+			for(XExpression cell: firstRow.getParts()){
 				JvmType type = typeProvider.getType(cell).getType();
 				//starting with second row
 				for(int rowNum = 1; rowNum < rows.size(); rowNum++){
@@ -76,11 +78,11 @@ public class JnarioJavaValidator extends AbstractJnarioJavaValidator {
 					XExpression expression = parts.get(colNum);
 					JvmType compareType = typeProvider.getType(expression).getType();
 					if(!type.equals(compareType)){
-						error("Examples columns have to have the same type - Conflicting types: " + type.getQualifiedName() + ", " + compareType.getQualifiedName(), JnarioPackage.Literals.EXAMPLE_TABLE__ROWS);
+						error("Examples columns have to have the same type - Conflicting types: " + type.getQualifiedName() + ", " + compareType.getQualifiedName(), CommonPackage.Literals.EXAMPLE_TABLE__ROWS);
 					}
 				}
 				colNum++;
-			}
+			} 
 		}
 	}
 
