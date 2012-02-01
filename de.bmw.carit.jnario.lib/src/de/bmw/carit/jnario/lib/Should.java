@@ -23,7 +23,7 @@ import org.hamcrest.core.IsNot;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
-public class XMatchers {
+public class Should {
 
 	public static class IsFactory<T> implements MatcherFactory<T> {
 		

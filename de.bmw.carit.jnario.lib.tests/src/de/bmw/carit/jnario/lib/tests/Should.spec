@@ -9,7 +9,7 @@ import org.eclipse.xtext.xbase.lib.Procedures$Procedure1
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
-describe XMatchers{
+describe Should{
 	
 	describe Object{
 		
