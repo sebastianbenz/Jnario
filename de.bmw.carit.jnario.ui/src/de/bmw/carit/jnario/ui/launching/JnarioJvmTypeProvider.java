@@ -60,6 +60,9 @@ public class JnarioJvmTypeProvider {
 	protected String getTypeName(Feature feature) {
 		String typeName = nameProvider.toFeatureSuiteJavaClassName(feature);
 		JnarioFile jnarioFile = getContainerOfType(feature, JnarioFile.class);
+		String packageName = jnarioFile.getPackage();
+		if(packageName == null)
+			return typeName;
 		return jnarioFile.getPackage() + "." + typeName;
 	}
 }
