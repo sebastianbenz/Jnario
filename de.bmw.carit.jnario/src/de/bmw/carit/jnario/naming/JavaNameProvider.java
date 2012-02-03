@@ -9,6 +9,8 @@ package de.bmw.carit.jnario.naming;
 
 import org.eclipse.xtext.util.Strings;
 
+import de.bmw.carit.jnario.jnario.Feature;
+
 /**
  * @author Birgit Engelmann
  */
@@ -16,6 +18,10 @@ public class JavaNameProvider {
 	
 	private static final String FEATURE = "Feature: ";
 	private static final String SCENARIO = "Scenario: ";
+	
+	public String toFeatureSuiteJavaClassName(Feature feature){
+		return getFeatureClassName(feature.getName());
+	}
 	
 	public String getFeatureClassName(String featureDescription){
 		if(featureDescription.indexOf(FEATURE) == 0){

@@ -60,6 +60,7 @@ import org.eclipse.xtext.xtend2.ui.editor.XtendNatureAddingEditorCallback;
 import org.eclipse.xtext.xtend2.ui.highlighting.RichStringAwareTokenScanner;
 import org.eclipse.xtext.xtend2.ui.hover.XtendHoverProvider;
 import org.eclipse.xtext.xtend2.ui.hyperlinking.XtendHyperlinkHelper;
+import org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegate;
 import org.eclipse.xtext.xtend2.ui.outline.Xtend2OutlineNodeComparator;
 import org.eclipse.xtext.xtend2.ui.outline.Xtend2OutlinePage;
 import org.eclipse.xtext.xtend2.ui.outline.Xtend2QuickOutlineFilterAndSorter;
@@ -76,6 +77,7 @@ import de.bmw.carit.jnario.ui.editor.JnarioTaskTokenTypeToPartitionTypeMapper;
 import de.bmw.carit.jnario.ui.highlighting.JnarioHighlightingConfiguration;
 import de.bmw.carit.jnario.ui.highlighting.JnarioSemanticHighlightingCalculator;
 import de.bmw.carit.jnario.ui.highlighting.JnarioTokenHighlighting;
+import de.bmw.carit.jnario.ui.launching.JnarioJavaElementDelegate;
 
 /**
  * @author Birgit Engelmann
@@ -237,6 +239,10 @@ public class JnarioUiModule extends de.bmw.carit.jnario.ui.AbstractJnarioUiModul
 	
 	public Class<? extends ToggleSLCommentAction.Factory> bindToggleCommentFactory() {
 		return RichStringAwareToggleCommentAction.Factory.class;
+	}
+	
+	public Class<? extends JavaElementDelegate> bindJavaElementDelegate(){
+		return JnarioJavaElementDelegate.class;
 	}
 	
 }

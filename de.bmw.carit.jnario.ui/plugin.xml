@@ -278,10 +278,15 @@
     </provider>
   </extension>
   
-  <extension point="org.eclipse.core.runtime.adapters">
+   <extension point="org.eclipse.core.runtime.adapters">
      <factory 
         class="de.bmw.carit.jnario.ui.JnarioExecutableExtensionFactory:org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegateAdapterFactory"
         adaptableType="org.eclipse.ui.IFileEditorInput">
+        <adapter type="org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegate"/>
+     </factory>
+     <factory 
+        class="de.bmw.carit.jnario.ui.JnarioExecutableExtensionFactory:org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegateAdapterFactory"
+        adaptableType="org.eclipse.ui.IEditorPart">
         <adapter type="org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegate"/>
      </factory>
      <factory 
