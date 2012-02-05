@@ -230,6 +230,35 @@ public interface CommonPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link de.bmw.carit.jnario.common.impl.MatcherImpl <em>Matcher</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.bmw.carit.jnario.common.impl.MatcherImpl
+	 * @see de.bmw.carit.jnario.common.impl.CommonPackageImpl#getMatcher()
+	 * @generated
+	 */
+	int MATCHER = 4;
+
+	/**
+	 * The feature id for the '<em><b>Closure</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATCHER__CLOSURE = XbasePackage.XEXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Matcher</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATCHER_FEATURE_COUNT = XbasePackage.XEXPRESSION_FEATURE_COUNT + 1;
+
+
+	/**
 	 * Returns the meta object for class '{@link de.bmw.carit.jnario.common.ExampleTable <em>Example Table</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -358,6 +387,27 @@ public interface CommonPackage extends EPackage {
 	EReference getAssertion_Expression();
 
 	/**
+	 * Returns the meta object for class '{@link de.bmw.carit.jnario.common.Matcher <em>Matcher</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Matcher</em>'.
+	 * @see de.bmw.carit.jnario.common.Matcher
+	 * @generated
+	 */
+	EClass getMatcher();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.common.Matcher#getClosure <em>Closure</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Closure</em>'.
+	 * @see de.bmw.carit.jnario.common.Matcher#getClosure()
+	 * @see #getMatcher()
+	 * @generated
+	 */
+	EReference getMatcher_Closure();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -482,6 +532,24 @@ public interface CommonPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ASSERTION__EXPRESSION = eINSTANCE.getAssertion_Expression();
+
+		/**
+		 * The meta object literal for the '{@link de.bmw.carit.jnario.common.impl.MatcherImpl <em>Matcher</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.bmw.carit.jnario.common.impl.MatcherImpl
+		 * @see de.bmw.carit.jnario.common.impl.CommonPackageImpl#getMatcher()
+		 * @generated
+		 */
+		EClass MATCHER = eINSTANCE.getMatcher();
+
+		/**
+		 * The meta object literal for the '<em><b>Closure</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MATCHER__CLOSURE = eINSTANCE.getMatcher_Closure();
 
 	}
 

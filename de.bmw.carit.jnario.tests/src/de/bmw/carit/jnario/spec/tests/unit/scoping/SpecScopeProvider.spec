@@ -19,7 +19,7 @@ describe SpecScopeProvider {
 	
 	@Inject ModelStore modelStore
 	
-	it "should resolve Jvm type ExampleGroup target"{
+	"should resolve Jvm type ExampleGroup target"{
 		modelStore.parseSpec('
 			package bootstrap
 			
@@ -36,7 +36,7 @@ describe SpecScopeProvider {
 		contains(scope, "Assert") 
 	}    
 	
-	it "should resolve operations from surrounding ExampleGroup's target"{
+	"should resolve operations from surrounding ExampleGroup's target"{
 		modelStore.parseSpec('
 			package bootstrap
 			
@@ -44,7 +44,7 @@ describe SpecScopeProvider {
 
 			describe Assert{
 				describe assertNotNull(String, Object){
-					it "assertNotNull(String, Object)"{
+					"assertNotNull(String, Object)"{
 					}
 				}
 			} 

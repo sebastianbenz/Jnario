@@ -9,7 +9,7 @@ import de.bmw.carit.jnario.spec.spec.ExampleGroup
  */
 describe ExampleGroup {
   
-	it "should resolve target class"{
+	"should resolve target class"{
 		val spec = '
 			package bootstrap
 			
@@ -18,7 +18,7 @@ describe ExampleGroup {
 	
 			describe Assert {
 			
-				it "should resolve target class"{
+				"should resolve target class"{
 				}  
 						
 			}
@@ -26,7 +26,7 @@ describe ExampleGroup {
 		assertThat(execute(spec), successful)
 	} 
 	
-	it "should be able to declare helper methods"{
+	"should be able to declare helper methods"{
 		val spec = '
 			package bootstrap
 									
@@ -34,7 +34,7 @@ describe ExampleGroup {
 			
 				int i = 0
 			
-				it "should be able to declare void helper methods"{
+				"should be able to declare void helper methods"{
 					inc()
 					i.should.be(1)
 				}
@@ -43,7 +43,7 @@ describe ExampleGroup {
 					i = i + 1 
 				} 
 				
-				it "should be able to declare helper methods with parameter and return type"{
+				"should be able to declare helper methods with parameter and return type"{
 					inc2(i).should.be(1) 
 				}
 				  
@@ -51,14 +51,14 @@ describe ExampleGroup {
 					value + 1 
 				}
 				
-				it "should be able to declare helper methods with inferred return type"{
+				"should be able to declare helper methods with inferred return type"{
 				}
 				
 				def int inc3(){
 					5
 				}
 				
-				it "should automatically rethrow all exceptions"{
+				"should automatically rethrow all exceptions"{
 					// will not compile otherwise
 				}
 				  

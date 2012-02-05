@@ -17,7 +17,7 @@ import com.google.inject.Singleton;
 
 import de.bmw.carit.jnario.lib.Each;
 import de.bmw.carit.jnario.lib.Expectations;
-import de.bmw.carit.jnario.lib.XMatchers;
+import de.bmw.carit.jnario.lib.Should;
 
 @Singleton
 public class JnarioExtensionClassNameProvider extends ExtensionClassNameProvider {
@@ -25,7 +25,7 @@ public class JnarioExtensionClassNameProvider extends ExtensionClassNameProvider
 	@Override
 	protected Multimap<Class<?>, Class<?>> simpleComputeExtensionClasses() {
 		Multimap<Class<?>, Class<?>> result = super.simpleComputeExtensionClasses();
-		result.put(Object.class, XMatchers.class);
+		result.put(Object.class, Should.class);
 		result.put(Object.class, CoreMatchers.class);
 		return result;
 	}

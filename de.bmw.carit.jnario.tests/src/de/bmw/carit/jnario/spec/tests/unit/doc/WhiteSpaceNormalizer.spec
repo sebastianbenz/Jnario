@@ -4,7 +4,7 @@ import de.bmw.carit.jnario.spec.doc.WhiteSpaceNormalizer
 
 describe WhiteSpaceNormalizer{
 	
-	it "should remove trailing whitespace"{
+	"should remove trailing whitespace"{
 		subject.normalize(null).should.be("")
 		subject.normalize("\thello").should.be("hello")
 		subject.normalize("\thello\n\tworld").should.be("hello\nworld")

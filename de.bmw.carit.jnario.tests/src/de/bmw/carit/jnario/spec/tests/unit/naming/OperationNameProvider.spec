@@ -34,7 +34,7 @@ describe OperationNameProvider{
 		operations = jvmOperations.toMap[simpleName]
 	}
 	
-	it "should name methods similar to JavaDoc links"{
+	"should name methods similar to JavaDoc links"{
 		nameOf("simpleOperation").should.be("simpleOperation")
 		nameOf("operationWithSingleArgument").should.be("operationWithSingleArgument(String)")
 		nameOf("operationWithMultipleArguments").should.be("operationWithMultipleArguments(String, Object, int)")

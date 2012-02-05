@@ -64,6 +64,7 @@ public class CommonFactoryImpl extends EFactoryImpl implements CommonFactory {
 			case CommonPackage.EXAMPLE_HEADING: return createExampleHeading();
 			case CommonPackage.EXAMPLE_ROW: return createExampleRow();
 			case CommonPackage.ASSERTION: return createAssertion();
+			case CommonPackage.MATCHER: return createMatcher();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -107,6 +108,16 @@ public class CommonFactoryImpl extends EFactoryImpl implements CommonFactory {
 	public Assertion createAssertion() {
 		AssertionImpl assertion = new AssertionImpl();
 		return assertion;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Matcher createMatcher() {
+		MatcherImpl matcher = new MatcherImpl();
+		return matcher;
 	}
 
 	/**

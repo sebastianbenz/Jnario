@@ -38,42 +38,43 @@ Member returns xtend::XtendMember:
 	(
 		
 		{Example.annotationInfo = current}
-		(preamble='it' ('throws' exception=[types::JvmDeclaredType|QualifiedName])? name=STRING
-			body=XBlockExpression?)
+		(('throws' exception=[types::JvmDeclaredType|QualifiedName])? name=STRING 
+				body=(XBlockExpression)?)
 	|	{ExampleGroup.annotationInfo = current}
-			(preamble=('describe') targetType=[types::JvmDeclaredType|QualifiedName]? name=STRING? '{'
+			(preamble=('describe') targetType=[types::JvmDeclaredType|QualifiedName]? =>name=STRING? '{'
       		members+=Member*
       	'}')
     |	{Before.annotationInfo = current}
-		('before' (beforeAll?='all')? name=(STRING | ID)?
+		('before' (beforeAll?='all')? =>name=(STRING | ID)?
 			body=XBlockExpression?)
 	|	{After.annotationInfo = current}
-		('after' (afterAll?='all')? name=(STRING | ID)?
+		('after' (afterAll?='all')? =>name=(STRING | ID)?
 			body=XBlockExpression?)
     |	{ExampleGroup.annotationInfo = current}
-			(preamble=('context') targetOperation=[types::JvmOperation|Method]? name=STRING? '{'
+			(preamble=('context') targetOperation=[types::JvmOperation|Method]? =>name=STRING? '{'
       		members+=Member*
       	'}')
-	|	{ExampleTable.annotationInfo = current} ('example' name=STRING? '{'
+	|	{ExampleTable.annotationInfo = current} ('example' =>name=STRING? '{'
 			(heading = ExampleHeading
 			(rows += ExampleRow)*)?
       	'}') 
 	|	{xtend::XtendField.annotationInfo = current}	
-		 	(extension?='extension' type=JvmTypeReference name=ID?
-			| static?='static'? type=JvmTypeReference name=ID)
+			visibility=Visibility?   
+		 	(extension?='extension' type=JvmTypeReference name=ValidID?
+			| static?='static'? type=JvmTypeReference name=ValidID)
 			('=' initialValue=XExpression)?
 		
 	|	{xtend::XtendFunction.annotationInfo = current}
-			('def' | override?='override') static?='static'? (dispatch?='dispatch'?) 
+			('def' | override?='override') visibility=Visibility? static?='static'? (dispatch?='dispatch'?) 
 			('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')?
-			( =>(returnType=JvmTypeReference createExtensionInfo=CreateExtensionInfo name=ID '(')
-			| =>(returnType=JvmTypeReference name=ID '(')
-			| =>(createExtensionInfo=CreateExtensionInfo name=ID '(')
-			| name=ID '('
+			( =>(returnType=JvmTypeReference createExtensionInfo=CreateExtensionInfo name=ValidID '(')
+			| =>(returnType=JvmTypeReference name=ValidID '(')
+			| =>(createExtensionInfo=CreateExtensionInfo name=ValidID '(')
+			| name=ValidID '('
 			)
 			(parameters+=Parameter (',' parameters+=Parameter)*)? ')'
-			('throws' exceptions+=JvmTypeReference (',' exceptions+=JvmTypeReference)*)?
-			(expression=XBlockExpression)?
+			(=>'throws' exceptions+=JvmTypeReference (',' exceptions+=JvmTypeReference)*)?
+			(expression=XBlockExpression | expression=RichString )?
 	 );
 	 
 XPrimaryExpression returns xbase::XExpression:
@@ -90,13 +91,25 @@ XPrimaryExpression returns xbase::XExpression:
 	XReturnExpression |
 	XTryCatchFinallyExpression |
 	XParenthesizedExpression |
-	XAssert;
+	Assertion |
+	Matcher;
 
 
-XAssert returns xbase::XExpression: 
+Assertion returns xbase::XExpression: 
 	{Assertion}
 	'assert' expression=XExpression;
 
+
+Matcher:
+	'#' closure=MatcherClosure
+;
+
+MatcherClosure returns xbase::XExpression:
+	{xbase::XClosure} 
+	'[' 
+		=>(declaredFormalParameters+=JvmFormalParameter explicitSyntax?='|')? 
+		expression=XExpressionInClosure 
+	']';
 
 ExampleHeading: 
 	'|' {ExampleHeading} (parts+=ExampleHeadingCell )*

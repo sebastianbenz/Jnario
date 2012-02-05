@@ -63,7 +63,7 @@ public abstract class BaseMatcherChain<T> implements MatcherChain<T> {
 	private List<MatcherFactory<T>> factories;
 
 	public BaseMatcherChain() {
-		this(ImmutableList.<MatcherFactory<T>>of(new XMatchers.IsFactory<T>()));
+		this(ImmutableList.<MatcherFactory<T>>of(new Should.IsFactory<T>()));
 	}
 	
 	public BaseMatcherChain(List<MatcherFactory<T>> factories){

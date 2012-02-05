@@ -2,13 +2,13 @@ package de.bmw.carit.jnario.spec.tests.integration
 
 describe "SimpleExample" {
  
-	it "should pass"{
+	"should pass"{
 		val spec = '
 			package bootstrap
 	
 			describe "Example" {
 			
-				it "should pass"{
+				"should pass"{
 						org::junit::Assert::assertTrue(true) 
 				} 
 						
@@ -18,13 +18,13 @@ describe "SimpleExample" {
 		org::junit::Assert::assertThat(result, de::bmw::carit::jnario::common::test::util::ResultMatchers::successful)
 	} 
 	
-	it "should fail"{
+	"should fail"{
 		val spec = '
 			package bootstrap
 
 			describe "Example" {
 			
-				it "should fail"{
+				"should fail"{
 						org::junit::Assert::assertFalse("reason of failure", true)
 				} 
 						

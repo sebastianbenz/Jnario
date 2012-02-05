@@ -7,7 +7,7 @@ import static de.bmw.carit.jnario.tests.util.SpecExecutor.*
 
 describe "Pending"{
 	
-	it "ignores empty examples during example runs"{
+	"ignores empty examples during example runs"{
 		val spec = '
 			package bootstrap
 
@@ -15,10 +15,10 @@ describe "Pending"{
 
 			describe "Pending" {
 
-				it "has no implementation in block expression"{
+				"has no implementation in block expression"{
 				} 
 				
-				it "has no body"
+				"has no body"
 						
 			}
 		'

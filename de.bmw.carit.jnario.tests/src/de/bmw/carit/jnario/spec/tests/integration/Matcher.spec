@@ -5,7 +5,7 @@ import org.junit.Assert
 /**
  * Jnario provides assertions on steroids.
  */
-describe "Assertion"{
+describe "Matcher"{
 	
 	"passes if the evaluated expression is true"{
 		assert true

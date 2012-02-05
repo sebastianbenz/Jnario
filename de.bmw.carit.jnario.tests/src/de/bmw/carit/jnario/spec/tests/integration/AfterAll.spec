@@ -7,7 +7,7 @@ import static extension de.bmw.carit.jnario.tests.util.SpecExecutor.*
  */ 
 describe "AfterAll" {
  
-	it "should be executed after all tests"{
+	"should be executed after all tests"{
 		val spec = '
 			package bootstrap 
 			
@@ -15,11 +15,11 @@ describe "AfterAll" {
 				
 				static int afterExecutionCount = 0
 				
-				it "should be executed after all tests (1)"{
+				"should be executed after all tests (1)"{
 					afterExecutionCount.should.be(0)
 				}	
 				
-				it "should be executed after all tests (2)"{
+				"should be executed after all tests (2)"{
 					afterExecutionCount.should.be(0)
 				}	
 				

@@ -62,6 +62,15 @@ public interface CommonFactory extends EFactory {
 	Assertion createAssertion();
 
 	/**
+	 * Returns a new object of class '<em>Matcher</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Matcher</em>'.
+	 * @generated
+	 */
+	Matcher createMatcher();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

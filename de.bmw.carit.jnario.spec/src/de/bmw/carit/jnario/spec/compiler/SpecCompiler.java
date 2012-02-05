@@ -29,6 +29,8 @@ import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 
 import de.bmw.carit.jnario.common.Assertion;
+import de.bmw.carit.jnario.common.Matcher;
+import de.bmw.carit.jnario.lib.Should;
 
 @SuppressWarnings("restriction")
 /**
@@ -39,11 +41,32 @@ public class SpecCompiler extends Xtend2Compiler {
 	@Inject
 	private ISerializer serializer;
 	
-	
 	@Inject
 	private XExpressionHelper expressionHelper; 
 
+	public void _toJavaExpression(Matcher matcher, IAppendable b) {
+		if (matcher.getClosure() == null){
+			return;
+		}
+		b.append(de.bmw.carit.jnario.lib.Should.class.getName());
+		b.append(".matches(\"");
+		describe(matcher, b);
+		b.append("\", ");
+		toJavaExpression(matcher.getClosure(), b);
+		b.append(");");
+	}
 	
+	public void _toJavaStatement(Matcher matcher, IAppendable b, boolean isReferenced) {
+		if (matcher.getClosure() == null){
+			return;
+		}
+		toJavaStatement(matcher.getClosure(), b, isReferenced);
+	}
+	
+	private void describe(Matcher matcher, IAppendable b) {
+		b.append("hello");
+	}
+
 	public void _toJavaStatement(Assertion assertion, IAppendable b, boolean isReferenced) {
 		if (assertion.getExpression() == null){
 			return;
@@ -55,6 +78,7 @@ public class SpecCompiler extends Xtend2Compiler {
 			generateSingleAssertion(assertion.getExpression(), b);
 		}
 	}
+	
 	
 	private void generateSingleAssertion(XExpression expr, IAppendable b) {
 		internalToJavaStatement(expr, b, true);

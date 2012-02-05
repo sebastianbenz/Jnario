@@ -92,6 +92,10 @@ public class CommonAdapterFactory extends AdapterFactoryImpl {
 				return createAssertionAdapter();
 			}
 			@Override
+			public Adapter caseMatcher(Matcher object) {
+				return createMatcherAdapter();
+			}
+			@Override
 			public Adapter caseXtendAnnotationTarget(XtendAnnotationTarget object) {
 				return createXtendAnnotationTargetAdapter();
 			}
@@ -176,6 +180,20 @@ public class CommonAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAssertionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.common.Matcher <em>Matcher</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.bmw.carit.jnario.common.Matcher
+	 * @generated
+	 */
+	public Adapter createMatcherAdapter() {
 		return null;
 	}
 

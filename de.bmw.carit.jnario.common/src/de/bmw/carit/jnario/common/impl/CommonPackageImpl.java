@@ -13,6 +13,7 @@ import de.bmw.carit.jnario.common.ExampleHeading;
 import de.bmw.carit.jnario.common.ExampleRow;
 import de.bmw.carit.jnario.common.ExampleTable;
 
+import de.bmw.carit.jnario.common.Matcher;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -58,6 +59,13 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * @generated
 	 */
 	private EClass assertionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass matcherEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -236,6 +244,24 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getMatcher() {
+		return matcherEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMatcher_Closure() {
+		return (EReference)matcherEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CommonFactory getCommonFactory() {
 		return (CommonFactory)getEFactoryInstance();
 	}
@@ -274,6 +300,9 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 
 		assertionEClass = createEClass(ASSERTION);
 		createEReference(assertionEClass, ASSERTION__EXPRESSION);
+
+		matcherEClass = createEClass(MATCHER);
+		createEReference(matcherEClass, MATCHER__CLOSURE);
 	}
 
 	/**
@@ -310,6 +339,7 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		// Add supertypes to classes
 		exampleTableEClass.getESuperTypes().add(theXtend2Package.getXtendMember());
 		assertionEClass.getESuperTypes().add(theXbasePackage.getXExpression());
+		matcherEClass.getESuperTypes().add(theXbasePackage.getXExpression());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(exampleTableEClass, ExampleTable.class, "ExampleTable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -327,6 +357,9 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 
 		initEClass(assertionEClass, Assertion.class, "Assertion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAssertion_Expression(), theXbasePackage.getXExpression(), null, "expression", null, 0, 1, Assertion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(matcherEClass, Matcher.class, "Matcher", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMatcher_Closure(), theXbasePackage.getXExpression(), null, "closure", null, 0, 1, Matcher.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

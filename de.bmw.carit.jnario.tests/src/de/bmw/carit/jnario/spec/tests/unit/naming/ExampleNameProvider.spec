@@ -20,19 +20,19 @@ describe ExampleNameProvider{
  
 	context toJavaClassName{ 
 		
-		it "should remove all white spaces from ExampleGroup's description"{
+		"should remove all white spaces from ExampleGroup's description"{
 			firstJavaClassName("describe 'My Example'").should.not.contain(" ")
 		}  
 		 
-		it "should append 'Spec' to class name"{ 
+		"should append 'Spec' to class name"{ 
 			firstJavaClassName("describe 'My Example'").should.endWith('Spec') 
 		}  
 		  
-		it "should prepend target type name"{
+		"should prepend target type name"{
 			firstJavaClassName("describe org.junit.Assert 'My Example'").should.startWith("Assert")
 		}  
 		
-		it "should convert description to camel case"{
+		"should convert description to camel case"{
 			each(
 				firstJavaClassName("describe 'my example'"),
 				firstJavaClassName("describe 'my\nexample'"),
@@ -41,19 +41,19 @@ describe ExampleNameProvider{
 			).should.be('MyExampleSpec')
 		} 
 		  
-		it "should append the target operation's name and params"{
+		"should append the target operation's name and params"{
 			secondJavaClassName("describe org.junit.Assert{
 										context assertTrue(boolean) 
 								 }").should.endWith('AssertTrueBooleanSpec')
 		}
 		
-		it "should append the description"{
+		"should append the description"{
 			secondJavaClassName("describe org.junit.Assert{
 										context 'assertTrue' 
 								 }").should.endWith('AssertTrueSpec')
 		}
 		
-		it "should prepend the parent ExampleGroup's name"{
+		"should prepend the parent ExampleGroup's name"{
 			secondJavaClassName("describe org.junit.Assert{
 									context assertTrue(boolean) 
 								}").should.be('AssertAssertTrueBooleanSpec')
@@ -71,12 +71,12 @@ describe ExampleNameProvider{
   
   	context toMethodName(Example){
   		
-  		it "should convert method description to camel case starting in lowercase"{
+  		"should convert method description to camel case starting in lowercase"{
 			each(
-				firstMethodName("it 'my example'"),
-				firstMethodName("it 'my\nexample'"),
-				firstMethodName("it 'my\texample'"),
-				firstMethodName("it 'my_example'") 
+				firstMethodName("'my example'"),
+				firstMethodName("'my\nexample'"),
+				firstMethodName("'my\texample'"),
+				firstMethodName("'my_example'") 
 			).should.be('myExample')
 		} 
 		
@@ -88,7 +88,7 @@ describe ExampleNameProvider{
   	
   	context toMethodName(Before){
   		
-  		it "should convert before description to camel case starting in lowercase"{
+  		"should convert before description to camel case starting in lowercase"{
 			each(
 				firstMethodName("before 'my example'"),
 				firstMethodName("before 'my\nexample'"),
@@ -97,11 +97,11 @@ describe ExampleNameProvider{
 			).should.be('myExample')
 		} 
 		
-		it "should use before as default name"{
+		"should use before as default name"{
 			firstMethodName("before{}").should.be("before")
 		}
 		
-		it "should enumerate befores without description"{
+		"should enumerate befores without description"{
 			secondMethodName("before{}
 							 before{}").should.be("before2")
 		}
@@ -119,7 +119,7 @@ describe ExampleNameProvider{
   	
   	context toMethodName(After){
   		
-  		it "should convert after description to camel case starting in lowercase"{
+  		"should convert after description to camel case starting in lowercase"{
 			each(
 				firstMethodName("after 'my example'"),
 				firstMethodName("after 'my\nexample'"),
@@ -128,11 +128,11 @@ describe ExampleNameProvider{
 			).should.be('myExample')
 		} 
 		
-		it "should use after as default name"{
+		"should use after as default name"{
 			firstMethodName("after{}").should.be("after")
 		}
 		
-		it "should enumerate afters without description"{
+		"should enumerate afters without description"{
 			secondMethodName("after{}
 							 after{}").should.be("after2")
 		}
@@ -150,31 +150,31 @@ describe ExampleNameProvider{
 
 	context ^describe(ExampleGroup){
 		
-		it "should use the description"{
+		"should use the description"{
 			describeFirst("describe 'My Description'").should.be("My Description")
 		}
 		
-		it "should use the target type"{
+		"should use the target type"{
 			describeFirst("describe org.junit.Assert").should.be("Assert")
 		}
 		
-		it "should combine target type and description"{
+		"should combine target type and description"{
 			describeFirst("describe org.junit.Assert 'and more'").should.be("Assert and more")
 		}
 		
-		it "should use the target operation"{
+		"should use the target operation"{
 			describeSecond("describe org.junit.Assert{
 										context assertTrue(boolean) 
 								 }").should.be("assertTrue[boolean]")
 		}
 		
-		it "should combine target operation and description"{
+		"should combine target operation and description"{
 			describeSecond("describe org.junit.Assert{
 										context assertTrue(boolean) 'and more'
 								 }").should.be("assertTrue[boolean] and more")
 		}
 		
-		it "should escape quotes"{
+		"should escape quotes"{
 			val text = '''describe 'Example'{
 										describe 'and "more"'
 								 }'''.toString
@@ -192,21 +192,21 @@ describe ExampleNameProvider{
 	
 	context ^describe(Example){
 		
-		it "should use the description"{
-			describeFirst("it 'should do stuff' {true}").should.be("should do stuff")
+		"should use the description"{
+			describeFirst("'should do stuff' {true}").should.be("should do stuff")
 		}
 		
-		it "should use the exception"{
-			describeFirst("it throws IllegalArgumentException {true}").should.be("throws IllegalArgumentException")
+		"should use the exception"{
+			describeFirst("throws IllegalArgumentException {true}").should.be("throws IllegalArgumentException")
 		}
 		
-		it "should combine exception and description"{
-			describeFirst("it throws IllegalArgumentException 'should be described' {true}").should.be("throws IllegalArgumentException should be described")
+		"should combine exception and description"{
+			describeFirst("throws IllegalArgumentException 'should be described' {true}").should.be("throws IllegalArgumentException should be described")
 		}
 		
-		it "apppends Ô[PENDING]' to pending example descriptions"{
-			describeFirst("it 'should do stuff'").should.be("should do stuff [PENDING]")
-			describeFirst("it 'should do stuff'{}").should.be("should do stuff [PENDING]")
+		"apppends Ô[PENDING]' to pending example descriptions"{
+			describeFirst("'should do stuff'").should.be("should do stuff [PENDING]")
+			describeFirst("'should do stuff'{}").should.be("should do stuff [PENDING]")
 		}
 		
 		def describeFirst(String content){

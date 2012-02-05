@@ -8,7 +8,7 @@ import static de.bmw.carit.jnario.spec.tests.integration.ExtensionExample.*
  */
 describe "Extensions"{
 
-	it "all setup and tear down methods in extensions will be executed"{
+	"all setup and tear down methods in extensions will be executed"{
 		execute('''
 			package bootstrap
 
@@ -17,11 +17,11 @@ describe "Extensions"{
 			describe "Extension"{
 				extension ExtensionExample = new ExtensionExample()
 
-				it "test 1"{
+				"test 1"{
 					ExtensionExample::executedMethods += "ExtensionSpec#test1"
 				}
 				
-				it "test 2"{
+				"test 2"{
 					ExtensionExample::executedMethods += "ExtensionSpec#test2"
 				}
 			}
