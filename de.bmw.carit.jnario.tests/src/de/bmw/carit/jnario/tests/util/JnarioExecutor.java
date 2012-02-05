@@ -9,13 +9,10 @@ import java.util.Collections;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.util.StringInputStream;
 import org.eclipse.xtext.validation.IResourceValidator;
-import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
-import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 import org.junit.rules.TemporaryFolder;
 import org.junit.runner.Result;
 
@@ -27,7 +24,6 @@ import de.bmw.carit.jnario.common.test.util.BehaviorExecutor;
 import de.bmw.carit.jnario.generator.JnarioJvmModelGenerator;
 import de.bmw.carit.jnario.jnario.Feature;
 import de.bmw.carit.jnario.jnario.JnarioFile;
-import de.bmw.carit.jnario.jnario.Scenario;
 import de.bmw.carit.jnario.naming.JavaNameProvider;
 
 @SuppressWarnings("restriction")

@@ -25,7 +25,6 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.diagnostics.Severity;
-import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.junit4.validation.RegisteredValidatorTester;
 import org.eclipse.xtext.naming.QualifiedName;

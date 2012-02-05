@@ -20,6 +20,7 @@ import org.eclipse.xtext.xbase.compiler.OnTheFlyJavaCompiler.EclipseRuntimeDepen
 
 import com.google.common.base.Joiner;
 
+@SuppressWarnings("restriction")
 public class JnarioJavaCompiler extends EclipseRuntimeDependentJavaCompiler{
 	
 	private static final JnarioJavaCompiler compiler = new JnarioJavaCompiler();
