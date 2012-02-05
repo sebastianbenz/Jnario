@@ -1,7 +1,7 @@
 package de.bmw.carit.jnario.spec.tests.integration
 
-import org.eclipse.xtext.xbase.lib.Procedures$Procedure1
-import org.junit.Assert
+import static extension de.bmw.carit.jnario.common.test.util.Helpers.*
+
 /**
  * Jnario provides assertions on steroids.
  */
@@ -86,16 +86,5 @@ describe "Assertion"{
 		}		   
 	}      
 	 
-	def is(String actual, CharSequence expected){
-		Assert::assertEquals(expected.toString().replaceAll("\r", ""), actual.replaceAll("\r", ""))
-	}
- 
-	def String errorMessage(Procedures$Procedure1<Boolean> proc){
-		try{ 
-			proc.apply(null)
-			throw new AssertionError("expected AssertionError")
-		}catch(AssertionError e){
-			return e.message.trim 
-		}
-	} 
+
 }                                

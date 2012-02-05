@@ -1,7 +1,5 @@
 package de.bmw.carit.jnario.spec.tests.integration
 
-import org.eclipse.xtext.xbase.lib.Procedures$Procedure1
-import org.junit.Assert
 import org.hamcrest.Matcher
 
 /**
