@@ -113,7 +113,7 @@ public class SpecCompiler extends Xtend2Compiler {
 	protected String serialize(XExpression expression) {
 		String result = serializer.serialize(expression);
 		result = result.trim();
-		result = removeSurroundingParentheses(result).trim();
+		result = removeSurroundingParentheses(result);
 		return convertToJavaString(result);
 	}
 
@@ -121,7 +121,7 @@ public class SpecCompiler extends Xtend2Compiler {
 		if(result.startsWith("(") && result.endsWith(")")){
 			result = result.substring(1, result.length()-1);
 		}
-		return result;
+		return result.trim();
 	}
 
 	protected void appendActualValues(XExpression expression, IAppendable b, Set<String> valueExpressions) {

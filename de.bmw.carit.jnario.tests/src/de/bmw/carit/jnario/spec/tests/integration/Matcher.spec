@@ -4,7 +4,7 @@ import static extension de.bmw.carit.jnario.common.test.util.Helpers.*
 import org.hamcrest.Matcher
 
 /**
- * 
+ * Jnario provides syntactic sugar for creating matchers.
  */
 describe "Matcher"{
 	
@@ -21,7 +21,7 @@ describe "Matcher"{
 	}
 	
 	"works with should"{
-		"Hello".should(#[it.startsWith("H")])
+		"Hello".should.be(#[it.startsWith("H")])
 	}  
 	
 	"uses the closure's code as description"{
