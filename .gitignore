@@ -3,3 +3,4 @@ classes
 target
 .metadata
 org.eclipse.xtext.*
+.DS_Store
