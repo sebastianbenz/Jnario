@@ -16,6 +16,7 @@ import org.eclipse.xtext.xtend2.Xtend2StandaloneSetup;
 
 import com.google.inject.Injector;
 
+import de.bmw.carit.jnario.common.CommonPackage;
 import de.bmw.carit.jnario.spec.spec.SpecPackage;
 
 /**
@@ -34,6 +35,7 @@ public class SpecStandaloneSetup extends SpecStandaloneSetupGenerated{
 		XbaseStandaloneSetup.doSetup();
 		XtypeStandaloneSetup.doSetup();
 		EPackage.Registry.INSTANCE.put(XAnnotationsPackage.eINSTANCE.getNsURI(),XAnnotationsPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(CommonPackage.eNS_URI, CommonPackage.eINSTANCE);
 		EPackage.Registry.INSTANCE.put(SpecPackage.eNS_URI, SpecPackage.eINSTANCE);
 		super.register(injector);
 	}

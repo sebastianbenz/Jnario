@@ -15,6 +15,9 @@ import org.eclipse.xtext.xtend2.Xtend2StandaloneSetup;
 
 import com.google.inject.Injector;
 
+import de.bmw.carit.jnario.common.CommonPackage;
+import de.bmw.carit.jnario.jnario.JnarioPackage;
+
 /**
  * Initialization support for running Xtext languages 
  * without equinox extension registry
@@ -30,6 +33,8 @@ public class JnarioStandaloneSetup extends JnarioStandaloneSetupGenerated{
 		Xtend2StandaloneSetup.doSetup();
 		XbaseStandaloneSetup.doSetup();
 		EPackage.Registry.INSTANCE.put(XAnnotationsPackage.eINSTANCE.getNsURI(),XAnnotationsPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(CommonPackage.eNS_URI, CommonPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(JnarioPackage.eNS_URI, JnarioPackage.eINSTANCE);
 		super.register(injector);
 	}
 }
