@@ -8,6 +8,7 @@
 package de.bmw.carit.jnario.lib;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.endsWith;
 import static org.hamcrest.Matchers.startsWith;
@@ -48,6 +49,11 @@ public class Should {
 	}
 
 	public static <T> MatcherChain<T> should(final T actual) {
+		return new SingleTargetMatcherChain<T>(actual);
+	}
+	
+	public static <T> MatcherChain<T> should(final T actual, Matcher<T> matcher){
+		assertThat(actual, matcher);
 		return new SingleTargetMatcherChain<T>(actual);
 	}
 	

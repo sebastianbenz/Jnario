@@ -11,19 +11,15 @@ import static com.google.common.collect.Lists.newArrayList;
 
 import java.util.List;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.common.types.JvmDelegateTypeReference;
-import org.eclipse.xtext.common.types.JvmFormalParameter;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmTypeReference;
-import org.eclipse.xtext.common.types.util.ITypeArgumentContext;
-import org.eclipse.xtext.common.types.util.TypeArgumentContextProvider;
 import org.eclipse.xtext.xbase.XBlockExpression;
-import org.eclipse.xtext.xbase.XClosure;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.typing.Closures;
-import org.eclipse.xtext.xbase.typing.XbaseTypeProvider;
 import org.eclipse.xtext.xtend2.typing.Xtend2TypeProvider;
 import org.eclipse.xtext.xtype.impl.XFunctionTypeRefImplCustom;
 
@@ -49,16 +45,39 @@ public class SpecTypeProvider extends Xtend2TypeProvider {
 			return booleanType(container);
 		}
 		else if(isInMatcher(container)){
-			JvmTypeReference expectedType = super.expectedType(container.eContainer(), container.eContainmentFeature(), index, rawType);
-			if (expectedType instanceof JvmParameterizedTypeReference) {
-				JvmParameterizedTypeReference parameterizedTypeReference = (JvmParameterizedTypeReference) expectedType;
-				return closures.createFunctionTypeRef(container, newArrayList(parameterizedTypeReference.getArguments().get(0)), booleanType(container), true);
-			}
-			return expectedType;
+			return expectedMatcherType((Matcher) container, rawType);
 		}
 		else{
 			return super.expectedType(container, reference, index, rawType);
 		}
+	}
+
+	private JvmTypeReference expectedMatcherType(Matcher matcher,
+			boolean rawType) {
+		JvmTypeReference expectedType = expectedFromContainer(matcher, rawType);
+		if (!(expectedType instanceof JvmParameterizedTypeReference)) {
+			return expectedType;
+		}
+		JvmParameterizedTypeReference parameterizedTypeReference = (JvmParameterizedTypeReference) expectedType;
+		if(parameterizedTypeReference.getArguments().isEmpty()){
+			return expectedType;
+		}
+		List<JvmTypeReference> arguments = newArrayList(parameterizedTypeReference.getArguments().get(0));
+		return closures.createFunctionTypeRef(matcher, arguments, booleanType(matcher), true);
+	}
+
+	private JvmTypeReference expectedFromContainer(Matcher matcher,
+			boolean rawType) {
+		EObject container = matcher.eContainer();
+		EReference feature = matcher.eContainmentFeature();
+		int index;
+		if(feature.isMany()){
+			index = ((EList<?>)container.eGet(feature)).indexOf(matcher);
+		}else{
+			index = -1;
+		}
+		JvmTypeReference expectedType = super.expectedType(container, feature, index, rawType);
+		return expectedType;
 	}
 
 	protected JvmTypeReference booleanType(EObject container) {
@@ -94,7 +113,7 @@ public class SpecTypeProvider extends Xtend2TypeProvider {
 	protected JvmTypeReference _type(final Matcher matcher, JvmTypeReference rawExpectation, final boolean rawType) {
 		XFunctionTypeRefImplCustom closureType = (XFunctionTypeRefImplCustom) getType(matcher.getClosure());
 		JvmTypeReference matchedType = getPrimitiveVoid(matcher);
-		if(closureType.getParamTypes().isEmpty()){
+		if(closureType == null || closureType.getParamTypes().isEmpty()){
 			JvmTypeReference enclosingType = getExpectedReturnType((XExpression)matcher.eContainer(), rawType);
 			if (enclosingType instanceof JvmParameterizedTypeReference) {
 				JvmParameterizedTypeReference parameterizedTypeReference = (JvmParameterizedTypeReference) enclosingType;

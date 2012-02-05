@@ -53,7 +53,7 @@ public class SpecCompiler extends Xtend2Compiler {
 		describe(matcher, b);
 		b.append("\", ");
 		toJavaExpression(matcher.getClosure(), b);
-		b.append(");");
+		b.append(")");
 	}
 	
 	public void _toJavaStatement(Matcher matcher, IAppendable b, boolean isReferenced) {
@@ -64,7 +64,7 @@ public class SpecCompiler extends Xtend2Compiler {
 	}
 	
 	private void describe(Matcher matcher, IAppendable b) {
-		b.append("hello");
+		b.append(serialize(matcher.getClosure()));
 	}
 
 	public void _toJavaStatement(Assertion assertion, IAppendable b, boolean isReferenced) {
