@@ -6631,6 +6631,7 @@ rule__Import__Group__1
     }
 :
 	rule__Import__Group__1__Impl
+	rule__Import__Group__2
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -6651,6 +6652,38 @@ rule__Import__Group__1__Impl
 finally {
 	restoreStackSize(stackSize);
 }
+
+
+rule__Import__Group__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Import__Group__2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Import__Group__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getImportAccess().getSemicolonKeyword_2()); }
+(
+	';' 
+)?
+{ after(grammarAccess.getImportAccess().getSemicolonKeyword_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
 
 
 
@@ -7827,6 +7860,7 @@ rule__Member__Group_2_0__3
     }
 :
 	rule__Member__Group_2_0__3__Impl
+	rule__Member__Group_2_0__4
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -7847,6 +7881,38 @@ rule__Member__Group_2_0__3__Impl
 finally {
 	restoreStackSize(stackSize);
 }
+
+
+rule__Member__Group_2_0__4
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Member__Group_2_0__4__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Member__Group_2_0__4__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getMemberAccess().getSemicolonKeyword_2_0_4()); }
+(
+	';' 
+)?
+{ after(grammarAccess.getMemberAccess().getSemicolonKeyword_2_0_4()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
 
 
 
@@ -25281,12 +25347,8 @@ rule__XRelationalExpression__TypeAssignment_1_0_1
     }
 :
 (
-{ before(grammarAccess.getXRelationalExpressionAccess().getTypeJvmTypeCrossReference_1_0_1_0()); }
-(
-{ before(grammarAccess.getXRelationalExpressionAccess().getTypeJvmTypeQualifiedNameParserRuleCall_1_0_1_0_1()); }
-	ruleQualifiedName{ after(grammarAccess.getXRelationalExpressionAccess().getTypeJvmTypeQualifiedNameParserRuleCall_1_0_1_0_1()); }
-)
-{ after(grammarAccess.getXRelationalExpressionAccess().getTypeJvmTypeCrossReference_1_0_1_0()); }
+{ before(grammarAccess.getXRelationalExpressionAccess().getTypeJvmTypeReferenceParserRuleCall_1_0_1_0()); }
+	ruleJvmTypeReference{ after(grammarAccess.getXRelationalExpressionAccess().getTypeJvmTypeReferenceParserRuleCall_1_0_1_0()); }
 )
 
 ;

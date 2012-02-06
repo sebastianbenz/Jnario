@@ -1244,7 +1244,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//File returns XtendFile:
-	//	("package" package=QualifiedName)? imports+=Import* xtendClass=Class?;
+	//	("package" package=QualifiedName ";"?)? imports+=Import* xtendClass=Class?;
 	public Xtend2GrammarAccess.FileElements getFileAccess() {
 		return gaXtend2.getFileAccess();
 	}
@@ -1255,7 +1255,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 
 	//Import returns XtendImport:
 	//	"import" (static?="static" extension?="extension"? importedType=[types::JvmType|QualifiedName] "." "*" |
-	//	importedType=[types::JvmType|QualifiedName] | importedNamespace=QualifiedNameWithWildCard);
+	//	importedType=[types::JvmType|QualifiedName] | importedNamespace=QualifiedNameWithWildCard) ";"?;
 	public Xtend2GrammarAccess.ImportElements getImportAccess() {
 		return gaXtend2.getImportAccess();
 	}
@@ -1289,7 +1289,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	//Member returns XtendMember:
 	//	{XtendMember} annotations+=XAnnotation* ({XtendField.annotationInfo=current} visibility=Visibility?
 	//	(extension?="extension" type=JvmTypeReference name=ValidID? | static?="static"? type=JvmTypeReference name=ValidID)
-	//	("=" initialValue=XExpression)? | {XtendFunction.annotationInfo=current} ("def" | override?="override")
+	//	("=" initialValue=XExpression)? ";"? | {XtendFunction.annotationInfo=current} ("def" | override?="override")
 	//	visibility=Visibility? static?="static"? dispatch?="dispatch"? ("<" typeParameters+=JvmTypeParameter (","
 	//	typeParameters+=JvmTypeParameter)* ">")? (=> (returnType=JvmTypeReference createExtensionInfo=CreateExtensionInfo
 	//	name=ValidID "(") | => (returnType=JvmTypeReference name=ValidID "(") | => (createExtensionInfo=CreateExtensionInfo
@@ -1685,9 +1685,9 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XRelationalExpression returns XExpression:
-	//	XOtherOperatorExpression (=> ({XInstanceOfExpression.expression=current} "instanceof")
-	//	type=[types::JvmType|QualifiedName] | => ({XBinaryOperation.leftOperand=current}
-	//	feature=[types::JvmIdentifiableElement|OpCompare]) rightOperand=XOtherOperatorExpression)*;
+	//	XOtherOperatorExpression (=> ({XInstanceOfExpression.expression=current} "instanceof") type=JvmTypeReference | =>
+	//	({XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare])
+	//	rightOperand=XOtherOperatorExpression)*;
 	public XbaseGrammarAccess.XRelationalExpressionElements getXRelationalExpressionAccess() {
 		return gaXtend2.getXRelationalExpressionAccess();
 	}

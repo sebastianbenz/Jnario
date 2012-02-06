@@ -2235,7 +2235,11 @@ ruleImport returns [EObject current=null]
 	    }
 
 )
-)))
+))(	otherlv_8=';' 
+    {
+    	newLeafNode(otherlv_8, grammarAccess.getImportAccess().getSemicolonKeyword_2());
+    }
+)?)
 ;
 
 
@@ -4601,15 +4605,18 @@ ruleXRelationalExpression returns [EObject current=null]
     }
 ))(
 (
-		{
-			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getXRelationalExpressionRule());
-	        }
-        }
 		{ 
-	        newCompositeNode(grammarAccess.getXRelationalExpressionAccess().getTypeJvmTypeCrossReference_1_0_1_0()); 
+	        newCompositeNode(grammarAccess.getXRelationalExpressionAccess().getTypeJvmTypeReferenceParserRuleCall_1_0_1_0()); 
 	    }
-		ruleQualifiedName		{ 
+		lv_type_3_0=ruleJvmTypeReference		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getXRelationalExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"type",
+        		lv_type_3_0, 
+        		"JvmTypeReference");
 	        afterParserOrEnumRuleCall();
 	    }
 

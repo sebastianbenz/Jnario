@@ -651,6 +651,7 @@
           <elements xsi:type="xtext:Assignment" feature="package" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.52"/>
           </elements>
+          <elements xsi:type="xtext:Keyword" cardinality="?" value=";"/>
         </elements>
         <elements xsi:type="xtext:Assignment" cardinality="*" feature="imports" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.1"/>
@@ -697,6 +698,7 @@
             <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
           </elements>
         </elements>
+        <elements xsi:type="xtext:Keyword" cardinality="?" value=";"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="QualifiedNameWithWildCard">
@@ -813,6 +815,7 @@
                 <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.0"/>
               </elements>
             </elements>
+            <elements xsi:type="xtext:Keyword" cardinality="?" value=";"/>
           </elements>
           <elements xsi:type="xtext:Group">
             <elements xsi:type="xtext:Action" feature="annotationInfo" operator="=">
@@ -1819,12 +1822,7 @@
               </elements>
             </elements>
             <elements xsi:type="xtext:Assignment" feature="type" operator="=">
-              <terminal xsi:type="xtext:CrossReference">
-                <type metamodel="/3/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/common/JavaVMTypes#//JvmType"/>
-                </type>
-                <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.52"/>
-              </terminal>
+              <terminal xsi:type="xtext:RuleCall" rule="/4/@rules.0"/>
             </elements>
           </elements>
           <elements xsi:type="xtext:Group">

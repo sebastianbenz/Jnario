@@ -8,6 +8,7 @@
 package org.jnario.spec.doc;
 
 import java.util.List;
+import org.eclipse.xtext.xbase.lib.CharacterExtensions;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -93,7 +94,7 @@ public class WhiteSpaceNormalizer {
         {
           char _charAt = input.charAt(i);
           char _charAt_1 = toReplace.charAt(i);
-          boolean _operator_notEquals = ObjectExtensions.operator_notEquals(Character.valueOf(_charAt), Character.valueOf(_charAt_1));
+          boolean _operator_notEquals = CharacterExtensions.operator_notEquals(_charAt, _charAt_1);
           if (_operator_notEquals) {
             return input;
           }

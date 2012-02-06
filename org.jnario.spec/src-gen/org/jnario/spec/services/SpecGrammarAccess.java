@@ -1501,7 +1501,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//File returns XtendFile:
-	//	("package" package=QualifiedName)? imports+=Import* xtendClass=Class?;
+	//	("package" package=QualifiedName ";"?)? imports+=Import* xtendClass=Class?;
 	public Xtend2GrammarAccess.FileElements getFileAccess() {
 		return gaXtend2.getFileAccess();
 	}
@@ -1512,7 +1512,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 
 	//Import returns XtendImport:
 	//	"import" (static?="static" extension?="extension"? importedType=[types::JvmType|QualifiedName] "." "*" |
-	//	importedType=[types::JvmType|QualifiedName] | importedNamespace=QualifiedNameWithWildCard);
+	//	importedType=[types::JvmType|QualifiedName] | importedNamespace=QualifiedNameWithWildCard) ";"?;
 	public Xtend2GrammarAccess.ImportElements getImportAccess() {
 		return gaXtend2.getImportAccess();
 	}
@@ -1921,9 +1921,9 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XRelationalExpression returns XExpression:
-	//	XOtherOperatorExpression (=> ({XInstanceOfExpression.expression=current} "instanceof")
-	//	type=[types::JvmType|QualifiedName] | => ({XBinaryOperation.leftOperand=current}
-	//	feature=[types::JvmIdentifiableElement|OpCompare]) rightOperand=XOtherOperatorExpression)*;
+	//	XOtherOperatorExpression (=> ({XInstanceOfExpression.expression=current} "instanceof") type=JvmTypeReference | =>
+	//	({XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare])
+	//	rightOperand=XOtherOperatorExpression)*;
 	public XbaseGrammarAccess.XRelationalExpressionElements getXRelationalExpressionAccess() {
 		return gaXtend2.getXRelationalExpressionAccess();
 	}

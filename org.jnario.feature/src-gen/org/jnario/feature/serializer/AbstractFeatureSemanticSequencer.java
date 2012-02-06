@@ -2057,7 +2057,7 @@ public class AbstractFeatureSemanticSequencer extends AbstractSemanticSequencer 
 	
 	/**
 	 * Constraint:
-	 *     (expression=XRelationalExpression_XInstanceOfExpression_1_0_0_0_0 type=[JvmType|QualifiedName])
+	 *     (expression=XRelationalExpression_XInstanceOfExpression_1_0_0_0_0 type=JvmTypeReference)
 	 */
 	protected void sequence_XRelationalExpression(EObject context, XInstanceOfExpression semanticObject) {
 		superSequencer.createSequence(context, semanticObject);

@@ -30,6 +30,9 @@ public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequence
 	protected AbstractElementAlias match_Class_PublicKeyword_1_q;
 	protected AbstractElementAlias match_ExampleColumn_PIPETerminalRuleCall_0_0_or_PIPE_SPACESTerminalRuleCall_0_1;
 	protected AbstractElementAlias match_ExampleRow_PIPETerminalRuleCall_0_0_0_or_PIPE_SPACESTerminalRuleCall_0_0_1;
+	protected AbstractElementAlias match_File_SemicolonKeyword_0_2_q;
+	protected AbstractElementAlias match_Import_SemicolonKeyword_2_q;
+	protected AbstractElementAlias match_Member_SemicolonKeyword_2_0_4_q;
 	protected AbstractElementAlias match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a;
 	protected AbstractElementAlias match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_p;
 	protected AbstractElementAlias match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q;
@@ -46,6 +49,9 @@ public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequence
 		match_Class_PublicKeyword_1_q = new TokenAlias(false, true, grammarAccess.getClassAccess().getPublicKeyword_1());
 		match_ExampleColumn_PIPETerminalRuleCall_0_0_or_PIPE_SPACESTerminalRuleCall_0_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getExampleColumnAccess().getPIPETerminalRuleCall_0_0()), new TokenAlias(false, false, grammarAccess.getExampleColumnAccess().getPIPE_SPACESTerminalRuleCall_0_1()));
 		match_ExampleRow_PIPETerminalRuleCall_0_0_0_or_PIPE_SPACESTerminalRuleCall_0_0_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getExampleRowAccess().getPIPETerminalRuleCall_0_0_0()), new TokenAlias(false, false, grammarAccess.getExampleRowAccess().getPIPE_SPACESTerminalRuleCall_0_0_1()));
+		match_File_SemicolonKeyword_0_2_q = new TokenAlias(false, true, grammarAccess.getFileAccess().getSemicolonKeyword_0_2());
+		match_Import_SemicolonKeyword_2_q = new TokenAlias(false, true, grammarAccess.getImportAccess().getSemicolonKeyword_2());
+		match_Member_SemicolonKeyword_2_0_4_q = new TokenAlias(false, true, grammarAccess.getMemberAccess().getSemicolonKeyword_2_0_4());
 		match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a = new TokenAlias(true, true, grammarAccess.getXAnnotationElementValueAccess().getLeftParenthesisKeyword_7_0());
 		match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_p = new TokenAlias(true, false, grammarAccess.getXAnnotationElementValueAccess().getLeftParenthesisKeyword_7_0());
 		match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getRightParenthesisKeyword_3_2()));
@@ -111,6 +117,12 @@ public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequence
 				emit_ExampleColumn_PIPETerminalRuleCall_0_0_or_PIPE_SPACESTerminalRuleCall_0_1(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_ExampleRow_PIPETerminalRuleCall_0_0_0_or_PIPE_SPACESTerminalRuleCall_0_0_1.equals(syntax))
 				emit_ExampleRow_PIPETerminalRuleCall_0_0_0_or_PIPE_SPACESTerminalRuleCall_0_0_1(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_File_SemicolonKeyword_0_2_q.equals(syntax))
+				emit_File_SemicolonKeyword_0_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_Import_SemicolonKeyword_2_q.equals(syntax))
+				emit_Import_SemicolonKeyword_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_Member_SemicolonKeyword_2_0_4_q.equals(syntax))
+				emit_Member_SemicolonKeyword_2_0_4_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a.equals(syntax))
 				emit_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_p.equals(syntax))
@@ -160,6 +172,30 @@ public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequence
 	 *     PIPE | PIPE_SPACES
 	 */
 	protected void emit_ExampleRow_PIPETerminalRuleCall_0_0_0_or_PIPE_SPACESTerminalRuleCall_0_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     ';'?
+	 */
+	protected void emit_File_SemicolonKeyword_0_2_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     ';'?
+	 */
+	protected void emit_Import_SemicolonKeyword_2_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     ';'?
+	 */
+	protected void emit_Member_SemicolonKeyword_2_0_4_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
