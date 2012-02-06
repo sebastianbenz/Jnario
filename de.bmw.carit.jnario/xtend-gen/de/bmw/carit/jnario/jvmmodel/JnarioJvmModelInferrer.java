@@ -661,8 +661,8 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
       StringBuilderBasedAppendable appendable = _stringBuilderBasedAppendable;
       EList<XExpression> _parts = row.getParts();
       int _size = _parts.size();
-      boolean _operator_lessThan = IntegerExtensions.operator_lessThan(_size, i);
-      if (_operator_lessThan) {
+      boolean _operator_greaterThan = IntegerExtensions.operator_greaterThan(_size, i);
+      if (_operator_greaterThan) {
         EList<XExpression> _parts_1 = row.getParts();
         XExpression _get = _parts_1.get(i);
         this._jnarioCompiler.toJavaExpression(_get, appendable);

@@ -323,7 +323,7 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 	
 	def cellToAppendable(ExampleRow row, int i){
 		var appendable = new StringBuilderBasedAppendable()
-		if(row.parts.size < i){
+		if(row.parts.size > i){
 			row.parts.get(i).toJavaExpression(appendable)
 		}
 		appendable
