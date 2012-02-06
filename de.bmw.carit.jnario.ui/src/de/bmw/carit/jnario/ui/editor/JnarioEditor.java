@@ -25,8 +25,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.XtextSourceViewer;
+import org.eclipse.xtext.xbase.ui.editor.XbaseEditor;
 
-public class JnarioEditor extends XtextEditor {
+public class JnarioEditor extends XbaseEditor {
 
 	private static final RGB NONE_CODE_COLOR = new RGB(245, 245, 245);
 	

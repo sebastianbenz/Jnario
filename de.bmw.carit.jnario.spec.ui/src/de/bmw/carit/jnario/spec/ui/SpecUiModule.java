@@ -12,6 +12,7 @@ package de.bmw.carit.jnario.spec.ui;
 
 import org.eclipse.jface.text.rules.ITokenScanner;
 import org.eclipse.jface.text.source.DefaultCharacterPairMatcher;
+import org.eclipse.jface.text.source.IAnnotationHover;
 import org.eclipse.jface.text.source.ICharacterPairMatcher;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -46,6 +47,7 @@ import org.eclipse.xtext.ui.editor.toggleComments.ToggleSLCommentAction;
 import org.eclipse.xtext.ui.refactoring.IRenameStrategy;
 import org.eclipse.xtext.ui.refactoring.impl.RenameElementProcessor;
 import org.eclipse.xtext.ui.resource.IResourceUIServiceProvider;
+import org.eclipse.xtext.xbase.ui.editor.XbaseEditor;
 import org.eclipse.xtext.xbase.ui.jvmmodel.navigation.DerivedMemberAwareEditorOpener;
 import org.eclipse.xtext.xtend2.ui.XtendResourceUiServiceProvider;
 import org.eclipse.xtext.xtend2.ui.autoedit.AutoEditStrategyProvider;
@@ -55,6 +57,8 @@ import org.eclipse.xtext.xtend2.ui.builder.XtendBuilderParticipant;
 import org.eclipse.xtext.xtend2.ui.contentassist.ImportingTypesProposalProvider;
 import org.eclipse.xtext.xtend2.ui.editor.InitiallyCollapsableAwareFoldingStructureProvider;
 import org.eclipse.xtext.xtend2.ui.editor.OccurrenceComputer;
+import org.eclipse.xtext.xtend2.ui.editor.OverrideIndicatorModelListener;
+import org.eclipse.xtext.xtend2.ui.editor.OverrideIndicatorRulerAction;
 import org.eclipse.xtext.xtend2.ui.editor.RichStringAwareSourceViewer;
 import org.eclipse.xtext.xtend2.ui.editor.RichStringAwareToggleCommentAction;
 import org.eclipse.xtext.xtend2.ui.editor.SingleLineCommentHelper;
@@ -64,6 +68,7 @@ import org.eclipse.xtext.xtend2.ui.highlighting.RichStringAwareTokenScanner;
 import org.eclipse.xtext.xtend2.ui.highlighting.ShowWhitespaceCharactersActionContributor;
 import org.eclipse.xtext.xtend2.ui.highlighting.TokenToAttributeIdMapper;
 import org.eclipse.xtext.xtend2.ui.highlighting.XtendHighlightingConfiguration;
+import org.eclipse.xtext.xtend2.ui.hover.XtendAnnotationHover;
 import org.eclipse.xtext.xtend2.ui.hover.XtendHoverProvider;
 import org.eclipse.xtext.xtend2.ui.hyperlinking.XtendHyperlinkHelper;
 import org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegate;
@@ -97,7 +102,19 @@ public class SpecUiModule extends de.bmw.carit.jnario.spec.ui.AbstractSpecUiModu
 		// matches ID of org.eclipse.ui.contexts extension registered in plugin.xml
 		binder.bindConstant().annotatedWith(Names.named(XtextEditor.KEY_BINDING_SCOPE)).to("de.bmw.carit.jnario.spec.ui.SpecEditorScope");
 	}
-
+	
+	public void configureOverrideIndicatorSupport(Binder binder) {
+		binder.bind(IXtextEditorCallback.class).annotatedWith(Names.named("OverrideIndicatorModelListener")) //$NON-NLS-1$
+				.to(OverrideIndicatorModelListener.class);
+		binder.bind(IActionContributor.class).annotatedWith(Names.named("OverrideIndicatorRulerAction")).to( //$NON-NLS-1$
+				OverrideIndicatorRulerAction.class);
+	}
+	
+	@Override
+	public Class<? extends IAnnotationHover> bindIAnnotationHover () {
+		return XtendAnnotationHover.class;
+	}
+	
 	@Override
 	public Class<? extends IHighlightingConfiguration> bindIHighlightingConfiguration() {
 		return XtendHighlightingConfiguration.class;
@@ -182,7 +199,13 @@ public class SpecUiModule extends de.bmw.carit.jnario.spec.ui.AbstractSpecUiModu
 	public Class<? extends ISingleLineCommentHelper> bindISingleLineCommentHelper() {
 		return SingleLineCommentHelper.class;
 	}
+	public Class<? extends XtextSourceViewer.Factory> bindSourceViewerFactory() {
+		return RichStringAwareSourceViewer.Factory.class;
+	}
 	
+	public Class<? extends ToggleSLCommentAction.Factory> bindToggleCommentFactory() {
+		return RichStringAwareToggleCommentAction.Factory.class;
+	}
 	
 	public Class<? extends IFoldingStructureProvider> bindIFoldingStructureProvider(){
 		return InitiallyCollapsableAwareFoldingStructureProvider.class;
@@ -194,10 +217,6 @@ public class SpecUiModule extends de.bmw.carit.jnario.spec.ui.AbstractSpecUiModu
 		return null;
 	}
 	
-	public Class<? extends IOccurrenceComputer> bindDefaultOccurrenceComputer() {
-		return OccurrenceComputer.class;
-	}
-	
 	@Override
 	public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
 		return XtendNatureAddingEditorCallback.class;
@@ -207,6 +226,7 @@ public class SpecUiModule extends de.bmw.carit.jnario.spec.ui.AbstractSpecUiModu
 		return XtendResourceUiServiceProvider.class;
 	}
 	
+
 	@Override
 	public ICharacterPairMatcher bindICharacterPairMatcher() {
 		return new DefaultCharacterPairMatcher(new char[] { '(', ')', '{', '}', '[', ']', '«', '»' });
@@ -230,13 +250,8 @@ public class SpecUiModule extends de.bmw.carit.jnario.spec.ui.AbstractSpecUiModu
 		}
 	}
 	
-
-	public Class<? extends XtextSourceViewer.Factory> bindSourceViewerFactory() {
-		return RichStringAwareSourceViewer.Factory.class;
-	}
-	
-	public Class<? extends ToggleSLCommentAction.Factory> bindToggleCommentFactory() {
-		return RichStringAwareToggleCommentAction.Factory.class;
+	public Class<? extends org.eclipse.xtext.ui.editor.XtextEditor> bindXtextEditor() {
+		return XbaseEditor.class;
 	}
 	
 	public Class<? extends JavaElementDelegate> bindJavaElementDelegate(){
