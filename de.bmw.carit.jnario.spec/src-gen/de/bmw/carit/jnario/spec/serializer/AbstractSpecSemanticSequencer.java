@@ -1579,7 +1579,7 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (annotationInfo=Member_ExampleTable_2_5_0 (name=STRING? (heading=ExampleHeading rows+=ExampleRow*)?))
+	 *     (annotationInfo=Member_ExampleTable_2_5_0 ((name=STRING | name=ID)? (heading=ExampleHeading rows+=ExampleRow*)?))
 	 */
 	protected void sequence_Member(EObject context, ExampleTable semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -41,6 +41,7 @@ public class SpecParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMemberAccess().getAlternatives_2(), "rule__Member__Alternatives_2");
 					put(grammarAccess.getMemberAccess().getNameAlternatives_2_2_1_2_0(), "rule__Member__NameAlternatives_2_2_1_2_0");
 					put(grammarAccess.getMemberAccess().getNameAlternatives_2_3_1_2_0(), "rule__Member__NameAlternatives_2_3_1_2_0");
+					put(grammarAccess.getMemberAccess().getAlternatives_2_5_1_1_0(), "rule__Member__Alternatives_2_5_1_1_0");
 					put(grammarAccess.getMemberAccess().getAlternatives_2_6_2(), "rule__Member__Alternatives_2_6_2");
 					put(grammarAccess.getMemberAccess().getAlternatives_2_7_1(), "rule__Member__Alternatives_2_7_1");
 					put(grammarAccess.getMemberAccess().getAlternatives_2_7_6(), "rule__Member__Alternatives_2_7_6");
@@ -106,6 +107,7 @@ public class SpecParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMemberAccess().getGroup_2_4_1(), "rule__Member__Group_2_4_1__0");
 					put(grammarAccess.getMemberAccess().getGroup_2_5(), "rule__Member__Group_2_5__0");
 					put(grammarAccess.getMemberAccess().getGroup_2_5_1(), "rule__Member__Group_2_5_1__0");
+					put(grammarAccess.getMemberAccess().getGroup_2_5_1_1(), "rule__Member__Group_2_5_1_1__0");
 					put(grammarAccess.getMemberAccess().getGroup_2_5_1_3(), "rule__Member__Group_2_5_1_3__0");
 					put(grammarAccess.getMemberAccess().getGroup_2_6(), "rule__Member__Group_2_6__0");
 					put(grammarAccess.getMemberAccess().getGroup_2_6_2_0(), "rule__Member__Group_2_6_2_0__0");
@@ -329,7 +331,8 @@ public class SpecParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMemberAccess().getTargetOperationAssignment_2_4_1_1(), "rule__Member__TargetOperationAssignment_2_4_1_1");
 					put(grammarAccess.getMemberAccess().getNameAssignment_2_4_1_2(), "rule__Member__NameAssignment_2_4_1_2");
 					put(grammarAccess.getMemberAccess().getMembersAssignment_2_4_1_4(), "rule__Member__MembersAssignment_2_4_1_4");
-					put(grammarAccess.getMemberAccess().getNameAssignment_2_5_1_1(), "rule__Member__NameAssignment_2_5_1_1");
+					put(grammarAccess.getMemberAccess().getNameAssignment_2_5_1_1_0_0(), "rule__Member__NameAssignment_2_5_1_1_0_0");
+					put(grammarAccess.getMemberAccess().getNameAssignment_2_5_1_1_0_1(), "rule__Member__NameAssignment_2_5_1_1_0_1");
 					put(grammarAccess.getMemberAccess().getHeadingAssignment_2_5_1_3_0(), "rule__Member__HeadingAssignment_2_5_1_3_0");
 					put(grammarAccess.getMemberAccess().getRowsAssignment_2_5_1_3_1(), "rule__Member__RowsAssignment_2_5_1_3_1");
 					put(grammarAccess.getMemberAccess().getVisibilityAssignment_2_6_1(), "rule__Member__VisibilityAssignment_2_6_1");

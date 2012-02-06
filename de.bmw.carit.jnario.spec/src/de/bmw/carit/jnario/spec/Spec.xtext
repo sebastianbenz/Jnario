@@ -54,7 +54,7 @@ Member returns xtend::XtendMember:
 			(preamble=('context') targetOperation=[types::JvmOperation|Method]? =>name=STRING? '{'
       		members+=Member*
       	'}')
-	|	{ExampleTable.annotationInfo = current} ('example' =>name=STRING? '{'
+	|	{ExampleTable.annotationInfo = current} ('example' =>(name=STRING|name=ID)? '{'
 			(heading = ExampleHeading
 			(rows += ExampleRow)*)?
       	'}') 

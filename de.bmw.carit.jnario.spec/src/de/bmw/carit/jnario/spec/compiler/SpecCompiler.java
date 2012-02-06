@@ -30,12 +30,11 @@ import com.google.inject.Inject;
 
 import de.bmw.carit.jnario.common.Assertion;
 import de.bmw.carit.jnario.common.Matcher;
-import de.bmw.carit.jnario.lib.Should;
 
-@SuppressWarnings("restriction")
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
+@SuppressWarnings("restriction")
 public class SpecCompiler extends Xtend2Compiler {
 
 	@Inject

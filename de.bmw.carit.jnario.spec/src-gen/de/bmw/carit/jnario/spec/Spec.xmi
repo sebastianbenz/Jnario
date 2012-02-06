@@ -272,8 +272,15 @@
             </elements>
             <elements xsi:type="xtext:Group">
               <elements xsi:type="xtext:Keyword" value="example"/>
-              <elements xsi:type="xtext:Assignment" cardinality="?" predicated="true" feature="name" operator="=">
-                <terminal xsi:type="xtext:RuleCall" rule="/5/@rules.2"/>
+              <elements xsi:type="xtext:Group" cardinality="?" predicated="true">
+                <elements xsi:type="xtext:Alternatives">
+                  <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+                    <terminal xsi:type="xtext:RuleCall" rule="/5/@rules.2"/>
+                  </elements>
+                  <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+                    <terminal xsi:type="xtext:RuleCall" rule="/4/@rules.11"/>
+                  </elements>
+                </elements>
               </elements>
               <elements xsi:type="xtext:Keyword" value="{"/>
               <elements xsi:type="xtext:Group" cardinality="?">

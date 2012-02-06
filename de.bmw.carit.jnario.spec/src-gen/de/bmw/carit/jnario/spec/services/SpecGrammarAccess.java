@@ -341,8 +341,12 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final Action cExampleTableAnnotationInfoAction_2_5_0 = (Action)cGroup_2_5.eContents().get(0);
 		private final Group cGroup_2_5_1 = (Group)cGroup_2_5.eContents().get(1);
 		private final Keyword cExampleKeyword_2_5_1_0 = (Keyword)cGroup_2_5_1.eContents().get(0);
-		private final Assignment cNameAssignment_2_5_1_1 = (Assignment)cGroup_2_5_1.eContents().get(1);
-		private final RuleCall cNameSTRINGTerminalRuleCall_2_5_1_1_0 = (RuleCall)cNameAssignment_2_5_1_1.eContents().get(0);
+		private final Group cGroup_2_5_1_1 = (Group)cGroup_2_5_1.eContents().get(1);
+		private final Alternatives cAlternatives_2_5_1_1_0 = (Alternatives)cGroup_2_5_1_1.eContents().get(0);
+		private final Assignment cNameAssignment_2_5_1_1_0_0 = (Assignment)cAlternatives_2_5_1_1_0.eContents().get(0);
+		private final RuleCall cNameSTRINGTerminalRuleCall_2_5_1_1_0_0_0 = (RuleCall)cNameAssignment_2_5_1_1_0_0.eContents().get(0);
+		private final Assignment cNameAssignment_2_5_1_1_0_1 = (Assignment)cAlternatives_2_5_1_1_0.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_2_5_1_1_0_1_0 = (RuleCall)cNameAssignment_2_5_1_1_0_1.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2_5_1_2 = (Keyword)cGroup_2_5_1.eContents().get(2);
 		private final Group cGroup_2_5_1_3 = (Group)cGroup_2_5_1.eContents().get(3);
 		private final Assignment cHeadingAssignment_2_5_1_3_0 = (Assignment)cGroup_2_5_1_3.eContents().get(0);
@@ -452,15 +456,16 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//	ID)? body=XBlockExpression?) | {After.annotationInfo=current} ("after" afterAll?="all"? => name=(STRING | ID)?
 		//	body=XBlockExpression?) | {ExampleGroup.annotationInfo=current} (preamble="context"
 		//	targetOperation=[types::JvmOperation|Method]? => name=STRING? "{" members+=Member* "}") |
-		//	{ExampleTable.annotationInfo=current} ("example" => name=STRING? "{" (heading=ExampleHeading rows+=ExampleRow*)? "}")
-		//	| {xtend::XtendField.annotationInfo=current} visibility=Visibility? (extension?="extension" type=JvmTypeReference
-		//	name=ValidID? | static?="static"? type=JvmTypeReference name=ValidID) ("=" initialValue=XExpression)? |
-		//	{xtend::XtendFunction.annotationInfo=current} ("def" | override?="override") visibility=Visibility? static?="static"?
-		//	dispatch?="dispatch"? ("<" typeParameters+=JvmTypeParameter ("," typeParameters+=JvmTypeParameter)* ">")? (=>
-		//	(returnType=JvmTypeReference createExtensionInfo=CreateExtensionInfo name=ValidID "(") | =>
-		//	(returnType=JvmTypeReference name=ValidID "(") | => (createExtensionInfo=CreateExtensionInfo name=ValidID "(") |
-		//	name=ValidID "(") (parameters+=Parameter ("," parameters+=Parameter)*)? ")" ("throws" exceptions+=JvmTypeReference
-		//	("," exceptions+=JvmTypeReference)*)? (expression=XBlockExpression | expression=RichString)?);
+		//	{ExampleTable.annotationInfo=current} ("example" => (name=STRING | name=ID)? "{" (heading=ExampleHeading
+		//	rows+=ExampleRow*)? "}") | {xtend::XtendField.annotationInfo=current} visibility=Visibility? (extension?="extension"
+		//	type=JvmTypeReference name=ValidID? | static?="static"? type=JvmTypeReference name=ValidID) ("="
+		//	initialValue=XExpression)? | {xtend::XtendFunction.annotationInfo=current} ("def" | override?="override")
+		//	visibility=Visibility? static?="static"? dispatch?="dispatch"? ("<" typeParameters+=JvmTypeParameter (","
+		//	typeParameters+=JvmTypeParameter)* ">")? (=> (returnType=JvmTypeReference createExtensionInfo=CreateExtensionInfo
+		//	name=ValidID "(") | => (returnType=JvmTypeReference name=ValidID "(") | => (createExtensionInfo=CreateExtensionInfo
+		//	name=ValidID "(") | name=ValidID "(") (parameters+=Parameter ("," parameters+=Parameter)*)? ")" ("throws"
+		//	exceptions+=JvmTypeReference ("," exceptions+=JvmTypeReference)*)? (expression=XBlockExpression |
+		//	expression=RichString)?);
 		public ParserRule getRule() { return rule; }
 
 		//{xtend::XtendMember} annotations+=XAnnotation* ({Example.annotationInfo=current} (("throws"
@@ -470,15 +475,16 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//ID)? body=XBlockExpression?) | {After.annotationInfo=current} ("after" afterAll?="all"? => name=(STRING | ID)?
 		//body=XBlockExpression?) | {ExampleGroup.annotationInfo=current} (preamble="context"
 		//targetOperation=[types::JvmOperation|Method]? => name=STRING? "{" members+=Member* "}") |
-		//{ExampleTable.annotationInfo=current} ("example" => name=STRING? "{" (heading=ExampleHeading rows+=ExampleRow*)? "}") |
-		//{xtend::XtendField.annotationInfo=current} visibility=Visibility? (extension?="extension" type=JvmTypeReference
-		//name=ValidID? | static?="static"? type=JvmTypeReference name=ValidID) ("=" initialValue=XExpression)? |
-		//{xtend::XtendFunction.annotationInfo=current} ("def" | override?="override") visibility=Visibility? static?="static"?
-		//dispatch?="dispatch"? ("<" typeParameters+=JvmTypeParameter ("," typeParameters+=JvmTypeParameter)* ">")? (=>
-		//(returnType=JvmTypeReference createExtensionInfo=CreateExtensionInfo name=ValidID "(") | =>
-		//(returnType=JvmTypeReference name=ValidID "(") | => (createExtensionInfo=CreateExtensionInfo name=ValidID "(") |
-		//name=ValidID "(") (parameters+=Parameter ("," parameters+=Parameter)*)? ")" ("throws" exceptions+=JvmTypeReference (","
-		//exceptions+=JvmTypeReference)*)? (expression=XBlockExpression | expression=RichString)?)
+		//{ExampleTable.annotationInfo=current} ("example" => (name=STRING | name=ID)? "{" (heading=ExampleHeading
+		//rows+=ExampleRow*)? "}") | {xtend::XtendField.annotationInfo=current} visibility=Visibility? (extension?="extension"
+		//type=JvmTypeReference name=ValidID? | static?="static"? type=JvmTypeReference name=ValidID) ("="
+		//initialValue=XExpression)? | {xtend::XtendFunction.annotationInfo=current} ("def" | override?="override")
+		//visibility=Visibility? static?="static"? dispatch?="dispatch"? ("<" typeParameters+=JvmTypeParameter (","
+		//typeParameters+=JvmTypeParameter)* ">")? (=> (returnType=JvmTypeReference createExtensionInfo=CreateExtensionInfo
+		//name=ValidID "(") | => (returnType=JvmTypeReference name=ValidID "(") | => (createExtensionInfo=CreateExtensionInfo
+		//name=ValidID "(") | name=ValidID "(") (parameters+=Parameter ("," parameters+=Parameter)*)? ")" ("throws"
+		//exceptions+=JvmTypeReference ("," exceptions+=JvmTypeReference)*)? (expression=XBlockExpression |
+		//expression=RichString)?)
 		public Group getGroup() { return cGroup; }
 
 		//{xtend::XtendMember}
@@ -496,7 +502,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//{Before.annotationInfo=current} ("before" beforeAll?="all"? => name=(STRING | ID)? body=XBlockExpression?) |
 		//{After.annotationInfo=current} ("after" afterAll?="all"? => name=(STRING | ID)? body=XBlockExpression?) |
 		//{ExampleGroup.annotationInfo=current} (preamble="context" targetOperation=[types::JvmOperation|Method]? => name=STRING?
-		//"{" members+=Member* "}") | {ExampleTable.annotationInfo=current} ("example" => name=STRING? "{"
+		//"{" members+=Member* "}") | {ExampleTable.annotationInfo=current} ("example" => (name=STRING | name=ID)? "{"
 		//(heading=ExampleHeading rows+=ExampleRow*)? "}") | {xtend::XtendField.annotationInfo=current} visibility=Visibility?
 		//(extension?="extension" type=JvmTypeReference name=ValidID? | static?="static"? type=JvmTypeReference name=ValidID)
 		//("=" initialValue=XExpression)? | {xtend::XtendFunction.annotationInfo=current} ("def" | override?="override")
@@ -703,23 +709,36 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_2_4_1_5() { return cRightCurlyBracketKeyword_2_4_1_5; }
 
-		//{ExampleTable.annotationInfo=current} ("example" => name=STRING? "{" (heading=ExampleHeading rows+=ExampleRow*)? "}")
+		//{ExampleTable.annotationInfo=current} ("example" => (name=STRING | name=ID)? "{" (heading=ExampleHeading
+		//rows+=ExampleRow*)? "}")
 		public Group getGroup_2_5() { return cGroup_2_5; }
 
 		//{ExampleTable.annotationInfo=current}
 		public Action getExampleTableAnnotationInfoAction_2_5_0() { return cExampleTableAnnotationInfoAction_2_5_0; }
 
-		//"example" => name=STRING? "{" (heading=ExampleHeading rows+=ExampleRow*)? "}"
+		//"example" => (name=STRING | name=ID)? "{" (heading=ExampleHeading rows+=ExampleRow*)? "}"
 		public Group getGroup_2_5_1() { return cGroup_2_5_1; }
 
 		//"example"
 		public Keyword getExampleKeyword_2_5_1_0() { return cExampleKeyword_2_5_1_0; }
 
-		//=> name=STRING?
-		public Assignment getNameAssignment_2_5_1_1() { return cNameAssignment_2_5_1_1; }
+		//=> (name=STRING | name=ID)?
+		public Group getGroup_2_5_1_1() { return cGroup_2_5_1_1; }
+
+		//name=STRING | name=ID
+		public Alternatives getAlternatives_2_5_1_1_0() { return cAlternatives_2_5_1_1_0; }
+
+		//name=STRING
+		public Assignment getNameAssignment_2_5_1_1_0_0() { return cNameAssignment_2_5_1_1_0_0; }
 
 		//STRING
-		public RuleCall getNameSTRINGTerminalRuleCall_2_5_1_1_0() { return cNameSTRINGTerminalRuleCall_2_5_1_1_0; }
+		public RuleCall getNameSTRINGTerminalRuleCall_2_5_1_1_0_0_0() { return cNameSTRINGTerminalRuleCall_2_5_1_1_0_0_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_2_5_1_1_0_1() { return cNameAssignment_2_5_1_1_0_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_5_1_1_0_1_0() { return cNameIDTerminalRuleCall_2_5_1_1_0_1_0; }
 
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_2_5_1_2() { return cLeftCurlyBracketKeyword_2_5_1_2; }
@@ -1407,15 +1426,16 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//	ID)? body=XBlockExpression?) | {After.annotationInfo=current} ("after" afterAll?="all"? => name=(STRING | ID)?
 	//	body=XBlockExpression?) | {ExampleGroup.annotationInfo=current} (preamble="context"
 	//	targetOperation=[types::JvmOperation|Method]? => name=STRING? "{" members+=Member* "}") |
-	//	{ExampleTable.annotationInfo=current} ("example" => name=STRING? "{" (heading=ExampleHeading rows+=ExampleRow*)? "}")
-	//	| {xtend::XtendField.annotationInfo=current} visibility=Visibility? (extension?="extension" type=JvmTypeReference
-	//	name=ValidID? | static?="static"? type=JvmTypeReference name=ValidID) ("=" initialValue=XExpression)? |
-	//	{xtend::XtendFunction.annotationInfo=current} ("def" | override?="override") visibility=Visibility? static?="static"?
-	//	dispatch?="dispatch"? ("<" typeParameters+=JvmTypeParameter ("," typeParameters+=JvmTypeParameter)* ">")? (=>
-	//	(returnType=JvmTypeReference createExtensionInfo=CreateExtensionInfo name=ValidID "(") | =>
-	//	(returnType=JvmTypeReference name=ValidID "(") | => (createExtensionInfo=CreateExtensionInfo name=ValidID "(") |
-	//	name=ValidID "(") (parameters+=Parameter ("," parameters+=Parameter)*)? ")" ("throws" exceptions+=JvmTypeReference
-	//	("," exceptions+=JvmTypeReference)*)? (expression=XBlockExpression | expression=RichString)?);
+	//	{ExampleTable.annotationInfo=current} ("example" => (name=STRING | name=ID)? "{" (heading=ExampleHeading
+	//	rows+=ExampleRow*)? "}") | {xtend::XtendField.annotationInfo=current} visibility=Visibility? (extension?="extension"
+	//	type=JvmTypeReference name=ValidID? | static?="static"? type=JvmTypeReference name=ValidID) ("="
+	//	initialValue=XExpression)? | {xtend::XtendFunction.annotationInfo=current} ("def" | override?="override")
+	//	visibility=Visibility? static?="static"? dispatch?="dispatch"? ("<" typeParameters+=JvmTypeParameter (","
+	//	typeParameters+=JvmTypeParameter)* ">")? (=> (returnType=JvmTypeReference createExtensionInfo=CreateExtensionInfo
+	//	name=ValidID "(") | => (returnType=JvmTypeReference name=ValidID "(") | => (createExtensionInfo=CreateExtensionInfo
+	//	name=ValidID "(") | name=ValidID "(") (parameters+=Parameter ("," parameters+=Parameter)*)? ")" ("throws"
+	//	exceptions+=JvmTypeReference ("," exceptions+=JvmTypeReference)*)? (expression=XBlockExpression |
+	//	expression=RichString)?);
 	public MemberElements getMemberAccess() {
 		return (pMember != null) ? pMember : (pMember = new MemberElements());
 	}
