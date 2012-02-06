@@ -269,7 +269,7 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 		for(example: scenario.examples){
 			var fields = example.heading?.parts
 			var exampleNumber = 1
-			if(!example.rows.empty){
+			if(!example.rows.empty && fields != null){
 				for(row: example.rows){
 					exampleClasses += scenario.createExampleClass(jnarioFile, row, fields, exampleTable, exampleNumber, inferredJvmType)
 					exampleNumber = exampleNumber + 1
@@ -323,7 +323,9 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 	
 	def cellToAppendable(ExampleRow row, int i){
 		var appendable = new StringBuilderBasedAppendable()
-		row.parts.get(i).toJavaExpression(appendable)
+		if(row.parts.size < i){
+			row.parts.get(i).toJavaExpression(appendable)
+		}
 		appendable
 	}
 	

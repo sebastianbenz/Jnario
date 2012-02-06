@@ -515,10 +515,17 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
           EList<XtendField> _parts = _heading==null?(EList<XtendField>)null:_heading.getParts();
           EList<XtendField> fields = _parts;
           int exampleNumber = 1;
+          boolean _operator_and = false;
           EList<ExampleRow> _rows = example.getRows();
           boolean _isEmpty = _rows.isEmpty();
           boolean _operator_not = BooleanExtensions.operator_not(_isEmpty);
-          if (_operator_not) {
+          if (!_operator_not) {
+            _operator_and = false;
+          } else {
+            boolean _operator_notEquals = ObjectExtensions.operator_notEquals(fields, null);
+            _operator_and = BooleanExtensions.operator_and(_operator_not, _operator_notEquals);
+          }
+          if (_operator_and) {
             EList<ExampleRow> _rows_1 = example.getRows();
             for (final ExampleRow row : _rows_1) {
               {
@@ -653,8 +660,13 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
       StringBuilderBasedAppendable _stringBuilderBasedAppendable = new StringBuilderBasedAppendable();
       StringBuilderBasedAppendable appendable = _stringBuilderBasedAppendable;
       EList<XExpression> _parts = row.getParts();
-      XExpression _get = _parts.get(i);
-      this._jnarioCompiler.toJavaExpression(_get, appendable);
+      int _size = _parts.size();
+      boolean _operator_lessThan = IntegerExtensions.operator_lessThan(_size, i);
+      if (_operator_lessThan) {
+        EList<XExpression> _parts_1 = row.getParts();
+        XExpression _get = _parts_1.get(i);
+        this._jnarioCompiler.toJavaExpression(_get, appendable);
+      }
       _xblockexpression = (appendable);
     }
     return _xblockexpression;
