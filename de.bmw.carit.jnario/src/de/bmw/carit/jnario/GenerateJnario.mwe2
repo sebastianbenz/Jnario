@@ -95,7 +95,7 @@ Workflow {
                   //backtrack = true
                   
               }
-              antlrParam = "-Xconversiontimeout" antlrParam = "10000"
+              antlrParam = "-Xconversiontimeout" antlrParam = "100000"
             }
 
             // java-based API for validation
