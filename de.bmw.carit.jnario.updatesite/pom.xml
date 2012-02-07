@@ -11,16 +11,4 @@
   <artifactId>de.bmw.carit.jnario.updatesite</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>eclipse-update-site</packaging>
-    <build>
-    <plugins>
-      <plugin>
-        <groupId>org.sonatype.tycho</groupId>
-        <artifactId>maven-osgi-packaging-plugin</artifactId>
-        <version>${tycho-version}</version>
-        <configuration>
-          <archiveSite>true</archiveSite>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 </project>
