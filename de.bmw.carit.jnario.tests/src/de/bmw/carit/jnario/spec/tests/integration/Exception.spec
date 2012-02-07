@@ -10,13 +10,13 @@ import static extension de.bmw.carit.jnario.tests.util.SpecExecutor.*
  */
 describe "Exception" {
  
-		"should except exceptions for examples"{
+		it "should except exceptions for examples"{
 			val spec = '
 				package bootstrap
 	
 				describe "Example" {
 				 
-				   throws IllegalArgumentException " should pass when exception is thrown"{
+				   it throws IllegalArgumentException " should pass when exception is thrown"{
 					  	throw new IllegalArgumentException()
 				   }
 				   

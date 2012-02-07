@@ -14,12 +14,12 @@ describe "SpecValidator"{
 
 	@Inject ModelStore modelStore
 
-	"assert statement must be boolean"{
+	it "assert statement must be boolean"{
 		modelStore.parseSpec('
 			package bootstrap
 
 			describe "Example"{
-				"invalid assert"{
+				it "invalid assert"{
 					assert 1
 				}
 			} 

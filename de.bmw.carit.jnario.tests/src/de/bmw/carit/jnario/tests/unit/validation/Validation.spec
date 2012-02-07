@@ -15,7 +15,7 @@ describe "JnarioValidator"{
 
 	@Inject ModelStore modelStore
 	
-	"returns an error if a step definition and a reference to this step are in the same scenario"{
+	it "returns an error if a step definition and a reference to this step are in the same scenario"{
 		modelStore.parseScenario('
 			package bootstrap
 
@@ -30,7 +30,7 @@ describe "JnarioValidator"{
 		validationResult.assertErrorContains("Cannot reference a step");
 	}
 	
-	"does not return an error if a step definition was in a different scenario than the reference"{
+	it "does not return an error if a step definition was in a different scenario than the reference"{
 		modelStore.parseScenario('
 			package bootstrap
 
@@ -46,7 +46,7 @@ describe "JnarioValidator"{
 		validationResult.assertOK();
 	} 
 	
-//	"returns an error if some variable was not defined"{
+//	it "returns an error if some variable was not defined"{
 //		modelStore.parseScenario('
 //			package bootstrap
 //

@@ -55,6 +55,7 @@ public class SpecHighlightingCalculator extends XtendHighlightingCalculator {
 					highlightXtendField(field,acceptor);
 				}else if(member.eClass() == SpecPackage.Literals.EXAMPLE){
 					Example example = (Example) member;
+					//highlightDescription(example, acceptor);
 					highlightRichStrings(example.getBody() ,acceptor);
 				}else if(member.eClass() == SpecPackage.Literals.EXAMPLE_GROUP){
 					ExampleGroup subExampleGroup = (ExampleGroup) member;

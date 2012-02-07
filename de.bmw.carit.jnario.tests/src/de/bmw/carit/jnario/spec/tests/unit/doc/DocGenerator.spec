@@ -13,14 +13,14 @@ describe DocGenerator {
 	@Inject extension ModelStore 
 	@Inject InMemoryFileSystemAccess fsa
 	
-	"should generate java script helper files"{
+	it "should generate java script helper files"{
 		generateEmptyExampleDoc()
 		
 		assert generatedFile("js/prettify.js") != null
 		assert generatedFile("js/lang-xtend.js") != null
 	}
 	
-	"should generate css helper files"{
+	it "should generate css helper files"{
 		generateEmptyExampleDoc()
 		
 		assert generatedFile("css/bootstrap.min.css") != null
@@ -28,7 +28,7 @@ describe DocGenerator {
 		assert generatedFile("css/prettify.css") != null
 	}
 	
-	"should generate scenario title and heading"{
+	it "should generate scenario title and heading"{
 		generateEmptyExampleDoc()
 		
 		val scenarioDoc = generatedFile("ExampleSpec.html")
@@ -37,7 +37,7 @@ describe DocGenerator {
 				scenarioDoc.contains("<h1>Example</h1>")
 	}
 	
-	"should generate scenario documentation"{
+	it "should generate scenario documentation"{
 		generateDoc('''
 			/*
 			 * Irrelevant documentation.
@@ -56,13 +56,13 @@ describe DocGenerator {
 		scenarioDoc.should.not.contain("Irrelevant documentation.")
 	}
 	
-	"should generate example documentation"{
+	it "should generate example documentation"{
 		generateDoc('''
 			describe 'Example'{
 				/*
 				 * Example documentation
 				 */
-				"should do stuff"{
+				it "should do stuff"{
 					var x = 0
 					x = x + 1
 				}
@@ -78,7 +78,7 @@ describe DocGenerator {
 		'''.toString())
 	}
 	
-	"should support markdown for documentation"{
+	it "should support markdown for documentation"{
 		generateDoc('''
 			/*
 			 * #Example Heading

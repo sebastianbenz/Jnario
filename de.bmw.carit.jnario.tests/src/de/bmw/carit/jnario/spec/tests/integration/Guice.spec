@@ -8,7 +8,7 @@ import static de.bmw.carit.jnario.common.test.util.ResultMatchers.*
  */
 describe "Guice" {
 
-	"should demonstrate the injection of Tests"{
+	it "should demonstrate the injection of Tests"{
 		val spec = '
 			package bootstrap
 			
@@ -22,7 +22,7 @@ describe "Guice" {
 				
 				@Inject String toInject
 				
-				"should inject fields"{
+				it "should inject fields"{
 					assertNotNull(toInject);
 				} 
 						

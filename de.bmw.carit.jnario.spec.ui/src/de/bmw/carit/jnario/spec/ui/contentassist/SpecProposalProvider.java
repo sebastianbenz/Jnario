@@ -50,4 +50,10 @@ public class SpecProposalProvider extends AbstractSpecProposalProvider {
 		super.completeMember_TargetOperation(model, assignment, context, acceptor);
 	}
 	
+	@Override
+	public void completeMember_Preamble(EObject model, Assignment assignment,
+			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		acceptor.accept(createCompletionProposal("it", context));
+	}
+	
 }

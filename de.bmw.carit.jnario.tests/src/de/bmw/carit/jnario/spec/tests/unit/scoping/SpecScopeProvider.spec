@@ -19,7 +19,7 @@ describe SpecScopeProvider {
 	
 	@Inject ModelStore modelStore
 	
-	"should resolve Jvm type ExampleGroup target"{
+	it "should resolve Jvm type ExampleGroup target"{
 		modelStore.parseSpec('
 			package bootstrap
 			
@@ -36,7 +36,7 @@ describe SpecScopeProvider {
 		contains(scope, "Assert") 
 	}    
 	
-	"should resolve operations from surrounding ExampleGroup's target"{
+	it "should resolve operations from surrounding ExampleGroup's target"{
 		modelStore.parseSpec('
 			package bootstrap
 			

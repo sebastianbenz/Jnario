@@ -26,6 +26,7 @@ public class JnarioExtensionClassNameProvider extends ExtensionClassNameProvider
 	protected Multimap<Class<?>, Class<?>> simpleComputeExtensionClasses() {
 		Multimap<Class<?>, Class<?>> result = super.simpleComputeExtensionClasses();
 		result.put(Object.class, Should.class);
+		result.put(Object.class, Each.class);
 		result.put(Object.class, CoreMatchers.class);
 		return result;
 	}

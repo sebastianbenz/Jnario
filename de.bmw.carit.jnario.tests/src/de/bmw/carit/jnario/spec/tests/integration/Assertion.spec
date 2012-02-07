@@ -7,12 +7,12 @@ import static extension de.bmw.carit.jnario.common.test.util.Helpers.*
  */
 describe "Assertion"{
 	
-	"passes if the evaluated expression is true"{
+	it "passes if the evaluated expression is true"{
 		assert true
 		assert 1 == 1
 	}
 	
-	"fails if the evaluated expression is false"{
+	it "fails if the evaluated expression is false"{
 		expect(typeof(AssertionError))[assert false]
 	} 
 
@@ -24,7 +24,7 @@ describe "Assertion"{
 		/*
 		 * If the assertion fails, will print the value of all referenced variables.
 		 */
-		"Variable Access"{ 
+		it "Variable Access"{ 
 			val y = false
 			errorMessage[assert y].is(  
 			'''
@@ -35,7 +35,7 @@ describe "Assertion"{
 		/*
 		 * Literal values will not be printed.
 		 */               
-		"Filters literals"{           
+		it "Filters literals"{           
 			val x = 0  
 			errorMessage[assert x == 42].is(  
 			'''
@@ -43,7 +43,7 @@ describe "Assertion"{
 			     x is 0''')	 
 		}      
 		
-		"Not Equals"{           
+		it "Not Equals"{           
 			val x = 42     
 			errorMessage[assert !(x == 42)].is(  
 			'''
@@ -52,14 +52,14 @@ describe "Assertion"{
 			     x is 42''')	  
 		}   
 		     
-		"Function Calls"{
+		it "Function Calls"{
 			errorMessage[assert greet("World") == "Hello World!"].is(  
 			'''
 			Expected greet("World") == "Hello World!" but:
 			     greet("World") is "Hello World"''')
 		}      
 		
-		"And expressions"{
+		it "And expressions"{
 			val x = 0 
 			val y = 1
 			errorMessage[assert x == 1 && y == 0].is(  
@@ -71,7 +71,7 @@ describe "Assertion"{
 			     y is 1''')
 		}    
   
- 		"Removes duplicate feature calls"{
+ 		it "Removes duplicate feature calls"{
  			val x = 0 
 			errorMessage[assert x > 0 && x < 10].is(  
 			'''

@@ -24,16 +24,13 @@ class WhiteSpaceNormalizer {
 	}
 	
 	def whitespaceAtBeginning(String string){
-		var int i = 0
 		val whitespace = new StringBuilder()
-		while(i < string.length){
-			val c = string.charAt(i)
+		for(c : string.toCharArray){
 			if(c.whitespace){
 				whitespace.append(c)
 			}else{
 				return whitespace.toString
 			}
-			i = i + 1
 		}
 		return ""
 	}

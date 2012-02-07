@@ -11,7 +11,7 @@ import static extension de.bmw.carit.jnario.tests.util.SpecExecutor.*
  */ 
 describe "BeforeAll" {
  
-	"should be executed before all tests"{
+	it "should be executed before all tests"{
 		val spec = '
 			package bootstrap 
 			
@@ -23,11 +23,11 @@ describe "BeforeAll" {
 					beforeExecutionCount = beforeExecutionCount + 1
 				}
 				
-				"should be executed before all tests (1)"{
+				it "should be executed before all tests (1)"{
 					beforeExecutionCount.should.be(1)
 				}	
 				
-				"should be executed before all tests (2)"{
+				it "should be executed before all tests (2)"{
 					beforeExecutionCount.should.be(1)
 				}	
 			}

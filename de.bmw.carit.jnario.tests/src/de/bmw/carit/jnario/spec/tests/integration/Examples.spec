@@ -8,7 +8,7 @@ describe "Examples"{
 		| "Hallo" 		| "HALLO"		|
 	}
 	
-	"are iterable"{
+	it "are iterable"{
 		myExamples.forEach[
 			assert a.toUpperCase == b
 		]

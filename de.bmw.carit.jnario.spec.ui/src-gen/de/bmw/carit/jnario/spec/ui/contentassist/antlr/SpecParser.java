@@ -96,7 +96,7 @@ public class SpecParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMemberAccess().getGroup(), "rule__Member__Group__0");
 					put(grammarAccess.getMemberAccess().getGroup_2_0(), "rule__Member__Group_2_0__0");
 					put(grammarAccess.getMemberAccess().getGroup_2_0_1(), "rule__Member__Group_2_0_1__0");
-					put(grammarAccess.getMemberAccess().getGroup_2_0_1_0(), "rule__Member__Group_2_0_1_0__0");
+					put(grammarAccess.getMemberAccess().getGroup_2_0_1_1(), "rule__Member__Group_2_0_1_1__0");
 					put(grammarAccess.getMemberAccess().getGroup_2_1(), "rule__Member__Group_2_1__0");
 					put(grammarAccess.getMemberAccess().getGroup_2_1_1(), "rule__Member__Group_2_1_1__0");
 					put(grammarAccess.getMemberAccess().getGroup_2_2(), "rule__Member__Group_2_2__0");
@@ -314,9 +314,10 @@ public class SpecParser extends AbstractContentAssistParser {
 					put(grammarAccess.getExampleGroupAccess().getNameAssignment_4(), "rule__ExampleGroup__NameAssignment_4");
 					put(grammarAccess.getExampleGroupAccess().getMembersAssignment_6(), "rule__ExampleGroup__MembersAssignment_6");
 					put(grammarAccess.getMemberAccess().getAnnotationsAssignment_1(), "rule__Member__AnnotationsAssignment_1");
-					put(grammarAccess.getMemberAccess().getExceptionAssignment_2_0_1_0_1(), "rule__Member__ExceptionAssignment_2_0_1_0_1");
-					put(grammarAccess.getMemberAccess().getNameAssignment_2_0_1_1(), "rule__Member__NameAssignment_2_0_1_1");
-					put(grammarAccess.getMemberAccess().getBodyAssignment_2_0_1_2(), "rule__Member__BodyAssignment_2_0_1_2");
+					put(grammarAccess.getMemberAccess().getPreambleAssignment_2_0_1_0(), "rule__Member__PreambleAssignment_2_0_1_0");
+					put(grammarAccess.getMemberAccess().getExceptionAssignment_2_0_1_1_1(), "rule__Member__ExceptionAssignment_2_0_1_1_1");
+					put(grammarAccess.getMemberAccess().getNameAssignment_2_0_1_2(), "rule__Member__NameAssignment_2_0_1_2");
+					put(grammarAccess.getMemberAccess().getBodyAssignment_2_0_1_3(), "rule__Member__BodyAssignment_2_0_1_3");
 					put(grammarAccess.getMemberAccess().getPreambleAssignment_2_1_1_0(), "rule__Member__PreambleAssignment_2_1_1_0");
 					put(grammarAccess.getMemberAccess().getTargetTypeAssignment_2_1_1_1(), "rule__Member__TargetTypeAssignment_2_1_1_1");
 					put(grammarAccess.getMemberAccess().getNameAssignment_2_1_1_2(), "rule__Member__NameAssignment_2_1_1_2");

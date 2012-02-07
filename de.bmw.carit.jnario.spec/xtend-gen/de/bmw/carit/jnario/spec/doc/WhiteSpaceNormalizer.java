@@ -56,29 +56,17 @@ public class WhiteSpaceNormalizer {
   }
   
   public String whitespaceAtBeginning(final String string) {
-      int i = 0;
       StringBuilder _stringBuilder = new StringBuilder();
       final StringBuilder whitespace = _stringBuilder;
-      int _length = string.length();
-      boolean _operator_lessThan = IntegerExtensions.operator_lessThan(i, _length);
-      boolean _while = _operator_lessThan;
-      while (_while) {
-        {
-          char _charAt = string.charAt(i);
-          final char c = _charAt;
-          boolean _isWhitespace = Character.isWhitespace(c);
-          if (_isWhitespace) {
-            whitespace.append(c);
-          } else {
-            String _string = whitespace.toString();
-            return _string;
-          }
-          int _operator_plus = IntegerExtensions.operator_plus(i, 1);
-          i = _operator_plus;
+      char[] _charArray = string.toCharArray();
+      for (final char c : _charArray) {
+        boolean _isWhitespace = Character.isWhitespace(c);
+        if (_isWhitespace) {
+          whitespace.append(c);
+        } else {
+          String _string = whitespace.toString();
+          return _string;
         }
-        int _length_1 = string.length();
-        boolean _operator_lessThan_1 = IntegerExtensions.operator_lessThan(i, _length_1);
-        _while = _operator_lessThan_1;
       }
       return "";
   }

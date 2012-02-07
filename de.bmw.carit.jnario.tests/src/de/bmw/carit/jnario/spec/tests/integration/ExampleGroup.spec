@@ -9,7 +9,7 @@ import de.bmw.carit.jnario.spec.spec.ExampleGroup
  */
 describe ExampleGroup {
   
-	"should resolve target class"{
+	it "should resolve target class"{
 		val spec = '
 			package bootstrap
 			
@@ -18,7 +18,7 @@ describe ExampleGroup {
 	
 			describe Assert {
 			
-				"should resolve target class"{
+				it "should resolve target class"{
 				}  
 						
 			}

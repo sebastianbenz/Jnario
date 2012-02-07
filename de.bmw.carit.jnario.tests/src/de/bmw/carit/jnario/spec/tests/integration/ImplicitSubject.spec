@@ -7,7 +7,7 @@ import static org.hamcrest.CoreMatchers.*
 
 describe "ImplicitSubject"{
 	
-	"should create instance of target type"{
+	it "should create instance of target type"{
 		val spec = '
 			package bootstrap
 
@@ -15,7 +15,7 @@ describe "ImplicitSubject"{
 			
 			describe String {
 			
-				"subject should not be null"{
+				it "subject should not be null"{
 					subject.should.not.be(nullValue)
 				} 
 						
@@ -24,7 +24,7 @@ describe "ImplicitSubject"{
 		assertThat(execute(spec), is(successful))
 	}
 	
-	"can be overridden within example group"{
+	it "can be overridden within example group"{
 		val spec = '
 			package bootstrap
 
@@ -34,7 +34,7 @@ describe "ImplicitSubject"{
 				
 				String subject = "overridden"
 			
-				"subject should be overridden"{
+				it "subject should be overridden"{
 					subject.should.be("overridden")
 				} 
 						
@@ -43,7 +43,7 @@ describe "ImplicitSubject"{
 		assertThat(execute(spec), is(successful))
 	}
 	
-	"will be only created if is used"{
+	it "will be only created if is used"{
 		val spec = '
 			package bootstrap
 
@@ -51,7 +51,7 @@ describe "ImplicitSubject"{
 			
 			describe String {
 				
-				throws NoSuchFieldException "because subject will not be created"{
+				it throws NoSuchFieldException "because subject will not be created"{
 					getClass().getField("subject")
 				} 
 						
@@ -60,7 +60,7 @@ describe "ImplicitSubject"{
 		assertThat(execute(spec), is(successful))
 	}
 	
-	"can be accessed from nested ExampleGroups"{
+	it "can be accessed from nested ExampleGroups"{
 		val spec = '
 			package bootstrap
 
@@ -69,7 +69,7 @@ describe "ImplicitSubject"{
 		describe String {
 			
 			describe "Nested ExampleGroup"{
-				"should inherthe subject"{
+				it "should inherthe subject"{
 					subject.should.be("")
 				}
 			}
@@ -79,7 +79,7 @@ describe "ImplicitSubject"{
 		assertThat(execute(spec), is(successful))
 	}
 	
-	"can be overridden from nested ExampleGroups"{
+	it "can be overridden from nested ExampleGroups"{
 		val spec = '
 			package bootstrap
 
@@ -88,7 +88,7 @@ describe "ImplicitSubject"{
 		describe String {
 			
 			describe java.util.ArrayList "Nested ExampleGroup with different target type"{
-				"can override the subject"{
+				it "can override the subject"{
 					subject.empty.should.be(true)
 				}
 			}
@@ -97,7 +97,7 @@ describe "ImplicitSubject"{
 		assertThat(execute(spec), is(successful))
 	}
 	
-	"will be only created in the subexample if is not used in the parent example group"{
+	it "will be only created in the subexample if is not used in the parent example group"{
 		val spec = '
 			package bootstrap
 
@@ -107,7 +107,7 @@ describe "ImplicitSubject"{
 					
 					Integer subject = 0
 					
-					"can be manually assigned from within sub specification"{
+					it "can be manually assigned from within sub specification"{
 						subject.should.be(0)
 					} 
 				}
@@ -117,7 +117,7 @@ describe "ImplicitSubject"{
 		assertThat(execute(spec), is(successful))
 	}
 	
-	"will not be created in a sub example if is used in the parent example group"{
+	it "will not be created in a sub example if is used in the parent example group"{
 		val spec = '
 			package bootstrap
 	
@@ -125,18 +125,18 @@ describe "ImplicitSubject"{
 						
 			describe String {
 				describe String{
-					"should generate subject for superclass"{
+					it "should generate subject for superclass"{
 						assert typeof(StringSpec).getDeclaredField("subject") != null
 					}
-					throws NoSuchFieldException "should not generate subject for subclass"{
+					it throws NoSuchFieldException "should not generate subject for subclass"{
 						typeof(StringStringSpec).getDeclaredField("subject")
 					}
-					"uses subject"{
+					it "uses subject"{
 					subject.toString
 				}
 				}
 				
-				"uses subject"{
+				it "uses subject"{
 					subject.toString
 				}
 			}

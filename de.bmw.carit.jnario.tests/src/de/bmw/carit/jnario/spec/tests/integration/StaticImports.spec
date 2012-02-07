@@ -2,7 +2,7 @@ package de.bmw.carit.jnario.spec.tests.integration
 
 describe "StaticImports" {
  
-	"should resolve static imports"{
+	it "should resolve static imports"{
 		val spec = '
 			package bootstrap
 			
@@ -10,7 +10,7 @@ describe "StaticImports" {
 	
 			describe "Example" {
 			
-				"should resolve static imports"{
+				it "should resolve static imports"{
 					assertTrue(true) 
 				} 
 						

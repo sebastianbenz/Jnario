@@ -1558,7 +1558,7 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (annotationInfo=Member_Example_2_0_0 (exception=[JvmDeclaredType|QualifiedName]? name=STRING body=XBlockExpression?))
+	 *     (annotationInfo=Member_Example_2_0_0 (preamble=ID exception=[JvmDeclaredType|QualifiedName]? name=STRING body=XBlockExpression?))
 	 */
 	protected void sequence_Member(EObject context, Example semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

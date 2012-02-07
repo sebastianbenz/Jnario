@@ -8,23 +8,23 @@ import org.hamcrest.Matcher
  */
 describe "Matcher"{
 	
-	"returns the boolean result of the evaluated expression"{
+	it "returns the boolean result of the evaluated expression"{
 		val myMatcher = #[String input | input == "true"]
 		assert myMatcher.matches("true")
 		assert !myMatcher.matches("false")
 	}    
 	  
-	"type can be coerced from the context"{
+	it "type can be coerced from the context"{
 		val Matcher<String> myMatcher = #[it  == "true"]
 		assert myMatcher.matches("true")
 		assert !myMatcher.matches("false") 
 	}
 	
-	"works with should"{
+	it "works with should"{
 		"Hello".should.be(#[it.startsWith("H")])
 	}  
 	
-	"uses the closure's code as description"{
+	it "uses the closure's code as description"{
 		errorMessage[
 			"a".should.be(#[it.startsWith("b")])
 		].is('''

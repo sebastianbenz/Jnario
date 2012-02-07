@@ -20,19 +20,19 @@ describe ExampleNameProvider{
  
 	context toJavaClassName{ 
 		
-		"should remove all white spaces from ExampleGroup's description"{
+		it "should remove all white spaces from ExampleGroup's description"{
 			firstJavaClassName("describe 'My Example'").should.not.contain(" ")
 		}  
 		 
-		"should append 'Spec' to class name"{ 
+		it "should append 'Spec' to class name"{ 
 			firstJavaClassName("describe 'My Example'").should.endWith('Spec') 
 		}  
 		  
-		"should prepend target type name"{
+		it "should prepend target type name"{
 			firstJavaClassName("describe org.junit.Assert 'My Example'").should.startWith("Assert")
 		}  
 		
-		"should convert description to camel case"{
+		it "should convert description to camel case"{
 			each(
 				firstJavaClassName("describe 'my example'"),
 				firstJavaClassName("describe 'my\nexample'"),
@@ -41,19 +41,19 @@ describe ExampleNameProvider{
 			).should.be('MyExampleSpec')
 		} 
 		  
-		"should append the target operation's name and params"{
+		it "should append the target operation's name and params"{
 			secondJavaClassName("describe org.junit.Assert{
 										context assertTrue(boolean) 
 								 }").should.endWith('AssertTrueBooleanSpec')
 		}
 		
-		"should append the description"{
+		it "should append the description"{
 			secondJavaClassName("describe org.junit.Assert{
 										context 'assertTrue' 
 								 }").should.endWith('AssertTrueSpec')
 		}
 		
-		"should prepend the parent ExampleGroup's name"{
+		it "should prepend the parent ExampleGroup's name"{
 			secondJavaClassName("describe org.junit.Assert{
 									context assertTrue(boolean) 
 								}").should.be('AssertAssertTrueBooleanSpec')
@@ -71,7 +71,7 @@ describe ExampleNameProvider{
   
   	context toMethodName(Example){
   		
-  		"should convert method description to camel case starting in lowercase"{
+  		it "should convert method description to camel case starting in lowercase"{
 			each(
 				firstMethodName("'my example'"),
 				firstMethodName("'my\nexample'"),
@@ -81,14 +81,14 @@ describe ExampleNameProvider{
 		} 
 		
 		def firstMethodName(String content){
-			val contentWithContext = "describe 'Context'{" + content + "}"
+			val contentWithContext = "describe 'Context'{ it " + content + "}"
 			subject.toMethodName(parse(contentWithContext).first(typeof(Example)))
 		}
   	}
   	
   	context toMethodName(Before){
   		
-  		"should convert before description to camel case starting in lowercase"{
+  		it "should convert before description to camel case starting in lowercase"{
 			each(
 				firstMethodName("before 'my example'"),
 				firstMethodName("before 'my\nexample'"),
@@ -97,11 +97,11 @@ describe ExampleNameProvider{
 			).should.be('myExample')
 		} 
 		
-		"should use before as default name"{
+		it "should use before as default name"{
 			firstMethodName("before{}").should.be("before")
 		}
 		
-		"should enumerate befores without description"{
+		it "should enumerate befores without description"{
 			secondMethodName("before{}
 							 before{}").should.be("before2")
 		}
@@ -119,7 +119,7 @@ describe ExampleNameProvider{
   	
   	context toMethodName(After){
   		
-  		"should convert after description to camel case starting in lowercase"{
+  		it "should convert after description to camel case starting in lowercase"{
 			each(
 				firstMethodName("after 'my example'"),
 				firstMethodName("after 'my\nexample'"),
@@ -128,11 +128,11 @@ describe ExampleNameProvider{
 			).should.be('myExample')
 		} 
 		
-		"should use after as default name"{
+		it "should use after as default name"{
 			firstMethodName("after{}").should.be("after")
 		}
 		
-		"should enumerate afters without description"{
+		it "should enumerate afters without description"{
 			secondMethodName("after{}
 							 after{}").should.be("after2")
 		}
@@ -150,31 +150,31 @@ describe ExampleNameProvider{
 
 	context ^describe(ExampleGroup){
 		
-		"should use the description"{
+		it "should use the description"{
 			describeFirst("describe 'My Description'").should.be("My Description")
 		}
 		
-		"should use the target type"{
+		it "should use the target type"{
 			describeFirst("describe org.junit.Assert").should.be("Assert")
 		}
 		
-		"should combine target type and description"{
+		it "should combine target type and description"{
 			describeFirst("describe org.junit.Assert 'and more'").should.be("Assert and more")
 		}
 		
-		"should use the target operation"{
+		it "should use the target operation"{
 			describeSecond("describe org.junit.Assert{
 										context assertTrue(boolean) 
 								 }").should.be("assertTrue[boolean]")
 		}
 		
-		"should combine target operation and description"{
+		it "should combine target operation and description"{
 			describeSecond("describe org.junit.Assert{
 										context assertTrue(boolean) 'and more'
 								 }").should.be("assertTrue[boolean] and more")
 		}
 		
-		"should escape quotes"{
+		it "should escape quotes"{
 			val text = '''describe 'Example'{
 										describe 'and "more"'
 								 }'''.toString
@@ -192,25 +192,25 @@ describe ExampleNameProvider{
 	
 	context ^describe(Example){
 		
-		"should use the description"{
+		it "should use the description"{
 			describeFirst("'should do stuff' {true}").should.be("should do stuff")
 		}
 		
-		"should use the exception"{
+		it "should use the exception"{
 			describeFirst("throws IllegalArgumentException {true}").should.be("throws IllegalArgumentException")
 		}
 		
-		"should combine exception and description"{
+		it "should combine exception and description"{
 			describeFirst("throws IllegalArgumentException 'should be described' {true}").should.be("throws IllegalArgumentException should be described")
 		}
 		
-		"apppends Ô[PENDING]' to pending example descriptions"{
+		it "apppends Ô[PENDING]' to pending example descriptions"{
 			describeFirst("'should do stuff'").should.be("should do stuff [PENDING]")
 			describeFirst("'should do stuff'{}").should.be("should do stuff [PENDING]")
 		}
 		
 		def describeFirst(String content){
-			val contentWithExampleGroup = "describe 'Example'{" + content + "}"
+			val contentWithExampleGroup = "describe 'Example'{ it " + content + "}"
 			subject.^describe(parse(contentWithExampleGroup).first(typeof(Example)))
 		}
 	}
