@@ -20,6 +20,7 @@ import org.eclipse.xtext.builder.EclipseResourceFileSystemAccess2;
 import org.eclipse.xtext.builder.IXtextBuilderParticipant;
 import org.eclipse.xtext.builder.navigation.IDerivedMemberAwareEditorOpener;
 import org.eclipse.xtext.common.types.xtext.ui.ITypesProposalProvider;
+import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
 import org.eclipse.xtext.ui.LanguageSpecific;
 import org.eclipse.xtext.ui.editor.IURIEditorOpener;
 import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
@@ -32,6 +33,7 @@ import org.eclipse.xtext.ui.editor.doubleClicking.DoubleClickStrategyProvider;
 import org.eclipse.xtext.ui.editor.folding.IFoldingRegionProvider;
 import org.eclipse.xtext.ui.editor.folding.IFoldingStructureProvider;
 import org.eclipse.xtext.ui.editor.formatting.IContentFormatterFactory;
+import org.eclipse.xtext.ui.editor.hover.IEObjectHover;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
 import org.eclipse.xtext.ui.editor.hyperlinking.IHyperlinkHelper;
 import org.eclipse.xtext.ui.editor.model.ITokenTypeToPartitionTypeMapper;
@@ -76,6 +78,7 @@ import org.eclipse.xtext.xtend2.ui.refactoring.Xtend2RenameStrategy;
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
 
+import de.bmw.carit.jnario.spec.ui.doc.SpecHoverProvider;
 import de.bmw.carit.jnario.spec.ui.editor.SpecFoldingRegionProvider;
 import de.bmw.carit.jnario.spec.ui.highlighting.SpecHighlightingCalculator;
 import de.bmw.carit.jnario.spec.ui.launching.SpecJavaElementDelegate;
@@ -166,7 +169,7 @@ public class SpecUiModule extends de.bmw.carit.jnario.spec.ui.AbstractSpecUiModu
 
 	@Override
 	public Class<? extends IEObjectHoverProvider> bindIEObjectHoverProvider() {
-		return XtendHoverProvider.class;
+		return SpecHoverProvider.class;
 	}
 	
 	public Class<? extends EclipseResourceFileSystemAccess2> bindEclipseResourceFileSystemAccess2() {
@@ -229,7 +232,6 @@ public class SpecUiModule extends de.bmw.carit.jnario.spec.ui.AbstractSpecUiModu
 			binder.bind(IDerivedMemberAwareEditorOpener.class).to(DerivedMemberAwareEditorOpener.class);
 		}
 	}
-	
 
 	public Class<? extends XtextSourceViewer.Factory> bindSourceViewerFactory() {
 		return RichStringAwareSourceViewer.Factory.class;
@@ -242,5 +244,6 @@ public class SpecUiModule extends de.bmw.carit.jnario.spec.ui.AbstractSpecUiModu
 	public Class<? extends JavaElementDelegate> bindJavaElementDelegate(){
 		return SpecJavaElementDelegate.class;
 	}
+	
 	
 }
