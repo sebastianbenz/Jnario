@@ -36,7 +36,7 @@
          </activeWhen>
       </handler>
             <handler
-            class="de.bmw.carit.jnario.spec.ui.JnarioExecutableExtensionFactory:org.eclipse.xtext.xtend2.ui.edit.OrganizeImportsHandler"
+            class="de.bmw.carit.jnario.ui.JnarioExecutableExtensionFactory:org.eclipse.xtext.xtend2.ui.edit.OrganizeImportsHandler"
             commandId="org.eclipse.xtext.xbase.ui.organizeImports">
            	<activeWhen>
 				<reference
