@@ -2,6 +2,7 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package de.bmw.carit.jnario.jnario.impl;
 
@@ -26,6 +27,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.xtext.xtend2.xtend2.XtendField;
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 
 import org.eclipse.xtext.xtend2.xtend2.impl.XtendMemberImplCustom;
@@ -41,6 +43,7 @@ import org.eclipse.xtext.xtend2.xtend2.impl.XtendMemberImplCustom;
  *   <li>{@link de.bmw.carit.jnario.jnario.impl.ScenarioImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.jnario.impl.ScenarioImpl#getSteps <em>Steps</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.jnario.impl.ScenarioImpl#getMembers <em>Members</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.jnario.impl.ScenarioImpl#getFields <em>Fields</em>}</li>
  * </ul>
  * </p>
  *
@@ -97,6 +100,16 @@ public class ScenarioImpl extends XtendMemberImplCustom implements Scenario
 	 * @ordered
 	 */
 	protected EList<XtendMember> members;
+
+	/**
+	 * The cached value of the '{@link #getFields() <em>Fields</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFields()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<XtendField> fields;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -189,6 +202,20 @@ public class ScenarioImpl extends XtendMemberImplCustom implements Scenario
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<XtendField> getFields()
+	{
+		if (fields == null)
+		{
+			fields = new EObjectContainmentEList<XtendField>(XtendField.class, this, JnarioPackage.SCENARIO__FIELDS);
+		}
+		return fields;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
 	{
@@ -200,6 +227,8 @@ public class ScenarioImpl extends XtendMemberImplCustom implements Scenario
 				return ((InternalEList<?>)getSteps()).basicRemove(otherEnd, msgs);
 			case JnarioPackage.SCENARIO__MEMBERS:
 				return ((InternalEList<?>)getMembers()).basicRemove(otherEnd, msgs);
+			case JnarioPackage.SCENARIO__FIELDS:
+				return ((InternalEList<?>)getFields()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -222,6 +251,8 @@ public class ScenarioImpl extends XtendMemberImplCustom implements Scenario
 				return getSteps();
 			case JnarioPackage.SCENARIO__MEMBERS:
 				return getMembers();
+			case JnarioPackage.SCENARIO__FIELDS:
+				return getFields();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -252,6 +283,10 @@ public class ScenarioImpl extends XtendMemberImplCustom implements Scenario
 				getMembers().clear();
 				getMembers().addAll((Collection<? extends XtendMember>)newValue);
 				return;
+			case JnarioPackage.SCENARIO__FIELDS:
+				getFields().clear();
+				getFields().addAll((Collection<? extends XtendField>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -278,6 +313,9 @@ public class ScenarioImpl extends XtendMemberImplCustom implements Scenario
 			case JnarioPackage.SCENARIO__MEMBERS:
 				getMembers().clear();
 				return;
+			case JnarioPackage.SCENARIO__FIELDS:
+				getFields().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -300,6 +338,8 @@ public class ScenarioImpl extends XtendMemberImplCustom implements Scenario
 				return steps != null && !steps.isEmpty();
 			case JnarioPackage.SCENARIO__MEMBERS:
 				return members != null && !members.isEmpty();
+			case JnarioPackage.SCENARIO__FIELDS:
+				return fields != null && !fields.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

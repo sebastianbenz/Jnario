@@ -2,6 +2,7 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package de.bmw.carit.jnario.jnario.impl;
 
@@ -116,7 +117,7 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory
 	 */
 	public Scenario createScenario()
 	{
-		ScenarioImpl scenario = new ScenarioImpl();
+		ScenarioImplCustom scenario = new ScenarioImplCustom();
 		return scenario;
 	}
 

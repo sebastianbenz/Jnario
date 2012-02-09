@@ -2,6 +2,7 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package de.bmw.carit.jnario.jnario;
 
@@ -272,13 +273,22 @@ public interface JnarioPackage extends EPackage
 	int SCENARIO__MEMBERS = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Fields</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENARIO__FIELDS = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Scenario</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCENARIO_FEATURE_COUNT = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 4;
+	int SCENARIO_FEATURE_COUNT = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link de.bmw.carit.jnario.jnario.impl.StepImpl <em>Step</em>}' class.
@@ -1168,6 +1178,17 @@ public interface JnarioPackage extends EPackage
 	EReference getScenario_Members();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.jnario.Scenario#getFields <em>Fields</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Fields</em>'.
+	 * @see de.bmw.carit.jnario.jnario.Scenario#getFields()
+	 * @see #getScenario()
+	 * @generated
+	 */
+	EReference getScenario_Fields();
+
+	/**
 	 * Returns the meta object for class '{@link de.bmw.carit.jnario.jnario.Step <em>Step</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1469,6 +1490,14 @@ public interface JnarioPackage extends EPackage
 		 * @generated
 		 */
 		EReference SCENARIO__MEMBERS = eINSTANCE.getScenario_Members();
+
+		/**
+		 * The meta object literal for the '<em><b>Fields</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SCENARIO__FIELDS = eINSTANCE.getScenario_Fields();
 
 		/**
 		 * The meta object literal for the '{@link de.bmw.carit.jnario.jnario.impl.StepImpl <em>Step</em>}' class.

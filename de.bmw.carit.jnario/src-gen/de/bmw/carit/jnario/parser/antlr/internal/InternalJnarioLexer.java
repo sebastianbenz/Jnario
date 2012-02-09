@@ -4992,10 +4992,10 @@ public class InternalJnarioLexer extends Lexer {
         "\uffff\1\115\4\uffff\1\24\1\23\2\uffff\1\126\1\133\1\122\2\uffff"+
         "\1\5\1\uffff\1\35\1\16\1\53\1\125";
     static final String DFA49_specialS =
-        "\1\15\56\uffff\1\7\1\26\4\uffff\1\4\136\uffff\1\2\1\13\2\uffff\1"+
-        "\10\66\uffff\1\17\1\14\1\12\1\25\1\uffff\1\16\61\uffff\1\24\1\5"+
-        "\2\uffff\1\6\1\0\1\20\52\uffff\1\22\1\1\1\11\1\21\44\uffff\1\3\1"+
-        "\23\76\uffff}>";
+        "\1\15\56\uffff\1\7\1\26\4\uffff\1\4\136\uffff\1\2\1\13\2\uffff"+
+        "\1\10\66\uffff\1\17\1\14\1\12\1\25\1\uffff\1\16\61\uffff\1\24\1"+
+        "\5\2\uffff\1\6\1\0\1\20\52\uffff\1\22\1\1\1\11\1\21\44\uffff\1\3"+
+        "\1\23\76\uffff}>";
     static final String[] DFA49_transitionS = {
             "\11\67\2\66\2\67\1\66\22\67\1\66\1\40\1\65\1\67\1\63\1\43\1"+
             "\37\1\57\1\21\1\22\1\7\1\35\1\12\1\41\1\6\1\42\12\64\1\25\1"+
@@ -5178,8 +5178,8 @@ public class InternalJnarioLexer extends Lexer {
             "\1\u00e3",
             "\1\u00e4",
             "\1\u00e5",
-            "\1\73\13\uffff\12\73\7\uffff\32\73\4\uffff\1\73\1\uffff\1\u00e6"+
-            "\31\73",
+            "\1\73\13\uffff\12\73\7\uffff\32\73\4\uffff\1\73\1\uffff\1"+
+            "\u00e6\31\73",
             "\1\u00e8",
             "",
             "\1\u00e9",

@@ -2,6 +2,7 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package de.bmw.carit.jnario.jnario;
 
@@ -9,6 +10,7 @@ import de.bmw.carit.jnario.common.ExampleTable;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.xtext.xtend2.xtend2.XtendField;
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 
 /**
@@ -23,6 +25,7 @@ import org.eclipse.xtext.xtend2.xtend2.XtendMember;
  *   <li>{@link de.bmw.carit.jnario.jnario.Scenario#getName <em>Name</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.jnario.Scenario#getSteps <em>Steps</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.jnario.Scenario#getMembers <em>Members</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.jnario.Scenario#getFields <em>Fields</em>}</li>
  * </ul>
  * </p>
  *
@@ -105,5 +108,21 @@ public interface Scenario extends XtendMember
 	 * @generated
 	 */
 	EList<XtendMember> getMembers();
+
+	/**
+	 * Returns the value of the '<em><b>Fields</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.xtext.xtend2.xtend2.XtendField}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Fields</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Fields</em>' containment reference list.
+	 * @see de.bmw.carit.jnario.jnario.JnarioPackage#getScenario_Fields()
+	 * @model containment="true" transient="true"
+	 * @generated
+	 */
+	EList<XtendField> getFields();
 
 } // Scenario

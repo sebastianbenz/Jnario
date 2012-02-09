@@ -39,6 +39,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.util.IAcceptor;
+import org.eclipse.xtext.xbase.XAssignment;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
@@ -283,12 +284,9 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
           }
         }
       }
-      TreeIterator<EObject> _eAllContents = scenario.eAllContents();
-      TreeIterator<EObject> eAllContents = _eAllContents;
-      UnmodifiableIterator<XtendField> _filter_1 = Iterators.<XtendField>filter(eAllContents, org.eclipse.xtext.xtend2.xtend2.XtendField.class);
-      UnmodifiableIterator<XtendField> allFields = _filter_1;
-      Iterable<XtendField> _iterable_1 = IteratorExtensions.<XtendField>toIterable(allFields);
-      for (final XtendField field_1 : _iterable_1) {
+      EList<XtendField> _fields = scenario.getFields();
+      EList<XtendField> fields = _fields;
+      for (final XtendField field_1 : fields) {
         {
           boolean _operator_or = false;
           JvmTypeReference _type = field_1.getType();
@@ -302,7 +300,7 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
             _operator_or = BooleanExtensions.operator_or(_operator_equals, _operator_equals_1);
           }
           if (_operator_or) {
-            this.checkIfExampleField(field_1);
+            this.deriveFieldType(scenario, field_1);
           }
           String _name_1 = field_1.getName();
           boolean _contains = allVariables.contains(_name_1);
@@ -316,6 +314,70 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
           }
         }
       }
+      TreeIterator<EObject> _eAllContents = scenario.eAllContents();
+      TreeIterator<EObject> eAllContents = _eAllContents;
+      UnmodifiableIterator<XtendField> _filter_1 = Iterators.<XtendField>filter(eAllContents, org.eclipse.xtext.xtend2.xtend2.XtendField.class);
+      UnmodifiableIterator<XtendField> allFields = _filter_1;
+      Iterable<XtendField> _iterable_1 = IteratorExtensions.<XtendField>toIterable(allFields);
+      for (final XtendField field_2 : _iterable_1) {
+        {
+          boolean _operator_or_1 = false;
+          JvmTypeReference _type_3 = field_2.getType();
+          boolean _operator_equals_2 = ObjectExtensions.operator_equals(_type_3, null);
+          if (_operator_equals_2) {
+            _operator_or_1 = true;
+          } else {
+            JvmTypeReference _type_4 = field_2.getType();
+            JvmType _type_5 = _type_4.getType();
+            boolean _operator_equals_3 = ObjectExtensions.operator_equals(_type_5, null);
+            _operator_or_1 = BooleanExtensions.operator_or(_operator_equals_2, _operator_equals_3);
+          }
+          if (_operator_or_1) {
+            this.checkIfExampleField(field_2);
+          }
+          String _name_3 = field_2.getName();
+          boolean _contains_1 = allVariables.contains(_name_3);
+          boolean _operator_not_1 = BooleanExtensions.operator_not(_contains_1);
+          if (_operator_not_1) {
+            {
+              this.transform(field_2, inferredJvmType);
+              String _name_4 = field_2.getName();
+              allVariables.add(_name_4);
+            }
+          }
+        }
+      }
+  }
+  
+  public Object deriveFieldType(final Scenario scenario, final XtendField field) {
+    Object _xifexpression = null;
+    EList<XtendField> _fields = scenario.getFields();
+    boolean _contains = _fields.contains(field);
+    if (_contains) {
+      EList<Step> _steps = scenario.getSteps();
+      for (final Step step : _steps) {
+        {
+          TreeIterator<EObject> _eAllContents = step.eAllContents();
+          UnmodifiableIterator<XAssignment> _filter = Iterators.<XAssignment>filter(_eAllContents, org.eclipse.xtext.xbase.XAssignment.class);
+          UnmodifiableIterator<XAssignment> assignments = _filter;
+          Iterable<XAssignment> _iterable = IteratorExtensions.<XAssignment>toIterable(assignments);
+          for (final XAssignment assignment : _iterable) {
+            String _concreteSyntaxFeatureName = assignment.getConcreteSyntaxFeatureName();
+            String _name = field.getName();
+            boolean _equals = _concreteSyntaxFeatureName.equals(_name);
+            if (_equals) {
+              {
+                XExpression _value = assignment.getValue();
+                JvmTypeReference _type = this._iTypeProvider.getType(_value);
+                field.setType(_type);
+                field.setVisibility(JvmVisibility.PUBLIC);
+              }
+            }
+          }
+        }
+      }
+    }
+    return _xifexpression;
   }
   
   public int generateBackgroundStepCalls(final EList<Step> steps, final JvmGenericType inferredJvmType) {

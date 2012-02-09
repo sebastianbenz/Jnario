@@ -8,6 +8,8 @@
 package de.bmw.carit.jnario.jvmmodel
 
 import com.google.inject.Inject
+import de.bmw.carit.jnario.common.ExampleRow
+import de.bmw.carit.jnario.common.ExampleTable
 import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder
 import de.bmw.carit.jnario.generator.JnarioCompiler
 import de.bmw.carit.jnario.jnario.Feature
@@ -40,8 +42,7 @@ import org.junit.runner.RunWith
 
 import static com.google.common.collect.Iterators.*
 import static org.eclipse.xtext.EcoreUtil2.*
-import de.bmw.carit.jnario.common.ExampleTable
-import de.bmw.carit.jnario.common.ExampleRow
+import org.eclipse.xtext.xbase.XAssignment
 
 /**
  * @author Birgit Engelmann
@@ -164,6 +165,17 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 			}
 		}
 		
+		var fields = scenario.fields
+		for(field: fields){
+			if(field.type == null || field.type.type == null){
+				deriveFieldType(scenario, field)
+			}
+			if(!allVariables.contains(field.name)){
+				field.transform(inferredJvmType)
+				allVariables.add(field.name)
+			}
+		}
+		
 		var eAllContents = scenario.eAllContents;
 		var allFields = filter(eAllContents, typeof(XtendField))
 		for(field: allFields.toIterable){
@@ -176,6 +188,20 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 			}
 			
 		}
+   	}
+   	
+   	def deriveFieldType(Scenario scenario, XtendField field){
+   		if(scenario.fields.contains(field)){
+   			for(step: scenario.steps){
+   				var assignments = filter(step.eAllContents, typeof(XAssignment))
+   				for(assignment: assignments.toIterable){
+   					if(assignment.getConcreteSyntaxFeatureName.equals(field.name)){
+   						field.setType(getType(assignment.value))
+   						field.setVisibility(JvmVisibility::PUBLIC)
+  					}
+   				}
+   			}
+   		}
    	}
    	
    	def generateBackgroundStepCalls(EList<Step> steps, JvmGenericType inferredJvmType){
