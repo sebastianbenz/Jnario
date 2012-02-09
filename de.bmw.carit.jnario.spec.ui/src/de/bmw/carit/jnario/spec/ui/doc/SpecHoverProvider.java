@@ -15,6 +15,7 @@ import de.bmw.carit.jnario.spec.spec.ExampleGroup;
  * @author Sebastian Benz 
  *
  */
+@SuppressWarnings("restriction")
 public class SpecHoverProvider extends XtendHoverProvider {
 	
 	@Inject
