@@ -7,6 +7,8 @@
  *******************************************************************************/
 package de.bmw.carit.jnario.spec.ui.highlighting;
 
+import static org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultHighlightingConfiguration.KEYWORD_ID;
+
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
@@ -55,7 +57,7 @@ public class SpecHighlightingCalculator extends XtendHighlightingCalculator {
 					highlightXtendField(field,acceptor);
 				}else if(member.eClass() == SpecPackage.Literals.EXAMPLE){
 					Example example = (Example) member;
-					//highlightDescription(example, acceptor);
+					highlightObjectAtFeature(acceptor, example, SpecPackage.Literals.EXAMPLE__PREAMBLE, KEYWORD_ID);
 					highlightRichStrings(example.getBody() ,acceptor);
 				}else if(member.eClass() == SpecPackage.Literals.EXAMPLE_GROUP){
 					ExampleGroup subExampleGroup = (ExampleGroup) member;
