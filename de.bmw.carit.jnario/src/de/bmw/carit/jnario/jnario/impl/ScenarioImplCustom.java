@@ -10,12 +10,13 @@ import java.util.regex.Pattern;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.xtend2.xtend2.Xtend2Factory;
 import org.eclipse.xtext.xtend2.xtend2.XtendField;
 
+import de.bmw.carit.jnario.jnario.Feature;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
 import de.bmw.carit.jnario.jnario.Step;
-import de.bmw.carit.jnario.jnario.impl.ScenarioImpl;
 
 public class ScenarioImplCustom extends ScenarioImpl {
 	
@@ -34,6 +35,9 @@ public class ScenarioImplCustom extends ScenarioImpl {
 	private void generateFields(){
 		Iterator<Step> steps = filter(this.eAllContents(), Step.class);
 		Set<String> fieldNames = retrieveFieldsFromSteps(steps);
+		Feature feature = EcoreUtil2.getContainerOfType(this, Feature.class);
+		Set<String> backgroundFields = retrieveFieldsFromBackground(feature);
+		fieldNames.addAll(backgroundFields);		
 		addFields(fieldNames);
 	}
 
@@ -50,6 +54,13 @@ public class ScenarioImplCustom extends ScenarioImpl {
 			}
 		}
 		return fieldNames;
+	}
+	
+	private Set<String> retrieveFieldsFromBackground(Feature feature){
+		if(feature.getBackground() != null){
+			return retrieveFieldsFromSteps(feature.getBackground().getSteps().iterator());
+		}
+		return new HashSet<String>();
 	}
 
 	private void addFields(Set<String> fieldNames){
