@@ -30,6 +30,7 @@ public class JnarioHighlightingConfiguration extends XtendHighlightingConfigurat
 	public static final String STEP_REFERNCE_ID = "StepReference";
 	public static final String STEP_TEXT_ID = "Step_Text";
 	public static final String EXAMPLE_ID = "Example";
+	public static final String IDENTIFIERS_ID = "Identifiers";
 
 	public void configure(IHighlightingConfigurationAcceptor acceptor) {
 		super.configure(acceptor);
@@ -47,6 +48,7 @@ public class JnarioHighlightingConfiguration extends XtendHighlightingConfigurat
 				exampleWordStyle());
 		acceptor.acceptDefaultHighlighting(STEP_REFERNCE_ID, "StepReference",
 				stepRefKeyWordStyle());
+		acceptor.acceptDefaultHighlighting(IDENTIFIERS_ID, "Identifiers", identifiersTextStyle());
 	}
 
 	private TextStyle tagTextStyle() {
@@ -106,6 +108,12 @@ public class JnarioHighlightingConfiguration extends XtendHighlightingConfigurat
 	public TextStyle exampleWordStyle() {
 		TextStyle textStyle = defaultTextStyle().copy();
 		textStyle.setFontData(fontWithHeight(DEFAULT_FONT_SIZE + 1, SWT.BOLD));
+		return textStyle;
+	}
+	
+	public TextStyle identifiersTextStyle(){
+		TextStyle textStyle = defaultTextStyle().copy();
+		textStyle.setColor(new RGB(204, 0, 0));
 		return textStyle;
 	}
 

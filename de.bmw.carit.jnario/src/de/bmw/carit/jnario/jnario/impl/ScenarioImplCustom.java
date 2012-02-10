@@ -20,7 +20,7 @@ import de.bmw.carit.jnario.jnario.Step;
 
 public class ScenarioImplCustom extends ScenarioImpl {
 	
-	private static String IDENTIFIER_PATTERN = "<([a-zA-Z0-9_]+)>";
+	private static final Pattern IDENTIFIER = Pattern.compile("<([a-zA-Z0-9_]+)>");
 	
 	@Override
 	public EList<XtendField> getFields() {
@@ -42,12 +42,11 @@ public class ScenarioImplCustom extends ScenarioImpl {
 	}
 
 	private Set<String> retrieveFieldsFromSteps(Iterator<Step> steps){
-		Pattern pattern = Pattern.compile(IDENTIFIER_PATTERN);
 		Set<String> fieldNames = new HashSet<String>();
 		while(steps.hasNext()){
 			Step step = steps.next();
 			if(step.getName() != null){
-				Matcher m = pattern.matcher(step.getName());
+				Matcher m = IDENTIFIER.matcher(step.getName());
 				while (m.find()) {
 					fieldNames.add(m.group(1));
 				} 
