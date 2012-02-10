@@ -6,28 +6,23 @@
  */
 package de.bmw.carit.jnario.common.impl;
 
-import de.bmw.carit.jnario.common.CommonPackage;
-import de.bmw.carit.jnario.common.ExampleHeading;
-import de.bmw.carit.jnario.common.ExampleTable;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.eclipse.xtext.xtend2.xtend2.XtendField;
+
+import de.bmw.carit.jnario.common.CommonPackage;
+import de.bmw.carit.jnario.common.ExampleHeading;
+import de.bmw.carit.jnario.common.ExampleTable;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,7 +31,7 @@ import org.eclipse.xtext.xtend2.xtend2.XtendField;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.bmw.carit.jnario.common.impl.ExampleHeadingImpl#getParts <em>Parts</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.common.impl.ExampleHeadingImpl#getCells <em>Cells</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.common.impl.ExampleHeadingImpl#getTable <em>Table</em>}</li>
  * </ul>
  * </p>
@@ -45,15 +40,14 @@ import org.eclipse.xtext.xtend2.xtend2.XtendField;
  */
 public class ExampleHeadingImpl extends EObjectImpl implements ExampleHeading {
 	/**
-	 * The cached value of the '{@link #getParts() <em>Parts</em>}' containment reference list.
+	 * The cached value of the '{@link #getCells() <em>Cells</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getParts()
+	 * @see #getCells()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<XtendField> parts;
-
+	protected EList<XtendField> cells;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -78,11 +72,11 @@ public class ExampleHeadingImpl extends EObjectImpl implements ExampleHeading {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<XtendField> getParts() {
-		if (parts == null) {
-			parts = new EObjectContainmentEList<XtendField>(XtendField.class, this, CommonPackage.EXAMPLE_HEADING__PARTS);
+	public EList<XtendField> getCells() {
+		if (cells == null) {
+			cells = new EObjectContainmentEList<XtendField>(XtendField.class, this, CommonPackage.EXAMPLE_HEADING__CELLS);
 		}
-		return parts;
+		return cells;
 	}
 
 	/**
@@ -150,8 +144,8 @@ public class ExampleHeadingImpl extends EObjectImpl implements ExampleHeading {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case CommonPackage.EXAMPLE_HEADING__PARTS:
-				return ((InternalEList<?>)getParts()).basicRemove(otherEnd, msgs);
+			case CommonPackage.EXAMPLE_HEADING__CELLS:
+				return ((InternalEList<?>)getCells()).basicRemove(otherEnd, msgs);
 			case CommonPackage.EXAMPLE_HEADING__TABLE:
 				return basicSetTable(null, msgs);
 		}
@@ -180,8 +174,8 @@ public class ExampleHeadingImpl extends EObjectImpl implements ExampleHeading {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CommonPackage.EXAMPLE_HEADING__PARTS:
-				return getParts();
+			case CommonPackage.EXAMPLE_HEADING__CELLS:
+				return getCells();
 			case CommonPackage.EXAMPLE_HEADING__TABLE:
 				return getTable();
 		}
@@ -197,9 +191,9 @@ public class ExampleHeadingImpl extends EObjectImpl implements ExampleHeading {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CommonPackage.EXAMPLE_HEADING__PARTS:
-				getParts().clear();
-				getParts().addAll((Collection<? extends XtendField>)newValue);
+			case CommonPackage.EXAMPLE_HEADING__CELLS:
+				getCells().clear();
+				getCells().addAll((Collection<? extends XtendField>)newValue);
 				return;
 			case CommonPackage.EXAMPLE_HEADING__TABLE:
 				setTable((ExampleTable)newValue);
@@ -216,8 +210,8 @@ public class ExampleHeadingImpl extends EObjectImpl implements ExampleHeading {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CommonPackage.EXAMPLE_HEADING__PARTS:
-				getParts().clear();
+			case CommonPackage.EXAMPLE_HEADING__CELLS:
+				getCells().clear();
 				return;
 			case CommonPackage.EXAMPLE_HEADING__TABLE:
 				setTable((ExampleTable)null);
@@ -234,8 +228,8 @@ public class ExampleHeadingImpl extends EObjectImpl implements ExampleHeading {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CommonPackage.EXAMPLE_HEADING__PARTS:
-				return parts != null && !parts.isEmpty();
+			case CommonPackage.EXAMPLE_HEADING__CELLS:
+				return cells != null && !cells.isEmpty();
 			case CommonPackage.EXAMPLE_HEADING__TABLE:
 				return getTable() != null;
 		}

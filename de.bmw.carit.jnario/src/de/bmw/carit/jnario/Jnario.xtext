@@ -115,13 +115,13 @@ ExampleTable:
 	(rows += ExampleRow)*;
 
 ExampleHeading:
-	parts+=ExampleHeadingCell+ EXAMPLE_ROW_END;
+	cells+=ExampleHeadingCell+ EXAMPLE_ROW_END;
 
 ExampleHeadingCell returns xtend::XtendField:
 	(PIPE | PIPE_SPACES) name=ValidID ;
 
 ExampleRow:
-	((PIPE | PIPE_SPACES) parts+=XExpression)+ EXAMPLE_ROW_END;
+	((PIPE | PIPE_SPACES) cells+=XExpression)+ EXAMPLE_ROW_END;
 
 
 terminal FEATURE_TEXT: 'Feature' COLON MNL;

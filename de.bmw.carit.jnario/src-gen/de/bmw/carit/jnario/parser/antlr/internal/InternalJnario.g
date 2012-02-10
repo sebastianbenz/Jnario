@@ -1464,16 +1464,16 @@ ruleExampleHeading returns [EObject current=null]
 ((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getExampleHeadingAccess().getPartsExampleHeadingCellParserRuleCall_0_0()); 
+	        newCompositeNode(grammarAccess.getExampleHeadingAccess().getCellsExampleHeadingCellParserRuleCall_0_0()); 
 	    }
-		lv_parts_0_0=ruleExampleHeadingCell		{
+		lv_cells_0_0=ruleExampleHeadingCell		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getExampleHeadingRule());
 	        }
        		add(
        			$current, 
-       			"parts",
-        		lv_parts_0_0, 
+       			"cells",
+        		lv_cells_0_0, 
         		"ExampleHeadingCell");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -1564,16 +1564,16 @@ ruleExampleRow returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getExampleRowAccess().getPartsXExpressionParserRuleCall_0_1_0()); 
+	        newCompositeNode(grammarAccess.getExampleRowAccess().getCellsXExpressionParserRuleCall_0_1_0()); 
 	    }
-		lv_parts_2_0=ruleXExpression		{
+		lv_cells_2_0=ruleXExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getExampleRowRule());
 	        }
        		add(
        			$current, 
-       			"parts",
-        		lv_parts_2_0, 
+       			"cells",
+        		lv_cells_2_0, 
         		"XExpression");
 	        afterParserOrEnumRuleCall();
 	    }

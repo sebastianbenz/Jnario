@@ -54,7 +54,7 @@ Member returns xtend::XtendMember:
 			(preamble=('context') targetOperation=[types::JvmOperation|Method]? =>name=STRING? '{'
       		members+=Member*
       	'}')
-	|	{ExampleTable.annotationInfo = current} ('example' =>(name=STRING|name=ID)? '{'
+	|	{ExampleTable.annotationInfo = current} ('example' =>name=ID? '{'
 			(heading = ExampleHeading
 			(rows += ExampleRow)*)?
       	'}') 
@@ -112,14 +112,14 @@ MatcherClosure returns xbase::XExpression:
 	']';
 
 ExampleHeading: 
-	'|' {ExampleHeading} (parts+=ExampleHeadingCell )*
+	'|' {ExampleHeading} (cells+=ExampleHeadingCell )*
 ;
 
 ExampleHeadingCell returns xtend::XtendField:
 	type=JvmTypeReference? name=ValidID '|';
 
 ExampleRow: 
-	'|' {ExampleRow} (parts+=XExpression '|')*
+	'|' {ExampleRow} (cells+=XExpression '|')*
 ;
 
 //terminal EXAMPLE:

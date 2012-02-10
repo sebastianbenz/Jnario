@@ -18,7 +18,7 @@ import org.eclipse.xtext.xtend2.xtend2.XtendField;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.bmw.carit.jnario.common.ExampleHeading#getParts <em>Parts</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.common.ExampleHeading#getCells <em>Cells</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.common.ExampleHeading#getTable <em>Table</em>}</li>
  * </ul>
  * </p>
@@ -30,7 +30,7 @@ import org.eclipse.xtext.xtend2.xtend2.XtendField;
 public interface ExampleHeading extends EObject
 {
 	/**
-	 * Returns the value of the '<em><b>Parts</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Cells</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.xtext.xtend2.xtend2.XtendField}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -38,12 +38,12 @@ public interface ExampleHeading extends EObject
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parts</em>' containment reference list.
-	 * @see de.bmw.carit.jnario.common.CommonPackage#getExampleHeading_Parts()
+	 * @return the value of the '<em>Cells</em>' containment reference list.
+	 * @see de.bmw.carit.jnario.common.CommonPackage#getExampleHeading_Cells()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<XtendField> getParts();
+	EList<XtendField> getCells();
 
 	/**
 	 * Returns the value of the '<em><b>Table</b></em>' container reference.

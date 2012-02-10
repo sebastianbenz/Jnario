@@ -45,7 +45,7 @@ public class CommonJavaValidator extends AbstractDeclarativeValidator {
 	public void checkExampleHeaderAndRowsHaveSameColumnNumber(ExampleTable exampleTable){
 		ExampleHeading heading = exampleTable.getHeading();
 		EList<ExampleRow> rows = exampleTable.getRows();
-		int headingColumnNumber = heading.getParts().size();
+		int headingColumnNumber = heading.getCells().size();
 		boolean rowsHaveSameNumberOfColumns = doRowsHaveSameNumberOfColumns(rows, headingColumnNumber);
 
 		if(rowsHaveSameNumberOfColumns){
@@ -58,7 +58,7 @@ public class CommonJavaValidator extends AbstractDeclarativeValidator {
 
 	private boolean doRowsHaveSameNumberOfColumns(EList<ExampleRow> rows, int headingColumnNumber){
 		for(ExampleRow row: rows){
-			if(row.getParts().size() != headingColumnNumber){			
+			if(row.getCells().size() != headingColumnNumber){			
 				return false;
 			}
 		}
@@ -69,11 +69,11 @@ public class CommonJavaValidator extends AbstractDeclarativeValidator {
 		int colNum = 0;
 		if(rows.size() > 0){
 			ExampleRow firstRow = rows.get(0);
-			for(XExpression cell: firstRow.getParts()){
+			for(XExpression cell: firstRow.getCells()){
 				JvmType type = typeProvider.getType(cell).getType();
 				//starting with second row
 				for(int rowNum = 1; rowNum < rows.size(); rowNum++){
-					EList<XExpression> parts = rows.get(rowNum).getParts();
+					EList<XExpression> parts = rows.get(rowNum).getCells();
 					XExpression expression = parts.get(colNum);
 					JvmType compareType = typeProvider.getType(expression).getType();
 					if(!type.equals(compareType)){

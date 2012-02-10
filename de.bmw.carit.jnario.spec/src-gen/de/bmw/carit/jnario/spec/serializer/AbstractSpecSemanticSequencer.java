@@ -1385,7 +1385,7 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (parts+=ExampleHeadingCell*)
+	 *     (cells+=ExampleHeadingCell*)
 	 */
 	protected void sequence_ExampleHeading(EObject context, ExampleHeading semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1394,7 +1394,7 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (parts+=XExpression*)
+	 *     (cells+=XExpression*)
 	 */
 	protected void sequence_ExampleRow(EObject context, ExampleRow semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1579,7 +1579,7 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (annotationInfo=Member_ExampleTable_2_5_0 ((name=STRING | name=ID)? (heading=ExampleHeading rows+=ExampleRow*)?))
+	 *     (annotationInfo=Member_ExampleTable_2_5_0 (name=ID? (heading=ExampleHeading rows+=ExampleRow*)?))
 	 */
 	protected void sequence_Member(EObject context, ExampleTable semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

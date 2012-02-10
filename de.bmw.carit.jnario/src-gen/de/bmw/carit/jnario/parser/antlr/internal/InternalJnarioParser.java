@@ -4362,24 +4362,24 @@ public class InternalJnarioParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleExampleHeading"
-    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1460:1: ruleExampleHeading returns [EObject current=null] : ( ( (lv_parts_0_0= ruleExampleHeadingCell ) )+ this_EXAMPLE_ROW_END_1= RULE_EXAMPLE_ROW_END ) ;
+    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1460:1: ruleExampleHeading returns [EObject current=null] : ( ( (lv_cells_0_0= ruleExampleHeadingCell ) )+ this_EXAMPLE_ROW_END_1= RULE_EXAMPLE_ROW_END ) ;
     public final EObject ruleExampleHeading() throws RecognitionException {
         EObject current = null;
 
         Token this_EXAMPLE_ROW_END_1=null;
-        EObject lv_parts_0_0 = null;
+        EObject lv_cells_0_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1463:28: ( ( ( (lv_parts_0_0= ruleExampleHeadingCell ) )+ this_EXAMPLE_ROW_END_1= RULE_EXAMPLE_ROW_END ) )
-            // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1464:1: ( ( (lv_parts_0_0= ruleExampleHeadingCell ) )+ this_EXAMPLE_ROW_END_1= RULE_EXAMPLE_ROW_END )
+            // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1463:28: ( ( ( (lv_cells_0_0= ruleExampleHeadingCell ) )+ this_EXAMPLE_ROW_END_1= RULE_EXAMPLE_ROW_END ) )
+            // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1464:1: ( ( (lv_cells_0_0= ruleExampleHeadingCell ) )+ this_EXAMPLE_ROW_END_1= RULE_EXAMPLE_ROW_END )
             {
-            // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1464:1: ( ( (lv_parts_0_0= ruleExampleHeadingCell ) )+ this_EXAMPLE_ROW_END_1= RULE_EXAMPLE_ROW_END )
-            // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1464:2: ( (lv_parts_0_0= ruleExampleHeadingCell ) )+ this_EXAMPLE_ROW_END_1= RULE_EXAMPLE_ROW_END
+            // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1464:1: ( ( (lv_cells_0_0= ruleExampleHeadingCell ) )+ this_EXAMPLE_ROW_END_1= RULE_EXAMPLE_ROW_END )
+            // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1464:2: ( (lv_cells_0_0= ruleExampleHeadingCell ) )+ this_EXAMPLE_ROW_END_1= RULE_EXAMPLE_ROW_END
             {
-            // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1464:2: ( (lv_parts_0_0= ruleExampleHeadingCell ) )+
+            // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1464:2: ( (lv_cells_0_0= ruleExampleHeadingCell ) )+
             int cnt36=0;
             loop36:
             do {
@@ -4393,18 +4393,18 @@ public class InternalJnarioParser extends AbstractInternalAntlrParser {
 
                 switch (alt36) {
             	case 1 :
-            	    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1465:1: (lv_parts_0_0= ruleExampleHeadingCell )
+            	    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1465:1: (lv_cells_0_0= ruleExampleHeadingCell )
             	    {
-            	    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1465:1: (lv_parts_0_0= ruleExampleHeadingCell )
-            	    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1466:3: lv_parts_0_0= ruleExampleHeadingCell
+            	    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1465:1: (lv_cells_0_0= ruleExampleHeadingCell )
+            	    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1466:3: lv_cells_0_0= ruleExampleHeadingCell
             	    {
             	    if ( state.backtracking==0 ) {
             	       
-            	      	        newCompositeNode(grammarAccess.getExampleHeadingAccess().getPartsExampleHeadingCellParserRuleCall_0_0()); 
+            	      	        newCompositeNode(grammarAccess.getExampleHeadingAccess().getCellsExampleHeadingCellParserRuleCall_0_0()); 
             	      	    
             	    }
             	    pushFollow(FOLLOW_ruleExampleHeadingCell_in_ruleExampleHeading2761);
-            	    lv_parts_0_0=ruleExampleHeadingCell();
+            	    lv_cells_0_0=ruleExampleHeadingCell();
 
             	    state._fsp--;
             	    if (state.failed) return current;
@@ -4415,8 +4415,8 @@ public class InternalJnarioParser extends AbstractInternalAntlrParser {
             	      	        }
             	             		add(
             	             			current, 
-            	             			"parts",
-            	              		lv_parts_0_0, 
+            	             			"cells",
+            	              		lv_cells_0_0, 
             	              		"ExampleHeadingCell");
             	      	        afterParserOrEnumRuleCall();
             	      	    
@@ -4668,26 +4668,26 @@ public class InternalJnarioParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleExampleRow"
-    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1551:1: ruleExampleRow returns [EObject current=null] : ( ( (this_PIPE_0= RULE_PIPE | this_PIPE_SPACES_1= RULE_PIPE_SPACES ) ( (lv_parts_2_0= ruleXExpression ) ) )+ this_EXAMPLE_ROW_END_3= RULE_EXAMPLE_ROW_END ) ;
+    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1551:1: ruleExampleRow returns [EObject current=null] : ( ( (this_PIPE_0= RULE_PIPE | this_PIPE_SPACES_1= RULE_PIPE_SPACES ) ( (lv_cells_2_0= ruleXExpression ) ) )+ this_EXAMPLE_ROW_END_3= RULE_EXAMPLE_ROW_END ) ;
     public final EObject ruleExampleRow() throws RecognitionException {
         EObject current = null;
 
         Token this_PIPE_0=null;
         Token this_PIPE_SPACES_1=null;
         Token this_EXAMPLE_ROW_END_3=null;
-        EObject lv_parts_2_0 = null;
+        EObject lv_cells_2_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1554:28: ( ( ( (this_PIPE_0= RULE_PIPE | this_PIPE_SPACES_1= RULE_PIPE_SPACES ) ( (lv_parts_2_0= ruleXExpression ) ) )+ this_EXAMPLE_ROW_END_3= RULE_EXAMPLE_ROW_END ) )
-            // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1555:1: ( ( (this_PIPE_0= RULE_PIPE | this_PIPE_SPACES_1= RULE_PIPE_SPACES ) ( (lv_parts_2_0= ruleXExpression ) ) )+ this_EXAMPLE_ROW_END_3= RULE_EXAMPLE_ROW_END )
+            // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1554:28: ( ( ( (this_PIPE_0= RULE_PIPE | this_PIPE_SPACES_1= RULE_PIPE_SPACES ) ( (lv_cells_2_0= ruleXExpression ) ) )+ this_EXAMPLE_ROW_END_3= RULE_EXAMPLE_ROW_END ) )
+            // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1555:1: ( ( (this_PIPE_0= RULE_PIPE | this_PIPE_SPACES_1= RULE_PIPE_SPACES ) ( (lv_cells_2_0= ruleXExpression ) ) )+ this_EXAMPLE_ROW_END_3= RULE_EXAMPLE_ROW_END )
             {
-            // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1555:1: ( ( (this_PIPE_0= RULE_PIPE | this_PIPE_SPACES_1= RULE_PIPE_SPACES ) ( (lv_parts_2_0= ruleXExpression ) ) )+ this_EXAMPLE_ROW_END_3= RULE_EXAMPLE_ROW_END )
-            // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1555:2: ( (this_PIPE_0= RULE_PIPE | this_PIPE_SPACES_1= RULE_PIPE_SPACES ) ( (lv_parts_2_0= ruleXExpression ) ) )+ this_EXAMPLE_ROW_END_3= RULE_EXAMPLE_ROW_END
+            // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1555:1: ( ( (this_PIPE_0= RULE_PIPE | this_PIPE_SPACES_1= RULE_PIPE_SPACES ) ( (lv_cells_2_0= ruleXExpression ) ) )+ this_EXAMPLE_ROW_END_3= RULE_EXAMPLE_ROW_END )
+            // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1555:2: ( (this_PIPE_0= RULE_PIPE | this_PIPE_SPACES_1= RULE_PIPE_SPACES ) ( (lv_cells_2_0= ruleXExpression ) ) )+ this_EXAMPLE_ROW_END_3= RULE_EXAMPLE_ROW_END
             {
-            // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1555:2: ( (this_PIPE_0= RULE_PIPE | this_PIPE_SPACES_1= RULE_PIPE_SPACES ) ( (lv_parts_2_0= ruleXExpression ) ) )+
+            // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1555:2: ( (this_PIPE_0= RULE_PIPE | this_PIPE_SPACES_1= RULE_PIPE_SPACES ) ( (lv_cells_2_0= ruleXExpression ) ) )+
             int cnt39=0;
             loop39:
             do {
@@ -4701,7 +4701,7 @@ public class InternalJnarioParser extends AbstractInternalAntlrParser {
 
                 switch (alt39) {
             	case 1 :
-            	    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1555:3: (this_PIPE_0= RULE_PIPE | this_PIPE_SPACES_1= RULE_PIPE_SPACES ) ( (lv_parts_2_0= ruleXExpression ) )
+            	    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1555:3: (this_PIPE_0= RULE_PIPE | this_PIPE_SPACES_1= RULE_PIPE_SPACES ) ( (lv_cells_2_0= ruleXExpression ) )
             	    {
             	    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1555:3: (this_PIPE_0= RULE_PIPE | this_PIPE_SPACES_1= RULE_PIPE_SPACES )
             	    int alt38=2;
@@ -4748,19 +4748,19 @@ public class InternalJnarioParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1564:2: ( (lv_parts_2_0= ruleXExpression ) )
-            	    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1565:1: (lv_parts_2_0= ruleXExpression )
+            	    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1564:2: ( (lv_cells_2_0= ruleXExpression ) )
+            	    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1565:1: (lv_cells_2_0= ruleXExpression )
             	    {
-            	    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1565:1: (lv_parts_2_0= ruleXExpression )
-            	    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1566:3: lv_parts_2_0= ruleXExpression
+            	    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1565:1: (lv_cells_2_0= ruleXExpression )
+            	    // ../de.bmw.carit.jnario/src-gen/de/bmw/carit/jnario/parser/antlr/internal/InternalJnario.g:1566:3: lv_cells_2_0= ruleXExpression
             	    {
             	    if ( state.backtracking==0 ) {
             	       
-            	      	        newCompositeNode(grammarAccess.getExampleRowAccess().getPartsXExpressionParserRuleCall_0_1_0()); 
+            	      	        newCompositeNode(grammarAccess.getExampleRowAccess().getCellsXExpressionParserRuleCall_0_1_0()); 
             	      	    
             	    }
             	    pushFollow(FOLLOW_ruleXExpression_in_ruleExampleRow3013);
-            	    lv_parts_2_0=ruleXExpression();
+            	    lv_cells_2_0=ruleXExpression();
 
             	    state._fsp--;
             	    if (state.failed) return current;
@@ -4771,8 +4771,8 @@ public class InternalJnarioParser extends AbstractInternalAntlrParser {
             	      	        }
             	             		add(
             	             			current, 
-            	             			"parts",
-            	              		lv_parts_2_0, 
+            	             			"cells",
+            	              		lv_cells_2_0, 
             	              		"XExpression");
             	      	        afterParserOrEnumRuleCall();
             	      	    
@@ -28142,25 +28142,25 @@ public class InternalJnarioParser extends AbstractInternalAntlrParser {
             "\4\3\1\uffff\1\3\3\uffff\1\1\26\uffff\2\3\2\uffff\1\3\7\uffff"+
             "\4\3\1\uffff\1\3\2\uffff\1\3\1\2\12\uffff\1\3\52\uffff\1\3\2"+
             "\uffff\2\3",
-            "\4\6\1\uffff\1\6\3\uffff\1\4\26\uffff\2\6\1\3\1\uffff\1\6"+
-            "\1\uffff\1\3\5\uffff\4\6\1\uffff\1\6\2\uffff\1\6\1\5\12\uffff"+
+            "\4\6\1\uffff\1\6\3\uffff\1\4\26\uffff\2\6\1\3\1\uffff\1\6\1"+
+            "\uffff\1\3\5\uffff\4\6\1\uffff\1\6\2\uffff\1\6\1\5\12\uffff"+
             "\1\6\23\uffff\1\3\26\uffff\1\6\2\uffff\2\6",
-            "\4\6\1\uffff\1\6\3\uffff\1\4\26\uffff\2\6\1\3\1\uffff\1\6"+
-            "\1\uffff\1\3\5\uffff\4\6\1\uffff\1\6\2\uffff\1\6\1\5\12\uffff"+
+            "\4\6\1\uffff\1\6\3\uffff\1\4\26\uffff\2\6\1\3\1\uffff\1\6\1"+
+            "\uffff\1\3\5\uffff\4\6\1\uffff\1\6\2\uffff\1\6\1\5\12\uffff"+
             "\1\6\23\uffff\1\3\26\uffff\1\6\2\uffff\2\6",
             "",
-            "\4\3\1\uffff\1\3\3\uffff\1\7\26\uffff\2\3\1\6\1\uffff\1\3"+
-            "\1\uffff\1\6\5\uffff\4\3\1\uffff\1\3\2\uffff\1\3\1\10\12\uffff"+
+            "\4\3\1\uffff\1\3\3\uffff\1\7\26\uffff\2\3\1\6\1\uffff\1\3\1"+
+            "\uffff\1\6\5\uffff\4\3\1\uffff\1\3\2\uffff\1\3\1\10\12\uffff"+
             "\1\3\23\uffff\1\6\26\uffff\1\3\2\uffff\2\3",
-            "\4\3\1\uffff\1\3\3\uffff\1\7\26\uffff\2\3\1\6\1\uffff\1\3"+
-            "\1\uffff\1\6\5\uffff\4\3\1\uffff\1\3\2\uffff\1\3\1\10\12\uffff"+
+            "\4\3\1\uffff\1\3\3\uffff\1\7\26\uffff\2\3\1\6\1\uffff\1\3\1"+
+            "\uffff\1\6\5\uffff\4\3\1\uffff\1\3\2\uffff\1\3\1\10\12\uffff"+
             "\1\3\23\uffff\1\6\26\uffff\1\3\2\uffff\2\3",
             "",
-            "\4\6\1\uffff\1\6\3\uffff\1\4\26\uffff\2\6\1\3\1\uffff\1\6"+
-            "\1\uffff\1\3\5\uffff\4\6\1\uffff\1\6\2\uffff\1\6\1\5\12\uffff"+
+            "\4\6\1\uffff\1\6\3\uffff\1\4\26\uffff\2\6\1\3\1\uffff\1\6\1"+
+            "\uffff\1\3\5\uffff\4\6\1\uffff\1\6\2\uffff\1\6\1\5\12\uffff"+
             "\1\6\23\uffff\1\3\26\uffff\1\6\2\uffff\2\6",
-            "\4\6\1\uffff\1\6\3\uffff\1\4\26\uffff\2\6\1\3\1\uffff\1\6"+
-            "\1\uffff\1\3\5\uffff\4\6\1\uffff\1\6\2\uffff\1\6\1\5\12\uffff"+
+            "\4\6\1\uffff\1\6\3\uffff\1\4\26\uffff\2\6\1\3\1\uffff\1\6\1"+
+            "\uffff\1\3\5\uffff\4\6\1\uffff\1\6\2\uffff\1\6\1\5\12\uffff"+
             "\1\6\23\uffff\1\3\26\uffff\1\6\2\uffff\2\6"
     };
 
@@ -29798,9 +29798,9 @@ public class InternalJnarioParser extends AbstractInternalAntlrParser {
     static final String DFA163_acceptS =
         "\34\uffff\1\2\71\uffff\1\1";
     static final String DFA163_specialS =
-        "\1\uffff\1\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1"+
-        "\14\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\1\30"+
-        "\1\31\1\32\73\uffff}>";
+        "\1\uffff\1\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1\14"+
+        "\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\1\30\1\31"+
+        "\1\32\73\uffff}>";
     static final String[] DFA163_transitionS = {
             "\11\34\1\1\1\20\1\21\1\22\4\34\1\16\14\uffff\1\34\1\uffff\5"+
             "\34\1\uffff\1\11\2\34\2\uffff\1\7\1\34\1\uffff\2\34\1\uffff"+
@@ -30358,9 +30358,9 @@ public class InternalJnarioParser extends AbstractInternalAntlrParser {
     static final String DFA174_specialS =
         "\1\uffff\1\0\130\uffff}>";
     static final String[] DFA174_transitionS = {
-            "\22\2\14\uffff\1\2\1\uffff\5\2\1\uffff\1\1\2\2\1\uffff\6\2"+
-            "\1\uffff\2\2\1\uffff\3\2\1\uffff\3\2\5\uffff\41\2\1\uffff\12"+
-            "\2\1\uffff\3\2",
+            "\22\2\14\uffff\1\2\1\uffff\5\2\1\uffff\1\1\2\2\1\uffff\6\2\1"+
+            "\uffff\2\2\1\uffff\3\2\1\uffff\3\2\5\uffff\41\2\1\uffff\12\2"+
+            "\1\uffff\3\2",
             "\1\uffff",
             "",
             "",

@@ -394,7 +394,7 @@
         <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/Common#//ExampleHeading"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Assignment" cardinality="+" feature="parts" operator="+=">
+        <elements xsi:type="xtext:Assignment" cardinality="+" feature="cells" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
         </elements>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.34"/>
@@ -424,7 +424,7 @@
             <elements xsi:type="xtext:RuleCall" rule="/0/@rules.32"/>
             <elements xsi:type="xtext:RuleCall" rule="/0/@rules.33"/>
           </elements>
-          <elements xsi:type="xtext:Assignment" feature="parts" operator="+=">
+          <elements xsi:type="xtext:Assignment" feature="cells" operator="+=">
             <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.0"/>
           </elements>
         </elements>

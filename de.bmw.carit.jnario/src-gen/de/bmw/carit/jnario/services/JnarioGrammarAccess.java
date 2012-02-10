@@ -770,22 +770,22 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	public class ExampleHeadingElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ExampleHeading");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cPartsAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cPartsExampleHeadingCellParserRuleCall_0_0 = (RuleCall)cPartsAssignment_0.eContents().get(0);
+		private final Assignment cCellsAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cCellsExampleHeadingCellParserRuleCall_0_0 = (RuleCall)cCellsAssignment_0.eContents().get(0);
 		private final RuleCall cEXAMPLE_ROW_ENDTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
 		
 		//ExampleHeading:
-		//	parts+=ExampleHeadingCell+ EXAMPLE_ROW_END;
+		//	cells+=ExampleHeadingCell+ EXAMPLE_ROW_END;
 		public ParserRule getRule() { return rule; }
 
-		//parts+=ExampleHeadingCell+ EXAMPLE_ROW_END
+		//cells+=ExampleHeadingCell+ EXAMPLE_ROW_END
 		public Group getGroup() { return cGroup; }
 
-		//parts+=ExampleHeadingCell+
-		public Assignment getPartsAssignment_0() { return cPartsAssignment_0; }
+		//cells+=ExampleHeadingCell+
+		public Assignment getCellsAssignment_0() { return cCellsAssignment_0; }
 
 		//ExampleHeadingCell
-		public RuleCall getPartsExampleHeadingCellParserRuleCall_0_0() { return cPartsExampleHeadingCellParserRuleCall_0_0; }
+		public RuleCall getCellsExampleHeadingCellParserRuleCall_0_0() { return cCellsExampleHeadingCellParserRuleCall_0_0; }
 
 		//EXAMPLE_ROW_END
 		public RuleCall getEXAMPLE_ROW_ENDTerminalRuleCall_1() { return cEXAMPLE_ROW_ENDTerminalRuleCall_1; }
@@ -830,18 +830,18 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives_0_0 = (Alternatives)cGroup_0.eContents().get(0);
 		private final RuleCall cPIPETerminalRuleCall_0_0_0 = (RuleCall)cAlternatives_0_0.eContents().get(0);
 		private final RuleCall cPIPE_SPACESTerminalRuleCall_0_0_1 = (RuleCall)cAlternatives_0_0.eContents().get(1);
-		private final Assignment cPartsAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
-		private final RuleCall cPartsXExpressionParserRuleCall_0_1_0 = (RuleCall)cPartsAssignment_0_1.eContents().get(0);
+		private final Assignment cCellsAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cCellsXExpressionParserRuleCall_0_1_0 = (RuleCall)cCellsAssignment_0_1.eContents().get(0);
 		private final RuleCall cEXAMPLE_ROW_ENDTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
 		
 		//ExampleRow:
-		//	((PIPE | PIPE_SPACES) parts+=XExpression)+ EXAMPLE_ROW_END;
+		//	((PIPE | PIPE_SPACES) cells+=XExpression)+ EXAMPLE_ROW_END;
 		public ParserRule getRule() { return rule; }
 
-		//((PIPE | PIPE_SPACES) parts+=XExpression)+ EXAMPLE_ROW_END
+		//((PIPE | PIPE_SPACES) cells+=XExpression)+ EXAMPLE_ROW_END
 		public Group getGroup() { return cGroup; }
 
-		//((PIPE | PIPE_SPACES) parts+=XExpression)+
+		//((PIPE | PIPE_SPACES) cells+=XExpression)+
 		public Group getGroup_0() { return cGroup_0; }
 
 		//PIPE | PIPE_SPACES
@@ -853,11 +853,11 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		//PIPE_SPACES
 		public RuleCall getPIPE_SPACESTerminalRuleCall_0_0_1() { return cPIPE_SPACESTerminalRuleCall_0_0_1; }
 
-		//parts+=XExpression
-		public Assignment getPartsAssignment_0_1() { return cPartsAssignment_0_1; }
+		//cells+=XExpression
+		public Assignment getCellsAssignment_0_1() { return cCellsAssignment_0_1; }
 
 		//XExpression
-		public RuleCall getPartsXExpressionParserRuleCall_0_1_0() { return cPartsXExpressionParserRuleCall_0_1_0; }
+		public RuleCall getCellsXExpressionParserRuleCall_0_1_0() { return cCellsXExpressionParserRuleCall_0_1_0; }
 
 		//EXAMPLE_ROW_END
 		public RuleCall getEXAMPLE_ROW_ENDTerminalRuleCall_1() { return cEXAMPLE_ROW_ENDTerminalRuleCall_1; }
@@ -1110,7 +1110,7 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ExampleHeading:
-	//	parts+=ExampleHeadingCell+ EXAMPLE_ROW_END;
+	//	cells+=ExampleHeadingCell+ EXAMPLE_ROW_END;
 	public ExampleHeadingElements getExampleHeadingAccess() {
 		return (pExampleHeading != null) ? pExampleHeading : (pExampleHeading = new ExampleHeadingElements());
 	}
@@ -1130,7 +1130,7 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ExampleRow:
-	//	((PIPE | PIPE_SPACES) parts+=XExpression)+ EXAMPLE_ROW_END;
+	//	((PIPE | PIPE_SPACES) cells+=XExpression)+ EXAMPLE_ROW_END;
 	public ExampleRowElements getExampleRowAccess() {
 		return (pExampleRow != null) ? pExampleRow : (pExampleRow = new ExampleRowElements());
 	}

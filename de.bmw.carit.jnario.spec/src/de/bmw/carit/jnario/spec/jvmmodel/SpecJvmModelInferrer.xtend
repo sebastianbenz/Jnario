@@ -16,7 +16,6 @@ import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.util.IAcceptor
-import org.eclipse.xtext.xtend2.jvmmodel.Xtend2JvmModelInferrer
 import org.eclipse.xtext.xtend2.xtend2.XtendField
 import org.eclipse.xtext.xtend2.xtend2.XtendFunction
 import de.bmw.carit.jnario.spec.spec.Before
@@ -29,11 +28,18 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
 import org.eclipse.xtext.common.types.JvmField
 import de.bmw.carit.jnario.runner.Extension
 import de.bmw.carit.jnario.runner.Order
+import de.bmw.carit.jnario.common.ExampleTable
+import de.bmw.carit.jnario.common.jvmmodel.CommonJvmModelInferrer
+import org.eclipse.xtext.util.Strings
+import com.google.common.base.Joiner
+import org.eclipse.xtext.xbase.compiler.ImportManager
+import org.eclipse.xtext.xbase.compiler.StringBuilderBasedAppendable
+import org.eclipse.xtext.xbase.compiler.IAppendable
 
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
-class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
+class SpecJvmModelInferrer extends CommonJvmModelInferrer {
 
 	@Inject extension ExtendedJvmTypesBuilder
 	
@@ -61,33 +67,24 @@ class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
 	}
 	
 	def transform(SpecFile spec, ExampleGroup exampleGroup, JvmGenericType superClass, boolean isPrelinkingPhase) {
-		val List<JvmGenericType> subExamples = newArrayList()
 		exampleGroup.toClass(exampleGroup.toJavaClassName) [
-				spec.eResource.contents += it
-				documentation = exampleGroup.documentation
-				packageName = spec.^package
-				if(superClass != null){
-					superTypes += superClass.createTypeRef
-				}
+				configureWith(exampleGroup, spec, superClass)
+
 				if(isPrelinkingPhase){
 					return
 				}
+				addAnnotations(exampleGroup)
+				addFields(exampleGroup)
 				
-				annotations += exampleGroup.toAnnotation(runnerAnnotation.key, runnerAnnotation.value)
-				annotations += exampleGroup.toAnnotation(typeof(Named), exampleGroup.describe)
-				exampleGroup.annotations.translateAnnotationsTo(it)
-				
-				for (field : exampleGroup.members.filter(typeof(XtendField))) {
-						field.visibility = JvmVisibility::PROTECTED
-						field.transform(it)
-				}
-				
-				addImplicitSubject(exampleGroup)
 				var index = 0
+				val List<JvmGenericType> subExamples = newArrayList()
 				for (element : exampleGroup.members) {
 					switch element {
 						ExampleGroup: {
 							subExamples += transform(spec, element, it, isPrelinkingPhase)
+						}
+						ExampleTable: {
+							transform(element, spec)
 						}
 						Example : {
 							val annotations = element.getTestAnnotations()
@@ -135,13 +132,114 @@ class SpecJvmModelInferrer extends Xtend2JvmModelInferrer {
 	
 	def toMethod(TestFunction element, List<JvmAnnotationReference> annotations){
 		element.toMethod(element.toMethodName, getTypeForName(Void::TYPE, element)) [
-								documentation = element.documentation
-								body = element.body
-								element.annotations.translateAnnotationsTo(it)
-								exceptions += typeof(Exception).getTypeForName(element)
-								it.annotations.addAll(annotations)
-							]
+			documentation = element.documentation
+			body = element.body
+			element.annotations.translateAnnotationsTo(it)
+			exceptions += typeof(Exception).getTypeForName(element)
+			it.annotations.addAll(annotations)
+		]
 	}
 	
+	def void configureWith(JvmGenericType type, EObject source, SpecFile spec){
+		spec.eResource.contents += type
+		type.packageName = spec.^package
+		type.documentation = source.documentation
+	}
+	
+	def void configureWith(JvmGenericType type, EObject source, SpecFile spec, JvmGenericType superType){
+		configureWith(type, source, spec)
+		if(superType != null){
+			type.superTypes += superType.createTypeRef
+		}
+	}
+	
+	def void addFields(JvmGenericType type, ExampleGroup exampleGroup){
+		for (field : exampleGroup.members.filter(typeof(XtendField))) {
+			field.visibility = JvmVisibility::PROTECTED
+			field.transform(type)
+		}
+		type.addImplicitSubject(exampleGroup)
+	}
+	
+	def void addAnnotations(JvmGenericType type, ExampleGroup exampleGroup){
+		type.annotations += exampleGroup.toAnnotation(runnerAnnotation.key, runnerAnnotation.value)
+		type.annotations += exampleGroup.toAnnotation(typeof(Named), exampleGroup.describe)
+		exampleGroup.annotations.translateAnnotationsTo(type)
+	}
+	
+	def transform(JvmGenericType specType, ExampleTable element, SpecFile spec){
+		element.toClass(element.toJavaClassName)[exampleTableType |
+			exampleTableType.configureWith(element, spec)
+			
+			val type = getTypeForName(typeof(de.bmw.carit.jnario.lib.ExampleTable), element, exampleTableType.createTypeRef)
+			specType.members += element.toMethod("_init" + element.toJavaClassName, getTypeForName(Void::TYPE, element))[
+				annotations += element.toAnnotation(getBeforeAnnotation())
+				setBody[ImportManager im |
+					exampleTableType.generateInitializationMethod(element)	
+				]
+			]
+			
+			specType.members += element.toField(element.toFieldName, type)
+
+			if(element.heading == null){
+				return	
+			} 
+			
+			val constructor = element.toConstructor(exampleTableType.simpleName)[]
+			exampleTableType.members += constructor
+			val assignments = <String>newArrayList()
+			
+			element.heading.getCells.forEach[heading |
+				updateTypeInExampleField(heading)
+				exampleTableType.members += heading.toField(heading.name, heading.type)
+				
+				val jvmParam = typesFactory.createJvmFormalParameter();
+				jvmParam.name = heading.name
+				jvmParam.setParameterType(cloneWithProxies(heading.type));
+				constructor.parameters += jvmParam
+				associate(element, jvmParam); 
+				assignments += "this." + heading.name + " = " + heading.name + ";" 
+				
+				exampleTableType.members += element.toMethod("get" + heading.name.toFirstUpper, heading.type)[
+					setBody[ImportManager im |
+						"return " + heading.name + ";"
+					]
+				]
+			]
+			
+			constructor.setBody[ImportManager im |
+				Joiner::on(Strings::newLine).join(assignments)
+			]
+		]
+	}
+	
+	def generateInitializationMethod(JvmGenericType exampleTableType, ExampleTable exampleTable){
+		val result = new StringBuilderBasedAppendable()
+		for( row : exampleTable.rows){
+			for(cell :row.cells){
+				compiler.toJavaStatement(cell, result, true)
+			}
+		}
+		result.append(exampleTable.toFieldName);
+		result.append(" = ExampleTable.create(")
+		result.increaseIndentation()
+		result.append("\n")
+		for(row : exampleTable.rows){
+		 	result.append("new ").append(exampleTableType.simpleName).append("(")
+		 	for(cell :row.cells){
+		 		compiler.toJavaExpression(cell, result)
+		 		if(row.cells.last != cell){
+			 		result.append(", ")
+		 		}
+			}
+	 		result.append(")")
+			if(exampleTable.rows.last != row){
+			 	result.append(",\n")
+		 	}
+		}
+		result.decreaseIndentation()
+		result.append("\n);")
+		return result.toString
+	}
 	
 }

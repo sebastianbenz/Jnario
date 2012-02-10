@@ -55,8 +55,13 @@ public class SpecAnnotationProvider {
     if (_isBeforeAll) {
       return org.junit.BeforeClass.class;
     } else {
-      return org.junit.Before.class;
+      Class<?> _beforeAnnotation = this.getBeforeAnnotation();
+      return _beforeAnnotation;
     }
+  }
+  
+  public Class<?> getBeforeAnnotation() {
+    return org.junit.Before.class;
   }
   
   public Class<?> getAfterAnnotation(final After element) {

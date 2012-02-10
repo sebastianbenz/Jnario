@@ -21103,29 +21103,29 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ExampleHeading__Group__0__Impl"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6376:1: rule__ExampleHeading__Group__0__Impl : ( ( ( rule__ExampleHeading__PartsAssignment_0 ) ) ( ( rule__ExampleHeading__PartsAssignment_0 )* ) ) ;
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6376:1: rule__ExampleHeading__Group__0__Impl : ( ( ( rule__ExampleHeading__CellsAssignment_0 ) ) ( ( rule__ExampleHeading__CellsAssignment_0 )* ) ) ;
     public final void rule__ExampleHeading__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6380:1: ( ( ( ( rule__ExampleHeading__PartsAssignment_0 ) ) ( ( rule__ExampleHeading__PartsAssignment_0 )* ) ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6381:1: ( ( ( rule__ExampleHeading__PartsAssignment_0 ) ) ( ( rule__ExampleHeading__PartsAssignment_0 )* ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6380:1: ( ( ( ( rule__ExampleHeading__CellsAssignment_0 ) ) ( ( rule__ExampleHeading__CellsAssignment_0 )* ) ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6381:1: ( ( ( rule__ExampleHeading__CellsAssignment_0 ) ) ( ( rule__ExampleHeading__CellsAssignment_0 )* ) )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6381:1: ( ( ( rule__ExampleHeading__PartsAssignment_0 ) ) ( ( rule__ExampleHeading__PartsAssignment_0 )* ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6382:1: ( ( rule__ExampleHeading__PartsAssignment_0 ) ) ( ( rule__ExampleHeading__PartsAssignment_0 )* )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6381:1: ( ( ( rule__ExampleHeading__CellsAssignment_0 ) ) ( ( rule__ExampleHeading__CellsAssignment_0 )* ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6382:1: ( ( rule__ExampleHeading__CellsAssignment_0 ) ) ( ( rule__ExampleHeading__CellsAssignment_0 )* )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6382:1: ( ( rule__ExampleHeading__PartsAssignment_0 ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6383:1: ( rule__ExampleHeading__PartsAssignment_0 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6382:1: ( ( rule__ExampleHeading__CellsAssignment_0 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6383:1: ( rule__ExampleHeading__CellsAssignment_0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getExampleHeadingAccess().getPartsAssignment_0()); 
+               before(grammarAccess.getExampleHeadingAccess().getCellsAssignment_0()); 
             }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6384:1: ( rule__ExampleHeading__PartsAssignment_0 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6384:2: rule__ExampleHeading__PartsAssignment_0
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6384:1: ( rule__ExampleHeading__CellsAssignment_0 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6384:2: rule__ExampleHeading__CellsAssignment_0
             {
-            pushFollow(FOLLOW_rule__ExampleHeading__PartsAssignment_0_in_rule__ExampleHeading__Group__0__Impl13564);
-            rule__ExampleHeading__PartsAssignment_0();
+            pushFollow(FOLLOW_rule__ExampleHeading__CellsAssignment_0_in_rule__ExampleHeading__Group__0__Impl13564);
+            rule__ExampleHeading__CellsAssignment_0();
 
             state._fsp--;
             if (state.failed) return ;
@@ -21133,18 +21133,18 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getExampleHeadingAccess().getPartsAssignment_0()); 
+               after(grammarAccess.getExampleHeadingAccess().getCellsAssignment_0()); 
             }
 
             }
 
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6387:1: ( ( rule__ExampleHeading__PartsAssignment_0 )* )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6388:1: ( rule__ExampleHeading__PartsAssignment_0 )*
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6387:1: ( ( rule__ExampleHeading__CellsAssignment_0 )* )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6388:1: ( rule__ExampleHeading__CellsAssignment_0 )*
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getExampleHeadingAccess().getPartsAssignment_0()); 
+               before(grammarAccess.getExampleHeadingAccess().getCellsAssignment_0()); 
             }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6389:1: ( rule__ExampleHeading__PartsAssignment_0 )*
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6389:1: ( rule__ExampleHeading__CellsAssignment_0 )*
             loop80:
             do {
                 int alt80=2;
@@ -21157,10 +21157,10 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
 
                 switch (alt80) {
             	case 1 :
-            	    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6389:2: rule__ExampleHeading__PartsAssignment_0
+            	    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6389:2: rule__ExampleHeading__CellsAssignment_0
             	    {
-            	    pushFollow(FOLLOW_rule__ExampleHeading__PartsAssignment_0_in_rule__ExampleHeading__Group__0__Impl13576);
-            	    rule__ExampleHeading__PartsAssignment_0();
+            	    pushFollow(FOLLOW_rule__ExampleHeading__CellsAssignment_0_in_rule__ExampleHeading__Group__0__Impl13576);
+            	    rule__ExampleHeading__CellsAssignment_0();
 
             	    state._fsp--;
             	    if (state.failed) return ;
@@ -21174,7 +21174,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             } while (true);
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getExampleHeadingAccess().getPartsAssignment_0()); 
+               after(grammarAccess.getExampleHeadingAccess().getCellsAssignment_0()); 
             }
 
             }
@@ -21780,26 +21780,26 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ExampleRow__Group_0__1__Impl"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6601:1: rule__ExampleRow__Group_0__1__Impl : ( ( rule__ExampleRow__PartsAssignment_0_1 ) ) ;
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6601:1: rule__ExampleRow__Group_0__1__Impl : ( ( rule__ExampleRow__CellsAssignment_0_1 ) ) ;
     public final void rule__ExampleRow__Group_0__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6605:1: ( ( ( rule__ExampleRow__PartsAssignment_0_1 ) ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6606:1: ( ( rule__ExampleRow__PartsAssignment_0_1 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6605:1: ( ( ( rule__ExampleRow__CellsAssignment_0_1 ) ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6606:1: ( ( rule__ExampleRow__CellsAssignment_0_1 ) )
             {
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6606:1: ( ( rule__ExampleRow__PartsAssignment_0_1 ) )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6607:1: ( rule__ExampleRow__PartsAssignment_0_1 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6606:1: ( ( rule__ExampleRow__CellsAssignment_0_1 ) )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6607:1: ( rule__ExampleRow__CellsAssignment_0_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getExampleRowAccess().getPartsAssignment_0_1()); 
+               before(grammarAccess.getExampleRowAccess().getCellsAssignment_0_1()); 
             }
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6608:1: ( rule__ExampleRow__PartsAssignment_0_1 )
-            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6608:2: rule__ExampleRow__PartsAssignment_0_1
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6608:1: ( rule__ExampleRow__CellsAssignment_0_1 )
+            // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:6608:2: rule__ExampleRow__CellsAssignment_0_1
             {
-            pushFollow(FOLLOW_rule__ExampleRow__PartsAssignment_0_1_in_rule__ExampleRow__Group_0__1__Impl14014);
-            rule__ExampleRow__PartsAssignment_0_1();
+            pushFollow(FOLLOW_rule__ExampleRow__CellsAssignment_0_1_in_rule__ExampleRow__Group_0__1__Impl14014);
+            rule__ExampleRow__CellsAssignment_0_1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -21807,7 +21807,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getExampleRowAccess().getPartsAssignment_0_1()); 
+               after(grammarAccess.getExampleRowAccess().getCellsAssignment_0_1()); 
             }
 
             }
@@ -68839,9 +68839,9 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__ExampleTable__RowsAssignment_2"
 
 
-    // $ANTLR start "rule__ExampleHeading__PartsAssignment_0"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23574:1: rule__ExampleHeading__PartsAssignment_0 : ( ruleExampleHeadingCell ) ;
-    public final void rule__ExampleHeading__PartsAssignment_0() throws RecognitionException {
+    // $ANTLR start "rule__ExampleHeading__CellsAssignment_0"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23574:1: rule__ExampleHeading__CellsAssignment_0 : ( ruleExampleHeadingCell ) ;
+    public final void rule__ExampleHeading__CellsAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -68853,15 +68853,15 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23580:1: ruleExampleHeadingCell
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getExampleHeadingAccess().getPartsExampleHeadingCellParserRuleCall_0_0()); 
+               before(grammarAccess.getExampleHeadingAccess().getCellsExampleHeadingCellParserRuleCall_0_0()); 
             }
-            pushFollow(FOLLOW_ruleExampleHeadingCell_in_rule__ExampleHeading__PartsAssignment_047475);
+            pushFollow(FOLLOW_ruleExampleHeadingCell_in_rule__ExampleHeading__CellsAssignment_047475);
             ruleExampleHeadingCell();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getExampleHeadingAccess().getPartsExampleHeadingCellParserRuleCall_0_0()); 
+               after(grammarAccess.getExampleHeadingAccess().getCellsExampleHeadingCellParserRuleCall_0_0()); 
             }
 
             }
@@ -68881,7 +68881,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__ExampleHeading__PartsAssignment_0"
+    // $ANTLR end "rule__ExampleHeading__CellsAssignment_0"
 
 
     // $ANTLR start "rule__ExampleHeadingCell__NameAssignment_1"
@@ -68929,9 +68929,9 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__ExampleHeadingCell__NameAssignment_1"
 
 
-    // $ANTLR start "rule__ExampleRow__PartsAssignment_0_1"
-    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23604:1: rule__ExampleRow__PartsAssignment_0_1 : ( ruleXExpression ) ;
-    public final void rule__ExampleRow__PartsAssignment_0_1() throws RecognitionException {
+    // $ANTLR start "rule__ExampleRow__CellsAssignment_0_1"
+    // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23604:1: rule__ExampleRow__CellsAssignment_0_1 : ( ruleXExpression ) ;
+    public final void rule__ExampleRow__CellsAssignment_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -68943,15 +68943,15 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             // ../de.bmw.carit.jnario.ui/src-gen/de/bmw/carit/jnario/ui/contentassist/antlr/internal/InternalJnario.g:23610:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getExampleRowAccess().getPartsXExpressionParserRuleCall_0_1_0()); 
+               before(grammarAccess.getExampleRowAccess().getCellsXExpressionParserRuleCall_0_1_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__ExampleRow__PartsAssignment_0_147537);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__ExampleRow__CellsAssignment_0_147537);
             ruleXExpression();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getExampleRowAccess().getPartsXExpressionParserRuleCall_0_1_0()); 
+               after(grammarAccess.getExampleRowAccess().getCellsXExpressionParserRuleCall_0_1_0()); 
             }
 
             }
@@ -68971,7 +68971,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__ExampleRow__PartsAssignment_0_1"
+    // $ANTLR end "rule__ExampleRow__CellsAssignment_0_1"
 
 
     // $ANTLR start "rule__Import__StaticAssignment_1_0_0"
@@ -80178,14 +80178,14 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             "\1\1\6\uffff\4\3\1\uffff\1\3\23\uffff\1\3\3\uffff\1\3\1\2\23"+
             "\uffff\3\3\5\uffff\1\3\4\uffff\1\3\1\uffff\1\3\12\uffff\1\3"+
             "\24\uffff\1\3\2\uffff\3\3",
-            "\1\4\6\uffff\4\6\1\uffff\1\6\23\uffff\1\6\3\uffff\1\6\1\5"+
-            "\5\uffff\1\3\11\uffff\1\3\3\uffff\3\6\5\uffff\1\6\4\uffff\1"+
-            "\6\1\uffff\1\6\12\uffff\1\6\2\uffff\1\3\21\uffff\1\6\2\uffff"+
-            "\3\6",
-            "\1\4\6\uffff\4\6\1\uffff\1\6\23\uffff\1\6\3\uffff\1\6\1\5"+
-            "\5\uffff\1\3\11\uffff\1\3\3\uffff\3\6\5\uffff\1\6\4\uffff\1"+
-            "\6\1\uffff\1\6\12\uffff\1\6\2\uffff\1\3\21\uffff\1\6\2\uffff"+
-            "\3\6",
+            "\1\4\6\uffff\4\6\1\uffff\1\6\23\uffff\1\6\3\uffff\1\6\1\5\5"+
+            "\uffff\1\3\11\uffff\1\3\3\uffff\3\6\5\uffff\1\6\4\uffff\1\6"+
+            "\1\uffff\1\6\12\uffff\1\6\2\uffff\1\3\21\uffff\1\6\2\uffff\3"+
+            "\6",
+            "\1\4\6\uffff\4\6\1\uffff\1\6\23\uffff\1\6\3\uffff\1\6\1\5\5"+
+            "\uffff\1\3\11\uffff\1\3\3\uffff\3\6\5\uffff\1\6\4\uffff\1\6"+
+            "\1\uffff\1\6\12\uffff\1\6\2\uffff\1\3\21\uffff\1\6\2\uffff\3"+
+            "\6",
             "",
             "\1\7\6\uffff\4\3\1\uffff\1\3\23\uffff\1\3\3\uffff\1\3\1\10"+
             "\5\uffff\1\6\11\uffff\1\6\3\uffff\3\3\5\uffff\1\3\4\uffff\1"+
@@ -80196,14 +80196,14 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
             "\3\1\uffff\1\3\12\uffff\1\3\2\uffff\1\6\21\uffff\1\3\2\uffff"+
             "\3\3",
             "",
-            "\1\4\6\uffff\4\6\1\uffff\1\6\23\uffff\1\6\3\uffff\1\6\1\5"+
-            "\5\uffff\1\3\11\uffff\1\3\3\uffff\3\6\5\uffff\1\6\4\uffff\1"+
-            "\6\1\uffff\1\6\12\uffff\1\6\2\uffff\1\3\21\uffff\1\6\2\uffff"+
-            "\3\6",
-            "\1\4\6\uffff\4\6\1\uffff\1\6\23\uffff\1\6\3\uffff\1\6\1\5"+
-            "\5\uffff\1\3\11\uffff\1\3\3\uffff\3\6\5\uffff\1\6\4\uffff\1"+
-            "\6\1\uffff\1\6\12\uffff\1\6\2\uffff\1\3\21\uffff\1\6\2\uffff"+
-            "\3\6"
+            "\1\4\6\uffff\4\6\1\uffff\1\6\23\uffff\1\6\3\uffff\1\6\1\5\5"+
+            "\uffff\1\3\11\uffff\1\3\3\uffff\3\6\5\uffff\1\6\4\uffff\1\6"+
+            "\1\uffff\1\6\12\uffff\1\6\2\uffff\1\3\21\uffff\1\6\2\uffff\3"+
+            "\6",
+            "\1\4\6\uffff\4\6\1\uffff\1\6\23\uffff\1\6\3\uffff\1\6\1\5\5"+
+            "\uffff\1\3\11\uffff\1\3\3\uffff\3\6\5\uffff\1\6\4\uffff\1\6"+
+            "\1\uffff\1\6\12\uffff\1\6\2\uffff\1\3\21\uffff\1\6\2\uffff\3"+
+            "\6"
     };
 
     static final short[] DFA94_eot = DFA.unpackEncodedString(DFA94_eotS);
@@ -81329,9 +81329,9 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     static final String DFA176_acceptS =
         "\34\uffff\1\2\71\uffff\1\1";
     static final String DFA176_specialS =
-        "\1\uffff\1\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1"+
-        "\14\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\1\30"+
-        "\1\31\1\32\73\uffff}>";
+        "\1\uffff\1\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1\14"+
+        "\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\1\30\1\31"+
+        "\1\32\73\uffff}>";
     static final String[] DFA176_transitionS = {
             "\2\34\1\1\4\uffff\1\34\1\uffff\6\34\1\20\1\21\1\22\4\34\1\16"+
             "\14\uffff\4\34\1\2\5\34\1\11\2\34\1\5\1\4\4\34\1\3\2\34\1\12"+
@@ -82658,8 +82658,8 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__ExampleTable__RowsAssignment_2_in_rule__ExampleTable__Group__2__Impl13495 = new BitSet(new long[]{0x0000000000000032L});
     public static final BitSet FOLLOW_rule__ExampleHeading__Group__0__Impl_in_rule__ExampleHeading__Group__013532 = new BitSet(new long[]{0x0000000000000800L});
     public static final BitSet FOLLOW_rule__ExampleHeading__Group__1_in_rule__ExampleHeading__Group__013535 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ExampleHeading__PartsAssignment_0_in_rule__ExampleHeading__Group__0__Impl13564 = new BitSet(new long[]{0x0000000000000032L});
-    public static final BitSet FOLLOW_rule__ExampleHeading__PartsAssignment_0_in_rule__ExampleHeading__Group__0__Impl13576 = new BitSet(new long[]{0x0000000000000032L});
+    public static final BitSet FOLLOW_rule__ExampleHeading__CellsAssignment_0_in_rule__ExampleHeading__Group__0__Impl13564 = new BitSet(new long[]{0x0000000000000032L});
+    public static final BitSet FOLLOW_rule__ExampleHeading__CellsAssignment_0_in_rule__ExampleHeading__Group__0__Impl13576 = new BitSet(new long[]{0x0000000000000032L});
     public static final BitSet FOLLOW_rule__ExampleHeading__Group__1__Impl_in_rule__ExampleHeading__Group__113609 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_EXAMPLE_ROW_END_in_rule__ExampleHeading__Group__1__Impl13636 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExampleHeadingCell__Group__0__Impl_in_rule__ExampleHeadingCell__Group__013669 = new BitSet(new long[]{0x0000080000000040L});
@@ -82677,7 +82677,7 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__ExampleRow__Group_0__1_in_rule__ExampleRow__Group_0__013930 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExampleRow__Alternatives_0_0_in_rule__ExampleRow__Group_0__0__Impl13957 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExampleRow__Group_0__1__Impl_in_rule__ExampleRow__Group_0__113987 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ExampleRow__PartsAssignment_0_1_in_rule__ExampleRow__Group_0__1__Impl14014 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ExampleRow__CellsAssignment_0_1_in_rule__ExampleRow__Group_0__1__Impl14014 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Import__Group__0__Impl_in_rule__Import__Group__014050 = new BitSet(new long[]{0x0000080000000040L,0x0002000000000000L});
     public static final BitSet FOLLOW_rule__Import__Group__1_in_rule__Import__Group__014053 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_68_in_rule__Import__Group__0__Impl14081 = new BitSet(new long[]{0x0000000000000002L});
@@ -84035,9 +84035,9 @@ public class InternalJnarioParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_RULE_EXAMPLE_TEXT_in_rule__ExampleTable__NameAssignment_047382 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleExampleHeading_in_rule__ExampleTable__HeadingAssignment_147413 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleExampleRow_in_rule__ExampleTable__RowsAssignment_247444 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleExampleHeadingCell_in_rule__ExampleHeading__PartsAssignment_047475 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleExampleHeadingCell_in_rule__ExampleHeading__CellsAssignment_047475 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleValidID_in_rule__ExampleHeadingCell__NameAssignment_147506 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__ExampleRow__PartsAssignment_0_147537 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__ExampleRow__CellsAssignment_0_147537 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_113_in_rule__Import__StaticAssignment_1_0_047576 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_114_in_rule__Import__ExtensionAssignment_1_0_147620 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleQualifiedName_in_rule__Import__ImportedTypeAssignment_1_0_247663 = new BitSet(new long[]{0x0000000000000002L});

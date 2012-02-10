@@ -348,9 +348,9 @@ public class JnarioParser extends AbstractContentAssistParser {
 					put(grammarAccess.getExampleTableAccess().getNameAssignment_0(), "rule__ExampleTable__NameAssignment_0");
 					put(grammarAccess.getExampleTableAccess().getHeadingAssignment_1(), "rule__ExampleTable__HeadingAssignment_1");
 					put(grammarAccess.getExampleTableAccess().getRowsAssignment_2(), "rule__ExampleTable__RowsAssignment_2");
-					put(grammarAccess.getExampleHeadingAccess().getPartsAssignment_0(), "rule__ExampleHeading__PartsAssignment_0");
+					put(grammarAccess.getExampleHeadingAccess().getCellsAssignment_0(), "rule__ExampleHeading__CellsAssignment_0");
 					put(grammarAccess.getExampleHeadingCellAccess().getNameAssignment_1(), "rule__ExampleHeadingCell__NameAssignment_1");
-					put(grammarAccess.getExampleRowAccess().getPartsAssignment_0_1(), "rule__ExampleRow__PartsAssignment_0_1");
+					put(grammarAccess.getExampleRowAccess().getCellsAssignment_0_1(), "rule__ExampleRow__CellsAssignment_0_1");
 					put(grammarAccess.getFileAccess().getPackageAssignment_0_1(), "rule__File__PackageAssignment_0_1");
 					put(grammarAccess.getFileAccess().getImportsAssignment_1(), "rule__File__ImportsAssignment_1");
 					put(grammarAccess.getFileAccess().getXtendClassAssignment_2(), "rule__File__XtendClassAssignment_2");

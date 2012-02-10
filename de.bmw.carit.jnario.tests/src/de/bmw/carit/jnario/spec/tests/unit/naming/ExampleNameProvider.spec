@@ -1,4 +1,4 @@
-package de.bmw.carit.jnario.spec.tests.unit.naming
+package de.bmw.carit.jnario.spec.tests.integration2
 
 import de.bmw.carit.jnario.runner.InstantiateWith
 import de.bmw.carit.jnario.spec.spec.ExampleGroup
@@ -11,19 +11,18 @@ import de.bmw.carit.jnario.spec.spec.Example
 import de.bmw.carit.jnario.spec.spec.Before
 import de.bmw.carit.jnario.spec.spec.After
 import de.bmw.carit.jnario.spec.naming.ExampleNameProvider
+import de.bmw.carit.jnario.common.ExampleTable
 
 
 @InstantiateWith(typeof(SpecTestInstantiator))
 describe ExampleNameProvider{
 	 
-	ExampleNameProvider subject = new ExampleNameProvider()
- 
 	context toJavaClassName{ 
 		
 		it "should remove all white spaces from ExampleGroup's description"{
 			firstJavaClassName("describe 'My Example'").should.not.contain(" ")
 		}  
-		 
+		  
 		it "should append 'Spec' to class name"{ 
 			firstJavaClassName("describe 'My Example'").should.endWith('Spec') 
 		}  
@@ -68,6 +67,33 @@ describe ExampleNameProvider{
 		}
 		
 	}      
+  
+  	context toJavaClassName(ExampleTable){
+  		
+  		it "should combine example and parent name"{
+  			
+	  		val exampleTable = '''
+				describe 'My Context'{
+					example MyExample{
+					}
+				}
+			'''.parse.first(typeof(ExampleTable))
+			
+			subject.toJavaClassName(exampleTable).should.be("MyContextSpecMyExample")
+  		}
+  		
+  		it "should convert example name to first upper"{
+  			
+	  		val exampleTable = '''
+				describe 'My Context'{
+					example myExample{
+					}
+				}
+			'''.parse.first(typeof(ExampleTable))
+			
+			subject.toJavaClassName(exampleTable).should.be("MyContextSpecMyExample")
+  		}
+  	}
   
   	context toMethodName(Example){
   		
@@ -147,7 +173,32 @@ describe ExampleNameProvider{
 			subject.toMethodName(parse(contentWithContext).second(typeof(After)))
 		}
   	} 
+  	
 
+	context "toFieldName(ExampleTable)"{
+		
+		it "should use the example name"{
+			val exampleTable = '''
+				describe 'My Context'{
+					example myExample{
+					}
+				}
+			'''.parse.first(typeof(ExampleTable))
+			subject.toFieldName(exampleTable).should.be("myExample")
+		}
+		 
+		it "should use 'example' if no name is given"{
+			val exampleTable = '''
+				describe 'My Context'{
+					example{
+					}
+				}
+			'''.parse.first(typeof(ExampleTable))
+			subject.toFieldName(exampleTable).should.be("example")
+		}
+		
+	}
+ 
 	context ^describe(ExampleGroup){
 		
 		it "should use the description"{
@@ -204,7 +255,7 @@ describe ExampleNameProvider{
 			describeFirst("throws IllegalArgumentException 'should be described' {true}").should.be("throws IllegalArgumentException should be described")
 		}
 		
-		it "apppends Ô[PENDING]' to pending example descriptions"{
+		it "apppends â€˜[PENDING]' to pending example descriptions"{
 			describeFirst("'should do stuff'").should.be("should do stuff [PENDING]")
 			describeFirst("'should do stuff'{}").should.be("should do stuff [PENDING]")
 		}
@@ -215,7 +266,7 @@ describe ExampleNameProvider{
 		}
 	}
 	
-  	def parse(String content){
+  	def parse(CharSequence content){
 		val contentWithPackage = "package test\n" + content
 		val modelStore = ModelStore::create
 		modelStore.parseSpec(contentWithPackage)

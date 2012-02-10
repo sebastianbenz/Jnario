@@ -16,8 +16,10 @@ import static org.eclipse.xtext.util.Strings.toFirstUpper;
 import java.util.List;
 
 import org.eclipse.xtext.util.SimpleAttributeResolver;
+import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 
+import de.bmw.carit.jnario.common.ExampleTable;
 import de.bmw.carit.jnario.spec.spec.After;
 import de.bmw.carit.jnario.spec.spec.Before;
 import de.bmw.carit.jnario.spec.spec.Example;
@@ -112,6 +114,16 @@ public class ExampleNameProvider {
 			defaultName += count;
 		}
 		return defaultName;
+	}
+	
+	public String toFieldName(ExampleTable exampleTable){
+		String name = exampleTable.getName();
+		return name == null ? "example" : name;
+	}
+	
+	public String toJavaClassName(ExampleTable exampleTable){
+		ExampleGroup parent = getContainerOfType(exampleTable, ExampleGroup.class);
+		return toJavaClassName(parent) + toFirstUpper(toFieldName(exampleTable));
 	}
 
 	protected int countPreviousWithDefaultName(TestFunction target) {

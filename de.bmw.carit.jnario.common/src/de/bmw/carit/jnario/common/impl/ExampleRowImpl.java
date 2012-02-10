@@ -36,7 +36,7 @@ import org.eclipse.xtext.xbase.XExpression;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.bmw.carit.jnario.common.impl.ExampleRowImpl#getParts <em>Parts</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.common.impl.ExampleRowImpl#getCells <em>Cells</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.common.impl.ExampleRowImpl#getTable <em>Table</em>}</li>
  * </ul>
  * </p>
@@ -45,15 +45,14 @@ import org.eclipse.xtext.xbase.XExpression;
  */
 public class ExampleRowImpl extends EObjectImpl implements ExampleRow {
 	/**
-	 * The cached value of the '{@link #getParts() <em>Parts</em>}' containment reference list.
+	 * The cached value of the '{@link #getCells() <em>Cells</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getParts()
+	 * @see #getCells()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<XExpression> parts;
-
+	protected EList<XExpression> cells;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -78,11 +77,11 @@ public class ExampleRowImpl extends EObjectImpl implements ExampleRow {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<XExpression> getParts() {
-		if (parts == null) {
-			parts = new EObjectContainmentEList<XExpression>(XExpression.class, this, CommonPackage.EXAMPLE_ROW__PARTS);
+	public EList<XExpression> getCells() {
+		if (cells == null) {
+			cells = new EObjectContainmentEList<XExpression>(XExpression.class, this, CommonPackage.EXAMPLE_ROW__CELLS);
 		}
-		return parts;
+		return cells;
 	}
 
 	/**
@@ -150,8 +149,8 @@ public class ExampleRowImpl extends EObjectImpl implements ExampleRow {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case CommonPackage.EXAMPLE_ROW__PARTS:
-				return ((InternalEList<?>)getParts()).basicRemove(otherEnd, msgs);
+			case CommonPackage.EXAMPLE_ROW__CELLS:
+				return ((InternalEList<?>)getCells()).basicRemove(otherEnd, msgs);
 			case CommonPackage.EXAMPLE_ROW__TABLE:
 				return basicSetTable(null, msgs);
 		}
@@ -180,8 +179,8 @@ public class ExampleRowImpl extends EObjectImpl implements ExampleRow {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CommonPackage.EXAMPLE_ROW__PARTS:
-				return getParts();
+			case CommonPackage.EXAMPLE_ROW__CELLS:
+				return getCells();
 			case CommonPackage.EXAMPLE_ROW__TABLE:
 				return getTable();
 		}
@@ -197,9 +196,9 @@ public class ExampleRowImpl extends EObjectImpl implements ExampleRow {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CommonPackage.EXAMPLE_ROW__PARTS:
-				getParts().clear();
-				getParts().addAll((Collection<? extends XExpression>)newValue);
+			case CommonPackage.EXAMPLE_ROW__CELLS:
+				getCells().clear();
+				getCells().addAll((Collection<? extends XExpression>)newValue);
 				return;
 			case CommonPackage.EXAMPLE_ROW__TABLE:
 				setTable((ExampleTable)newValue);
@@ -216,8 +215,8 @@ public class ExampleRowImpl extends EObjectImpl implements ExampleRow {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CommonPackage.EXAMPLE_ROW__PARTS:
-				getParts().clear();
+			case CommonPackage.EXAMPLE_ROW__CELLS:
+				getCells().clear();
 				return;
 			case CommonPackage.EXAMPLE_ROW__TABLE:
 				setTable((ExampleTable)null);
@@ -234,8 +233,8 @@ public class ExampleRowImpl extends EObjectImpl implements ExampleRow {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CommonPackage.EXAMPLE_ROW__PARTS:
-				return parts != null && !parts.isEmpty();
+			case CommonPackage.EXAMPLE_ROW__CELLS:
+				return cells != null && !cells.isEmpty();
 			case CommonPackage.EXAMPLE_ROW__TABLE:
 				return getTable() != null;
 		}

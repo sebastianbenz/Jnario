@@ -9,9 +9,8 @@ package de.bmw.carit.jnario.jvmmodel
 
 import com.google.inject.Inject
 import de.bmw.carit.jnario.common.ExampleRow
-import de.bmw.carit.jnario.common.ExampleTable
+import de.bmw.carit.jnario.common.jvmmodel.CommonJvmModelInferrer
 import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder
-import de.bmw.carit.jnario.generator.JnarioCompiler
 import de.bmw.carit.jnario.jnario.Feature
 import de.bmw.carit.jnario.jnario.JnarioFile
 import de.bmw.carit.jnario.jnario.Scenario
@@ -32,37 +31,30 @@ import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.util.IAcceptor
-import org.eclipse.xtext.xbase.compiler.StringBuilderBasedAppendable
+import org.eclipse.xtext.xbase.XAssignment
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator
 import org.eclipse.xtext.xbase.typing.ITypeProvider
-import org.eclipse.xtext.xtend2.jvmmodel.Xtend2JvmModelInferrer
 import org.eclipse.xtext.xtend2.xtend2.XtendField
 import org.junit.Test
 import org.junit.runner.RunWith
 
 import static com.google.common.collect.Iterators.*
-import static org.eclipse.xtext.EcoreUtil2.*
-import org.eclipse.xtext.xbase.XAssignment
 
 /**
  * @author Birgit Engelmann
  */
-class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
+class JnarioJvmModelInferrer extends CommonJvmModelInferrer {
 
 	@Inject extension ExtendedJvmTypesBuilder
 	
 	@Inject	extension TypeReferences
-
-	@Inject extension ITypeProvider
 	
 	@Inject extension JavaNameProvider
-	
-	@Inject extension JnarioCompiler
 	
 	@Inject extension StepNameProvider
 	
 	@Inject extension StepExpressionProvider
-	
+	@Inject extension ITypeProvider
 	@Inject
 	private IJvmModelAssociator associator
 	
@@ -180,7 +172,7 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 		var allFields = filter(eAllContents, typeof(XtendField))
 		for(field: allFields.toIterable){
 			if(field.type == null || field.type.type == null){
-				checkIfExampleField(field)
+				updateTypeInExampleField(field)
 			}
 			if(!allVariables.contains(field.name)){
 				field.transform(inferredJvmType)
@@ -266,34 +258,11 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 		]
    	}
    	
-
-	
-	def void checkIfExampleField(XtendField field){
-		var examples = getContainerOfType(field, typeof(ExampleTable))
-		if(examples == null){
-			return
-		}
-		var heading = examples.heading
-		if(!heading.parts.contains(field)){
-			return	
-		}
-		var index = heading.parts.indexOf(field)
-		if(examples.rows.empty){
-			return
-		}
-		var exampleRow = examples.rows.get(0)
-		if(index < exampleRow.parts.size){
-			var exampleCell = exampleRow.parts.get(index)
-			field.setType(getType(exampleCell))
-			field.setVisibility(JvmVisibility::PUBLIC)
-		}
-	}
-	
 	def generateExampleClasses(Scenario scenario, JnarioFile jnarioFile, JvmGenericType inferredJvmType){
 		var exampleTable = 1
 		val List<JvmGenericType> exampleClasses = newArrayList()
 		for(example: scenario.examples){
-			var fields = example.heading?.parts
+			var fields = example.heading?.getCells
 			var exampleNumber = 1
 			if(!example.rows.empty && fields != null){
 				for(row: example.rows){
@@ -347,13 +316,6 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 		]
 	}
 	
-	def cellToAppendable(ExampleRow row, int i){
-		var appendable = new StringBuilderBasedAppendable()
-		if(row.parts.size > i){
-			row.parts.get(i).toJavaExpression(appendable)
-		}
-		appendable
-	}
 	
 	// copied from Xtend2JvmModelInferrer since it does not use source.getAnnotations()
 	// which checks if annotationInfos is null

@@ -40,8 +40,12 @@ class SpecAnnotationProvider {
 		if(element.beforeAll) {
 			return typeof(BeforeClass)
 		} else{
-			return typeof(org.junit.Before)
+			return getBeforeAnnotation
 		}
+	}
+	
+	def Class<?> getBeforeAnnotation(){
+		return typeof(org.junit.Before)
 	}
 	
 	def Class<?> getAfterAnnotation(After element){

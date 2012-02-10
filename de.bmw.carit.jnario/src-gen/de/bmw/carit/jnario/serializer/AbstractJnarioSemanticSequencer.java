@@ -1389,7 +1389,7 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     parts+=ExampleHeadingCell+
+	 *     cells+=ExampleHeadingCell+
 	 */
 	protected void sequence_ExampleHeading(EObject context, ExampleHeading semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1398,7 +1398,7 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     parts+=XExpression+
+	 *     cells+=XExpression+
 	 */
 	protected void sequence_ExampleRow(EObject context, ExampleRow semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

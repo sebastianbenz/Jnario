@@ -72,7 +72,10 @@ public class SpecHighlightingCalculator extends XtendHighlightingCalculator {
 	}
 
 	private void provideHighlightingFor(ExampleHeading exampleHeading, IHighlightedPositionAcceptor acceptor) {
-		for (XtendField element : exampleHeading.getParts()) {
+		if(exampleHeading == null){
+			return;
+		}
+		for (XtendField element : exampleHeading.getCells()) {
 			INode node = NodeModelUtils.getNode(element);
 			highlightNode(node , XbaseHighlightingConfiguration.EXTENSION_METHOD_INVOCATION, acceptor);
 		}

@@ -275,15 +275,8 @@
             </elements>
             <elements xsi:type="xtext:Group">
               <elements xsi:type="xtext:Keyword" value="example"/>
-              <elements xsi:type="xtext:Group" cardinality="?" predicated="true">
-                <elements xsi:type="xtext:Alternatives">
-                  <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-                    <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.13"/>
-                  </elements>
-                  <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-                    <terminal xsi:type="xtext:RuleCall" rule="/4/@rules.11"/>
-                  </elements>
-                </elements>
+              <elements xsi:type="xtext:Assignment" cardinality="?" predicated="true" feature="name" operator="=">
+                <terminal xsi:type="xtext:RuleCall" rule="/4/@rules.11"/>
               </elements>
               <elements xsi:type="xtext:Keyword" value="{"/>
               <elements xsi:type="xtext:Group" cardinality="?">
@@ -538,7 +531,7 @@
             <classifier xsi:type="ecore:EClass" href="http://www.bmw.de/carit/jnario/Common#//ExampleHeading"/>
           </type>
         </elements>
-        <elements xsi:type="xtext:Assignment" cardinality="*" feature="parts" operator="+=">
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="cells" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.11"/>
         </elements>
       </alternatives>
@@ -569,7 +562,7 @@
           </type>
         </elements>
         <elements xsi:type="xtext:Group" cardinality="*">
-          <elements xsi:type="xtext:Assignment" feature="parts" operator="+=">
+          <elements xsi:type="xtext:Assignment" feature="cells" operator="+=">
             <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.0"/>
           </elements>
           <elements xsi:type="xtext:Keyword" value="|"/>

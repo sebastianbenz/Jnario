@@ -18,7 +18,7 @@ import org.eclipse.xtext.xbase.XExpression;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.bmw.carit.jnario.common.ExampleRow#getParts <em>Parts</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.common.ExampleRow#getCells <em>Cells</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.common.ExampleRow#getTable <em>Table</em>}</li>
  * </ul>
  * </p>
@@ -30,7 +30,7 @@ import org.eclipse.xtext.xbase.XExpression;
 public interface ExampleRow extends EObject
 {
 	/**
-	 * Returns the value of the '<em><b>Parts</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Cells</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.xtext.xbase.XExpression}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -38,12 +38,12 @@ public interface ExampleRow extends EObject
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parts</em>' containment reference list.
-	 * @see de.bmw.carit.jnario.common.CommonPackage#getExampleRow_Parts()
+	 * @return the value of the '<em>Cells</em>' containment reference list.
+	 * @see de.bmw.carit.jnario.common.CommonPackage#getExampleRow_Cells()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<XExpression> getParts();
+	EList<XExpression> getCells();
 
 	/**
 	 * Returns the value of the '<em><b>Table</b></em>' container reference.

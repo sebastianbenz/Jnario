@@ -137,13 +137,13 @@ public interface CommonPackage extends EPackage {
 	int EXAMPLE_HEADING = 1;
 
 	/**
-	 * The feature id for the '<em><b>Parts</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Cells</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_HEADING__PARTS = 0;
+	int EXAMPLE_HEADING__CELLS = 0;
 
 	/**
 	 * The feature id for the '<em><b>Table</b></em>' container reference.
@@ -174,13 +174,13 @@ public interface CommonPackage extends EPackage {
 	int EXAMPLE_ROW = 2;
 
 	/**
-	 * The feature id for the '<em><b>Parts</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Cells</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_ROW__PARTS = 0;
+	int EXAMPLE_ROW__CELLS = 0;
 
 	/**
 	 * The feature id for the '<em><b>Table</b></em>' container reference.
@@ -312,15 +312,15 @@ public interface CommonPackage extends EPackage {
 	EClass getExampleHeading();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.common.ExampleHeading#getParts <em>Parts</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.common.ExampleHeading#getCells <em>Cells</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Parts</em>'.
-	 * @see de.bmw.carit.jnario.common.ExampleHeading#getParts()
+	 * @return the meta object for the containment reference list '<em>Cells</em>'.
+	 * @see de.bmw.carit.jnario.common.ExampleHeading#getCells()
 	 * @see #getExampleHeading()
 	 * @generated
 	 */
-	EReference getExampleHeading_Parts();
+	EReference getExampleHeading_Cells();
 
 	/**
 	 * Returns the meta object for the container reference '{@link de.bmw.carit.jnario.common.ExampleHeading#getTable <em>Table</em>}'.
@@ -344,15 +344,15 @@ public interface CommonPackage extends EPackage {
 	EClass getExampleRow();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.common.ExampleRow#getParts <em>Parts</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.common.ExampleRow#getCells <em>Cells</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Parts</em>'.
-	 * @see de.bmw.carit.jnario.common.ExampleRow#getParts()
+	 * @return the meta object for the containment reference list '<em>Cells</em>'.
+	 * @see de.bmw.carit.jnario.common.ExampleRow#getCells()
 	 * @see #getExampleRow()
 	 * @generated
 	 */
-	EReference getExampleRow_Parts();
+	EReference getExampleRow_Cells();
 
 	/**
 	 * Returns the meta object for the container reference '{@link de.bmw.carit.jnario.common.ExampleRow#getTable <em>Table</em>}'.
@@ -474,12 +474,12 @@ public interface CommonPackage extends EPackage {
 		EClass EXAMPLE_HEADING = eINSTANCE.getExampleHeading();
 
 		/**
-		 * The meta object literal for the '<em><b>Parts</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Cells</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EXAMPLE_HEADING__PARTS = eINSTANCE.getExampleHeading_Parts();
+		EReference EXAMPLE_HEADING__CELLS = eINSTANCE.getExampleHeading_Cells();
 
 		/**
 		 * The meta object literal for the '<em><b>Table</b></em>' container reference feature.
@@ -500,12 +500,12 @@ public interface CommonPackage extends EPackage {
 		EClass EXAMPLE_ROW = eINSTANCE.getExampleRow();
 
 		/**
-		 * The meta object literal for the '<em><b>Parts</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Cells</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EXAMPLE_ROW__PARTS = eINSTANCE.getExampleRow_Parts();
+		EReference EXAMPLE_ROW__CELLS = eINSTANCE.getExampleRow_Cells();
 
 		/**
 		 * The meta object literal for the '<em><b>Table</b></em>' container reference feature.
