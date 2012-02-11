@@ -6,7 +6,7 @@ import de.bmw.carit.jnario.spec.naming.ExampleNameProvider
 import de.bmw.carit.jnario.spec.spec.Example
 import de.bmw.carit.jnario.spec.spec.ExampleGroup
 import de.bmw.carit.jnario.spec.spec.SpecFile
-import de.bmw.carit.jnario.spec.util.Strings
+import static extension de.bmw.carit.jnario.spec.util.Strings.*
 import java.util.List
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.Resource
@@ -18,6 +18,7 @@ import org.eclipse.xtext.xbase.XBlockExpression
 import org.eclipse.xtext.xbase.XExpression
 import org.eclipse.xtext.xtend2.xtend2.XtendMember
 import org.pegdown.PegDownProcessor
+import de.bmw.carit.jnario.common.ExampleTable
 
 class DocGenerator implements IGenerator {
 	
@@ -27,13 +28,12 @@ class DocGenerator implements IGenerator {
 	@Inject extension WhiteSpaceNormalizer
 	@Inject extension PegDownProcessor
 	
-	List<String> cssFiles = newArrayList("bootstrap.min.css", "custom.css", "prettify.css")
+	List<String> cssFiles = newArrayList("bootstrap.min.css", "bootstrap-responsive.min.css", "custom.css", "prettify.css")
 	List<String> jsFiles = newArrayList("lang-xtend.js", "prettify.js")
 
 	override doGenerate(Resource input, IFileSystemAccess fsa) {
 		fsa.copy("css", cssFiles)
 		fsa.copy("js", jsFiles)
-		
 		for(spec : input.contents.filter(typeof(SpecFile))){
 			val exampleGroup = spec.xtendClass as ExampleGroup
 			if(exampleGroup != null){
@@ -59,7 +59,7 @@ class DocGenerator implements IGenerator {
 	
 	def load(String file){
 		val inputStream = getClass().getResourceAsStream(file)
-		return Strings::convertStreamToString(inputStream)
+		return convertStreamToString(inputStream)
 	}	
 	
 	def folder(String name, ExampleGroup context){
@@ -107,7 +107,7 @@ class DocGenerator implements IGenerator {
 						<h1>«exampleGroup.describe»</h1>
 					</div>
 					<div class="row">
-						<div class="span10">
+						<div class="span6">
 							«exampleGroup.generateDoc()»
 							«FOR member : exampleGroup.members»
 «generate(member, 1)»
@@ -135,7 +135,7 @@ class DocGenerator implements IGenerator {
 	'''
 	
 	def dispatch generate(Example example, int level)'''
-		<h5>«example.describe»</h5>
+		<h4>«example.describe.convertFromJavaString(true).toFirstUpper»</h4>
 		«example.generateDoc()»
 		«IF !example.pending»
 		<pre class="prettyprint">
@@ -143,18 +143,42 @@ class DocGenerator implements IGenerator {
 		«ENDIF»
 	'''
 	
-	def dispatch generate(ExampleGroup exampleGroup, int level)'''
-		«IF level > 1»
-		<div class="level">
+	def dispatch generate(ExampleTable table, int level)'''
+		<h4>«table.toFieldName.toFirstUpper»</h4>
+		«IF table.heading != null»
+		<table class="table table-striped table-bordered table-condensed">
+			<thead>
+				<tr>
+				«FOR headingCell : table.heading.cells»
+					<th>«headingCell.name»</th>
+				«ENDFOR»
+				</tr>
+			</thead>
+			<tbody>
+			«FOR row : table.rows»
+			<tr>
+				«FOR cell : row.cells»
+				<td>«toXtendCode(cell)»</td>
+				«ENDFOR»
+			</tr>
+		  	«ENDFOR»
+			</tbody>
+		</table>
 		«ENDIF»
-		<«level.heading»>«exampleGroup.describe»</«level.heading»>
+	'''
+	
+	def dispatch generate(ExampleGroup exampleGroup, int level)'''
+«««		«IF level > 1»
+«««		«ENDIF»
+		<«level.heading»>«exampleGroup.describe.convertFromJavaString(true)»</«level.heading»>
 		«exampleGroup.generateDoc()»
+		<div class="level">
 		«FOR member : exampleGroup.members»
 «generate(member, level + 1)»
 		«ENDFOR»
-		«IF level > 1»
+«««		«IF level > 1»
 		</div>
-		«ENDIF»
+«««		«ENDIF»
 	'''
 
 	def dispatch toXtendCode(XExpression expr){
@@ -168,7 +192,8 @@ class DocGenerator implements IGenerator {
 	}
 	
 	def heading(int level){
-		"h" + (if (level <= 5) level else 5) 
+		//"h" + (if (level <= 5) level else 5)
+		"h3" 
 	}
 }
 

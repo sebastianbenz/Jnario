@@ -118,7 +118,7 @@ public class ExampleNameProvider {
 	
 	public String toFieldName(ExampleTable exampleTable){
 		String name = exampleTable.getName();
-		return name == null ? "example" : name;
+		return name == null ? "examples" : name;
 	}
 	
 	public String toJavaClassName(ExampleTable exampleTable){

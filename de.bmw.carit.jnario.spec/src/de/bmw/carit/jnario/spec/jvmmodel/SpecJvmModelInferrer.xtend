@@ -1,9 +1,17 @@
 package de.bmw.carit.jnario.spec.jvmmodel
 
+import com.google.common.base.Joiner
 import com.google.inject.Inject
+import de.bmw.carit.jnario.common.ExampleTable
+import de.bmw.carit.jnario.common.jvmmodel.CommonJvmModelInferrer
 import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder
 import de.bmw.carit.jnario.runner.Contains
+import de.bmw.carit.jnario.runner.Extension
 import de.bmw.carit.jnario.runner.Named
+import de.bmw.carit.jnario.runner.Order
+import de.bmw.carit.jnario.spec.naming.ExampleNameProvider
+import de.bmw.carit.jnario.spec.spec.After
+import de.bmw.carit.jnario.spec.spec.Before
 import de.bmw.carit.jnario.spec.spec.Example
 import de.bmw.carit.jnario.spec.spec.ExampleGroup
 import de.bmw.carit.jnario.spec.spec.SpecFile
@@ -12,29 +20,17 @@ import java.util.List
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmAnnotationReference
 import org.eclipse.xtext.common.types.JvmDeclaredType
+import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.util.IAcceptor
-import org.eclipse.xtext.xtend2.xtend2.XtendField
-import org.eclipse.xtext.xtend2.xtend2.XtendFunction
-import de.bmw.carit.jnario.spec.spec.Before
-import de.bmw.carit.jnario.spec.spec.After
-import static de.bmw.carit.jnario.spec.jvmmodel.Constants.*
-import static com.google.common.collect.Iterators.*
-import static org.eclipse.xtext.EcoreUtil2.*
-import de.bmw.carit.jnario.spec.naming.ExampleNameProvider
-import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
-import org.eclipse.xtext.common.types.JvmField
-import de.bmw.carit.jnario.runner.Extension
-import de.bmw.carit.jnario.runner.Order
-import de.bmw.carit.jnario.common.ExampleTable
-import de.bmw.carit.jnario.common.jvmmodel.CommonJvmModelInferrer
 import org.eclipse.xtext.util.Strings
-import com.google.common.base.Joiner
 import org.eclipse.xtext.xbase.compiler.ImportManager
 import org.eclipse.xtext.xbase.compiler.StringBuilderBasedAppendable
-import org.eclipse.xtext.xbase.compiler.IAppendable
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
+import org.eclipse.xtext.xtend2.xtend2.XtendField
+import org.eclipse.xtext.xtend2.xtend2.XtendFunction
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -189,20 +185,20 @@ class SpecJvmModelInferrer extends CommonJvmModelInferrer {
 			exampleTableType.members += constructor
 			val assignments = <String>newArrayList()
 			
-			element.heading.getCells.forEach[heading |
-				updateTypeInExampleField(heading)
-				exampleTableType.members += heading.toField(heading.name, heading.type)
+			element.heading.getCells.forEach[cell |
+				updateTypeInExampleField(cell)
+				exampleTableType.members += cell.toField(cell.name, cell.type)
 				
 				val jvmParam = typesFactory.createJvmFormalParameter();
-				jvmParam.name = heading.name
-				jvmParam.setParameterType(cloneWithProxies(heading.type));
+				jvmParam.name = cell.name
+				jvmParam.setParameterType(cloneWithProxies(cell.type));
 				constructor.parameters += jvmParam
 				associate(element, jvmParam); 
-				assignments += "this." + heading.name + " = " + heading.name + ";" 
+				assignments += "this." + cell.name + " = " + cell.name + ";" 
 				
-				exampleTableType.members += element.toMethod("get" + heading.name.toFirstUpper, heading.type)[
+				exampleTableType.members += element.toMethod("get" + cell.name.toFirstUpper, cell.type)[
 					setBody[ImportManager im |
-						"return " + heading.name + ";"
+						"return " + cell.name + ";"
 					]
 				]
 			]

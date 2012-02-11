@@ -7,19 +7,23 @@ import java.util.List;
 
 public class ExampleTable<T> implements Iterable<T>{
 
-	private final List<T> entries;
+	private final List<T> rows;
 	
 	public static <P> ExampleTable<P> create(P... entries){
 		return new ExampleTable<P>(asList(entries));
 	}
 	
-	public ExampleTable(List<T> entries){
-		this.entries = entries;
+	public ExampleTable(List<T> rows){
+		this.rows = rows;
 	}
 
+	public T get(int index){
+		return rows.get(index);
+	}
+	
 	@Override
 	public Iterator<T> iterator() {
-		return entries.iterator();
+		return rows.iterator();
 	}
 
 }

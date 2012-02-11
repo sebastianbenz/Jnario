@@ -1,4 +1,4 @@
-package de.bmw.carit.jnario.spec.tests.integration2
+package de.bmw.carit.jnario.spec.tests.unit.naming
 
 import de.bmw.carit.jnario.runner.InstantiateWith
 import de.bmw.carit.jnario.spec.spec.ExampleGroup
@@ -74,7 +74,7 @@ describe ExampleNameProvider{
   			
 	  		val exampleTable = '''
 				describe 'My Context'{
-					example MyExample{
+					def MyExample{
 					}
 				}
 			'''.parse.first(typeof(ExampleTable))
@@ -86,7 +86,7 @@ describe ExampleNameProvider{
   			
 	  		val exampleTable = '''
 				describe 'My Context'{
-					example myExample{
+					def myExample{
 					}
 				}
 			'''.parse.first(typeof(ExampleTable))
@@ -180,21 +180,21 @@ describe ExampleNameProvider{
 		it "should use the example name"{
 			val exampleTable = '''
 				describe 'My Context'{
-					example myExample{
+					def myExample{
 					}
 				}
 			'''.parse.first(typeof(ExampleTable))
 			subject.toFieldName(exampleTable).should.be("myExample")
 		}
 		 
-		it "should use 'example' if no name is given"{
+		it "should use 'examples' if no name is given"{
 			val exampleTable = '''
 				describe 'My Context'{
-					example{
+					def{
 					}
 				}
 			'''.parse.first(typeof(ExampleTable))
-			subject.toFieldName(exampleTable).should.be("example")
+			subject.toFieldName(exampleTable).should.be("examples")
 		}
 		
 	}
@@ -255,7 +255,7 @@ describe ExampleNameProvider{
 			describeFirst("throws IllegalArgumentException 'should be described' {true}").should.be("throws IllegalArgumentException should be described")
 		}
 		
-		it "apppends ‘[PENDING]' to pending example descriptions"{
+		it "apppends '[PENDING]' to pending example descriptions"{
 			describeFirst("'should do stuff'").should.be("should do stuff [PENDING]")
 			describeFirst("'should do stuff'{}").should.be("should do stuff [PENDING]")
 		}

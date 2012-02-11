@@ -1,6 +1,9 @@
 package de.bmw.carit.jnario.spec.doc;
 
 import com.google.inject.Inject;
+import de.bmw.carit.jnario.common.ExampleHeading;
+import de.bmw.carit.jnario.common.ExampleRow;
+import de.bmw.carit.jnario.common.ExampleTable;
 import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder;
 import de.bmw.carit.jnario.spec.doc.DocOutputConfigurationProvider;
 import de.bmw.carit.jnario.spec.doc.WhiteSpaceNormalizer;
@@ -34,6 +37,7 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.eclipse.xtext.xtend2.xtend2.XtendClass;
+import org.eclipse.xtext.xtend2.xtend2.XtendField;
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 import org.pegdown.PegDownProcessor;
 
@@ -56,7 +60,7 @@ public class DocGenerator implements IGenerator {
   
   private List<String> cssFiles = new Function0<List<String>>() {
     public List<String> apply() {
-      ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("bootstrap.min.css", "custom.css", "prettify.css");
+      ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("bootstrap.min.css", "bootstrap-responsive.min.css", "custom.css", "prettify.css");
       return _newArrayList;
     }
   }.apply();
@@ -234,7 +238,7 @@ public class DocGenerator implements IGenerator {
     _builder.append("<div class=\"row\">");
     _builder.newLine();
     _builder.append("\t\t\t\t");
-    _builder.append("<div class=\"span10\">");
+    _builder.append("<div class=\"span6\">");
     _builder.newLine();
     _builder.append("\t\t\t\t\t");
     CharSequence _generateDoc = this.generateDoc(exampleGroup);
@@ -303,10 +307,12 @@ public class DocGenerator implements IGenerator {
   
   protected CharSequence _generate(final Example example, final int level) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<h5>");
+    _builder.append("<h4>");
     String _describe = this._exampleNameProvider.describe(example);
-    _builder.append(_describe, "");
-    _builder.append("</h5>");
+    String _convertFromJavaString = org.eclipse.xtext.util.Strings.convertFromJavaString(_describe, true);
+    String _firstUpper = org.eclipse.xtext.util.Strings.toFirstUpper(_convertFromJavaString);
+    _builder.append(_firstUpper, "");
+    _builder.append("</h4>");
     _builder.newLineIfNotEmpty();
     CharSequence _generateDoc = this.generateDoc(example);
     _builder.append(_generateDoc, "");
@@ -327,21 +333,89 @@ public class DocGenerator implements IGenerator {
     return _builder;
   }
   
-  protected CharSequence _generate(final ExampleGroup exampleGroup, final int level) {
+  protected CharSequence _generate(final ExampleTable table, final int level) {
     StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<h4>");
+    String _fieldName = this._exampleNameProvider.toFieldName(table);
+    String _firstUpper = org.eclipse.xtext.util.Strings.toFirstUpper(_fieldName);
+    _builder.append(_firstUpper, "");
+    _builder.append("</h4>");
+    _builder.newLineIfNotEmpty();
     {
-      boolean _operator_greaterThan = IntegerExtensions.operator_greaterThan(level, 1);
-      if (_operator_greaterThan) {
-        _builder.append("<div class=\"level\">");
+      ExampleHeading _heading = table.getHeading();
+      boolean _operator_notEquals = ObjectExtensions.operator_notEquals(_heading, null);
+      if (_operator_notEquals) {
+        _builder.append("<table class=\"table table-striped table-bordered table-condensed\">");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("<thead>");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("<tr>");
+        _builder.newLine();
+        {
+          ExampleHeading _heading_1 = table.getHeading();
+          EList<XtendField> _cells = _heading_1.getCells();
+          for(final XtendField headingCell : _cells) {
+            _builder.append("\t\t");
+            _builder.append("<th>");
+            String _name = headingCell.getName();
+            _builder.append(_name, "		");
+            _builder.append("</th>");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        _builder.append("\t\t");
+        _builder.append("</tr>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("</thead>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("<tbody>");
+        _builder.newLine();
+        {
+          EList<ExampleRow> _rows = table.getRows();
+          for(final ExampleRow row : _rows) {
+            _builder.append("\t");
+            _builder.append("<tr>");
+            _builder.newLine();
+            {
+              EList<XExpression> _cells_1 = row.getCells();
+              for(final XExpression cell : _cells_1) {
+                _builder.append("\t");
+                _builder.append("\t");
+                _builder.append("<td>");
+                String _xtendCode = this.toXtendCode(cell);
+                _builder.append(_xtendCode, "		");
+                _builder.append("</td>");
+                _builder.newLineIfNotEmpty();
+              }
+            }
+            _builder.append("\t");
+            _builder.append("</tr>");
+            _builder.newLine();
+          }
+        }
+        _builder.append("\t");
+        _builder.append("</tbody>");
+        _builder.newLine();
+        _builder.append("</table>");
         _builder.newLine();
       }
     }
+    return _builder;
+  }
+  
+  protected CharSequence _generate(final ExampleGroup exampleGroup, final int level) {
+    StringConcatenation _builder = new StringConcatenation();
     _builder.append("<");
     String _heading = this.heading(level);
     _builder.append(_heading, "");
     _builder.append(">");
     String _describe = this._exampleNameProvider.describe(exampleGroup);
-    _builder.append(_describe, "");
+    String _convertFromJavaString = org.eclipse.xtext.util.Strings.convertFromJavaString(_describe, true);
+    _builder.append(_convertFromJavaString, "");
     _builder.append("</");
     String _heading_1 = this.heading(level);
     _builder.append(_heading_1, "");
@@ -350,6 +424,8 @@ public class DocGenerator implements IGenerator {
     CharSequence _generateDoc = this.generateDoc(exampleGroup);
     _builder.append(_generateDoc, "");
     _builder.newLineIfNotEmpty();
+    _builder.append("<div class=\"level\">");
+    _builder.newLine();
     {
       EList<XtendMember> _members = exampleGroup.getMembers();
       for(final XtendMember member : _members) {
@@ -359,13 +435,8 @@ public class DocGenerator implements IGenerator {
         _builder.newLineIfNotEmpty();
       }
     }
-    {
-      boolean _operator_greaterThan_1 = IntegerExtensions.operator_greaterThan(level, 1);
-      if (_operator_greaterThan_1) {
-        _builder.append("</div>");
-        _builder.newLine();
-      }
-    }
+    _builder.append("</div>");
+    _builder.newLine();
     return _builder;
   }
   
@@ -388,20 +459,14 @@ public class DocGenerator implements IGenerator {
   }
   
   public String heading(final int level) {
-    int _xifexpression = (int) 0;
-    boolean _operator_lessEqualsThan = IntegerExtensions.operator_lessEqualsThan(level, 5);
-    if (_operator_lessEqualsThan) {
-      _xifexpression = level;
-    } else {
-      _xifexpression = 5;
-    }
-    String _operator_plus = StringExtensions.operator_plus("h", Integer.valueOf(_xifexpression));
-    return _operator_plus;
+    return "h3";
   }
   
   public CharSequence generate(final XtendMember example, final int level) {
     if (example instanceof Example) {
       return _generate((Example)example, level);
+    } else if (example instanceof ExampleTable) {
+      return _generate((ExampleTable)example, level);
     } else if (example instanceof ExampleGroup) {
       return _generate((ExampleGroup)example, level);
     } else if (example != null) {

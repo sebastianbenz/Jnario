@@ -354,41 +354,41 @@ public class SpecJvmModelInferrer extends CommonJvmModelInferrer {
             ExampleHeading _heading_1 = element.getHeading();
             EList<XtendField> _cells = _heading_1.getCells();
             final Procedure1<XtendField> _function_2 = new Procedure1<XtendField>() {
-                public void apply(final XtendField heading) {
+                public void apply(final XtendField cell) {
                   {
-                    SpecJvmModelInferrer.this.updateTypeInExampleField(heading);
+                    SpecJvmModelInferrer.this.updateTypeInExampleField(cell);
                     EList<JvmMember> _members = exampleTableType.getMembers();
-                    String _name = heading.getName();
-                    JvmTypeReference _type = heading.getType();
-                    JvmField _field = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toField(heading, _name, _type);
+                    String _name = cell.getName();
+                    JvmTypeReference _type = cell.getType();
+                    JvmField _field = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toField(cell, _name, _type);
                     CollectionExtensions.<JvmField>operator_add(_members, _field);
                     JvmFormalParameter _createJvmFormalParameter = SpecJvmModelInferrer.this.typesFactory.createJvmFormalParameter();
                     final JvmFormalParameter jvmParam = _createJvmFormalParameter;
-                    String _name_1 = heading.getName();
+                    String _name_1 = cell.getName();
                     jvmParam.setName(_name_1);
-                    JvmTypeReference _type_1 = heading.getType();
+                    JvmTypeReference _type_1 = cell.getType();
                     JvmTypeReference _cloneWithProxies = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.cloneWithProxies(_type_1);
                     jvmParam.setParameterType(_cloneWithProxies);
                     EList<JvmFormalParameter> _parameters = constructor.getParameters();
                     CollectionExtensions.<JvmFormalParameter>operator_add(_parameters, jvmParam);
                     SpecJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmFormalParameter>associate(element, jvmParam);
-                    String _name_2 = heading.getName();
+                    String _name_2 = cell.getName();
                     String _operator_plus = StringExtensions.operator_plus("this.", _name_2);
                     String _operator_plus_1 = StringExtensions.operator_plus(_operator_plus, " = ");
-                    String _name_3 = heading.getName();
+                    String _name_3 = cell.getName();
                     String _operator_plus_2 = StringExtensions.operator_plus(_operator_plus_1, _name_3);
                     String _operator_plus_3 = StringExtensions.operator_plus(_operator_plus_2, ";");
                     CollectionExtensions.<String>operator_add(assignments, _operator_plus_3);
                     EList<JvmMember> _members_1 = exampleTableType.getMembers();
-                    String _name_4 = heading.getName();
+                    String _name_4 = cell.getName();
                     String _firstUpper = StringExtensions.toFirstUpper(_name_4);
                     String _operator_plus_4 = StringExtensions.operator_plus("get", _firstUpper);
-                    JvmTypeReference _type_2 = heading.getType();
+                    JvmTypeReference _type_2 = cell.getType();
                     final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
                         public void apply(final JvmOperation it) {
                           final Function1<ImportManager,String> _function = new Function1<ImportManager,String>() {
                               public String apply(final ImportManager im) {
-                                String _name = heading.getName();
+                                String _name = cell.getName();
                                 String _operator_plus = StringExtensions.operator_plus("return ", _name);
                                 String _operator_plus_1 = StringExtensions.operator_plus(_operator_plus, ";");
                                 return _operator_plus_1;

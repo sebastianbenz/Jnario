@@ -507,9 +507,10 @@ ruleMember returns [EObject current=null]
     }
 )((
 (
-		lv_preamble_3_0=RULE_ID
+(
+		lv_preamble_3_1=RULE_ID
 		{
-			newLeafNode(lv_preamble_3_0, grammarAccess.getMemberAccess().getPreambleIDTerminalRuleCall_2_0_1_0_0()); 
+			newLeafNode(lv_preamble_3_1, grammarAccess.getMemberAccess().getPreambleIDTerminalRuleCall_2_0_1_0_0_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -518,9 +519,23 @@ ruleMember returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"preamble",
-        		lv_preamble_3_0, 
+        		lv_preamble_3_1, 
         		"ID");
 	    }
+
+    |		lv_preamble_3_2=	'-' 
+    {
+        newLeafNode(lv_preamble_3_2, grammarAccess.getMemberAccess().getPreambleHyphenMinusKeyword_2_0_1_0_0_1());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getMemberRule());
+	        }
+       		setWithLastConsumed($current, "preamble", lv_preamble_3_2, null);
+	    }
+
+)
 
 )
 )(	otherlv_4='throws' 
@@ -942,9 +957,9 @@ RULE_STRING
             grammarAccess.getMemberAccess().getExampleTableAnnotationInfoAction_2_5_0(),
             $current);
     }
-)(	otherlv_33='example' 
+)(	otherlv_33='def' 
     {
-    	newLeafNode(otherlv_33, grammarAccess.getMemberAccess().getExampleKeyword_2_5_1_0());
+    	newLeafNode(otherlv_33, grammarAccess.getMemberAccess().getDefKeyword_2_5_1_0());
     }
 ((
 (

@@ -19,6 +19,10 @@ import org.eclipse.xtext.xtend2.xtend2.XtendField
 
 import static org.eclipse.xtext.EcoreUtil2.*
 import org.eclipse.xtext.xbase.XExpression
+import org.eclipse.xtext.common.types.util.TypeConformanceComputer
+import com.google.common.base.Predicate
+import com.google.common.base.Predicates
+import org.eclipse.xtext.common.types.JvmIdentifiableElement
 
 /**
  * @author Birgit Engelmann
@@ -30,25 +34,35 @@ class CommonJvmModelInferrer extends Xtend2JvmModelInferrer {
 	
 	@Inject public XbaseCompiler compiler
 	
+	@Inject extension TypeConformanceComputer typeConformanceComputer
+	
 	def void updateTypeInExampleField(XtendField field){
 		var examples = getContainerOfType(field, typeof(ExampleTable))
-		if(examples == null){
+		if(examples == null || examples.heading == null){
 			return
 		}
-		var heading = examples.heading
+		val heading = examples.heading
 		if(!heading.getCells.contains(field)){
 			return	
 		}
-		var index = heading.getCells.indexOf(field)
 		if(examples.rows.empty){
 			return
 		}
-		var exampleRow = examples.rows.get(0)
-		if(index < exampleRow.getCells.size){
-			var exampleCell = exampleRow.getCells.get(index)
-			field.setType(getType(exampleCell))
-			field.setVisibility(JvmVisibility::PUBLIC)
+		
+		if(!examples.isValidTable()){
+			return
 		}
+		
+		val column = heading.getCells.indexOf(field)
+		
+		val cells = examples.rows.map[
+			it.cells.get(column)
+		]
+		val cellTypes = cells.map[
+			it.type
+		]
+		field.setType(cellTypes.commonSuperType)
+		field.setVisibility(JvmVisibility::PUBLIC)
 	}
 	
 	def cellToAppendable(ExampleRow row, int i){
@@ -69,6 +83,16 @@ class CommonJvmModelInferrer extends Xtend2JvmModelInferrer {
 		var appendable = new StringBuilderBasedAppendable()
 		compiler.toJavaStatement(expr, appendable, isReferenced)
 		appendable
+	}
+	
+	def isValidTable(ExampleTable table){
+		val expected = table.heading.cells.size
+		for(row : table.rows){
+			if(row.cells.size != expected){
+				return false
+			}
+		}
+		return true
 	}
 
 }

@@ -23,7 +23,7 @@ describe DocGenerator {
 	it "should generate css helper files"{
 		generateEmptyExampleDoc()
 		
-		assert generatedFile("css/bootstrap.min.css") != null
+		assert generatedFile("css/bootstrap-responsive.min.css") != null
 		assert generatedFile("css/custom.css") != null
 		assert generatedFile("css/prettify.css") != null
 	}
@@ -70,7 +70,7 @@ describe DocGenerator {
 		''')
 		val scenarioDoc = generatedFile("ExampleSpec.html")
 		scenarioDoc.should.contain('''
-		<h5>should do stuff</h5>
+		<h4>Should do stuff</h4>
 		<p>Example documentation</p>
 		<pre class="prettyprint">
 		var x = 0
@@ -91,6 +91,25 @@ describe DocGenerator {
 		scenarioDoc.should.contain("<h1>Example Heading</h1>")
 	}
 	
+	
+	it "should generate table for example tables"{
+		generateDoc('''
+			describe 'Example'{
+				def myExample{
+					| a | b |
+					| 1 | 2 |
+				}
+			} 
+		''')
+		val scenarioDoc = generatedFile("ExampleSpec.html")
+		scenarioDoc.should.contain("<h4>MyExample</h4>")
+		scenarioDoc.should.contain("<th>a</th>")
+		scenarioDoc.should.contain("<th>b</th>")
+		scenarioDoc.should.contain("<td>1</td>")
+		scenarioDoc.should.contain("<td>2</td>")
+	}
+	
+	
 	def generateEmptyExampleDoc(){
 		generateDoc('''
 			describe 'Example'{
@@ -103,7 +122,7 @@ describe DocGenerator {
 		val resource = parseSpec(input)
 		subject.doGenerate(resource, fsa)
 	}
-	
+
 	def generatedFile(String name){
 		return fsa.files.get("DOC_OUTPUT/" + name)?.toString
 	}

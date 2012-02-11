@@ -15,7 +15,7 @@ import java.util.Scanner;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
-public class Strings {
+public class Strings extends org.eclipse.xtext.util.Strings{
 
 	public static String convertStreamToString(InputStream is) { 
 	    return new Scanner(is).useDelimiter("\\A").next();

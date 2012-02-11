@@ -18,6 +18,7 @@ import org.eclipse.xtext.xtend2.ui.labeling.Xtend2LabelProvider;
 
 import com.google.inject.Inject;
 
+import de.bmw.carit.jnario.common.ExampleTable;
 import de.bmw.carit.jnario.spec.naming.ExampleNameProvider;
 import de.bmw.carit.jnario.spec.spec.Example;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
@@ -41,6 +42,11 @@ public class SpecLabelProvider extends Xtend2LabelProvider {
 	@Inject
 	private ExampleNameProvider exampleNameProvider;
 
+	
+	public Image image(ExampleTable element) {
+		return images.forField(JvmVisibility.PROTECTED, false, false);
+	}
+	
 	public Image image(ExampleGroup element) {
 		return images.forClass(JvmVisibility.PUBLIC);
 	}
@@ -55,6 +61,10 @@ public class SpecLabelProvider extends Xtend2LabelProvider {
 	
 	public String text(Example element) {
 		return exampleNameProvider.describe(element);
+	}
+	
+	public String text(ExampleTable element) {
+		return exampleNameProvider.toFieldName(element);
 	}
 	
 	public String text(TestFunction element) {

@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.validation.AbstractDeclarativeValidator;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.xbase.XExpression;
@@ -25,6 +25,9 @@ public class CommonJavaValidator extends AbstractDeclarativeValidator {
 	private static final String ILLEGAL_ASSERTION_EXPRESSION = "invalid type: expecting boolean";
 	@Inject 
 	private ITypeProvider typeProvider;
+	
+	@Inject 
+	private TypeReferences typeReferences;
 
 	@Override
 	protected List<EPackage> getEPackages() {
@@ -42,16 +45,23 @@ public class CommonJavaValidator extends AbstractDeclarativeValidator {
 	}
 	
 	@Check
+	public void checkExpressionsInTableDoNotReturnVoid(ExampleRow row){
+		for (XExpression cell : row.getCells()) {
+			JvmTypeReference actualType = typeProvider.getType(cell);
+			if(typeReferences.is(actualType, Void.TYPE)){
+				error("must not be void", cell, null, 0);
+			}
+		}
+	}
+	
+	@Check
 	public void checkExampleHeaderAndRowsHaveSameColumnNumber(ExampleTable exampleTable){
 		ExampleHeading heading = exampleTable.getHeading();
 		EList<ExampleRow> rows = exampleTable.getRows();
 		int headingColumnNumber = heading.getCells().size();
 		boolean rowsHaveSameNumberOfColumns = doRowsHaveSameNumberOfColumns(rows, headingColumnNumber);
 
-		if(rowsHaveSameNumberOfColumns){
-			hasSameTypesInColumns(rows);
-		}
-		else{
+		if(!rowsHaveSameNumberOfColumns){
 			error("Examples rows have to have the same number of columns", CommonPackage.Literals.EXAMPLE_TABLE__HEADING);
 		}
 	}
@@ -65,23 +75,4 @@ public class CommonJavaValidator extends AbstractDeclarativeValidator {
 		return true;
 	}
 
-	private void hasSameTypesInColumns(EList<ExampleRow> rows){
-		int colNum = 0;
-		if(rows.size() > 0){
-			ExampleRow firstRow = rows.get(0);
-			for(XExpression cell: firstRow.getCells()){
-				JvmType type = typeProvider.getType(cell).getType();
-				//starting with second row
-				for(int rowNum = 1; rowNum < rows.size(); rowNum++){
-					EList<XExpression> parts = rows.get(rowNum).getCells();
-					XExpression expression = parts.get(colNum);
-					JvmType compareType = typeProvider.getType(expression).getType();
-					if(!type.equals(compareType)){
-						error("Examples columns have to have the same type - Conflicting types: " + type.getQualifiedName() + ", " + compareType.getQualifiedName(), CommonPackage.Literals.EXAMPLE_TABLE__ROWS);
-					}
-				}
-				colNum++;
-			} 
-		}
-	}
 }

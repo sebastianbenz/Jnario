@@ -8,6 +8,7 @@
 package de.bmw.carit.jnario.tests.util;
 
 import static org.eclipse.emf.common.util.URI.createURI;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertNotNull;
 
 import java.io.IOException;
@@ -33,7 +34,7 @@ import de.bmw.carit.jnario.spec.SpecInjectorProvider;
 import de.bmw.carit.jnario.spec.naming.ExampleNameProvider;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
 import de.bmw.carit.jnario.spec.spec.SpecFile;
-
+import static de.bmw.carit.jnario.common.test.util.ResultMatchers.*;
 @SuppressWarnings("restriction")
 public class SpecExecutor extends BehaviorExecutor{
 	
@@ -45,6 +46,11 @@ public class SpecExecutor extends BehaviorExecutor{
 		super(generator, fsa, tempFolder, validator);
 		this.nameProvider = javaNameProvider;
 		validate = false;
+	}
+	
+	public static void executesSuccessfully(CharSequence content) {
+		Result result = execute(content);
+		assertThat(result, isSuccessful());
 	}
 
 	public static Result execute(CharSequence content) {
