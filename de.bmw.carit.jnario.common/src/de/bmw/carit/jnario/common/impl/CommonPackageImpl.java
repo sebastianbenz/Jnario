@@ -17,6 +17,7 @@ import org.eclipse.xtext.xtend2.xtend2.Xtend2Package;
 import de.bmw.carit.jnario.common.Assertion;
 import de.bmw.carit.jnario.common.CommonFactory;
 import de.bmw.carit.jnario.common.CommonPackage;
+import de.bmw.carit.jnario.common.ExampleColumn;
 import de.bmw.carit.jnario.common.ExampleHeading;
 import de.bmw.carit.jnario.common.ExampleRow;
 import de.bmw.carit.jnario.common.ExampleTable;
@@ -41,13 +42,6 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass exampleHeadingEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass exampleRowEClass = null;
 
 	/**
@@ -63,6 +57,13 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * @generated
 	 */
 	private EClass matcherEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass exampleColumnEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -151,7 +152,7 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getExampleTable_Heading() {
+	public EReference getExampleTable_Rows() {
 		return (EReference)exampleTableEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -160,35 +161,8 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getExampleTable_Rows() {
+	public EReference getExampleTable_Columns() {
 		return (EReference)exampleTableEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getExampleHeading() {
-		return exampleHeadingEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getExampleHeading_Cells() {
-		return (EReference)exampleHeadingEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getExampleHeading_Table() {
-		return (EReference)exampleHeadingEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -259,6 +233,33 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getExampleColumn() {
+		return exampleColumnEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getExampleColumn_Table() {
+		return (EReference)exampleColumnEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getExampleColumn_Cells() {
+		return (EReference)exampleColumnEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CommonFactory getCommonFactory() {
 		return (CommonFactory)getEFactoryInstance();
 	}
@@ -284,12 +285,8 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		// Create classes and their features
 		exampleTableEClass = createEClass(EXAMPLE_TABLE);
 		createEAttribute(exampleTableEClass, EXAMPLE_TABLE__NAME);
-		createEReference(exampleTableEClass, EXAMPLE_TABLE__HEADING);
 		createEReference(exampleTableEClass, EXAMPLE_TABLE__ROWS);
-
-		exampleHeadingEClass = createEClass(EXAMPLE_HEADING);
-		createEReference(exampleHeadingEClass, EXAMPLE_HEADING__CELLS);
-		createEReference(exampleHeadingEClass, EXAMPLE_HEADING__TABLE);
+		createEReference(exampleTableEClass, EXAMPLE_TABLE__COLUMNS);
 
 		exampleRowEClass = createEClass(EXAMPLE_ROW);
 		createEReference(exampleRowEClass, EXAMPLE_ROW__CELLS);
@@ -300,6 +297,10 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 
 		matcherEClass = createEClass(MATCHER);
 		createEReference(matcherEClass, MATCHER__CLOSURE);
+
+		exampleColumnEClass = createEClass(EXAMPLE_COLUMN);
+		createEReference(exampleColumnEClass, EXAMPLE_COLUMN__TABLE);
+		createEReference(exampleColumnEClass, EXAMPLE_COLUMN__CELLS);
 	}
 
 	/**
@@ -337,16 +338,15 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		exampleTableEClass.getESuperTypes().add(theXtend2Package.getXtendMember());
 		assertionEClass.getESuperTypes().add(theXbasePackage.getXExpression());
 		matcherEClass.getESuperTypes().add(theXbasePackage.getXExpression());
+		exampleColumnEClass.getESuperTypes().add(theXtend2Package.getXtendField());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(exampleTableEClass, ExampleTable.class, "ExampleTable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getExampleTable_Name(), ecorePackage.getEString(), "name", null, 0, 1, ExampleTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getExampleTable_Heading(), this.getExampleHeading(), this.getExampleHeading_Table(), "heading", null, 0, 1, ExampleTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getExampleTable_Rows(), this.getExampleRow(), this.getExampleRow_Table(), "rows", null, 0, -1, ExampleTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExampleTable_Columns(), this.getExampleColumn(), this.getExampleColumn_Table(), "columns", null, 0, -1, ExampleTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(exampleHeadingEClass, ExampleHeading.class, "ExampleHeading", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getExampleHeading_Cells(), theXtend2Package.getXtendField(), null, "cells", null, 0, -1, ExampleHeading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getExampleHeading_Table(), this.getExampleTable(), this.getExampleTable_Heading(), "table", null, 0, 1, ExampleHeading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		addEOperation(exampleTableEClass, ecorePackage.getEBoolean(), "isValid", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(exampleRowEClass, ExampleRow.class, "ExampleRow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getExampleRow_Cells(), theXbasePackage.getXExpression(), null, "cells", null, 0, -1, ExampleRow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -357,6 +357,10 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 
 		initEClass(matcherEClass, Matcher.class, "Matcher", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMatcher_Closure(), theXbasePackage.getXExpression(), null, "closure", null, 0, 1, Matcher.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(exampleColumnEClass, ExampleColumn.class, "ExampleColumn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getExampleColumn_Table(), this.getExampleTable(), this.getExampleTable_Columns(), "table", null, 0, 1, ExampleColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExampleColumn_Cells(), theXbasePackage.getXExpression(), null, "cells", null, 0, -1, ExampleColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

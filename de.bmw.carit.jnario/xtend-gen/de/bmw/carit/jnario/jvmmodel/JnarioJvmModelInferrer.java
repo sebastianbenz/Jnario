@@ -3,7 +3,7 @@ package de.bmw.carit.jnario.jvmmodel;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.UnmodifiableIterator;
 import com.google.inject.Inject;
-import de.bmw.carit.jnario.common.ExampleHeading;
+import de.bmw.carit.jnario.common.ExampleColumn;
 import de.bmw.carit.jnario.common.ExampleRow;
 import de.bmw.carit.jnario.common.ExampleTable;
 import de.bmw.carit.jnario.common.jvmmodel.CommonJvmModelInferrer;
@@ -315,30 +315,20 @@ public class JnarioJvmModelInferrer extends CommonJvmModelInferrer {
       UnmodifiableIterator<XtendField> allFields = _filter_1;
       Iterable<XtendField> _iterable_1 = IteratorExtensions.<XtendField>toIterable(allFields);
       for (final XtendField field_2 : _iterable_1) {
-        {
-          boolean _operator_or_1 = false;
-          JvmTypeReference _type_3 = field_2.getType();
-          boolean _operator_equals_2 = ObjectExtensions.operator_equals(_type_3, null);
-          if (_operator_equals_2) {
-            _operator_or_1 = true;
-          } else {
-            JvmTypeReference _type_4 = field_2.getType();
-            JvmType _type_5 = _type_4.getType();
-            boolean _operator_equals_3 = ObjectExtensions.operator_equals(_type_5, null);
-            _operator_or_1 = BooleanExtensions.operator_or(_operator_equals_2, _operator_equals_3);
-          }
-          if (_operator_or_1) {
-            this.updateTypeInExampleField(field_2);
-          }
-          String _name_3 = field_2.getName();
-          boolean _contains_1 = allVariables.contains(_name_3);
-          boolean _operator_not_1 = BooleanExtensions.operator_not(_contains_1);
-          if (_operator_not_1) {
-            {
+        String _name_3 = field_2.getName();
+        boolean _contains_1 = allVariables.contains(_name_3);
+        boolean _operator_not_1 = BooleanExtensions.operator_not(_contains_1);
+        if (_operator_not_1) {
+          {
+            if ((field_2 instanceof ExampleColumn)) {
+              EList<JvmMember> _members_1 = inferredJvmType.getMembers();
+              JvmField _field = this.toField(((ExampleColumn) field_2));
+              CollectionExtensions.<JvmField>operator_add(_members_1, _field);
+            } else {
               this.transform(field_2, inferredJvmType);
-              String _name_4 = field_2.getName();
-              allVariables.add(_name_4);
             }
+            String _name_4 = field_2.getName();
+            allVariables.add(_name_4);
           }
         }
       }
@@ -527,21 +517,13 @@ public class JnarioJvmModelInferrer extends CommonJvmModelInferrer {
       EList<ExampleTable> _examples = scenario.getExamples();
       for (final ExampleTable example : _examples) {
         {
-          ExampleHeading _heading = example.getHeading();
-          EList<XtendField> _cells = _heading==null?(EList<XtendField>)null:_heading.getCells();
-          EList<XtendField> fields = _cells;
+          EList<ExampleColumn> _columns = example.getColumns();
+          EList<ExampleColumn> fields = _columns;
           int exampleNumber = 1;
-          boolean _operator_and = false;
           EList<ExampleRow> _rows = example.getRows();
           boolean _isEmpty = _rows.isEmpty();
           boolean _operator_not = BooleanExtensions.operator_not(_isEmpty);
-          if (!_operator_not) {
-            _operator_and = false;
-          } else {
-            boolean _operator_notEquals = ObjectExtensions.operator_notEquals(fields, null);
-            _operator_and = BooleanExtensions.operator_and(_operator_not, _operator_notEquals);
-          }
-          if (_operator_and) {
+          if (_operator_not) {
             EList<ExampleRow> _rows_1 = example.getRows();
             for (final ExampleRow row : _rows_1) {
               {
@@ -561,7 +543,7 @@ public class JnarioJvmModelInferrer extends CommonJvmModelInferrer {
     return _xblockexpression;
   }
   
-  public JvmGenericType createExampleClass(final Scenario scenario, final JnarioFile jnarioFile, final ExampleRow row, final EList<XtendField> fields, final int exampleTable, final int exampleNumber, final JvmGenericType inferredJvmType) {
+  public JvmGenericType createExampleClass(final Scenario scenario, final JnarioFile jnarioFile, final ExampleRow row, final EList<ExampleColumn> fields, final int exampleTable, final int exampleNumber, final JvmGenericType inferredJvmType) {
     JvmGenericType _xblockexpression = null;
     {
       XtendClass _xtendClass = jnarioFile.getXtendClass();
@@ -599,7 +581,7 @@ public class JnarioJvmModelInferrer extends CommonJvmModelInferrer {
               String _operator_plus_4 = StringExtensions.operator_plus(_operator_plus_3, " [");
               String description = _operator_plus_4;
               int i = 0;
-              for (final XtendField field : fields) {
+              for (final ExampleColumn field : fields) {
                 {
                   String _name = field.getName();
                   String _operator_plus_5 = StringExtensions.operator_plus(description, _name);
@@ -630,7 +612,7 @@ public class JnarioJvmModelInferrer extends CommonJvmModelInferrer {
     return _xblockexpression;
   }
   
-  public JvmConstructor generateExampleConstructor(final ExampleRow row, final EList<XtendField> fields, final String className) {
+  public JvmConstructor generateExampleConstructor(final ExampleRow row, final EList<ExampleColumn> fields, final String className) {
     final Procedure1<JvmConstructor> _function = new Procedure1<JvmConstructor>() {
         public void apply(final JvmConstructor it) {
           {
@@ -642,7 +624,7 @@ public class JnarioJvmModelInferrer extends CommonJvmModelInferrer {
                     StringBuilder _stringBuilder = new StringBuilder();
                     StringBuilder constructor = _stringBuilder;
                     int i = 0;
-                    for (final XtendField field : fields) {
+                    for (final ExampleColumn field : fields) {
                       {
                         constructor.append("super.");
                         String _name = field.getName();

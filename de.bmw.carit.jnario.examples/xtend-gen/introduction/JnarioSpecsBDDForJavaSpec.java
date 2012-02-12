@@ -1,7 +1,6 @@
 package introduction;
 
 import de.bmw.carit.jnario.common.test.util.Helpers;
-import de.bmw.carit.jnario.common.test.util.ResultMatchers;
 import de.bmw.carit.jnario.lib.Each;
 import de.bmw.carit.jnario.lib.MatcherChain;
 import de.bmw.carit.jnario.lib.Should;
@@ -15,11 +14,7 @@ import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.Matcher;
-import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.Result;
 import org.junit.runner.RunWith;
 
 /**
@@ -75,8 +70,8 @@ public class JnarioSpecsBDDForJavaSpec {
   public void selfExplainingAssertions() throws Exception {
       final int x = 0;
       final int y = 1;
-      final Procedure1<String> _function = new Procedure1<String>() {
-          public void apply(final String it) {
+      final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
+          public void apply(final Boolean it) {
             boolean _operator_and = false;
             boolean _operator_equals = IntegerExtensions.operator_equals(x, 1);
             boolean _operator_equals_1 = IntegerExtensions.operator_equals(y, 0);
@@ -93,7 +88,7 @@ public class JnarioSpecsBDDForJavaSpec {
             
           }
         };
-      String _assertErrorMessageFor = this.assertErrorMessageFor(_function);
+      String _errorMessage = Helpers.errorMessage(_function);
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Expected x == 1 && y == 0 but:");
       _builder.newLine();
@@ -107,9 +102,8 @@ public class JnarioSpecsBDDForJavaSpec {
       _builder.append("y == 0 is false");
       _builder.newLine();
       _builder.append("     ");
-      _builder.append("y is 1 ");
-      _builder.newLine();
-      Helpers.is(_assertErrorMessageFor, _builder);
+      _builder.append("y is 1");
+      Helpers.is(_errorMessage, _builder);
   }
   
   /**
@@ -124,36 +118,28 @@ public class JnarioSpecsBDDForJavaSpec {
   @Named("Implicit subject creation")
   @Order(2)
   public void implicitSubjectCreation() throws Exception {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("package calculator");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("describe Calculator {");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("  ");
-      _builder.append("it \"should automatically create an instance of Calculator called subject\"{");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("subject.should.not.be(null)");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("subject.should.be(typeof(Calculator))");
-      _builder.newLine();
-      _builder.append("  ");
-      _builder.append("}");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("}");
-      _builder.newLine();
-      final CharSequence exampleSpec = _builder;
-      Result _execute = SpecExecutor.execute(exampleSpec);
-      Matcher<Result> _isSuccessful = ResultMatchers.isSuccessful();
-      Matcher<Result> _is = CoreMatchers.<Result>is(_isSuccessful);
-      Assert.<Result>assertThat(_execute, _is);
-  }
-  
-  public String assertErrorMessageFor(final Procedure1<String> input) {
-    return "";
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("package bootstrap");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("import java.util.ArrayList");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("describe ArrayList{");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("  ");
+    _builder.append("it \"should automatically create an instance of ArrayList called subject\"{");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("subject.should.be(typeof(ArrayList))");
+    _builder.newLine();
+    _builder.append("  ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    SpecExecutor.executesSuccessfully(_builder);
   }
 }

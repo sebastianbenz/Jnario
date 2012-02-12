@@ -111,14 +111,12 @@ BlockExpression returns xbase::XBlockExpression:
 
 ExampleTable:
 	name=EXAMPLE_TEXT
-	heading = ExampleHeading
+	columns+=ExampleColumn+ EXAMPLE_ROW_END
 	(rows += ExampleRow)*;
 
-ExampleHeading:
-	cells+=ExampleHeadingCell+ EXAMPLE_ROW_END;
 
-ExampleHeadingCell returns xtend::XtendField:
-	(PIPE | PIPE_SPACES) name=ValidID ;
+ExampleColumn: 
+	(PIPE | PIPE_SPACES) type=JvmTypeReference? name=ValidID ;
 
 ExampleRow:
 	((PIPE | PIPE_SPACES) cells+=XExpression)+ EXAMPLE_ROW_END;

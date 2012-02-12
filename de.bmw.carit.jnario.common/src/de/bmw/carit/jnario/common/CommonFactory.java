@@ -35,15 +35,6 @@ public interface CommonFactory extends EFactory {
 	ExampleTable createExampleTable();
 
 	/**
-	 * Returns a new object of class '<em>Example Heading</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Example Heading</em>'.
-	 * @generated
-	 */
-	ExampleHeading createExampleHeading();
-
-	/**
 	 * Returns a new object of class '<em>Example Row</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -69,6 +60,15 @@ public interface CommonFactory extends EFactory {
 	 * @generated
 	 */
 	Matcher createMatcher();
+
+	/**
+	 * Returns a new object of class '<em>Example Column</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Example Column</em>'.
+	 * @generated
+	 */
+	ExampleColumn createExampleColumn();
 
 	/**
 	 * Returns the package supported by this factory.

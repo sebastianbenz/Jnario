@@ -349,10 +349,11 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNameIDTerminalRuleCall_2_5_1_1_0 = (RuleCall)cNameAssignment_2_5_1_1.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2_5_1_2 = (Keyword)cGroup_2_5_1.eContents().get(2);
 		private final Group cGroup_2_5_1_3 = (Group)cGroup_2_5_1.eContents().get(3);
-		private final Assignment cHeadingAssignment_2_5_1_3_0 = (Assignment)cGroup_2_5_1_3.eContents().get(0);
-		private final RuleCall cHeadingExampleHeadingParserRuleCall_2_5_1_3_0_0 = (RuleCall)cHeadingAssignment_2_5_1_3_0.eContents().get(0);
-		private final Assignment cRowsAssignment_2_5_1_3_1 = (Assignment)cGroup_2_5_1_3.eContents().get(1);
-		private final RuleCall cRowsExampleRowParserRuleCall_2_5_1_3_1_0 = (RuleCall)cRowsAssignment_2_5_1_3_1.eContents().get(0);
+		private final Keyword cVerticalLineKeyword_2_5_1_3_0 = (Keyword)cGroup_2_5_1_3.eContents().get(0);
+		private final Assignment cColumnsAssignment_2_5_1_3_1 = (Assignment)cGroup_2_5_1_3.eContents().get(1);
+		private final RuleCall cColumnsExampleColumnParserRuleCall_2_5_1_3_1_0 = (RuleCall)cColumnsAssignment_2_5_1_3_1.eContents().get(0);
+		private final Assignment cRowsAssignment_2_5_1_3_2 = (Assignment)cGroup_2_5_1_3.eContents().get(2);
+		private final RuleCall cRowsExampleRowParserRuleCall_2_5_1_3_2_0 = (RuleCall)cRowsAssignment_2_5_1_3_2.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_2_5_1_4 = (Keyword)cGroup_2_5_1.eContents().get(4);
 		private final Group cGroup_2_6 = (Group)cAlternatives_2.eContents().get(6);
 		private final Action cXtendFieldAnnotationInfoAction_2_6_0 = (Action)cGroup_2_6.eContents().get(0);
@@ -456,7 +457,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//	ID)? body=XBlockExpression?) | {After.annotationInfo=current} ("after" afterAll?="all"? => name=(STRING | ID)?
 		//	body=XBlockExpression?) | {ExampleGroup.annotationInfo=current} (preamble="context"
 		//	targetOperation=[types::JvmOperation|Method]? => name=STRING? "{" members+=Member* "}") |
-		//	{ExampleTable.annotationInfo=current} ("def" => name=ID? "{" (heading=ExampleHeading rows+=ExampleRow*)? "}") |
+		//	{ExampleTable.annotationInfo=current} ("def" => name=ID? "{" ("|" columns+=ExampleColumn* rows+=ExampleRow*)? "}") |
 		//	{xtend::XtendField.annotationInfo=current} visibility=Visibility? (extension?="extension" type=JvmTypeReference
 		//	name=ValidID? | static?="static"? type=JvmTypeReference name=ValidID) ("=" initialValue=XExpression)? |
 		//	{xtend::XtendFunction.annotationInfo=current} ("def" | override?="override") visibility=Visibility? static?="static"?
@@ -474,7 +475,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//ID)? body=XBlockExpression?) | {After.annotationInfo=current} ("after" afterAll?="all"? => name=(STRING | ID)?
 		//body=XBlockExpression?) | {ExampleGroup.annotationInfo=current} (preamble="context"
 		//targetOperation=[types::JvmOperation|Method]? => name=STRING? "{" members+=Member* "}") |
-		//{ExampleTable.annotationInfo=current} ("def" => name=ID? "{" (heading=ExampleHeading rows+=ExampleRow*)? "}") |
+		//{ExampleTable.annotationInfo=current} ("def" => name=ID? "{" ("|" columns+=ExampleColumn* rows+=ExampleRow*)? "}") |
 		//{xtend::XtendField.annotationInfo=current} visibility=Visibility? (extension?="extension" type=JvmTypeReference
 		//name=ValidID? | static?="static"? type=JvmTypeReference name=ValidID) ("=" initialValue=XExpression)? |
 		//{xtend::XtendFunction.annotationInfo=current} ("def" | override?="override") visibility=Visibility? static?="static"?
@@ -500,7 +501,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//{Before.annotationInfo=current} ("before" beforeAll?="all"? => name=(STRING | ID)? body=XBlockExpression?) |
 		//{After.annotationInfo=current} ("after" afterAll?="all"? => name=(STRING | ID)? body=XBlockExpression?) |
 		//{ExampleGroup.annotationInfo=current} (preamble="context" targetOperation=[types::JvmOperation|Method]? => name=STRING?
-		//"{" members+=Member* "}") | {ExampleTable.annotationInfo=current} ("def" => name=ID? "{" (heading=ExampleHeading
+		//"{" members+=Member* "}") | {ExampleTable.annotationInfo=current} ("def" => name=ID? "{" ("|" columns+=ExampleColumn*
 		//rows+=ExampleRow*)? "}") | {xtend::XtendField.annotationInfo=current} visibility=Visibility? (extension?="extension"
 		//type=JvmTypeReference name=ValidID? | static?="static"? type=JvmTypeReference name=ValidID) ("="
 		//initialValue=XExpression)? | {xtend::XtendFunction.annotationInfo=current} ("def" | override?="override")
@@ -719,13 +720,13 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_2_4_1_5() { return cRightCurlyBracketKeyword_2_4_1_5; }
 
-		//{ExampleTable.annotationInfo=current} ("def" => name=ID? "{" (heading=ExampleHeading rows+=ExampleRow*)? "}")
+		//{ExampleTable.annotationInfo=current} ("def" => name=ID? "{" ("|" columns+=ExampleColumn* rows+=ExampleRow*)? "}")
 		public Group getGroup_2_5() { return cGroup_2_5; }
 
 		//{ExampleTable.annotationInfo=current}
 		public Action getExampleTableAnnotationInfoAction_2_5_0() { return cExampleTableAnnotationInfoAction_2_5_0; }
 
-		//"def" => name=ID? "{" (heading=ExampleHeading rows+=ExampleRow*)? "}"
+		//"def" => name=ID? "{" ("|" columns+=ExampleColumn* rows+=ExampleRow*)? "}"
 		public Group getGroup_2_5_1() { return cGroup_2_5_1; }
 
 		//"def"
@@ -740,20 +741,23 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_2_5_1_2() { return cLeftCurlyBracketKeyword_2_5_1_2; }
 
-		//(heading=ExampleHeading rows+=ExampleRow*)?
+		//("|" columns+=ExampleColumn* rows+=ExampleRow*)?
 		public Group getGroup_2_5_1_3() { return cGroup_2_5_1_3; }
 
-		//heading=ExampleHeading
-		public Assignment getHeadingAssignment_2_5_1_3_0() { return cHeadingAssignment_2_5_1_3_0; }
+		//"|"
+		public Keyword getVerticalLineKeyword_2_5_1_3_0() { return cVerticalLineKeyword_2_5_1_3_0; }
 
-		//ExampleHeading
-		public RuleCall getHeadingExampleHeadingParserRuleCall_2_5_1_3_0_0() { return cHeadingExampleHeadingParserRuleCall_2_5_1_3_0_0; }
+		//columns+=ExampleColumn*
+		public Assignment getColumnsAssignment_2_5_1_3_1() { return cColumnsAssignment_2_5_1_3_1; }
+
+		//ExampleColumn
+		public RuleCall getColumnsExampleColumnParserRuleCall_2_5_1_3_1_0() { return cColumnsExampleColumnParserRuleCall_2_5_1_3_1_0; }
 
 		//rows+=ExampleRow*
-		public Assignment getRowsAssignment_2_5_1_3_1() { return cRowsAssignment_2_5_1_3_1; }
+		public Assignment getRowsAssignment_2_5_1_3_2() { return cRowsAssignment_2_5_1_3_2; }
 
 		//ExampleRow
-		public RuleCall getRowsExampleRowParserRuleCall_2_5_1_3_1_0() { return cRowsExampleRowParserRuleCall_2_5_1_3_1_0; }
+		public RuleCall getRowsExampleRowParserRuleCall_2_5_1_3_2_0() { return cRowsExampleRowParserRuleCall_2_5_1_3_2_0; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_2_5_1_4() { return cRightCurlyBracketKeyword_2_5_1_4; }
@@ -1232,36 +1236,8 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getRightSquareBracketKeyword_4() { return cRightSquareBracketKeyword_4; }
 	}
 
-	public class ExampleHeadingElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ExampleHeading");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cVerticalLineKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Action cExampleHeadingAction_1 = (Action)cGroup.eContents().get(1);
-		private final Assignment cCellsAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cCellsExampleHeadingCellParserRuleCall_2_0 = (RuleCall)cCellsAssignment_2.eContents().get(0);
-		
-		//ExampleHeading:
-		//	"|" {ExampleHeading} cells+=ExampleHeadingCell*;
-		public ParserRule getRule() { return rule; }
-
-		//"|" {ExampleHeading} cells+=ExampleHeadingCell*
-		public Group getGroup() { return cGroup; }
-
-		//"|"
-		public Keyword getVerticalLineKeyword_0() { return cVerticalLineKeyword_0; }
-
-		//{ExampleHeading}
-		public Action getExampleHeadingAction_1() { return cExampleHeadingAction_1; }
-
-		//cells+=ExampleHeadingCell*
-		public Assignment getCellsAssignment_2() { return cCellsAssignment_2; }
-
-		//ExampleHeadingCell
-		public RuleCall getCellsExampleHeadingCellParserRuleCall_2_0() { return cCellsExampleHeadingCellParserRuleCall_2_0; }
-	}
-
-	public class ExampleHeadingCellElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ExampleHeadingCell");
+	public class ExampleColumnElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ExampleColumn");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cTypeJvmTypeReferenceParserRuleCall_0_0 = (RuleCall)cTypeAssignment_0.eContents().get(0);
@@ -1269,7 +1245,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNameValidIDParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cVerticalLineKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
-		//ExampleHeadingCell returns xtend::XtendField:
+		//ExampleColumn:
 		//	type=JvmTypeReference? name=ValidID "|";
 		public ParserRule getRule() { return rule; }
 
@@ -1339,8 +1315,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	private AssertionElements pAssertion;
 	private MatcherElements pMatcher;
 	private MatcherClosureElements pMatcherClosure;
-	private ExampleHeadingElements pExampleHeading;
-	private ExampleHeadingCellElements pExampleHeadingCell;
+	private ExampleColumnElements pExampleColumn;
 	private ExampleRowElements pExampleRow;
 	private TerminalRule tSTRING;
 	
@@ -1424,7 +1399,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//	ID)? body=XBlockExpression?) | {After.annotationInfo=current} ("after" afterAll?="all"? => name=(STRING | ID)?
 	//	body=XBlockExpression?) | {ExampleGroup.annotationInfo=current} (preamble="context"
 	//	targetOperation=[types::JvmOperation|Method]? => name=STRING? "{" members+=Member* "}") |
-	//	{ExampleTable.annotationInfo=current} ("def" => name=ID? "{" (heading=ExampleHeading rows+=ExampleRow*)? "}") |
+	//	{ExampleTable.annotationInfo=current} ("def" => name=ID? "{" ("|" columns+=ExampleColumn* rows+=ExampleRow*)? "}") |
 	//	{xtend::XtendField.annotationInfo=current} visibility=Visibility? (extension?="extension" type=JvmTypeReference
 	//	name=ValidID? | static?="static"? type=JvmTypeReference name=ValidID) ("=" initialValue=XExpression)? |
 	//	{xtend::XtendFunction.annotationInfo=current} ("def" | override?="override") visibility=Visibility? static?="static"?
@@ -1484,24 +1459,14 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		return getMatcherClosureAccess().getRule();
 	}
 
-	//ExampleHeading:
-	//	"|" {ExampleHeading} cells+=ExampleHeadingCell*;
-	public ExampleHeadingElements getExampleHeadingAccess() {
-		return (pExampleHeading != null) ? pExampleHeading : (pExampleHeading = new ExampleHeadingElements());
-	}
-	
-	public ParserRule getExampleHeadingRule() {
-		return getExampleHeadingAccess().getRule();
-	}
-
-	//ExampleHeadingCell returns xtend::XtendField:
+	//ExampleColumn:
 	//	type=JvmTypeReference? name=ValidID "|";
-	public ExampleHeadingCellElements getExampleHeadingCellAccess() {
-		return (pExampleHeadingCell != null) ? pExampleHeadingCell : (pExampleHeadingCell = new ExampleHeadingCellElements());
+	public ExampleColumnElements getExampleColumnAccess() {
+		return (pExampleColumn != null) ? pExampleColumn : (pExampleColumn = new ExampleColumnElements());
 	}
 	
-	public ParserRule getExampleHeadingCellRule() {
-		return getExampleHeadingCellAccess().getRule();
+	public ParserRule getExampleColumnRule() {
+		return getExampleColumnAccess().getRule();
 	}
 
 	//ExampleRow:

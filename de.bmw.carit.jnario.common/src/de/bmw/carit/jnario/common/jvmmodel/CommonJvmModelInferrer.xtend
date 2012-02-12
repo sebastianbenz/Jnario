@@ -8,21 +8,17 @@
 package de.bmw.carit.jnario.common.jvmmodel
 
 import com.google.inject.Inject
+import de.bmw.carit.jnario.common.ExampleColumn
 import de.bmw.carit.jnario.common.ExampleRow
-import de.bmw.carit.jnario.common.ExampleTable
 import org.eclipse.xtext.common.types.JvmVisibility
+import org.eclipse.xtext.common.types.util.TypeConformanceComputer
+import org.eclipse.xtext.common.types.util.TypeReferences
+import org.eclipse.xtext.xbase.XExpression
 import org.eclipse.xtext.xbase.compiler.StringBuilderBasedAppendable
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler
+import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.eclipse.xtext.xbase.typing.ITypeProvider
 import org.eclipse.xtext.xtend2.jvmmodel.Xtend2JvmModelInferrer
-import org.eclipse.xtext.xtend2.xtend2.XtendField
-
-import static org.eclipse.xtext.EcoreUtil2.*
-import org.eclipse.xtext.xbase.XExpression
-import org.eclipse.xtext.common.types.util.TypeConformanceComputer
-import com.google.common.base.Predicate
-import com.google.common.base.Predicates
-import org.eclipse.xtext.common.types.JvmIdentifiableElement
 
 /**
  * @author Birgit Engelmann
@@ -30,39 +26,28 @@ import org.eclipse.xtext.common.types.JvmIdentifiableElement
  */
 class CommonJvmModelInferrer extends Xtend2JvmModelInferrer {
 
-	@Inject extension ITypeProvider
-	
 	@Inject public XbaseCompiler compiler
+	@Inject extension ITypeProvider
+	@Inject extension TypeConformanceComputer
+	@Inject extension TypeReferences
+	@Inject extension JvmTypesBuilder
 	
-	@Inject extension TypeConformanceComputer typeConformanceComputer
+	def toField(ExampleColumn column){
+		val field = column.toField(column.name, column.getOrCreateType)
+		field.visibility = JvmVisibility::PUBLIC
+		return field
+	}
 	
-	def void updateTypeInExampleField(XtendField field){
-		var examples = getContainerOfType(field, typeof(ExampleTable))
-		if(examples == null || examples.heading == null){
-			return
+	def getOrCreateType(ExampleColumn column){
+		if(column.type == null){
+			if(column.cells.empty){
+				column.type = getTypeForName(typeof(Object), column)
+			}else{
+				val cellTypes = column.cells.map[type]
+				column.type = cellTypes.commonSuperType
+			}
 		}
-		val heading = examples.heading
-		if(!heading.getCells.contains(field)){
-			return	
-		}
-		if(examples.rows.empty){
-			return
-		}
-		
-		if(!examples.isValidTable()){
-			return
-		}
-		
-		val column = heading.getCells.indexOf(field)
-		
-		val cells = examples.rows.map[
-			it.cells.get(column)
-		]
-		val cellTypes = cells.map[
-			it.type
-		]
-		field.setType(cellTypes.commonSuperType)
-		field.setVisibility(JvmVisibility::PUBLIC)
+		return column.type
 	}
 	
 	def cellToAppendable(ExampleRow row, int i){
@@ -85,14 +70,5 @@ class CommonJvmModelInferrer extends Xtend2JvmModelInferrer {
 		appendable
 	}
 	
-	def isValidTable(ExampleTable table){
-		val expected = table.heading.cells.size
-		for(row : table.rows){
-			if(row.cells.size != expected){
-				return false
-			}
-		}
-		return true
-	}
 
 }

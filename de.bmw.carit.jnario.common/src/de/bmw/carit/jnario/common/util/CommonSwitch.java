@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.util.Switch;
 
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xtend2.xtend2.XtendAnnotationTarget;
+import org.eclipse.xtext.xtend2.xtend2.XtendField;
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 
 /**
@@ -82,12 +83,6 @@ public class CommonSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CommonPackage.EXAMPLE_HEADING: {
-				ExampleHeading exampleHeading = (ExampleHeading)theEObject;
-				T result = caseExampleHeading(exampleHeading);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case CommonPackage.EXAMPLE_ROW: {
 				ExampleRow exampleRow = (ExampleRow)theEObject;
 				T result = caseExampleRow(exampleRow);
@@ -108,6 +103,15 @@ public class CommonSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CommonPackage.EXAMPLE_COLUMN: {
+				ExampleColumn exampleColumn = (ExampleColumn)theEObject;
+				T result = caseExampleColumn(exampleColumn);
+				if (result == null) result = caseXtendField(exampleColumn);
+				if (result == null) result = caseXtendMember(exampleColumn);
+				if (result == null) result = caseXtendAnnotationTarget(exampleColumn);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -124,21 +128,6 @@ public class CommonSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseExampleTable(ExampleTable object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Example Heading</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Example Heading</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseExampleHeading(ExampleHeading object) {
 		return null;
 	}
 
@@ -188,6 +177,21 @@ public class CommonSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Example Column</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Example Column</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExampleColumn(ExampleColumn object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Xtend Annotation Target</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -229,6 +233,21 @@ public class CommonSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseXExpression(XExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Xtend Field</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Xtend Field</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseXtendField(XtendField object) {
 		return null;
 	}
 

@@ -39,6 +39,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 import static com.google.common.collect.Iterators.*
+import de.bmw.carit.jnario.common.ExampleColumn
 
 /**
  * @author Birgit Engelmann
@@ -171,11 +172,12 @@ class JnarioJvmModelInferrer extends CommonJvmModelInferrer {
 		var eAllContents = scenario.eAllContents;
 		var allFields = filter(eAllContents, typeof(XtendField))
 		for(field: allFields.toIterable){
-			if(field.type == null || field.type.type == null){
-				updateTypeInExampleField(field)
-			}
 			if(!allVariables.contains(field.name)){
-				field.transform(inferredJvmType)
+				if(field instanceof ExampleColumn){
+					inferredJvmType.members += (field as ExampleColumn).toField
+				}else{
+					field.transform(inferredJvmType)
+				}
 				allVariables.add(field.name)
 			}
 			
@@ -262,9 +264,9 @@ class JnarioJvmModelInferrer extends CommonJvmModelInferrer {
 		var exampleTable = 1
 		val List<JvmGenericType> exampleClasses = newArrayList()
 		for(example: scenario.examples){
-			var fields = example.heading?.getCells
+			var fields = example.columns
 			var exampleNumber = 1
-			if(!example.rows.empty && fields != null){
+			if(!example.rows.empty){
 				for(row: example.rows){
 					exampleClasses += scenario.createExampleClass(jnarioFile, row, fields, exampleTable, exampleNumber, inferredJvmType)
 					exampleNumber = exampleNumber + 1
@@ -273,9 +275,9 @@ class JnarioJvmModelInferrer extends CommonJvmModelInferrer {
 			exampleTable = exampleTable + 1
 		}
 		exampleClasses
-	}
+	} 
 	
-	def createExampleClass(Scenario scenario, JnarioFile jnarioFile, ExampleRow row, EList<XtendField> fields, int exampleTable, int exampleNumber, JvmGenericType inferredJvmType){
+	def createExampleClass(Scenario scenario, JnarioFile jnarioFile, ExampleRow row, EList<ExampleColumn> fields, int exampleTable, int exampleNumber, JvmGenericType inferredJvmType){
 		val className = jnarioFile.xtendClass.name.featureClassName + scenario.name.scenarioClassName + "ExampleTable" + exampleTable + "Example" + exampleNumber
 		
 		row.toClass(className)[
@@ -296,7 +298,7 @@ class JnarioJvmModelInferrer extends CommonJvmModelInferrer {
 		]
 	}
 
-	def generateExampleConstructor(ExampleRow row, EList<XtendField> fields, String className){
+	def generateExampleConstructor(ExampleRow row, EList<ExampleColumn> fields, String className){
 		row.toConstructor(className)[
 			visibility = JvmVisibility::PUBLIC
 			body = [

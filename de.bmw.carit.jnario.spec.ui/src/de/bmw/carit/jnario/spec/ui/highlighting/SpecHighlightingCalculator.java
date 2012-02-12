@@ -22,7 +22,6 @@ import org.eclipse.xtext.xtend2.xtend2.XtendFunction;
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 
 import de.bmw.carit.jnario.common.CommonPackage;
-import de.bmw.carit.jnario.common.ExampleHeading;
 import de.bmw.carit.jnario.common.ExampleTable;
 import de.bmw.carit.jnario.spec.spec.Example;
 import de.bmw.carit.jnario.spec.spec.ExampleGroup;
@@ -63,19 +62,18 @@ public class SpecHighlightingCalculator extends XtendHighlightingCalculator {
 					ExampleGroup subExampleGroup = (ExampleGroup) member;
 					provideHighlightingFor(subExampleGroup,acceptor);
 				}else if(member.eClass() == CommonPackage.Literals.EXAMPLE_TABLE){
-					ExampleHeading heading = ((ExampleTable)member).getHeading();
-					provideHighlightingFor(heading,acceptor);
+					provideHighlightingFor((ExampleTable)member,acceptor);
 				}
 				highlightDeprectedXtendAnnotationTarget(acceptor, member);
 			}
 		}
 	}
 
-	private void provideHighlightingFor(ExampleHeading exampleHeading, IHighlightedPositionAcceptor acceptor) {
+	private void provideHighlightingFor(ExampleTable exampleHeading, IHighlightedPositionAcceptor acceptor) {
 		if(exampleHeading == null){
 			return;
 		}
-		for (XtendField element : exampleHeading.getCells()) {
+		for (XtendField element : exampleHeading.getColumns()) {
 			INode node = NodeModelUtils.getNode(element);
 			highlightNode(node , XbaseHighlightingConfiguration.EXTENSION_METHOD_INVOCATION, acceptor);
 		}

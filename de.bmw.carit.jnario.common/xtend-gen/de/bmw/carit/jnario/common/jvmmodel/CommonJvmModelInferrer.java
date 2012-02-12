@@ -1,26 +1,25 @@
 package de.bmw.carit.jnario.common.jvmmodel;
 
 import com.google.inject.Inject;
-import de.bmw.carit.jnario.common.ExampleHeading;
+import de.bmw.carit.jnario.common.ExampleColumn;
 import de.bmw.carit.jnario.common.ExampleRow;
-import de.bmw.carit.jnario.common.ExampleTable;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.xtext.EcoreUtil2;
+import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.common.types.util.TypeConformanceComputer;
+import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.compiler.StringBuilderBasedAppendable;
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
-import org.eclipse.xtext.xbase.lib.BooleanExtensions;
+import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.eclipse.xtext.xtend2.jvmmodel.Xtend2JvmModelInferrer;
-import org.eclipse.xtext.xtend2.xtend2.XtendField;
 
 /**
  * @author Birgit Engelmann
@@ -29,71 +28,56 @@ import org.eclipse.xtext.xtend2.xtend2.XtendField;
 @SuppressWarnings("all")
 public class CommonJvmModelInferrer extends Xtend2JvmModelInferrer {
   @Inject
-  private ITypeProvider _iTypeProvider;
-  
-  @Inject
   public XbaseCompiler compiler;
   
   @Inject
-  private TypeConformanceComputer typeConformanceComputer;
+  private ITypeProvider _iTypeProvider;
   
-  public void updateTypeInExampleField(final XtendField field) {
-      ExampleTable _containerOfType = EcoreUtil2.<ExampleTable>getContainerOfType(field, de.bmw.carit.jnario.common.ExampleTable.class);
-      ExampleTable examples = _containerOfType;
-      boolean _operator_or = false;
-      boolean _operator_equals = ObjectExtensions.operator_equals(examples, null);
-      if (_operator_equals) {
-        _operator_or = true;
-      } else {
-        ExampleHeading _heading = examples.getHeading();
-        boolean _operator_equals_1 = ObjectExtensions.operator_equals(_heading, null);
-        _operator_or = BooleanExtensions.operator_or(_operator_equals, _operator_equals_1);
-      }
-      if (_operator_or) {
-        return;
-      }
-      ExampleHeading _heading_1 = examples.getHeading();
-      final ExampleHeading heading = _heading_1;
-      EList<XtendField> _cells = heading.getCells();
-      boolean _contains = _cells.contains(field);
-      boolean _operator_not = BooleanExtensions.operator_not(_contains);
-      if (_operator_not) {
-        return;
-      }
-      EList<ExampleRow> _rows = examples.getRows();
-      boolean _isEmpty = _rows.isEmpty();
-      if (_isEmpty) {
-        return;
-      }
-      boolean _isValidTable = this.isValidTable(examples);
-      boolean _operator_not_1 = BooleanExtensions.operator_not(_isValidTable);
-      if (_operator_not_1) {
-        return;
-      }
-      EList<XtendField> _cells_1 = heading.getCells();
-      int _indexOf = _cells_1.indexOf(field);
-      final int column = _indexOf;
-      EList<ExampleRow> _rows_1 = examples.getRows();
-      final Function1<ExampleRow,XExpression> _function = new Function1<ExampleRow,XExpression>() {
-          public XExpression apply(final ExampleRow it) {
-            EList<XExpression> _cells = it.getCells();
-            XExpression _get = _cells.get(column);
-            return _get;
-          }
-        };
-      List<XExpression> _map = ListExtensions.<ExampleRow, XExpression>map(_rows_1, _function);
-      final List<XExpression> cells = _map;
-      final Function1<XExpression,JvmTypeReference> _function_1 = new Function1<XExpression,JvmTypeReference>() {
-          public JvmTypeReference apply(final XExpression it) {
-            JvmTypeReference _type = CommonJvmModelInferrer.this._iTypeProvider.getType(it);
-            return _type;
-          }
-        };
-      List<JvmTypeReference> _map_1 = ListExtensions.<XExpression, JvmTypeReference>map(cells, _function_1);
-      final List<JvmTypeReference> cellTypes = _map_1;
-      JvmTypeReference _commonSuperType = this.typeConformanceComputer.getCommonSuperType(cellTypes);
-      field.setType(_commonSuperType);
+  @Inject
+  private TypeConformanceComputer _typeConformanceComputer;
+  
+  @Inject
+  private TypeReferences _typeReferences;
+  
+  @Inject
+  private JvmTypesBuilder _jvmTypesBuilder;
+  
+  public JvmField toField(final ExampleColumn column) {
+      String _name = column.getName();
+      JvmTypeReference _orCreateType = this.getOrCreateType(column);
+      JvmField _field = this._jvmTypesBuilder.toField(column, _name, _orCreateType);
+      final JvmField field = _field;
       field.setVisibility(JvmVisibility.PUBLIC);
+      return field;
+  }
+  
+  public JvmTypeReference getOrCreateType(final ExampleColumn column) {
+      JvmTypeReference _type = column.getType();
+      boolean _operator_equals = ObjectExtensions.operator_equals(_type, null);
+      if (_operator_equals) {
+        EList<XExpression> _cells = column.getCells();
+        boolean _isEmpty = _cells.isEmpty();
+        if (_isEmpty) {
+          JvmTypeReference _typeForName = this._typeReferences.getTypeForName(java.lang.Object.class, column);
+          column.setType(_typeForName);
+        } else {
+          {
+            EList<XExpression> _cells_1 = column.getCells();
+            final Function1<XExpression,JvmTypeReference> _function = new Function1<XExpression,JvmTypeReference>() {
+                public JvmTypeReference apply(final XExpression it) {
+                  JvmTypeReference _type = CommonJvmModelInferrer.this._iTypeProvider.getType(it);
+                  return _type;
+                }
+              };
+            List<JvmTypeReference> _map = ListExtensions.<XExpression, JvmTypeReference>map(_cells_1, _function);
+            final List<JvmTypeReference> cellTypes = _map;
+            JvmTypeReference _commonSuperType = this._typeConformanceComputer.getCommonSuperType(cellTypes);
+            column.setType(_commonSuperType);
+          }
+        }
+      }
+      JvmTypeReference _type_1 = column.getType();
+      return _type_1;
   }
   
   public StringBuilderBasedAppendable cellToAppendable(final ExampleRow row, final int i) {
@@ -134,22 +118,5 @@ public class CommonJvmModelInferrer extends Xtend2JvmModelInferrer {
       _xblockexpression = (appendable);
     }
     return _xblockexpression;
-  }
-  
-  public boolean isValidTable(final ExampleTable table) {
-      ExampleHeading _heading = table.getHeading();
-      EList<XtendField> _cells = _heading.getCells();
-      int _size = _cells.size();
-      final int expected = _size;
-      EList<ExampleRow> _rows = table.getRows();
-      for (final ExampleRow row : _rows) {
-        EList<XExpression> _cells_1 = row.getCells();
-        int _size_1 = _cells_1.size();
-        boolean _operator_notEquals = IntegerExtensions.operator_notEquals(_size_1, expected);
-        if (_operator_notEquals) {
-          return false;
-        }
-      }
-      return true;
   }
 }

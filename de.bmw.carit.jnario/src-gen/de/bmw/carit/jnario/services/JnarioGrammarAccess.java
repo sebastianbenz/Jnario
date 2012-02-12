@@ -736,16 +736,17 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cNameEXAMPLE_TEXTTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Assignment cHeadingAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cHeadingExampleHeadingParserRuleCall_1_0 = (RuleCall)cHeadingAssignment_1.eContents().get(0);
-		private final Assignment cRowsAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cRowsExampleRowParserRuleCall_2_0 = (RuleCall)cRowsAssignment_2.eContents().get(0);
+		private final Assignment cColumnsAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cColumnsExampleColumnParserRuleCall_1_0 = (RuleCall)cColumnsAssignment_1.eContents().get(0);
+		private final RuleCall cEXAMPLE_ROW_ENDTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final Assignment cRowsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cRowsExampleRowParserRuleCall_3_0 = (RuleCall)cRowsAssignment_3.eContents().get(0);
 		
 		//ExampleTable:
-		//	name=EXAMPLE_TEXT heading=ExampleHeading rows+=ExampleRow*;
+		//	name=EXAMPLE_TEXT columns+=ExampleColumn+ EXAMPLE_ROW_END rows+=ExampleRow*;
 		public ParserRule getRule() { return rule; }
 
-		//name=EXAMPLE_TEXT heading=ExampleHeading rows+=ExampleRow*
+		//name=EXAMPLE_TEXT columns+=ExampleColumn+ EXAMPLE_ROW_END rows+=ExampleRow*
 		public Group getGroup() { return cGroup; }
 
 		//name=EXAMPLE_TEXT
@@ -754,57 +755,38 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		//EXAMPLE_TEXT
 		public RuleCall getNameEXAMPLE_TEXTTerminalRuleCall_0_0() { return cNameEXAMPLE_TEXTTerminalRuleCall_0_0; }
 
-		//heading=ExampleHeading
-		public Assignment getHeadingAssignment_1() { return cHeadingAssignment_1; }
+		//columns+=ExampleColumn+
+		public Assignment getColumnsAssignment_1() { return cColumnsAssignment_1; }
 
-		//ExampleHeading
-		public RuleCall getHeadingExampleHeadingParserRuleCall_1_0() { return cHeadingExampleHeadingParserRuleCall_1_0; }
-
-		//rows+=ExampleRow*
-		public Assignment getRowsAssignment_2() { return cRowsAssignment_2; }
-
-		//ExampleRow
-		public RuleCall getRowsExampleRowParserRuleCall_2_0() { return cRowsExampleRowParserRuleCall_2_0; }
-	}
-
-	public class ExampleHeadingElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ExampleHeading");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cCellsAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cCellsExampleHeadingCellParserRuleCall_0_0 = (RuleCall)cCellsAssignment_0.eContents().get(0);
-		private final RuleCall cEXAMPLE_ROW_ENDTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
-		
-		//ExampleHeading:
-		//	cells+=ExampleHeadingCell+ EXAMPLE_ROW_END;
-		public ParserRule getRule() { return rule; }
-
-		//cells+=ExampleHeadingCell+ EXAMPLE_ROW_END
-		public Group getGroup() { return cGroup; }
-
-		//cells+=ExampleHeadingCell+
-		public Assignment getCellsAssignment_0() { return cCellsAssignment_0; }
-
-		//ExampleHeadingCell
-		public RuleCall getCellsExampleHeadingCellParserRuleCall_0_0() { return cCellsExampleHeadingCellParserRuleCall_0_0; }
+		//ExampleColumn
+		public RuleCall getColumnsExampleColumnParserRuleCall_1_0() { return cColumnsExampleColumnParserRuleCall_1_0; }
 
 		//EXAMPLE_ROW_END
-		public RuleCall getEXAMPLE_ROW_ENDTerminalRuleCall_1() { return cEXAMPLE_ROW_ENDTerminalRuleCall_1; }
+		public RuleCall getEXAMPLE_ROW_ENDTerminalRuleCall_2() { return cEXAMPLE_ROW_ENDTerminalRuleCall_2; }
+
+		//rows+=ExampleRow*
+		public Assignment getRowsAssignment_3() { return cRowsAssignment_3; }
+
+		//ExampleRow
+		public RuleCall getRowsExampleRowParserRuleCall_3_0() { return cRowsExampleRowParserRuleCall_3_0; }
 	}
 
-	public class ExampleHeadingCellElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ExampleHeadingCell");
+	public class ExampleColumnElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ExampleColumn");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
 		private final RuleCall cPIPETerminalRuleCall_0_0 = (RuleCall)cAlternatives_0.eContents().get(0);
 		private final RuleCall cPIPE_SPACESTerminalRuleCall_0_1 = (RuleCall)cAlternatives_0.eContents().get(1);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameValidIDParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cTypeJvmTypeReferenceParserRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameValidIDParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		
-		//ExampleHeadingCell returns xtend::XtendField:
-		//	(PIPE | PIPE_SPACES) name=ValidID;
+		//ExampleColumn:
+		//	(PIPE | PIPE_SPACES) type=JvmTypeReference? name=ValidID;
 		public ParserRule getRule() { return rule; }
 
-		//(PIPE | PIPE_SPACES) name=ValidID
+		//(PIPE | PIPE_SPACES) type=JvmTypeReference? name=ValidID
 		public Group getGroup() { return cGroup; }
 
 		//PIPE | PIPE_SPACES
@@ -816,11 +798,17 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		//PIPE_SPACES
 		public RuleCall getPIPE_SPACESTerminalRuleCall_0_1() { return cPIPE_SPACESTerminalRuleCall_0_1; }
 
+		//type=JvmTypeReference?
+		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
+
+		//JvmTypeReference
+		public RuleCall getTypeJvmTypeReferenceParserRuleCall_1_0() { return cTypeJvmTypeReferenceParserRuleCall_1_0; }
+
 		//name=ValidID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 
 		//ValidID
-		public RuleCall getNameValidIDParserRuleCall_1_0() { return cNameValidIDParserRuleCall_1_0; }
+		public RuleCall getNameValidIDParserRuleCall_2_0() { return cNameValidIDParserRuleCall_2_0; }
 	}
 
 	public class ExampleRowElements extends AbstractParserRuleElementFinder {
@@ -882,8 +870,7 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	private StepExpressionElements pStepExpression;
 	private BlockExpressionElements pBlockExpression;
 	private ExampleTableElements pExampleTable;
-	private ExampleHeadingElements pExampleHeading;
-	private ExampleHeadingCellElements pExampleHeadingCell;
+	private ExampleColumnElements pExampleColumn;
 	private ExampleRowElements pExampleRow;
 	private TerminalRule tFEATURE_TEXT;
 	private TerminalRule tBACKGROUND_TEXT;
@@ -1100,7 +1087,7 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ExampleTable:
-	//	name=EXAMPLE_TEXT heading=ExampleHeading rows+=ExampleRow*;
+	//	name=EXAMPLE_TEXT columns+=ExampleColumn+ EXAMPLE_ROW_END rows+=ExampleRow*;
 	public ExampleTableElements getExampleTableAccess() {
 		return (pExampleTable != null) ? pExampleTable : (pExampleTable = new ExampleTableElements());
 	}
@@ -1109,24 +1096,14 @@ public class JnarioGrammarAccess extends AbstractGrammarElementFinder {
 		return getExampleTableAccess().getRule();
 	}
 
-	//ExampleHeading:
-	//	cells+=ExampleHeadingCell+ EXAMPLE_ROW_END;
-	public ExampleHeadingElements getExampleHeadingAccess() {
-		return (pExampleHeading != null) ? pExampleHeading : (pExampleHeading = new ExampleHeadingElements());
+	//ExampleColumn:
+	//	(PIPE | PIPE_SPACES) type=JvmTypeReference? name=ValidID;
+	public ExampleColumnElements getExampleColumnAccess() {
+		return (pExampleColumn != null) ? pExampleColumn : (pExampleColumn = new ExampleColumnElements());
 	}
 	
-	public ParserRule getExampleHeadingRule() {
-		return getExampleHeadingAccess().getRule();
-	}
-
-	//ExampleHeadingCell returns xtend::XtendField:
-	//	(PIPE | PIPE_SPACES) name=ValidID;
-	public ExampleHeadingCellElements getExampleHeadingCellAccess() {
-		return (pExampleHeadingCell != null) ? pExampleHeadingCell : (pExampleHeadingCell = new ExampleHeadingCellElements());
-	}
-	
-	public ParserRule getExampleHeadingCellRule() {
-		return getExampleHeadingCellAccess().getRule();
+	public ParserRule getExampleColumnRule() {
+		return getExampleColumnAccess().getRule();
 	}
 
 	//ExampleRow:

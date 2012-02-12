@@ -28,26 +28,21 @@
 			</div>
 			<div class="row">
 				<div class="span6">
-					<br>
 <h4>Has initially no living cells</h4>
-<br>
 <pre class="prettyprint">
 subject.visit(worldVisitor)
 verify(worldVisitor, never).visit(any, any)</pre>
 <h4>Visits any dead cell</h4>
-<br>
 <pre class="prettyprint">
 subject.addCell(pos(0, 0), aDeadCell)
 subject.visit(worldVisitor)
 verify(worldVisitor, atLeastOnce).visit(aDeadCell, pos(0, 0))</pre>
 <h4>Visits a living cell and its dead neighbours</h4>
-<br>
 <pre class="prettyprint">
 subject.addCell(pos(0, 0), anAliveCell)
 subject.visit(worldVisitor)
 verify(worldVisitor, times(9)).visit(any, neighbourOf(pos(0, 0)))</pre>
 <h4>Visits any living cell and its dead neighbours</h4>
-<br>
 <pre class="prettyprint">
 subject.addCell(pos(0, 0), anAliveCell)
 subject.addCell(pos(1, 1), anotherAliveCell)

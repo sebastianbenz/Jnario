@@ -56,7 +56,7 @@ Member returns xtend::XtendMember:
       	'}')
 	|	{ExampleTable.annotationInfo = current} 
 		('def' =>name=ID? '{'
-			(heading = ExampleHeading
+			('|' (columns+=ExampleColumn)*
 			(rows += ExampleRow)*)?
       	'}') 
 	|	{xtend::XtendField.annotationInfo = current}	
@@ -112,11 +112,8 @@ MatcherClosure returns xbase::XExpression:
 		expression=XExpressionInClosure 
 	']';
 
-ExampleHeading: 
-	'|' {ExampleHeading} (cells+=ExampleHeadingCell )*
-;
 
-ExampleHeadingCell returns xtend::XtendField:
+ExampleColumn: 
 	type=JvmTypeReference? name=ValidID '|';
 
 ExampleRow: 

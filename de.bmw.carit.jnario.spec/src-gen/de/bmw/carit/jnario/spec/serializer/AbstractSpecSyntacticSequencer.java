@@ -19,6 +19,7 @@ public class AbstractSpecSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected SpecGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_Class_PublicKeyword_1_q;
+	protected AbstractElementAlias match_Member_VerticalLineKeyword_2_5_1_3_0_q;
 	protected AbstractElementAlias match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a;
 	protected AbstractElementAlias match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_p;
 	protected AbstractElementAlias match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q;
@@ -32,6 +33,7 @@ public class AbstractSpecSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (SpecGrammarAccess) access;
 		match_Class_PublicKeyword_1_q = new TokenAlias(false, true, grammarAccess.getClassAccess().getPublicKeyword_1());
+		match_Member_VerticalLineKeyword_2_5_1_3_0_q = new TokenAlias(false, true, grammarAccess.getMemberAccess().getVerticalLineKeyword_2_5_1_3_0());
 		match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a = new TokenAlias(true, true, grammarAccess.getXAnnotationElementValueAccess().getLeftParenthesisKeyword_7_0());
 		match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_p = new TokenAlias(true, false, grammarAccess.getXAnnotationElementValueAccess().getLeftParenthesisKeyword_7_0());
 		match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getRightParenthesisKeyword_3_2()));
@@ -63,6 +65,8 @@ public class AbstractSpecSyntacticSequencer extends AbstractSyntacticSequencer {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
 			if(match_Class_PublicKeyword_1_q.equals(syntax))
 				emit_Class_PublicKeyword_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_Member_VerticalLineKeyword_2_5_1_3_0_q.equals(syntax))
+				emit_Member_VerticalLineKeyword_2_5_1_3_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a.equals(syntax))
 				emit_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_p.equals(syntax))
@@ -88,6 +92,14 @@ public class AbstractSpecSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     'public'?
 	 */
 	protected void emit_Class_PublicKeyword_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     '|'?
+	 */
+	protected void emit_Member_VerticalLineKeyword_2_5_1_3_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

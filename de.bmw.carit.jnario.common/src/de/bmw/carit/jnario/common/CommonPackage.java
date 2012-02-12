@@ -100,22 +100,22 @@ public interface CommonPackage extends EPackage {
 	int EXAMPLE_TABLE__NAME = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Heading</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_TABLE__HEADING = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Rows</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_TABLE__ROWS = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 2;
+	int EXAMPLE_TABLE__ROWS = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Columns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_TABLE__COLUMNS = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Example Table</em>' class.
@@ -127,43 +127,6 @@ public interface CommonPackage extends EPackage {
 	int EXAMPLE_TABLE_FEATURE_COUNT = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 3;
 
 	/**
-	 * The meta object id for the '{@link de.bmw.carit.jnario.common.impl.ExampleHeadingImpl <em>Example Heading</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.bmw.carit.jnario.common.impl.ExampleHeadingImpl
-	 * @see de.bmw.carit.jnario.common.impl.CommonPackageImpl#getExampleHeading()
-	 * @generated
-	 */
-	int EXAMPLE_HEADING = 1;
-
-	/**
-	 * The feature id for the '<em><b>Cells</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_HEADING__CELLS = 0;
-
-	/**
-	 * The feature id for the '<em><b>Table</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_HEADING__TABLE = 1;
-
-	/**
-	 * The number of structural features of the '<em>Example Heading</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_HEADING_FEATURE_COUNT = 2;
-
-	/**
 	 * The meta object id for the '{@link de.bmw.carit.jnario.common.impl.ExampleRowImpl <em>Example Row</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -171,7 +134,7 @@ public interface CommonPackage extends EPackage {
 	 * @see de.bmw.carit.jnario.common.impl.CommonPackageImpl#getExampleRow()
 	 * @generated
 	 */
-	int EXAMPLE_ROW = 2;
+	int EXAMPLE_ROW = 1;
 
 	/**
 	 * The feature id for the '<em><b>Cells</b></em>' containment reference list.
@@ -208,7 +171,7 @@ public interface CommonPackage extends EPackage {
 	 * @see de.bmw.carit.jnario.common.impl.CommonPackageImpl#getAssertion()
 	 * @generated
 	 */
-	int ASSERTION = 3;
+	int ASSERTION = 2;
 
 	/**
 	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -237,7 +200,7 @@ public interface CommonPackage extends EPackage {
 	 * @see de.bmw.carit.jnario.common.impl.CommonPackageImpl#getMatcher()
 	 * @generated
 	 */
-	int MATCHER = 4;
+	int MATCHER = 3;
 
 	/**
 	 * The feature id for the '<em><b>Closure</b></em>' containment reference.
@@ -256,6 +219,116 @@ public interface CommonPackage extends EPackage {
 	 * @ordered
 	 */
 	int MATCHER_FEATURE_COUNT = XbasePackage.XEXPRESSION_FEATURE_COUNT + 1;
+
+
+	/**
+	 * The meta object id for the '{@link de.bmw.carit.jnario.common.impl.ExampleColumnImpl <em>Example Column</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.bmw.carit.jnario.common.impl.ExampleColumnImpl
+	 * @see de.bmw.carit.jnario.common.impl.CommonPackageImpl#getExampleColumn()
+	 * @generated
+	 */
+	int EXAMPLE_COLUMN = 4;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_COLUMN__ANNOTATIONS = Xtend2Package.XTEND_FIELD__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_COLUMN__ANNOTATION_INFO = Xtend2Package.XTEND_FIELD__ANNOTATION_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_COLUMN__NAME = Xtend2Package.XTEND_FIELD__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_COLUMN__TYPE = Xtend2Package.XTEND_FIELD__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Extension</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_COLUMN__EXTENSION = Xtend2Package.XTEND_FIELD__EXTENSION;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_COLUMN__VISIBILITY = Xtend2Package.XTEND_FIELD__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Static</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_COLUMN__STATIC = Xtend2Package.XTEND_FIELD__STATIC;
+
+	/**
+	 * The feature id for the '<em><b>Initial Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_COLUMN__INITIAL_VALUE = Xtend2Package.XTEND_FIELD__INITIAL_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>Table</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_COLUMN__TABLE = Xtend2Package.XTEND_FIELD_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Cells</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_COLUMN__CELLS = Xtend2Package.XTEND_FIELD_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Example Column</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_COLUMN_FEATURE_COUNT = Xtend2Package.XTEND_FIELD_FEATURE_COUNT + 2;
 
 
 	/**
@@ -280,17 +353,6 @@ public interface CommonPackage extends EPackage {
 	EAttribute getExampleTable_Name();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.common.ExampleTable#getHeading <em>Heading</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Heading</em>'.
-	 * @see de.bmw.carit.jnario.common.ExampleTable#getHeading()
-	 * @see #getExampleTable()
-	 * @generated
-	 */
-	EReference getExampleTable_Heading();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.common.ExampleTable#getRows <em>Rows</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -302,36 +364,15 @@ public interface CommonPackage extends EPackage {
 	EReference getExampleTable_Rows();
 
 	/**
-	 * Returns the meta object for class '{@link de.bmw.carit.jnario.common.ExampleHeading <em>Example Heading</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.common.ExampleTable#getColumns <em>Columns</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Example Heading</em>'.
-	 * @see de.bmw.carit.jnario.common.ExampleHeading
+	 * @return the meta object for the containment reference list '<em>Columns</em>'.
+	 * @see de.bmw.carit.jnario.common.ExampleTable#getColumns()
+	 * @see #getExampleTable()
 	 * @generated
 	 */
-	EClass getExampleHeading();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link de.bmw.carit.jnario.common.ExampleHeading#getCells <em>Cells</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Cells</em>'.
-	 * @see de.bmw.carit.jnario.common.ExampleHeading#getCells()
-	 * @see #getExampleHeading()
-	 * @generated
-	 */
-	EReference getExampleHeading_Cells();
-
-	/**
-	 * Returns the meta object for the container reference '{@link de.bmw.carit.jnario.common.ExampleHeading#getTable <em>Table</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Table</em>'.
-	 * @see de.bmw.carit.jnario.common.ExampleHeading#getTable()
-	 * @see #getExampleHeading()
-	 * @generated
-	 */
-	EReference getExampleHeading_Table();
+	EReference getExampleTable_Columns();
 
 	/**
 	 * Returns the meta object for class '{@link de.bmw.carit.jnario.common.ExampleRow <em>Example Row</em>}'.
@@ -408,6 +449,38 @@ public interface CommonPackage extends EPackage {
 	EReference getMatcher_Closure();
 
 	/**
+	 * Returns the meta object for class '{@link de.bmw.carit.jnario.common.ExampleColumn <em>Example Column</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Example Column</em>'.
+	 * @see de.bmw.carit.jnario.common.ExampleColumn
+	 * @generated
+	 */
+	EClass getExampleColumn();
+
+	/**
+	 * Returns the meta object for the container reference '{@link de.bmw.carit.jnario.common.ExampleColumn#getTable <em>Table</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Table</em>'.
+	 * @see de.bmw.carit.jnario.common.ExampleColumn#getTable()
+	 * @see #getExampleColumn()
+	 * @generated
+	 */
+	EReference getExampleColumn_Table();
+
+	/**
+	 * Returns the meta object for the reference list '{@link de.bmw.carit.jnario.common.ExampleColumn#getCells <em>Cells</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Cells</em>'.
+	 * @see de.bmw.carit.jnario.common.ExampleColumn#getCells()
+	 * @see #getExampleColumn()
+	 * @generated
+	 */
+	EReference getExampleColumn_Cells();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -448,14 +521,6 @@ public interface CommonPackage extends EPackage {
 		EAttribute EXAMPLE_TABLE__NAME = eINSTANCE.getExampleTable_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Heading</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference EXAMPLE_TABLE__HEADING = eINSTANCE.getExampleTable_Heading();
-
-		/**
 		 * The meta object literal for the '<em><b>Rows</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -464,30 +529,12 @@ public interface CommonPackage extends EPackage {
 		EReference EXAMPLE_TABLE__ROWS = eINSTANCE.getExampleTable_Rows();
 
 		/**
-		 * The meta object literal for the '{@link de.bmw.carit.jnario.common.impl.ExampleHeadingImpl <em>Example Heading</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.bmw.carit.jnario.common.impl.ExampleHeadingImpl
-		 * @see de.bmw.carit.jnario.common.impl.CommonPackageImpl#getExampleHeading()
-		 * @generated
-		 */
-		EClass EXAMPLE_HEADING = eINSTANCE.getExampleHeading();
-
-		/**
-		 * The meta object literal for the '<em><b>Cells</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Columns</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EXAMPLE_HEADING__CELLS = eINSTANCE.getExampleHeading_Cells();
-
-		/**
-		 * The meta object literal for the '<em><b>Table</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference EXAMPLE_HEADING__TABLE = eINSTANCE.getExampleHeading_Table();
+		EReference EXAMPLE_TABLE__COLUMNS = eINSTANCE.getExampleTable_Columns();
 
 		/**
 		 * The meta object literal for the '{@link de.bmw.carit.jnario.common.impl.ExampleRowImpl <em>Example Row</em>}' class.
@@ -550,6 +597,32 @@ public interface CommonPackage extends EPackage {
 		 * @generated
 		 */
 		EReference MATCHER__CLOSURE = eINSTANCE.getMatcher_Closure();
+
+		/**
+		 * The meta object literal for the '{@link de.bmw.carit.jnario.common.impl.ExampleColumnImpl <em>Example Column</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.bmw.carit.jnario.common.impl.ExampleColumnImpl
+		 * @see de.bmw.carit.jnario.common.impl.CommonPackageImpl#getExampleColumn()
+		 * @generated
+		 */
+		EClass EXAMPLE_COLUMN = eINSTANCE.getExampleColumn();
+
+		/**
+		 * The meta object literal for the '<em><b>Table</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXAMPLE_COLUMN__TABLE = eINSTANCE.getExampleColumn_Table();
+
+		/**
+		 * The meta object literal for the '<em><b>Cells</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXAMPLE_COLUMN__CELLS = eINSTANCE.getExampleColumn_Cells();
 
 	}
 

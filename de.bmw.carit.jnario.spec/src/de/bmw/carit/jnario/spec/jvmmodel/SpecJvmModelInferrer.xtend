@@ -177,28 +177,22 @@ class SpecJvmModelInferrer extends CommonJvmModelInferrer {
 			
 			specType.members += element.toField(element.toFieldName, type)
 
-			if(element.heading == null){
-				return	
-			} 
-			
 			val constructor = element.toConstructor(exampleTableType.simpleName)[]
 			exampleTableType.members += constructor
 			val assignments = <String>newArrayList()
 			
-			element.heading.getCells.forEach[cell |
-				updateTypeInExampleField(cell)
-				exampleTableType.members += cell.toField(cell.name, cell.type)
-				
+			element.columns.forEach[column |
+				exampleTableType.members += column.toField				
 				val jvmParam = typesFactory.createJvmFormalParameter();
-				jvmParam.name = cell.name
-				jvmParam.setParameterType(cloneWithProxies(cell.type));
+				jvmParam.name = column.name
+				jvmParam.setParameterType(cloneWithProxies(column.type));
 				constructor.parameters += jvmParam
 				associate(element, jvmParam); 
-				assignments += "this." + cell.name + " = " + cell.name + ";" 
+				assignments += "this." + column.name + " = " + column.name + ";" 
 				
-				exampleTableType.members += element.toMethod("get" + cell.name.toFirstUpper, cell.type)[
+				exampleTableType.members += element.toMethod("get" + column.name.toFirstUpper, column.type)[
 					setBody[ImportManager im |
-						"return " + cell.name + ";"
+						"return " + column.name + ";"
 					]
 				]
 			]

@@ -2,9 +2,9 @@ package de.bmw.carit.jnario.common.validation;
 
 import java.util.List;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.common.types.util.TypeConformanceComputer;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.validation.AbstractDeclarativeValidator;
 import org.eclipse.xtext.validation.Check;
@@ -16,7 +16,7 @@ import com.google.inject.Inject;
 
 import de.bmw.carit.jnario.common.Assertion;
 import de.bmw.carit.jnario.common.CommonPackage;
-import de.bmw.carit.jnario.common.ExampleHeading;
+import de.bmw.carit.jnario.common.ExampleColumn;
 import de.bmw.carit.jnario.common.ExampleRow;
 import de.bmw.carit.jnario.common.ExampleTable;
 
@@ -25,6 +25,9 @@ public class CommonJavaValidator extends AbstractDeclarativeValidator {
 	private static final String ILLEGAL_ASSERTION_EXPRESSION = "invalid type: expecting boolean";
 	@Inject 
 	private ITypeProvider typeProvider;
+	
+	@Inject
+	private TypeConformanceComputer conformanceComputer;
 	
 	@Inject 
 	private TypeReferences typeReferences;
@@ -49,30 +52,28 @@ public class CommonJavaValidator extends AbstractDeclarativeValidator {
 		for (XExpression cell : row.getCells()) {
 			JvmTypeReference actualType = typeProvider.getType(cell);
 			if(typeReferences.is(actualType, Void.TYPE)){
-				error("must not be void", cell, null, 0);
+				error("Expression must not be void", cell, null, 0);
+			}
+		}
+	}
+	
+	@Check
+	public void checkExampleTableCellsConformToColumType(ExampleTable exampleTable){
+		for (ExampleColumn column : exampleTable.getColumns()) {
+			for (XExpression cell : column.getCells()) {
+				JvmTypeReference cellType = typeProvider.getType(cell);
+				if(!conformanceComputer.isConformant(column.getType(), cellType)){
+					error("Incompatible types. Expected " + cellType.getIdentifier() + " but was " + column.getType().getIdentifier(), cell, null, 0);
+				}
 			}
 		}
 	}
 	
 	@Check
 	public void checkExampleHeaderAndRowsHaveSameColumnNumber(ExampleTable exampleTable){
-		ExampleHeading heading = exampleTable.getHeading();
-		EList<ExampleRow> rows = exampleTable.getRows();
-		int headingColumnNumber = heading.getCells().size();
-		boolean rowsHaveSameNumberOfColumns = doRowsHaveSameNumberOfColumns(rows, headingColumnNumber);
-
-		if(!rowsHaveSameNumberOfColumns){
-			error("Examples rows have to have the same number of columns", CommonPackage.Literals.EXAMPLE_TABLE__HEADING);
+		if(!exampleTable.isValid()){
+			error("Examples rows have to have the same number of columns", null);
 		}
-	}
-
-	private boolean doRowsHaveSameNumberOfColumns(EList<ExampleRow> rows, int headingColumnNumber){
-		for(ExampleRow row: rows){
-			if(row.getCells().size() != headingColumnNumber){			
-				return false;
-			}
-		}
-		return true;
 	}
 
 }

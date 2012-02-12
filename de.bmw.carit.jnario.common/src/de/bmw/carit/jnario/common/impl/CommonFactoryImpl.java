@@ -61,10 +61,10 @@ public class CommonFactoryImpl extends EFactoryImpl implements CommonFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case CommonPackage.EXAMPLE_TABLE: return createExampleTable();
-			case CommonPackage.EXAMPLE_HEADING: return createExampleHeading();
 			case CommonPackage.EXAMPLE_ROW: return createExampleRow();
 			case CommonPackage.ASSERTION: return createAssertion();
 			case CommonPackage.MATCHER: return createMatcher();
+			case CommonPackage.EXAMPLE_COLUMN: return createExampleColumn();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -78,16 +78,6 @@ public class CommonFactoryImpl extends EFactoryImpl implements CommonFactory {
 	public ExampleTable createExampleTable() {
 		ExampleTableImpl exampleTable = new ExampleTableImpl();
 		return exampleTable;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ExampleHeading createExampleHeading() {
-		ExampleHeadingImpl exampleHeading = new ExampleHeadingImpl();
-		return exampleHeading;
 	}
 
 	/**
@@ -118,6 +108,16 @@ public class CommonFactoryImpl extends EFactoryImpl implements CommonFactory {
 	public Matcher createMatcher() {
 		MatcherImpl matcher = new MatcherImpl();
 		return matcher;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExampleColumn createExampleColumn() {
+		ExampleColumnImpl exampleColumn = new ExampleColumnImpl();
+		return exampleColumn;
 	}
 
 	/**

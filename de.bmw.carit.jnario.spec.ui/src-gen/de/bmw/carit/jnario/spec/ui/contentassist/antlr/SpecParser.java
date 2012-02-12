@@ -131,8 +131,7 @@ public class SpecParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMatcherClosureAccess().getGroup(), "rule__MatcherClosure__Group__0");
 					put(grammarAccess.getMatcherClosureAccess().getGroup_2(), "rule__MatcherClosure__Group_2__0");
 					put(grammarAccess.getMatcherClosureAccess().getGroup_2_0(), "rule__MatcherClosure__Group_2_0__0");
-					put(grammarAccess.getExampleHeadingAccess().getGroup(), "rule__ExampleHeading__Group__0");
-					put(grammarAccess.getExampleHeadingCellAccess().getGroup(), "rule__ExampleHeadingCell__Group__0");
+					put(grammarAccess.getExampleColumnAccess().getGroup(), "rule__ExampleColumn__Group__0");
 					put(grammarAccess.getExampleRowAccess().getGroup(), "rule__ExampleRow__Group__0");
 					put(grammarAccess.getExampleRowAccess().getGroup_2(), "rule__ExampleRow__Group_2__0");
 					put(grammarAccess.getFileAccess().getGroup(), "rule__File__Group__0");
@@ -332,8 +331,8 @@ public class SpecParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMemberAccess().getNameAssignment_2_4_1_2(), "rule__Member__NameAssignment_2_4_1_2");
 					put(grammarAccess.getMemberAccess().getMembersAssignment_2_4_1_4(), "rule__Member__MembersAssignment_2_4_1_4");
 					put(grammarAccess.getMemberAccess().getNameAssignment_2_5_1_1(), "rule__Member__NameAssignment_2_5_1_1");
-					put(grammarAccess.getMemberAccess().getHeadingAssignment_2_5_1_3_0(), "rule__Member__HeadingAssignment_2_5_1_3_0");
-					put(grammarAccess.getMemberAccess().getRowsAssignment_2_5_1_3_1(), "rule__Member__RowsAssignment_2_5_1_3_1");
+					put(grammarAccess.getMemberAccess().getColumnsAssignment_2_5_1_3_1(), "rule__Member__ColumnsAssignment_2_5_1_3_1");
+					put(grammarAccess.getMemberAccess().getRowsAssignment_2_5_1_3_2(), "rule__Member__RowsAssignment_2_5_1_3_2");
 					put(grammarAccess.getMemberAccess().getVisibilityAssignment_2_6_1(), "rule__Member__VisibilityAssignment_2_6_1");
 					put(grammarAccess.getMemberAccess().getExtensionAssignment_2_6_2_0_0(), "rule__Member__ExtensionAssignment_2_6_2_0_0");
 					put(grammarAccess.getMemberAccess().getTypeAssignment_2_6_2_0_1(), "rule__Member__TypeAssignment_2_6_2_0_1");
@@ -367,9 +366,8 @@ public class SpecParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMatcherClosureAccess().getDeclaredFormalParametersAssignment_2_0_0(), "rule__MatcherClosure__DeclaredFormalParametersAssignment_2_0_0");
 					put(grammarAccess.getMatcherClosureAccess().getExplicitSyntaxAssignment_2_0_1(), "rule__MatcherClosure__ExplicitSyntaxAssignment_2_0_1");
 					put(grammarAccess.getMatcherClosureAccess().getExpressionAssignment_3(), "rule__MatcherClosure__ExpressionAssignment_3");
-					put(grammarAccess.getExampleHeadingAccess().getCellsAssignment_2(), "rule__ExampleHeading__CellsAssignment_2");
-					put(grammarAccess.getExampleHeadingCellAccess().getTypeAssignment_0(), "rule__ExampleHeadingCell__TypeAssignment_0");
-					put(grammarAccess.getExampleHeadingCellAccess().getNameAssignment_1(), "rule__ExampleHeadingCell__NameAssignment_1");
+					put(grammarAccess.getExampleColumnAccess().getTypeAssignment_0(), "rule__ExampleColumn__TypeAssignment_0");
+					put(grammarAccess.getExampleColumnAccess().getNameAssignment_1(), "rule__ExampleColumn__NameAssignment_1");
 					put(grammarAccess.getExampleRowAccess().getCellsAssignment_2_0(), "rule__ExampleRow__CellsAssignment_2_0");
 					put(grammarAccess.getFileAccess().getPackageAssignment_0_1(), "rule__File__PackageAssignment_0_1");
 					put(grammarAccess.getFileAccess().getImportsAssignment_1(), "rule__File__ImportsAssignment_1");

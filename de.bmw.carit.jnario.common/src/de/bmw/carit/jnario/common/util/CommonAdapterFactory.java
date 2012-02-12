@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xtend2.xtend2.XtendAnnotationTarget;
+import org.eclipse.xtext.xtend2.xtend2.XtendField;
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 
 /**
@@ -80,10 +81,6 @@ public class CommonAdapterFactory extends AdapterFactoryImpl {
 				return createExampleTableAdapter();
 			}
 			@Override
-			public Adapter caseExampleHeading(ExampleHeading object) {
-				return createExampleHeadingAdapter();
-			}
-			@Override
 			public Adapter caseExampleRow(ExampleRow object) {
 				return createExampleRowAdapter();
 			}
@@ -96,6 +93,10 @@ public class CommonAdapterFactory extends AdapterFactoryImpl {
 				return createMatcherAdapter();
 			}
 			@Override
+			public Adapter caseExampleColumn(ExampleColumn object) {
+				return createExampleColumnAdapter();
+			}
+			@Override
 			public Adapter caseXtendAnnotationTarget(XtendAnnotationTarget object) {
 				return createXtendAnnotationTargetAdapter();
 			}
@@ -106,6 +107,10 @@ public class CommonAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseXExpression(XExpression object) {
 				return createXExpressionAdapter();
+			}
+			@Override
+			public Adapter caseXtendField(XtendField object) {
+				return createXtendFieldAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -138,20 +143,6 @@ public class CommonAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createExampleTableAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.common.ExampleHeading <em>Example Heading</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.bmw.carit.jnario.common.ExampleHeading
-	 * @generated
-	 */
-	public Adapter createExampleHeadingAdapter() {
 		return null;
 	}
 
@@ -198,6 +189,20 @@ public class CommonAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link de.bmw.carit.jnario.common.ExampleColumn <em>Example Column</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.bmw.carit.jnario.common.ExampleColumn
+	 * @generated
+	 */
+	public Adapter createExampleColumnAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.xtext.xtend2.xtend2.XtendAnnotationTarget <em>Xtend Annotation Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -236,6 +241,20 @@ public class CommonAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createXExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.xtext.xtend2.xtend2.XtendField <em>Xtend Field</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.xtext.xtend2.xtend2.XtendField
+	 * @generated
+	 */
+	public Adapter createXtendFieldAdapter() {
 		return null;
 	}
 

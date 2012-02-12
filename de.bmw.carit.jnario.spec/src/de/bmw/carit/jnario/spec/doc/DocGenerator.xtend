@@ -145,11 +145,10 @@ class DocGenerator implements IGenerator {
 	
 	def dispatch generate(ExampleTable table, int level)'''
 		<h4>«table.toFieldName.toFirstUpper»</h4>
-		«IF table.heading != null»
 		<table class="table table-striped table-bordered table-condensed">
 			<thead>
 				<tr>
-				«FOR headingCell : table.heading.cells»
+				«FOR headingCell : table.columns»
 					<th>«headingCell.name»</th>
 				«ENDFOR»
 				</tr>
@@ -164,7 +163,6 @@ class DocGenerator implements IGenerator {
 		  	«ENDFOR»
 			</tbody>
 		</table>
-		«ENDIF»
 	'''
 	
 	def dispatch generate(ExampleGroup exampleGroup, int level)'''

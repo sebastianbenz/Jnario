@@ -1,7 +1,7 @@
 package de.bmw.carit.jnario.spec.doc;
 
 import com.google.inject.Inject;
-import de.bmw.carit.jnario.common.ExampleHeading;
+import de.bmw.carit.jnario.common.ExampleColumn;
 import de.bmw.carit.jnario.common.ExampleRow;
 import de.bmw.carit.jnario.common.ExampleTable;
 import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder;
@@ -37,7 +37,6 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.eclipse.xtext.xtend2.xtend2.XtendClass;
-import org.eclipse.xtext.xtend2.xtend2.XtendField;
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 import org.pegdown.PegDownProcessor;
 
@@ -341,69 +340,62 @@ public class DocGenerator implements IGenerator {
     _builder.append(_firstUpper, "");
     _builder.append("</h4>");
     _builder.newLineIfNotEmpty();
+    _builder.append("<table class=\"table table-striped table-bordered table-condensed\">");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<thead>");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("<tr>");
+    _builder.newLine();
     {
-      ExampleHeading _heading = table.getHeading();
-      boolean _operator_notEquals = ObjectExtensions.operator_notEquals(_heading, null);
-      if (_operator_notEquals) {
-        _builder.append("<table class=\"table table-striped table-bordered table-condensed\">");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("<thead>");
-        _builder.newLine();
+      EList<ExampleColumn> _columns = table.getColumns();
+      for(final ExampleColumn headingCell : _columns) {
         _builder.append("\t\t");
+        _builder.append("<th>");
+        String _name = headingCell.getName();
+        _builder.append(_name, "		");
+        _builder.append("</th>");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("\t\t");
+    _builder.append("</tr>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("</thead>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<tbody>");
+    _builder.newLine();
+    {
+      EList<ExampleRow> _rows = table.getRows();
+      for(final ExampleRow row : _rows) {
+        _builder.append("\t");
         _builder.append("<tr>");
         _builder.newLine();
         {
-          ExampleHeading _heading_1 = table.getHeading();
-          EList<XtendField> _cells = _heading_1.getCells();
-          for(final XtendField headingCell : _cells) {
-            _builder.append("\t\t");
-            _builder.append("<th>");
-            String _name = headingCell.getName();
-            _builder.append(_name, "		");
-            _builder.append("</th>");
+          EList<XExpression> _cells = row.getCells();
+          for(final XExpression cell : _cells) {
+            _builder.append("\t");
+            _builder.append("\t");
+            _builder.append("<td>");
+            String _xtendCode = this.toXtendCode(cell);
+            _builder.append(_xtendCode, "		");
+            _builder.append("</td>");
             _builder.newLineIfNotEmpty();
           }
         }
-        _builder.append("\t\t");
+        _builder.append("\t");
         _builder.append("</tr>");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("</thead>");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("<tbody>");
-        _builder.newLine();
-        {
-          EList<ExampleRow> _rows = table.getRows();
-          for(final ExampleRow row : _rows) {
-            _builder.append("\t");
-            _builder.append("<tr>");
-            _builder.newLine();
-            {
-              EList<XExpression> _cells_1 = row.getCells();
-              for(final XExpression cell : _cells_1) {
-                _builder.append("\t");
-                _builder.append("\t");
-                _builder.append("<td>");
-                String _xtendCode = this.toXtendCode(cell);
-                _builder.append(_xtendCode, "		");
-                _builder.append("</td>");
-                _builder.newLineIfNotEmpty();
-              }
-            }
-            _builder.append("\t");
-            _builder.append("</tr>");
-            _builder.newLine();
-          }
-        }
-        _builder.append("\t");
-        _builder.append("</tbody>");
-        _builder.newLine();
-        _builder.append("</table>");
         _builder.newLine();
       }
     }
+    _builder.append("\t");
+    _builder.append("</tbody>");
+    _builder.newLine();
+    _builder.append("</table>");
+    _builder.newLine();
     return _builder;
   }
   

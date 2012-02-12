@@ -41,29 +41,29 @@ newArrayList("jnario", "java").each.should.startWith("j")
 <pre class="prettyprint">
 val x = 0  
 val y = 1
-assertErrorMessageFor[assert x == 1 && y == 0].is('''
+errorMessage[assert x == 1 && y == 0].is('''
   Expected x == 1 && y == 0 but:
        x == 1 is false
        x is 0
        y == 0 is false
-       y is 1 
-''')</pre>
+       y is 1'''
+  )</pre>
 <h4>Implicit subject creation</h4>
 <p><em>Jnario Specs</em> helps you write less boilerplate code in your specifications. In the following example, <code>describe Calculator</code> references the existing Java type <code>Calculator</code>. Using this information Jnario will automatically create and instantiate a field <code>subject</code>, which you can use in your specification. It is even possible to use <a href="http://code.google.com/p/google-guice/">Google Guice</a> to instantiate your subjects.</p>
 <pre class="prettyprint">
-val exampleSpec = '''
-  package calculator
-  
-  describe Calculator {
+'''
+package bootstrap
 
-    it "should automatically create an instance of Calculator called subject"{
-      subject.should.not.be(null)
-      subject.should.be(typeof(Calculator))
-    }
+import java.util.ArrayList
 
+describe ArrayList{
+
+  it "should automatically create an instance of ArrayList called subject"{
+    subject.should.be(typeof(ArrayList))
   }
-  '''
-assertThat(execute(exampleSpec), is(successful))</pre>
+
+}
+'''.executesSuccessfully</pre>
 				</div>
 			</div>
 		</div> <!-- /content -->

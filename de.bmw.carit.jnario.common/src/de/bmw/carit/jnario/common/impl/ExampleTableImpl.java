@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.xtext.xtend2.xtend2.impl.XtendMemberImpl;
 
 import de.bmw.carit.jnario.common.CommonPackage;
-import de.bmw.carit.jnario.common.ExampleHeading;
+import de.bmw.carit.jnario.common.ExampleColumn;
 import de.bmw.carit.jnario.common.ExampleRow;
 import de.bmw.carit.jnario.common.ExampleTable;
 
@@ -31,8 +31,8 @@ import de.bmw.carit.jnario.common.ExampleTable;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.bmw.carit.jnario.common.impl.ExampleTableImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.bmw.carit.jnario.common.impl.ExampleTableImpl#getHeading <em>Heading</em>}</li>
  *   <li>{@link de.bmw.carit.jnario.common.impl.ExampleTableImpl#getRows <em>Rows</em>}</li>
+ *   <li>{@link de.bmw.carit.jnario.common.impl.ExampleTableImpl#getColumns <em>Columns</em>}</li>
  * </ul>
  * </p>
  *
@@ -60,16 +60,6 @@ public class ExampleTableImpl extends XtendMemberImpl implements ExampleTable {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getHeading() <em>Heading</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getHeading()
-	 * @generated
-	 * @ordered
-	 */
-	protected ExampleHeading heading;
-
-	/**
 	 * The cached value of the '{@link #getRows() <em>Rows</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -78,6 +68,16 @@ public class ExampleTableImpl extends XtendMemberImpl implements ExampleTable {
 	 * @ordered
 	 */
 	protected EList<ExampleRow> rows;
+
+	/**
+	 * The cached value of the '{@link #getColumns() <em>Columns</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getColumns()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ExampleColumn> columns;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -124,49 +124,6 @@ public class ExampleTableImpl extends XtendMemberImpl implements ExampleTable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExampleHeading getHeading() {
-		return heading;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetHeading(ExampleHeading newHeading, NotificationChain msgs) {
-		ExampleHeading oldHeading = heading;
-		heading = newHeading;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CommonPackage.EXAMPLE_TABLE__HEADING, oldHeading, newHeading);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setHeading(ExampleHeading newHeading) {
-		if (newHeading != heading) {
-			NotificationChain msgs = null;
-			if (heading != null)
-				msgs = ((InternalEObject)heading).eInverseRemove(this, CommonPackage.EXAMPLE_HEADING__TABLE, ExampleHeading.class, msgs);
-			if (newHeading != null)
-				msgs = ((InternalEObject)newHeading).eInverseAdd(this, CommonPackage.EXAMPLE_HEADING__TABLE, ExampleHeading.class, msgs);
-			msgs = basicSetHeading(newHeading, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.EXAMPLE_TABLE__HEADING, newHeading, newHeading));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<ExampleRow> getRows() {
 		if (rows == null) {
 			rows = new EObjectContainmentWithInverseEList<ExampleRow>(ExampleRow.class, this, CommonPackage.EXAMPLE_TABLE__ROWS, CommonPackage.EXAMPLE_ROW__TABLE);
@@ -179,16 +136,41 @@ public class ExampleTableImpl extends XtendMemberImpl implements ExampleTable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<ExampleColumn> getColumns() {
+		if (columns == null) {
+			columns = new EObjectContainmentWithInverseEList<ExampleColumn>(ExampleColumn.class, this, CommonPackage.EXAMPLE_TABLE__COLUMNS, CommonPackage.EXAMPLE_COLUMN__TABLE);
+		}
+		return columns;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean isValid() {
+		int columnCount = getColumns().size();
+		for (ExampleRow row : getRows()) {
+			if(row.getCells().size() != columnCount){
+				return false;
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case CommonPackage.EXAMPLE_TABLE__HEADING:
-				if (heading != null)
-					msgs = ((InternalEObject)heading).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CommonPackage.EXAMPLE_TABLE__HEADING, null, msgs);
-				return basicSetHeading((ExampleHeading)otherEnd, msgs);
 			case CommonPackage.EXAMPLE_TABLE__ROWS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRows()).basicAdd(otherEnd, msgs);
+			case CommonPackage.EXAMPLE_TABLE__COLUMNS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getColumns()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -201,10 +183,10 @@ public class ExampleTableImpl extends XtendMemberImpl implements ExampleTable {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case CommonPackage.EXAMPLE_TABLE__HEADING:
-				return basicSetHeading(null, msgs);
 			case CommonPackage.EXAMPLE_TABLE__ROWS:
 				return ((InternalEList<?>)getRows()).basicRemove(otherEnd, msgs);
+			case CommonPackage.EXAMPLE_TABLE__COLUMNS:
+				return ((InternalEList<?>)getColumns()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -219,10 +201,10 @@ public class ExampleTableImpl extends XtendMemberImpl implements ExampleTable {
 		switch (featureID) {
 			case CommonPackage.EXAMPLE_TABLE__NAME:
 				return getName();
-			case CommonPackage.EXAMPLE_TABLE__HEADING:
-				return getHeading();
 			case CommonPackage.EXAMPLE_TABLE__ROWS:
 				return getRows();
+			case CommonPackage.EXAMPLE_TABLE__COLUMNS:
+				return getColumns();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -239,12 +221,13 @@ public class ExampleTableImpl extends XtendMemberImpl implements ExampleTable {
 			case CommonPackage.EXAMPLE_TABLE__NAME:
 				setName((String)newValue);
 				return;
-			case CommonPackage.EXAMPLE_TABLE__HEADING:
-				setHeading((ExampleHeading)newValue);
-				return;
 			case CommonPackage.EXAMPLE_TABLE__ROWS:
 				getRows().clear();
 				getRows().addAll((Collection<? extends ExampleRow>)newValue);
+				return;
+			case CommonPackage.EXAMPLE_TABLE__COLUMNS:
+				getColumns().clear();
+				getColumns().addAll((Collection<? extends ExampleColumn>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -261,11 +244,11 @@ public class ExampleTableImpl extends XtendMemberImpl implements ExampleTable {
 			case CommonPackage.EXAMPLE_TABLE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case CommonPackage.EXAMPLE_TABLE__HEADING:
-				setHeading((ExampleHeading)null);
-				return;
 			case CommonPackage.EXAMPLE_TABLE__ROWS:
 				getRows().clear();
+				return;
+			case CommonPackage.EXAMPLE_TABLE__COLUMNS:
+				getColumns().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -281,10 +264,10 @@ public class ExampleTableImpl extends XtendMemberImpl implements ExampleTable {
 		switch (featureID) {
 			case CommonPackage.EXAMPLE_TABLE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case CommonPackage.EXAMPLE_TABLE__HEADING:
-				return heading != null;
 			case CommonPackage.EXAMPLE_TABLE__ROWS:
 				return rows != null && !rows.isEmpty();
+			case CommonPackage.EXAMPLE_TABLE__COLUMNS:
+				return columns != null && !columns.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

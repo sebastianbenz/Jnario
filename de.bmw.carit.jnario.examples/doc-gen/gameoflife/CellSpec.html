@@ -28,40 +28,30 @@
 			</div>
 			<div class="row">
 				<div class="span6">
-					<br>
 <h3>AliveCell</h3>
-<br>
 <div class="level">
 <h4>Stays alive if it has three living neighbours</h4>
-<br>
 <pre class="prettyprint">
 evolveWithNeighbours(3).should.be(typeof(AliveCell))</pre>
 <h4>Stays alive with two living neighbours</h4>
-<br>
 <pre class="prettyprint">
 evolveWithNeighbours(2).should.be(typeof(AliveCell))</pre>
 <h4>Dies with more than three neighbours</h4>
-<br>
 <pre class="prettyprint">
 evolveWithNeighbours(4).should.be(typeof(DeadCell))</pre>
 <h4>Dies with less than two neighbours</h4>
-<br>
 <pre class="prettyprint">
 evolveWithNeighbours(1).should.be(typeof(DeadCell))</pre>
 </div>
 <h3>DeadCell</h3>
-<br>
 <div class="level">
 <h4>Becomes alive if it has three living neighbours</h4>
-<br>
 <pre class="prettyprint">
 evolveWithNeighbours(3).should.be(typeof(AliveCell))</pre>
 <h4>Stays dead with less than three neighbours</h4>
-<br>
 <pre class="prettyprint">
 evolveWithNeighbours(2).should.be(typeof(DeadCell))</pre>
 <h4>Stays dead with more than three neighbours</h4>
-<br>
 <pre class="prettyprint">
 evolveWithNeighbours(4).should.be(typeof(DeadCell))</pre>
 </div>

@@ -1,16 +1,9 @@
 package introduction
 
-import org.eclipse.xtext.xbase.lib.Procedures$Procedure1
-
-import static de.bmw.carit.jnario.common.test.util.ResultMatchers.*
-import static de.bmw.carit.jnario.tests.util.SpecExecutor.*
-import static org.hamcrest.CoreMatchers.*
-import static org.junit.Assert.*
-
 import static extension de.bmw.carit.jnario.common.test.util.Helpers.*
 import static extension de.bmw.carit.jnario.lib.Each.*
 import static extension de.bmw.carit.jnario.lib.Should.*
-
+import static extension de.bmw.carit.jnario.tests.util.SpecExecutor.*
 /*
  * <p align="center"><img src="file://localhost/Users/sebastian/Desktop/Specs.png"/></p>
  * 
@@ -50,13 +43,13 @@ describe "Jnario Specs - BDD for Java"{
   it "Self-explaining Assertions"{
     val x = 0  
     val y = 1
-    assertErrorMessageFor[assert x == 1 && y == 0].is('''
+    errorMessage[assert x == 1 && y == 0].is('''
       Expected x == 1 && y == 0 but:
            x == 1 is false
            x is 0
            y == 0 is false
-           y is 1 
-    ''') 
+           y is 1'''
+      ) 
   }
   
   /*
@@ -67,23 +60,21 @@ describe "Jnario Specs - BDD for Java"{
    * which you can use in your specification. It is even possible to use 
    * [Google Guice](http://code.google.com/p/google-guice/) to instantiate your subjects. 
    */
-  it "Implicit subject creation"{
-    val exampleSpec = '''
-      package calculator
+  it "Implicit subject creation" {
+      '''
+      package bootstrap
       
-      describe Calculator {
+      import java.util.ArrayList
+      
+      describe ArrayList{
 
-        it "should automatically create an instance of Calculator called subject"{
-          subject.should.not.be(null)
-          subject.should.be(typeof(Calculator))
+        it "should automatically create an instance of ArrayList called subject"{
+          subject.should.be(typeof(ArrayList))
         }
 
       }
-      '''
-    assertThat(execute(exampleSpec), is(successful))
+      '''.executesSuccessfully
   }
   
-  def assertErrorMessageFor(Procedures$Procedure1<String> input){
-  	return ""
-  } 
+  
 }

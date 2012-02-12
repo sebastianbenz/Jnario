@@ -1407,34 +1407,38 @@ ruleExampleTable returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getExampleTableAccess().getHeadingExampleHeadingParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getExampleTableAccess().getColumnsExampleColumnParserRuleCall_1_0()); 
 	    }
-		lv_heading_1_0=ruleExampleHeading		{
+		lv_columns_1_0=ruleExampleColumn		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getExampleTableRule());
 	        }
-       		set(
+       		add(
        			$current, 
-       			"heading",
-        		lv_heading_1_0, 
-        		"ExampleHeading");
+       			"columns",
+        		lv_columns_1_0, 
+        		"ExampleColumn");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)(
+)+this_EXAMPLE_ROW_END_2=RULE_EXAMPLE_ROW_END
+    { 
+    newLeafNode(this_EXAMPLE_ROW_END_2, grammarAccess.getExampleTableAccess().getEXAMPLE_ROW_ENDTerminalRuleCall_2()); 
+    }
+(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getExampleTableAccess().getRowsExampleRowParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getExampleTableAccess().getRowsExampleRowParserRuleCall_3_0()); 
 	    }
-		lv_rows_2_0=ruleExampleRow		{
+		lv_rows_3_0=ruleExampleRow		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getExampleTableRule());
 	        }
        		add(
        			$current, 
        			"rows",
-        		lv_rows_2_0, 
+        		lv_rows_3_0, 
         		"ExampleRow");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -1447,85 +1451,60 @@ ruleExampleTable returns [EObject current=null]
 
 
 
-// Entry rule entryRuleExampleHeading
-entryRuleExampleHeading returns [EObject current=null] 
+// Entry rule entryRuleExampleColumn
+entryRuleExampleColumn returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getExampleHeadingRule()); }
-	 iv_ruleExampleHeading=ruleExampleHeading 
-	 { $current=$iv_ruleExampleHeading.current; } 
+	{ newCompositeNode(grammarAccess.getExampleColumnRule()); }
+	 iv_ruleExampleColumn=ruleExampleColumn 
+	 { $current=$iv_ruleExampleColumn.current; } 
 	 EOF 
 ;
 
-// Rule ExampleHeading
-ruleExampleHeading returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-((
-(
-		{ 
-	        newCompositeNode(grammarAccess.getExampleHeadingAccess().getCellsExampleHeadingCellParserRuleCall_0_0()); 
-	    }
-		lv_cells_0_0=ruleExampleHeadingCell		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getExampleHeadingRule());
-	        }
-       		add(
-       			$current, 
-       			"cells",
-        		lv_cells_0_0, 
-        		"ExampleHeadingCell");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)+this_EXAMPLE_ROW_END_1=RULE_EXAMPLE_ROW_END
-    { 
-    newLeafNode(this_EXAMPLE_ROW_END_1, grammarAccess.getExampleHeadingAccess().getEXAMPLE_ROW_ENDTerminalRuleCall_1()); 
-    }
-)
-;
-
-
-
-
-
-// Entry rule entryRuleExampleHeadingCell
-entryRuleExampleHeadingCell returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getExampleHeadingCellRule()); }
-	 iv_ruleExampleHeadingCell=ruleExampleHeadingCell 
-	 { $current=$iv_ruleExampleHeadingCell.current; } 
-	 EOF 
-;
-
-// Rule ExampleHeadingCell
-ruleExampleHeadingCell returns [EObject current=null] 
+// Rule ExampleColumn
+ruleExampleColumn returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
 ((this_PIPE_0=RULE_PIPE
     { 
-    newLeafNode(this_PIPE_0, grammarAccess.getExampleHeadingCellAccess().getPIPETerminalRuleCall_0_0()); 
+    newLeafNode(this_PIPE_0, grammarAccess.getExampleColumnAccess().getPIPETerminalRuleCall_0_0()); 
     }
 
     |this_PIPE_SPACES_1=RULE_PIPE_SPACES
     { 
-    newLeafNode(this_PIPE_SPACES_1, grammarAccess.getExampleHeadingCellAccess().getPIPE_SPACESTerminalRuleCall_0_1()); 
+    newLeafNode(this_PIPE_SPACES_1, grammarAccess.getExampleColumnAccess().getPIPE_SPACESTerminalRuleCall_0_1()); 
     }
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getExampleHeadingCellAccess().getNameValidIDParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getExampleColumnAccess().getTypeJvmTypeReferenceParserRuleCall_1_0()); 
 	    }
-		lv_name_2_0=ruleValidID		{
+		lv_type_2_0=ruleJvmTypeReference		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getExampleHeadingCellRule());
+	            $current = createModelElementForParent(grammarAccess.getExampleColumnRule());
+	        }
+       		set(
+       			$current, 
+       			"type",
+        		lv_type_2_0, 
+        		"JvmTypeReference");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)?(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getExampleColumnAccess().getNameValidIDParserRuleCall_2_0()); 
+	    }
+		lv_name_3_0=ruleValidID		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getExampleColumnRule());
 	        }
        		set(
        			$current, 
        			"name",
-        		lv_name_2_0, 
+        		lv_name_3_0, 
         		"ValidID");
 	        afterParserOrEnumRuleCall();
 	    }

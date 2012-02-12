@@ -2,7 +2,7 @@ package de.bmw.carit.jnario.spec.jvmmodel;
 
 import com.google.common.base.Joiner;
 import com.google.inject.Inject;
-import de.bmw.carit.jnario.common.ExampleHeading;
+import de.bmw.carit.jnario.common.ExampleColumn;
 import de.bmw.carit.jnario.common.ExampleRow;
 import de.bmw.carit.jnario.common.ExampleTable;
 import de.bmw.carit.jnario.common.jvmmodel.CommonJvmModelInferrer;
@@ -335,11 +335,6 @@ public class SpecJvmModelInferrer extends CommonJvmModelInferrer {
             String _fieldName = SpecJvmModelInferrer.this._exampleNameProvider.toFieldName(element);
             JvmField _field = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toField(element, _fieldName, type);
             CollectionExtensions.<JvmField>operator_add(_members_1, _field);
-            ExampleHeading _heading = element.getHeading();
-            boolean _operator_equals = ObjectExtensions.operator_equals(_heading, null);
-            if (_operator_equals) {
-              return;
-            }
             String _simpleName = exampleTableType.getSimpleName();
             final Procedure1<JvmConstructor> _function_1 = new Procedure1<JvmConstructor>() {
                 public void apply(final JvmConstructor it) {
@@ -351,44 +346,40 @@ public class SpecJvmModelInferrer extends CommonJvmModelInferrer {
             CollectionExtensions.<JvmConstructor>operator_add(_members_2, constructor);
             ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList();
             final ArrayList<String> assignments = _newArrayList;
-            ExampleHeading _heading_1 = element.getHeading();
-            EList<XtendField> _cells = _heading_1.getCells();
-            final Procedure1<XtendField> _function_2 = new Procedure1<XtendField>() {
-                public void apply(final XtendField cell) {
+            EList<ExampleColumn> _columns = element.getColumns();
+            final Procedure1<ExampleColumn> _function_2 = new Procedure1<ExampleColumn>() {
+                public void apply(final ExampleColumn column) {
                   {
-                    SpecJvmModelInferrer.this.updateTypeInExampleField(cell);
                     EList<JvmMember> _members = exampleTableType.getMembers();
-                    String _name = cell.getName();
-                    JvmTypeReference _type = cell.getType();
-                    JvmField _field = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toField(cell, _name, _type);
+                    JvmField _field = SpecJvmModelInferrer.this.toField(column);
                     CollectionExtensions.<JvmField>operator_add(_members, _field);
                     JvmFormalParameter _createJvmFormalParameter = SpecJvmModelInferrer.this.typesFactory.createJvmFormalParameter();
                     final JvmFormalParameter jvmParam = _createJvmFormalParameter;
-                    String _name_1 = cell.getName();
-                    jvmParam.setName(_name_1);
-                    JvmTypeReference _type_1 = cell.getType();
-                    JvmTypeReference _cloneWithProxies = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.cloneWithProxies(_type_1);
+                    String _name = column.getName();
+                    jvmParam.setName(_name);
+                    JvmTypeReference _type = column.getType();
+                    JvmTypeReference _cloneWithProxies = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.cloneWithProxies(_type);
                     jvmParam.setParameterType(_cloneWithProxies);
                     EList<JvmFormalParameter> _parameters = constructor.getParameters();
                     CollectionExtensions.<JvmFormalParameter>operator_add(_parameters, jvmParam);
                     SpecJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmFormalParameter>associate(element, jvmParam);
-                    String _name_2 = cell.getName();
-                    String _operator_plus = StringExtensions.operator_plus("this.", _name_2);
+                    String _name_1 = column.getName();
+                    String _operator_plus = StringExtensions.operator_plus("this.", _name_1);
                     String _operator_plus_1 = StringExtensions.operator_plus(_operator_plus, " = ");
-                    String _name_3 = cell.getName();
-                    String _operator_plus_2 = StringExtensions.operator_plus(_operator_plus_1, _name_3);
+                    String _name_2 = column.getName();
+                    String _operator_plus_2 = StringExtensions.operator_plus(_operator_plus_1, _name_2);
                     String _operator_plus_3 = StringExtensions.operator_plus(_operator_plus_2, ";");
                     CollectionExtensions.<String>operator_add(assignments, _operator_plus_3);
                     EList<JvmMember> _members_1 = exampleTableType.getMembers();
-                    String _name_4 = cell.getName();
-                    String _firstUpper = StringExtensions.toFirstUpper(_name_4);
+                    String _name_3 = column.getName();
+                    String _firstUpper = StringExtensions.toFirstUpper(_name_3);
                     String _operator_plus_4 = StringExtensions.operator_plus("get", _firstUpper);
-                    JvmTypeReference _type_2 = cell.getType();
+                    JvmTypeReference _type_1 = column.getType();
                     final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
                         public void apply(final JvmOperation it) {
                           final Function1<ImportManager,String> _function = new Function1<ImportManager,String>() {
                               public String apply(final ImportManager im) {
-                                String _name = cell.getName();
+                                String _name = column.getName();
                                 String _operator_plus = StringExtensions.operator_plus("return ", _name);
                                 String _operator_plus_1 = StringExtensions.operator_plus(_operator_plus, ";");
                                 return _operator_plus_1;
@@ -397,12 +388,12 @@ public class SpecJvmModelInferrer extends CommonJvmModelInferrer {
                           SpecJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, _function);
                         }
                       };
-                    JvmOperation _method = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toMethod(element, _operator_plus_4, _type_2, _function);
+                    JvmOperation _method = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toMethod(element, _operator_plus_4, _type_1, _function);
                     CollectionExtensions.<JvmOperation>operator_add(_members_1, _method);
                   }
                 }
               };
-            IterableExtensions.<XtendField>forEach(_cells, _function_2);
+            IterableExtensions.<ExampleColumn>forEach(_columns, _function_2);
             final Function1<ImportManager,String> _function_3 = new Function1<ImportManager,String>() {
                 public String apply(final ImportManager im) {
                   String _newLine = Strings.newLine();

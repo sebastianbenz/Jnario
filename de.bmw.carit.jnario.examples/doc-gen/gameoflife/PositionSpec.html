@@ -28,9 +28,7 @@
 			</div>
 			<div class="row">
 				<div class="span6">
-					<br>
 <h4>Returns neighbouring positions</h4>
-<br>
 <pre class="prettyprint">
 assertThat(
 	newHashSet(
@@ -40,15 +38,12 @@ assertThat(
 	),
 	is(pos(3, 3).neighbours()))</pre>
 <h4>Calculates hash code based on coordinates</h4>
-<br>
 <pre class="prettyprint">
 assert pos(0, 0).hashCode == pos(0, 0).hashCode</pre>
 <h4>Calculates equals based on coordinates</h4>
-<br>
 <pre class="prettyprint">
 assert pos(0, 0) == pos(0, 0)</pre>
 <h4>Can add another position</h4>
-<br>
 <pre class="prettyprint">
 assert pos(1, 2).plus(pos(3, 4)) == pos(4, 6)</pre>
 				</div>

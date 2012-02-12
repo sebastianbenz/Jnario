@@ -21,7 +21,7 @@ public class AbstractJnarioSyntacticSequencer extends AbstractSyntacticSequencer
 	protected JnarioGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_BlockExpression_SemicolonKeyword_1_q;
 	protected AbstractElementAlias match_Class_PublicKeyword_1_q;
-	protected AbstractElementAlias match_ExampleHeadingCell_PIPETerminalRuleCall_0_0_or_PIPE_SPACESTerminalRuleCall_0_1;
+	protected AbstractElementAlias match_ExampleColumn_PIPETerminalRuleCall_0_0_or_PIPE_SPACESTerminalRuleCall_0_1;
 	protected AbstractElementAlias match_ExampleRow_PIPETerminalRuleCall_0_0_0_or_PIPE_SPACESTerminalRuleCall_0_0_1;
 	protected AbstractElementAlias match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a;
 	protected AbstractElementAlias match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_p;
@@ -37,7 +37,7 @@ public class AbstractJnarioSyntacticSequencer extends AbstractSyntacticSequencer
 		grammarAccess = (JnarioGrammarAccess) access;
 		match_BlockExpression_SemicolonKeyword_1_q = new TokenAlias(false, true, grammarAccess.getBlockExpressionAccess().getSemicolonKeyword_1());
 		match_Class_PublicKeyword_1_q = new TokenAlias(false, true, grammarAccess.getClassAccess().getPublicKeyword_1());
-		match_ExampleHeadingCell_PIPETerminalRuleCall_0_0_or_PIPE_SPACESTerminalRuleCall_0_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getExampleHeadingCellAccess().getPIPETerminalRuleCall_0_0()), new TokenAlias(false, false, grammarAccess.getExampleHeadingCellAccess().getPIPE_SPACESTerminalRuleCall_0_1()));
+		match_ExampleColumn_PIPETerminalRuleCall_0_0_or_PIPE_SPACESTerminalRuleCall_0_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getExampleColumnAccess().getPIPETerminalRuleCall_0_0()), new TokenAlias(false, false, grammarAccess.getExampleColumnAccess().getPIPE_SPACESTerminalRuleCall_0_1()));
 		match_ExampleRow_PIPETerminalRuleCall_0_0_0_or_PIPE_SPACESTerminalRuleCall_0_0_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getExampleRowAccess().getPIPETerminalRuleCall_0_0_0()), new TokenAlias(false, false, grammarAccess.getExampleRowAccess().getPIPE_SPACESTerminalRuleCall_0_0_1()));
 		match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a = new TokenAlias(true, true, grammarAccess.getXAnnotationElementValueAccess().getLeftParenthesisKeyword_7_0());
 		match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_p = new TokenAlias(true, false, grammarAccess.getXAnnotationElementValueAccess().getLeftParenthesisKeyword_7_0());
@@ -100,8 +100,8 @@ public class AbstractJnarioSyntacticSequencer extends AbstractSyntacticSequencer
 				emit_BlockExpression_SemicolonKeyword_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_Class_PublicKeyword_1_q.equals(syntax))
 				emit_Class_PublicKeyword_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_ExampleHeadingCell_PIPETerminalRuleCall_0_0_or_PIPE_SPACESTerminalRuleCall_0_1.equals(syntax))
-				emit_ExampleHeadingCell_PIPETerminalRuleCall_0_0_or_PIPE_SPACESTerminalRuleCall_0_1(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_ExampleColumn_PIPETerminalRuleCall_0_0_or_PIPE_SPACESTerminalRuleCall_0_1.equals(syntax))
+				emit_ExampleColumn_PIPETerminalRuleCall_0_0_or_PIPE_SPACESTerminalRuleCall_0_1(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_ExampleRow_PIPETerminalRuleCall_0_0_0_or_PIPE_SPACESTerminalRuleCall_0_0_1.equals(syntax))
 				emit_ExampleRow_PIPETerminalRuleCall_0_0_0_or_PIPE_SPACESTerminalRuleCall_0_0_1(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a.equals(syntax))
@@ -142,9 +142,9 @@ public class AbstractJnarioSyntacticSequencer extends AbstractSyntacticSequencer
 	
 	/**
 	 * Syntax:
-	 *     PIPE_SPACES | PIPE
+	 *     PIPE | PIPE_SPACES
 	 */
-	protected void emit_ExampleHeadingCell_PIPETerminalRuleCall_0_0_or_PIPE_SPACESTerminalRuleCall_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_ExampleColumn_PIPETerminalRuleCall_0_0_or_PIPE_SPACESTerminalRuleCall_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

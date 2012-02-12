@@ -3,7 +3,7 @@ package de.bmw.carit.jnario.serializer;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import de.bmw.carit.jnario.common.CommonPackage;
-import de.bmw.carit.jnario.common.ExampleHeading;
+import de.bmw.carit.jnario.common.ExampleColumn;
 import de.bmw.carit.jnario.common.ExampleRow;
 import de.bmw.carit.jnario.common.ExampleTable;
 import de.bmw.carit.jnario.jnario.And;
@@ -122,9 +122,9 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == CommonPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
-			case CommonPackage.EXAMPLE_HEADING:
-				if(context == grammarAccess.getExampleHeadingRule()) {
-					sequence_ExampleHeading(context, (ExampleHeading) semanticObject); 
+			case CommonPackage.EXAMPLE_COLUMN:
+				if(context == grammarAccess.getExampleColumnRule()) {
+					sequence_ExampleColumn(context, (ExampleColumn) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1262,11 +1262,7 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case Xtend2Package.XTEND_FIELD:
-				if(context == grammarAccess.getExampleHeadingCellRule()) {
-					sequence_ExampleHeadingCell(context, (XtendField) semanticObject); 
-					return; 
-				}
-				else if(context == grammarAccess.getMemberRule()) {
+				if(context == grammarAccess.getMemberRule()) {
 					sequence_Member(context, (XtendField) semanticObject); 
 					return; 
 				}
@@ -1380,18 +1376,9 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     name=ValidID
+	 *     (type=JvmTypeReference? name=ValidID)
 	 */
-	protected void sequence_ExampleHeadingCell(EObject context, XtendField semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     cells+=ExampleHeadingCell+
-	 */
-	protected void sequence_ExampleHeading(EObject context, ExampleHeading semanticObject) {
+	protected void sequence_ExampleColumn(EObject context, ExampleColumn semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1407,7 +1394,7 @@ public class AbstractJnarioSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=EXAMPLE_TEXT heading=ExampleHeading rows+=ExampleRow*)
+	 *     (name=EXAMPLE_TEXT columns+=ExampleColumn+ rows+=ExampleRow*)
 	 */
 	protected void sequence_ExampleTable(EObject context, ExampleTable semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
