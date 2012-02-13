@@ -39,7 +39,7 @@ class CommonJvmModelInferrer extends Xtend2JvmModelInferrer {
 	}
 	
 	def getOrCreateType(ExampleColumn column){
-		if(column.type == null){
+		if(column.type == null || column.type.type == null){
 			if(column.cells.empty){
 				column.type = getTypeForName(typeof(Object), column)
 			}else{

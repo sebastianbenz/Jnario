@@ -6,6 +6,7 @@ import de.bmw.carit.jnario.common.ExampleRow;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.common.types.JvmField;
+import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.common.types.util.TypeConformanceComputer;
@@ -14,6 +15,7 @@ import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.compiler.StringBuilderBasedAppendable;
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
+import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
@@ -52,9 +54,18 @@ public class CommonJvmModelInferrer extends Xtend2JvmModelInferrer {
   }
   
   public JvmTypeReference getOrCreateType(final ExampleColumn column) {
+      boolean _operator_or = false;
       JvmTypeReference _type = column.getType();
       boolean _operator_equals = ObjectExtensions.operator_equals(_type, null);
       if (_operator_equals) {
+        _operator_or = true;
+      } else {
+        JvmTypeReference _type_1 = column.getType();
+        JvmType _type_2 = _type_1.getType();
+        boolean _operator_equals_1 = ObjectExtensions.operator_equals(_type_2, null);
+        _operator_or = BooleanExtensions.operator_or(_operator_equals, _operator_equals_1);
+      }
+      if (_operator_or) {
         EList<XExpression> _cells = column.getCells();
         boolean _isEmpty = _cells.isEmpty();
         if (_isEmpty) {
@@ -76,8 +87,8 @@ public class CommonJvmModelInferrer extends Xtend2JvmModelInferrer {
           }
         }
       }
-      JvmTypeReference _type_1 = column.getType();
-      return _type_1;
+      JvmTypeReference _type_3 = column.getType();
+      return _type_3;
   }
   
   public StringBuilderBasedAppendable cellToAppendable(final ExampleRow row, final int i) {
