@@ -71,10 +71,12 @@ describe DocGenerator {
 		val scenarioDoc = generatedFile("ExampleSpec.html")
 		scenarioDoc.should.contain('''
 		<h4>Should do stuff</h4>
+		<p>
 		<p>Example documentation</p>
 		<pre class="prettyprint">
 		var x = 0
 		x = x + 1</pre>
+		</p>
 		'''.toString())
 	}
 	
