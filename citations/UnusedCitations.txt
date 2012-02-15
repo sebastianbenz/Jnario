@@ -1,0 +1,110 @@
+Allen, S (1985)  Correlation of membrane protein phosphorylation with excitation energy distribution in the cyanobacterium Synechococcus 6301. FEBS Lett.193:271-275.
+Anderson, Mclntosh (1991)  Light-activated heterotrophic growth of the cyanobacterium Synechocystis sp. strain PCC 6803: a blue-light-requiring process. J Bacteriol 173, 2761-2767.
+Anderson, Chow, Park (1995)  The grand design of photosynthesis: acclimation of the photosynthetic apparatus to environmental cues. Photosynth. Res. 46: 129-139.
+Asada (1994)  Production and action of active oxygen species in photosynthesis tissues. In: Foyer C H, Mullineaux P M, editors. Causes of photooxidative stress and amelioration of defense systems in plants. Boca Raton, Fla: CRC Press, Inc.pp. 77–104.
+Bernát, Waschewski, Rögner (2009)  Towards efficient hydrogen production: the impact of antenna size and external factors on electron transport dynamics in Synechocystis PCC 6803. Photosynth. Res. 99(3):205–216.
+Bonaventura (1969)  Fluorescence and oxygen evolution from Chlorella pyrrenoidosa. Biochim. Biophys. Acta 189, 366-383. 
+Bradford (1976)  A rapid and sensitive method for the quantitation of microgram quantities of protein utilizing the principle of protein-dye binding. Anal. Biochem. 72:248–254.
+a Choi, Huh, Kojima, Sakakibara, Paek, Hwang (2010)  The cytokinin-activated transcription factor ARR2 promotes plant immunity via TGA3/NPR1-dependent salicylic acid signaling in Arabidopsis. Dev. Cell 19, 284–295.
+b Choi, Choi, Lee, Ryu, Hwang (2010)  Cytokinins and plant immunity: old foes or new friends? Trends Plant Sci 16(7): 388-394.
+Cooley, Howitt, Vermaas (2000)  Succinate: quinol oxidoreductase in the cyanobacterium Synechocystis sp. strain PCC 6803: presence and function in metabolism and electron transport. J. Bacteriol. 182:714–722.
+Cooley, Vermaas (2001)  Succinate dehydrogenase and other respiratory pathways in thylakoid membranes of Synechocystis sp. Strain PCC 6803: capacity comparisons and physiological function. J. Bacteriol. 183, 4251-4258.
+Dietzel L, Pfannschmidt T (2008)  Photosynthetic acclimation: state transitions and adjustment of photosystem stoichiometry. Functional relationships between short-term and long-term light quality acclimation in plants. FEBS J 275: 1080-1088.
+Finer, Vain, Jones, McMullen (1992)  Development of the particle inflow gun for DNA delivery to plant cells. Plant Cell Rep. 11: 323-328.
+Forchhammer (2004)  Global carbon/nitrogen control by PII signal transduction in cyanobacteria: from signals to targets. FEMS Microbiol Rev 28: 319–333.
+Fork (1993)  Electron transport and photophosphorylation by Photosystem I in vivo in plants and cyanobacteria. Photosynth. Res. 36, 149–168. 
+Franco-Zorrilla, Martin, Leyva, Paz-Ares (2005)  Interaction between phosphate-starvation, sugar, and cytokinin signaling in Arabidopsis and the roles of cytokinin receptors CRE1/AHK4 and AHK3. Plant Physiol. 138(2): 847-57.
+Furuya M (1993)  Phytochromes: their molecular species, gene family and functions. Annu. Rev. Plant Physiol. Plant Mol. Biol. 44:617-645.
+Galuszka, Frébortová, Werner, Yamada, Strnad, Schmülling, Frébort (2004)  Cytokinin oxidase/dehydrogenase genes in barley and wheat: cloning and heterologous expression. Eur J Biochem. 271(29):3990-4002.
+Grigorieva, Shestakov (1982)  Transformation in the cyanobacterium  Synechocystis sp. 6803. FEMS Microbiol. Lett. 13, 367-370.
+Grossman, Schaefer, Chiang (1993)  The phycobilisome, a light-harvesting complex responsive to environmental conditions. Microbiol. Rev. 57, 725–749 29. 
+Heyl A (2003)  Cytokinin signal perception and transduction. Curr Op Plant Biol 6: 480-488.
+Heyl, Werner, Schmülling (2006)  Cytokinin metabolism and signal transduction. In Plant Hormone signaling Edited by: Hedden P, Thomas S. Oxford: Blackwell Publishing; 2006:93-123.
+Howitt, Cooley, Wiskich, Vermaas (2001)  A strain of Synechocystis sp. PCC 6803 without photosynthetic oxygen evolution and respiratory oxygen consumption: implications for the study of cyclic photosynthetic electron transport. Planta. 214(1):46-56.
+Howitt, Vermaas (1998)  Quinol and cytochrome oxidases in the cyanobacterium Synechocystis sp. PCC 6803. Biochemistry 37, 17944-17951.
+Hückelhoven, Kogel (2003)  Reactive oxygen intermediates in plant-microbe interactions: Who is who in powdery mildew resistance? Planta 216: 891-902.
+Hunter (1995)  Protein kinases and phosphatases: the yin and yang of protein phosphorylation and signaling. Cell. 80: 225-236. 
+Hwang, Chen, Sheen (2002)  Two-component signal transduction pathways in Arabidopsis. Plant Physiol. 129: 500-515.
+Ikeuchi, Tabata (2001)  Synechosystis sp. PCC 6803 - a useful tool in the study of the genetics of cyanobacteria, Photosynthesis Res. 70, 73–83.
+Kakimoto T (2003)  Biosynthesis of cytokinins. J Plant Res 116: 233-239
+Kaneko, Nakamura, Sasamoto, Watanabe, Kohara, Matsumoto, Shimpo, Yamada, Tabata (2003)  Structural analysis of four large plasmids harboring in a unicellular cyanobacterium, Synechocystis sp. PCC 6803. DNA Res. 10(5): 221-228.
+Kaplan, Reinhold (1999) . The CO2 concentrating mechanisms in photosynthetic microorganisms. Annu Rev Plant Physiol Plant Mol Biol 50, 539–570.
+Karniol, Vierstra (2003)  The pair of bacteriophytochromes from Agrobacterium tumefaciens are histidine kinases with opposing photobiological properties. Proc. Natl. Acad. Sci. USA 100, 2807-28 12.
+Kehoe, Grossman (1996)  Similarity of a chromatic adaptation sensor to phytochrome and ethylene receptors. Science 273, 1409-1412.
+Lamparter, Mittmann, Gärtner, Börner, Hartmann, Hughes (1997)  Characterization of recombinant phytochrome from the cyanobacterium. Synechocystis. Proc Natl Acad Sci USA 94: 11792–11797.
+Mathews, Sharrock (1997)  Phytochrome gene diversity. Plant Cell Environ. 20, 666–671.
+McGinn, Price, Maleszka, Badger (2003)  Inorganic carbon limitation and light control the expression of transcripts related to the CO2-concentrating mechanism in the cyanobacterium Synechocystis sp. strain PCC6803. Plant Physiol 132(1): 218–229.
+Mi, Endo, Schreiber, Ogawa, Asada (1994)  NAD(P)H dehydrogenase-dependent cyclic electron flow around photosystem I in the cyanobacterium Synechocystis PCC6803: a study of dark-starved cells and spheroplasts. Plant Cell Physiol. 35:163–173.
+Mi, Endo, Schreiber, Ogawa, Asada (1995)  Thylakoid membrane-bound, NADPH-specific pyridine nucleotide dehydrogenase complex mediated cyclic electron transport in the cyanobacterium Synechocystis sp. PCC6803. Plant Cell Physiol. 36:661–668.
+Miller (1955)  Cytokinins in Zea mays. Annals of New York Academy of Sciences. 144(1).
+Mizuno, Kaneko, Tabata (1996)  Compilation of all genes encoding bacterial two-component signal transducers in the genome of the cyanobacterium, Synechocystis sp. strain PCC 6803. DNA Res., 3:407-414.
+Mok (1994)  Cytokinins and plant development-an overview. In Mok, D.W.S.& Mok, M.C., eds.(1994) Cytokinins-Chemistry, activity and function. Boca Raton: CRC Press, pp. 155-166.
+Mullineaux, Allen (1986)  The state 2 transition in the cyanobacterium Synechococcus 6301 can be driven by respiratory electron flow into the plastoquinone pool. FEBS Lett. 205: 155-160.
+Mullineaux, Allen (1990)  State 1-State 2 transitions in the cyanobacterium Synechococcus 6301 are controlled by the redox state of electron carriers between photosystem I and II. Photosynth. Res. 23: 297-311.
+Mullineaux, Tobin, Jones (1997)  Motillity of photosynthetic complexes in thylakoid membrane. Nature 390:421-424.
+Munekage, Hashimoto, Miyake, Tomizawa, Endo, Tasaka (2004)  Cyclic electron flow around photosystem I is essential for photosynthesis. Nature 429, 579 –582. 
+Murata, Suzuki (2006)  Exploitation of genomic sequences in a systematic analysis to access how cyanobacteria sense environmental stress. J Exp Bot. 57(2):235-47. Epub 2005 Nov 29. 
+Nakamura, Kaneko, Sato (2003)  Complete genome structure of Gloeobacter violaceus PCC 7421, a cyanobacterium that lacks thylakoids. DNA Res., 10, 137–145.
+Nixon, Gounaris, Coomber, Hunter, Dyer, Barber (1989)  psbG is not a photosystem two gene but may be an ndh gene, J. Biol. Chem. 264 14129-14135.
+Ohyama, Fukuzawa, Kohchi, Shirai, Sano, Sano, Umersono, Inokuchi, Ozeki (1986)  Chloroplast gene organization deduced from complete sequence of liverwort Marchantia polymorpha chloroplast DNA. Nature, 322:572-574.
+Osanai, Imamura, Asayama, Shirai, Suzuki, Murata, Tanaka (2006)  Nitrogen induction of sugar catabolic gene expression in Synechocysis sp. PCC 6803. DNA Res. 13(5):185-195.
+Pelroy, Kirk, Bassham (1976)  Photosystem II regulation of macromolecule synthesis in the blue-green alga Aphanocapsa 6714. J Bacteriol 128(2): 623-632.
+Perry, Koteva, Wright (2011)  Receptor domains of two-component signal transduction systems. Mol Biosyst. 7(5):1388-98. 
+Preiss (1982)  Regulation of the biosynthesis and degradation of starch. Annu Rev Plant Physiol 33:431–454.
+Preiss (1991)  Biology and molecular biology of starch synthesis and its regulation. In: Mifflin B (ed) Oxford surveys of plant molecular and cell biology. Oxford University Press, Oxford, pp 59–114
+Punwani (2010)  The subcellular distribution of the Arabidopsis histidine phosphotransfer proteins is independent of cytokinin signaling. Plant J 62: 473-482.
+Quail. (1994)  Photosensory perception and signal transduction in plants. Curr Opin Genet Dev. 4(5):652-61.
+Quail, Boylan, Parks, Short, Xu, Wagner (1995)  Phytochromes: photosensory perception and signal transduction. Science 268, 675–680. 
+Quail (1997)  An emerging molecular map of the phytochromes. Plant Cell Environ. 20:657-665. 5.
+Quail. (2002)  Phytochrome photosensory networks. Nat Rev Mol Cell Biol. 14(2):180-8.
+Robert-Seilaniantz (2007)  Pathological hormone imbalances. Curr. Opin. Plant Biol. 10, 372–379.
+Rochaix (2007)  Role of thylakoid protein kinases in photosynthetic acclimation. FEBS Lett. 581(15), 2768–2775.
+Rockwell, Lagarias (2006)  The structure of phytochrome: a picture is worth a thousand spectra. Plant Cell 18:4-14.
+Rockwell (2006)  Phytochrome structure and signaling mechanisms. Annu Rev Plant Biol 57:837-858. 2.
+Rockwell, Shang, Martin, Lagarias (2009)  Distinct classes of red/far-red photochemistry	 with in the phytochrome superfamily. Proc. Natl. Acad. Sci. USA. 106, 6123–6127.
+Romanov, Spichal (2005)  A live cell hormone-binding assay on transgenic bacteria expressing a eukaryotic receptor protein. Anal Biochem 347:129-134.
+Rumeau, Peltier (2007)  Chlororespiration and cyclic electron flow around PSI during photosynthesis and plant stress response. Plant Cell Environ. 30, 1041–1051. 
+Sakayori, Shiraiwa, Suzuki (2009)  A Synechocystis homolog of SipA protein, ssl3451, enhances the activity of the histidine kinase Hik33. Plant Cell Physiol. 50(8): 1439-1448.
+Sambrook, Fritsch, Maniatis (1989)  Molecular cloning: a laboratory manual. 2nd ed. Cold Spring Harbor Laboratory Press, Cold Spring Harbor, N.Y.
+Schaller, Matthews, Gribskov, Walker (2002)  Two-component signaling elements and hystidyl-aspaartyl phosphorelays. The Arabidopsis Book (C.Somerville, E.Meyerowitz, editors), 1-9.
+Schaller, Shiu, Armitage (2011)  Two-component systems and their co-option for eukaryotic signal transduction. Curr Biol. 21: 320-330.
+Scherer, Stürzl (1982)  Interaction of respiratory and photosynthetic electron transport in Anabaena variabilis. Kütz. Arch. Microbiol. 132: 333-337.
+Schweizer, Pokorny, Abderhalden, Dudler (1999)  A transient assay system for the functional assessment of defense-related genes in wheat. Mol. Plant-Microbe Interact. 12: 647-654.
+Selivankina, Zubkova, Kupriyanova, Lyukevich, Kusnetsov, Los, Kulaeva (2006)  Cyanobacteria respond to cytokinin. Russian Journal of Plant Physiology 53: 751-755.
+Sharrock (2008)  The phytochrome red/far-red photoreceptor superfamily. Genome Biol. 9(8):230.
+Singh, Hong, Sherman (2004)  Microarray analysis and redox control of gene expression in the cyanobacterium Synechocystis sp. PCC 6803. Physiol Plant. 120(1):27-35.
+Singh, Sherman (2005)  Pleiotropic effect of a histidine kinase on carbohydrate metabolism in Synechocystis sp. strain PCC 6803 and its requirement for heterotrophic growth. J Bacteriol 187, 2368–2376.
+Singh, Elvitiglia, Bhattacharyya-Pakrasi, Aurora, Gosh, Pakrasi (2008)  Integration of carbon and nitrogen metabolism with energy production is crucial to light acclimation in the cyanobacterium Synechocystis. Plant Phys. 148: 467-478. 
+Singh, Bhattacharyya-Pakrasi, Elvitiglia, Gosh, Aurora, Pakrasi (2009)  A systems-level analysis of the effects of light quality on the metabolism of a cyanobacterium. Plant Physiol. 151(3): 1596-608
+Schmetterer (1994)  Cyanobacterial respiration, p. 409-435. In D.A. Bryant (ed.), The molecular biology of cyanobacteria. Kluwer, Boston, Mass.
+Schneegurt, Sherman, Nayar, Sherman (1994)  Oscillating behavior of carbohydrate granule formation and dinitrogen fixation in the cyanobacterium Cyanothece sp. strain ATCC 51142. J. Bacteriol. 176:1586–1597.
+Smith (1994)  Phytochrome transgenics: functional, ecological and biotechnological applications. Semin Cell Biol. 5(5):315-25.
+Stanier, Kunisawa, M (1971)  Purification and properties of unicellular blue-green algae (order Chroococcales). Bacterial. Rev. 35(2):171-205.
+Stock, Ninfa, Stock (1989)  Protein phosphorylation and regulation of adaptive responses in bacteria.Mi- crobiol. Rev. 53:450–90.
+Stock, Surette, Levit, Park (1995)  In Two-component signal transduction (eds, Hoch, J.A. & Silhavy, T.J.), 25–51 (American Society for Microbiology, Washington, DC).
+Stock (1999)  A nonlinear stimulus-response relation in bacterial chemotaxis. Proc Natl Acad Sci USA. 96(20):10945-7.
+Stock, Da Re (2000)  Signal transduction: response regulators on and off. Curr.Biol. 10:R420–24.
+Stolz, Riefler, Lomin, Achazi, Romanov, Schmülling (2011)  The specificity of cytokinin signalling in Arabidopsis thaliana is mediated by differing ligand affinities and expression profiles of the receptors. Plant J. 67(1): 157-168.
+Suzuki, Miwa, Ishikawa, Yamada, Aiba, Mizuno (2001)  The Arabidopsis sensor His-kinase, AHK4, can respond to cytokinins. Plant Cell Physiol. 42(2):107-113.
+Suzuki, Kanesaki, Hayashi, Hall, Simon, Slabas, Murata (2005) . The histidine kinase Hik34 is involved in thermotolerance by regulating the expression of heat shock genes in Synechocystis. Plant Physiol 138, 1409–1421.
+To, Haberer, Ferreira (2004)  Type-A ARRs are partially redundant negative regulators of cytokinin signaling in Arabidopsis. Plant Cell 16:658-671.
+To, Deruère, Maxwell, Morris, Hutchison, Ferreira, Schaller, Kieber (2007)  Cytokinin regulates type-A Arabidopsis Response Regulator activity and protein stability via two-component phosphorelay. Plant Cell. 19(12): 3901-14.
+van den Hoek, Jahns, Mann (1993)  Algen. Georg Thieme Verlag, Stuttgart, London.
+Vermaas, Shen, Styring (1994)  Electrons generated by photosystem II are utilized by an oxidase in the absence of photosystem I in the cyanobacterium Synechocystis sp. PCC 6803. FEBS Letters 337: 103–108.
+Vermaas, Tichy (1999)  In vivo role of catalase-peroxidase in Synechocystis sp. strain PCC 6803. J. Bacteriol. 181(6):1875–1882.
+Vermaas (2001)  Photosynthesis and respiration in cyanobacteria. In: Encyclopedia of Life Sciences. Nature Publishing Group, London, p. 1-7.
+Vioque (1992)  Analysis of the gene encoding the RNA subunit of ribonuclease P from cyanobacteria. Nucleic Acids Res. 20(23):6331–6337.
+Walters, McRoberts, Fitt (2008)  Are green islands red herrings? Significance of green islands in plant interactions with pathogens and pests. Biol Rev Camb Philos Soc. 83(1):79-102.
+Wilde (1997)  Disruption of a Synechocystis sp. PCC 6803 gene with partial similarity to phytochrome genes alters growth under changing light qualities. FEBS Lett. 406, 89-92.
+Wilde, Fiedler, Börner (2002)  The cyanobacterial phytochrome Cph2 inhibits phototaxis towards blue light. Mol. Microbiol. 44, 981-988.
+Wollman (2001)  State transitions reveal the dynamics and flexibility of the photosynthetic apparatus. EMBOJ. 20,3623–3630.
+Wurgler-Murphy, Saito (1997)  Two-component signal transducers and MAPK cascades.Trends Biochem. Sci. 22:172–76.
+Yang, Hua, Shimizu (2002)  Metabolic flux analysis in Synechocystis using isotope distribution from 13C-labeled glucose. Metab. Eng. 4:202-216.
+Yeh, Lagarias (1998)  Eukaryotic phytochromes: light-regulated serine/threonine protein kinases with histidine kinase ancestry. Proc Natl Acad Sci USA. 95(23):13976-81.
+Zhang (1996)  Bacterial signalling involving eukaryotic-type protein kinases. Mol. Microbiol. 20: 9–15.
+Steinmuller (1992)  Nucleotide sequence and expression of the ndhH gene of the cyanobacterium Synechocystis sp. PCC6803, Plant Mol. Biol. 18 ,135e137.
+Prommeenate, Markert, Nixon, Biol. Chem. 279 (2004)  28165e28173.
+Herranen, Zhang, Sirpio, Aro, Plant Physiol. 134 (2004)  470e481.
+Zhang, Jansen, Ogawa, Ex- pression, the carbon acquisition complex NdhD3/NdhF3/CupA/Sll1735 in Syne- chocystis sp. PCC 6803 (2004)  3326e3340.
+Battchikova, Rudd, Aro, Ssl1690 (2005)  in NDH-1L and NDH-1M Complexes of Syn- echocystis sp. PCC 6803, J. Biol. Chem. 280 (2005) 2587e2595.
+Howitt, Udall, Vermaas (1999)  Type 2 NADH dehydrogenases in the cyanobacterium Synechocystis sp. Strain PCC 6803 are involved in regulation rather than respiration. J. Bacteriol. 181: 3994-4003

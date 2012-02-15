@@ -121,6 +121,7 @@ Workflow {
             // generates a more lightweight Antlr parser and lexer tailored for content assist
             fragment = parser.antlr.XtextAntlrUiGeneratorFragment {
             	options = auto-inject {}
+            	antlrParam = "-Xconversiontimeout" antlrParam = "10000"
             }
 
             // generates junit test support classes into Generator#pathTestProject

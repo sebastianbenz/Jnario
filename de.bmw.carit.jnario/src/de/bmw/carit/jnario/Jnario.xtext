@@ -121,7 +121,6 @@ ExampleColumn:
 ExampleRow:
 	((PIPE | PIPE_SPACES) cells+=XExpression)+ EXAMPLE_ROW_END;
 
-
 terminal FEATURE_TEXT: 'Feature' COLON MNL;
 terminal BACKGROUND_TEXT: 'Background' COLON MNL;
 terminal SCENARIO_TEXT: 'Scenario' COLON MNL;
@@ -135,11 +134,9 @@ terminal IN_ORDER_TEXT: 'In order to' TEXT_AND_NL;
 terminal AS_A_TEXT: 'As a' TEXT_AND_NL;
 terminal I_WANT_TEXT: 'I want' TEXT_AND_NL;
 
-
 terminal PIPE : '|';
 terminal PIPE_SPACES: PIPE (' '|'\t')+;
 terminal EXAMPLE_ROW_END: (PIPE | PIPE_SPACES) '\r'? '\n';
-
 
 terminal fragment TEXT_MULTI_LINE: !('\r'|'\n')* '\\' NL;
 terminal fragment TEXT_AND_NL: !('\r'|'\n'|'\\')* NL;
