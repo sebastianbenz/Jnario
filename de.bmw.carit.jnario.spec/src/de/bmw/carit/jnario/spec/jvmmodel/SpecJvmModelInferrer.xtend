@@ -200,8 +200,14 @@ class SpecJvmModelInferrer extends CommonJvmModelInferrer {
 			constructor.setBody[ImportManager im |
 				Joiner::on(Strings::newLine).join(assignments)
 			]
+			
+			exampleTableType.members += element.toMethod("toString", getTypeForName(typeof(String), element))[
+				setBody[ImportManager im |
+					'return "| " + ' + element.columns.map[name].join(' + " | " + ') + ' + "|";'
+				]
+			]
 		]
-	}
+	} 
 	
 	def generateInitializationMethod(JvmGenericType exampleTableType, ExampleTable exampleTable){
 		val result = new StringBuilderBasedAppendable()
@@ -211,7 +217,7 @@ class SpecJvmModelInferrer extends CommonJvmModelInferrer {
 			}
 		}
 		result.append(exampleTable.toFieldName);
-		result.append(" = ExampleTable.create(")
+		result.append(" = ExampleTable.create(\"" + exampleTable.toFieldName + "\", ")
 		result.increaseIndentation()
 		result.append("\n")
 		for(row : exampleTable.rows){

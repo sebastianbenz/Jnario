@@ -49,6 +49,7 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Pair;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
@@ -403,6 +404,31 @@ public class SpecJvmModelInferrer extends CommonJvmModelInferrer {
                 }
               };
             SpecJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(constructor, _function_3);
+            EList<JvmMember> _members_3 = exampleTableType.getMembers();
+            JvmTypeReference _typeForName_2 = SpecJvmModelInferrer.this._typeReferences.getTypeForName(java.lang.String.class, element);
+            final Procedure1<JvmOperation> _function_4 = new Procedure1<JvmOperation>() {
+                public void apply(final JvmOperation it) {
+                  final Function1<ImportManager,String> _function = new Function1<ImportManager,String>() {
+                      public String apply(final ImportManager im) {
+                        EList<ExampleColumn> _columns = element.getColumns();
+                        final Function1<ExampleColumn,String> _function = new Function1<ExampleColumn,String>() {
+                            public String apply(final ExampleColumn it) {
+                              String _name = it.getName();
+                              return _name;
+                            }
+                          };
+                        List<String> _map = ListExtensions.<ExampleColumn, String>map(_columns, _function);
+                        String _join = IterableExtensions.join(_map, " + \" | \" + ");
+                        String _operator_plus = StringExtensions.operator_plus("return \"| \" + ", _join);
+                        String _operator_plus_1 = StringExtensions.operator_plus(_operator_plus, " + \"|\";");
+                        return _operator_plus_1;
+                      }
+                    };
+                  SpecJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, _function);
+                }
+              };
+            JvmOperation _method_1 = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toMethod(element, "toString", _typeForName_2, _function_4);
+            CollectionExtensions.<JvmOperation>operator_add(_members_3, _method_1);
           }
         }
       };
@@ -422,7 +448,10 @@ public class SpecJvmModelInferrer extends CommonJvmModelInferrer {
       }
       String _fieldName = this._exampleNameProvider.toFieldName(exampleTable);
       result.append(_fieldName);
-      result.append(" = ExampleTable.create(");
+      String _fieldName_1 = this._exampleNameProvider.toFieldName(exampleTable);
+      String _operator_plus = StringExtensions.operator_plus(" = ExampleTable.create(\"", _fieldName_1);
+      String _operator_plus_1 = StringExtensions.operator_plus(_operator_plus, "\", ");
+      result.append(_operator_plus_1);
       result.increaseIndentation();
       result.append("\n");
       EList<ExampleRow> _rows_1 = exampleTable.getRows();
