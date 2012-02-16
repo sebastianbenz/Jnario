@@ -1,4 +1,4 @@
-package de.bmw.carit.jnario.spec.tests.integration
+package de.bmw.carit.jnario.spec.tests.integration2
 
 import static extension de.bmw.carit.jnario.common.test.util.Helpers.*
 
@@ -52,7 +52,7 @@ describe "Assertion"{
 			val x = 0  
 			errorMessage[assert x == 42].is('''
 			  Expected x == 42 but:
-			      x is 0''')	 
+			       x is 0''')	 
 		}      
 		
 		/*
