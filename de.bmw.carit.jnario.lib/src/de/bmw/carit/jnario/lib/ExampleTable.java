@@ -1,51 +1,53 @@
 package de.bmw.carit.jnario.lib;
 
 import static com.google.common.collect.Iterables.filter;
-import static com.google.common.collect.Iterables.transform;
-import static com.google.common.collect.Lists.newArrayList;
-import static com.google.common.collect.Maps.newHashMap;
+import static com.google.common.collect.Lists.newArrayListWithExpectedSize;
 import static java.util.Arrays.asList;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.junit.internal.runners.model.MultipleFailureException;
 
-import com.google.common.base.Function;
-
-@SuppressWarnings("restriction")
 public class ExampleTable<T> implements Iterable<T>{
 
-	interface Result{
-	}
-	
-	private static class Ok implements Result{
-		@Override
-		public String toString() {
-			return "✔";
+	public static abstract class Result{
+
+		final Object value;
+
+		public Result(Object value) {
+			this.value = value;
 		}
 	}
 	
-	private static class Failure implements Result{
-
-		private final Throwable e;
-
-		public Failure(Throwable e) {
-			this.e = e;
+	public static class Ok extends Result{
+		
+		Ok(Object value){
+			super(value);
 		}
 		
 		@Override
 		public String toString() {
-			return "X";
+			return "✓";
+		}
+	}
+	
+	public static class Failure extends Result{
+		
+		final Throwable exception;
+
+		Failure(Object value, Throwable e) {
+			super(value);
+			this.exception = e;
+		}
+		
+		@Override
+		public String toString() {
+			return "✗";
 		}
 		
 	}
 
-	private static final Result OK = new Ok();
-	
 	private final List<T> rows;
 
 	private final String name;
@@ -72,63 +74,71 @@ public class ExampleTable<T> implements Iterable<T>{
 		if(rows.isEmpty()){
 			return;
 		}
-		Map<T, Result> results = newHashMap();
-		if(passes(assertion, results)){
-			return;
-		}else{
-			throw newAssertionError(createMessage(results), results);
-		}
-		
+		perform(assertion);
 	}
 
-	private boolean passes(Procedure1<T> assertion, Map<T, Result> results) {
+	private void perform(Procedure1<T> assertion) {
+		List<Result> results = newArrayListWithExpectedSize(rows.size());
 		boolean hasFailed = false;
 		for (T row : rows) {
 			Result result;
 			try {
 				assertion.apply(row);
-				result = OK;
+				result = new Ok(row);
 			} catch (Throwable e) {
-				result = new Failure(e);
+				result = new Failure(row, e);
 				hasFailed = true;
 			}
-			results.put(row, result);
+			results.add(result);
 		}
-		return !hasFailed;
-	}
-			
-
-	private AssertionError newAssertionError(StringBuilder message,
-			Map<T, Result> results) {
-		AssertionError assertionError = new AssertionError(message);
-		Iterable<Failure> failures = filter(results.values(), Failure.class);
-		List<Throwable> errors = newArrayList(transform(failures, new Function<Failure, Throwable>() {
-
-			@Override
-			public Throwable apply(Failure p) {
-				return p.e;
-			}
-		}));
-		Throwable cause;
-		if(errors.size() == 1){
-			cause = errors.get(0);
-		}else{
-			cause= new MultipleFailureException(errors);
+		if(hasFailed){
+			throw newAssertionError(results);
 		}
-		assertionError.initCause(cause);
-		return assertionError;
 	}
 
-	private StringBuilder createMessage(Map<T, Result> results) {
+	private AssertionError newAssertionError(List<Result> results) {
+		AssertionError error = new AssertionError(createMessage(results));
+		error.setStackTrace(getStacktrace(results));
+		return error;
+	}
+	
+	private StackTraceElement[] getStacktrace(List<Result> results) {
+		return filter(results, Failure.class).iterator().next().exception.getStackTrace();
+	}
+
+	private String createMessage(List<Result> results) {
 		StringBuilder message = new StringBuilder(name + " failed\n");
-		for (Entry<T, Result> entry : results.entrySet()) {
-			message.append("        ");
-			message.append(entry.getKey());
-			message.append(" ");
-			message.append(entry.getValue());
+		StringBuilder causes = new StringBuilder();
+		int i = 1;
+		for (Result result : results) {
+			describeRow(message, i, result);
+			if (result instanceof Failure) {
+				message.append(" (");
+				message.append(i);
+				message.append(")");
+				describeCause(causes, i, (Failure) result);
+				i++;
+			}
 			message.append("\n");
 		}
-		return message;
+		message.append(causes);
+		return message.toString();
 	}
 
+	protected void describeRow(StringBuilder message, int i, Result result) {
+		message.append("        ");
+		message.append(result.value);
+		message.append(" ");
+		message.append(result);
+	}
+
+	protected void describeCause(StringBuilder causes, int i, Failure result) {
+		causes.append("\n(");
+		causes.append(i);
+		causes.append(") ");
+		causes.append(result.exception.getLocalizedMessage().substring(1));
+		causes.append("\n");
+	}
+
+	
 }

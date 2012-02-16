@@ -174,8 +174,6 @@ public class DocGenerator implements IGenerator {
     _builder.newLine();
     _builder.append("<meta name=\"author\" content=\"Jnario\">");
     _builder.newLine();
-    _builder.append("<meta HTTP-EQUIV=\"Refresh\" CONTENT=\"5\">");
-    _builder.newLine();
     _builder.newLine();
     _builder.append("<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->");
     _builder.newLine();
@@ -346,6 +344,11 @@ public class DocGenerator implements IGenerator {
     String _asTitle = this.asTitle(_fieldName);
     _builder.append(_asTitle, "");
     _builder.append("</h4>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("<p>");
+    CharSequence _generateDoc = this.generateDoc(table);
+    _builder.append(_generateDoc, "");
+    _builder.append("</p>");
     _builder.newLineIfNotEmpty();
     _builder.append("<table class=\"table table-striped table-bordered table-condensed\">");
     _builder.newLine();

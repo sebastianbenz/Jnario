@@ -18,7 +18,7 @@ import static extension de.bmw.carit.jnario.tests.util.SpecExecutor.*
  * your software at the same time.
  * For example, this document is actually generated from a [spec](https://gist.github.com/1762405) written 
  * with *Jnario Specs*.
- */
+ */ 
 describe "Jnario Specs - BDD for Java"{
 
   /*

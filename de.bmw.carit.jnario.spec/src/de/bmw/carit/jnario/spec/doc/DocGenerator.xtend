@@ -88,7 +88,6 @@ class DocGenerator implements IGenerator {
 		<title>«exampleGroup.asTitle»</title>
 		<meta name="description" content="">
 		<meta name="author" content="Jnario">
-		<meta HTTP-EQUIV="Refresh" CONTENT="5">
 		
 		<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
 		<!--[if lt IE 9]>
@@ -151,6 +150,7 @@ class DocGenerator implements IGenerator {
 	
 	def dispatch generate(ExampleTable table, int level)'''
 		<h4>«table.toFieldName.asTitle»</h4>
+		<p>«table.generateDoc()»</p>
 		<table class="table table-striped table-bordered table-condensed">
 			<thead>
 				<tr>

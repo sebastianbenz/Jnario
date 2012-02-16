@@ -1,5 +1,5 @@
-package de.bmw.carit.jnario.spec.tests.integration
-
+package de.bmw.carit.jnario.spec.tests.integration2
+import static extension de.bmw.carit.jnario.common.test.util.Helpers.*
 import static extension de.bmw.carit.jnario.tests.util.SpecExecutor.*
 import org.junit.Ignore
 /*
@@ -9,8 +9,8 @@ describe "Example Tables"{
    
   /*
    * Examples are stored within a table. Assertions for the table's values are
-   * best implemented by iterating over each table row with Xtend's `forEach` method. 
-   * Inside the closure that is passed to `forEach`, each value in a row can be 
+   * best implemented by iterating over each table row using it's each method. 
+   * Inside the closure that is passed to `each`, each value in a row can be 
    * directly accessed by it's column's name making use of 
    * [Xtend's implicit 'it'](http://www.eclipse.org/xtend/documentation/index.html#closures).
    */ 
@@ -27,7 +27,7 @@ describe "Example Tables"{
       } 
       
       it "can be accessed via the table name"{
-        myExamples.forEach[   
+        myExamples.each[   
           input.toUpperCase.should.be(result) 
         ] 
       }
@@ -72,7 +72,7 @@ describe "Example Tables"{
       }  
 
       it "supports closures as values"{   
-        myExampleWithClosures.forEach[
+        myExampleWithClosures.each[
           operation.apply(input).should.be(result)
         ]
       }       
@@ -99,7 +99,7 @@ describe "Example Tables"{
     }     
 
     it "computes the common super type"{
-      examplesWithType.forEach[
+      examplesWithType.each[
         assert list.empty
       ]
     }
@@ -107,17 +107,40 @@ describe "Example Tables"{
   '''.executesSuccessfully       
   }
   
+  
   /*
-   * Jnario will include example tables in the generated documentation.
+   * Jnario will include example tables in the generated documentation. 
+   * (The errors in the table are intentional, we need it in the next example). 
    */
-  describe "Documentation"{
-  	
-  	def Additions{
-  		| Value1 | Value2 | Sum |
-  		|   1    |    2   |  3  |
-  		|   4    |    5   |  9  |
-  		|   7    |    8   | 15  |
-  	}
-  	
-  }  
+	def example{
+		| value1 | value2 | sum |
+		|   1    |    2   |  3  |
+		|   4    |    5   |  7  |
+		|   7    |    8   | 14  |
+	}
+
+  /*
+   * The ExampleTable#each will execute all assertions on a table.
+   */
+   @Ignore
+   - "Error message"{
+		errorMessage[example.each[assert value1 + value2 == sum]].is('''
+			example failed
+			        | 1 | 2 | 3| ✓
+			        | 4 | 5 | 7| ✗ (1)
+			        | 7 | 8 | 14| ✗ (2)
+			
+			(1) Expected value1 + value2 == sum but:
+			     value1 + value2 is 9
+			     value1 is 4
+			     value2 is 5
+			     sum is 7
+			
+			(2) Expected value1 + value2 == sum but:
+			     value1 + value2 is 15
+			     value1 is 7
+			     value2 is 8
+			     sum is 14''')
+	}    
+  
 }               
