@@ -2,6 +2,8 @@ package de.bmw.carit.jnario.lib;
 
 import static com.google.common.collect.Iterables.filter;
 import static com.google.common.collect.Lists.newArrayListWithExpectedSize;
+import static java.lang.Math.max;
+import static java.lang.String.format;
 import static java.util.Arrays.asList;
 
 import java.util.Iterator;
@@ -9,7 +11,12 @@ import java.util.List;
 
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
-public class ExampleTable<T> implements Iterable<T>{
+public class ExampleTable<T extends ExampleTableRow> implements Iterable<T>{
+
+	/**
+	 * 
+	 */
+	private static final String INDENT = "        ";
 
 	public static abstract class Result{
 
@@ -51,13 +58,16 @@ public class ExampleTable<T> implements Iterable<T>{
 	private final List<T> rows;
 
 	private final String name;
+
+	private final List<String> columns;
 	
-	public static <P> ExampleTable<P> create(String name, P... entries){
-		return new ExampleTable<P>(name, asList(entries));
+	public static <P extends ExampleTableRow> ExampleTable<P> create(String name, List<String> columns, P... entries){
+		return new ExampleTable<P>(name, columns, asList(entries));
 	}
 	
-	public ExampleTable(String name, List<T> rows){
+	public ExampleTable(String name, List<String> columns, List<T> rows){
 		this.name = name;
+		this.columns = columns;
 		this.rows = rows;
 	}
 
@@ -107,13 +117,16 @@ public class ExampleTable<T> implements Iterable<T>{
 	}
 
 	private String createMessage(List<Result> results) {
-		StringBuilder message = new StringBuilder(name + " failed\n");
+		String formatString = createFormatString();
 		StringBuilder causes = new StringBuilder();
+		StringBuilder message = new StringBuilder(name);
+		message.append(" failed\n\n");
+		describeColumns(formatString, message);
 		int i = 1;
 		for (Result result : results) {
-			describeRow(message, i, result);
+			describeRow(formatString, message, result);
 			if (result instanceof Failure) {
-				message.append(" (");
+				message.append("     (");
 				message.append(i);
 				message.append(")");
 				describeCause(causes, i, (Failure) result);
@@ -125,9 +138,30 @@ public class ExampleTable<T> implements Iterable<T>{
 		return message.toString();
 	}
 
-	protected void describeRow(StringBuilder message, int i, Result result) {
-		message.append("        ");
-		message.append(result.value);
+	private String createFormatString() {
+		StringBuilder formatString = new StringBuilder("|");
+		for(int i = 0; i < columns.size(); i++){
+			int length = columns.get(i).length();
+			for (T row : rows) {
+				String cell = row.getValues().get(i);
+				int cellLength = cell == null ? 0 : cell.length();
+				length = max(length, cellLength);
+			}
+			formatString.append(" %" + (i + 1) + "$-" + (length+10) + "s|");
+		}
+		return formatString.toString();
+	}
+	
+	private void describeColumns(String formatString, StringBuilder message) {
+		message.append(INDENT);
+		message.append(format(formatString, columns.toArray()));
+		message.append("\n"); 
+	}
+
+	protected void describeRow(String formatString, StringBuilder message, Result result) {
+		message.append(INDENT);
+		List<String> cells = ((ExampleTableRow)result.value).getValues();
+		message.append(format(formatString, cells.toArray()));
 		message.append(" ");
 		message.append(result);
 	}
@@ -136,8 +170,7 @@ public class ExampleTable<T> implements Iterable<T>{
 		causes.append("\n(");
 		causes.append(i);
 		causes.append(") ");
-		causes.append(result.exception.getLocalizedMessage().substring(1));
-		causes.append("\n");
+		causes.append(result.exception.getLocalizedMessage().substring(1).replaceAll("\\\n", "\n    "));
 	}
 
 	

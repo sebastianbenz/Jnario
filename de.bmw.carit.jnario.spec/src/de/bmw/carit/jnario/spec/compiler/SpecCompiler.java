@@ -83,7 +83,7 @@ public class SpecCompiler extends Xtend2Compiler {
 		internalToJavaStatement(expr, b, true);
 		b.append("\norg.junit.Assert.assertTrue(");
 		generateMessageFor(expr, b);
-		b.append(", ");
+		b.append(" + \"" + convertToJavaString("\n") + "\", ");
 		internalToJavaExpression(expr, b);
 		b.append(");\n");
 	}
@@ -201,7 +201,6 @@ public class SpecCompiler extends Xtend2Compiler {
 		if (binaryOperation.getImplicitReceiver()!=null) {
 			internalToJavaStatement(binaryOperation.getImplicitReceiver(), b, true);
 		}
-		
 		
 		b.append("\n").append(b.getName(binaryOperation)).append(" = ");
 		featureCalltoJavaExpression(binaryOperation, b);

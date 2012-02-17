@@ -16,7 +16,6 @@ import static org.eclipse.xtext.util.Strings.toFirstUpper;
 import java.util.List;
 
 import org.eclipse.xtext.util.SimpleAttributeResolver;
-import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 
 import de.bmw.carit.jnario.common.ExampleTable;

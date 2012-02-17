@@ -31,6 +31,7 @@ import org.eclipse.xtext.xbase.compiler.StringBuilderBasedAppendable
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
 import org.eclipse.xtext.xtend2.xtend2.XtendField
 import org.eclipse.xtext.xtend2.xtend2.XtendFunction
+import de.bmw.carit.jnario.lib.ExampleTableRow
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -165,6 +166,7 @@ class SpecJvmModelInferrer extends CommonJvmModelInferrer {
 	
 	def transform(JvmGenericType specType, ExampleTable element, SpecFile spec){
 		element.toClass(element.toJavaClassName)[exampleTableType |
+			exampleTableType.superTypes += getTypeForName(typeof(ExampleTableRow), element)
 			exampleTableType.configureWith(element, spec)
 			
 			val type = getTypeForName(typeof(de.bmw.carit.jnario.lib.ExampleTable), element, exampleTableType.createTypeRef)
@@ -201,9 +203,12 @@ class SpecJvmModelInferrer extends CommonJvmModelInferrer {
 				Joiner::on(Strings::newLine).join(assignments)
 			]
 			
-			exampleTableType.members += element.toMethod("toString", getTypeForName(typeof(String), element))[
+			val stringType = getTypeForName(typeof(String), element)
+			val listType = getTypeForName(typeof(List), element, stringType)
+			
+			exampleTableType.members += element.toMethod("getValues", listType)[
 				setBody[ImportManager im |
-					'return "| " + ' + element.columns.map[name].join(' + " | " + ') + ' + "|";'
+					'return java.util.Arrays.asList(String.valueOf(' + element.columnNames.join(') , String.valueOf(') + '));'
 				]
 			]
 		]
@@ -217,7 +222,8 @@ class SpecJvmModelInferrer extends CommonJvmModelInferrer {
 			}
 		}
 		result.append(exampleTable.toFieldName);
-		result.append(" = ExampleTable.create(\"" + exampleTable.toFieldName + "\", ")
+		result.append(" = ExampleTable.create(\"" + exampleTable.toFieldName + "\", \n")
+		result.append('  java.util.Arrays.asList("' + exampleTable.columnNames.join('", "') + '"), ')
 		result.increaseIndentation()
 		result.append("\n")
 		for(row : exampleTable.rows){
@@ -236,6 +242,10 @@ class SpecJvmModelInferrer extends CommonJvmModelInferrer {
 		result.decreaseIndentation()
 		result.append("\n);")
 		return result.toString
+	}
+	
+	def columnNames(ExampleTable exampleTable){
+		exampleTable.columns.map[it?.name]
 	}
 	
 }
