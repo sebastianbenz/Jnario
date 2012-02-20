@@ -20,7 +20,7 @@ import static extension de.bmw.carit.jnario.tests.util.SpecExecutor.*
  * with *Jnario Specs*.
  */ 
 describe "Jnario Specs - BDD for Java"{
-
+ 
   /*
    * Jnario improves the readability of tests by providing assertion methods which can extend 
    * any object (making use of Xtend's [extension methods](http://www.eclipse.org/xtend/#extensionmethods)).

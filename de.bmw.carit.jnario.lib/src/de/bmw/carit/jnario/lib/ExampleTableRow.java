@@ -9,8 +9,16 @@ import java.util.List;
  * @author Sebastian Benz
  *
  */
-public interface ExampleTableRow {
+public abstract class ExampleTableRow {
 
-	List<String> getValues();
+	private final List<String> cells;
+
+	public ExampleTableRow(List<String> cells) {
+		this.cells = cells;
+	}
+	
+	List<String> getCells(){
+		return cells;
+	}
 	
 }

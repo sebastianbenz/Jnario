@@ -8,6 +8,9 @@
 package de.bmw.carit.jnario.lib;
 
 import java.util.Arrays;
+
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
@@ -19,6 +22,10 @@ public class Each {
 	
 	public static <T> MatcherChain<T> each(Iterable<? extends T> inputs) {
 		return new MultiTargetMatcherChain<T>(inputs);
+	}
+	
+	public <T extends ExampleTableRow> void forEach(ExampleTable<T> table, Procedure1<T> assertion) {
+		ExampleTableIterators.forEach(table, assertion);
 	}
 
 }

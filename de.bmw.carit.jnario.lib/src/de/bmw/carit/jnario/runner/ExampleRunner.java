@@ -37,6 +37,7 @@ import com.google.common.base.Function;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
+@SuppressWarnings("restriction")
 public class ExampleRunner extends BlockJUnit4ClassRunner {
 
 	private final class MethodNameConverter implements Function<FrameworkMethod, FrameworkMethod> {

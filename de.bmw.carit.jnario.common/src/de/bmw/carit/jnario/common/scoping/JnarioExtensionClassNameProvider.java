@@ -16,6 +16,8 @@ import com.google.common.collect.Multimap;
 import com.google.inject.Singleton;
 
 import de.bmw.carit.jnario.lib.Each;
+import de.bmw.carit.jnario.lib.ExampleTable;
+import de.bmw.carit.jnario.lib.ExampleTableIterators;
 import de.bmw.carit.jnario.lib.Expectations;
 import de.bmw.carit.jnario.lib.Should;
 
@@ -25,6 +27,7 @@ public class JnarioExtensionClassNameProvider extends ExtensionClassNameProvider
 	@Override
 	protected Multimap<Class<?>, Class<?>> simpleComputeExtensionClasses() {
 		Multimap<Class<?>, Class<?>> result = super.simpleComputeExtensionClasses();
+		result.put(ExampleTable.class, ExampleTableIterators.class);
 		result.put(Object.class, Should.class);
 		result.put(Object.class, Each.class);
 		result.put(Object.class, CoreMatchers.class);

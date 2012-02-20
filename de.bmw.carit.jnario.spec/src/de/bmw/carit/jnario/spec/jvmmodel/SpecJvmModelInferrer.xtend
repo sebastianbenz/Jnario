@@ -1,5 +1,5 @@
 package de.bmw.carit.jnario.spec.jvmmodel
-
+import static extension org.eclipse.xtext.util.Strings.*
 import com.google.common.base.Joiner
 import com.google.inject.Inject
 import de.bmw.carit.jnario.common.ExampleTable
@@ -32,6 +32,7 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
 import org.eclipse.xtext.xtend2.xtend2.XtendField
 import org.eclipse.xtext.xtend2.xtend2.XtendFunction
 import de.bmw.carit.jnario.lib.ExampleTableRow
+import org.eclipse.xtext.serializer.ISerializer
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -49,6 +50,9 @@ class SpecJvmModelInferrer extends CommonJvmModelInferrer {
 	@Inject extension ImplicitSubject 
 	
 	@Inject extension IJvmModelAssociations 
+	
+	@Inject extension ISerializer 
+	
 	
 	override void infer(EObject e, IAcceptor<JvmDeclaredType> acceptor, boolean isPrelinkingPhase) {
 		if (!(e instanceof SpecFile)){
@@ -183,6 +187,15 @@ class SpecJvmModelInferrer extends CommonJvmModelInferrer {
 			exampleTableType.members += constructor
 			val assignments = <String>newArrayList()
 			
+			val stringType = getTypeForName(typeof(String), element)
+			val listType = getTypeForName(typeof(List), element, stringType)
+			
+			val cellNames = typesFactory.createJvmFormalParameter();
+			cellNames.name = "cellNames"
+			cellNames.setParameterType(listType);
+			constructor.parameters += cellNames
+			assignments += "super(cellNames);"
+			
 			element.columns.forEach[column |
 				exampleTableType.members += column.toField				
 				val jvmParam = typesFactory.createJvmFormalParameter();
@@ -203,10 +216,8 @@ class SpecJvmModelInferrer extends CommonJvmModelInferrer {
 				Joiner::on(Strings::newLine).join(assignments)
 			]
 			
-			val stringType = getTypeForName(typeof(String), element)
-			val listType = getTypeForName(typeof(List), element, stringType)
 			
-			exampleTableType.members += element.toMethod("getValues", listType)[
+			exampleTableType.members += element.toMethod("getCells", listType)[
 				setBody[ImportManager im |
 					'return java.util.Arrays.asList(String.valueOf(' + element.columnNames.join(') , String.valueOf(') + '));'
 				]
@@ -228,6 +239,7 @@ class SpecJvmModelInferrer extends CommonJvmModelInferrer {
 		result.append("\n")
 		for(row : exampleTable.rows){
 		 	result.append("new ").append(exampleTableType.simpleName).append("(")
+		 	result.append('  java.util.Arrays.asList("' + row.cells.map[serialize.trim.convertToJavaString].join('", "') + '"), ')
 		 	for(cell :row.cells){
 		 		compiler.toJavaExpression(cell, result)
 		 		if(row.cells.last != cell){

@@ -44,6 +44,7 @@ import com.google.common.collect.Iterables;
 /**
  * @author Sebastian Benz - Initial contribution and API - Initial Contribution and API
  */
+@SuppressWarnings("restriction")
 public class ExampleGroupRunner extends ParentRunner<Runner> {
 	
 	private NameProvider nameProvider;

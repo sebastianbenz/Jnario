@@ -27,7 +27,7 @@ describe "Example Tables"{
       } 
       
       it "can be accessed via the table name"{
-        myExamples.each[   
+        myExamples.forEach[   
           input.toUpperCase.should.be(result) 
         ] 
       }
@@ -72,7 +72,7 @@ describe "Example Tables"{
       }  
 
       it "supports closures as values"{   
-        myExampleWithClosures.each[
+        myExampleWithClosures.forEach[
           operation.apply(input).should.be(result)
         ]
       }       
@@ -99,7 +99,7 @@ describe "Example Tables"{
     }     
 
     it "computes the common super type"{
-      examplesWithType.each[
+      examplesWithType.forEach[
         assert list.empty
       ]
     }
@@ -124,7 +124,7 @@ describe "Example Tables"{
    */
    @Ignore
    - "Error message"{
-		errorMessage[example.each[assert value1 + value2 == sum]].is('''
+		errorMessage[example.forEach[assert value1 + value2 == sum]].is('''
 			example failed
 			        | 1 | 2 | 3| ✓
 			        | 4 | 5 | 7| ✗ (1)

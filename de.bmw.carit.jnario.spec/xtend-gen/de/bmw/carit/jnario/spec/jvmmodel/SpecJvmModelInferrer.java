@@ -35,6 +35,7 @@ import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.common.types.util.TypeReferences;
+import org.eclipse.xtext.serializer.ISerializer;
 import org.eclipse.xtext.util.IAcceptor;
 import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.xbase.XExpression;
@@ -82,6 +83,9 @@ public class SpecJvmModelInferrer extends CommonJvmModelInferrer {
   
   @Inject
   private IJvmModelAssociations _iJvmModelAssociations;
+  
+  @Inject
+  private ISerializer _iSerializer;
   
   public void infer(final EObject e, final IAcceptor<JvmDeclaredType> acceptor, final boolean isPrelinkingPhase) {
       boolean _operator_not = BooleanExtensions.operator_not((e instanceof SpecFile));
@@ -350,6 +354,17 @@ public class SpecJvmModelInferrer extends CommonJvmModelInferrer {
             CollectionExtensions.<JvmConstructor>operator_add(_members_2, constructor);
             ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList();
             final ArrayList<String> assignments = _newArrayList;
+            JvmTypeReference _typeForName_3 = SpecJvmModelInferrer.this._typeReferences.getTypeForName(java.lang.String.class, element);
+            final JvmTypeReference stringType = _typeForName_3;
+            JvmTypeReference _typeForName_4 = SpecJvmModelInferrer.this._typeReferences.getTypeForName(java.util.List.class, element, stringType);
+            final JvmTypeReference listType = _typeForName_4;
+            JvmFormalParameter _createJvmFormalParameter = SpecJvmModelInferrer.this.typesFactory.createJvmFormalParameter();
+            final JvmFormalParameter cellNames = _createJvmFormalParameter;
+            cellNames.setName("cellNames");
+            cellNames.setParameterType(listType);
+            EList<JvmFormalParameter> _parameters = constructor.getParameters();
+            CollectionExtensions.<JvmFormalParameter>operator_add(_parameters, cellNames);
+            CollectionExtensions.<String>operator_add(assignments, "super(cellNames);");
             EList<ExampleColumn> _columns = element.getColumns();
             final Procedure1<ExampleColumn> _function_2 = new Procedure1<ExampleColumn>() {
                 public void apply(final ExampleColumn column) {
@@ -376,7 +391,7 @@ public class SpecJvmModelInferrer extends CommonJvmModelInferrer {
                     CollectionExtensions.<String>operator_add(assignments, _operator_plus_3);
                     EList<JvmMember> _members_1 = exampleTableType.getMembers();
                     String _name_3 = column.getName();
-                    String _firstUpper = StringExtensions.toFirstUpper(_name_3);
+                    String _firstUpper = Strings.toFirstUpper(_name_3);
                     String _operator_plus_4 = StringExtensions.operator_plus("get", _firstUpper);
                     JvmTypeReference _type_1 = column.getType();
                     final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
@@ -407,10 +422,6 @@ public class SpecJvmModelInferrer extends CommonJvmModelInferrer {
                 }
               };
             SpecJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(constructor, _function_3);
-            JvmTypeReference _typeForName_3 = SpecJvmModelInferrer.this._typeReferences.getTypeForName(java.lang.String.class, element);
-            final JvmTypeReference stringType = _typeForName_3;
-            JvmTypeReference _typeForName_4 = SpecJvmModelInferrer.this._typeReferences.getTypeForName(java.util.List.class, element, stringType);
-            final JvmTypeReference listType = _typeForName_4;
             EList<JvmMember> _members_3 = exampleTableType.getMembers();
             final Procedure1<JvmOperation> _function_4 = new Procedure1<JvmOperation>() {
                 public void apply(final JvmOperation it) {
@@ -426,7 +437,7 @@ public class SpecJvmModelInferrer extends CommonJvmModelInferrer {
                   SpecJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, _function);
                 }
               };
-            JvmOperation _method_1 = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toMethod(element, "getValues", listType, _function_4);
+            JvmOperation _method_1 = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toMethod(element, "getCells", listType, _function_4);
             CollectionExtensions.<JvmOperation>operator_add(_members_3, _method_1);
           }
         }
@@ -466,11 +477,25 @@ public class SpecJvmModelInferrer extends CommonJvmModelInferrer {
           IAppendable _append_1 = _append.append(_simpleName);
           _append_1.append("(");
           EList<XExpression> _cells_1 = row_1.getCells();
-          for (final XExpression cell_1 : _cells_1) {
+          final Function1<XExpression,String> _function = new Function1<XExpression,String>() {
+              public String apply(final XExpression it) {
+                String _serialize = SpecJvmModelInferrer.this._iSerializer.serialize(it);
+                String _trim = _serialize.trim();
+                String _convertToJavaString = Strings.convertToJavaString(_trim);
+                return _convertToJavaString;
+              }
+            };
+          List<String> _map = ListExtensions.<XExpression, String>map(_cells_1, _function);
+          String _join_1 = IterableExtensions.join(_map, "\", \"");
+          String _operator_plus_4 = StringExtensions.operator_plus("  java.util.Arrays.asList(\"", _join_1);
+          String _operator_plus_5 = StringExtensions.operator_plus(_operator_plus_4, "\"), ");
+          result.append(_operator_plus_5);
+          EList<XExpression> _cells_2 = row_1.getCells();
+          for (final XExpression cell_1 : _cells_2) {
             {
               this.compiler.toJavaExpression(cell_1, result);
-              EList<XExpression> _cells_2 = row_1.getCells();
-              XExpression _last = IterableExtensions.<XExpression>last(_cells_2);
+              EList<XExpression> _cells_3 = row_1.getCells();
+              XExpression _last = IterableExtensions.<XExpression>last(_cells_3);
               boolean _operator_notEquals = ObjectExtensions.operator_notEquals(_last, cell_1);
               if (_operator_notEquals) {
                 result.append(", ");
