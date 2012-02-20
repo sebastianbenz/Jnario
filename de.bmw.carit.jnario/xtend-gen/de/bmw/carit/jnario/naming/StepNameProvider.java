@@ -16,14 +16,16 @@ import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 
 @SuppressWarnings("all")
 public class StepNameProvider {
+  private static String MULTILINE = "\\\\( |\t)*\r?\n?( |\t)*";
+  
   public String nameOf(final Step step) {
       if ((step instanceof StepReference)) {
         String _nameOf = this.nameOf(((StepReference) step));
         return _nameOf;
       }
       String _name = step.getName();
-      String _trim = _name==null?(String)null:_name.trim();
-      return _trim;
+      String _removeExtraCharacters = _name==null?(String)null:this.removeExtraCharacters(_name);
+      return _removeExtraCharacters;
   }
   
   public String nameOf(final StepReference ref) {
@@ -59,5 +61,12 @@ public class StepNameProvider {
       String _join = IterableExtensions.join(_map);
       String _trim = _join.trim();
       return _trim;
+  }
+  
+  public String removeExtraCharacters(final String string) {
+    String _trim = string.trim();
+    String _replace = _trim.replace("\"", "\\\"");
+    String _replaceAll = _replace.replaceAll(StepNameProvider.MULTILINE, " ");
+    return _replaceAll;
   }
 }

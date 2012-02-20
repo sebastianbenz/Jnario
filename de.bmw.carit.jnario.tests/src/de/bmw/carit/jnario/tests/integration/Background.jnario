@@ -6,9 +6,8 @@ import static extension de.bmw.carit.jnario.tests.util.JnarioExecutor.*
 Feature: Backgrounds
 
 	Scenario: It is possible to add a background to a feature
-		public String jnarioFile
 		Given I have a feature with a background
-			jnarioFile = "
+			var jnarioFile = "
 				package bootstrap
 				Feature: Some feature
 					Background:
@@ -23,9 +22,8 @@ Feature: Backgrounds
 
 	Scenario: Given methods from backgrounds are generated in every scenario class
 	
-		public String jnarioFile
 		Given I have a feature with a background
-			jnarioFile = "
+			var jnarioFile = "
 				package bootstrap
 				Feature: Some feature
 					Background:

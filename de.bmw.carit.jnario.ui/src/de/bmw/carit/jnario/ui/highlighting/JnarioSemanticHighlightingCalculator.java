@@ -15,14 +15,13 @@ import java.util.regex.Pattern;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.xtend2.ui.highlighting.XtendHighlightingCalculator;
+import org.eclipse.xtext.xtend2.xtend2.XtendField;
 
-import de.bmw.carit.jnario.common.ExampleHeading;
 import de.bmw.carit.jnario.common.ExampleTable;
 import de.bmw.carit.jnario.jnario.AndReference;
 import de.bmw.carit.jnario.jnario.GivenReference;
@@ -39,7 +38,7 @@ import de.bmw.carit.jnario.jnario.util.JnarioSwitch;
  */
 public class JnarioSemanticHighlightingCalculator extends XtendHighlightingCalculator {
 
-	private static final Pattern IDENTIFIER = Pattern.compile("<([a-zA-Z0-9_]+)>");
+	private static final Pattern IDENTIFIER = Pattern.compile("\"([a-zA-Z0-9_]+)\"");
 
 	private class Implementation extends JnarioSwitch<Boolean> {
 
@@ -53,7 +52,7 @@ public class JnarioSemanticHighlightingCalculator extends XtendHighlightingCalcu
 		public Boolean caseScenario(Scenario scenario) {
 			if(scenario.getExamples().size() > 0){
 				for(ExampleTable table: scenario.getExamples())
-					highlightExampleHeader(table.getHeading());
+					highlightExampleHeader(table);
 			}			
 			return Boolean.TRUE;
 		}
@@ -142,10 +141,14 @@ public class JnarioSemanticHighlightingCalculator extends XtendHighlightingCalcu
 			}
 		}
 
-		private void highlightExampleHeader(ExampleHeading heading){
-			if(heading != null){
-				ICompositeNode node = NodeModelUtils.getNode(heading);
-				acceptor.addPosition(node.getOffset(), node.getLength(), JnarioHighlightingConfiguration.IDENTIFIERS_ID);
+		private void highlightExampleHeader(ExampleTable table){
+			
+			if(table == null){
+				return;
+			}
+			for (XtendField element : table.getColumns()) {
+				INode node = NodeModelUtils.getNode(element);
+				highlightNode(node ,  JnarioHighlightingConfiguration.IDENTIFIERS_ID, acceptor);
 			}
 		}
 	}

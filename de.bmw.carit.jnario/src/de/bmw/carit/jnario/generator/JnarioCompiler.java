@@ -8,8 +8,12 @@
 package de.bmw.carit.jnario.generator;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtext.common.types.JvmPrimitiveType;
+import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.common.types.util.Primitives.Primitive;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.compiler.IAppendable;
 import org.eclipse.xtext.xtend2.compiler.Xtend2Compiler;
 
@@ -45,5 +49,43 @@ public class JnarioCompiler extends Xtend2Compiler {
 			}
 		}
 		b.decreaseIndentation();
+	}
+	
+	@Override
+	protected void _toJavaStatement(XVariableDeclaration varDeclaration,
+			IAppendable b, boolean isReferenced) {
+		if (varDeclaration.getRight() != null) {
+			internalToJavaStatement(varDeclaration.getRight(), b, true);
+		}
+		b.append("\n");
+		if (!varDeclaration.isWriteable()) {
+			b.append("final ");
+		}
+		JvmTypeReference type = null;
+		if (varDeclaration.getType() != null) {
+			type = varDeclaration.getType();
+		} else {
+			type = getTypeProvider().getType(varDeclaration.getRight());
+		}
+		b.append(b.declareVariable(varDeclaration, varDeclaration.getName()));
+		b.append(" = ");
+		if (varDeclaration.getRight() != null) {
+			internalToConvertedExpression(varDeclaration.getRight(), b, type);
+		} else {
+			if (getPrimitives().isPrimitive(type)) {
+				Primitive primitiveKind = getPrimitives().primitiveKind((JvmPrimitiveType) type.getType());
+				switch (primitiveKind) {
+					case Boolean:
+						b.append("false");
+						break;
+					default:
+						b.append("0");
+						break;
+				}
+			} else {
+				b.append("null");
+			}
+		}
+		b.append(";");
 	}
 }

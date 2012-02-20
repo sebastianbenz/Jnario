@@ -6,12 +6,10 @@ import static de.bmw.carit.jnario.common.test.util.ResultMatchers.*
 Feature: Annotations
 
 	Scenario: Parsing annotations inside a code block
-
-		public String jnarioFile
 	
 		Given a jnario-file with annotations
 		
-			jnarioFile = "
+			var jnarioFile = "
 				package bootstrap
 				import org.junit.Rule 
 				Feature:

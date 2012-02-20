@@ -30,7 +30,6 @@ import org.eclipse.xtext.xbase.scoping.featurecalls.StaticImplicitMethodsFeature
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.eclipse.xtext.xbase.validation.EarlyExitValidator;
 import org.eclipse.xtext.xtend2.compiler.Xtend2OutputConfigurationProvider;
-import org.eclipse.xtext.xtend2.featurecalls.Xtend2IdentifiableSimpleNameProvider;
 import org.eclipse.xtext.xtend2.jvmmodel.DispatchUtil;
 import org.eclipse.xtext.xtend2.jvmmodel.IXtend2JvmAssociations;
 import org.eclipse.xtext.xtend2.resource.Xtend2Resource;
@@ -53,6 +52,7 @@ import de.bmw.carit.jnario.generator.JnarioCompiler;
 import de.bmw.carit.jnario.generator.JnarioJvmModelGenerator;
 import de.bmw.carit.jnario.jvmmodel.JnarioFeatureCallToJavaMapping;
 import de.bmw.carit.jnario.jvmmodel.JnarioJvmModelInferrer;
+import de.bmw.carit.jnario.naming.JnarioIdentifiableSimpleNameProvider;
 import de.bmw.carit.jnario.naming.JnarioQualifiedNameProvider;
 import de.bmw.carit.jnario.validation.JnarioClasspathBasedChecks;
 import de.bmw.carit.jnario.validation.JnarioResourceValidator;
@@ -97,7 +97,7 @@ public class JnarioRuntimeModule extends de.bmw.carit.jnario.AbstractJnarioRunti
 
 	@Override
 	public Class<? extends IdentifiableSimpleNameProvider> bindIdentifiableSimpleNameProvider() {
-		return Xtend2IdentifiableSimpleNameProvider.class;
+		return JnarioIdentifiableSimpleNameProvider.class;
 	}
 
 	public Class<? extends IJvmModelInferrer> bindIJvmModelInferrer() {

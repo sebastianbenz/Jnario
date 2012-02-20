@@ -7,17 +7,14 @@ Feature: Test Runner
 
 	Scenario: Create only one test instance for one jnario scenario
 	
-		public String jnarioFile
-	
 		Given a jnario-file that uses one variable in different steps
 		
-			jnarioFile = "
+			var jnarioFile = "
 				package bootstrap
 				Feature:
 					Scenario:
-						public int x
 						Given 
-							x = 3
+							var x = 3
 						When 
 							x = x + 1 
 						Then 

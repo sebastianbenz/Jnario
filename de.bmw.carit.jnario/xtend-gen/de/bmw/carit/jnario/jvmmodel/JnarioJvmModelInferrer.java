@@ -18,7 +18,6 @@ import de.bmw.carit.jnario.naming.JavaNameProvider;
 import de.bmw.carit.jnario.naming.StepExpressionProvider;
 import de.bmw.carit.jnario.naming.StepNameProvider;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -33,14 +32,13 @@ import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmMember;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
-import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.util.IAcceptor;
-import org.eclipse.xtext.xbase.XAssignment;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 import org.eclipse.xtext.xbase.compiler.ImportManager;
 import org.eclipse.xtext.xbase.compiler.StringBuilderBasedAppendable;
@@ -190,7 +188,9 @@ public class JnarioJvmModelInferrer extends CommonJvmModelInferrer {
             it.setPackageName(_package);
             it.setAbstract(true);
             Background _background = feature.getBackground();
-            EList<Step> _steps = _background.getSteps();
+            JnarioJvmModelInferrer.this.generateBackgroundVariables(_background, it);
+            Background _background_1 = feature.getBackground();
+            EList<Step> _steps = _background_1.getSteps();
             JnarioJvmModelInferrer.this.generateSteps(_steps, it);
           }
         }
@@ -233,7 +233,7 @@ public class JnarioJvmModelInferrer extends CommonJvmModelInferrer {
                 start = _generateBackgroundStepCalls;
               }
             }
-            JnarioJvmModelInferrer.this.generateVariables(scenario, feature, hasBackground, it);
+            JnarioJvmModelInferrer.this.generateVariables(scenario, feature, it);
             EList<Step> _steps_1 = scenario.getSteps();
             JnarioJvmModelInferrer.this.generateSteps(_steps_1, it, start);
             EList<ExampleTable> _examples = scenario.getExamples();
@@ -259,110 +259,81 @@ public class JnarioJvmModelInferrer extends CommonJvmModelInferrer {
     return _class;
   }
   
-  public void generateVariables(final Scenario scenario, final Feature feature, final boolean hasBackground, final JvmGenericType inferredJvmType) {
-      ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList();
-      ArrayList<String> allVariables = _newArrayList;
-      if (hasBackground) {
+  public void generateVariables(final Scenario scenario, final Feature feature, final JvmGenericType inferredJvmType) {
+      EList<ExampleTable> _examples = scenario.getExamples();
+      boolean _isEmpty = _examples.isEmpty();
+      boolean _operator_not = BooleanExtensions.operator_not(_isEmpty);
+      if (_operator_not) {
         {
-          Background _background = feature.getBackground();
-          EList<XtendMember> _members = _background.getMembers();
-          Iterator<XtendMember> _iterator = _members.iterator();
-          UnmodifiableIterator<XtendField> _filter = Iterators.<XtendField>filter(_iterator, org.eclipse.xtext.xtend2.xtend2.XtendField.class);
-          UnmodifiableIterator<XtendField> backgroundFields = _filter;
-          Iterable<XtendField> _iterable = IteratorExtensions.<XtendField>toIterable(backgroundFields);
-          for (final XtendField field : _iterable) {
+          ArrayList<String> _arrayList = new ArrayList<String>();
+          ArrayList<String> fieldNames = _arrayList;
+          EList<ExampleTable> _examples_1 = scenario.getExamples();
+          for (final ExampleTable table : _examples_1) {
             {
-              this.transform(field, inferredJvmType);
-              String _name = field.getName();
-              allVariables.add(_name);
-            }
-          }
-        }
-      }
-      EList<XtendField> _fields = scenario.getFields();
-      EList<XtendField> fields = _fields;
-      for (final XtendField field_1 : fields) {
-        {
-          boolean _operator_or = false;
-          JvmTypeReference _type = field_1.getType();
-          boolean _operator_equals = ObjectExtensions.operator_equals(_type, null);
-          if (_operator_equals) {
-            _operator_or = true;
-          } else {
-            JvmTypeReference _type_1 = field_1.getType();
-            JvmType _type_2 = _type_1.getType();
-            boolean _operator_equals_1 = ObjectExtensions.operator_equals(_type_2, null);
-            _operator_or = BooleanExtensions.operator_or(_operator_equals, _operator_equals_1);
-          }
-          if (_operator_or) {
-            this.deriveFieldType(scenario, field_1);
-          }
-          String _name_1 = field_1.getName();
-          boolean _contains = allVariables.contains(_name_1);
-          boolean _operator_not = BooleanExtensions.operator_not(_contains);
-          if (_operator_not) {
-            {
-              this.transform(field_1, inferredJvmType);
-              String _name_2 = field_1.getName();
-              allVariables.add(_name_2);
-            }
-          }
-        }
-      }
-      TreeIterator<EObject> _eAllContents = scenario.eAllContents();
-      TreeIterator<EObject> eAllContents = _eAllContents;
-      UnmodifiableIterator<XtendField> _filter_1 = Iterators.<XtendField>filter(eAllContents, org.eclipse.xtext.xtend2.xtend2.XtendField.class);
-      UnmodifiableIterator<XtendField> allFields = _filter_1;
-      Iterable<XtendField> _iterable_1 = IteratorExtensions.<XtendField>toIterable(allFields);
-      for (final XtendField field_2 : _iterable_1) {
-        String _name_3 = field_2.getName();
-        boolean _contains_1 = allVariables.contains(_name_3);
-        boolean _operator_not_1 = BooleanExtensions.operator_not(_contains_1);
-        if (_operator_not_1) {
-          {
-            if ((field_2 instanceof ExampleColumn)) {
-              EList<JvmMember> _members_1 = inferredJvmType.getMembers();
-              JvmField _field = this.toField(((ExampleColumn) field_2));
-              CollectionExtensions.<JvmField>operator_add(_members_1, _field);
-            } else {
-              this.transform(field_2, inferredJvmType);
-            }
-            String _name_4 = field_2.getName();
-            allVariables.add(_name_4);
-          }
-        }
-      }
-  }
-  
-  public Object deriveFieldType(final Scenario scenario, final XtendField field) {
-    Object _xifexpression = null;
-    EList<XtendField> _fields = scenario.getFields();
-    boolean _contains = _fields.contains(field);
-    if (_contains) {
-      EList<Step> _steps = scenario.getSteps();
-      for (final Step step : _steps) {
-        {
-          TreeIterator<EObject> _eAllContents = step.eAllContents();
-          UnmodifiableIterator<XAssignment> _filter = Iterators.<XAssignment>filter(_eAllContents, org.eclipse.xtext.xbase.XAssignment.class);
-          UnmodifiableIterator<XAssignment> assignments = _filter;
-          Iterable<XAssignment> _iterable = IteratorExtensions.<XAssignment>toIterable(assignments);
-          for (final XAssignment assignment : _iterable) {
-            String _concreteSyntaxFeatureName = assignment.getConcreteSyntaxFeatureName();
-            String _name = field.getName();
-            boolean _equals = _concreteSyntaxFeatureName.equals(_name);
-            if (_equals) {
-              {
-                XExpression _value = assignment.getValue();
-                JvmTypeReference _type = this._iTypeProvider.getType(_value);
-                field.setType(_type);
-                field.setVisibility(JvmVisibility.PUBLIC);
+              TreeIterator<EObject> _eAllContents = table.eAllContents();
+              UnmodifiableIterator<ExampleColumn> _filter = Iterators.<ExampleColumn>filter(_eAllContents, de.bmw.carit.jnario.common.ExampleColumn.class);
+              UnmodifiableIterator<ExampleColumn> allFields = _filter;
+              Iterable<ExampleColumn> _iterable = IteratorExtensions.<ExampleColumn>toIterable(allFields);
+              for (final ExampleColumn field : _iterable) {
+                String _name = field.getName();
+                boolean _contains = fieldNames.contains(_name);
+                boolean _operator_not_1 = BooleanExtensions.operator_not(_contains);
+                if (_operator_not_1) {
+                  {
+                    EList<JvmMember> _members = inferredJvmType.getMembers();
+                    JvmField _field = this.toField(field);
+                    CollectionExtensions.<JvmField>operator_add(_members, _field);
+                    String _name_1 = field.getName();
+                    fieldNames.add(_name_1);
+                  }
+                }
               }
             }
           }
         }
       }
+      TreeIterator<EObject> _eAllContents_1 = scenario.eAllContents();
+      UnmodifiableIterator<XVariableDeclaration> _filter_1 = Iterators.<XVariableDeclaration>filter(_eAllContents_1, org.eclipse.xtext.xbase.XVariableDeclaration.class);
+      UnmodifiableIterator<XVariableDeclaration> variableDeclarations = _filter_1;
+      Iterable<XVariableDeclaration> _iterable_1 = IteratorExtensions.<XVariableDeclaration>toIterable(variableDeclarations);
+      this.generateXVariableDeclarations(_iterable_1, inferredJvmType, scenario);
+  }
+  
+  public void generateBackgroundVariables(final Background background, final JvmGenericType inferredJvmType) {
+      TreeIterator<EObject> _eAllContents = background.eAllContents();
+      UnmodifiableIterator<XVariableDeclaration> _filter = Iterators.<XVariableDeclaration>filter(_eAllContents, org.eclipse.xtext.xbase.XVariableDeclaration.class);
+      UnmodifiableIterator<XVariableDeclaration> variableDeclarations = _filter;
+      Iterable<XVariableDeclaration> _iterable = IteratorExtensions.<XVariableDeclaration>toIterable(variableDeclarations);
+      this.generateXVariableDeclarations(_iterable, inferredJvmType, background);
+  }
+  
+  public void generateXVariableDeclarations(final Iterable<XVariableDeclaration> varDecs, final JvmGenericType inferredJvmType, final EObject scenario) {
+    for (final XVariableDeclaration variableDec : varDecs) {
+      {
+        JvmTypeReference type = null;
+        JvmTypeReference _type = variableDec.getType();
+        boolean _operator_notEquals = ObjectExtensions.operator_notEquals(_type, null);
+        if (_operator_notEquals) {
+          JvmTypeReference _type_1 = variableDec.getType();
+          type = _type_1;
+        } else {
+          XExpression _right = variableDec.getRight();
+          JvmTypeReference _type_2 = this._iTypeProvider.getType(_right);
+          type = _type_2;
+        }
+        String _simpleName = variableDec.getSimpleName();
+        JvmField _field = this._extendedJvmTypesBuilder.toField(scenario, _simpleName, type);
+        JvmField field = _field;
+        boolean _isWriteable = variableDec.isWriteable();
+        boolean _operator_not = BooleanExtensions.operator_not(_isWriteable);
+        if (_operator_not) {
+          field.setFinal(true);
+        }
+        field.setVisibility(JvmVisibility.PUBLIC);
+        EList<JvmMember> _members = inferredJvmType.getMembers();
+        CollectionExtensions.<JvmField>operator_add(_members, field);
+      }
     }
-    return _xifexpression;
   }
   
   public int generateBackgroundStepCalls(final EList<Step> steps, final JvmGenericType inferredJvmType) {
@@ -601,7 +572,8 @@ public class JnarioJvmModelInferrer extends CommonJvmModelInferrer {
               String _operator_plus_10 = StringExtensions.operator_plus(_substring, "]");
               description = _operator_plus_10;
               EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
-              JvmAnnotationReference _annotation_1 = JnarioJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(row, de.bmw.carit.jnario.runner.Named.class, description);
+              String _replace = description.replace("\"", "\\\"");
+              JvmAnnotationReference _annotation_1 = JnarioJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(row, de.bmw.carit.jnario.runner.Named.class, _replace);
               CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
             }
           }

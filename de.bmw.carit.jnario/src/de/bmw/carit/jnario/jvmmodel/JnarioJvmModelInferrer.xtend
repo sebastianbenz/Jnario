@@ -8,9 +8,11 @@
 package de.bmw.carit.jnario.jvmmodel
 
 import com.google.inject.Inject
+import de.bmw.carit.jnario.common.ExampleColumn
 import de.bmw.carit.jnario.common.ExampleRow
 import de.bmw.carit.jnario.common.jvmmodel.CommonJvmModelInferrer
 import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder
+import de.bmw.carit.jnario.jnario.Background
 import de.bmw.carit.jnario.jnario.Feature
 import de.bmw.carit.jnario.jnario.JnarioFile
 import de.bmw.carit.jnario.jnario.Scenario
@@ -23,6 +25,7 @@ import de.bmw.carit.jnario.runner.JnarioExamplesRunner
 import de.bmw.carit.jnario.runner.JnarioRunner
 import de.bmw.carit.jnario.runner.Named
 import de.bmw.carit.jnario.runner.Order
+import java.util.Iterator
 import java.util.List
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EObject
@@ -32,6 +35,7 @@ import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.util.IAcceptor
 import org.eclipse.xtext.xbase.XAssignment
+import org.eclipse.xtext.xbase.XVariableDeclaration
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator
 import org.eclipse.xtext.xbase.typing.ITypeProvider
 import org.eclipse.xtext.xtend2.xtend2.XtendField
@@ -39,7 +43,8 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 import static com.google.common.collect.Iterators.*
-import de.bmw.carit.jnario.common.ExampleColumn
+import org.eclipse.xtext.common.types.JvmTypeReference
+import java.util.ArrayList
 
 /**
  * @author Birgit Engelmann
@@ -55,7 +60,9 @@ class JnarioJvmModelInferrer extends CommonJvmModelInferrer {
 	@Inject extension StepNameProvider
 	
 	@Inject extension StepExpressionProvider
+	
 	@Inject extension ITypeProvider
+	
 	@Inject
 	private IJvmModelAssociator associator
 	
@@ -116,6 +123,7 @@ class JnarioJvmModelInferrer extends CommonJvmModelInferrer {
    			jnarioFile.eResource.contents += it
    			packageName = jnarioFile.^package
    			abstract = true
+   			generateBackgroundVariables(feature.background, it)
    			feature.background.steps.generateSteps(it)
    		]
    	}
@@ -136,7 +144,7 @@ class JnarioJvmModelInferrer extends CommonJvmModelInferrer {
 				start = feature.background.steps.generateBackgroundStepCalls(it)
 			}
 
-			scenario.generateVariables(feature, hasBackground, it)
+			scenario.generateVariables(feature, it)
 			scenario.steps.generateSteps(it, start)
 			
 			if(!scenario.examples.empty){
@@ -148,54 +156,44 @@ class JnarioJvmModelInferrer extends CommonJvmModelInferrer {
    		]	
    	}
    	
-   	def generateVariables(Scenario scenario, Feature feature, boolean hasBackground, JvmGenericType inferredJvmType){
-		var allVariables = <String>newArrayList()
-		if(hasBackground){
-			var backgroundFields = filter(feature.background.members.iterator, typeof(XtendField))
-			for(field: backgroundFields.toIterable){
-				field.transform(inferredJvmType)
-				allVariables.add(field.name)				
-			}
-		}
-		
-		var fields = scenario.fields
-		for(field: fields){
-			if(field.type == null || field.type.type == null){
-				deriveFieldType(scenario, field)
-			}
-			if(!allVariables.contains(field.name)){
-				field.transform(inferredJvmType)
-				allVariables.add(field.name)
-			}
-		}
-		
-		var eAllContents = scenario.eAllContents;
-		var allFields = filter(eAllContents, typeof(XtendField))
-		for(field: allFields.toIterable){
-			if(!allVariables.contains(field.name)){
-				if(field instanceof ExampleColumn){
-					inferredJvmType.members += (field as ExampleColumn).toField
-				}else{
-					field.transform(inferredJvmType)
+   	def generateVariables(Scenario scenario, Feature feature, JvmGenericType inferredJvmType){		
+		if(!scenario.examples.empty){
+			var fieldNames = new ArrayList<String>()
+			for(table: scenario.examples){
+				var allFields = filter(table.eAllContents, typeof(ExampleColumn))
+				for(field: allFields.toIterable){
+					if(!fieldNames.contains(field.name)){
+						inferredJvmType.members += field.toField
+						fieldNames.add(field.name)
+					}
 				}
-				allVariables.add(field.name)
 			}
-			
-		}
+		}		
+		var variableDeclarations = filter(scenario.eAllContents, typeof(XVariableDeclaration))
+		variableDeclarations.toIterable.generateXVariableDeclarations(inferredJvmType, scenario)
+  	}
+   	
+   	def generateBackgroundVariables(Background background, JvmGenericType inferredJvmType){
+		var variableDeclarations = filter(background.eAllContents, typeof(XVariableDeclaration))
+		variableDeclarations.toIterable.generateXVariableDeclarations(inferredJvmType, background)
    	}
    	
-   	def deriveFieldType(Scenario scenario, XtendField field){
-   		if(scenario.fields.contains(field)){
-   			for(step: scenario.steps){
-   				var assignments = filter(step.eAllContents, typeof(XAssignment))
-   				for(assignment: assignments.toIterable){
-   					if(assignment.getConcreteSyntaxFeatureName.equals(field.name)){
-   						field.setType(getType(assignment.value))
-   						field.setVisibility(JvmVisibility::PUBLIC)
-  					}
-   				}
-   			}
-   		}
+   	def generateXVariableDeclarations(Iterable<XVariableDeclaration> varDecs, JvmGenericType inferredJvmType, EObject scenario){
+   		for(variableDec: varDecs){
+   			
+			var JvmTypeReference type;
+			if (variableDec.getType != null) {
+				type = variableDec.getType;
+			} else {
+				type = getType(variableDec.getRight);
+			}
+			var field = scenario.toField(variableDec.getSimpleName(), type)
+			if (!variableDec.isWriteable()) {
+				field.setFinal(true)
+			}
+			field.setVisibility(JvmVisibility::PUBLIC)
+			inferredJvmType.members += field
+		}
    	}
    	
    	def generateBackgroundStepCalls(EList<Step> steps, JvmGenericType inferredJvmType){
@@ -294,7 +292,7 @@ class JnarioJvmModelInferrer extends CommonJvmModelInferrer {
 				i = i + 1
 			}
 			description = description.substring(0, description.length - 1 - 1) + "]"
-			annotations += row.toAnnotation(typeof(Named), description)
+			annotations += row.toAnnotation(typeof(Named), description.replace("\"", "\\\""))
 		]
 	}
 

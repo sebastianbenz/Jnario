@@ -6,9 +6,8 @@ import static de.bmw.carit.jnario.common.test.util.ResultMatchers.*
 Feature: References for steps
 
 	Scenario: Defining a step and using it in the same scenario
-		public String jnarioFile
 		Given a scenario with reused steps
-			jnarioFile = "
+			var jnarioFile = "
 				package bootstrap
 				Feature: Test
 					Scenario: TestScenario 1
