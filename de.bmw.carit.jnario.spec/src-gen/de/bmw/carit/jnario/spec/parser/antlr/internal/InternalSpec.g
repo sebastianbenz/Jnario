@@ -204,15 +204,18 @@ ruleExampleGroup returns [EObject current=null]
 )
 )(
 (
-		{
-			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getExampleGroupRule());
-	        }
-        }
 		{ 
-	        newCompositeNode(grammarAccess.getExampleGroupAccess().getTargetTypeJvmDeclaredTypeCrossReference_3_0()); 
+	        newCompositeNode(grammarAccess.getExampleGroupAccess().getTargetTypeJvmTypeReferenceParserRuleCall_3_0()); 
 	    }
-		ruleQualifiedName		{ 
+		lv_targetType_3_0=ruleJvmTypeReference		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getExampleGroupRule());
+	        }
+       		set(
+       			$current, 
+       			"targetType",
+        		lv_targetType_3_0, 
+        		"JvmTypeReference");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -538,11 +541,12 @@ ruleMember returns [EObject current=null]
 )
 
 )
-)(	otherlv_4='throws' 
+)(((	'throws' 
+)=>	otherlv_4='throws' 
     {
     	newLeafNode(otherlv_4, grammarAccess.getMemberAccess().getThrowsKeyword_2_0_1_1_0());
     }
-(
+)(
 (
 		{
 			if ($current==null) {
@@ -580,7 +584,11 @@ RULE_STRING
 	    }
 
 )
-)(
+)((
+(
+ruleXBlockExpression
+)
+)=>
 (
 		{ 
 	        newCompositeNode(grammarAccess.getMemberAccess().getBodyXBlockExpressionParserRuleCall_2_0_1_3_0()); 
@@ -622,15 +630,18 @@ RULE_STRING
 )
 )(
 (
-		{
-			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getMemberRule());
-	        }
-        }
 		{ 
-	        newCompositeNode(grammarAccess.getMemberAccess().getTargetTypeJvmDeclaredTypeCrossReference_2_1_1_1_0()); 
+	        newCompositeNode(grammarAccess.getMemberAccess().getTargetTypeJvmTypeReferenceParserRuleCall_2_1_1_1_0()); 
 	    }
-		ruleQualifiedName		{ 
+		lv_targetType_10_0=ruleJvmTypeReference		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getMemberRule());
+	        }
+       		set(
+       			$current, 
+       			"targetType",
+        		lv_targetType_10_0, 
+        		"JvmTypeReference");
 	        afterParserOrEnumRuleCall();
 	    }
 

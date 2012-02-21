@@ -17,27 +17,10 @@ import static extension de.bmw.carit.jnario.tests.util.Query.*
 @InstantiateWith(typeof(SpecTestInstantiator))
 describe SpecScopeProvider {
 	
-	@Inject ModelStore modelStore
-	
-	it "should resolve Jvm type ExampleGroup target"{
-		modelStore.parseSpec('
-			package bootstrap
-			
-			import org.junit.Assert
-
-			describe Assert{
-			} 
-
-		'    
-		)
-		val exampleGroup = modelStore.query.first(typeof(ExampleGroup))
-		val scope = targetType(exampleGroup)
-		contains(scope, "org.junit.Assert") 
-		contains(scope, "Assert") 
-	}    
+	@Inject extension ModelStore modelStore
 	
 	it "should resolve operations from surrounding ExampleGroup's target"{
-		modelStore.parseSpec('
+		parseSpec('
 			package bootstrap
 			
 			import org.junit.Assert
@@ -51,7 +34,7 @@ describe SpecScopeProvider {
 
 		'    
 		)
-		val exampleGroup = modelStore.query.second(typeof(ExampleGroup))
+		val exampleGroup = query.second(typeof(ExampleGroup))
 		contains(targetOperation(exampleGroup), "assertNotNull(String, Object)") 
 		contains(targetOperation(exampleGroup), "assertNotNull") 
 	}    
@@ -64,10 +47,6 @@ describe SpecScopeProvider {
 	def void containsNot(IScope scope, String element){
 		val result = scope.getSingleElement(QualifiedName::create(element.split("//.")))
 		assertNull("scope did not contain:" + element, result);
-	}
-	
-	def IScope targetType(EObject source){
-		return subject.getScope(source, SpecPackage::eINSTANCE.exampleGroup_TargetType)
 	}
 	
 	def IScope targetOperation(EObject source){

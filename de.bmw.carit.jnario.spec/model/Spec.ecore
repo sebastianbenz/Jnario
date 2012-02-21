@@ -8,7 +8,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExampleGroup" eSuperTypes="../../org.eclipse.xtext.xtend2/model/Xtend2.ecore#//XtendClass ../../org.eclipse.xtext.xtend2/model/Xtend2.ecore#//XtendMember">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="preamble" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="targetType" eType="ecore:EClass ../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmDeclaredType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetType" eType="ecore:EClass ../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="targetOperation" eType="ecore:EClass ../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmOperation"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Example" eSuperTypes="#//TestFunction">

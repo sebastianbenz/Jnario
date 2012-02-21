@@ -3,8 +3,8 @@
  */
 package de.bmw.carit.jnario.spec.spec;
 
-import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.JvmOperation;
+import org.eclipse.xtext.common.types.JvmTypeReference;
 
 import org.eclipse.xtext.xtend2.xtend2.XtendClass;
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
@@ -56,30 +56,30 @@ public interface ExampleGroup extends XtendClass, XtendMember
 	void setPreamble(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Target Type</b></em>' reference.
+	 * Returns the value of the '<em><b>Target Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Target Type</em>' reference isn't clear,
+	 * If the meaning of the '<em>Target Type</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Target Type</em>' reference.
-	 * @see #setTargetType(JvmDeclaredType)
+	 * @return the value of the '<em>Target Type</em>' containment reference.
+	 * @see #setTargetType(JvmTypeReference)
 	 * @see de.bmw.carit.jnario.spec.spec.SpecPackage#getExampleGroup_TargetType()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
-	JvmDeclaredType getTargetType();
+	JvmTypeReference getTargetType();
 
 	/**
-	 * Sets the value of the '{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getTargetType <em>Target Type</em>}' reference.
+	 * Sets the value of the '{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getTargetType <em>Target Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Target Type</em>' reference.
+	 * @param value the new value of the '<em>Target Type</em>' containment reference.
 	 * @see #getTargetType()
 	 * @generated
 	 */
-	void setTargetType(JvmDeclaredType value);
+	void setTargetType(JvmTypeReference value);
 
 	/**
 	 * Returns the value of the '<em><b>Target Operation</b></em>' reference.

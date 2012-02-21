@@ -4,22 +4,21 @@ import com.google.inject.Inject
 import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder
 import de.bmw.carit.jnario.runner.Subject
 import de.bmw.carit.jnario.spec.spec.ExampleGroup
+import de.bmw.carit.jnario.spec.spec.TestFunction
 import java.util.Iterator
-import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmGenericType
+import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.common.types.JvmVisibility
-import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.xbase.XFeatureCall
 import org.eclipse.xtext.xbase.XMemberFeatureCall
-
-import static extension com.google.common.collect.Iterators.*
-import static extension com.google.common.collect.Iterables.*
-import static de.bmw.carit.jnario.spec.jvmmodel.Constants.*
-import static extension com.google.common.base.Predicates.*
-import static org.eclipse.xtext.EcoreUtil2.*
 import org.eclipse.xtext.xtend2.xtend2.XtendFunction
-import de.bmw.carit.jnario.spec.spec.TestFunction
+
+import static de.bmw.carit.jnario.spec.jvmmodel.Constants.*
+import static org.eclipse.xtext.EcoreUtil2.*
+
+import static extension com.google.common.collect.Iterables.*
+import static extension com.google.common.collect.Iterators.*
 
 
 /**
@@ -29,23 +28,21 @@ class ImplicitSubject {
 	
 	@Inject extension ExtendedJvmTypesBuilder
 	
-	@Inject extension TypeReferences
-	
 	def void addImplicitSubject(JvmGenericType type, ExampleGroup exampleGroup){
 		val targetType = exampleGroup.resolveTargetType()
 		if(targetType == null || targetType.eIsProxy()) return;
 		if(type.hasSubject()) return;
 		if(exampleGroup.neverUsesSubject()) return;
 		
-		type.members.add(0, exampleGroup.toField(SUBJECT_FIELD_NAME, targetType.createTypeRef)[
+		type.members.add(0, exampleGroup.toField(SUBJECT_FIELD_NAME, targetType)[
 			annotations += exampleGroup.toAnnotation(typeof(Subject))
 			visibility = JvmVisibility::PUBLIC
 		])
 	}
 	
-	def JvmDeclaredType resolveTargetType(ExampleGroup exampleGroup){
+	def JvmTypeReference resolveTargetType(ExampleGroup exampleGroup){
 		if(exampleGroup.targetType != null){
-			return exampleGroup.targetType
+			return exampleGroup.targetType.cloneWithProxies
 		}
 		val parentGroup = getContainerOfType(exampleGroup.eContainer, typeof(ExampleGroup))
 		if(parentGroup == null){

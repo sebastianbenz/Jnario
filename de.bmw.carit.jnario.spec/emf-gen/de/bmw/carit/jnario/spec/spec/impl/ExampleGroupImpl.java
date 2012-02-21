@@ -14,8 +14,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.JvmOperation;
+import org.eclipse.xtext.common.types.JvmTypeReference;
 
 import org.eclipse.xtext.xtend2.xtend2.Xtend2Package;
 import org.eclipse.xtext.xtend2.xtend2.XtendAnnotationTarget;
@@ -72,14 +72,14 @@ public class ExampleGroupImpl extends XtendClassImplCustom implements ExampleGro
 	protected String preamble = PREAMBLE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getTargetType() <em>Target Type</em>}' reference.
+	 * The cached value of the '{@link #getTargetType() <em>Target Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getTargetType()
 	 * @generated
 	 * @ordered
 	 */
-	protected JvmDeclaredType targetType;
+	protected JvmTypeReference targetType;
 
 	/**
 	 * The cached value of the '{@link #getTargetOperation() <em>Target Operation</em>}' reference.
@@ -188,27 +188,7 @@ public class ExampleGroupImpl extends XtendClassImplCustom implements ExampleGro
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public JvmDeclaredType getTargetType()
-	{
-		if (targetType != null && targetType.eIsProxy())
-		{
-			InternalEObject oldTargetType = (InternalEObject)targetType;
-			targetType = (JvmDeclaredType)eResolveProxy(oldTargetType);
-			if (targetType != oldTargetType)
-			{
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, SpecPackage.EXAMPLE_GROUP__TARGET_TYPE, oldTargetType, targetType));
-			}
-		}
-		return targetType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public JvmDeclaredType basicGetTargetType()
+	public JvmTypeReference getTargetType()
 	{
 		return targetType;
 	}
@@ -218,12 +198,37 @@ public class ExampleGroupImpl extends XtendClassImplCustom implements ExampleGro
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTargetType(JvmDeclaredType newTargetType)
+	public NotificationChain basicSetTargetType(JvmTypeReference newTargetType, NotificationChain msgs)
 	{
-		JvmDeclaredType oldTargetType = targetType;
+		JvmTypeReference oldTargetType = targetType;
 		targetType = newTargetType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.EXAMPLE_GROUP__TARGET_TYPE, oldTargetType, targetType));
+		{
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SpecPackage.EXAMPLE_GROUP__TARGET_TYPE, oldTargetType, newTargetType);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTargetType(JvmTypeReference newTargetType)
+	{
+		if (newTargetType != targetType)
+		{
+			NotificationChain msgs = null;
+			if (targetType != null)
+				msgs = ((InternalEObject)targetType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SpecPackage.EXAMPLE_GROUP__TARGET_TYPE, null, msgs);
+			if (newTargetType != null)
+				msgs = ((InternalEObject)newTargetType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SpecPackage.EXAMPLE_GROUP__TARGET_TYPE, null, msgs);
+			msgs = basicSetTargetType(newTargetType, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.EXAMPLE_GROUP__TARGET_TYPE, newTargetType, newTargetType));
 	}
 
 	/**
@@ -281,6 +286,8 @@ public class ExampleGroupImpl extends XtendClassImplCustom implements ExampleGro
 		{
 			case SpecPackage.EXAMPLE_GROUP__ANNOTATION_INFO:
 				return basicSetAnnotationInfo(null, msgs);
+			case SpecPackage.EXAMPLE_GROUP__TARGET_TYPE:
+				return basicSetTargetType(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -300,8 +307,7 @@ public class ExampleGroupImpl extends XtendClassImplCustom implements ExampleGro
 			case SpecPackage.EXAMPLE_GROUP__PREAMBLE:
 				return getPreamble();
 			case SpecPackage.EXAMPLE_GROUP__TARGET_TYPE:
-				if (resolve) return getTargetType();
-				return basicGetTargetType();
+				return getTargetType();
 			case SpecPackage.EXAMPLE_GROUP__TARGET_OPERATION:
 				if (resolve) return getTargetOperation();
 				return basicGetTargetOperation();
@@ -326,7 +332,7 @@ public class ExampleGroupImpl extends XtendClassImplCustom implements ExampleGro
 				setPreamble((String)newValue);
 				return;
 			case SpecPackage.EXAMPLE_GROUP__TARGET_TYPE:
-				setTargetType((JvmDeclaredType)newValue);
+				setTargetType((JvmTypeReference)newValue);
 				return;
 			case SpecPackage.EXAMPLE_GROUP__TARGET_OPERATION:
 				setTargetOperation((JvmOperation)newValue);
@@ -352,7 +358,7 @@ public class ExampleGroupImpl extends XtendClassImplCustom implements ExampleGro
 				setPreamble(PREAMBLE_EDEFAULT);
 				return;
 			case SpecPackage.EXAMPLE_GROUP__TARGET_TYPE:
-				setTargetType((JvmDeclaredType)null);
+				setTargetType((JvmTypeReference)null);
 				return;
 			case SpecPackage.EXAMPLE_GROUP__TARGET_OPERATION:
 				setTargetOperation((JvmOperation)null);

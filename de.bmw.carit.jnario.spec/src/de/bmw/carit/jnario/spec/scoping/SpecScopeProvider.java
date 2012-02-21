@@ -14,7 +14,10 @@ import static org.eclipse.xtext.scoping.Scopes.scopeFor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
+import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmOperation;
+import org.eclipse.xtext.common.types.JvmType;
+import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.xtend2.scoping.Xtend2ScopeProvider;
@@ -47,11 +50,20 @@ public class SpecScopeProvider extends Xtend2ScopeProvider {
 		if(context == null){
 			return IScope.NULLSCOPE;
 		}
-		JvmDeclaredType targetType = context.getTargetType();
-		if(targetType == null){
+		
+		JvmTypeReference targetTypeReference = context.getTargetType();
+		if(targetTypeReference == null){
 			return IScope.NULLSCOPE;
 		}
-		Iterable<JvmOperation> operations = filter(targetType.getMembers(), JvmOperation.class);
+		
+		JvmType targetType = targetTypeReference.getType();
+		if(targetType == null || targetType.eIsProxy()){
+			return IScope.NULLSCOPE;
+		}
+		if (!(targetType instanceof JvmGenericType)) {
+			return IScope.NULLSCOPE;
+		}
+		Iterable<JvmOperation> operations = filter(((JvmGenericType) targetType).getMembers(), JvmOperation.class);
 		
 		IScope simpleNames = scopeFor(operations, simpleNameProvider(), IScope.NULLSCOPE);
 		return scopeFor(operations, operationNameProvider, simpleNames);

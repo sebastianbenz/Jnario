@@ -206,7 +206,7 @@ public interface SpecPackage extends EPackage
 	int EXAMPLE_GROUP__PREAMBLE = Xtend2Package.XTEND_CLASS_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Target Type</b></em>' reference.
+	 * The feature id for the '<em><b>Target Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -521,10 +521,10 @@ public interface SpecPackage extends EPackage
 	EAttribute getExampleGroup_Preamble();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getTargetType <em>Target Type</em>}'.
+	 * Returns the meta object for the containment reference '{@link de.bmw.carit.jnario.spec.spec.ExampleGroup#getTargetType <em>Target Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Target Type</em>'.
+	 * @return the meta object for the containment reference '<em>Target Type</em>'.
 	 * @see de.bmw.carit.jnario.spec.spec.ExampleGroup#getTargetType()
 	 * @see #getExampleGroup()
 	 * @generated
@@ -700,7 +700,7 @@ public interface SpecPackage extends EPackage
 		EAttribute EXAMPLE_GROUP__PREAMBLE = eINSTANCE.getExampleGroup_Preamble();
 
 		/**
-		 * The meta object literal for the '<em><b>Target Type</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Target Type</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

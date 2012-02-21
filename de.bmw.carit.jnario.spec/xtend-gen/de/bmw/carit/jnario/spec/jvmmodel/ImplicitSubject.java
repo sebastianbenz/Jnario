@@ -14,15 +14,12 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
-import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmMember;
-import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmVisibility;
-import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XFeatureCall;
 import org.eclipse.xtext.xbase.XMemberFeatureCall;
@@ -44,12 +41,9 @@ public class ImplicitSubject {
   @Inject
   private ExtendedJvmTypesBuilder _extendedJvmTypesBuilder;
   
-  @Inject
-  private TypeReferences _typeReferences;
-  
   public void addImplicitSubject(final JvmGenericType type, final ExampleGroup exampleGroup) {
-      JvmDeclaredType _resolveTargetType = this.resolveTargetType(exampleGroup);
-      final JvmDeclaredType targetType = _resolveTargetType;
+      JvmTypeReference _resolveTargetType = this.resolveTargetType(exampleGroup);
+      final JvmTypeReference targetType = _resolveTargetType;
       boolean _operator_or = false;
       boolean _operator_equals = ObjectExtensions.operator_equals(targetType, null);
       if (_operator_equals) {
@@ -70,7 +64,6 @@ public class ImplicitSubject {
         return;
       }
       EList<JvmMember> _members = type.getMembers();
-      JvmParameterizedTypeReference _createTypeRef = this._typeReferences.createTypeRef(targetType);
       final Procedure1<JvmField> _function = new Procedure1<JvmField>() {
           public void apply(final JvmField it) {
             {
@@ -81,16 +74,17 @@ public class ImplicitSubject {
             }
           }
         };
-      JvmField _field = this._extendedJvmTypesBuilder.toField(exampleGroup, Constants.SUBJECT_FIELD_NAME, _createTypeRef, _function);
+      JvmField _field = this._extendedJvmTypesBuilder.toField(exampleGroup, Constants.SUBJECT_FIELD_NAME, targetType, _function);
       _members.add(0, _field);
   }
   
-  public JvmDeclaredType resolveTargetType(final ExampleGroup exampleGroup) {
-      JvmDeclaredType _targetType = exampleGroup.getTargetType();
+  public JvmTypeReference resolveTargetType(final ExampleGroup exampleGroup) {
+      JvmTypeReference _targetType = exampleGroup.getTargetType();
       boolean _operator_notEquals = ObjectExtensions.operator_notEquals(_targetType, null);
       if (_operator_notEquals) {
-        JvmDeclaredType _targetType_1 = exampleGroup.getTargetType();
-        return _targetType_1;
+        JvmTypeReference _targetType_1 = exampleGroup.getTargetType();
+        JvmTypeReference _cloneWithProxies = this._extendedJvmTypesBuilder.cloneWithProxies(_targetType_1);
+        return _cloneWithProxies;
       }
       EObject _eContainer = exampleGroup.eContainer();
       ExampleGroup _containerOfType = EcoreUtil2.<ExampleGroup>getContainerOfType(_eContainer, de.bmw.carit.jnario.spec.spec.ExampleGroup.class);
@@ -99,7 +93,7 @@ public class ImplicitSubject {
       if (_operator_equals) {
         return null;
       }
-      JvmDeclaredType _resolveTargetType = this.resolveTargetType(parentGroup);
+      JvmTypeReference _resolveTargetType = this.resolveTargetType(parentGroup);
       return _resolveTargetType;
   }
   

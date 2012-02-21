@@ -4,19 +4,19 @@ import "http://www.bmw.de/carit/jnario/spec/Spec"
 import "http://www.eclipse.org/xtext/Xtend2" as xtend
 import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
-import "platform:/resource/de.bmw.carit.jnario.common/model/Common.ecore"
+import "http://www.bmw.de/carit/jnario/Common"
  
-SpecFile returns xtend::XtendFile:
+SpecFile:
 {SpecFile}
 ('package' package=QualifiedName)? 
 	imports+=Import*
 	xtendClass=ExampleGroup
 ;
 
-ExampleGroup returns xtend::XtendClass:  
+ExampleGroup:  
 	{ExampleGroup}
 	annotations+=XAnnotation* 
-	preamble=('describe') targetType=[types::JvmDeclaredType|QualifiedName]? name=STRING? '{'
+	preamble=('describe') targetType=JvmTypeReference? name=STRING? '{'
        (members+=Member*)
 '}'
 ;
@@ -38,10 +38,10 @@ Member returns xtend::XtendMember:
 	(
 		
 		{Example.annotationInfo = current}
-		(preamble=(ID | '-') ('throws' exception=[types::JvmDeclaredType|QualifiedName])? =>name=STRING
-				body=XBlockExpression? )
+		(preamble=(ID | '-') (=>'throws' exception=[types::JvmDeclaredType|QualifiedName])? =>name=STRING
+				=>body=XBlockExpression?)	
 	|	{ExampleGroup.annotationInfo = current}
-			(preamble=('describe') targetType=[types::JvmDeclaredType|QualifiedName]? =>name=STRING? '{'
+			(preamble=('describe') targetType=JvmTypeReference? =>name=STRING? '{'
       		members+=Member*
       	'}')
     |	{Before.annotationInfo = current}
