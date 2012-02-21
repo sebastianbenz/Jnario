@@ -7,6 +7,9 @@
  *******************************************************************************/
 package de.bmw.carit.jnario.common.jvmmodel
 
+import static com.google.common.base.Predicates.*
+import static extension com.google.common.collect.Iterables.*
+
 import com.google.inject.Inject
 import de.bmw.carit.jnario.common.ExampleColumn
 import de.bmw.carit.jnario.common.ExampleRow
@@ -19,6 +22,8 @@ import org.eclipse.xtext.xbase.compiler.XbaseCompiler
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.eclipse.xtext.xbase.typing.ITypeProvider
 import org.eclipse.xtext.xtend2.jvmmodel.Xtend2JvmModelInferrer
+import com.google.common.collect.Iterables
+import com.google.common.collect.Lists
 
 /**
  * @author Birgit Engelmann
@@ -43,8 +48,14 @@ class CommonJvmModelInferrer extends Xtend2JvmModelInferrer {
 			if(column.cells.empty){
 				column.type = getTypeForName(typeof(Object), column)
 			}else{
-				val cellTypes = column.cells.map[type]
-				column.type = cellTypes.commonSuperType
+				var cellTypes = column.cells.transform[type]
+				cellTypes = Iterables::filter(cellTypes, notNull)
+				val cellTypeList = Lists::newArrayList(cellTypes)
+				if(cellTypeList.empty){
+					column.type = getTypeForName(typeof(Object), column)
+				}else{
+					column.type = cellTypeList.commonSuperType 
+				}
 			}
 		}
 		return column.type

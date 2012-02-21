@@ -6,6 +6,9 @@ import de.bmw.carit.jnario.common.ExampleRow;
 import de.bmw.carit.jnario.common.ExampleTable;
 import de.bmw.carit.jnario.common.jvmmodel.ExtendedJvmTypesBuilder;
 import de.bmw.carit.jnario.spec.doc.DocOutputConfigurationProvider;
+import de.bmw.carit.jnario.spec.doc.Filter;
+import de.bmw.carit.jnario.spec.doc.FilterExtractor;
+import de.bmw.carit.jnario.spec.doc.FilteringResult;
 import de.bmw.carit.jnario.spec.doc.WhiteSpaceNormalizer;
 import de.bmw.carit.jnario.spec.naming.ExampleNameProvider;
 import de.bmw.carit.jnario.spec.spec.Example;
@@ -56,6 +59,9 @@ public class DocGenerator implements IGenerator {
   
   @Inject
   private PegDownProcessor _pegDownProcessor;
+  
+  @Inject
+  private FilterExtractor _filterExtractor;
   
   private List<String> cssFiles = new Function0<List<String>>() {
     public List<String> apply() {
@@ -307,34 +313,54 @@ public class DocGenerator implements IGenerator {
   }
   
   protected CharSequence _generate(final Example example, final int level) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<h4>");
-    String _describe = this._exampleNameProvider.describe(example);
-    String _asTitle = this.asTitle(_describe);
-    _builder.append(_asTitle, "");
-    _builder.append("</h4>");
-    _builder.newLineIfNotEmpty();
-    _builder.append("<p>");
-    _builder.newLine();
-    CharSequence _generateDoc = this.generateDoc(example);
-    _builder.append(_generateDoc, "");
-    _builder.newLineIfNotEmpty();
+    CharSequence _xblockexpression = null;
     {
-      boolean _isPending = example.isPending();
-      boolean _operator_not = BooleanExtensions.operator_not(_isPending);
-      if (_operator_not) {
-        _builder.append("<pre class=\"prettyprint\">");
-        _builder.newLine();
-        XExpression _body = example.getBody();
-        String _xtendCode = this.toXtendCode(_body);
-        _builder.append(_xtendCode, "");
-        _builder.append("</pre>");
-        _builder.newLineIfNotEmpty();
-        _builder.append("</p>");
-        _builder.newLine();
+      String _documentation = this._extendedJvmTypesBuilder.getDocumentation(example);
+      String docString = _documentation;
+      List<Filter> _emptyList = CollectionLiterals.<Filter>emptyList();
+      List<Filter> filters = _emptyList;
+      boolean _operator_notEquals = ObjectExtensions.operator_notEquals(docString, null);
+      if (_operator_notEquals) {
+        {
+          FilteringResult _apply = this._filterExtractor.apply(docString);
+          final FilteringResult filterResult = _apply;
+          List<Filter> _filters = filterResult.getFilters();
+          filters = _filters;
+          String _string = filterResult.getString();
+          docString = _string;
+          String _markdownToHtml = this._pegDownProcessor.markdownToHtml(docString);
+          docString = _markdownToHtml;
+        }
       }
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("<h4>");
+      String _describe = this._exampleNameProvider.describe(example);
+      String _asTitle = this.asTitle(_describe);
+      _builder.append(_asTitle, "");
+      _builder.append("</h4>");
+      _builder.newLineIfNotEmpty();
+      _builder.append("<p>");
+      _builder.newLine();
+      _builder.append(docString, "");
+      _builder.newLineIfNotEmpty();
+      {
+        boolean _isPending = example.isPending();
+        boolean _operator_not = BooleanExtensions.operator_not(_isPending);
+        if (_operator_not) {
+          _builder.append("<pre class=\"prettyprint\">");
+          _builder.newLine();
+          XExpression _body = example.getBody();
+          String _xtendCode = this.toXtendCode(_body, filters);
+          _builder.append(_xtendCode, "");
+          _builder.append("</pre>");
+          _builder.newLineIfNotEmpty();
+          _builder.append("</p>");
+          _builder.newLine();
+        }
+      }
+      _xblockexpression = (_builder);
     }
-    return _builder;
+    return _xblockexpression;
   }
   
   protected CharSequence _generate(final ExampleTable table, final int level) {
@@ -390,7 +416,8 @@ public class DocGenerator implements IGenerator {
             _builder.append("\t");
             _builder.append("\t");
             _builder.append("<td>");
-            String _xtendCode = this.toXtendCode(cell);
+            List<Filter> _emptyList = CollectionLiterals.<Filter>emptyList();
+            String _xtendCode = this.toXtendCode(cell, _emptyList);
             _builder.append(_xtendCode, "		");
             _builder.append("</td>");
             _builder.newLineIfNotEmpty();
@@ -443,16 +470,21 @@ public class DocGenerator implements IGenerator {
     return _builder;
   }
   
-  protected String _toXtendCode(final XExpression expr) {
+  protected String _toXtendCode(final XExpression expr, final List<Filter> filters) {
     String _serialize = this._iSerializer.serialize(expr);
-    String _trim = _serialize.trim();
+    String _normalize = this._whiteSpaceNormalizer.normalize(_serialize);
+    String _trim = _normalize.trim();
     return _trim;
   }
   
-  protected String _toXtendCode(final XBlockExpression expr) {
+  protected String _toXtendCode(final XBlockExpression expr, final List<Filter> filters) {
       String _serialize = this._iSerializer.serialize(expr);
       String _trim = _serialize.trim();
       String code = _trim;
+      for (final Filter filter : filters) {
+        String _apply = filter.apply(code);
+        code = _apply;
+      }
       int _length = code.length();
       int _operator_minus = IntegerExtensions.operator_minus(_length, 2);
       String _substring = code.substring(1, _operator_minus);
@@ -498,14 +530,14 @@ public class DocGenerator implements IGenerator {
     }
   }
   
-  public String toXtendCode(final XExpression expr) {
+  public String toXtendCode(final XExpression expr, final List<Filter> filters) {
     if (expr instanceof XBlockExpression) {
-      return _toXtendCode((XBlockExpression)expr);
+      return _toXtendCode((XBlockExpression)expr, filters);
     } else if (expr != null) {
-      return _toXtendCode(expr);
+      return _toXtendCode(expr, filters);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(expr).toString());
+        Arrays.<Object>asList(expr, filters).toString());
     }
   }
   

@@ -1,9 +1,14 @@
 package de.bmw.carit.jnario.common.jvmmodel;
 
+import com.google.common.base.Function;
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 import de.bmw.carit.jnario.common.ExampleColumn;
 import de.bmw.carit.jnario.common.ExampleRow;
-import java.util.List;
+import java.util.ArrayList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmType;
@@ -18,7 +23,6 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IntegerExtensions;
-import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.eclipse.xtext.xtend2.jvmmodel.Xtend2JvmModelInferrer;
@@ -80,10 +84,25 @@ public class CommonJvmModelInferrer extends Xtend2JvmModelInferrer {
                   return _type;
                 }
               };
-            List<JvmTypeReference> _map = ListExtensions.<XExpression, JvmTypeReference>map(_cells_1, _function);
-            final List<JvmTypeReference> cellTypes = _map;
-            JvmTypeReference _commonSuperType = this._typeConformanceComputer.getCommonSuperType(cellTypes);
-            column.setType(_commonSuperType);
+            Iterable<JvmTypeReference> _transform = Iterables.<XExpression, JvmTypeReference>transform(_cells_1, new Function<XExpression,JvmTypeReference>() {
+                public JvmTypeReference apply(XExpression input) {
+                  return _function.apply(input);
+                }
+            });
+            Iterable<JvmTypeReference> cellTypes = _transform;
+            Predicate<JvmTypeReference> _notNull = Predicates.<JvmTypeReference>notNull();
+            Iterable<JvmTypeReference> _filter = Iterables.<JvmTypeReference>filter(cellTypes, _notNull);
+            cellTypes = _filter;
+            ArrayList<JvmTypeReference> _newArrayList = Lists.<JvmTypeReference>newArrayList(cellTypes);
+            final ArrayList<JvmTypeReference> cellTypeList = _newArrayList;
+            boolean _isEmpty_1 = cellTypeList.isEmpty();
+            if (_isEmpty_1) {
+              JvmTypeReference _typeForName_1 = this._typeReferences.getTypeForName(java.lang.Object.class, column);
+              column.setType(_typeForName_1);
+            } else {
+              JvmTypeReference _commonSuperType = this._typeConformanceComputer.getCommonSuperType(cellTypeList);
+              column.setType(_commonSuperType);
+            }
           }
         }
       }

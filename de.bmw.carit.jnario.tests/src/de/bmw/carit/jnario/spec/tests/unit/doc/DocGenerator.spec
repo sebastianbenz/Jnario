@@ -111,6 +111,20 @@ describe DocGenerator {
 		scenarioDoc.should.contain("<td>2</td>")
 	}
 	
+	it "should filter code based on regex in filter annotation"{
+		generateDoc('''
+			describe 'Example'{
+				/*
+				 * @filter(bbb)
+				 */
+				it "should do stuff"{
+					"aaabbbaaa"
+				}
+			} 
+		''')
+		val scenarioDoc = generatedFile("ExampleSpec.html")
+		scenarioDoc.should.contain('"aaaaaa"')
+	}
 	
 	def generateEmptyExampleDoc(){
 		generateDoc('''

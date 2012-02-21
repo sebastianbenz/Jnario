@@ -30,6 +30,7 @@ class DocGenerator implements IGenerator {
 	@Inject extension ISerializer
 	@Inject extension WhiteSpaceNormalizer
 	@Inject extension PegDownProcessor
+	@Inject extension FilterExtractor
 	
 	List<String> cssFiles = newArrayList("bootstrap.min.css", "bootstrap-responsive.min.css", "custom.css", "prettify.css")
 	List<String> jsFiles = newArrayList("lang-xtend.js", "prettify.js")
@@ -42,7 +43,6 @@ class DocGenerator implements IGenerator {
 			if(exampleGroup != null){
 				fsa.generateFile(fileName(exampleGroup), DocOutputConfigurationProvider::DOC_OUTPUT, generate(exampleGroup))
 			}
-			
 		}
 	}
 	
@@ -137,20 +137,30 @@ class DocGenerator implements IGenerator {
 	def dispatch generate(XtendMember member, int level)'''
 	'''
 	
-	def dispatch generate(Example example, int level)'''
-		<h4>«example.describe.asTitle»</h4>
-		<p>
-		«example.generateDoc()»
-		«IF !example.pending»
-		<pre class="prettyprint">
-		«example.body.toXtendCode()»</pre>
-		</p>
-		«ENDIF»
-	'''
+	def dispatch generate(Example example, int level){
+		var String docString = example.documentation
+		var List<Filter> filters = emptyList
+		if(docString != null){
+			val filterResult = docString.apply
+			filters = filterResult.filters
+			docString = filterResult.string
+			docString = docString.markdownToHtml
+		}
+		'''
+			<h4>«example.describe.asTitle»</h4>
+			<p>
+			«docString»
+			«IF !example.pending»
+			<pre class="prettyprint">
+			«example.body.toXtendCode(filters)»</pre>
+			</p>
+			«ENDIF»
+		'''
+	}
 	
 	def dispatch generate(ExampleTable table, int level)'''
 		<h4>«table.toFieldName.asTitle»</h4>
-		<p>«table.generateDoc()»</p>
+		<p>«table.generateDoc»</p>
 		<table class="table table-striped table-bordered table-condensed">
 			<thead>
 				<tr>
@@ -163,7 +173,7 @@ class DocGenerator implements IGenerator {
 			«FOR row : table.rows»
 			<tr>
 				«FOR cell : row.cells»
-				<td>«toXtendCode(cell)»</td>
+				<td>«toXtendCode(cell, emptyList)»</td>
 				«ENDFOR»
 			</tr>
 		  	«ENDFOR»
@@ -176,7 +186,7 @@ class DocGenerator implements IGenerator {
 «««		«ENDIF»
 		<«level.heading»>«exampleGroup.asTitle»</«level.heading»>
 		<div class="level">
-		<p>«exampleGroup.generateDoc()»</p>
+		<p>«exampleGroup.generateDoc»</p>
 		«FOR member : exampleGroup.members»
 «generate(member, level + 1)»
 		«ENDFOR»
@@ -185,14 +195,17 @@ class DocGenerator implements IGenerator {
 «««		«ENDIF»
 	'''
 
-	def dispatch toXtendCode(XExpression expr){
-		return expr.serialize().trim
+	def dispatch toXtendCode(XExpression expr, List<Filter> filters){
+		return expr.serialize.normalize.trim
 	}
 	
-	def dispatch toXtendCode(XBlockExpression expr){
-		var code = expr.serialize().trim()
+	def dispatch toXtendCode(XBlockExpression expr, List<Filter> filters){
+		var code = expr.serialize.trim
+		for(filter : filters){
+			code = filter.apply(code)
+		}
 		code = code.substring(1, code.length-2) 
-		return code.normalize()
+		return code.normalize
 	}
 	
 	def heading(int level){

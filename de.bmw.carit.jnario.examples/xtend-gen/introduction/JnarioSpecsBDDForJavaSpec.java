@@ -113,6 +113,9 @@ public class JnarioSpecsBDDForJavaSpec {
    * Using this information Jnario will automatically create and instantiate a field `subject`,
    * which you can use in your specification. It is even possible to use
    * [Google Guice](http://code.google.com/p/google-guice/) to instantiate your subjects.
+   * 
+   * @filter(\\.executesSuccessfully)
+   * @filter(''')
    */
   @Test
   @Named("Implicit subject creation")

@@ -58,7 +58,10 @@ describe "Jnario Specs - BDD for Java"{
    * references the existing Java type `Calculator`. 
    * Using this information Jnario will automatically create and instantiate a field `subject`, 
    * which you can use in your specification. It is even possible to use 
-   * [Google Guice](http://code.google.com/p/google-guice/) to instantiate your subjects. 
+   * [Google Guice](http://code.google.com/p/google-guice/) to instantiate your subjects.
+   * 
+   * @filter(\\.executesSuccessfully)   
+   * @filter(''')
    */
   it "Implicit subject creation" {
       '''
@@ -74,7 +77,7 @@ describe "Jnario Specs - BDD for Java"{
 
       }
       '''.executesSuccessfully
-  }
+  }  
   
   
 }
