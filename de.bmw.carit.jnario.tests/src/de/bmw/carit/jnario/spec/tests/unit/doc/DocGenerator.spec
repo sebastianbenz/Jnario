@@ -80,7 +80,7 @@ describe DocGenerator {
 		<h4>Should do stuff</h4>
 		<p>
 		<p>Example documentation</p>
-		<pre class="prettyprint">
+		<pre class="prettyprint lang-xtend">
 		var x = 0
 		x = x + 1</pre>
 		</p>
