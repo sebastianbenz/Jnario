@@ -66,20 +66,16 @@ public class JnarioSemanticHighlightingCalculator extends XtendHighlightingCalcu
 			}
 			else if(step instanceof GivenReference){
 				GivenReference ref = (GivenReference) step;
-				description = getFirstWord(ref.getReference().getName());
-				highlightReference(description, step, JnarioPackage.Literals.STEP_REFERENCE__REFERENCE);
+				highlightFirstWordOfReference(ref, ref.getReference());
 			}else if(step instanceof WhenReference){
 				WhenReference ref = (WhenReference) step;
-				description = getFirstWord(ref.getReference().getName());
-				highlightReference(description, step, JnarioPackage.Literals.STEP_REFERENCE__REFERENCE);
+				highlightFirstWordOfReference(ref, ref.getReference());
 			}else if(step instanceof ThenReference){
 				ThenReference ref = (ThenReference) step;
-				description = getFirstWord(ref.getReference().getName());
-				highlightReference(description, step, JnarioPackage.Literals.STEP_REFERENCE__REFERENCE);
+				highlightFirstWordOfReference(ref, ref.getReference());
 			}else if(step instanceof AndReference){
 				AndReference ref = (AndReference) step;
-				description = getFirstWord(ref.getReference().getName());
-				highlightReference(description, step, JnarioPackage.Literals.STEP_REFERENCE__REFERENCE);
+				highlightFirstWordOfReference(ref, ref.getReference());
 			}
 
 			highlightIdentifiers(step);
@@ -113,8 +109,27 @@ public class JnarioSemanticHighlightingCalculator extends XtendHighlightingCalcu
 					JnarioHighlightingConfiguration.STEP_ID);
 		}
 
-		private void highlightReference(String string, EObject object, EReference reference){
-			acceptor.addPosition(offset(object, reference), string.length(), JnarioHighlightingConfiguration.STEP_REFERNCE_ID);
+		private void highlightReference(String string, EObject object, EReference reference, String highlightConfig){
+			acceptor.addPosition(offset(object, reference), string.length(), highlightConfig);
+		}
+		
+		private void highlightFirstWordOfReference(Step reference, Step referencedStep){
+			String description = getFirstWord(referencedStep.getName());
+			if(description != ""){
+				highlightReference(description, reference, JnarioPackage.Literals.STEP_REFERENCE__REFERENCE, JnarioHighlightingConfiguration.STEP_REFERNCE_ID);
+				
+			}
+			else{
+				// unresolved reference -> take first word until whitespace
+				description = getFirstWord(stepReferenceName(reference, JnarioPackage.Literals.STEP_REFERENCE__REFERENCE));
+				highlightReference(description, reference, JnarioPackage.Literals.STEP_REFERENCE__REFERENCE, JnarioHighlightingConfiguration.STEP_ID);
+			}
+		}
+		
+		private String stepReferenceName(Step step, EReference ref){
+			List<INode> nodes = NodeModelUtils.findNodesForFeature(step, ref);
+			// works only if keyword exists only once in Step
+			return nodes.iterator().next().getText();
 		}
 
 		private int offset(EObject content, EAttribute attribute) {

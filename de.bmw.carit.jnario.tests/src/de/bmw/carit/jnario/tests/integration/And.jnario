@@ -13,6 +13,6 @@ And some values.
 	x = 5
 	y = 3
 	z = 8
-When I add them
+When I add those numbers them
 Then the sum should be the result.
 	(x+y).should.be(z)

@@ -36,13 +36,14 @@ import de.bmw.carit.jnario.jnario.StepReference;
 @ComposedChecks(validators={CommonJavaValidator.class})
 public class JnarioJavaValidator extends AbstractJnarioJavaValidator {
 
-	@Check
+	@Override
 	public void checkVariableDeclaration(XVariableDeclaration declaration) {
 		if(getContainerOfType(declaration, ExampleTable.class) == null){
 			super.checkVariableDeclaration(declaration);
 		}
 	}
 
+	@Override
 	protected void checkDeclaredVariableName(EObject nameDeclarator, EObject attributeHolder, EAttribute attr) {
 		if (nameDeclarator.eContainer() == null)
 			return;
@@ -63,6 +64,10 @@ public class JnarioJavaValidator extends AbstractJnarioJavaValidator {
 				}
 			}
 		}
+	}
+	
+	@Override
+	public  void checkLocalUsageOfDeclared(XVariableDeclaration variableDeclaration) {
 	}
 
 	@Check
