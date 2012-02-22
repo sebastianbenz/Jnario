@@ -80,7 +80,7 @@ import de.bmw.carit.jnario.ui.highlighting.JnarioTokenHighlighting;
 import de.bmw.carit.jnario.ui.launching.JnarioJavaElementDelegate;
 
 /**
- * @author Birgit Engelmann
+ * @author Birgit Engelmann - Initial contribution and API
  */
 public class JnarioUiModule extends de.bmw.carit.jnario.ui.AbstractJnarioUiModule {
 	public JnarioUiModule(AbstractUIPlugin plugin) {

@@ -32,6 +32,7 @@ import de.bmw.carit.jnario.jnario.JnarioFile;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
+ * @author Birgit Engelmann
  */
 public class JnarioJavaElementDelegate extends JavaElementDelegate {
 	

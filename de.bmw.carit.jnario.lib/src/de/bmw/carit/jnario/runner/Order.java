@@ -13,8 +13,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @author Birgit Engelmann
- * Annotation to define the order of generated methods from jnario files
+ * @author Birgit Engelmann - Initial contribution and API
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)

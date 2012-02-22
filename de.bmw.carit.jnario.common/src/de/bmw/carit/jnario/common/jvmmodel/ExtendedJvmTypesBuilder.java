@@ -29,6 +29,10 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 import com.google.inject.Inject;
 
+/**
+ * @author Birgit Engelmann - Initial contribution and API
+ * @author Sebastian Benz
+ */
 public class ExtendedJvmTypesBuilder extends JvmTypesBuilder {
 
 	@Inject

@@ -3,6 +3,9 @@ package de.bmw.carit.jnario.tests
 import static extension de.bmw.carit.jnario.tests.util.JnarioExecutor.*
 import static de.bmw.carit.jnario.common.test.util.ResultMatchers.*
 
+/**
+ * @author Birgit Engelmann - Initial contribution and API
+ */
 Feature: Annotations
 
 	Scenario: Parsing annotations inside a code block

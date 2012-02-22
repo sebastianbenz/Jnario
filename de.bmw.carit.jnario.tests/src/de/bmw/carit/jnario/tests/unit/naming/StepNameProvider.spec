@@ -10,6 +10,9 @@ import de.bmw.carit.jnario.tests.util.SpecTestInstantiator
 import static de.bmw.carit.jnario.tests.util.Query.*
 import de.bmw.carit.jnario.naming.StepNameProvider
 
+/**
+ * @author Sebastian Benz - Initial contribution and API
+ */
 @InstantiateWith(typeof(SpecTestInstantiator))
 describe StepNameProvider{
 

@@ -26,6 +26,9 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.XtextSourceViewer;
 
+/**
+ * @author Birgit Engelmann - Initial contribution and API
+ */
 public class JnarioEditor extends XtextEditor {
 
 	private static final RGB NONE_CODE_COLOR = new RGB(245, 245, 245);

@@ -58,7 +58,7 @@ import org.eclipse.xtext.xtend2.xtend2.XtendField;
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 
 /**
- * @author Birgit Engelmann
+ * @author Birgit Engelmann - Initial contribution and API
  */
 @SuppressWarnings("all")
 public class JnarioJvmModelInferrer extends CommonJvmModelInferrer {

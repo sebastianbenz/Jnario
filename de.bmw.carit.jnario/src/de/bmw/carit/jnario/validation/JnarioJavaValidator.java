@@ -30,6 +30,9 @@ import de.bmw.carit.jnario.jnario.Scenario;
 import de.bmw.carit.jnario.jnario.Step;
 import de.bmw.carit.jnario.jnario.StepReference;
 
+/**
+ * @author Birgit Engelmann - Initial contribution and API
+ */
 @ComposedChecks(validators={CommonJavaValidator.class})
 public class JnarioJavaValidator extends AbstractJnarioJavaValidator {
 

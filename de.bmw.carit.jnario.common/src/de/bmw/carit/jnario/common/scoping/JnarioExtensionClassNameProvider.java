@@ -21,6 +21,9 @@ import de.bmw.carit.jnario.lib.ExampleTableIterators;
 import de.bmw.carit.jnario.lib.Expectations;
 import de.bmw.carit.jnario.lib.Should;
 
+/**
+ * @author Sebastian Benz - Initial contribution and API
+ */
 @Singleton
 public class JnarioExtensionClassNameProvider extends ExtensionClassNameProvider {
 

@@ -58,7 +58,7 @@ import de.bmw.carit.jnario.validation.JnarioClasspathBasedChecks;
 import de.bmw.carit.jnario.validation.JnarioResourceValidator;
 
 /**
- * Use this class to register components to be used at runtime / without the Equinox extension registry.
+ * @author Birgit Engelmann - Initial contribution and API
  */
 public class JnarioRuntimeModule extends de.bmw.carit.jnario.AbstractJnarioRuntimeModule {
 	

@@ -33,7 +33,7 @@ import de.bmw.carit.jnario.jnario.WhenReference;
 import de.bmw.carit.jnario.jnario.util.JnarioSwitch;
 
 /**
- * @author Birgit Engelmann
+ * @author Birgit Engelmann - Initial contribution and API
  * @author Sebastian Benz
  */
 public class JnarioSemanticHighlightingCalculator extends XtendHighlightingCalculator {

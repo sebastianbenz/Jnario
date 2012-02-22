@@ -3,6 +3,9 @@ package de.bmw.carit.jnario.tests
 import static de.bmw.carit.jnario.common.test.util.ResultMatchers.*
 import static extension de.bmw.carit.jnario.tests.util.JnarioExecutor.*
 
+/**
+ * @author Birgit Engelmann - Initial contribution and API
+ */
 Feature: Backgrounds
 
 	Scenario: It is possible to add a background to a feature

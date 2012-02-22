@@ -22,7 +22,9 @@ import org.eclipse.xtext.xtend2.compiler.Xtend2Compiler;
  */
 public class JnarioCompiler extends Xtend2Compiler {
 
-	// removed "{\n" and "\n}" from original method
+	/**
+	 * based on XbaseCompiler, removed brackets ("{\n" and "\n}") from original method
+	 */
 	@Override
 	protected void _toJavaStatement(XBlockExpression expr, IAppendable b, boolean isReferenced) {
 		if (expr.getExpressions().isEmpty())
@@ -51,6 +53,9 @@ public class JnarioCompiler extends Xtend2Compiler {
 		b.decreaseIndentation();
 	}
 	
+	/**
+	 * based on XbaseCompiler, removed creation of local variables
+	 */
 	@Override
 	protected void _toJavaStatement(XVariableDeclaration varDeclaration,
 			IAppendable b, boolean isReferenced) {

@@ -23,7 +23,7 @@ import de.bmw.carit.jnario.jnario.Step;
 import de.bmw.carit.jnario.jnario.StepExpression;
 
 /**
- * @author Birgit Engelmann
+ * @author Birgit Engelmann - Initial contribution and API
  */
 public class JnarioFoldingRegionProvider extends DefaultFoldingRegionProvider {
 

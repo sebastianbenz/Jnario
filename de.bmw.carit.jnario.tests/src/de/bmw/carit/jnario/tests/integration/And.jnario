@@ -1,4 +1,8 @@
 package de.bmw.carit.jnario.tests
+
+/**
+ * @author Birgit Engelmann - Initial contribution and API
+ */
 Feature: Parsing simple jnario files.
 Scenario: And stuff.
 Given some variables.

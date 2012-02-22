@@ -19,9 +19,14 @@ import org.eclipse.xtext.xbase.impl.FeatureCallToJavaMapping;
 
 import com.google.common.collect.Lists;
 
+/**
+ * @author Birgit Engelmann - Initial contribution and API
+ */
 public class JnarioFeatureCallToJavaMapping extends FeatureCallToJavaMapping {
 	
-	// copied from FeatureCallToJavaMapping, removed check for constructor
+	/**
+	 *  based on FeatureCallToJavaMapping, removed check for constructor
+	 */
 	public List<XExpression> getActualArguments(
 			XAbstractFeatureCall featureCall, 
 			JvmIdentifiableElement feature, 

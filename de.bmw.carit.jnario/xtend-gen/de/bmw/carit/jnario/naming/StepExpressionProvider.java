@@ -5,6 +5,9 @@ import de.bmw.carit.jnario.jnario.StepExpression;
 import de.bmw.carit.jnario.jnario.StepReference;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
+/**
+ * @author Sebastian Benz - Initial contribution and API
+ */
 @SuppressWarnings("all")
 public class StepExpressionProvider {
   public StepExpression expressionOf(final Step step) {

@@ -17,6 +17,9 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfigurationAcce
 import org.eclipse.xtext.ui.editor.utils.TextStyle;
 import org.eclipse.xtext.xtend2.ui.highlighting.XtendHighlightingConfiguration;
 
+/**
+ * @author Birgit Engelmann - Initial contribution and API
+ */
 public class JnarioHighlightingConfiguration extends XtendHighlightingConfiguration {
 
 	private static final int DEFAULT_FONT_SIZE = getDefaultFontDescriptor()

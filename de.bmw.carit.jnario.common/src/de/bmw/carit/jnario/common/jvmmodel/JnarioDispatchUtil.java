@@ -18,6 +18,9 @@ import org.eclipse.xtext.xtend2.xtend2.XtendFunction;
 
 import com.google.inject.Inject;
 
+/**
+ * @author Sebastian Benz - Initial contribution and API
+ */
 public class JnarioDispatchUtil extends DispatchUtil {
 	
 	@Inject

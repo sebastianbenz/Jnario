@@ -1,3 +1,8 @@
+package de.bmw.carit.jnario.tests
+
+/**
+ * @author Birgit Engelmann - Initial contribution and API
+ */
 Feature: Access of variables
 
 	Scenario: Access a variable in the same step it was declared in

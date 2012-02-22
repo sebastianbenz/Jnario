@@ -20,6 +20,10 @@ import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
 import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
+/**
+ * @author Birgit Engelmann - Initial contribution and API
+ * @author Sebastian Benz
+ */
 public class ExtendedJvmModelGenerator extends JvmModelGenerator {
 
 	public CharSequence toJavaLiteral(final JvmAnnotationValue it, final ImportManager importManager){

@@ -11,7 +11,7 @@ import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
 
 /**
- * @author Birgit Engelmann
+ * @author Birgit Engelmann - Initial contribution and API
  */
 public class JnarioExamplesRunner extends JnarioRunner{
 

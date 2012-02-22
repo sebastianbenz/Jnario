@@ -14,6 +14,10 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 
+/**
+ * @author Sebastian Benz - Initial contribution and API
+ * @author Birgit Engelmann
+ */
 @SuppressWarnings("all")
 public class StepNameProvider {
   private static String MULTILINE = "\\\\( |\t)*\r?\n?( |\t)*";

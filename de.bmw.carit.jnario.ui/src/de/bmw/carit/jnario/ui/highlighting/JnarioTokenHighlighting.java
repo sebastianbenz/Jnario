@@ -11,6 +11,9 @@ import org.eclipse.xtext.xtend2.ui.highlighting.TokenToAttributeIdMapper;
 
 import com.google.inject.Singleton;
 
+/**
+ * @author Birgit Engelmann - Initial contribution and API
+ */
 @Singleton
 public class JnarioTokenHighlighting extends TokenToAttributeIdMapper{
 

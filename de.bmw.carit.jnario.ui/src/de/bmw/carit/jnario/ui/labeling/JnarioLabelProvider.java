@@ -16,9 +16,7 @@ import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
 import com.google.inject.Inject;
 
 /**
- * Provides labels for a EObjects.
- * 
- * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#labelProvider
+ * @author Birgit Engelmann - Initial contribution and API
  */
 public class JnarioLabelProvider extends DefaultEObjectLabelProvider {
 

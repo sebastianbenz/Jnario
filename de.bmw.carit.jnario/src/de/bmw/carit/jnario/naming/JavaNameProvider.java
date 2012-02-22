@@ -12,7 +12,7 @@ import org.eclipse.xtext.util.Strings;
 import de.bmw.carit.jnario.jnario.Feature;
 
 /**
- * @author Birgit Engelmann
+ * @author Birgit Engelmann - Initial contribution and API
  */
 public class JavaNameProvider {
 	

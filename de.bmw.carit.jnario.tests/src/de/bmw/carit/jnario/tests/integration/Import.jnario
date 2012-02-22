@@ -1,9 +1,12 @@
 package de.bmw.carit.jnario.tests
 
 import static org.hamcrest.core.Is.*
-import org.junit.Assert.*
+import static org.hamcrest.MatcherAssert.*
 
-Feature: Parsing simple jnario files.
+/**
+ * @author Birgit Engelmann - Initial contribution and API
+ */
+Feature: Using imports in a file
 	
 	Scenario: Import stuff.
 		Given some variables.
@@ -11,4 +14,6 @@ Feature: Parsing simple jnario files.
 			var y = 4
 			var z = 5
 		When I add them
-		Then the sum should be the result.
+			var sum = x + y + z
+		Then the sum should be 12.
+			assertThat(sum, is(12))

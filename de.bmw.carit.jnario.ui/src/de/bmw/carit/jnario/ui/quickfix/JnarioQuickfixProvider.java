@@ -10,6 +10,9 @@ package de.bmw.carit.jnario.ui.quickfix;
 
 import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider;
 
+/**
+ * @author Birgit Engelmann - Initial contribution and API
+ */
 public class JnarioQuickfixProvider extends DefaultQuickfixProvider {
 
 //	@Fix(MyJavaValidator.INVALID_NAME)

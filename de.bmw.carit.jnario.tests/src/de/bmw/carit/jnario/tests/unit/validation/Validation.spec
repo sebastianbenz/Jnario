@@ -9,7 +9,10 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.junit4.validation.RegisteredValidatorTester
 
 import static de.bmw.carit.jnario.tests.util.Query.*
- 
+
+/**
+ * @author Birgit Engelmann - Initial contribution and API
+ */
 @InstantiateWith(typeof(SpecTestInstantiator))
 describe "JnarioValidator"{
 

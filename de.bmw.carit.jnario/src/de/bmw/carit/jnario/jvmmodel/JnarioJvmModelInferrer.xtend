@@ -25,16 +25,16 @@ import de.bmw.carit.jnario.runner.JnarioExamplesRunner
 import de.bmw.carit.jnario.runner.JnarioRunner
 import de.bmw.carit.jnario.runner.Named
 import de.bmw.carit.jnario.runner.Order
-import java.util.Iterator
+import java.util.ArrayList
 import java.util.List
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.common.types.JvmGenericType
+import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.util.IAcceptor
-import org.eclipse.xtext.xbase.XAssignment
 import org.eclipse.xtext.xbase.XVariableDeclaration
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator
 import org.eclipse.xtext.xbase.typing.ITypeProvider
@@ -43,11 +43,9 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 import static com.google.common.collect.Iterators.*
-import org.eclipse.xtext.common.types.JvmTypeReference
-import java.util.ArrayList
 
 /**
- * @author Birgit Engelmann
+ * @author Birgit Engelmann - Initial contribution and API
  */
 class JnarioJvmModelInferrer extends CommonJvmModelInferrer {
 
@@ -317,7 +315,7 @@ class JnarioJvmModelInferrer extends CommonJvmModelInferrer {
 	}
 	
 	
-	// copied from Xtend2JvmModelInferrer since it does not use source.getAnnotations()
+	// based on Xtend2JvmModelInferrer which does not use source.getAnnotations()
 	// which checks if annotationInfos is null
 	// but uses source.getAnnotationInfo().getAnnotations()
 	override void transform(XtendField source, JvmGenericType container) {

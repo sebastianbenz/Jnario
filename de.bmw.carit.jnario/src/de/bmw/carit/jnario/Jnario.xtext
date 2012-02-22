@@ -5,6 +5,10 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
+ 
+ /**
+ * @author Birgit Engelmann - Initial contribution and API
+ */
 
 grammar de.bmw.carit.jnario.Jnario with org.eclipse.xtext.xtend2.Xtend2
 generate jnario "http://www.bmw.de/carit/jnario/Jnario"

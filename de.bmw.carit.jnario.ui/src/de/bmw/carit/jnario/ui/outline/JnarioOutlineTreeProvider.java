@@ -13,8 +13,7 @@ package de.bmw.carit.jnario.ui.outline;
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider;
 
 /**
- * customization of the default outline structure
- * 
+ * @author Birgit Engelmann - Initial contribution and API
  */
 public class JnarioOutlineTreeProvider extends DefaultOutlineTreeProvider {
 	

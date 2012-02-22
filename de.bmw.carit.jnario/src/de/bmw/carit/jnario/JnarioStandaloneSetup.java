@@ -19,8 +19,7 @@ import de.bmw.carit.jnario.common.CommonPackage;
 import de.bmw.carit.jnario.jnario.JnarioPackage;
 
 /**
- * Initialization support for running Xtext languages 
- * without equinox extension registry
+ * @author Birgit Engelmann - Initial contribution and API
  */
 public class JnarioStandaloneSetup extends JnarioStandaloneSetupGenerated{
 

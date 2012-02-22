@@ -18,9 +18,7 @@ import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import de.bmw.carit.jnario.ui.contentassist.AbstractJnarioProposalProvider;
 
 /**
- * see
- * http://www.eclipse.org/Xtext/documentation/latest/xtext.html#contentAssist on
- * how to customize content assistant
+ * @author Birgit Engelmann - Initial contribution and API
  */
 public class JnarioProposalProvider extends AbstractJnarioProposalProvider {
 

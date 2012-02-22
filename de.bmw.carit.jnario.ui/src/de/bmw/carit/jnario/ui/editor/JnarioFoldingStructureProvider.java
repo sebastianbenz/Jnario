@@ -11,6 +11,9 @@ import org.eclipse.jface.text.Position;
 import org.eclipse.jface.text.source.projection.ProjectionAnnotation;
 import org.eclipse.xtext.xtend2.ui.editor.InitiallyCollapsableAwareFoldingStructureProvider;
 
+/**
+ * @author Birgit Engelmann - Initial contribution and API
+ */
 public class JnarioFoldingStructureProvider extends InitiallyCollapsableAwareFoldingStructureProvider {
 	
 	@Override

@@ -15,6 +15,9 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.IHandlerService;
 
+/**
+ * @author Birgit Engelmann - Initial contribution and API
+ */
 public class JnarioShowCodeHandler extends AbstractHandler {
 
 	private boolean codeIsShown = false;

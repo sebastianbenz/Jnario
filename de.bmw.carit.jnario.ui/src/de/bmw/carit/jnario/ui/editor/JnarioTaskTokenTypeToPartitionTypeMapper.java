@@ -14,6 +14,9 @@ import org.eclipse.xtext.xtend2.ui.autoedit.TokenTypeToPartitionMapper;
 import com.google.common.collect.Sets;
 import com.google.inject.Singleton;
 
+/**
+ * @author Birgit Engelmann - Initial contribution and API
+ */
 @Singleton
 public class JnarioTaskTokenTypeToPartitionTypeMapper extends TokenTypeToPartitionMapper{
 

@@ -13,9 +13,7 @@ package de.bmw.carit.jnario.ui.labeling;
 import org.eclipse.xtext.ui.label.DefaultDescriptionLabelProvider;
 
 /**
- * Provides labels for a IEObjectDescriptions and IResourceDescriptions.
- * 
- * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#labelProvider
+ * @author Birgit Engelmann - Initial contribution and API
  */
 public class JnarioDescriptionLabelProvider extends DefaultDescriptionLabelProvider {
 

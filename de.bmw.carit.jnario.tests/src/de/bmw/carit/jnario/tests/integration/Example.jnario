@@ -1,5 +1,8 @@
 package de.bmw.carit.jnario.tests
 
+/**
+ * @author Birgit Engelmann - Initial contribution and API
+ */
 Feature: Examples.
 Scenario: Example tables.
 Given some variables.

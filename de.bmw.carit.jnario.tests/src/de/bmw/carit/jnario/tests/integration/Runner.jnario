@@ -3,6 +3,9 @@ package de.bmw.carit.jnario.tests
 import static extension de.bmw.carit.jnario.tests.util.JnarioExecutor.*
 import static de.bmw.carit.jnario.common.test.util.ResultMatchers.*
 
+/**
+ * @author Birgit Engelmann - Initial contribution and API
+ */
 Feature: Test Runner
 
 	Scenario: Create only one test instance for one jnario scenario
