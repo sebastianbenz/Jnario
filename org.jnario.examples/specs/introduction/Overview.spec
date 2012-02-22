@@ -47,7 +47,7 @@ describe "Jnario Specs - BDD for Java"{
    * a thing of the past. Jnario provides a special assert statement that reports, when the assertion fails, 
    * the value of all involved expressions. 
    */
-  it "Self-explaining Assertions"{
+  it "Self-explaining Assertions"{  
     val x = 0  
     val y = 1
     errorMessage[assert x == 1 && y == 0].is('''
@@ -58,7 +58,7 @@ describe "Jnario Specs - BDD for Java"{
            y is 1'''
       )  
   }   
-     
+
   /*
    * *Jnario Specs* helps you write less boilerplate code in your 
    * specifications. In the following example, `describe Calculator` 
@@ -67,8 +67,7 @@ describe "Jnario Specs - BDD for Java"{
    * which you can use in your specification. It is even possible to use 
    * [Google Guice](http://code.google.com/p/google-guice/) to instantiate your subjects.
    * 
-   * @filter(\.executesSuccessfully)   
-   * @filter(''')
+   * @filter(\.executesSuccessfully|''')   
    */
   it "Implicit subject creation" {
       '''

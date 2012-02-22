@@ -24,7 +24,7 @@ describe DocGenerator {
 		generateEmptyExampleDoc()
 		
 		assert generatedFile("js/prettify.js") != null
-		assert generatedFile("js/lang-xtend.js") != null
+		assert generatedFile("js/lang-jnario.js") != null
 	}
 	
 	it "should generate css helper files"{
@@ -80,7 +80,7 @@ describe DocGenerator {
 		<h4>Should do stuff</h4>
 		<p>
 		<p>Example documentation</p>
-		<pre class="prettyprint lang-xtend">
+		<pre class="prettyprint lang-jnario">
 		var x = 0
 		x = x + 1</pre>
 		</p>
