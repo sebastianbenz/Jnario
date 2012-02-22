@@ -1,15 +1,29 @@
+/*******************************************************************************
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
 package de.bmw.carit.jnario.spec.tests.unit.doc
 
 import de.bmw.carit.jnario.spec.doc.WhiteSpaceNormalizer
 
 describe WhiteSpaceNormalizer{
+
+	def examples {
+		| input 					| result 			|
+		| null						| ""				|
+		| "\thello"					| "hello" 			|
+		| "\thello\n\tworld" 		| "hello\nworld"	|
+		| "\t\thello\n\t\tworld" 	| "hello\nworld"	|
+		| "\t\thello\n\tworld" 		| "hello\n\tworld"	|
+	}
 	
 	it "should remove trailing whitespace"{
-		subject.normalize(null).should.be("")
-		subject.normalize("\thello").should.be("hello")
-		subject.normalize("\thello\n\tworld").should.be("hello\nworld")
-		subject.normalize("\t\thello\n\t\tworld").should.be("hello\nworld")
-		subject.normalize("\t\thello\n\tworld").should.be("hello\n\tworld")
+		examples.forEach[
+			subject.normalize(input).should.be(result)
+		]
 	}
 	
 }

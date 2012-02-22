@@ -1,7 +1,15 @@
+/*******************************************************************************
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
 package de.bmw.carit.jnario.spec.tests.unit.doc
 
-import test.FilterExtractor
 import java.util.List
+import de.bmw.carit.jnario.spec.doc.FilterExtractor
+import de.bmw.carit.jnario.spec.doc.Filter
 
 describe FilterExtractor {
 	
@@ -20,7 +28,7 @@ describe FilterExtractor {
 		| null 									| <String>emptyList 		|
 		| "string" 								| <String>emptyList 		|
 		| "@filter(bbb)" 						| newArrayList("bbb") 		|
-//		| "@filter(a(b*)a)"						| newArrayList("a(b*)a") 		|
+//		| "@filter(a(b*)a)"						| newArrayList("a(b*)a") 	|
 		| "text @filter(bbb) text  @filter(.*)" | newArrayList("bbb", ".*") |
 	}
 
