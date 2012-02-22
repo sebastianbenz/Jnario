@@ -40,7 +40,7 @@ class DocGenerator implements IGenerator {
 	@Inject extension FilterExtractor
 	
 	List<String> cssFiles = newArrayList("bootstrap.min.css", "bootstrap-responsive.min.css", "custom.css", "prettify.css")
-	List<String> jsFiles = newArrayList("lang-xtend.js", "prettify.js")
+	List<String> jsFiles = newArrayList("prettify.js", "lang-xtend.js")
 
 	override doGenerate(Resource input, IFileSystemAccess fsa) {
 		fsa.copy("css", cssFiles)
@@ -158,7 +158,7 @@ class DocGenerator implements IGenerator {
 			<p>
 			«docString»
 			«IF !example.pending»
-			<pre class="prettyprint">
+			<pre class="prettyprint lang-xtend">
 			«example.body.toXtendCode(filters)»</pre>
 			</p>
 			«ENDIF»

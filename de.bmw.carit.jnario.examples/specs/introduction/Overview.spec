@@ -54,11 +54,11 @@ describe "Jnario Specs - BDD for Java"{
       Expected x == 1 && y == 0 but:
            x == 1 is false
            x is 0
-           y == 0 is false
+           y == 0 is false  
            y is 1'''
-      ) 
-  }
-  
+      )  
+  }   
+     
   /*
    * *Jnario Specs* helps you write less boilerplate code in your 
    * specifications. In the following example, `describe Calculator` 
@@ -67,7 +67,7 @@ describe "Jnario Specs - BDD for Java"{
    * which you can use in your specification. It is even possible to use 
    * [Google Guice](http://code.google.com/p/google-guice/) to instantiate your subjects.
    * 
-   * @filter(\\.executesSuccessfully)   
+   * @filter(\.executesSuccessfully)   
    * @filter(''')
    */
   it "Implicit subject creation" {

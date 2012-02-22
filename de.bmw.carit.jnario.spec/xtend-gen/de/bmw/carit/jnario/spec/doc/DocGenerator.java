@@ -72,7 +72,7 @@ public class DocGenerator implements IGenerator {
   
   private List<String> jsFiles = new Function0<List<String>>() {
     public List<String> apply() {
-      ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("lang-xtend.js", "prettify.js");
+      ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("prettify.js", "lang-xtend.js");
       return _newArrayList;
     }
   }.apply();
@@ -347,7 +347,7 @@ public class DocGenerator implements IGenerator {
         boolean _isPending = example.isPending();
         boolean _operator_not = BooleanExtensions.operator_not(_isPending);
         if (_operator_not) {
-          _builder.append("<pre class=\"prettyprint\">");
+          _builder.append("<pre class=\"prettyprint lang-xtend\">");
           _builder.newLine();
           XExpression _body = example.getBody();
           String _xtendCode = this.toXtendCode(_body, filters);

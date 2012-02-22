@@ -99,7 +99,7 @@ public class JnarioSpecsBDDForJavaSpec {
       _builder.append("x is 0");
       _builder.newLine();
       _builder.append("     ");
-      _builder.append("y == 0 is false");
+      _builder.append("y == 0 is false  ");
       _builder.newLine();
       _builder.append("     ");
       _builder.append("y is 1");
@@ -114,7 +114,7 @@ public class JnarioSpecsBDDForJavaSpec {
    * which you can use in your specification. It is even possible to use
    * [Google Guice](http://code.google.com/p/google-guice/) to instantiate your subjects.
    * 
-   * @filter(\\.executesSuccessfully)
+   * @filter(\.executesSuccessfully)
    * @filter(''')
    */
   @Test
