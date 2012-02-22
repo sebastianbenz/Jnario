@@ -19,7 +19,6 @@ import de.bmw.carit.jnario.common.Assertion;
 import de.bmw.carit.jnario.common.CommonFactory;
 import de.bmw.carit.jnario.common.CommonPackage;
 import de.bmw.carit.jnario.common.ExampleColumn;
-import de.bmw.carit.jnario.common.ExampleHeading;
 import de.bmw.carit.jnario.common.ExampleRow;
 import de.bmw.carit.jnario.common.ExampleTable;
 import de.bmw.carit.jnario.common.Matcher;

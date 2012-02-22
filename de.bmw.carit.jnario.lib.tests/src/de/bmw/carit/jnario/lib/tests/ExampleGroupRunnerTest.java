@@ -2,7 +2,6 @@ package de.bmw.carit.jnario.lib.tests;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.junit.experimental.results.PrintableResult.testResult;
@@ -17,12 +16,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.experimental.results.PrintableResult;
-import org.junit.experimental.results.ResultMatchers;
 import org.junit.internal.matchers.TypeSafeMatcher;
 import org.junit.runner.Description;
 import org.junit.runner.JUnitCore;
-import org.junit.runner.Result;
 import org.junit.runner.RunWith;
 import org.junit.runners.model.InitializationError;
 
