@@ -5,9 +5,7 @@ Bundle-Vendor: BMW Car IT
 Bundle-Version: 0.1.0.qualifier
 Bundle-SymbolicName: de.bmw.carit.jnario.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: de.bmw.carit.jnario;visibility:=reexport,
- de.bmw.carit.jnario.ui,
- org.eclipse.core.runtime,
+Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.xtext,
  org.eclipse.xtext.junit4;visibility:=reexport,
  org.junit;visibility:=reexport,
@@ -21,20 +19,22 @@ Require-Bundle: de.bmw.carit.jnario;visibility:=reexport,
  de.bmw.carit.jnario.spec;bundle-version="0.1.0",
  de.bmw.carit.jnario.spec.ui;bundle-version="0.1.0",
  org.eclipse.xtext.xbase.junit;bundle-version="2.2.0",
- org.eclipse.jdt.core;visibility:=reexport
+ org.eclipse.jdt.core;visibility:=reexport,
+ de.bmw.carit.jnario.feature;bundle-version="0.1.0",
+ de.bmw.carit.jnario.feature.ui;bundle-version="0.1.0"
 Import-Package: org.apache.log4j,
  org.apache.commons.logging
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: de.bmw.carit.jnario,
  de.bmw.carit.jnario.common.test.util,
  de.bmw.carit.jnario.spec,
+ de.bmw.carit.jnario.feature,
  de.bmw.carit.jnario.spec.tests.integration,
  de.bmw.carit.jnario.spec.tests.unit.naming,
  de.bmw.carit.jnario.spec.tests.unit.scoping,
  de.bmw.carit.jnario.spec.tests.unit.validation,
- de.bmw.carit.jnario.tests.integration,
- de.bmw.carit.jnario.tests.unit.naming,
- de.bmw.carit.jnario.tests.unit.scoping,
- de.bmw.carit.jnario.tests.unit.validation,
- de.bmw.carit.jnario.tests.util
+ de.bmw.carit.jnario.feature.tests.integration,
+ de.bmw.carit.jnario.feature.tests.unit.naming,
+ de.bmw.carit.jnario.feature.tests.unit.scoping,
+ de.bmw.carit.jnario.feature.tests.unit.validation
 Bundle-Activator: de.bmw.carit.jnario.Activator

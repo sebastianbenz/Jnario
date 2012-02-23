@@ -8,7 +8,7 @@
 package de.bmw.carit.jnario.spec.tests.integration
 
 import static org.junit.Assert.*
-import static de.bmw.carit.jnario.tests.util.SpecExecutor.*
+import static de.bmw.carit.jnario.common.test.util.SpecExecutor.*
 import static de.bmw.carit.jnario.common.test.util.ResultMatchers.*
 import static org.hamcrest.CoreMatchers.*
 /**

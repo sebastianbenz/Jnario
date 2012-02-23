@@ -7,7 +7,7 @@
  *******************************************************************************/
 package de.bmw.carit.jnario.spec.tests.integration2
 import static extension de.bmw.carit.jnario.common.test.util.Helpers.*
-import static extension de.bmw.carit.jnario.tests.util.SpecExecutor.*
+import static extension de.bmw.carit.jnario.common.test.util.SpecExecutor.*
 import org.junit.Ignore
 /*
  * Example tables are a great way to structure input and expected output data.

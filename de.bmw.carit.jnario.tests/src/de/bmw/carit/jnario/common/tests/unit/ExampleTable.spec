@@ -8,10 +8,12 @@
 package de.bmw.carit.jnario.common.tests.unit
 
 import com.google.inject.Inject
-import de.bmw.carit.jnario.tests.util.ModelStore
 import de.bmw.carit.jnario.common.ExampleTable
-import de.bmw.carit.jnario.tests.util.SpecTestInstantiator
+import de.bmw.carit.jnario.common.test.util.ModelStore
+import de.bmw.carit.jnario.common.test.util.SpecTestInstantiator
 import de.bmw.carit.jnario.runner.InstantiateWith
+
+import static extension de.bmw.carit.jnario.lib.Should.*
 
 @InstantiateWith(typeof(SpecTestInstantiator))
 describe ExampleTable{

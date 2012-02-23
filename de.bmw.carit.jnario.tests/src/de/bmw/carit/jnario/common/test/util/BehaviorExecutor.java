@@ -52,10 +52,9 @@ import com.google.common.base.Predicate;
 import com.google.inject.Inject;
 
 import de.bmw.carit.jnario.common.Assertion;
-import de.bmw.carit.jnario.jnario.JnarioPackage;
+import de.bmw.carit.jnario.feature.feature.FeaturePackage;
 import de.bmw.carit.jnario.runner.Named;
 import de.bmw.carit.jnario.spec.spec.SpecPackage;
-import de.bmw.carit.jnario.tests.util.JnarioJavaCompiler;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -126,7 +125,7 @@ public abstract class BehaviorExecutor {
 
 	private IResourceValidator validator;
 	protected boolean validate = true;
-	private final JnarioJavaCompiler javaCompiler;
+	private final FeatureJavaCompiler javaCompiler;
 
 	@Inject
 	public BehaviorExecutor(JvmModelGenerator generator, JavaIoFileSystemAccess fsa,
@@ -135,7 +134,7 @@ public abstract class BehaviorExecutor {
 		this.fsa = fsa;
 		this.tempFolder = tempFolder;
 		this.validator = validator;
-		this.javaCompiler = JnarioJavaCompiler.getInstance();
+		this.javaCompiler = FeatureJavaCompiler.getInstance();
 		initCompiler();
 	}
 
@@ -155,7 +154,7 @@ public abstract class BehaviorExecutor {
 		javaCompiler.addClassPathOfClass(Matcher.class);
 		javaCompiler.addClassPathOfClass(Matchers.class);
 		javaCompiler.addClassPathOfClass(Test.class);
-		javaCompiler.addClassPathOfClass(JnarioPackage.class);
+		javaCompiler.addClassPathOfClass(FeaturePackage.class);
 		javaCompiler.addClassPathOfClass(SpecPackage.class);
 		javaCompiler.addClassPathOfClass(BehaviorExecutor.class);
 		javaCompiler.addClassPathOfClass(JvmOperation.class);

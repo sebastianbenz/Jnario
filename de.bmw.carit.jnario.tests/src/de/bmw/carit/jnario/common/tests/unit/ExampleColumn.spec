@@ -8,12 +8,14 @@
 package de.bmw.carit.jnario.common.tests.unit
 
 import com.google.inject.Inject
-import de.bmw.carit.jnario.common.ExampleTable
-import de.bmw.carit.jnario.tests.util.ModelStore
 import de.bmw.carit.jnario.common.ExampleColumn
-import org.eclipse.xtext.serializer.ISerializer
+import de.bmw.carit.jnario.common.ExampleTable
 import de.bmw.carit.jnario.runner.InstantiateWith
-import de.bmw.carit.jnario.tests.util.SpecTestInstantiator
+import org.eclipse.xtext.serializer.ISerializer
+
+import static extension de.bmw.carit.jnario.lib.ExampleTableIterators.*
+import de.bmw.carit.jnario.common.test.util.SpecTestInstantiator
+import de.bmw.carit.jnario.common.test.util.ModelStore
 
 @InstantiateWith(typeof(SpecTestInstantiator))
 describe ExampleColumn{

@@ -9,10 +9,10 @@ package de.bmw.carit.jnario.spec.tests.unit.naming
 
 import de.bmw.carit.jnario.runner.InstantiateWith
 import de.bmw.carit.jnario.spec.spec.ExampleGroup
-import de.bmw.carit.jnario.tests.util.SpecTestInstantiator
-import de.bmw.carit.jnario.tests.util.ModelStore
+import de.bmw.carit.jnario.common.test.util.SpecTestInstantiator
+import de.bmw.carit.jnario.common.test.util.ModelStore
 
-import static de.bmw.carit.jnario.tests.util.Query.*
+import static de.bmw.carit.jnario.common.test.util.Query.*
 
 import de.bmw.carit.jnario.spec.spec.Example
 import de.bmw.carit.jnario.spec.spec.Before

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="de.bmw.carit.jnario"
-      label="Jnario Runtime"
+      label="Feature Runtime"
       version="0.1.0.qualifier"
       provider-name="BMW Car IT">
 
@@ -51,7 +51,7 @@ http://www.eclipse.org/legal/epl-v10.html Description here.
    </requires>
 
    <plugin
-         id="de.bmw.carit.jnario"
+         id="de.bmw.carit.jnario.feature"
          download-size="0"
          install-size="0"
          version="0.0.0"

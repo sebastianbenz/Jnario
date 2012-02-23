@@ -12,12 +12,12 @@ import de.bmw.carit.jnario.common.Assertion
 import de.bmw.carit.jnario.common.ExampleRow
 import de.bmw.carit.jnario.common.ExampleTable
 import de.bmw.carit.jnario.runner.InstantiateWith
-import de.bmw.carit.jnario.tests.util.ModelStore
-import de.bmw.carit.jnario.tests.util.SpecTestInstantiator
+import de.bmw.carit.jnario.common.test.util.ModelStore
+import de.bmw.carit.jnario.common.test.util.SpecTestInstantiator
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.junit4.validation.RegisteredValidatorTester
 
-import static de.bmw.carit.jnario.tests.util.Query.*
+import static de.bmw.carit.jnario.common.test.util.Query.*
 
 @InstantiateWith(typeof(SpecTestInstantiator))
 describe "SpecValidator"{

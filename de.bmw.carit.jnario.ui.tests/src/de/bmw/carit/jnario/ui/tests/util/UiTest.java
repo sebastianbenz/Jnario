@@ -27,13 +27,13 @@ import org.junit.runner.RunWith;
 
 import com.google.inject.Inject;
 
-import de.bmw.carit.jnario.JnarioUiInjectorProvider;
-import de.bmw.carit.jnario.tests.util.JnarioTestRunner;
+import de.bmw.carit.jnario.common.test.util.FeatureTestRunner;
+import de.bmw.carit.jnario.feature.FeatureUiInjectorProvider;
 import de.bmw.carit.jnario.ui.tests.util.builders.Builders;
 import de.bmw.carit.jnario.ui.tests.util.builders.ProjectBuilder;
 
-@RunWith(JnarioTestRunner.class)
-@InjectWith(JnarioUiInjectorProvider.class)
+@RunWith(FeatureTestRunner.class)
+@InjectWith(FeatureUiInjectorProvider.class)
 public abstract class UiTest {
 
 	@Rule public UiTestRule uiTest = new UiTestRule();

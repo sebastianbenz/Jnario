@@ -16,7 +16,7 @@
   
   <modules>
   	<module>de.bmw.carit.jnario.target</module>
-    <module>de.bmw.carit.jnario</module>
+    <module>de.bmw.carit.jnario.feature</module>
     <module>de.bmw.carit.jnario.common</module>
 	<module>de.bmw.carit.jnario.common.ui</module>
     <module>de.bmw.carit.jnario.lib</module>
@@ -26,7 +26,7 @@
     <module>de.bmw.carit.jnario-feature</module>
     <module>de.bmw.carit.jnario.tests</module>
     <module>de.bmw.carit.jnario.lib.tests</module>
-    <module>de.bmw.carit.jnario.ui</module>
+    <module>de.bmw.carit.jnario.feature.ui</module>
     <module>de.bmw.carit.jnario.spec.ui</module>
     <module>de.bmw.carit.jnario.ui-feature</module>
     <module>de.bmw.carit.jnario.updatesite</module>

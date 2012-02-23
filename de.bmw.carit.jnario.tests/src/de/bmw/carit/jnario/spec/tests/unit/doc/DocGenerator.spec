@@ -9,9 +9,9 @@ package de.bmw.carit.jnario.spec.tests.unit.doc
 
 import de.bmw.carit.jnario.spec.doc.DocGenerator
 import de.bmw.carit.jnario.runner.InstantiateWith
-import de.bmw.carit.jnario.tests.util.SpecTestInstantiator
+import de.bmw.carit.jnario.common.test.util.SpecTestInstantiator
 import com.google.inject.Inject
-import de.bmw.carit.jnario.tests.util.ModelStore
+import de.bmw.carit.jnario.common.test.util.ModelStore
 import org.eclipse.xtext.generator.InMemoryFileSystemAccess
 
 @InstantiateWith(typeof(SpecTestInstantiator))

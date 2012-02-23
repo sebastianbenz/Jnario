@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.bmw.carit.jnario.feature/emf-gen"
+    editDirectory="/de.bmw.carit.jnario.feature.edit/src" editorDirectory="/de.bmw.carit.jnario.feature.editor/src"
+    modelPluginID="de.bmw.carit.jnario.feature" forceOverwrite="true" modelName="Feature"
+    editPluginClass="de.bmw.carit.jnario.feature.feature.provider.FeatureEditPlugin"
+    editorPluginClass="de.bmw.carit.jnario.feature.feature.presentation.FeatureEditorPlugin"
+    updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    testsDirectory="/de.bmw.carit.jnario.feature.tests/src" testSuiteClass="de.bmw.carit.jnario.feature.feature.tests.FeatureAllTests"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
+    editPluginID="de.bmw.carit.jnario.feature.edit" editorPluginID="de.bmw.carit.jnario.feature.editor"
+    testsPluginID="de.bmw.carit.jnario.feature.tests" usedGenPackages="../../de.bmw.carit.jnario.common/model/Common.genmodel#//common ../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types ../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xAnnotations ../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase ../../org.eclipse.xtext.xtend2/model/Xtend2.genmodel#//xtend2">
+  <foreignModel>Feature.ecore</foreignModel>
+  <genPackages prefix="Feature" basePackage="de.bmw.carit.jnario.feature" disposableProviderFactory="true"
+      ecorePackage="Feature.ecore#/">
+    <genClasses ecoreClass="Feature.ecore#//Feature">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Feature.ecore#//Feature/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Feature.ecore#//Feature/background"/>
+    </genClasses>
+    <genClasses ecoreClass="Feature.ecore#//Background">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Feature.ecore#//Background/steps"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Feature.ecore#//Background/members"/>
+    </genClasses>
+    <genClasses ecoreClass="Feature.ecore#//Scenario">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Feature.ecore#//Scenario/examples"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Feature.ecore#//Scenario/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Feature.ecore#//Scenario/steps"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Feature.ecore#//Scenario/members"/>
+    </genClasses>
+    <genClasses ecoreClass="Feature.ecore#//Step">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Feature.ecore#//Step/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Feature.ecore#//Step/stepExpression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Feature.ecore#//Step/and"/>
+    </genClasses>
+    <genClasses ecoreClass="Feature.ecore#//Given"/>
+    <genClasses ecoreClass="Feature.ecore#//When"/>
+    <genClasses ecoreClass="Feature.ecore#//Then"/>
+    <genClasses ecoreClass="Feature.ecore#//And"/>
+    <genClasses ecoreClass="Feature.ecore#//StepExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Feature.ecore#//StepExpression/annotations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Feature.ecore#//StepExpression/blockExpression"/>
+    </genClasses>
+    <genClasses ecoreClass="Feature.ecore#//FeatureFile"/>
+    <genClasses ecoreClass="Feature.ecore#//GivenReference"/>
+    <genClasses ecoreClass="Feature.ecore#//WhenReference"/>
+    <genClasses ecoreClass="Feature.ecore#//ThenReference"/>
+    <genClasses ecoreClass="Feature.ecore#//AndReference"/>
+    <genClasses ecoreClass="Feature.ecore#//StepReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Feature.ecore#//StepReference/reference"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
