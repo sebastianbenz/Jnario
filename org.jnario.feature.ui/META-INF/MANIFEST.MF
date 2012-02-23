@@ -1,0 +1,37 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.jnario.feature.ui
+Bundle-Vendor: BMW Car IT
+Bundle-Version: 0.1.0.qualifier
+Bundle-SymbolicName: org.jnario.feature.ui; singleton:=true
+Bundle-ActivationPolicy: lazy
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.xtext.ui,
+ org.eclipse.ui.editors;bundle-version="3.5.0",
+ org.eclipse.ui.ide;bundle-version="3.5.0",
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.ui,
+ org.eclipse.xtext.builder,
+ org.antlr.runtime,
+ org.eclipse.xtext.common.types.ui,
+ org.eclipse.xtext.ui.codetemplates.ui,
+ org.eclipse.compare,
+ org.eclipse.xtext.xbase.ui,
+ org.eclipse.jdt.junit,
+ org.eclipse.pde.ui,
+ org.jnario;bundle-version="0.1.0",
+ org.eclipse.xtext.xtend2.ui;bundle-version="2.2.0",
+ org.jnario.ui;bundle-version="0.1.0",
+ org.eclipse.debug.core;bundle-version="3.7.0",
+ org.eclipse.debug.ui;bundle-version="3.7.101",
+ org.jnario.feature;bundle-version="0.1.0"
+Import-Package: org.apache.commons.logging,
+ org.apache.log4j,
+ org.eclipse.jdt.core,
+ org.eclipse.xtext.xtend2.validation,
+ org.eclipse.xtext.xtend2.xtend2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.jnario.feature.ui.contentassist,
+ org.jnario.feature.ui.contentassist.antlr,
+ org.jnario.feature.ui.internal
+Bundle-Activator: org.jnario.feature.ui.internal.FeatureActivator

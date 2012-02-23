@@ -1,1 +1,0 @@
-mvn install:install-file -Dfile=de.bmw.carit.jnario.standalone-0.1.0.jar -DgroupId=de.bmw.carit.jnario -DartifactId=de.bmw.carit.jnario.standalone -Dversion=0.1.0 -Dpackaging=jar 

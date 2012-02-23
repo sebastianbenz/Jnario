@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<modelVersion>4.0.0</modelVersion>
+
+<groupId>org.jnario</groupId>
+<artifactId>org.jnario.target</artifactId>
+<version>0.1.0-SNAPSHOT</version>
+<packaging>pom</packaging>
+<name>jnario Target Definition</name>
+
+<parent>
+	<artifactId>jnario</artifactId>
+	<groupId>org.jnario</groupId>
+	<version>0.1.0-SNAPSHOT</version>
+</parent>
+
+<build>
+	<plugins>
+		<plugin>
+			<groupId>org.codehaus.mojo</groupId>
+			<artifactId>build-helper-maven-plugin</artifactId>
+			<version>1.3</version>
+			<executions>
+				<execution>
+					<id>attach-artifacts</id>
+					<phase>package</phase>
+					<goals>
+						<goal>attach-artifact</goal>
+					</goals>
+					<configuration>
+						<artifacts>
+							<artifact>
+								<file>indigo.target</file>
+								<type>target</type>
+								<classifier>indigo</classifier>
+							</artifact>
+						</artifacts>
+					</configuration>
+				</execution>
+			</executions>
+		</plugin>
+	</plugins>
+</build>
+
+</project>

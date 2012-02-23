@@ -1,0 +1,48 @@
+/*******************************************************************************
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
+package org.jnario.spec.tests.integration
+
+import static org.jnario.jnario.test.util.ResultMatchers.*
+
+import static extension org.jnario.jnario.test.util.SpecExecutor.*
+
+
+/**
+ * @author Sebastian Benz - Initial contribution and API
+ */
+describe "After" {
+ 
+	it "should be executed after each test"{
+		val spec = '
+			package bootstrap 
+			
+			import org.jnario.runner.Order
+			
+			describe "After"{
+				
+				static int afterExecutionCount = 0
+				
+				it "should be executed after each test (1)"{
+					afterExecutionCount.should.be(0)
+				}	
+				it "should be executed after each test (2)"{
+					afterExecutionCount.should.be(1)
+				}
+				it "should be executed after each test (3)"{
+					afterExecutionCount.should.be(2)
+				}	
+				
+				after{
+					afterExecutionCount = afterExecutionCount + 1
+				}
+			}
+		'
+		spec.execute.should.be(successful)
+	}
+
+}

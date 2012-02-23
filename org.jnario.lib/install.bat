@@ -1,0 +1,1 @@
+mvn install:install-file -Dfile=org.jnario.standalone-0.1.0.jar -DgroupId=org.jnario -DartifactId=org.jnario.standalone -Dversion=0.1.0 -Dpackaging=jar 

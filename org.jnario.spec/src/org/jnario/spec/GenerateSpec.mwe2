@@ -1,0 +1,153 @@
+module org.jnario.spec.GenerateSpec
+
+import org.eclipse.emf.mwe.utils.*
+import org.eclipse.xtext.generator.*
+import org.eclipse.xtext.ui.generator.*
+
+var grammarURI = "classpath:/org/jnario/spec/Spec.xtext"
+var file.extensions = "spec"
+var projectName = "org.jnario.spec"
+var runtimeProject = "../${projectName}"
+var backtrack = false
+var memoize = false
+
+Workflow {
+	bean = StandaloneSetup {
+        scanClassPath = true
+        platformUri = "${runtimeProject}/.."
+		registerGenModelFile = "platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel"
+		registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
+		registerGenModelFile = "platform:/resource/org.eclipse.xtext.xtend2/model/Xtend2.genmodel"
+		registerGenModelFile = "platform:/resource/org.jnario/model/Common.genmodel"
+    }
+    
+    bean = StandaloneSetup {
+		resourceSet = org.eclipse.xtext.resource.XtextResourceSet : resourceSet {}
+        scanClassPath = true
+        
+		registerEcoreFile = "platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore"
+		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xtype.ecore"
+		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore"
+		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/XAnnotations.ecore"
+		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xtend2/model/Xtend2.ecore"        
+		registerEcoreFile = "platform:/resource/org.jnario/model/Common.ecore"        
+		registerEcoreFile = "platform:/resource/${projectName}/model/Spec.ecore"
+    }
+    
+    component = DirectoryCleaner {
+		directory = "${runtimeProject}/emf-gen"
+	}
+
+	component = org.jnario.PatchedEcoreGenerator {
+		genModel = "platform:/resource/${projectName}/model/Spec.genmodel"
+		srcPath ="platform:/resource/${projectName}/src"
+		srcPath ="platform:/resource/org.eclipse.xtext.common.types/src"
+		srcPath ="platform:/resource/org.eclipse.xtext.xbase/src"
+		srcPath ="platform:/resource/org.eclipse.xtext.xtend2/src"
+		srcPath ="platform:/resource/org.jnario/src"
+	}
+	
+	component = DirectoryCleaner {
+        directory = "${runtimeProject}/src-gen"
+    }
+
+    component = DirectoryCleaner {
+        directory = "${runtimeProject}.ui/src-gen"
+    }
+    
+    component = Generator {
+        pathRtProject = runtimeProject
+        pathUiProject = "${runtimeProject}.ui"
+        pathTestProject = "../org.jnario.tests"
+        projectNameRt = projectName
+        projectNameUi = "${projectName}.ui"
+        language = {
+        	forcedResourceSet=resourceSet
+            uri = grammarURI
+            fileExtensions = file.extensions
+
+            // Java API to access grammar elements (required by several other fragments)
+            fragment = grammarAccess.GrammarAccessFragment {}
+
+            // Serializer 2.0
+            fragment = serializer.SerializerFragment {
+            	generateStub = false
+            }
+            
+            // a custom ResourceFactory for use with EMF
+            fragment = resourceFactory.ResourceFactoryFragment {
+                fileExtensions = file.extensions
+            }
+
+            // The antlr parser generator fragment.
+            fragment = parser.antlr.XtextAntlrGeneratorFragment {
+              options = auto-inject {}
+              antlrParam = "-Xconversiontimeout" antlrParam = "10000"
+            }
+
+            // java-based API for validation
+            fragment = validation.JavaValidatorFragment {
+            //    composedCheck = "org.eclipse.xtext.validation.ImportUriValidator"
+            //    composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
+            }
+
+            // scoping and exporting API
+            fragment = scoping.ImportNamespacesScopingFragment {}
+            fragment = exporting.QualifiedNamesFragment {}
+            fragment = builder.BuilderIntegrationFragment {}
+
+            // generator API
+            fragment = generator.GeneratorFragment {
+                generateMwe = false
+                generateJavaMain = false
+            }
+
+            // formatter API
+            fragment = formatting.FormatterFragment {}
+
+            // labeling API
+            fragment = labeling.LabelProviderFragment {}
+
+            // outline API
+            fragment = outline.OutlineTreeProviderFragment {}
+            fragment = outline.QuickOutlineFragment {}
+
+            // quickfix API
+            fragment = quickfix.QuickfixProviderFragment {}
+
+            // content assist API
+            fragment = contentAssist.JavaBasedContentAssistFragment {}
+
+            // generates a more lightweight Antlr parser and lexer tailored for content assist
+            fragment = parser.antlr.XtextAntlrUiGeneratorFragment {
+            	options = auto-inject {}
+            	antlrParam = "-Xconversiontimeout" antlrParam = "10000"
+            }
+
+            // generates junit test support classes into Generator#pathTestProject
+            fragment = junit.Junit4Fragment {}
+
+            // provides the necessary bindings for java types integration
+            fragment = types.TypesGeneratorFragment {}
+
+            // generates the required bindings only if the grammar inherits from Xbase
+            fragment = xbase.XbaseGeneratorFragment {
+            	generateXtendInferrer=false
+            }
+
+            // provides a preference page for template proposals
+            fragment = templates.CodetemplatesGeneratorFragment {}
+
+            // rename refactoring
+            fragment = refactoring.RefactorElementNameFragment {
+            	useJdtRefactoring = true
+            }
+
+            // provides a compare view
+            fragment = compare.CompareFragment {
+                 fileExtensions = file.extensions
+            }
+
+        }
+    }
+}

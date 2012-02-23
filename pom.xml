@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>de.bmw.carit.jnario</groupId>
+  <groupId>org.jnario</groupId>
   <artifactId>jnario</artifactId>
   <version>0.1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
@@ -15,21 +15,21 @@
   </properties>
   
   <modules>
-  	<module>de.bmw.carit.jnario.target</module>
-    <module>de.bmw.carit.jnario.feature</module>
-    <module>de.bmw.carit.jnario.common</module>
-	<module>de.bmw.carit.jnario.common.ui</module>
-    <module>de.bmw.carit.jnario.lib</module>
-  <!--  <module>de.bmw.carit.jnario.lib.maven</module> -->
-    <module>de.bmw.carit.jnario.spec</module>
-     <module>de.bmw.carit.jnario.standalone</module>
-    <module>de.bmw.carit.jnario-feature</module>
-    <module>de.bmw.carit.jnario.tests</module>
-    <module>de.bmw.carit.jnario.lib.tests</module>
-    <module>de.bmw.carit.jnario.feature.ui</module>
-    <module>de.bmw.carit.jnario.spec.ui</module>
-    <module>de.bmw.carit.jnario.ui-feature</module>
-    <module>de.bmw.carit.jnario.updatesite</module>
+  	<module>org.jnario.target</module>
+    <module>org.jnario.feature</module>
+    <module>org.jnario</module>
+	<module>org.jnario.ui</module>
+    <module>org.jnario.lib</module>
+  <!--  <module>org.jnario.lib.maven</module> -->
+    <module>org.jnario.spec</module>
+     <module>org.jnario.standalone</module>
+    <module>org.jnario-feature</module>
+    <module>org.jnario.tests</module>
+    <module>org.jnario.lib.tests</module>
+    <module>org.jnario.feature.ui</module>
+    <module>org.jnario.spec.ui</module>
+    <module>org.jnario.ui-feature</module>
+    <module>org.jnario.updatesite</module>
   </modules>
   
   <repositories>
@@ -97,8 +97,8 @@
           <resolver>p2</resolver>
           <target>
             <artifact>
-              <groupId>de.bmw.carit.jnario</groupId>
-              <artifactId>de.bmw.carit.jnario.target</artifactId>
+              <groupId>org.jnario</groupId>
+              <artifactId>org.jnario.target</artifactId>
               <version>0.1.0-SNAPSHOT</version>
               <classifier>indigo</classifier>
             </artifact>

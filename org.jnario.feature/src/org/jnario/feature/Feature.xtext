@@ -1,0 +1,150 @@
+/*******************************************************************************
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
+ 
+ /**
+ * @author Birgit Engelmann - Initial contribution and API
+ */
+
+grammar org.jnario.feature.Feature with org.eclipse.xtext.xtend2.Xtend2
+generate feature "http://www.org/jnario/feature/Feature"
+
+import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
+import "http://www.eclipse.org/xtext/Xtend2" as xtend
+import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
+import "platform:/resource/org.jnario/model/Common.ecore"
+
+FeatureFile returns xtend::XtendFile:
+	{FeatureFile}
+	('package' package=QualifiedName)?
+	imports += Import*
+	(xtendClass = Feature)?
+;
+
+Feature returns xtend::XtendClass:
+	{Feature}
+	annotations+=XAnnotation*
+	name=FEATURE_TEXT
+	description=DESCRIPTION?
+	background = Background?
+	members+=Scenario*;
+	
+DESCRIPTION:
+	IN_ORDER_TEXT
+	AS_A_TEXT
+	I_WANT_TEXT
+;
+
+Background:
+	{Background}
+	BACKGROUND_TEXT
+	members+=Member*
+	steps+=(Given|GivenReference)*;
+
+Scenario returns xtend::XtendMember:
+	{Scenario}
+	name=SCENARIO_TEXT
+	members+=Member*
+	steps+=(Given|GivenReference)*
+	steps+=(When|WhenReference)?
+	steps+=(Then|ThenReference)*
+	examples+=ExampleTable*;
+
+Step returns xtend::XtendMember:
+	Given|When|Then|And|StepReference;
+	
+StepReference returns xtend::XtendMember:
+	GivenReference|WhenReference|ThenReference|AndReference
+;
+	
+GivenReference returns xtend::XtendMember:
+	{GivenReference}
+	reference=[Given|GIVEN_TEXT]
+	and+=(And|AndReference)*
+;
+
+Given returns xtend::XtendMember:
+	{Given}
+	name=GIVEN_TEXT stepExpression=StepExpression
+	and+=(And|AndReference)*
+;
+	
+WhenReference returns xtend::XtendMember:
+	{WhenReference}
+	reference=[When|WHEN_TEXT]
+	and+=(And|AndReference)*
+;
+
+When returns xtend::XtendMember:
+	{When}
+	name=WHEN_TEXT stepExpression=StepExpression
+	and+=(And|AndReference)*
+;
+
+ThenReference returns xtend::XtendMember:
+	{ThenReference}
+	reference=[Then|THEN_TEXT]
+	and+=(And|AndReference)*
+;
+
+Then returns xtend::XtendMember:
+	{Then}
+	name=THEN_TEXT stepExpression=StepExpression
+	and+=(And|AndReference)*;
+	
+AndReference returns xtend::XtendMember:
+	{AndReference}
+	reference=[And|AND_TEXT]
+;
+	
+And returns xtend::XtendMember:
+	{And}
+	name=AND_TEXT stepExpression=StepExpression
+;
+
+StepExpression:
+	annotations+=XAnnotation* 
+	blockExpression=BlockExpression;
+
+BlockExpression returns xbase::XBlockExpression:
+	(expressions+=XExpressionInsideBlock ';'?)+;
+
+ExampleTable:
+	name=EXAMPLE_TEXT
+	columns+=ExampleColumn+ EXAMPLE_ROW_END
+	(rows += ExampleRow)*;
+
+
+ExampleColumn: 
+	(PIPE | PIPE_SPACES) type=JvmTypeReference? name=ValidID ;
+
+ExampleRow:
+	((PIPE | PIPE_SPACES) cells+=XExpression)+ EXAMPLE_ROW_END;
+
+terminal FEATURE_TEXT: 'Feature' COLON MNL;
+terminal BACKGROUND_TEXT: 'Background' COLON MNL;
+terminal SCENARIO_TEXT: 'Scenario' COLON MNL;
+terminal GIVEN_TEXT: 'Given ' MNL;
+terminal WHEN_TEXT: 'When ' MNL;
+terminal THEN_TEXT: 'Then ' MNL;
+terminal AND_TEXT: 'And ' MNL;
+terminal EXAMPLE_TEXT: 'Examples' COLON MNL;
+
+terminal IN_ORDER_TEXT: 'In order to' TEXT_AND_NL;
+terminal AS_A_TEXT: 'As a' TEXT_AND_NL;
+terminal I_WANT_TEXT: 'I want' TEXT_AND_NL;
+
+terminal PIPE : '|';
+terminal PIPE_SPACES: PIPE (' '|'\t')+;
+terminal EXAMPLE_ROW_END: (PIPE | PIPE_SPACES) '\r'? '\n';
+
+terminal fragment TEXT_MULTI_LINE: !('\r'|'\n')* '\\' NL;
+terminal fragment TEXT_AND_NL: !('\r'|'\n'|'\\')* NL;
+terminal fragment MNL: (TEXT_MULTI_LINE)* TEXT_AND_NL;
+terminal fragment COLON: SPACES ':';
+terminal fragment NL: '\r'? '\n'?;
+terminal fragment SPACES: (' '|'\t')*;
