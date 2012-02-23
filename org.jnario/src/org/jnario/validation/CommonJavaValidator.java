@@ -7,6 +7,8 @@
  *******************************************************************************/
 package org.jnario.validation;
 
+import static org.eclipse.xtext.xtend2.xtend2.Xtend2Package.Literals.XTEND_CLASS__NAME;
+
 import java.util.List;
 
 import org.eclipse.emf.ecore.EPackage;
@@ -17,15 +19,17 @@ import org.eclipse.xtext.validation.AbstractDeclarativeValidator;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
-
-import com.google.common.collect.Lists;
-import com.google.inject.Inject;
-
+import org.eclipse.xtext.xtend2.xtend2.XtendClass;
 import org.jnario.Assertion;
 import org.jnario.CommonPackage;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
+import org.jnario.runner.Named;
+import org.junit.Test;
+
+import com.google.common.collect.Lists;
+import com.google.inject.Inject;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -33,6 +37,7 @@ import org.jnario.ExampleTable;
 public class CommonJavaValidator extends AbstractDeclarativeValidator {
 
 	private static final String ILLEGAL_ASSERTION_EXPRESSION = "invalid type: expecting boolean";
+	
 	@Inject 
 	private ITypeProvider typeProvider;
 	
@@ -41,6 +46,18 @@ public class CommonJavaValidator extends AbstractDeclarativeValidator {
 	
 	@Inject 
 	private TypeReferences typeReferences;
+	
+	@Check
+	public void checkClassPath(XtendClass clazz) {
+		if (typeReferences.findDeclaredType(Named.class, clazz) == null) {
+			error("Mandatory library bundle 'org.jnario.lib' 0.1.0 or higher not found on the classpath.", clazz,
+					XTEND_CLASS__NAME, JnarioIssueCodes.JNARIO_LIB_NOT_ON_CLASSPATH);
+		}
+		if (typeReferences.findDeclaredType(Test.class, clazz) == null) {
+			error("Mandatory library bundle 'org.junit' 4.8.0 or higher not found on the classpath.", clazz,
+					XTEND_CLASS__NAME, JnarioIssueCodes.JUNIT_NOT_ON_CLASSPATH);
+		}
+	}
 
 	@Override
 	protected List<EPackage> getEPackages() {

@@ -8,6 +8,7 @@ import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 import java.util.ArrayList;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
@@ -19,6 +20,7 @@ import org.eclipse.xtext.xbase.compiler.StringBuilderBasedAppendable;
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.lib.BooleanExtensions;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
@@ -26,6 +28,7 @@ import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.eclipse.xtext.xtend2.jvmmodel.Xtend2JvmModelInferrer;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
+import org.jnario.jvmmodel.JunitAnnotationProvider;
 
 /**
  * @author Birgit Engelmann
@@ -47,6 +50,25 @@ public class CommonJvmModelInferrer extends Xtend2JvmModelInferrer {
   
   @Inject
   private JvmTypesBuilder _jvmTypesBuilder;
+  
+  public boolean checkClassPath(final EObject context, final JunitAnnotationProvider annotationProvider) {
+      try {
+        annotationProvider.getBeforeAnnotation(context);
+      } catch (final Throwable _t) {
+        if (_t instanceof RuntimeException) {
+          final RuntimeException e = (RuntimeException)_t;
+          return false;
+        } else {
+          throw Exceptions.sneakyThrow(_t);
+        }
+      }
+      JvmType _findDeclaredType = this._typeReferences.findDeclaredType(org.jnario.runner.Named.class, context);
+      boolean _operator_equals = ObjectExtensions.operator_equals(_findDeclaredType, null);
+      if (_operator_equals) {
+        return false;
+      }
+      return true;
+  }
   
   public JvmField toField(final ExampleColumn column) {
       String _name = column.getName();

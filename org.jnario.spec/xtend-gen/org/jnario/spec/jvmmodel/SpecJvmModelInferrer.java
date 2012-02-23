@@ -37,7 +37,6 @@ import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
-import org.eclipse.xtext.xbase.lib.Pair;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.eclipse.xtext.xtend2.xtend2.XtendClass;
@@ -49,9 +48,8 @@ import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
 import org.jnario.jvmmodel.CommonJvmModelInferrer;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
-import org.jnario.runner.ExampleGroupRunner;
+import org.jnario.jvmmodel.JunitAnnotationProvider;
 import org.jnario.spec.jvmmodel.ImplicitSubject;
-import org.jnario.spec.jvmmodel.SpecAnnotationProvider;
 import org.jnario.spec.naming.ExampleNameProvider;
 import org.jnario.spec.spec.After;
 import org.jnario.spec.spec.Before;
@@ -59,7 +57,6 @@ import org.jnario.spec.spec.Example;
 import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.spec.spec.SpecFile;
 import org.jnario.spec.spec.TestFunction;
-import org.junit.runner.RunWith;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -76,7 +73,7 @@ public class SpecJvmModelInferrer extends CommonJvmModelInferrer {
   private ExampleNameProvider _exampleNameProvider;
   
   @Inject
-  private SpecAnnotationProvider annotationProvider;
+  private JunitAnnotationProvider annotationProvider;
   
   @Inject
   private ImplicitSubject _implicitSubject;
@@ -88,8 +85,13 @@ public class SpecJvmModelInferrer extends CommonJvmModelInferrer {
   private ISerializer _iSerializer;
   
   public void infer(final EObject e, final IAcceptor<JvmDeclaredType> acceptor, final boolean isPrelinkingPhase) {
-      boolean _operator_not = BooleanExtensions.operator_not((e instanceof SpecFile));
+      boolean _checkClassPath = this.checkClassPath(e, this.annotationProvider);
+      boolean _operator_not = BooleanExtensions.operator_not(_checkClassPath);
       if (_operator_not) {
+        return;
+      }
+      boolean _operator_not_1 = BooleanExtensions.operator_not((e instanceof SpecFile));
+      if (_operator_not_1) {
         return;
       }
       final SpecFile specFile = ((SpecFile) e);
@@ -140,7 +142,9 @@ public class SpecJvmModelInferrer extends CommonJvmModelInferrer {
                     final Example _example = (Example)element;
                     matched=true;
                     {
-                      ArrayList<JvmAnnotationReference> _testAnnotations = SpecJvmModelInferrer.this.annotationProvider.getTestAnnotations(_example);
+                      JvmDeclaredType _exception = _example.getException();
+                      boolean _isPending = _example.isPending();
+                      ArrayList<JvmAnnotationReference> _testAnnotations = SpecJvmModelInferrer.this.annotationProvider.getTestAnnotations(_example, _exception, _isPending);
                       final ArrayList<JvmAnnotationReference> annotations = _testAnnotations;
                       String _describe = SpecJvmModelInferrer.this._exampleNameProvider.describe(_example);
                       JvmAnnotationReference _annotation = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(_example, org.jnario.runner.Named.class, _describe);
@@ -165,11 +169,12 @@ public class SpecJvmModelInferrer extends CommonJvmModelInferrer {
                     final Before _before = (Before)element;
                     matched=true;
                     {
-                      Class<?> _beforeAnnotation = SpecJvmModelInferrer.this.annotationProvider.getBeforeAnnotation(_before);
-                      final Class<?> annotationType = _beforeAnnotation;
-                      EList<JvmMember> _members_1 = it.getMembers();
                       boolean _isBeforeAll = _before.isBeforeAll();
-                      JvmOperation _method = SpecJvmModelInferrer.this.toMethod(_before, annotationType, _isBeforeAll);
+                      JvmAnnotationReference _beforeAnnotation = SpecJvmModelInferrer.this.annotationProvider.getBeforeAnnotation(it, _isBeforeAll);
+                      final JvmAnnotationReference annotationType = _beforeAnnotation;
+                      EList<JvmMember> _members_1 = it.getMembers();
+                      boolean _isBeforeAll_1 = _before.isBeforeAll();
+                      JvmOperation _method = SpecJvmModelInferrer.this.toMethod(_before, annotationType, _isBeforeAll_1);
                       CollectionExtensions.<JvmOperation>operator_add(_members_1, _method);
                     }
                   }
@@ -179,11 +184,12 @@ public class SpecJvmModelInferrer extends CommonJvmModelInferrer {
                     final After _after = (After)element;
                     matched=true;
                     {
-                      Class<?> _afterAnnotation = SpecJvmModelInferrer.this.annotationProvider.getAfterAnnotation(_after);
-                      final Class<?> annotationType = _afterAnnotation;
-                      EList<JvmMember> _members_1 = it.getMembers();
                       boolean _isAfterAll = _after.isAfterAll();
-                      JvmOperation _method = SpecJvmModelInferrer.this.toMethod(_after, annotationType, _isAfterAll);
+                      JvmAnnotationReference _afterAnnotation = SpecJvmModelInferrer.this.annotationProvider.getAfterAnnotation(it, _isAfterAll);
+                      final JvmAnnotationReference annotationType = _afterAnnotation;
+                      EList<JvmMember> _members_1 = it.getMembers();
+                      boolean _isAfterAll_1 = _after.isAfterAll();
+                      JvmOperation _method = SpecJvmModelInferrer.this.toMethod(_after, annotationType, _isAfterAll_1);
                       CollectionExtensions.<JvmOperation>operator_add(_members_1, _method);
                     }
                   }
@@ -223,9 +229,8 @@ public class SpecJvmModelInferrer extends CommonJvmModelInferrer {
       }
   }
   
-  public JvmOperation toMethod(final TestFunction element, final Class<?> annotation, final boolean isStatic) {
-      JvmAnnotationReference _annotation = this._extendedJvmTypesBuilder.toAnnotation(element, annotation);
-      ArrayList<JvmAnnotationReference> _newArrayList = CollectionLiterals.<JvmAnnotationReference>newArrayList(_annotation);
+  public JvmOperation toMethod(final TestFunction element, final JvmAnnotationReference annotation, final boolean isStatic) {
+      ArrayList<JvmAnnotationReference> _newArrayList = CollectionLiterals.<JvmAnnotationReference>newArrayList(annotation);
       JvmOperation _method = this.toMethod(element, _newArrayList);
       final JvmOperation result = _method;
       result.setStatic(isStatic);
@@ -290,16 +295,12 @@ public class SpecJvmModelInferrer extends CommonJvmModelInferrer {
   
   public void addAnnotations(final JvmGenericType type, final ExampleGroup exampleGroup) {
       EList<JvmAnnotationReference> _annotations = type.getAnnotations();
-      Pair<Class<RunWith>,Class<ExampleGroupRunner>> _runnerAnnotation = this.annotationProvider.getRunnerAnnotation();
-      Class<RunWith> _key = _runnerAnnotation.getKey();
-      Pair<Class<RunWith>,Class<ExampleGroupRunner>> _runnerAnnotation_1 = this.annotationProvider.getRunnerAnnotation();
-      Class<ExampleGroupRunner> _value = _runnerAnnotation_1.getValue();
-      JvmAnnotationReference _annotation = this._extendedJvmTypesBuilder.toAnnotation(exampleGroup, _key, _value);
-      CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
+      JvmAnnotationReference _exampleGroupRunnerAnnotation = this.annotationProvider.getExampleGroupRunnerAnnotation(exampleGroup);
+      CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _exampleGroupRunnerAnnotation);
       EList<JvmAnnotationReference> _annotations_1 = type.getAnnotations();
       String _describe = this._exampleNameProvider.describe(exampleGroup);
-      JvmAnnotationReference _annotation_1 = this._extendedJvmTypesBuilder.toAnnotation(exampleGroup, org.jnario.runner.Named.class, _describe);
-      CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
+      JvmAnnotationReference _annotation = this._extendedJvmTypesBuilder.toAnnotation(exampleGroup, org.jnario.runner.Named.class, _describe);
+      CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _annotation);
       EList<XAnnotation> _annotations_2 = exampleGroup.getAnnotations();
       this._extendedJvmTypesBuilder.translateAnnotationsTo(_annotations_2, type);
   }
@@ -324,9 +325,8 @@ public class SpecJvmModelInferrer extends CommonJvmModelInferrer {
                 public void apply(final JvmOperation it) {
                   {
                     EList<JvmAnnotationReference> _annotations = it.getAnnotations();
-                    Class<?> _beforeAnnotation = SpecJvmModelInferrer.this.annotationProvider.getBeforeAnnotation();
-                    JvmAnnotationReference _annotation = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(element, _beforeAnnotation);
-                    CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
+                    JvmAnnotationReference _beforeAnnotation = SpecJvmModelInferrer.this.annotationProvider.getBeforeAnnotation(element);
+                    CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _beforeAnnotation);
                     final Function1<ImportManager,String> _function = new Function1<ImportManager,String>() {
                         public String apply(final ImportManager im) {
                           String _generateInitializationMethod = SpecJvmModelInferrer.this.generateInitializationMethod(exampleTableType, element);

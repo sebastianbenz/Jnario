@@ -24,6 +24,8 @@ import org.eclipse.xtext.xbase.typing.ITypeProvider
 import org.eclipse.xtext.xtend2.jvmmodel.Xtend2JvmModelInferrer
 import com.google.common.collect.Iterables
 import com.google.common.collect.Lists
+import org.jnario.runner.Named
+import org.eclipse.emf.ecore.EObject
 
 /**
  * @author Birgit Engelmann
@@ -36,6 +38,18 @@ class CommonJvmModelInferrer extends Xtend2JvmModelInferrer {
 	@Inject extension TypeConformanceComputer
 	@Inject extension TypeReferences
 	@Inject extension JvmTypesBuilder
+	
+	def checkClassPath(EObject context, JunitAnnotationProvider annotationProvider){
+		try{
+			annotationProvider.getBeforeAnnotation(context)
+		}catch(RuntimeException e){
+			return false
+		}
+		if (typeof(Named).findDeclaredType(context) == null) {
+			return false;
+		}
+		return true
+	}
 	
 	def toField(ExampleColumn column){
 		val field = column.toField(column.name, column.getOrCreateType)
@@ -80,6 +94,5 @@ class CommonJvmModelInferrer extends Xtend2JvmModelInferrer {
 		compiler.toJavaStatement(expr, appendable, isReferenced)
 		appendable
 	}
-	
 
 }

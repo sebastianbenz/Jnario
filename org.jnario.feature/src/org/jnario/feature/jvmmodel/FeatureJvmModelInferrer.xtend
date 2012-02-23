@@ -8,23 +8,6 @@
 package org.jnario.feature.jvmmodel
 
 import com.google.inject.Inject
-import org.jnario.ExampleColumn
-import org.jnario.ExampleRow
-import org.jnario.jvmmodel.CommonJvmModelInferrer
-import org.jnario.jvmmodel.ExtendedJvmTypesBuilder
-import org.jnario.feature.feature.Background
-import org.jnario.feature.feature.Feature
-import org.jnario.feature.feature.FeatureFile
-import org.jnario.feature.feature.Scenario
-import org.jnario.feature.feature.Step
-import org.jnario.feature.naming.JavaNameProvider
-import org.jnario.feature.naming.StepExpressionProvider
-import org.jnario.feature.naming.StepNameProvider
-import org.jnario.runner.Contains
-import org.jnario.runner.FeatureExamplesRunner
-import org.jnario.runner.FeatureRunner
-import org.jnario.runner.Named
-import org.jnario.runner.Order
 import java.util.ArrayList
 import java.util.List
 import org.eclipse.emf.common.util.EList
@@ -39,8 +22,22 @@ import org.eclipse.xtext.xbase.XVariableDeclaration
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator
 import org.eclipse.xtext.xbase.typing.ITypeProvider
 import org.eclipse.xtext.xtend2.xtend2.XtendField
-import org.junit.Test
-import org.junit.runner.RunWith
+import org.jnario.ExampleColumn
+import org.jnario.ExampleRow
+import org.jnario.feature.feature.Background
+import org.jnario.feature.feature.Feature
+import org.jnario.feature.feature.FeatureFile
+import org.jnario.feature.feature.Scenario
+import org.jnario.feature.feature.Step
+import org.jnario.feature.naming.JavaNameProvider
+import org.jnario.feature.naming.StepExpressionProvider
+import org.jnario.feature.naming.StepNameProvider
+import org.jnario.jvmmodel.CommonJvmModelInferrer
+import org.jnario.jvmmodel.ExtendedJvmTypesBuilder
+import org.jnario.jvmmodel.JunitAnnotationProvider
+import org.jnario.runner.Contains
+import org.jnario.runner.Named
+import org.jnario.runner.Order
 
 import static com.google.common.collect.Iterators.*
 
@@ -61,6 +58,8 @@ class FeatureJvmModelInferrer extends CommonJvmModelInferrer {
 	
 	@Inject extension ITypeProvider
 	
+	@Inject extension JunitAnnotationProvider annotationProvider
+	
 	@Inject
 	private IJvmModelAssociator associator
 	
@@ -74,6 +73,10 @@ class FeatureJvmModelInferrer extends CommonJvmModelInferrer {
 	 *        must not rely on linking using the index if iPrelinkingPhase is <code>true</code>
 	 */
     override void infer(EObject object, IAcceptor<JvmDeclaredType> acceptor, boolean isPrelinkingPhase) {
+    	if(!checkClassPath(object, annotationProvider)){
+			return
+		}
+		
     	var featureFile = object as FeatureFile
 		var feature = featureFile?.xtendClass as Feature
 		if(feature == null){
@@ -103,16 +106,16 @@ class FeatureJvmModelInferrer extends CommonJvmModelInferrer {
    		feature.toClass(feature.name.featureClassName)[
    			featureFile.eResource.contents += it
    			packageName = featureFile.^package
-   			annotations += feature.toAnnotation(typeof(RunWith), typeof(FeatureRunner))
+   			annotations += feature.featureRunner
    			annotations += feature.toAnnotation(typeof(Contains), scenarios)
    		]
    	}
    	
    	def runnerAnnotations(Scenario scenario){
 		if(scenario.examples.empty){
-			scenario.toAnnotation(typeof(RunWith), typeof(FeatureRunner))
+			scenario.featureRunner
 		}else{
-			scenario.toAnnotation(typeof(RunWith), typeof(FeatureExamplesRunner))
+			scenario.featureExamplesRunner
 		}
    	}
    	
@@ -213,7 +216,7 @@ class FeatureJvmModelInferrer extends CommonJvmModelInferrer {
 				super.«methodName»();
 				'''
 			]
-			annotations += step.toAnnotation(typeof(Test))
+			annotations += step.getTestAnnotations(null, false)
 			annotations += step.toAnnotation(typeof(Order), order.intValue)
 			annotations += step.toAnnotation(typeof(Named), step.nameOf)
 		]	
@@ -234,7 +237,7 @@ class FeatureJvmModelInferrer extends CommonJvmModelInferrer {
 
 		inferredJvmType.members += step.toMethod(step.nameOf.javaMethodName, getTypeForName(Void::TYPE, step))[
 			body = step.expressionOf?.blockExpression
-			annotations += step.toAnnotation(typeof(Test))
+			annotations += step.getTestAnnotations(null, false)
 			annotations += step.toAnnotation(typeof(Order), order.intValue)
 			annotations += step.toAnnotation(typeof(Named), step.nameOf)
 		]	
@@ -281,7 +284,7 @@ class FeatureJvmModelInferrer extends CommonJvmModelInferrer {
 			featureFile.eResource.contents += it
 			packageName = featureFile.^package
 			members += row.generateExampleConstructor(fields, className)
-			annotations += row.toAnnotation(typeof(RunWith), typeof(FeatureRunner))
+			annotations += row.featureRunner
 			
 			var description = "ExampleTable " + exampleTable + ", " + "Example " + exampleNumber + " ["
 			var i = 0

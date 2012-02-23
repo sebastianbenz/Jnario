@@ -40,6 +40,7 @@ import org.eclipse.xtext.xtend2.xtend2.XtendField
 import org.eclipse.xtext.xtend2.xtend2.XtendFunction
 import org.jnario.lib.ExampleTableRow
 import org.eclipse.xtext.serializer.ISerializer
+import org.jnario.jvmmodel.JunitAnnotationProvider
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -52,7 +53,7 @@ class SpecJvmModelInferrer extends CommonJvmModelInferrer {
 
 	@Inject extension ExampleNameProvider
 	
-	@Inject extension SpecAnnotationProvider annotationProvider
+	@Inject extension JunitAnnotationProvider annotationProvider
 	
 	@Inject extension ImplicitSubject 
 	
@@ -62,6 +63,9 @@ class SpecJvmModelInferrer extends CommonJvmModelInferrer {
 	
 	
 	override void infer(EObject e, IAcceptor<JvmDeclaredType> acceptor, boolean isPrelinkingPhase) {
+		if(!checkClassPath(e, annotationProvider)){
+			return
+		}
 		if (!(e instanceof SpecFile)){
 			return
 		}
@@ -70,9 +74,9 @@ class SpecJvmModelInferrer extends CommonJvmModelInferrer {
 		if(specFile.xtendClass == null){
 			return
 		}
-		
 		transform(specFile as SpecFile, specFile.xtendClass as ExampleGroup, null, isPrelinkingPhase)
 	}
+	
 	
 	def transform(SpecFile spec, ExampleGroup exampleGroup, JvmGenericType superClass, boolean isPrelinkingPhase) {
 		exampleGroup.toClass(exampleGroup.toJavaClassName) [
@@ -81,6 +85,7 @@ class SpecJvmModelInferrer extends CommonJvmModelInferrer {
 				if(isPrelinkingPhase){
 					return
 				}
+				
 				addAnnotations(exampleGroup)
 				addFields(exampleGroup)
 				
@@ -95,7 +100,7 @@ class SpecJvmModelInferrer extends CommonJvmModelInferrer {
 							transform(element, spec)
 						}
 						Example : {
-							val annotations = element.getTestAnnotations()
+							val annotations = element.getTestAnnotations(element.exception, element.pending)
 							annotations += element.toAnnotation(typeof(Named), element.describe)
 							annotations += element.toAnnotation(typeof(Order), index)
 							members += toMethod(element, annotations)
@@ -104,11 +109,11 @@ class SpecJvmModelInferrer extends CommonJvmModelInferrer {
 							element.transform(it)
 						}
 						Before:{
-							val annotationType = element.getBeforeAnnotation()
+							val annotationType = getBeforeAnnotation(element.beforeAll)
 							members += element.toMethod(annotationType, element.beforeAll)
 						}
 						After:{
-							val annotationType = element.getAfterAnnotation()
+							val annotationType = getAfterAnnotation(element.afterAll)
 							members += element.toMethod(annotationType, element.afterAll)
 						}
 					}
@@ -132,8 +137,8 @@ class SpecJvmModelInferrer extends CommonJvmModelInferrer {
 		}
 	}
 	
-	def toMethod(TestFunction element, Class<?> annotation, boolean isStatic){
-		val result = toMethod(element, newArrayList(element.toAnnotation(annotation)))
+	def toMethod(TestFunction element, JvmAnnotationReference annotation, boolean isStatic){
+		val result = toMethod(element, newArrayList(annotation))
 		result.setStatic(isStatic)	
 		return result
 	}
@@ -170,7 +175,7 @@ class SpecJvmModelInferrer extends CommonJvmModelInferrer {
 	}
 	
 	def void addAnnotations(JvmGenericType type, ExampleGroup exampleGroup){
-		type.annotations += exampleGroup.toAnnotation(runnerAnnotation.key, runnerAnnotation.value)
+		type.annotations += exampleGroup.exampleGroupRunnerAnnotation
 		type.annotations += exampleGroup.toAnnotation(typeof(Named), exampleGroup.describe)
 		exampleGroup.annotations.translateAnnotationsTo(type)
 	}
@@ -182,7 +187,7 @@ class SpecJvmModelInferrer extends CommonJvmModelInferrer {
 			
 			val type = getTypeForName(typeof(org.jnario.lib.ExampleTable), element, exampleTableType.createTypeRef)
 			specType.members += element.toMethod("_init" + element.toJavaClassName, getTypeForName(Void::TYPE, element))[
-				annotations += element.toAnnotation(getBeforeAnnotation())
+				annotations += element.getBeforeAnnotation()
 				setBody[ImportManager im |
 					exampleTableType.generateInitializationMethod(element)	
 				]
