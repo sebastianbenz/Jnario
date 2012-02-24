@@ -35,7 +35,7 @@ import org.jnario.jvmmodel.JunitAnnotationProvider;
  * @author Sebastian Benz
  */
 @SuppressWarnings("all")
-public class CommonJvmModelInferrer extends Xtend2JvmModelInferrer {
+public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
   @Inject
   public XbaseCompiler compiler;
   
@@ -102,7 +102,7 @@ public class CommonJvmModelInferrer extends Xtend2JvmModelInferrer {
             EList<XExpression> _cells_1 = column.getCells();
             final Function1<XExpression,JvmTypeReference> _function = new Function1<XExpression,JvmTypeReference>() {
                 public JvmTypeReference apply(final XExpression it) {
-                  JvmTypeReference _type = CommonJvmModelInferrer.this._iTypeProvider.getType(it);
+                  JvmTypeReference _type = JnarioJvmModelInferrer.this._iTypeProvider.getType(it);
                   return _type;
                 }
               };

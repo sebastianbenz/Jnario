@@ -21,12 +21,11 @@ import org.eclipse.xtext.xbase.XExpression;
  * </ul>
  * </p>
  *
- * @see org.jnario.CommonPackage#getAssertion()
+ * @see org.jnario.JnarioPackage#getAssertion()
  * @model
  * @generated
  */
-public interface Assertion extends XExpression
-{
+public interface Assertion extends XExpression {
 	/**
 	 * Returns the value of the '<em><b>Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -37,7 +36,7 @@ public interface Assertion extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Expression</em>' containment reference.
 	 * @see #setExpression(XExpression)
-	 * @see org.jnario.CommonPackage#getAssertion_Expression()
+	 * @see org.jnario.JnarioPackage#getAssertion_Expression()
 	 * @model containment="true"
 	 * @generated
 	 */

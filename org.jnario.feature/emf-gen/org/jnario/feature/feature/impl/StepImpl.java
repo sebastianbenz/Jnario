@@ -6,10 +6,6 @@
  */
 package org.jnario.feature.feature.impl;
 
-import org.jnario.feature.feature.FeaturePackage;
-import org.jnario.feature.feature.Step;
-import org.jnario.feature.feature.StepExpression;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -25,7 +21,13 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.xtext.xtend2.xtend2.XtendMember;
+
 import org.eclipse.xtext.xtend2.xtend2.impl.XtendMemberImplCustom;
+
+import org.jnario.feature.feature.FeaturePackage;
+import org.jnario.feature.feature.Step;
+import org.jnario.feature.feature.StepExpression;
 
 /**
  * <!-- begin-user-doc -->
@@ -82,7 +84,7 @@ public class StepImpl extends XtendMemberImplCustom implements Step
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Step> and;
+	protected EList<XtendMember> and;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -181,11 +183,11 @@ public class StepImpl extends XtendMemberImplCustom implements Step
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Step> getAnd()
+	public EList<XtendMember> getAnd()
 	{
 		if (and == null)
 		{
-			and = new EObjectContainmentEList<Step>(Step.class, this, FeaturePackage.STEP__AND);
+			and = new EObjectContainmentEList<XtendMember>(XtendMember.class, this, FeaturePackage.STEP__AND);
 		}
 		return and;
 	}
@@ -247,7 +249,7 @@ public class StepImpl extends XtendMemberImplCustom implements Step
 				return;
 			case FeaturePackage.STEP__AND:
 				getAnd().clear();
-				getAnd().addAll((Collection<? extends Step>)newValue);
+				getAnd().addAll((Collection<? extends XtendMember>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

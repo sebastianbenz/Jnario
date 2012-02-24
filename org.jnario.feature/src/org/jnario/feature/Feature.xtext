@@ -11,12 +11,12 @@
  */
 
 grammar org.jnario.feature.Feature with org.eclipse.xtext.xtend2.Xtend2
-generate feature "http://www.org/jnario/feature/Feature"
 
 import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
 import "http://www.eclipse.org/xtext/Xtend2" as xtend
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
-import "platform:/resource/org.jnario/model/Common.ecore"
+import "http://www.org/Jnario"
+import "http://www.org/jnario/feature/Feature"
 
 FeatureFile returns xtend::XtendFile:
 	{FeatureFile}

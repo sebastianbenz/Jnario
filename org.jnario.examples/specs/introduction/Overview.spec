@@ -10,7 +10,7 @@ package introduction
 import static extension org.jnario.jnario.test.util.Helpers.*
 import static extension org.jnario.lib.Each.*
 import static extension org.jnario.lib.Should.*
-import static extension org.jnario.tests.util.SpecExecutor.*
+import static extension org.jnario.jnario.test.util.SpecExecutor.*
 /*
  * <p align="center"><img src="file://localhost/Users/sebastian/Desktop/Specs.png"/></p>
  * 

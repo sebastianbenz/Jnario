@@ -22,18 +22,18 @@ import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.XbasePackage;
 import org.eclipse.xtext.xbase.scoping.XbaseScopeProvider;
-
+import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 import org.jnario.ExampleTable;
-import org.jnario.validation.CommonJavaValidator;
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepReference;
+import org.jnario.validation.JnarioJavaValidator;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
-@ComposedChecks(validators={CommonJavaValidator.class})
+@ComposedChecks(validators={JnarioJavaValidator.class})
 public class FeatureJavaValidator extends AbstractFeatureJavaValidator {
 
 	@Override
@@ -73,11 +73,11 @@ public class FeatureJavaValidator extends AbstractFeatureJavaValidator {
 	@Check
 	public void checkStepDefinitionAndReferences(Step step){
 		Scenario scenario = getContainerOfType(step, Scenario.class);
-		EList<Step> steps = scenario.getSteps();
+		EList<XtendMember> steps = scenario.getSteps();
 
 		if(step instanceof StepReference){
 			StepReference ref = (StepReference) step;
-			for(Step currentStep: steps){
+			for(XtendMember currentStep: steps){
 				if(currentStep instanceof Step){
 					if(ref.getReference().equals(currentStep)){
 						error("Cannot reference a step that was defined in this scenario.", FeaturePackage.Literals.STEP__NAME);

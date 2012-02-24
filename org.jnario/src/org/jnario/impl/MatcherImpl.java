@@ -7,9 +7,6 @@
  *******************************************************************************/
 package org.jnario.impl;
 
-import org.jnario.CommonPackage;
-import org.jnario.Matcher;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -21,6 +18,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.xtext.xbase.XExpression;
 
 import org.eclipse.xtext.xbase.impl.XExpressionImpl;
+
+import org.jnario.JnarioPackage;
+import org.jnario.Matcher;
 
 /**
  * <!-- begin-user-doc -->
@@ -62,7 +62,7 @@ public class MatcherImpl extends XExpressionImpl implements Matcher {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return CommonPackage.Literals.MATCHER;
+		return JnarioPackage.Literals.MATCHER;
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class MatcherImpl extends XExpressionImpl implements Matcher {
 		XExpression oldClosure = closure;
 		closure = newClosure;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CommonPackage.MATCHER__CLOSURE, oldClosure, newClosure);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JnarioPackage.MATCHER__CLOSURE, oldClosure, newClosure);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -98,14 +98,14 @@ public class MatcherImpl extends XExpressionImpl implements Matcher {
 		if (newClosure != closure) {
 			NotificationChain msgs = null;
 			if (closure != null)
-				msgs = ((InternalEObject)closure).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CommonPackage.MATCHER__CLOSURE, null, msgs);
+				msgs = ((InternalEObject)closure).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.MATCHER__CLOSURE, null, msgs);
 			if (newClosure != null)
-				msgs = ((InternalEObject)newClosure).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CommonPackage.MATCHER__CLOSURE, null, msgs);
+				msgs = ((InternalEObject)newClosure).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.MATCHER__CLOSURE, null, msgs);
 			msgs = basicSetClosure(newClosure, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.MATCHER__CLOSURE, newClosure, newClosure));
+			eNotify(new ENotificationImpl(this, Notification.SET, JnarioPackage.MATCHER__CLOSURE, newClosure, newClosure));
 	}
 
 	/**
@@ -116,7 +116,7 @@ public class MatcherImpl extends XExpressionImpl implements Matcher {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case CommonPackage.MATCHER__CLOSURE:
+			case JnarioPackage.MATCHER__CLOSURE:
 				return basicSetClosure(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -130,7 +130,7 @@ public class MatcherImpl extends XExpressionImpl implements Matcher {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CommonPackage.MATCHER__CLOSURE:
+			case JnarioPackage.MATCHER__CLOSURE:
 				return getClosure();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -144,7 +144,7 @@ public class MatcherImpl extends XExpressionImpl implements Matcher {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CommonPackage.MATCHER__CLOSURE:
+			case JnarioPackage.MATCHER__CLOSURE:
 				setClosure((XExpression)newValue);
 				return;
 		}
@@ -159,7 +159,7 @@ public class MatcherImpl extends XExpressionImpl implements Matcher {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CommonPackage.MATCHER__CLOSURE:
+			case JnarioPackage.MATCHER__CLOSURE:
 				setClosure((XExpression)null);
 				return;
 		}
@@ -174,7 +174,7 @@ public class MatcherImpl extends XExpressionImpl implements Matcher {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CommonPackage.MATCHER__CLOSURE:
+			case JnarioPackage.MATCHER__CLOSURE:
 				return closure != null;
 		}
 		return super.eIsSet(featureID);

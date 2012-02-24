@@ -12,11 +12,10 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtext.xbase.XbaseStandaloneSetup;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
 import org.eclipse.xtext.xtend2.Xtend2StandaloneSetup;
+import org.jnario.JnarioPackage;
+import org.jnario.feature.feature.FeaturePackage;
 
 import com.google.inject.Injector;
-
-import org.jnario.CommonPackage;
-import org.jnario.feature.feature.FeaturePackage;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -32,7 +31,7 @@ public class FeatureStandaloneSetup extends FeatureStandaloneSetupGenerated{
 		Xtend2StandaloneSetup.doSetup();
 		XbaseStandaloneSetup.doSetup();
 		EPackage.Registry.INSTANCE.put(XAnnotationsPackage.eINSTANCE.getNsURI(),XAnnotationsPackage.eINSTANCE);
-		EPackage.Registry.INSTANCE.put(CommonPackage.eNS_URI, CommonPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(JnarioPackage.eNS_URI, JnarioPackage.eINSTANCE);
 		EPackage.Registry.INSTANCE.put(FeaturePackage.eNS_URI, FeaturePackage.eINSTANCE);
 		super.register(injector);
 	}

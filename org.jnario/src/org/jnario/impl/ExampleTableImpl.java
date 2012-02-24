@@ -11,18 +11,23 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.xtext.xtend2.xtend2.impl.XtendMemberImpl;
 
-import org.jnario.CommonPackage;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
+import org.jnario.JnarioPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -96,7 +101,7 @@ public class ExampleTableImpl extends XtendMemberImpl implements ExampleTable {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return CommonPackage.Literals.EXAMPLE_TABLE;
+		return JnarioPackage.Literals.EXAMPLE_TABLE;
 	}
 
 	/**
@@ -117,7 +122,7 @@ public class ExampleTableImpl extends XtendMemberImpl implements ExampleTable {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.EXAMPLE_TABLE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, JnarioPackage.EXAMPLE_TABLE__NAME, oldName, name));
 	}
 
 	/**
@@ -127,7 +132,7 @@ public class ExampleTableImpl extends XtendMemberImpl implements ExampleTable {
 	 */
 	public EList<ExampleRow> getRows() {
 		if (rows == null) {
-			rows = new EObjectContainmentWithInverseEList<ExampleRow>(ExampleRow.class, this, CommonPackage.EXAMPLE_TABLE__ROWS, CommonPackage.EXAMPLE_ROW__TABLE);
+			rows = new EObjectContainmentWithInverseEList<ExampleRow>(ExampleRow.class, this, JnarioPackage.EXAMPLE_TABLE__ROWS, JnarioPackage.EXAMPLE_ROW__TABLE);
 		}
 		return rows;
 	}
@@ -139,7 +144,7 @@ public class ExampleTableImpl extends XtendMemberImpl implements ExampleTable {
 	 */
 	public EList<ExampleColumn> getColumns() {
 		if (columns == null) {
-			columns = new EObjectContainmentWithInverseEList<ExampleColumn>(ExampleColumn.class, this, CommonPackage.EXAMPLE_TABLE__COLUMNS, CommonPackage.EXAMPLE_COLUMN__TABLE);
+			columns = new EObjectContainmentWithInverseEList<ExampleColumn>(ExampleColumn.class, this, JnarioPackage.EXAMPLE_TABLE__COLUMNS, JnarioPackage.EXAMPLE_COLUMN__TABLE);
 		}
 		return columns;
 	}
@@ -168,9 +173,9 @@ public class ExampleTableImpl extends XtendMemberImpl implements ExampleTable {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case CommonPackage.EXAMPLE_TABLE__ROWS:
+			case JnarioPackage.EXAMPLE_TABLE__ROWS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRows()).basicAdd(otherEnd, msgs);
-			case CommonPackage.EXAMPLE_TABLE__COLUMNS:
+			case JnarioPackage.EXAMPLE_TABLE__COLUMNS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getColumns()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -184,9 +189,9 @@ public class ExampleTableImpl extends XtendMemberImpl implements ExampleTable {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case CommonPackage.EXAMPLE_TABLE__ROWS:
+			case JnarioPackage.EXAMPLE_TABLE__ROWS:
 				return ((InternalEList<?>)getRows()).basicRemove(otherEnd, msgs);
-			case CommonPackage.EXAMPLE_TABLE__COLUMNS:
+			case JnarioPackage.EXAMPLE_TABLE__COLUMNS:
 				return ((InternalEList<?>)getColumns()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -200,11 +205,11 @@ public class ExampleTableImpl extends XtendMemberImpl implements ExampleTable {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CommonPackage.EXAMPLE_TABLE__NAME:
+			case JnarioPackage.EXAMPLE_TABLE__NAME:
 				return getName();
-			case CommonPackage.EXAMPLE_TABLE__ROWS:
+			case JnarioPackage.EXAMPLE_TABLE__ROWS:
 				return getRows();
-			case CommonPackage.EXAMPLE_TABLE__COLUMNS:
+			case JnarioPackage.EXAMPLE_TABLE__COLUMNS:
 				return getColumns();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -219,14 +224,14 @@ public class ExampleTableImpl extends XtendMemberImpl implements ExampleTable {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CommonPackage.EXAMPLE_TABLE__NAME:
+			case JnarioPackage.EXAMPLE_TABLE__NAME:
 				setName((String)newValue);
 				return;
-			case CommonPackage.EXAMPLE_TABLE__ROWS:
+			case JnarioPackage.EXAMPLE_TABLE__ROWS:
 				getRows().clear();
 				getRows().addAll((Collection<? extends ExampleRow>)newValue);
 				return;
-			case CommonPackage.EXAMPLE_TABLE__COLUMNS:
+			case JnarioPackage.EXAMPLE_TABLE__COLUMNS:
 				getColumns().clear();
 				getColumns().addAll((Collection<? extends ExampleColumn>)newValue);
 				return;
@@ -242,13 +247,13 @@ public class ExampleTableImpl extends XtendMemberImpl implements ExampleTable {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CommonPackage.EXAMPLE_TABLE__NAME:
+			case JnarioPackage.EXAMPLE_TABLE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case CommonPackage.EXAMPLE_TABLE__ROWS:
+			case JnarioPackage.EXAMPLE_TABLE__ROWS:
 				getRows().clear();
 				return;
-			case CommonPackage.EXAMPLE_TABLE__COLUMNS:
+			case JnarioPackage.EXAMPLE_TABLE__COLUMNS:
 				getColumns().clear();
 				return;
 		}
@@ -263,11 +268,11 @@ public class ExampleTableImpl extends XtendMemberImpl implements ExampleTable {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CommonPackage.EXAMPLE_TABLE__NAME:
+			case JnarioPackage.EXAMPLE_TABLE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case CommonPackage.EXAMPLE_TABLE__ROWS:
+			case JnarioPackage.EXAMPLE_TABLE__ROWS:
 				return rows != null && !rows.isEmpty();
-			case CommonPackage.EXAMPLE_TABLE__COLUMNS:
+			case JnarioPackage.EXAMPLE_TABLE__COLUMNS:
 				return columns != null && !columns.isEmpty();
 		}
 		return super.eIsSet(featureID);

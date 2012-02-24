@@ -6,10 +6,6 @@
  */
 package org.jnario.feature.feature.impl;
 
-import org.jnario.feature.feature.Background;
-import org.jnario.feature.feature.Feature;
-import org.jnario.feature.feature.FeaturePackage;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -19,6 +15,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.xtext.xtend2.xtend2.impl.XtendClassImplCustom;
+
+import org.jnario.feature.feature.Background;
+import org.jnario.feature.feature.Feature;
+import org.jnario.feature.feature.FeaturePackage;
 
 /**
  * <!-- begin-user-doc -->

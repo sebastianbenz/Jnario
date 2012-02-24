@@ -2,25 +2,6 @@ package org.jnario.feature.serializer;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
-import org.jnario.CommonPackage;
-import org.jnario.ExampleColumn;
-import org.jnario.ExampleRow;
-import org.jnario.ExampleTable;
-import org.jnario.feature.feature.And;
-import org.jnario.feature.feature.AndReference;
-import org.jnario.feature.feature.Background;
-import org.jnario.feature.feature.Feature;
-import org.jnario.feature.feature.FeatureFile;
-import org.jnario.feature.feature.FeaturePackage;
-import org.jnario.feature.feature.Given;
-import org.jnario.feature.feature.GivenReference;
-import org.jnario.feature.feature.Scenario;
-import org.jnario.feature.feature.StepExpression;
-import org.jnario.feature.feature.Then;
-import org.jnario.feature.feature.ThenReference;
-import org.jnario.feature.feature.When;
-import org.jnario.feature.feature.WhenReference;
-import org.jnario.feature.services.FeatureGrammarAccess;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmFormalParameter;
 import org.eclipse.xtext.common.types.JvmGenericArrayTypeReference;
@@ -87,6 +68,25 @@ import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 import org.eclipse.xtext.xtend2.xtend2.XtendParameter;
 import org.eclipse.xtext.xtype.XFunctionTypeRef;
 import org.eclipse.xtext.xtype.XtypePackage;
+import org.jnario.ExampleColumn;
+import org.jnario.ExampleRow;
+import org.jnario.ExampleTable;
+import org.jnario.JnarioPackage;
+import org.jnario.feature.feature.And;
+import org.jnario.feature.feature.AndReference;
+import org.jnario.feature.feature.Background;
+import org.jnario.feature.feature.Feature;
+import org.jnario.feature.feature.FeatureFile;
+import org.jnario.feature.feature.FeaturePackage;
+import org.jnario.feature.feature.Given;
+import org.jnario.feature.feature.GivenReference;
+import org.jnario.feature.feature.Scenario;
+import org.jnario.feature.feature.StepExpression;
+import org.jnario.feature.feature.Then;
+import org.jnario.feature.feature.ThenReference;
+import org.jnario.feature.feature.When;
+import org.jnario.feature.feature.WhenReference;
+import org.jnario.feature.services.FeatureGrammarAccess;
 
 @SuppressWarnings("restriction")
 public class AbstractFeatureSemanticSequencer extends AbstractSemanticSequencer {
@@ -121,27 +121,7 @@ public class AbstractFeatureSemanticSequencer extends AbstractSemanticSequencer 
 	}
 	
 	public void createSequence(EObject context, EObject semanticObject) {
-		if(semanticObject.eClass().getEPackage() == CommonPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
-			case CommonPackage.EXAMPLE_COLUMN:
-				if(context == grammarAccess.getExampleColumnRule()) {
-					sequence_ExampleColumn(context, (ExampleColumn) semanticObject); 
-					return; 
-				}
-				else break;
-			case CommonPackage.EXAMPLE_ROW:
-				if(context == grammarAccess.getExampleRowRule()) {
-					sequence_ExampleRow(context, (ExampleRow) semanticObject); 
-					return; 
-				}
-				else break;
-			case CommonPackage.EXAMPLE_TABLE:
-				if(context == grammarAccess.getExampleTableRule()) {
-					sequence_ExampleTable(context, (ExampleTable) semanticObject); 
-					return; 
-				}
-				else break;
-			}
-		else if(semanticObject.eClass().getEPackage() == FeaturePackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+		if(semanticObject.eClass().getEPackage() == FeaturePackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
 			case FeaturePackage.AND:
 				if(context == grammarAccess.getAndRule() ||
 				   context == grammarAccess.getStepRule()) {
@@ -229,6 +209,26 @@ public class AbstractFeatureSemanticSequencer extends AbstractSemanticSequencer 
 				   context == grammarAccess.getStepReferenceRule() ||
 				   context == grammarAccess.getWhenReferenceRule()) {
 					sequence_WhenReference(context, (WhenReference) semanticObject); 
+					return; 
+				}
+				else break;
+			}
+		else if(semanticObject.eClass().getEPackage() == JnarioPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case JnarioPackage.EXAMPLE_COLUMN:
+				if(context == grammarAccess.getExampleColumnRule()) {
+					sequence_ExampleColumn(context, (ExampleColumn) semanticObject); 
+					return; 
+				}
+				else break;
+			case JnarioPackage.EXAMPLE_ROW:
+				if(context == grammarAccess.getExampleRowRule()) {
+					sequence_ExampleRow(context, (ExampleRow) semanticObject); 
+					return; 
+				}
+				else break;
+			case JnarioPackage.EXAMPLE_TABLE:
+				if(context == grammarAccess.getExampleTableRule()) {
+					sequence_ExampleTable(context, (ExampleTable) semanticObject); 
 					return; 
 				}
 				else break;

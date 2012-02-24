@@ -7,9 +7,6 @@
  *******************************************************************************/
 package org.jnario.impl;
 
-import org.jnario.Assertion;
-import org.jnario.CommonPackage;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -21,6 +18,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.xtext.xbase.XExpression;
 
 import org.eclipse.xtext.xbase.impl.XExpressionImpl;
+
+import org.jnario.Assertion;
+import org.jnario.JnarioPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -62,7 +62,7 @@ public class AssertionImpl extends XExpressionImpl implements Assertion {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return CommonPackage.Literals.ASSERTION;
+		return JnarioPackage.Literals.ASSERTION;
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class AssertionImpl extends XExpressionImpl implements Assertion {
 		XExpression oldExpression = expression;
 		expression = newExpression;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CommonPackage.ASSERTION__EXPRESSION, oldExpression, newExpression);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JnarioPackage.ASSERTION__EXPRESSION, oldExpression, newExpression);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -98,14 +98,14 @@ public class AssertionImpl extends XExpressionImpl implements Assertion {
 		if (newExpression != expression) {
 			NotificationChain msgs = null;
 			if (expression != null)
-				msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CommonPackage.ASSERTION__EXPRESSION, null, msgs);
+				msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.ASSERTION__EXPRESSION, null, msgs);
 			if (newExpression != null)
-				msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CommonPackage.ASSERTION__EXPRESSION, null, msgs);
+				msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.ASSERTION__EXPRESSION, null, msgs);
 			msgs = basicSetExpression(newExpression, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.ASSERTION__EXPRESSION, newExpression, newExpression));
+			eNotify(new ENotificationImpl(this, Notification.SET, JnarioPackage.ASSERTION__EXPRESSION, newExpression, newExpression));
 	}
 
 	/**
@@ -116,7 +116,7 @@ public class AssertionImpl extends XExpressionImpl implements Assertion {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case CommonPackage.ASSERTION__EXPRESSION:
+			case JnarioPackage.ASSERTION__EXPRESSION:
 				return basicSetExpression(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -130,7 +130,7 @@ public class AssertionImpl extends XExpressionImpl implements Assertion {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CommonPackage.ASSERTION__EXPRESSION:
+			case JnarioPackage.ASSERTION__EXPRESSION:
 				return getExpression();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -144,7 +144,7 @@ public class AssertionImpl extends XExpressionImpl implements Assertion {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CommonPackage.ASSERTION__EXPRESSION:
+			case JnarioPackage.ASSERTION__EXPRESSION:
 				setExpression((XExpression)newValue);
 				return;
 		}
@@ -159,7 +159,7 @@ public class AssertionImpl extends XExpressionImpl implements Assertion {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CommonPackage.ASSERTION__EXPRESSION:
+			case JnarioPackage.ASSERTION__EXPRESSION:
 				setExpression((XExpression)null);
 				return;
 		}
@@ -174,7 +174,7 @@ public class AssertionImpl extends XExpressionImpl implements Assertion {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CommonPackage.ASSERTION__EXPRESSION:
+			case JnarioPackage.ASSERTION__EXPRESSION:
 				return expression != null;
 		}
 		return super.eIsSet(featureID);

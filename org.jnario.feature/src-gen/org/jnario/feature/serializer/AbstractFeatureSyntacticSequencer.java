@@ -1,7 +1,6 @@
 package org.jnario.feature.serializer;
 
 import com.google.inject.Inject;
-import org.jnario.feature.services.FeatureGrammarAccess;
 import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.IGrammarAccess;
@@ -14,6 +13,7 @@ import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
 import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
+import org.jnario.feature.services.FeatureGrammarAccess;
 
 @SuppressWarnings("restriction")
 public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequencer {
@@ -142,7 +142,7 @@ public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequence
 	
 	/**
 	 * Syntax:
-	 *     PIPE | PIPE_SPACES
+	 *     PIPE_SPACES | PIPE
 	 */
 	protected void emit_ExampleColumn_PIPETerminalRuleCall_0_0_or_PIPE_SPACESTerminalRuleCall_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -150,7 +150,7 @@ public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequence
 	
 	/**
 	 * Syntax:
-	 *     PIPE_SPACES | PIPE
+	 *     PIPE | PIPE_SPACES
 	 */
 	protected void emit_ExampleRow_PIPETerminalRuleCall_0_0_0_or_PIPE_SPACESTerminalRuleCall_0_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

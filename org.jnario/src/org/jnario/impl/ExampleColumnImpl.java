@@ -7,29 +7,22 @@
  *******************************************************************************/
 package org.jnario.impl;
 
-import org.jnario.CommonPackage;
-import org.jnario.ExampleColumn;
-import org.jnario.ExampleRow;
-import org.jnario.ExampleTable;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.eclipse.xtext.xbase.XExpression;
-
 import org.eclipse.xtext.xtend2.xtend2.impl.XtendFieldImpl;
+import org.jnario.ExampleColumn;
+import org.jnario.ExampleRow;
+import org.jnario.ExampleTable;
+import org.jnario.JnarioPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -72,7 +65,7 @@ public class ExampleColumnImpl extends XtendFieldImpl implements ExampleColumn {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return CommonPackage.Literals.EXAMPLE_COLUMN;
+		return JnarioPackage.Literals.EXAMPLE_COLUMN;
 	}
 
 	/**
@@ -81,7 +74,7 @@ public class ExampleColumnImpl extends XtendFieldImpl implements ExampleColumn {
 	 * @generated
 	 */
 	public ExampleTable getTable() {
-		if (eContainerFeatureID() != CommonPackage.EXAMPLE_COLUMN__TABLE) return null;
+		if (eContainerFeatureID() != JnarioPackage.EXAMPLE_COLUMN__TABLE) return null;
 		return (ExampleTable)eContainer();
 	}
 
@@ -91,7 +84,7 @@ public class ExampleColumnImpl extends XtendFieldImpl implements ExampleColumn {
 	 * @generated
 	 */
 	public NotificationChain basicSetTable(ExampleTable newTable, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newTable, CommonPackage.EXAMPLE_COLUMN__TABLE, msgs);
+		msgs = eBasicSetContainer((InternalEObject)newTable, JnarioPackage.EXAMPLE_COLUMN__TABLE, msgs);
 		return msgs;
 	}
 
@@ -101,29 +94,29 @@ public class ExampleColumnImpl extends XtendFieldImpl implements ExampleColumn {
 	 * @generated
 	 */
 	public void setTable(ExampleTable newTable) {
-		if (newTable != eInternalContainer() || (eContainerFeatureID() != CommonPackage.EXAMPLE_COLUMN__TABLE && newTable != null)) {
+		if (newTable != eInternalContainer() || (eContainerFeatureID() != JnarioPackage.EXAMPLE_COLUMN__TABLE && newTable != null)) {
 			if (EcoreUtil.isAncestor(this, newTable))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newTable != null)
-				msgs = ((InternalEObject)newTable).eInverseAdd(this, CommonPackage.EXAMPLE_TABLE__COLUMNS, ExampleTable.class, msgs);
+				msgs = ((InternalEObject)newTable).eInverseAdd(this, JnarioPackage.EXAMPLE_TABLE__COLUMNS, ExampleTable.class, msgs);
 			msgs = basicSetTable(newTable, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.EXAMPLE_COLUMN__TABLE, newTable, newTable));
+			eNotify(new ENotificationImpl(this, Notification.SET, JnarioPackage.EXAMPLE_COLUMN__TABLE, newTable, newTable));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public EList<XExpression> getCells() {
 		if (cells == null) {
-			cells = new EObjectResolvingEList<XExpression>(XExpression.class, this, CommonPackage.EXAMPLE_COLUMN__CELLS);
+			cells = new EObjectResolvingEList<XExpression>(XExpression.class, this, JnarioPackage.EXAMPLE_COLUMN__CELLS);
 			int columnIndex = getTable().getColumns().indexOf(this);
 			for (ExampleRow row : getTable().getRows()) {
 				if(row.getCells().size() > columnIndex){
@@ -142,7 +135,7 @@ public class ExampleColumnImpl extends XtendFieldImpl implements ExampleColumn {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case CommonPackage.EXAMPLE_COLUMN__TABLE:
+			case JnarioPackage.EXAMPLE_COLUMN__TABLE:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetTable((ExampleTable)otherEnd, msgs);
@@ -158,7 +151,7 @@ public class ExampleColumnImpl extends XtendFieldImpl implements ExampleColumn {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case CommonPackage.EXAMPLE_COLUMN__TABLE:
+			case JnarioPackage.EXAMPLE_COLUMN__TABLE:
 				return basicSetTable(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -172,8 +165,8 @@ public class ExampleColumnImpl extends XtendFieldImpl implements ExampleColumn {
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case CommonPackage.EXAMPLE_COLUMN__TABLE:
-				return eInternalContainer().eInverseRemove(this, CommonPackage.EXAMPLE_TABLE__COLUMNS, ExampleTable.class, msgs);
+			case JnarioPackage.EXAMPLE_COLUMN__TABLE:
+				return eInternalContainer().eInverseRemove(this, JnarioPackage.EXAMPLE_TABLE__COLUMNS, ExampleTable.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -186,9 +179,9 @@ public class ExampleColumnImpl extends XtendFieldImpl implements ExampleColumn {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CommonPackage.EXAMPLE_COLUMN__TABLE:
+			case JnarioPackage.EXAMPLE_COLUMN__TABLE:
 				return getTable();
-			case CommonPackage.EXAMPLE_COLUMN__CELLS:
+			case JnarioPackage.EXAMPLE_COLUMN__CELLS:
 				return getCells();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -203,10 +196,10 @@ public class ExampleColumnImpl extends XtendFieldImpl implements ExampleColumn {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CommonPackage.EXAMPLE_COLUMN__TABLE:
+			case JnarioPackage.EXAMPLE_COLUMN__TABLE:
 				setTable((ExampleTable)newValue);
 				return;
-			case CommonPackage.EXAMPLE_COLUMN__CELLS:
+			case JnarioPackage.EXAMPLE_COLUMN__CELLS:
 				getCells().clear();
 				getCells().addAll((Collection<? extends XExpression>)newValue);
 				return;
@@ -222,10 +215,10 @@ public class ExampleColumnImpl extends XtendFieldImpl implements ExampleColumn {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CommonPackage.EXAMPLE_COLUMN__TABLE:
+			case JnarioPackage.EXAMPLE_COLUMN__TABLE:
 				setTable((ExampleTable)null);
 				return;
-			case CommonPackage.EXAMPLE_COLUMN__CELLS:
+			case JnarioPackage.EXAMPLE_COLUMN__CELLS:
 				getCells().clear();
 				return;
 		}
@@ -240,9 +233,9 @@ public class ExampleColumnImpl extends XtendFieldImpl implements ExampleColumn {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CommonPackage.EXAMPLE_COLUMN__TABLE:
+			case JnarioPackage.EXAMPLE_COLUMN__TABLE:
 				return getTable() != null;
-			case CommonPackage.EXAMPLE_COLUMN__CELLS:
+			case JnarioPackage.EXAMPLE_COLUMN__CELLS:
 				return cells != null && !cells.isEmpty();
 		}
 		return super.eIsSet(featureID);

@@ -33,7 +33,7 @@ public interface Background extends EObject
 {
 	/**
 	 * Returns the value of the '<em><b>Steps</b></em>' containment reference list.
-	 * The list contents are of type {@link org.jnario.feature.feature.Step}.
+	 * The list contents are of type {@link org.eclipse.xtext.xtend2.xtend2.XtendMember}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Steps</em>' containment reference list isn't clear,
@@ -45,7 +45,7 @@ public interface Background extends EObject
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Step> getSteps();
+	EList<XtendMember> getSteps();
 
 	/**
 	 * Returns the value of the '<em><b>Members</b></em>' containment reference list.

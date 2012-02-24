@@ -26,7 +26,7 @@ import org.eclipse.xtext.xtend2.xtend2.XtendField;
  * </ul>
  * </p>
  *
- * @see org.jnario.CommonPackage#getExampleColumn()
+ * @see org.jnario.JnarioPackage#getExampleColumn()
  * @model
  * @generated
  */
@@ -42,7 +42,7 @@ public interface ExampleColumn extends XtendField {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Table</em>' container reference.
 	 * @see #setTable(ExampleTable)
-	 * @see org.jnario.CommonPackage#getExampleColumn_Table()
+	 * @see org.jnario.JnarioPackage#getExampleColumn_Table()
 	 * @see org.jnario.ExampleTable#getColumns
 	 * @model opposite="columns" transient="false"
 	 * @generated
@@ -69,7 +69,7 @@ public interface ExampleColumn extends XtendField {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Cells</em>' reference list.
-	 * @see org.jnario.CommonPackage#getExampleColumn_Cells()
+	 * @see org.jnario.JnarioPackage#getExampleColumn_Cells()
 	 * @model derived="true"
 	 * @generated
 	 */

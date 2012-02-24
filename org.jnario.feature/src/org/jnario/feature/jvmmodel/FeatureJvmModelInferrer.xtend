@@ -22,8 +22,6 @@ import org.eclipse.xtext.xbase.XVariableDeclaration
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator
 import org.eclipse.xtext.xbase.typing.ITypeProvider
 import org.eclipse.xtext.xtend2.xtend2.XtendField
-import org.jnario.ExampleColumn
-import org.jnario.ExampleRow
 import org.jnario.feature.feature.Background
 import org.jnario.feature.feature.Feature
 import org.jnario.feature.feature.FeatureFile
@@ -32,19 +30,22 @@ import org.jnario.feature.feature.Step
 import org.jnario.feature.naming.JavaNameProvider
 import org.jnario.feature.naming.StepExpressionProvider
 import org.jnario.feature.naming.StepNameProvider
-import org.jnario.jvmmodel.CommonJvmModelInferrer
+import org.jnario.ExampleColumn
+import org.jnario.ExampleRow
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder
+import org.jnario.jvmmodel.JnarioJvmModelInferrer
 import org.jnario.jvmmodel.JunitAnnotationProvider
 import org.jnario.runner.Contains
 import org.jnario.runner.Named
 import org.jnario.runner.Order
 
 import static com.google.common.collect.Iterators.*
+import org.eclipse.xtext.xtend2.xtend2.XtendMember
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
-class FeatureJvmModelInferrer extends CommonJvmModelInferrer {
+class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 
 	@Inject extension ExtendedJvmTypesBuilder
 	
@@ -197,12 +198,12 @@ class FeatureJvmModelInferrer extends CommonJvmModelInferrer {
 		}
    	}
    	
-   	def generateBackgroundStepCalls(EList<Step> steps, JvmGenericType inferredJvmType){
+   	def generateBackgroundStepCalls(EList<XtendMember> steps, JvmGenericType inferredJvmType){
    		var order = 0
 		for (step : steps) {
-			order = transformCalls(step, inferredJvmType, order)
-			for(and: step.and){
-				order = transformCalls(and, inferredJvmType, order)
+			order = transformCalls(step as Step, inferredJvmType, order)
+			for(and: (step as Step).and){
+				order = transformCalls(and as Step, inferredJvmType, order)
 			}			
 		}
 		order
@@ -223,18 +224,17 @@ class FeatureJvmModelInferrer extends CommonJvmModelInferrer {
 		order + 1
    	}
    	
-   	def generateSteps(EList<Step> steps, JvmGenericType inferredJvmType, int start){
+   	def generateSteps(EList<XtendMember> steps, JvmGenericType inferredJvmType, int start){
 		var order = start
 		for (step : steps) {
-			order = transform(step, inferredJvmType, order)
-			for(and: step.and){
-				order = transform(and, inferredJvmType, order)
+			order = transform(step as Step, inferredJvmType, order)
+			for(and: (step as Step).and){
+				order = transform(and as Step, inferredJvmType, order)
 			}
 		}
    	}
    	
    	def transform(Step step, JvmGenericType inferredJvmType, int order) {
-
 		inferredJvmType.members += step.toMethod(step.nameOf.javaMethodName, getTypeForName(Void::TYPE, step))[
 			body = step.expressionOf?.blockExpression
 			annotations += step.getTestAnnotations(null, false)
@@ -244,11 +244,11 @@ class FeatureJvmModelInferrer extends CommonJvmModelInferrer {
 		order + 1
 	}
    	
-   	def generateSteps(EList<Step> steps, JvmGenericType inferredJvmType){
-		for (step : steps) {
-			transform(step, inferredJvmType)
-			for(and: step.and){
-				transform(and, inferredJvmType)
+   	def generateSteps(EList<XtendMember> steps, JvmGenericType inferredJvmType){
+		for (step: steps) {
+			transform(step as Step, inferredJvmType)
+			for(and: (step as Step).and){
+				transform(and as Step, inferredJvmType)
 			}
 		}
    	}

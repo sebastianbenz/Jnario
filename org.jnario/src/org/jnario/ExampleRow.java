@@ -8,7 +8,9 @@
 package org.jnario;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.xtext.xbase.XExpression;
 
 /**
@@ -24,23 +26,22 @@ import org.eclipse.xtext.xbase.XExpression;
  * </ul>
  * </p>
  *
- * @see org.jnario.CommonPackage#getExampleRow()
+ * @see org.jnario.JnarioPackage#getExampleRow()
  * @model
  * @generated
  */
-public interface ExampleRow extends EObject
-{
+public interface ExampleRow extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Cells</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.xtext.xbase.XExpression}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Parts</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Cells</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Cells</em>' containment reference list.
-	 * @see org.jnario.CommonPackage#getExampleRow_Cells()
+	 * @see org.jnario.JnarioPackage#getExampleRow_Cells()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -57,7 +58,7 @@ public interface ExampleRow extends EObject
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Table</em>' container reference.
 	 * @see #setTable(ExampleTable)
-	 * @see org.jnario.CommonPackage#getExampleRow_Table()
+	 * @see org.jnario.JnarioPackage#getExampleRow_Table()
 	 * @see org.jnario.ExampleTable#getRows
 	 * @model opposite="rows" transient="false"
 	 * @generated

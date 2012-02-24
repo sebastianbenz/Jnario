@@ -24,12 +24,11 @@ import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.compiler.IAppendable;
 import org.eclipse.xtext.xbase.util.XExpressionHelper;
 import org.eclipse.xtext.xtend2.compiler.Xtend2Compiler;
+import org.jnario.Assertion;
+import org.jnario.Matcher;
 
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
-
-import org.jnario.Assertion;
-import org.jnario.Matcher;
 
 /**
  * @author Sebastian Benz - Initial contribution and API

@@ -7,10 +7,6 @@
  *******************************************************************************/
 package org.jnario.impl;
 
-import org.jnario.CommonPackage;
-import org.jnario.ExampleRow;
-import org.jnario.ExampleTable;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -29,6 +25,10 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.xtext.xbase.XExpression;
+
+import org.jnario.ExampleRow;
+import org.jnario.ExampleTable;
+import org.jnario.JnarioPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -54,6 +54,7 @@ public class ExampleRowImpl extends EObjectImpl implements ExampleRow {
 	 * @ordered
 	 */
 	protected EList<XExpression> cells;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -70,7 +71,7 @@ public class ExampleRowImpl extends EObjectImpl implements ExampleRow {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return CommonPackage.Literals.EXAMPLE_ROW;
+		return JnarioPackage.Literals.EXAMPLE_ROW;
 	}
 
 	/**
@@ -80,7 +81,7 @@ public class ExampleRowImpl extends EObjectImpl implements ExampleRow {
 	 */
 	public EList<XExpression> getCells() {
 		if (cells == null) {
-			cells = new EObjectContainmentEList<XExpression>(XExpression.class, this, CommonPackage.EXAMPLE_ROW__CELLS);
+			cells = new EObjectContainmentEList<XExpression>(XExpression.class, this, JnarioPackage.EXAMPLE_ROW__CELLS);
 		}
 		return cells;
 	}
@@ -91,7 +92,7 @@ public class ExampleRowImpl extends EObjectImpl implements ExampleRow {
 	 * @generated
 	 */
 	public ExampleTable getTable() {
-		if (eContainerFeatureID() != CommonPackage.EXAMPLE_ROW__TABLE) return null;
+		if (eContainerFeatureID() != JnarioPackage.EXAMPLE_ROW__TABLE) return null;
 		return (ExampleTable)eContainer();
 	}
 
@@ -101,7 +102,7 @@ public class ExampleRowImpl extends EObjectImpl implements ExampleRow {
 	 * @generated
 	 */
 	public NotificationChain basicSetTable(ExampleTable newTable, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newTable, CommonPackage.EXAMPLE_ROW__TABLE, msgs);
+		msgs = eBasicSetContainer((InternalEObject)newTable, JnarioPackage.EXAMPLE_ROW__TABLE, msgs);
 		return msgs;
 	}
 
@@ -111,19 +112,19 @@ public class ExampleRowImpl extends EObjectImpl implements ExampleRow {
 	 * @generated
 	 */
 	public void setTable(ExampleTable newTable) {
-		if (newTable != eInternalContainer() || (eContainerFeatureID() != CommonPackage.EXAMPLE_ROW__TABLE && newTable != null)) {
+		if (newTable != eInternalContainer() || (eContainerFeatureID() != JnarioPackage.EXAMPLE_ROW__TABLE && newTable != null)) {
 			if (EcoreUtil.isAncestor(this, newTable))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newTable != null)
-				msgs = ((InternalEObject)newTable).eInverseAdd(this, CommonPackage.EXAMPLE_TABLE__ROWS, ExampleTable.class, msgs);
+				msgs = ((InternalEObject)newTable).eInverseAdd(this, JnarioPackage.EXAMPLE_TABLE__ROWS, ExampleTable.class, msgs);
 			msgs = basicSetTable(newTable, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.EXAMPLE_ROW__TABLE, newTable, newTable));
+			eNotify(new ENotificationImpl(this, Notification.SET, JnarioPackage.EXAMPLE_ROW__TABLE, newTable, newTable));
 	}
 
 	/**
@@ -134,7 +135,7 @@ public class ExampleRowImpl extends EObjectImpl implements ExampleRow {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case CommonPackage.EXAMPLE_ROW__TABLE:
+			case JnarioPackage.EXAMPLE_ROW__TABLE:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetTable((ExampleTable)otherEnd, msgs);
@@ -150,9 +151,9 @@ public class ExampleRowImpl extends EObjectImpl implements ExampleRow {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case CommonPackage.EXAMPLE_ROW__CELLS:
+			case JnarioPackage.EXAMPLE_ROW__CELLS:
 				return ((InternalEList<?>)getCells()).basicRemove(otherEnd, msgs);
-			case CommonPackage.EXAMPLE_ROW__TABLE:
+			case JnarioPackage.EXAMPLE_ROW__TABLE:
 				return basicSetTable(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -166,8 +167,8 @@ public class ExampleRowImpl extends EObjectImpl implements ExampleRow {
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case CommonPackage.EXAMPLE_ROW__TABLE:
-				return eInternalContainer().eInverseRemove(this, CommonPackage.EXAMPLE_TABLE__ROWS, ExampleTable.class, msgs);
+			case JnarioPackage.EXAMPLE_ROW__TABLE:
+				return eInternalContainer().eInverseRemove(this, JnarioPackage.EXAMPLE_TABLE__ROWS, ExampleTable.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -180,9 +181,9 @@ public class ExampleRowImpl extends EObjectImpl implements ExampleRow {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CommonPackage.EXAMPLE_ROW__CELLS:
+			case JnarioPackage.EXAMPLE_ROW__CELLS:
 				return getCells();
-			case CommonPackage.EXAMPLE_ROW__TABLE:
+			case JnarioPackage.EXAMPLE_ROW__TABLE:
 				return getTable();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -197,11 +198,11 @@ public class ExampleRowImpl extends EObjectImpl implements ExampleRow {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CommonPackage.EXAMPLE_ROW__CELLS:
+			case JnarioPackage.EXAMPLE_ROW__CELLS:
 				getCells().clear();
 				getCells().addAll((Collection<? extends XExpression>)newValue);
 				return;
-			case CommonPackage.EXAMPLE_ROW__TABLE:
+			case JnarioPackage.EXAMPLE_ROW__TABLE:
 				setTable((ExampleTable)newValue);
 				return;
 		}
@@ -216,10 +217,10 @@ public class ExampleRowImpl extends EObjectImpl implements ExampleRow {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CommonPackage.EXAMPLE_ROW__CELLS:
+			case JnarioPackage.EXAMPLE_ROW__CELLS:
 				getCells().clear();
 				return;
-			case CommonPackage.EXAMPLE_ROW__TABLE:
+			case JnarioPackage.EXAMPLE_ROW__TABLE:
 				setTable((ExampleTable)null);
 				return;
 		}
@@ -234,9 +235,9 @@ public class ExampleRowImpl extends EObjectImpl implements ExampleRow {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CommonPackage.EXAMPLE_ROW__CELLS:
+			case JnarioPackage.EXAMPLE_ROW__CELLS:
 				return cells != null && !cells.isEmpty();
-			case CommonPackage.EXAMPLE_ROW__TABLE:
+			case JnarioPackage.EXAMPLE_ROW__TABLE:
 				return getTable() != null;
 		}
 		return super.eIsSet(featureID);

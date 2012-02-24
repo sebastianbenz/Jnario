@@ -41,4 +41,3 @@ Export-Package: org.jnario.feature,
  org.jnario.feature.serializer,
  org.jnario.feature.services,
  org.jnario.feature.validation
-

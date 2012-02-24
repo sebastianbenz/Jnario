@@ -42,7 +42,7 @@ public class FeatureActivator extends AbstractUIPlugin {
 	
 	private static FeatureActivator INSTANCE;
 	
-	public static final String DE_BMW_CARIT_JNARIO_FEATURE_FEATURE = "org.jnario.feature.Feature";
+	public static final String ORG_JNARIO_FEATURE_FEATURE = "org.jnario.feature.Feature";
 	
 	public Injector getInjector(String languageName) {
 		try {
@@ -73,7 +73,7 @@ public class FeatureActivator extends AbstractUIPlugin {
 	}
 	
 	protected Module getRuntimeModule(String grammar) {
-		if (DE_BMW_CARIT_JNARIO_FEATURE_FEATURE.equals(grammar)) {
+		if (ORG_JNARIO_FEATURE_FEATURE.equals(grammar)) {
 			return new org.jnario.feature.FeatureRuntimeModule();
 		}
 		
@@ -81,7 +81,7 @@ public class FeatureActivator extends AbstractUIPlugin {
 	}
 	
 	protected Module getUiModule(String grammar) {
-		if (DE_BMW_CARIT_JNARIO_FEATURE_FEATURE.equals(grammar)) {
+		if (ORG_JNARIO_FEATURE_FEATURE.equals(grammar)) {
 			return new org.jnario.feature.ui.FeatureUiModule(this);
 		}
 		

@@ -4538,8 +4538,8 @@ public class InternalSpecLexer extends Lexer {
             "\1\u00cb",
             "\1\u00cc",
             "\1\u00cd",
-            "\1\72\13\uffff\12\72\7\uffff\32\72\4\uffff\1\72\1\uffff\1\u00ce"+
-            "\31\72",
+            "\1\72\13\uffff\12\72\7\uffff\32\72\4\uffff\1\72\1\uffff\1"+
+            "\u00ce\31\72",
             "\1\u00d0",
             "",
             "\1\u00d1",

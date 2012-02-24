@@ -6,12 +6,12 @@
  */
 package org.jnario.feature.feature.impl;
 
-import org.jnario.feature.feature.FeatureFile;
-import org.jnario.feature.feature.FeaturePackage;
-
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.xtext.xtend2.xtend2.impl.XtendFileImpl;
+
+import org.jnario.feature.feature.FeatureFile;
+import org.jnario.feature.feature.FeaturePackage;
 
 /**
  * <!-- begin-user-doc -->

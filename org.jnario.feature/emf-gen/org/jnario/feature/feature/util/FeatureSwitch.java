@@ -6,8 +6,6 @@
  */
 package org.jnario.feature.feature.util;
 
-import org.jnario.feature.feature.*;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -17,6 +15,8 @@ import org.eclipse.xtext.xtend2.xtend2.XtendAnnotationTarget;
 import org.eclipse.xtext.xtend2.xtend2.XtendClass;
 import org.eclipse.xtext.xtend2.xtend2.XtendFile;
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
+
+import org.jnario.feature.feature.*;
 
 /**
  * <!-- begin-user-doc -->

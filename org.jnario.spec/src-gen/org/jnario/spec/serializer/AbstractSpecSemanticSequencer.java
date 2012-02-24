@@ -1,5 +1,7 @@
 package org.jnario.spec.serializer;
 
+import com.google.inject.Inject;
+import com.google.inject.Provider;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmFormalParameter;
 import org.eclipse.xtext.common.types.JvmGenericArrayTypeReference;
@@ -68,12 +70,11 @@ import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 import org.eclipse.xtext.xtend2.xtend2.XtendParameter;
 import org.eclipse.xtext.xtype.XFunctionTypeRef;
 import org.eclipse.xtext.xtype.XtypePackage;
-
 import org.jnario.Assertion;
-import org.jnario.CommonPackage;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
+import org.jnario.JnarioPackage;
 import org.jnario.Matcher;
 import org.jnario.spec.services.SpecGrammarAccess;
 import org.jnario.spec.spec.After;
@@ -82,10 +83,6 @@ import org.jnario.spec.spec.Example;
 import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.spec.spec.SpecFile;
 import org.jnario.spec.spec.SpecPackage;
-
-
-import com.google.inject.Inject;
-import com.google.inject.Provider;
 
 @SuppressWarnings("restriction")
 public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
@@ -120,8 +117,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	}
 	
 	public void createSequence(EObject context, EObject semanticObject) {
-		if(semanticObject.eClass().getEPackage() == CommonPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
-			case CommonPackage.ASSERTION:
+		if(semanticObject.eClass().getEPackage() == JnarioPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case JnarioPackage.ASSERTION:
 				if(context == grammarAccess.getAssertionRule() ||
 				   context == grammarAccess.getRichStringPartRule() ||
 				   context == grammarAccess.getXAdditiveExpressionRule() ||
@@ -155,25 +152,25 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 					return; 
 				}
 				else break;
-			case CommonPackage.EXAMPLE_COLUMN:
+			case JnarioPackage.EXAMPLE_COLUMN:
 				if(context == grammarAccess.getExampleColumnRule()) {
 					sequence_ExampleColumn(context, (ExampleColumn) semanticObject); 
 					return; 
 				}
 				else break;
-			case CommonPackage.EXAMPLE_ROW:
+			case JnarioPackage.EXAMPLE_ROW:
 				if(context == grammarAccess.getExampleRowRule()) {
 					sequence_ExampleRow(context, (ExampleRow) semanticObject); 
 					return; 
 				}
 				else break;
-			case CommonPackage.EXAMPLE_TABLE:
+			case JnarioPackage.EXAMPLE_TABLE:
 				if(context == grammarAccess.getMemberRule()) {
 					sequence_Member(context, (ExampleTable) semanticObject); 
 					return; 
 				}
 				else break;
-			case CommonPackage.MATCHER:
+			case JnarioPackage.MATCHER:
 				if(context == grammarAccess.getMatcherRule() ||
 				   context == grammarAccess.getRichStringPartRule() ||
 				   context == grammarAccess.getXAdditiveExpressionRule() ||
@@ -1329,8 +1326,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	 */
 	protected void sequence_Assertion(EObject context, Assertion semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, CommonPackage.Literals.ASSERTION__EXPRESSION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CommonPackage.Literals.ASSERTION__EXPRESSION));
+			if(transientValues.isValueTransient(semanticObject, JnarioPackage.Literals.ASSERTION__EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JnarioPackage.Literals.ASSERTION__EXPRESSION));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
@@ -1518,8 +1515,8 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	 */
 	protected void sequence_Matcher(EObject context, Matcher semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, CommonPackage.Literals.MATCHER__CLOSURE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CommonPackage.Literals.MATCHER__CLOSURE));
+			if(transientValues.isValueTransient(semanticObject, JnarioPackage.Literals.MATCHER__CLOSURE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JnarioPackage.Literals.MATCHER__CLOSURE));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);

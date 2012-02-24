@@ -21,7 +21,7 @@ import org.eclipse.xtext.xbase.XExpression;
  * </ul>
  * </p>
  *
- * @see org.jnario.CommonPackage#getMatcher()
+ * @see org.jnario.JnarioPackage#getMatcher()
  * @model
  * @generated
  */
@@ -36,7 +36,7 @@ public interface Matcher extends XExpression {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Closure</em>' containment reference.
 	 * @see #setClosure(XExpression)
-	 * @see org.jnario.CommonPackage#getMatcher_Closure()
+	 * @see org.jnario.JnarioPackage#getMatcher_Closure()
 	 * @model containment="true"
 	 * @generated
 	 */

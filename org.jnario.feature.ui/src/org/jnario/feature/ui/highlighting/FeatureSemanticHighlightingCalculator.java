@@ -21,7 +21,6 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.xtend2.ui.highlighting.XtendHighlightingCalculator;
 import org.eclipse.xtext.xtend2.xtend2.XtendField;
-
 import org.jnario.ExampleTable;
 import org.jnario.feature.feature.AndReference;
 import org.jnario.feature.feature.FeaturePackage;

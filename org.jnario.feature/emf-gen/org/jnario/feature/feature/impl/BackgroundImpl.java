@@ -6,10 +6,6 @@
  */
 package org.jnario.feature.feature.impl;
 
-import org.jnario.feature.feature.Background;
-import org.jnario.feature.feature.FeaturePackage;
-import org.jnario.feature.feature.Step;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -25,6 +21,9 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
+
+import org.jnario.feature.feature.Background;
+import org.jnario.feature.feature.FeaturePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -50,7 +49,7 @@ public class BackgroundImpl extends MinimalEObjectImpl.Container implements Back
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Step> steps;
+	protected EList<XtendMember> steps;
 
 	/**
 	 * The cached value of the '{@link #getMembers() <em>Members</em>}' containment reference list.
@@ -88,11 +87,11 @@ public class BackgroundImpl extends MinimalEObjectImpl.Container implements Back
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Step> getSteps()
+	public EList<XtendMember> getSteps()
 	{
 		if (steps == null)
 		{
-			steps = new EObjectContainmentEList<Step>(Step.class, this, FeaturePackage.BACKGROUND__STEPS);
+			steps = new EObjectContainmentEList<XtendMember>(XtendMember.class, this, FeaturePackage.BACKGROUND__STEPS);
 		}
 		return steps;
 	}
@@ -160,7 +159,7 @@ public class BackgroundImpl extends MinimalEObjectImpl.Container implements Back
 		{
 			case FeaturePackage.BACKGROUND__STEPS:
 				getSteps().clear();
-				getSteps().addAll((Collection<? extends Step>)newValue);
+				getSteps().addAll((Collection<? extends XtendMember>)newValue);
 				return;
 			case FeaturePackage.BACKGROUND__MEMBERS:
 				getMembers().clear();

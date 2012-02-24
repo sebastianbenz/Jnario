@@ -6,9 +6,6 @@
  */
 package org.jnario.feature.feature.impl;
 
-import org.jnario.feature.feature.FeaturePackage;
-import org.jnario.feature.feature.StepExpression;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -28,6 +25,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.xtext.xbase.XBlockExpression;
 
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
+
+import org.jnario.feature.feature.FeaturePackage;
+import org.jnario.feature.feature.StepExpression;
 
 /**
  * <!-- begin-user-doc -->

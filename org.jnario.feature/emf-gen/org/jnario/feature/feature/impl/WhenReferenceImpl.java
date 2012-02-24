@@ -6,10 +6,10 @@
  */
 package org.jnario.feature.feature.impl;
 
+import org.eclipse.emf.ecore.EClass;
+
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.WhenReference;
-
-import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->

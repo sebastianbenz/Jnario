@@ -12,9 +12,9 @@
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
-            uri="http://www.org/jnario/Common"
-            class="org.jnario.CommonPackage"
-            genModel="model/Common.genmodel"/>
+            uri="http://www.org/Jnario"
+            class="org.jnario.JnarioPackage"
+            genModel="model/Jnario.genmodel"/>
    </extension>
 
 </plugin>

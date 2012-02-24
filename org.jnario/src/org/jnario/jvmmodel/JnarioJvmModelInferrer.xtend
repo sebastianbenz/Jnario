@@ -31,7 +31,7 @@ import org.eclipse.emf.ecore.EObject
  * @author Birgit Engelmann
  * @author Sebastian Benz
  */
-class CommonJvmModelInferrer extends Xtend2JvmModelInferrer {
+class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 
 	@Inject public XbaseCompiler compiler
 	@Inject extension ITypeProvider

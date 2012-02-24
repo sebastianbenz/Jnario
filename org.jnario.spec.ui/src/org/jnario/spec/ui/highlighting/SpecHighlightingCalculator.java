@@ -20,9 +20,8 @@ import org.eclipse.xtext.xtend2.xtend2.Xtend2Package;
 import org.eclipse.xtext.xtend2.xtend2.XtendField;
 import org.eclipse.xtext.xtend2.xtend2.XtendFunction;
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
-
-import org.jnario.CommonPackage;
 import org.jnario.ExampleTable;
+import org.jnario.JnarioPackage;
 import org.jnario.spec.spec.Example;
 import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.spec.spec.SpecFile;
@@ -61,7 +60,7 @@ public class SpecHighlightingCalculator extends XtendHighlightingCalculator {
 				}else if(member.eClass() == SpecPackage.Literals.EXAMPLE_GROUP){
 					ExampleGroup subExampleGroup = (ExampleGroup) member;
 					provideHighlightingFor(subExampleGroup,acceptor);
-				}else if(member.eClass() == CommonPackage.Literals.EXAMPLE_TABLE){
+				}else if(member.eClass() == JnarioPackage.Literals.EXAMPLE_TABLE){
 					provideHighlightingFor((ExampleTable)member,acceptor);
 				}
 				highlightDeprectedXtendAnnotationTarget(acceptor, member);

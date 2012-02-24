@@ -6,12 +6,6 @@
  */
 package org.jnario.feature.feature.impl;
 
-import org.jnario.ExampleTable;
-
-import org.jnario.feature.feature.FeaturePackage;
-import org.jnario.feature.feature.Scenario;
-import org.jnario.feature.feature.Step;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -30,6 +24,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 
 import org.eclipse.xtext.xtend2.xtend2.impl.XtendMemberImplCustom;
+
+import org.jnario.ExampleTable;
+
+import org.jnario.feature.feature.FeaturePackage;
+import org.jnario.feature.feature.Scenario;
 
 /**
  * <!-- begin-user-doc -->
@@ -87,7 +86,7 @@ public class ScenarioImpl extends XtendMemberImplCustom implements Scenario
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Step> steps;
+	protected EList<XtendMember> steps;
 
 	/**
 	 * The cached value of the '{@link #getMembers() <em>Members</em>}' containment reference list.
@@ -162,11 +161,11 @@ public class ScenarioImpl extends XtendMemberImplCustom implements Scenario
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Step> getSteps()
+	public EList<XtendMember> getSteps()
 	{
 		if (steps == null)
 		{
-			steps = new EObjectContainmentEList<Step>(Step.class, this, FeaturePackage.SCENARIO__STEPS);
+			steps = new EObjectContainmentEList<XtendMember>(XtendMember.class, this, FeaturePackage.SCENARIO__STEPS);
 		}
 		return steps;
 	}
@@ -247,7 +246,7 @@ public class ScenarioImpl extends XtendMemberImplCustom implements Scenario
 				return;
 			case FeaturePackage.SCENARIO__STEPS:
 				getSteps().clear();
-				getSteps().addAll((Collection<? extends Step>)newValue);
+				getSteps().addAll((Collection<? extends XtendMember>)newValue);
 				return;
 			case FeaturePackage.SCENARIO__MEMBERS:
 				getMembers().clear();

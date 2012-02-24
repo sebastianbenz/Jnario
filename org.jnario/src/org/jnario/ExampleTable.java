@@ -8,6 +8,7 @@
 package org.jnario;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 
 /**
@@ -24,12 +25,11 @@ import org.eclipse.xtext.xtend2.xtend2.XtendMember;
  * </ul>
  * </p>
  *
- * @see org.jnario.CommonPackage#getExampleTable()
+ * @see org.jnario.JnarioPackage#getExampleTable()
  * @model
  * @generated
  */
-public interface ExampleTable extends XtendMember
-{
+public interface ExampleTable extends XtendMember {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -40,7 +40,7 @@ public interface ExampleTable extends XtendMember
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see org.jnario.CommonPackage#getExampleTable_Name()
+	 * @see org.jnario.JnarioPackage#getExampleTable_Name()
 	 * @model
 	 * @generated
 	 */
@@ -67,7 +67,7 @@ public interface ExampleTable extends XtendMember
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Rows</em>' containment reference list.
-	 * @see org.jnario.CommonPackage#getExampleTable_Rows()
+	 * @see org.jnario.JnarioPackage#getExampleTable_Rows()
 	 * @see org.jnario.ExampleRow#getTable
 	 * @model opposite="table" containment="true"
 	 * @generated
@@ -85,7 +85,7 @@ public interface ExampleTable extends XtendMember
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Columns</em>' containment reference list.
-	 * @see org.jnario.CommonPackage#getExampleTable_Columns()
+	 * @see org.jnario.JnarioPackage#getExampleTable_Columns()
 	 * @see org.jnario.ExampleColumn#getTable
 	 * @model opposite="table" containment="true"
 	 * @generated

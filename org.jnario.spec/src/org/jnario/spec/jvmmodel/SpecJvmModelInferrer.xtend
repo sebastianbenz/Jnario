@@ -10,7 +10,7 @@ import static extension org.eclipse.xtext.util.Strings.*
 import com.google.common.base.Joiner
 import com.google.inject.Inject
 import org.jnario.ExampleTable
-import org.jnario.jvmmodel.CommonJvmModelInferrer
+import org.jnario.jvmmodel.JnarioJvmModelInferrer
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder
 import org.jnario.runner.Contains
 import org.jnario.runner.Extension
@@ -45,7 +45,7 @@ import org.jnario.jvmmodel.JunitAnnotationProvider
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
-class SpecJvmModelInferrer extends CommonJvmModelInferrer {
+class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 
 	@Inject extension ExtendedJvmTypesBuilder
 	

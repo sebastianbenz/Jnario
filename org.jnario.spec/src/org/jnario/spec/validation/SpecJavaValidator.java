@@ -12,20 +12,19 @@ import static com.google.common.base.Strings.isNullOrEmpty;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.ComposedChecks;
 import org.eclipse.xtext.xtend2.xtend2.XtendField;
-
-import com.google.inject.Inject;
-
 import org.jnario.ExampleColumn;
-import org.jnario.validation.CommonJavaValidator;
 import org.jnario.spec.naming.ExampleNameProvider;
 import org.jnario.spec.spec.SpecPackage;
 import org.jnario.spec.spec.TestFunction;
+import org.jnario.validation.JnarioJavaValidator;
+
+import com.google.inject.Inject;
  
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
-@ComposedChecks(validators={CommonJavaValidator.class})
+@ComposedChecks(validators={JnarioJavaValidator.class})
 public class SpecJavaValidator extends AbstractSpecJavaValidator {
 	
 	@Inject

@@ -14,7 +14,7 @@
       <ePackage href="http://www.eclipse.org/xtext/common/JavaVMTypes#/"/>
     </metamodelDeclarations>
     <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel">
-      <ePackage href="http://www.org/jnario/Common#/"/>
+      <ePackage href="http://www.org/Jnario#/"/>
     </metamodelDeclarations>
     <rules xsi:type="xtext:ParserRule" name="SpecFile">
       <type metamodel="/0/@metamodelDeclarations.0">
@@ -267,7 +267,7 @@
           <elements xsi:type="xtext:Group">
             <elements xsi:type="xtext:Action" feature="annotationInfo" operator="=">
               <type metamodel="/0/@metamodelDeclarations.4">
-                <classifier xsi:type="ecore:EClass" href="http://www.org/jnario/Common#//ExampleTable"/>
+                <classifier xsi:type="ecore:EClass" href="http://www.org/Jnario#//ExampleTable"/>
               </type>
             </elements>
             <elements xsi:type="xtext:Group">
@@ -471,7 +471,7 @@
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.4">
-            <classifier xsi:type="ecore:EClass" href="http://www.org/jnario/Common#//Assertion"/>
+            <classifier xsi:type="ecore:EClass" href="http://www.org/Jnario#//Assertion"/>
           </type>
         </elements>
         <elements xsi:type="xtext:Keyword" value="assert"/>
@@ -482,7 +482,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Matcher">
       <type metamodel="/0/@metamodelDeclarations.4">
-        <classifier xsi:type="ecore:EClass" href="http://www.org/jnario/Common#//Matcher"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.org/Jnario#//Matcher"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="#"/>
@@ -520,7 +520,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ExampleColumn">
       <type metamodel="/0/@metamodelDeclarations.4">
-        <classifier xsi:type="ecore:EClass" href="http://www.org/jnario/Common#//ExampleColumn"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.org/Jnario#//ExampleColumn"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Assignment" cardinality="?" feature="type" operator="=">
@@ -534,13 +534,13 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ExampleRow">
       <type metamodel="/0/@metamodelDeclarations.4">
-        <classifier xsi:type="ecore:EClass" href="http://www.org/jnario/Common#//ExampleRow"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.org/Jnario#//ExampleRow"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="|"/>
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.4">
-            <classifier xsi:type="ecore:EClass" href="http://www.org/jnario/Common#//ExampleRow"/>
+            <classifier xsi:type="ecore:EClass" href="http://www.org/Jnario#//ExampleRow"/>
           </type>
         </elements>
         <elements xsi:type="xtext:Group" cardinality="*">

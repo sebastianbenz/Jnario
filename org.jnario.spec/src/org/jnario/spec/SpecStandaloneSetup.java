@@ -13,11 +13,10 @@ import org.eclipse.xtext.xbase.XbaseStandaloneSetup;
 import org.eclipse.xtext.xbase.XtypeStandaloneSetup;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
 import org.eclipse.xtext.xtend2.Xtend2StandaloneSetup;
+import org.jnario.JnarioPackage;
+import org.jnario.spec.spec.SpecPackage;
 
 import com.google.inject.Injector;
-
-import org.jnario.CommonPackage;
-import org.jnario.spec.spec.SpecPackage;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -35,7 +34,7 @@ public class SpecStandaloneSetup extends SpecStandaloneSetupGenerated{
 		XbaseStandaloneSetup.doSetup();
 		XtypeStandaloneSetup.doSetup();
 		EPackage.Registry.INSTANCE.put(XAnnotationsPackage.eINSTANCE.getNsURI(),XAnnotationsPackage.eINSTANCE);
-		EPackage.Registry.INSTANCE.put(CommonPackage.eNS_URI, CommonPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(JnarioPackage.eNS_URI, JnarioPackage.eINSTANCE);
 		EPackage.Registry.INSTANCE.put(SpecPackage.eNS_URI, SpecPackage.eINSTANCE);
 		super.register(injector);
 	}

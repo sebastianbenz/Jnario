@@ -46,8 +46,8 @@ import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
-import org.jnario.jvmmodel.CommonJvmModelInferrer;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
+import org.jnario.jvmmodel.JnarioJvmModelInferrer;
 import org.jnario.jvmmodel.JunitAnnotationProvider;
 import org.jnario.spec.jvmmodel.ImplicitSubject;
 import org.jnario.spec.naming.ExampleNameProvider;
@@ -62,7 +62,7 @@ import org.jnario.spec.spec.TestFunction;
  * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("all")
-public class SpecJvmModelInferrer extends CommonJvmModelInferrer {
+public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
   @Inject
   private ExtendedJvmTypesBuilder _extendedJvmTypesBuilder;
   
