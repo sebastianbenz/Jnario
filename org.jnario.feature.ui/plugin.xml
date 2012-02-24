@@ -150,13 +150,13 @@
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
 			class="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
-			type="jnario">
+			type="feature">
 		</parser>
 	</extension>
 	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
         <resourceServiceProvider
             class="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
-            uriExtension="jnario">
+            uriExtension="feature">
         </resourceServiceProvider>
     </extension>
 
@@ -272,41 +272,41 @@
   <extension point="org.eclipse.compare.contentViewers">
     <viewer id="org.jnario.feature.Feature.compare.contentViewers"
             class="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-            extensions="jnario">
+            extensions="feature">
     </viewer>
   </extension>
   <extension point="org.eclipse.compare.contentMergeViewers">
     <viewer id="org.jnario.feature.Feature.compare.contentMergeViewers"
             class="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-            extensions="jnario" label="Feature Compare">
+            extensions="feature" label="Feature Compare">
      </viewer>
   </extension>
   <extension point="org.eclipse.ui.editors.documentProviders">
     <provider id="org.jnario.feature.Feature.editors.documentProviders"
             class="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
-            extensions="jnario">
+            extensions="feature">
     </provider>
   </extension>
   
    <extension point="org.eclipse.core.runtime.adapters">
      <factory 
-        class="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegateAdapterFactory"
+        class="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.jnario.feature.ui.launching.FeatureJavaElementDelegateAdapterFactory"
         adaptableType="org.eclipse.ui.IFileEditorInput">
-        <adapter type="org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegate"/>
+        <adapter type="org.jnario.feature.ui.launching.FeatureJavaElementDelegate"/>
      </factory>
      <factory 
-        class="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegateAdapterFactory"
+        class="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.jnario.feature.ui.launching.FeatureJavaElementDelegateAdapterFactory"
         adaptableType="org.eclipse.ui.IEditorPart">
-        <adapter type="org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegate"/>
+        <adapter type="org.jnario.feature.ui.launching.FeatureJavaElementDelegate"/>
      </factory>
      <factory 
-        class="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegateAdapterFactory" 
+        class="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.jnario.feature.ui.launching.FeatureJavaElementDelegateAdapterFactory" 
         adaptableType="org.eclipse.core.resources.IResource">
-        <adapter type="org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegate"/>
+        <adapter type="org.jnario.feature.ui.launching.FeatureJavaElementDelegate"/>
      </factory>
      <factory 
-        class="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegateAdapterFactory"
-        adaptableType="org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegate">
+        class="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.jnario.feature.ui.launching.FeatureJavaElementDelegateAdapterFactory"
+        adaptableType="org.jnario.feature.ui.launching.FeatureJavaElementDelegate">
         <adapter type="org.eclipse.jdt.core.IJavaElement"/>
      </factory>
   </extension>
@@ -319,7 +319,7 @@
             helpContextId="org.eclipse.jdt.junit.launch_shortcut"
             class="org.jnario.feature.ui.launching.FeatureJUnitLaunchShortcut"
             modes="run, debug"
-            id=".junitShortcut">
+            id="org.jnario.feature.ui.launching.junitShortcut">
          <contextualLaunch>
             <enablement>
                <with variable="selection">
