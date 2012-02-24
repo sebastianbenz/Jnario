@@ -16,6 +16,7 @@ import com.google.inject.Inject;
 
 import org.jnario.spec.doc.DocGenerator;
 
+@SuppressWarnings("restriction")
 public class SpecGenerator implements IGenerator {
 
 	@Inject JvmModelGenerator jvmModelGenerator;

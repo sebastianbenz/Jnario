@@ -13,7 +13,6 @@ import static org.eclipse.xtext.scoping.Scopes.scopeFor;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmType;
@@ -21,13 +20,12 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.xtend2.scoping.Xtend2ScopeProvider;
-
-import com.google.common.base.Function;
-import com.google.inject.Inject;
-
 import org.jnario.spec.naming.OperationNameProvider;
 import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.spec.spec.SpecPackage;
+
+import com.google.common.base.Function;
+import com.google.inject.Inject;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
