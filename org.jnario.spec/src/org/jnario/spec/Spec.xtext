@@ -37,8 +37,10 @@ Member returns xtend::XtendMember:
 	{xtend::XtendMember} annotations+=XAnnotation* 
 	(
 		{Example.annotationInfo = current}
-		((=>preamble=ID | =>preamble='-') (=>'throws' exception=[types::JvmDeclaredType|QualifiedName])? =>name=STRING
-				=>body=XBlockExpression?)	
+		((=>preamble=ID | =>preamble='-') 
+			(=>'throws' exception=[types::JvmDeclaredType|QualifiedName])? 
+				(=>name=STRING
+					=>body=XBlockExpression?))	
 	|	{ExampleGroup.annotationInfo = current}
 			(preamble=('describe') targetType=JvmTypeReference? =>name=STRING? '{'
       		members+=Member*

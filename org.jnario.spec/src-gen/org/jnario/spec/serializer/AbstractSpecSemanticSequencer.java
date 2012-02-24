@@ -1,27 +1,7 @@
-/*******************************************************************************
- * Copyright (c) 2012 BMW Car IT and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
 package org.jnario.spec.serializer;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
-import org.jnario.Assertion;
-import org.jnario.CommonPackage;
-import org.jnario.ExampleColumn;
-import org.jnario.ExampleRow;
-import org.jnario.ExampleTable;
-import org.jnario.Matcher;
-import org.jnario.spec.services.SpecGrammarAccess;
-import org.jnario.spec.spec.After;
-import org.jnario.spec.spec.Before;
-import org.jnario.spec.spec.Example;
-import org.jnario.spec.spec.ExampleGroup;
-import org.jnario.spec.spec.SpecFile;
-import org.jnario.spec.spec.SpecPackage;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmFormalParameter;
 import org.eclipse.xtext.common.types.JvmGenericArrayTypeReference;
@@ -90,6 +70,19 @@ import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 import org.eclipse.xtext.xtend2.xtend2.XtendParameter;
 import org.eclipse.xtext.xtype.XFunctionTypeRef;
 import org.eclipse.xtext.xtype.XtypePackage;
+import org.jnario.common.Assertion;
+import org.jnario.common.CommonPackage;
+import org.jnario.common.ExampleColumn;
+import org.jnario.common.ExampleRow;
+import org.jnario.common.ExampleTable;
+import org.jnario.common.Matcher;
+import org.jnario.spec.services.SpecGrammarAccess;
+import org.jnario.spec.spec.After;
+import org.jnario.spec.spec.Before;
+import org.jnario.spec.spec.Example;
+import org.jnario.spec.spec.ExampleGroup;
+import org.jnario.spec.spec.SpecFile;
+import org.jnario.spec.spec.SpecPackage;
 
 @SuppressWarnings("restriction")
 public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {

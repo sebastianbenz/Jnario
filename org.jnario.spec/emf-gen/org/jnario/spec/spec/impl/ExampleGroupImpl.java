@@ -1,14 +1,7 @@
-/*******************************************************************************
- * Copyright (c) 2012 BMW Car IT and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
+/**
+ * Copyright (c) 2012 BMW Car IT and others. All rights reserved. This program and the accompanying materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.spec.spec.impl;
-
-import org.jnario.spec.spec.ExampleGroup;
-import org.jnario.spec.spec.SpecPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -26,6 +19,9 @@ import org.eclipse.xtext.xtend2.xtend2.XtendAnnotationTarget;
 import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 
 import org.eclipse.xtext.xtend2.xtend2.impl.XtendClassImplCustom;
+
+import org.jnario.spec.spec.ExampleGroup;
+import org.jnario.spec.spec.SpecPackage;
 
 /**
  * <!-- begin-user-doc -->

@@ -573,7 +573,7 @@ RULE_ID
 	    }
 
 )
-))?((
+))?(((
 (
 RULE_STRING
 
@@ -582,7 +582,7 @@ RULE_STRING
 (
 		lv_name_7_0=RULE_STRING
 		{
-			newLeafNode(lv_name_7_0, grammarAccess.getMemberAccess().getNameSTRINGTerminalRuleCall_2_0_1_2_0()); 
+			newLeafNode(lv_name_7_0, grammarAccess.getMemberAccess().getNameSTRINGTerminalRuleCall_2_0_1_2_0_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -603,7 +603,7 @@ ruleXBlockExpression
 )=>
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMemberAccess().getBodyXBlockExpressionParserRuleCall_2_0_1_3_0()); 
+	        newCompositeNode(grammarAccess.getMemberAccess().getBodyXBlockExpressionParserRuleCall_2_0_1_2_1_0()); 
 	    }
 		lv_body_8_0=ruleXBlockExpression		{
 	        if ($current==null) {
@@ -618,7 +618,7 @@ ruleXBlockExpression
 	    }
 
 )
-)?))
+)?)))
     |((
     {
         $current = forceCreateModelElementAndSet(

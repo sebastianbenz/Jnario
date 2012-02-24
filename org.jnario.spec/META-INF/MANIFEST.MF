@@ -42,4 +42,3 @@ Export-Package: org.jnario.spec,
  org.jnario.spec.spec.impl,
  org.jnario.spec.spec.util,
  org.jnario.spec.validation
-
