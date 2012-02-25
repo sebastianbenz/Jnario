@@ -66,7 +66,7 @@ import org.eclipse.xtext.xtend2.ui.highlighting.RichStringAwareTokenScanner;
 import org.eclipse.xtext.xtend2.ui.highlighting.ShowWhitespaceCharactersActionContributor;
 import org.eclipse.xtext.xtend2.ui.highlighting.TokenToAttributeIdMapper;
 import org.eclipse.xtext.xtend2.ui.highlighting.XtendHighlightingConfiguration;
-
+import org.eclipse.xtext.xtend2.ui.hover.XtendAnnotationHover;
 import org.eclipse.xtext.xtend2.ui.hyperlinking.XtendHyperlinkHelper;
 import org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegate;
 import org.eclipse.xtext.xtend2.ui.outline.Xtend2OutlineNodeComparator;
@@ -74,14 +74,13 @@ import org.eclipse.xtext.xtend2.ui.outline.Xtend2OutlinePage;
 import org.eclipse.xtext.xtend2.ui.outline.Xtend2QuickOutlineFilterAndSorter;
 import org.eclipse.xtext.xtend2.ui.refactoring.Xtend2RenameElementProcessor;
 import org.eclipse.xtext.xtend2.ui.refactoring.Xtend2RenameStrategy;
-
-import com.google.inject.Binder;
-import com.google.inject.name.Names;
-
 import org.jnario.spec.ui.doc.SpecHoverProvider;
 import org.jnario.spec.ui.editor.SpecFoldingRegionProvider;
 import org.jnario.spec.ui.highlighting.SpecHighlightingCalculator;
 import org.jnario.spec.ui.launching.SpecJavaElementDelegate;
+
+import com.google.inject.Binder;
+import com.google.inject.name.Names;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -197,14 +196,7 @@ public class SpecUiModule extends org.jnario.spec.ui.AbstractSpecUiModule {
 	public Class<? extends ISingleLineCommentHelper> bindISingleLineCommentHelper() {
 		return SingleLineCommentHelper.class;
 	}
-	public Class<? extends XtextSourceViewer.Factory> bindSourceViewerFactory() {
-		return RichStringAwareSourceViewer.Factory.class;
-	}
-	
-	public Class<? extends ToggleSLCommentAction.Factory> bindToggleCommentFactory() {
-		return RichStringAwareToggleCommentAction.Factory.class;
-	}
-	
+
 	public Class<? extends IFoldingStructureProvider> bindIFoldingStructureProvider(){
 		return InitiallyCollapsableAwareFoldingStructureProvider.class;
 	}
