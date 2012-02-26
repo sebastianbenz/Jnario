@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.xbase.XExpression;
-import org.eclipse.xtext.xtend2.xtend2.impl.XtendFieldImpl;
+import org.eclipse.xtend.core.xtend.impl.XtendFieldImpl;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;

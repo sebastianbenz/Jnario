@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.8"?>
 
-<target includeMode="feature" name="Jnario Target" sequenceNumber="66">
+<target includeMode="feature" name="Jnario Target" sequenceNumber="70">
 <locations>
-<location includeAllPlatforms="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.sdk.ide" version="0.0.0"/>
-<repository location="http://download.eclipse.org/eclipse/updates/3.7"/>
-</location>
-<location includeAllPlatforms="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.emf.sdk.feature.group" version="0.0.0"/>
-<repository location="http://download.eclipse.org/releases/indigo/"/>
-</location>
 <location includeAllPlatforms="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.apache.commons.cli" version="1.2.0.v201105210650"/>
 <unit id="org.apache.commons.cli.source" version="1.2.0.v201105210650"/>
@@ -31,19 +23,19 @@
 <unit id="org.objenesis.source" version="1.0.0.v201105211943"/>
 <unit id="org.mockito" version="1.8.4.v201102171835"/>
 <unit id="org.mockito.source" version="1.8.4.v201102171835"/>
-<unit id="org.junit" version="4.8.2.v4_8_2_v20110321-1705"/>
-<unit id="org.junit.source" version="4.8.2.v4_8_2_v20110321-1705"/>
+<unit id="org.junit" version="0.0.0"/>
+<unit id="org.junit.source" version="0.0.0"/>
 <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20110523182458/repository"/>
 </location>
 <location includeAllPlatforms="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.xtend.sdk.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.xtend.m2e.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.xtext.examples.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.xtext.runtime.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.xtext.ui.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.xtext.xbase.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.xtext.docs.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.xtend.sdk.feature.group" version="2.3.0.v201202241704"/>
+<unit id="org.eclipse.xtend.m2e.feature.group" version="2.3.0.v201202241704"/>
+<unit id="org.eclipse.xtext.examples.feature.group" version="2.3.0.v201202241704"/>
+<unit id="org.eclipse.xtext.runtime.feature.group" version="2.3.0.v201202241704"/>
+<unit id="org.eclipse.xtext.ui.feature.group" version="2.3.0.v201202241704"/>
+<unit id="org.eclipse.xtext.xbase.feature.group" version="2.3.0.v201202241704"/>
+<unit id="org.eclipse.xtext.sdk.feature.group" version="2.3.0.v201202241704"/>
+<unit id="org.eclipse.xtext.docs.feature.group" version="2.3.0.v201202241704"/>
 <repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/nightly/"/>
 </location>
 </locations>

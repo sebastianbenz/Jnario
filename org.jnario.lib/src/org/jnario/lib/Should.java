@@ -8,11 +8,11 @@
 package org.jnario.lib;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.endsWith;
 import static org.hamcrest.Matchers.startsWith;
 import static org.hamcrest.collection.IsCollectionContaining.hasItems;
+import static org.junit.Assert.assertThat;
 
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.hamcrest.CoreMatchers;
@@ -20,6 +20,7 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 import org.hamcrest.core.IsNot;
+import org.junit.Assert;
 
 /**
  * @author Sebastian Benz - Initial contribution and API

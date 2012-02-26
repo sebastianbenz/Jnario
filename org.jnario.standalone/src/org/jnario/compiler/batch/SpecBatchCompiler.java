@@ -22,7 +22,7 @@ import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.validation.CheckMode;
 import org.eclipse.xtext.validation.IResourceValidator;
 import org.eclipse.xtext.validation.Issue;
-import org.eclipse.xtext.xtend2.compiler.batch.Xtend2BatchCompiler;
+import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
 
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
@@ -34,7 +34,7 @@ import org.jnario.spec.spec.ExampleGroup;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
-public class SpecBatchCompiler extends Xtend2BatchCompiler {
+public class SpecBatchCompiler extends XtendBatchCompiler {
 
 	private static final Logger log = Logger.getLogger(SpecBatchCompiler.class);
 	

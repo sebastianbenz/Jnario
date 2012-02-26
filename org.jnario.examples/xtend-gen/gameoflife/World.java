@@ -25,8 +25,10 @@ public class World {
   }.apply();
   
   protected void _addCell(final Position position, final AliveCell cell) {
+    {
       this.doAdd(position, cell);
       this.addDeadNeighbours(position);
+    }
   }
   
   private void addDeadNeighbours(final Position position) {

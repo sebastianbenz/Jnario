@@ -7,7 +7,7 @@
  *******************************************************************************/
 package org.jnario.feature.ui.highlighting;
 
-import org.eclipse.xtext.xtend2.ui.highlighting.TokenToAttributeIdMapper;
+import org.eclipse.xtend.ide.highlighting.TokenToAttributeIdMapper;
 
 import com.google.inject.Singleton;
 

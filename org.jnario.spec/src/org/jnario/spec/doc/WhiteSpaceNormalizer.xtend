@@ -10,7 +10,7 @@ package org.jnario.spec.doc
 import static extension java.lang.Character.*
 
 class WhiteSpaceNormalizer {
-	
+
 	def String normalize(CharSequence input){
 		if(input == null) return ""
 		

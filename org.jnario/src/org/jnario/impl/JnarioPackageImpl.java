@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.xtext.xbase.XbasePackage;
 
-import org.eclipse.xtext.xtend2.xtend2.Xtend2Package;
+import org.eclipse.xtend.core.xtend.XtendPackage;
 
 import org.jnario.Assertion;
 import org.jnario.ExampleColumn;
@@ -115,7 +115,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		isInited = true;
 
 		// Initialize simple dependencies
-		Xtend2Package.eINSTANCE.eClass();
+		XtendPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theJnarioPackage.createPackageContents();
@@ -330,7 +330,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		Xtend2Package theXtend2Package = (Xtend2Package)EPackage.Registry.INSTANCE.getEPackage(Xtend2Package.eNS_URI);
+		XtendPackage theXtendPackage = (XtendPackage)EPackage.Registry.INSTANCE.getEPackage(XtendPackage.eNS_URI);
 		XbasePackage theXbasePackage = (XbasePackage)EPackage.Registry.INSTANCE.getEPackage(XbasePackage.eNS_URI);
 
 		// Create type parameters
@@ -338,10 +338,10 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		exampleTableEClass.getESuperTypes().add(theXtend2Package.getXtendMember());
+		exampleTableEClass.getESuperTypes().add(theXtendPackage.getXtendMember());
 		assertionEClass.getESuperTypes().add(theXbasePackage.getXExpression());
 		matcherEClass.getESuperTypes().add(theXbasePackage.getXExpression());
-		exampleColumnEClass.getESuperTypes().add(theXtend2Package.getXtendField());
+		exampleColumnEClass.getESuperTypes().add(theXtendPackage.getXtendField());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(exampleTableEClass, ExampleTable.class, "ExampleTable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

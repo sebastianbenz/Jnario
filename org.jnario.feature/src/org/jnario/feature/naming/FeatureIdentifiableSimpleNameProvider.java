@@ -8,14 +8,14 @@
 package org.jnario.feature.naming;
 
 import org.eclipse.xtext.common.types.JvmIdentifiableElement;
-import org.eclipse.xtext.xtend2.featurecalls.Xtend2IdentifiableSimpleNameProvider;
+import org.eclipse.xtend.core.featurecalls.XtendIdentifiableSimpleNameProvider;
 
 import org.jnario.feature.feature.Step;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
-public class FeatureIdentifiableSimpleNameProvider extends Xtend2IdentifiableSimpleNameProvider {
+public class FeatureIdentifiableSimpleNameProvider extends XtendIdentifiableSimpleNameProvider {
 	
 	@Override
 	public String getSimpleName(JvmIdentifiableElement element) {

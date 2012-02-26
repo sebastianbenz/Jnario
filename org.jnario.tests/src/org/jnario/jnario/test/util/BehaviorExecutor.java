@@ -22,6 +22,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.xtend.core.xtend.XtendPackage;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.diagnostics.Severity;
@@ -35,9 +36,11 @@ import org.eclipse.xtext.validation.Issue;
 import org.eclipse.xtext.xbase.XbasePackage;
 import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
-import org.eclipse.xtext.xtend2.xtend2.Xtend2Package;
 import org.hamcrest.Matcher;
-import org.hamcrest.Matchers;
+import org.jnario.Assertion;
+import org.jnario.feature.feature.FeaturePackage;
+import org.jnario.runner.Named;
+import org.jnario.spec.spec.SpecPackage;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 import org.junit.runner.JUnitCore;
@@ -50,11 +53,6 @@ import com.google.common.base.Function;
 import com.google.common.base.Joiner;
 import com.google.common.base.Predicate;
 import com.google.inject.Inject;
-
-import org.jnario.Assertion;
-import org.jnario.feature.feature.FeaturePackage;
-import org.jnario.runner.Named;
-import org.jnario.spec.spec.SpecPackage;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -144,7 +142,7 @@ public abstract class BehaviorExecutor {
 		javaCompiler.addClassPathOfClass(Notifier.class);
 		javaCompiler.addClassPathOfClass(EcorePackage.class);
 		javaCompiler.addClassPathOfClass(XbasePackage.class);
-		javaCompiler.addClassPathOfClass(Xtend2Package.class);
+		javaCompiler.addClassPathOfClass(XtendPackage.class);
 		javaCompiler.addClassPathOfClass(Inject.class);
 		javaCompiler.addClassPathOfClass(Properties1.class);
 		javaCompiler.addClassPathOfClass(Function.class);

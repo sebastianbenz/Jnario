@@ -8,6 +8,10 @@ import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend.core.xtend.XtendClass;
+import org.eclipse.xtend.core.xtend.XtendField;
+import org.eclipse.xtend.core.xtend.XtendFunction;
+import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
 import org.eclipse.xtext.common.types.JvmConstructor;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
@@ -20,14 +24,13 @@ import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.common.types.util.TypeReferences;
-import org.eclipse.xtext.serializer.ISerializer;
-import org.eclipse.xtext.util.IAcceptor;
+import org.eclipse.xtext.nodemodel.ICompositeNode;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
-import org.eclipse.xtext.xbase.compiler.IAppendable;
-import org.eclipse.xtext.xbase.compiler.ImportManager;
-import org.eclipse.xtext.xbase.compiler.StringBuilderBasedAppendable;
+import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
+import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.eclipse.xtext.xbase.lib.CollectionExtensions;
@@ -39,10 +42,6 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
-import org.eclipse.xtext.xtend2.xtend2.XtendClass;
-import org.eclipse.xtext.xtend2.xtend2.XtendField;
-import org.eclipse.xtext.xtend2.xtend2.XtendFunction;
-import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
@@ -81,10 +80,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
   @Inject
   private IJvmModelAssociations _iJvmModelAssociations;
   
-  @Inject
-  private ISerializer _iSerializer;
-  
-  public void infer(final EObject e, final IAcceptor<JvmDeclaredType> acceptor, final boolean isPrelinkingPhase) {
+  public void infer(final EObject e, final IJvmDeclaredTypeAcceptor acceptor, final boolean preIndexingPhase) {
       boolean _checkClassPath = this.checkClassPath(e, this.annotationProvider);
       boolean _operator_not = BooleanExtensions.operator_not(_checkClassPath);
       if (_operator_not) {
@@ -101,7 +97,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
         return;
       }
       XtendClass _xtendClass_1 = specFile.getXtendClass();
-      this.transform(((SpecFile) specFile), ((ExampleGroup) _xtendClass_1), null, isPrelinkingPhase);
+      this.transform(((SpecFile) specFile), ((ExampleGroup) _xtendClass_1), null, preIndexingPhase);
   }
   
   public JvmGenericType transform(final SpecFile spec, final ExampleGroup exampleGroup, final JvmGenericType superClass, final boolean isPrelinkingPhase) {
@@ -283,7 +279,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
   
   public void addFields(final JvmGenericType type, final ExampleGroup exampleGroup) {
       EList<XtendMember> _members = exampleGroup.getMembers();
-      Iterable<XtendField> _filter = IterableExtensions.<XtendField>filter(_members, org.eclipse.xtext.xtend2.xtend2.XtendField.class);
+      Iterable<XtendField> _filter = IterableExtensions.<XtendField>filter(_members, org.eclipse.xtend.core.xtend.XtendField.class);
       for (final XtendField field : _filter) {
         {
           field.setVisibility(JvmVisibility.PROTECTED);
@@ -327,10 +323,9 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
                     EList<JvmAnnotationReference> _annotations = it.getAnnotations();
                     JvmAnnotationReference _beforeAnnotation = SpecJvmModelInferrer.this.annotationProvider.getBeforeAnnotation(element);
                     CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _beforeAnnotation);
-                    final Function1<ImportManager,String> _function = new Function1<ImportManager,String>() {
-                        public String apply(final ImportManager im) {
-                          String _generateInitializationMethod = SpecJvmModelInferrer.this.generateInitializationMethod(exampleTableType, element);
-                          return _generateInitializationMethod;
+                    final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
+                        public void apply(final ITreeAppendable a) {
+                          SpecJvmModelInferrer.this.generateInitializationMethod(exampleTableType, element, a);
                         }
                       };
                     SpecJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, _function);
@@ -396,12 +391,12 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
                     JvmTypeReference _type_1 = column.getType();
                     final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
                         public void apply(final JvmOperation it) {
-                          final Function1<ImportManager,String> _function = new Function1<ImportManager,String>() {
-                              public String apply(final ImportManager im) {
+                          final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
+                              public void apply(final ITreeAppendable a) {
                                 String _name = column.getName();
                                 String _operator_plus = StringExtensions.operator_plus("return ", _name);
                                 String _operator_plus_1 = StringExtensions.operator_plus(_operator_plus, ";");
-                                return _operator_plus_1;
+                                a.append(_operator_plus_1);
                               }
                             };
                           SpecJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, _function);
@@ -413,25 +408,25 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
                 }
               };
             IterableExtensions.<ExampleColumn>forEach(_columns, _function_2);
-            final Function1<ImportManager,String> _function_3 = new Function1<ImportManager,String>() {
-                public String apply(final ImportManager im) {
+            final Procedure1<ITreeAppendable> _function_3 = new Procedure1<ITreeAppendable>() {
+                public void apply(final ITreeAppendable a) {
                   String _newLine = Strings.newLine();
                   Joiner _on = Joiner.on(_newLine);
                   String _join = _on.join(assignments);
-                  return _join;
+                  a.append(_join);
                 }
               };
             SpecJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(constructor, _function_3);
             EList<JvmMember> _members_3 = exampleTableType.getMembers();
             final Procedure1<JvmOperation> _function_4 = new Procedure1<JvmOperation>() {
                 public void apply(final JvmOperation it) {
-                  final Function1<ImportManager,String> _function = new Function1<ImportManager,String>() {
-                      public String apply(final ImportManager im) {
+                  final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
+                      public void apply(final ITreeAppendable a) {
                         List<String> _columnNames = SpecJvmModelInferrer.this.columnNames(element);
                         String _join = IterableExtensions.join(_columnNames, ") , String.valueOf(");
                         String _operator_plus = StringExtensions.operator_plus("return java.util.Arrays.asList(String.valueOf(", _join);
                         String _operator_plus_1 = StringExtensions.operator_plus(_operator_plus, "));");
-                        return _operator_plus_1;
+                        a.append(_operator_plus_1);
                       }
                     };
                   SpecJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, _function);
@@ -446,40 +441,40 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
     return _class;
   }
   
-  public String generateInitializationMethod(final JvmGenericType exampleTableType, final ExampleTable exampleTable) {
-      StringBuilderBasedAppendable _stringBuilderBasedAppendable = new StringBuilderBasedAppendable();
-      final StringBuilderBasedAppendable result = _stringBuilderBasedAppendable;
+  public ITreeAppendable generateInitializationMethod(final JvmGenericType exampleTableType, final ExampleTable exampleTable, final ITreeAppendable appendable) {
+    ITreeAppendable _xblockexpression = null;
+    {
       EList<ExampleRow> _rows = exampleTable.getRows();
       for (final ExampleRow row : _rows) {
         EList<XExpression> _cells = row.getCells();
         for (final XExpression cell : _cells) {
-          this.compiler.toJavaStatement(cell, result, true);
+          this.compiler.toJavaStatement(cell, appendable, true);
         }
       }
       String _fieldName = this._exampleNameProvider.toFieldName(exampleTable);
-      result.append(_fieldName);
+      appendable.append(_fieldName);
       String _fieldName_1 = this._exampleNameProvider.toFieldName(exampleTable);
       String _operator_plus = StringExtensions.operator_plus(" = ExampleTable.create(\"", _fieldName_1);
       String _operator_plus_1 = StringExtensions.operator_plus(_operator_plus, "\", \n");
-      result.append(_operator_plus_1);
+      appendable.append(_operator_plus_1);
       List<String> _columnNames = this.columnNames(exampleTable);
       String _join = IterableExtensions.join(_columnNames, "\", \"");
       String _operator_plus_2 = StringExtensions.operator_plus("  java.util.Arrays.asList(\"", _join);
       String _operator_plus_3 = StringExtensions.operator_plus(_operator_plus_2, "\"), ");
-      result.append(_operator_plus_3);
-      result.increaseIndentation();
-      result.append("\n");
+      appendable.append(_operator_plus_3);
+      appendable.increaseIndentation();
+      appendable.append("\n");
       EList<ExampleRow> _rows_1 = exampleTable.getRows();
       for (final ExampleRow row_1 : _rows_1) {
         {
-          IAppendable _append = result.append("new ");
+          ITreeAppendable _append = appendable.append("new ");
           String _simpleName = exampleTableType.getSimpleName();
-          IAppendable _append_1 = _append.append(_simpleName);
+          ITreeAppendable _append_1 = _append.append(_simpleName);
           _append_1.append("(");
           EList<XExpression> _cells_1 = row_1.getCells();
           final Function1<XExpression,String> _function = new Function1<XExpression,String>() {
               public String apply(final XExpression it) {
-                String _serialize = SpecJvmModelInferrer.this._iSerializer.serialize(it);
+                String _serialize = SpecJvmModelInferrer.this.serialize(it);
                 String _trim = _serialize.trim();
                 String _convertToJavaString = Strings.convertToJavaString(_trim);
                 return _convertToJavaString;
@@ -489,32 +484,33 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
           String _join_1 = IterableExtensions.join(_map, "\", \"");
           String _operator_plus_4 = StringExtensions.operator_plus("  java.util.Arrays.asList(\"", _join_1);
           String _operator_plus_5 = StringExtensions.operator_plus(_operator_plus_4, "\"), ");
-          result.append(_operator_plus_5);
+          appendable.append(_operator_plus_5);
           EList<XExpression> _cells_2 = row_1.getCells();
           for (final XExpression cell_1 : _cells_2) {
             {
-              this.compiler.toJavaExpression(cell_1, result);
+              this.compiler.toJavaExpression(cell_1, appendable);
               EList<XExpression> _cells_3 = row_1.getCells();
               XExpression _last = IterableExtensions.<XExpression>last(_cells_3);
               boolean _operator_notEquals = ObjectExtensions.operator_notEquals(_last, cell_1);
               if (_operator_notEquals) {
-                result.append(", ");
+                appendable.append(", ");
               }
             }
           }
-          result.append(")");
+          appendable.append(")");
           EList<ExampleRow> _rows_2 = exampleTable.getRows();
           ExampleRow _last_1 = IterableExtensions.<ExampleRow>last(_rows_2);
           boolean _operator_notEquals_1 = ObjectExtensions.operator_notEquals(_last_1, row_1);
           if (_operator_notEquals_1) {
-            result.append(",\n");
+            appendable.append(",\n");
           }
         }
       }
-      result.decreaseIndentation();
-      result.append("\n);");
-      String _string = result.toString();
-      return _string;
+      appendable.decreaseIndentation();
+      ITreeAppendable _append_2 = appendable.append("\n);");
+      _xblockexpression = (_append_2);
+    }
+    return _xblockexpression;
   }
   
   public List<String> columnNames(final ExampleTable exampleTable) {
@@ -527,5 +523,11 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
       };
     List<String> _map = ListExtensions.<ExampleColumn, String>map(_columns, _function);
     return _map;
+  }
+  
+  public String serialize(final EObject obj) {
+    ICompositeNode _node = NodeModelUtils.getNode(obj);
+    String _text = _node==null?(String)null:_node.getText();
+    return _text;
   }
 }

@@ -10,6 +10,16 @@
  */
 package org.jnario.spec;
 
+import org.eclipse.xtend.core.featurecalls.XtendIdentifiableSimpleNameProvider;
+import org.eclipse.xtend.core.jvmmodel.DispatchUtil;
+import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
+import org.eclipse.xtend.core.naming.XtendQualifiedNameProvider;
+import org.eclipse.xtend.core.resource.XtendEObjectAtOffsetHelper;
+import org.eclipse.xtend.core.resource.XtendResource;
+import org.eclipse.xtend.core.resource.XtendResourceDescriptionStrategy;
+import org.eclipse.xtend.core.scoping.XtendImportedNamespaceScopeProvider;
+import org.eclipse.xtend.core.validation.ClasspathBasedChecks;
+import org.eclipse.xtend.core.validation.XtendEarlyExitValidator;
 import org.eclipse.xtext.conversion.IValueConverterService;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.OutputConfigurationProvider;
@@ -19,6 +29,7 @@ import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
+import org.eclipse.xtext.serializer.sequencer.IContextFinder;
 import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
 import org.eclipse.xtext.xbase.featurecalls.IdentifiableSimpleNameProvider;
@@ -29,24 +40,11 @@ import org.eclipse.xtext.xbase.scoping.featurecalls.StaticImplicitMethodsFeature
 import org.eclipse.xtext.xbase.typing.ITypeArgumentContextHelper;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.eclipse.xtext.xbase.validation.EarlyExitValidator;
-import org.eclipse.xtext.xtend2.featurecalls.Xtend2IdentifiableSimpleNameProvider;
-import org.eclipse.xtext.xtend2.jvmmodel.DispatchUtil;
-import org.eclipse.xtext.xtend2.jvmmodel.IXtend2JvmAssociations;
-import org.eclipse.xtext.xtend2.naming.Xtend2QualifiedNameProvider;
-import org.eclipse.xtext.xtend2.resource.Xtend2Resource;
-import org.eclipse.xtext.xtend2.resource.Xtend2ResourceDescriptionStrategy;
-import org.eclipse.xtext.xtend2.resource.XtendEObjectAtOffsetHelper;
-import org.eclipse.xtext.xtend2.scoping.Xtend2ImportedNamespaceScopeProvider;
-import org.eclipse.xtext.xtend2.validation.ClasspathBasedChecks;
-import org.eclipse.xtext.xtend2.validation.XtendEarlyExitValidator;
-
-import com.google.inject.Binder;
-import com.google.inject.name.Names;
-
 import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.jvmmodel.JnarioDispatchUtil;
 import org.jnario.scoping.JnarioExtensionClassNameProvider;
+import org.jnario.serializer.JnarioContextFinder;
 import org.jnario.spec.compiler.SpecCompiler;
 import org.jnario.spec.conversion.SpecValueConverterService;
 import org.jnario.spec.doc.DocOutputConfigurationProvider;
@@ -55,6 +53,9 @@ import org.jnario.spec.jvmmodel.SpecJvmModelInferrer;
 import org.jnario.spec.scoping.SpecScopeProvider;
 import org.jnario.spec.typing.SpecTypeProvider;
 import org.jnario.spec.validation.SpecClassPathBasedChecks;
+
+import com.google.inject.Binder;
+import com.google.inject.name.Names;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -96,7 +97,7 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 	
 	@Override
 	public Class<? extends XtextResource> bindXtextResource() {
-		return Xtend2Resource.class;
+		return XtendResource.class;
 	}
 	
 	@Override
@@ -107,12 +108,12 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 	@Override
 	public void configureIScopeProviderDelegate(Binder binder) {
 		binder.bind(IScopeProvider.class).annotatedWith(Names.named(AbstractDeclarativeScopeProvider.NAMED_DELEGATE))
-		.to(Xtend2ImportedNamespaceScopeProvider.class);
+		.to(XtendImportedNamespaceScopeProvider.class);
 	}
 
 	@Override
 	public Class<? extends IdentifiableSimpleNameProvider> bindIdentifiableSimpleNameProvider() {
-		return Xtend2IdentifiableSimpleNameProvider.class;
+		return XtendIdentifiableSimpleNameProvider.class;
 	}
 
 	public Class<? extends IJvmModelInferrer> bindIJvmModelInferrer() {
@@ -121,22 +122,21 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 
 	@Override
 	public Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider() {
-		return Xtend2QualifiedNameProvider.class;
+		return XtendQualifiedNameProvider.class;
 	}
 	
 	public Class <? extends IDefaultResourceDescriptionStrategy> bindIDefaultResourceDescriptionStrategy() {
-		return Xtend2ResourceDescriptionStrategy.class;
+		return XtendResourceDescriptionStrategy.class;
 	}
 
 	public Class<? extends JvmModelAssociator> bindJvmModelAssociator() {
-		return IXtend2JvmAssociations.Impl.class;
+		return IXtendJvmAssociations.Impl.class;
 	}
 
 	public Class<? extends EarlyExitValidator> bindEarlyExitValidator() {
 		return XtendEarlyExitValidator.class;
 	}
 	
-	@Override
 	public Class<? extends EObjectAtOffsetHelper> bindEObjectAtOffsetHelper() {
 		return XtendEObjectAtOffsetHelper.class;
 	}
@@ -145,10 +145,9 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 		return DocOutputConfigurationProvider.class;
 	}
 	
-	public Class<? extends XbaseCompiler> bindXbaseCompiler(){
-		return SpecCompiler.class;
+	public Class<? extends XbaseCompiler> bindXbaseCompiler() {
+		return SpecCompiler.class; 
 	}
-	
 	
 	@Override
 	public Class<? extends IGenerator> bindIGenerator() {
@@ -158,4 +157,9 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 	public Class<? extends ClasspathBasedChecks> bindClassPathBasedChecks(){
 		return SpecClassPathBasedChecks.class;
 	}
+	
+	public Class<? extends IContextFinder> bindContextFinder(){
+		return JnarioContextFinder.class;
+	}
+
 }

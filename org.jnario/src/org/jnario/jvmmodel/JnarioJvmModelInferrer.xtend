@@ -7,32 +7,33 @@
  *******************************************************************************/
 package org.jnario.jvmmodel
 
-import static com.google.common.base.Predicates.*
-import static extension com.google.common.collect.Iterables.*
-
+import com.google.common.collect.Iterables
+import com.google.common.collect.Lists
 import com.google.inject.Inject
-import org.jnario.ExampleColumn
-import org.jnario.ExampleRow
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtend.core.jvmmodel.XtendJvmModelInferrer
 import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.common.types.util.TypeConformanceComputer
 import org.eclipse.xtext.common.types.util.TypeReferences
-import org.eclipse.xtext.xbase.XExpression
-import org.eclipse.xtext.xbase.compiler.StringBuilderBasedAppendable
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler
+import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable
+import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.eclipse.xtext.xbase.typing.ITypeProvider
-import org.eclipse.xtext.xtend2.jvmmodel.Xtend2JvmModelInferrer
-import com.google.common.collect.Iterables
-import com.google.common.collect.Lists
+import org.jnario.ExampleColumn
+import org.jnario.ExampleRow
 import org.jnario.runner.Named
-import org.eclipse.emf.ecore.EObject
+
+import static com.google.common.base.Predicates.*
+
+import static extension com.google.common.collect.Iterables.*
 
 /**
  * @author Birgit Engelmann
  * @author Sebastian Benz
  */
-class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
-
+class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
+ 
 	@Inject public XbaseCompiler compiler
 	@Inject extension ITypeProvider
 	@Inject extension TypeConformanceComputer
@@ -75,24 +76,15 @@ class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
 		return column.type
 	}
 	
-	def cellToAppendable(ExampleRow row, int i){
-		var appendable = new StringBuilderBasedAppendable()
+	def cellToAppendable(ExampleRow row, int i, ITreeAppendable appendable){
 		if(row.getCells.size > i){
 			compiler.toJavaExpression(row.getCells.get(i), appendable)
 		}
 		appendable
 	}
-	
-	def toJavaExpression(XExpression expr){
-		var appendable = new StringBuilderBasedAppendable()
-		compiler.toJavaExpression(expr, appendable)
-		appendable
-	}
-	
-	def toJavaStatement(XExpression expr, boolean isReferenced){
-		var appendable = new StringBuilderBasedAppendable()
-		compiler.toJavaStatement(expr, appendable, isReferenced)
-		appendable
-	}
 
+	override infer(EObject e, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
+		throw new UnsupportedOperationException("Auto-generated function stub")
+	}
+	
 }

@@ -9,14 +9,14 @@ package org.jnario.feature.naming;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.naming.QualifiedName;
-import org.eclipse.xtext.xtend2.naming.Xtend2QualifiedNameProvider;
+import org.eclipse.xtend.core.naming.XtendQualifiedNameProvider;
 
 import org.jnario.feature.feature.Step;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
-public class FeatureQualifiedNameProvider extends Xtend2QualifiedNameProvider {
+public class FeatureQualifiedNameProvider extends XtendQualifiedNameProvider {
 	
 	@Override
 	public QualifiedName getFullyQualifiedName(EObject obj) {

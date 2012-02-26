@@ -30,7 +30,7 @@ import org.eclipse.xtext.xbase.ui.editor.XbaseEditor;
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
-public class JnarioEditor extends XbaseEditor {
+public class FeatureEditor extends XbaseEditor {
 
 	private static final RGB NONE_CODE_COLOR = new RGB(245, 245, 245);
 	

@@ -11,7 +11,7 @@ import static com.google.common.base.Strings.isNullOrEmpty;
 
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.ComposedChecks;
-import org.eclipse.xtext.xtend2.xtend2.XtendField;
+import org.eclipse.xtend.core.xtend.XtendField;
 import org.jnario.ExampleColumn;
 import org.jnario.spec.naming.ExampleNameProvider;
 import org.jnario.spec.spec.SpecPackage;

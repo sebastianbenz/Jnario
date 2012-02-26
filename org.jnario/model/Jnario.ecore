@@ -3,7 +3,7 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="jnario"
     nsURI="http://www.org/Jnario" nsPrefix="jnario">
-  <eClassifiers xsi:type="ecore:EClass" name="ExampleTable" eSuperTypes="../../org.eclipse.xtext.xtend2/model/Xtend2.ecore#//XtendMember">
+  <eClassifiers xsi:type="ecore:EClass" name="ExampleTable" eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendMember">
     <eOperations name="isValid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rows" upperBound="-1" eType="#//ExampleRow"
@@ -26,7 +26,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="closure" eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ExampleColumn" eSuperTypes="../../org.eclipse.xtext.xtend2/model/Xtend2.ecore#//XtendField">
+  <eClassifiers xsi:type="ecore:EClass" name="ExampleColumn" eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendField">
     <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="#//ExampleTable"
         eOpposite="#//ExampleTable/columns"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="cells" upperBound="-1"

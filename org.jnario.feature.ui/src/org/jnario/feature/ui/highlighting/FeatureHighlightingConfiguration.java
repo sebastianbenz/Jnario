@@ -15,7 +15,7 @@ import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfigurationAcceptor;
 import org.eclipse.xtext.ui.editor.utils.TextStyle;
-import org.eclipse.xtext.xtend2.ui.highlighting.XtendHighlightingConfiguration;
+import org.eclipse.xtend.ide.highlighting.XtendHighlightingConfiguration;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API

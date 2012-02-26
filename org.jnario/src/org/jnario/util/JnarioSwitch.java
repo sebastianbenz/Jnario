@@ -13,9 +13,9 @@ import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.xtext.xbase.XExpression;
 
-import org.eclipse.xtext.xtend2.xtend2.XtendAnnotationTarget;
-import org.eclipse.xtext.xtend2.xtend2.XtendField;
-import org.eclipse.xtext.xtend2.xtend2.XtendMember;
+import org.eclipse.xtend.core.xtend.XtendAnnotationTarget;
+import org.eclipse.xtend.core.xtend.XtendField;
+import org.eclipse.xtend.core.xtend.XtendMember;
 
 import org.jnario.*;
 

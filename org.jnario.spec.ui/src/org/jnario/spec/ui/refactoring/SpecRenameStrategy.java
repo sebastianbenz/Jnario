@@ -11,13 +11,13 @@
 */
 package org.jnario.spec.ui.refactoring;
 
-import org.eclipse.xtext.xtend2.ui.refactoring.Xtend2RenameStrategy;
+import org.eclipse.xtend.ide.refactoring.XtendRenameStrategy;
 
 
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
-public class SpecRenameStrategy extends Xtend2RenameStrategy {
+public class SpecRenameStrategy extends XtendRenameStrategy {
 
 }

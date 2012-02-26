@@ -20,7 +20,7 @@ import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.scoping.IScope;
-import org.eclipse.xtext.xtend2.scoping.Xtend2ScopeProvider;
+import org.eclipse.xtend.core.scoping.XtendScopeProvider;
 
 import com.google.common.base.Function;
 import com.google.inject.Inject;
@@ -32,7 +32,7 @@ import org.jnario.spec.spec.SpecPackage;
  * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
-public class SpecScopeProvider extends Xtend2ScopeProvider {
+public class SpecScopeProvider extends XtendScopeProvider {
 	
 	@Inject
 	private OperationNameProvider operationNameProvider;

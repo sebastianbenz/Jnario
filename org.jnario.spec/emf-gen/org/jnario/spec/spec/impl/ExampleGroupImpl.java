@@ -1,10 +1,6 @@
-/*******************************************************************************
- * Copyright (c) 2012 BMW Car IT and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
+/**
+ * Copyright (c) 2012 BMW Car IT and others. All rights reserved. This program and the accompanying materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.spec.spec.impl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -15,14 +11,14 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.xtend.core.xtend.XtendAnnotationTarget;
+import org.eclipse.xtend.core.xtend.XtendMember;
+import org.eclipse.xtend.core.xtend.XtendPackage;
+
+import org.eclipse.xtend.core.xtend.impl.XtendClassImplCustom;
+
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmTypeReference;
-
-import org.eclipse.xtext.xtend2.xtend2.Xtend2Package;
-import org.eclipse.xtext.xtend2.xtend2.XtendAnnotationTarget;
-import org.eclipse.xtext.xtend2.xtend2.XtendMember;
-
-import org.eclipse.xtext.xtend2.xtend2.impl.XtendClassImplCustom;
 
 import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.spec.spec.SpecPackage;
@@ -405,7 +401,7 @@ public class ExampleGroupImpl extends XtendClassImplCustom implements ExampleGro
 		{
 			switch (derivedFeatureID)
 			{
-				case SpecPackage.EXAMPLE_GROUP__ANNOTATION_INFO: return Xtend2Package.XTEND_MEMBER__ANNOTATION_INFO;
+				case SpecPackage.EXAMPLE_GROUP__ANNOTATION_INFO: return XtendPackage.XTEND_MEMBER__ANNOTATION_INFO;
 				default: return -1;
 			}
 		}
@@ -424,7 +420,7 @@ public class ExampleGroupImpl extends XtendClassImplCustom implements ExampleGro
 		{
 			switch (baseFeatureID)
 			{
-				case Xtend2Package.XTEND_MEMBER__ANNOTATION_INFO: return SpecPackage.EXAMPLE_GROUP__ANNOTATION_INFO;
+				case XtendPackage.XTEND_MEMBER__ANNOTATION_INFO: return SpecPackage.EXAMPLE_GROUP__ANNOTATION_INFO;
 				default: return -1;
 			}
 		}

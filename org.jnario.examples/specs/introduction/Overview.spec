@@ -28,7 +28,7 @@ import static extension org.jnario.jnario.test.util.SpecExecutor.*
  */ 
 describe "Jnario Specs - BDD for Java"{
  
-  /*
+  /* 
    * Jnario improves the readability of tests by providing assertion methods which can extend 
    * any object (making use of Xtend's [extension methods](http://www.eclipse.org/xtend/#extensionmethods)).
    * These assertions help you express how an object should behave. They can be combined with any 

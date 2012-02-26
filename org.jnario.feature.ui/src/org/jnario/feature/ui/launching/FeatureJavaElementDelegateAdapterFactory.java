@@ -10,8 +10,8 @@ package org.jnario.feature.ui.launching;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
-import org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegate;
-import org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegateAdapterFactory;
+import org.eclipse.xtend.ide.launching.JavaElementDelegate;
+import org.eclipse.xtend.ide.launching.JavaElementDelegateAdapterFactory;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;

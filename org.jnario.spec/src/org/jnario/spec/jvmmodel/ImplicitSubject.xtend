@@ -19,13 +19,14 @@ import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.xbase.XFeatureCall
 import org.eclipse.xtext.xbase.XMemberFeatureCall
-import org.eclipse.xtext.xtend2.xtend2.XtendFunction
+import org.eclipse.xtend.core.xtend.XtendFunction
 
 import static org.jnario.spec.jvmmodel.Constants.*
 import static org.eclipse.xtext.EcoreUtil2.*
 
 import static extension com.google.common.collect.Iterables.*
 import static extension com.google.common.collect.Iterators.*
+
 
 
 /**
@@ -72,20 +73,15 @@ class ImplicitSubject {
 	}
 	
 	def neverUsesSubject(ExampleGroup exampleGroup){
-		var Iterator<XMemberFeatureCall> allFeatureCalls = emptyIterator
+		var Iterator<XFeatureCall> allFeatureCalls = emptyIterator
 		val members = exampleGroup.members
 		for(example : members.filter(typeof(XtendFunction))){
-			allFeatureCalls = concat(allFeatureCalls, example.eAllContents.filter(typeof(XMemberFeatureCall)))
+			allFeatureCalls = concat(allFeatureCalls, example.eAllContents.filter(typeof(XFeatureCall)))
 		}
 		for(example : members.filter(typeof(TestFunction))){
-			allFeatureCalls = concat(allFeatureCalls, example.eAllContents.filter(typeof(XMemberFeatureCall)))
+			allFeatureCalls = concat(allFeatureCalls, example.eAllContents.filter(typeof(XFeatureCall)))
 		}
-		return null == allFeatureCalls.findFirst(XMemberFeatureCall call| {
-			if(call.memberCallTarget == null) return false
-			if(!(call.memberCallTarget instanceof XFeatureCall)) return false
-			val featureCall = call.memberCallTarget as XFeatureCall
-			return featureCall.concreteSyntaxFeatureName == SUBJECT_FIELD_NAME
-		})
+		return null == allFeatureCalls.findFirst[it.concreteSyntaxFeatureName == SUBJECT_FIELD_NAME]
 	}
 	
 }

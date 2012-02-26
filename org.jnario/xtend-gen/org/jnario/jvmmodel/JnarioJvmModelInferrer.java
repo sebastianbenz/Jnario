@@ -9,6 +9,7 @@ import com.google.inject.Inject;
 import java.util.ArrayList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtend.core.jvmmodel.XtendJvmModelInferrer;
 import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
@@ -16,8 +17,9 @@ import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.common.types.util.TypeConformanceComputer;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.xbase.XExpression;
-import org.eclipse.xtext.xbase.compiler.StringBuilderBasedAppendable;
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
+import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
+import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
@@ -25,7 +27,6 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
-import org.eclipse.xtext.xtend2.jvmmodel.Xtend2JvmModelInferrer;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.jvmmodel.JunitAnnotationProvider;
@@ -35,7 +36,7 @@ import org.jnario.jvmmodel.JunitAnnotationProvider;
  * @author Sebastian Benz
  */
 @SuppressWarnings("all")
-public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
+public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
   @Inject
   public XbaseCompiler compiler;
   
@@ -107,8 +108,8 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
                 }
               };
             Iterable<JvmTypeReference> _transform = Iterables.<XExpression, JvmTypeReference>transform(_cells_1, new Function<XExpression,JvmTypeReference>() {
-                public JvmTypeReference apply(XExpression input) {
-                  return _function.apply(input);
+                public JvmTypeReference apply(XExpression arg0) {
+                  return _function.apply(arg0);
                 }
             });
             Iterable<JvmTypeReference> cellTypes = _transform;
@@ -132,11 +133,9 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
       return _type_3;
   }
   
-  public StringBuilderBasedAppendable cellToAppendable(final ExampleRow row, final int i) {
-    StringBuilderBasedAppendable _xblockexpression = null;
+  public ITreeAppendable cellToAppendable(final ExampleRow row, final int i, final ITreeAppendable appendable) {
+    ITreeAppendable _xblockexpression = null;
     {
-      StringBuilderBasedAppendable _stringBuilderBasedAppendable = new StringBuilderBasedAppendable();
-      StringBuilderBasedAppendable appendable = _stringBuilderBasedAppendable;
       EList<XExpression> _cells = row.getCells();
       int _size = _cells.size();
       boolean _operator_greaterThan = IntegerExtensions.operator_greaterThan(_size, i);
@@ -150,25 +149,8 @@ public class JnarioJvmModelInferrer extends Xtend2JvmModelInferrer {
     return _xblockexpression;
   }
   
-  public StringBuilderBasedAppendable toJavaExpression(final XExpression expr) {
-    StringBuilderBasedAppendable _xblockexpression = null;
-    {
-      StringBuilderBasedAppendable _stringBuilderBasedAppendable = new StringBuilderBasedAppendable();
-      StringBuilderBasedAppendable appendable = _stringBuilderBasedAppendable;
-      this.compiler.toJavaExpression(expr, appendable);
-      _xblockexpression = (appendable);
-    }
-    return _xblockexpression;
-  }
-  
-  public StringBuilderBasedAppendable toJavaStatement(final XExpression expr, final boolean isReferenced) {
-    StringBuilderBasedAppendable _xblockexpression = null;
-    {
-      StringBuilderBasedAppendable _stringBuilderBasedAppendable = new StringBuilderBasedAppendable();
-      StringBuilderBasedAppendable appendable = _stringBuilderBasedAppendable;
-      this.compiler.toJavaStatement(expr, appendable, isReferenced);
-      _xblockexpression = (appendable);
-    }
-    return _xblockexpression;
+  public void infer(final EObject e, final IJvmDeclaredTypeAcceptor acceptor, final boolean preIndexingPhase) {
+    UnsupportedOperationException _unsupportedOperationException = new UnsupportedOperationException("Auto-generated function stub");
+    throw _unsupportedOperationException;
   }
 }

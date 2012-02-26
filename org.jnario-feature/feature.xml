@@ -32,13 +32,13 @@ http://www.eclipse.org/legal/epl-v10.html Description here.
       <import plugin="org.eclipse.xtext.common.types"/>
       <import plugin="org.eclipse.xtext.xbase" version="2.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.xbase.lib"/>
-      <import plugin="org.eclipse.xtext.xtend2.lib"/>
+      <import plugin="org.eclipse.xtend.core.lib"/>
       <import plugin="org.junit" version="4.8.2" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtext.xtend2" version="2.1.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtend.core" version="2.1.0" match="greaterOrEqual"/>
       <import plugin="org.apache.commons.logging"/>
       <import plugin="org.eclipse.xtext" version="2.1.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.xbase.lib" version="2.1.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtend2.lib" version="2.2.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtend.lib" version="2.2.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.xbase" version="2.1.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.ui" version="2.1.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.jdt.core"/>

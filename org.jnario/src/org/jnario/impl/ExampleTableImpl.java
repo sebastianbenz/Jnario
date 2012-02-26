@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.eclipse.xtext.xtend2.xtend2.impl.XtendMemberImpl;
+import org.eclipse.xtend.core.xtend.impl.XtendMemberImpl;
 
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;

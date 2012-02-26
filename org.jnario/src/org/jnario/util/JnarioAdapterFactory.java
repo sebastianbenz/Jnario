@@ -15,9 +15,9 @@ import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.xtext.xbase.XExpression;
 
-import org.eclipse.xtext.xtend2.xtend2.XtendAnnotationTarget;
-import org.eclipse.xtext.xtend2.xtend2.XtendField;
-import org.eclipse.xtext.xtend2.xtend2.XtendMember;
+import org.eclipse.xtend.core.xtend.XtendAnnotationTarget;
+import org.eclipse.xtend.core.xtend.XtendField;
+import org.eclipse.xtend.core.xtend.XtendMember;
 
 import org.jnario.*;
 
@@ -204,13 +204,13 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.xtext.xtend2.xtend2.XtendAnnotationTarget <em>Xtend Annotation Target</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.xtend.core.xtend.XtendAnnotationTarget <em>Xtend Annotation Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.xtext.xtend2.xtend2.XtendAnnotationTarget
+	 * @see org.eclipse.xtend.core.xtend.XtendAnnotationTarget
 	 * @generated
 	 */
 	public Adapter createXtendAnnotationTargetAdapter() {
@@ -218,13 +218,13 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.xtext.xtend2.xtend2.XtendMember <em>Xtend Member</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.xtend.core.xtend.XtendMember <em>Xtend Member</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.xtext.xtend2.xtend2.XtendMember
+	 * @see org.eclipse.xtend.core.xtend.XtendMember
 	 * @generated
 	 */
 	public Adapter createXtendMemberAdapter() {
@@ -246,13 +246,13 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.xtext.xtend2.xtend2.XtendField <em>Xtend Field</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.xtend.core.xtend.XtendField <em>Xtend Field</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.xtext.xtend2.xtend2.XtendField
+	 * @see org.eclipse.xtend.core.xtend.XtendField
 	 * @generated
 	 */
 	public Adapter createXtendFieldAdapter() {

@@ -17,10 +17,10 @@ import org.eclipse.xtext.resource.ClasspathUriUtil;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.EValidatorRegistrar;
 import org.eclipse.xtext.validation.ValidationMessageAcceptor;
-import org.eclipse.xtext.xtend2.validation.ClasspathBasedChecks;
-import org.eclipse.xtext.xtend2.validation.IssueCodes;
-import org.eclipse.xtext.xtend2.xtend2.Xtend2Package.Literals;
-import org.eclipse.xtext.xtend2.xtend2.XtendFile;
+import org.eclipse.xtend.core.validation.ClasspathBasedChecks;
+import org.eclipse.xtend.core.validation.IssueCodes;
+import org.eclipse.xtend.core.xtend.XtendPackage.Literals;
+import org.eclipse.xtend.core.xtend.XtendFile;
 @SuppressWarnings("restriction")
 public class SpecClassPathBasedChecks extends ClasspathBasedChecks{
 

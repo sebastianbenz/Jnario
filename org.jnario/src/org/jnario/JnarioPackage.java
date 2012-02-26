@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.xtext.xbase.XbasePackage;
 
-import org.eclipse.xtext.xtend2.xtend2.Xtend2Package;
+import org.eclipse.xtend.core.xtend.XtendPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -81,7 +81,7 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_TABLE__ANNOTATIONS = Xtend2Package.XTEND_MEMBER__ANNOTATIONS;
+	int EXAMPLE_TABLE__ANNOTATIONS = XtendPackage.XTEND_MEMBER__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
@@ -90,7 +90,7 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_TABLE__ANNOTATION_INFO = Xtend2Package.XTEND_MEMBER__ANNOTATION_INFO;
+	int EXAMPLE_TABLE__ANNOTATION_INFO = XtendPackage.XTEND_MEMBER__ANNOTATION_INFO;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -99,7 +99,7 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_TABLE__NAME = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 0;
+	int EXAMPLE_TABLE__NAME = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Rows</b></em>' containment reference list.
@@ -108,7 +108,7 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_TABLE__ROWS = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 1;
+	int EXAMPLE_TABLE__ROWS = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Columns</b></em>' containment reference list.
@@ -117,7 +117,7 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_TABLE__COLUMNS = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 2;
+	int EXAMPLE_TABLE__COLUMNS = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Example Table</em>' class.
@@ -126,7 +126,7 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_TABLE_FEATURE_COUNT = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 3;
+	int EXAMPLE_TABLE_FEATURE_COUNT = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.impl.ExampleRowImpl <em>Example Row</em>}' class.
@@ -238,7 +238,7 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_COLUMN__ANNOTATIONS = Xtend2Package.XTEND_FIELD__ANNOTATIONS;
+	int EXAMPLE_COLUMN__ANNOTATIONS = XtendPackage.XTEND_FIELD__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
@@ -247,7 +247,7 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_COLUMN__ANNOTATION_INFO = Xtend2Package.XTEND_FIELD__ANNOTATION_INFO;
+	int EXAMPLE_COLUMN__ANNOTATION_INFO = XtendPackage.XTEND_FIELD__ANNOTATION_INFO;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -256,7 +256,7 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_COLUMN__NAME = Xtend2Package.XTEND_FIELD__NAME;
+	int EXAMPLE_COLUMN__NAME = XtendPackage.XTEND_FIELD__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -265,7 +265,7 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_COLUMN__TYPE = Xtend2Package.XTEND_FIELD__TYPE;
+	int EXAMPLE_COLUMN__TYPE = XtendPackage.XTEND_FIELD__TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Extension</b></em>' attribute.
@@ -274,7 +274,7 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_COLUMN__EXTENSION = Xtend2Package.XTEND_FIELD__EXTENSION;
+	int EXAMPLE_COLUMN__EXTENSION = XtendPackage.XTEND_FIELD__EXTENSION;
 
 	/**
 	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
@@ -283,7 +283,7 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_COLUMN__VISIBILITY = Xtend2Package.XTEND_FIELD__VISIBILITY;
+	int EXAMPLE_COLUMN__VISIBILITY = XtendPackage.XTEND_FIELD__VISIBILITY;
 
 	/**
 	 * The feature id for the '<em><b>Static</b></em>' attribute.
@@ -292,7 +292,7 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_COLUMN__STATIC = Xtend2Package.XTEND_FIELD__STATIC;
+	int EXAMPLE_COLUMN__STATIC = XtendPackage.XTEND_FIELD__STATIC;
 
 	/**
 	 * The feature id for the '<em><b>Initial Value</b></em>' containment reference.
@@ -301,7 +301,7 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_COLUMN__INITIAL_VALUE = Xtend2Package.XTEND_FIELD__INITIAL_VALUE;
+	int EXAMPLE_COLUMN__INITIAL_VALUE = XtendPackage.XTEND_FIELD__INITIAL_VALUE;
 
 	/**
 	 * The feature id for the '<em><b>Table</b></em>' container reference.
@@ -310,7 +310,7 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_COLUMN__TABLE = Xtend2Package.XTEND_FIELD_FEATURE_COUNT + 0;
+	int EXAMPLE_COLUMN__TABLE = XtendPackage.XTEND_FIELD_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Cells</b></em>' reference list.
@@ -319,7 +319,7 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_COLUMN__CELLS = Xtend2Package.XTEND_FIELD_FEATURE_COUNT + 1;
+	int EXAMPLE_COLUMN__CELLS = XtendPackage.XTEND_FIELD_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Example Column</em>' class.
@@ -328,7 +328,7 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_COLUMN_FEATURE_COUNT = Xtend2Package.XTEND_FIELD_FEATURE_COUNT + 2;
+	int EXAMPLE_COLUMN_FEATURE_COUNT = XtendPackage.XTEND_FIELD_FEATURE_COUNT + 2;
 
 
 	/**

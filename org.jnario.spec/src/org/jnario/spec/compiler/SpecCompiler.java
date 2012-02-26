@@ -1,4 +1,5 @@
 /*******************************************************************************
+
  * Copyright (c) 2012 BMW Car IT and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -7,34 +8,35 @@
  *******************************************************************************/
 package org.jnario.spec.compiler;
 
+import static com.google.common.collect.Iterables.filter;
 import static com.google.common.collect.Sets.newHashSet;
+import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.getNode;
 import static org.eclipse.xtext.util.Strings.convertToJavaString;
 
 import java.util.Iterator;
 import java.util.Set;
 
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtend.core.compiler.XtendCompiler;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.ISerializer;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XBinaryOperation;
-import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
-import org.eclipse.xtext.xbase.compiler.IAppendable;
+import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.util.XExpressionHelper;
-import org.eclipse.xtext.xtend2.compiler.Xtend2Compiler;
 import org.jnario.Assertion;
 import org.jnario.Matcher;
 
-import com.google.common.collect.Iterables;
+import com.google.common.base.Predicate;
 import com.google.inject.Inject;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
-public class SpecCompiler extends Xtend2Compiler {
+public class SpecCompiler extends XtendCompiler {
 
 	@Inject
 	private ISerializer serializer;
@@ -42,7 +44,29 @@ public class SpecCompiler extends Xtend2Compiler {
 	@Inject
 	private XExpressionHelper expressionHelper; 
 
-	public void _toJavaExpression(Matcher matcher, IAppendable b) {
+	@Override
+	public void internalToConvertedExpression(XExpression obj, ITreeAppendable appendable) {
+		if (obj instanceof Matcher) {
+			_toJavaExpression((Matcher) obj, appendable);
+		} else if (obj instanceof Assertion) {
+			_toJavaExpression((Assertion) obj, appendable);
+		} else {
+			super.internalToConvertedExpression(obj, appendable);
+		}
+	}
+	
+	@Override
+	public void doInternalToJavaStatement(XExpression obj,
+			ITreeAppendable appendable, boolean isReferenced) {
+		if (obj instanceof Assertion){
+			_toJavaStatement((Assertion)obj, appendable, isReferenced);
+		}else if (obj instanceof Matcher){
+			_toJavaStatement((Matcher)obj, appendable, isReferenced);
+		}else
+			super.doInternalToJavaStatement(obj, appendable, isReferenced); 
+	}
+	
+	public void _toJavaExpression(Matcher matcher, ITreeAppendable b) {
 		if (matcher.getClosure() == null){
 			return;
 		}
@@ -54,46 +78,38 @@ public class SpecCompiler extends Xtend2Compiler {
 		b.append(")");
 	}
 	
-	public void _toJavaStatement(Matcher matcher, IAppendable b, boolean isReferenced) {
+	public void _toJavaStatement(Matcher matcher, ITreeAppendable b, boolean isReferenced) {
 		if (matcher.getClosure() == null){
 			return;
 		}
 		toJavaStatement(matcher.getClosure(), b, isReferenced);
 	}
 	
-	private void describe(Matcher matcher, IAppendable b) {
+	private void describe(Matcher matcher, ITreeAppendable b) {
 		b.append(serialize(matcher.getClosure()));
 	}
 
-	public void _toJavaStatement(Assertion assertion, IAppendable b, boolean isReferenced) {
+	public void _toJavaStatement(Assertion assertion, ITreeAppendable b, boolean isReferenced) {
 		if (assertion.getExpression() == null){
 			return;
 		}
-		if (assertion.getExpression() instanceof XBlockExpression) {
-			XBlockExpression blockExpression = (XBlockExpression) assertion.getExpression();
-			generateMultiAssertions(blockExpression.getExpressions(), b);
-		}else{
-			generateSingleAssertion(assertion.getExpression(), b);
-		}
+		generateSingleAssertion(assertion.getExpression(), b);
 	}
 	
+	public void _toJavaExpression(Assertion assertion, ITreeAppendable b) {
+		b.append("null");
+	}
 	
-	private void generateSingleAssertion(XExpression expr, IAppendable b) {
-		internalToJavaStatement(expr, b, true);
+	private void generateSingleAssertion(XExpression expr, ITreeAppendable b) {
+		toJavaStatement(expr, b, true);
 		b.append("\norg.junit.Assert.assertTrue(");
 		generateMessageFor(expr, b);
 		b.append(" + \"" + convertToJavaString("\n") + "\", ");
-		internalToJavaExpression(expr, b);
+		toJavaExpression(expr, b);
 		b.append(");\n");
 	}
 
-	private void generateMultiAssertions(EList<XExpression> expressions, IAppendable b) {
-		for (XExpression expr : expressions) {
-			generateSingleAssertion(expr, b);
-		}
-	}
-
-	public void generateMessageFor(XExpression expression, IAppendable b) {
+	public void generateMessageFor(XExpression expression, ITreeAppendable b) {
 		b.append("\"\\nExpected ");
 		b.append(serialize(expression));
 		b.append(" but:\"");
@@ -101,7 +117,8 @@ public class SpecCompiler extends Xtend2Compiler {
 		Iterator<XExpression> subExpressions = allSubExpressions(expression);
 		if(subExpressions.hasNext()){
 			while(subExpressions.hasNext()){
-				appendActualValues(subExpressions.next(), b, valueExpressions);
+				XExpression subExpression = subExpressions.next();
+				appendActualValues(subExpression, b, valueExpressions);
 			}
 		}else{
 			toLiteralValue(expression, b, valueExpressions);
@@ -109,7 +126,11 @@ public class SpecCompiler extends Xtend2Compiler {
 	}
 
 	protected String serialize(XExpression expression) {
-		String result = serializer.serialize(expression);
+		INode node = getNode(expression);
+		if(node == null){
+			return "";
+		}
+		String result = node.getText();
 		result = result.trim();
 		result = removeSurroundingParentheses(result);
 		return convertToJavaString(result);
@@ -122,19 +143,27 @@ public class SpecCompiler extends Xtend2Compiler {
 		return result.trim();
 	}
 
-	protected void appendActualValues(XExpression expression, IAppendable b, Set<String> valueExpressions) {
-		Iterator<XExpression> subExpressions = allSubExpressions(expression);
+	protected void appendActualValues(XExpression expression, ITreeAppendable b, Set<String> valueExpressions) {
 		toLiteralValue(expression, b, valueExpressions);
+		Iterator<XExpression> subExpressions = allSubExpressions(expression);
 		while(subExpressions.hasNext()){
 			appendActualValues(subExpressions.next(), b, valueExpressions);
 		}
 	}
 
 	protected Iterator<XExpression> allSubExpressions(XExpression expression) {
-		return Iterables.filter(expression.eContents(), XExpression.class).iterator();
+		Predicate<XExpression> onlyKnownFeatures = new Predicate<XExpression>() {
+
+			@Override
+			public boolean apply(XExpression e) {
+				// FIXME
+				return !"<unkown>".equals(e.toString());
+			}
+		};
+		return filter(filter(expression.eContents(), XExpression.class), onlyKnownFeatures ).iterator();
 	}
 
-	protected void toLiteralValue(XExpression expression, IAppendable b, Set<String> valueMappings) {
+	protected void toLiteralValue(XExpression expression, ITreeAppendable b, Set<String> valueMappings) {
 		if(expressionHelper.isLiteral(expression)){
 			return;
 		}
@@ -162,7 +191,7 @@ public class SpecCompiler extends Xtend2Compiler {
 	
 	@Override
 	protected boolean isVariableDeclarationRequired(XExpression expr,
-			IAppendable b) {
+			ITreeAppendable b) {
 		if (expr instanceof Assertion){
 			return false;
 		}
@@ -173,7 +202,7 @@ public class SpecCompiler extends Xtend2Compiler {
 	 * Overridden to evaluate all expressions first to be visible when generating the assertion message.
 	 */
 	protected void generateShortCircuitInvocation(final XAbstractFeatureCall binaryOperation,
-			final IAppendable b) {
+			final ITreeAppendable b) {
 		if(EcoreUtil2.getContainerOfType(binaryOperation, Assertion.class) == null){
 			super.generateShortCircuitInvocation(binaryOperation, b);
 		}

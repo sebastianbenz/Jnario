@@ -9,17 +9,18 @@ package org.jnario.spec.ui.highlighting;
 
 import static org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultHighlightingConfiguration.KEYWORD_ID;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.ui.highlighting.XbaseHighlightingConfiguration;
-import org.eclipse.xtext.xtend2.ui.highlighting.XtendHighlightingCalculator;
-import org.eclipse.xtext.xtend2.xtend2.Xtend2Package;
-import org.eclipse.xtext.xtend2.xtend2.XtendField;
-import org.eclipse.xtext.xtend2.xtend2.XtendFunction;
-import org.eclipse.xtext.xtend2.xtend2.XtendMember;
+import org.eclipse.xtend.ide.highlighting.XtendHighlightingCalculator;
+import org.eclipse.xtend.core.xtend.XtendPackage;
+import org.eclipse.xtend.core.xtend.XtendField;
+import org.eclipse.xtend.core.xtend.XtendFunction;
+import org.eclipse.xtend.core.xtend.XtendMember;
 import org.jnario.ExampleTable;
 import org.jnario.JnarioPackage;
 import org.jnario.spec.spec.Example;
@@ -35,7 +36,11 @@ public class SpecHighlightingCalculator extends XtendHighlightingCalculator {
 
 	@Override
 	protected void doProvideHighlightingFor(XtextResource resource, IHighlightedPositionAcceptor acceptor) {
-		SpecFile file = (SpecFile) resource.getContents().get(0);
+		EObject root = resource.getContents().get(0);
+		if (!(root instanceof SpecFile)) {
+			return;
+		}
+		SpecFile file = (SpecFile) root;
 		ExampleGroup exampleGroup = (ExampleGroup) file.getXtendClass();
 		highlightDeprectedXtendAnnotationTarget(acceptor, exampleGroup);
 		provideHighlightingFor(exampleGroup, acceptor);
@@ -46,11 +51,11 @@ public class SpecHighlightingCalculator extends XtendHighlightingCalculator {
 			IHighlightedPositionAcceptor acceptor) {
 		if (exampleGroup != null) {
 			for (XtendMember member : exampleGroup.getMembers()) {
-				if (member.eClass() == Xtend2Package.Literals.XTEND_FUNCTION) {
+				if (member.eClass() == XtendPackage.Literals.XTEND_FUNCTION) {
 					XtendFunction function = (XtendFunction) member;
 					XExpression rootExpression = function.getExpression();
 					highlightRichStrings(rootExpression, acceptor);
-				}else if(member.eClass() == Xtend2Package.Literals.XTEND_FIELD){
+				}else if(member.eClass() == XtendPackage.Literals.XTEND_FIELD){
 					XtendField field = (XtendField) member;
 					highlightXtendField(field,acceptor);
 				}else if(member.eClass() == SpecPackage.Literals.EXAMPLE){

@@ -21,7 +21,7 @@ import org.eclipse.xtext.util.IAcceptor
 import org.eclipse.xtext.xbase.XVariableDeclaration
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator
 import org.eclipse.xtext.xbase.typing.ITypeProvider
-import org.eclipse.xtext.xtend2.xtend2.XtendField
+import org.eclipse.xtend.core.xtend.XtendField
 import org.jnario.feature.feature.Background
 import org.jnario.feature.feature.Feature
 import org.jnario.feature.feature.FeatureFile
@@ -40,7 +40,10 @@ import org.jnario.runner.Named
 import org.jnario.runner.Order
 
 import static com.google.common.collect.Iterators.*
-import org.eclipse.xtext.xtend2.xtend2.XtendMember
+import org.eclipse.xtend.core.xtend.XtendMember
+import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
+import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable
+import org.eclipse.xtext.xbase.compiler.output.FakeTreeAppendable
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -73,7 +76,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 	 * @param isPreLinkingPhase - whether the method is called in a pre linking phase, i.e. when the global index isn't fully updated. You
 	 *        must not rely on linking using the index if iPrelinkingPhase is <code>true</code>
 	 */
-    override void infer(EObject object, IAcceptor<JvmDeclaredType> acceptor, boolean isPrelinkingPhase) {
+   override infer(EObject object, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
     	if(!checkClassPath(object, annotationProvider)){
 			return
 		}
@@ -289,7 +292,8 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			var description = "ExampleTable " + exampleTable + ", " + "Example " + exampleNumber + " ["
 			var i = 0
 			for(field: fields){
-				description = description + field.name + " = " + cellToAppendable(row, i) + ", "
+				val ITreeAppendable appendable = new FakeTreeAppendable(null)
+				description = description + field.name + " = " + cellToAppendable(row, i, appendable) + ", "
 				i = i + 1
 			}
 			description = description.substring(0, description.length - 1 - 1) + "]"
@@ -300,25 +304,22 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 	def generateExampleConstructor(ExampleRow row, EList<ExampleColumn> fields, String className){
 		row.toConstructor(className)[
 			visibility = JvmVisibility::PUBLIC
-			body = [
-				var constructor = new StringBuilder()
+			body = [ITreeAppendable appendable |
 				var i = 0
 				for(field: fields){
-					
-					constructor.append("super.")
-					constructor.append(field.name)
-					constructor.append(" = ")
-					constructor.append(cellToAppendable(row, i).toString)
-					constructor.append(";\n")
+					appendable.append("super.")
+					appendable.append(field.name)
+					appendable.append(" = ")
+					cellToAppendable(row, i, appendable)
+					appendable.append(";\n")
 					i = i + 1
 				}
-				constructor.toString
 			]
 		]
 	}
 	
 	
-	// based on Xtend2JvmModelInferrer which does not use source.getAnnotations()
+	// based on XtendJvmModelInferrer which does not use source.getAnnotations()
 	// which checks if annotationInfos is null
 	// but uses source.getAnnotationInfo().getAnnotations()
 	override void transform(XtendField source, JvmGenericType container) {

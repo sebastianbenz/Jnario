@@ -2,8 +2,8 @@ package org.jnario.maven;
 
 import javax.swing.text.html.HTMLDocument.HTMLReader.SpecialAction;
 
-import org.eclipse.xtext.xtend2.compiler.batch.Xtend2BatchCompiler;
-import org.eclipse.xtext.xtend2.maven.XtendCompile;
+import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
+import org.eclipse.xtend.core.maven.XtendCompile;
 
 import com.google.inject.Injector;
 
@@ -22,7 +22,7 @@ import org.jnario.spec.SpecStandaloneSetup;
 public class JnarioCompile extends XtendCompile {
 
 	@Override
-	protected Xtend2BatchCompiler createXtend2BatchCompiler() {
+	protected XtendBatchCompiler createXtendBatchCompiler() {
 		Injector injector = new SpecStandaloneSetup().createInjectorAndDoEMFRegistration();
 		return injector.getInstance(SpecBatchCompiler.class);
 	}

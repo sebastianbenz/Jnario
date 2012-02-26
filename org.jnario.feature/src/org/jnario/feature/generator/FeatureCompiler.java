@@ -8,25 +8,25 @@
 package org.jnario.feature.generator;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtend.core.compiler.XtendCompiler;
 import org.eclipse.xtext.common.types.JvmPrimitiveType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.util.Primitives.Primitive;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
-import org.eclipse.xtext.xbase.compiler.IAppendable;
-import org.eclipse.xtext.xtend2.compiler.Xtend2Compiler;
+import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
-public class FeatureCompiler extends Xtend2Compiler {
+public class FeatureCompiler extends XtendCompiler {
 
 	/**
 	 * based on XbaseCompiler, removed brackets ("{\n" and "\n}") from original method
 	 */
 	@Override
-	protected void _toJavaStatement(XBlockExpression expr, IAppendable b, boolean isReferenced) {
+	protected void _toJavaStatement(XBlockExpression expr, ITreeAppendable b, boolean isReferenced) {
 		if (expr.getExpressions().isEmpty())
 			return;
 		if (expr.getExpressions().size()==1) {
@@ -58,20 +58,19 @@ public class FeatureCompiler extends Xtend2Compiler {
 	 */
 	@Override
 	protected void _toJavaStatement(XVariableDeclaration varDeclaration,
-			IAppendable b, boolean isReferenced) {
+			ITreeAppendable b, boolean isReferenced) {
 		if (varDeclaration.getRight() != null) {
 			internalToJavaStatement(varDeclaration.getRight(), b, true);
 		}
-		b.append("\n");
-		if (!varDeclaration.isWriteable()) {
-			b.append("final ");
-		}
+		b.newLine();
 		JvmTypeReference type = null;
 		if (varDeclaration.getType() != null) {
 			type = varDeclaration.getType();
 		} else {
 			type = getTypeProvider().getType(varDeclaration.getRight());
 		}
+
+		b.append(" ");
 		b.append(b.declareVariable(varDeclaration, varDeclaration.getName()));
 		b.append(" = ");
 		if (varDeclaration.getRight() != null) {

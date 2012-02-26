@@ -8,9 +8,9 @@
 package org.jnario.spec.ui.outline;
 
 import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
-import org.eclipse.xtext.xtend2.ui.outline.Xtend2OutlineTreeProvider;
-import org.eclipse.xtext.xtend2.xtend2.XtendClass;
-import org.eclipse.xtext.xtend2.xtend2.XtendMember;
+import org.eclipse.xtend.ide.outline.XtendOutlineTreeProvider;
+import org.eclipse.xtend.core.xtend.XtendClass;
+import org.eclipse.xtend.core.xtend.XtendMember;
 
 import org.jnario.spec.spec.ExampleGroup;
 
@@ -18,7 +18,7 @@ import org.jnario.spec.spec.ExampleGroup;
  * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
-public class SpecOutlineTreeProvider extends Xtend2OutlineTreeProvider {
+public class SpecOutlineTreeProvider extends XtendOutlineTreeProvider {
 
 	@Override
 	protected void createFeatureNodes(IOutlineNode parentNode, XtendClass xtendClass) {

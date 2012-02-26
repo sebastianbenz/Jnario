@@ -9,7 +9,7 @@ package org.jnario.feature.ui.editor;
 
 import org.eclipse.jface.text.Position;
 import org.eclipse.jface.text.source.projection.ProjectionAnnotation;
-import org.eclipse.xtext.xtend2.ui.editor.InitiallyCollapsableAwareFoldingStructureProvider;
+import org.eclipse.xtend.ide.editor.InitiallyCollapsableAwareFoldingStructureProvider;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API

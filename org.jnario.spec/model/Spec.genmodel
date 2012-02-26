@@ -12,7 +12,7 @@ http://www.eclipse.org/legal/epl-v10.html"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
     editPluginID="org.jnario.spec.edit" editorPluginID="org.jnario.spec.editor"
     language="" 
-     usedGenPackages="platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel#//xAnnotations platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase platform:/resource/org.eclipse.xtext.xtend2/model/Xtend2.genmodel#//xtend2">
+     usedGenPackages="platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel#//xAnnotations platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase platform:/resource/org.eclipse.xtend.core/model/Xtend.genmodel#//xtend">
   <foreignModel>Spec.ecore</foreignModel>
   <genPackages prefix="Spec" basePackage="org.jnario.spec" disposableProviderFactory="true"
       ecorePackage="Spec.ecore#/">

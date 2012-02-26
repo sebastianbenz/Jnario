@@ -13,8 +13,8 @@ package org.jnario.spec.ui.labeling;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.xtext.common.types.JvmVisibility;
-import org.eclipse.xtext.xtend2.ui.labeling.Xtend2Images;
-import org.eclipse.xtext.xtend2.ui.labeling.Xtend2LabelProvider;
+import org.eclipse.xtend.ide.labeling.XtendImages;
+import org.eclipse.xtend.ide.labeling.XtendLabelProvider;
 
 import com.google.inject.Inject;
 
@@ -29,7 +29,7 @@ import org.jnario.spec.spec.TestFunction;
  * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
-public class SpecLabelProvider extends Xtend2LabelProvider {
+public class SpecLabelProvider extends XtendLabelProvider {
 
 	@Inject
 	public SpecLabelProvider(AdapterFactoryLabelProvider delegate) {
@@ -37,7 +37,7 @@ public class SpecLabelProvider extends Xtend2LabelProvider {
 	}
 	
 	@Inject
-	private Xtend2Images images;
+	private XtendImages images;
 
 	@Inject
 	private ExampleNameProvider exampleNameProvider;

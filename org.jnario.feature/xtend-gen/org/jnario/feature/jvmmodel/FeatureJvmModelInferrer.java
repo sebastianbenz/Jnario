@@ -9,10 +9,12 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend.core.xtend.XtendClass;
+import org.eclipse.xtend.core.xtend.XtendField;
+import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
 import org.eclipse.xtext.common.types.JvmConstructor;
-import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmMember;
@@ -21,27 +23,23 @@ import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.common.types.util.TypeReferences;
-import org.eclipse.xtext.util.IAcceptor;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
-import org.eclipse.xtext.xbase.compiler.ImportManager;
-import org.eclipse.xtext.xbase.compiler.StringBuilderBasedAppendable;
+import org.eclipse.xtext.xbase.compiler.output.FakeTreeAppendable;
+import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
+import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator;
 import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.eclipse.xtext.xbase.lib.CollectionExtensions;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
-import org.eclipse.xtext.xtend2.xtend2.XtendClass;
-import org.eclipse.xtext.xtend2.xtend2.XtendField;
-import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
@@ -96,7 +94,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    * @param isPreLinkingPhase - whether the method is called in a pre linking phase, i.e. when the global index isn't fully updated. You
    *        must not rely on linking using the index if iPrelinkingPhase is <code>true</code>
    */
-  public void infer(final EObject object, final IAcceptor<JvmDeclaredType> acceptor, final boolean isPrelinkingPhase) {
+  public void infer(final EObject object, final IJvmDeclaredTypeAcceptor acceptor, final boolean preIndexingPhase) {
       boolean _checkClassPath = this.checkClassPath(object, this.annotationProvider);
       boolean _operator_not = BooleanExtensions.operator_not(_checkClassPath);
       if (_operator_not) {
@@ -116,7 +114,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
         {
           JvmGenericType _generateBackground = this.generateBackground(feature, featureFile);
           backgroundClass = _generateBackground;
-          acceptor.accept(backgroundClass);
+          acceptor.<JvmGenericType>accept(backgroundClass);
         }
       }
       ArrayList<JvmGenericType> _newArrayList = CollectionLiterals.<JvmGenericType>newArrayList();
@@ -136,13 +134,13 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           EList<JvmAnnotationReference> _annotations = clazz.getAnnotations();
           JvmAnnotationReference _runnerAnnotations = this.runnerAnnotations(scenario);
           CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _runnerAnnotations);
-          acceptor.accept(clazz);
+          acceptor.<JvmGenericType>accept(clazz);
           scenarios.add(clazz);
         }
       }
       JvmGenericType _generateFeatureSuite = this.generateFeatureSuite(feature, featureFile, scenarios);
       final JvmGenericType featureClazz = _generateFeatureSuite;
-      acceptor.accept(featureClazz);
+      acceptor.<JvmGenericType>accept(featureClazz);
   }
   
   public JvmGenericType generateFeatureSuite(final Feature feature, final FeatureFile featureFile, final List<JvmGenericType> scenarios) {
@@ -376,14 +374,13 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
       final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
           public void apply(final JvmOperation it) {
             {
-              final Function1<ImportManager,CharSequence> _function = new Function1<ImportManager,CharSequence>() {
-                  public CharSequence apply(final ImportManager it) {
+              final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
+                  public void apply(final ITreeAppendable it) {
                     StringConcatenation _builder = new StringConcatenation();
                     _builder.append("super.");
                     _builder.append(methodName, "");
                     _builder.append("();");
                     _builder.newLineIfNotEmpty();
-                    return _builder;
                   }
                 };
               FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, _function);
@@ -563,10 +560,12 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
               int i = 0;
               for (final ExampleColumn field : fields) {
                 {
+                  FakeTreeAppendable _fakeTreeAppendable = new FakeTreeAppendable(null);
+                  final ITreeAppendable appendable = _fakeTreeAppendable;
                   String _name = field.getName();
                   String _operator_plus_5 = StringExtensions.operator_plus(description, _name);
                   String _operator_plus_6 = StringExtensions.operator_plus(_operator_plus_5, " = ");
-                  StringBuilderBasedAppendable _cellToAppendable = FeatureJvmModelInferrer.this.cellToAppendable(row, i);
+                  ITreeAppendable _cellToAppendable = FeatureJvmModelInferrer.this.cellToAppendable(row, i, appendable);
                   String _operator_plus_7 = StringExtensions.operator_plus(_operator_plus_6, _cellToAppendable);
                   String _operator_plus_8 = StringExtensions.operator_plus(_operator_plus_7, ", ");
                   description = _operator_plus_8;
@@ -598,31 +597,23 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
         public void apply(final JvmConstructor it) {
           {
             it.setVisibility(JvmVisibility.PUBLIC);
-            final Function1<ImportManager,String> _function = new Function1<ImportManager,String>() {
-                public String apply(final ImportManager it) {
-                  String _xblockexpression = null;
+            final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
+                public void apply(final ITreeAppendable appendable) {
                   {
-                    StringBuilder _stringBuilder = new StringBuilder();
-                    StringBuilder constructor = _stringBuilder;
                     int i = 0;
                     for (final ExampleColumn field : fields) {
                       {
-                        constructor.append("super.");
+                        appendable.append("super.");
                         String _name = field.getName();
-                        constructor.append(_name);
-                        constructor.append(" = ");
-                        StringBuilderBasedAppendable _cellToAppendable = FeatureJvmModelInferrer.this.cellToAppendable(row, i);
-                        String _string = _cellToAppendable.toString();
-                        constructor.append(_string);
-                        constructor.append(";\n");
+                        appendable.append(_name);
+                        appendable.append(" = ");
+                        FeatureJvmModelInferrer.this.cellToAppendable(row, i, appendable);
+                        appendable.append(";\n");
                         int _operator_plus = IntegerExtensions.operator_plus(i, 1);
                         i = _operator_plus;
                       }
                     }
-                    String _string_1 = constructor.toString();
-                    _xblockexpression = (_string_1);
                   }
-                  return _xblockexpression;
                 }
               };
             FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, _function);

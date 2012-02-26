@@ -8,6 +8,8 @@ import java.util.Iterator;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtend.core.xtend.XtendFunction;
+import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
 import org.eclipse.xtext.common.types.JvmField;
@@ -16,9 +18,7 @@ import org.eclipse.xtext.common.types.JvmMember;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmVisibility;
-import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XFeatureCall;
-import org.eclipse.xtext.xbase.XMemberFeatureCall;
 import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.eclipse.xtext.xbase.lib.CollectionExtensions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -26,8 +26,6 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.eclipse.xtext.xtend2.xtend2.XtendFunction;
-import org.eclipse.xtext.xtend2.xtend2.XtendMember;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.spec.jvmmodel.Constants;
 import org.jnario.spec.spec.ExampleGroup;
@@ -126,46 +124,32 @@ public class ImplicitSubject {
   }
   
   public boolean neverUsesSubject(final ExampleGroup exampleGroup) {
-      UnmodifiableIterator<XMemberFeatureCall> _emptyIterator = Iterators.<XMemberFeatureCall>emptyIterator();
-      Iterator<XMemberFeatureCall> allFeatureCalls = _emptyIterator;
+      UnmodifiableIterator<XFeatureCall> _emptyIterator = Iterators.<XFeatureCall>emptyIterator();
+      Iterator<XFeatureCall> allFeatureCalls = _emptyIterator;
       EList<XtendMember> _members = exampleGroup.getMembers();
       final EList<XtendMember> members = _members;
-      Iterable<XtendFunction> _filter = Iterables.<XtendFunction>filter(members, org.eclipse.xtext.xtend2.xtend2.XtendFunction.class);
+      Iterable<XtendFunction> _filter = Iterables.<XtendFunction>filter(members, org.eclipse.xtend.core.xtend.XtendFunction.class);
       for (final XtendFunction example : _filter) {
         TreeIterator<EObject> _eAllContents = example.eAllContents();
-        UnmodifiableIterator<XMemberFeatureCall> _filter_1 = Iterators.<XMemberFeatureCall>filter(_eAllContents, org.eclipse.xtext.xbase.XMemberFeatureCall.class);
-        Iterator<XMemberFeatureCall> _concat = Iterators.<XMemberFeatureCall>concat(allFeatureCalls, _filter_1);
+        UnmodifiableIterator<XFeatureCall> _filter_1 = Iterators.<XFeatureCall>filter(_eAllContents, org.eclipse.xtext.xbase.XFeatureCall.class);
+        Iterator<XFeatureCall> _concat = Iterators.<XFeatureCall>concat(allFeatureCalls, _filter_1);
         allFeatureCalls = _concat;
       }
       Iterable<TestFunction> _filter_2 = Iterables.<TestFunction>filter(members, org.jnario.spec.spec.TestFunction.class);
       for (final TestFunction example_1 : _filter_2) {
         TreeIterator<EObject> _eAllContents_1 = example_1.eAllContents();
-        UnmodifiableIterator<XMemberFeatureCall> _filter_3 = Iterators.<XMemberFeatureCall>filter(_eAllContents_1, org.eclipse.xtext.xbase.XMemberFeatureCall.class);
-        Iterator<XMemberFeatureCall> _concat_1 = Iterators.<XMemberFeatureCall>concat(allFeatureCalls, _filter_3);
+        UnmodifiableIterator<XFeatureCall> _filter_3 = Iterators.<XFeatureCall>filter(_eAllContents_1, org.eclipse.xtext.xbase.XFeatureCall.class);
+        Iterator<XFeatureCall> _concat_1 = Iterators.<XFeatureCall>concat(allFeatureCalls, _filter_3);
         allFeatureCalls = _concat_1;
       }
-      final Function1<XMemberFeatureCall,Boolean> _function = new Function1<XMemberFeatureCall,Boolean>() {
-          public Boolean apply(final XMemberFeatureCall call) {
-            {
-              XExpression _memberCallTarget = call.getMemberCallTarget();
-              boolean _operator_equals = ObjectExtensions.operator_equals(_memberCallTarget, null);
-              if (_operator_equals) {
-                return Boolean.valueOf(false);
-              }
-              XExpression _memberCallTarget_1 = call.getMemberCallTarget();
-              boolean _operator_not = BooleanExtensions.operator_not((_memberCallTarget_1 instanceof XFeatureCall));
-              if (_operator_not) {
-                return Boolean.valueOf(false);
-              }
-              XExpression _memberCallTarget_2 = call.getMemberCallTarget();
-              final XFeatureCall featureCall = ((XFeatureCall) _memberCallTarget_2);
-              String _concreteSyntaxFeatureName = featureCall.getConcreteSyntaxFeatureName();
-              boolean _operator_equals_1 = ObjectExtensions.operator_equals(_concreteSyntaxFeatureName, Constants.SUBJECT_FIELD_NAME);
-              return Boolean.valueOf(_operator_equals_1);
-            }
+      final Function1<XFeatureCall,Boolean> _function = new Function1<XFeatureCall,Boolean>() {
+          public Boolean apply(final XFeatureCall it) {
+            String _concreteSyntaxFeatureName = it.getConcreteSyntaxFeatureName();
+            boolean _operator_equals = ObjectExtensions.operator_equals(_concreteSyntaxFeatureName, Constants.SUBJECT_FIELD_NAME);
+            return Boolean.valueOf(_operator_equals);
           }
         };
-      XMemberFeatureCall _findFirst = IteratorExtensions.<XMemberFeatureCall>findFirst(allFeatureCalls, _function);
+      XFeatureCall _findFirst = IteratorExtensions.<XFeatureCall>findFirst(allFeatureCalls, _function);
       boolean _operator_equals = ObjectExtensions.operator_equals(null, _findFirst);
       return _operator_equals;
   }

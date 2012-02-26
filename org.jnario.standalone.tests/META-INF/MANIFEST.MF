@@ -9,10 +9,7 @@ Require-Bundle: org.jnario.standalone;bundle-version="0.1.0",
  org.jnario.spec;bundle-version="0.1.0",
  org.junit,
  org.eclipse.xtext.junit4;bundle-version="2.2.1",
- org.eclipse.xtend2.lib,
  com.google.inject,
  com.google.guava,
- org.eclipse.xtext.xbase.lib,
- org.eclipse.xtext.xtend2.lib;bundle-version="2.2.1",
- org.eclipse.xtext.xtend2.standalone;bundle-version="2.2.1"
+ org.eclipse.xtext.xbase.lib
 

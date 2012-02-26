@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil
  * @author Sebastian Benz - Initial contribution and API
  */
 class StepExpressionProvider {
-	
+
 	def expressionOf(Step step){
 		if(step instanceof StepReference){
 			getOrCreateExpression(step as StepReference)

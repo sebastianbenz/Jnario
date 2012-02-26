@@ -11,7 +11,7 @@
 package org.jnario.spec.ui.doc;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.xtend2.ui.hover.XtendHoverProvider;
+import org.eclipse.xtend.ide.hover.XtendHoverProvider;
 
 import com.google.inject.Inject;
 

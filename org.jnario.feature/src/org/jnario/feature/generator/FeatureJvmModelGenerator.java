@@ -7,19 +7,12 @@
  *******************************************************************************/
 package org.jnario.feature.generator;
 
-import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.common.types.JvmExecutable;
-import org.eclipse.xtext.xbase.XExpression;
-import org.eclipse.xtext.xbase.compiler.CompilationStrategyAdapter;
-import org.eclipse.xtext.xbase.compiler.ImportManager;
+import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.jvmmodel.ILogicalContainerProvider;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
 
 import com.google.inject.Inject;
-
-import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -31,17 +24,16 @@ public class FeatureJvmModelGenerator extends ExtendedJvmModelGenerator {
 	/**
 	 *  based on JvmModelGenerator, changed to generate an empty method instead of "throw UnsupportedOperationException"
 	 */
+
 	@Override
-	public CharSequence generateBody(final JvmExecutable op, final ImportManager importManager) {
-
-		EList<Adapter> adapters = op.eAdapters();
-		Iterable<CompilationStrategyAdapter> _filter = IterableExtensions.<CompilationStrategyAdapter>filter(adapters, CompilationStrategyAdapter.class);
-		CompilationStrategyAdapter adapter = IterableExtensions.<CompilationStrategyAdapter>head(_filter);
-		XExpression expr = logicalContainerProvider.getAssociatedExpression(op);
-		if(adapter == null && expr == null){
-			return new StringConcatenation();
+	public void generateBody(JvmExecutable op, ITreeAppendable appendable) {
+		if(compilationStrategy(op) == null){
+			appendable.openScope();
+			appendable.increaseIndentation().append("{").newLine();
+			appendable.decreaseIndentation().newLine().append("}");
+			appendable.closeScope();		
+		}else{
+			super.generateBody(op, appendable);
 		}
-		return super.generateBody(op, importManager);		
 	}
-
 }

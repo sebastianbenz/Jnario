@@ -12,6 +12,7 @@ public class DeadCell extends Cell {
   }
   
   public Cell evolve(final int neighbourCount) {
+    {
       boolean _operator_equals = IntegerExtensions.operator_equals(neighbourCount, 3);
       if (_operator_equals) {
         AliveCell _aliveCell = AliveCell.aliveCell();
@@ -19,5 +20,6 @@ public class DeadCell extends Cell {
       }
       DeadCell _deadCell = DeadCell.deadCell();
       return _deadCell;
+    }
   }
 }

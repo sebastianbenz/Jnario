@@ -6,12 +6,27 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
 package org.jnario.spec.jvmmodel
-import static extension org.eclipse.xtext.util.Strings.*
+
 import com.google.common.base.Joiner
 import com.google.inject.Inject
+import java.util.List
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtend.core.xtend.XtendField
+import org.eclipse.xtend.core.xtend.XtendFunction
+import org.eclipse.xtext.common.types.JvmAnnotationReference
+import org.eclipse.xtext.common.types.JvmField
+import org.eclipse.xtext.common.types.JvmGenericType
+import org.eclipse.xtext.common.types.JvmVisibility
+import org.eclipse.xtext.common.types.util.TypeReferences
+import org.eclipse.xtext.util.Strings
+import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable
+import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
 import org.jnario.ExampleTable
-import org.jnario.jvmmodel.JnarioJvmModelInferrer
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder
+import org.jnario.jvmmodel.JnarioJvmModelInferrer
+import org.jnario.jvmmodel.JunitAnnotationProvider
+import org.jnario.lib.ExampleTableRow
 import org.jnario.runner.Contains
 import org.jnario.runner.Extension
 import org.jnario.runner.Named
@@ -23,24 +38,9 @@ import org.jnario.spec.spec.Example
 import org.jnario.spec.spec.ExampleGroup
 import org.jnario.spec.spec.SpecFile
 import org.jnario.spec.spec.TestFunction
-import java.util.List
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.common.types.JvmAnnotationReference
-import org.eclipse.xtext.common.types.JvmDeclaredType
-import org.eclipse.xtext.common.types.JvmField
-import org.eclipse.xtext.common.types.JvmGenericType
-import org.eclipse.xtext.common.types.JvmVisibility
-import org.eclipse.xtext.common.types.util.TypeReferences
-import org.eclipse.xtext.util.IAcceptor
-import org.eclipse.xtext.util.Strings
-import org.eclipse.xtext.xbase.compiler.ImportManager
-import org.eclipse.xtext.xbase.compiler.StringBuilderBasedAppendable
-import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
-import org.eclipse.xtext.xtend2.xtend2.XtendField
-import org.eclipse.xtext.xtend2.xtend2.XtendFunction
-import org.jnario.lib.ExampleTableRow
-import org.eclipse.xtext.serializer.ISerializer
-import org.jnario.jvmmodel.JunitAnnotationProvider
+
+import static extension org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
+import static extension org.eclipse.xtext.util.Strings.*
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -59,10 +59,7 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 	
 	@Inject extension IJvmModelAssociations 
 	
-	@Inject extension ISerializer 
-	
-	
-	override void infer(EObject e, IAcceptor<JvmDeclaredType> acceptor, boolean isPrelinkingPhase) {
+	override infer(EObject e, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
 		if(!checkClassPath(e, annotationProvider)){
 			return
 		}
@@ -74,7 +71,7 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 		if(specFile.xtendClass == null){
 			return
 		}
-		transform(specFile as SpecFile, specFile.xtendClass as ExampleGroup, null, isPrelinkingPhase)
+		transform(specFile as SpecFile, specFile.xtendClass as ExampleGroup, null, preIndexingPhase)
 	}
 	
 	
@@ -188,8 +185,8 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 			val type = getTypeForName(typeof(org.jnario.lib.ExampleTable), element, exampleTableType.createTypeRef)
 			specType.members += element.toMethod("_init" + element.toJavaClassName, getTypeForName(Void::TYPE, element))[
 				annotations += element.getBeforeAnnotation()
-				setBody[ImportManager im |
-					exampleTableType.generateInitializationMethod(element)	
+				setBody[ITreeAppendable a |
+					exampleTableType.generateInitializationMethod(element, a)	
 				]
 			]
 			
@@ -218,58 +215,60 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 				assignments += "this." + column.name + " = " + column.name + ";" 
 				
 				exampleTableType.members += element.toMethod("get" + column.name.toFirstUpper, column.type)[
-					setBody[ImportManager im |
-						"return " + column.name + ";"
+					setBody[ITreeAppendable a |
+						a.append("return " + column.name + ";")
 					]
 				]
 			]
 			
-			constructor.setBody[ImportManager im |
-				Joiner::on(Strings::newLine).join(assignments)
+			constructor.setBody[ITreeAppendable a |
+				a.append(Joiner::on(Strings::newLine).join(assignments))
 			]
 			
 			
 			exampleTableType.members += element.toMethod("getCells", listType)[
-				setBody[ImportManager im |
-					'return java.util.Arrays.asList(String.valueOf(' + element.columnNames.join(') , String.valueOf(') + '));'
+				setBody[ITreeAppendable a |
+					a.append('return java.util.Arrays.asList(String.valueOf(' + element.columnNames.join(') , String.valueOf(') + '));')
 				]
 			]
 		]
 	} 
 	
-	def generateInitializationMethod(JvmGenericType exampleTableType, ExampleTable exampleTable){
-		val result = new StringBuilderBasedAppendable()
+	def generateInitializationMethod(JvmGenericType exampleTableType, ExampleTable exampleTable, ITreeAppendable appendable){
 		for( row : exampleTable.rows){
 			for(cell :row.cells){
-				compiler.toJavaStatement(cell, result, true)
+				compiler.toJavaStatement(cell, appendable, true)
 			}
 		}
-		result.append(exampleTable.toFieldName);
-		result.append(" = ExampleTable.create(\"" + exampleTable.toFieldName + "\", \n")
-		result.append('  java.util.Arrays.asList("' + exampleTable.columnNames.join('", "') + '"), ')
-		result.increaseIndentation()
-		result.append("\n")
+		appendable.append(exampleTable.toFieldName);
+		appendable.append(" = ExampleTable.create(\"" + exampleTable.toFieldName + "\", \n")
+		appendable.append('  java.util.Arrays.asList("' + exampleTable.columnNames.join('", "') + '"), ')
+		appendable.increaseIndentation()
+		appendable.append("\n")
 		for(row : exampleTable.rows){
-		 	result.append("new ").append(exampleTableType.simpleName).append("(")
-		 	result.append('  java.util.Arrays.asList("' + row.cells.map[serialize.trim.convertToJavaString].join('", "') + '"), ')
+		 	appendable.append("new ").append(exampleTableType.simpleName).append("(")
+		 	appendable.append('  java.util.Arrays.asList("' + row.cells.map[serialize.trim.convertToJavaString].join('", "') + '"), ')
 		 	for(cell :row.cells){
-		 		compiler.toJavaExpression(cell, result)
+		 		compiler.toJavaExpression(cell, appendable)
 		 		if(row.cells.last != cell){
-			 		result.append(", ")
+			 		appendable.append(", ")
 		 		}
 			}
-	 		result.append(")")
+	 		appendable.append(")")
 			if(exampleTable.rows.last != row){
-			 	result.append(",\n")
+			 	appendable.append(",\n")
 		 	}
 		}
-		result.decreaseIndentation()
-		result.append("\n);")
-		return result.toString
+		appendable.decreaseIndentation()
+		appendable.append("\n);")
 	}
 	
 	def columnNames(ExampleTable exampleTable){
 		exampleTable.columns.map[it?.name]
+	}
+	
+	def serialize(EObject obj){
+		return obj.node?.text
 	}
 	
 }

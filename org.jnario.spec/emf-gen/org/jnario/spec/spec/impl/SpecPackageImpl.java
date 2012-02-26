@@ -1,10 +1,6 @@
-/*******************************************************************************
- * Copyright (c) 2012 BMW Car IT and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
+/**
+ * Copyright (c) 2012 BMW Car IT and others. All rights reserved. This program and the accompanying materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.spec.spec.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -14,11 +10,11 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.eclipse.xtend.core.xtend.XtendPackage;
+
 import org.eclipse.xtext.common.types.TypesPackage;
 
 import org.eclipse.xtext.xbase.XbasePackage;
-
-import org.eclipse.xtext.xtend2.xtend2.Xtend2Package;
 
 import org.jnario.spec.spec.After;
 import org.jnario.spec.spec.Before;
@@ -128,7 +124,7 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 		isInited = true;
 
 		// Initialize simple dependencies
-		Xtend2Package.eINSTANCE.eClass();
+		XtendPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theSpecPackage.createPackageContents();
@@ -372,7 +368,7 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		Xtend2Package theXtend2Package = (Xtend2Package)EPackage.Registry.INSTANCE.getEPackage(Xtend2Package.eNS_URI);
+		XtendPackage theXtendPackage = (XtendPackage)EPackage.Registry.INSTANCE.getEPackage(XtendPackage.eNS_URI);
 		TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
 		XbasePackage theXbasePackage = (XbasePackage)EPackage.Registry.INSTANCE.getEPackage(XbasePackage.eNS_URI);
 
@@ -381,13 +377,13 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		specFileEClass.getESuperTypes().add(theXtend2Package.getXtendFile());
-		exampleGroupEClass.getESuperTypes().add(theXtend2Package.getXtendClass());
-		exampleGroupEClass.getESuperTypes().add(theXtend2Package.getXtendMember());
+		specFileEClass.getESuperTypes().add(theXtendPackage.getXtendFile());
+		exampleGroupEClass.getESuperTypes().add(theXtendPackage.getXtendClass());
+		exampleGroupEClass.getESuperTypes().add(theXtendPackage.getXtendMember());
 		exampleEClass.getESuperTypes().add(this.getTestFunction());
 		beforeEClass.getESuperTypes().add(this.getTestFunction());
 		afterEClass.getESuperTypes().add(this.getTestFunction());
-		testFunctionEClass.getESuperTypes().add(theXtend2Package.getXtendMember());
+		testFunctionEClass.getESuperTypes().add(theXtendPackage.getXtendMember());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(specFileEClass, SpecFile.class, "SpecFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

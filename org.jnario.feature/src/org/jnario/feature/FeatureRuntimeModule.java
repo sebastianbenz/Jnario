@@ -10,6 +10,17 @@
  */
 package org.jnario.feature;
 
+import org.eclipse.xtend.core.compiler.XtendOutputConfigurationProvider;
+import org.eclipse.xtend.core.jvmmodel.DispatchUtil;
+import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
+import org.eclipse.xtend.core.resource.XtendEObjectAtOffsetHelper;
+import org.eclipse.xtend.core.resource.XtendResource;
+import org.eclipse.xtend.core.resource.XtendResourceDescriptionStrategy;
+import org.eclipse.xtend.core.scoping.XtendImportedNamespaceScopeProvider;
+import org.eclipse.xtend.core.scoping.XtendScopeProvider;
+import org.eclipse.xtend.core.typing.XtendTypeProvider;
+import org.eclipse.xtend.core.validation.ClasspathBasedChecks;
+import org.eclipse.xtend.core.validation.XtendEarlyExitValidator;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.OutputConfigurationProvider;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
@@ -29,25 +40,6 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.scoping.featurecalls.StaticImplicitMethodsFeatureForTypeProvider.ExtensionClassNameProvider;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.eclipse.xtext.xbase.validation.EarlyExitValidator;
-import org.eclipse.xtext.xtend2.compiler.Xtend2OutputConfigurationProvider;
-import org.eclipse.xtext.xtend2.jvmmodel.DispatchUtil;
-import org.eclipse.xtext.xtend2.jvmmodel.IXtend2JvmAssociations;
-import org.eclipse.xtext.xtend2.resource.Xtend2Resource;
-import org.eclipse.xtext.xtend2.resource.Xtend2ResourceDescriptionStrategy;
-import org.eclipse.xtext.xtend2.resource.XtendEObjectAtOffsetHelper;
-import org.eclipse.xtext.xtend2.scoping.Xtend2ImportedNamespaceScopeProvider;
-import org.eclipse.xtext.xtend2.scoping.Xtend2ScopeProvider;
-import org.eclipse.xtext.xtend2.typing.Xtend2TypeProvider;
-import org.eclipse.xtext.xtend2.validation.ClasspathBasedChecks;
-import org.eclipse.xtext.xtend2.validation.XtendEarlyExitValidator;
-
-import com.google.inject.Binder;
-import com.google.inject.name.Names;
-
-import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
-import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
-import org.jnario.jvmmodel.JnarioDispatchUtil;
-import org.jnario.scoping.JnarioExtensionClassNameProvider;
 import org.jnario.feature.generator.FeatureCompiler;
 import org.jnario.feature.generator.FeatureJvmModelGenerator;
 import org.jnario.feature.jvmmodel.FeatureFeatureCallToJavaMapping;
@@ -56,6 +48,13 @@ import org.jnario.feature.naming.FeatureIdentifiableSimpleNameProvider;
 import org.jnario.feature.naming.FeatureQualifiedNameProvider;
 import org.jnario.feature.validation.FeatureClasspathBasedChecks;
 import org.jnario.feature.validation.FeatureResourceValidator;
+import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
+import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
+import org.jnario.jvmmodel.JnarioDispatchUtil;
+import org.jnario.scoping.JnarioExtensionClassNameProvider;
+
+import com.google.inject.Binder;
+import com.google.inject.name.Names;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -72,7 +71,7 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 	
 	@Override
 	public java.lang.Class<? extends IScopeProvider> bindIScopeProvider() {
-		return Xtend2ScopeProvider.class;
+		return XtendScopeProvider.class;
 	}
 	
 	public Class<? extends ExtensionClassNameProvider> bindExtensionClassNameProvider(){
@@ -81,18 +80,18 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 	
 	@Override
 	public Class<? extends ITypeProvider> bindITypeProvider(){
-		return Xtend2TypeProvider.class;
+		return XtendTypeProvider.class;
 	}
 	
 	@Override
 	public Class<? extends XtextResource> bindXtextResource() {
-		return Xtend2Resource.class;
+		return XtendResource.class;
 	}
 
 	@Override
 	public void configureIScopeProviderDelegate(Binder binder) {
 		binder.bind(IScopeProvider.class).annotatedWith(Names.named(AbstractDeclarativeScopeProvider.NAMED_DELEGATE))
-		.to(Xtend2ImportedNamespaceScopeProvider.class);
+		.to(XtendImportedNamespaceScopeProvider.class);
 	}
 
 	@Override
@@ -105,18 +104,17 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 	}
 
 	public Class <? extends IDefaultResourceDescriptionStrategy> bindIDefaultResourceDescriptionStrategy() {
-		return Xtend2ResourceDescriptionStrategy.class;
+		return XtendResourceDescriptionStrategy.class;
 	}
 
 	public Class<? extends JvmModelAssociator> bindJvmModelAssociator() {
-		return IXtend2JvmAssociations.Impl.class;
+		return IXtendJvmAssociations.Impl.class;
 	}
 
 	public Class<? extends EarlyExitValidator> bindEarlyExitValidator() {
 		return XtendEarlyExitValidator.class;
 	}
 	
-	@Override
 	public Class<? extends EObjectAtOffsetHelper> bindEObjectAtOffsetHelper() {
 		return XtendEObjectAtOffsetHelper.class;
 	}
@@ -126,7 +124,7 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 	}	
 
 	public Class<? extends OutputConfigurationProvider> bindOutputConfigurationProvider() {
-		return Xtend2OutputConfigurationProvider.class;
+		return XtendOutputConfigurationProvider.class;
 	}
 	
 	public Class<? extends FeatureCallToJavaMapping> bindFeatureCallToJavaMapping(){

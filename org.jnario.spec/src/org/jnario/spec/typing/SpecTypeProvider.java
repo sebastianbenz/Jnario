@@ -20,7 +20,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.typing.Closures;
-import org.eclipse.xtext.xtend2.typing.Xtend2TypeProvider;
+import org.eclipse.xtend.core.typing.XtendTypeProvider;
 import org.eclipse.xtext.xtype.impl.XFunctionTypeRefImplCustom;
 
 import com.google.inject.Inject;
@@ -33,7 +33,7 @@ import org.jnario.Matcher;
  */
 @SuppressWarnings("restriction")
 @Singleton
-public class SpecTypeProvider extends Xtend2TypeProvider {
+public class SpecTypeProvider extends XtendTypeProvider {
 	
 	@Inject
 	private Closures closures;

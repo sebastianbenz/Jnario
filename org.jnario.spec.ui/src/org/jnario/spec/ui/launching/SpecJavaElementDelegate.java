@@ -24,7 +24,7 @@ import org.eclipse.xtext.builder.DerivedResourceMarkers;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.util.jdt.JavaElementFinder;
 import org.eclipse.xtext.ui.resource.IResourceSetProvider;
-import org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegate;
+import org.eclipse.xtend.ide.launching.JavaElementDelegate;
 
 import com.google.inject.Inject;
 

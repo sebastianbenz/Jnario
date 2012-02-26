@@ -23,7 +23,7 @@ import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.serializer.ISerializer
 import org.eclipse.xtext.xbase.XBlockExpression
 import org.eclipse.xtext.xbase.XExpression
-import org.eclipse.xtext.xtend2.xtend2.XtendMember
+import org.eclipse.xtend.core.xtend.XtendMember
 import org.pegdown.PegDownProcessor
 
 import static org.jnario.spec.util.Strings.*
@@ -31,7 +31,7 @@ import static org.jnario.spec.util.Strings.*
 import static extension org.eclipse.xtext.util.Strings.*
 
 class DocGenerator implements IGenerator {
-	
+	 
 	@Inject extension ExampleNameProvider 
 	@Inject extension ExtendedJvmTypesBuilder
 	@Inject extension ISerializer

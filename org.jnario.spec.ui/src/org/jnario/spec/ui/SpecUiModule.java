@@ -19,8 +19,10 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.xtext.builder.EclipseResourceFileSystemAccess2;
 import org.eclipse.xtext.builder.IXtextBuilderParticipant;
+import org.eclipse.xtext.builder.trace.FileBasedTraceInformation;
 import org.eclipse.xtext.common.types.ui.navigation.IDerivedMemberAwareEditorOpener;
 import org.eclipse.xtext.common.types.xtext.ui.ITypesProposalProvider;
+import org.eclipse.xtext.generator.trace.ITraceInformation;
 import org.eclipse.xtext.ui.LanguageSpecific;
 import org.eclipse.xtext.ui.editor.IURIEditorOpener;
 import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
@@ -48,32 +50,32 @@ import org.eclipse.xtext.ui.refactoring.impl.RenameElementProcessor;
 import org.eclipse.xtext.ui.resource.IResourceUIServiceProvider;
 import org.eclipse.xtext.xbase.ui.editor.XbaseEditor;
 import org.eclipse.xtext.xbase.ui.jvmmodel.navigation.DerivedMemberAwareEditorOpener;
-import org.eclipse.xtext.xtend2.ui.XtendResourceUiServiceProvider;
-import org.eclipse.xtext.xtend2.ui.autoedit.AutoEditStrategyProvider;
-import org.eclipse.xtext.xtend2.ui.autoedit.TokenTypeToPartitionMapper;
-import org.eclipse.xtext.xtend2.ui.builder.SourceRelativeFileSystemAccess;
-import org.eclipse.xtext.xtend2.ui.builder.XtendBuilderParticipant;
-import org.eclipse.xtext.xtend2.ui.contentassist.ImportingTypesProposalProvider;
-import org.eclipse.xtext.xtend2.ui.editor.InitiallyCollapsableAwareFoldingStructureProvider;
-import org.eclipse.xtext.xtend2.ui.editor.OverrideIndicatorModelListener;
-import org.eclipse.xtext.xtend2.ui.editor.OverrideIndicatorRulerAction;
-import org.eclipse.xtext.xtend2.ui.editor.RichStringAwareSourceViewer;
-import org.eclipse.xtext.xtend2.ui.editor.RichStringAwareToggleCommentAction;
-import org.eclipse.xtext.xtend2.ui.editor.SingleLineCommentHelper;
-import org.eclipse.xtext.xtend2.ui.editor.Xtend2DoubleClickStrategyProvider;
-import org.eclipse.xtext.xtend2.ui.editor.XtendNatureAddingEditorCallback;
-import org.eclipse.xtext.xtend2.ui.highlighting.RichStringAwareTokenScanner;
-import org.eclipse.xtext.xtend2.ui.highlighting.ShowWhitespaceCharactersActionContributor;
-import org.eclipse.xtext.xtend2.ui.highlighting.TokenToAttributeIdMapper;
-import org.eclipse.xtext.xtend2.ui.highlighting.XtendHighlightingConfiguration;
-import org.eclipse.xtext.xtend2.ui.hover.XtendAnnotationHover;
-import org.eclipse.xtext.xtend2.ui.hyperlinking.XtendHyperlinkHelper;
-import org.eclipse.xtext.xtend2.ui.launching.JavaElementDelegate;
-import org.eclipse.xtext.xtend2.ui.outline.Xtend2OutlineNodeComparator;
-import org.eclipse.xtext.xtend2.ui.outline.Xtend2OutlinePage;
-import org.eclipse.xtext.xtend2.ui.outline.Xtend2QuickOutlineFilterAndSorter;
-import org.eclipse.xtext.xtend2.ui.refactoring.Xtend2RenameElementProcessor;
-import org.eclipse.xtext.xtend2.ui.refactoring.Xtend2RenameStrategy;
+import org.eclipse.xtend.ide.XtendResourceUiServiceProvider;
+import org.eclipse.xtend.ide.autoedit.AutoEditStrategyProvider;
+import org.eclipse.xtend.ide.autoedit.TokenTypeToPartitionMapper;
+import org.eclipse.xtend.ide.builder.SourceRelativeFileSystemAccess;
+import org.eclipse.xtend.ide.builder.XtendBuilderParticipant;
+import org.eclipse.xtend.ide.contentassist.ImportingTypesProposalProvider;
+import org.eclipse.xtend.ide.editor.InitiallyCollapsableAwareFoldingStructureProvider;
+import org.eclipse.xtend.ide.editor.OverrideIndicatorModelListener;
+import org.eclipse.xtend.ide.editor.OverrideIndicatorRulerAction;
+import org.eclipse.xtend.ide.editor.RichStringAwareSourceViewer;
+import org.eclipse.xtend.ide.editor.RichStringAwareToggleCommentAction;
+import org.eclipse.xtend.ide.editor.SingleLineCommentHelper;
+import org.eclipse.xtend.ide.editor.XtendDoubleClickStrategyProvider;
+import org.eclipse.xtend.ide.editor.XtendNatureAddingEditorCallback;
+import org.eclipse.xtend.ide.highlighting.RichStringAwareTokenScanner;
+import org.eclipse.xtend.ide.highlighting.ShowWhitespaceCharactersActionContributor;
+import org.eclipse.xtend.ide.highlighting.TokenToAttributeIdMapper;
+import org.eclipse.xtend.ide.highlighting.XtendHighlightingConfiguration;
+import org.eclipse.xtend.ide.hover.XtendAnnotationHover;
+import org.eclipse.xtend.ide.hyperlinking.XtendHyperlinkHelper;
+import org.eclipse.xtend.ide.launching.JavaElementDelegate;
+import org.eclipse.xtend.ide.outline.XtendOutlineNodeComparator;
+import org.eclipse.xtend.ide.outline.XtendOutlinePage;
+import org.eclipse.xtend.ide.outline.XtendQuickOutlineFilterAndSorter;
+import org.eclipse.xtend.ide.refactoring.XtendRenameElementProcessor;
+import org.eclipse.xtend.ide.refactoring.XtendRenameStrategy;
 import org.jnario.spec.ui.doc.SpecHoverProvider;
 import org.jnario.spec.ui.editor.SpecFoldingRegionProvider;
 import org.jnario.spec.ui.highlighting.SpecHighlightingCalculator;
@@ -147,16 +149,16 @@ public class SpecUiModule extends org.jnario.spec.ui.AbstractSpecUiModule {
 	}
 
 	public Class<? extends DoubleClickStrategyProvider> bindDoubleClickStrategyProvider() {
-		return Xtend2DoubleClickStrategyProvider.class;
+		return XtendDoubleClickStrategyProvider.class;
 	}
 
 	@Override
 	public Class<? extends IComparator> bindOutlineFilterAndSorter$IComparator() {
-		return Xtend2OutlineNodeComparator.class;
+		return XtendOutlineNodeComparator.class;
 	}
 
 	public Class<? extends QuickOutlineFilterAndSorter> bindQuickOutlineFilterAndSorter() {
-		return Xtend2QuickOutlineFilterAndSorter.class;
+		return XtendQuickOutlineFilterAndSorter.class;
 	}
 
 	public Class<? extends IFoldingRegionProvider> bindIFoldingRegionProvider() {
@@ -170,7 +172,7 @@ public class SpecUiModule extends org.jnario.spec.ui.AbstractSpecUiModule {
 
 	@Override
 	public Class<? extends IContentOutlinePage> bindIContentOutlinePage() {
-		return Xtend2OutlinePage.class;
+		return XtendOutlinePage.class;
 	}
 
 	@Override
@@ -223,12 +225,12 @@ public class SpecUiModule extends org.jnario.spec.ui.AbstractSpecUiModule {
 	}
 	
 	public Class<? extends RenameElementProcessor> bindRenameElementProcessor() {
-		return Xtend2RenameElementProcessor.class;
+		return XtendRenameElementProcessor.class;
 	}
 	
 	@Override
 	public Class<? extends IRenameStrategy> bindIRenameStrategy() {
-		return Xtend2RenameStrategy.class;
+		return XtendRenameStrategy.class;
 	}
 
 	@Override
@@ -256,5 +258,8 @@ public class SpecUiModule extends org.jnario.spec.ui.AbstractSpecUiModule {
 		return SpecJavaElementDelegate.class;
 	}
 	
-	
+
+	public Class<? extends ITraceInformation> bindTraceInformation() {
+		return FileBasedTraceInformation.class;
+	}
 }

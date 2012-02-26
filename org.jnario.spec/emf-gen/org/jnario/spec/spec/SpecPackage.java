@@ -1,10 +1,6 @@
-/*******************************************************************************
- * Copyright (c) 2012 BMW Car IT and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
+/**
+ * Copyright (c) 2012 BMW Car IT and others. All rights reserved. This program and the accompanying materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.spec.spec;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -12,7 +8,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
-import org.eclipse.xtext.xtend2.xtend2.Xtend2Package;
+import org.eclipse.xtend.core.xtend.XtendPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -80,7 +76,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SPEC_FILE__IMPORTS = Xtend2Package.XTEND_FILE__IMPORTS;
+	int SPEC_FILE__IMPORTS = XtendPackage.XTEND_FILE__IMPORTS;
 
 	/**
 	 * The feature id for the '<em><b>Xtend Class</b></em>' containment reference.
@@ -89,7 +85,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SPEC_FILE__XTEND_CLASS = Xtend2Package.XTEND_FILE__XTEND_CLASS;
+	int SPEC_FILE__XTEND_CLASS = XtendPackage.XTEND_FILE__XTEND_CLASS;
 
 	/**
 	 * The feature id for the '<em><b>Package</b></em>' attribute.
@@ -98,7 +94,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SPEC_FILE__PACKAGE = Xtend2Package.XTEND_FILE__PACKAGE;
+	int SPEC_FILE__PACKAGE = XtendPackage.XTEND_FILE__PACKAGE;
 
 	/**
 	 * The number of structural features of the '<em>File</em>' class.
@@ -107,7 +103,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SPEC_FILE_FEATURE_COUNT = Xtend2Package.XTEND_FILE_FEATURE_COUNT + 0;
+	int SPEC_FILE_FEATURE_COUNT = XtendPackage.XTEND_FILE_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.spec.spec.impl.ExampleGroupImpl <em>Example Group</em>}' class.
@@ -126,7 +122,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP__ANNOTATIONS = Xtend2Package.XTEND_CLASS__ANNOTATIONS;
+	int EXAMPLE_GROUP__ANNOTATIONS = XtendPackage.XTEND_CLASS__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -135,7 +131,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP__NAME = Xtend2Package.XTEND_CLASS__NAME;
+	int EXAMPLE_GROUP__NAME = XtendPackage.XTEND_CLASS__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Extends</b></em>' containment reference.
@@ -144,7 +140,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP__EXTENDS = Xtend2Package.XTEND_CLASS__EXTENDS;
+	int EXAMPLE_GROUP__EXTENDS = XtendPackage.XTEND_CLASS__EXTENDS;
 
 	/**
 	 * The feature id for the '<em><b>Implements</b></em>' containment reference list.
@@ -153,7 +149,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP__IMPLEMENTS = Xtend2Package.XTEND_CLASS__IMPLEMENTS;
+	int EXAMPLE_GROUP__IMPLEMENTS = XtendPackage.XTEND_CLASS__IMPLEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Super Types</b></em>' reference list.
@@ -162,7 +158,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP__SUPER_TYPES = Xtend2Package.XTEND_CLASS__SUPER_TYPES;
+	int EXAMPLE_GROUP__SUPER_TYPES = XtendPackage.XTEND_CLASS__SUPER_TYPES;
 
 	/**
 	 * The feature id for the '<em><b>Members</b></em>' containment reference list.
@@ -171,7 +167,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP__MEMBERS = Xtend2Package.XTEND_CLASS__MEMBERS;
+	int EXAMPLE_GROUP__MEMBERS = XtendPackage.XTEND_CLASS__MEMBERS;
 
 	/**
 	 * The feature id for the '<em><b>Super Call Referable</b></em>' containment reference.
@@ -180,7 +176,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP__SUPER_CALL_REFERABLE = Xtend2Package.XTEND_CLASS__SUPER_CALL_REFERABLE;
+	int EXAMPLE_GROUP__SUPER_CALL_REFERABLE = XtendPackage.XTEND_CLASS__SUPER_CALL_REFERABLE;
 
 	/**
 	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
@@ -189,7 +185,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP__TYPE_PARAMETERS = Xtend2Package.XTEND_CLASS__TYPE_PARAMETERS;
+	int EXAMPLE_GROUP__TYPE_PARAMETERS = XtendPackage.XTEND_CLASS__TYPE_PARAMETERS;
 
 	/**
 	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
@@ -198,7 +194,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP__ANNOTATION_INFO = Xtend2Package.XTEND_CLASS_FEATURE_COUNT + 0;
+	int EXAMPLE_GROUP__ANNOTATION_INFO = XtendPackage.XTEND_CLASS_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Preamble</b></em>' attribute.
@@ -207,7 +203,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP__PREAMBLE = Xtend2Package.XTEND_CLASS_FEATURE_COUNT + 1;
+	int EXAMPLE_GROUP__PREAMBLE = XtendPackage.XTEND_CLASS_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Target Type</b></em>' containment reference.
@@ -216,7 +212,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP__TARGET_TYPE = Xtend2Package.XTEND_CLASS_FEATURE_COUNT + 2;
+	int EXAMPLE_GROUP__TARGET_TYPE = XtendPackage.XTEND_CLASS_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Target Operation</b></em>' reference.
@@ -225,7 +221,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP__TARGET_OPERATION = Xtend2Package.XTEND_CLASS_FEATURE_COUNT + 3;
+	int EXAMPLE_GROUP__TARGET_OPERATION = XtendPackage.XTEND_CLASS_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Example Group</em>' class.
@@ -234,7 +230,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP_FEATURE_COUNT = Xtend2Package.XTEND_CLASS_FEATURE_COUNT + 4;
+	int EXAMPLE_GROUP_FEATURE_COUNT = XtendPackage.XTEND_CLASS_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.spec.spec.impl.TestFunctionImpl <em>Test Function</em>}' class.
@@ -253,7 +249,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_FUNCTION__ANNOTATIONS = Xtend2Package.XTEND_MEMBER__ANNOTATIONS;
+	int TEST_FUNCTION__ANNOTATIONS = XtendPackage.XTEND_MEMBER__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
@@ -262,7 +258,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_FUNCTION__ANNOTATION_INFO = Xtend2Package.XTEND_MEMBER__ANNOTATION_INFO;
+	int TEST_FUNCTION__ANNOTATION_INFO = XtendPackage.XTEND_MEMBER__ANNOTATION_INFO;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -271,7 +267,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_FUNCTION__NAME = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 0;
+	int TEST_FUNCTION__NAME = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Body</b></em>' containment reference.
@@ -280,7 +276,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_FUNCTION__BODY = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 1;
+	int TEST_FUNCTION__BODY = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Test Function</em>' class.
@@ -289,7 +285,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_FUNCTION_FEATURE_COUNT = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 2;
+	int TEST_FUNCTION_FEATURE_COUNT = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.spec.spec.impl.ExampleImpl <em>Example</em>}' class.

@@ -11,7 +11,7 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.xtext.xbase.XExpression;
 
-import org.eclipse.xtext.xtend2.xtend2.XtendField;
+import org.eclipse.xtend.core.xtend.XtendField;
 
 /**
  * <!-- begin-user-doc -->

@@ -10,10 +10,10 @@ package org.jnario.spec.doc;
 import java.util.Set;
 
 import org.eclipse.xtext.generator.OutputConfiguration;
-import org.eclipse.xtext.xtend2.compiler.Xtend2OutputConfigurationProvider;
+import org.eclipse.xtend.core.compiler.XtendOutputConfigurationProvider;
 
 @SuppressWarnings("restriction")
-public class DocOutputConfigurationProvider extends Xtend2OutputConfigurationProvider{
+public class DocOutputConfigurationProvider extends XtendOutputConfigurationProvider{
 
 	public static final String DOC_OUTPUT = "DOC_OUTPUT";
 

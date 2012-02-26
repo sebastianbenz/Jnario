@@ -11,7 +11,7 @@ package org.jnario.feature;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtext.xbase.XbaseStandaloneSetup;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
-import org.eclipse.xtext.xtend2.Xtend2StandaloneSetup;
+import org.eclipse.xtend.core.XtendStandaloneSetup;
 import org.jnario.JnarioPackage;
 import org.jnario.feature.feature.FeaturePackage;
 
@@ -28,7 +28,7 @@ public class FeatureStandaloneSetup extends FeatureStandaloneSetupGenerated{
 	
 	@Override
 	public void register(Injector injector) {
-		Xtend2StandaloneSetup.doSetup();
+		XtendStandaloneSetup.doSetup();
 		XbaseStandaloneSetup.doSetup();
 		EPackage.Registry.INSTANCE.put(XAnnotationsPackage.eINSTANCE.getNsURI(),XAnnotationsPackage.eINSTANCE);
 		EPackage.Registry.INSTANCE.put(JnarioPackage.eNS_URI, JnarioPackage.eINSTANCE);

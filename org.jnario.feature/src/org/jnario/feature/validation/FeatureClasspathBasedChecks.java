@@ -8,8 +8,8 @@
 package org.jnario.feature.validation;
 
 import org.eclipse.xtext.validation.Check;
-import org.eclipse.xtext.xtend2.validation.ClasspathBasedChecks;
-import org.eclipse.xtext.xtend2.xtend2.XtendFile;
+import org.eclipse.xtend.core.validation.ClasspathBasedChecks;
+import org.eclipse.xtend.core.xtend.XtendFile;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API

@@ -16,7 +16,7 @@ import static org.eclipse.xtext.util.Strings.toFirstUpper;
 import java.util.List;
 
 import org.eclipse.xtext.util.SimpleAttributeResolver;
-import org.eclipse.xtext.xtend2.xtend2.XtendMember;
+import org.eclipse.xtend.core.xtend.XtendMember;
 
 import org.jnario.ExampleTable;
 import org.jnario.spec.spec.After;

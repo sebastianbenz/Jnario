@@ -8,7 +8,7 @@
 package org.jnario.jnario.test.util;
 
 import static org.eclipse.emf.common.util.URI.createURI;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.jnario.jnario.test.util.ResultMatchers.isSuccessful;
 import static org.junit.Assert.assertNotNull;
 
 import java.io.IOException;
@@ -22,18 +22,17 @@ import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.util.StringInputStream;
 import org.eclipse.xtext.validation.IResourceValidator;
-import org.junit.rules.TemporaryFolder;
-import org.junit.runner.Result;
-
-import com.google.inject.Inject;
-import com.google.inject.Injector;
-
 import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
 import org.jnario.spec.SpecInjectorProvider;
 import org.jnario.spec.naming.ExampleNameProvider;
 import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.spec.spec.SpecFile;
-import static org.jnario.jnario.test.util.ResultMatchers.*;
+import org.junit.Assert;
+import org.junit.rules.TemporaryFolder;
+import org.junit.runner.Result;
+
+import com.google.inject.Inject;
+import com.google.inject.Injector;
 @SuppressWarnings("restriction")
 public class SpecExecutor extends BehaviorExecutor{
 	
@@ -49,7 +48,7 @@ public class SpecExecutor extends BehaviorExecutor{
 	
 	public static void executesSuccessfully(CharSequence content) {
 		Result result = execute(content);
-		assertThat(result, isSuccessful());
+		Assert.assertThat(result, isSuccessful());
 	}
 
 	public static Result execute(CharSequence content) {

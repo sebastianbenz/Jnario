@@ -7,7 +7,7 @@
  *******************************************************************************/
 package org.jnario.validation;
 
-import static org.eclipse.xtext.xtend2.xtend2.Xtend2Package.Literals.XTEND_CLASS__NAME;
+import static org.eclipse.xtend.core.xtend.XtendPackage.Literals.XTEND_CLASS__NAME;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ import org.eclipse.xtext.validation.AbstractDeclarativeValidator;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
-import org.eclipse.xtext.xtend2.xtend2.XtendClass;
+import org.eclipse.xtend.core.xtend.XtendClass;
 import org.jnario.Assertion;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;

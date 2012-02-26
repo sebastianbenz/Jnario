@@ -1,15 +1,10 @@
-/*******************************************************************************
- * Copyright (c) 2012 BMW Car IT and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
+/**
+ */
 package org.jnario.feature.feature;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.xtext.xtend2.xtend2.XtendMember;
+import org.eclipse.xtend.core.xtend.XtendMember;
 
 import org.jnario.ExampleTable;
 
@@ -78,7 +73,7 @@ public interface Scenario extends XtendMember
 
 	/**
 	 * Returns the value of the '<em><b>Steps</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.xtext.xtend2.xtend2.XtendMember}.
+	 * The list contents are of type {@link org.eclipse.xtend.core.xtend.XtendMember}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Steps</em>' containment reference list isn't clear,
@@ -94,7 +89,7 @@ public interface Scenario extends XtendMember
 
 	/**
 	 * Returns the value of the '<em><b>Members</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.xtext.xtend2.xtend2.XtendMember}.
+	 * The list contents are of type {@link org.eclipse.xtend.core.xtend.XtendMember}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Members</em>' containment reference list isn't clear,

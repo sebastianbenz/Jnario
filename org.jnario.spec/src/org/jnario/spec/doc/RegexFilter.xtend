@@ -10,7 +10,7 @@ package org.jnario.spec.doc
 import java.util.regex.Pattern
 
 class RegexFilter implements Filter{
-	
+
 	def static create(String regex){
 		return new RegexFilter(regex)
 	}	

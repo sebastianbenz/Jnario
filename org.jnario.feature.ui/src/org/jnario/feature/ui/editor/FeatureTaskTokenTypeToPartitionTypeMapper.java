@@ -9,7 +9,7 @@ package org.jnario.feature.ui.editor;
 
 import java.util.HashSet;
 
-import org.eclipse.xtext.xtend2.ui.autoedit.TokenTypeToPartitionMapper;
+import org.eclipse.xtend.ide.autoedit.TokenTypeToPartitionMapper;
 
 import com.google.common.collect.Sets;
 import com.google.inject.Singleton;

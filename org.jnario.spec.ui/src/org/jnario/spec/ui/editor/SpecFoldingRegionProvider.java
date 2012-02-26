@@ -9,7 +9,7 @@ package org.jnario.spec.ui.editor;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.xtend2.ui.editor.Xtend2FoldingRegionProvider;
+import org.eclipse.xtend.ide.editor.XtendFoldingRegionProvider;
 
 import org.jnario.spec.spec.SpecPackage;
 
@@ -17,7 +17,7 @@ import org.jnario.spec.spec.SpecPackage;
  * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
-public class SpecFoldingRegionProvider extends Xtend2FoldingRegionProvider {
+public class SpecFoldingRegionProvider extends XtendFoldingRegionProvider {
 
 	@Override
 	protected boolean isHandled(EObject object) {

@@ -1,7 +1,7 @@
 package org.jnario.maven;
 
-import org.eclipse.xtext.xtend2.compiler.batch.Xtend2BatchCompiler;
-import org.eclipse.xtext.xtend2.maven.XtendTestCompile;
+import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
+import org.eclipse.xtend.core.maven.XtendTestCompile;
 
 import com.google.inject.Injector;
 
@@ -9,7 +9,7 @@ import org.jnario.compiler.batch.SpecBatchCompiler;
 import org.jnario.spec.SpecStandaloneSetup;
 
 /**
- * Goal which compiles Xtend2 test sources.
+ * Goal which compiles Xtend test sources.
  *
  * @author Sebastian Benz - Initial contribution and API
  * @goal testCompile
@@ -19,7 +19,7 @@ import org.jnario.spec.SpecStandaloneSetup;
 public class JnarioTestCompile extends XtendTestCompile {
 
 	@Override
-	protected Xtend2BatchCompiler createXtend2BatchCompiler() {
+	protected XtendBatchCompiler createXtendBatchCompiler() {
 		Injector injector = new SpecStandaloneSetup().createInjectorAndDoEMFRegistration();
 		return injector.getInstance(SpecBatchCompiler.class);
 	}

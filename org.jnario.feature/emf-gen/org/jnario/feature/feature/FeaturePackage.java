@@ -1,10 +1,5 @@
-/*******************************************************************************
- * Copyright (c) 2012 BMW Car IT and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
+/**
+ */
 package org.jnario.feature.feature;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -12,7 +7,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
-import org.eclipse.xtext.xtend2.xtend2.Xtend2Package;
+import org.eclipse.xtend.core.xtend.XtendPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -80,7 +75,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__ANNOTATIONS = Xtend2Package.XTEND_CLASS__ANNOTATIONS;
+	int FEATURE__ANNOTATIONS = XtendPackage.XTEND_CLASS__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -89,7 +84,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__NAME = Xtend2Package.XTEND_CLASS__NAME;
+	int FEATURE__NAME = XtendPackage.XTEND_CLASS__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Extends</b></em>' containment reference.
@@ -98,7 +93,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__EXTENDS = Xtend2Package.XTEND_CLASS__EXTENDS;
+	int FEATURE__EXTENDS = XtendPackage.XTEND_CLASS__EXTENDS;
 
 	/**
 	 * The feature id for the '<em><b>Implements</b></em>' containment reference list.
@@ -107,7 +102,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__IMPLEMENTS = Xtend2Package.XTEND_CLASS__IMPLEMENTS;
+	int FEATURE__IMPLEMENTS = XtendPackage.XTEND_CLASS__IMPLEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Super Types</b></em>' reference list.
@@ -116,7 +111,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__SUPER_TYPES = Xtend2Package.XTEND_CLASS__SUPER_TYPES;
+	int FEATURE__SUPER_TYPES = XtendPackage.XTEND_CLASS__SUPER_TYPES;
 
 	/**
 	 * The feature id for the '<em><b>Members</b></em>' containment reference list.
@@ -125,7 +120,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__MEMBERS = Xtend2Package.XTEND_CLASS__MEMBERS;
+	int FEATURE__MEMBERS = XtendPackage.XTEND_CLASS__MEMBERS;
 
 	/**
 	 * The feature id for the '<em><b>Super Call Referable</b></em>' containment reference.
@@ -134,7 +129,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__SUPER_CALL_REFERABLE = Xtend2Package.XTEND_CLASS__SUPER_CALL_REFERABLE;
+	int FEATURE__SUPER_CALL_REFERABLE = XtendPackage.XTEND_CLASS__SUPER_CALL_REFERABLE;
 
 	/**
 	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
@@ -143,7 +138,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__TYPE_PARAMETERS = Xtend2Package.XTEND_CLASS__TYPE_PARAMETERS;
+	int FEATURE__TYPE_PARAMETERS = XtendPackage.XTEND_CLASS__TYPE_PARAMETERS;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -152,7 +147,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__DESCRIPTION = Xtend2Package.XTEND_CLASS_FEATURE_COUNT + 0;
+	int FEATURE__DESCRIPTION = XtendPackage.XTEND_CLASS_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Background</b></em>' containment reference.
@@ -161,7 +156,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__BACKGROUND = Xtend2Package.XTEND_CLASS_FEATURE_COUNT + 1;
+	int FEATURE__BACKGROUND = XtendPackage.XTEND_CLASS_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Feature</em>' class.
@@ -170,7 +165,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE_FEATURE_COUNT = Xtend2Package.XTEND_CLASS_FEATURE_COUNT + 2;
+	int FEATURE_FEATURE_COUNT = XtendPackage.XTEND_CLASS_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.feature.feature.impl.BackgroundImpl <em>Background</em>}' class.
@@ -226,7 +221,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SCENARIO__ANNOTATIONS = Xtend2Package.XTEND_MEMBER__ANNOTATIONS;
+	int SCENARIO__ANNOTATIONS = XtendPackage.XTEND_MEMBER__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
@@ -235,7 +230,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SCENARIO__ANNOTATION_INFO = Xtend2Package.XTEND_MEMBER__ANNOTATION_INFO;
+	int SCENARIO__ANNOTATION_INFO = XtendPackage.XTEND_MEMBER__ANNOTATION_INFO;
 
 	/**
 	 * The feature id for the '<em><b>Examples</b></em>' containment reference list.
@@ -244,7 +239,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SCENARIO__EXAMPLES = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 0;
+	int SCENARIO__EXAMPLES = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -253,7 +248,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SCENARIO__NAME = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 1;
+	int SCENARIO__NAME = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Steps</b></em>' containment reference list.
@@ -262,7 +257,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SCENARIO__STEPS = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 2;
+	int SCENARIO__STEPS = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Members</b></em>' containment reference list.
@@ -271,7 +266,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SCENARIO__MEMBERS = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 3;
+	int SCENARIO__MEMBERS = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Scenario</em>' class.
@@ -280,7 +275,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SCENARIO_FEATURE_COUNT = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 4;
+	int SCENARIO_FEATURE_COUNT = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.feature.feature.impl.StepImpl <em>Step</em>}' class.
@@ -299,7 +294,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int STEP__ANNOTATIONS = Xtend2Package.XTEND_MEMBER__ANNOTATIONS;
+	int STEP__ANNOTATIONS = XtendPackage.XTEND_MEMBER__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
@@ -308,7 +303,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int STEP__ANNOTATION_INFO = Xtend2Package.XTEND_MEMBER__ANNOTATION_INFO;
+	int STEP__ANNOTATION_INFO = XtendPackage.XTEND_MEMBER__ANNOTATION_INFO;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -317,7 +312,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int STEP__NAME = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 0;
+	int STEP__NAME = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Step Expression</b></em>' containment reference.
@@ -326,7 +321,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int STEP__STEP_EXPRESSION = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 1;
+	int STEP__STEP_EXPRESSION = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>And</b></em>' containment reference list.
@@ -335,7 +330,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int STEP__AND = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 2;
+	int STEP__AND = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Step</em>' class.
@@ -344,7 +339,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int STEP_FEATURE_COUNT = Xtend2Package.XTEND_MEMBER_FEATURE_COUNT + 3;
+	int STEP_FEATURE_COUNT = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.feature.feature.impl.GivenImpl <em>Given</em>}' class.
@@ -656,7 +651,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE_FILE__IMPORTS = Xtend2Package.XTEND_FILE__IMPORTS;
+	int FEATURE_FILE__IMPORTS = XtendPackage.XTEND_FILE__IMPORTS;
 
 	/**
 	 * The feature id for the '<em><b>Xtend Class</b></em>' containment reference.
@@ -665,7 +660,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE_FILE__XTEND_CLASS = Xtend2Package.XTEND_FILE__XTEND_CLASS;
+	int FEATURE_FILE__XTEND_CLASS = XtendPackage.XTEND_FILE__XTEND_CLASS;
 
 	/**
 	 * The feature id for the '<em><b>Package</b></em>' attribute.
@@ -674,7 +669,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE_FILE__PACKAGE = Xtend2Package.XTEND_FILE__PACKAGE;
+	int FEATURE_FILE__PACKAGE = XtendPackage.XTEND_FILE__PACKAGE;
 
 	/**
 	 * The number of structural features of the '<em>File</em>' class.
@@ -683,7 +678,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE_FILE_FEATURE_COUNT = Xtend2Package.XTEND_FILE_FEATURE_COUNT + 0;
+	int FEATURE_FILE_FEATURE_COUNT = XtendPackage.XTEND_FILE_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.feature.feature.impl.StepReferenceImpl <em>Step Reference</em>}' class.

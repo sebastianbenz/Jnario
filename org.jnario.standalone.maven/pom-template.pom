@@ -32,13 +32,13 @@
 			<version>1.1</version>
 		</dependency>
 		<dependency>
-			<groupId>org.eclipse.xtend2</groupId>
-			<artifactId>org.eclipse.xtend2.lib</artifactId>
+			<groupId>org.eclipse.xtend</groupId>
+			<artifactId>org.eclipse.xtend.lib</artifactId>
 			<version>2.2.1</version>
 		</dependency>
 		<dependency>
-			<groupId>org.eclipse.xtend2</groupId>
-			<artifactId>org.eclipse.xtend2.standalone</artifactId>
+			<groupId>org.eclipse.xtend</groupId>
+			<artifactId>org.eclipse.xtend.standalone</artifactId>
 			<version>2.2.1</version>
 		</dependency>
 		<dependency>

@@ -11,6 +11,7 @@
             default="true"
             extensions="feature"
             id="org.jnario.feature.Feature"
+            matchingStrategy="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.editor.JavaEditorInputMatcher"
             name="Feature Editor">
         </editor>
     </extension>
@@ -268,6 +269,36 @@
 			</command>
 		</menuContribution>
 	</extension>
+	<extension
+         point="org.eclipse.core.runtime.adapters">
+      <factory class="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.eclipse.xtext.common.types.smap.StratumBreakpointAdapterFactory"
+         adaptableType="org.eclipse.xtext.ui.editor.XtextEditor">
+         <adapter type="org.eclipse.debug.ui.actions.IToggleBreakpointsTarget"/>
+      </factory> 
+   </extension>
+   <extension point="org.eclipse.ui.editorActions">
+      <editorContribution targetID="org.jnario.feature.Feature" 
+                          id="org.jnario.feature.Feature.ide.rulerActions">
+	     <action
+	             label="Not Used"
+	             class="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate"
+	             style="push"
+	             actionID="RulerDoubleClick"
+	             id="org.jnario.feature.Feature.doubleClickBreakpointAction"/>
+	  </editorContribution>
+   </extension>
+   <extension point="org.eclipse.ui.popupMenus">
+      <viewerContribution
+         targetID="example.rulerContextMenuId"
+         id="org.jnario.feature.Feature.ide.RulerPopupActions">
+         <action
+            label="Toggle Breakpoint"
+            class="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate"
+            menubarPath="additions"
+            id="org.jnario.feature.Feature.ide.rulerContextMenu.toggleBreakpointAction">
+         </action>
+      </viewerContribution>
+   </extension>
    	<!-- Rename Refactoring -->
 	<extension point="org.eclipse.ui.handlers">
 		<handler 

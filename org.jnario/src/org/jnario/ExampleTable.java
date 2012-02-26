@@ -9,7 +9,7 @@ package org.jnario;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.xtext.xtend2.xtend2.XtendMember;
+import org.eclipse.xtend.core.xtend.XtendMember;
 
 /**
  * <!-- begin-user-doc -->

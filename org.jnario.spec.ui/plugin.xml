@@ -36,7 +36,7 @@
          </activeWhen>
       </handler>
             <handler
-            class="org.jnario.spec.ui.SpecExecutableExtensionFactory:org.eclipse.xtext.xtend2.ui.edit.OrganizeImportsHandler"
+            class="org.jnario.spec.ui.SpecExecutableExtensionFactory:org.eclipse.xtend.ide.edit.OrganizeImportsHandler"
             commandId="org.eclipse.xtext.xbase.ui.organizeImports">
            	<activeWhen>
 				<reference
@@ -397,13 +397,13 @@
     <extension point="org.eclipse.jdt.core.classpathContainerInitializer">            
    		<classpathContainerInitializer                                          
 			id="org.eclipse.xtend.XTEND_CONTAINER"                                                        
-			class="org.eclipse.xtext.xtend2.ui.buildpath.XtendContainerInitializer"/>                           
+			class="org.eclipse.xtend.ide.buildpath.XtendContainerInitializer"/>                           
 	</extension>
 	<extension
          point="org.eclipse.jdt.ui.classpathContainerPage">
       <classpathContainerPage
             name="%XtendLibrary_name"
-            class="org.eclipse.xtext.xtend2.ui.buildpath.XtendContainerWizardPage"
+            class="org.eclipse.xtend.ide.buildpath.XtendContainerWizardPage"
             id="org.eclipse.xtend.XTEND_CONTAINER">
       </classpathContainerPage>
    </extension>
@@ -481,5 +481,88 @@
                id="org.jnario.spec.ui.wizards.NewSpecWizard">
          </newWizardShortcut>
       </perspectiveExtension>
+   </extension>
+   <extension point="org.eclipse.ui.editors.annotationTypes">
+       <type name="org.eclipse.xtext.ui.overrideIndicator"></type>
+   </extension>
+   <extension point="org.eclipse.ui.editors.markerAnnotationSpecification">
+       <specification
+          annotationType="org.eclipse.xtext.ui.overrideIndicator"
+          label="%OverrideIndicator.label"
+          icon="$nl$/icons/full/ovr16/over_co.gif"
+          annotationImageProvider="org.jnario.spec.ui.SpecExecutableExtensionFactory:org.eclipse.xtend.ide.editor.OverrideIndicatorImageProvider"
+          textPreferenceKey="overrideIndicator"
+          textPreferenceValue="false"
+          highlightPreferenceKey="overrideIndicatorHighlighting"
+          highlightPreferenceValue="false"
+          contributesToHeader="false"
+          overviewRulerPreferenceKey="overrideIndicatorInOverviewRuler"
+          overviewRulerPreferenceValue="false"
+          verticalRulerPreferenceKey="overrideIndicatorInVerticalRuler"
+          verticalRulerPreferenceValue="true"
+          colorPreferenceKey="overrideIndicatorColor"
+          colorPreferenceValue="180,207,205"
+          presentationLayer="3"
+          showInNextPrevDropdownToolbarActionKey="showoverrideIndicatorInNextPrevDropdownToolbarAction"
+          showInNextPrevDropdownToolbarAction="false"
+          isGoToNextNavigationTargetKey="isOverrideIndicatorGoToNextNavigationTarget"
+          isGoToNextNavigationTarget="false"
+          isGoToPreviousNavigationTargetKey="isOverrideIndicatorGoToPreviousNavigationTarget"
+          isGoToPreviousNavigationTarget="false"
+          textStylePreferenceKey="overrideIndicatorTextStyle"
+          textStylePreferenceValue="SQUIGGLES">
+       </specification>
+   </extension>
+   <extension
+         point="org.eclipse.ui.themes">
+        <themeElementCategory label="%xtendPresentation.label" id="org.eclipse.xtend.ui.presentation"/>
+        <fontDefinition
+            label="%xtendEditorFontDefiniton.label"
+            defaultsTo="org.eclipse.jface.textfont"
+            categoryId="org.eclipse.xtend.ui.presentation"
+            id="org.eclipse.xtend.ui.editors.textfont">
+         <description>
+            %xtendEditorFontDefintion.description
+         </description>
+        </fontDefinition>
+        <colorDefinition
+            label="%DeclarationViewBackgroundColor.label"
+            categoryId="org.eclipse.xtend.ui.presentation"
+            value="COLOR_INFO_BACKGROUND"
+            id="org.eclipse.xtend.ui.DeclarationView.backgroundColor">
+         <description>
+            %DeclarationViewBackgroundColor.description
+         </description>
+      </colorDefinition>
+   </extension>
+      <extension
+         point="org.eclipse.core.runtime.adapters">
+      <factory class="org.jnario.spec.ui.SpecExecutableExtensionFactory:org.eclipse.xtext.builder.smap.StratumBreakpointAdapterFactory"
+         adaptableType="org.eclipse.xtext.ui.editor.XtextEditor">
+         <adapter type="org.eclipse.debug.ui.actions.IToggleBreakpointsTarget"/>
+      </factory> 
+   </extension>
+   <extension point="org.eclipse.ui.editorActions">
+      <editorContribution targetID="org.jnario.spec.Spec" 
+                          id="org.jnario.spec.Spec.ide.rulerActions">
+	     <action
+	             label="Not Used"
+	             class="org.jnario.spec.ui.SpecExecutableExtensionFactory:org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate"
+	             style="push"
+	             actionID="RulerDoubleClick"
+	             id="org.jnario.spec.Spec.doubleClickBreakpointAction"/>
+	  </editorContribution>
+   </extension>
+   <extension point="org.eclipse.ui.popupMenus">
+      <viewerContribution
+         targetID="example.rulerContextMenuId"
+         id="org.jnario.spec.Spec.ide.RulerPopupActions">
+         <action
+            label="Toggle Breakpoint"
+            class="org.jnario.spec.ui.SpecExecutableExtensionFactory:org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate"
+            menubarPath="additions"
+            id="org.jnario.spec.Spec.ide.rulerContextMenu.toggleBreakpointAction">
+         </action>
+      </viewerContribution>
    </extension>
 </plugin>

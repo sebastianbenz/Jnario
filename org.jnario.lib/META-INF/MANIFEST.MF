@@ -7,9 +7,7 @@ Bundle-Vendor: BMW Car IT
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.jnario.lib,
  org.jnario.runner
-Require-Bundle: org.hamcrest;resolution:=optional;visibility:=reexport,
- org.hamcrest.library;resolution:=optional;visibility:=reexport,
+Require-Bundle: org.hamcrest;visibility:=reexport,
  org.eclipse.xtext.xbase.lib;bundle-version="2.2.1";visibility:=reexport,
- org.eclipse.xtend2.lib;bundle-version="2.2.1";visibility:=reexport,
  com.google.inject;bundle-version="3.0.0";resolution:=optional,
  org.junit4;bundle-version="4.8.1";visibility:=reexport

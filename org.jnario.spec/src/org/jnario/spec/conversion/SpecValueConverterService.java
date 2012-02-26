@@ -9,14 +9,14 @@ package org.jnario.spec.conversion;
 
 import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.conversion.ValueConverter;
-import org.eclipse.xtext.xtend2.conversion.Xtend2ValueConverterService;
+import org.eclipse.xtend.core.conversion.XtendValueConverterService;
 
 import com.google.inject.Inject;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
-public class SpecValueConverterService extends Xtend2ValueConverterService {
+public class SpecValueConverterService extends XtendValueConverterService {
 
 	@Inject
 	private MethodNameConverter validIDConverter;

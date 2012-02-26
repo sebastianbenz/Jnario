@@ -11,7 +11,7 @@ import org.eclipse.xtext.xbase.lib.Procedures
 import org.junit.Assert
 
 class Helpers {
-	
+
 	def static is(String actual, CharSequence expected){
 		Assert::assertEquals(expected.toString().replaceAll("\r", ""), actual.replaceAll("\r", ""))
 	}

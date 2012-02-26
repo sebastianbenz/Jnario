@@ -21,7 +21,7 @@ import org.jnario.feature.feature.StepReference
  * @author Birgit Engelmann
  */
 class StepNameProvider {
-	
+
 	private static String MULTILINE = "\\\\( |\t)*\r?\n?( |\t)*"
 	
 	def nameOf(Step step){

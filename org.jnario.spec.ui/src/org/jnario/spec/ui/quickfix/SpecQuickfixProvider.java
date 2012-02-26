@@ -8,12 +8,12 @@
 
 package org.jnario.spec.ui.quickfix;
 
-import org.eclipse.xtext.xtend2.ui.quickfix.Xtend2QuickfixProvider;
+import org.eclipse.xtend.ide.quickfix.XtendQuickfixProvider;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
-public class SpecQuickfixProvider extends Xtend2QuickfixProvider {
+public class SpecQuickfixProvider extends XtendQuickfixProvider {
 
 }

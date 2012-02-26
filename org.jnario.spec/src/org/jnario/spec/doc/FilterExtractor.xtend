@@ -14,7 +14,7 @@ import static org.jnario.spec.doc.FilteringResult.*
 import java.util.List
 
 class FilterExtractor {
-	
+
 	private static String TAG = "(^|\\W)@filter(\\((.*?)\\))"
 	private static Pattern TAG_PATTERN = Pattern::compile(TAG, Pattern::DOTALL)
 	

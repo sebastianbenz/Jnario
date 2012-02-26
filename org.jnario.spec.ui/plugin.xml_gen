@@ -11,6 +11,7 @@
             default="true"
             extensions="spec"
             id="org.jnario.spec.Spec"
+            matchingStrategy="org.jnario.spec.ui.SpecExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.editor.JavaEditorInputMatcher"
             name="Spec Editor">
         </editor>
     </extension>
@@ -268,6 +269,36 @@
 			</command>
 		</menuContribution>
 	</extension>
+	<extension
+         point="org.eclipse.core.runtime.adapters">
+      <factory class="org.jnario.spec.ui.SpecExecutableExtensionFactory:org.eclipse.xtext.common.types.smap.StratumBreakpointAdapterFactory"
+         adaptableType="org.eclipse.xtext.ui.editor.XtextEditor">
+         <adapter type="org.eclipse.debug.ui.actions.IToggleBreakpointsTarget"/>
+      </factory> 
+   </extension>
+   <extension point="org.eclipse.ui.editorActions">
+      <editorContribution targetID="org.jnario.spec.Spec" 
+                          id="org.jnario.spec.Spec.ide.rulerActions">
+	     <action
+	             label="Not Used"
+	             class="org.jnario.spec.ui.SpecExecutableExtensionFactory:org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate"
+	             style="push"
+	             actionID="RulerDoubleClick"
+	             id="org.jnario.spec.Spec.doubleClickBreakpointAction"/>
+	  </editorContribution>
+   </extension>
+   <extension point="org.eclipse.ui.popupMenus">
+      <viewerContribution
+         targetID="example.rulerContextMenuId"
+         id="org.jnario.spec.Spec.ide.RulerPopupActions">
+         <action
+            label="Toggle Breakpoint"
+            class="org.jnario.spec.ui.SpecExecutableExtensionFactory:org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate"
+            menubarPath="additions"
+            id="org.jnario.spec.Spec.ide.rulerContextMenu.toggleBreakpointAction">
+         </action>
+      </viewerContribution>
+   </extension>
    	<!-- Rename Refactoring -->
 	<extension point="org.eclipse.ui.handlers">
 		<handler 

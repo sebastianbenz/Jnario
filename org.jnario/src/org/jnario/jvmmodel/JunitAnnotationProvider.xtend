@@ -24,7 +24,7 @@ import org.jnario.runner.FeatureRunner
  * @author Sebastian Benz - Initial contribution and API
  */
 class JunitAnnotationProvider {
-	
+
 	@Inject extension ExtendedJvmTypesBuilder
 	
 	def getExampleGroupRunnerAnnotation(EObject context){

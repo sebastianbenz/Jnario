@@ -13,7 +13,7 @@ import org.eclipse.xtext.ui.editor.model.edit.ISemanticModification;
 import org.eclipse.xtext.ui.editor.quickfix.Fix;
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor;
 import org.eclipse.xtext.validation.Issue;
-import org.eclipse.xtext.xtend2.ui.quickfix.Xtend2QuickfixProvider;
+import org.eclipse.xtend.ide.quickfix.XtendQuickfixProvider;
 import org.jnario.ui.buildpath.JnarioLibClasspathAdder;
 import org.jnario.ui.buildpath.JunitLibClasspathAdder;
 import org.jnario.validation.JnarioIssueCodes;
@@ -25,7 +25,7 @@ import com.google.inject.Inject;
  *
  */
 @SuppressWarnings("restriction")
-public class JnarioQuickFixProvider extends Xtend2QuickfixProvider{
+public class JnarioQuickFixProvider extends XtendQuickfixProvider{
 
 	@Inject
 	private IJavaProjectProvider projectProvider;
