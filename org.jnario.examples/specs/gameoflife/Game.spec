@@ -18,7 +18,7 @@ import static extension org.jnario.lib.Should.*
 
 @InstantiateWith(typeof(MockitoInstantiator))
 describe Game{
-	
+
 	@Mock Cell cell
 	
 	it "keeps all alive cells"{

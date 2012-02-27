@@ -112,7 +112,7 @@ public class ExampleColumnImpl extends XtendFieldImpl implements ExampleColumn {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<XExpression> getCells() {
 		if (cells == null) {

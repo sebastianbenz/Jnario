@@ -13,7 +13,6 @@ public class AliveCell extends Cell {
   }
   
   public Cell evolve(final int neighbourCount) {
-    {
       boolean _operator_or = false;
       boolean _underPopulated = this.underPopulated(neighbourCount);
       if (_underPopulated) {
@@ -28,7 +27,6 @@ public class AliveCell extends Cell {
       }
       AliveCell _aliveCell = AliveCell.aliveCell();
       return _aliveCell;
-    }
   }
   
   public boolean underPopulated(final int neighbourCount) {

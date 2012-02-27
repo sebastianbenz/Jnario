@@ -14,7 +14,7 @@ import static gameoflife.DeadCell.*
 class World {
 	
 	Map<Position, Cell> cells = newHashMap()
-	
+
 	def dispatch void addCell(Position position, AliveCell cell){
 		doAdd(position, cell)
 		addDeadNeighbours(position)

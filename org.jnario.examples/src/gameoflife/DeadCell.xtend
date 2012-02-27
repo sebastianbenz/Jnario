@@ -10,7 +10,7 @@ package gameoflife
 import static gameoflife.DeadCell.*
 
 class DeadCell extends Cell {
-	
+
 	def static DeadCell deadCell(){
 		return new DeadCell()
 	}

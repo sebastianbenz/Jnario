@@ -15,31 +15,23 @@ import static extension org.jnario.lib.Should.*
 describe Cell {
 		
 	def {
-		|   cell    | neighborCount  | newState |
-		
-		| aliveCell |       3		 | 	alive	|
-		| aliveCell |       2		 | 	alive	|
-		| aliveCell |       4		 | 	dead	|
-		| aliveCell |       1		 | 	dead	|
-		
-		| deadCell  |       3		 | 	alive	|
-		| deadCell  |       2		 | 	dead	|
-		| deadCell  |       4		 | 	dead	|
-	}
+		|  Cell cell    | neighborCount  |      newState        |
 	
+		| aliveCell |       3		 | 	typeof(AliveCell)	|
+		| aliveCell |       2		 | 	typeof(AliveCell)	|
+		| aliveCell |       4		 | 	typeof(DeadCell)	|
+		| aliveCell |       1		 | 	typeof(DeadCell)	|
+		
+		| deadCell  |       3		 | 	typeof(AliveCell)	|
+		| deadCell  |       2		 | 	typeof(DeadCell)	|
+		| deadCell  |       4		 | 	typeof(DeadCell)	|
+	}
+
 	it "changes its state based on the neighbor count"{
 		examples.forEach[
 			cell.evolve(neighborCount).should.be(newState)
 		]
 	} 
-	
-	def alive(){
-		typeof(AliveCell)
-	}	
-	
-	def dead(){
-		typeof(DeadCell)
-	}
-	
-}
 
+}
+ 

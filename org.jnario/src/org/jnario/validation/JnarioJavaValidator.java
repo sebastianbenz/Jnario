@@ -12,6 +12,7 @@ import static org.eclipse.xtend.core.xtend.XtendPackage.Literals.XTEND_CLASS__NA
 import java.util.List;
 
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.util.TypeConformanceComputer;
 import org.eclipse.xtext.common.types.util.TypeReferences;
@@ -19,9 +20,7 @@ import org.eclipse.xtext.validation.AbstractDeclarativeValidator;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
-import org.eclipse.xtend.core.xtend.XtendClass;
 import org.jnario.Assertion;
-import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
 import org.jnario.JnarioPackage;
@@ -80,18 +79,6 @@ public class JnarioJavaValidator extends AbstractDeclarativeValidator {
 			JvmTypeReference actualType = typeProvider.getType(cell);
 			if(typeReferences.is(actualType, Void.TYPE)){
 				error("Expression must not be void", cell, null, 0);
-			}
-		}
-	}
-	
-	@Check
-	public void checkExampleTableCellsConformToColumType(ExampleTable exampleTable){
-		for (ExampleColumn column : exampleTable.getColumns()) {
-			for (XExpression cell : column.getCells()) {
-				JvmTypeReference cellType = typeProvider.getType(cell);
-				if(!conformanceComputer.isConformant(column.getType(), cellType)){
-					error("Incompatible types. Expected " + cellType.getIdentifier() + " but was " + column.getType().getIdentifier(), cell, null, 0);
-				}
 			}
 		}
 	}
