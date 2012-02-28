@@ -122,7 +122,8 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
           column.setType(_typeForName_1);
         } else {
           JvmTypeReference _commonSuperType = this._typeConformanceComputer.getCommonSuperType(cellTypeList);
-          column.setType(_commonSuperType);
+          JvmTypeReference _cloneWithProxies = this._jvmTypesBuilder.cloneWithProxies(_commonSuperType);
+          column.setType(_cloneWithProxies);
         }
       }
     }

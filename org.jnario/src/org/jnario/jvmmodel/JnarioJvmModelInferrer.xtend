@@ -69,7 +69,7 @@ class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
 				if(cellTypeList.empty){
 					column.type = getTypeForName(typeof(Object), column)
 				}else{
-					column.type = cellTypeList.commonSuperType 
+					column.type = cellTypeList.commonSuperType.cloneWithProxies
 				}
 			}
 		}
