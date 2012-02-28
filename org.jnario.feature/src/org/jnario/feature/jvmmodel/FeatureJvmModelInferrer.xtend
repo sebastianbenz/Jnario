@@ -108,6 +108,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	
    	def generateFeatureSuite(Feature feature, FeatureFile featureFile, List<JvmGenericType> scenarios){
    		feature.toClass(feature.name.featureClassName)[
+   			feature.addDefaultConstructor(it);
    			featureFile.eResource.contents += it
    			packageName = featureFile.^package
    			annotations += feature.featureRunner
@@ -126,6 +127,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	def generateBackground(Feature feature, FeatureFile featureFile){
    		feature.toClass(feature.name.featureClassName + "Background")[
    			featureFile.eResource.contents += it
+   			feature.addDefaultConstructor(it)
    			packageName = featureFile.^package
    			abstract = true
    			generateBackgroundVariables(feature.background, it)

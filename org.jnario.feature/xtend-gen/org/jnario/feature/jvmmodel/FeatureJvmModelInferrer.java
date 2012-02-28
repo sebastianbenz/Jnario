@@ -146,6 +146,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     String _featureClassName = this._javaNameProvider.getFeatureClassName(_name);
     final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
         public void apply(final JvmGenericType it) {
+          FeatureJvmModelInferrer.this.addDefaultConstructor(feature, it);
           Resource _eResource = featureFile.eResource();
           EList<EObject> _contents = _eResource.getContents();
           _contents.add(it);
@@ -186,6 +187,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           Resource _eResource = featureFile.eResource();
           EList<EObject> _contents = _eResource.getContents();
           _contents.add(it);
+          FeatureJvmModelInferrer.this.addDefaultConstructor(feature, it);
           String _package = featureFile.getPackage();
           it.setPackageName(_package);
           it.setAbstract(true);

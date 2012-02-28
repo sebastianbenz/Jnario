@@ -86,7 +86,8 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 				
 				addAnnotations(exampleGroup)
 				addFields(exampleGroup)
-				
+				exampleGroup.addDefaultConstructor(it);
+								
 				var index = 0
 				val List<JvmGenericType> subExamples = newArrayList()
 				for (element : exampleGroup.members) {
@@ -193,7 +194,9 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 				]
 			]
 			
-			specType.members += table.toField(table.toFieldName, type)
+			specType.members += table.toField(table.toFieldName, type)[
+				visibility = JvmVisibility::PROTECTED
+			]
 
 			val constructor = table.toConstructor(exampleTableType.simpleName)[]
 			exampleTableType.members += constructor
@@ -209,7 +212,7 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 			assignments += "super(cellNames);"
 			
 			table.columns.forEach[column |
-				exampleTableType.members += column.toField				
+				exampleTableType.members += column.toField
 				val jvmParam = typesFactory.createJvmFormalParameter();
 				jvmParam.name = column.name
 				jvmParam.setParameterType(cloneWithProxies(column.type));

@@ -2,6 +2,8 @@ package gameoflife;
 
 import gameoflife.Cell;
 import gameoflife.DeadCell;
+import org.eclipse.xtext.xbase.lib.BooleanExtensions;
+import org.eclipse.xtext.xbase.lib.ComparableExtensions;
 
 @SuppressWarnings("all")
 public class AliveCell extends Cell {
@@ -17,7 +19,7 @@ public class AliveCell extends Cell {
       _or = true;
     } else {
       boolean _overpopulated = this.overpopulated(neighbourCount);
-      _or = (_underPopulated || _overpopulated);
+      _or = BooleanExtensions.operator_or(_underPopulated, _overpopulated);
     }
     if (_or) {
       DeadCell _deadCell = DeadCell.deadCell();
@@ -28,12 +30,12 @@ public class AliveCell extends Cell {
   }
   
   public boolean underPopulated(final int neighbourCount) {
-    boolean _lessThan = (neighbourCount < 2);
+    boolean _lessThan = ComparableExtensions.<Integer>operator_lessThan(Integer.valueOf(neighbourCount), Integer.valueOf(2));
     return _lessThan;
   }
   
   public boolean overpopulated(final int neighbourCount) {
-    boolean _greaterThan = (neighbourCount > 3);
+    boolean _greaterThan = ComparableExtensions.<Integer>operator_greaterThan(Integer.valueOf(neighbourCount), Integer.valueOf(3));
     return _greaterThan;
   }
 }

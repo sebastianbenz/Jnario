@@ -18,7 +18,6 @@ import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.xbase.XFeatureCall
-import org.eclipse.xtext.xbase.XMemberFeatureCall
 import org.eclipse.xtend.core.xtend.XtendFunction
 
 import static org.jnario.spec.jvmmodel.Constants.*
