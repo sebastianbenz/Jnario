@@ -24,16 +24,15 @@ public class FeatureJvmModelGenerator extends ExtendedJvmModelGenerator {
 	/**
 	 *  based on JvmModelGenerator, changed to generate an empty method instead of "throw UnsupportedOperationException"
 	 */
-
 	@Override
-	public void generateBody(JvmExecutable op, ITreeAppendable appendable) {
+	public void generateExecutableBody(JvmExecutable op, ITreeAppendable appendable) {
 		if(compilationStrategy(op) == null){
 			appendable.openScope();
 			appendable.increaseIndentation().append("{").newLine();
 			appendable.decreaseIndentation().newLine().append("}");
 			appendable.closeScope();		
 		}else{
-			super.generateBody(op, appendable);
+			super.generateExecutableBody(op, appendable);
 		}
 	}
 }

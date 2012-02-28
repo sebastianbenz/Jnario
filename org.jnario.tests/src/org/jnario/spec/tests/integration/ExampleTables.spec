@@ -9,6 +9,7 @@ package org.jnario.spec.tests.integration2
 import static extension org.jnario.jnario.test.util.Helpers.*
 import static extension org.jnario.jnario.test.util.SpecExecutor.*
 import org.junit.Ignore
+
 /*
  * Example tables are a great way to structure input and expected output data.
  */
@@ -87,6 +88,37 @@ describe "Example Tables"{
     '''.executesSuccessfully 
   }
   
+  /* 
+   * It is also possible to call methods or reference fields from within a table.
+   */
+  - "referencing members"{
+    '''
+    package bootstrap
+    
+    describe "Example Tables"{
+      
+      String field = "Hello"
+
+      def method(){
+        "World"
+      }  
+    
+      def myExampleWithMemberCalls{
+        | input    | result  |
+        | field    | "Hello" |
+        | method() | "World" | 
+      }       
+       
+      it "supports closures as values"{   
+        myExampleWithMemberCalls.forEach[
+          input.should.be(result)
+        ] 
+      }   
+    }
+    '''.executesSuccessfully 
+  }
+  
+
   /*
    * Jnario automatically infers the type of a column. It will use the 
    * common supertype of all expressions in a column. 

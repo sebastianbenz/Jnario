@@ -11,19 +11,22 @@ import static gameoflife.AliveCell.*
 import static gameoflife.DeadCell.*
 
 describe Cell {
+	
+	Class<?> alive = typeof(AliveCell)
+	Class<?> dead = typeof(AliveCell)
 		
 	def {
-		| Cell cell | neighborCount  |      newState        |
+		| Cell cell | neighborCount  | newState |
 	
-		| aliveCell |       3		 | 	typeof(AliveCell)	|
-		| aliveCell |       2		 | 	typeof(AliveCell)	|
-		| aliveCell |       4		 | 	typeof(DeadCell)	|
-		| aliveCell |       1		 | 	typeof(DeadCell)	|
+		| aliveCell |       3		 | 	alive	|
+		| aliveCell |       2		 | 	alive	|
+		| aliveCell |       4		 |  dead	|
+		| aliveCell |       1		 | 	dead	|
 		
-		| deadCell  |       3		 | 	typeof(AliveCell)	|
-		| deadCell  |       2		 | 	typeof(DeadCell)	|
-		| deadCell  |       4		 | 	typeof(DeadCell)	|
-	}
+		| deadCell  |       3		 | 	alive	|
+		| deadCell  |       2		 | 	dead	|
+		| deadCell  |       4		 | 	dead	|
+	} 
 
 	it "changes its state based on the neighbor count"{
 		examples.forEach[

@@ -42,16 +42,4 @@ public class SpecFileImpl extends XtendFileImpl implements SpecFile
 		return SpecPackage.Literals.SPEC_FILE;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void hello()
-	{
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 } //SpecFileImpl

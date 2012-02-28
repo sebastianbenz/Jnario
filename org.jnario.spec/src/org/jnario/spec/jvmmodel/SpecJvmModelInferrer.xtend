@@ -178,27 +178,29 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 		exampleGroup.annotations.translateAnnotationsTo(type)
 	}
 	
-	def transform(JvmGenericType specType, ExampleTable element, SpecFile spec){
-		element.toClass(element.toJavaClassName)[exampleTableType |
-			exampleTableType.superTypes += getTypeForName(typeof(ExampleTableRow), element)
-			exampleTableType.configureWith(element, spec)
+	def transform(JvmGenericType specType, ExampleTable table, SpecFile spec){
+		associateTableWithSpec(specType, table)
+		// it is important to not create the class for the table as otherwise the cells cannot resolve members of the spec file
+		spec.toClass(table.toJavaClassName)[exampleTableType |
+			exampleTableType.superTypes += getTypeForName(typeof(ExampleTableRow), table)
+			exampleTableType.configureWith(table, spec)
 			
-			val type = getTypeForName(typeof(org.jnario.lib.ExampleTable), element, exampleTableType.createTypeRef)
-			specType.members += element.toMethod("_init" + element.toJavaClassName, getTypeForName(Void::TYPE, element))[
-				annotations += element.getBeforeAnnotation()
+			val type = getTypeForName(typeof(org.jnario.lib.ExampleTable), table, exampleTableType.createTypeRef)
+			specType.members += table.toMethod("_init" + table.toJavaClassName, getTypeForName(Void::TYPE, table))[
+				annotations += table.getBeforeAnnotation()
 				setBody[ITreeAppendable a |
-					exampleTableType.generateInitializationMethod(element, a)	
+					exampleTableType.generateInitializationMethod(table, a)	
 				]
 			]
 			
-			specType.members += element.toField(element.toFieldName, type)
+			specType.members += table.toField(table.toFieldName, type)
 
-			val constructor = element.toConstructor(exampleTableType.simpleName)[]
+			val constructor = table.toConstructor(exampleTableType.simpleName)[]
 			exampleTableType.members += constructor
 			val assignments = <String>newArrayList()
 			
-			val stringType = getTypeForName(typeof(String), element)
-			val listType = getTypeForName(typeof(List), element, stringType)
+			val stringType = getTypeForName(typeof(String), table)
+			val listType = getTypeForName(typeof(List), table, stringType)
 			
 			val cellNames = typesFactory.createJvmFormalParameter();
 			cellNames.name = "cellNames"
@@ -206,16 +208,16 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 			constructor.parameters += cellNames
 			assignments += "super(cellNames);"
 			
-			element.columns.forEach[column |
+			table.columns.forEach[column |
 				exampleTableType.members += column.toField				
 				val jvmParam = typesFactory.createJvmFormalParameter();
 				jvmParam.name = column.name
 				jvmParam.setParameterType(cloneWithProxies(column.type));
 				constructor.parameters += jvmParam
-				associate(element, jvmParam); 
+				associate(table, jvmParam); 
 				assignments += "this." + column.name + " = " + column.name + ";" 
 				
-				exampleTableType.members += element.toMethod("get" + column.name.toFirstUpper, column.type)[
+				exampleTableType.members += table.toMethod("get" + column.name.toFirstUpper, column.type)[
 					setBody[ITreeAppendable a |
 						a.append("return " + column.name + ";")
 					]
@@ -225,15 +227,20 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 			constructor.setBody[ITreeAppendable a |
 				a.append(Joiner::on(Strings::newLine).join(assignments))
 			]
-			
-			
-			exampleTableType.members += element.toMethod("getCells", listType)[
+
+			exampleTableType.members += table.toMethod("getCells", listType)[
 				setBody[ITreeAppendable a |
-					a.append('return java.util.Arrays.asList(String.valueOf(' + element.columnNames.join(') , String.valueOf(') + '));')
+					a.append('return java.util.Arrays.asList(String.valueOf(' + table.columnNames.join(') , String.valueOf(') + '));')
 				]
 			]
 		]
 	} 
+	
+	def associateTableWithSpec(JvmGenericType type, ExampleTable table){
+		for(row : table.rows){
+			associate(row, type)
+		}
+	}
 	
 	def generateInitializationMethod(JvmGenericType exampleTableType, ExampleTable exampleTable, ITreeAppendable appendable){
 		for( row : exampleTable.rows){
@@ -241,7 +248,7 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 				compiler.toJavaStatement(cell, appendable, true)
 			}
 		}
-		appendable.append(exampleTable.toFieldName);
+		appendable.append(exampleTable.toFieldName)
 		appendable.append(" = ExampleTable.create(\"" + exampleTable.toFieldName + "\", \n")
 		appendable.append('  java.util.Arrays.asList("' + exampleTable.columnNames.join('", "') + '"), ')
 		appendable.increaseIndentation()

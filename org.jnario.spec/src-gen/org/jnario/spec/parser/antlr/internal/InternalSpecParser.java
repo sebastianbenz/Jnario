@@ -10101,11 +10101,11 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                             {
                             int LA89_1 = input.LA(2);
 
-                            if ( (LA89_1==26||LA89_1==97) ) {
-                                alt89=2;
-                            }
-                            else if ( (LA89_1==43) ) {
+                            if ( (LA89_1==43) ) {
                                 alt89=1;
+                            }
+                            else if ( (LA89_1==26||LA89_1==97) ) {
+                                alt89=2;
                             }
                             }
                             break;
@@ -11588,11 +11588,11 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                 {
                 int LA96_2 = input.LA(2);
 
-                if ( (LA96_2==EOF||(LA96_2>=RULE_STRING && LA96_2<=RULE_DECIMAL)||(LA96_2>=21 && LA96_2<=28)||(LA96_2>=32 && LA96_2<=33)||LA96_2==35||(LA96_2>=37 && LA96_2<=42)||LA96_2==44||(LA96_2>=46 && LA96_2<=49)||(LA96_2>=51 && LA96_2<=54)||(LA96_2>=57 && LA96_2<=58)||(LA96_2>=60 && LA96_2<=62)||(LA96_2>=68 && LA96_2<=108)||(LA96_2>=110 && LA96_2<=111)) ) {
-                    alt96=2;
-                }
-                else if ( (LA96_2==43) ) {
+                if ( (LA96_2==43) ) {
                     alt96=1;
+                }
+                else if ( (LA96_2==EOF||(LA96_2>=RULE_STRING && LA96_2<=RULE_DECIMAL)||(LA96_2>=21 && LA96_2<=28)||(LA96_2>=32 && LA96_2<=33)||LA96_2==35||(LA96_2>=37 && LA96_2<=42)||LA96_2==44||(LA96_2>=46 && LA96_2<=49)||(LA96_2>=51 && LA96_2<=54)||(LA96_2>=57 && LA96_2<=58)||(LA96_2>=60 && LA96_2<=62)||(LA96_2>=68 && LA96_2<=108)||(LA96_2>=110 && LA96_2<=111)) ) {
+                    alt96=2;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return current;}
@@ -20609,7 +20609,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXConstructorCall"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7187:1: ruleXConstructorCall returns [EObject current=null] : ( () otherlv_1= 'new' ( ( ruleQualifiedName ) ) (otherlv_3= '<' ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>' )? otherlv_8= '(' ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_arguments_9_0= ruleXShortClosure ) ) | ( ( (lv_arguments_10_0= ruleXExpression ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )* ) )? otherlv_13= ')' ( ( ( ruleXClosure ) )=> (lv_arguments_14_0= ruleXClosure ) )? ) ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7187:1: ruleXConstructorCall returns [EObject current=null] : ( () otherlv_1= 'new' ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_3= '<' ) ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>' )? ( ( ( '(' )=>otherlv_8= '(' ) ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_arguments_9_0= ruleXShortClosure ) ) | ( ( (lv_arguments_10_0= ruleXExpression ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )* ) )? otherlv_13= ')' )? ( ( ( ruleXClosure ) )=> (lv_arguments_14_0= ruleXClosure ) )? ) ;
     public final EObject ruleXConstructorCall() throws RecognitionException {
         EObject current = null;
 
@@ -20636,11 +20636,11 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7190:28: ( ( () otherlv_1= 'new' ( ( ruleQualifiedName ) ) (otherlv_3= '<' ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>' )? otherlv_8= '(' ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_arguments_9_0= ruleXShortClosure ) ) | ( ( (lv_arguments_10_0= ruleXExpression ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )* ) )? otherlv_13= ')' ( ( ( ruleXClosure ) )=> (lv_arguments_14_0= ruleXClosure ) )? ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7191:1: ( () otherlv_1= 'new' ( ( ruleQualifiedName ) ) (otherlv_3= '<' ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>' )? otherlv_8= '(' ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_arguments_9_0= ruleXShortClosure ) ) | ( ( (lv_arguments_10_0= ruleXExpression ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )* ) )? otherlv_13= ')' ( ( ( ruleXClosure ) )=> (lv_arguments_14_0= ruleXClosure ) )? )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7190:28: ( ( () otherlv_1= 'new' ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_3= '<' ) ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>' )? ( ( ( '(' )=>otherlv_8= '(' ) ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_arguments_9_0= ruleXShortClosure ) ) | ( ( (lv_arguments_10_0= ruleXExpression ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )* ) )? otherlv_13= ')' )? ( ( ( ruleXClosure ) )=> (lv_arguments_14_0= ruleXClosure ) )? ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7191:1: ( () otherlv_1= 'new' ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_3= '<' ) ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>' )? ( ( ( '(' )=>otherlv_8= '(' ) ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_arguments_9_0= ruleXShortClosure ) ) | ( ( (lv_arguments_10_0= ruleXExpression ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )* ) )? otherlv_13= ')' )? ( ( ( ruleXClosure ) )=> (lv_arguments_14_0= ruleXClosure ) )? )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7191:1: ( () otherlv_1= 'new' ( ( ruleQualifiedName ) ) (otherlv_3= '<' ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>' )? otherlv_8= '(' ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_arguments_9_0= ruleXShortClosure ) ) | ( ( (lv_arguments_10_0= ruleXExpression ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )* ) )? otherlv_13= ')' ( ( ( ruleXClosure ) )=> (lv_arguments_14_0= ruleXClosure ) )? )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7191:2: () otherlv_1= 'new' ( ( ruleQualifiedName ) ) (otherlv_3= '<' ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>' )? otherlv_8= '(' ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_arguments_9_0= ruleXShortClosure ) ) | ( ( (lv_arguments_10_0= ruleXExpression ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )* ) )? otherlv_13= ')' ( ( ( ruleXClosure ) )=> (lv_arguments_14_0= ruleXClosure ) )?
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7191:1: ( () otherlv_1= 'new' ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_3= '<' ) ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>' )? ( ( ( '(' )=>otherlv_8= '(' ) ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_arguments_9_0= ruleXShortClosure ) ) | ( ( (lv_arguments_10_0= ruleXExpression ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )* ) )? otherlv_13= ')' )? ( ( ( ruleXClosure ) )=> (lv_arguments_14_0= ruleXClosure ) )? )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7191:2: () otherlv_1= 'new' ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_3= '<' ) ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>' )? ( ( ( '(' )=>otherlv_8= '(' ) ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_arguments_9_0= ruleXShortClosure ) ) | ( ( (lv_arguments_10_0= ruleXExpression ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )* ) )? otherlv_13= ')' )? ( ( ( ruleXClosure ) )=> (lv_arguments_14_0= ruleXClosure ) )?
             {
             // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7191:2: ()
             // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7192:5: 
@@ -20695,35 +20695,37 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7216:2: (otherlv_3= '<' ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>' )?
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7216:2: ( ( ( '<' )=>otherlv_3= '<' ) ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>' )?
             int alt151=2;
-            int LA151_0 = input.LA(1);
-
-            if ( (LA151_0==27) ) {
-                alt151=1;
-            }
+            alt151 = dfa151.predict(input);
             switch (alt151) {
                 case 1 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7216:4: otherlv_3= '<' ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>'
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7216:3: ( ( '<' )=>otherlv_3= '<' ) ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>'
                     {
-                    otherlv_3=(Token)match(input,27,FOLLOW_27_in_ruleXConstructorCall15763); if (state.failed) return current;
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7216:3: ( ( '<' )=>otherlv_3= '<' )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7216:4: ( '<' )=>otherlv_3= '<'
+                    {
+                    otherlv_3=(Token)match(input,27,FOLLOW_27_in_ruleXConstructorCall15771); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_3, grammarAccess.getXConstructorCallAccess().getLessThanSignKeyword_3_0());
                           
                     }
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7220:1: ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7221:1: (lv_typeArguments_4_0= ruleJvmArgumentTypeReference )
+
+                    }
+
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7221:2: ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7222:1: (lv_typeArguments_4_0= ruleJvmArgumentTypeReference )
                     {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7221:1: (lv_typeArguments_4_0= ruleJvmArgumentTypeReference )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7222:3: lv_typeArguments_4_0= ruleJvmArgumentTypeReference
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7222:1: (lv_typeArguments_4_0= ruleJvmArgumentTypeReference )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7223:3: lv_typeArguments_4_0= ruleJvmArgumentTypeReference
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getXConstructorCallAccess().getTypeArgumentsJvmArgumentTypeReferenceParserRuleCall_3_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleXConstructorCall15784);
+                    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleXConstructorCall15793);
                     lv_typeArguments_4_0=ruleJvmArgumentTypeReference();
 
                     state._fsp--;
@@ -20747,7 +20749,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7238:2: (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )*
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7239:2: (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )*
                     loop150:
                     do {
                         int alt150=2;
@@ -20760,26 +20762,26 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
                         switch (alt150) {
                     	case 1 :
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7238:4: otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) )
+                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7239:4: otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) )
                     	    {
-                    	    otherlv_5=(Token)match(input,25,FOLLOW_25_in_ruleXConstructorCall15797); if (state.failed) return current;
+                    	    otherlv_5=(Token)match(input,25,FOLLOW_25_in_ruleXConstructorCall15806); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_5, grammarAccess.getXConstructorCallAccess().getCommaKeyword_3_2_0());
                     	          
                     	    }
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7242:1: ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) )
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7243:1: (lv_typeArguments_6_0= ruleJvmArgumentTypeReference )
+                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7243:1: ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) )
+                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7244:1: (lv_typeArguments_6_0= ruleJvmArgumentTypeReference )
                     	    {
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7243:1: (lv_typeArguments_6_0= ruleJvmArgumentTypeReference )
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7244:3: lv_typeArguments_6_0= ruleJvmArgumentTypeReference
+                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7244:1: (lv_typeArguments_6_0= ruleJvmArgumentTypeReference )
+                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7245:3: lv_typeArguments_6_0= ruleJvmArgumentTypeReference
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
                     	      	        newCompositeNode(grammarAccess.getXConstructorCallAccess().getTypeArgumentsJvmArgumentTypeReferenceParserRuleCall_3_2_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleXConstructorCall15818);
+                    	    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleXConstructorCall15827);
                     	    lv_typeArguments_6_0=ruleJvmArgumentTypeReference();
 
                     	    state._fsp--;
@@ -20812,7 +20814,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                         }
                     } while (true);
 
-                    otherlv_7=(Token)match(input,28,FOLLOW_28_in_ruleXConstructorCall15832); if (state.failed) return current;
+                    otherlv_7=(Token)match(input,28,FOLLOW_28_in_ruleXConstructorCall15841); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_7, grammarAccess.getXConstructorCallAccess().getGreaterThanSignKeyword_3_3());
@@ -20824,194 +20826,213 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_8=(Token)match(input,24,FOLLOW_24_in_ruleXConstructorCall15846); if (state.failed) return current;
-            if ( state.backtracking==0 ) {
-
-                  	newLeafNode(otherlv_8, grammarAccess.getXConstructorCallAccess().getLeftParenthesisKeyword_4());
-                  
-            }
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7268:1: ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_arguments_9_0= ruleXShortClosure ) ) | ( ( (lv_arguments_10_0= ruleXExpression ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )* ) )?
-            int alt153=3;
-            alt153 = dfa153.predict(input);
-            switch (alt153) {
-                case 1 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7268:2: ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_arguments_9_0= ruleXShortClosure ) )
-                    {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7268:2: ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_arguments_9_0= ruleXShortClosure ) )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7268:3: ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_arguments_9_0= ruleXShortClosure )
-                    {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7285:1: (lv_arguments_9_0= ruleXShortClosure )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7286:3: lv_arguments_9_0= ruleXShortClosure
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getXConstructorCallAccess().getArgumentsXShortClosureParserRuleCall_5_0_0()); 
-                      	    
-                    }
-                    pushFollow(FOLLOW_ruleXShortClosure_in_ruleXConstructorCall15918);
-                    lv_arguments_9_0=ruleXShortClosure();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getXConstructorCallRule());
-                      	        }
-                             		add(
-                             			current, 
-                             			"arguments",
-                              		lv_arguments_9_0, 
-                              		"XShortClosure");
-                      	        afterParserOrEnumRuleCall();
-                      	    
-                    }
-
-                    }
-
-
-                    }
-
-
-                    }
-                    break;
-                case 2 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7303:6: ( ( (lv_arguments_10_0= ruleXExpression ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )* )
-                    {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7303:6: ( ( (lv_arguments_10_0= ruleXExpression ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )* )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7303:7: ( (lv_arguments_10_0= ruleXExpression ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )*
-                    {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7303:7: ( (lv_arguments_10_0= ruleXExpression ) )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7304:1: (lv_arguments_10_0= ruleXExpression )
-                    {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7304:1: (lv_arguments_10_0= ruleXExpression )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7305:3: lv_arguments_10_0= ruleXExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getXConstructorCallAccess().getArgumentsXExpressionParserRuleCall_5_1_0_0()); 
-                      	    
-                    }
-                    pushFollow(FOLLOW_ruleXExpression_in_ruleXConstructorCall15946);
-                    lv_arguments_10_0=ruleXExpression();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getXConstructorCallRule());
-                      	        }
-                             		add(
-                             			current, 
-                             			"arguments",
-                              		lv_arguments_10_0, 
-                              		"XExpression");
-                      	        afterParserOrEnumRuleCall();
-                      	    
-                    }
-
-                    }
-
-
-                    }
-
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7321:2: (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )*
-                    loop152:
-                    do {
-                        int alt152=2;
-                        int LA152_0 = input.LA(1);
-
-                        if ( (LA152_0==25) ) {
-                            alt152=1;
-                        }
-
-
-                        switch (alt152) {
-                    	case 1 :
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7321:4: otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) )
-                    	    {
-                    	    otherlv_11=(Token)match(input,25,FOLLOW_25_in_ruleXConstructorCall15959); if (state.failed) return current;
-                    	    if ( state.backtracking==0 ) {
-
-                    	          	newLeafNode(otherlv_11, grammarAccess.getXConstructorCallAccess().getCommaKeyword_5_1_1_0());
-                    	          
-                    	    }
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7325:1: ( (lv_arguments_12_0= ruleXExpression ) )
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7326:1: (lv_arguments_12_0= ruleXExpression )
-                    	    {
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7326:1: (lv_arguments_12_0= ruleXExpression )
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7327:3: lv_arguments_12_0= ruleXExpression
-                    	    {
-                    	    if ( state.backtracking==0 ) {
-                    	       
-                    	      	        newCompositeNode(grammarAccess.getXConstructorCallAccess().getArgumentsXExpressionParserRuleCall_5_1_1_1_0()); 
-                    	      	    
-                    	    }
-                    	    pushFollow(FOLLOW_ruleXExpression_in_ruleXConstructorCall15980);
-                    	    lv_arguments_12_0=ruleXExpression();
-
-                    	    state._fsp--;
-                    	    if (state.failed) return current;
-                    	    if ( state.backtracking==0 ) {
-
-                    	      	        if (current==null) {
-                    	      	            current = createModelElementForParent(grammarAccess.getXConstructorCallRule());
-                    	      	        }
-                    	             		add(
-                    	             			current, 
-                    	             			"arguments",
-                    	              		lv_arguments_12_0, 
-                    	              		"XExpression");
-                    	      	        afterParserOrEnumRuleCall();
-                    	      	    
-                    	    }
-
-                    	    }
-
-
-                    	    }
-
-
-                    	    }
-                    	    break;
-
-                    	default :
-                    	    break loop152;
-                        }
-                    } while (true);
-
-
-                    }
-
-
-                    }
-                    break;
-
-            }
-
-            otherlv_13=(Token)match(input,26,FOLLOW_26_in_ruleXConstructorCall15997); if (state.failed) return current;
-            if ( state.backtracking==0 ) {
-
-                  	newLeafNode(otherlv_13, grammarAccess.getXConstructorCallAccess().getRightParenthesisKeyword_6());
-                  
-            }
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7347:1: ( ( ( ruleXClosure ) )=> (lv_arguments_14_0= ruleXClosure ) )?
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7265:3: ( ( ( '(' )=>otherlv_8= '(' ) ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_arguments_9_0= ruleXShortClosure ) ) | ( ( (lv_arguments_10_0= ruleXExpression ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )* ) )? otherlv_13= ')' )?
             int alt154=2;
             alt154 = dfa154.predict(input);
             switch (alt154) {
                 case 1 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7347:2: ( ( ruleXClosure ) )=> (lv_arguments_14_0= ruleXClosure )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7265:4: ( ( '(' )=>otherlv_8= '(' ) ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_arguments_9_0= ruleXShortClosure ) ) | ( ( (lv_arguments_10_0= ruleXExpression ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )* ) )? otherlv_13= ')'
                     {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7352:1: (lv_arguments_14_0= ruleXClosure )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7353:3: lv_arguments_14_0= ruleXClosure
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7265:4: ( ( '(' )=>otherlv_8= '(' )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7265:5: ( '(' )=>otherlv_8= '('
+                    {
+                    otherlv_8=(Token)match(input,24,FOLLOW_24_in_ruleXConstructorCall15864); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_8, grammarAccess.getXConstructorCallAccess().getLeftParenthesisKeyword_4_0());
+                          
+                    }
+
+                    }
+
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7270:2: ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_arguments_9_0= ruleXShortClosure ) ) | ( ( (lv_arguments_10_0= ruleXExpression ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )* ) )?
+                    int alt153=3;
+                    alt153 = dfa153.predict(input);
+                    switch (alt153) {
+                        case 1 :
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7270:3: ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_arguments_9_0= ruleXShortClosure ) )
+                            {
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7270:3: ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_arguments_9_0= ruleXShortClosure ) )
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7270:4: ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_arguments_9_0= ruleXShortClosure )
+                            {
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7287:1: (lv_arguments_9_0= ruleXShortClosure )
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7288:3: lv_arguments_9_0= ruleXShortClosure
+                            {
+                            if ( state.backtracking==0 ) {
+                               
+                              	        newCompositeNode(grammarAccess.getXConstructorCallAccess().getArgumentsXShortClosureParserRuleCall_4_1_0_0()); 
+                              	    
+                            }
+                            pushFollow(FOLLOW_ruleXShortClosure_in_ruleXConstructorCall15937);
+                            lv_arguments_9_0=ruleXShortClosure();
+
+                            state._fsp--;
+                            if (state.failed) return current;
+                            if ( state.backtracking==0 ) {
+
+                              	        if (current==null) {
+                              	            current = createModelElementForParent(grammarAccess.getXConstructorCallRule());
+                              	        }
+                                     		add(
+                                     			current, 
+                                     			"arguments",
+                                      		lv_arguments_9_0, 
+                                      		"XShortClosure");
+                              	        afterParserOrEnumRuleCall();
+                              	    
+                            }
+
+                            }
+
+
+                            }
+
+
+                            }
+                            break;
+                        case 2 :
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7305:6: ( ( (lv_arguments_10_0= ruleXExpression ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )* )
+                            {
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7305:6: ( ( (lv_arguments_10_0= ruleXExpression ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )* )
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7305:7: ( (lv_arguments_10_0= ruleXExpression ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )*
+                            {
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7305:7: ( (lv_arguments_10_0= ruleXExpression ) )
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7306:1: (lv_arguments_10_0= ruleXExpression )
+                            {
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7306:1: (lv_arguments_10_0= ruleXExpression )
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7307:3: lv_arguments_10_0= ruleXExpression
+                            {
+                            if ( state.backtracking==0 ) {
+                               
+                              	        newCompositeNode(grammarAccess.getXConstructorCallAccess().getArgumentsXExpressionParserRuleCall_4_1_1_0_0()); 
+                              	    
+                            }
+                            pushFollow(FOLLOW_ruleXExpression_in_ruleXConstructorCall15965);
+                            lv_arguments_10_0=ruleXExpression();
+
+                            state._fsp--;
+                            if (state.failed) return current;
+                            if ( state.backtracking==0 ) {
+
+                              	        if (current==null) {
+                              	            current = createModelElementForParent(grammarAccess.getXConstructorCallRule());
+                              	        }
+                                     		add(
+                                     			current, 
+                                     			"arguments",
+                                      		lv_arguments_10_0, 
+                                      		"XExpression");
+                              	        afterParserOrEnumRuleCall();
+                              	    
+                            }
+
+                            }
+
+
+                            }
+
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7323:2: (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )*
+                            loop152:
+                            do {
+                                int alt152=2;
+                                int LA152_0 = input.LA(1);
+
+                                if ( (LA152_0==25) ) {
+                                    alt152=1;
+                                }
+
+
+                                switch (alt152) {
+                            	case 1 :
+                            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7323:4: otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) )
+                            	    {
+                            	    otherlv_11=(Token)match(input,25,FOLLOW_25_in_ruleXConstructorCall15978); if (state.failed) return current;
+                            	    if ( state.backtracking==0 ) {
+
+                            	          	newLeafNode(otherlv_11, grammarAccess.getXConstructorCallAccess().getCommaKeyword_4_1_1_1_0());
+                            	          
+                            	    }
+                            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7327:1: ( (lv_arguments_12_0= ruleXExpression ) )
+                            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7328:1: (lv_arguments_12_0= ruleXExpression )
+                            	    {
+                            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7328:1: (lv_arguments_12_0= ruleXExpression )
+                            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7329:3: lv_arguments_12_0= ruleXExpression
+                            	    {
+                            	    if ( state.backtracking==0 ) {
+                            	       
+                            	      	        newCompositeNode(grammarAccess.getXConstructorCallAccess().getArgumentsXExpressionParserRuleCall_4_1_1_1_1_0()); 
+                            	      	    
+                            	    }
+                            	    pushFollow(FOLLOW_ruleXExpression_in_ruleXConstructorCall15999);
+                            	    lv_arguments_12_0=ruleXExpression();
+
+                            	    state._fsp--;
+                            	    if (state.failed) return current;
+                            	    if ( state.backtracking==0 ) {
+
+                            	      	        if (current==null) {
+                            	      	            current = createModelElementForParent(grammarAccess.getXConstructorCallRule());
+                            	      	        }
+                            	             		add(
+                            	             			current, 
+                            	             			"arguments",
+                            	              		lv_arguments_12_0, 
+                            	              		"XExpression");
+                            	      	        afterParserOrEnumRuleCall();
+                            	      	    
+                            	    }
+
+                            	    }
+
+
+                            	    }
+
+
+                            	    }
+                            	    break;
+
+                            	default :
+                            	    break loop152;
+                                }
+                            } while (true);
+
+
+                            }
+
+
+                            }
+                            break;
+
+                    }
+
+                    otherlv_13=(Token)match(input,26,FOLLOW_26_in_ruleXConstructorCall16016); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_13, grammarAccess.getXConstructorCallAccess().getRightParenthesisKeyword_4_2());
+                          
+                    }
+
+                    }
+                    break;
+
+            }
+
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7349:3: ( ( ( ruleXClosure ) )=> (lv_arguments_14_0= ruleXClosure ) )?
+            int alt155=2;
+            alt155 = dfa155.predict(input);
+            switch (alt155) {
+                case 1 :
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7349:4: ( ( ruleXClosure ) )=> (lv_arguments_14_0= ruleXClosure )
+                    {
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7354:1: (lv_arguments_14_0= ruleXClosure )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7355:3: lv_arguments_14_0= ruleXClosure
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getXConstructorCallAccess().getArgumentsXClosureParserRuleCall_7_0()); 
+                      	        newCompositeNode(grammarAccess.getXConstructorCallAccess().getArgumentsXClosureParserRuleCall_5_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleXClosure_in_ruleXConstructorCall16028);
+                    pushFollow(FOLLOW_ruleXClosure_in_ruleXConstructorCall16049);
                     lv_arguments_14_0=ruleXClosure();
 
                     state._fsp--;
@@ -21061,7 +21082,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXBooleanLiteral"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7377:1: entryRuleXBooleanLiteral returns [EObject current=null] : iv_ruleXBooleanLiteral= ruleXBooleanLiteral EOF ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7379:1: entryRuleXBooleanLiteral returns [EObject current=null] : iv_ruleXBooleanLiteral= ruleXBooleanLiteral EOF ;
     public final EObject entryRuleXBooleanLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -21069,13 +21090,13 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7378:2: (iv_ruleXBooleanLiteral= ruleXBooleanLiteral EOF )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7379:2: iv_ruleXBooleanLiteral= ruleXBooleanLiteral EOF
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7380:2: (iv_ruleXBooleanLiteral= ruleXBooleanLiteral EOF )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7381:2: iv_ruleXBooleanLiteral= ruleXBooleanLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXBooleanLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleXBooleanLiteral_in_entryRuleXBooleanLiteral16065);
+            pushFollow(FOLLOW_ruleXBooleanLiteral_in_entryRuleXBooleanLiteral16086);
             iv_ruleXBooleanLiteral=ruleXBooleanLiteral();
 
             state._fsp--;
@@ -21083,7 +21104,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXBooleanLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXBooleanLiteral16075); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXBooleanLiteral16096); if (state.failed) return current;
 
             }
 
@@ -21101,7 +21122,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXBooleanLiteral"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7386:1: ruleXBooleanLiteral returns [EObject current=null] : ( () (otherlv_1= 'false' | ( (lv_isTrue_2_0= 'true' ) ) ) ) ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7388:1: ruleXBooleanLiteral returns [EObject current=null] : ( () (otherlv_1= 'false' | ( (lv_isTrue_2_0= 'true' ) ) ) ) ;
     public final EObject ruleXBooleanLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -21111,14 +21132,14 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7389:28: ( ( () (otherlv_1= 'false' | ( (lv_isTrue_2_0= 'true' ) ) ) ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7390:1: ( () (otherlv_1= 'false' | ( (lv_isTrue_2_0= 'true' ) ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7391:28: ( ( () (otherlv_1= 'false' | ( (lv_isTrue_2_0= 'true' ) ) ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7392:1: ( () (otherlv_1= 'false' | ( (lv_isTrue_2_0= 'true' ) ) ) )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7390:1: ( () (otherlv_1= 'false' | ( (lv_isTrue_2_0= 'true' ) ) ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7390:2: () (otherlv_1= 'false' | ( (lv_isTrue_2_0= 'true' ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7392:1: ( () (otherlv_1= 'false' | ( (lv_isTrue_2_0= 'true' ) ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7392:2: () (otherlv_1= 'false' | ( (lv_isTrue_2_0= 'true' ) ) )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7390:2: ()
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7391:5: 
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7392:2: ()
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7393:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -21130,28 +21151,28 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7396:2: (otherlv_1= 'false' | ( (lv_isTrue_2_0= 'true' ) ) )
-            int alt155=2;
-            int LA155_0 = input.LA(1);
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7398:2: (otherlv_1= 'false' | ( (lv_isTrue_2_0= 'true' ) ) )
+            int alt156=2;
+            int LA156_0 = input.LA(1);
 
-            if ( (LA155_0==99) ) {
-                alt155=1;
+            if ( (LA156_0==99) ) {
+                alt156=1;
             }
-            else if ( (LA155_0==100) ) {
-                alt155=2;
+            else if ( (LA156_0==100) ) {
+                alt156=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 155, 0, input);
+                    new NoViableAltException("", 156, 0, input);
 
                 throw nvae;
             }
-            switch (alt155) {
+            switch (alt156) {
                 case 1 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7396:4: otherlv_1= 'false'
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7398:4: otherlv_1= 'false'
                     {
-                    otherlv_1=(Token)match(input,99,FOLLOW_99_in_ruleXBooleanLiteral16122); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,99,FOLLOW_99_in_ruleXBooleanLiteral16143); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_1, grammarAccess.getXBooleanLiteralAccess().getFalseKeyword_1_0());
@@ -21161,15 +21182,15 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7401:6: ( (lv_isTrue_2_0= 'true' ) )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7403:6: ( (lv_isTrue_2_0= 'true' ) )
                     {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7401:6: ( (lv_isTrue_2_0= 'true' ) )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7402:1: (lv_isTrue_2_0= 'true' )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7403:6: ( (lv_isTrue_2_0= 'true' ) )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7404:1: (lv_isTrue_2_0= 'true' )
                     {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7402:1: (lv_isTrue_2_0= 'true' )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7403:3: lv_isTrue_2_0= 'true'
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7404:1: (lv_isTrue_2_0= 'true' )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7405:3: lv_isTrue_2_0= 'true'
                     {
-                    lv_isTrue_2_0=(Token)match(input,100,FOLLOW_100_in_ruleXBooleanLiteral16146); if (state.failed) return current;
+                    lv_isTrue_2_0=(Token)match(input,100,FOLLOW_100_in_ruleXBooleanLiteral16167); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_isTrue_2_0, grammarAccess.getXBooleanLiteralAccess().getIsTrueTrueKeyword_1_1_0());
@@ -21218,7 +21239,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXNullLiteral"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7424:1: entryRuleXNullLiteral returns [EObject current=null] : iv_ruleXNullLiteral= ruleXNullLiteral EOF ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7426:1: entryRuleXNullLiteral returns [EObject current=null] : iv_ruleXNullLiteral= ruleXNullLiteral EOF ;
     public final EObject entryRuleXNullLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -21226,13 +21247,13 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7425:2: (iv_ruleXNullLiteral= ruleXNullLiteral EOF )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7426:2: iv_ruleXNullLiteral= ruleXNullLiteral EOF
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7427:2: (iv_ruleXNullLiteral= ruleXNullLiteral EOF )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7428:2: iv_ruleXNullLiteral= ruleXNullLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXNullLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleXNullLiteral_in_entryRuleXNullLiteral16196);
+            pushFollow(FOLLOW_ruleXNullLiteral_in_entryRuleXNullLiteral16217);
             iv_ruleXNullLiteral=ruleXNullLiteral();
 
             state._fsp--;
@@ -21240,7 +21261,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXNullLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXNullLiteral16206); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXNullLiteral16227); if (state.failed) return current;
 
             }
 
@@ -21258,7 +21279,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXNullLiteral"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7433:1: ruleXNullLiteral returns [EObject current=null] : ( () otherlv_1= 'null' ) ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7435:1: ruleXNullLiteral returns [EObject current=null] : ( () otherlv_1= 'null' ) ;
     public final EObject ruleXNullLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -21267,14 +21288,14 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7436:28: ( ( () otherlv_1= 'null' ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7437:1: ( () otherlv_1= 'null' )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7438:28: ( ( () otherlv_1= 'null' ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7439:1: ( () otherlv_1= 'null' )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7437:1: ( () otherlv_1= 'null' )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7437:2: () otherlv_1= 'null'
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7439:1: ( () otherlv_1= 'null' )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7439:2: () otherlv_1= 'null'
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7437:2: ()
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7438:5: 
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7439:2: ()
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7440:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -21286,7 +21307,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,101,FOLLOW_101_in_ruleXNullLiteral16252); if (state.failed) return current;
+            otherlv_1=(Token)match(input,101,FOLLOW_101_in_ruleXNullLiteral16273); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXNullLiteralAccess().getNullKeyword_1());
@@ -21315,7 +21336,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXNumberLiteral"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7455:1: entryRuleXNumberLiteral returns [EObject current=null] : iv_ruleXNumberLiteral= ruleXNumberLiteral EOF ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7457:1: entryRuleXNumberLiteral returns [EObject current=null] : iv_ruleXNumberLiteral= ruleXNumberLiteral EOF ;
     public final EObject entryRuleXNumberLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -21323,13 +21344,13 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7456:2: (iv_ruleXNumberLiteral= ruleXNumberLiteral EOF )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7457:2: iv_ruleXNumberLiteral= ruleXNumberLiteral EOF
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7458:2: (iv_ruleXNumberLiteral= ruleXNumberLiteral EOF )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7459:2: iv_ruleXNumberLiteral= ruleXNumberLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXNumberLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleXNumberLiteral_in_entryRuleXNumberLiteral16288);
+            pushFollow(FOLLOW_ruleXNumberLiteral_in_entryRuleXNumberLiteral16309);
             iv_ruleXNumberLiteral=ruleXNumberLiteral();
 
             state._fsp--;
@@ -21337,7 +21358,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXNumberLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXNumberLiteral16298); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXNumberLiteral16319); if (state.failed) return current;
 
             }
 
@@ -21355,7 +21376,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXNumberLiteral"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7464:1: ruleXNumberLiteral returns [EObject current=null] : ( () ( (lv_value_1_0= ruleNumber ) ) ) ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7466:1: ruleXNumberLiteral returns [EObject current=null] : ( () ( (lv_value_1_0= ruleNumber ) ) ) ;
     public final EObject ruleXNumberLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -21365,14 +21386,14 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7467:28: ( ( () ( (lv_value_1_0= ruleNumber ) ) ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7468:1: ( () ( (lv_value_1_0= ruleNumber ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7469:28: ( ( () ( (lv_value_1_0= ruleNumber ) ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7470:1: ( () ( (lv_value_1_0= ruleNumber ) ) )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7468:1: ( () ( (lv_value_1_0= ruleNumber ) ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7468:2: () ( (lv_value_1_0= ruleNumber ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7470:1: ( () ( (lv_value_1_0= ruleNumber ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7470:2: () ( (lv_value_1_0= ruleNumber ) )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7468:2: ()
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7469:5: 
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7470:2: ()
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7471:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -21384,18 +21405,18 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7474:2: ( (lv_value_1_0= ruleNumber ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7475:1: (lv_value_1_0= ruleNumber )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7476:2: ( (lv_value_1_0= ruleNumber ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7477:1: (lv_value_1_0= ruleNumber )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7475:1: (lv_value_1_0= ruleNumber )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7476:3: lv_value_1_0= ruleNumber
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7477:1: (lv_value_1_0= ruleNumber )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7478:3: lv_value_1_0= ruleNumber
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getXNumberLiteralAccess().getValueNumberParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleNumber_in_ruleXNumberLiteral16353);
+            pushFollow(FOLLOW_ruleNumber_in_ruleXNumberLiteral16374);
             lv_value_1_0=ruleNumber();
 
             state._fsp--;
@@ -21442,7 +21463,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXTypeLiteral"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7500:1: entryRuleXTypeLiteral returns [EObject current=null] : iv_ruleXTypeLiteral= ruleXTypeLiteral EOF ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7502:1: entryRuleXTypeLiteral returns [EObject current=null] : iv_ruleXTypeLiteral= ruleXTypeLiteral EOF ;
     public final EObject entryRuleXTypeLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -21450,13 +21471,13 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7501:2: (iv_ruleXTypeLiteral= ruleXTypeLiteral EOF )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7502:2: iv_ruleXTypeLiteral= ruleXTypeLiteral EOF
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7503:2: (iv_ruleXTypeLiteral= ruleXTypeLiteral EOF )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7504:2: iv_ruleXTypeLiteral= ruleXTypeLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXTypeLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleXTypeLiteral_in_entryRuleXTypeLiteral16389);
+            pushFollow(FOLLOW_ruleXTypeLiteral_in_entryRuleXTypeLiteral16410);
             iv_ruleXTypeLiteral=ruleXTypeLiteral();
 
             state._fsp--;
@@ -21464,7 +21485,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXTypeLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXTypeLiteral16399); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXTypeLiteral16420); if (state.failed) return current;
 
             }
 
@@ -21482,7 +21503,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXTypeLiteral"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7509:1: ruleXTypeLiteral returns [EObject current=null] : ( () otherlv_1= 'typeof' otherlv_2= '(' ( ( ruleQualifiedName ) ) otherlv_4= ')' ) ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7511:1: ruleXTypeLiteral returns [EObject current=null] : ( () otherlv_1= 'typeof' otherlv_2= '(' ( ( ruleQualifiedName ) ) otherlv_4= ')' ) ;
     public final EObject ruleXTypeLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -21493,14 +21514,14 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7512:28: ( ( () otherlv_1= 'typeof' otherlv_2= '(' ( ( ruleQualifiedName ) ) otherlv_4= ')' ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7513:1: ( () otherlv_1= 'typeof' otherlv_2= '(' ( ( ruleQualifiedName ) ) otherlv_4= ')' )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7514:28: ( ( () otherlv_1= 'typeof' otherlv_2= '(' ( ( ruleQualifiedName ) ) otherlv_4= ')' ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7515:1: ( () otherlv_1= 'typeof' otherlv_2= '(' ( ( ruleQualifiedName ) ) otherlv_4= ')' )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7513:1: ( () otherlv_1= 'typeof' otherlv_2= '(' ( ( ruleQualifiedName ) ) otherlv_4= ')' )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7513:2: () otherlv_1= 'typeof' otherlv_2= '(' ( ( ruleQualifiedName ) ) otherlv_4= ')'
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7515:1: ( () otherlv_1= 'typeof' otherlv_2= '(' ( ( ruleQualifiedName ) ) otherlv_4= ')' )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7515:2: () otherlv_1= 'typeof' otherlv_2= '(' ( ( ruleQualifiedName ) ) otherlv_4= ')'
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7513:2: ()
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7514:5: 
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7515:2: ()
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7516:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -21512,23 +21533,23 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,102,FOLLOW_102_in_ruleXTypeLiteral16445); if (state.failed) return current;
+            otherlv_1=(Token)match(input,102,FOLLOW_102_in_ruleXTypeLiteral16466); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXTypeLiteralAccess().getTypeofKeyword_1());
                   
             }
-            otherlv_2=(Token)match(input,24,FOLLOW_24_in_ruleXTypeLiteral16457); if (state.failed) return current;
+            otherlv_2=(Token)match(input,24,FOLLOW_24_in_ruleXTypeLiteral16478); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_2, grammarAccess.getXTypeLiteralAccess().getLeftParenthesisKeyword_2());
                   
             }
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7527:1: ( ( ruleQualifiedName ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7528:1: ( ruleQualifiedName )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7529:1: ( ( ruleQualifiedName ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7530:1: ( ruleQualifiedName )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7528:1: ( ruleQualifiedName )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7529:3: ruleQualifiedName
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7530:1: ( ruleQualifiedName )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7531:3: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
 
@@ -21542,7 +21563,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXTypeLiteralAccess().getTypeJvmTypeCrossReference_3_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_ruleXTypeLiteral16480);
+            pushFollow(FOLLOW_ruleQualifiedName_in_ruleXTypeLiteral16501);
             ruleQualifiedName();
 
             state._fsp--;
@@ -21558,7 +21579,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,26,FOLLOW_26_in_ruleXTypeLiteral16492); if (state.failed) return current;
+            otherlv_4=(Token)match(input,26,FOLLOW_26_in_ruleXTypeLiteral16513); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_4, grammarAccess.getXTypeLiteralAccess().getRightParenthesisKeyword_4());
@@ -21587,7 +21608,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXThrowExpression"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7554:1: entryRuleXThrowExpression returns [EObject current=null] : iv_ruleXThrowExpression= ruleXThrowExpression EOF ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7556:1: entryRuleXThrowExpression returns [EObject current=null] : iv_ruleXThrowExpression= ruleXThrowExpression EOF ;
     public final EObject entryRuleXThrowExpression() throws RecognitionException {
         EObject current = null;
 
@@ -21595,13 +21616,13 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7555:2: (iv_ruleXThrowExpression= ruleXThrowExpression EOF )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7556:2: iv_ruleXThrowExpression= ruleXThrowExpression EOF
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7557:2: (iv_ruleXThrowExpression= ruleXThrowExpression EOF )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7558:2: iv_ruleXThrowExpression= ruleXThrowExpression EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXThrowExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXThrowExpression_in_entryRuleXThrowExpression16528);
+            pushFollow(FOLLOW_ruleXThrowExpression_in_entryRuleXThrowExpression16549);
             iv_ruleXThrowExpression=ruleXThrowExpression();
 
             state._fsp--;
@@ -21609,7 +21630,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXThrowExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXThrowExpression16538); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXThrowExpression16559); if (state.failed) return current;
 
             }
 
@@ -21627,7 +21648,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXThrowExpression"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7563:1: ruleXThrowExpression returns [EObject current=null] : ( () otherlv_1= 'throw' ( (lv_expression_2_0= ruleXExpression ) ) ) ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7565:1: ruleXThrowExpression returns [EObject current=null] : ( () otherlv_1= 'throw' ( (lv_expression_2_0= ruleXExpression ) ) ) ;
     public final EObject ruleXThrowExpression() throws RecognitionException {
         EObject current = null;
 
@@ -21638,14 +21659,14 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7566:28: ( ( () otherlv_1= 'throw' ( (lv_expression_2_0= ruleXExpression ) ) ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7567:1: ( () otherlv_1= 'throw' ( (lv_expression_2_0= ruleXExpression ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7568:28: ( ( () otherlv_1= 'throw' ( (lv_expression_2_0= ruleXExpression ) ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7569:1: ( () otherlv_1= 'throw' ( (lv_expression_2_0= ruleXExpression ) ) )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7567:1: ( () otherlv_1= 'throw' ( (lv_expression_2_0= ruleXExpression ) ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7567:2: () otherlv_1= 'throw' ( (lv_expression_2_0= ruleXExpression ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7569:1: ( () otherlv_1= 'throw' ( (lv_expression_2_0= ruleXExpression ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7569:2: () otherlv_1= 'throw' ( (lv_expression_2_0= ruleXExpression ) )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7567:2: ()
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7568:5: 
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7569:2: ()
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7570:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -21657,24 +21678,24 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,103,FOLLOW_103_in_ruleXThrowExpression16584); if (state.failed) return current;
+            otherlv_1=(Token)match(input,103,FOLLOW_103_in_ruleXThrowExpression16605); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXThrowExpressionAccess().getThrowKeyword_1());
                   
             }
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7577:1: ( (lv_expression_2_0= ruleXExpression ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7578:1: (lv_expression_2_0= ruleXExpression )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7579:1: ( (lv_expression_2_0= ruleXExpression ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7580:1: (lv_expression_2_0= ruleXExpression )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7578:1: (lv_expression_2_0= ruleXExpression )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7579:3: lv_expression_2_0= ruleXExpression
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7580:1: (lv_expression_2_0= ruleXExpression )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7581:3: lv_expression_2_0= ruleXExpression
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getXThrowExpressionAccess().getExpressionXExpressionParserRuleCall_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleXExpression_in_ruleXThrowExpression16605);
+            pushFollow(FOLLOW_ruleXExpression_in_ruleXThrowExpression16626);
             lv_expression_2_0=ruleXExpression();
 
             state._fsp--;
@@ -21721,7 +21742,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXReturnExpression"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7603:1: entryRuleXReturnExpression returns [EObject current=null] : iv_ruleXReturnExpression= ruleXReturnExpression EOF ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7605:1: entryRuleXReturnExpression returns [EObject current=null] : iv_ruleXReturnExpression= ruleXReturnExpression EOF ;
     public final EObject entryRuleXReturnExpression() throws RecognitionException {
         EObject current = null;
 
@@ -21729,13 +21750,13 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7604:2: (iv_ruleXReturnExpression= ruleXReturnExpression EOF )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7605:2: iv_ruleXReturnExpression= ruleXReturnExpression EOF
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7606:2: (iv_ruleXReturnExpression= ruleXReturnExpression EOF )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7607:2: iv_ruleXReturnExpression= ruleXReturnExpression EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXReturnExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXReturnExpression_in_entryRuleXReturnExpression16641);
+            pushFollow(FOLLOW_ruleXReturnExpression_in_entryRuleXReturnExpression16662);
             iv_ruleXReturnExpression=ruleXReturnExpression();
 
             state._fsp--;
@@ -21743,7 +21764,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXReturnExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXReturnExpression16651); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXReturnExpression16672); if (state.failed) return current;
 
             }
 
@@ -21761,7 +21782,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXReturnExpression"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7612:1: ruleXReturnExpression returns [EObject current=null] : ( () otherlv_1= 'return' ( ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression ) )? ) ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7614:1: ruleXReturnExpression returns [EObject current=null] : ( () otherlv_1= 'return' ( ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression ) )? ) ;
     public final EObject ruleXReturnExpression() throws RecognitionException {
         EObject current = null;
 
@@ -21772,14 +21793,14 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7615:28: ( ( () otherlv_1= 'return' ( ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression ) )? ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7616:1: ( () otherlv_1= 'return' ( ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression ) )? )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7617:28: ( ( () otherlv_1= 'return' ( ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression ) )? ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7618:1: ( () otherlv_1= 'return' ( ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression ) )? )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7616:1: ( () otherlv_1= 'return' ( ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression ) )? )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7616:2: () otherlv_1= 'return' ( ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression ) )?
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7618:1: ( () otherlv_1= 'return' ( ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression ) )? )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7618:2: () otherlv_1= 'return' ( ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression ) )?
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7616:2: ()
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7617:5: 
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7618:2: ()
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7619:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -21791,28 +21812,28 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,104,FOLLOW_104_in_ruleXReturnExpression16697); if (state.failed) return current;
+            otherlv_1=(Token)match(input,104,FOLLOW_104_in_ruleXReturnExpression16718); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXReturnExpressionAccess().getReturnKeyword_1());
                   
             }
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7626:1: ( ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression ) )?
-            int alt156=2;
-            alt156 = dfa156.predict(input);
-            switch (alt156) {
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7628:1: ( ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression ) )?
+            int alt157=2;
+            alt157 = dfa157.predict(input);
+            switch (alt157) {
                 case 1 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7626:2: ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7628:2: ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression )
                     {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7631:1: (lv_expression_2_0= ruleXExpression )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7632:3: lv_expression_2_0= ruleXExpression
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7633:1: (lv_expression_2_0= ruleXExpression )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7634:3: lv_expression_2_0= ruleXExpression
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getXReturnExpressionAccess().getExpressionXExpressionParserRuleCall_2_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleXExpression_in_ruleXReturnExpression16728);
+                    pushFollow(FOLLOW_ruleXExpression_in_ruleXReturnExpression16749);
                     lv_expression_2_0=ruleXExpression();
 
                     state._fsp--;
@@ -21862,7 +21883,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXTryCatchFinallyExpression"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7656:1: entryRuleXTryCatchFinallyExpression returns [EObject current=null] : iv_ruleXTryCatchFinallyExpression= ruleXTryCatchFinallyExpression EOF ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7658:1: entryRuleXTryCatchFinallyExpression returns [EObject current=null] : iv_ruleXTryCatchFinallyExpression= ruleXTryCatchFinallyExpression EOF ;
     public final EObject entryRuleXTryCatchFinallyExpression() throws RecognitionException {
         EObject current = null;
 
@@ -21870,13 +21891,13 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7657:2: (iv_ruleXTryCatchFinallyExpression= ruleXTryCatchFinallyExpression EOF )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7658:2: iv_ruleXTryCatchFinallyExpression= ruleXTryCatchFinallyExpression EOF
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7659:2: (iv_ruleXTryCatchFinallyExpression= ruleXTryCatchFinallyExpression EOF )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7660:2: iv_ruleXTryCatchFinallyExpression= ruleXTryCatchFinallyExpression EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXTryCatchFinallyExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXTryCatchFinallyExpression_in_entryRuleXTryCatchFinallyExpression16765);
+            pushFollow(FOLLOW_ruleXTryCatchFinallyExpression_in_entryRuleXTryCatchFinallyExpression16786);
             iv_ruleXTryCatchFinallyExpression=ruleXTryCatchFinallyExpression();
 
             state._fsp--;
@@ -21884,7 +21905,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXTryCatchFinallyExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXTryCatchFinallyExpression16775); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXTryCatchFinallyExpression16796); if (state.failed) return current;
 
             }
 
@@ -21902,7 +21923,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXTryCatchFinallyExpression"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7665:1: ruleXTryCatchFinallyExpression returns [EObject current=null] : ( () otherlv_1= 'try' ( (lv_expression_2_0= ruleXExpression ) ) ( ( ( ( 'catch' )=> (lv_catchClauses_3_0= ruleXCatchClause ) )+ ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? ) | (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) ) ) ) ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7667:1: ruleXTryCatchFinallyExpression returns [EObject current=null] : ( () otherlv_1= 'try' ( (lv_expression_2_0= ruleXExpression ) ) ( ( ( ( 'catch' )=> (lv_catchClauses_3_0= ruleXCatchClause ) )+ ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? ) | (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) ) ) ) ;
     public final EObject ruleXTryCatchFinallyExpression() throws RecognitionException {
         EObject current = null;
 
@@ -21921,14 +21942,14 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7668:28: ( ( () otherlv_1= 'try' ( (lv_expression_2_0= ruleXExpression ) ) ( ( ( ( 'catch' )=> (lv_catchClauses_3_0= ruleXCatchClause ) )+ ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? ) | (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) ) ) ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7669:1: ( () otherlv_1= 'try' ( (lv_expression_2_0= ruleXExpression ) ) ( ( ( ( 'catch' )=> (lv_catchClauses_3_0= ruleXCatchClause ) )+ ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? ) | (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7670:28: ( ( () otherlv_1= 'try' ( (lv_expression_2_0= ruleXExpression ) ) ( ( ( ( 'catch' )=> (lv_catchClauses_3_0= ruleXCatchClause ) )+ ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? ) | (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) ) ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7671:1: ( () otherlv_1= 'try' ( (lv_expression_2_0= ruleXExpression ) ) ( ( ( ( 'catch' )=> (lv_catchClauses_3_0= ruleXCatchClause ) )+ ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? ) | (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) ) ) )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7669:1: ( () otherlv_1= 'try' ( (lv_expression_2_0= ruleXExpression ) ) ( ( ( ( 'catch' )=> (lv_catchClauses_3_0= ruleXCatchClause ) )+ ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? ) | (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) ) ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7669:2: () otherlv_1= 'try' ( (lv_expression_2_0= ruleXExpression ) ) ( ( ( ( 'catch' )=> (lv_catchClauses_3_0= ruleXCatchClause ) )+ ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? ) | (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7671:1: ( () otherlv_1= 'try' ( (lv_expression_2_0= ruleXExpression ) ) ( ( ( ( 'catch' )=> (lv_catchClauses_3_0= ruleXCatchClause ) )+ ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? ) | (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7671:2: () otherlv_1= 'try' ( (lv_expression_2_0= ruleXExpression ) ) ( ( ( ( 'catch' )=> (lv_catchClauses_3_0= ruleXCatchClause ) )+ ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? ) | (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) ) )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7669:2: ()
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7670:5: 
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7671:2: ()
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7672:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -21940,24 +21961,24 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,105,FOLLOW_105_in_ruleXTryCatchFinallyExpression16821); if (state.failed) return current;
+            otherlv_1=(Token)match(input,105,FOLLOW_105_in_ruleXTryCatchFinallyExpression16842); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXTryCatchFinallyExpressionAccess().getTryKeyword_1());
                   
             }
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7679:1: ( (lv_expression_2_0= ruleXExpression ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7680:1: (lv_expression_2_0= ruleXExpression )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7681:1: ( (lv_expression_2_0= ruleXExpression ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7682:1: (lv_expression_2_0= ruleXExpression )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7680:1: (lv_expression_2_0= ruleXExpression )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7681:3: lv_expression_2_0= ruleXExpression
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7682:1: (lv_expression_2_0= ruleXExpression )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7683:3: lv_expression_2_0= ruleXExpression
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getXTryCatchFinallyExpressionAccess().getExpressionXExpressionParserRuleCall_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression16842);
+            pushFollow(FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression16863);
             lv_expression_2_0=ruleXExpression();
 
             state._fsp--;
@@ -21981,61 +22002,61 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7697:2: ( ( ( ( 'catch' )=> (lv_catchClauses_3_0= ruleXCatchClause ) )+ ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? ) | (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) ) )
-            int alt159=2;
-            int LA159_0 = input.LA(1);
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7699:2: ( ( ( ( 'catch' )=> (lv_catchClauses_3_0= ruleXCatchClause ) )+ ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? ) | (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) ) )
+            int alt160=2;
+            int LA160_0 = input.LA(1);
 
-            if ( (LA159_0==107) ) {
-                alt159=1;
+            if ( (LA160_0==107) ) {
+                alt160=1;
             }
-            else if ( (LA159_0==106) ) {
-                alt159=2;
+            else if ( (LA160_0==106) ) {
+                alt160=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 159, 0, input);
+                    new NoViableAltException("", 160, 0, input);
 
                 throw nvae;
             }
-            switch (alt159) {
+            switch (alt160) {
                 case 1 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7697:3: ( ( ( 'catch' )=> (lv_catchClauses_3_0= ruleXCatchClause ) )+ ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7699:3: ( ( ( 'catch' )=> (lv_catchClauses_3_0= ruleXCatchClause ) )+ ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? )
                     {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7697:3: ( ( ( 'catch' )=> (lv_catchClauses_3_0= ruleXCatchClause ) )+ ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7697:4: ( ( 'catch' )=> (lv_catchClauses_3_0= ruleXCatchClause ) )+ ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )?
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7699:3: ( ( ( 'catch' )=> (lv_catchClauses_3_0= ruleXCatchClause ) )+ ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7699:4: ( ( 'catch' )=> (lv_catchClauses_3_0= ruleXCatchClause ) )+ ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )?
                     {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7697:4: ( ( 'catch' )=> (lv_catchClauses_3_0= ruleXCatchClause ) )+
-                    int cnt157=0;
-                    loop157:
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7699:4: ( ( 'catch' )=> (lv_catchClauses_3_0= ruleXCatchClause ) )+
+                    int cnt158=0;
+                    loop158:
                     do {
-                        int alt157=2;
-                        int LA157_0 = input.LA(1);
+                        int alt158=2;
+                        int LA158_0 = input.LA(1);
 
-                        if ( (LA157_0==107) ) {
-                            int LA157_2 = input.LA(2);
+                        if ( (LA158_0==107) ) {
+                            int LA158_2 = input.LA(2);
 
-                            if ( (synpred43_InternalSpec()) ) {
-                                alt157=1;
+                            if ( (synpred45_InternalSpec()) ) {
+                                alt158=1;
                             }
 
 
                         }
 
 
-                        switch (alt157) {
+                        switch (alt158) {
                     	case 1 :
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7697:5: ( 'catch' )=> (lv_catchClauses_3_0= ruleXCatchClause )
+                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7699:5: ( 'catch' )=> (lv_catchClauses_3_0= ruleXCatchClause )
                     	    {
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7699:1: (lv_catchClauses_3_0= ruleXCatchClause )
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7700:3: lv_catchClauses_3_0= ruleXCatchClause
+                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7701:1: (lv_catchClauses_3_0= ruleXCatchClause )
+                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7702:3: lv_catchClauses_3_0= ruleXCatchClause
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
                     	      	        newCompositeNode(grammarAccess.getXTryCatchFinallyExpressionAccess().getCatchClausesXCatchClauseParserRuleCall_3_0_0_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleXCatchClause_in_ruleXTryCatchFinallyExpression16872);
+                    	    pushFollow(FOLLOW_ruleXCatchClause_in_ruleXTryCatchFinallyExpression16893);
                     	    lv_catchClauses_3_0=ruleXCatchClause();
 
                     	    state._fsp--;
@@ -22061,34 +22082,34 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    if ( cnt157 >= 1 ) break loop157;
+                    	    if ( cnt158 >= 1 ) break loop158;
                     	    if (state.backtracking>0) {state.failed=true; return current;}
                                 EarlyExitException eee =
-                                    new EarlyExitException(157, input);
+                                    new EarlyExitException(158, input);
                                 throw eee;
                         }
-                        cnt157++;
+                        cnt158++;
                     } while (true);
 
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7716:3: ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )?
-                    int alt158=2;
-                    int LA158_0 = input.LA(1);
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7718:3: ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )?
+                    int alt159=2;
+                    int LA159_0 = input.LA(1);
 
-                    if ( (LA158_0==106) ) {
-                        int LA158_1 = input.LA(2);
+                    if ( (LA159_0==106) ) {
+                        int LA159_1 = input.LA(2);
 
-                        if ( (synpred44_InternalSpec()) ) {
-                            alt158=1;
+                        if ( (synpred46_InternalSpec()) ) {
+                            alt159=1;
                         }
                     }
-                    switch (alt158) {
+                    switch (alt159) {
                         case 1 :
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7716:4: ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) )
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7718:4: ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) )
                             {
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7716:4: ( ( 'finally' )=>otherlv_4= 'finally' )
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7716:5: ( 'finally' )=>otherlv_4= 'finally'
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7718:4: ( ( 'finally' )=>otherlv_4= 'finally' )
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7718:5: ( 'finally' )=>otherlv_4= 'finally'
                             {
-                            otherlv_4=(Token)match(input,106,FOLLOW_106_in_ruleXTryCatchFinallyExpression16894); if (state.failed) return current;
+                            otherlv_4=(Token)match(input,106,FOLLOW_106_in_ruleXTryCatchFinallyExpression16915); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                   	newLeafNode(otherlv_4, grammarAccess.getXTryCatchFinallyExpressionAccess().getFinallyKeyword_3_0_1_0());
@@ -22097,18 +22118,18 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
                             }
 
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7721:2: ( (lv_finallyExpression_5_0= ruleXExpression ) )
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7722:1: (lv_finallyExpression_5_0= ruleXExpression )
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7723:2: ( (lv_finallyExpression_5_0= ruleXExpression ) )
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7724:1: (lv_finallyExpression_5_0= ruleXExpression )
                             {
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7722:1: (lv_finallyExpression_5_0= ruleXExpression )
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7723:3: lv_finallyExpression_5_0= ruleXExpression
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7724:1: (lv_finallyExpression_5_0= ruleXExpression )
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7725:3: lv_finallyExpression_5_0= ruleXExpression
                             {
                             if ( state.backtracking==0 ) {
                                
                               	        newCompositeNode(grammarAccess.getXTryCatchFinallyExpressionAccess().getFinallyExpressionXExpressionParserRuleCall_3_0_1_1_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression16916);
+                            pushFollow(FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression16937);
                             lv_finallyExpression_5_0=ruleXExpression();
 
                             state._fsp--;
@@ -22145,29 +22166,29 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7740:6: (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7742:6: (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) )
                     {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7740:6: (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7740:8: otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7742:6: (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7742:8: otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) )
                     {
-                    otherlv_6=(Token)match(input,106,FOLLOW_106_in_ruleXTryCatchFinallyExpression16938); if (state.failed) return current;
+                    otherlv_6=(Token)match(input,106,FOLLOW_106_in_ruleXTryCatchFinallyExpression16959); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_6, grammarAccess.getXTryCatchFinallyExpressionAccess().getFinallyKeyword_3_1_0());
                           
                     }
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7744:1: ( (lv_finallyExpression_7_0= ruleXExpression ) )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7745:1: (lv_finallyExpression_7_0= ruleXExpression )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7746:1: ( (lv_finallyExpression_7_0= ruleXExpression ) )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7747:1: (lv_finallyExpression_7_0= ruleXExpression )
                     {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7745:1: (lv_finallyExpression_7_0= ruleXExpression )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7746:3: lv_finallyExpression_7_0= ruleXExpression
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7747:1: (lv_finallyExpression_7_0= ruleXExpression )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7748:3: lv_finallyExpression_7_0= ruleXExpression
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getXTryCatchFinallyExpressionAccess().getFinallyExpressionXExpressionParserRuleCall_3_1_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression16959);
+                    pushFollow(FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression16980);
                     lv_finallyExpression_7_0=ruleXExpression();
 
                     state._fsp--;
@@ -22223,7 +22244,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXCatchClause"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7770:1: entryRuleXCatchClause returns [EObject current=null] : iv_ruleXCatchClause= ruleXCatchClause EOF ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7772:1: entryRuleXCatchClause returns [EObject current=null] : iv_ruleXCatchClause= ruleXCatchClause EOF ;
     public final EObject entryRuleXCatchClause() throws RecognitionException {
         EObject current = null;
 
@@ -22231,13 +22252,13 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7771:2: (iv_ruleXCatchClause= ruleXCatchClause EOF )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7772:2: iv_ruleXCatchClause= ruleXCatchClause EOF
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7773:2: (iv_ruleXCatchClause= ruleXCatchClause EOF )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7774:2: iv_ruleXCatchClause= ruleXCatchClause EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXCatchClauseRule()); 
             }
-            pushFollow(FOLLOW_ruleXCatchClause_in_entryRuleXCatchClause16997);
+            pushFollow(FOLLOW_ruleXCatchClause_in_entryRuleXCatchClause17018);
             iv_ruleXCatchClause=ruleXCatchClause();
 
             state._fsp--;
@@ -22245,7 +22266,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXCatchClause; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXCatchClause17007); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXCatchClause17028); if (state.failed) return current;
 
             }
 
@@ -22263,7 +22284,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXCatchClause"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7779:1: ruleXCatchClause returns [EObject current=null] : ( ( ( 'catch' )=>otherlv_0= 'catch' ) otherlv_1= '(' ( (lv_declaredParam_2_0= ruleFullJvmFormalParameter ) ) otherlv_3= ')' ( (lv_expression_4_0= ruleXExpression ) ) ) ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7781:1: ruleXCatchClause returns [EObject current=null] : ( ( ( 'catch' )=>otherlv_0= 'catch' ) otherlv_1= '(' ( (lv_declaredParam_2_0= ruleFullJvmFormalParameter ) ) otherlv_3= ')' ( (lv_expression_4_0= ruleXExpression ) ) ) ;
     public final EObject ruleXCatchClause() throws RecognitionException {
         EObject current = null;
 
@@ -22278,16 +22299,16 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7782:28: ( ( ( ( 'catch' )=>otherlv_0= 'catch' ) otherlv_1= '(' ( (lv_declaredParam_2_0= ruleFullJvmFormalParameter ) ) otherlv_3= ')' ( (lv_expression_4_0= ruleXExpression ) ) ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7783:1: ( ( ( 'catch' )=>otherlv_0= 'catch' ) otherlv_1= '(' ( (lv_declaredParam_2_0= ruleFullJvmFormalParameter ) ) otherlv_3= ')' ( (lv_expression_4_0= ruleXExpression ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7784:28: ( ( ( ( 'catch' )=>otherlv_0= 'catch' ) otherlv_1= '(' ( (lv_declaredParam_2_0= ruleFullJvmFormalParameter ) ) otherlv_3= ')' ( (lv_expression_4_0= ruleXExpression ) ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7785:1: ( ( ( 'catch' )=>otherlv_0= 'catch' ) otherlv_1= '(' ( (lv_declaredParam_2_0= ruleFullJvmFormalParameter ) ) otherlv_3= ')' ( (lv_expression_4_0= ruleXExpression ) ) )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7783:1: ( ( ( 'catch' )=>otherlv_0= 'catch' ) otherlv_1= '(' ( (lv_declaredParam_2_0= ruleFullJvmFormalParameter ) ) otherlv_3= ')' ( (lv_expression_4_0= ruleXExpression ) ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7783:2: ( ( 'catch' )=>otherlv_0= 'catch' ) otherlv_1= '(' ( (lv_declaredParam_2_0= ruleFullJvmFormalParameter ) ) otherlv_3= ')' ( (lv_expression_4_0= ruleXExpression ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7785:1: ( ( ( 'catch' )=>otherlv_0= 'catch' ) otherlv_1= '(' ( (lv_declaredParam_2_0= ruleFullJvmFormalParameter ) ) otherlv_3= ')' ( (lv_expression_4_0= ruleXExpression ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7785:2: ( ( 'catch' )=>otherlv_0= 'catch' ) otherlv_1= '(' ( (lv_declaredParam_2_0= ruleFullJvmFormalParameter ) ) otherlv_3= ')' ( (lv_expression_4_0= ruleXExpression ) )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7783:2: ( ( 'catch' )=>otherlv_0= 'catch' )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7783:3: ( 'catch' )=>otherlv_0= 'catch'
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7785:2: ( ( 'catch' )=>otherlv_0= 'catch' )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7785:3: ( 'catch' )=>otherlv_0= 'catch'
             {
-            otherlv_0=(Token)match(input,107,FOLLOW_107_in_ruleXCatchClause17052); if (state.failed) return current;
+            otherlv_0=(Token)match(input,107,FOLLOW_107_in_ruleXCatchClause17073); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getXCatchClauseAccess().getCatchKeyword_0());
@@ -22296,24 +22317,24 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,24,FOLLOW_24_in_ruleXCatchClause17065); if (state.failed) return current;
+            otherlv_1=(Token)match(input,24,FOLLOW_24_in_ruleXCatchClause17086); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXCatchClauseAccess().getLeftParenthesisKeyword_1());
                   
             }
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7792:1: ( (lv_declaredParam_2_0= ruleFullJvmFormalParameter ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7793:1: (lv_declaredParam_2_0= ruleFullJvmFormalParameter )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7794:1: ( (lv_declaredParam_2_0= ruleFullJvmFormalParameter ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7795:1: (lv_declaredParam_2_0= ruleFullJvmFormalParameter )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7793:1: (lv_declaredParam_2_0= ruleFullJvmFormalParameter )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7794:3: lv_declaredParam_2_0= ruleFullJvmFormalParameter
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7795:1: (lv_declaredParam_2_0= ruleFullJvmFormalParameter )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7796:3: lv_declaredParam_2_0= ruleFullJvmFormalParameter
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getXCatchClauseAccess().getDeclaredParamFullJvmFormalParameterParserRuleCall_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleFullJvmFormalParameter_in_ruleXCatchClause17086);
+            pushFollow(FOLLOW_ruleFullJvmFormalParameter_in_ruleXCatchClause17107);
             lv_declaredParam_2_0=ruleFullJvmFormalParameter();
 
             state._fsp--;
@@ -22337,24 +22358,24 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,26,FOLLOW_26_in_ruleXCatchClause17098); if (state.failed) return current;
+            otherlv_3=(Token)match(input,26,FOLLOW_26_in_ruleXCatchClause17119); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_3, grammarAccess.getXCatchClauseAccess().getRightParenthesisKeyword_3());
                   
             }
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7814:1: ( (lv_expression_4_0= ruleXExpression ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7815:1: (lv_expression_4_0= ruleXExpression )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7816:1: ( (lv_expression_4_0= ruleXExpression ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7817:1: (lv_expression_4_0= ruleXExpression )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7815:1: (lv_expression_4_0= ruleXExpression )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7816:3: lv_expression_4_0= ruleXExpression
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7817:1: (lv_expression_4_0= ruleXExpression )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7818:3: lv_expression_4_0= ruleXExpression
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getXCatchClauseAccess().getExpressionXExpressionParserRuleCall_4_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleXExpression_in_ruleXCatchClause17119);
+            pushFollow(FOLLOW_ruleXExpression_in_ruleXCatchClause17140);
             lv_expression_4_0=ruleXExpression();
 
             state._fsp--;
@@ -22401,7 +22422,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleQualifiedName"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7840:1: entryRuleQualifiedName returns [String current=null] : iv_ruleQualifiedName= ruleQualifiedName EOF ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7842:1: entryRuleQualifiedName returns [String current=null] : iv_ruleQualifiedName= ruleQualifiedName EOF ;
     public final String entryRuleQualifiedName() throws RecognitionException {
         String current = null;
 
@@ -22409,13 +22430,13 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7841:2: (iv_ruleQualifiedName= ruleQualifiedName EOF )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7842:2: iv_ruleQualifiedName= ruleQualifiedName EOF
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7843:2: (iv_ruleQualifiedName= ruleQualifiedName EOF )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7844:2: iv_ruleQualifiedName= ruleQualifiedName EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getQualifiedNameRule()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName17156);
+            pushFollow(FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName17177);
             iv_ruleQualifiedName=ruleQualifiedName();
 
             state._fsp--;
@@ -22423,7 +22444,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleQualifiedName.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedName17167); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedName17188); if (state.failed) return current;
 
             }
 
@@ -22441,7 +22462,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQualifiedName"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7849:1: ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ValidID_0= ruleValidID ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )* ) ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7851:1: ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ValidID_0= ruleValidID ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )* ) ;
     public final AntlrDatatypeRuleToken ruleQualifiedName() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -22454,18 +22475,18 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7852:28: ( (this_ValidID_0= ruleValidID ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )* ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7853:1: (this_ValidID_0= ruleValidID ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )* )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7854:28: ( (this_ValidID_0= ruleValidID ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )* ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7855:1: (this_ValidID_0= ruleValidID ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )* )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7853:1: (this_ValidID_0= ruleValidID ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )* )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7854:5: this_ValidID_0= ruleValidID ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )*
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7855:1: (this_ValidID_0= ruleValidID ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )* )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7856:5: this_ValidID_0= ruleValidID ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )*
             {
             if ( state.backtracking==0 ) {
                
                       newCompositeNode(grammarAccess.getQualifiedNameAccess().getValidIDParserRuleCall_0()); 
                   
             }
-            pushFollow(FOLLOW_ruleValidID_in_ruleQualifiedName17214);
+            pushFollow(FOLLOW_ruleValidID_in_ruleQualifiedName17235);
             this_ValidID_0=ruleValidID();
 
             state._fsp--;
@@ -22480,29 +22501,29 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                       afterParserOrEnumRuleCall();
                   
             }
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7864:1: ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )*
-            loop160:
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7866:1: ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )*
+            loop161:
             do {
-                int alt160=2;
-                int LA160_0 = input.LA(1);
+                int alt161=2;
+                int LA161_0 = input.LA(1);
 
-                if ( (LA160_0==51) ) {
-                    int LA160_2 = input.LA(2);
+                if ( (LA161_0==51) ) {
+                    int LA161_2 = input.LA(2);
 
-                    if ( (LA160_2==RULE_ID) ) {
-                        int LA160_3 = input.LA(3);
+                    if ( (LA161_2==RULE_ID) ) {
+                        int LA161_3 = input.LA(3);
 
-                        if ( (synpred46_InternalSpec()) ) {
-                            alt160=1;
+                        if ( (synpred48_InternalSpec()) ) {
+                            alt161=1;
                         }
 
 
                     }
-                    else if ( (LA160_2==57) ) {
-                        int LA160_4 = input.LA(3);
+                    else if ( (LA161_2==57) ) {
+                        int LA161_4 = input.LA(3);
 
-                        if ( (synpred46_InternalSpec()) ) {
-                            alt160=1;
+                        if ( (synpred48_InternalSpec()) ) {
+                            alt161=1;
                         }
 
 
@@ -22512,14 +22533,14 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                 }
 
 
-                switch (alt160) {
+                switch (alt161) {
             	case 1 :
-            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7864:2: ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID
+            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7866:2: ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID
             	    {
-            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7864:2: ( ( '.' )=>kw= '.' )
-            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7864:3: ( '.' )=>kw= '.'
+            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7866:2: ( ( '.' )=>kw= '.' )
+            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7866:3: ( '.' )=>kw= '.'
             	    {
-            	    kw=(Token)match(input,51,FOLLOW_51_in_ruleQualifiedName17242); if (state.failed) return current;
+            	    kw=(Token)match(input,51,FOLLOW_51_in_ruleQualifiedName17263); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	              current.merge(kw);
@@ -22534,7 +22555,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             	              newCompositeNode(grammarAccess.getQualifiedNameAccess().getValidIDParserRuleCall_1_1()); 
             	          
             	    }
-            	    pushFollow(FOLLOW_ruleValidID_in_ruleQualifiedName17265);
+            	    pushFollow(FOLLOW_ruleValidID_in_ruleQualifiedName17286);
             	    this_ValidID_2=ruleValidID();
 
             	    state._fsp--;
@@ -22554,7 +22575,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop160;
+            	    break loop161;
                 }
             } while (true);
 
@@ -22581,7 +22602,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleNumber"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7891:1: entryRuleNumber returns [String current=null] : iv_ruleNumber= ruleNumber EOF ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7893:1: entryRuleNumber returns [String current=null] : iv_ruleNumber= ruleNumber EOF ;
     public final String entryRuleNumber() throws RecognitionException {
         String current = null;
 
@@ -22592,13 +22613,13 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
         		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
         	
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7895:2: (iv_ruleNumber= ruleNumber EOF )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7896:2: iv_ruleNumber= ruleNumber EOF
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7897:2: (iv_ruleNumber= ruleNumber EOF )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7898:2: iv_ruleNumber= ruleNumber EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getNumberRule()); 
             }
-            pushFollow(FOLLOW_ruleNumber_in_entryRuleNumber17319);
+            pushFollow(FOLLOW_ruleNumber_in_entryRuleNumber17340);
             iv_ruleNumber=ruleNumber();
 
             state._fsp--;
@@ -22606,7 +22627,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleNumber.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleNumber17330); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleNumber17351); if (state.failed) return current;
 
             }
 
@@ -22627,7 +22648,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleNumber"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7906:1: ruleNumber returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_HEX_0= RULE_HEX | ( (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )? ) ) ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7908:1: ruleNumber returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_HEX_0= RULE_HEX | ( (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )? ) ) ;
     public final AntlrDatatypeRuleToken ruleNumber() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -22642,31 +22663,31 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
         		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
             
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7910:28: ( (this_HEX_0= RULE_HEX | ( (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )? ) ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7911:1: (this_HEX_0= RULE_HEX | ( (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )? ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7912:28: ( (this_HEX_0= RULE_HEX | ( (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )? ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7913:1: (this_HEX_0= RULE_HEX | ( (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )? ) )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7911:1: (this_HEX_0= RULE_HEX | ( (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )? ) )
-            int alt164=2;
-            int LA164_0 = input.LA(1);
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7913:1: (this_HEX_0= RULE_HEX | ( (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )? ) )
+            int alt165=2;
+            int LA165_0 = input.LA(1);
 
-            if ( (LA164_0==RULE_HEX) ) {
-                alt164=1;
+            if ( (LA165_0==RULE_HEX) ) {
+                alt165=1;
             }
-            else if ( ((LA164_0>=RULE_INT && LA164_0<=RULE_DECIMAL)) ) {
-                alt164=2;
+            else if ( ((LA165_0>=RULE_INT && LA165_0<=RULE_DECIMAL)) ) {
+                alt165=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 164, 0, input);
+                    new NoViableAltException("", 165, 0, input);
 
                 throw nvae;
             }
-            switch (alt164) {
+            switch (alt165) {
                 case 1 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7911:6: this_HEX_0= RULE_HEX
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7913:6: this_HEX_0= RULE_HEX
                     {
-                    this_HEX_0=(Token)match(input,RULE_HEX,FOLLOW_RULE_HEX_in_ruleNumber17374); if (state.failed) return current;
+                    this_HEX_0=(Token)match(input,RULE_HEX,FOLLOW_RULE_HEX_in_ruleNumber17395); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		current.merge(this_HEX_0);
@@ -22681,33 +22702,33 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7919:6: ( (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )? )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7921:6: ( (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )? )
                     {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7919:6: ( (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )? )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7919:7: (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )?
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7921:6: ( (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )? )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7921:7: (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )?
                     {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7919:7: (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL )
-                    int alt161=2;
-                    int LA161_0 = input.LA(1);
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7921:7: (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL )
+                    int alt162=2;
+                    int LA162_0 = input.LA(1);
 
-                    if ( (LA161_0==RULE_INT) ) {
-                        alt161=1;
+                    if ( (LA162_0==RULE_INT) ) {
+                        alt162=1;
                     }
-                    else if ( (LA161_0==RULE_DECIMAL) ) {
-                        alt161=2;
+                    else if ( (LA162_0==RULE_DECIMAL) ) {
+                        alt162=2;
                     }
                     else {
                         if (state.backtracking>0) {state.failed=true; return current;}
                         NoViableAltException nvae =
-                            new NoViableAltException("", 161, 0, input);
+                            new NoViableAltException("", 162, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt161) {
+                    switch (alt162) {
                         case 1 :
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7919:12: this_INT_1= RULE_INT
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7921:12: this_INT_1= RULE_INT
                             {
-                            this_INT_1=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleNumber17402); if (state.failed) return current;
+                            this_INT_1=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleNumber17423); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               		current.merge(this_INT_1);
@@ -22722,9 +22743,9 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7927:10: this_DECIMAL_2= RULE_DECIMAL
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7929:10: this_DECIMAL_2= RULE_DECIMAL
                             {
-                            this_DECIMAL_2=(Token)match(input,RULE_DECIMAL,FOLLOW_RULE_DECIMAL_in_ruleNumber17428); if (state.failed) return current;
+                            this_DECIMAL_2=(Token)match(input,RULE_DECIMAL,FOLLOW_RULE_DECIMAL_in_ruleNumber17449); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               		current.merge(this_DECIMAL_2);
@@ -22741,50 +22762,50 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7934:2: (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )?
-                    int alt163=2;
-                    int LA163_0 = input.LA(1);
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7936:2: (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )?
+                    int alt164=2;
+                    int LA164_0 = input.LA(1);
 
-                    if ( (LA163_0==51) ) {
-                        int LA163_1 = input.LA(2);
+                    if ( (LA164_0==51) ) {
+                        int LA164_1 = input.LA(2);
 
-                        if ( ((LA163_1>=RULE_INT && LA163_1<=RULE_DECIMAL)) ) {
-                            alt163=1;
+                        if ( ((LA164_1>=RULE_INT && LA164_1<=RULE_DECIMAL)) ) {
+                            alt164=1;
                         }
                     }
-                    switch (alt163) {
+                    switch (alt164) {
                         case 1 :
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7935:2: kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL )
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7937:2: kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL )
                             {
-                            kw=(Token)match(input,51,FOLLOW_51_in_ruleNumber17448); if (state.failed) return current;
+                            kw=(Token)match(input,51,FOLLOW_51_in_ruleNumber17469); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                       current.merge(kw);
                                       newLeafNode(kw, grammarAccess.getNumberAccess().getFullStopKeyword_1_1_0()); 
                                   
                             }
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7940:1: (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL )
-                            int alt162=2;
-                            int LA162_0 = input.LA(1);
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7942:1: (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL )
+                            int alt163=2;
+                            int LA163_0 = input.LA(1);
 
-                            if ( (LA162_0==RULE_INT) ) {
-                                alt162=1;
+                            if ( (LA163_0==RULE_INT) ) {
+                                alt163=1;
                             }
-                            else if ( (LA162_0==RULE_DECIMAL) ) {
-                                alt162=2;
+                            else if ( (LA163_0==RULE_DECIMAL) ) {
+                                alt163=2;
                             }
                             else {
                                 if (state.backtracking>0) {state.failed=true; return current;}
                                 NoViableAltException nvae =
-                                    new NoViableAltException("", 162, 0, input);
+                                    new NoViableAltException("", 163, 0, input);
 
                                 throw nvae;
                             }
-                            switch (alt162) {
+                            switch (alt163) {
                                 case 1 :
-                                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7940:6: this_INT_4= RULE_INT
+                                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7942:6: this_INT_4= RULE_INT
                                     {
-                                    this_INT_4=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleNumber17464); if (state.failed) return current;
+                                    this_INT_4=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleNumber17485); if (state.failed) return current;
                                     if ( state.backtracking==0 ) {
 
                                       		current.merge(this_INT_4);
@@ -22799,9 +22820,9 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                                     }
                                     break;
                                 case 2 :
-                                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7948:10: this_DECIMAL_5= RULE_DECIMAL
+                                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7950:10: this_DECIMAL_5= RULE_DECIMAL
                                     {
-                                    this_DECIMAL_5=(Token)match(input,RULE_DECIMAL,FOLLOW_RULE_DECIMAL_in_ruleNumber17490); if (state.failed) return current;
+                                    this_DECIMAL_5=(Token)match(input,RULE_DECIMAL,FOLLOW_RULE_DECIMAL_in_ruleNumber17511); if (state.failed) return current;
                                     if ( state.backtracking==0 ) {
 
                                       		current.merge(this_DECIMAL_5);
@@ -22856,7 +22877,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmTypeReference"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7966:1: entryRuleJvmTypeReference returns [EObject current=null] : iv_ruleJvmTypeReference= ruleJvmTypeReference EOF ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7968:1: entryRuleJvmTypeReference returns [EObject current=null] : iv_ruleJvmTypeReference= ruleJvmTypeReference EOF ;
     public final EObject entryRuleJvmTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -22864,13 +22885,13 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7967:2: (iv_ruleJvmTypeReference= ruleJvmTypeReference EOF )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7968:2: iv_ruleJvmTypeReference= ruleJvmTypeReference EOF
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7969:2: (iv_ruleJvmTypeReference= ruleJvmTypeReference EOF )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7970:2: iv_ruleJvmTypeReference= ruleJvmTypeReference EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmTypeReferenceRule()); 
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_entryRuleJvmTypeReference17543);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_entryRuleJvmTypeReference17564);
             iv_ruleJvmTypeReference=ruleJvmTypeReference();
 
             state._fsp--;
@@ -22878,7 +22899,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleJvmTypeReference; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmTypeReference17553); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmTypeReference17574); if (state.failed) return current;
 
             }
 
@@ -22896,7 +22917,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmTypeReference"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7975:1: ruleJvmTypeReference returns [EObject current=null] : ( (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () '[' ']' ) )=> ( () otherlv_2= '[' otherlv_3= ']' ) )* ) | this_XFunctionTypeRef_4= ruleXFunctionTypeRef ) ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7977:1: ruleJvmTypeReference returns [EObject current=null] : ( (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () '[' ']' ) )=> ( () otherlv_2= '[' otherlv_3= ']' ) )* ) | this_XFunctionTypeRef_4= ruleXFunctionTypeRef ) ;
     public final EObject ruleJvmTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -22910,39 +22931,39 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7978:28: ( ( (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () '[' ']' ) )=> ( () otherlv_2= '[' otherlv_3= ']' ) )* ) | this_XFunctionTypeRef_4= ruleXFunctionTypeRef ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7979:1: ( (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () '[' ']' ) )=> ( () otherlv_2= '[' otherlv_3= ']' ) )* ) | this_XFunctionTypeRef_4= ruleXFunctionTypeRef )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7980:28: ( ( (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () '[' ']' ) )=> ( () otherlv_2= '[' otherlv_3= ']' ) )* ) | this_XFunctionTypeRef_4= ruleXFunctionTypeRef ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7981:1: ( (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () '[' ']' ) )=> ( () otherlv_2= '[' otherlv_3= ']' ) )* ) | this_XFunctionTypeRef_4= ruleXFunctionTypeRef )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7979:1: ( (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () '[' ']' ) )=> ( () otherlv_2= '[' otherlv_3= ']' ) )* ) | this_XFunctionTypeRef_4= ruleXFunctionTypeRef )
-            int alt166=2;
-            int LA166_0 = input.LA(1);
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7981:1: ( (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () '[' ']' ) )=> ( () otherlv_2= '[' otherlv_3= ']' ) )* ) | this_XFunctionTypeRef_4= ruleXFunctionTypeRef )
+            int alt167=2;
+            int LA167_0 = input.LA(1);
 
-            if ( (LA166_0==RULE_ID||LA166_0==57) ) {
-                alt166=1;
+            if ( (LA167_0==RULE_ID||LA167_0==57) ) {
+                alt167=1;
             }
-            else if ( (LA166_0==24||LA166_0==108) ) {
-                alt166=2;
+            else if ( (LA167_0==24||LA167_0==108) ) {
+                alt167=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 166, 0, input);
+                    new NoViableAltException("", 167, 0, input);
 
                 throw nvae;
             }
-            switch (alt166) {
+            switch (alt167) {
                 case 1 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7979:2: (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () '[' ']' ) )=> ( () otherlv_2= '[' otherlv_3= ']' ) )* )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7981:2: (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () '[' ']' ) )=> ( () otherlv_2= '[' otherlv_3= ']' ) )* )
                     {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7979:2: (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () '[' ']' ) )=> ( () otherlv_2= '[' otherlv_3= ']' ) )* )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7980:5: this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () '[' ']' ) )=> ( () otherlv_2= '[' otherlv_3= ']' ) )*
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7981:2: (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () '[' ']' ) )=> ( () otherlv_2= '[' otherlv_3= ']' ) )* )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7982:5: this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () '[' ']' ) )=> ( () otherlv_2= '[' otherlv_3= ']' ) )*
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getJvmTypeReferenceAccess().getJvmParameterizedTypeReferenceParserRuleCall_0_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleJvmParameterizedTypeReference_in_ruleJvmTypeReference17601);
+                    pushFollow(FOLLOW_ruleJvmParameterizedTypeReference_in_ruleJvmTypeReference17622);
                     this_JvmParameterizedTypeReference_0=ruleJvmParameterizedTypeReference();
 
                     state._fsp--;
@@ -22953,20 +22974,20 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                               afterParserOrEnumRuleCall();
                           
                     }
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7988:1: ( ( ( () '[' ']' ) )=> ( () otherlv_2= '[' otherlv_3= ']' ) )*
-                    loop165:
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7990:1: ( ( ( () '[' ']' ) )=> ( () otherlv_2= '[' otherlv_3= ']' ) )*
+                    loop166:
                     do {
-                        int alt165=2;
-                        int LA165_0 = input.LA(1);
+                        int alt166=2;
+                        int LA166_0 = input.LA(1);
 
-                        if ( (LA165_0==48) ) {
-                            int LA165_2 = input.LA(2);
+                        if ( (LA166_0==48) ) {
+                            int LA166_2 = input.LA(2);
 
-                            if ( (LA165_2==49) ) {
-                                int LA165_3 = input.LA(3);
+                            if ( (LA166_2==49) ) {
+                                int LA166_3 = input.LA(3);
 
-                                if ( (synpred47_InternalSpec()) ) {
-                                    alt165=1;
+                                if ( (synpred49_InternalSpec()) ) {
+                                    alt166=1;
                                 }
 
 
@@ -22976,15 +22997,15 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                         }
 
 
-                        switch (alt165) {
+                        switch (alt166) {
                     	case 1 :
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7988:2: ( ( () '[' ']' ) )=> ( () otherlv_2= '[' otherlv_3= ']' )
+                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7990:2: ( ( () '[' ']' ) )=> ( () otherlv_2= '[' otherlv_3= ']' )
                     	    {
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7991:5: ( () otherlv_2= '[' otherlv_3= ']' )
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7991:6: () otherlv_2= '[' otherlv_3= ']'
+                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7993:5: ( () otherlv_2= '[' otherlv_3= ']' )
+                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7993:6: () otherlv_2= '[' otherlv_3= ']'
                     	    {
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7991:6: ()
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7992:5: 
+                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7993:6: ()
+                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7994:5: 
                     	    {
                     	    if ( state.backtracking==0 ) {
 
@@ -22996,13 +23017,13 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
                     	    }
 
-                    	    otherlv_2=(Token)match(input,48,FOLLOW_48_in_ruleJvmTypeReference17639); if (state.failed) return current;
+                    	    otherlv_2=(Token)match(input,48,FOLLOW_48_in_ruleJvmTypeReference17660); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_2, grammarAccess.getJvmTypeReferenceAccess().getLeftSquareBracketKeyword_0_1_0_1());
                     	          
                     	    }
-                    	    otherlv_3=(Token)match(input,49,FOLLOW_49_in_ruleJvmTypeReference17651); if (state.failed) return current;
+                    	    otherlv_3=(Token)match(input,49,FOLLOW_49_in_ruleJvmTypeReference17672); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_3, grammarAccess.getJvmTypeReferenceAccess().getRightSquareBracketKeyword_0_1_0_2());
@@ -23016,7 +23037,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop165;
+                    	    break loop166;
                         }
                     } while (true);
 
@@ -23027,14 +23048,14 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8007:5: this_XFunctionTypeRef_4= ruleXFunctionTypeRef
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8009:5: this_XFunctionTypeRef_4= ruleXFunctionTypeRef
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getJvmTypeReferenceAccess().getXFunctionTypeRefParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXFunctionTypeRef_in_ruleJvmTypeReference17683);
+                    pushFollow(FOLLOW_ruleXFunctionTypeRef_in_ruleJvmTypeReference17704);
                     this_XFunctionTypeRef_4=ruleXFunctionTypeRef();
 
                     state._fsp--;
@@ -23071,7 +23092,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXFunctionTypeRef"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8023:1: entryRuleXFunctionTypeRef returns [EObject current=null] : iv_ruleXFunctionTypeRef= ruleXFunctionTypeRef EOF ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8025:1: entryRuleXFunctionTypeRef returns [EObject current=null] : iv_ruleXFunctionTypeRef= ruleXFunctionTypeRef EOF ;
     public final EObject entryRuleXFunctionTypeRef() throws RecognitionException {
         EObject current = null;
 
@@ -23079,13 +23100,13 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8024:2: (iv_ruleXFunctionTypeRef= ruleXFunctionTypeRef EOF )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8025:2: iv_ruleXFunctionTypeRef= ruleXFunctionTypeRef EOF
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8026:2: (iv_ruleXFunctionTypeRef= ruleXFunctionTypeRef EOF )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8027:2: iv_ruleXFunctionTypeRef= ruleXFunctionTypeRef EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXFunctionTypeRefRule()); 
             }
-            pushFollow(FOLLOW_ruleXFunctionTypeRef_in_entryRuleXFunctionTypeRef17718);
+            pushFollow(FOLLOW_ruleXFunctionTypeRef_in_entryRuleXFunctionTypeRef17739);
             iv_ruleXFunctionTypeRef=ruleXFunctionTypeRef();
 
             state._fsp--;
@@ -23093,7 +23114,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXFunctionTypeRef; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXFunctionTypeRef17728); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXFunctionTypeRef17749); if (state.failed) return current;
 
             }
 
@@ -23111,7 +23132,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXFunctionTypeRef"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8032:1: ruleXFunctionTypeRef returns [EObject current=null] : ( (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) ) ) ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8034:1: ruleXFunctionTypeRef returns [EObject current=null] : ( (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) ) ) ;
     public final EObject ruleXFunctionTypeRef() throws RecognitionException {
         EObject current = null;
 
@@ -23129,52 +23150,52 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8035:28: ( ( (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) ) ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8036:1: ( (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8037:28: ( ( (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8038:1: ( (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) ) )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8036:1: ( (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8036:2: (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8038:1: ( (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8038:2: (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8036:2: (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )?
-            int alt169=2;
-            int LA169_0 = input.LA(1);
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8038:2: (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )?
+            int alt170=2;
+            int LA170_0 = input.LA(1);
 
-            if ( (LA169_0==24) ) {
-                alt169=1;
+            if ( (LA170_0==24) ) {
+                alt170=1;
             }
-            switch (alt169) {
+            switch (alt170) {
                 case 1 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8036:4: otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')'
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8038:4: otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')'
                     {
-                    otherlv_0=(Token)match(input,24,FOLLOW_24_in_ruleXFunctionTypeRef17766); if (state.failed) return current;
+                    otherlv_0=(Token)match(input,24,FOLLOW_24_in_ruleXFunctionTypeRef17787); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_0, grammarAccess.getXFunctionTypeRefAccess().getLeftParenthesisKeyword_0_0());
                           
                     }
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8040:1: ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )?
-                    int alt168=2;
-                    int LA168_0 = input.LA(1);
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8042:1: ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )?
+                    int alt169=2;
+                    int LA169_0 = input.LA(1);
 
-                    if ( (LA168_0==RULE_ID||LA168_0==24||LA168_0==57||LA168_0==108) ) {
-                        alt168=1;
+                    if ( (LA169_0==RULE_ID||LA169_0==24||LA169_0==57||LA169_0==108) ) {
+                        alt169=1;
                     }
-                    switch (alt168) {
+                    switch (alt169) {
                         case 1 :
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8040:2: ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )*
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8042:2: ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )*
                             {
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8040:2: ( (lv_paramTypes_1_0= ruleJvmTypeReference ) )
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8041:1: (lv_paramTypes_1_0= ruleJvmTypeReference )
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8042:2: ( (lv_paramTypes_1_0= ruleJvmTypeReference ) )
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8043:1: (lv_paramTypes_1_0= ruleJvmTypeReference )
                             {
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8041:1: (lv_paramTypes_1_0= ruleJvmTypeReference )
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8042:3: lv_paramTypes_1_0= ruleJvmTypeReference
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8043:1: (lv_paramTypes_1_0= ruleJvmTypeReference )
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8044:3: lv_paramTypes_1_0= ruleJvmTypeReference
                             {
                             if ( state.backtracking==0 ) {
                                
                               	        newCompositeNode(grammarAccess.getXFunctionTypeRefAccess().getParamTypesJvmTypeReferenceParserRuleCall_0_1_0_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleXFunctionTypeRef17788);
+                            pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleXFunctionTypeRef17809);
                             lv_paramTypes_1_0=ruleJvmTypeReference();
 
                             state._fsp--;
@@ -23198,39 +23219,39 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
                             }
 
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8058:2: (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )*
-                            loop167:
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8060:2: (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )*
+                            loop168:
                             do {
-                                int alt167=2;
-                                int LA167_0 = input.LA(1);
+                                int alt168=2;
+                                int LA168_0 = input.LA(1);
 
-                                if ( (LA167_0==25) ) {
-                                    alt167=1;
+                                if ( (LA168_0==25) ) {
+                                    alt168=1;
                                 }
 
 
-                                switch (alt167) {
+                                switch (alt168) {
                             	case 1 :
-                            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8058:4: otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) )
+                            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8060:4: otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) )
                             	    {
-                            	    otherlv_2=(Token)match(input,25,FOLLOW_25_in_ruleXFunctionTypeRef17801); if (state.failed) return current;
+                            	    otherlv_2=(Token)match(input,25,FOLLOW_25_in_ruleXFunctionTypeRef17822); if (state.failed) return current;
                             	    if ( state.backtracking==0 ) {
 
                             	          	newLeafNode(otherlv_2, grammarAccess.getXFunctionTypeRefAccess().getCommaKeyword_0_1_1_0());
                             	          
                             	    }
-                            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8062:1: ( (lv_paramTypes_3_0= ruleJvmTypeReference ) )
-                            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8063:1: (lv_paramTypes_3_0= ruleJvmTypeReference )
+                            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8064:1: ( (lv_paramTypes_3_0= ruleJvmTypeReference ) )
+                            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8065:1: (lv_paramTypes_3_0= ruleJvmTypeReference )
                             	    {
-                            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8063:1: (lv_paramTypes_3_0= ruleJvmTypeReference )
-                            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8064:3: lv_paramTypes_3_0= ruleJvmTypeReference
+                            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8065:1: (lv_paramTypes_3_0= ruleJvmTypeReference )
+                            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8066:3: lv_paramTypes_3_0= ruleJvmTypeReference
                             	    {
                             	    if ( state.backtracking==0 ) {
                             	       
                             	      	        newCompositeNode(grammarAccess.getXFunctionTypeRefAccess().getParamTypesJvmTypeReferenceParserRuleCall_0_1_1_1_0()); 
                             	      	    
                             	    }
-                            	    pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleXFunctionTypeRef17822);
+                            	    pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleXFunctionTypeRef17843);
                             	    lv_paramTypes_3_0=ruleJvmTypeReference();
 
                             	    state._fsp--;
@@ -23259,7 +23280,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                             	    break;
 
                             	default :
-                            	    break loop167;
+                            	    break loop168;
                                 }
                             } while (true);
 
@@ -23269,7 +23290,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_4=(Token)match(input,26,FOLLOW_26_in_ruleXFunctionTypeRef17838); if (state.failed) return current;
+                    otherlv_4=(Token)match(input,26,FOLLOW_26_in_ruleXFunctionTypeRef17859); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_4, grammarAccess.getXFunctionTypeRefAccess().getRightParenthesisKeyword_0_2());
@@ -23281,24 +23302,24 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_5=(Token)match(input,108,FOLLOW_108_in_ruleXFunctionTypeRef17852); if (state.failed) return current;
+            otherlv_5=(Token)match(input,108,FOLLOW_108_in_ruleXFunctionTypeRef17873); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_5, grammarAccess.getXFunctionTypeRefAccess().getEqualsSignGreaterThanSignKeyword_1());
                   
             }
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8088:1: ( (lv_returnType_6_0= ruleJvmTypeReference ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8089:1: (lv_returnType_6_0= ruleJvmTypeReference )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8090:1: ( (lv_returnType_6_0= ruleJvmTypeReference ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8091:1: (lv_returnType_6_0= ruleJvmTypeReference )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8089:1: (lv_returnType_6_0= ruleJvmTypeReference )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8090:3: lv_returnType_6_0= ruleJvmTypeReference
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8091:1: (lv_returnType_6_0= ruleJvmTypeReference )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8092:3: lv_returnType_6_0= ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getXFunctionTypeRefAccess().getReturnTypeJvmTypeReferenceParserRuleCall_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleXFunctionTypeRef17873);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleXFunctionTypeRef17894);
             lv_returnType_6_0=ruleJvmTypeReference();
 
             state._fsp--;
@@ -23345,7 +23366,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmParameterizedTypeReference"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8114:1: entryRuleJvmParameterizedTypeReference returns [EObject current=null] : iv_ruleJvmParameterizedTypeReference= ruleJvmParameterizedTypeReference EOF ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8116:1: entryRuleJvmParameterizedTypeReference returns [EObject current=null] : iv_ruleJvmParameterizedTypeReference= ruleJvmParameterizedTypeReference EOF ;
     public final EObject entryRuleJvmParameterizedTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -23353,13 +23374,13 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8115:2: (iv_ruleJvmParameterizedTypeReference= ruleJvmParameterizedTypeReference EOF )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8116:2: iv_ruleJvmParameterizedTypeReference= ruleJvmParameterizedTypeReference EOF
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8117:2: (iv_ruleJvmParameterizedTypeReference= ruleJvmParameterizedTypeReference EOF )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8118:2: iv_ruleJvmParameterizedTypeReference= ruleJvmParameterizedTypeReference EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmParameterizedTypeReferenceRule()); 
             }
-            pushFollow(FOLLOW_ruleJvmParameterizedTypeReference_in_entryRuleJvmParameterizedTypeReference17909);
+            pushFollow(FOLLOW_ruleJvmParameterizedTypeReference_in_entryRuleJvmParameterizedTypeReference17930);
             iv_ruleJvmParameterizedTypeReference=ruleJvmParameterizedTypeReference();
 
             state._fsp--;
@@ -23367,7 +23388,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleJvmParameterizedTypeReference; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmParameterizedTypeReference17919); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmParameterizedTypeReference17940); if (state.failed) return current;
 
             }
 
@@ -23385,7 +23406,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmParameterizedTypeReference"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8123:1: ruleJvmParameterizedTypeReference returns [EObject current=null] : ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )? ) ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8125:1: ruleJvmParameterizedTypeReference returns [EObject current=null] : ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )? ) ;
     public final EObject ruleJvmParameterizedTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -23400,17 +23421,17 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8126:28: ( ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )? ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8127:1: ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )? )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8128:28: ( ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )? ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8129:1: ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )? )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8127:1: ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )? )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8127:2: ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )?
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8129:1: ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )? )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8129:2: ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )?
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8127:2: ( ( ruleQualifiedName ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8128:1: ( ruleQualifiedName )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8129:2: ( ( ruleQualifiedName ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8130:1: ( ruleQualifiedName )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8128:1: ( ruleQualifiedName )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8129:3: ruleQualifiedName
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8130:1: ( ruleQualifiedName )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8131:3: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
 
@@ -23424,7 +23445,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getJvmParameterizedTypeReferenceAccess().getTypeJvmTypeCrossReference_0_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_ruleJvmParameterizedTypeReference17967);
+            pushFollow(FOLLOW_ruleQualifiedName_in_ruleJvmParameterizedTypeReference17988);
             ruleQualifiedName();
 
             state._fsp--;
@@ -23440,17 +23461,17 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8142:2: ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )?
-            int alt171=2;
-            alt171 = dfa171.predict(input);
-            switch (alt171) {
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8144:2: ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )?
+            int alt172=2;
+            alt172 = dfa172.predict(input);
+            switch (alt172) {
                 case 1 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8142:3: ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>'
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8144:3: ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>'
                     {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8142:3: ( ( '<' )=>otherlv_1= '<' )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8142:4: ( '<' )=>otherlv_1= '<'
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8144:3: ( ( '<' )=>otherlv_1= '<' )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8144:4: ( '<' )=>otherlv_1= '<'
                     {
-                    otherlv_1=(Token)match(input,27,FOLLOW_27_in_ruleJvmParameterizedTypeReference17988); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,27,FOLLOW_27_in_ruleJvmParameterizedTypeReference18009); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_1, grammarAccess.getJvmParameterizedTypeReferenceAccess().getLessThanSignKeyword_1_0());
@@ -23459,18 +23480,18 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8147:2: ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8148:1: (lv_arguments_2_0= ruleJvmArgumentTypeReference )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8149:2: ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8150:1: (lv_arguments_2_0= ruleJvmArgumentTypeReference )
                     {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8148:1: (lv_arguments_2_0= ruleJvmArgumentTypeReference )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8149:3: lv_arguments_2_0= ruleJvmArgumentTypeReference
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8150:1: (lv_arguments_2_0= ruleJvmArgumentTypeReference )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8151:3: lv_arguments_2_0= ruleJvmArgumentTypeReference
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getJvmParameterizedTypeReferenceAccess().getArgumentsJvmArgumentTypeReferenceParserRuleCall_1_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleJvmParameterizedTypeReference18010);
+                    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleJvmParameterizedTypeReference18031);
                     lv_arguments_2_0=ruleJvmArgumentTypeReference();
 
                     state._fsp--;
@@ -23494,39 +23515,39 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8165:2: (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )*
-                    loop170:
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8167:2: (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )*
+                    loop171:
                     do {
-                        int alt170=2;
-                        int LA170_0 = input.LA(1);
+                        int alt171=2;
+                        int LA171_0 = input.LA(1);
 
-                        if ( (LA170_0==25) ) {
-                            alt170=1;
+                        if ( (LA171_0==25) ) {
+                            alt171=1;
                         }
 
 
-                        switch (alt170) {
+                        switch (alt171) {
                     	case 1 :
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8165:4: otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) )
+                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8167:4: otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) )
                     	    {
-                    	    otherlv_3=(Token)match(input,25,FOLLOW_25_in_ruleJvmParameterizedTypeReference18023); if (state.failed) return current;
+                    	    otherlv_3=(Token)match(input,25,FOLLOW_25_in_ruleJvmParameterizedTypeReference18044); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_3, grammarAccess.getJvmParameterizedTypeReferenceAccess().getCommaKeyword_1_2_0());
                     	          
                     	    }
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8169:1: ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) )
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8170:1: (lv_arguments_4_0= ruleJvmArgumentTypeReference )
+                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8171:1: ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) )
+                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8172:1: (lv_arguments_4_0= ruleJvmArgumentTypeReference )
                     	    {
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8170:1: (lv_arguments_4_0= ruleJvmArgumentTypeReference )
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8171:3: lv_arguments_4_0= ruleJvmArgumentTypeReference
+                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8172:1: (lv_arguments_4_0= ruleJvmArgumentTypeReference )
+                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8173:3: lv_arguments_4_0= ruleJvmArgumentTypeReference
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
                     	      	        newCompositeNode(grammarAccess.getJvmParameterizedTypeReferenceAccess().getArgumentsJvmArgumentTypeReferenceParserRuleCall_1_2_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleJvmParameterizedTypeReference18044);
+                    	    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleJvmParameterizedTypeReference18065);
                     	    lv_arguments_4_0=ruleJvmArgumentTypeReference();
 
                     	    state._fsp--;
@@ -23555,11 +23576,11 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop170;
+                    	    break loop171;
                         }
                     } while (true);
 
-                    otherlv_5=(Token)match(input,28,FOLLOW_28_in_ruleJvmParameterizedTypeReference18058); if (state.failed) return current;
+                    otherlv_5=(Token)match(input,28,FOLLOW_28_in_ruleJvmParameterizedTypeReference18079); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_5, grammarAccess.getJvmParameterizedTypeReferenceAccess().getGreaterThanSignKeyword_1_3());
@@ -23594,7 +23615,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmArgumentTypeReference"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8199:1: entryRuleJvmArgumentTypeReference returns [EObject current=null] : iv_ruleJvmArgumentTypeReference= ruleJvmArgumentTypeReference EOF ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8201:1: entryRuleJvmArgumentTypeReference returns [EObject current=null] : iv_ruleJvmArgumentTypeReference= ruleJvmArgumentTypeReference EOF ;
     public final EObject entryRuleJvmArgumentTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -23602,13 +23623,13 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8200:2: (iv_ruleJvmArgumentTypeReference= ruleJvmArgumentTypeReference EOF )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8201:2: iv_ruleJvmArgumentTypeReference= ruleJvmArgumentTypeReference EOF
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8202:2: (iv_ruleJvmArgumentTypeReference= ruleJvmArgumentTypeReference EOF )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8203:2: iv_ruleJvmArgumentTypeReference= ruleJvmArgumentTypeReference EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmArgumentTypeReferenceRule()); 
             }
-            pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_entryRuleJvmArgumentTypeReference18096);
+            pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_entryRuleJvmArgumentTypeReference18117);
             iv_ruleJvmArgumentTypeReference=ruleJvmArgumentTypeReference();
 
             state._fsp--;
@@ -23616,7 +23637,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleJvmArgumentTypeReference; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmArgumentTypeReference18106); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmArgumentTypeReference18127); if (state.failed) return current;
 
             }
 
@@ -23634,7 +23655,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmArgumentTypeReference"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8208:1: ruleJvmArgumentTypeReference returns [EObject current=null] : (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference ) ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8210:1: ruleJvmArgumentTypeReference returns [EObject current=null] : (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference ) ;
     public final EObject ruleJvmArgumentTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -23646,36 +23667,36 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8211:28: ( (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8212:1: (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8213:28: ( (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8214:1: (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8212:1: (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference )
-            int alt172=2;
-            int LA172_0 = input.LA(1);
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8214:1: (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference )
+            int alt173=2;
+            int LA173_0 = input.LA(1);
 
-            if ( (LA172_0==RULE_ID||LA172_0==24||LA172_0==57||LA172_0==108) ) {
-                alt172=1;
+            if ( (LA173_0==RULE_ID||LA173_0==24||LA173_0==57||LA173_0==108) ) {
+                alt173=1;
             }
-            else if ( (LA172_0==30) ) {
-                alt172=2;
+            else if ( (LA173_0==30) ) {
+                alt173=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 172, 0, input);
+                    new NoViableAltException("", 173, 0, input);
 
                 throw nvae;
             }
-            switch (alt172) {
+            switch (alt173) {
                 case 1 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8213:5: this_JvmTypeReference_0= ruleJvmTypeReference
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8215:5: this_JvmTypeReference_0= ruleJvmTypeReference
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getJvmArgumentTypeReferenceAccess().getJvmTypeReferenceParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleJvmArgumentTypeReference18153);
+                    pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleJvmArgumentTypeReference18174);
                     this_JvmTypeReference_0=ruleJvmTypeReference();
 
                     state._fsp--;
@@ -23690,14 +23711,14 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8223:5: this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8225:5: this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getJvmArgumentTypeReferenceAccess().getJvmWildcardTypeReferenceParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleJvmWildcardTypeReference_in_ruleJvmArgumentTypeReference18180);
+                    pushFollow(FOLLOW_ruleJvmWildcardTypeReference_in_ruleJvmArgumentTypeReference18201);
                     this_JvmWildcardTypeReference_1=ruleJvmWildcardTypeReference();
 
                     state._fsp--;
@@ -23734,7 +23755,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmWildcardTypeReference"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8239:1: entryRuleJvmWildcardTypeReference returns [EObject current=null] : iv_ruleJvmWildcardTypeReference= ruleJvmWildcardTypeReference EOF ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8241:1: entryRuleJvmWildcardTypeReference returns [EObject current=null] : iv_ruleJvmWildcardTypeReference= ruleJvmWildcardTypeReference EOF ;
     public final EObject entryRuleJvmWildcardTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -23742,13 +23763,13 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8240:2: (iv_ruleJvmWildcardTypeReference= ruleJvmWildcardTypeReference EOF )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8241:2: iv_ruleJvmWildcardTypeReference= ruleJvmWildcardTypeReference EOF
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8242:2: (iv_ruleJvmWildcardTypeReference= ruleJvmWildcardTypeReference EOF )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8243:2: iv_ruleJvmWildcardTypeReference= ruleJvmWildcardTypeReference EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmWildcardTypeReferenceRule()); 
             }
-            pushFollow(FOLLOW_ruleJvmWildcardTypeReference_in_entryRuleJvmWildcardTypeReference18215);
+            pushFollow(FOLLOW_ruleJvmWildcardTypeReference_in_entryRuleJvmWildcardTypeReference18236);
             iv_ruleJvmWildcardTypeReference=ruleJvmWildcardTypeReference();
 
             state._fsp--;
@@ -23756,7 +23777,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleJvmWildcardTypeReference; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmWildcardTypeReference18225); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmWildcardTypeReference18246); if (state.failed) return current;
 
             }
 
@@ -23774,7 +23795,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmWildcardTypeReference"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8248:1: ruleJvmWildcardTypeReference returns [EObject current=null] : ( () otherlv_1= '?' ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )? ) ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8250:1: ruleJvmWildcardTypeReference returns [EObject current=null] : ( () otherlv_1= '?' ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )? ) ;
     public final EObject ruleJvmWildcardTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -23787,14 +23808,14 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8251:28: ( ( () otherlv_1= '?' ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )? ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8252:1: ( () otherlv_1= '?' ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )? )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8253:28: ( ( () otherlv_1= '?' ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )? ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8254:1: ( () otherlv_1= '?' ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )? )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8252:1: ( () otherlv_1= '?' ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )? )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8252:2: () otherlv_1= '?' ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )?
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8254:1: ( () otherlv_1= '?' ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )? )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8254:2: () otherlv_1= '?' ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )?
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8252:2: ()
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8253:5: 
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8254:2: ()
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8255:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -23806,38 +23827,38 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,30,FOLLOW_30_in_ruleJvmWildcardTypeReference18271); if (state.failed) return current;
+            otherlv_1=(Token)match(input,30,FOLLOW_30_in_ruleJvmWildcardTypeReference18292); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getJvmWildcardTypeReferenceAccess().getQuestionMarkKeyword_1());
                   
             }
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8262:1: ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )?
-            int alt173=3;
-            int LA173_0 = input.LA(1);
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8264:1: ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )?
+            int alt174=3;
+            int LA174_0 = input.LA(1);
 
-            if ( (LA173_0==31) ) {
-                alt173=1;
+            if ( (LA174_0==31) ) {
+                alt174=1;
             }
-            else if ( (LA173_0==32) ) {
-                alt173=2;
+            else if ( (LA174_0==32) ) {
+                alt174=2;
             }
-            switch (alt173) {
+            switch (alt174) {
                 case 1 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8262:2: ( (lv_constraints_2_0= ruleJvmUpperBound ) )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8264:2: ( (lv_constraints_2_0= ruleJvmUpperBound ) )
                     {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8262:2: ( (lv_constraints_2_0= ruleJvmUpperBound ) )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8263:1: (lv_constraints_2_0= ruleJvmUpperBound )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8264:2: ( (lv_constraints_2_0= ruleJvmUpperBound ) )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8265:1: (lv_constraints_2_0= ruleJvmUpperBound )
                     {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8263:1: (lv_constraints_2_0= ruleJvmUpperBound )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8264:3: lv_constraints_2_0= ruleJvmUpperBound
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8265:1: (lv_constraints_2_0= ruleJvmUpperBound )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8266:3: lv_constraints_2_0= ruleJvmUpperBound
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getJvmWildcardTypeReferenceAccess().getConstraintsJvmUpperBoundParserRuleCall_2_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleJvmUpperBound_in_ruleJvmWildcardTypeReference18293);
+                    pushFollow(FOLLOW_ruleJvmUpperBound_in_ruleJvmWildcardTypeReference18314);
                     lv_constraints_2_0=ruleJvmUpperBound();
 
                     state._fsp--;
@@ -23865,20 +23886,20 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8281:6: ( (lv_constraints_3_0= ruleJvmLowerBound ) )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8283:6: ( (lv_constraints_3_0= ruleJvmLowerBound ) )
                     {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8281:6: ( (lv_constraints_3_0= ruleJvmLowerBound ) )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8282:1: (lv_constraints_3_0= ruleJvmLowerBound )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8283:6: ( (lv_constraints_3_0= ruleJvmLowerBound ) )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8284:1: (lv_constraints_3_0= ruleJvmLowerBound )
                     {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8282:1: (lv_constraints_3_0= ruleJvmLowerBound )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8283:3: lv_constraints_3_0= ruleJvmLowerBound
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8284:1: (lv_constraints_3_0= ruleJvmLowerBound )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8285:3: lv_constraints_3_0= ruleJvmLowerBound
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getJvmWildcardTypeReferenceAccess().getConstraintsJvmLowerBoundParserRuleCall_2_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleJvmLowerBound_in_ruleJvmWildcardTypeReference18320);
+                    pushFollow(FOLLOW_ruleJvmLowerBound_in_ruleJvmWildcardTypeReference18341);
                     lv_constraints_3_0=ruleJvmLowerBound();
 
                     state._fsp--;
@@ -23931,7 +23952,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmUpperBound"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8307:1: entryRuleJvmUpperBound returns [EObject current=null] : iv_ruleJvmUpperBound= ruleJvmUpperBound EOF ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8309:1: entryRuleJvmUpperBound returns [EObject current=null] : iv_ruleJvmUpperBound= ruleJvmUpperBound EOF ;
     public final EObject entryRuleJvmUpperBound() throws RecognitionException {
         EObject current = null;
 
@@ -23939,13 +23960,13 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8308:2: (iv_ruleJvmUpperBound= ruleJvmUpperBound EOF )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8309:2: iv_ruleJvmUpperBound= ruleJvmUpperBound EOF
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8310:2: (iv_ruleJvmUpperBound= ruleJvmUpperBound EOF )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8311:2: iv_ruleJvmUpperBound= ruleJvmUpperBound EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmUpperBoundRule()); 
             }
-            pushFollow(FOLLOW_ruleJvmUpperBound_in_entryRuleJvmUpperBound18358);
+            pushFollow(FOLLOW_ruleJvmUpperBound_in_entryRuleJvmUpperBound18379);
             iv_ruleJvmUpperBound=ruleJvmUpperBound();
 
             state._fsp--;
@@ -23953,7 +23974,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleJvmUpperBound; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmUpperBound18368); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmUpperBound18389); if (state.failed) return current;
 
             }
 
@@ -23971,7 +23992,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmUpperBound"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8316:1: ruleJvmUpperBound returns [EObject current=null] : (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8318:1: ruleJvmUpperBound returns [EObject current=null] : (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) ;
     public final EObject ruleJvmUpperBound() throws RecognitionException {
         EObject current = null;
 
@@ -23982,30 +24003,30 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8319:28: ( (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8320:1: (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8321:28: ( (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8322:1: (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8320:1: (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8320:3: otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8322:1: (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8322:3: otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
             {
-            otherlv_0=(Token)match(input,31,FOLLOW_31_in_ruleJvmUpperBound18405); if (state.failed) return current;
+            otherlv_0=(Token)match(input,31,FOLLOW_31_in_ruleJvmUpperBound18426); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getJvmUpperBoundAccess().getExtendsKeyword_0());
                   
             }
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8324:1: ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8325:1: (lv_typeReference_1_0= ruleJvmTypeReference )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8326:1: ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8327:1: (lv_typeReference_1_0= ruleJvmTypeReference )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8325:1: (lv_typeReference_1_0= ruleJvmTypeReference )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8326:3: lv_typeReference_1_0= ruleJvmTypeReference
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8327:1: (lv_typeReference_1_0= ruleJvmTypeReference )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8328:3: lv_typeReference_1_0= ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getJvmUpperBoundAccess().getTypeReferenceJvmTypeReferenceParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleJvmUpperBound18426);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleJvmUpperBound18447);
             lv_typeReference_1_0=ruleJvmTypeReference();
 
             state._fsp--;
@@ -24052,7 +24073,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmUpperBoundAnded"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8350:1: entryRuleJvmUpperBoundAnded returns [EObject current=null] : iv_ruleJvmUpperBoundAnded= ruleJvmUpperBoundAnded EOF ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8352:1: entryRuleJvmUpperBoundAnded returns [EObject current=null] : iv_ruleJvmUpperBoundAnded= ruleJvmUpperBoundAnded EOF ;
     public final EObject entryRuleJvmUpperBoundAnded() throws RecognitionException {
         EObject current = null;
 
@@ -24060,13 +24081,13 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8351:2: (iv_ruleJvmUpperBoundAnded= ruleJvmUpperBoundAnded EOF )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8352:2: iv_ruleJvmUpperBoundAnded= ruleJvmUpperBoundAnded EOF
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8353:2: (iv_ruleJvmUpperBoundAnded= ruleJvmUpperBoundAnded EOF )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8354:2: iv_ruleJvmUpperBoundAnded= ruleJvmUpperBoundAnded EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmUpperBoundAndedRule()); 
             }
-            pushFollow(FOLLOW_ruleJvmUpperBoundAnded_in_entryRuleJvmUpperBoundAnded18462);
+            pushFollow(FOLLOW_ruleJvmUpperBoundAnded_in_entryRuleJvmUpperBoundAnded18483);
             iv_ruleJvmUpperBoundAnded=ruleJvmUpperBoundAnded();
 
             state._fsp--;
@@ -24074,7 +24095,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleJvmUpperBoundAnded; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmUpperBoundAnded18472); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmUpperBoundAnded18493); if (state.failed) return current;
 
             }
 
@@ -24092,7 +24113,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmUpperBoundAnded"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8359:1: ruleJvmUpperBoundAnded returns [EObject current=null] : (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8361:1: ruleJvmUpperBoundAnded returns [EObject current=null] : (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) ;
     public final EObject ruleJvmUpperBoundAnded() throws RecognitionException {
         EObject current = null;
 
@@ -24103,30 +24124,30 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8362:28: ( (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8363:1: (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8364:28: ( (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8365:1: (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8363:1: (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8363:3: otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8365:1: (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8365:3: otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
             {
-            otherlv_0=(Token)match(input,109,FOLLOW_109_in_ruleJvmUpperBoundAnded18509); if (state.failed) return current;
+            otherlv_0=(Token)match(input,109,FOLLOW_109_in_ruleJvmUpperBoundAnded18530); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getJvmUpperBoundAndedAccess().getAmpersandKeyword_0());
                   
             }
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8367:1: ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8368:1: (lv_typeReference_1_0= ruleJvmTypeReference )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8369:1: ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8370:1: (lv_typeReference_1_0= ruleJvmTypeReference )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8368:1: (lv_typeReference_1_0= ruleJvmTypeReference )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8369:3: lv_typeReference_1_0= ruleJvmTypeReference
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8370:1: (lv_typeReference_1_0= ruleJvmTypeReference )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8371:3: lv_typeReference_1_0= ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getJvmUpperBoundAndedAccess().getTypeReferenceJvmTypeReferenceParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleJvmUpperBoundAnded18530);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleJvmUpperBoundAnded18551);
             lv_typeReference_1_0=ruleJvmTypeReference();
 
             state._fsp--;
@@ -24173,7 +24194,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmLowerBound"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8393:1: entryRuleJvmLowerBound returns [EObject current=null] : iv_ruleJvmLowerBound= ruleJvmLowerBound EOF ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8395:1: entryRuleJvmLowerBound returns [EObject current=null] : iv_ruleJvmLowerBound= ruleJvmLowerBound EOF ;
     public final EObject entryRuleJvmLowerBound() throws RecognitionException {
         EObject current = null;
 
@@ -24181,13 +24202,13 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8394:2: (iv_ruleJvmLowerBound= ruleJvmLowerBound EOF )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8395:2: iv_ruleJvmLowerBound= ruleJvmLowerBound EOF
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8396:2: (iv_ruleJvmLowerBound= ruleJvmLowerBound EOF )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8397:2: iv_ruleJvmLowerBound= ruleJvmLowerBound EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmLowerBoundRule()); 
             }
-            pushFollow(FOLLOW_ruleJvmLowerBound_in_entryRuleJvmLowerBound18566);
+            pushFollow(FOLLOW_ruleJvmLowerBound_in_entryRuleJvmLowerBound18587);
             iv_ruleJvmLowerBound=ruleJvmLowerBound();
 
             state._fsp--;
@@ -24195,7 +24216,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleJvmLowerBound; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmLowerBound18576); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmLowerBound18597); if (state.failed) return current;
 
             }
 
@@ -24213,7 +24234,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmLowerBound"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8402:1: ruleJvmLowerBound returns [EObject current=null] : (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8404:1: ruleJvmLowerBound returns [EObject current=null] : (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) ;
     public final EObject ruleJvmLowerBound() throws RecognitionException {
         EObject current = null;
 
@@ -24224,30 +24245,30 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8405:28: ( (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8406:1: (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8407:28: ( (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8408:1: (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8406:1: (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8406:3: otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8408:1: (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8408:3: otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
             {
-            otherlv_0=(Token)match(input,32,FOLLOW_32_in_ruleJvmLowerBound18613); if (state.failed) return current;
+            otherlv_0=(Token)match(input,32,FOLLOW_32_in_ruleJvmLowerBound18634); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getJvmLowerBoundAccess().getSuperKeyword_0());
                   
             }
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8410:1: ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8411:1: (lv_typeReference_1_0= ruleJvmTypeReference )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8412:1: ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8413:1: (lv_typeReference_1_0= ruleJvmTypeReference )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8411:1: (lv_typeReference_1_0= ruleJvmTypeReference )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8412:3: lv_typeReference_1_0= ruleJvmTypeReference
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8413:1: (lv_typeReference_1_0= ruleJvmTypeReference )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8414:3: lv_typeReference_1_0= ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getJvmLowerBoundAccess().getTypeReferenceJvmTypeReferenceParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleJvmLowerBound18634);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleJvmLowerBound18655);
             lv_typeReference_1_0=ruleJvmTypeReference();
 
             state._fsp--;
@@ -24294,7 +24315,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmTypeParameter"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8436:1: entryRuleJvmTypeParameter returns [EObject current=null] : iv_ruleJvmTypeParameter= ruleJvmTypeParameter EOF ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8438:1: entryRuleJvmTypeParameter returns [EObject current=null] : iv_ruleJvmTypeParameter= ruleJvmTypeParameter EOF ;
     public final EObject entryRuleJvmTypeParameter() throws RecognitionException {
         EObject current = null;
 
@@ -24302,13 +24323,13 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8437:2: (iv_ruleJvmTypeParameter= ruleJvmTypeParameter EOF )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8438:2: iv_ruleJvmTypeParameter= ruleJvmTypeParameter EOF
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8439:2: (iv_ruleJvmTypeParameter= ruleJvmTypeParameter EOF )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8440:2: iv_ruleJvmTypeParameter= ruleJvmTypeParameter EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmTypeParameterRule()); 
             }
-            pushFollow(FOLLOW_ruleJvmTypeParameter_in_entryRuleJvmTypeParameter18670);
+            pushFollow(FOLLOW_ruleJvmTypeParameter_in_entryRuleJvmTypeParameter18691);
             iv_ruleJvmTypeParameter=ruleJvmTypeParameter();
 
             state._fsp--;
@@ -24316,7 +24337,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleJvmTypeParameter; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmTypeParameter18680); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmTypeParameter18701); if (state.failed) return current;
 
             }
 
@@ -24334,7 +24355,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmTypeParameter"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8445:1: ruleJvmTypeParameter returns [EObject current=null] : ( ( (lv_name_0_0= ruleValidID ) ) ( ( ( (lv_constraints_1_0= ruleJvmUpperBound ) ) ( (lv_constraints_2_0= ruleJvmUpperBoundAnded ) )* ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )? ) ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8447:1: ruleJvmTypeParameter returns [EObject current=null] : ( ( (lv_name_0_0= ruleValidID ) ) ( ( ( (lv_constraints_1_0= ruleJvmUpperBound ) ) ( (lv_constraints_2_0= ruleJvmUpperBoundAnded ) )* ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )? ) ;
     public final EObject ruleJvmTypeParameter() throws RecognitionException {
         EObject current = null;
 
@@ -24350,24 +24371,24 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8448:28: ( ( ( (lv_name_0_0= ruleValidID ) ) ( ( ( (lv_constraints_1_0= ruleJvmUpperBound ) ) ( (lv_constraints_2_0= ruleJvmUpperBoundAnded ) )* ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )? ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8449:1: ( ( (lv_name_0_0= ruleValidID ) ) ( ( ( (lv_constraints_1_0= ruleJvmUpperBound ) ) ( (lv_constraints_2_0= ruleJvmUpperBoundAnded ) )* ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )? )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8450:28: ( ( ( (lv_name_0_0= ruleValidID ) ) ( ( ( (lv_constraints_1_0= ruleJvmUpperBound ) ) ( (lv_constraints_2_0= ruleJvmUpperBoundAnded ) )* ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )? ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8451:1: ( ( (lv_name_0_0= ruleValidID ) ) ( ( ( (lv_constraints_1_0= ruleJvmUpperBound ) ) ( (lv_constraints_2_0= ruleJvmUpperBoundAnded ) )* ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )? )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8449:1: ( ( (lv_name_0_0= ruleValidID ) ) ( ( ( (lv_constraints_1_0= ruleJvmUpperBound ) ) ( (lv_constraints_2_0= ruleJvmUpperBoundAnded ) )* ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )? )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8449:2: ( (lv_name_0_0= ruleValidID ) ) ( ( ( (lv_constraints_1_0= ruleJvmUpperBound ) ) ( (lv_constraints_2_0= ruleJvmUpperBoundAnded ) )* ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )?
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8451:1: ( ( (lv_name_0_0= ruleValidID ) ) ( ( ( (lv_constraints_1_0= ruleJvmUpperBound ) ) ( (lv_constraints_2_0= ruleJvmUpperBoundAnded ) )* ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )? )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8451:2: ( (lv_name_0_0= ruleValidID ) ) ( ( ( (lv_constraints_1_0= ruleJvmUpperBound ) ) ( (lv_constraints_2_0= ruleJvmUpperBoundAnded ) )* ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )?
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8449:2: ( (lv_name_0_0= ruleValidID ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8450:1: (lv_name_0_0= ruleValidID )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8451:2: ( (lv_name_0_0= ruleValidID ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8452:1: (lv_name_0_0= ruleValidID )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8450:1: (lv_name_0_0= ruleValidID )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8451:3: lv_name_0_0= ruleValidID
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8452:1: (lv_name_0_0= ruleValidID )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8453:3: lv_name_0_0= ruleValidID
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getJvmTypeParameterAccess().getNameValidIDParserRuleCall_0_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleValidID_in_ruleJvmTypeParameter18726);
+            pushFollow(FOLLOW_ruleValidID_in_ruleJvmTypeParameter18747);
             lv_name_0_0=ruleValidID();
 
             state._fsp--;
@@ -24391,35 +24412,35 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8467:2: ( ( ( (lv_constraints_1_0= ruleJvmUpperBound ) ) ( (lv_constraints_2_0= ruleJvmUpperBoundAnded ) )* ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )?
-            int alt175=3;
-            int LA175_0 = input.LA(1);
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8469:2: ( ( ( (lv_constraints_1_0= ruleJvmUpperBound ) ) ( (lv_constraints_2_0= ruleJvmUpperBoundAnded ) )* ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )?
+            int alt176=3;
+            int LA176_0 = input.LA(1);
 
-            if ( (LA175_0==31) ) {
-                alt175=1;
+            if ( (LA176_0==31) ) {
+                alt176=1;
             }
-            else if ( (LA175_0==32) ) {
-                alt175=2;
+            else if ( (LA176_0==32) ) {
+                alt176=2;
             }
-            switch (alt175) {
+            switch (alt176) {
                 case 1 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8467:3: ( ( (lv_constraints_1_0= ruleJvmUpperBound ) ) ( (lv_constraints_2_0= ruleJvmUpperBoundAnded ) )* )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8469:3: ( ( (lv_constraints_1_0= ruleJvmUpperBound ) ) ( (lv_constraints_2_0= ruleJvmUpperBoundAnded ) )* )
                     {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8467:3: ( ( (lv_constraints_1_0= ruleJvmUpperBound ) ) ( (lv_constraints_2_0= ruleJvmUpperBoundAnded ) )* )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8467:4: ( (lv_constraints_1_0= ruleJvmUpperBound ) ) ( (lv_constraints_2_0= ruleJvmUpperBoundAnded ) )*
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8469:3: ( ( (lv_constraints_1_0= ruleJvmUpperBound ) ) ( (lv_constraints_2_0= ruleJvmUpperBoundAnded ) )* )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8469:4: ( (lv_constraints_1_0= ruleJvmUpperBound ) ) ( (lv_constraints_2_0= ruleJvmUpperBoundAnded ) )*
                     {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8467:4: ( (lv_constraints_1_0= ruleJvmUpperBound ) )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8468:1: (lv_constraints_1_0= ruleJvmUpperBound )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8469:4: ( (lv_constraints_1_0= ruleJvmUpperBound ) )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8470:1: (lv_constraints_1_0= ruleJvmUpperBound )
                     {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8468:1: (lv_constraints_1_0= ruleJvmUpperBound )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8469:3: lv_constraints_1_0= ruleJvmUpperBound
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8470:1: (lv_constraints_1_0= ruleJvmUpperBound )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8471:3: lv_constraints_1_0= ruleJvmUpperBound
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getJvmTypeParameterAccess().getConstraintsJvmUpperBoundParserRuleCall_1_0_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleJvmUpperBound_in_ruleJvmTypeParameter18749);
+                    pushFollow(FOLLOW_ruleJvmUpperBound_in_ruleJvmTypeParameter18770);
                     lv_constraints_1_0=ruleJvmUpperBound();
 
                     state._fsp--;
@@ -24443,30 +24464,30 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8485:2: ( (lv_constraints_2_0= ruleJvmUpperBoundAnded ) )*
-                    loop174:
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8487:2: ( (lv_constraints_2_0= ruleJvmUpperBoundAnded ) )*
+                    loop175:
                     do {
-                        int alt174=2;
-                        int LA174_0 = input.LA(1);
+                        int alt175=2;
+                        int LA175_0 = input.LA(1);
 
-                        if ( (LA174_0==109) ) {
-                            alt174=1;
+                        if ( (LA175_0==109) ) {
+                            alt175=1;
                         }
 
 
-                        switch (alt174) {
+                        switch (alt175) {
                     	case 1 :
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8486:1: (lv_constraints_2_0= ruleJvmUpperBoundAnded )
+                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8488:1: (lv_constraints_2_0= ruleJvmUpperBoundAnded )
                     	    {
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8486:1: (lv_constraints_2_0= ruleJvmUpperBoundAnded )
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8487:3: lv_constraints_2_0= ruleJvmUpperBoundAnded
+                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8488:1: (lv_constraints_2_0= ruleJvmUpperBoundAnded )
+                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8489:3: lv_constraints_2_0= ruleJvmUpperBoundAnded
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
                     	      	        newCompositeNode(grammarAccess.getJvmTypeParameterAccess().getConstraintsJvmUpperBoundAndedParserRuleCall_1_0_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleJvmUpperBoundAnded_in_ruleJvmTypeParameter18770);
+                    	    pushFollow(FOLLOW_ruleJvmUpperBoundAnded_in_ruleJvmTypeParameter18791);
                     	    lv_constraints_2_0=ruleJvmUpperBoundAnded();
 
                     	    state._fsp--;
@@ -24492,7 +24513,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop174;
+                    	    break loop175;
                         }
                     } while (true);
 
@@ -24503,20 +24524,20 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8504:6: ( (lv_constraints_3_0= ruleJvmLowerBound ) )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8506:6: ( (lv_constraints_3_0= ruleJvmLowerBound ) )
                     {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8504:6: ( (lv_constraints_3_0= ruleJvmLowerBound ) )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8505:1: (lv_constraints_3_0= ruleJvmLowerBound )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8506:6: ( (lv_constraints_3_0= ruleJvmLowerBound ) )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8507:1: (lv_constraints_3_0= ruleJvmLowerBound )
                     {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8505:1: (lv_constraints_3_0= ruleJvmLowerBound )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8506:3: lv_constraints_3_0= ruleJvmLowerBound
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8507:1: (lv_constraints_3_0= ruleJvmLowerBound )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8508:3: lv_constraints_3_0= ruleJvmLowerBound
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getJvmTypeParameterAccess().getConstraintsJvmLowerBoundParserRuleCall_1_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleJvmLowerBound_in_ruleJvmTypeParameter18799);
+                    pushFollow(FOLLOW_ruleJvmLowerBound_in_ruleJvmTypeParameter18820);
                     lv_constraints_3_0=ruleJvmLowerBound();
 
                     state._fsp--;
@@ -24569,7 +24590,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleVisibility"
-    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8530:1: ruleVisibility returns [Enumerator current=null] : ( (enumLiteral_0= 'public' ) | (enumLiteral_1= 'protected' ) | (enumLiteral_2= 'private' ) ) ;
+    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8532:1: ruleVisibility returns [Enumerator current=null] : ( (enumLiteral_0= 'public' ) | (enumLiteral_1= 'protected' ) | (enumLiteral_2= 'private' ) ) ;
     public final Enumerator ruleVisibility() throws RecognitionException {
         Enumerator current = null;
 
@@ -24579,43 +24600,43 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8532:28: ( ( (enumLiteral_0= 'public' ) | (enumLiteral_1= 'protected' ) | (enumLiteral_2= 'private' ) ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8533:1: ( (enumLiteral_0= 'public' ) | (enumLiteral_1= 'protected' ) | (enumLiteral_2= 'private' ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8534:28: ( ( (enumLiteral_0= 'public' ) | (enumLiteral_1= 'protected' ) | (enumLiteral_2= 'private' ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8535:1: ( (enumLiteral_0= 'public' ) | (enumLiteral_1= 'protected' ) | (enumLiteral_2= 'private' ) )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8533:1: ( (enumLiteral_0= 'public' ) | (enumLiteral_1= 'protected' ) | (enumLiteral_2= 'private' ) )
-            int alt176=3;
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8535:1: ( (enumLiteral_0= 'public' ) | (enumLiteral_1= 'protected' ) | (enumLiteral_2= 'private' ) )
+            int alt177=3;
             switch ( input.LA(1) ) {
             case 54:
                 {
-                alt176=1;
+                alt177=1;
                 }
                 break;
             case 110:
                 {
-                alt176=2;
+                alt177=2;
                 }
                 break;
             case 111:
                 {
-                alt176=3;
+                alt177=3;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 176, 0, input);
+                    new NoViableAltException("", 177, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt176) {
+            switch (alt177) {
                 case 1 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8533:2: (enumLiteral_0= 'public' )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8535:2: (enumLiteral_0= 'public' )
                     {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8533:2: (enumLiteral_0= 'public' )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8533:4: enumLiteral_0= 'public'
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8535:2: (enumLiteral_0= 'public' )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8535:4: enumLiteral_0= 'public'
                     {
-                    enumLiteral_0=(Token)match(input,54,FOLLOW_54_in_ruleVisibility18851); if (state.failed) return current;
+                    enumLiteral_0=(Token)match(input,54,FOLLOW_54_in_ruleVisibility18872); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getVisibilityAccess().getPUBLICEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
@@ -24629,12 +24650,12 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8539:6: (enumLiteral_1= 'protected' )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8541:6: (enumLiteral_1= 'protected' )
                     {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8539:6: (enumLiteral_1= 'protected' )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8539:8: enumLiteral_1= 'protected'
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8541:6: (enumLiteral_1= 'protected' )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8541:8: enumLiteral_1= 'protected'
                     {
-                    enumLiteral_1=(Token)match(input,110,FOLLOW_110_in_ruleVisibility18868); if (state.failed) return current;
+                    enumLiteral_1=(Token)match(input,110,FOLLOW_110_in_ruleVisibility18889); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getVisibilityAccess().getPROTECTEDEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
@@ -24648,12 +24669,12 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8545:6: (enumLiteral_2= 'private' )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8547:6: (enumLiteral_2= 'private' )
                     {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8545:6: (enumLiteral_2= 'private' )
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8545:8: enumLiteral_2= 'private'
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8547:6: (enumLiteral_2= 'private' )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8547:8: enumLiteral_2= 'private'
                     {
-                    enumLiteral_2=(Token)match(input,111,FOLLOW_111_in_ruleVisibility18885); if (state.failed) return current;
+                    enumLiteral_2=(Token)match(input,111,FOLLOW_111_in_ruleVisibility18906); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getVisibilityAccess().getPRIVATEEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
@@ -25517,32 +25538,32 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
         }
 
         // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:5315:2: ( '.' | ( ( '?.' ) ) | ( ( '*.' ) ) )
-        int alt177=3;
+        int alt178=3;
         switch ( input.LA(1) ) {
         case 51:
             {
-            alt177=1;
+            alt178=1;
             }
             break;
         case 85:
             {
-            alt177=2;
+            alt178=2;
             }
             break;
         case 86:
             {
-            alt177=3;
+            alt178=3;
             }
             break;
         default:
             if (state.backtracking>0) {state.failed=true; return ;}
             NoViableAltException nvae =
-                new NoViableAltException("", 177, 0, input);
+                new NoViableAltException("", 178, 0, input);
 
             throw nvae;
         }
 
-        switch (alt177) {
+        switch (alt178) {
             case 1 :
                 // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:5315:4: '.'
                 {
@@ -25630,13 +25651,13 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
         }
 
         // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:5457:2: ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )?
-        int alt179=2;
-        int LA179_0 = input.LA(1);
+        int alt180=2;
+        int LA180_0 = input.LA(1);
 
-        if ( (LA179_0==RULE_ID||LA179_0==24||LA179_0==57||LA179_0==108) ) {
-            alt179=1;
+        if ( (LA180_0==RULE_ID||LA180_0==24||LA180_0==57||LA180_0==108) ) {
+            alt180=1;
         }
-        switch (alt179) {
+        switch (alt180) {
             case 1 :
                 // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:5457:3: ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )*
                 {
@@ -25658,17 +25679,17 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                 }
 
                 // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:5461:2: ( ',' ( ( ruleJvmFormalParameter ) ) )*
-                loop178:
+                loop179:
                 do {
-                    int alt178=2;
-                    int LA178_0 = input.LA(1);
+                    int alt179=2;
+                    int LA179_0 = input.LA(1);
 
-                    if ( (LA178_0==25) ) {
-                        alt178=1;
+                    if ( (LA179_0==25) ) {
+                        alt179=1;
                     }
 
 
-                    switch (alt178) {
+                    switch (alt179) {
                 	case 1 :
                 	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:5461:4: ',' ( ( ruleJvmFormalParameter ) )
                 	    {
@@ -25695,7 +25716,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                 	    break;
 
                 	default :
-                	    break loop178;
+                	    break loop179;
                     }
                 } while (true);
 
@@ -25756,13 +25777,13 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
         // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:5668:4: ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) )
         {
         // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:5668:4: ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )?
-        int alt181=2;
-        int LA181_0 = input.LA(1);
+        int alt182=2;
+        int LA182_0 = input.LA(1);
 
-        if ( (LA181_0==RULE_ID||LA181_0==24||LA181_0==57||LA181_0==108) ) {
-            alt181=1;
+        if ( (LA182_0==RULE_ID||LA182_0==24||LA182_0==57||LA182_0==108) ) {
+            alt182=1;
         }
-        switch (alt181) {
+        switch (alt182) {
             case 1 :
                 // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:5668:5: ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )*
                 {
@@ -25784,17 +25805,17 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                 }
 
                 // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:5672:2: ( ',' ( ( ruleJvmFormalParameter ) ) )*
-                loop180:
+                loop181:
                 do {
-                    int alt180=2;
-                    int LA180_0 = input.LA(1);
+                    int alt181=2;
+                    int LA181_0 = input.LA(1);
 
-                    if ( (LA180_0==25) ) {
-                        alt180=1;
+                    if ( (LA181_0==25) ) {
+                        alt181=1;
                     }
 
 
-                    switch (alt180) {
+                    switch (alt181) {
                 	case 1 :
                 	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:5672:4: ',' ( ( ruleJvmFormalParameter ) )
                 	    {
@@ -25821,7 +25842,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                 	    break;
 
                 	default :
-                	    break loop180;
+                	    break loop181;
                     }
                 } while (true);
 
@@ -25978,13 +25999,13 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
         }
 
         // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:6993:2: ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )?
-        int alt185=2;
-        int LA185_0 = input.LA(1);
+        int alt186=2;
+        int LA186_0 = input.LA(1);
 
-        if ( (LA185_0==RULE_ID||LA185_0==24||LA185_0==57||LA185_0==108) ) {
-            alt185=1;
+        if ( (LA186_0==RULE_ID||LA186_0==24||LA186_0==57||LA186_0==108) ) {
+            alt186=1;
         }
-        switch (alt185) {
+        switch (alt186) {
             case 1 :
                 // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:6993:3: ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )*
                 {
@@ -26006,17 +26027,17 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                 }
 
                 // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:6997:2: ( ',' ( ( ruleJvmFormalParameter ) ) )*
-                loop184:
+                loop185:
                 do {
-                    int alt184=2;
-                    int LA184_0 = input.LA(1);
+                    int alt185=2;
+                    int LA185_0 = input.LA(1);
 
-                    if ( (LA184_0==25) ) {
-                        alt184=1;
+                    if ( (LA185_0==25) ) {
+                        alt185=1;
                     }
 
 
-                    switch (alt184) {
+                    switch (alt185) {
                 	case 1 :
                 	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:6997:4: ',' ( ( ruleJvmFormalParameter ) )
                 	    {
@@ -26043,7 +26064,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                 	    break;
 
                 	default :
-                	    break loop184;
+                	    break loop185;
                     }
                 } while (true);
 
@@ -26097,35 +26118,57 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred40_InternalSpec
     public final void synpred40_InternalSpec_fragment() throws RecognitionException {   
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7268:3: ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7268:4: ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) )
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7216:4: ( '<' )
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7216:6: '<'
         {
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7268:4: ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) )
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7268:5: () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) )
+        match(input,27,FOLLOW_27_in_synpred40_InternalSpec15763); if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred40_InternalSpec
+
+    // $ANTLR start synpred41_InternalSpec
+    public final void synpred41_InternalSpec_fragment() throws RecognitionException {   
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7265:5: ( '(' )
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7265:7: '('
         {
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7268:5: ()
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7269:1: 
+        match(input,24,FOLLOW_24_in_synpred41_InternalSpec15856); if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred41_InternalSpec
+
+    // $ANTLR start synpred42_InternalSpec
+    public final void synpred42_InternalSpec_fragment() throws RecognitionException {   
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7270:4: ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7270:5: ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) )
+        {
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7270:5: ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) )
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7270:6: () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) )
+        {
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7270:6: ()
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7271:1: 
         {
         }
 
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7269:2: ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )?
-        int alt187=2;
-        int LA187_0 = input.LA(1);
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7271:2: ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )?
+        int alt188=2;
+        int LA188_0 = input.LA(1);
 
-        if ( (LA187_0==RULE_ID||LA187_0==24||LA187_0==57||LA187_0==108) ) {
-            alt187=1;
+        if ( (LA188_0==RULE_ID||LA188_0==24||LA188_0==57||LA188_0==108) ) {
+            alt188=1;
         }
-        switch (alt187) {
+        switch (alt188) {
             case 1 :
-                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7269:3: ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )*
+                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7271:3: ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )*
                 {
-                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7269:3: ( ( ruleJvmFormalParameter ) )
-                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7270:1: ( ruleJvmFormalParameter )
+                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7271:3: ( ( ruleJvmFormalParameter ) )
+                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7272:1: ( ruleJvmFormalParameter )
                 {
-                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7270:1: ( ruleJvmFormalParameter )
-                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7271:1: ruleJvmFormalParameter
+                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7272:1: ( ruleJvmFormalParameter )
+                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7273:1: ruleJvmFormalParameter
                 {
-                pushFollow(FOLLOW_ruleJvmFormalParameter_in_synpred40_InternalSpec15867);
+                pushFollow(FOLLOW_ruleJvmFormalParameter_in_synpred42_InternalSpec15886);
                 ruleJvmFormalParameter();
 
                 state._fsp--;
@@ -26136,29 +26179,29 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
                 }
 
-                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7273:2: ( ',' ( ( ruleJvmFormalParameter ) ) )*
-                loop186:
+                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7275:2: ( ',' ( ( ruleJvmFormalParameter ) ) )*
+                loop187:
                 do {
-                    int alt186=2;
-                    int LA186_0 = input.LA(1);
+                    int alt187=2;
+                    int LA187_0 = input.LA(1);
 
-                    if ( (LA186_0==25) ) {
-                        alt186=1;
+                    if ( (LA187_0==25) ) {
+                        alt187=1;
                     }
 
 
-                    switch (alt186) {
+                    switch (alt187) {
                 	case 1 :
-                	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7273:4: ',' ( ( ruleJvmFormalParameter ) )
+                	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7275:4: ',' ( ( ruleJvmFormalParameter ) )
                 	    {
-                	    match(input,25,FOLLOW_25_in_synpred40_InternalSpec15874); if (state.failed) return ;
-                	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7274:1: ( ( ruleJvmFormalParameter ) )
-                	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7275:1: ( ruleJvmFormalParameter )
+                	    match(input,25,FOLLOW_25_in_synpred42_InternalSpec15893); if (state.failed) return ;
+                	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7276:1: ( ( ruleJvmFormalParameter ) )
+                	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7277:1: ( ruleJvmFormalParameter )
                 	    {
-                	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7275:1: ( ruleJvmFormalParameter )
-                	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7276:1: ruleJvmFormalParameter
+                	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7277:1: ( ruleJvmFormalParameter )
+                	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7278:1: ruleJvmFormalParameter
                 	    {
-                	    pushFollow(FOLLOW_ruleJvmFormalParameter_in_synpred40_InternalSpec15881);
+                	    pushFollow(FOLLOW_ruleJvmFormalParameter_in_synpred42_InternalSpec15900);
                 	    ruleJvmFormalParameter();
 
                 	    state._fsp--;
@@ -26174,7 +26217,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                 	    break;
 
                 	default :
-                	    break loop186;
+                	    break loop187;
                     }
                 } while (true);
 
@@ -26184,61 +26227,19 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
         }
 
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7278:6: ( ( '|' ) )
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7279:1: ( '|' )
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7280:6: ( ( '|' ) )
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7281:1: ( '|' )
         {
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7279:1: ( '|' )
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7280:2: '|'
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7281:1: ( '|' )
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7282:2: '|'
         {
-        match(input,40,FOLLOW_40_in_synpred40_InternalSpec15895); if (state.failed) return ;
+        match(input,40,FOLLOW_40_in_synpred42_InternalSpec15914); if (state.failed) return ;
 
         }
 
 
         }
 
-
-        }
-
-
-        }
-    }
-    // $ANTLR end synpred40_InternalSpec
-
-    // $ANTLR start synpred41_InternalSpec
-    public final void synpred41_InternalSpec_fragment() throws RecognitionException {   
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7347:2: ( ( ruleXClosure ) )
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7348:1: ( ruleXClosure )
-        {
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7348:1: ( ruleXClosure )
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7349:1: ruleXClosure
-        {
-        pushFollow(FOLLOW_ruleXClosure_in_synpred41_InternalSpec16011);
-        ruleXClosure();
-
-        state._fsp--;
-        if (state.failed) return ;
-
-        }
-
-
-        }
-    }
-    // $ANTLR end synpred41_InternalSpec
-
-    // $ANTLR start synpred42_InternalSpec
-    public final void synpred42_InternalSpec_fragment() throws RecognitionException {   
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7626:2: ( ( ruleXExpression ) )
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7627:1: ( ruleXExpression )
-        {
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7627:1: ( ruleXExpression )
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7628:1: ruleXExpression
-        {
-        pushFollow(FOLLOW_ruleXExpression_in_synpred42_InternalSpec16711);
-        ruleXExpression();
-
-        state._fsp--;
-        if (state.failed) return ;
 
         }
 
@@ -26249,10 +26250,20 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred43_InternalSpec
     public final void synpred43_InternalSpec_fragment() throws RecognitionException {   
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7697:5: ( 'catch' )
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7697:7: 'catch'
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7349:4: ( ( ruleXClosure ) )
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7350:1: ( ruleXClosure )
         {
-        match(input,107,FOLLOW_107_in_synpred43_InternalSpec16856); if (state.failed) return ;
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7350:1: ( ruleXClosure )
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7351:1: ruleXClosure
+        {
+        pushFollow(FOLLOW_ruleXClosure_in_synpred43_InternalSpec16032);
+        ruleXClosure();
+
+        state._fsp--;
+        if (state.failed) return ;
+
+        }
+
 
         }
     }
@@ -26260,59 +26271,91 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred44_InternalSpec
     public final void synpred44_InternalSpec_fragment() throws RecognitionException {   
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7716:5: ( 'finally' )
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7716:7: 'finally'
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7628:2: ( ( ruleXExpression ) )
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7629:1: ( ruleXExpression )
         {
-        match(input,106,FOLLOW_106_in_synpred44_InternalSpec16886); if (state.failed) return ;
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7629:1: ( ruleXExpression )
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7630:1: ruleXExpression
+        {
+        pushFollow(FOLLOW_ruleXExpression_in_synpred44_InternalSpec16732);
+        ruleXExpression();
+
+        state._fsp--;
+        if (state.failed) return ;
+
+        }
+
 
         }
     }
     // $ANTLR end synpred44_InternalSpec
 
+    // $ANTLR start synpred45_InternalSpec
+    public final void synpred45_InternalSpec_fragment() throws RecognitionException {   
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7699:5: ( 'catch' )
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7699:7: 'catch'
+        {
+        match(input,107,FOLLOW_107_in_synpred45_InternalSpec16877); if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred45_InternalSpec
+
     // $ANTLR start synpred46_InternalSpec
     public final void synpred46_InternalSpec_fragment() throws RecognitionException {   
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7864:3: ( '.' )
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7865:2: '.'
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7718:5: ( 'finally' )
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7718:7: 'finally'
         {
-        match(input,51,FOLLOW_51_in_synpred46_InternalSpec17233); if (state.failed) return ;
+        match(input,106,FOLLOW_106_in_synpred46_InternalSpec16907); if (state.failed) return ;
 
         }
     }
     // $ANTLR end synpred46_InternalSpec
 
-    // $ANTLR start synpred47_InternalSpec
-    public final void synpred47_InternalSpec_fragment() throws RecognitionException {   
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7988:2: ( ( () '[' ']' ) )
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7988:3: ( () '[' ']' )
-        {
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7988:3: ( () '[' ']' )
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7988:4: () '[' ']'
-        {
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7988:4: ()
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7989:1: 
-        {
-        }
-
-        match(input,48,FOLLOW_48_in_synpred47_InternalSpec17616); if (state.failed) return ;
-        match(input,49,FOLLOW_49_in_synpred47_InternalSpec17620); if (state.failed) return ;
-
-        }
-
-
-        }
-    }
-    // $ANTLR end synpred47_InternalSpec
-
     // $ANTLR start synpred48_InternalSpec
     public final void synpred48_InternalSpec_fragment() throws RecognitionException {   
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8142:4: ( '<' )
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8142:6: '<'
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7866:3: ( '.' )
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7867:2: '.'
         {
-        match(input,27,FOLLOW_27_in_synpred48_InternalSpec17980); if (state.failed) return ;
+        match(input,51,FOLLOW_51_in_synpred48_InternalSpec17254); if (state.failed) return ;
 
         }
     }
     // $ANTLR end synpred48_InternalSpec
+
+    // $ANTLR start synpred49_InternalSpec
+    public final void synpred49_InternalSpec_fragment() throws RecognitionException {   
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7990:2: ( ( () '[' ']' ) )
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7990:3: ( () '[' ']' )
+        {
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7990:3: ( () '[' ']' )
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7990:4: () '[' ']'
+        {
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7990:4: ()
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:7991:1: 
+        {
+        }
+
+        match(input,48,FOLLOW_48_in_synpred49_InternalSpec17637); if (state.failed) return ;
+        match(input,49,FOLLOW_49_in_synpred49_InternalSpec17641); if (state.failed) return ;
+
+        }
+
+
+        }
+    }
+    // $ANTLR end synpred49_InternalSpec
+
+    // $ANTLR start synpred50_InternalSpec
+    public final void synpred50_InternalSpec_fragment() throws RecognitionException {   
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8144:4: ( '<' )
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8144:6: '<'
+        {
+        match(input,27,FOLLOW_27_in_synpred50_InternalSpec18001); if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred50_InternalSpec
 
     // Delegated rules
 
@@ -26736,20 +26779,6 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
         state.failed=false;
         return success;
     }
-    public final boolean synpred47_InternalSpec() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred47_InternalSpec_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
     public final boolean synpred30_InternalSpec() {
         state.backtracking++;
         int start = input.mark();
@@ -26862,6 +26891,34 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
         state.failed=false;
         return success;
     }
+    public final boolean synpred49_InternalSpec() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred49_InternalSpec_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred45_InternalSpec() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred45_InternalSpec_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
     public final boolean synpred13_InternalSpec() {
         state.backtracking++;
         int start = input.mark();
@@ -26909,6 +26966,20 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
         int start = input.mark();
         try {
             synpred19_InternalSpec_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred50_InternalSpec() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred50_InternalSpec_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -26976,10 +27047,12 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
     protected DFA146 dfa146 = new DFA146(this);
     protected DFA145 dfa145 = new DFA145(this);
     protected DFA147 dfa147 = new DFA147(this);
-    protected DFA153 dfa153 = new DFA153(this);
+    protected DFA151 dfa151 = new DFA151(this);
     protected DFA154 dfa154 = new DFA154(this);
-    protected DFA156 dfa156 = new DFA156(this);
-    protected DFA171 dfa171 = new DFA171(this);
+    protected DFA153 dfa153 = new DFA153(this);
+    protected DFA155 dfa155 = new DFA155(this);
+    protected DFA157 dfa157 = new DFA157(this);
+    protected DFA172 dfa172 = new DFA172(this);
     static final String DFA54_eotS =
         "\14\uffff";
     static final String DFA54_eofS =
@@ -27051,13 +27124,13 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
     static final String DFA24_eofS =
         "\1\3\1\uffff\1\27\35\uffff";
     static final String DFA24_minS =
-        "\1\4\1\uffff\1\4\1\uffff\1\4\1\5\25\uffff\1\4\1\5\3\uffff";
+        "\1\4\1\uffff\1\4\1\uffff\1\4\1\5\22\uffff\1\4\1\5\6\uffff";
     static final String DFA24_maxS =
-        "\1\157\1\uffff\1\157\1\uffff\2\157\25\uffff\2\157\3\uffff";
+        "\1\157\1\uffff\1\157\1\uffff\2\157\22\uffff\2\157\6\uffff";
     static final String DFA24_acceptS =
-        "\1\uffff\1\1\1\uffff\1\2\2\uffff\25\1\2\uffff\3\1";
+        "\1\uffff\1\1\1\uffff\1\2\2\uffff\22\1\2\uffff\6\1";
     static final String DFA24_specialS =
-        "\1\1\1\uffff\1\5\1\uffff\1\0\1\3\25\uffff\1\2\1\4\3\uffff}>";
+        "\1\5\1\uffff\1\3\1\uffff\1\4\1\2\22\uffff\1\0\1\1\6\uffff}>";
     static final String[] DFA24_transitionS = {
             "\1\1\1\2\17\uffff\4\3\10\uffff\1\3\1\uffff\1\3\1\uffff\3\3\1"+
             "\uffff\2\3\1\uffff\1\3\11\uffff\1\3\2\uffff\1\3\12\uffff\1\3"+
@@ -27068,16 +27141,13 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             "\26\3\uffff\1\3\2\uffff\1\3\2\uffff\1\17\2\uffff\1\5\12\uffff"+
             "\1\10\47\uffff\1\25\1\uffff\1\20\1\21",
             "",
-            "\1\36\1\33\17\uffff\1\3\1\uffff\2\3\2\uffff\1\31\5\uffff\1"+
-            "\3\1\35\1\3\1\uffff\3\3\1\uffff\4\3\3\uffff\1\32\2\uffff\1\30"+
-            "\2\uffff\1\3\2\uffff\1\34\12\uffff\1\3\47\uffff\1\3\1\uffff"+
+            "\1\33\1\30\17\uffff\1\3\1\uffff\2\3\2\uffff\1\35\5\uffff\1"+
+            "\3\1\32\1\3\1\uffff\3\3\1\uffff\4\3\3\uffff\1\36\2\uffff\1\34"+
+            "\2\uffff\1\3\2\uffff\1\31\12\uffff\1\3\47\uffff\1\3\1\uffff"+
             "\2\3",
-            "\1\33\17\uffff\1\3\1\uffff\2\3\2\uffff\1\31\5\uffff\1\3\1\uffff"+
-            "\1\3\1\uffff\3\3\1\uffff\4\3\3\uffff\1\32\2\uffff\1\30\2\uffff"+
-            "\1\3\2\uffff\1\34\12\uffff\1\3\47\uffff\1\3\1\uffff\2\3",
-            "",
-            "",
-            "",
+            "\1\30\17\uffff\1\3\1\uffff\2\3\2\uffff\1\35\5\uffff\1\3\1\uffff"+
+            "\1\3\1\uffff\3\3\1\uffff\4\3\3\uffff\1\36\2\uffff\1\34\2\uffff"+
+            "\1\3\2\uffff\1\31\12\uffff\1\3\47\uffff\1\3\1\uffff\2\3",
             "",
             "",
             "",
@@ -27104,6 +27174,9 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             "\1\uffff\1\13\1\uffff\1\14\1\15\1\16\1\uffff\1\22\1\23\1\37"+
             "\1\26\3\uffff\1\3\2\uffff\1\3\2\uffff\1\17\2\uffff\1\5\12\uffff"+
             "\1\10\47\uffff\1\25\1\uffff\1\20\1\21",
+            "",
+            "",
+            "",
             "",
             "",
             ""
@@ -27146,175 +27219,131 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA24_4 = input.LA(1);
+                        int LA24_24 = input.LA(1);
 
                          
-                        int index24_4 = input.index();
+                        int index24_24 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA24_4==51) && (synpred7_InternalSpec())) {s = 24;}
+                        if ( (LA24_24==RULE_STRING||LA24_24==27||LA24_24==34||LA24_24==48||LA24_24==51) ) {s = 3;}
 
-                        else if ( (LA24_4==27) && (synpred7_InternalSpec())) {s = 25;}
+                        else if ( (LA24_24==43) && (synpred7_InternalSpec())) {s = 31;}
 
-                        else if ( (LA24_4==48) && (synpred7_InternalSpec())) {s = 26;}
+                        else if ( (LA24_24==23) && (synpred7_InternalSpec())) {s = 7;}
 
-                        else if ( (LA24_4==RULE_ID) ) {s = 27;}
+                        else if ( (LA24_24==68) && (synpred7_InternalSpec())) {s = 8;}
 
-                        else if ( (LA24_4==57) ) {s = 28;}
+                        else if ( (LA24_24==RULE_ID) ) {s = 4;}
 
-                        else if ( (LA24_4==34) && (synpred7_InternalSpec())) {s = 29;}
+                        else if ( (LA24_24==33) && (synpred7_InternalSpec())) {s = 9;}
 
-                        else if ( (LA24_4==RULE_STRING) && (synpred7_InternalSpec())) {s = 30;}
+                        else if ( (LA24_24==21) && (synpred7_InternalSpec())) {s = 10;}
 
-                        else if ( (LA24_4==21||(LA24_4>=23 && LA24_4<=24)||LA24_4==33||LA24_4==35||(LA24_4>=37 && LA24_4<=39)||(LA24_4>=41 && LA24_4<=44)||LA24_4==54||LA24_4==68||LA24_4==108||(LA24_4>=110 && LA24_4<=111)) ) {s = 3;}
+                        else if ( (LA24_24==35) && (synpred7_InternalSpec())) {s = 11;}
+
+                        else if ( (LA24_24==37) && (synpred7_InternalSpec())) {s = 12;}
+
+                        else if ( (LA24_24==38) && (synpred7_InternalSpec())) {s = 13;}
+
+                        else if ( (LA24_24==39) && (synpred7_InternalSpec())) {s = 14;}
+
+                        else if ( (LA24_24==54) && (synpred7_InternalSpec())) {s = 15;}
+
+                        else if ( (LA24_24==110) && (synpred7_InternalSpec())) {s = 16;}
+
+                        else if ( (LA24_24==111) && (synpred7_InternalSpec())) {s = 17;}
+
+                        else if ( (LA24_24==41) && (synpred7_InternalSpec())) {s = 18;}
+
+                        else if ( (LA24_24==42) && (synpred7_InternalSpec())) {s = 19;}
+
+                        else if ( (LA24_24==57) ) {s = 5;}
+
+                        else if ( (LA24_24==24) && (synpred7_InternalSpec())) {s = 20;}
+
+                        else if ( (LA24_24==108) && (synpred7_InternalSpec())) {s = 21;}
+
+                        else if ( (LA24_24==44) && (synpred7_InternalSpec())) {s = 22;}
 
                          
-                        input.seek(index24_4);
+                        input.seek(index24_24);
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA24_0 = input.LA(1);
+                        int LA24_25 = input.LA(1);
 
                          
-                        int index24_0 = input.index();
+                        int index24_25 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA24_0==RULE_STRING) && (synpred7_InternalSpec())) {s = 1;}
+                        if ( (LA24_25==43) && (synpred7_InternalSpec())) {s = 31;}
 
-                        else if ( (LA24_0==RULE_ID) ) {s = 2;}
+                        else if ( (LA24_25==23) && (synpred7_InternalSpec())) {s = 7;}
 
-                        else if ( (LA24_0==EOF||(LA24_0>=21 && LA24_0<=24)||LA24_0==33||LA24_0==35||(LA24_0>=37 && LA24_0<=39)||(LA24_0>=41 && LA24_0<=42)||LA24_0==44||LA24_0==54||LA24_0==57||LA24_0==68||LA24_0==108||(LA24_0>=110 && LA24_0<=111)) ) {s = 3;}
+                        else if ( (LA24_25==68) && (synpred7_InternalSpec())) {s = 8;}
+
+                        else if ( (LA24_25==RULE_ID) ) {s = 4;}
+
+                        else if ( (LA24_25==33) && (synpred7_InternalSpec())) {s = 9;}
+
+                        else if ( (LA24_25==21) && (synpred7_InternalSpec())) {s = 10;}
+
+                        else if ( (LA24_25==35) && (synpred7_InternalSpec())) {s = 11;}
+
+                        else if ( (LA24_25==37) && (synpred7_InternalSpec())) {s = 12;}
+
+                        else if ( (LA24_25==38) && (synpred7_InternalSpec())) {s = 13;}
+
+                        else if ( (LA24_25==39) && (synpred7_InternalSpec())) {s = 14;}
+
+                        else if ( (LA24_25==54) && (synpred7_InternalSpec())) {s = 15;}
+
+                        else if ( (LA24_25==110) && (synpred7_InternalSpec())) {s = 16;}
+
+                        else if ( (LA24_25==111) && (synpred7_InternalSpec())) {s = 17;}
+
+                        else if ( (LA24_25==41) && (synpred7_InternalSpec())) {s = 18;}
+
+                        else if ( (LA24_25==42) && (synpred7_InternalSpec())) {s = 19;}
+
+                        else if ( (LA24_25==57) ) {s = 5;}
+
+                        else if ( (LA24_25==24) && (synpred7_InternalSpec())) {s = 20;}
+
+                        else if ( (LA24_25==108) && (synpred7_InternalSpec())) {s = 21;}
+
+                        else if ( (LA24_25==44) && (synpred7_InternalSpec())) {s = 22;}
+
+                        else if ( (LA24_25==27||LA24_25==48||LA24_25==51) ) {s = 3;}
 
                          
-                        input.seek(index24_0);
+                        input.seek(index24_25);
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
-                        int LA24_27 = input.LA(1);
-
-                         
-                        int index24_27 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (LA24_27==RULE_STRING||LA24_27==27||LA24_27==34||LA24_27==48||LA24_27==51) ) {s = 3;}
-
-                        else if ( (LA24_27==RULE_ID) ) {s = 4;}
-
-                        else if ( (LA24_27==57) ) {s = 5;}
-
-                        else if ( (LA24_27==43) && (synpred7_InternalSpec())) {s = 31;}
-
-                        else if ( (LA24_27==23) && (synpred7_InternalSpec())) {s = 7;}
-
-                        else if ( (LA24_27==68) && (synpred7_InternalSpec())) {s = 8;}
-
-                        else if ( (LA24_27==33) && (synpred7_InternalSpec())) {s = 9;}
-
-                        else if ( (LA24_27==21) && (synpred7_InternalSpec())) {s = 10;}
-
-                        else if ( (LA24_27==35) && (synpred7_InternalSpec())) {s = 11;}
-
-                        else if ( (LA24_27==37) && (synpred7_InternalSpec())) {s = 12;}
-
-                        else if ( (LA24_27==38) && (synpred7_InternalSpec())) {s = 13;}
-
-                        else if ( (LA24_27==39) && (synpred7_InternalSpec())) {s = 14;}
-
-                        else if ( (LA24_27==54) && (synpred7_InternalSpec())) {s = 15;}
-
-                        else if ( (LA24_27==110) && (synpred7_InternalSpec())) {s = 16;}
-
-                        else if ( (LA24_27==111) && (synpred7_InternalSpec())) {s = 17;}
-
-                        else if ( (LA24_27==41) && (synpred7_InternalSpec())) {s = 18;}
-
-                        else if ( (LA24_27==42) && (synpred7_InternalSpec())) {s = 19;}
-
-                        else if ( (LA24_27==24) && (synpred7_InternalSpec())) {s = 20;}
-
-                        else if ( (LA24_27==108) && (synpred7_InternalSpec())) {s = 21;}
-
-                        else if ( (LA24_27==44) && (synpred7_InternalSpec())) {s = 22;}
-
-                         
-                        input.seek(index24_27);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 3 : 
                         int LA24_5 = input.LA(1);
 
                          
                         int index24_5 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA24_5==21||(LA24_5>=23 && LA24_5<=24)||LA24_5==33||LA24_5==35||(LA24_5>=37 && LA24_5<=39)||(LA24_5>=41 && LA24_5<=44)||LA24_5==54||LA24_5==68||LA24_5==108||(LA24_5>=110 && LA24_5<=111)) ) {s = 3;}
+                        if ( (LA24_5==51) && (synpred7_InternalSpec())) {s = 28;}
 
-                        else if ( (LA24_5==RULE_ID) ) {s = 27;}
+                        else if ( (LA24_5==27) && (synpred7_InternalSpec())) {s = 29;}
 
-                        else if ( (LA24_5==57) ) {s = 28;}
+                        else if ( (LA24_5==48) && (synpred7_InternalSpec())) {s = 30;}
 
-                        else if ( (LA24_5==51) && (synpred7_InternalSpec())) {s = 24;}
+                        else if ( (LA24_5==RULE_ID) ) {s = 24;}
 
-                        else if ( (LA24_5==27) && (synpred7_InternalSpec())) {s = 25;}
+                        else if ( (LA24_5==57) ) {s = 25;}
 
-                        else if ( (LA24_5==48) && (synpred7_InternalSpec())) {s = 26;}
+                        else if ( (LA24_5==21||(LA24_5>=23 && LA24_5<=24)||LA24_5==33||LA24_5==35||(LA24_5>=37 && LA24_5<=39)||(LA24_5>=41 && LA24_5<=44)||LA24_5==54||LA24_5==68||LA24_5==108||(LA24_5>=110 && LA24_5<=111)) ) {s = 3;}
 
                          
                         input.seek(index24_5);
                         if ( s>=0 ) return s;
                         break;
-                    case 4 : 
-                        int LA24_28 = input.LA(1);
-
-                         
-                        int index24_28 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (LA24_28==43) && (synpred7_InternalSpec())) {s = 31;}
-
-                        else if ( (LA24_28==23) && (synpred7_InternalSpec())) {s = 7;}
-
-                        else if ( (LA24_28==68) && (synpred7_InternalSpec())) {s = 8;}
-
-                        else if ( (LA24_28==RULE_ID) ) {s = 4;}
-
-                        else if ( (LA24_28==33) && (synpred7_InternalSpec())) {s = 9;}
-
-                        else if ( (LA24_28==21) && (synpred7_InternalSpec())) {s = 10;}
-
-                        else if ( (LA24_28==35) && (synpred7_InternalSpec())) {s = 11;}
-
-                        else if ( (LA24_28==37) && (synpred7_InternalSpec())) {s = 12;}
-
-                        else if ( (LA24_28==38) && (synpred7_InternalSpec())) {s = 13;}
-
-                        else if ( (LA24_28==39) && (synpred7_InternalSpec())) {s = 14;}
-
-                        else if ( (LA24_28==54) && (synpred7_InternalSpec())) {s = 15;}
-
-                        else if ( (LA24_28==110) && (synpred7_InternalSpec())) {s = 16;}
-
-                        else if ( (LA24_28==111) && (synpred7_InternalSpec())) {s = 17;}
-
-                        else if ( (LA24_28==41) && (synpred7_InternalSpec())) {s = 18;}
-
-                        else if ( (LA24_28==42) && (synpred7_InternalSpec())) {s = 19;}
-
-                        else if ( (LA24_28==57) ) {s = 5;}
-
-                        else if ( (LA24_28==24) && (synpred7_InternalSpec())) {s = 20;}
-
-                        else if ( (LA24_28==108) && (synpred7_InternalSpec())) {s = 21;}
-
-                        else if ( (LA24_28==44) && (synpred7_InternalSpec())) {s = 22;}
-
-                        else if ( (LA24_28==27||LA24_28==48||LA24_28==51) ) {s = 3;}
-
-                         
-                        input.seek(index24_28);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 5 : 
+                    case 3 : 
                         int LA24_2 = input.LA(1);
 
                          
@@ -27367,6 +27396,50 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                         input.seek(index24_2);
                         if ( s>=0 ) return s;
                         break;
+                    case 4 : 
+                        int LA24_4 = input.LA(1);
+
+                         
+                        int index24_4 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (LA24_4==21||(LA24_4>=23 && LA24_4<=24)||LA24_4==33||LA24_4==35||(LA24_4>=37 && LA24_4<=39)||(LA24_4>=41 && LA24_4<=44)||LA24_4==54||LA24_4==68||LA24_4==108||(LA24_4>=110 && LA24_4<=111)) ) {s = 3;}
+
+                        else if ( (LA24_4==RULE_ID) ) {s = 24;}
+
+                        else if ( (LA24_4==57) ) {s = 25;}
+
+                        else if ( (LA24_4==34) && (synpred7_InternalSpec())) {s = 26;}
+
+                        else if ( (LA24_4==RULE_STRING) && (synpred7_InternalSpec())) {s = 27;}
+
+                        else if ( (LA24_4==51) && (synpred7_InternalSpec())) {s = 28;}
+
+                        else if ( (LA24_4==27) && (synpred7_InternalSpec())) {s = 29;}
+
+                        else if ( (LA24_4==48) && (synpred7_InternalSpec())) {s = 30;}
+
+                         
+                        input.seek(index24_4);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 5 : 
+                        int LA24_0 = input.LA(1);
+
+                         
+                        int index24_0 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (LA24_0==RULE_STRING) && (synpred7_InternalSpec())) {s = 1;}
+
+                        else if ( (LA24_0==RULE_ID) ) {s = 2;}
+
+                        else if ( (LA24_0==EOF||(LA24_0>=21 && LA24_0<=24)||LA24_0==33||LA24_0==35||(LA24_0>=37 && LA24_0<=39)||(LA24_0>=41 && LA24_0<=42)||LA24_0==44||LA24_0==54||LA24_0==57||LA24_0==68||LA24_0==108||(LA24_0>=110 && LA24_0<=111)) ) {s = 3;}
+
+                         
+                        input.seek(index24_0);
+                        if ( s>=0 ) return s;
+                        break;
             }
             if (state.backtracking>0) {state.failed=true; return -1;}
             NoViableAltException nvae =
@@ -27380,13 +27453,13 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
     static final String DFA28_eofS =
         "\1\3\1\uffff\1\27\35\uffff";
     static final String DFA28_minS =
-        "\1\4\1\uffff\1\4\1\uffff\1\4\1\5\25\uffff\1\4\1\5\3\uffff";
+        "\1\4\1\uffff\1\4\1\uffff\1\4\1\5\22\uffff\1\4\1\5\6\uffff";
     static final String DFA28_maxS =
-        "\1\157\1\uffff\1\157\1\uffff\2\157\25\uffff\2\157\3\uffff";
+        "\1\157\1\uffff\1\157\1\uffff\2\157\22\uffff\2\157\6\uffff";
     static final String DFA28_acceptS =
-        "\1\uffff\1\1\1\uffff\1\2\2\uffff\25\1\2\uffff\3\1";
+        "\1\uffff\1\1\1\uffff\1\2\2\uffff\22\1\2\uffff\6\1";
     static final String DFA28_specialS =
-        "\1\5\1\uffff\1\4\1\uffff\1\0\1\2\25\uffff\1\1\1\3\3\uffff}>";
+        "\1\4\1\uffff\1\1\1\uffff\1\5\1\3\22\uffff\1\0\1\2\6\uffff}>";
     static final String[] DFA28_transitionS = {
             "\1\1\1\2\17\uffff\4\3\10\uffff\1\3\1\uffff\1\3\1\uffff\3\3\1"+
             "\uffff\2\3\1\uffff\1\3\11\uffff\1\3\2\uffff\1\3\12\uffff\1\3"+
@@ -27397,16 +27470,13 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             "\26\3\uffff\1\3\2\uffff\1\3\2\uffff\1\17\2\uffff\1\5\12\uffff"+
             "\1\10\47\uffff\1\25\1\uffff\1\20\1\21",
             "",
-            "\1\36\1\33\17\uffff\1\3\1\uffff\2\3\2\uffff\1\31\5\uffff\1"+
-            "\3\1\35\1\3\1\uffff\3\3\1\uffff\4\3\3\uffff\1\32\2\uffff\1\30"+
-            "\2\uffff\1\3\2\uffff\1\34\12\uffff\1\3\47\uffff\1\3\1\uffff"+
+            "\1\33\1\30\17\uffff\1\3\1\uffff\2\3\2\uffff\1\35\5\uffff\1"+
+            "\3\1\32\1\3\1\uffff\3\3\1\uffff\4\3\3\uffff\1\36\2\uffff\1\34"+
+            "\2\uffff\1\3\2\uffff\1\31\12\uffff\1\3\47\uffff\1\3\1\uffff"+
             "\2\3",
-            "\1\33\17\uffff\1\3\1\uffff\2\3\2\uffff\1\31\5\uffff\1\3\1\uffff"+
-            "\1\3\1\uffff\3\3\1\uffff\4\3\3\uffff\1\32\2\uffff\1\30\2\uffff"+
-            "\1\3\2\uffff\1\34\12\uffff\1\3\47\uffff\1\3\1\uffff\2\3",
-            "",
-            "",
-            "",
+            "\1\30\17\uffff\1\3\1\uffff\2\3\2\uffff\1\35\5\uffff\1\3\1\uffff"+
+            "\1\3\1\uffff\3\3\1\uffff\4\3\3\uffff\1\36\2\uffff\1\34\2\uffff"+
+            "\1\3\2\uffff\1\31\12\uffff\1\3\47\uffff\1\3\1\uffff\2\3",
             "",
             "",
             "",
@@ -27433,6 +27503,9 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             "\1\uffff\1\13\1\uffff\1\14\1\15\1\16\1\uffff\1\22\1\23\1\37"+
             "\1\26\3\uffff\1\3\2\uffff\1\3\2\uffff\1\17\2\uffff\1\5\12\uffff"+
             "\1\10\47\uffff\1\25\1\uffff\1\20\1\21",
+            "",
+            "",
+            "",
             "",
             "",
             ""
@@ -27475,158 +27548,57 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA28_4 = input.LA(1);
+                        int LA28_24 = input.LA(1);
 
                          
-                        int index28_4 = input.index();
+                        int index28_24 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA28_4==51) && (synpred8_InternalSpec())) {s = 24;}
+                        if ( (LA28_24==RULE_STRING||LA28_24==27||LA28_24==34||LA28_24==48||LA28_24==51) ) {s = 3;}
 
-                        else if ( (LA28_4==27) && (synpred8_InternalSpec())) {s = 25;}
+                        else if ( (LA28_24==43) && (synpred8_InternalSpec())) {s = 31;}
 
-                        else if ( (LA28_4==48) && (synpred8_InternalSpec())) {s = 26;}
+                        else if ( (LA28_24==23) && (synpred8_InternalSpec())) {s = 7;}
 
-                        else if ( (LA28_4==RULE_ID) ) {s = 27;}
+                        else if ( (LA28_24==68) && (synpred8_InternalSpec())) {s = 8;}
 
-                        else if ( (LA28_4==57) ) {s = 28;}
+                        else if ( (LA28_24==RULE_ID) ) {s = 4;}
 
-                        else if ( (LA28_4==34) && (synpred8_InternalSpec())) {s = 29;}
+                        else if ( (LA28_24==33) && (synpred8_InternalSpec())) {s = 9;}
 
-                        else if ( (LA28_4==RULE_STRING) && (synpred8_InternalSpec())) {s = 30;}
+                        else if ( (LA28_24==21) && (synpred8_InternalSpec())) {s = 10;}
 
-                        else if ( (LA28_4==21||(LA28_4>=23 && LA28_4<=24)||LA28_4==33||LA28_4==35||(LA28_4>=37 && LA28_4<=39)||(LA28_4>=41 && LA28_4<=44)||LA28_4==54||LA28_4==68||LA28_4==108||(LA28_4>=110 && LA28_4<=111)) ) {s = 3;}
+                        else if ( (LA28_24==35) && (synpred8_InternalSpec())) {s = 11;}
+
+                        else if ( (LA28_24==37) && (synpred8_InternalSpec())) {s = 12;}
+
+                        else if ( (LA28_24==38) && (synpred8_InternalSpec())) {s = 13;}
+
+                        else if ( (LA28_24==39) && (synpred8_InternalSpec())) {s = 14;}
+
+                        else if ( (LA28_24==54) && (synpred8_InternalSpec())) {s = 15;}
+
+                        else if ( (LA28_24==110) && (synpred8_InternalSpec())) {s = 16;}
+
+                        else if ( (LA28_24==111) && (synpred8_InternalSpec())) {s = 17;}
+
+                        else if ( (LA28_24==41) && (synpred8_InternalSpec())) {s = 18;}
+
+                        else if ( (LA28_24==42) && (synpred8_InternalSpec())) {s = 19;}
+
+                        else if ( (LA28_24==57) ) {s = 5;}
+
+                        else if ( (LA28_24==24) && (synpred8_InternalSpec())) {s = 20;}
+
+                        else if ( (LA28_24==108) && (synpred8_InternalSpec())) {s = 21;}
+
+                        else if ( (LA28_24==44) && (synpred8_InternalSpec())) {s = 22;}
 
                          
-                        input.seek(index28_4);
+                        input.seek(index28_24);
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA28_27 = input.LA(1);
-
-                         
-                        int index28_27 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (LA28_27==RULE_STRING||LA28_27==27||LA28_27==34||LA28_27==48||LA28_27==51) ) {s = 3;}
-
-                        else if ( (LA28_27==RULE_ID) ) {s = 4;}
-
-                        else if ( (LA28_27==57) ) {s = 5;}
-
-                        else if ( (LA28_27==43) && (synpred8_InternalSpec())) {s = 31;}
-
-                        else if ( (LA28_27==23) && (synpred8_InternalSpec())) {s = 7;}
-
-                        else if ( (LA28_27==68) && (synpred8_InternalSpec())) {s = 8;}
-
-                        else if ( (LA28_27==33) && (synpred8_InternalSpec())) {s = 9;}
-
-                        else if ( (LA28_27==21) && (synpred8_InternalSpec())) {s = 10;}
-
-                        else if ( (LA28_27==35) && (synpred8_InternalSpec())) {s = 11;}
-
-                        else if ( (LA28_27==37) && (synpred8_InternalSpec())) {s = 12;}
-
-                        else if ( (LA28_27==38) && (synpred8_InternalSpec())) {s = 13;}
-
-                        else if ( (LA28_27==39) && (synpred8_InternalSpec())) {s = 14;}
-
-                        else if ( (LA28_27==54) && (synpred8_InternalSpec())) {s = 15;}
-
-                        else if ( (LA28_27==110) && (synpred8_InternalSpec())) {s = 16;}
-
-                        else if ( (LA28_27==111) && (synpred8_InternalSpec())) {s = 17;}
-
-                        else if ( (LA28_27==41) && (synpred8_InternalSpec())) {s = 18;}
-
-                        else if ( (LA28_27==42) && (synpred8_InternalSpec())) {s = 19;}
-
-                        else if ( (LA28_27==24) && (synpred8_InternalSpec())) {s = 20;}
-
-                        else if ( (LA28_27==108) && (synpred8_InternalSpec())) {s = 21;}
-
-                        else if ( (LA28_27==44) && (synpred8_InternalSpec())) {s = 22;}
-
-                         
-                        input.seek(index28_27);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
-                        int LA28_5 = input.LA(1);
-
-                         
-                        int index28_5 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (LA28_5==21||(LA28_5>=23 && LA28_5<=24)||LA28_5==33||LA28_5==35||(LA28_5>=37 && LA28_5<=39)||(LA28_5>=41 && LA28_5<=44)||LA28_5==54||LA28_5==68||LA28_5==108||(LA28_5>=110 && LA28_5<=111)) ) {s = 3;}
-
-                        else if ( (LA28_5==RULE_ID) ) {s = 27;}
-
-                        else if ( (LA28_5==57) ) {s = 28;}
-
-                        else if ( (LA28_5==51) && (synpred8_InternalSpec())) {s = 24;}
-
-                        else if ( (LA28_5==27) && (synpred8_InternalSpec())) {s = 25;}
-
-                        else if ( (LA28_5==48) && (synpred8_InternalSpec())) {s = 26;}
-
-                         
-                        input.seek(index28_5);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 3 : 
-                        int LA28_28 = input.LA(1);
-
-                         
-                        int index28_28 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (LA28_28==43) && (synpred8_InternalSpec())) {s = 31;}
-
-                        else if ( (LA28_28==23) && (synpred8_InternalSpec())) {s = 7;}
-
-                        else if ( (LA28_28==68) && (synpred8_InternalSpec())) {s = 8;}
-
-                        else if ( (LA28_28==RULE_ID) ) {s = 4;}
-
-                        else if ( (LA28_28==33) && (synpred8_InternalSpec())) {s = 9;}
-
-                        else if ( (LA28_28==21) && (synpred8_InternalSpec())) {s = 10;}
-
-                        else if ( (LA28_28==35) && (synpred8_InternalSpec())) {s = 11;}
-
-                        else if ( (LA28_28==37) && (synpred8_InternalSpec())) {s = 12;}
-
-                        else if ( (LA28_28==38) && (synpred8_InternalSpec())) {s = 13;}
-
-                        else if ( (LA28_28==39) && (synpred8_InternalSpec())) {s = 14;}
-
-                        else if ( (LA28_28==54) && (synpred8_InternalSpec())) {s = 15;}
-
-                        else if ( (LA28_28==110) && (synpred8_InternalSpec())) {s = 16;}
-
-                        else if ( (LA28_28==111) && (synpred8_InternalSpec())) {s = 17;}
-
-                        else if ( (LA28_28==41) && (synpred8_InternalSpec())) {s = 18;}
-
-                        else if ( (LA28_28==42) && (synpred8_InternalSpec())) {s = 19;}
-
-                        else if ( (LA28_28==57) ) {s = 5;}
-
-                        else if ( (LA28_28==24) && (synpred8_InternalSpec())) {s = 20;}
-
-                        else if ( (LA28_28==108) && (synpred8_InternalSpec())) {s = 21;}
-
-                        else if ( (LA28_28==44) && (synpred8_InternalSpec())) {s = 22;}
-
-                        else if ( (LA28_28==27||LA28_28==48||LA28_28==51) ) {s = 3;}
-
-                         
-                        input.seek(index28_28);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 4 : 
                         int LA28_2 = input.LA(1);
 
                          
@@ -27679,7 +27651,81 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
                         input.seek(index28_2);
                         if ( s>=0 ) return s;
                         break;
-                    case 5 : 
+                    case 2 : 
+                        int LA28_25 = input.LA(1);
+
+                         
+                        int index28_25 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (LA28_25==43) && (synpred8_InternalSpec())) {s = 31;}
+
+                        else if ( (LA28_25==23) && (synpred8_InternalSpec())) {s = 7;}
+
+                        else if ( (LA28_25==68) && (synpred8_InternalSpec())) {s = 8;}
+
+                        else if ( (LA28_25==RULE_ID) ) {s = 4;}
+
+                        else if ( (LA28_25==33) && (synpred8_InternalSpec())) {s = 9;}
+
+                        else if ( (LA28_25==21) && (synpred8_InternalSpec())) {s = 10;}
+
+                        else if ( (LA28_25==35) && (synpred8_InternalSpec())) {s = 11;}
+
+                        else if ( (LA28_25==37) && (synpred8_InternalSpec())) {s = 12;}
+
+                        else if ( (LA28_25==38) && (synpred8_InternalSpec())) {s = 13;}
+
+                        else if ( (LA28_25==39) && (synpred8_InternalSpec())) {s = 14;}
+
+                        else if ( (LA28_25==54) && (synpred8_InternalSpec())) {s = 15;}
+
+                        else if ( (LA28_25==110) && (synpred8_InternalSpec())) {s = 16;}
+
+                        else if ( (LA28_25==111) && (synpred8_InternalSpec())) {s = 17;}
+
+                        else if ( (LA28_25==41) && (synpred8_InternalSpec())) {s = 18;}
+
+                        else if ( (LA28_25==42) && (synpred8_InternalSpec())) {s = 19;}
+
+                        else if ( (LA28_25==57) ) {s = 5;}
+
+                        else if ( (LA28_25==24) && (synpred8_InternalSpec())) {s = 20;}
+
+                        else if ( (LA28_25==108) && (synpred8_InternalSpec())) {s = 21;}
+
+                        else if ( (LA28_25==44) && (synpred8_InternalSpec())) {s = 22;}
+
+                        else if ( (LA28_25==27||LA28_25==48||LA28_25==51) ) {s = 3;}
+
+                         
+                        input.seek(index28_25);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 3 : 
+                        int LA28_5 = input.LA(1);
+
+                         
+                        int index28_5 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (LA28_5==51) && (synpred8_InternalSpec())) {s = 28;}
+
+                        else if ( (LA28_5==27) && (synpred8_InternalSpec())) {s = 29;}
+
+                        else if ( (LA28_5==48) && (synpred8_InternalSpec())) {s = 30;}
+
+                        else if ( (LA28_5==RULE_ID) ) {s = 24;}
+
+                        else if ( (LA28_5==57) ) {s = 25;}
+
+                        else if ( (LA28_5==21||(LA28_5>=23 && LA28_5<=24)||LA28_5==33||LA28_5==35||(LA28_5>=37 && LA28_5<=39)||(LA28_5>=41 && LA28_5<=44)||LA28_5==54||LA28_5==68||LA28_5==108||(LA28_5>=110 && LA28_5<=111)) ) {s = 3;}
+
+                         
+                        input.seek(index28_5);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 4 : 
                         int LA28_0 = input.LA(1);
 
                          
@@ -27694,6 +27740,33 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
 
                          
                         input.seek(index28_0);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 5 : 
+                        int LA28_4 = input.LA(1);
+
+                         
+                        int index28_4 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (LA28_4==21||(LA28_4>=23 && LA28_4<=24)||LA28_4==33||LA28_4==35||(LA28_4>=37 && LA28_4<=39)||(LA28_4>=41 && LA28_4<=44)||LA28_4==54||LA28_4==68||LA28_4==108||(LA28_4>=110 && LA28_4<=111)) ) {s = 3;}
+
+                        else if ( (LA28_4==RULE_ID) ) {s = 24;}
+
+                        else if ( (LA28_4==57) ) {s = 25;}
+
+                        else if ( (LA28_4==34) && (synpred8_InternalSpec())) {s = 26;}
+
+                        else if ( (LA28_4==RULE_STRING) && (synpred8_InternalSpec())) {s = 27;}
+
+                        else if ( (LA28_4==51) && (synpred8_InternalSpec())) {s = 28;}
+
+                        else if ( (LA28_4==27) && (synpred8_InternalSpec())) {s = 29;}
+
+                        else if ( (LA28_4==48) && (synpred8_InternalSpec())) {s = 30;}
+
+                         
+                        input.seek(index28_4);
                         if ( s>=0 ) return s;
                         break;
             }
@@ -29250,26 +29323,77 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             throw nvae;
         }
     }
-    static final String DFA153_eotS =
-        "\43\uffff";
-    static final String DFA153_eofS =
-        "\43\uffff";
-    static final String DFA153_minS =
-        "\1\4\3\0\37\uffff";
-    static final String DFA153_maxS =
-        "\1\154\3\0\37\uffff";
-    static final String DFA153_acceptS =
-        "\4\uffff\2\1\1\2\33\uffff\1\3";
-    static final String DFA153_specialS =
-        "\1\0\1\1\1\2\1\3\37\uffff}>";
-    static final String[] DFA153_transitionS = {
-            "\1\6\1\1\2\6\4\uffff\3\6\7\uffff\1\6\1\uffff\1\3\1\uffff\1\42"+
-            "\1\6\4\uffff\2\6\6\uffff\1\5\5\uffff\3\6\10\uffff\1\2\13\uffff"+
-            "\1\6\15\uffff\1\6\3\uffff\1\6\1\uffff\1\6\2\uffff\3\6\3\uffff"+
-            "\10\6\2\uffff\1\4",
+    static final String DFA151_eotS =
+        "\127\uffff";
+    static final String DFA151_eofS =
+        "\1\2\126\uffff";
+    static final String DFA151_minS =
+        "\1\4\1\0\125\uffff";
+    static final String DFA151_maxS =
+        "\1\157\1\0\125\uffff";
+    static final String DFA151_acceptS =
+        "\2\uffff\1\2\123\uffff\1\1";
+    static final String DFA151_specialS =
+        "\1\uffff\1\0\125\uffff}>";
+    static final String[] DFA151_transitionS = {
+            "\13\2\6\uffff\6\2\1\1\1\2\3\uffff\2\2\1\uffff\1\2\1\uffff\6"+
+            "\2\1\uffff\1\2\1\uffff\4\2\1\uffff\4\2\2\uffff\2\2\1\uffff\3"+
+            "\2\5\uffff\35\2\1\uffff\13\2\1\uffff\2\2",
             "\1\uffff",
-            "\1\uffff",
-            "\1\uffff",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
             "",
             "",
             "",
@@ -29303,116 +29427,61 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             ""
     };
 
-    static final short[] DFA153_eot = DFA.unpackEncodedString(DFA153_eotS);
-    static final short[] DFA153_eof = DFA.unpackEncodedString(DFA153_eofS);
-    static final char[] DFA153_min = DFA.unpackEncodedStringToUnsignedChars(DFA153_minS);
-    static final char[] DFA153_max = DFA.unpackEncodedStringToUnsignedChars(DFA153_maxS);
-    static final short[] DFA153_accept = DFA.unpackEncodedString(DFA153_acceptS);
-    static final short[] DFA153_special = DFA.unpackEncodedString(DFA153_specialS);
-    static final short[][] DFA153_transition;
+    static final short[] DFA151_eot = DFA.unpackEncodedString(DFA151_eotS);
+    static final short[] DFA151_eof = DFA.unpackEncodedString(DFA151_eofS);
+    static final char[] DFA151_min = DFA.unpackEncodedStringToUnsignedChars(DFA151_minS);
+    static final char[] DFA151_max = DFA.unpackEncodedStringToUnsignedChars(DFA151_maxS);
+    static final short[] DFA151_accept = DFA.unpackEncodedString(DFA151_acceptS);
+    static final short[] DFA151_special = DFA.unpackEncodedString(DFA151_specialS);
+    static final short[][] DFA151_transition;
 
     static {
-        int numStates = DFA153_transitionS.length;
-        DFA153_transition = new short[numStates][];
+        int numStates = DFA151_transitionS.length;
+        DFA151_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA153_transition[i] = DFA.unpackEncodedString(DFA153_transitionS[i]);
+            DFA151_transition[i] = DFA.unpackEncodedString(DFA151_transitionS[i]);
         }
     }
 
-    class DFA153 extends DFA {
+    class DFA151 extends DFA {
 
-        public DFA153(BaseRecognizer recognizer) {
+        public DFA151(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 153;
-            this.eot = DFA153_eot;
-            this.eof = DFA153_eof;
-            this.min = DFA153_min;
-            this.max = DFA153_max;
-            this.accept = DFA153_accept;
-            this.special = DFA153_special;
-            this.transition = DFA153_transition;
+            this.decisionNumber = 151;
+            this.eot = DFA151_eot;
+            this.eof = DFA151_eof;
+            this.min = DFA151_min;
+            this.max = DFA151_max;
+            this.accept = DFA151_accept;
+            this.special = DFA151_special;
+            this.transition = DFA151_transition;
         }
         public String getDescription() {
-            return "7268:1: ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_arguments_9_0= ruleXShortClosure ) ) | ( ( (lv_arguments_10_0= ruleXExpression ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )* ) )?";
+            return "7216:2: ( ( ( '<' )=>otherlv_3= '<' ) ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>' )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA153_0 = input.LA(1);
+                        int LA151_1 = input.LA(1);
 
                          
-                        int index153_0 = input.index();
+                        int index151_1 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA153_0==RULE_ID) ) {s = 1;}
+                        if ( (synpred40_InternalSpec()) ) {s = 86;}
 
-                        else if ( (LA153_0==57) ) {s = 2;}
-
-                        else if ( (LA153_0==24) ) {s = 3;}
-
-                        else if ( (LA153_0==108) && (synpred40_InternalSpec())) {s = 4;}
-
-                        else if ( (LA153_0==40) && (synpred40_InternalSpec())) {s = 5;}
-
-                        else if ( (LA153_0==RULE_STRING||(LA153_0>=RULE_RICH_TEXT && LA153_0<=RULE_RICH_TEXT_START)||(LA153_0>=RULE_HEX && LA153_0<=RULE_DECIMAL)||LA153_0==22||LA153_0==27||(LA153_0>=32 && LA153_0<=33)||(LA153_0>=46 && LA153_0<=48)||LA153_0==69||LA153_0==83||LA153_0==87||LA153_0==89||(LA153_0>=92 && LA153_0<=94)||(LA153_0>=98 && LA153_0<=105)) ) {s = 6;}
-
-                        else if ( (LA153_0==26) ) {s = 34;}
+                        else if ( (true) ) {s = 2;}
 
                          
-                        input.seek(index153_0);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
-                        int LA153_1 = input.LA(1);
-
-                         
-                        int index153_1 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred40_InternalSpec()) ) {s = 5;}
-
-                        else if ( (true) ) {s = 6;}
-
-                         
-                        input.seek(index153_1);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
-                        int LA153_2 = input.LA(1);
-
-                         
-                        int index153_2 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred40_InternalSpec()) ) {s = 5;}
-
-                        else if ( (true) ) {s = 6;}
-
-                         
-                        input.seek(index153_2);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 3 : 
-                        int LA153_3 = input.LA(1);
-
-                         
-                        int index153_3 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred40_InternalSpec()) ) {s = 5;}
-
-                        else if ( (true) ) {s = 6;}
-
-                         
-                        input.seek(index153_3);
+                        input.seek(index151_1);
                         if ( s>=0 ) return s;
                         break;
             }
             if (state.backtracking>0) {state.failed=true; return -1;}
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 153, _s, input);
+                new NoViableAltException(getDescription(), 151, _s, input);
             error(nvae);
             throw nvae;
         }
@@ -29430,9 +29499,9 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
     static final String DFA154_specialS =
         "\1\uffff\1\0\125\uffff}>";
     static final String[] DFA154_transitionS = {
-            "\13\2\6\uffff\10\2\3\uffff\2\2\1\uffff\1\2\1\uffff\6\2\1\uffff"+
-            "\1\2\1\uffff\2\2\1\1\1\2\1\uffff\4\2\2\uffff\2\2\1\uffff\3\2"+
-            "\5\uffff\35\2\1\uffff\13\2\1\uffff\2\2",
+            "\13\2\6\uffff\3\2\1\1\4\2\3\uffff\2\2\1\uffff\1\2\1\uffff\6"+
+            "\2\1\uffff\1\2\1\uffff\4\2\1\uffff\4\2\2\uffff\2\2\1\uffff\3"+
+            "\2\5\uffff\35\2\1\uffff\13\2\1\uffff\2\2",
             "\1\uffff",
             "",
             "",
@@ -29551,7 +29620,7 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             this.transition = DFA154_transition;
         }
         public String getDescription() {
-            return "7347:1: ( ( ( ruleXClosure ) )=> (lv_arguments_14_0= ruleXClosure ) )?";
+            return "7265:3: ( ( ( '(' )=>otherlv_8= '(' ) ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_arguments_9_0= ruleXShortClosure ) ) | ( ( (lv_arguments_10_0= ruleXExpression ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )* ) )? otherlv_13= ')' )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
@@ -29580,21 +29649,351 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             throw nvae;
         }
     }
-    static final String DFA156_eotS =
+    static final String DFA153_eotS =
+        "\43\uffff";
+    static final String DFA153_eofS =
+        "\43\uffff";
+    static final String DFA153_minS =
+        "\1\4\3\0\37\uffff";
+    static final String DFA153_maxS =
+        "\1\154\3\0\37\uffff";
+    static final String DFA153_acceptS =
+        "\4\uffff\2\1\1\2\33\uffff\1\3";
+    static final String DFA153_specialS =
+        "\1\0\1\1\1\2\1\3\37\uffff}>";
+    static final String[] DFA153_transitionS = {
+            "\1\6\1\1\2\6\4\uffff\3\6\7\uffff\1\6\1\uffff\1\3\1\uffff\1\42"+
+            "\1\6\4\uffff\2\6\6\uffff\1\5\5\uffff\3\6\10\uffff\1\2\13\uffff"+
+            "\1\6\15\uffff\1\6\3\uffff\1\6\1\uffff\1\6\2\uffff\3\6\3\uffff"+
+            "\10\6\2\uffff\1\4",
+            "\1\uffff",
+            "\1\uffff",
+            "\1\uffff",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+    };
+
+    static final short[] DFA153_eot = DFA.unpackEncodedString(DFA153_eotS);
+    static final short[] DFA153_eof = DFA.unpackEncodedString(DFA153_eofS);
+    static final char[] DFA153_min = DFA.unpackEncodedStringToUnsignedChars(DFA153_minS);
+    static final char[] DFA153_max = DFA.unpackEncodedStringToUnsignedChars(DFA153_maxS);
+    static final short[] DFA153_accept = DFA.unpackEncodedString(DFA153_acceptS);
+    static final short[] DFA153_special = DFA.unpackEncodedString(DFA153_specialS);
+    static final short[][] DFA153_transition;
+
+    static {
+        int numStates = DFA153_transitionS.length;
+        DFA153_transition = new short[numStates][];
+        for (int i=0; i<numStates; i++) {
+            DFA153_transition[i] = DFA.unpackEncodedString(DFA153_transitionS[i]);
+        }
+    }
+
+    class DFA153 extends DFA {
+
+        public DFA153(BaseRecognizer recognizer) {
+            this.recognizer = recognizer;
+            this.decisionNumber = 153;
+            this.eot = DFA153_eot;
+            this.eof = DFA153_eof;
+            this.min = DFA153_min;
+            this.max = DFA153_max;
+            this.accept = DFA153_accept;
+            this.special = DFA153_special;
+            this.transition = DFA153_transition;
+        }
+        public String getDescription() {
+            return "7270:2: ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_arguments_9_0= ruleXShortClosure ) ) | ( ( (lv_arguments_10_0= ruleXExpression ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )* ) )?";
+        }
+        public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
+            TokenStream input = (TokenStream)_input;
+        	int _s = s;
+            switch ( s ) {
+                    case 0 : 
+                        int LA153_0 = input.LA(1);
+
+                         
+                        int index153_0 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (LA153_0==RULE_ID) ) {s = 1;}
+
+                        else if ( (LA153_0==57) ) {s = 2;}
+
+                        else if ( (LA153_0==24) ) {s = 3;}
+
+                        else if ( (LA153_0==108) && (synpred42_InternalSpec())) {s = 4;}
+
+                        else if ( (LA153_0==40) && (synpred42_InternalSpec())) {s = 5;}
+
+                        else if ( (LA153_0==RULE_STRING||(LA153_0>=RULE_RICH_TEXT && LA153_0<=RULE_RICH_TEXT_START)||(LA153_0>=RULE_HEX && LA153_0<=RULE_DECIMAL)||LA153_0==22||LA153_0==27||(LA153_0>=32 && LA153_0<=33)||(LA153_0>=46 && LA153_0<=48)||LA153_0==69||LA153_0==83||LA153_0==87||LA153_0==89||(LA153_0>=92 && LA153_0<=94)||(LA153_0>=98 && LA153_0<=105)) ) {s = 6;}
+
+                        else if ( (LA153_0==26) ) {s = 34;}
+
+                         
+                        input.seek(index153_0);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 1 : 
+                        int LA153_1 = input.LA(1);
+
+                         
+                        int index153_1 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred42_InternalSpec()) ) {s = 5;}
+
+                        else if ( (true) ) {s = 6;}
+
+                         
+                        input.seek(index153_1);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
+                        int LA153_2 = input.LA(1);
+
+                         
+                        int index153_2 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred42_InternalSpec()) ) {s = 5;}
+
+                        else if ( (true) ) {s = 6;}
+
+                         
+                        input.seek(index153_2);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 3 : 
+                        int LA153_3 = input.LA(1);
+
+                         
+                        int index153_3 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred42_InternalSpec()) ) {s = 5;}
+
+                        else if ( (true) ) {s = 6;}
+
+                         
+                        input.seek(index153_3);
+                        if ( s>=0 ) return s;
+                        break;
+            }
+            if (state.backtracking>0) {state.failed=true; return -1;}
+            NoViableAltException nvae =
+                new NoViableAltException(getDescription(), 153, _s, input);
+            error(nvae);
+            throw nvae;
+        }
+    }
+    static final String DFA155_eotS =
         "\127\uffff";
-    static final String DFA156_eofS =
+    static final String DFA155_eofS =
+        "\1\2\126\uffff";
+    static final String DFA155_minS =
+        "\1\4\1\0\125\uffff";
+    static final String DFA155_maxS =
+        "\1\157\1\0\125\uffff";
+    static final String DFA155_acceptS =
+        "\2\uffff\1\2\123\uffff\1\1";
+    static final String DFA155_specialS =
+        "\1\uffff\1\0\125\uffff}>";
+    static final String[] DFA155_transitionS = {
+            "\13\2\6\uffff\10\2\3\uffff\2\2\1\uffff\1\2\1\uffff\6\2\1\uffff"+
+            "\1\2\1\uffff\2\2\1\1\1\2\1\uffff\4\2\2\uffff\2\2\1\uffff\3\2"+
+            "\5\uffff\35\2\1\uffff\13\2\1\uffff\2\2",
+            "\1\uffff",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+    };
+
+    static final short[] DFA155_eot = DFA.unpackEncodedString(DFA155_eotS);
+    static final short[] DFA155_eof = DFA.unpackEncodedString(DFA155_eofS);
+    static final char[] DFA155_min = DFA.unpackEncodedStringToUnsignedChars(DFA155_minS);
+    static final char[] DFA155_max = DFA.unpackEncodedStringToUnsignedChars(DFA155_maxS);
+    static final short[] DFA155_accept = DFA.unpackEncodedString(DFA155_acceptS);
+    static final short[] DFA155_special = DFA.unpackEncodedString(DFA155_specialS);
+    static final short[][] DFA155_transition;
+
+    static {
+        int numStates = DFA155_transitionS.length;
+        DFA155_transition = new short[numStates][];
+        for (int i=0; i<numStates; i++) {
+            DFA155_transition[i] = DFA.unpackEncodedString(DFA155_transitionS[i]);
+        }
+    }
+
+    class DFA155 extends DFA {
+
+        public DFA155(BaseRecognizer recognizer) {
+            this.recognizer = recognizer;
+            this.decisionNumber = 155;
+            this.eot = DFA155_eot;
+            this.eof = DFA155_eof;
+            this.min = DFA155_min;
+            this.max = DFA155_max;
+            this.accept = DFA155_accept;
+            this.special = DFA155_special;
+            this.transition = DFA155_transition;
+        }
+        public String getDescription() {
+            return "7349:3: ( ( ( ruleXClosure ) )=> (lv_arguments_14_0= ruleXClosure ) )?";
+        }
+        public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
+            TokenStream input = (TokenStream)_input;
+        	int _s = s;
+            switch ( s ) {
+                    case 0 : 
+                        int LA155_1 = input.LA(1);
+
+                         
+                        int index155_1 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred43_InternalSpec()) ) {s = 86;}
+
+                        else if ( (true) ) {s = 2;}
+
+                         
+                        input.seek(index155_1);
+                        if ( s>=0 ) return s;
+                        break;
+            }
+            if (state.backtracking>0) {state.failed=true; return -1;}
+            NoViableAltException nvae =
+                new NoViableAltException(getDescription(), 155, _s, input);
+            error(nvae);
+            throw nvae;
+        }
+    }
+    static final String DFA157_eotS =
+        "\127\uffff";
+    static final String DFA157_eofS =
         "\1\40\126\uffff";
-    static final String DFA156_minS =
+    static final String DFA157_minS =
         "\1\4\37\0\67\uffff";
-    static final String DFA156_maxS =
+    static final String DFA157_maxS =
         "\1\157\37\0\67\uffff";
-    static final String DFA156_acceptS =
+    static final String DFA157_acceptS =
         "\40\uffff\1\2\65\uffff\1\1";
-    static final String DFA156_specialS =
+    static final String DFA157_specialS =
         "\1\uffff\1\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1\14"+
         "\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\1\30\1\31"+
         "\1\32\1\33\1\34\1\35\1\36\67\uffff}>";
-    static final String[] DFA156_transitionS = {
+    static final String[] DFA157_transitionS = {
             "\1\22\1\1\1\23\1\24\4\40\1\16\1\17\1\20\6\uffff\1\40\1\7\1\40"+
             "\1\35\2\40\1\11\1\40\3\uffff\1\12\1\4\1\uffff\1\40\1\uffff\6"+
             "\40\1\uffff\1\40\1\uffff\1\36\1\37\1\13\1\40\1\uffff\4\40\2"+
@@ -29689,528 +30088,528 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             ""
     };
 
-    static final short[] DFA156_eot = DFA.unpackEncodedString(DFA156_eotS);
-    static final short[] DFA156_eof = DFA.unpackEncodedString(DFA156_eofS);
-    static final char[] DFA156_min = DFA.unpackEncodedStringToUnsignedChars(DFA156_minS);
-    static final char[] DFA156_max = DFA.unpackEncodedStringToUnsignedChars(DFA156_maxS);
-    static final short[] DFA156_accept = DFA.unpackEncodedString(DFA156_acceptS);
-    static final short[] DFA156_special = DFA.unpackEncodedString(DFA156_specialS);
-    static final short[][] DFA156_transition;
+    static final short[] DFA157_eot = DFA.unpackEncodedString(DFA157_eotS);
+    static final short[] DFA157_eof = DFA.unpackEncodedString(DFA157_eofS);
+    static final char[] DFA157_min = DFA.unpackEncodedStringToUnsignedChars(DFA157_minS);
+    static final char[] DFA157_max = DFA.unpackEncodedStringToUnsignedChars(DFA157_maxS);
+    static final short[] DFA157_accept = DFA.unpackEncodedString(DFA157_acceptS);
+    static final short[] DFA157_special = DFA.unpackEncodedString(DFA157_specialS);
+    static final short[][] DFA157_transition;
 
     static {
-        int numStates = DFA156_transitionS.length;
-        DFA156_transition = new short[numStates][];
+        int numStates = DFA157_transitionS.length;
+        DFA157_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA156_transition[i] = DFA.unpackEncodedString(DFA156_transitionS[i]);
+            DFA157_transition[i] = DFA.unpackEncodedString(DFA157_transitionS[i]);
         }
     }
 
-    class DFA156 extends DFA {
+    class DFA157 extends DFA {
 
-        public DFA156(BaseRecognizer recognizer) {
+        public DFA157(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 156;
-            this.eot = DFA156_eot;
-            this.eof = DFA156_eof;
-            this.min = DFA156_min;
-            this.max = DFA156_max;
-            this.accept = DFA156_accept;
-            this.special = DFA156_special;
-            this.transition = DFA156_transition;
+            this.decisionNumber = 157;
+            this.eot = DFA157_eot;
+            this.eof = DFA157_eof;
+            this.min = DFA157_min;
+            this.max = DFA157_max;
+            this.accept = DFA157_accept;
+            this.special = DFA157_special;
+            this.transition = DFA157_transition;
         }
         public String getDescription() {
-            return "7626:1: ( ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression ) )?";
+            return "7628:1: ( ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression ) )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA156_1 = input.LA(1);
+                        int LA157_1 = input.LA(1);
 
                          
-                        int index156_1 = input.index();
+                        int index157_1 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_1);
+                        input.seek(index157_1);
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA156_2 = input.LA(1);
+                        int LA157_2 = input.LA(1);
 
                          
-                        int index156_2 = input.index();
+                        int index157_2 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_2);
+                        input.seek(index157_2);
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
-                        int LA156_3 = input.LA(1);
+                        int LA157_3 = input.LA(1);
 
                          
-                        int index156_3 = input.index();
+                        int index157_3 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_3);
+                        input.seek(index157_3);
                         if ( s>=0 ) return s;
                         break;
                     case 3 : 
-                        int LA156_4 = input.LA(1);
+                        int LA157_4 = input.LA(1);
 
                          
-                        int index156_4 = input.index();
+                        int index157_4 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_4);
+                        input.seek(index157_4);
                         if ( s>=0 ) return s;
                         break;
                     case 4 : 
-                        int LA156_5 = input.LA(1);
+                        int LA157_5 = input.LA(1);
 
                          
-                        int index156_5 = input.index();
+                        int index157_5 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_5);
+                        input.seek(index157_5);
                         if ( s>=0 ) return s;
                         break;
                     case 5 : 
-                        int LA156_6 = input.LA(1);
+                        int LA157_6 = input.LA(1);
 
                          
-                        int index156_6 = input.index();
+                        int index157_6 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_6);
+                        input.seek(index157_6);
                         if ( s>=0 ) return s;
                         break;
                     case 6 : 
-                        int LA156_7 = input.LA(1);
+                        int LA157_7 = input.LA(1);
 
                          
-                        int index156_7 = input.index();
+                        int index157_7 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_7);
+                        input.seek(index157_7);
                         if ( s>=0 ) return s;
                         break;
                     case 7 : 
-                        int LA156_8 = input.LA(1);
+                        int LA157_8 = input.LA(1);
 
                          
-                        int index156_8 = input.index();
+                        int index157_8 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_8);
+                        input.seek(index157_8);
                         if ( s>=0 ) return s;
                         break;
                     case 8 : 
-                        int LA156_9 = input.LA(1);
+                        int LA157_9 = input.LA(1);
 
                          
-                        int index156_9 = input.index();
+                        int index157_9 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_9);
+                        input.seek(index157_9);
                         if ( s>=0 ) return s;
                         break;
                     case 9 : 
-                        int LA156_10 = input.LA(1);
+                        int LA157_10 = input.LA(1);
 
                          
-                        int index156_10 = input.index();
+                        int index157_10 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_10);
+                        input.seek(index157_10);
                         if ( s>=0 ) return s;
                         break;
                     case 10 : 
-                        int LA156_11 = input.LA(1);
+                        int LA157_11 = input.LA(1);
 
                          
-                        int index156_11 = input.index();
+                        int index157_11 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_11);
+                        input.seek(index157_11);
                         if ( s>=0 ) return s;
                         break;
                     case 11 : 
-                        int LA156_12 = input.LA(1);
+                        int LA157_12 = input.LA(1);
 
                          
-                        int index156_12 = input.index();
+                        int index157_12 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_12);
+                        input.seek(index157_12);
                         if ( s>=0 ) return s;
                         break;
                     case 12 : 
-                        int LA156_13 = input.LA(1);
+                        int LA157_13 = input.LA(1);
 
                          
-                        int index156_13 = input.index();
+                        int index157_13 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_13);
+                        input.seek(index157_13);
                         if ( s>=0 ) return s;
                         break;
                     case 13 : 
-                        int LA156_14 = input.LA(1);
+                        int LA157_14 = input.LA(1);
 
                          
-                        int index156_14 = input.index();
+                        int index157_14 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_14);
+                        input.seek(index157_14);
                         if ( s>=0 ) return s;
                         break;
                     case 14 : 
-                        int LA156_15 = input.LA(1);
+                        int LA157_15 = input.LA(1);
 
                          
-                        int index156_15 = input.index();
+                        int index157_15 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_15);
+                        input.seek(index157_15);
                         if ( s>=0 ) return s;
                         break;
                     case 15 : 
-                        int LA156_16 = input.LA(1);
+                        int LA157_16 = input.LA(1);
 
                          
-                        int index156_16 = input.index();
+                        int index157_16 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_16);
+                        input.seek(index157_16);
                         if ( s>=0 ) return s;
                         break;
                     case 16 : 
-                        int LA156_17 = input.LA(1);
+                        int LA157_17 = input.LA(1);
 
                          
-                        int index156_17 = input.index();
+                        int index157_17 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_17);
+                        input.seek(index157_17);
                         if ( s>=0 ) return s;
                         break;
                     case 17 : 
-                        int LA156_18 = input.LA(1);
+                        int LA157_18 = input.LA(1);
 
                          
-                        int index156_18 = input.index();
+                        int index157_18 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_18);
+                        input.seek(index157_18);
                         if ( s>=0 ) return s;
                         break;
                     case 18 : 
-                        int LA156_19 = input.LA(1);
+                        int LA157_19 = input.LA(1);
 
                          
-                        int index156_19 = input.index();
+                        int index157_19 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_19);
+                        input.seek(index157_19);
                         if ( s>=0 ) return s;
                         break;
                     case 19 : 
-                        int LA156_20 = input.LA(1);
+                        int LA157_20 = input.LA(1);
 
                          
-                        int index156_20 = input.index();
+                        int index157_20 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_20);
+                        input.seek(index157_20);
                         if ( s>=0 ) return s;
                         break;
                     case 20 : 
-                        int LA156_21 = input.LA(1);
+                        int LA157_21 = input.LA(1);
 
                          
-                        int index156_21 = input.index();
+                        int index157_21 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_21);
+                        input.seek(index157_21);
                         if ( s>=0 ) return s;
                         break;
                     case 21 : 
-                        int LA156_22 = input.LA(1);
+                        int LA157_22 = input.LA(1);
 
                          
-                        int index156_22 = input.index();
+                        int index157_22 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_22);
+                        input.seek(index157_22);
                         if ( s>=0 ) return s;
                         break;
                     case 22 : 
-                        int LA156_23 = input.LA(1);
+                        int LA157_23 = input.LA(1);
 
                          
-                        int index156_23 = input.index();
+                        int index157_23 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_23);
+                        input.seek(index157_23);
                         if ( s>=0 ) return s;
                         break;
                     case 23 : 
-                        int LA156_24 = input.LA(1);
+                        int LA157_24 = input.LA(1);
 
                          
-                        int index156_24 = input.index();
+                        int index157_24 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_24);
+                        input.seek(index157_24);
                         if ( s>=0 ) return s;
                         break;
                     case 24 : 
-                        int LA156_25 = input.LA(1);
+                        int LA157_25 = input.LA(1);
 
                          
-                        int index156_25 = input.index();
+                        int index157_25 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_25);
+                        input.seek(index157_25);
                         if ( s>=0 ) return s;
                         break;
                     case 25 : 
-                        int LA156_26 = input.LA(1);
+                        int LA157_26 = input.LA(1);
 
                          
-                        int index156_26 = input.index();
+                        int index157_26 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_26);
+                        input.seek(index157_26);
                         if ( s>=0 ) return s;
                         break;
                     case 26 : 
-                        int LA156_27 = input.LA(1);
+                        int LA157_27 = input.LA(1);
 
                          
-                        int index156_27 = input.index();
+                        int index157_27 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_27);
+                        input.seek(index157_27);
                         if ( s>=0 ) return s;
                         break;
                     case 27 : 
-                        int LA156_28 = input.LA(1);
+                        int LA157_28 = input.LA(1);
 
                          
-                        int index156_28 = input.index();
+                        int index157_28 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_28);
+                        input.seek(index157_28);
                         if ( s>=0 ) return s;
                         break;
                     case 28 : 
-                        int LA156_29 = input.LA(1);
+                        int LA157_29 = input.LA(1);
 
                          
-                        int index156_29 = input.index();
+                        int index157_29 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_29);
+                        input.seek(index157_29);
                         if ( s>=0 ) return s;
                         break;
                     case 29 : 
-                        int LA156_30 = input.LA(1);
+                        int LA157_30 = input.LA(1);
 
                          
-                        int index156_30 = input.index();
+                        int index157_30 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_30);
+                        input.seek(index157_30);
                         if ( s>=0 ) return s;
                         break;
                     case 30 : 
-                        int LA156_31 = input.LA(1);
+                        int LA157_31 = input.LA(1);
 
                          
-                        int index156_31 = input.index();
+                        int index157_31 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred42_InternalSpec()) ) {s = 86;}
+                        if ( (synpred44_InternalSpec()) ) {s = 86;}
 
                         else if ( (true) ) {s = 32;}
 
                          
-                        input.seek(index156_31);
+                        input.seek(index157_31);
                         if ( s>=0 ) return s;
                         break;
             }
             if (state.backtracking>0) {state.failed=true; return -1;}
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 156, _s, input);
+                new NoViableAltException(getDescription(), 157, _s, input);
             error(nvae);
             throw nvae;
         }
     }
-    static final String DFA171_eotS =
+    static final String DFA172_eotS =
         "\132\uffff";
-    static final String DFA171_eofS =
+    static final String DFA172_eofS =
         "\1\2\131\uffff";
-    static final String DFA171_minS =
+    static final String DFA172_minS =
         "\1\4\1\0\130\uffff";
-    static final String DFA171_maxS =
+    static final String DFA172_maxS =
         "\1\157\1\0\130\uffff";
-    static final String DFA171_acceptS =
+    static final String DFA172_acceptS =
         "\2\uffff\1\2\126\uffff\1\1";
-    static final String DFA171_specialS =
+    static final String DFA172_specialS =
         "\1\uffff\1\0\130\uffff}>";
-    static final String[] DFA171_transitionS = {
+    static final String[] DFA172_transitionS = {
             "\13\2\6\uffff\6\2\1\1\1\2\3\uffff\2\2\1\uffff\1\2\1\uffff\10"+
             "\2\1\uffff\4\2\1\uffff\4\2\1\uffff\3\2\1\uffff\3\2\5\uffff\35"+
             "\2\1\uffff\16\2",
@@ -30305,61 +30704,61 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             ""
     };
 
-    static final short[] DFA171_eot = DFA.unpackEncodedString(DFA171_eotS);
-    static final short[] DFA171_eof = DFA.unpackEncodedString(DFA171_eofS);
-    static final char[] DFA171_min = DFA.unpackEncodedStringToUnsignedChars(DFA171_minS);
-    static final char[] DFA171_max = DFA.unpackEncodedStringToUnsignedChars(DFA171_maxS);
-    static final short[] DFA171_accept = DFA.unpackEncodedString(DFA171_acceptS);
-    static final short[] DFA171_special = DFA.unpackEncodedString(DFA171_specialS);
-    static final short[][] DFA171_transition;
+    static final short[] DFA172_eot = DFA.unpackEncodedString(DFA172_eotS);
+    static final short[] DFA172_eof = DFA.unpackEncodedString(DFA172_eofS);
+    static final char[] DFA172_min = DFA.unpackEncodedStringToUnsignedChars(DFA172_minS);
+    static final char[] DFA172_max = DFA.unpackEncodedStringToUnsignedChars(DFA172_maxS);
+    static final short[] DFA172_accept = DFA.unpackEncodedString(DFA172_acceptS);
+    static final short[] DFA172_special = DFA.unpackEncodedString(DFA172_specialS);
+    static final short[][] DFA172_transition;
 
     static {
-        int numStates = DFA171_transitionS.length;
-        DFA171_transition = new short[numStates][];
+        int numStates = DFA172_transitionS.length;
+        DFA172_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA171_transition[i] = DFA.unpackEncodedString(DFA171_transitionS[i]);
+            DFA172_transition[i] = DFA.unpackEncodedString(DFA172_transitionS[i]);
         }
     }
 
-    class DFA171 extends DFA {
+    class DFA172 extends DFA {
 
-        public DFA171(BaseRecognizer recognizer) {
+        public DFA172(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 171;
-            this.eot = DFA171_eot;
-            this.eof = DFA171_eof;
-            this.min = DFA171_min;
-            this.max = DFA171_max;
-            this.accept = DFA171_accept;
-            this.special = DFA171_special;
-            this.transition = DFA171_transition;
+            this.decisionNumber = 172;
+            this.eot = DFA172_eot;
+            this.eof = DFA172_eof;
+            this.min = DFA172_min;
+            this.max = DFA172_max;
+            this.accept = DFA172_accept;
+            this.special = DFA172_special;
+            this.transition = DFA172_transition;
         }
         public String getDescription() {
-            return "8142:2: ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )?";
+            return "8144:2: ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA171_1 = input.LA(1);
+                        int LA172_1 = input.LA(1);
 
                          
-                        int index171_1 = input.index();
+                        int index172_1 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred48_InternalSpec()) ) {s = 89;}
+                        if ( (synpred50_InternalSpec()) ) {s = 89;}
 
                         else if ( (true) ) {s = 2;}
 
                          
-                        input.seek(index171_1);
+                        input.seek(index172_1);
                         if ( s>=0 ) return s;
                         break;
             }
             if (state.backtracking>0) {state.failed=true; return -1;}
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 171, _s, input);
+                new NoViableAltException(getDescription(), 172, _s, input);
             error(nvae);
             throw nvae;
         }
@@ -30947,125 +31346,125 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleXConstructorCall_in_entryRuleXConstructorCall15671 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleXConstructorCall15681 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_98_in_ruleXConstructorCall15727 = new BitSet(new long[]{0x0200000000000020L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleXConstructorCall15750 = new BitSet(new long[]{0x0000000009000000L});
-    public static final BitSet FOLLOW_27_in_ruleXConstructorCall15763 = new BitSet(new long[]{0x0200000041000020L,0x0000100000000000L});
-    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleXConstructorCall15784 = new BitSet(new long[]{0x0000000012000000L});
-    public static final BitSet FOLLOW_25_in_ruleXConstructorCall15797 = new BitSet(new long[]{0x0200000041000020L,0x0000100000000000L});
-    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleXConstructorCall15818 = new BitSet(new long[]{0x0000000012000000L});
-    public static final BitSet FOLLOW_28_in_ruleXConstructorCall15832 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_24_in_ruleXConstructorCall15846 = new BitSet(new long[]{0x0201C1030D4070F0L,0x000013FC72880020L});
-    public static final BitSet FOLLOW_ruleXShortClosure_in_ruleXConstructorCall15918 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXConstructorCall15946 = new BitSet(new long[]{0x0000000006000000L});
-    public static final BitSet FOLLOW_25_in_ruleXConstructorCall15959 = new BitSet(new long[]{0x0201C003094070F0L,0x000003FC72880020L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXConstructorCall15980 = new BitSet(new long[]{0x0000000006000000L});
-    public static final BitSet FOLLOW_26_in_ruleXConstructorCall15997 = new BitSet(new long[]{0x0001000000000002L});
-    public static final BitSet FOLLOW_ruleXClosure_in_ruleXConstructorCall16028 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXBooleanLiteral_in_entryRuleXBooleanLiteral16065 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXBooleanLiteral16075 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_99_in_ruleXBooleanLiteral16122 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_100_in_ruleXBooleanLiteral16146 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXNullLiteral_in_entryRuleXNullLiteral16196 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXNullLiteral16206 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_101_in_ruleXNullLiteral16252 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXNumberLiteral_in_entryRuleXNumberLiteral16288 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXNumberLiteral16298 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNumber_in_ruleXNumberLiteral16353 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXTypeLiteral_in_entryRuleXTypeLiteral16389 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXTypeLiteral16399 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_102_in_ruleXTypeLiteral16445 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_24_in_ruleXTypeLiteral16457 = new BitSet(new long[]{0x0200000000000020L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleXTypeLiteral16480 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_26_in_ruleXTypeLiteral16492 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXThrowExpression_in_entryRuleXThrowExpression16528 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXThrowExpression16538 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_103_in_ruleXThrowExpression16584 = new BitSet(new long[]{0x0201C003094070F0L,0x000003FC72880020L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXThrowExpression16605 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXReturnExpression_in_entryRuleXReturnExpression16641 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXReturnExpression16651 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_104_in_ruleXReturnExpression16697 = new BitSet(new long[]{0x0201C003094070F2L,0x000003FC72880020L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXReturnExpression16728 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXTryCatchFinallyExpression_in_entryRuleXTryCatchFinallyExpression16765 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXTryCatchFinallyExpression16775 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_105_in_ruleXTryCatchFinallyExpression16821 = new BitSet(new long[]{0x0201C003094070F0L,0x000003FC72880020L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression16842 = new BitSet(new long[]{0x0000000000000000L,0x00000C0000000000L});
-    public static final BitSet FOLLOW_ruleXCatchClause_in_ruleXTryCatchFinallyExpression16872 = new BitSet(new long[]{0x0000000000000002L,0x00000C0000000000L});
-    public static final BitSet FOLLOW_106_in_ruleXTryCatchFinallyExpression16894 = new BitSet(new long[]{0x0201C003094070F0L,0x000003FC72880020L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression16916 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_106_in_ruleXTryCatchFinallyExpression16938 = new BitSet(new long[]{0x0201C003094070F0L,0x000003FC72880020L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression16959 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXCatchClause_in_entryRuleXCatchClause16997 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXCatchClause17007 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_107_in_ruleXCatchClause17052 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_24_in_ruleXCatchClause17065 = new BitSet(new long[]{0x0200000001000020L,0x0000100000000000L});
-    public static final BitSet FOLLOW_ruleFullJvmFormalParameter_in_ruleXCatchClause17086 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_26_in_ruleXCatchClause17098 = new BitSet(new long[]{0x0201C003094070F0L,0x000003FC72880020L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXCatchClause17119 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName17156 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedName17167 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_ruleQualifiedName17214 = new BitSet(new long[]{0x0008000000000002L});
-    public static final BitSet FOLLOW_51_in_ruleQualifiedName17242 = new BitSet(new long[]{0x0200000000000020L});
-    public static final BitSet FOLLOW_ruleValidID_in_ruleQualifiedName17265 = new BitSet(new long[]{0x0008000000000002L});
-    public static final BitSet FOLLOW_ruleNumber_in_entryRuleNumber17319 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleNumber17330 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_HEX_in_ruleNumber17374 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_INT_in_ruleNumber17402 = new BitSet(new long[]{0x0008000000000002L});
-    public static final BitSet FOLLOW_RULE_DECIMAL_in_ruleNumber17428 = new BitSet(new long[]{0x0008000000000002L});
-    public static final BitSet FOLLOW_51_in_ruleNumber17448 = new BitSet(new long[]{0x0000000000006000L});
-    public static final BitSet FOLLOW_RULE_INT_in_ruleNumber17464 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_DECIMAL_in_ruleNumber17490 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_entryRuleJvmTypeReference17543 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleJvmTypeReference17553 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmParameterizedTypeReference_in_ruleJvmTypeReference17601 = new BitSet(new long[]{0x0001000000000002L});
-    public static final BitSet FOLLOW_48_in_ruleJvmTypeReference17639 = new BitSet(new long[]{0x0002000000000000L});
-    public static final BitSet FOLLOW_49_in_ruleJvmTypeReference17651 = new BitSet(new long[]{0x0001000000000002L});
-    public static final BitSet FOLLOW_ruleXFunctionTypeRef_in_ruleJvmTypeReference17683 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXFunctionTypeRef_in_entryRuleXFunctionTypeRef17718 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXFunctionTypeRef17728 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_24_in_ruleXFunctionTypeRef17766 = new BitSet(new long[]{0x0200000005000020L,0x0000100000000000L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleXFunctionTypeRef17788 = new BitSet(new long[]{0x0000000006000000L});
-    public static final BitSet FOLLOW_25_in_ruleXFunctionTypeRef17801 = new BitSet(new long[]{0x0200000001000020L,0x0000100000000000L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleXFunctionTypeRef17822 = new BitSet(new long[]{0x0000000006000000L});
-    public static final BitSet FOLLOW_26_in_ruleXFunctionTypeRef17838 = new BitSet(new long[]{0x0000000000000000L,0x0000100000000000L});
-    public static final BitSet FOLLOW_108_in_ruleXFunctionTypeRef17852 = new BitSet(new long[]{0x0200000001000020L,0x0000100000000000L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleXFunctionTypeRef17873 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmParameterizedTypeReference_in_entryRuleJvmParameterizedTypeReference17909 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleJvmParameterizedTypeReference17919 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleJvmParameterizedTypeReference17967 = new BitSet(new long[]{0x0000000008000002L});
-    public static final BitSet FOLLOW_27_in_ruleJvmParameterizedTypeReference17988 = new BitSet(new long[]{0x0200000041000020L,0x0000100000000000L});
-    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleJvmParameterizedTypeReference18010 = new BitSet(new long[]{0x0000000012000000L});
-    public static final BitSet FOLLOW_25_in_ruleJvmParameterizedTypeReference18023 = new BitSet(new long[]{0x0200000041000020L,0x0000100000000000L});
-    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleJvmParameterizedTypeReference18044 = new BitSet(new long[]{0x0000000012000000L});
-    public static final BitSet FOLLOW_28_in_ruleJvmParameterizedTypeReference18058 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_entryRuleJvmArgumentTypeReference18096 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleJvmArgumentTypeReference18106 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleJvmArgumentTypeReference18153 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmWildcardTypeReference_in_ruleJvmArgumentTypeReference18180 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmWildcardTypeReference_in_entryRuleJvmWildcardTypeReference18215 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleJvmWildcardTypeReference18225 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_30_in_ruleJvmWildcardTypeReference18271 = new BitSet(new long[]{0x0000000180000002L});
-    public static final BitSet FOLLOW_ruleJvmUpperBound_in_ruleJvmWildcardTypeReference18293 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmLowerBound_in_ruleJvmWildcardTypeReference18320 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmUpperBound_in_entryRuleJvmUpperBound18358 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleJvmUpperBound18368 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_31_in_ruleJvmUpperBound18405 = new BitSet(new long[]{0x0200000001000020L,0x0000100000000000L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleJvmUpperBound18426 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmUpperBoundAnded_in_entryRuleJvmUpperBoundAnded18462 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleJvmUpperBoundAnded18472 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_109_in_ruleJvmUpperBoundAnded18509 = new BitSet(new long[]{0x0200000001000020L,0x0000100000000000L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleJvmUpperBoundAnded18530 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmLowerBound_in_entryRuleJvmLowerBound18566 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleJvmLowerBound18576 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_32_in_ruleJvmLowerBound18613 = new BitSet(new long[]{0x0200000001000020L,0x0000100000000000L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleJvmLowerBound18634 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmTypeParameter_in_entryRuleJvmTypeParameter18670 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleJvmTypeParameter18680 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_ruleJvmTypeParameter18726 = new BitSet(new long[]{0x0000000180000002L});
-    public static final BitSet FOLLOW_ruleJvmUpperBound_in_ruleJvmTypeParameter18749 = new BitSet(new long[]{0x0000000000000002L,0x0000200000000000L});
-    public static final BitSet FOLLOW_ruleJvmUpperBoundAnded_in_ruleJvmTypeParameter18770 = new BitSet(new long[]{0x0000000000000002L,0x0000200000000000L});
-    public static final BitSet FOLLOW_ruleJvmLowerBound_in_ruleJvmTypeParameter18799 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_54_in_ruleVisibility18851 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_110_in_ruleVisibility18868 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_111_in_ruleVisibility18885 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleXConstructorCall15750 = new BitSet(new long[]{0x0001000009000002L});
+    public static final BitSet FOLLOW_27_in_ruleXConstructorCall15771 = new BitSet(new long[]{0x0200000041000020L,0x0000100000000000L});
+    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleXConstructorCall15793 = new BitSet(new long[]{0x0000000012000000L});
+    public static final BitSet FOLLOW_25_in_ruleXConstructorCall15806 = new BitSet(new long[]{0x0200000041000020L,0x0000100000000000L});
+    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleXConstructorCall15827 = new BitSet(new long[]{0x0000000012000000L});
+    public static final BitSet FOLLOW_28_in_ruleXConstructorCall15841 = new BitSet(new long[]{0x0001000001000002L});
+    public static final BitSet FOLLOW_24_in_ruleXConstructorCall15864 = new BitSet(new long[]{0x0201C1030D4070F0L,0x000013FC72880020L});
+    public static final BitSet FOLLOW_ruleXShortClosure_in_ruleXConstructorCall15937 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXConstructorCall15965 = new BitSet(new long[]{0x0000000006000000L});
+    public static final BitSet FOLLOW_25_in_ruleXConstructorCall15978 = new BitSet(new long[]{0x0201C003094070F0L,0x000003FC72880020L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXConstructorCall15999 = new BitSet(new long[]{0x0000000006000000L});
+    public static final BitSet FOLLOW_26_in_ruleXConstructorCall16016 = new BitSet(new long[]{0x0001000000000002L});
+    public static final BitSet FOLLOW_ruleXClosure_in_ruleXConstructorCall16049 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXBooleanLiteral_in_entryRuleXBooleanLiteral16086 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXBooleanLiteral16096 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_99_in_ruleXBooleanLiteral16143 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_100_in_ruleXBooleanLiteral16167 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXNullLiteral_in_entryRuleXNullLiteral16217 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXNullLiteral16227 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_101_in_ruleXNullLiteral16273 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXNumberLiteral_in_entryRuleXNumberLiteral16309 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXNumberLiteral16319 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNumber_in_ruleXNumberLiteral16374 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXTypeLiteral_in_entryRuleXTypeLiteral16410 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXTypeLiteral16420 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_102_in_ruleXTypeLiteral16466 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_24_in_ruleXTypeLiteral16478 = new BitSet(new long[]{0x0200000000000020L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleXTypeLiteral16501 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_26_in_ruleXTypeLiteral16513 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXThrowExpression_in_entryRuleXThrowExpression16549 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXThrowExpression16559 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_103_in_ruleXThrowExpression16605 = new BitSet(new long[]{0x0201C003094070F0L,0x000003FC72880020L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXThrowExpression16626 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXReturnExpression_in_entryRuleXReturnExpression16662 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXReturnExpression16672 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_104_in_ruleXReturnExpression16718 = new BitSet(new long[]{0x0201C003094070F2L,0x000003FC72880020L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXReturnExpression16749 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXTryCatchFinallyExpression_in_entryRuleXTryCatchFinallyExpression16786 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXTryCatchFinallyExpression16796 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_105_in_ruleXTryCatchFinallyExpression16842 = new BitSet(new long[]{0x0201C003094070F0L,0x000003FC72880020L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression16863 = new BitSet(new long[]{0x0000000000000000L,0x00000C0000000000L});
+    public static final BitSet FOLLOW_ruleXCatchClause_in_ruleXTryCatchFinallyExpression16893 = new BitSet(new long[]{0x0000000000000002L,0x00000C0000000000L});
+    public static final BitSet FOLLOW_106_in_ruleXTryCatchFinallyExpression16915 = new BitSet(new long[]{0x0201C003094070F0L,0x000003FC72880020L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression16937 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_106_in_ruleXTryCatchFinallyExpression16959 = new BitSet(new long[]{0x0201C003094070F0L,0x000003FC72880020L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression16980 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXCatchClause_in_entryRuleXCatchClause17018 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXCatchClause17028 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_107_in_ruleXCatchClause17073 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_24_in_ruleXCatchClause17086 = new BitSet(new long[]{0x0200000001000020L,0x0000100000000000L});
+    public static final BitSet FOLLOW_ruleFullJvmFormalParameter_in_ruleXCatchClause17107 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_26_in_ruleXCatchClause17119 = new BitSet(new long[]{0x0201C003094070F0L,0x000003FC72880020L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXCatchClause17140 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName17177 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedName17188 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_ruleQualifiedName17235 = new BitSet(new long[]{0x0008000000000002L});
+    public static final BitSet FOLLOW_51_in_ruleQualifiedName17263 = new BitSet(new long[]{0x0200000000000020L});
+    public static final BitSet FOLLOW_ruleValidID_in_ruleQualifiedName17286 = new BitSet(new long[]{0x0008000000000002L});
+    public static final BitSet FOLLOW_ruleNumber_in_entryRuleNumber17340 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleNumber17351 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_HEX_in_ruleNumber17395 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_INT_in_ruleNumber17423 = new BitSet(new long[]{0x0008000000000002L});
+    public static final BitSet FOLLOW_RULE_DECIMAL_in_ruleNumber17449 = new BitSet(new long[]{0x0008000000000002L});
+    public static final BitSet FOLLOW_51_in_ruleNumber17469 = new BitSet(new long[]{0x0000000000006000L});
+    public static final BitSet FOLLOW_RULE_INT_in_ruleNumber17485 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_DECIMAL_in_ruleNumber17511 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_entryRuleJvmTypeReference17564 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleJvmTypeReference17574 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmParameterizedTypeReference_in_ruleJvmTypeReference17622 = new BitSet(new long[]{0x0001000000000002L});
+    public static final BitSet FOLLOW_48_in_ruleJvmTypeReference17660 = new BitSet(new long[]{0x0002000000000000L});
+    public static final BitSet FOLLOW_49_in_ruleJvmTypeReference17672 = new BitSet(new long[]{0x0001000000000002L});
+    public static final BitSet FOLLOW_ruleXFunctionTypeRef_in_ruleJvmTypeReference17704 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXFunctionTypeRef_in_entryRuleXFunctionTypeRef17739 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXFunctionTypeRef17749 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_24_in_ruleXFunctionTypeRef17787 = new BitSet(new long[]{0x0200000005000020L,0x0000100000000000L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleXFunctionTypeRef17809 = new BitSet(new long[]{0x0000000006000000L});
+    public static final BitSet FOLLOW_25_in_ruleXFunctionTypeRef17822 = new BitSet(new long[]{0x0200000001000020L,0x0000100000000000L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleXFunctionTypeRef17843 = new BitSet(new long[]{0x0000000006000000L});
+    public static final BitSet FOLLOW_26_in_ruleXFunctionTypeRef17859 = new BitSet(new long[]{0x0000000000000000L,0x0000100000000000L});
+    public static final BitSet FOLLOW_108_in_ruleXFunctionTypeRef17873 = new BitSet(new long[]{0x0200000001000020L,0x0000100000000000L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleXFunctionTypeRef17894 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmParameterizedTypeReference_in_entryRuleJvmParameterizedTypeReference17930 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleJvmParameterizedTypeReference17940 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleJvmParameterizedTypeReference17988 = new BitSet(new long[]{0x0000000008000002L});
+    public static final BitSet FOLLOW_27_in_ruleJvmParameterizedTypeReference18009 = new BitSet(new long[]{0x0200000041000020L,0x0000100000000000L});
+    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleJvmParameterizedTypeReference18031 = new BitSet(new long[]{0x0000000012000000L});
+    public static final BitSet FOLLOW_25_in_ruleJvmParameterizedTypeReference18044 = new BitSet(new long[]{0x0200000041000020L,0x0000100000000000L});
+    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleJvmParameterizedTypeReference18065 = new BitSet(new long[]{0x0000000012000000L});
+    public static final BitSet FOLLOW_28_in_ruleJvmParameterizedTypeReference18079 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_entryRuleJvmArgumentTypeReference18117 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleJvmArgumentTypeReference18127 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleJvmArgumentTypeReference18174 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmWildcardTypeReference_in_ruleJvmArgumentTypeReference18201 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmWildcardTypeReference_in_entryRuleJvmWildcardTypeReference18236 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleJvmWildcardTypeReference18246 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_30_in_ruleJvmWildcardTypeReference18292 = new BitSet(new long[]{0x0000000180000002L});
+    public static final BitSet FOLLOW_ruleJvmUpperBound_in_ruleJvmWildcardTypeReference18314 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmLowerBound_in_ruleJvmWildcardTypeReference18341 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmUpperBound_in_entryRuleJvmUpperBound18379 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleJvmUpperBound18389 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_31_in_ruleJvmUpperBound18426 = new BitSet(new long[]{0x0200000001000020L,0x0000100000000000L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleJvmUpperBound18447 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmUpperBoundAnded_in_entryRuleJvmUpperBoundAnded18483 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleJvmUpperBoundAnded18493 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_109_in_ruleJvmUpperBoundAnded18530 = new BitSet(new long[]{0x0200000001000020L,0x0000100000000000L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleJvmUpperBoundAnded18551 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmLowerBound_in_entryRuleJvmLowerBound18587 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleJvmLowerBound18597 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_32_in_ruleJvmLowerBound18634 = new BitSet(new long[]{0x0200000001000020L,0x0000100000000000L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleJvmLowerBound18655 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeParameter_in_entryRuleJvmTypeParameter18691 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleJvmTypeParameter18701 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_ruleJvmTypeParameter18747 = new BitSet(new long[]{0x0000000180000002L});
+    public static final BitSet FOLLOW_ruleJvmUpperBound_in_ruleJvmTypeParameter18770 = new BitSet(new long[]{0x0000000000000002L,0x0000200000000000L});
+    public static final BitSet FOLLOW_ruleJvmUpperBoundAnded_in_ruleJvmTypeParameter18791 = new BitSet(new long[]{0x0000000000000002L,0x0000200000000000L});
+    public static final BitSet FOLLOW_ruleJvmLowerBound_in_ruleJvmTypeParameter18820 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_54_in_ruleVisibility18872 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_110_in_ruleVisibility18889 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_111_in_ruleVisibility18906 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_ID_in_synpred1_InternalSpec1117 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_33_in_synpred2_InternalSpec1157 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_34_in_synpred3_InternalSpec1202 = new BitSet(new long[]{0x0000000000000002L});
@@ -31127,17 +31526,19 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleJvmFormalParameter_in_synpred38_InternalSpec15244 = new BitSet(new long[]{0x0000010002000000L});
     public static final BitSet FOLLOW_40_in_synpred38_InternalSpec15258 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXClosure_in_synpred39_InternalSpec15376 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_synpred40_InternalSpec15867 = new BitSet(new long[]{0x0000010002000000L});
-    public static final BitSet FOLLOW_25_in_synpred40_InternalSpec15874 = new BitSet(new long[]{0x0200000001000020L,0x0000100000000000L});
-    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_synpred40_InternalSpec15881 = new BitSet(new long[]{0x0000010002000000L});
-    public static final BitSet FOLLOW_40_in_synpred40_InternalSpec15895 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXClosure_in_synpred41_InternalSpec16011 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_synpred42_InternalSpec16711 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_107_in_synpred43_InternalSpec16856 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_106_in_synpred44_InternalSpec16886 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_51_in_synpred46_InternalSpec17233 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_48_in_synpred47_InternalSpec17616 = new BitSet(new long[]{0x0002000000000000L});
-    public static final BitSet FOLLOW_49_in_synpred47_InternalSpec17620 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_27_in_synpred48_InternalSpec17980 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_27_in_synpred40_InternalSpec15763 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_24_in_synpred41_InternalSpec15856 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_synpred42_InternalSpec15886 = new BitSet(new long[]{0x0000010002000000L});
+    public static final BitSet FOLLOW_25_in_synpred42_InternalSpec15893 = new BitSet(new long[]{0x0200000001000020L,0x0000100000000000L});
+    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_synpred42_InternalSpec15900 = new BitSet(new long[]{0x0000010002000000L});
+    public static final BitSet FOLLOW_40_in_synpred42_InternalSpec15914 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXClosure_in_synpred43_InternalSpec16032 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_synpred44_InternalSpec16732 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_107_in_synpred45_InternalSpec16877 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_106_in_synpred46_InternalSpec16907 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_51_in_synpred48_InternalSpec17254 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_48_in_synpred49_InternalSpec17637 = new BitSet(new long[]{0x0002000000000000L});
+    public static final BitSet FOLLOW_49_in_synpred49_InternalSpec17641 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_27_in_synpred50_InternalSpec18001 = new BitSet(new long[]{0x0000000000000002L});
 
 }

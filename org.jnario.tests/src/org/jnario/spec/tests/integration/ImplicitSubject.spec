@@ -59,7 +59,7 @@ describe "ImplicitSubject"{
 			describe String {
 				
 				it throws NoSuchFieldException "because subject will not be created"{
-					getClass().getField("subject")
+					typeof(StringSpec).getField("subject")
 				} 
 						
 			}

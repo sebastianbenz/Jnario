@@ -20,7 +20,7 @@ import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
  */
 @SuppressWarnings("all")
 public class AbstractSpecProposalProvider extends XtendProposalProvider {
-		
+
 	public void completeSpecFile_Package(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
