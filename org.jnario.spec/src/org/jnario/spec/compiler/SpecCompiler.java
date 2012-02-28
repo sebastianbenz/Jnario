@@ -231,7 +231,7 @@ public class SpecCompiler extends XtendCompiler {
 		}
 		
 		b.append("\n").append(b.getName(binaryOperation)).append(" = ");
-		featureCalltoJavaExpression(binaryOperation, b);
+		featureCalltoJavaExpression(binaryOperation, b, true);
 		b.append(";");
 		b.decreaseIndentation().append("\n}");
 	}

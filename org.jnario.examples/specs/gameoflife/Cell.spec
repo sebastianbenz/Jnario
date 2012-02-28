@@ -10,12 +10,10 @@ package gameoflife
 import static gameoflife.AliveCell.*
 import static gameoflife.DeadCell.*
 
-import static extension org.jnario.lib.Should.*
-
 describe Cell {
 		
 	def {
-		|  Cell cell    | neighborCount  |      newState        |
+		| Cell cell | neighborCount  |      newState        |
 	
 		| aliveCell |       3		 | 	typeof(AliveCell)	|
 		| aliveCell |       2		 | 	typeof(AliveCell)	|

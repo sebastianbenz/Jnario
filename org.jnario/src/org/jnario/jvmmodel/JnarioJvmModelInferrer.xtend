@@ -33,7 +33,7 @@ import static extension com.google.common.collect.Iterables.*
  * @author Sebastian Benz
  */
 class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
- 
+
 	@Inject public XbaseCompiler compiler
 	@Inject extension ITypeProvider
 	@Inject extension TypeConformanceComputer
@@ -51,7 +51,7 @@ class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
 		}
 		return true
 	}
-	
+	  
 	def toField(ExampleColumn column){
 		val field = column.toField(column.name, column.getOrCreateType)
 		field.visibility = JvmVisibility::PUBLIC

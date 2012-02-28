@@ -11,19 +11,19 @@ import org.jnario.feature.feature.StepReference;
 @SuppressWarnings("all")
 public class StepExpressionProvider {
   public StepExpression expressionOf(final Step step) {
-      if ((step instanceof StepReference)) {
-        this.getOrCreateExpression(((StepReference) step));
-      }
-      StepExpression _stepExpression = step.getStepExpression();
-      return _stepExpression;
+    if ((step instanceof StepReference)) {
+      this.getOrCreateExpression(((StepReference) step));
+    }
+    StepExpression _stepExpression = step.getStepExpression();
+    return _stepExpression;
   }
   
   public StepExpression getOrCreateExpression(final StepReference ref) {
-      Step _reference = ref==null?(Step)null:ref.getReference();
-      StepExpression _stepExpression = _reference==null?(StepExpression)null:_reference.getStepExpression();
-      StepExpression _copy = EcoreUtil.<StepExpression>copy(_stepExpression);
-      final StepExpression expr = _copy;
-      ref.setStepExpression(expr);
-      return expr;
+    Step _reference = ref==null?(Step)null:ref.getReference();
+    StepExpression _stepExpression = _reference==null?(StepExpression)null:_reference.getStepExpression();
+    StepExpression _copy = EcoreUtil.<StepExpression>copy(_stepExpression);
+    final StepExpression expr = _copy;
+    ref.setStepExpression(expr);
+    return expr;
   }
 }

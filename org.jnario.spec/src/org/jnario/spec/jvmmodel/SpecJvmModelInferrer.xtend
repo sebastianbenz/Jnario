@@ -1,3 +1,4 @@
+
 /*******************************************************************************
  * Copyright (c) 2012 BMW Car IT and others.
  * All rights reserved. This program and the accompanying materials
@@ -170,7 +171,7 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 		}
 		type.addImplicitSubject(exampleGroup)
 	}
-	
+	 
 	def void addAnnotations(JvmGenericType type, ExampleGroup exampleGroup){
 		type.annotations += exampleGroup.exampleGroupRunnerAnnotation
 		type.annotations += exampleGroup.toAnnotation(typeof(Named), exampleGroup.describe)
@@ -270,5 +271,5 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 	def serialize(EObject obj){
 		return obj.node?.text
 	}
-	
+
 }

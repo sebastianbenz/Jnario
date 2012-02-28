@@ -55,5 +55,5 @@ describe World{
 			Position p | pos.neighbours.contains(p) || pos == p
 		])
 	}
-	
+
 }

@@ -70,22 +70,6 @@ describe "SpecValidator"{
 		val validationResult = validate(typeof(ExampleTable))
 		validationResult.assertErrorContains("number")
 	}
-	
-	it "example table cells must conform to column type"{
-		parseSpec('
-			package bootstrap
-			import java.util.List
-			describe "Example"{
-				def examples{
-					| List<String> a | 
-					| "a"            |
-				}
-			}  
-		')
-		
-		val validationResult = validate(typeof(ExampleTable))
-		validationResult.assertErrorContains("Incompatible types.")
-	}
 	   
 	def validate(Class<? extends EObject> type){
 		val target = query(modelStore).first(type)
