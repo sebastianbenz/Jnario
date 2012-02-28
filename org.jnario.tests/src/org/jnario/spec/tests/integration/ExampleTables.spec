@@ -123,7 +123,6 @@ describe "Example Tables"{
    * Jnario automatically infers the type of a column. It will use the 
    * common supertype of all expressions in a column. 
    */
-  @Ignore
   - "Specifying column types"{
   '''
   package bootstrap
