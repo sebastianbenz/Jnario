@@ -186,14 +186,19 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 			exampleTableType.configureWith(element, spec)
 			
 			val type = getTypeForName(typeof(org.jnario.lib.ExampleTable), element, exampleTableType.createTypeRef)
-			specType.members += element.toMethod("_init" + element.toJavaClassName, getTypeForName(Void::TYPE, element))[
-				annotations += element.getBeforeAnnotation()
+			val initMethodName = "_init" + element.toJavaClassName
+			
+			specType.members += element.toMethod(initMethodName, type)[
 				setBody[ImportManager im |
-					exampleTableType.generateInitializationMethod(element)	
+					exampleTableType.generateInitializationMethod(element, im)	
 				]
 			]
 			
-			specType.members += element.toField(element.toFieldName, type)
+			specType.members += element.toField(element.toFieldName, type)[
+				setInitializer[ImportManager im  |
+					initMethodName + "()"					
+				]
+			]
 
 			val constructor = element.toConstructor(exampleTableType.simpleName)[]
 			exampleTableType.members += constructor
@@ -237,15 +242,14 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 		]
 	} 
 	
-	def generateInitializationMethod(JvmGenericType exampleTableType, ExampleTable exampleTable){
-		val result = new StringBuilderBasedAppendable()
+	def generateInitializationMethod(JvmGenericType exampleTableType, ExampleTable exampleTable, ImportManager im){
+		val result = new StringBuilderBasedAppendable(im)
 		for( row : exampleTable.rows){
 			for(cell :row.cells){
 				compiler.toJavaStatement(cell, result, true)
 			}
 		}
-		result.append(exampleTable.toFieldName);
-		result.append(" = ExampleTable.create(\"" + exampleTable.toFieldName + "\", \n")
+		result.append("return ExampleTable.create(\"" + exampleTable.toFieldName + "\", \n")
 		result.append('  java.util.Arrays.asList("' + exampleTable.columnNames.join('", "') + '"), ')
 		result.increaseIndentation()
 		result.append("\n")

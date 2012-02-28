@@ -1,10 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2012 BMW Car IT and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
 package org.jnario.spec.parser.antlr.internal; 
 
 import org.eclipse.xtext.*;
@@ -26681,8 +26674,8 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             "\1\1\15\uffff\1\3\2\uffff\1\10\10\uffff\1\2\1\uffff\1\4\1\uffff"+
             "\1\5\1\6\1\7\1\uffff\2\10\1\uffff\1\11\10\uffff\1\10\2\uffff"+
             "\1\10\63\uffff\1\10\1\uffff\2\10",
-            "\1\2\1\10\23\uffff\1\10\6\uffff\1\2\15\uffff\1\10\2\uffff"+
-            "\1\10\4\uffff\1\10",
+            "\1\2\1\10\23\uffff\1\10\6\uffff\1\2\15\uffff\1\10\2\uffff\1"+
+            "\10\4\uffff\1\10",
             "",
             "",
             "",
@@ -26746,13 +26739,13 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
     static final String DFA24_specialS =
         "\1\4\1\uffff\1\3\4\uffff\1\5\13\uffff\1\2\7\uffff\1\0\1\1\3\uffff}>";
     static final String[] DFA24_transitionS = {
-            "\1\1\1\2\15\uffff\4\3\10\uffff\1\3\1\uffff\1\3\1\uffff\3\3"+
-            "\1\uffff\2\3\1\uffff\1\3\10\uffff\1\3\2\uffff\1\3\12\uffff\1"+
-            "\3\50\uffff\1\3\1\uffff\2\3",
+            "\1\1\1\2\15\uffff\4\3\10\uffff\1\3\1\uffff\1\3\1\uffff\3\3\1"+
+            "\uffff\2\3\1\uffff\1\3\10\uffff\1\3\2\uffff\1\3\12\uffff\1\3"+
+            "\50\uffff\1\3\1\uffff\2\3",
             "",
-            "\1\3\1\7\15\uffff\1\11\1\4\1\5\1\24\2\uffff\1\3\5\uffff\1"+
-            "\10\1\3\1\12\1\uffff\1\13\1\14\1\15\1\uffff\1\21\1\22\1\uffff"+
-            "\1\26\3\uffff\1\3\2\uffff\1\3\1\uffff\1\16\2\uffff\1\23\12\uffff"+
+            "\1\3\1\7\15\uffff\1\11\1\4\1\5\1\24\2\uffff\1\3\5\uffff\1\10"+
+            "\1\3\1\12\1\uffff\1\13\1\14\1\15\1\uffff\1\21\1\22\1\uffff\1"+
+            "\26\3\uffff\1\3\2\uffff\1\3\1\uffff\1\16\2\uffff\1\23\12\uffff"+
             "\1\6\50\uffff\1\25\1\uffff\1\17\1\20",
             "",
             "",
@@ -26773,10 +26766,9 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             "",
             "",
             "",
-            "\1\33\15\uffff\1\3\1\uffff\2\3\2\uffff\1\31\5\uffff\1\3\1"+
-            "\uffff\1\3\1\uffff\3\3\1\uffff\4\3\3\uffff\1\32\2\uffff\1\30"+
-            "\1\uffff\1\3\2\uffff\1\34\12\uffff\1\3\50\uffff\1\3\1\uffff"+
-            "\2\3",
+            "\1\33\15\uffff\1\3\1\uffff\2\3\2\uffff\1\31\5\uffff\1\3\1\uffff"+
+            "\1\3\1\uffff\3\3\1\uffff\4\3\3\uffff\1\32\2\uffff\1\30\1\uffff"+
+            "\1\3\2\uffff\1\34\12\uffff\1\3\50\uffff\1\3\1\uffff\2\3",
             "",
             "",
             "",
@@ -26788,10 +26780,10 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             "\1\10\1\3\1\12\1\uffff\1\13\1\14\1\15\1\uffff\1\21\1\22\1\37"+
             "\1\26\3\uffff\1\3\2\uffff\1\3\1\uffff\1\16\2\uffff\1\23\12\uffff"+
             "\1\6\50\uffff\1\25\1\uffff\1\17\1\20",
-            "\1\7\15\uffff\1\11\1\uffff\1\5\1\24\2\uffff\1\3\5\uffff\1"+
-            "\10\1\uffff\1\12\1\uffff\1\13\1\14\1\15\1\uffff\1\21\1\22\1"+
-            "\37\1\26\3\uffff\1\3\2\uffff\1\3\1\uffff\1\16\2\uffff\1\23\12"+
-            "\uffff\1\6\50\uffff\1\25\1\uffff\1\17\1\20",
+            "\1\7\15\uffff\1\11\1\uffff\1\5\1\24\2\uffff\1\3\5\uffff\1\10"+
+            "\1\uffff\1\12\1\uffff\1\13\1\14\1\15\1\uffff\1\21\1\22\1\37"+
+            "\1\26\3\uffff\1\3\2\uffff\1\3\1\uffff\1\16\2\uffff\1\23\12\uffff"+
+            "\1\6\50\uffff\1\25\1\uffff\1\17\1\20",
             "",
             "",
             ""
@@ -27076,23 +27068,22 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
     static final String DFA28_specialS =
         "\1\5\1\uffff\1\2\1\uffff\1\4\1\3\25\uffff\1\0\1\1\3\uffff}>";
     static final String[] DFA28_transitionS = {
-            "\1\1\1\2\15\uffff\4\3\10\uffff\1\3\1\uffff\1\3\1\uffff\3\3"+
-            "\1\uffff\2\3\1\uffff\1\3\10\uffff\1\3\2\uffff\1\3\12\uffff\1"+
-            "\3\50\uffff\1\3\1\uffff\2\3",
+            "\1\1\1\2\15\uffff\4\3\10\uffff\1\3\1\uffff\1\3\1\uffff\3\3\1"+
+            "\uffff\2\3\1\uffff\1\3\10\uffff\1\3\2\uffff\1\3\12\uffff\1\3"+
+            "\50\uffff\1\3\1\uffff\2\3",
             "",
-            "\1\3\1\4\15\uffff\1\12\1\6\1\7\1\24\2\uffff\1\3\5\uffff\1"+
-            "\11\1\3\1\13\1\uffff\1\14\1\15\1\16\1\uffff\1\22\1\23\1\uffff"+
-            "\1\26\3\uffff\1\3\2\uffff\1\3\1\uffff\1\17\2\uffff\1\5\12\uffff"+
+            "\1\3\1\4\15\uffff\1\12\1\6\1\7\1\24\2\uffff\1\3\5\uffff\1\11"+
+            "\1\3\1\13\1\uffff\1\14\1\15\1\16\1\uffff\1\22\1\23\1\uffff\1"+
+            "\26\3\uffff\1\3\2\uffff\1\3\1\uffff\1\17\2\uffff\1\5\12\uffff"+
             "\1\10\50\uffff\1\25\1\uffff\1\20\1\21",
             "",
             "\1\36\1\33\15\uffff\1\3\1\uffff\2\3\2\uffff\1\31\5\uffff\1"+
             "\3\1\35\1\3\1\uffff\3\3\1\uffff\4\3\3\uffff\1\32\2\uffff\1\30"+
             "\1\uffff\1\3\2\uffff\1\34\12\uffff\1\3\50\uffff\1\3\1\uffff"+
             "\2\3",
-            "\1\33\15\uffff\1\3\1\uffff\2\3\2\uffff\1\31\5\uffff\1\3\1"+
-            "\uffff\1\3\1\uffff\3\3\1\uffff\4\3\3\uffff\1\32\2\uffff\1\30"+
-            "\1\uffff\1\3\2\uffff\1\34\12\uffff\1\3\50\uffff\1\3\1\uffff"+
-            "\2\3",
+            "\1\33\15\uffff\1\3\1\uffff\2\3\2\uffff\1\31\5\uffff\1\3\1\uffff"+
+            "\1\3\1\uffff\3\3\1\uffff\4\3\3\uffff\1\32\2\uffff\1\30\1\uffff"+
+            "\1\3\2\uffff\1\34\12\uffff\1\3\50\uffff\1\3\1\uffff\2\3",
             "",
             "",
             "",
@@ -27118,10 +27109,10 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             "\1\11\1\3\1\13\1\uffff\1\14\1\15\1\16\1\uffff\1\22\1\23\1\37"+
             "\1\26\3\uffff\1\3\2\uffff\1\3\1\uffff\1\17\2\uffff\1\5\12\uffff"+
             "\1\10\50\uffff\1\25\1\uffff\1\20\1\21",
-            "\1\4\15\uffff\1\12\1\uffff\1\7\1\24\2\uffff\1\3\5\uffff\1"+
-            "\11\1\uffff\1\13\1\uffff\1\14\1\15\1\16\1\uffff\1\22\1\23\1"+
-            "\37\1\26\3\uffff\1\3\2\uffff\1\3\1\uffff\1\17\2\uffff\1\5\12"+
-            "\uffff\1\10\50\uffff\1\25\1\uffff\1\20\1\21",
+            "\1\4\15\uffff\1\12\1\uffff\1\7\1\24\2\uffff\1\3\5\uffff\1\11"+
+            "\1\uffff\1\13\1\uffff\1\14\1\15\1\16\1\uffff\1\22\1\23\1\37"+
+            "\1\26\3\uffff\1\3\2\uffff\1\3\1\uffff\1\17\2\uffff\1\5\12\uffff"+
+            "\1\10\50\uffff\1\25\1\uffff\1\20\1\21",
             "",
             "",
             ""
@@ -27409,22 +27400,22 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
             "\1\1\15\uffff\1\3\1\uffff\2\3\10\uffff\1\3\1\uffff\1\3\1\uffff"+
             "\3\3\1\uffff\4\3\10\uffff\1\3\2\uffff\1\2\12\uffff\1\3\50\uffff"+
             "\1\3\1\uffff\2\3",
-            "\1\3\1\4\15\uffff\1\6\1\uffff\2\6\2\uffff\1\3\5\uffff\1\6"+
-            "\1\3\1\6\1\uffff\3\6\1\uffff\4\6\3\uffff\1\3\2\uffff\1\3\1\uffff"+
+            "\1\3\1\4\15\uffff\1\6\1\uffff\2\6\2\uffff\1\3\5\uffff\1\6\1"+
+            "\3\1\6\1\uffff\3\6\1\uffff\4\6\3\uffff\1\3\2\uffff\1\3\1\uffff"+
             "\1\6\2\uffff\1\5\12\uffff\1\6\50\uffff\1\6\1\uffff\2\6",
             "\1\4\15\uffff\1\6\1\uffff\2\6\2\uffff\1\3\5\uffff\1\6\1\uffff"+
             "\1\6\1\uffff\3\6\1\uffff\4\6\3\uffff\1\3\2\uffff\1\3\1\uffff"+
             "\1\6\2\uffff\1\5\12\uffff\1\6\50\uffff\1\6\1\uffff\2\6",
             "",
-            "\1\6\1\7\15\uffff\1\3\1\uffff\2\3\2\uffff\1\6\5\uffff\1\3"+
-            "\1\6\1\3\1\uffff\3\3\1\uffff\4\3\3\uffff\1\6\2\uffff\1\6\1\uffff"+
+            "\1\6\1\7\15\uffff\1\3\1\uffff\2\3\2\uffff\1\6\5\uffff\1\3\1"+
+            "\6\1\3\1\uffff\3\3\1\uffff\4\3\3\uffff\1\6\2\uffff\1\6\1\uffff"+
             "\1\3\2\uffff\1\10\12\uffff\1\3\50\uffff\1\3\1\uffff\2\3",
             "\1\7\15\uffff\1\3\1\uffff\2\3\2\uffff\1\6\5\uffff\1\3\1\uffff"+
             "\1\3\1\uffff\3\3\1\uffff\4\3\3\uffff\1\6\2\uffff\1\6\1\uffff"+
             "\1\3\2\uffff\1\10\12\uffff\1\3\50\uffff\1\3\1\uffff\2\3",
             "",
-            "\1\3\1\4\15\uffff\1\6\1\uffff\2\6\2\uffff\1\3\5\uffff\1\6"+
-            "\1\3\1\6\1\uffff\3\6\1\uffff\4\6\3\uffff\1\3\2\uffff\1\3\1\uffff"+
+            "\1\3\1\4\15\uffff\1\6\1\uffff\2\6\2\uffff\1\3\5\uffff\1\6\1"+
+            "\3\1\6\1\uffff\3\6\1\uffff\4\6\3\uffff\1\3\2\uffff\1\3\1\uffff"+
             "\1\6\2\uffff\1\5\12\uffff\1\6\50\uffff\1\6\1\uffff\2\6",
             "\1\4\15\uffff\1\6\1\uffff\2\6\2\uffff\1\3\5\uffff\1\6\1\uffff"+
             "\1\6\1\uffff\3\6\1\uffff\4\6\3\uffff\1\3\2\uffff\1\3\1\uffff"+
@@ -27477,8 +27468,8 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
     static final String DFA56_specialS =
         "\1\0\1\1\1\2\1\3\36\uffff}>";
     static final String[] DFA56_transitionS = {
-            "\1\5\1\1\2\5\4\uffff\1\5\7\uffff\1\5\1\uffff\1\3\2\uffff\1"+
-            "\5\4\uffff\2\5\14\uffff\4\5\6\uffff\1\2\13\uffff\1\5\15\uffff"+
+            "\1\5\1\1\2\5\4\uffff\1\5\7\uffff\1\5\1\uffff\1\3\2\uffff\1\5"+
+            "\4\uffff\2\5\14\uffff\4\5\6\uffff\1\2\13\uffff\1\5\15\uffff"+
             "\1\5\4\uffff\1\5\1\uffff\1\5\2\uffff\5\5\1\uffff\10\5\2\uffff"+
             "\1\4",
             "\1\uffff",
@@ -27958,8 +27949,8 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
     static final String DFA115_specialS =
         "\1\0\1\1\1\2\1\3\35\uffff}>";
     static final String[] DFA115_transitionS = {
-            "\1\6\1\1\2\6\4\uffff\1\6\7\uffff\1\6\1\uffff\1\3\1\uffff\1"+
-            "\40\1\6\4\uffff\2\6\6\uffff\1\5\5\uffff\3\6\7\uffff\1\2\13\uffff"+
+            "\1\6\1\1\2\6\4\uffff\1\6\7\uffff\1\6\1\uffff\1\3\1\uffff\1\40"+
+            "\1\6\4\uffff\2\6\6\uffff\1\5\5\uffff\3\6\7\uffff\1\2\13\uffff"+
             "\1\6\15\uffff\1\6\4\uffff\1\6\1\uffff\1\6\2\uffff\3\6\3\uffff"+
             "\10\6\2\uffff\1\4",
             "\1\uffff",
@@ -28284,9 +28275,9 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
     static final String DFA122_specialS =
         "\1\0\1\1\1\2\1\3\37\uffff}>";
     static final String[] DFA122_transitionS = {
-            "\1\6\1\1\2\6\4\uffff\1\6\7\uffff\1\6\1\uffff\1\3\2\uffff\1"+
-            "\6\4\uffff\2\6\6\uffff\1\5\5\uffff\4\6\6\uffff\1\2\13\uffff"+
-            "\1\6\15\uffff\1\6\4\uffff\1\6\1\uffff\1\6\2\uffff\5\6\1\uffff"+
+            "\1\6\1\1\2\6\4\uffff\1\6\7\uffff\1\6\1\uffff\1\3\2\uffff\1\6"+
+            "\4\uffff\2\6\6\uffff\1\5\5\uffff\4\6\6\uffff\1\2\13\uffff\1"+
+            "\6\15\uffff\1\6\4\uffff\1\6\1\uffff\1\6\2\uffff\5\6\1\uffff"+
             "\10\6\2\uffff\1\4",
             "\1\uffff",
             "\1\uffff",
@@ -28610,8 +28601,8 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
     static final String DFA144_specialS =
         "\1\0\1\1\1\2\1\3\35\uffff}>";
     static final String[] DFA144_transitionS = {
-            "\1\6\1\1\2\6\4\uffff\1\6\7\uffff\1\6\1\uffff\1\3\1\uffff\1"+
-            "\40\1\6\4\uffff\2\6\6\uffff\1\5\5\uffff\3\6\7\uffff\1\2\13\uffff"+
+            "\1\6\1\1\2\6\4\uffff\1\6\7\uffff\1\6\1\uffff\1\3\1\uffff\1\40"+
+            "\1\6\4\uffff\2\6\6\uffff\1\5\5\uffff\3\6\7\uffff\1\2\13\uffff"+
             "\1\6\15\uffff\1\6\4\uffff\1\6\1\uffff\1\6\2\uffff\3\6\3\uffff"+
             "\10\6\2\uffff\1\4",
             "\1\uffff",
@@ -28936,8 +28927,8 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
     static final String DFA152_specialS =
         "\1\0\1\1\1\2\1\3\35\uffff}>";
     static final String[] DFA152_transitionS = {
-            "\1\6\1\1\2\6\4\uffff\1\6\7\uffff\1\6\1\uffff\1\3\1\uffff\1"+
-            "\40\1\6\4\uffff\2\6\6\uffff\1\5\5\uffff\3\6\7\uffff\1\2\13\uffff"+
+            "\1\6\1\1\2\6\4\uffff\1\6\7\uffff\1\6\1\uffff\1\3\1\uffff\1\40"+
+            "\1\6\4\uffff\2\6\6\uffff\1\5\5\uffff\3\6\7\uffff\1\2\13\uffff"+
             "\1\6\15\uffff\1\6\4\uffff\1\6\1\uffff\1\6\2\uffff\3\6\3\uffff"+
             "\10\6\2\uffff\1\4",
             "\1\uffff",
@@ -29260,12 +29251,12 @@ public class InternalSpecParser extends AbstractInternalAntlrParser {
     static final String DFA155_acceptS =
         "\36\uffff\1\2\65\uffff\1\1";
     static final String DFA155_specialS =
-        "\1\uffff\1\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1"+
-        "\14\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\1\30"+
-        "\1\31\1\32\1\33\1\34\67\uffff}>";
+        "\1\uffff\1\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1\14"+
+        "\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\1\30\1\31"+
+        "\1\32\1\33\1\34\67\uffff}>";
     static final String[] DFA155_transitionS = {
-            "\1\20\1\1\1\21\1\22\4\36\1\16\6\uffff\1\36\1\7\1\36\1\33\2"+
-            "\36\1\11\1\36\3\uffff\1\12\1\4\1\uffff\1\36\1\uffff\6\36\1\uffff"+
+            "\1\20\1\1\1\21\1\22\4\36\1\16\6\uffff\1\36\1\7\1\36\1\33\2\36"+
+            "\1\11\1\36\3\uffff\1\12\1\4\1\uffff\1\36\1\uffff\6\36\1\uffff"+
             "\1\36\1\uffff\1\34\1\35\1\13\1\36\1\uffff\3\36\2\uffff\1\2\1"+
             "\36\1\uffff\3\36\5\uffff\1\36\1\5\15\36\1\3\4\36\1\24\1\36\1"+
             "\10\2\36\1\25\1\26\1\27\2\36\1\uffff\1\6\1\14\1\15\1\17\1\23"+
