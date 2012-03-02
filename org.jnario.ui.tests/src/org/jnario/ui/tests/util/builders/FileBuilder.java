@@ -43,9 +43,6 @@ public class FileBuilder extends AbstractBuilder<IFile> implements ResourceBuild
 		return this;
 	}
 
-	/* (non-Javadoc)
-	 * @see de.bmw.rhmi.tests.util.ResourceBuilder#build(org.eclipse.core.resources.IContainer)
-	 */
 	public IFile build(IContainer container) throws CoreException {
 		result = container.getFile(new Path(name));
 		result.create(getInputStream(), true, new NullProgressMonitor());
