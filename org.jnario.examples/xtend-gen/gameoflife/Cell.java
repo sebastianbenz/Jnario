@@ -9,7 +9,6 @@ public class Cell {
   
   public String toString() {
     Class<? extends Object> _class = this.getClass();
-    String _simpleName = _class.getSimpleName();
-    return _simpleName;
+    return _class.getSimpleName();
   }
 }

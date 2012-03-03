@@ -212,6 +212,7 @@ class DocGenerator implements IGenerator {
 			code = filter.apply(code)
 		}
 		code = code.substring(1, code.length-2) 
+		code = code.replaceAll("<", "&lt;").replaceAll(">", "&gt;")
 		return code.normalize
 	}
 	

@@ -1,0 +1,12 @@
+SMAP
+JnarioSpecsTutorialExampleTablesSpec.java
+Spec
+*S Spec
+*F
++ 0 Tutorial.spec
+specs/introduction/Tutorial.spec
+*L
+45:1,13
+47:14,8
+49:22,7
+*E

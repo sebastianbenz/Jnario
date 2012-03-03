@@ -44,7 +44,7 @@ public class CellSpec {
     );
   }
   
-  private ExampleTable<CellSpecExamples> examples;
+  protected ExampleTable<CellSpecExamples> examples;
   
   @Test
   @Named("changes its state based on the neighbor count")

@@ -14,6 +14,8 @@ describe WhiteSpaceNormalizer{
 	def examples {
 		| input 					| result 			|
 		| null						| ""				|
+		| ""						| ""				|
+		| " "						| " "				|
 		| "\thello"					| "hello" 			|
 		| "\thello\n\tworld" 		| "hello\nworld"	|
 		| "\t\thello\n\t\tworld" 	| "hello\nworld"	|

@@ -1,7 +1,5 @@
 package org.jnario.spec.doc;
 
-import com.google.common.base.Objects;
-import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -19,12 +17,16 @@ import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.serializer.ISerializer;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
@@ -79,12 +81,12 @@ public class DocGenerator implements IGenerator {
     this.copy(fsa, "css", this.cssFiles);
     this.copy(fsa, "js", this.jsFiles);
     EList<EObject> _contents = input.getContents();
-    Iterable<SpecFile> _filter = Iterables.<SpecFile>filter(_contents, SpecFile.class);
+    Iterable<SpecFile> _filter = IterableExtensions.<SpecFile>filter(_contents, SpecFile.class);
     for (final SpecFile spec : _filter) {
       {
         XtendClass _xtendClass = spec.getXtendClass();
         final ExampleGroup exampleGroup = ((ExampleGroup) _xtendClass);
-        boolean _notEquals = (!Objects.equal(exampleGroup, null));
+        boolean _notEquals = ObjectExtensions.operator_notEquals(exampleGroup, null);
         if (_notEquals) {
           String _fileName = this.fileName(exampleGroup);
           CharSequence _generate = this.generate(exampleGroup);
@@ -96,26 +98,26 @@ public class DocGenerator implements IGenerator {
   
   public String fileName(final ExampleGroup exampleGroup) {
     String _javaClassName = this._exampleNameProvider.toJavaClassName(exampleGroup);
-    String _plus = ("/" + _javaClassName);
-    String _plus_1 = (_plus + ".html");
+    String _plus = StringExtensions.operator_plus("/", _javaClassName);
+    String _plus_1 = StringExtensions.operator_plus(_plus, ".html");
     final String fileName = _plus_1;
     String _packageName = exampleGroup.getPackageName();
-    boolean _equals = Objects.equal(_packageName, null);
+    boolean _equals = ObjectExtensions.operator_equals(_packageName, null);
     if (_equals) {
       return fileName;
     }
     String _packageName_1 = exampleGroup.getPackageName();
     String _replaceAll = _packageName_1.replaceAll("\\.", "/");
-    String _plus_2 = ("/" + _replaceAll);
-    String _plus_3 = (_plus_2 + fileName);
+    String _plus_2 = StringExtensions.operator_plus("/", _replaceAll);
+    String _plus_3 = StringExtensions.operator_plus(_plus_2, fileName);
     return _plus_3;
   }
   
   public void copy(final IFileSystemAccess fsa, final String targetFolder, final Iterable<String> files) {
     for (final String file : files) {
-      String _plus = ("/" + targetFolder);
-      String _plus_1 = (_plus + "/");
-      String _plus_2 = (_plus_1 + file);
+      String _plus = StringExtensions.operator_plus("/", targetFolder);
+      String _plus_1 = StringExtensions.operator_plus(_plus, "/");
+      String _plus_2 = StringExtensions.operator_plus(_plus_1, file);
       String _load = this.load(file);
       fsa.generateFile(_plus_2, DocOutputConfigurationProvider.DOC_OUTPUT, _load);
     }
@@ -131,7 +133,7 @@ public class DocGenerator implements IGenerator {
   
   public String folder(final String name, final ExampleGroup context) {
     String _root = this.root(context);
-    String _plus = (_root + name);
+    String _plus = StringExtensions.operator_plus(_root, name);
     return _plus;
   }
   
@@ -141,7 +143,7 @@ public class DocGenerator implements IGenerator {
     XtendClass _xtendClass = specFile.getXtendClass();
     String _packageName = _xtendClass.getPackageName();
     final String packageName = _packageName;
-    boolean _equals = Objects.equal(packageName, null);
+    boolean _equals = ObjectExtensions.operator_equals(packageName, null);
     if (_equals) {
       return "";
     }
@@ -294,7 +296,7 @@ public class DocGenerator implements IGenerator {
     StringConcatenation _builder = new StringConcatenation();
     {
       String _documentation = this._extendedJvmTypesBuilder.getDocumentation(eObject);
-      boolean _notEquals = (!Objects.equal(_documentation, null));
+      boolean _notEquals = ObjectExtensions.operator_notEquals(_documentation, null);
       if (_notEquals) {
         String _documentation_1 = this._extendedJvmTypesBuilder.getDocumentation(eObject);
         String _markdownToHtml = this._pegDownProcessor.markdownToHtml(_documentation_1);
@@ -317,7 +319,7 @@ public class DocGenerator implements IGenerator {
       String docString = _documentation;
       List<Filter> _emptyList = CollectionLiterals.<Filter>emptyList();
       List<Filter> filters = _emptyList;
-      boolean _notEquals = (!Objects.equal(docString, null));
+      boolean _notEquals = ObjectExtensions.operator_notEquals(docString, null);
       if (_notEquals) {
         FilteringResult _apply = this._filterExtractor.apply(docString);
         final FilteringResult filterResult = _apply;
@@ -341,7 +343,7 @@ public class DocGenerator implements IGenerator {
       _builder.newLineIfNotEmpty();
       {
         boolean _isPending = example.isPending();
-        boolean _not = (!_isPending);
+        boolean _not = BooleanExtensions.operator_not(_isPending);
         if (_not) {
           _builder.append("<pre class=\"prettyprint lang-jnario\">");
           _builder.newLine();
@@ -455,7 +457,7 @@ public class DocGenerator implements IGenerator {
     {
       EList<XtendMember> _members = exampleGroup.getMembers();
       for(final XtendMember member : _members) {
-        int _plus = (level + 1);
+        int _plus = IntegerExtensions.operator_plus(level, 1);
         CharSequence _generate = this.generate(member, _plus);
         _builder.append(_generate, "");
         _builder.newLineIfNotEmpty();
@@ -482,9 +484,12 @@ public class DocGenerator implements IGenerator {
       code = _apply;
     }
     int _length = code.length();
-    int _minus = (_length - 2);
+    int _minus = IntegerExtensions.operator_minus(_length, 2);
     String _substring = code.substring(1, _minus);
     code = _substring;
+    String _replaceAll = code.replaceAll("<", "&lt;");
+    String _replaceAll_1 = _replaceAll.replaceAll(">", "&gt;");
+    code = _replaceAll_1;
     String _normalize = this._whiteSpaceNormalizer.normalize(code);
     return _normalize;
   }

@@ -1,0 +1,17 @@
+SMAP
+JnarioSpecsTutorialBasicsSpec.java
+Spec
+*S Spec
+*F
++ 0 Tutorial.spec
+specs/introduction/Tutorial.spec
+*L
+17:1,15
+23:16,7
+25:23
+23:23
+24:24,3
+28:27,8
+30:35,8
+32:43,7
+*E

@@ -8,17 +8,24 @@
 package org.jnario.spec.doc
 
 import static extension java.lang.Character.*
+import static extension java.util.Arrays.*
 
 class WhiteSpaceNormalizer {
 
 	def String normalize(CharSequence input){
-		if(input == null) return ""
+		if(input == null || input.length == 0) return ""
 		
-		var Iterable<String> lines = input.toString.split("\n").toList
+		var Iterable<String> lines = asList(input.toString.split("\n"))
+		if(lines.empty){
+			return ""
+		}
 		var firstLine = lines.head
 		while(firstLine.trim.length == 0){
-			lines = lines.drop(1)
+			lines = lines.drop(1) 
 			firstLine = lines.head
+			if(firstLine == null){
+				return ""
+			}
 		}
 		val whitespace = whitespaceAtBeginning(firstLine)
 		

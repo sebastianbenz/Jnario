@@ -13,7 +13,7 @@ import static extension org.jnario.lib.Should.*
 import static extension org.jnario.jnario.test.util.SpecExecutor.*
 /*
  * <p align="center"><img src="file://localhost/Users/sebastian/Desktop/Specs.png"/></p>
- * 
+ *  
  * *Jnario* is a framework helping you write executable software specifications. 
  * It leverages the expressiveness of [Xtend](http://www.xtend-lang.org) and is easy to 
  * integrate, as it compiles to plain [JUnit](http://www.junit.org/) tests. 

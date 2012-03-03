@@ -13,10 +13,8 @@ public class DeadCell extends Cell {
   public Cell evolve(final int neighbourCount) {
     boolean _equals = (neighbourCount == 3);
     if (_equals) {
-      AliveCell _aliveCell = AliveCell.aliveCell();
-      return _aliveCell;
+      return AliveCell.aliveCell();
     }
-    DeadCell _deadCell = DeadCell.deadCell();
-    return _deadCell;
+    return DeadCell.deadCell();
   }
 }

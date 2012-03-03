@@ -20,20 +20,16 @@ public class AliveCell extends Cell {
       _or = (_underPopulated || _overpopulated);
     }
     if (_or) {
-      DeadCell _deadCell = DeadCell.deadCell();
-      return _deadCell;
+      return DeadCell.deadCell();
     }
-    AliveCell _aliveCell = AliveCell.aliveCell();
-    return _aliveCell;
+    return AliveCell.aliveCell();
   }
   
   public boolean underPopulated(final int neighbourCount) {
-    boolean _lessThan = (neighbourCount < 2);
-    return _lessThan;
+    return (neighbourCount < 2);
   }
   
   public boolean overpopulated(final int neighbourCount) {
-    boolean _greaterThan = (neighbourCount > 3);
-    return _greaterThan;
+    return (neighbourCount > 3);
   }
 }
