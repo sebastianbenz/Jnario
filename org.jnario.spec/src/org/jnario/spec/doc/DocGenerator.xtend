@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
-import org.eclipse.xtext.serializer.ISerializer
 import org.eclipse.xtext.xbase.XBlockExpression
 import org.eclipse.xtext.xbase.XExpression
 import org.eclipse.xtend.core.xtend.XtendMember
@@ -29,12 +28,12 @@ import org.pegdown.PegDownProcessor
 import static org.jnario.spec.util.Strings.*
 
 import static extension org.eclipse.xtext.util.Strings.*
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils
 
 class DocGenerator implements IGenerator {
 	 
 	@Inject extension ExampleNameProvider 
 	@Inject extension ExtendedJvmTypesBuilder
-	@Inject extension ISerializer
 	@Inject extension WhiteSpaceNormalizer
 	@Inject extension PegDownProcessor
 	@Inject extension FilterExtractor
@@ -138,7 +137,7 @@ class DocGenerator implements IGenerator {
 	
 	def generateDoc(EObject eObject)'''
 		«IF eObject.documentation != null»
-			«eObject.documentation.markdownToHtml»
+			«eObject.documentation.markdown2Html»
 		«ENDIF»
 	'''
 	def dispatch generate(XtendMember member, int level)'''
@@ -151,10 +150,10 @@ class DocGenerator implements IGenerator {
 			val filterResult = docString.apply
 			filters = filterResult.filters
 			docString = filterResult.string
-			docString = docString.markdownToHtml
+			docString = docString.markdown2Html
 		}
 		'''
-			<h4>«example.describe.asTitle»</h4>
+			<h4>«example.asTitle»</h4>
 			<p>
 			«docString»
 			«IF !example.pending»
@@ -166,7 +165,7 @@ class DocGenerator implements IGenerator {
 	}
 	
 	def dispatch generate(ExampleTable table, int level)'''
-		<h4>«table.toFieldName.asTitle»</h4>
+		<h4>«table.toFieldName.convertToTitle»</h4>
 		<p>«table.generateDoc»</p>
 		<table class="table table-striped table-bordered table-condensed">
 			<thead>
@@ -216,21 +215,32 @@ class DocGenerator implements IGenerator {
 		return code.normalize
 	}
 	
+	def serialize(EObject obj){
+		val node = NodeModelUtils::getNode(obj)
+		return node.text
+	}
+	
 	def heading(int level){
 		//"h" + (if (level <= 5) level else 5)
 		"h3" 
 	}
 	
 	def dispatch asTitle(ExampleGroup exampleGroup){
-		exampleGroup.describe.asTitle
+		exampleGroup.describe.convertToTitle
 	}
-	
+	 
 	def dispatch asTitle(Example example){
-		example.describe.asTitle
+		example.describe.convertToTitle
 	}
 	
-	def asTitle(String string){
+	def convertToTitle(String string){
 		string.convertFromJavaString(true).toFirstUpper
+	}
+	
+	def markdown2Html(String string){
+		string.markdownToHtml
+				.replaceAll("<pre><code>", '<pre class="prettyprint">')
+				.replaceAll("</pre></code>", '</pre>')
 	}
 }
 

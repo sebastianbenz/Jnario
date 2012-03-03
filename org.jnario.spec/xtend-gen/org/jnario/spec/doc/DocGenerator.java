@@ -14,7 +14,8 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
-import org.eclipse.xtext.serializer.ISerializer;
+import org.eclipse.xtext.nodemodel.ICompositeNode;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.lib.BooleanExtensions;
@@ -50,9 +51,6 @@ public class DocGenerator implements IGenerator {
   
   @Inject
   private ExtendedJvmTypesBuilder _extendedJvmTypesBuilder;
-  
-  @Inject
-  private ISerializer _iSerializer;
   
   @Inject
   private WhiteSpaceNormalizer _whiteSpaceNormalizer;
@@ -299,8 +297,8 @@ public class DocGenerator implements IGenerator {
       boolean _notEquals = ObjectExtensions.operator_notEquals(_documentation, null);
       if (_notEquals) {
         String _documentation_1 = this._extendedJvmTypesBuilder.getDocumentation(eObject);
-        String _markdownToHtml = this._pegDownProcessor.markdownToHtml(_documentation_1);
-        _builder.append(_markdownToHtml, "");
+        String _markdown2Html = this.markdown2Html(_documentation_1);
+        _builder.append(_markdown2Html, "");
         _builder.newLineIfNotEmpty();
       }
     }
@@ -327,13 +325,12 @@ public class DocGenerator implements IGenerator {
         filters = _filters;
         String _string = filterResult.getString();
         docString = _string;
-        String _markdownToHtml = this._pegDownProcessor.markdownToHtml(docString);
-        docString = _markdownToHtml;
+        String _markdown2Html = this.markdown2Html(docString);
+        docString = _markdown2Html;
       }
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("<h4>");
-      String _describe = this._exampleNameProvider.describe(example);
-      String _asTitle = this.asTitle(_describe);
+      String _asTitle = this.asTitle(example);
       _builder.append(_asTitle, "");
       _builder.append("</h4>");
       _builder.newLineIfNotEmpty();
@@ -365,8 +362,8 @@ public class DocGenerator implements IGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<h4>");
     String _fieldName = this._exampleNameProvider.toFieldName(table);
-    String _asTitle = this.asTitle(_fieldName);
-    _builder.append(_asTitle, "");
+    String _convertToTitle = this.convertToTitle(_fieldName);
+    _builder.append(_convertToTitle, "");
     _builder.append("</h4>");
     _builder.newLineIfNotEmpty();
     _builder.append("<p>");
@@ -469,14 +466,14 @@ public class DocGenerator implements IGenerator {
   }
   
   protected String _toXtendCode(final XExpression expr, final List<Filter> filters) {
-    String _serialize = this._iSerializer.serialize(expr);
+    String _serialize = this.serialize(expr);
     String _normalize = this._whiteSpaceNormalizer.normalize(_serialize);
     String _trim = _normalize.trim();
     return _trim;
   }
   
   protected String _toXtendCode(final XBlockExpression expr, final List<Filter> filters) {
-    String _serialize = this._iSerializer.serialize(expr);
+    String _serialize = this.serialize(expr);
     String _trim = _serialize.trim();
     String code = _trim;
     for (final Filter filter : filters) {
@@ -494,26 +491,40 @@ public class DocGenerator implements IGenerator {
     return _normalize;
   }
   
+  public String serialize(final EObject obj) {
+    ICompositeNode _node = NodeModelUtils.getNode(obj);
+    final ICompositeNode node = _node;
+    String _text = node.getText();
+    return _text;
+  }
+  
   public String heading(final int level) {
     return "h3";
   }
   
   protected String _asTitle(final ExampleGroup exampleGroup) {
     String _describe = this._exampleNameProvider.describe(exampleGroup);
-    String _asTitle = this.asTitle(_describe);
-    return _asTitle;
+    String _convertToTitle = this.convertToTitle(_describe);
+    return _convertToTitle;
   }
   
   protected String _asTitle(final Example example) {
     String _describe = this._exampleNameProvider.describe(example);
-    String _asTitle = this.asTitle(_describe);
-    return _asTitle;
+    String _convertToTitle = this.convertToTitle(_describe);
+    return _convertToTitle;
   }
   
-  public String asTitle(final String string) {
+  public String convertToTitle(final String string) {
     String _convertFromJavaString = org.eclipse.xtext.util.Strings.convertFromJavaString(string, true);
     String _firstUpper = org.eclipse.xtext.util.Strings.toFirstUpper(_convertFromJavaString);
     return _firstUpper;
+  }
+  
+  public String markdown2Html(final String string) {
+    String _markdownToHtml = this._pegDownProcessor.markdownToHtml(string);
+    String _replaceAll = _markdownToHtml.replaceAll("<pre><code>", "<pre class=\"prettyprint\">");
+    String _replaceAll_1 = _replaceAll.replaceAll("</pre></code>", "</pre>");
+    return _replaceAll_1;
   }
   
   public CharSequence generate(final XtendMember example, final int level) {
