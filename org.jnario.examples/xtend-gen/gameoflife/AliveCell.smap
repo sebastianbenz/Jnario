@@ -1,0 +1,21 @@
+SMAP
+AliveCell.java
+Xtend
+*S Xtend
+*F
++ 0 AliveCell.xtend
+src/gameoflife/AliveCell.xtend
+*L
+12:1,7
+14:8
+15:9
+14:9
+15:10,3
+18:13
+19:14
+18:14
+19:15,10
+22:25,3
+25:28,4
+29:32,2
+*E

@@ -98,12 +98,13 @@ XPrimaryExpression returns xbase::XExpression:
 
 XRelationalExpression returns xbase::XExpression:
 	XOtherOperatorExpression
-	(
-	 =>({Should.leftOperand=current} 'should' not?='not' 'be'?) rightOperand=XOtherOperatorExpression |
+	( 
+	 =>({Should.leftOperand=current} 
+	 		(prefix=('should'|'must') not?='not'? postfix='be'? | 
+	 		prefix='=>')
+	 		) rightOperand=XOtherOperatorExpression |
 	 =>({xbase::XInstanceOfExpression.expression=current} 'instanceof') type=JvmTypeReference |
 	 =>({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare]) rightOperand=XOtherOperatorExpression)*;
-
-
 
 Assertion returns xbase::XExpression: 
 	{Assertion}

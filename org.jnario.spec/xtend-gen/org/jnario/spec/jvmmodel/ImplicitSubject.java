@@ -1,6 +1,5 @@
 package org.jnario.spec.jvmmodel;
 
-import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.UnmodifiableIterator;
@@ -20,9 +19,12 @@ import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.xbase.XFeatureCall;
+import org.eclipse.xtext.xbase.lib.BooleanExtensions;
+import org.eclipse.xtext.xbase.lib.CollectionExtensions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.runner.Subject;
@@ -42,12 +44,12 @@ public class ImplicitSubject {
     JvmTypeReference _resolveTargetType = this.resolveTargetType(exampleGroup);
     final JvmTypeReference targetType = _resolveTargetType;
     boolean _or = false;
-    boolean _equals = Objects.equal(targetType, null);
+    boolean _equals = ObjectExtensions.operator_equals(targetType, null);
     if (_equals) {
       _or = true;
     } else {
       boolean _eIsProxy = targetType.eIsProxy();
-      _or = (_equals || _eIsProxy);
+      _or = BooleanExtensions.operator_or(_equals, _eIsProxy);
     }
     if (_or) {
       return;
@@ -65,7 +67,7 @@ public class ImplicitSubject {
         public void apply(final JvmField it) {
           EList<JvmAnnotationReference> _annotations = it.getAnnotations();
           JvmAnnotationReference _annotation = ImplicitSubject.this._extendedJvmTypesBuilder.toAnnotation(exampleGroup, Subject.class);
-          _annotations.add(_annotation);
+          CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
           it.setVisibility(JvmVisibility.PUBLIC);
         }
       };
@@ -75,7 +77,7 @@ public class ImplicitSubject {
   
   public JvmTypeReference resolveTargetType(final ExampleGroup exampleGroup) {
     JvmTypeReference _targetType = exampleGroup.getTargetType();
-    boolean _notEquals = (!Objects.equal(_targetType, null));
+    boolean _notEquals = ObjectExtensions.operator_notEquals(_targetType, null);
     if (_notEquals) {
       JvmTypeReference _targetType_1 = exampleGroup.getTargetType();
       JvmTypeReference _cloneWithProxies = this._extendedJvmTypesBuilder.cloneWithProxies(_targetType_1);
@@ -84,7 +86,7 @@ public class ImplicitSubject {
     EObject _eContainer = exampleGroup.eContainer();
     ExampleGroup _containerOfType = EcoreUtil2.<ExampleGroup>getContainerOfType(_eContainer, ExampleGroup.class);
     final ExampleGroup parentGroup = _containerOfType;
-    boolean _equals = Objects.equal(parentGroup, null);
+    boolean _equals = ObjectExtensions.operator_equals(parentGroup, null);
     if (_equals) {
       return null;
     }
@@ -99,20 +101,20 @@ public class ImplicitSubject {
     final Function1<JvmField,Boolean> _function = new Function1<JvmField,Boolean>() {
         public Boolean apply(final JvmField it) {
           String _simpleName = it.getSimpleName();
-          boolean _equals = Objects.equal(_simpleName, Constants.SUBJECT_FIELD_NAME);
+          boolean _equals = ObjectExtensions.operator_equals(_simpleName, Constants.SUBJECT_FIELD_NAME);
           return Boolean.valueOf(_equals);
         }
       };
     JvmField _findFirst = IterableExtensions.<JvmField>findFirst(fields, _function);
     final JvmField subjectField = _findFirst;
-    boolean _notEquals = (!Objects.equal(subjectField, null));
+    boolean _notEquals = ObjectExtensions.operator_notEquals(subjectField, null);
     if (_notEquals) {
       return true;
     }
     JvmTypeReference _extendedClass = type.getExtendedClass();
     JvmType _type = _extendedClass==null?(JvmType)null:_extendedClass.getType();
     final JvmType extendedClass = _type;
-    boolean _equals = Objects.equal(extendedClass, null);
+    boolean _equals = ObjectExtensions.operator_equals(extendedClass, null);
     if (_equals) {
       return false;
     }
@@ -142,12 +144,12 @@ public class ImplicitSubject {
     final Function1<XFeatureCall,Boolean> _function = new Function1<XFeatureCall,Boolean>() {
         public Boolean apply(final XFeatureCall it) {
           String _concreteSyntaxFeatureName = it.getConcreteSyntaxFeatureName();
-          boolean _equals = Objects.equal(_concreteSyntaxFeatureName, Constants.SUBJECT_FIELD_NAME);
+          boolean _equals = ObjectExtensions.operator_equals(_concreteSyntaxFeatureName, Constants.SUBJECT_FIELD_NAME);
           return Boolean.valueOf(_equals);
         }
       };
     XFeatureCall _findFirst = IteratorExtensions.<XFeatureCall>findFirst(allFeatureCalls, _function);
-    boolean _equals = Objects.equal(null, _findFirst);
+    boolean _equals = ObjectExtensions.operator_equals(null, _findFirst);
     return _equals;
   }
 }

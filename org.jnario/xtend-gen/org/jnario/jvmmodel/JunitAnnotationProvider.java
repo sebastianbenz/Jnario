@@ -1,12 +1,13 @@
 package org.jnario.jvmmodel;
 
-import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import java.util.ArrayList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
+import org.eclipse.xtext.xbase.lib.CollectionExtensions;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.FeatureExamplesRunner;
@@ -45,18 +46,18 @@ public class JunitAnnotationProvider {
   public ArrayList<JvmAnnotationReference> getTestAnnotations(final EObject context, final JvmDeclaredType exception, final boolean isPending) {
     ArrayList<JvmAnnotationReference> _newArrayList = CollectionLiterals.<JvmAnnotationReference>newArrayList();
     final ArrayList<JvmAnnotationReference> annotations = _newArrayList;
-    boolean _equals = Objects.equal(exception, null);
+    boolean _equals = ObjectExtensions.operator_equals(exception, null);
     if (_equals) {
       JvmAnnotationReference _annotation = this._extendedJvmTypesBuilder.toAnnotation(context, Test.class);
-      annotations.add(_annotation);
+      CollectionExtensions.<JvmAnnotationReference>operator_add(annotations, _annotation);
     } else {
       String _name = Test.class.getName();
       JvmAnnotationReference _annotation_1 = this._extendedJvmTypesBuilder.toAnnotation(context, _name, "expected", exception);
-      annotations.add(_annotation_1);
+      CollectionExtensions.<JvmAnnotationReference>operator_add(annotations, _annotation_1);
     }
     if (isPending) {
       JvmAnnotationReference _annotation_2 = this._extendedJvmTypesBuilder.toAnnotation(context, Ignore.class);
-      annotations.add(_annotation_2);
+      CollectionExtensions.<JvmAnnotationReference>operator_add(annotations, _annotation_2);
     }
     return annotations;
   }

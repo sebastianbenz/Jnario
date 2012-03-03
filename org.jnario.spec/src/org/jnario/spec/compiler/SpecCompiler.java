@@ -10,25 +10,37 @@ package org.jnario.spec.compiler;
 
 import static com.google.common.collect.Iterables.filter;
 import static com.google.common.collect.Sets.newHashSet;
+import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.getNode;
 import static org.eclipse.xtext.util.Strings.convertToJavaString;
 
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.compiler.XtendCompiler;
 import org.eclipse.xtext.EcoreUtil2;
+import org.eclipse.xtext.common.types.JvmGenericType;
+import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.ISerializer;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XBinaryOperation;
 import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.XNullLiteral;
+import org.eclipse.xtext.xbase.XTypeLiteral;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.util.XExpressionHelper;
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.core.Is;
 import org.jnario.Assertion;
 import org.jnario.Matcher;
+import org.jnario.Should;
+import org.junit.Assert;
 
+import com.google.common.base.Objects;
 import com.google.common.base.Predicate;
 import com.google.inject.Inject;
 
@@ -50,6 +62,8 @@ public class SpecCompiler extends XtendCompiler {
 			_toJavaExpression((Matcher) obj, appendable);
 		} else if (obj instanceof Assertion) {
 			_toJavaExpression((Assertion) obj, appendable);
+		} else if (obj instanceof Should) {
+			_toJavaExpression((Should) obj, appendable);
 		} else {
 			super.internalToConvertedExpression(obj, appendable);
 		}
@@ -62,10 +76,69 @@ public class SpecCompiler extends XtendCompiler {
 			_toJavaStatement((Assertion)obj, appendable, isReferenced);
 		}else if (obj instanceof Matcher){
 			_toJavaStatement((Matcher)obj, appendable, isReferenced);
+		}else if (obj instanceof Should){
+			_toJavaStatement((Should)obj, appendable, isReferenced);
 		}else
 			super.doInternalToJavaStatement(obj, appendable, isReferenced); 
 	}
+
+	public void _toJavaStatement(Should should, ITreeAppendable b, boolean isReferenced) {
+		if(should.getRightOperand() == null){
+			return;
+		}
+		toJavaStatement(should.getLeftOperand(), b, true);
+		toJavaStatement(should.getRightOperand(), b, true);
+		b.newLine();
+		String variable = b.declareSyntheticVariable(should, "result");
+		b.append("boolean " + variable + " = ");
+		JvmTypeReference type = getTypeProvider().getType(should.getRightOperand());
+		if(type == null || type.getType() == null){
+			return;
+		}
+		boolean isMatcher = false;
+		if (type.getType() instanceof JvmGenericType) {
+			if(org.hamcrest.Matcher.class.getName().equals(type.getType().getQualifiedName())){
+				isMatcher = true;
+			}
+			Iterable<JvmTypeReference> interfaces = ((JvmGenericType)type.getType()).getSuperTypes();
+			for (JvmTypeReference jvmTypeReference : interfaces) {
+				if(org.hamcrest.Matcher.class.getName().equals(jvmTypeReference.getQualifiedName())){
+					isMatcher = true;
+				}
+			}
+		}
+		if(isMatcher){
+			toJavaExpression(should.getRightOperand(), b);
+		}else{
+			b.append(jvmType(CoreMatchers.class, should));
+			b.append(".is(");
+			if(should.getRightOperand() instanceof XNullLiteral){
+				b.append(jvmType(CoreMatchers.class, should));
+				b.append(".nullValue()");
+			}else{
+				toJavaExpression(should.getRightOperand(), b);
+			}
+			b.append(")");
+		}
+		b.append(".matches(");
+		toJavaExpression(should.getLeftOperand(), b);
+		b.append(");");
+		b.newLine();
+		b.append(assertType(should));
+		if(should.isNot()){
+			b.append(".assertFalse(");
+		}else{
+			b.append(".assertTrue(");
+		}
+		generateMessageFor(should, b);
+		b.append(" + \"" + convertToJavaString("\n") + "\", ");
+		b.append(variable);
+		b.append(");");
+	}
 	
+	public void _toJavaExpression(Should should, ITreeAppendable b) {
+		b.append("null");
+	}
 	public void _toJavaExpression(Matcher matcher, ITreeAppendable b) {
 		if (matcher.getClosure() == null){
 			return;
@@ -102,18 +175,45 @@ public class SpecCompiler extends XtendCompiler {
 	
 	private void generateSingleAssertion(XExpression expr, ITreeAppendable b) {
 		toJavaStatement(expr, b, true);
-		b.append("\norg.junit.Assert.assertTrue(");
+		b.newLine();
+		b.append(assertType(expr));
+		b.append(".assertTrue(");
 		generateMessageFor(expr, b);
 		b.append(" + \"" + convertToJavaString("\n") + "\", ");
 		toJavaExpression(expr, b);
-		b.append(");\n");
+		b.append(");");
+		b.newLine();
 	}
 
+	private JvmType assertType(XExpression expr) {
+		return jvmType(Assert.class, expr);
+	}
+	
+	private JvmType jvmType(Class<?> type, EObject context){
+		 return getTypeReferences().getTypeForName(type, context).getType();
+	}
+
+	public void generateMessageFor(Should should, ITreeAppendable b) {
+		b.append("\"\\nExpected ");
+		b.append(serialize(should));
+		b.append(" but:\"");
+		Set<String> valueExpressions = new HashSet<String>();
+		XExpression left = should.getLeftOperand();
+		toLiteralValue(left, b, valueExpressions);
+		appendValues(left, b, valueExpressions);
+		XExpression right = should.getRightOperand();
+		toLiteralValue(right, b, valueExpressions);
+		appendValues(right, b, valueExpressions);
+	}
+	
 	public void generateMessageFor(XExpression expression, ITreeAppendable b) {
 		b.append("\"\\nExpected ");
 		b.append(serialize(expression));
 		b.append(" but:\"");
-		Set<String> valueExpressions = newHashSet();
+		appendValues(expression, b, new HashSet<String>());
+	}
+
+	private void appendValues(XExpression expression, ITreeAppendable b, Set<String> valueExpressions) {
 		Iterator<XExpression> subExpressions = allSubExpressions(expression);
 		if(subExpressions.hasNext()){
 			while(subExpressions.hasNext()){
@@ -160,7 +260,17 @@ public class SpecCompiler extends XtendCompiler {
 				return !"<unkown>".equals(e.toString());
 			}
 		};
-		return filter(filter(expression.eContents(), XExpression.class), onlyKnownFeatures ).iterator();
+		Predicate<XExpression> noLiteralExpressions = new Predicate<XExpression>() {
+
+			@Override
+			public boolean apply(XExpression expr) {
+				return !expressionHelper.isLiteral(expr);
+			}
+		};
+		Iterable<XExpression> subExpressions = filter(expression.eContents(), XExpression.class);
+		subExpressions = filter(subExpressions, onlyKnownFeatures);
+		subExpressions = filter(subExpressions, noLiteralExpressions);
+		return subExpressions.iterator();
 	}
 
 	protected void toLiteralValue(XExpression expression, ITreeAppendable b, Set<String> valueMappings) {
@@ -203,7 +313,8 @@ public class SpecCompiler extends XtendCompiler {
 	 */
 	protected void generateShortCircuitInvocation(final XAbstractFeatureCall binaryOperation,
 			final ITreeAppendable b) {
-		if(EcoreUtil2.getContainerOfType(binaryOperation, Assertion.class) == null){
+		if(getContainerOfType(binaryOperation, Assertion.class) == null &&
+				getContainerOfType(binaryOperation, Should.class) == null){
 			super.generateShortCircuitInvocation(binaryOperation, b);
 		}
 		XExpression leftOperand = ((XBinaryOperation)binaryOperation).getLeftOperand();

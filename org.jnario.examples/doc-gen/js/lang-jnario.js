@@ -36,7 +36,7 @@ PR['registerLangHandler'](
          // A symbol literal is a single quote followed by an identifier with no
          // single quote following
          // A character literal has single quotes on either side
-         ['fun',            /^(?:assert|should|be|not)\b/],
+         ['fun',            /^(?:assert|should|be|not|must|expect|=>)\b/],
          [PR['PR_STRING'],      /^'(?:[^\r\n\\']|\\(?:'|[^\r\n']+))'/],
          [PR['PR_LITERAL'],     /^'[a-zA-Z_$][\w$]*(?!['$\w])/],
          [PR['PR_KEYWORD'],     /^(?:subject|describe|it|context|abstract|boolean|case|catch|char|class|create|def|default|do|double|else|extends|extension|final|finally|float|for|if|implements|import|int|long|new|override|package|private|protected|return|short|static|super|switch|throw|throws|try|typeof|val|var|void|while)\b/],

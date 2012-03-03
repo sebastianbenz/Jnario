@@ -72,6 +72,15 @@ public interface JnarioFactory extends EFactory {
 	ExampleColumn createExampleColumn();
 
 	/**
+	 * Returns a new object of class '<em>Should</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Should</em>'.
+	 * @generated
+	 */
+	Should createShould();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

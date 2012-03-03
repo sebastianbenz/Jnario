@@ -1,0 +1,10 @@
+SMAP
+FtCalculator.java
+Feature
+*S Feature
+*F
++ 0 Demo.feature
+specs/calculator/Demo.feature
+*L
+3:1,8
+*E

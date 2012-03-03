@@ -28,6 +28,7 @@ import com.google.inject.Singleton;
 
 import org.jnario.Assertion;
 import org.jnario.Matcher;
+import org.jnario.Should;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
@@ -99,7 +100,9 @@ public class SpecTypeProvider extends XtendTypeProvider {
 	protected JvmTypeReference type(XExpression expression, JvmTypeReference rawExpectation, boolean rawType) {
 		if (expression instanceof Assertion) {
 			return _type((Assertion)expression, rawExpectation, rawType);
-		} if (expression instanceof Matcher) {
+		}if (expression instanceof Should) {
+			return _type((Should)expression, rawExpectation, rawType);
+		}if (expression instanceof Matcher) {
 			return _type((Matcher)expression, rawExpectation, rawType);
 		}else {
 			return super.type(expression, rawExpectation, rawType);
@@ -108,6 +111,10 @@ public class SpecTypeProvider extends XtendTypeProvider {
 
 	protected JvmTypeReference _type(Assertion assertion, JvmTypeReference rawExpectation, boolean rawType) {
 		return getPrimitiveVoid(assertion);
+	}
+	
+	protected JvmTypeReference _type(Should should, JvmTypeReference rawExpectation, boolean rawType) {
+		return getPrimitiveVoid(should);
 	}
 	
 	protected JvmTypeReference _type(final Matcher matcher, JvmTypeReference rawExpectation, final boolean rawType) {

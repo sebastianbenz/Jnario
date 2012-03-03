@@ -1,0 +1,26 @@
+SMAP
+JnarioSpecsTutorialHowToWriteASpecificationSpec.java
+Spec
+*S Spec
+*F
++ 0 Tutorial.spec
+specs/introduction/Tutorial.spec
+*L
+17:1,15
+25:16,10
+26:26
+42:26
+25:26,38
+26:64,3
+56:67,15
+57:82
+70:82
+56:82,35
+57:117,3
+76:120,7
+77:127
+101:127
+76:127,59
+77:186,3
+104:189,6
+*E

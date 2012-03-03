@@ -1,0 +1,11 @@
+SMAP
+Game.java
+Xtend
+*S Xtend
+*F
++ 0 Game.xtend
+src/gameoflife/Game.xtend
+*L
+10:1,6
+12:7,2
+*E

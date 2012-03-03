@@ -25,6 +25,7 @@ import org.jnario.ExampleTable;
 import org.jnario.JnarioFactory;
 import org.jnario.JnarioPackage;
 import org.jnario.Matcher;
+import org.jnario.Should;
 
 /**
  * <!-- begin-user-doc -->
@@ -67,6 +68,13 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 	 * @generated
 	 */
 	private EClass exampleColumnEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass shouldEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -263,6 +271,42 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getShould() {
+		return shouldEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getShould_Not() {
+		return (EAttribute)shouldEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getShould_Prefix() {
+		return (EAttribute)shouldEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getShould_Postfix() {
+		return (EAttribute)shouldEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public JnarioFactory getJnarioFactory() {
 		return (JnarioFactory)getEFactoryInstance();
 	}
@@ -304,6 +348,11 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		exampleColumnEClass = createEClass(EXAMPLE_COLUMN);
 		createEReference(exampleColumnEClass, EXAMPLE_COLUMN__TABLE);
 		createEReference(exampleColumnEClass, EXAMPLE_COLUMN__CELLS);
+
+		shouldEClass = createEClass(SHOULD);
+		createEAttribute(shouldEClass, SHOULD__NOT);
+		createEAttribute(shouldEClass, SHOULD__PREFIX);
+		createEAttribute(shouldEClass, SHOULD__POSTFIX);
 	}
 
 	/**
@@ -342,6 +391,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		assertionEClass.getESuperTypes().add(theXbasePackage.getXExpression());
 		matcherEClass.getESuperTypes().add(theXbasePackage.getXExpression());
 		exampleColumnEClass.getESuperTypes().add(theXtendPackage.getXtendField());
+		shouldEClass.getESuperTypes().add(theXbasePackage.getXBinaryOperation());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(exampleTableEClass, ExampleTable.class, "ExampleTable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -364,6 +414,11 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		initEClass(exampleColumnEClass, ExampleColumn.class, "ExampleColumn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getExampleColumn_Table(), this.getExampleTable(), this.getExampleTable_Columns(), "table", null, 0, 1, ExampleColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getExampleColumn_Cells(), theXbasePackage.getXExpression(), null, "cells", null, 0, -1, ExampleColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+
+		initEClass(shouldEClass, Should.class, "Should", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getShould_Not(), ecorePackage.getEBoolean(), "not", null, 0, 1, Should.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getShould_Prefix(), ecorePackage.getEString(), "prefix", null, 0, 1, Should.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getShould_Postfix(), ecorePackage.getEString(), "postfix", null, 0, 1, Should.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

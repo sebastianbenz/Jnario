@@ -55,12 +55,12 @@ describe "A Stack"{
 <h4>Hierarchical Specifications</h4>
 <p>
 <p>The following specification will be executed as:</p>
-<pre>Calculator
+<pre class="prettyprint">Calculator
   - addition
     - adds two values
   - division
     - divides two values
-</pre>
+</code></pre>
 <pre class="prettyprint lang-jnario">
 describe "Calculator"{
   context "addition"{
@@ -105,15 +105,66 @@ describe "Helper Methods & Fields"{
 <h4>Pending [PENDING]</h4>
 <p>
 </div>
-<h3>Writing Assertions</h3>
+<h3>Setup and Teardown</h3>
 <div class="level">
 <p></p>
-<h4>Should [PENDING]</h4>
+</div>
+<h3>Writing Assertions</h3>
+<div class="level">
+<p><p>Jnario provides different ways to write assertions.</p>
+</p>
+<h4>'assert'</h4>
 <p>
-<h4>Using Assert [PENDING]</h4>
+<p>Jnario provides a special <code>assert</code> statement that makes it easy to write meaningful assertions.</p>
+<pre class="prettyprint lang-jnario">
+assert true
+assert 1 == 1
+assert "Hello".startsWith("H")</pre>
+</p>
+<h4>'should', 'must' and `=>`</h4>
 <p>
-<h4>Expecting Exceptions [PENDING]</h4>
+<p>If you want to express how an object should behave, you can use <code>should</code> or <code>must</code>. It passes if the result of the left expression is equal to the result of the right expression. You can also use <code>not</code> to assert that both expressions have different results. There is also a short cut available: <code>=&gt;</code> which has the same effect as <code>should be</code>.</p>
+<pre class="prettyprint lang-jnario">
+true should be true
+"hello" must be "hello"
+1 + 1 should not be 1 
+"hello".toUpperCase must not be "hello"
+1 + 1 =&gt; 2</pre>
+</p>
+<h4>Self-explaining failures</h4>
 <p>
+<p>Assertions in Jnario are selfexplainable. This means, when failing, they try to provide as as much information as possible. In that case, they print the exact expression that has failed together with the actual value of all subexpressions.</p>
+<pre class="prettyprint lang-jnario">
+val x = 0 
+val y = 1 
+errorMessage[assert x == 1 && y == 0].is('''
+  Expected x == 1 && y == 0 but:
+       x == 1 is false
+       x is 0
+       y == 0 is false
+       y is 1''')
+       
+val greeting = "hello"        
+errorMessage[greeting.toUpperCase should not be "HELLO"].is('''
+  Expected x.toUpperCase should not be "HELLO" but:
+     x.toUpperCase is "HELLO"
+     x is "hello"''')</pre>
+</p>
+<h4>Expecting Exceptions</h4>
+<p>
+<p>There are two ways on how to check whether an expression is thrown. The first one is to declare the type the expected Exception in the example header after the <code>throws</code> keyword. If you want to check for multiple exceptions in the same example, you can use the build in <code>expect</code> extension method. The first parameter is the type of the expected exception and the second parameter is a closure with the expression that should throw the exception.</p>
+<pre class="prettyprint lang-jnario">
+describe "Division"{
+  it throws ArithmeticException "on division by zero"{
+    val x = 1 / 0
+  }
+  it "throws an ArithmeticException on division by zero"{
+    expect(typeof(ArithmeticException))[
+      val x = 1 / 0
+    ]
+   }
+ }</pre>
+</p>
 </div>
 <h3>Using Example Tables</h3>
 <div class="level">

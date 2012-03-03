@@ -19,6 +19,8 @@ import org.eclipse.xtend.core.xtend.XtendAnnotationTarget;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendMember;
 
+import org.eclipse.xtext.xbase.XAbstractFeatureCall;
+import org.eclipse.xtext.xbase.XBinaryOperation;
 import org.jnario.*;
 
 /**
@@ -98,6 +100,10 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 				return createExampleColumnAdapter();
 			}
 			@Override
+			public Adapter caseShould(Should object) {
+				return createShouldAdapter();
+			}
+			@Override
 			public Adapter caseXtendAnnotationTarget(XtendAnnotationTarget object) {
 				return createXtendAnnotationTargetAdapter();
 			}
@@ -112,6 +118,14 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseXtendField(XtendField object) {
 				return createXtendFieldAdapter();
+			}
+			@Override
+			public Adapter caseXAbstractFeatureCall(XAbstractFeatureCall object) {
+				return createXAbstractFeatureCallAdapter();
+			}
+			@Override
+			public Adapter caseXBinaryOperation(XBinaryOperation object) {
+				return createXBinaryOperationAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -204,7 +218,21 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.xtend.core.xtend.XtendAnnotationTarget <em>Xtend Annotation Target</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.jnario.Should <em>Should</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.jnario.Should
+	 * @generated
+	 */
+	public Adapter createShouldAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.xtend.core.xtend.XtendAnnotationTarget <em>Annotation Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
@@ -218,7 +246,7 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.xtend.core.xtend.XtendMember <em>Xtend Member</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.xtend.core.xtend.XtendMember <em>Member</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
@@ -246,7 +274,7 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.xtend.core.xtend.XtendField <em>Xtend Field</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.xtend.core.xtend.XtendField <em>Field</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
@@ -256,6 +284,34 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createXtendFieldAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.xtext.xbase.XAbstractFeatureCall <em>XAbstract Feature Call</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.xtext.xbase.XAbstractFeatureCall
+	 * @generated
+	 */
+	public Adapter createXAbstractFeatureCallAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.xtext.xbase.XBinaryOperation <em>XBinary Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.xtext.xbase.XBinaryOperation
+	 * @generated
+	 */
+	public Adapter createXBinaryOperationAdapter() {
 		return null;
 	}
 

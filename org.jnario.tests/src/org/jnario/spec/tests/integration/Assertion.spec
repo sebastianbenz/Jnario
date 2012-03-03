@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
- package org.jnario.spec.tests.integration2
+ package org.jnario.spec.tests.integration
 
 import static extension org.jnario.jnario.test.util.Helpers.*
 
@@ -80,6 +80,16 @@ describe "Assertion"{
 			errorMessage[assert greet("World") == "Hello World!"].is('''
 			  Expected greet("World") == "Hello World!" but:
 			       greet("World") is "Hello World"''')
+		}    
+		
+		/*
+		 * The result of each feature call will be printed.
+		 */     
+		- "Feature Calls"{
+			errorMessage[assert "Hello".toUpperCase.toLowerCase == "HELLO"].is('''
+			  Expected "Hello".toUpperCase.toLowerCase == "HELLO" but:
+			       "Hello".toUpperCase.toLowerCase is "hello"
+			       "Hello".toUpperCase is "HELLO"''')
 		}      
 		
 		/*
@@ -87,7 +97,7 @@ describe "Assertion"{
 		 */
 		- "And expressions"{
 			val x = 0 
-			val y = 1
+			val y = 1 
 			errorMessage[assert x == 1 && y == 0].is('''
 			  Expected x == 1 && y == 0 but:
 			       x == 1 is false
@@ -95,7 +105,7 @@ describe "Assertion"{
 			       y == 0 is false
 			       y is 1''')
 		}    
-  
+ 
   		/*
   		 * If the same variable is accessed multiple times it will be printed only once.
   		 */
@@ -112,6 +122,6 @@ describe "Assertion"{
 			return "Hello " + name
 		}		   
 	}      
-	 
+	  
 
 }                                

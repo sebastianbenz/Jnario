@@ -1127,6 +1127,173 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getMatcherParserRuleCall_14() { return cMatcherParserRuleCall_14; }
 	}
 
+	public class XRelationalExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "XRelationalExpression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cXOtherOperatorExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Group cGroup_1_0 = (Group)cAlternatives_1.eContents().get(0);
+		private final Group cGroup_1_0_0 = (Group)cGroup_1_0.eContents().get(0);
+		private final Group cGroup_1_0_0_0 = (Group)cGroup_1_0_0.eContents().get(0);
+		private final Action cShouldLeftOperandAction_1_0_0_0_0 = (Action)cGroup_1_0_0_0.eContents().get(0);
+		private final Alternatives cAlternatives_1_0_0_0_1 = (Alternatives)cGroup_1_0_0_0.eContents().get(1);
+		private final Group cGroup_1_0_0_0_1_0 = (Group)cAlternatives_1_0_0_0_1.eContents().get(0);
+		private final Assignment cPrefixAssignment_1_0_0_0_1_0_0 = (Assignment)cGroup_1_0_0_0_1_0.eContents().get(0);
+		private final Alternatives cPrefixAlternatives_1_0_0_0_1_0_0_0 = (Alternatives)cPrefixAssignment_1_0_0_0_1_0_0.eContents().get(0);
+		private final Keyword cPrefixShouldKeyword_1_0_0_0_1_0_0_0_0 = (Keyword)cPrefixAlternatives_1_0_0_0_1_0_0_0.eContents().get(0);
+		private final Keyword cPrefixMustKeyword_1_0_0_0_1_0_0_0_1 = (Keyword)cPrefixAlternatives_1_0_0_0_1_0_0_0.eContents().get(1);
+		private final Assignment cNotAssignment_1_0_0_0_1_0_1 = (Assignment)cGroup_1_0_0_0_1_0.eContents().get(1);
+		private final Keyword cNotNotKeyword_1_0_0_0_1_0_1_0 = (Keyword)cNotAssignment_1_0_0_0_1_0_1.eContents().get(0);
+		private final Assignment cPostfixAssignment_1_0_0_0_1_0_2 = (Assignment)cGroup_1_0_0_0_1_0.eContents().get(2);
+		private final Keyword cPostfixBeKeyword_1_0_0_0_1_0_2_0 = (Keyword)cPostfixAssignment_1_0_0_0_1_0_2.eContents().get(0);
+		private final Assignment cPrefixAssignment_1_0_0_0_1_1 = (Assignment)cAlternatives_1_0_0_0_1.eContents().get(1);
+		private final Keyword cPrefixEqualsSignGreaterThanSignKeyword_1_0_0_0_1_1_0 = (Keyword)cPrefixAssignment_1_0_0_0_1_1.eContents().get(0);
+		private final Assignment cRightOperandAssignment_1_0_1 = (Assignment)cGroup_1_0.eContents().get(1);
+		private final RuleCall cRightOperandXOtherOperatorExpressionParserRuleCall_1_0_1_0 = (RuleCall)cRightOperandAssignment_1_0_1.eContents().get(0);
+		private final Group cGroup_1_1 = (Group)cAlternatives_1.eContents().get(1);
+		private final Group cGroup_1_1_0 = (Group)cGroup_1_1.eContents().get(0);
+		private final Group cGroup_1_1_0_0 = (Group)cGroup_1_1_0.eContents().get(0);
+		private final Action cXInstanceOfExpressionExpressionAction_1_1_0_0_0 = (Action)cGroup_1_1_0_0.eContents().get(0);
+		private final Keyword cInstanceofKeyword_1_1_0_0_1 = (Keyword)cGroup_1_1_0_0.eContents().get(1);
+		private final Assignment cTypeAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
+		private final RuleCall cTypeJvmTypeReferenceParserRuleCall_1_1_1_0 = (RuleCall)cTypeAssignment_1_1_1.eContents().get(0);
+		private final Group cGroup_1_2 = (Group)cAlternatives_1.eContents().get(2);
+		private final Group cGroup_1_2_0 = (Group)cGroup_1_2.eContents().get(0);
+		private final Group cGroup_1_2_0_0 = (Group)cGroup_1_2_0.eContents().get(0);
+		private final Action cXBinaryOperationLeftOperandAction_1_2_0_0_0 = (Action)cGroup_1_2_0_0.eContents().get(0);
+		private final Assignment cFeatureAssignment_1_2_0_0_1 = (Assignment)cGroup_1_2_0_0.eContents().get(1);
+		private final CrossReference cFeatureJvmIdentifiableElementCrossReference_1_2_0_0_1_0 = (CrossReference)cFeatureAssignment_1_2_0_0_1.eContents().get(0);
+		private final RuleCall cFeatureJvmIdentifiableElementOpCompareParserRuleCall_1_2_0_0_1_0_1 = (RuleCall)cFeatureJvmIdentifiableElementCrossReference_1_2_0_0_1_0.eContents().get(1);
+		private final Assignment cRightOperandAssignment_1_2_1 = (Assignment)cGroup_1_2.eContents().get(1);
+		private final RuleCall cRightOperandXOtherOperatorExpressionParserRuleCall_1_2_1_0 = (RuleCall)cRightOperandAssignment_1_2_1.eContents().get(0);
+		
+		//XRelationalExpression returns xbase::XExpression:
+		//	XOtherOperatorExpression (=> ({Should.leftOperand=current} (prefix=("should" | "must") not?="not"? postfix="be"? |
+		//	prefix="=>")) rightOperand=XOtherOperatorExpression | => ({xbase::XInstanceOfExpression.expression=current}
+		//	"instanceof") type=JvmTypeReference | => ({xbase::XBinaryOperation.leftOperand=current}
+		//	feature=[types::JvmIdentifiableElement|OpCompare]) rightOperand=XOtherOperatorExpression)*;
+		public ParserRule getRule() { return rule; }
+
+		//XOtherOperatorExpression (=> ({Should.leftOperand=current} (prefix=("should" | "must") not?="not"? postfix="be"? |
+		//prefix="=>")) rightOperand=XOtherOperatorExpression | => ({xbase::XInstanceOfExpression.expression=current}
+		//"instanceof") type=JvmTypeReference | => ({xbase::XBinaryOperation.leftOperand=current}
+		//feature=[types::JvmIdentifiableElement|OpCompare]) rightOperand=XOtherOperatorExpression)*
+		public Group getGroup() { return cGroup; }
+
+		//XOtherOperatorExpression
+		public RuleCall getXOtherOperatorExpressionParserRuleCall_0() { return cXOtherOperatorExpressionParserRuleCall_0; }
+
+		//(=> ({Should.leftOperand=current} (prefix=("should" | "must") not?="not"? postfix="be"? | prefix="=>"))
+		//rightOperand=XOtherOperatorExpression | => ({xbase::XInstanceOfExpression.expression=current} "instanceof")
+		//type=JvmTypeReference | => ({xbase::XBinaryOperation.leftOperand=current}
+		//feature=[types::JvmIdentifiableElement|OpCompare]) rightOperand=XOtherOperatorExpression)*
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+
+		//=> ({Should.leftOperand=current} (prefix=("should" | "must") not?="not"? postfix="be"? | prefix="=>"))
+		//rightOperand=XOtherOperatorExpression
+		public Group getGroup_1_0() { return cGroup_1_0; }
+
+		//=> ({Should.leftOperand=current} (prefix=("should" | "must") not?="not"? postfix="be"? | prefix="=>"))
+		public Group getGroup_1_0_0() { return cGroup_1_0_0; }
+
+		//{Should.leftOperand=current} (prefix=("should" | "must") not?="not"? postfix="be"? | prefix="=>")
+		public Group getGroup_1_0_0_0() { return cGroup_1_0_0_0; }
+
+		//{Should.leftOperand=current}
+		public Action getShouldLeftOperandAction_1_0_0_0_0() { return cShouldLeftOperandAction_1_0_0_0_0; }
+
+		//prefix=("should" | "must") not?="not"? postfix="be"? | prefix="=>"
+		public Alternatives getAlternatives_1_0_0_0_1() { return cAlternatives_1_0_0_0_1; }
+
+		//prefix=("should" | "must") not?="not"? postfix="be"?
+		public Group getGroup_1_0_0_0_1_0() { return cGroup_1_0_0_0_1_0; }
+
+		//prefix=("should" | "must")
+		public Assignment getPrefixAssignment_1_0_0_0_1_0_0() { return cPrefixAssignment_1_0_0_0_1_0_0; }
+
+		//"should" | "must"
+		public Alternatives getPrefixAlternatives_1_0_0_0_1_0_0_0() { return cPrefixAlternatives_1_0_0_0_1_0_0_0; }
+
+		//"should"
+		public Keyword getPrefixShouldKeyword_1_0_0_0_1_0_0_0_0() { return cPrefixShouldKeyword_1_0_0_0_1_0_0_0_0; }
+
+		//"must"
+		public Keyword getPrefixMustKeyword_1_0_0_0_1_0_0_0_1() { return cPrefixMustKeyword_1_0_0_0_1_0_0_0_1; }
+
+		//not?="not"?
+		public Assignment getNotAssignment_1_0_0_0_1_0_1() { return cNotAssignment_1_0_0_0_1_0_1; }
+
+		//"not"
+		public Keyword getNotNotKeyword_1_0_0_0_1_0_1_0() { return cNotNotKeyword_1_0_0_0_1_0_1_0; }
+
+		//postfix="be"?
+		public Assignment getPostfixAssignment_1_0_0_0_1_0_2() { return cPostfixAssignment_1_0_0_0_1_0_2; }
+
+		//"be"
+		public Keyword getPostfixBeKeyword_1_0_0_0_1_0_2_0() { return cPostfixBeKeyword_1_0_0_0_1_0_2_0; }
+
+		//prefix="=>"
+		public Assignment getPrefixAssignment_1_0_0_0_1_1() { return cPrefixAssignment_1_0_0_0_1_1; }
+
+		//"=>"
+		public Keyword getPrefixEqualsSignGreaterThanSignKeyword_1_0_0_0_1_1_0() { return cPrefixEqualsSignGreaterThanSignKeyword_1_0_0_0_1_1_0; }
+
+		//rightOperand=XOtherOperatorExpression
+		public Assignment getRightOperandAssignment_1_0_1() { return cRightOperandAssignment_1_0_1; }
+
+		//XOtherOperatorExpression
+		public RuleCall getRightOperandXOtherOperatorExpressionParserRuleCall_1_0_1_0() { return cRightOperandXOtherOperatorExpressionParserRuleCall_1_0_1_0; }
+
+		//=> ({xbase::XInstanceOfExpression.expression=current} "instanceof") type=JvmTypeReference
+		public Group getGroup_1_1() { return cGroup_1_1; }
+
+		//=> ({xbase::XInstanceOfExpression.expression=current} "instanceof")
+		public Group getGroup_1_1_0() { return cGroup_1_1_0; }
+
+		//{xbase::XInstanceOfExpression.expression=current} "instanceof"
+		public Group getGroup_1_1_0_0() { return cGroup_1_1_0_0; }
+
+		//{xbase::XInstanceOfExpression.expression=current}
+		public Action getXInstanceOfExpressionExpressionAction_1_1_0_0_0() { return cXInstanceOfExpressionExpressionAction_1_1_0_0_0; }
+
+		//"instanceof"
+		public Keyword getInstanceofKeyword_1_1_0_0_1() { return cInstanceofKeyword_1_1_0_0_1; }
+
+		//type=JvmTypeReference
+		public Assignment getTypeAssignment_1_1_1() { return cTypeAssignment_1_1_1; }
+
+		//JvmTypeReference
+		public RuleCall getTypeJvmTypeReferenceParserRuleCall_1_1_1_0() { return cTypeJvmTypeReferenceParserRuleCall_1_1_1_0; }
+
+		//=> ({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare])
+		//rightOperand=XOtherOperatorExpression
+		public Group getGroup_1_2() { return cGroup_1_2; }
+
+		//=> ({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare])
+		public Group getGroup_1_2_0() { return cGroup_1_2_0; }
+
+		//{xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare]
+		public Group getGroup_1_2_0_0() { return cGroup_1_2_0_0; }
+
+		//{xbase::XBinaryOperation.leftOperand=current}
+		public Action getXBinaryOperationLeftOperandAction_1_2_0_0_0() { return cXBinaryOperationLeftOperandAction_1_2_0_0_0; }
+
+		//feature=[types::JvmIdentifiableElement|OpCompare]
+		public Assignment getFeatureAssignment_1_2_0_0_1() { return cFeatureAssignment_1_2_0_0_1; }
+
+		//[types::JvmIdentifiableElement|OpCompare]
+		public CrossReference getFeatureJvmIdentifiableElementCrossReference_1_2_0_0_1_0() { return cFeatureJvmIdentifiableElementCrossReference_1_2_0_0_1_0; }
+
+		//OpCompare
+		public RuleCall getFeatureJvmIdentifiableElementOpCompareParserRuleCall_1_2_0_0_1_0_1() { return cFeatureJvmIdentifiableElementOpCompareParserRuleCall_1_2_0_0_1_0_1; }
+
+		//rightOperand=XOtherOperatorExpression
+		public Assignment getRightOperandAssignment_1_2_1() { return cRightOperandAssignment_1_2_1; }
+
+		//XOtherOperatorExpression
+		public RuleCall getRightOperandXOtherOperatorExpressionParserRuleCall_1_2_1_0() { return cRightOperandXOtherOperatorExpressionParserRuleCall_1_2_1_0; }
+	}
+
 	public class AssertionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Assertion");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -1313,6 +1480,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	private TypeRefElements pTypeRef;
 	private MemberElements pMember;
 	private XPrimaryExpressionElements pXPrimaryExpression;
+	private XRelationalExpressionElements pXRelationalExpression;
 	private AssertionElements pAssertion;
 	private MatcherElements pMatcher;
 	private MatcherClosureElements pMatcherClosure;
@@ -1427,6 +1595,19 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getXPrimaryExpressionRule() {
 		return getXPrimaryExpressionAccess().getRule();
+	}
+
+	//XRelationalExpression returns xbase::XExpression:
+	//	XOtherOperatorExpression (=> ({Should.leftOperand=current} (prefix=("should" | "must") not?="not"? postfix="be"? |
+	//	prefix="=>")) rightOperand=XOtherOperatorExpression | => ({xbase::XInstanceOfExpression.expression=current}
+	//	"instanceof") type=JvmTypeReference | => ({xbase::XBinaryOperation.leftOperand=current}
+	//	feature=[types::JvmIdentifiableElement|OpCompare]) rightOperand=XOtherOperatorExpression)*;
+	public XRelationalExpressionElements getXRelationalExpressionAccess() {
+		return (pXRelationalExpression != null) ? pXRelationalExpression : (pXRelationalExpression = new XRelationalExpressionElements());
+	}
+	
+	public ParserRule getXRelationalExpressionRule() {
+		return getXRelationalExpressionAccess().getRule();
 	}
 
 	//Assertion returns xbase::XExpression:
@@ -1911,18 +2092,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getOpEqualityRule() {
 		return getOpEqualityAccess().getRule();
-	}
-
-	//XRelationalExpression returns XExpression:
-	//	XOtherOperatorExpression (=> ({XInstanceOfExpression.expression=current} "instanceof") type=JvmTypeReference | =>
-	//	({XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare])
-	//	rightOperand=XOtherOperatorExpression)*;
-	public XbaseGrammarAccess.XRelationalExpressionElements getXRelationalExpressionAccess() {
-		return gaXtend.getXRelationalExpressionAccess();
-	}
-	
-	public ParserRule getXRelationalExpressionRule() {
-		return getXRelationalExpressionAccess().getRule();
 	}
 
 	//OpCompare:

@@ -34,10 +34,9 @@
 <p>
 <p>Jnario improves the readability of tests by providing assertion methods which can extend any object (making use of Xtend's <a href="http://www.eclipse.org/xtend/#extensionmethods">extension methods</a>). These assertions help you express how an object should behave. They can be combined with any <a href="http://code.google.com/p/hamcrest/">Hamcrest</a> matcher, giving you the freedom to choose from a wide range of existing matchers.</p>
 <pre class="prettyprint lang-jnario">
-"hello".should.be("hello") 
-true.should.not.be(false)
-newArrayList("jnario", "java").each.should.startWith("j")
-"hello".should.be(typeof(String))</pre>
+"hello" should be "hello" 
+    true should not be false
+    "hello" should be typeof(String)</pre>
 </p>
 <h4>Self-explaining Assertions</h4>
 <p>
@@ -64,7 +63,7 @@ import java.util.ArrayList
 describe ArrayList{
 
   it "should automatically create an instance of ArrayList called subject"{
-    subject.should.be(typeof(ArrayList))
+    subject should be typeof(ArrayList)
   }
 
 }</pre>

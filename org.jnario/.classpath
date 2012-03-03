@@ -6,6 +6,6 @@
 	<classpathentry kind="src" path="xtend-gen"/>
 	<classpathentry exported="true" kind="lib" path="lib/parboiled-core-1.0.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/parboiled-java-1.0.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/pegdown-1.1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/pegdown-1.1.0.jar" sourcepath="/Users/sebastian/.m2/repository/org/pegdown/pegdown/1.1.0/pegdown-1.1.0-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

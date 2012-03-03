@@ -66,6 +66,7 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory {
 			case JnarioPackage.ASSERTION: return createAssertion();
 			case JnarioPackage.MATCHER: return createMatcher();
 			case JnarioPackage.EXAMPLE_COLUMN: return createExampleColumn();
+			case JnarioPackage.SHOULD: return createShould();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -119,6 +120,16 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory {
 	public ExampleColumn createExampleColumn() {
 		ExampleColumnImpl exampleColumn = new ExampleColumnImpl();
 		return exampleColumn;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Should createShould() {
+		ShouldImpl should = new ShouldImpl();
+		return should;
 	}
 
 	/**

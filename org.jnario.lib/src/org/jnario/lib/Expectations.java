@@ -13,6 +13,10 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
  */
 public class Expectations {
 
+	public static void throwsException(Procedure1<Object> proc){
+		expect(Throwable.class, proc);
+	}
+	
 	public static void expect(Class<? extends Throwable> exceptionType, Procedure1<Object> proc){
 		try {
 			proc.apply(null);

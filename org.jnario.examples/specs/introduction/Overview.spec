@@ -7,6 +7,7 @@
  *******************************************************************************/
 package introduction
 
+
 import static extension org.jnario.jnario.test.util.Helpers.*
 import static extension org.jnario.lib.Each.*
 import static extension org.jnario.lib.Should.*
@@ -35,12 +36,11 @@ describe "Jnario Specs - BDD for Java"{
    * [Hamcrest](http://code.google.com/p/hamcrest/) matcher, giving you the freedom to choose from 
    * a wide range of existing matchers.
    */
-  it "Should-style Assertions"{
-    "hello".should.be("hello") 
-    true.should.not.be(false)
-    newArrayList("jnario", "java").each.should.startWith("j")
-    "hello".should.be(typeof(String)) 
-  }
+  - "Should-style Assertions"{
+  	"hello" should be "hello" 
+    true should not be false
+    "hello" should be typeof(String) 
+  } 
   
   /*
    * With Jnario, debugging a failing test to discover the reason for its failure becomes 
@@ -78,7 +78,7 @@ describe "Jnario Specs - BDD for Java"{
       describe ArrayList{
 
         it "should automatically create an instance of ArrayList called subject"{
-          subject.should.be(typeof(ArrayList))
+          subject should be typeof(ArrayList)
         }
 
       }

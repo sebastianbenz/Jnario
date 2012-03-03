@@ -332,6 +332,125 @@ public interface JnarioPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.jnario.impl.ShouldImpl <em>Should</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.jnario.impl.ShouldImpl
+	 * @see org.jnario.impl.JnarioPackageImpl#getShould()
+	 * @generated
+	 */
+	int SHOULD = 5;
+
+	/**
+	 * The feature id for the '<em><b>Feature</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHOULD__FEATURE = XbasePackage.XBINARY_OPERATION__FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Type Arguments</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHOULD__TYPE_ARGUMENTS = XbasePackage.XBINARY_OPERATION__TYPE_ARGUMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Implicit Receiver</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHOULD__IMPLICIT_RECEIVER = XbasePackage.XBINARY_OPERATION__IMPLICIT_RECEIVER;
+
+	/**
+	 * The feature id for the '<em><b>Invalid Feature Issue Code</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHOULD__INVALID_FEATURE_ISSUE_CODE = XbasePackage.XBINARY_OPERATION__INVALID_FEATURE_ISSUE_CODE;
+
+	/**
+	 * The feature id for the '<em><b>Valid Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHOULD__VALID_FEATURE = XbasePackage.XBINARY_OPERATION__VALID_FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Implicit First Argument</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHOULD__IMPLICIT_FIRST_ARGUMENT = XbasePackage.XBINARY_OPERATION__IMPLICIT_FIRST_ARGUMENT;
+
+	/**
+	 * The feature id for the '<em><b>Left Operand</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHOULD__LEFT_OPERAND = XbasePackage.XBINARY_OPERATION__LEFT_OPERAND;
+
+	/**
+	 * The feature id for the '<em><b>Right Operand</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHOULD__RIGHT_OPERAND = XbasePackage.XBINARY_OPERATION__RIGHT_OPERAND;
+
+	/**
+	 * The feature id for the '<em><b>Not</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHOULD__NOT = XbasePackage.XBINARY_OPERATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Prefix</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHOULD__PREFIX = XbasePackage.XBINARY_OPERATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Postfix</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHOULD__POSTFIX = XbasePackage.XBINARY_OPERATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Should</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHOULD_FEATURE_COUNT = XbasePackage.XBINARY_OPERATION_FEATURE_COUNT + 3;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.jnario.ExampleTable <em>Example Table</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -481,6 +600,49 @@ public interface JnarioPackage extends EPackage {
 	EReference getExampleColumn_Cells();
 
 	/**
+	 * Returns the meta object for class '{@link org.jnario.Should <em>Should</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Should</em>'.
+	 * @see org.jnario.Should
+	 * @generated
+	 */
+	EClass getShould();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.jnario.Should#isNot <em>Not</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Not</em>'.
+	 * @see org.jnario.Should#isNot()
+	 * @see #getShould()
+	 * @generated
+	 */
+	EAttribute getShould_Not();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.jnario.Should#getPrefix <em>Prefix</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Prefix</em>'.
+	 * @see org.jnario.Should#getPrefix()
+	 * @see #getShould()
+	 * @generated
+	 */
+	EAttribute getShould_Prefix();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.jnario.Should#getPostfix <em>Postfix</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Postfix</em>'.
+	 * @see org.jnario.Should#getPostfix()
+	 * @see #getShould()
+	 * @generated
+	 */
+	EAttribute getShould_Postfix();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -623,6 +785,40 @@ public interface JnarioPackage extends EPackage {
 		 * @generated
 		 */
 		EReference EXAMPLE_COLUMN__CELLS = eINSTANCE.getExampleColumn_Cells();
+
+		/**
+		 * The meta object literal for the '{@link org.jnario.impl.ShouldImpl <em>Should</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.jnario.impl.ShouldImpl
+		 * @see org.jnario.impl.JnarioPackageImpl#getShould()
+		 * @generated
+		 */
+		EClass SHOULD = eINSTANCE.getShould();
+
+		/**
+		 * The meta object literal for the '<em><b>Not</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SHOULD__NOT = eINSTANCE.getShould_Not();
+
+		/**
+		 * The meta object literal for the '<em><b>Prefix</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SHOULD__PREFIX = eINSTANCE.getShould_Prefix();
+
+		/**
+		 * The meta object literal for the '<em><b>Postfix</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SHOULD__POSTFIX = eINSTANCE.getShould_Postfix();
 
 	}
 

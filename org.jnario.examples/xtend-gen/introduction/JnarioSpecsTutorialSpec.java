@@ -1,6 +1,7 @@
 package introduction;
 
 import introduction.JnarioSpecsTutorialHowToWriteASpecificationSpec;
+import introduction.JnarioSpecsTutorialSetupAndTeardownSpec;
 import introduction.JnarioSpecsTutorialSpecExtensionsSpec;
 import introduction.JnarioSpecsTutorialTypeSafeSpecificationsSpec;
 import introduction.JnarioSpecsTutorialUsingExampleTablesSpec;
@@ -12,6 +13,6 @@ import org.junit.runner.RunWith;
 
 @RunWith(ExampleGroupRunner.class)
 @Named("Jnario Specs - Tutorial")
-@Contains({ JnarioSpecsTutorialHowToWriteASpecificationSpec.class, JnarioSpecsTutorialWritingAssertionsSpec.class, JnarioSpecsTutorialUsingExampleTablesSpec.class, JnarioSpecsTutorialTypeSafeSpecificationsSpec.class, JnarioSpecsTutorialSpecExtensionsSpec.class })
+@Contains({ JnarioSpecsTutorialHowToWriteASpecificationSpec.class, JnarioSpecsTutorialSetupAndTeardownSpec.class, JnarioSpecsTutorialWritingAssertionsSpec.class, JnarioSpecsTutorialUsingExampleTablesSpec.class, JnarioSpecsTutorialTypeSafeSpecificationsSpec.class, JnarioSpecsTutorialSpecExtensionsSpec.class })
 public class JnarioSpecsTutorialSpec {
 }

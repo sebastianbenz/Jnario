@@ -1,17 +1,14 @@
 package introduction;
 
-import java.util.ArrayList;
+import com.google.common.base.Objects;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.jnario.test.util.Helpers;
 import org.jnario.jnario.test.util.SpecExecutor;
-import org.jnario.lib.Each;
-import org.jnario.lib.MatcherChain;
-import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -44,17 +41,12 @@ public class JnarioSpecsBDDForJavaSpec {
   @Named("Should-style Assertions")
   @Order(0)
   public void shouldStyleAssertions() throws Exception {
-    MatcherChain<String> _should = Should.<String>should("hello");
-    Should.<String>be(_should, "hello");
-    MatcherChain<Boolean> _should_1 = Should.<Boolean>should(Boolean.valueOf(true));
-    MatcherChain<Boolean> _not = Should.<Boolean>not(_should_1);
-    Should.<Boolean>be(_not, Boolean.valueOf(false));
-    ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("jnario", "java");
-    MatcherChain<String> _each = Each.<String>each(_newArrayList);
-    MatcherChain<String> _should_2 = Should.<String>should(_each);
-    Should.startWith(_should_2, "j");
-    MatcherChain<String> _should_3 = Should.<String>should("hello");
-    Should.<String>be(_should_3, String.class);
+    boolean result = Objects.equal("hello", "hello");
+    Assert.assertTrue("\nExpected \"hello\" should be \"hello\" but:" + "\n", result);
+    boolean result_1 = Objects.equal(true, false);
+    Assert.assertFalse("\nExpected true should not be false but:" + "\n", result_1);
+    boolean result_2 = Objects.equal("hello", String.class);
+    Assert.assertTrue("\nExpected \"hello\" should be typeof(String) but:" + "\n", result_2);
   }
   
   /**
@@ -78,7 +70,7 @@ public class JnarioSpecsBDDForJavaSpec {
           } else {
             _and = (_equals && _equals_1);
           }
-          org.junit.Assert.assertTrue("\nExpected x == 1 && y == 0 but:"
+          Assert.assertTrue("\nExpected x == 1 && y == 0 but:"
            + "\n     x == 1 is " + _equals
            + "\n     x is " + x
            + "\n     y == 0 is " + _equals_1
@@ -132,7 +124,7 @@ public class JnarioSpecsBDDForJavaSpec {
     _builder.append("it \"should automatically create an instance of ArrayList called subject\"{");
     _builder.newLine();
     _builder.append("    ");
-    _builder.append("subject.should.be(typeof(ArrayList))");
+    _builder.append("subject should be typeof(ArrayList)");
     _builder.newLine();
     _builder.append("  ");
     _builder.append("}");
