@@ -76,7 +76,7 @@ public abstract class BehaviorTestRunner extends Runner {
 	private Collection<? extends Description> testDescriptions() {
 		if (descriptions == null) {
 			descriptions = Maps.newHashMap();
-			IUriProvider uris = ClassPathUriProvider.startingFrom(klass).select(
+			IUriProvider uris = ClassPathUriProviderBuilder.startingFrom(klass).select(
 					new Predicate<URI>() {
 
 						public boolean apply(URI uri) {

@@ -15,7 +15,6 @@ import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.common.types.xtext.ui.TypeMatchFilters;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
-
 import org.jnario.spec.spec.SpecPackage;
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -37,11 +36,11 @@ public class SpecProposalProvider extends AbstractSpecProposalProvider {
 
 	}
 	
-	@Override
-	public void completeMember_Exception(EObject model, Assignment assignment,
-			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		completeJavaTypes(context, SpecPackage.Literals.EXAMPLE__EXCEPTION, true, getQualifiedNameValueConverter(), TypeMatchFilters.all(), acceptor);
-	}
+//	@Override
+//	public void completeMember_Exception(EObject model, Assignment assignment,
+//			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+//		completeJavaTypes(context, SpecPackage.Literals.EXAMPLE__EXCEPTION, true, getQualifiedNameValueConverter(), TypeMatchFilters.all(), acceptor);
+//	}
 	
 	@Override
 	public void completeMember_TargetOperation(EObject model,

@@ -15,6 +15,7 @@ import static org.eclipse.xtext.util.Strings.toFirstUpper;
 
 import java.util.List;
 
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.util.SimpleAttributeResolver;
 import org.eclipse.xtend.core.xtend.XtendMember;
 
@@ -63,6 +64,8 @@ public class ExampleNameProvider {
 		if(example.getName() != null){
 			sb.append(example.getName());
 			sb.append(" ");
+		}else{
+			sb.append(NodeModelUtils.getNode(example).getText());
 		}
 		if(example.isPending()){
 			sb.append("[PENDING]");
@@ -92,7 +95,11 @@ public class ExampleNameProvider {
 	
 	public String toMethodName(Example example){
 		StringBuilder result = new StringBuilder();
-		result.append(memberDescriptionOf(example));
+		if(example.getName() != null){
+			result.append(memberDescriptionOf(example));
+		}else{
+			result.append(NodeModelUtils.getNode(example).getText());
+		}
 		return toFirstLower(convertToCamelCase(result).toString());
 	}
 	

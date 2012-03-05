@@ -440,7 +440,15 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case XbasePackage.XBLOCK_EXPRESSION:
-				if(context == grammarAccess.getRichStringPartRule() ||
+				if(context == grammarAccess.getExampleContentRule()) {
+					sequence_ExampleContent(context, (XBlockExpression) semanticObject); 
+					return; 
+				}
+				else if(context == grammarAccess.getSingleLineBlockRule()) {
+					sequence_SingleLineBlock(context, (XBlockExpression) semanticObject); 
+					return; 
+				}
+				else if(context == grammarAccess.getRichStringPartRule() ||
 				   context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
@@ -1433,6 +1441,15 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     ((expressions+=XExpressionInsideBlock?) | (expressions+=XExpressionInsideBlock*))
+	 */
+	protected void sequence_ExampleContent(EObject context, XBlockExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (annotations+=XAnnotation* preamble='describe' targetType=JvmTypeReference? name=STRING? members+=Member*)
 	 */
 	protected void sequence_ExampleGroup(EObject context, ExampleGroup semanticObject) {
@@ -1608,7 +1625,7 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         annotationInfo=Member_Example_2_0_0 
-	 *         ((preamble=ID | preamble='-') exception=[JvmDeclaredType|QualifiedName]? name=STRING body=XBlockExpression?)
+	 *         ((preamble=ID | preamble='-') ((exception=[JvmDeclaredType|QualifiedName] name=STRING?) | name=STRING) body=ExampleContent?)
 	 *     )
 	 */
 	protected void sequence_Member(EObject context, Example semanticObject) {
@@ -1795,6 +1812,15 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	 */
 	protected void sequence_SimpleStringLiteral(EObject context, XStringLiteral semanticObject) {
 		superSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (expressions+=XExpressionInsideBlock?)
+	 */
+	protected void sequence_SingleLineBlock(EObject context, XBlockExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

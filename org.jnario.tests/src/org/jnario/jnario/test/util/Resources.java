@@ -47,7 +47,7 @@ import com.google.common.collect.Lists;
  * @author Sebastian Benz - Initial contribution and API
  */
 public class Resources {
-
+	
 	public static String toString(Resource resource) {
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		try {
@@ -124,24 +124,6 @@ public class Resources {
 		}));
 	}
 
-	public static void assertNoValidationErrors(Resource resource) {
-		TreeIterator<EObject> contents = resource.getAllContents();
-		while (contents.hasNext()) {
-			EObject element = contents.next();
-			org.eclipse.emf.common.util.Diagnostic diagnostic = Diagnostician.INSTANCE.validate(element);
-			assertTrue("Validation errors:\n" + getMessage(diagnostic), diagnostic.getSeverity() == org.eclipse.emf.common.util.Diagnostic.OK);
-		}
-
-	}
-
-	private static String getMessage(org.eclipse.emf.common.util.Diagnostic diagnostic) {
-		StringBuilder message = new StringBuilder();
-		for (org.eclipse.emf.common.util.Diagnostic child : diagnostic.getChildren()) {
-			message.append(child.toString());
-			message.append(Strings.newLine());
-		}
-		return message.toString();
-	}
 
 	public static void removeNodes(Resource resource) {
 		List<ICompositeNode> nodeAdapters = Lists.newArrayList();

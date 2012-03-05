@@ -79,6 +79,10 @@ public class ModelStore implements Iterable<EObject> {
 		return Iterators.filter(resourceSet.getAllContents(), EObject.class);
 	}
 
+	public List<Resource> resources(){
+		return resourceSet.getResources();
+	}
+	
 	public static ModelStore create() {
 		return new ModelStore();
 	}

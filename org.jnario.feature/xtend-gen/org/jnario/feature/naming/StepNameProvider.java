@@ -1,15 +1,15 @@
 package org.jnario.feature.naming;
 
-import com.google.common.base.Objects;
-import com.google.common.collect.Iterables;
 import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
+import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepReference;
@@ -35,12 +35,12 @@ public class StepNameProvider {
   public String nameOf(final StepReference ref) {
     Step _reference = ref.getReference();
     final Step referencedStep = _reference;
-    boolean _equals = Objects.equal(referencedStep, null);
+    boolean _equals = ObjectExtensions.operator_equals(referencedStep, null);
     if (_equals) {
       return null;
     }
     boolean _eIsProxy = referencedStep.eIsProxy();
-    boolean _not = (!_eIsProxy);
+    boolean _not = BooleanExtensions.operator_not(_eIsProxy);
     if (_not) {
       String _nameOf = this.nameOf(referencedStep);
       return _nameOf;
@@ -53,7 +53,7 @@ public class StepNameProvider {
   public String referenceText(final EObject obj, final EReference ref) {
     List<INode> _findNodesForFeature = NodeModelUtils.findNodesForFeature(obj, ref);
     final List<INode> nodes = _findNodesForFeature;
-    Iterable<ILeafNode> _filter = Iterables.<ILeafNode>filter(nodes, ILeafNode.class);
+    Iterable<ILeafNode> _filter = IterableExtensions.<ILeafNode>filter(nodes, ILeafNode.class);
     final Iterable<ILeafNode> leafs = _filter;
     final Function1<ILeafNode,String> _function = new Function1<ILeafNode,String>() {
         public String apply(final ILeafNode it) {

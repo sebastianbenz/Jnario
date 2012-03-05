@@ -10,7 +10,7 @@
    <tycho-version>0.12.0</tycho-version>
     <tycho-groupid>org.eclipse.tycho</tycho-groupid>
     <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
-    <platform-version-name>indigo</platform-version-name>
+    <platform-version-name>juno</platform-version-name>
     <eclipse-site>http://download.eclipse.org/releases/${platform-version-name}</eclipse-site>
   </properties>
   
@@ -34,7 +34,7 @@
   
   <repositories>
     <repository>
-      <id>indigo</id>
+      <id>juno</id>
       <layout>p2</layout>
       <url>${eclipse-site}</url>
     </repository>
@@ -46,15 +46,15 @@
 
   <profiles>
     <profile>
-      <id>platform-indigo</id>
+      <id>platform-juno</id>
       <activation>
         <property>
           <name>platform-version-name</name>
-          <value>indigo</value>
+          <value>juno</value>
         </property>
       </activation>
       <properties>
-        <eclipse-site>http://download.eclipse.org/releases/indigo</eclipse-site>
+        <eclipse-site>http://download.eclipse.org/releases/juno</eclipse-site>
         <platform-version>[3.7,3.8)</platform-version>
       </properties>
     </profile>
@@ -100,7 +100,7 @@
               <groupId>org.jnario</groupId>
               <artifactId>org.jnario.target</artifactId>
               <version>0.1.0-SNAPSHOT</version>
-              <classifier>indigo</classifier>
+              <classifier>juno</classifier>
             </artifact>
           </target>
           <ignoreTychoRepositories>true</ignoreTychoRepositories>

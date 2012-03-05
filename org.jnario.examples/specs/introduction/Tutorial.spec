@@ -16,6 +16,9 @@ describe "Jnario Specs - Tutorial"{
 
 	describe "How to write a Specification"{
 		
+		- "asdafsd" should be "asdf"
+		  
+		
 		/*
 		 * *Note:* You can declare packages and import other packages similar 
 		 * to Java (static imports work as well). 
@@ -106,7 +109,7 @@ describe "Jnario Specs - Tutorial"{
 	     }
 	}
 	
-	describe "Setup and Teardown"{
+	describe "Before & After"{
 		
 	}
 	

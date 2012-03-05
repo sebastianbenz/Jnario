@@ -22,7 +22,6 @@ import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.emf.common.util.URI;
 
 import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
 
 import org.jnario.Activator;
 
@@ -42,51 +41,11 @@ public class ClassPathUriProvider implements IUriProvider {
 
 	}
 
-	public static class Builder {
-
-		private final Class<?> context;
-		private String relativeFolder = ".";
-		
-		public Builder(Class<?> context) {
-			this.context = context;
-		}
-
-		public Builder(Object context) {
-			this.context = context.getClass();
-		}
-
-		public Builder in(String relativeFolder) {
-			this.relativeFolder = relativeFolder;
-			return this;
-		}
-
-		public IUriProvider select(String... fileNames) {
-			return new ClassPathUriProvider(context, relativeFolder, new FileNameIs(fileNames));
-		}
-
-		public IUriProvider selectAll() {
-			return new ClassPathUriProvider(context, relativeFolder, Predicates.<URI>alwaysTrue());
-		}
-
-		public IUriProvider select(Predicate<URI> filter) {
-			return new ClassPathUriProvider(context, relativeFolder, filter);
-		}
-
-	}
-
-	public static ClassPathUriProvider.Builder startingFrom(Object context) {
-		return new Builder(context);
-	}
-	
-	public static ClassPathUriProvider.Builder startingFrom(Class<?> context) {
-		return new Builder(context);
-	}
-
 	private final String relativeFolder;
 	private final Class<?> klass;
 	private Predicate<URI> filter;
 
-	private ClassPathUriProvider(Class<?> context, String relativeFolder, Predicate<URI> filter) {
+	ClassPathUriProvider(Class<?> context, String relativeFolder, Predicate<URI> filter) {
 		klass = context;
 		this.relativeFolder = relativeFolder;
 		this.filter = filter;

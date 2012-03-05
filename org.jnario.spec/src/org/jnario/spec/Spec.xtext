@@ -37,26 +37,30 @@ Member returns xtend::XtendMember:
 	{xtend::XtendMember} annotations+=XAnnotation* 
 	(
 		{Example.annotationInfo = current}
-		((=>preamble=ID | =>preamble='-') 
-			(=>'throws' exception=[types::JvmDeclaredType|QualifiedName])? 
-				(=>name=STRING
-					=>body=XBlockExpression?))	
+		(
+			(=>preamble=ID | =>preamble='-') 
+				(	
+					(=>'throws' exception=[types::JvmDeclaredType|QualifiedName] name=STRING?) |
+			 		 name=STRING
+			 	) 
+			 	body=ExampleContent?
+		)	
 	|	{ExampleGroup.annotationInfo = current}
-			(preamble=('describe') targetType=JvmTypeReference? =>name=STRING? '{'
+			(=>preamble=('describe') targetType=JvmTypeReference? =>name=STRING? '{'
       		members+=Member*
       	'}')
     |	{Before.annotationInfo = current}
-		('before' (beforeAll?='all')? =>name=(STRING | ID)?
+		(=>'before' (beforeAll?='all')? =>name=(STRING | ID)?
 			body=XBlockExpression?)
 	|	{After.annotationInfo = current}
-		('after' (afterAll?='all')? =>name=(STRING | ID)?
+		(=>'after' (afterAll?='all')? =>name=(STRING | ID)?
 			body=XBlockExpression?)
     |	{ExampleGroup.annotationInfo = current}
-			(preamble=('context') targetOperation=[types::JvmOperation|Method]? =>name=STRING? '{'
+			(=>preamble=('context') targetOperation=[types::JvmOperation|Method]? =>name=STRING? '{'
       		members+=Member*
       	'}')
 	|	{ExampleTable.annotationInfo = current} 
-		('def' =>name=ID? '{'
+		(=>'def' =>name=ID? '{'
 			('|' (columns+=ExampleColumn)*
 			(rows += ExampleRow)*)?
       	'}') 
@@ -78,6 +82,14 @@ Member returns xtend::XtendMember:
 			(=>'throws' exceptions+=JvmTypeReference (',' exceptions+=JvmTypeReference)*)?
 			(expression=XBlockExpression | expression=RichString )?
 	 );
+	 
+ExampleContent returns xbase::XExpression:
+	SingleLineBlock | XBlockExpression
+;
+	 
+SingleLineBlock returns xbase::XBlockExpression:
+	'[' {xbase::XBlockExpression} expressions+=XExpressionInsideBlock ']'
+;
 
 XPrimaryExpression returns xbase::XExpression:
 	XConstructorCall |

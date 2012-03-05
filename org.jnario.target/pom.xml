@@ -32,9 +32,9 @@ xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLS
 					<configuration>
 						<artifacts>
 							<artifact>
-								<file>indigo.target</file>
+								<file>juno.target</file>
 								<type>target</type>
-								<classifier>indigo</classifier>
+								<classifier>juno</classifier>
 							</artifact>
 						</artifacts>
 					</configuration>
