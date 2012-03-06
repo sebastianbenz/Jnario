@@ -4,10 +4,10 @@ Feature
 *S Feature
 *F
 + 0 Demo.feature
-specs/calculator/Demo.feature
+features/calculator/Demo.feature
 *L
-5:1,9
-6:10,7
-7:17,7
-8:24,6
+3:1,9
+5:10,7
+6:17,7
+7:24,6
 *E

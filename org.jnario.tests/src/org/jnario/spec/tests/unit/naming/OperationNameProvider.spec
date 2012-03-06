@@ -42,11 +42,11 @@ describe OperationNameProvider{
 	}
 	
 	it "should name methods similar to JavaDoc links"{
-		nameOf("simpleOperation").should.be("simpleOperation")
-		nameOf("operationWithSingleArgument").should.be("operationWithSingleArgument(String)")
-		nameOf("operationWithMultipleArguments").should.be("operationWithMultipleArguments(String, Object, int)")
-		nameOf("operationWithTypedArguments").should.be("operationWithTypedArguments(List<String>, List<? extends String>)")
-		nameOf("operationWithVarArg").should.be("operationWithVarArg(String[])")
+		nameOf("simpleOperation").^should.^be("simpleOperation")
+		nameOf("operationWithSingleArgument").^should.^be("operationWithSingleArgument(String)")
+		nameOf("operationWithMultipleArguments").^should.^be("operationWithMultipleArguments(String, Object, int)")
+		nameOf("operationWithTypedArguments").^should.^be("operationWithTypedArguments(List<String>, List<? extends String>)")
+		nameOf("operationWithVarArg").^should.^be("operationWithVarArg(String[])")
 	}
 	
 	def String nameOf(String operationName){

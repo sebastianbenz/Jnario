@@ -59,8 +59,8 @@ describe DocGenerator {
 		''')
 		
 		val scenarioDoc = generatedFile("ExampleSpec.html")
-		scenarioDoc.should.contain("<p>This is an example.</p>")
-		scenarioDoc.should.not.contain("Irrelevant documentation.")
+		scenarioDoc.^should.contain("<p>This is an example.</p>")
+		scenarioDoc.^should.not.contain("Irrelevant documentation.")
 	}
 	
 	it "should generate example documentation"{
@@ -76,7 +76,7 @@ describe DocGenerator {
 			} 
 		''')
 		val scenarioDoc = generatedFile("ExampleSpec.html")
-		scenarioDoc.should.contain('''
+		scenarioDoc.^should.contain('''
 		<h4>Should do stuff</h4>
 		<p>
 		<p>Example documentation</p>
@@ -97,7 +97,7 @@ describe DocGenerator {
 			} 
 		''')
 		val scenarioDoc = generatedFile("ExampleSpec.html")
-		scenarioDoc.should.contain("<h1>Example Heading</h1>")
+		scenarioDoc.^should.contain("<h1>Example Heading</h1>")
 	}
 	
 	
@@ -111,11 +111,11 @@ describe DocGenerator {
 			} 
 		''')
 		val scenarioDoc = generatedFile("ExampleSpec.html")
-		scenarioDoc.should.contain("<h4>MyExample</h4>")
-		scenarioDoc.should.contain("<th>a</th>")
-		scenarioDoc.should.contain("<th>b</th>")
-		scenarioDoc.should.contain("<td>1</td>")
-		scenarioDoc.should.contain("<td>2</td>")
+		scenarioDoc.^should.contain("<h4>MyExample</h4>")
+		scenarioDoc.^should.contain("<th>a</th>")
+		scenarioDoc.^should.contain("<th>b</th>")
+		scenarioDoc.^should.contain("<td>1</td>")
+		scenarioDoc.^should.contain("<td>2</td>")
 	}
 	
 	it "should filter code based on regex in filter annotation"{
@@ -130,7 +130,7 @@ describe DocGenerator {
 			} 
 		''')
 		val scenarioDoc = generatedFile("ExampleSpec.html")
-		scenarioDoc.should.contain('"aaaaaa"')
+		scenarioDoc.^should.contain('"aaaaaa"')
 	}
 	
 	def generateEmptyExampleDoc(){

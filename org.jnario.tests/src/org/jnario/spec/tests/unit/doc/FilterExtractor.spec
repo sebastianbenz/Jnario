@@ -34,13 +34,13 @@ describe FilterExtractor {
 
 	it "should remove all filter annotations from a string"{
 		filterExtractions.forEach[
-			stringAfterExtract(input).should.be(resultString)
+			stringAfterExtract(input).^should.^be(resultString)
 		]
 	}
 	
 	it "should extract and create filters"{
 		filterCreation.forEach[
-			extractedFilters(input).should.be(resultingFilters)
+			extractedFilters(input).^should.^be(resultingFilters)
 		]
 	}
 	

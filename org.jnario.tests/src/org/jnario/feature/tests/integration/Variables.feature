@@ -50,7 +50,7 @@ Feature: Access of variables
 						When I assign it a different value
 							var y = x
 						Then y should be 3
-							y.should.be(3)
+							y.^should.^be(3)
 			'
 		When it is executed
 		Then it should be successful
@@ -65,7 +65,7 @@ Feature: Access of variables
 							var x = 3
 					Scenario: Some scenario
 							Then x should be 3
-								x.should.be(3)
+								x.^should.^be(3)
 			'
 		When it is executed
 		Then it should be successful
@@ -82,7 +82,7 @@ Feature: Access of variables
 							When assigning the variable
 								var y = x
 							Then it should be accessible
-								y.should.be(3)
+								y.^should.^be(3)
 			'
 		When it is executed
 		Then it should be successful

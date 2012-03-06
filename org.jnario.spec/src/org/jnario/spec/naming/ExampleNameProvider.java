@@ -26,6 +26,8 @@ import org.jnario.spec.spec.Example;
 import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.spec.spec.TestFunction;
 import org.jnario.spec.spec.util.SpecSwitch;
+
+import com.google.common.base.Strings;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
@@ -65,12 +67,23 @@ public class ExampleNameProvider {
 			sb.append(example.getName());
 			sb.append(" ");
 		}else{
-			sb.append(NodeModelUtils.getNode(example).getText());
+			sb.append(expression(example));
 		}
 		if(example.isPending()){
 			sb.append("[PENDING]");
 		}
-		return convertToJavaString(sb.toString()).trim();
+		return convertToJavaString(makeJunitConform(sb)).trim().replace("\\\"", "\"").replace("\\n", "; ").replace("\\t", "\t");
+	}
+
+	private String expression(Example example) {
+		if(example.getBody() == null){
+			return "";
+		}
+		String expression = NodeModelUtils.getNode(example.getBody()).getText().trim();
+		if(expression.length()  == 0){
+			return "";
+		}
+		return expression.substring(1, expression.length() - 1);
 	}
 
 	public String toJavaClassName(ExampleGroup exampleGroup) {
@@ -98,7 +111,7 @@ public class ExampleNameProvider {
 		if(example.getName() != null){
 			result.append(memberDescriptionOf(example));
 		}else{
-			result.append(NodeModelUtils.getNode(example).getText());
+			result.append(expression(example));
 		}
 		return toFirstLower(convertToCamelCase(result).toString());
 	}

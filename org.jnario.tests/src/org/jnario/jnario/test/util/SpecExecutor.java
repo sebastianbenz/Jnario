@@ -71,6 +71,7 @@ public class SpecExecutor extends BehaviorExecutor{
 		Resource resource = resourceSet.createResource(createURI("dummy.spec"));
 		try {
 			resource.load(new StringInputStream(content), Collections.emptyMap());
+			Resources.checkForParseErrors(resource);
 		} catch (IOException e) {
 			e.printStackTrace();
 			org.junit.Assert.fail(e.getMessage());

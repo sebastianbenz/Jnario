@@ -22,4 +22,4 @@ And some values.
 	z = 8
 When I add those numbers them
 Then the sum should be the result.
-	(x+y).should.be(z)
+	(x+y).^should.^be(z)

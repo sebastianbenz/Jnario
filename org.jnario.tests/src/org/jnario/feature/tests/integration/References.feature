@@ -28,5 +28,5 @@ Feature: References for steps
 						Given step
 				"
 		When I run it it should fail
-			jnarioFile.execute.failureCount.should.be(2)
+			jnarioFile.execute.failureCount.^should.^be(2)
 	 

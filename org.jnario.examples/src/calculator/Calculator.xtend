@@ -16,4 +16,13 @@ class Calculator {
 	 def divide(int a, int b){
 	 	return a / b
 	 }
+	 
+	 def substract(int a, int b){
+	 	return a - b
+	 }
+	 
+	override toString() {
+		"Calculator"		
+	}
+	
 }    

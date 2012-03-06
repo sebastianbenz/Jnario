@@ -22,9 +22,7 @@ describe "ImplicitSubject"{
 			
 			describe String {
 			
-				it "subject should not be null"{
-					subject.should.not.be(nullValue)
-				} 
+				it [subject should not be null]
 						
 			}
 		'
@@ -42,7 +40,7 @@ describe "ImplicitSubject"{
 				String subject = "overridden"
 			
 				it "subject should be overridden"{
-					subject.should.be("overridden")
+					subject should be "overridden"
 				} 
 						
 			}
@@ -77,7 +75,7 @@ describe "ImplicitSubject"{
 			
 			describe "Nested ExampleGroup"{
 				it "should inherthe subject"{
-					subject.should.be("")
+					subject should be ""
 				}
 			}
 					
@@ -96,7 +94,7 @@ describe "ImplicitSubject"{
 			
 			describe java.util.ArrayList "Nested ExampleGroup with different target type"{
 				it "can override the subject"{
-					subject.empty.should.be(true)
+					assert subject.empty
 				}
 			}
 		}
@@ -115,7 +113,7 @@ describe "ImplicitSubject"{
 					Integer subject = 0
 					
 					it "can be manually assigned from within sub specification"{
-						subject.should.be(0)
+						subject should be 0
 					} 
 				}
 				

@@ -29,12 +29,12 @@ describe "Annotations" {
 			
 			it "should support class annotations for describe"{
 					val annotation = typeof(AnnotationsSpec).getAnnotation(typeof(Singleton))
-					annotation.should.not.be(nullValue)
+					annotation should not be null
 				} 
 						
 			}
 		'
-		spec.execute.should.be(successful)
+		spec.execute.^should.^be(successful)
 	} 
 	
 	it "should support method annotations for 'examples'"{
@@ -49,12 +49,12 @@ describe "Annotations" {
 				@Inject			
 				it "example"{
 					val annotation = typeof(AnnotationsSpec).getMethod("example").getAnnotation(typeof(Inject))
-					annotation.should.not.be(nullValue)
+					annotation should not be null
 				} 
 						
 			}
 		'
-		spec.execute.should.be(successful)
+		spec.execute.^should.^be(successful)
 	}
 	
 	it "should support annotations for 'fields'"{
@@ -71,12 +71,12 @@ describe "Annotations" {
 					
 				it "example"{
 					val annotation = typeof(AnnotationsSpec).getDeclaredField("myField").getAnnotation(typeof(Inject))
-					annotation.should.not.be(nullValue)
+					annotation should not be null
 				} 
 						
 			}
 		'
-		spec.execute.should.be(successful)
+		spec.execute.^should.^be(successful)
 	}
 
 }

@@ -37,42 +37,64 @@ describe ExampleGroup {
 		val spec = '
 			package bootstrap
 									
+			package test
+
 			describe "ExampleGroup" {
 			
 				int i = 0
 			
-				"should be able to declare void helper methods"{
+				it "should be able to declare void helper methods"{
 					inc()
-					i.should.be(1)
+					i => 1
 				}
 				
 				def void inc(){
 					i = i + 1 
-				} 
+				}  
 				
-				"should be able to declare helper methods with parameter and return type"{
-					inc2(i).should.be(1) 
+				it "should be able to declare helper methods with parameter and return type"{
+					inc2(i) => 1 
+				}
+				
+				it "should be able to use helper methods as extensions"{
+					i.inc2 => 1 
 				}
 				  
 				def int inc2(int value){
 					value + 1 
 				}
 				
-				"should be able to declare helper methods with inferred return type"{
+				it "should be able to declare helper methods with inferred return type"{
+					// will not compile otherwise
 				}
 				
 				def int inc3(){
 					5
 				}
 				
-				"should automatically rethrow all exceptions"{
+				- "should automatically rethrow all exceptions"{
 					// will not compile otherwise
 				}
 				  
 				def inc4(){
 					throw new java.io.IOException()
 				}
-						   
+			
+				describe "Nested Examples"{
+					
+					it "should support extensions methods from parent example group"{
+						i.inc2 => 1 
+					}
+					
+					it "should support extension methods from nested example group"{
+						i.inc5 => 1 
+					}
+					
+					def inc5(int value){
+						value + 1 
+					}
+				}
+			   
 			} 
 		'
 		assertThat(execute(spec), successful)

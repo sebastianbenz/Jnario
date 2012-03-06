@@ -1441,7 +1441,7 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     ((expressions+=XExpressionInsideBlock?) | (expressions+=XExpressionInsideBlock*))
+	 *     (expressions+=XExpressionInsideBlock | (expressions+=XExpressionInsideBlock*))
 	 */
 	protected void sequence_ExampleContent(EObject context, XBlockExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1625,7 +1625,10 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         annotationInfo=Member_Example_2_0_0 
-	 *         ((preamble=ID | preamble='-') ((exception=[JvmDeclaredType|QualifiedName] name=STRING?) | name=STRING) body=ExampleContent?)
+	 *         (
+	 *             (preamble=ID | preamble='-') 
+	 *             ((((exception=[JvmDeclaredType|QualifiedName] name=STRING?) | name=STRING) body=ExampleContent?) | body=ExampleContent)
+	 *         )
 	 *     )
 	 */
 	protected void sequence_Member(EObject context, Example semanticObject) {
@@ -1817,7 +1820,7 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (expressions+=XExpressionInsideBlock?)
+	 *     expressions+=XExpressionInsideBlock
 	 */
 	protected void sequence_SingleLineBlock(EObject context, XBlockExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

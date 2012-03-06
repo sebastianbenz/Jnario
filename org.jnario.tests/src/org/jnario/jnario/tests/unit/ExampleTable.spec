@@ -32,7 +32,7 @@ describe ExampleTable{
 			}
 		''')
 		
-		query.first(typeof(ExampleTable)).isValid().should.be(true)
+		query.first(typeof(ExampleTable)).isValid().^should.^be(true)
 	}
 	
 	it "is invalid if one row has a different number of columns"{
@@ -47,6 +47,6 @@ describe ExampleTable{
 			}
 		''')
 		
-		query.first(typeof(ExampleTable)).isValid().should.be(false)
+		query.first(typeof(ExampleTable)).isValid().^should.^be(false)
 	}
 }

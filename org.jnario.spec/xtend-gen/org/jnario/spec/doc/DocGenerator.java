@@ -468,7 +468,8 @@ public class DocGenerator implements IGenerator {
   protected String _toXtendCode(final XExpression expr, final List<Filter> filters) {
     String _serialize = this.serialize(expr);
     String _normalize = this._whiteSpaceNormalizer.normalize(_serialize);
-    String _trim = _normalize.trim();
+    String _html = this.toHtml(_normalize);
+    String _trim = _html.trim();
     return _trim;
   }
   
@@ -484,11 +485,15 @@ public class DocGenerator implements IGenerator {
     int _minus = IntegerExtensions.operator_minus(_length, 2);
     String _substring = code.substring(1, _minus);
     code = _substring;
-    String _replaceAll = code.replaceAll("<", "&lt;");
-    String _replaceAll_1 = _replaceAll.replaceAll(">", "&gt;");
-    code = _replaceAll_1;
     String _normalize = this._whiteSpaceNormalizer.normalize(code);
-    return _normalize;
+    String _html = this.toHtml(_normalize);
+    return _html;
+  }
+  
+  public String toHtml(final String input) {
+    String _replaceAll = input.replaceAll("<", "&lt;");
+    String _replaceAll_1 = _replaceAll.replaceAll(">", "&gt;");
+    return _replaceAll_1;
   }
   
   public String serialize(final EObject obj) {

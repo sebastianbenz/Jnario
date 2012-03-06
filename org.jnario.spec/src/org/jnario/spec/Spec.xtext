@@ -1,5 +1,6 @@
 grammar org.jnario.spec.Spec with org.eclipse.xtend.core.Xtend
 
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 import "http://www.org/jnario/spec/Spec" 
 import "http://www.eclipse.org/xtend" as xtend
 import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
@@ -38,12 +39,12 @@ Member returns xtend::XtendMember:
 	(
 		{Example.annotationInfo = current}
 		(
-			(=>preamble=ID | =>preamble='-') 
-				(	
+			(preamble=ID | =>preamble='-') 
+				(((	
 					(=>'throws' exception=[types::JvmDeclaredType|QualifiedName] name=STRING?) |
 			 		 name=STRING
 			 	) 
-			 	body=ExampleContent?
+			 	body=ExampleContent?) | body=ExampleContent)
 		)	
 	|	{ExampleGroup.annotationInfo = current}
 			(=>preamble=('describe') targetType=JvmTypeReference? =>name=STRING? '{'
@@ -68,7 +69,7 @@ Member returns xtend::XtendMember:
 			visibility=Visibility?   
 		 	(extension?='extension' type=JvmTypeReference name=ValidID?
 			| static?='static'? type=JvmTypeReference name=ValidID)
-			('=' initialValue=XExpression)?
+			('=' initialValue=XExpression ';'?)?
 		
 	|	{xtend::XtendFunction.annotationInfo = current}
 			('def' | override?='override') visibility=Visibility? static?='static'? (dispatch?='dispatch'?) 
@@ -122,6 +123,11 @@ Assertion returns xbase::XExpression:
 	{Assertion}
 	'assert' expression=XExpression;
 
+Should
+
+ShouldBe:
+	
+;
 
 Matcher:
 	'#' closure=MatcherClosure
@@ -142,12 +148,40 @@ ExampleRow:
 	'|' {ExampleRow} (cells+=XExpression '|')*
 ;
 
-//terminal EXAMPLE:
-//	'\n' WS* 'it' WS !('\n'|'{')*
-//;
-
-terminal STRING	: 
-			'"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |
-			"'" ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|"'") )* "'"
-		; 
+//terminal RICH_TEXT : "'''" IN_RICH_STRING* ("'''"| ("'" "'"?)? EOF);
+//terminal RICH_TEXT_START : "'''" IN_RICH_STRING* ("'" "'"?)? 'л';
+//terminal RICH_TEXT_END : '╗' IN_RICH_STRING* ("'''"| ("'" "'"?)? EOF) ;
+//terminal RICH_TEXT_INBETWEEN : '╗' IN_RICH_STRING* ("'" "'"?)? 'л';
+//terminal COMMENT_RICH_TEXT_INBETWEEN: "лл" !('\n'|'\r')* ('\r'? '\n' IN_RICH_STRING* ("'" "'"?)? 'л')?; 
+//terminal COMMENT_RICH_TEXT_END: "лл" !('\n'|'\r')* (('\r'? '\n' IN_RICH_STRING* ("'''"| ("'" "'"?)? EOF)) | EOF); 
+//
+//terminal fragment IN_RICH_STRING : 
+//	  "''" !('л'|"'") 
+//	| "'" !('л'|"'")
+//	| !('л'|"'");
+//	
+//	
+//terminal HEX:
+//	('0x'|'0X') ('0'..'9'|'a'..'f'|'A'..'F'|'_')+ 
+//	('#' (('b'|'B')('i'|'I') | ('l'|'L')))?;
+//	
+//terminal INT returns ecore::EInt:
+//	'0'..'9' ('0'..'9'|'_')*; 
+//
+//terminal DECIMAL:
+//	INT 
+//	(('e'|'E') ('+'|'-')? INT)? 
+//	(('b'|'B')('i'|'I'|'d'|'D') | ('l'|'L'|'d'|'D'|'f'|'F'))?;
+//
+//terminal ID  		: '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
+//terminal STRING	: 
+//			'"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |
+//			"'" ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|"'") )* "'"
+//		; 
+//terminal ML_COMMENT	: '/*' -> '*/';
+//terminal SL_COMMENT 	: '//' !('\n'|'\r')* ('\r'? '\n')?;
+//
+//terminal WS			: (' '|'\t'|'\r'|'\n')+;
+//
+//terminal ANY_OTHER: .;
 

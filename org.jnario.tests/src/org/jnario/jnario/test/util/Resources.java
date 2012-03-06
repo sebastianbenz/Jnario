@@ -142,4 +142,8 @@ public class Resources {
 			nodeAdapter.getSemanticElement().eAdapters().remove(nodeAdapter);
 		}
 	}
+
+	public static void checkForParseErrors(Resource resource) {
+		Assert.assertTrue(Joiner.on("\n").join(resource.getErrors()), resource.getErrors().isEmpty());
+	}
 }

@@ -10,7 +10,7 @@ var projectName = "org.jnario.spec"
 var runtimeProject = "../${projectName}"
 var backtrack = false
 var memoize = false
-
+ 
 Workflow {
 	bean = StandaloneSetup {
         scanClassPath = true

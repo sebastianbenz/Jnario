@@ -28,13 +28,13 @@ describe "After" {
 				static int afterExecutionCount = 0
 				
 				it "should be executed after each test (1)"{
-					afterExecutionCount.should.be(0)
+					afterExecutionCount.^should.^be(0)
 				}	
 				it "should be executed after each test (2)"{
-					afterExecutionCount.should.be(1)
+					afterExecutionCount.^should.^be(1)
 				}
 				it "should be executed after each test (3)"{
-					afterExecutionCount.should.be(2)
+					afterExecutionCount.^should.^be(2)
 				}	
 				
 				after{
@@ -42,7 +42,7 @@ describe "After" {
 				}
 			}
 		'
-		spec.execute.should.be(successful)
+		spec.execute.^should.^be(successful)
 	}
 
 }

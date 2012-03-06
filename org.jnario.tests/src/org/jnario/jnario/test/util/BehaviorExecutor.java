@@ -159,6 +159,7 @@ public abstract class BehaviorExecutor {
 		javaCompiler.addClassPathOfClass(RegisteredValidatorTester.class);
 		javaCompiler.addClassPathOfClass(QualifiedName.class);
 		javaCompiler.addClassPathOfClass(Assertion.class);
+		javaCompiler.addClassPathOfClass(org.hamcrest.Matchers.class);
 	}
 
 	public Result run(EObject object) {

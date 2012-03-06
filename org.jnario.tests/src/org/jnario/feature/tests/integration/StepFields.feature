@@ -31,7 +31,7 @@ Feature: Step fields
 						When you add them
 							c = a
 						Then <c> should be 3
-							c.should.be(3)
+							c.^should.^be(3)
 			"
 		When this feature is executed
 		Then it should be successful
@@ -45,7 +45,7 @@ Feature: Step fields
 						When you add <x> and <y> them values
 							result = x + y
 						Then the <result> should be <z>
-							(result).should.be(z)
+							(result).^should.^be(z)
 					Examples:
 						|x|y|z|
 						|3|4|7|

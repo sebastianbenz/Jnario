@@ -5,7 +5,8 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.jnario.spec.tests.integration2
+package org.jnario.spec.tests.integration
+
 import static extension org.jnario.jnario.test.util.Helpers.*
 import static extension org.jnario.jnario.test.util.SpecExecutor.*
 import org.junit.Ignore
@@ -13,14 +14,15 @@ import org.junit.Ignore
 /*
  * Example tables are a great way to structure input and expected output data.
  */
-describe "Example Tables"{
+describe "Specs - Example Tables"{
    
   /*
    * Examples are stored within a table. Assertions for the table's values are
-   * best implemented by iterating over each table row using it's each method. 
-   * Inside the closure that is passed to `each`, each value in a row can be 
+   * best implemented by iterating over each table row using `forEach`. 
+   * Inside the procedure that is passed to `forEach`, each value in a row can be 
    * directly accessed by it's column's name making use of 
-   * [Xtend's implicit 'it'](http://www.eclipse.org/xtend/documentation/index.html#closures).
+   * Xtend's [implicit 'it'](http://www.eclipse.org/xtend/documentation/index.html#closures).
+   * @filter('''|.executesSuccessfully) 
    */ 
   - "accessing values"{    
     '''
@@ -36,7 +38,7 @@ describe "Example Tables"{
       
       it "can be accessed via the table name"{
         myExamples.forEach[   
-          input.toUpperCase.should.be(result) 
+          input.toUpperCase should be result
         ] 
       }
     }
@@ -45,6 +47,7 @@ describe "Example Tables"{
    
   /*
    * Naming an example table is optional. If no name is provided, the default name 'examples' will be used. 
+   * @filter('''|.executesSuccessfully) 
    */
   - "Naming examples"{   
     '''
@@ -58,7 +61,7 @@ describe "Example Tables"{
       }
 
       it "name is optional"{    
-        assert examples != null
+        examples should not be null
       }     
     } 
     '''.executesSuccessfully 
@@ -66,6 +69,7 @@ describe "Example Tables"{
   
   /* 
    * Values in an example table can be arbitrary non-void expressions, for examples closures:
+   * @filter('''|.executesSuccessfully) 
    */
   - "expressions in tables"{
     '''
@@ -74,14 +78,14 @@ describe "Example Tables"{
     describe "Example Tables"{
       
       def myExampleWithClosures{
-        | input |       operation        | result |
+        | input |       operation            | result |
         |   "a" | [String s | s.toUpperCase] |   "A"  |
         |   "B" | [String s | s.toLowerCase] |   "b"  | 
       }  
 
       it "supports closures as values"{   
         myExampleWithClosures.forEach[
-          operation.apply(input).should.be(result)
+          operation.apply(input) should be result
         ]
       }       
     }
@@ -90,6 +94,7 @@ describe "Example Tables"{
   
   /* 
    * It is also possible to call methods or reference fields from within a table.
+   * @filter('''|.executesSuccessfully) 
    */
   - "referencing members"{
     '''
@@ -111,7 +116,7 @@ describe "Example Tables"{
        
       it "supports closures as values"{   
         myExampleWithMemberCalls.forEach[
-          input.should.be(result)
+          input should be result
         ] 
       }   
     }
@@ -122,6 +127,7 @@ describe "Example Tables"{
   /*
    * Jnario automatically infers the type of a column. It will use the 
    * common supertype of all expressions in a column. 
+   * @filter('''|.executesSuccessfully) 
    */
   - "Specifying column types"{
   '''
@@ -138,7 +144,7 @@ describe "Example Tables"{
 
     it "computes the common super type"{
       examplesWithType.forEach[
-        assert list.empty
+        assert list.empty // works only if the type of list has been inferred as List<String>
       ]
     }
   }
@@ -149,6 +155,7 @@ describe "Example Tables"{
   /*
    * Jnario will include example tables in the generated documentation. 
    * (The errors in the table are intentional, we need it in the next example). 
+   * 
    */
 	def example{
 		| value1 | value2 | sum |
@@ -156,29 +163,36 @@ describe "Example Tables"{
 		|   4    |    5   |  7  |
 		|   7    |    8   | 14  |
 	}
-
+	
   /*
-   * The ExampleTable#each will execute all assertions on a table.
+   * `ExampleTable#forEach` executes the passed in procedure for all table rows. 
+   * It will generate an error message for all procedures that have failed with the reason why they failed.
    */
    @Ignore
    - "Error message"{
-		errorMessage[example.forEach[assert value1 + value2 == sum]].is('''
+		errorMessage[
+		  example.forEach[
+		  	value1 + value2 => sum
+		  ]
+		].is('''
 			example failed
-			        | 1 | 2 | 3| ✓
-			        | 4 | 5 | 7| ✗ (1)
-			        | 7 | 8 | 14| ✗ (2)
 			
-			(1) Expected value1 + value2 == sum but:
-			     value1 + value2 is 9
-			     value1 is 4
-			     value2 is 5
-			     sum is 7
+			        | value1     | value2     | sum     |
+			        | 1          | 2          | 3       | ?
+			        | 4          | 5          | 7       | ?     (1)
+			        | 7          | 8          | 14      | ?     (2)
 			
-			(2) Expected value1 + value2 == sum but:
-			     value1 + value2 is 15
-			     value1 is 7
-			     value2 is 8
-			     sum is 14''')
+			(1) Expected value1 + value2 => sum but:
+			         value1 + value2 is 9
+			         value1 is 4
+			         value2 is 5
+			         sum is 7
+			    
+			(2) Expected value1 + value2 => sum but:
+			         value1 + value2 is 15
+			         value1 is 7
+			         value2 is 8
+			         sum is 14''')
 	}    
-  
+
 }               

@@ -1,8 +1,11 @@
-package test
+package org.jnario.spec.tests.unit.parsing
 
 describe "Specs Syntax"{
 	
 	describe "Example Syntax - Bullet Point Style"{
+		/* semicolon is necessary, because the initialization 
+		   expression collides with the begin of the next example */
+		int exampleField = 0;
 		
 		- "no expression"
 		- "block expression"{
@@ -19,12 +22,14 @@ describe "Specs Syntax"{
 		- throws Exception [throw new Exception]
 		// block expression that throws an exception
 		- throws Exception {
-			throw new Exception
+			throw new RuntimeException
 		}
 			 
 	}
 	
 	describe "Example Syntax - 'it' Style"{
+		
+		int exampleField = 0
 		
 		it "can have no expression"
 		it "can have a block expression"{
@@ -40,8 +45,9 @@ describe "Specs Syntax"{
 		it throws Exception [throw new Exception]
 		// block expression that throws an exception
 		it throws Exception {
-			throw new Exception
+			throw new RuntimeException
 		}
 			 
 	}
+	
 } 

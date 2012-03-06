@@ -37,7 +37,7 @@ class DocGenerator implements IGenerator {
 	@Inject extension WhiteSpaceNormalizer
 	@Inject extension PegDownProcessor
 	@Inject extension FilterExtractor
-	
+
 	List<String> cssFiles = newArrayList("bootstrap.min.css", "bootstrap-responsive.min.css", "custom.css", "prettify.css")
 	List<String> jsFiles = newArrayList("prettify.js", "lang-jnario.js")
 
@@ -202,7 +202,7 @@ class DocGenerator implements IGenerator {
 	'''
 
 	def dispatch toXtendCode(XExpression expr, List<Filter> filters){
-		return expr.serialize.normalize.trim
+		return expr.serialize.normalize.toHtml.trim
 	}
 	
 	def dispatch toXtendCode(XBlockExpression expr, List<Filter> filters){
@@ -211,8 +211,11 @@ class DocGenerator implements IGenerator {
 			code = filter.apply(code)
 		}
 		code = code.substring(1, code.length-2) 
-		code = code.replaceAll("<", "&lt;").replaceAll(">", "&gt;")
-		return code.normalize
+		return code.normalize.toHtml
+	}
+	
+	def toHtml(String input){
+		input.replaceAll("<", "&lt;").replaceAll(">", "&gt;")
 	}
 	
 	def serialize(EObject obj){

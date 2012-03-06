@@ -8,6 +8,7 @@
 package org.jnario.jnario.test.util;
 
 import static junit.framework.Assert.assertFalse;
+import static org.jnario.jnario.test.util.Resources.checkForParseErrors;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -48,6 +49,7 @@ public class FeatureExecutor extends BehaviorExecutor{
 			Resource resource = resourceSet.createResource(URI.createURI("temp.feature"));
 			try {
 				resource.load(new StringInputStream(content), Collections.emptyMap());
+				checkForParseErrors(resource);
 			} catch (IOException e) {
 				e.printStackTrace();
 				org.junit.Assert.fail(e.getMessage());

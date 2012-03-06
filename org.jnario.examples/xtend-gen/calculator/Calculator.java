@@ -13,4 +13,13 @@ public class Calculator {
     int _divide = IntegerExtensions.operator_divide(a, b);
     return _divide;
   }
+  
+  public int substract(final int a, final int b) {
+    int _minus = IntegerExtensions.operator_minus(a, b);
+    return _minus;
+  }
+  
+  public String toString() {
+    return "Calculator";
+  }
 }

@@ -33,15 +33,15 @@ describe "Before" {
 				}
 
 				it "should be executed before each test (1)"{
-					beforeExecutionCount.should.be(1)
+					beforeExecutionCount.^should.^be(1)
 				}	
 
 				it "should be executed before each test (2)"{
-					beforeExecutionCount.should.be(2)
+					beforeExecutionCount.^should.^be(2)
 				}	
 			}
 		'
-		spec.execute.should.be(successful)
+		spec.execute.^should.^be(successful)
 	}
 
 }

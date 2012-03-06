@@ -47,7 +47,7 @@ describe ExampleColumn{
 			val columns = query.first(typeof(ExampleTable)).columns
 			val column = columns.get(columnIndex)
 			val cell = column.cells.get(cellIndex)
-			cell.serialize.trim.should.be(value)
+			cell.serialize.trim.^should.^be(value)
 		]
 		
 	}

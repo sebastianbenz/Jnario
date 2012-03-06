@@ -29,7 +29,7 @@ describe "Exception" {
 				   
 				}
 				'
-		spec.execute.should.be(successful)
+		spec.execute.^should.^be(successful)
 	} 
 
 }

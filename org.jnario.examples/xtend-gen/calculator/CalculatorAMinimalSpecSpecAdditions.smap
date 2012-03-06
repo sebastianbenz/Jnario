@@ -1,0 +1,17 @@
+SMAP
+CalculatorAMinimalSpecSpecAdditions.java
+Spec
+*S Spec
+*F
++ 0 MinimalCalculator.spec
+specs/calculator/MinimalCalculator.spec
+*L
+1:1,6
+5:7,7
+6:14,2
+5:16,4
+6:20,2
+5:22,4
+6:26,2
+5:28,7
+*E

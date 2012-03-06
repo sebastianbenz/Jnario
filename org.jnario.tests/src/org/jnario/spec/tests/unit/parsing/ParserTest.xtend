@@ -1,38 +1,32 @@
 package org.jnario.spec.tests.unit.parsing
 
-import com.google.inject.Inject
-import org.jnario.jnario.test.util.ModelStore
-import org.junit.Test
-import static org.jnario.jnario.test.util.ClassPathUriProviderBuilder.*
-import org.junit.runner.RunWith
-import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.junit4.InjectWith
-import org.jnario.spec.SpecInjectorProvider
-import org.eclipse.xtext.validation.IResourceValidator
-import org.eclipse.xtext.validation.CheckMode
-import org.eclipse.xtext.util.CancelIndicator
-import org.eclipse.xtext.validation.Issue
-import java.util.List
-import org.eclipse.xtext.diagnostics.Severity
-import static org.junit.Assert.*
-import org.eclipse.emf.common.util.URI
 import com.google.common.collect.Lists
+import com.google.inject.Inject
+import org.eclipse.emf.common.util.URI
+import org.eclipse.xtext.junit4.InjectWith
+import org.eclipse.xtext.junit4.XtextRunner
+import org.eclipse.xtext.validation.Issue
+import org.jnario.jnario.test.util.ModelStore
+import org.jnario.spec.SpecInjectorProvider
+import org.junit.Test
+import org.junit.runner.RunWith
+
+import static org.jnario.jnario.test.util.ClassPathUriProviderBuilder.*
+
+import static extension org.jnario.jnario.test.util.Resources.*
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(SpecInjectorProvider))
 class ParserTest {
 	
-	
 	@Inject extension ModelStore
-	@Inject extension IResourceValidator
 	
 	@Test
 	def void shouldParseAllFilesWithoutParseError(){
 		load(startingFrom(typeof(ParserTest)).select[onlySpecFiles])
 		val specs = Lists::newArrayList(resources.filter[URI.onlySpecFiles])
 		specs.forEach[ resource |
-			val issues = validate(resource, CheckMode::ALL, CancelIndicator::NullImpl)
-			assertTrue(errorMessage(issues), issues.empty)			
+			resource.checkForParseErrors
 		]
 	}
 	
@@ -40,7 +34,7 @@ class ParserTest {
 		return uri.fileExtension != null && uri.fileExtension.equals("spec")
 	}
 	
-	def errorMessage(List<Issue> issues){
+	def errorMessage(Iterable<Issue> issues){
 		val result = new StringBuilder()
 		for (Issue issue : issues) {
 			val issueBuilder = createIssueMessage(issue);

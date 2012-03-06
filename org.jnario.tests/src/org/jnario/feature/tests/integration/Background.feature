@@ -27,7 +27,7 @@ Feature: Backgrounds
 			"
 		When I run the feature
 		Then it should be successful
-			jnarioFile.execute.should.be(successful)
+			jnarioFile.execute.^should.^be(successful)
 			
 
 	Scenario: Given methods from backgrounds are generated in every scenario class
@@ -44,7 +44,7 @@ Feature: Backgrounds
 			"
 		When I generate the classes
 		Then every class should have a method that throws a RuntimeExeception
-			jnarioFile.execute.failureCount.should.be(2)
+			jnarioFile.execute.failureCount.^should.^be(2)
 			
 			
 			

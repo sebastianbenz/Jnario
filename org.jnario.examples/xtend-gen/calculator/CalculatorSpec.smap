@@ -1,0 +1,10 @@
+SMAP
+CalculatorSpec.java
+Spec
+*S Spec
+*F
++ 0 Demo.spec
+specs/calculator/Demo.spec
+*L
+10:1,15
+*E

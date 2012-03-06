@@ -1,0 +1,11 @@
+SMAP
+CalculatorSubstractIntIntSpec.java
+Spec
+*S Spec
+*F
++ 0 Demo.spec
+specs/calculator/Demo.spec
+*L
+27:1,19
+28:20,9
+*E

@@ -23,11 +23,11 @@ describe "AfterAll" {
 				static int afterExecutionCount = 0
 				
 				it "should be executed after all tests (1)"{
-					afterExecutionCount.should.be(0)
+					afterExecutionCount.^should.^be(0)
 				}	
 				
 				it "should be executed after all tests (2)"{
-					afterExecutionCount.should.be(0)
+					afterExecutionCount.^should.^be(0)
 				}	
 				
 				after all{
@@ -35,7 +35,7 @@ describe "AfterAll" {
 				}
 			}
 		'
-		spec.execute.should.be(successful)
+		spec.execute.^should.^be(successful)
 	}
 
 }

@@ -28,12 +28,12 @@ describe "Matcher"{
 	}
 	
 	it "works with should"{
-		"Hello".should.be(#[it.startsWith("H")])
+		"Hello".^should.^be(#[it.startsWith("H")])
 	}  
 	
 	it "uses the closure's code as description"{
 		errorMessage[
-			"a".should.be(#[it.startsWith("b")])
+			"a".^should.^be(#[it.startsWith("b")])
 		].is('''
 		Expected: is [it.startsWith("b")]
 		     got: "a"''')

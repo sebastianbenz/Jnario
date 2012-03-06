@@ -43,7 +43,7 @@
 </location>
 <location includeAllPlatforms="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.sdk.ide" version="0.0.0"/>
-<repository location="http://download.eclipse.org/eclipse/updates/3.7"/>
+<repository location="http://download.eclipse.org/eclipse/updates/3.8"/>
 </location>
 </locations>
 <launcherArgs>

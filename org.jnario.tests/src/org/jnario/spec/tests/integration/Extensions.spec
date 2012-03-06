@@ -34,7 +34,7 @@ describe "Extensions"{
 			}
 		''')
 		
-		executedMethods.should.be(newArrayList(
+		executedMethods.^should.^be(newArrayList(
 			"ExtensionExample#beforeClass", 
 			"ExtensionExample#before",  
 			"ExtensionSpec#test1",  

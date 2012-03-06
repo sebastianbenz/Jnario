@@ -15,7 +15,7 @@ describe WhiteSpaceNormalizer{
 		| input 					| result 			|
 		| null						| ""				|
 		| ""						| ""				|
-		| " "						| " "				|
+		| " "						| ""				|
 		| "\thello"					| "hello" 			|
 		| "\thello\n\tworld" 		| "hello\nworld"	|
 		| "\t\thello\n\t\tworld" 	| "hello\nworld"	|
@@ -24,7 +24,7 @@ describe WhiteSpaceNormalizer{
 	
 	it "should remove trailing whitespace"{
 		examples.forEach[
-			subject.normalize(input).should.be(result)
+			subject.normalize(input).^should.^be(result)
 		]
 	}
 	

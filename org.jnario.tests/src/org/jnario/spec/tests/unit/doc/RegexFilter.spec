@@ -26,7 +26,7 @@ describe RegexFilter {
 	it "removes all matched elements"{
 		filteringExamples.forEach[
 			val filter = RegexFilter::create(regex)
-			filter.apply(string).should.be(result)
+			filter.apply(string).^should.^be(result)
 		]
 	}
 
