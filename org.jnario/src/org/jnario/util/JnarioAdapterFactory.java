@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.xtext.xbase.XExpression;
 
+import org.eclipse.xtext.xbase.XFeatureCall;
 import org.eclipse.xtend.core.xtend.XtendAnnotationTarget;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendMember;
@@ -104,6 +105,18 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 				return createShouldAdapter();
 			}
 			@Override
+			public Adapter caseCollectionLiteral(CollectionLiteral object) {
+				return createCollectionLiteralAdapter();
+			}
+			@Override
+			public Adapter caseListLiteral(ListLiteral object) {
+				return createListLiteralAdapter();
+			}
+			@Override
+			public Adapter caseSetLiteral(SetLiteral object) {
+				return createSetLiteralAdapter();
+			}
+			@Override
 			public Adapter caseXtendAnnotationTarget(XtendAnnotationTarget object) {
 				return createXtendAnnotationTargetAdapter();
 			}
@@ -126,6 +139,10 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseXBinaryOperation(XBinaryOperation object) {
 				return createXBinaryOperationAdapter();
+			}
+			@Override
+			public Adapter caseXFeatureCall(XFeatureCall object) {
+				return createXFeatureCallAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -232,6 +249,48 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.jnario.CollectionLiteral <em>Collection Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.jnario.CollectionLiteral
+	 * @generated
+	 */
+	public Adapter createCollectionLiteralAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.jnario.ListLiteral <em>List Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.jnario.ListLiteral
+	 * @generated
+	 */
+	public Adapter createListLiteralAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.jnario.SetLiteral <em>Set Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.jnario.SetLiteral
+	 * @generated
+	 */
+	public Adapter createSetLiteralAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.xtend.core.xtend.XtendAnnotationTarget <em>Annotation Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -312,6 +371,20 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createXBinaryOperationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.xtext.xbase.XFeatureCall <em>XFeature Call</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.xtext.xbase.XFeatureCall
+	 * @generated
+	 */
+	public Adapter createXFeatureCallAdapter() {
 		return null;
 	}
 

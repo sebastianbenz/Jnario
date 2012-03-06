@@ -42,6 +42,12 @@ import org.jnario.spec.spec.TestFunction
 
 import static extension org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
 import static extension org.eclipse.xtext.util.Strings.*
+import org.jnario.CollectionLiteral
+import org.jnario.SetLiteral
+import org.jnario.ListLiteral
+import org.eclipse.xtext.xbase.lib.CollectionExtensions
+import org.eclipse.xtext.common.types.JvmOperation
+import org.eclipse.xtext.xbase.lib.CollectionLiterals
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -72,9 +78,28 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 		if(specFile.xtendClass == null){
 			return
 		}
+		//addListLiterals(e)
 		transform(specFile as SpecFile, specFile.xtendClass as ExampleGroup, null, preIndexingPhase)
 	}
 	
+	def addListLiterals(EObject context){
+		val literals = context.eAllContents.filter(typeof(CollectionLiteral))
+		literals.forEach[setFeature]
+	}
+	
+	def dispatch setFeature(SetLiteral literal){
+		literal.setFeature("newHashSet")
+	} 
+	
+	def dispatch setFeature(ListLiteral literal){
+		literal.setFeature("newArrayList")
+	}
+	
+	def setFeature(CollectionLiteral literal, String name){
+		val collections = getTypeForName(typeof(CollectionLiterals), literal).type as JvmGenericType
+		val operations = collections.members.filter(typeof(JvmOperation))
+		literal.feature = operations.findFirst[simpleName == name]
+	}
 	
 	def transform(SpecFile spec, ExampleGroup exampleGroup, JvmGenericType superClass, boolean isPrelinkingPhase) {
 		exampleGroup.toClass(exampleGroup.toJavaClassName) [
@@ -273,7 +298,7 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 		appendable.decreaseIndentation()
 		appendable.append("\n);")
 	}
-	
+
 	def columnNames(ExampleTable exampleTable){
 		exampleTable.columns.map[it?.name]
 	}

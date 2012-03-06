@@ -451,6 +451,307 @@ public interface JnarioPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.jnario.impl.CollectionLiteralImpl <em>Collection Literal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.jnario.impl.CollectionLiteralImpl
+	 * @see org.jnario.impl.JnarioPackageImpl#getCollectionLiteral()
+	 * @generated
+	 */
+	int COLLECTION_LITERAL = 6;
+
+	/**
+	 * The feature id for the '<em><b>Feature</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_LITERAL__FEATURE = XbasePackage.XFEATURE_CALL__FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Type Arguments</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_LITERAL__TYPE_ARGUMENTS = XbasePackage.XFEATURE_CALL__TYPE_ARGUMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Implicit Receiver</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_LITERAL__IMPLICIT_RECEIVER = XbasePackage.XFEATURE_CALL__IMPLICIT_RECEIVER;
+
+	/**
+	 * The feature id for the '<em><b>Invalid Feature Issue Code</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_LITERAL__INVALID_FEATURE_ISSUE_CODE = XbasePackage.XFEATURE_CALL__INVALID_FEATURE_ISSUE_CODE;
+
+	/**
+	 * The feature id for the '<em><b>Valid Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_LITERAL__VALID_FEATURE = XbasePackage.XFEATURE_CALL__VALID_FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Implicit First Argument</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_LITERAL__IMPLICIT_FIRST_ARGUMENT = XbasePackage.XFEATURE_CALL__IMPLICIT_FIRST_ARGUMENT;
+
+	/**
+	 * The feature id for the '<em><b>Feature Call Arguments</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_LITERAL__FEATURE_CALL_ARGUMENTS = XbasePackage.XFEATURE_CALL__FEATURE_CALL_ARGUMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Explicit Operation Call</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_LITERAL__EXPLICIT_OPERATION_CALL = XbasePackage.XFEATURE_CALL__EXPLICIT_OPERATION_CALL;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_LITERAL__DECLARING_TYPE = XbasePackage.XFEATURE_CALL__DECLARING_TYPE;
+
+	/**
+	 * The number of structural features of the '<em>Collection Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_LITERAL_FEATURE_COUNT = XbasePackage.XFEATURE_CALL_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.jnario.impl.ListLiteralImpl <em>List Literal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.jnario.impl.ListLiteralImpl
+	 * @see org.jnario.impl.JnarioPackageImpl#getListLiteral()
+	 * @generated
+	 */
+	int LIST_LITERAL = 7;
+
+	/**
+	 * The feature id for the '<em><b>Feature</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_LITERAL__FEATURE = COLLECTION_LITERAL__FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Type Arguments</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_LITERAL__TYPE_ARGUMENTS = COLLECTION_LITERAL__TYPE_ARGUMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Implicit Receiver</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_LITERAL__IMPLICIT_RECEIVER = COLLECTION_LITERAL__IMPLICIT_RECEIVER;
+
+	/**
+	 * The feature id for the '<em><b>Invalid Feature Issue Code</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_LITERAL__INVALID_FEATURE_ISSUE_CODE = COLLECTION_LITERAL__INVALID_FEATURE_ISSUE_CODE;
+
+	/**
+	 * The feature id for the '<em><b>Valid Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_LITERAL__VALID_FEATURE = COLLECTION_LITERAL__VALID_FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Implicit First Argument</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_LITERAL__IMPLICIT_FIRST_ARGUMENT = COLLECTION_LITERAL__IMPLICIT_FIRST_ARGUMENT;
+
+	/**
+	 * The feature id for the '<em><b>Feature Call Arguments</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_LITERAL__FEATURE_CALL_ARGUMENTS = COLLECTION_LITERAL__FEATURE_CALL_ARGUMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Explicit Operation Call</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_LITERAL__EXPLICIT_OPERATION_CALL = COLLECTION_LITERAL__EXPLICIT_OPERATION_CALL;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_LITERAL__DECLARING_TYPE = COLLECTION_LITERAL__DECLARING_TYPE;
+
+	/**
+	 * The number of structural features of the '<em>List Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_LITERAL_FEATURE_COUNT = COLLECTION_LITERAL_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.jnario.impl.SetLiteralImpl <em>Set Literal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.jnario.impl.SetLiteralImpl
+	 * @see org.jnario.impl.JnarioPackageImpl#getSetLiteral()
+	 * @generated
+	 */
+	int SET_LITERAL = 8;
+
+	/**
+	 * The feature id for the '<em><b>Feature</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_LITERAL__FEATURE = COLLECTION_LITERAL__FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Type Arguments</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_LITERAL__TYPE_ARGUMENTS = COLLECTION_LITERAL__TYPE_ARGUMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Implicit Receiver</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_LITERAL__IMPLICIT_RECEIVER = COLLECTION_LITERAL__IMPLICIT_RECEIVER;
+
+	/**
+	 * The feature id for the '<em><b>Invalid Feature Issue Code</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_LITERAL__INVALID_FEATURE_ISSUE_CODE = COLLECTION_LITERAL__INVALID_FEATURE_ISSUE_CODE;
+
+	/**
+	 * The feature id for the '<em><b>Valid Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_LITERAL__VALID_FEATURE = COLLECTION_LITERAL__VALID_FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Implicit First Argument</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_LITERAL__IMPLICIT_FIRST_ARGUMENT = COLLECTION_LITERAL__IMPLICIT_FIRST_ARGUMENT;
+
+	/**
+	 * The feature id for the '<em><b>Feature Call Arguments</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_LITERAL__FEATURE_CALL_ARGUMENTS = COLLECTION_LITERAL__FEATURE_CALL_ARGUMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Explicit Operation Call</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_LITERAL__EXPLICIT_OPERATION_CALL = COLLECTION_LITERAL__EXPLICIT_OPERATION_CALL;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_LITERAL__DECLARING_TYPE = COLLECTION_LITERAL__DECLARING_TYPE;
+
+	/**
+	 * The number of structural features of the '<em>Set Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_LITERAL_FEATURE_COUNT = COLLECTION_LITERAL_FEATURE_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.jnario.ExampleTable <em>Example Table</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -643,6 +944,36 @@ public interface JnarioPackage extends EPackage {
 	EAttribute getShould_Postfix();
 
 	/**
+	 * Returns the meta object for class '{@link org.jnario.CollectionLiteral <em>Collection Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Collection Literal</em>'.
+	 * @see org.jnario.CollectionLiteral
+	 * @generated
+	 */
+	EClass getCollectionLiteral();
+
+	/**
+	 * Returns the meta object for class '{@link org.jnario.ListLiteral <em>List Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>List Literal</em>'.
+	 * @see org.jnario.ListLiteral
+	 * @generated
+	 */
+	EClass getListLiteral();
+
+	/**
+	 * Returns the meta object for class '{@link org.jnario.SetLiteral <em>Set Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Set Literal</em>'.
+	 * @see org.jnario.SetLiteral
+	 * @generated
+	 */
+	EClass getSetLiteral();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -819,6 +1150,36 @@ public interface JnarioPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SHOULD__POSTFIX = eINSTANCE.getShould_Postfix();
+
+		/**
+		 * The meta object literal for the '{@link org.jnario.impl.CollectionLiteralImpl <em>Collection Literal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.jnario.impl.CollectionLiteralImpl
+		 * @see org.jnario.impl.JnarioPackageImpl#getCollectionLiteral()
+		 * @generated
+		 */
+		EClass COLLECTION_LITERAL = eINSTANCE.getCollectionLiteral();
+
+		/**
+		 * The meta object literal for the '{@link org.jnario.impl.ListLiteralImpl <em>List Literal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.jnario.impl.ListLiteralImpl
+		 * @see org.jnario.impl.JnarioPackageImpl#getListLiteral()
+		 * @generated
+		 */
+		EClass LIST_LITERAL = eINSTANCE.getListLiteral();
+
+		/**
+		 * The meta object literal for the '{@link org.jnario.impl.SetLiteralImpl <em>Set Literal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.jnario.impl.SetLiteralImpl
+		 * @see org.jnario.impl.JnarioPackageImpl#getSetLiteral()
+		 * @generated
+		 */
+		EClass SET_LITERAL = eINSTANCE.getSetLiteral();
 
 	}
 

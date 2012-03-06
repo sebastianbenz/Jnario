@@ -3,9 +3,12 @@ package org.jnario.spec.jvmmodel;
 import com.google.common.base.Joiner;
 import com.google.inject.Inject;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend.core.xtend.XtendClass;
@@ -21,6 +24,7 @@ import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmMember;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
+import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.common.types.util.TypeReferences;
@@ -38,13 +42,17 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
+import org.jnario.CollectionLiteral;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
+import org.jnario.ListLiteral;
+import org.jnario.SetLiteral;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.jvmmodel.JnarioJvmModelInferrer;
 import org.jnario.jvmmodel.JunitAnnotationProvider;
@@ -103,6 +111,44 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
     }
     XtendClass _xtendClass_1 = specFile.getXtendClass();
     this.transform(((SpecFile) specFile), ((ExampleGroup) _xtendClass_1), null, preIndexingPhase);
+  }
+  
+  public void addListLiterals(final EObject context) {
+    TreeIterator<EObject> _eAllContents = context.eAllContents();
+    Iterator<CollectionLiteral> _filter = IteratorExtensions.<CollectionLiteral>filter(_eAllContents, CollectionLiteral.class);
+    final Iterator<CollectionLiteral> literals = _filter;
+    final Procedure1<CollectionLiteral> _function = new Procedure1<CollectionLiteral>() {
+        public void apply(final CollectionLiteral it) {
+          SpecJvmModelInferrer.this.setFeature(it);
+        }
+      };
+    IteratorExtensions.<CollectionLiteral>forEach(literals, _function);
+  }
+  
+  protected void _setFeature(final SetLiteral literal) {
+    this.setFeature(literal, "newHashSet");
+  }
+  
+  protected void _setFeature(final ListLiteral literal) {
+    this.setFeature(literal, "newArrayList");
+  }
+  
+  public void setFeature(final CollectionLiteral literal, final String name) {
+    JvmTypeReference _typeForName = this._typeReferences.getTypeForName(CollectionLiterals.class, literal);
+    JvmType _type = _typeForName.getType();
+    final JvmGenericType collections = ((JvmGenericType) _type);
+    EList<JvmMember> _members = collections.getMembers();
+    Iterable<JvmOperation> _filter = IterableExtensions.<JvmOperation>filter(_members, JvmOperation.class);
+    final Iterable<JvmOperation> operations = _filter;
+    final Function1<JvmOperation,Boolean> _function = new Function1<JvmOperation,Boolean>() {
+        public Boolean apply(final JvmOperation it) {
+          String _simpleName = it.getSimpleName();
+          boolean _equals = ObjectExtensions.operator_equals(_simpleName, name);
+          return Boolean.valueOf(_equals);
+        }
+      };
+    JvmOperation _findFirst = IterableExtensions.<JvmOperation>findFirst(operations, _function);
+    literal.setFeature(_findFirst);
   }
   
   public JvmGenericType transform(final SpecFile spec, final ExampleGroup exampleGroup, final JvmGenericType superClass, final boolean isPrelinkingPhase) {
@@ -534,5 +580,16 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
     ICompositeNode _node = NodeModelUtils.getNode(obj);
     String _text = _node==null?(String)null:_node.getText();
     return _text;
+  }
+  
+  public void setFeature(final CollectionLiteral literal) {
+    if (literal instanceof ListLiteral) {
+      _setFeature((ListLiteral)literal);
+    } else if (literal instanceof SetLiteral) {
+      _setFeature((SetLiteral)literal);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(literal).toString());
+    }
   }
 }

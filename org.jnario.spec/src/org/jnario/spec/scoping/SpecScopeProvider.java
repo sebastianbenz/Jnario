@@ -36,7 +36,9 @@ import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XFeatureCall;
 import org.eclipse.xtext.xbase.XMemberFeatureCall;
 import org.eclipse.xtext.xbase.XbaseFactory;
+import org.eclipse.xtext.xbase.XbasePackage;
 import org.eclipse.xtext.xbase.scoping.featurecalls.IJvmFeatureDescriptionProvider;
+import org.jnario.CollectionLiteral;
 import org.jnario.spec.naming.OperationNameProvider;
 import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.spec.spec.SpecPackage;
@@ -71,8 +73,15 @@ public class SpecScopeProvider extends XtendScopeProvider {
 	public IScope getScope(EObject context, EReference reference) {
 		if(reference == SpecPackage.Literals.EXAMPLE_GROUP__TARGET_OPERATION){
 			return targetOperation(context, reference);
+		}else if(reference == XbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE && (context instanceof CollectionLiteral)){
+			return collectionLiteralScope((CollectionLiteral)context);
 		}
 		return super.getScope(context, reference);
+	}
+
+	private IScope collectionLiteralScope(CollectionLiteral context) {
+		IScope scope = super.getScope(context, XbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE);
+		return scope;
 	}
 
 	private IScope targetOperation(EObject subject, EReference reference) {

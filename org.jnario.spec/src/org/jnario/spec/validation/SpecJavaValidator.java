@@ -41,7 +41,7 @@ public class SpecJavaValidator extends AbstractSpecJavaValidator {
 	public void checkExamplesHaveNames(TestFunction example){
 		String methodName = exampleNameProvider.toMethodName(example);
 		if(isNullOrEmpty(methodName)){
-			//error("Name must not be empty", SpecPackage.Literals.TEST_FUNCTION__NAME);
+			error("Name must not be empty", SpecPackage.Literals.TEST_FUNCTION__NAME);
 		}
 	}
 }

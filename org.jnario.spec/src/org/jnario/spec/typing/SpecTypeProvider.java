@@ -17,16 +17,19 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.common.types.JvmDelegateTypeReference;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.common.types.util.TypeConformanceComputer;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.typing.Closures;
 import org.eclipse.xtend.core.typing.XtendTypeProvider;
 import org.eclipse.xtext.xtype.impl.XFunctionTypeRefImplCustom;
 
+import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
 import org.jnario.Assertion;
+import org.jnario.CollectionLiteral;
 import org.jnario.Matcher;
 import org.jnario.Should;
 /**
@@ -38,6 +41,9 @@ public class SpecTypeProvider extends XtendTypeProvider {
 	
 	@Inject
 	private Closures closures;
+	
+	@Inject
+	private TypeConformanceComputer conformanceComputer;
 	
 	@Override
 	protected JvmTypeReference expectedType(EObject container, EReference reference, int index,

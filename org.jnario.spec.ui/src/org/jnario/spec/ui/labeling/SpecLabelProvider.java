@@ -52,7 +52,7 @@ public class SpecLabelProvider extends XtendLabelProvider {
 	}
 	
 	public Image image(TestFunction element) {
-		return images.forFunction(JvmVisibility.PUBLIC, false);
+		return images.forOperation(JvmVisibility.PUBLIC, false);
 	}
 
 	public String text(ExampleGroup element) {

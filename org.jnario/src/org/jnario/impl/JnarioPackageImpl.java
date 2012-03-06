@@ -19,12 +19,15 @@ import org.eclipse.xtext.xbase.XbasePackage;
 import org.eclipse.xtend.core.xtend.XtendPackage;
 
 import org.jnario.Assertion;
+import org.jnario.CollectionLiteral;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
 import org.jnario.JnarioFactory;
 import org.jnario.JnarioPackage;
+import org.jnario.ListLiteral;
 import org.jnario.Matcher;
+import org.jnario.SetLiteral;
 import org.jnario.Should;
 
 /**
@@ -75,6 +78,27 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 	 * @generated
 	 */
 	private EClass shouldEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass collectionLiteralEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass listLiteralEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass setLiteralEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -307,6 +331,33 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getCollectionLiteral() {
+		return collectionLiteralEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getListLiteral() {
+		return listLiteralEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSetLiteral() {
+		return setLiteralEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public JnarioFactory getJnarioFactory() {
 		return (JnarioFactory)getEFactoryInstance();
 	}
@@ -353,6 +404,12 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		createEAttribute(shouldEClass, SHOULD__NOT);
 		createEAttribute(shouldEClass, SHOULD__PREFIX);
 		createEAttribute(shouldEClass, SHOULD__POSTFIX);
+
+		collectionLiteralEClass = createEClass(COLLECTION_LITERAL);
+
+		listLiteralEClass = createEClass(LIST_LITERAL);
+
+		setLiteralEClass = createEClass(SET_LITERAL);
 	}
 
 	/**
@@ -392,6 +449,9 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		matcherEClass.getESuperTypes().add(theXbasePackage.getXExpression());
 		exampleColumnEClass.getESuperTypes().add(theXtendPackage.getXtendField());
 		shouldEClass.getESuperTypes().add(theXbasePackage.getXBinaryOperation());
+		collectionLiteralEClass.getESuperTypes().add(theXbasePackage.getXFeatureCall());
+		listLiteralEClass.getESuperTypes().add(this.getCollectionLiteral());
+		setLiteralEClass.getESuperTypes().add(this.getCollectionLiteral());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(exampleTableEClass, ExampleTable.class, "ExampleTable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -419,6 +479,14 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		initEAttribute(getShould_Not(), ecorePackage.getEBoolean(), "not", null, 0, 1, Should.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getShould_Prefix(), ecorePackage.getEString(), "prefix", null, 0, 1, Should.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getShould_Postfix(), ecorePackage.getEString(), "postfix", null, 0, 1, Should.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(collectionLiteralEClass, CollectionLiteral.class, "CollectionLiteral", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		addEOperation(collectionLiteralEClass, ecorePackage.getEString(), "operationName", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(listLiteralEClass, ListLiteral.class, "ListLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(setLiteralEClass, SetLiteral.class, "SetLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

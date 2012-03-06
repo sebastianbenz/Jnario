@@ -23,6 +23,8 @@ import org.eclipse.xtend.core.validation.XtendEarlyExitValidator;
 import org.eclipse.xtext.conversion.IValueConverterService;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.OutputConfigurationProvider;
+import org.eclipse.xtext.linking.ILinker;
+import org.eclipse.xtext.linking.ILinkingService;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.resource.EObjectAtOffsetHelper;
 import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
@@ -43,6 +45,8 @@ import org.eclipse.xtext.xbase.validation.EarlyExitValidator;
 import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.jvmmodel.JnarioDispatchUtil;
+import org.jnario.linking.JnarioLazyLinker;
+import org.jnario.linking.JnarioLinkingService;
 import org.jnario.scoping.JnarioExtensionClassNameProvider;
 import org.jnario.serializer.JnarioContextFinder;
 import org.jnario.spec.compiler.SpecCompiler;
@@ -161,5 +165,16 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 	public Class<? extends IContextFinder> bindContextFinder(){
 		return JnarioContextFinder.class;
 	}
+	
+	@Override
+	public Class<? extends ILinker> bindILinker() {
+		return JnarioLazyLinker.class;
+	}
+	
+	@Override
+	public Class<? extends ILinkingService> bindILinkingService() {
+		return JnarioLinkingService.class;
+	}
+		
 
 }
