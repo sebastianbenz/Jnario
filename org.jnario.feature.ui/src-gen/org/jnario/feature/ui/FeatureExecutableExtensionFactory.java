@@ -8,6 +8,8 @@ import org.osgi.framework.Bundle;
 
 import com.google.inject.Injector;
 
+import org.jnario.feature.ui.internal.FeatureActivator;
+
 /**
  * This class was generated. Customizations should only happen in a newly
  * introduced subclass. 
@@ -16,12 +18,12 @@ public class FeatureExecutableExtensionFactory extends AbstractGuiceAwareExecuta
 
 	@Override
 	protected Bundle getBundle() {
-		return org.jnario.feature.ui.internal.FeatureActivator.getInstance().getBundle();
+		return FeatureActivator.getInstance().getBundle();
 	}
 	
 	@Override
 	protected Injector getInjector() {
-		return org.jnario.feature.ui.internal.FeatureActivator.getInstance().getInjector("org.jnario.feature.Feature");
+		return FeatureActivator.getInstance().getInjector(FeatureActivator.ORG_JNARIO_FEATURE_FEATURE);
 	}
 	
 }

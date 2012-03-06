@@ -4,7 +4,7 @@ Bundle-Name: Jnario UI Tests
 Bundle-SymbolicName: org.jnario.ui.tests
 Bundle-Version: 0.1.0.qualifier
 Bundle-Vendor: BMW Car IT
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Require-Bundle: org.jnario.feature;bundle-version="0.0.1",
  org.junit,
  org.eclipse.core.resources,

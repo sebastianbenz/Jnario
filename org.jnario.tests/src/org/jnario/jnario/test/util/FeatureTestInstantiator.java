@@ -42,17 +42,14 @@ public class FeatureTestInstantiator implements TestInstantiator {
 			new FeatureStandaloneTestSetup().register(injector);
 	}
 	
-	@Override
 	public Object createTest(Class<?> klass) throws Exception {
 		setupRegistry();
 		return getInjector().getInstance(klass);
 	}
 
-	@Override
 	public void beforeTestRun() {
 	}
 
-	@Override
 	public void afterTestRun() {
 		restoreRegistry();
 	}

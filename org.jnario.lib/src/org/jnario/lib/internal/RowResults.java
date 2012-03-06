@@ -35,7 +35,6 @@ public class RowResults implements Iterable<RowResult>{
 		return firstFailure.getCause().getStackTrace();
 	}
 
-	@Override
 	public Iterator<RowResult> iterator() {
 		return results.iterator();
 	}

@@ -74,11 +74,9 @@ public class SpecQuickfixProvider extends XtendQuickfixProvider {
 	private IModification doFixMissingType(final String typeName) {
 		return new IModification() {
 			
-			@Override
 			public void apply(IModificationContext context) throws Exception {
 				runAsyncInDisplayThread(new Runnable(){
 
-					@Override
 					public void run() {
 						IWorkbench workbench = PlatformUI.getWorkbench(); 
 						Shell shell = workbench.getActiveWorkbenchWindow().getShell(); 

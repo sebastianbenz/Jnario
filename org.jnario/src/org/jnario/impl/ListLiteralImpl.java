@@ -43,7 +43,6 @@ public class ListLiteralImpl extends CollectionLiteralImpl implements ListLitera
 		return JnarioPackage.Literals.LIST_LITERAL;
 	}
 
-	@Override
 	public String operationName() {
 		return "newArrayList";
 	}

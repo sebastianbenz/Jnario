@@ -30,7 +30,7 @@ Import-Package: org.apache.commons.logging,
  org.eclipse.jdt.core,
  org.eclipse.xtend.core.validation,
  org.eclipse.xtend.core.xtend
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.jnario.feature.ui.contentassist,
  org.jnario.feature.ui.contentassist.antlr,
  org.jnario.feature.ui.internal

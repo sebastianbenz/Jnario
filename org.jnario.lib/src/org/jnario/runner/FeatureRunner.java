@@ -27,7 +27,6 @@ public class FeatureRunner extends ExampleGroupRunner {
 			this.instantiator = instantiator;
 		}
 
-		@Override
 		public Object createTest(Class<?> klass) throws Exception {
 			if(test == null){
 				test = instantiator.createTest(klass);
@@ -35,12 +34,10 @@ public class FeatureRunner extends ExampleGroupRunner {
 			return test;
 		}
 
-		@Override
 		public void beforeTestRun() {
 			instantiator.beforeTestRun();
 		}
 
-		@Override
 		public void afterTestRun() {
 			instantiator.afterTestRun();
 		}

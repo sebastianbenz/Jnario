@@ -254,7 +254,6 @@ public class SpecCompiler extends XtendCompiler {
 	protected Iterator<XExpression> allSubExpressions(XExpression expression) {
 		Predicate<XExpression> onlyKnownFeatures = new Predicate<XExpression>() {
 
-			@Override
 			public boolean apply(XExpression e) {
 				// FIXME
 				return !"<unkown>".equals(e.toString());
@@ -262,7 +261,6 @@ public class SpecCompiler extends XtendCompiler {
 		};
 		Predicate<XExpression> noLiteralExpressions = new Predicate<XExpression>() {
 
-			@Override
 			public boolean apply(XExpression expr) {
 				return !expressionHelper.isLiteral(expr);
 			}

@@ -28,7 +28,6 @@ public class TestInstantiatorTest {
 
 	public static class MockTestInstantiator implements TestInstantiator {
 
-		@Override
 		public Object createTest(Class<?> klass) {
 			return new Example() {
 				@Override
@@ -38,12 +37,10 @@ public class TestInstantiatorTest {
 			};
 		}
 
-		@Override
 		public void beforeTestRun() {
 			callOrder.add(BEFORE);
 		}
 
-		@Override
 		public void afterTestRun() {
 			callOrder.add(AFTER);
 		}

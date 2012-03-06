@@ -96,7 +96,6 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 		List<FrameworkMethod> methods = getTestClass().getAnnotatedMethods(Test.class);
 		methods = newArrayList(Iterables.filter(methods, new Predicate<FrameworkMethod>() {
 
-			@Override
 			public boolean apply(FrameworkMethod input) {
 				return isTestMethod(input);
 			}
@@ -115,7 +114,6 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 		return transform(annotatedMethods,
 				new Function<FrameworkMethod, Runner>() {
 
-					@Override
 					public Runner apply(FrameworkMethod from) {
 						try {
 							return createExampleRunner(testClass, from);
@@ -131,7 +129,6 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 	protected void orderMethods(List<FrameworkMethod> annotatedMethods) {
 		Collections.sort(annotatedMethods, new Comparator<FrameworkMethod>(){
 
-			@Override
 			public int compare(FrameworkMethod method1, FrameworkMethod method2) {
 				Order o1 = method1.getAnnotation(Order.class);
 				Order o2 = method2.getAnnotation(Order.class);
@@ -183,7 +180,6 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 		return transform(allDeclaredClasses(),
 				new Function<Class<?>, ExampleGroupRunner>() {
 
-					@Override
 					public ExampleGroupRunner apply(Class<?> declaredClass) {
 						try {
 							
@@ -262,7 +258,6 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 	private Function2<Statement, List<FrameworkMethod>, Statement> newRunBefores(){
 		return new Function2<Statement, List<FrameworkMethod>, Statement>() {
 
-			@Override
 			public Statement apply(Statement next, List<FrameworkMethod> methods) {
 				return new RunBefores(next, methods, null);
 			}
@@ -273,7 +268,6 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 	private Function2<Statement, List<FrameworkMethod>, Statement> newRunAfters(){
 		return new Function2<Statement, List<FrameworkMethod>, Statement>() {
 	
-			@Override
 			public Statement apply(Statement next, List<FrameworkMethod> methods) {
 				return new RunAfters(next, methods, null);
 			}

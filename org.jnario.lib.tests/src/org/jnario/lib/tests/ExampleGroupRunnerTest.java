@@ -281,7 +281,6 @@ public class ExampleGroupRunnerTest {
 	private Matcher<Description> desc(final String displayName, final Matcher<Description>... childrenMatchers) {
 		return new TypeSafeMatcher<Description>() {
 	
-			@Override
 			public void describeTo(org.hamcrest.Description description) {
 				description.appendText(displayName);
 			}

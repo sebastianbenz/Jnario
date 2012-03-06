@@ -16,12 +16,12 @@ import com.google.inject.Inject;
 
 import org.jnario.spec.doc.DocGenerator;
 
+@SuppressWarnings("restriction")
 public class SpecGenerator implements IGenerator {
 
 	@Inject JvmModelGenerator jvmModelGenerator;
 	@Inject DocGenerator docGenerator;
 	
-	@Override
 	public void doGenerate(Resource input, IFileSystemAccess fsa) {
 		jvmModelGenerator.doGenerate(input, fsa);
 		docGenerator.doGenerate(input, fsa);

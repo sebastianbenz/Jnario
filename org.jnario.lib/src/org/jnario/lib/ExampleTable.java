@@ -37,7 +37,6 @@ public class ExampleTable<T extends ExampleTableRow> implements Iterable<T>{
 		return rows.get(index);
 	}
 	
-	@Override
 	public Iterator<T> iterator() {
 		return rows.iterator();
 	}

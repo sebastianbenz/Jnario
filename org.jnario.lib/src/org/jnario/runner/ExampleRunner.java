@@ -41,7 +41,6 @@ import com.google.common.base.Function;
 public class ExampleRunner extends BlockJUnit4ClassRunner {
 
 	private final class MethodNameConverter implements Function<FrameworkMethod, FrameworkMethod> {
-		@Override
 		public FrameworkMethod apply(final FrameworkMethod from) {
 			return new NamedFrameworkMethod(from.getMethod(), nameProvider.nameOf(from));
 		}
@@ -156,7 +155,6 @@ public class ExampleRunner extends BlockJUnit4ClassRunner {
 	private Function3<Statement, List<FrameworkMethod>, Object, Statement> newRunBefores(){
 		return new Function3<Statement, List<FrameworkMethod>, Object, Statement>() {
 
-			@Override
 			public Statement apply(Statement next, List<FrameworkMethod> methods, Object target) {
 				return new RunBefores(next, methods, target);
 			}
@@ -166,7 +164,6 @@ public class ExampleRunner extends BlockJUnit4ClassRunner {
 	private Function3<Statement, List<FrameworkMethod>, Object, Statement> newRunAfters(){
 		return new Function3<Statement, List<FrameworkMethod>, Object, Statement>() {
 
-			@Override
 			public Statement apply(Statement next, List<FrameworkMethod> methods, Object target) {
 				return new RunAfters(next, methods, target);
 			}

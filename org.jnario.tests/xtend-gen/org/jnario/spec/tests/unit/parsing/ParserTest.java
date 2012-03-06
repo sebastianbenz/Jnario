@@ -41,8 +41,8 @@ public class ParserTest {
         }
       };
     IUriProvider _select = _startingFrom.select(new Predicate<URI>() {
-        public boolean apply(URI arg0) {
-          return _function.apply(arg0);
+        public boolean apply(URI input) {
+          return _function.apply(input);
         }
     });
     this._modelStore.load(_select);

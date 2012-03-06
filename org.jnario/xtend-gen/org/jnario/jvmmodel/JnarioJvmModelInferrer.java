@@ -108,8 +108,8 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
             }
           };
         Iterable<JvmTypeReference> _transform = Iterables.<XExpression, JvmTypeReference>transform(_cells_1, new Function<XExpression,JvmTypeReference>() {
-            public JvmTypeReference apply(XExpression arg0) {
-              return _function.apply(arg0);
+            public JvmTypeReference apply(XExpression input) {
+              return _function.apply(input);
             }
         });
         Iterable<JvmTypeReference> cellTypes = _transform;

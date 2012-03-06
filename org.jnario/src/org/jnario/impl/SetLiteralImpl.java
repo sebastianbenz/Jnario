@@ -35,8 +35,7 @@ public class SetLiteralImpl extends CollectionLiteralImpl implements SetLiteral 
 	protected EClass eStaticClass() {
 		return JnarioPackage.Literals.SET_LITERAL;
 	}
-	
-	@Override
+
 	public String operationName() {
 		return "newHashSet";
 	}

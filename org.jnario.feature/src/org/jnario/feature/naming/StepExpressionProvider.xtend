@@ -10,6 +10,7 @@ package org.jnario.feature.naming
 import org.jnario.feature.feature.Step
 import org.jnario.feature.feature.StepReference
 import org.eclipse.emf.ecore.util.EcoreUtil
+import org.jnario.feature.feature.StepExpression
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -24,9 +25,8 @@ class StepExpressionProvider {
 	}
 	
 	def getOrCreateExpression(StepReference ref){
-		val expr = EcoreUtil::copy(ref?.reference?.stepExpression)
+		val expr = EcoreUtil::copy(ref?.reference?.stepExpression) as StepExpression
 		ref.stepExpression = expr
 		return expr
 	}
-
 }

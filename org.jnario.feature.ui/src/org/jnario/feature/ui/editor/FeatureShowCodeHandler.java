@@ -22,7 +22,6 @@ public class FeatureShowCodeHandler extends AbstractHandler {
 
 	private boolean codeIsShown = false;
 
-	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 
 		IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();

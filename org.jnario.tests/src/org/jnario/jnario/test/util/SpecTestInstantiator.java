@@ -39,17 +39,14 @@ public class SpecTestInstantiator implements TestInstantiator {
 			new SpecStandaloneTestSetup().register(injector);
 	}
 	
-	@Override
 	public Object createTest(Class<?> klass) throws Exception {
 		return getInjector().getInstance(klass);
 	}
 
-	@Override
 	public void beforeTestRun() {
 		setupRegistry();
 	}
 
-	@Override
 	public void afterTestRun() {
 		restoreRegistry();
 	}

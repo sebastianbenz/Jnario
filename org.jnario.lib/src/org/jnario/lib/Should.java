@@ -115,7 +115,6 @@ public class Should {
 	public static <T> MatcherChain<T> match(MatcherChain<T> matcherChain, final String stringDescription, final Function1<T, Boolean> matchingFunction) {
 		Matcher<T> expected = new TypeSafeMatcher<T>() {
 
-			@Override
 			public void describeTo(Description description) {
 				description.appendText(stringDescription);
 			}
@@ -131,7 +130,6 @@ public class Should {
 	public static <T> Matcher<T> matches(final String desc, final Function1<T, Boolean> matcher){
 		return new TypeSafeMatcher<T>() {
 
-			@Override
 			public void describeTo(Description description) {
 				description.appendText(desc);
 			}
