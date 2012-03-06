@@ -45,6 +45,7 @@ http://www.eclipse.org/legal/epl-v10.html Description here.
       <import plugin="org.eclipse.debug.ui"/>
       <import plugin="org.eclipse.pde.ui"/>
       <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.objectweb.asm"/>
       <import plugin="org.eclipse.xtext.junit4" version="2.1.1" match="greaterOrEqual"/>
    </requires>
 
