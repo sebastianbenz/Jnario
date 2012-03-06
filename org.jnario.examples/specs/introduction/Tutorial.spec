@@ -11,13 +11,43 @@ import static extension org.jnario.jnario.test.util.Helpers.*
 import static extension org.jnario.lib.Each.*
 import static extension org.jnario.lib.Should.*
 import static extension org.jnario.jnario.test.util.SpecExecutor.*
+import java.util.Stack
 
+/*
+ * Jnario Specs is based on [Xtend](http://www.xtend-lang.org]. It is a good idea
+ * to read the Xtend [documentation](http://www.eclipse.org/xtend/documentation/index.html)
+ * before you get started with Jnario.
+ *  
+ * ### Installation
+ * 
+ * Jnario requires Xtext 2.3, Eclipse 3.5 or higher and a Java SDK version 5 or above. 
+ * The easiest way to install Jnario is via the Eclipse Marketplace. You'll can find it in Eclipse in the Help-menu.
+ * 
+ *   
+ */
 describe "Jnario Specs - Tutorial"{
 
 	describe "How to write a Specification"{
 		
-		- "asdafsd" should be "asdf"
-		  
+		/*
+		 * Here is a minimal specification in Jnario. 
+		 * 
+		 * *Note:* Declaring and importing other packages works similar 
+		 * to Xtend (static imports work as well). 
+		 * 
+		 * @filter('''|.executesSuccessfully) 
+		 */
+		 - "A minimum specification" {
+	      '''
+	      package demo
+	      
+	      import java.util.Stack
+	      
+	      describe "A Stack"{
+	        - [new Stack().size => 0]
+	      }
+	      '''.executesSuccessfully
+	     }
 		
 		/*
 		 * *Note:* You can declare packages and import other packages similar 
