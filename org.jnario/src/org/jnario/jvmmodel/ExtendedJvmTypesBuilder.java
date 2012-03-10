@@ -22,6 +22,7 @@ import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmStringAnnotationValue;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeAnnotationValue;
+import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.common.types.TypesFactory;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
@@ -104,19 +105,5 @@ public class ExtendedJvmTypesBuilder extends JvmTypesBuilder {
 		return toAnnotation(sourceElement, annotationTypeName, null, value);
 	}
 	
-	/**
-	 * copied from JvmTypesBuilder but removed the setBody call with an empty body ("{}")
-	 * if another body is added later only the first body is used and therefore the wanted body will be ignored
-	 * Creates and returns a constructor with the given simple name associated to the given source element. By default
- 	 * no arguments, hence the Java default constructor.
-	 */
-	@Override
-	public JvmConstructor toConstructor(EObject sourceElement, String simpleName, Procedure1<JvmConstructor> init) {
-		JvmConstructor constructor = TypesFactory.eINSTANCE.createJvmConstructor();
-		constructor.setSimpleName(nullSafeName(simpleName));
-		if (init != null && simpleName != null)
-			init.apply(constructor);
-		return associate(sourceElement, constructor);
-	}
 }
  

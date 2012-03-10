@@ -21,6 +21,7 @@ import org.eclipse.xtend.core.scoping.XtendScopeProvider;
 import org.eclipse.xtend.core.typing.XtendTypeProvider;
 import org.eclipse.xtend.core.validation.ClasspathBasedChecks;
 import org.eclipse.xtend.core.validation.XtendEarlyExitValidator;
+import org.eclipse.xtext.generator.IFilePostProcessor;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.OutputConfigurationProvider;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
@@ -32,6 +33,7 @@ import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import org.eclipse.xtext.validation.IResourceValidator;
 import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
+import org.eclipse.xtext.xbase.compiler.output.TraceAwarePostProcessor;
 import org.eclipse.xtext.xbase.featurecalls.IdentifiableSimpleNameProvider;
 import org.eclipse.xtext.xbase.impl.FeatureCallToJavaMapping;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
@@ -151,6 +153,11 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 	@Override
 	public Class<? extends IGenerator> bindIGenerator() {
 		return FeatureJvmModelGenerator.class;
+	}
+	
+	
+	public Class<? extends IFilePostProcessor> bindPostProcessor() {
+		return TraceAwarePostProcessor.class;
 	}
 	
 }

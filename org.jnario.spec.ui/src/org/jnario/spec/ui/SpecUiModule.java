@@ -257,9 +257,10 @@ public class SpecUiModule extends org.jnario.spec.ui.AbstractSpecUiModule {
 	public Class<? extends JavaElementDelegate> bindJavaElementDelegate(){
 		return SpecJavaElementDelegate.class;
 	}
-	
 
 	public Class<? extends ITraceInformation> bindTraceInformation() {
 		return FileBasedTraceInformation.class;
 	}
+	
+	
 }

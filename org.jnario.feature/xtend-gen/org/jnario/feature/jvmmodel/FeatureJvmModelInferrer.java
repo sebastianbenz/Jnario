@@ -599,7 +599,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, _function);
         }
       };
-    JvmConstructor _constructor = this._extendedJvmTypesBuilder.toConstructor(row, className, _function);
+    JvmConstructor _constructor = this._extendedJvmTypesBuilder.toConstructor(row, _function);
     return _constructor;
   }
   

@@ -304,7 +304,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 	}
 
 	def generateExampleConstructor(ExampleRow row, EList<ExampleColumn> fields, String className){
-		row.toConstructor(className)[
+		row.toConstructor[
 			visibility = JvmVisibility::PUBLIC
 			body = [ITreeAppendable appendable |
 				var i = 0

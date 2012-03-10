@@ -1020,6 +1020,9 @@
         <elements xsi:type="xtext:Assignment" feature="parameterType" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/4/@rules.0"/>
         </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="varArg" operator="?=">
+          <terminal xsi:type="xtext:Keyword" value="..."/>
+        </elements>
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
         </elements>
@@ -2306,16 +2309,35 @@
           </type>
         </elements>
         <elements xsi:type="xtext:Keyword" value="switch"/>
-        <elements xsi:type="xtext:Group" cardinality="?" predicated="true">
+        <elements xsi:type="xtext:Alternatives">
           <elements xsi:type="xtext:Group">
-            <elements xsi:type="xtext:Assignment" feature="localVarName" operator="=">
-              <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+            <elements xsi:type="xtext:Group" cardinality="?" predicated="true">
+              <elements xsi:type="xtext:Group">
+                <elements xsi:type="xtext:Assignment" feature="localVarName" operator="=">
+                  <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+                </elements>
+                <elements xsi:type="xtext:Keyword" value=":"/>
+              </elements>
             </elements>
-            <elements xsi:type="xtext:Keyword" value=":"/>
+            <elements xsi:type="xtext:Assignment" feature="switch" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.0"/>
+            </elements>
           </elements>
-        </elements>
-        <elements xsi:type="xtext:Assignment" feature="switch" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.0"/>
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Group" predicated="true">
+              <elements xsi:type="xtext:Group">
+                <elements xsi:type="xtext:Keyword" value="("/>
+                <elements xsi:type="xtext:Assignment" feature="localVarName" operator="=">
+                  <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+                </elements>
+                <elements xsi:type="xtext:Keyword" value=":"/>
+              </elements>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="switch" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.0"/>
+            </elements>
+            <elements xsi:type="xtext:Keyword" value=")"/>
+          </elements>
         </elements>
         <elements xsi:type="xtext:Keyword" value="{"/>
         <elements xsi:type="xtext:Assignment" cardinality="+" feature="cases" operator="+=">

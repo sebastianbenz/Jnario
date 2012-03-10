@@ -383,12 +383,11 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
               };
             JvmField _field = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toField(table, _fieldName, type, _function_1);
             CollectionExtensions.<JvmField>operator_add(_members_1, _field);
-            String _simpleName = exampleTableType.getSimpleName();
             final Procedure1<JvmConstructor> _function_2 = new Procedure1<JvmConstructor>() {
                 public void apply(final JvmConstructor it) {
                 }
               };
-            JvmConstructor _constructor = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toConstructor(table, _simpleName, _function_2);
+            JvmConstructor _constructor = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toConstructor(table, _function_2);
             final JvmConstructor constructor = _constructor;
             EList<JvmMember> _members_2 = exampleTableType.getMembers();
             CollectionExtensions.<JvmConstructor>operator_add(_members_2, constructor);

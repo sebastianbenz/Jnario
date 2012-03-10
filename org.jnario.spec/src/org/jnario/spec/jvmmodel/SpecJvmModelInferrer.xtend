@@ -1,4 +1,3 @@
-
 /*******************************************************************************
  * Copyright (c) 2012 BMW Car IT and others.
  * All rights reserved. This program and the accompanying materials
@@ -223,7 +222,7 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 				visibility = JvmVisibility::PROTECTED
 			]
 
-			val constructor = table.toConstructor(exampleTableType.simpleName)[]
+			val constructor = table.toConstructor[]
 			exampleTableType.members += constructor
 			val assignments = <String>newArrayList()
 			

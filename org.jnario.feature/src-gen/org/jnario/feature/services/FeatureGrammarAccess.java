@@ -1321,7 +1321,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Parameter returns XtendParameter:
-	//	annotations+=XAnnotation* parameterType=JvmTypeReference name=ValidID;
+	//	annotations+=XAnnotation* parameterType=JvmTypeReference varArg?="..."? name=ValidID;
 	public XtendGrammarAccess.ParameterElements getParameterAccess() {
 		return gaXtend.getParameterAccess();
 	}
@@ -1881,8 +1881,8 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XSwitchExpression returns XExpression:
-	//	{XSwitchExpression} "switch" => (localVarName=ValidID ":")? switch=XExpression "{" cases+=XCasePart+ ("default" ":"
-	//	default=XExpression)? "}";
+	//	{XSwitchExpression} "switch" (=> (localVarName=ValidID ":")? switch=XExpression | => ("(" localVarName=ValidID ":")
+	//	switch=XExpression ")") "{" cases+=XCasePart+ ("default" ":" default=XExpression)? "}";
 	public XbaseGrammarAccess.XSwitchExpressionElements getXSwitchExpressionAccess() {
 		return gaXtend.getXSwitchExpressionAccess();
 	}

@@ -21,6 +21,7 @@ import org.eclipse.xtend.core.scoping.XtendImportedNamespaceScopeProvider;
 import org.eclipse.xtend.core.validation.ClasspathBasedChecks;
 import org.eclipse.xtend.core.validation.XtendEarlyExitValidator;
 import org.eclipse.xtext.conversion.IValueConverterService;
+import org.eclipse.xtext.generator.IFilePostProcessor;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.OutputConfigurationProvider;
 import org.eclipse.xtext.linking.ILinker;
@@ -34,12 +35,12 @@ import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import org.eclipse.xtext.serializer.sequencer.IContextFinder;
 import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
+import org.eclipse.xtext.xbase.compiler.output.TraceAwarePostProcessor;
 import org.eclipse.xtext.xbase.featurecalls.IdentifiableSimpleNameProvider;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.JvmModelAssociator;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.scoping.featurecalls.StaticImplicitMethodsFeatureForTypeProvider.ExtensionClassNameProvider;
-import org.eclipse.xtext.xbase.typing.ITypeArgumentContextHelper;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.eclipse.xtext.xbase.validation.EarlyExitValidator;
 import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
@@ -94,11 +95,6 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 		return SpecTypeProvider.class;
 	}
 	
-	public Class<? extends ITypeArgumentContextHelper> bindITypeArgumentContextHelper(){
-		return SpecTypeProvider.class;
-	}
-	
-	
 	@Override
 	public Class<? extends XtextResource> bindXtextResource() {
 		return XtendResource.class;
@@ -151,6 +147,11 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 	
 	public Class<? extends XbaseCompiler> bindXbaseCompiler() {
 		return SpecCompiler.class; 
+	}
+	
+
+	public Class<? extends IFilePostProcessor> bindPostProcessor() {
+		return TraceAwarePostProcessor.class;
 	}
 	
 	@Override
