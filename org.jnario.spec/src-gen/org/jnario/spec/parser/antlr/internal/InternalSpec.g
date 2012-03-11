@@ -202,7 +202,7 @@ ruleExampleGroup returns [EObject current=null]
 	    }
 
 )
-)(
+)?(
 (
 		{ 
 	        newCompositeNode(grammarAccess.getExampleGroupAccess().getTargetTypeJvmTypeReferenceParserRuleCall_3_0()); 
@@ -1229,9 +1229,9 @@ RULE_ID
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMemberAccess().getInitialValueXExpressionParserRuleCall_2_6_3_1_0()); 
+	        newCompositeNode(grammarAccess.getMemberAccess().getInitialValueXPrimaryExpressionParserRuleCall_2_6_3_1_0()); 
 	    }
-		lv_initialValue_52_0=ruleXExpression		{
+		lv_initialValue_52_0=ruleXPrimaryExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getMemberRule());
 	        }
@@ -1239,7 +1239,7 @@ RULE_ID
        			$current, 
        			"initialValue",
         		lv_initialValue_52_0, 
-        		"XExpression");
+        		"XPrimaryExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 

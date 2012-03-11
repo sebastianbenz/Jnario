@@ -17,7 +17,7 @@ SpecFile:
 ExampleGroup:  
 	{ExampleGroup}
 	annotations+=XAnnotation* 
-	preamble=('describe') targetType=JvmTypeReference? name=STRING? '{'
+	preamble='describe' targetType=JvmTypeReference? name=STRING? '{'
        (members+=Member*)
 '}'
 ;
@@ -69,7 +69,7 @@ Member returns xtend::XtendMember:
 			visibility=Visibility?   
 		 	(extension?='extension' type=JvmTypeReference name=ValidID?
 			| static?='static'? type=JvmTypeReference name=ValidID)
-			('=' initialValue=XExpression ';'?)?
+			('=' initialValue=XPrimaryExpression ';'?)?
 		
 	|	{xtend::XtendFunction.annotationInfo = current}
 			('def' | override?='override') visibility=Visibility? static?='static'? (dispatch?='dispatch'?) 

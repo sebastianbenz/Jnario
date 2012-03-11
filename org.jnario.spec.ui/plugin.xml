@@ -587,12 +587,8 @@
          id="org.jnario.spec.ui.wizard"
          name="newSpecClass"
          point="org.eclipse.ui.newWizards">
-      <category
-            id="org.jnario.spec.ui.wizards"
-            name="Spec">
-      </category>
       <wizard
-            category="org.jnario.spec.ui.wizards"
+            category="org.jnario.ui.wizards"
             icon="icons/spec_file.png"
             id="org.jnario.spec.ui.wizards.NewSpecWizard"
             name="%NewSpec.label">

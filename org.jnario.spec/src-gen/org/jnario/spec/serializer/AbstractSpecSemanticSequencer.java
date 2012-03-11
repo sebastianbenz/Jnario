@@ -1526,7 +1526,7 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (annotations+=XAnnotation* preamble='describe' targetType=JvmTypeReference? name=STRING? members+=Member*)
+	 *     (annotations+=XAnnotation* preamble='describe'? targetType=JvmTypeReference? name=STRING? members+=Member*)
 	 */
 	protected void sequence_ExampleGroup(EObject context, ExampleGroup semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1765,7 +1765,7 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	 *                 ((extension?='extension' type=JvmTypeReference name=ValidID?) | (static?='static'? type=JvmTypeReference name=ValidID))
 	 *             )
 	 *         ) 
-	 *         initialValue=XExpression?
+	 *         initialValue=XPrimaryExpression?
 	 *     )
 	 */
 	protected void sequence_Member(EObject context, XtendField semanticObject) {

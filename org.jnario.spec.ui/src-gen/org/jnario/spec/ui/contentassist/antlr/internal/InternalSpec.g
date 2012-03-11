@@ -4768,7 +4768,7 @@ rule__ExampleGroup__Group__2__Impl
 :
 (
 { before(grammarAccess.getExampleGroupAccess().getPreambleAssignment_2()); }
-(rule__ExampleGroup__PreambleAssignment_2)
+(rule__ExampleGroup__PreambleAssignment_2)?
 { after(grammarAccess.getExampleGroupAccess().getPreambleAssignment_2()); }
 )
 
@@ -25371,8 +25371,8 @@ rule__Member__InitialValueAssignment_2_6_3_1
     }
 :
 (
-{ before(grammarAccess.getMemberAccess().getInitialValueXExpressionParserRuleCall_2_6_3_1_0()); }
-	ruleXExpression{ after(grammarAccess.getMemberAccess().getInitialValueXExpressionParserRuleCall_2_6_3_1_0()); }
+{ before(grammarAccess.getMemberAccess().getInitialValueXPrimaryExpressionParserRuleCall_2_6_3_1_0()); }
+	ruleXPrimaryExpression{ after(grammarAccess.getMemberAccess().getInitialValueXPrimaryExpressionParserRuleCall_2_6_3_1_0()); }
 )
 
 ;
