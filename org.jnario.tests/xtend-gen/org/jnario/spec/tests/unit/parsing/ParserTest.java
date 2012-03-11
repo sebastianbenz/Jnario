@@ -1,5 +1,6 @@
 package org.jnario.spec.tests.unit.parsing;
 
+import com.google.common.base.Objects;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
@@ -11,10 +12,8 @@ import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.validation.Issue;
-import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.jnario.test.util.ClassPathUriProviderBuilder;
 import org.jnario.jnario.test.util.IUriProvider;
@@ -55,8 +54,7 @@ public class ParserTest {
         }
       };
     Iterable<Resource> _filter = IterableExtensions.<Resource>filter(_resources, _function_1);
-    ArrayList<Resource> _newArrayList = Lists.<Resource>newArrayList(_filter);
-    final ArrayList<Resource> specs = _newArrayList;
+    final ArrayList<Resource> specs = Lists.<Resource>newArrayList(_filter);
     final Procedure1<Resource> _function_2 = new Procedure1<Resource>() {
         public void apply(final Resource resource) {
           Resources.checkForParseErrors(resource);
@@ -68,13 +66,13 @@ public class ParserTest {
   public boolean onlySpecFiles(final URI uri) {
     boolean _and = false;
     String _fileExtension = uri.fileExtension();
-    boolean _notEquals = ObjectExtensions.operator_notEquals(_fileExtension, null);
+    boolean _notEquals = (!Objects.equal(_fileExtension, null));
     if (!_notEquals) {
       _and = false;
     } else {
       String _fileExtension_1 = uri.fileExtension();
       boolean _equals = _fileExtension_1.equals("spec");
-      _and = BooleanExtensions.operator_and(_notEquals, _equals);
+      _and = (_notEquals && _equals);
     }
     return _and;
   }
@@ -84,19 +82,16 @@ public class ParserTest {
     final StringBuilder result = _stringBuilder;
     for (final Issue issue : issues) {
       {
-        StringBuilder _createIssueMessage = this.createIssueMessage(issue);
-        final StringBuilder issueBuilder = _createIssueMessage;
+        final StringBuilder issueBuilder = this.createIssueMessage(issue);
         result.append(issueBuilder);
       }
     }
-    String _string = result.toString();
-    return _string;
+    return result.toString();
   }
   
   public StringBuilder createIssueMessage(final Issue issue) {
     URI _uriToProblem = issue.getUriToProblem();
-    URI _trimFragment = _uriToProblem.trimFragment();
-    final URI resourceUri = _trimFragment;
+    final URI resourceUri = _uriToProblem.trimFragment();
     StringBuilder _stringBuilder = new StringBuilder("\n");
     final StringBuilder issueBuilder = _stringBuilder;
     Severity _severity = issue.getSeverity();
