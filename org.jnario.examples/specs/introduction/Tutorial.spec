@@ -14,106 +14,217 @@ import static extension org.jnario.jnario.test.util.SpecExecutor.*
 import java.util.Stack
 
 /*
- * Jnario Specs is based on [Xtend](http://www.xtend-lang.org]. It is a good idea
+ * Jnario Specs is based on [Xtend](http://www.xtend-lang.org). It is a good idea
  * to read the Xtend [documentation](http://www.eclipse.org/xtend/documentation/index.html)
- * before you get started with Jnario.
+ * before you get started with Jnario, because expressions, fields, methods and extensions in Jnario work exactly as in Xtend.
  *  
  * ### Installation
  * 
- * Jnario requires Xtext 2.3, Eclipse 3.5 or higher and a Java SDK version 5 or above. 
- * The easiest way to install Jnario is via the Eclipse Marketplace. You'll can find it in Eclipse in the Help-menu.
+ * Jnario requires [Xtext](http://www.xtext.org) 2.3, [Eclipse](http://www.eclipse.org) 3.5 or higher and a Java SDK version 5 or above. 
+ * The easiest way to install Jnario is via the Eclipse Marketplace. You find it in Eclipse in the Help-menu.
  * 
  *   
  */
 describe "Jnario Specs - Tutorial"{
-
+	
+	/*
+	 * The first example is a simple specification of a Stack. Use the spec wizard to create a new specification
+	 * (**File** -> **New** -> **Other** -> **Jnario** -> **Spec**).
+	 * To execute a specification, right click
+	 * in the editor and select **Run As** -> **JUnit Test**. 
+	 * 
+	 * 	describe "A Stack"{
+	 * 	  - "initially empty" 
+	 * 	  - "increases its size when pushing an element"
+	 * 	}
+	 * 
+	 * When we execute the specification it will
+	 * pass, but the examples in our specification will be marked as _PENDING_ as they are not implemented yet.
+	 * 
+	 * _A Stack_
+	 * 
+	 * - _initially empty [PENDING]_
+	 * - _increases its size when pushing an element [PENDING]_
+	 * 
+	 */
 	describe "How to write a Specification"{
-		
+
 		/*
-		 * Here is a minimal specification in Jnario. 
 		 * 
-		 * *Note:* Declaring and importing other packages works similar 
+		 * We use `=>` to describe the expected result of a expression. For 
+		 * example, `new Stack.size => 0` will fail if the size is not `0`.
+		 * If we execute our specification we will see that all specifications
+		 * pass and that they are not marked as _PENDING_ anymore,
+		 * 
+		 * <span class="label label-info">Info</span> Declaring and importing other packages works similar 
 		 * to Xtend (static imports work as well). 
 		 * 
 		 * @filter('''|.executesSuccessfully) 
 		 */
-		 - "A minimum specification" {
+		 - "Implementing examples" {
 	      '''
 	      package demo
 	      
 	      import java.util.Stack
 	      
 	      describe "A Stack"{
-	        - [new Stack().size => 0]
+	        - "initially empty" {
+	          new Stack.size => 0
+	        }
+	        - "increases its size when pushing an element"{
+	          val subject = new Stack
+	          subject.push("A String")
+	          subject.size => 1
+	        }
+	      }
+	      '''.executesSuccessfully
+	     }
+	     
+	     /* In the previous specification we have a little redundancy:
+	      * the creation of the Stack. We can get rid of it by creating 
+	      * a field for the Stack. Declaring fields works exactly as in
+	      * [Xtend](http://www.eclipse.org/xtend/documentation/index.html#fields).
+	      * 
+	      * @filter('''|.executesSuccessfully)  
+	      */
+	     - "Using Fields"{
+	     	'''
+		      package demo
+		      
+		      import java.util.Stack
+		      
+		      describe "A Stack"{
+		        Stack subject = new Stack
+		        - "initially empty" {
+		          subject.size => 0
+		        }
+		        - "increases its size when pushing an element"{
+		          subject.push("A String")
+		          subject.size => 1
+		        }
+		      }
+		      '''.executesSuccessfully
+	     }
+	     
+	     /* 
+	      * In our example we specify the behavior
+	      * of a single class, which is actually a common use case. Jnario you can 
+	      * directly reference the specified class in the describe clause:
+	      * 
+	      * 	describe Stack{
+	      * 	  ...
+	      * 	}
+	      * 
+	      * This way you achieve a strong link between specification
+	      * and its target that works even if the target class is renamed.  
+	      * Jnario will also automatically create a field called `subject` of
+	      * the target type. Therefore we can get rid of the subject field in
+	      * our stack specification. 
+	      * 
+	      * <span class="label label-important">Important</span> The implicit subject works
+	      * only if the target class has a default constructor without any arguments, but it 
+	      * is also possible to use Guice or other frameworks to automatically create
+	      * the subjects ([more...](/link/to/implicitsubject)).
+	      * 
+	      * @filter('''|.executesSuccessfully)  
+	      */
+	     - "Implicit Subjects"{
+	     	'''
+		      package demo
+		      
+		      import java.util.Stack
+		      
+		      describe Stack{
+		        - "initially empty" {
+		          subject.size => 0
+		        }
+		        - "increases its size when pushing an element"{
+		          subject.push("A String")
+		          subject.size => 1
+		        }
+		      }
+		      '''.executesSuccessfully
+	     }
+	     
+	    /*
+	     * Sometimes a class behaves differently in different contexts. 
+	     * 
+		 * @filter('''|.executesSuccessfully) 
+		 */
+		 - "Hierarchical Specifications" {
+	      '''
+	      package demo
+	      
+	      import java.util.*
+	      
+	      describe Stack{
+	        context "empty"{
+	          - [subject.size => 0]
+	          - throws EmptyStackException [subject.pop]
+	        }
+	        context "adding elements"{
+	          - "increases size"{
+	            subject.push("A String")
+	            subject.size => 1
+	          }		
+	        }
 	      }
 	      '''.executesSuccessfully
 	     }
 		
-		/*
-		 * *Note:* You can declare packages and import other packages similar 
-		 * to Java (static imports work as well). 
-		 * 
-		 * @filter('''|.executesSuccessfully) 
-		 */
-		 - "A simple specification" {
-	      '''
-	      package demo
-	      
-	      import java.util.Stack
-	      
-	      describe "A Stack"{
-	        - "initially empty"{
-	          assert new Stack().size == 0	
-	        }
-	        - "increases its size"{
-	          val subject = new Stack<String>()
-	          subject.add("A String")
-	          assert subject.size == 1
-	        }
-	        // ...
-	      }
-	      '''.executesSuccessfully
-	     }
-		 
-		/*
-		 * The following specification will be executed as:
-		 * 
-		 *     Calculator
-		 *       - addition
-		 *         - adds two values
-		 *       - division
-		 *         - divides two values
-		 * 
-		 * @filter('''|.executesSuccessfully) 
-		 */
-	     - "Hierarchical Specifications"{
-			'''
-			describe "Calculator"{
-			  context "addition"{
-			    it "adds two values"{
-			      assert new Calculator().add(1, 2) == 3
-			    }
-			  }
-			  context "division"{
-			    it "divides two values"{
-			      assert new Calculator().divide(4, 2) == 2
-			    }
-			  }
-			}
-			'''.executesSuccessfully
-	     }
 
 		/*
+		 * The following specification will print:
+		 * 
+		 * 	before all
+		 * 	before
+		 * 	do stuff
+		 * 	after
+		 * 	before
+		 * 	do more stuff
+		 * 	after
+		 * 	after all
+		 * 
 		 * @filter('''|.executesSuccessfully) 
 		 */
-		 - "Helper methods and fields"{
+		- "Setup & Teardown"{
+			
+			'''
+			    describe "Setup & Teardown" {
+			      before all{
+			        println("before all")
+			      }  
+			      before{
+			        println("before")
+			      }
+			      it "should do stuff" {
+			        println("do stuff")
+			      }
+			      it "should do more stuff" {
+			        println("do more stuff")
+			      }
+			      after{
+			        println("after")
+			      }
+			      after all{
+			        println("after all")
+			      }
+			    }  
+			'''.executesSuccessfully
+			
+		}
+		
+		/*
+		 * @filter('''|.executesSuccessfully) 
+		 */
+		 - "Helper methods"{
 		  '''
 	      describe "Helper Methods & Fields"{
 	      
 	        String subject = "World" 
 	      
 	        it "can access fields and methods"{
-	          assert subject.greeting == "Hello World"
+	          subject.greeting => "Hello World"
 	        }
 	        
 	        def greeting(String s){
@@ -123,7 +234,7 @@ describe "Jnario Specs - Tutorial"{
 	        context "shouting"{
 	          
 	          it "can access fields and methods from parent"{
-	             assert subject.greeting.shout == "HELLO WORLD"
+	             subject.greeting.shout => "HELLO WORLD"
 	          }
 	          
 	          def shout(String s){
@@ -133,14 +244,8 @@ describe "Jnario Specs - Tutorial"{
 	      }
 	      '''.executesSuccessfully
 		 }
-			
-	     - "Pending"{
-			
-	     }
-	}
-	
-	describe "Before & After"{
 		
+	
 	}
 	
 	/*
@@ -149,12 +254,12 @@ describe "Jnario Specs - Tutorial"{
 	describe "Writing Assertions"{
 	
 		/*
-		 * Jnario provides a special `assert` statement that makes it easy to 
-		 * write meaningful assertions.
+		 * Jnario provides a special `assert` statement, which fails if 
+		 * the following expression does not evaluate to `true`.
 		 */
 		- "'assert'"{
 			assert true
-			assert 1 == 1
+			assert new Stack().empty
 			assert "Hello".startsWith("H")
 		}
 
@@ -162,8 +267,8 @@ describe "Jnario Specs - Tutorial"{
 		 * If you want to express how an object should behave, you can use  
 		 * `should` or `must`. It passes if the result of the left expression is 
 		 * equal to the result of the right expression. You can also use `not` to 
-		 * assert that both expressions have different results. There is also 
-		 * a short cut available: `=>` which has the same effect as `should be`.
+		 * assert that both expressions have different results. You have already seen 
+		 * the short cut `=>` which has the same effect as `should be`.
 		 */	
 		- "'should', 'must' and `=>`"{
 			true should be true
@@ -174,10 +279,11 @@ describe "Jnario Specs - Tutorial"{
 		}   
 		
 		/*
-		 * Assertions in Jnario are selfexplainable. This means, when failing, they try to 
-		 * provide as as much information as possible. In that case, they 
+		 * Assertions in Jnario are self-explainable. When an assertion fails, it tries to 
+		 * provide as as much information as possible. They 
 		 * print the exact expression that has failed together with the actual value
-		 * of all subexpressions.
+		 * of all subexpressions. This means that you don't need to debug a test to 
+		 * see why it actually has failed.
 		 */
 		- "Self-explaining failures"{
 			val x = 0 
@@ -224,22 +330,27 @@ describe "Jnario Specs - Tutorial"{
 		
 	}
 
+
 	describe "Using Example Tables"{
-		
-		- "Writing Assertions"
+		/*
+		 * @filter('''|.executesSuccessfully) 
+		 */				
+		- "Writing Assertions"{
+			'''
+				describe "Tables" {
+				  def additions{
+				    | a | b | sum |
+				    | 0 | 0 |  0  |
+				    | 1 | 2 |  3  |
+				    | 4 | 5 |  9  |
+				  }
+				  - [additions.forEach[a + b => sum]]
+				}     
+			'''.executesSuccessfully
+		}
 
 		- "Specifying the Column Type"
 		
-	}
-	
-	describe "Type-safe specifications"{
-	     
-	     - "Describing Java Classes"
-	     
-	     - "Describing Java Methods"
-	     
-	     - "Implicit Subject Creation"
-	     
 	}
 	
 	describe "Spec extensions"{
