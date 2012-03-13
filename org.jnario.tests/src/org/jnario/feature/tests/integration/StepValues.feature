@@ -7,30 +7,48 @@
  *******************************************************************************/
 package org.jnario.feature.tests.integration
 
-Feature: Step fields
+Feature: Step values
 
-	Scenario: Field definition in steps
+	Scenario: Value definition in steps
 		Given a feature
 			var jnarioFile = '
+				package bootstrap
 				Feature: Test feature
 					Scenario: using fields in step definitions
 						Given some values "3", "4"
-							
+							var x = stepValues.get(0)
+						Then it should be possible to get the value
+							x.^should.^be("3")
 			'
 		When this feature is executed
 		Then it should be successful
 
-	Scenario: Field definition in steps and Background
+	Scenario: Access of values with first, second, ...
+		Given a feature
+			var jnarioFile = '
+				package bootstrap
+				Feature: Test feature
+					Scenario: using fields in step definitions
+						Given some values "3", "4"
+							var x = stepValues.first()
+						Then it should be possible to get the value
+							x.^should.^be("3")
+			'
+		When this feature is executed
+		Then it should be successful
+
+	Scenario: Value definition in steps and Background
 		Given a feature with a background
 			var jnarioFile = '
+				package bootstrap 
 				Feature: Test feature
 					Background:
 						Given some values "3", "4"
+							var x = stepValues.get(1)
 					Scenario: using fields in step definitions
-						When you add them
-						Then <c> should be 3
+						Then those values should be accessible
+							x.^should.^be("4")
 							
 			'
 		When this feature is executed
 		Then it should be successful
-		

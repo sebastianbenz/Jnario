@@ -12,6 +12,7 @@ import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.common.types.JvmFeature;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.IEObjectDescription;
@@ -22,7 +23,6 @@ import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.XbasePackage;
 import org.eclipse.xtext.xbase.scoping.XbaseScopeProvider;
-import org.eclipse.xtend.core.xtend.XtendMember;
 import org.jnario.ExampleTable;
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.Scenario;
@@ -86,5 +86,4 @@ public class FeatureJavaValidator extends AbstractFeatureJavaValidator {
 			}
 		}
 	}
-
 }

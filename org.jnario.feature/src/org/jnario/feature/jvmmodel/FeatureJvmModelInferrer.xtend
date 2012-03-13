@@ -12,16 +12,22 @@ import java.util.ArrayList
 import java.util.List
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.common.types.JvmDeclaredType
+import org.eclipse.xtend.core.xtend.XtendField
+import org.eclipse.xtend.core.xtend.XtendMember
+import org.eclipse.xtext.common.types.JvmConstructor
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.common.types.util.TypeReferences
-import org.eclipse.xtext.util.IAcceptor
+import org.eclipse.xtext.xbase.XConstructorCall
 import org.eclipse.xtext.xbase.XVariableDeclaration
+import org.eclipse.xtext.xbase.compiler.output.FakeTreeAppendable
+import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable
+import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator
 import org.eclipse.xtext.xbase.typing.ITypeProvider
-import org.eclipse.xtend.core.xtend.XtendField
+import org.jnario.ExampleColumn
+import org.jnario.ExampleRow
 import org.jnario.feature.feature.Background
 import org.jnario.feature.feature.Feature
 import org.jnario.feature.feature.FeatureFile
@@ -30,8 +36,6 @@ import org.jnario.feature.feature.Step
 import org.jnario.feature.naming.JavaNameProvider
 import org.jnario.feature.naming.StepExpressionProvider
 import org.jnario.feature.naming.StepNameProvider
-import org.jnario.ExampleColumn
-import org.jnario.ExampleRow
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder
 import org.jnario.jvmmodel.JnarioJvmModelInferrer
 import org.jnario.jvmmodel.JunitAnnotationProvider
@@ -40,24 +44,17 @@ import org.jnario.runner.Named
 import org.jnario.runner.Order
 
 import static com.google.common.collect.Iterators.*
-import org.eclipse.xtend.core.xtend.XtendMember
-import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
-import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable
-import org.eclipse.xtext.xbase.compiler.output.FakeTreeAppendable
-import java.util.regex.Pattern
-import org.eclipse.xtext.xbase.XbaseFactory
-import org.eclipse.xtext.common.types.JvmConstructor
-import org.eclipse.xtext.common.types.access.impl.DeclaredTypeFactory
-import org.eclipse.xtext.common.types.TypesFactory
+import static org.jnario.feature.jvmmodel.FeatureJvmModelInferrer.*
+import org.eclipse.xtext.xbase.XMemberFeatureCall
+import org.eclipse.xtext.xbase.XFeatureCall
+import org.eclipse.xtext.common.types.JvmOperation
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
 class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 	
-	private static Pattern IDENTIFIER = Pattern::compile("\"([a-zA-Z0-9_]+)\"")
-
-	public static String STEPARGUMENTS = "args"
+	public static String STEP_VALUES = "stepValues"
 
 	@Inject extension ExtendedJvmTypesBuilder
 	
@@ -72,8 +69,6 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 	@Inject extension ITypeProvider
 	
 	@Inject extension JunitAnnotationProvider annotationProvider
-	
-	@Inject extension DeclaredTypeFactory
 	
 	@Inject
 	private IJvmModelAssociator associator
@@ -147,6 +142,9 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	}
    	
    	def infer(Scenario scenario, FeatureFile featureFile, String className, JvmGenericType superClass){
+   		
+   		scenario.generateStepValues
+   		
    		scenario.toClass(className)[
    			featureFile.eResource.contents += it
 			annotations += scenario.toAnnotation(typeof(Named), scenario.name.trim)
@@ -162,8 +160,6 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 				start = feature.background.steps.generateBackgroundStepCalls(it)
 			}
 			
-			
-
 			scenario.generateVariables(feature, it)
 			scenario.steps.generateSteps(it, start, scenario)
 			
@@ -175,6 +171,48 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			}
    		]	
    	}
+   	
+   	def generateStepValues(Scenario scenario){
+   		
+   		var steps = scenario.steps
+   		for(step: steps){
+   			var decs = filter(step.eAllContents, typeof(XVariableDeclaration))
+			for(dec: decs.toIterable){
+				if(dec.name == STEP_VALUES){
+					dec.setStepValueType(scenario)
+					var calls = filter(step.eAllContents, typeof(XMemberFeatureCall))
+					for(call: calls.toIterable){
+						if(call.memberCallTarget instanceof XFeatureCall){
+							var featureCall = call.memberCallTarget as XFeatureCall
+							if(featureCall.feature == dec && call.feature == null){
+								addStepValue(call, dec, scenario)
+							}
+						}
+					}
+				}
+			}
+   		}
+   	}
+   	
+   	def setStepValueType(XVariableDeclaration variableDec, Scenario scenario){
+		var typeRef = getTypeForName(typeof(StepArguments), scenario)
+		variableDec.type = typeRef		
+		val declaringType = typeRef.type as JvmGenericType
+		associator.associate(scenario, declaringType)
+		var constructor = variableDec.right as XConstructorCall
+		constructor.constructor = filter(declaringType.members.iterator, typeof(JvmConstructor)).next
+	}
+	
+	def addStepValue(XMemberFeatureCall featureCall, XVariableDeclaration dec, Scenario scenario){
+		var typeRef = getTypeForName(typeof(ArrayList), scenario)
+		var type = typeRef.type as JvmGenericType
+		var operations = filter(type.members.iterator, typeof(JvmOperation))
+		for(operation: operations.toIterable){
+			if(operation.simpleName == "add" && operation.parameters.size == 1){
+				featureCall.feature = operation
+			}
+		}
+	}
    	
    	def generateVariables(Scenario scenario, Feature feature, JvmGenericType inferredJvmType){		
 		if(!scenario.examples.empty){
@@ -200,7 +238,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	
    	def generateXVariableDeclarations(Iterable<XVariableDeclaration> varDecs, JvmGenericType inferredJvmType, EObject scenario){
    		for(variableDec: varDecs){
-   			if(variableDec.name != STEPARGUMENTS){
+   			if(variableDec.name != STEP_VALUES){
 				var JvmTypeReference type;
 				if (variableDec.getType != null) {
 					type = variableDec.getType;
@@ -254,22 +292,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 	def transform(Step step, JvmGenericType inferredJvmType, int order, Scenario scenario) {
 
 		inferredJvmType.members += step.toMethod(step.nameOf.javaMethodName, getTypeForName(Void::TYPE, step))[
-			var exp = step.expressionOf?.blockExpression
-			
-			var argsExists = false
-			if(exp != null){
-				var decs = filter(exp.expressions.iterator, typeof(XVariableDeclaration))
-				for(dec: decs.toIterable){
-					if(dec.name == STEPARGUMENTS){
-						argsExists = true
-						
-					}
-				}
-				if(argsExists){
-					exp.expressions += generateStepArgsVariable(scenario)	
-				}
-			}
-			body = exp
+			body = step.expressionOf?.blockExpression
 			annotations += step.getTestAnnotations(null, false)
 			annotations += step.toAnnotation(typeof(Order), order.intValue)
 			annotations += step.toAnnotation(typeof(Named), step.nameOf)
@@ -277,17 +300,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		order + 1
 	}
 	
-	def generateStepArgsVariable(Scenario scenario){
-		var variableDec = XbaseFactory::eINSTANCE.createXVariableDeclaration
-		variableDec.setName(STEPARGUMENTS)
-		var constructor = XbaseFactory::eINSTANCE.createXConstructorCall
-		val declaringType = getTypeForName(typeof(StepArguments), scenario).type as JvmGenericType
-		associator.associate(scenario, declaringType)
-		constructor.constructor = filter(declaringType.members.iterator, typeof(JvmConstructor)).next
-		variableDec.right = constructor
-		variableDec
-	}
-   	
+  	
    	def generateSteps(EList<XtendMember> steps, JvmGenericType inferredJvmType){
 		for (step: steps) {
 			transform(step as Step, inferredJvmType)

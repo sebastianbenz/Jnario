@@ -11,7 +11,7 @@
             default="true"
             extensions="feature"
             icon="icons/jnario_file.png"
-            id="org.jnario.Feature"
+            id="org.jnario.feature.Feature"
             name="Feature Editor">
         </editor>
     </extension>

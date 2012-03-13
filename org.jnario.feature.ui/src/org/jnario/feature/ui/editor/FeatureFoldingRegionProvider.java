@@ -75,7 +75,9 @@ public class FeatureFoldingRegionProvider extends DefaultFoldingRegionProvider {
 
 	private void setFoldingRegion(EObject object, int begin, IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor){
 		ICompositeNode node = NodeModelUtils.getNode(object);
-		int offset = node.getOffset() + node.getLength() - begin;
-		foldingRegionAcceptor.accept(begin, offset);
+		if(node != null){
+			int offset = node.getOffset() + node.getLength() - begin;
+			foldingRegionAcceptor.accept(begin, offset);
+		}
 	}
 }

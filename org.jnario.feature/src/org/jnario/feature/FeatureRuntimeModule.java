@@ -24,6 +24,7 @@ import org.eclipse.xtend.core.validation.XtendEarlyExitValidator;
 import org.eclipse.xtext.generator.IFilePostProcessor;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.OutputConfigurationProvider;
+import org.eclipse.xtext.linking.ILinker;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.resource.EObjectAtOffsetHelper;
 import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
@@ -46,6 +47,7 @@ import org.jnario.feature.generator.FeatureCompiler;
 import org.jnario.feature.generator.FeatureJvmModelGenerator;
 import org.jnario.feature.jvmmodel.FeatureFeatureCallToJavaMapping;
 import org.jnario.feature.jvmmodel.FeatureJvmModelInferrer;
+import org.jnario.feature.linking.FeatureLazyLinker;
 import org.jnario.feature.naming.FeatureIdentifiableSimpleNameProvider;
 import org.jnario.feature.naming.FeatureQualifiedNameProvider;
 import org.jnario.feature.validation.FeatureClasspathBasedChecks;
@@ -158,6 +160,11 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 	
 	public Class<? extends IFilePostProcessor> bindPostProcessor() {
 		return TraceAwarePostProcessor.class;
+	}
+	
+	@Override
+	public Class<? extends ILinker> bindILinker() {
+		return FeatureLazyLinker.class;
 	}
 	
 }

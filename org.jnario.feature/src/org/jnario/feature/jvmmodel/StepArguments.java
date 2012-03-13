@@ -8,6 +8,31 @@
 
 package org.jnario.feature.jvmmodel;
 
-public class StepArguments {
+import java.util.ArrayList;
 
+/**
+ * @author Birgit Engelmann - Initial contribution and API
+ */
+public class StepArguments extends ArrayList<String>{
+	
+	public String first(){
+		return this.get(0);
+	}
+	
+	public String second(){
+		return this.get(1);
+	}
+	
+	public String third(){
+		return this.get(2);
+	}
+	
+	public String forth(){
+		return this.get(3);
+	}
+	
+	public String fifth(){
+		return this.get(4);
+	}
+	
 }

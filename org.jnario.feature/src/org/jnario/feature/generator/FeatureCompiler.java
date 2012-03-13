@@ -15,10 +15,8 @@ import org.eclipse.xtext.common.types.util.Primitives.Primitive;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
-import org.eclipse.xtext.xbase.compiler.IAppendable;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.jnario.feature.jvmmodel.FeatureJvmModelInferrer;
-import org.jnario.jvmmodel.JnarioJvmModelInferrer;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -68,7 +66,7 @@ public class FeatureCompiler extends XtendCompiler {
 		b.newLine();
 		JvmTypeReference type = null;
 		
-		if(varDeclaration.getName() == FeatureJvmModelInferrer.STEPARGUMENTS){
+		if(varDeclaration.getName() == FeatureJvmModelInferrer.STEP_VALUES){
 			// for step arguments only
 			if (varDeclaration.getType() != null) {
 				type = varDeclaration.getType();
