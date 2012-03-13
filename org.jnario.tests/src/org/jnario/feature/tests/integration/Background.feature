@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.jnario.tests
+package org.jnario.feature.tests.integration
 
 import static org.jnario.jnario.test.util.ResultMatchers.*
 import static extension org.jnario.jnario.test.util.FeatureExecutor.*

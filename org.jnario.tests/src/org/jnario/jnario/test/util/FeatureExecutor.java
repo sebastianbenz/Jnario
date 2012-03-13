@@ -21,17 +21,17 @@ import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.util.StringInputStream;
 import org.eclipse.xtext.validation.IResourceValidator;
-import org.junit.rules.TemporaryFolder;
-import org.junit.runner.Result;
-
-import com.google.inject.Inject;
-import com.google.inject.Injector;
-
 import org.jnario.feature.FeatureInjectorProvider;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeatureFile;
 import org.jnario.feature.generator.FeatureJvmModelGenerator;
 import org.jnario.feature.naming.JavaNameProvider;
+import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
+import org.junit.rules.TemporaryFolder;
+import org.junit.runner.Result;
+
+import com.google.inject.Inject;
+import com.google.inject.Injector;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -69,6 +69,7 @@ public class FeatureExecutor extends BehaviorExecutor{
 			TemporaryFolder tempFolder, JavaNameProvider javaNameProvider, IResourceValidator validator) {
 		super(generator, fsa, tempFolder, validator);
 		this.nameProvider = javaNameProvider;
+		validate = false;
 	}
 
 	protected Result runExamples(EObject object)

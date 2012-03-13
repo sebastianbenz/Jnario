@@ -7,9 +7,21 @@
  *******************************************************************************/
 package org.jnario.feature.validation;
 
+import static org.eclipse.xtext.util.Strings.equal;
+import static org.eclipse.xtext.util.Strings.notNull;
+
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.URIConverter;
+import org.eclipse.xtext.resource.ClasspathUriResolutionException;
+import org.eclipse.xtext.resource.ClasspathUriUtil;
 import org.eclipse.xtext.validation.Check;
+import org.eclipse.xtext.validation.ValidationMessageAcceptor;
 import org.eclipse.xtend.core.validation.ClasspathBasedChecks;
+import org.eclipse.xtend.core.validation.IssueCodes;
+import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendFile;
+import org.eclipse.xtend.core.xtend.XtendPackage;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -17,10 +29,28 @@ import org.eclipse.xtend.core.xtend.XtendFile;
 public class FeatureClasspathBasedChecks extends ClasspathBasedChecks {
 	
 	
-	// no checks on scenario name currently
 	@Check
-	@Override
 	public void checkFileNamingConventions(XtendFile xtendFile) {
+		Resource resource = xtendFile.eResource();
+		// editor already closed
+		if (resource == null || resource.getResourceSet() == null)
+			return;
+		URI resourceURI = resource.getURI();
+		String packageName = xtendFile.getPackage();
+		StringBuilder classpathURIBuilder = new StringBuilder(ClasspathUriUtil.CLASSPATH_SCHEME);
+		classpathURIBuilder.append(":/");
+		if (packageName != null)
+			classpathURIBuilder.append(packageName.replace(".", "/")).append("/");
+		classpathURIBuilder.append(resourceURI.lastSegment());
+		URI classpathURI = URI.createURI(classpathURIBuilder.toString());
+		URIConverter uriConverter = resource.getResourceSet().getURIConverter();
+		try {
+			URI normalizedURI = uriConverter.normalize(classpathURI);
+			if(!resourceURI.equals(normalizedURI))
+				reportInvalidPackage(packageName, classpathURI);
+		} catch(ClasspathUriResolutionException e) {
+			reportInvalidPackage(packageName, classpathURI);
+		}
 	}
 
 }
