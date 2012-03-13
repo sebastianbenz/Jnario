@@ -44,11 +44,20 @@ import org.eclipse.xtend.core.xtend.XtendMember
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable
 import org.eclipse.xtext.xbase.compiler.output.FakeTreeAppendable
+import java.util.regex.Pattern
+import org.eclipse.xtext.xbase.XbaseFactory
+import org.eclipse.xtext.common.types.JvmConstructor
+import org.eclipse.xtext.common.types.access.impl.DeclaredTypeFactory
+import org.eclipse.xtext.common.types.TypesFactory
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
 class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
+	
+	private static Pattern IDENTIFIER = Pattern::compile("\"([a-zA-Z0-9_]+)\"")
+
+	public static String STEPARGUMENTS = "args"
 
 	@Inject extension ExtendedJvmTypesBuilder
 	
@@ -63,6 +72,8 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 	@Inject extension ITypeProvider
 	
 	@Inject extension JunitAnnotationProvider annotationProvider
+	
+	@Inject extension DeclaredTypeFactory
 	
 	@Inject
 	private IJvmModelAssociator associator
@@ -150,9 +161,11 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 				superTypes += superClass.createTypeRef
 				start = feature.background.steps.generateBackgroundStepCalls(it)
 			}
+			
+			
 
 			scenario.generateVariables(feature, it)
-			scenario.steps.generateSteps(it, start)
+			scenario.steps.generateSteps(it, start, scenario)
 			
 			if(!scenario.examples.empty){
 				val exampleClasses = scenario.generateExampleClasses(featureFile, it)
@@ -187,19 +200,20 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	
    	def generateXVariableDeclarations(Iterable<XVariableDeclaration> varDecs, JvmGenericType inferredJvmType, EObject scenario){
    		for(variableDec: varDecs){
-   			
-			var JvmTypeReference type;
-			if (variableDec.getType != null) {
-				type = variableDec.getType;
-			} else {
-				type = getType(variableDec.getRight);
+   			if(variableDec.name != STEPARGUMENTS){
+				var JvmTypeReference type;
+				if (variableDec.getType != null) {
+					type = variableDec.getType;
+				} else {
+					type = getType(variableDec.getRight);
+				}
+				var field = scenario.toField(variableDec.getSimpleName(), type)
+				if (!variableDec.isWriteable()) {
+					field.setFinal(true)
+				}
+				field.setVisibility(JvmVisibility::PUBLIC)
+				inferredJvmType.members += field
 			}
-			var field = scenario.toField(variableDec.getSimpleName(), type)
-			if (!variableDec.isWriteable()) {
-				field.setFinal(true)
-			}
-			field.setVisibility(JvmVisibility::PUBLIC)
-			inferredJvmType.members += field
 		}
    	}
    	
@@ -217,10 +231,8 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	def transformCalls(Step step, JvmGenericType inferredJvmType, int order){
    		val methodName = step.nameOf.javaMethodName
    		inferredJvmType.members += step.toMethod(methodName, getTypeForName(Void::TYPE, step))[
-			body = [
-				'''
-				super.«methodName»();
-				'''
+			body = [ITreeAppendable a |
+						a.append("super." + methodName + "();")
 			]
 			annotations += step.getTestAnnotations(null, false)
 			annotations += step.toAnnotation(typeof(Order), order.intValue)
@@ -229,24 +241,51 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		order + 1
    	}
    	
-   	def generateSteps(EList<XtendMember> steps, JvmGenericType inferredJvmType, int start){
+   	def generateSteps(EList<XtendMember> steps, JvmGenericType inferredJvmType, int start, Scenario scenario){
 		var order = start
 		for (step : steps) {
-			order = transform(step as Step, inferredJvmType, order)
+			order = transform(step as Step, inferredJvmType, order, scenario)
 			for(and: (step as Step).and){
-				order = transform(and as Step, inferredJvmType, order)
+				order = transform(and as Step, inferredJvmType, order, scenario)
 			}
 		}
    	}
    	
-   	def transform(Step step, JvmGenericType inferredJvmType, int order) {
+	def transform(Step step, JvmGenericType inferredJvmType, int order, Scenario scenario) {
+
 		inferredJvmType.members += step.toMethod(step.nameOf.javaMethodName, getTypeForName(Void::TYPE, step))[
-			body = step.expressionOf?.blockExpression
+			var exp = step.expressionOf?.blockExpression
+			
+			var argsExists = false
+			if(exp != null){
+				var decs = filter(exp.expressions.iterator, typeof(XVariableDeclaration))
+				for(dec: decs.toIterable){
+					if(dec.name == STEPARGUMENTS){
+						argsExists = true
+						
+					}
+				}
+				if(argsExists){
+					exp.expressions += generateStepArgsVariable(scenario)	
+				}
+			}
+			body = exp
 			annotations += step.getTestAnnotations(null, false)
 			annotations += step.toAnnotation(typeof(Order), order.intValue)
 			annotations += step.toAnnotation(typeof(Named), step.nameOf)
 		]	
 		order + 1
+	}
+	
+	def generateStepArgsVariable(Scenario scenario){
+		var variableDec = XbaseFactory::eINSTANCE.createXVariableDeclaration
+		variableDec.setName(STEPARGUMENTS)
+		var constructor = XbaseFactory::eINSTANCE.createXConstructorCall
+		val declaringType = getTypeForName(typeof(StepArguments), scenario).type as JvmGenericType
+		associator.associate(scenario, declaringType)
+		constructor.constructor = filter(declaringType.members.iterator, typeof(JvmConstructor)).next
+		variableDec.right = constructor
+		variableDec
 	}
    	
    	def generateSteps(EList<XtendMember> steps, JvmGenericType inferredJvmType){
@@ -305,21 +344,20 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 
 	def generateExampleConstructor(ExampleRow row, EList<ExampleColumn> fields, String className){
 		row.toConstructor[
-			visibility = JvmVisibility::PUBLIC
-			body = [ITreeAppendable appendable |
+			simpleName = className
+			body = [ITreeAppendable a |
 				var i = 0
 				for(field: fields){
-					appendable.append("super.")
-					appendable.append(field.name)
-					appendable.append(" = ")
-					cellToAppendable(row, i, appendable)
-					appendable.append(";\n")
+					a.append("super.")
+					a.append(field.name)
+					a.append(" = ")
+					cellToAppendable(row, i, a)
+					a.append(";\n")
 					i = i + 1
 				}
 			]
 		]
 	}
-	
 	
 	// based on XtendJvmModelInferrer which does not use source.getAnnotations()
 	// which checks if annotationInfos is null

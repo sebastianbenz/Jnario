@@ -15,7 +15,10 @@ import org.eclipse.xtext.common.types.util.Primitives.Primitive;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
+import org.eclipse.xtext.xbase.compiler.IAppendable;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
+import org.jnario.feature.jvmmodel.FeatureJvmModelInferrer;
+import org.jnario.jvmmodel.JnarioJvmModelInferrer;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -64,13 +67,21 @@ public class FeatureCompiler extends XtendCompiler {
 		}
 		b.newLine();
 		JvmTypeReference type = null;
-		if (varDeclaration.getType() != null) {
-			type = varDeclaration.getType();
-		} else {
-			type = getTypeProvider().getType(varDeclaration.getRight());
-		}
+		
+		if(varDeclaration.getName() == FeatureJvmModelInferrer.STEPARGUMENTS){
+			// for step arguments only
+			if (varDeclaration.getType() != null) {
+				type = varDeclaration.getType();
+			} else {
+				type = getTypeProvider().getType(varDeclaration.getRight());
+			}
 
-		b.append(" ");
+			b.append(" ");
+			
+			serialize(type, varDeclaration, b);
+			b.append(" ");
+		}
+		
 		b.append(b.declareVariable(varDeclaration, varDeclaration.getName()));
 		b.append(" = ");
 		if (varDeclaration.getRight() != null) {
@@ -92,4 +103,5 @@ public class FeatureCompiler extends XtendCompiler {
 		}
 		b.append(";");
 	}
+
 }

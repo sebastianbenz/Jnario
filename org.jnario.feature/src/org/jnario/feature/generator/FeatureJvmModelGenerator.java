@@ -8,6 +8,7 @@
 package org.jnario.feature.generator;
 
 import org.eclipse.xtext.common.types.JvmExecutable;
+import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.jvmmodel.ILogicalContainerProvider;
 import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
@@ -26,7 +27,7 @@ public class FeatureJvmModelGenerator extends ExtendedJvmModelGenerator {
 	 */
 	@Override
 	public void generateExecutableBody(JvmExecutable op, ITreeAppendable appendable) {
-		if(compilationStrategy(op) == null){
+		if(compilationStrategy(op) == null && logicalContainerProvider.getAssociatedExpression(op) == null && op instanceof JvmOperation){
 			appendable.openScope();
 			appendable.increaseIndentation().append("{").newLine();
 			appendable.decreaseIndentation().newLine().append("}");
