@@ -54,7 +54,7 @@ import org.eclipse.xtext.common.types.JvmOperation
  */
 class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 	
-	public static String STEP_VALUES = "stepValues"
+	public static String STEP_VALUES = "args"
 
 	@Inject extension ExtendedJvmTypesBuilder
 	
@@ -204,11 +204,11 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 	}
 	
 	def addStepValue(XMemberFeatureCall featureCall, XVariableDeclaration dec, Scenario scenario){
-		var typeRef = getTypeForName(typeof(ArrayList), scenario)
+		var typeRef = getTypeForName(typeof(StepArguments), scenario)
 		var type = typeRef.type as JvmGenericType
 		var operations = filter(type.members.iterator, typeof(JvmOperation))
 		for(operation: operations.toIterable){
-			if(operation.simpleName == "add" && operation.parameters.size == 1){
+			if(operation.simpleName == "add"){
 				featureCall.feature = operation
 			}
 		}

@@ -8,31 +8,42 @@
 
 package org.jnario.feature.jvmmodel;
 
+import static com.google.common.collect.Lists.*;
 import java.util.ArrayList;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
-public class StepArguments extends ArrayList<String>{
+public class StepArguments {
+	
+	private ArrayList<String> values = newArrayList();
+	
+	public void add(String value){
+		values.add(value);
+	}
+	
+	public String get(int index){
+		return values.get(index);
+	}
 	
 	public String first(){
-		return this.get(0);
+		return values.get(0);
 	}
 	
 	public String second(){
-		return this.get(1);
+		return values.get(1);
 	}
 	
 	public String third(){
-		return this.get(2);
+		return values.get(2);
 	}
 	
 	public String forth(){
-		return this.get(3);
+		return values.get(3);
 	}
 	
 	public String fifth(){
-		return this.get(4);
+		return values.get(4);
 	}
 	
 }

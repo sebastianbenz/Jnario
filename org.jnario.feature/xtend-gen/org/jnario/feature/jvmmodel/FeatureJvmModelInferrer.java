@@ -18,7 +18,6 @@ import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
 import org.eclipse.xtext.common.types.JvmConstructor;
 import org.eclipse.xtext.common.types.JvmField;
-import org.eclipse.xtext.common.types.JvmFormalParameter;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.common.types.JvmMember;
@@ -68,7 +67,7 @@ import org.jnario.runner.Order;
  */
 @SuppressWarnings("all")
 public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
-  public static String STEP_VALUES = "stepValues";
+  public static String STEP_VALUES = "args";
   
   @Inject
   private ExtendedJvmTypesBuilder _extendedJvmTypesBuilder;
@@ -322,7 +321,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   }
   
   public void addStepValue(final XMemberFeatureCall featureCall, final XVariableDeclaration dec, final Scenario scenario) {
-    JvmTypeReference typeRef = this._typeReferences.getTypeForName(ArrayList.class, scenario);
+    JvmTypeReference typeRef = this._typeReferences.getTypeForName(StepArguments.class, scenario);
     JvmType _type = typeRef.getType();
     JvmGenericType type = ((JvmGenericType) _type);
     EList<JvmMember> _members = type.getMembers();
@@ -330,18 +329,9 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     UnmodifiableIterator<JvmOperation> operations = Iterators.<JvmOperation>filter(_iterator, JvmOperation.class);
     Iterable<JvmOperation> _iterable = IteratorExtensions.<JvmOperation>toIterable(operations);
     for (final JvmOperation operation : _iterable) {
-      boolean _and = false;
       String _simpleName = operation.getSimpleName();
       boolean _equals = Objects.equal(_simpleName, "add");
-      if (!_equals) {
-        _and = false;
-      } else {
-        EList<JvmFormalParameter> _parameters = operation.getParameters();
-        int _size = _parameters.size();
-        boolean _equals_1 = (_size == 1);
-        _and = (_equals && _equals_1);
-      }
-      if (_and) {
+      if (_equals) {
         featureCall.setFeature(operation);
       }
     }
