@@ -16,13 +16,18 @@ import org.eclipse.xtend.core.xtend.XtendFunction
 import org.eclipse.xtext.common.types.JvmAnnotationReference
 import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmGenericType
+import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.util.Strings
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
+import org.eclipse.xtext.xbase.lib.CollectionLiterals
+import org.jnario.CollectionLiteral
 import org.jnario.ExampleTable
+import org.jnario.ListLiteral
+import org.jnario.SetLiteral
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder
 import org.jnario.jvmmodel.JnarioJvmModelInferrer
 import org.jnario.jvmmodel.JunitAnnotationProvider
@@ -39,14 +44,7 @@ import org.jnario.spec.spec.ExampleGroup
 import org.jnario.spec.spec.SpecFile
 import org.jnario.spec.spec.TestFunction
 
-import static extension org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
 import static extension org.eclipse.xtext.util.Strings.*
-import org.jnario.CollectionLiteral
-import org.jnario.SetLiteral
-import org.jnario.ListLiteral
-import org.eclipse.xtext.xbase.lib.CollectionExtensions
-import org.eclipse.xtext.common.types.JvmOperation
-import org.eclipse.xtext.xbase.lib.CollectionLiterals
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -301,9 +299,4 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 	def columnNames(ExampleTable exampleTable){
 		exampleTable.columns.map[it?.name]
 	}
-	
-	def serialize(EObject obj){
-		return obj.node?.text
-	}
-
 }

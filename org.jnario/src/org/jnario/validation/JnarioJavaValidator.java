@@ -86,7 +86,7 @@ public class JnarioJavaValidator extends AbstractDeclarativeValidator {
 	@Check
 	public void checkExampleHeaderAndRowsHaveSameColumnNumber(ExampleTable exampleTable){
 		if(!exampleTable.isValid()){
-			error("Examples rows have to have the same number of columns", null);
+			error("Examples rows have to have the same number of columns", JnarioPackage.Literals.EXAMPLE_TABLE__NAME);
 		}
 	}
 

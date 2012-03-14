@@ -16,15 +16,14 @@ import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.common.types.util.TypeConformanceComputer
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler
-import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.eclipse.xtext.xbase.typing.ITypeProvider
 import org.jnario.ExampleColumn
-import org.jnario.ExampleRow
 import org.jnario.runner.Named
 
 import static com.google.common.base.Predicates.*
+import static extension org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
 
 import static extension com.google.common.collect.Iterables.*
 
@@ -75,16 +74,13 @@ class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
 		}
 		return column.type
 	}
-	
-	def cellToAppendable(ExampleRow row, int i, ITreeAppendable appendable){
-		if(row.getCells.size > i){
-			compiler.toJavaExpression(row.getCells.get(i), appendable)
-		}
-		appendable
-	}
 
 	override infer(EObject e, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
 		throw new UnsupportedOperationException("Auto-generated function stub")
+	}
+	
+	def serialize(EObject obj){
+		return obj.node?.text
 	}
 	
 }

@@ -34,7 +34,6 @@ import org.eclipse.xtext.xbase.XFeatureCall;
 import org.eclipse.xtext.xbase.XMemberFeatureCall;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
-import org.eclipse.xtext.xbase.compiler.output.FakeTreeAppendable;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator;
@@ -45,9 +44,13 @@ import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
+import org.jnario.feature.feature.And;
+import org.jnario.feature.feature.AndReference;
 import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeatureFile;
+import org.jnario.feature.feature.Given;
+import org.jnario.feature.feature.GivenReference;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepExpression;
@@ -61,6 +64,7 @@ import org.jnario.jvmmodel.JunitAnnotationProvider;
 import org.jnario.runner.Contains;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Ignore;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -500,10 +504,68 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
             int _intValue = Integer.valueOf(order).intValue();
             JvmAnnotationReference _annotation = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(step, Order.class, Integer.valueOf(_intValue));
             _annotations_1.add(_annotation);
-            EList<JvmAnnotationReference> _annotations_2 = it.getAnnotations();
-            String _nameOf = FeatureJvmModelInferrer.this._stepNameProvider.nameOf(step);
-            JvmAnnotationReference _annotation_1 = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(step, Named.class, _nameOf);
-            _annotations_2.add(_annotation_1);
+            String name = FeatureJvmModelInferrer.this._stepNameProvider.nameOf(step);
+            StepExpression _expressionOf_1 = FeatureJvmModelInferrer.this._stepExpressionProvider.expressionOf(step);
+            boolean _equals = Objects.equal(_expressionOf_1, null);
+            if (_equals) {
+              boolean _and = false;
+              boolean _and_1 = false;
+              boolean _and_2 = false;
+              if (!(step instanceof Given)) {
+                _and_2 = false;
+              } else {
+                _and_2 = ((step instanceof Given) && (step instanceof GivenReference));
+              }
+              if (!_and_2) {
+                _and_1 = false;
+              } else {
+                boolean _and_3 = false;
+                if (!(step instanceof And)) {
+                  _and_3 = false;
+                } else {
+                  boolean _or = false;
+                  EObject _eContainer = step.eContainer();
+                  if ((_eContainer instanceof Given)) {
+                    _or = true;
+                  } else {
+                    EObject _eContainer_1 = step.eContainer();
+                    _or = ((_eContainer instanceof Given) || (_eContainer_1 instanceof GivenReference));
+                  }
+                  _and_3 = ((step instanceof And) && _or);
+                }
+                _and_1 = (_and_2 && _and_3);
+              }
+              if (!_and_1) {
+                _and = false;
+              } else {
+                boolean _and_4 = false;
+                if (!(step instanceof AndReference)) {
+                  _and_4 = false;
+                } else {
+                  boolean _or_1 = false;
+                  EObject _eContainer_2 = step.eContainer();
+                  if ((_eContainer_2 instanceof Given)) {
+                    _or_1 = true;
+                  } else {
+                    EObject _eContainer_3 = step.eContainer();
+                    _or_1 = ((_eContainer_2 instanceof Given) || (_eContainer_3 instanceof GivenReference));
+                  }
+                  _and_4 = ((step instanceof AndReference) && _or_1);
+                }
+                _and = (_and_1 && _and_4);
+              }
+              boolean _not = (!_and);
+              if (_not) {
+                String _plus = ("[PENDING] " + name);
+                name = _plus;
+                EList<JvmAnnotationReference> _annotations_2 = it.getAnnotations();
+                JvmAnnotationReference _annotation_1 = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(step, Ignore.class);
+                _annotations_2.add(_annotation_1);
+              }
+            }
+            EList<JvmAnnotationReference> _annotations_3 = it.getAnnotations();
+            JvmAnnotationReference _annotation_2 = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(step, Named.class, name);
+            _annotations_3.add(_annotation_2);
           }
         };
       JvmOperation _method = this._extendedJvmTypesBuilder.toMethod(step, _javaMethodName, _typeForName, _function);
@@ -612,14 +674,17 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
             String description = (_plus_3 + " [");
             int i = 0;
             for (final ExampleColumn field : fields) {
-              {
-                FakeTreeAppendable _fakeTreeAppendable = new FakeTreeAppendable(null);
-                final ITreeAppendable appendable = _fakeTreeAppendable;
+              EList<XExpression> _cells = row.getCells();
+              int _size = _cells.size();
+              boolean _greaterThan = (_size > i);
+              if (_greaterThan) {
                 String _name = field.getName();
                 String _plus_4 = (description + _name);
                 String _plus_5 = (_plus_4 + " = ");
-                ITreeAppendable _cellToAppendable = FeatureJvmModelInferrer.this.cellToAppendable(row, i, appendable);
-                String _plus_6 = (_plus_5 + _cellToAppendable);
+                EList<XExpression> _cells_1 = row.getCells();
+                XExpression _get = _cells_1.get(i);
+                String _serialize = FeatureJvmModelInferrer.this.serialize(_get);
+                String _plus_6 = (_plus_5 + _serialize);
                 String _plus_7 = (_plus_6 + ", ");
                 description = _plus_7;
                 int _plus_8 = (i + 1);
@@ -630,16 +695,31 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
             int _minus = (_length - 1);
             int _minus_1 = (_minus - 1);
             String _substring = description.substring(0, _minus_1);
-            String _plus_4 = (_substring + "]");
-            description = _plus_4;
+            String _plus_9 = (_substring + "]");
+            description = _plus_9;
             EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
-            String _replace = description.replace("\"", "\\\"");
-            JvmAnnotationReference _annotation = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(row, Named.class, _replace);
+            JvmAnnotationReference _annotation = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(row, Named.class, description);
             _annotations_1.add(_annotation);
           }
         };
       JvmGenericType _class = this._extendedJvmTypesBuilder.toClass(row, className, _function);
       _xblockexpression = (_class);
+    }
+    return _xblockexpression;
+  }
+  
+  public ITreeAppendable cellToAppendable(final ExampleRow row, final int i, final ITreeAppendable appendable) {
+    ITreeAppendable _xblockexpression = null;
+    {
+      EList<XExpression> _cells = row.getCells();
+      int _size = _cells.size();
+      boolean _greaterThan = (_size > i);
+      if (_greaterThan) {
+        EList<XExpression> _cells_1 = row.getCells();
+        XExpression _get = _cells_1.get(i);
+        this.compiler.toJavaExpression(_get, appendable);
+      }
+      _xblockexpression = (appendable);
     }
     return _xblockexpression;
   }

@@ -37,6 +37,10 @@ public class FeatureLazyLinker extends JnarioLazyLinker {
 	protected void beforeModelLinked(EObject model,
 			IDiagnosticConsumer diagnosticsConsumer) {
 		super.beforeModelLinked(model, diagnosticsConsumer);
+		generateStepValues(model);
+	}
+
+	private void generateStepValues(EObject model) {
 		List<Step> steps = EcoreUtil2.getAllContentsOfType(model, Step.class);
 		for(Step step: steps){
 			String name = step.getName();
@@ -53,7 +57,7 @@ public class FeatureLazyLinker extends JnarioLazyLinker {
 					}while(matcher.find());
 				}
 			}
-		}
+		}		
 	}
 
 	private XVariableDeclaration createVariableForStepArguments(){

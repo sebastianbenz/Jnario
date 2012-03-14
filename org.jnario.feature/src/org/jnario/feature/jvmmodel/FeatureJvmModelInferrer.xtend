@@ -16,21 +16,27 @@ import org.eclipse.xtend.core.xtend.XtendField
 import org.eclipse.xtend.core.xtend.XtendMember
 import org.eclipse.xtext.common.types.JvmConstructor
 import org.eclipse.xtext.common.types.JvmGenericType
+import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.xbase.XConstructorCall
+import org.eclipse.xtext.xbase.XFeatureCall
+import org.eclipse.xtext.xbase.XMemberFeatureCall
 import org.eclipse.xtext.xbase.XVariableDeclaration
-import org.eclipse.xtext.xbase.compiler.output.FakeTreeAppendable
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator
 import org.eclipse.xtext.xbase.typing.ITypeProvider
 import org.jnario.ExampleColumn
 import org.jnario.ExampleRow
+import org.jnario.feature.feature.And
+import org.jnario.feature.feature.AndReference
 import org.jnario.feature.feature.Background
 import org.jnario.feature.feature.Feature
 import org.jnario.feature.feature.FeatureFile
+import org.jnario.feature.feature.Given
+import org.jnario.feature.feature.GivenReference
 import org.jnario.feature.feature.Scenario
 import org.jnario.feature.feature.Step
 import org.jnario.feature.naming.JavaNameProvider
@@ -45,9 +51,7 @@ import org.jnario.runner.Order
 
 import static com.google.common.collect.Iterators.*
 import static org.jnario.feature.jvmmodel.FeatureJvmModelInferrer.*
-import org.eclipse.xtext.xbase.XMemberFeatureCall
-import org.eclipse.xtext.xbase.XFeatureCall
-import org.eclipse.xtext.common.types.JvmOperation
+import org.junit.Ignore
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -295,7 +299,18 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			body = step.expressionOf?.blockExpression
 			annotations += step.getTestAnnotations(null, false)
 			annotations += step.toAnnotation(typeof(Order), order.intValue)
-			annotations += step.toAnnotation(typeof(Named), step.nameOf)
+			var name = step.nameOf
+			if(step.expressionOf == null){
+				if((!(step instanceof Given 
+					&& step instanceof GivenReference
+					&& (step instanceof And && (step.eContainer instanceof Given || step.eContainer instanceof GivenReference))
+					&& (step instanceof AndReference && (step.eContainer instanceof Given || step.eContainer instanceof GivenReference)))
+				)){
+					name = "[PENDING] " + name
+					annotations += step.toAnnotation(typeof(Ignore))
+				}
+			}
+			annotations += step.toAnnotation(typeof(Named), name)
 		]	
 		order + 1
 	}
@@ -346,13 +361,21 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			var description = "ExampleTable " + exampleTable + ", " + "Example " + exampleNumber + " ["
 			var i = 0
 			for(field: fields){
-				val ITreeAppendable appendable = new FakeTreeAppendable(null)
-				description = description + field.name + " = " + cellToAppendable(row, i, appendable) + ", "
-				i = i + 1
+				if(row.cells.size > i){
+					description = description + field.name + " = " + row.cells.get(i).serialize + ", "
+					i = i + 1
+				}
 			}
 			description = description.substring(0, description.length - 1 - 1) + "]"
-			annotations += row.toAnnotation(typeof(Named), description.replace("\"", "\\\""))
+			annotations += row.toAnnotation(typeof(Named), description)
 		]
+	}
+	
+	def cellToAppendable(ExampleRow row, int i, ITreeAppendable appendable){
+		if(row.cells.size > i){
+			compiler.toJavaExpression(row.cells.get(i), appendable)
+		}
+		appendable
 	}
 
 	def generateExampleConstructor(ExampleRow row, EList<ExampleColumn> fields, String className){

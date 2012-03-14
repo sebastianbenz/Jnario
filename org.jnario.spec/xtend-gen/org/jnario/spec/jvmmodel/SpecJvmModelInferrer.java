@@ -31,8 +31,6 @@ import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.common.types.util.TypeReferences;
-import org.eclipse.xtext.nodemodel.ICompositeNode;
-import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
@@ -557,11 +555,6 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
       };
     List<String> _map = ListExtensions.<ExampleColumn, String>map(_columns, _function);
     return _map;
-  }
-  
-  public String serialize(final EObject obj) {
-    ICompositeNode _node = NodeModelUtils.getNode(obj);
-    return _node==null?(String)null:_node.getText();
   }
   
   public void setFeature(final CollectionLiteral literal) {
