@@ -11,7 +11,10 @@
 package org.jnario.feature.ui.contentassist;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.xtext.RuleCall;
+import org.eclipse.xtext.common.types.JvmFeature;
+import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 
@@ -60,5 +63,14 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 	public void complete_EXAMPLE_TEXT(EObject model, RuleCall ruleCall,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		acceptor.accept(createCompletionProposal("Examples: ", context));
+	}
+	
+	@Override
+	protected StyledString getStyledDisplayString(JvmFeature feature, boolean withParenths, int insignificantParameters, String qualifiedNameAsString, String shortName) {
+		if (feature instanceof JvmField && ((JvmField) feature).getType() == null) {
+			// happens for XVariableDelarations that become a JvmField and don't have a type yet
+			return new StyledString(shortName);
+		}
+		return super.getStyledDisplayString(feature, withParenths, insignificantParameters, qualifiedNameAsString, shortName);
 	}
 }
