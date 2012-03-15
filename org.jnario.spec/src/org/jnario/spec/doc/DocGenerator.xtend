@@ -153,7 +153,9 @@ class DocGenerator implements IGenerator {
 			docString = docString.markdown2Html
 		}
 		'''
+			«IF example.name != null || example.exception != null»
 			<h4>«example.asTitle»</h4>
+			«ENDIF»
 			<p>
 			«docString»
 			«IF !example.pending»
@@ -210,7 +212,7 @@ class DocGenerator implements IGenerator {
 		for(filter : filters){
 			code = filter.apply(code)
 		}
-		code = code.substring(1, code.length-2) 
+		code = code.substring(1, code.length-1) 
 		return code.normalize.toHtml
 	}
 	

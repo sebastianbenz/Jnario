@@ -14,6 +14,7 @@ import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.EcoreUtil2;
+import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
@@ -313,11 +314,25 @@ public class DocGenerator implements IGenerator {
         docString = _markdown2Html;
       }
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("<h4>");
-      String _asTitle = this.asTitle(example);
-      _builder.append(_asTitle, "");
-      _builder.append("</h4>");
-      _builder.newLineIfNotEmpty();
+      {
+        boolean _or = false;
+        String _name = example.getName();
+        boolean _notEquals_1 = (!Objects.equal(_name, null));
+        if (_notEquals_1) {
+          _or = true;
+        } else {
+          JvmDeclaredType _exception = example.getException();
+          boolean _notEquals_2 = (!Objects.equal(_exception, null));
+          _or = (_notEquals_1 || _notEquals_2);
+        }
+        if (_or) {
+          _builder.append("<h4>");
+          String _asTitle = this.asTitle(example);
+          _builder.append(_asTitle, "");
+          _builder.append("</h4>");
+          _builder.newLineIfNotEmpty();
+        }
+      }
       _builder.append("<p>");
       _builder.newLine();
       _builder.append(docString, "");
@@ -464,7 +479,7 @@ public class DocGenerator implements IGenerator {
       code = _apply;
     }
     int _length = code.length();
-    int _minus = (_length - 2);
+    int _minus = (_length - 1);
     String _substring = code.substring(1, _minus);
     code = _substring;
     String _normalize = this._whiteSpaceNormalizer.normalize(code);
