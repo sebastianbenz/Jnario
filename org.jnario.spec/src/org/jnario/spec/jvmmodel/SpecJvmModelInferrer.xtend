@@ -220,7 +220,7 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 				visibility = JvmVisibility::PROTECTED
 			]
 
-			val constructor = table.toConstructor[]
+			val constructor = table.toConstructor[simpleName=exampleTableType.simpleName]
 			exampleTableType.members += constructor
 			val assignments = <String>newArrayList()
 			
