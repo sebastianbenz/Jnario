@@ -21,6 +21,21 @@ import com.google.inject.Singleton;
 public class FeatureTaskTokenTypeToPartitionTypeMapper extends TokenTypeToPartitionMapper{
 
 	public static final String NONE_CODE_PARTITION = "__no_code";
+	
+	private static final HashSet<String> noCodeTokens = Sets.newHashSet(
+			"RULE_SCENARIO_TEXT", 
+			"RULE_FEATURE_TEXT",
+			"RULE_IN_ORDER_TEXT",
+			"RULE_AS_A_TEXT",
+			"RULE_I_WANT_TEXT",
+			"RULE_GIVEN_TEXT",
+			"RULE_WHEN_TEXT",
+			"RULE_THEN_TEXT",
+			"RULE_AND_TEXT",
+			"RULE_BACKGROUND_TEXT",
+			"RULE_EXAMPLE_TEXT",
+			"RULE_ANY_OTHER",
+			"RULE_EXAMPLE_ROW_END");
 
 	protected static final String[] SUPPORTED_PARTITIONS = new String[]{
 		NONE_CODE_PARTITION
@@ -28,20 +43,6 @@ public class FeatureTaskTokenTypeToPartitionTypeMapper extends TokenTypeToPartit
 
 	@Override
 	protected String calculateId(String tokenName, int tokenType) {
-		HashSet<String> noCodeTokens = Sets.newHashSet(
-				"RULE_SCENARIO_TEXT", 
-				"RULE_FEATURE_TEXT",
-				"RULE_IN_ORDER_TEXT",
-				"RULE_AS_A_TEXT",
-				"RULE_I_WANT_TEXT",
-				"RULE_GIVEN_TEXT",
-				"RULE_WHEN_TEXT",
-				"RULE_THEN_TEXT",
-				"RULE_AND_TEXT",
-				"RULE_BACKGROUND_TEXT",
-				"RULE_EXAMPLE_TEXT",
-				"RULE_ANY_OTHER",
-				"RULE_EXAMPLE_ROW_END");
 		if(noCodeTokens.contains(tokenName)){
 			return NONE_CODE_PARTITION;
 		}
