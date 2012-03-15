@@ -27,6 +27,7 @@ import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.GivenReference;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
+import org.jnario.feature.feature.StepReference;
 import org.jnario.feature.feature.ThenReference;
 import org.jnario.feature.feature.WhenReference;
 import org.jnario.feature.feature.util.FeatureSwitch;
@@ -63,7 +64,7 @@ public class FeatureSemanticHighlightingCalculator extends XtendHighlightingCalc
 				description = getFirstWord(step.getName());
 				highlightStep(description, step, FeaturePackage.Literals.STEP__NAME);
 			}
-			else if(step instanceof GivenReference){
+			else if(step instanceof StepReference){
 				GivenReference ref = (GivenReference) step;
 				highlightFirstWordOfReference(ref, ref.getReference());
 			}else if(step instanceof WhenReference){
@@ -146,10 +147,19 @@ public class FeatureSemanticHighlightingCalculator extends XtendHighlightingCalc
 		}
 
 		private void highlightIdentifiers(Step step){
-			if(step.getName() != null){
-				Matcher m = IDENTIFIER.matcher(step.getName());
+			String name;
+			int offset;
+			if(step instanceof StepReference){
+				name = stepReferenceName(step, FeaturePackage.Literals.STEP_REFERENCE__REFERENCE);
+				offset = offset(step, FeaturePackage.Literals.STEP_REFERENCE__REFERENCE);
+			}
+			else{
+				name = step.getName();
+				offset = offset(step, FeaturePackage.Literals.STEP__NAME);
+			}
+			if(name != null){
+				Matcher m = IDENTIFIER.matcher(name);
 				while (m.find()) {
-					int offset = offset(step, FeaturePackage.Literals.STEP__NAME);
 					acceptor.addPosition(offset + m.start(1), m.end(1) - m.start(1), FeatureHighlightingConfiguration.IDENTIFIERS_ID);
 				} 
 			}

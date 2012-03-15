@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
 
-package org.jnario.feature.jvmmodel;
+package org.jnario.lib;
 
 import static com.google.common.collect.Lists.*;
 import java.util.ArrayList;

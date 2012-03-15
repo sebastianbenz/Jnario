@@ -53,6 +53,7 @@ import static com.google.common.collect.Iterators.*
 import static org.jnario.feature.jvmmodel.FeatureJvmModelInferrer.*
 import org.junit.Ignore
 import org.jnario.ExampleTable
+import org.jnario.lib.StepArguments
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
