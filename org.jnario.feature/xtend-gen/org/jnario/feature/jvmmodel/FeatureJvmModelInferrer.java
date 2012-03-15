@@ -159,13 +159,23 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           EList<EObject> _contents = _eResource.getContents();
           _contents.add(it);
           String _package = featureFile.getPackage();
-          it.setPackageName(_package);
+          String _generatePackageName = FeatureJvmModelInferrer.this.generatePackageName(_package);
+          it.setPackageName(_generatePackageName);
           EList<JvmAnnotationReference> _annotations = it.getAnnotations();
           JvmAnnotationReference _featureRunner = FeatureJvmModelInferrer.this.annotationProvider.getFeatureRunner(feature);
           _annotations.add(_featureRunner);
-          EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
-          JvmAnnotationReference _annotation = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(feature, Contains.class, scenarios);
-          _annotations_1.add(_annotation);
+          boolean _isEmpty = scenarios.isEmpty();
+          boolean _not = (!_isEmpty);
+          if (_not) {
+            EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
+            JvmAnnotationReference _annotation = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(feature, Contains.class, scenarios);
+            _annotations_1.add(_annotation);
+          }
+          EList<JvmAnnotationReference> _annotations_2 = it.getAnnotations();
+          String _name = feature.getName();
+          String _trim = _name.trim();
+          JvmAnnotationReference _annotation_1 = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(feature, Named.class, _trim);
+          _annotations_2.add(_annotation_1);
         }
       };
     JvmGenericType _class = this._extendedJvmTypesBuilder.toClass(feature, _featureClassName, _function);
@@ -197,7 +207,8 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           _contents.add(it);
           FeatureJvmModelInferrer.this.addDefaultConstructor(feature, it);
           String _package = featureFile.getPackage();
-          it.setPackageName(_package);
+          String _generatePackageName = FeatureJvmModelInferrer.this.generatePackageName(_package);
+          it.setPackageName(_generatePackageName);
           it.setAbstract(true);
           Background _background = feature.getBackground();
           FeatureJvmModelInferrer.this.generateBackgroundVariables(_background, it);
@@ -225,7 +236,8 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
             JvmAnnotationReference _annotation = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(scenario, Named.class, _trim);
             _annotations.add(_annotation);
             String _package = featureFile.getPackage();
-            it.setPackageName(_package);
+            String _generatePackageName = FeatureJvmModelInferrer.this.generatePackageName(_package);
+            it.setPackageName(_generatePackageName);
             String _documentation = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.getDocumentation(scenario);
             FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.setDocumentation(it, _documentation);
             boolean hasBackground = false;
@@ -508,53 +520,53 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
             StepExpression _expressionOf_1 = FeatureJvmModelInferrer.this._stepExpressionProvider.expressionOf(step);
             boolean _equals = Objects.equal(_expressionOf_1, null);
             if (_equals) {
-              boolean _and = false;
-              boolean _and_1 = false;
-              boolean _and_2 = false;
-              if (!(step instanceof Given)) {
-                _and_2 = false;
+              boolean _or = false;
+              boolean _or_1 = false;
+              boolean _or_2 = false;
+              if ((step instanceof Given)) {
+                _or_2 = true;
               } else {
-                _and_2 = ((step instanceof Given) && (step instanceof GivenReference));
+                _or_2 = ((step instanceof Given) || (step instanceof GivenReference));
               }
-              if (!_and_2) {
-                _and_1 = false;
+              if (_or_2) {
+                _or_1 = true;
               } else {
-                boolean _and_3 = false;
+                boolean _and = false;
                 if (!(step instanceof And)) {
-                  _and_3 = false;
+                  _and = false;
                 } else {
-                  boolean _or = false;
+                  boolean _or_3 = false;
                   EObject _eContainer = step.eContainer();
                   if ((_eContainer instanceof Given)) {
-                    _or = true;
+                    _or_3 = true;
                   } else {
                     EObject _eContainer_1 = step.eContainer();
-                    _or = ((_eContainer instanceof Given) || (_eContainer_1 instanceof GivenReference));
+                    _or_3 = ((_eContainer instanceof Given) || (_eContainer_1 instanceof GivenReference));
                   }
-                  _and_3 = ((step instanceof And) && _or);
+                  _and = ((step instanceof And) && _or_3);
                 }
-                _and_1 = (_and_2 && _and_3);
+                _or_1 = (_or_2 || _and);
               }
-              if (!_and_1) {
-                _and = false;
+              if (_or_1) {
+                _or = true;
               } else {
-                boolean _and_4 = false;
+                boolean _and_1 = false;
                 if (!(step instanceof AndReference)) {
-                  _and_4 = false;
+                  _and_1 = false;
                 } else {
-                  boolean _or_1 = false;
+                  boolean _or_4 = false;
                   EObject _eContainer_2 = step.eContainer();
                   if ((_eContainer_2 instanceof Given)) {
-                    _or_1 = true;
+                    _or_4 = true;
                   } else {
                     EObject _eContainer_3 = step.eContainer();
-                    _or_1 = ((_eContainer_2 instanceof Given) || (_eContainer_3 instanceof GivenReference));
+                    _or_4 = ((_eContainer_2 instanceof Given) || (_eContainer_3 instanceof GivenReference));
                   }
-                  _and_4 = ((step instanceof AndReference) && _or_1);
+                  _and_1 = ((step instanceof AndReference) && _or_4);
                 }
-                _and = (_and_1 && _and_4);
+                _or = (_or_1 || _and_1);
               }
-              boolean _not = (!_and);
+              boolean _not = (!_or);
               if (_not) {
                 String _plus = ("[PENDING] " + name);
                 name = _plus;
@@ -638,19 +650,31 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     return _xblockexpression;
   }
   
-  public JvmGenericType createExampleClass(final Scenario scenario, final FeatureFile featureFile, final ExampleRow row, final EList<ExampleColumn> fields, final int exampleTable, final int exampleNumber, final JvmGenericType inferredJvmType) {
+  public JvmGenericType createExampleClass(final Scenario scenario, final FeatureFile featureFile, final ExampleRow row, final EList<ExampleColumn> fields, final int exampleTableNum, final int exampleNumber, final JvmGenericType inferredJvmType) {
     JvmGenericType _xblockexpression = null;
     {
+      EObject _eContainer = row.eContainer();
+      ExampleTable exampleTable = ((ExampleTable) _eContainer);
+      String exampleTableName = "";
+      String _name = exampleTable.getName();
+      String _trim = _name.trim();
+      boolean _equals = Objects.equal(_trim, "");
+      if (_equals) {
+        String _plus = ("Examples" + Integer.valueOf(exampleTableNum));
+        exampleTableName = _plus;
+      } else {
+        String _name_1 = exampleTable.getName();
+        String _javaClassName = this._javaNameProvider.getJavaClassName(_name_1);
+        exampleTableName = _javaClassName;
+      }
       XtendClass _xtendClass = featureFile.getXtendClass();
-      String _name = _xtendClass.getName();
-      String _featureClassName = this._javaNameProvider.getFeatureClassName(_name);
-      String _name_1 = scenario.getName();
-      String _scenarioClassName = this._javaNameProvider.getScenarioClassName(_name_1);
-      String _plus = (_featureClassName + _scenarioClassName);
-      String _plus_1 = (_plus + "ExampleTable");
-      String _plus_2 = (_plus_1 + Integer.valueOf(exampleTable));
-      String _plus_3 = (_plus_2 + "Example");
-      final String className = (_plus_3 + Integer.valueOf(exampleNumber));
+      String _name_2 = _xtendClass.getName();
+      String _featureClassName = this._javaNameProvider.getFeatureClassName(_name_2);
+      String _name_3 = scenario.getName();
+      String _scenarioClassName = this._javaNameProvider.getScenarioClassName(_name_3);
+      String _plus_1 = (_featureClassName + _scenarioClassName);
+      String _plus_2 = (_plus_1 + "Row");
+      final String className = (_plus_2 + Integer.valueOf(exampleNumber));
       final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
           public void apply(final JvmGenericType it) {
             EList<JvmTypeReference> _superTypes = it.getSuperTypes();
@@ -660,18 +684,15 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
             EList<EObject> _contents = _eResource.getContents();
             _contents.add(it);
             String _package = featureFile.getPackage();
-            it.setPackageName(_package);
+            String _generatePackageName = FeatureJvmModelInferrer.this.generatePackageName(_package);
+            it.setPackageName(_generatePackageName);
             EList<JvmMember> _members = it.getMembers();
             JvmConstructor _generateExampleConstructor = FeatureJvmModelInferrer.this.generateExampleConstructor(row, fields, className);
             _members.add(_generateExampleConstructor);
             EList<JvmAnnotationReference> _annotations = it.getAnnotations();
             JvmAnnotationReference _featureRunner = FeatureJvmModelInferrer.this.annotationProvider.getFeatureRunner(row);
             _annotations.add(_featureRunner);
-            String _plus = ("ExampleTable " + Integer.valueOf(exampleTable));
-            String _plus_1 = (_plus + ", ");
-            String _plus_2 = (_plus_1 + "Example ");
-            String _plus_3 = (_plus_2 + Integer.valueOf(exampleNumber));
-            String description = (_plus_3 + " [");
+            String description = "[";
             int i = 0;
             for (final ExampleColumn field : fields) {
               EList<XExpression> _cells = row.getCells();
@@ -679,24 +700,24 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
               boolean _greaterThan = (_size > i);
               if (_greaterThan) {
                 String _name = field.getName();
-                String _plus_4 = (description + _name);
-                String _plus_5 = (_plus_4 + " = ");
+                String _plus = (description + _name);
+                String _plus_1 = (_plus + " = ");
                 EList<XExpression> _cells_1 = row.getCells();
                 XExpression _get = _cells_1.get(i);
                 String _serialize = FeatureJvmModelInferrer.this.serialize(_get);
-                String _plus_6 = (_plus_5 + _serialize);
-                String _plus_7 = (_plus_6 + ", ");
-                description = _plus_7;
-                int _plus_8 = (i + 1);
-                i = _plus_8;
+                String _plus_2 = (_plus_1 + _serialize);
+                String _plus_3 = (_plus_2 + ", ");
+                description = _plus_3;
+                int _plus_4 = (i + 1);
+                i = _plus_4;
               }
             }
             int _length = description.length();
             int _minus = (_length - 1);
             int _minus_1 = (_minus - 1);
             String _substring = description.substring(0, _minus_1);
-            String _plus_9 = (_substring + "]");
-            description = _plus_9;
+            String _plus_5 = (_substring + "]");
+            description = _plus_5;
             EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
             JvmAnnotationReference _annotation = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(row, Named.class, description);
             _annotations_1.add(_annotation);
@@ -791,5 +812,20 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
       XExpression _initialValue = source.getInitialValue();
       this._extendedJvmTypesBuilder.setInitializer(field, _initialValue);
     }
+  }
+  
+  public String generatePackageName(final String packageName) {
+    boolean _or = false;
+    boolean _equals = Objects.equal(packageName, null);
+    if (_equals) {
+      _or = true;
+    } else {
+      boolean _equals_1 = Objects.equal(packageName, "");
+      _or = (_equals || _equals_1);
+    }
+    if (_or) {
+      return "features";
+    }
+    return packageName;
   }
 }

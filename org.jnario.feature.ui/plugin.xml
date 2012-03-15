@@ -10,7 +10,7 @@
             contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
             default="true"
             extensions="feature"
-            icon="icons/jnario_file.png"
+            icon="icons/feature_file.png"
             id="org.jnario.feature.Feature"
             name="Feature Editor">
         </editor>
@@ -638,7 +638,7 @@
 				id="org.jnarioToolbar">
 				<command
           commandId="org.jnario.feature.ui.showCodeCommand"
-          icon="icons/jnario.gif"
+          icon="icons/feature_button.gif"
           id="org.jnario.feature.ui.showCodeCommand"
           label="Show/Hide Code"
           style="toggle">

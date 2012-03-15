@@ -52,6 +52,7 @@ import org.jnario.runner.Order
 import static com.google.common.collect.Iterators.*
 import static org.jnario.feature.jvmmodel.FeatureJvmModelInferrer.*
 import org.junit.Ignore
+import org.jnario.ExampleTable
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -120,9 +121,11 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		feature.toClass(feature.name.featureClassName)[
    			feature.addDefaultConstructor(it);
    			featureFile.eResource.contents += it
-   			packageName = featureFile.^package
+   			packageName = featureFile.^package.generatePackageName
    			annotations += feature.featureRunner
-   			annotations += feature.toAnnotation(typeof(Contains), scenarios)
+   			if(!scenarios.empty)
+   				annotations += feature.toAnnotation(typeof(Contains), scenarios)
+   			annotations += feature.toAnnotation(typeof(Named), feature.name.trim)
    		]
    	}
    	
@@ -138,7 +141,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		feature.toClass(feature.name.featureClassName + "Background")[
    			featureFile.eResource.contents += it
    			feature.addDefaultConstructor(it)
-   			packageName = featureFile.^package
+   			packageName = featureFile.^package.generatePackageName
    			abstract = true
    			generateBackgroundVariables(feature.background, it)
    			feature.background.steps.generateSteps(it)
@@ -152,7 +155,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		scenario.toClass(className)[
    			featureFile.eResource.contents += it
 			annotations += scenario.toAnnotation(typeof(Named), scenario.name.trim)
-			packageName = featureFile.^package
+			packageName = featureFile.^package.generatePackageName
 			documentation = scenario.documentation
 			
 			var hasBackground = false
@@ -278,7 +281,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			]
 			annotations += step.getTestAnnotations(null, false)
 			annotations += step.toAnnotation(typeof(Order), order.intValue)
-			annotations += step.toAnnotation(typeof(Named), step.nameOf)
+			annotations += step.toAnnotation(typeof(Named),step.nameOf)
 		]	
 		order + 1
    	}
@@ -302,9 +305,9 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			var name = step.nameOf
 			if(step.expressionOf == null){
 				if((!(step instanceof Given 
-					&& step instanceof GivenReference
-					&& (step instanceof And && (step.eContainer instanceof Given || step.eContainer instanceof GivenReference))
-					&& (step instanceof AndReference && (step.eContainer instanceof Given || step.eContainer instanceof GivenReference)))
+					|| step instanceof GivenReference
+					|| (step instanceof And && (step.eContainer instanceof Given || step.eContainer instanceof GivenReference))
+					|| (step instanceof AndReference && (step.eContainer instanceof Given || step.eContainer instanceof GivenReference)))
 				)){
 					name = "[PENDING] " + name
 					annotations += step.toAnnotation(typeof(Ignore))
@@ -348,17 +351,24 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		exampleClasses
 	} 
 	
-	def createExampleClass(Scenario scenario, FeatureFile featureFile, ExampleRow row, EList<ExampleColumn> fields, int exampleTable, int exampleNumber, JvmGenericType inferredJvmType){
-		val className = featureFile.xtendClass.name.featureClassName + scenario.name.scenarioClassName + "ExampleTable" + exampleTable + "Example" + exampleNumber
+	def createExampleClass(Scenario scenario, FeatureFile featureFile, ExampleRow row, EList<ExampleColumn> fields, int exampleTableNum, int exampleNumber, JvmGenericType inferredJvmType){
+		var exampleTable  = row.eContainer as ExampleTable
+		var exampleTableName = ""
+		if(exampleTable.name.trim == ""){
+			exampleTableName = "Examples" + exampleTableNum
+		}else{
+			exampleTableName = exampleTable.name.javaClassName
+		}
+		val className = featureFile.xtendClass.name.featureClassName + scenario.name.scenarioClassName + "Row" + exampleNumber
 		
 		row.toClass(className)[
 			superTypes += inferredJvmType.createTypeRef
 			featureFile.eResource.contents += it
-			packageName = featureFile.^package
+			packageName = featureFile.^package.generatePackageName
 			members += row.generateExampleConstructor(fields, className)
 			annotations += row.featureRunner
 			
-			var description = "ExampleTable " + exampleTable + ", " + "Example " + exampleNumber + " ["
+			var description = "["
 			var i = 0
 			for(field: fields){
 				if(row.cells.size > i){
@@ -411,6 +421,14 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			setDocumentation(field, getDocumentation(source))
 			setInitializer(field, source.initialValue)
 		}
+	}
+	
+	
+	def generatePackageName(String packageName){
+		if(packageName == null || packageName == ""){
+			return "features"
+		}
+		return packageName
 	}
 
 }

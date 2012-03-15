@@ -31,7 +31,7 @@ import org.jnario.linking.JnarioLazyLinker;
  */
 public class FeatureLazyLinker extends JnarioLazyLinker {
 
-	private static Pattern ARG_PATTERN = Pattern.compile("\"([a-zA-Z0-9_]+)\"");
+	private static Pattern ARG_PATTERN = Pattern.compile("\"([a-zA-Z0-9_\\.]+)\"");
 
 	@Override
 	protected void beforeModelLinked(EObject model,

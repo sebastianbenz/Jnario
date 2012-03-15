@@ -37,7 +37,7 @@ import org.jnario.feature.feature.util.FeatureSwitch;
  */
 public class FeatureSemanticHighlightingCalculator extends XtendHighlightingCalculator {
 
-	private static final Pattern IDENTIFIER = Pattern.compile("\"([a-zA-Z0-9_]+)\"");
+	private static final Pattern IDENTIFIER = Pattern.compile("\"([a-zA-Z0-9_\\.]+)\"");
 
 	private class Implementation extends FeatureSwitch<Boolean> {
 
