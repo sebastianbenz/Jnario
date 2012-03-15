@@ -29,6 +29,7 @@ import org.eclipse.xtext.ui.editor.model.edit.IModificationContext;
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.eclipse.xtext.validation.Issue;
+import org.jnario.ui.quickfix.JnarioQuickFixProvider;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -37,62 +38,7 @@ import com.google.inject.Provider;
  * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
-public class SpecQuickfixProvider extends XtendQuickfixProvider {
+public class SpecQuickfixProvider extends JnarioQuickFixProvider {
 
-	@Inject Provider<NewXtendClassWizard> newXtendClassWizardProvider;
 	
-	@Override
-	public void createLinkingIssueResolutions(final Issue issue,
-			final IssueResolutionAcceptor issueResolutionAcceptor) {
-		final IModificationContext modificationContext = getModificationContextFactory().createModificationContext(
-				issue);
-		final IXtextDocument xtextDocument = modificationContext.getXtextDocument();
-		if (xtextDocument != null) {
-			xtextDocument.readOnly(new IUnitOfWork.Void<XtextResource>() {
-				@Override
-				public void process(XtextResource state) throws Exception {
-					EObject target = state.getEObject(issue.getUriToProblem().fragment());
-					EReference reference = getUnresolvedEReference(issue, target);
-					if (reference == null)
-						return;
-					
-					if(reference == TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE){
-						String issueString = xtextDocument.get(issue.getOffset(), issue.getLength());
-						
-						IModification modification = doFixMissingType(issueString);
-						issueResolutionAcceptor.accept(issue, "New Xtend Class", "Create a new Xtend Class '" + issueString + "'", "xtend_file.png", modification);
-					}
-				}
-
-				
-			});
-			super.createLinkingIssueResolutions(issue, issueResolutionAcceptor);
-		}
-	}
-	
-	
-	private IModification doFixMissingType(final String typeName) {
-		return new IModification() {
-			
-			public void apply(IModificationContext context) throws Exception {
-				runAsyncInDisplayThread(new Runnable(){
-
-					public void run() {
-						IWorkbench workbench = PlatformUI.getWorkbench(); 
-						Shell shell = workbench.getActiveWorkbenchWindow().getShell(); 
-						NewElementWizard newXtendClassWizard = newXtendClassWizardProvider.get();
-						newXtendClassWizard.addPages();
-						newXtendClassWizard.init(workbench, new StructuredSelection());
-						WizardDialog dialog = new WizardDialog(shell, newXtendClassWizard); 
-						dialog.create(); 
-						NewXtendClassWizardPage page = (NewXtendClassWizardPage) newXtendClassWizard.getStartingPage();
-						page.setTypeName(typeName, false);
-						dialog.open(); 
-					}
-					
-				});
-				
-			}
-		};
-	}
 }

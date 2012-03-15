@@ -9,11 +9,12 @@
 package org.jnario.feature.ui.quickfix;
 
 import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider;
+import org.jnario.ui.quickfix.JnarioQuickFixProvider;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
-public class FeatureQuickfixProvider extends DefaultQuickfixProvider {
+public class FeatureQuickfixProvider extends JnarioQuickFixProvider {
 
 //	@Fix(MyJavaValidator.INVALID_NAME)
 //	public void capitalizeName(final Issue issue, IssueResolutionAcceptor acceptor) {
