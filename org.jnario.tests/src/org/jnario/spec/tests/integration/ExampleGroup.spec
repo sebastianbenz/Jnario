@@ -33,7 +33,7 @@ describe ExampleGroup {
 		assertThat(execute(spec), successful)
 	} 
 	
-	"should be able to declare helper methods"{
+	it "should be able to declare helper methods"{
 		val spec = '
 			package bootstrap
 									
