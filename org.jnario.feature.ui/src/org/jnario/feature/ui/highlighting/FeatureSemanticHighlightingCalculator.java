@@ -65,16 +65,7 @@ public class FeatureSemanticHighlightingCalculator extends XtendHighlightingCalc
 				highlightStep(description, step, FeaturePackage.Literals.STEP__NAME);
 			}
 			else if(step instanceof StepReference){
-				GivenReference ref = (GivenReference) step;
-				highlightFirstWordOfReference(ref, ref.getReference());
-			}else if(step instanceof WhenReference){
-				WhenReference ref = (WhenReference) step;
-				highlightFirstWordOfReference(ref, ref.getReference());
-			}else if(step instanceof ThenReference){
-				ThenReference ref = (ThenReference) step;
-				highlightFirstWordOfReference(ref, ref.getReference());
-			}else if(step instanceof AndReference){
-				AndReference ref = (AndReference) step;
+				StepReference ref = (StepReference) step;
 				highlightFirstWordOfReference(ref, ref.getReference());
 			}
 
