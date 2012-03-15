@@ -23,6 +23,7 @@ import org.eclipse.xtend.core.validation.XtendEarlyExitValidator;
 import org.eclipse.xtext.conversion.IValueConverterService;
 import org.eclipse.xtext.generator.IFilePostProcessor;
 import org.eclipse.xtext.generator.IGenerator;
+import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.generator.OutputConfigurationProvider;
 import org.eclipse.xtext.linking.ILinker;
 import org.eclipse.xtext.linking.ILinkingService;
@@ -43,6 +44,7 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.scoping.featurecalls.StaticImplicitMethodsFeatureForTypeProvider.ExtensionClassNameProvider;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.eclipse.xtext.xbase.validation.EarlyExitValidator;
+import org.jnario.generator.JnarioJavaIoFileSystemAccess;
 import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.jvmmodel.JnarioDispatchUtil;
@@ -176,6 +178,9 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 	public Class<? extends ILinkingService> bindILinkingService() {
 		return JnarioLinkingService.class;
 	}
-		
+	
+	public Class<? extends JavaIoFileSystemAccess> bindJavaIoFileSystemAccess() {
+		return JnarioJavaIoFileSystemAccess.class;
+	}
 
 }

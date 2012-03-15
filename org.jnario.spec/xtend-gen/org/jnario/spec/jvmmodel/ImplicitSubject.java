@@ -1,5 +1,6 @@
 package org.jnario.spec.jvmmodel;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.UnmodifiableIterator;
@@ -19,12 +20,9 @@ import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.xbase.XFeatureCall;
-import org.eclipse.xtext.xbase.lib.BooleanExtensions;
-import org.eclipse.xtext.xbase.lib.CollectionExtensions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.runner.Subject;
@@ -41,15 +39,14 @@ public class ImplicitSubject {
   private ExtendedJvmTypesBuilder _extendedJvmTypesBuilder;
   
   public void addImplicitSubject(final JvmGenericType type, final ExampleGroup exampleGroup) {
-    JvmTypeReference _resolveTargetType = this.resolveTargetType(exampleGroup);
-    final JvmTypeReference targetType = _resolveTargetType;
+    final JvmTypeReference targetType = this.resolveTargetType(exampleGroup);
     boolean _or = false;
-    boolean _equals = ObjectExtensions.operator_equals(targetType, null);
+    boolean _equals = Objects.equal(targetType, null);
     if (_equals) {
       _or = true;
     } else {
       boolean _eIsProxy = targetType.eIsProxy();
-      _or = BooleanExtensions.operator_or(_equals, _eIsProxy);
+      _or = (_equals || _eIsProxy);
     }
     if (_or) {
       return;
@@ -67,7 +64,7 @@ public class ImplicitSubject {
         public void apply(final JvmField it) {
           EList<JvmAnnotationReference> _annotations = it.getAnnotations();
           JvmAnnotationReference _annotation = ImplicitSubject.this._extendedJvmTypesBuilder.toAnnotation(exampleGroup, Subject.class);
-          CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
+          ImplicitSubject.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
           it.setVisibility(JvmVisibility.PUBLIC);
         }
       };
@@ -77,56 +74,47 @@ public class ImplicitSubject {
   
   public JvmTypeReference resolveTargetType(final ExampleGroup exampleGroup) {
     JvmTypeReference _targetType = exampleGroup.getTargetType();
-    boolean _notEquals = ObjectExtensions.operator_notEquals(_targetType, null);
+    boolean _notEquals = (!Objects.equal(_targetType, null));
     if (_notEquals) {
       JvmTypeReference _targetType_1 = exampleGroup.getTargetType();
-      JvmTypeReference _cloneWithProxies = this._extendedJvmTypesBuilder.cloneWithProxies(_targetType_1);
-      return _cloneWithProxies;
+      return this._extendedJvmTypesBuilder.cloneWithProxies(_targetType_1);
     }
     EObject _eContainer = exampleGroup.eContainer();
-    ExampleGroup _containerOfType = EcoreUtil2.<ExampleGroup>getContainerOfType(_eContainer, ExampleGroup.class);
-    final ExampleGroup parentGroup = _containerOfType;
-    boolean _equals = ObjectExtensions.operator_equals(parentGroup, null);
+    final ExampleGroup parentGroup = EcoreUtil2.<ExampleGroup>getContainerOfType(_eContainer, ExampleGroup.class);
+    boolean _equals = Objects.equal(parentGroup, null);
     if (_equals) {
       return null;
     }
-    JvmTypeReference _resolveTargetType = this.resolveTargetType(parentGroup);
-    return _resolveTargetType;
+    return this.resolveTargetType(parentGroup);
   }
   
   public boolean hasSubject(final JvmGenericType type) {
     EList<JvmMember> _members = type.getMembers();
-    Iterable<JvmField> _filter = Iterables.<JvmField>filter(_members, JvmField.class);
-    final Iterable<JvmField> fields = _filter;
+    final Iterable<JvmField> fields = Iterables.<JvmField>filter(_members, JvmField.class);
     final Function1<JvmField,Boolean> _function = new Function1<JvmField,Boolean>() {
         public Boolean apply(final JvmField it) {
           String _simpleName = it.getSimpleName();
-          boolean _equals = ObjectExtensions.operator_equals(_simpleName, Constants.SUBJECT_FIELD_NAME);
+          boolean _equals = Objects.equal(_simpleName, Constants.SUBJECT_FIELD_NAME);
           return Boolean.valueOf(_equals);
         }
       };
-    JvmField _findFirst = IterableExtensions.<JvmField>findFirst(fields, _function);
-    final JvmField subjectField = _findFirst;
-    boolean _notEquals = ObjectExtensions.operator_notEquals(subjectField, null);
+    final JvmField subjectField = IterableExtensions.<JvmField>findFirst(fields, _function);
+    boolean _notEquals = (!Objects.equal(subjectField, null));
     if (_notEquals) {
       return true;
     }
     JvmTypeReference _extendedClass = type.getExtendedClass();
-    JvmType _type = _extendedClass==null?(JvmType)null:_extendedClass.getType();
-    final JvmType extendedClass = _type;
-    boolean _equals = ObjectExtensions.operator_equals(extendedClass, null);
+    final JvmType extendedClass = _extendedClass==null?(JvmType)null:_extendedClass.getType();
+    boolean _equals = Objects.equal(extendedClass, null);
     if (_equals) {
       return false;
     }
-    boolean _hasSubject = this.hasSubject(((JvmGenericType) extendedClass));
-    return _hasSubject;
+    return this.hasSubject(((JvmGenericType) extendedClass));
   }
   
   public boolean neverUsesSubject(final ExampleGroup exampleGroup) {
-    UnmodifiableIterator<XFeatureCall> _emptyIterator = Iterators.<XFeatureCall>emptyIterator();
-    Iterator<XFeatureCall> allFeatureCalls = _emptyIterator;
-    EList<XtendMember> _members = exampleGroup.getMembers();
-    final EList<XtendMember> members = _members;
+    Iterator<XFeatureCall> allFeatureCalls = Iterators.<XFeatureCall>emptyIterator();
+    final EList<XtendMember> members = exampleGroup.getMembers();
     Iterable<XtendFunction> _filter = Iterables.<XtendFunction>filter(members, XtendFunction.class);
     for (final XtendFunction example : _filter) {
       TreeIterator<EObject> _eAllContents = example.eAllContents();
@@ -144,12 +132,11 @@ public class ImplicitSubject {
     final Function1<XFeatureCall,Boolean> _function = new Function1<XFeatureCall,Boolean>() {
         public Boolean apply(final XFeatureCall it) {
           String _concreteSyntaxFeatureName = it.getConcreteSyntaxFeatureName();
-          boolean _equals = ObjectExtensions.operator_equals(_concreteSyntaxFeatureName, Constants.SUBJECT_FIELD_NAME);
+          boolean _equals = Objects.equal(_concreteSyntaxFeatureName, Constants.SUBJECT_FIELD_NAME);
           return Boolean.valueOf(_equals);
         }
       };
     XFeatureCall _findFirst = IteratorExtensions.<XFeatureCall>findFirst(allFeatureCalls, _function);
-    boolean _equals = ObjectExtensions.operator_equals(null, _findFirst);
-    return _equals;
+    return Objects.equal(null, _findFirst);
   }
 }

@@ -16,15 +16,14 @@ public class RegexFilter implements Filter {
   private Pattern pattern;
   
   public RegexFilter(final String regex) {
-      this.regex = regex;
-      Pattern _compile = Pattern.compile(regex, Pattern.DOTALL);
-      this.pattern = _compile;
+    this.regex = regex;
+    Pattern _compile = Pattern.compile(regex, Pattern.DOTALL);
+    this.pattern = _compile;
   }
   
   public String apply(final String input) {
     Matcher _matcher = this.pattern.matcher(input);
-    String _replaceAll = _matcher.replaceAll("");
-    return _replaceAll;
+    return _matcher.replaceAll("");
   }
   
   public String toString() {

@@ -1,7 +1,6 @@
 package org.jnario.feature.jvmmodel;
 
 import com.google.common.base.Objects;
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.UnmodifiableIterator;
 import com.google.inject.Inject;
@@ -140,7 +139,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
         final JvmGenericType clazz = this.infer(scenario, featureFile, className, backgroundClass);
         EList<JvmAnnotationReference> _annotations = clazz.getAnnotations();
         JvmAnnotationReference _runnerAnnotations = this.runnerAnnotations(scenario);
-        _annotations.add(_runnerAnnotations);
+        this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _runnerAnnotations);
         acceptor.<JvmGenericType>accept(clazz);
         scenarios.add(clazz);
       }
@@ -157,25 +156,25 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           FeatureJvmModelInferrer.this.addDefaultConstructor(feature, it);
           Resource _eResource = featureFile.eResource();
           EList<EObject> _contents = _eResource.getContents();
-          _contents.add(it);
+          FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmGenericType>operator_add(_contents, it);
           String _package = featureFile.getPackage();
           String _generatePackageName = FeatureJvmModelInferrer.this.generatePackageName(_package);
           it.setPackageName(_generatePackageName);
           EList<JvmAnnotationReference> _annotations = it.getAnnotations();
           JvmAnnotationReference _featureRunner = FeatureJvmModelInferrer.this.annotationProvider.getFeatureRunner(feature);
-          _annotations.add(_featureRunner);
+          FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _featureRunner);
           boolean _isEmpty = scenarios.isEmpty();
           boolean _not = (!_isEmpty);
           if (_not) {
             EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
             JvmAnnotationReference _annotation = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(feature, Contains.class, scenarios);
-            _annotations_1.add(_annotation);
+            FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_1, _annotation);
           }
           EList<JvmAnnotationReference> _annotations_2 = it.getAnnotations();
           String _name = feature.getName();
           String _trim = _name.trim();
           JvmAnnotationReference _annotation_1 = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(feature, Named.class, _trim);
-          _annotations_2.add(_annotation_1);
+          FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_2, _annotation_1);
         }
       };
     JvmGenericType _class = this._extendedJvmTypesBuilder.toClass(feature, _featureClassName, _function);
@@ -204,7 +203,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
         public void apply(final JvmGenericType it) {
           Resource _eResource = featureFile.eResource();
           EList<EObject> _contents = _eResource.getContents();
-          _contents.add(it);
+          FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmGenericType>operator_add(_contents, it);
           FeatureJvmModelInferrer.this.addDefaultConstructor(feature, it);
           String _package = featureFile.getPackage();
           String _generatePackageName = FeatureJvmModelInferrer.this.generatePackageName(_package);
@@ -229,12 +228,12 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           public void apply(final JvmGenericType it) {
             Resource _eResource = featureFile.eResource();
             EList<EObject> _contents = _eResource.getContents();
-            _contents.add(it);
+            FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmGenericType>operator_add(_contents, it);
             EList<JvmAnnotationReference> _annotations = it.getAnnotations();
             String _name = scenario.getName();
             String _trim = _name.trim();
             JvmAnnotationReference _annotation = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(scenario, Named.class, _trim);
-            _annotations.add(_annotation);
+            FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
             String _package = featureFile.getPackage();
             String _generatePackageName = FeatureJvmModelInferrer.this.generatePackageName(_package);
             it.setPackageName(_generatePackageName);
@@ -250,7 +249,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
               hasBackground = true;
               EList<JvmTypeReference> _superTypes = it.getSuperTypes();
               JvmParameterizedTypeReference _createTypeRef = FeatureJvmModelInferrer.this._typeReferences.createTypeRef(superClass);
-              _superTypes.add(_createTypeRef);
+              FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmParameterizedTypeReference>operator_add(_superTypes, _createTypeRef);
               Background _background_1 = feature.getBackground();
               EList<XtendMember> _steps = _background_1.getSteps();
               int _generateBackgroundStepCalls = FeatureJvmModelInferrer.this.generateBackgroundStepCalls(_steps, it);
@@ -269,7 +268,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
               if (_not_1) {
                 EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
                 JvmAnnotationReference _annotation_1 = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(scenario, Contains.class, exampleClasses);
-                _annotations_1.add(_annotation_1);
+                FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
               }
             }
           }
@@ -373,7 +372,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
             if (_not_1) {
               EList<JvmMember> _members = inferredJvmType.getMembers();
               JvmField _field = this.toField(field);
-              _members.add(_field);
+              this._extendedJvmTypesBuilder.<JvmField>operator_add(_members, _field);
               String _name_1 = field.getName();
               fieldNames.add(_name_1);
             }
@@ -419,7 +418,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
         }
         field.setVisibility(JvmVisibility.PUBLIC);
         EList<JvmMember> _members = inferredJvmType.getMembers();
-        _members.add(field);
+        this._extendedJvmTypesBuilder.<JvmField>operator_add(_members, field);
       }
     }
   }
@@ -463,19 +462,19 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
             FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, _function);
             EList<JvmAnnotationReference> _annotations = it.getAnnotations();
             ArrayList<JvmAnnotationReference> _testAnnotations = FeatureJvmModelInferrer.this.annotationProvider.getTestAnnotations(step, null, false);
-            Iterables.<JvmAnnotationReference>addAll(_annotations, _testAnnotations);
+            FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _testAnnotations);
             EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
             int _intValue = Integer.valueOf(order).intValue();
             JvmAnnotationReference _annotation = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(step, Order.class, Integer.valueOf(_intValue));
-            _annotations_1.add(_annotation);
+            FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_1, _annotation);
             EList<JvmAnnotationReference> _annotations_2 = it.getAnnotations();
             String _nameOf = FeatureJvmModelInferrer.this._stepNameProvider.nameOf(step);
             JvmAnnotationReference _annotation_1 = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(step, Named.class, _nameOf);
-            _annotations_2.add(_annotation_1);
+            FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_2, _annotation_1);
           }
         };
       JvmOperation _method = this._extendedJvmTypesBuilder.toMethod(step, methodName, _typeForName, _function);
-      _members.add(_method);
+      this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
       int _plus = (order + 1);
       _xblockexpression = (_plus);
     }
@@ -511,11 +510,11 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
             FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, _blockExpression);
             EList<JvmAnnotationReference> _annotations = it.getAnnotations();
             ArrayList<JvmAnnotationReference> _testAnnotations = FeatureJvmModelInferrer.this.annotationProvider.getTestAnnotations(step, null, false);
-            Iterables.<JvmAnnotationReference>addAll(_annotations, _testAnnotations);
+            FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _testAnnotations);
             EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
             int _intValue = Integer.valueOf(order).intValue();
             JvmAnnotationReference _annotation = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(step, Order.class, Integer.valueOf(_intValue));
-            _annotations_1.add(_annotation);
+            FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_1, _annotation);
             String name = FeatureJvmModelInferrer.this._stepNameProvider.nameOf(step);
             StepExpression _expressionOf_1 = FeatureJvmModelInferrer.this._stepExpressionProvider.expressionOf(step);
             boolean _equals = Objects.equal(_expressionOf_1, null);
@@ -572,16 +571,16 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
                 name = _plus;
                 EList<JvmAnnotationReference> _annotations_2 = it.getAnnotations();
                 JvmAnnotationReference _annotation_1 = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(step, Ignore.class);
-                _annotations_2.add(_annotation_1);
+                FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_2, _annotation_1);
               }
             }
             EList<JvmAnnotationReference> _annotations_3 = it.getAnnotations();
             JvmAnnotationReference _annotation_2 = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(step, Named.class, name);
-            _annotations_3.add(_annotation_2);
+            FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_3, _annotation_2);
           }
         };
       JvmOperation _method = this._extendedJvmTypesBuilder.toMethod(step, _javaMethodName, _typeForName, _function);
-      _members.add(_method);
+      this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
       int _plus = (order + 1);
       _xblockexpression = (_plus);
     }
@@ -613,7 +612,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
         }
       };
     JvmOperation _method = this._extendedJvmTypesBuilder.toMethod(step, _javaMethodName, _typeForName, _function);
-    boolean _add = _members.add(_method);
+    boolean _add = this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
     return _add;
   }
   
@@ -679,19 +678,19 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           public void apply(final JvmGenericType it) {
             EList<JvmTypeReference> _superTypes = it.getSuperTypes();
             JvmParameterizedTypeReference _createTypeRef = FeatureJvmModelInferrer.this._typeReferences.createTypeRef(inferredJvmType);
-            _superTypes.add(_createTypeRef);
+            FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmParameterizedTypeReference>operator_add(_superTypes, _createTypeRef);
             Resource _eResource = featureFile.eResource();
             EList<EObject> _contents = _eResource.getContents();
-            _contents.add(it);
+            FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmGenericType>operator_add(_contents, it);
             String _package = featureFile.getPackage();
             String _generatePackageName = FeatureJvmModelInferrer.this.generatePackageName(_package);
             it.setPackageName(_generatePackageName);
             EList<JvmMember> _members = it.getMembers();
             JvmConstructor _generateExampleConstructor = FeatureJvmModelInferrer.this.generateExampleConstructor(row, fields, className);
-            _members.add(_generateExampleConstructor);
+            FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmConstructor>operator_add(_members, _generateExampleConstructor);
             EList<JvmAnnotationReference> _annotations = it.getAnnotations();
             JvmAnnotationReference _featureRunner = FeatureJvmModelInferrer.this.annotationProvider.getFeatureRunner(row);
-            _annotations.add(_featureRunner);
+            FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _featureRunner);
             String description = "[";
             int i = 0;
             for (final ExampleColumn field : fields) {
@@ -720,7 +719,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
             description = _plus_5;
             EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
             JvmAnnotationReference _annotation = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(row, Named.class, description);
-            _annotations_1.add(_annotation);
+            FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_1, _annotation);
           }
         };
       JvmGenericType _class = this._extendedJvmTypesBuilder.toClass(row, className, _function);
@@ -796,7 +795,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
       String _computeFieldName = this.computeFieldName(source, container);
       field.setSimpleName(_computeFieldName);
       EList<JvmMember> _members = container.getMembers();
-      _members.add(field);
+      this._extendedJvmTypesBuilder.<JvmField>operator_add(_members, field);
       this.associator.associatePrimary(source, field);
       JvmVisibility _visibility = source.getVisibility();
       field.setVisibility(_visibility);

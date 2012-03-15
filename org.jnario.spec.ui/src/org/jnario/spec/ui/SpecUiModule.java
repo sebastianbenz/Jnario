@@ -17,6 +17,31 @@ import org.eclipse.jface.text.source.ICharacterPairMatcher;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
+import org.eclipse.xtend.ide.XtendResourceUiServiceProvider;
+import org.eclipse.xtend.ide.autoedit.AutoEditStrategyProvider;
+import org.eclipse.xtend.ide.autoedit.TokenTypeToPartitionMapper;
+import org.eclipse.xtend.ide.builder.XtendBuilderParticipant;
+import org.eclipse.xtend.ide.contentassist.ImportingTypesProposalProvider;
+import org.eclipse.xtend.ide.editor.InitiallyCollapsableAwareFoldingStructureProvider;
+import org.eclipse.xtend.ide.editor.OverrideIndicatorModelListener;
+import org.eclipse.xtend.ide.editor.OverrideIndicatorRulerAction;
+import org.eclipse.xtend.ide.editor.RichStringAwareSourceViewer;
+import org.eclipse.xtend.ide.editor.RichStringAwareToggleCommentAction;
+import org.eclipse.xtend.ide.editor.SingleLineCommentHelper;
+import org.eclipse.xtend.ide.editor.XtendDoubleClickStrategyProvider;
+import org.eclipse.xtend.ide.editor.XtendNatureAddingEditorCallback;
+import org.eclipse.xtend.ide.highlighting.RichStringAwareTokenScanner;
+import org.eclipse.xtend.ide.highlighting.ShowWhitespaceCharactersActionContributor;
+import org.eclipse.xtend.ide.highlighting.TokenToAttributeIdMapper;
+import org.eclipse.xtend.ide.highlighting.XtendHighlightingConfiguration;
+import org.eclipse.xtend.ide.hover.XtendAnnotationHover;
+import org.eclipse.xtend.ide.hyperlinking.XtendHyperlinkHelper;
+import org.eclipse.xtend.ide.launching.JavaElementDelegate;
+import org.eclipse.xtend.ide.outline.XtendOutlineNodeComparator;
+import org.eclipse.xtend.ide.outline.XtendOutlinePage;
+import org.eclipse.xtend.ide.outline.XtendQuickOutlineFilterAndSorter;
+import org.eclipse.xtend.ide.refactoring.XtendRenameElementProcessor;
+import org.eclipse.xtend.ide.refactoring.XtendRenameStrategy;
 import org.eclipse.xtext.builder.EclipseResourceFileSystemAccess2;
 import org.eclipse.xtext.builder.IXtextBuilderParticipant;
 import org.eclipse.xtext.builder.trace.FileBasedTraceInformation;
@@ -50,36 +75,11 @@ import org.eclipse.xtext.ui.refactoring.impl.RenameElementProcessor;
 import org.eclipse.xtext.ui.resource.IResourceUIServiceProvider;
 import org.eclipse.xtext.xbase.ui.editor.XbaseEditor;
 import org.eclipse.xtext.xbase.ui.jvmmodel.navigation.DerivedMemberAwareEditorOpener;
-import org.eclipse.xtend.ide.XtendResourceUiServiceProvider;
-import org.eclipse.xtend.ide.autoedit.AutoEditStrategyProvider;
-import org.eclipse.xtend.ide.autoedit.TokenTypeToPartitionMapper;
-import org.eclipse.xtend.ide.builder.SourceRelativeFileSystemAccess;
-import org.eclipse.xtend.ide.builder.XtendBuilderParticipant;
-import org.eclipse.xtend.ide.contentassist.ImportingTypesProposalProvider;
-import org.eclipse.xtend.ide.editor.InitiallyCollapsableAwareFoldingStructureProvider;
-import org.eclipse.xtend.ide.editor.OverrideIndicatorModelListener;
-import org.eclipse.xtend.ide.editor.OverrideIndicatorRulerAction;
-import org.eclipse.xtend.ide.editor.RichStringAwareSourceViewer;
-import org.eclipse.xtend.ide.editor.RichStringAwareToggleCommentAction;
-import org.eclipse.xtend.ide.editor.SingleLineCommentHelper;
-import org.eclipse.xtend.ide.editor.XtendDoubleClickStrategyProvider;
-import org.eclipse.xtend.ide.editor.XtendNatureAddingEditorCallback;
-import org.eclipse.xtend.ide.highlighting.RichStringAwareTokenScanner;
-import org.eclipse.xtend.ide.highlighting.ShowWhitespaceCharactersActionContributor;
-import org.eclipse.xtend.ide.highlighting.TokenToAttributeIdMapper;
-import org.eclipse.xtend.ide.highlighting.XtendHighlightingConfiguration;
-import org.eclipse.xtend.ide.hover.XtendAnnotationHover;
-import org.eclipse.xtend.ide.hyperlinking.XtendHyperlinkHelper;
-import org.eclipse.xtend.ide.launching.JavaElementDelegate;
-import org.eclipse.xtend.ide.outline.XtendOutlineNodeComparator;
-import org.eclipse.xtend.ide.outline.XtendOutlinePage;
-import org.eclipse.xtend.ide.outline.XtendQuickOutlineFilterAndSorter;
-import org.eclipse.xtend.ide.refactoring.XtendRenameElementProcessor;
-import org.eclipse.xtend.ide.refactoring.XtendRenameStrategy;
 import org.jnario.spec.ui.doc.SpecHoverProvider;
 import org.jnario.spec.ui.editor.SpecFoldingRegionProvider;
 import org.jnario.spec.ui.highlighting.SpecHighlightingCalculator;
 import org.jnario.spec.ui.launching.SpecJavaElementDelegate;
+import org.jnario.ui.builder.JnarioSourceRelativeFileSystemAccess;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -186,7 +186,7 @@ public class SpecUiModule extends org.jnario.spec.ui.AbstractSpecUiModule {
 	}
 	
 	public Class<? extends EclipseResourceFileSystemAccess2> bindEclipseResourceFileSystemAccess2() {
-		return SourceRelativeFileSystemAccess.class;
+		return JnarioSourceRelativeFileSystemAccess.class;
 	}
 	
 	@Override

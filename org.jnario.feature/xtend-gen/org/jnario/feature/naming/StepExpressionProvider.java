@@ -15,8 +15,7 @@ public class StepExpressionProvider {
     if ((step instanceof StepReference)) {
       this.getOrCreateExpression(((StepReference) step));
     }
-    StepExpression _stepExpression = step.getStepExpression();
-    return _stepExpression;
+    return step.getStepExpression();
   }
   
   public StepExpression getOrCreateExpression(final StepReference ref) {

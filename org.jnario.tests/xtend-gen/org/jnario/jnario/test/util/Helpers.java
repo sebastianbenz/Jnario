@@ -22,8 +22,7 @@ public class Helpers {
       if (_t instanceof AssertionError) {
         final AssertionError e = (AssertionError)_t;
         String _message = e.getMessage();
-        String _trim = _message.trim();
-        return _trim;
+        return _message.trim();
       } else {
         throw Exceptions.sneakyThrow(_t);
       }
