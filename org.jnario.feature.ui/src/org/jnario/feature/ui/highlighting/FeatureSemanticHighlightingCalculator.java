@@ -15,21 +15,17 @@ import java.util.regex.Pattern;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.xtend.core.xtend.XtendField;
+import org.eclipse.xtend.ide.highlighting.XtendHighlightingCalculator;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
-import org.eclipse.xtend.ide.highlighting.XtendHighlightingCalculator;
-import org.eclipse.xtend.core.xtend.XtendField;
 import org.jnario.ExampleTable;
-import org.jnario.feature.feature.AndReference;
 import org.jnario.feature.feature.FeaturePackage;
-import org.jnario.feature.feature.GivenReference;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepReference;
-import org.jnario.feature.feature.ThenReference;
-import org.jnario.feature.feature.WhenReference;
 import org.jnario.feature.feature.util.FeatureSwitch;
 
 /**

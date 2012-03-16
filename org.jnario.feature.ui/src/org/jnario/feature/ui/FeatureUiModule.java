@@ -18,7 +18,6 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.xtend.core.resource.XtendEObjectAtOffsetHelper;
 import org.eclipse.xtend.ide.XtendResourceUiServiceProvider;
-import org.eclipse.xtend.ide.autoedit.AutoEditStrategyProvider;
 import org.eclipse.xtend.ide.builder.SourceRelativeFileSystemAccess;
 import org.eclipse.xtend.ide.builder.XtendBuilderParticipant;
 import org.eclipse.xtend.ide.contentassist.ImportingTypesProposalProvider;
