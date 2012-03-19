@@ -158,8 +158,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           EList<EObject> _contents = _eResource.getContents();
           FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmGenericType>operator_add(_contents, it);
           String _package = featureFile.getPackage();
-          String _generatePackageName = FeatureJvmModelInferrer.this.generatePackageName(_package);
-          it.setPackageName(_generatePackageName);
+          it.setPackageName(_package);
           EList<JvmAnnotationReference> _annotations = it.getAnnotations();
           JvmAnnotationReference _featureRunner = FeatureJvmModelInferrer.this.annotationProvider.getFeatureRunner(feature);
           FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _featureRunner);
@@ -206,8 +205,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmGenericType>operator_add(_contents, it);
           FeatureJvmModelInferrer.this.addDefaultConstructor(feature, it);
           String _package = featureFile.getPackage();
-          String _generatePackageName = FeatureJvmModelInferrer.this.generatePackageName(_package);
-          it.setPackageName(_generatePackageName);
+          it.setPackageName(_package);
           it.setAbstract(true);
           Background _background = feature.getBackground();
           FeatureJvmModelInferrer.this.generateBackgroundVariables(_background, it);
@@ -235,8 +233,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
             JvmAnnotationReference _annotation = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(scenario, Named.class, _trim);
             FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
             String _package = featureFile.getPackage();
-            String _generatePackageName = FeatureJvmModelInferrer.this.generatePackageName(_package);
-            it.setPackageName(_generatePackageName);
+            it.setPackageName(_package);
             String _documentation = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.getDocumentation(scenario);
             FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.setDocumentation(it, _documentation);
             boolean hasBackground = false;
@@ -683,8 +680,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
             EList<EObject> _contents = _eResource.getContents();
             FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmGenericType>operator_add(_contents, it);
             String _package = featureFile.getPackage();
-            String _generatePackageName = FeatureJvmModelInferrer.this.generatePackageName(_package);
-            it.setPackageName(_generatePackageName);
+            it.setPackageName(_package);
             EList<JvmMember> _members = it.getMembers();
             JvmConstructor _generateExampleConstructor = FeatureJvmModelInferrer.this.generateExampleConstructor(row, fields, className);
             FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmConstructor>operator_add(_members, _generateExampleConstructor);
@@ -811,20 +807,5 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
       XExpression _initialValue = source.getInitialValue();
       this._extendedJvmTypesBuilder.setInitializer(field, _initialValue);
     }
-  }
-  
-  public String generatePackageName(final String packageName) {
-    boolean _or = false;
-    boolean _equals = Objects.equal(packageName, null);
-    if (_equals) {
-      _or = true;
-    } else {
-      boolean _equals_1 = Objects.equal(packageName, "");
-      _or = (_equals || _equals_1);
-    }
-    if (_or) {
-      return "features";
-    }
-    return packageName;
   }
 }

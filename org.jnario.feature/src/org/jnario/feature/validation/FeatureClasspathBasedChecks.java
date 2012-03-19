@@ -7,14 +7,19 @@
  *******************************************************************************/
 package org.jnario.feature.validation;
 
+import static org.eclipse.xtext.util.Strings.notNull;
+
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.xtend.core.validation.ClasspathBasedChecks;
+import org.eclipse.xtend.core.validation.IssueCodes;
 import org.eclipse.xtend.core.xtend.XtendFile;
+import org.eclipse.xtend.core.xtend.XtendPackage.Literals;
 import org.eclipse.xtext.resource.ClasspathUriResolutionException;
 import org.eclipse.xtext.resource.ClasspathUriUtil;
 import org.eclipse.xtext.validation.Check;
+import org.eclipse.xtext.validation.ValidationMessageAcceptor;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -32,19 +37,23 @@ public class FeatureClasspathBasedChecks extends ClasspathBasedChecks {
 		String packageName = xtendFile.getPackage();
 		StringBuilder classpathURIBuilder = new StringBuilder(ClasspathUriUtil.CLASSPATH_SCHEME);
 		classpathURIBuilder.append(":/");
-		if (packageName != null){
+		if (packageName != null)
 			classpathURIBuilder.append(packageName.replace(".", "/")).append("/");
-			classpathURIBuilder.append(resourceURI.lastSegment());
-			URI classpathURI = URI.createURI(classpathURIBuilder.toString());
-			URIConverter uriConverter = resource.getResourceSet().getURIConverter();
-			try {
-				URI normalizedURI = uriConverter.normalize(classpathURI);
-				if(!resourceURI.equals(normalizedURI))
-					reportInvalidPackage(packageName, classpathURI);
-			} catch(ClasspathUriResolutionException e) {
+		classpathURIBuilder.append(resourceURI.lastSegment());
+		URI classpathURI = URI.createURI(classpathURIBuilder.toString());
+		URIConverter uriConverter = resource.getResourceSet().getURIConverter();
+		try {
+			URI normalizedURI = uriConverter.normalize(classpathURI);
+			if(!resourceURI.equals(normalizedURI))
 				reportInvalidPackage(packageName, classpathURI);
-			}
+		} catch(ClasspathUriResolutionException e) {
+			reportInvalidPackage(packageName, classpathURI);
 		}
+	}
+	
+	protected void reportInvalidPackage(String packageName, URI classpathURI) {
+		error("The declared package '" + notNull(packageName) + "' does not match the expected package", 
+				Literals.XTEND_FILE__PACKAGE, ValidationMessageAcceptor.INSIGNIFICANT_INDEX, IssueCodes.WRONG_PACKAGE);
 	}
 
 }

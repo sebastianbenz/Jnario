@@ -122,7 +122,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		feature.toClass(feature.name.featureClassName)[
    			feature.addDefaultConstructor(it);
    			featureFile.eResource.contents += it
-   			packageName = featureFile.^package.generatePackageName
+   			packageName = featureFile.^package
    			annotations += feature.featureRunner
    			if(!scenarios.empty)
    				annotations += feature.toAnnotation(typeof(Contains), scenarios)
@@ -142,7 +142,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		feature.toClass(feature.name.featureClassName + "Background")[
    			featureFile.eResource.contents += it
    			feature.addDefaultConstructor(it)
-   			packageName = featureFile.^package.generatePackageName
+   			packageName = featureFile.^package
    			abstract = true
    			generateBackgroundVariables(feature.background, it)
    			feature.background.steps.generateSteps(it)
@@ -156,7 +156,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		scenario.toClass(className)[
    			featureFile.eResource.contents += it
 			annotations += scenario.toAnnotation(typeof(Named), scenario.name.trim)
-			packageName = featureFile.^package.generatePackageName
+			packageName = featureFile.^package
 			documentation = scenario.documentation
 			
 			var hasBackground = false
@@ -365,7 +365,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		row.toClass(className)[
 			superTypes += inferredJvmType.createTypeRef
 			featureFile.eResource.contents += it
-			packageName = featureFile.^package.generatePackageName
+			packageName = featureFile.^package
 			members += row.generateExampleConstructor(fields, className)
 			annotations += row.featureRunner
 			
@@ -423,13 +423,4 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			setInitializer(field, source.initialValue)
 		}
 	}
-	
-	
-	def generatePackageName(String packageName){
-		if(packageName == null || packageName == ""){
-			return "features"
-		}
-		return packageName
-	}
-
 }
