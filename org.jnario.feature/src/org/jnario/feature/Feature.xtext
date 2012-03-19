@@ -124,6 +124,71 @@ ExampleColumn:
 
 ExampleRow:
 	((PIPE | PIPE_SPACES) cells+=XExpression)+ EXAMPLE_ROW_END;
+	
+XPrimaryExpression returns xbase::XExpression:
+	XConstructorCall |
+	XBlockExpression |
+	XSwitchExpression |
+	XFeatureCall |
+	XLiteral |
+	XIfExpression |
+	XForLoopExpression |
+	XWhileExpression |
+	XDoWhileExpression |
+	XThrowExpression |
+	XReturnExpression |
+	XTryCatchFinallyExpression |
+	XParenthesizedExpression |
+	Assertion |
+	Matcher;
+
+XLiteral returns xbase::XExpression:
+	XClosure |
+	XBooleanLiteral |
+	XNumberLiteral |
+	XNullLiteral |
+	XStringLiteral |
+	XTypeLiteral |
+	CollectionLiteral
+;
+
+CollectionLiteral:
+	ListLiteral | SetLiteral
+;
+
+ListLiteral:
+	{ListLiteral}  '#(' (featureCallArguments+=XExpression  (',' featureCallArguments+=XExpression)*)? ')'
+;
+
+SetLiteral :
+	{SetLiteral} '#{'  (featureCallArguments+=XExpression  (',' featureCallArguments+=XExpression)*)? '}'
+;
+
+
+XRelationalExpression returns xbase::XExpression:
+	XOtherOperatorExpression
+	( 
+	 =>({Should.leftOperand=current} 
+	 		(prefix=('should'|'must') not?='not'? (postfix='be' | postfix="contain")? | 
+	 		prefix='=>')
+	 		) rightOperand=XOtherOperatorExpression |
+	 =>({xbase::XInstanceOfExpression.expression=current} 'instanceof') type=JvmTypeReference |
+	 =>({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare]) rightOperand=XOtherOperatorExpression)*;
+
+Assertion returns xbase::XExpression: 
+	{Assertion}
+	'assert' expression=XExpression;
+
+Matcher:
+	'#' closure=MatcherClosure
+;
+
+MatcherClosure returns xbase::XExpression:
+	{xbase::XClosure} 
+	'[' 
+		=>(declaredFormalParameters+=JvmFormalParameter explicitSyntax?=PIPE)? 
+		expression=XExpressionInClosure 
+	']';
 
 terminal FEATURE_TEXT: 'Feature' COLON MNL;
 terminal BACKGROUND_TEXT: 'Background' COLON MNL;

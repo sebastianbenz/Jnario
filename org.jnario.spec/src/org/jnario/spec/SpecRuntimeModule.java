@@ -44,6 +44,7 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.scoping.featurecalls.StaticImplicitMethodsFeatureForTypeProvider.ExtensionClassNameProvider;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.eclipse.xtext.xbase.validation.EarlyExitValidator;
+import org.jnario.compiler.JnarioCompiler;
 import org.jnario.generator.JnarioJavaIoFileSystemAccess;
 import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
@@ -52,7 +53,6 @@ import org.jnario.linking.JnarioLazyLinker;
 import org.jnario.linking.JnarioLinkingService;
 import org.jnario.scoping.JnarioExtensionClassNameProvider;
 import org.jnario.serializer.JnarioContextFinder;
-import org.jnario.spec.compiler.SpecCompiler;
 import org.jnario.spec.conversion.SpecValueConverterService;
 import org.jnario.spec.doc.DocOutputConfigurationProvider;
 import org.jnario.spec.generator.SpecGenerator;
@@ -148,7 +148,7 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 	}
 	
 	public Class<? extends XbaseCompiler> bindXbaseCompiler() {
-		return SpecCompiler.class; 
+		return JnarioCompiler.class; 
 	}
 	
 

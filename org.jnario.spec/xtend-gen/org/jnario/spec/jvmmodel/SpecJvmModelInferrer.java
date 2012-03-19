@@ -562,8 +562,10 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
   public void setFeature(final CollectionLiteral literal) {
     if (literal instanceof ListLiteral) {
       _setFeature((ListLiteral)literal);
+      return;
     } else if (literal instanceof SetLiteral) {
       _setFeature((SetLiteral)literal);
+      return;
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(literal).toString());

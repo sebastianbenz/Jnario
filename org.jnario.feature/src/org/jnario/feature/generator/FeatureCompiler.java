@@ -8,7 +8,6 @@
 package org.jnario.feature.generator;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.xtend.core.compiler.XtendCompiler;
 import org.eclipse.xtext.common.types.JvmPrimitiveType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.util.Primitives.Primitive;
@@ -16,12 +15,13 @@ import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
+import org.jnario.compiler.JnarioCompiler;
 import org.jnario.feature.jvmmodel.FeatureJvmModelInferrer;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
-public class FeatureCompiler extends XtendCompiler {
+public class FeatureCompiler extends JnarioCompiler {
 
 	/**
 	 * based on XbaseCompiler, removed brackets ("{\n" and "\n}") from original method

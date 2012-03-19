@@ -137,13 +137,12 @@ public class DocGenerator implements IGenerator {
       return "";
     }
     final String[] fragments = packageName.split("\\.");
-    final String[] _converted_fragments = (String[])fragments;
     final Function1<String,String> _function = new Function1<String,String>() {
         public String apply(final String s) {
           return "../";
         }
       };
-    final List<String> path = ListExtensions.<String, String>map(((List<String>)Conversions.doWrapArray(_converted_fragments)), _function);
+    final List<String> path = ListExtensions.<String, String>map(((List<String>)Conversions.doWrapArray(fragments)), _function);
     return IterableExtensions.join(path, "");
   }
   
