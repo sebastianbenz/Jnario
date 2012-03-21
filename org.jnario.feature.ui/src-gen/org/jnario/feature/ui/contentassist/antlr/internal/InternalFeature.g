@@ -5666,7 +5666,7 @@ rule__Scenario__Group__4__Impl
 :
 (
 { before(grammarAccess.getScenarioAccess().getStepsAssignment_4()); }
-(rule__Scenario__StepsAssignment_4)?
+(rule__Scenario__StepsAssignment_4)*
 { after(grammarAccess.getScenarioAccess().getStepsAssignment_4()); }
 )
 

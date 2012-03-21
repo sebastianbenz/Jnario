@@ -21,6 +21,7 @@ Export-Package: org.jnario,
  org.jnario.linking,
  org.jnario.scoping,
  org.jnario.serializer,
+ org.jnario.typing,
  org.jnario.util,
  org.jnario.validation,
  org.pegdown

@@ -521,7 +521,7 @@ ruleScenario returns [EObject current=null]
 )
 
 )
-)?(
+)*(
 (
 (
 		{ 

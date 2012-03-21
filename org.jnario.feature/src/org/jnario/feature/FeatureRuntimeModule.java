@@ -18,7 +18,6 @@ import org.eclipse.xtend.core.resource.XtendResource;
 import org.eclipse.xtend.core.resource.XtendResourceDescriptionStrategy;
 import org.eclipse.xtend.core.scoping.XtendImportedNamespaceScopeProvider;
 import org.eclipse.xtend.core.scoping.XtendScopeProvider;
-import org.eclipse.xtend.core.typing.XtendTypeProvider;
 import org.eclipse.xtend.core.validation.ClasspathBasedChecks;
 import org.eclipse.xtend.core.validation.XtendEarlyExitValidator;
 import org.eclipse.xtext.generator.IFilePostProcessor;
@@ -58,6 +57,7 @@ import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.jvmmodel.JnarioDispatchUtil;
 import org.jnario.scoping.JnarioExtensionClassNameProvider;
+import org.jnario.typing.JnarioTypeProvider;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -86,7 +86,7 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 	
 	@Override
 	public Class<? extends ITypeProvider> bindITypeProvider(){
-		return XtendTypeProvider.class;
+		return JnarioTypeProvider.class;
 	}
 	
 	@Override

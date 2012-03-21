@@ -121,7 +121,7 @@
             <elements xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
           </terminal>
         </elements>
-        <elements xsi:type="xtext:Assignment" cardinality="?" feature="steps" operator="+=">
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="steps" operator="+=">
           <terminal xsi:type="xtext:Alternatives">
             <elements xsi:type="xtext:RuleCall" rule="/0/@rules.10"/>
             <elements xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>

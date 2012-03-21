@@ -50,7 +50,7 @@ Scenario returns xtend::XtendMember:
 	name=SCENARIO_TEXT
 	members+=Member*
 	steps+=(Given|GivenReference)*
-	steps+=(When|WhenReference)?
+	steps+=(When|WhenReference)*
 	steps+=(Then|ThenReference)*
 	examples+=ExampleTable*;
 
