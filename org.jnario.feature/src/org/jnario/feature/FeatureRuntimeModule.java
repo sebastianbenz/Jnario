@@ -18,13 +18,13 @@ import org.eclipse.xtend.core.resource.XtendResource;
 import org.eclipse.xtend.core.resource.XtendResourceDescriptionStrategy;
 import org.eclipse.xtend.core.scoping.XtendImportedNamespaceScopeProvider;
 import org.eclipse.xtend.core.scoping.XtendScopeProvider;
-import org.eclipse.xtend.core.typing.XtendTypeProvider;
 import org.eclipse.xtend.core.validation.ClasspathBasedChecks;
 import org.eclipse.xtend.core.validation.XtendEarlyExitValidator;
 import org.eclipse.xtext.generator.IFilePostProcessor;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.OutputConfigurationProvider;
 import org.eclipse.xtext.linking.ILinker;
+import org.eclipse.xtext.linking.ILinkingService;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.resource.EObjectAtOffsetHelper;
 import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
@@ -48,6 +48,7 @@ import org.jnario.feature.generator.FeatureJvmModelGenerator;
 import org.jnario.feature.jvmmodel.FeatureFeatureCallToJavaMapping;
 import org.jnario.feature.jvmmodel.FeatureJvmModelInferrer;
 import org.jnario.feature.linking.FeatureLazyLinker;
+import org.jnario.feature.linking.FeatureLinkingService;
 import org.jnario.feature.naming.FeatureIdentifiableSimpleNameProvider;
 import org.jnario.feature.naming.FeatureQualifiedNameProvider;
 import org.jnario.feature.validation.FeatureClasspathBasedChecks;
@@ -56,6 +57,7 @@ import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.jvmmodel.JnarioDispatchUtil;
 import org.jnario.scoping.JnarioExtensionClassNameProvider;
+import org.jnario.typing.JnarioTypeProvider;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -84,7 +86,7 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 	
 	@Override
 	public Class<? extends ITypeProvider> bindITypeProvider(){
-		return XtendTypeProvider.class;
+		return JnarioTypeProvider.class;
 	}
 	
 	@Override
@@ -165,6 +167,11 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 	@Override
 	public Class<? extends ILinker> bindILinker() {
 		return FeatureLazyLinker.class;
+	}
+	
+	@Override
+	public Class<? extends ILinkingService> bindILinkingService() {
+		return FeatureLinkingService.class;
 	}
 	
 }

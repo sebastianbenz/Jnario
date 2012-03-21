@@ -30,7 +30,7 @@ Feature: Step values
 				Feature: Test feature
 					Scenario: using fields in step definitions
 						Given some values "3", "4"
-							var x = args.first()
+							var x = args.first
 						Then it should be possible to get the value
 							x => "3"
 			'
@@ -52,3 +52,21 @@ Feature: Step values
 			'
 		When this feature is executed
 		Then it should be successful
+		
+	Scenario: Referencing variables that contain a value from args
+		Given a feature
+			var jnarioFile = '
+				package bootstrap 
+				Feature: Test feature
+					Scenario: using fields in step definitions
+						Given the value "4"
+							var x = args.first
+						When I add "1"
+							var y = x + args.first
+						Then it should be "5"
+							y should be args.first
+							
+			'
+		When this feature is executed
+		Then it should be successful
+		

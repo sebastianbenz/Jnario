@@ -1204,7 +1204,7 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleScenario"
-    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:406:1: ruleScenario returns [EObject current=null] : ( () ( (lv_name_1_0= RULE_SCENARIO_TEXT ) ) ( (lv_members_2_0= ruleMember ) )* ( ( (lv_steps_3_1= ruleGiven | lv_steps_3_2= ruleGivenReference ) ) )* ( ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) ) )? ( ( (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference ) ) )* ( (lv_examples_6_0= ruleExampleTable ) )* ) ;
+    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:406:1: ruleScenario returns [EObject current=null] : ( () ( (lv_name_1_0= RULE_SCENARIO_TEXT ) ) ( (lv_members_2_0= ruleMember ) )* ( ( (lv_steps_3_1= ruleGiven | lv_steps_3_2= ruleGivenReference ) ) )* ( ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) ) )* ( ( (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference ) ) )* ( (lv_examples_6_0= ruleExampleTable ) )* ) ;
     public final EObject ruleScenario() throws RecognitionException {
         EObject current = null;
 
@@ -1229,11 +1229,11 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:409:28: ( ( () ( (lv_name_1_0= RULE_SCENARIO_TEXT ) ) ( (lv_members_2_0= ruleMember ) )* ( ( (lv_steps_3_1= ruleGiven | lv_steps_3_2= ruleGivenReference ) ) )* ( ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) ) )? ( ( (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference ) ) )* ( (lv_examples_6_0= ruleExampleTable ) )* ) )
-            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:410:1: ( () ( (lv_name_1_0= RULE_SCENARIO_TEXT ) ) ( (lv_members_2_0= ruleMember ) )* ( ( (lv_steps_3_1= ruleGiven | lv_steps_3_2= ruleGivenReference ) ) )* ( ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) ) )? ( ( (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference ) ) )* ( (lv_examples_6_0= ruleExampleTable ) )* )
+            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:409:28: ( ( () ( (lv_name_1_0= RULE_SCENARIO_TEXT ) ) ( (lv_members_2_0= ruleMember ) )* ( ( (lv_steps_3_1= ruleGiven | lv_steps_3_2= ruleGivenReference ) ) )* ( ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) ) )* ( ( (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference ) ) )* ( (lv_examples_6_0= ruleExampleTable ) )* ) )
+            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:410:1: ( () ( (lv_name_1_0= RULE_SCENARIO_TEXT ) ) ( (lv_members_2_0= ruleMember ) )* ( ( (lv_steps_3_1= ruleGiven | lv_steps_3_2= ruleGivenReference ) ) )* ( ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) ) )* ( ( (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference ) ) )* ( (lv_examples_6_0= ruleExampleTable ) )* )
             {
-            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:410:1: ( () ( (lv_name_1_0= RULE_SCENARIO_TEXT ) ) ( (lv_members_2_0= ruleMember ) )* ( ( (lv_steps_3_1= ruleGiven | lv_steps_3_2= ruleGivenReference ) ) )* ( ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) ) )? ( ( (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference ) ) )* ( (lv_examples_6_0= ruleExampleTable ) )* )
-            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:410:2: () ( (lv_name_1_0= RULE_SCENARIO_TEXT ) ) ( (lv_members_2_0= ruleMember ) )* ( ( (lv_steps_3_1= ruleGiven | lv_steps_3_2= ruleGivenReference ) ) )* ( ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) ) )? ( ( (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference ) ) )* ( (lv_examples_6_0= ruleExampleTable ) )*
+            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:410:1: ( () ( (lv_name_1_0= RULE_SCENARIO_TEXT ) ) ( (lv_members_2_0= ruleMember ) )* ( ( (lv_steps_3_1= ruleGiven | lv_steps_3_2= ruleGivenReference ) ) )* ( ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) ) )* ( ( (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference ) ) )* ( (lv_examples_6_0= ruleExampleTable ) )* )
+            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:410:2: () ( (lv_name_1_0= RULE_SCENARIO_TEXT ) ) ( (lv_members_2_0= ruleMember ) )* ( ( (lv_steps_3_1= ruleGiven | lv_steps_3_2= ruleGivenReference ) ) )* ( ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) ) )* ( ( (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference ) ) )* ( (lv_examples_6_0= ruleExampleTable ) )*
             {
             // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:410:2: ()
             // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:411:5: 
@@ -1451,118 +1451,125 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:488:3: ( ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) ) )?
-            int alt15=2;
-            int LA15_0 = input.LA(1);
+            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:488:3: ( ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) ) )*
+            loop15:
+            do {
+                int alt15=2;
+                int LA15_0 = input.LA(1);
 
-            if ( (LA15_0==RULE_WHEN_TEXT) ) {
-                alt15=1;
-            }
-            switch (alt15) {
-                case 1 :
-                    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:489:1: ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) )
-                    {
-                    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:489:1: ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) )
-                    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:490:1: (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference )
-                    {
-                    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:490:1: (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference )
-                    int alt14=2;
-                    int LA14_0 = input.LA(1);
-
-                    if ( (LA14_0==RULE_WHEN_TEXT) ) {
-                        int LA14_1 = input.LA(2);
-
-                        if ( ((LA14_1>=RULE_ID && LA14_1<=RULE_RICH_TEXT_START)||(LA14_1>=RULE_HEX && LA14_1<=RULE_DECIMAL)||LA14_1==42||LA14_1==45||LA14_1==52||(LA14_1>=55 && LA14_1<=57)||LA14_1==66||LA14_1==70||(LA14_1>=75 && LA14_1<=77)||(LA14_1>=89 && LA14_1<=90)||LA14_1==100||LA14_1==104||LA14_1==108||LA14_1==110||(LA14_1>=113 && LA14_1<=118)||(LA14_1>=120 && LA14_1<=125)) ) {
-                            alt14=1;
-                        }
-                        else if ( (LA14_1==EOF||LA14_1==RULE_SCENARIO_TEXT||(LA14_1>=RULE_THEN_TEXT && LA14_1<=RULE_EXAMPLE_TEXT)) ) {
-                            alt14=2;
-                        }
-                        else {
-                            if (state.backtracking>0) {state.failed=true; return current;}
-                            NoViableAltException nvae =
-                                new NoViableAltException("", 14, 1, input);
-
-                            throw nvae;
-                        }
-                    }
-                    else {
-                        if (state.backtracking>0) {state.failed=true; return current;}
-                        NoViableAltException nvae =
-                            new NoViableAltException("", 14, 0, input);
-
-                        throw nvae;
-                    }
-                    switch (alt14) {
-                        case 1 :
-                            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:491:3: lv_steps_4_1= ruleWhen
-                            {
-                            if ( state.backtracking==0 ) {
-                               
-                              	        newCompositeNode(grammarAccess.getScenarioAccess().getStepsWhenParserRuleCall_4_0_0()); 
-                              	    
-                            }
-                            pushFollow(FOLLOW_ruleWhen_in_ruleScenario877);
-                            lv_steps_4_1=ruleWhen();
-
-                            state._fsp--;
-                            if (state.failed) return current;
-                            if ( state.backtracking==0 ) {
-
-                              	        if (current==null) {
-                              	            current = createModelElementForParent(grammarAccess.getScenarioRule());
-                              	        }
-                                     		add(
-                                     			current, 
-                                     			"steps",
-                                      		lv_steps_4_1, 
-                                      		"When");
-                              	        afterParserOrEnumRuleCall();
-                              	    
-                            }
-
-                            }
-                            break;
-                        case 2 :
-                            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:506:8: lv_steps_4_2= ruleWhenReference
-                            {
-                            if ( state.backtracking==0 ) {
-                               
-                              	        newCompositeNode(grammarAccess.getScenarioAccess().getStepsWhenReferenceParserRuleCall_4_0_1()); 
-                              	    
-                            }
-                            pushFollow(FOLLOW_ruleWhenReference_in_ruleScenario896);
-                            lv_steps_4_2=ruleWhenReference();
-
-                            state._fsp--;
-                            if (state.failed) return current;
-                            if ( state.backtracking==0 ) {
-
-                              	        if (current==null) {
-                              	            current = createModelElementForParent(grammarAccess.getScenarioRule());
-                              	        }
-                                     		add(
-                                     			current, 
-                                     			"steps",
-                                      		lv_steps_4_2, 
-                                      		"WhenReference");
-                              	        afterParserOrEnumRuleCall();
-                              	    
-                            }
-
-                            }
-                            break;
-
-                    }
+                if ( (LA15_0==RULE_WHEN_TEXT) ) {
+                    alt15=1;
+                }
 
 
-                    }
+                switch (alt15) {
+            	case 1 :
+            	    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:489:1: ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) )
+            	    {
+            	    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:489:1: ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) )
+            	    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:490:1: (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference )
+            	    {
+            	    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:490:1: (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference )
+            	    int alt14=2;
+            	    int LA14_0 = input.LA(1);
+
+            	    if ( (LA14_0==RULE_WHEN_TEXT) ) {
+            	        int LA14_1 = input.LA(2);
+
+            	        if ( ((LA14_1>=RULE_ID && LA14_1<=RULE_RICH_TEXT_START)||(LA14_1>=RULE_HEX && LA14_1<=RULE_DECIMAL)||LA14_1==42||LA14_1==45||LA14_1==52||(LA14_1>=55 && LA14_1<=57)||LA14_1==66||LA14_1==70||(LA14_1>=75 && LA14_1<=77)||(LA14_1>=89 && LA14_1<=90)||LA14_1==100||LA14_1==104||LA14_1==108||LA14_1==110||(LA14_1>=113 && LA14_1<=118)||(LA14_1>=120 && LA14_1<=125)) ) {
+            	            alt14=1;
+            	        }
+            	        else if ( (LA14_1==EOF||LA14_1==RULE_SCENARIO_TEXT||(LA14_1>=RULE_WHEN_TEXT && LA14_1<=RULE_EXAMPLE_TEXT)) ) {
+            	            alt14=2;
+            	        }
+            	        else {
+            	            if (state.backtracking>0) {state.failed=true; return current;}
+            	            NoViableAltException nvae =
+            	                new NoViableAltException("", 14, 1, input);
+
+            	            throw nvae;
+            	        }
+            	    }
+            	    else {
+            	        if (state.backtracking>0) {state.failed=true; return current;}
+            	        NoViableAltException nvae =
+            	            new NoViableAltException("", 14, 0, input);
+
+            	        throw nvae;
+            	    }
+            	    switch (alt14) {
+            	        case 1 :
+            	            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:491:3: lv_steps_4_1= ruleWhen
+            	            {
+            	            if ( state.backtracking==0 ) {
+            	               
+            	              	        newCompositeNode(grammarAccess.getScenarioAccess().getStepsWhenParserRuleCall_4_0_0()); 
+            	              	    
+            	            }
+            	            pushFollow(FOLLOW_ruleWhen_in_ruleScenario877);
+            	            lv_steps_4_1=ruleWhen();
+
+            	            state._fsp--;
+            	            if (state.failed) return current;
+            	            if ( state.backtracking==0 ) {
+
+            	              	        if (current==null) {
+            	              	            current = createModelElementForParent(grammarAccess.getScenarioRule());
+            	              	        }
+            	                     		add(
+            	                     			current, 
+            	                     			"steps",
+            	                      		lv_steps_4_1, 
+            	                      		"When");
+            	              	        afterParserOrEnumRuleCall();
+            	              	    
+            	            }
+
+            	            }
+            	            break;
+            	        case 2 :
+            	            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:506:8: lv_steps_4_2= ruleWhenReference
+            	            {
+            	            if ( state.backtracking==0 ) {
+            	               
+            	              	        newCompositeNode(grammarAccess.getScenarioAccess().getStepsWhenReferenceParserRuleCall_4_0_1()); 
+            	              	    
+            	            }
+            	            pushFollow(FOLLOW_ruleWhenReference_in_ruleScenario896);
+            	            lv_steps_4_2=ruleWhenReference();
+
+            	            state._fsp--;
+            	            if (state.failed) return current;
+            	            if ( state.backtracking==0 ) {
+
+            	              	        if (current==null) {
+            	              	            current = createModelElementForParent(grammarAccess.getScenarioRule());
+            	              	        }
+            	                     		add(
+            	                     			current, 
+            	                     			"steps",
+            	                      		lv_steps_4_2, 
+            	                      		"WhenReference");
+            	              	        afterParserOrEnumRuleCall();
+            	              	    
+            	            }
+
+            	            }
+            	            break;
+
+            	    }
 
 
-                    }
-                    break;
+            	    }
 
-            }
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop15;
+                }
+            } while (true);
 
             // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:524:3: ( ( (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference ) ) )*
             loop17:
@@ -2366,11 +2373,11 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
             	    if ( (LA22_0==RULE_AND_TEXT) ) {
             	        int LA22_1 = input.LA(2);
 
-            	        if ( (LA22_1==EOF||(LA22_1>=RULE_SCENARIO_TEXT && LA22_1<=RULE_EXAMPLE_TEXT)) ) {
-            	            alt22=2;
-            	        }
-            	        else if ( ((LA22_1>=RULE_ID && LA22_1<=RULE_RICH_TEXT_START)||(LA22_1>=RULE_HEX && LA22_1<=RULE_DECIMAL)||LA22_1==42||LA22_1==45||LA22_1==52||(LA22_1>=55 && LA22_1<=57)||LA22_1==66||LA22_1==70||(LA22_1>=75 && LA22_1<=77)||(LA22_1>=89 && LA22_1<=90)||LA22_1==100||LA22_1==104||LA22_1==108||LA22_1==110||(LA22_1>=113 && LA22_1<=118)||(LA22_1>=120 && LA22_1<=125)) ) {
+            	        if ( ((LA22_1>=RULE_ID && LA22_1<=RULE_RICH_TEXT_START)||(LA22_1>=RULE_HEX && LA22_1<=RULE_DECIMAL)||LA22_1==42||LA22_1==45||LA22_1==52||(LA22_1>=55 && LA22_1<=57)||LA22_1==66||LA22_1==70||(LA22_1>=75 && LA22_1<=77)||(LA22_1>=89 && LA22_1<=90)||LA22_1==100||LA22_1==104||LA22_1==108||LA22_1==110||(LA22_1>=113 && LA22_1<=118)||(LA22_1>=120 && LA22_1<=125)) ) {
             	            alt22=1;
+            	        }
+            	        else if ( (LA22_1==EOF||(LA22_1>=RULE_SCENARIO_TEXT && LA22_1<=RULE_EXAMPLE_TEXT)) ) {
+            	            alt22=2;
             	        }
             	        else {
             	            if (state.backtracking>0) {state.failed=true; return current;}
@@ -2606,11 +2613,11 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
             	    if ( (LA24_0==RULE_AND_TEXT) ) {
             	        int LA24_1 = input.LA(2);
 
-            	        if ( (LA24_1==EOF||LA24_1==RULE_SCENARIO_TEXT||(LA24_1>=RULE_THEN_TEXT && LA24_1<=RULE_EXAMPLE_TEXT)) ) {
-            	            alt24=2;
-            	        }
-            	        else if ( ((LA24_1>=RULE_ID && LA24_1<=RULE_RICH_TEXT_START)||(LA24_1>=RULE_HEX && LA24_1<=RULE_DECIMAL)||LA24_1==42||LA24_1==45||LA24_1==52||(LA24_1>=55 && LA24_1<=57)||LA24_1==66||LA24_1==70||(LA24_1>=75 && LA24_1<=77)||(LA24_1>=89 && LA24_1<=90)||LA24_1==100||LA24_1==104||LA24_1==108||LA24_1==110||(LA24_1>=113 && LA24_1<=118)||(LA24_1>=120 && LA24_1<=125)) ) {
+            	        if ( ((LA24_1>=RULE_ID && LA24_1<=RULE_RICH_TEXT_START)||(LA24_1>=RULE_HEX && LA24_1<=RULE_DECIMAL)||LA24_1==42||LA24_1==45||LA24_1==52||(LA24_1>=55 && LA24_1<=57)||LA24_1==66||LA24_1==70||(LA24_1>=75 && LA24_1<=77)||(LA24_1>=89 && LA24_1<=90)||LA24_1==100||LA24_1==104||LA24_1==108||LA24_1==110||(LA24_1>=113 && LA24_1<=118)||(LA24_1>=120 && LA24_1<=125)) ) {
             	            alt24=1;
+            	        }
+            	        else if ( (LA24_1==EOF||LA24_1==RULE_SCENARIO_TEXT||(LA24_1>=RULE_WHEN_TEXT && LA24_1<=RULE_EXAMPLE_TEXT)) ) {
+            	            alt24=2;
             	        }
             	        else {
             	            if (state.backtracking>0) {state.failed=true; return current;}
@@ -2888,11 +2895,11 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
             	    if ( (LA26_0==RULE_AND_TEXT) ) {
             	        int LA26_1 = input.LA(2);
 
-            	        if ( (LA26_1==EOF||LA26_1==RULE_SCENARIO_TEXT||(LA26_1>=RULE_THEN_TEXT && LA26_1<=RULE_EXAMPLE_TEXT)) ) {
-            	            alt26=2;
-            	        }
-            	        else if ( ((LA26_1>=RULE_ID && LA26_1<=RULE_RICH_TEXT_START)||(LA26_1>=RULE_HEX && LA26_1<=RULE_DECIMAL)||LA26_1==42||LA26_1==45||LA26_1==52||(LA26_1>=55 && LA26_1<=57)||LA26_1==66||LA26_1==70||(LA26_1>=75 && LA26_1<=77)||(LA26_1>=89 && LA26_1<=90)||LA26_1==100||LA26_1==104||LA26_1==108||LA26_1==110||(LA26_1>=113 && LA26_1<=118)||(LA26_1>=120 && LA26_1<=125)) ) {
+            	        if ( ((LA26_1>=RULE_ID && LA26_1<=RULE_RICH_TEXT_START)||(LA26_1>=RULE_HEX && LA26_1<=RULE_DECIMAL)||LA26_1==42||LA26_1==45||LA26_1==52||(LA26_1>=55 && LA26_1<=57)||LA26_1==66||LA26_1==70||(LA26_1>=75 && LA26_1<=77)||(LA26_1>=89 && LA26_1<=90)||LA26_1==100||LA26_1==104||LA26_1==108||LA26_1==110||(LA26_1>=113 && LA26_1<=118)||(LA26_1>=120 && LA26_1<=125)) ) {
             	            alt26=1;
+            	        }
+            	        else if ( (LA26_1==EOF||LA26_1==RULE_SCENARIO_TEXT||(LA26_1>=RULE_WHEN_TEXT && LA26_1<=RULE_EXAMPLE_TEXT)) ) {
+            	            alt26=2;
             	        }
             	        else {
             	            if (state.backtracking>0) {state.failed=true; return current;}
@@ -3128,11 +3135,11 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
             	    if ( (LA28_0==RULE_AND_TEXT) ) {
             	        int LA28_1 = input.LA(2);
 
-            	        if ( ((LA28_1>=RULE_ID && LA28_1<=RULE_RICH_TEXT_START)||(LA28_1>=RULE_HEX && LA28_1<=RULE_DECIMAL)||LA28_1==42||LA28_1==45||LA28_1==52||(LA28_1>=55 && LA28_1<=57)||LA28_1==66||LA28_1==70||(LA28_1>=75 && LA28_1<=77)||(LA28_1>=89 && LA28_1<=90)||LA28_1==100||LA28_1==104||LA28_1==108||LA28_1==110||(LA28_1>=113 && LA28_1<=118)||(LA28_1>=120 && LA28_1<=125)) ) {
-            	            alt28=1;
-            	        }
-            	        else if ( (LA28_1==EOF||LA28_1==RULE_SCENARIO_TEXT||(LA28_1>=RULE_THEN_TEXT && LA28_1<=RULE_EXAMPLE_TEXT)) ) {
+            	        if ( (LA28_1==EOF||LA28_1==RULE_SCENARIO_TEXT||(LA28_1>=RULE_THEN_TEXT && LA28_1<=RULE_EXAMPLE_TEXT)) ) {
             	            alt28=2;
+            	        }
+            	        else if ( ((LA28_1>=RULE_ID && LA28_1<=RULE_RICH_TEXT_START)||(LA28_1>=RULE_HEX && LA28_1<=RULE_DECIMAL)||LA28_1==42||LA28_1==45||LA28_1==52||(LA28_1>=55 && LA28_1<=57)||LA28_1==66||LA28_1==70||(LA28_1>=75 && LA28_1<=77)||(LA28_1>=89 && LA28_1<=90)||LA28_1==100||LA28_1==104||LA28_1==108||LA28_1==110||(LA28_1>=113 && LA28_1<=118)||(LA28_1>=120 && LA28_1<=125)) ) {
+            	            alt28=1;
             	        }
             	        else {
             	            if (state.backtracking>0) {state.failed=true; return current;}
@@ -8687,11 +8694,11 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
                 {
                 int LA93_3 = input.LA(2);
 
-                if ( (LA93_3==76) ) {
-                    alt93=3;
-                }
-                else if ( (LA93_3==RULE_ID||LA93_3==51||(LA93_3>=60 && LA93_3<=61)||LA93_3==75||LA93_3==77) ) {
+                if ( (LA93_3==RULE_ID||LA93_3==51||(LA93_3>=60 && LA93_3<=61)||LA93_3==75||LA93_3==77) ) {
                     alt93=1;
+                }
+                else if ( (LA93_3==76) ) {
+                    alt93=3;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return current;}
@@ -14089,11 +14096,11 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
                             {
                             int LA114_1 = input.LA(2);
 
-                            if ( (LA114_1==44||LA114_1==119) ) {
-                                alt114=2;
-                            }
-                            else if ( (LA114_1==71) ) {
+                            if ( (LA114_1==71) ) {
                                 alt114=1;
+                            }
+                            else if ( (LA114_1==44||LA114_1==119) ) {
+                                alt114=2;
                             }
                             }
                             break;
@@ -30577,7 +30584,7 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
     static final String DFA54_acceptS =
         "\1\uffff\1\5\11\uffff\1\1\1\2\1\3\1\4";
     static final String DFA54_specialS =
-        "\2\uffff\1\7\1\6\1\2\1\5\1\4\1\3\1\10\1\0\1\1\4\uffff}>";
+        "\2\uffff\1\5\1\7\1\2\1\6\1\4\1\0\1\3\1\1\1\10\4\uffff}>";
     static final String[] DFA54_transitionS = {
             "\24\1\14\uffff\6\1\1\2\1\3\2\uffff\1\4\1\1\1\5\1\6\4\1\1\uffff"+
             "\5\1\1\uffff\1\12\1\11\2\uffff\1\1\1\uffff\2\1\1\uffff\4\1\2"+
@@ -30636,6 +30643,21 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
+                        int LA54_7 = input.LA(1);
+
+                         
+                        int index54_7 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred4_InternalFeature()) ) {s = 14;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index54_7);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 1 : 
                         int LA54_9 = input.LA(1);
 
                          
@@ -30648,21 +30670,6 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
 
                          
                         input.seek(index54_9);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
-                        int LA54_10 = input.LA(1);
-
-                         
-                        int index54_10 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred4_InternalFeature()) ) {s = 14;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index54_10);
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
@@ -30681,10 +30688,10 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
                         if ( s>=0 ) return s;
                         break;
                     case 3 : 
-                        int LA54_7 = input.LA(1);
+                        int LA54_8 = input.LA(1);
 
                          
-                        int index54_7 = input.index();
+                        int index54_8 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred4_InternalFeature()) ) {s = 14;}
@@ -30692,7 +30699,7 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 1;}
 
                          
-                        input.seek(index54_7);
+                        input.seek(index54_8);
                         if ( s>=0 ) return s;
                         break;
                     case 4 : 
@@ -30711,38 +30718,6 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
                         if ( s>=0 ) return s;
                         break;
                     case 5 : 
-                        int LA54_5 = input.LA(1);
-
-                         
-                        int index54_5 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred2_InternalFeature()) ) {s = 12;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index54_5);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 6 : 
-                        int LA54_3 = input.LA(1);
-
-                         
-                        int index54_3 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred1_InternalFeature()) ) {s = 11;}
-
-                        else if ( (synpred2_InternalFeature()) ) {s = 12;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index54_3);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 7 : 
                         int LA54_2 = input.LA(1);
 
                          
@@ -30759,11 +30734,43 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
                         input.seek(index54_2);
                         if ( s>=0 ) return s;
                         break;
-                    case 8 : 
-                        int LA54_8 = input.LA(1);
+                    case 6 : 
+                        int LA54_5 = input.LA(1);
 
                          
-                        int index54_8 = input.index();
+                        int index54_5 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred2_InternalFeature()) ) {s = 12;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index54_5);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 7 : 
+                        int LA54_3 = input.LA(1);
+
+                         
+                        int index54_3 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred1_InternalFeature()) ) {s = 11;}
+
+                        else if ( (synpred2_InternalFeature()) ) {s = 12;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index54_3);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 8 : 
+                        int LA54_10 = input.LA(1);
+
+                         
+                        int index54_10 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred4_InternalFeature()) ) {s = 14;}
@@ -30771,7 +30778,7 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 1;}
 
                          
-                        input.seek(index54_8);
+                        input.seek(index54_10);
                         if ( s>=0 ) return s;
                         break;
             }
@@ -31218,9 +31225,9 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
     static final String DFA141_specialS =
         "\1\uffff\1\0\136\uffff}>";
     static final String[] DFA141_transitionS = {
-            "\24\2\14\uffff\10\2\2\uffff\10\2\1\uffff\5\2\1\uffff\2\2\2\uffff"+
-            "\1\2\1\uffff\2\2\1\uffff\1\1\3\2\2\uffff\3\2\5\uffff\36\2\1"+
-            "\uffff\10\2\2\uffff\2\2",
+            "\24\2\14\uffff\10\2\2\uffff\10\2\1\uffff\5\2\1\uffff\2\2\2"+
+            "\uffff\1\2\1\uffff\2\2\1\uffff\1\1\3\2\2\uffff\3\2\5\uffff\36"+
+            "\2\1\uffff\10\2\2\uffff\2\2",
             "\1\uffff",
             "",
             "",
@@ -31390,10 +31397,10 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
     static final String DFA140_specialS =
         "\1\0\1\1\1\2\1\3\41\uffff}>";
     static final String[] DFA140_transitionS = {
-            "\1\5\1\uffff\1\1\3\6\4\uffff\3\6\15\uffff\1\6\1\uffff\1\44\1"+
-            "\6\5\uffff\1\4\1\6\2\uffff\3\6\10\uffff\1\6\3\uffff\1\6\4\uffff"+
-            "\1\3\1\6\1\2\14\uffff\1\6\11\uffff\1\6\3\uffff\1\6\3\uffff\1"+
-            "\6\1\uffff\1\6\2\uffff\3\6\2\uffff\1\6\1\uffff\6\6",
+            "\1\5\1\uffff\1\1\3\6\4\uffff\3\6\15\uffff\1\6\1\uffff\1\44"+
+            "\1\6\5\uffff\1\4\1\6\2\uffff\3\6\10\uffff\1\6\3\uffff\1\6\4"+
+            "\uffff\1\3\1\6\1\2\14\uffff\1\6\11\uffff\1\6\3\uffff\1\6\3\uffff"+
+            "\1\6\1\uffff\1\6\2\uffff\3\6\2\uffff\1\6\1\uffff\6\6",
             "\1\uffff",
             "\1\uffff",
             "\1\uffff",
@@ -31900,9 +31907,9 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
     static final String DFA170_specialS =
         "\1\uffff\1\0\136\uffff}>";
     static final String[] DFA170_transitionS = {
-            "\24\2\14\uffff\10\2\2\uffff\10\2\1\uffff\5\2\1\uffff\2\2\2\uffff"+
-            "\1\2\1\uffff\2\2\1\uffff\1\1\3\2\2\uffff\3\2\5\uffff\36\2\1"+
-            "\uffff\10\2\2\uffff\2\2",
+            "\24\2\14\uffff\10\2\2\uffff\10\2\1\uffff\5\2\1\uffff\2\2\2"+
+            "\uffff\1\2\1\uffff\2\2\1\uffff\1\1\3\2\2\uffff\3\2\5\uffff\36"+
+            "\2\1\uffff\10\2\2\uffff\2\2",
             "\1\uffff",
             "",
             "",
@@ -32072,10 +32079,10 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
     static final String DFA169_specialS =
         "\1\0\1\1\1\2\1\3\41\uffff}>";
     static final String[] DFA169_transitionS = {
-            "\1\5\1\uffff\1\1\3\6\4\uffff\3\6\15\uffff\1\6\1\uffff\1\44\1"+
-            "\6\5\uffff\1\4\1\6\2\uffff\3\6\10\uffff\1\6\3\uffff\1\6\4\uffff"+
-            "\1\3\1\6\1\2\14\uffff\1\6\11\uffff\1\6\3\uffff\1\6\3\uffff\1"+
-            "\6\1\uffff\1\6\2\uffff\3\6\2\uffff\1\6\1\uffff\6\6",
+            "\1\5\1\uffff\1\1\3\6\4\uffff\3\6\15\uffff\1\6\1\uffff\1\44"+
+            "\1\6\5\uffff\1\4\1\6\2\uffff\3\6\10\uffff\1\6\3\uffff\1\6\4"+
+            "\uffff\1\3\1\6\1\2\14\uffff\1\6\11\uffff\1\6\3\uffff\1\6\3\uffff"+
+            "\1\6\1\uffff\1\6\2\uffff\3\6\2\uffff\1\6\1\uffff\6\6",
             "\1\uffff",
             "\1\uffff",
             "\1\uffff",
@@ -32413,8 +32420,8 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
     static final String DFA175_specialS =
         "\1\uffff\1\0\136\uffff}>";
     static final String[] DFA175_transitionS = {
-            "\24\2\14\uffff\10\2\2\uffff\10\2\1\uffff\5\2\1\uffff\1\1\1\2"+
-            "\2\uffff\1\2\1\uffff\2\2\1\uffff\4\2\2\uffff\3\2\5\uffff\36"+
+            "\24\2\14\uffff\10\2\2\uffff\10\2\1\uffff\5\2\1\uffff\1\1\1"+
+            "\2\2\uffff\1\2\1\uffff\2\2\1\uffff\4\2\2\uffff\3\2\5\uffff\36"+
             "\2\1\uffff\10\2\2\uffff\2\2",
             "\1\uffff",
             "",
@@ -32585,9 +32592,9 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
     static final String DFA178_specialS =
         "\1\uffff\1\0\136\uffff}>";
     static final String[] DFA178_transitionS = {
-            "\24\2\14\uffff\10\2\2\uffff\10\2\1\uffff\5\2\1\uffff\2\2\2\uffff"+
-            "\1\2\1\uffff\2\2\1\uffff\1\1\3\2\2\uffff\3\2\5\uffff\36\2\1"+
-            "\uffff\10\2\2\uffff\2\2",
+            "\24\2\14\uffff\10\2\2\uffff\10\2\1\uffff\5\2\1\uffff\2\2\2"+
+            "\uffff\1\2\1\uffff\2\2\1\uffff\1\1\3\2\2\uffff\3\2\5\uffff\36"+
+            "\2\1\uffff\10\2\2\uffff\2\2",
             "\1\uffff",
             "",
             "",
@@ -32757,10 +32764,10 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
     static final String DFA177_specialS =
         "\1\0\1\1\1\2\1\3\41\uffff}>";
     static final String[] DFA177_transitionS = {
-            "\1\5\1\uffff\1\1\3\6\4\uffff\3\6\15\uffff\1\6\1\uffff\1\44\1"+
-            "\6\5\uffff\1\4\1\6\2\uffff\3\6\10\uffff\1\6\3\uffff\1\6\4\uffff"+
-            "\1\3\1\6\1\2\14\uffff\1\6\11\uffff\1\6\3\uffff\1\6\3\uffff\1"+
-            "\6\1\uffff\1\6\2\uffff\3\6\2\uffff\1\6\1\uffff\6\6",
+            "\1\5\1\uffff\1\1\3\6\4\uffff\3\6\15\uffff\1\6\1\uffff\1\44"+
+            "\1\6\5\uffff\1\4\1\6\2\uffff\3\6\10\uffff\1\6\3\uffff\1\6\4"+
+            "\uffff\1\3\1\6\1\2\14\uffff\1\6\11\uffff\1\6\3\uffff\1\6\3\uffff"+
+            "\1\6\1\uffff\1\6\2\uffff\3\6\2\uffff\1\6\1\uffff\6\6",
             "\1\uffff",
             "\1\uffff",
             "\1\uffff",
@@ -33096,9 +33103,9 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
     static final String DFA181_acceptS =
         "\42\uffff\1\2\74\uffff\1\1";
     static final String DFA181_specialS =
-        "\1\uffff\1\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1\14"+
-        "\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\1\30\1\31"+
-        "\1\32\1\33\1\34\1\35\1\36\1\37\1\40\76\uffff}>";
+        "\1\uffff\1\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1"+
+        "\14\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\1\30"+
+        "\1\31\1\32\1\33\1\34\1\35\1\36\1\37\1\40\76\uffff}>";
     static final String[] DFA181_transitionS = {
             "\11\42\1\1\1\22\1\23\1\24\4\42\1\16\1\17\1\20\14\uffff\1\42"+
             "\1\26\2\42\1\27\3\42\2\uffff\1\42\1\34\2\42\1\40\1\41\1\13\1"+
@@ -33755,9 +33762,9 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
     static final String DFA196_specialS =
         "\1\uffff\1\0\142\uffff}>";
     static final String[] DFA196_transitionS = {
-            "\24\2\14\uffff\10\2\2\uffff\10\2\1\uffff\5\2\1\uffff\1\1\1\2"+
-            "\1\uffff\5\2\1\uffff\5\2\1\uffff\3\2\5\uffff\36\2\1\uffff\10"+
-            "\2\1\uffff\3\2",
+            "\24\2\14\uffff\10\2\2\uffff\10\2\1\uffff\5\2\1\uffff\1\1\1"+
+            "\2\1\uffff\5\2\1\uffff\5\2\1\uffff\3\2\5\uffff\36\2\1\uffff"+
+            "\10\2\1\uffff\3\2",
             "\1\uffff",
             "",
             "",
@@ -33950,8 +33957,8 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleMember_in_ruleScenario807 = new BitSet(new long[]{0x3008000000045C02L,0x0000000002003B01L,0x000000000000000CL});
     public static final BitSet FOLLOW_ruleGiven_in_ruleScenario831 = new BitSet(new long[]{0x0000000000005C02L});
     public static final BitSet FOLLOW_ruleGivenReference_in_ruleScenario850 = new BitSet(new long[]{0x0000000000005C02L});
-    public static final BitSet FOLLOW_ruleWhen_in_ruleScenario877 = new BitSet(new long[]{0x0000000000005002L});
-    public static final BitSet FOLLOW_ruleWhenReference_in_ruleScenario896 = new BitSet(new long[]{0x0000000000005002L});
+    public static final BitSet FOLLOW_ruleWhen_in_ruleScenario877 = new BitSet(new long[]{0x0000000000005802L});
+    public static final BitSet FOLLOW_ruleWhenReference_in_ruleScenario896 = new BitSet(new long[]{0x0000000000005802L});
     public static final BitSet FOLLOW_ruleThen_in_ruleScenario923 = new BitSet(new long[]{0x0000000000005002L});
     public static final BitSet FOLLOW_ruleThenReference_in_ruleScenario942 = new BitSet(new long[]{0x0000000000005002L});
     public static final BitSet FOLLOW_ruleExampleTable_in_ruleScenario967 = new BitSet(new long[]{0x0000000000004002L});

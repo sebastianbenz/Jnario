@@ -58,8 +58,8 @@ import org.jnario.spec.doc.DocOutputConfigurationProvider;
 import org.jnario.spec.generator.SpecGenerator;
 import org.jnario.spec.jvmmodel.SpecJvmModelInferrer;
 import org.jnario.spec.scoping.SpecScopeProvider;
-import org.jnario.spec.typing.SpecTypeProvider;
 import org.jnario.spec.validation.SpecClassPathBasedChecks;
+import org.jnario.typing.JnarioTypeProvider;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -94,7 +94,7 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 	
 	@Override
 	public Class<? extends ITypeProvider> bindITypeProvider() {
-		return SpecTypeProvider.class;
+		return JnarioTypeProvider.class;
 	}
 	
 	@Override
