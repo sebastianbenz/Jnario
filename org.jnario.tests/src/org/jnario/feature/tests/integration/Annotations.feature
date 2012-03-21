@@ -35,4 +35,4 @@ Feature: Annotations
 		
 					
 		Then there should be no parsing error
-			jnarioFile.execute.^should.^be(successful)
+			jnarioFile.executesSuccessfully

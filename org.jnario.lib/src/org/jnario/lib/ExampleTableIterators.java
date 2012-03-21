@@ -118,6 +118,13 @@ public class ExampleTableIterators<T extends ExampleTableRow> {
 		causes.append("\n(");
 		causes.append(i);
 		causes.append(") ");
-		causes.append(result.getCause().getLocalizedMessage().substring(1).replaceAll("\\\n", "\n    "));
+		Throwable cause = result.getCause();
+		String message;
+		if(cause.getMessage() == null){
+			message = cause.getClass().getName();
+		}else{
+			message = cause.getLocalizedMessage().substring(1).replaceAll("\\\n", "\n    ");
+		}
+		causes.append(message);
 	}
 }

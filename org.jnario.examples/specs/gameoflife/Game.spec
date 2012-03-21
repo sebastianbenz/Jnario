@@ -21,7 +21,7 @@ describe Game{
 
 	@Mock Cell cell
 	
-	it "keeps all alive cells"{
+	fact "keeps all alive cells"{
 		val newCell = aliveCell()
 		when(cell.evolve(any)).thenReturn(newCell)
 		subject.evolve(newHashSet(cell)).should.contain(newCell)

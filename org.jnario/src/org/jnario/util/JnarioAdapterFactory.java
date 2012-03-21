@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.xbase.XExpression;
 
 import org.eclipse.xtext.xbase.XFeatureCall;
+import org.eclipse.xtext.xbase.XInstanceOfExpression;
 import org.eclipse.xtend.core.xtend.XtendAnnotationTarget;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendMember;
@@ -115,6 +116,10 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseSetLiteral(SetLiteral object) {
 				return createSetLiteralAdapter();
+			}
+			@Override
+			public Adapter caseShouldThrow(ShouldThrow object) {
+				return createShouldThrowAdapter();
 			}
 			@Override
 			public Adapter caseXtendAnnotationTarget(XtendAnnotationTarget object) {
@@ -287,6 +292,20 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSetLiteralAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.jnario.ShouldThrow <em>Should Throw</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.jnario.ShouldThrow
+	 * @generated
+	 */
+	public Adapter createShouldThrowAdapter() {
 		return null;
 	}
 

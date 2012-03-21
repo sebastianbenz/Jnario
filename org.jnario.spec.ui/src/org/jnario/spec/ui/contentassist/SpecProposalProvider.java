@@ -37,22 +37,10 @@ public class SpecProposalProvider extends AbstractSpecProposalProvider {
 	}
 	
 	@Override
-	public void completeMember_Exception(EObject model, Assignment assignment,
-			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		completeJavaTypes(context, SpecPackage.Literals.EXAMPLE__EXCEPTION, true, getQualifiedNameValueConverter(), TypeMatchFilters.all(), acceptor);
-	}
-	
-	@Override
 	public void completeMember_TargetOperation(EObject model,
 			Assignment assignment, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
 		super.completeMember_TargetOperation(model, assignment, context, acceptor);
-	}
-	
-	@Override
-	public void completeMember_Preamble(EObject model, Assignment assignment,
-			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		acceptor.accept(createCompletionProposal("it", context));
 	}
 	
 }

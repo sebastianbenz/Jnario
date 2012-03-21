@@ -15,7 +15,7 @@ import static org.jnario.jnario.test.util.ResultMatchers.*
  */
 describe "Guice" {
 
-	it "should demonstrate the injection of Tests"{
+	fact "should demonstrate the injection of Tests"{
 		val spec = '
 			package bootstrap
 			
@@ -29,8 +29,8 @@ describe "Guice" {
 				
 				@Inject String toInject
 				
-				it "should inject fields"{
-					assertNotNull(toInject);
+				fact "should inject fields"{
+					assertNotNull(toInject)
 				} 
 						
 			}

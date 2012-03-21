@@ -7,7 +7,12 @@
  *******************************************************************************/
 package org.jnario.spec.spec.impl;
 
+import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.getNode;
+
+import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.xbase.XBlockExpression;
+import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.XStringLiteral;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
@@ -15,7 +20,44 @@ import org.eclipse.xtext.xbase.XBlockExpression;
 public class ExampleImplCustom extends org.jnario.spec.spec.impl.ExampleImpl {
 
 	@Override
+	public String getName() {
+		if(name != null){
+			return name;
+		}
+		if(expr == null){
+			return null;
+		}
+		if (expr instanceof XStringLiteral) {
+			XStringLiteral stringLiteral = (XStringLiteral) expr;
+			name = stringLiteral.getValue();
+		}else{
+			ICompositeNode node = getNode(expr);
+			if(node == null){
+				return null;
+			}
+			name = node.getText().trim();
+		}
+		return name;
+	}
+	
+	@Override
+	public XExpression getImplementation() {
+		if(expr instanceof XStringLiteral){
+			return getBody();
+		}else{
+			return expr;
+		}
+	}
+	
+	
+	@Override
 	public boolean isPending() {
+		if(expr == null){
+			return true;
+		}
+		if(!(expr instanceof XStringLiteral)){
+			return false;
+		}
 		if(body == null){
 			return true;
 		}

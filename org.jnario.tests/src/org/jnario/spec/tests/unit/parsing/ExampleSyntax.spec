@@ -1,53 +1,64 @@
 package org.jnario.spec.tests.unit.parsing
 
+import java.util.Collections
+
 describe "Specs Syntax"{
 	
-	describe "Example Syntax - Bullet Point Style"{
-		/* semicolon is necessary, because the initialization 
-		   expression collides with the begin of the next example */
-		int exampleField = 0;
-		
-		- "no expression"
-		- "block expression"{
-			val list = newArrayList()
-			list.size => 0
-		}
-		- "single line expression" [assert true]
-		- "empty single line expression" [""]
-		- throws Exception "single line expression with 'throws'" [throw new Exception]
-		- throws Exception "block expression with 'throws'"{
-			throw new Exception
-		}
-		// single line expression that throws an exception
-		- throws Exception [throw new Exception]
-		// block expression that throws an exception
-		- throws Exception {
-			throw new RuntimeException
-		}
-			 
+	/* fields */
+	String exampleField = ""
+	static String staticField = ""
+	extension Collections
+	extension Collections withName
+	
+	/* facts */
+	fact "no expression"
+	fact "block expression"{
+		val list = newArrayList()
+		list.size => 0
+	}
+	// just an expression
+	fact "hello" should be "hello"
+	
+	/* Contexts */
+	context "Subcontext"{
+		fact "context can be nested"			 
+	}
+	context "Another Subcontext"{
+		fact "multiple sub contexts per file"
 	}
 	
-	describe "Example Syntax - 'it' Style"{
-		
-		int exampleField = 0
-		
-		it "can have no expression"
-		it "can have a block expression"{
-			val list = newArrayList()
-			list.size => 0
-		}
-		it "can have a single line expression" [assert true]
-		it throws Exception "single line expression with 'throws'" [throw new Exception]
-		it throws Exception "block expression with 'throws'"{
-			throw new Exception
-		}
-		// single line expression that throws an exception
-		it throws Exception [throw new Exception]
-		// block expression that throws an exception
-		it throws Exception {
-			throw new RuntimeException
-		}
-			 
+	/* assertions */
+	fact assert 1 == 1
+	fact 1 => 1
+	fact 1 should 1
+	fact 1 should not 2
+	fact 1 should be 1
+	fact 1 should not be 2
+	fact {throw new RuntimeException} throws RuntimeException
+
+	/* Helper Methods */
+	def method(String aParam, String anotherParam){
+		return ""
+	}
+	def String methodWithReturnType(String aParam, String anotherParam){
+		return ""
+	}
+	
+	/* Setup & Tear Down */
+	before exampleField = "new value"
+	before {
+		exampleField = "a block"
+	}
+	before all{
+		staticField = "afd"
+	}
+	
+	after exampleField = "new value"
+	after {
+		exampleField = "a block"
+	}
+	after all{
+		staticField = "afd"
 	}
 	
 } 

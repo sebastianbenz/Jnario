@@ -280,7 +280,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			body = [ITreeAppendable a |
 						a.append("super." + methodName + "();")
 			]
-			annotations += step.getTestAnnotations(null, false)
+			annotations += step.getTestAnnotations(false)
 			annotations += step.toAnnotation(typeof(Order), order.intValue)
 			annotations += step.toAnnotation(typeof(Named),step.nameOf)
 		]	
@@ -301,7 +301,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 
 		inferredJvmType.members += step.toMethod(step.nameOf.javaMethodName, getTypeForName(Void::TYPE, step))[
 			body = step.expressionOf?.blockExpression
-			annotations += step.getTestAnnotations(null, false)
+			annotations += step.getTestAnnotations(false)
 			annotations += step.toAnnotation(typeof(Order), order.intValue)
 			var name = step.nameOf
 			if(step.expressionOf == null){

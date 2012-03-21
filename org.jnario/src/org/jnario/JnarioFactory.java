@@ -99,6 +99,15 @@ public interface JnarioFactory extends EFactory {
 	SetLiteral createSetLiteral();
 
 	/**
+	 * Returns a new object of class '<em>Should Throw</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Should Throw</em>'.
+	 * @generated
+	 */
+	ShouldThrow createShouldThrow();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

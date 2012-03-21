@@ -24,7 +24,7 @@ describe StepExpressionProvider{
 
 	@Inject extension ModelStore modelStore
 	
-	it "should return the name for a step with definition"{
+	fact "should return the name for a step with definition"{
 		parseScenario('''
 			Feature: Example
 				Scenario: MyScenario
@@ -34,7 +34,7 @@ describe StepExpressionProvider{
 		assert step.stepExpression == subject.expressionOf(step)
 	}
 	
-	it "should copy the referenced step's implementation and set the referencing step"{
+	fact "should copy the referenced step's implementation and set the referencing step"{
 		parseScenario('''
 			Feature: Example
 				Scenario: MyScenario 1

@@ -27,31 +27,26 @@ describe ExampleNameProvider{
    
   context toJavaClassName{ 
     
-    it "should remove all white spaces from ExampleGroup's description"{
-      firstJavaClassName("describe 'My Example'") should not (hasItem(" "))
+    fact "should remove all white spaces from ExampleGroup's description"{
+      firstJavaClassName("describe 'My Example'") should not hasItem(" ")
     }  
-      
-    it "should append 'Spec' to class name"{ 
+    fact "should append 'Spec' to class name"{ 
       firstJavaClassName("describe 'My Example'") => endsWith('Spec') 
     }  
-      
-    it "should prepend target type name"{
+    fact "should prepend target type name"{
       firstJavaClassName("describe org.junit.Assert 'My Example'") => startsWith("Assert")
     }  
-    
-    
-    it "should convert description to camel case"{
+    fact "should convert description to camel case"{
       newArrayList(
         "describe 'my example'",
         "describe 'my\nexample'",
         "describe 'my\texample'",
         "describe 'my_example'" 
       ).forEach[
-        firstJavaClassName(it) => is('MyExampleSpec')
+        firstJavaClassName(it) => 'MyExampleSpec'
       ] 
     } 
-      
-    it "should append the target operation's name and params"{
+    fact "should append the target operation's name and params"{
       secondJavaClassName(
         '''
         describe org.junit.Assert{
@@ -59,8 +54,7 @@ describe ExampleNameProvider{
         }
         ''') => endsWith('AssertTrueBooleanSpec')
     }
-    
-    it "should append the description"{
+    fact "should append the description"{
       secondJavaClassName(
       '''
         describe org.junit.Assert{
@@ -68,14 +62,13 @@ describe ExampleNameProvider{
         }
       ''') => endsWith('AssertTrueSpec')
     }
-    
-    it "should prepend the parent ExampleGroup's name"{
+    fact "should prepend the parent ExampleGroup's name"{
       secondJavaClassName(
       '''
       describe org.junit.Assert{
         context assertTrue(boolean) 
       }
-      ''') => is('AssertAssertTrueBooleanSpec')
+      ''') => 'AssertAssertTrueBooleanSpec'
     }
                 
     def firstJavaClassName(CharSequence content){
@@ -85,28 +78,26 @@ describe ExampleNameProvider{
     def secondJavaClassName(CharSequence content){
       subject.toJavaClassName(parse(content).second(typeof(ExampleGroup)))
     }
-    
   }      
   
     context toJavaClassName(ExampleTable){
       
-      it "should combine example and parent name"{
-        
+      fact "should combine example and parent name"{
         exampleTableClassName('''
         describe 'My Context'{
           def MyExample{
           }
         }
-        ''') => is("MyContextSpecMyExample")
+        ''') => "MyContextSpecMyExample"
       }
       
-      it "should convert example name to first upper"{
+      fact "should convert example name to first upper"{
         exampleTableClassName('''
         describe 'My Context'{
           def myExample{
           } 
         }
-        ''') => is("MyContextSpecMyExample")
+        ''') => "MyContextSpecMyExample"
       }
       
       def exampleTableClassName(CharSequence s){
@@ -117,43 +108,41 @@ describe ExampleNameProvider{
   
     context toMethodName(Example){
       
-      it "should convert method description to camel case starting in lowercase"{
+      fact "should convert method description to camel case starting in lowercase"{
         newArrayList(
           "'my example'",
           "'my\nexample'",
           "'my\texample'",
           "'my_example'"
         ).forEach[
-         firstMethodName(it) => is('myExample')
+         firstMethodName(it) => 'myExample'
         ] 
       } 
     
       def firstMethodName(String content){
-        val contentWithContext = "describe 'Context'{ it " + content + "}"
+        val contentWithContext = "describe 'Context'{ fact " + content + "}"
         subject.toMethodName(parse(contentWithContext).first(typeof(Example)))
       }
     }
     
     context toMethodName(Before){
       
-      it "should convert before description to camel case starting in lowercase"{
+      fact "should convert before description to camel case starting in lowercase"{
         newArrayList(
           "before 'my example'",
           "before 'my\nexample'",
           "before 'my\texample'",
           "before 'my_example'" 
         ).forEach[
-          firstMethodName => is('myExample')
+          firstMethodName => 'myExample'
         ] 
       } 
-      
-      it "should use before as default name"{
-        firstMethodName("before{}") => is("before")
+      fact "should use before as default name"{
+        firstMethodName("before{}") => "before"
       }
-      
-      it "should enumerate befores without description"{
+      fact "should enumerate befores without description"{
         secondMethodName("before{}
-                 before{}") => is("before2")
+                 before{}") => "before2"
       }
       
       def firstMethodName(String content){
@@ -169,24 +158,24 @@ describe ExampleNameProvider{
     
     context toMethodName(After){
       
-      it "should convert after description to camel case starting in lowercase"{
+      fact "should convert after description to camel case starting in lowercase"{
       newArrayList(
         "after 'my example'",
         "after 'my\nexample'",
         "after 'my\texample'",
         "after 'my_example'" 
       ).forEach[
-       firstMethodName => is('myExample')
+       firstMethodName => 'myExample'
       ] 
       } 
       
-      it "should use after as default name"{
-        firstMethodName("after{}") => is("after")
+      fact "should use after as default name"{
+        firstMethodName("after{}") => "after"
       }
       
-      it "should enumerate afters without description"{
+      fact "should enumerate afters without description"{
         secondMethodName("after{}
-                 after{}") => is("after2")
+                 after{}") => "after2"
       }
       
       def firstMethodName(String content){
@@ -203,59 +192,59 @@ describe ExampleNameProvider{
 
   context "toFieldName(ExampleTable)"{
     
-    it "should use the example name"{
+    fact "should use the example name"{
       val exampleTable = '''
         describe 'My Context'{
           def myExample{
           }
         }
       '''.parse.first(typeof(ExampleTable))
-      subject.toFieldName(exampleTable) => is("myExample")
+      subject.toFieldName(exampleTable) => "myExample"
     }
      
-    it "should use 'examples' if no name is given"{
+    fact "should use 'examples' if no name is given"{
       val exampleTable = '''
         describe 'My Context'{
           def{
           }
         }
       '''.parse.first(typeof(ExampleTable))
-      subject.toFieldName(exampleTable) => is("examples")
+      subject.toFieldName(exampleTable) => "examples"
     }
     
   }
  
   context ^describe(ExampleGroup){
     
-    it "should use the description"{
-      describeFirst("describe 'My Description'") => is("My Description")
+    fact "should use the description"{
+      describeFirst("describe 'My Description'") => "My Description"
     }
     
-    it "should use the target type"{
-      describeFirst("describe org.junit.Assert") => is("Assert")
+    fact "should use the target type"{
+      describeFirst("describe org.junit.Assert") => "Assert"
     }
     
-    it "should combine target type and description"{
-      describeFirst("describe org.junit.Assert 'and more'") => is("Assert and more")
+    fact "should combine target type and description"{
+      describeFirst("describe org.junit.Assert 'and more'") => "Assert and more"
     }
     
-    it "should use the target operation"{
+    fact "should use the target operation"{
       describeSecond("describe org.junit.Assert{
                     context assertTrue(boolean) 
-                 }") => is("assertTrue[boolean]")
+                 }") => "assertTrue[boolean]"
     }
     
-    it "should combine target operation and description"{
+    fact "should combine target operation and description"{
       describeSecond("describe org.junit.Assert{
                     context assertTrue(boolean) 'and more'
-                 }") => is("assertTrue[boolean] and more")
+                 }") => "assertTrue[boolean] and more"
     }
     
-    it "should escape quotes"{
+    fact "should escape quotes"{
       val text = '''describe 'Example'{
                     describe 'and "more"'
                  }'''.toString
-      describeSecond(text) => is('and \\"more\\"')
+      describeSecond(text) => 'and \\"more\\"'
     }
     
     def describeFirst(String content){
@@ -269,25 +258,17 @@ describe ExampleNameProvider{
   
   context ^describe(Example){
     
-    it "should use the description"{
-      describeFirst("'should do stuff' {true}") => is("should do stuff")
+    fact "should use the description"{
+      describeFirst("'should do stuff' {true}") => "should do stuff"
     }
     
-    it "should use the exception"{
-      describeFirst("throws IllegalArgumentException {true}") => is("throws IllegalArgumentException true")
-    }
-    
-    it "should combine exception and description"{
-      describeFirst("throws IllegalArgumentException 'should be described' {true}") => is("throws IllegalArgumentException should be described")
-    }
-    
-    it "apppends '[PENDING]' to pending example descriptions"{
-      describeFirst("'should do stuff'") => is("should do stuff [PENDING]")
-      describeFirst("'should do stuff'{}") => is("should do stuff [PENDING]")
+    fact "apppends '[PENDING]' to pending example descriptions"{
+      describeFirst("'should do stuff'") => "should do stuff [PENDING]"
+      describeFirst("'should do stuff'{}") => "should do stuff [PENDING]"
     }
     
     def describeFirst(String content){
-      val contentWithExampleGroup = "describe 'Example'{ it " + content + "}"
+      val contentWithExampleGroup = "describe 'Example'{ fact " + content + "}"
       subject.^describe(parse(contentWithExampleGroup).first(typeof(Example)))
     }
   }
@@ -299,3 +280,4 @@ describe ExampleNameProvider{
     return query(modelStore)
   }
 }  
+  

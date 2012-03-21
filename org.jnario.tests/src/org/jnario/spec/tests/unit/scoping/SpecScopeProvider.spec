@@ -26,7 +26,7 @@ describe SpecScopeProvider {
 	
 	@Inject extension ModelStore modelStore
 	
-	it "should resolve operations from surrounding ExampleGroup's target"{
+	fact "should resolve operations from surrounding ExampleGroup's target"{
 		parseSpec('
 			package bootstrap
 			
@@ -60,8 +60,5 @@ describe SpecScopeProvider {
 		return subject.getScope(source, SpecPackage::eINSTANCE.exampleGroup_TargetOperation)
 	}
 	
-	def IScope throwsDeclaration(EObject source){
-		return subject.getScope(source, SpecPackage::eINSTANCE.example_Exception)
-	}
-			
+		
 }

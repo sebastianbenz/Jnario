@@ -9,6 +9,8 @@ package org.jnario.jnario.test.util;
 
 import static junit.framework.Assert.assertFalse;
 import static org.jnario.jnario.test.util.Resources.checkForParseErrors;
+import static org.jnario.jnario.test.util.ResultMatchers.failureCountIs;
+import static org.jnario.jnario.test.util.ResultMatchers.isSuccessful;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -27,6 +29,7 @@ import org.jnario.feature.feature.FeatureFile;
 import org.jnario.feature.generator.FeatureJvmModelGenerator;
 import org.jnario.feature.naming.JavaNameProvider;
 import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
+import org.junit.Assert;
 import org.junit.rules.TemporaryFolder;
 import org.junit.runner.Result;
 
@@ -39,7 +42,7 @@ import com.google.inject.Injector;
 @SuppressWarnings("restriction")
 public class FeatureExecutor extends BehaviorExecutor{
 	
-	public static Result execute(String content) {
+	public static Result execute(CharSequence content) {
 		FeatureInjectorProvider injectorProvider = new FeatureInjectorProvider();
 		try {
 			injectorProvider.setupRegistry();
@@ -48,7 +51,7 @@ public class FeatureExecutor extends BehaviorExecutor{
 			XtextResourceSet resourceSet = new XtextResourceSet();
 			Resource resource = resourceSet.createResource(URI.createURI("temp.feature"));
 			try {
-				resource.load(new StringInputStream(content), Collections.emptyMap());
+				resource.load(new StringInputStream(content.toString()), Collections.emptyMap());
 				checkForParseErrors(resource);
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -60,6 +63,16 @@ public class FeatureExecutor extends BehaviorExecutor{
 		} finally {
 			injectorProvider.restoreRegistry();
 		}
+	}
+	
+	public static void executesSuccessfully(CharSequence content) {
+		Result result = execute(content);
+		Assert.assertThat(result, isSuccessful());
+	}
+	
+	public static void executionFails(CharSequence content) {
+		Result result = execute(content);
+		Assert.assertThat(result, failureCountIs(1));
 	}
 	
 	private final JavaNameProvider nameProvider;

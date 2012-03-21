@@ -24,12 +24,12 @@ describe "SpecValidator"{
 
 	@Inject extension ModelStore modelStore
 
-	it "assert statement must be boolean"{
+	fact "assert statement must be boolean"{
 		parseSpec('
 			package bootstrap
 
 			describe "Example"{
-				it "invalid assert"{
+				fact "invalid assert"{
 					assert 1
 				}
 			} 
@@ -39,7 +39,7 @@ describe "SpecValidator"{
 		validationResult.assertErrorContains("invalid type")
 	}
 	
-	it "example table values must not be void"{
+	fact "example table values must not be void"{
 		parseSpec('
 			package bootstrap
 
@@ -55,7 +55,7 @@ describe "SpecValidator"{
 		validationResult.assertErrorContains("void")
 	}
 	
-	it "example table rows must have the same size"{
+	fact "example table rows must have the same size"{
 		parseSpec('
 			package bootstrap
 

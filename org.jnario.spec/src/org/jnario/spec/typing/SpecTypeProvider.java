@@ -8,7 +8,9 @@
 package org.jnario.spec.typing;
 
 import static com.google.common.collect.Lists.newArrayList;
+import static java.util.Collections.singletonList;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -20,6 +22,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.util.TypeConformanceComputer;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.XbasePackage;
 import org.eclipse.xtext.xbase.typing.Closures;
 import org.eclipse.xtend.core.typing.XtendTypeProvider;
 import org.eclipse.xtext.xtype.impl.XFunctionTypeRefImplCustom;
@@ -30,8 +33,10 @@ import com.google.inject.Singleton;
 
 import org.jnario.Assertion;
 import org.jnario.CollectionLiteral;
+import org.jnario.JnarioPackage;
 import org.jnario.Matcher;
 import org.jnario.Should;
+import org.jnario.ShouldThrow;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
@@ -42,9 +47,6 @@ public class SpecTypeProvider extends XtendTypeProvider {
 	@Inject
 	private Closures closures;
 	
-	@Inject
-	private TypeConformanceComputer conformanceComputer;
-	
 	@Override
 	protected JvmTypeReference expectedType(EObject container, EReference reference, int index,
 			boolean rawType) {
@@ -52,14 +54,24 @@ public class SpecTypeProvider extends XtendTypeProvider {
 			return booleanType(container);
 		}
 		else if(isInMatcher(container)){
-			return expectedMatcherType((Matcher) container, rawType);
+			return _expectedType((Matcher) container, rawType);
+		}else if(container instanceof Should){
+			return _expectedType((Should) container, reference, rawType);
 		}
 		else{
 			return super.expectedType(container, reference, index, rawType);
 		}
 	}
 
-	private JvmTypeReference expectedMatcherType(Matcher matcher,
+	private JvmTypeReference _expectedType(Should should, EReference reference, boolean rawType) {
+		if(reference == XbasePackage.Literals.XBINARY_OPERATION__RIGHT_OPERAND && should.getLeftOperand() != null && should.getRightOperand() instanceof Matcher){
+			JvmTypeReference leftType = getType(should.getLeftOperand());
+			return getTypeReferences().getTypeForName(org.hamcrest.Matcher.class, should, leftType);
+		}
+		return null;
+	}
+
+	private JvmTypeReference _expectedType(Matcher matcher,
 			boolean rawType) {
 		JvmTypeReference expectedType = expectedFromContainer(matcher, rawType);
 		if (!(expectedType instanceof JvmParameterizedTypeReference)) {
@@ -83,7 +95,7 @@ public class SpecTypeProvider extends XtendTypeProvider {
 		}else{
 			index = -1;
 		}
-		JvmTypeReference expectedType = super.expectedType(container, feature, index, rawType);
+		JvmTypeReference expectedType = expectedType(container, feature, index, rawType);
 		return expectedType;
 	}
 
@@ -110,6 +122,8 @@ public class SpecTypeProvider extends XtendTypeProvider {
 			return _type((Should)expression, rawExpectation, rawType);
 		}if (expression instanceof Matcher) {
 			return _type((Matcher)expression, rawExpectation, rawType);
+		}if (expression instanceof ShouldThrow) {
+			return _type((ShouldThrow)expression, rawExpectation, rawType);
 		}else {
 			return super.type(expression, rawExpectation, rawType);
 		}
@@ -120,6 +134,10 @@ public class SpecTypeProvider extends XtendTypeProvider {
 	}
 	
 	protected JvmTypeReference _type(Should should, JvmTypeReference rawExpectation, boolean rawType) {
+		return getPrimitiveVoid(should);
+	}
+	
+	protected JvmTypeReference _type(ShouldThrow should, JvmTypeReference rawExpectation, boolean rawType) {
 		return getPrimitiveVoid(should);
 	}
 	

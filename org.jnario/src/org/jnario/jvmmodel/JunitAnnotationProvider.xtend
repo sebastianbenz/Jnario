@@ -39,13 +39,9 @@ class JunitAnnotationProvider {
 		return context.toAnnotation(typeof(RunWith), typeof(FeatureExamplesRunner))
 	}
 	
-	def getTestAnnotations(EObject context, JvmDeclaredType exception, boolean isPending){
+	def getTestAnnotations(EObject context, boolean isPending){
 		val annotations = <JvmAnnotationReference>newArrayList()
-		if(exception == null){
-			annotations += context.toAnnotation(typeof(Test))
-		}else{
-			annotations += context.toAnnotation(typeof(Test).name, "expected", exception)
-		}
+		annotations += context.toAnnotation(typeof(Test))
 		if(isPending){
 			annotations += context.toAnnotation(typeof(Ignore))
 		}

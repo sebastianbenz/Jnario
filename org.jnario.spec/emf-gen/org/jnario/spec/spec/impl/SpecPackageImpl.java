@@ -207,19 +207,9 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getExample_Preamble()
+	public EReference getExample_Expr()
 	{
-		return (EAttribute)exampleEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getExample_Exception()
-	{
-		return (EReference)exampleEClass.getEStructuralFeatures().get(1);
+		return (EReference)exampleEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -330,8 +320,7 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 		createEReference(exampleGroupEClass, EXAMPLE_GROUP__TARGET_OPERATION);
 
 		exampleEClass = createEClass(EXAMPLE);
-		createEAttribute(exampleEClass, EXAMPLE__PREAMBLE);
-		createEReference(exampleEClass, EXAMPLE__EXCEPTION);
+		createEReference(exampleEClass, EXAMPLE__EXPR);
 
 		beforeEClass = createEClass(BEFORE);
 		createEAttribute(beforeEClass, BEFORE__BEFORE_ALL);
@@ -395,8 +384,7 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 		initEReference(getExampleGroup_TargetOperation(), theTypesPackage.getJvmOperation(), null, "targetOperation", null, 0, 1, ExampleGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(exampleEClass, Example.class, "Example", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getExample_Preamble(), ecorePackage.getEString(), "preamble", null, 0, 1, Example.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getExample_Exception(), theTypesPackage.getJvmDeclaredType(), null, "exception", null, 0, 1, Example.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExample_Expr(), theXbasePackage.getXExpression(), null, "expr", null, 0, 1, Example.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(exampleEClass, ecorePackage.getEBoolean(), "isPending", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -409,6 +397,8 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 		initEClass(testFunctionEClass, TestFunction.class, "TestFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTestFunction_Name(), ecorePackage.getEString(), "name", null, 0, 1, TestFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTestFunction_Body(), theXbasePackage.getXExpression(), null, "body", null, 0, 1, TestFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		addEOperation(testFunctionEClass, theXbasePackage.getXExpression(), "getImplementation", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

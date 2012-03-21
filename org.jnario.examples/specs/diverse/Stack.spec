@@ -12,24 +12,24 @@ import java.util.Stack
 
 describe Stack{
 	
-	- [subject.empty should be true]
+	- subject.empty should be true;
  	   
-	- "initially empty" [subject.size => 0]
+	fact "initially empty" {subject.size => 0}
 	
-	- throws EmptyStackException [subject.pop()]
+	- subject.pop() throws EmptyStackException;
 	
-	- "increases size when pushing"{
+	fact "increases size when pushing"{
 		subject.push("something")
 		subject.size => 1
 	} 	 
 	
-	- "decreases size when popping"{
+	fact "decreases size when popping"{
 		subject.push("something")
 		subject.pop()
 		subject.size => 0
 	} 	
 	 
-	- "pop returns last pushed element"{
+	fact "pop returns last pushed element"{
 		subject.push("something")
 		subject.push("something else")
 		subject.pop() => "something else"

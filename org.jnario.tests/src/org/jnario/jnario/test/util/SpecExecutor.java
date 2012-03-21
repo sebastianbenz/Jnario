@@ -8,7 +8,7 @@
 package org.jnario.jnario.test.util;
 
 import static org.eclipse.emf.common.util.URI.createURI;
-import static org.jnario.jnario.test.util.ResultMatchers.isSuccessful;
+import static org.jnario.jnario.test.util.ResultMatchers.*;
 import static org.junit.Assert.assertNotNull;
 
 import java.io.IOException;
@@ -49,6 +49,11 @@ public class SpecExecutor extends BehaviorExecutor{
 	public static void executesSuccessfully(CharSequence content) {
 		Result result = execute(content);
 		Assert.assertThat(result, isSuccessful());
+	}
+	
+	public static void executionFails(CharSequence content) {
+		Result result = execute(content);
+		Assert.assertThat(result, failureCountIs(1));
 	}
 
 	public static Result execute(CharSequence content) {

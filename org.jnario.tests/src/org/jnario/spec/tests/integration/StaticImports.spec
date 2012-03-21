@@ -10,7 +10,7 @@ package org.jnario.spec.tests.integration
 
 describe "StaticImports" {
  
-	it "should resolve static imports"{
+	fact "should resolve static imports"{
 		val spec = '
 			package bootstrap
 			
@@ -18,7 +18,7 @@ describe "StaticImports" {
 	
 			describe "Example" {
 			
-				it "should resolve static imports"{
+				fact "should resolve static imports"{
 					assertTrue(true) 
 				} 
 						

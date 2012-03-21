@@ -127,6 +127,9 @@ public class SpecScopeProvider extends XtendScopeProvider {
 			int priority,
 			IAcceptor<IJvmFeatureDescriptionProvider> acceptor) {
 		super.addFeatureDescriptionProviders(resource, contextType, implicitReceiver, implicitArgument, priority, acceptor);
+		if(contextType == null){
+			return;
+		}
 		EObject source = xtendjvmAssociations.getPrimarySourceElement(contextType);
 		// extensions for this
 		if (contextType != null && source instanceof ExampleGroup) {

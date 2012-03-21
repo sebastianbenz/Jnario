@@ -20,14 +20,14 @@ describe DocGenerator {
 	@Inject extension ModelStore 
 	@Inject InMemoryFileSystemAccess fsa
 	
-	it "should generate java script helper files"{
+	fact "should generate java script helper files"{
 		generateEmptyExampleDoc()
 		
 		assert generatedFile("js/prettify.js") != null
 		assert generatedFile("js/lang-jnario.js") != null
 	}
 	
-	it "should generate css helper files"{
+	fact "should generate css helper files"{
 		generateEmptyExampleDoc()
 		
 		assert generatedFile("css/bootstrap-responsive.min.css") != null
@@ -35,7 +35,7 @@ describe DocGenerator {
 		assert generatedFile("css/prettify.css") != null
 	}
 	
-	it "should generate scenario title and heading"{
+	fact "should generate scenario title and heading"{
 		generateEmptyExampleDoc()
 		
 		val scenarioDoc = generatedFile("ExampleSpec.html")
@@ -44,7 +44,7 @@ describe DocGenerator {
 				scenarioDoc.contains("<h1>Example</h1>")
 	}
 	
-	it "should generate scenario documentation"{
+	fact "should generate scenario documentation"{
 		generateDoc('''
 			/*
 			 * Irrelevant documentation.
@@ -59,24 +59,24 @@ describe DocGenerator {
 		''')
 		
 		val scenarioDoc = generatedFile("ExampleSpec.html")
-		scenarioDoc.^should.^contain("<p>This is an example.</p>")
-		scenarioDoc.^should.^not.^contain("Irrelevant documentation.")
+		assert scenarioDoc.contains("<p>This is an example.</p>")
+		assert !scenarioDoc.contains("Irrelevant documentation.")
 	}
 	
-	it "should generate example documentation"{
+	fact "should generate example documentation"{
 		generateDoc('''
 			describe 'Example'{
 				/*
 				 * Example documentation
 				 */
-				it "should do stuff"{
+				fact "should do stuff"{
 					var x = 0
 					x = x + 1
 				}
 			} 
 		''')
 		val scenarioDoc = generatedFile("ExampleSpec.html")
-		scenarioDoc.^should.^contain('''
+		assert scenarioDoc.contains('''
 		<h4>Should do stuff</h4>
 		<p>
 		<p>Example documentation</p>
@@ -87,7 +87,7 @@ describe DocGenerator {
 		'''.toString())
 	}
 	
-	it "should support markdown for documentation"{
+	fact "should support markdown for documentation"{
 		generateDoc('''
 			/*
 			 * #Example Heading
@@ -97,11 +97,11 @@ describe DocGenerator {
 			} 
 		''')
 		val scenarioDoc = generatedFile("ExampleSpec.html")
-		scenarioDoc.^should.^contain("<h1>Example Heading</h1>")
+		assert scenarioDoc.contains("<h1>Example Heading</h1>")
 	}
 	
 	
-	it "should generate table for example tables"{
+	fact "should generate table for example tables"{
 		generateDoc('''
 			describe 'Example'{
 				def myExample{
@@ -111,26 +111,26 @@ describe DocGenerator {
 			} 
 		''')
 		val scenarioDoc = generatedFile("ExampleSpec.html")
-		scenarioDoc.^should.^contain("<h4>MyExample</h4>")
-		scenarioDoc.^should.^contain("<th>a</th>")
-		scenarioDoc.^should.^contain("<th>b</th>")
-		scenarioDoc.^should.^contain("<td>1</td>")
-		scenarioDoc.^should.^contain("<td>2</td>")
+		assert scenarioDoc.contains("<h4>MyExample</h4>")
+		assert scenarioDoc.contains("<th>a</th>")
+		assert scenarioDoc.contains("<th>b</th>")
+		assert scenarioDoc.contains("<td>1</td>")
+		assert scenarioDoc.contains("<td>2</td>")
 	}
 	
-	it "should filter code based on regex in filter annotation"{
+	fact "should filter code based on regex in filter annotation"{
 		generateDoc('''
 			describe 'Example'{
 				/*
 				 * @filter(bbb)
 				 */
-				it "should do stuff"{
+				fact "should do stuff"{
 					"aaabbbaaa"
 				}
 			} 
 		''')
 		val scenarioDoc = generatedFile("ExampleSpec.html")
-		scenarioDoc.^should.^contain('"aaaaaa"')
+		assert scenarioDoc.contains('"aaaaaa"')
 	}
 	
 	def generateEmptyExampleDoc(){

@@ -7,17 +7,15 @@
  *******************************************************************************/
 package org.jnario.spec.spec.impl;
 
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.EcoreUtil2;
-
 import org.jnario.spec.spec.ExampleGroup;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
+@SuppressWarnings("restriction")
 public class ExampleGroupImplCustom extends org.jnario.spec.spec.impl.ExampleGroupImpl {
 
-	@SuppressWarnings("restriction")
 	@Override
 	public String getName() {
 		if(name != null && name.length() == 0){

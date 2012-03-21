@@ -18,7 +18,7 @@ Feature: Step values
 						Given some values "3", "4"
 							var x = args.get(0)
 						Then it should be possible to get the value
-							x.^should.^be("3")
+							x => "3"
 			'
 		When this feature is executed
 		Then it should be successful
@@ -32,7 +32,7 @@ Feature: Step values
 						Given some values "3", "4"
 							var x = args.first()
 						Then it should be possible to get the value
-							x.^should.^be("3")
+							x => "3"
 			'
 		When this feature is executed
 		Then it should be successful
@@ -47,7 +47,7 @@ Feature: Step values
 							var x = args.get(1)
 					Scenario: using fields in step definitions
 						Then those values should be accessible
-							x.^should.^be("4")
+							x => "4"
 							
 			'
 		When this feature is executed

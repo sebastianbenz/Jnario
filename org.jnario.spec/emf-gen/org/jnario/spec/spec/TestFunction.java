@@ -79,4 +79,12 @@ public interface TestFunction extends XtendMember
 	 */
 	void setBody(XExpression value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	XExpression getImplementation();
+
 } // TestFunction

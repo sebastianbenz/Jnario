@@ -7,20 +7,18 @@
  *******************************************************************************/
 package org.jnario.spec.ui.highlighting;
 
-import static org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultHighlightingConfiguration.KEYWORD_ID;
-
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtend.core.xtend.XtendField;
+import org.eclipse.xtend.core.xtend.XtendFunction;
+import org.eclipse.xtend.core.xtend.XtendMember;
+import org.eclipse.xtend.core.xtend.XtendPackage;
+import org.eclipse.xtend.ide.highlighting.XtendHighlightingCalculator;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.ui.highlighting.XbaseHighlightingConfiguration;
-import org.eclipse.xtend.ide.highlighting.XtendHighlightingCalculator;
-import org.eclipse.xtend.core.xtend.XtendPackage;
-import org.eclipse.xtend.core.xtend.XtendField;
-import org.eclipse.xtend.core.xtend.XtendFunction;
-import org.eclipse.xtend.core.xtend.XtendMember;
 import org.jnario.ExampleTable;
 import org.jnario.JnarioPackage;
 import org.jnario.spec.spec.Example;
@@ -60,7 +58,6 @@ public class SpecHighlightingCalculator extends XtendHighlightingCalculator {
 					highlightXtendField(field,acceptor);
 				}else if(member.eClass() == SpecPackage.Literals.EXAMPLE){
 					Example example = (Example) member;
-					highlightObjectAtFeature(acceptor, example, SpecPackage.Literals.EXAMPLE__PREAMBLE, KEYWORD_ID);
 					highlightRichStrings(example.getBody() ,acceptor);
 				}else if(member.eClass() == SpecPackage.Literals.EXAMPLE_GROUP){
 					ExampleGroup subExampleGroup = (ExampleGroup) member;

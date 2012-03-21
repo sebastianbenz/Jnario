@@ -26,24 +26,24 @@ describe World{
 	AliveCell anotherAliveCell = aliveCell()
 	DeadCell aDeadCell = deadCell()
 
-	it "has initially no living cells"{
+	fact "has initially no living cells"{
 		subject.visit(worldVisitor)
 		verify(worldVisitor, never).visit(any, any)
 	}
 	
-	it "visits any dead cell"{
+	fact "visits any dead cell"{
 		subject.addCell(pos(0, 0), aDeadCell)
 		subject.visit(worldVisitor)
 		verify(worldVisitor, atLeastOnce).visit(aDeadCell, pos(0, 0))
 	}
 	
-	it "visits a living cell and its dead neighbours"{
+	fact "visits a living cell and its dead neighbours"{
 		subject.addCell(pos(0, 0), anAliveCell)
 		subject.visit(worldVisitor)
 		verify(worldVisitor, times(9)).visit(any, neighbourOf(pos(0, 0)))
 	}
 	
-	it "visits any living cell and its dead neighbours"{
+	fact "visits any living cell and its dead neighbours"{
 		subject.addCell(pos(0, 0), anAliveCell)
 		subject.addCell(pos(1, 1), anotherAliveCell)
 		subject.visit(worldVisitor)

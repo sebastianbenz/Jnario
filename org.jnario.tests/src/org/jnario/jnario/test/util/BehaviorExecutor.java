@@ -46,6 +46,8 @@ import org.junit.rules.TemporaryFolder;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
+import org.objectweb.asm.Type;
+import org.pegdown.PegDownProcessor;
 
 import testdata.Properties1;
 
@@ -160,6 +162,7 @@ public abstract class BehaviorExecutor {
 		javaCompiler.addClassPathOfClass(QualifiedName.class);
 		javaCompiler.addClassPathOfClass(Assertion.class);
 		javaCompiler.addClassPathOfClass(org.hamcrest.Matchers.class);
+		javaCompiler.addClassPathOfClass(Type.class);
 	}
 
 	public Result run(EObject object) {

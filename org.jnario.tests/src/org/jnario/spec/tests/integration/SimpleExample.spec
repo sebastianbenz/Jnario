@@ -9,13 +9,13 @@
 
 describe "SimpleExample" {
  
-	it "should pass"{
+	fact "should pass"{
 		val spec = '
 			package bootstrap
 	
 			describe "Example" {
 			
-				it "should pass"{
+				fact "should pass"{
 						org::junit::Assert::assertTrue(true) 
 				} 
 						
@@ -25,13 +25,13 @@ describe "SimpleExample" {
 		org::junit::Assert::assertThat(result, org::jnario::jnario::test::util::ResultMatchers::successful)
 	} 
 	
-	it "should fail"{
+	fact "should fail"{
 		val spec = '
 			package bootstrap
 
 			describe "Example" {
 			
-				it "should fail"{
+				fact "should fail"{
 						org::junit::Assert::assertFalse("reason of failure", true)
 				} 
 						

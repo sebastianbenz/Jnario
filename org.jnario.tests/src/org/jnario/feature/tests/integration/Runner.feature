@@ -28,11 +28,11 @@ Feature: Test Runner
 						When 
 							x = x + 1 
 						Then 
-							x.^should.^be(4) 
+							x => 4
 				"
 				
 		When I run the scenario
 					
 		Then the scenario should have no validation errors that the variable was not defined
 		And it should pass
-			jnarioFile.execute.^should.^be(successful)
+			jnarioFile.executesSuccessfully

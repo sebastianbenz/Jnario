@@ -18,6 +18,7 @@ import org.eclipse.xtext.xbase.XbasePackage;
 
 import org.eclipse.xtend.core.xtend.XtendPackage;
 
+import org.eclipse.xtext.common.types.TypesPackage;
 import org.jnario.Assertion;
 import org.jnario.CollectionLiteral;
 import org.jnario.ExampleColumn;
@@ -29,6 +30,7 @@ import org.jnario.ListLiteral;
 import org.jnario.Matcher;
 import org.jnario.SetLiteral;
 import org.jnario.Should;
+import org.jnario.ShouldThrow;
 
 /**
  * <!-- begin-user-doc -->
@@ -99,6 +101,13 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 	 * @generated
 	 */
 	private EClass setLiteralEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass shouldThrowEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -313,24 +322,6 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getShould_Prefix() {
-		return (EAttribute)shouldEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getShould_Postfix() {
-		return (EAttribute)shouldEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getCollectionLiteral() {
 		return collectionLiteralEClass;
 	}
@@ -351,6 +342,33 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 	 */
 	public EClass getSetLiteral() {
 		return setLiteralEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getShouldThrow() {
+		return shouldThrowEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getShouldThrow_Type() {
+		return (EReference)shouldThrowEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getShouldThrow_Expression() {
+		return (EReference)shouldThrowEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -402,14 +420,16 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 
 		shouldEClass = createEClass(SHOULD);
 		createEAttribute(shouldEClass, SHOULD__NOT);
-		createEAttribute(shouldEClass, SHOULD__PREFIX);
-		createEAttribute(shouldEClass, SHOULD__POSTFIX);
 
 		collectionLiteralEClass = createEClass(COLLECTION_LITERAL);
 
 		listLiteralEClass = createEClass(LIST_LITERAL);
 
 		setLiteralEClass = createEClass(SET_LITERAL);
+
+		shouldThrowEClass = createEClass(SHOULD_THROW);
+		createEReference(shouldThrowEClass, SHOULD_THROW__TYPE);
+		createEReference(shouldThrowEClass, SHOULD_THROW__EXPRESSION);
 	}
 
 	/**
@@ -438,6 +458,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		// Obtain other dependent packages
 		XtendPackage theXtendPackage = (XtendPackage)EPackage.Registry.INSTANCE.getEPackage(XtendPackage.eNS_URI);
 		XbasePackage theXbasePackage = (XbasePackage)EPackage.Registry.INSTANCE.getEPackage(XbasePackage.eNS_URI);
+		TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -452,6 +473,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		collectionLiteralEClass.getESuperTypes().add(theXbasePackage.getXFeatureCall());
 		listLiteralEClass.getESuperTypes().add(this.getCollectionLiteral());
 		setLiteralEClass.getESuperTypes().add(this.getCollectionLiteral());
+		shouldThrowEClass.getESuperTypes().add(theXbasePackage.getXExpression());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(exampleTableEClass, ExampleTable.class, "ExampleTable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -477,8 +499,6 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 
 		initEClass(shouldEClass, Should.class, "Should", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getShould_Not(), ecorePackage.getEBoolean(), "not", null, 0, 1, Should.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getShould_Prefix(), ecorePackage.getEString(), "prefix", null, 0, 1, Should.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getShould_Postfix(), ecorePackage.getEString(), "postfix", null, 0, 1, Should.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(collectionLiteralEClass, CollectionLiteral.class, "CollectionLiteral", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -487,6 +507,10 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		initEClass(listLiteralEClass, ListLiteral.class, "ListLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(setLiteralEClass, SetLiteral.class, "SetLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(shouldThrowEClass, ShouldThrow.class, "ShouldThrow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getShouldThrow_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 1, 1, ShouldThrow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getShouldThrow_Expression(), theXbasePackage.getXExpression(), null, "expression", null, 1, 1, ShouldThrow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

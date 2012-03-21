@@ -2043,85 +2043,38 @@ ruleXRelationalExpression returns [EObject current=null]
         afterParserOrEnumRuleCall();
     }
 ((((((
-)(((
-(
-(
-	'should' 
- 
+)(((	'should' 
 
-    |			'must' 
- 
-
-)
-
-)
+    |	'must' 
 )(
 (
 	'not' 
  
 
 )
-)?((
-(
-	'be' 
- 
-
-)
-)
-    |(
-(
-	'contain' 
- 
-
-)
-))?)
-    |(
-(
-	'=>' 
- 
-
-)
-))))=>((
+)?(	'be' 
+)?)
+    |	'=>' 
+)))=>((
     {
         $current = forceCreateModelElementAndSet(
             grammarAccess.getXRelationalExpressionAccess().getShouldLeftOperandAction_1_0_0_0_0(),
             $current);
     }
-)(((
-(
-(
-		lv_prefix_2_1=	'should' 
+)(((	otherlv_2='should' 
     {
-        newLeafNode(lv_prefix_2_1, grammarAccess.getXRelationalExpressionAccess().getPrefixShouldKeyword_1_0_0_0_1_0_0_0_0());
+    	newLeafNode(otherlv_2, grammarAccess.getXRelationalExpressionAccess().getShouldKeyword_1_0_0_0_1_0_0_0());
     }
- 
-	    {
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getXRelationalExpressionRule());
-	        }
-       		setWithLastConsumed($current, "prefix", lv_prefix_2_1, null);
-	    }
 
-    |		lv_prefix_2_2=	'must' 
+    |	otherlv_3='must' 
     {
-        newLeafNode(lv_prefix_2_2, grammarAccess.getXRelationalExpressionAccess().getPrefixMustKeyword_1_0_0_0_1_0_0_0_1());
+    	newLeafNode(otherlv_3, grammarAccess.getXRelationalExpressionAccess().getMustKeyword_1_0_0_0_1_0_0_1());
     }
- 
-	    {
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getXRelationalExpressionRule());
-	        }
-       		setWithLastConsumed($current, "prefix", lv_prefix_2_2, null);
-	    }
-
-)
-
-)
 )(
 (
-		lv_not_3_0=	'not' 
+		lv_not_4_0=	'not' 
     {
-        newLeafNode(lv_not_3_0, grammarAccess.getXRelationalExpressionAccess().getNotNotKeyword_1_0_0_0_1_0_1_0());
+        newLeafNode(lv_not_4_0, grammarAccess.getXRelationalExpressionAccess().getNotNotKeyword_1_0_0_0_1_0_1_0());
     }
  
 	    {
@@ -2132,54 +2085,16 @@ ruleXRelationalExpression returns [EObject current=null]
 	    }
 
 )
-)?((
-(
-		lv_postfix_4_0=	'be' 
+)?(	otherlv_5='be' 
     {
-        newLeafNode(lv_postfix_4_0, grammarAccess.getXRelationalExpressionAccess().getPostfixBeKeyword_1_0_0_0_1_0_2_0_0());
+    	newLeafNode(otherlv_5, grammarAccess.getXRelationalExpressionAccess().getBeKeyword_1_0_0_0_1_0_2());
     }
- 
-	    {
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getXRelationalExpressionRule());
-	        }
-       		setWithLastConsumed($current, "postfix", lv_postfix_4_0, "be");
-	    }
-
-)
-)
-    |(
-(
-		lv_postfix_5_0=	'contain' 
+)?)
+    |	otherlv_6='=>' 
     {
-        newLeafNode(lv_postfix_5_0, grammarAccess.getXRelationalExpressionAccess().getPostfixContainKeyword_1_0_0_0_1_0_2_1_0());
+    	newLeafNode(otherlv_6, grammarAccess.getXRelationalExpressionAccess().getEqualsSignGreaterThanSignKeyword_1_0_0_0_1_1());
     }
- 
-	    {
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getXRelationalExpressionRule());
-	        }
-       		setWithLastConsumed($current, "postfix", lv_postfix_5_0, "contain");
-	    }
-
-)
-))?)
-    |(
-(
-		lv_prefix_6_0=	'=>' 
-    {
-        newLeafNode(lv_prefix_6_0, grammarAccess.getXRelationalExpressionAccess().getPrefixEqualsSignGreaterThanSignKeyword_1_0_0_0_1_1_0());
-    }
- 
-	    {
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getXRelationalExpressionRule());
-	        }
-       		setWithLastConsumed($current, "prefix", lv_prefix_6_0, "=>");
-	    }
-
-)
-))))(
+)))(
 (
 		{ 
 	        newCompositeNode(grammarAccess.getXRelationalExpressionAccess().getRightOperandXOtherOperatorExpressionParserRuleCall_1_0_1_0()); 
@@ -2199,30 +2114,80 @@ ruleXRelationalExpression returns [EObject current=null]
 )
 ))
     |(((((
-)	'instanceof' 
-))=>((
+)(((	'should' 
+
+    |	'must' 
+)	'throw' 
+)
+    |	'throws' 
+)))=>((
     {
         $current = forceCreateModelElementAndSet(
-            grammarAccess.getXRelationalExpressionAccess().getXInstanceOfExpressionExpressionAction_1_1_0_0_0(),
+            grammarAccess.getXRelationalExpressionAccess().getShouldThrowExpressionAction_1_1_0_0_0(),
             $current);
     }
-)	otherlv_9='instanceof' 
+)(((	otherlv_9='should' 
     {
-    	newLeafNode(otherlv_9, grammarAccess.getXRelationalExpressionAccess().getInstanceofKeyword_1_1_0_0_1());
+    	newLeafNode(otherlv_9, grammarAccess.getXRelationalExpressionAccess().getShouldKeyword_1_1_0_0_1_0_0_0());
     }
-))(
+
+    |	otherlv_10='must' 
+    {
+    	newLeafNode(otherlv_10, grammarAccess.getXRelationalExpressionAccess().getMustKeyword_1_1_0_0_1_0_0_1());
+    }
+)	otherlv_11='throw' 
+    {
+    	newLeafNode(otherlv_11, grammarAccess.getXRelationalExpressionAccess().getThrowKeyword_1_1_0_0_1_0_1());
+    }
+)
+    |	otherlv_12='throws' 
+    {
+    	newLeafNode(otherlv_12, grammarAccess.getXRelationalExpressionAccess().getThrowsKeyword_1_1_0_0_1_1());
+    }
+)))(
 (
 		{ 
 	        newCompositeNode(grammarAccess.getXRelationalExpressionAccess().getTypeJvmTypeReferenceParserRuleCall_1_1_1_0()); 
 	    }
-		lv_type_10_0=ruleJvmTypeReference		{
+		lv_type_13_0=ruleJvmTypeReference		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getXRelationalExpressionRule());
 	        }
        		set(
        			$current, 
        			"type",
-        		lv_type_10_0, 
+        		lv_type_13_0, 
+        		"JvmTypeReference");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))
+    |(((((
+)	'instanceof' 
+))=>((
+    {
+        $current = forceCreateModelElementAndSet(
+            grammarAccess.getXRelationalExpressionAccess().getXInstanceOfExpressionExpressionAction_1_2_0_0_0(),
+            $current);
+    }
+)	otherlv_15='instanceof' 
+    {
+    	newLeafNode(otherlv_15, grammarAccess.getXRelationalExpressionAccess().getInstanceofKeyword_1_2_0_0_1());
+    }
+))(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getXRelationalExpressionAccess().getTypeJvmTypeReferenceParserRuleCall_1_2_1_0()); 
+	    }
+		lv_type_16_0=ruleJvmTypeReference		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getXRelationalExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"type",
+        		lv_type_16_0, 
         		"JvmTypeReference");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -2237,7 +2202,7 @@ ruleXRelationalExpression returns [EObject current=null]
 )))=>((
     {
         $current = forceCreateModelElementAndSet(
-            grammarAccess.getXRelationalExpressionAccess().getXBinaryOperationLeftOperandAction_1_2_0_0_0(),
+            grammarAccess.getXRelationalExpressionAccess().getXBinaryOperationLeftOperandAction_1_3_0_0_0(),
             $current);
     }
 )(
@@ -2248,7 +2213,7 @@ ruleXRelationalExpression returns [EObject current=null]
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getXRelationalExpressionAccess().getFeatureJvmIdentifiableElementCrossReference_1_2_0_0_1_0()); 
+	        newCompositeNode(grammarAccess.getXRelationalExpressionAccess().getFeatureJvmIdentifiableElementCrossReference_1_3_0_0_1_0()); 
 	    }
 		ruleOpCompare		{ 
 	        afterParserOrEnumRuleCall();
@@ -2258,16 +2223,16 @@ ruleXRelationalExpression returns [EObject current=null]
 )))(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getXRelationalExpressionAccess().getRightOperandXOtherOperatorExpressionParserRuleCall_1_2_1_0()); 
+	        newCompositeNode(grammarAccess.getXRelationalExpressionAccess().getRightOperandXOtherOperatorExpressionParserRuleCall_1_3_1_0()); 
 	    }
-		lv_rightOperand_13_0=ruleXOtherOperatorExpression		{
+		lv_rightOperand_19_0=ruleXOtherOperatorExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getXRelationalExpressionRule());
 	        }
        		set(
        			$current, 
        			"rightOperand",
-        		lv_rightOperand_13_0, 
+        		lv_rightOperand_19_0, 
         		"XOtherOperatorExpression");
 	        afterParserOrEnumRuleCall();
 	    }

@@ -26,7 +26,7 @@ import org.jnario.spec.spec.SpecPackage;
  *
  * @generated
  */
-public class AfterImpl extends TestFunctionImpl implements After
+public class AfterImpl extends TestFunctionImplCustom implements After
 {
 	/**
 	 * The default value of the '{@link #isAfterAll() <em>After All</em>}' attribute.

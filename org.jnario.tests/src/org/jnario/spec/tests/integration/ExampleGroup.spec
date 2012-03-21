@@ -16,7 +16,7 @@ import org.jnario.spec.spec.ExampleGroup
  */
 describe ExampleGroup {
   
-	it "should resolve target class"{
+	fact "should resolve target class"{
 		val spec = '
 			package bootstrap
 			
@@ -25,7 +25,7 @@ describe ExampleGroup {
 	
 			describe Assert {
 			
-				it "should resolve target class"{
+				fact "should resolve target class"{
 				}  
 						
 			}
@@ -33,17 +33,15 @@ describe ExampleGroup {
 		assertThat(execute(spec), successful)
 	} 
 	
-	it "should be able to declare helper methods"{
+	fact "should be able to declare helper methods"{
 		val spec = '
 			package bootstrap
-									
-			package test
 
 			describe "ExampleGroup" {
 			
 				int i = 0
 			
-				it "should be able to declare void helper methods"{
+				fact "should be able to declare void helper methods"{
 					inc()
 					i => 1
 				}
@@ -52,11 +50,11 @@ describe ExampleGroup {
 					i = i + 1 
 				}  
 				
-				it "should be able to declare helper methods with parameter and return type"{
+				fact "should be able to declare helper methods with parameter and return type"{
 					inc2(i) => 1 
 				}
 				
-				it "should be able to use helper methods as extensions"{
+				fact "should be able to use helper methods as extensions"{
 					i.inc2 => 1 
 				}
 				  
@@ -64,7 +62,7 @@ describe ExampleGroup {
 					value + 1 
 				}
 				
-				it "should be able to declare helper methods with inferred return type"{
+				fact "should be able to declare helper methods with inferred return type"{
 					// will not compile otherwise
 				}
 				
@@ -72,7 +70,7 @@ describe ExampleGroup {
 					5
 				}
 				
-				- "should automatically rethrow all exceptions"{
+				fact "should automatically rethrow all exceptions"{
 					// will not compile otherwise
 				}
 				  
@@ -82,11 +80,11 @@ describe ExampleGroup {
 			
 				describe "Nested Examples"{
 					
-					it "should support extensions methods from parent example group"{
+					fact "should support extensions methods from parent example group"{
 						i.inc2 => 1 
 					}
 					
-					it "should support extension methods from nested example group"{
+					fact "should support extension methods from nested example group"{
 						i.inc5 => 1 
 					}
 					

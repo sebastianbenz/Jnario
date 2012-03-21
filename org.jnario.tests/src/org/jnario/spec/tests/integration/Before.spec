@@ -18,7 +18,7 @@ import static extension org.jnario.jnario.test.util.SpecExecutor.*
  */
 describe "Before" {
  
-	it "should be executed before each test"{
+	fact "should be executed before each test"{
 		val spec = '
 			package bootstrap
 			 
@@ -32,16 +32,16 @@ describe "Before" {
 					beforeExecutionCount = beforeExecutionCount + 1
 				}
 
-				it "should be executed before each test (1)"{
-					beforeExecutionCount.^should.^be(1)
+				fact "should be executed before each test (1)"{
+					beforeExecutionCount should be 1
 				}	
 
-				it "should be executed before each test (2)"{
-					beforeExecutionCount.^should.^be(2)
+				fact "should be executed before each test (2)"{
+					beforeExecutionCount should be 2
 				}	
 			}
 		'
-		spec.execute.^should.^be(successful)
+		spec.executesSuccessfully
 	}
 
 }

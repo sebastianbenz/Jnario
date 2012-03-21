@@ -34,28 +34,20 @@ TypeRef:
 	('?')? ('extends' | 'super')?  TypeName
 ;
 
+
 Member returns xtend::XtendMember:
 	{xtend::XtendMember} annotations+=XAnnotation* 
 	(
 		{Example.annotationInfo = current}
-		(
-			(preamble=ID | =>preamble='-') 
-				(((	
-					(=>'throws' exception=[types::JvmDeclaredType|QualifiedName] name=STRING?) |
-			 		 name=STRING
-			 	) 
-			 	body=ExampleContent?) | body=ExampleContent)
-		)	
+			('fact' expr=XExpression body=XBlockExpression?)
 	|	{ExampleGroup.annotationInfo = current}
 			(=>preamble=('describe') targetType=JvmTypeReference? =>name=STRING? '{'
       		members+=Member*
       	'}')
     |	{Before.annotationInfo = current}
-		(=>'before' (beforeAll?='all')? =>name=(STRING | ID)?
-			body=XBlockExpression?)
+		('before' (beforeAll?='all')? =>name=STRING? body=XExpression)
 	|	{After.annotationInfo = current}
-		(=>'after' (afterAll?='all')? =>name=(STRING | ID)?
-			body=XBlockExpression?)
+		('after' (afterAll?='all')? =>name=STRING? body=XExpression)
     |	{ExampleGroup.annotationInfo = current}
 			(=>preamble=('context') targetOperation=[types::JvmOperation|Method]? =>name=STRING? '{'
       		members+=Member*
@@ -69,7 +61,7 @@ Member returns xtend::XtendMember:
 			visibility=Visibility?   
 		 	(extension?='extension' type=JvmTypeReference name=ValidID?
 			| static?='static'? type=JvmTypeReference name=ValidID)
-			('=' initialValue=XPrimaryExpression ';'?)?
+			('=' initialValue=XExpression)?
 		
 	|	{xtend::XtendFunction.annotationInfo = current}
 			('def' | override?='override') visibility=Visibility? static?='static'? (dispatch?='dispatch'?) 
@@ -83,14 +75,7 @@ Member returns xtend::XtendMember:
 			(=>'throws' exceptions+=JvmTypeReference (',' exceptions+=JvmTypeReference)*)?
 			(expression=XBlockExpression | expression=RichString )?
 	 );
-	 
-ExampleContent returns xbase::XExpression:
-	SingleLineBlock | XBlockExpression
-;
-	 
-SingleLineBlock returns xbase::XBlockExpression:
-	'[' {xbase::XBlockExpression} expressions+=XExpressionInsideBlock ']'
-;
+
 
 XPrimaryExpression returns xbase::XExpression:
 	XConstructorCall |
@@ -136,15 +121,22 @@ XRelationalExpression returns xbase::XExpression:
 	XOtherOperatorExpression
 	( 
 	 =>({Should.leftOperand=current} 
-	 		(prefix=('should'|'must') not?='not'? (postfix='be' | postfix="contain")? | 
-	 		prefix='=>')
-	 		) rightOperand=XOtherOperatorExpression |
+	 		(('should'|'must') not?='not'? 'be'? 
+	 		 | '=>')) rightOperand=XOtherOperatorExpression |
+	 =>({ShouldThrow.expression=current} ((('should'|'must') 'throw') | 'throws')) type=JvmTypeReference |
 	 =>({xbase::XInstanceOfExpression.expression=current} 'instanceof') type=JvmTypeReference |
 	 =>({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare]) rightOperand=XOtherOperatorExpression)*;
 
 Assertion returns xbase::XExpression: 
 	{Assertion}
 	'assert' expression=XExpression;
+	
+//ShouldExpression returns xbase::XExpression: 
+//	name=ID expr=XOtherOperatorExpression
+//
+//ShouldImply:
+//	'=>' expr=XOtherOperatorExpression
+//;
 
 Matcher:
 	'#' closure=MatcherClosure
@@ -164,41 +156,3 @@ ExampleColumn:
 ExampleRow: 
 	'|' {ExampleRow} (cells+=XExpression '|')*
 ;
-
-//terminal RICH_TEXT : "'''" IN_RICH_STRING* ("'''"| ("'" "'"?)? EOF);
-//terminal RICH_TEXT_START : "'''" IN_RICH_STRING* ("'" "'"?)? 'л';
-//terminal RICH_TEXT_END : '╗' IN_RICH_STRING* ("'''"| ("'" "'"?)? EOF) ;
-//terminal RICH_TEXT_INBETWEEN : '╗' IN_RICH_STRING* ("'" "'"?)? 'л';
-//terminal COMMENT_RICH_TEXT_INBETWEEN: "лл" !('\n'|'\r')* ('\r'? '\n' IN_RICH_STRING* ("'" "'"?)? 'л')?; 
-//terminal COMMENT_RICH_TEXT_END: "лл" !('\n'|'\r')* (('\r'? '\n' IN_RICH_STRING* ("'''"| ("'" "'"?)? EOF)) | EOF); 
-//
-//terminal fragment IN_RICH_STRING : 
-//	  "''" !('л'|"'") 
-//	| "'" !('л'|"'")
-//	| !('л'|"'");
-//	
-//	
-//terminal HEX:
-//	('0x'|'0X') ('0'..'9'|'a'..'f'|'A'..'F'|'_')+ 
-//	('#' (('b'|'B')('i'|'I') | ('l'|'L')))?;
-//	
-//terminal INT returns ecore::EInt:
-//	'0'..'9' ('0'..'9'|'_')*; 
-//
-//terminal DECIMAL:
-//	INT 
-//	(('e'|'E') ('+'|'-')? INT)? 
-//	(('b'|'B')('i'|'I'|'d'|'D') | ('l'|'L'|'d'|'D'|'f'|'F'))?;
-//
-//terminal ID  		: '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
-//terminal STRING	: 
-//			'"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |
-//			"'" ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|"'") )* "'"
-//		; 
-//terminal ML_COMMENT	: '/*' -> '*/';
-//terminal SL_COMMENT 	: '//' !('\n'|'\r')* ('\r'? '\n')?;
-//
-//terminal WS			: (' '|'\t'|'\r'|'\n')+;
-//
-//terminal ANY_OTHER: .;
-

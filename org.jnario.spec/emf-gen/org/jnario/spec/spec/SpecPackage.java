@@ -335,22 +335,13 @@ public interface SpecPackage extends EPackage
 	int EXAMPLE__BODY = TEST_FUNCTION__BODY;
 
 	/**
-	 * The feature id for the '<em><b>Preamble</b></em>' attribute.
+	 * The feature id for the '<em><b>Expr</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE__PREAMBLE = TEST_FUNCTION_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Exception</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE__EXCEPTION = TEST_FUNCTION_FEATURE_COUNT + 1;
+	int EXAMPLE__EXPR = TEST_FUNCTION_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Example</em>' class.
@@ -359,7 +350,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_FEATURE_COUNT = TEST_FUNCTION_FEATURE_COUNT + 2;
+	int EXAMPLE_FEATURE_COUNT = TEST_FUNCTION_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.spec.spec.impl.BeforeImpl <em>Before</em>}' class.
@@ -554,26 +545,15 @@ public interface SpecPackage extends EPackage
 	EClass getExample();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.jnario.spec.spec.Example#getPreamble <em>Preamble</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.jnario.spec.spec.Example#getExpr <em>Expr</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Preamble</em>'.
-	 * @see org.jnario.spec.spec.Example#getPreamble()
+	 * @return the meta object for the containment reference '<em>Expr</em>'.
+	 * @see org.jnario.spec.spec.Example#getExpr()
 	 * @see #getExample()
 	 * @generated
 	 */
-	EAttribute getExample_Preamble();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.jnario.spec.spec.Example#getException <em>Exception</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Exception</em>'.
-	 * @see org.jnario.spec.spec.Example#getException()
-	 * @see #getExample()
-	 * @generated
-	 */
-	EReference getExample_Exception();
+	EReference getExample_Expr();
 
 	/**
 	 * Returns the meta object for class '{@link org.jnario.spec.spec.Before <em>Before</em>}'.
@@ -727,20 +707,12 @@ public interface SpecPackage extends EPackage
 		EClass EXAMPLE = eINSTANCE.getExample();
 
 		/**
-		 * The meta object literal for the '<em><b>Preamble</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Expr</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute EXAMPLE__PREAMBLE = eINSTANCE.getExample_Preamble();
-
-		/**
-		 * The meta object literal for the '<em><b>Exception</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference EXAMPLE__EXCEPTION = eINSTANCE.getExample_Exception();
+		EReference EXAMPLE__EXPR = eINSTANCE.getExample_Expr();
 
 		/**
 		 * The meta object literal for the '{@link org.jnario.spec.spec.impl.BeforeImpl <em>Before</em>}' class.

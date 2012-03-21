@@ -22,7 +22,6 @@ import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.nodemodel.INode;
-import org.eclipse.xtext.serializer.ISerializer;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XBinaryOperation;
 import org.eclipse.xtext.xbase.XExpression;
@@ -33,6 +32,7 @@ import org.hamcrest.CoreMatchers;
 import org.jnario.Assertion;
 import org.jnario.Matcher;
 import org.jnario.Should;
+import org.jnario.ShouldThrow;
 import org.junit.Assert;
 
 import com.google.common.base.Predicate;
@@ -42,9 +42,6 @@ import com.google.inject.Inject;
  * @author Sebastian Benz - Initial contribution and API
  */
 public class JnarioCompiler extends XtendCompiler {
-	
-	@Inject
-	private ISerializer serializer;
 	
 	@Inject
 	private XExpressionHelper expressionHelper; 
@@ -57,6 +54,8 @@ public class JnarioCompiler extends XtendCompiler {
 			_toJavaExpression((Assertion) obj, appendable);
 		} else if (obj instanceof Should) {
 			_toJavaExpression((Should) obj, appendable);
+		} else if (obj instanceof ShouldThrow) {
+			_toJavaExpression((ShouldThrow) obj, appendable);
 		} else {
 			super.internalToConvertedExpression(obj, appendable);
 		}
@@ -71,10 +70,31 @@ public class JnarioCompiler extends XtendCompiler {
 			_toJavaStatement((Matcher)obj, appendable, isReferenced);
 		}else if (obj instanceof Should){
 			_toJavaStatement((Should)obj, appendable, isReferenced);
+		}else if (obj instanceof ShouldThrow){
+			_toJavaStatement((ShouldThrow)obj, appendable, isReferenced);
 		}else
 			super.doInternalToJavaStatement(obj, appendable, isReferenced); 
 	}
 
+	public void _toJavaStatement(ShouldThrow should, ITreeAppendable b, boolean isReferenced) {
+		if(should.getType() == null || should.getType().getType() == null){
+			return;
+		}
+		b.newLine().append("try{").increaseIndentation();
+		  toJavaStatement(should.getExpression(), b, true);
+		   b.newLine()
+		   .append(assertType(should)).append(".fail(\"Expected \" + ")
+		   .append(should.getType().getType())
+		   .append(".class.getName() + \" in ").append(javaStringNewLine())
+		   .append("     ").append(serialize(should.getExpression()).replace("\n", "\n    ")).append(javaStringNewLine()).append(" with:\"");
+		   appendValues(should.getExpression(), b, new HashSet<String>());
+		   b.append(");").decreaseIndentation().newLine()
+		 .append("}catch(")
+		 .append(should.getType().getType()).append(" e){").increaseIndentation().newLine()
+		   .append("// expected").decreaseIndentation().newLine()
+		 .append("}");
+	}
+	
 	public void _toJavaStatement(Should should, ITreeAppendable b, boolean isReferenced) {
 		if(should.getRightOperand() == null){
 			return;
@@ -124,14 +144,23 @@ public class JnarioCompiler extends XtendCompiler {
 			b.append(".assertTrue(");
 		}
 		generateMessageFor(should, b);
-		b.append(" + \"" + convertToJavaString("\n") + "\", ");
+		b.append(" + \"" + javaStringNewLine() + "\", ");
 		b.append(variable);
 		b.append(");");
+	}
+
+	private String javaStringNewLine() {
+		return convertToJavaString("\n");
 	}
 	
 	public void _toJavaExpression(Should should, ITreeAppendable b) {
 		b.append("null");
 	}
+	
+	public void _toJavaExpression(ShouldThrow should, ITreeAppendable b) {
+		b.append("null");
+	}
+	
 	public void _toJavaExpression(Matcher matcher, ITreeAppendable b) {
 		if (matcher.getClosure() == null){
 			return;
@@ -172,7 +201,7 @@ public class JnarioCompiler extends XtendCompiler {
 		b.append(assertType(expr));
 		b.append(".assertTrue(");
 		generateMessageFor(expr, b);
-		b.append(" + \"" + convertToJavaString("\n") + "\", ");
+		b.append(" + \"" + javaStringNewLine() + "\", ");
 		toJavaExpression(expr, b);
 		b.append(");");
 		b.newLine();
@@ -180,6 +209,11 @@ public class JnarioCompiler extends XtendCompiler {
 
 	private JvmType assertType(XExpression expr) {
 		return jvmType(Assert.class, expr);
+	}
+	
+	private boolean isVoid(XExpression expr) {
+		JvmTypeReference type = getTypeProvider().getType(expr);
+		return getTypeReferences().is(type, Void.TYPE);
 	}
 	
 	private JvmType jvmType(Class<?> type, EObject context){
@@ -266,6 +300,9 @@ public class JnarioCompiler extends XtendCompiler {
 
 	protected void toLiteralValue(XExpression expression, ITreeAppendable b, Set<String> valueMappings) {
 		if(expressionHelper.isLiteral(expression)){
+			return;
+		}
+		if(isVoid(expression)){
 			return;
 		}
 		String expr = serialize(expression);

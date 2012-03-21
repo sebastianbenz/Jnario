@@ -8,12 +8,18 @@
 package org.jnario.spec.validation;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
+import static org.eclipse.xtext.xbase.validation.IssueCodes.INVALID_INNER_EXPRESSION;
 
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.ComposedChecks;
+import org.eclipse.xtext.validation.ValidationMessageAcceptor;
+import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.jnario.ExampleColumn;
 import org.jnario.spec.naming.ExampleNameProvider;
+import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.spec.spec.SpecPackage;
 import org.jnario.spec.spec.TestFunction;
 import org.jnario.validation.JnarioJavaValidator;
@@ -43,5 +49,17 @@ public class SpecJavaValidator extends AbstractSpecJavaValidator {
 		if(isNullOrEmpty(methodName)){
 			error("Name must not be empty", SpecPackage.Literals.TEST_FUNCTION__NAME);
 		}
+	}
+	
+	protected void mustBeJavaStatementExpression(XExpression expr) {
+		// disabled as this is the case for example definitions
+	}
+	
+	@Override
+	protected void checkNoJavaKeyword(EObject obj, EAttribute attribute) {
+		if (obj instanceof ExampleGroup) {
+			return;
+		}
+		super.checkNoJavaKeyword(obj, attribute);
 	}
 }

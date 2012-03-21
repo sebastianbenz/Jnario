@@ -153,14 +153,14 @@ class DocGenerator implements IGenerator {
 			docString = docString.markdown2Html
 		}
 		'''
-			«IF example.name != null || example.exception != null»
+			«IF example.name != null»
 			<h4>«example.asTitle»</h4>
 			«ENDIF»
 			<p>
 			«docString»
 			«IF !example.pending»
 			<pre class="prettyprint lang-jnario">
-			«example.body.toXtendCode(filters)»</pre>
+			«example.implementation.toXtendCode(filters)»</pre>
 			</p>
 			«ENDIF»
 		'''

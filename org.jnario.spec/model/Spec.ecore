@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="spec" nsURI="http://www.org/jnario/spec/Spec" nsPrefix="spec">
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="spec"
+    nsURI="http://www.org/jnario/spec/Spec" nsPrefix="spec">
   <eClassifiers xsi:type="ecore:EClass" name="SpecFile" eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendFile"/>
   <eClassifiers xsi:type="ecore:EClass" name="ExampleGroup" eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendClass ../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendMember">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="preamble" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -10,8 +12,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Example" eSuperTypes="#//TestFunction">
     <eOperations name="isPending" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="preamble" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="exception" eType="ecore:EClass ../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmDeclaredType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expr" eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Before" eSuperTypes="#//TestFunction">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="beforeAll" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
@@ -22,6 +24,7 @@
         defaultValueLiteral="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TestFunction" eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendMember">
+    <eOperations name="getImplementation" eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
         containment="true"/>

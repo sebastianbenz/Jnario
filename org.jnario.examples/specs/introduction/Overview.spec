@@ -36,7 +36,7 @@ describe "Jnario Specs - BDD for Java"{
    * [Hamcrest](http://code.google.com/p/hamcrest/) matcher, giving you the freedom to choose from 
    * a wide range of existing matchers.
    */
-  - "Should-style Assertions"{
+  fact "Should-style Assertions"{
   	"hello" should be "hello" 
     true should not be false
     "hello" should be typeof(String) 
@@ -47,7 +47,7 @@ describe "Jnario Specs - BDD for Java"{
    * a thing of the past. Jnario provides a special assert statement that reports, when the assertion fails, 
    * the value of all involved expressions. 
    */
-  it "Self-explaining Assertions"{  
+  fact "Self-explaining Assertions"{  
     val x = 0  
     val y = 1
     errorMessage[assert x == 1 && y == 0].is('''
@@ -69,7 +69,7 @@ describe "Jnario Specs - BDD for Java"{
    * 
    * @filter(\.executesSuccessfully|''')   
    */
-  it "Implicit subject creation" {
+  fact "Implicit subject creation" {
       '''
       package bootstrap
       
@@ -77,7 +77,7 @@ describe "Jnario Specs - BDD for Java"{
       
       describe ArrayList{
 
-        it "should automatically create an instance of ArrayList called subject"{
+        fact "should automatically create an instance of ArrayList called subject"{
           subject should be typeof(ArrayList)
         }
 

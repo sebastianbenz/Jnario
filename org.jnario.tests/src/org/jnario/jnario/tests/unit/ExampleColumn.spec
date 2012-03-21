@@ -31,7 +31,7 @@ describe ExampleColumn{
 		|      1      |     1     |   "4" |
 	}
 	
-	it "calculates cells based on table"{
+	fact "calculates cells based on table"{
 		parseSpec('''
 			package bootstrap
 			describe "ExampleTable"{
@@ -47,7 +47,7 @@ describe ExampleColumn{
 			val columns = query.first(typeof(ExampleTable)).columns
 			val column = columns.get(columnIndex)
 			val cell = column.cells.get(cellIndex)
-			cell.serialize.trim.^should.^be(value)
+			cell.serialize.trim => value
 		]
 		
 	}

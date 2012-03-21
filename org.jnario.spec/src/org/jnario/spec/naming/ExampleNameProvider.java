@@ -7,18 +7,20 @@
  *******************************************************************************/
 package org.jnario.spec.naming;
 
-import static org.jnario.spec.util.Strings.convertToCamelCase;
+import static java.lang.Character.isDigit;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 import static org.eclipse.xtext.util.Strings.convertToJavaString;
 import static org.eclipse.xtext.util.Strings.toFirstLower;
 import static org.eclipse.xtext.util.Strings.toFirstUpper;
+import static org.jnario.spec.util.Strings.convertToCamelCase;
 
 import java.util.List;
 
+import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.util.SimpleAttributeResolver;
-import org.eclipse.xtend.core.xtend.XtendMember;
-
+import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.compiler.JavaKeywords;
 import org.jnario.ExampleTable;
 import org.jnario.spec.spec.After;
 import org.jnario.spec.spec.Before;
@@ -27,7 +29,7 @@ import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.spec.spec.TestFunction;
 import org.jnario.spec.spec.util.SpecSwitch;
 
-import com.google.common.base.Strings;
+import com.google.inject.Inject;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
@@ -35,6 +37,9 @@ import com.google.common.base.Strings;
 public class ExampleNameProvider {
 
 	private OperationNameProvider operationNameProvider = new OperationNameProvider();
+	
+	@Inject(optional=true) 
+	private JavaKeywords javaUtils = new JavaKeywords();
 
 	public String describe(ExampleGroup exampleGroup) {
 		StringBuilder result = new StringBuilder();
@@ -58,11 +63,6 @@ public class ExampleNameProvider {
 	
 	public String describe(Example example){
 		StringBuilder sb = new StringBuilder();
-		if(example.getException() != null){
-			sb.append("throws ");
-			sb.append(example.getException().getSimpleName());
-			sb.append(" ");
-		}
 		if(example.getName() != null){
 			sb.append(example.getName());
 			sb.append(" ");
@@ -76,14 +76,15 @@ public class ExampleNameProvider {
 	}
 
 	private String expression(Example example) {
-		if(example.getBody() == null){
+		XExpression rootExpression = example.getExpr();
+		if(rootExpression == null){
 			return "";
 		}
-		String expression = NodeModelUtils.getNode(example.getBody()).getText().trim();
-		if(expression.length()  == 0){
+		String expression = NodeModelUtils.getNode(rootExpression).getText().trim();
+		if(expression.length() == 0){
 			return "";
 		}
-		return expression.substring(1, expression.length() - 1);
+		return expression;
 	}
 
 	public String toJavaClassName(ExampleGroup exampleGroup) {
@@ -113,7 +114,11 @@ public class ExampleNameProvider {
 		}else{
 			result.append(expression(example));
 		}
-		return toFirstLower(convertToCamelCase(result).toString());
+		String name = toFirstLower(convertToCamelCase(result).toString());
+		if(javaUtils.isJavaKeyword(name) || isDigit(name.charAt(0))){
+			name = "_" + name;
+		}
+		return name;
 	}
 	
 	public String toMethodName(Before before){

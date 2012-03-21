@@ -8,6 +8,7 @@
  package org.jnario.spec.tests.integration
 
 import static extension org.jnario.jnario.test.util.Helpers.*
+import org.junit.Ignore
 
 describe "Assertion"{
 	
@@ -20,17 +21,15 @@ describe "Assertion"{
 		/*
 		 * `assert` passes if the expression evaluates to true.
 		 */	
-		- "To pass.."{
+		fact "To pass.."{
 			assert true
 			assert 1 == 1
 		}
 		/*
 		 * `assert` throws an AssertionError if the expression evaluates to false.
 		 */
-		- "...or not to pass"{
-			expect(typeof(AssertionError))[
-				assert false
-			]
+		fact "...or not to pass"{
+			{assert false} throws AssertionError
 		} 
 	}
 	/* 
@@ -44,7 +43,7 @@ describe "Assertion"{
 		/*
 		 * For example, it will print the value of all referenced variables.
 		 */
-		- "Variable Access"{ 
+		fact "Variable Access"{ 
 			val y = false
 			errorMessage[assert y].is(  
 			'''
@@ -55,7 +54,7 @@ describe "Assertion"{
 		/*
 		 * Literal values obviously won't be printed.
 		 */               
-		- "Filters literals"{           
+		fact "Filters literals"{           
 			val x = 0  
 			errorMessage[assert x == 42].is('''
 			  Expected x == 42 but:
@@ -65,7 +64,7 @@ describe "Assertion"{
 		/*
 		 * Here is another example .
 		 */
-		- "Not Equals"{           
+		fact "Not Equals"{           
 			val x = 42     
 			errorMessage[assert !(x == 42)].is('''
 			  Expected !(x == 42) but:
@@ -76,7 +75,7 @@ describe "Assertion"{
 		/*
 		 * The result of a function call will be printed as well.
 		 */     
-		- "Function Calls"{
+		fact "Function Calls"{
 			errorMessage[assert greet("World") == "Hello World!"].is('''
 			  Expected greet("World") == "Hello World!" but:
 			       greet("World") is "Hello World"''')
@@ -85,7 +84,7 @@ describe "Assertion"{
 		/*
 		 * The result of each feature call will be printed.
 		 */     
-		- "Feature Calls"{
+		fact "Feature Calls"{
 			errorMessage[assert "Hello".toUpperCase.toLowerCase == "HELLO"].is('''
 			  Expected "Hello".toUpperCase.toLowerCase == "HELLO" but:
 			       "Hello".toUpperCase.toLowerCase is "hello"
@@ -95,7 +94,7 @@ describe "Assertion"{
 		/*
 		 * This example involves two expressions with `&&`. 
 		 */
-		- "And expressions"{
+		fact "And expressions"{
 			val x = 0 
 			val y = 1 
 			errorMessage[assert x == 1 && y == 0].is('''
@@ -109,7 +108,7 @@ describe "Assertion"{
   		/*
   		 * If the same variable is accessed multiple times it will be printed only once.
   		 */
- 		- "Removes duplicate feature calls"{
+ 		fact "Removes duplicate feature calls"{
 			val x = 0 
 			errorMessage[assert x > 0 && x < 10].is('''
 			  Expected x > 0 && x < 10 but:
@@ -117,6 +116,15 @@ describe "Assertion"{
 			       x is 0
 			       x < 10 is true''')
  		}
+ 		
+ 		/*
+		 * Variable declarations in blocks are currently not supported. The following example results in a compile error.
+		 */
+		/*
+		fact "Block expressions"{
+			errorMessage[assert {val x = "hello"; x} == ""].is('''''')
+		}    
+ 		*/
    
 		def greet(String name){
 			return "Hello " + name

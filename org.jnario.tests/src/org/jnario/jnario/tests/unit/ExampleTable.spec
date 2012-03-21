@@ -20,7 +20,7 @@ describe ExampleTable{
 
 	@Inject extension ModelStore 
 
-	it "is valid if all rows have the same number of columns"{
+	fact "is valid if all rows have the same number of columns"{
 		parseSpec('''
 			package bootstrap
 			describe "ExampleTable"{
@@ -32,10 +32,10 @@ describe ExampleTable{
 			}
 		''')
 		
-		query.first(typeof(ExampleTable)).isValid().^should.^be(true)
+		assert query.first(typeof(ExampleTable)).isValid()
 	}
 	
-	it "is invalid if one row has a different number of columns"{
+	fact "is invalid if one row has a different number of columns"{
 		parseSpec('''
 			package bootstrap
 			describe "ExampleTable"{
@@ -47,6 +47,6 @@ describe ExampleTable{
 			}
 		''')
 		
-		query.first(typeof(ExampleTable)).isValid().^should.^be(false)
+		assert !query.first(typeof(ExampleTable)).isValid()
 	}
 }

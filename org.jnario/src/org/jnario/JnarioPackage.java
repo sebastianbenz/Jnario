@@ -423,31 +423,13 @@ public interface JnarioPackage extends EPackage {
 	int SHOULD__NOT = XbasePackage.XBINARY_OPERATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Prefix</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SHOULD__PREFIX = XbasePackage.XBINARY_OPERATION_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Postfix</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SHOULD__POSTFIX = XbasePackage.XBINARY_OPERATION_FEATURE_COUNT + 2;
-
-	/**
 	 * The number of structural features of the '<em>Should</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SHOULD_FEATURE_COUNT = XbasePackage.XBINARY_OPERATION_FEATURE_COUNT + 3;
+	int SHOULD_FEATURE_COUNT = XbasePackage.XBINARY_OPERATION_FEATURE_COUNT + 1;
 
 
 	/**
@@ -752,6 +734,44 @@ public interface JnarioPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.jnario.impl.ShouldThrowImpl <em>Should Throw</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.jnario.impl.ShouldThrowImpl
+	 * @see org.jnario.impl.JnarioPackageImpl#getShouldThrow()
+	 * @generated
+	 */
+	int SHOULD_THROW = 9;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHOULD_THROW__TYPE = XbasePackage.XEXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHOULD_THROW__EXPRESSION = XbasePackage.XEXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Should Throw</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHOULD_THROW_FEATURE_COUNT = XbasePackage.XEXPRESSION_FEATURE_COUNT + 2;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.jnario.ExampleTable <em>Example Table</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -922,28 +942,6 @@ public interface JnarioPackage extends EPackage {
 	EAttribute getShould_Not();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.jnario.Should#getPrefix <em>Prefix</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Prefix</em>'.
-	 * @see org.jnario.Should#getPrefix()
-	 * @see #getShould()
-	 * @generated
-	 */
-	EAttribute getShould_Prefix();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.jnario.Should#getPostfix <em>Postfix</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Postfix</em>'.
-	 * @see org.jnario.Should#getPostfix()
-	 * @see #getShould()
-	 * @generated
-	 */
-	EAttribute getShould_Postfix();
-
-	/**
 	 * Returns the meta object for class '{@link org.jnario.CollectionLiteral <em>Collection Literal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -972,6 +970,38 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getSetLiteral();
+
+	/**
+	 * Returns the meta object for class '{@link org.jnario.ShouldThrow <em>Should Throw</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Should Throw</em>'.
+	 * @see org.jnario.ShouldThrow
+	 * @generated
+	 */
+	EClass getShouldThrow();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.jnario.ShouldThrow#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Type</em>'.
+	 * @see org.jnario.ShouldThrow#getType()
+	 * @see #getShouldThrow()
+	 * @generated
+	 */
+	EReference getShouldThrow_Type();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.jnario.ShouldThrow#getExpression <em>Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Expression</em>'.
+	 * @see org.jnario.ShouldThrow#getExpression()
+	 * @see #getShouldThrow()
+	 * @generated
+	 */
+	EReference getShouldThrow_Expression();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1136,22 +1166,6 @@ public interface JnarioPackage extends EPackage {
 		EAttribute SHOULD__NOT = eINSTANCE.getShould_Not();
 
 		/**
-		 * The meta object literal for the '<em><b>Prefix</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SHOULD__PREFIX = eINSTANCE.getShould_Prefix();
-
-		/**
-		 * The meta object literal for the '<em><b>Postfix</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SHOULD__POSTFIX = eINSTANCE.getShould_Postfix();
-
-		/**
 		 * The meta object literal for the '{@link org.jnario.impl.CollectionLiteralImpl <em>Collection Literal</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1180,6 +1194,32 @@ public interface JnarioPackage extends EPackage {
 		 * @generated
 		 */
 		EClass SET_LITERAL = eINSTANCE.getSetLiteral();
+
+		/**
+		 * The meta object literal for the '{@link org.jnario.impl.ShouldThrowImpl <em>Should Throw</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.jnario.impl.ShouldThrowImpl
+		 * @see org.jnario.impl.JnarioPackageImpl#getShouldThrow()
+		 * @generated
+		 */
+		EClass SHOULD_THROW = eINSTANCE.getShouldThrow();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SHOULD_THROW__TYPE = eINSTANCE.getShouldThrow_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SHOULD_THROW__EXPRESSION = eINSTANCE.getShouldThrow_Expression();
 
 	}
 

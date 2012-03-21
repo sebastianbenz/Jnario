@@ -23,7 +23,7 @@ describe "Using Should"{
 	 * assert that the expressions have different results. There is also 
 	 * a short cut available: `=>` which has the same effect as `should be`.
 	 */	
-	- "To pass.."{
+	fact "To pass.."{
 		true should be true
 		"hello" must be "hello"
 		1 + 1 should not be 1 
@@ -37,16 +37,10 @@ describe "Using Should"{
 	 * `should` and `must` throw an AssertionError if the result of the left 
 	 * expression does not equal the result of the right expression.
 	 */
-	- "...or not to pass"{
-			expect(typeof(AssertionError))[
-			  1 + 1 should be 1
-			]
-			expect(typeof(AssertionError))[
-			  1 + 1 should not be 1
-			]
-			expect(typeof(AssertionError))[
-			  1 + 1 => 1
-			]			
+	fact "...or not to pass"{
+			  1 + 1 should be 1  throws AssertionError
+			  1 + 1 should not be 1  throws AssertionError
+			  1 + 1 => 1  throws AssertionError
 		}   
  
 		/*
@@ -54,7 +48,7 @@ describe "Using Should"{
 	 * The error message will print the values of all expressions and their subexpressions.
 	 *  
 	 */
-	- "Why did it fail?"{
+	fact "Why did it fail?"{
 		errorMessage[1 + 1 => 1].is('''
 		  Expected 1 + 1 => 1 but:
 		       1 + 1 is 2''')	
@@ -82,7 +76,7 @@ describe "Using Should"{
 	 * 
 	 * In this example we use these matchers together with `=>` statement.
 	 */ 
-	- "Combining hamcrest and should"{
+	fact "Combining hamcrest and should"{
 		"hello" => startsWith("h")
 		newArrayList("red", "green") => hasItem("red")
 	}

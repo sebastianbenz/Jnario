@@ -15,7 +15,7 @@ Feature: Examples.
 		Given some variables.
 		When I add them
 		Then the sum should be the result.
-			(x + y + 1).^should.^be(z)
+			(x + y + 1) => z
 		Examples:
 		|x|y|z|
 		|1|2|4|

@@ -5,13 +5,14 @@
 package org.jnario.spec.spec.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.xtext.common.types.JvmDeclaredType;
+import org.eclipse.xtext.xbase.XExpression;
 
 import org.jnario.spec.spec.Example;
 import org.jnario.spec.spec.SpecPackage;
@@ -23,44 +24,23 @@ import org.jnario.spec.spec.SpecPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.jnario.spec.spec.impl.ExampleImpl#getPreamble <em>Preamble</em>}</li>
- *   <li>{@link org.jnario.spec.spec.impl.ExampleImpl#getException <em>Exception</em>}</li>
+ *   <li>{@link org.jnario.spec.spec.impl.ExampleImpl#getExpr <em>Expr</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ExampleImpl extends TestFunctionImpl implements Example
+public class ExampleImpl extends TestFunctionImplCustom implements Example
 {
 	/**
-	 * The default value of the '{@link #getPreamble() <em>Preamble</em>}' attribute.
+	 * The cached value of the '{@link #getExpr() <em>Expr</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPreamble()
+	 * @see #getExpr()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String PREAMBLE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getPreamble() <em>Preamble</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPreamble()
-	 * @generated
-	 * @ordered
-	 */
-	protected String preamble = PREAMBLE_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getException() <em>Exception</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getException()
-	 * @generated
-	 * @ordered
-	 */
-	protected JvmDeclaredType exception;
+	protected XExpression expr;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -88,9 +68,9 @@ public class ExampleImpl extends TestFunctionImpl implements Example
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getPreamble()
+	public XExpression getExpr()
 	{
-		return preamble;
+		return expr;
 	}
 
 	/**
@@ -98,32 +78,16 @@ public class ExampleImpl extends TestFunctionImpl implements Example
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPreamble(String newPreamble)
+	public NotificationChain basicSetExpr(XExpression newExpr, NotificationChain msgs)
 	{
-		String oldPreamble = preamble;
-		preamble = newPreamble;
+		XExpression oldExpr = expr;
+		expr = newExpr;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.EXAMPLE__PREAMBLE, oldPreamble, preamble));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public JvmDeclaredType getException()
-	{
-		if (exception != null && exception.eIsProxy())
 		{
-			InternalEObject oldException = (InternalEObject)exception;
-			exception = (JvmDeclaredType)eResolveProxy(oldException);
-			if (exception != oldException)
-			{
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, SpecPackage.EXAMPLE__EXCEPTION, oldException, exception));
-			}
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SpecPackage.EXAMPLE__EXPR, oldExpr, newExpr);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		return exception;
+		return msgs;
 	}
 
 	/**
@@ -131,22 +95,20 @@ public class ExampleImpl extends TestFunctionImpl implements Example
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public JvmDeclaredType basicGetException()
+	public void setExpr(XExpression newExpr)
 	{
-		return exception;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setException(JvmDeclaredType newException)
-	{
-		JvmDeclaredType oldException = exception;
-		exception = newException;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.EXAMPLE__EXCEPTION, oldException, exception));
+		if (newExpr != expr)
+		{
+			NotificationChain msgs = null;
+			if (expr != null)
+				msgs = ((InternalEObject)expr).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SpecPackage.EXAMPLE__EXPR, null, msgs);
+			if (newExpr != null)
+				msgs = ((InternalEObject)newExpr).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SpecPackage.EXAMPLE__EXPR, null, msgs);
+			msgs = basicSetExpr(newExpr, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.EXAMPLE__EXPR, newExpr, newExpr));
 	}
 
 	/**
@@ -167,15 +129,28 @@ public class ExampleImpl extends TestFunctionImpl implements Example
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+	{
+		switch (featureID)
+		{
+			case SpecPackage.EXAMPLE__EXPR:
+				return basicSetExpr(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType)
 	{
 		switch (featureID)
 		{
-			case SpecPackage.EXAMPLE__PREAMBLE:
-				return getPreamble();
-			case SpecPackage.EXAMPLE__EXCEPTION:
-				if (resolve) return getException();
-				return basicGetException();
+			case SpecPackage.EXAMPLE__EXPR:
+				return getExpr();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -190,11 +165,8 @@ public class ExampleImpl extends TestFunctionImpl implements Example
 	{
 		switch (featureID)
 		{
-			case SpecPackage.EXAMPLE__PREAMBLE:
-				setPreamble((String)newValue);
-				return;
-			case SpecPackage.EXAMPLE__EXCEPTION:
-				setException((JvmDeclaredType)newValue);
+			case SpecPackage.EXAMPLE__EXPR:
+				setExpr((XExpression)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -210,11 +182,8 @@ public class ExampleImpl extends TestFunctionImpl implements Example
 	{
 		switch (featureID)
 		{
-			case SpecPackage.EXAMPLE__PREAMBLE:
-				setPreamble(PREAMBLE_EDEFAULT);
-				return;
-			case SpecPackage.EXAMPLE__EXCEPTION:
-				setException((JvmDeclaredType)null);
+			case SpecPackage.EXAMPLE__EXPR:
+				setExpr((XExpression)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -230,29 +199,10 @@ public class ExampleImpl extends TestFunctionImpl implements Example
 	{
 		switch (featureID)
 		{
-			case SpecPackage.EXAMPLE__PREAMBLE:
-				return PREAMBLE_EDEFAULT == null ? preamble != null : !PREAMBLE_EDEFAULT.equals(preamble);
-			case SpecPackage.EXAMPLE__EXCEPTION:
-				return exception != null;
+			case SpecPackage.EXAMPLE__EXPR:
+				return expr != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString()
-	{
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (preamble: ");
-		result.append(preamble);
-		result.append(')');
-		return result.toString();
 	}
 
 } //ExampleImpl

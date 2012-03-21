@@ -22,9 +22,9 @@ describe WhiteSpaceNormalizer{
 		| "\t\thello\n\tworld" 		| "hello\n\tworld"	|
 	}
 	
-	it "should remove trailing whitespace"{
+	fact "should remove trailing whitespace"{
 		examples.forEach[
-			subject.normalize(input).^should.^be(result)
+			subject.normalize(input) => result
 		]
 	}
 	

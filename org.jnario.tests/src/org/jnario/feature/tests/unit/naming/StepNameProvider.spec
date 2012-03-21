@@ -25,15 +25,15 @@ describe StepNameProvider{
 
 	@Inject extension ModelStore modelStore
 	
-	it "should return null if the step has no name"{
+	fact "should return null if the step has no name"{
 		assert subject.nameOf(emptyStep) == null
 	}
 	
-	it "should return null if the step has no reference"{
+	fact "should return null if the step has no reference"{
 		assert subject.nameOf(emptyRef) == null
 	}
 	
-	it "should return the name for a step with definition"{
+	fact "should return the name for a step with definition"{
 		parseScenario('''
 			Feature: Example
 				Scenario: MyScenario
@@ -44,7 +44,7 @@ describe StepNameProvider{
 		assert stepName == "Given a step with an implementation"
 	}
 	
-	it "should return the name for a step with resolved reference"{
+	fact "should return the name for a step with resolved reference"{
 		parseScenario('''
 			Feature: Example
 				Scenario: MyScenario 2
@@ -57,7 +57,7 @@ describe StepNameProvider{
 		assert stepName == "Given a step with a resolved reference"
 	}
 	
-	it "should return the name for a step with unresolved reference"{
+	fact "should return the name for a step with unresolved reference"{
 		parseScenario('''
 			Feature: Example
 				Scenario: MyScenario 2

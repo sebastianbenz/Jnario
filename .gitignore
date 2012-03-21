@@ -4,3 +4,5 @@ target
 .metadata
 org.eclipse.*
 .DS_Store
+*._trace
+*.smap

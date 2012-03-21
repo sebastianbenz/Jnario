@@ -121,7 +121,7 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 							transform(element, spec)
 						}
 						Example : {
-							val annotations = element.getTestAnnotations(element.exception, element.pending)
+							val annotations = element.getTestAnnotations(element.pending)
 							annotations += element.toAnnotation(typeof(Named), element.describe)
 							annotations += element.toAnnotation(typeof(Order), index)
 							members += toMethod(element, annotations)
@@ -167,7 +167,7 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 	def toMethod(TestFunction element, List<JvmAnnotationReference> annotations){
 		element.toMethod(element.toMethodName, getTypeForName(Void::TYPE, element)) [
 			documentation = element.documentation
-			body = element.body
+			body = element.implementation
 			element.annotations.translateAnnotationsTo(it)
 			exceptions += typeof(Exception).getTypeForName(element)
 			it.annotations.addAll(annotations)

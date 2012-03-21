@@ -14,7 +14,7 @@ import static org.jnario.jnario.test.util.SpecExecutor.*
 
 describe "Pending"{
 	
-	it "ignores empty examples during example runs"{
+	fact "ignores empty examples during example runs"{
 		val spec = '
 			package bootstrap
 
@@ -22,10 +22,10 @@ describe "Pending"{
 
 			describe "Pending" {
 
-				it "has no implementation in block expression"{
+				fact "has no implementation in block expression"{
 				} 
 				
-				it "has no body"
+				fact "has no body"
 						
 			}
 		'

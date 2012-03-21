@@ -11,15 +11,13 @@ import java.util.Collection;
 
 import org.eclipse.xtext.xbase.scoping.featurecalls.StaticImplicitMethodsFeatureForTypeProvider.ExtensionClassNameProvider;
 import org.hamcrest.CoreMatchers;
-
-import com.google.common.collect.Multimap;
-import com.google.inject.Singleton;
-
 import org.jnario.lib.Each;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
-import org.jnario.lib.Expectations;
 import org.jnario.lib.Should;
+
+import com.google.common.collect.Multimap;
+import com.google.inject.Singleton;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -41,7 +39,6 @@ public class JnarioExtensionClassNameProvider extends ExtensionClassNameProvider
 	protected Collection<String> computeLiteralClassNames() {
 		Collection<String> result = super.computeLiteralClassNames();
 		result.add(Each.class.getName());
-		result.add(Expectations.class.getName());
 		return result;
 	}
 	

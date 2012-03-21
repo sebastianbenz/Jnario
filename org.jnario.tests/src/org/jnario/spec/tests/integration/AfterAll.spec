@@ -14,7 +14,7 @@ import static extension org.jnario.jnario.test.util.SpecExecutor.*
  */ 
 describe "AfterAll" {
  
-	it "should be executed after all tests"{
+	fact "should be executed after all tests"{
 		val spec = '
 			package bootstrap 
 			
@@ -22,12 +22,12 @@ describe "AfterAll" {
 				
 				static int afterExecutionCount = 0
 				
-				it "should be executed after all tests (1)"{
-					afterExecutionCount.^should.^be(0)
+				fact "should be executed after all tests (1)"{
+					afterExecutionCount should be 0
 				}	
 				
-				it "should be executed after all tests (2)"{
-					afterExecutionCount.^should.^be(0)
+				fact "should be executed after all tests (2)"{
+					afterExecutionCount should be 0
 				}	
 				
 				after all{
@@ -35,7 +35,7 @@ describe "AfterAll" {
 				}
 			}
 		'
-		spec.execute.^should.^be(successful)
+		spec.executesSuccessfully
 	}
 
 }

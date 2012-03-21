@@ -4,7 +4,7 @@
  */
 package org.jnario.spec.spec;
 
-import org.eclipse.xtext.common.types.JvmDeclaredType;
+import org.eclipse.xtext.xbase.XExpression;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,8 +14,7 @@ import org.eclipse.xtext.common.types.JvmDeclaredType;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.jnario.spec.spec.Example#getPreamble <em>Preamble</em>}</li>
- *   <li>{@link org.jnario.spec.spec.Example#getException <em>Exception</em>}</li>
+ *   <li>{@link org.jnario.spec.spec.Example#getExpr <em>Expr</em>}</li>
  * </ul>
  * </p>
  *
@@ -26,56 +25,30 @@ import org.eclipse.xtext.common.types.JvmDeclaredType;
 public interface Example extends TestFunction
 {
 	/**
-	 * Returns the value of the '<em><b>Preamble</b></em>' attribute.
+	 * Returns the value of the '<em><b>Expr</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Preamble</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Expr</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Preamble</em>' attribute.
-	 * @see #setPreamble(String)
-	 * @see org.jnario.spec.spec.SpecPackage#getExample_Preamble()
-	 * @model
+	 * @return the value of the '<em>Expr</em>' containment reference.
+	 * @see #setExpr(XExpression)
+	 * @see org.jnario.spec.spec.SpecPackage#getExample_Expr()
+	 * @model containment="true"
 	 * @generated
 	 */
-	String getPreamble();
+	XExpression getExpr();
 
 	/**
-	 * Sets the value of the '{@link org.jnario.spec.spec.Example#getPreamble <em>Preamble</em>}' attribute.
+	 * Sets the value of the '{@link org.jnario.spec.spec.Example#getExpr <em>Expr</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Preamble</em>' attribute.
-	 * @see #getPreamble()
+	 * @param value the new value of the '<em>Expr</em>' containment reference.
+	 * @see #getExpr()
 	 * @generated
 	 */
-	void setPreamble(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Exception</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Exception</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Exception</em>' reference.
-	 * @see #setException(JvmDeclaredType)
-	 * @see org.jnario.spec.spec.SpecPackage#getExample_Exception()
-	 * @model
-	 * @generated
-	 */
-	JvmDeclaredType getException();
-
-	/**
-	 * Sets the value of the '{@link org.jnario.spec.spec.Example#getException <em>Exception</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Exception</em>' reference.
-	 * @see #getException()
-	 * @generated
-	 */
-	void setException(JvmDeclaredType value);
+	void setExpr(XExpression value);
 
 	/**
 	 * <!-- begin-user-doc -->

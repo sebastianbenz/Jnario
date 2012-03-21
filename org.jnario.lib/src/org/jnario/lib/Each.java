@@ -7,8 +7,6 @@
  *******************************************************************************/
 package org.jnario.lib;
 
-import java.util.Arrays;
-
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 /**
@@ -16,14 +14,6 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
  */
 public class Each {
 
-	public static <T> MatcherChain<T> each(T... inputs) {
-		return Each.each(Arrays.asList(inputs));
-	}
-	
-	public static <T> MatcherChain<T> each(Iterable<? extends T> inputs) {
-		return new MultiTargetMatcherChain<T>(inputs);
-	}
-	
 	public <T extends ExampleTableRow> void forEach(ExampleTable<T> table, Procedure1<T> assertion) {
 		ExampleTableIterators.forEach(table, assertion);
 	}

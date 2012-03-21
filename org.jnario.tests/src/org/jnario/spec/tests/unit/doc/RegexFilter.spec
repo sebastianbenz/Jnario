@@ -23,10 +23,10 @@ describe RegexFilter {
 		| "\n'''.methodCall" 			| "\\.methodCall" 			| "\n'''" 		|
 	}
 	
-	it "removes all matched elements"{
+	fact "removes all matched elements"{
 		filteringExamples.forEach[
 			val filter = RegexFilter::create(regex)
-			filter.apply(string).^should.^be(result)
+			filter.apply(string) => result
 		]
 	}
 

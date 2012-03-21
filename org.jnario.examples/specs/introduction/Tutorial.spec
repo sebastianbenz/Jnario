@@ -34,8 +34,8 @@ describe "Jnario Specs - Tutorial"{
 	 * in the editor and select **Run As** -> **JUnit Test**. 
 	 * 
 	 * 	describe "A Stack"{
-	 * 	  - "initially empty" 
-	 * 	  - "increases its size when pushing an element"
+	 * 	  fact "initially empty" 
+	 * 	  fact "increases its size when pushing an element"
 	 * 	}
 	 * 
 	 * When we execute the specification it will
@@ -61,17 +61,17 @@ describe "Jnario Specs - Tutorial"{
 		 * 
 		 * @filter('''|.executesSuccessfully) 
 		 */
-		 - "Implementing examples" {
+		 fact "Implementing examples" {
 	      '''
 	      package demo
 	      
 	      import java.util.Stack
 	      
 	      describe "A Stack"{
-	        - "initially empty" {
+	        fact "initially empty" {
 	          new Stack.size => 0
 	        }
-	        - "increases its size when pushing an element"{
+	        fact "increases its size when pushing an element"{
 	          val subject = new Stack
 	          subject.push("A String")
 	          subject.size => 1
@@ -87,7 +87,7 @@ describe "Jnario Specs - Tutorial"{
 	      * 
 	      * @filter('''|.executesSuccessfully)  
 	      */
-	     - "Using Fields"{
+	     fact "Using Fields"{
 	     	'''
 		      package demo
 		      
@@ -95,10 +95,10 @@ describe "Jnario Specs - Tutorial"{
 		      
 		      describe "A Stack"{
 		        Stack subject = new Stack
-		        - "initially empty" {
+		        fact "initially empty" {
 		          subject.size => 0
 		        }
-		        - "increases its size when pushing an element"{
+		        fact "increases its size when pushing an element"{
 		          subject.push("A String")
 		          subject.size => 1
 		        }
@@ -128,17 +128,17 @@ describe "Jnario Specs - Tutorial"{
 	      * 
 	      * @filter('''|.executesSuccessfully)  
 	      */
-	     - "Implicit Subjects"{
+	     fact "Implicit Subjects"{
 	     	'''
 		      package demo
 		      
 		      import java.util.Stack
 		      
 		      describe Stack{
-		        - "initially empty" {
+		        fact "initially empty" {
 		          subject.size => 0
 		        }
-		        - "increases its size when pushing an element"{
+		        fact "increases its size when pushing an element"{
 		          subject.push("A String")
 		          subject.size => 1
 		        }
@@ -151,7 +151,7 @@ describe "Jnario Specs - Tutorial"{
 	     * 
 		 * @filter('''|.executesSuccessfully) 
 		 */
-		 - "Hierarchical Specifications" {
+		 fact "Hierarchical Specifications" {
 	      '''
 	      package demo
 	      
@@ -159,11 +159,11 @@ describe "Jnario Specs - Tutorial"{
 	      
 	      describe Stack{
 	        context "empty"{
-	          - [subject.size => 0]
-	          - throws EmptyStackException [subject.pop]
+	          - subject.size => 0;
+	          - subject.pop throws EmptyStackException;
 	        }
 	        context "adding elements"{
-	          - "increases size"{
+	          fact "increases size"{
 	            subject.push("A String")
 	            subject.size => 1
 	          }		
@@ -187,7 +187,7 @@ describe "Jnario Specs - Tutorial"{
 		 * 
 		 * @filter('''|.executesSuccessfully) 
 		 */
-		- "Setup & Teardown"{
+		fact "Setup & Teardown"{
 			
 			'''
 			    describe "Setup & Teardown" {
@@ -197,10 +197,10 @@ describe "Jnario Specs - Tutorial"{
 			      before{
 			        println("before")
 			      }
-			      it "should do stuff" {
+			      fact "should do stuff" {
 			        println("do stuff")
 			      }
-			      it "should do more stuff" {
+			      fact "should do more stuff" {
 			        println("do more stuff")
 			      }
 			      after{
@@ -217,13 +217,13 @@ describe "Jnario Specs - Tutorial"{
 		/*
 		 * @filter('''|.executesSuccessfully) 
 		 */
-		 - "Helper methods"{
+		 fact "Helper methods"{
 		  '''
 	      describe "Helper Methods & Fields"{
 	      
 	        String subject = "World" 
 	      
-	        it "can access fields and methods"{
+	        fact "can access fields and methods"{
 	          subject.greeting => "Hello World"
 	        }
 	        
@@ -233,7 +233,7 @@ describe "Jnario Specs - Tutorial"{
 
 	        context "shouting"{
 	          
-	          it "can access fields and methods from parent"{
+	          fact "can access fields and methods from parent"{
 	             subject.greeting.shout => "HELLO WORLD"
 	          }
 	          
@@ -257,7 +257,7 @@ describe "Jnario Specs - Tutorial"{
 		 * Jnario provides a special `assert` statement, which fails if 
 		 * the following expression does not evaluate to `true`.
 		 */
-		- "'assert'"{
+		fact "'assert'"{
 			assert true
 			assert new Stack().empty
 			assert "Hello".startsWith("H")
@@ -270,7 +270,7 @@ describe "Jnario Specs - Tutorial"{
 		 * assert that both expressions have different results. You have already seen 
 		 * the short cut `=>` which has the same effect as `should be`.
 		 */	
-		- "'should', 'must' and `=>`"{
+		fact "'should', 'must' and `=>`"{
 			true should be true
 			"hello" must be "hello"
 			1 + 1 should not be 1 
@@ -285,7 +285,7 @@ describe "Jnario Specs - Tutorial"{
 		 * of all subexpressions. This means that you don't need to debug a test to 
 		 * see why it actually has failed.
 		 */
-		- "Self-explaining failures"{
+		fact "Self-explaining failures"{
 			val x = 0 
 			val y = 1 
 			errorMessage[assert x == 1 && y == 0].is('''
@@ -313,13 +313,13 @@ describe "Jnario Specs - Tutorial"{
 		 * 
 		 * @filter('''|.executesSuccessfully) 
 		 */
-		- "Expecting Exceptions"{
+		fact "Expecting Exceptions"{
 			'''
 			 describe "Division"{
-			   it throws ArithmeticException "on division by zero"{
-			     val x = 1 / 0
+			   fact "on division by zero"{
+			     val x = 1 / 0 should throw ArithmeticException
 			   }
-			   it "throws an ArithmeticException on division by zero"{
+			   fact "throws an ArithmeticException on division by zero"{
 			     expect(typeof(ArithmeticException))[
 			       val x = 1 / 0
 			     ]
@@ -335,7 +335,7 @@ describe "Jnario Specs - Tutorial"{
 		/*
 		 * @filter('''|.executesSuccessfully) 
 		 */				
-		- "Writing Assertions"{
+		fact "Writing Assertions"{
 			'''
 				describe "Tables" {
 				  def additions{
@@ -349,7 +349,7 @@ describe "Jnario Specs - Tutorial"{
 			'''.executesSuccessfully
 		}
 
-		- "Specifying the Column Type"
+		fact "Specifying the Column Type"
 		
 	}
 	

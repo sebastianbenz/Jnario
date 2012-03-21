@@ -13,13 +13,13 @@ package org.jnario.spec.tests.integration
 describe "CollectionLiterals"{
 
 	describe "List Literal"{
-		- [#("green", "red") => newArrayList("green", "red")]
-		- [#(#("green"), #("red")) => newArrayList(newArrayList("green"), newArrayList("red"))]
+		fact #("green", "red") => newArrayList("green", "red")
+		fact #(#("green"), #("red")) => newArrayList(newArrayList("green"), newArrayList("red"))
 	}
 	
 	describe "Set Literal"{
-		- [#{"green", "red"} => newHashSet("green", "red")]
-		- [#{#{"green"}, #{"red"}} => newHashSet(newHashSet("green"), newHashSet("red"))]
+		fact #{"green", "red"} => newHashSet("green", "red")
+		fact #{#{"green"}, #{"red"}} => newHashSet(newHashSet("green"), newHashSet("red"))
 	}    
 			
 }

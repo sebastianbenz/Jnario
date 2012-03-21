@@ -24,7 +24,7 @@ describe "Specs - Example Tables"{
    * Xtend's [implicit 'it'](http://www.eclipse.org/xtend/documentation/index.html#closures).
    * @filter('''|.executesSuccessfully) 
    */ 
-  - "accessing values"{    
+  fact "accessing values"{    
     '''
     package bootstrap
     
@@ -36,7 +36,7 @@ describe "Specs - Example Tables"{
         | "Hallo Welt"  | "HALLO WELT"  |
       } 
       
-      it "can be accessed via the table name"{
+      fact "can be accessed via the table name"{
         myExamples.forEach[   
           input.toUpperCase should be result
         ] 
@@ -49,7 +49,7 @@ describe "Specs - Example Tables"{
    * Naming an example table is optional. If no name is provided, the default name 'examples' will be used. 
    * @filter('''|.executesSuccessfully) 
    */
-  - "Naming examples"{   
+  fact "Naming examples"{   
     '''
     package bootstrap
     
@@ -60,7 +60,7 @@ describe "Specs - Example Tables"{
         | 0 | 1 |
       }
 
-      it "name is optional"{    
+      fact "name is optional"{    
         examples should not be null
       }     
     } 
@@ -71,7 +71,7 @@ describe "Specs - Example Tables"{
    * Values in an example table can be arbitrary non-void expressions, for examples closures:
    * @filter('''|.executesSuccessfully) 
    */
-  - "expressions in tables"{
+  fact "expressions in tables"{
     '''
     package bootstrap
     
@@ -83,7 +83,7 @@ describe "Specs - Example Tables"{
         |   "B" | [String s | s.toLowerCase] |   "b"  | 
       }  
 
-      it "supports closures as values"{   
+      fact "supports closures as values"{   
         myExampleWithClosures.forEach[
           operation.apply(input) should be result
         ]
@@ -96,7 +96,7 @@ describe "Specs - Example Tables"{
    * It is also possible to call methods or reference fields from within a table.
    * @filter('''|.executesSuccessfully) 
    */
-  - "referencing members"{
+  fact "referencing members"{
     '''
     package bootstrap
     
@@ -114,7 +114,7 @@ describe "Specs - Example Tables"{
         | method() | "World" | 
       }       
        
-      it "supports closures as values"{   
+      fact "supports closures as values"{   
         myExampleWithMemberCalls.forEach[
           input should be result
         ] 
@@ -129,7 +129,7 @@ describe "Specs - Example Tables"{
    * common supertype of all expressions in a column. 
    * @filter('''|.executesSuccessfully) 
    */
-  - "Specifying column types"{
+  fact "Specifying column types"{
   '''
   package bootstrap
   
@@ -142,7 +142,7 @@ describe "Specs - Example Tables"{
       | new LinkedList<String>() |
     }     
 
-    it "computes the common super type"{
+    fact "computes the common super type"{
       examplesWithType.forEach[
         assert list.empty // works only if the type of list has been inferred as List<String>
       ]
@@ -169,7 +169,7 @@ describe "Specs - Example Tables"{
    * It will generate an error message for all procedures that have failed with the reason why they failed.
    */
    @Ignore
-   - "Error message"{
+   fact "Error message"{
 		errorMessage[
 		  example.forEach[
 		  	value1 + value2 => sum

@@ -28,7 +28,7 @@ describe Cell {
 		| deadCell  |       4		 | 	dead	|
 	} 
 
-	it "changes its state based on the neighbor count"{
+	fact "changes its state based on the neighbor count"{
 		examples.forEach[
 			cell.evolve(neighborCount).should.be(newState)
 		]

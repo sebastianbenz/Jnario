@@ -32,15 +32,15 @@ describe FilterExtractor {
 		| "text @filter(bbb) text  @filter(.*)" | newArrayList("bbb", ".*") |
 	}
 
-	it "should remove all filter annotations from a string"{
+	fact "should remove all filter annotations from a string"{
 		filterExtractions.forEach[
-			stringAfterExtract(input).^should.^be(resultString)
+			stringAfterExtract(input) => resultString
 		]
 	}
 	
-	it "should extract and create filters"{
+	fact "should extract and create filters"{
 		filterCreation.forEach[
-			extractedFilters(input).^should.^be(resultingFilters)
+			extractedFilters(input) => resultingFilters
 		]
 	}
 	

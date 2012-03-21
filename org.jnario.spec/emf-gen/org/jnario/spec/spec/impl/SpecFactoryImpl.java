@@ -139,7 +139,7 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
 	 */
 	public TestFunction createTestFunction()
 	{
-		TestFunctionImpl testFunction = new TestFunctionImpl();
+		TestFunctionImplCustom testFunction = new TestFunctionImplCustom();
 		return testFunction;
 	}
 

@@ -15,29 +15,29 @@ import org.hamcrest.Matcher
  */
 describe "Matcher"{
 	
-	it "returns the boolean result of the evaluated expression"{
+	fact "returns the boolean result of the evaluated expression"{
 		val myMatcher = #[String input | input == "true"]
 		assert myMatcher.matches("true")
 		assert !myMatcher.matches("false")
 	}    
 	  
-	it "type can be coerced from the context"{
+	fact "type can be coerced from the context"{
 		val Matcher<String> myMatcher = #[it  == "true"]
 		assert myMatcher.matches("true")
 		assert !myMatcher.matches("false") 
 	}
 	
-	it "works with should"{
-		"Hello".^should.^be(#[it.startsWith("H")])
+	fact "works with should"{
+		"Hello" => #[it.startsWith("H")]
 	}  
-	
-	it "uses the closure's code as description"{
+	  
+	fact "uses the closure's code as description"{
 		errorMessage[
-			"a".^should.^be(#[it.startsWith("b")])
+			"a" => #[it.startsWith("b")]
 		].is('''
-		Expected: is [it.startsWith("b")]
-		     got: "a"''')
-	}  
+		Expected "a" => #[it.startsWith("b")] but:
+		     #[it.startsWith("b")] is [it.startsWith("b")]''')
+	}   
 	
 }                                   
 

@@ -18,7 +18,7 @@ import static extension org.jnario.jnario.test.util.SpecExecutor.*
  */ 
 describe "Annotations" {
  
-	it "should support class annotations for 'describes'"{
+	fact "should support class annotations for 'describes'"{
 		val spec = '
 			package bootstrap
 			import static org.hamcrest.CoreMatchers.*			
@@ -27,17 +27,17 @@ describe "Annotations" {
 			@Singleton			
 			describe "Annotations" {
 			
-			it "should support class annotations for describe"{
+			fact "should support class annotations for describe"{
 					val annotation = typeof(AnnotationsSpec).getAnnotation(typeof(Singleton))
 					annotation should not be null
 				} 
 						
 			}
 		'
-		spec.execute.^should.^be(successful)
+		spec.executesSuccessfully
 	} 
 	
-	it "should support method annotations for 'examples'"{
+	fact "should support method annotations for 'examples'"{
 		val spec = '
 			package bootstrap
 			
@@ -47,17 +47,17 @@ describe "Annotations" {
 			describe "Annotations" {
 			
 				@Inject			
-				it "example"{
+				fact "example"{
 					val annotation = typeof(AnnotationsSpec).getMethod("example").getAnnotation(typeof(Inject))
 					annotation should not be null
 				} 
 						
 			}
 		'
-		spec.execute.^should.^be(successful)
+		spec.executesSuccessfully
 	}
 	
-	it "should support annotations for 'fields'"{
+	fact "should support annotations for 'fields'"{
 		val spec = '
 			package bootstrap
 			
@@ -69,14 +69,14 @@ describe "Annotations" {
 				@Inject		
 				String myField
 					
-				it "example"{
+				fact "example"{
 					val annotation = typeof(AnnotationsSpec).getDeclaredField("myField").getAnnotation(typeof(Inject))
 					annotation should not be null
 				} 
 						
 			}
 		'
-		spec.execute.^should.^be(successful)
+		spec.executesSuccessfully
 	}
 
 }
