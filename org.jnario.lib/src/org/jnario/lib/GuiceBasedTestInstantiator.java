@@ -7,24 +7,15 @@
  *******************************************************************************/
 package org.jnario.lib;
 
-
 import com.google.inject.Guice;
 import com.google.inject.util.Modules;
-
-import org.jnario.runner.TestInstantiator;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
-public class GuiceBasedTestInstantiator implements TestInstantiator{
+public class GuiceBasedTestInstantiator extends AbstractTestInstantiator {
 
 	public Object createTest(Class<?> klass) throws Exception {
 		return Guice.createInjector(Modules.EMPTY_MODULE).getInstance(klass);
-	}
-
-	public void beforeTestRun() {
-	}
-
-	public void afterTestRun() {
 	}
 
 }

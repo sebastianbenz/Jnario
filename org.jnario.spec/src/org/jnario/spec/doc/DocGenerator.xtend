@@ -117,7 +117,7 @@ class DocGenerator implements IGenerator {
 					</div>
 					<div class="row">
 						<div class="span12">
-							<p>«exampleGroup.generateDoc()»</p>
+		<p>«exampleGroup.generateDoc()»</p>
 							<ul>
 							«FOR member : exampleGroup.members»
 «generate(member, 1)»
