@@ -7,21 +7,25 @@
  *******************************************************************************/
 package org.jnario.feature.naming;
 
-import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtend.core.featurecalls.XtendIdentifiableSimpleNameProvider;
-
+import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.jnario.feature.feature.Step;
+
+import com.google.inject.Inject;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
 public class FeatureIdentifiableSimpleNameProvider extends XtendIdentifiableSimpleNameProvider {
 	
+	@Inject
+	private StepNameProvider stepNameProvider;
+	
 	@Override
 	public String getSimpleName(JvmIdentifiableElement element) {
 		if(element instanceof Step){
 			Step step = (Step) element;
-			step.getName().trim().replaceAll(" +", " ").replaceAll("\\? *\n", "").replace("\\? *\r", "");
+			stepNameProvider.nameOf(step);
 		}
 		return super.getSimpleName(element);
 	}

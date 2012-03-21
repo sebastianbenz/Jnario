@@ -8,15 +8,19 @@
 package org.jnario.feature.naming;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtend.core.naming.XtendQualifiedNameProvider;
-
+import org.eclipse.xtext.naming.QualifiedName;
 import org.jnario.feature.feature.Step;
+
+import com.google.inject.Inject;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
 public class FeatureQualifiedNameProvider extends XtendQualifiedNameProvider {
+
+	@Inject
+	private StepNameProvider stepNameProvider;
 	
 	@Override
 	public QualifiedName getFullyQualifiedName(EObject obj) {
@@ -25,7 +29,7 @@ public class FeatureQualifiedNameProvider extends XtendQualifiedNameProvider {
 			if(name == null){
 				return null;
 			}
-			return QualifiedName.create(name);
+			return QualifiedName.create(stepNameProvider.removeKeywordsAndArguments(name));
 		}
 		return super.getFullyQualifiedName(obj);
 	}

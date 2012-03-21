@@ -139,6 +139,9 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	}
    	
    	def generateBackground(Feature feature, FeatureFile featureFile){
+   		
+   		feature.background.steps.generateStepValues
+   		
    		feature.toClass(feature.name.featureClassName + "Background")[
    			featureFile.eResource.contents += it
    			feature.addDefaultConstructor(it)
@@ -151,7 +154,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	
    	def infer(Scenario scenario, FeatureFile featureFile, String className, JvmGenericType superClass){
    		
-   		scenario.generateStepValues
+   		scenario.steps.generateStepValues
    		
    		scenario.toClass(className)[
    			featureFile.eResource.contents += it
@@ -180,20 +183,19 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		]	
    	}
    	
-   	def generateStepValues(Scenario scenario){
+   	def generateStepValues(EList<XtendMember> steps){
    		
-   		var steps = scenario.steps
    		for(step: steps){
    			var decs = filter(step.eAllContents, typeof(XVariableDeclaration))
 			for(dec: decs.toIterable){
 				if(dec.name == STEP_VALUES){
-					dec.setStepValueType(scenario)
+					dec.setStepValueType(step as Step)
 					var calls = filter(step.eAllContents, typeof(XMemberFeatureCall))
 					for(call: calls.toIterable){
 						if(call.memberCallTarget instanceof XFeatureCall){
 							var featureCall = call.memberCallTarget as XFeatureCall
 							if(featureCall.feature == dec && call.feature == null){
-								addStepValue(call, dec, scenario)
+								addStepValue(call, dec, step)
 							}
 						}
 					}
@@ -202,17 +204,17 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		}
    	}
    	
-   	def setStepValueType(XVariableDeclaration variableDec, Scenario scenario){
-		var typeRef = getTypeForName(typeof(StepArguments), scenario)
+   	def setStepValueType(XVariableDeclaration variableDec, Step step){
+		var typeRef = getTypeForName(typeof(StepArguments), step)
 		variableDec.type = typeRef		
-		val declaringType = typeRef.type as JvmGenericType
-		associator.associate(scenario, declaringType)
+		val type = typeRef.type as JvmGenericType
+		associator.associate(step, type)
 		var constructor = variableDec.right as XConstructorCall
-		constructor.constructor = filter(declaringType.members.iterator, typeof(JvmConstructor)).next
+		constructor.constructor = filter(type.members.iterator, typeof(JvmConstructor)).next
 	}
 	
-	def addStepValue(XMemberFeatureCall featureCall, XVariableDeclaration dec, Scenario scenario){
-		var typeRef = getTypeForName(typeof(StepArguments), scenario)
+	def addStepValue(XMemberFeatureCall featureCall, XVariableDeclaration dec, XtendMember step){
+		var typeRef = getTypeForName(typeof(StepArguments), step)
 		var type = typeRef.type as JvmGenericType
 		var operations = filter(type.members.iterator, typeof(JvmOperation))
 		for(operation: operations.toIterable){
@@ -246,12 +248,12 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	
    	def generateXVariableDeclarations(Iterable<XVariableDeclaration> varDecs, JvmGenericType inferredJvmType, EObject scenario){
    		for(variableDec: varDecs){
-   			if(variableDec.name != STEP_VALUES){
-				var JvmTypeReference type;
+   			if(variableDec.name != STEP_VALUES && variableDec.name != null){
+				var JvmTypeReference type
 				if (variableDec.getType != null) {
-					type = variableDec.getType;
+					type = variableDec.getType
 				} else {
-					type = getType(variableDec.getRight);
+					type = getType(variableDec.getRight)
 				}
 				var field = scenario.toField(variableDec.getSimpleName(), type)
 				if (!variableDec.isWriteable()) {

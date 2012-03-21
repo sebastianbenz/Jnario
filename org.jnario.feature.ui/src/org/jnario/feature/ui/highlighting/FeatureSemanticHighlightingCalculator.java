@@ -10,7 +10,6 @@ package org.jnario.feature.ui.highlighting;
 import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
@@ -27,14 +26,13 @@ import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepReference;
 import org.jnario.feature.feature.util.FeatureSwitch;
+import org.jnario.feature.linking.FeatureLazyLinker;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  * @author Sebastian Benz
  */
 public class FeatureSemanticHighlightingCalculator extends XtendHighlightingCalculator {
-
-	private static final Pattern IDENTIFIER = Pattern.compile("\"([a-zA-Z0-9_\\.]+)\"");
 
 	private class Implementation extends FeatureSwitch<Boolean> {
 
@@ -145,7 +143,7 @@ public class FeatureSemanticHighlightingCalculator extends XtendHighlightingCalc
 				offset = offset(step, FeaturePackage.Literals.STEP__NAME);
 			}
 			if(name != null){
-				Matcher m = IDENTIFIER.matcher(name);
+				Matcher m = FeatureLazyLinker.ARG_PATTERN.matcher(name);
 				while (m.find()) {
 					acceptor.addPosition(offset + m.start(1), m.end(1) - m.start(1), FeatureHighlightingConfiguration.IDENTIFIERS_ID);
 				} 

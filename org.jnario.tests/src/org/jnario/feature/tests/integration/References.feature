@@ -29,4 +29,18 @@ Feature: References for steps
 				"
 		When I run it it should fail
 			jnarioFile.execute.failureCount => 2
-	 
+			
+	Scenario: Referencing steps with different keyword
+		Given a scenario with reused steps
+			var jnarioFile = '
+				package bootstrap
+				Feature: Test
+					Scenario: TestScenario 1
+						Given step
+							throw new RuntimeException()
+						
+					Scenario: TestScenario 2
+						When step
+				'
+	 	When I run it it should fail
+	 	
