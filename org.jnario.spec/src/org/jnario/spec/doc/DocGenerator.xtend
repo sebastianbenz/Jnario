@@ -118,9 +118,11 @@ class DocGenerator implements IGenerator {
 					<div class="row">
 						<div class="span12">
 							<p>«exampleGroup.generateDoc()»</p>
+							<ul>
 							«FOR member : exampleGroup.members»
 «generate(member, 1)»
 							«ENDFOR»
+							</ul>
 						</div>
 					</div>
 				</div> <!-- /content -->
@@ -154,14 +156,14 @@ class DocGenerator implements IGenerator {
 		}
 		'''
 			«IF example.name != null»
-			<h4>«example.asTitle»</h4>
+			<li><strong>«example.describe.convertToText»</strong>
 			«ENDIF»
 			<p>
 			«docString»
-			«IF !example.pending»
+			«IF !example.pending && example.body != null»
 			<pre class="prettyprint lang-jnario">
 			«example.implementation.toXtendCode(filters)»</pre>
-			</p>
+			</p></li>
 			«ENDIF»
 		'''
 	}
@@ -239,7 +241,11 @@ class DocGenerator implements IGenerator {
 	}
 	
 	def convertToTitle(String string){
-		string.convertFromJavaString(true).toFirstUpper
+		string.convertToText.toFirstUpper
+	}
+	
+	def convertToText(String string){
+		string.convertFromJavaString(true)
 	}
 	
 	def markdown2Html(String string){
