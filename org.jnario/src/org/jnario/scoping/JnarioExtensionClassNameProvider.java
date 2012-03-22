@@ -15,6 +15,7 @@ import org.jnario.lib.Each;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.Should;
+import org.jnario.lib.StringConversions;
 
 import com.google.common.collect.Multimap;
 import com.google.inject.Singleton;
@@ -31,7 +32,7 @@ public class JnarioExtensionClassNameProvider extends ExtensionClassNameProvider
 		result.put(ExampleTable.class, ExampleTableIterators.class);
 		result.put(Object.class, Should.class);
 		result.put(Object.class, Each.class);
-		result.put(Object.class, CoreMatchers.class);
+		result.put(String.class, StringConversions.class);
 		return result;
 	}
 	
@@ -39,6 +40,7 @@ public class JnarioExtensionClassNameProvider extends ExtensionClassNameProvider
 	protected Collection<String> computeLiteralClassNames() {
 		Collection<String> result = super.computeLiteralClassNames();
 		result.add(Each.class.getName());
+		result.add(CoreMatchers.class.getName());
 		return result;
 	}
 	
