@@ -3,7 +3,7 @@
 
 <target includeMode="feature" name="Jnario Target" sequenceNumber="62">
 <locations>
-<location includeAllPlatforms="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.apache.commons.cli" version="1.2.0.v201105210650"/>
 <unit id="org.apache.commons.cli.source" version="1.2.0.v201105210650"/>
 <unit id="org.apache.commons.lang" version="2.4.0.v201005080502"/>
@@ -27,15 +27,15 @@
 <unit id="org.junit.source" version="4.8.2.v4_8_2_v20110321-1705"/>
 <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20110523182458/repository"/>
 </location>
-<location includeAllPlatforms="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.emf.sdk.feature.group" version="2.7.1.v20110913-1526"/>
 <repository location="http://download.eclipse.org/releases/indigo/"/>
 </location>
-<location includeAllPlatforms="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.sdk.ide" version="3.7.1.M20110909-1335"/>
+<location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.sdk.ide" version="0.0.0"/>
 <repository location="http://download.eclipse.org/eclipse/updates/3.7"/>
 </location>
-<location includeAllPlatforms="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.xtend.core.sdk.feature.group" version="2.2.1.v201112130541"/>
 <unit id="org.eclipse.xtend.core.m2e.feature.group" version="2.2.1.v201112130541"/>
 <unit id="org.eclipse.xtext.sdk.feature.group" version="2.2.1.v201112130541"/>

@@ -23,30 +23,25 @@ http://www.eclipse.org/legal/epl-v10.html Description here.
    </license>
 
    <requires>
-      <import plugin="org.eclipse.xtext" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext" version="2.3.0" match="greaterOrEqual"/>
       <import plugin="org.apache.log4j" version="1.2.15" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.util"/>
       <import plugin="org.eclipse.emf.ecore"/>
       <import plugin="org.eclipse.emf.common"/>
       <import plugin="org.antlr.runtime"/>
       <import plugin="org.eclipse.xtext.common.types"/>
-      <import plugin="org.eclipse.xtext.xbase" version="2.0.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtext.xbase.lib"/>
       <import plugin="org.junit" version="4.8.2" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtend.core" version="2.1.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.xbase.lib" version="2.3.0"/>
       <import plugin="org.apache.commons.logging"/>
-      <import plugin="org.eclipse.xtext" version="2.1.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtext.xbase.lib" version="2.1.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtext.xbase" version="2.1.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtext.ui" version="2.1.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.jdt.core"/>
-      <import plugin="org.eclipse.xtext.builder" version="2.1.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.jdt.junit"/>
-      <import plugin="org.eclipse.debug.ui"/>
-      <import plugin="org.eclipse.pde.ui"/>
-      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.xtext.xbase" version="2.3.0" match="greaterOrEqual"/>
       <import plugin="org.objectweb.asm"/>
-      <import plugin="org.eclipse.xtext.junit4" version="2.1.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtend.core" version="2.3.0" match="greaterOrEqual"/>
+      <import plugin="org.junit4" version="4.8.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jdt.core" match="greaterOrEqual"/>
+      <import plugin="org.hamcrest.core" version="1.1.0" match="greaterOrEqual"/>
+      <import plugin="org.hamcrest.library" version="1.1.0" match="greaterOrEqual"/>
+      <import plugin="org.hamcrest.integration" version="1.1.0" match="greaterOrEqual"/>
+      <import plugin="org.hamcrest.text" version="1.1.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
