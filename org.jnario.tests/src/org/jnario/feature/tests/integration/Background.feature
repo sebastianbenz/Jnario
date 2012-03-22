@@ -16,8 +16,9 @@ import static extension org.jnario.jnario.test.util.FeatureExecutor.*
 Feature: Backgrounds
 
 	Scenario: It is possible to add a background to a feature
+		public String jnarioFile
 		Given I have a feature with a background
-			var jnarioFile = "
+			jnarioFile = "
 				package bootstrap
 				Feature: Some feature
 					Background:
@@ -31,9 +32,9 @@ Feature: Backgrounds
 			
 
 	Scenario: Given methods from backgrounds are generated in every scenario class
-	
+		public String jnarioFile
 		Given I have a feature with a background
-			var jnarioFile = "
+			jnarioFile = "
 				package bootstrap
 				Feature: Some feature
 					Background:

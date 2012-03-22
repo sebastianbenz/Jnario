@@ -16,15 +16,16 @@ import static org.jnario.jnario.test.util.ResultMatchers.*
 Feature: Test Runner
 
 	Scenario: Create only one test instance for one jnario scenario
-	
+		public String jnarioFile
 		Given a jnario-file that uses one variable in different steps
 		
-			var jnarioFile = "
+			jnarioFile = "
 				package bootstrap
 				Feature:
 					Scenario:
+						public int x
 						Given 
-							var x = 3
+							x = 3
 						When 
 							x = x + 1 
 						Then 

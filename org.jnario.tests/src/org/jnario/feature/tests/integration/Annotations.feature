@@ -16,10 +16,10 @@ import static org.jnario.jnario.test.util.ResultMatchers.*
 Feature: Annotations
 
 	Scenario: Parsing annotations inside a code block
-	
+		public String jnarioFile
 		Given a jnario-file with annotations
 		
-			var jnarioFile = "
+			jnarioFile = "
 				package bootstrap
 				import org.junit.Rule 
 				Feature:

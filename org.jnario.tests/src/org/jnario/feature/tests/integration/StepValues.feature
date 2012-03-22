@@ -15,8 +15,9 @@ Feature: Step values
 				package bootstrap
 				Feature: Test feature
 					Scenario: using fields in step definitions
+						public String x
 						Given some values "3", "4"
-							var x = args.get(0)
+							x = args.get(0)
 						Then it should be possible to get the value
 							x => "3"
 			'
@@ -29,8 +30,9 @@ Feature: Step values
 				package bootstrap
 				Feature: Test feature
 					Scenario: using fields in step definitions
+						public String x
 						Given some values "3", "4"
-							var x = args.first
+							x = args.first
 						Then it should be possible to get the value
 							x => "3"
 			'
@@ -43,8 +45,9 @@ Feature: Step values
 				package bootstrap 
 				Feature: Test feature
 					Background:
+						public String x
 						Given some values "3", "4"
-							var x = args.get(1)
+							x = args.get(1)
 					Scenario: using fields in step definitions
 						Then those values should be accessible
 							x => "4"
@@ -59,10 +62,11 @@ Feature: Step values
 				package bootstrap 
 				Feature: Test feature
 					Scenario: using fields in step definitions
+						public String x
 						Given the value "4"
-							var x = args.first
+							x = args.first
 						When I add "1"
-							var y = x + args.first
+							y = x + args.first
 						Then it should be "5"
 							y should be args.first
 							

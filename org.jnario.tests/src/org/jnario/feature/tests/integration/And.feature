@@ -12,10 +12,13 @@ package org.jnario.feature.tests.integration
  */
 Feature: Parsing simple jnario files.
 Scenario: And stuff.
+public int x
+public int y
+public int z
 Given some variables.
-	var x = 3
-	var y = 5
-	var z = 7
+	x = 3
+	y = 5
+	z = 7
 And some values.
 	x = 5
 	y = 3

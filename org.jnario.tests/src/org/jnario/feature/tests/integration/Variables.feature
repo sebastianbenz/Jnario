@@ -31,8 +31,9 @@ Feature: Access of variables
 				package bootstrap
 				Feature: Variable test
 					Scenario: Some scenario
+						public int x
 						Given a step with a variable
-							var x = 3
+							x = 3
 						When I assign it a different value
 							x = 5
 			'
@@ -45,10 +46,12 @@ Feature: Access of variables
 				package bootstrap
 				Feature: Variable test
 					Scenario: Some scenario
+						public int x
+						public int y
 						Given a step with a variable
-							var x = 3
+							x = 3
 						When I assign it a different value
-							var y = x
+							y = x
 						Then y should be 3
 							y => 3
 			'
@@ -61,8 +64,9 @@ Feature: Access of variables
 				package bootstrap
 				Feature: Variable test
 					Background:
+						public int x
 						Given some variable
-							var x = 3
+							x = 3
 					Scenario: Some scenario
 							Then x should be 3
 								x => 3
@@ -76,11 +80,13 @@ Feature: Access of variables
 				package bootstrap
 				Feature: Variable test
 					Background:
+						public int x
 						Given some variable
-							var x = 3
+							x = 3
 					Scenario: Some scenario
+							public int y
 							When assigning the variable
-								var y = x
+								y = x
 							Then it should be accessible
 								y => 3
 			'

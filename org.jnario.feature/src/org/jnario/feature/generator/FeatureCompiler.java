@@ -8,15 +8,10 @@
 package org.jnario.feature.generator;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.xtext.common.types.JvmPrimitiveType;
-import org.eclipse.xtext.common.types.JvmTypeReference;
-import org.eclipse.xtext.common.types.util.Primitives.Primitive;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
-import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.jnario.compiler.JnarioCompiler;
-import org.jnario.feature.jvmmodel.FeatureJvmModelInferrer;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -53,53 +48,4 @@ public class FeatureCompiler extends JnarioCompiler {
 		}
 		b.decreaseIndentation();
 	}
-	
-	/**
-	 * based on XbaseCompiler, removed creation of local variables
-	 */
-	@Override
-	protected void _toJavaStatement(XVariableDeclaration varDeclaration,
-			ITreeAppendable b, boolean isReferenced) {
-		if (varDeclaration.getRight() != null) {
-			internalToJavaStatement(varDeclaration.getRight(), b, true);
-		}
-		b.newLine();
-		JvmTypeReference type = null;
-		
-		if(varDeclaration.getName() == FeatureJvmModelInferrer.STEP_VALUES){
-			// for step arguments only
-			if (varDeclaration.getType() != null) {
-				type = varDeclaration.getType();
-			} else {
-				type = getTypeProvider().getType(varDeclaration.getRight());
-			}
-
-			b.append(" ");
-			
-			serialize(type, varDeclaration, b);
-			b.append(" ");
-		}
-		
-		b.append(b.declareVariable(varDeclaration, varDeclaration.getName()));
-		b.append(" = ");
-		if (varDeclaration.getRight() != null) {
-			internalToConvertedExpression(varDeclaration.getRight(), b, type);
-		} else {
-			if (getPrimitives().isPrimitive(type)) {
-				Primitive primitiveKind = getPrimitives().primitiveKind((JvmPrimitiveType) type.getType());
-				switch (primitiveKind) {
-					case Boolean:
-						b.append("false");
-						break;
-					default:
-						b.append("0");
-						break;
-				}
-			} else {
-				b.append("null");
-			}
-		}
-		b.append(";");
-	}
-
 }

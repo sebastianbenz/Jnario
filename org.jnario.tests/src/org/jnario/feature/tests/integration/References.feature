@@ -16,8 +16,9 @@ import static org.jnario.jnario.test.util.ResultMatchers.*
 Feature: References for steps
 
 	Scenario: Defining a step and using it in the same scenario
+		public String jnarioFile
 		Given a scenario with reused steps
-			var jnarioFile = "
+			jnarioFile = "
 				package bootstrap
 				Feature: Test
 					Scenario: TestScenario 1
@@ -32,7 +33,7 @@ Feature: References for steps
 			
 	Scenario: Referencing steps with different keyword
 		Given a scenario with reused steps
-			var jnarioFile = '
+			jnarioFile = '
 				package bootstrap
 				Feature: Test
 					Scenario: TestScenario 1

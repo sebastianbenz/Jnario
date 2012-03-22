@@ -16,11 +16,15 @@ import static org.junit.Assert.*
 Feature: Using imports in a file
 	
 	Scenario: Import stuff.
+		public int x
+		public int y
+		public int z
+		public int sum
 		Given some variables.
-			var x = 3
-			var y = 4
-			var z = 5
+			x = 3
+			y = 4
+			z = 5
 		When I add them
-			var sum = x + y + z
+			sum = x + y + z
 		Then the sum should be 12.
 			assertThat(sum, is(12))
