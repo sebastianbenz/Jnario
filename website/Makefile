@@ -5,7 +5,8 @@ LESS_COMPRESSOR ?= `which lessc`
 WATCHR ?= `which watchr`
 
 GH_PAGES = ../../jnario-gh-pages
-LANG_JNARIO = ../org.jnario.spec/src/org/jnario/spec/doc/lang-jnario.js 
+LANG_JNARIO_SPEC    = ../org.jnario/src/org/jnario/doc/lang-jnario-spec.js 
+LANG_JNARIO_FEATURE = ../org.jnario/src/org/jnario/doc/lang-jnario-feature.js 
 #
 # BUILD JNARIO
 #
@@ -15,7 +16,7 @@ jnario:
 	lessc ${BOOTSTRAP_RESPONSIVE_LESS} > css/bootstrap-responsive.css
 	lessc --compress ${BOOTSTRAP_RESPONSIVE_LESS} > css/bootstrap-responsive.min.css
 	lessc --compress less/jnario.less > css/jnario.min.css
-	cat js/jquery.js js/prettify.js ${LANG_JNARIO} bootstrap/js/bootstrap-transition.js bootstrap/js/bootstrap-alert.js bootstrap/js/bootstrap-button.js bootstrap/js/bootstrap-carousel.js bootstrap/js/bootstrap-collapse.js bootstrap/js/bootstrap-dropdown.js bootstrap/js/bootstrap-modal.js bootstrap/js/bootstrap-tooltip.js bootstrap/js/bootstrap-popover.js bootstrap/js/bootstrap-scrollspy.js bootstrap/js/bootstrap-tab.js bootstrap/js/bootstrap-typeahead.js > js/jnario.js
+	cat js/jquery.js js/prettify.js ${LANG_JNARIO_SPEC} ${LANG_JNARIO_FEATURE} bootstrap/js/bootstrap-transition.js bootstrap/js/bootstrap-alert.js bootstrap/js/bootstrap-button.js bootstrap/js/bootstrap-carousel.js bootstrap/js/bootstrap-collapse.js bootstrap/js/bootstrap-dropdown.js bootstrap/js/bootstrap-modal.js bootstrap/js/bootstrap-tooltip.js bootstrap/js/bootstrap-popover.js bootstrap/js/bootstrap-scrollspy.js bootstrap/js/bootstrap-tab.js bootstrap/js/bootstrap-typeahead.js > js/jnario.js
 	uglifyjs -nc js/jnario.js > js/jnario.min.js
 	
 

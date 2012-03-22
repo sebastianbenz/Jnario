@@ -92,7 +92,7 @@
   }
   .page-header h1 small {
     display: block;
-    line-height: 18px;
+    line-height: 25px;
   }
   input[type="checkbox"],
   input[type="radio"] {
@@ -379,7 +379,7 @@
   }
   .navbar-fixed-top {
     position: static;
-    margin-bottom: 18px;
+    margin-bottom: 25px;
   }
   .navbar-fixed-top .navbar-inner {
     padding: 5px;
@@ -398,7 +398,7 @@
   }
   .navbar .nav {
     float: none;
-    margin: 0 0 9px;
+    margin: 0 0 12.5px;
   }
   .navbar .nav > li {
     float: none;
@@ -457,8 +457,8 @@
   .navbar-form,
   .navbar-search {
     float: none;
-    padding: 9px 15px;
-    margin: 9px 0;
+    padding: 12.5px 15px;
+    margin: 12.5px 0;
     border-top: 1px solid #222222;
     border-bottom: 1px solid #222222;
     -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);

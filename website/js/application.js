@@ -1,2 +1,2 @@
 prettyPrint()
-$('.carousel').carousel()
+//$('.carousel').carousel()

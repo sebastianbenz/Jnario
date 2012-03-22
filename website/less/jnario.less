@@ -1,90 +1,97 @@
 /* Header */
+
 .header-background {
+	display:block;
   position:absolute;
   padding-top: 30px;
-  margin-bottom: 30px;
-  
-    background: #373737; /* Old browsers */
-	background: -moz-radial-gradient(center, ellipse cover,  #373737 0%, #212121 50%, #212121 100%); /* FF3.6+ */
-	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#373737), color-stop(50%,#212121), color-stop(100%,#212121)); /* Chrome,Safari4+ */
-	background: -webkit-radial-gradient(center, ellipse cover,  #373737 0%,#212121 50%,#212121 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-radial-gradient(center, ellipse cover,  #373737 0%,#212121 50%,#212121 100%); /* Opera 12+ */
-	background: -ms-radial-gradient(center, ellipse cover,  #373737 0%,#212121 50%,#212121 100%); /* IE10+ */
-	background: radial-gradient(center, ellipse cover,  #373737 0%,#212121 50%,#212121 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#373737', endColorstr='#212121',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
+  position: relative;
+  background: #373737; /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover,  #373737 0%, #212121 50%, #212121 100%); /* FF3.6+ */
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#373737), color-stop(50%,#212121), color-stop(100%,#212121)); /* Chrome,Safari4+ */
+  background: -webkit-radial-gradient(center, ellipse cover,  #373737 0%,#212121 50%,#212121 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-radial-gradient(center, ellipse cover,  #373737 0%,#212121 50%,#212121 100%); /* Opera 12+ */
+  background: -ms-radial-gradient(center, ellipse cover,  #373737 0%,#212121 50%,#212121 100%); /* IE10+ */
+  background: radial-gradient(center, ellipse cover,  #373737 0%,#212121 50%,#212121 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#373737', endColorstr='#212121',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
-
-  height: 500px;
-  z-index:-1;
+  height: 100%;
   width: 100%;
-
-  .noise, .stripes {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
-  .noise {
-    background: url(../img/noise.png) repeat;
-  }
-  .stripes {
-    background: url(../img/stripes.png) repeat;
-  }
+  min-height: 100%;
 }
 
+/* Images */
+
 img {
-   padding:3px;
-   //border:1px solid #fff;
-   background-color:#BCD279;
+   padding:8px;
+   border:1px solid #BCD279;
 }
 
 /* Container */
+
 .content-background{
-	width: 100%;
-	position:absolute;
-	top: 500px;
-	height:100%; /* Mindesthöhe für den IE */ 
-	z-index:-1;
-
+	position: relative;
 	background: rgb(254,255,255); /* Old browsers */
-background: -moz-radial-gradient(center, ellipse cover,  rgba(254,255,255,1) 0%, rgba(244,244,244,1) 35%, rgba(233,233,233,1) 100%); /* FF3.6+ */
-background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(254,255,255,1)), color-stop(35%,rgba(244,244,244,1)), color-stop(100%,rgba(233,233,233,1))); /* Chrome,Safari4+ */
-background: -webkit-radial-gradient(center, ellipse cover,  rgba(254,255,255,1) 0%,rgba(244,244,244,1) 35%,rgba(233,233,233,1) 100%); /* Chrome10+,Safari5.1+ */
-background: -o-radial-gradient(center, ellipse cover,  rgba(254,255,255,1) 0%,rgba(244,244,244,1) 35%,rgba(233,233,233,1) 100%); /* Opera 12+ */
-background: -ms-radial-gradient(center, ellipse cover,  rgba(254,255,255,1) 0%,rgba(244,244,244,1) 35%,rgba(233,233,233,1) 100%); /* IE10+ */
-background: radial-gradient(center, ellipse cover,  rgba(254,255,255,1) 0%,rgba(244,244,244,1) 35%,rgba(233,233,233,1) 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feffff', endColorstr='#e9e9e9',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-
-}
-
-section {
-  h1 {
-	color: #BCD279;
-	margin-bottom: 10px;
-	margin-top: 10px;
-  }
+	background: -moz-radial-gradient(center, ellipse cover,  rgba(254,255,255,1) 0%, rgba(244,244,244,1) 35%, rgba(233,233,233,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(254,255,255,1)), color-stop(35%,rgba(244,244,244,1)), color-stop(100%,rgba(233,233,233,1))); /* Chrome,Safari4+ */
+	background: -webkit-radial-gradient(center, ellipse cover,  rgba(254,255,255,1) 0%,rgba(244,244,244,1) 35%,rgba(233,233,233,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-radial-gradient(center, ellipse cover,  rgba(254,255,255,1) 0%,rgba(244,244,244,1) 35%,rgba(233,233,233,1) 100%); /* Opera 12+ */
+	background: -ms-radial-gradient(center, ellipse cover,  rgba(254,255,255,1) 0%,rgba(244,244,244,1) 35%,rgba(233,233,233,1) 100%); /* IE10+ */
+	background: radial-gradient(center, ellipse cover,  rgba(254,255,255,1) 0%,rgba(244,244,244,1) 35%,rgba(233,233,233,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feffff', endColorstr='#e9e9e9',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
 /* Section */
 
 section {
-	border-bottom: 2px solid #eee
+  border-bottom: 2px solid #eee;
+  h1, h2, h3, h4 {
+  	color: #BCD279;
+  }
+  h1 {
+	margin-bottom: 10px;
+	margin-top: 10px;
+  }
 }
 
 /* Footer */ 
 
-.footer {
-  margin-top: 45px;
-  padding: 35px 0 36px;
-  border-top: 1px solid #e5e5e5;
+footer {
+  padding-top: 50px;
   p {
-    margin-bottom: 0;
     color: #555;
   }
-	text-align: center
+  text-align: center
 }
+
+/* Quick links
+-------------------------------------------------- */
+.bs-links {
+  margin: 36px 0;
+}
+.quick-links {
+  min-height: 30px;
+  margin: 0;
+  padding: 5px 20px;
+  list-style: none;
+  text-align: center;
+  overflow: hidden;
+}
+.quick-links:first-child {
+  min-height: 0;
+}
+.quick-links li {
+  display: inline;
+  margin: 0 5px;
+  color: #999;
+}
+.quick-links .github-btn,
+.quick-links .tweet-btn,
+.quick-links .follow-btn {
+  position: relative;
+  top: 5px;
+}
+
 
 /* Media Queries */ 
 
@@ -138,7 +145,8 @@ section {
     width: 1070px;
   }
   .span12, .container {
-    width: 1070px;
+    //width: 1070px;#
+    width: 800px;
   }
   .offset1 {
     margin-left: 130px;
