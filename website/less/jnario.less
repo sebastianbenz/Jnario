@@ -1,8 +1,69 @@
-/* Container */
+/* Header */
+.header-background {
+  position:absolute;
+  padding-top: 30px;
+  margin-bottom: 30px;
+  
+    background: #373737; /* Old browsers */
+	background: -moz-radial-gradient(center, ellipse cover,  #373737 0%, #212121 50%, #212121 100%); /* FF3.6+ */
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#373737), color-stop(50%,#212121), color-stop(100%,#212121)); /* Chrome,Safari4+ */
+	background: -webkit-radial-gradient(center, ellipse cover,  #373737 0%,#212121 50%,#212121 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-radial-gradient(center, ellipse cover,  #373737 0%,#212121 50%,#212121 100%); /* Opera 12+ */
+	background: -ms-radial-gradient(center, ellipse cover,  #373737 0%,#212121 50%,#212121 100%); /* IE10+ */
+	background: radial-gradient(center, ellipse cover,  #373737 0%,#212121 50%,#212121 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#373737', endColorstr='#212121',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
-.container {
+
+
+  height: 500px;
+  z-index:-1;
+  width: 100%;
+
+  .noise, .stripes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  .noise {
+    background: url(../img/noise.png) repeat;
+  }
+  .stripes {
+    background: url(../img/stripes.png) repeat;
+  }
+}
+
+img {
+   padding:3px;
+   //border:1px solid #fff;
+   background-color:#BCD279;
+}
+
+/* Container */
+.content-background{
+	width: 100%;
+	position:absolute;
+	top: 500px;
+	height:100%; /* Mindesthöhe für den IE */ 
+	z-index:-1;
+
+	background: rgb(254,255,255); /* Old browsers */
+background: -moz-radial-gradient(center, ellipse cover,  rgba(254,255,255,1) 0%, rgba(244,244,244,1) 35%, rgba(233,233,233,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(254,255,255,1)), color-stop(35%,rgba(244,244,244,1)), color-stop(100%,rgba(233,233,233,1))); /* Chrome,Safari4+ */
+background: -webkit-radial-gradient(center, ellipse cover,  rgba(254,255,255,1) 0%,rgba(244,244,244,1) 35%,rgba(233,233,233,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-radial-gradient(center, ellipse cover,  rgba(254,255,255,1) 0%,rgba(244,244,244,1) 35%,rgba(233,233,233,1) 100%); /* Opera 12+ */
+background: -ms-radial-gradient(center, ellipse cover,  rgba(254,255,255,1) 0%,rgba(244,244,244,1) 35%,rgba(233,233,233,1) 100%); /* IE10+ */
+background: radial-gradient(center, ellipse cover,  rgba(254,255,255,1) 0%,rgba(244,244,244,1) 35%,rgba(233,233,233,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feffff', endColorstr='#e9e9e9',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+
+section {
   h1 {
-	    color: #0f0;
+	color: #BCD279;
+	margin-bottom: 10px;
+	margin-top: 10px;
   }
 }
 
@@ -11,46 +72,6 @@
 section {
 	border-bottom: 2px solid #eee
 }
-
-
-/* Hero Unit */
-
-.hero-unit {
-	position: relative;
-	background: #333; /* Old browsers */
-	background: -moz-radial-gradient(center, ellipse cover, #333 0%, #191919 100%); /* FF3.6+ */
-	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#333), color-stop(100%,#191919)); /* Chrome,Safari4+ */
-	background: -webkit-radial-gradient(center, ellipse cover, #333 0%,#191919 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-radial-gradient(center, ellipse cover, #333 0%,#191919 100%); /* Opera 12+ */
-	background: -ms-radial-gradient(center, ellipse cover, #333 0%,#191919 100%); /* IE10+ */
-	background: radial-gradient(center, ellipse cover, #333 0%,#191919 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#333', endColorstr='#191919',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-	height:      400px;
-
-}
-
-.hero-unit {
-	.noise, .stripes {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-	}
-	.noise {
-		background: url(../img/noise.png) repeat;
-	}
-	.stripes {
-		background: url(../img/stripes.png) repeat;
-	}
-	h1, p{
-	  padding-left: 375px
-	}
-	h1{
-	  padding-top: 200px 
-	}
-}
-
 
 /* Footer */ 
 
@@ -117,7 +138,7 @@ section {
     width: 1070px;
   }
   .span12, .container {
-    width: 700px;
+    width: 1070px;
   }
   .offset1 {
     margin-left: 130px;

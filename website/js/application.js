@@ -1,2 +1,2 @@
-window.prettyPrint && prettyPrint()
+prettyPrint()
 $('.carousel').carousel()
