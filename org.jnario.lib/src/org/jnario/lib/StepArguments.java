@@ -10,13 +10,14 @@ package org.jnario.lib;
 
 import static com.google.common.collect.Lists.*;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
 public class StepArguments {
 	
-	private ArrayList<String> values = newArrayList();
+	private final List<String> values = newArrayList();
 	
 	public void add(String value){
 		values.add(value);
@@ -44,6 +45,11 @@ public class StepArguments {
 	
 	public String fifth(){
 		return values.get(4);
+	}
+
+	@Override
+	public String toString() {
+		return values.toString();
 	}
 	
 }
