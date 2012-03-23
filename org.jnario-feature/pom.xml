@@ -7,8 +7,8 @@
     <groupId>org.jnario</groupId>
     <version>0.1.0-SNAPSHOT</version>
   </parent>
-  <groupId>org.jnario</groupId>
-  <artifactId>org.jnario-feature</artifactId>
+  <groupId>org.jnario.features</groupId>
+  <artifactId>org.jnario</artifactId>
   <version>0.1.0-SNAPSHOT</version>
   <packaging>eclipse-feature</packaging>
 </project>
