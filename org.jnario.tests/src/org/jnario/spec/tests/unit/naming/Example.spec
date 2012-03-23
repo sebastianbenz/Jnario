@@ -16,12 +16,12 @@ describe Example {
 	 
 	describe "name"{
 		def examples{
-			| ^fact 											| name 							|
+			| example 											| name 							|
 			| "fact 'with description'"							| "with description"   			|
 			| "fact 'with code' => 'with code'"					| "'with code' => 'with code'"	|
 		}
 	
-		fact examples.forEach[^fact.parse.name should be name]
+		fact examples.forEach[example.parse.name should be name]
 	}
 	
 	describe "implementation"{
