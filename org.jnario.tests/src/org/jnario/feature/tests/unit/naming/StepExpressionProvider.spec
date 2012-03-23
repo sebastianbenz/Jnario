@@ -12,7 +12,7 @@ import org.jnario.jnario.test.util.ModelStore
 import org.jnario.jnario.test.util.SpecTestInstantiator
 import org.jnario.feature.feature.Step
 import org.jnario.feature.feature.StepReference
-import org.jnario.feature.naming.StepExpressionProvider
+import org.jnario.feature.jvmmodel.StepExpressionProvider
 import org.jnario.runner.InstantiateWith
 import static org.jnario.jnario.test.util.Query.*
 
