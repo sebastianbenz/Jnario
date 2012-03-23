@@ -47,7 +47,6 @@ import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 import org.objectweb.asm.Type;
-import org.pegdown.PegDownProcessor;
 
 import testdata.Properties1;
 
