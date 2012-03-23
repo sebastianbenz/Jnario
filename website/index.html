@@ -33,10 +33,18 @@
 <script type="text/javascript">
 $(function(){
 	$(function(){ // On load
-		$('#home').css({'height':(($(window).height()-40))+'px'});
+		var height = $(window).height()
+		console.log(height)
+		if(height > 700){
+			$('#home').css({'height':((height-40))+'px'});
+		}
 	});
 	$(window).resize(function(){ // On resize
-		$('#home').css({'height':(($(window).height()-40))+'px'});
+		var height = $(window).height()
+		console.log(height)
+		if(height > 700){
+			$('#home').css({'height':((height-40))+'px'});
+		}
 	});
 });
 </script>
@@ -49,7 +57,7 @@ $(function(){
 		<div id="home" class="hero-unit container">
 			<h1>Jnario</h1>
 			<h4>Executable Specifications for Java.</h4>
-			<div id="myCarousel" class="carousel slide">
+			<div id="myCarousel" class="carousel slide hidden-phone">
 				<div class="carousel-inner">
 					<div class="item active">
 						<img src="img/feature_calculator_1.png" alt="">
@@ -74,7 +82,7 @@ $(function(){
 					data-slide="prev">&lsaquo;</a> <a class="right carousel-control"
 					href="#myCarousel" data-slide="next">&rsaquo;</a>
 			</div>
-			<div class="bs-links">
+			<div class="bs-links  hidden-phone">
 				<ul class="quick-links">
 					<li><iframe class="github-btn"
 							src="http://markdotto.github.com/github-buttons/github-btn.html?user=bmwcarit&repo=jnario&type=watch&count=true"
@@ -120,11 +128,11 @@ $(function(){
 					integrate as Jnario specifications are compiled to plain Java Junit tests.
 					 </p>
 				
-				<p>There is so much more to testing than just checking whether
+				<!--<p>There is so much more to testing than just checking whether
 					your code behaves as expected. Tests help you design your system.
 					They specify the behavior of your classes and give examples on how
 					to use an API. We think of tests as executables specifications
-					guiding the design of your system.</p>
+					guiding the design of your system.</p> -->
 
 				<h2>Acceptance Specifications</h2>
 				<pre class="prettyprint lang-feature">
@@ -179,7 +187,7 @@ describe Stack{
 							3.6</a> with <a href="http://www.xtext.org">Xtext 2.3</a> and <a
 						href="http://www.eclipse.org/xtend/">Xtend 2.3</a>. You can
 						install both via this <a
-						href="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/milestones/">Xtext
+						href="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/snapshot/">Xtext
 							update site</a>.
 					</li>
 					<li>The current beta verions of Jnario can be installed from
@@ -206,7 +214,7 @@ describe Stack{
 			<section  id="about" class="row">
 				<h1>About</h1>
 
-				<p>Jnario has been build at <a href="http://www.bmw-carit.de">BMW
+				<p>Jnario has been built at <a href="http://www.bmw-carit.de">BMW
 							Car IT</a> by <a href="http://www.sebastianbenz.de">Sebastian Benz</a> (<a href="twitter.com/sebabenz">@sebabenz</a>) and Birgit Engelmann. Code licensed
 						under the <a href="http://www.eclipse.org/legal/epl-v10.html">Eclipse
 							Public License v1.0</a>.</p>

@@ -10,8 +10,10 @@ import static org.jnario.jnario.test.util.Query.*
 import static extension org.jnario.lib.ExampleTableIterators.*
 import org.jnario.Should
 import org.eclipse.xtext.xbase.XBlockExpression
+import org.junit.Ignore
 
 @InstantiateWith(typeof(SpecTestInstantiator))
+@Ignore
 describe Example {
 	 
 	describe "name"{

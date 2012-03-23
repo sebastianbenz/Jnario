@@ -71,6 +71,24 @@
   .visible-desktop {
     display: none;
   }
+  body {
+    margin: 0 0 6;
+    font-size: 13px;
+    line-height: 16;
+  }
+  h1 {
+    line-height: 18px;
+    font-size: 18px;
+    margin: 0 0 9px;
+  }
+  h2 {
+    line-height: 16px;
+    font-size: 15px;
+    margin: 0 0 7px;
+  }
+  .header {
+    padding-top: 0px;
+  }
 }
 @media (min-width: 768px) and (max-width: 979px) {
   .visible-tablet {
@@ -87,6 +105,26 @@
   }
 }
 @media (max-width: 480px) {
+  body,
+  pre,
+  p {
+    margin: 0 0 6px;
+    font-size: 13px;
+    line-height: 16px;
+  }
+  h1 {
+    line-height: 18px;
+    font-size: 18px;
+    margin: 0 0 9px;
+  }
+  h2 {
+    line-height: 16px;
+    font-size: 15px;
+    margin: 0 0 7px;
+  }
+  .header {
+    padding-top: 0px;
+  }
   .nav-collapse {
     -webkit-transform: translate3d(0, 0, 0);
   }
@@ -134,9 +172,26 @@
   }
 }
 @media (max-width: 767px) {
-  body {
+  .container {
     padding-left: 20px;
     padding-right: 20px;
+  }
+  body,
+  pre,
+  p {
+    margin: 0 0 6px;
+    font-size: 13px;
+    line-height: 16px;
+  }
+  h1 {
+    line-height: 18px;
+    font-size: 18px;
+    margin: 0 0 9px;
+  }
+  h2 {
+    line-height: 16px;
+    font-size: 15px;
+    margin: 0 0 7px;
   }
   .navbar-fixed-top {
     margin-left: -20px;
