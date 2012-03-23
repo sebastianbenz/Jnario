@@ -7,7 +7,7 @@
   <packaging>pom</packaging>
   
    <properties>
-   <tycho-version>0.12.0</tycho-version>
+   <tycho-version>0.14.1</tycho-version>
     <tycho-groupid>org.eclipse.tycho</tycho-groupid>
     <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
     <platform-version-name>juno</platform-version-name>
