@@ -40,6 +40,7 @@ gh-pages: jnario
 	cp -r css/* ${GH_PAGES}/css
 	cp -r *.html ${GH_PAGES}
 	cp -r ../org.jnario.updatesite/target/site/* ${GH_PAGES}/updates/snapshot
+	echo "This is the Jnario (www.jnario.org) snapshots update site." > ${GH_PAGES}/updates/snapshot/index.html
 
 #
 # WATCH LESS FILES
