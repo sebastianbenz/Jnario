@@ -1,15 +1,15 @@
 
 
-#Overview
+##Overview
 
 Jnario is a framework for writing executable specifications for Java. It provides all the goodness of Xtend while being specifically tailored to writing acceptance and unit tests. It is easy to integrate as Jnario specifications are compiled to plain Java Junit tests.
 
 #Dependencies & Installation
 
-* Jnario requires at least [Eclipse 3.6](http://eclipse.org/downloads/) with [Xtext 2.3](http://www.xtext.org) and [Xtend 2.3](http://www.eclipse.org/xtend/). You can install both via the followin update site `http://download.eclipse.org/modeling/tmf/xtext/updates/composite/snapshot/`.
-* The latest snapshot verion of Jnario can be installed from the following update site `"http://www.jnario.org/updates/snapshot/`
+* Jnario requires at least [Eclipse 3.6](http://eclipse.org/downloads/) with [Xtext 2.3](http://www.xtext.org) and [Xtend 2.3](http://www.eclipse.org/xtend/). You can install both from this update site `http://download.eclipse.org/modeling/tmf/xtext/updates/composite/`.
+* The latest snapshot verion of Jnario can be installed from the following update site `http://www.jnario.org/updates/snapshot/`.
 
-#Build
+##Build
 
 Build with Maven 3 and Tycho:
 
@@ -17,9 +17,9 @@ Build with Maven 3 and Tycho:
 mvn clean install
 ``` 
 
-#Examples
+##Examples
 
-##Acceptance Specification
+###Acceptance Specification
 
 ```cucumber
 Feature: Addition
@@ -39,9 +39,9 @@ Feature: Addition
       calculator.result => args.first
 ```
 
-##Unit Specifications
+###Unit Specifications
 
-```
+```java
 package example
 
 import java.util.Stack
