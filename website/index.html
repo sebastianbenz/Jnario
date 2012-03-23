@@ -12,7 +12,8 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/jnario.min.css" rel="stylesheet">
 <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-<link href="css/prettify.css" rel="stylesheet">
+<link href="css/prettify-solarized-dark.css" rel="stylesheet">
+<link href="css/jnario-responsive.min.css" rel="stylesheet">
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -31,7 +32,7 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(function(){
-	$(window).load(function(){ // On load
+	$(function(){ // On load
 		$('#home').css({'height':(($(window).height()-40))+'px'});
 	});
 	$(window).resize(function(){ // On resize
@@ -44,7 +45,7 @@ $(function(){
 <body  data-spy="scroll">
 
 	<!-- the header -->
-	<header class="header-background">
+	<header class="header">
 		<div id="home" class="hero-unit container">
 			<h1>Jnario</h1>
 			<h4>Executable Specifications for Java.</h4>
@@ -97,7 +98,7 @@ $(function(){
       <div class="navbar-inner">
         <div class="container">
           <div class="nav-collapse">
-            <ul class="nav">
+            <ul class="nav row">
               <li class="active"><a href="#home">Home</a></li>
               <li><a href="#introduction">Introduction</a></li>
               <li><a href="#documentation">Documentation</a></li>
@@ -109,7 +110,7 @@ $(function(){
       </div>
     </div>
 	<!-- the content -->
-	<div class="content-background">
+	<div class="content">
 		<div class="container">
 			<section id="introduction" class="row">
 				<h1>Introduction</h1>
@@ -131,13 +132,14 @@ $(function(){
   I want to be told the sum of two numbers
   
   Scenario: Add two numbers
-    Calculator calculator = new Calculator()
+    <span class="code">Calculator calculator = new Calculator()</span>
     Given I have entered "50" into the calculator
-      calculator.enter(args.first)
+      <span class="code">calculator.enter(args.first)</span>
     And I have entered "70" into the calculator
     When I press "add"
-      calculator.press(args.first)
+      <span class="code">calculator.press(args.first)</span>
     Then the result should be "120" on the screen
+      <span class="code">calculator.result => args.first</span>
 }</pre>
 				<h2>Unit Specifications</h2>
 				<p></p>
@@ -191,13 +193,10 @@ describe Stack{
 			<section class="row">
 				<h1>Support</h1>
 				<ul>
-					<li>Visit <a href="https://github.com/bmwcarit/Jnario">Github</a>
-						for the source code.
+					<li>Visit <a href="https://github.com/bmwcarit/Jnario">Github</a> for the source code.
 					</li>
-					<li>Bugs and feature request at <a
-						href="https://github.com/bmwcarit/Jnario/issues">Github</a>.
-					<li>For general questions head over to the <a
-						href="http://groups.google.com/group/jnario">discussion group</a>.
+					<li>Submit issues and feature request at <a	href="https://github.com/bmwcarit/Jnario/issues">Github</a>.
+					<li>For general questions head over to the <a href="http://groups.google.com/group/jnario">discussion group</a>.
 					</li>
 				</ul>
 			</section>
@@ -205,7 +204,7 @@ describe Stack{
 				<h1>About</h1>
 
 				<p>Jnario has been build at <a href="http://www.bmw-carit.de">BMW
-							Car IT</a> by Sebastian Benz and Birgit Engelmann. Code licensed
+							Car IT</a> by <a href="http://www.sebastianbenz.de">Sebastian Benz</a> (<a href="twitter.com/sebabenz">@sebabenz</a>) and Birgit Engelmann. Code licensed
 						under the <a href="http://www.eclipse.org/legal/epl-v10.html">Eclipse
 							Public License v1.0</a>.</p>
 			</section>
