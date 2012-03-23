@@ -10,9 +10,9 @@
 
 <!-- Le styles -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/jnario.min.css" rel="stylesheet">
 <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
 <link href="css/prettify.css" rel="stylesheet">
-<link href="css/jnario.min.css" rel="stylesheet">
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -27,16 +27,28 @@
 	href="ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed"
 	href="ico/apple-touch-icon-57-precomposed.png">
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(window).load(function(){ // On load
+		$('#home').css({'height':(($(window).height()-40))+'px'});
+	});
+	$(window).resize(function(){ // On resize
+		$('#home').css({'height':(($(window).height()-40))+'px'});
+	});
+});
+</script>
 </head>
 
-<body>
+<body  data-spy="scroll">
 
 	<!-- the header -->
 	<header class="header-background">
-		<div class="hero-unit container">
+		<div id="home" class="hero-unit container">
 			<h1>Jnario</h1>
 			<h4>Executable Specifications for Java.</h4>
-			<div id="myCarousel" class="carousel slide span12">
+			<div id="myCarousel" class="carousel slide">
 				<div class="carousel-inner">
 					<div class="item active">
 						<img src="img/feature_calculator_1.png" alt="">
@@ -77,13 +89,29 @@
 						data-via="sebabenz">Tweet</a></li>
 				</ul>
 			</div>
-		</div>
+      
+    </div>
 	</header>
 	<!-- header -->
+    <div class="navbar navbar-fixed-bottom">
+      <div class="navbar-inner">
+        <div class="container">
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="active"><a href="#home">Home</a></li>
+              <li><a href="#introduction">Introduction</a></li>
+              <li><a href="#documentation">Documentation</a></li>
+              <li><a href="#installation">Installation</a></li>
+              <li><a href="#about">About</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
 	<!-- the content -->
 	<div class="content-background">
 		<div class="container">
-			<section class="row">
+			<section id="introduction" class="row">
 				<h1>Introduction</h1>
 				<p>There is so much more to testing than just checking whether
 					your code behaves as expected. Tests help you design your system.
@@ -103,11 +131,10 @@
   I want to be told the sum of two numbers
   
   Scenario: Add two numbers
+    Calculator calculator = new Calculator()
     Given I have entered "50" into the calculator
-      var calculator = new Calculator()
       calculator.enter(args.first)
     And I have entered "70" into the calculator
-      calculator.enter(args.first)
     When I press "add"
       calculator.press(args.first)
     Then the result should be "120" on the screen
@@ -140,7 +167,7 @@ describe Stack{
 }</pre>
 			</section>
 
-			<section class="row">
+			<section id="installation" class="row">
 				<h1>Installation</h1>
 				<ul>
 					<li>Jnario requires <a href="eclipse.org/downloads/">Eclipse
@@ -157,7 +184,7 @@ describe Stack{
 				</ul>
 			</section>
 
-			<section class="row">
+			<section id="documentation" class="row">
 				<h1>Documentation</h1>
 				<p>Coming soon...</p>
 			</section>
@@ -174,26 +201,14 @@ describe Stack{
 					</li>
 				</ul>
 			</section>
-			<section class="row">
-				<h1>Authors</h1>
+			<section  id="about" class="row">
+				<h1>About</h1>
 
-				<ul>
-					<li>Sebastian Benz (<a href="https://twitter.com/#!/sebabenz">follow</a>)
-					</li>
-					<li>Birgit Engelmann</li>
-				</ul>
-
-			</section>
-
-			<footer>
-				<p>
-					<small>Build at <a href="http://www.bmw-carit.de">BMW
+				<p>Jnario has been build at <a href="http://www.bmw-carit.de">BMW
 							Car IT</a> by Sebastian Benz and Birgit Engelmann. Code licensed
 						under the <a href="http://www.eclipse.org/legal/epl-v10.html">Eclipse
-							Public License v1.0</a>.
-					</small>
-				</p>
-			</footer>
+							Public License v1.0</a>.</p>
+			</section>
 		</div>
 	</div>
 
@@ -231,6 +246,7 @@ describe Stack{
 			}
 		}(document, "script", "twitter-wjs");
 	</script>
+	
 </body>
 </html>
 

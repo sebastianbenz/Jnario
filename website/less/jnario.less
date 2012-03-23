@@ -1,5 +1,13 @@
 /* Header */
 
+
+// Drop shadows
+.box-shadow(@shadow: 0 1px 3px rgba(0,0,0,.25)) {
+  -webkit-box-shadow: @shadow;
+     -moz-box-shadow: @shadow;
+          box-shadow: @shadow;
+}
+
 .header-background {
 	display:block;
   position:absolute;
@@ -15,9 +23,12 @@
   background: radial-gradient(center, ellipse cover,  #373737 0%,#212121 50%,#212121 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#373737', endColorstr='#212121',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
-  height: 100%;
-  width: 100%;
-  min-height: 100%;
+   height:     auto !important;
+   height:     100%;
+   padding:     0 auto 100px; /* -44px being the size of the footer */
+
+  @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
+  .box-shadow(@shadow);
 }
 
 /* Images */
@@ -44,7 +55,7 @@ img {
 /* Section */
 
 section {
-  border-bottom: 2px solid #eee;
+  border-bottom: 2px solid #ddd;
   h1, h2, h3, h4 {
   	color: #BCD279;
   }
