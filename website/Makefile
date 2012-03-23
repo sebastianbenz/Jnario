@@ -29,14 +29,17 @@ gh-pages: jnario
 	rm -r ${GH_PAGES}/img
 	rm -r ${GH_PAGES}/css
 	rm -r ${GH_PAGES}/js
+	rm -r ${GH_PAGES}/updates/snapshot
 	rm ${GH_PAGES}/*.html
 	mkdir ${GH_PAGES}/img
 	mkdir ${GH_PAGES}/css
 	mkdir ${GH_PAGES}/js
+	mkdir ${GH_PAGES}/updates/snapshot
 	cp -r img/* ${GH_PAGES}/img
 	cp -r js/* ${GH_PAGES}/js
 	cp -r css/* ${GH_PAGES}/css
 	cp -r *.html ${GH_PAGES}
+	cp -r ../org.jnario.updatesite/target/site/* ${GH_PAGES}/updates/snapshot
 
 #
 # WATCH LESS FILES
