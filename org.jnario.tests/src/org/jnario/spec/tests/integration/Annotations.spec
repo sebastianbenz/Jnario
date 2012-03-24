@@ -18,7 +18,7 @@ import static extension org.jnario.jnario.test.util.SpecExecutor.*
  */ 
 describe "Annotations" {
  
-	fact "should support class annotations for 'describes'"{
+	fact "should support class annotations for 'describe'"{
 		val spec = '
 			package bootstrap
 			import static org.hamcrest.CoreMatchers.*			

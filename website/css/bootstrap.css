@@ -526,7 +526,7 @@ cite {
 }
 code,
 pre {
-  padding: 0 3px 2px;
+  padding: 0 0px 0px;
   font-family: Menlo, Monaco, "Courier New", monospace;
   font-size: 17px;
   color: #333333;
@@ -3931,7 +3931,7 @@ a.thumbnail:hover {
 }
 .hero-unit {
   padding-top: 30px;
-  padding-left: 30px;
+  padding-left: 0px;
   position: relative;
 }
 .hero-unit h1 {
@@ -3942,16 +3942,10 @@ a.thumbnail:hover {
   color: #bcd279;
   letter-spacing: -1px;
 }
-.hero-unit h4 {
+.hero-unit p {
   font-size: 18px;
   font-weight: 200;
   line-height: 37.5px;
-  color: #ffffff;
-}
-.hero-unit p {
-  font-size: 14px;
-  font-weight: 200;
-  line-height: 30px;
   color: #ffffff;
 }
 .pull-right {

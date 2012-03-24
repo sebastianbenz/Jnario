@@ -107,7 +107,7 @@ q:before,q:after,blockquote:before,blockquote:after{content:"";}
 address{display:block;margin-bottom:25px;line-height:25px;font-style:normal;}
 small{font-size:100%;}
 cite{font-style:normal;}
-code,pre{padding:0 3px 2px;font-family:Menlo,Monaco,"Courier New",monospace;font-size:17px;color:#333333;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
+code,pre{padding:0 0px 0px;font-family:Menlo,Monaco,"Courier New",monospace;font-size:17px;color:#333333;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
 code{padding:2px 4px;color:#d14;background-color:#f7f7f9;border:1px solid #e1e1e8;}
 pre{display:block;padding:12px;margin:0 0 12.5px;font-size:16.650000000000002px;line-height:25px;background-color:#f5f5f5;border:1px solid #ccc;border:1px solid rgba(0, 0, 0, 0.15);-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;white-space:pre;white-space:pre-wrap;word-break:break-all;word-wrap:break-word;}pre.prettyprint{margin-bottom:25px;}
 pre code{padding:0;color:inherit;background-color:transparent;border:0;}
@@ -679,9 +679,8 @@ a.thumbnail:hover{border-color:#4183c4;-webkit-box-shadow:0 1px 4px rgba(0, 105,
 .carousel-control:hover{color:#ffffff;text-decoration:none;opacity:0.9;filter:alpha(opacity=90);}
 .carousel-caption{position:relative;left:0;right:0;text-align:center;bottom:0px;padding:10px 15px 5px;}
 .carousel-caption h4,.carousel-caption p{color:#ffffff;}
-.hero-unit{padding-top:30px;padding-left:30px;position:relative;}.hero-unit h1{margin-top:0;margin-bottom:0;font-size:60px;line-height:1;color:#bcd279;letter-spacing:-1px;}
-.hero-unit h4{font-size:18px;font-weight:200;line-height:37.5px;color:#ffffff;}
-.hero-unit p{font-size:14px;font-weight:200;line-height:30px;color:#ffffff;}
+.hero-unit{padding-top:30px;padding-left:0px;position:relative;}.hero-unit h1{margin-top:0;margin-bottom:0;font-size:60px;line-height:1;color:#bcd279;letter-spacing:-1px;}
+.hero-unit p{font-size:18px;font-weight:200;line-height:37.5px;color:#ffffff;}
 .pull-right{float:right;}
 .pull-left{float:left;}
 .hide{display:none;}

@@ -7,6 +7,8 @@ WATCHR ?= `which watchr`
 GH_PAGES = ../../jnario-gh-pages
 LANG_JNARIO_SPEC    = ../org.jnario/src/org/jnario/doc/lang-jnario-spec.js 
 LANG_JNARIO_FEATURE = ../org.jnario/src/org/jnario/doc/lang-jnario-feature.js 
+
+
 #
 # BUILD JNARIO
 #
@@ -25,27 +27,28 @@ jnario:
 # MAKE FOR GH-PAGES 4 FAT & MDO ONLY (O_O  )
 #
 
+RES_FOLDERS = img css js 
+SPEC_DOC = SpecInstantiation ImplicitSubject Pending ExampleTables
+SNAPSHOT_UPDATES = ${GH_PAGES}/updates/snapshot
+
 gh-pages: jnario
-	rm -r ${GH_PAGES}/img
-	rm -r ${GH_PAGES}/css
-	rm -r ${GH_PAGES}/js
-	rm -r ${GH_PAGES}/updates/snapshot
-	rm ${GH_PAGES}/*.html
-	mkdir ${GH_PAGES}/img
-	mkdir ${GH_PAGES}/css
-	mkdir ${GH_PAGES}/js
-	mkdir ${GH_PAGES}/updates/snapshot
-	cp -r img/* ${GH_PAGES}/img
-	cp -r js/* ${GH_PAGES}/js
-	cp -r css/* ${GH_PAGES}/css
-	cp -r *.html ${GH_PAGES}
-	cp -r ../org.jnario.updatesite/target/site/* ${GH_PAGES}/updates/snapshot
-	echo "This is the Jnario (www.jnario.org) snapshots update site." > ${GH_PAGES}/updates/snapshot/index.html
+	rm -f ${GH_PAGES}/*.html
+	cp -r *.html ${GH_PAGES} 
+	for f in $(RES_FOLDERS) ; \
+	do \
+		echo ${GH_PAGES}/$$f ; \
+		rm -f -r ${GH_PAGES}/$$f ; \
+		mkdir -p ${GH_PAGES}/$$f ; \
+		cp -r $$f/* ${GH_PAGES}/$$f ; \
+	done 
+	rm -r -f ${SNAPSHOT_UPDATES}
+	mkdir -p ${SNAPSHOT_UPDATES}
+	cp -r ../org.jnario.updatesite/target/site/* ${SNAPSHOT_UPDATES}
+	echo "This is the Jnario (www.jnario.org) snapshots update site." > ${GH_PAGES}/updates/snapshot/index.html 
 
 #
 # WATCH LESS FILES
 #
-
 watch:
 	echo "Watching less files..."; \
 	watchr -e "watch('less/.*\.less') { system 'make' }"
