@@ -22,7 +22,7 @@ import static org.jnario.feature.naming.StepNameProvider.*
  * @author Birgit Engelmann
  */
 class StepNameProvider {
-
+ 
 	private static String MULTILINE = "\\\\( |\t)*\r?\n?( |\t)*"
 	
 	def nameOf(Step step){

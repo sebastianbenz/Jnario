@@ -17,7 +17,7 @@ import org.jnario.feature.feature.StepReference
  * @author Sebastian Benz - Initial contribution and API
  */
 class StepExpressionProvider {
-
+ 
 	def expressionOf(Step step, JvmGenericType type){
 		if(step instanceof StepReference){
 			getOrCreateExpression(step as StepReference, type)

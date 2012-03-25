@@ -8,7 +8,7 @@ describe "Specs Syntax"{
 	String exampleField = ""
 	static String staticField = ""
 	extension Collections
-	extension Collections withName
+	extension Collections extensionWithName
 	
 	/* facts */
 	fact "no expression"
@@ -16,14 +16,21 @@ describe "Specs Syntax"{
 		val list = newArrayList()
 		list.size => 0
 	}
-	// just an expression
+	// single expression without description
 	fact "hello" should be "hello"
 	
 	/* Contexts */
-	context "Subcontext"{
-		fact "context can be nested"			 
+	context "sub-context"{
+		fact "context can be nested"	
+		
+		context "sub-sub-context 1"{  
+			fact "context can be nested"			 
+		}
+		context "sub-sub-context 2 "{ 
+			fact "context can be nested"			 
+		}		 
 	}
-	context "Another Subcontext"{
+	context "Another sub-context"{
 		fact "multiple sub contexts per file"
 	}
 	
@@ -34,7 +41,7 @@ describe "Specs Syntax"{
 	fact 1 should not 2
 	fact 1 should be 1
 	fact 1 should not be 2
-	fact {throw new RuntimeException} throws RuntimeException
+	fact {1 / 0} throws RuntimeException
 
 	/* Helper Methods */
 	def method(String aParam, String anotherParam){
@@ -50,15 +57,14 @@ describe "Specs Syntax"{
 		exampleField = "a block"
 	}
 	before all{
-		staticField = "afd"
+		staticField = "new static field value"
 	}
-	
 	after exampleField = "new value"
 	after {
 		exampleField = "a block"
 	}
 	after all{
-		staticField = "afd"
+		staticField = "new static field value"
 	}
 	
 } 

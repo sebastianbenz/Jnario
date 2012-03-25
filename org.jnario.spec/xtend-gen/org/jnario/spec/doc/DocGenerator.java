@@ -230,25 +230,12 @@ public class DocGenerator implements IGenerator {
     _builder.append("\t\t\t\t");
     _builder.append("<div class=\"span12\">");
     _builder.newLine();
-    _builder.append("<p>");
     CharSequence _generateDoc = this.generateDoc(exampleGroup);
     _builder.append(_generateDoc, "");
-    _builder.append("</p>");
     _builder.newLineIfNotEmpty();
-    _builder.append("\t\t\t\t\t");
-    _builder.append("<ul>");
-    _builder.newLine();
-    {
-      EList<XtendMember> _members = exampleGroup.getMembers();
-      for(final XtendMember member : _members) {
-        CharSequence _generate = this.generate(member, 1);
-        _builder.append(_generate, "");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    _builder.append("\t\t\t\t\t");
-    _builder.append("</ul>");
-    _builder.newLine();
+    StringConcatenation _generateMembers = this.generateMembers(exampleGroup, 1);
+    _builder.append(_generateMembers, "");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t\t");
     _builder.append("</div>");
     _builder.newLine();
@@ -280,6 +267,77 @@ public class DocGenerator implements IGenerator {
     _builder.append("</html>");
     _builder.newLine();
     return _builder;
+  }
+  
+  public StringConcatenation generateMembers(final ExampleGroup exampleGroup, final int level) {
+    StringConcatenation _stringConcatenation = new StringConcatenation();
+    final StringConcatenation result = _stringConcatenation;
+    boolean inList = false;
+    EList<XtendMember> _members = exampleGroup.getMembers();
+    for (final XtendMember member : _members) {
+      {
+        final boolean isExampleGroup = (member instanceof ExampleGroup);
+        boolean _and = false;
+        if (!inList) {
+          _and = false;
+        } else {
+          boolean _not = (!isExampleGroup);
+          _and = (inList && _not);
+        }
+        if (_and) {
+          result.append("<li>");
+          CharSequence _generate = this.generate(member, level);
+          result.append(_generate);
+          result.append("</li>");
+        } else {
+          boolean _and_1 = false;
+          boolean _not_1 = (!inList);
+          if (!_not_1) {
+            _and_1 = false;
+          } else {
+            boolean _not_2 = (!isExampleGroup);
+            _and_1 = (_not_1 && _not_2);
+          }
+          if (_and_1) {
+            result.append("<ul>");
+            result.append("<li>");
+            CharSequence _generate_1 = this.generate(member, level);
+            result.append(_generate_1);
+            result.append("</li>");
+            inList = true;
+          } else {
+            boolean _and_2 = false;
+            if (!inList) {
+              _and_2 = false;
+            } else {
+              _and_2 = (inList && isExampleGroup);
+            }
+            if (_and_2) {
+              result.append("</ul>");
+              CharSequence _generate_2 = this.generate(member, level);
+              result.append(_generate_2);
+              inList = false;
+            } else {
+              boolean _and_3 = false;
+              boolean _not_3 = (!inList);
+              if (!_not_3) {
+                _and_3 = false;
+              } else {
+                _and_3 = (_not_3 && isExampleGroup);
+              }
+              if (_and_3) {
+                CharSequence _generate_3 = this.generate(member, level);
+                result.append(_generate_3);
+              }
+            }
+          }
+        }
+      }
+    }
+    if (inList) {
+      result.append("</ul>");
+    }
+    return result;
   }
   
   public CharSequence generateDoc(final EObject eObject) {
@@ -318,11 +376,13 @@ public class DocGenerator implements IGenerator {
         docString = _markdown2Html;
       }
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("<p>");
       {
         String _name = example.getName();
         boolean _notEquals_1 = (!Objects.equal(_name, null));
         if (_notEquals_1) {
-          _builder.append("<li><strong>");
+          _builder.newLineIfNotEmpty();
+          _builder.append("<strong>");
           String _describe = this._exampleNameProvider.describe(example);
           String _convertToText = this.convertToText(_describe);
           _builder.append(_convertToText, "");
@@ -330,8 +390,6 @@ public class DocGenerator implements IGenerator {
           _builder.newLineIfNotEmpty();
         }
       }
-      _builder.append("<p>");
-      _builder.newLine();
       _builder.append(docString, "");
       _builder.newLineIfNotEmpty();
       {
@@ -346,18 +404,35 @@ public class DocGenerator implements IGenerator {
           _and = (_not && _notEquals_2);
         }
         if (_and) {
-          _builder.append("<pre class=\"prettyprint lang-jnario\">");
-          _builder.newLine();
-          XExpression _implementation = example.getImplementation();
-          String _xtendCode = this.toXtendCode(_implementation, filters);
-          _builder.append(_xtendCode, "");
-          _builder.append("</pre>");
+          CharSequence _codeBlock = this.toCodeBlock(example, filters);
+          _builder.append(_codeBlock, "");
           _builder.newLineIfNotEmpty();
-          _builder.append("</p></li>");
-          _builder.newLine();
         }
       }
+      _builder.append("</p>");
+      _builder.newLineIfNotEmpty();
       _xblockexpression = (_builder);
+    }
+    return _xblockexpression;
+  }
+  
+  public CharSequence toCodeBlock(final Example example, final List<Filter> filters) {
+    CharSequence _xblockexpression = null;
+    {
+      XExpression _implementation = example.getImplementation();
+      final String code = this.toXtendCode(_implementation, filters);
+      int _length = code.length();
+      boolean _equals = (_length == 0);
+      if (_equals) {
+        StringConcatenation _builder = new StringConcatenation();
+        return _builder;
+      }
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("<pre class=\"prettyprint lang-jnario\">");
+      _builder_1.newLine();
+      _builder_1.append(code, "");
+      _builder_1.append("</pre>");
+      _xblockexpression = (_builder_1);
     }
     return _xblockexpression;
   }
@@ -448,24 +523,15 @@ public class DocGenerator implements IGenerator {
     _builder.append(_heading_1, "");
     _builder.append(">");
     _builder.newLineIfNotEmpty();
-    _builder.append("<div class=\"level\">");
-    _builder.newLine();
     _builder.append("<p>");
     CharSequence _generateDoc = this.generateDoc(exampleGroup);
     _builder.append(_generateDoc, "");
     _builder.append("</p>");
     _builder.newLineIfNotEmpty();
-    {
-      EList<XtendMember> _members = exampleGroup.getMembers();
-      for(final XtendMember member : _members) {
-        int _plus = (level + 1);
-        CharSequence _generate = this.generate(member, _plus);
-        _builder.append(_generate, "");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    _builder.append("</div>");
-    _builder.newLine();
+    int _plus = (level + 1);
+    StringConcatenation _generateMembers = this.generateMembers(exampleGroup, _plus);
+    _builder.append(_generateMembers, "");
+    _builder.newLineIfNotEmpty();
     return _builder;
   }
   
@@ -484,7 +550,12 @@ public class DocGenerator implements IGenerator {
       code = _apply;
     }
     int _length = code.length();
-    int _minus = (_length - 1);
+    boolean _equals = (_length == 0);
+    if (_equals) {
+      return "";
+    }
+    int _length_1 = code.length();
+    int _minus = (_length_1 - 1);
     String _substring = code.substring(1, _minus);
     code = _substring;
     String _normalize = this._whiteSpaceNormalizer.normalize(code);

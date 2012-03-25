@@ -25,7 +25,7 @@ import static org.eclipse.xtext.EcoreUtil2.*
 
 import static extension com.google.common.collect.Iterables.*
 import static extension com.google.common.collect.Iterators.*
-
+ 
 /**
  * @author Sebastian Benz - Initial contribution and API
  */

@@ -26,11 +26,11 @@ import org.jnario.runner.FeatureRunner
 class JunitAnnotationProvider {
 
 	@Inject extension ExtendedJvmTypesBuilder
-	
+
 	def getExampleGroupRunnerAnnotation(EObject context){
 		return context.toAnnotation(typeof(RunWith), typeof(ExampleGroupRunner))
 	}
-	
+
 	def getFeatureRunner(EObject context){
 		return context.toAnnotation(typeof(RunWith), typeof(FeatureRunner))
 	}
@@ -38,7 +38,7 @@ class JunitAnnotationProvider {
 	def getFeatureExamplesRunner(EObject context){
 		return context.toAnnotation(typeof(RunWith), typeof(FeatureExamplesRunner))
 	}
-	
+ 
 	def getTestAnnotations(EObject context, boolean isPending){
 		val annotations = <JvmAnnotationReference>newArrayList()
 		annotations += context.toAnnotation(typeof(Test))
@@ -67,5 +67,5 @@ class JunitAnnotationProvider {
 			return context.toAnnotation(typeof(org.junit.After))
 		}
 	}
-	
+
 }

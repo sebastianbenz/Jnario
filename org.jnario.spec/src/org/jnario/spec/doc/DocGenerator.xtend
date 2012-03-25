@@ -29,9 +29,11 @@ import static org.jnario.spec.util.Strings.*
 
 import static extension org.eclipse.xtext.util.Strings.*
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils
+import org.jnario.spec.spec.ExampleGroup
+import org.eclipse.xtend2.lib.StringConcatenation
 
 class DocGenerator implements IGenerator {
-	 
+
 	@Inject extension ExampleNameProvider 
 	@Inject extension ExtendedJvmTypesBuilder
 	@Inject extension WhiteSpaceNormalizer
@@ -117,12 +119,8 @@ class DocGenerator implements IGenerator {
 					</div>
 					<div class="row">
 						<div class="span12">
-		<p>«exampleGroup.generateDoc()»</p>
-							<ul>
-							«FOR member : exampleGroup.members»
-«generate(member, 1)»
-							«ENDFOR»
-							</ul>
+		«exampleGroup.generateDoc()»
+«exampleGroup.generateMembers(1)»
 						</div>
 					</div>
 				</div> <!-- /content -->
@@ -136,6 +134,35 @@ class DocGenerator implements IGenerator {
 		</body>
 		</html>
 	'''
+	
+	def generateMembers(ExampleGroup exampleGroup, int level){
+		val result = new StringConcatenation
+		var inList = false	
+		for(member : exampleGroup.members){
+			val isExampleGroup = member instanceof ExampleGroup
+			if (inList && !isExampleGroup){
+				result.append("<li>")
+				result.append(generate(member, level))
+				result.append("</li>")
+			}else if(!inList && !isExampleGroup){
+				result.append("<ul>")
+				result.append("<li>")
+				result.append(generate(member, level))
+				result.append("</li>")
+				inList = true
+			}else if(inList && isExampleGroup){
+				result.append("</ul>")
+				result.append(generate(member, level))
+				inList = false
+			}else if(!inList && isExampleGroup){
+				result.append(generate(member, level))
+			}
+		}
+		if(inList){
+			result.append("</ul>")
+		}
+		return result
+	}
 	
 	def generateDoc(EObject eObject)'''
 		«IF eObject.documentation != null»
@@ -155,19 +182,24 @@ class DocGenerator implements IGenerator {
 			docString = docString.markdown2Html
 		}
 		'''
-			«IF example.name != null»
-			<li><strong>«example.describe.convertToText»</strong>
+			<p>«IF example.name != null»
+			<strong>«example.describe.convertToText»</strong>
 			«ENDIF»
-			<p>
 			«docString»
 			«IF !example.pending && example.body != null»
-			<pre class="prettyprint lang-jnario">
-			«example.implementation.toXtendCode(filters)»</pre>
-			</p></li>
-			«ENDIF»
+			«example.toCodeBlock(filters)»
+			«ENDIF»</p>
 		'''
 	}
 	
+	def toCodeBlock(Example example, List<Filter> filters){
+		val code = example.implementation.toXtendCode(filters)
+		if(code.length == 0) return ''''''
+		'''
+		<pre class="prettyprint lang-jnario">
+		«code»</pre>'''
+	}
+	 
 	def dispatch generate(ExampleTable table, int level)'''
 		<h4>«table.toFieldName.convertToTitle»</h4>
 		<p>«table.generateDoc»</p>
@@ -195,13 +227,11 @@ class DocGenerator implements IGenerator {
 «««		«IF level > 1»
 «««		«ENDIF»
 		<«level.heading»>«exampleGroup.asTitle»</«level.heading»>
-		<div class="level">
+«««		<div class="level">
 		<p>«exampleGroup.generateDoc»</p>
-		«FOR member : exampleGroup.members»
-«generate(member, level + 1)»
-		«ENDFOR»
+«generateMembers(exampleGroup, level + 1)»
 «««		«IF level > 1»
-		</div>
+«««		</div>
 «««		«ENDIF»
 	'''
 
@@ -213,6 +243,9 @@ class DocGenerator implements IGenerator {
 		var code = expr.serialize.trim
 		for(filter : filters){
 			code = filter.apply(code)
+		}
+		if(code.length == 0){
+			return ""
 		}
 		code = code.substring(1, code.length-1) 
 		return code.normalize.toHtml
