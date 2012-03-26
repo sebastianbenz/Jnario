@@ -31,7 +31,7 @@
 <p>This tutorial gives you an introduction on how to write unit specifications with Jnario. Jnario Specs is based on <a href="http://www.xtend-lang.org">Xtend</a>. it might be a good idea to read the Xtend <a href="http://www.eclipse.org/xtend/documentation/index.html">documentation</a> as well, because expressions, fields, methods and extensions in Jnario work exactly as in Xtend.</p><h3>Installation &amp; Runtime Library</h3><p>Jnario currently requires <a href="http://www.eclipse.org">Eclipse</a> 3.5 or higher with <a href="http://www.xtext.org">Xtext</a> 2.3, and a Java SDK version 5 or above. You can install the most recent version from this update site: <code>http://www.jnario.org/updates/snapshot/</code>. Jnario requires a small runtime library that contains the JUnit integration. You can download the jar <a href="http://jnario.org/updates/snapshot/org.jnario.lib-0.1.0-SNAPSHOT.jar">here</a>.</p>
 <h3>How to write a Specification</h3>
 <p><p>To get started create a new specification using the spec wizard (<strong>File</strong> -&gt; <strong>New</strong> -&gt; <strong>Other</strong> -&gt; <strong>Jnario</strong> -&gt; <strong>Spec</strong>).</p>
-<p align="center"><img src="/img/tutorial/spec_wizard.png" alt="New Spec Wizard"/></p><p>In Jnario we <em>describe facts</em> about our program. For example, here are two simple facts of a stack:</p>
+<p align="center"><img src="/img/tutorial/spec_wizard.png" alt="New Spec Wizard"/></p><p>In Jnario we <em>describe facts</em> about our program. Here are two simple facts of a stack:</p>
 <pre class="prettyprint lang-spec">
 describe "A Stack"{
   fact "initial size is 0"
@@ -120,7 +120,7 @@ import java.util.Stack
 describe Stack{
   ...
 }
-</pre><p>This way you achieve a strong link between specification and its target that works even if the target class is renamed. Jnario will also implicitly create a field called <code>subject</code> of the target type (<a href="/org/jnario/spec/tests/documentation/ImplicitSubject.html">more...</a>). Therefore we can get rid of the subject field in our stack specification.</p><p><span class="label label-important">Important</span> The implicit subject works only if the target class has a default constructor without any arguments, but it is also possible to use Guice or other frameworks to automatically create the subjects (<a href="/org/jnario/spec/tests/documentation/SpecInstantiation.html">more...</a>).</p>
+</pre><p>This way you achieve a strong link between specification and its target that works even if the target class is renamed. Jnario will also implicitly create a field called <code>subject</code> of the target type (<a href="/org/jnario/spec/tests/integration/ImplicitSubjectSpec.html">more...</a>). Therefore we can get rid of the subject field in our stack specification.</p><p><span class="label label-important">Important</span> The implicit subject works only if the target class has a default constructor without any arguments, but it is also possible to use Guice or other frameworks to automatically create the subjects (<a href="/org/jnario/spec/tests/integration/SpecInstantiationSpec.html">more...</a>).</p>
 <pre class="prettyprint lang-spec">
 package demo
 
@@ -182,7 +182,7 @@ describe "Addition" {
  }
  fact additions.forEach[a + b should be sum]
 }
-</pre><p>The <code>forEach</code> extension method expects a closure as argument. Within the closure you can directly access all values in a row by their column name. The great thing about example tables is that they will give you detailed error messages when one of the assertions fails (<a href="/org/jnario/spec/tests/documentation/ExampleTables">more...</a>):</p>
+</pre><p>The <code>forEach</code> extension method expects a closure as argument. Within the closure you can directly access all values in a row by their column name. The great thing about example tables is that they will give you detailed error messages when one of the assertions fails (<a href="/org/jnario/spec/tests/integration/SpecsExampleTablesSpec.html">more...</a>):</p>
 <pre class="prettyprint lang-none">
 java.lang.AssertionError: additions failed
 
@@ -201,7 +201,7 @@ java.lang.AssertionError: additions failed
 </li><li><p>
 <strong>Generating Documentation</strong>
 <p>Jnario can generate html documents from your specifications. The documentation will be generated automatically when you create a folder <code>doc-gen</code> in the project root. You can further extend the documentation by enriching your specification with Javadoc like comments. You can even use <a href="http//daringfireball.net/projects/markdown/">Markdown Syntax</a> to format your specifications.</p>
-<p align="center"><a href="/img/tutorial/doc_stack_example.png"><img src="/img/tutorial/doc_stack_example_small.png" alt="Generated documentation for the stack specification"/></a></p><p>This tutorial has actually been generated from a specification!</p>
+<p align="center"><a href="/img/tutorial/doc_stack_example.png"><img src="/img/tutorial/doc_stack_example_small.png" alt="Generated documentation for the stack specification"/></a></p><p>This tutorial has actually been generated from a <a href="https://github.com/bmwcarit/Jnario/blob/master/org.jnario.tests/src/org/jnario/spec/tests/documentation/Tutorial.spec">specification</a>.</p>
 <pre class="prettyprint lang-spec">
 package demo
 				      
@@ -296,9 +296,9 @@ class DatabaseExtension {
 <pre class="prettyprint">extension DatabaseExtension db = new DatabaseExtension
 </code></pre><p>its setup and tear down methods will be automatically executed before and after each fact. Due to Xtends extension mechanism, this has the additional benefit that we can directly access all methods in thw database extension without the field name.</p>
 <pre class="prettyprint lang-none">
-	openDatabaseConnection
-	query: SELECT * FROM content
-	closeDatabaseConnection
+openDatabaseConnection
+query: SELECT * FROM content
+closeDatabaseConnection
 </pre>
 <pre class="prettyprint lang-spec">
 describe "Spec Extensions"{
@@ -331,7 +331,7 @@ describe "Helper Methods & Fields"{
 </p>
 </li></ul>
 <h3>Writing Assertions</h3>
-<p><p>Jnario provides different statements for writing assertions (<a href="/org/jnario/spec/tests/documentation/Assertion.html">more...</a>).</p>
+<p><p>Jnario provides different statements for writing assertions (<a href="/org/jnario/spec/tests/integration/AssertionSpec.html">more...</a>).</p>
 </p>
 <ul><li><p>
 <strong>'assert'</strong>

@@ -33,7 +33,7 @@ describe "Jnario Specs - Tutorial"{
 	 * (**File** -> **New** -> **Other** -> **Jnario** -> **Spec**).
 	 * 
 	 * <p align="center"><img src="/img/tutorial/spec_wizard.png" alt="New Spec Wizard"/></p> 
-	 * In Jnario we *describe facts* about our program. For example, here are two simple facts of a stack:
+	 * In Jnario we *describe facts* about our program. Here are two simple facts of a stack:
 	 * 
 	 * <pre class="prettyprint lang-spec">
 	 * describe "A Stack"{
@@ -182,13 +182,13 @@ describe "Jnario Specs - Tutorial"{
 	      * This way you achieve a strong link between specification
 	      * and its target that works even if the target class is renamed.  
 	      * Jnario will also implicitly create a field called `subject` of
-	      * the target type ([more...](/org/jnario/spec/tests/documentation/ImplicitSubject.html)). Therefore we can get rid of the subject field in
+	      * the target type ([more...](/org/jnario/spec/tests/integration/ImplicitSubjectSpec.html)). Therefore we can get rid of the subject field in
 	      * our stack specification. 
 	      * 
 	      * <span class="label label-important">Important</span> The implicit subject works
 	      * only if the target class has a default constructor without any arguments, but it 
 	      * is also possible to use Guice or other frameworks to automatically create
-	      * the subjects ([more...](/org/jnario/spec/tests/documentation/SpecInstantiation.html)).
+	      * the subjects ([more...](/org/jnario/spec/tests/integration/SpecInstantiationSpec.html)).
 	      * 
 	      *
 	      * @filter('''|.executesSuccessfully)  
@@ -281,7 +281,7 @@ describe "Jnario Specs - Tutorial"{
 		 * Within the closure you can directly access all values in a row 
 		 * by their column name. The great thing about example tables is that
 		 * they will give you detailed error messages when one of the 
-		 * assertions fails ([more...](/org/jnario/spec/tests/documentation/ExampleTables)):
+		 * assertions fails ([more...](/org/jnario/spec/tests/integration/SpecsExampleTablesSpec.html)):
 		 * 
 		 * <pre class="prettyprint lang-none">
 		 * java.lang.AssertionError: additions failed
@@ -325,7 +325,7 @@ describe "Jnario Specs - Tutorial"{
 		 *
 		 * <p align="center"><a href="/img/tutorial/doc_stack_example.png"><img src="/img/tutorial/doc_stack_example_small.png" alt="Generated documentation for the stack specification"/></a></p>  
 		 * 
-		 * This tutorial has actually been generated from a specification!
+		 * This tutorial has actually been generated from a [specification](https://github.com/bmwcarit/Jnario/blob/master/org.jnario.tests/src/org/jnario/spec/tests/documentation/Tutorial.spec).
 		 * 
 		 * @filter('''|.executesSuccessfully) 
 		 */
@@ -383,7 +383,7 @@ describe "Jnario Specs - Tutorial"{
 		 * </pre>
 		 * 
 		 * @filter('''|.executesSuccessfully) 
-		 */
+		 */ 
 		fact "Setup & Teardown"{ 
 				'''
 			    describe "Setup & Teardown" {
@@ -447,9 +447,9 @@ describe "Jnario Specs - Tutorial"{
 		 * database extension without the field name. 
 		 * 
 		 * <pre class="prettyprint lang-none">
-		 *	openDatabaseConnection
-		 *	query: SELECT * FROM content
-		 *	closeDatabaseConnection
+		 * openDatabaseConnection
+		 * query: SELECT * FROM content
+		 * closeDatabaseConnection
 		 * </pre>
 		 * 
 		 * @filter('''|.executesSuccessfully) 
@@ -496,7 +496,7 @@ describe "Jnario Specs - Tutorial"{
   }		
 
 	/*
-	 * Jnario provides different statements for writing assertions ([more...](/org/jnario/spec/tests/documentation/Assertion.html)).
+	 * Jnario provides different statements for writing assertions ([more...](/org/jnario/spec/tests/integration/AssertionSpec.html)).
 	 */
 	describe "Writing Assertions"{
 	

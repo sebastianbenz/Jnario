@@ -99,6 +99,11 @@
     font-size: 15px;
     margin: 0 0 7px;
   }
+  h3 {
+    line-height: 16px;
+    font-size: 14px;
+    margin: 0 0 6px;
+  }
   .header {
     padding-top: 0px;
   }
@@ -153,6 +158,11 @@
     line-height: 16px;
     font-size: 15px;
     margin: 0 0 7px;
+  }
+  h3 {
+    line-height: 16px;
+    font-size: 14px;
+    margin: 0 0 6px;
   }
   li {
     line-height: 15px;

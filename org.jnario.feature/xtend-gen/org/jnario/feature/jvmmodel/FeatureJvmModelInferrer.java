@@ -766,8 +766,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
       EList<JvmMember> _members = container.getMembers();
       this._extendedJvmTypesBuilder.<JvmField>operator_add(_members, field);
       this.associator.associatePrimary(source, field);
-      JvmVisibility _visibility = source.getVisibility();
-      field.setVisibility(_visibility);
+      field.setVisibility(JvmVisibility.PUBLIC);
       boolean _isStatic = source.isStatic();
       field.setStatic(_isStatic);
       JvmTypeReference _type_1 = source.getType();

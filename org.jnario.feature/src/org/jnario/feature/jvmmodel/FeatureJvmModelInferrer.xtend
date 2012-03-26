@@ -49,6 +49,7 @@ import org.junit.Ignore
 
 import static com.google.common.collect.Iterators.*
 import static org.jnario.feature.jvmmodel.FeatureJvmModelInferrer.*
+import org.eclipse.xtext.common.types.JvmVisibility
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -439,7 +440,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			field.setSimpleName(computeFieldName(source, container))
 			container.members += field
 			associator.associatePrimary(source, field)
-			field.visibility = source.visibility
+			field.visibility = JvmVisibility::PUBLIC
 			field.^static = source.isStatic
 			field.type = cloneWithProxies(source.type)
 			translateAnnotationsTo(source.annotations, field)
