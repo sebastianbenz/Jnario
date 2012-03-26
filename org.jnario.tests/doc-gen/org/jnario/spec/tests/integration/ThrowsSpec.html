@@ -28,44 +28,43 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<p></p>
-<ul><li><strong>passes if exception is thrown</strong>
-<p>
-<pre class="prettyprint lang-jnario">
-	'''
-		package bootstrap
-		
-		import java.util.Stack
-		import java.util.EmptyStackException
-		
-		describe "throws" {
-		  fact new Stack&lt;String&gt;().pop throws EmptyStackException 
-		}
-	'''.executesSuccessfully</pre>
+<ul><li><p>
+<strong>passes if exception is thrown</strong>
+<pre class="prettyprint lang-spec">
+'''
+	package bootstrap
+	
+	import java.util.Stack
+	import java.util.EmptyStackException
+	
+	describe "throws" {
+	  fact new Stack&lt;String&gt;().pop throws EmptyStackException 
+	}
+'''.executesSuccessfully</pre>
 </p>
-</li><li><strong>passes if exception of expected sub type is thrown</strong>
-<p>
-<pre class="prettyprint lang-jnario">
-	'''
-		package bootstrap
-		
-		import java.util.Stack
-		
-		describe "throws" {
-		  fact new Stack&lt;String&gt;().pop throws Throwable 
-		}
-	'''.executesSuccessfully</pre>
+</li><li><p>
+<strong>passes if exception of expected sub type is thrown</strong>
+<pre class="prettyprint lang-spec">
+'''
+	package bootstrap
+	
+	import java.util.Stack
+	
+	describe "throws" {
+	  fact new Stack&lt;String&gt;().pop throws Throwable 
+	}
+'''.executesSuccessfully</pre>
 </p>
-</li><li><strong>fails if no exception is thrown</strong>
-<p>
-<pre class="prettyprint lang-jnario">
-	'''
-		package bootstrap
-		
-		describe "throws" {
-		  fact 1 + 1 throws RuntimeException 
-		}
-	'''.executionFails</pre>
+</li><li><p>
+<strong>fails if no exception is thrown</strong>
+<pre class="prettyprint lang-spec">
+'''
+	package bootstrap
+	
+	describe "throws" {
+	  fact 1 + 1 throws RuntimeException 
+	}
+'''.executionFails</pre>
 </p>
 </li></ul>
 				</div>

@@ -28,7 +28,6 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<p></p>
 <ul><li></li><li></li><li><h4>Examples</h4>
 <p></p>
 <table class="table table-striped table-bordered table-condensed">
@@ -62,26 +61,26 @@
 	</tr>
 	</tbody>
 </table>
-</li><li><strong>calculates cells based on table</strong>
-<p>
-<pre class="prettyprint lang-jnario">
-	parseSpec('''
-		package bootstrap
-		describe "ExampleTable"{
-			def{
-				| a | b |
-				| 1 | 2 |
-				| 3 | 4 |
-			}
+</li><li><p>
+<strong>calculates cells based on table</strong>
+<pre class="prettyprint lang-spec">
+parseSpec('''
+	package bootstrap
+	describe "ExampleTable"{
+		def{
+			| a | b |
+			| 1 | 2 |
+			| 3 | 4 |
 		}
-	''')
-	
-	examples.forEach[
-		val columns = query.first(typeof(ExampleTable)).columns
-		val column = columns.get(columnIndex)
-		val cell = column.cells.get(cellIndex)
-		cell.serialize.trim =&gt; value
-	]</pre>
+	}
+''')
+
+examples.forEach[
+	val columns = query.first(typeof(ExampleTable)).columns
+	val column = columns.get(columnIndex)
+	val cell = column.cells.get(cellIndex)
+	cell.serialize.trim =&gt; value
+]</pre>
 </p>
 </li></ul>
 				</div>

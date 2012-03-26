@@ -28,125 +28,124 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<p></p>
-<ul><li></li><li></li><li><strong>should generate java script helper files</strong>
-<p>
-<pre class="prettyprint lang-jnario">
-	generateEmptyExampleDoc()
-	
-	assert generatedFile("js/prettify.js") != null
-	assert generatedFile("js/lang-jnario.js") != null</pre>
+<ul><li></li><li></li><li><p>
+<strong>should generate java script helper files</strong>
+<pre class="prettyprint lang-spec">
+generateEmptyExampleDoc()
+
+assert generatedFile("js/prettify.js") != null
+assert generatedFile("js/lang-jnario.js") != null</pre>
 </p>
-</li><li><strong>should generate css helper files</strong>
-<p>
-<pre class="prettyprint lang-jnario">
-	generateEmptyExampleDoc()
-	
-	assert generatedFile("css/bootstrap-responsive.min.css") != null
-	assert generatedFile("css/custom.css") != null
-	assert generatedFile("css/prettify.css") != null</pre>
+</li><li><p>
+<strong>should generate css helper files</strong>
+<pre class="prettyprint lang-spec">
+generateEmptyExampleDoc()
+
+assert generatedFile("css/bootstrap-responsive.min.css") != null
+assert generatedFile("css/custom.css") != null
+assert generatedFile("css/prettify.css") != null</pre>
 </p>
-</li><li><strong>should generate scenario title and heading</strong>
-<p>
-<pre class="prettyprint lang-jnario">
-	generateEmptyExampleDoc()
-	
-	val scenarioDoc = generatedFile("ExampleSpec.html")
-	assert scenarioDoc != null && 
-			scenarioDoc.contains("&lt;title&gt;Example&lt;/title&gt;")
-			scenarioDoc.contains("&lt;h1&gt;Example&lt;/h1&gt;")</pre>
+</li><li><p>
+<strong>should generate scenario title and heading</strong>
+<pre class="prettyprint lang-spec">
+generateEmptyExampleDoc()
+
+val scenarioDoc = generatedFile("ExampleSpec.html")
+assert scenarioDoc != null && 
+		scenarioDoc.contains("&lt;title&gt;Example&lt;/title&gt;")
+		scenarioDoc.contains("&lt;h1&gt;Example&lt;/h1&gt;")</pre>
 </p>
-</li><li><strong>should generate scenario documentation</strong>
-<p>
-<pre class="prettyprint lang-jnario">
-	generateDoc('''
+</li><li><p>
+<strong>should generate scenario documentation</strong>
+<pre class="prettyprint lang-spec">
+generateDoc('''
+	/*
+	 * Irrelevant documentation.
+	 */
+	 
+	/*
+	 * This is an example.
+	 */
+	describe 'Example'{
+		
+	} 
+''')
+
+val scenarioDoc = generatedFile("ExampleSpec.html")
+assert scenarioDoc.contains("&lt;p&gt;This is an example.&lt;/p&gt;")
+assert !scenarioDoc.contains("Irrelevant documentation.")</pre>
+</p>
+</li><li><p>
+<strong>should generate example documentation</strong>
+<pre class="prettyprint lang-spec">
+generateDoc('''
+	describe 'Example'{
 		/*
-		 * Irrelevant documentation.
+		 * Example documentation
 		 */
-		 
+		fact "should do stuff"{
+			var x = 0
+			x = x + 1
+		}
+	} 
+''')
+val scenarioDoc = generatedFile("ExampleSpec.html")
+assert scenarioDoc.contains('''
+&lt;strong&gt;should do stuff&lt;/strong&gt;
+&lt;p&gt;
+&lt;p&gt;Example documentation&lt;/p&gt;
+&lt;pre class="prettyprint lang-jnario"&gt;
+var x = 0
+x = x + 1&lt;/pre&gt;
+&lt;/p&gt;'''.toString())</pre>
+</p>
+</li><li><p>
+<strong>should support markdown for documentation</strong>
+<pre class="prettyprint lang-spec">
+generateDoc('''
+	/*
+	 * #Example Heading
+	 */
+	describe 'Example'{
+		
+	} 
+''')
+val scenarioDoc = generatedFile("ExampleSpec.html")
+assert scenarioDoc.contains("&lt;h1&gt;Example Heading&lt;/h1&gt;")</pre>
+</p>
+</li><li><p>
+<strong>should generate table for example tables</strong>
+<pre class="prettyprint lang-spec">
+generateDoc('''
+	describe 'Example'{
+		def myExample{
+			| a | b |
+			| 1 | 2 |
+		}
+	} 
+''')
+val scenarioDoc = generatedFile("ExampleSpec.html")
+assert scenarioDoc.contains("&lt;h4&gt;MyExample&lt;/h4&gt;")
+assert scenarioDoc.contains("&lt;th&gt;a&lt;/th&gt;")
+assert scenarioDoc.contains("&lt;th&gt;b&lt;/th&gt;")
+assert scenarioDoc.contains("&lt;td&gt;1&lt;/td&gt;")
+assert scenarioDoc.contains("&lt;td&gt;2&lt;/td&gt;")</pre>
+</p>
+</li><li><p>
+<strong>should filter code based on regex in filter annotation</strong>
+<pre class="prettyprint lang-spec">
+generateDoc('''
+	describe 'Example'{
 		/*
-		 * This is an example.
+		 * @filter(bbb)
 		 */
-		describe 'Example'{
-			
-		} 
-	''')
-	
-	val scenarioDoc = generatedFile("ExampleSpec.html")
-	assert scenarioDoc.contains("&lt;p&gt;This is an example.&lt;/p&gt;")
-	assert !scenarioDoc.contains("Irrelevant documentation.")</pre>
-</p>
-</li><li><strong>should generate example documentation</strong>
-<p>
-<pre class="prettyprint lang-jnario">
-	generateDoc('''
-		describe 'Example'{
-			/*
-			 * Example documentation
-			 */
-			fact "should do stuff"{
-				var x = 0
-				x = x + 1
-			}
-		} 
-	''')
-	val scenarioDoc = generatedFile("ExampleSpec.html")
-	assert scenarioDoc.contains('''
-	&lt;strong&gt;should do stuff&lt;/strong&gt;
-	&lt;p&gt;
-	&lt;p&gt;Example documentation&lt;/p&gt;
-	&lt;pre class="prettyprint lang-jnario"&gt;
-	var x = 0
-	x = x + 1&lt;/pre&gt;
-	&lt;/p&gt;'''.toString())</pre>
-</p>
-</li><li><strong>should support markdown for documentation</strong>
-<p>
-<pre class="prettyprint lang-jnario">
-	generateDoc('''
-		/*
-		 * #Example Heading
-		 */
-		describe 'Example'{
-			
-		} 
-	''')
-	val scenarioDoc = generatedFile("ExampleSpec.html")
-	assert scenarioDoc.contains("&lt;h1&gt;Example Heading&lt;/h1&gt;")</pre>
-</p>
-</li><li><strong>should generate table for example tables</strong>
-<p>
-<pre class="prettyprint lang-jnario">
-	generateDoc('''
-		describe 'Example'{
-			def myExample{
-				| a | b |
-				| 1 | 2 |
-			}
-		} 
-	''')
-	val scenarioDoc = generatedFile("ExampleSpec.html")
-	assert scenarioDoc.contains("&lt;h4&gt;MyExample&lt;/h4&gt;")
-	assert scenarioDoc.contains("&lt;th&gt;a&lt;/th&gt;")
-	assert scenarioDoc.contains("&lt;th&gt;b&lt;/th&gt;")
-	assert scenarioDoc.contains("&lt;td&gt;1&lt;/td&gt;")
-	assert scenarioDoc.contains("&lt;td&gt;2&lt;/td&gt;")</pre>
-</p>
-</li><li><strong>should filter code based on regex in filter annotation</strong>
-<p>
-<pre class="prettyprint lang-jnario">
-	generateDoc('''
-		describe 'Example'{
-			/*
-			 * @filter(bbb)
-			 */
-			fact "should do stuff"{
-				"aaabbbaaa"
-			}
-		} 
-	''')
-	val scenarioDoc = generatedFile("ExampleSpec.html")
-	assert scenarioDoc.contains('"aaaaaa"')</pre>
+		fact "should do stuff"{
+			"aaabbbaaa"
+		}
+	} 
+''')
+val scenarioDoc = generatedFile("ExampleSpec.html")
+assert scenarioDoc.contains('"aaaaaa"')</pre>
 </p>
 </li><li></li><li></li><li></li></ul>
 				</div>

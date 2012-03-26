@@ -28,32 +28,31 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<p><p>@author Sebastian Benz - Initial contribution and API</p>
-</p>
-<ul><li><strong>should be executed after all tests</strong>
-<p>
-<pre class="prettyprint lang-jnario">
-	val spec = '
-		package bootstrap 
+<p>@author Sebastian Benz - Initial contribution and API</p>
+<ul><li><p>
+<strong>should be executed after all tests</strong>
+<pre class="prettyprint lang-spec">
+val spec = '
+	package bootstrap 
+	
+	describe "AfterAll"{
 		
-		describe "AfterAll"{
-			
-			static int afterExecutionCount = 0
-			
-			fact "should be executed after all tests (1)"{
-				afterExecutionCount should be 0
-			}	
-			
-			fact "should be executed after all tests (2)"{
-				afterExecutionCount should be 0
-			}	
-			
-			after all{
-				afterExecutionCount = afterExecutionCount + 1
-			}
+		static int afterExecutionCount = 0
+		
+		fact "should be executed after all tests (1)"{
+			afterExecutionCount should be 0
+		}	
+		
+		fact "should be executed after all tests (2)"{
+			afterExecutionCount should be 0
+		}	
+		
+		after all{
+			afterExecutionCount = afterExecutionCount + 1
 		}
-	'
-	spec.executesSuccessfully</pre>
+	}
+'
+spec.executesSuccessfully</pre>
 </p>
 </li></ul>
 				</div>

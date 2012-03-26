@@ -71,9 +71,22 @@
   .visible-desktop {
     display: none;
   }
-  body {
+  body,
+  pre,
+  code,
+  p {
     margin: 0 0 6px 6px;
     font-size: 13px;
+    line-height: 14px;
+  }
+  code {
+    padding: 0px;
+    margin: 0px;
+  }
+  .label {
+    padding: 0px 2px 1px;
+    font-size: 10.998px;
+    font-weight: bold;
     line-height: 14px;
   }
   h1 {
@@ -121,10 +134,15 @@
 @media (max-width: 480px) {
   body,
   pre,
+  code,
   p {
     margin: 0 0 6px 6px;
     font-size: 13px;
     line-height: 16px;
+  }
+  code {
+    padding: 0px;
+    margin: 0px;
   }
   h1 {
     line-height: 18px;

@@ -28,34 +28,33 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<p><p>@author Sebastian Benz - Initial contribution and API</p>
-</p>
-<ul><li><strong>should be executed before each test</strong>
-<p>
-<pre class="prettyprint lang-jnario">
-	val spec = '
-		package bootstrap
-		 
-		import org.jnario.runner.Order
+<p>@author Sebastian Benz - Initial contribution and API</p>
+<ul><li><p>
+<strong>should be executed before each test</strong>
+<pre class="prettyprint lang-spec">
+val spec = '
+	package bootstrap
+	 
+	import org.jnario.runner.Order
+	
+	describe "Before"{
 		
-		describe "Before"{
-			
-			static int beforeExecutionCount = 0
-			
-			before{
-				beforeExecutionCount = beforeExecutionCount + 1
-			}
-	
-			fact "should be executed before each test (1)"{
-				beforeExecutionCount should be 1
-			}	
-	
-			fact "should be executed before each test (2)"{
-				beforeExecutionCount should be 2
-			}	
+		static int beforeExecutionCount = 0
+		
+		before{
+			beforeExecutionCount = beforeExecutionCount + 1
 		}
-	'
-	spec.executesSuccessfully</pre>
+
+		fact "should be executed before each test (1)"{
+			beforeExecutionCount should be 1
+		}	
+
+		fact "should be executed before each test (2)"{
+			beforeExecutionCount should be 2
+		}	
+	}
+'
+spec.executesSuccessfully</pre>
 </p>
 </li></ul>
 				</div>

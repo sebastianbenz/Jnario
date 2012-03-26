@@ -28,71 +28,70 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<p><p>@author Sebastian Benz - Initial contribution and API</p>
-</p>
-<ul><li><strong>should support class annotations for 'describes'</strong>
-<p>
-<pre class="prettyprint lang-jnario">
-	val spec = '
-		package bootstrap
-		import static org.hamcrest.CoreMatchers.*			
-		import com.google.inject.Singleton
+<p>@author Sebastian Benz - Initial contribution and API</p>
+<ul><li><p>
+<strong>should support class annotations for 'describe'</strong>
+<pre class="prettyprint lang-spec">
+val spec = '
+	package bootstrap
+	import static org.hamcrest.CoreMatchers.*			
+	import com.google.inject.Singleton
+
+	@Singleton			
+	describe "Annotations" {
 	
-		@Singleton			
-		describe "Annotations" {
-		
-		fact "should support class annotations for describe"{
-				val annotation = typeof(AnnotationsSpec).getAnnotation(typeof(Singleton))
-				annotation should not be null
-			} 
-					
-		}
-	'
-	spec.executesSuccessfully</pre>
-</p>
-</li><li><strong>should support method annotations for 'examples'</strong>
-<p>
-<pre class="prettyprint lang-jnario">
-	val spec = '
-		package bootstrap
-		
-		import com.google.inject.Inject
-		import static org.hamcrest.CoreMatchers.*
-	
-		describe "Annotations" {
-		
-			@Inject			
-			fact "example"{
-				val annotation = typeof(AnnotationsSpec).getMethod("example").getAnnotation(typeof(Inject))
-				annotation should not be null
-			} 
-					
-		}
-	'
-	spec.executesSuccessfully</pre>
-</p>
-</li><li><strong>should support annotations for 'fields'</strong>
-<p>
-<pre class="prettyprint lang-jnario">
-	val spec = '
-		package bootstrap
-		
-		import com.google.inject.Inject
-		import static org.hamcrest.CoreMatchers.*
-		
-		describe "Annotations" {
-		
-			@Inject		
-			String myField
+	fact "should support class annotations for describe"{
+			val annotation = typeof(AnnotationsSpec).getAnnotation(typeof(Singleton))
+			annotation should not be null
+		} 
 				
-			fact "example"{
-				val annotation = typeof(AnnotationsSpec).getDeclaredField("myField").getAnnotation(typeof(Inject))
-				annotation should not be null
-			} 
-					
-		}
-	'
-	spec.executesSuccessfully</pre>
+	}
+'
+spec.executesSuccessfully</pre>
+</p>
+</li><li><p>
+<strong>should support method annotations for 'examples'</strong>
+<pre class="prettyprint lang-spec">
+val spec = '
+	package bootstrap
+	
+	import com.google.inject.Inject
+	import static org.hamcrest.CoreMatchers.*
+
+	describe "Annotations" {
+	
+		@Inject			
+		fact "example"{
+			val annotation = typeof(AnnotationsSpec).getMethod("example").getAnnotation(typeof(Inject))
+			annotation should not be null
+		} 
+				
+	}
+'
+spec.executesSuccessfully</pre>
+</p>
+</li><li><p>
+<strong>should support annotations for 'fields'</strong>
+<pre class="prettyprint lang-spec">
+val spec = '
+	package bootstrap
+	
+	import com.google.inject.Inject
+	import static org.hamcrest.CoreMatchers.*
+	
+	describe "Annotations" {
+	
+		@Inject		
+		String myField
+			
+		fact "example"{
+			val annotation = typeof(AnnotationsSpec).getDeclaredField("myField").getAnnotation(typeof(Inject))
+			annotation should not be null
+		} 
+				
+	}
+'
+spec.executesSuccessfully</pre>
 </p>
 </li></ul>
 				</div>

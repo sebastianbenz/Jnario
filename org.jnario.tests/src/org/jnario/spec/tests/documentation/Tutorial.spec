@@ -25,7 +25,7 @@ import java.util.Stack
  * You can install the most recent version from this update site: `http://www.jnario.org/updates/snapshot/`. Jnario requires a small runtime library that contains
  * the JUnit integration. You can download the jar [here](http://jnario.org/updates/snapshot/org.jnario.lib-0.1.0-SNAPSHOT.jar).
  *    
- */
+ */ 
 describe "Jnario Specs - Tutorial"{
 
 	/*
@@ -35,19 +35,19 @@ describe "Jnario Specs - Tutorial"{
 	 * <p align="center"><img src="/img/tutorial/spec_wizard.png" alt="New Spec Wizard"/></p> 
 	 * In Jnario we *describe facts* about our program. For example, here are two simple facts of a stack:
 	 * 
-	 * <pre class="prettyprint lang-jnario">
+	 * <pre class="prettyprint lang-spec">
 	 * describe "A Stack"{
 	 *   fact "initial size is 0" 
 	 *   fact "increases its size when pushing an element"
 	 * }
 	 * </pre>
-	 * 
+	 *  
 	 * To execute this specification, right click
 	 * in the editor and select **Run As** -> **JUnit Test**. 
 	 * The specification will
 	 * pass, but the facts in our specification will be marked as _PENDING_ as they are not implemented yet.
 	 * 
-	 * <pre>A Stack
+	 * <pre class="prettyprint lang-none">A Stack
 	 *   - initial size is 0 [PENDING]
 	 *   - increases its size when pushing an element [PENDING]
 	 * </pre>
@@ -56,7 +56,7 @@ describe "Jnario Specs - Tutorial"{
 	 * find it in the `xtend-gen`folder.  
 	 */
 	describe "How to write a Specification"{
- 
+  
 		/*
 		 * The next step is to enrich our facts with the required logic to
 		 * check whether our stack behaves as specified. Checks are implemented by adding  
@@ -93,7 +93,7 @@ describe "Jnario Specs - Tutorial"{
 	     /*
 	      * If we look at our first fact:
 	      *  
-	      * <pre class="prettyprint lang-jnario">
+	      * <pre class="prettyprint lang-spec">
 	      * describe "A Stack"{
 	      *   fact "initial size is 0" {
 	      *    new Stack().size => 0
@@ -109,7 +109,7 @@ describe "Jnario Specs - Tutorial"{
 	      * and description by leaving the description out. The code becomes 
 	      * the actual description:
 	      * 
-	      * <pre>A Stack
+	      * <pre class="prettyprint lang-none">A Stack
 	      *   - new Stack().size should be 0
 	      *   - increases its size when pushing an element</pre>
 	      *  
@@ -169,15 +169,16 @@ describe "Jnario Specs - Tutorial"{
 	      * In our example we specify the behavior
 	      * of a single class, which is actually a common use case. Jnario you can 
 	      * directly reference the specified class in the describe clause:
-	      * 	
-	      * 	package demo
 	      * 
-	      * 	import java.util.Stack
+	      * <pre class="prettyprint lang-spec">	
+	      * package demo
 	      * 
-	      * 	describe Stack{
-	      * 	  ...
-	      * 	}
+	      * import java.util.Stack
 	      * 
+	      * describe Stack{
+	      *   ...
+	      * }
+	      * </pre>
 	      * This way you achieve a strong link between specification
 	      * and its target that works even if the target class is renamed.  
 	      * Jnario will also implicitly create a field called `subject` of
@@ -214,13 +215,15 @@ describe "Jnario Specs - Tutorial"{
 	     * the stack empty or not. You can define
 	     * contexts within Jnario specs to further structure your facts:
 	     * 
-	     * 	Stack
-		 *	  when empty
-		 *	    - subject.size => 0
-		 *	    - subject.pop throws EmptyStackException
-		 *	  with elements
-		 *	    - pop decreases size
-		 *	    - pop removes last element"
+	     * <pre class="prettyprint lang-none">
+	     * Stack
+		 *   when empty
+		 *     - subject.size => 0
+		 *     - subject.pop throws EmptyStackException
+		 *   with elements
+		 *     - pop decreases size
+		 *     - pop removes last element"
+	     * </pre>
 	     * 
 	     * In this example we also use the `throws` statement in 
 	     * `subject.pop throws EmptyStackException`. It fails
@@ -254,7 +257,7 @@ describe "Jnario Specs - Tutorial"{
 			}
 	      '''.executesSuccessfully
 	     }
-		 
+
 		/*
 		 * You can structure your example data in tables. The
 		 * type of each column will be automatically inferred from
@@ -262,17 +265,17 @@ describe "Jnario Specs - Tutorial"{
 		 * non-void expression as a value. You can perform assertions 
 		 * on tables using the `forEach` extension method:
 		 * 
-		 * <pre class="prettyprint lang-jnario">
+		 * <pre class="prettyprint lang-spec">
 		 * describe "Addition" {
 		 *   def additions{
 		 *     | a | b | sum |
 		 *     | 0 | 0 |  0  |
 		 *     | 1 | 2 |  3  |
-		 *     | 4 | 5 |  9  |
+		 *     | 4 | 5 |  9  | 
 		 *  }
 		 *  fact additions.forEach[a + b should be sum]
 		 * }
-		 * </pre>
+		 * </pre> 
 		 * 
 		 * The `forEach` extension method expects a closure as argument. 
 		 * Within the closure you can directly access all values in a row 
@@ -280,20 +283,20 @@ describe "Jnario Specs - Tutorial"{
 		 * they will give you detailed error messages when one of the 
 		 * assertions fails ([more...](/org/jnario/spec/tests/documentation/ExampleTables)):
 		 * 
+		 * <pre class="prettyprint lang-none">
+		 * java.lang.AssertionError: additions failed
 		 * 
-		 *	java.lang.AssertionError: additions failed
-		 *	
-		 *	        | a     | b     | sum     |
-		 *	        | 0     | 0     | 0       | OK
-		 *	        | 1     | 2     | 4       | FAILED     (1)
-		 *	        | 4     | 5     | 9       | OK
-		 *	
-		 *	(1) Expected a + b should be sum but:
-		 *	         a + b is 3
-		 *	         a is 1
-		 *	         b is 2
-		 *	         sum is 4
+		 *         | a     | b     | sum     |
+		 *         | 0     | 0     | 0       | OK
+		 *         | 1     | 2     | 4       | FAILED     (1)
+		 *         | 4     | 5     | 9       | OK
 		 * 
+		 * (1) Expected a + b should be sum but:
+		 *          a + b is 3
+		 *          a is 1
+		 *          b is 2
+		 *          sum is 4
+		 * </pre>
 		 * 
 		 * @filter(.*) 
 		 */				
@@ -317,6 +320,7 @@ describe "Jnario Specs - Tutorial"{
 		 * Setting up a fixture or tearing it down works similar to JUnit,
 		 * but the syntax is less verbose. The following specification will print:
 		 * 
+		 * <pre class="prettyprint lang-none">
 		 * 	before all
 		 * 	before
 		 * 	do stuff
@@ -325,7 +329,8 @@ describe "Jnario Specs - Tutorial"{
 		 * 	do more stuff
 		 * 	after
 		 * 	after all
-		 * 
+		 * </pre>
+		 *
 		 * @filter('''|.executesSuccessfully) 
 		 */
 		fact "Setup & Teardown"{ 
@@ -399,12 +404,12 @@ describe "Jnario Specs - Tutorial"{
 		fact "Spec extensions"{
 			'''
 			describe "Spec Extensions"{
-				extension DatabaseExtension db = new DatabaseExtension
-				fact query("SELECT * FROM content")	      
+			  extension DatabaseExtension db = new DatabaseExtension
+			  fact query("SELECT * FROM content")	      
 			}	 
 			'''.executesSuccessfully
 		}
-
+ 
 		/*
 		 * Helper methods can be directly declared in Jnario files. 
 		 * They have the same syntax as in Xtend. Helper methods and fields

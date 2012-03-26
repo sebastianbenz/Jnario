@@ -78,9 +78,8 @@ describe DocGenerator {
 		val scenarioDoc = generatedFile("ExampleSpec.html")
 		assert scenarioDoc.contains('''
 		<strong>should do stuff</strong>
-		<p>
 		<p>Example documentation</p>
-		<pre class="prettyprint lang-jnario">
+		<pre class="prettyprint lang-spec">
 		var x = 0
 		x = x + 1</pre>
 		</p>'''.toString())

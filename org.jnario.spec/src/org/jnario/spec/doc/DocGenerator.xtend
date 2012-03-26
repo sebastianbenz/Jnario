@@ -8,29 +8,29 @@
 package org.jnario.spec.doc
 
 import com.google.inject.Inject
+import java.util.List
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.xtend.core.xtend.XtendMember
+import org.eclipse.xtend2.lib.StringConcatenation
+import org.eclipse.xtext.EcoreUtil2
+import org.eclipse.xtext.generator.IFileSystemAccess
+import org.eclipse.xtext.generator.IGenerator
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils
+import org.eclipse.xtext.xbase.XBlockExpression
+import org.eclipse.xtext.xbase.XExpression
 import org.jnario.ExampleTable
+import org.jnario.doc.DocumentationSupport
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder
 import org.jnario.spec.naming.ExampleNameProvider
 import org.jnario.spec.spec.Example
 import org.jnario.spec.spec.ExampleGroup
 import org.jnario.spec.spec.SpecFile
-import java.util.List
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.xtext.EcoreUtil2
-import org.eclipse.xtext.generator.IFileSystemAccess
-import org.eclipse.xtext.generator.IGenerator
-import org.eclipse.xtext.xbase.XBlockExpression
-import org.eclipse.xtext.xbase.XExpression
-import org.eclipse.xtend.core.xtend.XtendMember
 import org.pegdown.PegDownProcessor
 
 import static org.jnario.spec.util.Strings.*
 
 import static extension org.eclipse.xtext.util.Strings.*
-import org.eclipse.xtext.nodemodel.util.NodeModelUtils
-import org.jnario.spec.spec.ExampleGroup
-import org.eclipse.xtend2.lib.StringConcatenation
 
 class DocGenerator implements IGenerator {
 
@@ -69,7 +69,7 @@ class DocGenerator implements IGenerator {
 	}
 	
 	def load(String file){
-		val inputStream = getClass().getResourceAsStream(file)
+		val inputStream = typeof(DocumentationSupport).getResourceAsStream(file)
 		return convertStreamToString(inputStream)
 	}	
 	
@@ -196,7 +196,7 @@ class DocGenerator implements IGenerator {
 		val code = example.implementation.toXtendCode(filters)
 		if(code.length == 0) return ''''''
 		'''
-		<pre class="prettyprint lang-jnario">
+		<pre class="prettyprint lang-spec">
 		«code»</pre>'''
 	}
 	 
@@ -224,15 +224,9 @@ class DocGenerator implements IGenerator {
 	'''
 	
 	def dispatch generate(ExampleGroup exampleGroup, int level)'''
-«««		«IF level > 1»
-«««		«ENDIF»
 		<«level.heading»>«exampleGroup.asTitle»</«level.heading»>
-«««		<div class="level">
 		<p>«exampleGroup.generateDoc»</p>
 «generateMembers(exampleGroup, level + 1)»
-«««		«IF level > 1»
-«««		</div>
-«««		«ENDIF»
 	'''
 
 	def dispatch toXtendCode(XExpression expr, List<Filter> filters){

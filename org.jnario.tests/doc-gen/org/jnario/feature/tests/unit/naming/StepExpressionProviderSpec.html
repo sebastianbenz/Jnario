@@ -28,35 +28,34 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<p><p>@author Sebastian Benz - Initial contribution and API</p>
+<p>@author Sebastian Benz - Initial contribution and API</p>
+<ul><li></li><li><p>
+<strong>should return the name for a step with definition</strong>
+<pre class="prettyprint lang-spec">
+parseScenario('''
+	Feature: Example
+		Scenario: MyScenario
+			Given a step with an implementation
+				"the implementation"
+''')
+//assert step.stepExpression == subject.expressionOf(step)</pre>
 </p>
-<ul><li></li><li><strong>should return the name for a step with definition</strong>
-<p>
-<pre class="prettyprint lang-jnario">
-	parseScenario('''
-		Feature: Example
-			Scenario: MyScenario
-				Given a step with an implementation
-					"the implementation"
-	''')
-	//assert step.stepExpression == subject.expressionOf(step)</pre>
-</p>
-</li><li><strong>should copy the referenced step's implementation and set the referencing step</strong>
-<p>
-<pre class="prettyprint lang-jnario">
-	parseScenario('''
-		Feature: Example
-			Scenario: MyScenario 1
-				Given a step 
-					
-			Scenario: MyScenario 2
-				Given a step 
-					"the implementation"
-	''')
-	/*val expr = subject.expressionOf(step)
-	assert expr != null
-	assert step.stepExpression == expr
-	assert (step as StepReference).reference.stepExpression != expr */</pre>
+</li><li><p>
+<strong>should copy the referenced step's implementation and set the referencing step</strong>
+<pre class="prettyprint lang-spec">
+parseScenario('''
+	Feature: Example
+		Scenario: MyScenario 1
+			Given a step 
+				
+		Scenario: MyScenario 2
+			Given a step 
+				"the implementation"
+''')
+/*val expr = subject.expressionOf(step)
+assert expr != null
+assert step.stepExpression == expr
+assert (step as StepReference).reference.stepExpression != expr */</pre>
 </p>
 </li><li></li></ul>
 				</div>

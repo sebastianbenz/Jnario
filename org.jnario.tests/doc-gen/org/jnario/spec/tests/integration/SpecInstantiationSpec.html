@@ -28,7 +28,7 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<p><p>It is possible to customize the instantiation of tests and subjects.</p>
+<p>It is possible to customize the instantiation of tests and subjects.</p>
 <pre class="prettyprint">
 package org.jnario.lib;
 
@@ -41,24 +41,23 @@ public class GuiceBasedTestInstantiator extends AbstractTestInstantiator {
   }
 }
 </pre>
-</p>
-<ul><li><strong>how to use a custom test instantiator</strong>
-<p>
-<pre class="prettyprint lang-jnario">
-	package bootstrap
-	
-	import org.jnario.runner.InstantiateWith
-	import org.jnario.lib.GuiceBasedTestInstantiator
-	import com.google.inject.Inject
-	
-	@InstantiateWith(typeof(GuiceBasedTestInstantiator))
-	describe GuiceBasedTestInstantiator {
-	  
-	  @Inject String toInject
-	  
-	  fact toInject should not be null
-	      
-	}</pre>
+<ul><li><p>
+<strong>how to use a custom test instantiator</strong>
+<pre class="prettyprint lang-spec">
+package bootstrap
+
+import org.jnario.runner.InstantiateWith
+import org.jnario.lib.GuiceBasedTestInstantiator
+import com.google.inject.Inject
+
+@InstantiateWith(typeof(GuiceBasedTestInstantiator))
+describe GuiceBasedTestInstantiator {
+  
+  @Inject String toInject
+  
+  fact toInject should not be null
+      
+}</pre>
 </p>
 </li></ul>
 				</div>

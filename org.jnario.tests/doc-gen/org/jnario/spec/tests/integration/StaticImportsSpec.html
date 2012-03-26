@@ -28,25 +28,24 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<p></p>
-<ul><li><strong>should resolve static imports</strong>
-<p>
-<pre class="prettyprint lang-jnario">
-	val spec = '
-		package bootstrap
-		
-		import static org.junit.Assert.*
-		
-		describe "Example" {
-		
-			fact "should resolve static imports"{
-				assertTrue(true) 
-			} 
-					
-		}
-	'
-	val result = org::jnario::jnario::test::util::SpecExecutor::execute(spec)
-	org::junit::Assert::assertThat(result, org::jnario::jnario::test::util::ResultMatchers::successful)</pre>
+<ul><li><p>
+<strong>should resolve static imports</strong>
+<pre class="prettyprint lang-spec">
+val spec = '
+	package bootstrap
+	
+	import static org.junit.Assert.*
+	
+	describe "Example" {
+	
+		fact "should resolve static imports"{
+			assertTrue(true) 
+		} 
+				
+	}
+'
+val result = org::jnario::jnario::test::util::SpecExecutor::execute(spec)
+org::junit::Assert::assertThat(result, org::jnario::jnario::test::util::ResultMatchers::successful)</pre>
 </p>
 </li></ul>
 				</div>

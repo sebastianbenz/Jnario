@@ -28,39 +28,38 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<p><p>Extensions can be used to share common setup and teardown behavior across different specifications.</p>
-</p>
-<ul><li><strong>all setup and tear down methods in extensions will be executed</strong>
-<p>
-<pre class="prettyprint lang-jnario">
-	execute('''
-		package bootstrap
-	
-		import org.jnario.spec.tests.integration.ExtensionExample
-	
-		describe "Extension"{
-			extension ExtensionExample = new ExtensionExample()
-	
-			fact "test 1"{
-				ExtensionExample::executedMethods += "ExtensionSpec#test1"
-			}
-			
-			fact "test 2"{
-				ExtensionExample::executedMethods += "ExtensionSpec#test2"
-			}
+<p>Extensions can be used to share common setup and teardown behavior across different specifications.</p>
+<ul><li><p>
+<strong>all setup and tear down methods in extensions will be executed</strong>
+<pre class="prettyprint lang-spec">
+execute('''
+	package bootstrap
+
+	import org.jnario.spec.tests.integration.ExtensionExample
+
+	describe "Extension"{
+		extension ExtensionExample = new ExtensionExample()
+
+		fact "test 1"{
+			ExtensionExample::executedMethods += "ExtensionSpec#test1"
 		}
-	''')
-	
-	executedMethods =&gt; newArrayList(
-		"ExtensionExample#beforeClass", 
-		"ExtensionExample#before",  
-		"ExtensionSpec#test1",  
-		"ExtensionExample#after",  
-		"ExtensionExample#before",
-		"ExtensionSpec#test2",  
-		"ExtensionExample#after",
-		"ExtensionExample#afterClass"
-	)</pre>
+		
+		fact "test 2"{
+			ExtensionExample::executedMethods += "ExtensionSpec#test2"
+		}
+	}
+''')
+
+executedMethods =&gt; newArrayList(
+	"ExtensionExample#beforeClass", 
+	"ExtensionExample#before",  
+	"ExtensionSpec#test1",  
+	"ExtensionExample#after",  
+	"ExtensionExample#before",
+	"ExtensionSpec#test2",  
+	"ExtensionExample#after",
+	"ExtensionExample#afterClass"
+)</pre>
 </p>
 </li></ul>
 				</div>

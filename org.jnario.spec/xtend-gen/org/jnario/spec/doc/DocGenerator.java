@@ -29,6 +29,7 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
+import org.jnario.doc.DocumentationSupport;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.spec.doc.DocOutputConfigurationProvider;
 import org.jnario.spec.doc.Filter;
@@ -118,8 +119,7 @@ public class DocGenerator implements IGenerator {
   }
   
   public String load(final String file) {
-    Class<? extends Object> _class = this.getClass();
-    final InputStream inputStream = _class.getResourceAsStream(file);
+    final InputStream inputStream = DocumentationSupport.class.getResourceAsStream(file);
     return Strings.convertStreamToString(inputStream);
   }
   
@@ -428,7 +428,7 @@ public class DocGenerator implements IGenerator {
         return _builder;
       }
       StringConcatenation _builder_1 = new StringConcatenation();
-      _builder_1.append("<pre class=\"prettyprint lang-jnario\">");
+      _builder_1.append("<pre class=\"prettyprint lang-spec\">");
       _builder_1.newLine();
       _builder_1.append(code, "");
       _builder_1.append("</pre>");

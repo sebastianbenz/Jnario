@@ -1,48 +1,42 @@
-/* jnario scheme  */
-pre { 
-  display: block; 
-  background: #2d2d2d; /* Old browsers */
-background: -moz-radial-gradient(center, ellipse cover,  #2d2d2d 0%, #212121 50%, #212121 100%); /* FF3.6+ */
-background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#2d2d2d), color-stop(50%,#212121), color-stop(100%,#212121)); /* Chrome,Safari4+ */
-background: -webkit-radial-gradient(center, ellipse cover,  #2d2d2d 0%,#212121 50%,#212121 100%); /* Chrome10+,Safari5.1+ */
-background: -o-radial-gradient(center, ellipse cover,  #2d2d2d 0%,#212121 50%,#212121 100%); /* Opera 12+ */
-background: -ms-radial-gradient(center, ellipse cover,  #2d2d2d 0%,#212121 50%,#212121 100%); /* IE10+ */
-background: radial-gradient(center, ellipse cover,  #2d2d2d 0%,#212121 50%,#212121 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2d2d2d', endColorstr='#212121',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-  
-
-  }
-pre .nocode { background-color: none; color: #000 }
-pre .str { color: #4271ae } /* string  - blue */
-pre .kwd { color: #718c00; font-weight: bold }
-pre .com { color: #718c00 } /* comment - green */
-pre .typ { color: #f5871f } /* type    - orange */
-pre .lit { color: #cd5c5c } /* literal - darkred */
-pre .pun { color: #fff }    /* punctuation */
-pre .pln { color: #fff }    /* plaintext */
-pre .tag { color: #f0e68c; font-weight: bold } /* html/xml tag    - lightyellow */
-pre .atn { color: #bdb76b; font-weight: bold } /* attribute name  - khaki */
-pre .atv { color: #ffa0a0 } /* attribute value - pink */
-pre .dec { color: #98fb98 } /* decimal         - lightgreen */
-pre .fun{color:red}
-
-/* Specify class=linenums on a pre to get line numbering */
-ol.linenums { margin-top: 0; margin-bottom: 0; color: #AEAEAE } /* IE indents via margin-left */
-li.L0,li.L1,li.L2,li.L3,li.L5,li.L6,li.L7,li.L8 { list-style-type: none }
-/* Alternate shading for lines */
-li.L1,li.L3,li.L5,li.L7,li.L9 { }
-
-@media print {
-  pre { background-color: none }
-  pre .str, code .str { color: #060 }
-  pre .kwd, code .kwd { color: #006; font-weight: bold }
-  pre .com, code .com { color: #600; font-style: italic }
-  pre .typ, code .typ { color: #404; font-weight: bold }
-  pre .lit, code .lit { color: #044 }
-  pre .pun, code .pun { color: #440 }
-  pre .pln, code .pln { color: #000 }
-  pre .tag, code .tag { color: #006; font-weight: bold }
-  pre .atn, code .atn { color: #404 }
-  pre .atv, code .atv { color: #060 }
+.pln{color:#839496}
+@media screen{
+    .str{color:#2aa198}
+    .kwd{color:#859900}
+    .com{color:#586175}
+    .typ{color:#b58900}
+    .lit{color:#2aa198}
+    .pun,.opn,.clo{color:#839496}
+    .tag{color:#268bd2}
+    .atn{color:#586175}
+    .atv{color:#2aa198}
+    .dec,.var{color:#268bd2}
+    .fun{color:red}
 }
-
+@media print,projection{
+    .str{color:#060}
+    .kwd{color:#006;font-weight:bold}
+    .com{color:#600;font-style:italic}
+    .typ{color:#404;font-weight:bold}
+    .lit{color:#044}
+    .pun{color:#440}
+    .tag{color:#006;font-weight:bold}
+    .atn{color:#404}
+    .atv{color:#060}
+}
+pre.prettyprint{padding:5px;border:1px solid #888;
+	 display: block; 
+	background: #2d2d2d; /* Old browsers */
+	background: -moz-radial-gradient(center, ellipse cover,  #2d2d2d 0%, #212121 50%, #212121 100%); /* FF3.6+ */
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#2d2d2d), color-stop(50%,#212121), color-stop(100%,#212121)); /* Chrome,Safari4+ */
+	background: -webkit-radial-gradient(center, ellipse cover,  #2d2d2d 0%,#212121 50%,#212121 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-radial-gradient(center, ellipse cover,  #2d2d2d 0%,#212121 50%,#212121 100%); /* Opera 12+ */
+	background: -ms-radial-gradient(center, ellipse cover,  #2d2d2d 0%,#212121 50%,#212121 100%); /* IE10+ */
+	background: radial-gradient(center, ellipse cover,  #2d2d2d 0%,#212121 50%,#212121 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2d2d2d', endColorstr='#212121',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+ol.linenums{margin-top:0;margin-bottom:0}
+li.L0,li.L1,li.L2,li.L3,li.L5,li.L6,li.L7,li.L8{list-style-type:none}
+li.L1,li.L3,li.L5,li.L7,li.L9{background:#111}
+.code{
+	background: #002b36;
+}

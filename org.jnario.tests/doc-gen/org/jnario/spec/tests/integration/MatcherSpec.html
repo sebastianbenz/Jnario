@@ -28,35 +28,34 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<p><p>Jnario provides syntactic sugar for creating matchers.</p>
+<p>Jnario provides syntactic sugar for creating matchers.</p>
+<ul><li><p>
+<strong>returns the boolean result of the evaluated expression</strong>
+<pre class="prettyprint lang-spec">
+val myMatcher = #[String input | input == "true"]
+assert myMatcher.matches("true")
+assert !myMatcher.matches("false")</pre>
 </p>
-<ul><li><strong>returns the boolean result of the evaluated expression</strong>
-<p>
-<pre class="prettyprint lang-jnario">
-	val myMatcher = #[String input | input == "true"]
-	assert myMatcher.matches("true")
-	assert !myMatcher.matches("false")</pre>
+</li><li><p>
+<strong>type can be coerced from the context</strong>
+<pre class="prettyprint lang-spec">
+val Matcher&lt;String&gt; myMatcher = #[it  == "true"]
+assert myMatcher.matches("true")
+assert !myMatcher.matches("false")</pre>
 </p>
-</li><li><strong>type can be coerced from the context</strong>
-<p>
-<pre class="prettyprint lang-jnario">
-	val Matcher&lt;String&gt; myMatcher = #[it  == "true"]
-	assert myMatcher.matches("true")
-	assert !myMatcher.matches("false")</pre>
+</li><li><p>
+<strong>works with should</strong>
+<pre class="prettyprint lang-spec">
+"Hello" =&gt; #[it.startsWith("H")]</pre>
 </p>
-</li><li><strong>works with should</strong>
-<p>
-<pre class="prettyprint lang-jnario">
-	"Hello" =&gt; #[it.startsWith("H")]</pre>
-</p>
-</li><li><strong>uses the closure's code as description</strong>
-<p>
-<pre class="prettyprint lang-jnario">
-	errorMessage[
-		"a" =&gt; #[it.startsWith("b")]
-	].is('''
-	Expected "a" =&gt; #[it.startsWith("b")] but:
-	     #[it.startsWith("b")] is [it.startsWith("b")]''')</pre>
+</li><li><p>
+<strong>uses the closure's code as description</strong>
+<pre class="prettyprint lang-spec">
+errorMessage[
+	"a" =&gt; #[it.startsWith("b")]
+].is('''
+Expected "a" =&gt; #[it.startsWith("b")] but:
+     #[it.startsWith("b")] is [it.startsWith("b")]''')</pre>
 </p>
 </li></ul>
 				</div>

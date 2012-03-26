@@ -16,7 +16,7 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/jnario.min.css" rel="stylesheet">
 <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-<link href="css/prettify-solarized-dark.css" rel="stylesheet">
+<link href="css/prettify.css" rel="stylesheet">
 <link href="css/jnario-responsive.min.css" rel="stylesheet">
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -164,7 +164,7 @@ $(function(){
     When I press "add"
       <span class="code">calculator.press(args.first)</span>
     Then the result should be "120" 
-      <span class="code">calculator.result => args.first</span></pre>
+      <span class="code">calculator.result =&gt; args.first</span></pre>
         <h2>Unit Specifications</h2>
         <pre class="prettyprint lang-spec">
 package example
@@ -181,7 +181,7 @@ describe Stack{
     fact subject.size should be 1
     fact "pop decreases size"{
       subject.pop
-      subject.size => 0 
+      subject.size =&gt; 0 
     }
   }   
 }</pre>

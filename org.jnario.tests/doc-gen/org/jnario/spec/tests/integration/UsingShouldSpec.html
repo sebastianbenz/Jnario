@@ -28,53 +28,56 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<p><p>You can use the <code>should</code> statement to express the expected behavior of objects.</p>
+<p>You can use the <code>should</code> statement to express the expected behavior of objects.</p>
+<ul><li><p>
+<strong>To pass..</strong>
+<p><code>should</code> and <code>must</code> pass if the result of the left expression is equal to the result of the right expression. You can use <code>not</code> to assert that the expressions have different results. There is also a short cut available: <code>=&gt;</code> which has the same effect as <code>should be</code>.</p>
+<pre class="prettyprint lang-spec">
+true should be true
+"hello" must be "hello"
+1 + 1 should not be 1 
+"hello".toUpperCase must not be "Hello"
+"something" should not be null 
+1 + 1 =&gt; 2 
+"a string" =&gt; typeof(String)</pre>
 </p>
-<ul><li><strong>To pass..</strong>
-<p><p><code>should</code> and <code>must</code> pass if the result of the left expression is equal to the result of the right expression. You can use <code>not</code> to assert that the expressions have different results. There is also a short cut available: <code>=&gt;</code> which has the same effect as <code>should be</code>.</p>
-<pre class="prettyprint lang-jnario">
-	true should be true
-	"hello" must be "hello"
-	1 + 1 should not be 1 
-	"hello".toUpperCase must not be "Hello"
-	"something" should not be null 
-	1 + 1 =&gt; 2 
-	"a string" =&gt; typeof(String)</pre>
+</li><li><p>
+<strong>...or not to pass</strong>
+<p><code>should</code> and <code>must</code> throw an AssertionError if the result of the left expression does not equal the result of the right expression.</p>
+<pre class="prettyprint lang-spec">
+1 + 1 should be 1  throws AssertionError
+1 + 1 should not be 1  throws AssertionError
+1 + 1 =&gt; 1  throws AssertionError</pre>
 </p>
-</li><li><strong>...or not to pass</strong>
-<p><p><code>should</code> and <code>must</code> throw an AssertionError if the result of the left expression does not equal the result of the right expression.</p>
-<pre class="prettyprint lang-jnario">
-	1 + 1 should be 1  throws AssertionError
-	1 + 1 should not be 1  throws AssertionError
-	1 + 1 =&gt; 1  throws AssertionError</pre>
+</li><li><p>
+<strong>Why did it fail?</strong>
+<p>When failing, <code>should</code> and <code>=&gt;</code> try to give you as much context information as possible. The error message will print the values of all expressions and their subexpressions.</p>
+<pre class="prettyprint lang-spec">
+errorMessage[1 + 1 =&gt; 1].is('''
+  Expected 1 + 1 =&gt; 1 but:
+       1 + 1 is 2''')	
+
+val x = "hello"        
+errorMessage[x.toUpperCase should not be "HELLO"].is('''
+  Expected x.toUpperCase should not be "HELLO" but:
+       x.toUpperCase is "HELLO"
+       x is "hello"''')	  
+       
+val y = "world"        
+errorMessage[x =&gt; y].is('''
+  Expected x =&gt; y but:
+       x is "hello"
+       y is "world"''')</pre>
 </p>
-</li><li><strong>Why did it fail?</strong>
-<p><p>When failing, <code>should</code> and <code>=&gt;</code> try to give you as much context information as possible. The error message will print the values of all expressions and their subexpressions.</p>
-<pre class="prettyprint lang-jnario">
-	errorMessage[1 + 1 =&gt; 1].is('''
-	  Expected 1 + 1 =&gt; 1 but:
-	       1 + 1 is 2''')	
-	
-	val x = "hello"        
-	errorMessage[x.toUpperCase should not be "HELLO"].is('''
-	  Expected x.toUpperCase should not be "HELLO" but:
-	       x.toUpperCase is "HELLO"
-	       x is "hello"''')	  
-	       
-	val y = "world"        
-	errorMessage[x =&gt; y].is('''
-	  Expected x =&gt; y but:
-	       x is "hello"
-	       y is "world"''')</pre>
-</p>
-</li><li><strong>Combining hamcrest and should</strong>
-<p><p>You can also the <code>should</code>and <code>=&gt;</code> together with <a href="http://code.google.com/p/hamcrest/">Hamcrest</a> matchers. You need to add the following static import statements to run the following examples.</p>
+</li><li><p>
+<strong>Combining hamcrest and should</strong>
+<p>You can also the <code>should</code>and <code>=&gt;</code> together with <a href="http://code.google.com/p/hamcrest/">Hamcrest</a> matchers. You need to add the following static import statements to run the following examples.</p>
 <pre class="prettyprint">import static org.hamcrest.CoreMatchers.startsWith
 import static org.hamcrest.Matchers.hasItem
 </code></pre><p>In this example we use these matchers together with <code>=&gt;</code> statement.</p>
-<pre class="prettyprint lang-jnario">
-	"hello" =&gt; startsWith("h")
-	newArrayList("red", "green") =&gt; hasItem("red")</pre>
+<pre class="prettyprint lang-spec">
+"hello" =&gt; startsWith("h")
+newArrayList("red", "green") =&gt; hasItem("red")</pre>
 </p>
 </li></ul>
 				</div>

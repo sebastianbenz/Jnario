@@ -5,8 +5,8 @@ LESS_COMPRESSOR ?= `which lessc`
 WATCHR ?= `which watchr`
 
 GH_PAGES = ../../jnario-gh-pages
-LANG_JNARIO_SPEC    = ../org.jnario/src/org/jnario/doc/lang-jnario-spec.js 
-LANG_JNARIO_FEATURE = ../org.jnario/src/org/jnario/doc/lang-jnario-feature.js 
+LANG_JNARIO    = ../org.jnario/src/org/jnario/doc/lang-jnario.js 
+CUSTOM_CSS     = ../org.jnario/src/org/jnario/doc/custom.css
 
 
 #
@@ -19,9 +19,10 @@ jnario:
 	lessc --compress ${BOOTSTRAP_RESPONSIVE_LESS} > css/bootstrap-responsive.min.css
 	lessc --compress less/jnario.less > css/jnario.min.css
 	lessc --compress less/jnario-responsive.less > css/jnario-responsive.min.css
-	cat js/prettify.js ${LANG_JNARIO_SPEC} ${LANG_JNARIO_FEATURE} bootstrap/js/bootstrap-transition.js bootstrap/js/bootstrap-alert.js bootstrap/js/bootstrap-button.js bootstrap/js/bootstrap-carousel.js bootstrap/js/bootstrap-collapse.js bootstrap/js/bootstrap-dropdown.js bootstrap/js/bootstrap-modal.js bootstrap/js/bootstrap-tooltip.js bootstrap/js/bootstrap-popover.js bootstrap/js/bootstrap-scrollspy.js bootstrap/js/bootstrap-tab.js bootstrap/js/bootstrap-typeahead.js > js/jnario.js
+	cat js/prettify.js bootstrap/js/bootstrap-transition.js bootstrap/js/bootstrap-alert.js bootstrap/js/bootstrap-button.js bootstrap/js/bootstrap-carousel.js bootstrap/js/bootstrap-collapse.js bootstrap/js/bootstrap-dropdown.js bootstrap/js/bootstrap-modal.js bootstrap/js/bootstrap-tooltip.js bootstrap/js/bootstrap-popover.js bootstrap/js/bootstrap-scrollspy.js bootstrap/js/bootstrap-tab.js bootstrap/js/bootstrap-typeahead.js > js/jnario.js
 	uglifyjs -nc js/jnario.js > js/jnario.min.js
-	
+	cp ${LANG_JNARIO} js
+	cp ${CUSTOM_CSS} css
 
 #
 # MAKE FOR GH-PAGES 4 FAT & MDO ONLY (O_O  )
@@ -44,6 +45,11 @@ gh-pages: jnario
 	rm -r -f ${SNAPSHOT_UPDATES}
 	mkdir -p ${SNAPSHOT_UPDATES}
 	cp -r ../org.jnario.updatesite/target/site/* ${SNAPSHOT_UPDATES}
+	rm -f ${GH_PAGES}/updates/snapshot/org.jnario.lib-0.1.0-SNAPSHOT.jar
+	cp ../org.jnario.lib/target/org.jnario.lib-0.1.0-SNAPSHOT.jar ${GH_PAGES}/updates/snapshot
+	rm -r -f ${GH_PAGES}/org
+	mkdir -p ${GH_PAGES}/org
+	cp -r -p ../org.jnario.tests/doc-gen/org ${GH_PAGES}
 	echo "This is the Jnario (www.jnario.org) snapshots update site." > ${GH_PAGES}/updates/snapshot/index.html 
 
 #
