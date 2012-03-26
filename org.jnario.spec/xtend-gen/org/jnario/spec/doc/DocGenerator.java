@@ -277,10 +277,16 @@ public class DocGenerator implements IGenerator {
     final Function1<XtendMember,Boolean> _function = new Function1<XtendMember,Boolean>() {
         public Boolean apply(final XtendMember it) {
           boolean _or = false;
+          boolean _or_1 = false;
           if ((it instanceof Example)) {
+            _or_1 = true;
+          } else {
+            _or_1 = ((it instanceof Example) || (it instanceof ExampleGroup));
+          }
+          if (_or_1) {
             _or = true;
           } else {
-            _or = ((it instanceof Example) || (it instanceof ExampleGroup));
+            _or = (_or_1 || (it instanceof ExampleTable));
           }
           return Boolean.valueOf(_or);
         }
@@ -388,11 +394,15 @@ public class DocGenerator implements IGenerator {
         docString = _markdown2Html;
       }
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("<p>");
       {
         String _name = example.getName();
         boolean _notEquals_1 = (!Objects.equal(_name, null));
         if (_notEquals_1) {
+          _builder.append("<p ");
+          String _name_1 = example.getName();
+          String _generateId = this.generateId(_name_1);
+          _builder.append(_generateId, "");
+          _builder.append(">");
           _builder.newLineIfNotEmpty();
           _builder.append("<strong>");
           String _describe = this._exampleNameProvider.describe(example);
@@ -400,6 +410,9 @@ public class DocGenerator implements IGenerator {
           _builder.append(_convertToText, "");
           _builder.append("</strong>");
           _builder.newLineIfNotEmpty();
+        } else {
+          _builder.append("<p>");
+          _builder.newLine();
         }
       }
       _builder.append(docString, "");
@@ -428,9 +441,20 @@ public class DocGenerator implements IGenerator {
     return _xblockexpression;
   }
   
+  public String generateId(final String id) {
+    String _replaceAll = id==null?(String)null:id.replaceAll("\\W", "_");
+    String _plus = ("id=\"" + _replaceAll);
+    return (_plus + "\"");
+  }
+  
   public CharSequence toCodeBlock(final Example example, final List<Filter> filters) {
     CharSequence _xblockexpression = null;
     {
+      String prefix = "<pre class=\"prettyprint lang-spec\">";
+      for (final Filter filter : filters) {
+        String _apply = filter.apply(prefix);
+        prefix = _apply;
+      }
       XExpression _implementation = example.getImplementation();
       final String code = this.toXtendCode(_implementation, filters);
       int _length = code.length();
@@ -440,8 +464,8 @@ public class DocGenerator implements IGenerator {
         return _builder;
       }
       StringConcatenation _builder_1 = new StringConcatenation();
-      _builder_1.append("<pre class=\"prettyprint lang-spec\">");
-      _builder_1.newLine();
+      _builder_1.append(prefix, "");
+      _builder_1.newLineIfNotEmpty();
       _builder_1.append(code, "");
       _builder_1.append("</pre>");
       _xblockexpression = (_builder_1);
@@ -451,9 +475,13 @@ public class DocGenerator implements IGenerator {
   
   protected CharSequence _generate(final ExampleTable table, final int level) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<h4>");
+    _builder.append("<h4 ");
     String _fieldName = this._exampleNameProvider.toFieldName(table);
-    String _convertToTitle = this.convertToTitle(_fieldName);
+    String _generateId = this.generateId(_fieldName);
+    _builder.append(_generateId, "");
+    _builder.append(">");
+    String _fieldName_1 = this._exampleNameProvider.toFieldName(table);
+    String _convertToTitle = this.convertToTitle(_fieldName_1);
     _builder.append(_convertToTitle, "");
     _builder.append("</h4>");
     _builder.newLineIfNotEmpty();
@@ -527,6 +555,10 @@ public class DocGenerator implements IGenerator {
     _builder.append("<");
     String _heading = this.heading(level);
     _builder.append(_heading, "");
+    _builder.append(" ");
+    String _name = exampleGroup.getName();
+    String _generateId = this.generateId(_name);
+    _builder.append(_generateId, "");
     _builder.append(">");
     String _asTitle = this.asTitle(exampleGroup);
     _builder.append(_asTitle, "");

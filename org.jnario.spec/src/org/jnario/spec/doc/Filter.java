@@ -8,5 +8,6 @@
 package org.jnario.spec.doc;
 
 public interface Filter {
+	String key();
 	String apply(String input);
 }

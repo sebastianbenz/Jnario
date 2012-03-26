@@ -1,23 +1,49 @@
 package org.jnario.spec.doc;
 
 import com.google.common.base.Objects;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.Pair;
 import org.jnario.spec.doc.Filter;
 import org.jnario.spec.doc.FilteringResult;
+import org.jnario.spec.doc.LangFilter;
 import org.jnario.spec.doc.RegexFilter;
 
 @SuppressWarnings("all")
 public class FilterExtractor {
-  private static String TAG = "(^|\\W)@filter(\\((.*?)\\))";
+  private static String TAG = "(^|\\W)@(\\w+)(\\((.*?)\\))";
   
   private static Pattern TAG_PATTERN = new Function0<Pattern>() {
     public Pattern apply() {
       Pattern _compile = Pattern.compile(FilterExtractor.TAG, Pattern.DOTALL);
       return _compile;
+    }
+  }.apply();
+  
+  private Map<String,Function1<String,Filter>> filterFactories = new Function0<Map<String,Function1<String,Filter>>>() {
+    public Map<String,Function1<String,Filter>> apply() {
+      final Function1<String,Filter> _function = new Function1<String,Filter>() {
+          public Filter apply(final String s) {
+            Filter _create = RegexFilter.create(s);
+            return _create;
+          }
+        };
+      Pair<String,Function1<String,Filter>> _mappedTo = Pair.<String, Function1<String,Filter>>of("filter", _function);
+      final Function1<String,Filter> _function_1 = new Function1<String,Filter>() {
+          public Filter apply(final String s) {
+            Filter _create = LangFilter.create(s);
+            return _create;
+          }
+        };
+      Pair<String,Function1<String,Filter>> _mappedTo_1 = Pair.<String, Function1<String,Filter>>of("lang", _function_1);
+      HashMap<String,Function1<String,Filter>> _newHashMap = CollectionLiterals.<String, Function1<String,Filter>>newHashMap(_mappedTo, _mappedTo_1);
+      return _newHashMap;
     }
   }.apply();
   
@@ -35,9 +61,14 @@ public class FilterExtractor {
     boolean _while = _find;
     while (_while) {
       {
-        String _group = matcher.group(3);
-        RegexFilter _create = RegexFilter.create(_group);
-        filters.add(_create);
+        final String key = matcher.group(2);
+        final Function1<String,Filter> candidate = this.filterFactories.get(key);
+        boolean _notEquals = (!Objects.equal(candidate, null));
+        if (_notEquals) {
+          String _group = matcher.group(4);
+          Filter _apply = candidate.apply(_group);
+          filters.add(_apply);
+        }
         final int nextOffset = matcher.start();
         String _substring = input.substring(offset, nextOffset);
         resultString.append(_substring);

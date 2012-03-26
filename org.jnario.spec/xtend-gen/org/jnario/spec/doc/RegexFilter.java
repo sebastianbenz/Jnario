@@ -6,7 +6,7 @@ import org.jnario.spec.doc.Filter;
 
 @SuppressWarnings("all")
 public class RegexFilter implements Filter {
-  public static RegexFilter create(final String regex) {
+  public static Filter create(final String regex) {
     RegexFilter _regexFilter = new RegexFilter(regex);
     return _regexFilter;
   }
@@ -28,5 +28,9 @@ public class RegexFilter implements Filter {
   
   public String toString() {
     return this.regex;
+  }
+  
+  public String key() {
+    return "filter";
   }
 }

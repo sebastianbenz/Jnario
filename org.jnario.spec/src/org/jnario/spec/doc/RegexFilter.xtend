@@ -11,7 +11,7 @@ import java.util.regex.Pattern
 
 class RegexFilter implements Filter{
 
-	def static create(String regex){
+	def static Filter create(String regex){
 		return new RegexFilter(regex)
 	}	
 	
@@ -28,7 +28,10 @@ class RegexFilter implements Filter{
 	}
 	
 	override toString(){
-		return regex
+		return  regex
 	}
 	
+	override key() {
+		return "filter"
+	}
 }

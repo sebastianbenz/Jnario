@@ -28,27 +28,27 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<h3>Introduction</h3>
+<h3 id="Introduction">Introduction</h3>
 <p><p>Jnario provides a special <code>assert</code> statement that makes it really easy to write meaningful assertions.</p>
 </p>
-<ul><li><p>
+<ul><li><p id="To_pass__">
 <strong>To pass..</strong>
 <p><code>assert</code> passes if the expression evaluates to true.</p>
 <pre class="prettyprint lang-spec">
 assert true
 assert 1 == 1</pre>
 </p>
-</li><li><p>
+</li><li><p id="___or_not_to_pass">
 <strong>...or not to pass</strong>
 <p><code>assert</code> throws an AssertionError if the expression evaluates to false.</p>
 <pre class="prettyprint lang-spec">
 {assert false} throws AssertionError</pre>
 </p>
 </li></ul>
-<h3>No more debugging...</h3>
+<h3 id="No_more_debugging___">No more debugging...</h3>
 <p><p>Assertions in Jnario are selfexplainable. This means, when failing, they try to provide as as much information as possible. In that case, they print the exact expression that has failed together with the actual value of all subexpressions.</p>
 </p>
-<ul><li><p>
+<ul><li><p id="Variable_Access">
 <strong>Variable Access</strong>
 <p>For example, it will print the value of all referenced variables.</p>
 <pre class="prettyprint lang-spec">
@@ -58,7 +58,7 @@ errorMessage[assert y].is(
 Expected y but:
      y is false''')</pre>
 </p>
-</li><li><p>
+</li><li><p id="Filters_literals">
 <strong>Filters literals</strong>
 <p>Literal values obviously won't be printed.</p>
 <pre class="prettyprint lang-spec">
@@ -67,7 +67,7 @@ errorMessage[assert x == 42].is('''
   Expected x == 42 but:
        x is 0''')</pre>
 </p>
-</li><li><p>
+</li><li><p id="Not_Equals">
 <strong>Not Equals</strong>
 <p>Here is another example .</p>
 <pre class="prettyprint lang-spec">
@@ -77,7 +77,7 @@ errorMessage[assert !(x == 42)].is('''
        x == 42 is true
        x is 42''')</pre>
 </p>
-</li><li><p>
+</li><li><p id="Function_Calls">
 <strong>Function Calls</strong>
 <p>The result of a function call will be printed as well.</p>
 <pre class="prettyprint lang-spec">
@@ -85,7 +85,7 @@ errorMessage[assert greet("World") == "Hello World!"].is('''
   Expected greet("World") == "Hello World!" but:
        greet("World") is "Hello World"''')</pre>
 </p>
-</li><li><p>
+</li><li><p id="Feature_Calls">
 <strong>Feature Calls</strong>
 <p>The result of each feature call will be printed.</p>
 <pre class="prettyprint lang-spec">
@@ -94,7 +94,7 @@ errorMessage[assert "Hello".toUpperCase.toLowerCase == "HELLO"].is('''
        "Hello".toUpperCase.toLowerCase is "hello"
        "Hello".toUpperCase is "HELLO"''')</pre>
 </p>
-</li><li><p>
+</li><li><p id="And_expressions">
 <strong>And expressions</strong>
 <p>This example involves two expressions with <code>&amp;&amp;</code>.</p>
 <pre class="prettyprint lang-spec">
@@ -107,7 +107,7 @@ errorMessage[assert x == 1 && y == 0].is('''
        y == 0 is false
        y is 1''')</pre>
 </p>
-</li><li><p>
+</li><li><p id="Removes_duplicate_feature_calls">
 <strong>Removes duplicate feature calls</strong>
 <p>If the same variable is accessed multiple times it will be printed only once.</p>
 <pre class="prettyprint lang-spec">
@@ -118,7 +118,7 @@ errorMessage[assert x &gt; 0 && x &lt; 10].is('''
        x is 0
        x &lt; 10 is true''')</pre>
 </p>
-</li><li></li></ul>
+</li></ul>
 				</div>
 			</div>
 		</div> <!-- /content -->

@@ -15,9 +15,9 @@ import java.util.Stack
 
 /*
  * This tutorial gives you an introduction on how to write unit specifications with Jnario.
- * Jnario Specs is based on [Xtend](http://www.xtend-lang.org). it might be a good idea
+ * Jnario Specs are based on [Xtend](http://www.xtend-lang.org). it might be a good idea
  * to read the Xtend [documentation](http://www.eclipse.org/xtend/documentation/index.html) as well, 
- * because expressions, fields, methods and extensions in Jnario work exactly as in Xtend.
+ * because Jnario's expressions, fields, methods and extensions work exactly as in Xtend.
  *  
  * ### Installation & Runtime Library
  *
@@ -33,7 +33,7 @@ describe "Jnario Specs - Tutorial"{
 	 * (**File** -> **New** -> **Other** -> **Jnario** -> **Spec**).
 	 * 
 	 * <p align="center"><img src="/img/tutorial/spec_wizard.png" alt="New Spec Wizard"/></p> 
-	 * In Jnario we *describe facts* about our program. Here are two simple facts of a stack:
+	 * In Jnario we *describe facts* about our program. Here are two simple facts about a stack:
 	 * 
 	 * <pre class="prettyprint lang-spec">
 	 * describe "A Stack"{
@@ -53,7 +53,7 @@ describe "Jnario Specs - Tutorial"{
 	 * </pre>
 	 * 
 	 * In the background, Jnario automatically translates the stack specification into a JUnit test case `AStackSpec.java` 
-	 * in the `xtend-gen`folder.  
+	 * in the `xtend-gen` folder.  
 	 */
 	describe "How to write a Specification"{
   
@@ -61,7 +61,7 @@ describe "Jnario Specs - Tutorial"{
 		 * The next step is to enrich our facts with the required logic to
 		 * check whether our stack behaves as specified. Checks are implemented by adding  
 		 * a block expression to your facts.
-		 * We use `=>` to describe the expected result of a expression. For 
+		 * We use `=>` to describe the expected result of an expression. For 
 		 * example, `new Stack.size => 0` will fail if the size is not `0`.
 		 * If we execute our specification we will see that all specifications
 		 * pass and that they are not marked as _PENDING_ anymore,
@@ -91,7 +91,7 @@ describe "Jnario Specs - Tutorial"{
 	     }
 	     
 	     /*
-	      * If we look at our first fact:
+	      * Looking at our first fact:
 	      *  
 	      * <pre class="prettyprint lang-spec">
 	      * describe "A Stack"{
@@ -167,8 +167,8 @@ describe "Jnario Specs - Tutorial"{
 	     
 	     /* 
 	      * In our example we specify the behavior
-	      * of a single class, which is actually a common use case. Jnario you can 
-	      * directly reference the specified class in the describe clause:
+	      * of a single class, which is actually a common use case. In Jnario you can 
+	      * directly reference the specified class in the _describe_ clause:
 	      * 
 	      * <pre class="prettyprint lang-spec">	
 	      * package demo
@@ -212,7 +212,7 @@ describe "Jnario Specs - Tutorial"{
 	    /*
 	     * Sometimes a class behaves differently in different contexts. 
 	     * For example, the behavior when calling pop on a stack depends on whether 
-	     * the stack empty or not. You can define
+	     * the stack is empty or not. You can define
 	     * contexts within Jnario specs to further structure your facts:
 	     * 
 	     * <pre class="prettyprint lang-none">
@@ -233,7 +233,7 @@ describe "Jnario Specs - Tutorial"{
 		 * @filter('''|.executesSuccessfully) 
 		 */
 		 fact "Defining Contexts" {
-	      '''
+	      ''' 
 			package demo
 				      
 			import java.util.Stack
@@ -257,7 +257,7 @@ describe "Jnario Specs - Tutorial"{
 			}
 	      '''.executesSuccessfully
 	     }
-
+ 
 		/*
 		 * You can structure your example data in tables. The
 		 * type of each column will be automatically inferred from
@@ -494,7 +494,7 @@ describe "Jnario Specs - Tutorial"{
 		 }
 	
   }		
-
+ 
 	/*
 	 * Jnario provides different statements for writing assertions ([more...](/org/jnario/spec/tests/integration/AssertionSpec.html)).
 	 */
@@ -527,7 +527,7 @@ describe "Jnario Specs - Tutorial"{
 		
 		/*
 		 * Assertions in Jnario are self-explainable. When an assertion fails, it tries to 
-		 * provide as as much information as possible. It will 
+		 * provide as much information as possible. It will 
 		 * print the exact expression that has failed together with the actual value
 		 * of all subexpressions. This means that you don't need to debug a test to 
 		 * see why it actually has failed.

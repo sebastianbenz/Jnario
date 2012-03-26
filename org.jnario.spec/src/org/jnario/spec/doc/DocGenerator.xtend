@@ -31,8 +31,6 @@ import org.pegdown.PegDownProcessor
 import static org.jnario.spec.util.Strings.*
 
 import static extension org.eclipse.xtext.util.Strings.*
-import org.jnario.spec.spec.Example
-import org.jnario.spec.spec.ExampleGroup
 
 class DocGenerator implements IGenerator {
 
@@ -142,7 +140,7 @@ class DocGenerator implements IGenerator {
 	def generateMembers(ExampleGroup exampleGroup, int level){
 		val result = new StringConcatenation
 		var inList = false	
-		val members = exampleGroup.members.filter[(it instanceof Example) || (it instanceof ExampleGroup)]
+		val members = exampleGroup.members.filter[(it instanceof Example) || (it instanceof ExampleGroup) || (it instanceof ExampleTable)]
 		for(member : members){
 			val isExampleGroup = member instanceof ExampleGroup
 			if (inList && !isExampleGroup){
@@ -187,8 +185,11 @@ class DocGenerator implements IGenerator {
 			docString = docString.markdown2Html
 		}
 		'''
-			<p>«IF example.name != null»
+			«IF example.name != null»
+			<p «generateId(example.name)»>
 			<strong>«example.describe.convertToText»</strong>
+			«ELSE»
+			<p>
 			«ENDIF»
 			«docString»
 			«IF !example.pending && example.body != null»
@@ -197,16 +198,24 @@ class DocGenerator implements IGenerator {
 		'''
 	}
 	
+	def generateId(String id){
+		return 'id="' + id?.replaceAll("\\W", "_") + '"'
+	}
+	
 	def toCodeBlock(Example example, List<Filter> filters){
+		var prefix = '<pre class="prettyprint lang-spec">'
+		for(filter : filters){
+			prefix = filter.apply(prefix)
+		}
 		val code = example.implementation.toXtendCode(filters)
 		if(code.length == 0) return ''''''
 		'''
-		<pre class="prettyprint lang-spec">
+		«prefix»
 		«code»</pre>'''
 	}
 	 
 	def dispatch generate(ExampleTable table, int level)'''
-		<h4>«table.toFieldName.convertToTitle»</h4>
+		<h4 «generateId(table.toFieldName)»>«table.toFieldName.convertToTitle»</h4>
 		<p>«table.generateDoc»</p>
 		<table class="table table-striped table-bordered table-condensed">
 			<thead>
@@ -229,7 +238,7 @@ class DocGenerator implements IGenerator {
 	'''
 	
 	def dispatch generate(ExampleGroup exampleGroup, int level)'''
-		<«level.heading»>«exampleGroup.asTitle»</«level.heading»>
+		<«level.heading» «generateId(exampleGroup.name)»>«exampleGroup.asTitle»</«level.heading»>
 		<p>«exampleGroup.generateDoc»</p>
 «generateMembers(exampleGroup, level + 1)»
 	'''

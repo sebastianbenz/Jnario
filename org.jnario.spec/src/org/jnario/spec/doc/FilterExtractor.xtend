@@ -12,11 +12,17 @@ import java.util.regex.Pattern
 import static org.jnario.spec.doc.FilterExtractor.*
 import static org.jnario.spec.doc.FilteringResult.*
 import java.util.List
+import java.util.Map
+import org.eclipse.xtext.xbase.lib.Functions$Function1
 
 class FilterExtractor {
 
-	private static String TAG = "(^|\\W)@filter(\\((.*?)\\))"
+	private static String TAG = "(^|\\W)@(\\w+)(\\((.*?)\\))"
 	private static Pattern TAG_PATTERN = Pattern::compile(TAG, Pattern::DOTALL)
+	private Map<String, Function1<String,Filter>> filterFactories = newHashMap(
+			"filter" -> [String s | RegexFilter::create(s)],
+			"lang" -> [String s | LangFilter::create(s)]
+	)
 	
 	def FilteringResult apply(String input){
 		if(input == null){
@@ -28,7 +34,11 @@ class FilterExtractor {
 		val matcher = TAG_PATTERN.matcher(input);
 		var offset = 0
 		while (matcher.find()) {
-			filters += RegexFilter::create(matcher.group(3))
+			val key = matcher.group(2)
+			val candidate = filterFactories.get(key)
+			if(candidate != null){
+				filters += candidate.apply(matcher.group(4))
+			}
 			
 			val nextOffset = matcher.start()
 			resultString.append(input.substring(offset, nextOffset))

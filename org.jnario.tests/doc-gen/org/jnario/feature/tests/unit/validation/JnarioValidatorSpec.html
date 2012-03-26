@@ -29,7 +29,7 @@
 			<div class="row">
 				<div class="span12">
 <p>@author Birgit Engelmann - Initial contribution and API</p>
-<ul><li></li><li><p>
+<ul><li><p id="returns_an_error_if_a_step_definition_and_a_reference_to_this_step_are_in_the_same_scenario">
 <strong>returns an error if a step definition and a reference to this step are in the same scenario</strong>
 <pre class="prettyprint lang-spec">
 modelStore.parseScenario('
@@ -45,7 +45,7 @@ modelStore.parseScenario('
 val validationResult = validate(typeof(GivenReference))
 validationResult.assertErrorContains("Cannot reference a step");</pre>
 </p>
-</li><li><p>
+</li><li><p id="does_not_return_an_error_if_a_step_definition_was_in_a_different_scenario_than_the_reference">
 <strong>does not return an error if a step definition was in a different scenario than the reference</strong>
 <pre class="prettyprint lang-spec">
 modelStore.parseScenario('
@@ -62,7 +62,7 @@ modelStore.parseScenario('
 val validationResult = validate(typeof(GivenReference))
 validationResult.assertOK();</pre>
 </p>
-</li><li></li></ul>
+</li></ul>
 				</div>
 			</div>
 		</div> <!-- /content -->

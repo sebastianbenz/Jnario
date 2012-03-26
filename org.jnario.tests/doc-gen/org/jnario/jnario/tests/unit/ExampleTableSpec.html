@@ -28,7 +28,7 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<ul><li></li><li><p>
+<ul><li><p id="is_valid_if_all_rows_have_the_same_number_of_columns">
 <strong>is valid if all rows have the same number of columns</strong>
 <pre class="prettyprint lang-spec">
 parseSpec('''
@@ -44,7 +44,7 @@ parseSpec('''
 
 assert query.first(typeof(ExampleTable)).isValid()</pre>
 </p>
-</li><li><p>
+</li><li><p id="is_invalid_if_one_row_has_a_different_number_of_columns">
 <strong>is invalid if one row has a different number of columns</strong>
 <pre class="prettyprint lang-spec">
 parseSpec('''
