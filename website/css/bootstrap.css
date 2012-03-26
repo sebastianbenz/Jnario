@@ -3840,7 +3840,7 @@ a.thumbnail:hover {
   position: relative;
 }
 .carousel {
-  padding-top: 100px;
+  padding-top: 40px;
 }
 .carousel .item {
   display: none;
