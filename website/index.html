@@ -13,10 +13,10 @@
 
 
 <!-- Le styles -->
+<link href="css/prettify.css" rel="stylesheet">
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/jnario.min.css" rel="stylesheet">
 <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-<link href="css/prettify.css" rel="stylesheet">
 <link href="css/jnario-responsive.min.css" rel="stylesheet">
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -38,14 +38,12 @@
 $(function(){
   $(function(){ // On load
     var height = $(window).height()
-    console.log(height)
     if(height > 700){
       $('#home').css({'height':((height-40))+'px'});
     }
   });
   $(window).resize(function(){ // On resize
     var height = $(window).height()
-    console.log(height)
     if(height > 700){
       $('#home').css({'height':((height-40))+'px'});
     }
@@ -139,7 +137,7 @@ $(function(){
           Both are really easy to integrate into existing projects as they compile to plain JUnit tests.
           Jnario is based on <a href="http://www.xtext.org">Xtext</a> and <a href="http://www.xtend-lang.org">Xtend</a>. This 
           means you have the <a href="http://www.eclipse.org/xtend/#noisereduction">expressiveness</a> of Xtend together with the
-          <a href="http://www.eclipse.org/Xtext/#FeatureList">first class tooling support</a> provided by Xtext: refactoring, code completion, debugging,... you name it. 
+          <a href="http://www.eclipse.org/Xtext/#FeatureList">first class tooling support</a> provided by Xtext: refactoring, code completion, debugging,... 
            </p>
         
         
@@ -205,7 +203,10 @@ describe Stack{
 
       <section id="documentation" class="row">
         <h1>Documentation</h1>
-        <p>Coming soon...</p>
+        <ul>
+		  <li>Writing Acceptance Specifications with Jnario (Tutorial - coming soon) </li>
+		  <li><a href="org/jnario/spec/tests/documentation/JnarioSpecsTutorialSpec.html">Writing Unit Specifications with Jnario (Tutorial)</a></li>
+		</ul>
       </section>
       <section id="support" class="row">
         <h1>Support</h1>

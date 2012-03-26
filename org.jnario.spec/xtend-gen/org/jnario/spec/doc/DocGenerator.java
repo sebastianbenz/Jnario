@@ -274,7 +274,19 @@ public class DocGenerator implements IGenerator {
     final StringConcatenation result = _stringConcatenation;
     boolean inList = false;
     EList<XtendMember> _members = exampleGroup.getMembers();
-    for (final XtendMember member : _members) {
+    final Function1<XtendMember,Boolean> _function = new Function1<XtendMember,Boolean>() {
+        public Boolean apply(final XtendMember it) {
+          boolean _or = false;
+          if ((it instanceof Example)) {
+            _or = true;
+          } else {
+            _or = ((it instanceof Example) || (it instanceof ExampleGroup));
+          }
+          return Boolean.valueOf(_or);
+        }
+      };
+    final Iterable<XtendMember> members = IterableExtensions.<XtendMember>filter(_members, _function);
+    for (final XtendMember member : members) {
       {
         final boolean isExampleGroup = (member instanceof ExampleGroup);
         boolean _and = false;

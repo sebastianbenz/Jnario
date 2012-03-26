@@ -31,6 +31,8 @@ import org.pegdown.PegDownProcessor
 import static org.jnario.spec.util.Strings.*
 
 import static extension org.eclipse.xtext.util.Strings.*
+import org.jnario.spec.spec.Example
+import org.jnario.spec.spec.ExampleGroup
 
 class DocGenerator implements IGenerator {
 
@@ -135,10 +137,13 @@ class DocGenerator implements IGenerator {
 		</html>
 	'''
 	
+	
+	
 	def generateMembers(ExampleGroup exampleGroup, int level){
 		val result = new StringConcatenation
 		var inList = false	
-		for(member : exampleGroup.members){
+		val members = exampleGroup.members.filter[(it instanceof Example) || (it instanceof ExampleGroup)]
+		for(member : members){
 			val isExampleGroup = member instanceof ExampleGroup
 			if (inList && !isExampleGroup){
 				result.append("<li>")

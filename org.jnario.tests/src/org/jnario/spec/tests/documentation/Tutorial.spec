@@ -15,9 +15,9 @@ import java.util.Stack
 
 /*
  * This tutorial gives you an introduction on how to write unit specifications with Jnario.
- * Jnario Specs is based on [Xtend](http://www.xtend-lang.org) and it might be a good idea
- * to read the Xtend [documentation](http://www.eclipse.org/xtend/documentation/index.html)
- * before you get started with Jnario, because expressions, fields, methods and extensions in Jnario work exactly as in Xtend.
+ * Jnario Specs is based on [Xtend](http://www.xtend-lang.org). it might be a good idea
+ * to read the Xtend [documentation](http://www.eclipse.org/xtend/documentation/index.html) as well, 
+ * because expressions, fields, methods and extensions in Jnario work exactly as in Xtend.
  *  
  * ### Installation & Runtime Library
  *
@@ -52,15 +52,15 @@ describe "Jnario Specs - Tutorial"{
 	 *   - increases its size when pushing an element [PENDING]
 	 * </pre>
 	 * 
-	 * In the background, Jnario automatically translates our stack specification into a JUnit test case `AStackSpec.java`. You can
-	 * find it in the `xtend-gen`folder.  
+	 * In the background, Jnario automatically translates the stack specification into a JUnit test case `AStackSpec.java` 
+	 * in the `xtend-gen`folder.  
 	 */
 	describe "How to write a Specification"{
   
 		/*
 		 * The next step is to enrich our facts with the required logic to
 		 * check whether our stack behaves as specified. Checks are implemented by adding  
-		 * a block expression to your facts 
+		 * a block expression to your facts.
 		 * We use `=>` to describe the expected result of a expression. For 
 		 * example, `new Stack.size => 0` will fail if the size is not `0`.
 		 * If we execute our specification we will see that all specifications
@@ -245,13 +245,13 @@ describe "Jnario Specs - Tutorial"{
 			    fact subject.pop throws EmptyStackException
 			  }
 			  context "with elements"{
-			    before subject.add("a element")
+			    before subject.add("an element")
 			    fact "pop decreases size"{
 			      subject.pop
 			      subject.size => 0
 			    }	
 			    fact "pop removes last element"{
-			      subject.pop => "a element"
+			      subject.pop => "an element"
 			    }		
 			  }
 			}
@@ -314,7 +314,58 @@ describe "Jnario Specs - Tutorial"{
 			  fact additions.forEach[a + b should be sum]
 			}
 			'''.executesSuccessfully
-		}  
+		} 
+
+		/* 
+		 * Jnario can generate html documents from your specifications. The documentation will
+		 * be generated automatically when you create a folder `doc-gen` in the project root.
+		 * You can further extend the documentation by enriching your specification with 
+		 * Javadoc like comments. You can even use [Markdown Syntax](http//daringfireball.net/projects/markdown/) 
+		 * to format your specifications.
+		 *
+		 * <p align="center"><a href="/img/tutorial/doc_stack_example.png"><img src="/img/tutorial/doc_stack_example_small.png" alt="Generated documentation for the stack specification"/></a></p>  
+		 * 
+		 * This tutorial has actually been generated from a specification!
+		 * 
+		 * @filter('''|.executesSuccessfully) 
+		 */
+		 fact "Generating Documentation" {
+	      '''
+			package demo
+							      
+			import java.util.Stack
+			import java.util.EmptyStackException
+			
+			/*
+			 * In computer science, a **stack** is a last in, first out 
+			 * (LIFO) abstract data type and linear data structure. A 
+			 * stack can have any abstract data type as an element, 
+			 * but is characterized by two fundamental operations, 
+			 * called push and pop. 
+			 * (source [Wikipedia](http://en.wikipedia.org/wiki/Stack)).
+			 */
+			describe Stack{
+			  context "when empty"{
+			    fact subject.size => 0
+			    fact subject.pop throws EmptyStackException
+			  }
+			  /*
+			   * A stack with a single element: "an element".
+			   */
+			  context "with elements"{
+			    before subject.add("an element")
+			    fact "pop decreases size"{
+			      subject.pop
+			      subject.size => 0
+			    }	
+			    fact "pop removes last element"{
+			      subject.pop => "an element"
+			    }		
+			  }
+			} 
+	      '''.executesSuccessfully
+	     }
+		
 
 		/*
 		 * Setting up a fixture or tearing it down works similar to JUnit,
@@ -330,7 +381,7 @@ describe "Jnario Specs - Tutorial"{
 		 * 	after
 		 * 	after all
 		 * </pre>
-		 *
+		 * 
 		 * @filter('''|.executesSuccessfully) 
 		 */
 		fact "Setup & Teardown"{ 
@@ -387,18 +438,20 @@ describe "Jnario Specs - Tutorial"{
 		 *	}
 		 * 
 		 * If we create an [extension field](http://www.eclipse.org/xtend/documentation/index.html#Extension_Fields)  
-		 * for our database helper class within our spec:
+		 * for our database helper class in our spec:
 		 * 
 		 * 	extension DatabaseExtension db = new DatabaseExtension
 		 * 
-		 * the setup and tear down methods will be automatically executed with
-		 * the additional benefit that we can directly access all methods in your
+		 * its setup and tear down methods will be automatically executed before and after each fact.  
+		 * Due to Xtends extension mechanism, this has the additional benefit that we can directly access all methods in thw
 		 * database extension without the field name. 
 		 * 
+		 * <pre class="prettyprint lang-none">
 		 *	openDatabaseConnection
 		 *	query: SELECT * FROM content
 		 *	closeDatabaseConnection
-		 *
+		 * </pre>
+		 * 
 		 * @filter('''|.executesSuccessfully) 
 		 */
 		fact "Spec extensions"{
@@ -406,7 +459,7 @@ describe "Jnario Specs - Tutorial"{
 			describe "Spec Extensions"{
 			  extension DatabaseExtension db = new DatabaseExtension
 			  fact query("SELECT * FROM content")	      
-			}	 
+			}
 			'''.executesSuccessfully
 		}
  

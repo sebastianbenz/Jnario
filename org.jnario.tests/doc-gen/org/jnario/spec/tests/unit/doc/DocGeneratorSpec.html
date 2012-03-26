@@ -28,7 +28,7 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<ul><li></li><li></li><li><p>
+<ul><li><p>
 <strong>should generate java script helper files</strong>
 <pre class="prettyprint lang-spec">
 generateEmptyExampleDoc()
@@ -92,9 +92,8 @@ generateDoc('''
 val scenarioDoc = generatedFile("ExampleSpec.html")
 assert scenarioDoc.contains('''
 &lt;strong&gt;should do stuff&lt;/strong&gt;
-&lt;p&gt;
 &lt;p&gt;Example documentation&lt;/p&gt;
-&lt;pre class="prettyprint lang-jnario"&gt;
+&lt;pre class="prettyprint lang-spec"&gt;
 var x = 0
 x = x + 1&lt;/pre&gt;
 &lt;/p&gt;'''.toString())</pre>
@@ -147,7 +146,7 @@ generateDoc('''
 val scenarioDoc = generatedFile("ExampleSpec.html")
 assert scenarioDoc.contains('"aaaaaa"')</pre>
 </p>
-</li><li></li><li></li><li></li></ul>
+</li></ul>
 				</div>
 			</div>
 		</div> <!-- /content -->

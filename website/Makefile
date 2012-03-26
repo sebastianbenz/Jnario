@@ -19,18 +19,18 @@ jnario:
 	lessc --compress ${BOOTSTRAP_RESPONSIVE_LESS} > css/bootstrap-responsive.min.css
 	lessc --compress less/jnario.less > css/jnario.min.css
 	lessc --compress less/jnario-responsive.less > css/jnario-responsive.min.css
-	cat js/prettify.js bootstrap/js/bootstrap-transition.js bootstrap/js/bootstrap-alert.js bootstrap/js/bootstrap-button.js bootstrap/js/bootstrap-carousel.js bootstrap/js/bootstrap-collapse.js bootstrap/js/bootstrap-dropdown.js bootstrap/js/bootstrap-modal.js bootstrap/js/bootstrap-tooltip.js bootstrap/js/bootstrap-popover.js bootstrap/js/bootstrap-scrollspy.js bootstrap/js/bootstrap-tab.js bootstrap/js/bootstrap-typeahead.js > js/jnario.js
+	cat js/prettify.js js/lang-jnario.js bootstrap/js/bootstrap-transition.js bootstrap/js/bootstrap-alert.js bootstrap/js/bootstrap-button.js bootstrap/js/bootstrap-carousel.js bootstrap/js/bootstrap-collapse.js bootstrap/js/bootstrap-dropdown.js bootstrap/js/bootstrap-modal.js bootstrap/js/bootstrap-tooltip.js bootstrap/js/bootstrap-popover.js bootstrap/js/bootstrap-scrollspy.js bootstrap/js/bootstrap-tab.js bootstrap/js/bootstrap-typeahead.js > js/jnario.js
 	uglifyjs -nc js/jnario.js > js/jnario.min.js
 	cp ${LANG_JNARIO} js
 	cp ${CUSTOM_CSS} css
 
 #
-# MAKE FOR GH-PAGES 4 FAT & MDO ONLY (O_O  )
+# MAKE FOR GH-PAGES
 #
 
-RES_FOLDERS = img css js 
-SPEC_DOC = SpecInstantiation ImplicitSubject Pending ExampleTables
+RES_FOLDERS = img css js ico
 SNAPSHOT_UPDATES = ${GH_PAGES}/updates/snapshot
+LIB_JAR = org.jnario.lib-0.1.0-SNAPSHOT.jar
 
 gh-pages: jnario
 	rm -f ${GH_PAGES}/*.html
@@ -45,8 +45,8 @@ gh-pages: jnario
 	rm -r -f ${SNAPSHOT_UPDATES}
 	mkdir -p ${SNAPSHOT_UPDATES}
 	cp -r ../org.jnario.updatesite/target/site/* ${SNAPSHOT_UPDATES}
-	rm -f ${GH_PAGES}/updates/snapshot/org.jnario.lib-0.1.0-SNAPSHOT.jar
-	cp ../org.jnario.lib/target/org.jnario.lib-0.1.0-SNAPSHOT.jar ${GH_PAGES}/updates/snapshot
+	rm -f ${SNAPSHOT_UPDATES}/${LIB_JAR}
+	cp ../org.jnario.lib/target/${LIB_JAR} ${SNAPSHOT_UPDATES}
 	rm -r -f ${GH_PAGES}/org
 	mkdir -p ${GH_PAGES}/org
 	cp -r -p ../org.jnario.tests/doc-gen/org ${GH_PAGES}
