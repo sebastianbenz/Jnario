@@ -20,8 +20,4 @@ class LangFilter implements Filter{
 		return "lang-" + language
 	}
 	
-	override key() {
-		return "lang"
-	}
-	
 }

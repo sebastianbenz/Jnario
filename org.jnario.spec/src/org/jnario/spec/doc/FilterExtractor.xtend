@@ -19,7 +19,8 @@ class FilterExtractor {
 
 	private static String TAG = "(^|\\W)@(\\w+)(\\((.*?)\\))"
 	private static Pattern TAG_PATTERN = Pattern::compile(TAG, Pattern::DOTALL)
-	private Map<String, Function1<String,Filter>> filterFactories = newHashMap(
+	
+	private Map<String, Function1<String,Filter>> filterRegistry = newHashMap(
 			"filter" -> [String s | RegexFilter::create(s)],
 			"lang" -> [String s | LangFilter::create(s)]
 	)
@@ -35,7 +36,7 @@ class FilterExtractor {
 		var offset = 0
 		while (matcher.find()) {
 			val key = matcher.group(2)
-			val candidate = filterFactories.get(key)
+			val candidate = filterRegistry.get(key)
 			if(candidate != null){
 				filters += candidate.apply(matcher.group(4))
 			}

@@ -30,8 +30,4 @@ class RegexFilter implements Filter{
 	override toString(){
 		return  regex
 	}
-	
-	override key() {
-		return "filter"
-	}
 }
