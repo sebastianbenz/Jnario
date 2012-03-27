@@ -102,7 +102,7 @@ public class JnarioCompiler extends XtendCompiler {
 		toJavaStatement(should.getLeftOperand(), b, true);
 		toJavaStatement(should.getRightOperand(), b, true);
 		b.newLine();
-		String variable = b.declareSyntheticVariable(should, "result");
+		String variable = b.declareSyntheticVariable(should, "__result");
 		b.append("boolean " + variable + " = ");
 		JvmTypeReference type = getTypeProvider().getType(should.getRightOperand());
 		if(type == null || type.getType() == null){
