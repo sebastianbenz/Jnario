@@ -140,7 +140,10 @@ class DocGenerator implements IGenerator {
 	def generateMembers(ExampleGroup exampleGroup, int level){
 		val result = new StringConcatenation
 		var inList = false	
-		val members = exampleGroup.members.filter[(it instanceof Example) || (it instanceof ExampleGroup) || (it instanceof ExampleTable)]
+		val members = exampleGroup.members.filter[(it instanceof Example) 
+			|| (it instanceof ExampleGroup) 
+			|| (it instanceof ExampleTable)
+		]
 		for(member : members){
 			val isExampleGroup = member instanceof ExampleGroup
 			if (inList && !isExampleGroup){
@@ -204,14 +207,20 @@ class DocGenerator implements IGenerator {
 	
 	def toCodeBlock(Example example, List<Filter> filters){
 		var prefix = '<pre class="prettyprint lang-spec">'
-		for(filter : filters){
-			prefix = filter.apply(prefix)
-		}
+		prefix = filters.apply(prefix)
 		val code = example.implementation.toXtendCode(filters)
 		if(code.length == 0) return ''''''
 		'''
 		«prefix»
 		«code»</pre>'''
+	}
+	
+	def apply(List<Filter> filters, String input){
+		var result = input
+		for(filter : filters){
+			result = filter.apply(result)
+		}
+		return result
 	}
 	 
 	def dispatch generate(ExampleTable table, int level)'''
@@ -249,9 +258,7 @@ class DocGenerator implements IGenerator {
 	
 	def dispatch toXtendCode(XBlockExpression expr, List<Filter> filters){
 		var code = expr.serialize.trim
-		for(filter : filters){
-			code = filter.apply(code)
-		}
+		code = filters.apply(code)
 		if(code.length == 0){
 			return ""
 		}
