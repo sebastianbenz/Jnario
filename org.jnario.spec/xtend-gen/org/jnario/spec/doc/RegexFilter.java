@@ -29,8 +29,4 @@ public class RegexFilter implements Filter {
   public String toString() {
     return this.regex;
   }
-  
-  public String key() {
-    return "filter";
-  }
 }

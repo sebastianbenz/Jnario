@@ -52,6 +52,12 @@ gh-pages: jnario
 	cp -r -p ../org.jnario.tests/doc-gen/org ${GH_PAGES}
 	echo "This is the Jnario (www.jnario.org) snapshots update site." > ${GH_PAGES}/updates/snapshot/index.html 
 
+gh-pages-commit: gh-pages
+	cd ${GH_PAGES} ; \
+	git add --all ; \
+	git commit -a ; \
+	git push origin gh-pages
+
 #
 # WATCH LESS FILES
 #

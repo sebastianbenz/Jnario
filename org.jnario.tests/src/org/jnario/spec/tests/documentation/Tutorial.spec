@@ -12,7 +12,7 @@ import static extension org.jnario.lib.Each.*
 import static extension org.jnario.lib.Should.*
 import static extension org.jnario.jnario.test.util.SpecExecutor.*
 import java.util.Stack
-
+ 
 /*
  * This tutorial gives you an introduction on how to write unit specifications with Jnario.
  * Jnario Specs are based on [Xtend](http://www.xtend-lang.org). it might be a good idea

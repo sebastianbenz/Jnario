@@ -26,7 +26,7 @@ public class FilterExtractor {
     }
   }.apply();
   
-  private Map<String,Function1<String,Filter>> filterFactories = new Function0<Map<String,Function1<String,Filter>>>() {
+  private Map<String,Function1<String,Filter>> filterRegistry = new Function0<Map<String,Function1<String,Filter>>>() {
     public Map<String,Function1<String,Filter>> apply() {
       final Function1<String,Filter> _function = new Function1<String,Filter>() {
           public Filter apply(final String s) {
@@ -62,7 +62,7 @@ public class FilterExtractor {
     while (_while) {
       {
         final String key = matcher.group(2);
-        final Function1<String,Filter> candidate = this.filterFactories.get(key);
+        final Function1<String,Filter> candidate = this.filterRegistry.get(key);
         boolean _notEquals = (!Objects.equal(candidate, null));
         if (_notEquals) {
           String _group = matcher.group(4);

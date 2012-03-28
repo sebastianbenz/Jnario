@@ -135,8 +135,6 @@ class DocGenerator implements IGenerator {
 		</html>
 	'''
 	
-	
-	
 	def generateMembers(ExampleGroup exampleGroup, int level){
 		val result = new StringConcatenation
 		var inList = false	

@@ -451,10 +451,8 @@ public class DocGenerator implements IGenerator {
     CharSequence _xblockexpression = null;
     {
       String prefix = "<pre class=\"prettyprint lang-spec\">";
-      for (final Filter filter : filters) {
-        String _apply = filter.apply(prefix);
-        prefix = _apply;
-      }
+      String _apply = this.apply(filters, prefix);
+      prefix = _apply;
       XExpression _implementation = example.getImplementation();
       final String code = this.toXtendCode(_implementation, filters);
       int _length = code.length();
@@ -471,6 +469,15 @@ public class DocGenerator implements IGenerator {
       _xblockexpression = (_builder_1);
     }
     return _xblockexpression;
+  }
+  
+  public String apply(final List<Filter> filters, final String input) {
+    String result = input;
+    for (final Filter filter : filters) {
+      String _apply = filter.apply(result);
+      result = _apply;
+    }
+    return result;
   }
   
   protected CharSequence _generate(final ExampleTable table, final int level) {
@@ -589,10 +596,8 @@ public class DocGenerator implements IGenerator {
   protected String _toXtendCode(final XBlockExpression expr, final List<Filter> filters) {
     String _serialize = this.serialize(expr);
     String code = _serialize.trim();
-    for (final Filter filter : filters) {
-      String _apply = filter.apply(code);
-      code = _apply;
-    }
+    String _apply = this.apply(filters, code);
+    code = _apply;
     int _length = code.length();
     boolean _equals = (_length == 0);
     if (_equals) {
