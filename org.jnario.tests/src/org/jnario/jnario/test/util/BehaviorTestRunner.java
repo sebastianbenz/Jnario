@@ -80,7 +80,8 @@ public abstract class BehaviorTestRunner extends Runner {
 					new Predicate<URI>() {
 
 						public boolean apply(URI uri) {
-							return uri.fileExtension().toLowerCase().equals(getModelExtension());
+							String fileExtension = uri.fileExtension();
+							return fileExtension != null && fileExtension.toLowerCase().equals(getModelExtension());
 						}
 
 					});

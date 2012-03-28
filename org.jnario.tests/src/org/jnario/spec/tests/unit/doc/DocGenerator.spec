@@ -109,7 +109,7 @@ describe DocGenerator {
 			} 
 		''')
 		val scenarioDoc = generatedFile("ExampleSpec.html")
-		assert scenarioDoc.contains("<h4>MyExample</h4>")
+		assert scenarioDoc.contains("<h4 id=\"myExample\">MyExample</h4>")
 		assert scenarioDoc.contains("<th>a</th>")
 		assert scenarioDoc.contains("<th>b</th>")
 		assert scenarioDoc.contains("<td>1</td>")

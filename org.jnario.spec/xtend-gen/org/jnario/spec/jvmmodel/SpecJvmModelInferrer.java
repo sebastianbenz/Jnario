@@ -309,7 +309,11 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
     Iterable<XtendField> _filter = Iterables.<XtendField>filter(_members, XtendField.class);
     for (final XtendField field : _filter) {
       {
-        field.setVisibility(JvmVisibility.PROTECTED);
+        JvmVisibility _visibility = field.getVisibility();
+        boolean _equals = Objects.equal(_visibility, JvmVisibility.PRIVATE);
+        if (_equals) {
+          field.setVisibility(JvmVisibility.DEFAULT);
+        }
         this.transform(field, type);
       }
     }

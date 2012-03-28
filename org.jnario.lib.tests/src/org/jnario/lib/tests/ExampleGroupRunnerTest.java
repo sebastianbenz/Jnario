@@ -12,10 +12,13 @@ import static com.google.common.collect.Lists.newArrayList;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.junit.experimental.results.PrintableResult.testResult;
 import static org.junit.experimental.results.ResultMatchers.hasFailureContaining;
 
 import java.util.List;
+
+import junit.framework.TestResult;
 
 import org.hamcrest.Matcher;
 import org.junit.After;
@@ -23,13 +26,16 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.experimental.results.PrintableResult;
 import org.junit.internal.matchers.TypeSafeMatcher;
 import org.junit.runner.Description;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.RunWith;
 import org.junit.runners.model.InitializationError;
 
+import org.jnario.jnario.test.util.ResultMatchers;
 import org.jnario.runner.Contains;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Extension;
@@ -272,6 +278,22 @@ public class ExampleGroupRunnerTest {
 		new JUnitCore().run(ExampleWithExtension.class);
 		
 		assertEquals(expected, executedTests);
+	}
+	
+	@RunWith(ExampleGroupRunner.class)
+	public static class ExampleWithRule{
+		
+		@Rule public TestRule testRule = new TestRule();
+		
+		@Test
+		public void test() throws Exception{
+		}
+	}
+	
+	@Test
+	public void shouldObeyRules(){
+		assertThat(PrintableResult.testResult(ExampleWithRule.class), is(org.junit.experimental.results.ResultMatchers.isSuccessful()));
+		assertTrue(TestRule.isExecuted());
 	}
 	
 	

@@ -189,7 +189,9 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 	
 	def void addFields(JvmGenericType type, ExampleGroup exampleGroup){
 		for (field : exampleGroup.members.filter(typeof(XtendField))) {
-			field.visibility = JvmVisibility::PROTECTED
+			if(field.visibility == JvmVisibility::PRIVATE){
+				field.visibility = JvmVisibility::DEFAULT
+			}
 			field.transform(type)
 		}
 		type.addImplicitSubject(exampleGroup)
