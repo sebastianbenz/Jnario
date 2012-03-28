@@ -174,7 +174,7 @@ public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequence
 	
 	/**
 	 * Syntax:
-	 *     PIPE | PIPE_SPACES
+	 *     PIPE_SPACES | PIPE
 	 */
 	protected void emit_ExampleColumn_PIPETerminalRuleCall_0_0_or_PIPE_SPACESTerminalRuleCall_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
