@@ -11,29 +11,61 @@
 package org.jnario.feature.ui.labeling;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.xtend.ide.labeling.XtendImages;
+import org.eclipse.xtend.ide.labeling.XtendLabelProvider;
+import org.eclipse.xtext.common.types.JvmVisibility;
+import org.jnario.ExampleTable;
+import org.jnario.feature.feature.Feature;
+import org.jnario.feature.feature.Scenario;
+import org.jnario.feature.feature.Step;
+import org.jnario.feature.naming.StepNameProvider;
 
 import com.google.inject.Inject;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
-public class FeatureLabelProvider extends DefaultEObjectLabelProvider {
+public class FeatureLabelProvider extends XtendLabelProvider {
 
 	@Inject
 	public FeatureLabelProvider(AdapterFactoryLabelProvider delegate) {
 		super(delegate);
 	}
 
-/*
-	//Labels and icons can be computed like this:
+	@Inject
+	private XtendImages images;
+
+	@Inject
+	private StepNameProvider stepNameProvider;
+
 	
-	String text(MyModel ele) {
-	  return "my "+ele.getName();
+	public Image image(ExampleTable element) {
+		return images.forField(JvmVisibility.PROTECTED, false, false);
 	}
-	 
-    String image(MyModel ele) {
-      return "MyModel.gif";
-    }
-*/
+	
+	public Image image(Step element) {
+		return images.forOperation(JvmVisibility.PUBLIC, false);
+	}
+	
+	public Image image(Scenario element) {
+		return images.forClass(JvmVisibility.PUBLIC);
+	}
+	
+	public Image image(Feature element) {
+		return images.forClass(JvmVisibility.PUBLIC);
+	}
+
+	
+	public String text(Step element) {
+		return stepNameProvider.nameOf(element);
+	}
+	
+	public String text(Scenario element) {
+		return element.getName();
+	}
+	
+	public String text(Feature element) {
+		return element.getName();
+	}
 }

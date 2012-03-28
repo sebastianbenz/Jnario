@@ -10,11 +10,26 @@
 */
 package org.jnario.feature.ui.outline;
 
-import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider;
+import org.eclipse.xtend.core.xtend.XtendClass;
+import org.eclipse.xtend.core.xtend.XtendMember;
+import org.eclipse.xtend.ide.outline.XtendOutlineTreeProvider;
+import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
+import org.jnario.feature.feature.Scenario;
 
 /**
- * @author Birgit Engelmann - Initial contribution and API
+ * @author Sebastian Benz - Initial contribution and API
  */
-public class FeatureOutlineTreeProvider extends DefaultOutlineTreeProvider {
+public class FeatureOutlineTreeProvider extends XtendOutlineTreeProvider {
+	
+	@Override
+	protected void createFeatureNodes(IOutlineNode parentNode, XtendClass xtendClass) {
+		for (XtendMember member : xtendClass.getMembers())
+			createEObjectNode(parentNode, member);
+	}
+	
+	protected boolean _isLeaf(Scenario element) {
+		return element.getMembers().isEmpty();
+	}
+	
 	
 }
