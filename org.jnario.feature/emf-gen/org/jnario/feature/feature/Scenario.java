@@ -2,7 +2,6 @@
  * <copyright>
  * </copyright>
  *
-
  */
 package org.jnario.feature.feature;
 
@@ -22,8 +21,8 @@ import org.jnario.ExampleTable;
  * <ul>
  *   <li>{@link org.jnario.feature.feature.Scenario#getExamples <em>Examples</em>}</li>
  *   <li>{@link org.jnario.feature.feature.Scenario#getName <em>Name</em>}</li>
- *   <li>{@link org.jnario.feature.feature.Scenario#getSteps <em>Steps</em>}</li>
  *   <li>{@link org.jnario.feature.feature.Scenario#getMembers <em>Members</em>}</li>
+ *   <li>{@link org.jnario.feature.feature.Scenario#getSteps <em>Steps</em>}</li>
  * </ul>
  * </p>
  *
@@ -76,22 +75,6 @@ public interface Scenario extends XtendMember
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Steps</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.xtend.core.xtend.XtendMember}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Steps</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Steps</em>' containment reference list.
-	 * @see org.jnario.feature.feature.FeaturePackage#getScenario_Steps()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<XtendMember> getSteps();
-
-	/**
 	 * Returns the value of the '<em><b>Members</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.xtend.core.xtend.XtendMember}.
 	 * <!-- begin-user-doc -->
@@ -106,5 +89,21 @@ public interface Scenario extends XtendMember
 	 * @generated
 	 */
 	EList<XtendMember> getMembers();
+
+	/**
+	 * Returns the value of the '<em><b>Steps</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.xtend.core.xtend.XtendMember}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Steps</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Steps</em>' containment reference list.
+	 * @see org.jnario.feature.feature.FeaturePackage#getScenario_Steps()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<XtendMember> getSteps();
 
 } // Scenario

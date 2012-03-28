@@ -2,7 +2,6 @@
  * <copyright>
  * </copyright>
  *
-
  */
 package org.jnario.feature.feature.impl;
 
@@ -39,8 +38,8 @@ import org.jnario.feature.feature.Scenario;
  * <ul>
  *   <li>{@link org.jnario.feature.feature.impl.ScenarioImpl#getExamples <em>Examples</em>}</li>
  *   <li>{@link org.jnario.feature.feature.impl.ScenarioImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.jnario.feature.feature.impl.ScenarioImpl#getSteps <em>Steps</em>}</li>
  *   <li>{@link org.jnario.feature.feature.impl.ScenarioImpl#getMembers <em>Members</em>}</li>
+ *   <li>{@link org.jnario.feature.feature.impl.ScenarioImpl#getSteps <em>Steps</em>}</li>
  * </ul>
  * </p>
  *
@@ -79,16 +78,6 @@ public class ScenarioImpl extends XtendMemberImplCustom implements Scenario
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getSteps() <em>Steps</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSteps()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<XtendMember> steps;
-
-	/**
 	 * The cached value of the '{@link #getMembers() <em>Members</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -97,6 +86,16 @@ public class ScenarioImpl extends XtendMemberImplCustom implements Scenario
 	 * @ordered
 	 */
 	protected EList<XtendMember> members;
+
+	/**
+	 * The cached value of the '{@link #getSteps() <em>Steps</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSteps()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<XtendMember> steps;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -161,20 +160,6 @@ public class ScenarioImpl extends XtendMemberImplCustom implements Scenario
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<XtendMember> getSteps()
-	{
-		if (steps == null)
-		{
-			steps = new EObjectContainmentEList<XtendMember>(XtendMember.class, this, FeaturePackage.SCENARIO__STEPS);
-		}
-		return steps;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<XtendMember> getMembers()
 	{
 		if (members == null)
@@ -189,6 +174,20 @@ public class ScenarioImpl extends XtendMemberImplCustom implements Scenario
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<XtendMember> getSteps()
+	{
+		if (steps == null)
+		{
+			steps = new EObjectContainmentEList<XtendMember>(XtendMember.class, this, FeaturePackage.SCENARIO__STEPS);
+		}
+		return steps;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
 	{
@@ -196,10 +195,10 @@ public class ScenarioImpl extends XtendMemberImplCustom implements Scenario
 		{
 			case FeaturePackage.SCENARIO__EXAMPLES:
 				return ((InternalEList<?>)getExamples()).basicRemove(otherEnd, msgs);
-			case FeaturePackage.SCENARIO__STEPS:
-				return ((InternalEList<?>)getSteps()).basicRemove(otherEnd, msgs);
 			case FeaturePackage.SCENARIO__MEMBERS:
 				return ((InternalEList<?>)getMembers()).basicRemove(otherEnd, msgs);
+			case FeaturePackage.SCENARIO__STEPS:
+				return ((InternalEList<?>)getSteps()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -218,10 +217,10 @@ public class ScenarioImpl extends XtendMemberImplCustom implements Scenario
 				return getExamples();
 			case FeaturePackage.SCENARIO__NAME:
 				return getName();
-			case FeaturePackage.SCENARIO__STEPS:
-				return getSteps();
 			case FeaturePackage.SCENARIO__MEMBERS:
 				return getMembers();
+			case FeaturePackage.SCENARIO__STEPS:
+				return getSteps();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -244,13 +243,13 @@ public class ScenarioImpl extends XtendMemberImplCustom implements Scenario
 			case FeaturePackage.SCENARIO__NAME:
 				setName((String)newValue);
 				return;
-			case FeaturePackage.SCENARIO__STEPS:
-				getSteps().clear();
-				getSteps().addAll((Collection<? extends XtendMember>)newValue);
-				return;
 			case FeaturePackage.SCENARIO__MEMBERS:
 				getMembers().clear();
 				getMembers().addAll((Collection<? extends XtendMember>)newValue);
+				return;
+			case FeaturePackage.SCENARIO__STEPS:
+				getSteps().clear();
+				getSteps().addAll((Collection<? extends XtendMember>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -272,11 +271,11 @@ public class ScenarioImpl extends XtendMemberImplCustom implements Scenario
 			case FeaturePackage.SCENARIO__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case FeaturePackage.SCENARIO__STEPS:
-				getSteps().clear();
-				return;
 			case FeaturePackage.SCENARIO__MEMBERS:
 				getMembers().clear();
+				return;
+			case FeaturePackage.SCENARIO__STEPS:
+				getSteps().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -296,10 +295,10 @@ public class ScenarioImpl extends XtendMemberImplCustom implements Scenario
 				return examples != null && !examples.isEmpty();
 			case FeaturePackage.SCENARIO__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case FeaturePackage.SCENARIO__STEPS:
-				return steps != null && !steps.isEmpty();
 			case FeaturePackage.SCENARIO__MEMBERS:
 				return members != null && !members.isEmpty();
+			case FeaturePackage.SCENARIO__STEPS:
+				return steps != null && !steps.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
