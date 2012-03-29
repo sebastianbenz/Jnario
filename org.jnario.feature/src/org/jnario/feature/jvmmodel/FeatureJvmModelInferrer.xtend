@@ -50,6 +50,8 @@ import org.junit.Ignore
 import static com.google.common.collect.Iterators.*
 import static org.jnario.feature.jvmmodel.FeatureJvmModelInferrer.*
 import org.eclipse.xtext.common.types.JvmVisibility
+import org.eclipse.xtext.xbase.XStringLiteral
+import org.jnario.feature.feature.StepReference
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -73,6 +75,8 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 	@Inject	private IJvmModelAssociator associator
 	
 	@Inject extension StepReferenceFieldCreator
+	
+	@Inject extension StepArgumentsProvider stepArgumentsProvider
 	
 	/**
 	 * Is called for each instance of the first argument's type contained in a resource.
@@ -194,22 +198,31 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	def generateStepValues(EList<XtendMember> steps){
    		
    		for(step: steps){
-   			var decs = filter(step.eAllContents, typeof(XVariableDeclaration))
-			for(dec: decs.toIterable){
-				if(dec.name == STEP_VALUES){
+   			if(step instanceof Step){
+   				(step as Step).generateStepValues
+   			}
+   		}
+   	}
+   	
+   	def generateStepValues(Step step){
+   		
+		var decs = filter(step.eAllContents, typeof(XVariableDeclaration))
+		for(dec: decs.toIterable){
+			if(dec.name == STEP_VALUES){
+				if(!(step instanceof StepReference)){				
 					dec.setStepValueType(step as Step)
-					var calls = filter(step.eAllContents, typeof(XMemberFeatureCall))
-					for(call: calls.toIterable){
-						if(call.memberCallTarget instanceof XFeatureCall){
-							var featureCall = call.memberCallTarget as XFeatureCall
-							if(featureCall.feature == dec && call.feature == null){
-								addStepValue(call, dec, step)
-							}
+				}
+				var calls = filter(step.eAllContents, typeof(XMemberFeatureCall))
+				for(call: calls.toIterable){
+					if(call.memberCallTarget instanceof XFeatureCall){
+						var featureCall = call.memberCallTarget as XFeatureCall
+						if(featureCall.feature == dec && (step instanceof StepReference ||call.feature == null)){
+							addStepValue(call, dec, step)
 						}
 					}
 				}
-			}
-   		}
+			}	
+		}
    	}
    	
    	def setStepValueType(XVariableDeclaration variableDec, Step step){
@@ -227,7 +240,21 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		var operations = filter(type.members.iterator, typeof(JvmOperation))
 		for(operation: operations.toIterable){
 			if(operation.simpleName == "add"){
-				featureCall.feature = operation
+				if(!(step instanceof StepReference)){
+					featureCall.feature = operation				
+				}
+				else{
+					val stepRef = step as StepReference
+					val arguments = stepArgumentsProvider.findStepArguments(stepRef)
+					var i = 0
+					if(!arguments.empty){
+						for(ref: featureCall.memberCallArguments){
+							val argument = ref as XStringLiteral
+							argument.value = arguments.get(i)
+							i = i + 1
+						}
+					}
+				}
 			}
 		}
 	}
@@ -311,6 +338,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 
 		inferredJvmType.members += step.toMethod(step.nameOf.javaMethodName, getTypeForName(Void::TYPE, step))[
 			body = step.expressionOf(inferredJvmType)?.blockExpression
+			step.generateStepValues
 			annotations += step.getTestAnnotations(false)
 			annotations += step.toAnnotation(typeof(Order), order.intValue)
 			var name = step.nameOf
@@ -342,6 +370,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	def transform(Step step, JvmGenericType inferredJvmType){
    		inferredJvmType.members += step.toMethod(step.nameOf.javaMethodName, getTypeForName(Void::TYPE, step))[
 			body = step.expressionOf(inferredJvmType)?.blockExpression
+			step.generateStepValues
 		]
    	}
    	

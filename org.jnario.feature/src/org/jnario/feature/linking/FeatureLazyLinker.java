@@ -7,9 +7,8 @@
  *******************************************************************************/
 package org.jnario.feature.linking;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -24,14 +23,17 @@ import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.XbaseFactory;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.jvmmodel.FeatureJvmModelInferrer;
+import org.jnario.feature.jvmmodel.StepArgumentsProvider;
 import org.jnario.linking.JnarioLazyLinker;
+
+import com.google.inject.Inject;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
 public class FeatureLazyLinker extends JnarioLazyLinker {
-
-	public static final Pattern ARG_PATTERN = Pattern.compile("\"([^\"]*)\"");
+	
+	@Inject StepArgumentsProvider stepArgumentsProvider;
 
 	@Override
 	protected void beforeModelLinked(EObject model,
@@ -45,20 +47,20 @@ public class FeatureLazyLinker extends JnarioLazyLinker {
 		for(Step step: steps){
 			String name = step.getName();
 			if(name != null){
-				Matcher matcher = ARG_PATTERN.matcher(name);
-				if(matcher.find()){
+				ArrayList<String> arguments = stepArgumentsProvider.findStepArguments(step);
+				if(!arguments.isEmpty()){
 					EList<XExpression> expressions = step.getStepExpression().getBlockExpression().getExpressions();
 					XVariableDeclaration stepValuesDec = createVariableForStepArguments();
 					expressions.add(0, stepValuesDec);
-					int i = 1;
-					do{
-						expressions.add(i, createFeatureCall(name.substring(matcher.start(1), matcher.end(1)), stepValuesDec));
-						i++;
-					}while(matcher.find());
+					for(int i = 0; i < arguments.size(); i++){
+						expressions.add(i + 1, createFeatureCall(arguments.get(i), stepValuesDec));
+					}
 				}
 			}
 		}		
 	}
+
+
 
 	private XVariableDeclaration createVariableForStepArguments(){
 		XVariableDeclaration variableDec = XbaseFactory.eINSTANCE.createXVariableDeclaration();

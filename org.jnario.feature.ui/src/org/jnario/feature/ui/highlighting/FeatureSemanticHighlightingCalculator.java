@@ -26,7 +26,7 @@ import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepReference;
 import org.jnario.feature.feature.util.FeatureSwitch;
-import org.jnario.feature.linking.FeatureLazyLinker;
+import org.jnario.feature.jvmmodel.StepArgumentsProvider;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -143,7 +143,7 @@ public class FeatureSemanticHighlightingCalculator extends XtendHighlightingCalc
 				offset = offset(step, FeaturePackage.Literals.STEP__NAME);
 			}
 			if(name != null){
-				Matcher m = FeatureLazyLinker.ARG_PATTERN.matcher(name);
+				Matcher m = StepArgumentsProvider.ARG_PATTERN.matcher(name);
 				while (m.find()) {
 					acceptor.addPosition(offset + m.start(1), m.end(1) - m.start(1), FeatureHighlightingConfiguration.IDENTIFIERS_ID);
 				} 

@@ -45,7 +45,7 @@ class StepNameProvider {
 	}
 	
 	def removeExtraCharacters(String string){
-		return string.trim.replace("\"", "\\\"").replaceAll(MULTILINE," ")
+		return string.trim.replace("\"", "\\\"").replaceAll(MULTILINE,"")
 	}
 	
 	def removeKeywords(String name){
@@ -54,7 +54,7 @@ class StepNameProvider {
 	}
 	
 	def removeArguments(String name){
-		return name.replaceAll("\"[^\"]\"", "\"\"");
+		return name.replaceAll("\"[^\"]*\"", "\"\"");
 	}
 	
 	def removeKeywordsAndArguments(String name){

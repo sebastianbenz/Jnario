@@ -57,7 +57,7 @@ public class StepNameProvider {
   public String removeExtraCharacters(final String string) {
     String _trim = string.trim();
     String _replace = _trim.replace("\"", "\\\"");
-    return _replace.replaceAll(StepNameProvider.MULTILINE, " ");
+    return _replace.replaceAll(StepNameProvider.MULTILINE, "");
   }
   
   public String removeKeywords(final String name) {
@@ -67,7 +67,7 @@ public class StepNameProvider {
   }
   
   public String removeArguments(final String name) {
-    return name.replaceAll("\"[^\"]\"", "\"\"");
+    return name.replaceAll("\"[^\"]*\"", "\"\"");
   }
   
   public String removeKeywordsAndArguments(final String name) {
