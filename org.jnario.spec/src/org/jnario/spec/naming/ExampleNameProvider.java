@@ -12,7 +12,7 @@ import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 import static org.eclipse.xtext.util.Strings.convertToJavaString;
 import static org.eclipse.xtext.util.Strings.toFirstLower;
 import static org.eclipse.xtext.util.Strings.toFirstUpper;
-import static org.jnario.spec.util.Strings.convertToCamelCase;
+import static org.jnario.util.Strings.convertToCamelCase;
 
 import java.util.List;
 

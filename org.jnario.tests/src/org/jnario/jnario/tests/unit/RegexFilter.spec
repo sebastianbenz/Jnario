@@ -5,12 +5,10 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.jnario.spec.tests.unit.doc
+package org.jnario.jnario.tests.unit
 
-import org.jnario.spec.doc.Filter
-import org.jnario.spec.doc.RegexFilter
-import static extension org.jnario.lib.ExampleTableIterators.*
-import static extension org.jnario.lib.Should.*
+import org.jnario.doc.Filter
+import org.jnario.doc.RegexFilter
 
 describe RegexFilter {
 

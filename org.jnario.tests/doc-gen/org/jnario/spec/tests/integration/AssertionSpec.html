@@ -1,133 +1,133 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title>Assertion</title>
-<meta name="description" content="">
-<meta name="author" content="Jnario">
-
-<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-<!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-<!-- Le styles -->
-<link rel="stylesheet" href="../../../../../css/bootstrap.min.css">
-<link rel="stylesheet" href="../../../../../css/bootstrap-responsive.min.css">
-<link rel="stylesheet" href="../../../../../css/custom.css">
-<link rel="stylesheet" href="../../../../../css/prettify.css">
-<script type="text/javascript" src="../../../../../js/prettify.js"></script>
-<script type="text/javascript" src="../../../../../js/lang-jnario.js"></script>
-</head>
-
-<body onload="prettyPrint()">
-	<div class="container">
-		<div class="content">
-			<div class="page-header">
-				<h1>Assertion</h1>
+		<html lang="en">
+		<head>
+		<meta charset="utf-8">
+		<title>Assertion</title>
+		<meta name="description" content="">
+		<meta name="author" content="Jnario">
+		
+		<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+		<!--[if lt IE 9]>
+		      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		    <![endif]-->
+		
+		<!-- Le styles -->
+		<link rel="stylesheet" href="../../../../../css/bootstrap.min.css">
+		<link rel="stylesheet" href="../../../../../css/bootstrap-responsive.min.css">
+		<link rel="stylesheet" href="../../../../../css/custom.css">
+		<link rel="stylesheet" href="../../../../../css/prettify.css">
+		<script type="text/javascript" src="../../../../../js/prettify.js"></script>
+		<script type="text/javascript" src="../../../../../js/lang-jnario.js"></script>
+		</head>
+		
+		<body onload="prettyPrint()">
+			<div class="container">
+				<div class="content">
+					<div class="page-header">
+						<h1>Assertion</h1>
+					</div>
+					<div class="row">
+						<div class="span12">
+		<h3 id="Introduction">Introduction</h3>
+		<p><p>Jnario provides a special <code>assert</code> statement that makes it really easy to write meaningful assertions.</p>
+		</p>
+		<ul><li><p id="To_pass__">
+		<strong>To pass..</strong>
+		<p><code>assert</code> passes if the expression evaluates to true.</p>
+		<pre class="prettyprint lang-spec">
+		assert true
+		assert 1 == 1</pre>
+		</p>
+		</li><li><p id="___or_not_to_pass">
+		<strong>...or not to pass</strong>
+		<p><code>assert</code> throws an AssertionError if the expression evaluates to false.</p>
+		<pre class="prettyprint lang-spec">
+		{assert false} throws AssertionError</pre>
+		</p>
+		</li></ul>
+		<h3 id="No_more_debugging___">No more debugging...</h3>
+		<p><p>Assertions in Jnario are selfexplainable. This means, when failing, they try to provide as as much information as possible. In that case, they print the exact expression that has failed together with the actual value of all subexpressions.</p>
+		</p>
+		<ul><li><p id="Variable_Access">
+		<strong>Variable Access</strong>
+		<p>For example, it will print the value of all referenced variables.</p>
+		<pre class="prettyprint lang-spec">
+		val y = false
+		errorMessage[assert y].is(  
+		'''
+		Expected y but:
+		     y is false''')</pre>
+		</p>
+		</li><li><p id="Filters_literals">
+		<strong>Filters literals</strong>
+		<p>Literal values obviously won't be printed.</p>
+		<pre class="prettyprint lang-spec">
+		val x = 0  
+		errorMessage[assert x == 42].is('''
+		  Expected x == 42 but:
+		       x is 0''')</pre>
+		</p>
+		</li><li><p id="Not_Equals">
+		<strong>Not Equals</strong>
+		<p>Here is another example .</p>
+		<pre class="prettyprint lang-spec">
+		val x = 42     
+		errorMessage[assert !(x == 42)].is('''
+		  Expected !(x == 42) but:
+		       x == 42 is true
+		       x is 42''')</pre>
+		</p>
+		</li><li><p id="Function_Calls">
+		<strong>Function Calls</strong>
+		<p>The result of a function call will be printed as well.</p>
+		<pre class="prettyprint lang-spec">
+		errorMessage[assert greet("World") == "Hello World!"].is('''
+		  Expected greet("World") == "Hello World!" but:
+		       greet("World") is "Hello World"''')</pre>
+		</p>
+		</li><li><p id="Feature_Calls">
+		<strong>Feature Calls</strong>
+		<p>The result of each feature call will be printed.</p>
+		<pre class="prettyprint lang-spec">
+		errorMessage[assert "Hello".toUpperCase.toLowerCase == "HELLO"].is('''
+		  Expected "Hello".toUpperCase.toLowerCase == "HELLO" but:
+		       "Hello".toUpperCase.toLowerCase is "hello"
+		       "Hello".toUpperCase is "HELLO"''')</pre>
+		</p>
+		</li><li><p id="And_expressions">
+		<strong>And expressions</strong>
+		<p>This example involves two expressions with <code>&amp;&amp;</code>.</p>
+		<pre class="prettyprint lang-spec">
+		val x = 0 
+		val y = 1 
+		errorMessage[assert x == 1 && y == 0].is('''
+		  Expected x == 1 && y == 0 but:
+		       x == 1 is false
+		       x is 0
+		       y == 0 is false
+		       y is 1''')</pre>
+		</p>
+		</li><li><p id="Removes_duplicate_feature_calls">
+		<strong>Removes duplicate feature calls</strong>
+		<p>If the same variable is accessed multiple times it will be printed only once.</p>
+		<pre class="prettyprint lang-spec">
+		val x = 0 
+		errorMessage[assert x &gt; 0 && x &lt; 10].is('''
+		  Expected x &gt; 0 && x &lt; 10 but:
+		       x &gt; 0 is false
+		       x is 0
+		       x &lt; 10 is true''')</pre>
+		</p>
+		</li></ul>
+						</div>
+					</div>
+				</div> <!-- /content -->
+				<footer>
+					<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
+				</footer>
+		
 			</div>
-			<div class="row">
-				<div class="span12">
-<h3 id="Introduction">Introduction</h3>
-<p><p>Jnario provides a special <code>assert</code> statement that makes it really easy to write meaningful assertions.</p>
-</p>
-<ul><li><p id="To_pass__">
-<strong>To pass..</strong>
-<p><code>assert</code> passes if the expression evaluates to true.</p>
-<pre class="prettyprint lang-spec">
-assert true
-assert 1 == 1</pre>
-</p>
-</li><li><p id="___or_not_to_pass">
-<strong>...or not to pass</strong>
-<p><code>assert</code> throws an AssertionError if the expression evaluates to false.</p>
-<pre class="prettyprint lang-spec">
-{assert false} throws AssertionError</pre>
-</p>
-</li></ul>
-<h3 id="No_more_debugging___">No more debugging...</h3>
-<p><p>Assertions in Jnario are selfexplainable. This means, when failing, they try to provide as as much information as possible. In that case, they print the exact expression that has failed together with the actual value of all subexpressions.</p>
-</p>
-<ul><li><p id="Variable_Access">
-<strong>Variable Access</strong>
-<p>For example, it will print the value of all referenced variables.</p>
-<pre class="prettyprint lang-spec">
-val y = false
-errorMessage[assert y].is(  
-'''
-Expected y but:
-     y is false''')</pre>
-</p>
-</li><li><p id="Filters_literals">
-<strong>Filters literals</strong>
-<p>Literal values obviously won't be printed.</p>
-<pre class="prettyprint lang-spec">
-val x = 0  
-errorMessage[assert x == 42].is('''
-  Expected x == 42 but:
-       x is 0''')</pre>
-</p>
-</li><li><p id="Not_Equals">
-<strong>Not Equals</strong>
-<p>Here is another example .</p>
-<pre class="prettyprint lang-spec">
-val x = 42     
-errorMessage[assert !(x == 42)].is('''
-  Expected !(x == 42) but:
-       x == 42 is true
-       x is 42''')</pre>
-</p>
-</li><li><p id="Function_Calls">
-<strong>Function Calls</strong>
-<p>The result of a function call will be printed as well.</p>
-<pre class="prettyprint lang-spec">
-errorMessage[assert greet("World") == "Hello World!"].is('''
-  Expected greet("World") == "Hello World!" but:
-       greet("World") is "Hello World"''')</pre>
-</p>
-</li><li><p id="Feature_Calls">
-<strong>Feature Calls</strong>
-<p>The result of each feature call will be printed.</p>
-<pre class="prettyprint lang-spec">
-errorMessage[assert "Hello".toUpperCase.toLowerCase == "HELLO"].is('''
-  Expected "Hello".toUpperCase.toLowerCase == "HELLO" but:
-       "Hello".toUpperCase.toLowerCase is "hello"
-       "Hello".toUpperCase is "HELLO"''')</pre>
-</p>
-</li><li><p id="And_expressions">
-<strong>And expressions</strong>
-<p>This example involves two expressions with <code>&amp;&amp;</code>.</p>
-<pre class="prettyprint lang-spec">
-val x = 0 
-val y = 1 
-errorMessage[assert x == 1 && y == 0].is('''
-  Expected x == 1 && y == 0 but:
-       x == 1 is false
-       x is 0
-       y == 0 is false
-       y is 1''')</pre>
-</p>
-</li><li><p id="Removes_duplicate_feature_calls">
-<strong>Removes duplicate feature calls</strong>
-<p>If the same variable is accessed multiple times it will be printed only once.</p>
-<pre class="prettyprint lang-spec">
-val x = 0 
-errorMessage[assert x &gt; 0 && x &lt; 10].is('''
-  Expected x &gt; 0 && x &lt; 10 but:
-       x &gt; 0 is false
-       x is 0
-       x &lt; 10 is true''')</pre>
-</p>
-</li></ul>
-				</div>
-			</div>
-		</div> <!-- /content -->
-		<footer>
-			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
-		</footer>
-
-	</div>
-	<!-- /container -->
-
-</body>
-</html>
+			<!-- /container -->
+		
+		</body>
+		</html>

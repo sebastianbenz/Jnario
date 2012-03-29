@@ -1,50 +1,34 @@
 package org.jnario.spec.doc;
 
 import com.google.common.base.Objects;
-import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
-import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.EcoreUtil2;
-import org.eclipse.xtext.generator.IFileSystemAccess;
-import org.eclipse.xtext.generator.IGenerator;
-import org.eclipse.xtext.nodemodel.ICompositeNode;
-import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
-import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
-import org.eclipse.xtext.xbase.lib.Conversions;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.ListExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
-import org.jnario.doc.DocumentationSupport;
+import org.jnario.doc.AbstractDocGenerator;
+import org.jnario.doc.Filter;
+import org.jnario.doc.FilterExtractor;
+import org.jnario.doc.FilteringResult;
+import org.jnario.doc.HtmlFile;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
-import org.jnario.spec.doc.DocOutputConfigurationProvider;
-import org.jnario.spec.doc.Filter;
-import org.jnario.spec.doc.FilterExtractor;
-import org.jnario.spec.doc.FilteringResult;
-import org.jnario.spec.doc.WhiteSpaceNormalizer;
 import org.jnario.spec.naming.ExampleNameProvider;
 import org.jnario.spec.spec.Example;
 import org.jnario.spec.spec.ExampleGroup;
-import org.jnario.spec.spec.SpecFile;
-import org.jnario.spec.util.Strings;
-import org.pegdown.PegDownProcessor;
 
 @SuppressWarnings("all")
-public class DocGenerator implements IGenerator {
+public class DocGenerator extends AbstractDocGenerator {
   @Inject
   private ExampleNameProvider _exampleNameProvider;
   
@@ -52,224 +36,44 @@ public class DocGenerator implements IGenerator {
   private ExtendedJvmTypesBuilder _extendedJvmTypesBuilder;
   
   @Inject
-  private WhiteSpaceNormalizer _whiteSpaceNormalizer;
-  
-  @Inject
-  private PegDownProcessor _pegDownProcessor;
-  
-  @Inject
   private FilterExtractor _filterExtractor;
   
-  private List<String> cssFiles = new Function0<List<String>>() {
-    public List<String> apply() {
-      ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("bootstrap.min.css", "bootstrap-responsive.min.css", "custom.css", "prettify.css");
-      return _newArrayList;
-    }
-  }.apply();
-  
-  private List<String> jsFiles = new Function0<List<String>>() {
-    public List<String> apply() {
-      ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("prettify.js", "lang-jnario.js");
-      return _newArrayList;
-    }
-  }.apply();
-  
-  public void doGenerate(final Resource input, final IFileSystemAccess fsa) {
-    this.copy(fsa, "css", this.cssFiles);
-    this.copy(fsa, "js", this.jsFiles);
-    EList<EObject> _contents = input.getContents();
-    Iterable<SpecFile> _filter = Iterables.<SpecFile>filter(_contents, SpecFile.class);
-    for (final SpecFile spec : _filter) {
-      {
-        XtendClass _xtendClass = spec.getXtendClass();
-        final ExampleGroup exampleGroup = ((ExampleGroup) _xtendClass);
-        boolean _notEquals = (!Objects.equal(exampleGroup, null));
-        if (_notEquals) {
-          String _fileName = this.fileName(exampleGroup);
-          CharSequence _generate = this.generate(exampleGroup);
-          fsa.generateFile(_fileName, DocOutputConfigurationProvider.DOC_OUTPUT, _generate);
-        }
+  public HtmlFile createHtmlFile(final XtendClass xtendClass) {
+    HtmlFile _xblockexpression = null;
+    {
+      boolean _not = (!(xtendClass instanceof ExampleGroup));
+      if (_not) {
+        return HtmlFile.EMPTY_FILE;
       }
+      final ExampleGroup exampleGroup = ((ExampleGroup) xtendClass);
+      final Procedure1<HtmlFile> _function = new Procedure1<HtmlFile>() {
+          public void apply(final HtmlFile it) {
+            String _javaClassName = DocGenerator.this._exampleNameProvider.toJavaClassName(exampleGroup);
+            it.fileName = _javaClassName;
+            String _asTitle = DocGenerator.this.asTitle(exampleGroup);
+            it.title = _asTitle;
+            CharSequence _generateContent = DocGenerator.this.generateContent(exampleGroup);
+            it.content = _generateContent;
+          }
+        };
+      HtmlFile _newHtmlFile = HtmlFile.newHtmlFile(_function);
+      _xblockexpression = (_newHtmlFile);
     }
+    return _xblockexpression;
   }
   
-  public String fileName(final ExampleGroup exampleGroup) {
-    String _javaClassName = this._exampleNameProvider.toJavaClassName(exampleGroup);
-    String _plus = ("/" + _javaClassName);
-    final String fileName = (_plus + ".html");
-    String _packageName = exampleGroup.getPackageName();
-    boolean _equals = Objects.equal(_packageName, null);
-    if (_equals) {
-      return fileName;
-    }
-    String _packageName_1 = exampleGroup.getPackageName();
-    String _replaceAll = _packageName_1.replaceAll("\\.", "/");
-    String _plus_1 = ("/" + _replaceAll);
-    return (_plus_1 + fileName);
-  }
-  
-  public void copy(final IFileSystemAccess fsa, final String targetFolder, final Iterable<String> files) {
-    for (final String file : files) {
-      String _plus = ("/" + targetFolder);
-      String _plus_1 = (_plus + "/");
-      String _plus_2 = (_plus_1 + file);
-      String _load = this.load(file);
-      fsa.generateFile(_plus_2, DocOutputConfigurationProvider.DOC_OUTPUT, _load);
-    }
-  }
-  
-  public String load(final String file) {
-    final InputStream inputStream = DocumentationSupport.class.getResourceAsStream(file);
-    return Strings.convertStreamToString(inputStream);
-  }
-  
-  public String folder(final String name, final ExampleGroup context) {
-    String _root = this.root(context);
-    return (_root + name);
-  }
-  
-  public String root(final ExampleGroup exampleGroup) {
-    final SpecFile specFile = EcoreUtil2.<SpecFile>getContainerOfType(exampleGroup, SpecFile.class);
-    XtendClass _xtendClass = specFile.getXtendClass();
-    final String packageName = _xtendClass.getPackageName();
-    boolean _equals = Objects.equal(packageName, null);
-    if (_equals) {
-      return "";
-    }
-    final String[] fragments = packageName.split("\\.");
-    final Function1<String,String> _function = new Function1<String,String>() {
-        public String apply(final String s) {
-          return "../";
-        }
-      };
-    final List<String> path = ListExtensions.<String, String>map(((List<String>)Conversions.doWrapArray(fragments)), _function);
-    return IterableExtensions.join(path, "");
-  }
-  
-  public CharSequence generate(final ExampleGroup exampleGroup) {
+  private CharSequence generateContent(final ExampleGroup exampleGroup) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<!DOCTYPE html>");
-    _builder.newLine();
-    _builder.append("<html lang=\"en\">");
-    _builder.newLine();
-    _builder.append("<head>");
-    _builder.newLine();
-    _builder.append("<meta charset=\"utf-8\">");
-    _builder.newLine();
-    _builder.append("<title>");
-    String _asTitle = this.asTitle(exampleGroup);
-    _builder.append(_asTitle, "");
-    _builder.append("</title>");
-    _builder.newLineIfNotEmpty();
-    _builder.append("<meta name=\"description\" content=\"\">");
-    _builder.newLine();
-    _builder.append("<meta name=\"author\" content=\"Jnario\">");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->");
-    _builder.newLine();
-    _builder.append("<!--[if lt IE 9]>");
-    _builder.newLine();
-    _builder.append("      ");
-    _builder.append("<script src=\"http://html5shim.googlecode.com/svn/trunk/html5.js\"></script>");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("<![endif]-->");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("<!-- Le styles -->");
-    _builder.newLine();
-    {
-      for(final String cssFile : this.cssFiles) {
-        _builder.append("<link rel=\"stylesheet\" href=\"");
-        String _folder = this.folder("css", exampleGroup);
-        _builder.append(_folder, "");
-        _builder.append("/");
-        _builder.append(cssFile, "");
-        _builder.append("\">");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
-      for(final String jsFile : this.jsFiles) {
-        _builder.append("<script type=\"text/javascript\" src=\"");
-        String _folder_1 = this.folder("js", exampleGroup);
-        _builder.append(_folder_1, "");
-        _builder.append("/");
-        _builder.append(jsFile, "");
-        _builder.append("\"></script>");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    _builder.append("</head>");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("<body onload=\"prettyPrint()\">");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("<div class=\"container\">");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("<div class=\"content\">");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("<div class=\"page-header\">");
-    _builder.newLine();
-    _builder.append("\t\t\t\t");
-    _builder.append("<h1>");
-    String _asTitle_1 = this.asTitle(exampleGroup);
-    _builder.append(_asTitle_1, "				");
-    _builder.append("</h1>");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t\t\t");
-    _builder.append("</div>");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("<div class=\"row\">");
-    _builder.newLine();
-    _builder.append("\t\t\t\t");
-    _builder.append("<div class=\"span12\">");
-    _builder.newLine();
     CharSequence _generateDoc = this.generateDoc(exampleGroup);
     _builder.append(_generateDoc, "");
     _builder.newLineIfNotEmpty();
     StringConcatenation _generateMembers = this.generateMembers(exampleGroup, 1);
     _builder.append(_generateMembers, "");
     _builder.newLineIfNotEmpty();
-    _builder.append("\t\t\t\t");
-    _builder.append("</div>");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("</div>");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("</div> <!-- /content -->");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("<footer>");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("<p><small>Generated by <a href=\"http://www.jnario.org\">Jnario</a>.</small></p>");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("</footer>");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("</div>");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("<!-- /container -->");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("</body>");
-    _builder.newLine();
-    _builder.append("</html>");
-    _builder.newLine();
     return _builder;
   }
   
-  public StringConcatenation generateMembers(final ExampleGroup exampleGroup, final int level) {
+  private StringConcatenation generateMembers(final ExampleGroup exampleGroup, final int level) {
     StringConcatenation _stringConcatenation = new StringConcatenation();
     final StringConcatenation result = _stringConcatenation;
     boolean inList = false;
@@ -358,7 +162,7 @@ public class DocGenerator implements IGenerator {
     return result;
   }
   
-  public CharSequence generateDoc(final EObject eObject) {
+  private CharSequence generateDoc(final EObject eObject) {
     StringConcatenation _builder = new StringConcatenation();
     {
       String _documentation = this._extendedJvmTypesBuilder.getDocumentation(eObject);
@@ -441,12 +245,6 @@ public class DocGenerator implements IGenerator {
     return _xblockexpression;
   }
   
-  public String generateId(final String id) {
-    String _replaceAll = id==null?(String)null:id.replaceAll("\\W", "_");
-    String _plus = ("id=\"" + _replaceAll);
-    return (_plus + "\"");
-  }
-  
   public CharSequence toCodeBlock(final Example example, final List<Filter> filters) {
     CharSequence _xblockexpression = null;
     {
@@ -469,15 +267,6 @@ public class DocGenerator implements IGenerator {
       _xblockexpression = (_builder_1);
     }
     return _xblockexpression;
-  }
-  
-  public String apply(final List<Filter> filters, final String input) {
-    String result = input;
-    for (final Filter filter : filters) {
-      String _apply = filter.apply(result);
-      result = _apply;
-    }
-    return result;
   }
   
   protected CharSequence _generate(final ExampleTable table, final int level) {
@@ -586,42 +375,6 @@ public class DocGenerator implements IGenerator {
     return _builder;
   }
   
-  protected String _toXtendCode(final XExpression expr, final List<Filter> filters) {
-    String _serialize = this.serialize(expr);
-    String _normalize = this._whiteSpaceNormalizer.normalize(_serialize);
-    String _html = this.toHtml(_normalize);
-    return _html.trim();
-  }
-  
-  protected String _toXtendCode(final XBlockExpression expr, final List<Filter> filters) {
-    String _serialize = this.serialize(expr);
-    String code = _serialize.trim();
-    String _apply = this.apply(filters, code);
-    code = _apply;
-    int _length = code.length();
-    boolean _equals = (_length == 0);
-    if (_equals) {
-      return "";
-    }
-    int _length_1 = code.length();
-    int _minus = (_length_1 - 1);
-    String _substring = code.substring(1, _minus);
-    code = _substring;
-    String _normalize = this._whiteSpaceNormalizer.normalize(code);
-    return this.toHtml(_normalize);
-  }
-  
-  public String toHtml(final String input) {
-    String _replaceAll = input.replaceAll("<", "&lt;");
-    String _replaceAll_1 = _replaceAll.replaceAll(">", "&gt;");
-    return _replaceAll_1;
-  }
-  
-  public String serialize(final EObject obj) {
-    final ICompositeNode node = NodeModelUtils.getNode(obj);
-    return node.getText();
-  }
-  
   public String heading(final int level) {
     return "h3";
   }
@@ -638,24 +391,6 @@ public class DocGenerator implements IGenerator {
     return _convertToTitle;
   }
   
-  public String convertToTitle(final String string) {
-    String _convertToText = this.convertToText(string);
-    String _firstUpper = org.eclipse.xtext.util.Strings.toFirstUpper(_convertToText);
-    return _firstUpper;
-  }
-  
-  public String convertToText(final String string) {
-    String _convertFromJavaString = org.eclipse.xtext.util.Strings.convertFromJavaString(string, true);
-    return _convertFromJavaString;
-  }
-  
-  public String markdown2Html(final String string) {
-    String _markdownToHtml = this._pegDownProcessor.markdownToHtml(string);
-    String _replaceAll = _markdownToHtml.replaceAll("<pre><code>", "<pre class=\"prettyprint\">");
-    String _replaceAll_1 = _replaceAll.replaceAll("</pre></code>", "</pre>");
-    return _replaceAll_1;
-  }
-  
   public CharSequence generate(final XtendMember example, final int level) {
     if (example instanceof Example) {
       return _generate((Example)example, level);
@@ -668,17 +403,6 @@ public class DocGenerator implements IGenerator {
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(example, level).toString());
-    }
-  }
-  
-  public String toXtendCode(final XExpression expr, final List<Filter> filters) {
-    if (expr instanceof XBlockExpression) {
-      return _toXtendCode((XBlockExpression)expr, filters);
-    } else if (expr != null) {
-      return _toXtendCode(expr, filters);
-    } else {
-      throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(expr, filters).toString());
     }
   }
   

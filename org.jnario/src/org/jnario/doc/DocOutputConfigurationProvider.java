@@ -5,14 +5,13 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.jnario.spec.doc;
+package org.jnario.doc;
 
 import java.util.Set;
 
 import org.eclipse.xtext.generator.OutputConfiguration;
 import org.eclipse.xtend.core.compiler.XtendOutputConfigurationProvider;
 
-@SuppressWarnings("restriction")
 public class DocOutputConfigurationProvider extends XtendOutputConfigurationProvider{
 
 	public static final String DOC_OUTPUT = "DOC_OUTPUT";

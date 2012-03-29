@@ -12,11 +12,12 @@ package org.jnario.spec.ui.doc;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.ide.hover.XtendHoverProvider;
-
-import com.google.inject.Inject;
-
+import org.jnario.doc.HtmlFile;
+import org.jnario.doc.HtmlFileBuilder;
 import org.jnario.spec.doc.DocGenerator;
 import org.jnario.spec.spec.ExampleGroup;
+
+import com.google.inject.Inject;
 
 /**
  * @author Sebastian Benz 
@@ -25,8 +26,8 @@ import org.jnario.spec.spec.ExampleGroup;
 @SuppressWarnings("restriction")
 public class SpecHoverProvider extends XtendHoverProvider {
 	
-	@Inject
-	private DocGenerator docGenerator;
+	@Inject	private DocGenerator docGenerator;
+	@Inject private HtmlFileBuilder htmlFileBuilder;
 	
 	/* (non-Javadoc)
 	 * @see org.eclipse.xtext.xbase.ui.hover.XbaseHoverProvider#getFirstLine(org.eclipse.emf.ecore.EObject)
@@ -40,6 +41,11 @@ public class SpecHoverProvider extends XtendHoverProvider {
 		}
 	}
 
+	@Override
+	protected String computeSignature(EObject call, EObject o) {
+		return super.computeSignature(call, o);
+	}
+	
 	/* (non-Javadoc)
 	 * @see org.eclipse.xtext.ui.editor.hover.html.DefaultEObjectHoverProvider#getDocumentation(org.eclipse.emf.ecore.EObject)
 	 */
@@ -47,7 +53,9 @@ public class SpecHoverProvider extends XtendHoverProvider {
 	protected String getDocumentation(EObject o) {
 		String comment;
 		if (o instanceof ExampleGroup) {
-			comment = docGenerator.generate((ExampleGroup) o).toString();
+			ExampleGroup exampleGroup = (ExampleGroup) o;
+			HtmlFile htmlFile = docGenerator.createHtmlFile(exampleGroup);
+			comment = htmlFileBuilder.generateContent(exampleGroup, htmlFile).toString();
 		}else{
 			comment = super.getDocumentation(o);
 		}

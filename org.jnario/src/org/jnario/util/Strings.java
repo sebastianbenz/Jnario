@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.jnario.spec.util;
+package org.jnario.util;
 
 import static java.lang.Character.isLetterOrDigit;
 import static java.lang.Character.toUpperCase;

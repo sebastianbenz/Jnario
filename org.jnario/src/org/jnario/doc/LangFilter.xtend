@@ -1,4 +1,4 @@
-package org.jnario.spec.doc
+package org.jnario.doc
 
 class LangFilter implements Filter{
 

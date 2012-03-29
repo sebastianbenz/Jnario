@@ -5,11 +5,11 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.jnario.spec.tests.unit.doc
+package org.jnario.jnario.tests.unit
 
 import java.util.List
-import org.jnario.spec.doc.FilterExtractor
-import org.jnario.spec.doc.Filter
+import org.jnario.doc.FilterExtractor
+import org.jnario.doc.Filter
 
 describe FilterExtractor {
 	

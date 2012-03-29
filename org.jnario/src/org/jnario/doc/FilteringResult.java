@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.jnario.spec.doc;
+package org.jnario.doc;
 
 import java.util.Collections;
 import java.util.List;

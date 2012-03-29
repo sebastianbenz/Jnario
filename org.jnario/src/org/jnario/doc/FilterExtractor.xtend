@@ -5,12 +5,12 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.jnario.spec.doc
+package org.jnario.doc
 
 import java.util.regex.Pattern
 
-import static org.jnario.spec.doc.FilterExtractor.*
-import static org.jnario.spec.doc.FilteringResult.*
+import static org.jnario.doc.FilterExtractor.*
+import static org.jnario.doc.FilteringResult.*
 import java.util.List
 import java.util.Map
 import org.eclipse.xtext.xbase.lib.Functions$Function1
