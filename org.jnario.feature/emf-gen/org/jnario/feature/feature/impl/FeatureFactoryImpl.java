@@ -193,7 +193,7 @@ public class FeatureFactoryImpl extends EFactoryImpl implements FeatureFactory
 	 */
 	public FeatureFile createFeatureFile()
 	{
-		FeatureFileImpl featureFile = new FeatureFileImpl();
+		FeatureFileImplCustom featureFile = new FeatureFileImplCustom();
 		return featureFile;
 	}
 

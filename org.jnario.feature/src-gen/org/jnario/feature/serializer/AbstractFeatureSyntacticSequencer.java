@@ -294,7 +294,7 @@ public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequence
 	
 	/**
 	 * Syntax:
-	 *     (('must' | 'should') 'be'?) | '=>'
+	 *     '=>' | (('must' | 'should') 'be'?)
 	 */
 	protected void emit_XRelationalExpression_EqualsSignGreaterThanSignKeyword_1_0_0_0_1_1_or_____MustKeyword_1_0_0_0_1_0_0_1_or_ShouldKeyword_1_0_0_0_1_0_0_0___BeKeyword_1_0_0_0_1_0_2_q__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -310,7 +310,7 @@ public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequence
 	
 	/**
 	 * Syntax:
-	 *     'throws' | (('should' | 'must') 'throw')
+	 *     'throws' | (('must' | 'should') 'throw')
 	 */
 	protected void emit_XRelationalExpression_ThrowsKeyword_1_1_0_0_1_1_or_____MustKeyword_1_1_0_0_1_0_0_1_or_ShouldKeyword_1_1_0_0_1_0_0_0___ThrowKeyword_1_1_0_0_1_0_1__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

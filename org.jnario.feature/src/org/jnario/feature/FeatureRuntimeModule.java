@@ -20,6 +20,7 @@ import org.eclipse.xtend.core.scoping.XtendImportedNamespaceScopeProvider;
 import org.eclipse.xtend.core.scoping.XtendScopeProvider;
 import org.eclipse.xtend.core.validation.ClasspathBasedChecks;
 import org.eclipse.xtend.core.validation.XtendEarlyExitValidator;
+import org.eclipse.xtext.conversion.IValueConverterService;
 import org.eclipse.xtext.generator.IFilePostProcessor;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.OutputConfigurationProvider;
@@ -43,6 +44,7 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.scoping.featurecalls.StaticImplicitMethodsFeatureForTypeProvider.ExtensionClassNameProvider;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.eclipse.xtext.xbase.validation.EarlyExitValidator;
+import org.jnario.feature.conversion.FeatureValueConverterService;
 import org.jnario.feature.generator.FeatureCompiler;
 import org.jnario.feature.generator.FeatureJvmModelGenerator;
 import org.jnario.feature.jvmmodel.FeatureFeatureCallToJavaMapping;
@@ -173,5 +175,11 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 	public Class<? extends ILinkingService> bindILinkingService() {
 		return FeatureLinkingService.class;
 	}
+	
+	@Override
+	public Class<? extends IValueConverterService> bindIValueConverterService() {
+		return FeatureValueConverterService.class;
+	}
+	
 	
 }

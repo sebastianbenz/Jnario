@@ -25,14 +25,14 @@ public class JavaNameProvider {
 	
 	public String getFeatureClassName(String featureDescription){
 		if(featureDescription.indexOf(FEATURE) == 0){
-			return "Ft" + getJavaClassName(featureDescription.substring(FEATURE.length()));
+			return getJavaClassName(featureDescription.substring(FEATURE.length())) + "Feature";
 		}
 		else return "unknown";
 	}
 	
 	public String getScenarioClassName(String scenarioDescription){
 		if(scenarioDescription.indexOf(SCENARIO) == 0){
-			return "Sc" + getJavaClassName(scenarioDescription.substring(SCENARIO.length()));
+			return getJavaClassName(scenarioDescription.substring(SCENARIO.length()));
 		}
 		else return "unknown";
 	}

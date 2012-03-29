@@ -17,6 +17,7 @@ import org.eclipse.xtext.util.ITextRegion;
 import org.eclipse.xtend.core.xtend.XtendImport;
 import org.eclipse.xtend.core.xtend.XtendMember;
 
+import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.FeatureFile;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
@@ -35,6 +36,8 @@ public class FeatureFoldingRegionProvider extends DefaultFoldingRegionProvider {
 			calculateFolding((Scenario)eObject, foldingRegionAcceptor);
 		}else if(eObject instanceof Step){
 			calculateFolding((Step)eObject, foldingRegionAcceptor);
+		}else if(eObject instanceof Background){
+			calculateFolding((Background)eObject, foldingRegionAcceptor);
 		}
 	}
 
@@ -48,6 +51,13 @@ public class FeatureFoldingRegionProvider extends DefaultFoldingRegionProvider {
 	}
 	
 
+	private void calculateFolding(Background background, IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor){
+		int begin = getBegin(background);
+		EList<XtendMember> members = background.getMembers();
+		if(begin >= 0 && members != null && !members.isEmpty()){
+			setFoldingRegion(members.get(members.size() - 1), begin, foldingRegionAcceptor);
+		}
+	}
 	
 	private void calculateFolding(Scenario scenario, IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor){
 		int begin = getBegin(scenario);

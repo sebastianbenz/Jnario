@@ -2,25 +2,16 @@ TODO:
 	
 	General:
 		- add tests for ordering in example runner
-		- doubles: add support @medium @feature
-		- run as with right click: in jnario files not working yet @low @bug
-		- build: compiler is not working on a mac @medium @bug
 	
 	Jnario Generator/Complier:
 		
 		- object variables have to be declared public -> why? @bug @medium
-		- variable declaration in step description should be possible (maybe also code) -> generate into list/map, depending on existing identifier, usage of subject @medium @feature
 		- example name should be used for description and class name, if none exists numbers should be used @low @feature
 		- for generation java class name conflicts should be shown so different jnario files don't create java classes with the same name @feature @medium
 		- error when changing a jnario file while in an example line @high @bug
-		- generate test suite for feature -> all scenarios can be run via that feature suite
 		- remove unnecassary whitespaces, tabs etc for steps
-		- examples over setters? @low @feature
-		- referencing steps: "and" should become "given" or what it is when its the first and given, when, then references should start with "and" when they are not the first @feature @medium
 		
 	Editor:
 		
 		- expand/collapse icon should save the state with which file was closed and be in that state when file is reopened
 		
-	Refactoring:
-		- move icons in common and set path @low

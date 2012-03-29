@@ -10,18 +10,87 @@
  */
 package org.jnario.feature.ui.contentassist;
 
+import java.util.Iterator;
+import java.util.List;
+
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.StyledString;
+import org.eclipse.xtext.Assignment;
+import org.eclipse.xtext.CrossReference;
 import org.eclipse.xtext.RuleCall;
-import org.eclipse.xtext.common.types.JvmFeature;
-import org.eclipse.xtext.common.types.JvmField;
+import org.eclipse.xtext.nodemodel.INode;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
+import org.jnario.feature.feature.FeaturePackage;
+import org.jnario.feature.feature.Step;
+import org.jnario.feature.feature.StepReference;
+
+import com.google.common.collect.Iterators;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
 public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
+	
+	
+	@Override
+	public void completeAndReference_Reference(EObject model,
+			Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		completeStepReference(model, context, acceptor, "And");
+		super.completeAndReference_Reference(model, assignment, context, acceptor);
+	}
+	
+	@Override
+	public void completeGivenReference_Reference(EObject model,
+			Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		completeStepReference(model, context, acceptor, "Given");
+		super.completeGivenReference_Reference(model, assignment, context, acceptor);
+	}
+	
+	@Override
+	public void completeWhenReference_Reference(EObject model,
+			Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		completeStepReference(model, context, acceptor, "When");
+		super.completeWhenReference_Reference(model, assignment, context, acceptor);
+	}
+	
+	@Override
+	public void completeThenReference_Reference(EObject model,
+			Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		completeStepReference(model, context, acceptor, "Then");
+		super.completeThenReference_Reference(model, assignment, context, acceptor);
+	}
+
+	private void completeStepReference(EObject model,
+			ContentAssistContext context, ICompletionProposalAcceptor acceptor,
+			String stepPrefix) {
+		TreeIterator<EObject> allContents = model.eResource().getAllContents();
+		Iterator<Step> steps = Iterators.filter(allContents, Step.class);
+		while (steps.hasNext()) {
+			Step step = (Step) steps.next();
+			if (step instanceof StepReference) {
+				StepReference ref = (StepReference) step;
+					if(ref.getReference().eIsProxy()){
+					List<INode> nodes = NodeModelUtils.findNodesForFeature(ref, FeaturePackage.Literals.STEP_REFERENCE__REFERENCE);
+					StringBuilder sb = new StringBuilder();
+					for (INode node : nodes) {
+						sb.append(node.getText());
+					}
+					String string = sb.toString();
+					String proposal = string.substring(string.indexOf(" "));
+					proposal = stepPrefix + proposal;
+					acceptor.accept(createCompletionProposal(proposal.trim() , context));
+				}
+				
+			}
+		}
+	}
 
 	@Override
 	public void complete_FEATURE_TEXT(EObject model, RuleCall ruleCall,
@@ -66,11 +135,16 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 	}
 	
 	@Override
-	protected StyledString getStyledDisplayString(JvmFeature feature, boolean withParenths, int insignificantParameters, String qualifiedNameAsString, String shortName) {
-		if (feature instanceof JvmField && ((JvmField) feature).getType() == null) {
-			// happens for XVariableDelarations that become a JvmField and don't have a type yet
-			return new StyledString(shortName);
-		}
-		return super.getStyledDisplayString(feature, withParenths, insignificantParameters, qualifiedNameAsString, shortName);
+	protected void lookupCrossReference(CrossReference crossReference, ContentAssistContext contentAssistContext,
+			ICompletionProposalAcceptor acceptor) {
+		lookupCrossReference(crossReference, contentAssistContext, acceptor, getFeatureDescriptionPredicate(contentAssistContext));
 	}
+	
+	protected StyledString getStyledDisplayString(EObject element, String qualifiedName, String shortName) {
+		if(element instanceof Step){
+			
+		}
+		return new StyledString(getDisplayString(element, qualifiedName, shortName));
+	}
+	
 }

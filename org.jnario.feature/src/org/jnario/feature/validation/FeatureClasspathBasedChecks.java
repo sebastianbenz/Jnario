@@ -44,10 +44,10 @@ public class FeatureClasspathBasedChecks extends ClasspathBasedChecks {
 		URIConverter uriConverter = resource.getResourceSet().getURIConverter();
 		try {
 			URI normalizedURI = uriConverter.normalize(classpathURI);
-			if(!resourceURI.equals(normalizedURI))
-				reportInvalidPackage(packageName, classpathURI);
+//			if(!resourceURI.equals(normalizedURI))
+//				reportInvalidPackage(packageName, classpathURI);
 		} catch(ClasspathUriResolutionException e) {
-			reportInvalidPackage(packageName, classpathURI);
+//			reportInvalidPackage(packageName, classpathURI);
 		}
 	}
 	
