@@ -38,6 +38,7 @@ class DocGenerator extends AbstractDocGenerator {
 			fileName = exampleGroup.toJavaClassName 
 			title = exampleGroup.asTitle
 			content = exampleGroup.generateContent
+			rootFolder = exampleGroup.root
 		]
 	}
 

@@ -54,6 +54,8 @@ public class DocGenerator extends AbstractDocGenerator {
             it.title = _asTitle;
             CharSequence _generateContent = DocGenerator.this.generateContent(exampleGroup);
             it.content = _generateContent;
+            String _root = DocGenerator.this.root(exampleGroup);
+            it.rootFolder = _root;
           }
         };
       HtmlFile _newHtmlFile = HtmlFile.newHtmlFile(_function);

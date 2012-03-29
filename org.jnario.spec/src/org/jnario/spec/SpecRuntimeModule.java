@@ -85,7 +85,6 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 	public java.lang.Class<? extends IScopeProvider> bindIScopeProvider() {
 		return SpecScopeProvider.class;
 	}
-	
 
 	public Class<? extends ExtensionClassNameProvider> bindExtensionClassNameProvider(){
 		return JnarioExtensionClassNameProvider.class;

@@ -54,8 +54,7 @@ public class SpecHoverProvider extends XtendHoverProvider {
 		String comment;
 		if (o instanceof ExampleGroup) {
 			ExampleGroup exampleGroup = (ExampleGroup) o;
-			HtmlFile htmlFile = docGenerator.createHtmlFile(exampleGroup);
-			comment = htmlFileBuilder.generateContent(exampleGroup, htmlFile).toString();
+			comment = docGenerator.createHtmlFile(exampleGroup).toText().toString();
 		}else{
 			comment = super.getDocumentation(o);
 		}

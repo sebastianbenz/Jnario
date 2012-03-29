@@ -14,6 +14,7 @@ import org.eclipse.xtext.xbase.XExpression
 import org.pegdown.PegDownProcessor
 
 import static extension org.eclipse.xtext.util.Strings.*
+import org.eclipse.xtext.EcoreUtil2
 
 class AbstractDocGenerator implements IGenerator {
 	
@@ -80,6 +81,17 @@ class AbstractDocGenerator implements IGenerator {
 			result = filter.apply(result)
 		}
 		return result
+	}
+	
+	def root(XtendClass xtendClass){
+		val specFile = EcoreUtil2::getContainerOfType(xtendClass, typeof(XtendFile))
+		val packageName= specFile.xtendClass.packageName
+		if(packageName == null){
+			return ""
+		}
+		val fragments = packageName.split("\\.")
+		val path = fragments.map(String s | "../")
+		return path.join("")
 	}
 
 }
