@@ -47,6 +47,7 @@ import org.eclipse.xtext.builder.IXtextBuilderParticipant;
 import org.eclipse.xtext.builder.trace.FileBasedTraceInformation;
 import org.eclipse.xtext.common.types.ui.navigation.IDerivedMemberAwareEditorOpener;
 import org.eclipse.xtext.common.types.xtext.ui.ITypesProposalProvider;
+import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.trace.ITraceInformation;
 import org.eclipse.xtext.ui.LanguageSpecific;
 import org.eclipse.xtext.ui.editor.IURIEditorOpener;
@@ -73,10 +74,12 @@ import org.eclipse.xtext.ui.editor.toggleComments.ToggleSLCommentAction;
 import org.eclipse.xtext.ui.refactoring.IRenameStrategy;
 import org.eclipse.xtext.ui.refactoring.impl.RenameElementProcessor;
 import org.eclipse.xtext.ui.resource.IResourceUIServiceProvider;
+import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
 import org.eclipse.xtext.xbase.ui.editor.XbaseEditor;
 import org.eclipse.xtext.xbase.ui.jvmmodel.navigation.DerivedMemberAwareEditorOpener;
 import org.jnario.spec.ui.doc.SpecHoverProvider;
 import org.jnario.spec.ui.editor.SpecFoldingRegionProvider;
+import org.jnario.spec.ui.generator.SpecGenerator;
 import org.jnario.spec.ui.highlighting.SpecHighlightingCalculator;
 import org.jnario.spec.ui.launching.SpecJavaElementDelegate;
 import org.jnario.ui.builder.JnarioSourceRelativeFileSystemAccess;
@@ -262,5 +265,7 @@ public class SpecUiModule extends org.jnario.spec.ui.AbstractSpecUiModule {
 		return FileBasedTraceInformation.class;
 	}
 	
-	
+	public Class<? extends IGenerator> bindIGenerator() {
+		return SpecGenerator.class;
+	}
 }

@@ -55,7 +55,6 @@ import org.jnario.linking.JnarioLinkingService;
 import org.jnario.scoping.JnarioExtensionClassNameProvider;
 import org.jnario.serializer.JnarioContextFinder;
 import org.jnario.spec.conversion.SpecValueConverterService;
-import org.jnario.spec.generator.SpecGenerator;
 import org.jnario.spec.jvmmodel.SpecJvmModelInferrer;
 import org.jnario.spec.scoping.SpecScopeProvider;
 import org.jnario.spec.validation.SpecClassPathBasedChecks;
@@ -158,7 +157,7 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 	
 	@Override
 	public Class<? extends IGenerator> bindIGenerator() {
-		return SpecGenerator.class;
+		return JvmModelGenerator.class;
 	}
 	
 	public Class<? extends ClasspathBasedChecks> bindClassPathBasedChecks(){
