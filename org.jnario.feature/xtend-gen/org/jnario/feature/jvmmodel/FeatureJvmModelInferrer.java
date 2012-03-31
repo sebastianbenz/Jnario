@@ -137,11 +137,9 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     for (final XtendMember member : _members) {
       {
         final Scenario scenario = ((Scenario) member);
-        String _name = feature.getName();
-        String _featureClassName = this._javaNameProvider.getFeatureClassName(_name);
-        String _name_1 = scenario.getName();
-        String _scenarioClassName = this._javaNameProvider.getScenarioClassName(_name_1);
-        final String className = (_featureClassName + _scenarioClassName);
+        String _featureClassName = this._javaNameProvider.getFeatureClassName(feature);
+        String _className = this._javaNameProvider.getClassName(scenario);
+        final String className = (_featureClassName + _className);
         final JvmGenericType clazz = this.infer(scenario, featureFile, className, backgroundClass);
         EList<JvmAnnotationReference> _annotations = clazz.getAnnotations();
         JvmAnnotationReference _runnerAnnotations = this.runnerAnnotations(scenario);
@@ -155,8 +153,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   }
   
   public JvmGenericType generateFeatureSuite(final Feature feature, final FeatureFile featureFile, final List<JvmGenericType> scenarios) {
-    String _name = feature.getName();
-    String _featureClassName = this._javaNameProvider.getFeatureClassName(_name);
+    String _featureClassName = this._javaNameProvider.getFeatureClassName(feature);
     final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
         public void apply(final JvmGenericType it) {
           FeatureJvmModelInferrer.this.addDefaultConstructor(feature, it);
@@ -207,8 +204,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
       EList<XtendMember> _steps = background.getSteps();
       this.generateStepValues(_steps);
       this._stepReferenceFieldCreator.copyXtendMemberForReferences(background);
-      String _name = feature.getName();
-      String _featureClassName = this._javaNameProvider.getFeatureClassName(_name);
+      String _featureClassName = this._javaNameProvider.getFeatureClassName(feature);
       String _plus = (_featureClassName + "Background");
       final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
           public void apply(final JvmGenericType it) {
@@ -679,11 +675,10 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
         exampleTableName = _javaClassName;
       }
       XtendClass _xtendClass = featureFile.getXtendClass();
-      String _name_2 = _xtendClass.getName();
-      String _featureClassName = this._javaNameProvider.getFeatureClassName(_name_2);
-      String _name_3 = scenario.getName();
-      String _scenarioClassName = this._javaNameProvider.getScenarioClassName(_name_3);
-      String _plus_1 = (_featureClassName + _scenarioClassName);
+      final Feature feature = ((Feature) _xtendClass);
+      String _featureClassName = this._javaNameProvider.getFeatureClassName(feature);
+      String _className = this._javaNameProvider.getClassName(scenario);
+      String _plus_1 = (_featureClassName + _className);
       String _plus_2 = (_plus_1 + "Row");
       final String className = (_plus_2 + Integer.valueOf(exampleNumber));
       final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {

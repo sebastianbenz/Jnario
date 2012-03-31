@@ -58,7 +58,7 @@ public class FeatureJvmTypeProvider {
 	}
 
 	protected String getTypeName(Feature feature) {
-		String typeName = nameProvider.toFeatureSuiteJavaClassName(feature);
+		String typeName = nameProvider.getFeatureClassName(feature);
 		FeatureFile jnarioFile = getContainerOfType(feature, FeatureFile.class);
 		String packageName = jnarioFile.getPackage();
 		if(packageName == null)

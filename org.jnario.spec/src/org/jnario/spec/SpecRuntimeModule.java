@@ -27,7 +27,6 @@ import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.generator.OutputConfigurationProvider;
 import org.eclipse.xtext.linking.ILinker;
 import org.eclipse.xtext.linking.ILinkingService;
-import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.resource.EObjectAtOffsetHelper;
 import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
@@ -42,7 +41,6 @@ import org.eclipse.xtext.xbase.featurecalls.IdentifiableSimpleNameProvider;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.JvmModelAssociator;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
-import org.eclipse.xtext.xbase.scoping.featurecalls.OperatorMapping;
 import org.eclipse.xtext.xbase.scoping.featurecalls.StaticImplicitMethodsFeatureForTypeProvider.ExtensionClassNameProvider;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.eclipse.xtext.xbase.validation.EarlyExitValidator;
@@ -55,8 +53,6 @@ import org.jnario.jvmmodel.JnarioDispatchUtil;
 import org.jnario.linking.JnarioLazyLinker;
 import org.jnario.linking.JnarioLinkingService;
 import org.jnario.scoping.JnarioExtensionClassNameProvider;
-import org.jnario.scoping.JnarioOperatorMappping;
-import org.jnario.scoping.JnarioQualifiedNameConverter;
 import org.jnario.serializer.JnarioContextFinder;
 import org.jnario.spec.conversion.SpecValueConverterService;
 import org.jnario.spec.jvmmodel.SpecJvmModelInferrer;
@@ -185,13 +181,4 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 		return JnarioJavaIoFileSystemAccess.class;
 	}
 	
-	public Class<? extends OperatorMapping> bindOperatorMapping(){
-		return JnarioOperatorMappping.class;
-	}
-	
-	@Override
-	public Class<? extends IQualifiedNameConverter> bindIQualifiedNameConverter() {
-		return JnarioQualifiedNameConverter.class;
-	}
-
 }

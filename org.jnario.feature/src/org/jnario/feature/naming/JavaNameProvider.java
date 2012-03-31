@@ -8,8 +8,8 @@
 package org.jnario.feature.naming;
 
 import org.eclipse.xtext.util.Strings;
-
 import org.jnario.feature.feature.Feature;
+import org.jnario.feature.feature.Scenario;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -19,20 +19,24 @@ public class JavaNameProvider {
 	private static final String FEATURE = "Feature: ";
 	private static final String SCENARIO = "Scenario: ";
 	
-	public String toFeatureSuiteJavaClassName(Feature feature){
+	public String getFeatureClassName(Feature feature){
 		return getFeatureClassName(feature.getName());
 	}
 	
-	public String getFeatureClassName(String featureDescription){
+	private String getFeatureClassName(String featureDescription){
 		if(featureDescription.indexOf(FEATURE) == 0){
 			return getJavaClassName(featureDescription.substring(FEATURE.length())) + "Feature";
 		}
 		else return "unknown";
 	}
 	
-	public String getScenarioClassName(String scenarioDescription){
-		if(scenarioDescription.indexOf(SCENARIO) == 0){
-			return getJavaClassName(scenarioDescription.substring(SCENARIO.length()));
+	public String getClassName(Scenario scenario){
+		String name = scenario.getName();
+		if(name == null){
+			return "unknown";
+		}
+		if(name.indexOf(SCENARIO) == 0){
+			return getJavaClassName(name.substring(SCENARIO.length()));
 		}
 		else return "unknown";
 	}

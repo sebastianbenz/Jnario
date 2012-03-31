@@ -89,7 +89,7 @@ public class FeatureExecutor extends BehaviorExecutor{
 		CompositeResult result = new CompositeResult();
 		FeatureFile jnarioFile = (FeatureFile) object;
 		Feature feature = (Feature)jnarioFile.getXtendClass();
-		String jnarioClassName = nameProvider.getFeatureClassName(feature.getName());
+		String jnarioClassName = nameProvider.getFeatureClassName(feature);
 		String packageName = jnarioFile.getPackage();
 		result.add(runTestsInClass(jnarioClassName, packageName));
 		return result;

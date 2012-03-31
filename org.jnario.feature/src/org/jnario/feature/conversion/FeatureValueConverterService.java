@@ -1,11 +1,10 @@
 package org.jnario.feature.conversion;
 
-import org.eclipse.xtend.core.conversion.XtendValueConverterService;
+import org.jnario.conversion.JnarioValueConverterService;
 
-public class FeatureValueConverterService extends XtendValueConverterService {
+public class FeatureValueConverterService extends JnarioValueConverterService {
 	
 	public String toString(Object value, String lexerRule) {
-		
 		if(lexerRule.contains("GIVEN_TEXT")){
 			return super.toString("Given " + value.toString(), lexerRule);
 		}

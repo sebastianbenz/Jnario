@@ -106,7 +106,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		val List<JvmGenericType> scenarios = newArrayList()
 		for(member: feature.members){
 			val scenario = member as Scenario
-			val className = feature.name.featureClassName + scenario.name.scenarioClassName
+			val className = feature.featureClassName + scenario.className
 			val clazz = scenario.infer(featureFile, className, backgroundClass)
 			clazz.annotations += scenario.runnerAnnotations
 			acceptor.accept(clazz)
@@ -118,7 +118,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	}
    	
    	def generateFeatureSuite(Feature feature, FeatureFile featureFile, List<JvmGenericType> scenarios){
-   		feature.toClass(feature.name.featureClassName)[
+   		feature.toClass(feature.featureClassName)[
    			feature.addDefaultConstructor(it);
    			featureFile.eResource.contents += it
    			packageName = featureFile.^package
@@ -138,20 +138,14 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	}
    	
    	def generateBackground(Feature feature, FeatureFile featureFile){
-   		
    		val background = feature.background
    		background.steps.generateStepValues
-   		
    		background.copyXtendMemberForReferences
-   		
-   		
-   		feature.toClass(feature.name.featureClassName + "Background")[
+   		feature.toClass(feature.featureClassName + "Background")[
    			featureFile.eResource.contents += it
-   			
    			for(member: background.members){
 				super.transform(member, it)
 			}
-   			
    			feature.addDefaultConstructor(it)
    			packageName = featureFile.^package
    			abstract = true
@@ -414,7 +408,8 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		}else{
 			exampleTableName = exampleTable.name.javaClassName
 		}
-		val className = featureFile.xtendClass.name.featureClassName + scenario.name.scenarioClassName + "Row" + exampleNumber
+		val feature = featureFile.xtendClass as Feature
+		val className = feature.featureClassName + scenario.className + "Row" + exampleNumber
 		
 		row.toClass(className)[
 			superTypes += inferredJvmType.createTypeRef

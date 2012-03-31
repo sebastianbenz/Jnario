@@ -13,4 +13,4 @@ Require-Bundle: org.eclipse.xtext;bundle-version="2.2.1",
  org.jnario;bundle-version="0.1.0",
  org.jnario.spec;bundle-version="0.1.0"
 Import-Package: org.apache.log4j
-Export-Package: org.jnario.compiler.batch
+Export-Package: org.jnario.spec.compiler.batch
