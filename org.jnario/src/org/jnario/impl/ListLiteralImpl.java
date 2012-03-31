@@ -2,15 +2,7 @@
  */
 package org.jnario.impl;
 
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.xtext.EcoreUtil2;
-import org.eclipse.xtext.common.types.JvmGenericType;
-import org.eclipse.xtext.common.types.JvmIdentifiableElement;
-import org.eclipse.xtext.common.types.JvmOperation;
-import org.eclipse.xtext.common.types.TypesFactory;
-
 import org.jnario.JnarioPackage;
 import org.jnario.ListLiteral;
 

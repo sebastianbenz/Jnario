@@ -3,9 +3,6 @@
 package org.jnario;
 
 import org.eclipse.xtext.xbase.XFeatureCall;
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.xtext.xbase.XExpression;
 
 /**
  * <!-- begin-user-doc -->

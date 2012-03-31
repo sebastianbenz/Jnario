@@ -2212,7 +2212,7 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (leftOperand=XRelationalExpression_Should_1_0_0_0_0 not?='not'? rightOperand=XOtherOperatorExpression)
+	 *     (leftOperand=XRelationalExpression_Should_1_0_0_0_0 feature=[JvmIdentifiableElement|Should] rightOperand=XOtherOperatorExpression)
 	 */
 	protected void sequence_XRelationalExpression(EObject context, Should semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

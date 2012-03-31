@@ -18,17 +18,14 @@ import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.compiler.XtendCompiler;
-import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XBinaryOperation;
 import org.eclipse.xtext.xbase.XExpression;
-import org.eclipse.xtext.xbase.XNullLiteral;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.util.XExpressionHelper;
-import org.hamcrest.CoreMatchers;
 import org.jnario.Assertion;
 import org.jnario.Matcher;
 import org.jnario.Should;
@@ -96,48 +93,8 @@ public class JnarioCompiler extends XtendCompiler {
 	}
 	
 	public void _toJavaStatement(Should should, ITreeAppendable b, boolean isReferenced) {
-		if(should.getRightOperand() == null){
-			return;
-		}
-		toJavaStatement(should.getLeftOperand(), b, true);
-		toJavaStatement(should.getRightOperand(), b, true);
-		b.newLine();
-		String variable = b.declareSyntheticVariable(should, "__result");
-		b.append("boolean " + variable + " = ");
-		JvmTypeReference type = getTypeProvider().getType(should.getRightOperand());
-		if(type == null || type.getType() == null){
-			return;
-		}
-		boolean isMatcher = false;
-		if (type.getType() instanceof JvmGenericType) {
-			if(org.hamcrest.Matcher.class.getName().equals(type.getType().getQualifiedName())){
-				isMatcher = true;
-			}
-			Iterable<JvmTypeReference> interfaces = ((JvmGenericType)type.getType()).getSuperTypes();
-			for (JvmTypeReference jvmTypeReference : interfaces) {
-				if(org.hamcrest.Matcher.class.getName().equals(jvmTypeReference.getQualifiedName())){
-					isMatcher = true;
-				}
-			}
-		}
-		if(isMatcher){
-			toJavaExpression(should.getRightOperand(), b);
-		}else{
-			b.append(jvmType(CoreMatchers.class, should));
-			b.append(".is(");
-			if(should.getRightOperand() instanceof XNullLiteral){
-				b.append(jvmType(CoreMatchers.class, should));
-				b.append(".nullValue()");
-			}else{
-				toJavaExpression(should.getRightOperand(), b);
-			}
-			b.append(")");
-		}
-		b.append(".matches(");
-		toJavaExpression(should.getLeftOperand(), b);
-		b.append(");");
-		b.newLine();
-		b.append(assertType(should));
+		super._toJavaStatement(should, b, true);
+		b.append(assertType(should)).newLine();
 		if(should.isNot()){
 			b.append(".assertFalse(");
 		}else{
@@ -145,8 +102,8 @@ public class JnarioCompiler extends XtendCompiler {
 		}
 		generateMessageFor(should, b);
 		b.append(" + \"" + javaStringNewLine() + "\", ");
-		b.append(variable);
-		b.append(");");
+		super._toJavaExpression(should, b);
+		b.append(");").newLine();
 	}
 
 	private String javaStringNewLine() {

@@ -127,7 +127,7 @@ public class JnarioTypeProvider extends XtendTypeProvider {
 	}
 	
 	protected JvmTypeReference _type(Should should, JvmTypeReference rawExpectation, boolean rawType) {
-		return getPrimitiveVoid(should);
+		return booleanType(should);
 	}
 	
 	protected JvmTypeReference _type(ShouldThrow should, JvmTypeReference rawExpectation, boolean rawType) {

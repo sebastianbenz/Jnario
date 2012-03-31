@@ -7,18 +7,53 @@
  *******************************************************************************/
 package org.jnario.lib;
 
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import static com.google.common.collect.Iterables.contains;
+import static org.hamcrest.collection.IsCollectionContaining.hasItem;
+
+import org.eclipse.xtext.xbase.lib.Functions;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
-import org.hamcrest.Matchers;
 import org.hamcrest.TypeSafeMatcher;
+
+import com.google.common.base.Objects;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
 public class Should {
 
-	public static <T> Matcher<T> matches(final String desc, final Function1<T, Boolean> matcher){
+	public static boolean should_be(Object actual, Object expected){
+		return Objects.equal(actual, expected);
+	}
+	
+	public static boolean should_be(Object actual, Class<?> expectedType){
+		return expectedType.isInstance(actual);
+	}
+	
+	public static <T> boolean should_be(T actual, Matcher<T> matcher){
+		if(matcher == null){
+			return actual == null;
+		}
+		return matcher.matches(actual);
+	}
+	
+	public static <T> boolean should_contain(Iterable<T> actual, T element){
+		return contains(actual, element);
+	}
+	
+	public static <T> boolean should_contain(String actual, CharSequence substring){
+		return actual.contains(substring);
+	}
+	
+	public static <T> boolean should_contain(T actual, Matcher<T> matcher){
+		return hasItem(matcher).matches(actual);
+	}
+	
+	public static <T> boolean should_be(T actual, boolean result){
+		return result;
+	}
+	
+	public static <T> Matcher<T> matches(final String desc, final Functions.Function1<T, Boolean> matcher){
 		return new TypeSafeMatcher<T>() {
 
 			public void describeTo(Description description) {
@@ -31,13 +66,4 @@ public class Should {
 			}
 		};
 	}
-	
-	public static Matcher<String> startWith(String substring){
-		return Matchers.startsWith(substring);
-	}
-	
-	public static Matcher<String> endWith(String substring){
-		return Matchers.endsWith(substring);
-	}
-
 }

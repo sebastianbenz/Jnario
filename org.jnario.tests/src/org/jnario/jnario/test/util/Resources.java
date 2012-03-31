@@ -8,7 +8,6 @@
 package org.jnario.jnario.test.util;
 
 import static java.util.Collections.singletonMap;
-import static junit.framework.Assert.assertTrue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -20,21 +19,18 @@ import junit.framework.Assert;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.parsetree.reconstr.XtextSerializationException;
 import org.eclipse.xtext.resource.SaveOptions;
 import org.eclipse.xtext.resource.containers.DelegatingIAllContainerAdapter;
 import org.eclipse.xtext.resource.containers.ResourceSetBasedAllContainersState;
 import org.eclipse.xtext.util.StringInputStream;
-import org.eclipse.xtext.util.Strings;
 
 import com.google.common.base.Function;
 import com.google.common.base.Joiner;

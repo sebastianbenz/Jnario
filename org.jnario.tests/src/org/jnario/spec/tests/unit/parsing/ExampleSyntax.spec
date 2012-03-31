@@ -37,8 +37,6 @@ describe "Specs Syntax"{
 	/* assertions */
 	fact assert 1 == 1
 	fact 1 => 1
-	fact 1 should 1
-	fact 1 should not 2
 	fact 1 should be 1
 	fact 1 should not be 2
 	fact {1 / 0} throws RuntimeException

@@ -35,9 +35,6 @@ public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequence
 	protected AbstractElementAlias match_XFunctionTypeRef___LeftParenthesisKeyword_0_0_RightParenthesisKeyword_0_2__q;
 	protected AbstractElementAlias match_XParenthesizedExpression_LeftParenthesisKeyword_0_a;
 	protected AbstractElementAlias match_XParenthesizedExpression_LeftParenthesisKeyword_0_p;
-	protected AbstractElementAlias match_XRelationalExpression_BeKeyword_1_0_0_0_1_0_2_q;
-	protected AbstractElementAlias match_XRelationalExpression_EqualsSignGreaterThanSignKeyword_1_0_0_0_1_1_or_____MustKeyword_1_0_0_0_1_0_0_1_or_ShouldKeyword_1_0_0_0_1_0_0_0___BeKeyword_1_0_0_0_1_0_2_q__;
-	protected AbstractElementAlias match_XRelationalExpression_MustKeyword_1_0_0_0_1_0_0_1_or_ShouldKeyword_1_0_0_0_1_0_0_0;
 	protected AbstractElementAlias match_XRelationalExpression_ThrowsKeyword_1_1_0_0_1_1_or_____MustKeyword_1_1_0_0_1_0_0_1_or_ShouldKeyword_1_1_0_0_1_0_0_0___ThrowKeyword_1_1_0_0_1_0_1__;
 	
 	@Inject
@@ -59,9 +56,6 @@ public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequence
 		match_XFunctionTypeRef___LeftParenthesisKeyword_0_0_RightParenthesisKeyword_0_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXFunctionTypeRefAccess().getLeftParenthesisKeyword_0_0()), new TokenAlias(false, false, grammarAccess.getXFunctionTypeRefAccess().getRightParenthesisKeyword_0_2()));
 		match_XParenthesizedExpression_LeftParenthesisKeyword_0_a = new TokenAlias(true, true, grammarAccess.getXParenthesizedExpressionAccess().getLeftParenthesisKeyword_0());
 		match_XParenthesizedExpression_LeftParenthesisKeyword_0_p = new TokenAlias(true, false, grammarAccess.getXParenthesizedExpressionAccess().getLeftParenthesisKeyword_0());
-		match_XRelationalExpression_BeKeyword_1_0_0_0_1_0_2_q = new TokenAlias(false, true, grammarAccess.getXRelationalExpressionAccess().getBeKeyword_1_0_0_0_1_0_2());
-		match_XRelationalExpression_EqualsSignGreaterThanSignKeyword_1_0_0_0_1_1_or_____MustKeyword_1_0_0_0_1_0_0_1_or_ShouldKeyword_1_0_0_0_1_0_0_0___BeKeyword_1_0_0_0_1_0_2_q__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getXRelationalExpressionAccess().getMustKeyword_1_0_0_0_1_0_0_1()), new TokenAlias(false, false, grammarAccess.getXRelationalExpressionAccess().getShouldKeyword_1_0_0_0_1_0_0_0())), new TokenAlias(false, true, grammarAccess.getXRelationalExpressionAccess().getBeKeyword_1_0_0_0_1_0_2())), new TokenAlias(false, false, grammarAccess.getXRelationalExpressionAccess().getEqualsSignGreaterThanSignKeyword_1_0_0_0_1_1()));
-		match_XRelationalExpression_MustKeyword_1_0_0_0_1_0_0_1_or_ShouldKeyword_1_0_0_0_1_0_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getXRelationalExpressionAccess().getMustKeyword_1_0_0_0_1_0_0_1()), new TokenAlias(false, false, grammarAccess.getXRelationalExpressionAccess().getShouldKeyword_1_0_0_0_1_0_0_0()));
 		match_XRelationalExpression_ThrowsKeyword_1_1_0_0_1_1_or_____MustKeyword_1_1_0_0_1_0_0_1_or_ShouldKeyword_1_1_0_0_1_0_0_0___ThrowKeyword_1_1_0_0_1_0_1__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getXRelationalExpressionAccess().getMustKeyword_1_1_0_0_1_0_0_1()), new TokenAlias(false, false, grammarAccess.getXRelationalExpressionAccess().getShouldKeyword_1_1_0_0_1_0_0_0())), new TokenAlias(false, false, grammarAccess.getXRelationalExpressionAccess().getThrowKeyword_1_1_0_0_1_0_1())), new TokenAlias(false, false, grammarAccess.getXRelationalExpressionAccess().getThrowsKeyword_1_1_0_0_1_1()));
 	}
 	
@@ -144,12 +138,6 @@ public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequence
 				emit_XParenthesizedExpression_LeftParenthesisKeyword_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_XParenthesizedExpression_LeftParenthesisKeyword_0_p.equals(syntax))
 				emit_XParenthesizedExpression_LeftParenthesisKeyword_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_XRelationalExpression_BeKeyword_1_0_0_0_1_0_2_q.equals(syntax))
-				emit_XRelationalExpression_BeKeyword_1_0_0_0_1_0_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_XRelationalExpression_EqualsSignGreaterThanSignKeyword_1_0_0_0_1_1_or_____MustKeyword_1_0_0_0_1_0_0_1_or_ShouldKeyword_1_0_0_0_1_0_0_0___BeKeyword_1_0_0_0_1_0_2_q__.equals(syntax))
-				emit_XRelationalExpression_EqualsSignGreaterThanSignKeyword_1_0_0_0_1_1_or_____MustKeyword_1_0_0_0_1_0_0_1_or_ShouldKeyword_1_0_0_0_1_0_0_0___BeKeyword_1_0_0_0_1_0_2_q__(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_XRelationalExpression_MustKeyword_1_0_0_0_1_0_0_1_or_ShouldKeyword_1_0_0_0_1_0_0_0.equals(syntax))
-				emit_XRelationalExpression_MustKeyword_1_0_0_0_1_0_0_1_or_ShouldKeyword_1_0_0_0_1_0_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_XRelationalExpression_ThrowsKeyword_1_1_0_0_1_1_or_____MustKeyword_1_1_0_0_1_0_0_1_or_ShouldKeyword_1_1_0_0_1_0_0_0___ThrowKeyword_1_1_0_0_1_0_1__.equals(syntax))
 				emit_XRelationalExpression_ThrowsKeyword_1_1_0_0_1_1_or_____MustKeyword_1_1_0_0_1_0_0_1_or_ShouldKeyword_1_1_0_0_1_0_0_0___ThrowKeyword_1_1_0_0_1_0_1__(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
@@ -174,7 +162,7 @@ public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequence
 	
 	/**
 	 * Syntax:
-	 *     PIPE_SPACES | PIPE
+	 *     PIPE | PIPE_SPACES
 	 */
 	protected void emit_ExampleColumn_PIPETerminalRuleCall_0_0_or_PIPE_SPACESTerminalRuleCall_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -182,7 +170,7 @@ public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequence
 	
 	/**
 	 * Syntax:
-	 *     PIPE | PIPE_SPACES
+	 *     PIPE_SPACES | PIPE
 	 */
 	protected void emit_ExampleRow_PIPETerminalRuleCall_0_0_0_or_PIPE_SPACESTerminalRuleCall_0_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -281,30 +269,6 @@ public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequence
 	 *     '('+
 	 */
 	protected void emit_XParenthesizedExpression_LeftParenthesisKeyword_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Syntax:
-	 *     'be'?
-	 */
-	protected void emit_XRelationalExpression_BeKeyword_1_0_0_0_1_0_2_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Syntax:
-	 *     '=>' | (('must' | 'should') 'be'?)
-	 */
-	protected void emit_XRelationalExpression_EqualsSignGreaterThanSignKeyword_1_0_0_0_1_1_or_____MustKeyword_1_0_0_0_1_0_0_1_or_ShouldKeyword_1_0_0_0_1_0_0_0___BeKeyword_1_0_0_0_1_0_2_q__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Syntax:
-	 *     'must' | 'should'
-	 */
-	protected void emit_XRelationalExpression_MustKeyword_1_0_0_0_1_0_0_1_or_ShouldKeyword_1_0_0_0_1_0_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

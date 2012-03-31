@@ -1239,15 +1239,9 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_1_0_0 = (Group)cGroup_1_0.eContents().get(0);
 		private final Group cGroup_1_0_0_0 = (Group)cGroup_1_0_0.eContents().get(0);
 		private final Action cShouldLeftOperandAction_1_0_0_0_0 = (Action)cGroup_1_0_0_0.eContents().get(0);
-		private final Alternatives cAlternatives_1_0_0_0_1 = (Alternatives)cGroup_1_0_0_0.eContents().get(1);
-		private final Group cGroup_1_0_0_0_1_0 = (Group)cAlternatives_1_0_0_0_1.eContents().get(0);
-		private final Alternatives cAlternatives_1_0_0_0_1_0_0 = (Alternatives)cGroup_1_0_0_0_1_0.eContents().get(0);
-		private final Keyword cShouldKeyword_1_0_0_0_1_0_0_0 = (Keyword)cAlternatives_1_0_0_0_1_0_0.eContents().get(0);
-		private final Keyword cMustKeyword_1_0_0_0_1_0_0_1 = (Keyword)cAlternatives_1_0_0_0_1_0_0.eContents().get(1);
-		private final Assignment cNotAssignment_1_0_0_0_1_0_1 = (Assignment)cGroup_1_0_0_0_1_0.eContents().get(1);
-		private final Keyword cNotNotKeyword_1_0_0_0_1_0_1_0 = (Keyword)cNotAssignment_1_0_0_0_1_0_1.eContents().get(0);
-		private final Keyword cBeKeyword_1_0_0_0_1_0_2 = (Keyword)cGroup_1_0_0_0_1_0.eContents().get(2);
-		private final Keyword cEqualsSignGreaterThanSignKeyword_1_0_0_0_1_1 = (Keyword)cAlternatives_1_0_0_0_1.eContents().get(1);
+		private final Assignment cFeatureAssignment_1_0_0_0_1 = (Assignment)cGroup_1_0_0_0.eContents().get(1);
+		private final CrossReference cFeatureJvmIdentifiableElementCrossReference_1_0_0_0_1_0 = (CrossReference)cFeatureAssignment_1_0_0_0_1.eContents().get(0);
+		private final RuleCall cFeatureJvmIdentifiableElementShouldParserRuleCall_1_0_0_0_1_0_1 = (RuleCall)cFeatureJvmIdentifiableElementCrossReference_1_0_0_0_1_0.eContents().get(1);
 		private final Assignment cRightOperandAssignment_1_0_1 = (Assignment)cGroup_1_0.eContents().get(1);
 		private final RuleCall cRightOperandXOtherOperatorExpressionParserRuleCall_1_0_1_0 = (RuleCall)cRightOperandAssignment_1_0_1.eContents().get(0);
 		private final Group cGroup_1_1 = (Group)cAlternatives_1.eContents().get(1);
@@ -1256,9 +1250,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final Action cShouldThrowExpressionAction_1_1_0_0_0 = (Action)cGroup_1_1_0_0.eContents().get(0);
 		private final Alternatives cAlternatives_1_1_0_0_1 = (Alternatives)cGroup_1_1_0_0.eContents().get(1);
 		private final Group cGroup_1_1_0_0_1_0 = (Group)cAlternatives_1_1_0_0_1.eContents().get(0);
-		private final Alternatives cAlternatives_1_1_0_0_1_0_0 = (Alternatives)cGroup_1_1_0_0_1_0.eContents().get(0);
-		private final Keyword cShouldKeyword_1_1_0_0_1_0_0_0 = (Keyword)cAlternatives_1_1_0_0_1_0_0.eContents().get(0);
-		private final Keyword cMustKeyword_1_1_0_0_1_0_0_1 = (Keyword)cAlternatives_1_1_0_0_1_0_0.eContents().get(1);
+		private final Keyword cShouldKeyword_1_1_0_0_1_0_0 = (Keyword)cGroup_1_1_0_0_1_0.eContents().get(0);
 		private final Keyword cThrowKeyword_1_1_0_0_1_0_1 = (Keyword)cGroup_1_1_0_0_1_0.eContents().get(1);
 		private final Keyword cThrowsKeyword_1_1_0_0_1_1 = (Keyword)cAlternatives_1_1_0_0_1.eContents().get(1);
 		private final Assignment cTypeAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
@@ -1281,15 +1273,15 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRightOperandXOtherOperatorExpressionParserRuleCall_1_3_1_0 = (RuleCall)cRightOperandAssignment_1_3_1.eContents().get(0);
 		
 		//XRelationalExpression returns xbase::XExpression:
-		//	XOtherOperatorExpression (=> ({Should.leftOperand=current} (("should" | "must") not?="not"? "be"? | "=>"))
-		//	rightOperand=XOtherOperatorExpression | => ({ShouldThrow.expression=current} (("should" | "must") "throw" | "throws"))
+		//	XOtherOperatorExpression (=> ({Should.leftOperand=current} feature=[types::JvmIdentifiableElement|Should])
+		//	rightOperand=XOtherOperatorExpression | => ({ShouldThrow.expression=current} ("should" "throw" | "throws"))
 		//	type=JvmTypeReference | => ({xbase::XInstanceOfExpression.expression=current} "instanceof") type=JvmTypeReference | =>
 		//	({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare])
 		//	rightOperand=XOtherOperatorExpression)*;
 		public ParserRule getRule() { return rule; }
 
-		//XOtherOperatorExpression (=> ({Should.leftOperand=current} (("should" | "must") not?="not"? "be"? | "=>"))
-		//rightOperand=XOtherOperatorExpression | => ({ShouldThrow.expression=current} (("should" | "must") "throw" | "throws"))
+		//XOtherOperatorExpression (=> ({Should.leftOperand=current} feature=[types::JvmIdentifiableElement|Should])
+		//rightOperand=XOtherOperatorExpression | => ({ShouldThrow.expression=current} ("should" "throw" | "throws"))
 		//type=JvmTypeReference | => ({xbase::XInstanceOfExpression.expression=current} "instanceof") type=JvmTypeReference | =>
 		//({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare])
 		//rightOperand=XOtherOperatorExpression)*
@@ -1298,51 +1290,33 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//XOtherOperatorExpression
 		public RuleCall getXOtherOperatorExpressionParserRuleCall_0() { return cXOtherOperatorExpressionParserRuleCall_0; }
 
-		//(=> ({Should.leftOperand=current} (("should" | "must") not?="not"? "be"? | "=>")) rightOperand=XOtherOperatorExpression
-		//| => ({ShouldThrow.expression=current} (("should" | "must") "throw" | "throws")) type=JvmTypeReference | =>
+		//(=> ({Should.leftOperand=current} feature=[types::JvmIdentifiableElement|Should]) rightOperand=XOtherOperatorExpression
+		//| => ({ShouldThrow.expression=current} ("should" "throw" | "throws")) type=JvmTypeReference | =>
 		//({xbase::XInstanceOfExpression.expression=current} "instanceof") type=JvmTypeReference | =>
 		//({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare])
 		//rightOperand=XOtherOperatorExpression)*
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 
-		//=> ({Should.leftOperand=current} (("should" | "must") not?="not"? "be"? | "=>")) rightOperand=XOtherOperatorExpression
+		//=> ({Should.leftOperand=current} feature=[types::JvmIdentifiableElement|Should]) rightOperand=XOtherOperatorExpression
 		public Group getGroup_1_0() { return cGroup_1_0; }
 
-		//=> ({Should.leftOperand=current} (("should" | "must") not?="not"? "be"? | "=>"))
+		//=> ({Should.leftOperand=current} feature=[types::JvmIdentifiableElement|Should])
 		public Group getGroup_1_0_0() { return cGroup_1_0_0; }
 
-		//{Should.leftOperand=current} (("should" | "must") not?="not"? "be"? | "=>")
+		//{Should.leftOperand=current} feature=[types::JvmIdentifiableElement|Should]
 		public Group getGroup_1_0_0_0() { return cGroup_1_0_0_0; }
 
 		//{Should.leftOperand=current}
 		public Action getShouldLeftOperandAction_1_0_0_0_0() { return cShouldLeftOperandAction_1_0_0_0_0; }
 
-		//("should" | "must") not?="not"? "be"? | "=>"
-		public Alternatives getAlternatives_1_0_0_0_1() { return cAlternatives_1_0_0_0_1; }
+		//feature=[types::JvmIdentifiableElement|Should]
+		public Assignment getFeatureAssignment_1_0_0_0_1() { return cFeatureAssignment_1_0_0_0_1; }
 
-		//("should" | "must") not?="not"? "be"?
-		public Group getGroup_1_0_0_0_1_0() { return cGroup_1_0_0_0_1_0; }
+		//[types::JvmIdentifiableElement|Should]
+		public CrossReference getFeatureJvmIdentifiableElementCrossReference_1_0_0_0_1_0() { return cFeatureJvmIdentifiableElementCrossReference_1_0_0_0_1_0; }
 
-		//"should" | "must"
-		public Alternatives getAlternatives_1_0_0_0_1_0_0() { return cAlternatives_1_0_0_0_1_0_0; }
-
-		//"should"
-		public Keyword getShouldKeyword_1_0_0_0_1_0_0_0() { return cShouldKeyword_1_0_0_0_1_0_0_0; }
-
-		//"must"
-		public Keyword getMustKeyword_1_0_0_0_1_0_0_1() { return cMustKeyword_1_0_0_0_1_0_0_1; }
-
-		//not?="not"?
-		public Assignment getNotAssignment_1_0_0_0_1_0_1() { return cNotAssignment_1_0_0_0_1_0_1; }
-
-		//"not"
-		public Keyword getNotNotKeyword_1_0_0_0_1_0_1_0() { return cNotNotKeyword_1_0_0_0_1_0_1_0; }
-
-		//"be"?
-		public Keyword getBeKeyword_1_0_0_0_1_0_2() { return cBeKeyword_1_0_0_0_1_0_2; }
-
-		//"=>"
-		public Keyword getEqualsSignGreaterThanSignKeyword_1_0_0_0_1_1() { return cEqualsSignGreaterThanSignKeyword_1_0_0_0_1_1; }
+		//Should
+		public RuleCall getFeatureJvmIdentifiableElementShouldParserRuleCall_1_0_0_0_1_0_1() { return cFeatureJvmIdentifiableElementShouldParserRuleCall_1_0_0_0_1_0_1; }
 
 		//rightOperand=XOtherOperatorExpression
 		public Assignment getRightOperandAssignment_1_0_1() { return cRightOperandAssignment_1_0_1; }
@@ -1350,32 +1324,26 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//XOtherOperatorExpression
 		public RuleCall getRightOperandXOtherOperatorExpressionParserRuleCall_1_0_1_0() { return cRightOperandXOtherOperatorExpressionParserRuleCall_1_0_1_0; }
 
-		//=> ({ShouldThrow.expression=current} (("should" | "must") "throw" | "throws")) type=JvmTypeReference
+		//=> ({ShouldThrow.expression=current} ("should" "throw" | "throws")) type=JvmTypeReference
 		public Group getGroup_1_1() { return cGroup_1_1; }
 
-		//=> ({ShouldThrow.expression=current} (("should" | "must") "throw" | "throws"))
+		//=> ({ShouldThrow.expression=current} ("should" "throw" | "throws"))
 		public Group getGroup_1_1_0() { return cGroup_1_1_0; }
 
-		//{ShouldThrow.expression=current} (("should" | "must") "throw" | "throws")
+		//{ShouldThrow.expression=current} ("should" "throw" | "throws")
 		public Group getGroup_1_1_0_0() { return cGroup_1_1_0_0; }
 
 		//{ShouldThrow.expression=current}
 		public Action getShouldThrowExpressionAction_1_1_0_0_0() { return cShouldThrowExpressionAction_1_1_0_0_0; }
 
-		//("should" | "must") "throw" | "throws"
+		//"should" "throw" | "throws"
 		public Alternatives getAlternatives_1_1_0_0_1() { return cAlternatives_1_1_0_0_1; }
 
-		//("should" | "must") "throw"
+		//"should" "throw"
 		public Group getGroup_1_1_0_0_1_0() { return cGroup_1_1_0_0_1_0; }
 
-		//"should" | "must"
-		public Alternatives getAlternatives_1_1_0_0_1_0_0() { return cAlternatives_1_1_0_0_1_0_0; }
-
 		//"should"
-		public Keyword getShouldKeyword_1_1_0_0_1_0_0_0() { return cShouldKeyword_1_1_0_0_1_0_0_0; }
-
-		//"must"
-		public Keyword getMustKeyword_1_1_0_0_1_0_0_1() { return cMustKeyword_1_1_0_0_1_0_0_1; }
+		public Keyword getShouldKeyword_1_1_0_0_1_0_0() { return cShouldKeyword_1_1_0_0_1_0_0; }
 
 		//"throw"
 		public Keyword getThrowKeyword_1_1_0_0_1_0_1() { return cThrowKeyword_1_1_0_0_1_0_1; }
@@ -1437,6 +1405,38 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 
 		//XOtherOperatorExpression
 		public RuleCall getRightOperandXOtherOperatorExpressionParserRuleCall_1_3_1_0() { return cRightOperandXOtherOperatorExpressionParserRuleCall_1_3_1_0; }
+	}
+
+	public class ShouldElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Should");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Keyword cShouldKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Keyword cNotKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
+		private final RuleCall cIDTerminalRuleCall_0_2 = (RuleCall)cGroup_0.eContents().get(2);
+		private final Keyword cEqualsSignGreaterThanSignKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		
+		//Should:
+		//	"should" "not"? ID | "=>";
+		public ParserRule getRule() { return rule; }
+
+		//"should" "not"? ID | "=>"
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//"should" "not"? ID
+		public Group getGroup_0() { return cGroup_0; }
+
+		//"should"
+		public Keyword getShouldKeyword_0_0() { return cShouldKeyword_0_0; }
+
+		//"not"?
+		public Keyword getNotKeyword_0_1() { return cNotKeyword_0_1; }
+
+		//ID
+		public RuleCall getIDTerminalRuleCall_0_2() { return cIDTerminalRuleCall_0_2; }
+
+		//"=>"
+		public Keyword getEqualsSignGreaterThanSignKeyword_1() { return cEqualsSignGreaterThanSignKeyword_1; }
 	}
 
 	public class AssertionElements extends AbstractParserRuleElementFinder {
@@ -1642,6 +1642,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	private ListLiteralElements pListLiteral;
 	private SetLiteralElements pSetLiteral;
 	private XRelationalExpressionElements pXRelationalExpression;
+	private ShouldElements pShould;
 	private AssertionElements pAssertion;
 	private MatcherElements pMatcher;
 	private MatcherClosureElements pMatcherClosure;
@@ -1797,8 +1798,8 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XRelationalExpression returns xbase::XExpression:
-	//	XOtherOperatorExpression (=> ({Should.leftOperand=current} (("should" | "must") not?="not"? "be"? | "=>"))
-	//	rightOperand=XOtherOperatorExpression | => ({ShouldThrow.expression=current} (("should" | "must") "throw" | "throws"))
+	//	XOtherOperatorExpression (=> ({Should.leftOperand=current} feature=[types::JvmIdentifiableElement|Should])
+	//	rightOperand=XOtherOperatorExpression | => ({ShouldThrow.expression=current} ("should" "throw" | "throws"))
 	//	type=JvmTypeReference | => ({xbase::XInstanceOfExpression.expression=current} "instanceof") type=JvmTypeReference | =>
 	//	({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare])
 	//	rightOperand=XOtherOperatorExpression)*;
@@ -1808,6 +1809,16 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getXRelationalExpressionRule() {
 		return getXRelationalExpressionAccess().getRule();
+	}
+
+	//Should:
+	//	"should" "not"? ID | "=>";
+	public ShouldElements getShouldAccess() {
+		return (pShould != null) ? pShould : (pShould = new ShouldElements());
+	}
+	
+	public ParserRule getShouldRule() {
+		return getShouldAccess().getRule();
 	}
 
 	//Assertion returns xbase::XExpression:

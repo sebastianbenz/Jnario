@@ -2,15 +2,13 @@
  */
 package org.jnario.impl;
 
+import static org.jnario.util.Nodes.textForFeature;
+
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.xtext.xbase.impl.XBinaryOperationImpl;
+import org.eclipse.xtext.xbase.XbasePackage;
 import org.eclipse.xtext.xbase.impl.XBinaryOperationImplCustom;
-
 import org.jnario.JnarioPackage;
 import org.jnario.Should;
 
@@ -67,12 +65,19 @@ public class ShouldImpl extends XBinaryOperationImplCustom implements Should {
 		return JnarioPackage.Literals.SHOULD;
 	}
 
+	
+	private boolean notHasBeenDerived = false;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean isNot() {
+		if(!notHasBeenDerived){
+			String text = textForFeature(this, XbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE);
+			not = text.contains(" not ");
+			notHasBeenDerived = true;
+		}
 		return not;
 	}
 
@@ -160,6 +165,10 @@ public class ShouldImpl extends XBinaryOperationImplCustom implements Should {
 		result.append(not);
 		result.append(')');
 		return result.toString();
+	}
+
+	public String getMethodName() {
+		return null;
 	}
 
 } //ShouldImpl

@@ -10,18 +10,25 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.xtext.xbase.XExpression;
-
-import org.eclipse.xtext.xbase.XFeatureCall;
-import org.eclipse.xtext.xbase.XInstanceOfExpression;
 import org.eclipse.xtend.core.xtend.XtendAnnotationTarget;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendMember;
-
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XBinaryOperation;
+import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.XFeatureCall;
 import org.jnario.*;
+import org.jnario.Assertion;
+import org.jnario.CollectionLiteral;
+import org.jnario.ExampleColumn;
+import org.jnario.ExampleRow;
+import org.jnario.ExampleTable;
+import org.jnario.JnarioPackage;
+import org.jnario.ListLiteral;
+import org.jnario.Matcher;
+import org.jnario.SetLiteral;
+import org.jnario.Should;
+import org.jnario.ShouldThrow;
 
 /**
  * <!-- begin-user-doc -->

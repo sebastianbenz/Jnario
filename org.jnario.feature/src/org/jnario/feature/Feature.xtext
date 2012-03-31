@@ -142,38 +142,19 @@ XPrimaryExpression returns xbase::XExpression:
 	Assertion |
 	Matcher;
 
-XLiteral returns xbase::XExpression:
-	XClosure |
-	XBooleanLiteral |
-	XNumberLiteral |
-	XNullLiteral |
-	XStringLiteral |
-	XTypeLiteral |
-	CollectionLiteral
-;
-
-CollectionLiteral:
-	ListLiteral | SetLiteral
-;
-
-ListLiteral:
-	{ListLiteral}  '#(' (featureCallArguments+=XExpression  (',' featureCallArguments+=XExpression)*)? ')'
-;
-
-SetLiteral :
-	{SetLiteral} '#{'  (featureCallArguments+=XExpression  (',' featureCallArguments+=XExpression)*)? '}'
-;
-
-
 XRelationalExpression returns xbase::XExpression:
 	XOtherOperatorExpression
 	( 
-	 =>({Should.leftOperand=current} 
-	 		(('should'|'must') not?='not'? 'be'? 
-	 		 | '=>')) rightOperand=XOtherOperatorExpression |
+	  =>({Should.leftOperand=current} 
+	 		( feature=[types::JvmIdentifiableElement|Should])) rightOperand=XOtherOperatorExpression |
 	 =>({ShouldThrow.expression=current} ((('should'|'must') 'throw') | 'throws')) type=JvmTypeReference |
 	 =>({xbase::XInstanceOfExpression.expression=current} 'instanceof') type=JvmTypeReference |
 	 =>({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare]) rightOperand=XOtherOperatorExpression)*;
+
+Should:
+	('should' 'not'? ID) | '=>'
+;
+
 
 Assertion returns xbase::XExpression: 
 	{Assertion}

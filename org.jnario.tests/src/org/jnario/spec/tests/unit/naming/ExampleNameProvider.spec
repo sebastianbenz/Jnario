@@ -28,7 +28,7 @@ describe ExampleNameProvider{
   context toJavaClassName{ 
     
     fact "should remove all white spaces from ExampleGroup's description"{
-      firstJavaClassName("describe 'My Example'") should not hasItem(" ")
+      firstJavaClassName("describe 'My Example'") should not contain " "
     }  
     fact "should append 'Spec' to class name"{ 
       firstJavaClassName("describe 'My Example'") => endsWith('Spec') 

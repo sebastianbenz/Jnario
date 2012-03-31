@@ -121,11 +121,14 @@ XRelationalExpression returns xbase::XExpression:
 	XOtherOperatorExpression
 	( 
 	 =>({Should.leftOperand=current} 
-	 		(('should'|'must') not?='not'? 'be'? 
-	 		 | '=>')) rightOperand=XOtherOperatorExpression |
-	 =>({ShouldThrow.expression=current} ((('should'|'must') 'throw') | 'throws')) type=JvmTypeReference |
+	 		( feature=[types::JvmIdentifiableElement|Should])) rightOperand=XOtherOperatorExpression |
+	 =>({ShouldThrow.expression=current} ((('should') 'throw') | 'throws')) type=JvmTypeReference |
 	 =>({xbase::XInstanceOfExpression.expression=current} 'instanceof') type=JvmTypeReference |
 	 =>({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare]) rightOperand=XOtherOperatorExpression)*;
+
+Should:
+	('should' 'not'? ID) | '=>'
+;
 
 Assertion returns xbase::XExpression: 
 	{Assertion}

@@ -47,4 +47,12 @@ public interface Should extends XBinaryOperation {
 	 */
 	void setNot(boolean value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	String getMethodName();
+
 } // Should

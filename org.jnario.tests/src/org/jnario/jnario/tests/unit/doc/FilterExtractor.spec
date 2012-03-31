@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.jnario.jnario.tests.unit
+package org.jnario.jnario.tests.unit.doc
 
 import java.util.List
 import org.jnario.doc.FilterExtractor

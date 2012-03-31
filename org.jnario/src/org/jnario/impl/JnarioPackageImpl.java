@@ -500,6 +500,8 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		initEClass(shouldEClass, Should.class, "Should", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getShould_Not(), ecorePackage.getEBoolean(), "not", null, 0, 1, Should.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		addEOperation(shouldEClass, ecorePackage.getEString(), "getMethodName", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(collectionLiteralEClass, CollectionLiteral.class, "CollectionLiteral", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		addEOperation(collectionLiteralEClass, ecorePackage.getEString(), "operationName", 0, 1, IS_UNIQUE, IS_ORDERED);

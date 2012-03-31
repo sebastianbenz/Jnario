@@ -5,48 +5,39 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.jnario.jnario.tests.unit
+package org.jnario.jnario.tests.unit.jnario
 
 import com.google.inject.Inject
-import org.jnario.ExampleTable
+import org.jnario.Should
 import org.jnario.jnario.test.util.ModelStore
 import org.jnario.jnario.test.util.SpecTestInstantiator
 import org.jnario.runner.InstantiateWith
 
-import static extension org.jnario.lib.Should.*
-
 @InstantiateWith(typeof(SpecTestInstantiator))
-describe ExampleTable{
+describe Should{
 
 	@Inject extension ModelStore 
 
-	fact "is valid if all rows have the same number of columns"{
+	fact "'isNot' is false if for '1 should be 1"{
 		parseSpec('''
 			package bootstrap
-			describe "ExampleTable"{
-				def{
-					| a | b |
-					| 1 | 2 |
-					| 1 | 3 |
-				}
+			describe "Should"{
+				fact 1 should be 1
 			}
 		''')
 		
-		assert query.first(typeof(ExampleTable)).isValid()
+		assert !query.first(typeof(Should)).isNot
 	}
 	
-	fact "is invalid if one row has a different number of columns"{
+	fact "'isNot' is true if for '1 should not be 1"{
 		parseSpec('''
 			package bootstrap
-			describe "ExampleTable"{
-				def{
-					| a | b |
-					| 1 | 2 |
-					| 1 | 
-				}
+			describe "Should"{
+				fact 1 should not be 1
 			}
 		''')
 		
-		assert !query.first(typeof(ExampleTable)).isValid()
+		assert query.first(typeof(Should)).isNot
 	}
+	
 }

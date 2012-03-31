@@ -7,18 +7,13 @@
 package org.jnario.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.impl.XExpressionImpl;
-import org.eclipse.xtext.xbase.impl.XInstanceOfExpressionImpl;
-
 import org.jnario.JnarioPackage;
 import org.jnario.ShouldThrow;
 

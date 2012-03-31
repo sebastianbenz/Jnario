@@ -8,8 +8,8 @@
 
 package org.jnario.lib;
 
-import static com.google.common.collect.Lists.*;
-import java.util.ArrayList;
+import static com.google.common.collect.Lists.newArrayList;
+
 import java.util.List;
 
 /**

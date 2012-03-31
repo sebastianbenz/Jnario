@@ -5,13 +5,13 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.jnario.jnario.tests.unit;
+package org.jnario.jnario.tests.unit.jnario;
 
 import org.junit.runner.RunWith;
 
 import org.jnario.jnario.test.util.SpecTestRunner;
 
 @RunWith(SpecTestRunner.class)
-public class CommonTest {
+public class JnarioModelTest {
 
 }

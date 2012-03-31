@@ -28,7 +28,6 @@ import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeatureFile;
 import org.jnario.feature.generator.FeatureJvmModelGenerator;
 import org.jnario.feature.naming.JavaNameProvider;
-import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
 import org.junit.Assert;
 import org.junit.rules.TemporaryFolder;
 import org.junit.runner.Result;

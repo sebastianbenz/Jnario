@@ -8,7 +8,6 @@ package org.jnario;
 
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.xbase.XExpression;
-import org.eclipse.xtext.xbase.XInstanceOfExpression;
 
 /**
  * <!-- begin-user-doc -->

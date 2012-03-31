@@ -18,32 +18,41 @@ import static org.hamcrest.Matchers.*
 describe "Using Should"{
 
 	/*
-	 * `should` and `must` pass if the result of the left expression is 
+	 * `should` passes if the result of the left expression is 
 	 * equal to the result of the right expression. You can use `not` to 
 	 * assert that the expressions have different results. There is also 
 	 * a short cut available: `=>` which has the same effect as `should be`.
-	 */	
+	 */
 	fact "To pass.."{
+		// equality
 		true should be true
-		"hello" must be "hello"
 		1 + 1 should not be 1 
-		"hello".toUpperCase must not be "Hello"
 		"something" should not be null 
 		1 + 1 => 2 
+		
+		// types
 		"a string" => typeof(String)
+		
+		// strings
+		"something" should contain "thing"
+		"something" should not contain "any"
+		
+		// iterables
+		newArrayList("something") should contain "something"
+		newArrayList("something") should not contain "something else"
 	}     
-	    
+ 
 	/*     
-	 * `should` and `must` throw an AssertionError if the result of the left 
+	 * `should` throws an AssertionError if the result of the left 
 	 * expression does not equal the result of the right expression.
 	 */
 	fact "...or not to pass"{
-			  1 + 1 should be 1  throws AssertionError
-			  1 + 1 should not be 1  throws AssertionError
-			  1 + 1 => 1  throws AssertionError
-		}   
+	  1 + 1 should be 1  throws AssertionError
+	  1 + 1 should not be 1  throws AssertionError
+	  1 + 1 => 1  throws AssertionError
+	}   
  
-		/*
+	/*
 	 * When failing, `should` and `=>` try to give you as much context information as possible. 
 	 * The error message will print the values of all expressions and their subexpressions.
 	 *  
@@ -68,17 +77,18 @@ describe "Using Should"{
 		
     
 	/*
-	 * You can also the `should`and `=>` together with [Hamcrest](http://code.google.com/p/hamcrest/) 
-	 * matchers. You need to add the following static import statements to run the following examples.
+	 * You can also the `should` and `=>` together with [hamcrest](http://code.google.com/p/hamcrest/) 
+	 * matchers. The following static import statements are needed to run the examples.
 	 *  
 	 *     import static org.hamcrest.CoreMatchers.startsWith
+	 *     import static org.hamcrest.CoreMatchers.equalTo
 	 *     import static org.hamcrest.Matchers.hasItem
 	 * 
-	 * In this example we use these matchers together with `=>` statement.
 	 */ 
 	fact "Combining hamcrest and should"{
 		"hello" => startsWith("h")
 		newArrayList("red", "green") => hasItem("red")
+		"hello" should be equalTo("hello")
 	}
 		
 }
