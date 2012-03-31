@@ -5,16 +5,17 @@ Bundle-SymbolicName: org.jnario.ui;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-Vendor: BWM Car IT
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Require-Bundle: org.eclipse.core.resources;bundle-version="3.7.100",
- org.eclipse.xtext.builder;bundle-version="2.2.0",
- org.eclipse.jdt.core;bundle-version="3.7.1",
- org.eclipse.core.runtime;bundle-version="3.7.0",
- org.eclipse.xtext.ui;bundle-version="2.2.0",
+Require-Bundle: org.eclipse.core.resources,
+ org.eclipse.xtext.builder;bundle-version="2.3.0",
+ org.eclipse.jdt.core,
+ org.eclipse.core.runtime,
+ org.eclipse.xtext.ui;bundle-version="2.3.0",
  org.apache.log4j;bundle-version="1.2.15",
  org.jnario;bundle-version="0.1.0",
- org.eclipse.xtend.ide;bundle-version="2.2.1",
- org.eclipse.xtext.common.types.ui;bundle-version="2.2.1",
- org.eclipse.jdt.ui
+ org.eclipse.xtend.ide;bundle-version="2.3.0",
+ org.eclipse.xtext.common.types.ui;bundle-version="2.3.0",
+ org.eclipse.jdt.ui,
+ org.eclipse.xtext.xbase.ui;bundle-version="2.3.0"
 Bundle-ActivationPolicy: lazy
 Export-Package: org.jnario.ui.builder,
  org.jnario.ui.quickfix
