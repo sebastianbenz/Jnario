@@ -10,24 +10,20 @@
  */
 package org.jnario.feature.ui.contentassist;
 
-import java.util.Iterator;
-import java.util.List;
+import static com.google.common.collect.Iterators.filter;
+import static org.jnario.util.Nodes.textForFeature;
 
-import org.eclipse.emf.common.util.TreeIterator;
+import java.util.Iterator;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.CrossReference;
 import org.eclipse.xtext.RuleCall;
-import org.eclipse.xtext.nodemodel.INode;
-import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.jnario.feature.feature.FeaturePackage;
-import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepReference;
-
-import com.google.common.collect.Iterators;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -70,24 +66,16 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 	private void completeStepReference(EObject model,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor,
 			String stepPrefix) {
-		TreeIterator<EObject> allContents = model.eResource().getAllContents();
-		Iterator<Step> steps = Iterators.filter(allContents, Step.class);
+		Iterator<EObject> allContents = model.eResource().getAllContents();
+		Iterator<StepReference> steps = filter(allContents, StepReference.class);
 		while (steps.hasNext()) {
-			Step step = (Step) steps.next();
-			if (step instanceof StepReference) {
-				StepReference ref = (StepReference) step;
-					if(ref.getReference().eIsProxy()){
-					List<INode> nodes = NodeModelUtils.findNodesForFeature(ref, FeaturePackage.Literals.STEP_REFERENCE__REFERENCE);
-					StringBuilder sb = new StringBuilder();
-					for (INode node : nodes) {
-						sb.append(node.getText());
-					}
-					String string = sb.toString();
-					String proposal = string.substring(string.indexOf(" "));
-					proposal = stepPrefix + proposal;
-					acceptor.accept(createCompletionProposal(proposal.trim() , context));
-				}
-				
+			StepReference ref = (StepReference) steps.next();
+			if(ref.getReference().eIsProxy()){
+				String string = textForFeature(ref, FeaturePackage.Literals.STEP_REFERENCE__REFERENCE);
+				String proposal = string.substring(string.indexOf(" "));
+				proposal = stepPrefix + proposal;
+				proposal = proposal.trim();
+				acceptor.accept(createCompletionProposal(proposal, string, getLabelProvider().getImage(ref) , context));
 			}
 		}
 	}
@@ -95,43 +83,50 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 	@Override
 	public void complete_FEATURE_TEXT(EObject model, RuleCall ruleCall,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		acceptor.accept(createCompletionProposal("Feature: ", context));
+		String proposal = "Feature: ";
+		acceptor.accept(createCompletionProposal(proposal, proposal, getLabelProvider().getImage(model), context));
 	}
 	
 	@Override
 	public void complete_BACKGROUND_TEXT(EObject model, RuleCall ruleCall,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		acceptor.accept(createCompletionProposal("Background: ", context));
+		String proposal = "Background: ";
+		acceptor.accept(createCompletionProposal(proposal, proposal, getLabelProvider().getImage(model), context));
 	}
 	
 	@Override
 	public void complete_SCENARIO_TEXT(EObject model, RuleCall ruleCall,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		acceptor.accept(createCompletionProposal("Scenario: ", context));
+		String proposal = "Scenario: ";
+		acceptor.accept(createCompletionProposal(proposal, proposal, getLabelProvider().getImage(model), context));
 	}
 	
 	@Override
 	public void complete_GIVEN_TEXT(EObject model, RuleCall ruleCall,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		acceptor.accept(createCompletionProposal("Given ", context));
+		String proposal = "Given ";
+		acceptor.accept(createCompletionProposal(proposal, proposal, getLabelProvider().getImage(model), context));
 	}
 	
 	@Override
 	public void complete_WHEN_TEXT(EObject model, RuleCall ruleCall,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		acceptor.accept(createCompletionProposal("When ", context));
+		String proposal = "When ";
+		acceptor.accept(createCompletionProposal(proposal, proposal, getLabelProvider().getImage(model), context));
 	}
 	
 	@Override
 	public void complete_THEN_TEXT(EObject model, RuleCall ruleCall,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		acceptor.accept(createCompletionProposal("Then ", context));
+		String proposal = "Then ";
+		acceptor.accept(createCompletionProposal(proposal, proposal, getLabelProvider().getImage(model), context));
 	}
 	
 	@Override
 	public void complete_EXAMPLE_TEXT(EObject model, RuleCall ruleCall,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		acceptor.accept(createCompletionProposal("Examples: ", context));
+		String proposal = "Examples: ";
+		acceptor.accept(createCompletionProposal(proposal, proposal, getLabelProvider().getImage(model), context));
 	}
 	
 	@Override
@@ -141,9 +136,6 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 	}
 	
 	protected StyledString getStyledDisplayString(EObject element, String qualifiedName, String shortName) {
-		if(element instanceof Step){
-			
-		}
 		return new StyledString(getDisplayString(element, qualifiedName, shortName));
 	}
 	
