@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtend.core.xtend.XtendField;
-import org.eclipse.xtend.ide.highlighting.XtendHighlightingCalculator;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
@@ -27,12 +26,13 @@ import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepReference;
 import org.jnario.feature.feature.util.FeatureSwitch;
 import org.jnario.feature.jvmmodel.StepArgumentsProvider;
+import org.jnario.ui.highlighting.JnarioHighlightingCalculator;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  * @author Sebastian Benz
  */
-public class FeatureSemanticHighlightingCalculator extends XtendHighlightingCalculator {
+public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCalculator {
 
 	private class Implementation extends FeatureSwitch<Boolean> {
 
