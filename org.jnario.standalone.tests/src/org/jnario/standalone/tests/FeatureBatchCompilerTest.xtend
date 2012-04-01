@@ -4,21 +4,22 @@ import com.google.inject.Inject
 import java.io.File
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
-import org.jnario.spec.compiler.batch.SpecBatchCompiler
+import org.jnario.feature.FeatureInjectorProvider
+import org.jnario.feature.compiler.batch.FeatureBatchCompiler
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
 import static org.eclipse.xtext.util.Files.*
-import static org.jnario.standalone.tests.TestBatchCompiler.*
+import static org.jnario.standalone.tests.FeatureBatchCompilerTest.*
 import static org.junit.Assert.*
 
 @RunWith(typeof(XtextRunner))
-@InjectWith(typeof(SpecInjectorProvider))
-class TestBatchCompiler {
+@InjectWith(typeof(FeatureInjectorProvider))
+class FeatureBatchCompilerTest {
 
-	@Inject	SpecBatchCompiler batchCompiler
+	@Inject	FeatureBatchCompiler batchCompiler
 
     static String OUTPUT_DIRECTORY_WITH_SPACES = "./test result"
     static String OUTPUT_DIRECTORY = "./test-result"
@@ -47,7 +48,7 @@ class TestBatchCompiler {
 	@Test
 	def void testCompileTestData() {
 		batchCompiler.compile
-		assertEquals(2, new File(OUTPUT_DIRECTORY+"/test").list.size)
+		assertEquals(6, new File(OUTPUT_DIRECTORY+"/test").list.size)
 	}
 
 }

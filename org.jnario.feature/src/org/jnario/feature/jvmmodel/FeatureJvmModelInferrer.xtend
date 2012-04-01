@@ -17,17 +17,18 @@ import org.eclipse.xtend.core.xtend.XtendMember
 import org.eclipse.xtext.common.types.JvmConstructor
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmOperation
+import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.xbase.XConstructorCall
 import org.eclipse.xtext.xbase.XFeatureCall
 import org.eclipse.xtext.xbase.XMemberFeatureCall
+import org.eclipse.xtext.xbase.XStringLiteral
 import org.eclipse.xtext.xbase.XVariableDeclaration
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator
 import org.jnario.ExampleColumn
 import org.jnario.ExampleRow
-import org.jnario.ExampleTable
 import org.jnario.feature.feature.And
 import org.jnario.feature.feature.AndReference
 import org.jnario.feature.feature.Feature
@@ -36,6 +37,7 @@ import org.jnario.feature.feature.Given
 import org.jnario.feature.feature.GivenReference
 import org.jnario.feature.feature.Scenario
 import org.jnario.feature.feature.Step
+import org.jnario.feature.feature.StepReference
 import org.jnario.feature.naming.JavaNameProvider
 import org.jnario.feature.naming.StepNameProvider
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder
@@ -49,9 +51,6 @@ import org.junit.Ignore
 
 import static com.google.common.collect.Iterators.*
 import static org.jnario.feature.jvmmodel.FeatureJvmModelInferrer.*
-import org.eclipse.xtext.common.types.JvmVisibility
-import org.eclipse.xtext.xbase.XStringLiteral
-import org.jnario.feature.feature.StepReference
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -106,7 +105,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		val List<JvmGenericType> scenarios = newArrayList()
 		for(member: feature.members){
 			val scenario = member as Scenario
-			val className = feature.featureClassName + scenario.className
+			val className = scenario.className
 			val clazz = scenario.infer(featureFile, className, backgroundClass)
 			clazz.annotations += scenario.runnerAnnotations
 			acceptor.accept(clazz)
@@ -118,7 +117,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	}
    	
    	def generateFeatureSuite(Feature feature, FeatureFile featureFile, List<JvmGenericType> scenarios){
-   		feature.toClass(feature.featureClassName)[
+   		feature.toClass(feature.getClassName)[
    			feature.addDefaultConstructor(it);
    			featureFile.eResource.contents += it
    			packageName = featureFile.^package
@@ -141,7 +140,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		val background = feature.background
    		background.steps.generateStepValues
    		background.copyXtendMemberForReferences
-   		feature.toClass(feature.featureClassName + "Background")[
+   		feature.toClass(background.getClassName)[
    			featureFile.eResource.contents += it
    			for(member: background.members){
 				super.transform(member, it)
@@ -153,10 +152,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		]
    	}
    	
-
-   	
    	def infer(Scenario scenario, FeatureFile featureFile, String className, JvmGenericType superClass){
-   		
    		scenario.steps.generateStepValues
    		scenario.copyXtendMemberForReferences
    		scenario.toClass(className)[
@@ -177,7 +173,6 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			for(member: scenario.members){
 				super.transform(member, it)
 			}
-//			scenario.generateVariables(feature, it)
 			scenario.steps.generateSteps(it, start, scenario)
 			
 			if(!scenario.examples.empty){
@@ -189,17 +184,13 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		]	
    	}
    	
-   	def generateStepValues(EList<XtendMember> steps){
-   		
-   		for(step: steps){
-   			if(step instanceof Step){
-   				(step as Step).generateStepValues
-   			}
+   	def generateStepValues(Iterable<XtendMember> steps){
+   		for(step: steps.filter(typeof(Step))){
+			step.generateStepValues
    		}
    	}
    	
    	def generateStepValues(Step step){
-   		
 		var decs = filter(step.eAllContents, typeof(XVariableDeclaration))
 		for(dec: decs.toIterable){
 			if(dec.name == STEP_VALUES){
@@ -253,47 +244,6 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		}
 	}
    	
-//   	def generateVariables(Scenario scenario, Feature feature, JvmGenericType inferredJvmType){		
-//		if(!scenario.examples.empty){
-//			var fieldNames = new ArrayList<String>()
-//			for(table: scenario.examples){
-//				var allFields = filter(table.eAllContents, typeof(ExampleColumn))
-//				for(field: allFields.toIterable){
-//					if(!fieldNames.contains(field.name)){
-//						inferredJvmType.members += field.toField
-//						fieldNames.add(field.name)
-//					}
-//				}
-//			}
-//		}		
-//		var variableDeclarations = filter(scenario.eAllContents, typeof(XVariableDeclaration))
-//		variableDeclarations.toIterable.generateXVariableDeclarations(inferredJvmType, scenario)
-//  	}
-   	
-//   	def generateBackgroundVariables(Background background, JvmGenericType inferredJvmType){
-//		var variableDeclarations = filter(background.eAllContents, typeof(XVariableDeclaration))
-//		variableDeclarations.toIterable.generateXVariableDeclarations(inferredJvmType, background)
-//   	}
-   	
-//   	def generateXVariableDeclarations(Iterable<XVariableDeclaration> varDecs, JvmGenericType inferredJvmType, EObject scenario){
-//   		for(variableDec: varDecs){
-//   			if(variableDec.name != STEP_VALUES && variableDec.name != null){
-//				var JvmTypeReference type
-//				if (variableDec.getType != null) {
-//					type = variableDec.getType
-//				} else {
-//					type = getType(variableDec.getRight)
-//				}
-//				var field = scenario.toField(variableDec.getSimpleName(), type)
-//				if (!variableDec.isWriteable()) {
-//					field.setFinal(true)
-//				}
-//				field.setVisibility(JvmVisibility::PUBLIC)
-//				inferredJvmType.members += field
-//			}
-//		}
-//   	}
-   	
    	def generateBackgroundStepCalls(EList<XtendMember> steps, JvmGenericType inferredJvmType){
    		var order = 0
 		for (step : steps) {
@@ -329,7 +279,6 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	}
    	
 	def transform(Step step, JvmGenericType inferredJvmType, int order, Scenario scenario) {
-
 		inferredJvmType.members += step.toMethod(step.nameOf.javaMethodName, getTypeForName(Void::TYPE, step))[
 			body = step.expressionOf(inferredJvmType)?.blockExpression
 			step.generateStepValues
@@ -384,33 +333,20 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
  	}
    	
 	def generateExampleClasses(Scenario scenario, FeatureFile featureFile, JvmGenericType inferredJvmType){
-		var exampleTable = 1
 		val List<JvmGenericType> exampleClasses = newArrayList()
 		for(example: scenario.examples){
 			var fields = example.columns
-			var exampleNumber = 1
 			if(!example.rows.empty){
 				for(row: example.rows){
-					exampleClasses += scenario.createExampleClass(featureFile, row, fields, exampleTable, exampleNumber, inferredJvmType)
-					exampleNumber = exampleNumber + 1
+					exampleClasses += scenario.createExampleClass(featureFile, row, fields, inferredJvmType)
 				}
 			}
-			exampleTable = exampleTable + 1
 		}
 		exampleClasses
 	} 
 	
-	def createExampleClass(Scenario scenario, FeatureFile featureFile, ExampleRow row, EList<ExampleColumn> fields, int exampleTableNum, int exampleNumber, JvmGenericType inferredJvmType){
-		var exampleTable  = row.eContainer as ExampleTable
-		var exampleTableName = ""
-		if(exampleTable.name.trim == ""){
-			exampleTableName = "Examples" + exampleTableNum
-		}else{
-			exampleTableName = exampleTable.name.javaClassName
-		}
-		val feature = featureFile.xtendClass as Feature
-		val className = feature.featureClassName + scenario.className + "Row" + exampleNumber
-		
+	def createExampleClass(Scenario scenario, FeatureFile featureFile, ExampleRow row, EList<ExampleColumn> fields, JvmGenericType inferredJvmType){
+		val className = row.className
 		row.toClass(className)[
 			superTypes += inferredJvmType.createTypeRef
 			featureFile.eResource.contents += it

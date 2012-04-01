@@ -1,34 +1,42 @@
-/*******************************************************************************
- * Copyright (c) 2012 BMW Car IT and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
-package org.jnario.compiler.batch;
+
+
+package org.jnario.compiler;
 
 import java.util.Arrays;
 import java.util.Iterator;
 
 import org.apache.log4j.BasicConfigurator;
+import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
+import org.jnario.feature.FeatureStandaloneSetup;
+import org.jnario.feature.compiler.batch.FeatureBatchCompiler;
+import org.jnario.spec.SpecStandaloneSetup;
+import org.jnario.spec.compiler.batch.SpecBatchCompiler;
 
 import com.google.inject.Injector;
-
-import org.jnario.spec.SpecStandaloneSetup;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
-public class Main {
+public class CompilerMain {
 
 	public static void main(String[] args) {
-		BasicConfigurator.configure();
-		Injector injector = new SpecStandaloneSetup().createInjectorAndDoEMFRegistration();
-		SpecBatchCompiler jnarioCompiler = injector.getInstance(SpecBatchCompiler.class);
 		if ((args == null) || (args.length == 0)) {
 			printUsage();
 			return;
 		}
+
+		BasicConfigurator.configure();
+		
+		Injector injector = new SpecStandaloneSetup().createInjectorAndDoEMFRegistration();
+		XtendBatchCompiler compiler = injector.getInstance(SpecBatchCompiler.class);
+		run(compiler, args);
+		
+		injector = new FeatureStandaloneSetup().createInjectorAndDoEMFRegistration();
+		compiler = injector.getInstance(FeatureBatchCompiler.class);
+		run(compiler, args);
+	}
+
+	private static void run(XtendBatchCompiler jnarioCompiler, String[] args) {
 		Iterator<String> arguments = Arrays.asList(args).iterator();
 		while (arguments.hasNext()) {
 			String argument = arguments.next();

@@ -21,19 +21,18 @@ Feature: Test Runner
 		
 			jnarioFile = "
 				package bootstrap
-				Feature:
-					Scenario:
+				Feature: a feature
+					Scenario: a scenario with field
 						public int x
-						Given 
+						Given a variable access
 							x = 3
-						When 
+						When the variable is accessed
 							x = x + 1 
-						Then 
+						Then it is accessed
 							x => 4
 				"
 				
 		When I run the scenario
-					
 		Then the scenario should have no validation errors that the variable was not defined
 		And it should pass
 			jnarioFile.executesSuccessfully

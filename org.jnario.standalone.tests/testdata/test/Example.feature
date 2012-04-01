@@ -5,19 +5,29 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.jnario.feature.validation;
-
-import org.eclipse.xtend.core.validation.ClasspathBasedChecks;
-import org.eclipse.xtend.core.xtend.XtendFile;
-import org.eclipse.xtext.validation.Check;
+package test
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
-public class FeatureClasspathBasedChecks extends ClasspathBasedChecks {
+Feature: Examples.
+
+	Background: Some more info
 	
-	
-	@Check
-	public void checkFileNamingConventions(XtendFile xtendFile) {
-	}
-}
+		Given I have entered "333" into the calculator
+			""
+
+	Scenario: Example tables.
+		Given some variables.
+		When I add them
+		Then the sum should be the result.
+			(x + y + 1) => z
+		Examples:
+		|x|y|z|
+		|1|2|4|
+		|3|6|10|
+		
+		Examples: some examples
+		|x|z|
+		|4|5|		
+ 

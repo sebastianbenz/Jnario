@@ -37,6 +37,7 @@ import org.junit.runners.model.InitializationError;
 import org.junit.runners.model.Statement;
 
 import com.google.common.base.Function;
+import com.google.common.base.Joiner;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
@@ -118,7 +119,7 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 						try {
 							return createExampleRunner(testClass, from);
 						} catch (InitializationError e) {
-							return null;
+							throw new RuntimeException(e);
 						} catch (NoTestsRemainException e) {
 							throw new Error(e); // should not happen
 						}
@@ -182,7 +183,6 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 
 					public ExampleGroupRunner apply(Class<?> declaredClass) {
 						try {
-							
 							ExampleGroupRunner childRunner = createExampleGroupRunner(declaredClass);
 							if (childRunner.getChildren().isEmpty()) {
 								return null;

@@ -16,21 +16,18 @@ import static org.jnario.jnario.test.util.ResultMatchers.*
 Feature: Annotations
 
 	Scenario: Parsing annotations inside a code block
-		public String jnarioFile
+		CharSequence jnarioFile
 		Given a jnario-file with annotations
 		
-			jnarioFile = "
+			jnarioFile = '''
 				package bootstrap
 				import org.junit.Rule 
-				Feature:
-					Scenario:
-						Given 
+				Feature: A feature
+					Scenario: a scenario
+						Given a variable with an annotation
 							@Rule
 							var x = 3
-						When 
-						Then 
-				"
-				
+				'''
 		When I parse it
 		
 					

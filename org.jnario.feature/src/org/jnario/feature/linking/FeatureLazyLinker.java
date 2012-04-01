@@ -7,7 +7,6 @@
  *******************************************************************************/
 package org.jnario.feature.linking;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -47,7 +46,7 @@ public class FeatureLazyLinker extends JnarioLazyLinker {
 		for(Step step: steps){
 			String name = step.getName();
 			if(name != null){
-				ArrayList<String> arguments = stepArgumentsProvider.findStepArguments(step);
+				List<String> arguments = stepArgumentsProvider.findStepArguments(step);
 				if(!arguments.isEmpty()){
 					EList<XExpression> expressions = step.getStepExpression().getBlockExpression().getExpressions();
 					XVariableDeclaration stepValuesDec = createVariableForStepArguments();

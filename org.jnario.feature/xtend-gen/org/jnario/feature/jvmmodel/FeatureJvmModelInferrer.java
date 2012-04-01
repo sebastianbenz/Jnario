@@ -1,6 +1,7 @@
 package org.jnario.feature.jvmmodel;
 
 import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.UnmodifiableIterator;
 import com.google.inject.Inject;
@@ -137,9 +138,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     for (final XtendMember member : _members) {
       {
         final Scenario scenario = ((Scenario) member);
-        String _featureClassName = this._javaNameProvider.getFeatureClassName(feature);
-        String _className = this._javaNameProvider.getClassName(scenario);
-        final String className = (_featureClassName + _className);
+        final String className = this._javaNameProvider.getClassName(scenario);
         final JvmGenericType clazz = this.infer(scenario, featureFile, className, backgroundClass);
         EList<JvmAnnotationReference> _annotations = clazz.getAnnotations();
         JvmAnnotationReference _runnerAnnotations = this.runnerAnnotations(scenario);
@@ -153,7 +152,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   }
   
   public JvmGenericType generateFeatureSuite(final Feature feature, final FeatureFile featureFile, final List<JvmGenericType> scenarios) {
-    String _featureClassName = this._javaNameProvider.getFeatureClassName(feature);
+    String _className = this._javaNameProvider.getClassName(feature);
     final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
         public void apply(final JvmGenericType it) {
           FeatureJvmModelInferrer.this.addDefaultConstructor(feature, it);
@@ -179,7 +178,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_2, _annotation_1);
         }
       };
-    JvmGenericType _class = this._extendedJvmTypesBuilder.toClass(feature, _featureClassName, _function);
+    JvmGenericType _class = this._extendedJvmTypesBuilder.toClass(feature, _className, _function);
     return _class;
   }
   
@@ -204,8 +203,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
       EList<XtendMember> _steps = background.getSteps();
       this.generateStepValues(_steps);
       this._stepReferenceFieldCreator.copyXtendMemberForReferences(background);
-      String _featureClassName = this._javaNameProvider.getFeatureClassName(feature);
-      String _plus = (_featureClassName + "Background");
+      String _className = this._javaNameProvider.getClassName(background);
       final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
           public void apply(final JvmGenericType it) {
             Resource _eResource = featureFile.eResource();
@@ -223,7 +221,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
             FeatureJvmModelInferrer.this.generateSteps(_steps, it);
           }
         };
-      JvmGenericType _class = this._extendedJvmTypesBuilder.toClass(feature, _plus, _function);
+      JvmGenericType _class = this._extendedJvmTypesBuilder.toClass(feature, _className, _function);
       _xblockexpression = (_class);
     }
     return _xblockexpression;
@@ -293,11 +291,10 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     return _xblockexpression;
   }
   
-  public void generateStepValues(final EList<XtendMember> steps) {
-    for (final XtendMember step : steps) {
-      if ((step instanceof Step)) {
-        this.generateStepValues(((Step) step));
-      }
+  public void generateStepValues(final Iterable<XtendMember> steps) {
+    Iterable<Step> _filter = Iterables.<Step>filter(steps, Step.class);
+    for (final Step step : _filter) {
+      this.generateStepValues(step);
     }
   }
   
@@ -378,7 +375,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           featureCall.setFeature(operation);
         } else {
           final StepReference stepRef = ((StepReference) step);
-          final ArrayList<String> arguments = this.stepArgumentsProvider.findStepArguments(stepRef);
+          final List<String> arguments = this.stepArgumentsProvider.findStepArguments(stepRef);
           int i = 0;
           boolean _isEmpty = arguments.isEmpty();
           boolean _not_1 = (!_isEmpty);
@@ -627,29 +624,21 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   public List<JvmGenericType> generateExampleClasses(final Scenario scenario, final FeatureFile featureFile, final JvmGenericType inferredJvmType) {
     List<JvmGenericType> _xblockexpression = null;
     {
-      int exampleTable = 1;
       final List<JvmGenericType> exampleClasses = CollectionLiterals.<JvmGenericType>newArrayList();
       EList<ExampleTable> _examples = scenario.getExamples();
       for (final ExampleTable example : _examples) {
         {
           EList<ExampleColumn> fields = example.getColumns();
-          int exampleNumber = 1;
           EList<ExampleRow> _rows = example.getRows();
           boolean _isEmpty = _rows.isEmpty();
           boolean _not = (!_isEmpty);
           if (_not) {
             EList<ExampleRow> _rows_1 = example.getRows();
             for (final ExampleRow row : _rows_1) {
-              {
-                JvmGenericType _createExampleClass = this.createExampleClass(scenario, featureFile, row, fields, exampleTable, exampleNumber, inferredJvmType);
-                exampleClasses.add(_createExampleClass);
-                int _plus = (exampleNumber + 1);
-                exampleNumber = _plus;
-              }
+              JvmGenericType _createExampleClass = this.createExampleClass(scenario, featureFile, row, fields, inferredJvmType);
+              exampleClasses.add(_createExampleClass);
             }
           }
-          int _plus = (exampleTable + 1);
-          exampleTable = _plus;
         }
       }
       _xblockexpression = (exampleClasses);
@@ -657,30 +646,10 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     return _xblockexpression;
   }
   
-  public JvmGenericType createExampleClass(final Scenario scenario, final FeatureFile featureFile, final ExampleRow row, final EList<ExampleColumn> fields, final int exampleTableNum, final int exampleNumber, final JvmGenericType inferredJvmType) {
+  public JvmGenericType createExampleClass(final Scenario scenario, final FeatureFile featureFile, final ExampleRow row, final EList<ExampleColumn> fields, final JvmGenericType inferredJvmType) {
     JvmGenericType _xblockexpression = null;
     {
-      EObject _eContainer = row.eContainer();
-      ExampleTable exampleTable = ((ExampleTable) _eContainer);
-      String exampleTableName = "";
-      String _name = exampleTable.getName();
-      String _trim = _name.trim();
-      boolean _equals = Objects.equal(_trim, "");
-      if (_equals) {
-        String _plus = ("Examples" + Integer.valueOf(exampleTableNum));
-        exampleTableName = _plus;
-      } else {
-        String _name_1 = exampleTable.getName();
-        String _javaClassName = this._javaNameProvider.getJavaClassName(_name_1);
-        exampleTableName = _javaClassName;
-      }
-      XtendClass _xtendClass = featureFile.getXtendClass();
-      final Feature feature = ((Feature) _xtendClass);
-      String _featureClassName = this._javaNameProvider.getFeatureClassName(feature);
-      String _className = this._javaNameProvider.getClassName(scenario);
-      String _plus_1 = (_featureClassName + _className);
-      String _plus_2 = (_plus_1 + "Row");
-      final String className = (_plus_2 + Integer.valueOf(exampleNumber));
+      final String className = this._javaNameProvider.getClassName(row);
       final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
           public void apply(final JvmGenericType it) {
             EList<JvmTypeReference> _superTypes = it.getSuperTypes();

@@ -29,6 +29,7 @@ import org.jnario.feature.feature.FeatureFile;
 import org.jnario.feature.generator.FeatureJvmModelGenerator;
 import org.jnario.feature.naming.JavaNameProvider;
 import org.junit.Assert;
+import org.junit.experimental.results.PrintableResult;
 import org.junit.rules.TemporaryFolder;
 import org.junit.runner.Result;
 
@@ -66,7 +67,7 @@ public class FeatureExecutor extends BehaviorExecutor{
 	
 	public static void executesSuccessfully(CharSequence content) {
 		Result result = execute(content);
-		Assert.assertThat(result, isSuccessful());
+		Assert.assertThat("Errors: " + new PrintableResult(result.getFailures()).toString(), result, isSuccessful());
 	}
 	
 	public static void executionFails(CharSequence content) {
@@ -89,7 +90,7 @@ public class FeatureExecutor extends BehaviorExecutor{
 		CompositeResult result = new CompositeResult();
 		FeatureFile jnarioFile = (FeatureFile) object;
 		Feature feature = (Feature)jnarioFile.getXtendClass();
-		String jnarioClassName = nameProvider.getFeatureClassName(feature);
+		String jnarioClassName = nameProvider.getClassName(feature);
 		String packageName = jnarioFile.getPackage();
 		result.add(runTestsInClass(jnarioClassName, packageName));
 		return result;

@@ -7,7 +7,9 @@
  *******************************************************************************/
 package org.jnario.feature.jvmmodel;
 
-import java.util.ArrayList;
+import static com.google.common.collect.Lists.newArrayList;
+
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,8 +27,8 @@ public class StepArgumentsProvider {
 	
 	public static final Pattern ARG_PATTERN = Pattern.compile("\"([^\"]*)\"");
 	
-	public ArrayList<String> findStepArguments(Step step) {
-		ArrayList<String> arguments = new ArrayList<String>();
+	public List<String> findStepArguments(Step step) {
+		List<String> arguments = newArrayList();
 		String name = stepNameProvider.nameOf(step);
 		Matcher matcher = ARG_PATTERN.matcher(name);
 		if(matcher.find()){

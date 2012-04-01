@@ -16,6 +16,7 @@ import static org.jnario.util.Strings.convertToCamelCase;
 
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.util.SimpleAttributeResolver;
@@ -192,6 +193,16 @@ public class ExampleNameProvider {
 			newName = "";
 		}
 		return newName;
+	}
+
+	public String toJavaClassName(EObject eObject) {
+		if (eObject instanceof ExampleGroup) {
+			return toJavaClassName((ExampleGroup) eObject);
+		}
+		if (eObject instanceof ExampleTable) {
+			return toJavaClassName((ExampleTable) eObject);
+		}
+		throw new UnsupportedOperationException("Unknown java class name for " + eObject.eClass().getName());
 	}
 
 }
