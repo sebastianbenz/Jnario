@@ -217,12 +217,12 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cExamplesExampleTableParserRuleCall_6_0 = (RuleCall)cExamplesAssignment_6.eContents().get(0);
 		
 		//Scenario returns xtend::XtendMember:
-		//	{Scenario} name=SCENARIO_TEXT members+=Member* steps+=(Given | GivenReference)* steps+=(When | WhenReference)*
-		//	steps+=(Then | ThenReference)* examples+=ExampleTable*;
+		//	{Scenario} name=SCENARIO_TEXT members+=Member* steps+=(Given | GivenReference)? steps+=(When | WhenReference)?
+		//	steps+=(Then | ThenReference)? examples+=ExampleTable*;
 		public ParserRule getRule() { return rule; }
 
-		//{Scenario} name=SCENARIO_TEXT members+=Member* steps+=(Given | GivenReference)* steps+=(When | WhenReference)*
-		//steps+=(Then | ThenReference)* examples+=ExampleTable*
+		//{Scenario} name=SCENARIO_TEXT members+=Member* steps+=(Given | GivenReference)? steps+=(When | WhenReference)?
+		//steps+=(Then | ThenReference)? examples+=ExampleTable*
 		public Group getGroup() { return cGroup; }
 
 		//{Scenario}
@@ -240,7 +240,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		//Member
 		public RuleCall getMembersMemberParserRuleCall_2_0() { return cMembersMemberParserRuleCall_2_0; }
 
-		//steps+=(Given | GivenReference)*
+		//steps+=(Given | GivenReference)?
 		public Assignment getStepsAssignment_3() { return cStepsAssignment_3; }
 
 		//Given | GivenReference
@@ -252,7 +252,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		//GivenReference
 		public RuleCall getStepsGivenReferenceParserRuleCall_3_0_1() { return cStepsGivenReferenceParserRuleCall_3_0_1; }
 
-		//steps+=(When | WhenReference)*
+		//steps+=(When | WhenReference)?
 		public Assignment getStepsAssignment_4() { return cStepsAssignment_4; }
 
 		//When | WhenReference
@@ -264,7 +264,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		//WhenReference
 		public RuleCall getStepsWhenReferenceParserRuleCall_4_0_1() { return cStepsWhenReferenceParserRuleCall_4_0_1; }
 
-		//steps+=(Then | ThenReference)*
+		//steps+=(Then | ThenReference)?
 		public Assignment getStepsAssignment_5() { return cStepsAssignment_5; }
 
 		//Then | ThenReference
@@ -1365,8 +1365,8 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Scenario returns xtend::XtendMember:
-	//	{Scenario} name=SCENARIO_TEXT members+=Member* steps+=(Given | GivenReference)* steps+=(When | WhenReference)*
-	//	steps+=(Then | ThenReference)* examples+=ExampleTable*;
+	//	{Scenario} name=SCENARIO_TEXT members+=Member* steps+=(Given | GivenReference)? steps+=(When | WhenReference)?
+	//	steps+=(Then | ThenReference)? examples+=ExampleTable*;
 	public ScenarioElements getScenarioAccess() {
 		return (pScenario != null) ? pScenario : (pScenario = new ScenarioElements());
 	}

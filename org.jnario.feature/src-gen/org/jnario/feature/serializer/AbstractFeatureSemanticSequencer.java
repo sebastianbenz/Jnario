@@ -1978,9 +1978,9 @@ public class AbstractFeatureSemanticSequencer extends AbstractSemanticSequencer 
 	 *     (
 	 *         name=SCENARIO_TEXT 
 	 *         members+=Member* 
-	 *         (steps+=Given | steps+=GivenReference)* 
-	 *         (steps+=When | steps+=WhenReference)* 
-	 *         (steps+=Then | steps+=ThenReference)* 
+	 *         (steps+=Given | steps+=GivenReference)? 
+	 *         (steps+=When | steps+=WhenReference)? 
+	 *         (steps+=Then | steps+=ThenReference)? 
 	 *         examples+=ExampleTable*
 	 *     )
 	 */

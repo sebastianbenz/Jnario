@@ -1,18 +1,12 @@
 package org.jnario.feature.naming;
 
 import com.google.common.base.Objects;
-import com.google.common.collect.Iterables;
-import java.util.List;
-import org.eclipse.emf.ecore.EObject;
+import com.google.common.base.Strings;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.xtext.nodemodel.ILeafNode;
-import org.eclipse.xtext.nodemodel.INode;
-import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepReference;
+import org.jnario.util.Nodes;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -24,34 +18,21 @@ public class StepNameProvider {
   
   public String nameOf(final Step step) {
     if ((step instanceof StepReference)) {
-      return this.nameOf(((StepReference) step));
+      String _nameOf = this.nameOf(((StepReference) step));
+      return _nameOf==null?(String)null:this.removeExtraCharacters(_nameOf);
     }
     String _name = step.getName();
     return _name==null?(String)null:this.removeExtraCharacters(_name);
   }
   
   public String nameOf(final StepReference ref) {
-    final Step referencedStep = ref.getReference();
-    boolean _equals = Objects.equal(referencedStep, null);
+    Step _reference = ref.getReference();
+    boolean _equals = Objects.equal(_reference, null);
     if (_equals) {
       return null;
     }
     EReference _stepReference_Reference = FeaturePackage.eINSTANCE.getStepReference_Reference();
-    return this.referenceText(ref, _stepReference_Reference);
-  }
-  
-  public String referenceText(final EObject obj, final EReference ref) {
-    final List<INode> nodes = NodeModelUtils.findNodesForFeature(obj, ref);
-    final Iterable<ILeafNode> leafs = Iterables.<ILeafNode>filter(nodes, ILeafNode.class);
-    final Function1<ILeafNode,String> _function = new Function1<ILeafNode,String>() {
-        public String apply(final ILeafNode it) {
-          String _text = it.getText();
-          return _text;
-        }
-      };
-    Iterable<String> _map = IterableExtensions.<ILeafNode, String>map(leafs, _function);
-    String _join = IterableExtensions.join(_map);
-    return _join.trim();
+    return Nodes.textForFeature(ref, _stepReference_Reference);
   }
   
   public String removeExtraCharacters(final String string) {
@@ -61,7 +42,16 @@ public class StepNameProvider {
   }
   
   public String removeKeywords(final String name) {
+    boolean _isNullOrEmpty = Strings.isNullOrEmpty(name);
+    if (_isNullOrEmpty) {
+      return "";
+    }
     int index = name.indexOf(" ");
+    int _minus = (-1);
+    boolean _equals = (index == _minus);
+    if (_equals) {
+      return "";
+    }
     int _plus = (index + 1);
     return name.substring(_plus);
   }

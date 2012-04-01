@@ -7,21 +7,34 @@
  *******************************************************************************/
 package org.jnario.feature.validation;
 
+import static com.google.common.base.Strings.isNullOrEmpty;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtend.core.xtend.XtendPackage;
 import org.eclipse.xtext.common.types.JvmFeature;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
+import org.eclipse.xtext.validation.Check;
+import org.eclipse.xtext.validation.CheckType;
 import org.eclipse.xtext.validation.ComposedChecks;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.XbasePackage;
 import org.eclipse.xtext.xbase.scoping.XbaseScopeProvider;
 import org.jnario.ExampleTable;
+import org.jnario.feature.feature.Feature;
+import org.jnario.feature.feature.FeaturePackage;
+import org.jnario.feature.feature.Scenario;
+import org.jnario.feature.feature.Step;
+import org.jnario.feature.feature.StepReference;
+import org.jnario.feature.naming.StepNameProvider;
 import org.jnario.validation.JnarioJavaValidator;
+
+import com.google.common.base.Strings;
+import com.google.inject.Inject;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -29,7 +42,39 @@ import org.jnario.validation.JnarioJavaValidator;
  */
 @ComposedChecks(validators={JnarioJavaValidator.class})
 public class FeatureJavaValidator extends AbstractFeatureJavaValidator {
+	
+	@Inject StepNameProvider nameProvider;
 
+	@Check(CheckType.FAST)
+	public void checkFeaturesHaveAName(Feature feature){
+		String name = removeKeywords(feature.getName());
+		if(isNullOrEmpty(name)){
+			error("Features should have a description", XtendPackage.Literals.XTEND_CLASS__NAME);
+		}
+	}
+	
+	public String removeKeywords(String string){
+		return nameProvider.removeKeywords(string).trim();
+	}
+	
+	
+	@Check(CheckType.FAST)
+	public void checkFeaturesHaveAName(Scenario scenario){
+		String name = removeKeywords(scenario.getName());
+		if(isNullOrEmpty(name)){
+			error("Scenarios should have a description", FeaturePackage.Literals.SCENARIO__NAME);
+		}
+	}
+	
+	@Check(CheckType.FAST)
+	public void checkStepsHaveAName(Step step){
+		String name = nameProvider.nameOf(step);
+		name = nameProvider.removeKeywords(name);
+		if(isNullOrEmpty(name)){
+			error("Steps should have a description", FeaturePackage.Literals.STEP__NAME);
+		}
+	}
+	
 	@Override
 	public void checkVariableDeclaration(XVariableDeclaration declaration) {
 		if(getContainerOfType(declaration, ExampleTable.class) == null){

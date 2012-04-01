@@ -72,10 +72,13 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 			StepReference ref = (StepReference) steps.next();
 			if(ref.getReference().eIsProxy()){
 				String string = textForFeature(ref, FeaturePackage.Literals.STEP_REFERENCE__REFERENCE);
-				String proposal = string.substring(string.indexOf(" "));
-				proposal = stepPrefix + proposal;
-				proposal = proposal.trim();
-				acceptor.accept(createCompletionProposal(proposal, string, getLabelProvider().getImage(ref) , context));
+				int index = string.indexOf(" ");
+				if(index != -1){
+					String proposal = string.substring(index);
+					proposal = stepPrefix + proposal;
+					proposal = proposal.trim();
+					acceptor.accept(createCompletionProposal(proposal, string, getLabelProvider().getImage(ref) , context));
+				}
 			}
 		}
 	}

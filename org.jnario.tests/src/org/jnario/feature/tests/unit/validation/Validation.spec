@@ -14,17 +14,59 @@ import org.jnario.jnario.test.util.ModelStore
 import org.jnario.jnario.test.util.SpecTestInstantiator
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.junit4.validation.RegisteredValidatorTester
-
+import org.eclipse.xtext.xbase.lib.Procedures
 import static org.jnario.jnario.test.util.Query.*
+import org.eclipse.xtext.junit4.validation.AssertableDiagnostics
+import org.jnario.feature.feature.Feature
+import org.jnario.feature.feature.Scenario
+import org.jnario.feature.feature.Step
 
 /**
- * @author Birgit Engelmann - Initial contribution and API
+ * @author Sebastian Benz - Initial contribution and API
  */
 @InstantiateWith(typeof(SpecTestInstantiator))
 describe "JnarioValidator"{
 
 	@Inject ModelStore modelStore
+
+	context "Features must have descriptions"{
+		fact '''
+			Feature: 
+		'''.select(typeof(Feature)).assertErrorContains("description")
+	}
 	
+	context "Scenarios must have descriptions"{
+		fact '''
+			Feature: A Feature
+				Scenario:
+				
+		'''.select(typeof(Scenario)).assertErrorContains("description")
+	}
+	
+	context "Steps must have descriptions"{
+		fact '''
+			Feature: A feature
+				Scenario: A scenario
+				 	Given 
+				 	When 
+				 	Then 
+				 	
+		'''.allOf(typeof(Step))[assertErrorContains("description")]
+	}
+	
+	def select(CharSequence input, Class<? extends EObject> type){
+		modelStore.parseScenario(input)
+		validate(type)
+	}
+	
+	def allOf(CharSequence input, Class<? extends EObject> type, Procedures$Procedure1<AssertableDiagnostics> test){
+		modelStore.parseScenario(input)
+		val steps = query(modelStore).allOf(type)
+		steps.forEach[
+			val result = RegisteredValidatorTester::validateObj(it)
+			test.apply(result)
+		]
+	}
 	
 	def validate(Class<? extends EObject> type){
 		val target = query(modelStore).first(type)

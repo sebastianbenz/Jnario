@@ -7,15 +7,13 @@
  *******************************************************************************/
 package org.jnario.feature.naming
 
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.ecore.EReference
-import org.eclipse.xtext.nodemodel.ILeafNode
 import org.jnario.feature.feature.FeaturePackage
 import org.jnario.feature.feature.Step
 import org.jnario.feature.feature.StepReference
+import org.jnario.util.Nodes
 
-import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
 import static org.jnario.feature.naming.StepNameProvider.*
+import com.google.common.base.Strings
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -26,30 +24,30 @@ class StepNameProvider {
 	private static String MULTILINE = "\\\\( |\t)*\r?\n?( |\t)*"
 	
 	def nameOf(Step step){
-		if(step instanceof StepReference) return nameOf(step as StepReference)
+		if(step instanceof StepReference) return nameOf(step as StepReference)?.removeExtraCharacters
 		return step.name?.removeExtraCharacters
 	}
 	
 	def String nameOf(StepReference ref){
-		val referencedStep = ref.reference
-		if(referencedStep == null){
+		if(ref.reference == null){
 			return null
 		}
-		return referenceText(ref, FeaturePackage::eINSTANCE.stepReference_Reference)
+		return Nodes::textForFeature(ref, FeaturePackage::eINSTANCE.stepReference_Reference)
 	} 
 
-	def referenceText(EObject obj, EReference ref){
-		val nodes = findNodesForFeature(obj, ref)
-		val leafs = nodes.filter(typeof(ILeafNode))
-		return leafs.map[it.text].join.trim
-	}
 	
 	def removeExtraCharacters(String string){
 		return string.trim.replace("\"", "\\\"").replaceAll(MULTILINE,"")
 	}
 	
 	def removeKeywords(String name){
+		if(Strings::isNullOrEmpty(name)){
+			return ""
+		}
 		var index = name.indexOf(" ")
+		if(index == -1){
+			return ""
+		}
 		return name.substring(index + 1)
 	}
 	
