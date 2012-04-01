@@ -26,7 +26,6 @@ import org.eclipse.xtend.ide.editor.OverrideIndicatorRulerAction;
 import org.eclipse.xtend.ide.editor.RichStringAwareSourceViewer;
 import org.eclipse.xtend.ide.editor.RichStringAwareToggleCommentAction;
 import org.eclipse.xtend.ide.editor.SingleLineCommentHelper;
-import org.eclipse.xtend.ide.editor.XtendDoubleClickStrategyProvider;
 import org.eclipse.xtend.ide.editor.XtendNatureAddingEditorCallback;
 import org.eclipse.xtend.ide.highlighting.RichStringAwareTokenScanner;
 import org.eclipse.xtend.ide.hover.XtendHoverProvider;
@@ -42,6 +41,7 @@ import org.eclipse.xtext.builder.IXtextBuilderParticipant;
 import org.eclipse.xtext.builder.trace.FileBasedTraceInformation;
 import org.eclipse.xtext.common.types.ui.navigation.IDerivedMemberAwareEditorOpener;
 import org.eclipse.xtext.common.types.xtext.ui.ITypesProposalProvider;
+import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.trace.ITraceInformation;
 import org.eclipse.xtext.resource.EObjectAtOffsetHelper;
 import org.eclipse.xtext.ui.LanguageSpecific;
@@ -76,6 +76,7 @@ import org.jnario.feature.ui.editor.FeatureEditor;
 import org.jnario.feature.ui.editor.FeatureFoldingRegionProvider;
 import org.jnario.feature.ui.editor.FeatureFoldingStructureProvider;
 import org.jnario.feature.ui.editor.FeatureTaskTokenTypeToPartitionTypeMapper;
+import org.jnario.feature.ui.generator.FeatureGenerator;
 import org.jnario.feature.ui.highlighting.FeatureHighlightingConfiguration;
 import org.jnario.feature.ui.highlighting.FeatureSemanticHighlightingCalculator;
 import org.jnario.feature.ui.highlighting.FeatureTokenHighlighting;
@@ -267,4 +268,8 @@ public class FeatureUiModule extends org.jnario.feature.ui.AbstractFeatureUiModu
 		return FileBasedTraceInformation.class;
 	}
 	
+
+	public Class<? extends IGenerator> bindIGenerator() {
+		return FeatureGenerator.class;
+	}
 }

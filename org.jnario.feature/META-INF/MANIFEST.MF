@@ -29,6 +29,7 @@ Import-Package: org.apache.log4j,
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.jnario.feature,
  org.jnario.feature.conversion,
+ org.jnario.feature.doc,
  org.jnario.feature.feature,
  org.jnario.feature.feature.impl,
  org.jnario.feature.feature.util,

@@ -29,15 +29,18 @@ Feature returns xtend::XtendClass:
 	{Feature}
 	annotations+=XAnnotation*
 	name=FEATURE_TEXT
-	description=DESCRIPTION?
+	description=DESCRIPTION*
 	background = Background?
 	members+=Scenario*;
 	
 DESCRIPTION:
-	IN_ORDER_TEXT
-	AS_A_TEXT
-	I_WANT_TEXT
+	IN_ORDER_TEXT |
+	AS_A_TEXT |
+	I_WANT_TEXT |
+	TEXT
 ;
+
+
  
 Background:
 	{Background}
@@ -187,6 +190,8 @@ terminal I_WANT_TEXT: 'I want' TEXT_AND_NL;
 terminal PIPE : '|';
 terminal PIPE_SPACES: PIPE (' '|'\t')+;
 terminal EXAMPLE_ROW_END: (PIPE | PIPE_SPACES) '\r'? '\n';
+
+terminal  TEXT: !('|'|' '|'\t'|'\r'|'\n'|'@') !('\r'|'\n')* NL;
 
 terminal fragment TEXT_MULTI_LINE: !('\r'|'\n')* '\\' NL;
 terminal fragment TEXT_AND_NL: !('\r'|'\n'|'\\')* NL;

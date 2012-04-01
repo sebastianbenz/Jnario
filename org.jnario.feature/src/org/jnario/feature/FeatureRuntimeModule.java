@@ -44,6 +44,7 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.scoping.featurecalls.StaticImplicitMethodsFeatureForTypeProvider.ExtensionClassNameProvider;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.eclipse.xtext.xbase.validation.EarlyExitValidator;
+import org.jnario.doc.DocOutputConfigurationProvider;
 import org.jnario.feature.conversion.FeatureValueConverterService;
 import org.jnario.feature.generator.FeatureCompiler;
 import org.jnario.feature.generator.FeatureJvmModelGenerator;
@@ -132,7 +133,7 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 	}	
 
 	public Class<? extends OutputConfigurationProvider> bindOutputConfigurationProvider() {
-		return XtendOutputConfigurationProvider.class;
+		return DocOutputConfigurationProvider.class;
 	}
 	
 	public Class<? extends FeatureCallToJavaMapping> bindFeatureCallToJavaMapping(){
