@@ -71,6 +71,7 @@ import org.eclipse.xtext.ui.refactoring.impl.RenameElementProcessor;
 import org.eclipse.xtext.ui.resource.IResourceUIServiceProvider;
 import org.eclipse.xtext.xbase.ui.jvmmodel.navigation.DerivedMemberAwareEditorOpener;
 import org.jnario.feature.ui.autoedit.FeatureAutoEditStrategyProvider;
+import org.jnario.feature.ui.editor.FeatureDoubleClickStrategyProvider;
 import org.jnario.feature.ui.editor.FeatureEditor;
 import org.jnario.feature.ui.editor.FeatureFoldingRegionProvider;
 import org.jnario.feature.ui.editor.FeatureFoldingStructureProvider;
@@ -146,7 +147,7 @@ public class FeatureUiModule extends org.jnario.feature.ui.AbstractFeatureUiModu
 	}
 
 	public Class<? extends DoubleClickStrategyProvider> bindDoubleClickStrategyProvider() {
-		return XtendDoubleClickStrategyProvider.class;
+		return FeatureDoubleClickStrategyProvider.class;
 	}
 	
 	@Override
