@@ -9675,11 +9675,11 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
             if ( (LA3_0==RULE_GIVEN_TEXT) ) {
                 int LA3_1 = input.LA(2);
 
-                if ( (LA3_1==EOF||(LA3_1>=RULE_SCENARIO_TEXT && LA3_1<=RULE_GIVEN_TEXT)||LA3_1==RULE_AND_TEXT) ) {
-                    alt3=2;
-                }
-                else if ( ((LA3_1>=RULE_ID && LA3_1<=RULE_DECIMAL)||(LA3_1>=RULE_STRING && LA3_1<=RULE_RICH_TEXT_START)||LA3_1==49||LA3_1==55||(LA3_1>=58 && LA3_1<=59)||LA3_1==64||(LA3_1>=66 && LA3_1<=68)||LA3_1==74||(LA3_1>=77 && LA3_1<=79)||LA3_1==83||(LA3_1>=89 && LA3_1<=90)||LA3_1==101||LA3_1==103||LA3_1==105||(LA3_1>=108 && LA3_1<=110)||(LA3_1>=112 && LA3_1<=115)||(LA3_1>=127 && LA3_1<=128)) ) {
+                if ( ((LA3_1>=RULE_ID && LA3_1<=RULE_DECIMAL)||(LA3_1>=RULE_STRING && LA3_1<=RULE_RICH_TEXT_START)||LA3_1==49||LA3_1==55||(LA3_1>=58 && LA3_1<=59)||LA3_1==64||(LA3_1>=66 && LA3_1<=68)||LA3_1==74||(LA3_1>=77 && LA3_1<=79)||LA3_1==83||(LA3_1>=89 && LA3_1<=90)||LA3_1==101||LA3_1==103||LA3_1==105||(LA3_1>=108 && LA3_1<=110)||(LA3_1>=112 && LA3_1<=115)||(LA3_1>=127 && LA3_1<=128)) ) {
                     alt3=1;
+                }
+                else if ( (LA3_1==EOF||(LA3_1>=RULE_SCENARIO_TEXT && LA3_1<=RULE_GIVEN_TEXT)||LA3_1==RULE_AND_TEXT) ) {
+                    alt3=2;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return ;}
@@ -9774,11 +9774,11 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
             if ( (LA4_0==RULE_GIVEN_TEXT) ) {
                 int LA4_1 = input.LA(2);
 
-                if ( (LA4_1==EOF||(LA4_1>=RULE_SCENARIO_TEXT && LA4_1<=RULE_EXAMPLE_TEXT)) ) {
-                    alt4=2;
-                }
-                else if ( ((LA4_1>=RULE_ID && LA4_1<=RULE_DECIMAL)||(LA4_1>=RULE_STRING && LA4_1<=RULE_RICH_TEXT_START)||LA4_1==49||LA4_1==55||(LA4_1>=58 && LA4_1<=59)||LA4_1==64||(LA4_1>=66 && LA4_1<=68)||LA4_1==74||(LA4_1>=77 && LA4_1<=79)||LA4_1==83||(LA4_1>=89 && LA4_1<=90)||LA4_1==101||LA4_1==103||LA4_1==105||(LA4_1>=108 && LA4_1<=110)||(LA4_1>=112 && LA4_1<=115)||(LA4_1>=127 && LA4_1<=128)) ) {
+                if ( ((LA4_1>=RULE_ID && LA4_1<=RULE_DECIMAL)||(LA4_1>=RULE_STRING && LA4_1<=RULE_RICH_TEXT_START)||LA4_1==49||LA4_1==55||(LA4_1>=58 && LA4_1<=59)||LA4_1==64||(LA4_1>=66 && LA4_1<=68)||LA4_1==74||(LA4_1>=77 && LA4_1<=79)||LA4_1==83||(LA4_1>=89 && LA4_1<=90)||LA4_1==101||LA4_1==103||LA4_1==105||(LA4_1>=108 && LA4_1<=110)||(LA4_1>=112 && LA4_1<=115)||(LA4_1>=127 && LA4_1<=128)) ) {
                     alt4=1;
+                }
+                else if ( (LA4_1==EOF||LA4_1==RULE_SCENARIO_TEXT||(LA4_1>=RULE_WHEN_TEXT && LA4_1<=RULE_EXAMPLE_TEXT)) ) {
+                    alt4=2;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return ;}
@@ -9873,7 +9873,7 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
             if ( (LA5_0==RULE_WHEN_TEXT) ) {
                 int LA5_1 = input.LA(2);
 
-                if ( (LA5_1==EOF||LA5_1==RULE_SCENARIO_TEXT||(LA5_1>=RULE_WHEN_TEXT && LA5_1<=RULE_EXAMPLE_TEXT)) ) {
+                if ( (LA5_1==EOF||LA5_1==RULE_SCENARIO_TEXT||(LA5_1>=RULE_THEN_TEXT && LA5_1<=RULE_EXAMPLE_TEXT)) ) {
                     alt5=2;
                 }
                 else if ( ((LA5_1>=RULE_ID && LA5_1<=RULE_DECIMAL)||(LA5_1>=RULE_STRING && LA5_1<=RULE_RICH_TEXT_START)||LA5_1==49||LA5_1==55||(LA5_1>=58 && LA5_1<=59)||LA5_1==64||(LA5_1>=66 && LA5_1<=68)||LA5_1==74||(LA5_1>=77 && LA5_1<=79)||LA5_1==83||(LA5_1>=89 && LA5_1<=90)||LA5_1==101||LA5_1==103||LA5_1==105||(LA5_1>=108 && LA5_1<=110)||(LA5_1>=112 && LA5_1<=115)||(LA5_1>=127 && LA5_1<=128)) ) {
@@ -9975,7 +9975,7 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
                 if ( ((LA6_1>=RULE_ID && LA6_1<=RULE_DECIMAL)||(LA6_1>=RULE_STRING && LA6_1<=RULE_RICH_TEXT_START)||LA6_1==49||LA6_1==55||(LA6_1>=58 && LA6_1<=59)||LA6_1==64||(LA6_1>=66 && LA6_1<=68)||LA6_1==74||(LA6_1>=77 && LA6_1<=79)||LA6_1==83||(LA6_1>=89 && LA6_1<=90)||LA6_1==101||LA6_1==103||LA6_1==105||(LA6_1>=108 && LA6_1<=110)||(LA6_1>=112 && LA6_1<=115)||(LA6_1>=127 && LA6_1<=128)) ) {
                     alt6=1;
                 }
-                else if ( (LA6_1==EOF||LA6_1==RULE_SCENARIO_TEXT||(LA6_1>=RULE_THEN_TEXT && LA6_1<=RULE_EXAMPLE_TEXT)) ) {
+                else if ( (LA6_1==EOF||LA6_1==RULE_SCENARIO_TEXT||(LA6_1>=RULE_AND_TEXT && LA6_1<=RULE_EXAMPLE_TEXT)) ) {
                     alt6=2;
                 }
                 else {
@@ -10219,11 +10219,11 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
             if ( (LA8_0==RULE_AND_TEXT) ) {
                 int LA8_1 = input.LA(2);
 
-                if ( ((LA8_1>=RULE_ID && LA8_1<=RULE_DECIMAL)||(LA8_1>=RULE_STRING && LA8_1<=RULE_RICH_TEXT_START)||LA8_1==49||LA8_1==55||(LA8_1>=58 && LA8_1<=59)||LA8_1==64||(LA8_1>=66 && LA8_1<=68)||LA8_1==74||(LA8_1>=77 && LA8_1<=79)||LA8_1==83||(LA8_1>=89 && LA8_1<=90)||LA8_1==101||LA8_1==103||LA8_1==105||(LA8_1>=108 && LA8_1<=110)||(LA8_1>=112 && LA8_1<=115)||(LA8_1>=127 && LA8_1<=128)) ) {
-                    alt8=1;
-                }
-                else if ( (LA8_1==EOF||(LA8_1>=RULE_SCENARIO_TEXT && LA8_1<=RULE_EXAMPLE_TEXT)) ) {
+                if ( (LA8_1==EOF||(LA8_1>=RULE_SCENARIO_TEXT && LA8_1<=RULE_EXAMPLE_TEXT)) ) {
                     alt8=2;
+                }
+                else if ( ((LA8_1>=RULE_ID && LA8_1<=RULE_DECIMAL)||(LA8_1>=RULE_STRING && LA8_1<=RULE_RICH_TEXT_START)||LA8_1==49||LA8_1==55||(LA8_1>=58 && LA8_1<=59)||LA8_1==64||(LA8_1>=66 && LA8_1<=68)||LA8_1==74||(LA8_1>=77 && LA8_1<=79)||LA8_1==83||(LA8_1>=89 && LA8_1<=90)||LA8_1==101||LA8_1==103||LA8_1==105||(LA8_1>=108 && LA8_1<=110)||(LA8_1>=112 && LA8_1<=115)||(LA8_1>=127 && LA8_1<=128)) ) {
+                    alt8=1;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return ;}
@@ -10420,7 +10420,7 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
                 if ( ((LA10_1>=RULE_ID && LA10_1<=RULE_DECIMAL)||(LA10_1>=RULE_STRING && LA10_1<=RULE_RICH_TEXT_START)||LA10_1==49||LA10_1==55||(LA10_1>=58 && LA10_1<=59)||LA10_1==64||(LA10_1>=66 && LA10_1<=68)||LA10_1==74||(LA10_1>=77 && LA10_1<=79)||LA10_1==83||(LA10_1>=89 && LA10_1<=90)||LA10_1==101||LA10_1==103||LA10_1==105||(LA10_1>=108 && LA10_1<=110)||(LA10_1>=112 && LA10_1<=115)||(LA10_1>=127 && LA10_1<=128)) ) {
                     alt10=1;
                 }
-                else if ( (LA10_1==EOF||LA10_1==RULE_SCENARIO_TEXT||(LA10_1>=RULE_WHEN_TEXT && LA10_1<=RULE_EXAMPLE_TEXT)) ) {
+                else if ( (LA10_1==EOF||LA10_1==RULE_SCENARIO_TEXT||(LA10_1>=RULE_THEN_TEXT && LA10_1<=RULE_EXAMPLE_TEXT)) ) {
                     alt10=2;
                 }
                 else {
@@ -10516,11 +10516,11 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
             if ( (LA11_0==RULE_AND_TEXT) ) {
                 int LA11_1 = input.LA(2);
 
-                if ( ((LA11_1>=RULE_ID && LA11_1<=RULE_DECIMAL)||(LA11_1>=RULE_STRING && LA11_1<=RULE_RICH_TEXT_START)||LA11_1==49||LA11_1==55||(LA11_1>=58 && LA11_1<=59)||LA11_1==64||(LA11_1>=66 && LA11_1<=68)||LA11_1==74||(LA11_1>=77 && LA11_1<=79)||LA11_1==83||(LA11_1>=89 && LA11_1<=90)||LA11_1==101||LA11_1==103||LA11_1==105||(LA11_1>=108 && LA11_1<=110)||(LA11_1>=112 && LA11_1<=115)||(LA11_1>=127 && LA11_1<=128)) ) {
-                    alt11=1;
-                }
-                else if ( (LA11_1==EOF||LA11_1==RULE_SCENARIO_TEXT||(LA11_1>=RULE_WHEN_TEXT && LA11_1<=RULE_EXAMPLE_TEXT)) ) {
+                if ( (LA11_1==EOF||LA11_1==RULE_SCENARIO_TEXT||(LA11_1>=RULE_THEN_TEXT && LA11_1<=RULE_EXAMPLE_TEXT)) ) {
                     alt11=2;
+                }
+                else if ( ((LA11_1>=RULE_ID && LA11_1<=RULE_DECIMAL)||(LA11_1>=RULE_STRING && LA11_1<=RULE_RICH_TEXT_START)||LA11_1==49||LA11_1==55||(LA11_1>=58 && LA11_1<=59)||LA11_1==64||(LA11_1>=66 && LA11_1<=68)||LA11_1==74||(LA11_1>=77 && LA11_1<=79)||LA11_1==83||(LA11_1>=89 && LA11_1<=90)||LA11_1==101||LA11_1==103||LA11_1==105||(LA11_1>=108 && LA11_1<=110)||(LA11_1>=112 && LA11_1<=115)||(LA11_1>=127 && LA11_1<=128)) ) {
+                    alt11=1;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return ;}
@@ -10615,7 +10615,7 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
             if ( (LA12_0==RULE_AND_TEXT) ) {
                 int LA12_1 = input.LA(2);
 
-                if ( (LA12_1==EOF||LA12_1==RULE_SCENARIO_TEXT||(LA12_1>=RULE_THEN_TEXT && LA12_1<=RULE_EXAMPLE_TEXT)) ) {
+                if ( (LA12_1==EOF||LA12_1==RULE_SCENARIO_TEXT||(LA12_1>=RULE_AND_TEXT && LA12_1<=RULE_EXAMPLE_TEXT)) ) {
                     alt12=2;
                 }
                 else if ( ((LA12_1>=RULE_ID && LA12_1<=RULE_DECIMAL)||(LA12_1>=RULE_STRING && LA12_1<=RULE_RICH_TEXT_START)||LA12_1==49||LA12_1==55||(LA12_1>=58 && LA12_1<=59)||LA12_1==64||(LA12_1>=66 && LA12_1<=68)||LA12_1==74||(LA12_1>=77 && LA12_1<=79)||LA12_1==83||(LA12_1>=89 && LA12_1<=90)||LA12_1==101||LA12_1==103||LA12_1==105||(LA12_1>=108 && LA12_1<=110)||(LA12_1>=112 && LA12_1<=115)||(LA12_1>=127 && LA12_1<=128)) ) {
@@ -10717,7 +10717,7 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
                 if ( ((LA13_1>=RULE_ID && LA13_1<=RULE_DECIMAL)||(LA13_1>=RULE_STRING && LA13_1<=RULE_RICH_TEXT_START)||LA13_1==49||LA13_1==55||(LA13_1>=58 && LA13_1<=59)||LA13_1==64||(LA13_1>=66 && LA13_1<=68)||LA13_1==74||(LA13_1>=77 && LA13_1<=79)||LA13_1==83||(LA13_1>=89 && LA13_1<=90)||LA13_1==101||LA13_1==103||LA13_1==105||(LA13_1>=108 && LA13_1<=110)||(LA13_1>=112 && LA13_1<=115)||(LA13_1>=127 && LA13_1<=128)) ) {
                     alt13=1;
                 }
-                else if ( (LA13_1==EOF||LA13_1==RULE_SCENARIO_TEXT||(LA13_1>=RULE_THEN_TEXT && LA13_1<=RULE_EXAMPLE_TEXT)) ) {
+                else if ( (LA13_1==EOF||LA13_1==RULE_SCENARIO_TEXT||(LA13_1>=RULE_AND_TEXT && LA13_1<=RULE_EXAMPLE_TEXT)) ) {
                     alt13=2;
                 }
                 else {
@@ -11442,11 +11442,11 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
                 {
                 int LA17_1 = input.LA(2);
 
-                if ( (LA17_1==RULE_ID||LA17_1==76) ) {
-                    alt17=1;
-                }
-                else if ( (LA17_1==74) ) {
+                if ( (LA17_1==74) ) {
                     alt17=2;
+                }
+                else if ( (LA17_1==RULE_ID||LA17_1==76) ) {
+                    alt17=1;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return ;}
@@ -12012,11 +12012,11 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
                 {
                 int LA22_1 = input.LA(2);
 
-                if ( (LA22_1==90) ) {
-                    alt22=3;
-                }
-                else if ( (LA22_1==RULE_ID||LA22_1==47||LA22_1==49||LA22_1==89||(LA22_1>=120 && LA22_1<=121)) ) {
+                if ( (LA22_1==RULE_ID||LA22_1==47||LA22_1==49||LA22_1==89||(LA22_1>=120 && LA22_1<=121)) ) {
                     alt22=1;
+                }
+                else if ( (LA22_1==90) ) {
+                    alt22=3;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return ;}
@@ -13360,11 +13360,11 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
                 {
                 int LA33_1 = input.LA(2);
 
-                if ( (LA33_1==EOF||LA33_1==88||LA33_1==111) ) {
-                    alt33=2;
-                }
-                else if ( (LA33_1==40) ) {
+                if ( (LA33_1==40) ) {
                     alt33=1;
+                }
+                else if ( (LA33_1==EOF||LA33_1==88||LA33_1==111) ) {
+                    alt33=2;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return ;}
@@ -13801,11 +13801,11 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
                 {
                 int LA35_2 = input.LA(2);
 
-                if ( (LA35_2==EOF||(LA35_2>=RULE_PIPE && LA35_2<=RULE_DECIMAL)||LA35_2==RULE_EXAMPLE_ROW_END||(LA35_2>=RULE_SCENARIO_TEXT && LA35_2<=RULE_COMMENT_RICH_TEXT_END)||(LA35_2>=41 && LA35_2<=71)||(LA35_2>=73 && LA35_2<=75)||(LA35_2>=77 && LA35_2<=80)||(LA35_2>=83 && LA35_2<=85)||(LA35_2>=88 && LA35_2<=91)||(LA35_2>=94 && LA35_2<=96)||(LA35_2>=101 && LA35_2<=117)||(LA35_2>=120 && LA35_2<=122)||(LA35_2>=125 && LA35_2<=128)) ) {
-                    alt35=2;
-                }
-                else if ( (LA35_2==40) ) {
+                if ( (LA35_2==40) ) {
                     alt35=1;
+                }
+                else if ( (LA35_2==EOF||(LA35_2>=RULE_PIPE && LA35_2<=RULE_DECIMAL)||LA35_2==RULE_EXAMPLE_ROW_END||(LA35_2>=RULE_SCENARIO_TEXT && LA35_2<=RULE_COMMENT_RICH_TEXT_END)||(LA35_2>=41 && LA35_2<=71)||(LA35_2>=73 && LA35_2<=75)||(LA35_2>=77 && LA35_2<=80)||(LA35_2>=83 && LA35_2<=85)||(LA35_2>=88 && LA35_2<=91)||(LA35_2>=94 && LA35_2<=96)||(LA35_2>=101 && LA35_2<=117)||(LA35_2>=120 && LA35_2<=122)||(LA35_2>=125 && LA35_2<=128)) ) {
+                    alt35=2;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return ;}
@@ -18946,49 +18946,42 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Scenario__Group__3__Impl"
-    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5523:1: rule__Scenario__Group__3__Impl : ( ( rule__Scenario__StepsAssignment_3 )* ) ;
+    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5523:1: rule__Scenario__Group__3__Impl : ( ( rule__Scenario__StepsAssignment_3 )? ) ;
     public final void rule__Scenario__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5527:1: ( ( ( rule__Scenario__StepsAssignment_3 )* ) )
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5528:1: ( ( rule__Scenario__StepsAssignment_3 )* )
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5527:1: ( ( ( rule__Scenario__StepsAssignment_3 )? ) )
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5528:1: ( ( rule__Scenario__StepsAssignment_3 )? )
             {
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5528:1: ( ( rule__Scenario__StepsAssignment_3 )* )
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5529:1: ( rule__Scenario__StepsAssignment_3 )*
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5528:1: ( ( rule__Scenario__StepsAssignment_3 )? )
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5529:1: ( rule__Scenario__StepsAssignment_3 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getScenarioAccess().getStepsAssignment_3()); 
             }
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5530:1: ( rule__Scenario__StepsAssignment_3 )*
-            loop74:
-            do {
-                int alt74=2;
-                int LA74_0 = input.LA(1);
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5530:1: ( rule__Scenario__StepsAssignment_3 )?
+            int alt74=2;
+            int LA74_0 = input.LA(1);
 
-                if ( (LA74_0==RULE_GIVEN_TEXT) ) {
-                    alt74=1;
-                }
+            if ( (LA74_0==RULE_GIVEN_TEXT) ) {
+                alt74=1;
+            }
+            switch (alt74) {
+                case 1 :
+                    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5530:2: rule__Scenario__StepsAssignment_3
+                    {
+                    pushFollow(FOLLOW_rule__Scenario__StepsAssignment_3_in_rule__Scenario__Group__3__Impl11952);
+                    rule__Scenario__StepsAssignment_3();
 
+                    state._fsp--;
+                    if (state.failed) return ;
 
-                switch (alt74) {
-            	case 1 :
-            	    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5530:2: rule__Scenario__StepsAssignment_3
-            	    {
-            	    pushFollow(FOLLOW_rule__Scenario__StepsAssignment_3_in_rule__Scenario__Group__3__Impl11952);
-            	    rule__Scenario__StepsAssignment_3();
+                    }
+                    break;
 
-            	    state._fsp--;
-            	    if (state.failed) return ;
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop74;
-                }
-            } while (true);
+            }
 
             if ( state.backtracking==0 ) {
                after(grammarAccess.getScenarioAccess().getStepsAssignment_3()); 
@@ -19053,49 +19046,42 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Scenario__Group__4__Impl"
-    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5552:1: rule__Scenario__Group__4__Impl : ( ( rule__Scenario__StepsAssignment_4 )* ) ;
+    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5552:1: rule__Scenario__Group__4__Impl : ( ( rule__Scenario__StepsAssignment_4 )? ) ;
     public final void rule__Scenario__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5556:1: ( ( ( rule__Scenario__StepsAssignment_4 )* ) )
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5557:1: ( ( rule__Scenario__StepsAssignment_4 )* )
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5556:1: ( ( ( rule__Scenario__StepsAssignment_4 )? ) )
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5557:1: ( ( rule__Scenario__StepsAssignment_4 )? )
             {
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5557:1: ( ( rule__Scenario__StepsAssignment_4 )* )
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5558:1: ( rule__Scenario__StepsAssignment_4 )*
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5557:1: ( ( rule__Scenario__StepsAssignment_4 )? )
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5558:1: ( rule__Scenario__StepsAssignment_4 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getScenarioAccess().getStepsAssignment_4()); 
             }
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5559:1: ( rule__Scenario__StepsAssignment_4 )*
-            loop75:
-            do {
-                int alt75=2;
-                int LA75_0 = input.LA(1);
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5559:1: ( rule__Scenario__StepsAssignment_4 )?
+            int alt75=2;
+            int LA75_0 = input.LA(1);
 
-                if ( (LA75_0==RULE_WHEN_TEXT) ) {
-                    alt75=1;
-                }
+            if ( (LA75_0==RULE_WHEN_TEXT) ) {
+                alt75=1;
+            }
+            switch (alt75) {
+                case 1 :
+                    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5559:2: rule__Scenario__StepsAssignment_4
+                    {
+                    pushFollow(FOLLOW_rule__Scenario__StepsAssignment_4_in_rule__Scenario__Group__4__Impl12013);
+                    rule__Scenario__StepsAssignment_4();
 
+                    state._fsp--;
+                    if (state.failed) return ;
 
-                switch (alt75) {
-            	case 1 :
-            	    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5559:2: rule__Scenario__StepsAssignment_4
-            	    {
-            	    pushFollow(FOLLOW_rule__Scenario__StepsAssignment_4_in_rule__Scenario__Group__4__Impl12013);
-            	    rule__Scenario__StepsAssignment_4();
+                    }
+                    break;
 
-            	    state._fsp--;
-            	    if (state.failed) return ;
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop75;
-                }
-            } while (true);
+            }
 
             if ( state.backtracking==0 ) {
                after(grammarAccess.getScenarioAccess().getStepsAssignment_4()); 
@@ -19160,49 +19146,42 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Scenario__Group__5__Impl"
-    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5581:1: rule__Scenario__Group__5__Impl : ( ( rule__Scenario__StepsAssignment_5 )* ) ;
+    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5581:1: rule__Scenario__Group__5__Impl : ( ( rule__Scenario__StepsAssignment_5 )? ) ;
     public final void rule__Scenario__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5585:1: ( ( ( rule__Scenario__StepsAssignment_5 )* ) )
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5586:1: ( ( rule__Scenario__StepsAssignment_5 )* )
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5585:1: ( ( ( rule__Scenario__StepsAssignment_5 )? ) )
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5586:1: ( ( rule__Scenario__StepsAssignment_5 )? )
             {
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5586:1: ( ( rule__Scenario__StepsAssignment_5 )* )
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5587:1: ( rule__Scenario__StepsAssignment_5 )*
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5586:1: ( ( rule__Scenario__StepsAssignment_5 )? )
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5587:1: ( rule__Scenario__StepsAssignment_5 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getScenarioAccess().getStepsAssignment_5()); 
             }
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5588:1: ( rule__Scenario__StepsAssignment_5 )*
-            loop76:
-            do {
-                int alt76=2;
-                int LA76_0 = input.LA(1);
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5588:1: ( rule__Scenario__StepsAssignment_5 )?
+            int alt76=2;
+            int LA76_0 = input.LA(1);
 
-                if ( (LA76_0==RULE_THEN_TEXT) ) {
-                    alt76=1;
-                }
+            if ( (LA76_0==RULE_THEN_TEXT) ) {
+                alt76=1;
+            }
+            switch (alt76) {
+                case 1 :
+                    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5588:2: rule__Scenario__StepsAssignment_5
+                    {
+                    pushFollow(FOLLOW_rule__Scenario__StepsAssignment_5_in_rule__Scenario__Group__5__Impl12074);
+                    rule__Scenario__StepsAssignment_5();
 
+                    state._fsp--;
+                    if (state.failed) return ;
 
-                switch (alt76) {
-            	case 1 :
-            	    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5588:2: rule__Scenario__StepsAssignment_5
-            	    {
-            	    pushFollow(FOLLOW_rule__Scenario__StepsAssignment_5_in_rule__Scenario__Group__5__Impl12074);
-            	    rule__Scenario__StepsAssignment_5();
+                    }
+                    break;
 
-            	    state._fsp--;
-            	    if (state.failed) return ;
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop76;
-                }
-            } while (true);
+            }
 
             if ( state.backtracking==0 ) {
                after(grammarAccess.getScenarioAccess().getStepsAssignment_5()); 
@@ -85713,7 +85692,7 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
     static final String DFA90_acceptS =
         "\1\uffff\1\2\11\uffff\1\1";
     static final String DFA90_specialS =
-        "\2\uffff\1\5\1\3\1\7\1\0\1\4\1\10\1\2\1\1\1\6\1\uffff}>";
+        "\2\uffff\1\2\1\0\1\1\1\3\1\10\1\6\1\5\1\4\1\7\1\uffff}>";
     static final String[] DFA90_transitionS = {
             "\6\1\4\uffff\1\1\1\uffff\15\1\14\uffff\3\1\1\6\1\3\1\5\1\4\4"+
             "\1\1\10\1\11\1\12\1\2\20\1\1\uffff\2\1\1\7\1\uffff\4\1\2\uffff"+
@@ -85769,51 +85748,6 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA90_5 = input.LA(1);
-
-                         
-                        int index90_5 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred129_InternalFeature()) ) {s = 11;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index90_5);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
-                        int LA90_9 = input.LA(1);
-
-                         
-                        int index90_9 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred129_InternalFeature()) ) {s = 11;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index90_9);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
-                        int LA90_8 = input.LA(1);
-
-                         
-                        int index90_8 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred129_InternalFeature()) ) {s = 11;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index90_8);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 3 : 
                         int LA90_3 = input.LA(1);
 
                          
@@ -85828,52 +85762,7 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
                         input.seek(index90_3);
                         if ( s>=0 ) return s;
                         break;
-                    case 4 : 
-                        int LA90_6 = input.LA(1);
-
-                         
-                        int index90_6 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred129_InternalFeature()) ) {s = 11;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index90_6);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 5 : 
-                        int LA90_2 = input.LA(1);
-
-                         
-                        int index90_2 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred129_InternalFeature()) ) {s = 11;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index90_2);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 6 : 
-                        int LA90_10 = input.LA(1);
-
-                         
-                        int index90_10 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred129_InternalFeature()) ) {s = 11;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index90_10);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 7 : 
+                    case 1 : 
                         int LA90_4 = input.LA(1);
 
                          
@@ -85888,7 +85777,67 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
                         input.seek(index90_4);
                         if ( s>=0 ) return s;
                         break;
-                    case 8 : 
+                    case 2 : 
+                        int LA90_2 = input.LA(1);
+
+                         
+                        int index90_2 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred129_InternalFeature()) ) {s = 11;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index90_2);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 3 : 
+                        int LA90_5 = input.LA(1);
+
+                         
+                        int index90_5 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred129_InternalFeature()) ) {s = 11;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index90_5);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 4 : 
+                        int LA90_9 = input.LA(1);
+
+                         
+                        int index90_9 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred129_InternalFeature()) ) {s = 11;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index90_9);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 5 : 
+                        int LA90_8 = input.LA(1);
+
+                         
+                        int index90_8 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred129_InternalFeature()) ) {s = 11;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index90_8);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 6 : 
                         int LA90_7 = input.LA(1);
 
                          
@@ -85901,6 +85850,36 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
 
                          
                         input.seek(index90_7);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 7 : 
+                        int LA90_10 = input.LA(1);
+
+                         
+                        int index90_10 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred129_InternalFeature()) ) {s = 11;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index90_10);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 8 : 
+                        int LA90_6 = input.LA(1);
+
+                         
+                        int index90_6 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred129_InternalFeature()) ) {s = 11;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index90_6);
                         if ( s>=0 ) return s;
                         break;
             }
@@ -86057,39 +86036,39 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
     static final String DFA107_eotS =
         "\11\uffff";
     static final String DFA107_eofS =
-        "\1\3\2\6\1\uffff\2\3\1\uffff\2\6";
+        "\1\3\2\4\2\uffff\2\3\2\4";
     static final String DFA107_minS =
-        "\3\6\1\uffff\2\6\1\uffff\2\6";
+        "\3\6\2\uffff\4\6";
     static final String DFA107_maxS =
-        "\3\172\1\uffff\2\172\1\uffff\2\172";
+        "\3\172\2\uffff\4\172";
     static final String DFA107_acceptS =
-        "\3\uffff\1\2\2\uffff\1\1\2\uffff";
+        "\3\uffff\1\2\1\1\4\uffff";
     static final String DFA107_specialS =
         "\11\uffff}>";
     static final String[] DFA107_transitionS = {
             "\1\1\11\uffff\4\3\1\uffff\1\3\22\uffff\1\3\6\uffff\2\3\1\2\23"+
             "\uffff\3\3\1\uffff\1\3\12\uffff\1\3\4\uffff\2\3\12\uffff\1\3"+
             "\22\uffff\3\3",
-            "\1\4\11\uffff\4\6\1\uffff\1\6\22\uffff\1\6\6\uffff\2\6\1\5"+
-            "\5\uffff\1\3\11\uffff\1\3\3\uffff\3\6\1\uffff\1\6\5\uffff\1"+
-            "\3\4\uffff\1\6\4\uffff\2\6\12\uffff\1\6\22\uffff\3\6",
-            "\1\4\11\uffff\4\6\1\uffff\1\6\22\uffff\1\6\6\uffff\2\6\1\5"+
-            "\5\uffff\1\3\11\uffff\1\3\3\uffff\3\6\1\uffff\1\6\5\uffff\1"+
-            "\3\4\uffff\1\6\4\uffff\2\6\12\uffff\1\6\22\uffff\3\6",
+            "\1\5\11\uffff\4\4\1\uffff\1\4\22\uffff\1\4\6\uffff\2\4\1\6"+
+            "\5\uffff\1\3\11\uffff\1\3\3\uffff\3\4\1\uffff\1\4\5\uffff\1"+
+            "\3\4\uffff\1\4\4\uffff\2\4\12\uffff\1\4\22\uffff\3\4",
+            "\1\5\11\uffff\4\4\1\uffff\1\4\22\uffff\1\4\6\uffff\2\4\1\6"+
+            "\5\uffff\1\3\11\uffff\1\3\3\uffff\3\4\1\uffff\1\4\5\uffff\1"+
+            "\3\4\uffff\1\4\4\uffff\2\4\12\uffff\1\4\22\uffff\3\4",
+            "",
             "",
             "\1\7\11\uffff\4\3\1\uffff\1\3\22\uffff\1\3\6\uffff\2\3\1\10"+
-            "\5\uffff\1\6\11\uffff\1\6\3\uffff\3\3\1\uffff\1\3\5\uffff\1"+
-            "\6\4\uffff\1\3\4\uffff\2\3\12\uffff\1\3\22\uffff\3\3",
+            "\5\uffff\1\4\11\uffff\1\4\3\uffff\3\3\1\uffff\1\3\5\uffff\1"+
+            "\4\4\uffff\1\3\4\uffff\2\3\12\uffff\1\3\22\uffff\3\3",
             "\1\7\11\uffff\4\3\1\uffff\1\3\22\uffff\1\3\6\uffff\2\3\1\10"+
-            "\5\uffff\1\6\11\uffff\1\6\3\uffff\3\3\1\uffff\1\3\5\uffff\1"+
-            "\6\4\uffff\1\3\4\uffff\2\3\12\uffff\1\3\22\uffff\3\3",
-            "",
-            "\1\4\11\uffff\4\6\1\uffff\1\6\22\uffff\1\6\6\uffff\2\6\1\5"+
-            "\5\uffff\1\3\11\uffff\1\3\3\uffff\3\6\1\uffff\1\6\5\uffff\1"+
-            "\3\4\uffff\1\6\4\uffff\2\6\12\uffff\1\6\22\uffff\3\6",
-            "\1\4\11\uffff\4\6\1\uffff\1\6\22\uffff\1\6\6\uffff\2\6\1\5"+
-            "\5\uffff\1\3\11\uffff\1\3\3\uffff\3\6\1\uffff\1\6\5\uffff\1"+
-            "\3\4\uffff\1\6\4\uffff\2\6\12\uffff\1\6\22\uffff\3\6"
+            "\5\uffff\1\4\11\uffff\1\4\3\uffff\3\3\1\uffff\1\3\5\uffff\1"+
+            "\4\4\uffff\1\3\4\uffff\2\3\12\uffff\1\3\22\uffff\3\3",
+            "\1\5\11\uffff\4\4\1\uffff\1\4\22\uffff\1\4\6\uffff\2\4\1\6"+
+            "\5\uffff\1\3\11\uffff\1\3\3\uffff\3\4\1\uffff\1\4\5\uffff\1"+
+            "\3\4\uffff\1\4\4\uffff\2\4\12\uffff\1\4\22\uffff\3\4",
+            "\1\5\11\uffff\4\4\1\uffff\1\4\22\uffff\1\4\6\uffff\2\4\1\6"+
+            "\5\uffff\1\3\11\uffff\1\3\3\uffff\3\4\1\uffff\1\4\5\uffff\1"+
+            "\3\4\uffff\1\4\4\uffff\2\4\12\uffff\1\4\22\uffff\3\4"
     };
 
     static final short[] DFA107_eot = DFA.unpackEncodedString(DFA107_eotS);
@@ -88941,13 +88920,13 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__Scenario__MembersAssignment_2_in_rule__Scenario__Group__2__Impl11891 = new BitSet(new long[]{0x0003800000000042L,0x07000020060000E0L});
     public static final BitSet FOLLOW_rule__Scenario__Group__3__Impl_in_rule__Scenario__Group__311922 = new BitSet(new long[]{0x00038000002E0040L,0x07000020060000E0L});
     public static final BitSet FOLLOW_rule__Scenario__Group__4_in_rule__Scenario__Group__311925 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Scenario__StepsAssignment_3_in_rule__Scenario__Group__3__Impl11952 = new BitSet(new long[]{0x0000000000020002L});
+    public static final BitSet FOLLOW_rule__Scenario__StepsAssignment_3_in_rule__Scenario__Group__3__Impl11952 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Scenario__Group__4__Impl_in_rule__Scenario__Group__411983 = new BitSet(new long[]{0x00038000002E0040L,0x07000020060000E0L});
     public static final BitSet FOLLOW_rule__Scenario__Group__5_in_rule__Scenario__Group__411986 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Scenario__StepsAssignment_4_in_rule__Scenario__Group__4__Impl12013 = new BitSet(new long[]{0x0000000000040002L});
+    public static final BitSet FOLLOW_rule__Scenario__StepsAssignment_4_in_rule__Scenario__Group__4__Impl12013 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Scenario__Group__5__Impl_in_rule__Scenario__Group__512044 = new BitSet(new long[]{0x00038000002E0040L,0x07000020060000E0L});
     public static final BitSet FOLLOW_rule__Scenario__Group__6_in_rule__Scenario__Group__512047 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Scenario__StepsAssignment_5_in_rule__Scenario__Group__5__Impl12074 = new BitSet(new long[]{0x0000000000080002L});
+    public static final BitSet FOLLOW_rule__Scenario__StepsAssignment_5_in_rule__Scenario__Group__5__Impl12074 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Scenario__Group__6__Impl_in_rule__Scenario__Group__612105 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Scenario__ExamplesAssignment_6_in_rule__Scenario__Group__6__Impl12132 = new BitSet(new long[]{0x0000000000200002L});
     public static final BitSet FOLLOW_rule__GivenReference__Group__0__Impl_in_rule__GivenReference__Group__012177 = new BitSet(new long[]{0x0000000000020000L});

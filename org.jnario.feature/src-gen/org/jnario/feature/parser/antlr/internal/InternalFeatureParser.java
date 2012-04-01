@@ -1043,11 +1043,11 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
             	    if ( (LA9_0==RULE_GIVEN_TEXT) ) {
             	        int LA9_1 = input.LA(2);
 
-            	        if ( (LA9_1==EOF||(LA9_1>=RULE_SCENARIO_TEXT && LA9_1<=RULE_GIVEN_TEXT)||LA9_1==RULE_AND_TEXT) ) {
-            	            alt9=2;
-            	        }
-            	        else if ( ((LA9_1>=RULE_ID && LA9_1<=RULE_RICH_TEXT_START)||(LA9_1>=RULE_HEX && LA9_1<=RULE_DECIMAL)||LA9_1==44||(LA9_1>=49 && LA9_1<=51)||LA9_1==60||LA9_1==65||LA9_1==71||(LA9_1>=73 && LA9_1<=74)||(LA9_1>=86 && LA9_1<=87)||LA9_1==97||LA9_1==101||LA9_1==105||LA9_1==107||(LA9_1>=110 && LA9_1<=115)||(LA9_1>=117 && LA9_1<=122)) ) {
+            	        if ( ((LA9_1>=RULE_ID && LA9_1<=RULE_RICH_TEXT_START)||(LA9_1>=RULE_HEX && LA9_1<=RULE_DECIMAL)||LA9_1==44||(LA9_1>=49 && LA9_1<=51)||LA9_1==60||LA9_1==65||LA9_1==71||(LA9_1>=73 && LA9_1<=74)||(LA9_1>=86 && LA9_1<=87)||LA9_1==97||LA9_1==101||LA9_1==105||LA9_1==107||(LA9_1>=110 && LA9_1<=115)||(LA9_1>=117 && LA9_1<=122)) ) {
             	            alt9=1;
+            	        }
+            	        else if ( (LA9_1==EOF||(LA9_1>=RULE_SCENARIO_TEXT && LA9_1<=RULE_GIVEN_TEXT)||LA9_1==RULE_AND_TEXT) ) {
+            	            alt9=2;
             	        }
             	        else {
             	            if (state.backtracking>0) {state.failed=true; return current;}
@@ -1201,7 +1201,7 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleScenario"
-    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:406:1: ruleScenario returns [EObject current=null] : ( () ( (lv_name_1_0= RULE_SCENARIO_TEXT ) ) ( (lv_members_2_0= ruleMember ) )* ( ( (lv_steps_3_1= ruleGiven | lv_steps_3_2= ruleGivenReference ) ) )* ( ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) ) )* ( ( (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference ) ) )* ( (lv_examples_6_0= ruleExampleTable ) )* ) ;
+    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:406:1: ruleScenario returns [EObject current=null] : ( () ( (lv_name_1_0= RULE_SCENARIO_TEXT ) ) ( (lv_members_2_0= ruleMember ) )* ( ( (lv_steps_3_1= ruleGiven | lv_steps_3_2= ruleGivenReference ) ) )? ( ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) ) )? ( ( (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference ) ) )? ( (lv_examples_6_0= ruleExampleTable ) )* ) ;
     public final EObject ruleScenario() throws RecognitionException {
         EObject current = null;
 
@@ -1226,11 +1226,11 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:409:28: ( ( () ( (lv_name_1_0= RULE_SCENARIO_TEXT ) ) ( (lv_members_2_0= ruleMember ) )* ( ( (lv_steps_3_1= ruleGiven | lv_steps_3_2= ruleGivenReference ) ) )* ( ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) ) )* ( ( (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference ) ) )* ( (lv_examples_6_0= ruleExampleTable ) )* ) )
-            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:410:1: ( () ( (lv_name_1_0= RULE_SCENARIO_TEXT ) ) ( (lv_members_2_0= ruleMember ) )* ( ( (lv_steps_3_1= ruleGiven | lv_steps_3_2= ruleGivenReference ) ) )* ( ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) ) )* ( ( (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference ) ) )* ( (lv_examples_6_0= ruleExampleTable ) )* )
+            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:409:28: ( ( () ( (lv_name_1_0= RULE_SCENARIO_TEXT ) ) ( (lv_members_2_0= ruleMember ) )* ( ( (lv_steps_3_1= ruleGiven | lv_steps_3_2= ruleGivenReference ) ) )? ( ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) ) )? ( ( (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference ) ) )? ( (lv_examples_6_0= ruleExampleTable ) )* ) )
+            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:410:1: ( () ( (lv_name_1_0= RULE_SCENARIO_TEXT ) ) ( (lv_members_2_0= ruleMember ) )* ( ( (lv_steps_3_1= ruleGiven | lv_steps_3_2= ruleGivenReference ) ) )? ( ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) ) )? ( ( (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference ) ) )? ( (lv_examples_6_0= ruleExampleTable ) )* )
             {
-            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:410:1: ( () ( (lv_name_1_0= RULE_SCENARIO_TEXT ) ) ( (lv_members_2_0= ruleMember ) )* ( ( (lv_steps_3_1= ruleGiven | lv_steps_3_2= ruleGivenReference ) ) )* ( ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) ) )* ( ( (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference ) ) )* ( (lv_examples_6_0= ruleExampleTable ) )* )
-            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:410:2: () ( (lv_name_1_0= RULE_SCENARIO_TEXT ) ) ( (lv_members_2_0= ruleMember ) )* ( ( (lv_steps_3_1= ruleGiven | lv_steps_3_2= ruleGivenReference ) ) )* ( ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) ) )* ( ( (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference ) ) )* ( (lv_examples_6_0= ruleExampleTable ) )*
+            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:410:1: ( () ( (lv_name_1_0= RULE_SCENARIO_TEXT ) ) ( (lv_members_2_0= ruleMember ) )* ( ( (lv_steps_3_1= ruleGiven | lv_steps_3_2= ruleGivenReference ) ) )? ( ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) ) )? ( ( (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference ) ) )? ( (lv_examples_6_0= ruleExampleTable ) )* )
+            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:410:2: () ( (lv_name_1_0= RULE_SCENARIO_TEXT ) ) ( (lv_members_2_0= ruleMember ) )* ( ( (lv_steps_3_1= ruleGiven | lv_steps_3_2= ruleGivenReference ) ) )? ( ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) ) )? ( ( (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference ) ) )? ( (lv_examples_6_0= ruleExampleTable ) )*
             {
             // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:410:2: ()
             // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:411:5: 
@@ -1328,365 +1328,344 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:452:3: ( ( (lv_steps_3_1= ruleGiven | lv_steps_3_2= ruleGivenReference ) ) )*
-            loop13:
-            do {
-                int alt13=2;
-                int LA13_0 = input.LA(1);
+            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:452:3: ( ( (lv_steps_3_1= ruleGiven | lv_steps_3_2= ruleGivenReference ) ) )?
+            int alt13=2;
+            int LA13_0 = input.LA(1);
 
-                if ( (LA13_0==RULE_GIVEN_TEXT) ) {
-                    alt13=1;
-                }
+            if ( (LA13_0==RULE_GIVEN_TEXT) ) {
+                alt13=1;
+            }
+            switch (alt13) {
+                case 1 :
+                    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:453:1: ( (lv_steps_3_1= ruleGiven | lv_steps_3_2= ruleGivenReference ) )
+                    {
+                    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:453:1: ( (lv_steps_3_1= ruleGiven | lv_steps_3_2= ruleGivenReference ) )
+                    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:454:1: (lv_steps_3_1= ruleGiven | lv_steps_3_2= ruleGivenReference )
+                    {
+                    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:454:1: (lv_steps_3_1= ruleGiven | lv_steps_3_2= ruleGivenReference )
+                    int alt12=2;
+                    int LA12_0 = input.LA(1);
 
+                    if ( (LA12_0==RULE_GIVEN_TEXT) ) {
+                        int LA12_1 = input.LA(2);
 
-                switch (alt13) {
-            	case 1 :
-            	    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:453:1: ( (lv_steps_3_1= ruleGiven | lv_steps_3_2= ruleGivenReference ) )
-            	    {
-            	    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:453:1: ( (lv_steps_3_1= ruleGiven | lv_steps_3_2= ruleGivenReference ) )
-            	    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:454:1: (lv_steps_3_1= ruleGiven | lv_steps_3_2= ruleGivenReference )
-            	    {
-            	    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:454:1: (lv_steps_3_1= ruleGiven | lv_steps_3_2= ruleGivenReference )
-            	    int alt12=2;
-            	    int LA12_0 = input.LA(1);
+                        if ( ((LA12_1>=RULE_ID && LA12_1<=RULE_RICH_TEXT_START)||(LA12_1>=RULE_HEX && LA12_1<=RULE_DECIMAL)||LA12_1==44||(LA12_1>=49 && LA12_1<=51)||LA12_1==60||LA12_1==65||LA12_1==71||(LA12_1>=73 && LA12_1<=74)||(LA12_1>=86 && LA12_1<=87)||LA12_1==97||LA12_1==101||LA12_1==105||LA12_1==107||(LA12_1>=110 && LA12_1<=115)||(LA12_1>=117 && LA12_1<=122)) ) {
+                            alt12=1;
+                        }
+                        else if ( (LA12_1==EOF||LA12_1==RULE_SCENARIO_TEXT||(LA12_1>=RULE_WHEN_TEXT && LA12_1<=RULE_EXAMPLE_TEXT)) ) {
+                            alt12=2;
+                        }
+                        else {
+                            if (state.backtracking>0) {state.failed=true; return current;}
+                            NoViableAltException nvae =
+                                new NoViableAltException("", 12, 1, input);
 
-            	    if ( (LA12_0==RULE_GIVEN_TEXT) ) {
-            	        int LA12_1 = input.LA(2);
+                            throw nvae;
+                        }
+                    }
+                    else {
+                        if (state.backtracking>0) {state.failed=true; return current;}
+                        NoViableAltException nvae =
+                            new NoViableAltException("", 12, 0, input);
 
-            	        if ( ((LA12_1>=RULE_ID && LA12_1<=RULE_RICH_TEXT_START)||(LA12_1>=RULE_HEX && LA12_1<=RULE_DECIMAL)||LA12_1==44||(LA12_1>=49 && LA12_1<=51)||LA12_1==60||LA12_1==65||LA12_1==71||(LA12_1>=73 && LA12_1<=74)||(LA12_1>=86 && LA12_1<=87)||LA12_1==97||LA12_1==101||LA12_1==105||LA12_1==107||(LA12_1>=110 && LA12_1<=115)||(LA12_1>=117 && LA12_1<=122)) ) {
-            	            alt12=1;
-            	        }
-            	        else if ( (LA12_1==EOF||(LA12_1>=RULE_SCENARIO_TEXT && LA12_1<=RULE_EXAMPLE_TEXT)) ) {
-            	            alt12=2;
-            	        }
-            	        else {
-            	            if (state.backtracking>0) {state.failed=true; return current;}
-            	            NoViableAltException nvae =
-            	                new NoViableAltException("", 12, 1, input);
+                        throw nvae;
+                    }
+                    switch (alt12) {
+                        case 1 :
+                            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:455:3: lv_steps_3_1= ruleGiven
+                            {
+                            if ( state.backtracking==0 ) {
+                               
+                              	        newCompositeNode(grammarAccess.getScenarioAccess().getStepsGivenParserRuleCall_3_0_0()); 
+                              	    
+                            }
+                            pushFollow(FOLLOW_ruleGiven_in_ruleScenario831);
+                            lv_steps_3_1=ruleGiven();
 
-            	            throw nvae;
-            	        }
-            	    }
-            	    else {
-            	        if (state.backtracking>0) {state.failed=true; return current;}
-            	        NoViableAltException nvae =
-            	            new NoViableAltException("", 12, 0, input);
+                            state._fsp--;
+                            if (state.failed) return current;
+                            if ( state.backtracking==0 ) {
 
-            	        throw nvae;
-            	    }
-            	    switch (alt12) {
-            	        case 1 :
-            	            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:455:3: lv_steps_3_1= ruleGiven
-            	            {
-            	            if ( state.backtracking==0 ) {
-            	               
-            	              	        newCompositeNode(grammarAccess.getScenarioAccess().getStepsGivenParserRuleCall_3_0_0()); 
-            	              	    
-            	            }
-            	            pushFollow(FOLLOW_ruleGiven_in_ruleScenario831);
-            	            lv_steps_3_1=ruleGiven();
+                              	        if (current==null) {
+                              	            current = createModelElementForParent(grammarAccess.getScenarioRule());
+                              	        }
+                                     		add(
+                                     			current, 
+                                     			"steps",
+                                      		lv_steps_3_1, 
+                                      		"Given");
+                              	        afterParserOrEnumRuleCall();
+                              	    
+                            }
 
-            	            state._fsp--;
-            	            if (state.failed) return current;
-            	            if ( state.backtracking==0 ) {
+                            }
+                            break;
+                        case 2 :
+                            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:470:8: lv_steps_3_2= ruleGivenReference
+                            {
+                            if ( state.backtracking==0 ) {
+                               
+                              	        newCompositeNode(grammarAccess.getScenarioAccess().getStepsGivenReferenceParserRuleCall_3_0_1()); 
+                              	    
+                            }
+                            pushFollow(FOLLOW_ruleGivenReference_in_ruleScenario850);
+                            lv_steps_3_2=ruleGivenReference();
 
-            	              	        if (current==null) {
-            	              	            current = createModelElementForParent(grammarAccess.getScenarioRule());
-            	              	        }
-            	                     		add(
-            	                     			current, 
-            	                     			"steps",
-            	                      		lv_steps_3_1, 
-            	                      		"Given");
-            	              	        afterParserOrEnumRuleCall();
-            	              	    
-            	            }
+                            state._fsp--;
+                            if (state.failed) return current;
+                            if ( state.backtracking==0 ) {
 
-            	            }
-            	            break;
-            	        case 2 :
-            	            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:470:8: lv_steps_3_2= ruleGivenReference
-            	            {
-            	            if ( state.backtracking==0 ) {
-            	               
-            	              	        newCompositeNode(grammarAccess.getScenarioAccess().getStepsGivenReferenceParserRuleCall_3_0_1()); 
-            	              	    
-            	            }
-            	            pushFollow(FOLLOW_ruleGivenReference_in_ruleScenario850);
-            	            lv_steps_3_2=ruleGivenReference();
+                              	        if (current==null) {
+                              	            current = createModelElementForParent(grammarAccess.getScenarioRule());
+                              	        }
+                                     		add(
+                                     			current, 
+                                     			"steps",
+                                      		lv_steps_3_2, 
+                                      		"GivenReference");
+                              	        afterParserOrEnumRuleCall();
+                              	    
+                            }
 
-            	            state._fsp--;
-            	            if (state.failed) return current;
-            	            if ( state.backtracking==0 ) {
+                            }
+                            break;
 
-            	              	        if (current==null) {
-            	              	            current = createModelElementForParent(grammarAccess.getScenarioRule());
-            	              	        }
-            	                     		add(
-            	                     			current, 
-            	                     			"steps",
-            	                      		lv_steps_3_2, 
-            	                      		"GivenReference");
-            	              	        afterParserOrEnumRuleCall();
-            	              	    
-            	            }
-
-            	            }
-            	            break;
-
-            	    }
+                    }
 
 
-            	    }
+                    }
 
 
-            	    }
-            	    break;
+                    }
+                    break;
 
-            	default :
-            	    break loop13;
-                }
-            } while (true);
+            }
 
-            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:488:3: ( ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) ) )*
-            loop15:
-            do {
-                int alt15=2;
-                int LA15_0 = input.LA(1);
+            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:488:3: ( ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) ) )?
+            int alt15=2;
+            int LA15_0 = input.LA(1);
 
-                if ( (LA15_0==RULE_WHEN_TEXT) ) {
-                    alt15=1;
-                }
+            if ( (LA15_0==RULE_WHEN_TEXT) ) {
+                alt15=1;
+            }
+            switch (alt15) {
+                case 1 :
+                    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:489:1: ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) )
+                    {
+                    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:489:1: ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) )
+                    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:490:1: (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference )
+                    {
+                    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:490:1: (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference )
+                    int alt14=2;
+                    int LA14_0 = input.LA(1);
 
+                    if ( (LA14_0==RULE_WHEN_TEXT) ) {
+                        int LA14_1 = input.LA(2);
 
-                switch (alt15) {
-            	case 1 :
-            	    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:489:1: ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) )
-            	    {
-            	    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:489:1: ( (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference ) )
-            	    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:490:1: (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference )
-            	    {
-            	    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:490:1: (lv_steps_4_1= ruleWhen | lv_steps_4_2= ruleWhenReference )
-            	    int alt14=2;
-            	    int LA14_0 = input.LA(1);
+                        if ( (LA14_1==EOF||LA14_1==RULE_SCENARIO_TEXT||(LA14_1>=RULE_THEN_TEXT && LA14_1<=RULE_EXAMPLE_TEXT)) ) {
+                            alt14=2;
+                        }
+                        else if ( ((LA14_1>=RULE_ID && LA14_1<=RULE_RICH_TEXT_START)||(LA14_1>=RULE_HEX && LA14_1<=RULE_DECIMAL)||LA14_1==44||(LA14_1>=49 && LA14_1<=51)||LA14_1==60||LA14_1==65||LA14_1==71||(LA14_1>=73 && LA14_1<=74)||(LA14_1>=86 && LA14_1<=87)||LA14_1==97||LA14_1==101||LA14_1==105||LA14_1==107||(LA14_1>=110 && LA14_1<=115)||(LA14_1>=117 && LA14_1<=122)) ) {
+                            alt14=1;
+                        }
+                        else {
+                            if (state.backtracking>0) {state.failed=true; return current;}
+                            NoViableAltException nvae =
+                                new NoViableAltException("", 14, 1, input);
 
-            	    if ( (LA14_0==RULE_WHEN_TEXT) ) {
-            	        int LA14_1 = input.LA(2);
+                            throw nvae;
+                        }
+                    }
+                    else {
+                        if (state.backtracking>0) {state.failed=true; return current;}
+                        NoViableAltException nvae =
+                            new NoViableAltException("", 14, 0, input);
 
-            	        if ( ((LA14_1>=RULE_ID && LA14_1<=RULE_RICH_TEXT_START)||(LA14_1>=RULE_HEX && LA14_1<=RULE_DECIMAL)||LA14_1==44||(LA14_1>=49 && LA14_1<=51)||LA14_1==60||LA14_1==65||LA14_1==71||(LA14_1>=73 && LA14_1<=74)||(LA14_1>=86 && LA14_1<=87)||LA14_1==97||LA14_1==101||LA14_1==105||LA14_1==107||(LA14_1>=110 && LA14_1<=115)||(LA14_1>=117 && LA14_1<=122)) ) {
-            	            alt14=1;
-            	        }
-            	        else if ( (LA14_1==EOF||LA14_1==RULE_SCENARIO_TEXT||(LA14_1>=RULE_WHEN_TEXT && LA14_1<=RULE_EXAMPLE_TEXT)) ) {
-            	            alt14=2;
-            	        }
-            	        else {
-            	            if (state.backtracking>0) {state.failed=true; return current;}
-            	            NoViableAltException nvae =
-            	                new NoViableAltException("", 14, 1, input);
+                        throw nvae;
+                    }
+                    switch (alt14) {
+                        case 1 :
+                            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:491:3: lv_steps_4_1= ruleWhen
+                            {
+                            if ( state.backtracking==0 ) {
+                               
+                              	        newCompositeNode(grammarAccess.getScenarioAccess().getStepsWhenParserRuleCall_4_0_0()); 
+                              	    
+                            }
+                            pushFollow(FOLLOW_ruleWhen_in_ruleScenario877);
+                            lv_steps_4_1=ruleWhen();
 
-            	            throw nvae;
-            	        }
-            	    }
-            	    else {
-            	        if (state.backtracking>0) {state.failed=true; return current;}
-            	        NoViableAltException nvae =
-            	            new NoViableAltException("", 14, 0, input);
+                            state._fsp--;
+                            if (state.failed) return current;
+                            if ( state.backtracking==0 ) {
 
-            	        throw nvae;
-            	    }
-            	    switch (alt14) {
-            	        case 1 :
-            	            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:491:3: lv_steps_4_1= ruleWhen
-            	            {
-            	            if ( state.backtracking==0 ) {
-            	               
-            	              	        newCompositeNode(grammarAccess.getScenarioAccess().getStepsWhenParserRuleCall_4_0_0()); 
-            	              	    
-            	            }
-            	            pushFollow(FOLLOW_ruleWhen_in_ruleScenario877);
-            	            lv_steps_4_1=ruleWhen();
+                              	        if (current==null) {
+                              	            current = createModelElementForParent(grammarAccess.getScenarioRule());
+                              	        }
+                                     		add(
+                                     			current, 
+                                     			"steps",
+                                      		lv_steps_4_1, 
+                                      		"When");
+                              	        afterParserOrEnumRuleCall();
+                              	    
+                            }
 
-            	            state._fsp--;
-            	            if (state.failed) return current;
-            	            if ( state.backtracking==0 ) {
+                            }
+                            break;
+                        case 2 :
+                            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:506:8: lv_steps_4_2= ruleWhenReference
+                            {
+                            if ( state.backtracking==0 ) {
+                               
+                              	        newCompositeNode(grammarAccess.getScenarioAccess().getStepsWhenReferenceParserRuleCall_4_0_1()); 
+                              	    
+                            }
+                            pushFollow(FOLLOW_ruleWhenReference_in_ruleScenario896);
+                            lv_steps_4_2=ruleWhenReference();
 
-            	              	        if (current==null) {
-            	              	            current = createModelElementForParent(grammarAccess.getScenarioRule());
-            	              	        }
-            	                     		add(
-            	                     			current, 
-            	                     			"steps",
-            	                      		lv_steps_4_1, 
-            	                      		"When");
-            	              	        afterParserOrEnumRuleCall();
-            	              	    
-            	            }
+                            state._fsp--;
+                            if (state.failed) return current;
+                            if ( state.backtracking==0 ) {
 
-            	            }
-            	            break;
-            	        case 2 :
-            	            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:506:8: lv_steps_4_2= ruleWhenReference
-            	            {
-            	            if ( state.backtracking==0 ) {
-            	               
-            	              	        newCompositeNode(grammarAccess.getScenarioAccess().getStepsWhenReferenceParserRuleCall_4_0_1()); 
-            	              	    
-            	            }
-            	            pushFollow(FOLLOW_ruleWhenReference_in_ruleScenario896);
-            	            lv_steps_4_2=ruleWhenReference();
+                              	        if (current==null) {
+                              	            current = createModelElementForParent(grammarAccess.getScenarioRule());
+                              	        }
+                                     		add(
+                                     			current, 
+                                     			"steps",
+                                      		lv_steps_4_2, 
+                                      		"WhenReference");
+                              	        afterParserOrEnumRuleCall();
+                              	    
+                            }
 
-            	            state._fsp--;
-            	            if (state.failed) return current;
-            	            if ( state.backtracking==0 ) {
+                            }
+                            break;
 
-            	              	        if (current==null) {
-            	              	            current = createModelElementForParent(grammarAccess.getScenarioRule());
-            	              	        }
-            	                     		add(
-            	                     			current, 
-            	                     			"steps",
-            	                      		lv_steps_4_2, 
-            	                      		"WhenReference");
-            	              	        afterParserOrEnumRuleCall();
-            	              	    
-            	            }
-
-            	            }
-            	            break;
-
-            	    }
+                    }
 
 
-            	    }
+                    }
 
 
-            	    }
-            	    break;
+                    }
+                    break;
 
-            	default :
-            	    break loop15;
-                }
-            } while (true);
+            }
 
-            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:524:3: ( ( (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference ) ) )*
-            loop17:
-            do {
-                int alt17=2;
-                int LA17_0 = input.LA(1);
+            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:524:3: ( ( (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference ) ) )?
+            int alt17=2;
+            int LA17_0 = input.LA(1);
 
-                if ( (LA17_0==RULE_THEN_TEXT) ) {
-                    alt17=1;
-                }
+            if ( (LA17_0==RULE_THEN_TEXT) ) {
+                alt17=1;
+            }
+            switch (alt17) {
+                case 1 :
+                    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:525:1: ( (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference ) )
+                    {
+                    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:525:1: ( (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference ) )
+                    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:526:1: (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference )
+                    {
+                    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:526:1: (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference )
+                    int alt16=2;
+                    int LA16_0 = input.LA(1);
 
+                    if ( (LA16_0==RULE_THEN_TEXT) ) {
+                        int LA16_1 = input.LA(2);
 
-                switch (alt17) {
-            	case 1 :
-            	    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:525:1: ( (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference ) )
-            	    {
-            	    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:525:1: ( (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference ) )
-            	    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:526:1: (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference )
-            	    {
-            	    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:526:1: (lv_steps_5_1= ruleThen | lv_steps_5_2= ruleThenReference )
-            	    int alt16=2;
-            	    int LA16_0 = input.LA(1);
+                        if ( (LA16_1==EOF||LA16_1==RULE_SCENARIO_TEXT||(LA16_1>=RULE_AND_TEXT && LA16_1<=RULE_EXAMPLE_TEXT)) ) {
+                            alt16=2;
+                        }
+                        else if ( ((LA16_1>=RULE_ID && LA16_1<=RULE_RICH_TEXT_START)||(LA16_1>=RULE_HEX && LA16_1<=RULE_DECIMAL)||LA16_1==44||(LA16_1>=49 && LA16_1<=51)||LA16_1==60||LA16_1==65||LA16_1==71||(LA16_1>=73 && LA16_1<=74)||(LA16_1>=86 && LA16_1<=87)||LA16_1==97||LA16_1==101||LA16_1==105||LA16_1==107||(LA16_1>=110 && LA16_1<=115)||(LA16_1>=117 && LA16_1<=122)) ) {
+                            alt16=1;
+                        }
+                        else {
+                            if (state.backtracking>0) {state.failed=true; return current;}
+                            NoViableAltException nvae =
+                                new NoViableAltException("", 16, 1, input);
 
-            	    if ( (LA16_0==RULE_THEN_TEXT) ) {
-            	        int LA16_1 = input.LA(2);
+                            throw nvae;
+                        }
+                    }
+                    else {
+                        if (state.backtracking>0) {state.failed=true; return current;}
+                        NoViableAltException nvae =
+                            new NoViableAltException("", 16, 0, input);
 
-            	        if ( ((LA16_1>=RULE_ID && LA16_1<=RULE_RICH_TEXT_START)||(LA16_1>=RULE_HEX && LA16_1<=RULE_DECIMAL)||LA16_1==44||(LA16_1>=49 && LA16_1<=51)||LA16_1==60||LA16_1==65||LA16_1==71||(LA16_1>=73 && LA16_1<=74)||(LA16_1>=86 && LA16_1<=87)||LA16_1==97||LA16_1==101||LA16_1==105||LA16_1==107||(LA16_1>=110 && LA16_1<=115)||(LA16_1>=117 && LA16_1<=122)) ) {
-            	            alt16=1;
-            	        }
-            	        else if ( (LA16_1==EOF||LA16_1==RULE_SCENARIO_TEXT||(LA16_1>=RULE_THEN_TEXT && LA16_1<=RULE_EXAMPLE_TEXT)) ) {
-            	            alt16=2;
-            	        }
-            	        else {
-            	            if (state.backtracking>0) {state.failed=true; return current;}
-            	            NoViableAltException nvae =
-            	                new NoViableAltException("", 16, 1, input);
+                        throw nvae;
+                    }
+                    switch (alt16) {
+                        case 1 :
+                            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:527:3: lv_steps_5_1= ruleThen
+                            {
+                            if ( state.backtracking==0 ) {
+                               
+                              	        newCompositeNode(grammarAccess.getScenarioAccess().getStepsThenParserRuleCall_5_0_0()); 
+                              	    
+                            }
+                            pushFollow(FOLLOW_ruleThen_in_ruleScenario923);
+                            lv_steps_5_1=ruleThen();
 
-            	            throw nvae;
-            	        }
-            	    }
-            	    else {
-            	        if (state.backtracking>0) {state.failed=true; return current;}
-            	        NoViableAltException nvae =
-            	            new NoViableAltException("", 16, 0, input);
+                            state._fsp--;
+                            if (state.failed) return current;
+                            if ( state.backtracking==0 ) {
 
-            	        throw nvae;
-            	    }
-            	    switch (alt16) {
-            	        case 1 :
-            	            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:527:3: lv_steps_5_1= ruleThen
-            	            {
-            	            if ( state.backtracking==0 ) {
-            	               
-            	              	        newCompositeNode(grammarAccess.getScenarioAccess().getStepsThenParserRuleCall_5_0_0()); 
-            	              	    
-            	            }
-            	            pushFollow(FOLLOW_ruleThen_in_ruleScenario923);
-            	            lv_steps_5_1=ruleThen();
+                              	        if (current==null) {
+                              	            current = createModelElementForParent(grammarAccess.getScenarioRule());
+                              	        }
+                                     		add(
+                                     			current, 
+                                     			"steps",
+                                      		lv_steps_5_1, 
+                                      		"Then");
+                              	        afterParserOrEnumRuleCall();
+                              	    
+                            }
 
-            	            state._fsp--;
-            	            if (state.failed) return current;
-            	            if ( state.backtracking==0 ) {
+                            }
+                            break;
+                        case 2 :
+                            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:542:8: lv_steps_5_2= ruleThenReference
+                            {
+                            if ( state.backtracking==0 ) {
+                               
+                              	        newCompositeNode(grammarAccess.getScenarioAccess().getStepsThenReferenceParserRuleCall_5_0_1()); 
+                              	    
+                            }
+                            pushFollow(FOLLOW_ruleThenReference_in_ruleScenario942);
+                            lv_steps_5_2=ruleThenReference();
 
-            	              	        if (current==null) {
-            	              	            current = createModelElementForParent(grammarAccess.getScenarioRule());
-            	              	        }
-            	                     		add(
-            	                     			current, 
-            	                     			"steps",
-            	                      		lv_steps_5_1, 
-            	                      		"Then");
-            	              	        afterParserOrEnumRuleCall();
-            	              	    
-            	            }
+                            state._fsp--;
+                            if (state.failed) return current;
+                            if ( state.backtracking==0 ) {
 
-            	            }
-            	            break;
-            	        case 2 :
-            	            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:542:8: lv_steps_5_2= ruleThenReference
-            	            {
-            	            if ( state.backtracking==0 ) {
-            	               
-            	              	        newCompositeNode(grammarAccess.getScenarioAccess().getStepsThenReferenceParserRuleCall_5_0_1()); 
-            	              	    
-            	            }
-            	            pushFollow(FOLLOW_ruleThenReference_in_ruleScenario942);
-            	            lv_steps_5_2=ruleThenReference();
+                              	        if (current==null) {
+                              	            current = createModelElementForParent(grammarAccess.getScenarioRule());
+                              	        }
+                                     		add(
+                                     			current, 
+                                     			"steps",
+                                      		lv_steps_5_2, 
+                                      		"ThenReference");
+                              	        afterParserOrEnumRuleCall();
+                              	    
+                            }
 
-            	            state._fsp--;
-            	            if (state.failed) return current;
-            	            if ( state.backtracking==0 ) {
+                            }
+                            break;
 
-            	              	        if (current==null) {
-            	              	            current = createModelElementForParent(grammarAccess.getScenarioRule());
-            	              	        }
-            	                     		add(
-            	                     			current, 
-            	                     			"steps",
-            	                      		lv_steps_5_2, 
-            	                      		"ThenReference");
-            	              	        afterParserOrEnumRuleCall();
-            	              	    
-            	            }
-
-            	            }
-            	            break;
-
-            	    }
+                    }
 
 
-            	    }
+                    }
 
 
-            	    }
-            	    break;
+                    }
+                    break;
 
-            	default :
-            	    break loop17;
-                }
-            } while (true);
+            }
 
             // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:560:3: ( (lv_examples_6_0= ruleExampleTable ) )*
             loop18:
@@ -2088,11 +2067,11 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
             	    if ( (LA20_0==RULE_AND_TEXT) ) {
             	        int LA20_1 = input.LA(2);
 
-            	        if ( (LA20_1==EOF||(LA20_1>=RULE_SCENARIO_TEXT && LA20_1<=RULE_EXAMPLE_TEXT)) ) {
-            	            alt20=2;
-            	        }
-            	        else if ( ((LA20_1>=RULE_ID && LA20_1<=RULE_RICH_TEXT_START)||(LA20_1>=RULE_HEX && LA20_1<=RULE_DECIMAL)||LA20_1==44||(LA20_1>=49 && LA20_1<=51)||LA20_1==60||LA20_1==65||LA20_1==71||(LA20_1>=73 && LA20_1<=74)||(LA20_1>=86 && LA20_1<=87)||LA20_1==97||LA20_1==101||LA20_1==105||LA20_1==107||(LA20_1>=110 && LA20_1<=115)||(LA20_1>=117 && LA20_1<=122)) ) {
+            	        if ( ((LA20_1>=RULE_ID && LA20_1<=RULE_RICH_TEXT_START)||(LA20_1>=RULE_HEX && LA20_1<=RULE_DECIMAL)||LA20_1==44||(LA20_1>=49 && LA20_1<=51)||LA20_1==60||LA20_1==65||LA20_1==71||(LA20_1>=73 && LA20_1<=74)||(LA20_1>=86 && LA20_1<=87)||LA20_1==97||LA20_1==101||LA20_1==105||LA20_1==107||(LA20_1>=110 && LA20_1<=115)||(LA20_1>=117 && LA20_1<=122)) ) {
             	            alt20=1;
+            	        }
+            	        else if ( (LA20_1==EOF||(LA20_1>=RULE_SCENARIO_TEXT && LA20_1<=RULE_EXAMPLE_TEXT)) ) {
+            	            alt20=2;
             	        }
             	        else {
             	            if (state.backtracking>0) {state.failed=true; return current;}
@@ -2370,11 +2349,11 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
             	    if ( (LA22_0==RULE_AND_TEXT) ) {
             	        int LA22_1 = input.LA(2);
 
-            	        if ( ((LA22_1>=RULE_ID && LA22_1<=RULE_RICH_TEXT_START)||(LA22_1>=RULE_HEX && LA22_1<=RULE_DECIMAL)||LA22_1==44||(LA22_1>=49 && LA22_1<=51)||LA22_1==60||LA22_1==65||LA22_1==71||(LA22_1>=73 && LA22_1<=74)||(LA22_1>=86 && LA22_1<=87)||LA22_1==97||LA22_1==101||LA22_1==105||LA22_1==107||(LA22_1>=110 && LA22_1<=115)||(LA22_1>=117 && LA22_1<=122)) ) {
-            	            alt22=1;
-            	        }
-            	        else if ( (LA22_1==EOF||(LA22_1>=RULE_SCENARIO_TEXT && LA22_1<=RULE_EXAMPLE_TEXT)) ) {
+            	        if ( (LA22_1==EOF||(LA22_1>=RULE_SCENARIO_TEXT && LA22_1<=RULE_EXAMPLE_TEXT)) ) {
             	            alt22=2;
+            	        }
+            	        else if ( ((LA22_1>=RULE_ID && LA22_1<=RULE_RICH_TEXT_START)||(LA22_1>=RULE_HEX && LA22_1<=RULE_DECIMAL)||LA22_1==44||(LA22_1>=49 && LA22_1<=51)||LA22_1==60||LA22_1==65||LA22_1==71||(LA22_1>=73 && LA22_1<=74)||(LA22_1>=86 && LA22_1<=87)||LA22_1==97||LA22_1==101||LA22_1==105||LA22_1==107||(LA22_1>=110 && LA22_1<=115)||(LA22_1>=117 && LA22_1<=122)) ) {
+            	            alt22=1;
             	        }
             	        else {
             	            if (state.backtracking>0) {state.failed=true; return current;}
@@ -2613,7 +2592,7 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
             	        if ( ((LA24_1>=RULE_ID && LA24_1<=RULE_RICH_TEXT_START)||(LA24_1>=RULE_HEX && LA24_1<=RULE_DECIMAL)||LA24_1==44||(LA24_1>=49 && LA24_1<=51)||LA24_1==60||LA24_1==65||LA24_1==71||(LA24_1>=73 && LA24_1<=74)||(LA24_1>=86 && LA24_1<=87)||LA24_1==97||LA24_1==101||LA24_1==105||LA24_1==107||(LA24_1>=110 && LA24_1<=115)||(LA24_1>=117 && LA24_1<=122)) ) {
             	            alt24=1;
             	        }
-            	        else if ( (LA24_1==EOF||LA24_1==RULE_SCENARIO_TEXT||(LA24_1>=RULE_WHEN_TEXT && LA24_1<=RULE_EXAMPLE_TEXT)) ) {
+            	        else if ( (LA24_1==EOF||LA24_1==RULE_SCENARIO_TEXT||(LA24_1>=RULE_THEN_TEXT && LA24_1<=RULE_EXAMPLE_TEXT)) ) {
             	            alt24=2;
             	        }
             	        else {
@@ -2892,7 +2871,7 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
             	    if ( (LA26_0==RULE_AND_TEXT) ) {
             	        int LA26_1 = input.LA(2);
 
-            	        if ( (LA26_1==EOF||LA26_1==RULE_SCENARIO_TEXT||(LA26_1>=RULE_WHEN_TEXT && LA26_1<=RULE_EXAMPLE_TEXT)) ) {
+            	        if ( (LA26_1==EOF||LA26_1==RULE_SCENARIO_TEXT||(LA26_1>=RULE_THEN_TEXT && LA26_1<=RULE_EXAMPLE_TEXT)) ) {
             	            alt26=2;
             	        }
             	        else if ( ((LA26_1>=RULE_ID && LA26_1<=RULE_RICH_TEXT_START)||(LA26_1>=RULE_HEX && LA26_1<=RULE_DECIMAL)||LA26_1==44||(LA26_1>=49 && LA26_1<=51)||LA26_1==60||LA26_1==65||LA26_1==71||(LA26_1>=73 && LA26_1<=74)||(LA26_1>=86 && LA26_1<=87)||LA26_1==97||LA26_1==101||LA26_1==105||LA26_1==107||(LA26_1>=110 && LA26_1<=115)||(LA26_1>=117 && LA26_1<=122)) ) {
@@ -3132,11 +3111,11 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
             	    if ( (LA28_0==RULE_AND_TEXT) ) {
             	        int LA28_1 = input.LA(2);
 
-            	        if ( (LA28_1==EOF||LA28_1==RULE_SCENARIO_TEXT||(LA28_1>=RULE_THEN_TEXT && LA28_1<=RULE_EXAMPLE_TEXT)) ) {
-            	            alt28=2;
-            	        }
-            	        else if ( ((LA28_1>=RULE_ID && LA28_1<=RULE_RICH_TEXT_START)||(LA28_1>=RULE_HEX && LA28_1<=RULE_DECIMAL)||LA28_1==44||(LA28_1>=49 && LA28_1<=51)||LA28_1==60||LA28_1==65||LA28_1==71||(LA28_1>=73 && LA28_1<=74)||(LA28_1>=86 && LA28_1<=87)||LA28_1==97||LA28_1==101||LA28_1==105||LA28_1==107||(LA28_1>=110 && LA28_1<=115)||(LA28_1>=117 && LA28_1<=122)) ) {
+            	        if ( ((LA28_1>=RULE_ID && LA28_1<=RULE_RICH_TEXT_START)||(LA28_1>=RULE_HEX && LA28_1<=RULE_DECIMAL)||LA28_1==44||(LA28_1>=49 && LA28_1<=51)||LA28_1==60||LA28_1==65||LA28_1==71||(LA28_1>=73 && LA28_1<=74)||(LA28_1>=86 && LA28_1<=87)||LA28_1==97||LA28_1==101||LA28_1==105||LA28_1==107||(LA28_1>=110 && LA28_1<=115)||(LA28_1>=117 && LA28_1<=122)) ) {
             	            alt28=1;
+            	        }
+            	        else if ( (LA28_1==EOF||LA28_1==RULE_SCENARIO_TEXT||(LA28_1>=RULE_AND_TEXT && LA28_1<=RULE_EXAMPLE_TEXT)) ) {
+            	            alt28=2;
             	        }
             	        else {
             	            if (state.backtracking>0) {state.failed=true; return current;}
@@ -3417,7 +3396,7 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
             	        if ( ((LA30_1>=RULE_ID && LA30_1<=RULE_RICH_TEXT_START)||(LA30_1>=RULE_HEX && LA30_1<=RULE_DECIMAL)||LA30_1==44||(LA30_1>=49 && LA30_1<=51)||LA30_1==60||LA30_1==65||LA30_1==71||(LA30_1>=73 && LA30_1<=74)||(LA30_1>=86 && LA30_1<=87)||LA30_1==97||LA30_1==101||LA30_1==105||LA30_1==107||(LA30_1>=110 && LA30_1<=115)||(LA30_1>=117 && LA30_1<=122)) ) {
             	            alt30=1;
             	        }
-            	        else if ( (LA30_1==EOF||LA30_1==RULE_SCENARIO_TEXT||(LA30_1>=RULE_THEN_TEXT && LA30_1<=RULE_EXAMPLE_TEXT)) ) {
+            	        else if ( (LA30_1==EOF||LA30_1==RULE_SCENARIO_TEXT||(LA30_1>=RULE_AND_TEXT && LA30_1<=RULE_EXAMPLE_TEXT)) ) {
             	            alt30=2;
             	        }
             	        else {
@@ -7842,11 +7821,11 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
                 {
                 int LA85_3 = input.LA(2);
 
-                if ( (LA85_3==RULE_ID||LA85_3==48||(LA85_3>=54 && LA85_3<=55)||LA85_3==71||LA85_3==74) ) {
-                    alt85=1;
-                }
-                else if ( (LA85_3==73) ) {
+                if ( (LA85_3==73) ) {
                     alt85=3;
+                }
+                else if ( (LA85_3==RULE_ID||LA85_3==48||(LA85_3>=54 && LA85_3<=55)||LA85_3==71||LA85_3==74) ) {
+                    alt85=1;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return current;}
@@ -13242,11 +13221,11 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
                             {
                             int LA106_1 = input.LA(2);
 
-                            if ( (LA106_1==67) ) {
-                                alt106=1;
-                            }
-                            else if ( (LA106_1==72||LA106_1==116) ) {
+                            if ( (LA106_1==72||LA106_1==116) ) {
                                 alt106=2;
+                            }
+                            else if ( (LA106_1==67) ) {
+                                alt106=1;
                             }
                             }
                             break;
@@ -29916,7 +29895,7 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
     static final String DFA44_acceptS =
         "\1\uffff\1\5\11\uffff\1\1\1\2\1\3\1\4";
     static final String DFA44_specialS =
-        "\2\uffff\1\5\1\6\1\4\1\3\1\0\1\7\1\2\1\10\1\1\4\uffff}>";
+        "\2\uffff\1\0\1\2\1\6\1\5\1\4\1\7\1\3\1\10\1\1\4\uffff}>";
     static final String[] DFA44_transitionS = {
             "\24\1\14\uffff\1\1\1\2\1\4\1\1\1\5\1\6\1\uffff\1\3\4\1\1\uffff"+
             "\5\1\1\uffff\1\12\1\1\1\11\2\uffff\2\1\1\uffff\2\1\1\uffff\5"+
@@ -29975,18 +29954,20 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA44_6 = input.LA(1);
+                        int LA44_2 = input.LA(1);
 
                          
-                        int index44_6 = input.index();
+                        int index44_2 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred3_InternalFeature()) ) {s = 13;}
+                        if ( (synpred1_InternalFeature()) ) {s = 11;}
+
+                        else if ( (synpred2_InternalFeature()) ) {s = 12;}
 
                         else if ( (true) ) {s = 1;}
 
                          
-                        input.seek(index44_6);
+                        input.seek(index44_2);
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
@@ -30005,6 +29986,21 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
+                        int LA44_3 = input.LA(1);
+
+                         
+                        int index44_3 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred1_InternalFeature()) ) {s = 11;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index44_3);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 3 : 
                         int LA44_8 = input.LA(1);
 
                          
@@ -30019,7 +30015,22 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
                         input.seek(index44_8);
                         if ( s>=0 ) return s;
                         break;
-                    case 3 : 
+                    case 4 : 
+                        int LA44_6 = input.LA(1);
+
+                         
+                        int index44_6 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred3_InternalFeature()) ) {s = 13;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index44_6);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 5 : 
                         int LA44_5 = input.LA(1);
 
                          
@@ -30034,7 +30045,7 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
                         input.seek(index44_5);
                         if ( s>=0 ) return s;
                         break;
-                    case 4 : 
+                    case 6 : 
                         int LA44_4 = input.LA(1);
 
                          
@@ -30047,38 +30058,6 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
 
                          
                         input.seek(index44_4);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 5 : 
-                        int LA44_2 = input.LA(1);
-
-                         
-                        int index44_2 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred1_InternalFeature()) ) {s = 11;}
-
-                        else if ( (synpred2_InternalFeature()) ) {s = 12;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index44_2);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 6 : 
-                        int LA44_3 = input.LA(1);
-
-                         
-                        int index44_3 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred1_InternalFeature()) ) {s = 11;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index44_3);
                         if ( s>=0 ) return s;
                         break;
                     case 7 : 
@@ -30286,13 +30265,13 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
     static final String DFA49_eotS =
         "\11\uffff";
     static final String DFA49_eofS =
-        "\2\uffff\2\5\3\uffff\2\5";
+        "\2\uffff\2\5\2\uffff\2\5\1\uffff";
     static final String DFA49_minS =
-        "\1\22\1\uffff\2\4\1\22\2\uffff\2\4";
+        "\1\22\1\uffff\2\4\1\22\1\uffff\2\4\1\uffff";
     static final String DFA49_maxS =
-        "\1\112\1\uffff\2\126\1\112\2\uffff\2\126";
+        "\1\112\1\uffff\2\126\1\112\1\uffff\2\126\1\uffff";
     static final String DFA49_acceptS =
-        "\1\uffff\1\1\3\uffff\1\2\1\3\2\uffff";
+        "\1\uffff\1\1\3\uffff\1\2\2\uffff\1\3";
     static final String DFA49_specialS =
         "\11\uffff}>";
     static final String[] DFA49_transitionS = {
@@ -30300,11 +30279,11 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
             "",
             "\1\5\44\uffff\1\5\13\uffff\1\5\2\uffff\1\4\35\uffff\1\5",
             "\1\5\44\uffff\1\5\13\uffff\1\5\2\uffff\1\4\35\uffff\1\5",
-            "\1\7\46\uffff\1\6\20\uffff\1\10",
-            "",
+            "\1\6\46\uffff\1\10\20\uffff\1\7",
             "",
             "\1\5\44\uffff\1\5\13\uffff\1\5\2\uffff\1\4\35\uffff\1\5",
-            "\1\5\44\uffff\1\5\13\uffff\1\5\2\uffff\1\4\35\uffff\1\5"
+            "\1\5\44\uffff\1\5\13\uffff\1\5\2\uffff\1\4\35\uffff\1\5",
+            ""
     };
 
     static final short[] DFA49_eot = DFA.unpackEncodedString(DFA49_eotS);
@@ -33225,12 +33204,12 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_EOF_in_entryRuleScenario730 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_SCENARIO_TEXT_in_ruleScenario781 = new BitSet(new long[]{0x04C1000000045C02L,0x80000000004006B0L,0x0000000000000001L});
     public static final BitSet FOLLOW_ruleMember_in_ruleScenario807 = new BitSet(new long[]{0x04C1000000045C02L,0x80000000004006B0L,0x0000000000000001L});
-    public static final BitSet FOLLOW_ruleGiven_in_ruleScenario831 = new BitSet(new long[]{0x0000000000005C02L});
-    public static final BitSet FOLLOW_ruleGivenReference_in_ruleScenario850 = new BitSet(new long[]{0x0000000000005C02L});
-    public static final BitSet FOLLOW_ruleWhen_in_ruleScenario877 = new BitSet(new long[]{0x0000000000005802L});
-    public static final BitSet FOLLOW_ruleWhenReference_in_ruleScenario896 = new BitSet(new long[]{0x0000000000005802L});
-    public static final BitSet FOLLOW_ruleThen_in_ruleScenario923 = new BitSet(new long[]{0x0000000000005002L});
-    public static final BitSet FOLLOW_ruleThenReference_in_ruleScenario942 = new BitSet(new long[]{0x0000000000005002L});
+    public static final BitSet FOLLOW_ruleGiven_in_ruleScenario831 = new BitSet(new long[]{0x0000000000005802L});
+    public static final BitSet FOLLOW_ruleGivenReference_in_ruleScenario850 = new BitSet(new long[]{0x0000000000005802L});
+    public static final BitSet FOLLOW_ruleWhen_in_ruleScenario877 = new BitSet(new long[]{0x0000000000005002L});
+    public static final BitSet FOLLOW_ruleWhenReference_in_ruleScenario896 = new BitSet(new long[]{0x0000000000005002L});
+    public static final BitSet FOLLOW_ruleThen_in_ruleScenario923 = new BitSet(new long[]{0x0000000000004002L});
+    public static final BitSet FOLLOW_ruleThenReference_in_ruleScenario942 = new BitSet(new long[]{0x0000000000004002L});
     public static final BitSet FOLLOW_ruleExampleTable_in_ruleScenario967 = new BitSet(new long[]{0x0000000000004002L});
     public static final BitSet FOLLOW_ruleStepReference_in_entryRuleStepReference1006 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleStepReference1016 = new BitSet(new long[]{0x0000000000000002L});

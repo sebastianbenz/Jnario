@@ -9,29 +9,23 @@ package org.jnario.feature.validation;
 
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.common.types.JvmFeature;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
-import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.ComposedChecks;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.XbasePackage;
 import org.eclipse.xtext.xbase.scoping.XbaseScopeProvider;
 import org.jnario.ExampleTable;
-import org.jnario.feature.feature.FeaturePackage;
-import org.jnario.feature.feature.Scenario;
-import org.jnario.feature.feature.Step;
-import org.jnario.feature.feature.StepReference;
 import org.jnario.validation.JnarioJavaValidator;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
+ * @author Sebastian Benz
  */
 @ComposedChecks(validators={JnarioJavaValidator.class})
 public class FeatureJavaValidator extends AbstractFeatureJavaValidator {
@@ -70,20 +64,4 @@ public class FeatureJavaValidator extends AbstractFeatureJavaValidator {
 	public  void checkLocalUsageOfDeclared(XVariableDeclaration variableDeclaration) {
 	}
 
-	@Check
-	public void checkStepDefinitionAndReferences(Step step){
-		Scenario scenario = getContainerOfType(step, Scenario.class);
-		EList<XtendMember> steps = scenario.getSteps();
-
-		if(step instanceof StepReference){
-			StepReference ref = (StepReference) step;
-			for(XtendMember currentStep: steps){
-				if(currentStep instanceof Step){
-					if(ref.getReference().equals(currentStep)){
-						error("Cannot reference a step that was defined in this scenario.", FeaturePackage.Literals.STEP__NAME);
-					}
-				}
-			}
-		}
-	}
 }

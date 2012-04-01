@@ -485,7 +485,7 @@ ruleScenario returns [EObject current=null]
 )
 
 )
-)*(
+)?(
 (
 (
 		{ 
@@ -521,7 +521,7 @@ ruleScenario returns [EObject current=null]
 )
 
 )
-)*(
+)?(
 (
 (
 		{ 
@@ -557,7 +557,7 @@ ruleScenario returns [EObject current=null]
 )
 
 )
-)*(
+)?(
 (
 		{ 
 	        newCompositeNode(grammarAccess.getScenarioAccess().getExamplesExampleTableParserRuleCall_6_0()); 

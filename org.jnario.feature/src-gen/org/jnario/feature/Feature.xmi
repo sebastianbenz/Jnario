@@ -115,19 +115,19 @@
         <elements xsi:type="xtext:Assignment" cardinality="*" feature="members" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.4"/>
         </elements>
-        <elements xsi:type="xtext:Assignment" cardinality="*" feature="steps" operator="+=">
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="steps" operator="+=">
           <terminal xsi:type="xtext:Alternatives">
             <elements xsi:type="xtext:RuleCall" rule="/0/@rules.8"/>
             <elements xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
           </terminal>
         </elements>
-        <elements xsi:type="xtext:Assignment" cardinality="*" feature="steps" operator="+=">
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="steps" operator="+=">
           <terminal xsi:type="xtext:Alternatives">
             <elements xsi:type="xtext:RuleCall" rule="/0/@rules.10"/>
             <elements xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
           </terminal>
         </elements>
-        <elements xsi:type="xtext:Assignment" cardinality="*" feature="steps" operator="+=">
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="steps" operator="+=">
           <terminal xsi:type="xtext:Alternatives">
             <elements xsi:type="xtext:RuleCall" rule="/0/@rules.12"/>
             <elements xsi:type="xtext:RuleCall" rule="/0/@rules.11"/>
