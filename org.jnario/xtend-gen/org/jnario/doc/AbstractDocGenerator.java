@@ -99,6 +99,12 @@ public class AbstractDocGenerator implements IGenerator {
     return this.toHtml(_normalize);
   }
   
+  public String codeToHtml(final String code) {
+    String _normalize = this._whiteSpaceNormalizer.normalize(code);
+    String _html = this.toHtml(_normalize);
+    return _html;
+  }
+  
   public String toHtml(final String input) {
     String _replaceAll = input.replaceAll("<", "&lt;");
     String _replaceAll_1 = _replaceAll.replaceAll(">", "&gt;");

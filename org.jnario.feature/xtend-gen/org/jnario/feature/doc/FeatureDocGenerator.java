@@ -2,20 +2,14 @@ package org.jnario.feature.doc;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Iterators;
 import com.google.inject.Inject;
-import java.util.Iterator;
-import java.util.List;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.RichString;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
-import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.HtmlFile;
@@ -114,6 +108,15 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
         CharSequence _generate = this.generate(step);
         _builder.append(_generate, "");
         _builder.newLineIfNotEmpty();
+        {
+          EList<XtendMember> _and = step.getAnd();
+          Iterable<Step> _filter_1 = Iterables.<Step>filter(_and, Step.class);
+          for(final Step and : _filter_1) {
+            CharSequence _generate_1 = this.generate(and);
+            _builder.append(_generate_1, "");
+            _builder.newLineIfNotEmpty();
+          }
+        }
       }
     }
     return _builder;
@@ -134,39 +137,38 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
   }
   
   public CharSequence addCodeBlock(final Step step) {
-    StepExpression _stepExpression = step.getStepExpression();
-    XBlockExpression _blockExpression = _stepExpression==null?(XBlockExpression)null:_stepExpression.getBlockExpression();
-    final EList<XExpression> expressions = _blockExpression==null?(EList<XExpression>)null:_blockExpression.getExpressions();
-    boolean _and = false;
-    boolean _notEquals = (!Objects.equal(expressions, null));
-    if (!_notEquals) {
-      _and = false;
-    } else {
-      boolean _isEmpty = expressions.isEmpty();
-      _and = (_notEquals && _isEmpty);
-    }
-    if (_and) {
-      return "";
-    }
-    XExpression _get = expressions.get(0);
-    TreeIterator<EObject> _eAllContents = _get.eAllContents();
-    final Iterator<RichString> richStrings = Iterators.<RichString>filter(_eAllContents, RichString.class);
-    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _xblockexpression = null;
     {
-      List<RichString> _list = IteratorExtensions.<RichString>toList(richStrings);
-      for(final RichString string : _list) {
-        _builder.append("<pre>");
-        String _serialize = this.serialize(string);
-        _builder.append(_serialize, "");
-        _builder.append("</pre>");
-        _builder.newLineIfNotEmpty();
+      StepExpression _stepExpression = step.getStepExpression();
+      XBlockExpression _blockExpression = _stepExpression==null?(XBlockExpression)null:_stepExpression.getBlockExpression();
+      final EList<XExpression> expressions = _blockExpression==null?(EList<XExpression>)null:_blockExpression.getExpressions();
+      boolean _or = false;
+      boolean _equals = Objects.equal(expressions, null);
+      if (_equals) {
+        _or = true;
+      } else {
+        boolean _isEmpty = expressions.isEmpty();
+        _or = (_equals || _isEmpty);
       }
+      if (_or) {
+        return "";
+      }
+      final XExpression firstExpr = expressions.get(0);
+      boolean _not = (!(firstExpr instanceof RichString));
+      if (_not) {
+        return "";
+      }
+      final RichString richString = ((RichString) firstExpr);
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("<pre>");
+      String _serialize = this.serialize(richString);
+      String _replace = _serialize.replace("\'\'\'", "");
+      String _codeToHtml = this.codeToHtml(_replace);
+      _builder.append(_codeToHtml, "");
+      _builder.append("</pre>");
+      _builder.newLineIfNotEmpty();
+      _xblockexpression = (_builder);
     }
-    final Procedure1<RichString> _function = new Procedure1<RichString>() {
-        public void apply(final RichString it) {
-        }
-      };
-    IteratorExtensions.<RichString>forEach(richStrings, _function);
-    return null;
+    return _xblockexpression;
   }
 }

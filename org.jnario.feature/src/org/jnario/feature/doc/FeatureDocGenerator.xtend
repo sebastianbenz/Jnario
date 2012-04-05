@@ -46,6 +46,9 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 		<h3>«scenario.name.removeKeywords»</h3>
 		«FOR step : scenario.steps.filter(typeof(Step))»
 		«generate(step)»
+			«FOR and : step.and.filter(typeof(Step))»
+		«generate(and)»
+			«ENDFOR»		
 		«ENDFOR»
 	'''
 	
@@ -56,15 +59,13 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 
 	def CharSequence addCodeBlock(Step step){
 		val expressions = step.stepExpression?.blockExpression?.expressions
-		if(expressions != null && expressions.empty) return ""
-		val richStrings = expressions.get(0).eAllContents.filter(typeof(RichString))
+		if(expressions == null || expressions.empty) return ""
+		val firstExpr = expressions.get(0)
+		if(!(firstExpr instanceof RichString)){
+			return ""
+		} 
+		val richString = firstExpr as RichString
+		'''<pre>«richString.serialize.replace("'''", "").codeToHtml»</pre>
 		'''
-		«FOR string : richStrings.toList»
-		<pre>«string.serialize»</pre>
-		«ENDFOR»
-		'''
-		richStrings.forEach[
-			
-		]
-	}
+	} 
 }

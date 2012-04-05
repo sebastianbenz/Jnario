@@ -62,6 +62,10 @@ class AbstractDocGenerator implements IGenerator {
 		return code.normalize.toHtml
 	}
 	
+	def codeToHtml(String code){
+		code.normalize.toHtml
+	}
+	
 	def toHtml(String input){
 		input.replaceAll("<", "&lt;").replaceAll(">", "&gt;")
 	}
@@ -82,6 +86,7 @@ class AbstractDocGenerator implements IGenerator {
 		}
 		return result
 	}
+	
 	
 	def root(XtendClass xtendClass){
 		val specFile = EcoreUtil2::getContainerOfType(xtendClass, typeof(XtendFile))
