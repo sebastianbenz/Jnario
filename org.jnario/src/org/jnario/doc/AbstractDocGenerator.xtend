@@ -15,6 +15,7 @@ import org.pegdown.PegDownProcessor
 
 import static extension org.eclipse.xtext.util.Strings.*
 import org.eclipse.xtext.EcoreUtil2
+import org.jnario.ExampleTable
 
 class AbstractDocGenerator implements IGenerator {
 	
@@ -98,5 +99,26 @@ class AbstractDocGenerator implements IGenerator {
 		val path = fragments.map(String s | "../")
 		return path.join("")
 	}
+	
+	def generate(ExampleTable table)'''
+		<table class="table table-striped table-bordered table-condensed">
+			<thead>
+				<tr>
+				«FOR headingCell : table.columns»
+					<th>«headingCell.name»</th>
+				«ENDFOR»
+				</tr>
+			</thead>
+			<tbody>
+			«FOR row : table.rows»
+			<tr>
+				«FOR cell : row.cells»
+				<td>«toXtendCode(cell, emptyList)»</td>
+				«ENDFOR»
+			</tr>
+		  	«ENDFOR»
+			</tbody>
+		</table>
+	'''
 
 }

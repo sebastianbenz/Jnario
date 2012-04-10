@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendFile;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
@@ -18,10 +19,14 @@ import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
+import org.jnario.ExampleColumn;
+import org.jnario.ExampleRow;
+import org.jnario.ExampleTable;
 import org.jnario.doc.Filter;
 import org.jnario.doc.HtmlFile;
 import org.jnario.doc.HtmlFileBuilder;
@@ -147,6 +152,68 @@ public class AbstractDocGenerator implements IGenerator {
       };
     final List<String> path = ListExtensions.<String, String>map(((List<String>)Conversions.doWrapArray(fragments)), _function);
     return IterableExtensions.join(path, "");
+  }
+  
+  public CharSequence generate(final ExampleTable table) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<table class=\"table table-striped table-bordered table-condensed\">");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<thead>");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("<tr>");
+    _builder.newLine();
+    {
+      EList<ExampleColumn> _columns = table.getColumns();
+      for(final ExampleColumn headingCell : _columns) {
+        _builder.append("\t\t");
+        _builder.append("<th>");
+        String _name = headingCell.getName();
+        _builder.append(_name, "		");
+        _builder.append("</th>");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("\t\t");
+    _builder.append("</tr>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("</thead>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<tbody>");
+    _builder.newLine();
+    {
+      EList<ExampleRow> _rows = table.getRows();
+      for(final ExampleRow row : _rows) {
+        _builder.append("\t");
+        _builder.append("<tr>");
+        _builder.newLine();
+        {
+          EList<XExpression> _cells = row.getCells();
+          for(final XExpression cell : _cells) {
+            _builder.append("\t");
+            _builder.append("\t");
+            _builder.append("<td>");
+            List<Filter> _emptyList = CollectionLiterals.<Filter>emptyList();
+            String _xtendCode = this.toXtendCode(cell, _emptyList);
+            _builder.append(_xtendCode, "		");
+            _builder.append("</td>");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        _builder.append("\t");
+        _builder.append("</tr>");
+        _builder.newLine();
+      }
+    }
+    _builder.append("\t");
+    _builder.append("</tbody>");
+    _builder.newLine();
+    _builder.append("</table>");
+    _builder.newLine();
+    return _builder;
   }
   
   public String toXtendCode(final XExpression expr, final List<Filter> filters) {

@@ -7,6 +7,8 @@
  *******************************************************************************/
 package org.jnario.feature.ui.highlighting;
 
+import static org.jnario.util.Strings.getFirstWord;
+
 import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -68,27 +70,7 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 			return Boolean.TRUE;
 		}
 
-		private String getFirstWord(String desc) {
-			if(desc != null){
-				int begin = 0;
-				for (; isWhiteSpace(desc, begin); begin++) {
-				}
-				int end = desc.indexOf(' ', begin);
-				if (end > 0) {
-					return desc.substring(begin, end);
-				} else{
-					if(desc.length() > 0){
-						return desc;
-					}
-				}
-			}
-			return "";
-		}
-
-		private boolean isWhiteSpace(String desc, int begin) {
-			return desc.charAt(begin) == ' ' || desc.charAt(begin) == '\t';
-		}
-
+		
 		private void highlightStep(String string, EObject object, EAttribute attribute) {
 			acceptor.addPosition(offset(object, attribute), string.length(),
 					FeatureHighlightingConfiguration.STEP_ID);

@@ -7,8 +7,7 @@
  *******************************************************************************/
 package org.jnario.util;
 
-import static java.lang.Character.isLetterOrDigit;
-import static java.lang.Character.toUpperCase;
+import static java.lang.Character.*;
 
 import java.io.InputStream;
 import java.util.Scanner;
@@ -44,6 +43,28 @@ public class Strings extends org.eclipse.xtext.util.Strings{
 			}
 		}
 		return b;
+	}
+	
+	private static boolean isWhiteSpace(String desc, int begin) {
+		return Character.isWhitespace(desc.charAt(begin));
+	}
+
+	
+	public static String getFirstWord(String string){
+		if(string != null){
+			int begin = 0;
+			for (; isWhiteSpace(string, begin); begin++) {
+			}
+			int end = string.indexOf(' ', begin);
+			if (end > 0) {
+				return string.substring(begin, end);
+			} else{
+				if(string.length() > 0){
+					return string;
+				}
+			}
+		}
+		return "";
 	}
 
 }

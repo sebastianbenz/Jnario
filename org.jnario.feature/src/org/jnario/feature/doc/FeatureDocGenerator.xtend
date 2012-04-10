@@ -9,7 +9,7 @@ import org.jnario.feature.feature.Scenario
 import org.jnario.feature.feature.Step
 import org.jnario.feature.naming.JavaNameProvider
 import org.jnario.feature.naming.StepNameProvider
-
+import static extension org.jnario.util.Strings.*
 import static org.jnario.doc.HtmlFile.*
 
 class FeatureDocGenerator extends AbstractDocGenerator {
@@ -23,14 +23,14 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 		val feature = xtendClass as Feature
 		newHtmlFile[
 			fileName = feature.className 
-			title = feature.name.removeKeywords
+			title = feature.name
 			content = feature.generateContent
 			rootFolder = feature.root
 		]
 	}
 	
 	def generateContent(Feature feature)'''
-		<p>«feature.description»</p>
+		<p>«feature.description.markdown2Html»</p>
 		«IF feature.background != null»
 		<h3>Background</h3>
 		«FOR step : feature.background.steps.filter(typeof(Step))»
@@ -43,19 +43,36 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 	'''
 
 	def generate(Scenario scenario)'''
-		<h3>«scenario.name.removeKeywords»</h3>
-		«FOR step : scenario.steps.filter(typeof(Step))»
-		«generate(step)»
-			«FOR and : step.and.filter(typeof(Step))»
-		«generate(and)»
-			«ENDFOR»		
+		<h3>«scenario.name»</h3>
+		«generate(scenario.steps.filter(typeof(Step)))»
+		«IF !scenario.examples.empty»
+		<h4>Examples:</h4>
+		«FOR example : scenario.examples»
+		<p>«generate(example)»</p>
 		«ENDFOR»
+		«ENDIF»
+	'''
+	
+	def generate(Iterable<Step> steps)'''
+		<ul>
+		«FOR step : steps»
+		<li>«generate(step)»
+		«generate(step.and.filter(typeof(Step)))»</li>
+		«ENDFOR»
+		</ul>
 	'''
 	
 	def generate(Step step)'''
-		<p>«step.nameOf.replaceAll("\"(.*)\"", "<code>$1</code>")»</p>
+		<p>«step.format»</p>
 		«step.addCodeBlock»
 	'''
+
+	def format(Step step){
+		var result = step.nameOf
+		result = result.replaceFirst("(" + result.firstWord + ")", "**$1**")
+		result = result.replaceAll("\"(.*)\"", "<code>$1</code>")
+		result.markdown2Html
+	}
 
 	def CharSequence addCodeBlock(Step step){
 		val expressions = step.stepExpression?.blockExpression?.expressions

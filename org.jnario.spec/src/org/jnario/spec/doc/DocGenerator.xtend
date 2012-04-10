@@ -128,26 +128,9 @@ class DocGenerator extends AbstractDocGenerator {
 	def dispatch generate(ExampleTable table, int level)'''
 		<h4 «generateId(table.toFieldName)»>«table.toFieldName.convertToTitle»</h4>
 		<p>«table.generateDoc»</p>
-		<table class="table table-striped table-bordered table-condensed">
-			<thead>
-				<tr>
-				«FOR headingCell : table.columns»
-					<th>«headingCell.name»</th>
-				«ENDFOR»
-				</tr>
-			</thead>
-			<tbody>
-			«FOR row : table.rows»
-			<tr>
-				«FOR cell : row.cells»
-				<td>«toXtendCode(cell, emptyList)»</td>
-				«ENDFOR»
-			</tr>
-		  	«ENDFOR»
-			</tbody>
-		</table>
+		«super.generate(table)»
 	'''
-	
+		
 	def dispatch generate(ExampleGroup exampleGroup, int level)'''
 		<«level.heading» «generateId(exampleGroup.name)»>«exampleGroup.asTitle»</«level.heading»>
 		<p>«exampleGroup.generateDoc»</p>

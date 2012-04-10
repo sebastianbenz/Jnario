@@ -11,6 +11,7 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.jnario.ExampleTable;
 import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.HtmlFile;
 import org.jnario.feature.feature.Background;
@@ -20,6 +21,7 @@ import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepExpression;
 import org.jnario.feature.naming.JavaNameProvider;
 import org.jnario.feature.naming.StepNameProvider;
+import org.jnario.util.Strings;
 
 @SuppressWarnings("all")
 public class FeatureDocGenerator extends AbstractDocGenerator {
@@ -42,8 +44,7 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
             String _className = FeatureDocGenerator.this._javaNameProvider.getClassName(feature);
             it.fileName = _className;
             String _name = feature.getName();
-            String _removeKeywords = FeatureDocGenerator.this._stepNameProvider.removeKeywords(_name);
-            it.title = _removeKeywords;
+            it.title = _name;
             CharSequence _generateContent = FeatureDocGenerator.this.generateContent(feature);
             it.content = _generateContent;
             String _root = FeatureDocGenerator.this.root(feature);
@@ -60,7 +61,8 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<p>");
     String _description = feature.getDescription();
-    _builder.append(_description, "");
+    String _markdown2Html = this.markdown2Html(_description);
+    _builder.append(_markdown2Html, "");
     _builder.append("</p>");
     _builder.newLineIfNotEmpty();
     {
@@ -97,23 +99,28 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<h3>");
     String _name = scenario.getName();
-    String _removeKeywords = this._stepNameProvider.removeKeywords(_name);
-    _builder.append(_removeKeywords, "");
+    _builder.append(_name, "");
     _builder.append("</h3>");
     _builder.newLineIfNotEmpty();
+    EList<XtendMember> _steps = scenario.getSteps();
+    Iterable<Step> _filter = Iterables.<Step>filter(_steps, Step.class);
+    CharSequence _generate = this.generate(_filter);
+    _builder.append(_generate, "");
+    _builder.newLineIfNotEmpty();
     {
-      EList<XtendMember> _steps = scenario.getSteps();
-      Iterable<Step> _filter = Iterables.<Step>filter(_steps, Step.class);
-      for(final Step step : _filter) {
-        CharSequence _generate = this.generate(step);
-        _builder.append(_generate, "");
-        _builder.newLineIfNotEmpty();
+      EList<ExampleTable> _examples = scenario.getExamples();
+      boolean _isEmpty = _examples.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        _builder.append("<h4>Examples:</h4>");
+        _builder.newLine();
         {
-          EList<XtendMember> _and = step.getAnd();
-          Iterable<Step> _filter_1 = Iterables.<Step>filter(_and, Step.class);
-          for(final Step and : _filter_1) {
-            CharSequence _generate_1 = this.generate(and);
+          EList<ExampleTable> _examples_1 = scenario.getExamples();
+          for(final ExampleTable example : _examples_1) {
+            _builder.append("<p>");
+            CharSequence _generate_1 = this.generate(example);
             _builder.append(_generate_1, "");
+            _builder.append("</p>");
             _builder.newLineIfNotEmpty();
           }
         }
@@ -122,18 +129,57 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     return _builder;
   }
   
+  public CharSequence generate(final Iterable<Step> steps) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<ul>");
+    _builder.newLine();
+    {
+      for(final Step step : steps) {
+        _builder.append("<li>");
+        CharSequence _generate = this.generate(step);
+        _builder.append(_generate, "");
+        _builder.newLineIfNotEmpty();
+        EList<XtendMember> _and = step.getAnd();
+        Iterable<Step> _filter = Iterables.<Step>filter(_and, Step.class);
+        CharSequence _generate_1 = this.generate(_filter);
+        _builder.append(_generate_1, "");
+        _builder.append("</li>");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("</ul>");
+    _builder.newLine();
+    return _builder;
+  }
+  
   public CharSequence generate(final Step step) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<p>");
-    String _nameOf = this._stepNameProvider.nameOf(step);
-    String _replaceAll = _nameOf.replaceAll("\"(.*)\"", "<code>$1</code>");
-    _builder.append(_replaceAll, "");
+    String _format = this.format(step);
+    _builder.append(_format, "");
     _builder.append("</p>");
     _builder.newLineIfNotEmpty();
     CharSequence _addCodeBlock = this.addCodeBlock(step);
     _builder.append(_addCodeBlock, "");
     _builder.newLineIfNotEmpty();
     return _builder;
+  }
+  
+  public String format(final Step step) {
+    String _xblockexpression = null;
+    {
+      String result = this._stepNameProvider.nameOf(step);
+      String _firstWord = Strings.getFirstWord(result);
+      String _plus = ("(" + _firstWord);
+      String _plus_1 = (_plus + ")");
+      String _replaceFirst = result.replaceFirst(_plus_1, "**$1**");
+      result = _replaceFirst;
+      String _replaceAll = result.replaceAll("\"(.*)\"", "<code>$1</code>");
+      result = _replaceAll;
+      String _markdown2Html = this.markdown2Html(result);
+      _xblockexpression = (_markdown2Html);
+    }
+    return _xblockexpression;
   }
   
   public CharSequence addCodeBlock(final Step step) {

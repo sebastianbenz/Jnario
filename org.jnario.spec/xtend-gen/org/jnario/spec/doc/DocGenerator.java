@@ -14,8 +14,6 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.jnario.ExampleColumn;
-import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
 import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.Filter;
@@ -288,63 +286,9 @@ public class DocGenerator extends AbstractDocGenerator {
     _builder.append(_generateDoc, "");
     _builder.append("</p>");
     _builder.newLineIfNotEmpty();
-    _builder.append("<table class=\"table table-striped table-bordered table-condensed\">");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("<thead>");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("<tr>");
-    _builder.newLine();
-    {
-      EList<ExampleColumn> _columns = table.getColumns();
-      for(final ExampleColumn headingCell : _columns) {
-        _builder.append("\t\t");
-        _builder.append("<th>");
-        String _name = headingCell.getName();
-        _builder.append(_name, "		");
-        _builder.append("</th>");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    _builder.append("\t\t");
-    _builder.append("</tr>");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("</thead>");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("<tbody>");
-    _builder.newLine();
-    {
-      EList<ExampleRow> _rows = table.getRows();
-      for(final ExampleRow row : _rows) {
-        _builder.append("\t");
-        _builder.append("<tr>");
-        _builder.newLine();
-        {
-          EList<XExpression> _cells = row.getCells();
-          for(final XExpression cell : _cells) {
-            _builder.append("\t");
-            _builder.append("\t");
-            _builder.append("<td>");
-            List<Filter> _emptyList = CollectionLiterals.<Filter>emptyList();
-            String _xtendCode = this.toXtendCode(cell, _emptyList);
-            _builder.append(_xtendCode, "		");
-            _builder.append("</td>");
-            _builder.newLineIfNotEmpty();
-          }
-        }
-        _builder.append("\t");
-        _builder.append("</tr>");
-        _builder.newLine();
-      }
-    }
-    _builder.append("\t");
-    _builder.append("</tbody>");
-    _builder.newLine();
-    _builder.append("</table>");
-    _builder.newLine();
+    CharSequence _generate = super.generate(table);
+    _builder.append(_generate, "");
+    _builder.newLineIfNotEmpty();
     return _builder;
   }
   
