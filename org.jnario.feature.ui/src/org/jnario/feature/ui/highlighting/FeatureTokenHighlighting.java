@@ -35,11 +35,7 @@ public class FeatureTokenHighlighting extends TokenToAttributeIdMapper{
 			return FeatureHighlightingConfiguration.SCENARIO_ID;
 		}else if("RULE_EXAMPLE_TEXT".equals(tokenName)){
 			return FeatureHighlightingConfiguration.EXAMPLE_ID;
-		}else if("RULE_IN_ORDER_TEXT".equals(tokenName)) {
-			return FeatureHighlightingConfiguration.STEP_TEXT_ID;
-		}else if("RULE_AS_A_TEXT".equals(tokenName)) {
-			return FeatureHighlightingConfiguration.STEP_TEXT_ID;
-		}else if("RULE_I_WANT_TEXT".equals(tokenName)) {
+		}else if("RULE_TEXT".equals(tokenName)) {
 			return FeatureHighlightingConfiguration.STEP_TEXT_ID;
 		}
 		return super.calculateId(tokenName, tokenType);

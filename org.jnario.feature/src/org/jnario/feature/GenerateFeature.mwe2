@@ -8,6 +8,8 @@ var grammarURI = "classpath:/org/jnario/feature/Feature.xtext"
 var file.extensions = "feature"
 var projectName = "org.jnario.feature"
 var runtimeProject = "../${projectName}"
+var backtrack = false
+var memoize = false
 
 Workflow {
     bean = StandaloneSetup {
@@ -65,7 +67,8 @@ Workflow {
             fileExtensions = file.extensions
 
             // Java API to access grammar elements (required by several other fragments)
-            fragment = grammarAccess.GrammarAccessFragment {}
+            fragment = grammarAccess.GrammarAccessFragment {
+            }
 
             // generates Java API for the generated EPackages
             //fragment = ecore.EcoreGeneratorFragment {
@@ -81,9 +84,6 @@ Workflow {
             	generateStub = false
             }
             
-            // the serialization component (1.0)
-            // fragment = parseTreeConstructor.ParseTreeConstructorFragment {}
-
             // a custom ResourceFactory for use with EMF
             fragment = resourceFactory.ResourceFactoryFragment {
                 fileExtensions = file.extensions
@@ -93,6 +93,9 @@ Workflow {
             fragment = parser.antlr.XtextAntlrGeneratorFragment {
               options = auto-inject {}
               antlrParam = "-Xconversiontimeout" antlrParam = "10000"
+			  options = {
+			  	classSplitting = true
+     		  }
             }
 
             // java-based API for validation
@@ -136,6 +139,9 @@ Workflow {
             fragment = parser.antlr.XtextAntlrUiGeneratorFragment {
             	options = auto-inject {}
             	antlrParam = "-Xconversiontimeout" antlrParam = "10000"
+            	options = {
+			  		classSplitting = true
+     			}
             }
 
             // generates junit test support classes into Generator#pathTestProject

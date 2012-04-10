@@ -16,6 +16,8 @@ import java.util.Scanner;
  */
 public class Strings extends org.eclipse.xtext.util.Strings{
 
+	
+	
 	public static String convertStreamToString(InputStream is) { 
 	    return new Scanner(is).useDelimiter("\\A").next();
 	}
@@ -67,4 +69,21 @@ public class Strings extends org.eclipse.xtext.util.Strings{
 		return "";
 	}
 
+	public static int startsWithWord(String string, String word) {
+		if(word.length() > string.length()){
+			return -1;
+		}
+		for(int i = 0; i < string.length(); i++){
+			char c = string.charAt(i);
+			if(!isWhitespace(c)){
+				for(int j = 0; j < word.length(); j++){
+					if(word.charAt(j) != string.charAt(i + j)){
+						return -1;
+					}
+				}
+				return i;
+			}
+		}
+		return -1;
+	}
 }

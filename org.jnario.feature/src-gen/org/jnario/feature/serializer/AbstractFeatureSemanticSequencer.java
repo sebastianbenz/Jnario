@@ -1629,7 +1629,7 @@ public class AbstractFeatureSemanticSequencer extends AbstractSemanticSequencer 
 	
 	/**
 	 * Constraint:
-	 *     (annotations+=XAnnotation* name=FEATURE_TEXT description=DESCRIPTION? background=Background? members+=Scenario*)
+	 *     (annotations+=XAnnotation* name=FEATURE_TEXT description=TEXT? background=Background? members+=Scenario*)
 	 */
 	protected void sequence_Feature(EObject context, Feature semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1681,7 +1681,7 @@ public class AbstractFeatureSemanticSequencer extends AbstractSemanticSequencer 
 	 *     )
 	 */
 	protected void sequence_Import(EObject context, XtendImport semanticObject) {
-		superSequencer.createSequence(context, semanticObject);
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -2109,7 +2109,7 @@ public class AbstractFeatureSemanticSequencer extends AbstractSemanticSequencer 
 	 *     )
 	 */
 	protected void sequence_XAnnotation(EObject context, XAnnotation semanticObject) {
-		superSequencer.createSequence(context, semanticObject);
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

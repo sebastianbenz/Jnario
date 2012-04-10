@@ -7,6 +7,7 @@
  *******************************************************************************/
 package org.jnario.feature.ui.highlighting;
 
+import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.findNodesForFeature;
 import static org.jnario.util.Strings.getFirstWord;
 
 import java.util.Iterator;
@@ -17,11 +18,13 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtend.core.xtend.XtendField;
+import org.eclipse.xtend.core.xtend.XtendPackage;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.jnario.ExampleTable;
+import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
@@ -54,6 +57,22 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 		}
 
 		@Override
+		public Boolean caseFeature(Feature object) {
+			List<INode> nodes2 = findNodesForFeature(object, XtendPackage.Literals.XTEND_CLASS__NAME);
+			for (INode node : nodes2) {
+				highlightNode(node, FeatureHighlightingConfiguration.FEATURE_ID, acceptor);
+			}
+			
+			if(object.getDescription() != null){
+				List<INode> nodes = findNodesForFeature(object, FeaturePackage.Literals.FEATURE__DESCRIPTION);
+				for (INode node : nodes) {
+					highlightNode(node, FeatureHighlightingConfiguration.STEP_TEXT_ID, acceptor);
+				}
+			}
+			return Boolean.TRUE;
+		}
+		
+		@Override
 		public Boolean caseStep(Step step) {
 			String description;
 			if(step.getName() != null){
@@ -70,7 +89,6 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 			return Boolean.TRUE;
 		}
 
-		
 		private void highlightStep(String string, EObject object, EAttribute attribute) {
 			acceptor.addPosition(offset(object, attribute), string.length(),
 					FeatureHighlightingConfiguration.STEP_ID);

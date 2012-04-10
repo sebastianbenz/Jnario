@@ -45,6 +45,7 @@ import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.trace.ITraceInformation;
 import org.eclipse.xtext.resource.EObjectAtOffsetHelper;
 import org.eclipse.xtext.ui.LanguageSpecific;
+import org.eclipse.xtext.ui.codetemplates.ui.partialEditing.IPartialContentAssistParser;
 import org.eclipse.xtext.ui.editor.IURIEditorOpener;
 import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
 import org.eclipse.xtext.ui.editor.XtextEditor;
@@ -52,6 +53,7 @@ import org.eclipse.xtext.ui.editor.XtextSourceViewer;
 import org.eclipse.xtext.ui.editor.actions.IActionContributor;
 import org.eclipse.xtext.ui.editor.autoedit.AbstractEditStrategy;
 import org.eclipse.xtext.ui.editor.autoedit.AbstractEditStrategyProvider;
+import org.eclipse.xtext.ui.editor.contentassist.antlr.IContentAssistParser;
 import org.eclipse.xtext.ui.editor.doubleClicking.DoubleClickStrategyProvider;
 import org.eclipse.xtext.ui.editor.folding.IFoldingRegionProvider;
 import org.eclipse.xtext.ui.editor.folding.IFoldingStructureProvider;
@@ -81,12 +83,15 @@ import org.jnario.feature.ui.highlighting.FeatureHighlightingConfiguration;
 import org.jnario.feature.ui.highlighting.FeatureSemanticHighlightingCalculator;
 import org.jnario.feature.ui.highlighting.FeatureTokenHighlighting;
 import org.jnario.feature.ui.launching.FeatureJavaElementDelegate;
+import org.jnario.feature.ui.parser.CustomFeatureParser;
+import org.jnario.feature.ui.parser.CustomPartialFeatureContentAssistParser;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
+ * @author Sebastian Benz 
  */
 public class FeatureUiModule extends org.jnario.feature.ui.AbstractFeatureUiModule {
 	public FeatureUiModule(AbstractUIPlugin plugin) {
@@ -271,5 +276,15 @@ public class FeatureUiModule extends org.jnario.feature.ui.AbstractFeatureUiModu
 
 	public Class<? extends IGenerator> bindIGenerator() {
 		return FeatureGenerator.class;
+	}
+	
+	@Override
+	public Class<? extends IContentAssistParser> bindIContentAssistParser() {
+		return CustomFeatureParser.class;
+	}
+	
+	@Override
+	public Class<? extends IPartialContentAssistParser> bindIPartialContentAssistParser() {
+		return CustomPartialFeatureContentAssistParser.class;
 	}
 }

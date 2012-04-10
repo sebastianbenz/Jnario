@@ -41,8 +41,7 @@ public class FeatureShowCodeHandler extends AbstractHandler {
 			handlerService.executeCommand(commandName, new Event());
 			codeIsShown = !codeIsShown;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 		return null;
 	}

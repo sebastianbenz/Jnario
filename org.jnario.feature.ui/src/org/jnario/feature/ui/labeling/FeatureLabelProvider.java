@@ -16,6 +16,7 @@ import org.eclipse.xtend.ide.labeling.XtendImages;
 import org.eclipse.xtend.ide.labeling.XtendLabelProvider;
 import org.eclipse.xtext.common.types.JvmVisibility;
 import org.jnario.ExampleTable;
+import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
@@ -39,6 +40,9 @@ public class FeatureLabelProvider extends XtendLabelProvider {
 	@Inject
 	private StepNameProvider stepNameProvider;
 
+	public Image image(Background element) {
+		return images.forClass(JvmVisibility.PUBLIC);
+	}
 	
 	public Image image(ExampleTable element) {
 		return images.forField(JvmVisibility.PROTECTED, false, false);
@@ -56,6 +60,9 @@ public class FeatureLabelProvider extends XtendLabelProvider {
 		return images.forClass(JvmVisibility.PUBLIC);
 	}
 
+	public String text(Background element) {
+		return "Background ";
+	}
 	
 	public String text(Step element) {
 		return stepNameProvider.nameOf(element);

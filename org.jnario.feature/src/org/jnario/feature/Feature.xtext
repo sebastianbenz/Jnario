@@ -12,36 +12,48 @@
 
 grammar org.jnario.feature.Feature with org.eclipse.xtend.core.Xtend
 
+import "http://www.eclipse.org/Xtext/Xbase/XAnnotations" as xannotations
 import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
 import "http://www.eclipse.org/xtend" as xtend
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
 import "http://www.org/Jnario"
 import "http://www.org/jnario/feature/Feature"
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 FeatureFile returns xtend::XtendFile:
 	{FeatureFile}
 	('package' package=QualifiedName)?
-	imports += Import*
+	(imports += Import)*
 	(xtendClass = Feature)?
 ;
 
-Feature returns xtend::XtendClass:
-	{Feature}
-	annotations+=XAnnotation*
-	name=FEATURE_TEXT
-	description=DESCRIPTION*
-	background = Background?
-	members+=Scenario*;
-	
-DESCRIPTION:
-	IN_ORDER_TEXT |
-	AS_A_TEXT |
-	I_WANT_TEXT |
-	TEXT
+Import returns xtend::XtendImport: 
+	'import' (
+		(static?='static' extension?='extension'? importedType=[types::JvmType|QualifiedName] '.' '*') 
+		| importedType=[types::JvmType|QualifiedName] 
+		| importedNamespace=QualifiedNameWithWildCard) ';'?
 ;
 
 
- 
+Feature returns xtend::XtendClass:
+	{Feature}
+	(annotations+=XAnnotation)*
+	
+	name=FEATURE_TEXT
+	description=TEXT?
+	background = Background?
+	members+=Scenario*;
+
+XAnnotation returns xannotations::XAnnotation:
+	{xannotations::XAnnotation}
+	'@' annotationType=[types::JvmAnnotationType | QualifiedName] (=>'('
+		(
+			elementValuePairs+=XAnnotationElementValuePair (',' elementValuePairs+=XAnnotationElementValuePair)* 
+		|	value=XAnnotationElementValue
+		)?
+	')')?
+;
+
 Background:
 	{Background}
 	BACKGROUND_TEXT
@@ -174,24 +186,22 @@ MatcherClosure returns xbase::XExpression:
 		expression=XExpressionInClosure 
 	']';
 
-terminal FEATURE_TEXT: 'Feature' COLON MNL;
-terminal BACKGROUND_TEXT: 'Background' COLON MNL;
-terminal SCENARIO_TEXT: 'Scenario' COLON MNL;
+terminal BACKGROUND_TEXT: "Background:" MNL;
+terminal SCENARIO_TEXT: "Scenario:" MNL;
+terminal FEATURE_TEXT: "Feature" COLON -> (BACKGROUND_TEXT|SCENARIO_TEXT);
 terminal GIVEN_TEXT: 'Given ' MNL;
 terminal WHEN_TEXT: 'When ' MNL;
 terminal THEN_TEXT: 'Then ' MNL;
 terminal AND_TEXT: 'And ' MNL;
 terminal EXAMPLE_TEXT: 'Examples' COLON MNL;
 
-terminal IN_ORDER_TEXT: 'In order to' TEXT_AND_NL;
-terminal AS_A_TEXT: 'As a' TEXT_AND_NL;
-terminal I_WANT_TEXT: 'I want' TEXT_AND_NL;
-
 terminal PIPE : '|';
 terminal PIPE_SPACES: PIPE (' '|'\t')+;
 terminal EXAMPLE_ROW_END: (PIPE | PIPE_SPACES) '\r'? '\n';
 
-terminal  TEXT: !('|'|' '|'\t'|'\r'|'\n'|'@') !('\r'|'\n')* NL;
+// these are dummy tokens that will generated from a custom TokenSource
+terminal TEXT: '____dummy____'+;
+
 
 terminal fragment TEXT_MULTI_LINE: !('\r'|'\n')* '\\' NL;
 terminal fragment TEXT_AND_NL: !('\r'|'\n'|'\\')* NL;

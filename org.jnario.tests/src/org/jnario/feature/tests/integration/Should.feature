@@ -9,9 +9,6 @@ Feature: Should
 			true should be true
 			1 + 1 should not be 1
 			"something" should not be null 
-		And 'must'
-			"hello" must be "hello"
-			"hello".toUpperCase must not be "Hello"
 		And the shortcut '=>'
 			1 + 1 => 2 
 			"a string" => typeof(String)

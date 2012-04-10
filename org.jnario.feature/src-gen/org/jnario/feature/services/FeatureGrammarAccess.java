@@ -68,6 +68,93 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getXtendClassFeatureParserRuleCall_3_0() { return cXtendClassFeatureParserRuleCall_3_0; }
 	}
 
+	public class ImportElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Import");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cImportKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Group cGroup_1_0 = (Group)cAlternatives_1.eContents().get(0);
+		private final Assignment cStaticAssignment_1_0_0 = (Assignment)cGroup_1_0.eContents().get(0);
+		private final Keyword cStaticStaticKeyword_1_0_0_0 = (Keyword)cStaticAssignment_1_0_0.eContents().get(0);
+		private final Assignment cExtensionAssignment_1_0_1 = (Assignment)cGroup_1_0.eContents().get(1);
+		private final Keyword cExtensionExtensionKeyword_1_0_1_0 = (Keyword)cExtensionAssignment_1_0_1.eContents().get(0);
+		private final Assignment cImportedTypeAssignment_1_0_2 = (Assignment)cGroup_1_0.eContents().get(2);
+		private final CrossReference cImportedTypeJvmTypeCrossReference_1_0_2_0 = (CrossReference)cImportedTypeAssignment_1_0_2.eContents().get(0);
+		private final RuleCall cImportedTypeJvmTypeQualifiedNameParserRuleCall_1_0_2_0_1 = (RuleCall)cImportedTypeJvmTypeCrossReference_1_0_2_0.eContents().get(1);
+		private final Keyword cFullStopKeyword_1_0_3 = (Keyword)cGroup_1_0.eContents().get(3);
+		private final Keyword cAsteriskKeyword_1_0_4 = (Keyword)cGroup_1_0.eContents().get(4);
+		private final Assignment cImportedTypeAssignment_1_1 = (Assignment)cAlternatives_1.eContents().get(1);
+		private final CrossReference cImportedTypeJvmTypeCrossReference_1_1_0 = (CrossReference)cImportedTypeAssignment_1_1.eContents().get(0);
+		private final RuleCall cImportedTypeJvmTypeQualifiedNameParserRuleCall_1_1_0_1 = (RuleCall)cImportedTypeJvmTypeCrossReference_1_1_0.eContents().get(1);
+		private final Assignment cImportedNamespaceAssignment_1_2 = (Assignment)cAlternatives_1.eContents().get(2);
+		private final RuleCall cImportedNamespaceQualifiedNameWithWildCardParserRuleCall_1_2_0 = (RuleCall)cImportedNamespaceAssignment_1_2.eContents().get(0);
+		private final Keyword cSemicolonKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		
+		//Import returns xtend::XtendImport:
+		//	"import" (static?="static" extension?="extension"? importedType=[types::JvmType|QualifiedName] "." "*" |
+		//	importedType=[types::JvmType|QualifiedName] | importedNamespace=QualifiedNameWithWildCard) ";"?;
+		public ParserRule getRule() { return rule; }
+
+		//"import" (static?="static" extension?="extension"? importedType=[types::JvmType|QualifiedName] "." "*" |
+		//importedType=[types::JvmType|QualifiedName] | importedNamespace=QualifiedNameWithWildCard) ";"?
+		public Group getGroup() { return cGroup; }
+
+		//"import"
+		public Keyword getImportKeyword_0() { return cImportKeyword_0; }
+
+		//static?="static" extension?="extension"? importedType=[types::JvmType|QualifiedName] "." "*" |
+		//importedType=[types::JvmType|QualifiedName] | importedNamespace=QualifiedNameWithWildCard
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+
+		//static?="static" extension?="extension"? importedType=[types::JvmType|QualifiedName] "." "*"
+		public Group getGroup_1_0() { return cGroup_1_0; }
+
+		//static?="static"
+		public Assignment getStaticAssignment_1_0_0() { return cStaticAssignment_1_0_0; }
+
+		//"static"
+		public Keyword getStaticStaticKeyword_1_0_0_0() { return cStaticStaticKeyword_1_0_0_0; }
+
+		//extension?="extension"?
+		public Assignment getExtensionAssignment_1_0_1() { return cExtensionAssignment_1_0_1; }
+
+		//"extension"
+		public Keyword getExtensionExtensionKeyword_1_0_1_0() { return cExtensionExtensionKeyword_1_0_1_0; }
+
+		//importedType=[types::JvmType|QualifiedName]
+		public Assignment getImportedTypeAssignment_1_0_2() { return cImportedTypeAssignment_1_0_2; }
+
+		//[types::JvmType|QualifiedName]
+		public CrossReference getImportedTypeJvmTypeCrossReference_1_0_2_0() { return cImportedTypeJvmTypeCrossReference_1_0_2_0; }
+
+		//QualifiedName
+		public RuleCall getImportedTypeJvmTypeQualifiedNameParserRuleCall_1_0_2_0_1() { return cImportedTypeJvmTypeQualifiedNameParserRuleCall_1_0_2_0_1; }
+
+		//"."
+		public Keyword getFullStopKeyword_1_0_3() { return cFullStopKeyword_1_0_3; }
+
+		//"*"
+		public Keyword getAsteriskKeyword_1_0_4() { return cAsteriskKeyword_1_0_4; }
+
+		//importedType=[types::JvmType|QualifiedName]
+		public Assignment getImportedTypeAssignment_1_1() { return cImportedTypeAssignment_1_1; }
+
+		//[types::JvmType|QualifiedName]
+		public CrossReference getImportedTypeJvmTypeCrossReference_1_1_0() { return cImportedTypeJvmTypeCrossReference_1_1_0; }
+
+		//QualifiedName
+		public RuleCall getImportedTypeJvmTypeQualifiedNameParserRuleCall_1_1_0_1() { return cImportedTypeJvmTypeQualifiedNameParserRuleCall_1_1_0_1; }
+
+		//importedNamespace=QualifiedNameWithWildCard
+		public Assignment getImportedNamespaceAssignment_1_2() { return cImportedNamespaceAssignment_1_2; }
+
+		//QualifiedNameWithWildCard
+		public RuleCall getImportedNamespaceQualifiedNameWithWildCardParserRuleCall_1_2_0() { return cImportedNamespaceQualifiedNameWithWildCardParserRuleCall_1_2_0; }
+
+		//";"?
+		public Keyword getSemicolonKeyword_2() { return cSemicolonKeyword_2; }
+	}
+
 	public class FeatureElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Feature");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -77,18 +164,17 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameFEATURE_TEXTTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		private final Assignment cDescriptionAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cDescriptionDESCRIPTIONParserRuleCall_3_0 = (RuleCall)cDescriptionAssignment_3.eContents().get(0);
+		private final RuleCall cDescriptionTEXTTerminalRuleCall_3_0 = (RuleCall)cDescriptionAssignment_3.eContents().get(0);
 		private final Assignment cBackgroundAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cBackgroundBackgroundParserRuleCall_4_0 = (RuleCall)cBackgroundAssignment_4.eContents().get(0);
 		private final Assignment cMembersAssignment_5 = (Assignment)cGroup.eContents().get(5);
 		private final RuleCall cMembersScenarioParserRuleCall_5_0 = (RuleCall)cMembersAssignment_5.eContents().get(0);
 		
 		//Feature returns xtend::XtendClass:
-		//	{Feature} annotations+=XAnnotation* name=FEATURE_TEXT description=DESCRIPTION? background=Background?
-		//	members+=Scenario*;
+		//	{Feature} annotations+=XAnnotation* name=FEATURE_TEXT description=TEXT? background=Background? members+=Scenario*;
 		public ParserRule getRule() { return rule; }
 
-		//{Feature} annotations+=XAnnotation* name=FEATURE_TEXT description=DESCRIPTION? background=Background? members+=Scenario*
+		//{Feature} annotations+=XAnnotation* name=FEATURE_TEXT description=TEXT? background=Background? members+=Scenario*
 		public Group getGroup() { return cGroup; }
 
 		//{Feature}
@@ -106,11 +192,11 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		//FEATURE_TEXT
 		public RuleCall getNameFEATURE_TEXTTerminalRuleCall_2_0() { return cNameFEATURE_TEXTTerminalRuleCall_2_0; }
 
-		//description=DESCRIPTION?
+		//description=TEXT?
 		public Assignment getDescriptionAssignment_3() { return cDescriptionAssignment_3; }
 
-		//DESCRIPTION
-		public RuleCall getDescriptionDESCRIPTIONParserRuleCall_3_0() { return cDescriptionDESCRIPTIONParserRuleCall_3_0; }
+		//TEXT
+		public RuleCall getDescriptionTEXTTerminalRuleCall_3_0() { return cDescriptionTEXTTerminalRuleCall_3_0; }
 
 		//background=Background?
 		public Assignment getBackgroundAssignment_4() { return cBackgroundAssignment_4; }
@@ -125,28 +211,94 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getMembersScenarioParserRuleCall_5_0() { return cMembersScenarioParserRuleCall_5_0; }
 	}
 
-	public class DESCRIPTIONElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DESCRIPTION");
+	public class XAnnotationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "XAnnotation");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cIN_ORDER_TEXTTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final RuleCall cAS_A_TEXTTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
-		private final RuleCall cI_WANT_TEXTTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final Action cXAnnotationAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cCommercialAtKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cAnnotationTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cAnnotationTypeJvmAnnotationTypeCrossReference_2_0 = (CrossReference)cAnnotationTypeAssignment_2.eContents().get(0);
+		private final RuleCall cAnnotationTypeJvmAnnotationTypeQualifiedNameParserRuleCall_2_0_1 = (RuleCall)cAnnotationTypeJvmAnnotationTypeCrossReference_2_0.eContents().get(1);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cLeftParenthesisKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Alternatives cAlternatives_3_1 = (Alternatives)cGroup_3.eContents().get(1);
+		private final Group cGroup_3_1_0 = (Group)cAlternatives_3_1.eContents().get(0);
+		private final Assignment cElementValuePairsAssignment_3_1_0_0 = (Assignment)cGroup_3_1_0.eContents().get(0);
+		private final RuleCall cElementValuePairsXAnnotationElementValuePairParserRuleCall_3_1_0_0_0 = (RuleCall)cElementValuePairsAssignment_3_1_0_0.eContents().get(0);
+		private final Group cGroup_3_1_0_1 = (Group)cGroup_3_1_0.eContents().get(1);
+		private final Keyword cCommaKeyword_3_1_0_1_0 = (Keyword)cGroup_3_1_0_1.eContents().get(0);
+		private final Assignment cElementValuePairsAssignment_3_1_0_1_1 = (Assignment)cGroup_3_1_0_1.eContents().get(1);
+		private final RuleCall cElementValuePairsXAnnotationElementValuePairParserRuleCall_3_1_0_1_1_0 = (RuleCall)cElementValuePairsAssignment_3_1_0_1_1.eContents().get(0);
+		private final Assignment cValueAssignment_3_1_1 = (Assignment)cAlternatives_3_1.eContents().get(1);
+		private final RuleCall cValueXAnnotationElementValueParserRuleCall_3_1_1_0 = (RuleCall)cValueAssignment_3_1_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
 		
-		//DESCRIPTION:
-		//	IN_ORDER_TEXT AS_A_TEXT I_WANT_TEXT;
+		//XAnnotation returns xannotations::XAnnotation:
+		//	{xannotations::XAnnotation} "@" annotationType=[types::JvmAnnotationType|QualifiedName] ("("
+		//	(elementValuePairs+=XAnnotationElementValuePair ("," elementValuePairs+=XAnnotationElementValuePair)* |
+		//	value=XAnnotationElementValue)? ")")?;
 		public ParserRule getRule() { return rule; }
 
-		//IN_ORDER_TEXT AS_A_TEXT I_WANT_TEXT
+		//{xannotations::XAnnotation} "@" annotationType=[types::JvmAnnotationType|QualifiedName] ("("
+		//(elementValuePairs+=XAnnotationElementValuePair ("," elementValuePairs+=XAnnotationElementValuePair)* |
+		//value=XAnnotationElementValue)? ")")?
 		public Group getGroup() { return cGroup; }
 
-		//IN_ORDER_TEXT
-		public RuleCall getIN_ORDER_TEXTTerminalRuleCall_0() { return cIN_ORDER_TEXTTerminalRuleCall_0; }
+		//{xannotations::XAnnotation}
+		public Action getXAnnotationAction_0() { return cXAnnotationAction_0; }
 
-		//AS_A_TEXT
-		public RuleCall getAS_A_TEXTTerminalRuleCall_1() { return cAS_A_TEXTTerminalRuleCall_1; }
+		//"@"
+		public Keyword getCommercialAtKeyword_1() { return cCommercialAtKeyword_1; }
 
-		//I_WANT_TEXT
-		public RuleCall getI_WANT_TEXTTerminalRuleCall_2() { return cI_WANT_TEXTTerminalRuleCall_2; }
+		//annotationType=[types::JvmAnnotationType|QualifiedName]
+		public Assignment getAnnotationTypeAssignment_2() { return cAnnotationTypeAssignment_2; }
+
+		//[types::JvmAnnotationType|QualifiedName]
+		public CrossReference getAnnotationTypeJvmAnnotationTypeCrossReference_2_0() { return cAnnotationTypeJvmAnnotationTypeCrossReference_2_0; }
+
+		//QualifiedName
+		public RuleCall getAnnotationTypeJvmAnnotationTypeQualifiedNameParserRuleCall_2_0_1() { return cAnnotationTypeJvmAnnotationTypeQualifiedNameParserRuleCall_2_0_1; }
+
+		//(=> "(" (elementValuePairs+=XAnnotationElementValuePair ("," elementValuePairs+=XAnnotationElementValuePair)* |
+		//value=XAnnotationElementValue)? ")")?
+		public Group getGroup_3() { return cGroup_3; }
+
+		//=> "("
+		public Keyword getLeftParenthesisKeyword_3_0() { return cLeftParenthesisKeyword_3_0; }
+
+		//(elementValuePairs+=XAnnotationElementValuePair ("," elementValuePairs+=XAnnotationElementValuePair)* |
+		//value=XAnnotationElementValue)?
+		public Alternatives getAlternatives_3_1() { return cAlternatives_3_1; }
+
+		//elementValuePairs+=XAnnotationElementValuePair ("," elementValuePairs+=XAnnotationElementValuePair)*
+		public Group getGroup_3_1_0() { return cGroup_3_1_0; }
+
+		//elementValuePairs+=XAnnotationElementValuePair
+		public Assignment getElementValuePairsAssignment_3_1_0_0() { return cElementValuePairsAssignment_3_1_0_0; }
+
+		//XAnnotationElementValuePair
+		public RuleCall getElementValuePairsXAnnotationElementValuePairParserRuleCall_3_1_0_0_0() { return cElementValuePairsXAnnotationElementValuePairParserRuleCall_3_1_0_0_0; }
+
+		//("," elementValuePairs+=XAnnotationElementValuePair)*
+		public Group getGroup_3_1_0_1() { return cGroup_3_1_0_1; }
+
+		//","
+		public Keyword getCommaKeyword_3_1_0_1_0() { return cCommaKeyword_3_1_0_1_0; }
+
+		//elementValuePairs+=XAnnotationElementValuePair
+		public Assignment getElementValuePairsAssignment_3_1_0_1_1() { return cElementValuePairsAssignment_3_1_0_1_1; }
+
+		//XAnnotationElementValuePair
+		public RuleCall getElementValuePairsXAnnotationElementValuePairParserRuleCall_3_1_0_1_1_0() { return cElementValuePairsXAnnotationElementValuePairParserRuleCall_3_1_0_1_1_0; }
+
+		//value=XAnnotationElementValue
+		public Assignment getValueAssignment_3_1_1() { return cValueAssignment_3_1_1; }
+
+		//XAnnotationElementValue
+		public RuleCall getValueXAnnotationElementValueParserRuleCall_3_1_1_0() { return cValueXAnnotationElementValueParserRuleCall_3_1_1_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_3_2() { return cRightParenthesisKeyword_3_2; }
 	}
 
 	public class BackgroundElements extends AbstractParserRuleElementFinder {
@@ -1256,8 +1408,9 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	
 	
 	private FeatureFileElements pFeatureFile;
+	private ImportElements pImport;
 	private FeatureElements pFeature;
-	private DESCRIPTIONElements pDESCRIPTION;
+	private XAnnotationElements pXAnnotation;
 	private BackgroundElements pBackground;
 	private ScenarioElements pScenario;
 	private StepElements pStep;
@@ -1281,20 +1434,18 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	private AssertionElements pAssertion;
 	private MatcherElements pMatcher;
 	private MatcherClosureElements pMatcherClosure;
-	private TerminalRule tFEATURE_TEXT;
 	private TerminalRule tBACKGROUND_TEXT;
 	private TerminalRule tSCENARIO_TEXT;
+	private TerminalRule tFEATURE_TEXT;
 	private TerminalRule tGIVEN_TEXT;
 	private TerminalRule tWHEN_TEXT;
 	private TerminalRule tTHEN_TEXT;
 	private TerminalRule tAND_TEXT;
 	private TerminalRule tEXAMPLE_TEXT;
-	private TerminalRule tIN_ORDER_TEXT;
-	private TerminalRule tAS_A_TEXT;
-	private TerminalRule tI_WANT_TEXT;
 	private TerminalRule tPIPE;
 	private TerminalRule tPIPE_SPACES;
 	private TerminalRule tEXAMPLE_ROW_END;
+	private TerminalRule tTEXT;
 	private TerminalRule tTEXT_MULTI_LINE;
 	private TerminalRule tTEXT_AND_NL;
 	private TerminalRule tMNL;
@@ -1333,9 +1484,19 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		return getFeatureFileAccess().getRule();
 	}
 
+	//Import returns xtend::XtendImport:
+	//	"import" (static?="static" extension?="extension"? importedType=[types::JvmType|QualifiedName] "." "*" |
+	//	importedType=[types::JvmType|QualifiedName] | importedNamespace=QualifiedNameWithWildCard) ";"?;
+	public ImportElements getImportAccess() {
+		return (pImport != null) ? pImport : (pImport = new ImportElements());
+	}
+	
+	public ParserRule getImportRule() {
+		return getImportAccess().getRule();
+	}
+
 	//Feature returns xtend::XtendClass:
-	//	{Feature} annotations+=XAnnotation* name=FEATURE_TEXT description=DESCRIPTION? background=Background?
-	//	members+=Scenario*;
+	//	{Feature} annotations+=XAnnotation* name=FEATURE_TEXT description=TEXT? background=Background? members+=Scenario*;
 	public FeatureElements getFeatureAccess() {
 		return (pFeature != null) ? pFeature : (pFeature = new FeatureElements());
 	}
@@ -1344,14 +1505,16 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		return getFeatureAccess().getRule();
 	}
 
-	//DESCRIPTION:
-	//	IN_ORDER_TEXT AS_A_TEXT I_WANT_TEXT;
-	public DESCRIPTIONElements getDESCRIPTIONAccess() {
-		return (pDESCRIPTION != null) ? pDESCRIPTION : (pDESCRIPTION = new DESCRIPTIONElements());
+	//XAnnotation returns xannotations::XAnnotation:
+	//	{xannotations::XAnnotation} "@" annotationType=[types::JvmAnnotationType|QualifiedName] ("("
+	//	(elementValuePairs+=XAnnotationElementValuePair ("," elementValuePairs+=XAnnotationElementValuePair)* |
+	//	value=XAnnotationElementValue)? ")")?;
+	public XAnnotationElements getXAnnotationAccess() {
+		return (pXAnnotation != null) ? pXAnnotation : (pXAnnotation = new XAnnotationElements());
 	}
 	
-	public ParserRule getDESCRIPTIONRule() {
-		return getDESCRIPTIONAccess().getRule();
+	public ParserRule getXAnnotationRule() {
+		return getXAnnotationAccess().getRule();
 	}
 
 	//Background:
@@ -1592,22 +1755,22 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		return getMatcherClosureAccess().getRule();
 	}
 
-	//terminal FEATURE_TEXT:
-	//	"Feature" COLON MNL;
-	public TerminalRule getFEATURE_TEXTRule() {
-		return (tFEATURE_TEXT != null) ? tFEATURE_TEXT : (tFEATURE_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "FEATURE_TEXT"));
-	} 
-
 	//terminal BACKGROUND_TEXT:
-	//	"Background" COLON MNL;
+	//	"Background:" MNL;
 	public TerminalRule getBACKGROUND_TEXTRule() {
 		return (tBACKGROUND_TEXT != null) ? tBACKGROUND_TEXT : (tBACKGROUND_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "BACKGROUND_TEXT"));
 	} 
 
 	//terminal SCENARIO_TEXT:
-	//	"Scenario" COLON MNL;
+	//	"Scenario:" MNL;
 	public TerminalRule getSCENARIO_TEXTRule() {
 		return (tSCENARIO_TEXT != null) ? tSCENARIO_TEXT : (tSCENARIO_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "SCENARIO_TEXT"));
+	} 
+
+	//terminal FEATURE_TEXT:
+	//	"Feature" COLON->(BACKGROUND_TEXT | SCENARIO_TEXT);
+	public TerminalRule getFEATURE_TEXTRule() {
+		return (tFEATURE_TEXT != null) ? tFEATURE_TEXT : (tFEATURE_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "FEATURE_TEXT"));
 	} 
 
 	//terminal GIVEN_TEXT:
@@ -1640,24 +1803,6 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		return (tEXAMPLE_TEXT != null) ? tEXAMPLE_TEXT : (tEXAMPLE_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "EXAMPLE_TEXT"));
 	} 
 
-	//terminal IN_ORDER_TEXT:
-	//	"In order to" TEXT_AND_NL;
-	public TerminalRule getIN_ORDER_TEXTRule() {
-		return (tIN_ORDER_TEXT != null) ? tIN_ORDER_TEXT : (tIN_ORDER_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "IN_ORDER_TEXT"));
-	} 
-
-	//terminal AS_A_TEXT:
-	//	"As a" TEXT_AND_NL;
-	public TerminalRule getAS_A_TEXTRule() {
-		return (tAS_A_TEXT != null) ? tAS_A_TEXT : (tAS_A_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "AS_A_TEXT"));
-	} 
-
-	//terminal I_WANT_TEXT:
-	//	"I want" TEXT_AND_NL;
-	public TerminalRule getI_WANT_TEXTRule() {
-		return (tI_WANT_TEXT != null) ? tI_WANT_TEXT : (tI_WANT_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "I_WANT_TEXT"));
-	} 
-
 	//terminal PIPE:
 	//	"|";
 	public TerminalRule getPIPERule() {
@@ -1674,6 +1819,14 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	//	(PIPE | PIPE_SPACES) "\r"? "\n";
 	public TerminalRule getEXAMPLE_ROW_ENDRule() {
 		return (tEXAMPLE_ROW_END != null) ? tEXAMPLE_ROW_END : (tEXAMPLE_ROW_END = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "EXAMPLE_ROW_END"));
+	} 
+
+	//// these are dummy tokens that will generated from a custom TokenSource
+	//
+	//terminal TEXT:
+	//	"____dummy____"+;
+	public TerminalRule getTEXTRule() {
+		return (tTEXT != null) ? tTEXT : (tTEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "TEXT"));
 	} 
 
 	//terminal fragment TEXT_MULTI_LINE:
@@ -1720,17 +1873,6 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getFileRule() {
 		return getFileAccess().getRule();
-	}
-
-	//Import returns XtendImport:
-	//	"import" (static?="static" extension?="extension"? importedType=[types::JvmType|QualifiedName] "." "*" |
-	//	importedType=[types::JvmType|QualifiedName] | importedNamespace=QualifiedNameWithWildCard) ";"?;
-	public XtendGrammarAccess.ImportElements getImportAccess() {
-		return gaXtend.getImportAccess();
-	}
-	
-	public ParserRule getImportRule() {
-		return getImportAccess().getRule();
 	}
 
 	//QualifiedNameWithWildCard:
@@ -1982,18 +2124,6 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	public TerminalRule getIN_RICH_STRINGRule() {
 		return gaXtend.getIN_RICH_STRINGRule();
 	} 
-
-	//XAnnotation:
-	//	{XAnnotation} "@" annotationType=[types::JvmAnnotationType|QualifiedName] ("("
-	//	(elementValuePairs+=XAnnotationElementValuePair ("," elementValuePairs+=XAnnotationElementValuePair)* |
-	//	value=XAnnotationElementValue)? ")")?;
-	public XbaseWithAnnotationsGrammarAccess.XAnnotationElements getXAnnotationAccess() {
-		return gaXtend.getXAnnotationAccess();
-	}
-	
-	public ParserRule getXAnnotationRule() {
-		return getXAnnotationAccess().getRule();
-	}
 
 	//XAnnotationElementValuePair:
 	//	element=[types::JvmOperation|ValidID] "=" value=XAnnotationElementValue;

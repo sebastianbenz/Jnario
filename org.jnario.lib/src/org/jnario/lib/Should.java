@@ -50,6 +50,9 @@ public class Should {
 	}
 	
 	public static <T> boolean should_be(T actual, boolean result){
+		if (actual instanceof Boolean) {
+			return ((Boolean)actual).equals(result);
+		}
 		return result;
 	}
 	

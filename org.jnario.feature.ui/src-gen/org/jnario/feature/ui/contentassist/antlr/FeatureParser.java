@@ -37,6 +37,8 @@ public class FeatureParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
+					put(grammarAccess.getImportAccess().getAlternatives_1(), "rule__Import__Alternatives_1");
+					put(grammarAccess.getXAnnotationAccess().getAlternatives_3_1(), "rule__XAnnotation__Alternatives_3_1");
 					put(grammarAccess.getBackgroundAccess().getStepsAlternatives_3_0(), "rule__Background__StepsAlternatives_3_0");
 					put(grammarAccess.getScenarioAccess().getStepsAlternatives_3_0(), "rule__Scenario__StepsAlternatives_3_0");
 					put(grammarAccess.getScenarioAccess().getStepsAlternatives_4_0(), "rule__Scenario__StepsAlternatives_4_0");
@@ -56,7 +58,6 @@ public class FeatureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXRelationalExpressionAccess().getAlternatives_1_1_0_0_1(), "rule__XRelationalExpression__Alternatives_1_1_0_0_1");
 					put(grammarAccess.getXRelationalExpressionAccess().getAlternatives_1_1_0_0_1_0_0(), "rule__XRelationalExpression__Alternatives_1_1_0_0_1_0_0");
 					put(grammarAccess.getShouldAccess().getAlternatives(), "rule__Should__Alternatives");
-					put(grammarAccess.getImportAccess().getAlternatives_1(), "rule__Import__Alternatives_1");
 					put(grammarAccess.getMemberAccess().getAlternatives_2(), "rule__Member__Alternatives_2");
 					put(grammarAccess.getMemberAccess().getAlternatives_2_0_2(), "rule__Member__Alternatives_2_0_2");
 					put(grammarAccess.getMemberAccess().getAlternatives_2_1_1(), "rule__Member__Alternatives_2_1_1");
@@ -68,7 +69,6 @@ public class FeatureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getRichStringLiteralInbetweenAccess().getAlternatives_1(), "rule__RichStringLiteralInbetween__Alternatives_1");
 					put(grammarAccess.getRichStringLiteralEndAccess().getAlternatives_1(), "rule__RichStringLiteralEnd__Alternatives_1");
 					put(grammarAccess.getRichStringPartAccess().getAlternatives(), "rule__RichStringPart__Alternatives");
-					put(grammarAccess.getXAnnotationAccess().getAlternatives_3_1(), "rule__XAnnotation__Alternatives_3_1");
 					put(grammarAccess.getXAnnotationElementValueAccess().getAlternatives(), "rule__XAnnotationElementValue__Alternatives");
 					put(grammarAccess.getXAssignmentAccess().getAlternatives(), "rule__XAssignment__Alternatives");
 					put(grammarAccess.getOpEqualityAccess().getAlternatives(), "rule__OpEquality__Alternatives");
@@ -101,8 +101,13 @@ public class FeatureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getVisibilityAccess().getAlternatives(), "rule__Visibility__Alternatives");
 					put(grammarAccess.getFeatureFileAccess().getGroup(), "rule__FeatureFile__Group__0");
 					put(grammarAccess.getFeatureFileAccess().getGroup_1(), "rule__FeatureFile__Group_1__0");
+					put(grammarAccess.getImportAccess().getGroup(), "rule__Import__Group__0");
+					put(grammarAccess.getImportAccess().getGroup_1_0(), "rule__Import__Group_1_0__0");
 					put(grammarAccess.getFeatureAccess().getGroup(), "rule__Feature__Group__0");
-					put(grammarAccess.getDESCRIPTIONAccess().getGroup(), "rule__DESCRIPTION__Group__0");
+					put(grammarAccess.getXAnnotationAccess().getGroup(), "rule__XAnnotation__Group__0");
+					put(grammarAccess.getXAnnotationAccess().getGroup_3(), "rule__XAnnotation__Group_3__0");
+					put(grammarAccess.getXAnnotationAccess().getGroup_3_1_0(), "rule__XAnnotation__Group_3_1_0__0");
+					put(grammarAccess.getXAnnotationAccess().getGroup_3_1_0_1(), "rule__XAnnotation__Group_3_1_0_1__0");
 					put(grammarAccess.getBackgroundAccess().getGroup(), "rule__Background__Group__0");
 					put(grammarAccess.getScenarioAccess().getGroup(), "rule__Scenario__Group__0");
 					put(grammarAccess.getGivenReferenceAccess().getGroup(), "rule__GivenReference__Group__0");
@@ -141,8 +146,6 @@ public class FeatureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMatcherClosureAccess().getGroup_2_0(), "rule__MatcherClosure__Group_2_0__0");
 					put(grammarAccess.getFileAccess().getGroup(), "rule__File__Group__0");
 					put(grammarAccess.getFileAccess().getGroup_0(), "rule__File__Group_0__0");
-					put(grammarAccess.getImportAccess().getGroup(), "rule__Import__Group__0");
-					put(grammarAccess.getImportAccess().getGroup_1_0(), "rule__Import__Group_1_0__0");
 					put(grammarAccess.getQualifiedNameWithWildCardAccess().getGroup(), "rule__QualifiedNameWithWildCard__Group__0");
 					put(grammarAccess.getClassAccess().getGroup(), "rule__Class__Group__0");
 					put(grammarAccess.getClassAccess().getGroup_4(), "rule__Class__Group_4__0");
@@ -197,10 +200,6 @@ public class FeatureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getRichStringIfAccess().getGroup(), "rule__RichStringIf__Group__0");
 					put(grammarAccess.getRichStringIfAccess().getGroup_5(), "rule__RichStringIf__Group_5__0");
 					put(grammarAccess.getRichStringElseIfAccess().getGroup(), "rule__RichStringElseIf__Group__0");
-					put(grammarAccess.getXAnnotationAccess().getGroup(), "rule__XAnnotation__Group__0");
-					put(grammarAccess.getXAnnotationAccess().getGroup_3(), "rule__XAnnotation__Group_3__0");
-					put(grammarAccess.getXAnnotationAccess().getGroup_3_1_0(), "rule__XAnnotation__Group_3_1_0__0");
-					put(grammarAccess.getXAnnotationAccess().getGroup_3_1_0_1(), "rule__XAnnotation__Group_3_1_0_1__0");
 					put(grammarAccess.getXAnnotationElementValuePairAccess().getGroup(), "rule__XAnnotationElementValuePair__Group__0");
 					put(grammarAccess.getXAnnotationElementValueStringConcatenationAccess().getGroup(), "rule__XAnnotationElementValueStringConcatenation__Group__0");
 					put(grammarAccess.getXAnnotationElementValueStringConcatenationAccess().getGroup_1(), "rule__XAnnotationElementValueStringConcatenation__Group_1__0");
@@ -337,11 +336,20 @@ public class FeatureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFeatureFileAccess().getPackageAssignment_1_1(), "rule__FeatureFile__PackageAssignment_1_1");
 					put(grammarAccess.getFeatureFileAccess().getImportsAssignment_2(), "rule__FeatureFile__ImportsAssignment_2");
 					put(grammarAccess.getFeatureFileAccess().getXtendClassAssignment_3(), "rule__FeatureFile__XtendClassAssignment_3");
+					put(grammarAccess.getImportAccess().getStaticAssignment_1_0_0(), "rule__Import__StaticAssignment_1_0_0");
+					put(grammarAccess.getImportAccess().getExtensionAssignment_1_0_1(), "rule__Import__ExtensionAssignment_1_0_1");
+					put(grammarAccess.getImportAccess().getImportedTypeAssignment_1_0_2(), "rule__Import__ImportedTypeAssignment_1_0_2");
+					put(grammarAccess.getImportAccess().getImportedTypeAssignment_1_1(), "rule__Import__ImportedTypeAssignment_1_1");
+					put(grammarAccess.getImportAccess().getImportedNamespaceAssignment_1_2(), "rule__Import__ImportedNamespaceAssignment_1_2");
 					put(grammarAccess.getFeatureAccess().getAnnotationsAssignment_1(), "rule__Feature__AnnotationsAssignment_1");
 					put(grammarAccess.getFeatureAccess().getNameAssignment_2(), "rule__Feature__NameAssignment_2");
 					put(grammarAccess.getFeatureAccess().getDescriptionAssignment_3(), "rule__Feature__DescriptionAssignment_3");
 					put(grammarAccess.getFeatureAccess().getBackgroundAssignment_4(), "rule__Feature__BackgroundAssignment_4");
 					put(grammarAccess.getFeatureAccess().getMembersAssignment_5(), "rule__Feature__MembersAssignment_5");
+					put(grammarAccess.getXAnnotationAccess().getAnnotationTypeAssignment_2(), "rule__XAnnotation__AnnotationTypeAssignment_2");
+					put(grammarAccess.getXAnnotationAccess().getElementValuePairsAssignment_3_1_0_0(), "rule__XAnnotation__ElementValuePairsAssignment_3_1_0_0");
+					put(grammarAccess.getXAnnotationAccess().getElementValuePairsAssignment_3_1_0_1_1(), "rule__XAnnotation__ElementValuePairsAssignment_3_1_0_1_1");
+					put(grammarAccess.getXAnnotationAccess().getValueAssignment_3_1_1(), "rule__XAnnotation__ValueAssignment_3_1_1");
 					put(grammarAccess.getBackgroundAccess().getMembersAssignment_2(), "rule__Background__MembersAssignment_2");
 					put(grammarAccess.getBackgroundAccess().getStepsAssignment_3(), "rule__Background__StepsAssignment_3");
 					put(grammarAccess.getScenarioAccess().getNameAssignment_1(), "rule__Scenario__NameAssignment_1");
@@ -391,11 +399,6 @@ public class FeatureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFileAccess().getPackageAssignment_0_1(), "rule__File__PackageAssignment_0_1");
 					put(grammarAccess.getFileAccess().getImportsAssignment_1(), "rule__File__ImportsAssignment_1");
 					put(grammarAccess.getFileAccess().getXtendClassAssignment_2(), "rule__File__XtendClassAssignment_2");
-					put(grammarAccess.getImportAccess().getStaticAssignment_1_0_0(), "rule__Import__StaticAssignment_1_0_0");
-					put(grammarAccess.getImportAccess().getExtensionAssignment_1_0_1(), "rule__Import__ExtensionAssignment_1_0_1");
-					put(grammarAccess.getImportAccess().getImportedTypeAssignment_1_0_2(), "rule__Import__ImportedTypeAssignment_1_0_2");
-					put(grammarAccess.getImportAccess().getImportedTypeAssignment_1_1(), "rule__Import__ImportedTypeAssignment_1_1");
-					put(grammarAccess.getImportAccess().getImportedNamespaceAssignment_1_2(), "rule__Import__ImportedNamespaceAssignment_1_2");
 					put(grammarAccess.getClassAccess().getAnnotationsAssignment_0(), "rule__Class__AnnotationsAssignment_0");
 					put(grammarAccess.getClassAccess().getNameAssignment_3(), "rule__Class__NameAssignment_3");
 					put(grammarAccess.getClassAccess().getTypeParametersAssignment_4_1(), "rule__Class__TypeParametersAssignment_4_1");
@@ -475,10 +478,6 @@ public class FeatureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getRichStringIfAccess().getElseAssignment_5_1(), "rule__RichStringIf__ElseAssignment_5_1");
 					put(grammarAccess.getRichStringElseIfAccess().getIfAssignment_1(), "rule__RichStringElseIf__IfAssignment_1");
 					put(grammarAccess.getRichStringElseIfAccess().getThenAssignment_2(), "rule__RichStringElseIf__ThenAssignment_2");
-					put(grammarAccess.getXAnnotationAccess().getAnnotationTypeAssignment_2(), "rule__XAnnotation__AnnotationTypeAssignment_2");
-					put(grammarAccess.getXAnnotationAccess().getElementValuePairsAssignment_3_1_0_0(), "rule__XAnnotation__ElementValuePairsAssignment_3_1_0_0");
-					put(grammarAccess.getXAnnotationAccess().getElementValuePairsAssignment_3_1_0_1_1(), "rule__XAnnotation__ElementValuePairsAssignment_3_1_0_1_1");
-					put(grammarAccess.getXAnnotationAccess().getValueAssignment_3_1_1(), "rule__XAnnotation__ValueAssignment_3_1_1");
 					put(grammarAccess.getXAnnotationElementValuePairAccess().getElementAssignment_0(), "rule__XAnnotationElementValuePair__ElementAssignment_0");
 					put(grammarAccess.getXAnnotationElementValuePairAccess().getValueAssignment_2(), "rule__XAnnotationElementValuePair__ValueAssignment_2");
 					put(grammarAccess.getXAnnotationElementValueStringConcatenationAccess().getOperatorAssignment_1_1(), "rule__XAnnotationElementValueStringConcatenation__OperatorAssignment_1_1");

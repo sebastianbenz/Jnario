@@ -10,7 +10,6 @@
  */
 package org.jnario.feature;
 
-import org.eclipse.xtend.core.compiler.XtendOutputConfigurationProvider;
 import org.eclipse.xtend.core.jvmmodel.DispatchUtil;
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
 import org.eclipse.xtend.core.resource.XtendEObjectAtOffsetHelper;
@@ -27,6 +26,7 @@ import org.eclipse.xtext.generator.OutputConfigurationProvider;
 import org.eclipse.xtext.linking.ILinker;
 import org.eclipse.xtext.linking.ILinkingService;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
+import org.eclipse.xtext.parser.IParser;
 import org.eclipse.xtext.resource.EObjectAtOffsetHelper;
 import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
 import org.eclipse.xtext.resource.XtextResource;
@@ -54,6 +54,7 @@ import org.jnario.feature.linking.FeatureLazyLinker;
 import org.jnario.feature.linking.FeatureLinkingService;
 import org.jnario.feature.naming.FeatureIdentifiableSimpleNameProvider;
 import org.jnario.feature.naming.FeatureQualifiedNameProvider;
+import org.jnario.feature.parser.CustomFeatureParser;
 import org.jnario.feature.validation.FeatureClasspathBasedChecks;
 import org.jnario.feature.validation.FeatureResourceValidator;
 import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
@@ -180,6 +181,12 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 	@Override
 	public Class<? extends IValueConverterService> bindIValueConverterService() {
 		return FeatureValueConverterService.class;
+	}
+	
+	
+	@Override
+	public Class<? extends IParser> bindIParser() {
+		return CustomFeatureParser.class;
 	}
 	
 }

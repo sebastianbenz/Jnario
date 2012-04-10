@@ -19,6 +19,7 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.List;
 
+import org.antlr.runtime.Token;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -30,6 +31,7 @@ import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.junit4.validation.RegisteredValidatorTester;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.util.CancelIndicator;
+import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.validation.CheckMode;
 import org.eclipse.xtext.validation.IResourceValidator;
 import org.eclipse.xtext.validation.Issue;
@@ -162,6 +164,8 @@ public abstract class BehaviorExecutor {
 		javaCompiler.addClassPathOfClass(Assertion.class);
 		javaCompiler.addClassPathOfClass(org.hamcrest.Matchers.class);
 		javaCompiler.addClassPathOfClass(Type.class);
+		javaCompiler.addClassPathOfClass(Token.class);
+		javaCompiler.addClassPathOfClass(Strings.class);
 	}
 
 	public Result run(EObject object) {

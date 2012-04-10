@@ -140,6 +140,7 @@ public class Resources {
 	}
 
 	public static void checkForParseErrors(Resource resource) {
-		Assert.assertTrue(Joiner.on("\n").join(resource.getErrors()), resource.getErrors().isEmpty());
+		String fileName = resource.getURI().lastSegment();
+		Assert.assertTrue(fileName + ": " + Joiner.on("\n").join(resource.getErrors()), resource.getErrors().isEmpty());
 	}
 }
