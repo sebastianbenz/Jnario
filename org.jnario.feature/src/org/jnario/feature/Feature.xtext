@@ -41,7 +41,7 @@ Feature returns xtend::XtendClass:
 	
 	name=FEATURE_TEXT
 	description=TEXT?
-	background = Background?
+	members+=Background?
 	members+=Scenario*;
 
 XAnnotation returns xannotations::XAnnotation:

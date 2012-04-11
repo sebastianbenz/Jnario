@@ -113,6 +113,8 @@ public class FeatureSwitch<T>
 			{
 				Background background = (Background)theEObject;
 				T result = caseBackground(background);
+				if (result == null) result = caseXtendMember(background);
+				if (result == null) result = caseXtendAnnotationTarget(background);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

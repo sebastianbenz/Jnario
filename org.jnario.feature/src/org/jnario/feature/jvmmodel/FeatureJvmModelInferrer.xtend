@@ -51,6 +51,7 @@ import org.junit.Ignore
 
 import static com.google.common.collect.Iterators.*
 import static org.jnario.feature.jvmmodel.FeatureJvmModelInferrer.*
+import org.jnario.feature.feature.Background
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -98,12 +99,12 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		}
 			
 		var JvmGenericType backgroundClass = null
-		if(feature.background != null){
-			backgroundClass = feature.generateBackground(featureFile)
+		for(bg : feature.backgrounds){
+			backgroundClass = bg.generateBackground(featureFile)
 			acceptor.accept(backgroundClass)
 		}
 		val List<JvmGenericType> scenarios = newArrayList()
-		for(member: feature.members){
+		for(member: feature.members.filter(typeof(Scenario))){
 			val scenario = member as Scenario
 			val className = scenario.className
 			val clazz = scenario.infer(featureFile, className, backgroundClass)
@@ -114,6 +115,15 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		
 		val featureClazz = feature.generateFeatureSuite(featureFile, scenarios)
 		acceptor.accept(featureClazz)
+   	}
+   	
+   	def backgrounds(Feature feature){
+   		val head = feature.members.head
+   		if(head instanceof Background){
+   			return newImmutableList(head as Background)
+   		}else{
+   			return <Background>emptyList 
+   		}
    	}
    	
    	def generateFeatureSuite(Feature feature, FeatureFile featureFile, List<JvmGenericType> scenarios){
@@ -136,16 +146,15 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		}
    	}
    	
-   	def generateBackground(Feature feature, FeatureFile featureFile){
-   		val background = feature.background
+   	def generateBackground(Background background, FeatureFile featureFile){
    		background.steps.generateStepValues
    		background.copyXtendMemberForReferences
-   		feature.toClass(background.getClassName)[
+   		featureFile.xtendClass.toClass(background.getClassName)[
    			featureFile.eResource.contents += it
    			for(member: background.members){
 				super.transform(member, it)
 			}
-   			feature.addDefaultConstructor(it)
+   			featureFile.xtendClass.addDefaultConstructor(it)
    			packageName = featureFile.^package
    			abstract = true
    			background.steps.generateSteps(it)
@@ -164,10 +173,10 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			var hasBackground = false
 			var feature = featureFile.xtendClass as Feature
 			var start = 0
-			if(feature.background != null){
+			for(bg: feature.backgrounds){
 				hasBackground = true
 				superTypes += superClass.createTypeRef
-				start = feature.background.steps.generateBackgroundStepCalls(it)
+				start = bg.steps.generateBackgroundStepCalls(it)
 			}
 			scenario.generateVariables(feature, it)
 			for(member: scenario.members){

@@ -11,6 +11,7 @@ import org.jnario.feature.naming.JavaNameProvider
 import org.jnario.feature.naming.StepNameProvider
 import static extension org.jnario.util.Strings.*
 import static org.jnario.doc.HtmlFile.*
+import org.jnario.feature.feature.Background
 
 class FeatureDocGenerator extends AbstractDocGenerator {
 	@Inject extension JavaNameProvider 
@@ -31,18 +32,19 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 	
 	def generateContent(Feature feature)'''
 		<p>«feature.description.markdown2Html»</p>
-		«IF feature.background != null»
-		<h3>Background</h3>
-		«FOR step : feature.background.steps.filter(typeof(Step))»
-		«generate(step)»
-		«ENDFOR»
-		«ENDIF»
-		«FOR scenario : feature.members.filter(typeof(Scenario))»
-		«generate(scenario)»
+		«FOR member : feature.members»
+		«generate(member)»
 		«ENDFOR»
 	'''
 
-	def generate(Scenario scenario)'''
+	def dispatch generate(Background bg)'''
+		<h3>Background</h3>
+		«FOR step : bg.steps.filter(typeof(Step))»
+		«generate(step)»
+		«ENDFOR»
+	'''
+
+	def dispatch generate(Scenario scenario)'''
 		<h3>«scenario.name»</h3>
 		«generate(scenario.steps.filter(typeof(Step)))»
 		«IF !scenario.examples.empty»
@@ -53,7 +55,7 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 		«ENDIF»
 	'''
 	
-	def generate(Iterable<Step> steps)'''
+	def dispatch generate(Iterable<Step> steps)'''
 		<ul>
 		«FOR step : steps»
 		<li>«generate(step)»
@@ -62,7 +64,7 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 		</ul>
 	'''
 	
-	def generate(Step step)'''
+	def dispatch generate(Step step)'''
 		<p>«step.format»</p>
 		«step.addCodeBlock»
 	'''

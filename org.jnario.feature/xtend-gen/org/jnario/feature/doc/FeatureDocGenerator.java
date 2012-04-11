@@ -3,6 +3,7 @@ package org.jnario.feature.doc;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
+import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend.core.xtend.RichString;
 import org.eclipse.xtend.core.xtend.XtendClass;
@@ -66,36 +67,33 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     _builder.append("</p>");
     _builder.newLineIfNotEmpty();
     {
-      Background _background = feature.getBackground();
-      boolean _notEquals = (!Objects.equal(_background, null));
-      if (_notEquals) {
-        _builder.append("<h3>Background</h3>");
-        _builder.newLine();
-        {
-          Background _background_1 = feature.getBackground();
-          EList<XtendMember> _steps = _background_1.getSteps();
-          Iterable<Step> _filter = Iterables.<Step>filter(_steps, Step.class);
-          for(final Step step : _filter) {
-            CharSequence _generate = this.generate(step);
-            _builder.append(_generate, "");
-            _builder.newLineIfNotEmpty();
-          }
-        }
-      }
-    }
-    {
       EList<XtendMember> _members = feature.getMembers();
-      Iterable<Scenario> _filter_1 = Iterables.<Scenario>filter(_members, Scenario.class);
-      for(final Scenario scenario : _filter_1) {
-        CharSequence _generate_1 = this.generate(scenario);
-        _builder.append(_generate_1, "");
+      for(final XtendMember member : _members) {
+        CharSequence _generate = this.generate(member);
+        _builder.append(_generate, "");
         _builder.newLineIfNotEmpty();
       }
     }
     return _builder;
   }
   
-  public CharSequence generate(final Scenario scenario) {
+  protected CharSequence _generate(final Background bg) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<h3>Background</h3>");
+    _builder.newLine();
+    {
+      EList<XtendMember> _steps = bg.getSteps();
+      Iterable<Step> _filter = Iterables.<Step>filter(_steps, Step.class);
+      for(final Step step : _filter) {
+        CharSequence _generate = this.generate(step);
+        _builder.append(_generate, "");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    return _builder;
+  }
+  
+  protected CharSequence _generate(final Scenario scenario) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<h3>");
     String _name = scenario.getName();
@@ -129,7 +127,7 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     return _builder;
   }
   
-  public CharSequence generate(final Iterable<Step> steps) {
+  protected CharSequence _generate(final Iterable<Step> steps) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<ul>");
     _builder.newLine();
@@ -152,7 +150,7 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     return _builder;
   }
   
-  public CharSequence generate(final Step step) {
+  protected CharSequence _generate(final Step step) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<p>");
     String _format = this.format(step);
@@ -216,5 +214,20 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
       _xblockexpression = (_builder);
     }
     return _xblockexpression;
+  }
+  
+  public CharSequence generate(final Object bg) {
+    if (bg instanceof Background) {
+      return _generate((Background)bg);
+    } else if (bg instanceof Scenario) {
+      return _generate((Scenario)bg);
+    } else if (bg instanceof Step) {
+      return _generate((Step)bg);
+    } else if (bg instanceof Iterable) {
+      return _generate((Iterable<Step>)bg);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(bg).toString());
+    }
   }
 }

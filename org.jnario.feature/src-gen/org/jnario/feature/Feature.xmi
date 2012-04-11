@@ -105,7 +105,7 @@
         <elements xsi:type="xtext:Assignment" cardinality="?" feature="description" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.38"/>
         </elements>
-        <elements xsi:type="xtext:Assignment" cardinality="?" feature="background" operator="=">
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="members" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.4"/>
         </elements>
         <elements xsi:type="xtext:Assignment" cardinality="*" feature="members" operator="+=">

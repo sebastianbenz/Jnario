@@ -5377,9 +5377,9 @@ rule__Feature__Group__4__Impl
     }
 :
 (
-{ before(grammarAccess.getFeatureAccess().getBackgroundAssignment_4()); }
-(rule__Feature__BackgroundAssignment_4)?
-{ after(grammarAccess.getFeatureAccess().getBackgroundAssignment_4()); }
+{ before(grammarAccess.getFeatureAccess().getMembersAssignment_4()); }
+(rule__Feature__MembersAssignment_4)?
+{ after(grammarAccess.getFeatureAccess().getMembersAssignment_4()); }
 )
 
 ;
@@ -24699,14 +24699,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Feature__BackgroundAssignment_4
+rule__Feature__MembersAssignment_4
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFeatureAccess().getBackgroundBackgroundParserRuleCall_4_0()); }
-	ruleBackground{ after(grammarAccess.getFeatureAccess().getBackgroundBackgroundParserRuleCall_4_0()); }
+{ before(grammarAccess.getFeatureAccess().getMembersBackgroundParserRuleCall_4_0()); }
+	ruleBackground{ after(grammarAccess.getFeatureAccess().getMembersBackgroundParserRuleCall_4_0()); }
 )
 
 ;

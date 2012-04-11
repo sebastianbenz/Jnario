@@ -17,7 +17,6 @@ import org.eclipse.xtext.util.Strings;
 
 public class FeatureTokenSource extends AbstractSplittingTokenSource {
 	
-	private static final String NL = "\n";
 	private static final String SCENARIO_KEYWORD = "Scenario:";
 	private static final String BACKGROUND_KEYWORD = "Background:";
 	private static final String FEATURE_KEYWORD = "Feature:";
@@ -57,11 +56,11 @@ public class FeatureTokenSource extends AbstractSplittingTokenSource {
 	
 	@Override
 	protected boolean shouldSplitToken(Token candidate) {
-		return isFeatureText(candidate) || candidate.getType() == 0;
+		return isFeatureText(candidate) || candidate.getType() == 0 || candidate.getType() == 12;
 	}
 
 	private boolean isFeatureText(Token candidate) {
-		return candidate.getType() == RULE_FEATURE_TEXT;
+		return candidate.getType() == ruleFeatureText();
 	}
 	
 	/*
@@ -85,30 +84,44 @@ public class FeatureTokenSource extends AbstractSplittingTokenSource {
 		
 		int stop = firstLine.length();
 		if(lines.size() == 1){
-			tokens.add(RULE_FEATURE_TEXT, 0, featureText.length()-1, 1, index);
+			tokens.add(ruleFeatureText(), 0, featureText.length()-1, 1, index);
 			return;
 		}
-		tokens.add(RULE_FEATURE_TEXT, 0, stop, 1, index);
+		tokens.add(ruleFeatureText(), 0, stop, 1, index);
 		int endOfFeature = stop+1;
 		for(int lineNr = 1; lineNr < lines.size(); lineNr++){
 			String line = lines.get(lineNr);
 			index = startsWithWord(line, BACKGROUND_KEYWORD);
 			if(index != -1){
-				tokens.add(RULE_TEXT, endOfFeature, stop + index, 2, 0);
-				tokens.add(RULE_BACKGROUND_TEXT, stop + index + 1, featureText.length()-1, lineNr + 1, index);
+				tokens.add(ruleText(), endOfFeature, stop + index, 2, 0);
+				tokens.add(ruleBackground(), stop + index + 1, featureText.length()-1, lineNr + 1, index);
 				return;
 			}
 			index = startsWithWord(line, SCENARIO_KEYWORD);
 			if(index != -1){
-				tokens.add(RULE_TEXT, endOfFeature, stop + index, 2, 0);
-				tokens.add(RULE_SCENARIO_TEXT, stop + index + 1, featureText.length()-1, lineNr + 1, index);
+				tokens.add(ruleText(), endOfFeature, stop + index, 2, 0);
+				tokens.add(ruleScenario(), stop + index + 1, featureText.length()-1, lineNr + 1, index);
 				return;
 			}
 			stop += line.length() + 1;
 		}
-		tokens.add(RULE_TEXT, endOfFeature, featureText.length()-1, 2, 0);
+		tokens.add(ruleText(), endOfFeature, featureText.length()-1, 2, 0);
 	}
 
+	protected int ruleScenario() {
+		return RULE_SCENARIO_TEXT;
+	}
 
+	protected int ruleBackground() {
+		return RULE_BACKGROUND_TEXT;
+	}
+
+	protected int ruleText() {
+		return RULE_TEXT;
+	}
+
+	protected int ruleFeatureText() {
+		return RULE_FEATURE_TEXT;
+	}
 	
 }

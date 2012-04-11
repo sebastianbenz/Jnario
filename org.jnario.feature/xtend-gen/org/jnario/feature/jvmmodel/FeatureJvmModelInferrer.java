@@ -39,6 +39,7 @@ import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.ExampleColumn;
@@ -126,16 +127,18 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
       return;
     }
     JvmGenericType backgroundClass = null;
-    Background _background = feature.getBackground();
-    boolean _notEquals = (!Objects.equal(_background, null));
-    if (_notEquals) {
-      JvmGenericType _generateBackground = this.generateBackground(feature, featureFile);
-      backgroundClass = _generateBackground;
-      acceptor.<JvmGenericType>accept(backgroundClass);
+    List<Background> _backgrounds = this.backgrounds(feature);
+    for (final Background bg : _backgrounds) {
+      {
+        JvmGenericType _generateBackground = this.generateBackground(bg, featureFile);
+        backgroundClass = _generateBackground;
+        acceptor.<JvmGenericType>accept(backgroundClass);
+      }
     }
     final List<JvmGenericType> scenarios = CollectionLiterals.<JvmGenericType>newArrayList();
     EList<XtendMember> _members = feature.getMembers();
-    for (final XtendMember member : _members) {
+    Iterable<Scenario> _filter = Iterables.<Scenario>filter(_members, Scenario.class);
+    for (final Scenario member : _filter) {
       {
         final Scenario scenario = ((Scenario) member);
         final String className = this._javaNameProvider.getClassName(scenario);
@@ -149,6 +152,16 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     }
     final JvmGenericType featureClazz = this.generateFeatureSuite(feature, featureFile, scenarios);
     acceptor.<JvmGenericType>accept(featureClazz);
+  }
+  
+  public List<Background> backgrounds(final Feature feature) {
+    EList<XtendMember> _members = feature.getMembers();
+    final XtendMember head = IterableExtensions.<XtendMember>head(_members);
+    if ((head instanceof Background)) {
+      return CollectionLiterals.<Background>newImmutableList(((Background) head));
+    } else {
+      return CollectionLiterals.<Background>emptyList();
+    }
   }
   
   public JvmGenericType generateFeatureSuite(final Feature feature, final FeatureFile featureFile, final List<JvmGenericType> scenarios) {
@@ -196,13 +209,13 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     return _xifexpression;
   }
   
-  public JvmGenericType generateBackground(final Feature feature, final FeatureFile featureFile) {
+  public JvmGenericType generateBackground(final Background background, final FeatureFile featureFile) {
     JvmGenericType _xblockexpression = null;
     {
-      final Background background = feature.getBackground();
       EList<XtendMember> _steps = background.getSteps();
       this.generateStepValues(_steps);
       this._stepReferenceFieldCreator.copyXtendMemberForReferences(background);
+      XtendClass _xtendClass = featureFile.getXtendClass();
       String _className = this._javaNameProvider.getClassName(background);
       final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
           public void apply(final JvmGenericType it) {
@@ -213,7 +226,8 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
             for (final XtendMember member : _members) {
               FeatureJvmModelInferrer.super.transform(member, it);
             }
-            FeatureJvmModelInferrer.this.addDefaultConstructor(feature, it);
+            XtendClass _xtendClass = featureFile.getXtendClass();
+            FeatureJvmModelInferrer.this.addDefaultConstructor(_xtendClass, it);
             String _package = featureFile.getPackage();
             it.setPackageName(_package);
             it.setAbstract(true);
@@ -221,7 +235,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
             FeatureJvmModelInferrer.this.generateSteps(_steps, it);
           }
         };
-      JvmGenericType _class = this._extendedJvmTypesBuilder.toClass(feature, _className, _function);
+      JvmGenericType _class = this._extendedJvmTypesBuilder.toClass(_xtendClass, _className, _function);
       _xblockexpression = (_class);
     }
     return _xblockexpression;
@@ -251,25 +265,25 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
             XtendClass _xtendClass = featureFile.getXtendClass();
             Feature feature = ((Feature) _xtendClass);
             int start = 0;
-            Background _background = feature.getBackground();
-            boolean _notEquals = (!Objects.equal(_background, null));
-            if (_notEquals) {
-              hasBackground = true;
-              EList<JvmTypeReference> _superTypes = it.getSuperTypes();
-              JvmParameterizedTypeReference _createTypeRef = FeatureJvmModelInferrer.this._typeReferences.createTypeRef(superClass);
-              FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmParameterizedTypeReference>operator_add(_superTypes, _createTypeRef);
-              Background _background_1 = feature.getBackground();
-              EList<XtendMember> _steps = _background_1.getSteps();
-              int _generateBackgroundStepCalls = FeatureJvmModelInferrer.this.generateBackgroundStepCalls(_steps, it);
-              start = _generateBackgroundStepCalls;
+            List<Background> _backgrounds = FeatureJvmModelInferrer.this.backgrounds(feature);
+            for (final Background bg : _backgrounds) {
+              {
+                hasBackground = true;
+                EList<JvmTypeReference> _superTypes = it.getSuperTypes();
+                JvmParameterizedTypeReference _createTypeRef = FeatureJvmModelInferrer.this._typeReferences.createTypeRef(superClass);
+                FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmParameterizedTypeReference>operator_add(_superTypes, _createTypeRef);
+                EList<XtendMember> _steps = bg.getSteps();
+                int _generateBackgroundStepCalls = FeatureJvmModelInferrer.this.generateBackgroundStepCalls(_steps, it);
+                start = _generateBackgroundStepCalls;
+              }
             }
             FeatureJvmModelInferrer.this.generateVariables(scenario, feature, it);
             EList<XtendMember> _members = scenario.getMembers();
             for (final XtendMember member : _members) {
               FeatureJvmModelInferrer.super.transform(member, it);
             }
-            EList<XtendMember> _steps_1 = scenario.getSteps();
-            FeatureJvmModelInferrer.this.generateSteps(_steps_1, it, start, scenario);
+            EList<XtendMember> _steps = scenario.getSteps();
+            FeatureJvmModelInferrer.this.generateSteps(_steps, it, start, scenario);
             EList<ExampleTable> _examples = scenario.getExamples();
             boolean _isEmpty = _examples.isEmpty();
             boolean _not = (!_isEmpty);

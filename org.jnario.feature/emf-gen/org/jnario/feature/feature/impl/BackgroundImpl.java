@@ -14,12 +14,12 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.xtend.core.xtend.XtendMember;
+
+import org.eclipse.xtend.core.xtend.impl.XtendMemberImplCustom;
 
 import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.FeaturePackage;
@@ -38,7 +38,7 @@ import org.jnario.feature.feature.FeaturePackage;
  *
  * @generated
  */
-public class BackgroundImpl extends MinimalEObjectImpl.Container implements Background
+public class BackgroundImpl extends XtendMemberImplCustom implements Background
 {
 	/**
 	 * The cached value of the '{@link #getSteps() <em>Steps</em>}' containment reference list.

@@ -9,7 +9,8 @@ public class CustomFeatureParser extends FeatureParser {
 	@Override
 	protected TokenSource createLexer(CharStream stream) {
 		FeatureTokenSource tokenSource = new FeatureTokenSource();
-		tokenSource.setDelegate(super.createLexer(stream));
+		TokenSource delegate = super.createLexer(stream);
+		tokenSource.setDelegate(delegate);
 		return tokenSource;
 	}
 

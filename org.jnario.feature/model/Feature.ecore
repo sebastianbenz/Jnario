@@ -5,10 +5,8 @@
     nsURI="http://www.org/jnario/feature/Feature" nsPrefix="feature">
   <eClassifiers xsi:type="ecore:EClass" name="Feature" eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendClass">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="background" eType="#//Background"
-        containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Background">
+  <eClassifiers xsi:type="ecore:EClass" name="Background" eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendMember">
     <eStructuralFeatures xsi:type="ecore:EReference" name="steps" upperBound="-1"
         eType="ecore:EClass ../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendMember"
         containment="true"/>

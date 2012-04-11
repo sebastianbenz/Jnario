@@ -806,7 +806,7 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFeature"
-    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:279:1: ruleFeature returns [EObject current=null] : ( () ( (lv_annotations_1_0= ruleXAnnotation ) )* ( (lv_name_2_0= RULE_FEATURE_TEXT ) ) ( (lv_description_3_0= RULE_TEXT ) )? ( (lv_background_4_0= ruleBackground ) )? ( (lv_members_5_0= ruleScenario ) )* ) ;
+    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:279:1: ruleFeature returns [EObject current=null] : ( () ( (lv_annotations_1_0= ruleXAnnotation ) )* ( (lv_name_2_0= RULE_FEATURE_TEXT ) ) ( (lv_description_3_0= RULE_TEXT ) )? ( (lv_members_4_0= ruleBackground ) )? ( (lv_members_5_0= ruleScenario ) )* ) ;
     public final EObject ruleFeature() throws RecognitionException {
         EObject current = null;
 
@@ -814,7 +814,7 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
         Token lv_description_3_0=null;
         EObject lv_annotations_1_0 = null;
 
-        EObject lv_background_4_0 = null;
+        EObject lv_members_4_0 = null;
 
         EObject lv_members_5_0 = null;
 
@@ -822,11 +822,11 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:282:28: ( ( () ( (lv_annotations_1_0= ruleXAnnotation ) )* ( (lv_name_2_0= RULE_FEATURE_TEXT ) ) ( (lv_description_3_0= RULE_TEXT ) )? ( (lv_background_4_0= ruleBackground ) )? ( (lv_members_5_0= ruleScenario ) )* ) )
-            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:283:1: ( () ( (lv_annotations_1_0= ruleXAnnotation ) )* ( (lv_name_2_0= RULE_FEATURE_TEXT ) ) ( (lv_description_3_0= RULE_TEXT ) )? ( (lv_background_4_0= ruleBackground ) )? ( (lv_members_5_0= ruleScenario ) )* )
+            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:282:28: ( ( () ( (lv_annotations_1_0= ruleXAnnotation ) )* ( (lv_name_2_0= RULE_FEATURE_TEXT ) ) ( (lv_description_3_0= RULE_TEXT ) )? ( (lv_members_4_0= ruleBackground ) )? ( (lv_members_5_0= ruleScenario ) )* ) )
+            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:283:1: ( () ( (lv_annotations_1_0= ruleXAnnotation ) )* ( (lv_name_2_0= RULE_FEATURE_TEXT ) ) ( (lv_description_3_0= RULE_TEXT ) )? ( (lv_members_4_0= ruleBackground ) )? ( (lv_members_5_0= ruleScenario ) )* )
             {
-            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:283:1: ( () ( (lv_annotations_1_0= ruleXAnnotation ) )* ( (lv_name_2_0= RULE_FEATURE_TEXT ) ) ( (lv_description_3_0= RULE_TEXT ) )? ( (lv_background_4_0= ruleBackground ) )? ( (lv_members_5_0= ruleScenario ) )* )
-            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:283:2: () ( (lv_annotations_1_0= ruleXAnnotation ) )* ( (lv_name_2_0= RULE_FEATURE_TEXT ) ) ( (lv_description_3_0= RULE_TEXT ) )? ( (lv_background_4_0= ruleBackground ) )? ( (lv_members_5_0= ruleScenario ) )*
+            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:283:1: ( () ( (lv_annotations_1_0= ruleXAnnotation ) )* ( (lv_name_2_0= RULE_FEATURE_TEXT ) ) ( (lv_description_3_0= RULE_TEXT ) )? ( (lv_members_4_0= ruleBackground ) )? ( (lv_members_5_0= ruleScenario ) )* )
+            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:283:2: () ( (lv_annotations_1_0= ruleXAnnotation ) )* ( (lv_name_2_0= RULE_FEATURE_TEXT ) ) ( (lv_description_3_0= RULE_TEXT ) )? ( (lv_members_4_0= ruleBackground ) )? ( (lv_members_5_0= ruleScenario ) )*
             {
             // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:283:2: ()
             // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:284:5: 
@@ -965,7 +965,7 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:343:3: ( (lv_background_4_0= ruleBackground ) )?
+            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:343:3: ( (lv_members_4_0= ruleBackground ) )?
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -974,18 +974,18 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
             }
             switch (alt9) {
                 case 1 :
-                    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:344:1: (lv_background_4_0= ruleBackground )
+                    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:344:1: (lv_members_4_0= ruleBackground )
                     {
-                    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:344:1: (lv_background_4_0= ruleBackground )
-                    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:345:3: lv_background_4_0= ruleBackground
+                    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:344:1: (lv_members_4_0= ruleBackground )
+                    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:345:3: lv_members_4_0= ruleBackground
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getFeatureAccess().getBackgroundBackgroundParserRuleCall_4_0()); 
+                      	        newCompositeNode(grammarAccess.getFeatureAccess().getMembersBackgroundParserRuleCall_4_0()); 
                       	    
                     }
                     pushFollow(FollowSets000.FOLLOW_ruleBackground_in_ruleFeature635);
-                    lv_background_4_0=ruleBackground();
+                    lv_members_4_0=ruleBackground();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -994,10 +994,10 @@ public class InternalFeatureParser extends AbstractInternalAntlrParser {
                       	        if (current==null) {
                       	            current = createModelElementForParent(grammarAccess.getFeatureRule());
                       	        }
-                             		set(
+                             		add(
                              			current, 
-                             			"background",
-                              		lv_background_4_0, 
+                             			"members",
+                              		lv_members_4_0, 
                               		"Background");
                       	        afterParserOrEnumRuleCall();
                       	    

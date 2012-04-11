@@ -153,22 +153,13 @@ public interface FeaturePackage extends EPackage
 	int FEATURE__DESCRIPTION = XtendPackage.XTEND_CLASS_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Background</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FEATURE__BACKGROUND = XtendPackage.XTEND_CLASS_FEATURE_COUNT + 1;
-
-	/**
 	 * The number of structural features of the '<em>Feature</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE_FEATURE_COUNT = XtendPackage.XTEND_CLASS_FEATURE_COUNT + 2;
+	int FEATURE_FEATURE_COUNT = XtendPackage.XTEND_CLASS_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.feature.feature.impl.BackgroundImpl <em>Background</em>}' class.
@@ -181,13 +172,31 @@ public interface FeaturePackage extends EPackage
 	int BACKGROUND = 1;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BACKGROUND__ANNOTATIONS = XtendPackage.XTEND_MEMBER__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BACKGROUND__ANNOTATION_INFO = XtendPackage.XTEND_MEMBER__ANNOTATION_INFO;
+
+	/**
 	 * The feature id for the '<em><b>Steps</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BACKGROUND__STEPS = 0;
+	int BACKGROUND__STEPS = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Members</b></em>' containment reference list.
@@ -196,7 +205,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int BACKGROUND__MEMBERS = 1;
+	int BACKGROUND__MEMBERS = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Background</em>' class.
@@ -205,7 +214,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int BACKGROUND_FEATURE_COUNT = 2;
+	int BACKGROUND_FEATURE_COUNT = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.feature.feature.impl.ScenarioImpl <em>Scenario</em>}' class.
@@ -1071,17 +1080,6 @@ public interface FeaturePackage extends EPackage
 	EAttribute getFeature_Description();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.jnario.feature.feature.Feature#getBackground <em>Background</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Background</em>'.
-	 * @see org.jnario.feature.feature.Feature#getBackground()
-	 * @see #getFeature()
-	 * @generated
-	 */
-	EReference getFeature_Background();
-
-	/**
 	 * Returns the meta object for class '{@link org.jnario.feature.feature.Background <em>Background</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1393,14 +1391,6 @@ public interface FeaturePackage extends EPackage
 		 * @generated
 		 */
 		EAttribute FEATURE__DESCRIPTION = eINSTANCE.getFeature_Description();
-
-		/**
-		 * The meta object literal for the '<em><b>Background</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference FEATURE__BACKGROUND = eINSTANCE.getFeature_Background();
 
 		/**
 		 * The meta object literal for the '{@link org.jnario.feature.feature.impl.BackgroundImpl <em>Background</em>}' class.

@@ -242,16 +242,6 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getFeature_Background()
-	{
-		return (EReference)featureEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getBackground()
 	{
 		return backgroundEClass;
@@ -539,7 +529,6 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 		// Create classes and their features
 		featureEClass = createEClass(FEATURE);
 		createEAttribute(featureEClass, FEATURE__DESCRIPTION);
-		createEReference(featureEClass, FEATURE__BACKGROUND);
 
 		backgroundEClass = createEClass(BACKGROUND);
 		createEReference(backgroundEClass, BACKGROUND__STEPS);
@@ -618,6 +607,7 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 
 		// Add supertypes to classes
 		featureEClass.getESuperTypes().add(theXtendPackage.getXtendClass());
+		backgroundEClass.getESuperTypes().add(theXtendPackage.getXtendMember());
 		scenarioEClass.getESuperTypes().add(theXtendPackage.getXtendMember());
 		stepEClass.getESuperTypes().add(theXtendPackage.getXtendMember());
 		givenEClass.getESuperTypes().add(this.getStep());
@@ -634,7 +624,6 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 		// Initialize classes and features; add operations and parameters
 		initEClass(featureEClass, Feature.class, "Feature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFeature_Description(), ecorePackage.getEString(), "description", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFeature_Background(), this.getBackground(), null, "background", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(backgroundEClass, Background.class, "Background", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBackground_Steps(), theXtendPackage.getXtendMember(), null, "steps", null, 0, -1, Background.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

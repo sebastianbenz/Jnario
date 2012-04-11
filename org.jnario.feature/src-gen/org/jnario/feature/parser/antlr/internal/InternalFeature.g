@@ -343,16 +343,16 @@ ruleFeature returns [EObject current=null]
 )?(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFeatureAccess().getBackgroundBackgroundParserRuleCall_4_0()); 
+	        newCompositeNode(grammarAccess.getFeatureAccess().getMembersBackgroundParserRuleCall_4_0()); 
 	    }
-		lv_background_4_0=ruleBackground		{
+		lv_members_4_0=ruleBackground		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFeatureRule());
 	        }
-       		set(
+       		add(
        			$current, 
-       			"background",
-        		lv_background_4_0, 
+       			"members",
+        		lv_members_4_0, 
         		"Background");
 	        afterParserOrEnumRuleCall();
 	    }

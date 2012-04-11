@@ -7,8 +7,6 @@ package org.jnario.feature.feature;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.xtend.core.xtend.XtendMember;
 
 /**
@@ -28,7 +26,7 @@ import org.eclipse.xtend.core.xtend.XtendMember;
  * @model
  * @generated
  */
-public interface Background extends EObject
+public interface Background extends XtendMember
 {
 	/**
 	 * Returns the value of the '<em><b>Steps</b></em>' containment reference list.
