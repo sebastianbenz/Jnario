@@ -50,15 +50,15 @@ describe "Jnario Features - Tutorial"{
    */
    describe "How to write a Feature"{
      /*
-     * A feature consists of the name of the feature and a number of scenarios. Those scenarios
-     * are examples for the behavior that is expected from the feature. For the calculator those
-     * could be scenarios like addition or subtraction.
+     * A feature consists of the name of the feature, it's narrative and a number of scenarios. Those scenarios
+     * are examples for the behavior expected from the feature. For the calculator possible
+     * scenarios are addition or subtraction.
      * 
      * Each scenario is defined by the steps that describe the expected behavior. **Given** steps give
      * all the necessary information about the context of the scenario. **When** describes the action
      * and **Then** describes the expected outcome that will be verified.
      * 
-     * Necessary keywords for describing a feature are **Feature**, **Scenario**, **Given**, **When**, **Then**. The names
+     * Necessary keywords for describing a feature are **Feature:**, **Scenario:**, **Given**, **When**, **Then**. The names
      * and the step descriptions are free text. You can define multiple steps with the same keyword.
      * If you don't want to repeat **Given** over and over again you can use the keyword **And** in exchange.
      * 
@@ -78,15 +78,15 @@ describe "Jnario Features - Tutorial"{
         Scenario: Dividing two numbers
       
           Given a calculator
-          When I enter the number 70
-          And I enter the number 10
+          When I enter the number "70"
+          And I enter the number "10"
           And I press divide
-          Then it should show 7
+          Then it should show "7"
         '''.executesSuccessfully
        }
        
      /*
-        * After defining a scenario with its steps to be able to execute it the necessary code has
+        * After defining a scenario with its steps, to be able to execute it the necessary code has
         * to be added to steps. For each step the implementation is done directly after the description
         * of the step. The language used to define the logic is [Xtend](http://www.eclipse.org/xtend/documentation/index.html#fields).
         * 
@@ -134,8 +134,8 @@ describe "Jnario Features - Tutorial"{
          Calculator calculator
          Given a calculator
            calculator = new Calculator
-         When I enter two numbers and press add
-           var result = calculator.add(20,70)
+         When I add two numbers "20" and "70"
+           var result =  calculator.add(args.first.toInt, args.second.toInt)
          '''.executesSuccessfully
        }
        
@@ -161,10 +161,10 @@ describe "Jnario Features - Tutorial"{
          int result
          Given a calculator
            calculator = new Calculator
-         When I enter two numbers and press add
-           result = calculator.add(20,70)
-         Then it should show the expected result
-           result => 90
+         When I add two numbers "20" and "70"
+           result = calculator.add(args.first.toInt, args.second.toInt)
+         Then it prints "90"
+           result => args.first.toInt
          '''.executesSuccessfully
        }
        
@@ -189,10 +189,10 @@ describe "Jnario Features - Tutorial"{
        
        Scenario: Adding two numbers
          int result
-         When I enter two numbers and press add
+         When I add two numbers "20" and "70".
            result = calculator.add(20,70)
-         Then it should show the expected result
-           result => 90
+         Then it prints "90"
+           result => args.first.toInt
          
        Scenario: Dividing two numbers
         When I enter the number 70
@@ -209,7 +209,7 @@ describe "Jnario Features - Tutorial"{
        * by the scenario steps. Each scenario will be executed separately for each row in the table.
        * 
        * The header of the example table serves as field declaration of the header names. The
-       * type is derived from the common super type of a column.
+       * type is derived from the common super type of all cells in a column.
        * 
        * @filter('''|.executesSuccessfully)
        * @lang(feature)
@@ -226,16 +226,16 @@ describe "Jnario Features - Tutorial"{
          int result
          Given a calculator
            calculator = new Calculator
-         When I enter two numbers and press add
-           result = calculator.add(a,b)
-         Then it should show the expected result
+         When adding two numbers a and b. 
+           result = calculator.add(a, b)
+         Then it returns the result
            result => expectedResult
            
-         Examples: Possible addition values
-         | a    | b    | expectedResult  |
-         | 0    | 0    | 0          |
-         | 21  | 21  | 42        |
-         | -3  | -5  | -8        |
+         Examples: additions
+         |  a  |  b  | result |
+         |  0  |  0  |   0    |
+         | 21  | 21  |  42    |
+         | -3  | -5  |  -8    |
          '''.executesSuccessfully
        }
        
@@ -266,25 +266,25 @@ describe "Jnario Features - Tutorial"{
        
        Scenario: Adding two numbers
          int result
-         When I enter two numbers and press add
-           result = calculator.add(a,b)
-         Then it should show the expected result
-           result => expected_result
+         When adding two numbers a and b. 
+           result = calculator.add(a, b)
+         Then it returns the result
+           result => result
            
          Examples:
-         | a    | b    | expected_result  |
-         | 0    | 0    | 0          |
-         | -3  | -5  | -8        |
+         |  a  |  b  | result |
+         |  0  |  0  |   0    |
+         | -3  | -5  |  -8    |
          
        Scenario: Dividing two numbers
          double result
-        When I enter two numbers and press divide
+        When entering two numbers a and b and pressing enter. 
           result = calculator.divide(a,b)
-        Then it should show the expected result
+        Then it returns the result.
         
         Examples:
-        | a    | b    | expected_result  |
-        | 8    | 1    | 8                |
+        |  a  |  b  | result |
+        |  8  |  1  |   8    |
          '''.executesSuccessfully
        }
    }   

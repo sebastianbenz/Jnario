@@ -172,7 +172,7 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
       String _plus_1 = (_plus + ")");
       String _replaceFirst = result.replaceFirst(_plus_1, "**$1**");
       result = _replaceFirst;
-      String _replaceAll = result.replaceAll("\"(.*)\"", "<code>$1</code>");
+      String _replaceAll = result.replaceAll("\"(.*?)\"", "<code>$1</code>");
       result = _replaceAll;
       String _markdown2Html = this.markdown2Html(result);
       _xblockexpression = (_markdown2Html);

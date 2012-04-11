@@ -72,7 +72,7 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 	def format(Step step){
 		var result = step.nameOf
 		result = result.replaceFirst("(" + result.firstWord + ")", "**$1**")
-		result = result.replaceAll("\"(.*)\"", "<code>$1</code>")
+		result = result.replaceAll("\"(.*?)\"", "<code>$1</code>")
 		result.markdown2Html
 	}
 
