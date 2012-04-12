@@ -28,39 +28,36 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<p>@author Birgit Engelmann - Initial contribution and API</p>
-<ul><li><p id="returns_an_error_if_a_step_definition_and_a_reference_to_this_step_are_in_the_same_scenario">
-<strong>returns an error if a step definition and a reference to this step are in the same scenario</strong>
-<pre class="prettyprint lang-spec">
-modelStore.parseScenario('
-	package bootstrap
-
-	Feature: Validation
-		Scenario: step definition and usage
-			Given some step
-				var x = 3
-				x = 5
-			Given some step
-')
-val validationResult = validate(typeof(GivenReference))
-validationResult.assertErrorContains("Cannot reference a step");</pre>
+<p>@author Sebastian Benz - Initial contribution and API</p>
+<h3 id="Features_must_have_descriptions">Features must have descriptions</h3>
+<p></p>
+<ul><li><p id="________Feature__________select_typeof_Feature___assertErrorContains__description__">
+<strong>'''
+; 			Feature: 
+; 		'''.select[typeof[Feature]].assertErrorContains["description"]</strong>
 </p>
-</li><li><p id="does_not_return_an_error_if_a_step_definition_was_in_a_different_scenario_than_the_reference">
-<strong>does not return an error if a step definition was in a different scenario than the reference</strong>
-<pre class="prettyprint lang-spec">
-modelStore.parseScenario('
-	package bootstrap
-
-	Feature: Validation
-		Scenario: step definition and usage
-			Given some step
-				var x = 3
-				x = 5
-		Scenario: other scenario
-			Given some step
-')
-val validationResult = validate(typeof(GivenReference))
-validationResult.assertOK();</pre>
+</li></ul>
+<h3 id="Scenarios_must_have_descriptions">Scenarios must have descriptions</h3>
+<p></p>
+<ul><li><p id="________Feature__A_Feature______Scenario_______________select_typeof_Scenario___assertErrorContains__description__">
+<strong>'''
+; 			Feature: A Feature
+; 				Scenario:
+; 				
+; 		'''.select[typeof[Scenario]].assertErrorContains["description"]</strong>
+</p>
+</li></ul>
+<h3 id="Steps_must_have_descriptions">Steps must have descriptions</h3>
+<p></p>
+<ul><li><p id="________Feature__A_feature______Scenario__A_scenario________Given_________When_________Then_________________allOf_typeof_Step___assertErrorContains__description___">
+<strong>'''
+; 			Feature: A feature
+; 				Scenario: A scenario
+; 				 	Given 
+; 				 	When 
+; 				 	Then 
+; 				 	
+; 		'''.allOf[typeof[Step]][assertErrorContains["description"]]</strong>
 </p>
 </li></ul>
 				</div>
