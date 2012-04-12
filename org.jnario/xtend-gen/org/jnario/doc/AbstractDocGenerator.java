@@ -21,6 +21,7 @@ import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
@@ -68,15 +69,39 @@ public class AbstractDocGenerator implements IGenerator {
   }
   
   public String convertToText(final String string) {
-    String _convertFromJavaString = Strings.convertFromJavaString(string, true);
-    return _convertFromJavaString;
+    String _xtrycatchfinallyexpression = null;
+    try {
+      String _convertFromJavaString = Strings.convertFromJavaString(string, true);
+      _xtrycatchfinallyexpression = _convertFromJavaString;
+    } catch (final Throwable _t) {
+      if (_t instanceof IllegalArgumentException) {
+        final IllegalArgumentException e = (IllegalArgumentException)_t;
+        String _xblockexpression = null;
+        {
+          e.printStackTrace();
+          _xblockexpression = (string);
+        }
+        _xtrycatchfinallyexpression = _xblockexpression;
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
+    return _xtrycatchfinallyexpression;
   }
   
   public String markdown2Html(final String string) {
-    String _markdownToHtml = this._pegDownProcessor.markdownToHtml(string);
-    String _replaceAll = _markdownToHtml.replaceAll("<pre><code>", "<pre class=\"prettyprint\">");
-    String _replaceAll_1 = _replaceAll.replaceAll("</pre></code>", "</pre>");
-    return _replaceAll_1;
+    String _xblockexpression = null;
+    {
+      boolean _equals = Objects.equal(string, null);
+      if (_equals) {
+        return "";
+      }
+      String _markdownToHtml = this._pegDownProcessor.markdownToHtml(string);
+      String _replaceAll = _markdownToHtml.replaceAll("<pre><code>", "<pre class=\"prettyprint\">");
+      String _replaceAll_1 = _replaceAll.replaceAll("</pre></code>", "</pre>");
+      _xblockexpression = (_replaceAll_1);
+    }
+    return _xblockexpression;
   }
   
   protected String _toXtendCode(final XExpression expr, final List<Filter> filters) {

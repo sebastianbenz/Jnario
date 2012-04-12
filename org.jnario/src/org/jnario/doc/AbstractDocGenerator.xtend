@@ -47,10 +47,18 @@ class AbstractDocGenerator implements IGenerator {
 	}
 	
 	def convertToText(String string){
-		string.convertFromJavaString(true)
+		try{
+			string.convertFromJavaString(true)
+		}catch(java.lang.IllegalArgumentException e){
+			e.printStackTrace
+			string
+		}
 	}
 	
 	def markdown2Html(String string){
+		if(string == null){
+			return ""
+		}
 		string.markdownToHtml
 				.replaceAll("<pre><code>", '<pre class="prettyprint">')
 				.replaceAll("</pre></code>", '</pre>')
