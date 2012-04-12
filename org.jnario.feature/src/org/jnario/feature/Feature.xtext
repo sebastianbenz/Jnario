@@ -41,8 +41,8 @@ Feature returns xtend::XtendClass:
 	
 	name=FEATURE_TEXT
 	description=TEXT?
-	members+=Background?
-	members+=Scenario*;
+	background=Background?
+	scenarios+=Scenario*;
 
 XAnnotation returns xannotations::XAnnotation:
 	{xannotations::XAnnotation}
@@ -60,7 +60,7 @@ Background:
 	members+=Member*
 	steps+=(Given|GivenReference)*;
 
-Scenario returns xtend::XtendMember:
+Scenario :
 	{Scenario}
 	name=SCENARIO_TEXT
 	members+=Member*

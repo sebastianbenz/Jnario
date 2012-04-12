@@ -18473,22 +18473,22 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Feature__Group__4__Impl"
-    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5374:1: rule__Feature__Group__4__Impl : ( ( rule__Feature__MembersAssignment_4 )? ) ;
+    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5374:1: rule__Feature__Group__4__Impl : ( ( rule__Feature__BackgroundAssignment_4 )? ) ;
     public final void rule__Feature__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5378:1: ( ( ( rule__Feature__MembersAssignment_4 )? ) )
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5379:1: ( ( rule__Feature__MembersAssignment_4 )? )
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5378:1: ( ( ( rule__Feature__BackgroundAssignment_4 )? ) )
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5379:1: ( ( rule__Feature__BackgroundAssignment_4 )? )
             {
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5379:1: ( ( rule__Feature__MembersAssignment_4 )? )
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5380:1: ( rule__Feature__MembersAssignment_4 )?
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5379:1: ( ( rule__Feature__BackgroundAssignment_4 )? )
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5380:1: ( rule__Feature__BackgroundAssignment_4 )?
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFeatureAccess().getMembersAssignment_4()); 
+               before(grammarAccess.getFeatureAccess().getBackgroundAssignment_4()); 
             }
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5381:1: ( rule__Feature__MembersAssignment_4 )?
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5381:1: ( rule__Feature__BackgroundAssignment_4 )?
             int alt71=2;
             int LA71_0 = input.LA(1);
 
@@ -18497,10 +18497,10 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
             }
             switch (alt71) {
                 case 1 :
-                    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5381:2: rule__Feature__MembersAssignment_4
+                    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5381:2: rule__Feature__BackgroundAssignment_4
                     {
-                    pushFollow(FollowSets000.FOLLOW_rule__Feature__MembersAssignment_4_in_rule__Feature__Group__4__Impl11654);
-                    rule__Feature__MembersAssignment_4();
+                    pushFollow(FollowSets000.FOLLOW_rule__Feature__BackgroundAssignment_4_in_rule__Feature__Group__4__Impl11654);
+                    rule__Feature__BackgroundAssignment_4();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -18511,7 +18511,7 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFeatureAccess().getMembersAssignment_4()); 
+               after(grammarAccess.getFeatureAccess().getBackgroundAssignment_4()); 
             }
 
             }
@@ -18568,22 +18568,22 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Feature__Group__5__Impl"
-    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5402:1: rule__Feature__Group__5__Impl : ( ( rule__Feature__MembersAssignment_5 )* ) ;
+    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5402:1: rule__Feature__Group__5__Impl : ( ( rule__Feature__ScenariosAssignment_5 )* ) ;
     public final void rule__Feature__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5406:1: ( ( ( rule__Feature__MembersAssignment_5 )* ) )
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5407:1: ( ( rule__Feature__MembersAssignment_5 )* )
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5406:1: ( ( ( rule__Feature__ScenariosAssignment_5 )* ) )
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5407:1: ( ( rule__Feature__ScenariosAssignment_5 )* )
             {
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5407:1: ( ( rule__Feature__MembersAssignment_5 )* )
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5408:1: ( rule__Feature__MembersAssignment_5 )*
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5407:1: ( ( rule__Feature__ScenariosAssignment_5 )* )
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5408:1: ( rule__Feature__ScenariosAssignment_5 )*
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFeatureAccess().getMembersAssignment_5()); 
+               before(grammarAccess.getFeatureAccess().getScenariosAssignment_5()); 
             }
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5409:1: ( rule__Feature__MembersAssignment_5 )*
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5409:1: ( rule__Feature__ScenariosAssignment_5 )*
             loop72:
             do {
                 int alt72=2;
@@ -18596,10 +18596,10 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
 
                 switch (alt72) {
             	case 1 :
-            	    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5409:2: rule__Feature__MembersAssignment_5
+            	    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:5409:2: rule__Feature__ScenariosAssignment_5
             	    {
-            	    pushFollow(FollowSets000.FOLLOW_rule__Feature__MembersAssignment_5_in_rule__Feature__Group__5__Impl11712);
-            	    rule__Feature__MembersAssignment_5();
+            	    pushFollow(FollowSets000.FOLLOW_rule__Feature__ScenariosAssignment_5_in_rule__Feature__Group__5__Impl11712);
+            	    rule__Feature__ScenariosAssignment_5();
 
             	    state._fsp--;
             	    if (state.failed) return ;
@@ -18613,7 +18613,7 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
             } while (true);
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFeatureAccess().getMembersAssignment_5()); 
+               after(grammarAccess.getFeatureAccess().getScenariosAssignment_5()); 
             }
 
             }
@@ -72096,9 +72096,9 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Feature__DescriptionAssignment_3"
 
 
-    // $ANTLR start "rule__Feature__MembersAssignment_4"
-    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:24702:1: rule__Feature__MembersAssignment_4 : ( ruleBackground ) ;
-    public final void rule__Feature__MembersAssignment_4() throws RecognitionException {
+    // $ANTLR start "rule__Feature__BackgroundAssignment_4"
+    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:24702:1: rule__Feature__BackgroundAssignment_4 : ( ruleBackground ) ;
+    public final void rule__Feature__BackgroundAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -72110,15 +72110,15 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
             // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:24708:1: ruleBackground
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFeatureAccess().getMembersBackgroundParserRuleCall_4_0()); 
+               before(grammarAccess.getFeatureAccess().getBackgroundBackgroundParserRuleCall_4_0()); 
             }
-            pushFollow(FollowSets002.FOLLOW_ruleBackground_in_rule__Feature__MembersAssignment_449723);
+            pushFollow(FollowSets002.FOLLOW_ruleBackground_in_rule__Feature__BackgroundAssignment_449723);
             ruleBackground();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFeatureAccess().getMembersBackgroundParserRuleCall_4_0()); 
+               after(grammarAccess.getFeatureAccess().getBackgroundBackgroundParserRuleCall_4_0()); 
             }
 
             }
@@ -72138,12 +72138,12 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Feature__MembersAssignment_4"
+    // $ANTLR end "rule__Feature__BackgroundAssignment_4"
 
 
-    // $ANTLR start "rule__Feature__MembersAssignment_5"
-    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:24717:1: rule__Feature__MembersAssignment_5 : ( ruleScenario ) ;
-    public final void rule__Feature__MembersAssignment_5() throws RecognitionException {
+    // $ANTLR start "rule__Feature__ScenariosAssignment_5"
+    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:24717:1: rule__Feature__ScenariosAssignment_5 : ( ruleScenario ) ;
+    public final void rule__Feature__ScenariosAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -72155,15 +72155,15 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
             // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:24723:1: ruleScenario
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFeatureAccess().getMembersScenarioParserRuleCall_5_0()); 
+               before(grammarAccess.getFeatureAccess().getScenariosScenarioParserRuleCall_5_0()); 
             }
-            pushFollow(FollowSets002.FOLLOW_ruleScenario_in_rule__Feature__MembersAssignment_549754);
+            pushFollow(FollowSets002.FOLLOW_ruleScenario_in_rule__Feature__ScenariosAssignment_549754);
             ruleScenario();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFeatureAccess().getMembersScenarioParserRuleCall_5_0()); 
+               after(grammarAccess.getFeatureAccess().getScenariosScenarioParserRuleCall_5_0()); 
             }
 
             }
@@ -72183,7 +72183,7 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Feature__MembersAssignment_5"
+    // $ANTLR end "rule__Feature__ScenariosAssignment_5"
 
 
     // $ANTLR start "rule__XAnnotation__AnnotationTypeAssignment_2"
@@ -88585,9 +88585,9 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
         public static final BitSet FOLLOW_rule__Feature__DescriptionAssignment_3_in_rule__Feature__Group__3__Impl11593 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__Feature__Group__4__Impl_in_rule__Feature__Group__411624 = new BitSet(new long[]{0x0000000000006400L});
         public static final BitSet FOLLOW_rule__Feature__Group__5_in_rule__Feature__Group__411627 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Feature__MembersAssignment_4_in_rule__Feature__Group__4__Impl11654 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Feature__BackgroundAssignment_4_in_rule__Feature__Group__4__Impl11654 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__Feature__Group__5__Impl_in_rule__Feature__Group__511685 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Feature__MembersAssignment_5_in_rule__Feature__Group__5__Impl11712 = new BitSet(new long[]{0x0000000000004002L});
+        public static final BitSet FOLLOW_rule__Feature__ScenariosAssignment_5_in_rule__Feature__Group__5__Impl11712 = new BitSet(new long[]{0x0000000000004002L});
         public static final BitSet FOLLOW_rule__XAnnotation__Group__0__Impl_in_rule__XAnnotation__Group__011755 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
         public static final BitSet FOLLOW_rule__XAnnotation__Group__1_in_rule__XAnnotation__Group__011758 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__XAnnotation__Group__1__Impl_in_rule__XAnnotation__Group__111816 = new BitSet(new long[]{0x0000800000000040L});
@@ -90140,8 +90140,8 @@ public class InternalFeatureParser extends AbstractInternalContentAssistParser {
         public static final BitSet FOLLOW_ruleXAnnotation_in_rule__Feature__AnnotationsAssignment_149630 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_RULE_FEATURE_TEXT_in_rule__Feature__NameAssignment_249661 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_RULE_TEXT_in_rule__Feature__DescriptionAssignment_349692 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleBackground_in_rule__Feature__MembersAssignment_449723 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleScenario_in_rule__Feature__MembersAssignment_549754 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleBackground_in_rule__Feature__BackgroundAssignment_449723 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleScenario_in_rule__Feature__ScenariosAssignment_549754 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleQualifiedName_in_rule__XAnnotation__AnnotationTypeAssignment_249789 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleXAnnotationElementValuePair_in_rule__XAnnotation__ElementValuePairsAssignment_3_1_0_049824 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleXAnnotationElementValuePair_in_rule__XAnnotation__ElementValuePairsAssignment_3_1_0_1_149855 = new BitSet(new long[]{0x0000000000000002L});

@@ -1629,7 +1629,7 @@ public class AbstractFeatureSemanticSequencer extends AbstractSemanticSequencer 
 	
 	/**
 	 * Constraint:
-	 *     (annotations+=XAnnotation* name=FEATURE_TEXT description=TEXT? members+=Background? members+=Scenario*)
+	 *     (annotations+=XAnnotation* name=FEATURE_TEXT description=TEXT? background=Background? scenarios+=Scenario*)
 	 */
 	protected void sequence_Feature(EObject context, Feature semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

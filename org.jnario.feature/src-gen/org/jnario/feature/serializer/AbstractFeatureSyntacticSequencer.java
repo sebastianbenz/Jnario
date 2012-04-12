@@ -170,7 +170,7 @@ public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequence
 	
 	/**
 	 * Syntax:
-	 *     PIPE_SPACES | PIPE
+	 *     PIPE | PIPE_SPACES
 	 */
 	protected void emit_ExampleRow_PIPETerminalRuleCall_0_0_0_or_PIPE_SPACESTerminalRuleCall_0_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -274,7 +274,7 @@ public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequence
 	
 	/**
 	 * Syntax:
-	 *     (('should' | 'must') 'throw') | 'throws'
+	 *     'throws' | (('must' | 'should') 'throw')
 	 */
 	protected void emit_XRelationalExpression_ThrowsKeyword_1_1_0_0_1_1_or_____MustKeyword_1_1_0_0_1_0_0_1_or_ShouldKeyword_1_1_0_0_1_0_0_0___ThrowKeyword_1_1_0_0_1_0_1__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

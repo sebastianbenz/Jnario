@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.xtend.core.xtend.XtendMember;
 
-import org.eclipse.xtend.core.xtend.impl.XtendMemberImplCustom;
+import org.eclipse.xtend.core.xtend.impl.XtendClassImplCustom;
 
 import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.FeaturePackage;
@@ -32,13 +32,12 @@ import org.jnario.feature.feature.FeaturePackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.jnario.feature.feature.impl.BackgroundImpl#getSteps <em>Steps</em>}</li>
- *   <li>{@link org.jnario.feature.feature.impl.BackgroundImpl#getMembers <em>Members</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class BackgroundImpl extends XtendMemberImplCustom implements Background
+public class BackgroundImpl extends XtendClassImplCustom implements Background
 {
 	/**
 	 * The cached value of the '{@link #getSteps() <em>Steps</em>}' containment reference list.
@@ -49,16 +48,6 @@ public class BackgroundImpl extends XtendMemberImplCustom implements Background
 	 * @ordered
 	 */
 	protected EList<XtendMember> steps;
-
-	/**
-	 * The cached value of the '{@link #getMembers() <em>Members</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMembers()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<XtendMember> members;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -100,20 +89,6 @@ public class BackgroundImpl extends XtendMemberImplCustom implements Background
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<XtendMember> getMembers()
-	{
-		if (members == null)
-		{
-			members = new EObjectContainmentEList<XtendMember>(XtendMember.class, this, FeaturePackage.BACKGROUND__MEMBERS);
-		}
-		return members;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
 	{
@@ -121,8 +96,6 @@ public class BackgroundImpl extends XtendMemberImplCustom implements Background
 		{
 			case FeaturePackage.BACKGROUND__STEPS:
 				return ((InternalEList<?>)getSteps()).basicRemove(otherEnd, msgs);
-			case FeaturePackage.BACKGROUND__MEMBERS:
-				return ((InternalEList<?>)getMembers()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -139,8 +112,6 @@ public class BackgroundImpl extends XtendMemberImplCustom implements Background
 		{
 			case FeaturePackage.BACKGROUND__STEPS:
 				return getSteps();
-			case FeaturePackage.BACKGROUND__MEMBERS:
-				return getMembers();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -160,10 +131,6 @@ public class BackgroundImpl extends XtendMemberImplCustom implements Background
 				getSteps().clear();
 				getSteps().addAll((Collection<? extends XtendMember>)newValue);
 				return;
-			case FeaturePackage.BACKGROUND__MEMBERS:
-				getMembers().clear();
-				getMembers().addAll((Collection<? extends XtendMember>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -181,9 +148,6 @@ public class BackgroundImpl extends XtendMemberImplCustom implements Background
 			case FeaturePackage.BACKGROUND__STEPS:
 				getSteps().clear();
 				return;
-			case FeaturePackage.BACKGROUND__MEMBERS:
-				getMembers().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -200,8 +164,6 @@ public class BackgroundImpl extends XtendMemberImplCustom implements Background
 		{
 			case FeaturePackage.BACKGROUND__STEPS:
 				return steps != null && !steps.isEmpty();
-			case FeaturePackage.BACKGROUND__MEMBERS:
-				return members != null && !members.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

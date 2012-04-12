@@ -344,8 +344,8 @@ public class FeatureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFeatureAccess().getAnnotationsAssignment_1(), "rule__Feature__AnnotationsAssignment_1");
 					put(grammarAccess.getFeatureAccess().getNameAssignment_2(), "rule__Feature__NameAssignment_2");
 					put(grammarAccess.getFeatureAccess().getDescriptionAssignment_3(), "rule__Feature__DescriptionAssignment_3");
-					put(grammarAccess.getFeatureAccess().getMembersAssignment_4(), "rule__Feature__MembersAssignment_4");
-					put(grammarAccess.getFeatureAccess().getMembersAssignment_5(), "rule__Feature__MembersAssignment_5");
+					put(grammarAccess.getFeatureAccess().getBackgroundAssignment_4(), "rule__Feature__BackgroundAssignment_4");
+					put(grammarAccess.getFeatureAccess().getScenariosAssignment_5(), "rule__Feature__ScenariosAssignment_5");
 					put(grammarAccess.getXAnnotationAccess().getAnnotationTypeAssignment_2(), "rule__XAnnotation__AnnotationTypeAssignment_2");
 					put(grammarAccess.getXAnnotationAccess().getElementValuePairsAssignment_3_1_0_0(), "rule__XAnnotation__ElementValuePairsAssignment_3_1_0_0");
 					put(grammarAccess.getXAnnotationAccess().getElementValuePairsAssignment_3_1_0_1_1(), "rule__XAnnotation__ElementValuePairsAssignment_3_1_0_1_1");

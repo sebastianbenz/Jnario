@@ -45,6 +45,8 @@ import org.jnario.spec.spec.SpecFile
 import org.jnario.spec.spec.TestFunction
 
 import static extension org.eclipse.xtext.util.Strings.*
+import org.eclipse.xtend.core.xtend.XtendClass
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -63,6 +65,8 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 	
 	@Inject extension IJvmModelAssociations 
 	
+	@Inject extension IJvmModelAssociator 
+	
 	override infer(EObject e, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
 		if(!checkClassPath(e, annotationProvider)){
 			return
@@ -78,6 +82,13 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 		//addListLiterals(e)
 		transform(specFile as SpecFile, specFile.xtendClass as ExampleGroup, null, preIndexingPhase)
 	}
+	
+	
+	
+	def register(IJvmDeclaredTypeAcceptor acceptor, XtendClass source, JvmGenericType inferredJvmType){
+   		associatePrimary(source, inferredJvmType); 
+		acceptor.accept(inferredJvmType).initializeLater[initialize(source, inferredJvmType)] 
+   	}
 	
 	def addListLiterals(EObject context){
 		val literals = context.eAllContents.filter(typeof(CollectionLiteral))
@@ -100,52 +111,52 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 	
 	def transform(SpecFile spec, ExampleGroup exampleGroup, JvmGenericType superClass, boolean isPrelinkingPhase) {
 		exampleGroup.toClass(exampleGroup.toJavaClassName) [
-				configureWith(exampleGroup, spec, superClass)
+			configureWith(exampleGroup, spec, superClass)
 
-				if(isPrelinkingPhase){
-					return
-				}
-				
-				addAnnotations(exampleGroup)
-				addFields(exampleGroup)
-				exampleGroup.addDefaultConstructor(it);
-								
-				var index = 0
-				val List<JvmGenericType> subExamples = newArrayList()
-				for (element : exampleGroup.members) {
-					switch element {
-						ExampleGroup: {
-							subExamples += transform(spec, element, it, isPrelinkingPhase)
-						}
-						ExampleTable: {
-							transform(element, spec)
-						}
-						Example : {
-							val annotations = element.getTestAnnotations(element.pending)
-							annotations += element.toAnnotation(typeof(Named), element.describe)
-							annotations += element.toAnnotation(typeof(Order), index)
-							members += toMethod(element, annotations)
-						}
-						XtendFunction: {
-							element.transform(it)
-						}
-						Before:{
-							val annotationType = getBeforeAnnotation(element.beforeAll)
-							members += element.toMethod(annotationType, element.beforeAll)
-						}
-						After:{
-							val annotationType = getAfterAnnotation(element.afterAll)
-							members += element.toMethod(annotationType, element.afterAll)
-						}
+			if(isPrelinkingPhase){
+				return
+			}
+			
+			addAnnotations(exampleGroup)
+			addFields(exampleGroup)
+			exampleGroup.addDefaultConstructor(it);
+							
+			var index = 0
+			val List<JvmGenericType> subExamples = newArrayList()
+			for (element : exampleGroup.members) {
+				switch element {
+					ExampleGroup: {
+						subExamples += transform(spec, element, it, isPrelinkingPhase)
 					}
-					index = index + 1
+					ExampleTable: {
+						transform(element, spec)
+					}
+					Example : {
+						val annotations = element.getTestAnnotations(element.pending)
+						annotations += element.toAnnotation(typeof(Named), element.describe)
+						annotations += element.toAnnotation(typeof(Order), index)
+						members += toMethod(element, annotations)
+					}
+					XtendFunction: {
+						element.transform(it)
+					}
+					Before:{
+						val annotationType = getBeforeAnnotation(element.beforeAll)
+						members += element.toMethod(annotationType, element.beforeAll)
+					}
+					After:{
+						val annotationType = getAfterAnnotation(element.afterAll)
+						members += element.toMethod(annotationType, element.afterAll)
+					}
 				}
-				
-				if(!subExamples.empty){
-					annotations += exampleGroup.toAnnotation(typeof(Contains), subExamples);
-				}
-				computeInferredReturnTypes()
-			]
+				index = index + 1
+			}
+			
+			if(!subExamples.empty){
+				annotations += exampleGroup.toAnnotation(typeof(Contains), subExamples);
+			}
+			computeInferredReturnTypes()
+		]
 						
 	}
 	

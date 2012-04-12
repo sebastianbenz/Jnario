@@ -105,10 +105,10 @@
         <elements xsi:type="xtext:Assignment" cardinality="?" feature="description" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.38"/>
         </elements>
-        <elements xsi:type="xtext:Assignment" cardinality="?" feature="members" operator="+=">
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="background" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.4"/>
         </elements>
-        <elements xsi:type="xtext:Assignment" cardinality="*" feature="members" operator="+=">
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="scenarios" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.5"/>
         </elements>
       </alternatives>
@@ -177,8 +177,8 @@
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Scenario">
-      <type metamodel="/0/@metamodelDeclarations.2">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtend#//XtendMember"/>
+      <type metamodel="/0/@metamodelDeclarations.5">
+        <classifier xsi:type="ecore:EClass" href="http://www.org/jnario/feature/Feature#//Scenario"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Action">

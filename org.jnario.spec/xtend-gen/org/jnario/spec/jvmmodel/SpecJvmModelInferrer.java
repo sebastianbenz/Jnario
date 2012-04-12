@@ -35,7 +35,9 @@ import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
+import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor.IPostIndexingInitializing;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -88,6 +90,9 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
   @Inject
   private IJvmModelAssociations _iJvmModelAssociations;
   
+  @Inject
+  private IJvmModelAssociator _iJvmModelAssociator;
+  
   public void infer(final EObject e, final IJvmDeclaredTypeAcceptor acceptor, final boolean preIndexingPhase) {
     boolean _checkClassPath = this.checkClassPath(e, this.annotationProvider);
     boolean _not = (!_checkClassPath);
@@ -106,6 +111,17 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
     }
     XtendClass _xtendClass_1 = specFile.getXtendClass();
     this.transform(((SpecFile) specFile), ((ExampleGroup) _xtendClass_1), null, preIndexingPhase);
+  }
+  
+  public void register(final IJvmDeclaredTypeAcceptor acceptor, final XtendClass source, final JvmGenericType inferredJvmType) {
+    this._iJvmModelAssociator.associatePrimary(source, inferredJvmType);
+    IPostIndexingInitializing<JvmGenericType> _accept = acceptor.<JvmGenericType>accept(inferredJvmType);
+    final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
+        public void apply(final JvmGenericType it) {
+          SpecJvmModelInferrer.this.initialize(source, inferredJvmType);
+        }
+      };
+    _accept.initializeLater(_function);
   }
   
   public void addListLiterals(final EObject context) {

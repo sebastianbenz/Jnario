@@ -98,7 +98,9 @@ public class FeatureExecutor extends BehaviorExecutor{
 	
 	protected void generateJava(EObject object) {
 		super.generateJava(object);
-		assertFalse("has no feature", ((FeatureFile)object).getXtendClass() == null);
-		assertFalse("has no scenarios", ((FeatureFile)object).getXtendClass().getMembers().isEmpty());
+		FeatureFile featureFile = (FeatureFile)object;
+		Feature feature = (Feature) featureFile.getXtendClass();
+		assertFalse("has no feature", feature == null);
+		assertFalse("has no scenarios", feature.getScenarios().isEmpty());
 	}
 }

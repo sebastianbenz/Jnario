@@ -343,16 +343,16 @@ ruleFeature returns [EObject current=null]
 )?(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFeatureAccess().getMembersBackgroundParserRuleCall_4_0()); 
+	        newCompositeNode(grammarAccess.getFeatureAccess().getBackgroundBackgroundParserRuleCall_4_0()); 
 	    }
-		lv_members_4_0=ruleBackground		{
+		lv_background_4_0=ruleBackground		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFeatureRule());
 	        }
-       		add(
+       		set(
        			$current, 
-       			"members",
-        		lv_members_4_0, 
+       			"background",
+        		lv_background_4_0, 
         		"Background");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -361,16 +361,16 @@ ruleFeature returns [EObject current=null]
 )?(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFeatureAccess().getMembersScenarioParserRuleCall_5_0()); 
+	        newCompositeNode(grammarAccess.getFeatureAccess().getScenariosScenarioParserRuleCall_5_0()); 
 	    }
-		lv_members_5_0=ruleScenario		{
+		lv_scenarios_5_0=ruleScenario		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFeatureRule());
 	        }
        		add(
        			$current, 
-       			"members",
-        		lv_members_5_0, 
+       			"scenarios",
+        		lv_scenarios_5_0, 
         		"Scenario");
 	        afterParserOrEnumRuleCall();
 	    }

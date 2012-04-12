@@ -5377,9 +5377,9 @@ rule__Feature__Group__4__Impl
     }
 :
 (
-{ before(grammarAccess.getFeatureAccess().getMembersAssignment_4()); }
-(rule__Feature__MembersAssignment_4)?
-{ after(grammarAccess.getFeatureAccess().getMembersAssignment_4()); }
+{ before(grammarAccess.getFeatureAccess().getBackgroundAssignment_4()); }
+(rule__Feature__BackgroundAssignment_4)?
+{ after(grammarAccess.getFeatureAccess().getBackgroundAssignment_4()); }
 )
 
 ;
@@ -5405,9 +5405,9 @@ rule__Feature__Group__5__Impl
     }
 :
 (
-{ before(grammarAccess.getFeatureAccess().getMembersAssignment_5()); }
-(rule__Feature__MembersAssignment_5)*
-{ after(grammarAccess.getFeatureAccess().getMembersAssignment_5()); }
+{ before(grammarAccess.getFeatureAccess().getScenariosAssignment_5()); }
+(rule__Feature__ScenariosAssignment_5)*
+{ after(grammarAccess.getFeatureAccess().getScenariosAssignment_5()); }
 )
 
 ;
@@ -24699,14 +24699,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Feature__MembersAssignment_4
+rule__Feature__BackgroundAssignment_4
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFeatureAccess().getMembersBackgroundParserRuleCall_4_0()); }
-	ruleBackground{ after(grammarAccess.getFeatureAccess().getMembersBackgroundParserRuleCall_4_0()); }
+{ before(grammarAccess.getFeatureAccess().getBackgroundBackgroundParserRuleCall_4_0()); }
+	ruleBackground{ after(grammarAccess.getFeatureAccess().getBackgroundBackgroundParserRuleCall_4_0()); }
 )
 
 ;
@@ -24714,14 +24714,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Feature__MembersAssignment_5
+rule__Feature__ScenariosAssignment_5
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFeatureAccess().getMembersScenarioParserRuleCall_5_0()); }
-	ruleScenario{ after(grammarAccess.getFeatureAccess().getMembersScenarioParserRuleCall_5_0()); }
+{ before(grammarAccess.getFeatureAccess().getScenariosScenarioParserRuleCall_5_0()); }
+	ruleScenario{ after(grammarAccess.getFeatureAccess().getScenariosScenarioParserRuleCall_5_0()); }
 )
 
 ;

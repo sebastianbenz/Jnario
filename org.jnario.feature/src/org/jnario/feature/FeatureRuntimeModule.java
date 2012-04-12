@@ -16,7 +16,6 @@ import org.eclipse.xtend.core.resource.XtendEObjectAtOffsetHelper;
 import org.eclipse.xtend.core.resource.XtendResource;
 import org.eclipse.xtend.core.resource.XtendResourceDescriptionStrategy;
 import org.eclipse.xtend.core.scoping.XtendImportedNamespaceScopeProvider;
-import org.eclipse.xtend.core.scoping.XtendScopeProvider;
 import org.eclipse.xtend.core.validation.ClasspathBasedChecks;
 import org.eclipse.xtend.core.validation.XtendEarlyExitValidator;
 import org.eclipse.xtext.conversion.IValueConverterService;
@@ -55,6 +54,7 @@ import org.jnario.feature.linking.FeatureLinkingService;
 import org.jnario.feature.naming.FeatureIdentifiableSimpleNameProvider;
 import org.jnario.feature.naming.FeatureQualifiedNameProvider;
 import org.jnario.feature.parser.CustomFeatureParser;
+import org.jnario.feature.scoping.FeatureScopeProvider;
 import org.jnario.feature.validation.FeatureClasspathBasedChecks;
 import org.jnario.feature.validation.FeatureResourceValidator;
 import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
@@ -81,7 +81,7 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 	
 	@Override
 	public java.lang.Class<? extends IScopeProvider> bindIScopeProvider() {
-		return XtendScopeProvider.class;
+		return FeatureScopeProvider.class;
 	}
 	
 	public Class<? extends ExtensionClassNameProvider> bindExtensionClassNameProvider(){

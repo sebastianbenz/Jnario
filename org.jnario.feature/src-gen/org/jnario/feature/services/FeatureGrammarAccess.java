@@ -165,16 +165,16 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNameFEATURE_TEXTTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		private final Assignment cDescriptionAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cDescriptionTEXTTerminalRuleCall_3_0 = (RuleCall)cDescriptionAssignment_3.eContents().get(0);
-		private final Assignment cMembersAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cMembersBackgroundParserRuleCall_4_0 = (RuleCall)cMembersAssignment_4.eContents().get(0);
-		private final Assignment cMembersAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cMembersScenarioParserRuleCall_5_0 = (RuleCall)cMembersAssignment_5.eContents().get(0);
+		private final Assignment cBackgroundAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cBackgroundBackgroundParserRuleCall_4_0 = (RuleCall)cBackgroundAssignment_4.eContents().get(0);
+		private final Assignment cScenariosAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cScenariosScenarioParserRuleCall_5_0 = (RuleCall)cScenariosAssignment_5.eContents().get(0);
 		
 		//Feature returns xtend::XtendClass:
-		//	{Feature} annotations+=XAnnotation* name=FEATURE_TEXT description=TEXT? members+=Background? members+=Scenario*;
+		//	{Feature} annotations+=XAnnotation* name=FEATURE_TEXT description=TEXT? background=Background? scenarios+=Scenario*;
 		public ParserRule getRule() { return rule; }
 
-		//{Feature} annotations+=XAnnotation* name=FEATURE_TEXT description=TEXT? members+=Background? members+=Scenario*
+		//{Feature} annotations+=XAnnotation* name=FEATURE_TEXT description=TEXT? background=Background? scenarios+=Scenario*
 		public Group getGroup() { return cGroup; }
 
 		//{Feature}
@@ -198,17 +198,17 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		//TEXT
 		public RuleCall getDescriptionTEXTTerminalRuleCall_3_0() { return cDescriptionTEXTTerminalRuleCall_3_0; }
 
-		//members+=Background?
-		public Assignment getMembersAssignment_4() { return cMembersAssignment_4; }
+		//background=Background?
+		public Assignment getBackgroundAssignment_4() { return cBackgroundAssignment_4; }
 
 		//Background
-		public RuleCall getMembersBackgroundParserRuleCall_4_0() { return cMembersBackgroundParserRuleCall_4_0; }
+		public RuleCall getBackgroundBackgroundParserRuleCall_4_0() { return cBackgroundBackgroundParserRuleCall_4_0; }
 
-		//members+=Scenario*
-		public Assignment getMembersAssignment_5() { return cMembersAssignment_5; }
+		//scenarios+=Scenario*
+		public Assignment getScenariosAssignment_5() { return cScenariosAssignment_5; }
 
 		//Scenario
-		public RuleCall getMembersScenarioParserRuleCall_5_0() { return cMembersScenarioParserRuleCall_5_0; }
+		public RuleCall getScenariosScenarioParserRuleCall_5_0() { return cScenariosScenarioParserRuleCall_5_0; }
 	}
 
 	public class XAnnotationElements extends AbstractParserRuleElementFinder {
@@ -368,7 +368,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cExamplesAssignment_6 = (Assignment)cGroup.eContents().get(6);
 		private final RuleCall cExamplesExampleTableParserRuleCall_6_0 = (RuleCall)cExamplesAssignment_6.eContents().get(0);
 		
-		//Scenario returns xtend::XtendMember:
+		//Scenario:
 		//	{Scenario} name=SCENARIO_TEXT members+=Member* steps+=(Given | GivenReference)? steps+=(When | WhenReference)?
 		//	steps+=(Then | ThenReference)? examples+=ExampleTable*;
 		public ParserRule getRule() { return rule; }
@@ -1496,7 +1496,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Feature returns xtend::XtendClass:
-	//	{Feature} annotations+=XAnnotation* name=FEATURE_TEXT description=TEXT? members+=Background? members+=Scenario*;
+	//	{Feature} annotations+=XAnnotation* name=FEATURE_TEXT description=TEXT? background=Background? scenarios+=Scenario*;
 	public FeatureElements getFeatureAccess() {
 		return (pFeature != null) ? pFeature : (pFeature = new FeatureElements());
 	}
@@ -1527,7 +1527,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		return getBackgroundAccess().getRule();
 	}
 
-	//Scenario returns xtend::XtendMember:
+	//Scenario:
 	//	{Scenario} name=SCENARIO_TEXT members+=Member* steps+=(Given | GivenReference)? steps+=(When | WhenReference)?
 	//	steps+=(Then | ThenReference)? examples+=ExampleTable*;
 	public ScenarioElements getScenarioAccess() {

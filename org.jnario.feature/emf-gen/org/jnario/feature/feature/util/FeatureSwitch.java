@@ -113,7 +113,7 @@ public class FeatureSwitch<T>
 			{
 				Background background = (Background)theEObject;
 				T result = caseBackground(background);
-				if (result == null) result = caseXtendMember(background);
+				if (result == null) result = caseXtendClass(background);
 				if (result == null) result = caseXtendAnnotationTarget(background);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -122,7 +122,7 @@ public class FeatureSwitch<T>
 			{
 				Scenario scenario = (Scenario)theEObject;
 				T result = caseScenario(scenario);
-				if (result == null) result = caseXtendMember(scenario);
+				if (result == null) result = caseXtendClass(scenario);
 				if (result == null) result = caseXtendAnnotationTarget(scenario);
 				if (result == null) result = defaultCase(theEObject);
 				return result;

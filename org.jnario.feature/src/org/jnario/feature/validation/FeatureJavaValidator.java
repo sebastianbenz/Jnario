@@ -62,7 +62,7 @@ public class FeatureJavaValidator extends AbstractFeatureJavaValidator {
 	public void checkFeaturesHaveAName(Scenario scenario){
 		String name = removeKeywords(scenario.getName());
 		if(isNullOrEmpty(name)){
-			error("Scenarios should have a description", FeaturePackage.Literals.SCENARIO__NAME);
+			error("Scenarios should have a description", XtendPackage.Literals.XTEND_CLASS__NAME);
 		}
 	}
 	

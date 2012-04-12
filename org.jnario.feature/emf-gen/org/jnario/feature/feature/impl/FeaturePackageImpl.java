@@ -242,6 +242,26 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getFeature_Scenarios()
+	{
+		return (EReference)featureEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFeature_Background()
+	{
+		return (EReference)featureEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getBackground()
 	{
 		return backgroundEClass;
@@ -255,16 +275,6 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 	public EReference getBackground_Steps()
 	{
 		return (EReference)backgroundEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getBackground_Members()
-	{
-		return (EReference)backgroundEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -292,29 +302,9 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getScenario_Name()
-	{
-		return (EAttribute)scenarioEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getScenario_Members()
-	{
-		return (EReference)scenarioEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getScenario_Steps()
 	{
-		return (EReference)scenarioEClass.getEStructuralFeatures().get(3);
+		return (EReference)scenarioEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -529,15 +519,14 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 		// Create classes and their features
 		featureEClass = createEClass(FEATURE);
 		createEAttribute(featureEClass, FEATURE__DESCRIPTION);
+		createEReference(featureEClass, FEATURE__SCENARIOS);
+		createEReference(featureEClass, FEATURE__BACKGROUND);
 
 		backgroundEClass = createEClass(BACKGROUND);
 		createEReference(backgroundEClass, BACKGROUND__STEPS);
-		createEReference(backgroundEClass, BACKGROUND__MEMBERS);
 
 		scenarioEClass = createEClass(SCENARIO);
 		createEReference(scenarioEClass, SCENARIO__EXAMPLES);
-		createEAttribute(scenarioEClass, SCENARIO__NAME);
-		createEReference(scenarioEClass, SCENARIO__MEMBERS);
 		createEReference(scenarioEClass, SCENARIO__STEPS);
 
 		stepEClass = createEClass(STEP);
@@ -607,8 +596,8 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 
 		// Add supertypes to classes
 		featureEClass.getESuperTypes().add(theXtendPackage.getXtendClass());
-		backgroundEClass.getESuperTypes().add(theXtendPackage.getXtendMember());
-		scenarioEClass.getESuperTypes().add(theXtendPackage.getXtendMember());
+		backgroundEClass.getESuperTypes().add(theXtendPackage.getXtendClass());
+		scenarioEClass.getESuperTypes().add(theXtendPackage.getXtendClass());
 		stepEClass.getESuperTypes().add(theXtendPackage.getXtendMember());
 		givenEClass.getESuperTypes().add(this.getStep());
 		whenEClass.getESuperTypes().add(this.getStep());
@@ -624,15 +613,14 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 		// Initialize classes and features; add operations and parameters
 		initEClass(featureEClass, Feature.class, "Feature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFeature_Description(), ecorePackage.getEString(), "description", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFeature_Scenarios(), this.getScenario(), null, "scenarios", null, 0, -1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFeature_Background(), this.getBackground(), null, "background", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(backgroundEClass, Background.class, "Background", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBackground_Steps(), theXtendPackage.getXtendMember(), null, "steps", null, 0, -1, Background.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getBackground_Members(), theXtendPackage.getXtendMember(), null, "members", null, 0, -1, Background.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(scenarioEClass, Scenario.class, "Scenario", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getScenario_Examples(), theJnarioPackage.getExampleTable(), null, "examples", null, 0, -1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getScenario_Name(), ecorePackage.getEString(), "name", null, 0, 1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getScenario_Members(), theXtendPackage.getXtendMember(), null, "members", null, 0, -1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getScenario_Steps(), theXtendPackage.getXtendMember(), null, "steps", null, 0, -1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stepEClass, Step.class, "Step", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
