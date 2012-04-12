@@ -11,8 +11,6 @@ import static com.google.common.collect.Iterables.filter;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 import static org.eclipse.xtext.scoping.Scopes.scopeFor;
 
-import java.util.Set;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;

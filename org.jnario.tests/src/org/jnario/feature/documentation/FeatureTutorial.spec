@@ -22,7 +22,7 @@ describe "Jnario Features - Tutorial"{
   
   /*
    * The first example for using Jnario Features is the specification of a calculator. Start out with creating
-   * a new file (**File** -> **New** -> **File**) and giving it the file extension *.feature.
+   * a new file (**File** -> **New** -> **File**) and giving it the file extension _*.feature_.
    * 
    * A feature file consists of the a feature and the scenarios that are the acceptance criteria for the feature.
    * For the calculator the the feature description in form of a story and one scenario for adding
@@ -42,117 +42,63 @@ describe "Jnario Features - Tutorial"{
    *     Then it should show the sum
    * </pre>
    * 
+   * A feature consists of the name of the feature, it's narrative and a number of scenarios. The narrative can be arbitrary
+   * text. You should use it to describe the rationale of the feature.
+   * Those scenarios
+   * are examples for the behavior expected from the feature. For the calculator possible
+   * scenarios are, for example, addition or subtraction.
+   * 
+   * Each scenario is defined by the steps that describe the expected behavior. **Given** steps give
+   * all the necessary information about the context of the scenario. **When** describes the action
+   * and **Then** describes the expected outcome that we want to verify. You can use the keyword **And** to 
+   + split a step into different sub steps.
+   *   
    * When you save the file an xtend-gen folder will be created and the corresponding generated java files will
    * be created. Those files can be executed as JUnit-Tests. Right click and select **Run As** -> **JUnit Test**
-   * 
    * You will see the result of the run and it will be green. Since the steps from scenario are not implemented
-   * yet the **When** and **Then** steps will be marked as _PENDING_ as an reminder that there is still work to do.
+   * yet all the steps will be marked as _PENDING_ as an reminder that there is still work to do.
    */
    describe "How to write a Feature"{
      /*
-     * A feature consists of the name of the feature, it's narrative and a number of scenarios. Those scenarios
-     * are examples for the behavior expected from the feature. For the calculator possible
-     * scenarios are addition or subtraction.
-     * 
-     * Each scenario is defined by the steps that describe the expected behavior. **Given** steps give
-     * all the necessary information about the context of the scenario. **When** describes the action
-     * and **Then** describes the expected outcome that will be verified.
-     * 
-     * Necessary keywords for describing a feature are **Feature:**, **Scenario:**, **Given**, **When**, **Then**. The names
-     * and the step descriptions are free text. You can define multiple steps with the same keyword.
-     * If you don't want to repeat **Given** over and over again you can use the keyword **And** in exchange.
      * 
      * @filter('''|.executesSuccessfully) 
      * @lang(feature)
-     */
-    
-     fact "Multiple steps"{
-        '''
-      package demo
-
-      Feature: Calculator
-        In order to check my capabilities
-        As a math dummy
-        I want a calculator that helps me with basic math operations
-                
-        Scenario: Dividing two numbers
-      
-          Given a calculator
-          When I enter the number "70"
-          And I enter the number "10"
-          And I press divide
-          Then it should show "7"
-        '''.executesSuccessfully
-       }
-       
-     /*
-        * After defining a scenario with its steps, to be able to execute it the necessary code has
-        * to be added to steps. For each step the implementation is done directly after the description
+     *
+        * To turn our scenario into an executable specification you have to add the necessary code to each
+        * of our steps. For each step the implementation is done directly after the description
         * of the step. The language used to define the logic is [Xtend](http://www.eclipse.org/xtend/documentation/index.html#fields).
-        * 
-        * Running the feature file now will not be possible since the type Calculator is unknown.
         * Create a Java class with the name Calculator in the same project as your feature file.
         * Add the necessary import to the feature file or include it by auto completion while typing (CTRL + SPACE).
-        * 
-        * <span class="label label-info">Info</span> Specifying the package and declaring and importing other packages
-        * works similar to Xtend (static imports work as well). 
-        * 
-        * @filter('''|.executesSuccessfully)
-        * @lang(feature)
-        */
-       fact "Step definition"{
-         '''
-       package demo
-       import tutorialtest.math.Calculator
-       
-       Feature: Calculator
-       
-       Scenario: Adding two numbers
-         Given a calculator
-           var calculator = new Calculator
-         '''.executesSuccessfully
-       }
-       
-       /*
-        * In the **When** step the calculator has to be used to call a method on the object.
-        * To define variables that can be used from the steps within one scenario declare them
-        * as fields after the scenario description.
-        * 
-        * Also define a method add for the calculator that takes two int values as parameters and returns an int.
-        * 
-        * @filter('''|.executesSuccessfully)
-        * @lang(feature)
-        */
-       fact "Define fields for steps"{
-         '''
-       package demo
-       import tutorialtest.math.Calculator
-       
-       Feature: Calculator
-       
-       Scenario: Adding two numbers
-         Calculator calculator
-         Given a calculator
-           calculator = new Calculator
-         When I add two numbers "20" and "70"
-           var result =  calculator.add(args.first.toInt, args.second.toInt)
-         '''.executesSuccessfully
-       }
-       
-       /*
-        * The **Then** step will be the behavior assertion. For writing readable short assertions
+		*
+		* <span class="label label-info">Info</span> Specifying the package and declaring and importing other packages
+        * works similar to Xtend (static imports work as well).</span> 
+        *
+        * First we will declare a field `Calculator calculator` which we initialize in our **Given** step (we could
+        * also directly initialize the field `Calculator calculator = new Calculator`). We will also create a
+        * integer field named `result` to store the result of our calculation.
+        * In the **When** step we call `add` on the calculator and pass in the two parameters specified in the step.
+        * The return value is assigned to the `result` field.
+        *
+        * Parameters can be defined in steps using quotes: `"I am a parameter"`. Within your step implementation,
+        * you can access these parameters by an implicitly created variable `args`. Jnario provides some 
+        * [extension methods](http://www.eclipse.org/xtend/documentation/index.html#extensionMethods) that 
+        * simplify converting strings to other primitives. Here we use the `toInt` extension to convert the 
+        * string parameter into an integer.  
+        *
+        * Now we need to define a method `add` in our calculator to remove the compile errors.
+        * In the **Then** step we will assert the behavior of our calculator. For writing readable short assertions
         * different additional assertions come with Jnario. All of the possibilities are
         * described [here](/org/jnario/spec/tests/integration/AssertionSpec.html).
-        * 
-        * For describing the expected result of an expression `=>` is used.
+        * Here we use for describing the expected outcome of an expression `=>`.
         * 
         * @filter('''|.executesSuccessfully)
         * @lang(feature)
         */
-       fact "Behavior assertions"{
+       fact "Implementing Steps"{
          '''
        package demo
-       import tutorialtest.math.Calculator
+       
+       import org.jnario.feature.documentation.Calculator
        
        Feature: Calculator
        
@@ -170,8 +116,9 @@ describe "Jnario Features - Tutorial"{
        
        /*
         * **Given** steps that are used in all scenarios of the same feature can be defined in a `Background`.
-        * All steps defined as background steps will be executed for each scenario before the steps from
-        * the individual scenarios are executed.
+        * For example, if we add a second scenario to describe the division of two values, we can move the 
+        * **Given** step together with it's used fields to a **Background**. 
+        * All steps defined as background steps will be executed before each steps of a scenario.
         * 
         * @filter('''|.executesSuccessfully)
         * @lang(feature)
@@ -179,26 +126,27 @@ describe "Jnario Features - Tutorial"{
        fact "Background"{
          '''
        package demo
-       import tutorialtest.math.Calculator
+       
+       import org.jnario.feature.documentation.Calculator
        
        Feature: Calculator
        
        Background:
          Calculator calculator
+         int result
          Given a calculator
+         	calculator = new Calculator
        
        Scenario: Adding two numbers
-         int result
-         When I add two numbers "20" and "70".
+         When I add two numbers "20" and "70"
            result = calculator.add(20,70)
          Then it prints "90"
            result => args.first.toInt
          
        Scenario: Dividing two numbers
-        When I enter the number 70
-        And I enter the number 10
-        And I press divide
-        Then it should show 7
+        When I divide "70" by "10"
+        	 result = calculator.divide(70,10)
+        Then it prints "7"
          '''.executesSuccessfully
        }
       
@@ -216,26 +164,27 @@ describe "Jnario Features - Tutorial"{
        */ 
       fact "Example tables"{
          '''
-       package demo
-       import tutorialtest.math.Calculator
-       
-       Feature: Calculator
-       
-       Scenario: Adding two numbers
-         Calculator calculator
-         int result
-         Given a calculator
-           calculator = new Calculator
-         When adding two numbers a and b. 
-           result = calculator.add(a, b)
-         Then it returns the result
-           result => expectedResult
-           
-         Examples: additions
-         |  a  |  b  | result |
-         |  0  |  0  |   0    |
-         | 21  | 21  |  42    |
-         | -3  | -5  |  -8    |
+         package demo
+         import org.jnario.feature.documentation.Calculator
+
+         Feature: Calculator
+         
+         Scenario: Adding two numbers
+           Calculator calculator
+           int result
+           Given a calculator
+             calculator = new Calculator
+           When adding two numbers a and b. 
+             result = calculator.add(a, b)
+           Then it returns the result
+             result => expected
+             
+           Examples: additions
+           |  a  |  b  | expected |
+           |  0  |  0  |     0    |
+           | 21  | 21  |    42    |
+           | -3  | -5  |    -8    |
+            
          '''.executesSuccessfully
        }
        
@@ -254,37 +203,37 @@ describe "Jnario Features - Tutorial"{
         */
        fact "Step references"{
          '''
-       package demo
-       import tutorialtest.math.Calculator
-       
-       Feature: Calculator
-       
-       Background:
-         Calculator calculator
-         Given a calculator
-           calculator = new Calculator
-       
-       Scenario: Adding two numbers
-         int result
-         When adding two numbers a and b. 
-           result = calculator.add(a, b)
-         Then it returns the result
-           result => result
-           
-         Examples:
-         |  a  |  b  | result |
-         |  0  |  0  |   0    |
-         | -3  | -5  |  -8    |
-         
-       Scenario: Dividing two numbers
-         double result
-        When entering two numbers a and b and pressing enter. 
-          result = calculator.divide(a,b)
-        Then it returns the result.
-        
-        Examples:
-        |  a  |  b  | result |
-        |  8  |  1  |   8    |
+	       package demo
+	       import org.jnario.feature.documentation.Calculator
+
+	       Feature: Calculator
+	       
+	       Background:
+	         Calculator calculator
+	         int result
+	         Given a calculator
+	           calculator = new Calculator
+	       
+	       Scenario: Adding two numbers
+	         When adding two numbers a and b. 
+	           result = calculator.add(a, b)
+	         Then it returns the expected result
+	           result => expected
+	           
+	         Examples:
+	         |  a  |  b  | expected |
+	         |  0  |  0  |   0    |
+	         | -3  | -5  |  -8    |
+	         
+	       Scenario: Dividing two numbers
+	        When entering two numbers a and b and pressing enter. 
+	          result = calculator.divide(a,b)
+	        Then it returns the expected result
+	        
+	        Examples:
+	        |  a  |  b  | expected |
+	        |  8  |  1  |     8    |
+	        
          '''.executesSuccessfully
        }
    }   

@@ -82,7 +82,7 @@ describe "Jnario Specs - Tutorial"{
 	          new Stack().size => 0
 	        }
 	        fact "increases its size when pushing an element"{
-	          val subject = new Stack
+	          val subject = new Stack<String>
 	          subject.push("A String")
 	          subject.size => 1
 	        }
@@ -130,7 +130,7 @@ describe "Jnario Specs - Tutorial"{
 				describe "A Stack"{
 				  fact new Stack().size should be 0
 				  fact "increases its size when pushing an element"{
-				    val subject = new Stack
+				    val subject = new Stack<String>
 				    subject.push("A String")
 				    subject.size => 1
 				  }
@@ -153,7 +153,7 @@ describe "Jnario Specs - Tutorial"{
 		      import java.util.Stack
 		      
 		      describe "A Stack"{
-		        Stack subject = new Stack
+		        Stack<String> subject = new Stack<String>
 		        fact "initially empty" {
 		          subject.size => 0
 		        }
@@ -460,7 +460,7 @@ describe "Jnario Specs - Tutorial"{
 			  extension DatabaseExtension db = new DatabaseExtension
 			  fact query("SELECT * FROM content")	      
 			}
-			'''.executesSuccessfully
+			'''
 		}
  
 		/*
@@ -512,16 +512,15 @@ describe "Jnario Specs - Tutorial"{
 
 		/*
 		 * If you want to express how an object should behave, you can use  
-		 * `should` or `must`. It passes if the result of the left expression is 
+		 * `should`. It passes if the result of the left expression is 
 		 * equal to the result of the right expression. You can also use `not` to 
 		 * assert that both expressions have different results. You have already seen 
 		 * the short cut `=>` which has the same effect as `should be`.
 		 */	
-		fact "'should', 'must' and `=>`"{
+		fact "'should' and `=>`"{
 			true should be true
-			"hello" must be "hello"
+			false => false
 			1 + 1 should not be 1 
-			"hello".toUpperCase must not be "hello"
 			1 + 1 => 2 
 		}   
 		
@@ -544,9 +543,9 @@ describe "Jnario Specs - Tutorial"{
 			       
 			val greeting = "hello"        
 			errorMessage[greeting.toUpperCase should not be "HELLO"].is('''
-			  Expected x.toUpperCase should not be "HELLO" but:
-			     x.toUpperCase is "HELLO"
-			     x is "hello"''')	  
+			  Expected greeting.toUpperCase should not be "HELLO" but:
+			       greeting.toUpperCase is "HELLO"
+			       greeting is "hello"''')	  
 		}
 		
 	}

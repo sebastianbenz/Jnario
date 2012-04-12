@@ -37,6 +37,7 @@ import com.google.inject.Inject;
 @SuppressWarnings("restriction")
 public class ExampleNameProvider {
 
+	@Inject(optional=true) 
 	private OperationNameProvider operationNameProvider = new OperationNameProvider();
 	
 	@Inject(optional=true) 
@@ -115,10 +116,10 @@ public class ExampleNameProvider {
 		}else{
 			result.append(expression(example));
 		}
-		if(result.length() == 0){
+		String name = toFirstLower(convertToCamelCase(result).toString());
+		if(name.length() == 0){
 			return "";
 		}
-		String name = toFirstLower(convertToCamelCase(result).toString());
 		if(javaUtils.isJavaKeyword(name) || isDigit(name.charAt(0))){
 			name = "_" + name;
 		}

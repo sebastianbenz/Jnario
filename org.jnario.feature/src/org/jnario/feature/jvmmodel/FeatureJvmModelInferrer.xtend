@@ -295,14 +295,8 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			annotations += step.toAnnotation(typeof(Order), order.intValue)
 			var name = step.nameOf
 			if(step.expressionOf(inferredJvmType) == null){
-				if((!(step instanceof Given 
-					|| step instanceof GivenReference
-					|| (step instanceof And && (step.eContainer instanceof Given || step.eContainer instanceof GivenReference))
-					|| (step instanceof AndReference && (step.eContainer instanceof Given || step.eContainer instanceof GivenReference)))
-				)){
-					name = "[PENDING] " + name
-					annotations += step.toAnnotation(typeof(Ignore))
-				}
+				name = "[PENDING] " + name
+				annotations += step.toAnnotation(typeof(Ignore))
 			}
 			annotations += step.toAnnotation(typeof(Named), name)
 		]	

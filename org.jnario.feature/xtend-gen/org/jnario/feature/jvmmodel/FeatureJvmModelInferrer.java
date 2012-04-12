@@ -45,13 +45,9 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
-import org.jnario.feature.feature.And;
-import org.jnario.feature.feature.AndReference;
 import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeatureFile;
-import org.jnario.feature.feature.Given;
-import org.jnario.feature.feature.GivenReference;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepExpression;
@@ -507,60 +503,11 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
             StepExpression _expressionOf_1 = FeatureJvmModelInferrer.this._stepExpressionProvider.expressionOf(step, inferredJvmType);
             boolean _equals = Objects.equal(_expressionOf_1, null);
             if (_equals) {
-              boolean _or = false;
-              boolean _or_1 = false;
-              boolean _or_2 = false;
-              if ((step instanceof Given)) {
-                _or_2 = true;
-              } else {
-                _or_2 = ((step instanceof Given) || (step instanceof GivenReference));
-              }
-              if (_or_2) {
-                _or_1 = true;
-              } else {
-                boolean _and = false;
-                if (!(step instanceof And)) {
-                  _and = false;
-                } else {
-                  boolean _or_3 = false;
-                  EObject _eContainer = step.eContainer();
-                  if ((_eContainer instanceof Given)) {
-                    _or_3 = true;
-                  } else {
-                    EObject _eContainer_1 = step.eContainer();
-                    _or_3 = ((_eContainer instanceof Given) || (_eContainer_1 instanceof GivenReference));
-                  }
-                  _and = ((step instanceof And) && _or_3);
-                }
-                _or_1 = (_or_2 || _and);
-              }
-              if (_or_1) {
-                _or = true;
-              } else {
-                boolean _and_1 = false;
-                if (!(step instanceof AndReference)) {
-                  _and_1 = false;
-                } else {
-                  boolean _or_4 = false;
-                  EObject _eContainer_2 = step.eContainer();
-                  if ((_eContainer_2 instanceof Given)) {
-                    _or_4 = true;
-                  } else {
-                    EObject _eContainer_3 = step.eContainer();
-                    _or_4 = ((_eContainer_2 instanceof Given) || (_eContainer_3 instanceof GivenReference));
-                  }
-                  _and_1 = ((step instanceof AndReference) && _or_4);
-                }
-                _or = (_or_1 || _and_1);
-              }
-              boolean _not = (!_or);
-              if (_not) {
-                String _plus = ("[PENDING] " + name);
-                name = _plus;
-                EList<JvmAnnotationReference> _annotations_2 = it.getAnnotations();
-                JvmAnnotationReference _annotation_1 = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(step, Ignore.class);
-                FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_2, _annotation_1);
-              }
+              String _plus = ("[PENDING] " + name);
+              name = _plus;
+              EList<JvmAnnotationReference> _annotations_2 = it.getAnnotations();
+              JvmAnnotationReference _annotation_1 = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(step, Ignore.class);
+              FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_2, _annotation_1);
             }
             EList<JvmAnnotationReference> _annotations_3 = it.getAnnotations();
             JvmAnnotationReference _annotation_2 = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(step, Named.class, name);
