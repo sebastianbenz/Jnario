@@ -11,23 +11,20 @@ import com.google.common.base.Joiner
 import com.google.inject.Inject
 import java.util.List
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtend.core.xtend.XtendClass
 import org.eclipse.xtend.core.xtend.XtendField
 import org.eclipse.xtend.core.xtend.XtendFunction
 import org.eclipse.xtext.common.types.JvmAnnotationReference
 import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmGenericType
-import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.util.Strings
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
-import org.eclipse.xtext.xbase.lib.CollectionLiterals
-import org.jnario.CollectionLiteral
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator
 import org.jnario.ExampleTable
-import org.jnario.ListLiteral
-import org.jnario.SetLiteral
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder
 import org.jnario.jvmmodel.JnarioJvmModelInferrer
 import org.jnario.jvmmodel.JunitAnnotationProvider
@@ -45,8 +42,6 @@ import org.jnario.spec.spec.SpecFile
 import org.jnario.spec.spec.TestFunction
 
 import static extension org.eclipse.xtext.util.Strings.*
-import org.eclipse.xtend.core.xtend.XtendClass
-import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -90,24 +85,6 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 		acceptor.accept(inferredJvmType).initializeLater[initialize(source, inferredJvmType)] 
    	}
 	
-	def addListLiterals(EObject context){
-		val literals = context.eAllContents.filter(typeof(CollectionLiteral))
-		literals.forEach[setFeature]
-	}
-	
-	def dispatch setFeature(SetLiteral literal){
-		literal.setFeature("newHashSet")
-	} 
-	
-	def dispatch setFeature(ListLiteral literal){
-		literal.setFeature("newArrayList")
-	}
-	
-	def setFeature(CollectionLiteral literal, String name){
-		val collections = getTypeForName(typeof(CollectionLiterals), literal).type as JvmGenericType
-		val operations = collections.members.filter(typeof(JvmOperation))
-		literal.feature = operations.findFirst[simpleName == name]
-	}
 	
 	def transform(SpecFile spec, ExampleGroup exampleGroup, JvmGenericType superClass, boolean isPrelinkingPhase) {
 		exampleGroup.toClass(exampleGroup.toJavaClassName) [

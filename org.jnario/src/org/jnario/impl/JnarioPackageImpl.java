@@ -11,24 +11,17 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
-import org.eclipse.xtext.xbase.XbasePackage;
-
 import org.eclipse.xtend.core.xtend.XtendPackage;
-
 import org.eclipse.xtext.common.types.TypesPackage;
+import org.eclipse.xtext.xbase.XbasePackage;
 import org.jnario.Assertion;
-import org.jnario.CollectionLiteral;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
 import org.jnario.JnarioFactory;
 import org.jnario.JnarioPackage;
-import org.jnario.ListLiteral;
 import org.jnario.Matcher;
-import org.jnario.SetLiteral;
 import org.jnario.Should;
 import org.jnario.ShouldThrow;
 
@@ -80,27 +73,6 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 	 * @generated
 	 */
 	private EClass shouldEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass collectionLiteralEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass listLiteralEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass setLiteralEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -322,33 +294,6 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getCollectionLiteral() {
-		return collectionLiteralEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getListLiteral() {
-		return listLiteralEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getSetLiteral() {
-		return setLiteralEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getShouldThrow() {
 		return shouldThrowEClass;
 	}
@@ -421,12 +366,6 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		shouldEClass = createEClass(SHOULD);
 		createEAttribute(shouldEClass, SHOULD__NOT);
 
-		collectionLiteralEClass = createEClass(COLLECTION_LITERAL);
-
-		listLiteralEClass = createEClass(LIST_LITERAL);
-
-		setLiteralEClass = createEClass(SET_LITERAL);
-
 		shouldThrowEClass = createEClass(SHOULD_THROW);
 		createEReference(shouldThrowEClass, SHOULD_THROW__TYPE);
 		createEReference(shouldThrowEClass, SHOULD_THROW__EXPRESSION);
@@ -470,9 +409,6 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		matcherEClass.getESuperTypes().add(theXbasePackage.getXExpression());
 		exampleColumnEClass.getESuperTypes().add(theXtendPackage.getXtendField());
 		shouldEClass.getESuperTypes().add(theXbasePackage.getXBinaryOperation());
-		collectionLiteralEClass.getESuperTypes().add(theXbasePackage.getXFeatureCall());
-		listLiteralEClass.getESuperTypes().add(this.getCollectionLiteral());
-		setLiteralEClass.getESuperTypes().add(this.getCollectionLiteral());
 		shouldThrowEClass.getESuperTypes().add(theXbasePackage.getXExpression());
 
 		// Initialize classes and features; add operations and parameters
@@ -499,16 +435,6 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 
 		initEClass(shouldEClass, Should.class, "Should", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getShould_Not(), ecorePackage.getEBoolean(), "not", null, 0, 1, Should.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		addEOperation(shouldEClass, ecorePackage.getEString(), "getMethodName", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEClass(collectionLiteralEClass, CollectionLiteral.class, "CollectionLiteral", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		addEOperation(collectionLiteralEClass, ecorePackage.getEString(), "operationName", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEClass(listLiteralEClass, ListLiteral.class, "ListLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(setLiteralEClass, SetLiteral.class, "SetLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(shouldThrowEClass, ShouldThrow.class, "ShouldThrow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getShouldThrow_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 1, 1, ShouldThrow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

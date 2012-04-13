@@ -53,6 +53,7 @@ import org.eclipse.xtext.EcoreUtil2
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
+ * @author Sebastian Benz
  */
 class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 	

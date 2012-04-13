@@ -111,7 +111,7 @@ class AbstractDocGenerator implements IGenerator {
 			return ""
 		}
 		val fragments = packageName.split("\\.")
-		val path = fragments.map(String s | "../")
+		val path = fragments.map(s | "../")
 		return path.join("")
 	}
 	

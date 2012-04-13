@@ -16,17 +16,12 @@ import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XBinaryOperation;
 import org.eclipse.xtext.xbase.XExpression;
-import org.eclipse.xtext.xbase.XFeatureCall;
-import org.jnario.*;
 import org.jnario.Assertion;
-import org.jnario.CollectionLiteral;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
 import org.jnario.JnarioPackage;
-import org.jnario.ListLiteral;
 import org.jnario.Matcher;
-import org.jnario.SetLiteral;
 import org.jnario.Should;
 import org.jnario.ShouldThrow;
 
@@ -150,35 +145,6 @@ public class JnarioSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case JnarioPackage.COLLECTION_LITERAL: {
-				CollectionLiteral collectionLiteral = (CollectionLiteral)theEObject;
-				T result = caseCollectionLiteral(collectionLiteral);
-				if (result == null) result = caseXFeatureCall(collectionLiteral);
-				if (result == null) result = caseXAbstractFeatureCall(collectionLiteral);
-				if (result == null) result = caseXExpression(collectionLiteral);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case JnarioPackage.LIST_LITERAL: {
-				ListLiteral listLiteral = (ListLiteral)theEObject;
-				T result = caseListLiteral(listLiteral);
-				if (result == null) result = caseCollectionLiteral(listLiteral);
-				if (result == null) result = caseXFeatureCall(listLiteral);
-				if (result == null) result = caseXAbstractFeatureCall(listLiteral);
-				if (result == null) result = caseXExpression(listLiteral);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case JnarioPackage.SET_LITERAL: {
-				SetLiteral setLiteral = (SetLiteral)theEObject;
-				T result = caseSetLiteral(setLiteral);
-				if (result == null) result = caseCollectionLiteral(setLiteral);
-				if (result == null) result = caseXFeatureCall(setLiteral);
-				if (result == null) result = caseXAbstractFeatureCall(setLiteral);
-				if (result == null) result = caseXExpression(setLiteral);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case JnarioPackage.SHOULD_THROW: {
 				ShouldThrow shouldThrow = (ShouldThrow)theEObject;
 				T result = caseShouldThrow(shouldThrow);
@@ -277,51 +243,6 @@ public class JnarioSwitch<T> {
 	 * @generated
 	 */
 	public T caseShould(Should object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Collection Literal</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Collection Literal</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseCollectionLiteral(CollectionLiteral object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>List Literal</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>List Literal</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseListLiteral(ListLiteral object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Set Literal</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Set Literal</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSetLiteral(SetLiteral object) {
 		return null;
 	}
 
@@ -427,21 +348,6 @@ public class JnarioSwitch<T> {
 	 * @generated
 	 */
 	public T caseXBinaryOperation(XBinaryOperation object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>XFeature Call</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>XFeature Call</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseXFeatureCall(XFeatureCall object) {
 		return null;
 	}
 

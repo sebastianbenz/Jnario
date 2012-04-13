@@ -7,7 +7,9 @@
  *******************************************************************************/
 package org.jnario.util;
 
-import static java.lang.Character.*;
+import static java.lang.Character.isLetterOrDigit;
+import static java.lang.Character.isWhitespace;
+import static java.lang.Character.toUpperCase;
 
 import java.io.InputStream;
 import java.util.Scanner;

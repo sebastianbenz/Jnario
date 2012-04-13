@@ -16,17 +16,12 @@ import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XBinaryOperation;
 import org.eclipse.xtext.xbase.XExpression;
-import org.eclipse.xtext.xbase.XFeatureCall;
-import org.jnario.*;
 import org.jnario.Assertion;
-import org.jnario.CollectionLiteral;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
 import org.jnario.JnarioPackage;
-import org.jnario.ListLiteral;
 import org.jnario.Matcher;
-import org.jnario.SetLiteral;
 import org.jnario.Should;
 import org.jnario.ShouldThrow;
 
@@ -111,18 +106,6 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 				return createShouldAdapter();
 			}
 			@Override
-			public Adapter caseCollectionLiteral(CollectionLiteral object) {
-				return createCollectionLiteralAdapter();
-			}
-			@Override
-			public Adapter caseListLiteral(ListLiteral object) {
-				return createListLiteralAdapter();
-			}
-			@Override
-			public Adapter caseSetLiteral(SetLiteral object) {
-				return createSetLiteralAdapter();
-			}
-			@Override
 			public Adapter caseShouldThrow(ShouldThrow object) {
 				return createShouldThrowAdapter();
 			}
@@ -149,10 +132,6 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseXBinaryOperation(XBinaryOperation object) {
 				return createXBinaryOperationAdapter();
-			}
-			@Override
-			public Adapter caseXFeatureCall(XFeatureCall object) {
-				return createXFeatureCallAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -259,48 +238,6 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.jnario.CollectionLiteral <em>Collection Literal</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.jnario.CollectionLiteral
-	 * @generated
-	 */
-	public Adapter createCollectionLiteralAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.jnario.ListLiteral <em>List Literal</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.jnario.ListLiteral
-	 * @generated
-	 */
-	public Adapter createListLiteralAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.jnario.SetLiteral <em>Set Literal</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.jnario.SetLiteral
-	 * @generated
-	 */
-	public Adapter createSetLiteralAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.jnario.ShouldThrow <em>Should Throw</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -395,20 +332,6 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createXBinaryOperationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.xtext.xbase.XFeatureCall <em>XFeature Call</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.xtext.xbase.XFeatureCall
-	 * @generated
-	 */
-	public Adapter createXFeatureCallAdapter() {
 		return null;
 	}
 

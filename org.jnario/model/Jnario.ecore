@@ -36,11 +36,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="Should" eSuperTypes="../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XBinaryOperation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="not" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CollectionLiteral" abstract="true" eSuperTypes="../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XFeatureCall">
-    <eOperations name="operationName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ListLiteral" eSuperTypes="#//CollectionLiteral"/>
-  <eClassifiers xsi:type="ecore:EClass" name="SetLiteral" eSuperTypes="#//CollectionLiteral"/>
   <eClassifiers xsi:type="ecore:EClass" name="ShouldThrow" eSuperTypes="../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="ecore:EClass ../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"
         containment="true"/>

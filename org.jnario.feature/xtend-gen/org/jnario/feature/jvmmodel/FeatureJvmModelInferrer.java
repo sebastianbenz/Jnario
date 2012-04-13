@@ -69,6 +69,7 @@ import org.junit.Ignore;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
+ * @author Sebastian Benz
  */
 @SuppressWarnings("all")
 public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {

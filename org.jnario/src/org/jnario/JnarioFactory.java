@@ -81,24 +81,6 @@ public interface JnarioFactory extends EFactory {
 	Should createShould();
 
 	/**
-	 * Returns a new object of class '<em>List Literal</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>List Literal</em>'.
-	 * @generated
-	 */
-	ListLiteral createListLiteral();
-
-	/**
-	 * Returns a new object of class '<em>Set Literal</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Set Literal</em>'.
-	 * @generated
-	 */
-	SetLiteral createSetLiteral();
-
-	/**
 	 * Returns a new object of class '<em>Should Throw</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

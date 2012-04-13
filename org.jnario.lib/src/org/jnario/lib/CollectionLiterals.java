@@ -5,10 +5,26 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.jnario.linking;
+package org.jnario.lib;
 
-import org.eclipse.xtext.xbase.linking.XbaseLazyLinker;
+import static java.util.Arrays.asList;
 
-public class JnarioLazyLinker extends XbaseLazyLinker {
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
+/**
+ * @author Sebastian Benz - Initial contribution and API
+ */
+public class CollectionLiterals {
+
+	public static <T> List<T> list(T... elements){
+		return new ArrayList<T>(asList(elements));
+	}
+	
+	public static <T> Set<T> set(T... elements){
+		return new HashSet<T>(asList(elements));
+	}
+	
 }
