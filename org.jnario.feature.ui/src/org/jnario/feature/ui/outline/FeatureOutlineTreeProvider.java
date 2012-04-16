@@ -11,9 +11,9 @@
 package org.jnario.feature.ui.outline;
 
 import org.eclipse.xtend.core.xtend.XtendClass;
-import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtend.ide.outline.XtendOutlineTreeProvider;
 import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
+import org.eclipse.xtext.ui.editor.outline.impl.EObjectNode;
 import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.Scenario;
@@ -25,8 +25,18 @@ public class FeatureOutlineTreeProvider extends XtendOutlineTreeProvider {
 	
 	@Override
 	protected void createFeatureNodes(IOutlineNode parentNode, XtendClass xtendClass) {
-		for (XtendMember member : xtendClass.getMembers())
-			createEObjectNode(parentNode, member);
+		if (xtendClass instanceof Feature) {
+			Feature feature = (Feature) xtendClass;
+			if (feature.getBackground() != null) {
+				EObjectNode classNode = createEObjectNode(parentNode, xtendClass);
+				createFeatureNodes(classNode, feature.getBackground());
+			}
+			for (Scenario member : feature.getScenarios()){
+				EObjectNode classNode = createEObjectNode(parentNode, xtendClass);
+				createFeatureNodes(classNode, member);
+			}
+		}
+		super.createFeatureNodes(parentNode, xtendClass);
 	}
 	
 	protected boolean _isLeaf(Scenario element) {
