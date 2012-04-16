@@ -49,11 +49,16 @@ class ImplicitSubject {
 		if(exampleGroup.targetType != null){
 			return exampleGroup.targetType.cloneWithProxies
 		}
-		val parentGroup = getContainerOfType(exampleGroup.eContainer, typeof(ExampleGroup))
+		val parentGroup = exampleGroup.parent
 		if(parentGroup == null){
 			return null
 		}
 		return resolveTargetType(parentGroup)
+	}
+	
+	
+	def parent(ExampleGroup exampleGroup){
+		getContainerOfType(exampleGroup.eContainer, typeof(ExampleGroup))
 	}
 	
 	def boolean hasSubject(JvmGenericType type){

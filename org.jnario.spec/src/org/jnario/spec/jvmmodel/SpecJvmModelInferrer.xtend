@@ -13,7 +13,8 @@ import java.util.List
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtend.core.xtend.XtendClass
 import org.eclipse.xtend.core.xtend.XtendField
-import org.eclipse.xtend.core.xtend.XtendFunction
+import org.eclipse.xtend.core.xtend.XtendMember
+import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.common.types.JvmAnnotationReference
 import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmGenericType
@@ -42,6 +43,10 @@ import org.jnario.spec.spec.SpecFile
 import org.jnario.spec.spec.TestFunction
 
 import static extension org.eclipse.xtext.util.Strings.*
+import org.eclipse.xtend.core.xtend.XtendFunction
+import org.eclipse.xtend.core.xtend.XtendConstructor
+import org.eclipse.xtext.common.types.JvmAnnotationType
+import org.eclipse.xtend.core.jvmmodel.SyntheticNameClashResolver
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -62,6 +67,8 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 	
 	@Inject extension IJvmModelAssociator 
 	
+	@Inject extension SyntheticNameClashResolver
+	
 	override infer(EObject e, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
 		if(!checkClassPath(e, annotationProvider)){
 			return
@@ -74,70 +81,124 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 		if(specFile.xtendClass == null){
 			return
 		}
-		//addListLiterals(e)
-		transform(specFile as SpecFile, specFile.xtendClass as ExampleGroup, null, preIndexingPhase)
+		
+		infer(acceptor, specFile.xtendClass as ExampleGroup, null)
 	}
 	
+	def infer(IJvmDeclaredTypeAcceptor acceptor, ExampleGroup exampleGroup, JvmGenericType superType){
+		if(superType != null){
+			exampleGroup.^extends = superType.createTypeRef
+		}
+		val inferredJvmType = exampleGroup.toClass(exampleGroup.toJavaClassName)[
+			packageName = exampleGroup.packageName
+		]
+		register(acceptor, exampleGroup, inferredJvmType)
+		val children = <JvmGenericType>newArrayList
+		exampleGroup.members.filter(typeof(ExampleGroup)).forEach[child | 
+			children += acceptor.infer(child, inferredJvmType)
+		]
+		if(!children.empty){
+			inferredJvmType.annotations += exampleGroup.toAnnotation(typeof(Contains), children);
+		}
+		return inferredJvmType
+	}
 	
+	override initialize(XtendClass source, JvmGenericType inferredJvmType) {
+		inferredJvmType.setVisibility(JvmVisibility::PUBLIC);
+		val annotation = findDeclaredType(typeof(SuppressWarnings), source) as JvmAnnotationType
+		if (annotation != null) {
+			val suppressWarnings = typesFactory.createJvmAnnotationReference();
+			suppressWarnings.setAnnotation(annotation);
+			val annotationValue = typesFactory.createJvmStringAnnotationValue();
+			annotationValue.getValues() += "all"
+			suppressWarnings.getValues().add(annotationValue);
+			inferredJvmType.getAnnotations().add(suppressWarnings);
+		}
+		inferredJvmType.annotations += source.exampleGroupRunnerAnnotation
+		inferredJvmType.annotations += source.toAnnotation(typeof(Named), (source as ExampleGroup).describe)
+		
+		addDefaultConstructor(source, inferredJvmType);
+		if (source.getExtends() == null) {
+			val typeRefToObject = getTypeForName(typeof(Object), source);
+			if (typeRefToObject != null)
+				inferredJvmType.getSuperTypes().add(typeRefToObject);
+		} else {
+			inferredJvmType.getSuperTypes().add(cloneWithProxies(source.getExtends()));
+		}
+		for (intf : source.getImplements()) {
+			inferredJvmType.getSuperTypes().add(cloneWithProxies(intf));
+		}
+		copyAndFixTypeParameters(source.getTypeParameters(), inferredJvmType);
+		
+		val functions = <XtendFunction>newArrayList()
+		for (member : source.getMembers()) {
+			if (member instanceof XtendField
+					|| member instanceof XtendConstructor
+					|| member instanceof ExampleGroup
+					|| member instanceof TestFunction
+					|| member instanceof ExampleTable) {
+				transformExamples(member, inferredJvmType);
+			}else if(member instanceof XtendFunction && (member as XtendFunction).getName() != null){
+				functions += member as XtendFunction
+			}
+			
+		}
+		// we have to add the implicit subject before the XtendFunctions are transformed
+		inferredJvmType.addImplicitSubject(source as ExampleGroup)
+		for (function : functions) {
+			transform(function, inferredJvmType);
+		}
+		appendSyntheticDispatchMethods(source, inferredJvmType);
+		computeInferredReturnTypes(inferredJvmType);
+		translateAnnotationsTo(source.getAnnotations(), inferredJvmType);
+		setDocumentation(inferredJvmType, getDocumentation(source));
+
+		resolveNameClashes(inferredJvmType);
+	}
+	 
 	
 	def register(IJvmDeclaredTypeAcceptor acceptor, XtendClass source, JvmGenericType inferredJvmType){
    		associatePrimary(source, inferredJvmType); 
 		acceptor.accept(inferredJvmType).initializeLater[initialize(source, inferredJvmType)] 
    	}
+   	
+   	override transform(XtendMember sourceMember, JvmGenericType container) {
+   		// we use transformExamples instead
+   	}
+   	
+   	def void transformExamples(XtendMember sourceMember, JvmGenericType container) {
+   		switch sourceMember {
+   			Example: transform(sourceMember as Example, container)
+   			Before : transform(sourceMember as Before, container)
+   			After: transform(sourceMember as After, container)
+   			ExampleTable: transform(sourceMember as ExampleTable, container)
+   			XtendFunction: transform(sourceMember as XtendFunction, container)
+   			XtendField: transform(sourceMember as XtendField, container)
+   			XtendConstructor: transform(sourceMember as XtendConstructor, container)
+   		}
+	}
 	
+	def transform(Example element, JvmGenericType container) {
+		val annotations = element.getTestAnnotations(element.pending)
+		annotations += element.toAnnotation(typeof(Named), element.describe)
+		annotations += element.toAnnotation(typeof(Order), 99)
+		container.members += toMethod(element, annotations)
+	}
 	
-	def transform(SpecFile spec, ExampleGroup exampleGroup, JvmGenericType superClass, boolean isPrelinkingPhase) {
-		exampleGroup.toClass(exampleGroup.toJavaClassName) [
-			configureWith(exampleGroup, spec, superClass)
-
-			if(isPrelinkingPhase){
-				return
-			}
-			
-			addAnnotations(exampleGroup)
-			addFields(exampleGroup)
-			exampleGroup.addDefaultConstructor(it);
-							
-			var index = 0
-			val List<JvmGenericType> subExamples = newArrayList()
-			for (element : exampleGroup.members) {
-				switch element {
-					ExampleGroup: {
-						subExamples += transform(spec, element, it, isPrelinkingPhase)
-					}
-					ExampleTable: {
-						transform(element, spec)
-					}
-					Example : {
-						val annotations = element.getTestAnnotations(element.pending)
-						annotations += element.toAnnotation(typeof(Named), element.describe)
-						annotations += element.toAnnotation(typeof(Order), index)
-						members += toMethod(element, annotations)
-					}
-					XtendFunction: {
-						element.transform(it)
-					}
-					Before:{
-						val annotationType = getBeforeAnnotation(element.beforeAll)
-						members += element.toMethod(annotationType, element.beforeAll)
-					}
-					After:{
-						val annotationType = getAfterAnnotation(element.afterAll)
-						members += element.toMethod(annotationType, element.afterAll)
-					}
-				}
-				index = index + 1
-			}
-			
-			if(!subExamples.empty){
-				annotations += exampleGroup.toAnnotation(typeof(Contains), subExamples);
-			}
-			computeInferredReturnTypes()
-		]
-						
+	def transform(Before element, JvmGenericType container) {
+		val annotationType = element.getBeforeAnnotation(element.beforeAll)
+	    container.members += element.toMethod(annotationType, element.beforeAll)
+	}
+	
+	def transform(After element, JvmGenericType container) {
+		val annotationType = element.getAfterAnnotation(element.afterAll)
+		container.members += element.toMethod(annotationType, element.afterAll)
 	}
 	
 	override protected transform(XtendField source, JvmGenericType container) {
+		if(source.visibility == JvmVisibility::PRIVATE){
+			source.visibility = JvmVisibility::DEFAULT
+		}
 		super.transform(source, container)
 		if (source.isExtension()){
 			val field = source.jvmElements.head as JvmField
@@ -167,33 +228,12 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 		type.packageName = spec.^package
 		type.documentation = source.documentation
 	}
-	
-	def void configureWith(JvmGenericType type, EObject source, SpecFile spec, JvmGenericType superType){
-		configureWith(type, source, spec)
-		if(superType != null){
-			type.superTypes += superType.createTypeRef
-		}
-	}
-	
-	def void addFields(JvmGenericType type, ExampleGroup exampleGroup){
-		for (field : exampleGroup.members.filter(typeof(XtendField))) {
-			if(field.visibility == JvmVisibility::PRIVATE){
-				field.visibility = JvmVisibility::DEFAULT
-			}
-			field.transform(type)
-		}
-		type.addImplicitSubject(exampleGroup)
-	}
+
 	 
-	def void addAnnotations(JvmGenericType type, ExampleGroup exampleGroup){
-		type.annotations += exampleGroup.exampleGroupRunnerAnnotation
-		type.annotations += exampleGroup.toAnnotation(typeof(Named), exampleGroup.describe)
-		exampleGroup.annotations.translateAnnotationsTo(type)
-	}
-	
-	def transform(JvmGenericType specType, ExampleTable table, SpecFile spec){
+	def transform(ExampleTable table, JvmGenericType specType){
 		associateTableWithSpec(specType, table)
 		// it is important to not create the class for the table as otherwise the cells cannot resolve members of the spec file
+		val spec = table.specFile
 		spec.toClass(table.toJavaClassName)[exampleTableType |
 			exampleTableType.superTypes += getTypeForName(typeof(ExampleTableRow), table)
 			exampleTableType.configureWith(table, spec)
@@ -288,5 +328,14 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 
 	def columnNames(ExampleTable exampleTable){
 		exampleTable.columns.map[it?.name]
+	}
+	
+		
+	def packageName(EObject context){
+		context.specFile.^package
+	}
+	
+	def specFile(EObject context){
+		EcoreUtil2::getContainerOfType(context, typeof(SpecFile))
 	}
 }

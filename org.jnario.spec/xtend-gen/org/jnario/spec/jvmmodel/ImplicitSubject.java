@@ -79,13 +79,18 @@ public class ImplicitSubject {
       JvmTypeReference _targetType_1 = exampleGroup.getTargetType();
       return this._extendedJvmTypesBuilder.cloneWithProxies(_targetType_1);
     }
-    EObject _eContainer = exampleGroup.eContainer();
-    final ExampleGroup parentGroup = EcoreUtil2.<ExampleGroup>getContainerOfType(_eContainer, ExampleGroup.class);
+    final ExampleGroup parentGroup = this.parent(exampleGroup);
     boolean _equals = Objects.equal(parentGroup, null);
     if (_equals) {
       return null;
     }
     return this.resolveTargetType(parentGroup);
+  }
+  
+  public ExampleGroup parent(final ExampleGroup exampleGroup) {
+    EObject _eContainer = exampleGroup.eContainer();
+    ExampleGroup _containerOfType = EcoreUtil2.<ExampleGroup>getContainerOfType(_eContainer, ExampleGroup.class);
+    return _containerOfType;
   }
   
   public boolean hasSubject(final JvmGenericType type) {
