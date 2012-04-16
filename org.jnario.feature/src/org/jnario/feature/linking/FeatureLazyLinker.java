@@ -7,11 +7,15 @@
  *******************************************************************************/
 package org.jnario.feature.linking;
 
+import static com.google.common.collect.Iterables.concat;
+import static com.google.common.collect.Iterables.filter;
+import static java.util.Collections.emptyList;
+
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.EcoreUtil2;
+import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.diagnostics.IDiagnosticConsumer;
 import org.eclipse.xtext.xbase.XConstructorCall;
 import org.eclipse.xtext.xbase.XExpression;
@@ -20,6 +24,9 @@ import org.eclipse.xtext.xbase.XMemberFeatureCall;
 import org.eclipse.xtext.xbase.XStringLiteral;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.XbaseFactory;
+import org.jnario.feature.feature.Feature;
+import org.jnario.feature.feature.FeatureFile;
+import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.jvmmodel.FeatureJvmModelInferrer;
 import org.jnario.feature.jvmmodel.StepArgumentsProvider;
@@ -29,6 +36,7 @@ import com.google.inject.Inject;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
+ * @author Sebastian Benz
  */
 public class FeatureLazyLinker extends JnarioLazyLinker {
 	
@@ -42,25 +50,53 @@ public class FeatureLazyLinker extends JnarioLazyLinker {
 	}
 
 	private void generateStepValues(EObject model) {
-		List<Step> steps = EcoreUtil2.getAllContentsOfType(model, Step.class);
-		for(Step step: steps){
-			String name = step.getName();
-			if(name != null){
-				List<String> arguments = stepArgumentsProvider.findStepArguments(step);
-				if(!arguments.isEmpty()){
-					EList<XExpression> expressions = step.getStepExpression().getBlockExpression().getExpressions();
-					XVariableDeclaration stepValuesDec = createVariableForStepArguments();
-					expressions.add(0, stepValuesDec);
-					for(int i = 0; i < arguments.size(); i++){
-						expressions.add(i + 1, createFeatureCall(arguments.get(i), stepValuesDec));
-					}
-				}
-			}
-		}		
+		if (!(model instanceof FeatureFile)) {
+			return;
+		}
+		FeatureFile featureFile = (FeatureFile) model;
+		generateArguments(allSteps(featureFile));		
+	}
+	
+	private Iterable<Step> allSteps(FeatureFile featureFile){
+		Iterable<Step> result = emptyList();
+		Feature feature = (Feature) featureFile.getXtendClass();
+		if(feature == null){
+			return result;
+		}
+		if(feature.getBackground() != null){
+			result = concat(result, filterSteps(feature.getBackground().getSteps()));		
+		}
+		for(Scenario scenario : feature.getScenarios()){
+			result = concat(result, filterSteps(scenario.getSteps()));
+		}
+		return result;
+	}
+	
+	private Iterable<Step> filterSteps(Iterable<XtendMember> members){
+		return filter(members, Step.class);
 	}
 
+	private void generateArguments(Iterable<Step> steps) {
+		for(Step step: steps){
+			if(step.getName() != null){
+				generateArguments(step);
+			}
+		}
+	}
 
-
+	private void generateArguments(Step step) {
+		List<String> arguments = stepArgumentsProvider.findStepArguments(step);
+		if(arguments.isEmpty()){
+			return;
+		}
+		EList<XExpression> expressions = step.getStepExpression().getBlockExpression().getExpressions();
+		XVariableDeclaration stepValuesDec = createVariableForStepArguments();
+		expressions.add(0, stepValuesDec);
+		for(int i = 0; i < arguments.size(); i++){
+			expressions.add(i + 1, createFeatureCall(arguments.get(i), stepValuesDec));
+		}
+	}
+	
 	private XVariableDeclaration createVariableForStepArguments(){
 		XVariableDeclaration variableDec = XbaseFactory.eINSTANCE.createXVariableDeclaration();
 		variableDec.setName(FeatureJvmModelInferrer.STEP_VALUES);

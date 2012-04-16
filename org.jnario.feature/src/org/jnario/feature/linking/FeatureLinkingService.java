@@ -7,6 +7,8 @@
  *******************************************************************************/
 package org.jnario.feature.linking;
 
+import static org.eclipse.xtext.util.Strings.isEmpty;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -38,26 +40,35 @@ public class FeatureLinkingService extends DefaultLinkingService {
 	
 	public List<EObject> getLinkedObjects(EObject context, EReference ref, INode node)
 			throws IllegalNodeException {
-		
-		if(!(context instanceof Step)){
-			return super.getLinkedObjects(context, ref, node);
+		if(context instanceof Step){
+			return getLinkedStep(context, ref, node);
 		}else{
- 			final EClass requiredType = ref.getEReferenceType();
-			if (requiredType == null)
-				return Collections.<EObject> emptyList();
-	
-			final String crossRefString = stepNameProvider.removeKeywordsAndArguments(getCrossRefNodeAsString(node));
-			if (crossRefString != null && !crossRefString.equals("")) {
-					
-				final IScope scope = getScope(context, ref);
-				QualifiedName qualifiedLinkName =  qualifiedNameConverter.toQualifiedName(crossRefString);
-				IEObjectDescription eObjectDescription = scope.getSingleElement(qualifiedLinkName);
-				if (eObjectDescription != null) 
-					return Collections.singletonList(eObjectDescription.getEObjectOrProxy());
-			}
+			return super.getLinkedObjects(context, ref, node);
+		}
+	}
+
+	private List<EObject> getLinkedStep(EObject context, EReference ref,
+			INode node) {
+		final EClass requiredType = ref.getEReferenceType();
+		if (requiredType == null)
+			return Collections.<EObject> emptyList();
+		
+		String crossRefString = getReferencedStepName(node);
+		if (isEmpty(crossRefString)) {
 			return Collections.emptyList();
 		}
-		
-	
+		final IScope scope = getScope(context, ref);
+		QualifiedName qualifiedLinkName =  qualifiedNameConverter.toQualifiedName(crossRefString);
+		IEObjectDescription eObjectDescription = scope.getSingleElement(qualifiedLinkName);
+		if (eObjectDescription == null) {
+			return Collections.emptyList();
+		}
+		return Collections.singletonList(eObjectDescription.getEObjectOrProxy());
+	}
+
+	private String getReferencedStepName(INode node) {
+		String crossRefString = getCrossRefNodeAsString(node);
+		crossRefString = stepNameProvider.removeKeywordsAndArguments(crossRefString);
+		return crossRefString;
 	}
 }
