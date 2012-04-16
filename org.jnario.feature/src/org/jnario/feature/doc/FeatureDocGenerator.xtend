@@ -19,10 +19,12 @@ import org.jnario.feature.naming.StepNameProvider
 import static extension org.jnario.util.Strings.*
 import static org.jnario.doc.HtmlFile.*
 import org.jnario.feature.feature.Background
+import org.eclipse.xtext.serializer.ISerializer
 
 class FeatureDocGenerator extends AbstractDocGenerator {
 	@Inject extension JavaNameProvider 
 	@Inject extension StepNameProvider 
+	@Inject extension ISerializer serializer
 
 	override createHtmlFile(XtendClass xtendClass) {
 		if(!(xtendClass instanceof Feature)){
@@ -38,7 +40,13 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 	}
 	
 	def generateContent(Feature feature)'''
-		<p>«feature.description.markdown2Html»</p>
+		<p>«feature.description?.markdown2Html»</p>
+		«IF feature.background != null»
+		«generate(feature.background)»
+		«ENDIF»
+		«FOR scenario : feature.scenarios»
+		«generate(scenario)»
+		«ENDFOR»
 		«FOR member : feature.members»
 		«generate(member)»
 		«ENDFOR»
@@ -91,7 +99,7 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 			return ""
 		} 
 		val richString = firstExpr as RichString
-		'''<pre>«richString.serialize.replace("'''", "").codeToHtml»</pre>
+		'''<pre>«serializer.serialize(richString).replace("'''", "").codeToHtml»</pre>
 		'''
 	} 
 }

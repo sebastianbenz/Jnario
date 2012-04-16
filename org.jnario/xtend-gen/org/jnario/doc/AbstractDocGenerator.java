@@ -96,7 +96,8 @@ public class AbstractDocGenerator implements IGenerator {
       if (_equals) {
         return "";
       }
-      String _markdownToHtml = this._pegDownProcessor.markdownToHtml(string);
+      String _normalize = this._whiteSpaceNormalizer.normalize(string);
+      String _markdownToHtml = this._pegDownProcessor.markdownToHtml(_normalize);
       String _replaceAll = _markdownToHtml.replaceAll("<pre><code>", "<pre class=\"prettyprint\">");
       String _replaceAll_1 = _replaceAll.replaceAll("</pre></code>", "</pre>");
       _xblockexpression = (_replaceAll_1);
@@ -143,6 +144,10 @@ public class AbstractDocGenerator implements IGenerator {
   
   public String serialize(final EObject obj) {
     final ICompositeNode node = NodeModelUtils.getNode(obj);
+    boolean _equals = Objects.equal(node, null);
+    if (_equals) {
+      return "";
+    }
     return node.getText();
   }
   

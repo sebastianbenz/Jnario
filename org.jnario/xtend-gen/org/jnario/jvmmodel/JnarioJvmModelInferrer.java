@@ -74,7 +74,10 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
     String _name = column.getName();
     JvmTypeReference _orCreateType = this.getOrCreateType(column);
     final JvmField field = this._jvmTypesBuilder.toField(column, _name, _orCreateType);
-    field.setVisibility(JvmVisibility.PUBLIC);
+    boolean _notEquals = (!Objects.equal(field, null));
+    if (_notEquals) {
+      field.setVisibility(JvmVisibility.PUBLIC);
+    }
     return field;
   }
   

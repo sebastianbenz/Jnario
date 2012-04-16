@@ -53,7 +53,9 @@ class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
 	  
 	def toField(ExampleColumn column){
 		val field = column.toField(column.name, column.getOrCreateType)
-		field.visibility = JvmVisibility::PUBLIC
+		if(field != null){
+			field.visibility = JvmVisibility::PUBLIC
+		}
 		return field
 	}
 	

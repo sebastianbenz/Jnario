@@ -59,7 +59,7 @@ class AbstractDocGenerator implements IGenerator {
 		if(string == null){
 			return ""
 		}
-		string.markdownToHtml
+		string.normalize.markdownToHtml
 				.replaceAll("<pre><code>", '<pre class="prettyprint">')
 				.replaceAll("</pre></code>", '</pre>')
 	}
@@ -88,6 +88,7 @@ class AbstractDocGenerator implements IGenerator {
 	
 	def serialize(EObject obj){
 		val node = NodeModelUtils::getNode(obj)
+		if(node == null) return ""
 		return node.text
 	}
 	
