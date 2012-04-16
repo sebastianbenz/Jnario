@@ -272,16 +272,6 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getBackground_Steps()
-	{
-		return (EReference)backgroundEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getScenario()
 	{
 		return scenarioEClass;
@@ -523,7 +513,6 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 		createEReference(featureEClass, FEATURE__BACKGROUND);
 
 		backgroundEClass = createEClass(BACKGROUND);
-		createEReference(backgroundEClass, BACKGROUND__STEPS);
 
 		scenarioEClass = createEClass(SCENARIO);
 		createEReference(scenarioEClass, SCENARIO__EXAMPLES);
@@ -596,7 +585,7 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 
 		// Add supertypes to classes
 		featureEClass.getESuperTypes().add(theXtendPackage.getXtendClass());
-		backgroundEClass.getESuperTypes().add(theXtendPackage.getXtendClass());
+		backgroundEClass.getESuperTypes().add(this.getScenario());
 		scenarioEClass.getESuperTypes().add(theXtendPackage.getXtendClass());
 		stepEClass.getESuperTypes().add(theXtendPackage.getXtendMember());
 		givenEClass.getESuperTypes().add(this.getStep());
@@ -617,7 +606,6 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 		initEReference(getFeature_Background(), this.getBackground(), null, "background", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(backgroundEClass, Background.class, "Background", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getBackground_Steps(), theXtendPackage.getXtendMember(), null, "steps", null, 0, -1, Background.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(scenarioEClass, Scenario.class, "Scenario", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getScenario_Examples(), theJnarioPackage.getExampleTable(), null, "examples", null, 0, -1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

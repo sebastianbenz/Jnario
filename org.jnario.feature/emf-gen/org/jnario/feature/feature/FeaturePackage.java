@@ -180,106 +180,6 @@ public interface FeaturePackage extends EPackage
 	int FEATURE_FEATURE_COUNT = XtendPackage.XTEND_CLASS_FEATURE_COUNT + 3;
 
 	/**
-	 * The meta object id for the '{@link org.jnario.feature.feature.impl.BackgroundImpl <em>Background</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.jnario.feature.feature.impl.BackgroundImpl
-	 * @see org.jnario.feature.feature.impl.FeaturePackageImpl#getBackground()
-	 * @generated
-	 */
-	int BACKGROUND = 1;
-
-	/**
-	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BACKGROUND__ANNOTATIONS = XtendPackage.XTEND_CLASS__ANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BACKGROUND__NAME = XtendPackage.XTEND_CLASS__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Extends</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BACKGROUND__EXTENDS = XtendPackage.XTEND_CLASS__EXTENDS;
-
-	/**
-	 * The feature id for the '<em><b>Implements</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BACKGROUND__IMPLEMENTS = XtendPackage.XTEND_CLASS__IMPLEMENTS;
-
-	/**
-	 * The feature id for the '<em><b>Super Types</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BACKGROUND__SUPER_TYPES = XtendPackage.XTEND_CLASS__SUPER_TYPES;
-
-	/**
-	 * The feature id for the '<em><b>Members</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BACKGROUND__MEMBERS = XtendPackage.XTEND_CLASS__MEMBERS;
-
-	/**
-	 * The feature id for the '<em><b>Super Call Referable</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BACKGROUND__SUPER_CALL_REFERABLE = XtendPackage.XTEND_CLASS__SUPER_CALL_REFERABLE;
-
-	/**
-	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BACKGROUND__TYPE_PARAMETERS = XtendPackage.XTEND_CLASS__TYPE_PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Steps</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BACKGROUND__STEPS = XtendPackage.XTEND_CLASS_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Background</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BACKGROUND_FEATURE_COUNT = XtendPackage.XTEND_CLASS_FEATURE_COUNT + 1;
-
-	/**
 	 * The meta object id for the '{@link org.jnario.feature.feature.impl.ScenarioImpl <em>Scenario</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -387,6 +287,115 @@ public interface FeaturePackage extends EPackage
 	 * @ordered
 	 */
 	int SCENARIO_FEATURE_COUNT = XtendPackage.XTEND_CLASS_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.jnario.feature.feature.impl.BackgroundImpl <em>Background</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.jnario.feature.feature.impl.BackgroundImpl
+	 * @see org.jnario.feature.feature.impl.FeaturePackageImpl#getBackground()
+	 * @generated
+	 */
+	int BACKGROUND = 1;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BACKGROUND__ANNOTATIONS = SCENARIO__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BACKGROUND__NAME = SCENARIO__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Extends</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BACKGROUND__EXTENDS = SCENARIO__EXTENDS;
+
+	/**
+	 * The feature id for the '<em><b>Implements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BACKGROUND__IMPLEMENTS = SCENARIO__IMPLEMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Super Types</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BACKGROUND__SUPER_TYPES = SCENARIO__SUPER_TYPES;
+
+	/**
+	 * The feature id for the '<em><b>Members</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BACKGROUND__MEMBERS = SCENARIO__MEMBERS;
+
+	/**
+	 * The feature id for the '<em><b>Super Call Referable</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BACKGROUND__SUPER_CALL_REFERABLE = SCENARIO__SUPER_CALL_REFERABLE;
+
+	/**
+	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BACKGROUND__TYPE_PARAMETERS = SCENARIO__TYPE_PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Examples</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BACKGROUND__EXAMPLES = SCENARIO__EXAMPLES;
+
+	/**
+	 * The feature id for the '<em><b>Steps</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BACKGROUND__STEPS = SCENARIO__STEPS;
+
+	/**
+	 * The number of structural features of the '<em>Background</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BACKGROUND_FEATURE_COUNT = SCENARIO_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.feature.feature.impl.StepImpl <em>Step</em>}' class.
@@ -1211,17 +1220,6 @@ public interface FeaturePackage extends EPackage
 	EClass getBackground();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.jnario.feature.feature.Background#getSteps <em>Steps</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Steps</em>'.
-	 * @see org.jnario.feature.feature.Background#getSteps()
-	 * @see #getBackground()
-	 * @generated
-	 */
-	EReference getBackground_Steps();
-
-	/**
 	 * Returns the meta object for class '{@link org.jnario.feature.feature.Scenario <em>Scenario</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1505,14 +1503,6 @@ public interface FeaturePackage extends EPackage
 		 * @generated
 		 */
 		EClass BACKGROUND = eINSTANCE.getBackground();
-
-		/**
-		 * The meta object literal for the '<em><b>Steps</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference BACKGROUND__STEPS = eINSTANCE.getBackground_Steps();
 
 		/**
 		 * The meta object literal for the '{@link org.jnario.feature.feature.impl.ScenarioImpl <em>Scenario</em>}' class.
