@@ -99,22 +99,6 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     return _builder;
   }
   
-  protected CharSequence _generate(final Background bg) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<h3>Background</h3>");
-    _builder.newLine();
-    {
-      EList<XtendMember> _steps = bg.getSteps();
-      Iterable<Step> _filter = Iterables.<Step>filter(_steps, Step.class);
-      for(final Step step : _filter) {
-        CharSequence _generate = this.generate(step);
-        _builder.append(_generate, "");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    return _builder;
-  }
-  
   protected CharSequence _generate(final Scenario scenario) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<h3>");
@@ -174,10 +158,8 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
   
   protected CharSequence _generate(final Step step) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<p>");
     String _format = this.format(step);
     _builder.append(_format, "");
-    _builder.append("</p>");
     _builder.newLineIfNotEmpty();
     CharSequence _addCodeBlock = this.addCodeBlock(step);
     _builder.append(_addCodeBlock, "");
@@ -192,12 +174,14 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
       String _firstWord = Strings.getFirstWord(result);
       String _plus = ("(" + _firstWord);
       String _plus_1 = (_plus + ")");
-      String _replaceFirst = result.replaceFirst(_plus_1, "**$1**");
+      String _replaceFirst = result.replaceFirst(_plus_1, "<strong>$1</strong>");
       result = _replaceFirst;
-      String _replaceAll = result.replaceAll("\"(.*?)\"", "<code>$1</code>");
+      String _plus_2 = (" " + result);
+      String _replaceAll = _plus_2.replaceAll("\"(.*?)\"", "<code>$1</code>");
       result = _replaceAll;
       String _markdown2Html = this.markdown2Html(result);
-      _xblockexpression = (_markdown2Html);
+      String _result = result = _markdown2Html;
+      _xblockexpression = (_result);
     }
     return _xblockexpression;
   }
@@ -238,18 +222,16 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     return _xblockexpression;
   }
   
-  public CharSequence generate(final Object bg) {
-    if (bg instanceof Background) {
-      return _generate((Background)bg);
-    } else if (bg instanceof Scenario) {
-      return _generate((Scenario)bg);
-    } else if (bg instanceof Step) {
-      return _generate((Step)bg);
-    } else if (bg instanceof Iterable) {
-      return _generate((Iterable<Step>)bg);
+  public CharSequence generate(final Object scenario) {
+    if (scenario instanceof Scenario) {
+      return _generate((Scenario)scenario);
+    } else if (scenario instanceof Step) {
+      return _generate((Step)scenario);
+    } else if (scenario instanceof Iterable) {
+      return _generate((Iterable<Step>)scenario);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(bg).toString());
+        Arrays.<Object>asList(scenario).toString());
     }
   }
 }

@@ -18,7 +18,6 @@ import org.jnario.feature.naming.JavaNameProvider
 import org.jnario.feature.naming.StepNameProvider
 import static extension org.jnario.util.Strings.*
 import static org.jnario.doc.HtmlFile.*
-import org.jnario.feature.feature.Background
 import org.eclipse.xtext.serializer.ISerializer
 
 class FeatureDocGenerator extends AbstractDocGenerator {
@@ -52,13 +51,6 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 		«ENDFOR»
 	'''
 
-	def dispatch generate(Background bg)'''
-		<h3>Background</h3>
-		«FOR step : bg.steps.filter(typeof(Step))»
-		«generate(step)»
-		«ENDFOR»
-	'''
-
 	def dispatch generate(Scenario scenario)'''
 		<h3>«scenario.name»</h3>
 		«generate(scenario.steps.filter(typeof(Step)))»
@@ -80,15 +72,15 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 	'''
 	
 	def dispatch generate(Step step)'''
-		<p>«step.format»</p>
+		«step.format»
 		«step.addCodeBlock»
 	'''
 
 	def format(Step step){
 		var result = step.nameOf
-		result = result.replaceFirst("(" + result.firstWord + ")", "**$1**")
-		result = result.replaceAll("\"(.*?)\"", "<code>$1</code>")
-		result.markdown2Html
+		result = result.replaceFirst("(" + result.firstWord + ")", "<strong>$1</strong>")
+		result = (" " + result).replaceAll("\"(.*?)\"", "<code>$1</code>")
+		result = result.markdown2Html
 	}
 
 	def CharSequence addCodeBlock(Step step){

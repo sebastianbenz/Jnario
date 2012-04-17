@@ -3,6 +3,7 @@ package org.jnario.feature.naming;
 import com.google.common.base.Objects;
 import com.google.common.base.Strings;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepReference;
@@ -17,12 +18,21 @@ public class StepNameProvider {
   private static String MULTILINE = "\\\\( |\t)*\r?\n?( |\t)*";
   
   public String nameOf(final Step step) {
+    String _xifexpression = null;
     if ((step instanceof StepReference)) {
       String _nameOf = this.nameOf(((StepReference) step));
-      return _nameOf==null?(String)null:this.removeExtraCharacters(_nameOf);
+      _xifexpression = _nameOf;
+    } else {
+      String _name = step.getName();
+      String _removeExtraCharacters = _name==null?(String)null:this.removeExtraCharacters(new Function0<String>() {
+        public String apply() {
+          String _name = step.getName();
+          return _name;
+        }
+      }.apply());
+      _xifexpression = _removeExtraCharacters;
     }
-    String _name = step.getName();
-    return _name==null?(String)null:this.removeExtraCharacters(_name);
+    return _xifexpression;
   }
   
   public String nameOf(final StepReference ref) {

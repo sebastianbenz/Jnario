@@ -24,8 +24,11 @@ class StepNameProvider {
 	private static String MULTILINE = "\\\\( |\t)*\r?\n?( |\t)*"
 	
 	def nameOf(Step step){
-		if(step instanceof StepReference) return nameOf(step as StepReference)?.removeExtraCharacters
-		return step.name?.removeExtraCharacters
+		if(step instanceof StepReference){
+			nameOf(step as StepReference)
+		} else{
+			step.name 
+		}?.removeExtraCharacters
 	}
 	
 	def String nameOf(StepReference ref){
