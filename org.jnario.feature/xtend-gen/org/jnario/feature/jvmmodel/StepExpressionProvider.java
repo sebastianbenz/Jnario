@@ -3,7 +3,6 @@ package org.jnario.feature.jvmmodel;
 import com.google.common.base.Objects;
 import java.util.List;
 import org.eclipse.xtext.EcoreUtil2;
-import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
@@ -34,14 +33,14 @@ public class StepExpressionProvider {
     return blockExpression.getExpressions();
   }
   
-  public StepExpression expressionOf(final Step step, final JvmGenericType type) {
+  public StepExpression expressionOf(final Step step) {
     if ((step instanceof StepReference)) {
-      this.getOrCreateExpression(((StepReference) step), type);
+      this.getOrCreateExpression(((StepReference) step));
     }
     return step.getStepExpression();
   }
   
-  public StepExpression getOrCreateExpression(final StepReference ref, final JvmGenericType type) {
+  public StepExpression getOrCreateExpression(final StepReference ref) {
     StepExpression _stepExpression = ref.getStepExpression();
     boolean _notEquals = (!Objects.equal(_stepExpression, null));
     if (_notEquals) {

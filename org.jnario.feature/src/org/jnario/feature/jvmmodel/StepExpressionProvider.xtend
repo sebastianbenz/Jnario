@@ -7,13 +7,12 @@
  *******************************************************************************/
 package org.jnario.feature.jvmmodel
 
+import java.util.List
 import org.eclipse.xtext.EcoreUtil2
-import org.eclipse.xtext.common.types.JvmGenericType
+import org.eclipse.xtext.xbase.XExpression
 import org.jnario.feature.feature.Step
 import org.jnario.feature.feature.StepExpression
 import org.jnario.feature.feature.StepReference
-import org.eclipse.xtext.xbase.XExpression
-import java.util.List
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -35,14 +34,14 @@ class StepExpressionProvider {
 		return blockExpression.getExpressions();
  	}
  
-	def expressionOf(Step step, JvmGenericType type){
+	def expressionOf(Step step){
 		if(step instanceof StepReference){
-			getOrCreateExpression(step as StepReference, type)
+			getOrCreateExpression(step as StepReference)
 		}
 		return step.stepExpression
 	}
 	
-	def getOrCreateExpression(StepReference ref, JvmGenericType type){
+	def getOrCreateExpression(StepReference ref){
 		if(ref.stepExpression != null)
 			return ref.stepExpression
 		val step = ref?.reference

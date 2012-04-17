@@ -87,6 +87,9 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 
 	def CharSequence addCodeBlock(Step step){
 		val expressions = step.stepExpression?.blockExpression?.expressions
+		if(expressions == null){
+			return ""
+		}
 		for(expr : expressions.filter(typeof(XStringLiteral))){
 			return '''<pre>«expr.value.normalize.codeToHtml»</pre>'''
 		}

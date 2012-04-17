@@ -190,6 +190,10 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     StepExpression _stepExpression = step.getStepExpression();
     XBlockExpression _blockExpression = _stepExpression==null?(XBlockExpression)null:_stepExpression.getBlockExpression();
     final EList<XExpression> expressions = _blockExpression==null?(EList<XExpression>)null:_blockExpression.getExpressions();
+    boolean _equals = Objects.equal(expressions, null);
+    if (_equals) {
+      return "";
+    }
     Iterable<XStringLiteral> _filter = Iterables.<XStringLiteral>filter(expressions, XStringLiteral.class);
     for (final XStringLiteral expr : _filter) {
       StringConcatenation _builder = new StringConcatenation();

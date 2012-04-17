@@ -274,15 +274,20 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   }
   
   public JvmGenericType infer(final Scenario scenario, final FeatureFile featureFile, final String className, final JvmGenericType superClass) {
-    JvmParameterizedTypeReference _createTypeRef = superClass==null?(JvmParameterizedTypeReference)null:this._typeReferences.createTypeRef(superClass);
-    scenario.setExtends(_createTypeRef);
-    final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
-        public void apply(final JvmGenericType it) {
-          String _package = featureFile.getPackage();
-          it.setPackageName(_package);
-        }
-      };
-    return this._extendedJvmTypesBuilder.toClass(scenario, className, _function);
+    JvmGenericType _xblockexpression = null;
+    {
+      JvmParameterizedTypeReference _createTypeRef = superClass==null?(JvmParameterizedTypeReference)null:this._typeReferences.createTypeRef(superClass);
+      scenario.setExtends(_createTypeRef);
+      final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
+          public void apply(final JvmGenericType it) {
+            String _package = featureFile.getPackage();
+            it.setPackageName(_package);
+          }
+        };
+      JvmGenericType _class = this._extendedJvmTypesBuilder.toClass(scenario, className, _function);
+      _xblockexpression = (_class);
+    }
+    return _xblockexpression;
   }
   
   public void generateStepValues(final Iterable<XtendMember> steps) {
@@ -471,7 +476,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
       JvmTypeReference _typeForName = this._typeReferences.getTypeForName(Void.TYPE, step);
       final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
           public void apply(final JvmOperation it) {
-            StepExpression _expressionOf = FeatureJvmModelInferrer.this._stepExpressionProvider.expressionOf(step, inferredJvmType);
+            StepExpression _expressionOf = FeatureJvmModelInferrer.this._stepExpressionProvider.expressionOf(step);
             XBlockExpression _blockExpression = _expressionOf==null?(XBlockExpression)null:_expressionOf.getBlockExpression();
             FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, _blockExpression);
             FeatureJvmModelInferrer.this.generateStepValues(step);
@@ -483,7 +488,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
             JvmAnnotationReference _annotation = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(step, Order.class, Integer.valueOf(_intValue));
             FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_1, _annotation);
             String name = FeatureJvmModelInferrer.this._stepNameProvider.nameOf(step);
-            StepExpression _expressionOf_1 = FeatureJvmModelInferrer.this._stepExpressionProvider.expressionOf(step, inferredJvmType);
+            StepExpression _expressionOf_1 = FeatureJvmModelInferrer.this._stepExpressionProvider.expressionOf(step);
             boolean _equals = Objects.equal(_expressionOf_1, null);
             if (_equals) {
               String _plus = ("[PENDING] " + name);
@@ -524,7 +529,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     JvmTypeReference _typeForName = this._typeReferences.getTypeForName(Void.TYPE, step);
     final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
         public void apply(final JvmOperation it) {
-          StepExpression _expressionOf = FeatureJvmModelInferrer.this._stepExpressionProvider.expressionOf(step, inferredJvmType);
+          StepExpression _expressionOf = FeatureJvmModelInferrer.this._stepExpressionProvider.expressionOf(step);
           XBlockExpression _blockExpression = _expressionOf==null?(XBlockExpression)null:_expressionOf.getBlockExpression();
           FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, _blockExpression);
           FeatureJvmModelInferrer.this.generateStepValues(step);

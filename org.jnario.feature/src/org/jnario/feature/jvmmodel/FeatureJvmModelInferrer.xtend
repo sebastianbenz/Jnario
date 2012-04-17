@@ -189,7 +189,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	
    	def infer(Scenario scenario, FeatureFile featureFile, String className, JvmGenericType superClass){
    		scenario.^extends = superClass?.createTypeRef()
-   		return scenario.toClass(className)[
+   		scenario.toClass(className)[
 			packageName = featureFile.^package
    		]	
    	}
@@ -289,12 +289,12 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	
 	def transform(Step step, JvmGenericType inferredJvmType, int order, Scenario scenario) {
 		inferredJvmType.members += step.toMethod(step.nameOf.javaMethodName, getTypeForName(Void::TYPE, step))[
-			body = step.expressionOf(inferredJvmType)?.blockExpression
+			body = step.expressionOf?.blockExpression
 			step.generateStepValues
 			annotations += step.getTestAnnotations(false)
 			annotations += step.toAnnotation(typeof(Order), order.intValue)
 			var name = step.nameOf
-			if(step.expressionOf(inferredJvmType) == null){
+			if(step.expressionOf== null){
 				name = "[PENDING] " + name
 				annotations += step.toAnnotation(typeof(Ignore))
 			}
@@ -315,7 +315,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	
    	def transform(Step step, JvmGenericType inferredJvmType){
    		inferredJvmType.members += step.toMethod(step.nameOf.javaMethodName, getTypeForName(Void::TYPE, step))[
-			body = step.expressionOf(inferredJvmType)?.blockExpression
+			body = step.expressionOf?.blockExpression
 			step.generateStepValues
 		]
    	}
