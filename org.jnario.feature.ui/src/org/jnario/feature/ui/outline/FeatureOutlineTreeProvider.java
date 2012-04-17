@@ -25,6 +25,7 @@ public class FeatureOutlineTreeProvider extends XtendOutlineTreeProvider {
 	
 	@Override
 	protected void createFeatureNodes(IOutlineNode parentNode, XtendClass xtendClass) {
+		super.createFeatureNodes(parentNode, xtendClass);
 		if (xtendClass instanceof Feature) {
 			Feature feature = (Feature) xtendClass;
 			Background background = feature.getBackground();
@@ -37,7 +38,6 @@ public class FeatureOutlineTreeProvider extends XtendOutlineTreeProvider {
 				createFeatureNodes(classNode, member);
 			}
 		}
-		super.createFeatureNodes(parentNode, xtendClass);
 	}
 	
 	protected boolean _isLeaf(Scenario element) {

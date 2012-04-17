@@ -7,11 +7,12 @@
  *******************************************************************************/
 package org.jnario.spec.ui.outline;
 
-import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
-import org.eclipse.xtend.ide.outline.XtendOutlineTreeProvider;
-import org.eclipse.xtend.core.xtend.XtendClass;
-import org.eclipse.xtend.core.xtend.XtendMember;
+import static com.google.common.collect.Iterables.filter;
 
+import org.eclipse.xtend.core.xtend.XtendClass;
+import org.eclipse.xtend.ide.outline.XtendOutlineTreeProvider;
+import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
+import org.eclipse.xtext.ui.editor.outline.impl.EObjectNode;
 import org.jnario.spec.spec.ExampleGroup;
 
 /**
@@ -22,8 +23,14 @@ public class SpecOutlineTreeProvider extends XtendOutlineTreeProvider {
 
 	@Override
 	protected void createFeatureNodes(IOutlineNode parentNode, XtendClass xtendClass) {
-		for (XtendMember member : xtendClass.getMembers())
-			createEObjectNode(parentNode, member);
+		super.createFeatureNodes(parentNode, xtendClass);
+		if (xtendClass instanceof ExampleGroup) {
+			ExampleGroup exampleGroup = (ExampleGroup) xtendClass;
+			for (ExampleGroup child : filter(exampleGroup.getMembers(), ExampleGroup.class)) {
+				EObjectNode classNode = createEObjectNode(parentNode, child);
+				createFeatureNodes(classNode, child);
+			}
+		}
 	}
 	
 	protected boolean _isLeaf(ExampleGroup element) {
