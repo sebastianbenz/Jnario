@@ -15,7 +15,6 @@ import org.eclipse.xtext.parser.antlr.TokenAcceptor
 import org.jnario.feature.parser.FeatureTokenSource
 
 import static org.jnario.feature.parser.antlr.internal.InternalFeatureLexer.*
-import static tests.FeatureTokenSourceSpec.*
 
 import static extension org.jnario.lib.Should.*
 describe FeatureTokenSource{

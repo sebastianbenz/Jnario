@@ -14,8 +14,8 @@ Feature: Access of variables
 
 	Scenario: Access a variable in the same step it was declared in
 		Given a jnario file
-			var jnarioFile = '
-				package bootstrap
+			jnarioFile = '
+				package bootstrap1
 				Feature: Variable test
 					Scenario: Some scenario
 						Given a step with a variable
@@ -27,11 +27,11 @@ Feature: Access of variables
 	
 	Scenario: Access a variable that was declared in a different step
 		Given a jnario file
-			var jnarioFile = '
-				package bootstrap
+			jnarioFile = '
+				package bootstrap2
 				Feature: Variable test
 					Scenario: Some scenario
-						public int x
+						int x
 						Given a step with a variable
 							x = 3
 						When I assign it a different value
@@ -42,12 +42,12 @@ Feature: Access of variables
 	
 	Scenario: Access a variable that was assigned a value of a variable defined in a different step
 		Given a jnario file
-			var jnarioFile = '
-				package bootstrap
+			jnarioFile = '
+				package bootstrap3
 				Feature: Variable test
 					Scenario: Some scenario
-						public int x
-						public int y
+						int x
+						int y
 						Given a step with a variable
 							x = 3
 						When I assign it a different value
@@ -60,11 +60,11 @@ Feature: Access of variables
 	
 	Scenario: Access a variable declared in background step
 		Given a jnario file
-			var jnarioFile = '
-				package bootstrap
+			jnarioFile = '
+				package bootstrap4
 				Feature: Variable test
 					Background:
-						public int x
+						int x
 						Given some variable
 							x = 3
 					Scenario: Some scenario
@@ -76,15 +76,15 @@ Feature: Access of variables
 	
 	Scenario: Access a variable referencing a variable from background step
 		Given a jnario file
-			var jnarioFile = '
-				package bootstrap
+			jnarioFile = '
+				package bootstrap5
 				Feature: Variable test
 					Background:
-						public int x
+						int x
 						Given some variable
 							x = 3
 					Scenario: Some scenario
-							public int y
+							int y
 							When assigning the variable
 								y = x
 							Then it should be accessible

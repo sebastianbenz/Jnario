@@ -90,8 +90,9 @@ public class FeatureTokenSource extends AbstractSplittingTokenSource {
 		}
 		
 		int stop = firstLine.length();
+		int featureStop = featureText.length()-1;
 		if(lines.size() == 1){
-			tokens.add(ruleFeatureText(), 0, featureText.length()-1, 1, index);
+			tokens.add(ruleFeatureText(), 0, featureStop, 1, index);
 			return;
 		}
 		tokens.add(ruleFeatureText(), 0, stop, 1, index);
@@ -101,18 +102,18 @@ public class FeatureTokenSource extends AbstractSplittingTokenSource {
 			index = startsWithWord(line, BACKGROUND_KEYWORD);
 			if(index != -1){
 				tokens.add(ruleText(), endOfFeature, stop + index, 2, 0);
-				tokens.add(ruleBackground(), stop + index + 1, featureText.length()-1, lineNr + 1, index);
+				tokens.add(ruleBackground(), stop + index + 1, featureStop, lineNr + 1, index);
 				return;
 			}
 			index = startsWithWord(line, SCENARIO_KEYWORD);
 			if(index != -1){
 				tokens.add(ruleText(), endOfFeature, stop + index, 2, 0);
-				tokens.add(ruleScenario(), stop + index + 1, featureText.length()-1, lineNr + 1, index);
+				tokens.add(ruleScenario(), stop + index + 1, featureStop, lineNr + 1, index);
 				return;
 			}
 			stop += line.length() + 1;
 		}
-		tokens.add(ruleText(), endOfFeature, featureText.length()-1, 2, 0);
+		tokens.add(ruleText(), endOfFeature, featureStop, 2, 0);
 	}
 
 	protected int ruleScenario() {

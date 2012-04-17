@@ -1,0 +1,10 @@
+package mypackage
+
+import packages
+
+Suite: Feature Language
+
+Here comes some text with mark down.
+
+- [Implicit Subject]
+- This is a reference with description [A reference]

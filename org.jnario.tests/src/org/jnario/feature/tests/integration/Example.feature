@@ -13,14 +13,11 @@ package org.jnario.feature.tests.integration
 Feature: Examples.
 	Scenario: Example tables.
 		Given some variables.
-		When I add them
+		When I add them x and y
 		Then the sum should be the result.
 			(x + y + 1) => z
 		Examples:
 		|x|y|z|
 		|1|2|4|
 		|3|6|10|
-		
-		Examples: some examples
-		|x|z|
-		|4|5|		
+  

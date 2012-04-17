@@ -241,7 +241,7 @@ describe "Jnario Features - Tutorial"{
 	        
 	        Examples:
 	        
-            |  a  |  b  | expected |
+	          |  a  |  b  | expected |
 	          |  8  |  1  |     8    |
 	        
          '''.executesSuccessfully

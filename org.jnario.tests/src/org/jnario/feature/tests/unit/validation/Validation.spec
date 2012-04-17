@@ -8,7 +8,6 @@
 package org.jnario.feature.tests.unit.validation
 
 import com.google.inject.Inject
-import org.jnario.feature.feature.GivenReference
 import org.jnario.runner.InstantiateWith
 import org.jnario.jnario.test.util.ModelStore
 import org.jnario.jnario.test.util.SpecTestInstantiator

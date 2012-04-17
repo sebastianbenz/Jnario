@@ -8,7 +8,6 @@
  package org.jnario.spec.tests.integration
 
 import static extension org.jnario.jnario.test.util.Helpers.*
-import org.junit.Ignore
 
 describe "Assertion"{
 	

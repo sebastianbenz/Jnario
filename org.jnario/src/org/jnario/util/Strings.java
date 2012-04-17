@@ -78,7 +78,7 @@ public class Strings extends org.eclipse.xtext.util.Strings{
 		for(int i = 0; i < string.length(); i++){
 			char c = string.charAt(i);
 			if(!isWhitespace(c)){
-				for(int j = 0; j < word.length(); j++){
+				for(int j = 0; j < word.length() && i + j < string.length(); j++){
 					if(word.charAt(j) != string.charAt(i + j)){
 						return -1;
 					}

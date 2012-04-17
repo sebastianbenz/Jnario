@@ -1,0 +1,3 @@
+package org.jnario.feature.tests.unit.parser.examples
+
+Feature: This is a parser test with just a feature

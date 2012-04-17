@@ -20,7 +20,7 @@ public abstract class ExampleTableRow {
 		this.cells = cells;
 	}
 	
-	List<String> getCells(){
+	public List<String> getCells(){
 		return cells;
 	}
 	

@@ -14,7 +14,6 @@ import java.util.List;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtext.common.types.JvmTypeReference;
-import org.eclipse.xtext.common.types.util.TypeConformanceComputer;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.validation.AbstractDeclarativeValidator;
 import org.eclipse.xtext.validation.Check;
@@ -39,9 +38,6 @@ public class JnarioJavaValidator extends AbstractDeclarativeValidator {
 	
 	@Inject 
 	private ITypeProvider typeProvider;
-	
-	@Inject
-	private TypeConformanceComputer conformanceComputer;
 	
 	@Inject 
 	private TypeReferences typeReferences;

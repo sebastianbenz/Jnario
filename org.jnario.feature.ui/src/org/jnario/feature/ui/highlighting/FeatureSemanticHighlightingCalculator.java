@@ -69,10 +69,17 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 		}
 		
 		@Override
-		public Boolean caseFeature(Feature object) {
-			List<INode> nodes = findNodesForFeature(object, XtendPackage.Literals.XTEND_CLASS__NAME);
+		public Boolean caseFeature(Feature feature) {
+			List<INode> nodes = findNodesForFeature(feature, XtendPackage.Literals.XTEND_CLASS__NAME);
 			for (INode node : nodes) {
 				highlightNode(node, FeatureHighlightingConfiguration.FEATURE_ID, acceptor);
+			}
+			// there is an xtext problem if the splitted token is the only rule present
+			if(feature.getBackground() == null && feature.getScenarios().isEmpty()){
+				nodes = findNodesForFeature(feature, FeaturePackage.Literals.FEATURE__DESCRIPTION);
+				for (INode node : nodes) {
+					highlightNode(node, FeatureHighlightingConfiguration.STEP_TEXT_ID, acceptor);
+				}
 			}
 			return Boolean.TRUE;
 		}

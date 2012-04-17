@@ -37,6 +37,8 @@ import com.google.inject.Inject;
 @SuppressWarnings("restriction")
 public class ExampleNameProvider {
 
+	private static final String SPEC_POSTFIX = "Spec";
+
 	@Inject(optional=true) 
 	private OperationNameProvider operationNameProvider = new OperationNameProvider();
 	
@@ -91,7 +93,7 @@ public class ExampleNameProvider {
 
 	public String toJavaClassName(ExampleGroup exampleGroup) {
 		StringBuilder result = internalGetName(exampleGroup);
-		result.append("Spec");
+		result.append(SPEC_POSTFIX);
 		return result.toString();
 	}
 

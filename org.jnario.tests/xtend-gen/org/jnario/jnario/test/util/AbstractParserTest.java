@@ -6,8 +6,11 @@ import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.Resource.Factory.Registry;
 import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.resource.FileExtensionProvider;
 import org.eclipse.xtext.validation.Issue;
@@ -18,6 +21,7 @@ import org.jnario.jnario.test.util.ClassPathUriProviderBuilder;
 import org.jnario.jnario.test.util.IUriProvider;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.Resources;
+import org.junit.Before;
 import org.junit.Test;
 
 @SuppressWarnings("all")
@@ -27,6 +31,17 @@ public class AbstractParserTest {
   
   @Inject
   private FileExtensionProvider fileExtensionProvider;
+  
+  @Before
+  public void setup() {
+    Set<String> _fileExtensions = this.fileExtensionProvider.getFileExtensions();
+    final String fileExtension = IterableExtensions.<String>head(_fileExtensions);
+    Map<String,Object> _extensionToFactoryMap = Registry.INSTANCE.getExtensionToFactoryMap();
+    final Object factory = _extensionToFactoryMap.get(fileExtension);
+    Map<String,Object> _extensionToFactoryMap_1 = Registry.INSTANCE.getExtensionToFactoryMap();
+    String _plus = (fileExtension + "_");
+    _extensionToFactoryMap_1.put(_plus, factory);
+  }
   
   @Test
   public void shouldParseAllFilesWithoutParseError() {
@@ -72,8 +87,24 @@ public class AbstractParserTest {
   }
   
   public boolean onlySpecFiles(final URI uri) {
-    String _fileExtension = uri.fileExtension();
-    return this.fileExtensionProvider.isValid(_fileExtension);
+    String _strippedFileExtension = this.strippedFileExtension(uri);
+    return this.fileExtensionProvider.isValid(_strippedFileExtension);
+  }
+  
+  public String strippedFileExtension(final URI uri) {
+    String _xblockexpression = null;
+    {
+      final String fileExtension = uri==null?(String)null:uri.fileExtension();
+      boolean _equals = Objects.equal(fileExtension, null);
+      if (_equals) {
+        return "";
+      }
+      int _length = fileExtension.length();
+      int _minus = (_length - 1);
+      String _substring = fileExtension.substring(0, _minus);
+      _xblockexpression = (_substring);
+    }
+    return _xblockexpression;
   }
   
   public String errorMessage(final Iterable<Issue> issues) {

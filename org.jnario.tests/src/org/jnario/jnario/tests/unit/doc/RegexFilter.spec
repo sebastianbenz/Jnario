@@ -7,7 +7,6 @@
  *******************************************************************************/
 package org.jnario.jnario.tests.unit.doc
 
-import org.jnario.doc.Filter
 import org.jnario.doc.RegexFilter
 
 describe RegexFilter {

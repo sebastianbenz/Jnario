@@ -16,7 +16,7 @@ import static extension org.jnario.jnario.test.util.FeatureExecutor.*
 Feature: Backgrounds
 
 	Scenario: It is possible to add a background to a feature
-		public String jnarioFile
+		CharSequence jnarioFile
 		Given I have a feature with a background
 			jnarioFile = "
 				package bootstrap

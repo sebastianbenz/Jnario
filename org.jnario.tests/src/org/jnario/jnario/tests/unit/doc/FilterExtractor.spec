@@ -9,7 +9,6 @@ package org.jnario.jnario.tests.unit.doc
 
 import java.util.List
 import org.jnario.doc.FilterExtractor
-import org.jnario.doc.Filter
 
 describe FilterExtractor {
 	

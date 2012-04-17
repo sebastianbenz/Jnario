@@ -15,14 +15,10 @@ Scenario: And stuff.
 public int x
 public int y
 public int z
-Given some variables.
+Given two numbers.
 	x = 3
 	y = 5
-	z = 7
-And some values.
-	x = 5
-	y = 3
+And their sum.
 	z = 8
-When I add those numbers them
-Then the sum should be the result.
+Then the adding these should be the result.
 	(x+y) => z

@@ -5,12 +5,6 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-// Copyright (c) 2011 itemis AG (http://www.itemis.eu) and others.
-// All rights reserved. This program and the accompanying materials
-// are made available under the terms of the Eclipse Public License v1.0
-// which accompanies this distribution, and is available at
-// http://www.eclipse.org/legal/epl-v10.html
-
 
 /**
  * @fileoverview
@@ -68,10 +62,8 @@ PR['registerLangHandler'](
 	         [PR['PR_STRING'],      /^'(?:[^\r\n\\']|\\(?:'|[^\r\n']+))'/],
 	         [PR['PR_LITERAL'],     /^'[a-zA-Z_$][\w$]*(?!['$\w])/],
 	         [PR['PR_KEYWORD'],     /^(?:abstract|boolean|case|catch|char|class|create|def|default|do|double|else|extends|extension|final|finally|float|for|if|implements|import|int|long|new|override|package|private|protected|return|short|static|super|switch|throw|try|typeof|val|var|void|while)\b/],
-	         [PR['PR_TAG'],     /^(?: Ran.tanplan" +
-	         		"And|Feature|Scenario|Background|Examples|Given|When|Then|args|true|false|null|this|forEach)\b/],
+	         [PR['PR_TAG'],     /^(?:And|Feature|Scenario|Background|Examples|Given|When|Then|args|true|false|null|this|forEach)\b/],
 	         [PR['PR_LITERAL'],     /^(?:(?:0(?:[0-7]+|X[0-9A-F]+))L?|(?:(?:0|[1-9][0-9]*)(?:(?:\.[0-9]+)?(?:E[+\-]?[0-9]+)?F?|L?))|\\.[0-9]+(?:E[+\-]?[0-9]+)?F?)/i],
-	         // Treat upper camel case identifiers as types.
 	         [PR['PR_PLAIN'],       /^[$a-zA-Z_][\w$]*/],
 	         [PR['PR_COMMENT'],     /^\/(?:\/.*|\*(?:\/|\**[^*/])*(?:\*+\/?)?)/],
 	         [PR['PR_PUNCTUATION'], /^(?:\.+|\/)/]

@@ -12,8 +12,10 @@ import com.google.inject.Inject
 import org.eclipse.emf.common.util.URI
 import org.eclipse.xtext.resource.FileExtensionProvider
 import org.eclipse.xtext.validation.Issue
+import org.junit.Before
 import org.junit.Test
 
+import static org.eclipse.emf.ecore.resource.Resource$Factory$Registry.*
 import static org.jnario.jnario.test.util.ClassPathUriProviderBuilder.*
 
 import static extension org.jnario.jnario.test.util.Resources.*
@@ -22,6 +24,13 @@ class AbstractParserTest{
 	
 	@Inject extension ModelStore
 	@Inject FileExtensionProvider fileExtensionProvider
+	
+	@Before
+	def void setup(){
+		val fileExtension = fileExtensionProvider.fileExtensions.head
+		val factory = INSTANCE.extensionToFactoryMap.get(fileExtension)
+		INSTANCE.extensionToFactoryMap.put(fileExtension + "_", factory)
+	}
 	
 	@Test
 	def void shouldParseAllFilesWithoutParseError(){
@@ -38,7 +47,15 @@ class AbstractParserTest{
 	}
 	
 	def onlySpecFiles(URI uri){
-		return fileExtensionProvider.isValid(uri.fileExtension)
+		return fileExtensionProvider.isValid(uri.strippedFileExtension)
+	}
+	
+	def strippedFileExtension(URI uri){
+		val fileExtension = uri?.fileExtension
+		if(fileExtension == null){
+			return ""
+		}
+		fileExtension.substring(0, fileExtension.length - 1)
 	}
 	
 	def errorMessage(Iterable<Issue> issues){
