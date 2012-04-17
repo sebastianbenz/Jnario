@@ -29,6 +29,7 @@
     <module>org.jnario.feature.ui</module>
     <module>org.jnario.spec.ui</module>
     <module>org.jnario.ui-feature</module>
+	<module>org.jnario.sdk</module>
     <module>org.jnario.updatesite</module>
   </modules>
   
@@ -62,7 +63,19 @@
   
   <build>
      <plugins>
-   
+	  <plugin>
+    	  <groupId>org.eclipse.tycho</groupId>
+	        <artifactId>tycho-source-plugin</artifactId>
+	        <version>${tycho-version}</version>
+	        <executions>
+	          <execution>
+	            <id>plugin-source</id>
+	            <goals>
+	              <goal>plugin-source</goal>
+	            </goals>
+	          </execution>
+	        </executions>
+	      </plugin>
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>tycho-source-plugin</artifactId>

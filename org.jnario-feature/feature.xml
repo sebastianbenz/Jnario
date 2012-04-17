@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.jnario"
-      label="Feature Runtime"
+      label="%featureName"
       version="0.1.0.qualifier"
-      provider-name="BMW Car IT">
+      provider-name="%providerName">
 
    <description>
       %description
@@ -24,24 +24,20 @@ http://www.eclipse.org/legal/epl-v10.html Description here.
 
    <requires>
       <import plugin="org.eclipse.xtext" version="2.3.0" match="greaterOrEqual"/>
-      <import plugin="org.apache.log4j" version="1.2.15" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.util"/>
       <import plugin="org.eclipse.emf.ecore"/>
       <import plugin="org.eclipse.emf.common"/>
       <import plugin="org.antlr.runtime"/>
       <import plugin="org.eclipse.xtext.common.types"/>
-      <import plugin="org.junit" version="4.8.2" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtext.xbase.lib" version="2.3.0"/>
-      <import plugin="org.apache.commons.logging"/>
-      <import plugin="org.eclipse.xtext.xbase" version="2.3.0" match="greaterOrEqual"/>
-      <import plugin="org.objectweb.asm"/>
       <import plugin="org.eclipse.xtend.core" version="2.3.0" match="greaterOrEqual"/>
-      <import plugin="org.junit4" version="4.8.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.xbase.lib" version="2.3.0" match="greaterOrEqual"/>
+      <import plugin="org.hamcrest"/>
+      <import plugin="org.eclipse.xtext.xbase" version="2.3.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.jdt.core" match="greaterOrEqual"/>
-      <import plugin="org.hamcrest.core" version="1.1.0" match="greaterOrEqual"/>
-      <import plugin="org.hamcrest.library" version="1.1.0" match="greaterOrEqual"/>
-      <import plugin="org.hamcrest.integration" version="1.1.0" match="greaterOrEqual"/>
-      <import plugin="org.hamcrest.text" version="1.1.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.log4j"/>
+      <import plugin="org.apache.commons.logging"/>
+      <import plugin="org.junit" version="4.8.0" match="greaterOrEqual"/>
+      <import plugin="org.objectweb.asm"/>
    </requires>
 
    <plugin
@@ -74,41 +70,6 @@ http://www.eclipse.org/legal/epl-v10.html Description here.
 
    <plugin
          id="org.jnario.standalone"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.hamcrest"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.hamcrest.core"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.hamcrest.integration"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.hamcrest.library"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.hamcrest.text"
          download-size="0"
          install-size="0"
          version="0.0.0"
