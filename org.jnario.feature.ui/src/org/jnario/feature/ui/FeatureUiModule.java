@@ -82,6 +82,7 @@ import org.jnario.feature.ui.highlighting.FeatureSemanticHighlightingCalculator;
 import org.jnario.feature.ui.highlighting.FeatureTokenHighlighting;
 import org.jnario.feature.ui.launching.FeatureJavaElementDelegate;
 import org.jnario.feature.ui.parser.CustomFeatureLexer;
+import org.jnario.ui.builder.JnarioSourceRelativeFileSystemAccess;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -187,7 +188,7 @@ public class FeatureUiModule extends org.jnario.feature.ui.AbstractFeatureUiModu
 	}
 	
 	public Class<? extends EclipseResourceFileSystemAccess2> bindEclipseResourceFileSystemAccess2() {
-		return SourceRelativeFileSystemAccess.class;
+		return JnarioSourceRelativeFileSystemAccess.class;
 	}
 	
 	@Override
