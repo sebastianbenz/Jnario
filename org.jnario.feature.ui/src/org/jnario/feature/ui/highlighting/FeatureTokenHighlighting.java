@@ -22,7 +22,7 @@ public class FeatureTokenHighlighting extends TokenToAttributeIdMapper{
 		if ("RULE_SCENARIO_TEXT".equals(tokenName)) {
 			return FeatureHighlightingConfiguration.SCENARIO_ID;
 		}else if("RULE_FEATURE_TEXT".equals(tokenName)) {
-			return FeatureHighlightingConfiguration.FEATURE_ID;
+			return FeatureHighlightingConfiguration.STEP_TEXT_ID;
 		}else if("RULE_GIVEN_TEXT".equals(tokenName)) {
 			return FeatureHighlightingConfiguration.STEP_TEXT_ID;
 		}else if("RULE_WHEN_TEXT".equals(tokenName)) {

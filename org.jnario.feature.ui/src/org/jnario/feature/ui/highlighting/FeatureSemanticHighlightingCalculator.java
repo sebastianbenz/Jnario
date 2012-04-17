@@ -8,6 +8,7 @@
 package org.jnario.feature.ui.highlighting;
 
 import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.findNodesForFeature;
+import static org.jnario.feature.ui.highlighting.FeatureHighlightingConfiguration.SCENARIO_ID;
 import static org.jnario.util.Strings.getFirstWord;
 
 import java.util.Iterator;
@@ -17,9 +18,11 @@ import java.util.regex.Matcher;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendPackage;
 import org.eclipse.xtext.nodemodel.INode;
+import org.eclipse.xtext.nodemodel.impl.LeafNode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
@@ -49,25 +52,27 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 
 		@Override
 		public Boolean caseScenario(Scenario scenario) {
-			if(scenario.getExamples().size() > 0){
-				for(ExampleTable table: scenario.getExamples())
+			if(!scenario.getExamples().isEmpty()){
+				for (ExampleTable table : scenario.getExamples()	) {
 					highlightExampleHeader(table);
-			}			
-			return Boolean.TRUE;
+				}
+			}
+			return highlightXtendClassName(scenario, SCENARIO_ID);
 		}
 
+		private Boolean highlightXtendClassName(XtendClass object, String id) {
+			List<INode> nodes = findNodesForFeature(object, XtendPackage.Literals.XTEND_CLASS__NAME);
+			for (INode node : nodes) {
+				highlightNode(node, id, acceptor);
+			}
+			return Boolean.TRUE;
+		}
+		
 		@Override
 		public Boolean caseFeature(Feature object) {
-			List<INode> nodes2 = findNodesForFeature(object, XtendPackage.Literals.XTEND_CLASS__NAME);
-			for (INode node : nodes2) {
+			List<INode> nodes = findNodesForFeature(object, XtendPackage.Literals.XTEND_CLASS__NAME);
+			for (INode node : nodes) {
 				highlightNode(node, FeatureHighlightingConfiguration.FEATURE_ID, acceptor);
-			}
-			
-			if(object.getDescription() != null){
-				List<INode> nodes = findNodesForFeature(object, FeaturePackage.Literals.FEATURE__DESCRIPTION);
-				for (INode node : nodes) {
-					highlightNode(node, FeatureHighlightingConfiguration.STEP_TEXT_ID, acceptor);
-				}
 			}
 			return Boolean.TRUE;
 		}
@@ -83,9 +88,7 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 				StepReference ref = (StepReference) step;
 				highlightFirstWordOfReference(ref, ref.getReference());
 			}
-
 			highlightIdentifiers(step);
-
 			return Boolean.TRUE;
 		}
 
@@ -151,13 +154,26 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 		}
 
 		private void highlightExampleHeader(ExampleTable table){
-			
 			if(table == null){
 				return;
 			}
-			for (XtendField element : table.getColumns()) {
+			for (int i = 0; i < table.getColumns().size(); i++) {
+				XtendField element = table.getColumns().get(i);
 				INode node = NodeModelUtils.getNode(element);
 				highlightNode(node, FeatureHighlightingConfiguration.IDENTIFIERS_ID, acceptor);
+				if(table.getColumns().size() == i + 1){
+					highlightTableHeadingEnd(node.getNextSibling());
+				}
+			}
+		}
+
+		private void highlightTableHeadingEnd(INode node) {
+			while(node instanceof LeafNode){
+				if(!((LeafNode)node).isHidden()){
+					highlightNode(node, FeatureHighlightingConfiguration.IDENTIFIERS_ID, acceptor);
+					return;
+				}
+				node = node.getNextSibling();
 			}
 		}
 	}
