@@ -25,6 +25,7 @@ public class FeatureTaskTokenTypeToPartitionTypeMapper extends TokenTypeToPartit
 	private static final HashSet<String> noCodeTokens = Sets.newHashSet(
 			"RULE_SCENARIO_TEXT", 
 			"RULE_FEATURE_TEXT",
+			"RULE_TEXT",
 			"RULE_IN_ORDER_TEXT",
 			"RULE_AS_A_TEXT",
 			"RULE_I_WANT_TEXT",
