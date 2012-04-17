@@ -51,9 +51,10 @@
   .hidden-desktop    { display: block; }
   .visible-desktop   { display: none; }
   body, pre, code, p{
-    margin: 0 0 6px 6px;
+    margin: 0px 0px 0px 0px;
     font-size: 13px;
     line-height: 14px;
+    padding-top: 0px;
   }
   code {
     padding: 0px;
@@ -120,9 +121,10 @@
 
 @media (max-width: 480px) {
   body, pre, code, p{
-    margin: 0 0 6px 6px;
+    margin: 0px 0px 0px 0px;
     font-size: 13px;
     line-height: 16px;
+    padding-top: 0px;
   }
   code {
     padding: 0px;
@@ -227,9 +229,10 @@
     padding-right: 20px;
   }
  body, pre, p{
-    margin: 0 0 6px 6px;
+    margin: 0px 0px 0px 0px;
     font-size: 13px;
     line-height: 16px;
+    padding-top: 0px;
   }
   h1 {
     line-height: 18px;
@@ -320,12 +323,12 @@
   // ----------------
   // Remove any padding from the body
   body {
-    padding-top: 0;
+    padding: 0px;
   }
   // Unfix the navbar
   .navbar-fixed-top {
     position: static;
-    margin-bottom: @baseLineHeight;
+    //margin-bottom: @baseLineHeight;
   }
   .navbar-fixed-top .navbar-inner {
     padding: 5px;

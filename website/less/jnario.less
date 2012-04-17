@@ -1,7 +1,8 @@
 /* body */
 
 body{
-  padding-bottom: 40px;
+  // padding-bottom: 40px;
+  padding-top: 40px; /* 40px to make the container go all the way to the bottom of the topbar */
 }
 .container>footer p {
 	text-align: center; /* center align it with the container */
@@ -25,7 +26,7 @@ body{
 .header {
   display:block;
   position:absolute;
-  padding-top: 30px;
+  padding-top: 40px;
 
   position: relative;
   background: #373737; /* Old browsers */
@@ -37,9 +38,9 @@ body{
   background: radial-gradient(center, ellipse cover,  #373737 0%,#212121 50%,#212121 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#373737', endColorstr='#212121',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
-   height:     auto !important;
-   height:     100%;
-   padding:     0 auto 100px; /* -44px being the size of the footer */
+  height:     auto !important;
+  height:     100%;
+  padding:     0 auto 100px; /* -44px being the size of the footer */
 
   @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
   .box-shadow(@shadow);
