@@ -6,16 +6,8 @@ Jnario is a framework for writing executable specifications for Java. It provide
 
 #Dependencies & Installation
 
-* Jnario requires at least [Eclipse 3.6](http://eclipse.org/downloads/) with [Xtext 2.3](http://www.xtext.org) and [Xtend 2.3](http://www.eclipse.org/xtend/). You can install both from this update site `http://download.eclipse.org/modeling/tmf/xtext/updates/composite/`.
+* Jnario requires at least [Eclipse 3.6](http://eclipse.org/downloads/) with [Xtext 2.3](http://www.xtext.org) and [Xtend 2.3](http://www.eclipse.org/xtend/). You can install both from this update site `http://download.eclipse.org/modeling/tmf/xtext/milestones/composite/`.
 * The latest snapshot verion of Jnario can be installed from the following update site `http://www.jnario.org/updates/snapshot/`.
-
-##Build
-
-Build with Maven 3 and Tycho:
-
-``` 
-mvn clean install
-``` 
 
 ##Examples
 
@@ -67,3 +59,21 @@ describe Stack{
 }
 ```
 
+##Setting up a development environment
+
+* Download the latest [Eclipse for RCP Developers](http://www.eclipse.org/downloads/packages/eclipse-rcp-and-rap-developers/indigosr2) 
+* Install the latest Xtext 2.3 milestone from: `http://download.eclipse`.org/modeling/tmf/xtext/updates/composite/milestones/
+* Install the latest Jnario snapshot: `http://www.jnario.org/updates/snapshot/`.
+* Clone the jnario repository: 
+     $ git clone git://github.com/bmwcarit/Jnario.git
+* Start Eclipse and import all projects from jnario/* into your Eclipse workspace
+* Open the target definition **org.jnario.target/juno.target** and click **Set as Target Plattform** in the upper right corner
+* If you want to change the grammar import **org.eclipse.xtend.core** and **org.eclipse.xtext.xbase** into your workspace via **import -> Plug-in Development -> Plug-ins and Fragments** with **Import As -> Projects with source folder**. This is necessary for the workflow to find the custom source classes of Xtend and Xbase.  
+
+##Build
+
+Build with Maven 3 and Tycho. Run the following command in the repository root:
+
+``` 
+mvn clean install
+``` 
