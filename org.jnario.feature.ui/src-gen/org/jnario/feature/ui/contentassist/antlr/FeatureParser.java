@@ -43,8 +43,6 @@ public class FeatureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getScenarioAccess().getStepsAlternatives_3_0(), "rule__Scenario__StepsAlternatives_3_0");
 					put(grammarAccess.getScenarioAccess().getStepsAlternatives_4_0(), "rule__Scenario__StepsAlternatives_4_0");
 					put(grammarAccess.getScenarioAccess().getStepsAlternatives_5_0(), "rule__Scenario__StepsAlternatives_5_0");
-					put(grammarAccess.getStepAccess().getAlternatives(), "rule__Step__Alternatives");
-					put(grammarAccess.getStepReferenceAccess().getAlternatives(), "rule__StepReference__Alternatives");
 					put(grammarAccess.getGivenReferenceAccess().getAndAlternatives_2_0(), "rule__GivenReference__AndAlternatives_2_0");
 					put(grammarAccess.getGivenAccess().getAndAlternatives_3_0(), "rule__Given__AndAlternatives_3_0");
 					put(grammarAccess.getWhenReferenceAccess().getAndAlternatives_2_0(), "rule__WhenReference__AndAlternatives_2_0");
@@ -350,6 +348,7 @@ public class FeatureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXAnnotationAccess().getElementValuePairsAssignment_3_1_0_0(), "rule__XAnnotation__ElementValuePairsAssignment_3_1_0_0");
 					put(grammarAccess.getXAnnotationAccess().getElementValuePairsAssignment_3_1_0_1_1(), "rule__XAnnotation__ElementValuePairsAssignment_3_1_0_1_1");
 					put(grammarAccess.getXAnnotationAccess().getValueAssignment_3_1_1(), "rule__XAnnotation__ValueAssignment_3_1_1");
+					put(grammarAccess.getBackgroundAccess().getNameAssignment_1(), "rule__Background__NameAssignment_1");
 					put(grammarAccess.getBackgroundAccess().getMembersAssignment_2(), "rule__Background__MembersAssignment_2");
 					put(grammarAccess.getBackgroundAccess().getStepsAssignment_3(), "rule__Background__StepsAssignment_3");
 					put(grammarAccess.getScenarioAccess().getNameAssignment_1(), "rule__Scenario__NameAssignment_1");

@@ -517,11 +517,25 @@ ruleBackground returns [EObject current=null]
             grammarAccess.getBackgroundAccess().getBackgroundAction_0(),
             $current);
     }
-)this_BACKGROUND_TEXT_1=RULE_BACKGROUND_TEXT
-    { 
-    newLeafNode(this_BACKGROUND_TEXT_1, grammarAccess.getBackgroundAccess().getBACKGROUND_TEXTTerminalRuleCall_1()); 
-    }
+)(
 (
+		lv_name_1_0=RULE_BACKGROUND_TEXT
+		{
+			newLeafNode(lv_name_1_0, grammarAccess.getBackgroundAccess().getNameBACKGROUND_TEXTTerminalRuleCall_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getBackgroundRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_1_0, 
+        		"BACKGROUND_TEXT");
+	    }
+
+)
+)(
 (
 		{ 
 	        newCompositeNode(grammarAccess.getBackgroundAccess().getMembersMemberParserRuleCall_2_0()); 
@@ -765,68 +779,6 @@ ruleScenario returns [EObject current=null]
 
 )
 )*)
-;
-
-
-
-
-
-
-
-// Entry rule entryRuleStepReference
-entryRuleStepReference returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getStepReferenceRule()); }
-	 iv_ruleStepReference=ruleStepReference 
-	 { $current=$iv_ruleStepReference.current; } 
-	 EOF 
-;
-
-// Rule StepReference
-ruleStepReference returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(
-    { 
-        newCompositeNode(grammarAccess.getStepReferenceAccess().getGivenReferenceParserRuleCall_0()); 
-    }
-    this_GivenReference_0=ruleGivenReference
-    { 
-        $current = $this_GivenReference_0.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getStepReferenceAccess().getWhenReferenceParserRuleCall_1()); 
-    }
-    this_WhenReference_1=ruleWhenReference
-    { 
-        $current = $this_WhenReference_1.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getStepReferenceAccess().getThenReferenceParserRuleCall_2()); 
-    }
-    this_ThenReference_2=ruleThenReference
-    { 
-        $current = $this_ThenReference_2.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getStepReferenceAccess().getAndReferenceParserRuleCall_3()); 
-    }
-    this_AndReference_3=ruleAndReference
-    { 
-        $current = $this_AndReference_3.current; 
-        afterParserOrEnumRuleCall();
-    }
-)
 ;
 
 

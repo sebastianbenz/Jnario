@@ -61,9 +61,7 @@ public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequence
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if(ruleCall.getRule() == grammarAccess.getBACKGROUND_TEXTRule())
-			return getBACKGROUND_TEXTToken(semanticObject, ruleCall, node);
-		else if(ruleCall.getRule() == grammarAccess.getEXAMPLE_ROW_ENDRule())
+		if(ruleCall.getRule() == grammarAccess.getEXAMPLE_ROW_ENDRule())
 			return getEXAMPLE_ROW_ENDToken(semanticObject, ruleCall, node);
 		else if(ruleCall.getRule() == grammarAccess.getOpSingleAssignRule())
 			return getOpSingleAssignToken(semanticObject, ruleCall, node);
@@ -74,11 +72,6 @@ public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequence
 		return "";
 	}
 	
-	protected String getBACKGROUND_TEXTToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "Background:";
-	}
 	protected String getEXAMPLE_ROW_ENDToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
@@ -162,7 +155,7 @@ public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequence
 	
 	/**
 	 * Syntax:
-	 *     PIPE | PIPE_SPACES
+	 *     PIPE_SPACES | PIPE
 	 */
 	protected void emit_ExampleColumn_PIPETerminalRuleCall_0_0_or_PIPE_SPACESTerminalRuleCall_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

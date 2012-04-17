@@ -56,7 +56,7 @@ XAnnotation returns xannotations::XAnnotation:
 
 Background:
 	{Background}
-	BACKGROUND_TEXT
+	name=BACKGROUND_TEXT
 	members+=Member*
 	steps+=(Given|GivenReference)*;
 
@@ -69,13 +69,6 @@ Scenario :
 	steps+=(Then|ThenReference)?
 	examples+=ExampleTable*;
 
-Step returns xtend::XtendMember:
-	Given|When|Then|And|StepReference;
-	
-StepReference returns xtend::XtendMember:
-	GivenReference|WhenReference|ThenReference|AndReference
-;
-	
 GivenReference returns xtend::XtendMember:
 	{GivenReference}
 	reference=[Given|GIVEN_TEXT]

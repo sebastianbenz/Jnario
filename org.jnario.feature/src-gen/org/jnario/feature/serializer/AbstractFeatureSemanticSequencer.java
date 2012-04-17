@@ -130,16 +130,13 @@ public class AbstractFeatureSemanticSequencer extends AbstractSemanticSequencer 
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == FeaturePackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
 			case FeaturePackage.AND:
-				if(context == grammarAccess.getAndRule() ||
-				   context == grammarAccess.getStepRule()) {
+				if(context == grammarAccess.getAndRule()) {
 					sequence_And(context, (And) semanticObject); 
 					return; 
 				}
 				else break;
 			case FeaturePackage.AND_REFERENCE:
-				if(context == grammarAccess.getAndReferenceRule() ||
-				   context == grammarAccess.getStepRule() ||
-				   context == grammarAccess.getStepReferenceRule()) {
+				if(context == grammarAccess.getAndReferenceRule()) {
 					sequence_AndReference(context, (AndReference) semanticObject); 
 					return; 
 				}
@@ -163,16 +160,13 @@ public class AbstractFeatureSemanticSequencer extends AbstractSemanticSequencer 
 				}
 				else break;
 			case FeaturePackage.GIVEN:
-				if(context == grammarAccess.getGivenRule() ||
-				   context == grammarAccess.getStepRule()) {
+				if(context == grammarAccess.getGivenRule()) {
 					sequence_Given(context, (Given) semanticObject); 
 					return; 
 				}
 				else break;
 			case FeaturePackage.GIVEN_REFERENCE:
-				if(context == grammarAccess.getGivenReferenceRule() ||
-				   context == grammarAccess.getStepRule() ||
-				   context == grammarAccess.getStepReferenceRule()) {
+				if(context == grammarAccess.getGivenReferenceRule()) {
 					sequence_GivenReference(context, (GivenReference) semanticObject); 
 					return; 
 				}
@@ -190,31 +184,25 @@ public class AbstractFeatureSemanticSequencer extends AbstractSemanticSequencer 
 				}
 				else break;
 			case FeaturePackage.THEN:
-				if(context == grammarAccess.getStepRule() ||
-				   context == grammarAccess.getThenRule()) {
+				if(context == grammarAccess.getThenRule()) {
 					sequence_Then(context, (Then) semanticObject); 
 					return; 
 				}
 				else break;
 			case FeaturePackage.THEN_REFERENCE:
-				if(context == grammarAccess.getStepRule() ||
-				   context == grammarAccess.getStepReferenceRule() ||
-				   context == grammarAccess.getThenReferenceRule()) {
+				if(context == grammarAccess.getThenReferenceRule()) {
 					sequence_ThenReference(context, (ThenReference) semanticObject); 
 					return; 
 				}
 				else break;
 			case FeaturePackage.WHEN:
-				if(context == grammarAccess.getStepRule() ||
-				   context == grammarAccess.getWhenRule()) {
+				if(context == grammarAccess.getWhenRule()) {
 					sequence_When(context, (When) semanticObject); 
 					return; 
 				}
 				else break;
 			case FeaturePackage.WHEN_REFERENCE:
-				if(context == grammarAccess.getStepRule() ||
-				   context == grammarAccess.getStepReferenceRule() ||
-				   context == grammarAccess.getWhenReferenceRule()) {
+				if(context == grammarAccess.getWhenReferenceRule()) {
 					sequence_WhenReference(context, (WhenReference) semanticObject); 
 					return; 
 				}
@@ -1550,7 +1538,7 @@ public class AbstractFeatureSemanticSequencer extends AbstractSemanticSequencer 
 	
 	/**
 	 * Constraint:
-	 *     (members+=Member* (steps+=Given | steps+=GivenReference)*)
+	 *     (name=BACKGROUND_TEXT members+=Member* (steps+=Given | steps+=GivenReference)*)
 	 */
 	protected void sequence_Background(EObject context, Background semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

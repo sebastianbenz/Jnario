@@ -61,7 +61,7 @@ public class FeatureLabelProvider extends XtendLabelProvider {
 	}
 
 	public String text(Background element) {
-		return "Background ";
+		return element.getName();
 	}
 	
 	public String text(Step element) {
