@@ -27,12 +27,13 @@ public class FeatureOutlineTreeProvider extends XtendOutlineTreeProvider {
 	protected void createFeatureNodes(IOutlineNode parentNode, XtendClass xtendClass) {
 		if (xtendClass instanceof Feature) {
 			Feature feature = (Feature) xtendClass;
-			if (feature.getBackground() != null) {
-				EObjectNode classNode = createEObjectNode(parentNode, xtendClass);
-				createFeatureNodes(classNode, feature.getBackground());
+			Background background = feature.getBackground();
+			if (background != null) {
+				EObjectNode classNode = createEObjectNode(parentNode, background);
+				createFeatureNodes(classNode, background);
 			}
 			for (Scenario member : feature.getScenarios()){
-				EObjectNode classNode = createEObjectNode(parentNode, xtendClass);
+				EObjectNode classNode = createEObjectNode(parentNode, member);
 				createFeatureNodes(classNode, member);
 			}
 		}

@@ -25,15 +25,14 @@ import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.XbasePackage;
 import org.eclipse.xtext.xbase.scoping.XbaseScopeProvider;
 import org.jnario.ExampleTable;
+import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
-import org.jnario.feature.feature.StepReference;
 import org.jnario.feature.naming.StepNameProvider;
 import org.jnario.validation.JnarioJavaValidator;
 
-import com.google.common.base.Strings;
 import com.google.inject.Inject;
 
 /**
@@ -60,6 +59,9 @@ public class FeatureJavaValidator extends AbstractFeatureJavaValidator {
 	
 	@Check(CheckType.FAST)
 	public void checkFeaturesHaveAName(Scenario scenario){
+		if (scenario instanceof Background) {
+			return;
+		}
 		String name = removeKeywords(scenario.getName());
 		if(isNullOrEmpty(name)){
 			error("Scenarios should have a description", XtendPackage.Literals.XTEND_CLASS__NAME);
