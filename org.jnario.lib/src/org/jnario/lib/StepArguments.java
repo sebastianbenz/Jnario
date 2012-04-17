@@ -10,12 +10,14 @@ package org.jnario.lib;
 
 import static com.google.common.collect.Lists.newArrayList;
 
+import java.util.Iterator;
 import java.util.List;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
+ * @author Sebastian Benz
  */
-public class StepArguments {
+public class StepArguments implements Iterable<String>{
 	
 	private final List<String> values = newArrayList();
 	
@@ -50,6 +52,10 @@ public class StepArguments {
 	@Override
 	public String toString() {
 		return values.toString();
+	}
+
+	public Iterator<String> iterator() {
+		return values.iterator();
 	}
 	
 }

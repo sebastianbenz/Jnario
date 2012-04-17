@@ -18,21 +18,29 @@ public class StepNameProvider {
   private static String MULTILINE = "\\\\( |\t)*\r?\n?( |\t)*";
   
   public String nameOf(final Step step) {
-    String _xifexpression = null;
-    if ((step instanceof StepReference)) {
-      String _nameOf = this.nameOf(((StepReference) step));
-      _xifexpression = _nameOf;
-    } else {
-      String _name = step.getName();
-      String _removeExtraCharacters = _name==null?(String)null:this.removeExtraCharacters(new Function0<String>() {
-        public String apply() {
-          String _name = step.getName();
-          return _name;
-        }
-      }.apply());
-      _xifexpression = _removeExtraCharacters;
+    String _xblockexpression = null;
+    {
+      boolean _equals = Objects.equal(step, null);
+      if (_equals) {
+        return "";
+      }
+      String _xifexpression = null;
+      if ((step instanceof StepReference)) {
+        String _nameOf = this.nameOf(((StepReference) step));
+        _xifexpression = _nameOf;
+      } else {
+        String _name = step.getName();
+        String _removeExtraCharacters = _name==null?(String)null:this.removeExtraCharacters(new Function0<String>() {
+          public String apply() {
+            String _name = step.getName();
+            return _name;
+          }
+        }.apply());
+        _xifexpression = _removeExtraCharacters;
+      }
+      _xblockexpression = (_xifexpression);
     }
-    return _xifexpression;
+    return _xblockexpression;
   }
   
   public String nameOf(final StepReference ref) {

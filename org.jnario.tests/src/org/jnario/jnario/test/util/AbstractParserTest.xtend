@@ -27,6 +27,7 @@ class AbstractParserTest{
 	
 	@Before
 	def void setup(){
+		if(fileExtensionProvider == null) return // its time for xtend to support abstract classes
 		val fileExtension = fileExtensionProvider.fileExtensions.head
 		val factory = INSTANCE.extensionToFactoryMap.get(fileExtension)
 		INSTANCE.extensionToFactoryMap.put(fileExtension + "_", factory)

@@ -40,16 +40,6 @@ import org.jnario.JnarioPackage;
  */
 public class ExampleColumnImpl extends XtendFieldImpl implements ExampleColumn {
 	/**
-	 * The cached value of the '{@link #getCells() <em>Cells</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCells()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<XExpression> cells;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -115,13 +105,11 @@ public class ExampleColumnImpl extends XtendFieldImpl implements ExampleColumn {
 	 * @generated NOT
 	 */
 	public EList<XExpression> getCells() {
-		if (cells == null) {
-			cells = new EObjectResolvingEList<XExpression>(XExpression.class, this, JnarioPackage.EXAMPLE_COLUMN__CELLS);
-			int columnIndex = getTable().getColumns().indexOf(this);
-			for (ExampleRow row : getTable().getRows()) {
-				if(row.getCells().size() > columnIndex){
-					cells.add(row.getCells().get(columnIndex));
-				}
+		EList<XExpression>	cells = new EObjectResolvingEList<XExpression>(XExpression.class, this, JnarioPackage.EXAMPLE_COLUMN__CELLS);
+		int columnIndex = getTable().getColumns().indexOf(this);
+		for (ExampleRow row : getTable().getRows()) {
+			if(row.getCells().size() > columnIndex){
+				cells.add(row.getCells().get(columnIndex));
 			}
 		}
 		return cells;
@@ -236,7 +224,7 @@ public class ExampleColumnImpl extends XtendFieldImpl implements ExampleColumn {
 			case JnarioPackage.EXAMPLE_COLUMN__TABLE:
 				return getTable() != null;
 			case JnarioPackage.EXAMPLE_COLUMN__CELLS:
-				return cells != null && !cells.isEmpty();
+				return !getCells().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

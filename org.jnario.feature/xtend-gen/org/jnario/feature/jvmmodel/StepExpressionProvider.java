@@ -1,8 +1,12 @@
 package org.jnario.feature.jvmmodel;
 
 import com.google.common.base.Objects;
+import java.util.List;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.JvmGenericType;
+import org.eclipse.xtext.xbase.XBlockExpression;
+import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepExpression;
 import org.jnario.feature.feature.StepReference;
@@ -12,6 +16,24 @@ import org.jnario.feature.feature.StepReference;
  */
 @SuppressWarnings("all")
 public class StepExpressionProvider {
+  public List<XExpression> getExpressions(final Step step) {
+    boolean _equals = Objects.equal(step, null);
+    if (_equals) {
+      return CollectionLiterals.<XExpression>emptyList();
+    }
+    final StepExpression stepExpression = step.getStepExpression();
+    boolean _equals_1 = Objects.equal(stepExpression, null);
+    if (_equals_1) {
+      return CollectionLiterals.<XExpression>emptyList();
+    }
+    final XBlockExpression blockExpression = stepExpression.getBlockExpression();
+    boolean _equals_2 = Objects.equal(blockExpression, null);
+    if (_equals_2) {
+      return CollectionLiterals.<XExpression>emptyList();
+    }
+    return blockExpression.getExpressions();
+  }
+  
   public StepExpression expressionOf(final Step step, final JvmGenericType type) {
     if ((step instanceof StepReference)) {
       this.getOrCreateExpression(((StepReference) step), type);

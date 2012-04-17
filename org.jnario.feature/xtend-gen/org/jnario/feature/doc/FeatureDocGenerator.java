@@ -5,17 +5,17 @@ import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.xtend.core.xtend.RichString;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.serializer.ISerializer;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.XStringLiteral;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.ExampleTable;
 import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.HtmlFile;
+import org.jnario.doc.WhiteSpaceNormalizer;
 import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.Scenario;
@@ -34,7 +34,7 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
   private StepNameProvider _stepNameProvider;
   
   @Inject
-  private ISerializer serializer;
+  private WhiteSpaceNormalizer _whiteSpaceNormalizer;
   
   public HtmlFile createHtmlFile(final XtendClass xtendClass) {
     HtmlFile _xblockexpression = null;
@@ -187,39 +187,21 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
   }
   
   public CharSequence addCodeBlock(final Step step) {
-    CharSequence _xblockexpression = null;
-    {
-      StepExpression _stepExpression = step.getStepExpression();
-      XBlockExpression _blockExpression = _stepExpression==null?(XBlockExpression)null:_stepExpression.getBlockExpression();
-      final EList<XExpression> expressions = _blockExpression==null?(EList<XExpression>)null:_blockExpression.getExpressions();
-      boolean _or = false;
-      boolean _equals = Objects.equal(expressions, null);
-      if (_equals) {
-        _or = true;
-      } else {
-        boolean _isEmpty = expressions.isEmpty();
-        _or = (_equals || _isEmpty);
-      }
-      if (_or) {
-        return "";
-      }
-      final XExpression firstExpr = expressions.get(0);
-      boolean _not = (!(firstExpr instanceof RichString));
-      if (_not) {
-        return "";
-      }
-      final RichString richString = ((RichString) firstExpr);
+    StepExpression _stepExpression = step.getStepExpression();
+    XBlockExpression _blockExpression = _stepExpression==null?(XBlockExpression)null:_stepExpression.getBlockExpression();
+    final EList<XExpression> expressions = _blockExpression==null?(EList<XExpression>)null:_blockExpression.getExpressions();
+    Iterable<XStringLiteral> _filter = Iterables.<XStringLiteral>filter(expressions, XStringLiteral.class);
+    for (final XStringLiteral expr : _filter) {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("<pre>");
-      String _serialize = this.serializer.serialize(richString);
-      String _replace = _serialize.replace("\'\'\'", "");
-      String _codeToHtml = this.codeToHtml(_replace);
+      String _value = expr.getValue();
+      String _normalize = this._whiteSpaceNormalizer.normalize(_value);
+      String _codeToHtml = this.codeToHtml(_normalize);
       _builder.append(_codeToHtml, "");
       _builder.append("</pre>");
-      _builder.newLineIfNotEmpty();
-      _xblockexpression = (_builder);
+      return _builder;
     }
-    return _xblockexpression;
+    return null;
   }
   
   public CharSequence generate(final Object scenario) {

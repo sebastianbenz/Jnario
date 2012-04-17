@@ -8,22 +8,24 @@
 package org.jnario.feature.doc
 
 import com.google.inject.Inject
-import org.eclipse.xtend.core.xtend.RichString
 import org.eclipse.xtend.core.xtend.XtendClass
+import org.eclipse.xtext.xbase.XStringLiteral
 import org.jnario.doc.AbstractDocGenerator
 import org.jnario.feature.feature.Feature
 import org.jnario.feature.feature.Scenario
 import org.jnario.feature.feature.Step
 import org.jnario.feature.naming.JavaNameProvider
 import org.jnario.feature.naming.StepNameProvider
-import static extension org.jnario.util.Strings.*
+
 import static org.jnario.doc.HtmlFile.*
-import org.eclipse.xtext.serializer.ISerializer
+
+import static extension org.jnario.util.Strings.*
+import org.jnario.doc.WhiteSpaceNormalizer
 
 class FeatureDocGenerator extends AbstractDocGenerator {
 	@Inject extension JavaNameProvider 
 	@Inject extension StepNameProvider 
-	@Inject extension ISerializer serializer
+	@Inject extension WhiteSpaceNormalizer
 
 	override createHtmlFile(XtendClass xtendClass) {
 		if(!(xtendClass instanceof Feature)){
@@ -85,13 +87,8 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 
 	def CharSequence addCodeBlock(Step step){
 		val expressions = step.stepExpression?.blockExpression?.expressions
-		if(expressions == null || expressions.empty) return ""
-		val firstExpr = expressions.get(0)
-		if(!(firstExpr instanceof RichString)){
-			return ""
-		} 
-		val richString = firstExpr as RichString
-		'''<pre>«serializer.serialize(richString).replace("'''", "").codeToHtml»</pre>
-		'''
+		for(expr : expressions.filter(typeof(XStringLiteral))){
+			return '''<pre>«expr.value.normalize.codeToHtml»</pre>'''
+		}
 	} 
 }

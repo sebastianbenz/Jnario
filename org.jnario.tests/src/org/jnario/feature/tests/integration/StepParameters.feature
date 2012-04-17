@@ -7,11 +7,11 @@
  *******************************************************************************/
 package org.jnario.feature.tests.integration
 
-Feature: Step values
+Feature: Step Parameters
 	
 	Background:
-	
-	Scenario: Value definition in steps
+		
+	Scenario: Parameters are defined in quotes
 		Given a feature
 			jnarioFile = '''
 				package bootstrap
@@ -26,7 +26,7 @@ Feature: Step values
 		When this feature is executed
 		Then it should be successful
 
-	Scenario: Access of values with first, second, ...
+	Scenario: Access of parameters with first, second, ...
 		Given a feature
 			jnarioFile = '''
 				package bootstrap
@@ -41,7 +41,7 @@ Feature: Step values
 		When this feature is executed
 		Then it should be successful
 
-	Scenario: Value definition in steps and Background
+	Scenario: Parameter definition in steps and Background
 		Given a feature with a background
 			jnarioFile = 
 			'''
@@ -78,3 +78,18 @@ Feature: Step values
 		When this feature is executed
 		Then it should be successful
 		
+	Scenario: Using multiline Strings
+		Given a feature
+			jnarioFile = '''
+				package bootstrap 
+				Feature: Test feature
+					Scenario: using multiline strings in step definitions
+						String x
+						Given the multine string: 
+							"hello"
+							x = args.first
+						Then it should be "hello"
+							x should be args.first
+			'''
+		When this feature is executed
+		Then it should be successful

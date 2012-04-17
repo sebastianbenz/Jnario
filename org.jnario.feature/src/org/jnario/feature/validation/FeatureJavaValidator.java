@@ -30,6 +30,7 @@ import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
+import org.jnario.feature.feature.StepExpression;
 import org.jnario.feature.naming.StepNameProvider;
 import org.jnario.validation.JnarioJavaValidator;
 
@@ -44,6 +45,14 @@ public class FeatureJavaValidator extends AbstractFeatureJavaValidator {
 	
 	@Inject StepNameProvider nameProvider;
 
+	@Override
+	public void checkInnerExpressions(XBlockExpression block) {
+		if(block.eContainer() instanceof StepExpression){
+			return;
+		}
+		super.checkInnerExpressions(block);
+	}
+	
 	@Check(CheckType.FAST)
 	public void checkFeaturesHaveAName(Feature feature){
 		String name = removeKeywords(feature.getName());

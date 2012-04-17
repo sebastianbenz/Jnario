@@ -70,7 +70,7 @@ public interface ExampleColumn extends XtendField {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Cells</em>' reference list.
 	 * @see org.jnario.JnarioPackage#getExampleColumn_Cells()
-	 * @model derived="true"
+	 * @model transient="true" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<XExpression> getCells();

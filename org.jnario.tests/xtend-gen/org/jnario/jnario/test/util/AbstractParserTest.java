@@ -34,6 +34,10 @@ public class AbstractParserTest {
   
   @Before
   public void setup() {
+    boolean _equals = Objects.equal(this.fileExtensionProvider, null);
+    if (_equals) {
+      return;
+    }
     Set<String> _fileExtensions = this.fileExtensionProvider.getFileExtensions();
     final String fileExtension = IterableExtensions.<String>head(_fileExtensions);
     Map<String,Object> _extensionToFactoryMap = Registry.INSTANCE.getExtensionToFactoryMap();

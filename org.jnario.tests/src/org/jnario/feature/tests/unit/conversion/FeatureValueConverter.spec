@@ -9,6 +9,7 @@ package org.jnario.feature.tests.unit.conversion
 
 import org.jnario.feature.conversion.FeatureValueConverter
 
+
 describe FeatureValueConverter{
 	FeatureValueConverter subject = FeatureValueConverter::create("Prefix:")
 	
