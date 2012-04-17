@@ -187,10 +187,11 @@ describe "Jnario Features - Tutorial"{
              result => expected
              
            Examples: additions
-           |  a  |  b  | expected |
-           |  0  |  0  |     0    |
-           | 21  | 21  |    42    |
-           | -3  | -5  |    -8    |
+
+             |  a  |  b  | expected |
+             |  0  |  0  |     0    |
+             | 21  | 21  |    42    |
+             | -3  | -5  |    -8    |
             
          '''.executesSuccessfully
        }
@@ -228,9 +229,10 @@ describe "Jnario Features - Tutorial"{
 	           result => expected
 	           
 	         Examples:
-	         |  a  |  b  | expected |
-	         |  0  |  0  |   0    |
-	         | -3  | -5  |  -8    |
+
+	           |  a  |  b  | expected |
+	           |  0  |  0  |   0    |
+	           | -3  | -5  |  -8    |
 	         
 	       Scenario: Dividing two numbers
 	        When entering two numbers a and b and pressing enter. 
@@ -238,8 +240,9 @@ describe "Jnario Features - Tutorial"{
 	        Then it returns the expected result
 	        
 	        Examples:
-	        |  a  |  b  | expected |
-	        |  8  |  1  |     8    |
+	        
+            |  a  |  b  | expected |
+	          |  8  |  1  |     8    |
 	        
          '''.executesSuccessfully
        }

@@ -297,7 +297,6 @@ public class NewSpecWizard extends JUnitWizard {
 
 		public void doubleClick(DoubleClickEvent event) {
 			okPressed();
-
 		}
 	}
 
