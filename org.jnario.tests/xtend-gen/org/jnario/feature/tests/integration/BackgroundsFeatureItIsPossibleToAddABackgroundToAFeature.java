@@ -4,7 +4,6 @@ import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -21,14 +20,6 @@ public class BackgroundsFeatureItIsPossibleToAddABackgroundToAFeature {
   
   @Test
   @Order(1)
-  @Ignore
-  @Named("[PENDING] When I run the feature")
-  public void whenIRunTheFeature() {
-    throw new UnsupportedOperationException("whenIRunTheFeatureis not implemented");
-  }
-  
-  @Test
-  @Order(2)
   @Named("Then it should be successful")
   public void thenItShouldBeSuccessful() {
     FeatureExecutor.executesSuccessfully(this.jnarioFile);

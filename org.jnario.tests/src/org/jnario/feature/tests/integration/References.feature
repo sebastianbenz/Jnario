@@ -45,8 +45,8 @@ Feature: References for steps
 				'
 	 	When I run it it should fail
 	 
-	 Scenario: Reusing fields from other steps
-		Given a scenario with reused steps
+	 Scenario: Using fields from other steps
+		Given a scenario with a field
 			jnarioFile = '''
 				package bootstrap
 				import java.util.*
@@ -62,4 +62,5 @@ Feature: References for steps
 							values.size => 1
 				'''
 	 	Then it should be successful
+	 	
 	 	

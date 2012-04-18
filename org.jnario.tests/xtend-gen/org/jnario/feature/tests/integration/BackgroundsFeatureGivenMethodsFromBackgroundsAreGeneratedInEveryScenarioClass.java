@@ -6,7 +6,6 @@ import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.Result;
 import org.junit.runner.RunWith;
@@ -24,14 +23,6 @@ public class BackgroundsFeatureGivenMethodsFromBackgroundsAreGeneratedInEverySce
   
   @Test
   @Order(1)
-  @Ignore
-  @Named("[PENDING] When I generate the classes")
-  public void whenIGenerateTheClasses() {
-    throw new UnsupportedOperationException("whenIGenerateTheClassesis not implemented");
-  }
-  
-  @Test
-  @Order(2)
   @Named("Then every class should have a method that throws a RuntimeExeception")
   public void thenEveryClassShouldHaveAMethodThatThrowsARuntimeExeception() {
     Result _execute = FeatureExecutor.execute(this.jnarioFile);

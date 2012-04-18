@@ -26,7 +26,6 @@ Feature: Backgrounds
 					Scenario: Scenario 1
 					Scenario: Scenario 2
 			"
-		When I run the feature
 		Then it should be successful
 			jnarioFile.executesSuccessfully
 			
@@ -43,9 +42,23 @@ Feature: Backgrounds
 					Scenario: Scenario 1
 					Scenario: Scenario 2
 			"
-		When I generate the classes
 		Then every class should have a method that throws a RuntimeExeception
 			jnarioFile.execute.failureCount => 2
 			
-			
+	Scenario: Using fields from background steps
+		Given a scenario with a field
+			jnarioFile = '''
+				package bootstrap
+				import java.util.*
+				Feature: Test
+					Background: 
+						List<String> values = new ArrayList()
+						Given a list
+							values += "hello"
+						
+					Scenario: TestScenario 2
+						Then it should have contents
+							values.size => 1
+				'''
+	 	Then it should be successful		
 			
