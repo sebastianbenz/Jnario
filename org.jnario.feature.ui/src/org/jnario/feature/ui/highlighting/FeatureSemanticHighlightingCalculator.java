@@ -20,17 +20,20 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendField;
+import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtend.core.xtend.XtendPackage;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.impl.LeafNode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
+import org.eclipse.xtext.xbase.XBlockExpression;
 import org.jnario.ExampleTable;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
+import org.jnario.feature.feature.StepExpression;
 import org.jnario.feature.feature.StepReference;
 import org.jnario.feature.feature.util.FeatureSwitch;
 import org.jnario.feature.jvmmodel.StepArgumentsProvider;
@@ -49,6 +52,13 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 		public Implementation(IHighlightedPositionAcceptor acceptor) {
 			this.acceptor = acceptor;
 		}
+		
+		@Override
+		public Boolean caseStepExpression(StepExpression object) {
+			XBlockExpression expression = object.getBlockExpression();
+			highlightRichStrings(expression, acceptor);
+			return Boolean.TRUE;
+		}
 
 		@Override
 		public Boolean caseScenario(Scenario scenario) {
@@ -56,6 +66,13 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 				for (ExampleTable table : scenario.getExamples()	) {
 					highlightExampleHeader(table);
 				}
+			}
+			for (XtendMember member : scenario.getMembers()) {
+				if(member.eClass() == XtendPackage.Literals.XTEND_FIELD){
+					XtendField field = (XtendField) member;
+					highlightXtendField(field,acceptor);
+				}
+				highlightDeprectedXtendAnnotationTarget(acceptor, member);
 			}
 			return highlightXtendClassName(scenario, SCENARIO_ID);
 		}
