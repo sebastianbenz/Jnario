@@ -44,4 +44,22 @@ Feature: References for steps
 						When step
 				'
 	 	When I run it it should fail
+	 
+	 Scenario: Reusing fields from other steps
+		Given a scenario with reused steps
+			jnarioFile = '''
+				package bootstrap
+				import java.util.*
+				Feature: Test
+					Scenario: TestScenario 1
+						List<String> values = new ArrayList()
+						Given a list
+							values += "hello"
+						
+					Scenario: TestScenario 2
+						Given a list
+						Then it should have contents
+							values.size => 1
+				'''
+	 	Then it should be successful
 	 	
