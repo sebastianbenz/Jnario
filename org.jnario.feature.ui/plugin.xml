@@ -641,7 +641,8 @@
           icon="icons/feature_button.gif"
           id="org.jnario.feature.ui.showCodeCommand"
           label="Show/Hide Code"
-          style="toggle">
+          style="push"
+          tooltip="Show or hide code in steps">
        <visibleWhen
                  checkEnabled="false">
               <reference definitionId="org.jnario.feature.Feature.Editor.opened">
