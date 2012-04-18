@@ -8,7 +8,6 @@ package org.jnario.feature.feature;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.xtend.core.xtend.XtendClass;
-import org.eclipse.xtend.core.xtend.XtendMember;
 
 import org.jnario.ExampleTable;
 
@@ -49,7 +48,7 @@ public interface Scenario extends XtendClass
 
 	/**
 	 * Returns the value of the '<em><b>Steps</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.xtend.core.xtend.XtendMember}.
+	 * The list contents are of type {@link org.jnario.feature.feature.Step}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Steps</em>' containment reference list isn't clear,
@@ -61,6 +60,6 @@ public interface Scenario extends XtendClass
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<XtendMember> getSteps();
+	EList<Step> getSteps();
 
 } // Scenario

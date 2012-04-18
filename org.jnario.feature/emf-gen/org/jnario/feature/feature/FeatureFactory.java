@@ -161,6 +161,15 @@ public interface FeatureFactory extends EFactory
 	StepReference createStepReference();
 
 	/**
+	 * Returns a new object of class '<em>Step Implementation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Step Implementation</em>'.
+	 * @generated
+	 */
+	StepImplementation createStepImplementation();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

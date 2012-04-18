@@ -32,6 +32,7 @@ import org.jnario.feature.feature.GivenReference;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepExpression;
+import org.jnario.feature.feature.StepImplementation;
 import org.jnario.feature.feature.StepReference;
 import org.jnario.feature.feature.Then;
 import org.jnario.feature.feature.ThenReference;
@@ -150,6 +151,13 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 	 * @generated
 	 */
 	private EClass stepReferenceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass stepImplementationEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -482,6 +490,16 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getStepImplementation()
+	{
+		return stepImplementationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public FeatureFactory getFeatureFactory()
 	{
 		return (FeatureFactory)getEFactoryInstance();
@@ -547,6 +565,8 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 
 		stepReferenceEClass = createEClass(STEP_REFERENCE);
 		createEReference(stepReferenceEClass, STEP_REFERENCE__REFERENCE);
+
+		stepImplementationEClass = createEClass(STEP_IMPLEMENTATION);
 	}
 
 	/**
@@ -588,16 +608,17 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 		backgroundEClass.getESuperTypes().add(this.getScenario());
 		scenarioEClass.getESuperTypes().add(theXtendPackage.getXtendClass());
 		stepEClass.getESuperTypes().add(theXtendPackage.getXtendMember());
-		givenEClass.getESuperTypes().add(this.getStep());
-		whenEClass.getESuperTypes().add(this.getStep());
-		thenEClass.getESuperTypes().add(this.getStep());
-		andEClass.getESuperTypes().add(this.getStep());
+		givenEClass.getESuperTypes().add(this.getStepImplementation());
+		whenEClass.getESuperTypes().add(this.getStepImplementation());
+		thenEClass.getESuperTypes().add(this.getStepImplementation());
+		andEClass.getESuperTypes().add(this.getStepImplementation());
 		featureFileEClass.getESuperTypes().add(theXtendPackage.getXtendFile());
 		givenReferenceEClass.getESuperTypes().add(this.getStepReference());
 		whenReferenceEClass.getESuperTypes().add(this.getStepReference());
 		thenReferenceEClass.getESuperTypes().add(this.getStepReference());
 		andReferenceEClass.getESuperTypes().add(this.getStepReference());
 		stepReferenceEClass.getESuperTypes().add(this.getStep());
+		stepImplementationEClass.getESuperTypes().add(this.getStep());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(featureEClass, Feature.class, "Feature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -609,12 +630,12 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 
 		initEClass(scenarioEClass, Scenario.class, "Scenario", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getScenario_Examples(), theJnarioPackage.getExampleTable(), null, "examples", null, 0, -1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getScenario_Steps(), theXtendPackage.getXtendMember(), null, "steps", null, 0, -1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getScenario_Steps(), this.getStep(), null, "steps", null, 0, -1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stepEClass, Step.class, "Step", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStep_Name(), ecorePackage.getEString(), "name", null, 0, 1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStep_StepExpression(), this.getStepExpression(), null, "stepExpression", null, 0, 1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStep_And(), theXtendPackage.getXtendMember(), null, "and", null, 0, -1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStep_And(), this.getStep(), null, "and", null, 0, -1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(givenEClass, Given.class, "Given", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -640,6 +661,8 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 
 		initEClass(stepReferenceEClass, StepReference.class, "StepReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getStepReference_Reference(), this.getStep(), null, "reference", null, 0, 1, StepReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(stepImplementationEClass, StepImplementation.class, "StepImplementation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

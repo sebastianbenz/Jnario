@@ -462,6 +462,70 @@ public interface FeaturePackage extends EPackage
 	int STEP_FEATURE_COUNT = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 3;
 
 	/**
+	 * The meta object id for the '{@link org.jnario.feature.feature.impl.StepImplementationImpl <em>Step Implementation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.jnario.feature.feature.impl.StepImplementationImpl
+	 * @see org.jnario.feature.feature.impl.FeaturePackageImpl#getStepImplementation()
+	 * @generated
+	 */
+	int STEP_IMPLEMENTATION = 15;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STEP_IMPLEMENTATION__ANNOTATIONS = STEP__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STEP_IMPLEMENTATION__ANNOTATION_INFO = STEP__ANNOTATION_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STEP_IMPLEMENTATION__NAME = STEP__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Step Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STEP_IMPLEMENTATION__STEP_EXPRESSION = STEP__STEP_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>And</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STEP_IMPLEMENTATION__AND = STEP__AND;
+
+	/**
+	 * The number of structural features of the '<em>Step Implementation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STEP_IMPLEMENTATION_FEATURE_COUNT = STEP_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.jnario.feature.feature.impl.GivenImpl <em>Given</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -478,7 +542,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int GIVEN__ANNOTATIONS = STEP__ANNOTATIONS;
+	int GIVEN__ANNOTATIONS = STEP_IMPLEMENTATION__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
@@ -487,7 +551,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int GIVEN__ANNOTATION_INFO = STEP__ANNOTATION_INFO;
+	int GIVEN__ANNOTATION_INFO = STEP_IMPLEMENTATION__ANNOTATION_INFO;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -496,7 +560,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int GIVEN__NAME = STEP__NAME;
+	int GIVEN__NAME = STEP_IMPLEMENTATION__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Step Expression</b></em>' containment reference.
@@ -505,7 +569,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int GIVEN__STEP_EXPRESSION = STEP__STEP_EXPRESSION;
+	int GIVEN__STEP_EXPRESSION = STEP_IMPLEMENTATION__STEP_EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>And</b></em>' containment reference list.
@@ -514,7 +578,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int GIVEN__AND = STEP__AND;
+	int GIVEN__AND = STEP_IMPLEMENTATION__AND;
 
 	/**
 	 * The number of structural features of the '<em>Given</em>' class.
@@ -523,7 +587,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int GIVEN_FEATURE_COUNT = STEP_FEATURE_COUNT + 0;
+	int GIVEN_FEATURE_COUNT = STEP_IMPLEMENTATION_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.feature.feature.impl.WhenImpl <em>When</em>}' class.
@@ -542,7 +606,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int WHEN__ANNOTATIONS = STEP__ANNOTATIONS;
+	int WHEN__ANNOTATIONS = STEP_IMPLEMENTATION__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
@@ -551,7 +615,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int WHEN__ANNOTATION_INFO = STEP__ANNOTATION_INFO;
+	int WHEN__ANNOTATION_INFO = STEP_IMPLEMENTATION__ANNOTATION_INFO;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -560,7 +624,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int WHEN__NAME = STEP__NAME;
+	int WHEN__NAME = STEP_IMPLEMENTATION__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Step Expression</b></em>' containment reference.
@@ -569,7 +633,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int WHEN__STEP_EXPRESSION = STEP__STEP_EXPRESSION;
+	int WHEN__STEP_EXPRESSION = STEP_IMPLEMENTATION__STEP_EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>And</b></em>' containment reference list.
@@ -578,7 +642,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int WHEN__AND = STEP__AND;
+	int WHEN__AND = STEP_IMPLEMENTATION__AND;
 
 	/**
 	 * The number of structural features of the '<em>When</em>' class.
@@ -587,7 +651,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int WHEN_FEATURE_COUNT = STEP_FEATURE_COUNT + 0;
+	int WHEN_FEATURE_COUNT = STEP_IMPLEMENTATION_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.feature.feature.impl.ThenImpl <em>Then</em>}' class.
@@ -606,7 +670,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int THEN__ANNOTATIONS = STEP__ANNOTATIONS;
+	int THEN__ANNOTATIONS = STEP_IMPLEMENTATION__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
@@ -615,7 +679,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int THEN__ANNOTATION_INFO = STEP__ANNOTATION_INFO;
+	int THEN__ANNOTATION_INFO = STEP_IMPLEMENTATION__ANNOTATION_INFO;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -624,7 +688,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int THEN__NAME = STEP__NAME;
+	int THEN__NAME = STEP_IMPLEMENTATION__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Step Expression</b></em>' containment reference.
@@ -633,7 +697,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int THEN__STEP_EXPRESSION = STEP__STEP_EXPRESSION;
+	int THEN__STEP_EXPRESSION = STEP_IMPLEMENTATION__STEP_EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>And</b></em>' containment reference list.
@@ -642,7 +706,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int THEN__AND = STEP__AND;
+	int THEN__AND = STEP_IMPLEMENTATION__AND;
 
 	/**
 	 * The number of structural features of the '<em>Then</em>' class.
@@ -651,7 +715,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int THEN_FEATURE_COUNT = STEP_FEATURE_COUNT + 0;
+	int THEN_FEATURE_COUNT = STEP_IMPLEMENTATION_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.feature.feature.impl.AndImpl <em>And</em>}' class.
@@ -670,7 +734,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int AND__ANNOTATIONS = STEP__ANNOTATIONS;
+	int AND__ANNOTATIONS = STEP_IMPLEMENTATION__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
@@ -679,7 +743,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int AND__ANNOTATION_INFO = STEP__ANNOTATION_INFO;
+	int AND__ANNOTATION_INFO = STEP_IMPLEMENTATION__ANNOTATION_INFO;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -688,7 +752,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int AND__NAME = STEP__NAME;
+	int AND__NAME = STEP_IMPLEMENTATION__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Step Expression</b></em>' containment reference.
@@ -697,7 +761,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int AND__STEP_EXPRESSION = STEP__STEP_EXPRESSION;
+	int AND__STEP_EXPRESSION = STEP_IMPLEMENTATION__STEP_EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>And</b></em>' containment reference list.
@@ -706,7 +770,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int AND__AND = STEP__AND;
+	int AND__AND = STEP_IMPLEMENTATION__AND;
 
 	/**
 	 * The number of structural features of the '<em>And</em>' class.
@@ -715,7 +779,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int AND_FEATURE_COUNT = STEP_FEATURE_COUNT + 0;
+	int AND_FEATURE_COUNT = STEP_IMPLEMENTATION_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.feature.feature.impl.StepExpressionImpl <em>Step Expression</em>}' class.
@@ -1438,6 +1502,16 @@ public interface FeaturePackage extends EPackage
 	EReference getStepReference_Reference();
 
 	/**
+	 * Returns the meta object for class '{@link org.jnario.feature.feature.StepImplementation <em>Step Implementation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Step Implementation</em>'.
+	 * @see org.jnario.feature.feature.StepImplementation
+	 * @generated
+	 */
+	EClass getStepImplementation();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1697,6 +1771,16 @@ public interface FeaturePackage extends EPackage
 		 * @generated
 		 */
 		EReference STEP_REFERENCE__REFERENCE = eINSTANCE.getStepReference_Reference();
+
+		/**
+		 * The meta object literal for the '{@link org.jnario.feature.feature.impl.StepImplementationImpl <em>Step Implementation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.jnario.feature.feature.impl.StepImplementationImpl
+		 * @see org.jnario.feature.feature.impl.FeaturePackageImpl#getStepImplementation()
+		 * @generated
+		 */
+		EClass STEP_IMPLEMENTATION = eINSTANCE.getStepImplementation();
 
 	}
 

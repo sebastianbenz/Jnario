@@ -141,6 +141,7 @@ public class FeatureSwitch<T>
 			{
 				Given given = (Given)theEObject;
 				T result = caseGiven(given);
+				if (result == null) result = caseStepImplementation(given);
 				if (result == null) result = caseStep(given);
 				if (result == null) result = caseXtendMember(given);
 				if (result == null) result = caseXtendAnnotationTarget(given);
@@ -151,6 +152,7 @@ public class FeatureSwitch<T>
 			{
 				When when = (When)theEObject;
 				T result = caseWhen(when);
+				if (result == null) result = caseStepImplementation(when);
 				if (result == null) result = caseStep(when);
 				if (result == null) result = caseXtendMember(when);
 				if (result == null) result = caseXtendAnnotationTarget(when);
@@ -161,6 +163,7 @@ public class FeatureSwitch<T>
 			{
 				Then then = (Then)theEObject;
 				T result = caseThen(then);
+				if (result == null) result = caseStepImplementation(then);
 				if (result == null) result = caseStep(then);
 				if (result == null) result = caseXtendMember(then);
 				if (result == null) result = caseXtendAnnotationTarget(then);
@@ -171,6 +174,7 @@ public class FeatureSwitch<T>
 			{
 				And and = (And)theEObject;
 				T result = caseAnd(and);
+				if (result == null) result = caseStepImplementation(and);
 				if (result == null) result = caseStep(and);
 				if (result == null) result = caseXtendMember(and);
 				if (result == null) result = caseXtendAnnotationTarget(and);
@@ -243,6 +247,16 @@ public class FeatureSwitch<T>
 				if (result == null) result = caseStep(stepReference);
 				if (result == null) result = caseXtendMember(stepReference);
 				if (result == null) result = caseXtendAnnotationTarget(stepReference);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case FeaturePackage.STEP_IMPLEMENTATION:
+			{
+				StepImplementation stepImplementation = (StepImplementation)theEObject;
+				T result = caseStepImplementation(stepImplementation);
+				if (result == null) result = caseStep(stepImplementation);
+				if (result == null) result = caseXtendMember(stepImplementation);
+				if (result == null) result = caseXtendAnnotationTarget(stepImplementation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -486,6 +500,22 @@ public class FeatureSwitch<T>
 	 * @generated
 	 */
 	public T caseStepReference(StepReference object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Step Implementation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Step Implementation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStepImplementation(StepImplementation object)
 	{
 		return null;
 	}

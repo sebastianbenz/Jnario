@@ -103,8 +103,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			register(acceptor, feature.background, backgroundClass, emptyList)
 		}
 		val scenarios = <JvmGenericType>newArrayList
-		for(member: feature.scenarios){
-			val scenario = member as Scenario
+		for(scenario: feature.scenarios){
 			val className = scenario.className
 			val inferredJvmType = scenario.infer(featureFile, className, backgroundClass)
 			register(acceptor, scenario, inferredJvmType, emptyList)
@@ -118,7 +117,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	def register(IJvmDeclaredTypeAcceptor acceptor, XtendClass source, JvmGenericType inferredJvmType, List<JvmGenericType> scenarios){
    		associatePrimary(source, inferredJvmType);
 		acceptor.accept(inferredJvmType).initializeLater[initialize(source, inferredJvmType, scenarios)] 
-   	}
+   	} 
    	
    	def initialize(XtendClass source, JvmGenericType inferredJvmType, List<JvmGenericType> scenarios) {
    		init(source, inferredJvmType, scenarios)
@@ -194,10 +193,8 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		]	
    	}
    	
-   	def generateStepValues(Iterable<XtendMember> steps){
-   		for(step: steps.filter(typeof(Step))){
-			step.generateStepValues
-   		}
+   	def generateStepValues(Iterable<Step> steps){
+   		steps.forEach[it.generateStepValues]
    	}
    	
    	def generateStepValues(Step step){
@@ -253,12 +250,12 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		}
 	}
    	
-   	def generateBackgroundStepCalls(EList<XtendMember> steps, JvmGenericType inferredJvmType){
+   	def generateBackgroundStepCalls(Iterable<Step> steps, JvmGenericType inferredJvmType){
    		var order = 0
 		for (step : steps) {
-			order = transformCalls(step as Step, inferredJvmType, order)
-			for(and: (step as Step).and){
-				order = transformCalls(and as Step, inferredJvmType, order)
+			order = transformCalls(step, inferredJvmType, order)
+			for(and: step.and){
+				order = transformCalls(and, inferredJvmType, order)
 			}			
 		}
 		order 
@@ -277,12 +274,12 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		order + 1
    	}
    	
-   	def generateSteps(EList<XtendMember> steps, JvmGenericType inferredJvmType, int start, Scenario scenario){
+   	def generateSteps(Iterable<Step> steps, JvmGenericType inferredJvmType, int start, Scenario scenario){
 		var order = start
 		for (step : steps) {
-			order = transform(step as Step, inferredJvmType, order, scenario)
-			for(and: (step as Step).and){
-				order = transform(and as Step, inferredJvmType, order, scenario)
+			order = transform(step, inferredJvmType, order, scenario)
+			for(and: (step).and){
+				order = transform(and, inferredJvmType, order, scenario)
 			}
 		}
    	}
@@ -304,11 +301,11 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 	}
 	
   	
-   	def generateSteps(EList<XtendMember> steps, JvmGenericType inferredJvmType){
+   	def generateSteps(Iterable<Step> steps, JvmGenericType inferredJvmType){
 		for (step: steps) {
-			transform(step as Step, inferredJvmType)
-			for(and: (step as Step).and){
-				transform(and as Step, inferredJvmType)
+			transform(step, inferredJvmType)
+			for(and: (step).and){
+				transform(and, inferredJvmType)
 			}
 		}
    	}

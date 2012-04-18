@@ -158,6 +158,11 @@ public class FeatureAdapterFactory extends AdapterFactoryImpl
 				return createStepReferenceAdapter();
 			}
 			@Override
+			public Adapter caseStepImplementation(StepImplementation object)
+			{
+				return createStepImplementationAdapter();
+			}
+			@Override
 			public Adapter caseXtendAnnotationTarget(XtendAnnotationTarget object)
 			{
 				return createXtendAnnotationTargetAdapter();
@@ -420,6 +425,21 @@ public class FeatureAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createStepReferenceAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.jnario.feature.feature.StepImplementation <em>Step Implementation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.jnario.feature.feature.StepImplementation
+	 * @generated
+	 */
+	public Adapter createStepImplementationAdapter()
 	{
 		return null;
 	}

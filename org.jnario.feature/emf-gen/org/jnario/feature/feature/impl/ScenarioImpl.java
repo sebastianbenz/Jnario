@@ -17,14 +17,13 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.eclipse.xtend.core.xtend.XtendMember;
-
 import org.eclipse.xtend.core.xtend.impl.XtendClassImplCustom;
 
 import org.jnario.ExampleTable;
 
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.Scenario;
+import org.jnario.feature.feature.Step;
 
 /**
  * <!-- begin-user-doc -->
@@ -60,7 +59,7 @@ public class ScenarioImpl extends XtendClassImplCustom implements Scenario
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<XtendMember> steps;
+	protected EList<Step> steps;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -102,11 +101,11 @@ public class ScenarioImpl extends XtendClassImplCustom implements Scenario
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<XtendMember> getSteps()
+	public EList<Step> getSteps()
 	{
 		if (steps == null)
 		{
-			steps = new EObjectContainmentEList<XtendMember>(XtendMember.class, this, FeaturePackage.SCENARIO__STEPS);
+			steps = new EObjectContainmentEList<Step>(Step.class, this, FeaturePackage.SCENARIO__STEPS);
 		}
 		return steps;
 	}
@@ -164,7 +163,7 @@ public class ScenarioImpl extends XtendClassImplCustom implements Scenario
 				return;
 			case FeaturePackage.SCENARIO__STEPS:
 				getSteps().clear();
-				getSteps().addAll((Collection<? extends XtendMember>)newValue);
+				getSteps().addAll((Collection<? extends Step>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

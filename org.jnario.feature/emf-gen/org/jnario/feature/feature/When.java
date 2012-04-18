@@ -16,6 +16,6 @@ package org.jnario.feature.feature;
  * @model
  * @generated
  */
-public interface When extends Step
+public interface When extends StepImplementation
 {
 } // When

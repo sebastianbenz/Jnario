@@ -106,7 +106,7 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     _builder.append(_name, "");
     _builder.append("</h3>");
     _builder.newLineIfNotEmpty();
-    EList<XtendMember> _steps = scenario.getSteps();
+    EList<Step> _steps = scenario.getSteps();
     Iterable<Step> _filter = Iterables.<Step>filter(_steps, Step.class);
     CharSequence _generate = this.generate(_filter);
     _builder.append(_generate, "");
@@ -143,7 +143,7 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
         CharSequence _generate = this.generate(step);
         _builder.append(_generate, "");
         _builder.newLineIfNotEmpty();
-        EList<XtendMember> _and = step.getAnd();
+        EList<Step> _and = step.getAnd();
         Iterable<Step> _filter = Iterables.<Step>filter(_and, Step.class);
         CharSequence _generate_1 = this.generate(_filter);
         _builder.append(_generate_1, "");

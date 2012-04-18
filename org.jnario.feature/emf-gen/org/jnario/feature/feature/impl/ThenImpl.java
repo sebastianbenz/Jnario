@@ -19,7 +19,7 @@ import org.jnario.feature.feature.Then;
  *
  * @generated
  */
-public class ThenImpl extends StepImpl implements Then
+public class ThenImpl extends StepImplementationImpl implements Then
 {
 	/**
 	 * <!-- begin-user-doc -->

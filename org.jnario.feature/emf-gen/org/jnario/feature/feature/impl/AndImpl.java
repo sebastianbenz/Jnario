@@ -19,7 +19,7 @@ import org.jnario.feature.feature.FeaturePackage;
  *
  * @generated
  */
-public class AndImpl extends StepImpl implements And
+public class AndImpl extends StepImplementationImpl implements And
 {
 	/**
 	 * <!-- begin-user-doc -->

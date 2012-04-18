@@ -15,20 +15,19 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="examples" upperBound="-1"
         eType="ecore:EClass ../../org.jnario/model/Jnario.ecore#//ExampleTable" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="steps" upperBound="-1"
-        eType="ecore:EClass ../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendMember"
-        containment="true"/>
+        eType="#//Step" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Step" eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendMember">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="stepExpression" eType="#//StepExpression"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="and" upperBound="-1" eType="ecore:EClass ../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendMember"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="and" upperBound="-1" eType="#//Step"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Given" eSuperTypes="#//Step"/>
-  <eClassifiers xsi:type="ecore:EClass" name="When" eSuperTypes="#//Step"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Then" eSuperTypes="#//Step"/>
-  <eClassifiers xsi:type="ecore:EClass" name="And" eSuperTypes="#//Step"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Given" eSuperTypes="#//StepImplementation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="When" eSuperTypes="#//StepImplementation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Then" eSuperTypes="#//StepImplementation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="And" eSuperTypes="#//StepImplementation"/>
   <eClassifiers xsi:type="ecore:EClass" name="StepExpression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="annotations" upperBound="-1"
         eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/XAnnotations.ecore#//XAnnotation"
@@ -44,4 +43,5 @@
   <eClassifiers xsi:type="ecore:EClass" name="StepReference" eSuperTypes="#//Step">
     <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//Step"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StepImplementation" eSuperTypes="#//Step"/>
 </ecore:EPackage>

@@ -16,6 +16,6 @@ package org.jnario.feature.feature;
  * @model
  * @generated
  */
-public interface And extends Step
+public interface And extends StepImplementation
 {
 } // And

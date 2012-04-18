@@ -218,8 +218,8 @@
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="GivenReference">
-      <type metamodel="/0/@metamodelDeclarations.2">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtend#//XtendMember"/>
+      <type metamodel="/0/@metamodelDeclarations.5">
+        <classifier xsi:type="ecore:EClass" href="http://www.org/jnario/feature/Feature#//GivenReference"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Action">
@@ -244,8 +244,8 @@
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Given">
-      <type metamodel="/0/@metamodelDeclarations.2">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtend#//XtendMember"/>
+      <type metamodel="/0/@metamodelDeclarations.5">
+        <classifier xsi:type="ecore:EClass" href="http://www.org/jnario/feature/Feature#//Given"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Action">
@@ -268,8 +268,8 @@
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="WhenReference">
-      <type metamodel="/0/@metamodelDeclarations.2">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtend#//XtendMember"/>
+      <type metamodel="/0/@metamodelDeclarations.5">
+        <classifier xsi:type="ecore:EClass" href="http://www.org/jnario/feature/Feature#//WhenReference"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Action">
@@ -294,8 +294,8 @@
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="When">
-      <type metamodel="/0/@metamodelDeclarations.2">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtend#//XtendMember"/>
+      <type metamodel="/0/@metamodelDeclarations.5">
+        <classifier xsi:type="ecore:EClass" href="http://www.org/jnario/feature/Feature#//When"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Action">
@@ -318,8 +318,8 @@
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ThenReference">
-      <type metamodel="/0/@metamodelDeclarations.2">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtend#//XtendMember"/>
+      <type metamodel="/0/@metamodelDeclarations.5">
+        <classifier xsi:type="ecore:EClass" href="http://www.org/jnario/feature/Feature#//ThenReference"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Action">
@@ -344,8 +344,8 @@
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Then">
-      <type metamodel="/0/@metamodelDeclarations.2">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtend#//XtendMember"/>
+      <type metamodel="/0/@metamodelDeclarations.5">
+        <classifier xsi:type="ecore:EClass" href="http://www.org/jnario/feature/Feature#//Then"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Action">
@@ -368,8 +368,8 @@
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="AndReference">
-      <type metamodel="/0/@metamodelDeclarations.2">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtend#//XtendMember"/>
+      <type metamodel="/0/@metamodelDeclarations.5">
+        <classifier xsi:type="ecore:EClass" href="http://www.org/jnario/feature/Feature#//AndReference"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Action">
@@ -388,8 +388,8 @@
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="And">
-      <type metamodel="/0/@metamodelDeclarations.2">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtend#//XtendMember"/>
+      <type metamodel="/0/@metamodelDeclarations.5">
+        <classifier xsi:type="ecore:EClass" href="http://www.org/jnario/feature/Feature#//And"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Action">
@@ -609,8 +609,8 @@
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Assertion">
-      <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/xbase/Xbase#//XExpression"/>
+      <type metamodel="/0/@metamodelDeclarations.4">
+        <classifier xsi:type="ecore:EClass" href="http://www.org/Jnario#//Assertion"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Action">

@@ -8,25 +8,25 @@ package org.jnario.feature.feature.impl;
 import org.eclipse.emf.ecore.EClass;
 
 import org.jnario.feature.feature.FeaturePackage;
-import org.jnario.feature.feature.Given;
+import org.jnario.feature.feature.StepImplementation;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Given</b></em>'.
+ * An implementation of the model object '<em><b>Step Implementation</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class GivenImpl extends StepImplementationImpl implements Given
+public class StepImplementationImpl extends StepImpl implements StepImplementation
 {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected GivenImpl()
+	protected StepImplementationImpl()
 	{
 		super();
 	}
@@ -39,7 +39,7 @@ public class GivenImpl extends StepImplementationImpl implements Given
 	@Override
 	protected EClass eStaticClass()
 	{
-		return FeaturePackage.Literals.GIVEN;
+		return FeaturePackage.Literals.STEP_IMPLEMENTATION;
 	}
 
-} //GivenImpl
+} //StepImplementationImpl

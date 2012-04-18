@@ -8,14 +8,12 @@
 package org.jnario.feature.linking;
 
 import static com.google.common.collect.Iterables.concat;
-import static com.google.common.collect.Iterables.filter;
 import static java.util.Collections.emptyList;
 
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.diagnostics.IDiagnosticConsumer;
 import org.eclipse.xtext.xbase.XConstructorCall;
 import org.eclipse.xtext.xbase.XExpression;
@@ -64,18 +62,14 @@ public class FeatureLazyLinker extends JnarioLazyLinker {
 			return result;
 		}
 		if(feature.getBackground() != null){
-			result = concat(result, filterSteps(feature.getBackground().getSteps()));		
+			result = concat(result, feature.getBackground().getSteps());		
 		}
 		for(Scenario scenario : feature.getScenarios()){
-			result = concat(result, filterSteps(scenario.getSteps()));
+			result = concat(result, scenario.getSteps());
 		}
 		return result;
 	}
 	
-	private Iterable<Step> filterSteps(Iterable<XtendMember> members){
-		return filter(members, Step.class);
-	}
-
 	private void generateArguments(Iterable<Step> steps) {
 		for(Step step: steps){
 			if(step.getName() != null){

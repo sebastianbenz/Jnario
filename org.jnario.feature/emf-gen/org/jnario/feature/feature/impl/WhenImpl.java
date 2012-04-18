@@ -19,7 +19,7 @@ import org.jnario.feature.feature.When;
  *
  * @generated
  */
-public class WhenImpl extends StepImpl implements When
+public class WhenImpl extends StepImplementationImpl implements When
 {
 	/**
 	 * <!-- begin-user-doc -->

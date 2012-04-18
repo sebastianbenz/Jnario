@@ -451,7 +451,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cAndAndParserRuleCall_2_0_0 = (RuleCall)cAndAlternatives_2_0.eContents().get(0);
 		private final RuleCall cAndAndReferenceParserRuleCall_2_0_1 = (RuleCall)cAndAlternatives_2_0.eContents().get(1);
 		
-		//GivenReference returns xtend::XtendMember:
+		//GivenReference:
 		//	{GivenReference} reference=[Given|GIVEN_TEXT] and+=(And | AndReference)*;
 		public ParserRule getRule() { return rule; }
 
@@ -496,7 +496,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cAndAndParserRuleCall_3_0_0 = (RuleCall)cAndAlternatives_3_0.eContents().get(0);
 		private final RuleCall cAndAndReferenceParserRuleCall_3_0_1 = (RuleCall)cAndAlternatives_3_0.eContents().get(1);
 		
-		//Given returns xtend::XtendMember:
+		//Given:
 		//	{Given} name=GIVEN_TEXT stepExpression=StepExpression and+=(And | AndReference)*;
 		public ParserRule getRule() { return rule; }
 
@@ -543,7 +543,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cAndAndParserRuleCall_2_0_0 = (RuleCall)cAndAlternatives_2_0.eContents().get(0);
 		private final RuleCall cAndAndReferenceParserRuleCall_2_0_1 = (RuleCall)cAndAlternatives_2_0.eContents().get(1);
 		
-		//WhenReference returns xtend::XtendMember:
+		//WhenReference:
 		//	{WhenReference} reference=[When|WHEN_TEXT] and+=(And | AndReference)*;
 		public ParserRule getRule() { return rule; }
 
@@ -588,7 +588,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cAndAndParserRuleCall_3_0_0 = (RuleCall)cAndAlternatives_3_0.eContents().get(0);
 		private final RuleCall cAndAndReferenceParserRuleCall_3_0_1 = (RuleCall)cAndAlternatives_3_0.eContents().get(1);
 		
-		//When returns xtend::XtendMember:
+		//When:
 		//	{When} name=WHEN_TEXT stepExpression=StepExpression and+=(And | AndReference)*;
 		public ParserRule getRule() { return rule; }
 
@@ -635,7 +635,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cAndAndParserRuleCall_2_0_0 = (RuleCall)cAndAlternatives_2_0.eContents().get(0);
 		private final RuleCall cAndAndReferenceParserRuleCall_2_0_1 = (RuleCall)cAndAlternatives_2_0.eContents().get(1);
 		
-		//ThenReference returns xtend::XtendMember:
+		//ThenReference:
 		//	{ThenReference} reference=[Then|THEN_TEXT] and+=(And | AndReference)*;
 		public ParserRule getRule() { return rule; }
 
@@ -680,7 +680,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cAndAndParserRuleCall_3_0_0 = (RuleCall)cAndAlternatives_3_0.eContents().get(0);
 		private final RuleCall cAndAndReferenceParserRuleCall_3_0_1 = (RuleCall)cAndAlternatives_3_0.eContents().get(1);
 		
-		//Then returns xtend::XtendMember:
+		//Then:
 		//	{Then} name=THEN_TEXT stepExpression=StepExpression and+=(And | AndReference)*;
 		public ParserRule getRule() { return rule; }
 
@@ -723,7 +723,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		private final CrossReference cReferenceAndCrossReference_1_0 = (CrossReference)cReferenceAssignment_1.eContents().get(0);
 		private final RuleCall cReferenceAndAND_TEXTTerminalRuleCall_1_0_1 = (RuleCall)cReferenceAndCrossReference_1_0.eContents().get(1);
 		
-		//AndReference returns xtend::XtendMember:
+		//AndReference:
 		//	{AndReference} reference=[And|AND_TEXT];
 		public ParserRule getRule() { return rule; }
 
@@ -752,7 +752,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cStepExpressionAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cStepExpressionStepExpressionParserRuleCall_2_0 = (RuleCall)cStepExpressionAssignment_2.eContents().get(0);
 		
-		//And returns xtend::XtendMember:
+		//And:
 		//	{And} name=AND_TEXT stepExpression=StepExpression;
 		public ParserRule getRule() { return rule; }
 
@@ -1248,7 +1248,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cExpressionAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cExpressionXExpressionParserRuleCall_2_0 = (RuleCall)cExpressionAssignment_2.eContents().get(0);
 		
-		//Assertion returns xbase::XExpression:
+		//Assertion:
 		//	{Assertion} "assert" expression=XExpression;
 		public ParserRule getRule() { return rule; }
 
@@ -1480,7 +1480,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		return getScenarioAccess().getRule();
 	}
 
-	//GivenReference returns xtend::XtendMember:
+	//GivenReference:
 	//	{GivenReference} reference=[Given|GIVEN_TEXT] and+=(And | AndReference)*;
 	public GivenReferenceElements getGivenReferenceAccess() {
 		return (pGivenReference != null) ? pGivenReference : (pGivenReference = new GivenReferenceElements());
@@ -1490,7 +1490,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		return getGivenReferenceAccess().getRule();
 	}
 
-	//Given returns xtend::XtendMember:
+	//Given:
 	//	{Given} name=GIVEN_TEXT stepExpression=StepExpression and+=(And | AndReference)*;
 	public GivenElements getGivenAccess() {
 		return (pGiven != null) ? pGiven : (pGiven = new GivenElements());
@@ -1500,7 +1500,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		return getGivenAccess().getRule();
 	}
 
-	//WhenReference returns xtend::XtendMember:
+	//WhenReference:
 	//	{WhenReference} reference=[When|WHEN_TEXT] and+=(And | AndReference)*;
 	public WhenReferenceElements getWhenReferenceAccess() {
 		return (pWhenReference != null) ? pWhenReference : (pWhenReference = new WhenReferenceElements());
@@ -1510,7 +1510,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		return getWhenReferenceAccess().getRule();
 	}
 
-	//When returns xtend::XtendMember:
+	//When:
 	//	{When} name=WHEN_TEXT stepExpression=StepExpression and+=(And | AndReference)*;
 	public WhenElements getWhenAccess() {
 		return (pWhen != null) ? pWhen : (pWhen = new WhenElements());
@@ -1520,7 +1520,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		return getWhenAccess().getRule();
 	}
 
-	//ThenReference returns xtend::XtendMember:
+	//ThenReference:
 	//	{ThenReference} reference=[Then|THEN_TEXT] and+=(And | AndReference)*;
 	public ThenReferenceElements getThenReferenceAccess() {
 		return (pThenReference != null) ? pThenReference : (pThenReference = new ThenReferenceElements());
@@ -1530,7 +1530,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		return getThenReferenceAccess().getRule();
 	}
 
-	//Then returns xtend::XtendMember:
+	//Then:
 	//	{Then} name=THEN_TEXT stepExpression=StepExpression and+=(And | AndReference)*;
 	public ThenElements getThenAccess() {
 		return (pThen != null) ? pThen : (pThen = new ThenElements());
@@ -1540,7 +1540,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		return getThenAccess().getRule();
 	}
 
-	//AndReference returns xtend::XtendMember:
+	//AndReference:
 	//	{AndReference} reference=[And|AND_TEXT];
 	public AndReferenceElements getAndReferenceAccess() {
 		return (pAndReference != null) ? pAndReference : (pAndReference = new AndReferenceElements());
@@ -1550,7 +1550,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		return getAndReferenceAccess().getRule();
 	}
 
-	//And returns xtend::XtendMember:
+	//And:
 	//	{And} name=AND_TEXT stepExpression=StepExpression;
 	public AndElements getAndAccess() {
 		return (pAnd != null) ? pAnd : (pAnd = new AndElements());
@@ -1646,7 +1646,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		return getShouldAccess().getRule();
 	}
 
-	//Assertion returns xbase::XExpression:
+	//Assertion:
 	//	{Assertion} "assert" expression=XExpression;
 	public AssertionElements getAssertionAccess() {
 		return (pAssertion != null) ? pAssertion : (pAssertion = new AssertionElements());

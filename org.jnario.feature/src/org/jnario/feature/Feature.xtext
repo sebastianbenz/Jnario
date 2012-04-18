@@ -69,47 +69,47 @@ Scenario :
 	steps+=(Then|ThenReference)?
 	examples+=ExampleTable*;
 
-GivenReference returns xtend::XtendMember:
+GivenReference:
 	{GivenReference}
 	reference=[Given|GIVEN_TEXT]
 	and+=(And|AndReference)*
 ;
 
-Given returns xtend::XtendMember:
+Given:
 	{Given}
 	name=GIVEN_TEXT stepExpression=StepExpression
 	and+=(And|AndReference)*
 ;
 	
-WhenReference returns xtend::XtendMember:
+WhenReference:
 	{WhenReference}
 	reference=[When|WHEN_TEXT]
 	and+=(And|AndReference)*
 ;
 
-When returns xtend::XtendMember:
+When:
 	{When}
 	name=WHEN_TEXT stepExpression=StepExpression
 	and+=(And|AndReference)*
 ;
 
-ThenReference returns xtend::XtendMember:
+ThenReference:
 	{ThenReference}
 	reference=[Then|THEN_TEXT]
 	and+=(And|AndReference)*
 ;
 
-Then returns xtend::XtendMember:
+Then:
 	{Then}
 	name=THEN_TEXT stepExpression=StepExpression
 	and+=(And|AndReference)*;
 	
-AndReference returns xtend::XtendMember:
+AndReference:
 	{AndReference}
 	reference=[And|AND_TEXT]
 ;
 	
-And returns xtend::XtendMember:
+And:
 	{And}
 	name=AND_TEXT stepExpression=StepExpression
 ;
@@ -164,7 +164,7 @@ Should:
 ;
 
 
-Assertion returns xbase::XExpression: 
+Assertion: 
 	{Assertion}
 	'assert' expression=XExpression;
 
