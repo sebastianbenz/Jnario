@@ -28,6 +28,7 @@ import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.parser.IParser;
 import org.eclipse.xtext.resource.EObjectAtOffsetHelper;
 import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
+import org.eclipse.xtext.resource.ILocationInFileProvider;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
@@ -54,6 +55,7 @@ import org.jnario.feature.linking.FeatureLinkingService;
 import org.jnario.feature.naming.FeatureIdentifiableSimpleNameProvider;
 import org.jnario.feature.naming.FeatureQualifiedNameProvider;
 import org.jnario.feature.parser.CustomFeatureParser;
+import org.jnario.feature.resource.FeatureLocationInFileProvider;
 import org.jnario.feature.scoping.FeatureScopeProvider;
 import org.jnario.feature.validation.FeatureClasspathBasedChecks;
 import org.jnario.feature.validation.FeatureResourceValidator;
@@ -187,6 +189,11 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 	@Override
 	public Class<? extends IParser> bindIParser() {
 		return CustomFeatureParser.class;
+	}
+	
+	@Override
+	public Class<? extends ILocationInFileProvider> bindILocationInFileProvider() {
+		return FeatureLocationInFileProvider.class;
 	}
 	
 }

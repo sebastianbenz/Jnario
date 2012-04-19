@@ -38,6 +38,7 @@ public class FeatureOutlineTreeProvider extends XtendOutlineTreeProvider {
 				createFeatureNodes(classNode, member);
 			}
 		}
+		
 	}
 	
 	protected boolean _isLeaf(Scenario element) {

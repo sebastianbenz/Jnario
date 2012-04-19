@@ -291,6 +291,10 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			annotations += step.getTestAnnotations(false)
 			annotations += step.toAnnotation(typeof(Order), order.intValue)
 			var name = step.nameOf
+			val index = name.indexOf('\n')
+			if(index != -1){
+				name = name.substring(0, index-1)	
+			}
 			if(step.expressionOf== null){
 				name = "[PENDING] " + name
 				annotations += step.toAnnotation(typeof(Ignore))

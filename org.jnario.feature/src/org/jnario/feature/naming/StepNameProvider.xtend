@@ -7,13 +7,13 @@
  *******************************************************************************/
 package org.jnario.feature.naming
 
+import com.google.common.base.Strings
 import org.jnario.feature.feature.FeaturePackage
 import org.jnario.feature.feature.Step
 import org.jnario.feature.feature.StepReference
-import org.jnario.util.Nodes
 
 import static org.jnario.feature.naming.StepNameProvider.*
-import com.google.common.base.Strings
+import static org.jnario.util.Nodes.*
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -36,9 +36,10 @@ class StepNameProvider {
 	
 	def String nameOf(StepReference ref){
 		if(ref.reference == null){
-			return null
+			null
+		}else{
+			textForFeature(ref, FeaturePackage::eINSTANCE.stepReference_Reference)
 		}
-		return Nodes::textForFeature(ref, FeaturePackage::eINSTANCE.stepReference_Reference)
 	} 
 
 	

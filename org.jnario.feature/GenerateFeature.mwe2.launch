@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.emf.mwe2.launch.Mwe2LaunchConfigurationType">
-<stringAttribute key="org.eclipse.debug.core.ATTR_REFRESH_SCOPE" value="${working_set:&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#13;&#10;&lt;resources&gt;&#13;&#10;&lt;item path=&quot;/org.jnario&quot; type=&quot;4&quot;/&gt;&#13;&#10;&lt;item path=&quot;/org.jnario.generator&quot; type=&quot;4&quot;/&gt;&#13;&#10;&lt;item path=&quot;/org.jnario.tests&quot; type=&quot;4&quot;/&gt;&#13;&#10;&lt;item path=&quot;/org.jnario.feature.ui&quot; type=&quot;4&quot;/&gt;&#13;&#10;&lt;/resources&gt;}"/>
+<stringAttribute key="org.eclipse.debug.core.ATTR_REFRESH_SCOPE" value="${working_set:&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#10;&lt;resources&gt;&#10;&lt;item path=&quot;/org.jnario&quot; type=&quot;4&quot;/&gt;&#10;&lt;item path=&quot;/org.jnario.generator&quot; type=&quot;4&quot;/&gt;&#10;&lt;item path=&quot;/org.jnario.tests&quot; type=&quot;4&quot;/&gt;&#10;&lt;item path=&quot;/org.jnario.feature.ui&quot; type=&quot;4&quot;/&gt;&#10;&lt;/resources&gt;}"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
 <listEntry value="/org.jnario.feature"/>
 </listAttribute>
@@ -13,5 +13,5 @@
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="src/org/jnario/feature/GenerateFeature.mwe2"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="org.jnario.feature"/>
-<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xmx512m"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xmx2048m"/>
 </launchConfiguration>

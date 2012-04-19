@@ -44,13 +44,17 @@ public class StepNameProvider {
   }
   
   public String nameOf(final StepReference ref) {
+    String _xifexpression = null;
     Step _reference = ref.getReference();
     boolean _equals = Objects.equal(_reference, null);
     if (_equals) {
-      return null;
+      _xifexpression = null;
+    } else {
+      EReference _stepReference_Reference = FeaturePackage.eINSTANCE.getStepReference_Reference();
+      String _textForFeature = Nodes.textForFeature(ref, _stepReference_Reference);
+      _xifexpression = _textForFeature;
     }
-    EReference _stepReference_Reference = FeaturePackage.eINSTANCE.getStepReference_Reference();
-    return Nodes.textForFeature(ref, _stepReference_Reference);
+    return _xifexpression;
   }
   
   public String removeExtraCharacters(final String string) {

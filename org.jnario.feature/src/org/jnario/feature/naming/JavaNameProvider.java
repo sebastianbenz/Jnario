@@ -77,6 +77,10 @@ public class JavaNameProvider {
 	}
 	
 	public String getJavaMethodName(String originalName){
+		int index = originalName.lastIndexOf('\n');
+		if(index != -1){
+			originalName = originalName.substring(0, index - 1).trim(); 
+		}
 		return toFirstLower(toValidName(originalName));
 	}
 	

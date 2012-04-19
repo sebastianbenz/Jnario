@@ -28643,13 +28643,13 @@ RULE_SCENARIO_TEXT : 'Scenario:' RULE_MNL;
 
 RULE_FEATURE_TEXT : 'Feature' RULE_COLON ( options {greedy=false;} : . )*(RULE_BACKGROUND_TEXT|RULE_SCENARIO_TEXT);
 
-RULE_GIVEN_TEXT : 'Given ' RULE_MNL;
+RULE_GIVEN_TEXT : 'Given ' RULE_STEP_WITH_ARGS;
 
-RULE_WHEN_TEXT : 'When ' RULE_MNL;
+RULE_WHEN_TEXT : 'When ' RULE_STEP_WITH_ARGS;
 
-RULE_THEN_TEXT : 'Then ' RULE_MNL;
+RULE_THEN_TEXT : 'Then ' RULE_STEP_WITH_ARGS;
 
-RULE_AND_TEXT : 'And ' RULE_MNL;
+RULE_AND_TEXT : 'And ' RULE_STEP_WITH_ARGS;
 
 RULE_EXAMPLE_TEXT : 'Examples' RULE_COLON RULE_MNL;
 
@@ -28661,11 +28661,9 @@ RULE_EXAMPLE_ROW_END : (RULE_PIPE|RULE_PIPE_SPACES) '\r'? '\n';
 
 RULE_TEXT : '____dummy____'+;
 
-fragment RULE_TEXT_MULTI_LINE : ~(('\r'|'\n'))* '\\' RULE_NL;
+fragment RULE_STEP_WITH_ARGS : ~(('\r'|'\n'))* '\r'? '\n' RULE_SPACES RULE_STRING?;
 
-fragment RULE_TEXT_AND_NL : ~(('\r'|'\n'|'\\'))* RULE_NL;
-
-fragment RULE_MNL : RULE_TEXT_MULTI_LINE* RULE_TEXT_AND_NL;
+fragment RULE_MNL : ~(('\r'|'\n'))* RULE_NL;
 
 fragment RULE_COLON : RULE_SPACES ':';
 

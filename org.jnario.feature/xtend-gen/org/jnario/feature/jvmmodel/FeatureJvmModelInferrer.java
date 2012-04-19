@@ -489,6 +489,14 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
             JvmAnnotationReference _annotation = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(step, Order.class, Integer.valueOf(_intValue));
             FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_1, _annotation);
             String name = FeatureJvmModelInferrer.this._stepNameProvider.nameOf(step);
+            final int index = name.indexOf("\n");
+            int _minus = (-1);
+            boolean _notEquals = (index != _minus);
+            if (_notEquals) {
+              int _minus_1 = (index - 1);
+              String _substring = name.substring(0, _minus_1);
+              name = _substring;
+            }
             StepExpression _expressionOf_1 = FeatureJvmModelInferrer.this._stepExpressionProvider.expressionOf(step);
             boolean _equals = Objects.equal(_expressionOf_1, null);
             if (_equals) {

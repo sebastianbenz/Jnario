@@ -78,7 +78,7 @@ public class StepNameProviderSpec {
     _builder.append("Given a step with an implementation");
     _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.append("\"the implementation\"");
+    _builder.append("1 + 1 => 2");
     _builder.newLine();
     this.modelStore.parseScenario(_builder);
     String _stepName = this.stepName();

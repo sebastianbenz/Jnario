@@ -22,6 +22,7 @@ import org.jnario.feature.feature.FeatureFile;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepExpression;
+import org.jnario.feature.feature.StepImplementation;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -34,7 +35,7 @@ public class FeatureFoldingRegionProvider extends DefaultFoldingRegionProvider {
 			calculateFolding((FeatureFile)eObject, foldingRegionAcceptor);
 		}else if(eObject instanceof Scenario){
 			calculateFolding((Scenario)eObject, foldingRegionAcceptor);
-		}else if(eObject instanceof Step){
+		}else if(eObject instanceof StepImplementation){
 			calculateFolding((Step)eObject, foldingRegionAcceptor);
 		}else if(eObject instanceof Background){
 			calculateFolding((Background)eObject, foldingRegionAcceptor);
@@ -80,7 +81,7 @@ public class FeatureFoldingRegionProvider extends DefaultFoldingRegionProvider {
 		if(beginRegion == null){
 			return -1;
 		}
-		return beginRegion.getOffset();
+		return beginRegion.getOffset() + beginRegion.getLength() - 1;
 	}
 
 	private void setFoldingRegion(EObject object, int begin, IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor){

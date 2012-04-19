@@ -40,7 +40,7 @@ public class StepArgumentsProvider {
 	public List<String> findStepArguments(Step step) {
 		List<String> arguments = newArrayList();
 		extractStringArguments(step, arguments);
-		extractMultiLineArguments(step, arguments);
+		//extractMultiLineArguments(step, arguments);
 		return arguments;
 	}
 

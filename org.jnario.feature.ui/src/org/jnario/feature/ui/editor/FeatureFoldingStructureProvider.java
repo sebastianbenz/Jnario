@@ -22,7 +22,6 @@ public class FeatureFoldingStructureProvider extends InitiallyCollapsableAwareFo
 			
 			@Override
 			public void paint(org.eclipse.swt.graphics.GC gc, org.eclipse.swt.widgets.Canvas canvas, org.eclipse.swt.graphics.Rectangle rectangle) {
-				
 			}
 		};
 	}

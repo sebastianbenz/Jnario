@@ -38,7 +38,7 @@ describe StepNameProvider{
 			Feature: Example
 				Scenario: MyScenario
 					Given a step with an implementation
-						"the implementation"
+						1 + 1 => 2
 		''')
 		
 		assert stepName == "Given a step with an implementation"
