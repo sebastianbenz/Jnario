@@ -21,7 +21,7 @@ import org.jnario.ExampleTable;
 import org.jnario.compiler.JnarioBatchCompiler;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.Scenario;
-import org.jnario.feature.naming.JavaNameProvider;
+import org.jnario.feature.naming.FeatureClassNameProvider;
 
 import com.google.inject.Inject;
 
@@ -31,7 +31,7 @@ import com.google.inject.Inject;
 public class FeatureBatchCompiler extends JnarioBatchCompiler {
 	
 	@Inject
-	public JavaNameProvider nameProvider;
+	public FeatureClassNameProvider nameProvider;
 
 	@Override
 	protected String getClassName(EObject eObject) {

@@ -35,7 +35,7 @@ import org.jnario.feature.feature.FeatureFile
 import org.jnario.feature.feature.Scenario
 import org.jnario.feature.feature.Step
 import org.jnario.feature.feature.StepReference
-import org.jnario.feature.naming.JavaNameProvider
+import org.jnario.feature.naming.FeatureClassNameProvider
 import org.jnario.feature.naming.StepNameProvider
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder
 import org.jnario.jvmmodel.JnarioJvmModelInferrer
@@ -63,7 +63,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 	
 	@Inject	extension TypeReferences
 	
-	@Inject extension JavaNameProvider
+	@Inject extension org.jnario.feature.naming.FeatureClassNameProvider
 	
 	@Inject extension StepNameProvider
 	
@@ -104,7 +104,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		}
 		val scenarios = <JvmGenericType>newArrayList
 		for(scenario: feature.scenarios){
-			val className = scenario.className
+			val className = scenario.getClassName
 			val inferredJvmType = scenario.infer(featureFile, className, backgroundClass)
 			register(acceptor, scenario, inferredJvmType, emptyList)
 			scenarios += inferredJvmType
@@ -262,14 +262,14 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	}
    	
    	def transformCalls(Step step, JvmGenericType inferredJvmType, int order){
-   		val methodName = step.nameOf.javaMethodName
+   		val methodName = step.methodName
    		inferredJvmType.members += step.toMethod(methodName, getTypeForName(Void::TYPE, step))[
 			body = [ITreeAppendable a |
 						a.append("super." + methodName + "();")
 			]
 			annotations += step.getTestAnnotations(false)
 			annotations += step.toAnnotation(typeof(Order), order.intValue)
-			annotations += step.toAnnotation(typeof(Named),step.nameOf)
+			annotations += step.toAnnotation(typeof(Named),step.describe)
 		]	
 		order + 1
    	}
@@ -285,16 +285,13 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	}
    	
 	def transform(Step step, JvmGenericType inferredJvmType, int order, Scenario scenario) {
-		inferredJvmType.members += step.toMethod(step.nameOf.javaMethodName, getTypeForName(Void::TYPE, step))[
+		inferredJvmType.members += step.toMethod(step.methodName, getTypeForName(Void::TYPE, step))[
 			body = step.expressionOf?.blockExpression
 			step.generateStepValues
 			annotations += step.getTestAnnotations(false)
 			annotations += step.toAnnotation(typeof(Order), order.intValue)
-			var name = step.nameOf
-			val index = name.indexOf('\n')
-			if(index != -1){
-				name = name.substring(0, index-1)	
-			}
+			var name = step.describe
+			
 			if(step.expressionOf== null){
 				name = "[PENDING] " + name
 				annotations += step.toAnnotation(typeof(Ignore))
@@ -315,7 +312,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	}
    	
    	def transform(Step step, JvmGenericType inferredJvmType){
-   		inferredJvmType.members += step.toMethod(step.nameOf.javaMethodName, getTypeForName(Void::TYPE, step))[
+   		inferredJvmType.members += step.toMethod(step.methodName, getTypeForName(Void::TYPE, step))[
 			body = step.expressionOf?.blockExpression
 			step.generateStepValues
 		]
@@ -350,7 +347,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 	} 
 	
 	def createExampleClass(Scenario scenario, FeatureFile featureFile, ExampleRow row, EList<ExampleColumn> fields, JvmGenericType inferredJvmType){
-		val className = row.className
+		val className = row.getClassName
 		row.toClass(className)[
 			superTypes += inferredJvmType.createTypeRef
 			featureFile.eResource.contents += it

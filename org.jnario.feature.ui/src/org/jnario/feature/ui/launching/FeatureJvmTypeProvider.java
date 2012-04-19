@@ -19,7 +19,7 @@ import com.google.inject.Inject;
 
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeatureFile;
-import org.jnario.feature.naming.JavaNameProvider;
+import org.jnario.feature.naming.FeatureClassNameProvider;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -28,11 +28,11 @@ import org.jnario.feature.naming.JavaNameProvider;
 
 public class FeatureJvmTypeProvider {
 	
-	public JavaNameProvider nameProvider;
+	public FeatureClassNameProvider nameProvider;
 	public Factory typeProviderFactory;
 
 	@Inject
-	public FeatureJvmTypeProvider(JavaNameProvider nameProvider,
+	public FeatureJvmTypeProvider(FeatureClassNameProvider nameProvider,
 			Factory typeProviderFactory) {
 		this.nameProvider = nameProvider;
 		this.typeProviderFactory = typeProviderFactory;

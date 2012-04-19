@@ -7,6 +7,8 @@
  *******************************************************************************/
 package org.jnario.util;
 
+import static java.lang.Character.isJavaIdentifierPart;
+import static java.lang.Character.isJavaIdentifierStart;
 import static java.lang.Character.isLetterOrDigit;
 import static java.lang.Character.isWhitespace;
 import static java.lang.Character.toUpperCase;
@@ -17,8 +19,25 @@ import java.util.Scanner;
  * @author Sebastian Benz - Initial contribution and API
  */
 public class Strings extends org.eclipse.xtext.util.Strings{
-
 	
+	
+	public static int indexOfNewLine(String s){
+		return indexOf(s, '\r', '\n');
+	}
+	
+	public static int indexOf(String s, char... chars){
+		if(s == null){
+			return -1;
+		}
+		for(int i = 0; i < s.length(); i++){
+			for (char c : chars) {
+				if(c == s.charAt(i)){
+					return i;
+				}
+			}
+		}
+		return -1;
+	}
 	
 	public static String convertStreamToString(InputStream is) { 
 	    return new Scanner(is).useDelimiter("\\A").next();
@@ -40,7 +59,9 @@ public class Strings extends org.eclipse.xtext.util.Strings{
 				if(lastWhiteSpace){
 					c = toUpperCase(c);
 				}
-				b.append(c);
+				if(isValidJavarIndentifier(i, c)){
+					b.append(c);
+				}
 				lastWhiteSpace = false;
 			}else{
 				lastWhiteSpace = true;
@@ -48,16 +69,15 @@ public class Strings extends org.eclipse.xtext.util.Strings{
 		}
 		return b;
 	}
-	
-	private static boolean isWhiteSpace(String desc, int begin) {
-		return Character.isWhitespace(desc.charAt(begin));
-	}
 
+	private static boolean isValidJavarIndentifier(int position, char c) {
+		return (position == 0 && isJavaIdentifierStart(c)) || isJavaIdentifierPart(c);
+	}
 	
 	public static String getFirstWord(String string){
 		if(string != null){
 			int begin = 0;
-			for (; isWhiteSpace(string, begin); begin++) {
+			for (; isWhitespace(string.charAt(begin)); begin++) {
 			}
 			int end = string.indexOf(' ', begin);
 			if (end > 0) {

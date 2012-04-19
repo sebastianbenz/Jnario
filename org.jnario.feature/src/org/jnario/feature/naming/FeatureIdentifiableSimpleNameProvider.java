@@ -25,10 +25,9 @@ public class FeatureIdentifiableSimpleNameProvider extends XtendIdentifiableSimp
 	public String getSimpleName(JvmIdentifiableElement element) {
 		if(element instanceof Step){
 			Step step = (Step) element;
-			stepNameProvider.nameOf(step);
+			return stepNameProvider.nameOf(step);
 		}
 		return super.getSimpleName(element);
 	}
-	
 
 }

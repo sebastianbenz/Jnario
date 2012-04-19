@@ -1,29 +1,31 @@
 package org.jnario.feature.tests.unit.naming;
 
-import com.google.common.base.Objects;
 import com.google.inject.Inject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.jnario.feature.feature.FeatureFactory;
 import org.jnario.feature.feature.Given;
 import org.jnario.feature.feature.GivenReference;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.naming.StepNameProvider;
+import org.jnario.feature.tests.unit.naming.StepNameProviderDescribeStepSpec;
+import org.jnario.feature.tests.unit.naming.StepNameProviderNameOfStepSpec;
+import org.jnario.feature.tests.unit.naming.StepNameProviderRemoveKeywordsAndArgumentsStringSpec;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.Query;
 import org.jnario.jnario.test.util.SpecTestInstantiator;
+import org.jnario.runner.Contains;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Extension;
 import org.jnario.runner.InstantiateWith;
 import org.jnario.runner.Named;
-import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
-import org.junit.Assert;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
+@Contains({ StepNameProviderNameOfStepSpec.class, StepNameProviderDescribeStepSpec.class, StepNameProviderRemoveKeywordsAndArgumentsStringSpec.class })
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("StepNameProvider")
@@ -36,113 +38,20 @@ public class StepNameProviderSpec {
   @Extension
   public ModelStore modelStore;
   
-  @Test
-  @Named("should return null if the step has no name")
-  @Order(99)
-  public void shouldReturnNullIfTheStepHasNoName() throws Exception {
-    Given _emptyStep = this.emptyStep();
-    String _nameOf = this.subject.nameOf(_emptyStep);
-    boolean _equals = Objects.equal(_nameOf, null);
-    Assert.assertTrue("\nExpected subject.nameOf(emptyStep) == null but:"
-     + "\n     subject.nameOf(emptyStep) is " + "\"" + _nameOf + "\""
-     + "\n     subject is " + this.subject
-     + "\n     emptyStep is " + _emptyStep + "\n", _equals);
-    
-  }
-  
-  @Test
-  @Named("should return null if the step has no reference")
-  @Order(99)
-  public void shouldReturnNullIfTheStepHasNoReference() throws Exception {
-    GivenReference _emptyRef = this.emptyRef();
-    String _nameOf = this.subject.nameOf(_emptyRef);
-    boolean _equals = Objects.equal(_nameOf, null);
-    Assert.assertTrue("\nExpected subject.nameOf(emptyRef) == null but:"
-     + "\n     subject.nameOf(emptyRef) is " + "\"" + _nameOf + "\""
-     + "\n     subject is " + this.subject
-     + "\n     emptyRef is " + _emptyRef + "\n", _equals);
-    
-  }
-  
-  @Test
-  @Named("should return the name for a step with definition")
-  @Order(99)
-  public void shouldReturnTheNameForAStepWithDefinition() throws Exception {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("Feature: Example");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("Scenario: MyScenario");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("Given a step with an implementation");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("1 + 1 => 2");
-    _builder.newLine();
-    this.modelStore.parseScenario(_builder);
-    String _stepName = this.stepName();
-    boolean _equals = Objects.equal(_stepName, "Given a step with an implementation");
-    Assert.assertTrue("\nExpected stepName == \"Given a step with an implementation\" but:"
-     + "\n     stepName is " + "\"" + _stepName + "\"" + "\n", _equals);
-    
-  }
-  
-  @Test
-  @Named("should return the name for a step with resolved reference")
-  @Order(99)
-  public void shouldReturnTheNameForAStepWithResolvedReference() throws Exception {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("Feature: Example");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("Scenario: MyScenario 2");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("Given a step with a resolved reference");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("Scenario: MyScenario 1");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("Given a step with a resolved reference");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("\"implementation\"");
-    _builder.newLine();
-    this.modelStore.parseScenario(_builder);
-    String _stepName = this.stepName();
-    boolean _equals = Objects.equal(_stepName, "Given a step with a resolved reference");
-    Assert.assertTrue("\nExpected stepName == \"Given a step with a resolved reference\" but:"
-     + "\n     stepName is " + "\"" + _stepName + "\"" + "\n", _equals);
-    
-  }
-  
-  @Test
-  @Named("should return the name for a step with unresolved reference")
-  @Order(99)
-  public void shouldReturnTheNameForAStepWithUnresolvedReference() throws Exception {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("Feature: Example");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("Scenario: MyScenario 2");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("Given a step with an unresolved reference");
-    _builder.newLine();
-    this.modelStore.parseScenario(_builder);
-    String _stepName = this.stepName();
-    boolean _equals = Objects.equal(_stepName, "Given a step with an unresolved reference");
-    Assert.assertTrue("\nExpected stepName == \"Given a step with an unresolved reference\" but:"
-     + "\n     stepName is " + "\"" + _stepName + "\"" + "\n", _equals);
-    
+  public Step step() {
+    Query _query = Query.query(this.modelStore);
+    Step _first = _query.<Step>first(Step.class);
+    return _first;
   }
   
   public String stepName() {
-    Query _query = Query.query(this.modelStore);
-    final Step step = _query.<Step>first(Step.class);
-    return this.subject.nameOf(step);
+    Step _step = this.step();
+    return this.subject.nameOf(_step);
+  }
+  
+  public String describeStep() {
+    Step _step = this.step();
+    return this.subject.describe(_step);
   }
   
   public Given emptyStep() {
@@ -151,5 +60,20 @@ public class StepNameProviderSpec {
   
   public GivenReference emptyRef() {
     return FeatureFactory.eINSTANCE.createGivenReference();
+  }
+  
+  public Resource parseScenario(final CharSequence s) {
+    Resource _xblockexpression = null;
+    {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Feature: example");
+      _builder.newLine();
+      _builder.append(s, "");
+      _builder.newLineIfNotEmpty();
+      final CharSequence input = _builder;
+      Resource _parseScenario = this.modelStore.parseScenario(input);
+      _xblockexpression = (_parseScenario);
+    }
+    return _xblockexpression;
   }
 }

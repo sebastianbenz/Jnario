@@ -27,7 +27,7 @@ import org.jnario.feature.FeatureInjectorProvider;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeatureFile;
 import org.jnario.feature.generator.FeatureJvmModelGenerator;
-import org.jnario.feature.naming.JavaNameProvider;
+import org.jnario.feature.naming.FeatureClassNameProvider;
 import org.junit.Assert;
 import org.junit.experimental.results.PrintableResult;
 import org.junit.rules.TemporaryFolder;
@@ -75,11 +75,11 @@ public class FeatureExecutor extends BehaviorExecutor{
 		Assert.assertThat(result, failureCountIs(1));
 	}
 	
-	private final JavaNameProvider nameProvider;
+	private final FeatureClassNameProvider nameProvider;
 
 	@Inject
 	public FeatureExecutor(FeatureJvmModelGenerator generator, JavaIoFileSystemAccess fsa,
-			TemporaryFolder tempFolder, JavaNameProvider javaNameProvider, IResourceValidator validator) {
+			TemporaryFolder tempFolder, FeatureClassNameProvider javaNameProvider, IResourceValidator validator) {
 		super(generator, fsa, tempFolder, validator);
 		this.nameProvider = javaNameProvider;
 		validate = false;

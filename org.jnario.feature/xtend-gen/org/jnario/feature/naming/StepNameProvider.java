@@ -1,13 +1,15 @@
 package org.jnario.feature.naming;
 
 import com.google.common.base.Objects;
-import com.google.common.base.Strings;
+import java.util.regex.Matcher;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepReference;
+import org.jnario.feature.jvmmodel.StepArgumentsProvider;
 import org.jnario.util.Nodes;
+import org.jnario.util.Strings;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -57,14 +59,41 @@ public class StepNameProvider {
     return _xifexpression;
   }
   
-  public String removeExtraCharacters(final String string) {
+  public String getMethodName(final Step step) {
+    String originalName = this.nameOf(step);
+    final int index = originalName.lastIndexOf("\n");
+    int _minus = (-1);
+    boolean _notEquals = (index != _minus);
+    if (_notEquals) {
+      int _minus_1 = (index - 1);
+      String _substring = originalName.substring(0, _minus_1);
+      String _trim = _substring.trim();
+      originalName = _trim;
+    }
+    String _convertToCamelCase = Strings.convertToCamelCase(originalName);
+    return org.eclipse.xtext.util.Strings.toFirstLower(_convertToCamelCase);
+  }
+  
+  public String describe(final Step step) {
+    String name = this.nameOf(step);
+    final int index = Strings.indexOfNewLine(name);
+    int _minus = (-1);
+    boolean _notEquals = (index != _minus);
+    if (_notEquals) {
+      String _substring = name.substring(0, index);
+      name = _substring;
+    }
+    return name;
+  }
+  
+  private String removeExtraCharacters(final String string) {
     String _trim = string.trim();
     String _replace = _trim.replace("\"", "\\\"");
     return _replace.replaceAll(StepNameProvider.MULTILINE, "");
   }
   
   public String removeKeywords(final String name) {
-    boolean _isNullOrEmpty = Strings.isNullOrEmpty(name);
+    boolean _isNullOrEmpty = com.google.common.base.Strings.isNullOrEmpty(name);
     if (_isNullOrEmpty) {
       return "";
     }
@@ -78,8 +107,9 @@ public class StepNameProvider {
     return name.substring(_plus);
   }
   
-  public String removeArguments(final String name) {
-    return name.replaceAll("\"[^\"]*\"", "\"\"");
+  private String removeArguments(final String name) {
+    Matcher _matcher = StepArgumentsProvider.ARG_PATTERN.matcher(name);
+    return _matcher.replaceAll("\"\"");
   }
   
   public String removeKeywordsAndArguments(final String name) {

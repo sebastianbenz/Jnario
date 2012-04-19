@@ -7,6 +7,7 @@
  *******************************************************************************/
 package org.jnario.feature.naming
 
+import static extension org.jnario.util.Strings.*
 import com.google.common.base.Strings
 import org.jnario.feature.feature.FeaturePackage
 import org.jnario.feature.feature.Step
@@ -14,6 +15,7 @@ import org.jnario.feature.feature.StepReference
 
 import static org.jnario.feature.naming.StepNameProvider.*
 import static org.jnario.util.Nodes.*
+import org.jnario.feature.jvmmodel.StepArgumentsProvider
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -41,9 +43,28 @@ class StepNameProvider {
 			textForFeature(ref, FeaturePackage::eINSTANCE.stepReference_Reference)
 		}
 	} 
-
 	
-	def removeExtraCharacters(String string){
+	def getMethodName(Step step){
+		var originalName = nameOf(step);
+		val index = originalName .lastIndexOf('\n');
+		if(index != -1){
+			originalName = originalName.substring(0, index - 1).trim(); 
+		}
+		return toFirstLower(convertToCamelCase(originalName));
+	}
+	
+	def describe(Step step){
+		var name = nameOf(step)
+		
+		val index = name.indexOfNewLine
+		if(index != -1){
+			name = name.substring(0, index)	
+		}
+		return name
+	}
+	
+	
+	def private removeExtraCharacters(String string){
 		return string.trim.replace("\"", "\\\"").replaceAll(MULTILINE,"")
 	}
 	
@@ -58,8 +79,8 @@ class StepNameProvider {
 		return name.substring(index + 1)
 	}
 	
-	def removeArguments(String name){
-		return name.replaceAll("\"[^\"]*\"", "\"\"");
+	def private removeArguments(String name){
+		return StepArgumentsProvider::ARG_PATTERN.matcher(name).replaceAll('""')
 	}
 	
 	def removeKeywordsAndArguments(String name){

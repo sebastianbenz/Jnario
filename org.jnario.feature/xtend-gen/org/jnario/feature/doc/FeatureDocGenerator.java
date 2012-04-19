@@ -21,14 +21,14 @@ import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepExpression;
-import org.jnario.feature.naming.JavaNameProvider;
+import org.jnario.feature.naming.FeatureClassNameProvider;
 import org.jnario.feature.naming.StepNameProvider;
 import org.jnario.util.Strings;
 
 @SuppressWarnings("all")
 public class FeatureDocGenerator extends AbstractDocGenerator {
   @Inject
-  private JavaNameProvider _javaNameProvider;
+  private FeatureClassNameProvider _featureClassNameProvider;
   
   @Inject
   private StepNameProvider _stepNameProvider;
@@ -46,7 +46,7 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
       final Feature feature = ((Feature) xtendClass);
       final Procedure1<HtmlFile> _function = new Procedure1<HtmlFile>() {
           public void apply(final HtmlFile it) {
-            String _className = FeatureDocGenerator.this._javaNameProvider.getClassName(feature);
+            String _className = FeatureDocGenerator.this._featureClassNameProvider.getClassName(feature);
             it.fileName = _className;
             String _name = feature.getName();
             it.title = _name;

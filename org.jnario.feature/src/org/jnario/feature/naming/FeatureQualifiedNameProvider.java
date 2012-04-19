@@ -19,8 +19,12 @@ import com.google.inject.Inject;
  */
 public class FeatureQualifiedNameProvider extends XtendQualifiedNameProvider {
 
-	@Inject
 	private StepNameProvider stepNameProvider;
+	
+	@Inject
+	public FeatureQualifiedNameProvider(StepNameProvider stepNameProvider) {
+		this.stepNameProvider = stepNameProvider;
+	}
 	
 	@Override
 	public QualifiedName getFullyQualifiedName(EObject obj) {
@@ -29,7 +33,8 @@ public class FeatureQualifiedNameProvider extends XtendQualifiedNameProvider {
 			if(name == null){
 				return null;
 			}
-			return QualifiedName.create(stepNameProvider.removeKeywordsAndArguments(name));
+			name = stepNameProvider.removeKeywordsAndArguments(name);
+			return QualifiedName.create(name);
 		}
 		return super.getFullyQualifiedName(obj);
 	}
