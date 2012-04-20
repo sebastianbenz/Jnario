@@ -20,6 +20,13 @@ import java.util.Scanner;
  */
 public class Strings extends org.eclipse.xtext.util.Strings{
 	
+	public static int trimWhitespaceAtEnd(String s){
+		int count = 0;
+		for(int j = s.length()-1; j >= 0 && isWhitespace(s.charAt(j)); j--){
+			count++;
+		}
+		return count;
+	}
 	
 	public static int indexOfNewLine(String s){
 		return indexOf(s, '\r', '\n');

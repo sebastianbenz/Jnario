@@ -1,5 +1,6 @@
 package org.jnario.feature.resource;
 
+import static org.jnario.util.Strings.trimWhitespaceAtEnd;
 import java.util.Collections;
 import java.util.List;
 
@@ -25,17 +26,25 @@ public class FeatureLocationInFileProvider extends XtendLocationInFileProvider {
 		List<INode> nodes = NodeModelUtils.findNodesForFeature(element, FeaturePackage.Literals.STEP__NAME);
 		if (!nodes.isEmpty()) {
 			ITextRegion result = ITextRegion.EMPTY_REGION;
-			for (INode node : nodes) {
+			for (int i=0; i<nodes.size(); i++) {
+				INode node = nodes.get(i);
 				if (!isHidden(node)) {
 					int length = node.getLength();
-					if (length != 0)
+					if (length != 0){
+						if(isLastNode(nodes, i)){
+							length = length - trimWhitespaceAtEnd(node.getText());
+						}
 						result = result.merge(new TextRegion(node.getOffset(), length));
+					}
 				}
 			}
 			return result;
 		}
 		return createRegion(Collections.<INode>emptyList());
-	};
-	
+	}
+
+	private boolean isLastNode(List<INode> nodes, int i){
+		return nodes.size() == i + 1;
+	}
 	
 }
