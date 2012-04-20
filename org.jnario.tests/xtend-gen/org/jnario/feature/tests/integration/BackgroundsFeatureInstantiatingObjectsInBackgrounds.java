@@ -9,9 +9,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(FeatureRunner.class)
-@Named("Scenario: It is possible to add a background to a feature")
+@Named("Scenario: Instantiating Objects in Backgrounds")
 @SuppressWarnings("all")
-public class BackgroundsFeatureItIsPossibleToAddABackgroundToAFeature {
+public class BackgroundsFeatureInstantiatingObjectsInBackgrounds {
   @Test
   @Order(0)
   @Named("Given I have a feature with a background")

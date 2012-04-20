@@ -62,6 +62,7 @@ Background:
 
 Scenario :
 	{Scenario}
+	(annotations+=XAnnotation)*
 	name=SCENARIO_TEXT
 	members+=Member*
 	steps+=(Given|GivenReference)?
@@ -71,46 +72,54 @@ Scenario :
 
 GivenReference:
 	{GivenReference}
+	(annotations+=XAnnotation)*
 	reference=[Given|GIVEN_TEXT] 
 	and+=(And|AndReference)*
 ;
 
 Given:
 	{Given}
+	(annotations+=XAnnotation)*
 	name=GIVEN_TEXT stepExpression=StepExpression
 	and+=(And|AndReference)*
 ;
 	
 WhenReference:
 	{WhenReference}
+	(annotations+=XAnnotation)*
 	reference=[When|WHEN_TEXT] 
 	and+=(And|AndReference)*
 ;
 
 When:
 	{When}
+	(annotations+=XAnnotation)*
 	name=WHEN_TEXT stepExpression=StepExpression
 	and+=(And|AndReference)*
 ;
 
 ThenReference:
 	{ThenReference}
+	(annotations+=XAnnotation)*
 	reference=[Then|THEN_TEXT] 
 	and+=(And|AndReference)*
 ;
 
 Then:
 	{Then}
+	(annotations+=XAnnotation)*
 	name=THEN_TEXT stepExpression=StepExpression
 	and+=(And|AndReference)*;
 	
 AndReference:
 	{AndReference}
+	(annotations+=XAnnotation)*
 	reference=[And|AND_TEXT] 
 ;
 	
 And:
 	{And}
+	(annotations+=XAnnotation)*
 	name=AND_TEXT stepExpression=StepExpression
 ;
 

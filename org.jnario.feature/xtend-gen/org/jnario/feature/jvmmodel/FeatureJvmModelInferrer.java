@@ -547,21 +547,17 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
       ArrayList<String> fieldNames = _arrayList;
       EList<ExampleTable> _examples_1 = scenario.getExamples();
       for (final ExampleTable table : _examples_1) {
-        {
-          TreeIterator<EObject> _eAllContents = table.eAllContents();
-          UnmodifiableIterator<ExampleColumn> allFields = Iterators.<ExampleColumn>filter(_eAllContents, ExampleColumn.class);
-          Iterable<ExampleColumn> _iterable = IteratorExtensions.<ExampleColumn>toIterable(allFields);
-          for (final ExampleColumn field : _iterable) {
-            String _name = field.getName();
-            boolean _contains = fieldNames.contains(_name);
-            boolean _not_1 = (!_contains);
-            if (_not_1) {
-              EList<JvmMember> _members = inferredJvmType.getMembers();
-              JvmField _field = this.toField(field);
-              this._extendedJvmTypesBuilder.<JvmField>operator_add(_members, _field);
-              String _name_1 = field.getName();
-              fieldNames.add(_name_1);
-            }
+        EList<ExampleColumn> _columns = table.getColumns();
+        for (final ExampleColumn field : _columns) {
+          String _name = field.getName();
+          boolean _contains = fieldNames.contains(_name);
+          boolean _not_1 = (!_contains);
+          if (_not_1) {
+            EList<JvmMember> _members = inferredJvmType.getMembers();
+            JvmField _field = this.toField(field);
+            this._extendedJvmTypesBuilder.<JvmField>operator_add(_members, _field);
+            String _name_1 = field.getName();
+            fieldNames.add(_name_1);
           }
         }
       }

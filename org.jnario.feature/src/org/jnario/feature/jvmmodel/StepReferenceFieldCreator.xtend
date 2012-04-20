@@ -17,6 +17,8 @@ import org.eclipse.emf.common.util.EList
 import org.jnario.feature.feature.Background
 import org.eclipse.xtend.core.xtend.XtendMember
 import org.jnario.feature.feature.Step
+import java.util.Set
+import java.util.List
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -25,21 +27,18 @@ class StepReferenceFieldCreator {
 
 	def copyXtendMemberForReferences(EObject objectWithReference){
 		val refs = EcoreUtil2::getAllContentsOfType(objectWithReference, typeof(StepReference))
-		if(!refs.empty){
-			for(ref: refs){
-				if(ref.reference?.stepExpression != null){
-					val stepReference = ref as StepReference
-					val fieldNames = stepReference.existingFieldNamesForContainerOfStepReference
-					val members = stepReference.reference.membersOfReferencedStep
-					objectWithReference.copyFields(members, fieldNames)					
-				}
+		for(ref: refs){
+			if(ref.reference?.stepExpression != null){
+				val fieldNames = ref.existingFieldNamesForContainerOfStepReference
+				val members = ref.reference.membersOfReferencedStep
+				objectWithReference.copyFields(members, fieldNames)					
 			}
-		}		
+		}
    	}
    	
    	def getExistingFieldNamesForContainerOfStepReference(StepReference ref){
    		val refScenario = EcoreUtil2::getContainerOfType(ref, typeof(Scenario))
-		var HashSet<String> fieldNames
+		var Set<String> fieldNames
 		if(refScenario != null)
 			fieldNames = refScenario.members.existingFieldNames
 		else{
@@ -52,14 +51,7 @@ class StepReferenceFieldCreator {
    	}
    	
    	def getExistingFieldNames(EList<XtendMember> members){
-   		val fieldNames = new HashSet<String>
-   		for(member: members){
-			if(member instanceof XtendField){
-				val field = member as XtendField
-				fieldNames.add(field.name)
-			}
-		}
-		return fieldNames
+   		members.filter(typeof(XtendField)).map[name].toSet
    	}
    	
    	def getMembersOfReferencedStep(Step step){
@@ -73,7 +65,7 @@ class StepReferenceFieldCreator {
 		}
    	}
    	
-   	def copyFields(EObject objectWithReference, EList<XtendMember> members, HashSet<String> fieldNames){
+   	def copyFields(EObject objectWithReference, List<XtendMember> members, Set<String> fieldNames){
    		for(member: members){
 			if(member instanceof XtendField){
 				val field = member as XtendField

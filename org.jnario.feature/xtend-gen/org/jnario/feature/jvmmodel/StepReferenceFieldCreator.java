@@ -1,13 +1,16 @@
 package org.jnario.feature.jvmmodel;
 
 import com.google.common.base.Objects;
-import java.util.HashSet;
+import com.google.common.collect.Iterables;
 import java.util.List;
+import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.EcoreUtil2;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
@@ -21,55 +24,50 @@ import org.jnario.feature.feature.StepReference;
 public class StepReferenceFieldCreator {
   public void copyXtendMemberForReferences(final EObject objectWithReference) {
     final List<StepReference> refs = EcoreUtil2.<StepReference>getAllContentsOfType(objectWithReference, StepReference.class);
-    boolean _isEmpty = refs.isEmpty();
-    boolean _not = (!_isEmpty);
-    if (_not) {
-      for (final StepReference ref : refs) {
-        Step _reference = ref.getReference();
-        StepExpression _stepExpression = _reference==null?(StepExpression)null:_reference.getStepExpression();
-        boolean _notEquals = (!Objects.equal(_stepExpression, null));
-        if (_notEquals) {
-          final StepReference stepReference = ((StepReference) ref);
-          final HashSet<String> fieldNames = this.getExistingFieldNamesForContainerOfStepReference(stepReference);
-          Step _reference_1 = stepReference.getReference();
-          final EList<XtendMember> members = this.getMembersOfReferencedStep(_reference_1);
-          this.copyFields(objectWithReference, members, fieldNames);
-        }
+    for (final StepReference ref : refs) {
+      Step _reference = ref.getReference();
+      StepExpression _stepExpression = _reference==null?(StepExpression)null:_reference.getStepExpression();
+      boolean _notEquals = (!Objects.equal(_stepExpression, null));
+      if (_notEquals) {
+        final Set<String> fieldNames = this.getExistingFieldNamesForContainerOfStepReference(ref);
+        Step _reference_1 = ref.getReference();
+        final EList<XtendMember> members = this.getMembersOfReferencedStep(_reference_1);
+        this.copyFields(objectWithReference, members, fieldNames);
       }
     }
   }
   
-  public HashSet<String> getExistingFieldNamesForContainerOfStepReference(final StepReference ref) {
+  public Set<String> getExistingFieldNamesForContainerOfStepReference(final StepReference ref) {
     final Scenario refScenario = EcoreUtil2.<Scenario>getContainerOfType(ref, Scenario.class);
-    HashSet<String> fieldNames = null;
+    Set<String> fieldNames = null;
     boolean _notEquals = (!Objects.equal(refScenario, null));
     if (_notEquals) {
       EList<XtendMember> _members = refScenario.getMembers();
-      HashSet<String> _existingFieldNames = this.getExistingFieldNames(_members);
+      Set<String> _existingFieldNames = this.getExistingFieldNames(_members);
       fieldNames = _existingFieldNames;
     } else {
       final Background refBackground = EcoreUtil2.<Background>getContainerOfType(ref, Background.class);
       boolean _notEquals_1 = (!Objects.equal(refBackground, null));
       if (_notEquals_1) {
         EList<XtendMember> _members_1 = refBackground.getMembers();
-        HashSet<String> _existingFieldNames_1 = this.getExistingFieldNames(_members_1);
+        Set<String> _existingFieldNames_1 = this.getExistingFieldNames(_members_1);
         fieldNames = _existingFieldNames_1;
       }
     }
     return fieldNames;
   }
   
-  public HashSet<String> getExistingFieldNames(final EList<XtendMember> members) {
-    HashSet<String> _hashSet = new HashSet<String>();
-    final HashSet<String> fieldNames = _hashSet;
-    for (final XtendMember member : members) {
-      if ((member instanceof XtendField)) {
-        final XtendField field = ((XtendField) member);
-        String _name = field.getName();
-        fieldNames.add(_name);
-      }
-    }
-    return fieldNames;
+  public Set<String> getExistingFieldNames(final EList<XtendMember> members) {
+    Iterable<XtendField> _filter = Iterables.<XtendField>filter(members, XtendField.class);
+    final Function1<XtendField,String> _function = new Function1<XtendField,String>() {
+        public String apply(final XtendField it) {
+          String _name = it.getName();
+          return _name;
+        }
+      };
+    Iterable<String> _map = IterableExtensions.<XtendField, String>map(_filter, _function);
+    Set<String> _set = IterableExtensions.<String>toSet(_map);
+    return _set;
   }
   
   public EList<XtendMember> getMembersOfReferencedStep(final Step step) {
@@ -98,7 +96,7 @@ public class StepReferenceFieldCreator {
     return _xblockexpression;
   }
   
-  public void copyFields(final EObject objectWithReference, final EList<XtendMember> members, final HashSet<String> fieldNames) {
+  public void copyFields(final EObject objectWithReference, final List<XtendMember> members, final Set<String> fieldNames) {
     for (final XtendMember member : members) {
       if ((member instanceof XtendField)) {
         final XtendField field = ((XtendField) member);

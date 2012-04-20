@@ -322,8 +322,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		if(!scenario.examples.empty){
 			var fieldNames = new ArrayList<String>()
 			for(table: scenario.examples){
-				var allFields = filter(table.eAllContents, typeof(ExampleColumn))
-				for(field: allFields.toIterable){
+				for(field: table.columns){
 					if(!fieldNames.contains(field.name)){
 						inferredJvmType.members += field.toField
 						fieldNames.add(field.name)

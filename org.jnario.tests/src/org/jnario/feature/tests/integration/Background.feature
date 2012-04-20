@@ -62,3 +62,21 @@ Feature: Backgrounds
 				'''
 	 	Then it should be successful		
 			
+	Scenario: Instantiating Objects in Backgrounds
+		Given I have a feature with a background
+			jnarioFile= '''
+			package demo
+			Feature: Calculator
+			  Background:
+			   int result 
+			   Given a calculator
+			  Scenario: Adding two numbers 2 
+			   When I enter two numbers "20" and "70"
+			       result = args.first.toInt + args.second.toInt
+			   Then it returns "90"
+			     	result => args.first.toInt
+			  Scenario: Adding two numbers wer
+			    When I enter two numbers "20" and "80"
+			    Then it returns "100"   
+			'''		
+	 	Then it should be successful	
