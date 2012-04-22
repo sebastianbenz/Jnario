@@ -7,24 +7,31 @@
  *******************************************************************************/
 package org.jnario.lib;
 
-import static java.util.Arrays.asList;
+import static org.eclipse.xtext.xbase.lib.CollectionLiterals.newArrayList;
+import static org.eclipse.xtext.xbase.lib.CollectionLiterals.newHashMap;
+import static org.eclipse.xtext.xbase.lib.CollectionLiterals.newHashSet;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+
+import org.eclipse.xtext.xbase.lib.Pair;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
-public class CollectionLiterals {
+public class JnarioCollectionLiterals {
 
 	public static <T> List<T> list(T... elements){
-		return new ArrayList<T>(asList(elements));
+		return newArrayList(elements);
 	}
 	
 	public static <T> Set<T> set(T... elements){
-		return new HashSet<T>(asList(elements));
+		return newHashSet(elements);
+	}
+	
+	public static <K, V> Map<K, V> map(Pair<K, V>... elements){
+		return newHashMap(elements);
 	}
 	
 }

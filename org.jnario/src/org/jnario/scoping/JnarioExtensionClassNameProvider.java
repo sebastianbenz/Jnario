@@ -11,7 +11,7 @@ import java.util.Collection;
 
 import org.eclipse.xtext.xbase.scoping.featurecalls.StaticImplicitMethodsFeatureForTypeProvider.ExtensionClassNameProvider;
 import org.hamcrest.CoreMatchers;
-import org.jnario.lib.CollectionLiterals;
+import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Each;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
@@ -42,7 +42,7 @@ public class JnarioExtensionClassNameProvider extends ExtensionClassNameProvider
 		Collection<String> result = super.computeLiteralClassNames();
 		result.add(Each.class.getName());
 		result.add(CoreMatchers.class.getName());
-		result.add(CollectionLiterals.class.getName());
+		result.add(JnarioCollectionLiterals.class.getName());
 		return result;
 	}
 	
