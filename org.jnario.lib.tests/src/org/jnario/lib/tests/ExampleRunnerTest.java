@@ -10,22 +10,18 @@ package org.jnario.lib.tests;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 
 import java.util.List;
-
-import org.junit.Assert;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.Description;
-import org.junit.runner.RunWith;
-import org.junit.runners.model.FrameworkMethod;
-import org.junit.runners.model.TestClass;
 
 import org.jnario.runner.DefaultTestInstantiator;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.ExampleRunner;
 import org.jnario.runner.NameProvider;
+import org.junit.Test;
+import org.junit.runner.Description;
+import org.junit.runner.RunWith;
+import org.junit.runners.model.FrameworkMethod;
+import org.junit.runners.model.TestClass;
 
 /**
  * @author Sebastian Benz - Initial contribution and API

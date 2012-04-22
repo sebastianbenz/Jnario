@@ -18,9 +18,12 @@ import static org.junit.experimental.results.ResultMatchers.hasFailureContaining
 
 import java.util.List;
 
-import junit.framework.TestResult;
-
 import org.hamcrest.Matcher;
+import org.jnario.runner.Contains;
+import org.jnario.runner.ExampleGroupRunner;
+import org.jnario.runner.Extension;
+import org.jnario.runner.Named;
+import org.jnario.runner.Order;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -34,13 +37,6 @@ import org.junit.runner.Description;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.RunWith;
 import org.junit.runners.model.InitializationError;
-
-import org.jnario.jnario.test.util.ResultMatchers;
-import org.jnario.runner.Contains;
-import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.Extension;
-import org.jnario.runner.Named;
-import org.jnario.runner.Order;
 
 /**
  * @author Sebastian Benz - Initial contribution and API

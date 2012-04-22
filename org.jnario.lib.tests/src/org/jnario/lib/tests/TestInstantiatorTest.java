@@ -13,16 +13,15 @@ import static org.hamcrest.core.Is.is;
 
 import java.util.ArrayList;
 
+import org.jnario.runner.ExampleGroupRunner;
+import org.jnario.runner.InstantiateWith;
+import org.jnario.runner.TestInstantiator;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.RunWith;
 import org.junit.runners.model.InitializationError;
-
-import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.InstantiateWith;
-import org.jnario.runner.TestInstantiator;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
