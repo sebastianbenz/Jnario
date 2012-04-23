@@ -96,7 +96,6 @@ public class FeatureUiModule extends org.jnario.feature.ui.AbstractFeatureUiModu
 	}
 	
 	@Override
-
 	public void configure(Binder binder) {
 		super.configure(binder);
 		binder.bind(XtextEditor.class).to(FeatureEditor.class);
