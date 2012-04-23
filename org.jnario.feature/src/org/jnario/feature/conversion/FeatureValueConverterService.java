@@ -21,17 +21,17 @@ public class FeatureValueConverterService extends JnarioValueConverterService {
 //	private IValueConverter<String> exampleValueConverter = FeatureValueConverter.create("Examples:");
 //	
 	public String toString(Object value, String lexerRule) {
-		if(lexerRule.contains("GIVEN_TEXT")){
-			return super.toString("Given " + value.toString(), lexerRule);
+		if(lexerRule.startsWith("GIVEN_TEXT")){
+			return "Given " + value.toString();
 		}
-		if(lexerRule.contains("WHEN_TEXT")){
-			return super.toString("When " + value.toString(), lexerRule);
+		if(lexerRule.startsWith("WHEN_TEXT")){
+			return "When " + value.toString();
 		}
-		if(lexerRule.contains("THEN_TEXT")){
-			return super.toString("Then " + value.toString(), lexerRule);
+		if(lexerRule.startsWith("THEN_TEXT")){
+			return "Then " + value.toString();
 		}
-		if(lexerRule.contains("AND_TEXT")){
-			return super.toString("And " + value.toString(), lexerRule);
+		if(lexerRule.startsWith("AND_TEXT")){
+			return "And " + value.toString();
 		}
 		return super.toString(value, lexerRule);
 	}

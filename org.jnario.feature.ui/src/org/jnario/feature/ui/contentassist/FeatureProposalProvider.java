@@ -70,7 +70,7 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 		Iterator<StepReference> steps = filter(allContents, StepReference.class);
 		while (steps.hasNext()) {
 			StepReference ref = (StepReference) steps.next();
-			if(ref.getReference().eIsProxy()){
+			if(ref.getName() == null){
 				String string = textForFeature(ref, FeaturePackage.Literals.STEP_REFERENCE__REFERENCE);
 				int index = string.indexOf(" ");
 				if(index != -1){

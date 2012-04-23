@@ -1,5 +1,6 @@
 package org.jnario.feature.tests.integration;
 
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
@@ -15,14 +16,52 @@ public class BackgroundsFeatureItIsPossibleToAddABackgroundToAFeature {
   @Order(0)
   @Named("Given I have a feature with a background")
   public void givenIHaveAFeatureWithABackground() {
-    this.jnarioFile = "\r\n\t\t\t\tpackage bootstrap\r\n\t\t\t\tFeature: Some feature\r\n\t\t\t\t\tBackground:\r\n\t\t\t\t\t\tGiven a user name\r\n\t\t\t\t\tScenario: Scenario 1\r\n\t\t\t\t\tScenario: Scenario 2\r\n\t\t\t";
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("package demo");
+    _builder.newLine();
+    _builder.append("Feature: Calculator");
+    _builder.newLine();
+    _builder.append("  ");
+    _builder.append("Background:");
+    _builder.newLine();
+    _builder.append("   ");
+    _builder.append("int result ");
+    _builder.newLine();
+    _builder.append("   ");
+    _builder.append("Given a calculator");
+    _builder.newLine();
+    _builder.append("  ");
+    _builder.append("Scenario: Adding two numbers 2 ");
+    _builder.newLine();
+    _builder.append("   ");
+    _builder.append("When I enter two numbers \"20\" and \"70\"");
+    _builder.newLine();
+    _builder.append("       ");
+    _builder.append("result = args.first.toInt + args.second.toInt");
+    _builder.newLine();
+    _builder.append("   ");
+    _builder.append("Then it returns \"90\"");
+    _builder.newLine();
+    _builder.append("     \t");
+    _builder.append("result => args.first.toInt");
+    _builder.newLine();
+    _builder.append("  ");
+    _builder.append("Scenario: Adding two numbers wer");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("When I enter two numbers \"20\" and \"80\"");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("Then it returns \"100\"   ");
+    _builder.newLine();
+    this.jnarioFile = _builder;
   }
   
   @Test
   @Order(1)
   @Named("Then it should be successful")
   public void thenItShouldBeSuccessful() {
-    FeatureExecutor.executesSuccessfully(this.jnarioFile);
+    FeatureExecutor.executesSuccessfully(jnarioFile);
   }
   
   CharSequence jnarioFile;
