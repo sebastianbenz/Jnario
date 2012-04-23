@@ -62,7 +62,7 @@
         <page
             class="org.jnario.spec.ui.SpecExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
             id="org.jnario.spec.Spec"
-            name="Spec">
+            name="Jnario Specs">
             <keywordReference id="org.jnario.spec.ui.keyword_Spec"/>
         </page>
         <page

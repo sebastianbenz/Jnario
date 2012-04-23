@@ -62,7 +62,7 @@
         <page
             class="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
             id="org.jnario.feature.Feature"
-            name="Feature">
+            name="Jnario Features">
             <keywordReference id="org.jnario.feature.ui.keyword_Feature"/>
         </page>
         <page
