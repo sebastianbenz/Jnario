@@ -26,6 +26,8 @@ import static com.google.common.base.Predicates.*
 import static extension org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
 
 import static extension com.google.common.collect.Iterables.*
+import org.eclipse.xtext.EcoreUtil2
+import org.eclipse.xtend.core.xtend.XtendFile
 
 /**
  * @author Birgit Engelmann
@@ -85,4 +87,8 @@ class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
 		return obj.node?.text
 	}
 	
+	def packageName(EObject obj){
+		EcoreUtil2::getContainerOfType(obj, typeof(XtendFile))?.^package
+	}
+
 }

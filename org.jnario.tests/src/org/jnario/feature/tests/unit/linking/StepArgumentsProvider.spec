@@ -9,6 +9,7 @@ import org.eclipse.xtext.linking.lazy.LazyLinkingResource
 import org.eclipse.xtext.util.StringInputStream
 import org.jnario.jnario.test.util.Query
 import java.io.InputStreamReader
+import static org.jnario.lib.JnarioCollectionLiterals.*
 
 @InstantiateWith(typeof(FeatureTestInstantiator))
 describe StepArgumentsProvider {

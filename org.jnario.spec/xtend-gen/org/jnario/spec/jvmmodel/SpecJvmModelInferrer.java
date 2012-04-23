@@ -654,12 +654,6 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
     return _map;
   }
   
-  public String packageName(final EObject context) {
-    SpecFile _specFile = this.specFile(context);
-    String _package = _specFile.getPackage();
-    return _package;
-  }
-  
   public SpecFile specFile(final EObject context) {
     SpecFile _containerOfType = EcoreUtil2.<SpecFile>getContainerOfType(context, SpecFile.class);
     return _containerOfType;

@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.jvmmodel.XtendJvmModelInferrer;
+import org.eclipse.xtend.core.xtend.XtendFile;
+import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
@@ -138,5 +140,11 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
   public String serialize(final EObject obj) {
     ICompositeNode _node = NodeModelUtils.getNode(obj);
     return _node==null?(String)null:_node.getText();
+  }
+  
+  public String packageName(final EObject obj) {
+    XtendFile _containerOfType = EcoreUtil2.<XtendFile>getContainerOfType(obj, XtendFile.class);
+    String _package = _containerOfType==null?(String)null:_containerOfType.getPackage();
+    return _package;
   }
 }

@@ -330,11 +330,6 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 		exampleTable.columns.map[it?.name]
 	}
 	
-		
-	def packageName(EObject context){
-		context.specFile.^package
-	}
-	
 	def specFile(EObject context){
 		EcoreUtil2::getContainerOfType(context, typeof(SpecFile))
 	}

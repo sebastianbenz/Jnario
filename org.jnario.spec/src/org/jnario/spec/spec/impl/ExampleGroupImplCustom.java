@@ -7,6 +7,8 @@
  *******************************************************************************/
 package org.jnario.spec.spec.impl;
 
+import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
+
 import org.eclipse.xtext.EcoreUtil2;
 import org.jnario.spec.spec.ExampleGroup;
 
@@ -31,7 +33,7 @@ public class ExampleGroupImplCustom extends org.jnario.spec.spec.impl.ExampleGro
 			return packageName;
 		}
 		
-		ExampleGroup parent = EcoreUtil2.getContainerOfType(eContainer(), ExampleGroup.class);
+		ExampleGroup parent = getContainerOfType(eContainer(), ExampleGroup.class);
 		if(parent == null){
 			return null;
 		}

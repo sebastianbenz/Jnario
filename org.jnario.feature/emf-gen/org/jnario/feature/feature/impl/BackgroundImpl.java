@@ -19,7 +19,7 @@ import org.jnario.feature.feature.FeaturePackage;
  *
  * @generated
  */
-public class BackgroundImpl extends ScenarioImpl implements Background
+public class BackgroundImpl extends ScenarioImplCustom implements Background
 {
 	/**
 	 * <!-- begin-user-doc -->

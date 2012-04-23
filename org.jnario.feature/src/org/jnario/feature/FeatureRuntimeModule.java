@@ -78,7 +78,7 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 	}
 	
 	public Class<? extends JvmModelGenerator> bindJvmModelGenerator(){
-		return ExtendedJvmModelGenerator.class;
+		return FeatureJvmModelGenerator.class;
 	}
 	
 	@Override

@@ -117,7 +117,7 @@ public class FeatureFactoryImpl extends EFactoryImpl implements FeatureFactory
 	 */
 	public Scenario createScenario()
 	{
-		ScenarioImpl scenario = new ScenarioImpl();
+		ScenarioImplCustom scenario = new ScenarioImplCustom();
 		return scenario;
 	}
 
