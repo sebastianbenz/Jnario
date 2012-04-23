@@ -12,7 +12,6 @@ import org.eclipse.xtext.EcoreUtil2
 import org.jnario.feature.feature.StepReference
 import org.jnario.feature.feature.Scenario
 import org.eclipse.xtend.core.xtend.XtendField
-import java.util.HashSet
 import org.eclipse.emf.common.util.EList
 import org.jnario.feature.feature.Background
 import org.eclipse.xtend.core.xtend.XtendMember

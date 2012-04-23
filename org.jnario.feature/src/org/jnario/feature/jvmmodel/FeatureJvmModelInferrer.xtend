@@ -35,7 +35,6 @@ import org.jnario.feature.feature.FeatureFile
 import org.jnario.feature.feature.Scenario
 import org.jnario.feature.feature.Step
 import org.jnario.feature.feature.StepReference
-import org.jnario.feature.naming.FeatureClassNameProvider
 import org.jnario.feature.naming.StepNameProvider
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder
 import org.jnario.jvmmodel.JnarioJvmModelInferrer
@@ -199,22 +198,26 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	
    	def generateStepValues(Step step){
 		var decs = filter(step.eAllContents, typeof(XVariableDeclaration))
-		for(dec: decs.toIterable){
+		val arguments = stepArgumentsProvider.findStepArguments(step)
+		if(arguments.empty) return;
+		decs.forEach[dec | 
 			if(dec.name == STEP_VALUES){
 				if(!(step instanceof StepReference)){				
 					dec.setStepValueType(step as Step)
 				}
 				var calls = filter(step.eAllContents, typeof(XMemberFeatureCall))
+				var int index = 0
 				for(call: calls.toIterable){
-					if(call.memberCallTarget instanceof XFeatureCall){
+					if(arguments.size > index && call.memberCallTarget instanceof XFeatureCall){
 						var featureCall = call.memberCallTarget as XFeatureCall
 						if(featureCall.feature == dec && (step instanceof StepReference ||call.feature == null)){
-							addStepValue(call, dec, step)
+							addStepValue(call, dec, step, arguments.get(index))
+							index = index + 1
 						}
 					}
 				}
 			}	
-		}
+		]
    	}
    	
    	def setStepValueType(XVariableDeclaration variableDec, Step step){
@@ -225,7 +228,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		constructor.constructor = filter(type.members.iterator, typeof(JvmConstructor)).next
 	}
 	
-	def addStepValue(XMemberFeatureCall featureCall, XVariableDeclaration dec, XtendMember step){
+	def addStepValue(XMemberFeatureCall featureCall, XVariableDeclaration dec, XtendMember step, String arg){
 		var typeRef = getTypeForName(typeof(StepArguments), step)
 		var type = typeRef.type as JvmGenericType
 		var operations = filter(type.members.iterator, typeof(JvmOperation))
@@ -233,17 +236,10 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			if(operation.simpleName == "add"){
 				if(!(step instanceof StepReference)){
 					featureCall.feature = operation				
-				}
-				else{
-					val stepRef = step as StepReference
-					val arguments = stepArgumentsProvider.findStepArguments(stepRef)
-					var i = 0
-					if(!arguments.empty){
-						for(ref: featureCall.memberCallArguments){
-							val argument = ref as XStringLiteral
-							argument.value = arguments.get(i)
-							i = i + 1
-						}
+				}else{
+					for(ref: featureCall.memberCallArguments){
+						val argument = ref as XStringLiteral
+						argument.value = arg
 					}
 				}
 			}

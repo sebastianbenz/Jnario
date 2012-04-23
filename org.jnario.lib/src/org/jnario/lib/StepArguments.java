@@ -8,8 +8,9 @@
 
 package org.jnario.lib;
 
-import static com.google.common.collect.Lists.newArrayList;
-
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -19,8 +20,16 @@ import java.util.List;
  */
 public class StepArguments implements Iterable<String>{
 	
-	private final List<String> values = newArrayList();
+	private final List<String> values;
 	
+	public StepArguments() {
+		this(new ArrayList<String>());
+	}
+	
+	public StepArguments(List<String> values) {
+		this.values = values;
+	}
+
 	public void add(String value){
 		values.add(value);
 	}
@@ -56,6 +65,10 @@ public class StepArguments implements Iterable<String>{
 
 	public Iterator<String> iterator() {
 		return values.iterator();
+	}
+
+	public static StepArguments create(String...values) {
+		return new StepArguments(Arrays.asList(values));
 	}
 	
 }

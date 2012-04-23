@@ -6,7 +6,6 @@ import org.jnario.feature.tests.integration.ReferencesForStepsFeatureUsingFields
 import org.jnario.runner.Contains;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
-import org.junit.Ignore;
 import org.junit.runner.RunWith;
 
 /**
@@ -16,6 +15,5 @@ import org.junit.runner.RunWith;
 @Contains({ ReferencesForStepsFeatureDefiningAStepAndUsingItInTheSameScenario.class, ReferencesForStepsFeatureReferencingStepsWithDifferentKeyword.class, ReferencesForStepsFeatureUsingFieldsFromOtherSteps.class })
 @Named("Feature: References for steps")
 @SuppressWarnings("all")
-@Ignore
 public class ReferencesForStepsFeature {
 }

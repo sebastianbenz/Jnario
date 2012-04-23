@@ -10,13 +10,13 @@ package org.jnario.feature.jvmmodel;
 import static com.google.common.collect.Iterables.filter;
 import static com.google.common.collect.Lists.newArrayList;
 import static java.util.Collections.emptyList;
+import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendField;
-import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.JvmConstructor;
 import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmGenericType;
@@ -27,8 +27,10 @@ import org.eclipse.xtext.xbase.XFeatureCall;
 import org.eclipse.xtext.xbase.XbaseFactory;
 import org.eclipse.xtext.xbase.impl.FeatureCallToJavaMapping;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
+import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.Scenario;
 
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 
@@ -80,20 +82,32 @@ public class FeatureFeatureCallToJavaMapping extends FeatureCallToJavaMapping {
 			return null;
 		if(feature instanceof JvmField){
 			JvmField field = (JvmField) feature;
-			Scenario scenario = EcoreUtil2.getContainerOfType(featureCall, Scenario.class);
+			Scenario scenario = getContainerOfType(featureCall, Scenario.class);
 			if(scenario != null){
-				List<XtendField> fields = EcoreUtil2.getAllContentsOfType(scenario, XtendField.class);
-				for(XtendField existingField: fields){
-					if(existingField.getName() == field.getSimpleName()){
-						XFeatureCall callToThis = XbaseFactory.eINSTANCE.createXFeatureCall();
-						JvmGenericType inferredJvmType = getFirstOrNull(modelAssociations.getJvmElements(scenario), JvmGenericType.class);
-						callToThis.setFeature(inferredJvmType);
-						return callToThis;
-					}
+				XFeatureCall result = createFeatureCall(field, scenario);
+				if(result != null){
+					return result;
 				}
 			}
 		}
 		return allArguments.get(0);
+	}
+
+	private XFeatureCall createFeatureCall(JvmField field, Scenario scenario) {
+		Iterable<XtendField> fields = Iterables.filter(scenario.getMembers(), XtendField.class);
+		for(XtendField existingField: fields){
+			if(existingField.getName() == field.getSimpleName()){
+				XFeatureCall callToThis = XbaseFactory.eINSTANCE.createXFeatureCall();
+				JvmGenericType inferredJvmType = getFirstOrNull(modelAssociations.getJvmElements(scenario), JvmGenericType.class);
+				callToThis.setFeature(inferredJvmType);
+				return callToThis;
+			}
+		}
+		Feature feature = getContainerOfType(scenario, Feature.class);
+		if(feature.getBackground() != null){
+			return createFeatureCall(field, feature.getBackground());
+		}
+		return null;
 	}
 	
 	protected <T> T getFirstOrNull(Iterable<EObject> elements, Class<T> type) {

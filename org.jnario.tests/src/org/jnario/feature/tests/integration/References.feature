@@ -13,7 +13,6 @@ import static org.jnario.jnario.test.util.ResultMatchers.*
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
-@org.junit.Ignore
 Feature: References for steps
 
 	Scenario: Defining a step and using it in the same scenario

@@ -301,46 +301,65 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   public void generateStepValues(final Step step) {
     TreeIterator<EObject> _eAllContents = step.eAllContents();
     UnmodifiableIterator<XVariableDeclaration> decs = Iterators.<XVariableDeclaration>filter(_eAllContents, XVariableDeclaration.class);
-    Iterable<XVariableDeclaration> _iterable = IteratorExtensions.<XVariableDeclaration>toIterable(decs);
-    for (final XVariableDeclaration dec : _iterable) {
-      String _name = dec.getName();
-      boolean _equals = Objects.equal(_name, FeatureJvmModelInferrer.STEP_VALUES);
-      if (_equals) {
-        boolean _not = (!(step instanceof StepReference));
-        if (_not) {
-          this.setStepValueType(dec, ((Step) step));
-        }
-        TreeIterator<EObject> _eAllContents_1 = step.eAllContents();
-        UnmodifiableIterator<XMemberFeatureCall> calls = Iterators.<XMemberFeatureCall>filter(_eAllContents_1, XMemberFeatureCall.class);
-        Iterable<XMemberFeatureCall> _iterable_1 = IteratorExtensions.<XMemberFeatureCall>toIterable(calls);
-        for (final XMemberFeatureCall call : _iterable_1) {
-          XExpression _memberCallTarget = call.getMemberCallTarget();
-          if ((_memberCallTarget instanceof XFeatureCall)) {
-            XExpression _memberCallTarget_1 = call.getMemberCallTarget();
-            XFeatureCall featureCall = ((XFeatureCall) _memberCallTarget_1);
-            boolean _and = false;
-            JvmIdentifiableElement _feature = featureCall.getFeature();
-            boolean _equals_1 = Objects.equal(_feature, dec);
-            if (!_equals_1) {
-              _and = false;
-            } else {
-              boolean _or = false;
-              if ((step instanceof StepReference)) {
-                _or = true;
-              } else {
-                JvmIdentifiableElement _feature_1 = call.getFeature();
-                boolean _equals_2 = Objects.equal(_feature_1, null);
-                _or = ((step instanceof StepReference) || _equals_2);
-              }
-              _and = (_equals_1 && _or);
+    final List<String> arguments = this.stepArgumentsProvider.findStepArguments(step);
+    boolean _isEmpty = arguments.isEmpty();
+    if (_isEmpty) {
+      return;
+    }
+    final Procedure1<XVariableDeclaration> _function = new Procedure1<XVariableDeclaration>() {
+        public void apply(final XVariableDeclaration dec) {
+          String _name = dec.getName();
+          boolean _equals = Objects.equal(_name, FeatureJvmModelInferrer.STEP_VALUES);
+          if (_equals) {
+            boolean _not = (!(step instanceof StepReference));
+            if (_not) {
+              FeatureJvmModelInferrer.this.setStepValueType(dec, ((Step) step));
             }
-            if (_and) {
-              this.addStepValue(call, dec, step);
+            TreeIterator<EObject> _eAllContents = step.eAllContents();
+            UnmodifiableIterator<XMemberFeatureCall> calls = Iterators.<XMemberFeatureCall>filter(_eAllContents, XMemberFeatureCall.class);
+            int index = 0;
+            Iterable<XMemberFeatureCall> _iterable = IteratorExtensions.<XMemberFeatureCall>toIterable(calls);
+            for (final XMemberFeatureCall call : _iterable) {
+              boolean _and = false;
+              int _size = arguments.size();
+              boolean _greaterThan = (_size > index);
+              if (!_greaterThan) {
+                _and = false;
+              } else {
+                XExpression _memberCallTarget = call.getMemberCallTarget();
+                _and = (_greaterThan && (_memberCallTarget instanceof XFeatureCall));
+              }
+              if (_and) {
+                XExpression _memberCallTarget_1 = call.getMemberCallTarget();
+                XFeatureCall featureCall = ((XFeatureCall) _memberCallTarget_1);
+                boolean _and_1 = false;
+                JvmIdentifiableElement _feature = featureCall.getFeature();
+                boolean _equals_1 = Objects.equal(_feature, dec);
+                if (!_equals_1) {
+                  _and_1 = false;
+                } else {
+                  boolean _or = false;
+                  if ((step instanceof StepReference)) {
+                    _or = true;
+                  } else {
+                    JvmIdentifiableElement _feature_1 = call.getFeature();
+                    boolean _equals_2 = Objects.equal(_feature_1, null);
+                    _or = ((step instanceof StepReference) || _equals_2);
+                  }
+                  _and_1 = (_equals_1 && _or);
+                }
+                if (_and_1) {
+                  String _get = arguments.get(index);
+                  FeatureJvmModelInferrer.this.addStepValue(call, dec, step, _get);
+                  int _plus = (index + 1);
+                  index = _plus;
+                }
+              }
             }
           }
         }
-      }
-    }
+      };
+    IteratorExtensions.<XVariableDeclaration>forEach(decs, _function);
   }
   
   public void setStepValueType(final XVariableDeclaration variableDec, final Step step) {
@@ -357,7 +376,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     constructor.setConstructor(_next);
   }
   
-  public void addStepValue(final XMemberFeatureCall featureCall, final XVariableDeclaration dec, final XtendMember step) {
+  public void addStepValue(final XMemberFeatureCall featureCall, final XVariableDeclaration dec, final XtendMember step, final String arg) {
     JvmTypeReference typeRef = this._typeReferences.getTypeForName(StepArguments.class, step);
     JvmType _type = typeRef.getType();
     JvmGenericType type = ((JvmGenericType) _type);
@@ -373,21 +392,11 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
         if (_not) {
           featureCall.setFeature(operation);
         } else {
-          final StepReference stepRef = ((StepReference) step);
-          final List<String> arguments = this.stepArgumentsProvider.findStepArguments(stepRef);
-          int i = 0;
-          boolean _isEmpty = arguments.isEmpty();
-          boolean _not_1 = (!_isEmpty);
-          if (_not_1) {
-            EList<XExpression> _memberCallArguments = featureCall.getMemberCallArguments();
-            for (final XExpression ref : _memberCallArguments) {
-              {
-                final XStringLiteral argument = ((XStringLiteral) ref);
-                String _get = arguments.get(i);
-                argument.setValue(_get);
-                int _plus = (i + 1);
-                i = _plus;
-              }
+          EList<XExpression> _memberCallArguments = featureCall.getMemberCallArguments();
+          for (final XExpression ref : _memberCallArguments) {
+            {
+              final XStringLiteral argument = ((XStringLiteral) ref);
+              argument.setValue(arg);
             }
           }
         }
