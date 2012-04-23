@@ -55,7 +55,7 @@ gh-pages: jnario
 gh-pages-commit: gh-pages
 	cd ${GH_PAGES} ; \
 	git add --all ; \
-	git commit -a ; \
+	git commit -a -m "new snapshot build" ; \
 	git push origin gh-pages
 
 #

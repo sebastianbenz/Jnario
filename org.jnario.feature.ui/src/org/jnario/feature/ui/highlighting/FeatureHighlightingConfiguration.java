@@ -104,7 +104,7 @@ public class FeatureHighlightingConfiguration extends XtendHighlightingConfigura
 	
 	public TextStyle stepTextStyle() {
 		TextStyle textStyle = defaultTextStyle().copy();
-		textStyle.setFontData(fontWithHeight(DEFAULT_FONT_SIZE, SWT.BOLD));
+		textStyle.setFontData(fontWithHeight(DEFAULT_FONT_SIZE + 1, SWT.BOLD));
 		return textStyle;
 	}
 	
