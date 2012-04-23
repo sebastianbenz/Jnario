@@ -60,7 +60,7 @@ public class StepParametersFeatureReferencingVariablesThatContainAValueFromArgs 
   @Ignore
   @Named("[PENDING] When this feature is executed")
   public void whenThisFeatureIsExecuted() {
-    throw new UnsupportedOperationException("whenThisFeatureIsExecutedis not implemented");
+    
   }
   
   @Test

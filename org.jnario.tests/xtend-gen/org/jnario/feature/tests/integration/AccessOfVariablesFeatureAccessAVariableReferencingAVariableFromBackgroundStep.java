@@ -24,7 +24,7 @@ public class AccessOfVariablesFeatureAccessAVariableReferencingAVariableFromBack
   @Ignore
   @Named("[PENDING] When it is executed")
   public void whenItIsExecuted() {
-    throw new UnsupportedOperationException("whenItIsExecutedis not implemented");
+    
   }
   
   @Test
