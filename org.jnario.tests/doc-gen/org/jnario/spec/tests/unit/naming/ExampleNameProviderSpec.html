@@ -28,24 +28,24 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<h3 id="null">ToJavaClassName[ExampleGroup]</h3>
+<h3><a name="null"></a>ToJavaClassName[ExampleGroup]</h3>
 <p></p>
-<ul><li><p id="should_remove_all_white_spaces_from_ExampleGroup_s_description">
+<ul><li><p><a name="should_remove_all_white_spaces_from_ExampleGroup_s_description"></a>
 <strong>should remove all white spaces from ExampleGroup's description</strong>
 <pre class="prettyprint lang-spec">
 firstJavaClassName("describe 'My Example'") should not contain " "</pre>
 </p>
-</li><li><p id="should_append__Spec__to_class_name">
+</li><li><p><a name="should_append__Spec__to_class_name"></a>
 <strong>should append 'Spec' to class name</strong>
 <pre class="prettyprint lang-spec">
 firstJavaClassName("describe 'My Example'") =&gt; endsWith('Spec')</pre>
 </p>
-</li><li><p id="should_prepend_target_type_name">
+</li><li><p><a name="should_prepend_target_type_name"></a>
 <strong>should prepend target type name</strong>
 <pre class="prettyprint lang-spec">
 firstJavaClassName("describe org.junit.Assert 'My Example'") =&gt; startsWith("Assert")</pre>
 </p>
-</li><li><p id="should_convert_description_to_camel_case">
+</li><li><p><a name="should_convert_description_to_camel_case"></a>
 <strong>should convert description to camel case</strong>
 <pre class="prettyprint lang-spec">
 newArrayList(
@@ -57,7 +57,7 @@ newArrayList(
   firstJavaClassName(it) =&gt; 'MyExampleSpec'
 ]</pre>
 </p>
-</li><li><p id="should_append_the_target_operation_s_name_and_params">
+</li><li><p><a name="should_append_the_target_operation_s_name_and_params"></a>
 <strong>should append the target operation's name and params</strong>
 <pre class="prettyprint lang-spec">
 secondJavaClassName(
@@ -67,7 +67,7 @@ secondJavaClassName(
   }
   ''') =&gt; endsWith('AssertTrueBooleanSpec')</pre>
 </p>
-</li><li><p id="should_append_the_description">
+</li><li><p><a name="should_append_the_description"></a>
 <strong>should append the description</strong>
 <pre class="prettyprint lang-spec">
 secondJavaClassName(
@@ -77,7 +77,7 @@ secondJavaClassName(
   }
 ''') =&gt; endsWith('AssertTrueSpec')</pre>
 </p>
-</li><li><p id="should_prepend_the_parent_ExampleGroup_s_name">
+</li><li><p><a name="should_prepend_the_parent_ExampleGroup_s_name"></a>
 <strong>should prepend the parent ExampleGroup's name</strong>
 <pre class="prettyprint lang-spec">
 secondJavaClassName(
@@ -88,9 +88,9 @@ describe org.junit.Assert{
 ''') =&gt; 'AssertAssertTrueBooleanSpec'</pre>
 </p>
 </li></ul>
-<h3 id="null">ToJavaClassName[ExampleTable]</h3>
+<h3><a name="null"></a>ToJavaClassName[ExampleTable]</h3>
 <p></p>
-<ul><li><p id="should_combine_example_and_parent_name">
+<ul><li><p><a name="should_combine_example_and_parent_name"></a>
 <strong>should combine example and parent name</strong>
 <pre class="prettyprint lang-spec">
 exampleTableClassName('''
@@ -100,7 +100,7 @@ describe 'My Context'{
 }
 ''') =&gt; "MyContextSpecMyExample"</pre>
 </p>
-</li><li><p id="should_convert_example_name_to_first_upper">
+</li><li><p><a name="should_convert_example_name_to_first_upper"></a>
 <strong>should convert example name to first upper</strong>
 <pre class="prettyprint lang-spec">
 exampleTableClassName('''
@@ -111,9 +111,9 @@ describe 'My Context'{
 ''') =&gt; "MyContextSpecMyExample"</pre>
 </p>
 </li></ul>
-<h3 id="null">ToMethodName[Example]</h3>
+<h3><a name="null"></a>ToMethodName[Example]</h3>
 <p></p>
-<ul><li><p id="should_convert_method_description_to_camel_case_starting_in_lowercase">
+<ul><li><p><a name="should_convert_method_description_to_camel_case_starting_in_lowercase"></a>
 <strong>should convert method description to camel case starting in lowercase</strong>
 <pre class="prettyprint lang-spec">
 newArrayList(
@@ -126,9 +126,9 @@ newArrayList(
 ]</pre>
 </p>
 </li></ul>
-<h3 id="null">ToMethodName[Before]</h3>
+<h3><a name="null"></a>ToMethodName[Before]</h3>
 <p></p>
-<ul><li><p id="should_convert_before_description_to_camel_case_starting_in_lowercase">
+<ul><li><p><a name="should_convert_before_description_to_camel_case_starting_in_lowercase"></a>
 <strong>should convert before description to camel case starting in lowercase</strong>
 <pre class="prettyprint lang-spec">
 newArrayList(
@@ -140,21 +140,21 @@ newArrayList(
   firstMethodName =&gt; 'myExample'
 ]</pre>
 </p>
-</li><li><p id="should_use_before_as_default_name">
+</li><li><p><a name="should_use_before_as_default_name"></a>
 <strong>should use before as default name</strong>
 <pre class="prettyprint lang-spec">
 firstMethodName("before{}") =&gt; "before"</pre>
 </p>
-</li><li><p id="should_enumerate_befores_without_description">
+</li><li><p><a name="should_enumerate_befores_without_description"></a>
 <strong>should enumerate befores without description</strong>
 <pre class="prettyprint lang-spec">
 secondMethodName("before{}
          before{}") =&gt; "before2"</pre>
 </p>
 </li></ul>
-<h3 id="null">ToMethodName[After]</h3>
+<h3><a name="null"></a>ToMethodName[After]</h3>
 <p></p>
-<ul><li><p id="should_convert_after_description_to_camel_case_starting_in_lowercase">
+<ul><li><p><a name="should_convert_after_description_to_camel_case_starting_in_lowercase"></a>
 <strong>should convert after description to camel case starting in lowercase</strong>
 <pre class="prettyprint lang-spec">
 newArrayList(
@@ -166,21 +166,21 @@ newArrayList(
  firstMethodName =&gt; 'myExample'
 ]</pre>
 </p>
-</li><li><p id="should_use_after_as_default_name">
+</li><li><p><a name="should_use_after_as_default_name"></a>
 <strong>should use after as default name</strong>
 <pre class="prettyprint lang-spec">
 firstMethodName("after{}") =&gt; "after"</pre>
 </p>
-</li><li><p id="should_enumerate_afters_without_description">
+</li><li><p><a name="should_enumerate_afters_without_description"></a>
 <strong>should enumerate afters without description</strong>
 <pre class="prettyprint lang-spec">
 secondMethodName("after{}
          after{}") =&gt; "after2"</pre>
 </p>
 </li></ul>
-<h3 id="toFieldName_ExampleTable_">ToFieldName[ExampleTable]</h3>
+<h3><a name="toFieldName_ExampleTable_"></a>ToFieldName[ExampleTable]</h3>
 <p></p>
-<ul><li><p id="should_use_the_example_name">
+<ul><li><p><a name="should_use_the_example_name"></a>
 <strong>should use the example name</strong>
 <pre class="prettyprint lang-spec">
 val exampleTable = '''
@@ -191,7 +191,7 @@ val exampleTable = '''
 '''.parse.first(typeof(ExampleTable))
 subject.toFieldName(exampleTable) =&gt; "myExample"</pre>
 </p>
-</li><li><p id="should_use__examples__if_no_name_is_given">
+</li><li><p><a name="should_use__examples__if_no_name_is_given"></a>
 <strong>should use 'examples' if no name is given</strong>
 <pre class="prettyprint lang-spec">
 val exampleTable = '''
@@ -203,38 +203,38 @@ val exampleTable = '''
 subject.toFieldName(exampleTable) =&gt; "examples"</pre>
 </p>
 </li></ul>
-<h3 id="null">Describe[ExampleGroup]</h3>
+<h3><a name="null"></a>Describe[ExampleGroup]</h3>
 <p></p>
-<ul><li><p id="should_use_the_description">
+<ul><li><p><a name="should_use_the_description"></a>
 <strong>should use the description</strong>
 <pre class="prettyprint lang-spec">
 describeFirst("describe 'My Description'") =&gt; "My Description"</pre>
 </p>
-</li><li><p id="should_use_the_target_type">
+</li><li><p><a name="should_use_the_target_type"></a>
 <strong>should use the target type</strong>
 <pre class="prettyprint lang-spec">
 describeFirst("describe org.junit.Assert") =&gt; "Assert"</pre>
 </p>
-</li><li><p id="should_combine_target_type_and_description">
+</li><li><p><a name="should_combine_target_type_and_description"></a>
 <strong>should combine target type and description</strong>
 <pre class="prettyprint lang-spec">
 describeFirst("describe org.junit.Assert 'and more'") =&gt; "Assert and more"</pre>
 </p>
-</li><li><p id="should_use_the_target_operation">
+</li><li><p><a name="should_use_the_target_operation"></a>
 <strong>should use the target operation</strong>
 <pre class="prettyprint lang-spec">
 describeSecond("describe org.junit.Assert{
               context assertTrue(boolean) 
            }") =&gt; "assertTrue[boolean]"</pre>
 </p>
-</li><li><p id="should_combine_target_operation_and_description">
+</li><li><p><a name="should_combine_target_operation_and_description"></a>
 <strong>should combine target operation and description</strong>
 <pre class="prettyprint lang-spec">
 describeSecond("describe org.junit.Assert{
               context assertTrue(boolean) 'and more'
            }") =&gt; "assertTrue[boolean] and more"</pre>
 </p>
-</li><li><p id="should_escape_quotes">
+</li><li><p><a name="should_escape_quotes"></a>
 <strong>should escape quotes</strong>
 <pre class="prettyprint lang-spec">
 val text = '''describe 'Example'{
@@ -243,14 +243,14 @@ val text = '''describe 'Example'{
 describeSecond(text) =&gt; 'and \\"more\\"'</pre>
 </p>
 </li></ul>
-<h3 id="null">Describe[Example]</h3>
+<h3><a name="null"></a>Describe[Example]</h3>
 <p></p>
-<ul><li><p id="should_use_the_description">
+<ul><li><p><a name="should_use_the_description"></a>
 <strong>should use the description</strong>
 <pre class="prettyprint lang-spec">
 describeFirst("'should do stuff' {true}") =&gt; "should do stuff"</pre>
 </p>
-</li><li><p id="apppends___PENDING___to_pending_example_descriptions">
+</li><li><p><a name="apppends___PENDING___to_pending_example_descriptions"></a>
 <strong>apppends '[PENDING]' to pending example descriptions</strong>
 <pre class="prettyprint lang-spec">
 describeFirst("'should do stuff'") =&gt; "should do stuff [PENDING]"

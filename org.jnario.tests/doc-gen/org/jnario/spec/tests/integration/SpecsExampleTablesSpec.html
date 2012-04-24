@@ -29,7 +29,7 @@
 			<div class="row">
 				<div class="span12">
 <p>Example tables are a great way to structure input and expected output data.</p>
-<ul><li><p id="accessing_values">
+<ul><li><p><a name="accessing_values"></a>
 <strong>accessing values</strong>
 <p>Examples are stored within a table. Assertions for the table's values are best implemented by iterating over each table row using <code>forEach</code>. Inside the procedure that is passed to <code>forEach</code>, each value in a row can be directly accessed by it's column's name making use of Xtend's <a href="http://www.eclipse.org/xtend/documentation/index.html#closures">implicit 'it'</a>.</p>
 <pre class="prettyprint lang-spec">
@@ -50,7 +50,7 @@ describe "Example Tables"{
   }
 }</pre>
 </p>
-</li><li><p id="Naming_examples">
+</li><li><p><a name="Naming_examples"></a>
 <strong>Naming examples</strong>
 <p>Naming an example table is optional. If no name is provided, the default name 'examples' will be used.</p>
 <pre class="prettyprint lang-spec">
@@ -68,7 +68,7 @@ describe "Example Tables"{
   }     
 }</pre>
 </p>
-</li><li><p id="expressions_in_tables">
+</li><li><p><a name="expressions_in_tables"></a>
 <strong>expressions in tables</strong>
 <p>Values in an example table can be arbitrary non-void expressions, for examples closures:</p>
 <pre class="prettyprint lang-spec">
@@ -89,7 +89,7 @@ describe "Example Tables"{
   }       
 }</pre>
 </p>
-</li><li><p id="referencing_members">
+</li><li><p><a name="referencing_members"></a>
 <strong>referencing members</strong>
 <p>It is also possible to call methods or reference fields from within a table.</p>
 <pre class="prettyprint lang-spec">
@@ -116,7 +116,7 @@ describe "Example Tables"{
   }   
 }</pre>
 </p>
-</li><li><p id="Specifying_column_types">
+</li><li><p><a name="Specifying_column_types"></a>
 <strong>Specifying column types</strong>
 <p>Jnario automatically infers the type of a column. It will use the common supertype of all expressions in a column.</p>
 <pre class="prettyprint lang-spec">
@@ -138,7 +138,7 @@ describe "Example Tables"{
   }
 }</pre>
 </p>
-</li><li><h4 id="example">Example</h4>
+</li><li><h4><a name="example"></a>Example</h4>
 <p><p>Jnario will include example tables in the generated documentation. (The errors in the table are intentional, we need it in the next example).</p>
 </p>
 <table class="table table-striped table-bordered table-condensed">
@@ -167,7 +167,7 @@ describe "Example Tables"{
 	</tr>
 	</tbody>
 </table>
-</li><li><p id="Error_message">
+</li><li><p><a name="Error_message"></a>
 <strong>Error message</strong>
 <p><code>ExampleTable#forEach</code> executes the passed in procedure for all table rows. It will generate an error message for all procedures that have failed with the reason why they failed.</p>
 <pre class="prettyprint lang-spec">

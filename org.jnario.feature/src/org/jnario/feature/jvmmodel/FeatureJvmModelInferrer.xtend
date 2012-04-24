@@ -46,7 +46,7 @@ import org.junit.Ignore
 import static com.google.common.collect.Iterators.*
 import static org.jnario.feature.jvmmodel.FeatureJvmModelInferrer.*
 import org.eclipse.xtend.core.xtend.XtendClass
-import org.eclipse.xtext.EcoreUtil2
+import static org.eclipse.xtext.EcoreUtil2.*
 import org.jnario.feature.naming.FeatureClassNameProvider
 import org.jnario.feature.feature.Given
 
@@ -207,7 +207,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			}	
 		]
    	}
-   	
+
    	def setStepValueType(XVariableDeclaration variableDec, Step step){
 		var typeRef = getTypeForName(typeof(StepArguments), step)
 		variableDec.type = typeRef		
@@ -215,7 +215,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		var constructor = variableDec.right as XConstructorCall
 		constructor.constructor = filter(type.members.iterator, typeof(JvmConstructor)).next
 	}
-	
+
 	def addStepValue(XMemberFeatureCall featureCall, XVariableDeclaration dec, XtendMember step, String arg){
 		var typeRef = getTypeForName(typeof(StepArguments), step)
 		var type = typeRef.type as JvmGenericType
@@ -233,7 +233,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			}
 		}
 	}
-   	
+
    	def generateBackgroundStepCalls(Iterable<Step> steps, JvmGenericType inferredJvmType){
    		var order = 0
 		for (step : steps) {
@@ -244,7 +244,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		}
 		order 
    	}
-   	
+
    	def transformCalls(Step step, JvmGenericType inferredJvmType, int order){
    		val methodName = step.methodName
    		inferredJvmType.members += step.toMethod(methodName, getTypeForName(Void::TYPE, step))[
@@ -253,11 +253,11 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			]
 			annotations += step.getTestAnnotations(false)
 			annotations += step.toAnnotation(typeof(Order), order.intValue)
-			annotations += step.toAnnotation(typeof(Named),step.describe)
+			annotations += step.toAnnotation(typeof(Named), step.describe)
 		]	
 		order + 1
    	}
-   	
+
    	def generateSteps(Iterable<Step> steps, JvmGenericType inferredJvmType, int start, Scenario scenario){
 		var order = start
 		for (step : steps) {
@@ -267,7 +267,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			}
 		}
    	}
-   	
+
 	def transform(Step step, JvmGenericType inferredJvmType, int order, Scenario scenario) {
 		inferredJvmType.members += step.toMethod(step.methodName, getTypeForName(Void::TYPE, step))[
 			body = step.expressionOf?.blockExpression
@@ -284,7 +284,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		]	
 		order + 1
 	}
-	
+
    	def generateSteps(Iterable<Step> steps, JvmGenericType inferredJvmType){
 		for (step: steps) {
 			transform(step, inferredJvmType)
@@ -293,14 +293,14 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			}
 		}
    	}
-   	
+
    	def transform(Step step, JvmGenericType inferredJvmType){
    		inferredJvmType.members += step.toMethod(step.methodName, getTypeForName(Void::TYPE, step))[
 			body = step.expressionOf?.blockExpression
 			step.generateStepValues
 		]
    	}
-   	
+
  	def generateVariables(Scenario scenario, Feature feature, JvmGenericType inferredJvmType){		
 		if(!scenario.examples.empty){
 			var fieldNames = new ArrayList<String>()
@@ -314,7 +314,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			}
 		}		
  	}
-   	
+
 	def generateExampleClasses(Scenario scenario, JvmGenericType inferredJvmType){
 		val List<JvmGenericType> exampleClasses = newArrayList()
 		for(example: scenario.examples){
@@ -327,7 +327,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		}
 		exampleClasses
 	} 
-	
+
 	def createExampleClass(Scenario scenario, ExampleRow row, EList<ExampleColumn> fields, JvmGenericType inferredJvmType){
 		val className = row.getClassName
 		row.toClass(className)[
@@ -350,7 +350,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			annotations += row.toAnnotation(typeof(Named), description)
 		]
 	}
-	
+
 	def cellToAppendable(ExampleRow row, int i, ITreeAppendable appendable){
 		if(row.cells.size > i){
 			compiler.toJavaExpression(row.cells.get(i), appendable)
@@ -374,8 +374,8 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			]
 		]
 	}
-	
+
 	def feature(EObject context){
-   		EcoreUtil2::getContainerOfType(context, typeof(Feature))
+   		getContainerOfType(context, typeof(Feature))
    	}
 }

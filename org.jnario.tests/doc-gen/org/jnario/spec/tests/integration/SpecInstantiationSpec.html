@@ -41,13 +41,13 @@ public class GuiceBasedTestInstantiator extends AbstractTestInstantiator {
   }
 }
 </pre>
-<ul><li><p id="how_to_use_a_custom_test_instantiator">
+<ul><li><p><a name="how_to_use_a_custom_test_instantiator"></a>
 <strong>how to use a custom test instantiator</strong>
 <pre class="prettyprint lang-spec">
 package bootstrap
 
 import org.jnario.runner.InstantiateWith
-import org.jnario.lib.GuiceBasedTestInstantiator
+import org.jnario.jnario.test.util.GuiceBasedTestInstantiator
 import com.google.inject.Inject
 
 @InstantiateWith(typeof(GuiceBasedTestInstantiator))

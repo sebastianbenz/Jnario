@@ -1,10 +1,11 @@
 package org.jnario.jvmmodel;
 
+import com.google.inject.Inject;
 import java.util.ArrayList;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.FeatureExamplesRunner;
 import org.jnario.runner.FeatureRunner;
@@ -15,8 +16,6 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import com.google.inject.Inject;
 
 /**
  * @author Sebastian Benz - Initial contribution and API

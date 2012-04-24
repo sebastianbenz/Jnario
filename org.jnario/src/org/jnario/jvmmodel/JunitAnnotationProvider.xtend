@@ -10,7 +10,6 @@ package org.jnario.jvmmodel
 import com.google.inject.Inject
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmAnnotationReference
-import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.jnario.runner.ExampleGroupRunner
 import org.junit.AfterClass
 import org.junit.BeforeClass

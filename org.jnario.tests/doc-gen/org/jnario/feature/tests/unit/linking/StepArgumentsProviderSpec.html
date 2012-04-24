@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>SpecValidator</title>
+<title>StepArgumentsProvider</title>
 <meta name="description" content="">
 <meta name="author" content="Jnario">
 
@@ -24,59 +24,56 @@
 	<div class="container">
 		<div class="content">
 			<div class="page-header">
-				<h1>SpecValidator</h1>
+				<h1>StepArgumentsProvider</h1>
 			</div>
 			<div class="row">
 				<div class="span12">
-<ul><li><p><a name="assert_statement_must_be_boolean"></a>
-<strong>assert statement must be boolean</strong>
+<ul><li><h4><a name="examples"></a>Examples</h4>
+<p></p>
+<table class="table table-striped table-bordered table-condensed">
+	<thead>
+		<tr>
+		<th>step</th>
+		<th>expectedArgs</th>
+		</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>null</td>
+		<td>list()</td>
+	</tr>
+	<tr>
+		<td>'Given no values'</td>
+		<td>list()</td>
+	</tr>
+	<tr>
+		<td>'Given "hello"'</td>
+		<td>list("hello")</td>
+	</tr>
+	<tr>
+		<td>'Given "hello" and "world"'</td>
+		<td>list("hello", "world")</td>
+	</tr>
+	<tr>
+		<td>'Given "hello" and "world"'</td>
+		<td>list("hello", "world")</td>
+	</tr>
+	<tr>
+		<td>'Given a multiline \n"hello"'</td>
+		<td>list("hello")</td>
+	</tr>
+	<tr>
+		<td>'Given a multiline \n 1+1 =&gt; 2 "hello"'</td>
+		<td>list()</td>
+	</tr>
+	</tbody>
+</table>
+</li><li><p><a name="extracts_arguments_from_step_descriptions"></a>
+<strong>extracts arguments from step descriptions</strong>
 <pre class="prettyprint lang-spec">
-parseSpec('
-	package bootstrap
-
-	describe "Example"{
-		fact "invalid assert"{
-			assert 1
-		}
-	} 
-')
-
-val validationResult = validate(typeof(Assertion))
-validationResult.assertErrorContains("invalid type")</pre>
-</p>
-</li><li><p><a name="example_table_values_must_not_be_void"></a>
-<strong>example table values must not be void</strong>
-<pre class="prettyprint lang-spec">
-parseSpec('
-	package bootstrap
-
-	describe "Example"{
-		def examples{
-			| a         |
-			| throw new Exception() |
-		}
-	} 
-')
-
-val validationResult = validate(typeof(ExampleRow))
-validationResult.assertErrorContains("void")</pre>
-</p>
-</li><li><p><a name="example_table_rows_must_have_the_same_size"></a>
-<strong>example table rows must have the same size</strong>
-<pre class="prettyprint lang-spec">
-parseSpec('
-	package bootstrap
-
-	describe "Example"{
-		def examples{
-			| a | b |
-			| 0 |
-		}
-	} 
-')
-
-val validationResult = validate(typeof(ExampleTable))
-validationResult.assertErrorContains("number")</pre>
+examples.forEach[
+	subject.findStepArguments(create(step)) =&gt; expectedArgs
+]</pre>
 </p>
 </li></ul>
 				</div>

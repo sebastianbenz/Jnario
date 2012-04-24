@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Before</title>
+<title>CollectionLiterals</title>
 <meta name="description" content="">
 <meta name="author" content="Jnario">
 
@@ -24,37 +24,27 @@
 	<div class="container">
 		<div class="content">
 			<div class="page-header">
-				<h1>Before</h1>
+				<h1>CollectionLiterals</h1>
 			</div>
 			<div class="row">
 				<div class="span12">
-<p>@author Sebastian Benz - Initial contribution and API</p>
-<ul><li><p><a name="should_be_executed_before_each_test"></a>
-<strong>should be executed before each test</strong>
-<pre class="prettyprint lang-spec">
-val spec = '
-	package bootstrap
-	 
-	import org.jnario.runner.Order
-	
-	describe "Before"{
-		
-		static int beforeExecutionCount = 0
-		
-		before{
-			beforeExecutionCount = beforeExecutionCount + 1
-		}
-
-		fact "should be executed before each test (1)"{
-			beforeExecutionCount should be 1
-		}	
-
-		fact "should be executed before each test (2)"{
-			beforeExecutionCount should be 2
-		}	
-	}
-'
-spec.executesSuccessfully</pre>
+<p>You can use the <code>should</code> statement to express the expected behavior of objects.</p>
+<h3><a name="List_Literal"></a>List Literal</h3>
+<p></p>
+<ul><li><p><a name="list__green____red______newArrayList__green____red__"></a>
+<strong>list["green", "red"] => newArrayList["green", "red"]</strong>
+</p>
+</li><li><p><a name="list_list__green____list__red_______newArrayList_newArrayList__green____newArrayList__red___"></a>
+<strong>list[list["green"], list["red"]] => newArrayList[newArrayList["green"], newArrayList["red"]]</strong>
+</p>
+</li></ul>
+<h3><a name="Set_Literal"></a>Set Literal</h3>
+<p></p>
+<ul><li><p><a name="set__green____red______newHashSet__green____red__"></a>
+<strong>set["green", "red"] => newHashSet["green", "red"]</strong>
+</p>
+</li><li><p><a name="set_set__green____set__red_______newHashSet_newHashSet__green____newHashSet__red___"></a>
+<strong>set[set["green"], set["red"]] => newHashSet[newHashSet["green"], newHashSet["red"]]</strong>
 </p>
 </li></ul>
 				</div>
