@@ -5,7 +5,9 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.jnario.lib;
+package org.jnario.jnario.test.util;
+
+import org.jnario.lib.AbstractTestInstantiator;
 
 import com.google.inject.Guice;
 import com.google.inject.util.Modules;

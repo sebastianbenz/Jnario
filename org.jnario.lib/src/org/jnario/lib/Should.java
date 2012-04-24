@@ -8,7 +8,6 @@
 package org.jnario.lib;
 
 import static com.google.common.collect.Iterables.contains;
-import static org.hamcrest.collection.IsCollectionContaining.hasItem;
 
 import org.eclipse.xtext.xbase.lib.Functions;
 import org.hamcrest.Description;
@@ -41,12 +40,17 @@ public class Should {
 		return contains(actual, element);
 	}
 	
-	public static <T> boolean should_contain(String actual, CharSequence substring){
-		return actual.contains(substring);
+	public static <T> boolean should_contain(Iterable<T> collection, Matcher<T> matcher){
+		for (T item : collection) {
+            if (matcher.matches(item)){
+                return true;
+            }
+        }
+        return false;
 	}
 	
-	public static <T> boolean should_contain(T actual, Matcher<T> matcher){
-		return hasItem(matcher).matches(actual);
+	public static <T> boolean should_contain(String actual, CharSequence substring){
+		return actual.contains(substring);
 	}
 	
 	public static <T> boolean should_be(T actual, boolean result){
