@@ -10,7 +10,6 @@ package org.jnario.spec.ui.editor;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.ide.editor.XtendFoldingRegionProvider;
-
 import org.jnario.spec.spec.SpecPackage;
 
 /**

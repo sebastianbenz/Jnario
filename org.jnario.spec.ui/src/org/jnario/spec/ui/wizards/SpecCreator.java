@@ -23,10 +23,9 @@ import org.eclipse.xtext.common.types.access.IJvmTypeProvider.Factory;
 import org.eclipse.xtext.common.types.access.jdt.JdtTypeProviderFactory;
 import org.eclipse.xtext.common.types.util.jdt.IJavaElementFinder;
 import org.eclipse.xtext.ui.resource.XtextResourceSetProvider;
+import org.jnario.spec.naming.OperationNameProvider;
 
 import com.google.inject.Inject;
-
-import org.jnario.spec.naming.OperationNameProvider;
 
 /**
  * @author Sebastian Benz - Initial contribution and API

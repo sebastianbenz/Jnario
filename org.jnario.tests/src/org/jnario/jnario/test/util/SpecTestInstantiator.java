@@ -9,10 +9,9 @@ package org.jnario.jnario.test.util;
 
 import org.eclipse.xtext.junit4.GlobalRegistries;
 import org.eclipse.xtext.junit4.GlobalRegistries.GlobalStateMemento;
+import org.jnario.runner.TestInstantiator;
 
 import com.google.inject.Injector;
-
-import org.jnario.runner.TestInstantiator;
 
 public class SpecTestInstantiator implements TestInstantiator {
 	protected GlobalStateMemento globalStateMemento;

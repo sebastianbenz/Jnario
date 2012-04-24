@@ -14,9 +14,8 @@ import java.util.List;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.osgi.framework.adaptor.BundleData;
 import org.eclipse.osgi.framework.internal.core.AbstractBundle;
-import org.osgi.framework.BundleException;
-
 import org.jnario.Activator;
+import org.osgi.framework.BundleException;
 
 /**
  * @author Birgit Engelmann

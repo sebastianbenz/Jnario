@@ -10,12 +10,17 @@ package org.jnario.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.jnario.*;
+import org.jnario.Assertion;
+import org.jnario.ExampleColumn;
+import org.jnario.ExampleRow;
+import org.jnario.ExampleTable;
+import org.jnario.JnarioFactory;
+import org.jnario.JnarioPackage;
+import org.jnario.Matcher;
+import org.jnario.Should;
+import org.jnario.ShouldThrow;
 
 /**
  * <!-- begin-user-doc -->

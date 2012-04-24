@@ -1,6 +1,5 @@
 package gameoflife;
 
-import gameoflife.Cell;
 
 @SuppressWarnings("all")
 public class Game {

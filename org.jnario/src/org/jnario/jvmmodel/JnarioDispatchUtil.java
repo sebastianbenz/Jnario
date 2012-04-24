@@ -11,10 +11,10 @@ import static com.google.common.collect.Iterables.filter;
 
 import java.util.Iterator;
 
-import org.eclipse.xtext.common.types.JvmOperation;
-import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtend.core.jvmmodel.DispatchUtil;
 import org.eclipse.xtend.core.xtend.XtendFunction;
+import org.eclipse.xtext.common.types.JvmOperation;
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 
 import com.google.inject.Inject;
 

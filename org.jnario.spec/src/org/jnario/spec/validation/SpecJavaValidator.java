@@ -8,15 +8,13 @@
 package org.jnario.spec.validation;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
-import static org.eclipse.xtext.xbase.validation.IssueCodes.INVALID_INNER_EXPRESSION;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.ComposedChecks;
-import org.eclipse.xtext.validation.ValidationMessageAcceptor;
 import org.eclipse.xtext.xbase.XExpression;
-import org.eclipse.xtend.core.xtend.XtendField;
 import org.jnario.ExampleColumn;
 import org.jnario.spec.naming.ExampleNameProvider;
 import org.jnario.spec.spec.ExampleGroup;

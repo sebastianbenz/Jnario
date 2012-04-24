@@ -9,7 +9,6 @@ package org.jnario.spec.spec.impl;
 
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 
-import org.eclipse.xtext.EcoreUtil2;
 import org.jnario.spec.spec.ExampleGroup;
 
 /**

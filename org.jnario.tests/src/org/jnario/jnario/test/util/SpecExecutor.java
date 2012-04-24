@@ -8,7 +8,8 @@
 package org.jnario.jnario.test.util;
 
 import static org.eclipse.emf.common.util.URI.createURI;
-import static org.jnario.jnario.test.util.ResultMatchers.*;
+import static org.jnario.jnario.test.util.ResultMatchers.failureCountIs;
+import static org.jnario.jnario.test.util.ResultMatchers.isSuccessful;
 import static org.junit.Assert.assertNotNull;
 
 import java.io.IOException;

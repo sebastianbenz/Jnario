@@ -7,9 +7,8 @@
  *******************************************************************************/
 package gameoflife;
 
-import org.mockito.MockitoAnnotations;
-
 import org.jnario.runner.DefaultTestInstantiator;
+import org.mockito.MockitoAnnotations;
 
 public class MockitoInstantiator extends DefaultTestInstantiator {
 

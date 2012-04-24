@@ -9,9 +9,9 @@
 package org.jnario.feature;
 
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.xtend.core.XtendStandaloneSetup;
 import org.eclipse.xtext.xbase.XbaseStandaloneSetup;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
-import org.eclipse.xtend.core.XtendStandaloneSetup;
 import org.jnario.JnarioPackage;
 import org.jnario.feature.feature.FeaturePackage;
 

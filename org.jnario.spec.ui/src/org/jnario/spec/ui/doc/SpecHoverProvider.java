@@ -12,7 +12,6 @@ package org.jnario.spec.ui.doc;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.ide.hover.XtendHoverProvider;
-import org.jnario.doc.HtmlFile;
 import org.jnario.doc.HtmlFileBuilder;
 import org.jnario.spec.doc.DocGenerator;
 import org.jnario.spec.spec.ExampleGroup;

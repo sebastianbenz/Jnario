@@ -1,7 +1,5 @@
 package org.jnario.spec.serializer;
 
-import com.google.inject.Inject;
-import com.google.inject.Provider;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.serializer.XtendSemanticSequencer;
 import org.eclipse.xtend.core.xtend.CreateExtensionInfo;
@@ -85,6 +83,9 @@ import org.jnario.spec.spec.Example;
 import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.spec.spec.SpecFile;
 import org.jnario.spec.spec.SpecPackage;
+
+import com.google.inject.Inject;
+import com.google.inject.Provider;
 
 @SuppressWarnings("restriction")
 public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {

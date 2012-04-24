@@ -7,13 +7,13 @@
  *******************************************************************************/
 package org.jnario.jnario.test.util;
 
-import com.google.inject.Guice;
-import com.google.inject.Injector;
-
 import org.jnario.feature.FeatureStandaloneSetup;
 import org.jnario.spec.SpecRuntimeModule;
 import org.jnario.spec.SpecStandaloneSetup;
 import org.jnario.spec.spec.SpecFactory;
+
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 
 public class SpecStandaloneTestSetup extends SpecStandaloneSetup {
 	

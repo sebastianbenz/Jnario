@@ -8,15 +8,9 @@
 
 package org.jnario.maven;
 
-import javax.swing.text.html.HTMLDocument.HTMLReader.SpecialAction;
-
-import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
-import org.eclipse.xtend.core.maven.XtendCompile;
+import org.eclipse.xtend.maven.XtendCompile;
 
 import com.google.inject.Injector;
-
-import org.jnario.compiler.batch.SpecBatchCompiler;
-import org.jnario.spec.SpecStandaloneSetup;
 
 
 /**

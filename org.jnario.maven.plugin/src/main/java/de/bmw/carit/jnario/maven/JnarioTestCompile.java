@@ -8,13 +8,9 @@
 
 package org.jnario.maven;
 
-import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
-import org.eclipse.xtend.core.maven.XtendTestCompile;
+import org.eclipse.xtend.maven.XtendTestCompile;
 
 import com.google.inject.Injector;
-
-import org.jnario.compiler.batch.SpecBatchCompiler;
-import org.jnario.spec.SpecStandaloneSetup;
 
 /**
  * Goal which compiles Xtend test sources.

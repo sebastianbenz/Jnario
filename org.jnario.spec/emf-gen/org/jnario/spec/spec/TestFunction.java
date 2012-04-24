@@ -5,7 +5,6 @@
 package org.jnario.spec.spec;
 
 import org.eclipse.xtend.core.xtend.XtendMember;
-
 import org.eclipse.xtext.xbase.XExpression;
 
 /**

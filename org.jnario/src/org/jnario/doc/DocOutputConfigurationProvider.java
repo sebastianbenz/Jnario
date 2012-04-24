@@ -9,8 +9,8 @@ package org.jnario.doc;
 
 import java.util.Set;
 
-import org.eclipse.xtext.generator.OutputConfiguration;
 import org.eclipse.xtend.core.compiler.XtendOutputConfigurationProvider;
+import org.eclipse.xtext.generator.OutputConfiguration;
 
 public class DocOutputConfigurationProvider extends XtendOutputConfigurationProvider{
 

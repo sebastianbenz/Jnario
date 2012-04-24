@@ -6,7 +6,6 @@
 package org.jnario.feature.feature.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.jnario.feature.feature.And;
 import org.jnario.feature.feature.FeaturePackage;
 

@@ -1,7 +1,6 @@
 package org.jnario.feature.documentation;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.jnario.feature.documentation.JnarioFeaturesTutorialSpec;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;

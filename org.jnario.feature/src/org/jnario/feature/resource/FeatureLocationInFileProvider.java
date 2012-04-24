@@ -1,6 +1,7 @@
 package org.jnario.feature.resource;
 
 import static org.jnario.util.Strings.trimWhitespaceAtEnd;
+
 import java.util.Collections;
 import java.util.List;
 

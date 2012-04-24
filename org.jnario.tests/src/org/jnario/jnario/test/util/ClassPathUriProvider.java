@@ -20,10 +20,9 @@ import java.util.List;
 
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.emf.common.util.URI;
+import org.jnario.Activator;
 
 import com.google.common.base.Predicate;
-
-import org.jnario.Activator;
 
 public class ClassPathUriProvider implements IUriProvider {
 

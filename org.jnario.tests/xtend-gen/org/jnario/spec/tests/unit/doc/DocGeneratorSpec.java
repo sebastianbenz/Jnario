@@ -1,8 +1,7 @@
 package org.jnario.spec.tests.unit.doc;
 
-import com.google.common.base.Objects;
-import com.google.inject.Inject;
 import java.util.Map;
+
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.InMemoryFileSystemAccess;
@@ -18,6 +17,9 @@ import org.jnario.spec.doc.DocGenerator;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import com.google.common.base.Objects;
+import com.google.inject.Inject;
 
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)

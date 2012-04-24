@@ -1,6 +1,5 @@
 package org.jnario.spec.tests.integration;
 
-import com.google.common.base.Objects;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -14,6 +13,8 @@ import org.jnario.runner.Order;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import com.google.common.base.Objects;
 
 /**
  * Jnario provides syntactic sugar for creating matchers.

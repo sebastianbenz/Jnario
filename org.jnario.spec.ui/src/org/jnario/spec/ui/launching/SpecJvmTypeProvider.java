@@ -14,12 +14,11 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.access.IJvmTypeProvider;
 import org.eclipse.xtext.common.types.access.IJvmTypeProvider.Factory;
-
-import com.google.inject.Inject;
-
 import org.jnario.spec.naming.ExampleNameProvider;
 import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.spec.spec.SpecFile;
+
+import com.google.inject.Inject;
 
 /**
  * @author Sebastian Benz - Initial contribution and API

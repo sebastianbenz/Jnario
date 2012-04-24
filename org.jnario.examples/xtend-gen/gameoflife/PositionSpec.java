@@ -1,9 +1,8 @@
 package gameoflife;
 
-import com.google.common.base.Objects;
-import gameoflife.Position;
 import java.util.HashSet;
 import java.util.Set;
+
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matcher;
@@ -13,6 +12,8 @@ import org.jnario.runner.Order;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import com.google.common.base.Objects;
 
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)

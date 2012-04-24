@@ -11,10 +11,10 @@ import java.util.Collection;
 
 import org.eclipse.xtext.xbase.scoping.featurecalls.StaticImplicitMethodsFeatureForTypeProvider.ExtensionClassNameProvider;
 import org.hamcrest.CoreMatchers;
-import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Each;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
+import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
 import org.jnario.lib.StringConversions;
 

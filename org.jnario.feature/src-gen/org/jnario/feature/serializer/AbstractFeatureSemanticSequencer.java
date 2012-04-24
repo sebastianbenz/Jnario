@@ -1,7 +1,5 @@
 package org.jnario.feature.serializer;
 
-import com.google.inject.Inject;
-import com.google.inject.Provider;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.serializer.XtendSemanticSequencer;
 import org.eclipse.xtend.core.xtend.CreateExtensionInfo;
@@ -94,6 +92,9 @@ import org.jnario.feature.feature.ThenReference;
 import org.jnario.feature.feature.When;
 import org.jnario.feature.feature.WhenReference;
 import org.jnario.feature.services.FeatureGrammarAccess;
+
+import com.google.inject.Inject;
+import com.google.inject.Provider;
 
 @SuppressWarnings("restriction")
 public class AbstractFeatureSemanticSequencer extends AbstractSemanticSequencer {

@@ -1,8 +1,7 @@
 package org.jnario.spec.tests.unit.naming;
 
-import com.google.common.collect.Iterables;
-import com.google.inject.Inject;
 import java.util.Map;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -24,11 +23,13 @@ import org.jnario.runner.InstantiateWith;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.spec.naming.OperationNameProvider;
-import org.jnario.spec.tests.unit.naming.OperationNamesExample;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import com.google.common.collect.Iterables;
+import com.google.inject.Inject;
 
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)

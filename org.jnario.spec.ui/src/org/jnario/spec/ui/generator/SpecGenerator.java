@@ -11,10 +11,9 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
+import org.jnario.spec.doc.DocGenerator;
 
 import com.google.inject.Inject;
-
-import org.jnario.spec.doc.DocGenerator;
 
 @SuppressWarnings("restriction")
 public class SpecGenerator implements IGenerator {

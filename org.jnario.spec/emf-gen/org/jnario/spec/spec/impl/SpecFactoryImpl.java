@@ -7,12 +7,16 @@ package org.jnario.spec.spec.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.jnario.spec.spec.*;
+import org.jnario.spec.spec.After;
+import org.jnario.spec.spec.Before;
+import org.jnario.spec.spec.Example;
+import org.jnario.spec.spec.ExampleGroup;
+import org.jnario.spec.spec.SpecFactory;
+import org.jnario.spec.spec.SpecFile;
+import org.jnario.spec.spec.SpecPackage;
+import org.jnario.spec.spec.TestFunction;
 
 /**
  * <!-- begin-user-doc -->

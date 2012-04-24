@@ -1,6 +1,7 @@
 package org.jnario.spec.tests.documentation;
 
 import java.util.Stack;
+
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.jnario.test.util.Helpers;
@@ -8,7 +9,6 @@ import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.jnario.spec.tests.documentation.JnarioSpecsTutorialSpec;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

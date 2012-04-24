@@ -1,7 +1,6 @@
 package org.jnario.feature.tests.integration;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.jnario.feature.tests.integration.StepParametersFeatureBackground;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;

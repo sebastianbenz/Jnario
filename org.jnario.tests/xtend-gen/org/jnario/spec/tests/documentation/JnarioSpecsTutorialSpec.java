@@ -3,8 +3,6 @@ package org.jnario.spec.tests.documentation;
 import org.jnario.runner.Contains;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
-import org.jnario.spec.tests.documentation.JnarioSpecsTutorialHowToWriteASpecificationSpec;
-import org.jnario.spec.tests.documentation.JnarioSpecsTutorialWritingAssertionsSpec;
 import org.junit.runner.RunWith;
 
 /**

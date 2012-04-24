@@ -3,10 +3,10 @@
 */
 package org.jnario.spec.parser.antlr;
 
-import com.google.inject.Inject;
-
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.jnario.spec.services.SpecGrammarAccess;
+
+import com.google.inject.Inject;
 
 public class SpecParser extends org.eclipse.xtext.parser.antlr.AbstractAntlrParser {
 	

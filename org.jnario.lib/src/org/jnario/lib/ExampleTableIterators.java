@@ -13,7 +13,6 @@ import static java.lang.String.format;
 import java.util.List;
 
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-
 import org.jnario.lib.internal.RowFailed;
 import org.jnario.lib.internal.RowPassed;
 import org.jnario.lib.internal.RowResult;

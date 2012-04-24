@@ -3,10 +3,10 @@
 */
 package org.jnario.feature.parser.antlr;
 
-import com.google.inject.Inject;
-
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.jnario.feature.services.FeatureGrammarAccess;
+
+import com.google.inject.Inject;
 
 public class FeatureParser extends org.eclipse.xtext.parser.antlr.AbstractAntlrParser {
 	

@@ -1,16 +1,16 @@
 package org.jnario.spec.tests.integration;
 
-import com.google.common.base.Objects;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.jnario.test.util.Helpers;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.jnario.spec.tests.integration.AssertionSpec;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import com.google.common.base.Objects;
 
 /**
  * Assertions in Jnario are selfexplainable. This means, when failing, they try to

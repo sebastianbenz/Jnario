@@ -6,9 +6,7 @@
 package org.jnario.feature.feature.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.xtend.core.xtend.impl.XtendFileImpl;
-
 import org.jnario.feature.feature.FeatureFile;
 import org.jnario.feature.feature.FeaturePackage;
 

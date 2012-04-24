@@ -7,9 +7,12 @@
  *******************************************************************************/
 package org.jnario.feature.ui.parser;
 
-import org.jnario.feature.parser.FeatureTokenSource;
+import static org.jnario.feature.ui.contentassist.antlr.internal.InternalFeatureLexer.RULE_BACKGROUND_TEXT;
+import static org.jnario.feature.ui.contentassist.antlr.internal.InternalFeatureLexer.RULE_FEATURE_TEXT;
+import static org.jnario.feature.ui.contentassist.antlr.internal.InternalFeatureLexer.RULE_SCENARIO_TEXT;
+import static org.jnario.feature.ui.contentassist.antlr.internal.InternalFeatureLexer.RULE_TEXT;
 
-import static org.jnario.feature.ui.contentassist.antlr.internal.InternalFeatureLexer.*;
+import org.jnario.feature.parser.FeatureTokenSource;
 public class ContentAssistFeatureTokenSource extends FeatureTokenSource {
 
 	protected int ruleScenario() {

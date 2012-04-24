@@ -1,19 +1,17 @@
 package org.jnario.doc;
 
-import com.google.common.base.Objects;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.Pair;
-import org.jnario.doc.Filter;
-import org.jnario.doc.FilteringResult;
-import org.jnario.doc.LangFilter;
-import org.jnario.doc.RegexFilter;
+
+import com.google.common.base.Objects;
 
 @SuppressWarnings("all")
 public class FilterExtractor {

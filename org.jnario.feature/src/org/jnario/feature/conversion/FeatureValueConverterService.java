@@ -7,8 +7,6 @@
  *******************************************************************************/
 package org.jnario.feature.conversion;
 
-import org.eclipse.xtext.conversion.IValueConverter;
-import org.eclipse.xtext.conversion.ValueConverter;
 import org.jnario.conversion.JnarioValueConverterService;
 
 public class FeatureValueConverterService extends JnarioValueConverterService {

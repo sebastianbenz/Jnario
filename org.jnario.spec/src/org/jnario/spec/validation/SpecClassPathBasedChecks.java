@@ -12,15 +12,15 @@ import static org.eclipse.xtext.util.Strings.notNull;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.URIConverter;
+import org.eclipse.xtend.core.validation.ClasspathBasedChecks;
+import org.eclipse.xtend.core.validation.IssueCodes;
+import org.eclipse.xtend.core.xtend.XtendFile;
+import org.eclipse.xtend.core.xtend.XtendPackage.Literals;
 import org.eclipse.xtext.resource.ClasspathUriResolutionException;
 import org.eclipse.xtext.resource.ClasspathUriUtil;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.EValidatorRegistrar;
 import org.eclipse.xtext.validation.ValidationMessageAcceptor;
-import org.eclipse.xtend.core.validation.ClasspathBasedChecks;
-import org.eclipse.xtend.core.validation.IssueCodes;
-import org.eclipse.xtend.core.xtend.XtendPackage.Literals;
-import org.eclipse.xtend.core.xtend.XtendFile;
 @SuppressWarnings("restriction")
 public class SpecClassPathBasedChecks extends ClasspathBasedChecks{
 

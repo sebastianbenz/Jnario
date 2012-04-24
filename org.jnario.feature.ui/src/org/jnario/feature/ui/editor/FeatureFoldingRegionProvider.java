@@ -9,14 +9,13 @@ package org.jnario.feature.ui.editor;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtend.core.xtend.XtendImport;
+import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.ui.editor.folding.DefaultFoldingRegionProvider;
 import org.eclipse.xtext.ui.editor.folding.IFoldingRegionAcceptor;
 import org.eclipse.xtext.util.ITextRegion;
-import org.eclipse.xtend.core.xtend.XtendImport;
-import org.eclipse.xtend.core.xtend.XtendMember;
-
 import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.FeatureFile;
 import org.jnario.feature.feature.Scenario;

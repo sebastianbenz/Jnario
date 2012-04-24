@@ -12,17 +12,16 @@ package org.jnario.spec.ui.labeling;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtend.ide.labeling.XtendImages;
 import org.eclipse.xtend.ide.labeling.XtendLabelProvider;
-
-import com.google.inject.Inject;
-
+import org.eclipse.xtext.common.types.JvmVisibility;
 import org.jnario.ExampleTable;
 import org.jnario.spec.naming.ExampleNameProvider;
 import org.jnario.spec.spec.Example;
 import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.spec.spec.TestFunction;
+
+import com.google.inject.Inject;
 
 
 /**

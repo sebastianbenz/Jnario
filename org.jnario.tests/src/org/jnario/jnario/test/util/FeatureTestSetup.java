@@ -7,12 +7,12 @@
  *******************************************************************************/
 package org.jnario.jnario.test.util;
 
-import com.google.inject.Guice;
-import com.google.inject.Injector;
-
 import org.jnario.feature.FeatureRuntimeModule;
 import org.jnario.feature.FeatureStandaloneSetup;
 import org.jnario.feature.feature.FeatureFactory;
+
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API

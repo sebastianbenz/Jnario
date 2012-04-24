@@ -1,10 +1,5 @@
 package org.jnario.feature.tests.integration;
 
-import org.jnario.feature.tests.integration.StepParametersFeatureAccessOfParametersWithFirstSecond;
-import org.jnario.feature.tests.integration.StepParametersFeatureParameterDefinitionInStepsAndBackground;
-import org.jnario.feature.tests.integration.StepParametersFeatureParametersAreDefinedInQuotes;
-import org.jnario.feature.tests.integration.StepParametersFeatureReferencingVariablesThatContainAValueFromArgs;
-import org.jnario.feature.tests.integration.StepParametersFeatureUsingMultilineStrings;
 import org.jnario.runner.Contains;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;

@@ -9,17 +9,11 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.eclipse.xtend.core.xtend.XtendPackage;
-
 import org.eclipse.xtext.xbase.XbasePackage;
-
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
-
 import org.jnario.JnarioPackage;
-
 import org.jnario.feature.feature.And;
 import org.jnario.feature.feature.AndReference;
 import org.jnario.feature.feature.Background;

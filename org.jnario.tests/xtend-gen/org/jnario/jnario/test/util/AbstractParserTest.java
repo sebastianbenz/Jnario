@@ -1,13 +1,10 @@
 package org.jnario.jnario.test.util;
 
-import com.google.common.base.Objects;
-import com.google.common.base.Predicate;
-import com.google.common.collect.Lists;
-import com.google.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.Resource.Factory.Registry;
@@ -17,12 +14,13 @@ import org.eclipse.xtext.validation.Issue;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.jnario.jnario.test.util.ClassPathUriProviderBuilder;
-import org.jnario.jnario.test.util.IUriProvider;
-import org.jnario.jnario.test.util.ModelStore;
-import org.jnario.jnario.test.util.Resources;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.google.common.base.Objects;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Lists;
+import com.google.inject.Inject;
 
 @SuppressWarnings("all")
 public class AbstractParserTest {

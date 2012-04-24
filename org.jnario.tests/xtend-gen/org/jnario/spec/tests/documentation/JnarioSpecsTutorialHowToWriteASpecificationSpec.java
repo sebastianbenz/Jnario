@@ -5,7 +5,6 @@ import org.jnario.jnario.test.util.SpecExecutor;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.jnario.spec.tests.documentation.JnarioSpecsTutorialSpec;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 

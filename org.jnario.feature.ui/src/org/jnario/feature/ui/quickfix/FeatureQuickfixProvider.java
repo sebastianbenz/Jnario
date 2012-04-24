@@ -8,7 +8,6 @@
 
 package org.jnario.feature.ui.quickfix;
 
-import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider;
 import org.jnario.ui.quickfix.JnarioQuickFixProvider;
 
 /**

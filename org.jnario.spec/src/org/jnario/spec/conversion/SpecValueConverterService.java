@@ -9,7 +9,6 @@ package org.jnario.spec.conversion;
 
 import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.conversion.ValueConverter;
-import org.eclipse.xtend.core.conversion.XtendValueConverterService;
 import org.jnario.conversion.JnarioValueConverterService;
 
 import com.google.inject.Inject;

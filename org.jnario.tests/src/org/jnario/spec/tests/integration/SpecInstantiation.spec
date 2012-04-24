@@ -36,7 +36,7 @@ describe "Spec Instantiation" {
       package bootstrap
       
       import org.jnario.runner.InstantiateWith
-      import org.jnario.lib.GuiceBasedTestInstantiator
+      import org.jnario.jnario.test.util.GuiceBasedTestInstantiator
       import com.google.inject.Inject
       
       @InstantiateWith(typeof(GuiceBasedTestInstantiator))

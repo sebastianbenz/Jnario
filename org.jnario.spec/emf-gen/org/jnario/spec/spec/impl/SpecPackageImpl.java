@@ -8,15 +8,10 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.eclipse.xtend.core.xtend.XtendPackage;
-
 import org.eclipse.xtext.common.types.TypesPackage;
-
 import org.eclipse.xtext.xbase.XbasePackage;
-
 import org.jnario.spec.spec.After;
 import org.jnario.spec.spec.Before;
 import org.jnario.spec.spec.Example;

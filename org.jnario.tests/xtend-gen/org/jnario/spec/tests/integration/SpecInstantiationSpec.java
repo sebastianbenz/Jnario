@@ -41,7 +41,7 @@ public class SpecInstantiationSpec {
     _builder.newLine();
     _builder.append("import org.jnario.runner.InstantiateWith");
     _builder.newLine();
-    _builder.append("import org.jnario.lib.GuiceBasedTestInstantiator");
+    _builder.append("import org.jnario.jnario.test.util.GuiceBasedTestInstantiator");
     _builder.newLine();
     _builder.append("import com.google.inject.Inject");
     _builder.newLine();

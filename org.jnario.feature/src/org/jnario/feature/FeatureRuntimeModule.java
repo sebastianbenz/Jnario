@@ -59,7 +59,6 @@ import org.jnario.feature.resource.FeatureLocationInFileProvider;
 import org.jnario.feature.scoping.FeatureScopeProvider;
 import org.jnario.feature.validation.FeatureClasspathBasedChecks;
 import org.jnario.feature.validation.FeatureResourceValidator;
-import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.jvmmodel.JnarioDispatchUtil;
 import org.jnario.scoping.JnarioExtensionClassNameProvider;

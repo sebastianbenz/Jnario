@@ -8,9 +8,8 @@
 package org.jnario.jnario.test.util;
 
 import org.eclipse.xtext.junit4.InjectWith;
-import org.junit.runner.RunWith;
-
 import org.jnario.feature.FeatureInjectorProvider;
+import org.junit.runner.RunWith;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
