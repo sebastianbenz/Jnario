@@ -1,7 +1,6 @@
 package org.jnario.spec.tests.integration;
 
 import java.io.File;
-
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;

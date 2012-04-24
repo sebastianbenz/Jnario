@@ -2,7 +2,6 @@ package org.jnario.spec.tests.integration;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.jnario.jnario.test.util.SpecExecutor;
@@ -10,6 +9,7 @@ import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.jnario.spec.tests.integration.ExtensionExample;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,5 +1,6 @@
 package org.jnario.jnario.tests.unit.jnario;
 
+import com.google.inject.Inject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.jnario.Should;
 import org.jnario.jnario.test.util.ModelStore;
@@ -13,8 +14,6 @@ import org.jnario.runner.Order;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import com.google.inject.Inject;
 
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)

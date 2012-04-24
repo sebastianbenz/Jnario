@@ -92,8 +92,8 @@ class AbstractDocGenerator implements IGenerator {
 		return node.text
 	}
 	
-	def anchor(String id){
-		return '<a name="' + id?.replaceAll("\\W", "_") + '"></a>'
+	def id(String id){
+		return ' id="' + id?.replaceAll("\\W", "_") + '"'
 	}
 	
 	def apply(List<Filter> filters, String input){

@@ -1,5 +1,6 @@
 package org.jnario.doc;
 
+import org.jnario.doc.Filter;
 
 @SuppressWarnings("all")
 public class LangFilter implements Filter {

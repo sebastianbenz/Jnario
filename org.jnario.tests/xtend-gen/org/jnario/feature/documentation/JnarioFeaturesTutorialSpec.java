@@ -1,5 +1,6 @@
 package org.jnario.feature.documentation;
 
+import org.jnario.feature.documentation.JnarioFeaturesTutorialHowToWriteAFeatureSpec;
 import org.jnario.runner.Contains;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;

@@ -1,5 +1,6 @@
 package org.jnario.feature.tests.unit.conversion;
 
+import org.jnario.feature.tests.unit.conversion.FeatureValueConverterSpec;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;

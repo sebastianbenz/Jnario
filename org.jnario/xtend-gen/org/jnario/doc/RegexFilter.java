@@ -2,6 +2,7 @@ package org.jnario.doc;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.jnario.doc.Filter;
 
 @SuppressWarnings("all")
 public class RegexFilter implements Filter {

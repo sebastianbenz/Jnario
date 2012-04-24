@@ -1,7 +1,8 @@
 package org.jnario.spec.tests.unit.doc;
 
+import com.google.common.base.Objects;
+import com.google.inject.Inject;
 import java.util.Map;
-
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.InMemoryFileSystemAccess;
@@ -17,9 +18,6 @@ import org.jnario.spec.doc.DocGenerator;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import com.google.common.base.Objects;
-import com.google.inject.Inject;
 
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
@@ -243,8 +241,8 @@ public class DocGeneratorSpec {
     _builder.newLine();
     this.generateDoc(_builder);
     final String scenarioDoc = this.generatedFile("ExampleSpec.html");
-    boolean _contains = scenarioDoc.contains("<h4><a name=\"myExample\"></a>MyExample</h4>");
-    Assert.assertTrue("\nExpected scenarioDoc.contains(\'<h4><a name=\"myExample\"></a>MyExample</h4>\') but:"
+    boolean _contains = scenarioDoc.contains("<h4 id=\"myExample\">MyExample</h4>");
+    Assert.assertTrue("\nExpected scenarioDoc.contains(\'<h4 id=\"myExample\">MyExample</h4>\') but:"
      + "\n     scenarioDoc is " + "\"" + scenarioDoc + "\"" + "\n", _contains);
     
     boolean _contains_1 = scenarioDoc.contains("<th>a</th>");

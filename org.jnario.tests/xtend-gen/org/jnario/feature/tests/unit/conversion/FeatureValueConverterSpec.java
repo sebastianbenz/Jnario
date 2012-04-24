@@ -2,6 +2,8 @@ package org.jnario.feature.tests.unit.conversion;
 
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.jnario.feature.conversion.FeatureValueConverter;
+import org.jnario.feature.tests.unit.conversion.FeatureValueConverterToStringStringSpec;
+import org.jnario.feature.tests.unit.conversion.FeatureValueConverterToValueStringINodeSpec;
 import org.jnario.runner.Contains;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;

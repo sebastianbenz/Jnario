@@ -1,7 +1,6 @@
 package org.jnario.spec.tests.integration;
 
 import java.util.ArrayList;
-
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;

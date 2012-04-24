@@ -2,7 +2,6 @@ package org.jnario.doc;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;

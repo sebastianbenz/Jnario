@@ -2,13 +2,13 @@ package org.jnario.spec.tests.integration;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.jnario.spec.tests.integration.CollectionLiteralsSpec;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
