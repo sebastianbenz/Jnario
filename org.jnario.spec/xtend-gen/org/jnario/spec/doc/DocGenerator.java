@@ -202,12 +202,11 @@ public class DocGenerator extends AbstractDocGenerator {
         String _name = example.getName();
         boolean _notEquals_1 = (!Objects.equal(_name, null));
         if (_notEquals_1) {
-          _builder.append("<p>");
+          _builder.append("<p ");
           String _name_1 = example.getName();
-          String _anchor = this.anchor(_name_1);
-          _builder.append(_anchor, "");
-          _builder.newLineIfNotEmpty();
-          _builder.append("<strong>");
+          String _id = this.id(_name_1);
+          _builder.append(_id, "");
+          _builder.append("><strong>");
           String _describe = this._exampleNameProvider.describe(example);
           String _convertToText = this.convertToText(_describe);
           _builder.append(_convertToText, "");
@@ -270,10 +269,11 @@ public class DocGenerator extends AbstractDocGenerator {
   
   protected CharSequence _generate(final ExampleTable table, final int level) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<h4>");
+    _builder.append("<h4");
     String _fieldName = this._exampleNameProvider.toFieldName(table);
-    String _anchor = this.anchor(_fieldName);
-    _builder.append(_anchor, "");
+    String _id = this.id(_fieldName);
+    _builder.append(_id, "");
+    _builder.append(">");
     String _fieldName_1 = this._exampleNameProvider.toFieldName(table);
     String _convertToTitle = this.convertToTitle(_fieldName_1);
     _builder.append(_convertToTitle, "");
@@ -292,19 +292,14 @@ public class DocGenerator extends AbstractDocGenerator {
   
   protected CharSequence _generate(final ExampleGroup exampleGroup, final int level) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<");
-    String _heading = this.heading(level);
-    _builder.append(_heading, "");
-    _builder.append(">");
+    _builder.append("<h3");
     String _name = exampleGroup.getName();
-    String _anchor = this.anchor(_name);
-    _builder.append(_anchor, "");
+    String _id = this.id(_name);
+    _builder.append(_id, "");
+    _builder.append(">");
     String _asTitle = this.asTitle(exampleGroup);
     _builder.append(_asTitle, "");
-    _builder.append("</");
-    String _heading_1 = this.heading(level);
-    _builder.append(_heading_1, "");
-    _builder.append(">");
+    _builder.append("</h3>");
     _builder.newLineIfNotEmpty();
     _builder.append("<p>");
     CharSequence _generateDoc = this.generateDoc(exampleGroup);
@@ -316,10 +311,6 @@ public class DocGenerator extends AbstractDocGenerator {
     _builder.append(_generateMembers, "");
     _builder.newLineIfNotEmpty();
     return _builder;
-  }
-  
-  public String heading(final int level) {
-    return "h3";
   }
   
   protected String _asTitle(final ExampleGroup exampleGroup) {
