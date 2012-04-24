@@ -99,7 +99,7 @@ class DocGenerator extends AbstractDocGenerator {
 		}
 		'''
 			«IF example.name != null»
-			<p «generateId(example.name)»>
+			<p>«anchor(example.name)»
 			<strong>«example.describe.convertToText»</strong>
 			«ELSE»
 			<p>
@@ -126,13 +126,13 @@ class DocGenerator extends AbstractDocGenerator {
 
 	 
 	def dispatch generate(ExampleTable table, int level)'''
-		<h4 «generateId(table.toFieldName)»>«table.toFieldName.convertToTitle»</h4>
+		<h4>«anchor(table.toFieldName)»«table.toFieldName.convertToTitle»</h4>
 		<p>«table.generateDoc»</p>
 		«super.generate(table)»
 	'''
 		
 	def dispatch generate(ExampleGroup exampleGroup, int level)'''
-		<«level.heading» «generateId(exampleGroup.name)»>«exampleGroup.asTitle»</«level.heading»>
+		<«level.heading»>«anchor(exampleGroup.name)»«exampleGroup.asTitle»</«level.heading»>
 		<p>«exampleGroup.generateDoc»</p>
 		«generateMembers(exampleGroup, level + 1)»
 	'''

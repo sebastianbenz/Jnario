@@ -202,11 +202,10 @@ public class DocGenerator extends AbstractDocGenerator {
         String _name = example.getName();
         boolean _notEquals_1 = (!Objects.equal(_name, null));
         if (_notEquals_1) {
-          _builder.append("<p ");
+          _builder.append("<p>");
           String _name_1 = example.getName();
-          String _generateId = this.generateId(_name_1);
-          _builder.append(_generateId, "");
-          _builder.append(">");
+          String _anchor = this.anchor(_name_1);
+          _builder.append(_anchor, "");
           _builder.newLineIfNotEmpty();
           _builder.append("<strong>");
           String _describe = this._exampleNameProvider.describe(example);
@@ -271,11 +270,10 @@ public class DocGenerator extends AbstractDocGenerator {
   
   protected CharSequence _generate(final ExampleTable table, final int level) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<h4 ");
+    _builder.append("<h4>");
     String _fieldName = this._exampleNameProvider.toFieldName(table);
-    String _generateId = this.generateId(_fieldName);
-    _builder.append(_generateId, "");
-    _builder.append(">");
+    String _anchor = this.anchor(_fieldName);
+    _builder.append(_anchor, "");
     String _fieldName_1 = this._exampleNameProvider.toFieldName(table);
     String _convertToTitle = this.convertToTitle(_fieldName_1);
     _builder.append(_convertToTitle, "");
@@ -297,11 +295,10 @@ public class DocGenerator extends AbstractDocGenerator {
     _builder.append("<");
     String _heading = this.heading(level);
     _builder.append(_heading, "");
-    _builder.append(" ");
-    String _name = exampleGroup.getName();
-    String _generateId = this.generateId(_name);
-    _builder.append(_generateId, "");
     _builder.append(">");
+    String _name = exampleGroup.getName();
+    String _anchor = this.anchor(_name);
+    _builder.append(_anchor, "");
     String _asTitle = this.asTitle(exampleGroup);
     _builder.append(_asTitle, "");
     _builder.append("</");

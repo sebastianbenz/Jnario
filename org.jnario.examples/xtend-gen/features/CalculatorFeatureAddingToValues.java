@@ -16,7 +16,7 @@ public class CalculatorFeatureAddingToValues {
   @Ignore
   @Named("[PENDING] Given I have a Calculator")
   public void givenIHaveACalculator() {
-    throw new UnsupportedOperationException("givenIHaveACalculatoris not implemented");
+    
   }
   
   @Test
@@ -24,7 +24,7 @@ public class CalculatorFeatureAddingToValues {
   @Ignore
   @Named("[PENDING] When I add two values")
   public void whenIAddTwoValues() {
-    throw new UnsupportedOperationException("whenIAddTwoValuesis not implemented");
+    
   }
   
   @Test
@@ -32,6 +32,6 @@ public class CalculatorFeatureAddingToValues {
   @Ignore
   @Named("[PENDING] Then it should print the result.")
   public void thenItShouldPrintTheResult() {
-    throw new UnsupportedOperationException("thenItShouldPrintTheResultis not implemented");
+    
   }
 }

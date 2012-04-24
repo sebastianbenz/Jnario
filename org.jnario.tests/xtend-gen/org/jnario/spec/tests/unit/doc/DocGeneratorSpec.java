@@ -37,9 +37,9 @@ public class DocGeneratorSpec {
   InMemoryFileSystemAccess fsa;
   
   @Test
-  @Named("should generate java script helper files")
+  @Named("generates java script helper files")
   @Order(99)
-  public void shouldGenerateJavaScriptHelperFiles() throws Exception {
+  public void generatesJavaScriptHelperFiles() throws Exception {
     this.generateEmptyExampleDoc();
     String _generatedFile = this.generatedFile("js/prettify.js");
     boolean _notEquals = (!Objects.equal(_generatedFile, null));
@@ -54,9 +54,9 @@ public class DocGeneratorSpec {
   }
   
   @Test
-  @Named("should generate css helper files")
+  @Named("generates css helper files")
   @Order(99)
-  public void shouldGenerateCssHelperFiles() throws Exception {
+  public void generatesCssHelperFiles() throws Exception {
     this.generateEmptyExampleDoc();
     String _generatedFile = this.generatedFile("css/bootstrap-responsive.min.css");
     boolean _notEquals = (!Objects.equal(_generatedFile, null));
@@ -76,9 +76,9 @@ public class DocGeneratorSpec {
   }
   
   @Test
-  @Named("should generate scenario title and heading")
+  @Named("generates scenario title and heading")
   @Order(99)
-  public void shouldGenerateScenarioTitleAndHeading() throws Exception {
+  public void generatesScenarioTitleAndHeading() throws Exception {
     this.generateEmptyExampleDoc();
     final String scenarioDoc = this.generatedFile("ExampleSpec.html");
     boolean _and = false;
@@ -98,9 +98,9 @@ public class DocGeneratorSpec {
   }
   
   @Test
-  @Named("should generate scenario documentation")
+  @Named("generates scenario documentation")
   @Order(99)
-  public void shouldGenerateScenarioDocumentation() throws Exception {
+  public void generatesScenarioDocumentation() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("/*");
     _builder.newLine();
@@ -141,9 +141,9 @@ public class DocGeneratorSpec {
   }
   
   @Test
-  @Named("should generate example documentation")
+  @Named("generates example documentation")
   @Order(99)
-  public void shouldGenerateExampleDocumentation() throws Exception {
+  public void generatesExampleDocumentation() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \'Example\'{");
     _builder.newLine();
@@ -221,9 +221,9 @@ public class DocGeneratorSpec {
   }
   
   @Test
-  @Named("should generate table for example tables")
+  @Named("generates table for example tables")
   @Order(99)
-  public void shouldGenerateTableForExampleTables() throws Exception {
+  public void generatesTableForExampleTables() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \'Example\'{");
     _builder.newLine();
@@ -243,8 +243,8 @@ public class DocGeneratorSpec {
     _builder.newLine();
     this.generateDoc(_builder);
     final String scenarioDoc = this.generatedFile("ExampleSpec.html");
-    boolean _contains = scenarioDoc.contains("<h4 id=\"myExample\">MyExample</h4>");
-    Assert.assertTrue("\nExpected scenarioDoc.contains(\"<h4 id=\\\"myExample\\\">MyExample</h4>\") but:"
+    boolean _contains = scenarioDoc.contains("<h4><a name=\"myExample\"></a>MyExample</h4>");
+    Assert.assertTrue("\nExpected scenarioDoc.contains(\'<h4><a name=\"myExample\"></a>MyExample</h4>\') but:"
      + "\n     scenarioDoc is " + "\"" + scenarioDoc + "\"" + "\n", _contains);
     
     boolean _contains_1 = scenarioDoc.contains("<th>a</th>");
@@ -266,9 +266,9 @@ public class DocGeneratorSpec {
   }
   
   @Test
-  @Named("should filter code based on regex in filter annotation")
+  @Named("filters code based on regex in filter annotation")
   @Order(99)
-  public void shouldFilterCodeBasedOnRegexInFilterAnnotation() throws Exception {
+  public void filtersCodeBasedOnRegexInFilterAnnotation() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \'Example\'{");
     _builder.newLine();

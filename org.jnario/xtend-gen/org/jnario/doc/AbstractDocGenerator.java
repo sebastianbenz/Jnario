@@ -151,10 +151,10 @@ public class AbstractDocGenerator implements IGenerator {
     return node.getText();
   }
   
-  public String generateId(final String id) {
+  public String anchor(final String id) {
     String _replaceAll = id==null?(String)null:id.replaceAll("\\W", "_");
-    String _plus = ("id=\"" + _replaceAll);
-    return (_plus + "\"");
+    String _plus = ("<a name=\"" + _replaceAll);
+    return (_plus + "\"></a>");
   }
   
   public String apply(final List<Filter> filters, final String input) {

@@ -20,14 +20,14 @@ describe DocGenerator {
 	@Inject extension ModelStore 
 	@Inject InMemoryFileSystemAccess fsa
 	
-	fact "should generate java script helper files"{
+	fact "generates java script helper files"{
 		generateEmptyExampleDoc()
 		
 		assert generatedFile("js/prettify.js") != null
 		assert generatedFile("js/lang-jnario.js") != null
 	}
 	
-	fact "should generate css helper files"{
+	fact "generates css helper files"{
 		generateEmptyExampleDoc()
 		
 		assert generatedFile("css/bootstrap-responsive.min.css") != null
@@ -35,7 +35,7 @@ describe DocGenerator {
 		assert generatedFile("css/prettify.css") != null
 	}
 	
-	fact "should generate scenario title and heading"{
+	fact "generates scenario title and heading"{
 		generateEmptyExampleDoc()
 		
 		val scenarioDoc = generatedFile("ExampleSpec.html")
@@ -44,7 +44,7 @@ describe DocGenerator {
 				scenarioDoc.contains("<h1>Example</h1>")
 	}
 	
-	fact "should generate scenario documentation"{
+	fact "generates scenario documentation"{
 		generateDoc('''
 			/*
 			 * Irrelevant documentation.
@@ -63,7 +63,7 @@ describe DocGenerator {
 		assert !scenarioDoc.contains("Irrelevant documentation.")
 	}
 	
-	fact "should generate example documentation"{
+	fact "generates example documentation"{
 		generateDoc('''
 			describe 'Example'{
 				/*
@@ -99,7 +99,7 @@ describe DocGenerator {
 	}
 	
 	
-	fact "should generate table for example tables"{
+	fact "generates table for example tables"{
 		generateDoc('''
 			describe 'Example'{
 				def myExample{
@@ -109,14 +109,14 @@ describe DocGenerator {
 			} 
 		''')
 		val scenarioDoc = generatedFile("ExampleSpec.html")
-		assert scenarioDoc.contains("<h4 id=\"myExample\">MyExample</h4>")
+		assert scenarioDoc.contains('<h4><a name="myExample"></a>MyExample</h4>')
 		assert scenarioDoc.contains("<th>a</th>")
 		assert scenarioDoc.contains("<th>b</th>")
 		assert scenarioDoc.contains("<td>1</td>")
 		assert scenarioDoc.contains("<td>2</td>")
 	}
 	
-	fact "should filter code based on regex in filter annotation"{
+	fact "filters code based on regex in filter annotation"{
 		generateDoc('''
 			describe 'Example'{
 				/*
