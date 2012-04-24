@@ -11,9 +11,11 @@ import java.util.ArrayList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.jvmmodel.XtendJvmModelInferrer;
+import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendFile;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.JvmField;
+import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmVisibility;
@@ -137,14 +139,28 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
     throw _unsupportedOperationException;
   }
   
+  protected void transform(final XtendField source, final JvmGenericType container) {
+    JvmVisibility _visibility = source.getVisibility();
+    boolean _equals = Objects.equal(_visibility, JvmVisibility.PRIVATE);
+    if (_equals) {
+      source.setVisibility(JvmVisibility.DEFAULT);
+    }
+    super.transform(source, container);
+  }
+  
   public String serialize(final EObject obj) {
     ICompositeNode _node = NodeModelUtils.getNode(obj);
     return _node==null?(String)null:_node.getText();
   }
   
-  public String packageName(final EObject obj) {
+  public XtendFile xtendFile(final EObject obj) {
     XtendFile _containerOfType = EcoreUtil2.<XtendFile>getContainerOfType(obj, XtendFile.class);
-    String _package = _containerOfType==null?(String)null:_containerOfType.getPackage();
+    return _containerOfType;
+  }
+  
+  public String packageName(final EObject obj) {
+    XtendFile _xtendFile = this.xtendFile(obj);
+    String _package = _xtendFile==null?(String)null:_xtendFile.getPackage();
     return _package;
   }
 }

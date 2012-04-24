@@ -12,12 +12,10 @@ import java.util.ArrayList
 import java.util.List
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtend.core.xtend.XtendField
 import org.eclipse.xtend.core.xtend.XtendMember
 import org.eclipse.xtext.common.types.JvmConstructor
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmOperation
-import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.xbase.XConstructorCall
 import org.eclipse.xtext.xbase.XFeatureCall
@@ -51,7 +49,6 @@ import org.eclipse.xtend.core.xtend.XtendClass
 import org.eclipse.xtext.EcoreUtil2
 import org.jnario.feature.naming.FeatureClassNameProvider
 import org.jnario.feature.feature.Given
-import org.eclipse.xtext.xbase.XbaseFactory
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -84,27 +81,41 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			return
 		}
 		
-    	val featureFile = object as FeatureFile
-		val feature = featureFile?.xtendClass as Feature
+		val feature = object.resolveFeature
 		if(feature == null){
 			return
 		}
-			
-		var JvmGenericType backgroundClass = null
-		val background = feature.background
-		if(background != null){
-			backgroundClass = background.toClass
-			backgroundClass.abstract = true
-			register(acceptor, background, backgroundClass, emptyList)
-		}
-		val scenarios = <JvmGenericType>newArrayList
-		for(scenario: feature.scenarios){
-			val inferredJvmType = scenario.toClass(backgroundClass)
-			register(acceptor, scenario, inferredJvmType, emptyList)
-			scenarios += inferredJvmType
-		}
-		
-		val inferredJvmType = feature.toClass
+    	
+		val JvmGenericType background = feature.background.toClass(acceptor)
+		val scenarios = feature.scenarios.toClass(acceptor, background)
+		feature.toClass(acceptor, scenarios)
+   	}
+   	
+   	def resolveFeature(EObject root){
+   		val featureFile = root as FeatureFile
+		return featureFile?.xtendClass as Feature
+   	}
+   	
+   	def toClass(Background background, IJvmDeclaredTypeAcceptor acceptor){
+   		if(background == null) return null
+   		val backgroundClass = background.toClass
+		backgroundClass.abstract = true
+		register(acceptor, background, backgroundClass, emptyList)
+		backgroundClass 
+   	}
+   	
+   	def toClass(List<Scenario> scenarios, IJvmDeclaredTypeAcceptor acceptor, JvmGenericType backgroundType){
+   		val result = <JvmGenericType>newArrayList
+   		scenarios.forEach[
+			val inferredJvmType = it.toClass(backgroundType)
+			register(acceptor, it, inferredJvmType, emptyList)
+			result += inferredJvmType
+		]
+		return result
+   	}
+   	
+   	def toClass(Feature feature, IJvmDeclaredTypeAcceptor acceptor, List<JvmGenericType> scenarios){
+   		val inferredJvmType = feature.toClass
 		register(acceptor, feature, inferredJvmType, scenarios)
    	}
    	
@@ -125,7 +136,6 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			packageName = xtendClass.packageName
    		]	
    	}
-   	
    	
    	def initialize(XtendClass source, JvmGenericType inferredJvmType, List<JvmGenericType> scenarios) {
    		init(source, inferredJvmType, scenarios)
@@ -159,7 +169,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		scenario.steps.generateSteps(inferredJvmType, start, scenario)
 		
 		if(!scenario.examples.empty){
-			val exampleClasses = scenario.generateExampleClasses(feature.eContainer as FeatureFile, inferredJvmType)
+			val exampleClasses = scenario.generateExampleClasses(inferredJvmType)
 			if(!exampleClasses.empty){
 				annotations += scenario.toAnnotation(typeof(Contains), exampleClasses)
 			}
@@ -305,23 +315,24 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		}		
  	}
    	
-	def generateExampleClasses(Scenario scenario, FeatureFile featureFile, JvmGenericType inferredJvmType){
+	def generateExampleClasses(Scenario scenario, JvmGenericType inferredJvmType){
 		val List<JvmGenericType> exampleClasses = newArrayList()
 		for(example: scenario.examples){
 			var fields = example.columns
 			if(!example.rows.empty){
 				for(row: example.rows){
-					exampleClasses += scenario.createExampleClass(featureFile, row, fields, inferredJvmType)
+					exampleClasses += scenario.createExampleClass(row, fields, inferredJvmType)
 				}
 			}
 		}
 		exampleClasses
 	} 
 	
-	def createExampleClass(Scenario scenario, FeatureFile featureFile, ExampleRow row, EList<ExampleColumn> fields, JvmGenericType inferredJvmType){
+	def createExampleClass(Scenario scenario, ExampleRow row, EList<ExampleColumn> fields, JvmGenericType inferredJvmType){
 		val className = row.getClassName
 		row.toClass(className)[
 			superTypes += inferredJvmType.createTypeRef
+			val featureFile = scenario.xtendFile
 			featureFile.eResource.contents += it
 			packageName = featureFile.^package
 			members += row.generateExampleConstructor(fields, className)
@@ -362,13 +373,6 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 				}
 			]
 		]
-	}
-	
-	override void transform(XtendField source, JvmGenericType container) {
-		if(source.visibility == JvmVisibility::PRIVATE){
-			source.visibility = JvmVisibility::DEFAULT
-		}
-		super.transform(source, container)
 	}
 	
 	def feature(EObject context){

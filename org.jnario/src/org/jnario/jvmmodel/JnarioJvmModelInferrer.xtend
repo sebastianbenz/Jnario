@@ -28,6 +28,8 @@ import static extension org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
 import static extension com.google.common.collect.Iterables.*
 import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtend.core.xtend.XtendFile
+import org.eclipse.xtend.core.xtend.XtendField
+import org.eclipse.xtext.common.types.JvmGenericType
 
 /**
  * @author Birgit Engelmann
@@ -83,12 +85,23 @@ class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
 		throw new UnsupportedOperationException("Auto-generated function stub")
 	}
 	
+	override protected void transform(XtendField source, JvmGenericType container) {
+		if(source.visibility == JvmVisibility::PRIVATE){
+			source.visibility = JvmVisibility::DEFAULT
+		}
+		super.transform(source, container)
+	}
+	
 	def serialize(EObject obj){
 		return obj.node?.text
 	}
 	
+	def xtendFile(EObject obj){
+		EcoreUtil2::getContainerOfType(obj, typeof(XtendFile))
+	}
+	
 	def packageName(EObject obj){
-		EcoreUtil2::getContainerOfType(obj, typeof(XtendFile))?.^package
+		obj.xtendFile?.^package
 	}
 
 }

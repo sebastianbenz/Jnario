@@ -196,9 +196,6 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 	}
 	
 	override protected transform(XtendField source, JvmGenericType container) {
-		if(source.visibility == JvmVisibility::PRIVATE){
-			source.visibility = JvmVisibility::DEFAULT
-		}
 		super.transform(source, container)
 		if (source.isExtension()){
 			val field = source.jvmElements.head as JvmField

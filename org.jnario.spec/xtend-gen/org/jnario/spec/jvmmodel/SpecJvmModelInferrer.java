@@ -367,11 +367,6 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
   }
   
   protected void transform(final XtendField source, final JvmGenericType container) {
-    JvmVisibility _visibility = source.getVisibility();
-    boolean _equals = Objects.equal(_visibility, JvmVisibility.PRIVATE);
-    if (_equals) {
-      source.setVisibility(JvmVisibility.DEFAULT);
-    }
     super.transform(source, container);
     boolean _isExtension = source.isExtension();
     if (_isExtension) {

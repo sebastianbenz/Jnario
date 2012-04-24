@@ -13,7 +13,7 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend.core.xtend.XtendClass;
-import org.eclipse.xtend.core.xtend.XtendField;
+import org.eclipse.xtend.core.xtend.XtendFile;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
@@ -26,7 +26,6 @@ import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
-import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XConstructorCall;
@@ -109,33 +108,55 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     if (_not) {
       return;
     }
-    final FeatureFile featureFile = ((FeatureFile) object);
-    XtendClass _xtendClass = featureFile==null?(XtendClass)null:featureFile.getXtendClass();
-    final Feature feature = ((Feature) _xtendClass);
+    final Feature feature = this.resolveFeature(object);
     boolean _equals = Objects.equal(feature, null);
     if (_equals) {
       return;
     }
-    JvmGenericType backgroundClass = null;
-    final Background background = feature.getBackground();
-    boolean _notEquals = (!Objects.equal(background, null));
-    if (_notEquals) {
-      JvmGenericType _class = this.toClass(background);
-      backgroundClass = _class;
+    Background _background = feature.getBackground();
+    final JvmGenericType background = this.toClass(_background, acceptor);
+    EList<Scenario> _scenarios = feature.getScenarios();
+    final ArrayList<JvmGenericType> scenarios = this.toClass(_scenarios, acceptor, background);
+    this.toClass(feature, acceptor, scenarios);
+  }
+  
+  public Feature resolveFeature(final EObject root) {
+    final FeatureFile featureFile = ((FeatureFile) root);
+    XtendClass _xtendClass = featureFile==null?(XtendClass)null:featureFile.getXtendClass();
+    return ((Feature) _xtendClass);
+  }
+  
+  public JvmGenericType toClass(final Background background, final IJvmDeclaredTypeAcceptor acceptor) {
+    JvmGenericType _xblockexpression = null;
+    {
+      boolean _equals = Objects.equal(background, null);
+      if (_equals) {
+        return null;
+      }
+      final JvmGenericType backgroundClass = this.toClass(background);
       backgroundClass.setAbstract(true);
       List<JvmGenericType> _emptyList = CollectionLiterals.<JvmGenericType>emptyList();
       this.register(acceptor, background, backgroundClass, _emptyList);
+      _xblockexpression = (backgroundClass);
     }
-    final ArrayList<JvmGenericType> scenarios = CollectionLiterals.<JvmGenericType>newArrayList();
-    EList<Scenario> _scenarios = feature.getScenarios();
-    for (final Scenario scenario : _scenarios) {
-      {
-        final JvmGenericType inferredJvmType = this.toClass(scenario, backgroundClass);
-        List<JvmGenericType> _emptyList_1 = CollectionLiterals.<JvmGenericType>emptyList();
-        this.register(acceptor, scenario, inferredJvmType, _emptyList_1);
-        scenarios.add(inferredJvmType);
-      }
-    }
+    return _xblockexpression;
+  }
+  
+  public ArrayList<JvmGenericType> toClass(final List<Scenario> scenarios, final IJvmDeclaredTypeAcceptor acceptor, final JvmGenericType backgroundType) {
+    final ArrayList<JvmGenericType> result = CollectionLiterals.<JvmGenericType>newArrayList();
+    final Procedure1<Scenario> _function = new Procedure1<Scenario>() {
+        public void apply(final Scenario it) {
+          final JvmGenericType inferredJvmType = FeatureJvmModelInferrer.this.toClass(it, backgroundType);
+          List<JvmGenericType> _emptyList = CollectionLiterals.<JvmGenericType>emptyList();
+          FeatureJvmModelInferrer.this.register(acceptor, it, inferredJvmType, _emptyList);
+          result.add(inferredJvmType);
+        }
+      };
+    IterableExtensions.<Scenario>forEach(scenarios, _function);
+    return result;
+  }
+  
+  public void toClass(final Feature feature, final IJvmDeclaredTypeAcceptor acceptor, final List<JvmGenericType> scenarios) {
     final JvmGenericType inferredJvmType = this.toClass(feature);
     this.register(acceptor, feature, inferredJvmType, scenarios);
   }
@@ -237,8 +258,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     boolean _isEmpty = _examples.isEmpty();
     boolean _not_1 = (!_isEmpty);
     if (_not_1) {
-      EObject _eContainer = feature.eContainer();
-      final List<JvmGenericType> exampleClasses = this.generateExampleClasses(scenario, ((FeatureFile) _eContainer), inferredJvmType);
+      final List<JvmGenericType> exampleClasses = this.generateExampleClasses(scenario, inferredJvmType);
       boolean _isEmpty_1 = exampleClasses.isEmpty();
       boolean _not_2 = (!_isEmpty_1);
       if (_not_2) {
@@ -544,7 +564,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     }
   }
   
-  public List<JvmGenericType> generateExampleClasses(final Scenario scenario, final FeatureFile featureFile, final JvmGenericType inferredJvmType) {
+  public List<JvmGenericType> generateExampleClasses(final Scenario scenario, final JvmGenericType inferredJvmType) {
     List<JvmGenericType> _xblockexpression = null;
     {
       final List<JvmGenericType> exampleClasses = CollectionLiterals.<JvmGenericType>newArrayList();
@@ -558,7 +578,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           if (_not) {
             EList<ExampleRow> _rows_1 = example.getRows();
             for (final ExampleRow row : _rows_1) {
-              JvmGenericType _createExampleClass = this.createExampleClass(scenario, featureFile, row, fields, inferredJvmType);
+              JvmGenericType _createExampleClass = this.createExampleClass(scenario, row, fields, inferredJvmType);
               exampleClasses.add(_createExampleClass);
             }
           }
@@ -569,7 +589,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     return _xblockexpression;
   }
   
-  public JvmGenericType createExampleClass(final Scenario scenario, final FeatureFile featureFile, final ExampleRow row, final EList<ExampleColumn> fields, final JvmGenericType inferredJvmType) {
+  public JvmGenericType createExampleClass(final Scenario scenario, final ExampleRow row, final EList<ExampleColumn> fields, final JvmGenericType inferredJvmType) {
     JvmGenericType _xblockexpression = null;
     {
       final String className = this._featureClassNameProvider.getClassName(row);
@@ -578,6 +598,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
             EList<JvmTypeReference> _superTypes = it.getSuperTypes();
             JvmParameterizedTypeReference _createTypeRef = FeatureJvmModelInferrer.this._typeReferences.createTypeRef(inferredJvmType);
             FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmParameterizedTypeReference>operator_add(_superTypes, _createTypeRef);
+            final XtendFile featureFile = FeatureJvmModelInferrer.this.xtendFile(scenario);
             Resource _eResource = featureFile.eResource();
             EList<EObject> _contents = _eResource.getContents();
             FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmGenericType>operator_add(_contents, it);
@@ -668,15 +689,6 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
       };
     JvmConstructor _constructor = this._extendedJvmTypesBuilder.toConstructor(row, _function);
     return _constructor;
-  }
-  
-  public void transform(final XtendField source, final JvmGenericType container) {
-    JvmVisibility _visibility = source.getVisibility();
-    boolean _equals = Objects.equal(_visibility, JvmVisibility.PRIVATE);
-    if (_equals) {
-      source.setVisibility(JvmVisibility.DEFAULT);
-    }
-    super.transform(source, container);
   }
   
   public Feature feature(final EObject context) {
