@@ -1,5 +1,6 @@
 package demo;
 
+import demo.Calculator;
 import org.junit.Test;
 
 @SuppressWarnings("all")
