@@ -8,6 +8,7 @@
 package gameoflife
 
 import static gameoflife.DeadCell.*
+import static gameoflife.AliveCell.*
 
 class DeadCell extends Cell {
 
@@ -17,7 +18,7 @@ class DeadCell extends Cell {
 	
 	override evolve(int neighbourCount) {
 		if(neighbourCount == 3){
-			return AliveCell::aliveCell()
+			return aliveCell()
 		} 
 		return deadCell()
 	}

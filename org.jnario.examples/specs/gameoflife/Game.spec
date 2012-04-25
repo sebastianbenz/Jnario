@@ -24,7 +24,7 @@ describe Game{
 	fact "keeps all alive cells"{
 		val newCell = aliveCell()
 		when(cell.evolve(any)).thenReturn(newCell)
-		subject.evolve(newHashSet(cell)).should.contain(newCell)
+		subject.evolve(set(cell)) should contain newCell
 	}
 	
 }

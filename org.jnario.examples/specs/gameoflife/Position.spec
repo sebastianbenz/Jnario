@@ -14,14 +14,12 @@ import static org.hamcrest.CoreMatchers.*
 
 describe Position {
 
-	fact "returns neighbouring positions"{
-		assertThat(
-			newHashSet(
-				pos(2, 2), pos(2, 3), pos(2, 4),
-				pos(3, 2), pos(3, 4),
-				pos(4, 2), pos(4, 3), pos(4, 4)
-			),
-			is(pos(3, 3).neighbours()))
+	fact "returns neighboring positions"{
+			pos(3, 3).neighbours() => 	set(
+											pos(2, 2), pos(2, 3), pos(2, 4),
+											pos(3, 2), pos(3, 4),
+											pos(4, 2), pos(4, 3), pos(4, 4)
+										)
 	}
 	
 	fact "calculates hash code based on coordinates"{

@@ -25,7 +25,7 @@ describe Calculator{
 	}
 	
 	context substract{
-		- subject.substract(5, 3) should be 2;
+		fact subject.substract(5, 3) should be 2
 	}
 	
 } 

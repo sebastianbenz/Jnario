@@ -1,11 +1,15 @@
 package gameoflife;
 
+import gameoflife.AliveCell;
+import gameoflife.Cell;
+import gameoflife.DeadCell;
+import gameoflife.Position;
+import gameoflife.WorldVisitor;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;

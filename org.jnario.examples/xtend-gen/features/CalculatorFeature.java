@@ -1,5 +1,6 @@
 package features;
 
+import features.CalculatorFeatureAddingToValues;
 import org.jnario.runner.Contains;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;

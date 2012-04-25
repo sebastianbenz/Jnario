@@ -12,11 +12,11 @@ import java.util.Stack
 
 describe Stack{
 	
-	- subject.empty should be true;
+	fact subject.empty should be true
  	   
 	fact "initially empty" {subject.size => 0}
 	
-	- subject.pop() throws EmptyStackException;
+	fact subject.pop() throws EmptyStackException
 	
 	fact "increases size when pushing"{
 		subject.push("something")

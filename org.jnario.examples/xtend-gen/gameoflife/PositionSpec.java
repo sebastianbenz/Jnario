@@ -1,11 +1,10 @@
 package gameoflife;
 
-import java.util.HashSet;
+import com.google.common.base.Objects;
+import gameoflife.Position;
 import java.util.Set;
-
-import org.eclipse.xtext.xbase.lib.CollectionLiterals;
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.Matcher;
+import org.jnario.lib.JnarioCollectionLiterals;
+import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -13,29 +12,39 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.google.common.base.Objects;
-
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("Position")
 public class PositionSpec {
   @Test
-  @Named("returns neighbouring positions")
+  @Named("returns neighboring positions")
   @Order(99)
-  public void returnsNeighbouringPositions() throws Exception {
-    Position _pos = Position.pos(2, 2);
-    Position _pos_1 = Position.pos(2, 3);
-    Position _pos_2 = Position.pos(2, 4);
-    Position _pos_3 = Position.pos(3, 2);
-    Position _pos_4 = Position.pos(3, 4);
-    Position _pos_5 = Position.pos(4, 2);
-    Position _pos_6 = Position.pos(4, 3);
-    Position _pos_7 = Position.pos(4, 4);
-    HashSet<Position> _newHashSet = CollectionLiterals.<Position>newHashSet(_pos, _pos_1, _pos_2, _pos_3, _pos_4, _pos_5, _pos_6, _pos_7);
-    Position _pos_8 = Position.pos(3, 3);
-    Set<Position> _neighbours = _pos_8.neighbours();
-    Matcher<Set<Position>> _is = CoreMatchers.<Set<Position>>is(_neighbours);
-    Assert.<Set<Position>>assertThat(_newHashSet, _is);
+  public void returnsNeighboringPositions() throws Exception {
+    Position _pos = Position.pos(3, 3);
+    Set<Position> _neighbours = _pos.neighbours();
+    Position _pos_1 = Position.pos(2, 2);
+    Position _pos_2 = Position.pos(2, 3);
+    Position _pos_3 = Position.pos(2, 4);
+    Position _pos_4 = Position.pos(3, 2);
+    Position _pos_5 = Position.pos(3, 4);
+    Position _pos_6 = Position.pos(4, 2);
+    Position _pos_7 = Position.pos(4, 3);
+    Position _pos_8 = Position.pos(4, 4);
+    Set<Position> _set = JnarioCollectionLiterals.<Position>set(_pos_1, _pos_2, _pos_3, _pos_4, _pos_5, _pos_6, _pos_7, _pos_8);
+    boolean _should_be = Should.should_be(_neighbours, _set);Assert
+    .assertTrue("\nExpected pos(3, 3).neighbours() => \tset(\n\t\t\t\t\t\t\t\t\t\t\tpos(2, 2), pos(2, 3), pos(2, 4),\n\t\t\t\t\t\t\t\t\t\t\tpos(3, 2), pos(3, 4),\n\t\t\t\t\t\t\t\t\t\t\tpos(4, 2), pos(4, 3), pos(4, 4)\n\t\t\t\t\t\t\t\t\t\t) but:"
+     + "\n     pos(3, 3).neighbours() is " + _neighbours
+     + "\n     pos(3, 3) is " + _pos
+     + "\n     set(\n\t\t\t\t\t\t\t\t\t\t\tpos(2, 2), pos(2, 3), pos(2, 4),\n\t\t\t\t\t\t\t\t\t\t\tpos(3, 2), pos(3, 4),\n\t\t\t\t\t\t\t\t\t\t\tpos(4, 2), pos(4, 3), pos(4, 4)\n\t\t\t\t\t\t\t\t\t\t) is " + _set
+     + "\n     pos(2, 2) is " + _pos_1
+     + "\n     pos(2, 3) is " + _pos_2
+     + "\n     pos(2, 4) is " + _pos_3
+     + "\n     pos(3, 2) is " + _pos_4
+     + "\n     pos(3, 4) is " + _pos_5
+     + "\n     pos(4, 2) is " + _pos_6
+     + "\n     pos(4, 3) is " + _pos_7
+     + "\n     pos(4, 4) is " + _pos_8 + "\n", _should_be);
+    
   }
   
   @Test

@@ -13,7 +13,7 @@ import static gameoflife.DeadCell.*
 describe Cell {
 	
 	Class<?> alive = typeof(AliveCell)
-	Class<?> dead = typeof(AliveCell)
+	Class<?> dead = typeof(DeadCell)
 		
 	def {
 		| Cell cell | neighborCount  | newState |
@@ -30,9 +30,9 @@ describe Cell {
 
 	fact "changes its state based on the neighbor count"{
 		examples.forEach[
-			cell.evolve(neighborCount).should.be(newState)
+			cell.evolve(neighborCount) => newState
 		]
 	} 
-
+ 
 }
  

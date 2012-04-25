@@ -21,13 +21,13 @@ import static extension org.jnario.jnario.test.util.SpecExecutor.*
  * In our other [presentation](http://www.eclipsecon.org/2012/sessions/program-thou-shalt-behave) 
  * at this EclipseCon, we demonstrate how to use Jnario for writing executable acceptance 
  * specifications in a business readable fashion. 
- * This session introduces you to *Jnario Specs* - another language of Jnario allowing 
+ * This session introduces you to *Jnario Specs* fact another language of Jnario allowing 
  * software behavior specification on a unit level. We demonstrate how you can design and document 
  * your software at the same time.
  * For example, this document is actually generated from a [spec](https://gist.github.com/1762405) written 
  * with *Jnario Specs*.
  */ 
-describe "Jnario Specs - BDD for Java"{
+describe "Jnario Specs fact BDD for Java"{
  
   /* 
    * Jnario improves the readability of tests by providing assertion methods which can extend 

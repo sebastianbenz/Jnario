@@ -1,5 +1,7 @@
 package gameoflife;
 
+import gameoflife.AliveCell;
+import gameoflife.Cell;
 
 @SuppressWarnings("all")
 public class DeadCell extends Cell {

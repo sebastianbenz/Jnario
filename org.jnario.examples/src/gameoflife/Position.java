@@ -37,7 +37,6 @@ public class Position {
 		public Set<Position> neighbours(){
 			return newHashSet(transform(OFFSETS, new Function<Position, Position>() {
 
-				@Override
 				public Position apply(Position input) {
 					return input.plus(Position.this);
 				}
