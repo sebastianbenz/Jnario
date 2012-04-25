@@ -31,7 +31,7 @@ http://www.eclipse.org/legal/epl-v10.html Description here.
       <import plugin="org.eclipse.xtext.common.types"/>
       <import plugin="org.eclipse.xtend.core" version="2.3.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.xbase.lib" version="2.3.0" match="greaterOrEqual"/>
-      <import plugin="org.hamcrest"/>
+      <import plugin="org.hamcrest.core"/>
       <import plugin="org.eclipse.xtext.xbase" version="2.3.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.jdt.core" match="greaterOrEqual"/>
       <import plugin="org.apache.log4j"/>
