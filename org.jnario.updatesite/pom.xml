@@ -1,14 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <artifactId>jnario</artifactId>
-    <groupId>org.jnario</groupId>
-    <version>0.1.0-SNAPSHOT</version>
-  </parent>
-  <groupId>org.jnario</groupId>
-  <artifactId>org.jnario.updatesite</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>eclipse-update-site</packaging>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>jnario</artifactId>
+		<groupId>org.jnario</groupId>
+		<version>0.1.0-SNAPSHOT</version>
+	</parent>
+	<groupId>org.jnario</groupId>
+	<artifactId>org.jnario.updatesite</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>eclipse-repository</packaging>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-p2-repository-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<executions>
+					<execution>
+						<id>assemble</id>
+						<phase>package</phase>
+						<goals>
+							<goal>assemble-repository</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>archive</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>archive-repository</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<compress>false</compress>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>xml-maven-plugin</artifactId>
+				<version>1.0</version>
+				<executions>
+					<execution>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>transform</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<transformationSets>
+						<transformationSet>
+							<dir>target/repository</dir>
+							<excludes>
+								<exclude>artifacts.xml</exclude>
+								<exclude>binary/*</exclude>
+								<exclude>plugins/*</exclude>
+								<exclude>features/*</exclude>
+							</excludes>
+							<stylesheet>dist-tools/content.xsl</stylesheet>
+							<outputDir>target/repository</outputDir>
+						</transformationSet>
+					</transformationSets>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

@@ -1,0 +1,4 @@
+<external-repositories size="2">
+	<url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/milestones/</url>
+	<url>http://download.eclipse.org/tools/orbit/downloads/drops/S20120308061416/repository/</url>
+</external-repositories>
