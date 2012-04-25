@@ -29,7 +29,7 @@
           target: deploy.artifacts                      
          - - - - - - - - - - - - - - - - - -->
 	<target name="deploy.artifacts" >
-		<copy verbose="true" todir="c:/Users/sebastian.benz/.m2/repository/org/jnario/org.jnario.standalone.maven/0.1.0/">
+		<copy verbose="true" todir="/Users/sebastian/.m2/repository/org/jnario/org.jnario.standalone.maven/0.1.0/">
 			<fileset dir="${output.folder}">
 				<include name="org.jnario.standalone.maven-${maven.version}.jar" />
 				<include name="org.jnario.standalone.maven-${maven.version}-sources.jar" />

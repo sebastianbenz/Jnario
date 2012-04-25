@@ -1,8 +1,8 @@
 package org.jnario.standalone.tests;
 
+import com.google.inject.Inject;
 import java.io.File;
 import java.util.List;
-
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.util.Files;
@@ -15,8 +15,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import com.google.inject.Inject;
 
 @SuppressWarnings("all")
 @RunWith(XtextRunner.class)

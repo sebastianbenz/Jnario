@@ -18,18 +18,19 @@
   	<module>org.jnario.target</module>
     <module>org.jnario.feature</module>
     <module>org.jnario</module>
-	<module>org.jnario.ui</module>
+    <module>org.jnario.ui</module>
     <module>org.jnario.lib</module>
   <!--  <module>org.jnario.lib.maven</module> -->
     <module>org.jnario.spec</module>
-     <module>org.jnario.standalone</module>
+    <module>org.jnario.standalone</module>
+    <module>org.jnario.standalone.tests</module>
     <module>org.jnario-feature</module>
     <module>org.jnario.tests</module>
     <module>org.jnario.lib.tests</module>
     <module>org.jnario.feature.ui</module>
     <module>org.jnario.spec.ui</module>
     <module>org.jnario.ui-feature</module>
-	<module>org.jnario.sdk</module>
+    <module>org.jnario.sdk</module>
     <module>org.jnario.updatesite</module>
   </modules>
   
