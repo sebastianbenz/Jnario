@@ -10,9 +10,9 @@ package org.jnario.lib;
 import static com.google.common.collect.Iterables.contains;
 
 import org.eclipse.xtext.xbase.lib.Functions;
+import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
-import org.hamcrest.TypeSafeMatcher;
 
 import com.google.common.base.Objects;
 
@@ -61,15 +61,15 @@ public class Should {
 	}
 	
 	public static <T> Matcher<T> matches(final String desc, final Functions.Function1<T, Boolean> matcher){
-		return new TypeSafeMatcher<T>() {
+		return new BaseMatcher<T>() {
 
 			public void describeTo(Description description) {
 				description.appendText(desc);
 			}
 
-			@Override
-			public boolean matchesSafely(T item) {
-				return matcher.apply(item);
+			@SuppressWarnings("unchecked")
+			public boolean matches(Object item) {
+				return matcher.apply((T) item);
 			}
 		};
 	}
