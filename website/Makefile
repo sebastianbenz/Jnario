@@ -44,7 +44,7 @@ gh-pages: jnario
 	done 
 	rm -r -f ${SNAPSHOT_UPDATES}
 	mkdir -p ${SNAPSHOT_UPDATES}
-	cp -r ../org.jnario.updatesite/target/site/* ${SNAPSHOT_UPDATES}
+	cp -r ../org.jnario.updatesite/target/repository/* ${SNAPSHOT_UPDATES}
 	rm -f ${SNAPSHOT_UPDATES}/${LIB_JAR}
 	cp ../org.jnario.lib/target/${LIB_JAR} ${SNAPSHOT_UPDATES}
 	rm -r -f ${GH_PAGES}/org
