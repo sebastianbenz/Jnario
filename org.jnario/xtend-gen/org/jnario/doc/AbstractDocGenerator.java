@@ -25,6 +25,7 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
@@ -49,11 +50,14 @@ public class AbstractDocGenerator implements IGenerator {
     EList<EObject> _contents = input.getContents();
     Iterable<XtendFile> _filter = Iterables.<XtendFile>filter(_contents, XtendFile.class);
     for (final XtendFile file : _filter) {
-      {
-        final XtendClass xtendClass = file.getXtendClass();
-        final HtmlFile htmlFile = xtendClass==null?(HtmlFile)null:this.createHtmlFile(xtendClass);
-        if (xtendClass!=null) this._htmlFileBuilder.generate(xtendClass, fsa, htmlFile);
-      }
+      EList<XtendClass> _xtendClasses = file.getXtendClasses();
+      final Procedure1<XtendClass> _function = new Procedure1<XtendClass>() {
+          public void apply(final XtendClass it) {
+            final HtmlFile htmlFile = AbstractDocGenerator.this.createHtmlFile(it);
+            AbstractDocGenerator.this._htmlFileBuilder.generate(it, fsa, htmlFile);
+          }
+        };
+      IterableExtensions.<XtendClass>forEach(_xtendClasses, _function);
     }
   }
   
@@ -168,8 +172,7 @@ public class AbstractDocGenerator implements IGenerator {
   
   public String root(final XtendClass xtendClass) {
     final XtendFile specFile = EcoreUtil2.<XtendFile>getContainerOfType(xtendClass, XtendFile.class);
-    XtendClass _xtendClass = specFile.getXtendClass();
-    final String packageName = _xtendClass.getPackageName();
+    final String packageName = specFile.getPackage();
     boolean _equals = Objects.equal(packageName, null);
     if (_equals) {
       return "";

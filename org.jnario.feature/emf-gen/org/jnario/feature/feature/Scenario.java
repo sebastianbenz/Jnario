@@ -6,7 +6,9 @@
 package org.jnario.feature.feature;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.xtend.core.xtend.XtendClass;
+
 import org.jnario.ExampleTable;
 
 /**

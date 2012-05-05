@@ -24,7 +24,7 @@ FeatureFile returns xtend::XtendFile:
 	{FeatureFile}
 	('package' package=QualifiedName)?
 	(imports += Import)*
-	(xtendClass = Feature)?
+	(xtendClasses += Feature)?
 ;
 
 Import returns xtend::XtendImport: 
@@ -163,7 +163,7 @@ XRelationalExpression returns xbase::XExpression:
 	 =>({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare]) rightOperand=XOtherOperatorExpression)*;
 
 Should:
-	('should' 'not'? ID) | '=>'
+	'should' 'not'? ID
 ;
 
 

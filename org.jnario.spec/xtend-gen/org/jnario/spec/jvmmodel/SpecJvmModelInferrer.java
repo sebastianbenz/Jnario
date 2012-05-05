@@ -106,13 +106,14 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
       return;
     }
     final SpecFile specFile = ((SpecFile) e);
-    XtendClass _xtendClass = specFile.getXtendClass();
-    boolean _equals = Objects.equal(_xtendClass, null);
-    if (_equals) {
-      return;
-    }
-    XtendClass _xtendClass_1 = specFile.getXtendClass();
-    this.infer(acceptor, ((ExampleGroup) _xtendClass_1), null);
+    EList<XtendClass> _xtendClasses = specFile.getXtendClasses();
+    Iterable<ExampleGroup> _filter = Iterables.<ExampleGroup>filter(_xtendClasses, ExampleGroup.class);
+    final Procedure1<ExampleGroup> _function = new Procedure1<ExampleGroup>() {
+        public void apply(final ExampleGroup it) {
+          SpecJvmModelInferrer.this.infer(acceptor, it, null);
+        }
+      };
+    IterableExtensions.<ExampleGroup>forEach(_filter, _function);
   }
   
   public JvmGenericType infer(final IJvmDeclaredTypeAcceptor acceptor, final ExampleGroup exampleGroup, final JvmGenericType superType) {

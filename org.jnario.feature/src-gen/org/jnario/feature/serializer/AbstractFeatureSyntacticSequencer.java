@@ -1,7 +1,7 @@
 package org.jnario.feature.serializer;
 
+import com.google.inject.Inject;
 import java.util.List;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
@@ -15,9 +15,7 @@ import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISyn
 import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 import org.jnario.feature.services.FeatureGrammarAccess;
 
-import com.google.inject.Inject;
-
-@SuppressWarnings("restriction")
+@SuppressWarnings("all")
 public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected FeatureGrammarAccess grammarAccess;
@@ -28,6 +26,7 @@ public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequence
 	protected AbstractElementAlias match_File_SemicolonKeyword_0_2_q;
 	protected AbstractElementAlias match_Import_SemicolonKeyword_2_q;
 	protected AbstractElementAlias match_Member_SemicolonKeyword_2_0_4_q;
+	protected AbstractElementAlias match_Member_VarKeyword_2_0_2_0_1_1_q;
 	protected AbstractElementAlias match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a;
 	protected AbstractElementAlias match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_p;
 	protected AbstractElementAlias match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q;
@@ -49,6 +48,7 @@ public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequence
 		match_File_SemicolonKeyword_0_2_q = new TokenAlias(false, true, grammarAccess.getFileAccess().getSemicolonKeyword_0_2());
 		match_Import_SemicolonKeyword_2_q = new TokenAlias(false, true, grammarAccess.getImportAccess().getSemicolonKeyword_2());
 		match_Member_SemicolonKeyword_2_0_4_q = new TokenAlias(false, true, grammarAccess.getMemberAccess().getSemicolonKeyword_2_0_4());
+		match_Member_VarKeyword_2_0_2_0_1_1_q = new TokenAlias(false, true, grammarAccess.getMemberAccess().getVarKeyword_2_0_2_0_1_1());
 		match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a = new TokenAlias(true, true, grammarAccess.getXAnnotationElementValueAccess().getLeftParenthesisKeyword_7_0());
 		match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_p = new TokenAlias(true, false, grammarAccess.getXAnnotationElementValueAccess().getLeftParenthesisKeyword_7_0());
 		match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getRightParenthesisKeyword_3_2()));
@@ -115,6 +115,8 @@ public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequence
 				emit_Import_SemicolonKeyword_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_Member_SemicolonKeyword_2_0_4_q.equals(syntax))
 				emit_Member_SemicolonKeyword_2_0_4_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_Member_VarKeyword_2_0_2_0_1_1_q.equals(syntax))
+				emit_Member_VarKeyword_2_0_2_0_1_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a.equals(syntax))
 				emit_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_p.equals(syntax))
@@ -157,7 +159,7 @@ public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequence
 	
 	/**
 	 * Syntax:
-	 *     PIPE_SPACES | PIPE
+	 *     PIPE | PIPE_SPACES
 	 */
 	protected void emit_ExampleColumn_PIPETerminalRuleCall_0_0_or_PIPE_SPACESTerminalRuleCall_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -165,7 +167,7 @@ public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequence
 	
 	/**
 	 * Syntax:
-	 *     PIPE | PIPE_SPACES
+	 *     PIPE_SPACES | PIPE
 	 */
 	protected void emit_ExampleRow_PIPETerminalRuleCall_0_0_0_or_PIPE_SPACESTerminalRuleCall_0_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -192,6 +194,14 @@ public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequence
 	 *     ';'?
 	 */
 	protected void emit_Member_SemicolonKeyword_2_0_4_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     'var'?
+	 */
+	protected void emit_Member_VarKeyword_2_0_2_0_1_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -269,7 +279,7 @@ public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequence
 	
 	/**
 	 * Syntax:
-	 *     (('should' | 'must') 'throw') | 'throws'
+	 *     'throws' | (('must' | 'should') 'throw')
 	 */
 	protected void emit_XRelationalExpression_ThrowsKeyword_1_1_0_0_1_1_or_____MustKeyword_1_1_0_0_1_0_0_1_or_ShouldKeyword_1_1_0_0_1_0_0_0___ThrowKeyword_1_1_0_0_1_0_1__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

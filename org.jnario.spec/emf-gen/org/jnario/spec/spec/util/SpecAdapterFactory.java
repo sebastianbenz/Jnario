@@ -6,19 +6,17 @@ package org.jnario.spec.spec.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
+
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
+
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.xtend.core.xtend.XtendAnnotationTarget;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendFile;
 import org.eclipse.xtend.core.xtend.XtendMember;
-import org.jnario.spec.spec.After;
-import org.jnario.spec.spec.Before;
-import org.jnario.spec.spec.Example;
-import org.jnario.spec.spec.ExampleGroup;
-import org.jnario.spec.spec.SpecFile;
-import org.jnario.spec.spec.SpecPackage;
-import org.jnario.spec.spec.TestFunction;
+
+import org.jnario.spec.spec.*;
 
 /**
  * <!-- begin-user-doc -->

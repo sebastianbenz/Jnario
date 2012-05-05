@@ -21,6 +21,18 @@ import com.google.common.base.Objects;
  */
 public class Should {
 
+	public static boolean operator_doubleArrow(Object actual, Object expected) {
+		return should_be(actual, expected);
+	}
+
+	public static boolean operator_doubleArrow(Object actual, Class<?> expectedType) {
+		return should_be(actual, expectedType);
+	}
+	
+	public static <T> boolean operator_doubleArrow(T actual, Matcher<T> matcher) {
+		return should_be(actual, matcher);
+	}
+	
 	public static boolean should_be(Object actual, Object expected){
 		return Objects.equal(actual, expected);
 	}

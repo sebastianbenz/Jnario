@@ -28,7 +28,7 @@ public class ExampleImplementationSpec extends ExampleSpec {
     examples = ExampleTable.create("examples", 
       java.util.Arrays.asList("example", "type"), 
       new ExampleImplementationSpecExamples(  java.util.Arrays.asList("\"fact \'with body\' {1}\"", "typeof(XBlockExpression)"), "fact \'with body\' {1}", XBlockExpression.class),
-      new ExampleImplementationSpecExamples(  java.util.Arrays.asList("\"fact \'with code\' => \'with code\'\"", "typeof(Should)"), "fact \'with code\' => \'with code\'", Should.class)
+      new ExampleImplementationSpecExamples(  java.util.Arrays.asList("\"fact \'with code\' should be \'with code\'\"", "typeof(Should)"), "fact \'with code\' should be \'with code\'", Should.class)
     );
   }
   

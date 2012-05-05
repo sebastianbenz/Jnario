@@ -11,6 +11,7 @@ import org.eclipse.xtext.common.types.JvmExecutable;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.jvmmodel.ILogicalContainerProvider;
+import org.eclipse.xtext.xbase.jvmmodel.JvmTypeExtensions;
 import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
 
 import com.google.inject.Inject;
@@ -21,13 +22,17 @@ import com.google.inject.Inject;
 public class FeatureJvmModelGenerator extends ExtendedJvmModelGenerator {
 
 	@Inject private ILogicalContainerProvider logicalContainerProvider;
+	
+	  
+	@Inject
+	private JvmTypeExtensions jvmTypeExtensions;
 
 	/**
 	 *  based on JvmModelGenerator, changed to generate an empty method instead of "throw UnsupportedOperationException"
 	 */
 	@Override
 	public void generateExecutableBody(JvmExecutable op, ITreeAppendable appendable) {
-		if(compilationStrategy(op) == null && logicalContainerProvider.getAssociatedExpression(op) == null && op instanceof JvmOperation){
+		if(jvmTypeExtensions.getCompilationStrategy(op) == null && logicalContainerProvider.getAssociatedExpression(op) == null && op instanceof JvmOperation){
 			appendable.openScope();
 			appendable.increaseIndentation().append("{").newLine();
 			appendable.decreaseIndentation().newLine().append("}");

@@ -30,6 +30,7 @@ import org.jnario.feature.jvmmodel.FeatureJvmModelInferrer;
 import org.jnario.feature.jvmmodel.StepArgumentsProvider;
 import org.jnario.linking.JnarioLazyLinker;
 
+import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 
 /**
@@ -57,15 +58,16 @@ public class FeatureLazyLinker extends JnarioLazyLinker {
 	
 	private Iterable<Step> allSteps(FeatureFile featureFile){
 		Iterable<Step> result = emptyList();
-		Feature feature = (Feature) featureFile.getXtendClass();
-		if(feature == null){
-			return result;
-		}
-		if(feature.getBackground() != null){
-			result = concat(result, feature.getBackground().getSteps());		
-		}
-		for(Scenario scenario : feature.getScenarios()){
-			result = concat(result, scenario.getSteps());
+		for (Feature feature : Iterables.filter(featureFile.getXtendClasses(), Feature.class)) {
+			if(feature == null){
+				return result;
+			}
+			if(feature.getBackground() != null){
+				result = concat(result, feature.getBackground().getSteps());		
+			}
+			for(Scenario scenario : feature.getScenarios()){
+				result = concat(result, scenario.getSteps());
+			}
 		}
 		return result;
 	}

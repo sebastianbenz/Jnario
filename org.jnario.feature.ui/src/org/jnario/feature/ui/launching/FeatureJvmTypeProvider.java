@@ -38,7 +38,10 @@ public class FeatureJvmTypeProvider {
 	}
 
 	protected JvmType resolveJvmType(FeatureFile featureFile) {
-		Feature feature = (Feature) featureFile.getXtendClass();
+		if(featureFile.getXtendClasses() == null){
+			return null;
+		}
+		Feature feature = (Feature) featureFile.getXtendClasses().get(0);
 		return resolveJvmType(feature);
 	}
 

@@ -13,6 +13,7 @@ import static org.eclipse.xtext.xbase.ui.highlighting.XbaseHighlightingConfigura
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendFunction;
 import org.eclipse.xtend.core.xtend.XtendMember;
@@ -29,6 +30,8 @@ import org.jnario.spec.spec.SpecFile;
 import org.jnario.spec.spec.SpecPackage;
 import org.jnario.ui.highlighting.JnarioHighlightingCalculator;
 
+import com.google.common.collect.Iterables;
+
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
@@ -42,10 +45,11 @@ public class SpecHighlightingCalculator extends JnarioHighlightingCalculator {
 			return;
 		}
 		SpecFile file = (SpecFile) root;
-		ExampleGroup exampleGroup = (ExampleGroup) file.getXtendClass();
-		highlightDeprectedXtendAnnotationTarget(acceptor, exampleGroup);
-		provideHighlightingFor(exampleGroup, acceptor);
-		super.doProvideHighlightingFor(resource, acceptor);
+		for (ExampleGroup exampleGroup : Iterables.filter(file.getXtendClasses(), ExampleGroup.class)) {
+			highlightDeprectedXtendAnnotationTarget(acceptor, exampleGroup);
+			provideHighlightingFor(exampleGroup, acceptor);
+			super.doProvideHighlightingFor(resource, acceptor);
+		}
 	}
 
 	protected void provideHighlightingFor(ExampleGroup exampleGroup,

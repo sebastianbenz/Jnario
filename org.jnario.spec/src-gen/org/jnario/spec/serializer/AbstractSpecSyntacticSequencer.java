@@ -1,7 +1,7 @@
 package org.jnario.spec.serializer;
 
+import com.google.inject.Inject;
 import java.util.List;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
@@ -15,9 +15,7 @@ import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISyn
 import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 import org.jnario.spec.services.SpecGrammarAccess;
 
-import com.google.inject.Inject;
-
-@SuppressWarnings("restriction")
+@SuppressWarnings("all")
 public class AbstractSpecSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected SpecGrammarAccess grammarAccess;
@@ -212,7 +210,7 @@ public class AbstractSpecSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     ('should' 'throw') | 'throws'
+	 *     'throws' | ('should' 'throw')
 	 */
 	protected void emit_XRelationalExpression_ThrowsKeyword_1_1_0_0_1_1_or___ShouldKeyword_1_1_0_0_1_0_0_ThrowKeyword_1_1_0_0_1_0_1__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

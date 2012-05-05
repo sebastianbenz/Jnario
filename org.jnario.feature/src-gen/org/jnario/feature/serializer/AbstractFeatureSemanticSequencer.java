@@ -1,5 +1,7 @@
 package org.jnario.feature.serializer;
 
+import com.google.inject.Inject;
+import com.google.inject.Provider;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.serializer.XtendSemanticSequencer;
 import org.eclipse.xtend.core.xtend.CreateExtensionInfo;
@@ -93,10 +95,7 @@ import org.jnario.feature.feature.When;
 import org.jnario.feature.feature.WhenReference;
 import org.jnario.feature.services.FeatureGrammarAccess;
 
-import com.google.inject.Inject;
-import com.google.inject.Provider;
-
-@SuppressWarnings("restriction")
+@SuppressWarnings("all")
 public class AbstractFeatureSemanticSequencer extends AbstractSemanticSequencer {
 
 	@Inject
@@ -1559,6 +1558,7 @@ public class AbstractFeatureSemanticSequencer extends AbstractSemanticSequencer 
 	 * Constraint:
 	 *     (
 	 *         annotations+=XAnnotation* 
+	 *         abstract?='abstract'? 
 	 *         name=ValidID 
 	 *         (typeParameters+=JvmTypeParameter typeParameters+=JvmTypeParameter*)? 
 	 *         extends=JvmParameterizedTypeReference? 
@@ -1609,7 +1609,7 @@ public class AbstractFeatureSemanticSequencer extends AbstractSemanticSequencer 
 	
 	/**
 	 * Constraint:
-	 *     (package=QualifiedName? imports+=Import* xtendClass=Feature?)
+	 *     (package=QualifiedName? imports+=Import* xtendClasses+=Feature?)
 	 */
 	protected void sequence_FeatureFile(EObject context, FeatureFile semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1627,7 +1627,7 @@ public class AbstractFeatureSemanticSequencer extends AbstractSemanticSequencer 
 	
 	/**
 	 * Constraint:
-	 *     (package=QualifiedName? imports+=Import* xtendClass=Class?)
+	 *     (package=QualifiedName? imports+=Import* xtendClasses+=Class*)
 	 */
 	protected void sequence_File(EObject context, XtendFile semanticObject) {
 		superSequencer.createSequence(context, semanticObject);
@@ -1817,11 +1817,17 @@ public class AbstractFeatureSemanticSequencer extends AbstractSemanticSequencer 
 	 *             (
 	 *                 annotationInfo=Member_XtendField_2_0_0 
 	 *                 visibility=Visibility? 
-	 *                 ((extension?='extension' type=JvmTypeReference name=ValidID?) | (static?='static'? type=JvmTypeReference name=ValidID))
+	 *                 (
+	 *                     (extension?='extension' final?='val'? type=JvmTypeReference name=ValidID?) | 
+	 *                     (static?='static'? (type=JvmTypeReference | (final?='val'? type=JvmTypeReference?)) name=ValidID)
+	 *                 )
 	 *             ) | 
 	 *             (
 	 *                 annotationInfo=Member_XtendField_2_0_0 
-	 *                 ((extension?='extension' type=JvmTypeReference name=ValidID?) | (static?='static'? type=JvmTypeReference name=ValidID))
+	 *                 (
+	 *                     (extension?='extension' final?='val'? type=JvmTypeReference name=ValidID?) | 
+	 *                     (static?='static'? (type=JvmTypeReference | (final?='val'? type=JvmTypeReference?)) name=ValidID)
+	 *                 )
 	 *             )
 	 *         ) 
 	 *         initialValue=XExpression?

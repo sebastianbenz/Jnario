@@ -11,7 +11,7 @@ SpecFile:
 {SpecFile}
 ('package' package=QualifiedName)? 
 	imports+=Import*
-	xtendClass=ExampleGroup
+	(xtendClasses+=ExampleGroup)*
 ;
 
 ExampleGroup:  
@@ -105,7 +105,7 @@ XRelationalExpression returns xbase::XExpression:
 	 =>({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare]) rightOperand=XOtherOperatorExpression)*;
 
 Should:
-	('should' 'not'? ID) | '=>'
+	'should' 'not'? ID
 ;
 
 Assertion returns xbase::XExpression: 

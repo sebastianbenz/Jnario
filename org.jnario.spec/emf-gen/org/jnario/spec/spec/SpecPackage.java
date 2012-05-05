@@ -8,6 +8,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+
 import org.eclipse.xtend.core.xtend.XtendPackage;
 
 /**
@@ -79,13 +80,13 @@ public interface SpecPackage extends EPackage
 	int SPEC_FILE__IMPORTS = XtendPackage.XTEND_FILE__IMPORTS;
 
 	/**
-	 * The feature id for the '<em><b>Xtend Class</b></em>' containment reference.
+	 * The feature id for the '<em><b>Xtend Classes</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SPEC_FILE__XTEND_CLASS = XtendPackage.XTEND_FILE__XTEND_CLASS;
+	int SPEC_FILE__XTEND_CLASSES = XtendPackage.XTEND_FILE__XTEND_CLASSES;
 
 	/**
 	 * The feature id for the '<em><b>Package</b></em>' attribute.
@@ -132,6 +133,15 @@ public interface SpecPackage extends EPackage
 	 * @ordered
 	 */
 	int EXAMPLE_GROUP__NAME = XtendPackage.XTEND_CLASS__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_GROUP__ABSTRACT = XtendPackage.XTEND_CLASS__ABSTRACT;
 
 	/**
 	 * The feature id for the '<em><b>Extends</b></em>' containment reference.

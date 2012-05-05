@@ -93,7 +93,11 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	
    	def resolveFeature(EObject root){
    		val featureFile = root as FeatureFile
-		return featureFile?.xtendClass as Feature
+   		if(featureFile.xtendClasses.empty){
+   			return null
+   		}
+   		val xtendClass = featureFile.xtendClasses.get(0)
+		return xtendClass as Feature
    	}
    	
    	def toClass(Background background, IJvmDeclaredTypeAcceptor acceptor){

@@ -20,11 +20,11 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.JavaCore;
-import org.eclipse.xtend.ide.launching.JavaElementDelegate;
 import org.eclipse.xtext.builder.DerivedResourceMarkers;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.util.jdt.JavaElementFinder;
 import org.eclipse.xtext.ui.resource.IResourceSetProvider;
+import org.eclipse.xtext.xbase.ui.launching.JavaElementDelegate;
 import org.jnario.feature.feature.FeatureFile;
 
 import com.google.inject.Inject;

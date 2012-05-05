@@ -37,7 +37,7 @@ describe Example {
 		def examples{
 			| example 											| type 						|
 			| "fact 'with body' {1}"							| typeof(XBlockExpression)	|
-			| "fact 'with code' => 'with code'"					| typeof(Should)			|
+			| "fact 'with code' should be 'with code'"			| typeof(Should)			|
 		}
 	
 		fact examples.forEach[example.parse.implementation should be instanceOf(type)]

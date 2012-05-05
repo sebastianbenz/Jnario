@@ -122,8 +122,14 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   
   public Feature resolveFeature(final EObject root) {
     final FeatureFile featureFile = ((FeatureFile) root);
-    XtendClass _xtendClass = featureFile==null?(XtendClass)null:featureFile.getXtendClass();
-    return ((Feature) _xtendClass);
+    EList<XtendClass> _xtendClasses = featureFile.getXtendClasses();
+    boolean _isEmpty = _xtendClasses.isEmpty();
+    if (_isEmpty) {
+      return null;
+    }
+    EList<XtendClass> _xtendClasses_1 = featureFile.getXtendClasses();
+    final XtendClass xtendClass = _xtendClasses_1.get(0);
+    return ((Feature) xtendClass);
   }
   
   public JvmGenericType toClass(final Background background, final IJvmDeclaredTypeAcceptor acceptor) {

@@ -33,6 +33,7 @@ import org.junit.experimental.results.PrintableResult;
 import org.junit.rules.TemporaryFolder;
 import org.junit.runner.Result;
 
+import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 
@@ -89,18 +90,18 @@ public class FeatureExecutor extends BehaviorExecutor{
 			throws MalformedURLException, ClassNotFoundException {
 		CompositeResult result = new CompositeResult();
 		FeatureFile jnarioFile = (FeatureFile) object;
-		Feature feature = (Feature)jnarioFile.getXtendClass();
-		String jnarioClassName = nameProvider.getClassName(feature);
-		String packageName = jnarioFile.getPackage();
-		result.add(runTestsInClass(jnarioClassName, packageName));
+		for (Feature  feature : Iterables.filter(jnarioFile.getXtendClasses(), Feature.class)) {
+			String jnarioClassName = nameProvider.getClassName(feature);
+			String packageName = jnarioFile.getPackage();
+			result.add(runTestsInClass(jnarioClassName, packageName));
+		}
 		return result;
 	}
 	
 	protected void generateJava(EObject object) {
 		super.generateJava(object);
 		FeatureFile featureFile = (FeatureFile)object;
-		Feature feature = (Feature) featureFile.getXtendClass();
-		assertFalse("has no feature", feature == null);
-		assertFalse("has no scenarios", feature.getScenarios().isEmpty());
+		assertFalse("has no feature", featureFile.getXtendClasses().isEmpty());
+		assertFalse("has no scenarios", ((Feature)featureFile.getXtendClasses().get(0)).getScenarios().isEmpty());
 	}
 }

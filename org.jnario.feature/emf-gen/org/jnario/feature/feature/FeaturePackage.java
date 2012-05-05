@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+
 import org.eclipse.xtend.core.xtend.XtendPackage;
 
 /**
@@ -87,6 +88,15 @@ public interface FeaturePackage extends EPackage
 	 * @ordered
 	 */
 	int FEATURE__NAME = XtendPackage.XTEND_CLASS__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE__ABSTRACT = XtendPackage.XTEND_CLASS__ABSTRACT;
 
 	/**
 	 * The feature id for the '<em><b>Extends</b></em>' containment reference.
@@ -207,6 +217,15 @@ public interface FeaturePackage extends EPackage
 	int SCENARIO__NAME = XtendPackage.XTEND_CLASS__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENARIO__ABSTRACT = XtendPackage.XTEND_CLASS__ABSTRACT;
+
+	/**
 	 * The feature id for the '<em><b>Extends</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -314,6 +333,15 @@ public interface FeaturePackage extends EPackage
 	 * @ordered
 	 */
 	int BACKGROUND__NAME = SCENARIO__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BACKGROUND__ABSTRACT = SCENARIO__ABSTRACT;
 
 	/**
 	 * The feature id for the '<em><b>Extends</b></em>' containment reference.
@@ -837,13 +865,13 @@ public interface FeaturePackage extends EPackage
 	int FEATURE_FILE__IMPORTS = XtendPackage.XTEND_FILE__IMPORTS;
 
 	/**
-	 * The feature id for the '<em><b>Xtend Class</b></em>' containment reference.
+	 * The feature id for the '<em><b>Xtend Classes</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE_FILE__XTEND_CLASS = XtendPackage.XTEND_FILE__XTEND_CLASS;
+	int FEATURE_FILE__XTEND_CLASSES = XtendPackage.XTEND_FILE__XTEND_CLASSES;
 
 	/**
 	 * The feature id for the '<em><b>Package</b></em>' attribute.

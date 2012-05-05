@@ -4,8 +4,8 @@
  */
 package org.jnario.feature.ui;
 
-import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.ui.DefaultUiModule;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 /**
  * Manual modifications go to {org.jnario.feature.ui.FeatureUiModule}
@@ -206,6 +206,11 @@ public abstract class AbstractFeatureUiModule extends DefaultUiModule {
 	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment
 	public Class<? extends org.eclipse.xtext.ui.editor.hover.IEObjectHover> bindIEObjectHover() {
 		return org.eclipse.xtext.xbase.ui.hover.XbaseDispatchingEObjectTextHover.class;
+	}
+
+	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment
+	public Class<? extends org.eclipse.xtext.ui.editor.hover.html.IEObjectHoverDocumentationProvider> bindIEObjectHoverDocumentationProvider() {
+		return org.eclipse.xtext.xbase.ui.hover.XbaseHoverDocumentationProvider.class;
 	}
 
 	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment

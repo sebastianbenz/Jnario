@@ -4,7 +4,7 @@ import org.jnario.feature.jvmmodel.StepArgumentsProvider
 import org.jnario.runner.InstantiateWith
 import com.google.inject.Inject
 import org.jnario.jnario.test.util.FeatureTestInstantiator
-import org.jnario.feature.feature.Step
+import org.jnario.feature.feature.Step 
 import org.eclipse.xtext.linking.lazy.LazyLinkingResource
 import org.eclipse.xtext.util.StringInputStream
 import org.jnario.jnario.test.util.Query

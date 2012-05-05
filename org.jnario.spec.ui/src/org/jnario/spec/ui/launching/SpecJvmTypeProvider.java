@@ -37,7 +37,10 @@ public class SpecJvmTypeProvider {
 	}
 
 	protected JvmType resolveJvmType(SpecFile specFile) {
-		ExampleGroup exampleGroup = (ExampleGroup) specFile.getXtendClass();
+		if(specFile.getXtendClasses().isEmpty()){
+			return null;
+		}
+		ExampleGroup exampleGroup = (ExampleGroup) specFile.getXtendClasses().get(0);
 		return resolveJvmType(exampleGroup);
 	}
 

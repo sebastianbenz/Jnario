@@ -10,13 +10,12 @@ package org.jnario.jnario.test.util;
 import static org.eclipse.emf.common.util.URI.createURI;
 import static org.jnario.jnario.test.util.ResultMatchers.failureCountIs;
 import static org.jnario.jnario.test.util.ResultMatchers.isSuccessful;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertFalse;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.Collections;
 
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
@@ -32,6 +31,7 @@ import org.junit.Assert;
 import org.junit.rules.TemporaryFolder;
 import org.junit.runner.Result;
 
+import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 @SuppressWarnings("restriction")
@@ -82,26 +82,22 @@ public class SpecExecutor extends BehaviorExecutor{
 			e.printStackTrace();
 			org.junit.Assert.fail(e.getMessage());
 		}
-		setCorrectResourceUri(resource);
 		return resource;
-	}
-
-	protected static void setCorrectResourceUri(Resource resource) {
-		SpecFile file = (SpecFile) resource.getContents().get(0);
-		String javaClassName = new ExampleNameProvider().toJavaClassName((ExampleGroup) file.getXtendClass());
-		resource.setURI(URI.createFileURI(javaClassName  + ".spec"));
 	}
 	
 	protected Result runExamples(EObject object) throws MalformedURLException, ClassNotFoundException {
 		SpecFile spec = (SpecFile) object;
-		ExampleGroup exampleGroup = (ExampleGroup) spec.getXtendClass();
-		String specClassName = nameProvider.toJavaClassName(exampleGroup);
-		String packageName = spec.getPackage();
-		return runTestsInClass(specClassName, packageName);
+		CompositeResult result = new CompositeResult();
+		for (ExampleGroup exampleGroup : Iterables.filter(spec.getXtendClasses(), ExampleGroup.class)) {
+			String specClassName = nameProvider.toJavaClassName(exampleGroup);
+			String packageName = spec.getPackage();
+			result.add(runTestsInClass(specClassName, packageName));
+		}
+		return result;
 	}
 	
 	protected void generateJava(EObject object) {
 		super.generateJava(object);
-		assertNotNull("has no examples", ((SpecFile)object).getXtendClass());
+		assertFalse("has no examples", ((SpecFile)object).getXtendClasses().isEmpty());
 	}
 }

@@ -4,27 +4,19 @@
 
 package org.jnario.spec.services;
 
-import org.eclipse.xtend.core.services.XtendGrammarAccess;
-import org.eclipse.xtext.Action;
-import org.eclipse.xtext.Alternatives;
-import org.eclipse.xtext.Assignment;
-import org.eclipse.xtext.CrossReference;
-import org.eclipse.xtext.EnumRule;
-import org.eclipse.xtext.Grammar;
-import org.eclipse.xtext.GrammarUtil;
-import org.eclipse.xtext.Group;
-import org.eclipse.xtext.Keyword;
-import org.eclipse.xtext.ParserRule;
-import org.eclipse.xtext.RuleCall;
-import org.eclipse.xtext.TerminalRule;
-import org.eclipse.xtext.service.AbstractElementFinder.AbstractGrammarElementFinder;
+import com.google.inject.Singleton;
+import com.google.inject.Inject;
+
+import java.util.List;
+
+import org.eclipse.xtext.*;
 import org.eclipse.xtext.service.GrammarProvider;
+import org.eclipse.xtext.service.AbstractElementFinder.*;
+
+import org.eclipse.xtend.core.services.XtendGrammarAccess;
 import org.eclipse.xtext.xbase.annotations.services.XbaseWithAnnotationsGrammarAccess;
 import org.eclipse.xtext.xbase.services.XbaseGrammarAccess;
 import org.eclipse.xtext.xbase.services.XtypeGrammarAccess;
-
-import com.google.inject.Inject;
-import com.google.inject.Singleton;
 
 @Singleton
 public class SpecGrammarAccess extends AbstractGrammarElementFinder {
@@ -40,14 +32,14 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cPackageQualifiedNameParserRuleCall_1_1_0 = (RuleCall)cPackageAssignment_1_1.eContents().get(0);
 		private final Assignment cImportsAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cImportsImportParserRuleCall_2_0 = (RuleCall)cImportsAssignment_2.eContents().get(0);
-		private final Assignment cXtendClassAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cXtendClassExampleGroupParserRuleCall_3_0 = (RuleCall)cXtendClassAssignment_3.eContents().get(0);
+		private final Assignment cXtendClassesAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cXtendClassesExampleGroupParserRuleCall_3_0 = (RuleCall)cXtendClassesAssignment_3.eContents().get(0);
 		
 		//SpecFile:
-		//	{SpecFile} ("package" package=QualifiedName)? imports+=Import* xtendClass=ExampleGroup;
+		//	{SpecFile} ("package" package=QualifiedName)? imports+=Import* xtendClasses+=ExampleGroup*;
 		public ParserRule getRule() { return rule; }
 
-		//{SpecFile} ("package" package=QualifiedName)? imports+=Import* xtendClass=ExampleGroup
+		//{SpecFile} ("package" package=QualifiedName)? imports+=Import* xtendClasses+=ExampleGroup*
 		public Group getGroup() { return cGroup; }
 
 		//{SpecFile}
@@ -71,11 +63,11 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//Import
 		public RuleCall getImportsImportParserRuleCall_2_0() { return cImportsImportParserRuleCall_2_0; }
 
-		//xtendClass=ExampleGroup
-		public Assignment getXtendClassAssignment_3() { return cXtendClassAssignment_3; }
+		//xtendClasses+=ExampleGroup*
+		public Assignment getXtendClassesAssignment_3() { return cXtendClassesAssignment_3; }
 
 		//ExampleGroup
-		public RuleCall getXtendClassExampleGroupParserRuleCall_3_0() { return cXtendClassExampleGroupParserRuleCall_3_0; }
+		public RuleCall getXtendClassesExampleGroupParserRuleCall_3_0() { return cXtendClassesExampleGroupParserRuleCall_3_0; }
 	}
 
 	public class ExampleGroupElements extends AbstractParserRuleElementFinder {
@@ -1255,34 +1247,26 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class ShouldElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Should");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Keyword cShouldKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
-		private final Keyword cNotKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
-		private final RuleCall cIDTerminalRuleCall_0_2 = (RuleCall)cGroup_0.eContents().get(2);
-		private final Keyword cEqualsSignGreaterThanSignKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cShouldKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cNotKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final RuleCall cIDTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		
 		//Should:
-		//	"should" "not"? ID | "=>";
+		//	"should" "not"? ID;
 		public ParserRule getRule() { return rule; }
 
-		//"should" "not"? ID | "=>"
-		public Alternatives getAlternatives() { return cAlternatives; }
-
 		//"should" "not"? ID
-		public Group getGroup_0() { return cGroup_0; }
+		public Group getGroup() { return cGroup; }
 
 		//"should"
-		public Keyword getShouldKeyword_0_0() { return cShouldKeyword_0_0; }
+		public Keyword getShouldKeyword_0() { return cShouldKeyword_0; }
 
 		//"not"?
-		public Keyword getNotKeyword_0_1() { return cNotKeyword_0_1; }
+		public Keyword getNotKeyword_1() { return cNotKeyword_1; }
 
 		//ID
-		public RuleCall getIDTerminalRuleCall_0_2() { return cIDTerminalRuleCall_0_2; }
-
-		//"=>"
-		public Keyword getEqualsSignGreaterThanSignKeyword_1() { return cEqualsSignGreaterThanSignKeyword_1; }
+		public RuleCall getIDTerminalRuleCall_2() { return cIDTerminalRuleCall_2; }
 	}
 
 	public class AssertionElements extends AbstractParserRuleElementFinder {
@@ -1491,19 +1475,36 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	private ExampleColumnElements pExampleColumn;
 	private ExampleRowElements pExampleRow;
 	
-	private final GrammarProvider grammarProvider;
+	private final Grammar grammar;
 
 	private XtendGrammarAccess gaXtend;
 
 	@Inject
 	public SpecGrammarAccess(GrammarProvider grammarProvider,
 		XtendGrammarAccess gaXtend) {
-		this.grammarProvider = grammarProvider;
+		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaXtend = gaXtend;
 	}
 	
-	public Grammar getGrammar() {	
-		return grammarProvider.getGrammar(this);
+	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
+		Grammar grammar = grammarProvider.getGrammar(this);
+		while (grammar != null) {
+			if ("org.jnario.spec.Spec".equals(grammar.getName())) {
+				return grammar;
+			}
+			List<Grammar> grammars = grammar.getUsedGrammars();
+			if (!grammars.isEmpty()) {
+				grammar = grammars.iterator().next();
+			} else {
+				return null;
+			}
+		}
+		return grammar;
+	}
+	
+	
+	public Grammar getGrammar() {
+		return grammar;
 	}
 	
 
@@ -1513,7 +1514,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//SpecFile:
-	//	{SpecFile} ("package" package=QualifiedName)? imports+=Import* xtendClass=ExampleGroup;
+	//	{SpecFile} ("package" package=QualifiedName)? imports+=Import* xtendClasses+=ExampleGroup*;
 	public SpecFileElements getSpecFileAccess() {
 		return (pSpecFile != null) ? pSpecFile : (pSpecFile = new SpecFileElements());
 	}
@@ -1614,7 +1615,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Should:
-	//	"should" "not"? ID | "=>";
+	//	"should" "not"? ID;
 	public ShouldElements getShouldAccess() {
 		return (pShould != null) ? pShould : (pShould = new ShouldElements());
 	}
@@ -1687,7 +1688,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//File returns XtendFile:
-	//	("package" package=QualifiedName ";"?)? imports+=Import* xtendClass=Class?;
+	//	("package" package=QualifiedName ";"?)? imports+=Import* xtendClasses+=Class*;
 	public XtendGrammarAccess.FileElements getFileAccess() {
 		return gaXtend.getFileAccess();
 	}
@@ -1718,8 +1719,8 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Class returns XtendClass:
-	//	annotations+=XAnnotation* "public"? "class" name=ValidID ("<" typeParameters+=JvmTypeParameter (","
-	//	typeParameters+=JvmTypeParameter)* ">")? ("extends" extends=JvmParameterizedTypeReference)? ("implements"
+	//	annotations+=XAnnotation* "public"? abstract?="abstract"? "class" name=ValidID ("<" typeParameters+=JvmTypeParameter
+	//	("," typeParameters+=JvmTypeParameter)* ">")? ("extends" extends=JvmParameterizedTypeReference)? ("implements"
 	//	implements+=JvmParameterizedTypeReference ("," implements+=JvmParameterizedTypeReference)*)? "{" members+=Member* "}";
 	public XtendGrammarAccess.ClassElements getClassAccess() {
 		return gaXtend.getClassAccess();
@@ -2128,7 +2129,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//OpOther:
-	//	"->" | "..";
+	//	"->" | ".." | "=>" | ">" ">" => ">"? | "<" "<" => "<"? | "<" ">" | "?:" | "<=>";
 	public XbaseGrammarAccess.OpOtherElements getOpOtherAccess() {
 		return gaXtend.getOpOtherAccess();
 	}

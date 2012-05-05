@@ -5,7 +5,9 @@
 package org.jnario.spec.spec.impl;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.xtend.core.xtend.impl.XtendFileImpl;
+
 import org.jnario.spec.spec.SpecFile;
 import org.jnario.spec.spec.SpecPackage;
 

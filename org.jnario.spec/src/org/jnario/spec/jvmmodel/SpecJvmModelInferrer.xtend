@@ -78,11 +78,9 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 		}
 		val specFile = e as SpecFile
 		
-		if(specFile.xtendClass == null){
-			return
-		}
-		
-		infer(acceptor, specFile.xtendClass as ExampleGroup, null)
+		specFile.xtendClasses.filter(typeof(ExampleGroup)).forEach[
+			infer(acceptor, it, null)
+		]
 	}
 	
 	def infer(IJvmDeclaredTypeAcceptor acceptor, ExampleGroup exampleGroup, JvmGenericType superType){

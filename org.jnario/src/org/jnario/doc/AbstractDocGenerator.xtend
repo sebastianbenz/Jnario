@@ -32,9 +32,10 @@ class AbstractDocGenerator implements IGenerator {
 
 	override doGenerate(Resource input, IFileSystemAccess fsa) {
 		for(file : input.contents.filter(typeof(XtendFile))){
-			val xtendClass = file.xtendClass
-			val htmlFile = xtendClass?.createHtmlFile()
-			xtendClass?.generate(fsa, htmlFile)
+			file.xtendClasses.forEach[
+				val htmlFile = it.createHtmlFile()
+				it.generate(fsa, htmlFile)
+			]
 		}
 	}
 	
@@ -107,7 +108,7 @@ class AbstractDocGenerator implements IGenerator {
 	
 	def root(XtendClass xtendClass){
 		val specFile = EcoreUtil2::getContainerOfType(xtendClass, typeof(XtendFile))
-		val packageName= specFile.xtendClass.packageName
+		val packageName= specFile.^package
 		if(packageName == null){
 			return ""
 		}

@@ -1,5 +1,7 @@
 package org.jnario.spec.serializer;
 
+import com.google.inject.Inject;
+import com.google.inject.Provider;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.serializer.XtendSemanticSequencer;
 import org.eclipse.xtend.core.xtend.CreateExtensionInfo;
@@ -84,10 +86,7 @@ import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.spec.spec.SpecFile;
 import org.jnario.spec.spec.SpecPackage;
 
-import com.google.inject.Inject;
-import com.google.inject.Provider;
-
-@SuppressWarnings("restriction")
+@SuppressWarnings("all")
 public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 
 	@Inject
@@ -1465,6 +1464,7 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         annotations+=XAnnotation* 
+	 *         abstract?='abstract'? 
 	 *         name=ValidID 
 	 *         (typeParameters+=JvmTypeParameter typeParameters+=JvmTypeParameter*)? 
 	 *         extends=JvmParameterizedTypeReference? 
@@ -1515,7 +1515,7 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (package=QualifiedName? imports+=Import* xtendClass=Class?)
+	 *     (package=QualifiedName? imports+=Import* xtendClasses+=Class*)
 	 */
 	protected void sequence_File(EObject context, XtendFile semanticObject) {
 		superSequencer.createSequence(context, semanticObject);
@@ -1861,7 +1861,7 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (package=QualifiedName? imports+=Import* xtendClass=ExampleGroup)
+	 *     (package=QualifiedName? imports+=Import* xtendClasses+=ExampleGroup*)
 	 */
 	protected void sequence_SpecFile(EObject context, SpecFile semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -4,27 +4,19 @@
 
 package org.jnario.feature.services;
 
-import org.eclipse.xtend.core.services.XtendGrammarAccess;
-import org.eclipse.xtext.Action;
-import org.eclipse.xtext.Alternatives;
-import org.eclipse.xtext.Assignment;
-import org.eclipse.xtext.CrossReference;
-import org.eclipse.xtext.EnumRule;
-import org.eclipse.xtext.Grammar;
-import org.eclipse.xtext.GrammarUtil;
-import org.eclipse.xtext.Group;
-import org.eclipse.xtext.Keyword;
-import org.eclipse.xtext.ParserRule;
-import org.eclipse.xtext.RuleCall;
-import org.eclipse.xtext.TerminalRule;
-import org.eclipse.xtext.service.AbstractElementFinder.AbstractGrammarElementFinder;
+import com.google.inject.Singleton;
+import com.google.inject.Inject;
+
+import java.util.List;
+
+import org.eclipse.xtext.*;
 import org.eclipse.xtext.service.GrammarProvider;
+import org.eclipse.xtext.service.AbstractElementFinder.*;
+
+import org.eclipse.xtend.core.services.XtendGrammarAccess;
 import org.eclipse.xtext.xbase.annotations.services.XbaseWithAnnotationsGrammarAccess;
 import org.eclipse.xtext.xbase.services.XbaseGrammarAccess;
 import org.eclipse.xtext.xbase.services.XtypeGrammarAccess;
-
-import com.google.inject.Inject;
-import com.google.inject.Singleton;
 
 @Singleton
 public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
@@ -40,14 +32,14 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cPackageQualifiedNameParserRuleCall_1_1_0 = (RuleCall)cPackageAssignment_1_1.eContents().get(0);
 		private final Assignment cImportsAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cImportsImportParserRuleCall_2_0 = (RuleCall)cImportsAssignment_2.eContents().get(0);
-		private final Assignment cXtendClassAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cXtendClassFeatureParserRuleCall_3_0 = (RuleCall)cXtendClassAssignment_3.eContents().get(0);
+		private final Assignment cXtendClassesAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cXtendClassesFeatureParserRuleCall_3_0 = (RuleCall)cXtendClassesAssignment_3.eContents().get(0);
 		
 		//FeatureFile returns xtend::XtendFile:
-		//	{FeatureFile} ("package" package=QualifiedName)? imports+=Import* xtendClass=Feature?;
+		//	{FeatureFile} ("package" package=QualifiedName)? imports+=Import* xtendClasses+=Feature?;
 		public ParserRule getRule() { return rule; }
 
-		//{FeatureFile} ("package" package=QualifiedName)? imports+=Import* xtendClass=Feature?
+		//{FeatureFile} ("package" package=QualifiedName)? imports+=Import* xtendClasses+=Feature?
 		public Group getGroup() { return cGroup; }
 
 		//{FeatureFile}
@@ -71,11 +63,11 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		//Import
 		public RuleCall getImportsImportParserRuleCall_2_0() { return cImportsImportParserRuleCall_2_0; }
 
-		//xtendClass=Feature?
-		public Assignment getXtendClassAssignment_3() { return cXtendClassAssignment_3; }
+		//xtendClasses+=Feature?
+		public Assignment getXtendClassesAssignment_3() { return cXtendClassesAssignment_3; }
 
 		//Feature
-		public RuleCall getXtendClassFeatureParserRuleCall_3_0() { return cXtendClassFeatureParserRuleCall_3_0; }
+		public RuleCall getXtendClassesFeatureParserRuleCall_3_0() { return cXtendClassesFeatureParserRuleCall_3_0; }
 	}
 
 	public class ImportElements extends AbstractParserRuleElementFinder {
@@ -1224,34 +1216,26 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class ShouldElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Should");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Keyword cShouldKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
-		private final Keyword cNotKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
-		private final RuleCall cIDTerminalRuleCall_0_2 = (RuleCall)cGroup_0.eContents().get(2);
-		private final Keyword cEqualsSignGreaterThanSignKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cShouldKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cNotKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final RuleCall cIDTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		
 		//Should:
-		//	"should" "not"? ID | "=>";
+		//	"should" "not"? ID;
 		public ParserRule getRule() { return rule; }
 
-		//"should" "not"? ID | "=>"
-		public Alternatives getAlternatives() { return cAlternatives; }
-
 		//"should" "not"? ID
-		public Group getGroup_0() { return cGroup_0; }
+		public Group getGroup() { return cGroup; }
 
 		//"should"
-		public Keyword getShouldKeyword_0_0() { return cShouldKeyword_0_0; }
+		public Keyword getShouldKeyword_0() { return cShouldKeyword_0; }
 
 		//"not"?
-		public Keyword getNotKeyword_0_1() { return cNotKeyword_0_1; }
+		public Keyword getNotKeyword_1() { return cNotKeyword_1; }
 
 		//ID
-		public RuleCall getIDTerminalRuleCall_0_2() { return cIDTerminalRuleCall_0_2; }
-
-		//"=>"
-		public Keyword getEqualsSignGreaterThanSignKeyword_1() { return cEqualsSignGreaterThanSignKeyword_1; }
+		public RuleCall getIDTerminalRuleCall_2() { return cIDTerminalRuleCall_2; }
 	}
 
 	public class AssertionElements extends AbstractParserRuleElementFinder {
@@ -1408,19 +1392,36 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	private TerminalRule tNL;
 	private TerminalRule tSPACES;
 	
-	private final GrammarProvider grammarProvider;
+	private final Grammar grammar;
 
 	private XtendGrammarAccess gaXtend;
 
 	@Inject
 	public FeatureGrammarAccess(GrammarProvider grammarProvider,
 		XtendGrammarAccess gaXtend) {
-		this.grammarProvider = grammarProvider;
+		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaXtend = gaXtend;
 	}
 	
-	public Grammar getGrammar() {	
-		return grammarProvider.getGrammar(this);
+	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
+		Grammar grammar = grammarProvider.getGrammar(this);
+		while (grammar != null) {
+			if ("org.jnario.feature.Feature".equals(grammar.getName())) {
+				return grammar;
+			}
+			List<Grammar> grammars = grammar.getUsedGrammars();
+			if (!grammars.isEmpty()) {
+				grammar = grammars.iterator().next();
+			} else {
+				return null;
+			}
+		}
+		return grammar;
+	}
+	
+	
+	public Grammar getGrammar() {
+		return grammar;
 	}
 	
 
@@ -1430,7 +1431,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//FeatureFile returns xtend::XtendFile:
-	//	{FeatureFile} ("package" package=QualifiedName)? imports+=Import* xtendClass=Feature?;
+	//	{FeatureFile} ("package" package=QualifiedName)? imports+=Import* xtendClasses+=Feature?;
 	public FeatureFileElements getFeatureFileAccess() {
 		return (pFeatureFile != null) ? pFeatureFile : (pFeatureFile = new FeatureFileElements());
 	}
@@ -1654,7 +1655,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Should:
-	//	"should" "not"? ID | "=>";
+	//	"should" "not"? ID;
 	public ShouldElements getShouldAccess() {
 		return (pShould != null) ? pShould : (pShould = new ShouldElements());
 	}
@@ -1799,7 +1800,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//File returns XtendFile:
-	//	("package" package=QualifiedName ";"?)? imports+=Import* xtendClass=Class?;
+	//	("package" package=QualifiedName ";"?)? imports+=Import* xtendClasses+=Class*;
 	public XtendGrammarAccess.FileElements getFileAccess() {
 		return gaXtend.getFileAccess();
 	}
@@ -1819,8 +1820,8 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Class returns XtendClass:
-	//	annotations+=XAnnotation* "public"? "class" name=ValidID ("<" typeParameters+=JvmTypeParameter (","
-	//	typeParameters+=JvmTypeParameter)* ">")? ("extends" extends=JvmParameterizedTypeReference)? ("implements"
+	//	annotations+=XAnnotation* "public"? abstract?="abstract"? "class" name=ValidID ("<" typeParameters+=JvmTypeParameter
+	//	("," typeParameters+=JvmTypeParameter)* ">")? ("extends" extends=JvmParameterizedTypeReference)? ("implements"
 	//	implements+=JvmParameterizedTypeReference ("," implements+=JvmParameterizedTypeReference)*)? "{" members+=Member* "}";
 	public XtendGrammarAccess.ClassElements getClassAccess() {
 		return gaXtend.getClassAccess();
@@ -1832,17 +1833,17 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 
 	//Member returns XtendMember:
 	//	{XtendMember} annotations+=XAnnotation* ({XtendField.annotationInfo=current} visibility=Visibility?
-	//	(extension?="extension" type=JvmTypeReference name=ValidID? | static?="static"? type=JvmTypeReference name=ValidID)
-	//	("=" initialValue=XExpression)? ";"? | {XtendFunction.annotationInfo=current} ("def" | override?="override")
-	//	visibility=Visibility? static?="static"? dispatch?="dispatch"? ("<" typeParameters+=JvmTypeParameter (","
-	//	typeParameters+=JvmTypeParameter)* ">")? (=> (returnType=JvmTypeReference createExtensionInfo=CreateExtensionInfo
-	//	name=ValidID "(") | => (returnType=JvmTypeReference name=ValidID "(") | => (createExtensionInfo=CreateExtensionInfo
-	//	name=ValidID "(") | name=ValidID "(") (parameters+=Parameter ("," parameters+=Parameter)*)? ")" ("throws"
-	//	exceptions+=JvmTypeReference ("," exceptions+=JvmTypeReference)*)? (expression=XBlockExpression |
-	//	expression=RichString)? | {XtendConstructor.annotationInfo=current} visibility=Visibility? "new" ("<"
-	//	typeParameters+=JvmTypeParameter ("," typeParameters+=JvmTypeParameter)* ">")? "(" (parameters+=Parameter (","
-	//	parameters+=Parameter)*)? ")" ("throws" exceptions+=JvmTypeReference ("," exceptions+=JvmTypeReference)*)?
-	//	expression=XBlockExpression);
+	//	(extension?="extension" (final?="val" | "var")? type=JvmTypeReference name=ValidID? | static?="static"?
+	//	(type=JvmTypeReference | (final?="val" | "var") type=JvmTypeReference?) name=ValidID) ("=" initialValue=XExpression)?
+	//	";"? | {XtendFunction.annotationInfo=current} ("def" | override?="override") visibility=Visibility? static?="static"?
+	//	dispatch?="dispatch"? ("<" typeParameters+=JvmTypeParameter ("," typeParameters+=JvmTypeParameter)* ">")? (=>
+	//	(returnType=JvmTypeReference createExtensionInfo=CreateExtensionInfo name=ValidID "(") | =>
+	//	(returnType=JvmTypeReference name=ValidID "(") | => (createExtensionInfo=CreateExtensionInfo name=ValidID "(") |
+	//	name=ValidID "(") (parameters+=Parameter ("," parameters+=Parameter)*)? ")" ("throws" exceptions+=JvmTypeReference
+	//	("," exceptions+=JvmTypeReference)*)? (expression=XBlockExpression | expression=RichString)? |
+	//	{XtendConstructor.annotationInfo=current} visibility=Visibility? "new" ("<" typeParameters+=JvmTypeParameter (","
+	//	typeParameters+=JvmTypeParameter)* ">")? "(" (parameters+=Parameter ("," parameters+=Parameter)*)? ")" ("throws"
+	//	exceptions+=JvmTypeReference ("," exceptions+=JvmTypeReference)*)? expression=XBlockExpression);
 	public XtendGrammarAccess.MemberElements getMemberAccess() {
 		return gaXtend.getMemberAccess();
 	}
@@ -2238,7 +2239,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//OpOther:
-	//	"->" | "..";
+	//	"->" | ".." | "=>" | ">" ">" => ">"? | "<" "<" => "<"? | "<" ">" | "?:" | "<=>";
 	public XbaseGrammarAccess.OpOtherElements getOpOtherAccess() {
 		return gaXtend.getOpOtherAccess();
 	}
