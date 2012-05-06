@@ -36,7 +36,7 @@ describe "Using Should"{
 		// strings
 		"something" should contain "thing"
 		"something" should not contain "any"
-		
+
 		// iterables
 		newArrayList("something") should contain "something"
 		newArrayList("something") should not contain "something else"

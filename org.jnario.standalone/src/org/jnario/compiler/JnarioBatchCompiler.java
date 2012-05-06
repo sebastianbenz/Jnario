@@ -74,15 +74,13 @@ public abstract class JnarioBatchCompiler extends XtendBatchCompiler {
 		
 		for (Resource resource : jnarioResources(resourceSet)) {
 			XtendFile file = filter(resource.getContents(), XtendFile.class).iterator().next();
-			XtendClass xtendClass = file.getXtendClass();
-			if(xtendClass == null){
-				continue;
-			}
-			String packageName = toPath(xtendClass.getPackageName());
-			for (JvmGenericType type : filter(resource.getContents(), JvmGenericType.class)) {
-				CharSequence generatedType = generator.generateType(type);
-				String fileName = packageName + type.getSimpleName() + ".java";
-				javaIoFileSystemAccess.generateFile(fileName, generatedType);
+			for (XtendClass xtendClass : file.getXtendClasses()) {
+				String packageName = toPath(xtendClass.getPackageName());
+				for (JvmGenericType type : filter(resource.getContents(), JvmGenericType.class)) {
+					CharSequence generatedType = generator.generateType(type);
+					String fileName = packageName + type.getSimpleName() + ".java";
+					javaIoFileSystemAccess.generateFile(fileName, generatedType);
+				}
 			}
 		}
 	}

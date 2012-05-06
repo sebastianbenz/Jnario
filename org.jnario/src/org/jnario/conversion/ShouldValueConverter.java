@@ -15,9 +15,6 @@ public class ShouldValueConverter implements IValueConverter<String> {
 
 	public String toValue(String string, INode node)
 			throws ValueConverterException {
-		if("=>".equals(string)){
-			return "should_be";
-		}
 		return "should_" + string.substring(string.lastIndexOf(' ') + 1);
 	}
 

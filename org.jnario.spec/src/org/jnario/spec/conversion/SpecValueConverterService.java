@@ -15,7 +15,6 @@ import com.google.inject.Inject;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
-@SuppressWarnings("restriction")
 public class SpecValueConverterService extends JnarioValueConverterService {
 
 	@Inject

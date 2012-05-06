@@ -16,6 +16,7 @@ import org.eclipse.xtext.xbase.ui.launching.JavaElementDelegateAdapterFactory;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 
+@SuppressWarnings("restriction")
 public class SpecJavaElementDelegateAdapterFactory extends
 		JavaElementDelegateAdapterFactory {
 

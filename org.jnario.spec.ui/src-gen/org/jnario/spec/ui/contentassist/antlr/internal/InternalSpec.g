@@ -2930,6 +2930,32 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+rule__Member__Alternatives_2_0_1_0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getMemberAccess().getFactKeyword_2_0_1_0_0()); }
+
+	'fact' 
+
+{ after(grammarAccess.getMemberAccess().getFactKeyword_2_0_1_0_0()); }
+)
+
+    |(
+{ before(grammarAccess.getMemberAccess().getFactsKeyword_2_0_1_0_1()); }
+
+	'facts' 
+
+{ after(grammarAccess.getMemberAccess().getFactsKeyword_2_0_1_0_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__Member__Alternatives_2_6_2
     @init {
 		int stackSize = keepStackSize();
@@ -5506,11 +5532,9 @@ rule__Member__Group_2_0_1__0__Impl
     }
 :
 (
-{ before(grammarAccess.getMemberAccess().getFactKeyword_2_0_1_0()); }
-
-	'fact' 
-
-{ after(grammarAccess.getMemberAccess().getFactKeyword_2_0_1_0()); }
+{ before(grammarAccess.getMemberAccess().getAlternatives_2_0_1_0()); }
+(rule__Member__Alternatives_2_0_1_0)
+{ after(grammarAccess.getMemberAccess().getAlternatives_2_0_1_0()); }
 )
 
 ;

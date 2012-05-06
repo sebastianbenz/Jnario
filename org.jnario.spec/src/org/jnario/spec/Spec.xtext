@@ -19,7 +19,7 @@ ExampleGroup:
 	annotations+=XAnnotation* 
 	preamble='describe' targetType=JvmTypeReference? name=STRING? '{'
        (members+=Member*)
-'}'
+	'}'
 ;
 
 Method:
@@ -39,7 +39,7 @@ Member returns xtend::XtendMember:
 	{xtend::XtendMember} annotations+=XAnnotation* 
 	(
 		{Example.annotationInfo = current}
-			('fact' expr=XExpression body=XBlockExpression?)
+			(('fact' | 'facts') expr=XExpression body=XBlockExpression?)
 	|	{ExampleGroup.annotationInfo = current}
 			(=>preamble=('describe') targetType=JvmTypeReference? =>name=STRING? '{'
       		members+=Member*

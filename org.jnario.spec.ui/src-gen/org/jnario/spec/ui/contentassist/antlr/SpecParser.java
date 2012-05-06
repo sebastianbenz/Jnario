@@ -39,6 +39,7 @@ public class SpecParser extends AbstractContentAssistParser {
 				{
 					put(grammarAccess.getTypeRefAccess().getAlternatives_1(), "rule__TypeRef__Alternatives_1");
 					put(grammarAccess.getMemberAccess().getAlternatives_2(), "rule__Member__Alternatives_2");
+					put(grammarAccess.getMemberAccess().getAlternatives_2_0_1_0(), "rule__Member__Alternatives_2_0_1_0");
 					put(grammarAccess.getMemberAccess().getAlternatives_2_6_2(), "rule__Member__Alternatives_2_6_2");
 					put(grammarAccess.getMemberAccess().getAlternatives_2_7_1(), "rule__Member__Alternatives_2_7_1");
 					put(grammarAccess.getMemberAccess().getAlternatives_2_7_6(), "rule__Member__Alternatives_2_7_6");

@@ -7,92 +7,35 @@
  *******************************************************************************/
 package org.jnario.spec.ui.launching;
 
+import java.util.Set;
 
-import java.util.List;
-
-import org.apache.log4j.Logger;
-import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.jdt.core.IJavaElement;
-import org.eclipse.jdt.core.JavaCore;
-import org.eclipse.xtext.builder.DerivedResourceMarkers;
-import org.eclipse.xtext.common.types.JvmType;
-import org.eclipse.xtext.common.types.util.jdt.JavaElementFinder;
-import org.eclipse.xtext.ui.resource.IResourceSetProvider;
-import org.eclipse.xtext.xbase.ui.launching.JavaElementDelegate;
-import org.jnario.spec.spec.SpecFile;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtend.core.xtend.XtendClass;
+import org.eclipse.xtext.EcoreUtil2;
+import org.eclipse.xtext.common.types.JvmIdentifiableElement;
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
+import org.eclipse.xtext.xbase.ui.launching.JavaElementDelegateJunitLaunch;
 
 import com.google.inject.Inject;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
-public class SpecJavaElementDelegate extends JavaElementDelegate {
-	
-//	private static final Logger log = Logger.getLogger(SpecJavaElementDelegate.class);
-//	
-//	private DerivedResourceMarkers derivedResourceMarkers;
-//	private JavaElementFinder javaElementFinder;
-//	private SpecJvmTypeProvider specJvmTypeProvider;
-//	private final IResourceSetProvider resourceSetProvider;
-//	
-//	@Inject
-//	public SpecJavaElementDelegate(
-//			DerivedResourceMarkers derivedResourceMarkers,
-//			JavaElementFinder javaElementFinder,
-//			SpecJvmTypeProvider specJvmTypeProvider,
-//			IResourceSetProvider resourceSetProvider) {
-//		this.derivedResourceMarkers = derivedResourceMarkers;
-//		this.javaElementFinder = javaElementFinder;
-//		this.specJvmTypeProvider = specJvmTypeProvider;
-//		this.resourceSetProvider = resourceSetProvider;
-//	}
-//
-//	protected IJavaElement getJavaElementForResource(IResource resource) {
-//		try {
-//			URI sourceUri = URI.createPlatformResourceURI(resource.getFullPath().toString(), true);
-//			final String sourcePath = sourceUri.toString();
-//			List<IFile> resources = derivedResourceMarkers.findDerivedResources(resource.getProject(), sourcePath);
-//			if(resources.size() == 0){
-//				return null;
-//			}
-//			if (resources.size() == 1){
-//				return JavaCore.create(resources.get(0));
-//			}
-//			return resolveRootJavaElement(resource.getProject(), sourceUri);
-//			
-//		} catch (CoreException e) {
-//			if (log.isDebugEnabled()) {
-//				log.debug(e.getMessage(), e);
-//			}
-//		}
-//		return null;
-//	}
-//
-//	protected IJavaElement resolveRootJavaElement(IProject project, URI sourceUri) {
-//		SpecFile specFile = loadSpec(project, sourceUri);
-//		if(specFile == null){
-//			return null;
-//		}
-//		JvmType jvmType = specJvmTypeProvider.resolveJvmType(specFile);
-//		if(jvmType == null){
-//			return null;
-//		}
-//		return javaElementFinder.findElementFor(jvmType);
-//	}
-//
-//	protected SpecFile loadSpec(IProject project, URI sourceUri) {
-//		ResourceSet resourceSet = resourceSetProvider.get(project);
-//		Resource modelResource = resourceSet.getResource(sourceUri, true);
-//		if(modelResource == null || modelResource.getContents().isEmpty()){
-//			return null;
-//		}
-//		return (SpecFile) modelResource.getContents().get(0);
-//	}
+@SuppressWarnings("restriction")
+public class SpecJavaElementDelegate extends JavaElementDelegateJunitLaunch {
 
+	@Inject
+	private IJvmModelAssociations associations;
+
+	@Override
+	protected JvmIdentifiableElement findAssociatedJvmElement(EObject element) {
+		if (element == null)
+			return null;
+		element = EcoreUtil2.getContainerOfType(element, XtendClass.class);
+		Set<EObject> elements = associations.getJvmElements(element);
+		if (elements.isEmpty()) {
+			return findAssociatedJvmElement(element.eContainer());
+		}
+		return super.findAssociatedJvmElement(element);
+	}
 }

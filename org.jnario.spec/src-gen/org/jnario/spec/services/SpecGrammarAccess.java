@@ -274,7 +274,9 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_2_0 = (Group)cAlternatives_2.eContents().get(0);
 		private final Action cExampleAnnotationInfoAction_2_0_0 = (Action)cGroup_2_0.eContents().get(0);
 		private final Group cGroup_2_0_1 = (Group)cGroup_2_0.eContents().get(1);
-		private final Keyword cFactKeyword_2_0_1_0 = (Keyword)cGroup_2_0_1.eContents().get(0);
+		private final Alternatives cAlternatives_2_0_1_0 = (Alternatives)cGroup_2_0_1.eContents().get(0);
+		private final Keyword cFactKeyword_2_0_1_0_0 = (Keyword)cAlternatives_2_0_1_0.eContents().get(0);
+		private final Keyword cFactsKeyword_2_0_1_0_1 = (Keyword)cAlternatives_2_0_1_0.eContents().get(1);
 		private final Assignment cExprAssignment_2_0_1_1 = (Assignment)cGroup_2_0_1.eContents().get(1);
 		private final RuleCall cExprXExpressionParserRuleCall_2_0_1_1_0 = (RuleCall)cExprAssignment_2_0_1_1.eContents().get(0);
 		private final Assignment cBodyAssignment_2_0_1_2 = (Assignment)cGroup_2_0_1.eContents().get(2);
@@ -435,7 +437,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cExpressionRichStringParserRuleCall_2_7_10_1_0 = (RuleCall)cExpressionAssignment_2_7_10_1.eContents().get(0);
 		
 		//Member returns xtend::XtendMember:
-		//	{xtend::XtendMember} annotations+=XAnnotation* ({Example.annotationInfo=current} ("fact" expr=XExpression
+		//	{xtend::XtendMember} annotations+=XAnnotation* ({Example.annotationInfo=current} (("fact" | "facts") expr=XExpression
 		//	body=XBlockExpression?) | {ExampleGroup.annotationInfo=current} (=> preamble="describe" targetType=JvmTypeReference?
 		//	=> name=STRING? "{" members+=Member* "}") | {Before.annotationInfo=current} ("before" beforeAll?="all"? =>
 		//	name=STRING? body=XExpression) | {After.annotationInfo=current} ("after" afterAll?="all"? => name=STRING?
@@ -452,7 +454,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//	("," exceptions+=JvmTypeReference)*)? (expression=XBlockExpression | expression=RichString)?);
 		public ParserRule getRule() { return rule; }
 
-		//{xtend::XtendMember} annotations+=XAnnotation* ({Example.annotationInfo=current} ("fact" expr=XExpression
+		//{xtend::XtendMember} annotations+=XAnnotation* ({Example.annotationInfo=current} (("fact" | "facts") expr=XExpression
 		//body=XBlockExpression?) | {ExampleGroup.annotationInfo=current} (=> preamble="describe" targetType=JvmTypeReference? =>
 		//name=STRING? "{" members+=Member* "}") | {Before.annotationInfo=current} ("before" beforeAll?="all"? => name=STRING?
 		//body=XExpression) | {After.annotationInfo=current} ("after" afterAll?="all"? => name=STRING? body=XExpression) |
@@ -478,7 +480,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//XAnnotation
 		public RuleCall getAnnotationsXAnnotationParserRuleCall_1_0() { return cAnnotationsXAnnotationParserRuleCall_1_0; }
 
-		//{Example.annotationInfo=current} ("fact" expr=XExpression body=XBlockExpression?) |
+		//{Example.annotationInfo=current} (("fact" | "facts") expr=XExpression body=XBlockExpression?) |
 		//{ExampleGroup.annotationInfo=current} (=> preamble="describe" targetType=JvmTypeReference? => name=STRING? "{"
 		//members+=Member* "}") | {Before.annotationInfo=current} ("before" beforeAll?="all"? => name=STRING? body=XExpression) |
 		//{After.annotationInfo=current} ("after" afterAll?="all"? => name=STRING? body=XExpression) |
@@ -495,17 +497,23 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//expression=RichString)?
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
-		//{Example.annotationInfo=current} ("fact" expr=XExpression body=XBlockExpression?)
+		//{Example.annotationInfo=current} (("fact" | "facts") expr=XExpression body=XBlockExpression?)
 		public Group getGroup_2_0() { return cGroup_2_0; }
 
 		//{Example.annotationInfo=current}
 		public Action getExampleAnnotationInfoAction_2_0_0() { return cExampleAnnotationInfoAction_2_0_0; }
 
-		//"fact" expr=XExpression body=XBlockExpression?
+		//("fact" | "facts") expr=XExpression body=XBlockExpression?
 		public Group getGroup_2_0_1() { return cGroup_2_0_1; }
 
+		//"fact" | "facts"
+		public Alternatives getAlternatives_2_0_1_0() { return cAlternatives_2_0_1_0; }
+
 		//"fact"
-		public Keyword getFactKeyword_2_0_1_0() { return cFactKeyword_2_0_1_0; }
+		public Keyword getFactKeyword_2_0_1_0_0() { return cFactKeyword_2_0_1_0_0; }
+
+		//"facts"
+		public Keyword getFactsKeyword_2_0_1_0_1() { return cFactsKeyword_2_0_1_0_1; }
 
 		//expr=XExpression
 		public Assignment getExprAssignment_2_0_1_1() { return cExprAssignment_2_0_1_1; }
@@ -1565,7 +1573,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Member returns xtend::XtendMember:
-	//	{xtend::XtendMember} annotations+=XAnnotation* ({Example.annotationInfo=current} ("fact" expr=XExpression
+	//	{xtend::XtendMember} annotations+=XAnnotation* ({Example.annotationInfo=current} (("fact" | "facts") expr=XExpression
 	//	body=XBlockExpression?) | {ExampleGroup.annotationInfo=current} (=> preamble="describe" targetType=JvmTypeReference?
 	//	=> name=STRING? "{" members+=Member* "}") | {Before.annotationInfo=current} ("before" beforeAll?="all"? =>
 	//	name=STRING? body=XExpression) | {After.annotationInfo=current} ("after" afterAll?="all"? => name=STRING?

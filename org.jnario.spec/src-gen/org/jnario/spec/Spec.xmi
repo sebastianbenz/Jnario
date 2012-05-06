@@ -143,7 +143,10 @@
               </type>
             </elements>
             <elements xsi:type="xtext:Group">
-              <elements xsi:type="xtext:Keyword" value="fact"/>
+              <elements xsi:type="xtext:Alternatives">
+                <elements xsi:type="xtext:Keyword" value="fact"/>
+                <elements xsi:type="xtext:Keyword" value="facts"/>
+              </elements>
               <elements xsi:type="xtext:Assignment" feature="expr" operator="=">
                 <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.0"/>
               </elements>

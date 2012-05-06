@@ -10,6 +10,7 @@ package org.jnario.lib;
 import static com.google.common.collect.Iterables.contains;
 
 import org.eclipse.xtext.xbase.lib.Functions;
+import org.eclipse.xtext.xbase.lib.Procedures;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -20,17 +21,20 @@ import com.google.common.base.Objects;
  * @author Sebastian Benz - Initial contribution and API
  */
 public class Should {
-
-	public static boolean operator_doubleArrow(Object actual, Object expected) {
-		return should_be(actual, expected);
-	}
-
-	public static boolean operator_doubleArrow(Object actual, Class<?> expectedType) {
-		return should_be(actual, expectedType);
-	}
 	
-	public static <T> boolean operator_doubleArrow(T actual, Matcher<T> matcher) {
-		return should_be(actual, matcher);
+	@SuppressWarnings("unchecked")
+	public static boolean operator_doubleArrow(Object actual, Object expected) {
+		if (expected instanceof Matcher<?>) {
+			return should_be(actual, (Matcher<?>) expected);
+		}
+		if (expected instanceof Class<?>) {
+			return should_be(actual, (Class<?>) expected);
+		}
+		if (expected instanceof Procedures.Procedure1<?>) {
+			((Procedures.Procedure1<Object>)expected).apply(actual);
+			return true;
+		}
+		return should_be(actual, expected);
 	}
 	
 	public static boolean should_be(Object actual, Object expected){
@@ -61,8 +65,8 @@ public class Should {
         return false;
 	}
 	
-	public static <T> boolean should_contain(String actual, CharSequence substring){
-		return actual.contains(substring);
+	public static <T> boolean should_contain(CharSequence actual, CharSequence substring){
+		return actual.toString().contains(substring);
 	}
 	
 	public static <T> boolean should_be(T actual, boolean result){
@@ -70,6 +74,14 @@ public class Should {
 			return ((Boolean)actual).equals(result);
 		}
 		return result;
+	}
+	
+	public static boolean should_startWith(CharSequence s, String substring){
+		return s.toString().startsWith(substring);
+	} 
+	
+	public static boolean should_endWith(CharSequence s, String substring){
+		return s.toString().endsWith(substring);
 	}
 	
 	public static <T> Matcher<T> matches(final String desc, final Functions.Function1<T, Boolean> matcher){

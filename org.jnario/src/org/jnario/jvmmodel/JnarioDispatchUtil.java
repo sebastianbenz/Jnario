@@ -7,32 +7,11 @@
  *******************************************************************************/
 package org.jnario.jvmmodel;
 
-import static com.google.common.collect.Iterables.filter;
-
-import java.util.Iterator;
-
 import org.eclipse.xtend.core.jvmmodel.DispatchUtil;
-import org.eclipse.xtend.core.xtend.XtendFunction;
-import org.eclipse.xtext.common.types.JvmOperation;
-import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
-
-import com.google.inject.Inject;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
 public class JnarioDispatchUtil extends DispatchUtil {
 	
-	@Inject
-	private IJvmModelAssociations associations;
-	
-	public boolean isDispatcherFunction(JvmOperation inferredOperation) {
-		Iterator<XtendFunction> operations = filter(associations.getSourceElements(inferredOperation), XtendFunction.class).iterator();
-		if(!operations.hasNext()){
-			return false;
-		}
-		XtendFunction xtendFunction = operations.next();
-		return !inferredOperation.getSimpleName().startsWith("_") && xtendFunction.isDispatch();
-	}
-
 }

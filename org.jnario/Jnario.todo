@@ -1,0 +1,7 @@
+Jnario 0.1.0M7:
+
+	- "Run as" does not work @done
+	- '=>' does not work for Procedures @done
+	- Filter 'new' from outline view 
+	- remove backslash from ExampleGroup names in outline view
+	

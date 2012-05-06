@@ -8,23 +8,27 @@
 package org.jnario.feature.ui.launching;
 
 
-import java.util.List;
+import static com.google.common.collect.Iterables.filter;
+
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jdt.core.IAnnotation;
+import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IJavaElement;
+import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaCore;
-import org.eclipse.xtext.builder.DerivedResourceMarkers;
-import org.eclipse.xtext.common.types.JvmType;
-import org.eclipse.xtext.common.types.util.jdt.JavaElementFinder;
-import org.eclipse.xtext.ui.resource.IResourceSetProvider;
-import org.eclipse.xtext.xbase.ui.launching.JavaElementDelegate;
+import org.eclipse.jdt.core.JavaModelException;
+import org.eclipse.xtend.core.xtend.XtendClass;
+import org.eclipse.xtext.EcoreUtil2;
+import org.eclipse.xtext.common.types.JvmIdentifiableElement;
+import org.eclipse.xtext.common.types.util.jdt.IJavaElementFinder;
+import org.eclipse.xtext.resource.XtextResource;
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
+import org.eclipse.xtext.xbase.ui.launching.JavaElementDelegateJunitLaunch;
+import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeatureFile;
 
 import com.google.inject.Inject;
@@ -33,67 +37,62 @@ import com.google.inject.Inject;
  * @author Sebastian Benz - Initial contribution and API
  * @author Birgit Engelmann
  */
-public class FeatureJavaElementDelegate extends JavaElementDelegate {
+public class FeatureJavaElementDelegate extends JavaElementDelegateJunitLaunch {
 	
 	private static final Logger log = Logger.getLogger(FeatureJavaElementDelegate.class);
 	
-	private DerivedResourceMarkers derivedResourceMarkers;
-	private JavaElementFinder javaElementFinder;
-	private FeatureJvmTypeProvider jnarioJvmTypeProvider;
-	private final IResourceSetProvider resourceSetProvider;
+	@Inject
+	private IJvmModelAssociations associations;
 	
 	@Inject
-	public FeatureJavaElementDelegate(
-			DerivedResourceMarkers derivedResourceMarkers,
-			JavaElementFinder javaElementFinder,
-			FeatureJvmTypeProvider jnarioJvmTypeProvider,
-			IResourceSetProvider resourceSetProvider) {
-		this.derivedResourceMarkers = derivedResourceMarkers;
-		this.javaElementFinder = javaElementFinder;
-		this.jnarioJvmTypeProvider = jnarioJvmTypeProvider;
-		this.resourceSetProvider = resourceSetProvider;
-	}
+	private IJavaElementFinder elementFinder;
 
-	protected IJavaElement getJavaElementForResource(IResource resource) {
+	@Override
+	protected boolean containsElementsSearchedFor(IFile file) {
+		IJavaElement element = JavaCore.create(file);
+		if (element == null || !element.exists() || ! (element instanceof ICompilationUnit)) {
+			return false;
+		}
 		try {
-			URI sourceUri = URI.createPlatformResourceURI(resource.getFullPath().toString(), true);
-			final String sourcePath = sourceUri.toString();
-			List<IFile> resources = derivedResourceMarkers.findDerivedResources(resource.getProject(), sourcePath);
-			if(resources.size() == 0){
-				return null;
+			ICompilationUnit cu = (ICompilationUnit) element;
+			for (IType type : cu.getAllTypes()) {
+				IAnnotation annotation= type.getAnnotation("RunWith"); //$NON-NLS-1$
+				if (annotation.exists())
+					return true;
 			}
-			if (resources.size() == 1){
-				return JavaCore.create(resources.get(0));
+		} catch (JavaModelException e) {
+			log.error(e);
+		}
+		return super.containsElementsSearchedFor(file);
+	}
+	
+	@Override
+	protected IJavaElement findJavaElement(XtextResource resource, int offset) {
+		IJavaElement result = super.findJavaElement(resource, offset);
+		if(result != null){
+			return result;
+		}
+		for (FeatureFile featureFile : filter(resource.getContents(), FeatureFile.class)) {
+			JvmIdentifiableElement jvmElement = findAssociatedJvmElement(featureFile);
+			if (jvmElement != null){
+				result = elementFinder.findElementFor(jvmElement);
+				break;
 			}
-			return resolveRootJavaElement(resource.getProject(), sourceUri);
-			
-		} catch (CoreException e) {
-			if (log.isDebugEnabled()) {
-				log.debug(e.getMessage(), e);
-			}
+		}
+		return result;
+	}
+	
+	@Override
+	protected JvmIdentifiableElement findAssociatedJvmElement(EObject element) {
+		if (element == null)
+			return null;
+		element = EcoreUtil2.getContainerOfType(element, FeatureFile.class);
+		if(element == null){
+			return null;
+		}
+		for (XtendClass xtendClass : ((FeatureFile)element).getXtendClasses()) {
+			return super.findAssociatedJvmElement(xtendClass);
 		}
 		return null;
 	}
-
-	protected IJavaElement resolveRootJavaElement(IProject project, URI sourceUri) {
-		FeatureFile jnarioFile = loadJnario(project, sourceUri);
-		if(jnarioFile == null){
-			return null;
-		}
-		JvmType jvmType = jnarioJvmTypeProvider.resolveJvmType(jnarioFile);
-		if(jvmType == null){
-			return null;
-		}
-		return javaElementFinder.findElementFor(jvmType);
-	}
-
-	protected FeatureFile loadJnario(IProject project, URI sourceUri) {
-		ResourceSet resourceSet = resourceSetProvider.get(project);
-		Resource modelResource = resourceSet.getResource(sourceUri, true);
-		if(modelResource == null || modelResource.getContents().isEmpty()){
-			return null;
-		}
-		return (FeatureFile) modelResource.getContents().get(0);
-	}
-
 }
