@@ -28,16 +28,14 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<ul><li><p><a name="generates_java_script_helper_files"></a>
-<strong>generates java script helper files</strong>
+<ul><li><p  id="generates_java_script_helper_files"><strong>generates java script helper files</strong>
 <pre class="prettyprint lang-spec">
 generateEmptyExampleDoc()
 
 assert generatedFile("js/prettify.js") != null
 assert generatedFile("js/lang-jnario.js") != null</pre>
 </p>
-</li><li><p><a name="generates_css_helper_files"></a>
-<strong>generates css helper files</strong>
+</li><li><p  id="generates_css_helper_files"><strong>generates css helper files</strong>
 <pre class="prettyprint lang-spec">
 generateEmptyExampleDoc()
 
@@ -45,8 +43,7 @@ assert generatedFile("css/bootstrap-responsive.min.css") != null
 assert generatedFile("css/custom.css") != null
 assert generatedFile("css/prettify.css") != null</pre>
 </p>
-</li><li><p><a name="generates_scenario_title_and_heading"></a>
-<strong>generates scenario title and heading</strong>
+</li><li><p  id="generates_scenario_title_and_heading"><strong>generates scenario title and heading</strong>
 <pre class="prettyprint lang-spec">
 generateEmptyExampleDoc()
 
@@ -55,8 +52,7 @@ assert scenarioDoc != null &&
 		scenarioDoc.contains("&lt;title&gt;Example&lt;/title&gt;")
 		scenarioDoc.contains("&lt;h1&gt;Example&lt;/h1&gt;")</pre>
 </p>
-</li><li><p><a name="generates_scenario_documentation"></a>
-<strong>generates scenario documentation</strong>
+</li><li><p  id="generates_scenario_documentation"><strong>generates scenario documentation</strong>
 <pre class="prettyprint lang-spec">
 generateDoc('''
 	/*
@@ -75,8 +71,7 @@ val scenarioDoc = generatedFile("ExampleSpec.html")
 assert scenarioDoc.contains("&lt;p&gt;This is an example.&lt;/p&gt;")
 assert !scenarioDoc.contains("Irrelevant documentation.")</pre>
 </p>
-</li><li><p><a name="generates_example_documentation"></a>
-<strong>generates example documentation</strong>
+</li><li><p  id="generates_example_documentation"><strong>generates example documentation</strong>
 <pre class="prettyprint lang-spec">
 generateDoc('''
 	describe 'Example'{
@@ -98,8 +93,7 @@ var x = 0
 x = x + 1&lt;/pre&gt;
 &lt;/p&gt;'''.toString())</pre>
 </p>
-</li><li><p><a name="should_support_markdown_for_documentation"></a>
-<strong>should support markdown for documentation</strong>
+</li><li><p  id="should_support_markdown_for_documentation"><strong>should support markdown for documentation</strong>
 <pre class="prettyprint lang-spec">
 generateDoc('''
 	/*
@@ -112,8 +106,7 @@ generateDoc('''
 val scenarioDoc = generatedFile("ExampleSpec.html")
 assert scenarioDoc.contains("&lt;h1&gt;Example Heading&lt;/h1&gt;")</pre>
 </p>
-</li><li><p><a name="generates_table_for_example_tables"></a>
-<strong>generates table for example tables</strong>
+</li><li><p  id="generates_table_for_example_tables"><strong>generates table for example tables</strong>
 <pre class="prettyprint lang-spec">
 generateDoc('''
 	describe 'Example'{
@@ -130,8 +123,7 @@ assert scenarioDoc.contains("&lt;th&gt;b&lt;/th&gt;")
 assert scenarioDoc.contains("&lt;td&gt;1&lt;/td&gt;")
 assert scenarioDoc.contains("&lt;td&gt;2&lt;/td&gt;")</pre>
 </p>
-</li><li><p><a name="filters_code_based_on_regex_in_filter_annotation"></a>
-<strong>filters code based on regex in filter annotation</strong>
+</li><li><p  id="filters_code_based_on_regex_in_filter_annotation"><strong>filters code based on regex in filter annotation</strong>
 <pre class="prettyprint lang-spec">
 generateDoc('''
 	describe 'Example'{

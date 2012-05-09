@@ -1312,18 +1312,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cClosureAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cClosureMatcherClosureParserRuleCall_1_0 = (RuleCall)cClosureAssignment_1.eContents().get(0);
 		
-		////ShouldExpression returns xbase::XExpression: 
-		//
-		////	name=ID expr=XOtherOperatorExpression
-		//
-		////
-		//
-		////ShouldImply:
-		//
-		////	'=>' expr=XOtherOperatorExpression
-		//
-		////;
-		//
 		//Matcher:
 		//	"#" closure=MatcherClosure;
 		public ParserRule getRule() { return rule; }
@@ -1642,18 +1630,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		return getAssertionAccess().getRule();
 	}
 
-	////ShouldExpression returns xbase::XExpression: 
-	//
-	////	name=ID expr=XOtherOperatorExpression
-	//
-	////
-	//
-	////ShouldImply:
-	//
-	////	'=>' expr=XOtherOperatorExpression
-	//
-	////;
-	//
 	//Matcher:
 	//	"#" closure=MatcherClosure;
 	public MatcherElements getMatcherAccess() {

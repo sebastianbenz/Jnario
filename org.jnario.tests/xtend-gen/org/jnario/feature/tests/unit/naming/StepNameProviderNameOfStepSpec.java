@@ -24,7 +24,7 @@ public class StepNameProviderNameOfStepSpec extends StepNameProviderSpec {
     Given _emptyStep = this.emptyStep();
     String _nameOf = this.subject.nameOf(_emptyStep);
     boolean _equals = Objects.equal(_nameOf, null);
-    Assert.assertTrue("\nExpected subject.nameOf(emptyStep) == null but:"
+    Assert.assertTrue("\nExpected subject.nameOf(emptyStep) == null but"
      + "\n     subject.nameOf(emptyStep) is " + "\"" + _nameOf + "\""
      + "\n     subject is " + this.subject
      + "\n     emptyStep is " + _emptyStep + "\n", _equals);
@@ -38,7 +38,7 @@ public class StepNameProviderNameOfStepSpec extends StepNameProviderSpec {
     GivenReference _emptyRef = this.emptyRef();
     String _nameOf = this.subject.nameOf(_emptyRef);
     boolean _equals = Objects.equal(_nameOf, null);
-    Assert.assertTrue("\nExpected subject.nameOf(emptyRef) == null but:"
+    Assert.assertTrue("\nExpected subject.nameOf(emptyRef) == null but"
      + "\n     subject.nameOf(emptyRef) is " + "\"" + _nameOf + "\""
      + "\n     subject is " + this.subject
      + "\n     emptyRef is " + _emptyRef + "\n", _equals);
@@ -60,10 +60,7 @@ public class StepNameProviderNameOfStepSpec extends StepNameProviderSpec {
     _builder.newLine();
     this.parseScenario(_builder);
     String _stepName = this.stepName();
-    boolean _should_be = Should.should_be(_stepName, "Given a step with an implementation");Assert
-    .assertTrue("\nExpected stepName => \"Given a step with an implementation\" but:"
-     + "\n     stepName is " + "\"" + _stepName + "\"" + "\n", _should_be);
-    
+    Should.operator_doubleArrow(_stepName, "Given a step with an implementation");
   }
   
   @Test
@@ -86,10 +83,7 @@ public class StepNameProviderNameOfStepSpec extends StepNameProviderSpec {
     _builder.newLine();
     this.parseScenario(_builder);
     String _stepName = this.stepName();
-    boolean _should_be = Should.should_be(_stepName, "Given a step with a resolved reference");Assert
-    .assertTrue("\nExpected stepName => \"Given a step with a resolved reference\" but:"
-     + "\n     stepName is " + "\"" + _stepName + "\"" + "\n", _should_be);
-    
+    Should.operator_doubleArrow(_stepName, "Given a step with a resolved reference");
   }
   
   @Test
@@ -104,10 +98,7 @@ public class StepNameProviderNameOfStepSpec extends StepNameProviderSpec {
     _builder.newLine();
     this.parseScenario(_builder);
     String _stepName = this.stepName();
-    boolean _should_be = Should.should_be(_stepName, "Given a step with an unresolved reference");Assert
-    .assertTrue("\nExpected stepName => \"Given a step with an unresolved reference\" but:"
-     + "\n     stepName is " + "\"" + _stepName + "\"" + "\n", _should_be);
-    
+    Should.operator_doubleArrow(_stepName, "Given a step with an unresolved reference");
   }
   
   @Test
@@ -125,9 +116,6 @@ public class StepNameProviderNameOfStepSpec extends StepNameProviderSpec {
     _builder.newLine();
     this.parseScenario(_builder);
     String _stepName = this.stepName();
-    boolean _should_be = Should.should_be(_stepName, "Given a step with two values \"a\" and \"b\"");Assert
-    .assertTrue("\nExpected stepName => \'Given a step with two values \"a\" and \"b\"\' but:"
-     + "\n     stepName is " + "\"" + _stepName + "\"" + "\n", _should_be);
-    
+    Should.operator_doubleArrow(_stepName, "Given a step with two values \"a\" and \"b\"");
   }
 }

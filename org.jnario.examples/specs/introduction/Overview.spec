@@ -51,7 +51,7 @@ describe "Jnario Specs fact BDD for Java"{
     val x = 0  
     val y = 1
     errorMessage[assert x == 1 && y == 0].is('''
-      Expected x == 1 && y == 0 but:
+      Expected x == 1 && y == 0 but
            x == 1 is false
            x is 0
            y == 0 is false  

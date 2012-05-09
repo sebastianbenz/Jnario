@@ -73,7 +73,7 @@ import org.junit.Ignore;
  */
 @SuppressWarnings("all")
 public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
-  public static String STEP_VALUES = "args";
+  public final static String STEP_VALUES = "args";
   
   @Inject
   private ExtendedJvmTypesBuilder _extendedJvmTypesBuilder;

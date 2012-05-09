@@ -29,7 +29,7 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("StepNameProvider")
-@InstantiateWith(SpecTestInstantiator.class)
+@InstantiateWith(value = SpecTestInstantiator.class)
 public class StepNameProviderSpec {
   @Subject
   public StepNameProvider subject;

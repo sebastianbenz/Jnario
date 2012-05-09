@@ -257,6 +257,15 @@ public interface JnarioPackage extends EPackage {
 	int EXAMPLE_COLUMN__NAME = XtendPackage.XTEND_FIELD__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Final</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_COLUMN__FINAL = XtendPackage.XTEND_FIELD__FINAL;
+
+	/**
 	 * The feature id for the '<em><b>Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

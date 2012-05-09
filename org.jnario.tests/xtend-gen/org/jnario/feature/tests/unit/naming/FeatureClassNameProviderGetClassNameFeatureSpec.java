@@ -10,7 +10,6 @@ import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,13 +40,7 @@ public class FeatureClassNameProviderGetClassNameFeatureSpec extends FeatureClas
         public void apply(final FeatureClassNameProviderGetClassNameFeatureSpecExamples it) {
           Feature _feature = FeatureClassNameProviderGetClassNameFeatureSpec.this.feature(it.name);
           String _className = FeatureClassNameProviderGetClassNameFeatureSpec.this.className(_feature);
-          boolean _should_be = Should.should_be(_className, it.expectedClassName);Assert
-          .assertTrue("\nExpected className(feature(name)) => expectedClassName but:"
-           + "\n     className(feature(name)) is " + "\"" + _className + "\""
-           + "\n     feature(name) is " + _feature
-           + "\n     name is " + "\"" + it.name + "\""
-           + "\n     expectedClassName is " + "\"" + it.expectedClassName + "\"" + "\n", _should_be);
-          
+          Should.operator_doubleArrow(_className, it.expectedClassName);
         }
       };
     ExampleTableIterators.<FeatureClassNameProviderGetClassNameFeatureSpecExamples>forEach(this.examples, _function);

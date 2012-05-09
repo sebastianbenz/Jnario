@@ -75,7 +75,7 @@
 <unit id="org.eclipse.xtext.examples.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.xtext.ui.feature.group" version="0.0.0"/>
-<repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/nightly"/>
+<repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/milestones"/>
 </location>
 </locations>
 </target>

@@ -1049,9 +1049,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		private final Action cShouldThrowExpressionAction_1_1_0_0_0 = (Action)cGroup_1_1_0_0.eContents().get(0);
 		private final Alternatives cAlternatives_1_1_0_0_1 = (Alternatives)cGroup_1_1_0_0.eContents().get(1);
 		private final Group cGroup_1_1_0_0_1_0 = (Group)cAlternatives_1_1_0_0_1.eContents().get(0);
-		private final Alternatives cAlternatives_1_1_0_0_1_0_0 = (Alternatives)cGroup_1_1_0_0_1_0.eContents().get(0);
-		private final Keyword cShouldKeyword_1_1_0_0_1_0_0_0 = (Keyword)cAlternatives_1_1_0_0_1_0_0.eContents().get(0);
-		private final Keyword cMustKeyword_1_1_0_0_1_0_0_1 = (Keyword)cAlternatives_1_1_0_0_1_0_0.eContents().get(1);
+		private final Keyword cShouldKeyword_1_1_0_0_1_0_0 = (Keyword)cGroup_1_1_0_0_1_0.eContents().get(0);
 		private final Keyword cThrowKeyword_1_1_0_0_1_0_1 = (Keyword)cGroup_1_1_0_0_1_0.eContents().get(1);
 		private final Keyword cThrowsKeyword_1_1_0_0_1_1 = (Keyword)cAlternatives_1_1_0_0_1.eContents().get(1);
 		private final Assignment cTypeAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
@@ -1075,14 +1073,14 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//XRelationalExpression returns xbase::XExpression:
 		//	XOtherOperatorExpression (=> ({Should.leftOperand=current} feature=[types::JvmIdentifiableElement|Should])
-		//	rightOperand=XOtherOperatorExpression | => ({ShouldThrow.expression=current} (("should" | "must") "throw" | "throws"))
+		//	rightOperand=XOtherOperatorExpression | => ({ShouldThrow.expression=current} ("should" "throw" | "throws"))
 		//	type=JvmTypeReference | => ({xbase::XInstanceOfExpression.expression=current} "instanceof") type=JvmTypeReference | =>
 		//	({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare])
 		//	rightOperand=XOtherOperatorExpression)*;
 		public ParserRule getRule() { return rule; }
 
 		//XOtherOperatorExpression (=> ({Should.leftOperand=current} feature=[types::JvmIdentifiableElement|Should])
-		//rightOperand=XOtherOperatorExpression | => ({ShouldThrow.expression=current} (("should" | "must") "throw" | "throws"))
+		//rightOperand=XOtherOperatorExpression | => ({ShouldThrow.expression=current} ("should" "throw" | "throws"))
 		//type=JvmTypeReference | => ({xbase::XInstanceOfExpression.expression=current} "instanceof") type=JvmTypeReference | =>
 		//({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare])
 		//rightOperand=XOtherOperatorExpression)*
@@ -1092,7 +1090,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getXOtherOperatorExpressionParserRuleCall_0() { return cXOtherOperatorExpressionParserRuleCall_0; }
 
 		//(=> ({Should.leftOperand=current} feature=[types::JvmIdentifiableElement|Should]) rightOperand=XOtherOperatorExpression
-		//| => ({ShouldThrow.expression=current} (("should" | "must") "throw" | "throws")) type=JvmTypeReference | =>
+		//| => ({ShouldThrow.expression=current} ("should" "throw" | "throws")) type=JvmTypeReference | =>
 		//({xbase::XInstanceOfExpression.expression=current} "instanceof") type=JvmTypeReference | =>
 		//({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare])
 		//rightOperand=XOtherOperatorExpression)*
@@ -1125,32 +1123,26 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		//XOtherOperatorExpression
 		public RuleCall getRightOperandXOtherOperatorExpressionParserRuleCall_1_0_1_0() { return cRightOperandXOtherOperatorExpressionParserRuleCall_1_0_1_0; }
 
-		//=> ({ShouldThrow.expression=current} (("should" | "must") "throw" | "throws")) type=JvmTypeReference
+		//=> ({ShouldThrow.expression=current} ("should" "throw" | "throws")) type=JvmTypeReference
 		public Group getGroup_1_1() { return cGroup_1_1; }
 
-		//=> ({ShouldThrow.expression=current} (("should" | "must") "throw" | "throws"))
+		//=> ({ShouldThrow.expression=current} ("should" "throw" | "throws"))
 		public Group getGroup_1_1_0() { return cGroup_1_1_0; }
 
-		//{ShouldThrow.expression=current} (("should" | "must") "throw" | "throws")
+		//{ShouldThrow.expression=current} ("should" "throw" | "throws")
 		public Group getGroup_1_1_0_0() { return cGroup_1_1_0_0; }
 
 		//{ShouldThrow.expression=current}
 		public Action getShouldThrowExpressionAction_1_1_0_0_0() { return cShouldThrowExpressionAction_1_1_0_0_0; }
 
-		//("should" | "must") "throw" | "throws"
+		//"should" "throw" | "throws"
 		public Alternatives getAlternatives_1_1_0_0_1() { return cAlternatives_1_1_0_0_1; }
 
-		//("should" | "must") "throw"
+		//"should" "throw"
 		public Group getGroup_1_1_0_0_1_0() { return cGroup_1_1_0_0_1_0; }
 
-		//"should" | "must"
-		public Alternatives getAlternatives_1_1_0_0_1_0_0() { return cAlternatives_1_1_0_0_1_0_0; }
-
 		//"should"
-		public Keyword getShouldKeyword_1_1_0_0_1_0_0_0() { return cShouldKeyword_1_1_0_0_1_0_0_0; }
-
-		//"must"
-		public Keyword getMustKeyword_1_1_0_0_1_0_0_1() { return cMustKeyword_1_1_0_0_1_0_0_1; }
+		public Keyword getShouldKeyword_1_1_0_0_1_0_0() { return cShouldKeyword_1_1_0_0_1_0_0; }
 
 		//"throw"
 		public Keyword getThrowKeyword_1_1_0_0_1_0_1() { return cThrowKeyword_1_1_0_0_1_0_1; }
@@ -1642,7 +1634,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 
 	//XRelationalExpression returns xbase::XExpression:
 	//	XOtherOperatorExpression (=> ({Should.leftOperand=current} feature=[types::JvmIdentifiableElement|Should])
-	//	rightOperand=XOtherOperatorExpression | => ({ShouldThrow.expression=current} (("should" | "must") "throw" | "throws"))
+	//	rightOperand=XOtherOperatorExpression | => ({ShouldThrow.expression=current} ("should" "throw" | "throws"))
 	//	type=JvmTypeReference | => ({xbase::XInstanceOfExpression.expression=current} "instanceof") type=JvmTypeReference | =>
 	//	({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare])
 	//	rightOperand=XOtherOperatorExpression)*;

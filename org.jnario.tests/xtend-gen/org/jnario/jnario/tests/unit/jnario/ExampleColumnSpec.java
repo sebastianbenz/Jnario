@@ -19,7 +19,6 @@ import org.jnario.runner.Extension;
 import org.jnario.runner.InstantiateWith;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,7 +26,7 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("ExampleColumn")
-@InstantiateWith(SpecTestInstantiator.class)
+@InstantiateWith(value = SpecTestInstantiator.class)
 public class ExampleColumnSpec {
   @Inject
   @Extension
@@ -87,13 +86,7 @@ public class ExampleColumnSpec {
           final XExpression cell = _cells.get(it.cellIndex);
           String _serialize = ExampleColumnSpec.this._iSerializer.serialize(cell);
           String _trim = _serialize.trim();
-          boolean _should_be = Should.should_be(_trim, it.value);Assert
-          .assertTrue("\nExpected cell.serialize.trim => value but:"
-           + "\n     cell.serialize.trim is " + "\"" + _trim + "\""
-           + "\n     cell.serialize is " + "\"" + _serialize + "\""
-           + "\n     cell is " + cell
-           + "\n     value is " + "\"" + it.value + "\"" + "\n", _should_be);
-          
+          Should.operator_doubleArrow(_trim, it.value);
         }
       };
     ExampleTableIterators.<ExampleColumnSpecExamples>forEach(this.examples, _function);

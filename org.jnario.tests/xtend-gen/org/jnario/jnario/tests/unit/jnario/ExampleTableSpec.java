@@ -18,7 +18,7 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("ExampleTable")
-@InstantiateWith(SpecTestInstantiator.class)
+@InstantiateWith(value = SpecTestInstantiator.class)
 public class ExampleTableSpec {
   @Inject
   @Extension
@@ -54,7 +54,7 @@ public class ExampleTableSpec {
     Query _query = this._modelStore.query();
     ExampleTable _first = _query.<ExampleTable>first(ExampleTable.class);
     boolean _isValid = _first.isValid();
-    Assert.assertTrue("\nExpected query.first(typeof(ExampleTable)).isValid() but:"
+    Assert.assertTrue("\nExpected query.first(typeof(ExampleTable)).isValid() but"
      + "\n     query.first(typeof(ExampleTable)) is " + _first
      + "\n     query is " + _query + "\n", _isValid);
     
@@ -91,7 +91,7 @@ public class ExampleTableSpec {
     ExampleTable _first = _query.<ExampleTable>first(ExampleTable.class);
     boolean _isValid = _first.isValid();
     boolean _not = (!_isValid);
-    Assert.assertTrue("\nExpected !query.first(typeof(ExampleTable)).isValid() but:"
+    Assert.assertTrue("\nExpected !query.first(typeof(ExampleTable)).isValid() but"
      + "\n     query.first(typeof(ExampleTable)).isValid() is " + _isValid
      + "\n     query.first(typeof(ExampleTable)) is " + _first
      + "\n     query is " + _query + "\n", _not);

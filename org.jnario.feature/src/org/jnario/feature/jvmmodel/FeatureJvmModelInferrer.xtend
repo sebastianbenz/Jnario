@@ -56,7 +56,7 @@ import org.jnario.feature.feature.Given
  */
 class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 	
-	public static String STEP_VALUES = "args"
+	public static val STEP_VALUES = "args"
 
 	@Inject extension ExtendedJvmTypesBuilder
 	
@@ -75,7 +75,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 	@Inject extension StepArgumentsProvider stepArgumentsProvider
 	
 	@Inject extension IJvmModelAssociator 
-	
+
    override infer(EObject object, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
     	if(!checkClassPath(object, annotationProvider)){
 			return
@@ -103,11 +103,11 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	def toClass(Background background, IJvmDeclaredTypeAcceptor acceptor){
    		if(background == null) return null
    		val backgroundClass = background.toClass
-		backgroundClass.abstract = true
+		backgroundClass.^abstract = true
 		register(acceptor, background, backgroundClass, emptyList)
 		backgroundClass 
    	}
-   	
+
    	def toClass(List<Scenario> scenarios, IJvmDeclaredTypeAcceptor acceptor, JvmGenericType backgroundType){
    		val result = <JvmGenericType>newArrayList
    		scenarios.forEach[

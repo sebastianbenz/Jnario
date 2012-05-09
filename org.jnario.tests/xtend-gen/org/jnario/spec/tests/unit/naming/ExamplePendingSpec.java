@@ -39,7 +39,7 @@ public class ExamplePendingSpec extends ExampleSpec {
         public void apply(final ExamplePendingSpecExamples it) {
           boolean _pendingStateOf = ExamplePendingSpec.this.pendingStateOf(it.example);
           boolean _should_be = Should.<Boolean>should_be(_pendingStateOf, it.expected);Assert
-          .assertTrue("\nExpected pendingStateOf(example) should be expected but:"
+          .assertTrue("\nExpected pendingStateOf(example) should be expected but"
            + "\n     pendingStateOf(example) is " + _pendingStateOf
            + "\n     example is " + "\"" + it.example + "\""
            + "\n     expected is " + it.expected + "\n", _should_be);

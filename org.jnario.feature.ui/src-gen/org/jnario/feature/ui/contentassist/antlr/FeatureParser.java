@@ -54,7 +54,6 @@ public class FeatureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXPrimaryExpressionAccess().getAlternatives(), "rule__XPrimaryExpression__Alternatives");
 					put(grammarAccess.getXRelationalExpressionAccess().getAlternatives_1(), "rule__XRelationalExpression__Alternatives_1");
 					put(grammarAccess.getXRelationalExpressionAccess().getAlternatives_1_1_0_0_1(), "rule__XRelationalExpression__Alternatives_1_1_0_0_1");
-					put(grammarAccess.getXRelationalExpressionAccess().getAlternatives_1_1_0_0_1_0_0(), "rule__XRelationalExpression__Alternatives_1_1_0_0_1_0_0");
 					put(grammarAccess.getMemberAccess().getAlternatives_2(), "rule__Member__Alternatives_2");
 					put(grammarAccess.getMemberAccess().getAlternatives_2_0_2(), "rule__Member__Alternatives_2_0_2");
 					put(grammarAccess.getMemberAccess().getAlternatives_2_0_2_0_1(), "rule__Member__Alternatives_2_0_2_0_1");

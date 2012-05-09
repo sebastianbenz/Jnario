@@ -25,7 +25,7 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("SpecScopeProvider")
-@InstantiateWith(SpecTestInstantiator.class)
+@InstantiateWith(value = SpecTestInstantiator.class)
 public class SpecScopeProviderSpec {
   @Subject
   public SpecScopeProvider subject;

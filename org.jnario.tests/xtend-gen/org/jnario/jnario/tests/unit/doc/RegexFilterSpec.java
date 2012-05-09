@@ -10,7 +10,6 @@ import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,13 +40,7 @@ public class RegexFilterSpec {
         public void apply(final RegexFilterSpecFilteringExamples it) {
           final Filter filter = RegexFilter.create(it.regex);
           String _apply = filter.apply(it.string);
-          boolean _should_be = Should.should_be(_apply, it.result);Assert
-          .assertTrue("\nExpected filter.apply(string) => result but:"
-           + "\n     filter.apply(string) is " + "\"" + _apply + "\""
-           + "\n     filter is " + filter
-           + "\n     string is " + "\"" + it.string + "\""
-           + "\n     result is " + "\"" + it.result + "\"" + "\n", _should_be);
-          
+          Should.operator_doubleArrow(_apply, it.result);
         }
       };
     ExampleTableIterators.<RegexFilterSpecFilteringExamples>forEach(this.filteringExamples, _function);

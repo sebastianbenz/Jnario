@@ -28,7 +28,7 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<ul><li><h4><a name="filterExtractions"></a>FilterExtractions</h4>
+<ul><li><h4 id="filterExtractions">FilterExtractions</h4>
 <p></p>
 <table class="table table-striped table-bordered table-condensed">
 	<thead>
@@ -64,7 +64,7 @@
 	</tr>
 	</tbody>
 </table>
-</li><li><h4><a name="filterCreation"></a>FilterCreation</h4>
+</li><li><h4 id="filterCreation">FilterCreation</h4>
 <p></p>
 <table class="table table-striped table-bordered table-condensed">
 	<thead>
@@ -92,15 +92,13 @@
 	</tr>
 	</tbody>
 </table>
-</li><li><p><a name="should_remove_all_filter_annotations_from_a_string"></a>
-<strong>should remove all filter annotations from a string</strong>
+</li><li><p  id="should_remove_all_filter_annotations_from_a_string"><strong>should remove all filter annotations from a string</strong>
 <pre class="prettyprint lang-spec">
 filterExtractions.forEach[
 	stringAfterExtract(input) =&gt; resultString
 ]</pre>
 </p>
-</li><li><p><a name="should_extract_and_create_filters"></a>
-<strong>should extract and create filters</strong>
+</li><li><p  id="should_extract_and_create_filters"><strong>should extract and create filters</strong>
 <pre class="prettyprint lang-spec">
 filterCreation.forEach[
 	extractedFilters(input) =&gt; resultingFilters

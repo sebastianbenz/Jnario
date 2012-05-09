@@ -18,7 +18,7 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("Should")
-@InstantiateWith(SpecTestInstantiator.class)
+@InstantiateWith(value = SpecTestInstantiator.class)
 public class ShouldSpec {
   @Inject
   @Extension
@@ -43,7 +43,7 @@ public class ShouldSpec {
     Should _first = _query.<Should>first(Should.class);
     boolean _isNot = _first.isNot();
     boolean _not = (!_isNot);
-    Assert.assertTrue("\nExpected !query.first(typeof(Should)).isNot but:"
+    Assert.assertTrue("\nExpected !query.first(typeof(Should)).isNot but"
      + "\n     query.first(typeof(Should)).isNot is " + _isNot
      + "\n     query.first(typeof(Should)) is " + _first
      + "\n     query is " + _query + "\n", _not);
@@ -68,7 +68,7 @@ public class ShouldSpec {
     Query _query = this._modelStore.query();
     Should _first = _query.<Should>first(Should.class);
     boolean _isNot = _first.isNot();
-    Assert.assertTrue("\nExpected query.first(typeof(Should)).isNot but:"
+    Assert.assertTrue("\nExpected query.first(typeof(Should)).isNot but"
      + "\n     query.first(typeof(Should)) is " + _first
      + "\n     query is " + _query + "\n", _isNot);
     

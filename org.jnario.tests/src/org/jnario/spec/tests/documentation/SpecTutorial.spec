@@ -291,7 +291,7 @@ describe "Jnario Specs - Tutorial"{
 		 *         | 1     | 2     | 4       | FAILED     (1)
 		 *         | 4     | 5     | 9       | OK
 		 * 
-		 * (1) Expected a + b should be sum but:
+		 * (1) Expected a + b should be sum but
 		 *          a + b is 3
 		 *          a is 1
 		 *          b is 2
@@ -535,7 +535,7 @@ describe "Jnario Specs - Tutorial"{
 			val x = 0 
 			val y = 1 
 			errorMessage[assert x == 1 && y == 0].is('''
-			  Expected x == 1 && y == 0 but:
+			  Expected x == 1 && y == 0 but
 			       x == 1 is false
 			       x is 0
 			       y == 0 is false
@@ -543,7 +543,7 @@ describe "Jnario Specs - Tutorial"{
 			       
 			val greeting = "hello"        
 			errorMessage[greeting.toUpperCase should not be "HELLO"].is('''
-			  Expected greeting.toUpperCase should not be "HELLO" but:
+			  Expected greeting.toUpperCase should not be "HELLO" but
 			       greeting.toUpperCase is "HELLO"
 			       greeting is "hello"''')	  
 		}

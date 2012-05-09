@@ -8,6 +8,7 @@
 package org.jnario.compiler;
 
 import static com.google.common.collect.Iterables.filter;
+import static com.google.common.collect.Sets.newHashSet;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.getNode;
 import static org.eclipse.xtext.util.Strings.convertToJavaString;
@@ -33,6 +34,7 @@ import org.jnario.ShouldThrow;
 import org.junit.Assert;
 
 import com.google.common.base.Predicate;
+import com.google.common.collect.Sets;
 import com.google.inject.Inject;
 
 /**
@@ -180,21 +182,31 @@ public class JnarioCompiler extends XtendCompiler {
 	public void generateMessageFor(Should should, ITreeAppendable b) {
 		b.append("\"\\nExpected ");
 		b.append(serialize(should));
-		b.append(" but:\"");
-		Set<String> valueExpressions = new HashSet<String>();
+		b.append(" but\"");
+		Set<String> valueExpressions = newHashSet();
+		
 		XExpression left = should.getLeftOperand();
 		toLiteralValue(left, b, valueExpressions);
 		appendValues(left, b, valueExpressions);
+		
 		XExpression right = should.getRightOperand();
 		toLiteralValue(right, b, valueExpressions);
 		appendValues(right, b, valueExpressions);
+		
+		if(valueExpressions.isEmpty()){
+			b.append(" + \" did not.\"");
+		}
 	}
 	
-	public void generateMessageFor(XExpression expression, ITreeAppendable b) {
+	private void generateMessageFor(XExpression expression, ITreeAppendable b) {
 		b.append("\"\\nExpected ");
 		b.append(serialize(expression));
-		b.append(" but:\"");
-		appendValues(expression, b, new HashSet<String>());
+		b.append(" but\"");
+		Set<String> valueExpressions = newHashSet();
+		appendValues(expression, b, valueExpressions);
+		if(valueExpressions.isEmpty()){
+			b.append(" + \" did not.\"");
+		}
 	}
 
 	private void appendValues(XExpression expression, ITreeAppendable b, Set<String> valueExpressions) {

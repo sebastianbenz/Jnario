@@ -11,7 +11,6 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.spec.tests.integration.SpecsExampleTablesSpecExample;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -323,13 +322,7 @@ public class SpecsExampleTablesSpec {
           final Procedure1<SpecsExampleTablesSpecExample> _function = new Procedure1<SpecsExampleTablesSpecExample>() {
               public void apply(final SpecsExampleTablesSpecExample it) {
                 int _plus = (it.value1 + it.value2);
-                boolean _should_be = Should.should_be(_plus, it.sum);Assert
-                .assertTrue("\nExpected value1 + value2 => sum but:"
-                 + "\n     value1 + value2 is " + _plus
-                 + "\n     value1 is " + it.value1
-                 + "\n     value2 is " + it.value2
-                 + "\n     sum is " + it.sum + "\n", _should_be);
-                
+                Should.operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(it.sum));
               }
             };
           ExampleTableIterators.<SpecsExampleTablesSpecExample>forEach(SpecsExampleTablesSpec.this.example, _function);
@@ -353,7 +346,7 @@ public class SpecsExampleTablesSpec {
     _builder.append("| 7          | 8          | 14      | ?     (2)");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("(1) Expected value1 + value2 => sum but:");
+    _builder.append("(1) Expected value1 + value2 => sum but");
     _builder.newLine();
     _builder.append("         ");
     _builder.append("value1 + value2 is 9");
@@ -369,7 +362,7 @@ public class SpecsExampleTablesSpec {
     _builder.newLine();
     _builder.append("    ");
     _builder.newLine();
-    _builder.append("(2) Expected value1 + value2 => sum but:");
+    _builder.append("(2) Expected value1 + value2 => sum but");
     _builder.newLine();
     _builder.append("         ");
     _builder.append("value1 + value2 is 15");

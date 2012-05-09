@@ -34,12 +34,12 @@ public class MatcherSpec {
       };
     final Matcher<String> myMatcher = org.jnario.lib.Should.matches("[String input | input == \"true\"]", _function);
     boolean _matches = myMatcher.matches("true");
-    Assert.assertTrue("\nExpected myMatcher.matches(\"true\") but:"
+    Assert.assertTrue("\nExpected myMatcher.matches(\"true\") but"
      + "\n     myMatcher is " + myMatcher + "\n", _matches);
     
     boolean _matches_1 = myMatcher.matches("false");
     boolean _not = (!_matches_1);
-    Assert.assertTrue("\nExpected !myMatcher.matches(\"false\") but:"
+    Assert.assertTrue("\nExpected !myMatcher.matches(\"false\") but"
      + "\n     myMatcher.matches(\"false\") is " + _matches_1
      + "\n     myMatcher is " + myMatcher + "\n", _not);
     
@@ -57,12 +57,12 @@ public class MatcherSpec {
       };
     final Matcher<String> myMatcher = org.jnario.lib.Should.matches("[it  == \"true\"]", _function);
     boolean _matches = myMatcher.matches("true");
-    Assert.assertTrue("\nExpected myMatcher.matches(\"true\") but:"
+    Assert.assertTrue("\nExpected myMatcher.matches(\"true\") but"
      + "\n     myMatcher is " + myMatcher + "\n", _matches);
     
     boolean _matches_1 = myMatcher.matches("false");
     boolean _not = (!_matches_1);
-    Assert.assertTrue("\nExpected !myMatcher.matches(\"false\") but:"
+    Assert.assertTrue("\nExpected !myMatcher.matches(\"false\") but"
      + "\n     myMatcher.matches(\"false\") is " + _matches_1
      + "\n     myMatcher is " + myMatcher + "\n", _not);
     
@@ -75,24 +75,21 @@ public class MatcherSpec {
     final Function1<String,Boolean> _function = new Function1<String,Boolean>() {
         public Boolean apply(final String it) {
           boolean _startsWith = it.startsWith("H");
-          return Boolean.valueOf(_startsWith);
+          return _startsWith;
         }
       };
-    boolean _should_be = Should.<String>should_be(
-      "Hello", new Function0<Matcher<String>>() {
-      public Matcher<String> apply() {
+    Should.operator_doubleArrow(
+      "Hello", new Function0<Object>() {
+      public Object apply() {
         final Function1<String,Boolean> _function = new Function1<String,Boolean>() {
             public Boolean apply(final String it) {
               boolean _startsWith = it.startsWith("H");
-              return Boolean.valueOf(_startsWith);
+              return _startsWith;
             }
           };
         return org.jnario.lib.Should.matches("[it.startsWith(\"H\")]", _function);
       }
-    }.apply());Assert
-    .assertTrue("\nExpected \"Hello\" => #[it.startsWith(\"H\")] but:"
-     + "\n     #[it.startsWith(\"H\")] is " + org.jnario.lib.Should.matches("[it.startsWith(\"H\")]", _function) + "\n", _should_be);
-    
+    }.apply());
   }
   
   @Test
@@ -104,29 +101,26 @@ public class MatcherSpec {
           final Function1<String,Boolean> _function = new Function1<String,Boolean>() {
               public Boolean apply(final String it) {
                 boolean _startsWith = it.startsWith("b");
-                return Boolean.valueOf(_startsWith);
+                return _startsWith;
               }
             };
-          boolean _should_be = Should.<String>should_be(
-            "a", new Function0<Matcher<String>>() {
-            public Matcher<String> apply() {
+          Should.operator_doubleArrow(
+            "a", new Function0<Object>() {
+            public Object apply() {
               final Function1<String,Boolean> _function = new Function1<String,Boolean>() {
                   public Boolean apply(final String it) {
                     boolean _startsWith = it.startsWith("b");
-                    return Boolean.valueOf(_startsWith);
+                    return _startsWith;
                   }
                 };
               return org.jnario.lib.Should.matches("[it.startsWith(\"b\")]", _function);
             }
-          }.apply());Assert
-          .assertTrue("\nExpected \"a\" => #[it.startsWith(\"b\")] but:"
-           + "\n     #[it.startsWith(\"b\")] is " + org.jnario.lib.Should.matches("[it.startsWith(\"b\")]", _function) + "\n", _should_be);
-          
+          }.apply());
         }
       };
     String _errorMessage = Helpers.errorMessage(_function);
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("Expected \"a\" => #[it.startsWith(\"b\")] but:");
+    _builder.append("Expected \"a\" => #[it.startsWith(\"b\")] but");
     _builder.newLine();
     _builder.append("     ");
     _builder.append("#[it.startsWith(\"b\")] is [it.startsWith(\"b\")]");

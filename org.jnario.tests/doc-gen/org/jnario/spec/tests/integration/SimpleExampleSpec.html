@@ -28,8 +28,7 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<ul><li><p><a name="should_pass"></a>
-<strong>should pass</strong>
+<ul><li><p  id="should_pass"><strong>should pass</strong>
 <pre class="prettyprint lang-spec">
 val spec = '
 	package bootstrap
@@ -45,8 +44,7 @@ val spec = '
 val result = org::jnario::jnario::test::util::SpecExecutor::execute(spec)
 org::junit::Assert::assertThat(result, org::jnario::jnario::test::util::ResultMatchers::successful)</pre>
 </p>
-</li><li><p><a name="should_fail"></a>
-<strong>should fail</strong>
+</li><li><p  id="should_fail"><strong>should fail</strong>
 <pre class="prettyprint lang-spec">
 val spec = '
 	package bootstrap

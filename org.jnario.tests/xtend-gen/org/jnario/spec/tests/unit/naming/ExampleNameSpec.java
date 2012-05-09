@@ -39,7 +39,7 @@ public class ExampleNameSpec extends ExampleSpec {
           Example _parse = ExampleNameSpec.this.parse(it.example);
           String _name = _parse.getName();
           boolean _should_be = Should.should_be(_name, it.name);Assert
-          .assertTrue("\nExpected example.parse.name should be name but:"
+          .assertTrue("\nExpected example.parse.name should be name but"
            + "\n     example.parse.name is " + "\"" + _name + "\""
            + "\n     example.parse is " + _parse
            + "\n     example is " + "\"" + it.example + "\""

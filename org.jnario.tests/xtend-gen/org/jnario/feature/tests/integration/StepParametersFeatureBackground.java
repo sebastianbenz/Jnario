@@ -7,5 +7,5 @@ import org.junit.runner.RunWith;
 @RunWith(FeatureRunner.class)
 @Named("Background:")
 @SuppressWarnings("all")
-public abstract class StepParametersFeatureBackground {
+public class StepParametersFeatureBackground {
 }

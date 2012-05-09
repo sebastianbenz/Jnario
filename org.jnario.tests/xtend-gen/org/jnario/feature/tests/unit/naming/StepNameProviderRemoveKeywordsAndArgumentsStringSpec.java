@@ -10,7 +10,6 @@ import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -47,13 +46,7 @@ public class StepNameProviderRemoveKeywordsAndArgumentsStringSpec extends StepNa
           _builder.newLineIfNotEmpty();
           StepNameProviderRemoveKeywordsAndArgumentsStringSpec.this.parseScenario(_builder);
           String _removeKeywordsAndArguments = StepNameProviderRemoveKeywordsAndArgumentsStringSpec.this.subject.removeKeywordsAndArguments(it.step);
-          boolean _should_be = Should.should_be(_removeKeywordsAndArguments, it.result);Assert
-          .assertTrue("\nExpected subject.removeKeywordsAndArguments(step) => result but:"
-           + "\n     subject.removeKeywordsAndArguments(step) is " + "\"" + _removeKeywordsAndArguments + "\""
-           + "\n     subject is " + StepNameProviderRemoveKeywordsAndArgumentsStringSpec.this.subject
-           + "\n     step is " + "\"" + it.step + "\""
-           + "\n     result is " + "\"" + it.result + "\"" + "\n", _should_be);
-          
+          Should.operator_doubleArrow(_removeKeywordsAndArguments, it.result);
         }
       };
     ExampleTableIterators.<StepNameProviderRemoveKeywordsAndArgumentsStringSpecExamples>forEach(this.examples, _function);

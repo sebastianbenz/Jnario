@@ -6,9 +6,9 @@ import org.jnario.jnario.test.util.AbstractParserTest;
 import org.jnario.spec.SpecInjectorProvider;
 import org.junit.runner.RunWith;
 
+@RunWith(value = XtextRunner.class)
+@InjectWith(value = SpecInjectorProvider.class)
 @SuppressWarnings("all")
-@RunWith(XtextRunner.class)
-@InjectWith(SpecInjectorProvider.class)
 public class ParserTest extends AbstractParserTest {
   public Class<?> context() {
     return ParserTest.class;

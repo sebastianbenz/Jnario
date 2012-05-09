@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
 @Named("Features must have descriptions")
 public class JnarioValidatorFeaturesMustHaveDescriptionsSpec extends JnarioValidatorSpec {
   @Test
-  @Named("\\\'\\\'\\\'\\r; \t\t\tFeature: \\r; \t\t\\\'\\\'\\\'.select[typeof[Feature]].assertErrorContains[\"description\"]")
+  @Named("\\\'\\\'\\\'\\r \t\t\tFeature: \\r \t\t\\\'\\\'\\\'.select[typeof[Feature]].assertErrorContains[\"description\"]")
   @Order(99)
   public void featureSelectTypeofFeatureAssertErrorContainsDescription() throws Exception {
     StringConcatenation _builder = new StringConcatenation();

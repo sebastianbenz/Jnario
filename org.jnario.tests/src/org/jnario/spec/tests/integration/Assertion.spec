@@ -46,7 +46,7 @@ describe "Assertion"{
 			val y = false
 			errorMessage[assert y].is(  
 			'''
-			Expected y but:
+			Expected y but
 			     y is false''')
 		}                           
 		
@@ -56,7 +56,7 @@ describe "Assertion"{
 		fact "Filters literals"{           
 			val x = 0  
 			errorMessage[assert x == 42].is('''
-			  Expected x == 42 but:
+			  Expected x == 42 but
 			       x is 0''')	 
 		}      
 		
@@ -66,7 +66,7 @@ describe "Assertion"{
 		fact "Not Equals"{           
 			val x = 42     
 			errorMessage[assert !(x == 42)].is('''
-			  Expected !(x == 42) but:
+			  Expected !(x == 42) but
 			       x == 42 is true
 			       x is 42''')	  
 		}   
@@ -76,7 +76,7 @@ describe "Assertion"{
 		 */     
 		fact "Function Calls"{
 			errorMessage[assert greet("World") == "Hello World!"].is('''
-			  Expected greet("World") == "Hello World!" but:
+			  Expected greet("World") == "Hello World!" but
 			       greet("World") is "Hello World"''')
 		}    
 		
@@ -85,19 +85,19 @@ describe "Assertion"{
 		 */     
 		fact "Feature Calls"{
 			errorMessage[assert "Hello".toUpperCase.toLowerCase == "HELLO"].is('''
-			  Expected "Hello".toUpperCase.toLowerCase == "HELLO" but:
+			  Expected "Hello".toUpperCase.toLowerCase == "HELLO" but
 			       "Hello".toUpperCase.toLowerCase is "hello"
 			       "Hello".toUpperCase is "HELLO"''')
 		}      
 		
-		/*
+		/* 
 		 * This example involves two expressions with `&&`. 
 		 */
 		fact "And expressions"{
 			val x = 0 
 			val y = 1 
 			errorMessage[assert x == 1 && y == 0].is('''
-			  Expected x == 1 && y == 0 but:
+			  Expected x == 1 && y == 0 but
 			       x == 1 is false
 			       x is 0
 			       y == 0 is false
@@ -110,7 +110,7 @@ describe "Assertion"{
  		fact "Removes duplicate feature calls"{
 			val x = 0 
 			errorMessage[assert x > 0 && x < 10].is('''
-			  Expected x > 0 && x < 10 but:
+			  Expected x > 0 && x < 10 but
 			       x > 0 is false
 			       x is 0
 			       x < 10 is true''')

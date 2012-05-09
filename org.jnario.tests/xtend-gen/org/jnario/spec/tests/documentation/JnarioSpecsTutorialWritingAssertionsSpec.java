@@ -28,15 +28,15 @@ public class JnarioSpecsTutorialWritingAssertionsSpec extends JnarioSpecsTutoria
   @Named("\\\'assert\\\'")
   @Order(99)
   public void _assert() throws Exception {
-    Assert.assertTrue("\nExpected true but:" + "\n", true);
+    Assert.assertTrue("\nExpected true but" + " did not." + "\n", true);
     
     Stack<?> _stack = new Stack<Object>();
     boolean _empty = _stack.empty();
-    Assert.assertTrue("\nExpected new Stack().empty but:"
+    Assert.assertTrue("\nExpected new Stack().empty but"
      + "\n     new Stack() is " + _stack + "\n", _empty);
     
     boolean _startsWith = "Hello".startsWith("H");
-    Assert.assertTrue("\nExpected \"Hello\".startsWith(\"H\") but:"
+    Assert.assertTrue("\nExpected \"Hello\".startsWith(\"H\") but"
      + "\n     \"Hello\".startsWith(\"H\") is " + _startsWith + "\n", _startsWith);
     
   }
@@ -54,22 +54,17 @@ public class JnarioSpecsTutorialWritingAssertionsSpec extends JnarioSpecsTutoria
   public void shouldAnd() throws Exception {
     boolean _should_be = Should.<Boolean>should_be(
       true, true);Assert
-    .assertTrue("\nExpected true should be true but:" + "\n", _should_be);
+    .assertTrue("\nExpected true should be true but" + " did not." + "\n", _should_be);
     
-    boolean _should_be_1 = Should.<Boolean>should_be(
-      false, false);Assert
-    .assertTrue("\nExpected false => false but:" + "\n", _should_be_1);
-    
+    Should.operator_doubleArrow(
+      Boolean.valueOf(false), Boolean.valueOf(false));
     int _plus = (1 + 1);
-    boolean _should_be_2 = Should.should_be(_plus, 1);Assert
-    .assertFalse("\nExpected 1 + 1 should not be 1 but:"
-     + "\n     1 + 1 is " + _plus + "\n", _should_be_2);
+    boolean _should_be_1 = Should.should_be(_plus, 1);Assert
+    .assertFalse("\nExpected 1 + 1 should not be 1 but"
+     + "\n     1 + 1 is " + _plus + "\n", _should_be_1);
     
     int _plus_1 = (1 + 1);
-    boolean _should_be_3 = Should.should_be(_plus_1, 2);Assert
-    .assertTrue("\nExpected 1 + 1 => 2 but:"
-     + "\n     1 + 1 is " + _plus_1 + "\n", _should_be_3);
-    
+    Should.operator_doubleArrow(Integer.valueOf(_plus_1), Integer.valueOf(2));
   }
   
   /**
@@ -95,7 +90,7 @@ public class JnarioSpecsTutorialWritingAssertionsSpec extends JnarioSpecsTutoria
           } else {
             _and = (_equals && _equals_1);
           }
-          Assert.assertTrue("\nExpected x == 1 && y == 0 but:"
+          Assert.assertTrue("\nExpected x == 1 && y == 0 but"
            + "\n     x == 1 is " + _equals
            + "\n     x is " + x
            + "\n     y == 0 is " + _equals_1
@@ -105,7 +100,7 @@ public class JnarioSpecsTutorialWritingAssertionsSpec extends JnarioSpecsTutoria
       };
     String _errorMessage = Helpers.errorMessage(_function);
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("Expected x == 1 && y == 0 but:");
+    _builder.append("Expected x == 1 && y == 0 but");
     _builder.newLine();
     _builder.append("     ");
     _builder.append("x == 1 is false");
@@ -124,7 +119,7 @@ public class JnarioSpecsTutorialWritingAssertionsSpec extends JnarioSpecsTutoria
         public void apply(final Boolean it) {
           String _upperCase = greeting.toUpperCase();
           boolean _should_be = Should.should_be(_upperCase, "HELLO");Assert
-          .assertFalse("\nExpected greeting.toUpperCase should not be \"HELLO\" but:"
+          .assertFalse("\nExpected greeting.toUpperCase should not be \"HELLO\" but"
            + "\n     greeting.toUpperCase is " + "\"" + _upperCase + "\""
            + "\n     greeting is " + "\"" + greeting + "\"" + "\n", _should_be);
           
@@ -132,7 +127,7 @@ public class JnarioSpecsTutorialWritingAssertionsSpec extends JnarioSpecsTutoria
       };
     String _errorMessage_1 = Helpers.errorMessage(_function_1);
     StringConcatenation _builder_1 = new StringConcatenation();
-    _builder_1.append("Expected greeting.toUpperCase should not be \"HELLO\" but:");
+    _builder_1.append("Expected greeting.toUpperCase should not be \"HELLO\" but");
     _builder_1.newLine();
     _builder_1.append("     ");
     _builder_1.append("greeting.toUpperCase is \"HELLO\"");

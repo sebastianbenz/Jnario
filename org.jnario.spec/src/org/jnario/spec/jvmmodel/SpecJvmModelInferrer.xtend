@@ -52,7 +52,7 @@ import org.eclipse.xtend.core.jvmmodel.SyntheticNameClashResolver
  * @author Sebastian Benz - Initial contribution and API
  */
 class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
-
+	
 	@Inject extension ExtendedJvmTypesBuilder
 	
 	@Inject extension TypeReferences

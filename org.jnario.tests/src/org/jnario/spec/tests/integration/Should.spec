@@ -41,15 +41,15 @@ describe "Using Should"{
 		newArrayList("something") should contain "something"
 		newArrayList("something") should not contain "something else"
 	}     
- 
+
 	/*     
 	 * `should` throws an AssertionError if the result of the left 
 	 * expression does not equal the result of the right expression.
 	 */
 	fact "...or not to pass"{
-	  1 + 1 should be 1  throws AssertionError
-	  1 + 1 should not be 1  throws AssertionError
-	  1 + 1 => 1  throws AssertionError
+	  1 + 1 should be 1 throws AssertionError
+	  1 + 1 should not be 1 throws AssertionError
+	  1 + 1 => 1 throws AssertionError
 	}   
  
 	/*
@@ -59,18 +59,18 @@ describe "Using Should"{
 	 */
 	fact "Why did it fail?"{
 		errorMessage[1 + 1 => 1].is('''
-		  Expected 1 + 1 => 1 but:
+		  Expected 1 + 1 => 1 but
 		       1 + 1 is 2''')	
 		
 		val x = "hello"        
 		errorMessage[x.toUpperCase should not be "HELLO"].is('''
-		  Expected x.toUpperCase should not be "HELLO" but:
+		  Expected x.toUpperCase should not be "HELLO" but
 		       x.toUpperCase is "HELLO"
 		       x is "hello"''')	  
 		       
 		val y = "world"        
 		errorMessage[x => y].is('''
-		  Expected x => y but:
+		  Expected x => y but
 		       x is "hello"
 		       y is "world"''')	  
 	}  

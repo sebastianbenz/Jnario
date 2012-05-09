@@ -25,7 +25,6 @@ import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.spec.naming.OperationNameProvider;
 import org.jnario.spec.tests.unit.naming.OperationNamesExample;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,7 +32,7 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("OperationNameProvider")
-@InstantiateWith(SpecTestInstantiator.class)
+@InstantiateWith(value = SpecTestInstantiator.class)
 public class OperationNameProviderSpec {
   @Inject
   OperationNameProvider subject;
@@ -48,30 +47,15 @@ public class OperationNameProviderSpec {
   @Order(99)
   public void shouldNameMethodsSimilarToJavaDocLinks() throws Exception {
     String _nameOf = this.nameOf("simpleOperation");
-    boolean _should_be = Should.should_be(_nameOf, "simpleOperation");Assert
-    .assertTrue("\nExpected nameOf(\"simpleOperation\") => \"simpleOperation\" but:"
-     + "\n     nameOf(\"simpleOperation\") is " + "\"" + _nameOf + "\"" + "\n", _should_be);
-    
+    Should.operator_doubleArrow(_nameOf, "simpleOperation");
     String _nameOf_1 = this.nameOf("operationWithSingleArgument");
-    boolean _should_be_1 = Should.should_be(_nameOf_1, "operationWithSingleArgument(String)");Assert
-    .assertTrue("\nExpected nameOf(\"operationWithSingleArgument\") => \"operationWithSingleArgument(String)\" but:"
-     + "\n     nameOf(\"operationWithSingleArgument\") is " + "\"" + _nameOf_1 + "\"" + "\n", _should_be_1);
-    
+    Should.operator_doubleArrow(_nameOf_1, "operationWithSingleArgument(String)");
     String _nameOf_2 = this.nameOf("operationWithMultipleArguments");
-    boolean _should_be_2 = Should.should_be(_nameOf_2, "operationWithMultipleArguments(String, Object, int)");Assert
-    .assertTrue("\nExpected nameOf(\"operationWithMultipleArguments\") => \"operationWithMultipleArguments(String, Object, int)\" but:"
-     + "\n     nameOf(\"operationWithMultipleArguments\") is " + "\"" + _nameOf_2 + "\"" + "\n", _should_be_2);
-    
+    Should.operator_doubleArrow(_nameOf_2, "operationWithMultipleArguments(String, Object, int)");
     String _nameOf_3 = this.nameOf("operationWithTypedArguments");
-    boolean _should_be_3 = Should.should_be(_nameOf_3, "operationWithTypedArguments(List<String>, List<? extends String>)");Assert
-    .assertTrue("\nExpected nameOf(\"operationWithTypedArguments\") => \"operationWithTypedArguments(List<String>, List<? extends String>)\" but:"
-     + "\n     nameOf(\"operationWithTypedArguments\") is " + "\"" + _nameOf_3 + "\"" + "\n", _should_be_3);
-    
+    Should.operator_doubleArrow(_nameOf_3, "operationWithTypedArguments(List<String>, List<? extends String>)");
     String _nameOf_4 = this.nameOf("operationWithVarArg");
-    boolean _should_be_4 = Should.should_be(_nameOf_4, "operationWithVarArg(String[])");Assert
-    .assertTrue("\nExpected nameOf(\"operationWithVarArg\") => \"operationWithVarArg(String[])\" but:"
-     + "\n     nameOf(\"operationWithVarArg\") is " + "\"" + _nameOf_4 + "\"" + "\n", _should_be_4);
-    
+    Should.operator_doubleArrow(_nameOf_4, "operationWithVarArg(String[])");
   }
   
   @Before

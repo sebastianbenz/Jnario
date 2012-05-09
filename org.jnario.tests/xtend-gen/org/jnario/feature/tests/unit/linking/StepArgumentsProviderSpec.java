@@ -27,7 +27,6 @@ import org.jnario.runner.InstantiateWith;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,7 +34,7 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("StepArgumentsProvider")
-@InstantiateWith(FeatureTestInstantiator.class)
+@InstantiateWith(value = FeatureTestInstantiator.class)
 public class StepArgumentsProviderSpec {
   @Subject
   public StepArgumentsProvider subject;
@@ -74,14 +73,7 @@ public class StepArgumentsProviderSpec {
         public void apply(final StepArgumentsProviderSpecExamples it) {
           Step _create = StepArgumentsProviderSpec.this.create(it.step);
           List<String> _findStepArguments = StepArgumentsProviderSpec.this.subject.findStepArguments(_create);
-          boolean _should_be = Should.should_be(_findStepArguments, it.expectedArgs);Assert
-          .assertTrue("\nExpected subject.findStepArguments(create(step)) => expectedArgs but:"
-           + "\n     subject.findStepArguments(create(step)) is " + _findStepArguments
-           + "\n     subject is " + StepArgumentsProviderSpec.this.subject
-           + "\n     create(step) is " + _create
-           + "\n     step is " + "\"" + it.step + "\""
-           + "\n     expectedArgs is " + it.expectedArgs + "\n", _should_be);
-          
+          Should.operator_doubleArrow(_findStepArguments, it.expectedArgs);
         }
       };
     ExampleTableIterators.<StepArgumentsProviderSpecExamples>forEach(this.examples, _function);

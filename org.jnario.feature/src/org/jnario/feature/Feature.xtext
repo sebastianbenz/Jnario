@@ -158,7 +158,7 @@ XRelationalExpression returns xbase::XExpression:
 	( 
 	  =>({Should.leftOperand=current} 
 	 		( feature=[types::JvmIdentifiableElement|Should])) rightOperand=XOtherOperatorExpression |
-	 =>({ShouldThrow.expression=current} ((('should'|'must') 'throw') | 'throws')) type=JvmTypeReference |
+	 =>({ShouldThrow.expression=current} (('should' 'throw') | 'throws')) type=JvmTypeReference |
 	 =>({xbase::XInstanceOfExpression.expression=current} 'instanceof') type=JvmTypeReference |
 	 =>({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare]) rightOperand=XOtherOperatorExpression)*;
 

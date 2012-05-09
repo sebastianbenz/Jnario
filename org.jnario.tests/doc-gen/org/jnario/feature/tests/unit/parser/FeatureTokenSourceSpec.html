@@ -28,8 +28,7 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<ul><li><p><a name="Splits_feature"></a>
-<strong>Splits feature</strong>
+<ul><li><p  id="Splits_feature"><strong>Splits feature</strong>
 <pre class="prettyprint lang-spec">
 setInput('''
 	Feature: example
@@ -38,8 +37,7 @@ assertSplitsIn(
 	token(RULE_FEATURE_TEXT,  "Feature: example\n", 1)
 )</pre>
 </p>
-</li><li><p><a name="Splits_incomplete_feature"></a>
-<strong>Splits incomplete feature</strong>
+</li><li><p  id="Splits_incomplete_feature"><strong>Splits incomplete feature</strong>
 <pre class="prettyprint lang-spec">
 setInput('''
 	Feature: example''')
@@ -47,8 +45,7 @@ assertSplitsIn(
 	token(RULE_FEATURE_TEXT,  "Feature: example", 1)
 )</pre>
 </p>
-</li><li><p><a name="Splits_incomplete_feature_with_text"></a>
-<strong>Splits incomplete feature with text</strong>
+</li><li><p  id="Splits_incomplete_feature_with_text"><strong>Splits incomplete feature with text</strong>
 <pre class="prettyprint lang-spec">
 setInput('''
 	Feature: example
@@ -58,8 +55,7 @@ assertSplitsIn(
 	token(RULE_TEXT,  " some text", 2)
 )</pre>
 </p>
-</li><li><p><a name="Splits_incomplete_feature_with_text_and_new_line"></a>
-<strong>Splits incomplete feature with text and new line</strong>
+</li><li><p  id="Splits_incomplete_feature_with_text_and_new_line"><strong>Splits incomplete feature with text and new line</strong>
 <pre class="prettyprint lang-spec">
 setInput('''
 	Feature: example
@@ -70,8 +66,7 @@ assertSplitsIn(
 	token(RULE_TEXT,  "some text\n", 2)
 )</pre>
 </p>
-</li><li><p><a name="Splits_feature_with_text_and_scenario"></a>
-<strong>Splits feature with text and scenario</strong>
+</li><li><p  id="Splits_feature_with_text_and_scenario"><strong>Splits feature with text and scenario</strong>
 <pre class="prettyprint lang-spec">
 setInput('''
 	Feature: example
@@ -85,8 +80,7 @@ assertSplitsIn(
 	token(RULE_SCENARIO_TEXT,  "Scenario: scenario1\n", 4)
 )</pre>
 </p>
-</li><li><p><a name="splits_feature_with_text_and_background"></a>
-<strong>splits feature with text and background</strong>
+</li><li><p  id="splits_feature_with_text_and_background"><strong>splits feature with text and background</strong>
 <pre class="prettyprint lang-spec">
 setInput('''
 	Feature: example
@@ -100,8 +94,7 @@ assertSplitsIn(
 	token(RULE_BACKGROUND_TEXT,  "Background: scenario1\n", 4)
 )</pre>
 </p>
-</li><li><p><a name="splits_feature_with_text"></a>
-<strong>splits feature with text</strong>
+</li><li><p  id="splits_feature_with_text"><strong>splits feature with text</strong>
 <pre class="prettyprint lang-spec">
 setInput('''
 	Feature: example
@@ -113,8 +106,7 @@ assertSplitsIn(
 	token(RULE_TEXT,  "  Text1\n  Text2\n", 2)
 )</pre>
 </p>
-</li><li><p><a name="splits_feature_with_scenario"></a>
-<strong>splits feature with scenario</strong>
+</li><li><p  id="splits_feature_with_scenario"><strong>splits feature with scenario</strong>
 <pre class="prettyprint lang-spec">
 setInput('''
 	Feature: example
@@ -124,8 +116,7 @@ assertSplitsIn(
 	token(RULE_SCENARIO_TEXT,  "Scenario: scenario1", 2)
 )</pre>
 </p>
-</li><li><p><a name="splits_feature_with_scenario_and_line_break"></a>
-<strong>splits feature with scenario and line break</strong>
+</li><li><p  id="splits_feature_with_scenario_and_line_break"><strong>splits feature with scenario and line break</strong>
 <pre class="prettyprint lang-spec">
 setInput('''
 	Feature: example
@@ -136,8 +127,7 @@ assertSplitsIn(
 	token(RULE_SCENARIO_TEXT,  "Scenario: scenario1\n", 2)
 )</pre>
 </p>
-</li><li><p><a name="splits_feature_with_background"></a>
-<strong>splits feature with background</strong>
+</li><li><p  id="splits_feature_with_background"><strong>splits feature with background</strong>
 <pre class="prettyprint lang-spec">
 setInput('''
 	Feature: example

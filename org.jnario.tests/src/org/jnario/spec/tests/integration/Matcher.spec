@@ -14,7 +14,7 @@ import org.hamcrest.Matcher
  * Jnario provides syntactic sugar for creating matchers.
  */
 describe "Matcher"{
-	
+
 	fact "returns the boolean result of the evaluated expression"{
 		val myMatcher = #[String input | input == "true"]
 		assert myMatcher.matches("true")
@@ -35,7 +35,7 @@ describe "Matcher"{
 		errorMessage[
 			"a" => #[it.startsWith("b")]
 		].is('''
-		Expected "a" => #[it.startsWith("b")] but:
+		Expected "a" => #[it.startsWith("b")] but
 		     #[it.startsWith("b")] is [it.startsWith("b")]''')
 	}   
 	

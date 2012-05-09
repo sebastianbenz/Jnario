@@ -393,7 +393,7 @@ public class JnarioSpecsTutorialHowToWriteASpecificationSpec extends JnarioSpecs
    *         | 1     | 2     | 4       | FAILED     (1)
    *         | 4     | 5     | 9       | OK
    * 
-   * (1) Expected a + b should be sum but:
+   * (1) Expected a + b should be sum but
    *          a + b is 3
    *          a is 1
    *          b is 2

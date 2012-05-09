@@ -18,7 +18,6 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -209,44 +208,20 @@ public class FeatureTokenSourceSpec {
     final List<Token> actualTokens = IteratorExtensions.<Token>toList(this.tokenAcceptor);
     int _size = actualTokens.size();
     int _size_1 = ((List<CommonToken>)Conversions.doWrapArray(expectedTokens)).size();
-    boolean _should_be = Should.should_be(_size, _size_1);Assert
-    .assertTrue("\nExpected actualTokens.size => expectedTokens.size but:"
-     + "\n     actualTokens.size is " + _size
-     + "\n     actualTokens is " + actualTokens
-     + "\n     expectedTokens.size is " + _size_1
-     + "\n     expectedTokens is " + ((List<CommonToken>)Conversions.doWrapArray(expectedTokens)) + "\n", _should_be);
-    
+    Should.operator_doubleArrow(Integer.valueOf(_size), Integer.valueOf(_size_1));
     final Procedure2<Token,Integer> _function = new Procedure2<Token,Integer>() {
         public void apply(final Token e, final Integer i) {
           final CommonToken expected = ((List<CommonToken>)Conversions.doWrapArray(expectedTokens)).get((i).intValue());
           final CommonToken actual = ((CommonToken) e);
           int _type = actual.getType();
           int _type_1 = expected.getType();
-          boolean _should_be = Should.should_be(_type, _type_1);Assert
-          .assertTrue("\nExpected actual.type => expected.type but:"
-           + "\n     actual.type is " + _type
-           + "\n     actual is " + actual
-           + "\n     expected.type is " + _type_1
-           + "\n     expected is " + expected + "\n", _should_be);
-          
+          Should.operator_doubleArrow(Integer.valueOf(_type), Integer.valueOf(_type_1));
           String _text = actual.getText();
           String _text_1 = expected.getText();
-          boolean _should_be_1 = Should.should_be(_text, _text_1);Assert
-          .assertTrue("\nExpected actual.text => expected.text but:"
-           + "\n     actual.text is " + "\"" + _text + "\""
-           + "\n     actual is " + actual
-           + "\n     expected.text is " + "\"" + _text_1 + "\""
-           + "\n     expected is " + expected + "\n", _should_be_1);
-          
+          Should.operator_doubleArrow(_text, _text_1);
           int _line = actual.getLine();
           int _line_1 = expected.getLine();
-          boolean _should_be_2 = Should.should_be(_line, _line_1);Assert
-          .assertTrue("\nExpected actual.line => expected.line but:"
-           + "\n     actual.line is " + _line
-           + "\n     actual is " + actual
-           + "\n     expected.line is " + _line_1
-           + "\n     expected is " + expected + "\n", _should_be_2);
-          
+          Should.operator_doubleArrow(Integer.valueOf(_line), Integer.valueOf(_line_1));
         }
       };
     IterableExtensions.<Token>forEach(actualTokens, _function);

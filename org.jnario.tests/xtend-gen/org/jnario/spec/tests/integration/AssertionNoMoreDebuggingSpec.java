@@ -32,14 +32,14 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
     final boolean y = false;
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
-          Assert.assertTrue("\nExpected y but:"
+          Assert.assertTrue("\nExpected y but"
            + "\n     y is " + y + "\n", y);
           
         }
       };
     String _errorMessage = Helpers.errorMessage(_function);
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("Expected y but:");
+    _builder.append("Expected y but");
     _builder.newLine();
     _builder.append("     ");
     _builder.append("y is false");
@@ -57,14 +57,14 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
           boolean _equals = (x == 42);
-          Assert.assertTrue("\nExpected x == 42 but:"
+          Assert.assertTrue("\nExpected x == 42 but"
            + "\n     x is " + x + "\n", _equals);
           
         }
       };
     String _errorMessage = Helpers.errorMessage(_function);
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("Expected x == 42 but:");
+    _builder.append("Expected x == 42 but");
     _builder.newLine();
     _builder.append("     ");
     _builder.append("x is 0");
@@ -83,7 +83,7 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
         public void apply(final Boolean it) {
           boolean _equals = (x == 42);
           boolean _not = (!_equals);
-          Assert.assertTrue("\nExpected !(x == 42) but:"
+          Assert.assertTrue("\nExpected !(x == 42) but"
            + "\n     x == 42 is " + _equals
            + "\n     x is " + x + "\n", _not);
           
@@ -91,7 +91,7 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
       };
     String _errorMessage = Helpers.errorMessage(_function);
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("Expected !(x == 42) but:");
+    _builder.append("Expected !(x == 42) but");
     _builder.newLine();
     _builder.append("     ");
     _builder.append("x == 42 is true");
@@ -112,14 +112,14 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
         public void apply(final Boolean it) {
           String _greet = AssertionNoMoreDebuggingSpec.this.greet("World");
           boolean _equals = Objects.equal(_greet, "Hello World!");
-          Assert.assertTrue("\nExpected greet(\"World\") == \"Hello World!\" but:"
+          Assert.assertTrue("\nExpected greet(\"World\") == \"Hello World!\" but"
            + "\n     greet(\"World\") is " + "\"" + _greet + "\"" + "\n", _equals);
           
         }
       };
     String _errorMessage = Helpers.errorMessage(_function);
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("Expected greet(\"World\") == \"Hello World!\" but:");
+    _builder.append("Expected greet(\"World\") == \"Hello World!\" but");
     _builder.newLine();
     _builder.append("     ");
     _builder.append("greet(\"World\") is \"Hello World\"");
@@ -138,7 +138,7 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
           String _upperCase = "Hello".toUpperCase();
           String _lowerCase = _upperCase.toLowerCase();
           boolean _equals = Objects.equal(_lowerCase, "HELLO");
-          Assert.assertTrue("\nExpected \"Hello\".toUpperCase.toLowerCase == \"HELLO\" but:"
+          Assert.assertTrue("\nExpected \"Hello\".toUpperCase.toLowerCase == \"HELLO\" but"
            + "\n     \"Hello\".toUpperCase.toLowerCase is " + "\"" + _lowerCase + "\""
            + "\n     \"Hello\".toUpperCase is " + "\"" + _upperCase + "\"" + "\n", _equals);
           
@@ -146,7 +146,7 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
       };
     String _errorMessage = Helpers.errorMessage(_function);
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("Expected \"Hello\".toUpperCase.toLowerCase == \"HELLO\" but:");
+    _builder.append("Expected \"Hello\".toUpperCase.toLowerCase == \"HELLO\" but");
     _builder.newLine();
     _builder.append("     ");
     _builder.append("\"Hello\".toUpperCase.toLowerCase is \"hello\"");
@@ -175,7 +175,7 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
           } else {
             _and = (_equals && _equals_1);
           }
-          Assert.assertTrue("\nExpected x == 1 && y == 0 but:"
+          Assert.assertTrue("\nExpected x == 1 && y == 0 but"
            + "\n     x == 1 is " + _equals
            + "\n     x is " + x
            + "\n     y == 0 is " + _equals_1
@@ -185,7 +185,7 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
       };
     String _errorMessage = Helpers.errorMessage(_function);
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("Expected x == 1 && y == 0 but:");
+    _builder.append("Expected x == 1 && y == 0 but");
     _builder.newLine();
     _builder.append("     ");
     _builder.append("x == 1 is false");
@@ -219,7 +219,7 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
           } else {
             _and = (_greaterThan && _lessThan);
           }
-          Assert.assertTrue("\nExpected x > 0 && x < 10 but:"
+          Assert.assertTrue("\nExpected x > 0 && x < 10 but"
            + "\n     x > 0 is " + _greaterThan
            + "\n     x is " + x
            + "\n     x < 10 is " + _lessThan + "\n", _and);
@@ -228,7 +228,7 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
       };
     String _errorMessage = Helpers.errorMessage(_function);
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("Expected x > 0 && x < 10 but:");
+    _builder.append("Expected x > 0 && x < 10 but");
     _builder.newLine();
     _builder.append("     ");
     _builder.append("x > 0 is false");

@@ -10,7 +10,6 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.util.Strings;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -43,13 +42,7 @@ public class StringsStartsWithWordStringStringSpec extends StringsSpec {
     final Procedure1<StringsStartsWithWordStringStringSpecExamples> _function = new Procedure1<StringsStartsWithWordStringStringSpecExamples>() {
         public void apply(final StringsStartsWithWordStringStringSpecExamples it) {
           int _startsWithWord = Strings.startsWithWord(it.string, it.word);
-          boolean _should_be = Should.should_be(_startsWithWord, it.index);Assert
-          .assertTrue("\nExpected string.startsWithWord(word) => index but:"
-           + "\n     string.startsWithWord(word) is " + _startsWithWord
-           + "\n     string is " + "\"" + it.string + "\""
-           + "\n     word is " + "\"" + it.word + "\""
-           + "\n     index is " + it.index + "\n", _should_be);
-          
+          Should.operator_doubleArrow(Integer.valueOf(_startsWithWord), Integer.valueOf(it.index));
         }
       };
     ExampleTableIterators.<StringsStartsWithWordStringStringSpecExamples>forEach(this.examples, _function);

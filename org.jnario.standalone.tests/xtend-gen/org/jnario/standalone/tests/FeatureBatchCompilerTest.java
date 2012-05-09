@@ -16,9 +16,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+@RunWith(value = XtextRunner.class)
+@InjectWith(value = FeatureInjectorProvider.class)
 @SuppressWarnings("all")
-@RunWith(XtextRunner.class)
-@InjectWith(FeatureInjectorProvider.class)
 public class FeatureBatchCompilerTest {
   @Inject
   private FeatureBatchCompiler batchCompiler;

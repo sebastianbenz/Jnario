@@ -3605,32 +3605,6 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__XRelationalExpression__Alternatives_1_1_0_0_1_0_0
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getXRelationalExpressionAccess().getShouldKeyword_1_1_0_0_1_0_0_0()); }
-
-	'should' 
-
-{ after(grammarAccess.getXRelationalExpressionAccess().getShouldKeyword_1_1_0_0_1_0_0_0()); }
-)
-
-    |(
-{ before(grammarAccess.getXRelationalExpressionAccess().getMustKeyword_1_1_0_0_1_0_0_1()); }
-
-	'must' 
-
-{ after(grammarAccess.getXRelationalExpressionAccess().getMustKeyword_1_1_0_0_1_0_0_1()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
 rule__Member__Alternatives_2
     @init {
 		int stackSize = keepStackSize();
@@ -7817,9 +7791,11 @@ rule__XRelationalExpression__Group_1_1_0_0_1_0__0__Impl
     }
 :
 (
-{ before(grammarAccess.getXRelationalExpressionAccess().getAlternatives_1_1_0_0_1_0_0()); }
-(rule__XRelationalExpression__Alternatives_1_1_0_0_1_0_0)
-{ after(grammarAccess.getXRelationalExpressionAccess().getAlternatives_1_1_0_0_1_0_0()); }
+{ before(grammarAccess.getXRelationalExpressionAccess().getShouldKeyword_1_1_0_0_1_0_0()); }
+
+	'should' 
+
+{ after(grammarAccess.getXRelationalExpressionAccess().getShouldKeyword_1_1_0_0_1_0_0()); }
 )
 
 ;

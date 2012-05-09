@@ -28,8 +28,7 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<ul><li><p><a name="assert_statement_must_be_boolean"></a>
-<strong>assert statement must be boolean</strong>
+<ul><li><p  id="assert_statement_must_be_boolean"><strong>assert statement must be boolean</strong>
 <pre class="prettyprint lang-spec">
 parseSpec('
 	package bootstrap
@@ -44,8 +43,7 @@ parseSpec('
 val validationResult = validate(typeof(Assertion))
 validationResult.assertErrorContains("invalid type")</pre>
 </p>
-</li><li><p><a name="example_table_values_must_not_be_void"></a>
-<strong>example table values must not be void</strong>
+</li><li><p  id="example_table_values_must_not_be_void"><strong>example table values must not be void</strong>
 <pre class="prettyprint lang-spec">
 parseSpec('
 	package bootstrap
@@ -61,8 +59,7 @@ parseSpec('
 val validationResult = validate(typeof(ExampleRow))
 validationResult.assertErrorContains("void")</pre>
 </p>
-</li><li><p><a name="example_table_rows_must_have_the_same_size"></a>
-<strong>example table rows must have the same size</strong>
+</li><li><p  id="example_table_rows_must_have_the_same_size"><strong>example table rows must have the same size</strong>
 <pre class="prettyprint lang-spec">
 parseSpec('
 	package bootstrap

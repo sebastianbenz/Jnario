@@ -1949,10 +1949,8 @@ ruleXRelationalExpression returns [EObject current=null]
 )
 ))
     |(((((
-)(((	'should' 
-
-    |	'must' 
-)	'throw' 
+)((	'should' 
+	'throw' 
 )
     |	'throws' 
 )))=>((
@@ -1961,37 +1959,32 @@ ruleXRelationalExpression returns [EObject current=null]
             grammarAccess.getXRelationalExpressionAccess().getShouldThrowExpressionAction_1_1_0_0_0(),
             $current);
     }
-)(((	otherlv_5='should' 
+)((	otherlv_5='should' 
     {
-    	newLeafNode(otherlv_5, grammarAccess.getXRelationalExpressionAccess().getShouldKeyword_1_1_0_0_1_0_0_0());
+    	newLeafNode(otherlv_5, grammarAccess.getXRelationalExpressionAccess().getShouldKeyword_1_1_0_0_1_0_0());
     }
-
-    |	otherlv_6='must' 
+	otherlv_6='throw' 
     {
-    	newLeafNode(otherlv_6, grammarAccess.getXRelationalExpressionAccess().getMustKeyword_1_1_0_0_1_0_0_1());
-    }
-)	otherlv_7='throw' 
-    {
-    	newLeafNode(otherlv_7, grammarAccess.getXRelationalExpressionAccess().getThrowKeyword_1_1_0_0_1_0_1());
+    	newLeafNode(otherlv_6, grammarAccess.getXRelationalExpressionAccess().getThrowKeyword_1_1_0_0_1_0_1());
     }
 )
-    |	otherlv_8='throws' 
+    |	otherlv_7='throws' 
     {
-    	newLeafNode(otherlv_8, grammarAccess.getXRelationalExpressionAccess().getThrowsKeyword_1_1_0_0_1_1());
+    	newLeafNode(otherlv_7, grammarAccess.getXRelationalExpressionAccess().getThrowsKeyword_1_1_0_0_1_1());
     }
 )))(
 (
 		{ 
 	        newCompositeNode(grammarAccess.getXRelationalExpressionAccess().getTypeJvmTypeReferenceParserRuleCall_1_1_1_0()); 
 	    }
-		lv_type_9_0=ruleJvmTypeReference		{
+		lv_type_8_0=ruleJvmTypeReference		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getXRelationalExpressionRule());
 	        }
        		set(
        			$current, 
        			"type",
-        		lv_type_9_0, 
+        		lv_type_8_0, 
         		"JvmTypeReference");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -2006,23 +1999,23 @@ ruleXRelationalExpression returns [EObject current=null]
             grammarAccess.getXRelationalExpressionAccess().getXInstanceOfExpressionExpressionAction_1_2_0_0_0(),
             $current);
     }
-)	otherlv_11='instanceof' 
+)	otherlv_10='instanceof' 
     {
-    	newLeafNode(otherlv_11, grammarAccess.getXRelationalExpressionAccess().getInstanceofKeyword_1_2_0_0_1());
+    	newLeafNode(otherlv_10, grammarAccess.getXRelationalExpressionAccess().getInstanceofKeyword_1_2_0_0_1());
     }
 ))(
 (
 		{ 
 	        newCompositeNode(grammarAccess.getXRelationalExpressionAccess().getTypeJvmTypeReferenceParserRuleCall_1_2_1_0()); 
 	    }
-		lv_type_12_0=ruleJvmTypeReference		{
+		lv_type_11_0=ruleJvmTypeReference		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getXRelationalExpressionRule());
 	        }
        		set(
        			$current, 
        			"type",
-        		lv_type_12_0, 
+        		lv_type_11_0, 
         		"JvmTypeReference");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -2060,14 +2053,14 @@ ruleXRelationalExpression returns [EObject current=null]
 		{ 
 	        newCompositeNode(grammarAccess.getXRelationalExpressionAccess().getRightOperandXOtherOperatorExpressionParserRuleCall_1_3_1_0()); 
 	    }
-		lv_rightOperand_15_0=ruleXOtherOperatorExpression		{
+		lv_rightOperand_14_0=ruleXOtherOperatorExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getXRelationalExpressionRule());
 	        }
        		set(
        			$current, 
        			"rightOperand",
-        		lv_rightOperand_15_0, 
+        		lv_rightOperand_14_0, 
         		"XOtherOperatorExpression");
 	        afterParserOrEnumRuleCall();
 	    }

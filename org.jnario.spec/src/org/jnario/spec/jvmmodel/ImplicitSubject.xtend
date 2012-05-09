@@ -32,7 +32,7 @@ import static extension com.google.common.collect.Iterators.*
 class ImplicitSubject {
 	
 	@Inject extension ExtendedJvmTypesBuilder
-	
+
 	def void addImplicitSubject(JvmGenericType type, ExampleGroup exampleGroup){
 		val targetType = exampleGroup.resolveTargetType()
 		if(targetType == null || targetType.eIsProxy()) return;

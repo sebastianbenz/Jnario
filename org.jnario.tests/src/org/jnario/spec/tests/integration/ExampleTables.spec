@@ -182,13 +182,13 @@ describe "Specs - Example Tables"{
 			        | 4          | 5          | 7       | ?     (1)
 			        | 7          | 8          | 14      | ?     (2)
 			
-			(1) Expected value1 + value2 => sum but:
+			(1) Expected value1 + value2 => sum but
 			         value1 + value2 is 9
 			         value1 is 4
 			         value2 is 5
 			         sum is 7
 			    
-			(2) Expected value1 + value2 => sum but:
+			(2) Expected value1 + value2 => sum but
 			         value1 + value2 is 15
 			         value1 is 7
 			         value2 is 8

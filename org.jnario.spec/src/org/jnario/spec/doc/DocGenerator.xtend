@@ -28,7 +28,7 @@ class DocGenerator extends AbstractDocGenerator {
 	@Inject extension ExampleNameProvider 
 	@Inject extension ExtendedJvmTypesBuilder
 	@Inject extension FilterExtractor
-
+ 
 	override createHtmlFile(XtendClass xtendClass) {
 		if(!(xtendClass instanceof ExampleGroup)){
 			return EMPTY_FILE

@@ -29,32 +29,28 @@
 			<div class="row">
 				<div class="span12">
 <p>Jnario provides syntactic sugar for creating matchers.</p>
-<ul><li><p><a name="returns_the_boolean_result_of_the_evaluated_expression"></a>
-<strong>returns the boolean result of the evaluated expression</strong>
+<ul><li><p  id="returns_the_boolean_result_of_the_evaluated_expression"><strong>returns the boolean result of the evaluated expression</strong>
 <pre class="prettyprint lang-spec">
 val myMatcher = #[String input | input == "true"]
 assert myMatcher.matches("true")
 assert !myMatcher.matches("false")</pre>
 </p>
-</li><li><p><a name="type_can_be_coerced_from_the_context"></a>
-<strong>type can be coerced from the context</strong>
+</li><li><p  id="type_can_be_coerced_from_the_context"><strong>type can be coerced from the context</strong>
 <pre class="prettyprint lang-spec">
 val Matcher&lt;String&gt; myMatcher = #[it  == "true"]
 assert myMatcher.matches("true")
 assert !myMatcher.matches("false")</pre>
 </p>
-</li><li><p><a name="works_with_should"></a>
-<strong>works with should</strong>
+</li><li><p  id="works_with_should"><strong>works with should</strong>
 <pre class="prettyprint lang-spec">
 "Hello" =&gt; #[it.startsWith("H")]</pre>
 </p>
-</li><li><p><a name="uses_the_closure_s_code_as_description"></a>
-<strong>uses the closure's code as description</strong>
+</li><li><p  id="uses_the_closure_s_code_as_description"><strong>uses the closure's code as description</strong>
 <pre class="prettyprint lang-spec">
 errorMessage[
 	"a" =&gt; #[it.startsWith("b")]
 ].is('''
-Expected "a" =&gt; #[it.startsWith("b")] but:
+Expected "a" =&gt; #[it.startsWith("b")] but
      #[it.startsWith("b")] is [it.startsWith("b")]''')</pre>
 </p>
 </li></ul>
