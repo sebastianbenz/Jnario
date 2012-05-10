@@ -4,6 +4,7 @@ import org.jnario.lib.Should;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -31,7 +32,13 @@ public class ParsingSimpleJnarioFilesFeatureAndStuff {
   @Named("Then the adding these should be the result.")
   public void thenTheAddingTheseShouldBeTheResult() {
     int _plus = (this.x + this.y);
-    Should.operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(this.z));
+    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(this.z));Assert
+    .assertTrue("\nExpected (x+y) => z but"
+     + "\n     x+y is " + Integer.valueOf(_plus)
+     + "\n     x is " + this.x
+     + "\n     y is " + this.y
+     + "\n     z is " + Integer.valueOf(this.z) + "\n", _doubleArrow);
+    
   }
   
   public int x;

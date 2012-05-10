@@ -27,6 +27,7 @@ import org.jnario.runner.InstantiateWith;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -73,7 +74,14 @@ public class StepArgumentsProviderSpec {
         public void apply(final StepArgumentsProviderSpecExamples it) {
           Step _create = StepArgumentsProviderSpec.this.create(it.step);
           List<String> _findStepArguments = StepArgumentsProviderSpec.this.subject.findStepArguments(_create);
-          Should.operator_doubleArrow(_findStepArguments, it.expectedArgs);
+          boolean _doubleArrow = Should.operator_doubleArrow(_findStepArguments, it.expectedArgs);Assert
+          .assertTrue("\nExpected subject.findStepArguments(create(step)) => expectedArgs but"
+           + "\n     subject.findStepArguments(create(step)) is " + _findStepArguments
+           + "\n     subject is " + StepArgumentsProviderSpec.this.subject
+           + "\n     create(step) is " + _create
+           + "\n     step is " + "\"" + it.step + "\""
+           + "\n     expectedArgs is " + it.expectedArgs + "\n", _doubleArrow);
+          
         }
       };
     ExampleTableIterators.<StepArgumentsProviderSpecExamples>forEach(this.examples, _function);

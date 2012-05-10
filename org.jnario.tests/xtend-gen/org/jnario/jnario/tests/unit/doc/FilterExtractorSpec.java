@@ -18,6 +18,7 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -68,7 +69,12 @@ public class FilterExtractorSpec {
     final Procedure1<FilterExtractorSpecFilterExtractions> _function = new Procedure1<FilterExtractorSpecFilterExtractions>() {
         public void apply(final FilterExtractorSpecFilterExtractions it) {
           String _stringAfterExtract = FilterExtractorSpec.this.stringAfterExtract(it.input);
-          Should.operator_doubleArrow(_stringAfterExtract, it.resultString);
+          boolean _doubleArrow = Should.operator_doubleArrow(_stringAfterExtract, it.resultString);Assert
+          .assertTrue("\nExpected stringAfterExtract(input) => resultString but"
+           + "\n     stringAfterExtract(input) is " + "\"" + _stringAfterExtract + "\""
+           + "\n     input is " + "\"" + it.input + "\""
+           + "\n     resultString is " + "\"" + it.resultString + "\"" + "\n", _doubleArrow);
+          
         }
       };
     ExampleTableIterators.<FilterExtractorSpecFilterExtractions>forEach(this.filterExtractions, _function);
@@ -81,7 +87,12 @@ public class FilterExtractorSpec {
     final Procedure1<FilterExtractorSpecFilterCreation> _function = new Procedure1<FilterExtractorSpecFilterCreation>() {
         public void apply(final FilterExtractorSpecFilterCreation it) {
           List<String> _extractedFilters = FilterExtractorSpec.this.extractedFilters(it.input);
-          Should.operator_doubleArrow(_extractedFilters, it.resultingFilters);
+          boolean _doubleArrow = Should.operator_doubleArrow(_extractedFilters, it.resultingFilters);Assert
+          .assertTrue("\nExpected extractedFilters(input) => resultingFilters but"
+           + "\n     extractedFilters(input) is " + _extractedFilters
+           + "\n     input is " + "\"" + it.input + "\""
+           + "\n     resultingFilters is " + it.resultingFilters + "\n", _doubleArrow);
+          
         }
       };
     ExampleTableIterators.<FilterExtractorSpecFilterCreation>forEach(this.filterCreation, _function);

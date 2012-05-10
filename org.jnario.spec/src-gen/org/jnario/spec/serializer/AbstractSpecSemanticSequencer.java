@@ -1714,11 +1714,17 @@ public class AbstractSpecSemanticSequencer extends AbstractSemanticSequencer {
 	 *             (
 	 *                 annotationInfo=Member_XtendField_2_6_0 
 	 *                 visibility=Visibility? 
-	 *                 ((extension?='extension' type=JvmTypeReference name=ValidID?) | (static?='static'? type=JvmTypeReference name=ValidID))
+	 *                 (
+	 *                     (extension?='extension' final?='val'? type=JvmTypeReference name=ValidID?) | 
+	 *                     (static?='static'? (type=JvmTypeReference | (final?='val'? type=JvmTypeReference?)) name=ValidID)
+	 *                 )
 	 *             ) | 
 	 *             (
 	 *                 annotationInfo=Member_XtendField_2_6_0 
-	 *                 ((extension?='extension' type=JvmTypeReference name=ValidID?) | (static?='static'? type=JvmTypeReference name=ValidID))
+	 *                 (
+	 *                     (extension?='extension' final?='val'? type=JvmTypeReference name=ValidID?) | 
+	 *                     (static?='static'? (type=JvmTypeReference | (final?='val'? type=JvmTypeReference?)) name=ValidID)
+	 *                 )
 	 *             )
 	 *         ) 
 	 *         initialValue=XExpression?

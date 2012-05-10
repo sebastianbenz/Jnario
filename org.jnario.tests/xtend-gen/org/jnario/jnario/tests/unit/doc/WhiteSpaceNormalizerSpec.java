@@ -10,6 +10,7 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,7 +45,13 @@ public class WhiteSpaceNormalizerSpec {
     final Procedure1<WhiteSpaceNormalizerSpecExamples> _function = new Procedure1<WhiteSpaceNormalizerSpecExamples>() {
         public void apply(final WhiteSpaceNormalizerSpecExamples it) {
           String _normalize = WhiteSpaceNormalizerSpec.this.subject.normalize(it.input);
-          Should.operator_doubleArrow(_normalize, it.result);
+          boolean _doubleArrow = Should.operator_doubleArrow(_normalize, it.result);Assert
+          .assertTrue("\nExpected subject.normalize(input) => result but"
+           + "\n     subject.normalize(input) is " + "\"" + _normalize + "\""
+           + "\n     subject is " + WhiteSpaceNormalizerSpec.this.subject
+           + "\n     input is " + "\"" + it.input + "\""
+           + "\n     result is " + "\"" + it.result + "\"" + "\n", _doubleArrow);
+          
         }
       };
     ExampleTableIterators.<WhiteSpaceNormalizerSpecExamples>forEach(this.examples, _function);

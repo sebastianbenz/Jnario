@@ -16,7 +16,7 @@ import static org.hamcrest.Matchers.*
  * You can use the `should` statement to express the expected behavior of objects.
  */
 describe "Using Should"{
-
+ 
 	/*
 	 * `should` passes if the result of the left expression is 
 	 * equal to the result of the right expression. You can use `not` to 
@@ -50,7 +50,7 @@ describe "Using Should"{
 	  1 + 1 should be 1 throws AssertionError
 	  1 + 1 should not be 1 throws AssertionError
 	  1 + 1 => 1 throws AssertionError
-	}   
+	}
  
 	/*
 	 * When failing, `should` and `=>` try to give you as much context information as possible. 

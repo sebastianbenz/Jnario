@@ -12,7 +12,7 @@ import org.jnario.feature.conversion.FeatureValueConverter
 
 describe FeatureValueConverter{
 	FeatureValueConverter subject = FeatureValueConverter::create("Prefix:")
-	
+	 
 	context toValue{
 		fact subject.toValue("Prefix: text\n", null) => "text"
 		fact subject.toValue(null, null) => null

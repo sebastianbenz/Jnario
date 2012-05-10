@@ -31,8 +31,8 @@ public class PositionSpec {
     Position _pos_7 = Position.pos(4, 3);
     Position _pos_8 = Position.pos(4, 4);
     Set<Position> _set = JnarioCollectionLiterals.<Position>set(_pos_1, _pos_2, _pos_3, _pos_4, _pos_5, _pos_6, _pos_7, _pos_8);
-    boolean _should_be = Should.should_be(_neighbours, _set);Assert
-    .assertTrue("\nExpected pos(3, 3).neighbours() => \tset(\n\t\t\t\t\t\t\t\t\t\t\tpos(2, 2), pos(2, 3), pos(2, 4),\n\t\t\t\t\t\t\t\t\t\t\tpos(3, 2), pos(3, 4),\n\t\t\t\t\t\t\t\t\t\t\tpos(4, 2), pos(4, 3), pos(4, 4)\n\t\t\t\t\t\t\t\t\t\t) but:"
+    boolean _doubleArrow = Should.operator_doubleArrow(_neighbours, _set);Assert
+    .assertTrue("\nExpected pos(3, 3).neighbours() => \tset(\n\t\t\t\t\t\t\t\t\t\t\tpos(2, 2), pos(2, 3), pos(2, 4),\n\t\t\t\t\t\t\t\t\t\t\tpos(3, 2), pos(3, 4),\n\t\t\t\t\t\t\t\t\t\t\tpos(4, 2), pos(4, 3), pos(4, 4)\n\t\t\t\t\t\t\t\t\t\t) but"
      + "\n     pos(3, 3).neighbours() is " + _neighbours
      + "\n     pos(3, 3) is " + _pos
      + "\n     set(\n\t\t\t\t\t\t\t\t\t\t\tpos(2, 2), pos(2, 3), pos(2, 4),\n\t\t\t\t\t\t\t\t\t\t\tpos(3, 2), pos(3, 4),\n\t\t\t\t\t\t\t\t\t\t\tpos(4, 2), pos(4, 3), pos(4, 4)\n\t\t\t\t\t\t\t\t\t\t) is " + _set
@@ -43,7 +43,7 @@ public class PositionSpec {
      + "\n     pos(3, 4) is " + _pos_5
      + "\n     pos(4, 2) is " + _pos_6
      + "\n     pos(4, 3) is " + _pos_7
-     + "\n     pos(4, 4) is " + _pos_8 + "\n", _should_be);
+     + "\n     pos(4, 4) is " + _pos_8 + "\n", _doubleArrow);
     
   }
   
@@ -56,7 +56,7 @@ public class PositionSpec {
     Position _pos_1 = Position.pos(0, 0);
     int _hashCode_1 = _pos_1.hashCode();
     boolean _equals = (_hashCode == _hashCode_1);
-    Assert.assertTrue("\nExpected pos(0, 0).hashCode == pos(0, 0).hashCode but:"
+    Assert.assertTrue("\nExpected pos(0, 0).hashCode == pos(0, 0).hashCode but"
      + "\n     pos(0, 0).hashCode is " + _hashCode
      + "\n     pos(0, 0) is " + _pos + "\n", _equals);
     
@@ -69,7 +69,7 @@ public class PositionSpec {
     Position _pos = Position.pos(0, 0);
     Position _pos_1 = Position.pos(0, 0);
     boolean _equals = Objects.equal(_pos, _pos_1);
-    Assert.assertTrue("\nExpected pos(0, 0) == pos(0, 0) but:"
+    Assert.assertTrue("\nExpected pos(0, 0) == pos(0, 0) but"
      + "\n     pos(0, 0) is " + _pos + "\n", _equals);
     
   }
@@ -83,7 +83,7 @@ public class PositionSpec {
     Position _plus = _pos.plus(_pos_1);
     Position _pos_2 = Position.pos(4, 6);
     boolean _equals = Objects.equal(_plus, _pos_2);
-    Assert.assertTrue("\nExpected pos(1, 2).plus(pos(3, 4)) == pos(4, 6) but:"
+    Assert.assertTrue("\nExpected pos(1, 2).plus(pos(3, 4)) == pos(4, 6) but"
      + "\n     pos(1, 2).plus(pos(3, 4)) is " + _plus
      + "\n     pos(1, 2) is " + _pos
      + "\n     pos(3, 4) is " + _pos_1

@@ -28,7 +28,7 @@ import org.mockito.verification.VerificationMode;
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("World")
-@InstantiateWith(MockitoInstantiator.class)
+@InstantiateWith(value = MockitoInstantiator.class)
 public class WorldSpec {
   @Subject
   public World subject;

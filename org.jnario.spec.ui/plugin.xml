@@ -6,13 +6,14 @@
     <extension
             point="org.eclipse.ui.editors">
         <editor
-              class="org.jnario.spec.ui.SpecExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
-              contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
-              default="true"
-              extensions="spec"
-              icon="icons/spec_file.png"
-              id="org.jnario.spec.Spec"
-              name="Spec Editor">
+            class="org.jnario.spec.ui.SpecExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+            contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
+            default="true"
+            extensions="spec"
+            icon="icons/spec_file.png"
+            id="org.jnario.spec.Spec"
+            matchingStrategy="org.jnario.spec.ui.SpecExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.editor.JavaEditorInputMatcher"
+            name="Spec Editor">
         </editor>
     </extension>
     <extension

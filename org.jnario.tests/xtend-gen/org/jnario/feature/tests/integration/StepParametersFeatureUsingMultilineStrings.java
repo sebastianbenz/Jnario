@@ -1,7 +1,6 @@
 package org.jnario.feature.tests.integration;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.jnario.feature.tests.integration.StepParametersFeatureBackground;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
@@ -13,7 +12,7 @@ import org.junit.runner.RunWith;
 @RunWith(FeatureRunner.class)
 @Named("Scenario: Using multiline Strings")
 @SuppressWarnings("all")
-public class StepParametersFeatureUsingMultilineStrings extends StepParametersFeatureBackground {
+public class StepParametersFeatureUsingMultilineStrings {
   @Test
   @Order(0)
   @Named("Given a feature")

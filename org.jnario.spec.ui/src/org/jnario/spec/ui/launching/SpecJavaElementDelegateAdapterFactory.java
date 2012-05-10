@@ -17,8 +17,7 @@ import com.google.inject.Inject;
 import com.google.inject.Provider;
 
 @SuppressWarnings("restriction")
-public class SpecJavaElementDelegateAdapterFactory extends
-		JavaElementDelegateAdapterFactory {
+public class SpecJavaElementDelegateAdapterFactory extends JavaElementDelegateAdapterFactory {
 
 	@Inject
 	private Provider<JavaElementDelegate> delegateProvider;

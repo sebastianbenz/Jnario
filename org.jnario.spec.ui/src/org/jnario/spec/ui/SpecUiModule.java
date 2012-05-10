@@ -76,6 +76,7 @@ import org.eclipse.xtext.ui.resource.IResourceUIServiceProvider;
 import org.eclipse.xtext.xbase.ui.editor.XbaseEditor;
 import org.eclipse.xtext.xbase.ui.jvmmodel.navigation.DerivedMemberAwareEditorOpener;
 import org.eclipse.xtext.xbase.ui.launching.JavaElementDelegate;
+import org.eclipse.xtext.xbase.ui.launching.JavaElementDelegateJunitLaunch;
 import org.jnario.spec.ui.doc.SpecHoverProvider;
 import org.jnario.spec.ui.editor.SpecFoldingRegionProvider;
 import org.jnario.spec.ui.generator.SpecGenerator;
@@ -267,4 +268,5 @@ public class SpecUiModule extends org.jnario.spec.ui.AbstractSpecUiModule {
 	public Class<? extends IGenerator> bindIGenerator() {
 		return SpecGenerator.class;
 	}
+	
 }

@@ -9,6 +9,7 @@ import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,7 +39,15 @@ public class FeatureClassNameProviderGetClassNameExampleTableSpec extends Featur
         public void apply(final FeatureClassNameProviderGetClassNameExampleTableSpecExamples it) {
           org.jnario.ExampleTable _examples = FeatureClassNameProviderGetClassNameExampleTableSpec.this.examples(it.name, it.scenario, it.feature);
           String _className = FeatureClassNameProviderGetClassNameExampleTableSpec.this.className(_examples);
-          Should.operator_doubleArrow(_className, it.expectedClassName);
+          boolean _doubleArrow = Should.operator_doubleArrow(_className, it.expectedClassName);Assert
+          .assertTrue("\nExpected className(examples(name, scenario, feature)) => expectedClassName but"
+           + "\n     className(examples(name, scenario, feature)) is " + "\"" + _className + "\""
+           + "\n     examples(name, scenario, feature) is " + _examples
+           + "\n     name is " + "\"" + it.name + "\""
+           + "\n     scenario is " + "\"" + it.scenario + "\""
+           + "\n     feature is " + "\"" + it.feature + "\""
+           + "\n     expectedClassName is " + "\"" + it.expectedClassName + "\"" + "\n", _doubleArrow);
+          
         }
       };
     ExampleTableIterators.<FeatureClassNameProviderGetClassNameExampleTableSpecExamples>forEach(this.examples, _function);

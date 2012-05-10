@@ -69,6 +69,28 @@ Scenario :
 	steps+=(Then|ThenReference)?
 	examples+=ExampleTable*;
 
+Member returns xtend::XtendMember:
+	{xtend::XtendMember} annotations+=XAnnotation* 
+	(
+		{xtend::XtendField.annotationInfo = current}	
+			visibility=Visibility?   
+		 	(extension?='extension' (final?='val' | 'var')? type=JvmTypeReference name=ValidID?
+			| static?='static'? (type=JvmTypeReference | (final?='val' | 'var') type=JvmTypeReference?) name=ValidID)
+			('=' initialValue=XExpression)? ';'?
+	|	{xtend::XtendFunction.annotationInfo = current}
+			('def' | override?='override') visibility=Visibility? static?='static'? (dispatch?='dispatch'?) 
+			('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')?
+			( =>(returnType=JvmTypeReference createExtensionInfo=CreateExtensionInfo name=ValidID '(')
+			| =>(returnType=JvmTypeReference name=ValidID '(')
+			| =>(createExtensionInfo=CreateExtensionInfo name=ValidID '(')
+			| name=ValidID '('
+			)
+			(parameters+=Parameter (',' parameters+=Parameter)*)? ')'
+			('throws' exceptions+=JvmTypeReference (',' exceptions+=JvmTypeReference)*)?
+			(expression=XBlockExpression | expression=RichString )?
+	) ;
+
+
 GivenReference:
 	{GivenReference}
 	reference=[Given|GIVEN_TEXT] 

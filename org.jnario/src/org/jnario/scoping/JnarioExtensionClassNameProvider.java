@@ -9,6 +9,7 @@ package org.jnario.scoping;
 
 import java.util.Collection;
 
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.scoping.featurecalls.StaticImplicitMethodsFeatureForTypeProvider.ExtensionClassNameProvider;
 import org.hamcrest.CoreMatchers;
 import org.jnario.lib.Each;
@@ -18,6 +19,7 @@ import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
 import org.jnario.lib.StringConversions;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Multimap;
 import com.google.inject.Singleton;
 
@@ -31,8 +33,7 @@ public class JnarioExtensionClassNameProvider extends ExtensionClassNameProvider
 	protected Multimap<Class<?>, Class<?>> simpleComputeExtensionClasses() {
 		Multimap<Class<?>, Class<?>> result = super.simpleComputeExtensionClasses();
 		result.put(ExampleTable.class, ExampleTableIterators.class);
-		result.put(Object.class, Should.class);
-		result.put(Object.class, Each.class);
+		result.replaceValues(Object.class, ImmutableList.of(Should.class, Each.class, ObjectExtensions.class));
 		result.put(String.class, StringConversions.class);
 		return result;
 	}

@@ -24,7 +24,7 @@ import org.jnario.ExampleTable
 
 @InstantiateWith(typeof(SpecTestInstantiator))
 describe ExampleNameProvider{
-   
+ 
   context toJavaClassName{ 
     
     fact "should remove all white spaces from ExampleGroup's description"{

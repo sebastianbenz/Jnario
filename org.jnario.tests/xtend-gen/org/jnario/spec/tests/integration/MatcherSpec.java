@@ -78,7 +78,7 @@ public class MatcherSpec {
           return _startsWith;
         }
       };
-    Should.operator_doubleArrow(
+    boolean _doubleArrow = Should.operator_doubleArrow(
       "Hello", new Function0<Object>() {
       public Object apply() {
         final Function1<String,Boolean> _function = new Function1<String,Boolean>() {
@@ -89,7 +89,10 @@ public class MatcherSpec {
           };
         return org.jnario.lib.Should.matches("[it.startsWith(\"H\")]", _function);
       }
-    }.apply());
+    }.apply());Assert
+    .assertTrue("\nExpected \"Hello\" => #[it.startsWith(\"H\")] but"
+     + "\n     #[it.startsWith(\"H\")] is " + org.jnario.lib.Should.matches("[it.startsWith(\"H\")]", _function) + "\n", _doubleArrow);
+    
   }
   
   @Test
@@ -104,7 +107,7 @@ public class MatcherSpec {
                 return _startsWith;
               }
             };
-          Should.operator_doubleArrow(
+          boolean _doubleArrow = Should.operator_doubleArrow(
             "a", new Function0<Object>() {
             public Object apply() {
               final Function1<String,Boolean> _function = new Function1<String,Boolean>() {
@@ -115,7 +118,10 @@ public class MatcherSpec {
                 };
               return org.jnario.lib.Should.matches("[it.startsWith(\"b\")]", _function);
             }
-          }.apply());
+          }.apply());Assert
+          .assertTrue("\nExpected \"a\" => #[it.startsWith(\"b\")] but"
+           + "\n     #[it.startsWith(\"b\")] is " + org.jnario.lib.Should.matches("[it.startsWith(\"b\")]", _function) + "\n", _doubleArrow);
+          
         }
       };
     String _errorMessage = Helpers.errorMessage(_function);

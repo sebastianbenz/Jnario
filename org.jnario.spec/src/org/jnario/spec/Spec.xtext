@@ -59,10 +59,9 @@ Member returns xtend::XtendMember:
       	'}') 
 	|	{xtend::XtendField.annotationInfo = current}	
 			visibility=Visibility?   
-		 	(extension?='extension' type=JvmTypeReference name=ValidID?
-			| static?='static'? type=JvmTypeReference name=ValidID)
-			('=' initialValue=XExpression)?
-		
+		 	(extension?='extension' (final?='val' | 'var')? type=JvmTypeReference name=ValidID?
+			| static?='static'? (type=JvmTypeReference | (final?='val' | 'var') type=JvmTypeReference?) name=ValidID)
+			('=' initialValue=XExpression)? ';'?
 	|	{xtend::XtendFunction.annotationInfo = current}
 			('def' | override?='override') visibility=Visibility? static?='static'? (dispatch?='dispatch'?) 
 			('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')?
@@ -72,7 +71,7 @@ Member returns xtend::XtendMember:
 			| name=ValidID '('
 			)
 			(parameters+=Parameter (',' parameters+=Parameter)*)? ')'
-			(=>'throws' exceptions+=JvmTypeReference (',' exceptions+=JvmTypeReference)*)?
+			('throws' exceptions+=JvmTypeReference (',' exceptions+=JvmTypeReference)*)?
 			(expression=XBlockExpression | expression=RichString )?
 	 );
 

@@ -19,6 +19,7 @@ import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.compiler.XtendCompiler;
+import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.nodemodel.INode;
@@ -34,19 +35,19 @@ import org.jnario.ShouldThrow;
 import org.junit.Assert;
 
 import com.google.common.base.Predicate;
-import com.google.common.collect.Sets;
 import com.google.inject.Inject;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
 public class JnarioCompiler extends XtendCompiler {
-	
+
 	@Inject
-	private XExpressionHelper expressionHelper; 
+	private XExpressionHelper expressionHelper;
 
 	@Override
-	public void internalToConvertedExpression(XExpression obj, ITreeAppendable appendable) {
+	public void internalToConvertedExpression(XExpression obj,
+			ITreeAppendable appendable) {
 		if (obj instanceof Matcher) {
 			_toJavaExpression((Matcher) obj, appendable);
 		} else if (obj instanceof Assertion) {
@@ -59,47 +60,58 @@ public class JnarioCompiler extends XtendCompiler {
 			super.internalToConvertedExpression(obj, appendable);
 		}
 	}
-	
+
 	@Override
 	public void doInternalToJavaStatement(XExpression obj,
 			ITreeAppendable appendable, boolean isReferenced) {
-		if (obj instanceof Assertion){
-			_toJavaStatement((Assertion)obj, appendable, isReferenced);
-		}else if (obj instanceof Matcher){
-			_toJavaStatement((Matcher)obj, appendable, isReferenced);
-		}else if (obj instanceof Should){
-			_toJavaStatement((Should)obj, appendable, isReferenced);
-		}else if (obj instanceof ShouldThrow){
-			_toJavaStatement((ShouldThrow)obj, appendable, isReferenced);
-		}else
-			super.doInternalToJavaStatement(obj, appendable, isReferenced); 
+		if (obj instanceof Assertion) {
+			_toJavaStatement((Assertion) obj, appendable, isReferenced);
+		} else if (obj instanceof Matcher) {
+			_toJavaStatement((Matcher) obj, appendable, isReferenced);
+		} else if (obj instanceof Should) {
+			_toJavaStatement((Should) obj, appendable, isReferenced);
+		} else if (obj instanceof ShouldThrow) {
+			_toJavaStatement((ShouldThrow) obj, appendable, isReferenced);
+		} else
+			super.doInternalToJavaStatement(obj, appendable, isReferenced);
 	}
 
-	public void _toJavaStatement(ShouldThrow should, ITreeAppendable b, boolean isReferenced) {
-		if(should.getType() == null || should.getType().getType() == null){
+	public void _toJavaStatement(ShouldThrow should, ITreeAppendable b,
+			boolean isReferenced) {
+		if (should.getType() == null || should.getType().getType() == null) {
 			return;
 		}
 		b.newLine().append("try{").increaseIndentation();
-		  toJavaStatement(should.getExpression(), b, true);
-		   b.newLine()
-		   .append(assertType(should)).append(".fail(\"Expected \" + ")
-		   .append(should.getType().getType())
-		   .append(".class.getName() + \" in ").append(javaStringNewLine())
-		   .append("     ").append(serialize(should.getExpression()).replace("\n", "\n    ")).append(javaStringNewLine()).append(" with:\"");
-		   appendValues(should.getExpression(), b, new HashSet<String>());
-		   b.append(");").decreaseIndentation().newLine()
-		 .append("}catch(")
-		 .append(should.getType().getType()).append(" e){").increaseIndentation().newLine()
-		   .append("// expected").decreaseIndentation().newLine()
-		 .append("}");
+		toJavaStatement(should.getExpression(), b, true);
+		b.newLine()
+				.append(assertType(should))
+				.append(".fail(\"Expected \" + ")
+				.append(should.getType().getType())
+				.append(".class.getName() + \" in ")
+				.append(javaStringNewLine())
+				.append("     ")
+				.append(serialize(should.getExpression()).replace("\n",
+						"\n    ")).append(javaStringNewLine())
+				.append(" with:\"");
+		appendValues(should.getExpression(), b, new HashSet<String>());
+		b.append(");").decreaseIndentation().newLine().append("}catch(")
+				.append(should.getType().getType()).append(" e){")
+				.increaseIndentation().newLine().append("// expected")
+				.decreaseIndentation().newLine().append("}");
 	}
-	
-	public void _toJavaStatement(Should should, ITreeAppendable b, boolean isReferenced) {
+
+	public void _toJavaStatement(Should should, ITreeAppendable b,
+			boolean isReferenced) {
+		_toShouldExpression(should, b, should.isNot());
+	}
+
+	private void _toShouldExpression(XAbstractFeatureCall should,
+			ITreeAppendable b, boolean isNot) {
 		super._toJavaStatement(should, b, true);
 		b.append(assertType(should)).newLine();
-		if(should.isNot()){
+		if (isNot) {
 			b.append(".assertFalse(");
-		}else{
+		} else {
 			b.append(".assertTrue(");
 		}
 		generateMessageFor(should, b);
@@ -111,17 +123,17 @@ public class JnarioCompiler extends XtendCompiler {
 	private String javaStringNewLine() {
 		return convertToJavaString("\n");
 	}
-	
+
 	public void _toJavaExpression(Should should, ITreeAppendable b) {
 		b.append("null");
 	}
-	
+
 	public void _toJavaExpression(ShouldThrow should, ITreeAppendable b) {
 		b.append("null");
 	}
-	
+
 	public void _toJavaExpression(Matcher matcher, ITreeAppendable b) {
-		if (matcher.getClosure() == null){
+		if (matcher.getClosure() == null) {
 			return;
 		}
 		b.append(org.jnario.lib.Should.class.getName());
@@ -131,29 +143,31 @@ public class JnarioCompiler extends XtendCompiler {
 		toJavaExpression(matcher.getClosure(), b);
 		b.append(")");
 	}
-	
-	public void _toJavaStatement(Matcher matcher, ITreeAppendable b, boolean isReferenced) {
-		if (matcher.getClosure() == null){
+
+	public void _toJavaStatement(Matcher matcher, ITreeAppendable b,
+			boolean isReferenced) {
+		if (matcher.getClosure() == null) {
 			return;
 		}
 		toJavaStatement(matcher.getClosure(), b, isReferenced);
 	}
-	
+
 	private void describe(Matcher matcher, ITreeAppendable b) {
 		b.append(serialize(matcher.getClosure()));
 	}
 
-	public void _toJavaStatement(Assertion assertion, ITreeAppendable b, boolean isReferenced) {
-		if (assertion.getExpression() == null){
+	public void _toJavaStatement(Assertion assertion, ITreeAppendable b,
+			boolean isReferenced) {
+		if (assertion.getExpression() == null) {
 			return;
 		}
 		generateSingleAssertion(assertion.getExpression(), b);
 	}
-	
+
 	public void _toJavaExpression(Assertion assertion, ITreeAppendable b) {
 		b.append("null");
 	}
-	
+
 	private void generateSingleAssertion(XExpression expr, ITreeAppendable b) {
 		toJavaStatement(expr, b, true);
 		b.newLine();
@@ -169,14 +183,14 @@ public class JnarioCompiler extends XtendCompiler {
 	private JvmType assertType(XExpression expr) {
 		return jvmType(Assert.class, expr);
 	}
-	
+
 	private boolean isVoid(XExpression expr) {
 		JvmTypeReference type = getTypeProvider().getType(expr);
 		return getTypeReferences().is(type, Void.TYPE);
 	}
-	
-	private JvmType jvmType(Class<?> type, EObject context){
-		 return getTypeReferences().getTypeForName(type, context).getType();
+
+	private JvmType jvmType(Class<?> type, EObject context) {
+		return getTypeReferences().getTypeForName(type, context).getType();
 	}
 
 	public void generateMessageFor(Should should, ITreeAppendable b) {
@@ -184,46 +198,47 @@ public class JnarioCompiler extends XtendCompiler {
 		b.append(serialize(should));
 		b.append(" but\"");
 		Set<String> valueExpressions = newHashSet();
-		
+
 		XExpression left = should.getLeftOperand();
 		toLiteralValue(left, b, valueExpressions);
 		appendValues(left, b, valueExpressions);
-		
+
 		XExpression right = should.getRightOperand();
 		toLiteralValue(right, b, valueExpressions);
 		appendValues(right, b, valueExpressions);
-		
-		if(valueExpressions.isEmpty()){
+
+		if (valueExpressions.isEmpty()) {
 			b.append(" + \" did not.\"");
 		}
 	}
-	
+
 	private void generateMessageFor(XExpression expression, ITreeAppendable b) {
 		b.append("\"\\nExpected ");
 		b.append(serialize(expression));
 		b.append(" but\"");
 		Set<String> valueExpressions = newHashSet();
 		appendValues(expression, b, valueExpressions);
-		if(valueExpressions.isEmpty()){
+		if (valueExpressions.isEmpty()) {
 			b.append(" + \" did not.\"");
 		}
 	}
 
-	private void appendValues(XExpression expression, ITreeAppendable b, Set<String> valueExpressions) {
+	private void appendValues(XExpression expression, ITreeAppendable b,
+			Set<String> valueExpressions) {
 		Iterator<XExpression> subExpressions = allSubExpressions(expression);
-		if(subExpressions.hasNext()){
-			while(subExpressions.hasNext()){
+		if (subExpressions.hasNext()) {
+			while (subExpressions.hasNext()) {
 				XExpression subExpression = subExpressions.next();
 				appendActualValues(subExpression, b, valueExpressions);
 			}
-		}else{
+		} else {
 			toLiteralValue(expression, b, valueExpressions);
 		}
 	}
 
 	protected String serialize(XExpression expression) {
 		INode node = getNode(expression);
-		if(node == null){
+		if (node == null) {
 			return "";
 		}
 		String result = node.getText();
@@ -233,16 +248,17 @@ public class JnarioCompiler extends XtendCompiler {
 	}
 
 	protected String removeSurroundingParentheses(String result) {
-		if(result.startsWith("(") && result.endsWith(")")){
-			result = result.substring(1, result.length()-1);
+		if (result.startsWith("(") && result.endsWith(")")) {
+			result = result.substring(1, result.length() - 1);
 		}
 		return result.trim();
 	}
 
-	protected void appendActualValues(XExpression expression, ITreeAppendable b, Set<String> valueExpressions) {
+	protected void appendActualValues(XExpression expression,
+			ITreeAppendable b, Set<String> valueExpressions) {
 		toLiteralValue(expression, b, valueExpressions);
 		Iterator<XExpression> subExpressions = allSubExpressions(expression);
-		while(subExpressions.hasNext()){
+		while (subExpressions.hasNext()) {
 			appendActualValues(subExpressions.next(), b, valueExpressions);
 		}
 	}
@@ -261,21 +277,23 @@ public class JnarioCompiler extends XtendCompiler {
 				return !expressionHelper.isLiteral(expr);
 			}
 		};
-		Iterable<XExpression> subExpressions = filter(expression.eContents(), XExpression.class);
+		Iterable<XExpression> subExpressions = filter(expression.eContents(),
+				XExpression.class);
 		subExpressions = filter(subExpressions, onlyKnownFeatures);
 		subExpressions = filter(subExpressions, noLiteralExpressions);
 		return subExpressions.iterator();
 	}
 
-	protected void toLiteralValue(XExpression expression, ITreeAppendable b, Set<String> valueMappings) {
-		if(expressionHelper.isLiteral(expression)){
+	protected void toLiteralValue(XExpression expression, ITreeAppendable b,
+			Set<String> valueMappings) {
+		if (expressionHelper.isLiteral(expression)) {
 			return;
 		}
-		if(isVoid(expression)){
+		if (isVoid(expression)) {
 			return;
 		}
 		String expr = serialize(expression);
-		if(valueMappings.contains(expr)){
+		if (valueMappings.contains(expr)) {
 			return;
 		}
 		valueMappings.add(expr);
@@ -283,64 +301,92 @@ public class JnarioCompiler extends XtendCompiler {
 		b.append(expr);
 		b.append(" is \" + ");
 		boolean isString = isString(expression);
-		if(isString){
+		if (isString) {
 			b.append("\"\\\"\" + ");
-		} 
+		}
 		toJavaExpression(expression, b);
-		if(isString){
+		if (isString) {
 			b.append(" + \"\\\"\"");
 		}
 	}
+
 	private boolean isString(XExpression expression) {
-		JvmTypeReference expectedType = getTypeProvider().getType(expression, true);
-		return expectedType != null && expectedType.getQualifiedName().equals(String.class.getName());
+		JvmTypeReference expectedType = getTypeProvider().getType(expression,
+				true);
+		return expectedType != null
+				&& expectedType.getQualifiedName().equals(
+						String.class.getName());
 	}
-	
+
 	@Override
 	protected boolean isVariableDeclarationRequired(XExpression expr,
 			ITreeAppendable b) {
-		if (expr instanceof Assertion){
+		if (expr instanceof Assertion) {
 			return false;
 		}
 		return super.isVariableDeclarationRequired(expr, b);
 	}
-	
-	/* 
-	 * Overridden to evaluate all expressions first to be visible when generating the assertion message.
+
+	/*
+	 * Overridden to evaluate all expressions first to be visible when
+	 * generating the assertion message.
 	 */
-	protected void generateShortCircuitInvocation(final XAbstractFeatureCall binaryOperation,
-			final ITreeAppendable b) {
-		if(getContainerOfType(binaryOperation, Assertion.class) == null &&
-				getContainerOfType(binaryOperation, Should.class) == null){
+	protected void generateShortCircuitInvocation(
+			final XAbstractFeatureCall binaryOperation, final ITreeAppendable b) {
+		if (getContainerOfType(binaryOperation, Assertion.class) == null
+				&& getContainerOfType(binaryOperation, Should.class) == null) {
 			super.generateShortCircuitInvocation(binaryOperation, b);
 		}
-		XExpression leftOperand = ((XBinaryOperation)binaryOperation).getLeftOperand();
+		XExpression leftOperand = ((XBinaryOperation) binaryOperation)
+				.getLeftOperand();
 		declareSyntheticVariable(binaryOperation, b);
 		prepareExpression(leftOperand, b);
-		
+
 		for (XExpression arg : binaryOperation.getExplicitArguments()) {
-			if (arg!=leftOperand)
+			if (arg != leftOperand)
 				prepareExpression(arg, b);
 		}
-		
+
 		b.append("\nif (");
-		if (binaryOperation.getConcreteSyntaxFeatureName().equals(expressionHelper.getAndOperator())) {
+		if (binaryOperation.getConcreteSyntaxFeatureName().equals(
+				expressionHelper.getAndOperator())) {
 			b.append("!");
 		}
 		toJavaExpression(leftOperand, b);
 		b.append(") {").increaseIndentation();
-		boolean rightOperand = binaryOperation.getConcreteSyntaxFeatureName().equals(expressionHelper.getOrOperator());
-		b.append("\n").append(b.getName(binaryOperation)).append(" = ").append(Boolean.toString(rightOperand)).append(";");
-		
+		boolean rightOperand = binaryOperation.getConcreteSyntaxFeatureName()
+				.equals(expressionHelper.getOrOperator());
+		b.append("\n").append(b.getName(binaryOperation)).append(" = ")
+				.append(Boolean.toString(rightOperand)).append(";");
+
 		b.decreaseIndentation().append("\n} else {").increaseIndentation();
-		
-		if (binaryOperation.getImplicitReceiver()!=null) {
-			internalToJavaStatement(binaryOperation.getImplicitReceiver(), b, true);
+
+		if (binaryOperation.getImplicitReceiver() != null) {
+			internalToJavaStatement(binaryOperation.getImplicitReceiver(), b,
+					true);
 		}
-		
+
 		b.append("\n").append(b.getName(binaryOperation)).append(" = ");
 		featureCalltoJavaExpression(binaryOperation, b, true);
 		b.append(";");
 		b.decreaseIndentation().append("\n}");
+	}
+
+	@Override
+	protected void _toJavaStatement(XAbstractFeatureCall expr,
+			ITreeAppendable b, boolean isReferenced) {
+		if(isDoubleArrow(expr)){
+			_toShouldExpression(expr, b, false);
+		}else{
+			super._toJavaStatement(expr, b, isReferenced);
+		}
+	}
+
+	private boolean isDoubleArrow(XAbstractFeatureCall expr) {
+		if (!(expr instanceof XBinaryOperation)) {
+			return false;
+		}
+		JvmIdentifiableElement feature = expr.getFeature();
+		return feature != null && "operator_doubleArrow".equals(feature.getSimpleName());
 	}
 }

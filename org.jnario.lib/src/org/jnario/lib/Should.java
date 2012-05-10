@@ -10,7 +10,9 @@ package org.jnario.lib;
 import static com.google.common.collect.Iterables.contains;
 
 import org.eclipse.xtext.xbase.lib.Functions;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -20,12 +22,20 @@ import com.google.common.base.Objects;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
-public class Should {
+public class Should{
+	
+	public static <T> boolean operator_doubleArrow(T object, Procedure1<? super T> block) {
+		if(block == null){
+			return true;
+		}
+		ObjectExtensions.operator_doubleArrow(object, block);
+		return true;
+	}
 	
 	@SuppressWarnings("unchecked")
 	public static boolean operator_doubleArrow(Object actual, Object expected) {
 		if (expected instanceof Matcher<?>) {
-			return should_be(actual, (Matcher<?>) expected);
+			return ((Matcher<?>)expected).matches(actual);
 		}
 		if (expected instanceof Class<?>) {
 			return should_be(actual, (Class<?>) expected);

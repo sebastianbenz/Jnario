@@ -9,6 +9,7 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.spec.tests.integration.CollectionLiteralsSpec;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -22,7 +23,11 @@ public class CollectionLiteralsListLiteralSpec extends CollectionLiteralsSpec {
   public void listGreenRedNewArrayListGreenRed() throws Exception {
     List<String> _list = JnarioCollectionLiterals.<String>list("green", "red");
     ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("green", "red");
-    Should.operator_doubleArrow(_list, _newArrayList);
+    boolean _doubleArrow = Should.operator_doubleArrow(_list, _newArrayList);Assert
+    .assertTrue("\nExpected list(\"green\", \"red\") => newArrayList(\"green\", \"red\") but"
+     + "\n     list(\"green\", \"red\") is " + _list
+     + "\n     newArrayList(\"green\", \"red\") is " + _newArrayList + "\n", _doubleArrow);
+    
   }
   
   @Test
@@ -35,6 +40,14 @@ public class CollectionLiteralsListLiteralSpec extends CollectionLiteralsSpec {
     ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("green");
     ArrayList<String> _newArrayList_1 = CollectionLiterals.<String>newArrayList("red");
     ArrayList<ArrayList<String>> _newArrayList_2 = CollectionLiterals.<ArrayList<String>>newArrayList(_newArrayList, _newArrayList_1);
-    Should.operator_doubleArrow(_list_2, _newArrayList_2);
+    boolean _doubleArrow = Should.operator_doubleArrow(_list_2, _newArrayList_2);Assert
+    .assertTrue("\nExpected list(list(\"green\"), list(\"red\")) => newArrayList(newArrayList(\"green\"), newArrayList(\"red\")) but"
+     + "\n     list(list(\"green\"), list(\"red\")) is " + _list_2
+     + "\n     list(\"green\") is " + _list
+     + "\n     list(\"red\") is " + _list_1
+     + "\n     newArrayList(newArrayList(\"green\"), newArrayList(\"red\")) is " + _newArrayList_2
+     + "\n     newArrayList(\"green\") is " + _newArrayList
+     + "\n     newArrayList(\"red\") is " + _newArrayList_1 + "\n", _doubleArrow);
+    
   }
 }

@@ -9,8 +9,6 @@ package org.jnario.feature.tests.integration
 
 Feature: Step Parameters
 	
-	Background:
-		
 	Scenario: Parameters are defined in quotes
 		Given a feature
 			jnarioFile = '''

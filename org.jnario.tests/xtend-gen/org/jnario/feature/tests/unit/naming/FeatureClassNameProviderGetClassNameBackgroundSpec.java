@@ -10,6 +10,7 @@ import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,7 +40,14 @@ public class FeatureClassNameProviderGetClassNameBackgroundSpec extends FeatureC
         public void apply(final FeatureClassNameProviderGetClassNameBackgroundSpecExamples it) {
           Background _background = FeatureClassNameProviderGetClassNameBackgroundSpec.this.background(it.name, it.feature);
           String _className = FeatureClassNameProviderGetClassNameBackgroundSpec.this.className(_background);
-          Should.operator_doubleArrow(_className, it.expectedClassName);
+          boolean _doubleArrow = Should.operator_doubleArrow(_className, it.expectedClassName);Assert
+          .assertTrue("\nExpected className(background(name, feature)) => expectedClassName but"
+           + "\n     className(background(name, feature)) is " + "\"" + _className + "\""
+           + "\n     background(name, feature) is " + _background
+           + "\n     name is " + "\"" + it.name + "\""
+           + "\n     feature is " + "\"" + it.feature + "\""
+           + "\n     expectedClassName is " + "\"" + it.expectedClassName + "\"" + "\n", _doubleArrow);
+          
         }
       };
     ExampleTableIterators.<FeatureClassNameProviderGetClassNameBackgroundSpecExamples>forEach(this.examples, _function);

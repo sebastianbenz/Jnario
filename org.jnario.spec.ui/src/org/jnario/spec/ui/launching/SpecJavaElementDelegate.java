@@ -15,6 +15,7 @@ import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.ui.launching.JavaElementDelegateJunitLaunch;
+import org.jnario.spec.spec.SpecFile;
 
 import com.google.inject.Inject;
 
@@ -31,7 +32,14 @@ public class SpecJavaElementDelegate extends JavaElementDelegateJunitLaunch {
 	protected JvmIdentifiableElement findAssociatedJvmElement(EObject element) {
 		if (element == null)
 			return null;
-		element = EcoreUtil2.getContainerOfType(element, XtendClass.class);
+		if (element instanceof SpecFile) {
+			SpecFile specFile = (SpecFile) element;
+			if(!specFile.getXtendClasses().isEmpty()){
+				element = specFile.getXtendClasses().get(0);
+			}
+		}else{
+			element = EcoreUtil2.getContainerOfType(element, XtendClass.class);
+		}
 		Set<EObject> elements = associations.getJvmElements(element);
 		if (elements.isEmpty()) {
 			return findAssociatedJvmElement(element.eContainer());

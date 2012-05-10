@@ -11,6 +11,7 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.spec.tests.integration.SpecsExampleTablesSpecExample;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -322,7 +323,13 @@ public class SpecsExampleTablesSpec {
           final Procedure1<SpecsExampleTablesSpecExample> _function = new Procedure1<SpecsExampleTablesSpecExample>() {
               public void apply(final SpecsExampleTablesSpecExample it) {
                 int _plus = (it.value1 + it.value2);
-                Should.operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(it.sum));
+                boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(it.sum));Assert
+                .assertTrue("\nExpected value1 + value2 => sum but"
+                 + "\n     value1 + value2 is " + Integer.valueOf(_plus)
+                 + "\n     value1 is " + it.value1
+                 + "\n     value2 is " + it.value2
+                 + "\n     sum is " + Integer.valueOf(it.sum) + "\n", _doubleArrow);
+                
               }
             };
           ExampleTableIterators.<SpecsExampleTablesSpecExample>forEach(SpecsExampleTablesSpec.this.example, _function);

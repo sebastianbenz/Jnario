@@ -41,6 +41,9 @@ public class SpecParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMemberAccess().getAlternatives_2(), "rule__Member__Alternatives_2");
 					put(grammarAccess.getMemberAccess().getAlternatives_2_0_1_0(), "rule__Member__Alternatives_2_0_1_0");
 					put(grammarAccess.getMemberAccess().getAlternatives_2_6_2(), "rule__Member__Alternatives_2_6_2");
+					put(grammarAccess.getMemberAccess().getAlternatives_2_6_2_0_1(), "rule__Member__Alternatives_2_6_2_0_1");
+					put(grammarAccess.getMemberAccess().getAlternatives_2_6_2_1_1(), "rule__Member__Alternatives_2_6_2_1_1");
+					put(grammarAccess.getMemberAccess().getAlternatives_2_6_2_1_1_1_0(), "rule__Member__Alternatives_2_6_2_1_1_1_0");
 					put(grammarAccess.getMemberAccess().getAlternatives_2_7_1(), "rule__Member__Alternatives_2_7_1");
 					put(grammarAccess.getMemberAccess().getAlternatives_2_7_6(), "rule__Member__Alternatives_2_7_6");
 					put(grammarAccess.getMemberAccess().getAlternatives_2_7_10(), "rule__Member__Alternatives_2_7_10");
@@ -113,6 +116,7 @@ public class SpecParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMemberAccess().getGroup_2_6(), "rule__Member__Group_2_6__0");
 					put(grammarAccess.getMemberAccess().getGroup_2_6_2_0(), "rule__Member__Group_2_6_2_0__0");
 					put(grammarAccess.getMemberAccess().getGroup_2_6_2_1(), "rule__Member__Group_2_6_2_1__0");
+					put(grammarAccess.getMemberAccess().getGroup_2_6_2_1_1_1(), "rule__Member__Group_2_6_2_1_1_1__0");
 					put(grammarAccess.getMemberAccess().getGroup_2_6_3(), "rule__Member__Group_2_6_3__0");
 					put(grammarAccess.getMemberAccess().getGroup_2_7(), "rule__Member__Group_2_7__0");
 					put(grammarAccess.getMemberAccess().getGroup_2_7_5(), "rule__Member__Group_2_7_5__0");
@@ -353,10 +357,13 @@ public class SpecParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMemberAccess().getRowsAssignment_2_5_1_3_2(), "rule__Member__RowsAssignment_2_5_1_3_2");
 					put(grammarAccess.getMemberAccess().getVisibilityAssignment_2_6_1(), "rule__Member__VisibilityAssignment_2_6_1");
 					put(grammarAccess.getMemberAccess().getExtensionAssignment_2_6_2_0_0(), "rule__Member__ExtensionAssignment_2_6_2_0_0");
-					put(grammarAccess.getMemberAccess().getTypeAssignment_2_6_2_0_1(), "rule__Member__TypeAssignment_2_6_2_0_1");
-					put(grammarAccess.getMemberAccess().getNameAssignment_2_6_2_0_2(), "rule__Member__NameAssignment_2_6_2_0_2");
+					put(grammarAccess.getMemberAccess().getFinalAssignment_2_6_2_0_1_0(), "rule__Member__FinalAssignment_2_6_2_0_1_0");
+					put(grammarAccess.getMemberAccess().getTypeAssignment_2_6_2_0_2(), "rule__Member__TypeAssignment_2_6_2_0_2");
+					put(grammarAccess.getMemberAccess().getNameAssignment_2_6_2_0_3(), "rule__Member__NameAssignment_2_6_2_0_3");
 					put(grammarAccess.getMemberAccess().getStaticAssignment_2_6_2_1_0(), "rule__Member__StaticAssignment_2_6_2_1_0");
-					put(grammarAccess.getMemberAccess().getTypeAssignment_2_6_2_1_1(), "rule__Member__TypeAssignment_2_6_2_1_1");
+					put(grammarAccess.getMemberAccess().getTypeAssignment_2_6_2_1_1_0(), "rule__Member__TypeAssignment_2_6_2_1_1_0");
+					put(grammarAccess.getMemberAccess().getFinalAssignment_2_6_2_1_1_1_0_0(), "rule__Member__FinalAssignment_2_6_2_1_1_1_0_0");
+					put(grammarAccess.getMemberAccess().getTypeAssignment_2_6_2_1_1_1_1(), "rule__Member__TypeAssignment_2_6_2_1_1_1_1");
 					put(grammarAccess.getMemberAccess().getNameAssignment_2_6_2_1_2(), "rule__Member__NameAssignment_2_6_2_1_2");
 					put(grammarAccess.getMemberAccess().getInitialValueAssignment_2_6_3_1(), "rule__Member__InitialValueAssignment_2_6_3_1");
 					put(grammarAccess.getMemberAccess().getOverrideAssignment_2_7_1_1(), "rule__Member__OverrideAssignment_2_7_1_1");

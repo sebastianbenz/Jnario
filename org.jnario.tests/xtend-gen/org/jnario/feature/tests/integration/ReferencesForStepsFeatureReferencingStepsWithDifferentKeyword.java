@@ -5,6 +5,7 @@ import org.jnario.lib.Should;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.Result;
 import org.junit.runner.RunWith;
@@ -26,7 +27,10 @@ public class ReferencesForStepsFeatureReferencingStepsWithDifferentKeyword {
   public void whenIRunItItShouldFail() {
     Result _execute = FeatureExecutor.execute(jnarioFile);
     int _failureCount = _execute.getFailureCount();
-    Should.operator_doubleArrow(Integer.valueOf(_failureCount), Integer.valueOf(2));
+    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_failureCount), Integer.valueOf(2));Assert
+    .assertTrue("\nExpected  but"
+     + "\n      is " + Integer.valueOf(_failureCount) + "\n", _doubleArrow);
+    
   }
   
   public String jnarioFile;

@@ -6,6 +6,7 @@ import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -31,6 +32,9 @@ public class StepNameProviderDescribeStepSpec extends StepNameProviderSpec {
     _builder.newLine();
     this.parseScenario(_builder);
     String _describeStep = this.describeStep();
-    Should.operator_doubleArrow(_describeStep, "Given a step with multiline parameter");
+    boolean _doubleArrow = Should.operator_doubleArrow(_describeStep, "Given a step with multiline parameter");Assert
+    .assertTrue("\nExpected describeStep => \'Given a step with multiline parameter\' but"
+     + "\n     describeStep is " + "\"" + _describeStep + "\"" + "\n", _doubleArrow);
+    
   }
 }

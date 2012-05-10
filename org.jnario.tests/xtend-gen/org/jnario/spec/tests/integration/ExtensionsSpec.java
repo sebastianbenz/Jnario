@@ -10,6 +10,7 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.spec.tests.integration.ExtensionExample;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -70,6 +71,10 @@ public class ExtensionsSpec {
       "ExtensionSpec#test2", 
       "ExtensionExample#after", 
       "ExtensionExample#afterClass");
-    Should.operator_doubleArrow(_executedMethods, _newArrayList);
+    boolean _doubleArrow = Should.operator_doubleArrow(_executedMethods, _newArrayList);Assert
+    .assertTrue("\nExpected executedMethods => newArrayList(\n\t\t\t\"ExtensionExample#beforeClass\", \n\t\t\t\"ExtensionExample#before\",  \n\t\t\t\"ExtensionSpec#test1\",  \n\t\t\t\"ExtensionExample#after\",  \n\t\t\t\"ExtensionExample#before\",\n\t\t\t\"ExtensionSpec#test2\",  \n\t\t\t\"ExtensionExample#after\",\n\t\t\t\"ExtensionExample#afterClass\"\n\t\t) but"
+     + "\n     executedMethods is " + _executedMethods
+     + "\n     newArrayList(\n\t\t\t\"ExtensionExample#beforeClass\", \n\t\t\t\"ExtensionExample#before\",  \n\t\t\t\"ExtensionSpec#test1\",  \n\t\t\t\"ExtensionExample#after\",  \n\t\t\t\"ExtensionExample#before\",\n\t\t\t\"ExtensionSpec#test2\",  \n\t\t\t\"ExtensionExample#after\",\n\t\t\t\"ExtensionExample#afterClass\"\n\t\t) is " + _newArrayList + "\n", _doubleArrow);
+    
   }
 }

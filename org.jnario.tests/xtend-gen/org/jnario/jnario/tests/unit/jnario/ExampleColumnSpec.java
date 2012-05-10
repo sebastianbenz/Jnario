@@ -19,6 +19,7 @@ import org.jnario.runner.Extension;
 import org.jnario.runner.InstantiateWith;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -86,7 +87,13 @@ public class ExampleColumnSpec {
           final XExpression cell = _cells.get(it.cellIndex);
           String _serialize = ExampleColumnSpec.this._iSerializer.serialize(cell);
           String _trim = _serialize.trim();
-          Should.operator_doubleArrow(_trim, it.value);
+          boolean _doubleArrow = Should.operator_doubleArrow(_trim, it.value);Assert
+          .assertTrue("\nExpected cell.serialize.trim => value but"
+           + "\n     cell.serialize.trim is " + "\"" + _trim + "\""
+           + "\n     cell.serialize is " + "\"" + _serialize + "\""
+           + "\n     cell is " + cell
+           + "\n     value is " + "\"" + it.value + "\"" + "\n", _doubleArrow);
+          
         }
       };
     ExampleTableIterators.<ExampleColumnSpecExamples>forEach(this.examples, _function);
