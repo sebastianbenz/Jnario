@@ -32,7 +32,6 @@ import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.eclipse.xtext.validation.Issue;
 import org.eclipse.xtext.xbase.XbasePackage;
 import org.jnario.ui.buildpath.JnarioLibClasspathAdder;
-import org.jnario.ui.buildpath.JunitLibClasspathAdder;
 import org.jnario.validation.JnarioIssueCodes;
 
 import com.google.inject.Inject;
@@ -42,7 +41,7 @@ import com.google.inject.Provider;
  * @author Sebastian Benz
  *
  */
-@SuppressWarnings("restriction")
+@SuppressWarnings({ "restriction"})
 public class JnarioQuickFixProvider extends XtendQuickfixProvider{
 
 	@Inject
@@ -51,10 +50,12 @@ public class JnarioQuickFixProvider extends XtendQuickfixProvider{
 	@Inject
 	private JnarioLibClasspathAdder jnarioLibAdder;
 	
-	@Inject
-	private JunitLibClasspathAdder junitLibAdder;
+	@Inject Provider<NewXtendClassWizard> newXtendClassWizardProvider;
 	
-@Inject Provider<NewXtendClassWizard> newXtendClassWizardProvider;
+	@Override
+	public void putXtendOnClasspath(Issue issue,
+			IssueResolutionAcceptor acceptor) {
+	}
 	
 	@Override
 	public void createLinkingIssueResolutions(final Issue issue,
@@ -111,17 +112,6 @@ public class JnarioQuickFixProvider extends XtendQuickfixProvider{
 		};
 	}
 	
-	@Fix(JnarioIssueCodes.JUNIT_NOT_ON_CLASSPATH)
-	public void putJuniOnClasspath(final Issue issue, IssueResolutionAcceptor acceptor) {
-		acceptor.accept(issue, "Add Junit libs to classpath", "Add Junit libs to classpath", "fix_indent.gif", new ISemanticModification() {
-			public void apply(EObject element, IModificationContext context) throws Exception {
-				ResourceSet resourceSet = element.eResource().getResourceSet();
-				IJavaProject javaProject = projectProvider.getJavaProject(resourceSet);
-				junitLibAdder.addLibsToClasspath(javaProject, new NullProgressMonitor());
-			}
-		});
-	}
-
 	@Fix(JnarioIssueCodes.JNARIO_LIB_NOT_ON_CLASSPATH)
 	public void putJnarioOnClasspath(final Issue issue, IssueResolutionAcceptor acceptor) {
 		acceptor.accept(issue, "Add Jnario libs to classpath", "Add Jnario libs to classpath", "fix_indent.gif", new ISemanticModification() {

@@ -8,5 +8,17 @@
             name="Jnario">
       </category>
    </extension>
-
+  <extension point="org.eclipse.jdt.core.classpathContainerInitializer">            
+   		<classpathContainerInitializer                                          
+			id="org.jnario.JNARIO_CONTAINER"                                                        
+			class="org.jnario.ui.buildpath.JnarioContainerInitializer"/>                           
+	</extension>
+	<extension
+         point="org.eclipse.jdt.ui.classpathContainerPage">
+      <classpathContainerPage
+            name="JNARIO_LIBRARY"
+            class="org.jnario.ui.buildpath.JnarioContainerWizardPage"
+            id="org.jnario.JNARIO_CONTAINER">
+      </classpathContainerPage>
+   </extension>
 </plugin>
