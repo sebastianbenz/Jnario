@@ -76,7 +76,7 @@ public class ExampleNameProvider {
 		if(example.isPending()){
 			sb.append("[PENDING]");
 		}
-		return convertToJavaString(makeJunitConform(sb)).trim().replace("\\\"", "\"").replace("\\n", " ").replace("\\t", "\t");
+		return convertToJavaString(makeJunitConform(sb)).trim();
 	}
 
 	private String expression(Example example) {

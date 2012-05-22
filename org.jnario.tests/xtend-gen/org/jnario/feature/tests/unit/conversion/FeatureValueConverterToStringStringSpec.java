@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
 @Named("toString[String]")
 public class FeatureValueConverterToStringStringSpec extends FeatureValueConverterSpec {
   @Test
-  @Named("subject.toString[\"text\"] => \"Prefix:text\\ \"")
+  @Named("subject.toString[\\\"text\\\"] => \\\"Prefix:text\\\\n\\\"")
   @Order(99)
   public void subjectToStringTextPrefixTextN() throws Exception {
     String _string = this.subject.toString("text");

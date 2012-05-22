@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
 @Named("toValue[String, INode]")
 public class FeatureValueConverterToValueStringINodeSpec extends FeatureValueConverterSpec {
   @Test
-  @Named("subject.toValue[\"Prefix: text\\ \", null] => \"text\"")
+  @Named("subject.toValue[\\\"Prefix: text\\\\n\\\", null] => \\\"text\\\"")
   @Order(99)
   public void subjectToValuePrefixTextNNullText() throws Exception {
     String _value = this.subject.toValue("Prefix: text\n", null);
@@ -38,7 +38,7 @@ public class FeatureValueConverterToValueStringINodeSpec extends FeatureValueCon
   }
   
   @Test
-  @Named("subject.toValue[\"xxx\", null] => \"xxx\"")
+  @Named("subject.toValue[\\\"xxx\\\", null] => \\\"xxx\\\"")
   @Order(99)
   public void subjectToValueXxxNullXxx() throws Exception {
     String _value = this.subject.toValue("xxx", null);
