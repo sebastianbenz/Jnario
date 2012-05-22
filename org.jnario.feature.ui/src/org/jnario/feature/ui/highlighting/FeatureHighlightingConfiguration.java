@@ -19,6 +19,7 @@ import org.eclipse.xtext.ui.editor.utils.TextStyle;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
+ * @author Sebastian Benz 
  */
 public class FeatureHighlightingConfiguration extends XtendHighlightingConfiguration {
 

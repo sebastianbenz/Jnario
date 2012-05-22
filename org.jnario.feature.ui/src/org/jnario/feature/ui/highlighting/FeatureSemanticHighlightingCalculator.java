@@ -11,10 +11,10 @@ import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.findNodesForFeatur
 import static org.jnario.feature.ui.highlighting.FeatureHighlightingConfiguration.SCENARIO_ID;
 import static org.jnario.util.Strings.getFirstWord;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
 
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -22,12 +22,16 @@ import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtend.core.xtend.XtendPackage;
+import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.impl.LeafNode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
+import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XBlockExpression;
+import org.eclipse.xtext.xbase.XNumberLiteral;
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 import org.jnario.ExampleTable;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeaturePackage;
@@ -202,19 +206,6 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 		}
 	}
 
-	public void provideHighlightingFor(XtextResource resource,
-			IHighlightedPositionAcceptor acceptor) {
-		super.provideHighlightingFor(resource, acceptor);
-		if (noNodeModel(resource)) {
-			return;
-		}
-
-		Implementation highlighter = new Implementation(acceptor);
-		Iterator<EObject> contents = resource.getAllContents();
-		while (contents.hasNext()) {
-			highlighter.doSwitch((EObject) contents.next());
-		}
-	}
 
 	protected EObject root(XtextResource resource) {
 		return resource.getParseResult().getRootASTElement();
@@ -223,6 +214,33 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 	protected boolean noNodeModel(XtextResource resource) {
 		return resource == null || resource.getParseResult() == null
 				|| root(resource) == null;
+	}
+	
+	protected void searchAndHighlightElements(XtextResource resource, IHighlightedPositionAcceptor acceptor) {
+		
+		Implementation highlighter = new Implementation(acceptor);
+		
+		TreeIterator<EObject> iterator = resource.getAllContents();
+		while (iterator.hasNext()) {
+			EObject object = iterator.next();
+			
+			highlighter.doSwitch(object);
+			ICompositeNode node = NodeModelUtils.getNode(object);
+			if(node == null){
+				break;
+			}
+			if (object instanceof XAbstractFeatureCall) {
+				computeFeatureCallHighlighting((XAbstractFeatureCall) object, acceptor);
+			}
+			// Handle XAnnotation in a special way because we want the @ highlighted too
+			if (object instanceof XNumberLiteral) {
+				highlightNumberLiterals((XNumberLiteral) object, acceptor);
+			} if (object instanceof XAnnotation) {
+				highlightAnnotation((XAnnotation) object, acceptor);
+			} else {
+				computeReferencedJvmTypeHighlighting(acceptor, object);
+			}
+		}
 	}
 
 }
