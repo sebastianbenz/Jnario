@@ -25,4 +25,15 @@ class Calculator {
 		"Calculator"		
 	}
 	
+	def enter(String a){
+		
+	}
+	
+	def press(String command){
+		
+	}
+	
+	def result(){
+		return "120"
+	}
 }    

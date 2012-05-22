@@ -1,6 +1,5 @@
 package org.jnario.spec.doc;
 
-import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import java.util.Arrays;
 import java.util.List;
@@ -10,9 +9,12 @@ import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.ExampleTable;
 import org.jnario.doc.AbstractDocGenerator;
@@ -39,7 +41,7 @@ public class DocGenerator extends AbstractDocGenerator {
   public HtmlFile createHtmlFile(final XtendClass xtendClass) {
     HtmlFile _xblockexpression = null;
     {
-      boolean _not = (!(xtendClass instanceof ExampleGroup));
+      boolean _not = BooleanExtensions.operator_not((xtendClass instanceof ExampleGroup));
       if (_not) {
         return HtmlFile.EMPTY_FILE;
       }
@@ -85,12 +87,12 @@ public class DocGenerator extends AbstractDocGenerator {
           if ((it instanceof Example)) {
             _or_1 = true;
           } else {
-            _or_1 = ((it instanceof Example) || (it instanceof ExampleGroup));
+            _or_1 = BooleanExtensions.operator_or((it instanceof Example), (it instanceof ExampleGroup));
           }
           if (_or_1) {
             _or = true;
           } else {
-            _or = (_or_1 || (it instanceof ExampleTable));
+            _or = BooleanExtensions.operator_or(_or_1, (it instanceof ExampleTable));
           }
           return Boolean.valueOf(_or);
         }
@@ -103,8 +105,8 @@ public class DocGenerator extends AbstractDocGenerator {
         if (!inList) {
           _and = false;
         } else {
-          boolean _not = (!isExampleGroup);
-          _and = (inList && _not);
+          boolean _not = BooleanExtensions.operator_not(isExampleGroup);
+          _and = BooleanExtensions.operator_and(inList, _not);
         }
         if (_and) {
           result.append("<li>");
@@ -113,12 +115,12 @@ public class DocGenerator extends AbstractDocGenerator {
           result.append("</li>");
         } else {
           boolean _and_1 = false;
-          boolean _not_1 = (!inList);
+          boolean _not_1 = BooleanExtensions.operator_not(inList);
           if (!_not_1) {
             _and_1 = false;
           } else {
-            boolean _not_2 = (!isExampleGroup);
-            _and_1 = (_not_1 && _not_2);
+            boolean _not_2 = BooleanExtensions.operator_not(isExampleGroup);
+            _and_1 = BooleanExtensions.operator_and(_not_1, _not_2);
           }
           if (_and_1) {
             result.append("<ul>");
@@ -132,7 +134,7 @@ public class DocGenerator extends AbstractDocGenerator {
             if (!inList) {
               _and_2 = false;
             } else {
-              _and_2 = (inList && isExampleGroup);
+              _and_2 = BooleanExtensions.operator_and(inList, isExampleGroup);
             }
             if (_and_2) {
               result.append("</ul>");
@@ -141,11 +143,11 @@ public class DocGenerator extends AbstractDocGenerator {
               inList = false;
             } else {
               boolean _and_3 = false;
-              boolean _not_3 = (!inList);
+              boolean _not_3 = BooleanExtensions.operator_not(inList);
               if (!_not_3) {
                 _and_3 = false;
               } else {
-                _and_3 = (_not_3 && isExampleGroup);
+                _and_3 = BooleanExtensions.operator_and(_not_3, isExampleGroup);
               }
               if (_and_3) {
                 CharSequence _generate_3 = this.generate(member, level);
@@ -166,7 +168,7 @@ public class DocGenerator extends AbstractDocGenerator {
     StringConcatenation _builder = new StringConcatenation();
     {
       String _documentation = this._extendedJvmTypesBuilder.getDocumentation(eObject);
-      boolean _notEquals = (!Objects.equal(_documentation, null));
+      boolean _notEquals = ObjectExtensions.operator_notEquals(_documentation, null);
       if (_notEquals) {
         String _documentation_1 = this._extendedJvmTypesBuilder.getDocumentation(eObject);
         String _markdown2Html = this.markdown2Html(_documentation_1);
@@ -187,7 +189,7 @@ public class DocGenerator extends AbstractDocGenerator {
     {
       String docString = this._extendedJvmTypesBuilder.getDocumentation(example);
       List<Filter> filters = CollectionLiterals.<Filter>emptyList();
-      boolean _notEquals = (!Objects.equal(docString, null));
+      boolean _notEquals = ObjectExtensions.operator_notEquals(docString, null);
       if (_notEquals) {
         final FilteringResult filterResult = this._filterExtractor.apply(docString);
         List<Filter> _filters = filterResult.getFilters();
@@ -200,7 +202,7 @@ public class DocGenerator extends AbstractDocGenerator {
       StringConcatenation _builder = new StringConcatenation();
       {
         String _name = example.getName();
-        boolean _notEquals_1 = (!Objects.equal(_name, null));
+        boolean _notEquals_1 = ObjectExtensions.operator_notEquals(_name, null);
         if (_notEquals_1) {
           _builder.append("<p ");
           String _name_1 = example.getName();
@@ -222,13 +224,13 @@ public class DocGenerator extends AbstractDocGenerator {
       {
         boolean _and = false;
         boolean _isPending = example.isPending();
-        boolean _not = (!_isPending);
+        boolean _not = BooleanExtensions.operator_not(_isPending);
         if (!_not) {
           _and = false;
         } else {
           XExpression _body = example.getBody();
-          boolean _notEquals_2 = (!Objects.equal(_body, null));
-          _and = (_not && _notEquals_2);
+          boolean _notEquals_2 = ObjectExtensions.operator_notEquals(_body, null);
+          _and = BooleanExtensions.operator_and(_not, _notEquals_2);
         }
         if (_and) {
           CharSequence _codeBlock = this.toCodeBlock(example, filters);
@@ -252,7 +254,7 @@ public class DocGenerator extends AbstractDocGenerator {
       XExpression _implementation = example.getImplementation();
       final String code = this.toXtendCode(_implementation, filters);
       int _length = code.length();
-      boolean _equals = (_length == 0);
+      boolean _equals = IntegerExtensions.operator_equals(_length, 0);
       if (_equals) {
         StringConcatenation _builder = new StringConcatenation();
         return _builder;
@@ -306,7 +308,7 @@ public class DocGenerator extends AbstractDocGenerator {
     _builder.append(_generateDoc, "");
     _builder.append("</p>");
     _builder.newLineIfNotEmpty();
-    int _plus = (level + 1);
+    int _plus = IntegerExtensions.operator_plus(level, 1);
     StringConcatenation _generateMembers = this.generateMembers(exampleGroup, _plus);
     _builder.append(_generateMembers, "");
     _builder.newLineIfNotEmpty();

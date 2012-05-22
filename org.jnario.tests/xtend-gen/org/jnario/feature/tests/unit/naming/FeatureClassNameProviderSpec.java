@@ -2,6 +2,8 @@ package org.jnario.feature.tests.unit.naming;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.xbase.lib.CollectionExtensions;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.jnario.ExampleTable;
 import org.jnario.JnarioFactory;
 import org.jnario.feature.feature.Background;
@@ -35,7 +37,7 @@ public class FeatureClassNameProviderSpec {
   
   public Background background(final String backgroundName, final String featureName) {
     final Background result = FeatureClassNameProviderSpec.factory.createBackground();
-    String _plus = ("Background: " + backgroundName);
+    String _plus = ObjectExtensions.operator_plus("Background: ", backgroundName);
     result.setName(_plus);
     final Feature feature = this.feature(featureName);
     feature.setBackground(result);
@@ -44,27 +46,27 @@ public class FeatureClassNameProviderSpec {
   
   public ExampleTable examples(final String examplesName, final String scenarioName, final String featureName) {
     final ExampleTable result = JnarioFactory.eINSTANCE.createExampleTable();
-    String _plus = ("Examples: " + examplesName);
+    String _plus = ObjectExtensions.operator_plus("Examples: ", examplesName);
     result.setName(_plus);
     final Scenario scenario = this.scenario(scenarioName, featureName);
     EList<ExampleTable> _examples = scenario.getExamples();
-    _examples.add(result);
+    CollectionExtensions.<ExampleTable>operator_add(_examples, result);
     return result;
   }
   
   public Scenario scenario(final String name, final String featureName) {
     final Scenario scenario = FeatureClassNameProviderSpec.factory.createScenario();
-    String _plus = ("Scenario: " + name);
+    String _plus = ObjectExtensions.operator_plus("Scenario: ", name);
     scenario.setName(_plus);
     final Feature feature = this.feature(featureName);
     EList<Scenario> _scenarios = feature.getScenarios();
-    _scenarios.add(scenario);
+    CollectionExtensions.<Scenario>operator_add(_scenarios, scenario);
     return scenario;
   }
   
   public Feature feature(final String name) {
     final Feature feature = FeatureClassNameProviderSpec.factory.createFeature();
-    String _plus = ("Feature: " + name);
+    String _plus = ObjectExtensions.operator_plus("Feature: ", name);
     feature.setName(_plus);
     return feature;
   }

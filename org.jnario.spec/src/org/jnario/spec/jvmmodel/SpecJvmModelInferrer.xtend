@@ -47,7 +47,7 @@ import org.eclipse.xtend.core.xtend.XtendFunction
 import org.eclipse.xtend.core.xtend.XtendConstructor
 import org.eclipse.xtext.common.types.JvmAnnotationType
 import org.eclipse.xtend.core.jvmmodel.SyntheticNameClashResolver
-
+ 
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
@@ -82,7 +82,7 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 			infer(acceptor, it, null)
 		]
 	}
-	
+
 	def infer(IJvmDeclaredTypeAcceptor acceptor, ExampleGroup exampleGroup, JvmGenericType superType){
 		if(superType != null){
 			exampleGroup.^extends = superType.createTypeRef

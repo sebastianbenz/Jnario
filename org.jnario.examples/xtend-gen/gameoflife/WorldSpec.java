@@ -1,6 +1,5 @@
 package gameoflife;
 
-import com.google.common.base.Objects;
 import gameoflife.AliveCell;
 import gameoflife.Cell;
 import gameoflife.DeadCell;
@@ -9,8 +8,11 @@ import gameoflife.Position;
 import gameoflife.World;
 import gameoflife.WorldVisitor;
 import java.util.Set;
+import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.hamcrest.Matcher;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -115,7 +117,7 @@ public class WorldSpec {
   }
   
   public Position neighbourOf(final Position pos) {
-    String _plus = ("neighbours of " + pos);
+    String _plus = StringExtensions.operator_plus("neighbours of ", pos);
     final Function1<Position,Boolean> _function = new Function1<Position,Boolean>() {
         public Boolean apply(final Position p) {
           boolean _or = false;
@@ -124,17 +126,17 @@ public class WorldSpec {
           if (_contains) {
             _or = true;
           } else {
-            boolean _equals = Objects.equal(pos, p);
-            _or = (_contains || _equals);
+            boolean _equals = ObjectExtensions.operator_equals(pos, p);
+            _or = BooleanExtensions.operator_or(_contains, _equals);
           }
           boolean _or_1 = false;
           Set<Position> _neighbours_1 = pos.neighbours();
           boolean _contains_1 = _neighbours_1.contains(p);
-          boolean _equals_1 = Objects.equal(pos, p);
+          boolean _equals_1 = ObjectExtensions.operator_equals(pos, p);
           if (_contains) {
             _or = true;
           } else {
-            _or = (_contains || _equals_1);
+            _or = BooleanExtensions.operator_or(_contains, _equals_1);
           }
           return Boolean.valueOf(_or);
         }

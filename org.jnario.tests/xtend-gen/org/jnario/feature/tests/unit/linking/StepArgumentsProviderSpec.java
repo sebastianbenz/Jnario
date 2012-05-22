@@ -1,6 +1,5 @@
 package org.jnario.feature.tests.unit.linking;
 
-import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import java.io.InputStreamReader;
 import java.util.List;
@@ -12,6 +11,7 @@ import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.parser.IParser;
 import org.eclipse.xtext.util.StringInputStream;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.jvmmodel.StepArgumentsProvider;
@@ -90,7 +90,7 @@ public class StepArgumentsProviderSpec {
   public Step create(final String step) {
     Step _xblockexpression = null;
     {
-      boolean _equals = Objects.equal(step, null);
+      boolean _equals = ObjectExtensions.operator_equals(step, null);
       if (_equals) {
         return null;
       }

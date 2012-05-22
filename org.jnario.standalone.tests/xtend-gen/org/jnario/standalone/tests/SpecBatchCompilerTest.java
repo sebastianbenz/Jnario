@@ -8,6 +8,7 @@ import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.util.Files;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.jnario.spec.SpecInjectorProvider;
 import org.jnario.spec.compiler.batch.SpecBatchCompiler;
 import org.junit.After;
@@ -69,7 +70,7 @@ public class SpecBatchCompilerTest {
   @Test
   public void testCompileTestData() {
     this.batchCompiler.compile();
-    String _plus = (SpecBatchCompilerTest.OUTPUT_DIRECTORY + "/test");
+    String _plus = ObjectExtensions.operator_plus(SpecBatchCompilerTest.OUTPUT_DIRECTORY, "/test");
     File _file = new File(_plus);
     String[] _list = _file.list();
     int _size = ((List<String>)Conversions.doWrapArray(_list)).size();

@@ -1,9 +1,10 @@
 package org.jnario.spec.tests.integration;
 
-import com.google.common.base.Objects;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.Matcher;
 import org.jnario.jnario.test.util.Helpers;
@@ -28,7 +29,7 @@ public class MatcherSpec {
   public void returnsTheBooleanResultOfTheEvaluatedExpression() throws Exception {
     final Function1<String,Boolean> _function = new Function1<String,Boolean>() {
         public Boolean apply(final String input) {
-          boolean _equals = Objects.equal(input, "true");
+          boolean _equals = ObjectExtensions.operator_equals(input, "true");
           return _equals;
         }
       };
@@ -38,7 +39,7 @@ public class MatcherSpec {
      + "\n     myMatcher is " + myMatcher + "\n", _matches);
     
     boolean _matches_1 = myMatcher.matches("false");
-    boolean _not = (!_matches_1);
+    boolean _not = BooleanExtensions.operator_not(_matches_1);
     Assert.assertTrue("\nExpected !myMatcher.matches(\"false\") but"
      + "\n     myMatcher.matches(\"false\") is " + _matches_1
      + "\n     myMatcher is " + myMatcher + "\n", _not);
@@ -51,7 +52,7 @@ public class MatcherSpec {
   public void typeCanBeCoercedFromTheContext() throws Exception {
     final Function1<String,Boolean> _function = new Function1<String,Boolean>() {
         public Boolean apply(final String it) {
-          boolean _equals = Objects.equal(it, "true");
+          boolean _equals = ObjectExtensions.operator_equals(it, "true");
           return Boolean.valueOf(_equals);
         }
       };
@@ -61,7 +62,7 @@ public class MatcherSpec {
      + "\n     myMatcher is " + myMatcher + "\n", _matches);
     
     boolean _matches_1 = myMatcher.matches("false");
-    boolean _not = (!_matches_1);
+    boolean _not = BooleanExtensions.operator_not(_matches_1);
     Assert.assertTrue("\nExpected !myMatcher.matches(\"false\") but"
      + "\n     myMatcher.matches(\"false\") is " + _matches_1
      + "\n     myMatcher is " + myMatcher + "\n", _not);

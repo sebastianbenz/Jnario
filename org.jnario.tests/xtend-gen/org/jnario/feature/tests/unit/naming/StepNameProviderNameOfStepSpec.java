@@ -1,7 +1,7 @@
 package org.jnario.feature.tests.unit.naming;
 
-import com.google.common.base.Objects;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.jnario.feature.feature.Given;
 import org.jnario.feature.feature.GivenReference;
 import org.jnario.feature.tests.unit.naming.StepNameProviderSpec;
@@ -23,7 +23,7 @@ public class StepNameProviderNameOfStepSpec extends StepNameProviderSpec {
   public void returnsNullIfTheStepHasNoName() throws Exception {
     Given _emptyStep = this.emptyStep();
     String _nameOf = this.subject.nameOf(_emptyStep);
-    boolean _equals = Objects.equal(_nameOf, null);
+    boolean _equals = ObjectExtensions.operator_equals(_nameOf, null);
     Assert.assertTrue("\nExpected subject.nameOf(emptyStep) == null but"
      + "\n     subject.nameOf(emptyStep) is " + "\"" + _nameOf + "\""
      + "\n     subject is " + this.subject
@@ -37,7 +37,7 @@ public class StepNameProviderNameOfStepSpec extends StepNameProviderSpec {
   public void returnsNullIfTheStepHasNoReference() throws Exception {
     GivenReference _emptyRef = this.emptyRef();
     String _nameOf = this.subject.nameOf(_emptyRef);
-    boolean _equals = Objects.equal(_nameOf, null);
+    boolean _equals = ObjectExtensions.operator_equals(_nameOf, null);
     Assert.assertTrue("\nExpected subject.nameOf(emptyRef) == null but"
      + "\n     subject.nameOf(emptyRef) is " + "\"" + _nameOf + "\""
      + "\n     subject is " + this.subject

@@ -3,6 +3,7 @@ package org.jnario.spec.tests.integration;
 import java.util.ArrayList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matcher;
@@ -38,7 +39,8 @@ public class UsingShouldSpec {
     .assertTrue("\nExpected // equality\n\t\ttrue should be true but"
      + "\n     // equality\n\t\ttrue should be true is " + null + "\n", _should_be);
     
-    int _plus = (1 + 1);
+    int _plus = IntegerExtensions.operator_plus(
+      1, 1);
     boolean _should_be_1 = Should.should_be(_plus, 1);Assert
     .assertFalse("\nExpected 1 + 1 should not be 1 but"
      + "\n     1 + 1 is " + _plus + "\n", _should_be_1);
@@ -48,7 +50,8 @@ public class UsingShouldSpec {
     .assertFalse("\nExpected \"something\" should not be null but"
      + "\n     \"something\" should not be null is " + null + "\n", _should_be_2);
     
-    int _plus_1 = (1 + 1);
+    int _plus_1 = IntegerExtensions.operator_plus(
+      1, 1);
     boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_plus_1), Integer.valueOf(2));Assert
     .assertTrue("\nExpected 1 + 1 => 2 but"
      + "\n     1 + 1 is " + Integer.valueOf(_plus_1) + "\n", _doubleArrow);
@@ -89,7 +92,8 @@ public class UsingShouldSpec {
   @Order(99)
   public void orNotToPass() throws Exception {
     try{
-      int _plus = (1 + 1);
+      int _plus = IntegerExtensions.operator_plus(
+        1, 1);
       boolean _should_be = Should.should_be(_plus, 1);Assert
       .assertTrue("\nExpected 1 + 1 should be 1 but"
        + "\n     1 + 1 is " + _plus + "\n", _should_be);
@@ -100,7 +104,8 @@ public class UsingShouldSpec {
       // expected
     }
     try{
-      int _plus_1 = (1 + 1);
+      int _plus_1 = IntegerExtensions.operator_plus(
+        1, 1);
       boolean _should_be_1 = Should.should_be(_plus_1, 1);Assert
       .assertFalse("\nExpected 1 + 1 should not be 1 but"
        + "\n     1 + 1 is " + _plus_1 + "\n", _should_be_1);
@@ -111,7 +116,8 @@ public class UsingShouldSpec {
       // expected
     }
     try{
-      int _plus_2 = (1 + 1);
+      int _plus_2 = IntegerExtensions.operator_plus(
+        1, 1);
       boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_plus_2), Integer.valueOf(1));Assert
       .assertTrue("\nExpected 1 + 1 => 1 but"
        + "\n     1 + 1 is " + Integer.valueOf(_plus_2) + "\n", _doubleArrow);
@@ -133,7 +139,7 @@ public class UsingShouldSpec {
   public void whyDidItFail() throws Exception {
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
-          int _plus = (1 + 1);
+          int _plus = IntegerExtensions.operator_plus(1, 1);
           boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(1));Assert
           .assertTrue("\nExpected 1 + 1 => 1 but"
            + "\n     1 + 1 is " + Integer.valueOf(_plus) + "\n", _doubleArrow);

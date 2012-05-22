@@ -1,6 +1,8 @@
 package introduction;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.BooleanExtensions;
+import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.jnario.test.util.Helpers;
 import org.jnario.jnario.test.util.SpecExecutor;
@@ -73,12 +75,12 @@ public class JnarioSpecsFactBDDForJavaSpec {
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
           boolean _and = false;
-          boolean _equals = (x == 1);
-          boolean _equals_1 = (y == 0);
+          boolean _equals = IntegerExtensions.operator_equals(x, 1);
+          boolean _equals_1 = IntegerExtensions.operator_equals(y, 0);
           if (!_equals) {
             _and = false;
           } else {
-            _and = (_equals && _equals_1);
+            _and = BooleanExtensions.operator_and(_equals, _equals_1);
           }
           Assert.assertTrue("\nExpected x == 1 && y == 0 but"
            + "\n     x == 1 is " + _equals
