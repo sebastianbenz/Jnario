@@ -1,15 +1,14 @@
 package org.jnario.doc;
 
+import com.google.common.base.Objects;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.eclipse.xtext.xbase.lib.CollectionExtensions;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Pair;
 import org.jnario.doc.Filter;
 import org.jnario.doc.FilteringResult;
@@ -35,23 +34,21 @@ public class FilterExtractor {
             return _create;
           }
         };
-      Pair<String,Function1<String,Filter>> _mappedTo = ObjectExtensions.<String, Function1<String,Filter>>operator_mappedTo(
-        "filter", _function);
+      Pair<String,Function1<String,Filter>> _mappedTo = Pair.<String, Function1<String,Filter>>of("filter", _function);
       final Function1<String,Filter> _function_1 = new Function1<String,Filter>() {
           public Filter apply(final String s) {
             Filter _create = LangFilter.create(s);
             return _create;
           }
         };
-      Pair<String,Function1<String,Filter>> _mappedTo_1 = ObjectExtensions.<String, Function1<String,Filter>>operator_mappedTo(
-        "lang", _function_1);
+      Pair<String,Function1<String,Filter>> _mappedTo_1 = Pair.<String, Function1<String,Filter>>of("lang", _function_1);
       HashMap<String,Function1<String,Filter>> _newHashMap = CollectionLiterals.<String, Function1<String,Filter>>newHashMap(_mappedTo, _mappedTo_1);
       return _newHashMap;
     }
   }.apply();
   
   public FilteringResult apply(final String input) {
-    boolean _equals = ObjectExtensions.operator_equals(input, null);
+    boolean _equals = Objects.equal(input, null);
     if (_equals) {
       return FilteringResult.EMPTY_RESULT;
     }
@@ -66,11 +63,11 @@ public class FilterExtractor {
       {
         final String key = matcher.group(2);
         final Function1<String,Filter> candidate = this.filterRegistry.get(key);
-        boolean _notEquals = ObjectExtensions.operator_notEquals(candidate, null);
+        boolean _notEquals = (!Objects.equal(candidate, null));
         if (_notEquals) {
           String _group = matcher.group(4);
           Filter _apply = candidate.apply(_group);
-          CollectionExtensions.<Filter>operator_add(filters, _apply);
+          filters.add(_apply);
         }
         final int nextOffset = matcher.start();
         String _substring = input.substring(offset, nextOffset);

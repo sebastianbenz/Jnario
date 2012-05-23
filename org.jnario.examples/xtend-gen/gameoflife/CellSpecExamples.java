@@ -5,7 +5,7 @@ import java.util.List;
 import org.jnario.lib.ExampleTableRow;
 
 public class CellSpecExamples extends ExampleTableRow {
-  public CellSpecExamples(final List<String> cellNames, final Cell cell, final int neighborCount, final Class<?> newState) {
+  public CellSpecExamples(final List<String> cellNames, final Cell cell, final int neighborCount, final Class<? extends Object> newState) {
     super(cellNames);
     this.cell = cell;
     this.neighborCount = neighborCount;
@@ -24,9 +24,9 @@ public class CellSpecExamples extends ExampleTableRow {
     return neighborCount;
   }
   
-  public Class<?> newState;
+  public Class<? extends Object> newState;
   
-  public Class<?> getNewState() {
+  public Class<? extends Object> getNewState() {
     return newState;
   }
   

@@ -18,7 +18,7 @@ import org.junit.runner.RunWith;
 @Named("Set Literal")
 public class CollectionLiteralsSetLiteralSpec extends CollectionLiteralsSpec {
   @Test
-  @Named("set[\"green\", \"red\"] => newHashSet[\"green\", \"red\"]")
+  @Named("set[\\\"green\\\", \\\"red\\\"] => newHashSet[\\\"green\\\", \\\"red\\\"]")
   @Order(99)
   public void setGreenRedNewHashSetGreenRed() throws Exception {
     Set<String> _set = JnarioCollectionLiterals.<String>set("green", "red");
@@ -31,7 +31,7 @@ public class CollectionLiteralsSetLiteralSpec extends CollectionLiteralsSpec {
   }
   
   @Test
-  @Named("set[set[\"green\"], set[\"red\"]] => newHashSet[newHashSet[\"green\"], newHashSet[\"red\"]]")
+  @Named("set[set[\\\"green\\\"], set[\\\"red\\\"]] => newHashSet[newHashSet[\\\"green\\\"], newHashSet[\\\"red\\\"]]")
   @Order(99)
   public void setSetGreenSetRedNewHashSetNewHashSetGreenNewHashSetRed() throws Exception {
     Set<String> _set = JnarioCollectionLiterals.<String>set("green");

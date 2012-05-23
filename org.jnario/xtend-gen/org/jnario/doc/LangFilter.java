@@ -1,6 +1,5 @@
 package org.jnario.doc;
 
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.jnario.doc.Filter;
 
 @SuppressWarnings("all")
@@ -17,12 +16,12 @@ public class LangFilter implements Filter {
   }
   
   public String apply(final String input) {
-    String _plus = ObjectExtensions.operator_plus("<pre class=\"prettyprint lang-", this.language);
-    String _plus_1 = ObjectExtensions.operator_plus(_plus, "\">");
+    String _plus = ("<pre class=\"prettyprint lang-" + this.language);
+    String _plus_1 = (_plus + "\">");
     return input.replace("<pre class=\"prettyprint lang-spec\">", _plus_1);
   }
   
   public String toString() {
-    return ObjectExtensions.operator_plus("lang-", this.language);
+    return ("lang-" + this.language);
   }
 }

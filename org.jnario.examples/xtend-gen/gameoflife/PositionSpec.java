@@ -1,9 +1,8 @@
 package gameoflife;
 
+import com.google.common.base.Objects;
 import gameoflife.Position;
 import java.util.Set;
-import org.eclipse.xtext.xbase.lib.IntegerExtensions;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -56,7 +55,7 @@ public class PositionSpec {
     int _hashCode = _pos.hashCode();
     Position _pos_1 = Position.pos(0, 0);
     int _hashCode_1 = _pos_1.hashCode();
-    boolean _equals = IntegerExtensions.operator_equals(_hashCode, _hashCode_1);
+    boolean _equals = (_hashCode == _hashCode_1);
     Assert.assertTrue("\nExpected pos(0, 0).hashCode == pos(0, 0).hashCode but"
      + "\n     pos(0, 0).hashCode is " + _hashCode
      + "\n     pos(0, 0) is " + _pos + "\n", _equals);
@@ -69,7 +68,7 @@ public class PositionSpec {
   public void calculatesEqualsBasedOnCoordinates() throws Exception {
     Position _pos = Position.pos(0, 0);
     Position _pos_1 = Position.pos(0, 0);
-    boolean _equals = ObjectExtensions.operator_equals(_pos, _pos_1);
+    boolean _equals = Objects.equal(_pos, _pos_1);
     Assert.assertTrue("\nExpected pos(0, 0) == pos(0, 0) but"
      + "\n     pos(0, 0) is " + _pos + "\n", _equals);
     
@@ -83,7 +82,7 @@ public class PositionSpec {
     Position _pos_1 = Position.pos(3, 4);
     Position _plus = _pos.plus(_pos_1);
     Position _pos_2 = Position.pos(4, 6);
-    boolean _equals = ObjectExtensions.operator_equals(_plus, _pos_2);
+    boolean _equals = Objects.equal(_plus, _pos_2);
     Assert.assertTrue("\nExpected pos(1, 2).plus(pos(3, 4)) == pos(4, 6) but"
      + "\n     pos(1, 2).plus(pos(3, 4)) is " + _plus
      + "\n     pos(1, 2) is " + _pos

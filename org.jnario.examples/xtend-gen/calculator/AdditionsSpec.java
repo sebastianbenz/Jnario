@@ -1,8 +1,6 @@
 package calculator;
 
 import calculator.AdditionsSpecExamples;
-import org.eclipse.xtext.xbase.lib.IntegerExtensions;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
@@ -38,7 +36,7 @@ public class AdditionsSpec {
   public void examplesForEachABSum() throws Exception {
     final Procedure1<AdditionsSpecExamples> _function = new Procedure1<AdditionsSpecExamples>() {
         public void apply(final AdditionsSpecExamples it) {
-          int _plus = IntegerExtensions.operator_plus(it.a, it.b);
+          int _plus = (it.a + it.b);
           boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(it.sum));Assert
           .assertTrue("\nExpected a + b => sum but"
            + "\n     a + b is " + Integer.valueOf(_plus)
@@ -66,6 +64,6 @@ public class AdditionsSpec {
   
   public String sayHello(final String name) {
     String _upperCase = name.toUpperCase();
-    return ObjectExtensions.operator_plus("Hello ", _upperCase);
+    return ("Hello " + _upperCase);
   }
 }

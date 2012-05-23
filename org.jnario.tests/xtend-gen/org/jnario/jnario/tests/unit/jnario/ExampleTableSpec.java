@@ -2,7 +2,6 @@ package org.jnario.jnario.tests.unit.jnario;
 
 import com.google.inject.Inject;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.jnario.ExampleTable;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.Query;
@@ -91,7 +90,7 @@ public class ExampleTableSpec {
     Query _query = this._modelStore.query();
     ExampleTable _first = _query.<ExampleTable>first(ExampleTable.class);
     boolean _isValid = _first.isValid();
-    boolean _not = BooleanExtensions.operator_not(_isValid);
+    boolean _not = (!_isValid);
     Assert.assertTrue("\nExpected !query.first(typeof(ExampleTable)).isValid() but"
      + "\n     query.first(typeof(ExampleTable)).isValid() is " + _isValid
      + "\n     query.first(typeof(ExampleTable)) is " + _first

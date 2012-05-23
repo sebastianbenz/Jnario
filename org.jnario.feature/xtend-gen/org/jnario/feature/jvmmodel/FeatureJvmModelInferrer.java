@@ -1,5 +1,6 @@
 package org.jnario.feature.jvmmodel;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.UnmodifiableIterator;
 import com.google.inject.Inject;
@@ -37,13 +38,9 @@ import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor.IPostIndexingInitializing;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator;
-import org.eclipse.xtext.xbase.lib.BooleanExtensions;
-import org.eclipse.xtext.xbase.lib.CollectionExtensions;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
-import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
@@ -107,12 +104,12 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   
   public void infer(final EObject object, final IJvmDeclaredTypeAcceptor acceptor, final boolean preIndexingPhase) {
     boolean _checkClassPath = this.checkClassPath(object, this.annotationProvider);
-    boolean _not = BooleanExtensions.operator_not(_checkClassPath);
+    boolean _not = (!_checkClassPath);
     if (_not) {
       return;
     }
     final Feature feature = this.resolveFeature(object);
-    boolean _equals = ObjectExtensions.operator_equals(feature, null);
+    boolean _equals = Objects.equal(feature, null);
     if (_equals) {
       return;
     }
@@ -138,7 +135,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   public JvmGenericType toClass(final Background background, final IJvmDeclaredTypeAcceptor acceptor) {
     JvmGenericType _xblockexpression = null;
     {
-      boolean _equals = ObjectExtensions.operator_equals(background, null);
+      boolean _equals = Objects.equal(background, null);
       if (_equals) {
         return null;
       }
@@ -158,7 +155,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           final JvmGenericType inferredJvmType = FeatureJvmModelInferrer.this.toClass(it, backgroundType);
           List<JvmGenericType> _emptyList = CollectionLiterals.<JvmGenericType>emptyList();
           FeatureJvmModelInferrer.this.register(acceptor, it, inferredJvmType, _emptyList);
-          CollectionExtensions.<JvmGenericType>operator_add(result, inferredJvmType);
+          result.add(inferredJvmType);
         }
       };
     IterableExtensions.<Scenario>forEach(scenarios, _function);
@@ -189,7 +186,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   public JvmGenericType toClass(final XtendClass xtendClass, final JvmGenericType superClass) {
     JvmGenericType _xblockexpression = null;
     {
-      boolean _notEquals = ObjectExtensions.operator_notEquals(superClass, null);
+      boolean _notEquals = (!Objects.equal(superClass, null));
       if (_notEquals) {
         JvmParameterizedTypeReference _createTypeRef = this._typeReferences.createTypeRef(superClass);
         xtendClass.setExtends(_createTypeRef);
@@ -217,7 +214,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     JvmAnnotationReference _featureRunner = this.annotationProvider.getFeatureRunner(feature);
     this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(annotations, _featureRunner);
     boolean _isEmpty = scenarios.isEmpty();
-    boolean _not = BooleanExtensions.operator_not(_isEmpty);
+    boolean _not = (!_isEmpty);
     if (_not) {
       JvmAnnotationReference _annotation = this._extendedJvmTypesBuilder.toAnnotation(feature, Contains.class, scenarios);
       this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(annotations, _annotation);
@@ -248,12 +245,12 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     int start = 0;
     final Background background = feature.getBackground();
     boolean _and = false;
-    boolean _not = BooleanExtensions.operator_not((scenario instanceof Background));
+    boolean _not = (!(scenario instanceof Background));
     if (!_not) {
       _and = false;
     } else {
-      boolean _notEquals = ObjectExtensions.operator_notEquals(background, null);
-      _and = BooleanExtensions.operator_and(_not, _notEquals);
+      boolean _notEquals = (!Objects.equal(background, null));
+      _and = (_not && _notEquals);
     }
     if (_and) {
       EList<Step> _steps_1 = background.getSteps();
@@ -265,11 +262,11 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     this.generateSteps(_steps_2, inferredJvmType, start, scenario);
     EList<ExampleTable> _examples = scenario.getExamples();
     boolean _isEmpty = _examples.isEmpty();
-    boolean _not_1 = BooleanExtensions.operator_not(_isEmpty);
+    boolean _not_1 = (!_isEmpty);
     if (_not_1) {
       final List<JvmGenericType> exampleClasses = this.generateExampleClasses(scenario, inferredJvmType);
       boolean _isEmpty_1 = exampleClasses.isEmpty();
-      boolean _not_2 = BooleanExtensions.operator_not(_isEmpty_1);
+      boolean _not_2 = (!_isEmpty_1);
       if (_not_2) {
         JvmAnnotationReference _annotation_1 = this._extendedJvmTypesBuilder.toAnnotation(scenario, Contains.class, exampleClasses);
         this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(annotations, _annotation_1);
@@ -302,9 +299,9 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     final Procedure1<XVariableDeclaration> _function = new Procedure1<XVariableDeclaration>() {
         public void apply(final XVariableDeclaration dec) {
           String _name = dec.getName();
-          boolean _equals = ObjectExtensions.operator_equals(_name, FeatureJvmModelInferrer.STEP_VALUES);
+          boolean _equals = Objects.equal(_name, FeatureJvmModelInferrer.STEP_VALUES);
           if (_equals) {
-            boolean _not = BooleanExtensions.operator_not((step instanceof StepReference));
+            boolean _not = (!(step instanceof StepReference));
             if (_not) {
               FeatureJvmModelInferrer.this.setStepValueType(dec, ((Step) step));
             }
@@ -315,19 +312,19 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
             for (final XMemberFeatureCall call : _iterable) {
               boolean _and = false;
               int _size = arguments.size();
-              boolean _greaterThan = IntegerExtensions.operator_greaterThan(_size, index);
+              boolean _greaterThan = (_size > index);
               if (!_greaterThan) {
                 _and = false;
               } else {
                 XExpression _memberCallTarget = call.getMemberCallTarget();
-                _and = BooleanExtensions.operator_and(_greaterThan, (_memberCallTarget instanceof XFeatureCall));
+                _and = (_greaterThan && (_memberCallTarget instanceof XFeatureCall));
               }
               if (_and) {
                 XExpression _memberCallTarget_1 = call.getMemberCallTarget();
                 XFeatureCall featureCall = ((XFeatureCall) _memberCallTarget_1);
                 boolean _and_1 = false;
                 JvmIdentifiableElement _feature = featureCall.getFeature();
-                boolean _equals_1 = ObjectExtensions.operator_equals(_feature, dec);
+                boolean _equals_1 = Objects.equal(_feature, dec);
                 if (!_equals_1) {
                   _and_1 = false;
                 } else {
@@ -336,15 +333,15 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
                     _or = true;
                   } else {
                     JvmIdentifiableElement _feature_1 = call.getFeature();
-                    boolean _equals_2 = ObjectExtensions.operator_equals(_feature_1, null);
-                    _or = BooleanExtensions.operator_or((step instanceof StepReference), _equals_2);
+                    boolean _equals_2 = Objects.equal(_feature_1, null);
+                    _or = ((step instanceof StepReference) || _equals_2);
                   }
-                  _and_1 = BooleanExtensions.operator_and(_equals_1, _or);
+                  _and_1 = (_equals_1 && _or);
                 }
                 if (_and_1) {
                   String _get = arguments.get(index);
                   FeatureJvmModelInferrer.this.addStepValue(call, dec, step, _get);
-                  int _plus = IntegerExtensions.operator_plus(index, 1);
+                  int _plus = (index + 1);
                   index = _plus;
                 }
               }
@@ -379,9 +376,9 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     Iterable<JvmOperation> _iterable = IteratorExtensions.<JvmOperation>toIterable(operations);
     for (final JvmOperation operation : _iterable) {
       String _simpleName = operation.getSimpleName();
-      boolean _equals = ObjectExtensions.operator_equals(_simpleName, "add");
+      boolean _equals = Objects.equal(_simpleName, "add");
       if (_equals) {
-        boolean _not = BooleanExtensions.operator_not((step instanceof StepReference));
+        boolean _not = (!(step instanceof StepReference));
         if (_not) {
           featureCall.setFeature(operation);
         } else {
@@ -427,8 +424,8 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           public void apply(final JvmOperation it) {
             final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
                 public void apply(final ITreeAppendable a) {
-                  String _plus = ObjectExtensions.operator_plus("super.", methodName);
-                  String _plus_1 = ObjectExtensions.operator_plus(_plus, "();");
+                  String _plus = ("super." + methodName);
+                  String _plus_1 = (_plus + "();");
                   a.append(_plus_1);
                 }
               };
@@ -448,7 +445,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
         };
       JvmOperation _method = this._extendedJvmTypesBuilder.toMethod(step, methodName, _typeForName, _function);
       this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
-      int _plus = IntegerExtensions.operator_plus(order, 1);
+      int _plus = (order + 1);
       _xblockexpression = (_plus);
     }
     return _xblockexpression;
@@ -490,16 +487,16 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
             FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_1, _annotation);
             String name = FeatureJvmModelInferrer.this._stepNameProvider.describe(step);
             boolean _and = false;
-            boolean _not = BooleanExtensions.operator_not((step instanceof Given));
+            boolean _not = (!(step instanceof Given));
             if (!_not) {
               _and = false;
             } else {
               StepExpression _expressionOf_1 = FeatureJvmModelInferrer.this._stepExpressionProvider.expressionOf(step);
-              boolean _equals = ObjectExtensions.operator_equals(_expressionOf_1, null);
-              _and = BooleanExtensions.operator_and(_not, _equals);
+              boolean _equals = Objects.equal(_expressionOf_1, null);
+              _and = (_not && _equals);
             }
             if (_and) {
-              String _plus = ObjectExtensions.operator_plus("[PENDING] ", name);
+              String _plus = ("[PENDING] " + name);
               name = _plus;
               EList<JvmAnnotationReference> _annotations_2 = it.getAnnotations();
               JvmAnnotationReference _annotation_1 = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(step, Ignore.class);
@@ -512,7 +509,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
         };
       JvmOperation _method = this._extendedJvmTypesBuilder.toMethod(step, _methodName, _typeForName, _function);
       this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
-      int _plus = IntegerExtensions.operator_plus(order, 1);
+      int _plus = (order + 1);
       _xblockexpression = (_plus);
     }
     return _xblockexpression;
@@ -550,7 +547,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   public void generateVariables(final Scenario scenario, final Feature feature, final JvmGenericType inferredJvmType) {
     EList<ExampleTable> _examples = scenario.getExamples();
     boolean _isEmpty = _examples.isEmpty();
-    boolean _not = BooleanExtensions.operator_not(_isEmpty);
+    boolean _not = (!_isEmpty);
     if (_not) {
       ArrayList<String> _arrayList = new ArrayList<String>();
       ArrayList<String> fieldNames = _arrayList;
@@ -560,7 +557,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
         for (final ExampleColumn field : _columns) {
           String _name = field.getName();
           boolean _contains = fieldNames.contains(_name);
-          boolean _not_1 = BooleanExtensions.operator_not(_contains);
+          boolean _not_1 = (!_contains);
           if (_not_1) {
             EList<JvmMember> _members = inferredJvmType.getMembers();
             JvmField _field = this.toField(field);
@@ -583,12 +580,12 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           EList<ExampleColumn> fields = example.getColumns();
           EList<ExampleRow> _rows = example.getRows();
           boolean _isEmpty = _rows.isEmpty();
-          boolean _not = BooleanExtensions.operator_not(_isEmpty);
+          boolean _not = (!_isEmpty);
           if (_not) {
             EList<ExampleRow> _rows_1 = example.getRows();
             for (final ExampleRow row : _rows_1) {
               JvmGenericType _createExampleClass = this.createExampleClass(scenario, row, fields, inferredJvmType);
-              CollectionExtensions.<JvmGenericType>operator_add(exampleClasses, _createExampleClass);
+              exampleClasses.add(_createExampleClass);
             }
           }
         }
@@ -624,26 +621,26 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
             for (final ExampleColumn field : fields) {
               EList<XExpression> _cells = row.getCells();
               int _size = _cells.size();
-              boolean _greaterThan = IntegerExtensions.operator_greaterThan(_size, i);
+              boolean _greaterThan = (_size > i);
               if (_greaterThan) {
                 String _name = field.getName();
-                String _plus = ObjectExtensions.operator_plus(description, _name);
-                String _plus_1 = ObjectExtensions.operator_plus(_plus, " = ");
+                String _plus = (description + _name);
+                String _plus_1 = (_plus + " = ");
                 EList<XExpression> _cells_1 = row.getCells();
                 XExpression _get = _cells_1.get(i);
                 String _serialize = FeatureJvmModelInferrer.this.serialize(_get);
-                String _plus_2 = ObjectExtensions.operator_plus(_plus_1, _serialize);
-                String _plus_3 = ObjectExtensions.operator_plus(_plus_2, ", ");
+                String _plus_2 = (_plus_1 + _serialize);
+                String _plus_3 = (_plus_2 + ", ");
                 description = _plus_3;
-                int _plus_4 = IntegerExtensions.operator_plus(i, 1);
+                int _plus_4 = (i + 1);
                 i = _plus_4;
               }
             }
             int _length = description.length();
-            int _minus = IntegerExtensions.operator_minus(_length, 1);
-            int _minus_1 = IntegerExtensions.operator_minus(_minus, 1);
+            int _minus = (_length - 1);
+            int _minus_1 = (_minus - 1);
             String _substring = description.substring(0, _minus_1);
-            String _plus_5 = ObjectExtensions.operator_plus(_substring, "]");
+            String _plus_5 = (_substring + "]");
             description = _plus_5;
             EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
             JvmAnnotationReference _annotation = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(row, Named.class, description);
@@ -661,7 +658,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     {
       EList<XExpression> _cells = row.getCells();
       int _size = _cells.size();
-      boolean _greaterThan = IntegerExtensions.operator_greaterThan(_size, i);
+      boolean _greaterThan = (_size > i);
       if (_greaterThan) {
         EList<XExpression> _cells_1 = row.getCells();
         XExpression _get = _cells_1.get(i);
@@ -687,7 +684,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
                     a.append(" = ");
                     FeatureJvmModelInferrer.this.cellToAppendable(row, i, a);
                     a.append(";\n");
-                    int _plus = IntegerExtensions.operator_plus(i, 1);
+                    int _plus = (i + 1);
                     i = _plus;
                   }
                 }

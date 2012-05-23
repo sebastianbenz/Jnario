@@ -3,7 +3,6 @@ package org.jnario.spec.tests.unit.naming;
 import java.util.ArrayList;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.jnario.test.util.Query;
 import org.jnario.lib.Should;
@@ -71,8 +70,8 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
   public String firstMethodName(final String content) {
     String _xblockexpression = null;
     {
-      String _plus = ObjectExtensions.operator_plus("describe \'Context\'{", content);
-      final String contentWithContext = ObjectExtensions.operator_plus(_plus, "}");
+      String _plus = ("describe \'Context\'{" + content);
+      final String contentWithContext = (_plus + "}");
       Query _parse = this.parse(contentWithContext);
       After _first = _parse.<After>first(After.class);
       String _methodName = this.subject.toMethodName(_first);
@@ -84,8 +83,8 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
   public String secondMethodName(final String content) {
     String _xblockexpression = null;
     {
-      String _plus = ObjectExtensions.operator_plus("describe \'Context\'{", content);
-      final String contentWithContext = ObjectExtensions.operator_plus(_plus, "}");
+      String _plus = ("describe \'Context\'{" + content);
+      final String contentWithContext = (_plus + "}");
       Query _parse = this.parse(contentWithContext);
       After _second = _parse.<After>second(After.class);
       String _methodName = this.subject.toMethodName(_second);

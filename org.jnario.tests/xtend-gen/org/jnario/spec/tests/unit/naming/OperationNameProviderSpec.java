@@ -1,5 +1,6 @@
 package org.jnario.spec.tests.unit.naming;
 
+import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import java.util.Map;
 import org.eclipse.emf.common.util.EList;
@@ -14,7 +15,6 @@ import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.XtextResourceSet;
-import org.eclipse.xtext.xbase.lib.CollectionExtensions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.jnario.jnario.test.util.SpecTestInstantiator;
@@ -82,11 +82,11 @@ public class OperationNameProviderSpec {
     final Resource r = _xtextResourceSet.createResource(_createURI);
     final EObject eObject = EcoreFactory.eINSTANCE.createEObject();
     EList<EObject> _contents = r.getContents();
-    CollectionExtensions.<EObject>operator_add(_contents, eObject);
+    _contents.add(eObject);
     JvmType _findDeclaredType = this.typeReferences.findDeclaredType(contextType, eObject);
     final JvmGenericType type = ((JvmGenericType) _findDeclaredType);
     EList<JvmMember> _members = type.getMembers();
-    final Iterable<JvmOperation> jvmOperations = IterableExtensions.<JvmOperation>filter(_members, JvmOperation.class);
+    final Iterable<JvmOperation> jvmOperations = Iterables.<JvmOperation>filter(_members, JvmOperation.class);
     final Function1<JvmOperation,String> _function = new Function1<JvmOperation,String>() {
         public String apply(final JvmOperation it) {
           String _simpleName = it.getSimpleName();

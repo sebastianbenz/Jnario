@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
 @Named("Steps must have descriptions")
 public class JnarioValidatorStepsMustHaveDescriptionsSpec extends JnarioValidatorSpec {
   @Test
-  @Named("\\\'\\\'\\\'\\r \t\t\tFeature: A feature\\r \t\t\t\tScenario: A scenario\\r \t\t\t\t \tGiven \\r \t\t\t\t \tWhen \\r \t\t\t\t \tThen \\r \t\t\t\t \t\\r \t\t\\\'\\\'\\\'.allOf[typeof[Step]][assertErrorContains[\"description\"]]")
+  @Named("\\\'\\\'\\\'\\r\\n\\t\\t\\tFeature: A feature\\r\\n\\t\\t\\t\\tScenario: A scenario\\r\\n\\t\\t\\t\\t \\tGiven \\r\\n\\t\\t\\t\\t \\tWhen \\r\\n\\t\\t\\t\\t \\tThen \\r\\n\\t\\t\\t\\t \\t\\r\\n\\t\\t\\\'\\\'\\\'.allOf[typeof[Step]][assertErrorContains[\\\"description\\\"]]")
   @Order(99)
   public void featureAFeatureScenarioAScenarioGivenWhenThenAllOfTypeofStepAssertErrorContainsDescription() throws Exception {
     StringConcatenation _builder = new StringConcatenation();

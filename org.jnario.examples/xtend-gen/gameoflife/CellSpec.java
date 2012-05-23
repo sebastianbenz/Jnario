@@ -20,9 +20,9 @@ import org.junit.runner.RunWith;
 @RunWith(ExampleGroupRunner.class)
 @Named("Cell")
 public class CellSpec {
-  Class<?> alive = AliveCell.class;
+  Class<? extends Object> alive = AliveCell.class;
   
-  Class<?> dead = DeadCell.class;
+  Class<? extends Object> dead = DeadCell.class;
   
   @Before
   public void _initCellSpecExamples() {

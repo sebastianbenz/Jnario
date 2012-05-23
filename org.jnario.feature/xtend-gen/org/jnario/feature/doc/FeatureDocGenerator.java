@@ -1,5 +1,7 @@
 package org.jnario.feature.doc;
 
+import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
@@ -9,9 +11,6 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XStringLiteral;
-import org.eclipse.xtext.xbase.lib.BooleanExtensions;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.ExampleTable;
 import org.jnario.doc.AbstractDocGenerator;
@@ -40,7 +39,7 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
   public HtmlFile createHtmlFile(final XtendClass xtendClass) {
     HtmlFile _xblockexpression = null;
     {
-      boolean _not = BooleanExtensions.operator_not((xtendClass instanceof Feature));
+      boolean _not = (!(xtendClass instanceof Feature));
       if (_not) {
         return HtmlFile.EMPTY_FILE;
       }
@@ -73,7 +72,7 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     _builder.newLineIfNotEmpty();
     {
       Background _background = feature.getBackground();
-      boolean _notEquals = ObjectExtensions.operator_notEquals(_background, null);
+      boolean _notEquals = (!Objects.equal(_background, null));
       if (_notEquals) {
         Background _background_1 = feature.getBackground();
         CharSequence _generate = this.generate(_background_1);
@@ -108,14 +107,14 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     _builder.append("</h3>");
     _builder.newLineIfNotEmpty();
     EList<Step> _steps = scenario.getSteps();
-    Iterable<Step> _filter = IterableExtensions.<Step>filter(_steps, Step.class);
+    Iterable<Step> _filter = Iterables.<Step>filter(_steps, Step.class);
     CharSequence _generate = this.generate(_filter);
     _builder.append(_generate, "");
     _builder.newLineIfNotEmpty();
     {
       EList<ExampleTable> _examples = scenario.getExamples();
       boolean _isEmpty = _examples.isEmpty();
-      boolean _not = BooleanExtensions.operator_not(_isEmpty);
+      boolean _not = (!_isEmpty);
       if (_not) {
         _builder.append("<h4>Examples:</h4>");
         _builder.newLine();
@@ -145,7 +144,7 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
         _builder.append(_generate, "");
         _builder.newLineIfNotEmpty();
         EList<Step> _and = step.getAnd();
-        Iterable<Step> _filter = IterableExtensions.<Step>filter(_and, Step.class);
+        Iterable<Step> _filter = Iterables.<Step>filter(_and, Step.class);
         CharSequence _generate_1 = this.generate(_filter);
         _builder.append(_generate_1, "");
         _builder.append("</li>");
@@ -173,11 +172,11 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     {
       String result = this._stepNameProvider.nameOf(step);
       String _firstWord = Strings.getFirstWord(result);
-      String _plus = ObjectExtensions.operator_plus("(", _firstWord);
-      String _plus_1 = ObjectExtensions.operator_plus(_plus, ")");
+      String _plus = ("(" + _firstWord);
+      String _plus_1 = (_plus + ")");
       String _replaceFirst = result.replaceFirst(_plus_1, "<strong>$1</strong>");
       result = _replaceFirst;
-      String _plus_2 = ObjectExtensions.operator_plus(" ", result);
+      String _plus_2 = (" " + result);
       String _replaceAll = _plus_2.replaceAll("\"(.*?)\"", "<code>$1</code>");
       result = _replaceAll;
       String _markdown2Html = this.markdown2Html(result);
@@ -191,11 +190,11 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     StepExpression _stepExpression = step.getStepExpression();
     XBlockExpression _blockExpression = _stepExpression==null?(XBlockExpression)null:_stepExpression.getBlockExpression();
     final EList<XExpression> expressions = _blockExpression==null?(EList<XExpression>)null:_blockExpression.getExpressions();
-    boolean _equals = ObjectExtensions.operator_equals(expressions, null);
+    boolean _equals = Objects.equal(expressions, null);
     if (_equals) {
       return "";
     }
-    Iterable<XStringLiteral> _filter = IterableExtensions.<XStringLiteral>filter(expressions, XStringLiteral.class);
+    Iterable<XStringLiteral> _filter = Iterables.<XStringLiteral>filter(expressions, XStringLiteral.class);
     for (final XStringLiteral expr : _filter) {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("<pre>");

@@ -1,6 +1,5 @@
 package org.jnario.spec.tests.integration;
 
-import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -26,7 +25,7 @@ public class AssertionIntroductionSpec extends AssertionSpec {
   public void toPass() throws Exception {
     Assert.assertTrue("\nExpected true but" + " did not." + "\n", true);
     
-    boolean _equals = IntegerExtensions.operator_equals(1, 1);
+    boolean _equals = (1 == 1);
     Assert.assertTrue("\nExpected 1 == 1 but"
      + "\n     1 == 1 is " + _equals + "\n", _equals);
     

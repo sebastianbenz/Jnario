@@ -18,7 +18,7 @@ import org.junit.runner.RunWith;
 @Named("List Literal")
 public class CollectionLiteralsListLiteralSpec extends CollectionLiteralsSpec {
   @Test
-  @Named("list[\"green\", \"red\"] => newArrayList[\"green\", \"red\"]")
+  @Named("list[\\\"green\\\", \\\"red\\\"] => newArrayList[\\\"green\\\", \\\"red\\\"]")
   @Order(99)
   public void listGreenRedNewArrayListGreenRed() throws Exception {
     List<String> _list = JnarioCollectionLiterals.<String>list("green", "red");
@@ -31,7 +31,7 @@ public class CollectionLiteralsListLiteralSpec extends CollectionLiteralsSpec {
   }
   
   @Test
-  @Named("list[list[\"green\"], list[\"red\"]] => newArrayList[newArrayList[\"green\"], newArrayList[\"red\"]]")
+  @Named("list[list[\\\"green\\\"], list[\\\"red\\\"]] => newArrayList[newArrayList[\\\"green\\\"], newArrayList[\\\"red\\\"]]")
   @Order(99)
   public void listListGreenListRedNewArrayListNewArrayListGreenNewArrayListRed() throws Exception {
     List<String> _list = JnarioCollectionLiterals.<String>list("green");

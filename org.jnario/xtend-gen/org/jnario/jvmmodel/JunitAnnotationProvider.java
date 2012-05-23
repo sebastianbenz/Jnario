@@ -4,7 +4,6 @@ import com.google.inject.Inject;
 import java.util.ArrayList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
-import org.eclipse.xtext.xbase.lib.CollectionExtensions;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.runner.ExampleGroupRunner;
@@ -41,10 +40,10 @@ public class JunitAnnotationProvider {
   public ArrayList<JvmAnnotationReference> getTestAnnotations(final EObject context, final boolean isPending) {
     final ArrayList<JvmAnnotationReference> annotations = CollectionLiterals.<JvmAnnotationReference>newArrayList();
     JvmAnnotationReference _annotation = this._extendedJvmTypesBuilder.toAnnotation(context, Test.class);
-    CollectionExtensions.<JvmAnnotationReference>operator_add(annotations, _annotation);
+    annotations.add(_annotation);
     if (isPending) {
       JvmAnnotationReference _annotation_1 = this._extendedJvmTypesBuilder.toAnnotation(context, Ignore.class);
-      CollectionExtensions.<JvmAnnotationReference>operator_add(annotations, _annotation_1);
+      annotations.add(_annotation_1);
     }
     return annotations;
   }

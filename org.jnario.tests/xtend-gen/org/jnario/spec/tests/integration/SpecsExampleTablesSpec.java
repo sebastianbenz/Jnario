@@ -1,7 +1,6 @@
 package org.jnario.spec.tests.integration;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.jnario.test.util.Helpers;
 import org.jnario.jnario.test.util.SpecExecutor;
@@ -323,8 +322,7 @@ public class SpecsExampleTablesSpec {
         public void apply(final Boolean it) {
           final Procedure1<SpecsExampleTablesSpecExample> _function = new Procedure1<SpecsExampleTablesSpecExample>() {
               public void apply(final SpecsExampleTablesSpecExample it) {
-                int _plus = IntegerExtensions.operator_plus(
-                  it.value1, it.value2);
+                int _plus = (it.value1 + it.value2);
                 boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(it.sum));Assert
                 .assertTrue("\nExpected value1 + value2 => sum but"
                  + "\n     value1 + value2 is " + Integer.valueOf(_plus)
