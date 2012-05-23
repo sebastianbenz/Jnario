@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.jnario.runner.NameProvider;
 import org.jnario.runner.Named;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.model.TestClass;
 

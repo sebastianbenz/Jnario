@@ -10,6 +10,8 @@
    <tycho-version>0.14.1</tycho-version>
     <tycho-groupid>org.eclipse.tycho</tycho-groupid>
     <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+	<project.build.resourceEncoding>ISO-8859-1</project.build.resourceEncoding> 
+	<maven.compiler.encoding>ISO-8859-1</maven.compiler.encoding>
     <platform-version-name>juno</platform-version-name>
     <eclipse-site>http://download.eclipse.org/releases/${platform-version-name}</eclipse-site>
   </properties>
