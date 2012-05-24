@@ -132,7 +132,7 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 		private void highlightFirstWordOfReference(Step reference, Step referencedStep){
 			String description = getFirstWord(referencedStep.getName());
 			if(description != ""){
-				highlightReference(description, reference, FeaturePackage.Literals.STEP_REFERENCE__REFERENCE, FeatureHighlightingConfiguration.STEP_REFERNCE_ID);
+				highlightReference(description, reference, FeaturePackage.Literals.STEP_REFERENCE__REFERENCE, FeatureHighlightingConfiguration.STEP_REFERENCE_ID);
 				
 			}
 			else{
@@ -217,7 +217,6 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 	}
 	
 	protected void searchAndHighlightElements(XtextResource resource, IHighlightedPositionAcceptor acceptor) {
-		
 		Implementation highlighter = new Implementation(acceptor);
 		
 		TreeIterator<EObject> iterator = resource.getAllContents();
@@ -225,20 +224,19 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 			EObject object = iterator.next();
 			
 			highlighter.doSwitch(object);
-			ICompositeNode node = NodeModelUtils.getNode(object);
-			if(node == null){
-				break;
-			}
 			if (object instanceof XAbstractFeatureCall) {
 				computeFeatureCallHighlighting((XAbstractFeatureCall) object, acceptor);
 			}
-			// Handle XAnnotation in a special way because we want the @ highlighted too
-			if (object instanceof XNumberLiteral) {
-				highlightNumberLiterals((XNumberLiteral) object, acceptor);
-			} if (object instanceof XAnnotation) {
-				highlightAnnotation((XAnnotation) object, acceptor);
-			} else {
-				computeReferencedJvmTypeHighlighting(acceptor, object);
+			ICompositeNode node = NodeModelUtils.getNode(object);
+			if(node != null){
+				// Handle XAnnotation in a special way because we want the @ highlighted too
+				if (object instanceof XNumberLiteral) {
+					highlightNumberLiterals((XNumberLiteral) object, acceptor);
+				} if (object instanceof XAnnotation) {
+					highlightAnnotation((XAnnotation) object, acceptor);
+				} else {
+					computeReferencedJvmTypeHighlighting(acceptor, object);
+				}
 			}
 		}
 	}

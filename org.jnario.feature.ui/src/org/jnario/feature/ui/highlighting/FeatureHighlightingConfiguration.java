@@ -31,7 +31,7 @@ public class FeatureHighlightingConfiguration extends XtendHighlightingConfigura
 	public static final String FEATURE_ID = "Feature";
 	public static final String CODE_BOLD_ID = "CodeBold";
 	public static final String STEP_ID = "Step";
-	public static final String STEP_REFERNCE_ID = "StepReference";
+	public static final String STEP_REFERENCE_ID = "StepReference";
 	public static final String STEP_TEXT_ID = "Step_Text";
 	public static final String EXAMPLE_ID = "Example";
 	public static final String IDENTIFIERS_ID = "Identifiers";
@@ -50,7 +50,7 @@ public class FeatureHighlightingConfiguration extends XtendHighlightingConfigura
 				codeBoldTextStyle());
 		acceptor.acceptDefaultHighlighting(EXAMPLE_ID, "Example",
 				exampleWordStyle());
-		acceptor.acceptDefaultHighlighting(STEP_REFERNCE_ID, "StepReference",
+		acceptor.acceptDefaultHighlighting(STEP_REFERENCE_ID, "StepReference",
 				stepRefKeyWordStyle());
 		acceptor.acceptDefaultHighlighting(IDENTIFIERS_ID, "Identifiers", identifiersTextStyle());
 	}
@@ -118,6 +118,7 @@ public class FeatureHighlightingConfiguration extends XtendHighlightingConfigura
 	public TextStyle identifiersTextStyle(){
 		TextStyle textStyle = defaultTextStyle().copy();
 		textStyle.setColor(new RGB(204, 0, 0));
+		textStyle.setFontData(fontWithHeight(DEFAULT_FONT_SIZE, SWT.NORMAL));
 		return textStyle;
 	}
 
