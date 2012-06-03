@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
@@ -32,8 +33,8 @@ public class ExampleNameProviderToJavaClassNameExampleGroupSpec extends ExampleN
   @Order(99)
   public void shouldRemoveAllWhiteSpacesFromExampleGroupSDescription() throws Exception {
     String _firstJavaClassName = this.firstJavaClassName("describe \'My Example\'");
-    boolean _should_contain = Should.should_contain(_firstJavaClassName, " ");Assert
-    .assertFalse("\nExpected firstJavaClassName(\"describe \'My Example\'\") should not contain \" \" but"
+    boolean _should_contain = Should.should_contain(_firstJavaClassName, " ");
+    Assert.assertFalse("\nExpected firstJavaClassName(\"describe \'My Example\'\") should not contain \" \" but"
      + "\n     firstJavaClassName(\"describe \'My Example\'\") is " + "\"" + _firstJavaClassName + "\"" + "\n", _should_contain);
     
   }
@@ -44,8 +45,8 @@ public class ExampleNameProviderToJavaClassNameExampleGroupSpec extends ExampleN
   public void shouldAppendSpecToClassName() throws Exception {
     String _firstJavaClassName = this.firstJavaClassName("describe \'My Example\'");
     Matcher<String> _endsWith = Matchers.endsWith("Spec");
-    boolean _doubleArrow = Should.operator_doubleArrow(_firstJavaClassName, _endsWith);Assert
-    .assertTrue("\nExpected firstJavaClassName(\"describe \'My Example\'\") => endsWith(\'Spec\') but"
+    boolean _doubleArrow = ObjectExtensions.<Object>operator_doubleArrow(_firstJavaClassName, _endsWith);
+    Assert.assertTrue("\nExpected firstJavaClassName(\"describe \'My Example\'\") => endsWith(\'Spec\') but"
      + "\n     firstJavaClassName(\"describe \'My Example\'\") is " + "\"" + _firstJavaClassName + "\""
      + "\n     endsWith(\'Spec\') is " + _endsWith + "\n", _doubleArrow);
     
@@ -57,8 +58,8 @@ public class ExampleNameProviderToJavaClassNameExampleGroupSpec extends ExampleN
   public void shouldPrependTargetTypeName() throws Exception {
     String _firstJavaClassName = this.firstJavaClassName("describe org.junit.Assert \'My Example\'");
     Matcher<String> _startsWith = Matchers.startsWith("Assert");
-    boolean _doubleArrow = Should.operator_doubleArrow(_firstJavaClassName, _startsWith);Assert
-    .assertTrue("\nExpected firstJavaClassName(\"describe org.junit.Assert \'My Example\'\") => startsWith(\"Assert\") but"
+    boolean _doubleArrow = ObjectExtensions.<Object>operator_doubleArrow(_firstJavaClassName, _startsWith);
+    Assert.assertTrue("\nExpected firstJavaClassName(\"describe org.junit.Assert \'My Example\'\") => startsWith(\"Assert\") but"
      + "\n     firstJavaClassName(\"describe org.junit.Assert \'My Example\'\") is " + "\"" + _firstJavaClassName + "\""
      + "\n     startsWith(\"Assert\") is " + _startsWith + "\n", _doubleArrow);
     
@@ -76,8 +77,8 @@ public class ExampleNameProviderToJavaClassNameExampleGroupSpec extends ExampleN
     final Procedure1<String> _function = new Procedure1<String>() {
         public void apply(final String it) {
           String _firstJavaClassName = ExampleNameProviderToJavaClassNameExampleGroupSpec.this.firstJavaClassName(it);
-          boolean _doubleArrow = Should.operator_doubleArrow(_firstJavaClassName, "MyExampleSpec");Assert
-          .assertTrue("\nExpected firstJavaClassName(it) => \'MyExampleSpec\' but"
+          boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_firstJavaClassName, "MyExampleSpec");
+          Assert.assertTrue("\nExpected firstJavaClassName(it) => \'MyExampleSpec\' but"
            + "\n     firstJavaClassName(it) is " + "\"" + _firstJavaClassName + "\""
            + "\n     it is " + "\"" + it + "\"" + "\n", _doubleArrow);
           
@@ -100,8 +101,8 @@ public class ExampleNameProviderToJavaClassNameExampleGroupSpec extends ExampleN
     _builder.newLine();
     String _secondJavaClassName = this.secondJavaClassName(_builder);
     Matcher<String> _endsWith = Matchers.endsWith("AssertTrueBooleanSpec");
-    boolean _doubleArrow = Should.operator_doubleArrow(_secondJavaClassName, _endsWith);Assert
-    .assertTrue("\nExpected secondJavaClassName(\r\n        \'\'\'\r\n        describe org.junit.Assert{\r\n              context assertTrue(boolean) \r\n        }\r\n        \'\'\') => endsWith(\'AssertTrueBooleanSpec\') but"
+    boolean _doubleArrow = ObjectExtensions.<Object>operator_doubleArrow(_secondJavaClassName, _endsWith);
+    Assert.assertTrue("\nExpected secondJavaClassName(\r\n        \'\'\'\r\n        describe org.junit.Assert{\r\n              context assertTrue(boolean) \r\n        }\r\n        \'\'\') => endsWith(\'AssertTrueBooleanSpec\') but"
      + "\n     secondJavaClassName(\r\n        \'\'\'\r\n        describe org.junit.Assert{\r\n              context assertTrue(boolean) \r\n        }\r\n        \'\'\') is " + "\"" + _secondJavaClassName + "\""
      + "\n     \'\'\'\r\n        describe org.junit.Assert{\r\n              context assertTrue(boolean) \r\n        }\r\n        \'\'\' is " + _builder
      + "\n     endsWith(\'AssertTrueBooleanSpec\') is " + _endsWith + "\n", _doubleArrow);
@@ -122,8 +123,8 @@ public class ExampleNameProviderToJavaClassNameExampleGroupSpec extends ExampleN
     _builder.newLine();
     String _secondJavaClassName = this.secondJavaClassName(_builder);
     Matcher<String> _endsWith = Matchers.endsWith("AssertTrueSpec");
-    boolean _doubleArrow = Should.operator_doubleArrow(_secondJavaClassName, _endsWith);Assert
-    .assertTrue("\nExpected secondJavaClassName(\r\n      \'\'\'\r\n        describe org.junit.Assert{\r\n          context \'assertTrue\' \r\n        }\r\n      \'\'\') => endsWith(\'AssertTrueSpec\') but"
+    boolean _doubleArrow = ObjectExtensions.<Object>operator_doubleArrow(_secondJavaClassName, _endsWith);
+    Assert.assertTrue("\nExpected secondJavaClassName(\r\n      \'\'\'\r\n        describe org.junit.Assert{\r\n          context \'assertTrue\' \r\n        }\r\n      \'\'\') => endsWith(\'AssertTrueSpec\') but"
      + "\n     secondJavaClassName(\r\n      \'\'\'\r\n        describe org.junit.Assert{\r\n          context \'assertTrue\' \r\n        }\r\n      \'\'\') is " + "\"" + _secondJavaClassName + "\""
      + "\n     \'\'\'\r\n        describe org.junit.Assert{\r\n          context \'assertTrue\' \r\n        }\r\n      \'\'\' is " + _builder
      + "\n     endsWith(\'AssertTrueSpec\') is " + _endsWith + "\n", _doubleArrow);
@@ -143,8 +144,8 @@ public class ExampleNameProviderToJavaClassNameExampleGroupSpec extends ExampleN
     _builder.append("}");
     _builder.newLine();
     String _secondJavaClassName = this.secondJavaClassName(_builder);
-    boolean _doubleArrow = Should.operator_doubleArrow(_secondJavaClassName, "AssertAssertTrueBooleanSpec");Assert
-    .assertTrue("\nExpected secondJavaClassName(\r\n      \'\'\'\r\n      describe org.junit.Assert{\r\n        context assertTrue(boolean) \r\n      }\r\n      \'\'\') => \'AssertAssertTrueBooleanSpec\' but"
+    boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_secondJavaClassName, "AssertAssertTrueBooleanSpec");
+    Assert.assertTrue("\nExpected secondJavaClassName(\r\n      \'\'\'\r\n      describe org.junit.Assert{\r\n        context assertTrue(boolean) \r\n      }\r\n      \'\'\') => \'AssertAssertTrueBooleanSpec\' but"
      + "\n     secondJavaClassName(\r\n      \'\'\'\r\n      describe org.junit.Assert{\r\n        context assertTrue(boolean) \r\n      }\r\n      \'\'\') is " + "\"" + _secondJavaClassName + "\""
      + "\n     \'\'\'\r\n      describe org.junit.Assert{\r\n        context assertTrue(boolean) \r\n      }\r\n      \'\'\' is " + _builder + "\n", _doubleArrow);
     

@@ -16,7 +16,7 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 import org.jnario.feature.services.FeatureGrammarAccess;
 
 @SuppressWarnings("all")
-public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequencer {
+public class FeatureSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected FeatureGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_BlockExpression_SemicolonKeyword_1_q;
@@ -74,21 +74,38 @@ public class AbstractFeatureSyntacticSequencer extends AbstractSyntacticSequence
 		return "";
 	}
 	
+	/**
+	 * terminal EXAMPLE_ROW_END: (PIPE | PIPE_SPACES) '\r'? '\n';
+	 */
 	protected String getEXAMPLE_ROW_ENDToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return "|\n";
 	}
+	
+	/**
+	 * OpSingleAssign:
+	 * 	'='
+	 * ;
+	 */
 	protected String getOpSingleAssignToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return "=";
 	}
+	
+	/**
+	 * terminal PIPE : '|';
+	 */
 	protected String getPIPEToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return "|";
 	}
+	
+	/**
+	 * terminal PIPE_SPACES: PIPE (' '|'\t')+;
+	 */
 	protected String getPIPE_SPACESToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);

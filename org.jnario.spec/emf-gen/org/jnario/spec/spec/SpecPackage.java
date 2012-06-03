@@ -180,15 +180,6 @@ public interface SpecPackage extends EPackage
 	int EXAMPLE_GROUP__MEMBERS = XtendPackage.XTEND_CLASS__MEMBERS;
 
 	/**
-	 * The feature id for the '<em><b>Super Call Referable</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_GROUP__SUPER_CALL_REFERABLE = XtendPackage.XTEND_CLASS__SUPER_CALL_REFERABLE;
-
-	/**
 	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

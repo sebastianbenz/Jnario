@@ -2,6 +2,7 @@ package org.jnario.jnario.tests.unit.jnario;
 
 import com.google.inject.Inject;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.jnario.Should;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.Query;
@@ -42,7 +43,7 @@ public class ShouldSpec {
     Query _query = this._modelStore.query();
     Should _first = _query.<Should>first(Should.class);
     boolean _isNot = _first.isNot();
-    boolean _not = (!_isNot);
+    boolean _not = BooleanExtensions.operator_not(_isNot);
     Assert.assertTrue("\nExpected !query.first(typeof(Should)).isNot but"
      + "\n     query.first(typeof(Should)).isNot is " + _isNot
      + "\n     query.first(typeof(Should)) is " + _first

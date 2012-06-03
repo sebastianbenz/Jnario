@@ -41,12 +41,12 @@ public abstract class AbstractFeatureRuntimeModule extends DefaultRuntimeModule 
 
 	// contributed by org.eclipse.xtext.generator.serializer.SerializerFragment
 	public Class<? extends org.eclipse.xtext.serializer.sequencer.ISemanticSequencer> bindISemanticSequencer() {
-		return org.jnario.feature.serializer.AbstractFeatureSemanticSequencer.class;
+		return org.jnario.feature.serializer.FeatureSemanticSequencer.class;
 	}
 
 	// contributed by org.eclipse.xtext.generator.serializer.SerializerFragment
 	public Class<? extends org.eclipse.xtext.serializer.sequencer.ISyntacticSequencer> bindISyntacticSequencer() {
-		return org.jnario.feature.serializer.AbstractFeatureSyntacticSequencer.class;
+		return org.jnario.feature.serializer.FeatureSyntacticSequencer.class;
 	}
 
 	// contributed by org.eclipse.xtext.generator.serializer.SerializerFragment

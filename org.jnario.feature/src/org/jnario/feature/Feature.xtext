@@ -43,7 +43,7 @@ Feature returns xtend::XtendClass:
 	description=TEXT?
 	background=Background?
 	scenarios+=Scenario*;
-
+ 
 XAnnotation returns xannotations::XAnnotation:
 	{xannotations::XAnnotation}
 	'@' annotationType=[types::JvmAnnotationType | QualifiedName] (=>'('

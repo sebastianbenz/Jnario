@@ -1,7 +1,7 @@
 package org.jnario.spec.tests.unit.naming;
 
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.jnario.jnario.test.util.Query;
-import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -25,8 +25,8 @@ public class ExampleNameProviderDescribeExampleSpec extends ExampleNameProviderS
   @Order(99)
   public void shouldUseTheDescription() throws Exception {
     String _describeFirst = this.describeFirst("\'should do stuff\' {true}");
-    boolean _doubleArrow = Should.operator_doubleArrow(_describeFirst, "should do stuff");Assert
-    .assertTrue("\nExpected describeFirst(\"\'should do stuff\' {true}\") => \"should do stuff\" but"
+    boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_describeFirst, "should do stuff");
+    Assert.assertTrue("\nExpected describeFirst(\"\'should do stuff\' {true}\") => \"should do stuff\" but"
      + "\n     describeFirst(\"\'should do stuff\' {true}\") is " + "\"" + _describeFirst + "\"" + "\n", _doubleArrow);
     
   }
@@ -36,13 +36,13 @@ public class ExampleNameProviderDescribeExampleSpec extends ExampleNameProviderS
   @Order(99)
   public void apppendsPENDINGToPendingExampleDescriptions() throws Exception {
     String _describeFirst = this.describeFirst("\'should do stuff\'");
-    boolean _doubleArrow = Should.operator_doubleArrow(_describeFirst, "should do stuff [PENDING]");Assert
-    .assertTrue("\nExpected describeFirst(\"\'should do stuff\'\") => \"should do stuff [PENDING]\" but"
+    boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_describeFirst, "should do stuff [PENDING]");
+    Assert.assertTrue("\nExpected describeFirst(\"\'should do stuff\'\") => \"should do stuff [PENDING]\" but"
      + "\n     describeFirst(\"\'should do stuff\'\") is " + "\"" + _describeFirst + "\"" + "\n", _doubleArrow);
     
     String _describeFirst_1 = this.describeFirst("\'should do stuff\'{}");
-    boolean _doubleArrow_1 = Should.operator_doubleArrow(_describeFirst_1, "should do stuff [PENDING]");Assert
-    .assertTrue("\nExpected describeFirst(\"\'should do stuff\'{}\") => \"should do stuff [PENDING]\" but"
+    boolean _doubleArrow_1 = ObjectExtensions.<String>operator_doubleArrow(_describeFirst_1, "should do stuff [PENDING]");
+    Assert.assertTrue("\nExpected describeFirst(\"\'should do stuff\'{}\") => \"should do stuff [PENDING]\" but"
      + "\n     describeFirst(\"\'should do stuff\'{}\") is " + "\"" + _describeFirst_1 + "\"" + "\n", _doubleArrow_1);
     
   }
@@ -50,8 +50,8 @@ public class ExampleNameProviderDescribeExampleSpec extends ExampleNameProviderS
   public String describeFirst(final String content) {
     String _xblockexpression = null;
     {
-      String _plus = ("describe \'Example\'{ fact " + content);
-      final String contentWithExampleGroup = (_plus + "}");
+      String _plus = ObjectExtensions.operator_plus("describe \'Example\'{ fact ", content);
+      final String contentWithExampleGroup = ObjectExtensions.operator_plus(_plus, "}");
       Query _parse = this.parse(contentWithExampleGroup);
       Example _first = _parse.<Example>first(Example.class);
       String _describe = this.subject.describe(_first);

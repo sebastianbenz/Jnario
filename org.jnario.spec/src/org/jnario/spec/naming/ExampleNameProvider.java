@@ -122,7 +122,7 @@ public class ExampleNameProvider {
 		if(name.length() == 0){
 			return "";
 		}
-		if(javaUtils.isJavaKeyword(name) || isDigit(name.charAt(0))){
+		if(javaUtils.isJavaKeyword(name) || "null".equals(name) || isDigit(name.charAt(0))){
 			name = "_" + name;
 		}
 		return name;

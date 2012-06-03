@@ -135,15 +135,6 @@ public interface FeaturePackage extends EPackage
 	int FEATURE__MEMBERS = XtendPackage.XTEND_CLASS__MEMBERS;
 
 	/**
-	 * The feature id for the '<em><b>Super Call Referable</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FEATURE__SUPER_CALL_REFERABLE = XtendPackage.XTEND_CLASS__SUPER_CALL_REFERABLE;
-
-	/**
 	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -262,15 +253,6 @@ public interface FeaturePackage extends EPackage
 	int SCENARIO__MEMBERS = XtendPackage.XTEND_CLASS__MEMBERS;
 
 	/**
-	 * The feature id for the '<em><b>Super Call Referable</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCENARIO__SUPER_CALL_REFERABLE = XtendPackage.XTEND_CLASS__SUPER_CALL_REFERABLE;
-
-	/**
 	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -378,15 +360,6 @@ public interface FeaturePackage extends EPackage
 	 * @ordered
 	 */
 	int BACKGROUND__MEMBERS = SCENARIO__MEMBERS;
-
-	/**
-	 * The feature id for the '<em><b>Super Call Referable</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BACKGROUND__SUPER_CALL_REFERABLE = SCENARIO__SUPER_CALL_REFERABLE;
 
 	/**
 	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.

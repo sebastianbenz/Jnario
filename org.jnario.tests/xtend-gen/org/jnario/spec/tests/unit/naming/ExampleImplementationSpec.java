@@ -43,8 +43,8 @@ public class ExampleImplementationSpec extends ExampleSpec {
           Example _parse = ExampleImplementationSpec.this.parse(it.example);
           XExpression _implementation = _parse.getImplementation();
           Matcher<Object> _instanceOf = CoreMatchers.instanceOf(it.type);
-          boolean _should_be = org.jnario.lib.Should.<Object>should_be(_implementation, _instanceOf);Assert
-          .assertTrue("\nExpected example.parse.implementation should be instanceOf(type) but"
+          boolean _should_be = org.jnario.lib.Should.<Object>should_be(_implementation, _instanceOf);
+          Assert.assertTrue("\nExpected example.parse.implementation should be instanceOf(type) but"
            + "\n     example.parse.implementation is " + _implementation
            + "\n     example.parse is " + _parse
            + "\n     example is " + "\"" + it.example + "\""

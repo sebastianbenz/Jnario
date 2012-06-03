@@ -1,6 +1,5 @@
 package org.jnario.feature.tests.unit.linking;
 
-import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import java.io.InputStreamReader;
 import java.util.List;
@@ -12,6 +11,7 @@ import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.parser.IParser;
 import org.eclipse.xtext.util.StringInputStream;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.jvmmodel.StepArgumentsProvider;
@@ -21,7 +21,6 @@ import org.jnario.jnario.test.util.Query;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.JnarioCollectionLiterals;
-import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.InstantiateWith;
 import org.jnario.runner.Named;
@@ -74,8 +73,8 @@ public class StepArgumentsProviderSpec {
         public void apply(final StepArgumentsProviderSpecExamples it) {
           Step _create = StepArgumentsProviderSpec.this.create(it.step);
           List<String> _findStepArguments = StepArgumentsProviderSpec.this.subject.findStepArguments(_create);
-          boolean _doubleArrow = Should.operator_doubleArrow(_findStepArguments, it.expectedArgs);Assert
-          .assertTrue("\nExpected subject.findStepArguments(create(step)) => expectedArgs but"
+          boolean _doubleArrow = ObjectExtensions.<List<? extends Object>>operator_doubleArrow(_findStepArguments, it.expectedArgs);
+          Assert.assertTrue("\nExpected subject.findStepArguments(create(step)) => expectedArgs but"
            + "\n     subject.findStepArguments(create(step)) is " + _findStepArguments
            + "\n     subject is " + StepArgumentsProviderSpec.this.subject
            + "\n     create(step) is " + _create
@@ -90,7 +89,7 @@ public class StepArgumentsProviderSpec {
   public Step create(final String step) {
     Step _xblockexpression = null;
     {
-      boolean _equals = Objects.equal(step, null);
+      boolean _equals = ObjectExtensions.operator_equals(step, null);
       if (_equals) {
         return null;
       }

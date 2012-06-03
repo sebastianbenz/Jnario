@@ -1,9 +1,9 @@
 package org.jnario.spec.tests.unit.naming;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.jnario.ExampleTable;
 import org.jnario.jnario.test.util.Query;
-import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -39,8 +39,8 @@ public class ExampleNameProviderToFieldNameExampleTableSpec extends ExampleNameP
     Query _parse = this.parse(_builder);
     final ExampleTable exampleTable = _parse.<ExampleTable>first(ExampleTable.class);
     String _fieldName = this.subject.toFieldName(exampleTable);
-    boolean _doubleArrow = Should.operator_doubleArrow(_fieldName, "myExample");Assert
-    .assertTrue("\nExpected subject.toFieldName(exampleTable) => \"myExample\" but"
+    boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_fieldName, "myExample");
+    Assert.assertTrue("\nExpected subject.toFieldName(exampleTable) => \"myExample\" but"
      + "\n     subject.toFieldName(exampleTable) is " + "\"" + _fieldName + "\""
      + "\n     subject is " + this.subject
      + "\n     exampleTable is " + exampleTable + "\n", _doubleArrow);
@@ -65,8 +65,8 @@ public class ExampleNameProviderToFieldNameExampleTableSpec extends ExampleNameP
     Query _parse = this.parse(_builder);
     final ExampleTable exampleTable = _parse.<ExampleTable>first(ExampleTable.class);
     String _fieldName = this.subject.toFieldName(exampleTable);
-    boolean _doubleArrow = Should.operator_doubleArrow(_fieldName, "examples");Assert
-    .assertTrue("\nExpected subject.toFieldName(exampleTable) => \"examples\" but"
+    boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_fieldName, "examples");
+    Assert.assertTrue("\nExpected subject.toFieldName(exampleTable) => \"examples\" but"
      + "\n     subject.toFieldName(exampleTable) is " + "\"" + _fieldName + "\""
      + "\n     subject is " + this.subject
      + "\n     exampleTable is " + exampleTable + "\n", _doubleArrow);

@@ -12,7 +12,6 @@ package org.jnario.feature;
 
 import org.eclipse.xtend.core.jvmmodel.DispatchUtil;
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
-import org.eclipse.xtend.core.resource.XtendEObjectAtOffsetHelper;
 import org.eclipse.xtend.core.resource.XtendResource;
 import org.eclipse.xtend.core.resource.XtendResourceDescriptionStrategy;
 import org.eclipse.xtend.core.scoping.XtendImportedNamespaceScopeProvider;
@@ -124,10 +123,6 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 
 	public Class<? extends EarlyExitValidator> bindEarlyExitValidator() {
 		return XtendEarlyExitValidator.class;
-	}
-	
-	public Class<? extends EObjectAtOffsetHelper> bindEObjectAtOffsetHelper() {
-		return XtendEObjectAtOffsetHelper.class;
 	}
 	
 	public Class<? extends XbaseCompiler> bindXbaseCompiler() {

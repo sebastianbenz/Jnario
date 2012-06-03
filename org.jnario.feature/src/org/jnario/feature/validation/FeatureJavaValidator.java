@@ -21,6 +21,7 @@ import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.CheckType;
 import org.eclipse.xtext.validation.ComposedChecks;
 import org.eclipse.xtext.xbase.XBlockExpression;
+import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.XbasePackage;
 import org.eclipse.xtext.xbase.scoping.XbaseScopeProvider;
@@ -46,7 +47,7 @@ public class FeatureJavaValidator extends AbstractFeatureJavaValidator {
 	@Inject StepNameProvider nameProvider;
 
 	@Override
-	public void checkInnerExpressions(XBlockExpression block) {
+	public void checkInnerExpressions(XExpression block) {
 		if(block.eContainer() instanceof StepExpression){
 			return;
 		}

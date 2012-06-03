@@ -3,8 +3,8 @@ package org.jnario.spec.tests.integration;
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.jnario.lib.JnarioCollectionLiterals;
-import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -23,8 +23,8 @@ public class CollectionLiteralsListLiteralSpec extends CollectionLiteralsSpec {
   public void listGreenRedNewArrayListGreenRed() throws Exception {
     List<String> _list = JnarioCollectionLiterals.<String>list("green", "red");
     ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("green", "red");
-    boolean _doubleArrow = Should.operator_doubleArrow(_list, _newArrayList);Assert
-    .assertTrue("\nExpected list(\"green\", \"red\") => newArrayList(\"green\", \"red\") but"
+    boolean _doubleArrow = ObjectExtensions.<List<String>>operator_doubleArrow(_list, _newArrayList);
+    Assert.assertTrue("\nExpected list(\"green\", \"red\") => newArrayList(\"green\", \"red\") but"
      + "\n     list(\"green\", \"red\") is " + _list
      + "\n     newArrayList(\"green\", \"red\") is " + _newArrayList + "\n", _doubleArrow);
     
@@ -40,8 +40,8 @@ public class CollectionLiteralsListLiteralSpec extends CollectionLiteralsSpec {
     ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("green");
     ArrayList<String> _newArrayList_1 = CollectionLiterals.<String>newArrayList("red");
     ArrayList<ArrayList<String>> _newArrayList_2 = CollectionLiterals.<ArrayList<String>>newArrayList(_newArrayList, _newArrayList_1);
-    boolean _doubleArrow = Should.operator_doubleArrow(_list_2, _newArrayList_2);Assert
-    .assertTrue("\nExpected list(list(\"green\"), list(\"red\")) => newArrayList(newArrayList(\"green\"), newArrayList(\"red\")) but"
+    boolean _doubleArrow = ObjectExtensions.<List<? extends List<String>>>operator_doubleArrow(_list_2, _newArrayList_2);
+    Assert.assertTrue("\nExpected list(list(\"green\"), list(\"red\")) => newArrayList(newArrayList(\"green\"), newArrayList(\"red\")) but"
      + "\n     list(list(\"green\"), list(\"red\")) is " + _list_2
      + "\n     list(\"green\") is " + _list
      + "\n     list(\"red\") is " + _list_1

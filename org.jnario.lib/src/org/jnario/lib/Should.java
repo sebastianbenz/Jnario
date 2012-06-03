@@ -47,6 +47,18 @@ public class Should{
 		return should_be(actual, expected);
 	}
 	
+//	public static boolean operator_doubleArrow(Object actual, Class<?> expected) {
+//		return should_be(actual, expected);
+//	}
+//	
+//	public static <T> boolean operator_doubleArrow(T actual, Matcher<T> expected) {
+//		return should_be(actual, expected);
+//	}
+//	
+//	public static <T> boolean operator_doubleArrow(T actual, T expected) {
+//		return should_be(actual, expected);
+//	}
+	
 	public static boolean should_be(Object actual, Object expected){
 		return Objects.equal(actual, expected);
 	}

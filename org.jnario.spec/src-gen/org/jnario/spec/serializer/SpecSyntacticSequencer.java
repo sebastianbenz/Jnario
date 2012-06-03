@@ -16,7 +16,7 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 import org.jnario.spec.services.SpecGrammarAccess;
 
 @SuppressWarnings("all")
-public class AbstractSpecSyntacticSequencer extends AbstractSyntacticSequencer {
+public class SpecSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected SpecGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_Class_PublicKeyword_1_q;
@@ -66,6 +66,11 @@ public class AbstractSpecSyntacticSequencer extends AbstractSyntacticSequencer {
 		return "";
 	}
 	
+	/**
+	 * OpSingleAssign:
+	 * 	'='
+	 * ;
+	 */
 	protected String getOpSingleAssignToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);

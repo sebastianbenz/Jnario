@@ -1,7 +1,7 @@
 package org.jnario.feature.tests.integration;
 
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.jnario.jnario.test.util.FeatureExecutor;
-import org.jnario.lib.Should;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -27,8 +27,8 @@ public class ReferencesForStepsFeatureReferencingStepsWithDifferentKeyword {
   public void whenIRunItItShouldFail() {
     Result _execute = FeatureExecutor.execute(jnarioFile);
     int _failureCount = _execute.getFailureCount();
-    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_failureCount), Integer.valueOf(2));Assert
-    .assertTrue("\nExpected  but"
+    boolean _doubleArrow = ObjectExtensions.<Integer>operator_doubleArrow(Integer.valueOf(_failureCount), Integer.valueOf(2));
+    Assert.assertTrue("\nExpected  but"
      + "\n      is " + Integer.valueOf(_failureCount) + "\n", _doubleArrow);
     
   }

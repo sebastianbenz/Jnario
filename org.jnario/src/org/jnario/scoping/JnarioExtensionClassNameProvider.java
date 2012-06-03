@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 BMW Car IT and others.
+# * Copyright (c) 2012 BMW Car IT and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,7 +33,9 @@ public class JnarioExtensionClassNameProvider extends ExtensionClassNameProvider
 	protected Multimap<Class<?>, Class<?>> simpleComputeExtensionClasses() {
 		Multimap<Class<?>, Class<?>> result = super.simpleComputeExtensionClasses();
 		result.put(ExampleTable.class, ExampleTableIterators.class);
-		result.replaceValues(Object.class, ImmutableList.of(Should.class, Each.class, ObjectExtensions.class));
+//		result.replaceValues(Object.class, ImmutableList.of(Should.class, Each.class, ObjectExtensions.class));
+		result.put(Object.class, Should.class);
+		result.put(Object.class, Each.class);
 		result.put(String.class, StringConversions.class);
 		return result;
 	}

@@ -1,5 +1,6 @@
 package org.jnario.spec.tests.unit.naming;
 
+import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.Query;
 import org.jnario.jnario.test.util.SpecTestInstantiator;
@@ -24,7 +25,7 @@ import org.junit.runner.RunWith;
 @InstantiateWith(value = SpecTestInstantiator.class)
 public class ExampleNameProviderSpec {
   public Query parse(final CharSequence content) {
-    final String contentWithPackage = ("package test\n" + content);
+    final String contentWithPackage = StringExtensions.operator_plus("package test\n", content);
     final ModelStore modelStore = ModelStore.create();
     modelStore.parseSpec(contentWithPackage);
     return Query.query(modelStore);

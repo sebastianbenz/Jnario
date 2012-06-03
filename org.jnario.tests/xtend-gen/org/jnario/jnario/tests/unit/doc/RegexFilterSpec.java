@@ -1,12 +1,12 @@
 package org.jnario.jnario.tests.unit.doc;
 
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.doc.Filter;
 import org.jnario.doc.RegexFilter;
 import org.jnario.jnario.tests.unit.doc.RegexFilterSpecFilteringExamples;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
-import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -41,8 +41,8 @@ public class RegexFilterSpec {
         public void apply(final RegexFilterSpecFilteringExamples it) {
           final Filter filter = RegexFilter.create(it.regex);
           String _apply = filter.apply(it.string);
-          boolean _doubleArrow = Should.operator_doubleArrow(_apply, it.result);Assert
-          .assertTrue("\nExpected filter.apply(string) => result but"
+          boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_apply, it.result);
+          Assert.assertTrue("\nExpected filter.apply(string) => result but"
            + "\n     filter.apply(string) is " + "\"" + _apply + "\""
            + "\n     filter is " + filter
            + "\n     string is " + "\"" + it.string + "\""

@@ -1,7 +1,5 @@
 package org.jnario.doc;
 
-import com.google.common.base.Objects;
-import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import java.util.Arrays;
 import java.util.List;
@@ -23,8 +21,10 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
@@ -48,7 +48,7 @@ public class AbstractDocGenerator implements IGenerator {
   
   public void doGenerate(final Resource input, final IFileSystemAccess fsa) {
     EList<EObject> _contents = input.getContents();
-    Iterable<XtendFile> _filter = Iterables.<XtendFile>filter(_contents, XtendFile.class);
+    Iterable<XtendFile> _filter = IterableExtensions.<XtendFile>filter(_contents, XtendFile.class);
     for (final XtendFile file : _filter) {
       EList<XtendClass> _xtendClasses = file.getXtendClasses();
       final Procedure1<XtendClass> _function = new Procedure1<XtendClass>() {
@@ -96,7 +96,7 @@ public class AbstractDocGenerator implements IGenerator {
   public String markdown2Html(final String string) {
     String _xblockexpression = null;
     {
-      boolean _equals = Objects.equal(string, null);
+      boolean _equals = ObjectExtensions.operator_equals(string, null);
       if (_equals) {
         return "";
       }
@@ -122,12 +122,12 @@ public class AbstractDocGenerator implements IGenerator {
     String _apply = this.apply(filters, code);
     code = _apply;
     int _length = code.length();
-    boolean _equals = (_length == 0);
+    boolean _equals = IntegerExtensions.operator_equals(_length, 0);
     if (_equals) {
       return "";
     }
     int _length_1 = code.length();
-    int _minus = (_length_1 - 1);
+    int _minus = IntegerExtensions.operator_minus(_length_1, 1);
     String _substring = code.substring(1, _minus);
     code = _substring;
     String _normalize = this._whiteSpaceNormalizer.normalize(code);
@@ -148,7 +148,7 @@ public class AbstractDocGenerator implements IGenerator {
   
   public String serialize(final EObject obj) {
     final ICompositeNode node = NodeModelUtils.getNode(obj);
-    boolean _equals = Objects.equal(node, null);
+    boolean _equals = ObjectExtensions.operator_equals(node, null);
     if (_equals) {
       return "";
     }
@@ -157,8 +157,8 @@ public class AbstractDocGenerator implements IGenerator {
   
   public String id(final String id) {
     String _replaceAll = id==null?(String)null:id.replaceAll("\\W", "_");
-    String _plus = (" id=\"" + _replaceAll);
-    return (_plus + "\"");
+    String _plus = ObjectExtensions.operator_plus(" id=\"", _replaceAll);
+    return ObjectExtensions.operator_plus(_plus, "\"");
   }
   
   public String apply(final List<Filter> filters, final String input) {
@@ -173,7 +173,7 @@ public class AbstractDocGenerator implements IGenerator {
   public String root(final XtendClass xtendClass) {
     final XtendFile specFile = EcoreUtil2.<XtendFile>getContainerOfType(xtendClass, XtendFile.class);
     final String packageName = specFile.getPackage();
-    boolean _equals = Objects.equal(packageName, null);
+    boolean _equals = ObjectExtensions.operator_equals(packageName, null);
     if (_equals) {
       return "";
     }

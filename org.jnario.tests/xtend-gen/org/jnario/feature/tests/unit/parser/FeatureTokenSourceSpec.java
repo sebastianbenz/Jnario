@@ -8,9 +8,12 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.parser.antlr.TokenAcceptor;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
+import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure2;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.jnario.feature.parser.FeatureTokenSource;
 import org.jnario.feature.parser.antlr.internal.InternalFeatureLexer;
 import org.jnario.lib.Should;
@@ -209,8 +212,8 @@ public class FeatureTokenSourceSpec {
     final List<Token> actualTokens = IteratorExtensions.<Token>toList(this.tokenAcceptor);
     int _size = actualTokens.size();
     int _size_1 = ((List<CommonToken>)Conversions.doWrapArray(expectedTokens)).size();
-    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_size), Integer.valueOf(_size_1));Assert
-    .assertTrue("\nExpected actualTokens.size => expectedTokens.size but"
+    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_size), Integer.valueOf(_size_1));
+    Assert.assertTrue("\nExpected actualTokens.size => expectedTokens.size but"
      + "\n     actualTokens.size is " + Integer.valueOf(_size)
      + "\n     actualTokens is " + actualTokens
      + "\n     expectedTokens.size is " + Integer.valueOf(_size_1)
@@ -222,8 +225,8 @@ public class FeatureTokenSourceSpec {
           final CommonToken actual = ((CommonToken) e);
           int _type = actual.getType();
           int _type_1 = expected.getType();
-          boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_type), Integer.valueOf(_type_1));Assert
-          .assertTrue("\nExpected actual.type => expected.type but"
+          boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_type), Integer.valueOf(_type_1));
+          Assert.assertTrue("\nExpected actual.type => expected.type but"
            + "\n     actual.type is " + Integer.valueOf(_type)
            + "\n     actual is " + actual
            + "\n     expected.type is " + Integer.valueOf(_type_1)
@@ -231,8 +234,8 @@ public class FeatureTokenSourceSpec {
           
           String _text = actual.getText();
           String _text_1 = expected.getText();
-          boolean _doubleArrow_1 = Should.operator_doubleArrow(_text, _text_1);Assert
-          .assertTrue("\nExpected actual.text => expected.text but"
+          boolean _doubleArrow_1 = ObjectExtensions.<String>operator_doubleArrow(_text, _text_1);
+          Assert.assertTrue("\nExpected actual.text => expected.text but"
            + "\n     actual.text is " + "\"" + _text + "\""
            + "\n     actual is " + actual
            + "\n     expected.text is " + "\"" + _text_1 + "\""
@@ -240,8 +243,8 @@ public class FeatureTokenSourceSpec {
           
           int _line = actual.getLine();
           int _line_1 = expected.getLine();
-          boolean _doubleArrow_2 = Should.operator_doubleArrow(Integer.valueOf(_line), Integer.valueOf(_line_1));Assert
-          .assertTrue("\nExpected actual.line => expected.line but"
+          boolean _doubleArrow_2 = Should.operator_doubleArrow(Integer.valueOf(_line), Integer.valueOf(_line_1));
+          Assert.assertTrue("\nExpected actual.line => expected.line but"
            + "\n     actual.line is " + Integer.valueOf(_line)
            + "\n     actual is " + actual
            + "\n     expected.line is " + Integer.valueOf(_line_1)
@@ -268,9 +271,9 @@ public class FeatureTokenSourceSpec {
       final int start = FeatureTokenSourceSpec.prefix.length();
       String _string_1 = text.toString();
       int _length = _string_1.length();
-      final int stop = (_length - 1);
-      int _minus = (-1);
-      int _minus_1 = (-1);
+      final int stop = IntegerExtensions.operator_minus(_length, 1);
+      int _minus = IntegerExtensions.operator_minus(1);
+      int _minus_1 = IntegerExtensions.operator_minus(1);
       CommonToken _commonToken = new CommonToken(input, _minus, _minus_1, start, stop);
       _xblockexpression = (_commonToken);
     }
@@ -278,7 +281,7 @@ public class FeatureTokenSourceSpec {
   }
   
   public CharSequence setInput(final CharSequence input) {
-    String _plus = (FeatureTokenSourceSpec.prefix + input);
+    String _plus = StringExtensions.operator_plus(FeatureTokenSourceSpec.prefix, input);
     CharSequence _input = this.input = _plus;
     return _input;
   }

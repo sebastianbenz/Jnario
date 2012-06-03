@@ -108,7 +108,7 @@ public class JnarioCompiler extends XtendCompiler {
 	private void _toShouldExpression(XAbstractFeatureCall should,
 			ITreeAppendable b, boolean isNot) {
 		super._toJavaStatement(should, b, true);
-		b.append(assertType(should)).newLine();
+		b.newLine().append(assertType(should));
 		if (isNot) {
 			b.append(".assertFalse(");
 		} else {

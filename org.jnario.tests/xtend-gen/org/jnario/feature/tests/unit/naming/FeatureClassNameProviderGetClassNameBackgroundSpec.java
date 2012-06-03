@@ -1,12 +1,12 @@
 package org.jnario.feature.tests.unit.naming;
 
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.feature.feature.Background;
 import org.jnario.feature.tests.unit.naming.FeatureClassNameProviderGetClassNameBackgroundSpecExamples;
 import org.jnario.feature.tests.unit.naming.FeatureClassNameProviderSpec;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
-import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -40,8 +40,8 @@ public class FeatureClassNameProviderGetClassNameBackgroundSpec extends FeatureC
         public void apply(final FeatureClassNameProviderGetClassNameBackgroundSpecExamples it) {
           Background _background = FeatureClassNameProviderGetClassNameBackgroundSpec.this.background(it.name, it.feature);
           String _className = FeatureClassNameProviderGetClassNameBackgroundSpec.this.className(_background);
-          boolean _doubleArrow = Should.operator_doubleArrow(_className, it.expectedClassName);Assert
-          .assertTrue("\nExpected className(background(name, feature)) => expectedClassName but"
+          boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_className, it.expectedClassName);
+          Assert.assertTrue("\nExpected className(background(name, feature)) => expectedClassName but"
            + "\n     className(background(name, feature)) is " + "\"" + _className + "\""
            + "\n     background(name, feature) is " + _background
            + "\n     name is " + "\"" + it.name + "\""

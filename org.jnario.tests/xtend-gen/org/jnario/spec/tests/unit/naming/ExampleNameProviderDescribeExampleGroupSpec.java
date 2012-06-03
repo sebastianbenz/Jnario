@@ -1,8 +1,8 @@
 package org.jnario.spec.tests.unit.naming;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.jnario.jnario.test.util.Query;
-import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -26,8 +26,8 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   @Order(99)
   public void shouldUseTheDescription() throws Exception {
     String _describeFirst = this.describeFirst("describe \'My Description\'");
-    boolean _doubleArrow = Should.operator_doubleArrow(_describeFirst, "My Description");Assert
-    .assertTrue("\nExpected describeFirst(\"describe \'My Description\'\") => \"My Description\" but"
+    boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_describeFirst, "My Description");
+    Assert.assertTrue("\nExpected describeFirst(\"describe \'My Description\'\") => \"My Description\" but"
      + "\n     describeFirst(\"describe \'My Description\'\") is " + "\"" + _describeFirst + "\"" + "\n", _doubleArrow);
     
   }
@@ -37,8 +37,8 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   @Order(99)
   public void shouldUseTheTargetType() throws Exception {
     String _describeFirst = this.describeFirst("describe org.junit.Assert");
-    boolean _doubleArrow = Should.operator_doubleArrow(_describeFirst, "Assert");Assert
-    .assertTrue("\nExpected describeFirst(\"describe org.junit.Assert\") => \"Assert\" but"
+    boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_describeFirst, "Assert");
+    Assert.assertTrue("\nExpected describeFirst(\"describe org.junit.Assert\") => \"Assert\" but"
      + "\n     describeFirst(\"describe org.junit.Assert\") is " + "\"" + _describeFirst + "\"" + "\n", _doubleArrow);
     
   }
@@ -48,8 +48,8 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   @Order(99)
   public void shouldCombineTargetTypeAndDescription() throws Exception {
     String _describeFirst = this.describeFirst("describe org.junit.Assert \'and more\'");
-    boolean _doubleArrow = Should.operator_doubleArrow(_describeFirst, "Assert and more");Assert
-    .assertTrue("\nExpected describeFirst(\"describe org.junit.Assert \'and more\'\") => \"Assert and more\" but"
+    boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_describeFirst, "Assert and more");
+    Assert.assertTrue("\nExpected describeFirst(\"describe org.junit.Assert \'and more\'\") => \"Assert and more\" but"
      + "\n     describeFirst(\"describe org.junit.Assert \'and more\'\") is " + "\"" + _describeFirst + "\"" + "\n", _doubleArrow);
     
   }
@@ -59,8 +59,8 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   @Order(99)
   public void shouldUseTheTargetOperation() throws Exception {
     String _describeSecond = this.describeSecond("describe org.junit.Assert{\r\n                    context assertTrue(boolean) \r\n                 }");
-    boolean _doubleArrow = Should.operator_doubleArrow(_describeSecond, "assertTrue[boolean]");Assert
-    .assertTrue("\nExpected describeSecond(\"describe org.junit.Assert{\r\n                    context assertTrue(boolean) \r\n                 }\") => \"assertTrue[boolean]\" but"
+    boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_describeSecond, "assertTrue[boolean]");
+    Assert.assertTrue("\nExpected describeSecond(\"describe org.junit.Assert{\r\n                    context assertTrue(boolean) \r\n                 }\") => \"assertTrue[boolean]\" but"
      + "\n     describeSecond(\"describe org.junit.Assert{\r\n                    context assertTrue(boolean) \r\n                 }\") is " + "\"" + _describeSecond + "\"" + "\n", _doubleArrow);
     
   }
@@ -70,8 +70,8 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   @Order(99)
   public void shouldCombineTargetOperationAndDescription() throws Exception {
     String _describeSecond = this.describeSecond("describe org.junit.Assert{\r\n                    context assertTrue(boolean) \'and more\'\r\n                 }");
-    boolean _doubleArrow = Should.operator_doubleArrow(_describeSecond, "assertTrue[boolean] and more");Assert
-    .assertTrue("\nExpected describeSecond(\"describe org.junit.Assert{\r\n                    context assertTrue(boolean) \'and more\'\r\n                 }\") => \"assertTrue[boolean] and more\" but"
+    boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_describeSecond, "assertTrue[boolean] and more");
+    Assert.assertTrue("\nExpected describeSecond(\"describe org.junit.Assert{\r\n                    context assertTrue(boolean) \'and more\'\r\n                 }\") => \"assertTrue[boolean] and more\" but"
      + "\n     describeSecond(\"describe org.junit.Assert{\r\n                    context assertTrue(boolean) \'and more\'\r\n                 }\") is " + "\"" + _describeSecond + "\"" + "\n", _doubleArrow);
     
   }
@@ -90,8 +90,8 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
     _builder.append("}");
     final String text = _builder.toString();
     String _describeSecond = this.describeSecond(text);
-    boolean _doubleArrow = Should.operator_doubleArrow(_describeSecond, "and \\\"more\\\"");Assert
-    .assertTrue("\nExpected describeSecond(text) => \'and \\\\\"more\\\\\"\' but"
+    boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_describeSecond, "and \\\"more\\\"");
+    Assert.assertTrue("\nExpected describeSecond(text) => \'and \\\\\"more\\\\\"\' but"
      + "\n     describeSecond(text) is " + "\"" + _describeSecond + "\""
      + "\n     text is " + "\"" + text + "\"" + "\n", _doubleArrow);
     

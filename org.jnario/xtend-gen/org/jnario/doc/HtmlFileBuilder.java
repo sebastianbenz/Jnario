@@ -1,10 +1,11 @@
 package org.jnario.doc;
 
-import com.google.common.base.Objects;
 import java.io.InputStream;
 import java.util.List;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtext.generator.IFileSystemAccess;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.jnario.doc.DocOutputConfigurationProvider;
 import org.jnario.doc.DocumentationSupport;
 import org.jnario.doc.HtmlFile;
@@ -23,24 +24,24 @@ public class HtmlFileBuilder {
   }
   
   private String filePath(final XtendClass xtendClass, final HtmlFile htmlFile) {
-    String _plus = ("/" + htmlFile.fileName);
-    final String fileName = (_plus + ".html");
+    String _plus = StringExtensions.operator_plus("/", htmlFile.fileName);
+    final String fileName = ObjectExtensions.operator_plus(_plus, ".html");
     String _packageName = xtendClass.getPackageName();
-    boolean _equals = Objects.equal(_packageName, null);
+    boolean _equals = ObjectExtensions.operator_equals(_packageName, null);
     if (_equals) {
       return fileName;
     }
     String _packageName_1 = xtendClass.getPackageName();
     String _replaceAll = _packageName_1.replaceAll("\\.", "/");
-    String _plus_1 = ("/" + _replaceAll);
-    return (_plus_1 + fileName);
+    String _plus_1 = ObjectExtensions.operator_plus("/", _replaceAll);
+    return ObjectExtensions.operator_plus(_plus_1, fileName);
   }
   
   private void copy(final IFileSystemAccess fsa, final String targetFolder, final Iterable<String> files) {
     for (final String file : files) {
-      String _plus = ("/" + targetFolder);
-      String _plus_1 = (_plus + "/");
-      String _plus_2 = (_plus_1 + file);
+      String _plus = ObjectExtensions.operator_plus("/", targetFolder);
+      String _plus_1 = ObjectExtensions.operator_plus(_plus, "/");
+      String _plus_2 = ObjectExtensions.operator_plus(_plus_1, file);
       String _load = this.load(file);
       fsa.generateFile(_plus_2, DocOutputConfigurationProvider.DOC_OUTPUT, _load);
     }

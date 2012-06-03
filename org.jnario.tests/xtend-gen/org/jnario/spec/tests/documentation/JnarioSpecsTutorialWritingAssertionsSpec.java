@@ -2,6 +2,8 @@ package org.jnario.spec.tests.documentation;
 
 import java.util.Stack;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.BooleanExtensions;
+import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.jnario.test.util.Helpers;
 import org.jnario.lib.Should;
@@ -53,23 +55,25 @@ public class JnarioSpecsTutorialWritingAssertionsSpec extends JnarioSpecsTutoria
   @Order(99)
   public void shouldAnd() throws Exception {
     boolean _should_be = Should.<Boolean>should_be(
-      true, true);Assert
-    .assertTrue("\nExpected true should be true but"
+      true, true);
+    Assert.assertTrue("\nExpected true should be true but"
      + "\n     true should be true is " + null + "\n", _should_be);
     
     boolean _doubleArrow = Should.operator_doubleArrow(
-      Boolean.valueOf(false), Boolean.valueOf(false));Assert
-    .assertTrue("\nExpected false => false but"
+      Boolean.valueOf(false), Boolean.valueOf(false));
+    Assert.assertTrue("\nExpected false => false but"
      + "\n     false => false is " + _doubleArrow + "\n", _doubleArrow);
     
-    int _plus = (1 + 1);
-    boolean _should_be_1 = Should.should_be(_plus, 1);Assert
-    .assertFalse("\nExpected 1 + 1 should not be 1 but"
+    int _plus = IntegerExtensions.operator_plus(
+      1, 1);
+    boolean _should_be_1 = Should.should_be(_plus, 1);
+    Assert.assertFalse("\nExpected 1 + 1 should not be 1 but"
      + "\n     1 + 1 is " + _plus + "\n", _should_be_1);
     
-    int _plus_1 = (1 + 1);
-    boolean _doubleArrow_1 = Should.operator_doubleArrow(Integer.valueOf(_plus_1), Integer.valueOf(2));Assert
-    .assertTrue("\nExpected 1 + 1 => 2 but"
+    int _plus_1 = IntegerExtensions.operator_plus(
+      1, 1);
+    boolean _doubleArrow_1 = Should.operator_doubleArrow(Integer.valueOf(_plus_1), Integer.valueOf(2));
+    Assert.assertTrue("\nExpected 1 + 1 => 2 but"
      + "\n     1 + 1 is " + Integer.valueOf(_plus_1) + "\n", _doubleArrow_1);
     
   }
@@ -90,12 +94,12 @@ public class JnarioSpecsTutorialWritingAssertionsSpec extends JnarioSpecsTutoria
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
           boolean _and = false;
-          boolean _equals = (x == 1);
-          boolean _equals_1 = (y == 0);
+          boolean _equals = IntegerExtensions.operator_equals(x, 1);
+          boolean _equals_1 = IntegerExtensions.operator_equals(y, 0);
           if (!_equals) {
             _and = false;
           } else {
-            _and = (_equals && _equals_1);
+            _and = BooleanExtensions.operator_and(_equals, _equals_1);
           }
           Assert.assertTrue("\nExpected x == 1 && y == 0 but"
            + "\n     x == 1 is " + _equals
@@ -125,8 +129,8 @@ public class JnarioSpecsTutorialWritingAssertionsSpec extends JnarioSpecsTutoria
     final Procedure1<Boolean> _function_1 = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
           String _upperCase = greeting.toUpperCase();
-          boolean _should_be = Should.should_be(_upperCase, "HELLO");Assert
-          .assertFalse("\nExpected greeting.toUpperCase should not be \"HELLO\" but"
+          boolean _should_be = Should.should_be(_upperCase, "HELLO");
+          Assert.assertFalse("\nExpected greeting.toUpperCase should not be \"HELLO\" but"
            + "\n     greeting.toUpperCase is " + "\"" + _upperCase + "\""
            + "\n     greeting is " + "\"" + greeting + "\"" + "\n", _should_be);
           

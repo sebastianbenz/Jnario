@@ -16,7 +16,6 @@ import org.eclipse.jface.text.source.ICharacterPairMatcher;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
-import org.eclipse.xtend.core.resource.XtendEObjectAtOffsetHelper;
 import org.eclipse.xtend.ide.XtendResourceUiServiceProvider;
 import org.eclipse.xtend.ide.builder.XtendBuilderParticipant;
 import org.eclipse.xtend.ide.contentassist.ImportingTypesProposalProvider;
@@ -41,7 +40,6 @@ import org.eclipse.xtext.common.types.ui.navigation.IDerivedMemberAwareEditorOpe
 import org.eclipse.xtext.common.types.xtext.ui.ITypesProposalProvider;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.trace.ITraceInformation;
-import org.eclipse.xtext.resource.EObjectAtOffsetHelper;
 import org.eclipse.xtext.ui.LanguageSpecific;
 import org.eclipse.xtext.ui.editor.IURIEditorOpener;
 import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
@@ -241,10 +239,6 @@ public class FeatureUiModule extends org.jnario.feature.ui.AbstractFeatureUiModu
 	@Override
 	public ICharacterPairMatcher bindICharacterPairMatcher() {
 		return new DefaultCharacterPairMatcher(new char[] { '(', ')', '{', '}', '[', ']', '«', '»' });
-	}
-	
-	public Class<? extends EObjectAtOffsetHelper> bindEObjectAtOffsetHelper() {
-		return XtendEObjectAtOffsetHelper.class;
 	}
 
 	public Class<? extends XtextSourceViewer.Factory> bindSourceViewerFactory() {

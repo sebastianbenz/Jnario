@@ -5,6 +5,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.serializer.ISerializer;
 import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.ExampleColumn;
 import org.jnario.jnario.test.util.ModelStore;
@@ -13,7 +14,6 @@ import org.jnario.jnario.test.util.SpecTestInstantiator;
 import org.jnario.jnario.tests.unit.jnario.ExampleColumnSpecExamples;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
-import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Extension;
 import org.jnario.runner.InstantiateWith;
@@ -87,8 +87,8 @@ public class ExampleColumnSpec {
           final XExpression cell = _cells.get(it.cellIndex);
           String _serialize = ExampleColumnSpec.this._iSerializer.serialize(cell);
           String _trim = _serialize.trim();
-          boolean _doubleArrow = Should.operator_doubleArrow(_trim, it.value);Assert
-          .assertTrue("\nExpected cell.serialize.trim => value but"
+          boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_trim, it.value);
+          Assert.assertTrue("\nExpected cell.serialize.trim => value but"
            + "\n     cell.serialize.trim is " + "\"" + _trim + "\""
            + "\n     cell.serialize is " + "\"" + _serialize + "\""
            + "\n     cell is " + cell

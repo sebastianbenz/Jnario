@@ -1,7 +1,6 @@
 package org.jnario.jvmmodel;
 
 import com.google.common.base.Function;
-import com.google.common.base.Objects;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
@@ -27,8 +26,10 @@ import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
+import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.jnario.ExampleColumn;
 import org.jnario.jvmmodel.JunitAnnotationProvider;
@@ -67,7 +68,7 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
       }
     }
     JvmType _findDeclaredType = this._typeReferences.findDeclaredType(Named.class, context);
-    boolean _equals = Objects.equal(_findDeclaredType, null);
+    boolean _equals = ObjectExtensions.operator_equals(_findDeclaredType, null);
     if (_equals) {
       return false;
     }
@@ -78,7 +79,7 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
     String _name = column.getName();
     JvmTypeReference _orCreateType = this.getOrCreateType(column);
     final JvmField field = this._jvmTypesBuilder.toField(column, _name, _orCreateType);
-    boolean _notEquals = (!Objects.equal(field, null));
+    boolean _notEquals = ObjectExtensions.operator_notEquals(field, null);
     if (_notEquals) {
       field.setVisibility(JvmVisibility.PUBLIC);
     }
@@ -88,14 +89,14 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
   public JvmTypeReference getOrCreateType(final ExampleColumn column) {
     boolean _or = false;
     JvmTypeReference _type = column.getType();
-    boolean _equals = Objects.equal(_type, null);
+    boolean _equals = ObjectExtensions.operator_equals(_type, null);
     if (_equals) {
       _or = true;
     } else {
       JvmTypeReference _type_1 = column.getType();
       JvmType _type_2 = _type_1.getType();
-      boolean _equals_1 = Objects.equal(_type_2, null);
-      _or = (_equals || _equals_1);
+      boolean _equals_1 = ObjectExtensions.operator_equals(_type_2, null);
+      _or = BooleanExtensions.operator_or(_equals, _equals_1);
     }
     if (_or) {
       EList<XExpression> _cells = column.getCells();
@@ -141,7 +142,7 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
   
   protected void transform(final XtendField source, final JvmGenericType container) {
     JvmVisibility _visibility = source.getVisibility();
-    boolean _equals = Objects.equal(_visibility, JvmVisibility.PRIVATE);
+    boolean _equals = ObjectExtensions.operator_equals(_visibility, JvmVisibility.PRIVATE);
     if (_equals) {
       source.setVisibility(JvmVisibility.DEFAULT);
     }

@@ -1,12 +1,12 @@
 package org.jnario.feature.tests.unit.naming;
 
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.tests.unit.naming.FeatureClassNameProviderGetClassNameFeatureSpecExamples;
 import org.jnario.feature.tests.unit.naming.FeatureClassNameProviderSpec;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
-import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -41,8 +41,8 @@ public class FeatureClassNameProviderGetClassNameFeatureSpec extends FeatureClas
         public void apply(final FeatureClassNameProviderGetClassNameFeatureSpecExamples it) {
           Feature _feature = FeatureClassNameProviderGetClassNameFeatureSpec.this.feature(it.name);
           String _className = FeatureClassNameProviderGetClassNameFeatureSpec.this.className(_feature);
-          boolean _doubleArrow = Should.operator_doubleArrow(_className, it.expectedClassName);Assert
-          .assertTrue("\nExpected className(feature(name)) => expectedClassName but"
+          boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_className, it.expectedClassName);
+          Assert.assertTrue("\nExpected className(feature(name)) => expectedClassName but"
            + "\n     className(feature(name)) is " + "\"" + _className + "\""
            + "\n     feature(name) is " + _feature
            + "\n     name is " + "\"" + it.name + "\""

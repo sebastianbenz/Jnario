@@ -3,8 +3,8 @@ package org.jnario.spec.tests.integration;
 import java.util.HashSet;
 import java.util.Set;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.jnario.lib.JnarioCollectionLiterals;
-import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -23,8 +23,8 @@ public class CollectionLiteralsSetLiteralSpec extends CollectionLiteralsSpec {
   public void setGreenRedNewHashSetGreenRed() throws Exception {
     Set<String> _set = JnarioCollectionLiterals.<String>set("green", "red");
     HashSet<String> _newHashSet = CollectionLiterals.<String>newHashSet("green", "red");
-    boolean _doubleArrow = Should.operator_doubleArrow(_set, _newHashSet);Assert
-    .assertTrue("\nExpected set(\"green\", \"red\") => newHashSet(\"green\", \"red\") but"
+    boolean _doubleArrow = ObjectExtensions.<Set<String>>operator_doubleArrow(_set, _newHashSet);
+    Assert.assertTrue("\nExpected set(\"green\", \"red\") => newHashSet(\"green\", \"red\") but"
      + "\n     set(\"green\", \"red\") is " + _set
      + "\n     newHashSet(\"green\", \"red\") is " + _newHashSet + "\n", _doubleArrow);
     
@@ -40,8 +40,8 @@ public class CollectionLiteralsSetLiteralSpec extends CollectionLiteralsSpec {
     HashSet<String> _newHashSet = CollectionLiterals.<String>newHashSet("green");
     HashSet<String> _newHashSet_1 = CollectionLiterals.<String>newHashSet("red");
     HashSet<HashSet<String>> _newHashSet_2 = CollectionLiterals.<HashSet<String>>newHashSet(_newHashSet, _newHashSet_1);
-    boolean _doubleArrow = Should.operator_doubleArrow(_set_2, _newHashSet_2);Assert
-    .assertTrue("\nExpected set(set(\"green\"), set(\"red\")) => newHashSet(newHashSet(\"green\"), newHashSet(\"red\")) but"
+    boolean _doubleArrow = ObjectExtensions.<Set<? extends Set<String>>>operator_doubleArrow(_set_2, _newHashSet_2);
+    Assert.assertTrue("\nExpected set(set(\"green\"), set(\"red\")) => newHashSet(newHashSet(\"green\"), newHashSet(\"red\")) but"
      + "\n     set(set(\"green\"), set(\"red\")) is " + _set_2
      + "\n     set(\"green\") is " + _set
      + "\n     set(\"red\") is " + _set_1

@@ -1,11 +1,11 @@
 package org.jnario.feature.tests.unit.naming;
 
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.feature.tests.unit.naming.FeatureClassNameProviderGetClassNameExampleTableSpecExamples;
 import org.jnario.feature.tests.unit.naming.FeatureClassNameProviderSpec;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
-import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -39,8 +39,8 @@ public class FeatureClassNameProviderGetClassNameExampleTableSpec extends Featur
         public void apply(final FeatureClassNameProviderGetClassNameExampleTableSpecExamples it) {
           org.jnario.ExampleTable _examples = FeatureClassNameProviderGetClassNameExampleTableSpec.this.examples(it.name, it.scenario, it.feature);
           String _className = FeatureClassNameProviderGetClassNameExampleTableSpec.this.className(_examples);
-          boolean _doubleArrow = Should.operator_doubleArrow(_className, it.expectedClassName);Assert
-          .assertTrue("\nExpected className(examples(name, scenario, feature)) => expectedClassName but"
+          boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_className, it.expectedClassName);
+          Assert.assertTrue("\nExpected className(examples(name, scenario, feature)) => expectedClassName but"
            + "\n     className(examples(name, scenario, feature)) is " + "\"" + _className + "\""
            + "\n     examples(name, scenario, feature) is " + _examples
            + "\n     name is " + "\"" + it.name + "\""
