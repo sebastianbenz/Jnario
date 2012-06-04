@@ -42,8 +42,8 @@ public class GameSpec {
     _when.thenReturn(newCell);
     Set<Cell> _set = JnarioCollectionLiterals.<Cell>set(this.cell);
     Iterable<Cell> _evolve_1 = this.subject.evolve(_set);
-    boolean _should_contain = Should.<Cell>should_contain(_evolve_1, newCell);Assert
-    .assertTrue("\nExpected subject.evolve(set(cell)) should contain newCell but"
+    boolean _should_contain = Should.<Cell>should_contain(_evolve_1, newCell);
+    Assert.assertTrue("\nExpected subject.evolve(set(cell)) should contain newCell but"
      + "\n     subject.evolve(set(cell)) is " + _evolve_1
      + "\n     subject is " + this.subject
      + "\n     set(cell) is " + _set

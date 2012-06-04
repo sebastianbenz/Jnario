@@ -31,8 +31,8 @@ public class PositionSpec {
     Position _pos_7 = Position.pos(4, 3);
     Position _pos_8 = Position.pos(4, 4);
     Set<Position> _set = JnarioCollectionLiterals.<Position>set(_pos_1, _pos_2, _pos_3, _pos_4, _pos_5, _pos_6, _pos_7, _pos_8);
-    boolean _doubleArrow = Should.operator_doubleArrow(_neighbours, _set);Assert
-    .assertTrue("\nExpected pos(3, 3).neighbours() => \tset(\n\t\t\t\t\t\t\t\t\t\t\tpos(2, 2), pos(2, 3), pos(2, 4),\n\t\t\t\t\t\t\t\t\t\t\tpos(3, 2), pos(3, 4),\n\t\t\t\t\t\t\t\t\t\t\tpos(4, 2), pos(4, 3), pos(4, 4)\n\t\t\t\t\t\t\t\t\t\t) but"
+    boolean _doubleArrow = Should.operator_doubleArrow(_neighbours, _set);
+    Assert.assertTrue("\nExpected pos(3, 3).neighbours() => \tset(\n\t\t\t\t\t\t\t\t\t\t\tpos(2, 2), pos(2, 3), pos(2, 4),\n\t\t\t\t\t\t\t\t\t\t\tpos(3, 2), pos(3, 4),\n\t\t\t\t\t\t\t\t\t\t\tpos(4, 2), pos(4, 3), pos(4, 4)\n\t\t\t\t\t\t\t\t\t\t) but"
      + "\n     pos(3, 3).neighbours() is " + _neighbours
      + "\n     pos(3, 3) is " + _pos
      + "\n     set(\n\t\t\t\t\t\t\t\t\t\t\tpos(2, 2), pos(2, 3), pos(2, 4),\n\t\t\t\t\t\t\t\t\t\t\tpos(3, 2), pos(3, 4),\n\t\t\t\t\t\t\t\t\t\t\tpos(4, 2), pos(4, 3), pos(4, 4)\n\t\t\t\t\t\t\t\t\t\t) is " + _set

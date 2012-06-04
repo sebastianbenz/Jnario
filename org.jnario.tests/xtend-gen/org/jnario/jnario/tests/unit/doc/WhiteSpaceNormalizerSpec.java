@@ -1,11 +1,11 @@
 package org.jnario.jnario.tests.unit.doc;
 
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.doc.WhiteSpaceNormalizer;
 import org.jnario.jnario.tests.unit.doc.WhiteSpaceNormalizerSpecExamples;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
+import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -45,7 +45,7 @@ public class WhiteSpaceNormalizerSpec {
     final Procedure1<WhiteSpaceNormalizerSpecExamples> _function = new Procedure1<WhiteSpaceNormalizerSpecExamples>() {
         public void apply(final WhiteSpaceNormalizerSpecExamples it) {
           String _normalize = WhiteSpaceNormalizerSpec.this.subject.normalize(it.input);
-          boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_normalize, it.result);
+          boolean _doubleArrow = Should.operator_doubleArrow(_normalize, it.result);
           Assert.assertTrue("\nExpected subject.normalize(input) => result but"
            + "\n     subject.normalize(input) is " + "\"" + _normalize + "\""
            + "\n     subject is " + WhiteSpaceNormalizerSpec.this.subject

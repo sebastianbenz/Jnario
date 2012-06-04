@@ -8,7 +8,6 @@ import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.xbase.lib.Conversions;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.Query;
 import org.jnario.jnario.test.util.SpecTestInstantiator;
@@ -54,7 +53,7 @@ public class SpecScopeProviderSpec {
     String[] _split = element.split("//.");
     QualifiedName _create = QualifiedName.create(((List<String>)Conversions.doWrapArray(_split)));
     final IEObjectDescription result = scope.getSingleElement(_create);
-    String _plus = ObjectExtensions.operator_plus("scope did not contain:", element);
+    String _plus = ("scope did not contain:" + element);
     Assert.assertNotNull(_plus, result);
   }
   
@@ -62,7 +61,7 @@ public class SpecScopeProviderSpec {
     String[] _split = element.split("//.");
     QualifiedName _create = QualifiedName.create(((List<String>)Conversions.doWrapArray(_split)));
     final IEObjectDescription result = scope.getSingleElement(_create);
-    String _plus = ObjectExtensions.operator_plus("scope did not contain:", element);
+    String _plus = ("scope did not contain:" + element);
     Assert.assertNull(_plus, result);
   }
   

@@ -3,9 +3,9 @@ package org.jnario.spec.tests.unit.naming;
 import java.util.ArrayList;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.jnario.test.util.Query;
+import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -36,7 +36,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
     final Procedure1<String> _function = new Procedure1<String>() {
         public void apply(final String it) {
           String _firstMethodName = ExampleNameProviderToMethodNameAfterSpec.this.firstMethodName(it);
-          boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_firstMethodName, "myExample");
+          boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "myExample");
           Assert.assertTrue("\nExpected firstMethodName => \'myExample\' but"
            + "\n     firstMethodName is " + "\"" + _firstMethodName + "\"" + "\n", _doubleArrow);
           
@@ -50,7 +50,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
   @Order(99)
   public void shouldUseAfterAsDefaultName() throws Exception {
     String _firstMethodName = this.firstMethodName("after{}");
-    boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_firstMethodName, "after");
+    boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "after");
     Assert.assertTrue("\nExpected firstMethodName(\"after{}\") => \"after\" but"
      + "\n     firstMethodName(\"after{}\") is " + "\"" + _firstMethodName + "\"" + "\n", _doubleArrow);
     
@@ -61,7 +61,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
   @Order(99)
   public void shouldEnumerateAftersWithoutDescription() throws Exception {
     String _secondMethodName = this.secondMethodName("after{}\r\n                 after{}");
-    boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_secondMethodName, "after2");
+    boolean _doubleArrow = Should.operator_doubleArrow(_secondMethodName, "after2");
     Assert.assertTrue("\nExpected secondMethodName(\"after{}\r\n                 after{}\") => \"after2\" but"
      + "\n     secondMethodName(\"after{}\r\n                 after{}\") is " + "\"" + _secondMethodName + "\"" + "\n", _doubleArrow);
     
@@ -70,8 +70,8 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
   public String firstMethodName(final String content) {
     String _xblockexpression = null;
     {
-      String _plus = ObjectExtensions.operator_plus("describe \'Context\'{", content);
-      final String contentWithContext = ObjectExtensions.operator_plus(_plus, "}");
+      String _plus = ("describe \'Context\'{" + content);
+      final String contentWithContext = (_plus + "}");
       Query _parse = this.parse(contentWithContext);
       After _first = _parse.<After>first(After.class);
       String _methodName = this.subject.toMethodName(_first);
@@ -83,8 +83,8 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
   public String secondMethodName(final String content) {
     String _xblockexpression = null;
     {
-      String _plus = ObjectExtensions.operator_plus("describe \'Context\'{", content);
-      final String contentWithContext = ObjectExtensions.operator_plus(_plus, "}");
+      String _plus = ("describe \'Context\'{" + content);
+      final String contentWithContext = (_plus + "}");
       Query _parse = this.parse(contentWithContext);
       After _second = _parse.<After>second(After.class);
       String _methodName = this.subject.toMethodName(_second);

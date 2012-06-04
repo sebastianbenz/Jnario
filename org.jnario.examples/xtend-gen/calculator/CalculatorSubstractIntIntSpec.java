@@ -23,8 +23,8 @@ public class CalculatorSubstractIntIntSpec extends CalculatorSpec {
   @Order(99)
   public void subjectSubstract53ShouldBe2() throws Exception {
     int _substract = this.subject.substract(5, 3);
-    boolean _should_be = Should.should_be(_substract, 2);Assert
-    .assertTrue("\nExpected subject.substract(5, 3) should be 2 but"
+    boolean _should_be = Should.should_be(_substract, 2);
+    Assert.assertTrue("\nExpected subject.substract(5, 3) should be 2 but"
      + "\n     subject.substract(5, 3) is " + _substract
      + "\n     subject is " + this.subject + "\n", _should_be);
     

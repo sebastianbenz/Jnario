@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.jnario.jnario.test.util.SpecExecutor;
+import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -71,7 +71,7 @@ public class ExtensionsSpec {
       "ExtensionSpec#test2", 
       "ExtensionExample#after", 
       "ExtensionExample#afterClass");
-    boolean _doubleArrow = ObjectExtensions.<List<String>>operator_doubleArrow(_executedMethods, _newArrayList);
+    boolean _doubleArrow = Should.operator_doubleArrow(_executedMethods, _newArrayList);
     Assert.assertTrue("\nExpected executedMethods => newArrayList(\n\t\t\t\"ExtensionExample#beforeClass\", \n\t\t\t\"ExtensionExample#before\",  \n\t\t\t\"ExtensionSpec#test1\",  \n\t\t\t\"ExtensionExample#after\",  \n\t\t\t\"ExtensionExample#before\",\n\t\t\t\"ExtensionSpec#test2\",  \n\t\t\t\"ExtensionExample#after\",\n\t\t\t\"ExtensionExample#afterClass\"\n\t\t) but"
      + "\n     executedMethods is " + _executedMethods
      + "\n     newArrayList(\n\t\t\t\"ExtensionExample#beforeClass\", \n\t\t\t\"ExtensionExample#before\",  \n\t\t\t\"ExtensionSpec#test1\",  \n\t\t\t\"ExtensionExample#after\",  \n\t\t\t\"ExtensionExample#before\",\n\t\t\t\"ExtensionSpec#test2\",  \n\t\t\t\"ExtensionExample#after\",\n\t\t\t\"ExtensionExample#afterClass\"\n\t\t) is " + _newArrayList + "\n", _doubleArrow);

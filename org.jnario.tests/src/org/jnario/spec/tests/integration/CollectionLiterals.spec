@@ -7,9 +7,8 @@
  *******************************************************************************/
 package org.jnario.spec.tests.integration
 import static org.jnario.lib.JnarioCollectionLiterals.*
-/*
- * You can use the `should` statement to express the expected behavior of objects.
- */
+
+
 describe "CollectionLiterals"{
 
 	describe "List Literal"{

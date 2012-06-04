@@ -1,11 +1,11 @@
 package org.jnario.feature.jvmmodel;
 
+import com.google.common.base.Objects;
 import java.util.List;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepExpression;
 import org.jnario.feature.feature.StepReference;
@@ -16,17 +16,17 @@ import org.jnario.feature.feature.StepReference;
 @SuppressWarnings("all")
 public class StepExpressionProvider {
   public List<XExpression> getExpressions(final Step step) {
-    boolean _equals = ObjectExtensions.operator_equals(step, null);
+    boolean _equals = Objects.equal(step, null);
     if (_equals) {
       return CollectionLiterals.<XExpression>emptyList();
     }
     final StepExpression stepExpression = step.getStepExpression();
-    boolean _equals_1 = ObjectExtensions.operator_equals(stepExpression, null);
+    boolean _equals_1 = Objects.equal(stepExpression, null);
     if (_equals_1) {
       return CollectionLiterals.<XExpression>emptyList();
     }
     final XBlockExpression blockExpression = stepExpression.getBlockExpression();
-    boolean _equals_2 = ObjectExtensions.operator_equals(blockExpression, null);
+    boolean _equals_2 = Objects.equal(blockExpression, null);
     if (_equals_2) {
       return CollectionLiterals.<XExpression>emptyList();
     }
@@ -42,7 +42,7 @@ public class StepExpressionProvider {
   
   public StepExpression getOrCreateExpression(final StepReference ref) {
     StepExpression _stepExpression = ref.getStepExpression();
-    boolean _notEquals = ObjectExtensions.operator_notEquals(_stepExpression, null);
+    boolean _notEquals = (!Objects.equal(_stepExpression, null));
     if (_notEquals) {
       return ref.getStepExpression();
     }

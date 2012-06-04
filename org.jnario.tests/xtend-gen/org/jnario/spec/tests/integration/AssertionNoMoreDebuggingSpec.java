@@ -1,9 +1,7 @@
 package org.jnario.spec.tests.integration;
 
+import com.google.common.base.Objects;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.lib.BooleanExtensions;
-import org.eclipse.xtext.xbase.lib.IntegerExtensions;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.jnario.test.util.Helpers;
 import org.jnario.runner.ExampleGroupRunner;
@@ -58,7 +56,7 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
     final int x = 0;
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
-          boolean _equals = IntegerExtensions.operator_equals(x, 42);
+          boolean _equals = (x == 42);
           Assert.assertTrue("\nExpected x == 42 but"
            + "\n     x is " + x + "\n", _equals);
           
@@ -83,8 +81,8 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
     final int x = 42;
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
-          boolean _equals = IntegerExtensions.operator_equals(x, 42);
-          boolean _not = BooleanExtensions.operator_not(_equals);
+          boolean _equals = (x == 42);
+          boolean _not = (!_equals);
           Assert.assertTrue("\nExpected !(x == 42) but"
            + "\n     x == 42 is " + _equals
            + "\n     x is " + x + "\n", _not);
@@ -113,7 +111,7 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
           String _greet = AssertionNoMoreDebuggingSpec.this.greet("World");
-          boolean _equals = ObjectExtensions.operator_equals(_greet, "Hello World!");
+          boolean _equals = Objects.equal(_greet, "Hello World!");
           Assert.assertTrue("\nExpected greet(\"World\") == \"Hello World!\" but"
            + "\n     greet(\"World\") is " + "\"" + _greet + "\"" + "\n", _equals);
           
@@ -139,7 +137,7 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
         public void apply(final Boolean it) {
           String _upperCase = "Hello".toUpperCase();
           String _lowerCase = _upperCase.toLowerCase();
-          boolean _equals = ObjectExtensions.operator_equals(_lowerCase, "HELLO");
+          boolean _equals = Objects.equal(_lowerCase, "HELLO");
           Assert.assertTrue("\nExpected \"Hello\".toUpperCase.toLowerCase == \"HELLO\" but"
            + "\n     \"Hello\".toUpperCase.toLowerCase is " + "\"" + _lowerCase + "\""
            + "\n     \"Hello\".toUpperCase is " + "\"" + _upperCase + "\"" + "\n", _equals);
@@ -170,12 +168,12 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
           boolean _and = false;
-          boolean _equals = IntegerExtensions.operator_equals(x, 1);
-          boolean _equals_1 = IntegerExtensions.operator_equals(y, 0);
+          boolean _equals = (x == 1);
+          boolean _equals_1 = (y == 0);
           if (!_equals) {
             _and = false;
           } else {
-            _and = BooleanExtensions.operator_and(_equals, _equals_1);
+            _and = (_equals && _equals_1);
           }
           Assert.assertTrue("\nExpected x == 1 && y == 0 but"
            + "\n     x == 1 is " + _equals
@@ -214,12 +212,12 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
           boolean _and = false;
-          boolean _greaterThan = IntegerExtensions.operator_greaterThan(x, 0);
-          boolean _lessThan = IntegerExtensions.operator_lessThan(x, 10);
+          boolean _greaterThan = (x > 0);
+          boolean _lessThan = (x < 10);
           if (!_greaterThan) {
             _and = false;
           } else {
-            _and = BooleanExtensions.operator_and(_greaterThan, _lessThan);
+            _and = (_greaterThan && _lessThan);
           }
           Assert.assertTrue("\nExpected x > 0 && x < 10 but"
            + "\n     x > 0 is " + _greaterThan
@@ -249,6 +247,6 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
    * }
    */
   public String greet(final String name) {
-    return ObjectExtensions.operator_plus("Hello ", name);
+    return ("Hello " + name);
   }
 }

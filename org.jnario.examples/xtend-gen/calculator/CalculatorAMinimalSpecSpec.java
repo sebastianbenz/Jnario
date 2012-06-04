@@ -22,8 +22,8 @@ public class CalculatorAMinimalSpecSpec {
   @Order(99)
   public void subjectAdd459() throws Exception {
     int _add = this.subject.add(4, 5);
-    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_add), Integer.valueOf(9));Assert
-    .assertTrue("\nExpected subject.add(4, 5) => 9 but"
+    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_add), Integer.valueOf(9));
+    Assert.assertTrue("\nExpected subject.add(4, 5) => 9 but"
      + "\n     subject.add(4, 5) is " + Integer.valueOf(_add)
      + "\n     subject is " + this.subject + "\n", _doubleArrow);
     
@@ -34,8 +34,8 @@ public class CalculatorAMinimalSpecSpec {
   @Order(99)
   public void subjectDivide1051() throws Exception {
     int _divide = this.subject.divide(10, 5);
-    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_divide), Integer.valueOf(1));Assert
-    .assertTrue("\nExpected subject.divide(10, 5) => 1 but"
+    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_divide), Integer.valueOf(1));
+    Assert.assertTrue("\nExpected subject.divide(10, 5) => 1 but"
      + "\n     subject.divide(10, 5) is " + Integer.valueOf(_divide)
      + "\n     subject is " + this.subject + "\n", _doubleArrow);
     

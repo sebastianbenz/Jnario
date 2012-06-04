@@ -54,8 +54,8 @@ public class CellSpec {
     final Procedure1<CellSpecExamples> _function = new Procedure1<CellSpecExamples>() {
         public void apply(final CellSpecExamples it) {
           Cell _evolve = it.cell.evolve(it.neighborCount);
-          boolean _doubleArrow = Should.operator_doubleArrow(_evolve, it.newState);Assert
-          .assertTrue("\nExpected cell.evolve(neighborCount) => newState but"
+          boolean _doubleArrow = Should.operator_doubleArrow(_evolve, it.newState);
+          Assert.assertTrue("\nExpected cell.evolve(neighborCount) => newState but"
            + "\n     cell.evolve(neighborCount) is " + _evolve
            + "\n     cell is " + it.cell
            + "\n     neighborCount is " + it.neighborCount

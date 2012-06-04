@@ -8,12 +8,9 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.parser.antlr.TokenAcceptor;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
-import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure2;
-import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.jnario.feature.parser.FeatureTokenSource;
 import org.jnario.feature.parser.antlr.internal.InternalFeatureLexer;
 import org.jnario.lib.Should;
@@ -234,7 +231,7 @@ public class FeatureTokenSourceSpec {
           
           String _text = actual.getText();
           String _text_1 = expected.getText();
-          boolean _doubleArrow_1 = ObjectExtensions.<String>operator_doubleArrow(_text, _text_1);
+          boolean _doubleArrow_1 = Should.operator_doubleArrow(_text, _text_1);
           Assert.assertTrue("\nExpected actual.text => expected.text but"
            + "\n     actual.text is " + "\"" + _text + "\""
            + "\n     actual is " + actual
@@ -271,9 +268,9 @@ public class FeatureTokenSourceSpec {
       final int start = FeatureTokenSourceSpec.prefix.length();
       String _string_1 = text.toString();
       int _length = _string_1.length();
-      final int stop = IntegerExtensions.operator_minus(_length, 1);
-      int _minus = IntegerExtensions.operator_minus(1);
-      int _minus_1 = IntegerExtensions.operator_minus(1);
+      final int stop = (_length - 1);
+      int _minus = (-1);
+      int _minus_1 = (-1);
       CommonToken _commonToken = new CommonToken(input, _minus, _minus_1, start, stop);
       _xblockexpression = (_commonToken);
     }
@@ -281,7 +278,7 @@ public class FeatureTokenSourceSpec {
   }
   
   public CharSequence setInput(final CharSequence input) {
-    String _plus = StringExtensions.operator_plus(FeatureTokenSourceSpec.prefix, input);
+    String _plus = (FeatureTokenSourceSpec.prefix + input);
     CharSequence _input = this.input = _plus;
     return _input;
   }

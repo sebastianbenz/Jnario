@@ -1,7 +1,6 @@
 package org.jnario.feature.tests.integration;
 
-import org.eclipse.xtext.xbase.lib.IntegerExtensions;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
+import org.jnario.lib.Should;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -32,8 +31,8 @@ public class ParsingSimpleJnarioFilesFeatureAndStuff {
   @Order(2)
   @Named("Then the adding these should be the result.")
   public void thenTheAddingTheseShouldBeTheResult() {
-    int _plus = IntegerExtensions.operator_plus(this.x, this.y);
-    boolean _doubleArrow = ObjectExtensions.<Integer>operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(this.z));
+    int _plus = (this.x + this.y);
+    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(this.z));
     Assert.assertTrue("\nExpected (x+y) => z but"
      + "\n     x+y is " + Integer.valueOf(_plus)
      + "\n     x is " + this.x

@@ -1,5 +1,6 @@
 package org.jnario.jnario.test.util;
 
+import com.google.common.base.Objects;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
@@ -14,9 +15,7 @@ import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.resource.FileExtensionProvider;
 import org.eclipse.xtext.validation.Issue;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.jnario.test.util.ClassPathUriProviderBuilder;
 import org.jnario.jnario.test.util.IUriProvider;
@@ -35,7 +34,7 @@ public class AbstractParserTest {
   
   @Before
   public void setup() {
-    boolean _equals = ObjectExtensions.operator_equals(this.fileExtensionProvider, null);
+    boolean _equals = Objects.equal(this.fileExtensionProvider, null);
     if (_equals) {
       return;
     }
@@ -44,14 +43,14 @@ public class AbstractParserTest {
     Map<String,Object> _extensionToFactoryMap = Registry.INSTANCE.getExtensionToFactoryMap();
     final Object factory = _extensionToFactoryMap.get(fileExtension);
     Map<String,Object> _extensionToFactoryMap_1 = Registry.INSTANCE.getExtensionToFactoryMap();
-    String _plus = ObjectExtensions.operator_plus(fileExtension, "_");
+    String _plus = (fileExtension + "_");
     _extensionToFactoryMap_1.put(_plus, factory);
   }
   
   @Test
   public void shouldParseAllFilesWithoutParseError() {
     Class<? extends Object> _context = this.context();
-    boolean _equals = ObjectExtensions.operator_equals(_context, null);
+    boolean _equals = Objects.equal(_context, null);
     if (_equals) {
       return;
     }
@@ -100,12 +99,12 @@ public class AbstractParserTest {
     String _xblockexpression = null;
     {
       final String fileExtension = uri==null?(String)null:uri.fileExtension();
-      boolean _equals = ObjectExtensions.operator_equals(fileExtension, null);
+      boolean _equals = Objects.equal(fileExtension, null);
       if (_equals) {
         return "";
       }
       int _length = fileExtension.length();
-      int _minus = IntegerExtensions.operator_minus(_length, 1);
+      int _minus = (_length - 1);
       String _substring = fileExtension.substring(0, _minus);
       _xblockexpression = (_substring);
     }

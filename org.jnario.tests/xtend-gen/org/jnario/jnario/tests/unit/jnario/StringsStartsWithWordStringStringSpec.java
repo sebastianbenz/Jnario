@@ -1,12 +1,11 @@
 package org.jnario.jnario.tests.unit.jnario;
 
-import org.eclipse.xtext.xbase.lib.IntegerExtensions;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.jnario.tests.unit.jnario.StringsSpec;
 import org.jnario.jnario.tests.unit.jnario.StringsStartsWithWordStringStringSpecExamples;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
+import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -23,8 +22,8 @@ public class StringsStartsWithWordStringStringSpec extends StringsSpec {
   @Before
   public void _initStringsStartsWithWordStringStringSpecExamples() {
     
-    int _minus = IntegerExtensions.operator_minus(1);
-    int _minus_1 = IntegerExtensions.operator_minus(1);examples = ExampleTable.create("examples", 
+    int _minus = (-1);
+    int _minus_1 = (-1);examples = ExampleTable.create("examples", 
       java.util.Arrays.asList("string", "word", "index"), 
       new StringsStartsWithWordStringStringSpecExamples(  java.util.Arrays.asList("\"\"", "\"hello\"", "-1"), "", "hello", _minus),
       new StringsStartsWithWordStringStringSpecExamples(  java.util.Arrays.asList("\"hello hi\"", "\"hello\"", "0"), "hello hi", "hello", 0),
@@ -44,7 +43,7 @@ public class StringsStartsWithWordStringStringSpec extends StringsSpec {
     final Procedure1<StringsStartsWithWordStringStringSpecExamples> _function = new Procedure1<StringsStartsWithWordStringStringSpecExamples>() {
         public void apply(final StringsStartsWithWordStringStringSpecExamples it) {
           int _startsWithWord = Strings.startsWithWord(it.string, it.word);
-          boolean _doubleArrow = ObjectExtensions.<Integer>operator_doubleArrow(Integer.valueOf(_startsWithWord), Integer.valueOf(it.index));
+          boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_startsWithWord), Integer.valueOf(it.index));
           Assert.assertTrue("\nExpected string.startsWithWord(word) => index but"
            + "\n     string.startsWithWord(word) is " + Integer.valueOf(_startsWithWord)
            + "\n     string is " + "\"" + it.string + "\""

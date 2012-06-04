@@ -1,12 +1,11 @@
 package org.jnario.spec.tests.unit.doc;
 
+import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import java.util.Map;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.InMemoryFileSystemAccess;
-import org.eclipse.xtext.xbase.lib.BooleanExtensions;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.SpecTestInstantiator;
 import org.jnario.runner.ExampleGroupRunner;
@@ -41,12 +40,12 @@ public class DocGeneratorSpec {
   public void generatesJavaScriptHelperFiles() throws Exception {
     this.generateEmptyExampleDoc();
     String _generatedFile = this.generatedFile("js/prettify.js");
-    boolean _notEquals = ObjectExtensions.operator_notEquals(_generatedFile, null);
+    boolean _notEquals = (!Objects.equal(_generatedFile, null));
     Assert.assertTrue("\nExpected generatedFile(\"js/prettify.js\") != null but"
      + "\n     generatedFile(\"js/prettify.js\") is " + "\"" + _generatedFile + "\"" + "\n", _notEquals);
     
     String _generatedFile_1 = this.generatedFile("js/lang-jnario.js");
-    boolean _notEquals_1 = ObjectExtensions.operator_notEquals(_generatedFile_1, null);
+    boolean _notEquals_1 = (!Objects.equal(_generatedFile_1, null));
     Assert.assertTrue("\nExpected generatedFile(\"js/lang-jnario.js\") != null but"
      + "\n     generatedFile(\"js/lang-jnario.js\") is " + "\"" + _generatedFile_1 + "\"" + "\n", _notEquals_1);
     
@@ -58,17 +57,17 @@ public class DocGeneratorSpec {
   public void generatesCssHelperFiles() throws Exception {
     this.generateEmptyExampleDoc();
     String _generatedFile = this.generatedFile("css/bootstrap-responsive.min.css");
-    boolean _notEquals = ObjectExtensions.operator_notEquals(_generatedFile, null);
+    boolean _notEquals = (!Objects.equal(_generatedFile, null));
     Assert.assertTrue("\nExpected generatedFile(\"css/bootstrap-responsive.min.css\") != null but"
      + "\n     generatedFile(\"css/bootstrap-responsive.min.css\") is " + "\"" + _generatedFile + "\"" + "\n", _notEquals);
     
     String _generatedFile_1 = this.generatedFile("css/custom.css");
-    boolean _notEquals_1 = ObjectExtensions.operator_notEquals(_generatedFile_1, null);
+    boolean _notEquals_1 = (!Objects.equal(_generatedFile_1, null));
     Assert.assertTrue("\nExpected generatedFile(\"css/custom.css\") != null but"
      + "\n     generatedFile(\"css/custom.css\") is " + "\"" + _generatedFile_1 + "\"" + "\n", _notEquals_1);
     
     String _generatedFile_2 = this.generatedFile("css/prettify.css");
-    boolean _notEquals_2 = ObjectExtensions.operator_notEquals(_generatedFile_2, null);
+    boolean _notEquals_2 = (!Objects.equal(_generatedFile_2, null));
     Assert.assertTrue("\nExpected generatedFile(\"css/prettify.css\") != null but"
      + "\n     generatedFile(\"css/prettify.css\") is " + "\"" + _generatedFile_2 + "\"" + "\n", _notEquals_2);
     
@@ -81,12 +80,12 @@ public class DocGeneratorSpec {
     this.generateEmptyExampleDoc();
     final String scenarioDoc = this.generatedFile("ExampleSpec.html");
     boolean _and = false;
-    boolean _notEquals = ObjectExtensions.operator_notEquals(scenarioDoc, null);
+    boolean _notEquals = (!Objects.equal(scenarioDoc, null));
     boolean _contains = scenarioDoc.contains("<title>Example</title>");
     if (!_notEquals) {
       _and = false;
     } else {
-      _and = BooleanExtensions.operator_and(_notEquals, _contains);
+      _and = (_notEquals && _contains);
     }
     Assert.assertTrue("\nExpected scenarioDoc != null && \r\n\t\t\t\tscenarioDoc.contains(\"<title>Example</title>\") but"
      + "\n     scenarioDoc != null is " + _notEquals
@@ -132,7 +131,7 @@ public class DocGeneratorSpec {
      + "\n     scenarioDoc is " + "\"" + scenarioDoc + "\"" + "\n", _contains);
     
     boolean _contains_1 = scenarioDoc.contains("Irrelevant documentation.");
-    boolean _not = BooleanExtensions.operator_not(_contains_1);
+    boolean _not = (!_contains_1);
     Assert.assertTrue("\nExpected !scenarioDoc.contains(\"Irrelevant documentation.\") but"
      + "\n     scenarioDoc.contains(\"Irrelevant documentation.\") is " + _contains_1
      + "\n     scenarioDoc is " + "\"" + scenarioDoc + "\"" + "\n", _not);
@@ -317,7 +316,7 @@ public class DocGeneratorSpec {
   
   public String generatedFile(final String name) {
     Map<String,CharSequence> _files = this.fsa.getFiles();
-    String _plus = ObjectExtensions.operator_plus("DOC_OUTPUT/", name);
+    String _plus = ("DOC_OUTPUT/" + name);
     CharSequence _get = _files.get(_plus);
     return _get==null?(String)null:_get.toString();
   }

@@ -39,5 +39,5 @@ class World {
 		cells.entrySet.forEach[
 			visitor.visit(it.value, it.key)
 		]
-	}  
+	}   
 } 

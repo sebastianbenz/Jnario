@@ -57,8 +57,8 @@ public class AdditionFeatureAddTwoNumbers {
       args.add("120");
       String _result = this.calculator.result();
       String _first = args.first();
-      boolean _doubleArrow = Should.operator_doubleArrow(_result, _first);Assert
-      .assertTrue("\nExpected calculator.result => args.first but"
+      boolean _doubleArrow = Should.operator_doubleArrow(_result, _first);
+      Assert.assertTrue("\nExpected calculator.result => args.first but"
        + "\n     calculator.result is " + "\"" + _result + "\""
        + "\n     calculator is " + this.calculator
        + "\n     args.first is " + "\"" + _first + "\""

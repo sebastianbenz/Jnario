@@ -23,8 +23,8 @@ public class CalculatorAddIntIntSpec extends CalculatorSpec {
   @Order(99)
   public void shouldAddTwoValues() throws Exception {
     int _add = this.subject.add(1, 2);
-    boolean _should_be = Should.should_be(_add, 3);Assert
-    .assertTrue("\nExpected subject.add(1, 2) should be 3 but"
+    boolean _should_be = Should.should_be(_add, 3);
+    Assert.assertTrue("\nExpected subject.add(1, 2) should be 3 but"
      + "\n     subject.add(1, 2) is " + _add
      + "\n     subject is " + this.subject + "\n", _should_be);
     

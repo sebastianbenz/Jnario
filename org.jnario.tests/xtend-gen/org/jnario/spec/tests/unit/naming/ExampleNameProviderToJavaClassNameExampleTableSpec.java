@@ -1,9 +1,9 @@
 package org.jnario.spec.tests.unit.naming;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.jnario.ExampleTable;
 import org.jnario.jnario.test.util.Query;
+import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -37,7 +37,7 @@ public class ExampleNameProviderToJavaClassNameExampleTableSpec extends ExampleN
     _builder.append("}");
     _builder.newLine();
     String _exampleTableClassName = this.exampleTableClassName(_builder);
-    boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_exampleTableClassName, "MyContextSpecMyExample");
+    boolean _doubleArrow = Should.operator_doubleArrow(_exampleTableClassName, "MyContextSpecMyExample");
     Assert.assertTrue("\nExpected exampleTableClassName(\'\'\'\r\n        describe \'My Context\'{\r\n          def MyExample{\r\n          }\r\n        }\r\n        \'\'\') => \"MyContextSpecMyExample\" but"
      + "\n     exampleTableClassName(\'\'\'\r\n        describe \'My Context\'{\r\n          def MyExample{\r\n          }\r\n        }\r\n        \'\'\') is " + "\"" + _exampleTableClassName + "\""
      + "\n     \'\'\'\r\n        describe \'My Context\'{\r\n          def MyExample{\r\n          }\r\n        }\r\n        \'\'\' is " + _builder + "\n", _doubleArrow);
@@ -60,7 +60,7 @@ public class ExampleNameProviderToJavaClassNameExampleTableSpec extends ExampleN
     _builder.append("}");
     _builder.newLine();
     String _exampleTableClassName = this.exampleTableClassName(_builder);
-    boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_exampleTableClassName, "MyContextSpecMyExample");
+    boolean _doubleArrow = Should.operator_doubleArrow(_exampleTableClassName, "MyContextSpecMyExample");
     Assert.assertTrue("\nExpected exampleTableClassName(\'\'\'\r\n        describe \'My Context\'{\r\n          def myExample{\r\n          } \r\n        }\r\n        \'\'\') => \"MyContextSpecMyExample\" but"
      + "\n     exampleTableClassName(\'\'\'\r\n        describe \'My Context\'{\r\n          def myExample{\r\n          } \r\n        }\r\n        \'\'\') is " + "\"" + _exampleTableClassName + "\""
      + "\n     \'\'\'\r\n        describe \'My Context\'{\r\n          def myExample{\r\n          } \r\n        }\r\n        \'\'\' is " + _builder + "\n", _doubleArrow);

@@ -3,9 +3,9 @@ package org.jnario.spec.tests.unit.naming;
 import java.util.ArrayList;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.jnario.test.util.Query;
+import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -36,7 +36,7 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
     final Procedure1<String> _function = new Procedure1<String>() {
         public void apply(final String it) {
           String _firstMethodName = ExampleNameProviderToMethodNameBeforeSpec.this.firstMethodName(it);
-          boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_firstMethodName, "myExample");
+          boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "myExample");
           Assert.assertTrue("\nExpected firstMethodName => \'myExample\' but"
            + "\n     firstMethodName is " + "\"" + _firstMethodName + "\"" + "\n", _doubleArrow);
           
@@ -50,7 +50,7 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
   @Order(99)
   public void shouldUseBeforeAsDefaultName() throws Exception {
     String _firstMethodName = this.firstMethodName("before{}");
-    boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_firstMethodName, "before");
+    boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "before");
     Assert.assertTrue("\nExpected firstMethodName(\"before{}\") => \"before\" but"
      + "\n     firstMethodName(\"before{}\") is " + "\"" + _firstMethodName + "\"" + "\n", _doubleArrow);
     
@@ -61,7 +61,7 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
   @Order(99)
   public void shouldEnumerateBeforesWithoutDescription() throws Exception {
     String _secondMethodName = this.secondMethodName("before{}\r\n                 before{}");
-    boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_secondMethodName, "before2");
+    boolean _doubleArrow = Should.operator_doubleArrow(_secondMethodName, "before2");
     Assert.assertTrue("\nExpected secondMethodName(\"before{}\r\n                 before{}\") => \"before2\" but"
      + "\n     secondMethodName(\"before{}\r\n                 before{}\") is " + "\"" + _secondMethodName + "\"" + "\n", _doubleArrow);
     
@@ -70,8 +70,8 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
   public String firstMethodName(final String content) {
     String _xblockexpression = null;
     {
-      String _plus = ObjectExtensions.operator_plus("describe \'Context\'{", content);
-      final String contentWithContext = ObjectExtensions.operator_plus(_plus, "}");
+      String _plus = ("describe \'Context\'{" + content);
+      final String contentWithContext = (_plus + "}");
       Query _parse = this.parse(contentWithContext);
       Before _first = _parse.<Before>first(Before.class);
       String _methodName = this.subject.toMethodName(_first);
@@ -83,8 +83,8 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
   public String secondMethodName(final String content) {
     String _xblockexpression = null;
     {
-      String _plus = ObjectExtensions.operator_plus("describe \'Context\'{", content);
-      final String contentWithContext = ObjectExtensions.operator_plus(_plus, "}");
+      String _plus = ("describe \'Context\'{" + content);
+      final String contentWithContext = (_plus + "}");
       Query _parse = this.parse(contentWithContext);
       Before _second = _parse.<Before>second(Before.class);
       String _methodName = this.subject.toMethodName(_second);

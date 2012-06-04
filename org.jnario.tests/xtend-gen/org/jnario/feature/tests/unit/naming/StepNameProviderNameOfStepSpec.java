@@ -1,10 +1,11 @@
 package org.jnario.feature.tests.unit.naming;
 
+import com.google.common.base.Objects;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.jnario.feature.feature.Given;
 import org.jnario.feature.feature.GivenReference;
 import org.jnario.feature.tests.unit.naming.StepNameProviderSpec;
+import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -22,7 +23,7 @@ public class StepNameProviderNameOfStepSpec extends StepNameProviderSpec {
   public void returnsNullIfTheStepHasNoName() throws Exception {
     Given _emptyStep = this.emptyStep();
     String _nameOf = this.subject.nameOf(_emptyStep);
-    boolean _equals = ObjectExtensions.operator_equals(_nameOf, null);
+    boolean _equals = Objects.equal(_nameOf, null);
     Assert.assertTrue("\nExpected subject.nameOf(emptyStep) == null but"
      + "\n     subject.nameOf(emptyStep) is " + "\"" + _nameOf + "\""
      + "\n     subject is " + this.subject
@@ -36,7 +37,7 @@ public class StepNameProviderNameOfStepSpec extends StepNameProviderSpec {
   public void returnsNullIfTheStepHasNoReference() throws Exception {
     GivenReference _emptyRef = this.emptyRef();
     String _nameOf = this.subject.nameOf(_emptyRef);
-    boolean _equals = ObjectExtensions.operator_equals(_nameOf, null);
+    boolean _equals = Objects.equal(_nameOf, null);
     Assert.assertTrue("\nExpected subject.nameOf(emptyRef) == null but"
      + "\n     subject.nameOf(emptyRef) is " + "\"" + _nameOf + "\""
      + "\n     subject is " + this.subject
@@ -59,7 +60,7 @@ public class StepNameProviderNameOfStepSpec extends StepNameProviderSpec {
     _builder.newLine();
     this.parseScenario(_builder);
     String _stepName = this.stepName();
-    boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_stepName, "Given a step with an implementation");
+    boolean _doubleArrow = Should.operator_doubleArrow(_stepName, "Given a step with an implementation");
     Assert.assertTrue("\nExpected stepName => \"Given a step with an implementation\" but"
      + "\n     stepName is " + "\"" + _stepName + "\"" + "\n", _doubleArrow);
     
@@ -85,7 +86,7 @@ public class StepNameProviderNameOfStepSpec extends StepNameProviderSpec {
     _builder.newLine();
     this.parseScenario(_builder);
     String _stepName = this.stepName();
-    boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_stepName, "Given a step with a resolved reference");
+    boolean _doubleArrow = Should.operator_doubleArrow(_stepName, "Given a step with a resolved reference");
     Assert.assertTrue("\nExpected stepName => \"Given a step with a resolved reference\" but"
      + "\n     stepName is " + "\"" + _stepName + "\"" + "\n", _doubleArrow);
     
@@ -103,7 +104,7 @@ public class StepNameProviderNameOfStepSpec extends StepNameProviderSpec {
     _builder.newLine();
     this.parseScenario(_builder);
     String _stepName = this.stepName();
-    boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_stepName, "Given a step with an unresolved reference");
+    boolean _doubleArrow = Should.operator_doubleArrow(_stepName, "Given a step with an unresolved reference");
     Assert.assertTrue("\nExpected stepName => \"Given a step with an unresolved reference\" but"
      + "\n     stepName is " + "\"" + _stepName + "\"" + "\n", _doubleArrow);
     
@@ -124,7 +125,7 @@ public class StepNameProviderNameOfStepSpec extends StepNameProviderSpec {
     _builder.newLine();
     this.parseScenario(_builder);
     String _stepName = this.stepName();
-    boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_stepName, "Given a step with two values \"a\" and \"b\"");
+    boolean _doubleArrow = Should.operator_doubleArrow(_stepName, "Given a step with two values \"a\" and \"b\"");
     Assert.assertTrue("\nExpected stepName => \'Given a step with two values \"a\" and \"b\"\' but"
      + "\n     stepName is " + "\"" + _stepName + "\"" + "\n", _doubleArrow);
     

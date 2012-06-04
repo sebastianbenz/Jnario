@@ -122,7 +122,7 @@ public class UsingShouldSpec {
       // expected
     }
     try{
-      this.method();
+     this.method();
       Assert.fail("Expected " + IllegalArgumentException.class.getName() + " in \n     method()\n with:");
     }catch(IllegalArgumentException e){
       // expected

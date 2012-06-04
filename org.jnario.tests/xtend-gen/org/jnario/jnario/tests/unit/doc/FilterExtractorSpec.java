@@ -5,7 +5,6 @@ import java.util.List;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.doc.Filter;
 import org.jnario.doc.FilterExtractor;
@@ -14,6 +13,7 @@ import org.jnario.jnario.tests.unit.doc.FilterExtractorSpecFilterCreation;
 import org.jnario.jnario.tests.unit.doc.FilterExtractorSpecFilterExtractions;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
+import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -69,7 +69,7 @@ public class FilterExtractorSpec {
     final Procedure1<FilterExtractorSpecFilterExtractions> _function = new Procedure1<FilterExtractorSpecFilterExtractions>() {
         public void apply(final FilterExtractorSpecFilterExtractions it) {
           String _stringAfterExtract = FilterExtractorSpec.this.stringAfterExtract(it.input);
-          boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(_stringAfterExtract, it.resultString);
+          boolean _doubleArrow = Should.operator_doubleArrow(_stringAfterExtract, it.resultString);
           Assert.assertTrue("\nExpected stringAfterExtract(input) => resultString but"
            + "\n     stringAfterExtract(input) is " + "\"" + _stringAfterExtract + "\""
            + "\n     input is " + "\"" + it.input + "\""
@@ -87,7 +87,7 @@ public class FilterExtractorSpec {
     final Procedure1<FilterExtractorSpecFilterCreation> _function = new Procedure1<FilterExtractorSpecFilterCreation>() {
         public void apply(final FilterExtractorSpecFilterCreation it) {
           List<String> _extractedFilters = FilterExtractorSpec.this.extractedFilters(it.input);
-          boolean _doubleArrow = ObjectExtensions.<List<String>>operator_doubleArrow(_extractedFilters, it.resultingFilters);
+          boolean _doubleArrow = Should.operator_doubleArrow(_extractedFilters, it.resultingFilters);
           Assert.assertTrue("\nExpected extractedFilters(input) => resultingFilters but"
            + "\n     extractedFilters(input) is " + _extractedFilters
            + "\n     input is " + "\"" + it.input + "\""

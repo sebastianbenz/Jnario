@@ -1,10 +1,9 @@
 package org.jnario.feature.naming;
 
+import com.google.common.base.Objects;
 import java.util.regex.Matcher;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
-import org.eclipse.xtext.xbase.lib.IntegerExtensions;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepReference;
@@ -23,7 +22,7 @@ public class StepNameProvider {
   public String nameOf(final Step step) {
     String _xblockexpression = null;
     {
-      boolean _equals = ObjectExtensions.operator_equals(step, null);
+      boolean _equals = Objects.equal(step, null);
       if (_equals) {
         return "";
       }
@@ -49,7 +48,7 @@ public class StepNameProvider {
   public String nameOf(final StepReference ref) {
     String _xifexpression = null;
     Step _reference = ref.getReference();
-    boolean _equals = ObjectExtensions.operator_equals(_reference, null);
+    boolean _equals = Objects.equal(_reference, null);
     if (_equals) {
       _xifexpression = null;
     } else {
@@ -63,10 +62,10 @@ public class StepNameProvider {
   public String getMethodName(final Step step) {
     String originalName = this.nameOf(step);
     final int index = originalName.lastIndexOf("\n");
-    int _minus = IntegerExtensions.operator_minus(1);
-    boolean _notEquals = IntegerExtensions.operator_notEquals(index, _minus);
+    int _minus = (-1);
+    boolean _notEquals = (index != _minus);
     if (_notEquals) {
-      int _minus_1 = IntegerExtensions.operator_minus(index, 1);
+      int _minus_1 = (index - 1);
       String _substring = originalName.substring(0, _minus_1);
       String _trim = _substring.trim();
       originalName = _trim;
@@ -78,8 +77,8 @@ public class StepNameProvider {
   public String describe(final Step step) {
     String name = this.nameOf(step);
     final int index = Strings.indexOfNewLine(name);
-    int _minus = IntegerExtensions.operator_minus(1);
-    boolean _notEquals = IntegerExtensions.operator_notEquals(index, _minus);
+    int _minus = (-1);
+    boolean _notEquals = (index != _minus);
     if (_notEquals) {
       String _substring = name.substring(0, index);
       name = _substring;
@@ -99,12 +98,12 @@ public class StepNameProvider {
       return "";
     }
     int index = name.indexOf(" ");
-    int _minus = IntegerExtensions.operator_minus(1);
-    boolean _equals = IntegerExtensions.operator_equals(index, _minus);
+    int _minus = (-1);
+    boolean _equals = (index == _minus);
     if (_equals) {
       return "";
     }
-    int _plus = IntegerExtensions.operator_plus(index, 1);
+    int _plus = (index + 1);
     return name.substring(_plus);
   }
   

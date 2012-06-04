@@ -43,18 +43,18 @@ public class JnarioSpecsFactBDDForJavaSpec {
   @Order(99)
   public void shouldStyleAssertions() throws Exception {
     boolean _should_be = Should.should_be(
-      "hello", "hello");Assert
-    .assertTrue("\nExpected \"hello\" should be \"hello\" but"
+      "hello", "hello");
+    Assert.assertTrue("\nExpected \"hello\" should be \"hello\" but"
      + "\n     \"hello\" should be \"hello\" is " + null + "\n", _should_be);
     
     boolean _should_be_1 = Should.<Boolean>should_be(
-      true, false);Assert
-    .assertFalse("\nExpected true should not be false but"
+      true, false);
+    Assert.assertFalse("\nExpected true should not be false but"
      + "\n     true should not be false is " + null + "\n", _should_be_1);
     
     boolean _should_be_2 = Should.should_be(
-      "hello", String.class);Assert
-    .assertTrue("\nExpected \"hello\" should be typeof(String) but"
+      "hello", String.class);
+    Assert.assertTrue("\nExpected \"hello\" should be typeof(String) but"
      + "\n     \"hello\" should be typeof(String) is " + Boolean.valueOf(null) + "\n", _should_be_2);
     
   }

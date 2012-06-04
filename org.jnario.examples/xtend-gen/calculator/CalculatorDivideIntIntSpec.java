@@ -23,8 +23,8 @@ public class CalculatorDivideIntIntSpec extends CalculatorSpec {
   @Order(99)
   public void shouldDivideTwoValues() throws Exception {
     int _divide = this.subject.divide(6, 2);
-    boolean _should_be = Should.should_be(_divide, 2);Assert
-    .assertTrue("\nExpected subject.divide(6, 2) should be 2 but"
+    boolean _should_be = Should.should_be(_divide, 2);
+    Assert.assertTrue("\nExpected subject.divide(6, 2) should be 2 but"
      + "\n     subject.divide(6, 2) is " + _divide
      + "\n     subject is " + this.subject + "\n", _should_be);
     

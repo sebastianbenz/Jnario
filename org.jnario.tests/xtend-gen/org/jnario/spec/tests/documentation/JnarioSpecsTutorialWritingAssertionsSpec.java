@@ -2,8 +2,6 @@ package org.jnario.spec.tests.documentation;
 
 import java.util.Stack;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.lib.BooleanExtensions;
-import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.jnario.test.util.Helpers;
 import org.jnario.lib.Should;
@@ -64,14 +62,12 @@ public class JnarioSpecsTutorialWritingAssertionsSpec extends JnarioSpecsTutoria
     Assert.assertTrue("\nExpected false => false but"
      + "\n     false => false is " + _doubleArrow + "\n", _doubleArrow);
     
-    int _plus = IntegerExtensions.operator_plus(
-      1, 1);
+    int _plus = (1 + 1);
     boolean _should_be_1 = Should.should_be(_plus, 1);
     Assert.assertFalse("\nExpected 1 + 1 should not be 1 but"
      + "\n     1 + 1 is " + _plus + "\n", _should_be_1);
     
-    int _plus_1 = IntegerExtensions.operator_plus(
-      1, 1);
+    int _plus_1 = (1 + 1);
     boolean _doubleArrow_1 = Should.operator_doubleArrow(Integer.valueOf(_plus_1), Integer.valueOf(2));
     Assert.assertTrue("\nExpected 1 + 1 => 2 but"
      + "\n     1 + 1 is " + Integer.valueOf(_plus_1) + "\n", _doubleArrow_1);
@@ -94,12 +90,12 @@ public class JnarioSpecsTutorialWritingAssertionsSpec extends JnarioSpecsTutoria
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
           boolean _and = false;
-          boolean _equals = IntegerExtensions.operator_equals(x, 1);
-          boolean _equals_1 = IntegerExtensions.operator_equals(y, 0);
+          boolean _equals = (x == 1);
+          boolean _equals_1 = (y == 0);
           if (!_equals) {
             _and = false;
           } else {
-            _and = BooleanExtensions.operator_and(_equals, _equals_1);
+            _and = (_equals && _equals_1);
           }
           Assert.assertTrue("\nExpected x == 1 && y == 0 but"
            + "\n     x == 1 is " + _equals
