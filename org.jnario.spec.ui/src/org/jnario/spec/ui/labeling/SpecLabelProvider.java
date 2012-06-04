@@ -10,11 +10,14 @@
 */
 package org.jnario.spec.ui.labeling;
 
+import static org.eclipse.xtext.util.Strings.convertFromJavaString;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.xtend.ide.labeling.XtendImages;
 import org.eclipse.xtend.ide.labeling.XtendLabelProvider;
 import org.eclipse.xtext.common.types.JvmVisibility;
+import org.eclipse.xtext.util.Strings;
 import org.jnario.ExampleTable;
 import org.jnario.spec.naming.ExampleNameProvider;
 import org.jnario.spec.spec.Example;
@@ -55,11 +58,11 @@ public class SpecLabelProvider extends XtendLabelProvider {
 	}
 
 	public String text(ExampleGroup element) {
-		return exampleNameProvider.describe(element);
+		return convertFromJavaString(exampleNameProvider.describe(element), true);
 	}
 	
 	public String text(Example element) {
-		return exampleNameProvider.describe(element);
+		return convertFromJavaString(exampleNameProvider.describe(element), true);
 	}
 	
 	public String text(ExampleTable element) {
