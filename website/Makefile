@@ -52,7 +52,7 @@ gh-pages: jnario
 	cp -r -p ../org.jnario.tests/doc-gen/org ${GH_PAGES}
 	echo "This is the Jnario (www.jnario.org) snapshots update site." > ${GH_PAGES}/updates/snapshot/index.html 
 	cd ${GH_PAGES} ; \
-	git pull --rebase ; \
+	git pull --rebase origin gh-pages ; \
 	git add --all ; \
 	git commit -a -m "new snapshot build" ; \
 	git push origin gh-pages
