@@ -12,6 +12,7 @@ package org.jnario.feature;
 
 import org.eclipse.xtend.core.jvmmodel.DispatchUtil;
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
+import org.eclipse.xtend.core.linking.XtendLinkingDiagnosticMessageProvider;
 import org.eclipse.xtend.core.resource.XtendResource;
 import org.eclipse.xtend.core.resource.XtendResourceDescriptionStrategy;
 import org.eclipse.xtend.core.scoping.XtendImportedNamespaceScopeProvider;
@@ -22,10 +23,10 @@ import org.eclipse.xtext.generator.IFilePostProcessor;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.OutputConfigurationProvider;
 import org.eclipse.xtext.linking.ILinker;
+import org.eclipse.xtext.linking.ILinkingDiagnosticMessageProvider;
 import org.eclipse.xtext.linking.ILinkingService;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.parser.IParser;
-import org.eclipse.xtext.resource.EObjectAtOffsetHelper;
 import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
 import org.eclipse.xtext.resource.ILocationInFileProvider;
 import org.eclipse.xtext.resource.XtextResource;
@@ -70,6 +71,10 @@ import com.google.inject.name.Names;
  * @author Birgit Engelmann - Initial contribution and API
  */
 public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRuntimeModule {
+	
+	public Class<? extends ILinkingDiagnosticMessageProvider> bindILinkingDiagnosticMessageProvider() {
+		return XtendLinkingDiagnosticMessageProvider.class;
+	}
 	
 	public Class<? extends JvmTypesBuilder> bindJvmTypesBuilder(){
 		return ExtendedJvmTypesBuilder.class;

@@ -114,7 +114,6 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 		}
 		inferredJvmType.annotations += source.exampleGroupRunnerAnnotation
 		inferredJvmType.annotations += source.toAnnotation(typeof(Named), (source as ExampleGroup).describe)
-		
 		addDefaultConstructor(source, inferredJvmType);
 		if (source.getExtends() == null) {
 			val typeRefToObject = getTypeForName(typeof(Object), source);

@@ -22,7 +22,9 @@ import org.eclipse.xtend.ide.autoedit.AutoEditStrategyProvider;
 import org.eclipse.xtend.ide.autoedit.TokenTypeToPartitionMapper;
 import org.eclipse.xtend.ide.builder.XtendBuilderParticipant;
 import org.eclipse.xtend.ide.contentassist.ImportingTypesProposalProvider;
+import org.eclipse.xtend.ide.contentassist.TemplateProposalProvider;
 import org.eclipse.xtend.ide.editor.InitiallyCollapsableAwareFoldingStructureProvider;
+import org.eclipse.xtend.ide.editor.OccurrenceComputer;
 import org.eclipse.xtend.ide.editor.OverrideIndicatorModelListener;
 import org.eclipse.xtend.ide.editor.OverrideIndicatorRulerAction;
 import org.eclipse.xtend.ide.editor.RichStringAwareSourceViewer;
@@ -35,10 +37,14 @@ import org.eclipse.xtend.ide.highlighting.ShowWhitespaceCharactersActionContribu
 import org.eclipse.xtend.ide.highlighting.TokenToAttributeIdMapper;
 import org.eclipse.xtend.ide.highlighting.XtendHighlightingConfiguration;
 import org.eclipse.xtend.ide.hover.XtendAnnotationHover;
+import org.eclipse.xtend.ide.hover.XtendHoverDocumentationProvider;
+import org.eclipse.xtend.ide.hover.XtendHoverSignatureProvider;
 import org.eclipse.xtend.ide.hyperlinking.XtendHyperlinkHelper;
 import org.eclipse.xtend.ide.outline.XtendOutlineNodeComparator;
 import org.eclipse.xtend.ide.outline.XtendOutlinePage;
 import org.eclipse.xtend.ide.outline.XtendQuickOutlineFilterAndSorter;
+import org.eclipse.xtend.ide.refactoring.XtendReferenceUpdater;
+import org.eclipse.xtend.ide.refactoring.XtendRenameElementHandler;
 import org.eclipse.xtend.ide.refactoring.XtendRenameElementProcessor;
 import org.eclipse.xtend.ide.refactoring.XtendRenameStrategy;
 import org.eclipse.xtext.builder.EclipseResourceFileSystemAccess2;
@@ -56,13 +62,16 @@ import org.eclipse.xtext.ui.editor.XtextSourceViewer;
 import org.eclipse.xtext.ui.editor.actions.IActionContributor;
 import org.eclipse.xtext.ui.editor.autoedit.AbstractEditStrategy;
 import org.eclipse.xtext.ui.editor.autoedit.AbstractEditStrategyProvider;
+import org.eclipse.xtext.ui.editor.contentassist.ITemplateProposalProvider;
 import org.eclipse.xtext.ui.editor.doubleClicking.DoubleClickStrategyProvider;
 import org.eclipse.xtext.ui.editor.folding.IFoldingRegionProvider;
 import org.eclipse.xtext.ui.editor.folding.IFoldingStructureProvider;
 import org.eclipse.xtext.ui.editor.formatting.IContentFormatterFactory;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
+import org.eclipse.xtext.ui.editor.hover.html.IEObjectHoverDocumentationProvider;
 import org.eclipse.xtext.ui.editor.hyperlinking.IHyperlinkHelper;
 import org.eclipse.xtext.ui.editor.model.ITokenTypeToPartitionTypeMapper;
+import org.eclipse.xtext.ui.editor.occurrences.IOccurrenceComputer;
 import org.eclipse.xtext.ui.editor.outline.impl.OutlineFilterAndSorter.IComparator;
 import org.eclipse.xtext.ui.editor.outline.quickoutline.QuickOutlineFilterAndSorter;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
@@ -70,13 +79,15 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 import org.eclipse.xtext.ui.editor.toggleComments.ISingleLineCommentHelper;
 import org.eclipse.xtext.ui.editor.toggleComments.ToggleSLCommentAction;
+import org.eclipse.xtext.ui.refactoring.IReferenceUpdater;
 import org.eclipse.xtext.ui.refactoring.IRenameStrategy;
 import org.eclipse.xtext.ui.refactoring.impl.RenameElementProcessor;
+import org.eclipse.xtext.ui.refactoring.ui.IRenameElementHandler;
 import org.eclipse.xtext.ui.resource.IResourceUIServiceProvider;
 import org.eclipse.xtext.xbase.ui.editor.XbaseEditor;
+import org.eclipse.xtext.xbase.ui.hover.XbaseDeclarativeHoverSignatureProvider;
 import org.eclipse.xtext.xbase.ui.jvmmodel.navigation.DerivedMemberAwareEditorOpener;
 import org.eclipse.xtext.xbase.ui.launching.JavaElementDelegate;
-import org.eclipse.xtext.xbase.ui.launching.JavaElementDelegateJunitLaunch;
 import org.jnario.spec.ui.doc.SpecHoverProvider;
 import org.jnario.spec.ui.editor.SpecFoldingRegionProvider;
 import org.jnario.spec.ui.generator.SpecGenerator;
@@ -96,7 +107,36 @@ public class SpecUiModule extends org.jnario.spec.ui.AbstractSpecUiModule {
 		super(plugin);
 	}
 	
+	@Override
+	public Class<? extends IOccurrenceComputer> bindIOccurrenceComputer() {
+		return OccurrenceComputer.class;
+	}
+	
+	@Override
+	public Class<? extends IRenameElementHandler> bindIRenameElementHandler() {
+		return XtendRenameElementHandler.class;
+	}
+	
+	@Override
+	public Class<? extends IReferenceUpdater> bindIReferenceUpdater() {
+		return XtendReferenceUpdater.class;
+	}
 
+	public Class<? extends XbaseDeclarativeHoverSignatureProvider> bindXbaseDeclarativeHoverSignatureProvider(){
+		return XtendHoverSignatureProvider.class;
+	}
+	
+	@Override
+	public Class<? extends IEObjectHoverDocumentationProvider> bindIEObjectHoverDocumentationProvider(){
+		return XtendHoverDocumentationProvider.class;
+	}
+
+	
+	@Override
+	public Class<? extends ITemplateProposalProvider> bindITemplateProposalProvider() {
+		return TemplateProposalProvider.class;
+	}
+	
 	public void configureDebugMode(Binder binder) {
 		if (Boolean.getBoolean("org.eclipse.xtext.xtend.debug")) {
 			binder.bindConstant().annotatedWith(Names.named(AbstractEditStrategy.DEBUG)).to(true);

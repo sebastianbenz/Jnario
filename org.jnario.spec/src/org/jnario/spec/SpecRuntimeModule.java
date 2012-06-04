@@ -13,6 +13,7 @@ package org.jnario.spec;
 import org.eclipse.xtend.core.featurecalls.XtendIdentifiableSimpleNameProvider;
 import org.eclipse.xtend.core.jvmmodel.DispatchUtil;
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
+import org.eclipse.xtend.core.linking.XtendLinkingDiagnosticMessageProvider;
 import org.eclipse.xtend.core.naming.XtendQualifiedNameProvider;
 import org.eclipse.xtend.core.resource.XtendResource;
 import org.eclipse.xtend.core.resource.XtendResourceDescriptionStrategy;
@@ -25,6 +26,7 @@ import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.generator.OutputConfigurationProvider;
 import org.eclipse.xtext.linking.ILinker;
+import org.eclipse.xtext.linking.ILinkingDiagnosticMessageProvider;
 import org.eclipse.xtext.linking.ILinkingService;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
@@ -67,6 +69,11 @@ import com.google.inject.name.Names;
 @SuppressWarnings("restriction")
 public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule {
 
+	
+	public Class<? extends ILinkingDiagnosticMessageProvider> bindILinkingDiagnosticMessageProvider() {
+		return XtendLinkingDiagnosticMessageProvider.class;
+	}
+	
 	public Class<? extends DispatchUtil> bindDispatchUtil(){
 		return JnarioDispatchUtil.class;
 	}
