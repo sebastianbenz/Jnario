@@ -19,7 +19,7 @@ describe "Using Should"{
  
 	/*
 	 * `should` passes if the result of the left expression is 
-	 * equal to the result of the right expression. You can use `not` to 
+	 * equal to the result of the right expression. You can use `not` to  
 	 * assert that the expressions have different results. There is also 
 	 * a short cut available: `=>` which has the same effect as `should be`.
 	 */
@@ -32,7 +32,7 @@ describe "Using Should"{
 		
 		// types
 		"a string" => typeof(String)
-		
+
 		// strings
 		"something" should contain "thing"
 		"something" should not contain "any"
@@ -50,6 +50,11 @@ describe "Using Should"{
 	  1 + 1 should be 1 throws AssertionError
 	  1 + 1 should not be 1 throws AssertionError
 	  1 + 1 => 1 throws AssertionError
+	  method() throws IllegalArgumentException
+	}
+	
+	def void method(){
+		throw new IllegalArgumentException
 	}
  
 	/*

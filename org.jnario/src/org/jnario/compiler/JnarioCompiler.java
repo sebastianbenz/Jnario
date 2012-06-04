@@ -82,7 +82,7 @@ public class JnarioCompiler extends XtendCompiler {
 			return;
 		}
 		b.newLine().append("try{").increaseIndentation();
-		toJavaStatement(should.getExpression(), b, true);
+		toJavaStatement(should.getExpression(), b, false);
 		b.newLine()
 				.append(assertType(should))
 				.append(".fail(\"Expected \" + ")

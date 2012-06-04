@@ -1,11 +1,8 @@
 package org.jnario.spec.tests.integration;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
-import org.eclipse.xtext.xbase.lib.IntegerExtensions;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matcher;
@@ -41,8 +38,7 @@ public class UsingShouldSpec {
     Assert.assertTrue("\nExpected // equality\n\t\ttrue should be true but"
      + "\n     // equality\n\t\ttrue should be true is " + null + "\n", _should_be);
     
-    int _plus = IntegerExtensions.operator_plus(
-      1, 1);
+    int _plus = (1 + 1);
     boolean _should_be_1 = Should.should_be(_plus, 1);
     Assert.assertFalse("\nExpected 1 + 1 should not be 1 but"
      + "\n     1 + 1 is " + _plus + "\n", _should_be_1);
@@ -52,13 +48,12 @@ public class UsingShouldSpec {
     Assert.assertFalse("\nExpected \"something\" should not be null but"
      + "\n     \"something\" should not be null is " + null + "\n", _should_be_2);
     
-    int _plus_1 = IntegerExtensions.operator_plus(
-      1, 1);
-    boolean _doubleArrow = ObjectExtensions.<Integer>operator_doubleArrow(Integer.valueOf(_plus_1), Integer.valueOf(2));
+    int _plus_1 = (1 + 1);
+    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_plus_1), Integer.valueOf(2));
     Assert.assertTrue("\nExpected 1 + 1 => 2 but"
      + "\n     1 + 1 is " + Integer.valueOf(_plus_1) + "\n", _doubleArrow);
     
-    boolean _doubleArrow_1 = ObjectExtensions.<Serializable>operator_doubleArrow(
+    boolean _doubleArrow_1 = Should.operator_doubleArrow(
       "a string", String.class);
     Assert.assertTrue("\nExpected // types\n\t\t\"a string\" => typeof(String) but"
      + "\n     // types\n\t\t\"a string\" => typeof(String) is " + _doubleArrow_1 + "\n", _doubleArrow_1);
@@ -94,8 +89,7 @@ public class UsingShouldSpec {
   @Order(99)
   public void orNotToPass() throws Exception {
     try{
-      int _plus = IntegerExtensions.operator_plus(
-        1, 1);
+      int _plus = (1 + 1);
       boolean _should_be = Should.should_be(_plus, 1);
       Assert.assertTrue("\nExpected 1 + 1 should be 1 but"
        + "\n     1 + 1 is " + _plus + "\n", _should_be);
@@ -106,8 +100,7 @@ public class UsingShouldSpec {
       // expected
     }
     try{
-      int _plus_1 = IntegerExtensions.operator_plus(
-        1, 1);
+      int _plus_1 = (1 + 1);
       boolean _should_be_1 = Should.should_be(_plus_1, 1);
       Assert.assertFalse("\nExpected 1 + 1 should not be 1 but"
        + "\n     1 + 1 is " + _plus_1 + "\n", _should_be_1);
@@ -118,15 +111,20 @@ public class UsingShouldSpec {
       // expected
     }
     try{
-      int _plus_2 = IntegerExtensions.operator_plus(
-        1, 1);
-      boolean _doubleArrow = ObjectExtensions.<Integer>operator_doubleArrow(Integer.valueOf(_plus_2), Integer.valueOf(1));
+      int _plus_2 = (1 + 1);
+      boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_plus_2), Integer.valueOf(1));
       Assert.assertTrue("\nExpected 1 + 1 => 1 but"
        + "\n     1 + 1 is " + Integer.valueOf(_plus_2) + "\n", _doubleArrow);
       
       Assert.fail("Expected " + AssertionError.class.getName() + " in \n     1 + 1 => 1\n with:"
        + "\n     1 + 1 is " + Integer.valueOf(_plus_2));
     }catch(AssertionError e){
+      // expected
+    }
+    try{
+      this.method();
+      Assert.fail("Expected " + IllegalArgumentException.class.getName() + " in \n     method()\n with:");
+    }catch(IllegalArgumentException e){
       // expected
     }
   }
@@ -141,8 +139,8 @@ public class UsingShouldSpec {
   public void whyDidItFail() throws Exception {
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
-          int _plus = IntegerExtensions.operator_plus(1, 1);
-          boolean _doubleArrow = ObjectExtensions.<Integer>operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(1));
+          int _plus = (1 + 1);
+          boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(1));
           Assert.assertTrue("\nExpected 1 + 1 => 1 but"
            + "\n     1 + 1 is " + Integer.valueOf(_plus) + "\n", _doubleArrow);
           
@@ -179,7 +177,7 @@ public class UsingShouldSpec {
     final String y = "world";
     final Procedure1<Boolean> _function_2 = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
-          boolean _doubleArrow = ObjectExtensions.<String>operator_doubleArrow(x, y);
+          boolean _doubleArrow = Should.operator_doubleArrow(x, y);
           Assert.assertTrue("\nExpected x => y but"
            + "\n     x is " + "\"" + x + "\""
            + "\n     y is " + "\"" + y + "\"" + "\n", _doubleArrow);
@@ -211,14 +209,14 @@ public class UsingShouldSpec {
   @Order(99)
   public void combiningHamcrestAndShould() throws Exception {
     Matcher<String> _startsWith = Matchers.startsWith("h");
-    boolean _doubleArrow = ObjectExtensions.<Object>operator_doubleArrow(
+    boolean _doubleArrow = Should.operator_doubleArrow(
       "hello", _startsWith);
     Assert.assertTrue("\nExpected \"hello\" => startsWith(\"h\") but"
      + "\n     startsWith(\"h\") is " + _startsWith + "\n", _doubleArrow);
     
     ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("red", "green");
     Matcher<Iterable<String>> _hasItem = Matchers.<String>hasItem("red");
-    boolean _doubleArrow_1 = ObjectExtensions.<Object>operator_doubleArrow(_newArrayList, _hasItem);
+    boolean _doubleArrow_1 = Should.operator_doubleArrow(_newArrayList, _hasItem);
     Assert.assertTrue("\nExpected newArrayList(\"red\", \"green\") => hasItem(\"red\") but"
      + "\n     newArrayList(\"red\", \"green\") is " + _newArrayList
      + "\n     hasItem(\"red\") is " + _hasItem + "\n", _doubleArrow_1);
@@ -229,5 +227,10 @@ public class UsingShouldSpec {
     Assert.assertTrue("\nExpected \"hello\" should be equalTo(\"hello\") but"
      + "\n     equalTo(\"hello\") is " + _equalTo + "\n", _should_be);
     
+  }
+  
+  public void method() {
+    IllegalArgumentException _illegalArgumentException = new IllegalArgumentException();
+    throw _illegalArgumentException;
   }
 }
