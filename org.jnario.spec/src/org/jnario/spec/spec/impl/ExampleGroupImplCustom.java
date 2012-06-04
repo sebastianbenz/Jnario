@@ -9,6 +9,8 @@ package org.jnario.spec.spec.impl;
 
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 import org.jnario.spec.spec.ExampleGroup;
 
 /**
@@ -39,4 +41,11 @@ public class ExampleGroupImplCustom extends org.jnario.spec.spec.impl.ExampleGro
 		return parent.getPackageName();
 	}
 	
+	@Override
+	public EList<XAnnotation> getAnnotations() {
+		if (getAnnotationInfo()!=null) {
+			return getAnnotationInfo().getAnnotations();
+		}
+		return super.getAnnotations();
+	}
 }
