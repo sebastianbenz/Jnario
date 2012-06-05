@@ -9,6 +9,7 @@ package org.jnario;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend.core.xtend.XtendMember;
+import org.eclipse.xtext.xbase.XExpression;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,7 +29,7 @@ import org.eclipse.xtend.core.xtend.XtendMember;
  * @model
  * @generated
  */
-public interface ExampleTable extends XtendMember {
+public interface ExampleTable extends XtendMember, XExpression {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->

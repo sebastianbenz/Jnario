@@ -12,14 +12,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.jnario.*;
 import org.jnario.Assertion;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
 import org.jnario.JnarioFactory;
 import org.jnario.JnarioPackage;
-import org.jnario.Matcher;
 import org.jnario.Should;
 import org.jnario.ShouldThrow;
 
@@ -70,7 +68,6 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory {
 			case JnarioPackage.EXAMPLE_TABLE: return createExampleTable();
 			case JnarioPackage.EXAMPLE_ROW: return createExampleRow();
 			case JnarioPackage.ASSERTION: return createAssertion();
-			case JnarioPackage.MATCHER: return createMatcher();
 			case JnarioPackage.EXAMPLE_COLUMN: return createExampleColumn();
 			case JnarioPackage.SHOULD: return createShould();
 			case JnarioPackage.SHOULD_THROW: return createShouldThrow();
@@ -107,16 +104,6 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory {
 	public Assertion createAssertion() {
 		AssertionImpl assertion = new AssertionImpl();
 		return assertion;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Matcher createMatcher() {
-		MatcherImpl matcher = new MatcherImpl();
-		return matcher;
 	}
 
 	/**

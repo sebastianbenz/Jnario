@@ -16,13 +16,11 @@ import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XBinaryOperation;
 import org.eclipse.xtext.xbase.XExpression;
-import org.jnario.*;
 import org.jnario.Assertion;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
 import org.jnario.JnarioPackage;
-import org.jnario.Matcher;
 import org.jnario.Should;
 import org.jnario.ShouldThrow;
 
@@ -93,10 +91,6 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseAssertion(Assertion object) {
 				return createAssertionAdapter();
-			}
-			@Override
-			public Adapter caseMatcher(Matcher object) {
-				return createMatcherAdapter();
 			}
 			@Override
 			public Adapter caseExampleColumn(ExampleColumn object) {
@@ -193,20 +187,6 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAssertionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.jnario.Matcher <em>Matcher</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.jnario.Matcher
-	 * @generated
-	 */
-	public Adapter createMatcherAdapter() {
 		return null;
 	}
 

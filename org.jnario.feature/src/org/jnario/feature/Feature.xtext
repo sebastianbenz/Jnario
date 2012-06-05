@@ -172,8 +172,7 @@ XPrimaryExpression returns xbase::XExpression:
 	XReturnExpression |
 	XTryCatchFinallyExpression |
 	XParenthesizedExpression |
-	Assertion |
-	Matcher;
+	Assertion;
 
 XRelationalExpression returns xbase::XExpression:
 	XOtherOperatorExpression
@@ -193,17 +192,6 @@ Assertion:
 	{Assertion}
 	'assert' expression=XExpression;
  
-Matcher:
-	'#' closure=MatcherClosure
-;
-
-MatcherClosure returns xbase::XExpression:
-	{xbase::XClosure} 
-	'[' 
-		=>(declaredFormalParameters+=JvmFormalParameter explicitSyntax?=PIPE)? 
-		expression=XExpressionInClosure 
-	']';
-
 terminal BACKGROUND_TEXT: "Background:" MNL;
 terminal SCENARIO_TEXT: "Scenario:" MNL;
 terminal FEATURE_TEXT: "Feature" COLON -> (BACKGROUND_TEXT|SCENARIO_TEXT);

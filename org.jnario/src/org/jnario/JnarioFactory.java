@@ -54,15 +54,6 @@ public interface JnarioFactory extends EFactory {
 	Assertion createAssertion();
 
 	/**
-	 * Returns a new object of class '<em>Matcher</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Matcher</em>'.
-	 * @generated
-	 */
-	Matcher createMatcher();
-
-	/**
 	 * Returns a new object of class '<em>Example Column</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

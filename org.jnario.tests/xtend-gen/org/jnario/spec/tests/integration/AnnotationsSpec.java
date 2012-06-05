@@ -31,6 +31,14 @@ public class AnnotationsSpec {
   }
   
   @Test
+  @Named("should support method annotations for \\\'contexts\\\'")
+  @Order(99)
+  public void shouldSupportMethodAnnotationsForContexts() throws Exception {
+    final String spec = "\r\n\t\t\tpackage bootstrap\r\n\t\t\t\r\n\t\t\timport com.google.inject.Singleton\r\n\t\t\t\r\n\t\t\tdescribe \"Annotations\" {\r\n\t\t\t\r\n\t\t\t\t@Singleton\r\n\t\t\t\tcontext \"Context\"{\r\n\t\t\t\t\tfact \"example\"{\r\n\t\t\t\t\t\tassert typeof(AnnotationsContextSpec).isAnnotationPresent(typeof(Singleton))\r\n\t\t\t\t\t} \r\n\t\t\t\t}\t\t\t\r\n\t\t\t}\r\n\t\t";
+    SpecExecutor.executesSuccessfully(spec);
+  }
+  
+  @Test
   @Named("should support annotations for \\\'fields\\\'")
   @Order(99)
   public void shouldSupportAnnotationsForFields() throws Exception {

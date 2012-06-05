@@ -9,7 +9,6 @@ package org.jnario.scoping;
 
 import java.util.Collection;
 
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.scoping.featurecalls.StaticImplicitMethodsFeatureForTypeProvider.ExtensionClassNameProvider;
 import org.hamcrest.CoreMatchers;
 import org.jnario.lib.Each;
@@ -19,7 +18,6 @@ import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
 import org.jnario.lib.StringConversions;
 
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Multimap;
 import com.google.inject.Singleton;
 

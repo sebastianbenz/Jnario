@@ -192,34 +192,6 @@ public interface JnarioPackage extends EPackage {
 	int ASSERTION_FEATURE_COUNT = XbasePackage.XEXPRESSION_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.jnario.impl.MatcherImpl <em>Matcher</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.jnario.impl.MatcherImpl
-	 * @see org.jnario.impl.JnarioPackageImpl#getMatcher()
-	 * @generated
-	 */
-	int MATCHER = 3;
-
-	/**
-	 * The feature id for the '<em><b>Closure</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MATCHER__CLOSURE = XbasePackage.XEXPRESSION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Matcher</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MATCHER_FEATURE_COUNT = XbasePackage.XEXPRESSION_FEATURE_COUNT + 1;
-
-	/**
 	 * The meta object id for the '{@link org.jnario.impl.ExampleColumnImpl <em>Example Column</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -227,7 +199,7 @@ public interface JnarioPackage extends EPackage {
 	 * @see org.jnario.impl.JnarioPackageImpl#getExampleColumn()
 	 * @generated
 	 */
-	int EXAMPLE_COLUMN = 4;
+	int EXAMPLE_COLUMN = 3;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -346,7 +318,7 @@ public interface JnarioPackage extends EPackage {
 	 * @see org.jnario.impl.JnarioPackageImpl#getShould()
 	 * @generated
 	 */
-	int SHOULD = 5;
+	int SHOULD = 4;
 
 	/**
 	 * The feature id for the '<em><b>Feature</b></em>' reference.
@@ -403,6 +375,15 @@ public interface JnarioPackage extends EPackage {
 	int SHOULD__IMPLICIT_FIRST_ARGUMENT = XbasePackage.XBINARY_OPERATION__IMPLICIT_FIRST_ARGUMENT;
 
 	/**
+	 * The feature id for the '<em><b>Actual Type Arguments</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHOULD__ACTUAL_TYPE_ARGUMENTS = XbasePackage.XBINARY_OPERATION__ACTUAL_TYPE_ARGUMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Left Operand</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -447,7 +428,7 @@ public interface JnarioPackage extends EPackage {
 	 * @see org.jnario.impl.JnarioPackageImpl#getShouldThrow()
 	 * @generated
 	 */
-	int SHOULD_THROW = 6;
+	int SHOULD_THROW = 5;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -572,27 +553,6 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAssertion_Expression();
-
-	/**
-	 * Returns the meta object for class '{@link org.jnario.Matcher <em>Matcher</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Matcher</em>'.
-	 * @see org.jnario.Matcher
-	 * @generated
-	 */
-	EClass getMatcher();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.jnario.Matcher#getClosure <em>Closure</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Closure</em>'.
-	 * @see org.jnario.Matcher#getClosure()
-	 * @see #getMatcher()
-	 * @generated
-	 */
-	EReference getMatcher_Closure();
 
 	/**
 	 * Returns the meta object for class '{@link org.jnario.ExampleColumn <em>Example Column</em>}'.
@@ -778,24 +738,6 @@ public interface JnarioPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ASSERTION__EXPRESSION = eINSTANCE.getAssertion_Expression();
-
-		/**
-		 * The meta object literal for the '{@link org.jnario.impl.MatcherImpl <em>Matcher</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.jnario.impl.MatcherImpl
-		 * @see org.jnario.impl.JnarioPackageImpl#getMatcher()
-		 * @generated
-		 */
-		EClass MATCHER = eINSTANCE.getMatcher();
-
-		/**
-		 * The meta object literal for the '<em><b>Closure</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference MATCHER__CLOSURE = eINSTANCE.getMatcher_Closure();
 
 		/**
 		 * The meta object literal for the '{@link org.jnario.impl.ExampleColumnImpl <em>Example Column</em>}' class.

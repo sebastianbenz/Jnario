@@ -27,9 +27,9 @@ import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XBinaryOperation;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.util.XExpressionHelper;
 import org.jnario.Assertion;
-import org.jnario.Matcher;
 import org.jnario.Should;
 import org.jnario.ShouldThrow;
 import org.junit.Assert;
@@ -48,9 +48,7 @@ public class JnarioCompiler extends XtendCompiler {
 	@Override
 	public void internalToConvertedExpression(XExpression obj,
 			ITreeAppendable appendable) {
-		if (obj instanceof Matcher) {
-			_toJavaExpression((Matcher) obj, appendable);
-		} else if (obj instanceof Assertion) {
+		if (obj instanceof Assertion) {
 			_toJavaExpression((Assertion) obj, appendable);
 		} else if (obj instanceof Should) {
 			_toJavaExpression((Should) obj, appendable);
@@ -66,8 +64,6 @@ public class JnarioCompiler extends XtendCompiler {
 			ITreeAppendable appendable, boolean isReferenced) {
 		if (obj instanceof Assertion) {
 			_toJavaStatement((Assertion) obj, appendable, isReferenced);
-		} else if (obj instanceof Matcher) {
-			_toJavaStatement((Matcher) obj, appendable, isReferenced);
 		} else if (obj instanceof Should) {
 			_toJavaStatement((Should) obj, appendable, isReferenced);
 		} else if (obj instanceof ShouldThrow) {
@@ -130,30 +126,6 @@ public class JnarioCompiler extends XtendCompiler {
 
 	public void _toJavaExpression(ShouldThrow should, ITreeAppendable b) {
 		b.append("null");
-	}
-
-	public void _toJavaExpression(Matcher matcher, ITreeAppendable b) {
-		if (matcher.getClosure() == null) {
-			return;
-		}
-		b.append(org.jnario.lib.Should.class.getName());
-		b.append(".matches(\"");
-		describe(matcher, b);
-		b.append("\", ");
-		toJavaExpression(matcher.getClosure(), b);
-		b.append(")");
-	}
-
-	public void _toJavaStatement(Matcher matcher, ITreeAppendable b,
-			boolean isReferenced) {
-		if (matcher.getClosure() == null) {
-			return;
-		}
-		toJavaStatement(matcher.getClosure(), b, isReferenced);
-	}
-
-	private void describe(Matcher matcher, ITreeAppendable b) {
-		b.append(serialize(matcher.getClosure()));
 	}
 
 	public void _toJavaStatement(Assertion assertion, ITreeAppendable b,
@@ -375,10 +347,20 @@ public class JnarioCompiler extends XtendCompiler {
 	@Override
 	protected void _toJavaStatement(XAbstractFeatureCall expr,
 			ITreeAppendable b, boolean isReferenced) {
-		if(isDoubleArrow(expr)){
-			_toShouldExpression(expr, b, false);
-		}else{
+		if(!isDoubleArrow(expr)){
 			super._toJavaStatement(expr, b, isReferenced);
+			return;
+		}
+		JvmTypeReference type = getTypeProvider().getType(expr);
+		if(type == null){
+			super._toJavaStatement(expr, b, isReferenced);
+			return;
+		}
+		if(getTypeConformanceComputer().isConformant(type, getTypeReferences().getTypeForName(Procedure1.class, expr))){
+			super._toJavaStatement(expr, b, isReferenced);
+			return;
+		}else{
+			_toShouldExpression(expr, b, false);
 		}
 	}
 

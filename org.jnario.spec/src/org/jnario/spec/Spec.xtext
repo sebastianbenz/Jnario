@@ -90,8 +90,7 @@ XPrimaryExpression returns xbase::XExpression:
 	XReturnExpression |
 	XTryCatchFinallyExpression |
 	XParenthesizedExpression |
-	Assertion |
-	Matcher;
+	Assertion;
 
 
 XRelationalExpression returns xbase::XExpression:
@@ -111,18 +110,6 @@ Assertion returns xbase::XExpression:
 	{Assertion}
 	'assert' expression=XExpression;
 	
-Matcher:
-	'#' closure=MatcherClosure
-;
-
-MatcherClosure returns xbase::XExpression:
-	{xbase::XClosure} 
-	'[' 
-		=>(declaredFormalParameters+=JvmFormalParameter explicitSyntax?='|')? 
-		expression=XExpressionInClosure 
-	']';
-
-
 ExampleColumn: 
 	type=JvmTypeReference? name=ValidID '|';
 

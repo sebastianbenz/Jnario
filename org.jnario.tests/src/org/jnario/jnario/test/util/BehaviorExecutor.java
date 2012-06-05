@@ -64,6 +64,7 @@ import com.google.inject.Inject;
 @SuppressWarnings("restriction")
 public abstract class BehaviorExecutor {
 
+	@SuppressWarnings("serial")
 	public static class CompositeResult extends Result{
 
 		private List<Result> children = newArrayList();

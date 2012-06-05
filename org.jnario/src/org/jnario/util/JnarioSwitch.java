@@ -16,13 +16,11 @@ import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XBinaryOperation;
 import org.eclipse.xtext.xbase.XExpression;
-import org.jnario.*;
 import org.jnario.Assertion;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
 import org.jnario.JnarioPackage;
-import org.jnario.Matcher;
 import org.jnario.Should;
 import org.jnario.ShouldThrow;
 
@@ -104,6 +102,7 @@ public class JnarioSwitch<T> {
 				ExampleTable exampleTable = (ExampleTable)theEObject;
 				T result = caseExampleTable(exampleTable);
 				if (result == null) result = caseXtendMember(exampleTable);
+				if (result == null) result = caseXExpression(exampleTable);
 				if (result == null) result = caseXtendAnnotationTarget(exampleTable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -118,13 +117,6 @@ public class JnarioSwitch<T> {
 				Assertion assertion = (Assertion)theEObject;
 				T result = caseAssertion(assertion);
 				if (result == null) result = caseXExpression(assertion);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case JnarioPackage.MATCHER: {
-				Matcher matcher = (Matcher)theEObject;
-				T result = caseMatcher(matcher);
-				if (result == null) result = caseXExpression(matcher);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -199,21 +191,6 @@ public class JnarioSwitch<T> {
 	 * @generated
 	 */
 	public T caseAssertion(Assertion object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Matcher</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Matcher</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseMatcher(Matcher object) {
 		return null;
 	}
 

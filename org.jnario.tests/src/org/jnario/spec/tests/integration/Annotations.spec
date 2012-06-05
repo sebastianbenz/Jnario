@@ -57,6 +57,25 @@ describe "Annotations" {
 		spec.executesSuccessfully
 	}
 	
+	fact "should support method annotations for 'contexts'"{
+		val spec = '
+			package bootstrap
+			
+			import com.google.inject.Singleton
+			
+			describe "Annotations" {
+			
+				@Singleton
+				context "Context"{
+					fact "example"{
+						assert typeof(AnnotationsContextSpec).isAnnotationPresent(typeof(Singleton))
+					} 
+				}			
+			}
+		'
+		spec.executesSuccessfully
+	}
+	
 	fact "should support annotations for 'fields'"{
 		val spec = '
 			package bootstrap

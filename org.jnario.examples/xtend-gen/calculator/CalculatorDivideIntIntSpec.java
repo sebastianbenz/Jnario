@@ -35,7 +35,7 @@ public class CalculatorDivideIntIntSpec extends CalculatorSpec {
   @Order(99)
   public void onDivisionByZero() throws Exception {
     try{
-      int _divide = this.subject.divide(1, 0);
+      this.subject.divide(1, 0);
       Assert.fail("Expected " + ArithmeticException.class.getName() + " in \n     subject.divide(1, 0)\n with:"
        + "\n     subject is " + this.subject);
     }catch(ArithmeticException e){

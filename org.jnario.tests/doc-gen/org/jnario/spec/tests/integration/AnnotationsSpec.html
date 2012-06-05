@@ -68,6 +68,25 @@ val spec = '
 '
 spec.executesSuccessfully</pre>
 </p>
+</li><li><p  id="should_support_method_annotations_for__contexts_"><strong>should support method annotations for 'contexts'</strong>
+<pre class="prettyprint lang-spec">
+val spec = '
+	package bootstrap
+	
+	import com.google.inject.Singleton
+	
+	describe "Annotations" {
+	
+		@Singleton
+		context "Context"{
+			fact "example"{
+				assert typeof(AnnotationsContextSpec).isAnnotationPresent(typeof(Singleton))
+			} 
+		}			
+	}
+'
+spec.executesSuccessfully</pre>
+</p>
 </li><li><p  id="should_support_annotations_for__fields_"><strong>should support annotations for 'fields'</strong>
 <pre class="prettyprint lang-spec">
 val spec = '

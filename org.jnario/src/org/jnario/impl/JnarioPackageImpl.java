@@ -21,7 +21,6 @@ import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
 import org.jnario.JnarioFactory;
 import org.jnario.JnarioPackage;
-import org.jnario.Matcher;
 import org.jnario.Should;
 import org.jnario.ShouldThrow;
 
@@ -52,13 +51,6 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 	 * @generated
 	 */
 	private EClass assertionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass matcherEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -231,24 +223,6 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getMatcher() {
-		return matcherEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getMatcher_Closure() {
-		return (EReference)matcherEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getExampleColumn() {
 		return exampleColumnEClass;
 	}
@@ -356,9 +330,6 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		assertionEClass = createEClass(ASSERTION);
 		createEReference(assertionEClass, ASSERTION__EXPRESSION);
 
-		matcherEClass = createEClass(MATCHER);
-		createEReference(matcherEClass, MATCHER__CLOSURE);
-
 		exampleColumnEClass = createEClass(EXAMPLE_COLUMN);
 		createEReference(exampleColumnEClass, EXAMPLE_COLUMN__TABLE);
 		createEReference(exampleColumnEClass, EXAMPLE_COLUMN__CELLS);
@@ -405,8 +376,8 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 
 		// Add supertypes to classes
 		exampleTableEClass.getESuperTypes().add(theXtendPackage.getXtendMember());
+		exampleTableEClass.getESuperTypes().add(theXbasePackage.getXExpression());
 		assertionEClass.getESuperTypes().add(theXbasePackage.getXExpression());
-		matcherEClass.getESuperTypes().add(theXbasePackage.getXExpression());
 		exampleColumnEClass.getESuperTypes().add(theXtendPackage.getXtendField());
 		shouldEClass.getESuperTypes().add(theXbasePackage.getXBinaryOperation());
 		shouldThrowEClass.getESuperTypes().add(theXbasePackage.getXExpression());
@@ -425,9 +396,6 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 
 		initEClass(assertionEClass, Assertion.class, "Assertion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAssertion_Expression(), theXbasePackage.getXExpression(), null, "expression", null, 0, 1, Assertion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(matcherEClass, Matcher.class, "Matcher", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getMatcher_Closure(), theXbasePackage.getXExpression(), null, "closure", null, 0, 1, Matcher.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(exampleColumnEClass, ExampleColumn.class, "ExampleColumn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getExampleColumn_Table(), this.getExampleTable(), this.getExampleTable_Columns(), "table", null, 0, 1, ExampleColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

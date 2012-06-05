@@ -1072,17 +1072,16 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cXTryCatchFinallyExpressionParserRuleCall_11 = (RuleCall)cAlternatives.eContents().get(11);
 		private final RuleCall cXParenthesizedExpressionParserRuleCall_12 = (RuleCall)cAlternatives.eContents().get(12);
 		private final RuleCall cAssertionParserRuleCall_13 = (RuleCall)cAlternatives.eContents().get(13);
-		private final RuleCall cMatcherParserRuleCall_14 = (RuleCall)cAlternatives.eContents().get(14);
 		
 		//XPrimaryExpression returns xbase::XExpression:
 		//	XConstructorCall | XBlockExpression | XSwitchExpression | XFeatureCall | XLiteral | XIfExpression | XForLoopExpression
 		//	| XWhileExpression | XDoWhileExpression | XThrowExpression | XReturnExpression | XTryCatchFinallyExpression |
-		//	XParenthesizedExpression | Assertion | Matcher;
+		//	XParenthesizedExpression | Assertion;
 		public ParserRule getRule() { return rule; }
 
 		//XConstructorCall | XBlockExpression | XSwitchExpression | XFeatureCall | XLiteral | XIfExpression | XForLoopExpression |
 		//XWhileExpression | XDoWhileExpression | XThrowExpression | XReturnExpression | XTryCatchFinallyExpression |
-		//XParenthesizedExpression | Assertion | Matcher
+		//XParenthesizedExpression | Assertion
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//XConstructorCall
@@ -1126,9 +1125,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 
 		//Assertion
 		public RuleCall getAssertionParserRuleCall_13() { return cAssertionParserRuleCall_13; }
-
-		//Matcher
-		public RuleCall getMatcherParserRuleCall_14() { return cMatcherParserRuleCall_14; }
 	}
 
 	public class XRelationalExpressionElements extends AbstractParserRuleElementFinder {
@@ -1360,88 +1356,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getExpressionXExpressionParserRuleCall_2_0() { return cExpressionXExpressionParserRuleCall_2_0; }
 	}
 
-	public class MatcherElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Matcher");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cNumberSignKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cClosureAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cClosureMatcherClosureParserRuleCall_1_0 = (RuleCall)cClosureAssignment_1.eContents().get(0);
-		
-		//Matcher:
-		//	"#" closure=MatcherClosure;
-		public ParserRule getRule() { return rule; }
-
-		//"#" closure=MatcherClosure
-		public Group getGroup() { return cGroup; }
-
-		//"#"
-		public Keyword getNumberSignKeyword_0() { return cNumberSignKeyword_0; }
-
-		//closure=MatcherClosure
-		public Assignment getClosureAssignment_1() { return cClosureAssignment_1; }
-
-		//MatcherClosure
-		public RuleCall getClosureMatcherClosureParserRuleCall_1_0() { return cClosureMatcherClosureParserRuleCall_1_0; }
-	}
-
-	public class MatcherClosureElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MatcherClosure");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cXClosureAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cLeftSquareBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Group cGroup_2_0 = (Group)cGroup_2.eContents().get(0);
-		private final Assignment cDeclaredFormalParametersAssignment_2_0_0 = (Assignment)cGroup_2_0.eContents().get(0);
-		private final RuleCall cDeclaredFormalParametersJvmFormalParameterParserRuleCall_2_0_0_0 = (RuleCall)cDeclaredFormalParametersAssignment_2_0_0.eContents().get(0);
-		private final Assignment cExplicitSyntaxAssignment_2_0_1 = (Assignment)cGroup_2_0.eContents().get(1);
-		private final Keyword cExplicitSyntaxVerticalLineKeyword_2_0_1_0 = (Keyword)cExplicitSyntaxAssignment_2_0_1.eContents().get(0);
-		private final Assignment cExpressionAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cExpressionXExpressionInClosureParserRuleCall_3_0 = (RuleCall)cExpressionAssignment_3.eContents().get(0);
-		private final Keyword cRightSquareBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		
-		//MatcherClosure returns xbase::XExpression:
-		//	{xbase::XClosure} "[" => (declaredFormalParameters+=JvmFormalParameter explicitSyntax?="|")?
-		//	expression=XExpressionInClosure "]";
-		public ParserRule getRule() { return rule; }
-
-		//{xbase::XClosure} "[" => (declaredFormalParameters+=JvmFormalParameter explicitSyntax?="|")?
-		//expression=XExpressionInClosure "]"
-		public Group getGroup() { return cGroup; }
-
-		//{xbase::XClosure}
-		public Action getXClosureAction_0() { return cXClosureAction_0; }
-
-		//"["
-		public Keyword getLeftSquareBracketKeyword_1() { return cLeftSquareBracketKeyword_1; }
-
-		//=> (declaredFormalParameters+=JvmFormalParameter explicitSyntax?="|")?
-		public Group getGroup_2() { return cGroup_2; }
-
-		//declaredFormalParameters+=JvmFormalParameter explicitSyntax?="|"
-		public Group getGroup_2_0() { return cGroup_2_0; }
-
-		//declaredFormalParameters+=JvmFormalParameter
-		public Assignment getDeclaredFormalParametersAssignment_2_0_0() { return cDeclaredFormalParametersAssignment_2_0_0; }
-
-		//JvmFormalParameter
-		public RuleCall getDeclaredFormalParametersJvmFormalParameterParserRuleCall_2_0_0_0() { return cDeclaredFormalParametersJvmFormalParameterParserRuleCall_2_0_0_0; }
-
-		//explicitSyntax?="|"
-		public Assignment getExplicitSyntaxAssignment_2_0_1() { return cExplicitSyntaxAssignment_2_0_1; }
-
-		//"|"
-		public Keyword getExplicitSyntaxVerticalLineKeyword_2_0_1_0() { return cExplicitSyntaxVerticalLineKeyword_2_0_1_0; }
-
-		//expression=XExpressionInClosure
-		public Assignment getExpressionAssignment_3() { return cExpressionAssignment_3; }
-
-		//XExpressionInClosure
-		public RuleCall getExpressionXExpressionInClosureParserRuleCall_3_0() { return cExpressionXExpressionInClosureParserRuleCall_3_0; }
-
-		//"]"
-		public Keyword getRightSquareBracketKeyword_4() { return cRightSquareBracketKeyword_4; }
-	}
-
 	public class ExampleColumnElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ExampleColumn");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -1521,8 +1435,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	private XRelationalExpressionElements pXRelationalExpression;
 	private ShouldElements pShould;
 	private AssertionElements pAssertion;
-	private MatcherElements pMatcher;
-	private MatcherClosureElements pMatcherClosure;
 	private ExampleColumnElements pExampleColumn;
 	private ExampleRowElements pExampleRow;
 	
@@ -1643,7 +1555,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//XPrimaryExpression returns xbase::XExpression:
 	//	XConstructorCall | XBlockExpression | XSwitchExpression | XFeatureCall | XLiteral | XIfExpression | XForLoopExpression
 	//	| XWhileExpression | XDoWhileExpression | XThrowExpression | XReturnExpression | XTryCatchFinallyExpression |
-	//	XParenthesizedExpression | Assertion | Matcher;
+	//	XParenthesizedExpression | Assertion;
 	public XPrimaryExpressionElements getXPrimaryExpressionAccess() {
 		return (pXPrimaryExpression != null) ? pXPrimaryExpression : (pXPrimaryExpression = new XPrimaryExpressionElements());
 	}
@@ -1684,27 +1596,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getAssertionRule() {
 		return getAssertionAccess().getRule();
-	}
-
-	//Matcher:
-	//	"#" closure=MatcherClosure;
-	public MatcherElements getMatcherAccess() {
-		return (pMatcher != null) ? pMatcher : (pMatcher = new MatcherElements());
-	}
-	
-	public ParserRule getMatcherRule() {
-		return getMatcherAccess().getRule();
-	}
-
-	//MatcherClosure returns xbase::XExpression:
-	//	{xbase::XClosure} "[" => (declaredFormalParameters+=JvmFormalParameter explicitSyntax?="|")?
-	//	expression=XExpressionInClosure "]";
-	public MatcherClosureElements getMatcherClosureAccess() {
-		return (pMatcherClosure != null) ? pMatcherClosure : (pMatcherClosure = new MatcherClosureElements());
-	}
-	
-	public ParserRule getMatcherClosureRule() {
-		return getMatcherClosureAccess().getRule();
 	}
 
 	//ExampleColumn:
@@ -2169,7 +2060,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//OpOther:
-	//	"->" | ".." | "=>" | ">" ">" => ">"? | "<" "<" => "<"? | "<" ">" | "?:" | "<=>";
+	//	"->" | ".." | "=>" | ">" (=> (">" ">") | ">") | "<" (=> ("<" "<") | "<") | "<>" | "?:" | "<=>";
 	public XbaseGrammarAccess.OpOtherElements getOpOtherAccess() {
 		return gaXtend.getOpOtherAccess();
 	}
@@ -2255,7 +2146,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//	OpSingleAssign) value=XAssignment | => ({XMemberFeatureCall.memberCallTarget=current} ("." | nullSafe?="?." |
 	//	spreading?="*.")) ("<" typeArguments+=JvmArgumentTypeReference ("," typeArguments+=JvmArgumentTypeReference)* ">")?
 	//	feature=[types::JvmIdentifiableElement|ValidID] (=> explicitOperationCall?="(" (memberCallArguments+=XShortClosure |
-	//	memberCallArguments+=XExpression ("," memberCallArguments+=XExpression)*)? ")")? => memberCallArguments+=XClosure?)*;
+	//	memberCallArguments+=XExpression ("," memberCallArguments+=XExpression)*)? ")")? memberCallArguments+=XClosure?)*;
 	public XbaseGrammarAccess.XMemberFeatureCallElements getXMemberFeatureCallAccess() {
 		return gaXtend.getXMemberFeatureCallAccess();
 	}
@@ -2275,8 +2166,8 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XClosure returns XExpression:
-	//	{XClosure} "[" => ((declaredFormalParameters+=JvmFormalParameter ("," declaredFormalParameters+=JvmFormalParameter)*)?
-	//	explicitSyntax?="|")? expression=XExpressionInClosure "]";
+	//	=> ({XClosure} "[") => ((declaredFormalParameters+=JvmFormalParameter (","
+	//	declaredFormalParameters+=JvmFormalParameter)*)? explicitSyntax?="|")? expression=XExpressionInClosure "]";
 	public XbaseGrammarAccess.XClosureElements getXClosureAccess() {
 		return gaXtend.getXClosureAccess();
 	}
@@ -2433,7 +2324,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//	{XFeatureCall} declaringType=[types::JvmDeclaredType|StaticQualifier]? ("<" typeArguments+=JvmArgumentTypeReference
 	//	("," typeArguments+=JvmArgumentTypeReference)* ">")? feature=[types::JvmIdentifiableElement|IdOrSuper] (=>
 	//	explicitOperationCall?="(" (featureCallArguments+=XShortClosure | featureCallArguments+=XExpression (","
-	//	featureCallArguments+=XExpression)*)? ")")? => featureCallArguments+=XClosure?;
+	//	featureCallArguments+=XExpression)*)? ")")? featureCallArguments+=XClosure?;
 	public XbaseGrammarAccess.XFeatureCallElements getXFeatureCallAccess() {
 		return gaXtend.getXFeatureCallAccess();
 	}
@@ -2468,7 +2359,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//XConstructorCall returns XExpression:
 	//	{XConstructorCall} "new" constructor=[types::JvmConstructor|QualifiedName] ("<"
 	//	typeArguments+=JvmArgumentTypeReference ("," typeArguments+=JvmArgumentTypeReference)* ">")? ("("
-	//	(arguments+=XShortClosure | arguments+=XExpression ("," arguments+=XExpression)*)? ")")? => arguments+=XClosure?;
+	//	(arguments+=XShortClosure | arguments+=XExpression ("," arguments+=XExpression)*)? ")")? arguments+=XClosure?;
 	public XbaseGrammarAccess.XConstructorCallElements getXConstructorCallAccess() {
 		return gaXtend.getXConstructorCallAccess();
 	}

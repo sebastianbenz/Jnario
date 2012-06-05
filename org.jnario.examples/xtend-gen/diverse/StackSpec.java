@@ -47,7 +47,7 @@ public class StackSpec {
   @Order(99)
   public void subjectPopThrowsEmptyStackException() throws Exception {
     try{
-      Object _pop = this.subject.pop();
+      this.subject.pop();
       Assert.fail("Expected " + EmptyStackException.class.getName() + " in \n     subject.pop()\n with:"
        + "\n     subject is " + this.subject);
     }catch(EmptyStackException e){

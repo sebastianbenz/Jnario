@@ -46,7 +46,7 @@ public class CalculatorAMinimalSpecSpec {
   @Order(99)
   public void subjectDivide100ShouldThrowArithmeticException() throws Exception {
     try{
-      int _divide = this.subject.divide(10, 0);
+      this.subject.divide(10, 0);
       Assert.fail("Expected " + ArithmeticException.class.getName() + " in \n     subject.divide(10, 0)\n with:"
        + "\n     subject is " + this.subject);
     }catch(ArithmeticException e){
