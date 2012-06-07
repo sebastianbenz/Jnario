@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
 import org.eclipse.xtend.core.scoping.ExtensionMethodsFeaturesProvider;
-import org.eclipse.xtend.core.scoping.XtendScopeProvider;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtext.EcoreUtil2;
@@ -35,6 +34,7 @@ import org.eclipse.xtext.xbase.XFeatureCall;
 import org.eclipse.xtext.xbase.XMemberFeatureCall;
 import org.eclipse.xtext.xbase.XbaseFactory;
 import org.eclipse.xtext.xbase.scoping.featurecalls.IJvmFeatureDescriptionProvider;
+import org.jnario.scoping.JnarioScopeProvider;
 import org.jnario.spec.naming.OperationNameProvider;
 import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.spec.spec.SpecPackage;
@@ -46,7 +46,7 @@ import com.google.inject.Provider;
  * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
-public class SpecScopeProvider extends XtendScopeProvider {
+public class SpecScopeProvider extends JnarioScopeProvider {
 	
 	private static final int DEFAULT_EXTENSION_PRIORITY = 45;
 	

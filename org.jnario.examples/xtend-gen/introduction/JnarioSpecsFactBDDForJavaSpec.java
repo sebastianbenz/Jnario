@@ -48,7 +48,7 @@ public class JnarioSpecsFactBDDForJavaSpec {
      + "\n     \"hello\" should be \"hello\" is " + null + "\n", _should_be);
     
     boolean _should_be_1 = Should.<Boolean>should_be(
-      true, false);
+      Boolean.valueOf(true), false);
     Assert.assertFalse("\nExpected true should not be false but"
      + "\n     true should not be false is " + null + "\n", _should_be_1);
     

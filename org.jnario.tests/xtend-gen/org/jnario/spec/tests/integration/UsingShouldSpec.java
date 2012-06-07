@@ -3,6 +3,7 @@ package org.jnario.spec.tests.integration;
 import java.util.ArrayList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matcher;
@@ -34,14 +35,14 @@ public class UsingShouldSpec {
   @Order(99)
   public void toPass() throws Exception {
     boolean _should_be = Should.<Boolean>should_be(
-      true, true);
+      Boolean.valueOf(true), true);
     Assert.assertTrue("\nExpected // equality\n\t\ttrue should be true but"
      + "\n     // equality\n\t\ttrue should be true is " + null + "\n", _should_be);
     
     int _plus = (1 + 1);
-    boolean _should_be_1 = Should.should_be(_plus, 1);
+    boolean _should_be_1 = Should.should_be(Integer.valueOf(_plus), Integer.valueOf(1));
     Assert.assertFalse("\nExpected 1 + 1 should not be 1 but"
-     + "\n     1 + 1 is " + _plus + "\n", _should_be_1);
+     + "\n     1 + 1 is " + Integer.valueOf(_plus) + "\n", _should_be_1);
     
     boolean _should_be_2 = Should.<String>should_be(
       "something", null);
@@ -78,6 +79,28 @@ public class UsingShouldSpec {
     Assert.assertFalse("\nExpected newArrayList(\"something\") should not contain \"something else\" but"
      + "\n     newArrayList(\"something\") is " + _newArrayList_1 + "\n", _should_contain_3);
     
+    final Procedure1<String> _function = new Procedure1<String>() {
+        public void apply(final String it) {
+          int _length = it.length();
+          boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_length), Integer.valueOf(11));
+          Assert.assertTrue("\nExpected length => 11 but"
+           + "\n     length is " + Integer.valueOf(_length) + "\n", _doubleArrow);
+          
+          boolean _should_startWith = Should.should_startWith(it, "hello");
+          Assert.assertTrue("\nExpected it should startWith(\"hello\") but"
+           + "\n     it is " + "\"" + it + "\"" + "\n", _should_startWith);
+          
+          boolean _should_endWith = Should.should_endWith(it, "world");
+          Assert.assertTrue("\nExpected it should endWith(\"world\") but"
+           + "\n     it is " + "\"" + it + "\"" + "\n", _should_endWith);
+          
+        }
+      };
+    final String greeting = ObjectExtensions.<String>operator_doubleArrow("hello world", _function);
+    boolean _doubleArrow_2 = Should.operator_doubleArrow(greeting, String.class);
+    Assert.assertTrue("\nExpected greeting => typeof(String) but"
+     + "\n     greeting is " + "\"" + greeting + "\"" + "\n", _doubleArrow_2);
+    
   }
   
   /**
@@ -90,23 +113,23 @@ public class UsingShouldSpec {
   public void orNotToPass() throws Exception {
     try{
       int _plus = (1 + 1);
-      boolean _should_be = Should.should_be(_plus, 1);
+      boolean _should_be = Should.should_be(Integer.valueOf(_plus), Integer.valueOf(1));
       Assert.assertTrue("\nExpected 1 + 1 should be 1 but"
-       + "\n     1 + 1 is " + _plus + "\n", _should_be);
+       + "\n     1 + 1 is " + Integer.valueOf(_plus) + "\n", _should_be);
       
       Assert.fail("Expected " + AssertionError.class.getName() + " in \n     1 + 1 should be 1\n with:"
-       + "\n     1 + 1 is " + _plus);
+       + "\n     1 + 1 is " + Integer.valueOf(_plus));
     }catch(AssertionError e){
       // expected
     }
     try{
       int _plus_1 = (1 + 1);
-      boolean _should_be_1 = Should.should_be(_plus_1, 1);
+      boolean _should_be_1 = Should.should_be(Integer.valueOf(_plus_1), Integer.valueOf(1));
       Assert.assertFalse("\nExpected 1 + 1 should not be 1 but"
-       + "\n     1 + 1 is " + _plus_1 + "\n", _should_be_1);
+       + "\n     1 + 1 is " + Integer.valueOf(_plus_1) + "\n", _should_be_1);
       
       Assert.fail("Expected " + AssertionError.class.getName() + " in \n     1 + 1 should not be 1\n with:"
-       + "\n     1 + 1 is " + _plus_1);
+       + "\n     1 + 1 is " + Integer.valueOf(_plus_1));
     }catch(AssertionError e){
       // expected
     }

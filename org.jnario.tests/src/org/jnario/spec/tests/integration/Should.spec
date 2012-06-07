@@ -41,7 +41,13 @@ describe "Using Should"{
 		newArrayList("something") should contain "something"
 		newArrayList("something") should not contain "something else"
 		
-		//
+		// using the "with" operator
+		val greeting = "hello world" => [
+			length => 11
+			it should startWith("hello")
+			it should endWith("world")
+		]
+		greeting => typeof(String)
 	}     
 
 	/*     

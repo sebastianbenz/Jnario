@@ -12,6 +12,7 @@ import static com.google.common.collect.Sets.newHashSet;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.getNode;
 import static org.eclipse.xtext.util.Strings.convertToJavaString;
+import static org.jnario.jvmmodel.DoubleArrowSupport.isDoubleArrow;
 
 import java.util.HashSet;
 import java.util.Iterator;
@@ -19,15 +20,14 @@ import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.compiler.XtendCompiler;
-import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XBinaryOperation;
+import org.eclipse.xtext.xbase.XClosure;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.util.XExpressionHelper;
 import org.jnario.Assertion;
 import org.jnario.Should;
@@ -351,24 +351,12 @@ public class JnarioCompiler extends XtendCompiler {
 			super._toJavaStatement(expr, b, isReferenced);
 			return;
 		}
-		JvmTypeReference type = getTypeProvider().getType(expr);
-		if(type == null){
-			super._toJavaStatement(expr, b, isReferenced);
-			return;
-		}
-		if(getTypeConformanceComputer().isConformant(type, getTypeReferences().getTypeForName(Procedure1.class, expr))){
+		XBinaryOperation doubleArrow = (XBinaryOperation) expr;
+		if(doubleArrow.getRightOperand() instanceof XClosure){
 			super._toJavaStatement(expr, b, isReferenced);
 			return;
 		}else{
 			_toShouldExpression(expr, b, false);
 		}
-	}
-
-	private boolean isDoubleArrow(XAbstractFeatureCall expr) {
-		if (!(expr instanceof XBinaryOperation)) {
-			return false;
-		}
-		JvmIdentifiableElement feature = expr.getFeature();
-		return feature != null && "operator_doubleArrow".equals(feature.getSimpleName());
 	}
 }

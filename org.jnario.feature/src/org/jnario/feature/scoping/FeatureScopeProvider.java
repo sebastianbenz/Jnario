@@ -7,8 +7,8 @@
  *******************************************************************************/
 package org.jnario.feature.scoping;
 
-import org.eclipse.xtend.core.scoping.XtendScopeProvider;
+import org.jnario.scoping.JnarioScopeProvider;
 
-public class FeatureScopeProvider extends XtendScopeProvider {
+public class FeatureScopeProvider extends JnarioScopeProvider {
 
 }

@@ -49,7 +49,13 @@ true should be true
 newArrayList("something") should contain "something"
 newArrayList("something") should not contain "something else"
 
-//</pre>
+// using the "with" operator
+val greeting = "hello world" =&gt; [
+	length =&gt; 11
+	it should startWith("hello")
+	it should endWith("world")
+]
+greeting =&gt; typeof(String)</pre>
 </p>
 </li><li><p  id="___or_not_to_pass"><strong>...or not to pass</strong>
 <p><code>should</code> throws an AssertionError if the result of the left expression does not equal the result of the right expression.</p>

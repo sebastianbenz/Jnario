@@ -53,7 +53,7 @@ public class JnarioSpecsTutorialWritingAssertionsSpec extends JnarioSpecsTutoria
   @Order(99)
   public void shouldAnd() throws Exception {
     boolean _should_be = Should.<Boolean>should_be(
-      true, true);
+      Boolean.valueOf(true), true);
     Assert.assertTrue("\nExpected true should be true but"
      + "\n     true should be true is " + null + "\n", _should_be);
     
@@ -63,9 +63,9 @@ public class JnarioSpecsTutorialWritingAssertionsSpec extends JnarioSpecsTutoria
      + "\n     false => false is " + _doubleArrow + "\n", _doubleArrow);
     
     int _plus = (1 + 1);
-    boolean _should_be_1 = Should.should_be(_plus, 1);
+    boolean _should_be_1 = Should.should_be(Integer.valueOf(_plus), Integer.valueOf(1));
     Assert.assertFalse("\nExpected 1 + 1 should not be 1 but"
-     + "\n     1 + 1 is " + _plus + "\n", _should_be_1);
+     + "\n     1 + 1 is " + Integer.valueOf(_plus) + "\n", _should_be_1);
     
     int _plus_1 = (1 + 1);
     boolean _doubleArrow_1 = Should.operator_doubleArrow(Integer.valueOf(_plus_1), Integer.valueOf(2));
