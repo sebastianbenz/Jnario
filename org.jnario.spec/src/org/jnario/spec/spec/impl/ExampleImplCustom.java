@@ -9,6 +9,8 @@ package org.jnario.spec.spec.impl;
 
 import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.getNode;
 
+import java.util.regex.Pattern;
+
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
@@ -18,6 +20,8 @@ import org.eclipse.xtext.xbase.XStringLiteral;
  */
 @SuppressWarnings("restriction")
 public class ExampleImplCustom extends org.jnario.spec.spec.impl.ExampleImpl {
+
+	private static final Pattern NAME_PATTERN = Pattern.compile("\\s*\r?\n\\s*");
 
 	@Override
 	public String getName() {
@@ -37,6 +41,7 @@ public class ExampleImplCustom extends org.jnario.spec.spec.impl.ExampleImpl {
 			}
 			name = node.getText().trim();
 		}
+		name = NAME_PATTERN.matcher(name).replaceAll(" ");
 		return name;
 	}
 	

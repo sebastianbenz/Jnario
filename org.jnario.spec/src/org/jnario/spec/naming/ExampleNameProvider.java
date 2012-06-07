@@ -18,9 +18,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendMember;
-import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.util.SimpleAttributeResolver;
-import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.compiler.JavaKeywords;
 import org.jnario.ExampleTable;
 import org.jnario.spec.spec.After;
@@ -70,25 +68,11 @@ public class ExampleNameProvider {
 		if(example.getName() != null){
 			sb.append(example.getName());
 			sb.append(" ");
-		}else{
-			sb.append(expression(example));
 		}
 		if(example.isPending()){
 			sb.append("[PENDING]");
 		}
 		return convertToJavaString(makeJunitConform(sb)).trim();
-	}
-
-	private String expression(Example example) {
-		XExpression rootExpression = example.getExpr();
-		if(rootExpression == null){
-			return "";
-		}
-		String expression = NodeModelUtils.getNode(rootExpression).getText().trim();
-		if(expression.length() == 0){
-			return "";
-		}
-		return expression;
 	}
 
 	public String toJavaClassName(ExampleGroup exampleGroup) {
@@ -115,8 +99,6 @@ public class ExampleNameProvider {
 		StringBuilder result = new StringBuilder();
 		if(example.getName() != null){
 			result.append(memberDescriptionOf(example));
-		}else{
-			result.append(expression(example));
 		}
 		String name = toFirstLower(convertToCamelCase(result).toString());
 		if(name.length() == 0){

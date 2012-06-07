@@ -7,30 +7,32 @@
  *******************************************************************************/
  package org.jnario.spec.tests.unit.naming
 
+import org.eclipse.xtext.xbase.XBlockExpression
+import org.eclipse.xtext.xbase.XExpression
+import org.jnario.Should
 import org.jnario.jnario.test.util.ModelStore
 import org.jnario.jnario.test.util.SpecTestInstantiator
 import org.jnario.runner.InstantiateWith
 import org.jnario.spec.spec.Example
+
 import static org.hamcrest.CoreMatchers.*
 import static org.jnario.jnario.test.util.Query.*
 
 import static extension org.jnario.lib.ExampleTableIterators.*
-import org.jnario.Should
-import org.eclipse.xtext.xbase.XBlockExpression
-import org.junit.Ignore
+import static extension org.jnario.lib.Should.*
 
 @InstantiateWith(typeof(SpecTestInstantiator))
-@Ignore
 describe Example {
 	 
 	describe "name"{
 		def examples{
-			| example 											| name 							|
-			| "fact 'with description'"							| "with description"   			|
-			| "fact 'with code' => 'with code'"					| "'with code' => 'with code'"	|
+			| example 											| name 								|
+			| "fact 'with description'"							| "with description"   				|
+			| "fact 'with code' => 'with code'"					| "'with code' => 'with code'"		|
+			| "fact 'multiline code' => \n'with code'"			| "'multiline code' => 'with code'"	|
 		}
 	
-		fact examples.forEach[example.parse.name should be name]
+		fact examples.forEach[println(example.parse.name) should be name]
 	}
 	
 	describe "implementation"{

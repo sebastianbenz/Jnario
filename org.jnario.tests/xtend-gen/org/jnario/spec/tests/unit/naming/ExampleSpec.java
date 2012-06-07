@@ -12,7 +12,6 @@ import org.jnario.spec.spec.Example;
 import org.jnario.spec.tests.unit.naming.ExampleImplementationSpec;
 import org.jnario.spec.tests.unit.naming.ExampleNameSpec;
 import org.jnario.spec.tests.unit.naming.ExamplePendingSpec;
-import org.junit.Ignore;
 import org.junit.runner.RunWith;
 
 @Contains({ ExampleNameSpec.class, ExampleImplementationSpec.class, ExamplePendingSpec.class })
@@ -20,7 +19,6 @@ import org.junit.runner.RunWith;
 @RunWith(ExampleGroupRunner.class)
 @Named("Example")
 @InstantiateWith(value = SpecTestInstantiator.class)
-@Ignore
 public class ExampleSpec {
   public Example parse(final String content) {
     ModelStore _modelStore = new ModelStore();

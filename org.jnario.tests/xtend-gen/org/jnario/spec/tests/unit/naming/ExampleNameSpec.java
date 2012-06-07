@@ -1,5 +1,6 @@
 package org.jnario.spec.tests.unit.naming;
 
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
@@ -24,22 +25,25 @@ public class ExampleNameSpec extends ExampleSpec {
     examples = ExampleTable.create("examples", 
       java.util.Arrays.asList("example", "name"), 
       new ExampleNameSpecExamples(  java.util.Arrays.asList("\"fact \'with description\'\"", "\"with description\""), "fact \'with description\'", "with description"),
-      new ExampleNameSpecExamples(  java.util.Arrays.asList("\"fact \'with code\' => \'with code\'\"", "\"\'with code\' => \'with code\'\""), "fact \'with code\' => \'with code\'", "\'with code\' => \'with code\'")
+      new ExampleNameSpecExamples(  java.util.Arrays.asList("\"fact \'with code\' => \'with code\'\"", "\"\'with code\' => \'with code\'\""), "fact \'with code\' => \'with code\'", "\'with code\' => \'with code\'"),
+      new ExampleNameSpecExamples(  java.util.Arrays.asList("\"fact \'multiline code\' => \\n\'with code\'\"", "\"\'multiline code\' => \'with code\'\""), "fact \'multiline code\' => \n\'with code\'", "\'multiline code\' => \'with code\'")
     );
   }
   
   protected ExampleTable<ExampleNameSpecExamples> examples;
   
   @Test
-  @Named("examples.forEach[example.parse.name should be name]")
+  @Named("examples.forEach[println[example.parse.name] should be name]")
   @Order(99)
-  public void examplesForEachExampleParseNameShouldBeName() throws Exception {
+  public void examplesForEachPrintlnExampleParseNameShouldBeName() throws Exception {
     final Procedure1<ExampleNameSpecExamples> _function = new Procedure1<ExampleNameSpecExamples>() {
         public void apply(final ExampleNameSpecExamples it) {
           Example _parse = ExampleNameSpec.this.parse(it.example);
           String _name = _parse.getName();
-          boolean _should_be = Should.should_be(_name, it.name);
-          Assert.assertTrue("\nExpected example.parse.name should be name but"
+          String _println = InputOutput.<String>println(_name);
+          boolean _should_be = Should.should_be(_println, it.name);
+          Assert.assertTrue("\nExpected println(example.parse.name) should be name but"
+           + "\n     println(example.parse.name) is " + "\"" + _println + "\""
            + "\n     example.parse.name is " + "\"" + _name + "\""
            + "\n     example.parse is " + _parse
            + "\n     example is " + "\"" + it.example + "\""
