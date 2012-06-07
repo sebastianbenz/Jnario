@@ -37,6 +37,7 @@ public class FeatureBatchCompilerTest {
       this.batchCompiler.setSourcePath(FeatureBatchCompilerTest.XTEND_SRC_DIRECTORY);
       this.batchCompiler.setOutputPath(FeatureBatchCompilerTest.OUTPUT_DIRECTORY);
       this.batchCompiler.setDeleteTempDirectory(true);
+      this.batchCompiler.setUseCurrentClassLoaderAsParent(true);
       File _file = new File(FeatureBatchCompilerTest.OUTPUT_DIRECTORY);
       _file.mkdir();
       File _file_1 = new File(FeatureBatchCompilerTest.OUTPUT_DIRECTORY);
@@ -73,6 +74,6 @@ public class FeatureBatchCompilerTest {
     File _file = new File(_plus);
     String[] _list = _file.list();
     int _size = ((List<String>)Conversions.doWrapArray(_list)).size();
-    Assert.assertEquals(6, _size);
+    Assert.assertEquals(5, _size);
   }
 }

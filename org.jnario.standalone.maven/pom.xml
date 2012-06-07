@@ -3,7 +3,6 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>org.jnario.standalone.maven</artifactId>
 	<version>0.1.0-SNAPSHOT</version>
-	<name>Jnario Standalone Jar builder</name>
 	
 	<build>
     <plugins>

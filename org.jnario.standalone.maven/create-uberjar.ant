@@ -5,9 +5,9 @@
 	 3. standalone jar Version to use = maven.version
 	 3. Where to put output = output.folder
 	-->
-	<property name="jnarioPluginFolder" value="../org.jnario.updatesite/target/site/plugins" />
+	<property name="jnarioPluginFolder" value="../org.jnario.updatesite/target/repository/plugins" />
 	<property name="maven.version" value="0.1.0" />
-	<property name="output.folder" value="output" />
+	<property name="output.folder" value="target" />
 	<echo>${maven.version}</echo>
 
 	<property name="binJarTemp" value="binJarTemp" />

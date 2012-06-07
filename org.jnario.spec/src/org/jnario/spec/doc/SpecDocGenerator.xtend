@@ -23,7 +23,7 @@ import org.jnario.spec.spec.Example
 import org.jnario.spec.spec.ExampleGroup
 import static org.jnario.doc.HtmlFile.*
 
-class DocGenerator extends AbstractDocGenerator {
+class SpecDocGenerator extends AbstractDocGenerator {
 
 	@Inject extension ExampleNameProvider 
 	@Inject extension ExtendedJvmTypesBuilder

@@ -7,15 +7,15 @@
  *******************************************************************************/
 package org.jnario.spec.tests.unit.doc
 
-import org.jnario.spec.doc.DocGenerator
 import org.jnario.runner.InstantiateWith
 import org.jnario.jnario.test.util.SpecTestInstantiator
 import com.google.inject.Inject
 import org.jnario.jnario.test.util.ModelStore
 import org.eclipse.xtext.generator.InMemoryFileSystemAccess
+import org.jnario.spec.doc.SpecDocGenerator
 
 @InstantiateWith(typeof(SpecTestInstantiator))
-describe DocGenerator {
+describe SpecDocGenerator {
 	
 	@Inject extension ModelStore 
 	@Inject InMemoryFileSystemAccess fsa

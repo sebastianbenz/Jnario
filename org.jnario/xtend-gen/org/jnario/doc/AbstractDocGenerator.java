@@ -36,7 +36,7 @@ import org.jnario.doc.WhiteSpaceNormalizer;
 import org.pegdown.PegDownProcessor;
 
 @SuppressWarnings("all")
-public class AbstractDocGenerator implements IGenerator {
+public abstract class AbstractDocGenerator implements IGenerator {
   @Inject
   private WhiteSpaceNormalizer _whiteSpaceNormalizer;
   

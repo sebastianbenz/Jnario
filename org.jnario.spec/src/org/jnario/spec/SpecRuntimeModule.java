@@ -45,6 +45,7 @@ import org.eclipse.xtext.xbase.scoping.featurecalls.StaticImplicitMethodsFeature
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.eclipse.xtext.xbase.validation.EarlyExitValidator;
 import org.jnario.compiler.JnarioCompiler;
+import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.DocOutputConfigurationProvider;
 import org.jnario.generator.JnarioJavaIoFileSystemAccess;
 import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
@@ -55,6 +56,7 @@ import org.jnario.linking.JnarioLinkingService;
 import org.jnario.scoping.JnarioExtensionClassNameProvider;
 import org.jnario.serializer.JnarioContextFinder;
 import org.jnario.spec.conversion.SpecValueConverterService;
+import org.jnario.spec.doc.SpecDocGenerator;
 import org.jnario.spec.jvmmodel.SpecJvmModelInferrer;
 import org.jnario.spec.scoping.SpecScopeProvider;
 import org.jnario.spec.validation.SpecClassPathBasedChecks;
@@ -69,6 +71,12 @@ import com.google.inject.name.Names;
 @SuppressWarnings("restriction")
 public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule {
 
+	@Override
+	public void configure(Binder binder) {
+		super.configure(binder);
+		binder.bind(AbstractDocGenerator.class).to(SpecDocGenerator.class);
+	}
+	
 	
 	public Class<? extends ILinkingDiagnosticMessageProvider> bindILinkingDiagnosticMessageProvider() {
 		return XtendLinkingDiagnosticMessageProvider.class;

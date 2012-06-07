@@ -26,7 +26,7 @@ import org.jnario.spec.spec.Example;
 import org.jnario.spec.spec.ExampleGroup;
 
 @SuppressWarnings("all")
-public class DocGenerator extends AbstractDocGenerator {
+public class SpecDocGenerator extends AbstractDocGenerator {
   @Inject
   private ExampleNameProvider _exampleNameProvider;
   
@@ -46,13 +46,13 @@ public class DocGenerator extends AbstractDocGenerator {
       final ExampleGroup exampleGroup = ((ExampleGroup) xtendClass);
       final Procedure1<HtmlFile> _function = new Procedure1<HtmlFile>() {
           public void apply(final HtmlFile it) {
-            String _javaClassName = DocGenerator.this._exampleNameProvider.toJavaClassName(exampleGroup);
+            String _javaClassName = SpecDocGenerator.this._exampleNameProvider.toJavaClassName(exampleGroup);
             it.fileName = _javaClassName;
-            String _asTitle = DocGenerator.this.asTitle(exampleGroup);
+            String _asTitle = SpecDocGenerator.this.asTitle(exampleGroup);
             it.title = _asTitle;
-            CharSequence _generateContent = DocGenerator.this.generateContent(exampleGroup);
+            CharSequence _generateContent = SpecDocGenerator.this.generateContent(exampleGroup);
             it.content = _generateContent;
-            String _root = DocGenerator.this.root(exampleGroup);
+            String _root = SpecDocGenerator.this.root(exampleGroup);
             it.rootFolder = _root;
           }
         };

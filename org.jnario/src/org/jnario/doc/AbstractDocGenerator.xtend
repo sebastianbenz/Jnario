@@ -24,7 +24,7 @@ import static extension org.eclipse.xtext.util.Strings.*
 import org.eclipse.xtext.EcoreUtil2
 import org.jnario.ExampleTable
 
-class AbstractDocGenerator implements IGenerator {
+abstract class AbstractDocGenerator implements IGenerator {
 	
 	@Inject extension WhiteSpaceNormalizer
 	@Inject extension PegDownProcessor

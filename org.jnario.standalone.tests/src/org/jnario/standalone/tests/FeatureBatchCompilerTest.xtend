@@ -31,6 +31,7 @@ class FeatureBatchCompilerTest {
         batchCompiler.sourcePath = XTEND_SRC_DIRECTORY
         batchCompiler.outputPath = OUTPUT_DIRECTORY
         batchCompiler.deleteTempDirectory = true
+        batchCompiler.useCurrentClassLoaderAsParent = true
         new File(OUTPUT_DIRECTORY).mkdir
         cleanFolder(new File(OUTPUT_DIRECTORY), null, true, false)
         new File(OUTPUT_DIRECTORY_WITH_SPACES).mkdir
@@ -48,7 +49,7 @@ class FeatureBatchCompilerTest {
 	@Test
 	def void testCompileTestData() {
 		batchCompiler.compile
-		assertEquals(6, new File(OUTPUT_DIRECTORY+"/test").list.size)
+		assertEquals(5, new File(OUTPUT_DIRECTORY+"/test").list.size)
 	}
 
 }

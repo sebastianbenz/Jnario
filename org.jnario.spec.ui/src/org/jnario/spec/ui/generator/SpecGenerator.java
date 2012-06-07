@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
-import org.jnario.spec.doc.DocGenerator;
+import org.jnario.spec.doc.SpecDocGenerator;
 
 import com.google.inject.Inject;
 
@@ -19,7 +19,7 @@ import com.google.inject.Inject;
 public class SpecGenerator implements IGenerator {
 
 	@Inject JvmModelGenerator jvmModelGenerator;
-	@Inject DocGenerator docGenerator;
+	@Inject SpecDocGenerator docGenerator;
 	
 	public void doGenerate(Resource input, IFileSystemAccess fsa) {
 		jvmModelGenerator.doGenerate(input, fsa);

@@ -26,8 +26,5 @@ Feature: Examples.
 		|x|y|z|
 		|1|2|4|
 		|3|6|10|
-		
-		Examples: some examples
-		|x|z|
-		|4|5|		
+ 
  

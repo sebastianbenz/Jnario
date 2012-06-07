@@ -23,8 +23,6 @@ public class SpecBatchCompilerTest {
   @Inject
   private SpecBatchCompiler batchCompiler;
   
-  private static String OUTPUT_DIRECTORY_WITH_SPACES = "./test result";
-  
   private static String OUTPUT_DIRECTORY = "./test-result";
   
   private static String XTEND_SRC_DIRECTORY = "./testdata";
@@ -37,12 +35,11 @@ public class SpecBatchCompilerTest {
       this.batchCompiler.setSourcePath(SpecBatchCompilerTest.XTEND_SRC_DIRECTORY);
       this.batchCompiler.setOutputPath(SpecBatchCompilerTest.OUTPUT_DIRECTORY);
       this.batchCompiler.setDeleteTempDirectory(true);
+      this.batchCompiler.setUseCurrentClassLoaderAsParent(true);
       File _file = new File(SpecBatchCompilerTest.OUTPUT_DIRECTORY);
       _file.mkdir();
       File _file_1 = new File(SpecBatchCompilerTest.OUTPUT_DIRECTORY);
       Files.cleanFolder(_file_1, null, true, false);
-      File _file_2 = new File(SpecBatchCompilerTest.OUTPUT_DIRECTORY_WITH_SPACES);
-      _file_2.mkdir();
     } catch (Exception _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -53,13 +50,11 @@ public class SpecBatchCompilerTest {
     try {
       File _file = new File(SpecBatchCompilerTest.OUTPUT_DIRECTORY);
       Files.cleanFolder(_file, null, true, true);
-      File _file_1 = new File(SpecBatchCompilerTest.OUTPUT_DIRECTORY_WITH_SPACES);
-      Files.cleanFolder(_file_1, null, true, true);
-      File _file_2 = new File(SpecBatchCompilerTest.TEMP_DIRECTORY);
-      boolean _exists = _file_2.exists();
+      File _file_1 = new File(SpecBatchCompilerTest.TEMP_DIRECTORY);
+      boolean _exists = _file_1.exists();
       if (_exists) {
-        File _file_3 = new File(SpecBatchCompilerTest.TEMP_DIRECTORY);
-        Files.cleanFolder(_file_3, null, true, true);
+        File _file_2 = new File(SpecBatchCompilerTest.TEMP_DIRECTORY);
+        Files.cleanFolder(_file_2, null, true, true);
       }
     } catch (Exception _e) {
       throw Exceptions.sneakyThrow(_e);

@@ -14,18 +14,18 @@ import org.jnario.runner.InstantiateWith;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
-import org.jnario.spec.doc.DocGenerator;
+import org.jnario.spec.doc.SpecDocGenerator;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
-@Named("DocGenerator")
+@Named("SpecDocGenerator")
 @InstantiateWith(value = SpecTestInstantiator.class)
-public class DocGeneratorSpec {
+public class SpecDocGeneratorSpec {
   @Subject
-  public DocGenerator subject;
+  public SpecDocGenerator subject;
   
   @Inject
   @Extension

@@ -20,7 +20,6 @@ class SpecBatchCompilerTest {
 
 	@Inject	SpecBatchCompiler batchCompiler
 
-    static String OUTPUT_DIRECTORY_WITH_SPACES = "./test result"
     static String OUTPUT_DIRECTORY = "./test-result"
     static String XTEND_SRC_DIRECTORY = "./testdata"
     static String TEMP_DIRECTORY = "./test-temp-dir"
@@ -30,15 +29,14 @@ class SpecBatchCompilerTest {
         batchCompiler.sourcePath = XTEND_SRC_DIRECTORY
         batchCompiler.outputPath = OUTPUT_DIRECTORY
         batchCompiler.deleteTempDirectory = true
+        batchCompiler.useCurrentClassLoaderAsParent = true
         new File(OUTPUT_DIRECTORY).mkdir
         cleanFolder(new File(OUTPUT_DIRECTORY), null, true, false)
-        new File(OUTPUT_DIRECTORY_WITH_SPACES).mkdir
 	}
  
 	@After 
 	def void onTearDown() {
        cleanFolder(new File(OUTPUT_DIRECTORY), null, true, true)
-       cleanFolder(new File(OUTPUT_DIRECTORY_WITH_SPACES), null, true, true)
        if (new File(TEMP_DIRECTORY).exists) {
            cleanFolder(new File(TEMP_DIRECTORY), null, true, true)
        }

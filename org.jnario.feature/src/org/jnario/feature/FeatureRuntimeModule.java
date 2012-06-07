@@ -44,8 +44,10 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.scoping.featurecalls.StaticImplicitMethodsFeatureForTypeProvider.ExtensionClassNameProvider;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.eclipse.xtext.xbase.validation.EarlyExitValidator;
+import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.DocOutputConfigurationProvider;
 import org.jnario.feature.conversion.FeatureValueConverterService;
+import org.jnario.feature.doc.FeatureDocGenerator;
 import org.jnario.feature.generator.FeatureCompiler;
 import org.jnario.feature.generator.FeatureJvmModelGenerator;
 import org.jnario.feature.jvmmodel.FeatureFeatureCallToJavaMapping;
@@ -71,6 +73,12 @@ import com.google.inject.name.Names;
  * @author Birgit Engelmann - Initial contribution and API
  */
 public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRuntimeModule {
+	
+	@Override
+	public void configure(Binder binder) {
+		super.configure(binder);
+		binder.bind(AbstractDocGenerator.class).to(FeatureDocGenerator.class);
+	}
 	
 	public Class<? extends ILinkingDiagnosticMessageProvider> bindILinkingDiagnosticMessageProvider() {
 		return XtendLinkingDiagnosticMessageProvider.class;

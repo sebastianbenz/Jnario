@@ -42,6 +42,7 @@ public class JnarioExtensionClassNameProvider extends ExtensionClassNameProvider
 	protected Collection<String> computeLiteralClassNames() {
 		Collection<String> result = super.computeLiteralClassNames();
 		result.add(Each.class.getName());
+		result.add(Should.class.getName());
 		result.add(CoreMatchers.class.getName());
 		result.add(JnarioCollectionLiterals.class.getName());
 		return result;

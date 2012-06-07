@@ -13,7 +13,7 @@ package org.jnario.spec.ui.doc;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.ide.hover.XtendHoverProvider;
 import org.jnario.doc.HtmlFileBuilder;
-import org.jnario.spec.doc.DocGenerator;
+import org.jnario.spec.doc.SpecDocGenerator;
 import org.jnario.spec.spec.ExampleGroup;
 
 import com.google.inject.Inject;
@@ -25,7 +25,7 @@ import com.google.inject.Inject;
 @SuppressWarnings("restriction")
 public class SpecHoverProvider extends XtendHoverProvider {
 	
-	@Inject	private DocGenerator docGenerator;
+	@Inject	private SpecDocGenerator docGenerator;
 	@Inject private HtmlFileBuilder htmlFileBuilder;
 	
 	/* (non-Javadoc)
