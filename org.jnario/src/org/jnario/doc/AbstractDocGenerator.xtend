@@ -25,7 +25,7 @@ import org.eclipse.xtext.EcoreUtil2
 import org.jnario.ExampleTable
 
 abstract class AbstractDocGenerator implements IGenerator {
-	
+
 	@Inject extension WhiteSpaceNormalizer
 	@Inject extension PegDownProcessor
 	@Inject extension HtmlFileBuilder

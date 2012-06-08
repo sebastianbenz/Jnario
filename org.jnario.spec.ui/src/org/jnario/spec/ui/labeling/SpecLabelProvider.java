@@ -17,7 +17,6 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.xtend.ide.labeling.XtendImages;
 import org.eclipse.xtend.ide.labeling.XtendLabelProvider;
 import org.eclipse.xtext.common.types.JvmVisibility;
-import org.eclipse.xtext.util.Strings;
 import org.jnario.ExampleTable;
 import org.jnario.spec.naming.ExampleNameProvider;
 import org.jnario.spec.spec.Example;

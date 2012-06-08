@@ -13,7 +13,6 @@ import static org.eclipse.xtext.xbase.ui.highlighting.XbaseHighlightingConfigura
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendFunction;
 import org.eclipse.xtend.core.xtend.XtendMember;

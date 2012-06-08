@@ -11,11 +11,13 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendAnnotationTarget;
+import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XBinaryOperation;
 import org.eclipse.xtext.xbase.XExpression;
+import org.jnario.*;
 import org.jnario.Assertion;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
@@ -105,6 +107,10 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 				return createShouldThrowAdapter();
 			}
 			@Override
+			public Adapter caseSpecification(Specification object) {
+				return createSpecificationAdapter();
+			}
+			@Override
 			public Adapter caseXtendAnnotationTarget(XtendAnnotationTarget object) {
 				return createXtendAnnotationTargetAdapter();
 			}
@@ -127,6 +133,10 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseXBinaryOperation(XBinaryOperation object) {
 				return createXBinaryOperationAdapter();
+			}
+			@Override
+			public Adapter caseXtendClass(XtendClass object) {
+				return createXtendClassAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -233,6 +243,20 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.jnario.Specification <em>Specification</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.jnario.Specification
+	 * @generated
+	 */
+	public Adapter createSpecificationAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.xtend.core.xtend.XtendAnnotationTarget <em>Annotation Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -313,6 +337,20 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createXBinaryOperationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.xtend.core.xtend.XtendClass <em>Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.xtend.core.xtend.XtendClass
+	 * @generated
+	 */
+	public Adapter createXtendClassAdapter() {
 		return null;
 	}
 

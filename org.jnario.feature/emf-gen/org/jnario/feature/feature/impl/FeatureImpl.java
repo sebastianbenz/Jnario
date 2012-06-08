@@ -9,23 +9,17 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.eclipse.xtend.core.xtend.impl.XtendClassImplCustom;
-
 import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.Scenario;
+import org.jnario.impl.SpecificationImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -42,7 +36,7 @@ import org.jnario.feature.feature.Scenario;
  *
  * @generated
  */
-public class FeatureImpl extends XtendClassImplCustom implements Feature
+public class FeatureImpl extends SpecificationImpl implements Feature
 {
 	/**
 	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.

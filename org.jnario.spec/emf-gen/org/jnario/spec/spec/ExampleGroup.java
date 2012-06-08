@@ -4,11 +4,12 @@
  */
 package org.jnario.spec.spec;
 
-import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendMember;
 
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmTypeReference;
+
+import org.jnario.Specification;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,7 +29,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  * @model
  * @generated
  */
-public interface ExampleGroup extends XtendClass, XtendMember
+public interface ExampleGroup extends XtendMember, Specification
 {
 	/**
 	 * Returns the value of the '<em><b>Preamble</b></em>' attribute.

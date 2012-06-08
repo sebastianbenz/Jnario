@@ -15,6 +15,8 @@ import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendFile;
 import org.eclipse.xtend.core.xtend.XtendMember;
 
+import org.jnario.Specification;
+
 import org.jnario.feature.feature.*;
 
 /**
@@ -104,6 +106,7 @@ public class FeatureSwitch<T>
 			{
 				Feature feature = (Feature)theEObject;
 				T result = caseFeature(feature);
+				if (result == null) result = caseSpecification(feature);
 				if (result == null) result = caseXtendClass(feature);
 				if (result == null) result = caseXtendAnnotationTarget(feature);
 				if (result == null) result = defaultCase(theEObject);
@@ -548,6 +551,22 @@ public class FeatureSwitch<T>
 	 * @generated
 	 */
 	public T caseXtendClass(XtendClass object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Specification</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Specification</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSpecification(Specification object)
 	{
 		return null;
 	}

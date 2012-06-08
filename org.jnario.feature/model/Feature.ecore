@@ -3,7 +3,7 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="feature"
     nsURI="http://www.org/jnario/feature/Feature" nsPrefix="feature">
-  <eClassifiers xsi:type="ecore:EClass" name="Feature" eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendClass">
+  <eClassifiers xsi:type="ecore:EClass" name="Feature" eSuperTypes="../../org.jnario/model/Jnario.ecore#//Specification">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" upperBound="-1"
         eType="#//Scenario" containment="true"/>

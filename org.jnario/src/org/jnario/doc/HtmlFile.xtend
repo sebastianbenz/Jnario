@@ -11,7 +11,7 @@ import org.eclipse.xtext.xbase.lib.Procedures$Procedure1
 import java.util.List
 
 class HtmlFile {
-	
+
 	def static newHtmlFile(Procedures$Procedure1<HtmlFile> initializer){
 		val htmlFile = new HtmlFile()
 		initializer.apply(htmlFile)

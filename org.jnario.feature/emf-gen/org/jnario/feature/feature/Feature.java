@@ -7,7 +7,7 @@ package org.jnario.feature.feature;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.xtend.core.xtend.XtendClass;
+import org.jnario.Specification;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,7 +27,7 @@ import org.eclipse.xtend.core.xtend.XtendClass;
  * @model
  * @generated
  */
-public interface Feature extends XtendClass
+public interface Feature extends Specification
 {
 	/**
 	 * Returns the value of the '<em><b>Description</b></em>' attribute.

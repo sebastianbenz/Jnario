@@ -18,12 +18,12 @@ import org.jnario.feature.naming.FeatureClassNameProvider
 import org.jnario.feature.naming.StepNameProvider
 
 import static org.jnario.doc.HtmlFile.*
-
 import static extension org.jnario.util.Strings.*
 import org.jnario.doc.WhiteSpaceNormalizer
+import org.jnario.doc.HtmlFile
 
 class FeatureDocGenerator extends AbstractDocGenerator {
-	@Inject extension org.jnario.feature.naming.FeatureClassNameProvider 
+	@Inject extension FeatureClassNameProvider 
 	@Inject extension StepNameProvider 
 	@Inject extension WhiteSpaceNormalizer
 
@@ -39,7 +39,7 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 			rootFolder = feature.root
 		]
 	}
-	
+
 	def generateContent(Feature feature)'''
 		<p>«feature.description?.markdown2Html»</p>
 		«IF feature.background != null»

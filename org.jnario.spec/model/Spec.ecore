@@ -3,16 +3,16 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="spec"
     nsURI="http://www.org/jnario/spec/Spec" nsPrefix="spec">
-  <eClassifiers xsi:type="ecore:EClass" name="SpecFile" eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendFile"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ExampleGroup" eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendClass ../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendMember">
+  <eClassifiers xsi:type="ecore:EClass" name="SpecFile" eSuperTypes="platform:/resource/org.eclipse.xtend.core/model/Xtend.ecore#//XtendFile"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExampleGroup" eSuperTypes="platform:/resource/org.eclipse.xtend.core/model/Xtend.ecore#//XtendMember platform:/resource/org.jnario/model/Jnario.ecore#//Specification">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="preamble" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="targetType" eType="ecore:EClass ../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetType" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="targetOperation" eType="ecore:EClass ../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmOperation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetOperation" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmOperation"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Example" eSuperTypes="#//TestFunction">
     <eOperations name="isPending" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="expr" eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expr" eType="ecore:EClass platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Before" eSuperTypes="#//TestFunction">
@@ -23,10 +23,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="afterAll" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TestFunction" eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendMember">
-    <eOperations name="getImplementation" eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TestFunction" eSuperTypes="platform:/resource/org.eclipse.xtend.core/model/Xtend.ecore#//XtendMember">
+    <eOperations name="getImplementation" eType="ecore:EClass platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="ecore:EClass platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
         containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -459,6 +459,98 @@ public interface JnarioPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.jnario.impl.SpecificationImpl <em>Specification</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.jnario.impl.SpecificationImpl
+	 * @see org.jnario.impl.JnarioPackageImpl#getSpecification()
+	 * @generated
+	 */
+	int SPECIFICATION = 6;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFICATION__ANNOTATIONS = XtendPackage.XTEND_CLASS__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFICATION__NAME = XtendPackage.XTEND_CLASS__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFICATION__ABSTRACT = XtendPackage.XTEND_CLASS__ABSTRACT;
+
+	/**
+	 * The feature id for the '<em><b>Extends</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFICATION__EXTENDS = XtendPackage.XTEND_CLASS__EXTENDS;
+
+	/**
+	 * The feature id for the '<em><b>Implements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFICATION__IMPLEMENTS = XtendPackage.XTEND_CLASS__IMPLEMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Super Types</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFICATION__SUPER_TYPES = XtendPackage.XTEND_CLASS__SUPER_TYPES;
+
+	/**
+	 * The feature id for the '<em><b>Members</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFICATION__MEMBERS = XtendPackage.XTEND_CLASS__MEMBERS;
+
+	/**
+	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFICATION__TYPE_PARAMETERS = XtendPackage.XTEND_CLASS__TYPE_PARAMETERS;
+
+	/**
+	 * The number of structural features of the '<em>Specification</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFICATION_FEATURE_COUNT = XtendPackage.XTEND_CLASS_FEATURE_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.jnario.ExampleTable <em>Example Table</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -640,6 +732,16 @@ public interface JnarioPackage extends EPackage {
 	EReference getShouldThrow_Expression();
 
 	/**
+	 * Returns the meta object for class '{@link org.jnario.Specification <em>Specification</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Specification</em>'.
+	 * @see org.jnario.Specification
+	 * @generated
+	 */
+	EClass getSpecification();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -808,6 +910,16 @@ public interface JnarioPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SHOULD_THROW__EXPRESSION = eINSTANCE.getShouldThrow_Expression();
+
+		/**
+		 * The meta object literal for the '{@link org.jnario.impl.SpecificationImpl <em>Specification</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.jnario.impl.SpecificationImpl
+		 * @see org.jnario.impl.JnarioPackageImpl#getSpecification()
+		 * @generated
+		 */
+		EClass SPECIFICATION = eINSTANCE.getSpecification();
 
 	}
 

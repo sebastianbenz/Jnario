@@ -14,6 +14,8 @@ import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendFile;
 import org.eclipse.xtend.core.xtend.XtendMember;
 
+import org.jnario.Specification;
+
 import org.jnario.spec.spec.*;
 
 /**
@@ -111,8 +113,9 @@ public class SpecSwitch<T>
 			{
 				ExampleGroup exampleGroup = (ExampleGroup)theEObject;
 				T result = caseExampleGroup(exampleGroup);
-				if (result == null) result = caseXtendClass(exampleGroup);
 				if (result == null) result = caseXtendMember(exampleGroup);
+				if (result == null) result = caseSpecification(exampleGroup);
+				if (result == null) result = caseXtendClass(exampleGroup);
 				if (result == null) result = caseXtendAnnotationTarget(exampleGroup);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -289,6 +292,22 @@ public class SpecSwitch<T>
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Member</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Member</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseXtendMember(XtendMember object)
+	{
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Class</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -305,17 +324,17 @@ public class SpecSwitch<T>
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Member</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Specification</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Member</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Specification</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseXtendMember(XtendMember object)
+	public T caseSpecification(Specification object)
 	{
 		return null;
 	}

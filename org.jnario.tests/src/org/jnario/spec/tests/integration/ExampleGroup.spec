@@ -11,7 +11,7 @@ import static org.jnario.jnario.test.util.SpecExecutor.*
 import static org.junit.Assert.*
 import static org.jnario.jnario.test.util.ResultMatchers.*
 import org.jnario.spec.spec.ExampleGroup
-/**
+/** 
  * @author Sebastian Benz - Initial contribution and API
  */
 describe ExampleGroup {

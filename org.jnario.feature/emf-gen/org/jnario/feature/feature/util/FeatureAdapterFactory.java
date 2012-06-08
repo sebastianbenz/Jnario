@@ -17,6 +17,8 @@ import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendFile;
 import org.eclipse.xtend.core.xtend.XtendMember;
 
+import org.jnario.Specification;
+
 import org.jnario.feature.feature.*;
 
 /**
@@ -171,6 +173,11 @@ public class FeatureAdapterFactory extends AdapterFactoryImpl
 			public Adapter caseXtendClass(XtendClass object)
 			{
 				return createXtendClassAdapter();
+			}
+			@Override
+			public Adapter caseSpecification(Specification object)
+			{
+				return createSpecificationAdapter();
 			}
 			@Override
 			public Adapter caseXtendMember(XtendMember object)
@@ -470,6 +477,21 @@ public class FeatureAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createXtendClassAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.jnario.Specification <em>Specification</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.jnario.Specification
+	 * @generated
+	 */
+	public Adapter createSpecificationAdapter()
 	{
 		return null;
 	}

@@ -12,6 +12,8 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.xtend.core.xtend.XtendPackage;
 
+import org.jnario.JnarioPackage;
+
 /**
  * <!-- begin-user-doc -->
  * The <b>Package</b> for the model.
@@ -78,7 +80,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__ANNOTATIONS = XtendPackage.XTEND_CLASS__ANNOTATIONS;
+	int FEATURE__ANNOTATIONS = JnarioPackage.SPECIFICATION__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -87,7 +89,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__NAME = XtendPackage.XTEND_CLASS__NAME;
+	int FEATURE__NAME = JnarioPackage.SPECIFICATION__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
@@ -96,7 +98,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__ABSTRACT = XtendPackage.XTEND_CLASS__ABSTRACT;
+	int FEATURE__ABSTRACT = JnarioPackage.SPECIFICATION__ABSTRACT;
 
 	/**
 	 * The feature id for the '<em><b>Extends</b></em>' containment reference.
@@ -105,7 +107,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__EXTENDS = XtendPackage.XTEND_CLASS__EXTENDS;
+	int FEATURE__EXTENDS = JnarioPackage.SPECIFICATION__EXTENDS;
 
 	/**
 	 * The feature id for the '<em><b>Implements</b></em>' containment reference list.
@@ -114,7 +116,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__IMPLEMENTS = XtendPackage.XTEND_CLASS__IMPLEMENTS;
+	int FEATURE__IMPLEMENTS = JnarioPackage.SPECIFICATION__IMPLEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Super Types</b></em>' reference list.
@@ -123,7 +125,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__SUPER_TYPES = XtendPackage.XTEND_CLASS__SUPER_TYPES;
+	int FEATURE__SUPER_TYPES = JnarioPackage.SPECIFICATION__SUPER_TYPES;
 
 	/**
 	 * The feature id for the '<em><b>Members</b></em>' containment reference list.
@@ -132,7 +134,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__MEMBERS = XtendPackage.XTEND_CLASS__MEMBERS;
+	int FEATURE__MEMBERS = JnarioPackage.SPECIFICATION__MEMBERS;
 
 	/**
 	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
@@ -141,7 +143,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__TYPE_PARAMETERS = XtendPackage.XTEND_CLASS__TYPE_PARAMETERS;
+	int FEATURE__TYPE_PARAMETERS = JnarioPackage.SPECIFICATION__TYPE_PARAMETERS;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -150,7 +152,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__DESCRIPTION = XtendPackage.XTEND_CLASS_FEATURE_COUNT + 0;
+	int FEATURE__DESCRIPTION = JnarioPackage.SPECIFICATION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Scenarios</b></em>' containment reference list.
@@ -159,7 +161,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__SCENARIOS = XtendPackage.XTEND_CLASS_FEATURE_COUNT + 1;
+	int FEATURE__SCENARIOS = JnarioPackage.SPECIFICATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Background</b></em>' containment reference.
@@ -168,7 +170,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__BACKGROUND = XtendPackage.XTEND_CLASS_FEATURE_COUNT + 2;
+	int FEATURE__BACKGROUND = JnarioPackage.SPECIFICATION_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Feature</em>' class.
@@ -177,7 +179,7 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE_FEATURE_COUNT = XtendPackage.XTEND_CLASS_FEATURE_COUNT + 3;
+	int FEATURE_FEATURE_COUNT = JnarioPackage.SPECIFICATION_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.feature.feature.impl.ScenarioImpl <em>Scenario</em>}' class.

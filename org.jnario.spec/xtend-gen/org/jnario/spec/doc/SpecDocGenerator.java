@@ -328,10 +328,10 @@ public class SpecDocGenerator extends AbstractDocGenerator {
   public CharSequence generate(final XtendMember example, final int level) {
     if (example instanceof Example) {
       return _generate((Example)example, level);
-    } else if (example instanceof ExampleTable) {
-      return _generate((ExampleTable)example, level);
     } else if (example instanceof ExampleGroup) {
       return _generate((ExampleGroup)example, level);
+    } else if (example instanceof ExampleTable) {
+      return _generate((ExampleTable)example, level);
     } else if (example != null) {
       return _generate(example, level);
     } else {

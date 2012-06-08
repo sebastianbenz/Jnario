@@ -23,6 +23,7 @@ import org.jnario.JnarioFactory;
 import org.jnario.JnarioPackage;
 import org.jnario.Should;
 import org.jnario.ShouldThrow;
+import org.jnario.Specification;
 
 /**
  * <!-- begin-user-doc -->
@@ -72,6 +73,13 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 	 * @generated
 	 */
 	private EClass shouldThrowEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass specificationEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -295,6 +303,15 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getSpecification() {
+		return specificationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public JnarioFactory getJnarioFactory() {
 		return (JnarioFactory)getEFactoryInstance();
 	}
@@ -340,6 +357,8 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		shouldThrowEClass = createEClass(SHOULD_THROW);
 		createEReference(shouldThrowEClass, SHOULD_THROW__TYPE);
 		createEReference(shouldThrowEClass, SHOULD_THROW__EXPRESSION);
+
+		specificationEClass = createEClass(SPECIFICATION);
 	}
 
 	/**
@@ -381,6 +400,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		exampleColumnEClass.getESuperTypes().add(theXtendPackage.getXtendField());
 		shouldEClass.getESuperTypes().add(theXbasePackage.getXBinaryOperation());
 		shouldThrowEClass.getESuperTypes().add(theXbasePackage.getXExpression());
+		specificationEClass.getESuperTypes().add(theXtendPackage.getXtendClass());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(exampleTableEClass, ExampleTable.class, "ExampleTable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -407,6 +427,8 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		initEClass(shouldThrowEClass, ShouldThrow.class, "ShouldThrow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getShouldThrow_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 1, 1, ShouldThrow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getShouldThrow_Expression(), theXbasePackage.getXExpression(), null, "expression", null, 1, 1, ShouldThrow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(specificationEClass, Specification.class, "Specification", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

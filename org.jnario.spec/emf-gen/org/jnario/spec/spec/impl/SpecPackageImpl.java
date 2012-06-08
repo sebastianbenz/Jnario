@@ -17,6 +17,8 @@ import org.eclipse.xtext.common.types.TypesPackage;
 
 import org.eclipse.xtext.xbase.XbasePackage;
 
+import org.jnario.JnarioPackage;
+
 import org.jnario.spec.spec.After;
 import org.jnario.spec.spec.Before;
 import org.jnario.spec.spec.Example;
@@ -125,7 +127,7 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 		isInited = true;
 
 		// Initialize simple dependencies
-		XtendPackage.eINSTANCE.eClass();
+		JnarioPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theSpecPackage.createPackageContents();
@@ -359,6 +361,7 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 
 		// Obtain other dependent packages
 		XtendPackage theXtendPackage = (XtendPackage)EPackage.Registry.INSTANCE.getEPackage(XtendPackage.eNS_URI);
+		JnarioPackage theJnarioPackage = (JnarioPackage)EPackage.Registry.INSTANCE.getEPackage(JnarioPackage.eNS_URI);
 		TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
 		XbasePackage theXbasePackage = (XbasePackage)EPackage.Registry.INSTANCE.getEPackage(XbasePackage.eNS_URI);
 
@@ -368,8 +371,8 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 
 		// Add supertypes to classes
 		specFileEClass.getESuperTypes().add(theXtendPackage.getXtendFile());
-		exampleGroupEClass.getESuperTypes().add(theXtendPackage.getXtendClass());
 		exampleGroupEClass.getESuperTypes().add(theXtendPackage.getXtendMember());
+		exampleGroupEClass.getESuperTypes().add(theJnarioPackage.getSpecification());
 		exampleEClass.getESuperTypes().add(this.getTestFunction());
 		beforeEClass.getESuperTypes().add(this.getTestFunction());
 		afterEClass.getESuperTypes().add(this.getTestFunction());

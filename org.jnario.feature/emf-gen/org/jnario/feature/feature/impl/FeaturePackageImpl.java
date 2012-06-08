@@ -594,8 +594,8 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		XtendPackage theXtendPackage = (XtendPackage)EPackage.Registry.INSTANCE.getEPackage(XtendPackage.eNS_URI);
 		JnarioPackage theJnarioPackage = (JnarioPackage)EPackage.Registry.INSTANCE.getEPackage(JnarioPackage.eNS_URI);
+		XtendPackage theXtendPackage = (XtendPackage)EPackage.Registry.INSTANCE.getEPackage(XtendPackage.eNS_URI);
 		XAnnotationsPackage theXAnnotationsPackage = (XAnnotationsPackage)EPackage.Registry.INSTANCE.getEPackage(XAnnotationsPackage.eNS_URI);
 		XbasePackage theXbasePackage = (XbasePackage)EPackage.Registry.INSTANCE.getEPackage(XbasePackage.eNS_URI);
 
@@ -604,7 +604,7 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		featureEClass.getESuperTypes().add(theXtendPackage.getXtendClass());
+		featureEClass.getESuperTypes().add(theJnarioPackage.getSpecification());
 		backgroundEClass.getESuperTypes().add(this.getScenario());
 		scenarioEClass.getESuperTypes().add(theXtendPackage.getXtendClass());
 		stepEClass.getESuperTypes().add(theXtendPackage.getXtendMember());

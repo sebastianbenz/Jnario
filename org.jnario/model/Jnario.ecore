@@ -39,4 +39,5 @@
         eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Specification" abstract="true" eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendClass"/>
 </ecore:EPackage>
