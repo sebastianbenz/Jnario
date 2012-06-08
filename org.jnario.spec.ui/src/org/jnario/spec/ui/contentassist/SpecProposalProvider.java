@@ -11,6 +11,7 @@
 package org.jnario.spec.ui.contentassist;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jdt.core.search.IJavaSearchConstants;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.common.types.xtext.ui.TypeMatchFilters;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
@@ -26,14 +27,13 @@ public class SpecProposalProvider extends AbstractSpecProposalProvider {
 	public void completeExampleGroup_TargetType(EObject model,
 			Assignment assignment, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
-		completeJavaTypes(context, SpecPackage.Literals.EXAMPLE_GROUP__TARGET_TYPE, true, getQualifiedNameValueConverter(), TypeMatchFilters.all(), acceptor);
+		completeJavaTypes(context, SpecPackage.Literals.EXAMPLE_GROUP__TARGET_TYPE, true, getQualifiedNameValueConverter(), new TypeMatchFilters.All(IJavaSearchConstants.TYPE), acceptor);
 	}
 	
 	@Override
 	public void completeMember_TargetType(EObject model, Assignment assignment,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		completeJavaTypes(context, SpecPackage.Literals.EXAMPLE_GROUP__TARGET_TYPE, true, getQualifiedNameValueConverter(), TypeMatchFilters.all(), acceptor);
-
+		completeJavaTypes(context, SpecPackage.Literals.EXAMPLE_GROUP__TARGET_TYPE, true, getQualifiedNameValueConverter(), new TypeMatchFilters.All(IJavaSearchConstants.TYPE), acceptor);
 	}
 	
 	@Override
