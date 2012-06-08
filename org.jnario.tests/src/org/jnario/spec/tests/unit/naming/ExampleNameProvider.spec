@@ -21,7 +21,6 @@ import org.jnario.spec.spec.After
 import org.jnario.spec.naming.ExampleNameProvider
 import org.jnario.ExampleTable
 
-
 @InstantiateWith(typeof(SpecTestInstantiator))
 describe ExampleNameProvider{
  
