@@ -138,7 +138,7 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 			else{
 				// unresolved reference -> take first word until whitespace
 				description = getFirstWord(stepReferenceName(reference, FeaturePackage.Literals.STEP_REFERENCE__REFERENCE));
-				highlightReference(description, reference, FeaturePackage.Literals.STEP_REFERENCE__REFERENCE, FeatureHighlightingConfiguration.STEP_ID);
+				highlightReference(description, reference, FeaturePackage.Literals.STEP_REFERENCE__REFERENCE, FeatureHighlightingConfiguration.STEP_UNRESOLVED_REFERENCE_ID);
 			}
 		}
 		

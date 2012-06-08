@@ -32,6 +32,7 @@ public class FeatureHighlightingConfiguration extends XtendHighlightingConfigura
 	public static final String CODE_BOLD_ID = "CodeBold";
 	public static final String STEP_ID = "Step";
 	public static final String STEP_REFERENCE_ID = "StepReference";
+	public static final String STEP_UNRESOLVED_REFERENCE_ID = "StepUnresolvedReference";
 	public static final String STEP_TEXT_ID = "Step_Text";
 	public static final String EXAMPLE_ID = "Example";
 	public static final String IDENTIFIERS_ID = "Identifiers";
@@ -50,7 +51,9 @@ public class FeatureHighlightingConfiguration extends XtendHighlightingConfigura
 				codeBoldTextStyle());
 		acceptor.acceptDefaultHighlighting(EXAMPLE_ID, "Example",
 				exampleWordStyle());
-		acceptor.acceptDefaultHighlighting(STEP_REFERENCE_ID, "StepReference",
+		acceptor.acceptDefaultHighlighting(STEP_REFERENCE_ID, "Step reference",
+				stepRefKeyWordStyle());
+		acceptor.acceptDefaultHighlighting(STEP_UNRESOLVED_REFERENCE_ID, "Unresolved step reference",
 				stepRefKeyWordStyle());
 		acceptor.acceptDefaultHighlighting(IDENTIFIERS_ID, "Identifiers", identifiersTextStyle());
 	}
@@ -100,6 +103,13 @@ public class FeatureHighlightingConfiguration extends XtendHighlightingConfigura
 		TextStyle textStyle = defaultTextStyle().copy();
 		textStyle.setFontData(fontWithHeight(DEFAULT_FONT_SIZE + 1, SWT.BOLD));
 		textStyle.setColor(new RGB(139, 156, 127));
+		return textStyle;
+	}
+	
+	public TextStyle stepUnresolvedRefKeyWordStyle() {
+		TextStyle textStyle = defaultTextStyle().copy();
+		textStyle.setFontData(fontWithHeight(DEFAULT_FONT_SIZE + 1, SWT.BOLD));
+		textStyle.setColor(new RGB(255, 0, 0));
 		return textStyle;
 	}
 	
