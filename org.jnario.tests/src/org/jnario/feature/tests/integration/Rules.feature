@@ -10,7 +10,7 @@ package org.jnario.feature.tests.integration
 Feature: Junit Rules
 	Scenario: Using JUnit Rules 
 		CharSequence jnarioFile
-		Given a scenario with a rule
+		Given a feature
 			jnarioFile = '''
 				import org.junit.Rule
 				import org.junit.rules.TemporaryFolder

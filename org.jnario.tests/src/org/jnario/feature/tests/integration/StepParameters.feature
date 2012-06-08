@@ -40,7 +40,7 @@ Feature: Step Parameters
 		Then it should be successful
 
 	Scenario: Parameter definition in steps and Background
-		Given a feature with a background
+		Given a feature
 			jnarioFile = 
 			'''
 				package bootstrap 

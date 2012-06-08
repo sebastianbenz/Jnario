@@ -47,7 +47,7 @@ public class FeatureClassNameProvider {
 	}
 
 	public String getClassName(Feature feature){
-		return toClassName(feature.getName(), FEATURE_KEYWORD) + FEATURE_KEYWORD;
+		return getClassName(feature.getName()) + FEATURE_KEYWORD;
 	}
 
 	public String getClassName(Scenario scenario){

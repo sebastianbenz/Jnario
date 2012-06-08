@@ -59,7 +59,7 @@ public class StepArgumentsProviderSpec {
       new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\'Given \"hello\"\'", "list(\"hello\")"), "Given \"hello\"", _list_2),
       new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\'Given \"hello\" and \"world\"\'", "list(\"hello\", \"world\")"), "Given \"hello\" and \"world\"", _list_3),
       new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\'Given \"hello\" and \"world\"\'", "list(\"hello\", \"world\")"), "Given \"hello\" and \"world\"", _list_4),
-      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\'Given a multiline \\n\"hello\"\'", "list(\"hello\")"), "Given a multiline \n\"hello\"", _list_5),
+      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\"Given a multiline \\n\'\'\'hello\'\'\'\"", "list(\"hello\")"), "Given a multiline \n\'\'\'hello\'\'\'", _list_5),
       new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\'Given a multiline \\n 1+1 => 2 \"hello\"\'", "list()"), "Given a multiline \n 1+1 => 2 \"hello\"", _list_6)
     );
   }

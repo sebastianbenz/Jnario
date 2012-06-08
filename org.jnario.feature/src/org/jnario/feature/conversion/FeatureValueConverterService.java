@@ -7,11 +7,13 @@
  *******************************************************************************/
 package org.jnario.feature.conversion;
 
+import org.eclipse.xtext.conversion.IValueConverter;
+import org.eclipse.xtext.conversion.ValueConverter;
 import org.jnario.conversion.JnarioValueConverterService;
 
 public class FeatureValueConverterService extends JnarioValueConverterService {
 	
-//	private FeatureValueConverter featureValueConverter = FeatureValueConverter.create("Feature:");
+	private FeatureValueConverter featureValueConverter = FeatureValueConverter.create("Feature:");
 //	private IValueConverter<String> backgroundValueConverter = FeatureValueConverter.create("Background:");
 //	private IValueConverter<String> scenarioValueConverter = FeatureValueConverter.create("Scenario:");
 //	private IValueConverter<String> givenValueConverter = FeatureValueConverter.create("Given ");
@@ -36,10 +38,10 @@ public class FeatureValueConverterService extends JnarioValueConverterService {
 		return super.toString(value, lexerRule);
 	}
 	
-//	@ValueConverter(rule = "FEATURE_TEXT")
-//	public IValueConverter<String> getFeatureConverter() {
-//		return featureValueConverter;
-//	}
+	@ValueConverter(rule = "FEATURE_TEXT")
+	public IValueConverter<String> getFeatureConverter() {
+		return featureValueConverter;
+	}
 //	@ValueConverter(rule = "BACKGROUND_TEXT")
 //	public IValueConverter<String> geBackgroundConverter() {
 //		return backgroundValueConverter;

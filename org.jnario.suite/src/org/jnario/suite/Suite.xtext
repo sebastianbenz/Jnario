@@ -1,0 +1,56 @@
+grammar org.jnario.suite.Suite with org.eclipse.xtext.xbase.Xbase
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
+import "http://www.eclipse.org/xtend" as xtend
+import "http://www.org/Jnario" as jnario
+
+generate suite "http://www.jnario.org/suite/Suite"
+
+SuiteFile returns xtend::XtendFile: 
+    ('package' package=QualifiedName ';'?)?
+	(imports+=Import)*
+	(xtendClasses+=Suite)*;
+
+Import returns xtend::XtendImport: 
+	'import'
+		(importedType=[types::JvmType|QualifiedName] 
+		| importedNamespace=QualifiedNameWithWildCard) ';'?
+;
+
+
+QualifiedNameWithWildCard :
+	QualifiedName  '.' '*';
+
+Suite returns xtend::XtendClass:
+	{Suite}
+	name=SUITE_NAME
+	specs+=Reference*
+;
+
+Reference:
+	'-' (SpecReference | PatternReference) // | ReferenceExpression
+;
+
+PatternReference:
+	pattern=PATTERN
+;
+
+//ReferenceExpression:
+//	pattern=XClosure
+//;
+
+SpecReference:
+	spec=[jnario::Specification|STRING] text=TEXT?
+;
+
+
+QualifiedName:
+  ValidID (=>'.' ValidID)*;
+
+terminal SUITE_NAME: 'Suite' ':' !'-'*;
+terminal PATTERN: '\\'  !('\r'|'\n')* '\r'? '\n';
+terminal TEXT: ':' !'-'+ ;
+terminal ID:
+	'^'? ('a'..'z'|'A'..'Z'|'$'|'_') ('a'..'z'|'A'..'Z'|'$'|'_'|'0'..'9')*;
+

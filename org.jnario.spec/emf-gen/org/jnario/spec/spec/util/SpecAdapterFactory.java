@@ -124,11 +124,6 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
 				return createXtendAnnotationTargetAdapter();
 			}
 			@Override
-			public Adapter caseXtendMember(XtendMember object)
-			{
-				return createXtendMemberAdapter();
-			}
-			@Override
 			public Adapter caseXtendClass(XtendClass object)
 			{
 				return createXtendClassAdapter();
@@ -137,6 +132,11 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
 			public Adapter caseSpecification(Specification object)
 			{
 				return createSpecificationAdapter();
+			}
+			@Override
+			public Adapter caseXtendMember(XtendMember object)
+			{
+				return createXtendMemberAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object)
@@ -281,21 +281,6 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.xtend.core.xtend.XtendMember <em>Member</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.xtend.core.xtend.XtendMember
-	 * @generated
-	 */
-	public Adapter createXtendMemberAdapter()
-	{
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.xtend.core.xtend.XtendClass <em>Class</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -321,6 +306,21 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createSpecificationAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.xtend.core.xtend.XtendMember <em>Member</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.xtend.core.xtend.XtendMember
+	 * @generated
+	 */
+	public Adapter createXtendMemberAdapter()
 	{
 		return null;
 	}

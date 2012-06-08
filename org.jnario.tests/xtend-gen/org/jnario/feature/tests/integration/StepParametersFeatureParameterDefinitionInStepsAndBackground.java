@@ -15,8 +15,8 @@ import org.junit.runner.RunWith;
 public class StepParametersFeatureParameterDefinitionInStepsAndBackground {
   @Test
   @Order(0)
-  @Named("Given a feature with a background")
-  public void givenAFeatureWithABackground() {
+  @Named("Given a feature")
+  public void givenAFeature() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap ");
     _builder.newLine();

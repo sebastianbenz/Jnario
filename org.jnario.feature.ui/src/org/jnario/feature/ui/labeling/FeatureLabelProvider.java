@@ -73,6 +73,6 @@ public class FeatureLabelProvider extends XtendLabelProvider {
 	}
 	
 	public String text(Feature element) {
-		return element.getName();
+		return "Feature: " + element.getName();
 	}
 }

@@ -11,6 +11,8 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.xtend.core.xtend.XtendPackage;
 
+import org.jnario.JnarioPackage;
+
 /**
  * <!-- begin-user-doc -->
  * The <b>Package</b> for the model.
@@ -123,16 +125,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP__ANNOTATIONS = XtendPackage.XTEND_MEMBER__ANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_GROUP__ANNOTATION_INFO = XtendPackage.XTEND_MEMBER__ANNOTATION_INFO;
+	int EXAMPLE_GROUP__ANNOTATIONS = JnarioPackage.SPECIFICATION__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -141,7 +134,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP__NAME = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 0;
+	int EXAMPLE_GROUP__NAME = JnarioPackage.SPECIFICATION__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
@@ -150,7 +143,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP__ABSTRACT = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 1;
+	int EXAMPLE_GROUP__ABSTRACT = JnarioPackage.SPECIFICATION__ABSTRACT;
 
 	/**
 	 * The feature id for the '<em><b>Extends</b></em>' containment reference.
@@ -159,7 +152,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP__EXTENDS = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 2;
+	int EXAMPLE_GROUP__EXTENDS = JnarioPackage.SPECIFICATION__EXTENDS;
 
 	/**
 	 * The feature id for the '<em><b>Implements</b></em>' containment reference list.
@@ -168,7 +161,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP__IMPLEMENTS = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 3;
+	int EXAMPLE_GROUP__IMPLEMENTS = JnarioPackage.SPECIFICATION__IMPLEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Super Types</b></em>' reference list.
@@ -177,7 +170,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP__SUPER_TYPES = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 4;
+	int EXAMPLE_GROUP__SUPER_TYPES = JnarioPackage.SPECIFICATION__SUPER_TYPES;
 
 	/**
 	 * The feature id for the '<em><b>Members</b></em>' containment reference list.
@@ -186,7 +179,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP__MEMBERS = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 5;
+	int EXAMPLE_GROUP__MEMBERS = JnarioPackage.SPECIFICATION__MEMBERS;
 
 	/**
 	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
@@ -195,7 +188,16 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP__TYPE_PARAMETERS = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 6;
+	int EXAMPLE_GROUP__TYPE_PARAMETERS = JnarioPackage.SPECIFICATION__TYPE_PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_GROUP__ANNOTATION_INFO = JnarioPackage.SPECIFICATION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Preamble</b></em>' attribute.
@@ -204,7 +206,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP__PREAMBLE = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 7;
+	int EXAMPLE_GROUP__PREAMBLE = JnarioPackage.SPECIFICATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Target Type</b></em>' containment reference.
@@ -213,7 +215,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP__TARGET_TYPE = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 8;
+	int EXAMPLE_GROUP__TARGET_TYPE = JnarioPackage.SPECIFICATION_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Target Operation</b></em>' reference.
@@ -222,7 +224,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP__TARGET_OPERATION = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 9;
+	int EXAMPLE_GROUP__TARGET_OPERATION = JnarioPackage.SPECIFICATION_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Example Group</em>' class.
@@ -231,7 +233,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP_FEATURE_COUNT = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 10;
+	int EXAMPLE_GROUP_FEATURE_COUNT = JnarioPackage.SPECIFICATION_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.spec.spec.impl.TestFunctionImpl <em>Test Function</em>}' class.

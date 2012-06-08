@@ -15,8 +15,8 @@ import org.junit.runner.RunWith;
 public class JunitRulesFeatureUsingJUnitRules {
   @Test
   @Order(0)
-  @Named("Given a scenario with a rule")
-  public void givenAScenarioWithARule() {
+  @Named("Given a feature")
+  public void givenAFeature() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("import org.junit.Rule");
     _builder.newLine();

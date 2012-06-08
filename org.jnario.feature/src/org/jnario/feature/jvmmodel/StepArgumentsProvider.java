@@ -24,7 +24,7 @@ import com.google.inject.Inject;
  */
 public class StepArgumentsProvider {
 	
-	public static final Pattern ARG_PATTERN = Pattern.compile("\"([^\"]*)\"");
+	public static final Pattern ARG_PATTERN = Pattern.compile("(\"([^\"]*)\"|'''([^\"]*)''')");
 	private final StepNameProvider stepNameProvider;
 	
 	@Inject 

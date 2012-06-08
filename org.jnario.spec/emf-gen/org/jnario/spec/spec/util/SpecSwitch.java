@@ -113,8 +113,8 @@ public class SpecSwitch<T>
 			{
 				ExampleGroup exampleGroup = (ExampleGroup)theEObject;
 				T result = caseExampleGroup(exampleGroup);
-				if (result == null) result = caseXtendMember(exampleGroup);
 				if (result == null) result = caseSpecification(exampleGroup);
+				if (result == null) result = caseXtendMember(exampleGroup);
 				if (result == null) result = caseXtendClass(exampleGroup);
 				if (result == null) result = caseXtendAnnotationTarget(exampleGroup);
 				if (result == null) result = defaultCase(theEObject);
@@ -292,22 +292,6 @@ public class SpecSwitch<T>
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Member</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Member</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseXtendMember(XtendMember object)
-	{
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Class</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -335,6 +319,22 @@ public class SpecSwitch<T>
 	 * @generated
 	 */
 	public T caseSpecification(Specification object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Member</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Member</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseXtendMember(XtendMember object)
 	{
 		return null;
 	}

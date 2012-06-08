@@ -56,8 +56,7 @@ public class FeatureJavaValidator extends AbstractFeatureJavaValidator {
 	
 	@Check(CheckType.FAST)
 	public void checkFeaturesHaveAName(Feature feature){
-		String name = removeKeywords(feature.getName());
-		if(isNullOrEmpty(name)){
+		if(isNullOrEmpty(feature.getName())){
 			error("Features should have a description", XtendPackage.Literals.XTEND_CLASS__NAME);
 		}
 	}

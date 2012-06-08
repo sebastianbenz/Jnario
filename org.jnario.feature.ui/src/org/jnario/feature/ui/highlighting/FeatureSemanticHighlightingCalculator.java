@@ -111,14 +111,14 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 			if(step.getName() != null){
 				description = getFirstWord(step.getName());
 				highlightStep(description, step, FeaturePackage.Literals.STEP__NAME);
-			}
-			else if(step instanceof StepReference){
+			}else if(step instanceof StepReference){
 				StepReference ref = (StepReference) step;
 				highlightFirstWordOfReference(ref, ref.getReference());
 			}
 			highlightIdentifiers(step);
 			return Boolean.TRUE;
 		}
+
 
 		private void highlightStep(String string, EObject object, EAttribute attribute) {
 			acceptor.addPosition(offset(object, attribute), string.length(),

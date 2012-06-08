@@ -29,7 +29,7 @@ import org.jnario.Specification;
  * @model
  * @generated
  */
-public interface ExampleGroup extends XtendMember, Specification
+public interface ExampleGroup extends Specification, XtendMember
 {
 	/**
 	 * Returns the value of the '<em><b>Preamble</b></em>' attribute.
