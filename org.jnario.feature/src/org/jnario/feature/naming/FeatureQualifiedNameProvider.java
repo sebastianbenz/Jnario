@@ -9,6 +9,9 @@ package org.jnario.feature.naming;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.naming.XtendQualifiedNameProvider;
+import org.eclipse.xtend.core.xtend.XtendFile;
+import org.eclipse.xtext.EcoreUtil2;
+import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.jnario.feature.feature.Step;
 
@@ -22,20 +25,39 @@ public class FeatureQualifiedNameProvider extends XtendQualifiedNameProvider {
 	private StepNameProvider stepNameProvider;
 	
 	@Inject
-	public FeatureQualifiedNameProvider(StepNameProvider stepNameProvider) {
+	public FeatureQualifiedNameProvider(StepNameProvider stepNameProvider, IQualifiedNameConverter qualifiedNameConverter) {
 		this.stepNameProvider = stepNameProvider;
 	}
 	
 	@Override
 	public QualifiedName getFullyQualifiedName(EObject obj) {
 		if (obj instanceof Step) {
-			String name = ((Step)obj).getName();
+			Step step = (Step)obj;
+			String name = step.getName();
 			if(name == null){
 				return null;
 			}
-			name = stepNameProvider.removeKeywordsAndArguments(name);
-			return QualifiedName.create(name);
+			name = getName(name);
+			return toQualifiedName(step, name);
 		}
 		return super.getFullyQualifiedName(obj);
 	}
+
+	private QualifiedName toQualifiedName(EObject obj, String name) {
+		XtendFile file = EcoreUtil2.getContainerOfType(obj, XtendFile.class);
+		String[] parentSegments = file.getPackage().split("\\.");
+		String[] segments = new String[parentSegments.length + 1];
+		System.arraycopy(parentSegments, 0, segments, 0, parentSegments.length);
+		segments[parentSegments.length] = name;
+		return QualifiedName.create(segments);
+	}
+
+	private String getName(String name) {
+		name = stepNameProvider.removeKeywordsAndArguments(name);
+		if(name.endsWith(".")){
+			name = name.substring(0, name.length()-1);
+		}
+		return name;
+	}
+	
 }
