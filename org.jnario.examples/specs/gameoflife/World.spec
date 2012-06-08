@@ -20,7 +20,7 @@ import org.jnario.lib.Should
 
 @InstantiateWith(typeof(MockitoInstantiator))
 describe World{
-
+ 
 	@Mock WorldVisitor worldVisitor
 	AliveCell anAliveCell = aliveCell()
 	AliveCell anotherAliveCell = aliveCell()

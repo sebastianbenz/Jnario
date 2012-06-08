@@ -10,7 +10,7 @@ package gameoflife
 import java.util.Map
 
 import static gameoflife.DeadCell.*
-
+ 
 class World {
 	
 	Map<Position, Cell> cells = newHashMap()
