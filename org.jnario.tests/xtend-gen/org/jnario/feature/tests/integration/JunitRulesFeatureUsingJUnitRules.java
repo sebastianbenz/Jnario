@@ -17,38 +17,41 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(FeatureRunner.class)
-@Named("Scenario: Using multiline Strings")
+@Named("Scenario: Using JUnit Rules")
 @SuppressWarnings("all")
-public class StepParametersFeatureUsingMultilineStrings {
+public class JunitRulesFeatureUsingJUnitRules {
   @Test
   @Order(0)
   @Named("Given a feature")
   public void givenAFeature() {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("package bootstrap ");
+    _builder.append("import org.junit.Rule");
     _builder.newLine();
-    _builder.append("Feature: Test feature");
+    _builder.append("import org.junit.rules.TemporaryFolder");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("Feature:  JUnit Rules");
+    _builder.newLine();
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("Scenario: using multiline strings in step definitions");
+    _builder.append("Scenario: Using rules in a Feature");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("String x");
+    _builder.append("@Rule");
+    _builder.newLine();
+    _builder.append("  \t\t");
+    _builder.append("public TemporaryFolder folder = new TemporaryFolder");
+    _builder.newLine();
+    _builder.append("\t");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("Given the multine string: ");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("\"hello\"");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("x = args.first");
+    _builder.append("Given a feature with a rule");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("Then it should be \"hello\"");
+    _builder.append("Then the rule should be initialized");
     _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.append("x should be args.first");
+    _builder.append("folder.root should not be null\t");
     _builder.newLine();
     this.jnarioFile = _builder;
   }
@@ -56,8 +59,8 @@ public class StepParametersFeatureUsingMultilineStrings {
   @Test
   @Order(1)
   @Ignore
-  @Named("[PENDING] When this feature is executed")
-  public void whenThisFeatureIsExecuted() {
+  @Named("[PENDING] When it is executed")
+  public void whenItIsExecuted() {
     
   }
   

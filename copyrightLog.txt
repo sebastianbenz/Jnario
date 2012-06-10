@@ -1,28 +1,35 @@
 File has no extension.  File UNCHANGED.
      /org.jnario.lib.tests/target/work/configuration/org.eclipse.osgi/bundles/85/data/SCR
+     /org.jnario.standalone.tests/target/work/configuration/org.eclipse.osgi/bundles/85/data/SCR
+     /org.jnario.tests/target/work/configuration/org.eclipse.osgi/bundles/85/data/SCR
 Could not interpret copyright comment.  File UNCHANGED.
      /org.jnario/target/classes/org/jnario/doc/prettify.js
      /org.jnario/target/classes/org/jnario/doc/lang-jnario.js
      /org.jnario/src/org/jnario/validation/JnarioJavaValidator.java
+     /org.jnario/src/org/jnario/validation/JnarioIssueCodes.java
      /org.jnario/src/org/jnario/util/Strings.java
      /org.jnario/src/org/jnario/util/Nodes.java
      /org.jnario/src/org/jnario/util/JnarioSwitch.java
      /org.jnario/src/org/jnario/util/JnarioAdapterFactory.java
      /org.jnario/src/org/jnario/typing/JnarioTypeProvider.java
      /org.jnario/src/org/jnario/serializer/JnarioContextFinder.java
+     /org.jnario/src/org/jnario/scoping/JnarioScopeProvider.java
      /org.jnario/src/org/jnario/scoping/JnarioExtensionClassNameProvider.java
      /org.jnario/src/org/jnario/linking/JnarioLinkingService.java
      /org.jnario/src/org/jnario/linking/JnarioLazyLinker.java
      /org.jnario/src/org/jnario/jvmmodel/JnarioDispatchUtil.java
      /org.jnario/src/org/jnario/jvmmodel/ExtendedJvmTypesBuilder.java
+     /org.jnario/src/org/jnario/jvmmodel/DoubleArrowSupport.java
      /org.jnario/src/org/jnario/impl/SpecificationImpl.java
      /org.jnario/src/org/jnario/impl/ShouldThrowImpl.java
+     /org.jnario/src/org/jnario/impl/ShouldImpl.java
      /org.jnario/src/org/jnario/impl/JnarioPackageImpl.java
      /org.jnario/src/org/jnario/impl/JnarioFactoryImpl.java
      /org.jnario/src/org/jnario/impl/ExampleTableImpl.java
      /org.jnario/src/org/jnario/impl/ExampleRowImpl.java
      /org.jnario/src/org/jnario/impl/ExampleColumnImpl.java
      /org.jnario/src/org/jnario/impl/AssertionImpl.java
+     /org.jnario/src/org/jnario/generator/JnarioJavaIoFileSystemAccess.java
      /org.jnario/src/org/jnario/generator/JnarioEncodingProvider.java
      /org.jnario/src/org/jnario/doc/prettify.js
      /org.jnario/src/org/jnario/doc/lang-jnario.js
@@ -34,6 +41,7 @@ Could not interpret copyright comment.  File UNCHANGED.
      /org.jnario/src/org/jnario/compiler/JnarioCompiler.java
      /org.jnario/src/org/jnario/Specification.java
      /org.jnario/src/org/jnario/ShouldThrow.java
+     /org.jnario/src/org/jnario/Should.java
      /org.jnario/src/org/jnario/PatchedEcoreGenerator.java
      /org.jnario/src/org/jnario/JnarioPackage.java
      /org.jnario/src/org/jnario/JnarioFactory.java
@@ -47,6 +55,7 @@ Could not interpret copyright comment.  File UNCHANGED.
      /org.jnario.feature/src/org/jnario/feature/validation/FeatureJavaValidator.java
      /org.jnario.feature/src/org/jnario/feature/validation/FeatureClasspathBasedChecks.java
      /org.jnario.feature/src/org/jnario/feature/scoping/FeatureScopeProvider.java
+     /org.jnario.feature/src/org/jnario/feature/resource/FeatureLocationInFileProvider.java
      /org.jnario.feature/src/org/jnario/feature/parser/FeatureTokenSource.java
      /org.jnario.feature/src/org/jnario/feature/parser/CustomFeatureParser.java
      /org.jnario.feature/src/org/jnario/feature/naming/FeatureQualifiedNameProvider.java
@@ -59,6 +68,7 @@ Could not interpret copyright comment.  File UNCHANGED.
      /org.jnario.feature/src/org/jnario/feature/generator/FeatureJvmModelGenerator.java
      /org.jnario.feature/src/org/jnario/feature/generator/FeatureCompiler.java
      /org.jnario.feature/src/org/jnario/feature/formatting/FeatureFormatter.java
+     /org.jnario.feature/src/org/jnario/feature/feature/impl/ScenarioImplCustom.java
      /org.jnario.feature/src/org/jnario/feature/feature/impl/FeatureFileImplCustom.java
      /org.jnario.feature/src/org/jnario/feature/conversion/FeatureValueConverterService.java
      /org.jnario.feature/src/org/jnario/feature/conversion/FeatureValueConverter.java
@@ -155,62 +165,76 @@ Could not interpret copyright comment.  File UNCHANGED.
      /org.jnario.lib/src/org/jnario/lib/ExampleTable.java
      /org.jnario.lib/src/org/jnario/lib/Each.java
      /org.jnario.lib/src/org/jnario/lib/AbstractTestInstantiator.java
+     /org.jnario.lib/install.bat
      /org.jnario.lib.tests/src/org/jnario/lib/tests/TestRule.java
      /org.jnario.lib.tests/src/org/jnario/lib/tests/TestInstantiatorTest.java
+     /org.jnario.lib.tests/src/org/jnario/lib/tests/NameProviderTest.java
      /org.jnario.lib.tests/src/org/jnario/lib/tests/ExampleRunnerTest.java
      /org.jnario.lib.tests/src/org/jnario/lib/tests/ExampleGroupRunnerTest.java
-     /org.jnario.spec/src/org/jnario/spec/validation/SpecJavaValidator.java
-     /org.jnario.spec/src/org/jnario/spec/validation/SpecClassPathBasedChecks.java
-     /org.jnario.spec/src/org/jnario/spec/spec/impl/TestFunctionImplCustom.java
-     /org.jnario.spec/src/org/jnario/spec/spec/impl/SpecFileImplCustom.java
-     /org.jnario.spec/src/org/jnario/spec/spec/impl/SpecFactoryImplCustom.java
-     /org.jnario.spec/src/org/jnario/spec/spec/impl/ExampleImplCustom.java
-     /org.jnario.spec/src/org/jnario/spec/spec/impl/ExampleGroupImplCustom.java
-     /org.jnario.spec/src/org/jnario/spec/scoping/SpecScopeProvider.java
-     /org.jnario.spec/src/org/jnario/spec/naming/OperationNameProvider.java
-     /org.jnario.spec/src/org/jnario/spec/naming/ExampleNameProvider.java
-     /org.jnario.spec/src/org/jnario/spec/jvmmodel/Constants.java
-     /org.jnario.spec/src/org/jnario/spec/formatting/SpecFormatter.java
-     /org.jnario.spec/src/org/jnario/spec/conversion/SpecValueConverterService.java
-     /org.jnario.spec/src/org/jnario/spec/conversion/MethodNameConverter.java
-     /org.jnario.spec/src/org/jnario/spec/SpecStandaloneSetup.java
-     /org.jnario.spec/src/org/jnario/spec/SpecRuntimeModule.java
-     /org.jnario.spec/emf-gen/org/jnario/spec/spec/util/SpecSwitch.java
-     /org.jnario.spec/emf-gen/org/jnario/spec/spec/util/SpecAdapterFactory.java
-     /org.jnario.spec/emf-gen/org/jnario/spec/spec/impl/TestFunctionImpl.java
-     /org.jnario.spec/emf-gen/org/jnario/spec/spec/impl/SpecPackageImpl.java
-     /org.jnario.spec/emf-gen/org/jnario/spec/spec/impl/SpecFileImpl.java
-     /org.jnario.spec/emf-gen/org/jnario/spec/spec/impl/SpecFactoryImpl.java
-     /org.jnario.spec/emf-gen/org/jnario/spec/spec/impl/ExampleImpl.java
-     /org.jnario.spec/emf-gen/org/jnario/spec/spec/impl/ExampleGroupImpl.java
-     /org.jnario.spec/emf-gen/org/jnario/spec/spec/impl/BeforeImpl.java
-     /org.jnario.spec/emf-gen/org/jnario/spec/spec/impl/AfterImpl.java
-     /org.jnario.spec/emf-gen/org/jnario/spec/spec/TestFunction.java
-     /org.jnario.spec/emf-gen/org/jnario/spec/spec/SpecPackage.java
-     /org.jnario.spec/emf-gen/org/jnario/spec/spec/SpecFile.java
-     /org.jnario.spec/emf-gen/org/jnario/spec/spec/SpecFactory.java
-     /org.jnario.spec/emf-gen/org/jnario/spec/spec/ExampleGroup.java
-     /org.jnario.spec/emf-gen/org/jnario/spec/spec/Example.java
-     /org.jnario.spec/emf-gen/org/jnario/spec/spec/Before.java
-     /org.jnario.spec/emf-gen/org/jnario/spec/spec/After.java
-     /org.jnario.spec.ui/src/org/jnario/spec/ui/wizards/WizardMessages.java
-     /org.jnario.spec.ui/src/org/jnario/spec/ui/wizards/SpecCreator.java
-     /org.jnario.spec.ui/src/org/jnario/spec/ui/wizards/NewSpecWizardPageTwo.java
-     /org.jnario.spec.ui/src/org/jnario/spec/ui/wizards/NewSpecWizardPageOne.java
-     /org.jnario.spec.ui/src/org/jnario/spec/ui/wizards/NewSpecWizard.java
-     /org.jnario.spec.ui/src/org/jnario/spec/ui/refactoring/SpecRenameStrategy.java
-     /org.jnario.spec.ui/src/org/jnario/spec/ui/quickfix/SpecQuickfixProvider.java
-     /org.jnario.spec.ui/src/org/jnario/spec/ui/outline/SpecOutlineTreeProvider.java
-     /org.jnario.spec.ui/src/org/jnario/spec/ui/launching/SpecLaunchShortcutUtil.java
-     /org.jnario.spec.ui/src/org/jnario/spec/ui/launching/SpecJavaElementDelegateAdapterFactory.java
-     /org.jnario.spec.ui/src/org/jnario/spec/ui/launching/SpecJavaElementDelegate.java
-     /org.jnario.spec.ui/src/org/jnario/spec/ui/launching/SpecJUnitPDELaunchShortcut.java
-     /org.jnario.spec.ui/src/org/jnario/spec/ui/launching/SpecJUnitLaunchShortcut.java
-     /org.jnario.spec.ui/src/org/jnario/spec/ui/labeling/SpecLabelProvider.java
-     /org.jnario.spec.ui/src/org/jnario/spec/ui/labeling/SpecDescriptionLabelProvider.java
-     /org.jnario.spec.ui/src/org/jnario/spec/ui/highlighting/SpecHighlightingCalculator.java
-     /org.jnario.spec.ui/src/org/jnario/spec/ui/generator/SpecGenerator.java
-     /org.jnario.spec.ui/src/org/jnario/spec/ui/editor/SpecFoldingRegionProvider.java
-     /org.jnario.spec.ui/src/org/jnario/spec/ui/doc/SpecHoverProvider.java
-     /org.jnario.spec.ui/src/org/jnario/spec/ui/contentassist/SpecProposalProvider.java
-     /org.jnario.spec.ui/src/org/jnario/spec/ui/SpecUiModule.java
+     /org.jnario.standalone/src/org/jnario/spec/compiler/batch/SpecBatchCompiler.java
+     /org.jnario.standalone/src/org/jnario/feature/compiler/batch/FeatureBatchCompiler.java
+     /org.jnario.standalone/src/org/jnario/compiler/JnarioBatchCompiler.java
+     /org.jnario.suite/src/org/jnario/suite/validation/SuiteJavaValidator.java
+     /org.jnario.suite/src/org/jnario/suite/scoping/SuiteScopeProvider.java
+     /org.jnario.suite/src/org/jnario/suite/parser/SuiteTokenSource.java
+     /org.jnario.suite/src/org/jnario/suite/parser/CustomSuiteParser.java
+     /org.jnario.suite/src/org/jnario/suite/formatting/SuiteFormatter.java
+     /org.jnario.suite/src/org/jnario/suite/SuiteStandaloneSetup.java
+     /org.jnario.suite/src/org/jnario/suite/SuiteRuntimeModule.java
+     /org.jnario.suite/emf-gen/org/jnario/suite/suite/util/SuiteSwitch.java
+     /org.jnario.suite/emf-gen/org/jnario/suite/suite/util/SuiteAdapterFactory.java
+     /org.jnario.suite/emf-gen/org/jnario/suite/suite/impl/SuitePackageImpl.java
+     /org.jnario.suite/emf-gen/org/jnario/suite/suite/impl/SuiteImpl.java
+     /org.jnario.suite/emf-gen/org/jnario/suite/suite/impl/SuiteFileImpl.java
+     /org.jnario.suite/emf-gen/org/jnario/suite/suite/impl/SuiteFactoryImpl.java
+     /org.jnario.suite/emf-gen/org/jnario/suite/suite/impl/SpecReferenceImpl.java
+     /org.jnario.suite/emf-gen/org/jnario/suite/suite/impl/ReferenceImpl.java
+     /org.jnario.suite/emf-gen/org/jnario/suite/suite/impl/PatternReferenceImpl.java
+     /org.jnario.suite/emf-gen/org/jnario/suite/suite/SuitePackage.java
+     /org.jnario.suite/emf-gen/org/jnario/suite/suite/SuiteFile.java
+     /org.jnario.suite/emf-gen/org/jnario/suite/suite/SuiteFactory.java
+     /org.jnario.suite/emf-gen/org/jnario/suite/suite/Suite.java
+     /org.jnario.suite/emf-gen/org/jnario/suite/suite/SpecReference.java
+     /org.jnario.suite/emf-gen/org/jnario/suite/suite/Reference.java
+     /org.jnario.suite/emf-gen/org/jnario/suite/suite/PatternReference.java
+     /org.jnario.suite.ui/src/org/jnario/suite/ui/quickfix/SuiteQuickfixProvider.java
+     /org.jnario.suite.ui/src/org/jnario/suite/ui/outline/SuiteOutlineTreeProvider.java
+     /org.jnario.suite.ui/src/org/jnario/suite/ui/labeling/SuiteLabelProvider.java
+     /org.jnario.suite.ui/src/org/jnario/suite/ui/labeling/SuiteDescriptionLabelProvider.java
+     /org.jnario.suite.ui/src/org/jnario/suite/ui/highlighting/SuiteTokenHighlighting.java
+     /org.jnario.suite.ui/src/org/jnario/suite/ui/highlighting/SuiteHighlightingConfiguration.java
+     /org.jnario.suite.ui/src/org/jnario/suite/ui/contentassist/SuiteProposalProvider.java
+     /org.jnario.suite.ui/src/org/jnario/suite/ui/SuiteUiModule.java
+     /org.jnario.tests/src/org/jnario/spec/tests/unit/naming/OperationNamesExample.java
+     /org.jnario.tests/src/org/jnario/spec/tests/integration/ExtensionExample.java
+     /org.jnario.tests/src/org/jnario/jnario/test/util/ToStringWrapper.java
+     /org.jnario.tests/src/org/jnario/jnario/test/util/SuiteTestInstantiator.java
+     /org.jnario.tests/src/org/jnario/jnario/test/util/SpecTestRunner.java
+     /org.jnario.tests/src/org/jnario/jnario/test/util/SpecTestInstantiator.java
+     /org.jnario.tests/src/org/jnario/jnario/test/util/SpecStandaloneTestSetup.java
+     /org.jnario.tests/src/org/jnario/jnario/test/util/SpecExecutor.java
+     /org.jnario.tests/src/org/jnario/jnario/test/util/RuntimeTest.java
+     /org.jnario.tests/src/org/jnario/jnario/test/util/ResultMatchers.java
+     /org.jnario.tests/src/org/jnario/jnario/test/util/Resources.java
+     /org.jnario.tests/src/org/jnario/jnario/test/util/Query.java
+     /org.jnario.tests/src/org/jnario/jnario/test/util/Predicates2.java
+     /org.jnario.tests/src/org/jnario/jnario/test/util/ModelStore.java
+     /org.jnario.tests/src/org/jnario/jnario/test/util/Matchers.java
+     /org.jnario.tests/src/org/jnario/jnario/test/util/IUriProvider.java
+     /org.jnario.tests/src/org/jnario/jnario/test/util/GuiceBasedTestInstantiator.java
+     /org.jnario.tests/src/org/jnario/jnario/test/util/FeatureTestSetup.java
+     /org.jnario.tests/src/org/jnario/jnario/test/util/FeatureTestRunner.java
+     /org.jnario.tests/src/org/jnario/jnario/test/util/FeatureTestInstantiator.java
+     /org.jnario.tests/src/org/jnario/jnario/test/util/FeatureStandaloneTestSetup.java
+     /org.jnario.tests/src/org/jnario/jnario/test/util/FeatureJavaCompiler.java
+     /org.jnario.tests/src/org/jnario/jnario/test/util/FeatureExecutor.java
+     /org.jnario.tests/src/org/jnario/jnario/test/util/Examples.java
+     /org.jnario.tests/src/org/jnario/jnario/test/util/ClassPathUriProviderBuilder.java
+     /org.jnario.tests/src/org/jnario/jnario/test/util/ClassPathUriProvider.java
+     /org.jnario.tests/src/org/jnario/jnario/test/util/BundleClassPathProvider.java
+     /org.jnario.tests/src/org/jnario/jnario/test/util/BehaviorTestRunner.java
+     /org.jnario.tests/src/org/jnario/jnario/test/util/BehaviorExecutor.java
+     /org.jnario.tests/src/org/jnario/feature/tests/unit/parser/examples/Examples.java
+     /org.jnario.tests/src/org/jnario/Activator.java
+     /org.jnario.tests/doc-gen/js/prettify.js
+     /org.jnario.tests/doc-gen/js/lang-jnario.js
