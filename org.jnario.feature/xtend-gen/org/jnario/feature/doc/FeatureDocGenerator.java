@@ -8,9 +8,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.XBlockExpression;
-import org.eclipse.xtext.xbase.XExpression;
-import org.eclipse.xtext.xbase.XStringLiteral;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.ExampleTable;
 import org.jnario.doc.AbstractDocGenerator;
@@ -20,7 +18,6 @@ import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
-import org.jnario.feature.feature.StepExpression;
 import org.jnario.feature.naming.FeatureClassNameProvider;
 import org.jnario.feature.naming.StepNameProvider;
 import org.jnario.util.Strings;
@@ -161,9 +158,6 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     String _format = this.format(step);
     _builder.append(_format, "");
     _builder.newLineIfNotEmpty();
-    CharSequence _addCodeBlock = this.addCodeBlock(step);
-    _builder.append(_addCodeBlock, "");
-    _builder.newLineIfNotEmpty();
     return _builder;
   }
   
@@ -171,6 +165,18 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     String _xblockexpression = null;
     {
       String result = this._stepNameProvider.nameOf(step);
+      String codeBlock = "";
+      final int index = result.indexOf("\n");
+      int _minus = (-1);
+      boolean _notEquals = (index != _minus);
+      if (_notEquals) {
+        String _substring = result.substring(index);
+        String _println = InputOutput.<String>println(_substring);
+        codeBlock = _println;
+        String _substring_1 = result.substring(0, index);
+        String _println_1 = InputOutput.<String>println(_substring_1);
+        result = _println_1;
+      }
       String _firstWord = Strings.getFirstWord(result);
       String _plus = ("(" + _firstWord);
       String _plus_1 = (_plus + ")");
@@ -180,32 +186,31 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
       String _replaceAll = _plus_2.replaceAll("\"(.*?)\"", "<code>$1</code>");
       result = _replaceAll;
       String _markdown2Html = this.markdown2Html(result);
-      String _result = result = _markdown2Html;
-      _xblockexpression = (_result);
+      result = _markdown2Html;
+      CharSequence _addCodeBlock = this.addCodeBlock(codeBlock);
+      String _plus_3 = (result + _addCodeBlock);
+      _xblockexpression = (_plus_3);
     }
     return _xblockexpression;
   }
   
-  public CharSequence addCodeBlock(final Step step) {
-    StepExpression _stepExpression = step.getStepExpression();
-    XBlockExpression _blockExpression = _stepExpression==null?(XBlockExpression)null:_stepExpression.getBlockExpression();
-    final EList<XExpression> expressions = _blockExpression==null?(EList<XExpression>)null:_blockExpression.getExpressions();
-    boolean _equals = Objects.equal(expressions, null);
+  public CharSequence addCodeBlock(final String code) {
+    int _length = code.length();
+    boolean _equals = (_length == 0);
     if (_equals) {
       return "";
     }
-    Iterable<XStringLiteral> _filter = Iterables.<XStringLiteral>filter(expressions, XStringLiteral.class);
-    for (final XStringLiteral expr : _filter) {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("<pre>");
-      String _value = expr.getValue();
-      String _normalize = this._whiteSpaceNormalizer.normalize(_value);
-      String _codeToHtml = this.codeToHtml(_normalize);
-      _builder.append(_codeToHtml, "");
-      _builder.append("</pre>");
-      return _builder;
-    }
-    return null;
+    String codeBlock = code.trim();
+    int _length_1 = codeBlock.length();
+    int _minus = (_length_1 - 1);
+    String _substring = codeBlock.substring(1, _minus);
+    codeBlock = _substring;
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<pre>");
+    String _codeToHtml = this.codeToHtml(codeBlock);
+    _builder.append(_codeToHtml, "");
+    _builder.append("</pre>");
+    return _builder;
   }
   
   public CharSequence generate(final Object scenario) {

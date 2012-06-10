@@ -12,7 +12,6 @@ import static org.jnario.feature.ui.highlighting.FeatureHighlightingConfiguratio
 import static org.jnario.util.Strings.getFirstWord;
 
 import java.util.List;
-import java.util.regex.Matcher;
 
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EAttribute;
@@ -42,6 +41,8 @@ import org.jnario.feature.feature.StepReference;
 import org.jnario.feature.feature.util.FeatureSwitch;
 import org.jnario.feature.jvmmodel.StepArgumentsProvider;
 import org.jnario.ui.highlighting.JnarioHighlightingCalculator;
+
+import com.google.inject.Inject;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -164,7 +165,7 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 
 		private void highlightIdentifiers(Step step){
 			String name;
-			int offset;
+			final int offset;
 			if(step instanceof StepReference){
 				name = stepReferenceName(step, FeaturePackage.Literals.STEP_REFERENCE__REFERENCE);
 				offset = offset(step, FeaturePackage.Literals.STEP_REFERENCE__REFERENCE);
@@ -174,10 +175,11 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 				offset = offset(step, FeaturePackage.Literals.STEP__NAME);
 			}
 			if(name != null){
-				Matcher m = StepArgumentsProvider.ARG_PATTERN.matcher(name);
-				while (m.find()) {
-					acceptor.addPosition(offset + m.start(1), m.end(1) - m.start(1), FeatureHighlightingConfiguration.IDENTIFIERS_ID);
-				} 
+				argumentsProvider.findStepArguments(step, new StepArgumentsProvider.ArgumentAcceptor() {
+					public void accept(String arg, int localOffset, int length) {
+						acceptor.addPosition(offset + localOffset, length, FeatureHighlightingConfiguration.IDENTIFIERS_ID);
+					}
+				});
 			}
 		}
 
@@ -205,6 +207,9 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 			}
 		}
 	}
+	
+	@Inject
+	private StepArgumentsProvider argumentsProvider;
 
 
 	protected EObject root(XtextResource resource) {

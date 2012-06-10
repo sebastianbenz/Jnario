@@ -137,7 +137,8 @@ public abstract class AbstractDocGenerator implements IGenerator {
   public String codeToHtml(final String code) {
     String _normalize = this._whiteSpaceNormalizer.normalize(code);
     String _html = this.toHtml(_normalize);
-    return _html;
+    String _replace = _html.replace("\t", "  ");
+    return _replace;
   }
   
   public String toHtml(final String input) {

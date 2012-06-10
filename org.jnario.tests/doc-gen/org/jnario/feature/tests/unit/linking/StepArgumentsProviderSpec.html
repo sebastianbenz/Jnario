@@ -59,7 +59,7 @@
 		<td>list("hello", "world")</td>
 	</tr>
 	<tr>
-		<td>"Given a multiline \n'''hello'''"</td>
+		<td>'Given a multiline \n"hello"'</td>
 		<td>list("hello")</td>
 	</tr>
 	<tr>
@@ -71,7 +71,10 @@
 </li><li><p  id="extracts_arguments_from_step_descriptions"><strong>extracts arguments from step descriptions</strong>
 <pre class="prettyprint lang-spec">
 examples.forEach[
-	subject.findStepArguments(create(step)) =&gt; expectedArgs
+	val singleOrDoubleQuotes = list(step, step?.replaceAll('"', "'"))
+	for(each : singleOrDoubleQuotes){
+		subject.findStepArguments(create(each)) =&gt; expectedArgs
+	}
 ]</pre>
 </p>
 </li></ul>

@@ -75,23 +75,28 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 	
 	def dispatch generate(Step step)'''
 		«step.format»
-		«step.addCodeBlock»
 	'''
 
 	def format(Step step){
 		var result = step.nameOf
+		var codeBlock = ""
+		val index = result.indexOf('\n')
+		if(index != -1){
+			codeBlock = println(result.substring(index))
+			result = println(result.substring(0, index))
+		}
 		result = result.replaceFirst("(" + result.firstWord + ")", "<strong>$1</strong>")
 		result = (" " + result).replaceAll("\"(.*?)\"", "<code>$1</code>")
 		result = result.markdown2Html
+		result + addCodeBlock(codeBlock)
 	}
 
-	def CharSequence addCodeBlock(Step step){
-		val expressions = step.stepExpression?.blockExpression?.expressions
-		if(expressions == null){
+	def CharSequence addCodeBlock(String code){
+		if(code.length == 0){
 			return ""
 		}
-		for(expr : expressions.filter(typeof(XStringLiteral))){
-			return '''<pre>«expr.value.normalize.codeToHtml»</pre>'''
-		}
+		var codeBlock = code.trim
+		codeBlock = codeBlock.substring(1, codeBlock.length-1)
+		return '''<pre>«codeBlock.codeToHtml»</pre>'''
 	} 
 }

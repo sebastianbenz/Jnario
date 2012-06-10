@@ -43,6 +43,7 @@ import org.jnario.Assertion;
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.runner.Named;
 import org.jnario.spec.spec.SpecPackage;
+import org.jnario.suite.suite.Suite;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 import org.junit.runner.JUnitCore;
@@ -167,6 +168,7 @@ public abstract class BehaviorExecutor {
 		javaCompiler.addClassPathOfClass(Type.class);
 		javaCompiler.addClassPathOfClass(Token.class);
 		javaCompiler.addClassPathOfClass(Strings.class);
+		javaCompiler.addClassPathOfClass(Suite.class);
 	}
 
 	public Result run(EObject object) {

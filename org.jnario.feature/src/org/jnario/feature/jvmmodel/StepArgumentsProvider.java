@@ -24,7 +24,22 @@ import com.google.inject.Inject;
  */
 public class StepArgumentsProvider {
 	
-	public static final Pattern ARG_PATTERN = Pattern.compile("(\"([^\"]*)\"|'''([^\"]*)''')");
+	private final class StringArgumentsAcceptor implements
+			ArgumentAcceptor {
+		private final List<String> arguments = newArrayList();
+
+		public void accept(String arg, int offset, int length) {
+			arguments.add(arg);
+		}
+	}
+
+	public interface ArgumentAcceptor {
+		void accept(String arg, int offset, int length);
+	}
+	
+	public static final Pattern ARG_PATTERN = Pattern.compile("(\"([^\"]*)\"|'([^\']*)')");
+	private static final int[] GROUPS = {2, 3};
+	
 	private final StepNameProvider stepNameProvider;
 	
 	@Inject 
@@ -32,18 +47,24 @@ public class StepArgumentsProvider {
 		this.stepNameProvider = stepNameProvider;
 	}
 
-	public List<String> findStepArguments(Step step) {
-		List<String> arguments = newArrayList();
-		extractStringArguments(step, arguments);
-		return arguments;
-	}
-
-	private void extractStringArguments(Step step, List<String> arguments) {
+	public void findStepArguments(Step step, ArgumentAcceptor acceptor) {
 		String name = stepNameProvider.nameOf(step);
 		Matcher matcher = ARG_PATTERN.matcher(name);
 		while(matcher.find()){
-			arguments.add(matcher.group(1));
+			for (int i : GROUPS) {
+				if(matcher.group(i) != null){
+					acceptor.accept(matcher.group(i), matcher.start(), matcher.end() - matcher.start());
+				}
+			}
 		}
 	}
+	
+	public List<String> findStepArguments(Step step) {
+		StringArgumentsAcceptor acceptor = new StringArgumentsAcceptor();
+		findStepArguments(step, acceptor);
+		return acceptor.arguments;
+	}
+	
+	
 
 }

@@ -23,13 +23,16 @@ describe StepArgumentsProvider {
 		| 'Given "hello"'     						| list("hello") 			|
 		| 'Given "hello" and "world"'				| list("hello", "world") 	|
 		| 'Given "hello" and "world"'				| list("hello", "world") 	|
-		| "Given a multiline \n'''hello'''"			| list("hello") 			|
+		| 'Given a multiline \n"hello"'				| list("hello") 			|
 		| 'Given a multiline \n 1+1 => 2 "hello"' 	| list() 					|
 	}
 
 	fact "extracts arguments from step descriptions"{
 		examples.forEach[
-			subject.findStepArguments(create(step)) => expectedArgs
+			val singleOrDoubleQuotes = list(step, step?.replaceAll('"', "'"))
+			for(each : singleOrDoubleQuotes){
+				subject.findStepArguments(create(each)) => expectedArgs
+			}
 		]
 	}
  

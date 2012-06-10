@@ -128,7 +128,7 @@ public class FeatureHighlightingConfiguration extends XtendHighlightingConfigura
 	public TextStyle identifiersTextStyle(){
 		TextStyle textStyle = defaultTextStyle().copy();
 		textStyle.setColor(new RGB(204, 0, 0));
-		textStyle.setFontData(fontWithHeight(DEFAULT_FONT_SIZE, SWT.NORMAL));
+//		textStyle.setFontData(fontWithHeight(DEFAULT_FONT_SIZE, SWT.NORMAL));
 		return textStyle;
 	}
 

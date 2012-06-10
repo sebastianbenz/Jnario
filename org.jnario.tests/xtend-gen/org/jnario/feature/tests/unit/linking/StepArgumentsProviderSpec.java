@@ -59,7 +59,7 @@ public class StepArgumentsProviderSpec {
       new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\'Given \"hello\"\'", "list(\"hello\")"), "Given \"hello\"", _list_2),
       new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\'Given \"hello\" and \"world\"\'", "list(\"hello\", \"world\")"), "Given \"hello\" and \"world\"", _list_3),
       new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\'Given \"hello\" and \"world\"\'", "list(\"hello\", \"world\")"), "Given \"hello\" and \"world\"", _list_4),
-      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\"Given a multiline \\n\'\'\'hello\'\'\'\"", "list(\"hello\")"), "Given a multiline \n\'\'\'hello\'\'\'", _list_5),
+      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\'Given a multiline \\n\"hello\"\'", "list(\"hello\")"), "Given a multiline \n\"hello\"", _list_5),
       new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\'Given a multiline \\n 1+1 => 2 \"hello\"\'", "list()"), "Given a multiline \n 1+1 => 2 \"hello\"", _list_6)
     );
   }
@@ -72,16 +72,20 @@ public class StepArgumentsProviderSpec {
   public void extractsArgumentsFromStepDescriptions() throws Exception {
     final Procedure1<StepArgumentsProviderSpecExamples> _function = new Procedure1<StepArgumentsProviderSpecExamples>() {
         public void apply(final StepArgumentsProviderSpecExamples it) {
-          Step _create = StepArgumentsProviderSpec.this.create(it.step);
-          List<String> _findStepArguments = StepArgumentsProviderSpec.this.subject.findStepArguments(_create);
-          boolean _doubleArrow = Should.operator_doubleArrow(_findStepArguments, it.expectedArgs);
-          Assert.assertTrue("\nExpected subject.findStepArguments(create(step)) => expectedArgs but"
-           + "\n     subject.findStepArguments(create(step)) is " + _findStepArguments
-           + "\n     subject is " + StepArgumentsProviderSpec.this.subject
-           + "\n     create(step) is " + _create
-           + "\n     step is " + "\"" + it.step + "\""
-           + "\n     expectedArgs is " + it.expectedArgs + "\n", _doubleArrow);
-          
+          String _replaceAll = it.step==null?(String)null:it.step.replaceAll("\"", "\'");
+          final List<String> singleOrDoubleQuotes = JnarioCollectionLiterals.<String>list(it.step, _replaceAll);
+          for (final String each : singleOrDoubleQuotes) {
+            Step _create = StepArgumentsProviderSpec.this.create(each);
+            List<String> _findStepArguments = StepArgumentsProviderSpec.this.subject.findStepArguments(_create);
+            boolean _doubleArrow = Should.operator_doubleArrow(_findStepArguments, it.expectedArgs);
+            Assert.assertTrue("\nExpected subject.findStepArguments(create(each)) => expectedArgs but"
+             + "\n     subject.findStepArguments(create(each)) is " + _findStepArguments
+             + "\n     subject is " + StepArgumentsProviderSpec.this.subject
+             + "\n     create(each) is " + _create
+             + "\n     each is " + "\"" + each + "\""
+             + "\n     expectedArgs is " + it.expectedArgs + "\n", _doubleArrow);
+            
+          }
         }
       };
     ExampleTableIterators.<StepArgumentsProviderSpecExamples>forEach(this.examples, _function);

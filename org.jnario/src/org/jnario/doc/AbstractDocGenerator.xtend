@@ -80,7 +80,7 @@ abstract class AbstractDocGenerator implements IGenerator {
 	}
 	
 	def codeToHtml(String code){
-		code.normalize.toHtml
+		code.normalize.toHtml.replace("\t", "  ")
 	}
 	
 	def toHtml(String input){
