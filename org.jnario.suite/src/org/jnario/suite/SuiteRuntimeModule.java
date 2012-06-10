@@ -11,16 +11,28 @@
 package org.jnario.suite;
 
 import org.eclipse.xtext.conversion.IValueConverterService;
+import org.eclipse.xtext.generator.OutputConfigurationProvider;
 import org.eclipse.xtext.parser.IParser;
-import org.jnario.feature.parser.CustomFeatureParser;
+import org.jnario.doc.AbstractDocGenerator;
+import org.jnario.doc.DocOutputConfigurationProvider;
 import org.jnario.suite.conversion.SuiteValueConverterService;
+import org.jnario.suite.doc.SuiteDocGenerator;
+import org.jnario.suite.generator.SuiteGenerator;
 import org.jnario.suite.parser.CustomSuiteParser;
+
+import com.google.inject.Binder;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeModule {
 
+	@Override
+	public void configure(Binder binder) {
+		super.configure(binder);
+		binder.bind(AbstractDocGenerator.class).to(SuiteDocGenerator.class);
+	}
+	
 	@Override
 	public Class<? extends IValueConverterService> bindIValueConverterService() {
 		return SuiteValueConverterService.class;
@@ -30,6 +42,15 @@ public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeMod
 	public Class<? extends IParser> bindIParser() {
 		return CustomSuiteParser.class;
 	}
+	
+	public Class<? extends org.eclipse.xtext.generator.IGenerator> bindIGenerator() {
+		return SuiteGenerator.class;
+	}
+
+	public Class<? extends OutputConfigurationProvider> bindOutputConfigurationProvider() {
+		return DocOutputConfigurationProvider.class;
+	}
+	
 	
 	
 }

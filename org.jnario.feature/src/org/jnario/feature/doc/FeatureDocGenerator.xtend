@@ -9,8 +9,8 @@ package org.jnario.feature.doc
 
 import com.google.inject.Inject
 import org.eclipse.xtend.core.xtend.XtendClass
-import org.eclipse.xtext.xbase.XStringLiteral
 import org.jnario.doc.AbstractDocGenerator
+import org.jnario.doc.WhiteSpaceNormalizer
 import org.jnario.feature.feature.Feature
 import org.jnario.feature.feature.Scenario
 import org.jnario.feature.feature.Step
@@ -18,9 +18,8 @@ import org.jnario.feature.naming.FeatureClassNameProvider
 import org.jnario.feature.naming.StepNameProvider
 
 import static org.jnario.doc.HtmlFile.*
+
 import static extension org.jnario.util.Strings.*
-import org.jnario.doc.WhiteSpaceNormalizer
-import org.jnario.doc.HtmlFile
 
 class FeatureDocGenerator extends AbstractDocGenerator {
 	@Inject extension FeatureClassNameProvider 

@@ -43,8 +43,12 @@ import com.google.inject.Injector;
 @SuppressWarnings("restriction")
 public class FeatureExecutor extends BehaviorExecutor{
 	
+	private static FeatureInjectorProvider injectorProvider;
+
 	public static Result execute(CharSequence content) {
-		FeatureInjectorProvider injectorProvider = new FeatureInjectorProvider();
+		if(injectorProvider == null){
+			injectorProvider = new FeatureInjectorProvider();
+		}
 		try {
 			injectorProvider.setupRegistry();
 			Injector injector = new FeatureTestSetup().createInjectorAndDoEMFRegistration();

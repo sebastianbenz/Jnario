@@ -88,12 +88,12 @@ import org.eclipse.xtext.xbase.ui.editor.XbaseEditor;
 import org.eclipse.xtext.xbase.ui.hover.XbaseDeclarativeHoverSignatureProvider;
 import org.eclipse.xtext.xbase.ui.jvmmodel.navigation.DerivedMemberAwareEditorOpener;
 import org.eclipse.xtext.xbase.ui.launching.JavaElementDelegate;
-import org.jnario.spec.ui.doc.SpecHoverProvider;
 import org.jnario.spec.ui.editor.SpecFoldingRegionProvider;
 import org.jnario.spec.ui.generator.SpecGenerator;
 import org.jnario.spec.ui.highlighting.SpecHighlightingCalculator;
 import org.jnario.spec.ui.launching.SpecJavaElementDelegate;
 import org.jnario.ui.builder.JnarioSourceRelativeFileSystemAccess;
+import org.jnario.ui.doc.JnarioHoverProvider;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -225,7 +225,7 @@ public class SpecUiModule extends org.jnario.spec.ui.AbstractSpecUiModule {
 
 	@Override
 	public Class<? extends IEObjectHoverProvider> bindIEObjectHoverProvider() {
-		return SpecHoverProvider.class;
+		return JnarioHoverProvider.class;
 	}
 	
 	public Class<? extends EclipseResourceFileSystemAccess2> bindEclipseResourceFileSystemAccess2() {

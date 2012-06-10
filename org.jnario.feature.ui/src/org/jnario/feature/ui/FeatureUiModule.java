@@ -32,7 +32,6 @@ import org.eclipse.xtend.ide.hover.XtendHoverDocumentationProvider;
 import org.eclipse.xtend.ide.hover.XtendHoverProvider;
 import org.eclipse.xtend.ide.hover.XtendHoverSignatureProvider;
 import org.eclipse.xtend.ide.hyperlinking.XtendHyperlinkHelper;
-import org.eclipse.xtend.ide.outline.ShowSyntheticMembersContribution;
 import org.eclipse.xtend.ide.outline.XtendOutlineNodeComparator;
 import org.eclipse.xtend.ide.outline.XtendOutlinePage;
 import org.eclipse.xtend.ide.outline.XtendQuickOutlineFilterAndSorter;
@@ -65,7 +64,6 @@ import org.eclipse.xtext.ui.editor.hover.html.IEObjectHoverDocumentationProvider
 import org.eclipse.xtext.ui.editor.hyperlinking.IHyperlinkHelper;
 import org.eclipse.xtext.ui.editor.model.ITokenTypeToPartitionTypeMapper;
 import org.eclipse.xtext.ui.editor.occurrences.IOccurrenceComputer;
-import org.eclipse.xtext.ui.editor.outline.actions.IOutlineContribution;
 import org.eclipse.xtext.ui.editor.outline.impl.OutlineFilterAndSorter.IComparator;
 import org.eclipse.xtext.ui.editor.outline.quickoutline.QuickOutlineFilterAndSorter;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
@@ -94,6 +92,7 @@ import org.jnario.feature.ui.highlighting.FeatureTokenHighlighting;
 import org.jnario.feature.ui.launching.FeatureJavaElementDelegate;
 import org.jnario.feature.ui.parser.CustomFeatureLexer;
 import org.jnario.ui.builder.JnarioSourceRelativeFileSystemAccess;
+import org.jnario.ui.doc.JnarioHoverProvider;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -222,11 +221,6 @@ public class FeatureUiModule extends org.jnario.feature.ui.AbstractFeatureUiModu
 		return XtendHyperlinkHelper.class;
 	}
 
-	@Override
-	public Class<? extends IEObjectHoverProvider> bindIEObjectHoverProvider() {
-		return XtendHoverProvider.class;
-	}
-	
 	public Class<? extends EclipseResourceFileSystemAccess2> bindEclipseResourceFileSystemAccess2() {
 		return JnarioSourceRelativeFileSystemAccess.class;
 	}
@@ -320,5 +314,10 @@ public class FeatureUiModule extends org.jnario.feature.ui.AbstractFeatureUiModu
 	@Override
 	public void configureContentAssistLexerProvider(Binder binder) {
 		binder.bind(org.jnario.feature.ui.contentassist.antlr.internal.InternalFeatureLexer.class).toProvider(org.eclipse.xtext.parser.antlr.LexerProvider.create(CustomFeatureLexer.class));
+	}
+	
+	@Override
+	public Class<? extends IEObjectHoverProvider> bindIEObjectHoverProvider() {
+		return JnarioHoverProvider.class;
 	}
 }

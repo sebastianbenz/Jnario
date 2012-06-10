@@ -13,12 +13,14 @@ package org.jnario.suite.ui;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtend.ide.contentassist.ImportingTypesProposalProvider;
 import org.eclipse.xtext.common.types.xtext.ui.ITypesProposalProvider;
+import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 import org.jnario.suite.ui.highlighting.SuiteHighlightingCalculator;
 import org.jnario.suite.ui.highlighting.SuiteHighlightingConfiguration;
 import org.jnario.suite.ui.highlighting.SuiteTokenHighlighting;
+import org.jnario.suite.ui.hover.SuiteHoverProvider;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -46,5 +48,10 @@ public class SuiteUiModule extends org.jnario.suite.ui.AbstractSuiteUiModule {
 	
 	public Class<? extends AbstractAntlrTokenToAttributeIdMapper> bindAbstractAntlrTokenToAttributeIdMapper() {
 		return SuiteTokenHighlighting.class;
+	}
+	
+	@Override
+	public Class<? extends IEObjectHoverProvider> bindIEObjectHoverProvider() {
+		return SuiteHoverProvider.class;
 	}
 }

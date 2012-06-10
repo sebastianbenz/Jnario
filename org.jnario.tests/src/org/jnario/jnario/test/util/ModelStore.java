@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.util.StringInputStream;
+import org.jnario.suite.suite.Suite;
 import org.junit.Assert;
 
 import com.google.common.base.Joiner;
@@ -60,6 +61,11 @@ public class ModelStore implements Iterable<EObject> {
 		} catch (IOException ex) {
 			ex.printStackTrace();
 			Assert.fail(ex.getMessage());
+		}
+		Resources.addContainerStateAdapter(resourceSet);
+		EcoreUtil.resolveAll(resourceSet);
+		if(!resource.getErrors().isEmpty()){
+			System.err.println(Joiner.on("\n").join(resource.getErrors()));
 		}
 		return resource;
 	}
@@ -107,8 +113,16 @@ public class ModelStore implements Iterable<EObject> {
 		return parse("Spec" + resourceSet.getResources().size() + ".spec", input.toString());
 	}
 	
+	public Resource parseSuite(CharSequence input) {
+		return parse("Suite" + resourceSet.getResources().size() + ".suite", input.toString());
+	}
+	
 	public Query query(){
 		return Query.query(this);
+	}
+	
+	public Suite firstSuite(){
+		return query().first(Suite.class);
 	}
 
 }

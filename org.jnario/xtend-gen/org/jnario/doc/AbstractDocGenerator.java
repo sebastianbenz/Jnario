@@ -171,7 +171,7 @@ public abstract class AbstractDocGenerator implements IGenerator {
     return result;
   }
   
-  public String root(final XtendClass xtendClass) {
+  public String root(final EObject xtendClass) {
     final XtendFile specFile = EcoreUtil2.<XtendFile>getContainerOfType(xtendClass, XtendFile.class);
     final String packageName = specFile.getPackage();
     boolean _equals = Objects.equal(packageName, null);

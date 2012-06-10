@@ -6,10 +6,17 @@ package org.jnario.suite.generator
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
+import com.google.inject.Inject
+import org.eclipse.xtext.xbase.compiler.JvmModelGenerator
+import org.jnario.suite.doc.SuiteDocGenerator
 
 class SuiteGenerator implements IGenerator {
 	
-	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		//TODO implement me
+	@Inject JvmModelGenerator jvmModelGenerator;
+	@Inject SuiteDocGenerator docGenerator;
+	
+	override doGenerate(Resource input, IFileSystemAccess fsa) {
+		jvmModelGenerator.doGenerate(input, fsa);
+		docGenerator.doGenerate(input, fsa);
 	}
 }

@@ -17,6 +17,7 @@ import org.jnario.suite.suite.SpecReference;
 import org.jnario.suite.suite.Suite;
 import org.jnario.suite.suite.SuitePackage;
 import org.jnario.suite.ui.highlighting.SuiteHighlightingConfiguration;
+import org.jnario.util.Strings;
 
 @SuppressWarnings("all")
 public class SuiteHighlightingCalculator extends XbaseHighlightingCalculator {
@@ -43,8 +44,14 @@ public class SuiteHighlightingCalculator extends XbaseHighlightingCalculator {
   protected void _highlight(final Suite suite, final IHighlightedPositionAcceptor acceptor) {
     final ICompositeNode node = NodeModelUtils.getNode(suite);
     String _name = suite.getName();
-    int _indexOf = _name.indexOf("\n");
-    final int lineEnd = (_indexOf + 7);
+    int lineEnd = Strings.indexOfNewLine(_name);
+    int _minus = (-1);
+    boolean _equals = (lineEnd == _minus);
+    if (_equals) {
+      String _name_1 = suite.getName();
+      int _length = _name_1.length();
+      lineEnd = _length;
+    }
     int _offset = node.getOffset();
     acceptor.addPosition(_offset, lineEnd, SuiteHighlightingConfiguration.SUITE_ID);
   }

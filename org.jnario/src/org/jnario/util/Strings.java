@@ -28,6 +28,14 @@ public class Strings extends org.eclipse.xtext.util.Strings{
 		return count;
 	}
 	
+	public static String trimFirstLine(String s){
+		int index = indexOfNewLine(s);
+		if(index == -1){
+			return "";
+		}
+		return s.substring(index+1);
+	}
+	
 	public static int indexOfNewLine(String s){
 		return indexOf(s, '\r', '\n');
 	}
@@ -114,5 +122,37 @@ public class Strings extends org.eclipse.xtext.util.Strings{
 			}
 		}
 		return -1;
+	}
+	
+	public static String firstLine(String string){
+		int lineEnd = indexOf(string, '\r', '\n');
+		if(lineEnd == -1){
+			return string;
+		}
+		return string.substring(0, lineEnd-1);
+	}
+
+	public static String toClassName(String originalName){
+		if(originalName == null){
+			return null;
+		}
+		return toFirstUpper(convertToCamelCase(originalName));
+	}
+
+	public static String toClassName(String name, String keyword) {
+		if(isEmpty(name)){
+			name = "";
+		}
+		String keyWithSeparator = keyword + ": ";
+		if(name.indexOf(keyWithSeparator) == -1){
+			name = "";
+		}else{
+			name = name.substring(keyWithSeparator.length());
+		}
+		name = name.trim();
+		if(name.length() == 0){
+			name = keyword;
+		}
+		return toClassName(name);
 	}
 }

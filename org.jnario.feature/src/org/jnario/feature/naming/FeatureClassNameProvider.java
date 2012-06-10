@@ -8,9 +8,6 @@
 package org.jnario.feature.naming;
 
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
-import static org.eclipse.xtext.util.Strings.isEmpty;
-import static org.eclipse.xtext.util.Strings.toFirstUpper;
-import static org.jnario.util.Strings.convertToCamelCase;
 
 import org.eclipse.emf.ecore.EObject;
 import org.jnario.ExampleRow;
@@ -18,6 +15,7 @@ import org.jnario.ExampleTable;
 import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.Scenario;
+import org.jnario.util.Strings;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -47,16 +45,16 @@ public class FeatureClassNameProvider {
 	}
 
 	public String getClassName(Feature feature){
-		return getClassName(feature.getName()) + FEATURE_KEYWORD;
+		return Strings.toClassName(feature.getName()) + FEATURE_KEYWORD;
 	}
 
 	public String getClassName(Scenario scenario){
-		return parentFeatureName(scenario) + toClassName(scenario.getName(), "Scenario");
+		return parentFeatureName(scenario) + Strings.toClassName(scenario.getName(), "Scenario");
 	}
 
 	public String getClassName(ExampleTable exampleTable){
 		Scenario scenario = getContainerOfType(exampleTable, Scenario.class);
-		return getClassName(scenario) + toClassName(exampleTable.getName(), "Examples");
+		return getClassName(scenario) + Strings.toClassName(exampleTable.getName(), "Examples");
 	}
 	
 	public String getClassName(ExampleRow row){
@@ -65,32 +63,11 @@ public class FeatureClassNameProvider {
 	}
 	
 	public String getClassName(Background background){
-		return parentFeatureName(background) + toClassName(background.getName(), "Background");
-	}
-
-	private String toClassName(String name, String keyword) {
-		if(isEmpty(name)){
-			name = "";
-		}
-		String keyWithSeparator = keyword + ": ";
-		if(name.indexOf(keyWithSeparator) == -1){
-			name = "";
-		}else{
-			name = name.substring(keyWithSeparator.length());
-		}
-		name = name.trim();
-		if(name.length() == 0){
-			name = keyword;
-		}
-		return getClassName(name);
+		return parentFeatureName(background) + Strings.toClassName(background.getName(), "Background");
 	}
 
 	private String parentFeatureName(EObject obj) {
 		Feature feature = getContainerOfType(obj, Feature.class);
 		return getClassName(feature);
-	}
-
-	private String getClassName(String originalName){
-		return toFirstUpper(convertToCamelCase(originalName));
 	}
 }

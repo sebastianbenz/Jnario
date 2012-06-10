@@ -6,22 +6,24 @@ import org.eclipse.xtext.nodemodel.INode
 import java.util.regex.Pattern
 import java.util.regex.PatternSyntaxException
 import org.eclipse.xtext.util.Strings
+import static extension com.google.common.base.Strings.*
 
-@Data
 class PatternValueConverter implements IValueConverter<String> {
 	
 	override toString(String string) throws ValueConverterException {
-		var result = ""
-		if(string != null){
-			result = "- \\" + string + "\\" + Strings::newLine
+		var result = string
+		if(result == null){
+			result = ""
 		}
-		result
+		"\\" + result + "\\" + Strings::newLine
 	}
 	
 	override toValue(String string, INode node) throws ValueConverterException {
 		try{
-			var result = string.substring(1).trim
-			result = result.substring(1, result.length-1)
+			if(string.nullOrEmpty) return null
+			var begin = string.indexOf("\\")
+			var end = string.lastIndexOf("\\")
+			val result = string.substring(begin+1, end)
 			Pattern::compile(result)
 			return result
 		}catch(PatternSyntaxException e){

@@ -38,7 +38,6 @@ Import returns xtend::XtendImport:
 Feature returns xtend::XtendClass:
 	{Feature}
 	(annotations+=XAnnotation)*
-	
 	name=FEATURE_TEXT
 	description=TEXT?
 	background=Background?

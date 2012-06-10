@@ -106,7 +106,7 @@ abstract class AbstractDocGenerator implements IGenerator {
 	}
 	
 	
-	def root(XtendClass xtendClass){
+	def root(EObject xtendClass){
 		val specFile = EcoreUtil2::getContainerOfType(xtendClass, typeof(XtendFile))
 		val packageName= specFile.^package
 		if(packageName == null){

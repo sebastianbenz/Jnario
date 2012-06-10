@@ -1,16 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2012 BMW Car IT and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
 package org.jnario.suite.serializer;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtend.core.xtend.XtendFile;
 import org.eclipse.xtend.core.xtend.XtendImport;
 import org.eclipse.xtend.core.xtend.XtendPackage;
 import org.eclipse.xtext.common.types.JvmFormalParameter;
@@ -57,17 +49,23 @@ import org.eclipse.xtext.xbase.XUnaryOperation;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.XWhileExpression;
 import org.eclipse.xtext.xbase.XbasePackage;
-import org.eclipse.xtext.xbase.serializer.XbaseSemanticSequencer;
+import org.eclipse.xtext.xbase.annotations.serializer.XbaseWithAnnotationsSemanticSequencer;
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationElementValueBinaryOperation;
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationElementValuePair;
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationValueArray;
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
 import org.eclipse.xtext.xtype.XFunctionTypeRef;
 import org.eclipse.xtext.xtype.XtypePackage;
 import org.jnario.suite.services.SuiteGrammarAccess;
 import org.jnario.suite.suite.PatternReference;
 import org.jnario.suite.suite.SpecReference;
 import org.jnario.suite.suite.Suite;
+import org.jnario.suite.suite.SuiteFile;
 import org.jnario.suite.suite.SuitePackage;
 
 @SuppressWarnings("all")
-public class SuiteSemanticSequencer extends XbaseSemanticSequencer {
+public class SuiteSemanticSequencer extends XbaseWithAnnotationsSemanticSequencer {
 
 	@Inject
 	private SuiteGrammarAccess grammarAccess;
@@ -91,6 +89,12 @@ public class SuiteSemanticSequencer extends XbaseSemanticSequencer {
 			case SuitePackage.SUITE:
 				if(context == grammarAccess.getSuiteRule()) {
 					sequence_Suite(context, (Suite) semanticObject); 
+					return; 
+				}
+				else break;
+			case SuitePackage.SUITE_FILE:
+				if(context == grammarAccess.getSuiteFileRule()) {
+					sequence_SuiteFile(context, (SuiteFile) semanticObject); 
 					return; 
 				}
 				else break;
@@ -149,6 +153,40 @@ public class SuiteSemanticSequencer extends XbaseSemanticSequencer {
 				if(context == grammarAccess.getJvmArgumentTypeReferenceRule() ||
 				   context == grammarAccess.getJvmWildcardTypeReferenceRule()) {
 					sequence_JvmWildcardTypeReference(context, (JvmWildcardTypeReference) semanticObject); 
+					return; 
+				}
+				else break;
+			}
+		else if(semanticObject.eClass().getEPackage() == XAnnotationsPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case XAnnotationsPackage.XANNOTATION:
+				if(context == grammarAccess.getXAnnotationRule() ||
+				   context == grammarAccess.getXAnnotationElementValueRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationAccess().getXAnnotationElementValueBinaryOperationLeftOperandAction_1_0()) {
+					sequence_XAnnotation(context, (XAnnotation) semanticObject); 
+					return; 
+				}
+				else break;
+			case XAnnotationsPackage.XANNOTATION_ELEMENT_VALUE_BINARY_OPERATION:
+				if(context == grammarAccess.getXAnnotationElementValueRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationAccess().getXAnnotationElementValueBinaryOperationLeftOperandAction_1_0()) {
+					sequence_XAnnotationElementValueStringConcatenation(context, (XAnnotationElementValueBinaryOperation) semanticObject); 
+					return; 
+				}
+				else break;
+			case XAnnotationsPackage.XANNOTATION_ELEMENT_VALUE_PAIR:
+				if(context == grammarAccess.getXAnnotationElementValuePairRule()) {
+					sequence_XAnnotationElementValuePair(context, (XAnnotationElementValuePair) semanticObject); 
+					return; 
+				}
+				else break;
+			case XAnnotationsPackage.XANNOTATION_VALUE_ARRAY:
+				if(context == grammarAccess.getXAnnotationElementValueRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationAccess().getXAnnotationElementValueBinaryOperationLeftOperandAction_1_0() ||
+				   context == grammarAccess.getXAnnotationValueArrayRule()) {
+					sequence_XAnnotationValueArray(context, (XAnnotationValueArray) semanticObject); 
 					return; 
 				}
 				else break;
@@ -260,6 +298,9 @@ public class SuiteSemanticSequencer extends XbaseSemanticSequencer {
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
 				   context == grammarAccess.getXAndExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
+				   context == grammarAccess.getXAnnotationElementValueRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationAccess().getXAnnotationElementValueBinaryOperationLeftOperandAction_1_0() ||
 				   context == grammarAccess.getXAssignmentRule() ||
 				   context == grammarAccess.getXAssignmentAccess().getXBinaryOperationLeftOperandAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXBooleanLiteralRule() ||
@@ -438,7 +479,14 @@ public class SuiteSemanticSequencer extends XbaseSemanticSequencer {
 				}
 				else break;
 			case XbasePackage.XFEATURE_CALL:
-				if(context == grammarAccess.getXAdditiveExpressionRule() ||
+				if(context == grammarAccess.getXAnnotationElementValueRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationAccess().getXAnnotationElementValueBinaryOperationLeftOperandAction_1_0() ||
+				   context == grammarAccess.getXAnnotationValueFieldReferenceRule()) {
+					sequence_XAnnotationValueFieldReference(context, (XFeatureCall) semanticObject); 
+					return; 
+				}
+				else if(context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
 				   context == grammarAccess.getXAndExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
@@ -639,6 +687,9 @@ public class SuiteSemanticSequencer extends XbaseSemanticSequencer {
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
 				   context == grammarAccess.getXAndExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
+				   context == grammarAccess.getXAnnotationElementValueRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationAccess().getXAnnotationElementValueBinaryOperationLeftOperandAction_1_0() ||
 				   context == grammarAccess.getXAssignmentRule() ||
 				   context == grammarAccess.getXAssignmentAccess().getXBinaryOperationLeftOperandAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXCastedExpressionRule() ||
@@ -706,6 +757,9 @@ public class SuiteSemanticSequencer extends XbaseSemanticSequencer {
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
 				   context == grammarAccess.getXAndExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
+				   context == grammarAccess.getXAnnotationElementValueRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationAccess().getXAnnotationElementValueBinaryOperationLeftOperandAction_1_0() ||
 				   context == grammarAccess.getXAssignmentRule() ||
 				   context == grammarAccess.getXAssignmentAccess().getXBinaryOperationLeftOperandAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXCastedExpressionRule() ||
@@ -839,6 +893,9 @@ public class SuiteSemanticSequencer extends XbaseSemanticSequencer {
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
 				   context == grammarAccess.getXAndExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
+				   context == grammarAccess.getXAnnotationElementValueRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationRule() ||
+				   context == grammarAccess.getXAnnotationElementValueStringConcatenationAccess().getXAnnotationElementValueBinaryOperationLeftOperandAction_1_0() ||
 				   context == grammarAccess.getXAssignmentRule() ||
 				   context == grammarAccess.getXAssignmentAccess().getXBinaryOperationLeftOperandAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXCastedExpressionRule() ||
@@ -942,12 +999,6 @@ public class SuiteSemanticSequencer extends XbaseSemanticSequencer {
 				else break;
 			}
 		else if(semanticObject.eClass().getEPackage() == XtendPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
-			case XtendPackage.XTEND_FILE:
-				if(context == grammarAccess.getSuiteFileRule()) {
-					sequence_SuiteFile(context, (XtendFile) semanticObject); 
-					return; 
-				}
-				else break;
 			case XtendPackage.XTEND_IMPORT:
 				if(context == grammarAccess.getImportRule()) {
 					sequence_Import(context, (XtendImport) semanticObject); 
@@ -1006,14 +1057,14 @@ public class SuiteSemanticSequencer extends XbaseSemanticSequencer {
 	 * Constraint:
 	 *     (package=QualifiedName? imports+=Import* xtendClasses+=Suite*)
 	 */
-	protected void sequence_SuiteFile(EObject context, XtendFile semanticObject) {
+	protected void sequence_SuiteFile(EObject context, SuiteFile semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (name=SUITE_NAME specs+=Reference*)
+	 *     (annotations+=XAnnotation* name=SUITE_NAME specs+=Reference*)
 	 */
 	protected void sequence_Suite(EObject context, Suite semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

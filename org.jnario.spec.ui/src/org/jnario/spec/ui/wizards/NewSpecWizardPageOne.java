@@ -8,6 +8,8 @@
 package org.jnario.spec.ui.wizards;
 
 
+import static com.google.common.base.Strings.isNullOrEmpty;
+
 import java.io.ByteArrayInputStream;
 
 import org.eclipse.core.resources.IFile;
@@ -172,9 +174,13 @@ public class NewSpecWizardPageOne extends NewTypeWizardPage {
 			if (fClassUnderTestButton != null && !fClassUnderTestButton.isDisposed()) {
 				fClassUnderTestButton.setEnabled(getPackageFragmentRoot() != null);
 			}
-
 			updateBuildPathMessage();
 		} 
+		if(fieldName.equals(CLASS_UNDER_TEST)){
+			if(isNullOrEmpty(getTypeName())){
+				setTypeName(fClassUnderTest.getElementName(), true);
+			}
+		}
 		updateStatus(getStatusList());
 	}
 

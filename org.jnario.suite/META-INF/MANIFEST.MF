@@ -21,20 +21,23 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.antlr.runtime,
  org.eclipse.xtext.common.types,
  org.eclipse.xtext.xbase.lib,
- org.jnario;bundle-version="0.1.0"
+ org.jnario;bundle-version="0.1.0",
+ org.jnario.lib;bundle-version="0.1.0"
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.jnario.suite,
+ org.jnario.suite.conversion,
+ org.jnario.suite.doc,
+ org.jnario.suite.formatting,
+ org.jnario.suite.generator,
+ org.jnario.suite.jvmmodel,
+ org.jnario.suite.parser.antlr,
+ org.jnario.suite.parser.antlr.internal,
+ org.jnario.suite.scoping,
+ org.jnario.suite.serializer,
  org.jnario.suite.services,
  org.jnario.suite.suite,
  org.jnario.suite.suite.impl,
  org.jnario.suite.suite.util,
- org.jnario.suite.serializer,
- org.jnario.suite.parser.antlr,
- org.jnario.suite.parser.antlr.internal,
- org.jnario.suite.validation,
- org.jnario.suite.formatting,
- org.jnario.suite.jvmmodel,
- org.jnario.suite.scoping,
- org.jnario.suite.generator
+ org.jnario.suite.validation

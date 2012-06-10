@@ -9,23 +9,9 @@ import org.jnario.suite.conversion.PatternValueConverter;
 
 @SuppressWarnings("all")
 public class SuiteValueConverterService extends XbaseValueConverterService {
-  private final LinkValueConverter linkValueConverter = new Function0<LinkValueConverter>() {
-    public LinkValueConverter apply() {
-      LinkValueConverter _linkValueConverter = new LinkValueConverter("-", "");
-      return _linkValueConverter;
-    }
-  }.apply();
-  
   private final LinkValueConverter textValueConverter = new Function0<LinkValueConverter>() {
     public LinkValueConverter apply() {
       LinkValueConverter _linkValueConverter = new LinkValueConverter(":", "");
-      return _linkValueConverter;
-    }
-  }.apply();
-  
-  private final LinkValueConverter suiteValueConverter = new Function0<LinkValueConverter>() {
-    public LinkValueConverter apply() {
-      LinkValueConverter _linkValueConverter = new LinkValueConverter("Suite:", "");
       return _linkValueConverter;
     }
   }.apply();
@@ -37,19 +23,9 @@ public class SuiteValueConverterService extends XbaseValueConverterService {
     }
   }.apply();
   
-  @ValueConverter(rule = "LINK")
-  public IValueConverter<String> getLinkValueConverter() {
-    return this.linkValueConverter;
-  }
-  
   @ValueConverter(rule = "TEXT")
   public IValueConverter<String> getTextValueConverter() {
     return this.textValueConverter;
-  }
-  
-  @ValueConverter(rule = "SUITE_NAME")
-  public IValueConverter<String> getSuiteValueConverter() {
-    return this.suiteValueConverter;
   }
   
   @ValueConverter(rule = "PATTERN")
