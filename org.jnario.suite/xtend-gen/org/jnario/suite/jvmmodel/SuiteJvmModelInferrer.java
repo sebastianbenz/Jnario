@@ -73,7 +73,7 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
   }
   
   public void infer(final Suite suite, final IJvmDeclaredTypeAcceptor acceptor, final boolean isPreIndexingPhase) {
-    String _qualifiedClassName = this.qualifiedClassName(suite);
+    String _qualifiedClassName = this._suiteClassNameProvider.getQualifiedClassName(suite);
     JvmGenericType _class = this._extendedJvmTypesBuilder.toClass(suite, _qualifiedClassName);
     IPostIndexingInitializing<JvmGenericType> _accept = acceptor.<JvmGenericType>accept(_class);
     final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
@@ -95,21 +95,13 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
     _accept.initializeLater(_function);
   }
   
-  public String qualifiedClassName(final Specification type) {
-    String _packageName = type.getPackageName();
-    String _plus = (_packageName + ".");
-    String _className = this._suiteClassNameProvider.getClassName(type);
-    String _plus_1 = (_plus + _className);
-    return _plus_1;
-  }
-  
   public Iterable<JvmType> children(final Suite suite) {
     List<JvmType> _xblockexpression = null;
     {
       final List<Specification> specs = this._specificationResolver.resolveSpecs(suite);
       final Function1<Specification,JvmType> _function = new Function1<Specification,JvmType>() {
           public JvmType apply(final Specification it) {
-            String _qualifiedClassName = SuiteJvmModelInferrer.this.qualifiedClassName(it);
+            String _qualifiedClassName = SuiteJvmModelInferrer.this._suiteClassNameProvider.getQualifiedClassName(it);
             JvmTypeReference _typeForName = SuiteJvmModelInferrer.this.types.getTypeForName(_qualifiedClassName, suite);
             JvmType _type = _typeForName==null?(JvmType)null:_typeForName.getType();
             return _type;

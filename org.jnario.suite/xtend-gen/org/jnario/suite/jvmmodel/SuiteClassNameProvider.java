@@ -25,21 +25,6 @@ public class SuiteClassNameProvider {
   
   private final static String POSTFIX = "Suite";
   
-  protected String _getClassName(final Suite suite) {
-    String _xblockexpression = null;
-    {
-      final String name = this.removePrefix(suite);
-      boolean _equals = Objects.equal(name, null);
-      if (_equals) {
-        return null;
-      }
-      String _className = Strings.toClassName(name);
-      String _plus = (_className + SuiteClassNameProvider.POSTFIX);
-      _xblockexpression = (_plus);
-    }
-    return _xblockexpression;
-  }
-  
   public String removePrefix(final Suite suite) {
     String _xblockexpression = null;
     {
@@ -70,6 +55,29 @@ public class SuiteClassNameProvider {
     String _removePrefix = this.removePrefix(suite);
     String _convertToJavaString = _removePrefix==null?(String)null:org.eclipse.xtext.util.Strings.convertToJavaString(_removePrefix, true);
     return _convertToJavaString;
+  }
+  
+  public String getQualifiedClassName(final Specification spec) {
+    String _packageName = spec.getPackageName();
+    String _plus = (_packageName + ".");
+    String _className = this.getClassName(spec);
+    String _plus_1 = (_plus + _className);
+    return _plus_1;
+  }
+  
+  protected String _getClassName(final Suite suite) {
+    String _xblockexpression = null;
+    {
+      final String name = this.removePrefix(suite);
+      boolean _equals = Objects.equal(name, null);
+      if (_equals) {
+        return null;
+      }
+      String _className = Strings.toClassName(name);
+      String _plus = (_className + SuiteClassNameProvider.POSTFIX);
+      _xblockexpression = (_plus);
+    }
+    return _xblockexpression;
   }
   
   protected String _getClassName(final ExampleGroup element) {

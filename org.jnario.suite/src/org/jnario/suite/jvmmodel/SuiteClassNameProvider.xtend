@@ -12,6 +12,7 @@ import static org.jnario.suite.jvmmodel.SuiteClassNameProvider.*
 import static extension com.google.common.base.Strings.*
 import static extension org.eclipse.xtext.util.Strings.*
 import static extension org.jnario.util.Strings.*
+import org.jnario.Specification
 class SuiteClassNameProvider {
 	
 	ExampleNameProvider exampleNameProvider
@@ -27,12 +28,6 @@ class SuiteClassNameProvider {
 	
 	static val POSTFIX = "Suite"
 	
-	def dispatch getClassName(Suite suite){
-		val name = suite.removePrefix
-		if(name == null) return null
-		name.toClassName + POSTFIX
-	}
-	
 	def removePrefix(Suite suite){
 		var name = suite.name.firstLine
 		if(name.nullOrEmpty) return null
@@ -42,6 +37,16 @@ class SuiteClassNameProvider {
 	
 	def describe(Suite suite){
 		suite.removePrefix?.convertToJavaString(true)
+	}
+	
+	def getQualifiedClassName(Specification spec){
+		spec.packageName + "." + spec.className
+	}
+	
+	def dispatch getClassName(Suite suite){
+		val name = suite.removePrefix
+		if(name == null) return null
+		name.toClassName + POSTFIX
 	}
 	
 	def dispatch getClassName(ExampleGroup element){

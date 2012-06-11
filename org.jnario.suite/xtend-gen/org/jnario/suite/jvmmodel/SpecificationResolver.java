@@ -25,6 +25,7 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.jnario.Specification;
+import org.jnario.suite.jvmmodel.SuiteClassNameProvider;
 import org.jnario.suite.suite.PatternReference;
 import org.jnario.suite.suite.Reference;
 import org.jnario.suite.suite.SpecReference;
@@ -38,6 +39,9 @@ public class SpecificationResolver {
   
   @Inject
   private IQualifiedNameConverter _iQualifiedNameConverter;
+  
+  @Inject
+  private SuiteClassNameProvider _suiteClassNameProvider;
   
   protected List<Specification> _resolveSpecs(final Suite suite) {
     List<Specification> _xblockexpression = null;
@@ -99,37 +103,44 @@ public class SpecificationResolver {
           }
         };
       Iterable<EObject> _map = IterableExtensions.<IEObjectDescription, EObject>map(allElements, _function_1);
-      Iterable<Specification> _filter = Iterables.<Specification>filter(_map, Specification.class);
-      final Function1<Specification,Boolean> _function_2 = new Function1<Specification,Boolean>() {
-          public Boolean apply(final Specification it) {
-            boolean _and = false;
-            boolean _eIsProxy = it.eIsProxy();
-            boolean _not = (!_eIsProxy);
-            if (!_not) {
-              _and = false;
-            } else {
-              EObject _eContainer = it.eContainer();
-              _and = (_not && (_eContainer instanceof XtendFile));
-            }
-            return Boolean.valueOf(_and);
-          }
-        };
-      final Iterable<Specification> specs = IterableExtensions.<Specification>filter(_filter, _function_2);
-      final Function1<Specification,String> _function_3 = new Function1<Specification,String>() {
-          public String apply(final Specification it) {
-            String _packageName = it.getPackageName();
-            String _plus = (_packageName + ".");
-            String _name = it.getName();
-            String _plus_1 = (_plus + _name);
-            return _plus_1;
-          }
-        };
-      Map<String,Specification> _map_1 = IterableExtensions.<String, Specification>toMap(specs, _function_3);
-      Collection<Specification> _values = _map_1.values();
-      List<Specification> _list = IterableExtensions.<Specification>toList(_values);
+      final Iterable<Specification> specs = Iterables.<Specification>filter(_map, Specification.class);
+      Function1<Specification,Boolean> _nonProxyAndRoot = this.nonProxyAndRoot();
+      Iterable<Specification> _filter = IterableExtensions.<Specification>filter(specs, _nonProxyAndRoot);
+      Collection<Specification> _filterDuplicates = this.filterDuplicates(_filter);
+      List<Specification> _list = IterableExtensions.<Specification>toList(_filterDuplicates);
       _xblockexpression = (_list);
     }
     return _xblockexpression;
+  }
+  
+  private Function1<Specification,Boolean> nonProxyAndRoot() {
+    final Function1<Specification,Boolean> _function = new Function1<Specification,Boolean>() {
+        public Boolean apply(final Specification s) {
+          boolean _and = false;
+          boolean _eIsProxy = s.eIsProxy();
+          boolean _not = (!_eIsProxy);
+          if (!_not) {
+            _and = false;
+          } else {
+            EObject _eContainer = s.eContainer();
+            _and = (_not && (_eContainer instanceof XtendFile));
+          }
+          return _and;
+        }
+      };
+    return _function;
+  }
+  
+  private Collection<Specification> filterDuplicates(final Iterable<Specification> specs) {
+    final Function1<Specification,String> _function = new Function1<Specification,String>() {
+        public String apply(final Specification it) {
+          String _qualifiedClassName = SpecificationResolver.this._suiteClassNameProvider.getQualifiedClassName(it);
+          return _qualifiedClassName;
+        }
+      };
+    Map<String,Specification> _map = IterableExtensions.<String, Specification>toMap(specs, _function);
+    Collection<Specification> _values = _map.values();
+    return _values;
   }
   
   public List<Specification> resolveSpecs(final EObject suite) {

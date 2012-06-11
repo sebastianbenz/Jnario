@@ -5,7 +5,6 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmType
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
-import org.jnario.Specification
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder
 import org.jnario.jvmmodel.JnarioJvmModelInferrer
 import org.jnario.jvmmodel.JunitAnnotationProvider
@@ -52,10 +51,6 @@ class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
    			])
    	}
 
-	def qualifiedClassName(Specification type){
-		type.packageName +"." + type.className
-	}
-   	
    	def Iterable<JvmType> children(Suite suite){
    		val specs = suite.resolveSpecs
    		specs.map[

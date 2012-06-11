@@ -17,7 +17,10 @@ describe SpecificationResolver {
 		parseSpec('''
 			package demo
 			describe "My Spec"{
-				
+				// this should be filtered
+				describe "My Internal Spec"{
+					
+				}
 			}
 		''')
 		parseScenario('''
