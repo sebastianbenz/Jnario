@@ -14,6 +14,8 @@ import org.jnario.suite.suite.Suite
 import static java.util.Collections.*
 import static org.eclipse.emf.ecore.util.EcoreUtil.*
 import static org.jnario.suite.suite.SuitePackage$Literals.*
+import static extension com.google.common.base.Strings.*
+
 class SpecificationResolver {
 	
 	@Inject extension IScopeProvider scopeProvider
@@ -29,6 +31,7 @@ class SpecificationResolver {
 	}
 	
 	def dispatch List<Specification> resolveSpecs(PatternReference specRef){
+		if(specRef.pattern.isNullOrEmpty) return emptyList
 		val scope = getScope(specRef, SPEC_REFERENCE__SPEC)
 		val pattern = Pattern::compile(specRef.pattern)
 		val allElements = scope.allElements.filter[

@@ -1,14 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2012 BMW Car IT and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
 package org.jnario.suite.jvmmodel;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
+import com.google.common.base.Strings;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import java.util.Arrays;
@@ -77,9 +71,14 @@ public class SpecificationResolver {
   protected List<Specification> _resolveSpecs(final PatternReference specRef) {
     List<Specification> _xblockexpression = null;
     {
-      final IScope scope = this.scopeProvider.getScope(specRef, Literals.SPEC_REFERENCE__SPEC);
       String _pattern = specRef.getPattern();
-      final Pattern pattern = Pattern.compile(_pattern);
+      boolean _isNullOrEmpty = Strings.isNullOrEmpty(_pattern);
+      if (_isNullOrEmpty) {
+        return Collections.<Specification>emptyList();
+      }
+      final IScope scope = this.scopeProvider.getScope(specRef, Literals.SPEC_REFERENCE__SPEC);
+      String _pattern_1 = specRef.getPattern();
+      final Pattern pattern = Pattern.compile(_pattern_1);
       Iterable<IEObjectDescription> _allElements = scope.getAllElements();
       final Function1<IEObjectDescription,Boolean> _function = new Function1<IEObjectDescription,Boolean>() {
           public Boolean apply(final IEObjectDescription it) {

@@ -6,6 +6,7 @@ import org.jnario.runner.InstantiateWith
 import com.google.inject.Inject
 import org.jnario.jnario.test.util.ModelStore
 import org.jnario.suite.suite.Suite
+import org.jnario.suite.suite.SuiteFactory
 
 @InstantiateWith(typeof(SuiteTestInstantiator))
 describe SpecificationResolver {
@@ -64,6 +65,10 @@ describe SpecificationResolver {
 			''')
 			
 			resolvedSpecs(m.firstSuite) => set("My Spec")
+		}
+		
+		fact "returns empty list on null input"{
+			subject.resolveSpecs(SuiteFactory::eINSTANCE.createPatternReference) => list()
 		}
 		
 		fact "ignores unresolved elements"{
