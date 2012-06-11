@@ -51,7 +51,7 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 	'''
 	
 	def linkTo(EObject context, Specification spec){
-		context.root + spec.packageName.replace(".", "/") + "/" + spec.className
+		context.root + spec.packageName.replace(".", "/") + "/" + spec.className + ".html"
 	}
 	
 	def text(Reference ref){

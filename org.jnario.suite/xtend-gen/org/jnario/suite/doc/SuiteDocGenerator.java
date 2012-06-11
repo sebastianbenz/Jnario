@@ -114,7 +114,8 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
     String _plus_1 = (_plus + "/");
     String _className = this._suiteClassNameProvider.getClassName(spec);
     String _plus_2 = (_plus_1 + _className);
-    return _plus_2;
+    String _plus_3 = (_plus_2 + ".html");
+    return _plus_3;
   }
   
   public String text(final Reference ref) {

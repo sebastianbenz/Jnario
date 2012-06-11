@@ -15,6 +15,7 @@ import java.util.regex.Pattern;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.xtend.core.xtend.XtendFile;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.IEObjectDescription;
@@ -98,8 +99,23 @@ public class SpecificationResolver {
           }
         };
       Iterable<EObject> _map = IterableExtensions.<IEObjectDescription, EObject>map(allElements, _function_1);
-      final Iterable<Specification> specs = Iterables.<Specification>filter(_map, Specification.class);
-      final Function1<Specification,String> _function_2 = new Function1<Specification,String>() {
+      Iterable<Specification> _filter = Iterables.<Specification>filter(_map, Specification.class);
+      final Function1<Specification,Boolean> _function_2 = new Function1<Specification,Boolean>() {
+          public Boolean apply(final Specification it) {
+            boolean _and = false;
+            boolean _eIsProxy = it.eIsProxy();
+            boolean _not = (!_eIsProxy);
+            if (!_not) {
+              _and = false;
+            } else {
+              EObject _eContainer = it.eContainer();
+              _and = (_not && (_eContainer instanceof XtendFile));
+            }
+            return Boolean.valueOf(_and);
+          }
+        };
+      final Iterable<Specification> specs = IterableExtensions.<Specification>filter(_filter, _function_2);
+      final Function1<Specification,String> _function_3 = new Function1<Specification,String>() {
           public String apply(final Specification it) {
             String _packageName = it.getPackageName();
             String _plus = (_packageName + ".");
@@ -108,7 +124,7 @@ public class SpecificationResolver {
             return _plus_1;
           }
         };
-      Map<String,Specification> _map_1 = IterableExtensions.<String, Specification>toMap(specs, _function_2);
+      Map<String,Specification> _map_1 = IterableExtensions.<String, Specification>toMap(specs, _function_3);
       Collection<Specification> _values = _map_1.values();
       List<Specification> _list = IterableExtensions.<Specification>toList(_values);
       _xblockexpression = (_list);
