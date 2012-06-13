@@ -54,7 +54,7 @@ describe SpecificationResolver {
 			
 			resolvedSpecs(m.firstSuite) => set("My Spec", "My Feature")
 		}
-		
+
 		fact "example 2"{
 			m.parseSuite('''
 				package demo

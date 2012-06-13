@@ -25,4 +25,4 @@ describe PatternValueConverter {
 		fact examples.forEach[subject.toValue(input, null) => result]
 	}
 
-}
+} 

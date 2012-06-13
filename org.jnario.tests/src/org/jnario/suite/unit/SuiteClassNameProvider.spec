@@ -31,7 +31,7 @@ describe SuiteClassNameProvider {
 		
 		fact examples.forEach[subject.^describe(suite(name)) => expectedClassName]
 	}	
-
+ 
 	def suite(String name){
 		val suite = SuiteFactory::eINSTANCE.createSuite
 		suite.name = name

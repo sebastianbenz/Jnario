@@ -129,7 +129,7 @@ public class Strings extends org.eclipse.xtext.util.Strings{
 		if(lineEnd == -1){
 			return string;
 		}
-		return string.substring(0, lineEnd-1);
+		return string.substring(0, lineEnd);
 	}
 
 	public static String toClassName(String originalName){

@@ -39,6 +39,10 @@ public class ModelStore implements Iterable<EObject> {
 		resourceSet.setClasspathURIContext(getClass());
 	}
 	
+	public Resource load(URI uri) {
+		return resourceSet.getResource(uri, true);
+	}
+	
 	public List<Resource> load(IUriProvider uriProvider) {
 		for (URI uri : uriProvider.allUris()) {
 			resourceSet.getResource(uri, true);
@@ -123,6 +127,10 @@ public class ModelStore implements Iterable<EObject> {
 	
 	public Suite firstSuite(){
 		return query().first(Suite.class);
+	}
+	
+	public XtextResourceSet getResourceSet() {
+		return resourceSet;
 	}
 
 }
