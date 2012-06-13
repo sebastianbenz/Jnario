@@ -1,29 +1,23 @@
-/*******************************************************************************
- * Copyright (c) 2012 BMW Car IT and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
 package org.jnario.standalone.tests;
 
 import com.google.inject.Inject;
 import java.io.File;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.hamcrest.Matcher;
-import org.jnario.feature.compiler.batch.FeatureDocCompiler;
+import org.jnario.compiler.JnarioDocCompiler;
 import org.jnario.lib.Should;
 import org.jnario.runner.Contains;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.standalone.tests.JnarioDocCompilerFeatureDocCompilerSpec;
 import org.jnario.standalone.tests.JnarioDocCompilerSpecDocCompilerSpec;
+import org.jnario.standalone.tests.JnarioDocCompilerSuiteDocCompilerSpec;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TemporaryFolder;
 import org.junit.runner.RunWith;
 
-@Contains({ JnarioDocCompilerFeatureDocCompilerSpec.class, JnarioDocCompilerSpecDocCompilerSpec.class })
+@Contains({ JnarioDocCompilerFeatureDocCompilerSpec.class, JnarioDocCompilerSpecDocCompilerSpec.class, JnarioDocCompilerSuiteDocCompilerSpec.class })
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("JnarioDocCompiler")
@@ -33,7 +27,7 @@ public class JnarioDocCompilerSpec {
   public TemporaryFolder folder;
   
   @Inject
-  FeatureDocCompiler compiler;
+  JnarioDocCompiler compiler;
   
   @Before
   public void before() throws Exception {

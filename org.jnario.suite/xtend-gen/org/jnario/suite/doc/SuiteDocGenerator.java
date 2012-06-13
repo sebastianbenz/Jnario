@@ -1,10 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2012 BMW Car IT and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
 package org.jnario.suite.doc;
 
 import com.google.common.base.Objects;
@@ -14,6 +7,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
@@ -25,7 +19,6 @@ import org.jnario.suite.jvmmodel.SuiteClassNameProvider;
 import org.jnario.suite.suite.Reference;
 import org.jnario.suite.suite.SpecReference;
 import org.jnario.suite.suite.Suite;
-import org.jnario.util.Strings;
 
 @SuppressWarnings("all")
 public class SuiteDocGenerator extends AbstractDocGenerator {
@@ -48,7 +41,8 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
             String _className = SuiteDocGenerator.this._suiteClassNameProvider.getClassName(suite);
             it.fileName = _className;
             String _describe = SuiteDocGenerator.this._suiteClassNameProvider.describe(suite);
-            it.title = _describe;
+            String _convertFromJavaString = Strings.convertFromJavaString(_describe, true);
+            it.title = _convertFromJavaString;
             CharSequence _generateContent = SuiteDocGenerator.this.generateContent(suite);
             it.content = _generateContent;
             String _root = SuiteDocGenerator.this.root(suite);
@@ -63,12 +57,10 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
   
   public CharSequence generateContent(final Suite suite) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<p>");
     String _name = suite.getName();
-    String _trimFirstLine = Strings.trimFirstLine(_name);
+    String _trimFirstLine = org.jnario.util.Strings.trimFirstLine(_name);
     String _markdown2Html = this.markdown2Html(_trimFirstLine);
     _builder.append(_markdown2Html, "");
-    _builder.append("</p>");
     _builder.newLineIfNotEmpty();
     _builder.append("<ul>");
     _builder.newLine();

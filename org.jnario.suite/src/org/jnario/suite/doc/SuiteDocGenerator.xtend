@@ -16,6 +16,8 @@ import static org.jnario.doc.HtmlFile.*
 
 import static extension org.jnario.util.Strings.*
 
+import static extension org.eclipse.xtext.util.Strings.*
+
 class SuiteDocGenerator extends AbstractDocGenerator {
 	@Inject extension SuiteClassNameProvider 
 	@Inject extension SpecificationResolver
@@ -27,14 +29,14 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 		val suite = xtendClass as Suite
 		newHtmlFile[
 			fileName = suite.className 
-			title = suite.describe
+			title = suite.describe.convertFromJavaString(true)
 			content = suite.generateContent
 			rootFolder = suite.root
 		]
 	}
 
 	def generateContent(Suite suite)'''
-		<p>«suite.name.trimFirstLine.markdown2Html»</p>
+		«suite.name.trimFirstLine.markdown2Html»
 		<ul>
 		«FOR spec : suite.specs»
 			«generate(spec, spec.resolveSpecs)»

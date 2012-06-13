@@ -18,7 +18,7 @@ import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.DocOutputConfigurationProvider;
 
 @SuppressWarnings("all")
-public abstract class JnarioDocCompiler extends XtendBatchCompiler {
+public class JnarioDocCompiler extends XtendBatchCompiler {
   private String _resultFolder;
   
   public String getResultFolder() {

@@ -24,6 +24,8 @@
     <module>org.jnario.lib</module>
   <!--  <module>org.jnario.lib.maven</module> -->
     <module>org.jnario.spec</module>
+    <module>org.jnario.suite</module>
+    <module>org.jnario.suite.ui</module>
     <module>org.jnario.standalone</module>
 	<module>org.jnario.standalone.tests</module>
 	<module>org.jnario.standalone.maven</module>

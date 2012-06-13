@@ -1,10 +1,11 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: org.jnario.suite.ui
-Bundle-Vendor: My Company
-Bundle-Version: 1.0.0.qualifier
+Bundle-Name: %pluginName
+Bundle-Vendor: %providerName
+Bundle-Version: 0.1.0.qualifier
 Bundle-SymbolicName: org.jnario.suite.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
+Bundle-Localization: plugin
 Require-Bundle: org.jnario.suite;visibility:=reexport,
  org.eclipse.xtext.ui,
  org.eclipse.ui.editors;bundle-version="3.5.0",

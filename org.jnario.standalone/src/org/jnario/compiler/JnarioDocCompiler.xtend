@@ -9,7 +9,7 @@ import org.jnario.doc.AbstractDocGenerator
 import org.jnario.doc.DocOutputConfigurationProvider
 import org.eclipse.emf.ecore.util.EcoreUtil
 
-abstract class JnarioDocCompiler extends XtendBatchCompiler{
+class JnarioDocCompiler extends XtendBatchCompiler{
 	
 	@Property String resultFolder
 	@Inject AbstractDocGenerator docGenerator

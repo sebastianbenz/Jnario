@@ -84,9 +84,11 @@ Workflow {
 
             // The antlr parser generator fragment.
             fragment = parser.antlr.XtextAntlrGeneratorFragment {
-            //  options = {
-            //      backtrack = true
-            //  }
+           	options = auto-inject {}
+            	antlrParam = "-Xconversiontimeout" antlrParam = "10000"
+            	options = {
+			  		classSplitting = true
+     			}
             }
 
             // java-based API for validation
@@ -127,7 +129,13 @@ Workflow {
             fragment = contentAssist.JavaBasedContentAssistFragment {}
 
             // generates a more lightweight Antlr parser and lexer tailored for content assist
-            fragment = parser.antlr.XtextAntlrUiGeneratorFragment {}
+            fragment = parser.antlr.XtextAntlrUiGeneratorFragment {
+            	options = auto-inject {}
+            	antlrParam = "-Xconversiontimeout" antlrParam = "10000"
+            	options = {
+			  		classSplitting = true
+     			}
+            }
 
             // generates junit test support classes into Generator#pathTestProject
             fragment = junit.Junit4Fragment {}

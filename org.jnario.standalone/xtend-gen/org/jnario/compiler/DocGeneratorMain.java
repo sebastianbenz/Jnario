@@ -9,9 +9,8 @@ import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.jnario.compiler.JnarioDocCompiler;
 import org.jnario.feature.FeatureStandaloneSetup;
-import org.jnario.feature.compiler.batch.FeatureDocCompiler;
 import org.jnario.spec.SpecStandaloneSetup;
-import org.jnario.spec.compiler.batch.SpecDocCompiler;
+import org.jnario.suite.SuiteStandaloneSetup;
 
 @SuppressWarnings("all")
 public class DocGeneratorMain {
@@ -33,13 +32,19 @@ public class DocGeneratorMain {
     {
       SpecStandaloneSetup _specStandaloneSetup = new SpecStandaloneSetup();
       final Injector injector = _specStandaloneSetup.createInjectorAndDoEMFRegistration();
-      final SpecDocCompiler compiler = injector.<SpecDocCompiler>getInstance(SpecDocCompiler.class);
+      final JnarioDocCompiler compiler = injector.<JnarioDocCompiler>getInstance(JnarioDocCompiler.class);
       DocGeneratorMain.run(compiler, args);
     }
     {
       FeatureStandaloneSetup _featureStandaloneSetup = new FeatureStandaloneSetup();
       final Injector injector = _featureStandaloneSetup.createInjectorAndDoEMFRegistration();
-      final FeatureDocCompiler compiler = injector.<FeatureDocCompiler>getInstance(FeatureDocCompiler.class);
+      final JnarioDocCompiler compiler = injector.<JnarioDocCompiler>getInstance(JnarioDocCompiler.class);
+      DocGeneratorMain.run(compiler, args);
+    }
+    {
+      SuiteStandaloneSetup _suiteStandaloneSetup = new SuiteStandaloneSetup();
+      final Injector injector = _suiteStandaloneSetup.createInjectorAndDoEMFRegistration();
+      final JnarioDocCompiler compiler = injector.<JnarioDocCompiler>getInstance(JnarioDocCompiler.class);
       DocGeneratorMain.run(compiler, args);
     }
   }

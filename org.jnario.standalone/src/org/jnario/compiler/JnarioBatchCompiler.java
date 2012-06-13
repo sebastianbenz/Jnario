@@ -33,16 +33,39 @@ import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 
 /**
  * @author Sebastian - Initial contribution and API
  */
 public abstract class JnarioBatchCompiler extends XtendBatchCompiler {
 
+	/**
+	 * @author sebastian - Initial contribution and API
+	 */
+	public class WrappedResourceSetProvider implements Provider<ResourceSet> {
+
+		private final ResourceSet resourceSet;
+
+		public WrappedResourceSetProvider(ResourceSet resourceSet) {
+			this.resourceSet = resourceSet;
+		}
+
+		public ResourceSet get() {
+			return resourceSet;
+		}
+
+	}
+
 	private static final Logger log = Logger.getLogger(JnarioBatchCompiler.class);
 	
 	@Inject
 	private JvmModelGenerator generator;
+	
+	public boolean compile(ResourceSet resourceSet) {
+		resourceSetProvider = new WrappedResourceSetProvider(resourceSet);
+		return super.compile();
+	}
 	
 	@Override
 	protected File createStubs(ResourceSet resourceSet) {

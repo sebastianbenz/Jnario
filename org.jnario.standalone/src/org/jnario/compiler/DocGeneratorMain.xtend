@@ -2,11 +2,10 @@ package org.jnario.compiler
 
 import org.apache.log4j.BasicConfigurator
 import org.jnario.feature.FeatureStandaloneSetup
-import org.jnario.feature.compiler.batch.FeatureDocCompiler
 import org.jnario.spec.SpecStandaloneSetup
-import org.jnario.spec.compiler.batch.SpecDocCompiler
 
 import static org.jnario.compiler.DocGeneratorMain.*
+import org.jnario.suite.SuiteStandaloneSetup
 
 class DocGeneratorMain {
 	
@@ -19,12 +18,17 @@ class DocGeneratorMain {
 		BasicConfigurator::configure();
 		{
 			val injector = new SpecStandaloneSetup().createInjectorAndDoEMFRegistration()
-			val compiler = injector.getInstance(typeof(SpecDocCompiler))
+			val compiler = injector.getInstance(typeof(JnarioDocCompiler))
 			run(compiler, args);
 		}
 		{
 			val injector = new FeatureStandaloneSetup().createInjectorAndDoEMFRegistration();
-			val compiler = injector.getInstance(typeof(FeatureDocCompiler));
+			val compiler = injector.getInstance(typeof(JnarioDocCompiler));
+			run(compiler, args);
+		}
+		{
+			val injector = new SuiteStandaloneSetup().createInjectorAndDoEMFRegistration();
+			val compiler = injector.getInstance(typeof(JnarioDocCompiler));
 			run(compiler, args);
 		}
 	}
