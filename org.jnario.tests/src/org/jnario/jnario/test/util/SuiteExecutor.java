@@ -30,8 +30,7 @@ public class SuiteExecutor extends BehaviorExecutor {
 	@Override
 	protected Result runExamples(EObject object) throws MalformedURLException,
 			ClassNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
 }

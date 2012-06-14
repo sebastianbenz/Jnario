@@ -37,7 +37,6 @@ import com.google.inject.Injector;
 @SuppressWarnings("restriction")
 public class SpecExecutor extends BehaviorExecutor{
 	
-	private static SpecInjectorProvider injectorProvider;
 	private final ExampleNameProvider nameProvider;
 
 	@Inject
@@ -59,9 +58,7 @@ public class SpecExecutor extends BehaviorExecutor{
 	}
 
 	public static Result execute(CharSequence content) {
-		if(injectorProvider == null){
-			injectorProvider = new SpecInjectorProvider();
-		}
+		SpecInjectorProvider injectorProvider = new SpecInjectorProvider();
 		try {
 			injectorProvider.setupRegistry();
 			Injector injector = new SpecStandaloneTestSetup().createInjectorAndDoEMFRegistration();

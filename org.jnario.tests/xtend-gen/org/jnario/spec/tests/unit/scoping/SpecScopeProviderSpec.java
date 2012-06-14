@@ -40,7 +40,7 @@ public class SpecScopeProviderSpec {
   @Named("should resolve operations from surrounding ExampleGroup\\\'s target")
   @Order(99)
   public void shouldResolveOperationsFromSurroundingExampleGroupSTarget() throws Exception {
-    this.modelStore.parseSpec("\r\n\t\t\tpackage bootstrap\r\n\t\t\t\r\n\t\t\timport org.junit.Assert\r\n\r\n\t\t\tdescribe Assert{\r\n\t\t\t\tdescribe assertNotNull(String, Object){\r\n\t\t\t\t\t\"assertNotNull(String, Object)\"{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t} \r\n\r\n\t\t");
+    this.modelStore.parseSpec("\r\n\t\t\tpackage bootstrap\r\n\t\t\t\r\n\t\t\timport org.junit.Assert\r\n\r\n\t\t\tdescribe Assert{\r\n\t\t\t\tcontext assertNotNull(String, Object){\r\n\t\t\t\t\tfact \"assertNotNull(String, Object)\"{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t} \r\n\r\n\t\t");
     Query _query = this.modelStore.query();
     final ExampleGroup exampleGroup = _query.<ExampleGroup>second(ExampleGroup.class);
     IScope _targetOperation = this.targetOperation(exampleGroup);

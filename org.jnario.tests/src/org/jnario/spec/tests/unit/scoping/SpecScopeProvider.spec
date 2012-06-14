@@ -20,6 +20,7 @@ import org.jnario.runner.InstantiateWith
 import org.eclipse.emf.ecore.EObject
 import org.jnario.spec.scoping.SpecScopeProvider
 import static extension org.jnario.jnario.test.util.Query.*
+import org.junit.Assert
 
 @InstantiateWith(typeof(SpecTestInstantiator))
 describe SpecScopeProvider {
@@ -33,8 +34,8 @@ describe SpecScopeProvider {
 			import org.junit.Assert
 
 			describe Assert{
-				describe assertNotNull(String, Object){
-					"assertNotNull(String, Object)"{
+				context assertNotNull(String, Object){
+					fact "assertNotNull(String, Object)"{
 					}
 				}
 			} 
