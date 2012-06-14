@@ -9,6 +9,8 @@
 package org.jnario.maven;
 
 import org.eclipse.xtend.maven.XtendTestCompile;
+import org.jnario.spec.SpecStandaloneSetup;
+import org.jnario.spec.compiler.batch.SpecBatchCompiler;
 
 import com.google.inject.Injector;
 

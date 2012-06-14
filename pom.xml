@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.jnario</groupId>
   <artifactId>jnario</artifactId>
   <version>0.1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
-  
-   <properties>
-   <tycho-version>0.14.1</tycho-version>
+
+  <properties>
+    <tycho-version>0.14.1</tycho-version>
     <tycho-groupid>org.eclipse.tycho</tycho-groupid>
     <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
-	<project.build.resourceEncoding>ISO-8859-1</project.build.resourceEncoding> 
-	<maven.compiler.encoding>ISO-8859-1</maven.compiler.encoding>
+    <project.build.resourceEncoding>ISO-8859-1</project.build.resourceEncoding>
+    <maven.compiler.encoding>ISO-8859-1</maven.compiler.encoding>
     <platform-version-name>juno</platform-version-name>
     <eclipse-site>http://download.eclipse.org/releases/${platform-version-name}</eclipse-site>
   </properties>
-  
+
   <modules>
-  	<module>org.jnario.target</module>
+    <module>org.jnario.target</module>
     <module>org.jnario.feature</module>
     <module>org.jnario</module>
     <module>org.jnario.ui</module>
     <module>org.jnario.lib</module>
-  <!--  <module>org.jnario.lib.maven</module> -->
+    <!-- <module>org.jnario.lib.maven</module> -->
     <module>org.jnario.spec</module>
     <module>org.jnario.suite</module>
     <module>org.jnario.suite.ui</module>
     <module>org.jnario.standalone</module>
-	<module>org.jnario.standalone.tests</module>
-	<module>org.jnario.standalone.maven</module>
+    <module>org.jnario.standalone.tests</module>
+    <module>org.jnario.standalone.maven</module>
     <module>org.jnario-feature</module>
     <module>org.jnario.tests</module>
     <module>org.jnario.lib.tests</module>
@@ -37,15 +38,16 @@
     <module>org.jnario.ui-feature</module>
     <module>org.jnario.sdk</module>
     <module>org.jnario.updatesite</module>
+    <module>org.jnario.maven.lib</module>
   </modules>
-  
+
   <repositories>
     <repository>
       <id>juno</id>
       <layout>p2</layout>
       <url>${eclipse-site}</url>
     </repository>
-     <repository>
+    <repository>
       <id>eclipse.xtend</id>
       <url>http://build.eclipse.org/common/xtend/maven/</url>
     </repository>
@@ -65,23 +67,21 @@
         <platform-version>[3.7,3.8)</platform-version>
       </properties>
     </profile>
-  </profiles> 
-  
+  </profiles>
+
   <build>
-     <plugins>
-	  <plugin>
-    	  <groupId>org.eclipse.tycho</groupId>
-	        <artifactId>tycho-source-plugin</artifactId>
-	        <version>${tycho-version}</version>
-	        <executions>
-	          <execution>
-	            <id>plugin-source</id>
-	            <goals>
-	              <goal>plugin-source</goal>
-	            </goals>
-	          </execution>
-	        </executions>
-	      </plugin>
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-compiler-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <configuration>
+        <encoding>UTF-8</encoding>
+        <meminitial>128m</meminitial>
+        <maxmem>1024m</maxmem>
+        <verbose>true</verbose>
+        </configuration>
+      </plugin>
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>tycho-source-plugin</artifactId>
@@ -94,8 +94,21 @@
             </goals>
           </execution>
         </executions>
-      </plugin> 
-	  <plugin>
+      </plugin>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-source-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <executions>
+          <execution>
+            <id>plugin-source</id>
+            <goals>
+              <goal>plugin-source</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
         <groupId>${tycho-groupid}</groupId>
         <artifactId>tycho-maven-plugin</artifactId>
         <version>${tycho-version}</version>
@@ -124,7 +137,7 @@
           </target>
           <ignoreTychoRepositories>true</ignoreTychoRepositories>
           <environments>
-             <environment>
+            <environment>
               <os>macosx</os>
               <ws>cocoa</ws>
               <arch>x86_64</arch>
@@ -149,4 +162,34 @@
       </plugin>
     </plugins>
   </build>
+  <licenses>
+    <license>
+      <name>Eclipse Public License v1.0</name>
+      <comments>
+All rights reserved. This program and the accompanying materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution, and is available at http://www.eclipse.org/legal/epl-v10.htm
+</comments>
+    </license>
+  </licenses>
+  <url>
+http://www.jnario.org/
+</url>
+  <description>
+Jnario is a framework for writing executable specifications for Java. It provides all the goodness of Xtend while being specifically tailored to writing acceptance and unit tests. It is easy to integrate as Jnario specifications are compiled to plain Java Junit tests. 
+</description>
+  <inceptionYear>2012</inceptionYear>
+  <issueManagement>
+    <system>Github Issues</system>
+    <url>
+https://github.com/bmwcarit/Jnario/issues
+</url>
+  </issueManagement>
+  <organization>
+    <name>BMW Car IT</name>
+    <url>http://www.bmw-carit.de/</url>
+  </organization>
+  <scm>
+    <developerConnection>https://github.com/bmwcarit/Jnario.git</developerConnection>
+    <url>https://github.com/bmwcarit/Jnario</url>
+    <connection>git://github.com/bmwcarit/Jnario.git</connection>
+  </scm>
 </project>

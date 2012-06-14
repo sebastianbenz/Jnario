@@ -21,13 +21,8 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.eclipse.xtend</groupId>
-			<artifactId>org.eclipse.xtend.standalone</artifactId>
-			<version>2.3.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.xtend</groupId>
 			<artifactId>xtend-maven-plugin</artifactId>
-			<version>2.3.0</version>
+			<version>2.3.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jnario</groupId>
@@ -184,17 +179,49 @@
 			</plugin>
 		</plugins>
 	</build>
-	<!--  
-	<distributionManagement>
-		<repository>
-			<id>xtext-releases</id>
-			<name>Eclipse Xtext Releases</name>
-			<url>http://maven.eclipse.org/nexus/content/repositories/testing/</url>
-		</repository>
-		<snapshotRepository>
-			<id>xtext-snapshot</id>
-			<name>Eclipse Xtext Snapshots</name>
-			<url>http://maven.eclipse.org/nexus/content/repositories/snapshots/</url>
-		</snapshotRepository>
-	</distributionManagement>-->
+	<licenses>
+		<license>
+			<name>Eclipse Public License v1.0</name>
+			<comments>
+			All rights reserved. This program and the accompanying materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution, and is available at http://www.eclipse.org/legal/epl-v10.htm
+			</comments>
+		</license>
+	</licenses>
+	<url>
+		http://www.jnario.org/
+	</url>
+	<inceptionYear>2012</inceptionYear>
+	<issueManagement>
+		<system>Github Issues</system>
+		<url>
+https://github.com/bmwcarit/Jnario/issues
+</url>
+	</issueManagement>
+	<organization>
+		<name>BMW Car IT</name>
+		<url>http://www.bmw-carit.de/</url>
+	</organization>
+	<scm>
+		<developerConnection>https://github.com/bmwcarit/Jnario.git</developerConnection>
+		<url>https://github.com/bmwcarit/Jnario</url>
+		<connection>git://github.com/bmwcarit/Jnario.git</connection>
+	</scm>
+	<developers>
+		<developer>
+			<id>sebastianbenz</id>
+			<name>Sebastian Benz</name>
+			<email>sebastian.benz@gmail.com</email>
+			<timezone>GMT+2</timezone>
+			<roles>
+			</roles>
+		</developer>
+		<developer>
+			<id>birgitengelmann</id>
+			<name>Birgit Engelmann</name>
+			<email>birgit.engelmann@bmw-carit.de</email>
+			<timezone>GMT+2</timezone>
+			<roles>
+			</roles>
+		</developer>
+	</developers>
 </project>
