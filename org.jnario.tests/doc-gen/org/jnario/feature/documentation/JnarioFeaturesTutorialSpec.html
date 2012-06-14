@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Jnario Features - Tutorial</title>
+<meta name="description" content="">
+<meta name="author" content="Jnario">
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<!-- Le styles -->
+<link rel="stylesheet" href="../../../..//css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../..//css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="../../../..//css/custom.css">
+<link rel="stylesheet" href="../../../..//css/prettify.css">
+<script type="text/javascript" src="../../../..//js/prettify.js"></script>
+<script type="text/javascript" src="../../../..//js/lang-jnario.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+	<div class="container">
+		<div class="content">
+			<div class="page-header">
+				<h1>Jnario Features - Tutorial</h1>
+			</div>
+			<div class="row">
+				<div class="span12">
+<p>Jnario Features are based on <a href="http://www.xtend-lang.org">Xtend</a>. It is a good idea to read the Xtend <a href="http://www.eclipse.org/xtend/documentation/index.html">documentation</a> before you get started with Jnario, because expressions, fields, methods and extensions in Jnario work exactly as in Xtend.</p><h3>Installation</h3><p>Jnario currently requires <a href="http://www.eclipse.org">Eclipse</a> 3.5 or higher with <a href="http://www.xtext.org">Xtext</a> 2.3, and a Java SDK version 5 or above. You can install the most recent version from this update site: <code>http://www.jnario.org/updates/snapshot/</code>. Jnario requires a small runtime library that contains the JUnit integration. You can download the jar <a href="http://jnario.org/updates/snapshot/org.jnario.lib-0.1.0-SNAPSHOT.jar">here</a>.</p>
+<h3 id="How_to_write_a_Feature">How to write a Feature</h3>
+<p><p>The first example for using Jnario Features is the specification of a calculator. Start out with creating a new file (<strong>File</strong> -&gt; <strong>New</strong> -&gt; <strong>File</strong>) and giving it the file extension <em>*.feature</em>.</p><p>A feature file consists of the a feature and the scenarios that are the acceptance criteria for the feature. For the calculator the the feature description in form of a story and one scenario for adding numbers looks as follows:</p>
+<pre class="prettyprint lang-feature">
+Feature: Calculator
+
+  As a math dummy
+  I want a calculator that helps me with basic math operations
+  In order to check my capabilities
+
+  Scenario: Adding two numbers
+
+    Given a calculator
+    When I enter two numbers and press add
+    Then it should show the sum
+</pre><p>A feature consists of the name of the feature, it's narrative and a number of scenarios. The narrative can be arbitrary text. You should use it to describe the rationale of the feature. Those scenarios are examples for the behavior expected from the feature. For the calculator possible scenarios are, for example, addition or subtraction.</p><p>Each scenario is defined by the steps that describe the expected behavior. <strong>Given</strong> steps give all the necessary information about the context of the scenario. <strong>When</strong> describes the action and <strong>Then</strong> describes the expected outcome that we want to verify. You can use the keyword <strong>And</strong> to + split a step into different sub steps.</p><p>When you save the file an xtend-gen folder will be created and the corresponding generated java files will be created. Those files can be executed as JUnit-Tests. Right click and select <strong>Run As</strong> -&gt; **JUnit Test You will see the result of the run and it will be green. Since the steps from scenario are not implemented yet all the steps will be marked as <em>PENDING</em> as an reminder that there is still work to do.</p>
+</p>
+<ul><li><p  id="Implementing_Steps"><strong>Implementing Steps</strong>
+<p>To turn our scenario into an executable specification you have to add the necessary code to each of our steps. For each step the implementation is done directly after the description of the step. The language used to define the logic is <a href="http://www.eclipse.org/xtend/documentation/index.html#fields">Xtend</a>. Create a Java class with the name Calculator in the same project as your feature file. Add the necessary import to the feature file or include it by auto completion while typing (CTRL + SPACE).</p><p><span class="label label-info">Info</span> Specifying the package and declaring and importing other packages works similar to Xtend (static imports work as well).</span></p><p>First we will declare a field <code>Calculator calculator</code> which we initialize in our <strong>Given</strong> step (we could also directly initialize the field <code>Calculator calculator = new Calculator</code>). We will also create a integer field named <code>result</code> to store the result of our calculation. In the <strong>When</strong> step we call <code>add</code> on the calculator and pass in the two parameters specified in the step. The return value is assigned to the <code>result</code> field.</p><p>Parameters can be defined in steps using quotes: <code>&quot;I am a parameter&quot;</code>. Within your step implementation, you can access these parameters by an implicitly created variable <code>args</code>. Jnario provides some <a href="http://www.eclipse.org/xtend/documentation/index.html#extensionMethods">extension methods</a> that simplify converting strings to other primitives. Here we use the <code>toInt</code> extension to convert the string parameter into an integer.</p><p>Now we need to define a method <code>add</code> in our calculator to remove the compile errors. In the <strong>Then</strong> step we will assert the behavior of our calculator. For writing readable short assertions different additional assertions come with Jnario. All of the possibilities are described <a href="/org/jnario/spec/tests/integration/AssertionSpec.html">here</a>. Here we use for describing the expected outcome of an expression <code>=&gt;</code>.</p>
+<pre class="prettyprint lang-feature">
+package demo
+
+import org.jnario.feature.documentation.Calculator
+
+Feature: Calculator
+
+Scenario: Adding two numbers
+  Calculator calculator
+  int result
+  Given a calculator
+    calculator = new Calculator
+  When I add two numbers "20" and "70"
+    result = calculator.add(args.first.toInt, args.second.toInt)
+  Then it prints "90"
+    result =&gt; args.first.toInt</pre>
+</p>
+</li><li><p  id="Background"><strong>Background</strong>
+<p><strong>Given</strong> steps that are used in all scenarios of the same feature can be defined in a <code>Background</code>. For example, if we add a second scenario to describe the division of two values, we can move the <strong>Given</strong> step together with it's used fields to a <strong>Background</strong>. All steps defined as background steps will be executed before each steps of a scenario.</p>
+<pre class="prettyprint lang-feature">
+package demo
+
+import org.jnario.feature.documentation.Calculator
+
+Feature: Calculator
+
+Background:
+  Calculator calculator
+  int result
+  Given a calculator
+  	calculator = new Calculator
+
+Scenario: Adding two numbers
+  When I add two numbers "20" and "70"
+    result = calculator.add(20,70)
+  Then it prints "90"
+    result =&gt; args.first.toInt
+  
+Scenario: Dividing two numbers
+ When I divide "70" by "10"
+ 	 result = calculator.divide(70,10)
+ Then it prints "7"</pre>
+</p>
+</li><li><p  id="Example_tables"><strong>Example tables</strong>
+<p>Often you want to verify the behavior of a scenario with multiple examples. In case of the calculator you might want to define what happens using negative numbers or large numbers. In this case you can define a table with values that can be used by the scenario steps. Each scenario will be executed separately for each row in the table.</p><p>The header of the example table serves as field declaration of the header names. The type is derived from the common super type of all cells in a column.</p>
+<pre class="prettyprint lang-feature">
+package demo
+import org.jnario.feature.documentation.Calculator
+
+Feature: Calculator
+
+Scenario: Adding two numbers
+  Calculator calculator
+  int result
+  Given a calculator
+    calculator = new Calculator
+  When adding two numbers a and b. 
+    result = calculator.add(a, b)
+  Then it returns the result
+    result =&gt; expected
+    
+  Examples: additions
+
+    |  a  |  b  | expected |
+    |  0  |  0  |     0    |
+    | 21  | 21  |    42    |
+    | -3  | -5  |    -8    |</pre>
+</p>
+</li><li><p  id="Step_references"><strong>Step references</strong>
+<p>Once a step is defined including the execution code it can be referenced from other scenarios. The textual description of the step serves as identifier. When you reuse the step in a different scenario and provide no implementation the existing implementation from the referenced step will be used for this step.</p><p>Referenced steps are highlighted in grey so you see when you are actually using a referenced step. You can also jump directly to the original step declaration to have a look at the implementation.</p>
+<pre class="prettyprint lang-feature">
+package demo
+import org.jnario.feature.documentation.Calculator
+
+Feature: Calculator
+
+Background:
+  Calculator calculator
+  int result
+  Given a calculator
+    calculator = new Calculator
+
+Scenario: Adding two numbers
+  When adding two numbers a and b. 
+    result = calculator.add(a, b)
+  Then it returns the expected result
+    result =&gt; expected
+    
+  Examples:
+
+    |  a  |  b  | expected |
+    |  0  |  0  |   0    |
+    | -3  | -5  |  -8    |
+  
+Scenario: Dividing two numbers
+ When entering two numbers a and b and pressing enter. 
+   result = calculator.divide(a,b)
+ Then it returns the expected result
+ 
+ Examples:
+ 
+   |  a  |  b  | expected |
+   |  8  |  1  |     8    |</pre>
+</p>
+</li></ul>
+				</div>
+			</div>
+		</div> <!-- /content -->
+		<footer>
+			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
+		</footer>
+
+	</div>
+	<!-- /container -->
+
+</body>
+</html>

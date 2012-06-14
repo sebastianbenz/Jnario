@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(FeatureRunner.class)
 @Contains({ StepParametersFeatureParametersAreDefinedInQuotes.class, StepParametersFeatureAccessOfParametersWithFirstSecond.class, StepParametersFeatureParameterDefinitionInStepsAndBackground.class, StepParametersFeatureReferencingVariablesThatContainAValueFromArgs.class, StepParametersFeatureUsingMultilineStrings.class })
-@Named("Feature: Step Parameters")
+@Named("Step Parameters")
 @SuppressWarnings("all")
 public class StepParametersFeature {
 }

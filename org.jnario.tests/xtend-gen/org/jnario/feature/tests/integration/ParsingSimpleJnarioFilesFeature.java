@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
  */
 @RunWith(FeatureRunner.class)
 @Contains(ParsingSimpleJnarioFilesFeatureAndStuff.class)
-@Named("Feature: Parsing simple jnario files.")
+@Named("Parsing simple jnario files.")
 @SuppressWarnings("all")
 public class ParsingSimpleJnarioFilesFeature {
 }

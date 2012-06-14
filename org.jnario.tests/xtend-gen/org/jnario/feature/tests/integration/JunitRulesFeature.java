@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(FeatureRunner.class)
 @Contains(JunitRulesFeatureUsingJUnitRules.class)
-@Named("Feature: Junit Rules")
+@Named("Junit Rules")
 @SuppressWarnings("all")
 public class JunitRulesFeature {
 }

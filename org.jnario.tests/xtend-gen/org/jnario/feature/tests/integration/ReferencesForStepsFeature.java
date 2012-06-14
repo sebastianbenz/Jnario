@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
  */
 @RunWith(FeatureRunner.class)
 @Contains({ ReferencesForStepsFeatureDefiningAStepAndUsingItInTheSameScenario.class, ReferencesForStepsFeatureReferencingStepsWithDifferentKeyword.class, ReferencesForStepsFeatureUsingFieldsFromOtherSteps.class })
-@Named("Feature: References for steps")
+@Named("References for steps")
 @SuppressWarnings("all")
 public class ReferencesForStepsFeature {
 }

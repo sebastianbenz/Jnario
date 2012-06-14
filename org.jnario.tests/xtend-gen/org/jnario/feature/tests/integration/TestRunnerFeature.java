@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
  */
 @RunWith(FeatureRunner.class)
 @Contains(TestRunnerFeatureCreateOnlyOneTestInstanceForOneJnarioScenario.class)
-@Named("Feature: Test Runner")
+@Named("Test Runner")
 @SuppressWarnings("all")
 public class TestRunnerFeature {
 }

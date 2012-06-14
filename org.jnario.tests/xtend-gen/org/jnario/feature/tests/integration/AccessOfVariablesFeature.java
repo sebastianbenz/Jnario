@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
  */
 @RunWith(FeatureRunner.class)
 @Contains({ AccessOfVariablesFeatureAccessAVariableInTheSameStepItWasDeclaredIn.class, AccessOfVariablesFeatureAccessAVariableThatWasDeclaredInADifferentStep.class, AccessOfVariablesFeatureAccessAVariableThatWasAssignedAValueOfAVariableDefinedInADifferentStep.class, AccessOfVariablesFeatureAccessAVariableDeclaredInBackgroundStep.class, AccessOfVariablesFeatureAccessAVariableReferencingAVariableFromBackgroundStep.class })
-@Named("Feature: Access of variables")
+@Named("Access of variables")
 @SuppressWarnings("all")
 public class AccessOfVariablesFeature {
 }

@@ -215,30 +215,35 @@ describe Stack{
         <p>Jnario consists of three parts:</p>
         <ol>
           <li><strong>Runtime:</strong> the Jnario runtime environment required for executing specifications. </li>
-          <li><strong>Compiler:</strong> the Jnario compiler is responsible for translating specification files (*.feature, *.spec, *.suite) into Java classes. The compiler be executed either from commandline or as part of the incremental build in Eclipse.</li>
-          <li><strong>IDE:</strong> The Jnario IDE provides Editors with syntax highlighting, code completion, validation and debugger for Eclipse.</li>
+          <li><strong>Compiler:</strong> the Jnario compiler translates specification files (*.feature, *.spec, *.suite) into Java classes.</li>
+          <li><strong>IDE:</strong> the IDE provides Editors with syntax highlighting, code completion, validation and debugger for Eclipse.</li>
         </ol>
-        <h3>Tooling</h3>
+        <h3>Installing the Jnario Tooling</h3>
          <ul>
           <li>The Jnario IDE with integrated compiler requires <a href="eclipse.org/downloads/">Eclipse
               &#8805;3.6</a> with the latest milestone releases of <a href="http://www.xtext.org">Xtext 2.3</a> and <a
             href="http://www.eclipse.org/xtend/">Xtend 2.3</a>. Jnario will be officially released in End of June 2012, but you can install the latest stable snapshots via this update site:
             <pre>http://www.jnario.org/updates/snapshot/</pre>
           </li>
-          <li>Commandline Compiler.</li>
-          <li>Maven Compiler Integration (coming soon...)</li>
+          <li>Compiling specs via <a href="http://maven.apache.org/">Maven</a> will be available soon.</li>
         </ul>
-        <h3>Runtime</h3>
-        <p>Jnario compiles to Java and requires the following libraries at runtime:</p>
+        <h3>Installing the Jnario Runtime</h3>
+        <p>Jnario compiles to Java and depends on following libraries at runtime:</p>
         <ul>
           <li><a href="http://www.junit.org/">JUnit 4</a> - used for test execution</li>
           <li><a href="http://www.eclipse.org/xtend/">Xtend Runtime Library</a> - many of Xtend's functionality is not built into the language itself but is provided via this library</li>
           <li><a href="http://code.google.com/p/guava-libraries/">Google Guava </a>- Google's core Java library</li>
           <li><a href="http://jnario.org/updates/snapshot/org.jnario.lib-0.1.0-SNAPSHOT.jar">Jnario Lib</a> - the Jnario runtime</li>
         </ul>
-        <p>Inside Eclipse you can add these libraries via quickfix:</p>
-        <p><img src="img/quickfix.png"></p>
-        <p>Support for Maven is coming soon...</p>
+        <p>There are different ways to add these libraries to your project:</p>
+        <ul>
+          <li><p>Inside Eclipse you can add these libraries via quickfix:</p>
+        <p><img src="img/quickfix.png"></p></li>
+        <li>If you are developing Eclipse plugins add a plugin dependency to "org.jnario.lib".</li>
+          <li>
+         Support for <a href="http://maven.apache.org/">Maven</a> is coming soon...</li>
+        </ul>
+        
       </section>
 
       <section id="documentation" class="row">
