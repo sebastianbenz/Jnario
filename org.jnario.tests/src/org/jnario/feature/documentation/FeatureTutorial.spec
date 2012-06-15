@@ -27,7 +27,7 @@ import static extension org.jnario.jnario.test.util.FeatureExecutor.*
  */
 describe "Jnario Features - Tutorial"{
   
-  /*
+  /* 
    * The first example for using Jnario Features is the specification of a calculator. Start out with creating
    * a new file (**File** -> **New** -> **File**) and giving it the file extension _*.feature_.
    * 

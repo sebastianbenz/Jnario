@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(FeatureRunner.class)
 @Contains(AdditionFeatureAddTwoNumbers.class)
-@Named("Feature: Addition")
+@Named("Addition")
 @SuppressWarnings("all")
 public class AdditionFeature {
 }

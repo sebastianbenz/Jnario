@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(FeatureRunner.class)
 @Contains(CalculatorFeatureAddingToValues.class)
-@Named("Feature: Calculator")
+@Named("Calculator")
 @SuppressWarnings("all")
 public class CalculatorFeature {
 }

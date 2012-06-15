@@ -151,14 +151,16 @@ public class ExampleNameProviderToJavaClassNameExampleGroupSpec extends ExampleN
   }
   
   public String firstJavaClassName(final CharSequence content) {
-    Query _parse = this.parse(content);
+    String _plus = (content + "{}");
+    Query _parse = this.parse(_plus);
     ExampleGroup _first = _parse.<ExampleGroup>first(ExampleGroup.class);
     String _javaClassName = this.subject.toJavaClassName(_first);
     return _javaClassName;
   }
   
   public String secondJavaClassName(final CharSequence content) {
-    Query _parse = this.parse(content);
+    String _plus = (content + "{}");
+    Query _parse = this.parse(_plus);
     ExampleGroup _second = _parse.<ExampleGroup>second(ExampleGroup.class);
     String _javaClassName = this.subject.toJavaClassName(_second);
     return _javaClassName;

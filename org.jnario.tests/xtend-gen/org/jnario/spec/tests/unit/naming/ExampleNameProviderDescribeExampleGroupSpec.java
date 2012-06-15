@@ -58,10 +58,10 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   @Named("should use the target operation")
   @Order(99)
   public void shouldUseTheTargetOperation() throws Exception {
-    String _describeSecond = this.describeSecond("describe org.junit.Assert{\r\n                    context assertTrue(boolean) \r\n                 }");
+    String _describeSecond = this.describeSecond("describe org.junit.Assert{\r\n                    context assertTrue(boolean) {}\r\n                 }");
     boolean _doubleArrow = Should.operator_doubleArrow(_describeSecond, "assertTrue[boolean]");
-    Assert.assertTrue("\nExpected describeSecond(\"describe org.junit.Assert{\r\n                    context assertTrue(boolean) \r\n                 }\") => \"assertTrue[boolean]\" but"
-     + "\n     describeSecond(\"describe org.junit.Assert{\r\n                    context assertTrue(boolean) \r\n                 }\") is " + "\"" + _describeSecond + "\"" + "\n", _doubleArrow);
+    Assert.assertTrue("\nExpected describeSecond(\"describe org.junit.Assert{\r\n                    context assertTrue(boolean) {}\r\n                 }\") => \"assertTrue[boolean]\" but"
+     + "\n     describeSecond(\"describe org.junit.Assert{\r\n                    context assertTrue(boolean) {}\r\n                 }\") is " + "\"" + _describeSecond + "\"" + "\n", _doubleArrow);
     
   }
   
@@ -69,10 +69,10 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   @Named("should combine target operation and description")
   @Order(99)
   public void shouldCombineTargetOperationAndDescription() throws Exception {
-    String _describeSecond = this.describeSecond("describe org.junit.Assert{\r\n                    context assertTrue(boolean) \'and more\'\r\n                 }");
+    String _describeSecond = this.describeSecond("describe org.junit.Assert{\r\n                    context assertTrue(boolean) \'and more\'{}\r\n                 }");
     boolean _doubleArrow = Should.operator_doubleArrow(_describeSecond, "assertTrue[boolean] and more");
-    Assert.assertTrue("\nExpected describeSecond(\"describe org.junit.Assert{\r\n                    context assertTrue(boolean) \'and more\'\r\n                 }\") => \"assertTrue[boolean] and more\" but"
-     + "\n     describeSecond(\"describe org.junit.Assert{\r\n                    context assertTrue(boolean) \'and more\'\r\n                 }\") is " + "\"" + _describeSecond + "\"" + "\n", _doubleArrow);
+    Assert.assertTrue("\nExpected describeSecond(\"describe org.junit.Assert{\r\n                    context assertTrue(boolean) \'and more\'{}\r\n                 }\") => \"assertTrue[boolean] and more\" but"
+     + "\n     describeSecond(\"describe org.junit.Assert{\r\n                    context assertTrue(boolean) \'and more\'{}\r\n                 }\") is " + "\"" + _describeSecond + "\"" + "\n", _doubleArrow);
     
   }
   
@@ -84,7 +84,7 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
     _builder.append("describe \'Example\'{");
     _builder.newLine();
     _builder.append("                    ");
-    _builder.append("describe \'and \"more\"\'");
+    _builder.append("describe \'and \"more\"\'{}");
     _builder.newLine();
     _builder.append("                 ");
     _builder.append("}");
@@ -98,7 +98,8 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   }
   
   public String describeFirst(final String content) {
-    Query _parse = this.parse(content);
+    String _plus = (content + "{}");
+    Query _parse = this.parse(_plus);
     ExampleGroup _first = _parse.<ExampleGroup>first(ExampleGroup.class);
     String _describe = this.subject.describe(_first);
     return _describe;

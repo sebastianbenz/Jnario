@@ -9,10 +9,6 @@
 package org.jnario.spec;
 
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.xtend.core.XtendStandaloneSetup;
-import org.eclipse.xtext.xbase.XbaseStandaloneSetup;
-import org.eclipse.xtext.xbase.XtypeStandaloneSetup;
-import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
 import org.jnario.JnarioPackage;
 import org.jnario.spec.spec.SpecPackage;
 
@@ -21,22 +17,18 @@ import com.google.inject.Injector;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
-@SuppressWarnings("restriction")
 public class SpecStandaloneSetup extends SpecStandaloneSetupGenerated{
 
 	public static void doSetup() {
 		new SpecStandaloneSetup().createInjectorAndDoEMFRegistration();
 	}
 	
+
 	@Override
-	public void register(Injector injector) {
-		XtendStandaloneSetup.doSetup();
-		XbaseStandaloneSetup.doSetup();
-		XtypeStandaloneSetup.doSetup();
-		EPackage.Registry.INSTANCE.put(XAnnotationsPackage.eINSTANCE.getNsURI(),XAnnotationsPackage.eINSTANCE);
+	public Injector createInjectorAndDoEMFRegistration() {
 		EPackage.Registry.INSTANCE.put(JnarioPackage.eNS_URI, JnarioPackage.eINSTANCE);
 		EPackage.Registry.INSTANCE.put(SpecPackage.eNS_URI, SpecPackage.eINSTANCE);
-		super.register(injector);
+		return super.createInjectorAndDoEMFRegistration();
 	}
 }
 

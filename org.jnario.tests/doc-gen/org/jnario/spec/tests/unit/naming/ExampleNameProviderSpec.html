@@ -202,19 +202,19 @@ describeFirst("describe org.junit.Assert 'and more'") =&gt; "Assert and more"</p
 </li><li><p  id="should_use_the_target_operation"><strong>should use the target operation</strong>
 <pre class="prettyprint lang-spec">
 describeSecond("describe org.junit.Assert{
-              context assertTrue(boolean) 
+              context assertTrue(boolean) {}
            }") =&gt; "assertTrue[boolean]"</pre>
 </p>
 </li><li><p  id="should_combine_target_operation_and_description"><strong>should combine target operation and description</strong>
 <pre class="prettyprint lang-spec">
 describeSecond("describe org.junit.Assert{
-              context assertTrue(boolean) 'and more'
+              context assertTrue(boolean) 'and more'{}
            }") =&gt; "assertTrue[boolean] and more"</pre>
 </p>
 </li><li><p  id="should_escape_quotes"><strong>should escape quotes</strong>
 <pre class="prettyprint lang-spec">
 val text = '''describe 'Example'{
-              describe 'and "more"'
+              describe 'and "more"'{}
            }'''.toString
 describeSecond(text) =&gt; 'and \\"more\\"'</pre>
 </p>

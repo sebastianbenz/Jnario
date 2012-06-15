@@ -7,9 +7,13 @@
  *******************************************************************************/
 package org.jnario.jnario.test.util;
 
+import static com.google.common.collect.Iterables.concat;
 import static com.google.common.collect.Iterables.filter;
+import static com.google.common.collect.Iterables.toArray;
 import static com.google.common.collect.Lists.newArrayList;
 import static junit.framework.Assert.assertFalse;
+import static org.eclipse.emf.common.util.URI.createURI;
+import static org.eclipse.xtext.util.Exceptions.throwUncheckedException;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -17,20 +21,32 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import org.antlr.runtime.Token;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtend.core.xtend.XtendPackage;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.Constants;
 import org.eclipse.xtext.common.types.JvmOperation;
+import org.eclipse.xtext.common.types.access.impl.ClasspathTypeProvider;
+import org.eclipse.xtext.common.types.access.impl.IndexedJvmTypeAccess;
 import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
+import org.eclipse.xtext.junit4.IInjectorProvider;
+import org.eclipse.xtext.junit4.IRegistryConfigurator;
 import org.eclipse.xtext.junit4.validation.RegisteredValidatorTester;
 import org.eclipse.xtext.naming.QualifiedName;
+import org.eclipse.xtext.resource.IResourceFactory;
+import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.util.CancelIndicator;
+import org.eclipse.xtext.util.StringInputStream;
 import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.validation.CheckMode;
 import org.eclipse.xtext.validation.IResourceValidator;
@@ -40,6 +56,7 @@ import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.hamcrest.Matcher;
 import org.jnario.Assertion;
+import org.jnario.feature.documentation.Calculator;
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.runner.Named;
 import org.jnario.spec.spec.SpecPackage;
@@ -56,6 +73,8 @@ import testdata.Properties1;
 import com.google.common.base.Function;
 import com.google.common.base.Joiner;
 import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Maps;
 import com.google.inject.Inject;
 
 /**
@@ -64,6 +83,59 @@ import com.google.inject.Inject;
  */
 @SuppressWarnings("restriction")
 public abstract class BehaviorExecutor {
+	
+	protected static Map<Class<?>, IInjectorProvider> injectorProviderClassCache = Maps.newHashMap();
+	
+	public static Result execute(Class<? extends IInjectorProvider> injectorType, Class<? extends BehaviorExecutor> executorType, CharSequence content) {
+		IInjectorProvider injectorProvider = getOrCreateInjectorProvider(injectorType);
+		try {
+			BehaviorExecutor executor = injectorProvider.getInjector().getInstance(executorType);
+			((IRegistryConfigurator)injectorProvider).setupRegistry();		
+			Resource resource = executor.parse(content.toString());	
+			return executor.run(resource.getContents().get(0));
+		} finally {
+			((IRegistryConfigurator)injectorProvider).restoreRegistry();
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	protected static <T extends IInjectorProvider> T getOrCreateInjectorProvider(Class<T> type) {
+		IInjectorProvider injectorProvider = getInjectorProvider(type);
+		if (injectorProvider == null) {
+			injectorProvider = createInjectorProvider(type);
+			injectorProviderClassCache.put(type, injectorProvider);
+		}
+		return (T) injectorProvider;
+	}
+	
+	protected Resource parse(String content) {
+		XtextResourceSet resourceSet = new XtextResourceSet();
+		installJvmTypeProvider(resourceSet);
+		Resource resource = resourceFactory.createResource(createURI("dummy." + fileExtension));
+		resourceSet.getResources().add(resource);
+		try {
+			resource.load(new StringInputStream(content), Collections.emptyMap());
+			Resources.checkForParseErrors(resource);
+		} catch (IOException e) {
+			e.printStackTrace();
+			org.junit.Assert.fail(e.getMessage());
+		}
+		return resource;
+	}
+	
+	protected static IInjectorProvider getInjectorProvider(Class<? extends IInjectorProvider> type) {
+		return injectorProviderClassCache.get(type);
+	}
+	
+	protected static IInjectorProvider createInjectorProvider(Class<? extends IInjectorProvider> type) {
+		IInjectorProvider injectorProvider = null;
+			try {
+				injectorProvider = type.newInstance();
+			} catch (Exception e) {
+				throwUncheckedException(e);
+			}
+		return injectorProvider;
+	}
 
 	@SuppressWarnings("serial")
 	public static class CompositeResult extends Result{
@@ -121,23 +193,45 @@ public abstract class BehaviorExecutor {
 		
 	}
 	
+	
+	@Inject private JvmModelGenerator generator;
+	@Inject private JavaIoFileSystemAccess fsa;
+	@Inject private TemporaryFolder tempFolder;
 
-	private final JvmModelGenerator generator;
-	private final JavaIoFileSystemAccess fsa;
-	private final TemporaryFolder tempFolder;
-
-	private IResourceValidator validator;
+	@Inject private IResourceValidator validator;
 	protected boolean validate = true;
-	private final FeatureJavaCompiler javaCompiler;
-
+	private FeatureJavaCompiler javaCompiler = FeatureJavaCompiler.getInstance();
+	@Inject private IResourceFactory resourceFactory;
 	@Inject
-	public BehaviorExecutor(JvmModelGenerator generator, JavaIoFileSystemAccess fsa,
-			TemporaryFolder tempFolder, IResourceValidator validator) {
-		this.generator = generator;
-		this.fsa = fsa;
-		this.tempFolder = tempFolder;
-		this.validator = validator;
-		this.javaCompiler = FeatureJavaCompiler.getInstance();
+	@com.google.inject.name.Named(Constants.FILE_EXTENSIONS)
+	public String fileExtension;
+	
+	@Inject
+	private IndexedJvmTypeAccess indexedJvmTypeAccess;
+	
+	protected void installJvmTypeProvider(ResourceSet resourceSet) {
+		Iterable<String> classPathEntries = concat(javaCompiler.getClasspathPathEntries());
+		classPathEntries = filter(classPathEntries, new Predicate<String>() {
+			public boolean apply(String input) {
+				return !Strings.isEmpty(input.trim());
+			}
+		});
+		Iterable<URL> classPathUrls = Iterables.transform(classPathEntries, new Function<String, URL>() {
+
+			public URL apply(String from) {
+				try {
+					return new File(from).toURI().toURL();
+				} catch (MalformedURLException e) {
+					throw new RuntimeException(e);
+				}
+			}
+		});
+		URLClassLoader urlClassLoader = new URLClassLoader(toArray(classPathUrls, URL.class), getClass().getClassLoader());
+		new ClasspathTypeProvider(urlClassLoader, resourceSet, indexedJvmTypeAccess);
+		((XtextResourceSet) resourceSet).setClasspathURIContext(urlClassLoader);
+	}
+	
+	public BehaviorExecutor() {
 		initCompiler();
 	}
 
@@ -169,6 +263,7 @@ public abstract class BehaviorExecutor {
 		javaCompiler.addClassPathOfClass(Token.class);
 		javaCompiler.addClassPathOfClass(Strings.class);
 		javaCompiler.addClassPathOfClass(Suite.class);
+		javaCompiler.addClassPathOfClass(Calculator.class);
 	}
 
 	public Result run(EObject object) {

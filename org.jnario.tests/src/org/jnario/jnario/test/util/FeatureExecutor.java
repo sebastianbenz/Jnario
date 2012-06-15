@@ -8,82 +8,45 @@
 package org.jnario.jnario.test.util;
 
 import static junit.framework.Assert.assertFalse;
-import static org.jnario.jnario.test.util.Resources.checkForParseErrors;
 import static org.jnario.jnario.test.util.ResultMatchers.failureCountIs;
 import static org.jnario.jnario.test.util.ResultMatchers.isSuccessful;
+import static org.junit.Assert.assertThat;
 
-import java.io.IOException;
 import java.net.MalformedURLException;
-import java.util.Collections;
 
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
-import org.eclipse.xtext.resource.XtextResourceSet;
-import org.eclipse.xtext.util.StringInputStream;
-import org.eclipse.xtext.validation.IResourceValidator;
 import org.jnario.feature.FeatureInjectorProvider;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeatureFile;
-import org.jnario.feature.generator.FeatureJvmModelGenerator;
 import org.jnario.feature.naming.FeatureClassNameProvider;
-import org.junit.Assert;
-import org.junit.experimental.results.PrintableResult;
-import org.junit.rules.TemporaryFolder;
 import org.junit.runner.Result;
 
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
-import com.google.inject.Injector;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
 @SuppressWarnings("restriction")
 public class FeatureExecutor extends BehaviorExecutor{
-	
 
 	public static Result execute(CharSequence content) {
-		FeatureInjectorProvider injectorProvider = new FeatureInjectorProvider();
-		try {
-			injectorProvider.setupRegistry();
-			Injector injector = new FeatureTestSetup().createInjectorAndDoEMFRegistration();
-			
-			XtextResourceSet resourceSet = new XtextResourceSet();
-			Resource resource = resourceSet.createResource(URI.createURI("temp.feature"));
-			try {
-				resource.load(new StringInputStream(content.toString()), Collections.emptyMap());
-				checkForParseErrors(resource);
-			} catch (IOException e) {
-				e.printStackTrace();
-				org.junit.Assert.fail(e.getMessage());
-			}
-			
-			FeatureExecutor executor = injector.getInstance(FeatureExecutor.class);
-			return executor.run((FeatureFile) resource.getContents().get(0));
-		} finally {
-			injectorProvider.restoreRegistry();
-		}
+		return execute(FeatureInjectorProvider.class, FeatureExecutor.class, content);
 	}
 	
 	public static void executesSuccessfully(CharSequence content) {
-		Result result = execute(content);
-		Assert.assertThat("Errors: " + new PrintableResult(result.getFailures()).toString(), result, isSuccessful());
+		assertThat(execute(content), isSuccessful());
 	}
 	
 	public static void executionFails(CharSequence content) {
-		Result result = execute(content);
-		Assert.assertThat(result, failureCountIs(1));
+		assertThat(execute(content), failureCountIs(1));
 	}
 	
-	private final FeatureClassNameProvider nameProvider;
-
 	@Inject
-	public FeatureExecutor(FeatureJvmModelGenerator generator, JavaIoFileSystemAccess fsa,
-			TemporaryFolder tempFolder, FeatureClassNameProvider javaNameProvider, IResourceValidator validator) {
-		super(generator, fsa, tempFolder, validator);
-		this.nameProvider = javaNameProvider;
+	private FeatureClassNameProvider nameProvider;
+
+	public FeatureExecutor() {
+		super();
 		validate = false;
 	}
 

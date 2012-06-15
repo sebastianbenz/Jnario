@@ -21,7 +21,7 @@
 				<version>${tycho-version}</version>
 				<configuration>
 					<useUIHarness>false</useUIHarness>
-					<argLine>-Xmx768m</argLine> 
+					<argLine>-Xms256m -Xmx1024m -XX:MaxPermSize=256M</argLine> 
 <!--					<argLine>-Xdebug -Xnoagent -Xrunjdwp:transport=dt_socket,address=8787,server=y,suspend=y</argLine> -->
 					<explodedBundles> 
 						<!-- Make sure that nested junit.jar can be accessed by PDE/JDT. -->
@@ -61,7 +61,14 @@
 							<artifactId>tycho-surefire-plugin</artifactId>
 							<version>${tycho-version}</version>
 							<configuration>
-								<argLine>-XstartOnFirstThread</argLine>
+								<argLine>-XstartOnFirstThread -Xms256m -Xmx1024m -XX:MaxPermSize=256M</argLine>
+								<includes>
+			            			<include>**/Test*.java</include>
+			            			<include>**/*Test.java</include>
+			            			<include>**/*TestCase.java</include>
+			            			<include>**/*Feature.java</include>
+			            			<include>**/*Spec.java</include>
+			          			</includes>
 							</configuration>
 						</plugin>
 					</plugins>

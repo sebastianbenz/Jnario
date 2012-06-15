@@ -36,10 +36,10 @@ public class FeatureJavaCompiler extends EclipseRuntimeDependentJavaCompiler{
 	private static final FeatureJavaCompiler compiler = new FeatureJavaCompiler();
 	
 	private FeatureJavaCompiler(){
-		
 	}
 	
 	private Set<String> jnarioClassPath = new HashSet<String>();
+	private String classPathArgs;
 	
 	private final class Progress extends
 			CompilationProgress {
@@ -119,21 +119,26 @@ public class FeatureJavaCompiler extends EclipseRuntimeDependentJavaCompiler{
 	
 	@Override
 	public String getClasspathArgs() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("-classpath ");
-		Iterator<String> iterator = jnarioClassPath.iterator();
-		while(iterator.hasNext()){
-			sb.append(iterator.next());
-			if (iterator.hasNext())
-				sb.append(File.pathSeparator);
+		if(classPathArgs == null){
+			StringBuilder sb = new StringBuilder();
+			sb.append("-classpath ");
+			Iterator<String> iterator = jnarioClassPath.iterator();
+			while(iterator.hasNext()){
+				sb.append(iterator.next());
+				if (iterator.hasNext())
+					sb.append(File.pathSeparator);
+			}
+			classPathArgs = sb.toString();
 		}
-		return sb.toString();
+		return classPathArgs;
 	}
 
 	public static FeatureJavaCompiler getInstance() {
 		return compiler;
 	}
-	
-	
+
+	public Iterable<? extends String> getClasspathPathEntries() {
+		return jnarioClassPath;
+	}
 	
 }

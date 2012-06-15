@@ -9,8 +9,6 @@
 package org.jnario.feature;
 
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.xtend.core.XtendStandaloneSetup;
-import org.eclipse.xtext.xbase.XbaseStandaloneSetup;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
 import org.jnario.JnarioPackage;
 import org.jnario.feature.feature.FeaturePackage;
@@ -27,13 +25,11 @@ public class FeatureStandaloneSetup extends FeatureStandaloneSetupGenerated{
 	}
 	
 	@Override
-	public void register(Injector injector) {
-		XtendStandaloneSetup.doSetup();
-		XbaseStandaloneSetup.doSetup();
+	public Injector createInjectorAndDoEMFRegistration() {
 		EPackage.Registry.INSTANCE.put(XAnnotationsPackage.eINSTANCE.getNsURI(),XAnnotationsPackage.eINSTANCE);
 		EPackage.Registry.INSTANCE.put(JnarioPackage.eNS_URI, JnarioPackage.eINSTANCE);
 		EPackage.Registry.INSTANCE.put(FeaturePackage.eNS_URI, FeaturePackage.eINSTANCE);
-		super.register(injector);
+		return super.createInjectorAndDoEMFRegistration();
 	}
 }
 

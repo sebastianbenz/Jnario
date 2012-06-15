@@ -71,11 +71,11 @@ describe ExampleNameProvider{
     }
                 
     def firstJavaClassName(CharSequence content){
-      subject.toJavaClassName(parse(content).first(typeof(ExampleGroup)))
+      subject.toJavaClassName(parse(content + "{}").first(typeof(ExampleGroup)))
     }
     
     def secondJavaClassName(CharSequence content){
-      subject.toJavaClassName(parse(content).second(typeof(ExampleGroup)))
+      subject.toJavaClassName(parse(content + "{}").second(typeof(ExampleGroup)))
     }
   }      
   
@@ -229,25 +229,25 @@ describe ExampleNameProvider{
     
     fact "should use the target operation"{
       describeSecond("describe org.junit.Assert{
-                    context assertTrue(boolean) 
+                    context assertTrue(boolean) {}
                  }") => "assertTrue[boolean]"
     }
     
     fact "should combine target operation and description"{
       describeSecond("describe org.junit.Assert{
-                    context assertTrue(boolean) 'and more'
+                    context assertTrue(boolean) 'and more'{}
                  }") => "assertTrue[boolean] and more"
     }
     
     fact "should escape quotes"{
       val text = '''describe 'Example'{
-                    describe 'and "more"'
+                    describe 'and "more"'{}
                  }'''.toString
       describeSecond(text) => 'and \\"more\\"'
     }
     
     def describeFirst(String content){
-      subject.^describe(parse(content).first(typeof(ExampleGroup)))
+      subject.^describe(parse(content + "{}").first(typeof(ExampleGroup)))
     }
     
     def describeSecond(String content){
