@@ -28,13 +28,17 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<ul><li><p  id="should_name_methods_similar_to_JavaDoc_links"><strong>should name methods similar to JavaDoc links</strong>
-<pre class="prettyprint lang-spec">
-nameOf("simpleOperation") =&gt; "simpleOperation"
-nameOf("operationWithSingleArgument") =&gt; "operationWithSingleArgument(String)"
-nameOf("operationWithMultipleArguments") =&gt; "operationWithMultipleArguments(String, Object, int)"
-nameOf("operationWithTypedArguments") =&gt; "operationWithTypedArguments(List&lt;String&gt;, List&lt;? extends String&gt;)"
-nameOf("operationWithVarArg") =&gt; "operationWithVarArg(String[])"</pre>
+<h3 id="should_name_methods_similar_to_JavaDoc_links">Should name methods similar to JavaDoc links</h3>
+<p></p>
+<ul><li><p  id="nameOf__simpleOperation_______simpleOperation_"><strong>nameOf["simpleOperation"] => "simpleOperation"</strong>
+</p>
+</li><li><p  id="nameOf__operationWithSingleArgument_______operationWithSingleArgument_String__"><strong>nameOf["operationWithSingleArgument"] => "operationWithSingleArgument[String]"</strong>
+</p>
+</li><li><p  id="nameOf__operationWithMultipleArguments_______operationWithMultipleArguments_String__Object__int__"><strong>nameOf["operationWithMultipleArguments"] => "operationWithMultipleArguments[String, Object, int]"</strong>
+</p>
+</li><li><p  id="nameOf__operationWithTypedArguments_______operationWithTypedArguments_List_String___List___extends_String___"><strong>nameOf["operationWithTypedArguments"] => "operationWithTypedArguments[List<String>, List<? extends String>]"</strong>
+</p>
+</li><li><p  id="nameOf__operationWithVarArg_______operationWithVarArg_String____"><strong>nameOf["operationWithVarArg"] => "operationWithVarArg[String[]]"</strong>
 </p>
 </li></ul>
 				</div>

@@ -7,50 +7,17 @@
  *******************************************************************************/
 package org.jnario.jnario.test.util;
 
-import org.eclipse.xtext.junit4.GlobalRegistries;
-import org.eclipse.xtext.junit4.GlobalRegistries.GlobalStateMemento;
-import org.jnario.runner.TestInstantiator;
-
-import com.google.inject.Injector;
+import org.eclipse.xtext.junit4.IInjectorProvider;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
-public class FeatureTestInstantiator implements TestInstantiator {
-	protected GlobalStateMemento globalStateMemento;
-	protected Injector injector;
-
-	static {
-		GlobalRegistries.initializeDefaults();
-	}
+public class FeatureTestInstantiator extends SpecificationInstantiator{
+	private static ExtendedFeatureInjectorProvider injectorProvider = new ExtendedFeatureInjectorProvider();
 	
-	public Injector getInjector() {
-		if (injector == null) {
-			this.injector = new FeatureStandaloneTestSetup().createInjectorAndDoEMFRegistration();
-		}
-		return injector;
-	}
-	
-	public void restoreRegistry() {
-		globalStateMemento.restoreGlobalState();
-	}
-
-	public void setupRegistry() {
-		globalStateMemento = GlobalRegistries.makeCopyOfGlobalState();
-		if (injector != null)
-			new FeatureStandaloneTestSetup().register(injector);
-	}
-	
-	public Object createTest(Class<?> klass) throws Exception {
-		setupRegistry();
-		return getInjector().getInstance(klass);
-	}
-
-	public void beforeTestRun() {
-	}
-
-	public void afterTestRun() {
-		restoreRegistry();
+	@Override
+	protected IInjectorProvider getInjectorProvider() {
+		return injectorProvider;
 	}
 
 }

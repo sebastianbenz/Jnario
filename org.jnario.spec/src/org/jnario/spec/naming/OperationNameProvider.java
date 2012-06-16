@@ -23,6 +23,15 @@ import com.google.common.base.Function;
  */
 public class OperationNameProvider implements Function<JvmOperation, QualifiedName>{
 
+	private final class Param2Name implements
+			Function<JvmFormalParameter, String> {
+		public String apply(JvmFormalParameter from) {
+			JvmTypeReference type = from.getParameterType();
+			return type.getSimpleName();
+		}
+	}
+	private Param2Name param2Name = new Param2Name();
+
 	public QualifiedName apply(JvmOperation from) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(from.getSimpleName());
@@ -35,14 +44,7 @@ public class OperationNameProvider implements Function<JvmOperation, QualifiedNa
 			return;
 		}
 		sb.append("(");
-		sb.append(on(", ").join(transform(parameters, new Function<JvmFormalParameter, String>(){
-
-			public String apply(JvmFormalParameter from) {
-				JvmTypeReference type = from.getParameterType();
-				return type.getSimpleName();
-			}
-			
-		})));
+		sb.append(on(", ").join(transform(parameters, param2Name)));
 		sb.append(")");
 	}
 

@@ -8,23 +8,25 @@
 package org.jnario.feature.tests.unit.validation
 
 import com.google.inject.Inject
-import org.jnario.runner.InstantiateWith
-import org.jnario.jnario.test.util.ModelStore
-import org.jnario.jnario.test.util.SpecTestInstantiator
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.junit4.validation.RegisteredValidatorTester
-import org.eclipse.xtext.xbase.lib.Procedures
-import static org.jnario.jnario.test.util.Query.*
 import org.eclipse.xtext.junit4.validation.AssertableDiagnostics
+import org.eclipse.xtext.junit4.validation.RegisteredValidatorTester
+import org.eclipse.xtext.xbase.lib.Procedures$Procedure1
 import org.jnario.feature.feature.Feature
 import org.jnario.feature.feature.Scenario
 import org.jnario.feature.feature.Step
+import org.jnario.feature.validation.FeatureJavaValidator
+import org.jnario.jnario.test.util.FeatureTestInstantiator
+import org.jnario.jnario.test.util.ModelStore
+import org.jnario.runner.InstantiateWith
+
+import static org.jnario.jnario.test.util.Query.*
 
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
-@InstantiateWith(typeof(SpecTestInstantiator))
-describe "JnarioValidator"{
+@InstantiateWith(typeof(FeatureTestInstantiator))
+describe FeatureJavaValidator{
 
 	@Inject ModelStore modelStore
 

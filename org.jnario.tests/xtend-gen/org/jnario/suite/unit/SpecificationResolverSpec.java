@@ -48,6 +48,15 @@ public class SpecificationResolverSpec {
     _builder.append("describe \"My Spec\"{");
     _builder.newLine();
     _builder.append("\t");
+    _builder.append("// this should be filtered");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("describe \"My Internal Spec\"{");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();

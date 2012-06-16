@@ -7,47 +7,17 @@
  *******************************************************************************/
 package org.jnario.jnario.test.util;
 
-import org.eclipse.xtext.junit4.GlobalRegistries;
-import org.eclipse.xtext.junit4.GlobalRegistries.GlobalStateMemento;
-import org.jnario.runner.TestInstantiator;
+import org.eclipse.xtext.junit4.IInjectorProvider;
+import org.jnario.spec.SpecInjectorProvider;
 
-import com.google.inject.Injector;
 
-public class SpecTestInstantiator implements TestInstantiator {
-	protected GlobalStateMemento globalStateMemento;
-	protected Injector injector;
-
-	static {
-		GlobalRegistries.initializeDefaults();
-	}
+public class SpecTestInstantiator extends SpecificationInstantiator {
 	
-	public Injector getInjector() {
-		if (injector == null) {
-			this.injector = new SpecStandaloneTestSetup().createInjectorAndDoEMFRegistration();
-		}
-		return injector;
-	}
+	private static ExtendedSpecInjectorProvider injectorProvider = new ExtendedSpecInjectorProvider();
 	
-	public void restoreRegistry() {
-		globalStateMemento.restoreGlobalState();
-	}
-
-	public void setupRegistry() {
-		globalStateMemento = GlobalRegistries.makeCopyOfGlobalState();
-		if (injector != null)
-			new SpecStandaloneTestSetup().register(injector);
-	}
-	
-	public Object createTest(Class<?> klass) throws Exception {
-		return getInjector().getInstance(klass);
-	}
-
-	public void beforeTestRun() {
-		setupRegistry();
-	}
-
-	public void afterTestRun() {
-		restoreRegistry();
+	@Override
+	protected IInjectorProvider getInjectorProvider() {
+		return injectorProvider;
 	}
 
 }

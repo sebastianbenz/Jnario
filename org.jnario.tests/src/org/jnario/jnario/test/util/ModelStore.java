@@ -47,8 +47,6 @@ public class ModelStore implements Iterable<EObject> {
 		for (URI uri : uriProvider.allUris()) {
 			resourceSet.getResource(uri, true);
 		}
-		Resources.addContainerStateAdapter(resourceSet);
-		EcoreUtil.resolveAll(resourceSet);
 		return resourceSet.getResources();
 	}
 
@@ -66,8 +64,6 @@ public class ModelStore implements Iterable<EObject> {
 			ex.printStackTrace();
 			Assert.fail(ex.getMessage());
 		}
-		Resources.addContainerStateAdapter(resourceSet);
-		EcoreUtil.resolveAll(resourceSet);
 		if(!resource.getErrors().isEmpty()){
 			System.err.println(Joiner.on("\n").join(resource.getErrors()));
 		}

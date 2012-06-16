@@ -18,9 +18,10 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.junit4.validation.RegisteredValidatorTester
 
 import static org.jnario.jnario.test.util.Query.*
+import org.jnario.spec.validation.SpecJavaValidator
 
 @InstantiateWith(typeof(SpecTestInstantiator))
-describe "SpecValidator"{
+describe SpecJavaValidator{
 
 	@Inject extension ModelStore modelStore
 
