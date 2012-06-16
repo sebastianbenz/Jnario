@@ -3,28 +3,36 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>org.jnario.standalone.maven</artifactId>
 	<version>0.1.0-SNAPSHOT</version>
-	
+	<packaging>jar</packaging>
 	<build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <version>1.7</version>
-        <executions>
-          <execution>
-            <phase>install</phase>
-            <configuration>
-              <tasks>
-              <ant antfile="create-uberjar.ant"/>
-              </tasks>
-            </configuration>
-            <goals>
-              <goal>run</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<configuration>
+							<tasks>
+								<ant antfile="create-uberjar.ant" />
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-install-plugin</artifactId>
+				<configuration>
+					<file>result/org.jnario.standalone.maven-0.1.0.jar</file>
+					<sources>result/org.jnario.standalone.maven-0.1.0-sources.jar</sources>
+					<pomFile>result/org.jnario.standalone.maven-0.1.0.pom</pomFile>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 	<parent>
 		<groupId>org.jnario</groupId>
 		<artifactId>jnario</artifactId>

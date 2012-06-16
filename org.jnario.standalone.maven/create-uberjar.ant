@@ -7,7 +7,7 @@
 	-->
 	<property name="jnarioPluginFolder" value="../org.jnario.updatesite/target/repository/plugins" />
 	<property name="maven.version" value="0.1.0" />
-	<property name="output.folder" value="target" />
+	<property name="output.folder" value="result" />
 	<echo>${maven.version}</echo>
 
 	<property name="binJarTemp" value="binJarTemp" />
@@ -22,20 +22,6 @@
 		</loadfile>
 		<echo file="${output.folder}/org.jnario.standalone.maven-${maven.version}.pom">${modifiedPomXml}</echo>
 		<echo>Pom stored: ${output.folder}/org.jnario.standalone.maven-${maven.version}.pom</echo>
-		<antcall target="deploy.artifacts" inheritall="true" />
-	</target>
-
-	<!-- - - - - - - - - - - - - - - - - - 
-          target: deploy.artifacts                      
-         - - - - - - - - - - - - - - - - - -->
-	<target name="deploy.artifacts" >
-		<copy verbose="true" todir="/Users/sebastian/.m2/repository/org/jnario/org.jnario.standalone.maven/0.1.0/">
-			<fileset dir="${output.folder}">
-				<include name="org.jnario.standalone.maven-${maven.version}.jar" />
-				<include name="org.jnario.standalone.maven-${maven.version}-sources.jar" />
-				<include name="org.jnario.standalone.maven-${maven.version}.pom" />
-			</fileset>
-		</copy>
 	</target>
 
 	<!-- - - - - - - - - - - - - - - - - - 
@@ -59,6 +45,9 @@
           target: createUberjar    Binary           
          ================================= -->
 	<target name="createUberjar">
+		<mkdir dir="${output.folder}" failonerror="false"/>
+		<mkdir dir="${binJarTemp}" failonerror="false"/>
+		<mkdir dir="${sourceJarTemp}" failonerror="false"/>
 		<!-- Jnario bundles -->
 		<fileset dir="${jnarioPluginFolder}" id="binJnarioJars">
 			<include name="org.jnario_*.jar" />
