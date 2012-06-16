@@ -15,6 +15,7 @@ import static java.util.Collections.*
 import static org.eclipse.emf.ecore.util.EcoreUtil.*
 import static org.jnario.suite.suite.SuitePackage$Literals.*
 import static extension com.google.common.base.Strings.*
+import org.eclipse.xtend.core.xtend.XtendFile
 
 class SpecificationResolver {
 	
@@ -37,7 +38,9 @@ class SpecificationResolver {
 		val allElements = scope.allElements.filter[
 			pattern.matcher(toString(it.qualifiedName)).matches
 		]
-		val specs = allElements.map[resolve(EObjectOrProxy, specRef)].filter(typeof(Specification))
+		val specs = allElements.map[resolve(EObjectOrProxy, specRef)].filter(typeof(Specification)).filter[
+			!eIsProxy && eContainer instanceof XtendFile
+		]
 		specs.toMap[packageName + "." + name].values.toList
 	}
 	
