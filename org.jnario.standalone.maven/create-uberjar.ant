@@ -45,9 +45,9 @@
           target: createUberjar    Binary           
          ================================= -->
 	<target name="createUberjar">
-		<mkdir dir="${output.folder}" failonerror="false"/>
-		<mkdir dir="${binJarTemp}" failonerror="false"/>
-		<mkdir dir="${sourceJarTemp}" failonerror="false"/>
+		<mkdir dir="${output.folder}" />
+		<mkdir dir="${binJarTemp}" />
+		<mkdir dir="${sourceJarTemp}" />
 		<!-- Jnario bundles -->
 		<fileset dir="${jnarioPluginFolder}" id="binJnarioJars">
 			<include name="org.jnario_*.jar" />
