@@ -19,6 +19,7 @@
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
+					<forkMode>none</forkMode>
 					<useUIHarness>false</useUIHarness>
 					<argLine>-Xmx768m -ea -Dfile.encoding=ISO-8859-1</argLine> 
 <!--					<argLine>-Xdebug -Xnoagent -Xrunjdwp:transport=dt_socket,address=8787,server=y,suspend=y</argLine> -->
