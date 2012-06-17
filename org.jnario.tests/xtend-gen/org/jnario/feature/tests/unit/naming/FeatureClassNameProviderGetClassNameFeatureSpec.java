@@ -23,8 +23,9 @@ public class FeatureClassNameProviderGetClassNameFeatureSpec extends FeatureClas
   public void _initFeatureClassNameProviderGetClassNameFeatureSpecExamples() {
     examples = ExampleTable.create("examples", 
       java.util.Arrays.asList("name", "expectedClassName"), 
+      new FeatureClassNameProviderGetClassNameFeatureSpecExamples(  java.util.Arrays.asList("null", "null"), null, null),
       new FeatureClassNameProviderGetClassNameFeatureSpecExamples(  java.util.Arrays.asList("\"Sample\"", "\"SampleFeature\""), "Sample", "SampleFeature"),
-      new FeatureClassNameProviderGetClassNameFeatureSpecExamples(  java.util.Arrays.asList("\"\"", "\"FeatureFeature\""), "", "FeatureFeature"),
+      new FeatureClassNameProviderGetClassNameFeatureSpecExamples(  java.util.Arrays.asList("\"\"", "null"), "", null),
       new FeatureClassNameProviderGetClassNameFeatureSpecExamples(  java.util.Arrays.asList("\"  Sample\"", "\"SampleFeature\""), "  Sample", "SampleFeature"),
       new FeatureClassNameProviderGetClassNameFeatureSpecExamples(  java.util.Arrays.asList("\"hello world\"", "\"HelloWorldFeature\""), "hello world", "HelloWorldFeature"),
       new FeatureClassNameProviderGetClassNameFeatureSpecExamples(  java.util.Arrays.asList("\"$hello %& world\"", "\"HelloWorldFeature\""), "$hello %& world", "HelloWorldFeature")

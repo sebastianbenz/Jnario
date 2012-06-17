@@ -64,8 +64,7 @@ public class FeatureClassNameProviderSpec {
   
   public Feature feature(final String name) {
     final Feature feature = FeatureClassNameProviderSpec.factory.createFeature();
-    String _plus = ("Feature: " + name);
-    feature.setName(_plus);
+    feature.setName(name);
     return feature;
   }
 }

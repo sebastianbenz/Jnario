@@ -12,8 +12,9 @@ describe FeatureClassNameProvider {
 	context getClassName(Feature){
 		def examples{
 			| name					| expectedClassName 	|
+			| null					| null					|
 			| "Sample"				| "SampleFeature"		|
-			| ""					| "FeatureFeature"		|
+			| ""					| null					|
 			| "  Sample"			| "SampleFeature"		|
 			| "hello world"			| "HelloWorldFeature"	|
 			| "$hello %& world"		| "HelloWorldFeature"	|
@@ -85,7 +86,7 @@ describe FeatureClassNameProvider {
 	
 	def feature(String name){
 		val feature = factory.createFeature
-		feature.name = "Feature: " + name
+		feature.name = name
 		return feature
 	}
 

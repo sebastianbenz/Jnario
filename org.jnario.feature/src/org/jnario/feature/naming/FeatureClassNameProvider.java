@@ -7,6 +7,7 @@
  *******************************************************************************/
 package org.jnario.feature.naming;
 
+import static com.google.common.base.Strings.isNullOrEmpty;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 
 import org.eclipse.emf.ecore.EObject;
@@ -45,7 +46,11 @@ public class FeatureClassNameProvider {
 	}
 
 	public String getClassName(Feature feature){
-		return Strings.toClassName(feature.getName()) + FEATURE_KEYWORD;
+		String name = feature.getName();
+		if(isNullOrEmpty(name)){
+			return null;
+		}
+		return Strings.toClassName(name) + FEATURE_KEYWORD;
 	}
 
 	public String getClassName(Scenario scenario){
