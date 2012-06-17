@@ -421,5 +421,13 @@
             extensions="suite">
     </provider>
   </extension>
-
+    <!-- make CTRL-SHIFT-T etc. work -->
+	<extension 
+		point="org.eclipse.ui.actionSetPartAssociations">
+		<actionSetPartAssociation
+			targetID="org.eclipse.jdt.ui.JavaActionSet">
+			<part id="org.jnario.suite.Suite">
+       		</part>
+		</actionSetPartAssociation>
+	</extension>
 </plugin>

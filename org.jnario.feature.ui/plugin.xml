@@ -713,4 +713,52 @@
          </description>
       </colorDefinition>
    </extension>
+       <!-- make CTRL-SHIFT-T etc. work -->
+	<extension 
+		point="org.eclipse.ui.actionSetPartAssociations">
+		<actionSetPartAssociation
+			targetID="org.eclipse.jdt.ui.JavaActionSet">
+			<part id="org.jnario.feature.Feature">
+       		</part>
+		</actionSetPartAssociation>
+	</extension>
+	   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <newWizardShortcut
+               id="org.jnario.feature.ui.wizards.NewFeatureWizard">
+         </newWizardShortcut>
+      </perspectiveExtension>
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaBrowsingPerspective">
+         <newWizardShortcut
+               id="org.jnario.feature.ui.wizards.NewFeatureWizard">
+         </newWizardShortcut>
+      </perspectiveExtension>
+      <perspectiveExtension
+            targetID="org.eclipse.pde.ui.PDEPerspective">
+         <newWizardShortcut
+               id="org.jnario.feature.ui.wizards.NewFeatureWizard">
+         </newWizardShortcut>
+      </perspectiveExtension>
+   </extension>
+	<extension
+         id="org.jnario.feature.ui.wizard"
+         name="newFeatureClass"
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="org.jnario.ui.wizards"
+            icon="icons/feature_file.png"
+            id="org.jnario.feature.ui.wizards.NewFeatureWizard"
+            name="%NewFeature.label">
+            <class class="org.jnario.feature.ui.FeatureExecutableExtensionFactory">
+				<parameter name="javatype" value="true" />
+				<parameter name="guicekey" value="org.jnario.feature.ui.wizards.NewFeatureWizard" />
+			</class>
+			<description>
+            	%NewFeature.description
+         	</description>
+      </wizard>
+   </extension>
 </plugin>

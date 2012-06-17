@@ -588,6 +588,15 @@
          	</description>
       </wizard>
    </extension>
+    <!-- make CTRL-SHIFT-T etc. work -->
+	<extension 
+		point="org.eclipse.ui.actionSetPartAssociations">
+		<actionSetPartAssociation
+			targetID="org.eclipse.jdt.ui.JavaActionSet">
+			<part id="org.jnario.spec.Spec">
+       		</part>
+		</actionSetPartAssociation>
+	</extension>
    <extension point="org.eclipse.ui.perspectiveExtensions">
       <perspectiveExtension
             targetID="org.eclipse.jdt.ui.JavaPerspective">
@@ -608,6 +617,7 @@
          </newWizardShortcut>
       </perspectiveExtension>
    </extension>
+   
    <extension point="org.eclipse.ui.editors.annotationTypes">
        <type name="org.eclipse.xtext.ui.overrideIndicator"></type>
    </extension>

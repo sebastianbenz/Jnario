@@ -13,12 +13,6 @@ import org.jnario.runner.Named
 import org.jnario.suite.suite.Suite
 import org.jnario.suite.suite.SuiteFile
 
-/**
- * <p>Infers a JVM model from the source model.</p> 
- *
- * <p>The JVM model should contain all elements that would appear in the Java code 
- * which is generated from the source model. Other models link against the JVM model rather than the source model.</p>     
- */
 class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
 
 	@Inject extension ExtendedJvmTypesBuilder
