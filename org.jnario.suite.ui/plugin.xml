@@ -430,4 +430,43 @@
        		</part>
 		</actionSetPartAssociation>
 	</extension>
+	   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <newWizardShortcut
+               id="org.jnario.suite.ui.wizards.NewSuiteWizard">
+         </newWizardShortcut>
+      </perspectiveExtension>
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaBrowsingPerspective">
+         <newWizardShortcut
+               id="org.jnario.suite.ui.wizards.NewSuiteWizard">
+         </newWizardShortcut>
+      </perspectiveExtension>
+      <perspectiveExtension
+            targetID="org.eclipse.pde.ui.PDEPerspective">
+         <newWizardShortcut
+               id="org.jnario.suite.ui.wizards.NewSuiteWizard">
+         </newWizardShortcut>
+      </perspectiveExtension>
+   </extension>
+	<extension
+         id="org.jnario.suite.ui.wizard"
+         name="newSuiteClass"
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="org.jnario.ui.wizards"
+            icon="icons/suite_file.png"
+            id="org.jnario.suite.ui.wizards.NewSuiteWizard"
+            name="%NewSuite.label">
+            <class class="org.jnario.suite.ui.SuiteExecutableExtensionFactory">
+				<parameter name="javatype" value="true" />
+				<parameter name="guicekey" value="org.jnario.suite.ui.wizards.NewSuiteWizard" />
+			</class>
+			<description>
+            	%NewSuite.description
+         	</description>
+      </wizard>
+   </extension>
 </plugin>

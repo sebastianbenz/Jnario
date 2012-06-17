@@ -5,19 +5,28 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.jnario.feature.ui.wizards;
+package org.jnario.suite.ui.wizards;
+
 
 import org.jnario.ui.wizards.JnarioFileCreator;
-
+import org.jnario.ui.wizards.NewJnarioFileWizardPageOne;
 
 /**
- * @author Sebastian Benz - Initial contribution and API
+ * partially copied from {@link NewTestCaseWizardPageOne}
  */
-public class FeatureCreator extends JnarioFileCreator {
+public class NewSuiteWizardPageOne extends NewJnarioFileWizardPageOne {
+
+	public NewSuiteWizardPageOne(JnarioFileCreator featureCreator) {
+		super(featureCreator);
+	}
+	
+	protected String title() {
+		return "Suite";
+	}
 
 	@Override
-	protected String keyword() {
-		return "Feature: ";
+	protected String fileExtension() {
+		return "suite";
 	}
 
 }

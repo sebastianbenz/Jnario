@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.jnario.feature.ui.wizards;
+package org.jnario.suite.ui.wizards;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.jdt.internal.junit.ui.JUnitPlugin;
@@ -19,14 +19,15 @@ import com.google.inject.Inject;
 /**
  * partially copied from {@link NewTestCaseCreationWizard}
  */
-public class NewFeatureWizard extends JUnitWizard {
+@SuppressWarnings("restriction")
+public class NewSuiteWizard extends JUnitWizard {
 
 	@Inject
-	private FeatureCreator featureCreator;
+	private SuiteCreator featureCreator;
 	
 	private NewJnarioFileWizardPageOne fPage1;
 
-	public NewFeatureWizard() {
+	public NewSuiteWizard() {
 		super();
 		setWindowTitle("New Jnario Feature");
 		initDialogSettings();
@@ -43,7 +44,7 @@ public class NewFeatureWizard extends JUnitWizard {
 	@Override
 	public void addPages() {
 		super.addPages();
-		fPage1= new NewFeatureWizardPageOne(featureCreator);
+		fPage1= new NewSuiteWizardPageOne(featureCreator);
 		addPage(fPage1);
 		fPage1.init(getSelection());
 	}

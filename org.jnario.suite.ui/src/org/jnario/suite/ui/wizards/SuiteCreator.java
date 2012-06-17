@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.jnario.feature.ui.wizards;
+package org.jnario.suite.ui.wizards;
 
 import org.jnario.ui.wizards.JnarioFileCreator;
 
@@ -13,11 +13,11 @@ import org.jnario.ui.wizards.JnarioFileCreator;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
-public class FeatureCreator extends JnarioFileCreator {
+public class SuiteCreator extends JnarioFileCreator {
 
 	@Override
 	protected String keyword() {
-		return "Feature: ";
+		return "#";
 	}
 
 }
