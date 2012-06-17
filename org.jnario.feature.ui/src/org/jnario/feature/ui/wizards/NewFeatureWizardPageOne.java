@@ -61,7 +61,7 @@ public class NewFeatureWizardPageOne extends NewTypeWizardPage {
 		super(true, PAGE_NAME);
 		this.featureCreator = featureCreator;
 
-		setTitle("Spec");
+		setTitle("Jnario Feature");
 		setDescription("Select the name of the new Feature file.");
 
 		descriptionDialogField = new StringDialogField();
