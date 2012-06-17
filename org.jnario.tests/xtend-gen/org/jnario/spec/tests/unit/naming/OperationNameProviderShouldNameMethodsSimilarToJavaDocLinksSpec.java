@@ -1,0 +1,70 @@
+package org.jnario.spec.tests.unit.naming;
+
+import org.jnario.lib.Should;
+import org.jnario.runner.ExampleGroupRunner;
+import org.jnario.runner.Named;
+import org.jnario.runner.Order;
+import org.jnario.spec.tests.unit.naming.OperationNameProviderSpec;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+@SuppressWarnings("all")
+@RunWith(ExampleGroupRunner.class)
+@Named("should name methods similar to JavaDoc links")
+public class OperationNameProviderShouldNameMethodsSimilarToJavaDocLinksSpec extends OperationNameProviderSpec {
+  @Test
+  @Named("nameOf[\\\"simpleOperation\\\"] => \\\"simpleOperation\\\"")
+  @Order(99)
+  public void nameOfSimpleOperationSimpleOperation() throws Exception {
+    String _nameOf = this.nameOf("simpleOperation");
+    boolean _doubleArrow = Should.operator_doubleArrow(_nameOf, "simpleOperation");
+    Assert.assertTrue("\nExpected nameOf(\"simpleOperation\") => \"simpleOperation\" but"
+     + "\n     nameOf(\"simpleOperation\") is " + "\"" + _nameOf + "\"" + "\n", _doubleArrow);
+    
+  }
+  
+  @Test
+  @Named("nameOf[\\\"operationWithSingleArgument\\\"] => \\\"operationWithSingleArgument[String]\\\"")
+  @Order(99)
+  public void nameOfOperationWithSingleArgumentOperationWithSingleArgumentString() throws Exception {
+    String _nameOf = this.nameOf("operationWithSingleArgument");
+    boolean _doubleArrow = Should.operator_doubleArrow(_nameOf, "operationWithSingleArgument(String)");
+    Assert.assertTrue("\nExpected nameOf(\"operationWithSingleArgument\") => \"operationWithSingleArgument(String)\" but"
+     + "\n     nameOf(\"operationWithSingleArgument\") is " + "\"" + _nameOf + "\"" + "\n", _doubleArrow);
+    
+  }
+  
+  @Test
+  @Named("nameOf[\\\"operationWithMultipleArguments\\\"] => \\\"operationWithMultipleArguments[String, Object, int]\\\"")
+  @Order(99)
+  public void nameOfOperationWithMultipleArgumentsOperationWithMultipleArgumentsStringObjectInt() throws Exception {
+    String _nameOf = this.nameOf("operationWithMultipleArguments");
+    boolean _doubleArrow = Should.operator_doubleArrow(_nameOf, "operationWithMultipleArguments(String, Object, int)");
+    Assert.assertTrue("\nExpected nameOf(\"operationWithMultipleArguments\") => \"operationWithMultipleArguments(String, Object, int)\" but"
+     + "\n     nameOf(\"operationWithMultipleArguments\") is " + "\"" + _nameOf + "\"" + "\n", _doubleArrow);
+    
+  }
+  
+  @Test
+  @Named("nameOf[\\\"operationWithTypedArguments\\\"] => \\\"operationWithTypedArguments[List<String>, List<? extends String>]\\\"")
+  @Order(99)
+  public void nameOfOperationWithTypedArgumentsOperationWithTypedArgumentsListStringListExtendsString() throws Exception {
+    String _nameOf = this.nameOf("operationWithTypedArguments");
+    boolean _doubleArrow = Should.operator_doubleArrow(_nameOf, "operationWithTypedArguments(List<String>, List<? extends String>)");
+    Assert.assertTrue("\nExpected nameOf(\"operationWithTypedArguments\") => \"operationWithTypedArguments(List<String>, List<? extends String>)\" but"
+     + "\n     nameOf(\"operationWithTypedArguments\") is " + "\"" + _nameOf + "\"" + "\n", _doubleArrow);
+    
+  }
+  
+  @Test
+  @Named("nameOf[\\\"operationWithVarArg\\\"] => \\\"operationWithVarArg[String[]]\\\"")
+  @Order(99)
+  public void nameOfOperationWithVarArgOperationWithVarArgString() throws Exception {
+    String _nameOf = this.nameOf("operationWithVarArg");
+    boolean _doubleArrow = Should.operator_doubleArrow(_nameOf, "operationWithVarArg(String[])");
+    Assert.assertTrue("\nExpected nameOf(\"operationWithVarArg\") => \"operationWithVarArg(String[])\" but"
+     + "\n     nameOf(\"operationWithVarArg\") is " + "\"" + _nameOf + "\"" + "\n", _doubleArrow);
+    
+  }
+}
