@@ -8,6 +8,7 @@
 
 package org.jnario.maven;
 
+import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
 import org.eclipse.xtend.maven.XtendTestCompile;
 import org.jnario.spec.SpecStandaloneSetup;
 import org.jnario.spec.compiler.batch.SpecBatchCompiler;
@@ -15,9 +16,10 @@ import org.jnario.spec.compiler.batch.SpecBatchCompiler;
 import com.google.inject.Injector;
 
 /**
- * Goal which compiles Xtend test sources.
+ * Goal which compiles Jnario test sources.
  *
  * @author Sebastian Benz - Initial contribution and API
+ * @extendsPlugin xtend-maven-plugin
  * @goal testCompile
  * @phase generate-test-sources
  * @requiresDependencyResolution test
