@@ -9,8 +9,6 @@ package org.jnario.jvmmodel;
 
 import static java.util.Collections.singletonList;
 
-import java.util.List;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
 import org.eclipse.xtext.common.types.JvmAnnotationType;
@@ -49,14 +47,14 @@ public class ExtendedJvmTypesBuilder extends JvmTypesBuilder {
 		if(value == null){
 			return result;
 		}
-		List<?> valueList;
-		if (!(value instanceof List<?>)) {
-			valueList = singletonList(value);
+		Iterable<?> values;
+		if (!(value instanceof Iterable<?>)) {
+			values = singletonList(value);
 		}else{
-			valueList = (List<?>) value;
+			values = (Iterable<?>) value;
 		}
 		JvmAnnotationValue annotationValue = null;
-		for (Object object : valueList) {
+		for (Object object : values) {
 			if (object instanceof String) {
 				if(annotationValue == null){
 					annotationValue = TypesFactory.eINSTANCE.createJvmStringAnnotationValue();
