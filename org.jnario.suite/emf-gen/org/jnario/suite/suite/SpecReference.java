@@ -24,7 +24,7 @@ import org.jnario.Specification;
  * @model
  * @generated
  */
-public interface SpecReference extends Reference
+public interface SpecReference extends SuiteElement, Reference
 {
 	/**
 	 * Returns the value of the '<em><b>Spec</b></em>' reference.

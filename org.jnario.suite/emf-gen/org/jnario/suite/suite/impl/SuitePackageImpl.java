@@ -16,10 +16,12 @@ import org.eclipse.xtend.core.xtend.XtendPackage;
 
 import org.jnario.JnarioPackage;
 
+import org.jnario.suite.suite.Heading;
 import org.jnario.suite.suite.PatternReference;
 import org.jnario.suite.suite.Reference;
 import org.jnario.suite.suite.SpecReference;
 import org.jnario.suite.suite.Suite;
+import org.jnario.suite.suite.SuiteElement;
 import org.jnario.suite.suite.SuiteFactory;
 import org.jnario.suite.suite.SuiteFile;
 import org.jnario.suite.suite.SuitePackage;
@@ -37,7 +39,7 @@ public class SuitePackageImpl extends EPackageImpl implements SuitePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass referenceEClass = null;
+	private EClass suiteElementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -66,6 +68,20 @@ public class SuitePackageImpl extends EPackageImpl implements SuitePackage
 	 * @generated
 	 */
 	private EClass suiteFileEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass headingEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass referenceEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -138,9 +154,9 @@ public class SuitePackageImpl extends EPackageImpl implements SuitePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getReference()
+	public EClass getSuiteElement()
 	{
-		return referenceEClass;
+		return suiteElementEClass;
 	}
 
 	/**
@@ -208,7 +224,7 @@ public class SuitePackageImpl extends EPackageImpl implements SuitePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSuite_Specs()
+	public EReference getSuite_Elements()
 	{
 		return (EReference)suiteEClass.getEStructuralFeatures().get(0);
 	}
@@ -221,6 +237,36 @@ public class SuitePackageImpl extends EPackageImpl implements SuitePackage
 	public EClass getSuiteFile()
 	{
 		return suiteFileEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getHeading()
+	{
+		return headingEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getHeading_Name()
+	{
+		return (EAttribute)headingEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getReference()
+	{
+		return referenceEClass;
 	}
 
 	/**
@@ -253,7 +299,7 @@ public class SuitePackageImpl extends EPackageImpl implements SuitePackage
 		isCreated = true;
 
 		// Create classes and their features
-		referenceEClass = createEClass(REFERENCE);
+		suiteElementEClass = createEClass(SUITE_ELEMENT);
 
 		patternReferenceEClass = createEClass(PATTERN_REFERENCE);
 		createEAttribute(patternReferenceEClass, PATTERN_REFERENCE__PATTERN);
@@ -263,9 +309,14 @@ public class SuitePackageImpl extends EPackageImpl implements SuitePackage
 		createEAttribute(specReferenceEClass, SPEC_REFERENCE__TEXT);
 
 		suiteEClass = createEClass(SUITE);
-		createEReference(suiteEClass, SUITE__SPECS);
+		createEReference(suiteEClass, SUITE__ELEMENTS);
 
 		suiteFileEClass = createEClass(SUITE_FILE);
+
+		headingEClass = createEClass(HEADING);
+		createEAttribute(headingEClass, HEADING__NAME);
+
+		referenceEClass = createEClass(REFERENCE);
 	}
 
 	/**
@@ -301,13 +352,16 @@ public class SuitePackageImpl extends EPackageImpl implements SuitePackage
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		patternReferenceEClass.getESuperTypes().add(this.getSuiteElement());
 		patternReferenceEClass.getESuperTypes().add(this.getReference());
+		specReferenceEClass.getESuperTypes().add(this.getSuiteElement());
 		specReferenceEClass.getESuperTypes().add(this.getReference());
 		suiteEClass.getESuperTypes().add(theJnarioPackage.getSpecification());
 		suiteFileEClass.getESuperTypes().add(theXtendPackage.getXtendFile());
+		headingEClass.getESuperTypes().add(this.getSuiteElement());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(referenceEClass, Reference.class, "Reference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(suiteElementEClass, SuiteElement.class, "SuiteElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(patternReferenceEClass, PatternReference.class, "PatternReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPatternReference_Pattern(), ecorePackage.getEString(), "pattern", null, 0, 1, PatternReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -317,9 +371,14 @@ public class SuitePackageImpl extends EPackageImpl implements SuitePackage
 		initEAttribute(getSpecReference_Text(), ecorePackage.getEString(), "text", null, 0, 1, SpecReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(suiteEClass, Suite.class, "Suite", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSuite_Specs(), this.getReference(), null, "specs", null, 0, -1, Suite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSuite_Elements(), this.getSuiteElement(), null, "elements", null, 0, -1, Suite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(suiteFileEClass, SuiteFile.class, "SuiteFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(headingEClass, Heading.class, "Heading", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getHeading_Name(), ecorePackage.getEString(), "name", null, 0, 1, Heading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(referenceEClass, Reference.class, "Reference", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

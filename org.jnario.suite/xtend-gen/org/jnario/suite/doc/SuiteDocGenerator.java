@@ -2,6 +2,7 @@ package org.jnario.suite.doc;
 
 import com.google.common.base.Objects;
 import com.google.inject.Inject;
+import java.util.Arrays;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -16,9 +17,11 @@ import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.HtmlFile;
 import org.jnario.suite.jvmmodel.SpecificationResolver;
 import org.jnario.suite.jvmmodel.SuiteClassNameProvider;
+import org.jnario.suite.suite.Heading;
 import org.jnario.suite.suite.Reference;
 import org.jnario.suite.suite.SpecReference;
 import org.jnario.suite.suite.Suite;
+import org.jnario.suite.suite.SuiteElement;
 
 @SuppressWarnings("all")
 public class SuiteDocGenerator extends AbstractDocGenerator {
@@ -65,8 +68,8 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
     _builder.append("<ul>");
     _builder.newLine();
     {
-      EList<Reference> _specs = suite.getSpecs();
-      for(final Reference spec : _specs) {
+      EList<SuiteElement> _elements = suite.getElements();
+      for(final SuiteElement spec : _elements) {
         List<Specification> _resolveSpecs = this._specificationResolver.resolveSpecs(spec);
         CharSequence _generate = this.generate(spec, _resolveSpecs);
         _builder.append(_generate, "");
@@ -78,7 +81,20 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
     return _builder;
   }
   
-  public CharSequence generate(final Reference ref, final List<Specification> specs) {
+  protected CharSequence _generate(final Heading ref, final List<Specification> specs) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("</ul>\t");
+    _builder.newLine();
+    String _name = ref.getName();
+    String _markdown2Html = this.markdown2Html(_name);
+    _builder.append(_markdown2Html, "");
+    _builder.newLineIfNotEmpty();
+    _builder.append("<ul>");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  protected CharSequence _generate(final Reference ref, final List<Specification> specs) {
     StringConcatenation _builder = new StringConcatenation();
     {
       final Function1<Specification,Boolean> _function = new Function1<Specification,Boolean>() {
@@ -128,5 +144,16 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
       }
     }
     return "";
+  }
+  
+  public CharSequence generate(final EObject ref, final List<Specification> specs) {
+    if (ref instanceof Heading) {
+      return _generate((Heading)ref, specs);
+    } else if (ref instanceof Reference) {
+      return _generate((Reference)ref, specs);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(ref, specs).toString());
+    }
   }
 }

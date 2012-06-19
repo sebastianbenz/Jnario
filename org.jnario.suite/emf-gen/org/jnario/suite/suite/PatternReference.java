@@ -22,7 +22,7 @@ package org.jnario.suite.suite;
  * @model
  * @generated
  */
-public interface PatternReference extends Reference
+public interface PatternReference extends SuiteElement, Reference
 {
 	/**
 	 * Returns the value of the '<em><b>Pattern</b></em>' attribute.

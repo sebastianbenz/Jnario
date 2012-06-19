@@ -25,10 +25,11 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.jnario.Specification;
+import org.jnario.suite.suite.Heading;
 import org.jnario.suite.suite.PatternReference;
-import org.jnario.suite.suite.Reference;
 import org.jnario.suite.suite.SpecReference;
 import org.jnario.suite.suite.Suite;
+import org.jnario.suite.suite.SuiteElement;
 import org.jnario.suite.suite.SuitePackage.Literals;
 
 @SuppressWarnings("all")
@@ -43,14 +44,14 @@ public class SpecificationResolver {
     List<Specification> _xblockexpression = null;
     {
       final Predicate<Specification> notNull = Predicates.<Specification>notNull();
-      EList<Reference> _specs = suite.getSpecs();
-      final Function1<Reference,List<Specification>> _function = new Function1<Reference,List<Specification>>() {
-          public List<Specification> apply(final Reference it) {
+      EList<SuiteElement> _elements = suite.getElements();
+      final Function1<SuiteElement,List<Specification>> _function = new Function1<SuiteElement,List<Specification>>() {
+          public List<Specification> apply(final SuiteElement it) {
             List<Specification> _resolveSpecs = SpecificationResolver.this.resolveSpecs(it);
             return _resolveSpecs;
           }
         };
-      List<List<Specification>> _map = ListExtensions.<Reference, List<Specification>>map(_specs, _function);
+      List<List<Specification>> _map = ListExtensions.<SuiteElement, List<Specification>>map(_elements, _function);
       Iterable<Specification> _flatten = Iterables.<Specification>concat(_map);
       Iterable<Specification> _filter = IterableExtensions.<Specification>filter(_flatten, new Function1<Specification,Boolean>() {
           public Boolean apply(Specification p) {
@@ -61,6 +62,11 @@ public class SpecificationResolver {
       _xblockexpression = (_list);
     }
     return _xblockexpression;
+  }
+  
+  protected List<Specification> _resolveSpecs(final Heading heading) {
+    List<Specification> _emptyList = Collections.<Specification>emptyList();
+    return _emptyList;
   }
   
   protected List<Specification> _resolveSpecs(final SpecReference specRef) {
@@ -135,6 +141,8 @@ public class SpecificationResolver {
   public List<Specification> resolveSpecs(final EObject suite) {
     if (suite instanceof Suite) {
       return _resolveSpecs((Suite)suite);
+    } else if (suite instanceof Heading) {
+      return _resolveSpecs((Heading)suite);
     } else if (suite instanceof PatternReference) {
       return _resolveSpecs((PatternReference)suite);
     } else if (suite instanceof SpecReference) {

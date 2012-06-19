@@ -23,19 +23,23 @@ Import returns xtend::XtendImport:
 QualifiedNameWithWildCard :
 	QualifiedName  '.' '*';
 
-Suite returns xtend::XtendClass:
+Suite :
 	{Suite}
 	annotations+=XAnnotation* 
 	name=SUITE_NAME
-	specs+=Reference*
-;
-
-Reference:
-	'-' (SpecReference | PatternReference) // | ReferenceExpression
+	elements+=SuiteElement*
 ;
 
 PatternReference:
-	pattern=PATTERN
+	'-' pattern=PATTERN
+;
+
+SuiteElement:
+	Heading  | SpecReference | PatternReference
+;
+
+Heading:
+	name=SUITE_NAME
 ;
 
 //ReferenceExpression:
@@ -43,7 +47,7 @@ PatternReference:
 //;
 
 SpecReference:
-	spec=[jnario::Specification|STRING] text=TEXT?
+	'-' spec=[jnario::Specification|STRING] text=TEXT?
 ;
 
 

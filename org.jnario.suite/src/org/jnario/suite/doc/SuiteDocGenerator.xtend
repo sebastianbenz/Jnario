@@ -17,6 +17,7 @@ import static org.jnario.doc.HtmlFile.*
 import static extension org.jnario.util.Strings.*
 
 import static extension org.eclipse.xtext.util.Strings.*
+import org.jnario.suite.suite.Heading
 
 class SuiteDocGenerator extends AbstractDocGenerator {
 	@Inject extension SuiteClassNameProvider 
@@ -38,13 +39,19 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 	def generateContent(Suite suite)'''
 		«suite.name.trimFirstLine.markdown2Html»
 		<ul>
-		«FOR spec : suite.specs»
+		«FOR spec : suite.elements»
 			«generate(spec, spec.resolveSpecs)»
 		«ENDFOR»
 		</ul>
 	'''
 
-	def generate(Reference ref, List<Specification> specs)'''
+	def dispatch generate(Heading ref, List<Specification> specs)'''
+	</ul>	
+	«ref.name.markdown2Html»
+	<ul>
+	'''
+
+	def dispatch generate(Reference ref, List<Specification> specs)'''
 	«FOR spec : specs.filter[name != null]»
 		<li><a href="«ref.linkTo(spec)»">«spec.name»</a> «ref.text»</li>
 	«ENDFOR»

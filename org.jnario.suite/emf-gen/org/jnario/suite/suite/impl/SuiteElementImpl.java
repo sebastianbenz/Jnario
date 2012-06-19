@@ -9,26 +9,26 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.jnario.suite.suite.Reference;
+import org.jnario.suite.suite.SuiteElement;
 import org.jnario.suite.suite.SuitePackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Reference</b></em>'.
+ * An implementation of the model object '<em><b>Element</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class ReferenceImpl extends MinimalEObjectImpl.Container implements Reference
+public class SuiteElementImpl extends MinimalEObjectImpl.Container implements SuiteElement
 {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ReferenceImpl()
+	protected SuiteElementImpl()
 	{
 		super();
 	}
@@ -41,7 +41,7 @@ public class ReferenceImpl extends MinimalEObjectImpl.Container implements Refer
 	@Override
 	protected EClass eStaticClass()
 	{
-		return SuitePackage.Literals.REFERENCE;
+		return SuitePackage.Literals.SUITE_ELEMENT;
 	}
 
-} //ReferenceImpl
+} //SuiteElementImpl

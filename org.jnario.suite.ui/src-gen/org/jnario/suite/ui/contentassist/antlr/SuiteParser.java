@@ -38,7 +38,7 @@ public class SuiteParser extends AbstractContentAssistParser {
 				private static final long serialVersionUID = 1L;
 				{
 					put(grammarAccess.getImportAccess().getAlternatives_1(), "rule__Import__Alternatives_1");
-					put(grammarAccess.getReferenceAccess().getAlternatives_1(), "rule__Reference__Alternatives_1");
+					put(grammarAccess.getSuiteElementAccess().getAlternatives(), "rule__SuiteElement__Alternatives");
 					put(grammarAccess.getXAnnotationAccess().getAlternatives_3_1(), "rule__XAnnotation__Alternatives_3_1");
 					put(grammarAccess.getXAnnotationElementValueAccess().getAlternatives(), "rule__XAnnotationElementValue__Alternatives");
 					put(grammarAccess.getXAssignmentAccess().getAlternatives(), "rule__XAssignment__Alternatives");
@@ -78,7 +78,7 @@ public class SuiteParser extends AbstractContentAssistParser {
 					put(grammarAccess.getImportAccess().getGroup(), "rule__Import__Group__0");
 					put(grammarAccess.getQualifiedNameWithWildCardAccess().getGroup(), "rule__QualifiedNameWithWildCard__Group__0");
 					put(grammarAccess.getSuiteAccess().getGroup(), "rule__Suite__Group__0");
-					put(grammarAccess.getReferenceAccess().getGroup(), "rule__Reference__Group__0");
+					put(grammarAccess.getPatternReferenceAccess().getGroup(), "rule__PatternReference__Group__0");
 					put(grammarAccess.getSpecReferenceAccess().getGroup(), "rule__SpecReference__Group__0");
 					put(grammarAccess.getQualifiedNameAccess().getGroup(), "rule__QualifiedName__Group__0");
 					put(grammarAccess.getQualifiedNameAccess().getGroup_1(), "rule__QualifiedName__Group_1__0");
@@ -240,10 +240,11 @@ public class SuiteParser extends AbstractContentAssistParser {
 					put(grammarAccess.getImportAccess().getImportedNamespaceAssignment_1_1(), "rule__Import__ImportedNamespaceAssignment_1_1");
 					put(grammarAccess.getSuiteAccess().getAnnotationsAssignment_1(), "rule__Suite__AnnotationsAssignment_1");
 					put(grammarAccess.getSuiteAccess().getNameAssignment_2(), "rule__Suite__NameAssignment_2");
-					put(grammarAccess.getSuiteAccess().getSpecsAssignment_3(), "rule__Suite__SpecsAssignment_3");
-					put(grammarAccess.getPatternReferenceAccess().getPatternAssignment(), "rule__PatternReference__PatternAssignment");
-					put(grammarAccess.getSpecReferenceAccess().getSpecAssignment_0(), "rule__SpecReference__SpecAssignment_0");
-					put(grammarAccess.getSpecReferenceAccess().getTextAssignment_1(), "rule__SpecReference__TextAssignment_1");
+					put(grammarAccess.getSuiteAccess().getElementsAssignment_3(), "rule__Suite__ElementsAssignment_3");
+					put(grammarAccess.getPatternReferenceAccess().getPatternAssignment_1(), "rule__PatternReference__PatternAssignment_1");
+					put(grammarAccess.getHeadingAccess().getNameAssignment(), "rule__Heading__NameAssignment");
+					put(grammarAccess.getSpecReferenceAccess().getSpecAssignment_1(), "rule__SpecReference__SpecAssignment_1");
+					put(grammarAccess.getSpecReferenceAccess().getTextAssignment_2(), "rule__SpecReference__TextAssignment_2");
 					put(grammarAccess.getXAnnotationAccess().getAnnotationTypeAssignment_2(), "rule__XAnnotation__AnnotationTypeAssignment_2");
 					put(grammarAccess.getXAnnotationAccess().getElementValuePairsAssignment_3_1_0_0(), "rule__XAnnotation__ElementValuePairsAssignment_3_1_0_0");
 					put(grammarAccess.getXAnnotationAccess().getElementValuePairsAssignment_3_1_0_1_1(), "rule__XAnnotation__ElementValuePairsAssignment_3_1_0_1_1");

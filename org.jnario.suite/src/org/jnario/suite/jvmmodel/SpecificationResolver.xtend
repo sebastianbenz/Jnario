@@ -16,6 +16,7 @@ import static org.eclipse.emf.ecore.util.EcoreUtil.*
 import static org.jnario.suite.suite.SuitePackage$Literals.*
 import static extension com.google.common.base.Strings.*
 import org.eclipse.xtend.core.xtend.XtendFile
+import org.jnario.suite.suite.Heading
 
 class SpecificationResolver {
 	
@@ -24,7 +25,11 @@ class SpecificationResolver {
 	
 	def dispatch List<Specification> resolveSpecs(Suite suite){
 		val notNull = Predicates::<Specification>notNull
-		suite.specs.map[resolveSpecs].flatten.filter(notNull).toList
+		suite.elements.map[resolveSpecs].flatten.filter(notNull).toList
+	}
+	
+	def dispatch List<Specification> resolveSpecs(Heading heading){
+		emptyList()
 	}
 	
 	def dispatch List<Specification> resolveSpecs(SpecReference specRef){

@@ -64,23 +64,23 @@ public interface SuitePackage extends EPackage
 	SuitePackage eINSTANCE = org.jnario.suite.suite.impl.SuitePackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.jnario.suite.suite.impl.ReferenceImpl <em>Reference</em>}' class.
+	 * The meta object id for the '{@link org.jnario.suite.suite.impl.SuiteElementImpl <em>Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.jnario.suite.suite.impl.ReferenceImpl
-	 * @see org.jnario.suite.suite.impl.SuitePackageImpl#getReference()
+	 * @see org.jnario.suite.suite.impl.SuiteElementImpl
+	 * @see org.jnario.suite.suite.impl.SuitePackageImpl#getSuiteElement()
 	 * @generated
 	 */
-	int REFERENCE = 0;
+	int SUITE_ELEMENT = 0;
 
 	/**
-	 * The number of structural features of the '<em>Reference</em>' class.
+	 * The number of structural features of the '<em>Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REFERENCE_FEATURE_COUNT = 0;
+	int SUITE_ELEMENT_FEATURE_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.suite.suite.impl.PatternReferenceImpl <em>Pattern Reference</em>}' class.
@@ -99,7 +99,7 @@ public interface SuitePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int PATTERN_REFERENCE__PATTERN = REFERENCE_FEATURE_COUNT + 0;
+	int PATTERN_REFERENCE__PATTERN = SUITE_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Pattern Reference</em>' class.
@@ -108,7 +108,7 @@ public interface SuitePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int PATTERN_REFERENCE_FEATURE_COUNT = REFERENCE_FEATURE_COUNT + 1;
+	int PATTERN_REFERENCE_FEATURE_COUNT = SUITE_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.suite.suite.impl.SpecReferenceImpl <em>Spec Reference</em>}' class.
@@ -127,7 +127,7 @@ public interface SuitePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SPEC_REFERENCE__SPEC = REFERENCE_FEATURE_COUNT + 0;
+	int SPEC_REFERENCE__SPEC = SUITE_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -136,7 +136,7 @@ public interface SuitePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SPEC_REFERENCE__TEXT = REFERENCE_FEATURE_COUNT + 1;
+	int SPEC_REFERENCE__TEXT = SUITE_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Spec Reference</em>' class.
@@ -145,7 +145,7 @@ public interface SuitePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SPEC_REFERENCE_FEATURE_COUNT = REFERENCE_FEATURE_COUNT + 2;
+	int SPEC_REFERENCE_FEATURE_COUNT = SUITE_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.suite.suite.impl.SuiteImpl <em>Suite</em>}' class.
@@ -230,13 +230,13 @@ public interface SuitePackage extends EPackage
 	int SUITE__TYPE_PARAMETERS = JnarioPackage.SPECIFICATION__TYPE_PARAMETERS;
 
 	/**
-	 * The feature id for the '<em><b>Specs</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SUITE__SPECS = JnarioPackage.SPECIFICATION_FEATURE_COUNT + 0;
+	int SUITE__ELEMENTS = JnarioPackage.SPECIFICATION_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Suite</em>' class.
@@ -293,16 +293,63 @@ public interface SuitePackage extends EPackage
 	 */
 	int SUITE_FILE_FEATURE_COUNT = XtendPackage.XTEND_FILE_FEATURE_COUNT + 0;
 
-
 	/**
-	 * Returns the meta object for class '{@link org.jnario.suite.suite.Reference <em>Reference</em>}'.
+	 * The meta object id for the '{@link org.jnario.suite.suite.impl.HeadingImpl <em>Heading</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Reference</em>'.
-	 * @see org.jnario.suite.suite.Reference
+	 * @see org.jnario.suite.suite.impl.HeadingImpl
+	 * @see org.jnario.suite.suite.impl.SuitePackageImpl#getHeading()
 	 * @generated
 	 */
-	EClass getReference();
+	int HEADING = 5;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HEADING__NAME = SUITE_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Heading</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HEADING_FEATURE_COUNT = SUITE_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.jnario.suite.suite.Reference <em>Reference</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.jnario.suite.suite.Reference
+	 * @see org.jnario.suite.suite.impl.SuitePackageImpl#getReference()
+	 * @generated
+	 */
+	int REFERENCE = 6;
+
+	/**
+	 * The number of structural features of the '<em>Reference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_FEATURE_COUNT = 0;
+
+
+	/**
+	 * Returns the meta object for class '{@link org.jnario.suite.suite.SuiteElement <em>Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Element</em>'.
+	 * @see org.jnario.suite.suite.SuiteElement
+	 * @generated
+	 */
+	EClass getSuiteElement();
 
 	/**
 	 * Returns the meta object for class '{@link org.jnario.suite.suite.PatternReference <em>Pattern Reference</em>}'.
@@ -368,15 +415,15 @@ public interface SuitePackage extends EPackage
 	EClass getSuite();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.jnario.suite.suite.Suite#getSpecs <em>Specs</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.jnario.suite.suite.Suite#getElements <em>Elements</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Specs</em>'.
-	 * @see org.jnario.suite.suite.Suite#getSpecs()
+	 * @return the meta object for the containment reference list '<em>Elements</em>'.
+	 * @see org.jnario.suite.suite.Suite#getElements()
 	 * @see #getSuite()
 	 * @generated
 	 */
-	EReference getSuite_Specs();
+	EReference getSuite_Elements();
 
 	/**
 	 * Returns the meta object for class '{@link org.jnario.suite.suite.SuiteFile <em>File</em>}'.
@@ -387,6 +434,37 @@ public interface SuitePackage extends EPackage
 	 * @generated
 	 */
 	EClass getSuiteFile();
+
+	/**
+	 * Returns the meta object for class '{@link org.jnario.suite.suite.Heading <em>Heading</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Heading</em>'.
+	 * @see org.jnario.suite.suite.Heading
+	 * @generated
+	 */
+	EClass getHeading();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.jnario.suite.suite.Heading#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.jnario.suite.suite.Heading#getName()
+	 * @see #getHeading()
+	 * @generated
+	 */
+	EAttribute getHeading_Name();
+
+	/**
+	 * Returns the meta object for class '{@link org.jnario.suite.suite.Reference <em>Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Reference</em>'.
+	 * @see org.jnario.suite.suite.Reference
+	 * @generated
+	 */
+	EClass getReference();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -412,14 +490,14 @@ public interface SuitePackage extends EPackage
 	interface Literals
 	{
 		/**
-		 * The meta object literal for the '{@link org.jnario.suite.suite.impl.ReferenceImpl <em>Reference</em>}' class.
+		 * The meta object literal for the '{@link org.jnario.suite.suite.impl.SuiteElementImpl <em>Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.jnario.suite.suite.impl.ReferenceImpl
-		 * @see org.jnario.suite.suite.impl.SuitePackageImpl#getReference()
+		 * @see org.jnario.suite.suite.impl.SuiteElementImpl
+		 * @see org.jnario.suite.suite.impl.SuitePackageImpl#getSuiteElement()
 		 * @generated
 		 */
-		EClass REFERENCE = eINSTANCE.getReference();
+		EClass SUITE_ELEMENT = eINSTANCE.getSuiteElement();
 
 		/**
 		 * The meta object literal for the '{@link org.jnario.suite.suite.impl.PatternReferenceImpl <em>Pattern Reference</em>}' class.
@@ -476,12 +554,12 @@ public interface SuitePackage extends EPackage
 		EClass SUITE = eINSTANCE.getSuite();
 
 		/**
-		 * The meta object literal for the '<em><b>Specs</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Elements</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SUITE__SPECS = eINSTANCE.getSuite_Specs();
+		EReference SUITE__ELEMENTS = eINSTANCE.getSuite_Elements();
 
 		/**
 		 * The meta object literal for the '{@link org.jnario.suite.suite.impl.SuiteFileImpl <em>File</em>}' class.
@@ -492,6 +570,34 @@ public interface SuitePackage extends EPackage
 		 * @generated
 		 */
 		EClass SUITE_FILE = eINSTANCE.getSuiteFile();
+
+		/**
+		 * The meta object literal for the '{@link org.jnario.suite.suite.impl.HeadingImpl <em>Heading</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.jnario.suite.suite.impl.HeadingImpl
+		 * @see org.jnario.suite.suite.impl.SuitePackageImpl#getHeading()
+		 * @generated
+		 */
+		EClass HEADING = eINSTANCE.getHeading();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute HEADING__NAME = eINSTANCE.getHeading_Name();
+
+		/**
+		 * The meta object literal for the '{@link org.jnario.suite.suite.Reference <em>Reference</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.jnario.suite.suite.Reference
+		 * @see org.jnario.suite.suite.impl.SuitePackageImpl#getReference()
+		 * @generated
+		 */
+		EClass REFERENCE = eINSTANCE.getReference();
 
 	}
 

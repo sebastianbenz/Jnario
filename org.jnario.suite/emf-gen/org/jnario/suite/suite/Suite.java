@@ -17,7 +17,7 @@ import org.jnario.Specification;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.jnario.suite.suite.Suite#getSpecs <em>Specs</em>}</li>
+ *   <li>{@link org.jnario.suite.suite.Suite#getElements <em>Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -28,19 +28,19 @@ import org.jnario.Specification;
 public interface Suite extends Specification
 {
 	/**
-	 * Returns the value of the '<em><b>Specs</b></em>' containment reference list.
-	 * The list contents are of type {@link org.jnario.suite.suite.Reference}.
+	 * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
+	 * The list contents are of type {@link org.jnario.suite.suite.SuiteElement}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Specs</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Elements</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Specs</em>' containment reference list.
-	 * @see org.jnario.suite.suite.SuitePackage#getSuite_Specs()
+	 * @return the value of the '<em>Elements</em>' containment reference list.
+	 * @see org.jnario.suite.suite.SuitePackage#getSuite_Elements()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Reference> getSpecs();
+	EList<SuiteElement> getElements();
 
 } // Suite

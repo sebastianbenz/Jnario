@@ -84,9 +84,9 @@ public class SuiteAdapterFactory extends AdapterFactoryImpl
 		new SuiteSwitch<Adapter>()
 		{
 			@Override
-			public Adapter caseReference(Reference object)
+			public Adapter caseSuiteElement(SuiteElement object)
 			{
-				return createReferenceAdapter();
+				return createSuiteElementAdapter();
 			}
 			@Override
 			public Adapter casePatternReference(PatternReference object)
@@ -107,6 +107,16 @@ public class SuiteAdapterFactory extends AdapterFactoryImpl
 			public Adapter caseSuiteFile(SuiteFile object)
 			{
 				return createSuiteFileAdapter();
+			}
+			@Override
+			public Adapter caseHeading(Heading object)
+			{
+				return createHeadingAdapter();
+			}
+			@Override
+			public Adapter caseReference(Reference object)
+			{
+				return createReferenceAdapter();
 			}
 			@Override
 			public Adapter caseXtendAnnotationTarget(XtendAnnotationTarget object)
@@ -151,16 +161,16 @@ public class SuiteAdapterFactory extends AdapterFactoryImpl
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.jnario.suite.suite.Reference <em>Reference</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.jnario.suite.suite.SuiteElement <em>Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.jnario.suite.suite.Reference
+	 * @see org.jnario.suite.suite.SuiteElement
 	 * @generated
 	 */
-	public Adapter createReferenceAdapter()
+	public Adapter createSuiteElementAdapter()
 	{
 		return null;
 	}
@@ -221,6 +231,36 @@ public class SuiteAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createSuiteFileAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.jnario.suite.suite.Heading <em>Heading</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.jnario.suite.suite.Heading
+	 * @generated
+	 */
+	public Adapter createHeadingAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.jnario.suite.suite.Reference <em>Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.jnario.suite.suite.Reference
+	 * @generated
+	 */
+	public Adapter createReferenceAdapter()
 	{
 		return null;
 	}

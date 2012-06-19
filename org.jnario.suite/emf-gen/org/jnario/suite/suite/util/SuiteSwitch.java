@@ -101,10 +101,10 @@ public class SuiteSwitch<T>
 	{
 		switch (classifierID)
 		{
-			case SuitePackage.REFERENCE:
+			case SuitePackage.SUITE_ELEMENT:
 			{
-				Reference reference = (Reference)theEObject;
-				T result = caseReference(reference);
+				SuiteElement suiteElement = (SuiteElement)theEObject;
+				T result = caseSuiteElement(suiteElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -112,6 +112,7 @@ public class SuiteSwitch<T>
 			{
 				PatternReference patternReference = (PatternReference)theEObject;
 				T result = casePatternReference(patternReference);
+				if (result == null) result = caseSuiteElement(patternReference);
 				if (result == null) result = caseReference(patternReference);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -120,6 +121,7 @@ public class SuiteSwitch<T>
 			{
 				SpecReference specReference = (SpecReference)theEObject;
 				T result = caseSpecReference(specReference);
+				if (result == null) result = caseSuiteElement(specReference);
 				if (result == null) result = caseReference(specReference);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -142,22 +144,37 @@ public class SuiteSwitch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case SuitePackage.HEADING:
+			{
+				Heading heading = (Heading)theEObject;
+				T result = caseHeading(heading);
+				if (result == null) result = caseSuiteElement(heading);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SuitePackage.REFERENCE:
+			{
+				Reference reference = (Reference)theEObject;
+				T result = caseReference(reference);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Reference</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Reference</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Element</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseReference(Reference object)
+	public T caseSuiteElement(SuiteElement object)
 	{
 		return null;
 	}
@@ -222,6 +239,38 @@ public class SuiteSwitch<T>
 	 * @generated
 	 */
 	public T caseSuiteFile(SuiteFile object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Heading</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Heading</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseHeading(Heading object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Reference</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseReference(Reference object)
 	{
 		return null;
 	}

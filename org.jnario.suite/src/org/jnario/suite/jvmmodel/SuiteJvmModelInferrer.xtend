@@ -40,7 +40,9 @@ class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
    			.initializeLater([
    				it.annotations += suite.exampleGroupRunnerAnnotation
 				it.annotations += suite.toAnnotation(typeof(Named), suite.describe)
-				it.annotations += suite.toAnnotation(typeof(Contains), suite.children);
+				if(!suite.children.empty){
+					it.annotations += suite.toAnnotation(typeof(Contains), suite.children.toSet);
+				}
    				suite.initialize(it)
    			])
    	}

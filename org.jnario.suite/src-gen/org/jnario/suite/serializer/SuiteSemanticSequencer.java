@@ -58,6 +58,7 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
 import org.eclipse.xtext.xtype.XFunctionTypeRef;
 import org.eclipse.xtext.xtype.XtypePackage;
 import org.jnario.suite.services.SuiteGrammarAccess;
+import org.jnario.suite.suite.Heading;
 import org.jnario.suite.suite.PatternReference;
 import org.jnario.suite.suite.SpecReference;
 import org.jnario.suite.suite.Suite;
@@ -72,16 +73,23 @@ public class SuiteSemanticSequencer extends XbaseWithAnnotationsSemanticSequence
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == SuitePackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case SuitePackage.HEADING:
+				if(context == grammarAccess.getHeadingRule() ||
+				   context == grammarAccess.getSuiteElementRule()) {
+					sequence_Heading(context, (Heading) semanticObject); 
+					return; 
+				}
+				else break;
 			case SuitePackage.PATTERN_REFERENCE:
 				if(context == grammarAccess.getPatternReferenceRule() ||
-				   context == grammarAccess.getReferenceRule()) {
+				   context == grammarAccess.getSuiteElementRule()) {
 					sequence_PatternReference(context, (PatternReference) semanticObject); 
 					return; 
 				}
 				else break;
 			case SuitePackage.SPEC_REFERENCE:
-				if(context == grammarAccess.getReferenceRule() ||
-				   context == grammarAccess.getSpecReferenceRule()) {
+				if(context == grammarAccess.getSpecReferenceRule() ||
+				   context == grammarAccess.getSuiteElementRule()) {
 					sequence_SpecReference(context, (SpecReference) semanticObject); 
 					return; 
 				}
@@ -1021,6 +1029,22 @@ public class SuiteSemanticSequencer extends XbaseWithAnnotationsSemanticSequence
 	
 	/**
 	 * Constraint:
+	 *     name=SUITE_NAME
+	 */
+	protected void sequence_Heading(EObject context, Heading semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, SuitePackage.Literals.HEADING__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SuitePackage.Literals.HEADING__NAME));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getHeadingAccess().getNameSUITE_NAMETerminalRuleCall_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (importedType=[JvmType|QualifiedName] | importedNamespace=QualifiedNameWithWildCard)
 	 */
 	protected void sequence_Import(EObject context, XtendImport semanticObject) {
@@ -1039,7 +1063,7 @@ public class SuiteSemanticSequencer extends XbaseWithAnnotationsSemanticSequence
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getPatternReferenceAccess().getPatternPATTERNTerminalRuleCall_0(), semanticObject.getPattern());
+		feeder.accept(grammarAccess.getPatternReferenceAccess().getPatternPATTERNTerminalRuleCall_1_0(), semanticObject.getPattern());
 		feeder.finish();
 	}
 	
@@ -1064,7 +1088,7 @@ public class SuiteSemanticSequencer extends XbaseWithAnnotationsSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     (annotations+=XAnnotation* name=SUITE_NAME specs+=Reference*)
+	 *     (annotations+=XAnnotation* name=SUITE_NAME elements+=SuiteElement*)
 	 */
 	protected void sequence_Suite(EObject context, Suite semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

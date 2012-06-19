@@ -26,13 +26,13 @@ public interface SuiteFactory extends EFactory
 	SuiteFactory eINSTANCE = org.jnario.suite.suite.impl.SuiteFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Reference</em>'.
+	 * Returns a new object of class '<em>Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Reference</em>'.
+	 * @return a new object of class '<em>Element</em>'.
 	 * @generated
 	 */
-	Reference createReference();
+	SuiteElement createSuiteElement();
 
 	/**
 	 * Returns a new object of class '<em>Pattern Reference</em>'.
@@ -69,6 +69,15 @@ public interface SuiteFactory extends EFactory
 	 * @generated
 	 */
 	SuiteFile createSuiteFile();
+
+	/**
+	 * Returns a new object of class '<em>Heading</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Heading</em>'.
+	 * @generated
+	 */
+	Heading createHeading();
 
 	/**
 	 * Returns the package supported by this factory.

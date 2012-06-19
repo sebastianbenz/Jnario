@@ -149,14 +149,14 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cAnnotationsXAnnotationParserRuleCall_1_0 = (RuleCall)cAnnotationsAssignment_1.eContents().get(0);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameSUITE_NAMETerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Assignment cSpecsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cSpecsReferenceParserRuleCall_3_0 = (RuleCall)cSpecsAssignment_3.eContents().get(0);
+		private final Assignment cElementsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cElementsSuiteElementParserRuleCall_3_0 = (RuleCall)cElementsAssignment_3.eContents().get(0);
 		
-		//Suite returns xtend::XtendClass:
-		//	{Suite} annotations+=XAnnotation* name=SUITE_NAME specs+=Reference*;
+		//Suite:
+		//	{Suite} annotations+=XAnnotation* name=SUITE_NAME elements+=SuiteElement*;
 		public ParserRule getRule() { return rule; }
 
-		//{Suite} annotations+=XAnnotation* name=SUITE_NAME specs+=Reference*
+		//{Suite} annotations+=XAnnotation* name=SUITE_NAME elements+=SuiteElement*
 		public Group getGroup() { return cGroup; }
 
 		//{Suite}
@@ -174,93 +174,114 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 		//SUITE_NAME
 		public RuleCall getNameSUITE_NAMETerminalRuleCall_2_0() { return cNameSUITE_NAMETerminalRuleCall_2_0; }
 
-		//specs+=Reference*
-		public Assignment getSpecsAssignment_3() { return cSpecsAssignment_3; }
+		//elements+=SuiteElement*
+		public Assignment getElementsAssignment_3() { return cElementsAssignment_3; }
 
-		//Reference
-		public RuleCall getSpecsReferenceParserRuleCall_3_0() { return cSpecsReferenceParserRuleCall_3_0; }
+		//SuiteElement
+		public RuleCall getElementsSuiteElementParserRuleCall_3_0() { return cElementsSuiteElementParserRuleCall_3_0; }
 	}
 
-	public class ReferenceElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Reference");
+	public class PatternReferenceElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "PatternReference");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cHyphenMinusKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
-		private final RuleCall cSpecReferenceParserRuleCall_1_0 = (RuleCall)cAlternatives_1.eContents().get(0);
-		private final RuleCall cPatternReferenceParserRuleCall_1_1 = (RuleCall)cAlternatives_1.eContents().get(1);
+		private final Assignment cPatternAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cPatternPATTERNTerminalRuleCall_1_0 = (RuleCall)cPatternAssignment_1.eContents().get(0);
 		
-		//Reference:
-		//	"-" (SpecReference // | ReferenceExpression
-		//	| PatternReference);
+		//PatternReference:
+		//	"-" pattern=PATTERN;
 		public ParserRule getRule() { return rule; }
 
-		//"-" (SpecReference // | ReferenceExpression
-		//| PatternReference)
+		//"-" pattern=PATTERN
 		public Group getGroup() { return cGroup; }
 
 		//"-"
 		public Keyword getHyphenMinusKeyword_0() { return cHyphenMinusKeyword_0; }
 
-		//SpecReference // | ReferenceExpression
-		//| PatternReference
-		public Alternatives getAlternatives_1() { return cAlternatives_1; }
-
-		//SpecReference
-		public RuleCall getSpecReferenceParserRuleCall_1_0() { return cSpecReferenceParserRuleCall_1_0; }
-
-		//PatternReference
-		public RuleCall getPatternReferenceParserRuleCall_1_1() { return cPatternReferenceParserRuleCall_1_1; }
-	}
-
-	public class PatternReferenceElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "PatternReference");
-		private final Assignment cPatternAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cPatternPATTERNTerminalRuleCall_0 = (RuleCall)cPatternAssignment.eContents().get(0);
-		
-		//PatternReference:
-		//	pattern=PATTERN;
-		public ParserRule getRule() { return rule; }
-
 		//pattern=PATTERN
-		public Assignment getPatternAssignment() { return cPatternAssignment; }
+		public Assignment getPatternAssignment_1() { return cPatternAssignment_1; }
 
 		//PATTERN
-		public RuleCall getPatternPATTERNTerminalRuleCall_0() { return cPatternPATTERNTerminalRuleCall_0; }
+		public RuleCall getPatternPATTERNTerminalRuleCall_1_0() { return cPatternPATTERNTerminalRuleCall_1_0; }
+	}
+
+	public class SuiteElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SuiteElement");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cHeadingParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cSpecReferenceParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cPatternReferenceParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		
+		//SuiteElement:
+		//	Heading | SpecReference | PatternReference;
+		public ParserRule getRule() { return rule; }
+
+		//Heading | SpecReference | PatternReference
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//Heading
+		public RuleCall getHeadingParserRuleCall_0() { return cHeadingParserRuleCall_0; }
+
+		//SpecReference
+		public RuleCall getSpecReferenceParserRuleCall_1() { return cSpecReferenceParserRuleCall_1; }
+
+		//PatternReference
+		public RuleCall getPatternReferenceParserRuleCall_2() { return cPatternReferenceParserRuleCall_2; }
+	}
+
+	public class HeadingElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Heading");
+		private final Assignment cNameAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cNameSUITE_NAMETerminalRuleCall_0 = (RuleCall)cNameAssignment.eContents().get(0);
+		
+		//Heading:
+		//	name=SUITE_NAME;
+		public ParserRule getRule() { return rule; }
+
+		//name=SUITE_NAME
+		public Assignment getNameAssignment() { return cNameAssignment; }
+
+		//SUITE_NAME
+		public RuleCall getNameSUITE_NAMETerminalRuleCall_0() { return cNameSUITE_NAMETerminalRuleCall_0; }
 	}
 
 	public class SpecReferenceElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SpecReference");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cSpecAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final CrossReference cSpecSpecificationCrossReference_0_0 = (CrossReference)cSpecAssignment_0.eContents().get(0);
-		private final RuleCall cSpecSpecificationSTRINGTerminalRuleCall_0_0_1 = (RuleCall)cSpecSpecificationCrossReference_0_0.eContents().get(1);
-		private final Assignment cTextAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cTextTEXTTerminalRuleCall_1_0 = (RuleCall)cTextAssignment_1.eContents().get(0);
+		private final Keyword cHyphenMinusKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cSpecAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cSpecSpecificationCrossReference_1_0 = (CrossReference)cSpecAssignment_1.eContents().get(0);
+		private final RuleCall cSpecSpecificationSTRINGTerminalRuleCall_1_0_1 = (RuleCall)cSpecSpecificationCrossReference_1_0.eContents().get(1);
+		private final Assignment cTextAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cTextTEXTTerminalRuleCall_2_0 = (RuleCall)cTextAssignment_2.eContents().get(0);
 		
 		////ReferenceExpression:
 		////	pattern=XClosure
 		////;
 		//SpecReference:
-		//	spec=[jnario::Specification|STRING] text=TEXT?;
+		//	"-" spec=[jnario::Specification|STRING] text=TEXT?;
 		public ParserRule getRule() { return rule; }
 
-		//spec=[jnario::Specification|STRING] text=TEXT?
+		//"-" spec=[jnario::Specification|STRING] text=TEXT?
 		public Group getGroup() { return cGroup; }
 
+		//"-"
+		public Keyword getHyphenMinusKeyword_0() { return cHyphenMinusKeyword_0; }
+
 		//spec=[jnario::Specification|STRING]
-		public Assignment getSpecAssignment_0() { return cSpecAssignment_0; }
+		public Assignment getSpecAssignment_1() { return cSpecAssignment_1; }
 
 		//[jnario::Specification|STRING]
-		public CrossReference getSpecSpecificationCrossReference_0_0() { return cSpecSpecificationCrossReference_0_0; }
+		public CrossReference getSpecSpecificationCrossReference_1_0() { return cSpecSpecificationCrossReference_1_0; }
 
 		//STRING
-		public RuleCall getSpecSpecificationSTRINGTerminalRuleCall_0_0_1() { return cSpecSpecificationSTRINGTerminalRuleCall_0_0_1; }
+		public RuleCall getSpecSpecificationSTRINGTerminalRuleCall_1_0_1() { return cSpecSpecificationSTRINGTerminalRuleCall_1_0_1; }
 
 		//text=TEXT?
-		public Assignment getTextAssignment_1() { return cTextAssignment_1; }
+		public Assignment getTextAssignment_2() { return cTextAssignment_2; }
 
 		//TEXT
-		public RuleCall getTextTEXTTerminalRuleCall_1_0() { return cTextTEXTTerminalRuleCall_1_0; }
+		public RuleCall getTextTEXTTerminalRuleCall_2_0() { return cTextTEXTTerminalRuleCall_2_0; }
 	}
 
 	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
@@ -296,8 +317,9 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	private ImportElements pImport;
 	private QualifiedNameWithWildCardElements pQualifiedNameWithWildCard;
 	private SuiteElements pSuite;
-	private ReferenceElements pReference;
 	private PatternReferenceElements pPatternReference;
+	private SuiteElementElements pSuiteElement;
+	private HeadingElements pHeading;
 	private SpecReferenceElements pSpecReference;
 	private QualifiedNameElements pQualifiedName;
 	private TerminalRule tSUITE_NAME;
@@ -373,8 +395,8 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 		return getQualifiedNameWithWildCardAccess().getRule();
 	}
 
-	//Suite returns xtend::XtendClass:
-	//	{Suite} annotations+=XAnnotation* name=SUITE_NAME specs+=Reference*;
+	//Suite:
+	//	{Suite} annotations+=XAnnotation* name=SUITE_NAME elements+=SuiteElement*;
 	public SuiteElements getSuiteAccess() {
 		return (pSuite != null) ? pSuite : (pSuite = new SuiteElements());
 	}
@@ -383,19 +405,8 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 		return getSuiteAccess().getRule();
 	}
 
-	//Reference:
-	//	"-" (SpecReference // | ReferenceExpression
-	//	| PatternReference);
-	public ReferenceElements getReferenceAccess() {
-		return (pReference != null) ? pReference : (pReference = new ReferenceElements());
-	}
-	
-	public ParserRule getReferenceRule() {
-		return getReferenceAccess().getRule();
-	}
-
 	//PatternReference:
-	//	pattern=PATTERN;
+	//	"-" pattern=PATTERN;
 	public PatternReferenceElements getPatternReferenceAccess() {
 		return (pPatternReference != null) ? pPatternReference : (pPatternReference = new PatternReferenceElements());
 	}
@@ -404,11 +415,31 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 		return getPatternReferenceAccess().getRule();
 	}
 
+	//SuiteElement:
+	//	Heading | SpecReference | PatternReference;
+	public SuiteElementElements getSuiteElementAccess() {
+		return (pSuiteElement != null) ? pSuiteElement : (pSuiteElement = new SuiteElementElements());
+	}
+	
+	public ParserRule getSuiteElementRule() {
+		return getSuiteElementAccess().getRule();
+	}
+
+	//Heading:
+	//	name=SUITE_NAME;
+	public HeadingElements getHeadingAccess() {
+		return (pHeading != null) ? pHeading : (pHeading = new HeadingElements());
+	}
+	
+	public ParserRule getHeadingRule() {
+		return getHeadingAccess().getRule();
+	}
+
 	////ReferenceExpression:
 	////	pattern=XClosure
 	////;
 	//SpecReference:
-	//	spec=[jnario::Specification|STRING] text=TEXT?;
+	//	"-" spec=[jnario::Specification|STRING] text=TEXT?;
 	public SpecReferenceElements getSpecReferenceAccess() {
 		return (pSpecReference != null) ? pSpecReference : (pSpecReference = new SpecReferenceElements());
 	}

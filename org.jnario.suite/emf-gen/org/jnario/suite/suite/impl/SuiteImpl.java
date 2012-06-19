@@ -19,8 +19,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.jnario.impl.SpecificationImpl;
 
-import org.jnario.suite.suite.Reference;
 import org.jnario.suite.suite.Suite;
+import org.jnario.suite.suite.SuiteElement;
 import org.jnario.suite.suite.SuitePackage;
 
 /**
@@ -30,7 +30,7 @@ import org.jnario.suite.suite.SuitePackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.jnario.suite.suite.impl.SuiteImpl#getSpecs <em>Specs</em>}</li>
+ *   <li>{@link org.jnario.suite.suite.impl.SuiteImpl#getElements <em>Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -39,14 +39,14 @@ import org.jnario.suite.suite.SuitePackage;
 public class SuiteImpl extends SpecificationImpl implements Suite
 {
 	/**
-	 * The cached value of the '{@link #getSpecs() <em>Specs</em>}' containment reference list.
+	 * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSpecs()
+	 * @see #getElements()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Reference> specs;
+	protected EList<SuiteElement> elements;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -74,13 +74,13 @@ public class SuiteImpl extends SpecificationImpl implements Suite
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Reference> getSpecs()
+	public EList<SuiteElement> getElements()
 	{
-		if (specs == null)
+		if (elements == null)
 		{
-			specs = new EObjectContainmentEList<Reference>(Reference.class, this, SuitePackage.SUITE__SPECS);
+			elements = new EObjectContainmentEList<SuiteElement>(SuiteElement.class, this, SuitePackage.SUITE__ELEMENTS);
 		}
-		return specs;
+		return elements;
 	}
 
 	/**
@@ -93,8 +93,8 @@ public class SuiteImpl extends SpecificationImpl implements Suite
 	{
 		switch (featureID)
 		{
-			case SuitePackage.SUITE__SPECS:
-				return ((InternalEList<?>)getSpecs()).basicRemove(otherEnd, msgs);
+			case SuitePackage.SUITE__ELEMENTS:
+				return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -109,8 +109,8 @@ public class SuiteImpl extends SpecificationImpl implements Suite
 	{
 		switch (featureID)
 		{
-			case SuitePackage.SUITE__SPECS:
-				return getSpecs();
+			case SuitePackage.SUITE__ELEMENTS:
+				return getElements();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -126,9 +126,9 @@ public class SuiteImpl extends SpecificationImpl implements Suite
 	{
 		switch (featureID)
 		{
-			case SuitePackage.SUITE__SPECS:
-				getSpecs().clear();
-				getSpecs().addAll((Collection<? extends Reference>)newValue);
+			case SuitePackage.SUITE__ELEMENTS:
+				getElements().clear();
+				getElements().addAll((Collection<? extends SuiteElement>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -144,8 +144,8 @@ public class SuiteImpl extends SpecificationImpl implements Suite
 	{
 		switch (featureID)
 		{
-			case SuitePackage.SUITE__SPECS:
-				getSpecs().clear();
+			case SuitePackage.SUITE__ELEMENTS:
+				getElements().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -161,8 +161,8 @@ public class SuiteImpl extends SpecificationImpl implements Suite
 	{
 		switch (featureID)
 		{
-			case SuitePackage.SUITE__SPECS:
-				return specs != null && !specs.isEmpty();
+			case SuitePackage.SUITE__ELEMENTS:
+				return elements != null && !elements.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

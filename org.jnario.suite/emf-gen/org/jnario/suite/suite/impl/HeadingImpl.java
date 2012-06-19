@@ -11,50 +11,50 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.jnario.suite.suite.PatternReference;
+import org.jnario.suite.suite.Heading;
 import org.jnario.suite.suite.SuitePackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Pattern Reference</b></em>'.
+ * An implementation of the model object '<em><b>Heading</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.jnario.suite.suite.impl.PatternReferenceImpl#getPattern <em>Pattern</em>}</li>
+ *   <li>{@link org.jnario.suite.suite.impl.HeadingImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class PatternReferenceImpl extends SuiteElementImpl implements PatternReference
+public class HeadingImpl extends SuiteElementImpl implements Heading
 {
 	/**
-	 * The default value of the '{@link #getPattern() <em>Pattern</em>}' attribute.
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPattern()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String PATTERN_EDEFAULT = null;
+	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getPattern() <em>Pattern</em>}' attribute.
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPattern()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected String pattern = PATTERN_EDEFAULT;
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PatternReferenceImpl()
+	protected HeadingImpl()
 	{
 		super();
 	}
@@ -67,7 +67,7 @@ public class PatternReferenceImpl extends SuiteElementImpl implements PatternRef
 	@Override
 	protected EClass eStaticClass()
 	{
-		return SuitePackage.Literals.PATTERN_REFERENCE;
+		return SuitePackage.Literals.HEADING;
 	}
 
 	/**
@@ -75,9 +75,9 @@ public class PatternReferenceImpl extends SuiteElementImpl implements PatternRef
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getPattern()
+	public String getName()
 	{
-		return pattern;
+		return name;
 	}
 
 	/**
@@ -85,12 +85,12 @@ public class PatternReferenceImpl extends SuiteElementImpl implements PatternRef
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPattern(String newPattern)
+	public void setName(String newName)
 	{
-		String oldPattern = pattern;
-		pattern = newPattern;
+		String oldName = name;
+		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SuitePackage.PATTERN_REFERENCE__PATTERN, oldPattern, pattern));
+			eNotify(new ENotificationImpl(this, Notification.SET, SuitePackage.HEADING__NAME, oldName, name));
 	}
 
 	/**
@@ -103,8 +103,8 @@ public class PatternReferenceImpl extends SuiteElementImpl implements PatternRef
 	{
 		switch (featureID)
 		{
-			case SuitePackage.PATTERN_REFERENCE__PATTERN:
-				return getPattern();
+			case SuitePackage.HEADING__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -119,8 +119,8 @@ public class PatternReferenceImpl extends SuiteElementImpl implements PatternRef
 	{
 		switch (featureID)
 		{
-			case SuitePackage.PATTERN_REFERENCE__PATTERN:
-				setPattern((String)newValue);
+			case SuitePackage.HEADING__NAME:
+				setName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -136,8 +136,8 @@ public class PatternReferenceImpl extends SuiteElementImpl implements PatternRef
 	{
 		switch (featureID)
 		{
-			case SuitePackage.PATTERN_REFERENCE__PATTERN:
-				setPattern(PATTERN_EDEFAULT);
+			case SuitePackage.HEADING__NAME:
+				setName(NAME_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -153,8 +153,8 @@ public class PatternReferenceImpl extends SuiteElementImpl implements PatternRef
 	{
 		switch (featureID)
 		{
-			case SuitePackage.PATTERN_REFERENCE__PATTERN:
-				return PATTERN_EDEFAULT == null ? pattern != null : !PATTERN_EDEFAULT.equals(pattern);
+			case SuitePackage.HEADING__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -170,10 +170,10 @@ public class PatternReferenceImpl extends SuiteElementImpl implements PatternRef
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (pattern: ");
-		result.append(pattern);
+		result.append(" (name: ");
+		result.append(name);
 		result.append(')');
 		return result.toString();
 	}
 
-} //PatternReferenceImpl
+} //HeadingImpl

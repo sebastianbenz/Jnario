@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  *
  * @see org.jnario.suite.suite.SuitePackage#getReference()
- * @model
+ * @model interface="true" abstract="true"
  * @generated
  */
 public interface Reference extends EObject

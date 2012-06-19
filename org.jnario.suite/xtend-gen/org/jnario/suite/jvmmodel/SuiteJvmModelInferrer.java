@@ -3,6 +3,7 @@ package org.jnario.suite.jvmmodel;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import java.util.List;
+import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendClass;
@@ -79,10 +80,16 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
           String _describe = SuiteJvmModelInferrer.this._suiteClassNameProvider.describe(suite);
           JvmAnnotationReference _annotation = SuiteJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(suite, Named.class, _describe);
           SuiteJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_1, _annotation);
-          EList<JvmAnnotationReference> _annotations_2 = it.getAnnotations();
           Iterable<JvmType> _children = SuiteJvmModelInferrer.this.children(suite);
-          JvmAnnotationReference _annotation_1 = SuiteJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(suite, Contains.class, _children);
-          SuiteJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_2, _annotation_1);
+          boolean _isEmpty = IterableExtensions.isEmpty(_children);
+          boolean _not = (!_isEmpty);
+          if (_not) {
+            EList<JvmAnnotationReference> _annotations_2 = it.getAnnotations();
+            Iterable<JvmType> _children_1 = SuiteJvmModelInferrer.this.children(suite);
+            Set<JvmType> _set = IterableExtensions.<JvmType>toSet(_children_1);
+            JvmAnnotationReference _annotation_1 = SuiteJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(suite, Contains.class, _set);
+            SuiteJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_2, _annotation_1);
+          }
           SuiteJvmModelInferrer.this.initialize(suite, it);
         }
       };

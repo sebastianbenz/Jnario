@@ -31,7 +31,7 @@ import org.jnario.suite.suite.SuitePackage;
  *
  * @generated
  */
-public class SpecReferenceImpl extends ReferenceImpl implements SpecReference
+public class SpecReferenceImpl extends SuiteElementImpl implements SpecReference
 {
 	/**
 	 * The cached value of the '{@link #getSpec() <em>Spec</em>}' reference.
