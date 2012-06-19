@@ -123,8 +123,8 @@ public class ExampleNameProviderToJavaClassNameExampleGroupSpec extends ExampleN
     String _secondJavaClassName = this.secondJavaClassName(_builder);
     Matcher<String> _endsWith = Matchers.endsWith("AssertTrueSpec");
     boolean _doubleArrow = Should.operator_doubleArrow(_secondJavaClassName, _endsWith);
-    Assert.assertTrue("\nExpected secondJavaClassName(\r\n      \'\'\'\r\n        describe org.junit.Assert{\r\n          context \'assertTrue\' \r\n        }\r\n      \'\'\') => endsWith(\'AssertTrueSpec\') but"
-     + "\n     secondJavaClassName(\r\n      \'\'\'\r\n        describe org.junit.Assert{\r\n          context \'assertTrue\' \r\n        }\r\n      \'\'\') is " + "\"" + _secondJavaClassName + "\""
+    Assert.assertTrue("\nExpected secondJavaClassName(\r\n      \t\r\n      \'\'\'\r\n        describe org.junit.Assert{\r\n          context \'assertTrue\' \r\n        }\r\n      \'\'\') => endsWith(\'AssertTrueSpec\') but"
+     + "\n     secondJavaClassName(\r\n      \t\r\n      \'\'\'\r\n        describe org.junit.Assert{\r\n          context \'assertTrue\' \r\n        }\r\n      \'\'\') is " + "\"" + _secondJavaClassName + "\""
      + "\n     \'\'\'\r\n        describe org.junit.Assert{\r\n          context \'assertTrue\' \r\n        }\r\n      \'\'\' is " + _builder
      + "\n     endsWith(\'AssertTrueSpec\') is " + _endsWith + "\n", _doubleArrow);
     

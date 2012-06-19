@@ -55,6 +55,7 @@ describe ExampleNameProvider{
     }
     fact "should append the description"{
       secondJavaClassName(
+      	
       '''
         describe org.junit.Assert{
           context 'assertTrue' 

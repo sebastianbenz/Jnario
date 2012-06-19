@@ -77,9 +77,6 @@
         <version>${tycho-version}</version>
         <configuration>
         <encoding>UTF-8</encoding>
-        <meminitial>128m</meminitial>
-        <maxmem>1024m</maxmem>
-        <verbose>true</verbose>
         </configuration>
       </plugin>
       <plugin>
