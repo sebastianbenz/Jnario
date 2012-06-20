@@ -143,6 +143,9 @@
               </type>
             </elements>
             <elements xsi:type="xtext:Group">
+              <elements xsi:type="xtext:Assignment" cardinality="?" feature="pending" operator="?=">
+                <terminal xsi:type="xtext:Keyword" value="pending"/>
+              </elements>
               <elements xsi:type="xtext:Alternatives">
                 <elements xsi:type="xtext:Keyword" value="fact"/>
                 <elements xsi:type="xtext:Keyword" value="facts"/>

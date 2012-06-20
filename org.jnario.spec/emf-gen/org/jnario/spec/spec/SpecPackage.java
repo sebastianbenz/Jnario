@@ -346,13 +346,22 @@ public interface SpecPackage extends EPackage
 	int EXAMPLE__EXPR = TEST_FUNCTION_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Pending</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE__PENDING = TEST_FUNCTION_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Example</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_FEATURE_COUNT = TEST_FUNCTION_FEATURE_COUNT + 1;
+	int EXAMPLE_FEATURE_COUNT = TEST_FUNCTION_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.spec.spec.impl.BeforeImpl <em>Before</em>}' class.
@@ -558,6 +567,17 @@ public interface SpecPackage extends EPackage
 	EReference getExample_Expr();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.jnario.spec.spec.Example#isPending <em>Pending</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Pending</em>'.
+	 * @see org.jnario.spec.spec.Example#isPending()
+	 * @see #getExample()
+	 * @generated
+	 */
+	EAttribute getExample_Pending();
+
+	/**
 	 * Returns the meta object for class '{@link org.jnario.spec.spec.Before <em>Before</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -715,6 +735,14 @@ public interface SpecPackage extends EPackage
 		 * @generated
 		 */
 		EReference EXAMPLE__EXPR = eINSTANCE.getExample_Expr();
+
+		/**
+		 * The meta object literal for the '<em><b>Pending</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXAMPLE__PENDING = eINSTANCE.getExample_Pending();
 
 		/**
 		 * The meta object literal for the '{@link org.jnario.spec.spec.impl.BeforeImpl <em>Before</em>}' class.

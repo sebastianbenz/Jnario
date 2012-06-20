@@ -25,6 +25,7 @@ import org.jnario.spec.spec.SpecPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.jnario.spec.spec.impl.ExampleImpl#getExpr <em>Expr</em>}</li>
+ *   <li>{@link org.jnario.spec.spec.impl.ExampleImpl#isPending <em>Pending</em>}</li>
  * </ul>
  * </p>
  *
@@ -41,6 +42,26 @@ public class ExampleImpl extends TestFunctionImplCustom implements Example
 	 * @ordered
 	 */
 	protected XExpression expr;
+
+	/**
+	 * The default value of the '{@link #isPending() <em>Pending</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isPending()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean PENDING_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isPending() <em>Pending</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isPending()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean pending = PENDING_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -118,9 +139,20 @@ public class ExampleImpl extends TestFunctionImplCustom implements Example
 	 */
 	public boolean isPending()
 	{
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return pending;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPending(boolean newPending)
+	{
+		boolean oldPending = pending;
+		pending = newPending;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.EXAMPLE__PENDING, oldPending, pending));
 	}
 
 	/**
@@ -151,6 +183,8 @@ public class ExampleImpl extends TestFunctionImplCustom implements Example
 		{
 			case SpecPackage.EXAMPLE__EXPR:
 				return getExpr();
+			case SpecPackage.EXAMPLE__PENDING:
+				return isPending();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -167,6 +201,9 @@ public class ExampleImpl extends TestFunctionImplCustom implements Example
 		{
 			case SpecPackage.EXAMPLE__EXPR:
 				setExpr((XExpression)newValue);
+				return;
+			case SpecPackage.EXAMPLE__PENDING:
+				setPending((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -185,6 +222,9 @@ public class ExampleImpl extends TestFunctionImplCustom implements Example
 			case SpecPackage.EXAMPLE__EXPR:
 				setExpr((XExpression)null);
 				return;
+			case SpecPackage.EXAMPLE__PENDING:
+				setPending(PENDING_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -201,8 +241,27 @@ public class ExampleImpl extends TestFunctionImplCustom implements Example
 		{
 			case SpecPackage.EXAMPLE__EXPR:
 				return expr != null;
+			case SpecPackage.EXAMPLE__PENDING:
+				return pending != PENDING_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString()
+	{
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (pending: ");
+		result.append(pending);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ExampleImpl

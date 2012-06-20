@@ -15,6 +15,7 @@ import org.eclipse.xtext.xbase.XExpression;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.jnario.spec.spec.Example#getExpr <em>Expr</em>}</li>
+ *   <li>{@link org.jnario.spec.spec.Example#isPending <em>Pending</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,11 +52,29 @@ public interface Example extends TestFunction
 	void setExpr(XExpression value);
 
 	/**
+	 * Returns the value of the '<em><b>Pending</b></em>' attribute.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Pending</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
-	 * @model kind="operation"
+	 * @return the value of the '<em>Pending</em>' attribute.
+	 * @see #setPending(boolean)
+	 * @see org.jnario.spec.spec.SpecPackage#getExample_Pending()
+	 * @model
 	 * @generated
 	 */
 	boolean isPending();
+
+	/**
+	 * Sets the value of the '{@link org.jnario.spec.spec.Example#isPending <em>Pending</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Pending</em>' attribute.
+	 * @see #isPending()
+	 * @generated
+	 */
+	void setPending(boolean value);
 
 } // Example

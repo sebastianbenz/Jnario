@@ -1448,7 +1448,7 @@ public class SpecSemanticSequencer extends XtendSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (annotationInfo=Member_Example_2_0_0 (expr=XExpression body=XBlockExpression?))
+	 *     (annotationInfo=Member_Example_2_0_0 (pending?='pending'? expr=XExpression body=XBlockExpression?))
 	 */
 	protected void sequence_Member(EObject context, Example semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

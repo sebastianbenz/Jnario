@@ -25,7 +25,8 @@ public class ExamplePendingSpec extends ExampleSpec {
       new ExamplePendingSpecExamples(  java.util.Arrays.asList("\"fact \'with description\'\"", "true"), "fact \'with description\'", true),
       new ExamplePendingSpecExamples(  java.util.Arrays.asList("\"fact \'with description and empty block\' {}\"", "true"), "fact \'with description and empty block\' {}", true),
       new ExamplePendingSpecExamples(  java.util.Arrays.asList("\"fact \'with description and code block\' {1 => 1}\"", "false"), "fact \'with description and code block\' {1 => 1}", false),
-      new ExamplePendingSpecExamples(  java.util.Arrays.asList("\"fact 1 => 1\"", "false"), "fact 1 => 1", false)
+      new ExamplePendingSpecExamples(  java.util.Arrays.asList("\"fact 1 => 1\"", "false"), "fact 1 => 1", false),
+      new ExamplePendingSpecExamples(  java.util.Arrays.asList("\"pending fact \'with description and code block\' {1 => 1}\"", "true"), "pending fact \'with description and code block\' {1 => 1}", true)
     );
   }
   

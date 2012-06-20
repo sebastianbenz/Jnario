@@ -57,6 +57,9 @@ public class ExampleImplCustom extends org.jnario.spec.spec.impl.ExampleImpl {
 	
 	@Override
 	public boolean isPending() {
+		if(pending){
+			return true;
+		}
 		if(expr == null){
 			return true;
 		}

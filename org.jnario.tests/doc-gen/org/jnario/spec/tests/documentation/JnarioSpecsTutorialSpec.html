@@ -44,7 +44,10 @@ describe "A Stack"{
 </pre><p>In the background, Jnario automatically translates the stack specification into a JUnit test case <code>AStackSpec.java</code> in the <code>xtend-gen</code> folder.</p>
 </p>
 <ul><li><p  id="Checking_your_facts"><strong>Checking your facts</strong>
-<p>The next step is to enrich our facts with the required logic to check whether our stack behaves as specified. Checks are implemented by adding a block expression to your facts. We use <code>=&gt;</code> to describe the expected result of an expression. For example, <code>new Stack.size =&gt; 0</code> will fail if the size is not <code>0</code>. If we execute our specification we will see that all specifications pass and that they are not marked as <em>PENDING</em> anymore,</p><p><span class="label label-info">Info</span> Declaring and importing other packages works similar to Xtend (static imports work as well).</p>
+<p>The next step is to enrich our facts with the required logic to check whether our stack behaves as specified. Checks are implemented by adding a block expression to your facts. We use <code>=&gt;</code> to describe the expected result of an expression. For example, <code>new Stack.size =&gt; 0</code> will fail if the size is not <code>0</code>. If we execute our specification we will see that all specifications pass and that they are not marked as <em>PENDING</em> anymore. You can also mark <em>facts</em> explicitly as pending using the <strong>pending</strong> keyword:</p>
+<pre class="prettyprint lang-spec">
+  pending fact assert 1 != 2
+</pre><p><span class="label label-info">Info</span> Declaring and importing other packages works similar to Xtend (static imports work as well).</p>
 <pre class="prettyprint lang-spec">
 package demo
 

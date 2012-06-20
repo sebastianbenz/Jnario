@@ -11,9 +11,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="targetOperation" eType="ecore:EClass ../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmOperation"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Example" eSuperTypes="#//TestFunction">
-    <eOperations name="isPending" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="expr" eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pending" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Before" eSuperTypes="#//TestFunction">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="beforeAll" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"

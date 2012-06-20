@@ -8,7 +8,6 @@
  package org.jnario.spec.tests.unit.naming
 
 import org.eclipse.xtext.xbase.XBlockExpression
-import org.eclipse.xtext.xbase.XExpression
 import org.jnario.Should
 import org.jnario.jnario.test.util.ModelStore
 import org.jnario.jnario.test.util.SpecTestInstantiator
@@ -48,11 +47,12 @@ describe Example {
 	
 	describe "Pending"{
 		def examples{
-			| example 											| expected |
-			| "fact 'with description'"							| true     |
-			| "fact 'with description and empty block' {}"		| true     |
-			| "fact 'with description and code block' {1 => 1}"	| false    |
-			| "fact 1 => 1"										| false    |
+			| example 													| expected |
+			| "fact 'with description'"									| true     |
+			| "fact 'with description and empty block' {}"				| true     |
+			| "fact 'with description and code block' {1 => 1}"			| false    |
+			| "fact 1 => 1"												| false    |
+			| "pending fact 'with description and code block' {1 => 1}"	| true     |
 		}
 	
 		fact examples.forEach[pendingStateOf(example) should be expected]

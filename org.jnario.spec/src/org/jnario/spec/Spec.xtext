@@ -39,7 +39,7 @@ Member returns xtend::XtendMember:
 	{xtend::XtendMember} annotations+=XAnnotation* 
 	(
 		{Example.annotationInfo = current}
-			(('fact' | 'facts') expr=XExpression body=XBlockExpression?)
+			( pending?='pending'? ('fact' | 'facts') expr=XExpression body=XBlockExpression?)
 	|	{ExampleGroup.annotationInfo = current}
 			(=>preamble=('describe') targetType=JvmTypeReference? =>name=STRING? '{'
       		members+=Member*

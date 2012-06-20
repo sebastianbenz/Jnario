@@ -32,7 +32,7 @@ PR['registerLangHandler'](
          // A character literal has single quotes on either side
          [PR['PR_STRING'],      /^'(?:[^\r\n\\']|\\(?:'|[^\r\n']+))'/],
          [PR['PR_LITERAL'],     /^'[a-zA-Z_$][\w$]*(?!['$\w])/],
-         [PR['PR_KEYWORD'],     /^(?:fact|facts|before|after|after|all|describe|it|context|abstract|boolean|case|catch|char|class|create|def|default|do|double|else|extends|extension|final|finally|float|for|if|implements|import|int|long|new|override|package|private|protected|return|short|static|super|switch|throw|throws|try|typeof|val|var|void|while)\b/],
+         [PR['PR_KEYWORD'],     /^(?:pending|fact|facts|before|after|after|all|describe|it|context|abstract|boolean|case|catch|char|class|create|def|default|do|double|else|extends|extension|final|finally|float|for|if|implements|import|int|long|new|override|package|private|protected|return|short|static|super|switch|throw|throws|try|typeof|val|var|void|while)\b/],
          [PR['PR_TAG'],     /^(?:assert|should|be|not|must|true|false|null|this|it\.|subject|forEach)\b/],
          [PR['PR_LITERAL'],     /^(?:(?:0(?:[0-7]+|X[0-9A-F]+))L?|(?:(?:0|[1-9][0-9]*)(?:(?:\.[0-9]+)?(?:E[+\-]?[0-9]+)?F?|L?))|\\.[0-9]+(?:E[+\-]?[0-9]+)?F?)/i],
          // Treat upper camel case identifiers as types.

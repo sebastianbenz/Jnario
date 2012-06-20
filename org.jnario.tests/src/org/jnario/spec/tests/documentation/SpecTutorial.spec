@@ -64,7 +64,12 @@ describe "Jnario Specs - Tutorial"{
 		 * We use `=>` to describe the expected result of an expression. For 
 		 * example, `new Stack.size => 0` will fail if the size is not `0`.
 		 * If we execute our specification we will see that all specifications
-		 * pass and that they are not marked as _PENDING_ anymore,
+		 * pass and that they are not marked as _PENDING_ anymore. You can also mark *facts* explicitly as 
+		 * pending using the **pending** keyword: 
+		 * 
+		 * <pre class="prettyprint lang-spec">
+		 *   pending fact assert 1 != 2
+		 * </pre>
 		 * 
 		 * <span class="label label-info">Info</span> Declaring and importing other packages works similar 
 		 * to Xtend (static imports work as well). 

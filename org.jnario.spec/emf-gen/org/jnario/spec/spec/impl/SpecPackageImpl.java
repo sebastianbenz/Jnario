@@ -219,6 +219,16 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getExample_Pending()
+	{
+		return (EAttribute)exampleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getBefore()
 	{
 		return beforeEClass;
@@ -323,6 +333,7 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 
 		exampleEClass = createEClass(EXAMPLE);
 		createEReference(exampleEClass, EXAMPLE__EXPR);
+		createEAttribute(exampleEClass, EXAMPLE__PENDING);
 
 		beforeEClass = createEClass(BEFORE);
 		createEAttribute(beforeEClass, BEFORE__BEFORE_ALL);
@@ -388,8 +399,7 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 
 		initEClass(exampleEClass, Example.class, "Example", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getExample_Expr(), theXbasePackage.getXExpression(), null, "expr", null, 0, 1, Example.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		addEOperation(exampleEClass, ecorePackage.getEBoolean(), "isPending", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEAttribute(getExample_Pending(), ecorePackage.getEBoolean(), "pending", null, 0, 1, Example.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(beforeEClass, Before.class, "Before", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getBefore_BeforeAll(), ecorePackage.getEBoolean(), "beforeAll", "false", 0, 1, Before.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
