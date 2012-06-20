@@ -264,9 +264,4 @@ public abstract class AbstractSuiteRuntimeModule extends DefaultRuntimeModule {
 		return org.eclipse.xtext.xbase.jvmmodel.JvmGlobalScopeProvider.class;
 	}
 
-	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment
-	public Class<? extends org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer> bindIJvmModelInferrer() {
-		return org.jnario.suite.jvmmodel.SuiteJvmModelInferrer.class;
-	}
-
 }

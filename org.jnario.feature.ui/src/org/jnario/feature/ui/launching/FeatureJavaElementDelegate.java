@@ -42,9 +42,6 @@ public class FeatureJavaElementDelegate extends JavaElementDelegateJunitLaunch {
 	private static final Logger log = Logger.getLogger(FeatureJavaElementDelegate.class);
 	
 	@Inject
-	private IJvmModelAssociations associations;
-	
-	@Inject
 	private IJavaElementFinder elementFinder;
 
 	@Override

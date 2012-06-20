@@ -17,9 +17,9 @@ import java.util.List;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.util.StringInputStream;
+import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.suite.suite.Suite;
 import org.junit.Assert;
 
@@ -98,23 +98,30 @@ public class ModelStore implements Iterable<EObject> {
 	}
 
 	public Resource parseScenario(String...strings) {
-		return parse("Scenario" + resourceSet.getResources().size() + ".feature", strings);
+		return parse("Scenario" + resourceCount() + ".feature", strings);
 	}
 	
 	public Resource parseSpec(String...strings) {
-		return parse("Spec" + resourceSet.getResources().size() + ".spec", strings);
+		return parse("Spec" + resourceCount() + ".spec", strings);
 	}
 	
 	public Resource parseScenario(CharSequence input) {
-		return parse("Scenario" + resourceSet.getResources().size() + ".feature", input.toString());
+		return parse("Scenario" + resourceCount() + ".feature", input.toString());
 	}
 	
 	public Resource parseSpec(CharSequence input) {
-		return parse("Spec" + resourceSet.getResources().size() + ".spec", input.toString());
+		return parse("Spec" + resourceCount() + ".spec", input.toString());
+	}
+
+	/**
+	 * @return
+	 */
+	private int resourceCount() {
+		return resourceSet.getResources().size();
 	}
 	
 	public Resource parseSuite(CharSequence input) {
-		return parse("Suite" + resourceSet.getResources().size() + ".suite", input.toString());
+		return parse("Suite" + resourceCount() + ".suite", input.toString());
 	}
 	
 	public Query query(){
@@ -123,6 +130,10 @@ public class ModelStore implements Iterable<EObject> {
 	
 	public Suite firstSuite(){
 		return query().first(Suite.class);
+	}
+	
+	public ExampleGroup firstSpec(){
+		return query().first(ExampleGroup.class);
 	}
 	
 	public XtextResourceSet getResourceSet() {

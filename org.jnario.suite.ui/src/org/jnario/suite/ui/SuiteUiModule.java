@@ -10,17 +10,68 @@
  */
 package org.jnario.suite.ui;
 
+import org.eclipse.jface.text.source.IAnnotationHover;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
+import org.eclipse.xtend.ide.XtendResourceUiServiceProvider;
+import org.eclipse.xtend.ide.autoedit.AutoEditStrategyProvider;
+import org.eclipse.xtend.ide.autoedit.TokenTypeToPartitionMapper;
+import org.eclipse.xtend.ide.builder.XtendBuilderParticipant;
 import org.eclipse.xtend.ide.contentassist.ImportingTypesProposalProvider;
+import org.eclipse.xtend.ide.editor.OccurrenceComputer;
+import org.eclipse.xtend.ide.editor.XtendDoubleClickStrategyProvider;
+import org.eclipse.xtend.ide.editor.XtendNatureAddingEditorCallback;
+import org.eclipse.xtend.ide.hover.XtendAnnotationHover;
+import org.eclipse.xtend.ide.hover.XtendHoverDocumentationProvider;
+import org.eclipse.xtend.ide.hover.XtendHoverSignatureProvider;
+import org.eclipse.xtend.ide.hyperlinking.XtendHyperlinkHelper;
+import org.eclipse.xtend.ide.outline.XtendOutlineNodeComparator;
+import org.eclipse.xtend.ide.outline.XtendOutlinePage;
+import org.eclipse.xtend.ide.outline.XtendQuickOutlineFilterAndSorter;
+import org.eclipse.xtend.ide.refactoring.XtendReferenceUpdater;
+import org.eclipse.xtend.ide.refactoring.XtendRenameElementHandler;
+import org.eclipse.xtend.ide.refactoring.XtendRenameElementProcessor;
+import org.eclipse.xtend.ide.refactoring.XtendRenameStrategy;
+import org.eclipse.xtext.builder.EclipseResourceFileSystemAccess2;
+import org.eclipse.xtext.builder.IXtextBuilderParticipant;
+import org.eclipse.xtext.common.types.ui.navigation.IDerivedMemberAwareEditorOpener;
 import org.eclipse.xtext.common.types.xtext.ui.ITypesProposalProvider;
+import org.eclipse.xtext.generator.IGenerator;
+import org.eclipse.xtext.ui.LanguageSpecific;
+import org.eclipse.xtext.ui.editor.IURIEditorOpener;
+import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
+import org.eclipse.xtext.ui.editor.autoedit.AbstractEditStrategyProvider;
+import org.eclipse.xtext.ui.editor.doubleClicking.DoubleClickStrategyProvider;
+import org.eclipse.xtext.ui.editor.formatting.IContentFormatterFactory;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
+import org.eclipse.xtext.ui.editor.hover.html.IEObjectHoverDocumentationProvider;
+import org.eclipse.xtext.ui.editor.hyperlinking.IHyperlinkHelper;
+import org.eclipse.xtext.ui.editor.model.ITokenTypeToPartitionTypeMapper;
+import org.eclipse.xtext.ui.editor.occurrences.IOccurrenceComputer;
+import org.eclipse.xtext.ui.editor.outline.impl.OutlineFilterAndSorter.IComparator;
+import org.eclipse.xtext.ui.editor.outline.quickoutline.QuickOutlineFilterAndSorter;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
+import org.eclipse.xtext.ui.refactoring.IReferenceUpdater;
+import org.eclipse.xtext.ui.refactoring.IRenameStrategy;
+import org.eclipse.xtext.ui.refactoring.impl.RenameElementProcessor;
+import org.eclipse.xtext.ui.refactoring.ui.IRenameElementHandler;
+import org.eclipse.xtext.ui.resource.IResourceUIServiceProvider;
+import org.eclipse.xtext.xbase.ui.editor.XbaseEditor;
+import org.eclipse.xtext.xbase.ui.hover.XbaseDeclarativeHoverSignatureProvider;
+import org.eclipse.xtext.xbase.ui.jvmmodel.navigation.DerivedMemberAwareEditorOpener;
+import org.eclipse.xtext.xbase.ui.launching.JavaElementDelegate;
+import org.jnario.suite.generator.SuiteGenerator;
 import org.jnario.suite.ui.highlighting.SuiteHighlightingCalculator;
 import org.jnario.suite.ui.highlighting.SuiteHighlightingConfiguration;
 import org.jnario.suite.ui.highlighting.SuiteTokenHighlighting;
 import org.jnario.suite.ui.hover.SuiteHoverProvider;
+import org.jnario.suite.ui.launching.SuiteJavaElementDelegate;
+import org.jnario.ui.builder.JnarioSourceRelativeFileSystemAccess;
+
+import com.google.inject.Binder;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -41,6 +92,10 @@ public class SuiteUiModule extends org.jnario.suite.ui.AbstractSuiteUiModule {
 		return SuiteHighlightingCalculator.class;
 	}
 	
+	public Class<? extends ITokenTypeToPartitionTypeMapper> bindITokenTypeToPartitionTypeMapper() {
+		return TokenTypeToPartitionMapper.class;
+	}
+	
 	@Override
 	public Class<? extends IHighlightingConfiguration> bindIHighlightingConfiguration() {
 		return SuiteHighlightingConfiguration.class;
@@ -53,5 +108,121 @@ public class SuiteUiModule extends org.jnario.suite.ui.AbstractSuiteUiModule {
 	@Override
 	public Class<? extends IEObjectHoverProvider> bindIEObjectHoverProvider() {
 		return SuiteHoverProvider.class;
+	}
+	
+
+	@Override
+	public Class<? extends IOccurrenceComputer> bindIOccurrenceComputer() {
+		return OccurrenceComputer.class;
+	}
+	
+	@Override
+	public Class<? extends IRenameElementHandler> bindIRenameElementHandler() {
+		return XtendRenameElementHandler.class;
+	}
+	
+	@Override
+	public Class<? extends IReferenceUpdater> bindIReferenceUpdater() {
+		return XtendReferenceUpdater.class;
+	}
+
+	public Class<? extends XbaseDeclarativeHoverSignatureProvider> bindXbaseDeclarativeHoverSignatureProvider(){
+		return XtendHoverSignatureProvider.class;
+	}
+	
+	@Override
+	public Class<? extends IEObjectHoverDocumentationProvider> bindIEObjectHoverDocumentationProvider(){
+		return XtendHoverDocumentationProvider.class;
+	}
+
+	
+	
+	@Override
+	public Class<? extends IAnnotationHover> bindIAnnotationHover () {
+		return XtendAnnotationHover.class;
+	}
+
+
+	@Override
+	public Class<? extends AbstractEditStrategyProvider> bindAbstractEditStrategyProvider() {
+		return AutoEditStrategyProvider.class;
+	}
+
+	public Class<? extends DoubleClickStrategyProvider> bindDoubleClickStrategyProvider() {
+		return XtendDoubleClickStrategyProvider.class;
+	}
+
+	@Override
+	public Class<? extends IComparator> bindOutlineFilterAndSorter$IComparator() {
+		return XtendOutlineNodeComparator.class;
+	}
+
+	public Class<? extends QuickOutlineFilterAndSorter> bindQuickOutlineFilterAndSorter() {
+		return XtendQuickOutlineFilterAndSorter.class;
+	}
+
+	@Override
+	public Class<? extends IContentOutlinePage> bindIContentOutlinePage() {
+		return XtendOutlinePage.class;
+	}
+
+	@Override
+	public Class<? extends IHyperlinkHelper> bindIHyperlinkHelper() {
+		return XtendHyperlinkHelper.class;
+	}
+
+	
+	public Class<? extends EclipseResourceFileSystemAccess2> bindEclipseResourceFileSystemAccess2() {
+		return JnarioSourceRelativeFileSystemAccess.class;
+	}
+	
+	@Override
+	public Class<? extends IXtextBuilderParticipant> bindIXtextBuilderParticipant() {
+		return XtendBuilderParticipant.class;
+	}
+	
+	@Override
+	public Class<? extends IContentFormatterFactory> bindIContentFormatterFactory() {
+		// see https://bugs.eclipse.org/bugs/show_bug.cgi?id=361385
+		return null;
+	}
+	
+	@Override
+	public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
+		return XtendNatureAddingEditorCallback.class;
+	}
+	
+	public Class<? extends IResourceUIServiceProvider> bindIResourceUIServiceProvider() {
+		return XtendResourceUiServiceProvider.class;
+	}
+	
+	public Class<? extends RenameElementProcessor> bindRenameElementProcessor() {
+		return XtendRenameElementProcessor.class;
+	}
+	
+	@Override
+	public Class<? extends IRenameStrategy> bindIRenameStrategy() {
+		return XtendRenameStrategy.class;
+	}
+
+	@Override
+	public void configureLanguageSpecificURIEditorOpener(Binder binder) {
+		if (PlatformUI.isWorkbenchRunning()) {
+			binder.bind(IURIEditorOpener.class).annotatedWith(LanguageSpecific.class)
+					.to(DerivedMemberAwareEditorOpener.class);
+			binder.bind(IDerivedMemberAwareEditorOpener.class).to(DerivedMemberAwareEditorOpener.class);
+		}
+	}
+	
+	public Class<? extends org.eclipse.xtext.ui.editor.XtextEditor> bindXtextEditor() {
+		return XbaseEditor.class;
+	}
+	
+	public Class<? extends JavaElementDelegate> bindJavaElementDelegate(){
+		return SuiteJavaElementDelegate.class;
+	}
+
+	public Class<? extends IGenerator> bindIGenerator() {
+		return SuiteGenerator.class;
 	}
 }

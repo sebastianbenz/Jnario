@@ -11,7 +11,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.naming.XtendQualifiedNameProvider;
 import org.eclipse.xtend.core.xtend.XtendFile;
 import org.eclipse.xtext.EcoreUtil2;
-import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.jnario.feature.feature.Step;
 
@@ -25,7 +24,7 @@ public class FeatureQualifiedNameProvider extends XtendQualifiedNameProvider {
 	private StepNameProvider stepNameProvider;
 	
 	@Inject
-	public FeatureQualifiedNameProvider(StepNameProvider stepNameProvider, IQualifiedNameConverter qualifiedNameConverter) {
+	public FeatureQualifiedNameProvider(StepNameProvider stepNameProvider) {
 		this.stepNameProvider = stepNameProvider;
 	}
 	

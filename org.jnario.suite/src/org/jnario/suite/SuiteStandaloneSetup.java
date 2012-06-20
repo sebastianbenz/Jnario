@@ -9,11 +9,10 @@
 package org.jnario.suite;
 
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.xtend.core.XtendStandaloneSetup;
-import org.eclipse.xtext.xbase.XbaseStandaloneSetup;
-import org.eclipse.xtext.xbase.XtypeStandaloneSetup;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
 import org.jnario.JnarioPackage;
+import org.jnario.feature.FeatureStandaloneSetup;
+import org.jnario.spec.SpecStandaloneSetup;
 import org.jnario.suite.suite.SuitePackage;
 
 import com.google.inject.Injector;
@@ -31,9 +30,8 @@ public class SuiteStandaloneSetup extends SuiteStandaloneSetupGenerated{
 	
 	@Override
 	public void register(Injector injector) {
-		XtendStandaloneSetup.doSetup();
-		XbaseStandaloneSetup.doSetup();
-		XtypeStandaloneSetup.doSetup();
+		SpecStandaloneSetup.doSetup();
+		FeatureStandaloneSetup.doSetup();
 		EPackage.Registry.INSTANCE.put(XAnnotationsPackage.eINSTANCE.getNsURI(),XAnnotationsPackage.eINSTANCE);
 		EPackage.Registry.INSTANCE.put(JnarioPackage.eNS_URI, JnarioPackage.eINSTANCE);
 		EPackage.Registry.INSTANCE.put(SuitePackage.eNS_URI, SuitePackage.eINSTANCE);

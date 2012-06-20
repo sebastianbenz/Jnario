@@ -6,6 +6,10 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
 package org.jnario.suite.validation;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.xtext.validation.ValidationMessageAcceptor;
  
 
 public class SuiteJavaValidator extends AbstractSuiteJavaValidator {
@@ -17,4 +21,12 @@ public class SuiteJavaValidator extends AbstractSuiteJavaValidator {
 //		}
 //	}
 
+	protected void warning(String message, EObject source, EStructuralFeature feature, String code, String... issueData) {
+		// avoids overriding the whole method
+		if("The use of wildcard imports is deprecated.".equals(message)){
+			return;
+		}
+		getMessageAcceptor().acceptWarning(message, source, feature, ValidationMessageAcceptor.INSIGNIFICANT_INDEX, code, issueData);
+	}
+	
 }

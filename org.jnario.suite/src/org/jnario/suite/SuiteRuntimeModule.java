@@ -10,21 +10,53 @@
  */
 package org.jnario.suite;
 
+import org.eclipse.xtend.core.featurecalls.XtendIdentifiableSimpleNameProvider;
+import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
+import org.eclipse.xtend.core.linking.XtendLinkingDiagnosticMessageProvider;
+import org.eclipse.xtend.core.resource.XtendResource;
+import org.eclipse.xtend.core.resource.XtendResourceDescriptionStrategy;
+import org.eclipse.xtend.core.scoping.XtendImportedNamespaceScopeProvider;
+import org.eclipse.xtend.core.scoping.XtendScopeProvider;
+import org.eclipse.xtend.core.validation.XtendEarlyExitValidator;
 import org.eclipse.xtext.conversion.IValueConverterService;
+import org.eclipse.xtext.generator.IFilePostProcessor;
+import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.generator.OutputConfigurationProvider;
+import org.eclipse.xtext.linking.ILinkingDiagnosticMessageProvider;
+import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.parser.IParser;
+import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
+import org.eclipse.xtext.resource.IResourceDescription.Manager;
+import org.eclipse.xtext.resource.XtextResource;
+import org.eclipse.xtext.scoping.IScopeProvider;
+import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
+import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
+import org.eclipse.xtext.xbase.compiler.output.TraceAwarePostProcessor;
+import org.eclipse.xtext.xbase.featurecalls.IdentifiableSimpleNameProvider;
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
+import org.eclipse.xtext.xbase.jvmmodel.JvmModelAssociator;
+import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
+import org.eclipse.xtext.xbase.validation.EarlyExitValidator;
 import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.DocOutputConfigurationProvider;
+import org.jnario.generator.JnarioJavaIoFileSystemAccess;
+import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
+import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.suite.conversion.SuiteValueConverterService;
 import org.jnario.suite.doc.SuiteDocGenerator;
 import org.jnario.suite.generator.SuiteGenerator;
+import org.jnario.suite.jvmmodel.SuiteJvmModelInferrer;
+import org.jnario.suite.naming.SuiteQualifiedNameProvider;
 import org.jnario.suite.parser.CustomSuiteParser;
+import org.jnario.suite.resource.SuiteResourceDescriptionManager;
 
 import com.google.inject.Binder;
+import com.google.inject.name.Names;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
+@SuppressWarnings("restriction")
 public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeModule {
 
 	@Override
@@ -51,6 +83,72 @@ public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeMod
 		return DocOutputConfigurationProvider.class;
 	}
 	
+	@Override
+	public Class<? extends Manager> bindIResourceDescription$Manager() {
+		return SuiteResourceDescriptionManager.class;
+	}
 	
+	public Class<? extends ILinkingDiagnosticMessageProvider> bindILinkingDiagnosticMessageProvider() {
+		return XtendLinkingDiagnosticMessageProvider.class;
+	}
+	
+	
+	public Class<? extends JvmTypesBuilder> bindJvmTypesBuilder(){
+		return ExtendedJvmTypesBuilder.class;
+	}
+	
+	public Class<? extends JvmModelGenerator> bindJvmModelGenerator(){
+		return ExtendedJvmModelGenerator.class;
+	}
+	
+	@Override
+	public java.lang.Class<? extends IScopeProvider> bindIScopeProvider() {
+		return XtendScopeProvider.class;
+	}
+
+	@Override
+	public Class<? extends XtextResource> bindXtextResource() {
+		return XtendResource.class;
+	}
+	
+	public void configureIScopeProviderDelegate(Binder binder) {
+		binder.bind(IScopeProvider.class).annotatedWith(Names.named(AbstractDeclarativeScopeProvider.NAMED_DELEGATE))
+		.to(XtendImportedNamespaceScopeProvider.class);
+	}
+
+	@Override
+	public Class<? extends IdentifiableSimpleNameProvider> bindIdentifiableSimpleNameProvider() {
+		return XtendIdentifiableSimpleNameProvider.class;
+	}
+
+	public Class <? extends IDefaultResourceDescriptionStrategy> bindIDefaultResourceDescriptionStrategy() {
+		return XtendResourceDescriptionStrategy.class;
+	}
+
+	public Class<? extends JvmModelAssociator> bindJvmModelAssociator() {
+		return IXtendJvmAssociations.Impl.class;
+	}
+
+	public Class<? extends EarlyExitValidator> bindEarlyExitValidator() {
+		return XtendEarlyExitValidator.class;
+	}
+	
+	public Class<? extends IFilePostProcessor> bindPostProcessor() {
+		return TraceAwarePostProcessor.class;
+	}
+	
+	public Class<? extends JavaIoFileSystemAccess> bindJavaIoFileSystemAccess() {
+		return JnarioJavaIoFileSystemAccess.class;
+	}
+	
+	public Class<? extends IJvmModelInferrer> bindIJvmModelInferrer() {
+		return SuiteJvmModelInferrer.class;
+	}
+	
+	@Override
+	public Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider() {
+		return SuiteQualifiedNameProvider.class;
+	}
+
 	
 }
