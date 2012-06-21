@@ -460,7 +460,7 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//terminal SUITE_NAME:
-	//	"#"+ !("-" | " " | "\t") !("-" | "#")*;
+	//	"#"+ !("-" | " " | "\t") ("\\" ("#" | "-") | !("-" | "#"))*;
 	public TerminalRule getSUITE_NAMERule() {
 		return (tSUITE_NAME != null) ? tSUITE_NAME : (tSUITE_NAME = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "SUITE_NAME"));
 	} 
@@ -472,7 +472,7 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//terminal TEXT:
-	//	":" !("-" | "#")+;
+	//	":" ("\\" ("#" | "-") | !("-" | "#"))*;
 	public TerminalRule getTEXTRule() {
 		return (tTEXT != null) ? tTEXT : (tTEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "TEXT"));
 	} 

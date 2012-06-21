@@ -1,5 +1,7 @@
 package org.jnario.suite.naming;
 
+import static org.jnario.util.Strings.lastIndexOfPrefix;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.naming.XtendQualifiedNameProvider;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
@@ -34,15 +36,6 @@ public class SuiteQualifiedNameProvider extends XtendQualifiedNameProvider {
 	}
 
 	private String trimPrefix(String lastSegment) {
-		int begin = 0;
-		for(int i = 0; i < lastSegment.length(); i++){
-			if(lastSegment.charAt(i) == '#'){
-				begin++;
-			}else{
-				break;
-			}
-		}
-		lastSegment = lastSegment.substring(begin);
-		return lastSegment;
+		return lastSegment.substring(lastIndexOfPrefix(lastSegment, '#'));
 	}
 }

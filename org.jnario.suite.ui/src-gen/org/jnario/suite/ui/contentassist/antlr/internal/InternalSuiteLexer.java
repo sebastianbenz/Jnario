@@ -1986,8 +1986,8 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_SUITE_NAME;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:25358:17: ( ( '#' )+ ~ ( ( '-' | ' ' | '\\t' ) ) (~ ( ( '-' | '#' ) ) )* )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:25358:19: ( '#' )+ ~ ( ( '-' | ' ' | '\\t' ) ) (~ ( ( '-' | '#' ) ) )*
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:25358:17: ( ( '#' )+ ~ ( ( '-' | ' ' | '\\t' ) ) ( '\\\\' ( '#' | '-' ) | ~ ( ( '-' | '#' ) ) )* )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:25358:19: ( '#' )+ ~ ( ( '-' | ' ' | '\\t' ) ) ( '\\\\' ( '#' | '-' ) | ~ ( ( '-' | '#' ) ) )*
             {
             // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:25358:19: ( '#' )+
             int cnt1=0;
@@ -1999,7 +1999,10 @@ public class InternalSuiteLexer extends Lexer {
                 if ( (LA1_0=='#') ) {
                     int LA1_1 = input.LA(2);
 
-                    if ( ((LA1_1>='\u0000' && LA1_1<='\b')||(LA1_1>='\n' && LA1_1<='\u001F')||(LA1_1>='!' && LA1_1<=',')||(LA1_1>='.' && LA1_1<='\uFFFF')) ) {
+                    if ( (LA1_1=='\\') ) {
+                        alt1=1;
+                    }
+                    else if ( ((LA1_1>='\u0000' && LA1_1<='\b')||(LA1_1>='\n' && LA1_1<='\u001F')||(LA1_1>='!' && LA1_1<=',')||(LA1_1>='.' && LA1_1<='[')||(LA1_1>=']' && LA1_1<='\uFFFF')) ) {
                         alt1=1;
                     }
 
@@ -2034,20 +2037,48 @@ public class InternalSuiteLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:25358:42: (~ ( ( '-' | '#' ) ) )*
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:25358:42: ( '\\\\' ( '#' | '-' ) | ~ ( ( '-' | '#' ) ) )*
             loop2:
             do {
-                int alt2=2;
+                int alt2=3;
                 int LA2_0 = input.LA(1);
 
-                if ( ((LA2_0>='\u0000' && LA2_0<='\"')||(LA2_0>='$' && LA2_0<=',')||(LA2_0>='.' && LA2_0<='\uFFFF')) ) {
-                    alt2=1;
+                if ( (LA2_0=='\\') ) {
+                    int LA2_2 = input.LA(2);
+
+                    if ( (LA2_2=='#'||LA2_2=='-') ) {
+                        alt2=1;
+                    }
+
+                    else {
+                        alt2=2;
+                    }
+
+                }
+                else if ( ((LA2_0>='\u0000' && LA2_0<='\"')||(LA2_0>='$' && LA2_0<=',')||(LA2_0>='.' && LA2_0<='[')||(LA2_0>=']' && LA2_0<='\uFFFF')) ) {
+                    alt2=2;
                 }
 
 
                 switch (alt2) {
             	case 1 :
-            	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:25358:42: ~ ( ( '-' | '#' ) )
+            	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:25358:43: '\\\\' ( '#' | '-' )
+            	    {
+            	    match('\\'); 
+            	    if ( input.LA(1)=='#'||input.LA(1)=='-' ) {
+            	        input.consume();
+
+            	    }
+            	    else {
+            	        MismatchedSetException mse = new MismatchedSetException(null,input);
+            	        recover(mse);
+            	        throw mse;}
+
+
+            	    }
+            	    break;
+            	case 2 :
+            	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:25358:58: ~ ( ( '-' | '#' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\"')||(input.LA(1)>='$' && input.LA(1)<=',')||(input.LA(1)>='.' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -2155,25 +2186,52 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_TEXT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:25362:11: ( ':' (~ ( ( '-' | '#' ) ) )+ )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:25362:13: ':' (~ ( ( '-' | '#' ) ) )+
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:25362:11: ( ':' ( '\\\\' ( '#' | '-' ) | ~ ( ( '-' | '#' ) ) )* )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:25362:13: ':' ( '\\\\' ( '#' | '-' ) | ~ ( ( '-' | '#' ) ) )*
             {
             match(':'); 
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:25362:17: (~ ( ( '-' | '#' ) ) )+
-            int cnt5=0;
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:25362:17: ( '\\\\' ( '#' | '-' ) | ~ ( ( '-' | '#' ) ) )*
             loop5:
             do {
-                int alt5=2;
+                int alt5=3;
                 int LA5_0 = input.LA(1);
 
-                if ( ((LA5_0>='\u0000' && LA5_0<='\"')||(LA5_0>='$' && LA5_0<=',')||(LA5_0>='.' && LA5_0<='\uFFFF')) ) {
-                    alt5=1;
+                if ( (LA5_0=='\\') ) {
+                    int LA5_2 = input.LA(2);
+
+                    if ( (LA5_2=='#'||LA5_2=='-') ) {
+                        alt5=1;
+                    }
+
+                    else {
+                        alt5=2;
+                    }
+
+                }
+                else if ( ((LA5_0>='\u0000' && LA5_0<='\"')||(LA5_0>='$' && LA5_0<=',')||(LA5_0>='.' && LA5_0<='[')||(LA5_0>=']' && LA5_0<='\uFFFF')) ) {
+                    alt5=2;
                 }
 
 
                 switch (alt5) {
             	case 1 :
-            	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:25362:17: ~ ( ( '-' | '#' ) )
+            	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:25362:18: '\\\\' ( '#' | '-' )
+            	    {
+            	    match('\\'); 
+            	    if ( input.LA(1)=='#'||input.LA(1)=='-' ) {
+            	        input.consume();
+
+            	    }
+            	    else {
+            	        MismatchedSetException mse = new MismatchedSetException(null,input);
+            	        recover(mse);
+            	        throw mse;}
+
+
+            	    }
+            	    break;
+            	case 2 :
+            	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:25362:33: ~ ( ( '-' | '#' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\"')||(input.LA(1)>='$' && input.LA(1)<=',')||(input.LA(1)>='.' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -2189,12 +2247,8 @@ public class InternalSuiteLexer extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt5 >= 1 ) break loop5;
-                        EarlyExitException eee =
-                            new EarlyExitException(5, input);
-                        throw eee;
+            	    break loop5;
                 }
-                cnt5++;
             } while (true);
 
 
@@ -4760,23 +4814,23 @@ public class InternalSuiteLexer extends Lexer {
     static final String DFA52_eotS =
         "\1\uffff\1\72\1\74\1\76\1\100\3\102\1\112\1\114\1\117\1\121\1\123"+
         "\1\126\1\131\1\134\1\uffff\3\102\1\uffff\1\102\3\uffff\1\102\2\uffff"+
-        "\2\102\1\170\6\102\1\uffff\1\102\2\uffff\3\102\3\67\1\uffff\1\67"+
-        "\1\u008d\1\67\2\u0094\1\67\13\uffff\1\102\1\uffff\1\102\1\u009a"+
+        "\2\102\1\171\6\102\1\uffff\1\102\2\uffff\3\102\3\67\1\uffff\1\67"+
+        "\1\u008f\1\67\2\u0094\1\67\13\uffff\1\102\1\uffff\1\102\1\u009a"+
         "\4\102\4\uffff\1\u00a1\4\uffff\1\u00a3\13\uffff\11\102\1\uffff\2"+
         "\102\1\u00b0\3\uffff\2\102\2\uffff\5\102\1\u00b9\2\uffff\6\102\1"+
-        "\u00c0\1\uffff\1\u00c1\1\102\2\uffff\3\102\2\uffff\1\u008c\2\uffff"+
-        "\2\u008d\1\uffff\1\u00cc\1\uffff\1\u0094\3\uffff\1\u00cd\1\u00ce"+
+        "\u00c0\1\uffff\1\u00c1\1\102\2\uffff\3\102\2\uffff\1\u008c\1\uffff"+
+        "\2\u008f\2\uffff\1\u00cc\1\uffff\1\u0094\3\uffff\1\u00cd\1\u00ce"+
         "\1\u00d0\1\uffff\5\102\4\uffff\4\102\1\u00da\7\102\1\uffff\4\102"+
         "\1\u00e7\1\102\1\u00e9\1\102\1\uffff\1\u00eb\5\102\2\uffff\4\102"+
-        "\1\u00f8\2\u008d\1\u00cc\1\uffff\1\u00fd\3\uffff\1\102\1\uffff\3"+
+        "\1\u00f9\2\u008f\1\u00cc\1\uffff\1\u00fd\3\uffff\1\102\1\uffff\3"+
         "\102\1\u0102\5\102\1\uffff\11\102\1\u0111\2\102\1\uffff\1\u0114"+
-        "\1\uffff\1\u0115\1\uffff\2\102\1\u0119\7\102\2\u00f8\2\uffff\1\u008d"+
+        "\1\uffff\1\u0115\1\uffff\2\102\1\u0119\7\102\2\u00f9\2\uffff\1\u008f"+
         "\2\u00fd\1\uffff\3\102\1\u0128\1\uffff\1\u0129\1\u012a\2\102\1\u012d"+
         "\11\102\1\uffff\1\u0139\1\102\2\uffff\1\102\1\u013c\1\102\1\uffff"+
-        "\2\102\1\u0140\1\102\1\u0142\2\102\2\u00f8\2\u00fd\2\102\1\u0149"+
+        "\2\102\1\u0140\1\102\1\u0142\2\102\2\u00f9\2\u00fd\2\102\1\u0149"+
         "\3\uffff\1\u014a\1\u014b\1\uffff\1\102\1\u014d\3\102\1\u0151\4\102"+
         "\1\u0156\1\uffff\1\u0157\1\u0158\1\uffff\1\u0159\1\u015a\1\102\1"+
-        "\uffff\1\102\1\uffff\1\u015d\1\102\1\u00f8\1\u00fd\1\u015f\1\102"+
+        "\uffff\1\102\1\uffff\1\u015d\1\102\1\u00f9\1\u00fd\1\u015f\1\102"+
         "\3\uffff\1\u0161\1\uffff\1\102\1\u0163\1\u0164\1\uffff\2\102\1\u0167"+
         "\1\102\5\uffff\2\102\1\uffff\1\102\1\uffff\1\u016c\1\uffff\1\102"+
         "\2\uffff\2\102\1\uffff\2\102\1\u0172\1\u0173\1\uffff\1\u0174\2\102"+
@@ -4792,8 +4846,8 @@ public class InternalSuiteLexer extends Lexer {
         "\1\160\1\151\1\141\1\154\1\162\1\156\1\142\1\151\1\143\1\uffff\1"+
         "\160\1\163\1\44\3\uffff\1\164\1\163\2\uffff\1\162\1\160\1\165\1"+
         "\167\1\154\1\0\2\uffff\1\122\1\104\1\123\1\106\1\120\1\124\1\44"+
-        "\1\uffff\1\44\1\163\2\uffff\1\151\1\164\1\145\2\uffff\1\47\2\uffff"+
-        "\2\0\1\uffff\1\0\1\uffff\1\60\3\uffff\3\44\1\uffff\1\160\1\141\1"+
+        "\1\uffff\1\44\1\163\2\uffff\1\151\1\164\1\145\2\uffff\1\47\1\uffff"+
+        "\2\0\2\uffff\1\0\1\uffff\1\60\3\uffff\3\44\1\uffff\1\160\1\141\1"+
         "\163\1\145\1\143\4\uffff\1\145\2\164\1\163\1\44\1\141\1\154\1\164"+
         "\1\166\1\153\1\154\1\164\1\uffff\2\145\1\157\1\145\1\44\1\145\1"+
         "\44\1\154\1\uffff\1\44\1\106\1\105\1\117\1\101\1\105\2\uffff\1\164"+
@@ -4821,8 +4875,8 @@ public class InternalSuiteLexer extends Lexer {
         "\1\151\1\141\1\154\1\162\1\156\1\142\1\157\1\143\1\uffff\1\160\1"+
         "\163\1\172\3\uffff\1\164\1\163\2\uffff\1\162\1\160\1\171\1\167\1"+
         "\154\1\uffff\2\uffff\1\122\1\104\1\123\1\106\1\120\1\124\1\172\1"+
-        "\uffff\1\172\1\163\2\uffff\1\151\1\164\1\145\2\uffff\1\47\2\uffff"+
-        "\2\uffff\1\uffff\1\uffff\1\uffff\1\154\3\uffff\3\172\1\uffff\1\160"+
+        "\uffff\1\172\1\163\2\uffff\1\151\1\164\1\145\2\uffff\1\47\1\uffff"+
+        "\2\uffff\2\uffff\1\uffff\1\uffff\1\154\3\uffff\3\172\1\uffff\1\160"+
         "\1\141\1\163\1\145\1\143\4\uffff\1\145\2\164\1\163\1\172\1\141\1"+
         "\154\1\164\1\166\1\153\1\157\1\164\1\uffff\2\145\1\157\1\145\1\172"+
         "\1\145\1\172\1\154\1\uffff\1\172\1\111\1\105\1\117\1\101\1\105\2"+
@@ -4847,13 +4901,13 @@ public class InternalSuiteLexer extends Lexer {
         "\1\153\1\10\1\20\1\1\1\2\1\24\1\3\1\130\1\4\1\117\1\uffff\1\135"+
         "\6\uffff\1\11\1\32\1\12\1\14\1\uffff\1\21\1\15\1\16\1\25\1\uffff"+
         "\1\33\1\22\1\126\1\116\1\27\1\127\1\26\1\150\1\151\1\30\1\31\11"+
-        "\uffff\1\43\3\uffff\1\46\1\47\1\50\2\uffff\1\53\1\54\6\uffff\1\57"+
-        "\1\134\7\uffff\1\71\2\uffff\1\74\1\75\3\uffff\1\132\1\133\1\uffff"+
-        "\1\147\1\140\2\uffff\1\141\1\uffff\1\144\1\uffff\1\145\1\146\1\152"+
+        "\uffff\1\43\3\uffff\1\46\1\47\1\50\2\uffff\1\53\1\54\6\uffff\1\134"+
+        "\1\57\7\uffff\1\71\2\uffff\1\74\1\75\3\uffff\1\132\1\133\1\uffff"+
+        "\1\147\2\uffff\1\140\1\141\1\uffff\1\144\1\uffff\1\145\1\146\1\152"+
         "\3\uffff\1\105\5\uffff\1\23\1\13\1\125\1\17\14\uffff\1\76\10\uffff"+
         "\1\106\6\uffff\1\65\1\73\12\uffff\1\142\1\5\1\34\1\uffff\1\6\11"+
         "\uffff\1\103\14\uffff\1\113\1\uffff\1\56\1\uffff\1\60\14\uffff\1"+
-        "\136\1\137\3\uffff\1\143\4\uffff\1\102\16\uffff\1\77\2\uffff\1\131"+
+        "\137\1\136\3\uffff\1\143\4\uffff\1\102\16\uffff\1\77\2\uffff\1\131"+
         "\1\107\3\uffff\1\67\16\uffff\1\45\1\115\1\35\2\uffff\1\36\13\uffff"+
         "\1\111\2\uffff\1\66\3\uffff\1\64\1\uffff\1\104\6\uffff\1\7\1\100"+
         "\1\122\1\uffff\1\37\3\uffff\1\44\4\uffff\1\55\1\110\1\61\1\70\1"+
@@ -4861,10 +4915,10 @@ public class InternalSuiteLexer extends Lexer {
         "\2\uffff\1\51\4\uffff\1\124\5\uffff\1\120\1\123\1\40\2\uffff\1\121"+
         "\1\63\1\52\1\72";
     static final String DFA52_specialS =
-        "\1\21\35\uffff\1\26\15\uffff\1\4\1\10\2\uffff\1\22\1\20\3\uffff"+
-        "\1\17\101\uffff\1\11\26\uffff\1\31\1\6\1\uffff\1\0\64\uffff\1\23"+
-        "\1\27\1\3\1\15\1\uffff\1\30\52\uffff\1\32\1\12\2\uffff\1\2\1\13"+
-        "\1\14\44\uffff\1\25\1\5\1\24\1\16\40\uffff\1\7\1\1\64\uffff}>";
+        "\1\22\35\uffff\1\13\15\uffff\1\0\1\24\2\uffff\1\17\1\12\3\uffff"+
+        "\1\30\101\uffff\1\1\25\uffff\1\32\1\5\2\uffff\1\14\64\uffff\1\25"+
+        "\1\27\1\3\1\10\1\uffff\1\26\52\uffff\1\16\1\21\2\uffff\1\7\1\31"+
+        "\1\20\44\uffff\1\4\1\23\1\6\1\15\40\uffff\1\2\1\11\64\uffff}>";
     static final String[] DFA52_transitionS = {
             "\11\67\2\66\2\67\1\66\22\67\1\66\1\10\1\65\1\54\1\57\1\20\1"+
             "\4\1\60\1\33\1\32\1\16\1\2\1\30\1\13\1\14\1\17\1\63\11\64\1"+
@@ -4902,7 +4956,7 @@ public class InternalSuiteLexer extends Lexer {
             "",
             "\1\162\11\uffff\1\164\6\uffff\1\163",
             "\1\165\17\uffff\1\166",
-            "\43\171\1\uffff\11\171\1\uffff\14\171\1\167\uffc5\171",
+            "\43\170\1\uffff\11\170\1\uffff\14\170\1\167\uffc5\170",
             "\1\172",
             "\1\174\1\uffff\1\173",
             "\1\175",
@@ -4921,7 +4975,7 @@ public class InternalSuiteLexer extends Lexer {
             "\1\102\34\uffff\32\102\4\uffff\1\102\1\uffff\32\102",
             "",
             "\47\u008c\1\u008b\uffd8\u008c",
-            "\47\u008f\1\u008e\u008c\u008f\1\u0090\uff4b\u008f",
+            "\47\u008e\1\u008d\u008c\u008e\1\u0090\uff4b\u008e",
             "\1\u0091",
             "\12\u0093\10\uffff\1\u0095\1\uffff\3\u0095\5\uffff\1\u0095"+
             "\13\uffff\1\u0092\6\uffff\1\u0093\2\uffff\1\u0095\1\uffff\3"+
@@ -4997,7 +5051,7 @@ public class InternalSuiteLexer extends Lexer {
             "\1\u00b6\3\uffff\1\u00b5",
             "\1\u00b7",
             "\1\u00b8",
-            "\43\171\1\uffff\11\171\1\uffff\uffd2\171",
+            "\43\170\1\uffff\11\170\1\uffff\uffd2\170",
             "",
             "",
             "\1\u00ba",
@@ -5021,9 +5075,9 @@ public class InternalSuiteLexer extends Lexer {
             "",
             "\1\u00c6",
             "",
-            "",
             "\47\u00c8\1\u00c7\u008c\u00c8\1\u0090\uff4b\u00c8",
-            "\47\u008f\1\u008e\u008c\u008f\1\u0090\uff4b\u008f",
+            "\47\u008e\1\u008d\u008c\u008e\1\u0090\uff4b\u008e",
+            "",
             "",
             "\12\u00c9\1\u00cb\2\u00c9\1\u00ca\ufff2\u00c9",
             "",
@@ -5087,9 +5141,9 @@ public class InternalSuiteLexer extends Lexer {
             "\1\u00f3",
             "\1\u00f4",
             "\1\u00f5",
-            "\47\u00f7\1\u00f6\u008c\u00f7\1\u00f9\uff4b\u00f7",
+            "\47\u00f7\1\u00f6\u008c\u00f7\1\u00f8\uff4b\u00f7",
             "\47\u00fa\1\uffff\u008c\u00fa\1\u0090\uff4b\u00fa",
-            "\47\u008f\1\u008e\u008c\u008f\1\u0090\uff4b\u008f",
+            "\47\u008e\1\u008d\u008c\u008e\1\u0090\uff4b\u008e",
             "\12\u00c9\1\u00cb\2\u00c9\1\u00ca\ufff2\u00c9",
             "\1\u00cb",
             "\47\u00fc\1\u00fb\u008c\u00fc\1\u00cc\uff4b\u00fc",
@@ -5140,11 +5194,11 @@ public class InternalSuiteLexer extends Lexer {
             "\1\u011e",
             "\1\u011f",
             "\1\u0120",
-            "\47\u0122\1\u0121\u008c\u0122\1\u00f9\uff4b\u0122",
-            "\47\u00f7\1\u00f6\u008c\u00f7\1\u00f9\uff4b\u00f7",
+            "\47\u0122\1\u0121\u008c\u0122\1\u00f8\uff4b\u0122",
+            "\47\u00f7\1\u00f6\u008c\u00f7\1\u00f8\uff4b\u00f7",
             "",
             "",
-            "\47\u008f\1\u008e\u008c\u008f\1\u0090\uff4b\u008f",
+            "\47\u008e\1\u008d\u008c\u008e\1\u0090\uff4b\u008e",
             "\47\u0124\1\u0123\u008c\u0124\1\u00cc\uff4b\u0124",
             "\47\u00fc\1\u00fb\u008c\u00fc\1\u00cc\uff4b\u00fc",
             "",
@@ -5191,8 +5245,8 @@ public class InternalSuiteLexer extends Lexer {
             "\32\102",
             "\1\u0143",
             "\1\u0144",
-            "\47\u0145\1\uffff\u008c\u0145\1\u00f9\uff4b\u0145",
-            "\47\u00f7\1\u00f6\u008c\u00f7\1\u00f9\uff4b\u00f7",
+            "\47\u0145\1\uffff\u008c\u0145\1\u00f8\uff4b\u0145",
+            "\47\u00f7\1\u00f6\u008c\u00f7\1\u00f8\uff4b\u00f7",
             "\47\u0146\1\uffff\u008c\u0146\1\u00cc\uff4b\u0146",
             "\47\u00fc\1\u00fb\u008c\u00fc\1\u00cc\uff4b\u00fc",
             "\1\u0147",
@@ -5238,7 +5292,7 @@ public class InternalSuiteLexer extends Lexer {
             "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
             "\32\102",
             "\1\u015e",
-            "\47\u00f7\1\u00f6\u008c\u00f7\1\u00f9\uff4b\u00f7",
+            "\47\u00f7\1\u00f6\u008c\u00f7\1\u00f8\uff4b\u00f7",
             "\47\u00fc\1\u00fb\u008c\u00fc\1\u00cc\uff4b\u00fc",
             "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
             "\32\102",
@@ -5344,62 +5398,6 @@ public class InternalSuiteLexer extends Lexer {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA52_145 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA52_145>='\u0000' && LA52_145<='\t')||(LA52_145>='\u000B' && LA52_145<='\f')||(LA52_145>='\u000E' && LA52_145<='\uFFFF')) ) {s = 201;}
-
-                        else if ( (LA52_145=='\r') ) {s = 202;}
-
-                        else if ( (LA52_145=='\n') ) {s = 203;}
-
-                        else s = 204;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
-                        int LA52_326 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA52_326=='\'') ) {s = 251;}
-
-                        else if ( (LA52_326=='\u00B4') ) {s = 204;}
-
-                        else if ( ((LA52_326>='\u0000' && LA52_326<='&')||(LA52_326>='(' && LA52_326<='\u00B3')||(LA52_326>='\u00B5' && LA52_326<='\uFFFF')) ) {s = 252;}
-
-                        else s = 253;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
-                        int LA52_250 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA52_250=='\'') ) {s = 142;}
-
-                        else if ( ((LA52_250>='\u0000' && LA52_250<='&')||(LA52_250>='(' && LA52_250<='\u00B3')||(LA52_250>='\u00B5' && LA52_250<='\uFFFF')) ) {s = 143;}
-
-                        else if ( (LA52_250=='\u00B4') ) {s = 144;}
-
-                        else s = 141;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 3 : 
-                        int LA52_200 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA52_200=='\'') ) {s = 142;}
-
-                        else if ( (LA52_200=='\u00B4') ) {s = 144;}
-
-                        else if ( ((LA52_200>='\u0000' && LA52_200<='&')||(LA52_200>='(' && LA52_200<='\u00B3')||(LA52_200>='\u00B5' && LA52_200<='\uFFFF')) ) {s = 143;}
-
-                        else s = 141;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 4 : 
                         int LA52_44 = input.LA(1);
 
                         s = -1;
@@ -5409,35 +5407,17 @@ public class InternalSuiteLexer extends Lexer {
 
                         if ( s>=0 ) return s;
                         break;
-                    case 5 : 
-                        int LA52_290 = input.LA(1);
+                    case 1 : 
+                        int LA52_119 = input.LA(1);
 
                         s = -1;
-                        if ( (LA52_290=='\'') ) {s = 246;}
+                        if ( ((LA52_119>='\u0000' && LA52_119<='\"')||(LA52_119>='$' && LA52_119<=',')||(LA52_119>='.' && LA52_119<='\uFFFF')) ) {s = 120;}
 
-                        else if ( ((LA52_290>='\u0000' && LA52_290<='&')||(LA52_290>='(' && LA52_290<='\u00B3')||(LA52_290>='\u00B5' && LA52_290<='\uFFFF')) ) {s = 247;}
-
-                        else if ( (LA52_290=='\u00B4') ) {s = 249;}
-
-                        else s = 248;
+                        else s = 185;
 
                         if ( s>=0 ) return s;
                         break;
-                    case 6 : 
-                        int LA52_143 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA52_143=='\'') ) {s = 142;}
-
-                        else if ( ((LA52_143>='\u0000' && LA52_143<='&')||(LA52_143>='(' && LA52_143<='\u00B3')||(LA52_143>='\u00B5' && LA52_143<='\uFFFF')) ) {s = 143;}
-
-                        else if ( (LA52_143=='\u00B4') ) {s = 144;}
-
-                        else s = 141;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 7 : 
+                    case 2 : 
                         int LA52_325 = input.LA(1);
 
                         s = -1;
@@ -5445,75 +5425,79 @@ public class InternalSuiteLexer extends Lexer {
 
                         else if ( ((LA52_325>='\u0000' && LA52_325<='&')||(LA52_325>='(' && LA52_325<='\u00B3')||(LA52_325>='\u00B5' && LA52_325<='\uFFFF')) ) {s = 247;}
 
-                        else if ( (LA52_325=='\u00B4') ) {s = 249;}
+                        else if ( (LA52_325=='\u00B4') ) {s = 248;}
 
-                        else s = 248;
+                        else s = 249;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 3 : 
+                        int LA52_200 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA52_200=='\'') ) {s = 141;}
+
+                        else if ( (LA52_200=='\u00B4') ) {s = 144;}
+
+                        else if ( ((LA52_200>='\u0000' && LA52_200<='&')||(LA52_200>='(' && LA52_200<='\u00B3')||(LA52_200>='\u00B5' && LA52_200<='\uFFFF')) ) {s = 142;}
+
+                        else s = 143;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 4 : 
+                        int LA52_289 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA52_289>='\u0000' && LA52_289<='&')||(LA52_289>='(' && LA52_289<='\u00B3')||(LA52_289>='\u00B5' && LA52_289<='\uFFFF')) ) {s = 325;}
+
+                        else if ( (LA52_289=='\u00B4') ) {s = 248;}
+
+                        else s = 249;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 5 : 
+                        int LA52_142 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA52_142=='\'') ) {s = 141;}
+
+                        else if ( ((LA52_142>='\u0000' && LA52_142<='&')||(LA52_142>='(' && LA52_142<='\u00B3')||(LA52_142>='\u00B5' && LA52_142<='\uFFFF')) ) {s = 142;}
+
+                        else if ( (LA52_142=='\u00B4') ) {s = 144;}
+
+                        else s = 143;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 6 : 
+                        int LA52_291 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA52_291>='\u0000' && LA52_291<='&')||(LA52_291>='(' && LA52_291<='\u00B3')||(LA52_291>='\u00B5' && LA52_291<='\uFFFF')) ) {s = 326;}
+
+                        else if ( (LA52_291=='\u00B4') ) {s = 204;}
+
+                        else s = 253;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 7 : 
+                        int LA52_250 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA52_250=='\'') ) {s = 141;}
+
+                        else if ( ((LA52_250>='\u0000' && LA52_250<='&')||(LA52_250>='(' && LA52_250<='\u00B3')||(LA52_250>='\u00B5' && LA52_250<='\uFFFF')) ) {s = 142;}
+
+                        else if ( (LA52_250=='\u00B4') ) {s = 144;}
+
+                        else s = 143;
 
                         if ( s>=0 ) return s;
                         break;
                     case 8 : 
-                        int LA52_45 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA52_45>='\u0000' && LA52_45<='\uFFFF')) ) {s = 138;}
-
-                        else s = 55;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 9 : 
-                        int LA52_119 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA52_119>='\u0000' && LA52_119<='\"')||(LA52_119>='$' && LA52_119<=',')||(LA52_119>='.' && LA52_119<='\uFFFF')) ) {s = 121;}
-
-                        else s = 185;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 10 : 
-                        int LA52_247 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA52_247=='\'') ) {s = 246;}
-
-                        else if ( (LA52_247=='\u00B4') ) {s = 249;}
-
-                        else if ( ((LA52_247>='\u0000' && LA52_247<='&')||(LA52_247>='(' && LA52_247<='\u00B3')||(LA52_247>='\u00B5' && LA52_247<='\uFFFF')) ) {s = 247;}
-
-                        else s = 248;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 11 : 
-                        int LA52_251 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA52_251=='\'') ) {s = 291;}
-
-                        else if ( ((LA52_251>='\u0000' && LA52_251<='&')||(LA52_251>='(' && LA52_251<='\u00B3')||(LA52_251>='\u00B5' && LA52_251<='\uFFFF')) ) {s = 292;}
-
-                        else if ( (LA52_251=='\u00B4') ) {s = 204;}
-
-                        else s = 253;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 12 : 
-                        int LA52_252 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA52_252=='\'') ) {s = 251;}
-
-                        else if ( ((LA52_252>='\u0000' && LA52_252<='&')||(LA52_252>='(' && LA52_252<='\u00B3')||(LA52_252>='\u00B5' && LA52_252<='\uFFFF')) ) {s = 252;}
-
-                        else if ( (LA52_252=='\u00B4') ) {s = 204;}
-
-                        else s = 253;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 13 : 
                         int LA52_201 = input.LA(1);
 
                         s = -1;
@@ -5527,7 +5511,61 @@ public class InternalSuiteLexer extends Lexer {
 
                         if ( s>=0 ) return s;
                         break;
-                    case 14 : 
+                    case 9 : 
+                        int LA52_326 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA52_326=='\'') ) {s = 251;}
+
+                        else if ( ((LA52_326>='\u0000' && LA52_326<='&')||(LA52_326>='(' && LA52_326<='\u00B3')||(LA52_326>='\u00B5' && LA52_326<='\uFFFF')) ) {s = 252;}
+
+                        else if ( (LA52_326=='\u00B4') ) {s = 204;}
+
+                        else s = 253;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 10 : 
+                        int LA52_49 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA52_49=='\'') ) {s = 141;}
+
+                        else if ( ((LA52_49>='\u0000' && LA52_49<='&')||(LA52_49>='(' && LA52_49<='\u00B3')||(LA52_49>='\u00B5' && LA52_49<='\uFFFF')) ) {s = 142;}
+
+                        else if ( (LA52_49=='\u00B4') ) {s = 144;}
+
+                        else s = 143;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 11 : 
+                        int LA52_30 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA52_30==':') ) {s = 119;}
+
+                        else if ( ((LA52_30>='\u0000' && LA52_30<='\"')||(LA52_30>='$' && LA52_30<=',')||(LA52_30>='.' && LA52_30<='9')||(LA52_30>=';' && LA52_30<='\uFFFF')) ) {s = 120;}
+
+                        else s = 121;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 12 : 
+                        int LA52_145 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA52_145>='\u0000' && LA52_145<='\t')||(LA52_145>='\u000B' && LA52_145<='\f')||(LA52_145>='\u000E' && LA52_145<='\uFFFF')) ) {s = 201;}
+
+                        else if ( (LA52_145=='\r') ) {s = 202;}
+
+                        else if ( (LA52_145=='\n') ) {s = 203;}
+
+                        else s = 204;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 13 : 
                         int LA52_292 = input.LA(1);
 
                         s = -1;
@@ -5541,31 +5579,61 @@ public class InternalSuiteLexer extends Lexer {
 
                         if ( s>=0 ) return s;
                         break;
-                    case 15 : 
-                        int LA52_53 = input.LA(1);
+                    case 14 : 
+                        int LA52_246 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA52_53>='\u0000' && LA52_53<='\uFFFF')) ) {s = 140;}
+                        if ( (LA52_246=='\'') ) {s = 289;}
+
+                        else if ( ((LA52_246>='\u0000' && LA52_246<='&')||(LA52_246>='(' && LA52_246<='\u00B3')||(LA52_246>='\u00B5' && LA52_246<='\uFFFF')) ) {s = 290;}
+
+                        else if ( (LA52_246=='\u00B4') ) {s = 248;}
+
+                        else s = 249;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 15 : 
+                        int LA52_48 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA52_48=='\'') ) {s = 139;}
+
+                        else if ( ((LA52_48>='\u0000' && LA52_48<='&')||(LA52_48>='(' && LA52_48<='\uFFFF')) ) {s = 140;}
 
                         else s = 55;
 
                         if ( s>=0 ) return s;
                         break;
                     case 16 : 
-                        int LA52_49 = input.LA(1);
+                        int LA52_252 = input.LA(1);
 
                         s = -1;
-                        if ( (LA52_49=='\'') ) {s = 142;}
+                        if ( (LA52_252=='\'') ) {s = 251;}
 
-                        else if ( ((LA52_49>='\u0000' && LA52_49<='&')||(LA52_49>='(' && LA52_49<='\u00B3')||(LA52_49>='\u00B5' && LA52_49<='\uFFFF')) ) {s = 143;}
+                        else if ( (LA52_252=='\u00B4') ) {s = 204;}
 
-                        else if ( (LA52_49=='\u00B4') ) {s = 144;}
+                        else if ( ((LA52_252>='\u0000' && LA52_252<='&')||(LA52_252>='(' && LA52_252<='\u00B3')||(LA52_252>='\u00B5' && LA52_252<='\uFFFF')) ) {s = 252;}
 
-                        else s = 141;
+                        else s = 253;
 
                         if ( s>=0 ) return s;
                         break;
                     case 17 : 
+                        int LA52_247 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA52_247=='\'') ) {s = 246;}
+
+                        else if ( (LA52_247=='\u00B4') ) {s = 248;}
+
+                        else if ( ((LA52_247>='\u0000' && LA52_247<='&')||(LA52_247>='(' && LA52_247<='\u00B3')||(LA52_247>='\u00B5' && LA52_247<='\uFFFF')) ) {s = 247;}
+
+                        else s = 249;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 18 : 
                         int LA52_0 = input.LA(1);
 
                         s = -1;
@@ -5681,19 +5749,31 @@ public class InternalSuiteLexer extends Lexer {
 
                         if ( s>=0 ) return s;
                         break;
-                    case 18 : 
-                        int LA52_48 = input.LA(1);
+                    case 19 : 
+                        int LA52_290 = input.LA(1);
 
                         s = -1;
-                        if ( (LA52_48=='\'') ) {s = 139;}
+                        if ( (LA52_290=='\'') ) {s = 246;}
 
-                        else if ( ((LA52_48>='\u0000' && LA52_48<='&')||(LA52_48>='(' && LA52_48<='\uFFFF')) ) {s = 140;}
+                        else if ( (LA52_290=='\u00B4') ) {s = 248;}
+
+                        else if ( ((LA52_290>='\u0000' && LA52_290<='&')||(LA52_290>='(' && LA52_290<='\u00B3')||(LA52_290>='\u00B5' && LA52_290<='\uFFFF')) ) {s = 247;}
+
+                        else s = 249;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 20 : 
+                        int LA52_45 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA52_45>='\u0000' && LA52_45<='\uFFFF')) ) {s = 138;}
 
                         else s = 55;
 
                         if ( s>=0 ) return s;
                         break;
-                    case 19 : 
+                    case 21 : 
                         int LA52_198 = input.LA(1);
 
                         s = -1;
@@ -5701,61 +5781,13 @@ public class InternalSuiteLexer extends Lexer {
 
                         else if ( ((LA52_198>='\u0000' && LA52_198<='&')||(LA52_198>='(' && LA52_198<='\u00B3')||(LA52_198>='\u00B5' && LA52_198<='\uFFFF')) ) {s = 247;}
 
-                        else if ( (LA52_198=='\u00B4') ) {s = 249;}
+                        else if ( (LA52_198=='\u00B4') ) {s = 248;}
 
-                        else s = 248;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 20 : 
-                        int LA52_291 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA52_291>='\u0000' && LA52_291<='&')||(LA52_291>='(' && LA52_291<='\u00B3')||(LA52_291>='\u00B5' && LA52_291<='\uFFFF')) ) {s = 326;}
-
-                        else if ( (LA52_291=='\u00B4') ) {s = 204;}
-
-                        else s = 253;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 21 : 
-                        int LA52_289 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA52_289>='\u0000' && LA52_289<='&')||(LA52_289>='(' && LA52_289<='\u00B3')||(LA52_289>='\u00B5' && LA52_289<='\uFFFF')) ) {s = 325;}
-
-                        else if ( (LA52_289=='\u00B4') ) {s = 249;}
-
-                        else s = 248;
+                        else s = 249;
 
                         if ( s>=0 ) return s;
                         break;
                     case 22 : 
-                        int LA52_30 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA52_30==':') ) {s = 119;}
-
-                        else if ( ((LA52_30>='\u0000' && LA52_30<='\"')||(LA52_30>='$' && LA52_30<=',')||(LA52_30>='.' && LA52_30<='9')||(LA52_30>=';' && LA52_30<='\uFFFF')) ) {s = 121;}
-
-                        else s = 120;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 23 : 
-                        int LA52_199 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA52_199>='\u0000' && LA52_199<='&')||(LA52_199>='(' && LA52_199<='\u00B3')||(LA52_199>='\u00B5' && LA52_199<='\uFFFF')) ) {s = 250;}
-
-                        else if ( (LA52_199=='\u00B4') ) {s = 144;}
-
-                        else s = 141;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 24 : 
                         int LA52_203 = input.LA(1);
 
                         s = -1;
@@ -5769,31 +5801,53 @@ public class InternalSuiteLexer extends Lexer {
 
                         if ( s>=0 ) return s;
                         break;
-                    case 25 : 
-                        int LA52_142 = input.LA(1);
+                    case 23 : 
+                        int LA52_199 = input.LA(1);
 
                         s = -1;
-                        if ( (LA52_142=='\'') ) {s = 199;}
+                        if ( ((LA52_199>='\u0000' && LA52_199<='&')||(LA52_199>='(' && LA52_199<='\u00B3')||(LA52_199>='\u00B5' && LA52_199<='\uFFFF')) ) {s = 250;}
 
-                        else if ( ((LA52_142>='\u0000' && LA52_142<='&')||(LA52_142>='(' && LA52_142<='\u00B3')||(LA52_142>='\u00B5' && LA52_142<='\uFFFF')) ) {s = 200;}
+                        else if ( (LA52_199=='\u00B4') ) {s = 144;}
 
-                        else if ( (LA52_142=='\u00B4') ) {s = 144;}
+                        else s = 143;
 
-                        else s = 141;
+                        if ( s>=0 ) return s;
+                        break;
+                    case 24 : 
+                        int LA52_53 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA52_53>='\u0000' && LA52_53<='\uFFFF')) ) {s = 140;}
+
+                        else s = 55;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 25 : 
+                        int LA52_251 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA52_251=='\'') ) {s = 291;}
+
+                        else if ( ((LA52_251>='\u0000' && LA52_251<='&')||(LA52_251>='(' && LA52_251<='\u00B3')||(LA52_251>='\u00B5' && LA52_251<='\uFFFF')) ) {s = 292;}
+
+                        else if ( (LA52_251=='\u00B4') ) {s = 204;}
+
+                        else s = 253;
 
                         if ( s>=0 ) return s;
                         break;
                     case 26 : 
-                        int LA52_246 = input.LA(1);
+                        int LA52_141 = input.LA(1);
 
                         s = -1;
-                        if ( (LA52_246=='\'') ) {s = 289;}
+                        if ( (LA52_141=='\'') ) {s = 199;}
 
-                        else if ( ((LA52_246>='\u0000' && LA52_246<='&')||(LA52_246>='(' && LA52_246<='\u00B3')||(LA52_246>='\u00B5' && LA52_246<='\uFFFF')) ) {s = 290;}
+                        else if ( ((LA52_141>='\u0000' && LA52_141<='&')||(LA52_141>='(' && LA52_141<='\u00B3')||(LA52_141>='\u00B5' && LA52_141<='\uFFFF')) ) {s = 200;}
 
-                        else if ( (LA52_246=='\u00B4') ) {s = 249;}
+                        else if ( (LA52_141=='\u00B4') ) {s = 144;}
 
-                        else s = 248;
+                        else s = 143;
 
                         if ( s>=0 ) return s;
                         break;

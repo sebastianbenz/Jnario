@@ -8001,11 +8001,11 @@ ruleVisibility returns [Enumerator current=null]
 
 
 
-RULE_SUITE_NAME : '#'+ ~(('-'|' '|'\t')) ~(('-'|'#'))*;
+RULE_SUITE_NAME : '#'+ ~(('-'|' '|'\t')) ('\\' ('#'|'-')|~(('-'|'#')))*;
 
 RULE_PATTERN : '\\' ~(('\r'|'\n'))* '\r'? '\n';
 
-RULE_TEXT : ':' ~(('-'|'#'))+;
+RULE_TEXT : ':' ('\\' ('#'|'-')|~(('-'|'#')))*;
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'$'|'_') ('a'..'z'|'A'..'Z'|'$'|'_'|'0'..'9')*;
 

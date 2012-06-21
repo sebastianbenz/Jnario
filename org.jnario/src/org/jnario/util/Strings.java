@@ -155,4 +155,16 @@ public class Strings extends org.eclipse.xtext.util.Strings{
 		}
 		return toClassName(name);
 	}
+
+	public static int lastIndexOfPrefix(String s, char c) {
+		int begin = 0;
+		for(int i = 0; i < s.length(); i++){
+			if(s.charAt(i) == c){
+				begin++;
+			}else{
+				break;
+			}
+		}
+		return begin;
+	}
 }

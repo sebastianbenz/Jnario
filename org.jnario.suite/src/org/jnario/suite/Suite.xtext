@@ -54,9 +54,10 @@ SpecReference:
 QualifiedName:
   ValidID (=>'.' ValidID)*;
 
-terminal SUITE_NAME: '#'+ !('-'|' '|'\t') !('-'|'#')*;
+terminal SUITE_NAME: '#'+ !('-'|' '|'\t')('\\' ('#'|'-') |!('-'|'#'))*
+;
 terminal PATTERN: '\\'  !('\r'|'\n')* '\r'? '\n';
-terminal TEXT: ':' !('-'|'#')+ ;
+terminal TEXT: ':' ('\\' ('#'|'-') |!('-'|'#'))*  ;
 terminal ID:
 	'^'? ('a'..'z'|'A'..'Z'|'$'|'_') ('a'..'z'|'A'..'Z'|'$'|'_'|'0'..'9')*;
 
