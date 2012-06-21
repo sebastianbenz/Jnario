@@ -26,6 +26,7 @@ import org.eclipse.xtext.linking.ILinkingDiagnosticMessageProvider;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.parser.IParser;
 import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
+import org.eclipse.xtext.resource.IResourceDescription;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
@@ -47,6 +48,7 @@ import org.jnario.suite.generator.SuiteGenerator;
 import org.jnario.suite.jvmmodel.SuiteJvmModelInferrer;
 import org.jnario.suite.naming.SuiteQualifiedNameProvider;
 import org.jnario.suite.parser.CustomSuiteParser;
+import org.jnario.suite.resource.SuiteResourceDescriptionManager;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -142,5 +144,8 @@ public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeMod
 		return SuiteQualifiedNameProvider.class;
 	}
 
-	
+	@Override
+	public Class<? extends IResourceDescription.Manager> bindIResourceDescription$Manager() {
+		return SuiteResourceDescriptionManager.class;
+	}
 }
