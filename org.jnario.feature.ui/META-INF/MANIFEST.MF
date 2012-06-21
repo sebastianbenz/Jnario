@@ -37,5 +37,6 @@ Import-Package: org.apache.commons.logging,
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.jnario.feature.ui.contentassist,
  org.jnario.feature.ui.contentassist.antlr,
- org.jnario.feature.ui.internal
+ org.jnario.feature.ui.internal,
+ org.jnario.feature.ui.wizards
 Bundle-Activator: org.jnario.feature.ui.internal.FeatureActivator

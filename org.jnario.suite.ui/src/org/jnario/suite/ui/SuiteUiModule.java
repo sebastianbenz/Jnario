@@ -225,4 +225,8 @@ public class SuiteUiModule extends org.jnario.suite.ui.AbstractSuiteUiModule {
 	public Class<? extends IGenerator> bindIGenerator() {
 		return SuiteGenerator.class;
 	}
+	
+	public Class<? extends org.eclipse.xtext.ui.editor.quickfix.IssueResolutionProvider> bindIssueResolutionProvider() {
+		return org.jnario.suite.ui.quickfix.SuiteQuickfixProvider.class;
+	}
 }

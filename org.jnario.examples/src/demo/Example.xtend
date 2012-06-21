@@ -6,19 +6,19 @@ class Example {
 	def static void main(String[] args) {
 		println(newArrayList("red", "blue", "green").sort) 
 	}
+	
+	@Property()
+	(String) => void field
 }   
 
 class Database{
 	def connect(String url){
-		
 	}
 	
 	def query(String sql){
-		
 	}
 	
 	def disconnect(){
-		
 	}
 }
 
@@ -30,6 +30,8 @@ class Example2{
 		this.db = db
 	}
 	
-	
+	def test(){
+		newArrayList("red", "green").map[length].reverseView
+	}
 	
 }

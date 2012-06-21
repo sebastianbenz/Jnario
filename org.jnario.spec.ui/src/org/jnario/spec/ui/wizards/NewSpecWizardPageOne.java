@@ -524,4 +524,15 @@ public class NewSpecWizardPageOne extends NewTypeWizardPage {
 		});
 	}
 	
+	public void setSpecificationDescription(String text){
+		descriptionDialogField.setText(text);
+		updateStatus(getStatusList());
+	}
+	
+	@Override
+	public void setTypeName(String name, boolean canBeModified) {
+		super.setTypeName(name, canBeModified);
+		fTypeNameStatus = typeNameChanged();
+	}
+	
 }

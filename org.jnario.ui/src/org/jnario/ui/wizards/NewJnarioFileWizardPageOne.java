@@ -13,6 +13,7 @@ import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.internal.ui.dialogs.TextFieldNavigationHandler;
 import org.eclipse.jdt.internal.ui.wizards.dialogfields.DialogField;
+import org.eclipse.jdt.internal.ui.wizards.dialogfields.LayoutUtil;
 import org.eclipse.jdt.internal.ui.wizards.dialogfields.StringDialogField;
 import org.eclipse.jdt.ui.wizards.NewTypeWizardPage;
 import org.eclipse.jface.dialogs.Dialog;
@@ -100,8 +101,7 @@ public abstract class NewJnarioFileWizardPageOne extends NewTypeWizardPage {
 		DialogField.createEmptySpace(composite);
 	
 		Text text = descriptionDialogField.getTextControl(null);
-		org.eclipse.jdt.internal.ui.wizards.dialogfields.LayoutUtil
-				.setWidthHint(text, getMaxFieldWidth());
+		LayoutUtil.setWidthHint(text, getMaxFieldWidth());
 		TextFieldNavigationHandler.install(text);
 	}
 
@@ -162,4 +162,8 @@ public abstract class NewJnarioFileWizardPageOne extends NewTypeWizardPage {
 		});
 	}
 
+	public void setSpecDescription(String text) {
+		descriptionDialogField.setText(text);
+		updateStatus(getStatusList());
+	}
 }
