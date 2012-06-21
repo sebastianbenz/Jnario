@@ -30,10 +30,10 @@ public class SpecificationResolverEvaluatesRegularExpressionsSpec extends Specif
     _builder.newLine();
     _builder.append("import demo.*");
     _builder.newLine();
-    _builder.append("#My Suite");
+    _builder.append("#The Suite");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("- \\demo.*\\");
+    _builder.append("- \\demo\\.My.*\\");
     _builder.newLine();
     this.m.parseSuite(_builder);
     Suite _firstSuite = this.m.firstSuite();
@@ -116,6 +116,33 @@ public class SpecificationResolverEvaluatesRegularExpressionsSpec extends Specif
      + "\n     m.firstSuite is " + _firstSuite
      + "\n     m is " + this.m
      + "\n     set() is " + _set + "\n", _doubleArrow);
+    
+  }
+  
+  @Test
+  @Named("ignores containing suite")
+  @Order(99)
+  public void ignoresContainingSuite() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("package demo");
+    _builder.newLine();
+    _builder.append("import demo.*");
+    _builder.newLine();
+    _builder.append("#My Suite");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("- \\.*\\");
+    _builder.newLine();
+    this.m.parseSuite(_builder);
+    Suite _firstSuite = this.m.firstSuite();
+    Set<String> _resolvedSpecs = this.resolvedSpecs(_firstSuite);
+    Set<String> _set = JnarioCollectionLiterals.<String>set("My Spec", "My Feature");
+    boolean _doubleArrow = Should.operator_doubleArrow(_resolvedSpecs, _set);
+    Assert.assertTrue("\nExpected resolvedSpecs(m.firstSuite) => set(\"My Spec\", \"My Feature\") but"
+     + "\n     resolvedSpecs(m.firstSuite) is " + _resolvedSpecs
+     + "\n     m.firstSuite is " + _firstSuite
+     + "\n     m is " + this.m
+     + "\n     set(\"My Spec\", \"My Feature\") is " + _set + "\n", _doubleArrow);
     
   }
 }

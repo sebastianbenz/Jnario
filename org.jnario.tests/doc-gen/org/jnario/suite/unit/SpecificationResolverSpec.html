@@ -48,9 +48,9 @@ resolvedSpecs(firstSuite) =&gt; set("My Spec", "My Feature")</pre>
 m.parseSuite('''
 package demo
 import demo.*
-#My Suite
+#The Suite
 
-- \demo.*\
+- \demo\.My.*\
 			''')
 			
 			resolvedSpecs(m.firstSuite) =&gt; set("My Spec", "My Feature")</pre>
@@ -82,6 +82,18 @@ m.parseSuite('''
 ''')
 
 resolvedSpecs(m.firstSuite) =&gt; set()</pre>
+</p>
+</li><li><p  id="ignores_containing_suite"><strong>ignores containing suite</strong>
+<pre class="prettyprint lang-spec">
+m.parseSuite('''
+	package demo
+	import demo.*
+	#My Suite
+	
+	- \.*\
+''')
+
+resolvedSpecs(m.firstSuite) =&gt; set("My Spec", "My Feature")</pre>
 </p>
 </li></ul>
 				</div>

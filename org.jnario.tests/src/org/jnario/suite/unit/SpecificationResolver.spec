@@ -50,9 +50,9 @@ describe SpecificationResolver {
 				m.parseSuite('''
 				package demo
 				import demo.*
-				#My Suite
+				#The Suite
 				
-				- \demo.*\
+				- \demo\.My.*\
 			''')
 			
 			resolvedSpecs(m.firstSuite) => set("My Spec", "My Feature")
@@ -84,6 +84,18 @@ describe SpecificationResolver {
 			''')
 			
 			resolvedSpecs(m.firstSuite) => set()
+		}
+		
+		fact "ignores containing suite"{
+			m.parseSuite('''
+				package demo
+				import demo.*
+				#My Suite
+				
+				- \.*\
+			''')
+			
+			resolvedSpecs(m.firstSuite) => set("My Spec", "My Feature")
 		}
 	}
 	
