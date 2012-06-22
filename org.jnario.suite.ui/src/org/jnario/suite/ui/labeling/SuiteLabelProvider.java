@@ -11,8 +11,8 @@
 package org.jnario.suite.ui.labeling;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.xtext.xbase.ui.labeling.XbaseLabelProvider; 
- 
+import org.eclipse.xtend.ide.labeling.XtendLabelProvider;
+
 import com.google.inject.Inject;
 
 /**
@@ -20,22 +20,12 @@ import com.google.inject.Inject;
  * 
  * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#labelProvider
  */
-public class SuiteLabelProvider extends XbaseLabelProvider {
+@SuppressWarnings("restriction")
+public class SuiteLabelProvider extends XtendLabelProvider {
 
 	@Inject
 	public SuiteLabelProvider(AdapterFactoryLabelProvider delegate) {
 		super(delegate);
 	}
 
-/*
-	//Labels and icons can be computed like this:
-	
-	String text(MyModel ele) {
-	  return "my "+ele.getName();
-	}
-	 
-    String image(MyModel ele) {
-      return "MyModel.gif";
-    }
-*/
 }

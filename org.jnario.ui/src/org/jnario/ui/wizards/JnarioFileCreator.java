@@ -17,7 +17,10 @@ public abstract class JnarioFileCreator {
 		super();
 	}
 
-	protected abstract String keyword();
+	protected String keyword(){
+		// overide to implement
+		return "";
+	}
 
 	public String create(IJavaProject javaProject, String description, IPackageFragment packageFragment, IProgressMonitor monitor) {
 		StringBuffer sb = new StringBuffer();

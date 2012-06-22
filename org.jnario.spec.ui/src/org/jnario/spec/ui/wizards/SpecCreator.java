@@ -24,6 +24,7 @@ import org.eclipse.xtext.common.types.access.jdt.JdtTypeProviderFactory;
 import org.eclipse.xtext.common.types.util.jdt.IJavaElementFinder;
 import org.eclipse.xtext.ui.resource.XtextResourceSetProvider;
 import org.jnario.spec.naming.OperationNameProvider;
+import org.jnario.ui.wizards.JnarioFileCreator;
 
 import com.google.inject.Inject;
 
@@ -31,7 +32,7 @@ import com.google.inject.Inject;
  * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
-public class SpecCreator {
+public class SpecCreator extends JnarioFileCreator{
 	
 	private final OperationNameProvider nameProvider;
 	
