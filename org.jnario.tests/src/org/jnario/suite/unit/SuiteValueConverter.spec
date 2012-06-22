@@ -1,9 +1,12 @@
 package org.jnario.suite.unit
 
 import org.jnario.suite.conversion.SuiteValueConverter
+import org.jnario.suite.conversion.SuiteValueConverterService
 
 describe SuiteValueConverter {
 
+	val subject = new SuiteValueConverterService().suiteValueConverter
+	
 	context toString{
 		fact "escapes dashes"{
 			subject.toString("##suite - with dash") => "##suite \\- with dash"

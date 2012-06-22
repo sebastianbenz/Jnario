@@ -4,8 +4,6 @@ import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.jnario.runner.Subject;
-import org.jnario.suite.conversion.SuiteValueConverter;
 import org.jnario.suite.unit.SuiteValueConverterSpec;
 import org.junit.Assert;
 import org.junit.Test;
@@ -15,9 +13,6 @@ import org.junit.runner.RunWith;
 @RunWith(ExampleGroupRunner.class)
 @Named("toString[String]")
 public class SuiteValueConverterToStringStringSpec extends SuiteValueConverterSpec {
-  @Subject
-  public SuiteValueConverter subject;
-  
   @Test
   @Named("escapes dashes")
   @Order(99)
