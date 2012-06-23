@@ -13,6 +13,12 @@ public class ExtendedFeatureInjectorProvider extends FeatureInjectorProvider {
 		return new FeatureStandaloneSetup(){
 			public Injector createInjector() {
 				return Guice.createInjector(new FeatureRuntimeModule(){
+					
+					public void configure(com.google.inject.Binder binder) {
+						super.configure(binder);
+						binder.bind(BehaviorExecutor.class).to(FeatureExecutor.class);
+					};
+					
 					public ClassLoader bindClassLoaderToInstance() {
 						return getClass().getClassLoader();
 					};

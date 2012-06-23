@@ -1,6 +1,7 @@
 package org.jnario.suite.jvmmodel
 
 import com.google.inject.Inject
+import org.jnario.Specification
 import org.jnario.feature.feature.Feature
 import org.jnario.feature.naming.FeatureClassNameProvider
 import org.jnario.spec.naming.ExampleNameProvider
@@ -12,7 +13,6 @@ import static org.jnario.suite.jvmmodel.SuiteClassNameProvider.*
 import static extension com.google.common.base.Strings.*
 import static extension org.eclipse.xtext.util.Strings.*
 import static extension org.jnario.util.Strings.*
-import org.jnario.Specification
 class SuiteClassNameProvider {
 	
 	ExampleNameProvider exampleNameProvider
@@ -35,8 +35,16 @@ class SuiteClassNameProvider {
 		if(name.nullOrEmpty) return null else name
 	}
 	
-	def describe(Suite suite){
+	def dispatch describe(Suite suite){
 		suite.removePrefix?.convertToJavaString(true)
+	}
+	
+	def dispatch describe(ExampleGroup element){
+		exampleNameProvider.describe(element)
+	}
+	
+	def dispatch describe(Feature element){
+		element.name
 	}
 	
 	def getQualifiedClassName(Specification spec){

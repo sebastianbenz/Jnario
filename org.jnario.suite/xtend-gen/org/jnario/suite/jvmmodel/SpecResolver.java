@@ -28,6 +28,7 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.jnario.Specification;
+import org.jnario.suite.jvmmodel.SuiteClassNameProvider;
 import org.jnario.suite.suite.Heading;
 import org.jnario.suite.suite.PatternReference;
 import org.jnario.suite.suite.SpecReference;
@@ -36,12 +37,15 @@ import org.jnario.suite.suite.SuiteElement;
 import org.jnario.suite.suite.SuitePackage.Literals;
 
 @SuppressWarnings("all")
-public class SpecificationResolver {
+public class SpecResolver {
   @Inject
   private IScopeProvider scopeProvider;
   
   @Inject
   private IQualifiedNameConverter _iQualifiedNameConverter;
+  
+  @Inject
+  private SuiteClassNameProvider _suiteClassNameProvider;
   
   protected List<Specification> _resolveSpecs(final Suite suite) {
     List<Specification> _xblockexpression = null;
@@ -50,7 +54,7 @@ public class SpecificationResolver {
       EList<SuiteElement> _elements = suite.getElements();
       final Function1<SuiteElement,List<Specification>> _function = new Function1<SuiteElement,List<Specification>>() {
           public List<Specification> apply(final SuiteElement it) {
-            List<Specification> _resolveSpecs = SpecificationResolver.this.resolveSpecs(it);
+            List<Specification> _resolveSpecs = SpecResolver.this.resolveSpecs(it);
             return _resolveSpecs;
           }
         };
@@ -93,7 +97,7 @@ public class SpecificationResolver {
       final Function1<IEObjectDescription,Boolean> _function = new Function1<IEObjectDescription,Boolean>() {
           public Boolean apply(final IEObjectDescription it) {
             QualifiedName _qualifiedName = it.getQualifiedName();
-            String _string = SpecificationResolver.this._iQualifiedNameConverter.toString(_qualifiedName);
+            String _string = SpecResolver.this._iQualifiedNameConverter.toString(_qualifiedName);
             Matcher _matcher = pattern.matcher(_string);
             boolean _matches = _matcher.matches();
             return Boolean.valueOf(_matches);
@@ -137,11 +141,8 @@ public class SpecificationResolver {
       final Iterable<Specification> specs = IterableExtensions.<Specification>filter(_filter, _function_2);
       final Function1<Specification,String> _function_3 = new Function1<Specification,String>() {
           public String apply(final Specification it) {
-            String _packageName = it.getPackageName();
-            String _plus = (_packageName + ".");
-            String _name = it.getName();
-            String _plus_1 = (_plus + _name);
-            return _plus_1;
+            String _qualifiedClassName = SpecResolver.this._suiteClassNameProvider.getQualifiedClassName(it);
+            return _qualifiedClassName;
           }
         };
       Map<String,Specification> _map_1 = IterableExtensions.<String, Specification>toMap(specs, _function_3);

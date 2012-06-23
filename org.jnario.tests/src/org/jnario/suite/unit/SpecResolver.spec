@@ -1,17 +1,19 @@
 package org.jnario.suite.unit
 
-import org.jnario.suite.jvmmodel.SpecificationResolver
 import org.jnario.jnario.test.util.SuiteTestInstantiator
 import org.jnario.runner.InstantiateWith
 import com.google.inject.Inject
 import org.jnario.jnario.test.util.ModelStore
 import org.jnario.suite.suite.Suite
 import org.jnario.suite.suite.SuiteFactory
+import org.jnario.suite.jvmmodel.SuiteClassNameProvider
+import org.jnario.suite.jvmmodel.SpecResolver
 
 @InstantiateWith(typeof(SuiteTestInstantiator))
-describe SpecificationResolver {
+describe SpecResolver {
 
 	@Inject extension ModelStore m
+	@Inject extension SuiteClassNameProvider
 	
 	before{
 		parseSpec('''
@@ -21,6 +23,9 @@ describe SpecificationResolver {
 				describe "My Internal Spec"{
 					
 				}
+			}
+			describe String{
+				
 			}
 		''')
 		parseScenario('''
@@ -42,7 +47,7 @@ describe SpecificationResolver {
 			- "My Feature"
 		''')
 		
-		resolvedSpecs(firstSuite) => set("My Spec", "My Feature")
+		resolvedSpecs(firstSuite) => set("MySpecSpec", "MyFeatureFeature")
 	}
 	
 	describe "evaluates regular expressions"{
@@ -55,7 +60,7 @@ describe SpecificationResolver {
 				- \demo\.My.*\
 			''')
 			
-			resolvedSpecs(m.firstSuite) => set("My Spec", "My Feature")
+			resolvedSpecs(m.firstSuite) => set("MySpecSpec", "MyFeatureFeature")
 		}
 
 		fact "example 2"{
@@ -67,7 +72,7 @@ describe SpecificationResolver {
 				- \.*Spec\
 			''')
 			
-			resolvedSpecs(m.firstSuite) => set("My Spec")
+			resolvedSpecs(m.firstSuite) => set("MySpecSpec")
 		}
 		
 		fact "returns empty list on null input"{
@@ -95,12 +100,12 @@ describe SpecificationResolver {
 				- \.*\
 			''')
 			
-			resolvedSpecs(m.firstSuite) => set("My Spec", "My Feature")
+			resolvedSpecs(m.firstSuite) => set("MySpecSpec", "MyFeatureFeature", "StringSpec")
 		}
 	}
 	
 	def resolvedSpecs(Suite suite){
-		subject.resolveSpecs(suite).map[name].toSet
+		subject.resolveSpecs(suite).map[className].toSet
 	}
 
 }

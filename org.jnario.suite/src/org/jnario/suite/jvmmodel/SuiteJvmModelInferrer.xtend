@@ -18,7 +18,7 @@ class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
 	@Inject extension ExtendedJvmTypesBuilder
 	@Inject extension SuiteClassNameProvider
 	@Inject extension JunitAnnotationProvider annotationProvider
-	@Inject extension SpecificationResolver
+	@Inject extension SpecResolver
 	@Inject extension TypeReferences types
 	
 	override infer(EObject e, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {

@@ -24,7 +24,7 @@ import org.jnario.jvmmodel.JnarioJvmModelInferrer;
 import org.jnario.jvmmodel.JunitAnnotationProvider;
 import org.jnario.runner.Contains;
 import org.jnario.runner.Named;
-import org.jnario.suite.jvmmodel.SpecificationResolver;
+import org.jnario.suite.jvmmodel.SpecResolver;
 import org.jnario.suite.jvmmodel.SuiteClassNameProvider;
 import org.jnario.suite.suite.Suite;
 import org.jnario.suite.suite.SuiteFile;
@@ -41,7 +41,7 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
   private JunitAnnotationProvider annotationProvider;
   
   @Inject
-  private SpecificationResolver _specificationResolver;
+  private SpecResolver _specResolver;
   
   @Inject
   private TypeReferences types;
@@ -99,7 +99,7 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
   public Iterable<JvmType> children(final Suite suite) {
     List<JvmType> _xblockexpression = null;
     {
-      final List<Specification> specs = this._specificationResolver.resolveSpecs(suite);
+      final List<Specification> specs = this._specResolver.resolveSpecs(suite);
       final Function1<Specification,JvmType> _function = new Function1<Specification,JvmType>() {
           public JvmType apply(final Specification it) {
             String _qualifiedClassName = SuiteJvmModelInferrer.this._suiteClassNameProvider.getQualifiedClassName(it);

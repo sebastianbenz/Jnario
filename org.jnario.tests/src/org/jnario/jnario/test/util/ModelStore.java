@@ -113,9 +113,6 @@ public class ModelStore implements Iterable<EObject> {
 		return parse("Spec" + resourceCount() + ".spec", input.toString());
 	}
 
-	/**
-	 * @return
-	 */
 	private int resourceCount() {
 		return resourceSet.getResources().size();
 	}

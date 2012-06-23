@@ -86,11 +86,11 @@ public abstract class BehaviorExecutor {
 	
 	protected static Map<Class<?>, IInjectorProvider> injectorProviderClassCache = Maps.newHashMap();
 	
-	public static Result execute(Class<? extends IInjectorProvider> injectorType, Class<? extends BehaviorExecutor> executorType, CharSequence content) {
+	public static Result execute(Class<? extends IInjectorProvider> injectorType, CharSequence content) {
 		IInjectorProvider injectorProvider = getOrCreateInjectorProvider(injectorType);
 		try {
-			BehaviorExecutor executor = injectorProvider.getInjector().getInstance(executorType);
 			((IRegistryConfigurator)injectorProvider).setupRegistry();		
+			BehaviorExecutor executor = injectorProvider.getInjector().getInstance(BehaviorExecutor.class);
 			Resource resource = executor.parse(content.toString());	
 			return executor.run(resource.getContents().get(0));
 		} finally {

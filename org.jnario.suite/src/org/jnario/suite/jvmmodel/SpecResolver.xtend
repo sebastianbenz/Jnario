@@ -18,10 +18,11 @@ import static extension com.google.common.base.Strings.*
 import org.eclipse.xtend.core.xtend.XtendFile
 import org.jnario.suite.suite.Heading
 
-class SpecificationResolver {
+class SpecResolver {
 	
 	@Inject extension IScopeProvider scopeProvider
 	@Inject extension IQualifiedNameConverter 
+	@Inject extension SuiteClassNameProvider
 	
 	def dispatch List<Specification> resolveSpecs(Suite suite){
 		val notNull = Predicates::<Specification>notNull
@@ -46,7 +47,7 @@ class SpecificationResolver {
 		val specs = allElements.map[resolve(EObjectOrProxy, specRef)].filter(typeof(Specification)).filter[
 			!eIsProxy && eContainer instanceof XtendFile  && it.eResource.URI != specRef.eResource.URI
 		]
-		specs.toMap[packageName + "." + name].values.toList
+		specs.toMap[qualifiedClassName].values.toList
 	}
 	
 }

@@ -15,7 +15,6 @@ import static org.junit.Assert.assertThat;
 import java.net.MalformedURLException;
 
 import org.eclipse.emf.ecore.EObject;
-import org.jnario.spec.SpecInjectorProvider;
 import org.jnario.spec.naming.ExampleNameProvider;
 import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.spec.spec.SpecFile;
@@ -35,7 +34,7 @@ public class SpecExecutor extends BehaviorExecutor{
 	}
 
 	public static Result execute(CharSequence content) {
-		return execute(SpecInjectorProvider.class, SpecExecutor.class, content);
+		return execute(ExtendedSpecInjectorProvider.class, content);
 	}
 
 	@Inject private ExampleNameProvider nameProvider;

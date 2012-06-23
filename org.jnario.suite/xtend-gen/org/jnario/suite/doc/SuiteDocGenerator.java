@@ -1,6 +1,5 @@
 package org.jnario.suite.doc;
 
-import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import java.util.Arrays;
 import java.util.List;
@@ -9,13 +8,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.util.Strings;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.Specification;
 import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.HtmlFile;
-import org.jnario.suite.jvmmodel.SpecificationResolver;
+import org.jnario.suite.jvmmodel.SpecResolver;
 import org.jnario.suite.jvmmodel.SuiteClassNameProvider;
 import org.jnario.suite.suite.Heading;
 import org.jnario.suite.suite.Reference;
@@ -29,7 +26,7 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
   private SuiteClassNameProvider _suiteClassNameProvider;
   
   @Inject
-  private SpecificationResolver _specificationResolver;
+  private SpecResolver _specResolver;
   
   public HtmlFile createHtmlFile(final XtendClass xtendClass) {
     HtmlFile _xblockexpression = null;
@@ -70,7 +67,7 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
     {
       EList<SuiteElement> _elements = suite.getElements();
       for(final SuiteElement spec : _elements) {
-        List<Specification> _resolveSpecs = this._specificationResolver.resolveSpecs(spec);
+        List<Specification> _resolveSpecs = this._specResolver.resolveSpecs(spec);
         CharSequence _generate = this.generate(spec, _resolveSpecs);
         _builder.append(_generate, "");
         _builder.newLineIfNotEmpty();
@@ -97,21 +94,13 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
   protected CharSequence _generate(final Reference ref, final List<Specification> specs) {
     StringConcatenation _builder = new StringConcatenation();
     {
-      final Function1<Specification,Boolean> _function = new Function1<Specification,Boolean>() {
-          public Boolean apply(final Specification it) {
-            String _name = it.getName();
-            boolean _notEquals = (!Objects.equal(_name, null));
-            return Boolean.valueOf(_notEquals);
-          }
-        };
-      Iterable<Specification> _filter = IterableExtensions.<Specification>filter(specs, _function);
-      for(final Specification spec : _filter) {
+      for(final Specification spec : specs) {
         _builder.append("<li><a href=\"");
         String _linkTo = this.linkTo(ref, spec);
         _builder.append(_linkTo, "");
         _builder.append("\">");
-        String _name = spec.getName();
-        _builder.append(_name, "");
+        String _describe = this._suiteClassNameProvider.describe(spec);
+        _builder.append(_describe, "");
         _builder.append("</a> ");
         String _text = this.text(ref);
         _builder.append(_text, "");

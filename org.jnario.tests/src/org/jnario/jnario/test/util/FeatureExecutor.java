@@ -31,7 +31,7 @@ import com.google.inject.Inject;
 public class FeatureExecutor extends BehaviorExecutor{
 
 	public static Result execute(CharSequence content) {
-		return execute(FeatureInjectorProvider.class, FeatureExecutor.class, content);
+		return execute(ExtendedFeatureInjectorProvider.class, content);
 	}
 	
 	public static void executesSuccessfully(CharSequence content) {

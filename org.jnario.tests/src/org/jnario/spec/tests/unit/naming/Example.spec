@@ -70,7 +70,7 @@ describe Example {
 	}
 	
 	def pendingStateOf(String string){
-		return parse(string).pending
+		return parse(string).^pending
 	}
 
 }

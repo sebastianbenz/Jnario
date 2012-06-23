@@ -6,22 +6,21 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtend.core.xtend.XtendClass
 import org.jnario.Specification
 import org.jnario.doc.AbstractDocGenerator
-import org.jnario.suite.jvmmodel.SpecificationResolver
 import org.jnario.suite.jvmmodel.SuiteClassNameProvider
 import org.jnario.suite.suite.Reference
 import org.jnario.suite.suite.SpecReference
 import org.jnario.suite.suite.Suite
+import org.jnario.suite.suite.Heading
+import org.jnario.suite.jvmmodel.SpecResolver
 
 import static org.jnario.doc.HtmlFile.*
 
 import static extension org.jnario.util.Strings.*
-
 import static extension org.eclipse.xtext.util.Strings.*
-import org.jnario.suite.suite.Heading
 
 class SuiteDocGenerator extends AbstractDocGenerator {
 	@Inject extension SuiteClassNameProvider 
-	@Inject extension SpecificationResolver
+	@Inject extension SpecResolver
 
 	override createHtmlFile(XtendClass xtendClass) {
 		if(!(xtendClass instanceof Suite)){
@@ -52,8 +51,8 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 	'''
 
 	def dispatch generate(Reference ref, List<Specification> specs)'''
-	«FOR spec : specs.filter[name != null]»
-		<li><a href="«ref.linkTo(spec)»">«spec.name»</a> «ref.text»</li>
+	«FOR spec : specs»
+		<li><a href="«ref.linkTo(spec)»">«spec.describe»</a> «ref.text»</li>
 	«ENDFOR»
 	'''
 	

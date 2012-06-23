@@ -13,6 +13,10 @@ public class ExtendedSuiteInjectorProvider extends SuiteInjectorProvider {
 		return new SuiteStandaloneSetup(){
 			public Injector createInjector() {
 				return Guice.createInjector(new SuiteRuntimeModule(){
+					public void configure(com.google.inject.Binder binder) {
+						super.configure(binder);
+						binder.bind(BehaviorExecutor.class).to(SuiteExecutor.class);
+					};
 					public ClassLoader bindClassLoaderToInstance() {
 						return getClass().getClassLoader();
 					};

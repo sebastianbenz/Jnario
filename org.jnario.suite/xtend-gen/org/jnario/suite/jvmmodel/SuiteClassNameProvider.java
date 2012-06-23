@@ -51,10 +51,20 @@ public class SuiteClassNameProvider {
     return _xblockexpression;
   }
   
-  public String describe(final Suite suite) {
+  protected String _describe(final Suite suite) {
     String _removePrefix = this.removePrefix(suite);
     String _convertToJavaString = _removePrefix==null?(String)null:org.eclipse.xtext.util.Strings.convertToJavaString(_removePrefix, true);
     return _convertToJavaString;
+  }
+  
+  protected String _describe(final ExampleGroup element) {
+    String _describe = this.exampleNameProvider.describe(element);
+    return _describe;
+  }
+  
+  protected String _describe(final Feature element) {
+    String _name = element.getName();
+    return _name;
   }
   
   public String getQualifiedClassName(final Specification spec) {
@@ -88,6 +98,19 @@ public class SuiteClassNameProvider {
   protected String _getClassName(final Feature element) {
     String _className = this.featureNameProvider.getClassName(element);
     return _className;
+  }
+  
+  public String describe(final Specification element) {
+    if (element instanceof Feature) {
+      return _describe((Feature)element);
+    } else if (element instanceof ExampleGroup) {
+      return _describe((ExampleGroup)element);
+    } else if (element instanceof Suite) {
+      return _describe((Suite)element);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(element).toString());
+    }
   }
   
   public String getClassName(final Specification element) {

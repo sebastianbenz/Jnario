@@ -1,0 +1,21 @@
+package org.jnario
+
+import jnario.tests.unit.doc.*
+
+#Jnario 
+
+All Jnario Features.  
+
+- \org\.jnario\.jnario\..*\
+ 
+##Suite 
+ 
+- \.*suite.*\
+
+##Feature
+
+- \org\.jnario\.feature\..*\
+
+##Spec
+
+- \org\.jnario\.spec\..*\

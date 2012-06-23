@@ -77,7 +77,7 @@ public class Resources {
 		Assert.assertTrue("Warnings occured:\n" + Joiner.on("\n").join(warnings), warnings.isEmpty());
 	}
 
-	public static void addContainerStateAdapter(final ResourceSet resourceSet) {
+	public static ResourceSetBasedAllContainersState addContainerStateAdapter(final ResourceSet resourceSet) {
 		clearExistingStateAdapters(resourceSet);
 		ResourceSetBasedAllContainersState containersState = new ResourceSetBasedAllContainersState();
 		String containerName = "all";
@@ -89,6 +89,7 @@ public class Resources {
 		}));
 		containersState.configure(Collections.singletonList(containerName), newHashMultimap);
 		resourceSet.eAdapters().add(new DelegatingIAllContainerAdapter(containersState));
+		return containersState;
 	}
 
 	private static void clearExistingStateAdapters(final ResourceSet resourceSet) {
