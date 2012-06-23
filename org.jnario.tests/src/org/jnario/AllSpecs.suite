@@ -1,16 +1,18 @@
 package org.jnario
 
 import jnario.tests.unit.doc.*
-
+ 
 #Jnario 
 
 All Jnario Features.  
 
-- \org\.jnario\.jnario\..*\
- 
+##Common
+
+- \org\.jnario\.jnario\..*\ 
+      
 ##Suite 
  
-- \.*suite.*\
+- \org\.jnario\.suite\..*\
 
 ##Feature
 

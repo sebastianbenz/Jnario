@@ -153,7 +153,7 @@ public class SpecResolver {
     return _xblockexpression;
   }
   
-  public List<Specification> resolveSpecs(final EObject suite) {
+  public List<Specification> resolveSpecs(final SuiteElement suite) {
     if (suite instanceof Suite) {
       return _resolveSpecs((Suite)suite);
     } else if (suite instanceof Heading) {

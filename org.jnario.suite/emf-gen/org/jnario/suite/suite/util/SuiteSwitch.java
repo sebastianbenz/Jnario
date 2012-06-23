@@ -131,6 +131,7 @@ public class SuiteSwitch<T>
 				Suite suite = (Suite)theEObject;
 				T result = caseSuite(suite);
 				if (result == null) result = caseSpecification(suite);
+				if (result == null) result = caseSuiteElement(suite);
 				if (result == null) result = caseXtendClass(suite);
 				if (result == null) result = caseXtendAnnotationTarget(suite);
 				if (result == null) result = defaultCase(theEObject);

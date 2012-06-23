@@ -25,7 +25,7 @@ import org.jnario.Specification;
  * @model
  * @generated
  */
-public interface Suite extends Specification
+public interface Suite extends Specification, SuiteElement
 {
 	/**
 	 * Returns the value of the '<em><b>Elements</b></em>' containment reference list.

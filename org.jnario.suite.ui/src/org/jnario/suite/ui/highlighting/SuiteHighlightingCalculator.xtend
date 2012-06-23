@@ -20,7 +20,7 @@ class SuiteHighlightingCalculator extends XbaseHighlightingCalculator{
 	def dispatch highlight(SpecReference ref, IHighlightedPositionAcceptor acceptor){
 		highlightObjectAtFeature(acceptor, ref, SuitePackage::eINSTANCE.specReference_Spec, SuiteHighlightingConfiguration::LINK_ID)
 	}
-	
+
 	def dispatch highlight(PatternReference ref, IHighlightedPositionAcceptor acceptor){
 		highlightObjectAtFeature(acceptor, ref, SuitePackage::eINSTANCE.patternReference_Pattern, SuiteHighlightingConfiguration::PATTERN_ID)
 	}

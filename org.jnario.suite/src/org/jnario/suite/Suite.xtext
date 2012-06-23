@@ -35,27 +35,17 @@ PatternReference:
 ;
 
 SuiteElement:
-	Heading  | SpecReference | PatternReference
+	SpecReference | PatternReference
 ;
-
-Heading:
-	name=SUITE_NAME
-;
-
-//ReferenceExpression:
-//	pattern=XClosure
-//;
 
 SpecReference:
 	'-' spec=[jnario::Specification|STRING] text=TEXT?
 ;
 
-
 QualifiedName:
   ValidID (=>'.' ValidID)*;
 
-terminal SUITE_NAME: '#'+ !('-'|' '|'\t')('\\' ('#'|'-') |!('-'|'#'))*
-;
+terminal SUITE_NAME: '#'+ !'-' ('\\' ('#'|'-') |!('-'|'#'))*;
 terminal PATTERN: '\\'  !('\r'|'\n')* '\r'? '\n';
 terminal TEXT: ':' ('\\' ('#'|'-') |!('-'|'#'))*  ;
 terminal ID:

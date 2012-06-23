@@ -357,6 +357,7 @@ public class SuitePackageImpl extends EPackageImpl implements SuitePackage
 		specReferenceEClass.getESuperTypes().add(this.getSuiteElement());
 		specReferenceEClass.getESuperTypes().add(this.getReference());
 		suiteEClass.getESuperTypes().add(theJnarioPackage.getSpecification());
+		suiteEClass.getESuperTypes().add(this.getSuiteElement());
 		suiteFileEClass.getESuperTypes().add(theXtendPackage.getXtendFile());
 		headingEClass.getESuperTypes().add(this.getSuiteElement());
 

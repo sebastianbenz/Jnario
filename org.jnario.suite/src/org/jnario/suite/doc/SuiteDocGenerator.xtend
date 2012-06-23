@@ -17,16 +17,37 @@ import static org.jnario.doc.HtmlFile.*
 
 import static extension org.jnario.util.Strings.*
 import static extension org.eclipse.xtext.util.Strings.*
+import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.xtext.generator.IFileSystemAccess
+import org.jnario.suite.suite.SuiteFile
+import org.jnario.doc.HtmlFileBuilder
+import org.jnario.doc.HtmlFile
 
 class SuiteDocGenerator extends AbstractDocGenerator {
 	@Inject extension SuiteClassNameProvider 
 	@Inject extension SpecResolver
-
-	override createHtmlFile(XtendClass xtendClass) {
-		if(!(xtendClass instanceof Suite)){
-			return EMPTY_FILE
-		}
-		val suite = xtendClass as Suite
+	@Inject extension HtmlFileBuilder
+	
+	override doGenerate(Resource input, IFileSystemAccess fsa) {
+		input.contents.filter(typeof(SuiteFile)).forEach[
+			val htmlFile = it.createHtmlFile()
+			it.xtendClasses.head.generate(fsa, htmlFile)	
+		]
+	}
+ 
+	def HtmlFile createHtmlFile(SuiteFile file) {
+		val suites = file.xtendClasses.filter(typeof(Suite))
+		if(suites.empty) return HtmlFile::EMPTY_FILE
+		newHtmlFile[
+			fileName = suites.head.className 
+			title = suites.head.describe.convertFromJavaString(true)
+			content = suites.generateContent
+			rootFolder = suites.head.root
+		]
+	}
+	
+	override HtmlFile createHtmlFile(XtendClass file) {
+		val suite = file as Suite
 		newHtmlFile[
 			fileName = suite.className 
 			title = suite.describe.convertFromJavaString(true)
@@ -34,6 +55,15 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 			rootFolder = suite.root
 		]
 	}
+	
+	def generateContent(Iterable<Suite> suites)'''
+		«FOR suite : suites»
+		«IF !(suite == suites.head)»
+		«suite.name.firstLine.markdown2Html»
+		«ENDIF»
+		«suite.generateContent»
+		«ENDFOR»
+	'''
 
 	def generateContent(Suite suite)'''
 		«suite.name.trimFirstLine.markdown2Html»

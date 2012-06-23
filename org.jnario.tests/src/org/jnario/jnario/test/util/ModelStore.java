@@ -13,6 +13,7 @@ import static java.util.Collections.emptyMap;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -20,6 +21,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.util.StringInputStream;
 import org.jnario.spec.spec.ExampleGroup;
+import org.jnario.suite.jvmmodel.SuiteClassNameProvider;
 import org.jnario.suite.suite.Suite;
 import org.junit.Assert;
 
@@ -127,6 +129,17 @@ public class ModelStore implements Iterable<EObject> {
 	
 	public Suite firstSuite(){
 		return query().first(Suite.class);
+	}
+	
+	public Suite suite(String name){
+		Iterable<Suite> suites = query().all(Suite.class);
+		SuiteClassNameProvider nameProvider = new SuiteClassNameProvider(null, null);
+		for (Suite suite : suites) {
+			if(name.equals(nameProvider.describe(suite))){
+				return suite;
+			}
+		}
+		throw new NoSuchElementException();
 	}
 	
 	public ExampleGroup firstSpec(){

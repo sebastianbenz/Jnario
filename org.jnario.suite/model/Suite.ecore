@@ -11,7 +11,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="spec" eType="ecore:EClass ../../org.jnario/model/Jnario.ecore#//Specification"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Suite" eSuperTypes="../../org.jnario/model/Jnario.ecore#//Specification">
+  <eClassifiers xsi:type="ecore:EClass" name="Suite" eSuperTypes="../../org.jnario/model/Jnario.ecore#//Specification #//SuiteElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
         eType="#//SuiteElement" containment="true"/>
   </eClassifiers>

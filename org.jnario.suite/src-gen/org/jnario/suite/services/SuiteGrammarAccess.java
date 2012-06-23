@@ -209,25 +209,21 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	public class SuiteElementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SuiteElement");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cHeadingParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cSpecReferenceParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cPatternReferenceParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cSpecReferenceParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cPatternReferenceParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//SuiteElement:
-		//	Heading | SpecReference | PatternReference;
+		//	SpecReference | PatternReference;
 		public ParserRule getRule() { return rule; }
 
-		//Heading | SpecReference | PatternReference
+		//SpecReference | PatternReference
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//Heading
-		public RuleCall getHeadingParserRuleCall_0() { return cHeadingParserRuleCall_0; }
-
 		//SpecReference
-		public RuleCall getSpecReferenceParserRuleCall_1() { return cSpecReferenceParserRuleCall_1; }
+		public RuleCall getSpecReferenceParserRuleCall_0() { return cSpecReferenceParserRuleCall_0; }
 
 		//PatternReference
-		public RuleCall getPatternReferenceParserRuleCall_2() { return cPatternReferenceParserRuleCall_2; }
+		public RuleCall getPatternReferenceParserRuleCall_1() { return cPatternReferenceParserRuleCall_1; }
 	}
 
 	public class HeadingElements extends AbstractParserRuleElementFinder {
@@ -417,7 +413,7 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//SuiteElement:
-	//	Heading | SpecReference | PatternReference;
+	//	SpecReference | PatternReference;
 	public SuiteElementElements getSuiteElementAccess() {
 		return (pSuiteElement != null) ? pSuiteElement : (pSuiteElement = new SuiteElementElements());
 	}

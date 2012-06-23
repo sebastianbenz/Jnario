@@ -20,6 +20,7 @@ class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
 	@Inject extension JunitAnnotationProvider annotationProvider
 	@Inject extension SpecResolver
 	@Inject extension TypeReferences types
+	@Inject extension SuiteNodeBuilder
 	
 	override infer(EObject e, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
 		if(!checkClassPath(e, annotationProvider)){
@@ -29,29 +30,32 @@ class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
 			return
 		}
 		val suiteFile = e as SuiteFile
-		
-		suiteFile.xtendClasses.filter(typeof(Suite)).forEach[
-			infer(it, acceptor, preIndexingPhase)
+		val nodes = suiteFile.buildNodeModel
+		nodes.forEach[
+			infer(it, acceptor)
 		]
 	}
 
-   	def void infer(Suite suite, IJvmDeclaredTypeAcceptor acceptor, boolean isPreIndexingPhase) {
-   		acceptor.accept(suite.toClass(suite.qualifiedClassName))
-   			.initializeLater([
+   	def infer(SuiteNode node, IJvmDeclaredTypeAcceptor acceptor) {
+   		val suite = node.suite
+   		val suiteClass = suite.toClass(suite.qualifiedClassName)
+		val subSuites = node.children.map[infer(acceptor)].toSet
+   		acceptor.accept(suiteClass).initializeLater([
    				it.annotations += suite.exampleGroupRunnerAnnotation
 				it.annotations += suite.toAnnotation(typeof(Named), suite.describe)
-				if(!suite.children.empty){
-					it.annotations += suite.toAnnotation(typeof(Contains), suite.children.toSet);
+				val children = suite.children + subSuites
+				if(!children.empty){
+					it.annotations += suite.toAnnotation(typeof(Contains), children.toSet);
 				}
    				suite.initialize(it)
    			])
+   		suiteClass
    	}
 
    	def Iterable<JvmType> children(Suite suite){
    		val specs = suite.resolveSpecs
-   		specs.map[
-   			types.getTypeForName(it.qualifiedClassName, suite)?.type
-   		]
+   		val types = specs.map[it.qualifiedClassName]
+   		types.map[getTypeForName(it, suite)?.type] 
    	}
 }
 

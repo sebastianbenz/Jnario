@@ -110,7 +110,6 @@
         <classifier xsi:type="ecore:EClass" href="http://www.jnario.org/suite/Suite#//SuiteElement"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.6"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.4"/>
       </alternatives>

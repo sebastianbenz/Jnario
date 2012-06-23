@@ -1986,10 +1986,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_SUITE_NAME;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8004:17: ( ( '#' )+ ~ ( ( '-' | ' ' | '\\t' ) ) ( '\\\\' ( '#' | '-' ) | ~ ( ( '-' | '#' ) ) )* )
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8004:19: ( '#' )+ ~ ( ( '-' | ' ' | '\\t' ) ) ( '\\\\' ( '#' | '-' ) | ~ ( ( '-' | '#' ) ) )*
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7957:17: ( ( '#' )+ ~ ( ( '-' | ' ' | '\\t' ) ) ( '\\\\' ( '#' | '-' ) | ~ ( ( '-' | '#' ) ) )* )
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7957:19: ( '#' )+ ~ ( ( '-' | ' ' | '\\t' ) ) ( '\\\\' ( '#' | '-' ) | ~ ( ( '-' | '#' ) ) )*
             {
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8004:19: ( '#' )+
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7957:19: ( '#' )+
             int cnt1=0;
             loop1:
             do {
@@ -2012,7 +2012,7 @@ public class InternalSuiteLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8004:19: '#'
+            	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7957:19: '#'
             	    {
             	    match('#'); 
 
@@ -2037,7 +2037,7 @@ public class InternalSuiteLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8004:42: ( '\\\\' ( '#' | '-' ) | ~ ( ( '-' | '#' ) ) )*
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7957:42: ( '\\\\' ( '#' | '-' ) | ~ ( ( '-' | '#' ) ) )*
             loop2:
             do {
                 int alt2=3;
@@ -2062,7 +2062,7 @@ public class InternalSuiteLexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8004:43: '\\\\' ( '#' | '-' )
+            	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7957:43: '\\\\' ( '#' | '-' )
             	    {
             	    match('\\'); 
             	    if ( input.LA(1)=='#'||input.LA(1)=='-' ) {
@@ -2078,7 +2078,7 @@ public class InternalSuiteLexer extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8004:58: ~ ( ( '-' | '#' ) )
+            	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7957:58: ~ ( ( '-' | '#' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\"')||(input.LA(1)>='$' && input.LA(1)<=',')||(input.LA(1)>='.' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -2114,11 +2114,11 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_PATTERN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8006:14: ( '\\\\' (~ ( ( '\\r' | '\\n' ) ) )* ( '\\r' )? '\\n' )
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8006:16: '\\\\' (~ ( ( '\\r' | '\\n' ) ) )* ( '\\r' )? '\\n'
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7959:14: ( '\\\\' (~ ( ( '\\r' | '\\n' ) ) )* ( '\\r' )? '\\n' )
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7959:16: '\\\\' (~ ( ( '\\r' | '\\n' ) ) )* ( '\\r' )? '\\n'
             {
             match('\\'); 
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8006:21: (~ ( ( '\\r' | '\\n' ) ) )*
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7959:21: (~ ( ( '\\r' | '\\n' ) ) )*
             loop3:
             do {
                 int alt3=2;
@@ -2131,7 +2131,7 @@ public class InternalSuiteLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8006:21: ~ ( ( '\\r' | '\\n' ) )
+            	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7959:21: ~ ( ( '\\r' | '\\n' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -2151,7 +2151,7 @@ public class InternalSuiteLexer extends Lexer {
                 }
             } while (true);
 
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8006:37: ( '\\r' )?
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7959:37: ( '\\r' )?
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -2160,7 +2160,7 @@ public class InternalSuiteLexer extends Lexer {
             }
             switch (alt4) {
                 case 1 :
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8006:37: '\\r'
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7959:37: '\\r'
                     {
                     match('\r'); 
 
@@ -2186,11 +2186,11 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_TEXT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8008:11: ( ':' ( '\\\\' ( '#' | '-' ) | ~ ( ( '-' | '#' ) ) )* )
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8008:13: ':' ( '\\\\' ( '#' | '-' ) | ~ ( ( '-' | '#' ) ) )*
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7961:11: ( ':' ( '\\\\' ( '#' | '-' ) | ~ ( ( '-' | '#' ) ) )* )
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7961:13: ':' ( '\\\\' ( '#' | '-' ) | ~ ( ( '-' | '#' ) ) )*
             {
             match(':'); 
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8008:17: ( '\\\\' ( '#' | '-' ) | ~ ( ( '-' | '#' ) ) )*
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7961:17: ( '\\\\' ( '#' | '-' ) | ~ ( ( '-' | '#' ) ) )*
             loop5:
             do {
                 int alt5=3;
@@ -2215,7 +2215,7 @@ public class InternalSuiteLexer extends Lexer {
 
                 switch (alt5) {
             	case 1 :
-            	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8008:18: '\\\\' ( '#' | '-' )
+            	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7961:18: '\\\\' ( '#' | '-' )
             	    {
             	    match('\\'); 
             	    if ( input.LA(1)=='#'||input.LA(1)=='-' ) {
@@ -2231,7 +2231,7 @@ public class InternalSuiteLexer extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8008:33: ~ ( ( '-' | '#' ) )
+            	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7961:33: ~ ( ( '-' | '#' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\"')||(input.LA(1)>='$' && input.LA(1)<=',')||(input.LA(1)>='.' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -2267,10 +2267,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8010:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )* )
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8010:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7963:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )* )
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7963:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
             {
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8010:11: ( '^' )?
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7963:11: ( '^' )?
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -2279,7 +2279,7 @@ public class InternalSuiteLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8010:11: '^'
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7963:11: '^'
                     {
                     match('^'); 
 
@@ -2297,7 +2297,7 @@ public class InternalSuiteLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8010:44: ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7963:44: ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
             loop7:
             do {
                 int alt7=2;
@@ -2346,12 +2346,12 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_RICH_TEXT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8012:16: ( '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) )
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8012:18: '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7965:16: ( '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) )
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7965:18: '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
             {
             match("'''"); 
 
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8012:27: ( RULE_IN_RICH_STRING )*
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7965:27: ( RULE_IN_RICH_STRING )*
             loop8:
             do {
                 int alt8=2;
@@ -2382,7 +2382,7 @@ public class InternalSuiteLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8012:27: RULE_IN_RICH_STRING
+            	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7965:27: RULE_IN_RICH_STRING
             	    {
             	    mRULE_IN_RICH_STRING(); 
 
@@ -2394,7 +2394,7 @@ public class InternalSuiteLexer extends Lexer {
                 }
             } while (true);
 
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8012:48: ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7965:48: ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
             int alt11=2;
             int LA11_0 = input.LA(1);
 
@@ -2417,7 +2417,7 @@ public class InternalSuiteLexer extends Lexer {
                 alt11=2;}
             switch (alt11) {
                 case 1 :
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8012:49: '\\'\\'\\''
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7965:49: '\\'\\'\\''
                     {
                     match("'''"); 
 
@@ -2425,9 +2425,9 @@ public class InternalSuiteLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8012:58: ( '\\'' ( '\\'' )? )? EOF
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7965:58: ( '\\'' ( '\\'' )? )? EOF
                     {
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8012:58: ( '\\'' ( '\\'' )? )?
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7965:58: ( '\\'' ( '\\'' )? )?
                     int alt10=2;
                     int LA10_0 = input.LA(1);
 
@@ -2436,10 +2436,10 @@ public class InternalSuiteLexer extends Lexer {
                     }
                     switch (alt10) {
                         case 1 :
-                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8012:59: '\\'' ( '\\'' )?
+                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7965:59: '\\'' ( '\\'' )?
                             {
                             match('\''); 
-                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8012:64: ( '\\'' )?
+                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7965:64: ( '\\'' )?
                             int alt9=2;
                             int LA9_0 = input.LA(1);
 
@@ -2448,7 +2448,7 @@ public class InternalSuiteLexer extends Lexer {
                             }
                             switch (alt9) {
                                 case 1 :
-                                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8012:64: '\\''
+                                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7965:64: '\\''
                                     {
                                     match('\''); 
 
@@ -2486,12 +2486,12 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_RICH_TEXT_START;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8014:22: ( '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00B4' )
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8014:24: '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00B4'
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7967:22: ( '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00B4' )
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7967:24: '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00B4'
             {
             match("'''"); 
 
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8014:33: ( RULE_IN_RICH_STRING )*
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7967:33: ( RULE_IN_RICH_STRING )*
             loop12:
             do {
                 int alt12=2;
@@ -2522,7 +2522,7 @@ public class InternalSuiteLexer extends Lexer {
 
                 switch (alt12) {
             	case 1 :
-            	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8014:33: RULE_IN_RICH_STRING
+            	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7967:33: RULE_IN_RICH_STRING
             	    {
             	    mRULE_IN_RICH_STRING(); 
 
@@ -2534,7 +2534,7 @@ public class InternalSuiteLexer extends Lexer {
                 }
             } while (true);
 
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8014:54: ( '\\'' ( '\\'' )? )?
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7967:54: ( '\\'' ( '\\'' )? )?
             int alt14=2;
             int LA14_0 = input.LA(1);
 
@@ -2543,10 +2543,10 @@ public class InternalSuiteLexer extends Lexer {
             }
             switch (alt14) {
                 case 1 :
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8014:55: '\\'' ( '\\'' )?
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7967:55: '\\'' ( '\\'' )?
                     {
                     match('\''); 
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8014:60: ( '\\'' )?
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7967:60: ( '\\'' )?
                     int alt13=2;
                     int LA13_0 = input.LA(1);
 
@@ -2555,7 +2555,7 @@ public class InternalSuiteLexer extends Lexer {
                     }
                     switch (alt13) {
                         case 1 :
-                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8014:60: '\\''
+                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7967:60: '\\''
                             {
                             match('\''); 
 
@@ -2587,11 +2587,11 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_RICH_TEXT_END;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8016:20: ( '\\u00AA' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) )
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8016:22: '\\u00AA' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7969:20: ( '\\u00AA' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) )
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7969:22: '\\u00AA' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
             {
             match('\u00AA'); 
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8016:31: ( RULE_IN_RICH_STRING )*
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7969:31: ( RULE_IN_RICH_STRING )*
             loop15:
             do {
                 int alt15=2;
@@ -2622,7 +2622,7 @@ public class InternalSuiteLexer extends Lexer {
 
                 switch (alt15) {
             	case 1 :
-            	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8016:31: RULE_IN_RICH_STRING
+            	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7969:31: RULE_IN_RICH_STRING
             	    {
             	    mRULE_IN_RICH_STRING(); 
 
@@ -2634,7 +2634,7 @@ public class InternalSuiteLexer extends Lexer {
                 }
             } while (true);
 
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8016:52: ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7969:52: ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
             int alt18=2;
             int LA18_0 = input.LA(1);
 
@@ -2657,7 +2657,7 @@ public class InternalSuiteLexer extends Lexer {
                 alt18=2;}
             switch (alt18) {
                 case 1 :
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8016:53: '\\'\\'\\''
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7969:53: '\\'\\'\\''
                     {
                     match("'''"); 
 
@@ -2665,9 +2665,9 @@ public class InternalSuiteLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8016:62: ( '\\'' ( '\\'' )? )? EOF
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7969:62: ( '\\'' ( '\\'' )? )? EOF
                     {
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8016:62: ( '\\'' ( '\\'' )? )?
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7969:62: ( '\\'' ( '\\'' )? )?
                     int alt17=2;
                     int LA17_0 = input.LA(1);
 
@@ -2676,10 +2676,10 @@ public class InternalSuiteLexer extends Lexer {
                     }
                     switch (alt17) {
                         case 1 :
-                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8016:63: '\\'' ( '\\'' )?
+                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7969:63: '\\'' ( '\\'' )?
                             {
                             match('\''); 
-                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8016:68: ( '\\'' )?
+                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7969:68: ( '\\'' )?
                             int alt16=2;
                             int LA16_0 = input.LA(1);
 
@@ -2688,7 +2688,7 @@ public class InternalSuiteLexer extends Lexer {
                             }
                             switch (alt16) {
                                 case 1 :
-                                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8016:68: '\\''
+                                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7969:68: '\\''
                                     {
                                     match('\''); 
 
@@ -2726,11 +2726,11 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_RICH_TEXT_INBETWEEN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8018:26: ( '\\u00AA' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00B4' )
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8018:28: '\\u00AA' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00B4'
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7971:26: ( '\\u00AA' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00B4' )
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7971:28: '\\u00AA' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00B4'
             {
             match('\u00AA'); 
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8018:37: ( RULE_IN_RICH_STRING )*
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7971:37: ( RULE_IN_RICH_STRING )*
             loop19:
             do {
                 int alt19=2;
@@ -2761,7 +2761,7 @@ public class InternalSuiteLexer extends Lexer {
 
                 switch (alt19) {
             	case 1 :
-            	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8018:37: RULE_IN_RICH_STRING
+            	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7971:37: RULE_IN_RICH_STRING
             	    {
             	    mRULE_IN_RICH_STRING(); 
 
@@ -2773,7 +2773,7 @@ public class InternalSuiteLexer extends Lexer {
                 }
             } while (true);
 
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8018:58: ( '\\'' ( '\\'' )? )?
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7971:58: ( '\\'' ( '\\'' )? )?
             int alt21=2;
             int LA21_0 = input.LA(1);
 
@@ -2782,10 +2782,10 @@ public class InternalSuiteLexer extends Lexer {
             }
             switch (alt21) {
                 case 1 :
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8018:59: '\\'' ( '\\'' )?
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7971:59: '\\'' ( '\\'' )?
                     {
                     match('\''); 
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8018:64: ( '\\'' )?
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7971:64: ( '\\'' )?
                     int alt20=2;
                     int LA20_0 = input.LA(1);
 
@@ -2794,7 +2794,7 @@ public class InternalSuiteLexer extends Lexer {
                     }
                     switch (alt20) {
                         case 1 :
-                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8018:64: '\\''
+                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7971:64: '\\''
                             {
                             match('\''); 
 
@@ -2826,12 +2826,12 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_COMMENT_RICH_TEXT_INBETWEEN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8020:34: ( '\\u00B4\\u00B4' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00B4' )? )
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8020:36: '\\u00B4\\u00B4' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00B4' )?
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7973:34: ( '\\u00B4\\u00B4' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00B4' )? )
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7973:36: '\\u00B4\\u00B4' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00B4' )?
             {
             match("\u00B4\u00B4"); 
 
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8020:51: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7973:51: (~ ( ( '\\n' | '\\r' ) ) )*
             loop22:
             do {
                 int alt22=2;
@@ -2844,7 +2844,7 @@ public class InternalSuiteLexer extends Lexer {
 
                 switch (alt22) {
             	case 1 :
-            	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8020:51: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7973:51: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -2864,7 +2864,7 @@ public class InternalSuiteLexer extends Lexer {
                 }
             } while (true);
 
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8020:67: ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00B4' )?
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7973:67: ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00B4' )?
             int alt27=2;
             int LA27_0 = input.LA(1);
 
@@ -2873,9 +2873,9 @@ public class InternalSuiteLexer extends Lexer {
             }
             switch (alt27) {
                 case 1 :
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8020:68: ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00B4'
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7973:68: ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00B4'
                     {
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8020:68: ( '\\r' )?
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7973:68: ( '\\r' )?
                     int alt23=2;
                     int LA23_0 = input.LA(1);
 
@@ -2884,7 +2884,7 @@ public class InternalSuiteLexer extends Lexer {
                     }
                     switch (alt23) {
                         case 1 :
-                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8020:68: '\\r'
+                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7973:68: '\\r'
                             {
                             match('\r'); 
 
@@ -2894,7 +2894,7 @@ public class InternalSuiteLexer extends Lexer {
                     }
 
                     match('\n'); 
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8020:79: ( RULE_IN_RICH_STRING )*
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7973:79: ( RULE_IN_RICH_STRING )*
                     loop24:
                     do {
                         int alt24=2;
@@ -2925,7 +2925,7 @@ public class InternalSuiteLexer extends Lexer {
 
                         switch (alt24) {
                     	case 1 :
-                    	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8020:79: RULE_IN_RICH_STRING
+                    	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7973:79: RULE_IN_RICH_STRING
                     	    {
                     	    mRULE_IN_RICH_STRING(); 
 
@@ -2937,7 +2937,7 @@ public class InternalSuiteLexer extends Lexer {
                         }
                     } while (true);
 
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8020:100: ( '\\'' ( '\\'' )? )?
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7973:100: ( '\\'' ( '\\'' )? )?
                     int alt26=2;
                     int LA26_0 = input.LA(1);
 
@@ -2946,10 +2946,10 @@ public class InternalSuiteLexer extends Lexer {
                     }
                     switch (alt26) {
                         case 1 :
-                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8020:101: '\\'' ( '\\'' )?
+                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7973:101: '\\'' ( '\\'' )?
                             {
                             match('\''); 
-                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8020:106: ( '\\'' )?
+                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7973:106: ( '\\'' )?
                             int alt25=2;
                             int LA25_0 = input.LA(1);
 
@@ -2958,7 +2958,7 @@ public class InternalSuiteLexer extends Lexer {
                             }
                             switch (alt25) {
                                 case 1 :
-                                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8020:106: '\\''
+                                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7973:106: '\\''
                                     {
                                     match('\''); 
 
@@ -2996,12 +2996,12 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_COMMENT_RICH_TEXT_END;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8022:28: ( '\\u00B4\\u00B4' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) | EOF ) )
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8022:30: '\\u00B4\\u00B4' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) | EOF )
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7975:28: ( '\\u00B4\\u00B4' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) | EOF ) )
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7975:30: '\\u00B4\\u00B4' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) | EOF )
             {
             match("\u00B4\u00B4"); 
 
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8022:45: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7975:45: (~ ( ( '\\n' | '\\r' ) ) )*
             loop28:
             do {
                 int alt28=2;
@@ -3014,7 +3014,7 @@ public class InternalSuiteLexer extends Lexer {
 
                 switch (alt28) {
             	case 1 :
-            	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8022:45: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7975:45: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -3034,7 +3034,7 @@ public class InternalSuiteLexer extends Lexer {
                 }
             } while (true);
 
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8022:61: ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) | EOF )
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7975:61: ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) | EOF )
             int alt34=2;
             int LA34_0 = input.LA(1);
 
@@ -3045,9 +3045,9 @@ public class InternalSuiteLexer extends Lexer {
                 alt34=2;}
             switch (alt34) {
                 case 1 :
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8022:62: ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7975:62: ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
                     {
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8022:62: ( '\\r' )?
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7975:62: ( '\\r' )?
                     int alt29=2;
                     int LA29_0 = input.LA(1);
 
@@ -3056,7 +3056,7 @@ public class InternalSuiteLexer extends Lexer {
                     }
                     switch (alt29) {
                         case 1 :
-                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8022:62: '\\r'
+                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7975:62: '\\r'
                             {
                             match('\r'); 
 
@@ -3066,7 +3066,7 @@ public class InternalSuiteLexer extends Lexer {
                     }
 
                     match('\n'); 
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8022:73: ( RULE_IN_RICH_STRING )*
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7975:73: ( RULE_IN_RICH_STRING )*
                     loop30:
                     do {
                         int alt30=2;
@@ -3097,7 +3097,7 @@ public class InternalSuiteLexer extends Lexer {
 
                         switch (alt30) {
                     	case 1 :
-                    	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8022:73: RULE_IN_RICH_STRING
+                    	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7975:73: RULE_IN_RICH_STRING
                     	    {
                     	    mRULE_IN_RICH_STRING(); 
 
@@ -3109,7 +3109,7 @@ public class InternalSuiteLexer extends Lexer {
                         }
                     } while (true);
 
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8022:94: ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7975:94: ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
                     int alt33=2;
                     int LA33_0 = input.LA(1);
 
@@ -3132,7 +3132,7 @@ public class InternalSuiteLexer extends Lexer {
                         alt33=2;}
                     switch (alt33) {
                         case 1 :
-                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8022:95: '\\'\\'\\''
+                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7975:95: '\\'\\'\\''
                             {
                             match("'''"); 
 
@@ -3140,9 +3140,9 @@ public class InternalSuiteLexer extends Lexer {
                             }
                             break;
                         case 2 :
-                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8022:104: ( '\\'' ( '\\'' )? )? EOF
+                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7975:104: ( '\\'' ( '\\'' )? )? EOF
                             {
-                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8022:104: ( '\\'' ( '\\'' )? )?
+                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7975:104: ( '\\'' ( '\\'' )? )?
                             int alt32=2;
                             int LA32_0 = input.LA(1);
 
@@ -3151,10 +3151,10 @@ public class InternalSuiteLexer extends Lexer {
                             }
                             switch (alt32) {
                                 case 1 :
-                                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8022:105: '\\'' ( '\\'' )?
+                                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7975:105: '\\'' ( '\\'' )?
                                     {
                                     match('\''); 
-                                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8022:110: ( '\\'' )?
+                                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7975:110: ( '\\'' )?
                                     int alt31=2;
                                     int LA31_0 = input.LA(1);
 
@@ -3163,7 +3163,7 @@ public class InternalSuiteLexer extends Lexer {
                                     }
                                     switch (alt31) {
                                         case 1 :
-                                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8022:110: '\\''
+                                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7975:110: '\\''
                                             {
                                             match('\''); 
 
@@ -3189,7 +3189,7 @@ public class InternalSuiteLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8022:123: EOF
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7975:123: EOF
                     {
                     match(EOF); 
 
@@ -3212,10 +3212,10 @@ public class InternalSuiteLexer extends Lexer {
     // $ANTLR start "RULE_IN_RICH_STRING"
     public final void mRULE_IN_RICH_STRING() throws RecognitionException {
         try {
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8024:30: ( ( '\\'\\'' ~ ( ( '\\u00B4' | '\\'' ) ) | '\\'' ~ ( ( '\\u00B4' | '\\'' ) ) | ~ ( ( '\\u00B4' | '\\'' ) ) ) )
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8024:32: ( '\\'\\'' ~ ( ( '\\u00B4' | '\\'' ) ) | '\\'' ~ ( ( '\\u00B4' | '\\'' ) ) | ~ ( ( '\\u00B4' | '\\'' ) ) )
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7977:30: ( ( '\\'\\'' ~ ( ( '\\u00B4' | '\\'' ) ) | '\\'' ~ ( ( '\\u00B4' | '\\'' ) ) | ~ ( ( '\\u00B4' | '\\'' ) ) ) )
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7977:32: ( '\\'\\'' ~ ( ( '\\u00B4' | '\\'' ) ) | '\\'' ~ ( ( '\\u00B4' | '\\'' ) ) | ~ ( ( '\\u00B4' | '\\'' ) ) )
             {
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8024:32: ( '\\'\\'' ~ ( ( '\\u00B4' | '\\'' ) ) | '\\'' ~ ( ( '\\u00B4' | '\\'' ) ) | ~ ( ( '\\u00B4' | '\\'' ) ) )
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7977:32: ( '\\'\\'' ~ ( ( '\\u00B4' | '\\'' ) ) | '\\'' ~ ( ( '\\u00B4' | '\\'' ) ) | ~ ( ( '\\u00B4' | '\\'' ) ) )
             int alt35=3;
             int LA35_0 = input.LA(1);
 
@@ -3246,7 +3246,7 @@ public class InternalSuiteLexer extends Lexer {
             }
             switch (alt35) {
                 case 1 :
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8024:33: '\\'\\'' ~ ( ( '\\u00B4' | '\\'' ) )
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7977:33: '\\'\\'' ~ ( ( '\\u00B4' | '\\'' ) )
                     {
                     match("''"); 
 
@@ -3263,7 +3263,7 @@ public class InternalSuiteLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8024:59: '\\'' ~ ( ( '\\u00B4' | '\\'' ) )
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7977:59: '\\'' ~ ( ( '\\u00B4' | '\\'' ) )
                     {
                     match('\''); 
                     if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='\u00B3')||(input.LA(1)>='\u00B5' && input.LA(1)<='\uFFFF') ) {
@@ -3279,7 +3279,7 @@ public class InternalSuiteLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8024:83: ~ ( ( '\\u00B4' | '\\'' ) )
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7977:83: ~ ( ( '\\u00B4' | '\\'' ) )
                     {
                     if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='\u00B3')||(input.LA(1)>='\u00B5' && input.LA(1)<='\uFFFF') ) {
                         input.consume();
@@ -3310,10 +3310,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_HEX;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8026:10: ( ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )? )
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8026:12: ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7979:10: ( ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )? )
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7979:12: ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
             {
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8026:12: ( '0x' | '0X' )
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7979:12: ( '0x' | '0X' )
             int alt36=2;
             int LA36_0 = input.LA(1);
 
@@ -3341,7 +3341,7 @@ public class InternalSuiteLexer extends Lexer {
             }
             switch (alt36) {
                 case 1 :
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8026:13: '0x'
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7979:13: '0x'
                     {
                     match("0x"); 
 
@@ -3349,7 +3349,7 @@ public class InternalSuiteLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8026:18: '0X'
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7979:18: '0X'
                     {
                     match("0X"); 
 
@@ -3359,7 +3359,7 @@ public class InternalSuiteLexer extends Lexer {
 
             }
 
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8026:24: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7979:24: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+
             int cnt37=0;
             loop37:
             do {
@@ -3397,7 +3397,7 @@ public class InternalSuiteLexer extends Lexer {
                 cnt37++;
             } while (true);
 
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8026:58: ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7979:58: ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
             int alt39=2;
             int LA39_0 = input.LA(1);
 
@@ -3406,10 +3406,10 @@ public class InternalSuiteLexer extends Lexer {
             }
             switch (alt39) {
                 case 1 :
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8026:59: '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7979:59: '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
                     {
                     match('#'); 
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8026:63: ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7979:63: ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
                     int alt38=2;
                     int LA38_0 = input.LA(1);
 
@@ -3427,7 +3427,7 @@ public class InternalSuiteLexer extends Lexer {
                     }
                     switch (alt38) {
                         case 1 :
-                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8026:64: ( 'b' | 'B' ) ( 'i' | 'I' )
+                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7979:64: ( 'b' | 'B' ) ( 'i' | 'I' )
                             {
                             if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                                 input.consume();
@@ -3451,7 +3451,7 @@ public class InternalSuiteLexer extends Lexer {
                             }
                             break;
                         case 2 :
-                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8026:84: ( 'l' | 'L' )
+                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7979:84: ( 'l' | 'L' )
                             {
                             if ( input.LA(1)=='L'||input.LA(1)=='l' ) {
                                 input.consume();
@@ -3490,11 +3490,11 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8028:10: ( '0' .. '9' ( '0' .. '9' | '_' )* )
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8028:12: '0' .. '9' ( '0' .. '9' | '_' )*
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7981:10: ( '0' .. '9' ( '0' .. '9' | '_' )* )
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7981:12: '0' .. '9' ( '0' .. '9' | '_' )*
             {
             matchRange('0','9'); 
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8028:21: ( '0' .. '9' | '_' )*
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7981:21: ( '0' .. '9' | '_' )*
             loop40:
             do {
                 int alt40=2;
@@ -3543,11 +3543,11 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_DECIMAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8030:14: ( RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )? )
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8030:16: RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7983:14: ( RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )? )
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7983:16: RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
             {
             mRULE_INT(); 
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8030:25: ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )?
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7983:25: ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )?
             int alt42=2;
             int LA42_0 = input.LA(1);
 
@@ -3556,7 +3556,7 @@ public class InternalSuiteLexer extends Lexer {
             }
             switch (alt42) {
                 case 1 :
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8030:26: ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7983:26: ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT
                     {
                     if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                         input.consume();
@@ -3567,7 +3567,7 @@ public class InternalSuiteLexer extends Lexer {
                         recover(mse);
                         throw mse;}
 
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8030:36: ( '+' | '-' )?
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7983:36: ( '+' | '-' )?
                     int alt41=2;
                     int LA41_0 = input.LA(1);
 
@@ -3600,7 +3600,7 @@ public class InternalSuiteLexer extends Lexer {
 
             }
 
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8030:58: ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7983:58: ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
             int alt43=3;
             int LA43_0 = input.LA(1);
 
@@ -3612,7 +3612,7 @@ public class InternalSuiteLexer extends Lexer {
             }
             switch (alt43) {
                 case 1 :
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8030:59: ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' )
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7983:59: ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' )
                     {
                     if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                         input.consume();
@@ -3636,7 +3636,7 @@ public class InternalSuiteLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8030:87: ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' )
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7983:87: ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' )
                     {
                     if ( input.LA(1)=='D'||input.LA(1)=='F'||input.LA(1)=='L'||input.LA(1)=='d'||input.LA(1)=='f'||input.LA(1)=='l' ) {
                         input.consume();
@@ -3669,10 +3669,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8032:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8032:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7985:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7985:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8032:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7985:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt46=2;
             int LA46_0 = input.LA(1);
 
@@ -3690,10 +3690,10 @@ public class InternalSuiteLexer extends Lexer {
             }
             switch (alt46) {
                 case 1 :
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8032:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7985:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8032:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7985:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop44:
                     do {
                         int alt44=3;
@@ -3709,7 +3709,7 @@ public class InternalSuiteLexer extends Lexer {
 
                         switch (alt44) {
                     	case 1 :
-                    	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8032:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7985:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -3725,7 +3725,7 @@ public class InternalSuiteLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8032:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7985:66: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -3750,10 +3750,10 @@ public class InternalSuiteLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8032:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7985:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8032:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7985:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop45:
                     do {
                         int alt45=3;
@@ -3769,7 +3769,7 @@ public class InternalSuiteLexer extends Lexer {
 
                         switch (alt45) {
                     	case 1 :
-                    	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8032:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7985:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -3785,7 +3785,7 @@ public class InternalSuiteLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8032:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7985:137: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -3828,12 +3828,12 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8034:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8034:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7987:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7987:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8034:24: ( options {greedy=false; } : . )*
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7987:24: ( options {greedy=false; } : . )*
             loop47:
             do {
                 int alt47=2;
@@ -3858,7 +3858,7 @@ public class InternalSuiteLexer extends Lexer {
 
                 switch (alt47) {
             	case 1 :
-            	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8034:52: .
+            	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7987:52: .
             	    {
             	    matchAny(); 
 
@@ -3888,12 +3888,12 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8036:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8036:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7989:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7989:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8036:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7989:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop48:
             do {
                 int alt48=2;
@@ -3906,7 +3906,7 @@ public class InternalSuiteLexer extends Lexer {
 
                 switch (alt48) {
             	case 1 :
-            	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8036:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7989:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -3926,7 +3926,7 @@ public class InternalSuiteLexer extends Lexer {
                 }
             } while (true);
 
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8036:40: ( ( '\\r' )? '\\n' )?
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7989:40: ( ( '\\r' )? '\\n' )?
             int alt50=2;
             int LA50_0 = input.LA(1);
 
@@ -3935,9 +3935,9 @@ public class InternalSuiteLexer extends Lexer {
             }
             switch (alt50) {
                 case 1 :
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8036:41: ( '\\r' )? '\\n'
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7989:41: ( '\\r' )? '\\n'
                     {
-                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8036:41: ( '\\r' )?
+                    // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7989:41: ( '\\r' )?
                     int alt49=2;
                     int LA49_0 = input.LA(1);
 
@@ -3946,7 +3946,7 @@ public class InternalSuiteLexer extends Lexer {
                     }
                     switch (alt49) {
                         case 1 :
-                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8036:41: '\\r'
+                            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7989:41: '\\r'
                             {
                             match('\r'); 
 
@@ -3978,10 +3978,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8038:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8038:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7991:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7991:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8038:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7991:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt51=0;
             loop51:
             do {
@@ -4035,8 +4035,8 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8040:16: ( . )
-            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:8040:18: .
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7993:16: ( . )
+            // ../org.jnario.suite/src-gen/org/jnario/suite/parser/antlr/internal/InternalSuite.g:7993:18: .
             {
             matchAny(); 
 

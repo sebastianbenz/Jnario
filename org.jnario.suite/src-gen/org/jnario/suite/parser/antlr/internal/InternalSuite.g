@@ -400,74 +400,27 @@ ruleSuiteElement returns [EObject current=null]
     @after { leaveRule(); }:
 (
     { 
-        newCompositeNode(grammarAccess.getSuiteElementAccess().getHeadingParserRuleCall_0()); 
+        newCompositeNode(grammarAccess.getSuiteElementAccess().getSpecReferenceParserRuleCall_0()); 
     }
-    this_Heading_0=ruleHeading
+    this_SpecReference_0=ruleSpecReference
     { 
-        $current = $this_Heading_0.current; 
+        $current = $this_SpecReference_0.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getSuiteElementAccess().getSpecReferenceParserRuleCall_1()); 
+        newCompositeNode(grammarAccess.getSuiteElementAccess().getPatternReferenceParserRuleCall_1()); 
     }
-    this_SpecReference_1=ruleSpecReference
+    this_PatternReference_1=rulePatternReference
     { 
-        $current = $this_SpecReference_1.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getSuiteElementAccess().getPatternReferenceParserRuleCall_2()); 
-    }
-    this_PatternReference_2=rulePatternReference
-    { 
-        $current = $this_PatternReference_2.current; 
+        $current = $this_PatternReference_1.current; 
         afterParserOrEnumRuleCall();
     }
 )
 ;
 
 
-
-
-
-// Entry rule entryRuleHeading
-entryRuleHeading returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getHeadingRule()); }
-	 iv_ruleHeading=ruleHeading 
-	 { $current=$iv_ruleHeading.current; } 
-	 EOF 
-;
-
-// Rule Heading
-ruleHeading returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(
-(
-		lv_name_0_0=RULE_SUITE_NAME
-		{
-			newLeafNode(lv_name_0_0, grammarAccess.getHeadingAccess().getNameSUITE_NAMETerminalRuleCall_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getHeadingRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"name",
-        		lv_name_0_0, 
-        		"SUITE_NAME");
-	    }
-
-)
-)
-;
 
 
 

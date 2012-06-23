@@ -87,8 +87,7 @@ public class SuiteSemanticSequencer extends XtendSemanticSequencer {
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == SuitePackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
 			case SuitePackage.HEADING:
-				if(context == grammarAccess.getHeadingRule() ||
-				   context == grammarAccess.getSuiteElementRule()) {
+				if(context == grammarAccess.getHeadingRule()) {
 					sequence_Heading(context, (Heading) semanticObject); 
 					return; 
 				}

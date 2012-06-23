@@ -12,6 +12,8 @@ package org.jnario.suite.ui.labeling;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.xtend.ide.labeling.XtendLabelProvider;
+import org.jnario.suite.jvmmodel.SuiteClassNameProvider;
+import org.jnario.suite.suite.Suite;
 
 import com.google.inject.Inject;
 
@@ -23,9 +25,15 @@ import com.google.inject.Inject;
 @SuppressWarnings("restriction")
 public class SuiteLabelProvider extends XtendLabelProvider {
 
+	@Inject SuiteClassNameProvider nameProvider;
+	
 	@Inject
 	public SuiteLabelProvider(AdapterFactoryLabelProvider delegate) {
 		super(delegate);
+	}
+	
+	public String text(Suite element) {
+		return nameProvider.describe(element);
 	}
 
 }

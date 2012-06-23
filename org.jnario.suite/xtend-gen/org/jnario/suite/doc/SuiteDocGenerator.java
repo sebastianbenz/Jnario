@@ -1,17 +1,23 @@
 package org.jnario.suite.doc;
 
+import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import java.util.Arrays;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.util.Strings;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.Specification;
 import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.HtmlFile;
+import org.jnario.doc.HtmlFileBuilder;
 import org.jnario.suite.jvmmodel.SpecResolver;
 import org.jnario.suite.jvmmodel.SuiteClassNameProvider;
 import org.jnario.suite.suite.Heading;
@@ -19,6 +25,7 @@ import org.jnario.suite.suite.Reference;
 import org.jnario.suite.suite.SpecReference;
 import org.jnario.suite.suite.Suite;
 import org.jnario.suite.suite.SuiteElement;
+import org.jnario.suite.suite.SuiteFile;
 
 @SuppressWarnings("all")
 public class SuiteDocGenerator extends AbstractDocGenerator {
@@ -28,14 +35,58 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
   @Inject
   private SpecResolver _specResolver;
   
-  public HtmlFile createHtmlFile(final XtendClass xtendClass) {
+  @Inject
+  private HtmlFileBuilder _htmlFileBuilder;
+  
+  public void doGenerate(final Resource input, final IFileSystemAccess fsa) {
+    EList<EObject> _contents = input.getContents();
+    Iterable<SuiteFile> _filter = Iterables.<SuiteFile>filter(_contents, SuiteFile.class);
+    final Procedure1<SuiteFile> _function = new Procedure1<SuiteFile>() {
+        public void apply(final SuiteFile it) {
+          final HtmlFile htmlFile = SuiteDocGenerator.this.createHtmlFile(it);
+          EList<XtendClass> _xtendClasses = it.getXtendClasses();
+          XtendClass _head = IterableExtensions.<XtendClass>head(_xtendClasses);
+          SuiteDocGenerator.this._htmlFileBuilder.generate(_head, fsa, htmlFile);
+        }
+      };
+    IterableExtensions.<SuiteFile>forEach(_filter, _function);
+  }
+  
+  public HtmlFile createHtmlFile(final SuiteFile file) {
     HtmlFile _xblockexpression = null;
     {
-      boolean _not = (!(xtendClass instanceof Suite));
-      if (_not) {
+      EList<XtendClass> _xtendClasses = file.getXtendClasses();
+      final Iterable<Suite> suites = Iterables.<Suite>filter(_xtendClasses, Suite.class);
+      boolean _isEmpty = IterableExtensions.isEmpty(suites);
+      if (_isEmpty) {
         return HtmlFile.EMPTY_FILE;
       }
-      final Suite suite = ((Suite) xtendClass);
+      final Procedure1<HtmlFile> _function = new Procedure1<HtmlFile>() {
+          public void apply(final HtmlFile it) {
+            Suite _head = IterableExtensions.<Suite>head(suites);
+            String _className = SuiteDocGenerator.this._suiteClassNameProvider.getClassName(_head);
+            it.fileName = _className;
+            Suite _head_1 = IterableExtensions.<Suite>head(suites);
+            String _describe = SuiteDocGenerator.this._suiteClassNameProvider.describe(_head_1);
+            String _convertFromJavaString = Strings.convertFromJavaString(_describe, true);
+            it.title = _convertFromJavaString;
+            CharSequence _generateContent = SuiteDocGenerator.this.generateContent(suites);
+            it.content = _generateContent;
+            Suite _head_2 = IterableExtensions.<Suite>head(suites);
+            String _root = SuiteDocGenerator.this.root(_head_2);
+            it.rootFolder = _root;
+          }
+        };
+      HtmlFile _newHtmlFile = HtmlFile.newHtmlFile(_function);
+      _xblockexpression = (_newHtmlFile);
+    }
+    return _xblockexpression;
+  }
+  
+  public HtmlFile createHtmlFile(final XtendClass file) {
+    HtmlFile _xblockexpression = null;
+    {
+      final Suite suite = ((Suite) file);
       final Procedure1<HtmlFile> _function = new Procedure1<HtmlFile>() {
           public void apply(final HtmlFile it) {
             String _className = SuiteDocGenerator.this._suiteClassNameProvider.getClassName(suite);
@@ -53,6 +104,30 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
       _xblockexpression = (_newHtmlFile);
     }
     return _xblockexpression;
+  }
+  
+  public CharSequence generateContent(final Iterable<Suite> suites) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      for(final Suite suite : suites) {
+        {
+          Suite _head = IterableExtensions.<Suite>head(suites);
+          boolean _equals = Objects.equal(suite, _head);
+          boolean _not = (!_equals);
+          if (_not) {
+            String _name = suite.getName();
+            String _firstLine = org.jnario.util.Strings.firstLine(_name);
+            String _markdown2Html = this.markdown2Html(_firstLine);
+            _builder.append(_markdown2Html, "");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        CharSequence _generateContent = this.generateContent(suite);
+        _builder.append(_generateContent, "");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    return _builder;
   }
   
   public CharSequence generateContent(final Suite suite) {
