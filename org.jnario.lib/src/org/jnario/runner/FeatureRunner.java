@@ -7,18 +7,19 @@
  *******************************************************************************/
 package org.jnario.runner;
 
-import org.junit.runner.RunWith;
 import org.junit.runner.manipulation.NoTestsRemainException;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
+
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
 public class FeatureRunner extends ExampleGroupRunner {
 
-	private final class RunnerWrapper implements
-	TestInstantiator {
+	private final class RunnerWrapper implements TestInstantiator {
 
 		private TestInstantiator instantiator;
 		private Object test;
@@ -45,24 +46,19 @@ public class FeatureRunner extends ExampleGroupRunner {
 
 	private TestInstantiator delegate;
 
+	public FeatureRunner(Class<?> klass, NameProvider nameProvider) throws InitializationError {
+		super(klass, nameProvider);
+	}
+	
 	public FeatureRunner(Class<?> klass) throws InitializationError {
 		super(klass);
 	}
 	
 	@Override
-	protected boolean isTestMethod(FrameworkMethod input) {
-		return true;
+	protected Predicate<FrameworkMethod> isTestMethod() {
+		return Predicates.alwaysTrue();
 	}
 	
-	@Override
-	protected ExampleGroupRunner createExampleGroupRunner(Class<?> declaredClass)
-			throws InitializationError {
-		if(declaredClass.getAnnotation(RunWith.class) != null && declaredClass.getAnnotation(RunWith.class).value() == FeatureExamplesRunner.class){
-			return new FeatureExamplesRunner(declaredClass);
-		}
-		return new FeatureRunner(declaredClass);
-	}
-
 	@Override
 	protected ExampleRunner createExampleRunner(Class<?> testClass,
 			FrameworkMethod from) throws InitializationError,

@@ -10,18 +10,23 @@ package org.jnario.lib.tests;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static org.hamcrest.core.Is.is;
+import static org.jnario.lib.tests.ExampleGroupRunnerTest.ExampleWithNestedCustomRunner.CustomRunner.HAS_RUN;
+import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.experimental.results.PrintableResult.testResult;
 import static org.junit.experimental.results.ResultMatchers.hasFailureContaining;
+import static org.junit.experimental.results.ResultMatchers.isSuccessful;
 
 import java.util.List;
 
 import org.hamcrest.Matcher;
+import org.jnario.lib.tests.ExampleGroupRunnerTest.ExampleWithNestedCustomRunner.CustomRunner;
 import org.jnario.runner.Contains;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Extension;
+import org.jnario.runner.NameProvider;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.junit.After;
@@ -36,6 +41,7 @@ import org.junit.internal.matchers.TypeSafeMatcher;
 import org.junit.runner.Description;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.RunWith;
+import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.model.InitializationError;
 
 /**
@@ -171,6 +177,33 @@ public class ExampleGroupRunnerTest {
 		}
 	}
 	
+	@RunWith(ExampleGroupRunner.class)
+	public static class ExampleWithNestedCustomRunner{
+		
+		public static class CustomRunner extends ExampleGroupRunner{
+			
+			public static boolean HAS_RUN = false;
+			
+			public CustomRunner(Class<?> testClass, NameProvider nameProvider)
+					throws InitializationError {
+				super(testClass, nameProvider);
+			}
+			
+			@Override
+			public void run(RunNotifier notifier) {
+				HAS_RUN = true;
+				super.run(notifier);
+			}
+		}
+		
+		@RunWith(CustomRunner.class)
+		public static class SubExample{
+			@Test
+			public void aTest() throws Exception {
+			}
+		}
+	}
+	
 	private static List<String> executedTests = newArrayList();
 	
 	@Before
@@ -288,7 +321,7 @@ public class ExampleGroupRunnerTest {
 	
 	@Test
 	public void shouldObeyRules(){
-		assertThat(PrintableResult.testResult(ExampleWithRule.class), is(org.junit.experimental.results.ResultMatchers.isSuccessful()));
+		assertThat(testResult(ExampleWithRule.class), is(isSuccessful()));
 		assertTrue(TestRule.isExecuted());
 	}
 	
@@ -296,6 +329,15 @@ public class ExampleGroupRunnerTest {
 	@Test
 	public void throwsIllegalStateExceptionIfExceptionIsNotInitialized() throws Exception {
 		assertThat(testResult(ExampleWithUninitializedExtension.class), hasFailureContaining("uninitialized is not initialized"));
+	}
+	
+	@Test
+	public void shouldUseNestedRunners() throws Exception {
+		new JUnitCore().run(ExampleWithNestedCustomRunner.class);
+		assertTrue(HAS_RUN);
+		
+		// clean up
+		HAS_RUN = false;
 	}
 	
 	private Description describe(Class<?> klass) throws InitializationError {

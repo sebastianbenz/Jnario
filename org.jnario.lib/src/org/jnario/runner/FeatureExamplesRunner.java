@@ -10,6 +10,8 @@ package org.jnario.runner;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
 
+import com.google.common.base.Predicate;
+
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
@@ -20,7 +22,11 @@ public class FeatureExamplesRunner extends FeatureRunner{
 	}
 	
 	@Override
-	protected boolean isTestMethod(FrameworkMethod input) {
-		return input.getMethod().getDeclaringClass() != targetClass();
+	protected Predicate<FrameworkMethod> isTestMethod() {
+		return new Predicate<FrameworkMethod>(){
+			public boolean apply(FrameworkMethod input) {
+				return input.getMethod().getDeclaringClass() != targetClass();
+			}
+		};
 	}
 }

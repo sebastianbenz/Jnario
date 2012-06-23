@@ -42,12 +42,20 @@ import com.google.common.collect.Iterables;
 
 
 /**
- * @author Sebastian Benz - Initial contribution and API - Initial Contribution and API
+ * @author Sebastian Benz - Initial contribution and API 
  */
 @SuppressWarnings("restriction")
 public class ExampleGroupRunner extends ParentRunner<Runner> {
 	
-	private NameProvider nameProvider;
+	private final class IsTestMethod implements
+			Predicate<FrameworkMethod> {
+		public boolean apply(FrameworkMethod input) {
+			return input.getMethod().getDeclaringClass() == getTestClass().getJavaClass();
+		}
+	}
+
+
+	private final NameProvider nameProvider;
 	private List<Runner> children;
 	private List<ExtensionClass> extensions;
 	
@@ -94,21 +102,15 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 
 	protected Iterable<? extends Runner> collectExamples() {
 		List<FrameworkMethod> methods = getTestClass().getAnnotatedMethods(Test.class);
-		methods = newArrayList(Iterables.filter(methods, new Predicate<FrameworkMethod>() {
-
-			public boolean apply(FrameworkMethod input) {
-				return isTestMethod(input);
-			}
-
-		}));
+		methods = newArrayList(Iterables.filter(methods, isTestMethod()));
 		orderMethods(methods);
 		return createRunners(getTestClass().getJavaClass(), methods);
 	}
-	
-	protected boolean isTestMethod(FrameworkMethod input) {
-		return input.getMethod().getDeclaringClass() == getTestClass().getJavaClass();
-	}
 
+	protected Predicate<FrameworkMethod> isTestMethod() {
+		return new IsTestMethod();
+	}
+	
 	protected Iterable<? extends Runner> createRunners(final Class<?> testClass,
 			List<FrameworkMethod> annotatedMethods) {
 		return transform(annotatedMethods,
@@ -178,15 +180,11 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 
 	protected Iterable<? extends Runner> collectExampleGroups() {
 		return transform(allDeclaredClasses(),
-				new Function<Class<?>, ExampleGroupRunner>() {
+				new Function<Class<?>, Runner>() {
 
-					public ExampleGroupRunner apply(Class<?> declaredClass) {
+					public Runner apply(Class<?> declaredClass) {
 						try {
-							ExampleGroupRunner childRunner = createExampleGroupRunner(declaredClass);
-							if (childRunner.getChildren().isEmpty()) {
-								return null;
-							}
-							return childRunner;
+							return createExampleGroupRunner(declaredClass);
 						} catch (InitializationError e) {
 							return null;
 						}
@@ -196,9 +194,9 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 				});
 	}
 	
-	protected ExampleGroupRunner createExampleGroupRunner(
+	protected Runner createExampleGroupRunner(
 			Class<?> declaredClass) throws InitializationError {
-		return new ExampleGroupRunner(declaredClass, nameProvider);
+		return new ExampleGroupRunnerBuilder(declaredClass, nameProvider).build();
 	}
 
 	public List<Class<?>> allDeclaredClasses() {
