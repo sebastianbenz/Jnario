@@ -27,6 +27,9 @@ public class OperationNameProvider implements Function<JvmOperation, QualifiedNa
 			Function<JvmFormalParameter, String> {
 		public String apply(JvmFormalParameter from) {
 			JvmTypeReference type = from.getParameterType();
+			if(type == null){
+				return "void";
+			}
 			return type.getSimpleName();
 		}
 	}
