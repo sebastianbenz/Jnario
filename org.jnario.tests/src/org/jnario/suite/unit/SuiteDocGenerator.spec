@@ -1,0 +1,68 @@
+package org.jnario.suite.unit
+
+import org.jnario.suite.doc.SuiteDocGenerator
+import com.google.inject.Inject
+import org.jnario.jnario.test.util.ModelStore
+import org.eclipse.xtext.generator.InMemoryFileSystemAccess
+import org.jnario.runner.InstantiateWith
+import org.jnario.jnario.test.util.SuiteTestInstantiator
+import org.jnario.suite.suite.SuiteFile
+
+import static junit.framework.Assert.*
+
+@InstantiateWith(typeof(SuiteTestInstantiator))
+describe SuiteDocGenerator {
+	
+	@Inject extension ModelStore 
+	@Inject InMemoryFileSystemAccess fsa
+
+	before{
+		parseSpec('''
+		package test
+		describe "Red"{
+		}
+		describe "Blue"{
+		}
+		describe "Green"{
+		}
+		describe "Grey"{
+		}
+		''')
+	}
+	
+	fact "Generates suite doc with resolved specs"{
+		val actual = generateDoc('''
+			package test
+			
+			#Heading
+			Heading description.
+			- "Red"
+			- "Blue": with a description
+			##Subheading
+			Subheading description with **markdown**.
+			- \.*G.*\
+		''')
+		
+		val expected = '''
+			<p>Heading description.</p>
+			<ul>
+			<li><a href="../test/RedSpec.html">Red</a> </li>
+			<li><a href="../test/BlueSpec.html">Blue</a> with a description</li>
+			</ul>
+			<h2>Subheading</h2>
+			<p>Subheading description with <strong>markdown</strong>.</p>
+			<ul>
+			<li><a href="../test/GreenSpec.html">Green</a> </li>
+			<li><a href="../test/GreySpec.html">Grey</a> </li>
+			</ul>
+		'''.toString
+		
+		assertEquals(expected, actual)
+	}
+
+	def generateDoc(CharSequence input){
+		val resource = parseSuite(input)
+		subject.createHtmlFile(resource.contents.head as SuiteFile).content.toString
+	}
+
+}

@@ -5,8 +5,6 @@ import org.jnario.suite.suite.Suite
 import com.google.inject.Inject
 import org.jnario.suite.suite.SuiteFile
 import java.util.List
-import org.jnario.util.Strings
-import org.jnario.suite.conversion.SuiteValueConverter
 import org.jnario.Specification
 
 @Data class SuiteNode {
@@ -33,16 +31,21 @@ class SuiteNodeBuilder{
 		val mapping = <SuiteElement, SuiteNode>newHashMap
 		for(i : 0..suites.size-1){
 			val current = suites.get(i)
-			val specs = current.elements.map[resolveSpecs].flatten
-			val currentNode = new SuiteNode(current, specs)
-			val parent = mapping.get(suites.parent(i))
-			currentNode.parent = parent
+			val parentNode = mapping.get(suites.parent(i))
+			val currentNode = createNode(current, parentNode)
 			mapping.put(current, currentNode)
-			if(parent == null){
+			if(parentNode == null){
 				result += currentNode
 			}
 		}	
 		result
+	}
+	
+	def createNode(Suite current, SuiteNode parent){
+		val specs = current.elements.map[resolveSpecs].flatten
+		val node =  new SuiteNode(current, specs)
+		node.parent = parent
+		return node
 	}
 	
 	def parent(List<Suite> suites, int i){

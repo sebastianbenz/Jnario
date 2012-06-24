@@ -6,18 +6,18 @@ import jnario.tests.unit.doc.*
 
 All Jnario Features.  
 
-##Common
+###Common
 
 - \org\.jnario\.jnario\..*\ 
-      
-##Suite 
+
+###Suite 
  
 - \org\.jnario\.suite\..*\
-
-##Feature
+ 
+###Feature
 
 - \org\.jnario\.feature\..*\
 
-##Spec
+###Spec
 
 - \org\.jnario\.spec\..*\

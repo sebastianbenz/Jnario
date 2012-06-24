@@ -20,7 +20,6 @@ import org.jnario.runner.InstantiateWith
 import org.eclipse.emf.ecore.EObject
 import org.jnario.spec.scoping.SpecScopeProvider
 import static extension org.jnario.jnario.test.util.Query.*
-import org.junit.Assert
 
 @InstantiateWith(typeof(SpecTestInstantiator))
 describe SpecScopeProvider {

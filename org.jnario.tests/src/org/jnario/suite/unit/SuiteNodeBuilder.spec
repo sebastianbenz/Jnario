@@ -39,7 +39,6 @@ describe SuiteNodeBuilder {
 		fact level("###Suite") => 3 
 		
 		def level(String name){
-			
 			subject.level(suite(name))
 		}
 	}

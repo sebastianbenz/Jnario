@@ -51,22 +51,11 @@ public class SuiteNodeBuilder {
       for (final Integer i : _upTo) {
         {
           final Suite current = suites.get((i).intValue());
-          EList<SuiteElement> _elements = current.getElements();
-          final Function1<SuiteElement,List<Specification>> _function = new Function1<SuiteElement,List<Specification>>() {
-              public List<Specification> apply(final SuiteElement it) {
-                List<Specification> _resolveSpecs = SuiteNodeBuilder.this._specResolver.resolveSpecs(it);
-                return _resolveSpecs;
-              }
-            };
-          List<List<Specification>> _map = ListExtensions.<SuiteElement, List<Specification>>map(_elements, _function);
-          final Iterable<Specification> specs = Iterables.<Specification>concat(_map);
-          SuiteNode _suiteNode = new SuiteNode(current, specs);
-          final SuiteNode currentNode = _suiteNode;
           Suite _parent = this.parent(suites, (i).intValue());
-          final SuiteNode parent = mapping.get(_parent);
-          currentNode.setParent(parent);
+          final SuiteNode parentNode = mapping.get(_parent);
+          final SuiteNode currentNode = this.createNode(current, parentNode);
           mapping.put(current, currentNode);
-          boolean _equals = Objects.equal(parent, null);
+          boolean _equals = Objects.equal(parentNode, null);
           if (_equals) {
             result.add(currentNode);
           }
@@ -75,6 +64,22 @@ public class SuiteNodeBuilder {
       _xblockexpression = (result);
     }
     return _xblockexpression;
+  }
+  
+  public SuiteNode createNode(final Suite current, final SuiteNode parent) {
+    EList<SuiteElement> _elements = current.getElements();
+    final Function1<SuiteElement,List<Specification>> _function = new Function1<SuiteElement,List<Specification>>() {
+        public List<Specification> apply(final SuiteElement it) {
+          List<Specification> _resolveSpecs = SuiteNodeBuilder.this._specResolver.resolveSpecs(it);
+          return _resolveSpecs;
+        }
+      };
+    List<List<Specification>> _map = ListExtensions.<SuiteElement, List<Specification>>map(_elements, _function);
+    final Iterable<Specification> specs = Iterables.<Specification>concat(_map);
+    SuiteNode _suiteNode = new SuiteNode(current, specs);
+    final SuiteNode node = _suiteNode;
+    node.setParent(parent);
+    return node;
   }
   
   public Suite parent(final List<Suite> suites, final int i) {
