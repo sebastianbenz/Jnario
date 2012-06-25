@@ -2,15 +2,12 @@ package org.jnario.feature.tests.unit.naming;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.jnario.ExampleTable;
-import org.jnario.JnarioFactory;
 import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeatureFactory;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.naming.FeatureClassNameProvider;
 import org.jnario.feature.tests.unit.naming.FeatureClassNameProviderGetClassNameBackgroundSpec;
-import org.jnario.feature.tests.unit.naming.FeatureClassNameProviderGetClassNameExampleTableSpec;
 import org.jnario.feature.tests.unit.naming.FeatureClassNameProviderGetClassNameFeatureSpec;
 import org.jnario.runner.Contains;
 import org.jnario.runner.ExampleGroupRunner;
@@ -18,7 +15,7 @@ import org.jnario.runner.Named;
 import org.jnario.runner.Subject;
 import org.junit.runner.RunWith;
 
-@Contains({ FeatureClassNameProviderGetClassNameFeatureSpec.class, FeatureClassNameProviderGetClassNameBackgroundSpec.class, FeatureClassNameProviderGetClassNameExampleTableSpec.class })
+@Contains({ FeatureClassNameProviderGetClassNameFeatureSpec.class, FeatureClassNameProviderGetClassNameBackgroundSpec.class })
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("FeatureClassNameProvider")
@@ -39,16 +36,6 @@ public class FeatureClassNameProviderSpec {
     result.setName(_plus);
     final Feature feature = this.feature(featureName);
     feature.setBackground(result);
-    return result;
-  }
-  
-  public ExampleTable examples(final String examplesName, final String scenarioName, final String featureName) {
-    final ExampleTable result = JnarioFactory.eINSTANCE.createExampleTable();
-    String _plus = ("Examples: " + examplesName);
-    result.setName(_plus);
-    final Scenario scenario = this.scenario(scenarioName, featureName);
-    EList<ExampleTable> _examples = scenario.getExamples();
-    _examples.add(result);
     return result;
   }
   

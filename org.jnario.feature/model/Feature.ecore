@@ -12,8 +12,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Background" eSuperTypes="#//Scenario"/>
   <eClassifiers xsi:type="ecore:EClass" name="Scenario" eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendClass">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="examples" upperBound="-1"
-        eType="ecore:EClass ../../org.jnario/model/Jnario.ecore#//ExampleTable" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="steps" upperBound="-1"
         eType="#//Step" containment="true"/>
   </eClassifiers>

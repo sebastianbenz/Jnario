@@ -65,8 +65,7 @@ Scenario :
 	members+=Member*
 	steps+=(Given|GivenReference)?
 	steps+=(When|WhenReference)?
-	steps+=(Then|ThenReference)?
-	examples+=ExampleTable*;
+	steps+=(Then|ThenReference)?;
 
 Member returns xtend::XtendMember:
 	{xtend::XtendMember} annotations+=XAnnotation* 
@@ -145,17 +144,17 @@ StepExpression:
 BlockExpression returns xbase::XBlockExpression:
 	(expressions+=XExpressionInsideBlock ';'?)+;
 
-ExampleTable:
-	name=EXAMPLE_TEXT
-	columns+=ExampleColumn+ EXAMPLE_ROW_END
-	(rows += ExampleRow)*;
-
-
-ExampleColumn: 
-	(PIPE | PIPE_SPACES) type=JvmTypeReference? name=ValidID ;
-
-ExampleRow:
-	((PIPE | PIPE_SPACES) cells+=XExpression)+ EXAMPLE_ROW_END;
+//ExampleTable:
+//	name=EXAMPLE_TEXT
+//	columns+=ExampleColumn+ EXAMPLE_ROW_END
+//	(rows += ExampleRow)*;
+//
+//
+//ExampleColumn: 
+//	(PIPE | PIPE_SPACES) type=JvmTypeReference? name=ValidID ;
+//
+//ExampleRow:
+//	((PIPE | PIPE_SPACES) cells+=XExpression)+ EXAMPLE_ROW_END;
 	
 XPrimaryExpression returns xbase::XExpression:
 	XConstructorCall |
