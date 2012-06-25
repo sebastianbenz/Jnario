@@ -172,7 +172,7 @@ public class JnarioFeaturesTutorialHowToWriteAFeatureSpec extends JnarioFeatures
     _builder.append("When I add two numbers \"20\" and \"70\"");
     _builder.newLine();
     _builder.append("    ");
-    _builder.append("result = calculator.add(20,70)");
+    _builder.append("result = calculator.add(args.first.toInt, args.second.toInt)");
     _builder.newLine();
     _builder.append("  ");
     _builder.append("Then it prints \"90\"");
@@ -188,84 +188,12 @@ public class JnarioFeaturesTutorialHowToWriteAFeatureSpec extends JnarioFeatures
     _builder.append("When I divide \"70\" by \"10\"");
     _builder.newLine();
     _builder.append(" \t ");
-    _builder.append("result = calculator.divide(70,10)");
+    _builder.append("result = calculator.divide(args.first.toInt, args.second.toInt)");
     _builder.newLine();
     _builder.append(" ");
     _builder.append("Then it prints \"7\"");
     _builder.newLine();
-    FeatureExecutor.executesSuccessfully(_builder);
-  }
-  
-  /**
-   * Often you want to verify the behavior of a scenario with multiple examples.
-   * In case of the calculator you might want to define what happens using negative numbers
-   * or large numbers. In this case you can define a table with values that can be used
-   * by the scenario steps. Each scenario will be executed separately for each row in the table.
-   * 
-   * The header of the example table serves as field declaration of the header names. The
-   * type is derived from the common super type of all cells in a column.
-   * 
-   * @filter('''|.executesSuccessfully)
-   * @lang(feature)
-   */
-  @Test
-  @Named("Example tables")
-  @Order(99)
-  public void exampleTables() throws Exception {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("package demo");
-    _builder.newLine();
-    _builder.append("import org.jnario.feature.documentation.Calculator");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("Feature: Calculator");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("Scenario: Adding two numbers");
-    _builder.newLine();
-    _builder.append("  ");
-    _builder.append("Calculator calculator");
-    _builder.newLine();
-    _builder.append("  ");
-    _builder.append("int result");
-    _builder.newLine();
-    _builder.append("  ");
-    _builder.append("Given a calculator");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("calculator = new Calculator");
-    _builder.newLine();
-    _builder.append("  ");
-    _builder.append("When adding two numbers a and b. ");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("result = calculator.add(a, b)");
-    _builder.newLine();
-    _builder.append("  ");
-    _builder.append("Then it returns the result");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("result => expected");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.newLine();
-    _builder.append("  ");
-    _builder.append("Examples: additions");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("|  a  |  b  | expected |");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("|  0  |  0  |     0    |");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("| 21  | 21  |    42    |");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("| -3  | -5  |    -8    |");
-    _builder.newLine();
-    _builder.append("   ");
+    _builder.append(" ");
     _builder.newLine();
     FeatureExecutor.executesSuccessfully(_builder);
   }
@@ -314,59 +242,29 @@ public class JnarioFeaturesTutorialHowToWriteAFeatureSpec extends JnarioFeatures
     _builder.append("Scenario: Adding two numbers");
     _builder.newLine();
     _builder.append("  ");
-    _builder.append("When adding two numbers a and b. ");
+    _builder.append("When adding two numbers \"5\" and \"6\". ");
     _builder.newLine();
     _builder.append("    ");
-    _builder.append("result = calculator.add(a, b)");
+    _builder.append("result = calculator.add(args.first.toInt, args.second.toInt)");
     _builder.newLine();
     _builder.append("  ");
-    _builder.append("Then it returns the expected result");
+    _builder.append("Then it prints \"11\"");
     _builder.newLine();
     _builder.append("    ");
-    _builder.append("result => expected");
+    _builder.append("result => args.first.toInt");
     _builder.newLine();
     _builder.append("    ");
-    _builder.newLine();
-    _builder.append("  ");
-    _builder.append("Examples:");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("|  a  |  b  | expected |");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("|  0  |  0  |   0    |");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("| -3  | -5  |  -8    |");
-    _builder.newLine();
-    _builder.append("  ");
     _builder.newLine();
     _builder.append("Scenario: Dividing two numbers");
     _builder.newLine();
     _builder.append(" ");
-    _builder.append("When entering two numbers a and b and pressing enter. ");
+    _builder.append("When entering two numbers \"10\" and \"5\" and pressing enter. ");
     _builder.newLine();
     _builder.append("   ");
-    _builder.append("result = calculator.divide(a,b)");
+    _builder.append("result = calculator.divide(args.first.toInt, args.second.toInt)");
     _builder.newLine();
     _builder.append(" ");
-    _builder.append("Then it returns the expected result");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("Examples:");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.newLine();
-    _builder.append("   ");
-    _builder.append("|  a  |  b  | expected |");
-    _builder.newLine();
-    _builder.append("   ");
-    _builder.append("|  8  |  1  |     8    |");
-    _builder.newLine();
-    _builder.append(" ");
+    _builder.append("Then it prints \"2\"");
     _builder.newLine();
     FeatureExecutor.executesSuccessfully(_builder);
   }

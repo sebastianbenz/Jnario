@@ -290,19 +290,9 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getScenario_Examples()
-	{
-		return (EReference)scenarioEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getScenario_Steps()
 	{
-		return (EReference)scenarioEClass.getEStructuralFeatures().get(1);
+		return (EReference)scenarioEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -533,7 +523,6 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 		backgroundEClass = createEClass(BACKGROUND);
 
 		scenarioEClass = createEClass(SCENARIO);
-		createEReference(scenarioEClass, SCENARIO__EXAMPLES);
 		createEReference(scenarioEClass, SCENARIO__STEPS);
 
 		stepEClass = createEClass(STEP);
@@ -629,7 +618,6 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 		initEClass(backgroundEClass, Background.class, "Background", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(scenarioEClass, Scenario.class, "Scenario", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getScenario_Examples(), theJnarioPackage.getExampleTable(), null, "examples", null, 0, -1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getScenario_Steps(), this.getStep(), null, "steps", null, 0, -1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stepEClass, Step.class, "Step", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

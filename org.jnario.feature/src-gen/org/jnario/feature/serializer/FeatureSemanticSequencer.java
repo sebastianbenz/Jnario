@@ -70,9 +70,6 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
 import org.eclipse.xtext.xtype.XFunctionTypeRef;
 import org.eclipse.xtext.xtype.XtypePackage;
 import org.jnario.Assertion;
-import org.jnario.ExampleColumn;
-import org.jnario.ExampleRow;
-import org.jnario.ExampleTable;
 import org.jnario.JnarioPackage;
 import org.jnario.Should;
 import org.jnario.ShouldThrow;
@@ -213,24 +210,6 @@ public class FeatureSemanticSequencer extends XtendSemanticSequencer {
 				   context == grammarAccess.getXRelationalExpressionAccess().getXInstanceOfExpressionExpressionAction_1_2_0_0_0() ||
 				   context == grammarAccess.getXUnaryOperationRule()) {
 					sequence_Assertion(context, (Assertion) semanticObject); 
-					return; 
-				}
-				else break;
-			case JnarioPackage.EXAMPLE_COLUMN:
-				if(context == grammarAccess.getExampleColumnRule()) {
-					sequence_ExampleColumn(context, (ExampleColumn) semanticObject); 
-					return; 
-				}
-				else break;
-			case JnarioPackage.EXAMPLE_ROW:
-				if(context == grammarAccess.getExampleRowRule()) {
-					sequence_ExampleRow(context, (ExampleRow) semanticObject); 
-					return; 
-				}
-				else break;
-			case JnarioPackage.EXAMPLE_TABLE:
-				if(context == grammarAccess.getExampleTableRule()) {
-					sequence_ExampleTable(context, (ExampleTable) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1480,33 +1459,6 @@ public class FeatureSemanticSequencer extends XtendSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (type=JvmTypeReference? name=ValidID)
-	 */
-	protected void sequence_ExampleColumn(EObject context, ExampleColumn semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     cells+=XExpression+
-	 */
-	protected void sequence_ExampleRow(EObject context, ExampleRow semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (name=EXAMPLE_TEXT columns+=ExampleColumn+ rows+=ExampleRow*)
-	 */
-	protected void sequence_ExampleTable(EObject context, ExampleTable semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
 	 *     (package=QualifiedName? imports+=Import* xtendClasses+=Feature?)
 	 */
 	protected void sequence_FeatureFile(EObject context, FeatureFile semanticObject) {
@@ -1623,8 +1575,7 @@ public class FeatureSemanticSequencer extends XtendSemanticSequencer {
 	 *         members+=Member* 
 	 *         (steps+=Given | steps+=GivenReference)? 
 	 *         (steps+=When | steps+=WhenReference)? 
-	 *         (steps+=Then | steps+=ThenReference)? 
-	 *         examples+=ExampleTable*
+	 *         (steps+=Then | steps+=ThenReference)?
 	 *     )
 	 */
 	protected void sequence_Scenario(EObject context, Scenario semanticObject) {

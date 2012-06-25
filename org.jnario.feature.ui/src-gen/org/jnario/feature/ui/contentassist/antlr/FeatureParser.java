@@ -57,8 +57,6 @@ public class FeatureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getWhenAccess().getAndAlternatives_3_0(), "rule__When__AndAlternatives_3_0");
 					put(grammarAccess.getThenReferenceAccess().getAndAlternatives_2_0(), "rule__ThenReference__AndAlternatives_2_0");
 					put(grammarAccess.getThenAccess().getAndAlternatives_3_0(), "rule__Then__AndAlternatives_3_0");
-					put(grammarAccess.getExampleColumnAccess().getAlternatives_0(), "rule__ExampleColumn__Alternatives_0");
-					put(grammarAccess.getExampleRowAccess().getAlternatives_0_0(), "rule__ExampleRow__Alternatives_0_0");
 					put(grammarAccess.getXPrimaryExpressionAccess().getAlternatives(), "rule__XPrimaryExpression__Alternatives");
 					put(grammarAccess.getXRelationalExpressionAccess().getAlternatives_1(), "rule__XRelationalExpression__Alternatives_1");
 					put(grammarAccess.getXRelationalExpressionAccess().getAlternatives_1_1_0_0_1(), "rule__XRelationalExpression__Alternatives_1_1_0_0_1");
@@ -141,10 +139,6 @@ public class FeatureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getAndAccess().getGroup(), "rule__And__Group__0");
 					put(grammarAccess.getStepExpressionAccess().getGroup(), "rule__StepExpression__Group__0");
 					put(grammarAccess.getBlockExpressionAccess().getGroup(), "rule__BlockExpression__Group__0");
-					put(grammarAccess.getExampleTableAccess().getGroup(), "rule__ExampleTable__Group__0");
-					put(grammarAccess.getExampleColumnAccess().getGroup(), "rule__ExampleColumn__Group__0");
-					put(grammarAccess.getExampleRowAccess().getGroup(), "rule__ExampleRow__Group__0");
-					put(grammarAccess.getExampleRowAccess().getGroup_0(), "rule__ExampleRow__Group_0__0");
 					put(grammarAccess.getXRelationalExpressionAccess().getGroup(), "rule__XRelationalExpression__Group__0");
 					put(grammarAccess.getXRelationalExpressionAccess().getGroup_1_0(), "rule__XRelationalExpression__Group_1_0__0");
 					put(grammarAccess.getXRelationalExpressionAccess().getGroup_1_0_0(), "rule__XRelationalExpression__Group_1_0_0__0");
@@ -357,7 +351,6 @@ public class FeatureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getScenarioAccess().getStepsAssignment_3(), "rule__Scenario__StepsAssignment_3");
 					put(grammarAccess.getScenarioAccess().getStepsAssignment_4(), "rule__Scenario__StepsAssignment_4");
 					put(grammarAccess.getScenarioAccess().getStepsAssignment_5(), "rule__Scenario__StepsAssignment_5");
-					put(grammarAccess.getScenarioAccess().getExamplesAssignment_6(), "rule__Scenario__ExamplesAssignment_6");
 					put(grammarAccess.getMemberAccess().getAnnotationsAssignment_1(), "rule__Member__AnnotationsAssignment_1");
 					put(grammarAccess.getMemberAccess().getVisibilityAssignment_2_0_1(), "rule__Member__VisibilityAssignment_2_0_1");
 					put(grammarAccess.getMemberAccess().getExtensionAssignment_2_0_2_0_0(), "rule__Member__ExtensionAssignment_2_0_2_0_0");
@@ -411,12 +404,6 @@ public class FeatureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getStepExpressionAccess().getAnnotationsAssignment_0(), "rule__StepExpression__AnnotationsAssignment_0");
 					put(grammarAccess.getStepExpressionAccess().getBlockExpressionAssignment_1(), "rule__StepExpression__BlockExpressionAssignment_1");
 					put(grammarAccess.getBlockExpressionAccess().getExpressionsAssignment_0(), "rule__BlockExpression__ExpressionsAssignment_0");
-					put(grammarAccess.getExampleTableAccess().getNameAssignment_0(), "rule__ExampleTable__NameAssignment_0");
-					put(grammarAccess.getExampleTableAccess().getColumnsAssignment_1(), "rule__ExampleTable__ColumnsAssignment_1");
-					put(grammarAccess.getExampleTableAccess().getRowsAssignment_3(), "rule__ExampleTable__RowsAssignment_3");
-					put(grammarAccess.getExampleColumnAccess().getTypeAssignment_1(), "rule__ExampleColumn__TypeAssignment_1");
-					put(grammarAccess.getExampleColumnAccess().getNameAssignment_2(), "rule__ExampleColumn__NameAssignment_2");
-					put(grammarAccess.getExampleRowAccess().getCellsAssignment_0_1(), "rule__ExampleRow__CellsAssignment_0_1");
 					put(grammarAccess.getXRelationalExpressionAccess().getFeatureAssignment_1_0_0_0_1(), "rule__XRelationalExpression__FeatureAssignment_1_0_0_0_1");
 					put(grammarAccess.getXRelationalExpressionAccess().getRightOperandAssignment_1_0_1(), "rule__XRelationalExpression__RightOperandAssignment_1_0_1");
 					put(grammarAccess.getXRelationalExpressionAccess().getTypeAssignment_1_1_1(), "rule__XRelationalExpression__TypeAssignment_1_1_1");

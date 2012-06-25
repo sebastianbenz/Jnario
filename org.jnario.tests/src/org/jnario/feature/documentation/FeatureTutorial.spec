@@ -146,55 +146,18 @@ describe "Jnario Features - Tutorial"{
        
        Scenario: Adding two numbers
          When I add two numbers "20" and "70"
-           result = calculator.add(20,70)
+           result = calculator.add(args.first.toInt, args.second.toInt)
          Then it prints "90"
            result => args.first.toInt
          
        Scenario: Dividing two numbers
         When I divide "70" by "10"
-        	 result = calculator.divide(70,10)
+        	 result = calculator.divide(args.first.toInt, args.second.toInt)
         Then it prints "7"
-         '''.executesSuccessfully
+        
+       '''.executesSuccessfully
        }
       
-      /*
-       * Often you want to verify the behavior of a scenario with multiple examples.
-       * In case of the calculator you might want to define what happens using negative numbers
-       * or large numbers. In this case you can define a table with values that can be used
-       * by the scenario steps. Each scenario will be executed separately for each row in the table.
-       * 
-       * The header of the example table serves as field declaration of the header names. The
-       * type is derived from the common super type of all cells in a column.
-       * 
-       * @filter('''|.executesSuccessfully)
-       * @lang(feature)
-       */ 
-      fact "Example tables"{
-         '''
-         package demo
-         import org.jnario.feature.documentation.Calculator
-
-         Feature: Calculator
-         
-         Scenario: Adding two numbers
-           Calculator calculator
-           int result
-           Given a calculator
-             calculator = new Calculator
-           When adding two numbers a and b. 
-             result = calculator.add(a, b)
-           Then it returns the result
-             result => expected
-             
-           Examples: additions
-
-             |  a  |  b  | expected |
-             |  0  |  0  |     0    |
-             | 21  | 21  |    42    |
-             | -3  | -5  |    -8    |
-            
-         '''.executesSuccessfully
-       }
        
        /*
         * Once a step is defined including the execution code it can be referenced from
@@ -223,27 +186,15 @@ describe "Jnario Features - Tutorial"{
 	           calculator = new Calculator
 	       
 	       Scenario: Adding two numbers
-	         When adding two numbers a and b. 
-	           result = calculator.add(a, b)
-	         Then it returns the expected result
-	           result => expected
+	         When adding two numbers "5" and "6". 
+	           result = calculator.add(args.first.toInt, args.second.toInt)
+	         Then it prints "11"
+	           result => args.first.toInt
 	           
-	         Examples:
-
-	           |  a  |  b  | expected |
-	           |  0  |  0  |   0    |
-	           | -3  | -5  |  -8    |
-	         
 	       Scenario: Dividing two numbers
-	        When entering two numbers a and b and pressing enter. 
-	          result = calculator.divide(a,b)
-	        Then it returns the expected result
-	        
-	        Examples:
-	        
-	          |  a  |  b  | expected |
-	          |  8  |  1  |     8    |
-	        
+	        When entering two numbers "10" and "5" and pressing enter. 
+	          result = calculator.divide(args.first.toInt, args.second.toInt)
+	        Then it prints "2"
          '''.executesSuccessfully
        }
    }   

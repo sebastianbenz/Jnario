@@ -371,16 +371,14 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cStepsAlternatives_5_0 = (Alternatives)cStepsAssignment_5.eContents().get(0);
 		private final RuleCall cStepsThenParserRuleCall_5_0_0 = (RuleCall)cStepsAlternatives_5_0.eContents().get(0);
 		private final RuleCall cStepsThenReferenceParserRuleCall_5_0_1 = (RuleCall)cStepsAlternatives_5_0.eContents().get(1);
-		private final Assignment cExamplesAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cExamplesExampleTableParserRuleCall_6_0 = (RuleCall)cExamplesAssignment_6.eContents().get(0);
 		
 		//Scenario:
 		//	{Scenario} name=SCENARIO_TEXT members+=Member* steps+=(Given | GivenReference)? steps+=(When | WhenReference)?
-		//	steps+=(Then | ThenReference)? examples+=ExampleTable*;
+		//	steps+=(Then | ThenReference)?;
 		public ParserRule getRule() { return rule; }
 
 		//{Scenario} name=SCENARIO_TEXT members+=Member* steps+=(Given | GivenReference)? steps+=(When | WhenReference)?
-		//steps+=(Then | ThenReference)? examples+=ExampleTable*
+		//steps+=(Then | ThenReference)?
 		public Group getGroup() { return cGroup; }
 
 		//{Scenario}
@@ -433,12 +431,6 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 
 		//ThenReference
 		public RuleCall getStepsThenReferenceParserRuleCall_5_0_1() { return cStepsThenReferenceParserRuleCall_5_0_1; }
-
-		//examples+=ExampleTable*
-		public Assignment getExamplesAssignment_6() { return cExamplesAssignment_6; }
-
-		//ExampleTable
-		public RuleCall getExamplesExampleTableParserRuleCall_6_0() { return cExamplesExampleTableParserRuleCall_6_0; }
 	}
 
 	public class MemberElements extends AbstractParserRuleElementFinder {
@@ -1319,126 +1311,6 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getSemicolonKeyword_1() { return cSemicolonKeyword_1; }
 	}
 
-	public class ExampleTableElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ExampleTable");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameEXAMPLE_TEXTTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Assignment cColumnsAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cColumnsExampleColumnParserRuleCall_1_0 = (RuleCall)cColumnsAssignment_1.eContents().get(0);
-		private final RuleCall cEXAMPLE_ROW_ENDTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
-		private final Assignment cRowsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cRowsExampleRowParserRuleCall_3_0 = (RuleCall)cRowsAssignment_3.eContents().get(0);
-		
-		//ExampleTable:
-		//	name=EXAMPLE_TEXT columns+=ExampleColumn+ EXAMPLE_ROW_END rows+=ExampleRow*;
-		public ParserRule getRule() { return rule; }
-
-		//name=EXAMPLE_TEXT columns+=ExampleColumn+ EXAMPLE_ROW_END rows+=ExampleRow*
-		public Group getGroup() { return cGroup; }
-
-		//name=EXAMPLE_TEXT
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
-
-		//EXAMPLE_TEXT
-		public RuleCall getNameEXAMPLE_TEXTTerminalRuleCall_0_0() { return cNameEXAMPLE_TEXTTerminalRuleCall_0_0; }
-
-		//columns+=ExampleColumn+
-		public Assignment getColumnsAssignment_1() { return cColumnsAssignment_1; }
-
-		//ExampleColumn
-		public RuleCall getColumnsExampleColumnParserRuleCall_1_0() { return cColumnsExampleColumnParserRuleCall_1_0; }
-
-		//EXAMPLE_ROW_END
-		public RuleCall getEXAMPLE_ROW_ENDTerminalRuleCall_2() { return cEXAMPLE_ROW_ENDTerminalRuleCall_2; }
-
-		//rows+=ExampleRow*
-		public Assignment getRowsAssignment_3() { return cRowsAssignment_3; }
-
-		//ExampleRow
-		public RuleCall getRowsExampleRowParserRuleCall_3_0() { return cRowsExampleRowParserRuleCall_3_0; }
-	}
-
-	public class ExampleColumnElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ExampleColumn");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
-		private final RuleCall cPIPETerminalRuleCall_0_0 = (RuleCall)cAlternatives_0.eContents().get(0);
-		private final RuleCall cPIPE_SPACESTerminalRuleCall_0_1 = (RuleCall)cAlternatives_0.eContents().get(1);
-		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cTypeJvmTypeReferenceParserRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameValidIDParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		
-		//ExampleColumn:
-		//	(PIPE | PIPE_SPACES) type=JvmTypeReference? name=ValidID;
-		public ParserRule getRule() { return rule; }
-
-		//(PIPE | PIPE_SPACES) type=JvmTypeReference? name=ValidID
-		public Group getGroup() { return cGroup; }
-
-		//PIPE | PIPE_SPACES
-		public Alternatives getAlternatives_0() { return cAlternatives_0; }
-
-		//PIPE
-		public RuleCall getPIPETerminalRuleCall_0_0() { return cPIPETerminalRuleCall_0_0; }
-
-		//PIPE_SPACES
-		public RuleCall getPIPE_SPACESTerminalRuleCall_0_1() { return cPIPE_SPACESTerminalRuleCall_0_1; }
-
-		//type=JvmTypeReference?
-		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
-
-		//JvmTypeReference
-		public RuleCall getTypeJvmTypeReferenceParserRuleCall_1_0() { return cTypeJvmTypeReferenceParserRuleCall_1_0; }
-
-		//name=ValidID
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
-
-		//ValidID
-		public RuleCall getNameValidIDParserRuleCall_2_0() { return cNameValidIDParserRuleCall_2_0; }
-	}
-
-	public class ExampleRowElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ExampleRow");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
-		private final Alternatives cAlternatives_0_0 = (Alternatives)cGroup_0.eContents().get(0);
-		private final RuleCall cPIPETerminalRuleCall_0_0_0 = (RuleCall)cAlternatives_0_0.eContents().get(0);
-		private final RuleCall cPIPE_SPACESTerminalRuleCall_0_0_1 = (RuleCall)cAlternatives_0_0.eContents().get(1);
-		private final Assignment cCellsAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
-		private final RuleCall cCellsXExpressionParserRuleCall_0_1_0 = (RuleCall)cCellsAssignment_0_1.eContents().get(0);
-		private final RuleCall cEXAMPLE_ROW_ENDTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
-		
-		//ExampleRow:
-		//	((PIPE | PIPE_SPACES) cells+=XExpression)+ EXAMPLE_ROW_END;
-		public ParserRule getRule() { return rule; }
-
-		//((PIPE | PIPE_SPACES) cells+=XExpression)+ EXAMPLE_ROW_END
-		public Group getGroup() { return cGroup; }
-
-		//((PIPE | PIPE_SPACES) cells+=XExpression)+
-		public Group getGroup_0() { return cGroup_0; }
-
-		//PIPE | PIPE_SPACES
-		public Alternatives getAlternatives_0_0() { return cAlternatives_0_0; }
-
-		//PIPE
-		public RuleCall getPIPETerminalRuleCall_0_0_0() { return cPIPETerminalRuleCall_0_0_0; }
-
-		//PIPE_SPACES
-		public RuleCall getPIPE_SPACESTerminalRuleCall_0_0_1() { return cPIPE_SPACESTerminalRuleCall_0_0_1; }
-
-		//cells+=XExpression
-		public Assignment getCellsAssignment_0_1() { return cCellsAssignment_0_1; }
-
-		//XExpression
-		public RuleCall getCellsXExpressionParserRuleCall_0_1_0() { return cCellsXExpressionParserRuleCall_0_1_0; }
-
-		//EXAMPLE_ROW_END
-		public RuleCall getEXAMPLE_ROW_ENDTerminalRuleCall_1() { return cEXAMPLE_ROW_ENDTerminalRuleCall_1; }
-	}
-
 	public class XPrimaryExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "XPrimaryExpression");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -1457,6 +1329,28 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cXParenthesizedExpressionParserRuleCall_12 = (RuleCall)cAlternatives.eContents().get(12);
 		private final RuleCall cAssertionParserRuleCall_13 = (RuleCall)cAlternatives.eContents().get(13);
 		
+		////ExampleTable:
+		//
+		////	name=EXAMPLE_TEXT
+		//
+		////	columns+=ExampleColumn+ EXAMPLE_ROW_END
+		//
+		////	(rows += ExampleRow)*;
+		//
+		////
+		//
+		////
+		//
+		////ExampleColumn: 
+		//
+		////	(PIPE | PIPE_SPACES) type=JvmTypeReference? name=ValidID ;
+		//
+		////
+		//
+		////ExampleRow:
+		//
+		////	((PIPE | PIPE_SPACES) cells+=XExpression)+ EXAMPLE_ROW_END;
+		//
 		//XPrimaryExpression returns xbase::XExpression:
 		//	XConstructorCall | XBlockExpression | XSwitchExpression | XFeatureCall | XLiteral | XIfExpression | XForLoopExpression
 		//	| XWhileExpression | XDoWhileExpression | XThrowExpression | XReturnExpression | XTryCatchFinallyExpression |
@@ -1758,9 +1652,6 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	private AndElements pAnd;
 	private StepExpressionElements pStepExpression;
 	private BlockExpressionElements pBlockExpression;
-	private ExampleTableElements pExampleTable;
-	private ExampleColumnElements pExampleColumn;
-	private ExampleRowElements pExampleRow;
 	private XPrimaryExpressionElements pXPrimaryExpression;
 	private XRelationalExpressionElements pXRelationalExpression;
 	private ShouldElements pShould;
@@ -1876,7 +1767,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 
 	//Scenario:
 	//	{Scenario} name=SCENARIO_TEXT members+=Member* steps+=(Given | GivenReference)? steps+=(When | WhenReference)?
-	//	steps+=(Then | ThenReference)? examples+=ExampleTable*;
+	//	steps+=(Then | ThenReference)?;
 	public ScenarioElements getScenarioAccess() {
 		return (pScenario != null) ? pScenario : (pScenario = new ScenarioElements());
 	}
@@ -2007,36 +1898,28 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		return getBlockExpressionAccess().getRule();
 	}
 
-	//ExampleTable:
-	//	name=EXAMPLE_TEXT columns+=ExampleColumn+ EXAMPLE_ROW_END rows+=ExampleRow*;
-	public ExampleTableElements getExampleTableAccess() {
-		return (pExampleTable != null) ? pExampleTable : (pExampleTable = new ExampleTableElements());
-	}
-	
-	public ParserRule getExampleTableRule() {
-		return getExampleTableAccess().getRule();
-	}
-
-	//ExampleColumn:
-	//	(PIPE | PIPE_SPACES) type=JvmTypeReference? name=ValidID;
-	public ExampleColumnElements getExampleColumnAccess() {
-		return (pExampleColumn != null) ? pExampleColumn : (pExampleColumn = new ExampleColumnElements());
-	}
-	
-	public ParserRule getExampleColumnRule() {
-		return getExampleColumnAccess().getRule();
-	}
-
-	//ExampleRow:
-	//	((PIPE | PIPE_SPACES) cells+=XExpression)+ EXAMPLE_ROW_END;
-	public ExampleRowElements getExampleRowAccess() {
-		return (pExampleRow != null) ? pExampleRow : (pExampleRow = new ExampleRowElements());
-	}
-	
-	public ParserRule getExampleRowRule() {
-		return getExampleRowAccess().getRule();
-	}
-
+	////ExampleTable:
+	//
+	////	name=EXAMPLE_TEXT
+	//
+	////	columns+=ExampleColumn+ EXAMPLE_ROW_END
+	//
+	////	(rows += ExampleRow)*;
+	//
+	////
+	//
+	////
+	//
+	////ExampleColumn: 
+	//
+	////	(PIPE | PIPE_SPACES) type=JvmTypeReference? name=ValidID ;
+	//
+	////
+	//
+	////ExampleRow:
+	//
+	////	((PIPE | PIPE_SPACES) cells+=XExpression)+ EXAMPLE_ROW_END;
+	//
 	//XPrimaryExpression returns xbase::XExpression:
 	//	XConstructorCall | XBlockExpression | XSwitchExpression | XFeatureCall | XLiteral | XIfExpression | XForLoopExpression
 	//	| XWhileExpression | XDoWhileExpression | XThrowExpression | XReturnExpression | XTryCatchFinallyExpression |

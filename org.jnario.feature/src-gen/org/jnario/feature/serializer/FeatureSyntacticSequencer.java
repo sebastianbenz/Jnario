@@ -21,8 +21,6 @@ public class FeatureSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected FeatureGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_BlockExpression_SemicolonKeyword_1_q;
 	protected AbstractElementAlias match_Class_PublicKeyword_1_q;
-	protected AbstractElementAlias match_ExampleColumn_PIPETerminalRuleCall_0_0_or_PIPE_SPACESTerminalRuleCall_0_1;
-	protected AbstractElementAlias match_ExampleRow_PIPETerminalRuleCall_0_0_0_or_PIPE_SPACESTerminalRuleCall_0_0_1;
 	protected AbstractElementAlias match_File_SemicolonKeyword_0_2_q;
 	protected AbstractElementAlias match_Import_SemicolonKeyword_2_q;
 	protected AbstractElementAlias match_Member_SemicolonKeyword_2_0_4_q;
@@ -43,8 +41,6 @@ public class FeatureSyntacticSequencer extends AbstractSyntacticSequencer {
 		grammarAccess = (FeatureGrammarAccess) access;
 		match_BlockExpression_SemicolonKeyword_1_q = new TokenAlias(false, true, grammarAccess.getBlockExpressionAccess().getSemicolonKeyword_1());
 		match_Class_PublicKeyword_1_q = new TokenAlias(false, true, grammarAccess.getClassAccess().getPublicKeyword_1());
-		match_ExampleColumn_PIPETerminalRuleCall_0_0_or_PIPE_SPACESTerminalRuleCall_0_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getExampleColumnAccess().getPIPETerminalRuleCall_0_0()), new TokenAlias(false, false, grammarAccess.getExampleColumnAccess().getPIPE_SPACESTerminalRuleCall_0_1()));
-		match_ExampleRow_PIPETerminalRuleCall_0_0_0_or_PIPE_SPACESTerminalRuleCall_0_0_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getExampleRowAccess().getPIPETerminalRuleCall_0_0_0()), new TokenAlias(false, false, grammarAccess.getExampleRowAccess().getPIPE_SPACESTerminalRuleCall_0_0_1()));
 		match_File_SemicolonKeyword_0_2_q = new TokenAlias(false, true, grammarAccess.getFileAccess().getSemicolonKeyword_0_2());
 		match_Import_SemicolonKeyword_2_q = new TokenAlias(false, true, grammarAccess.getImportAccess().getSemicolonKeyword_2());
 		match_Member_SemicolonKeyword_2_0_4_q = new TokenAlias(false, true, grammarAccess.getMemberAccess().getSemicolonKeyword_2_0_4());
@@ -63,24 +59,9 @@ public class FeatureSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if(ruleCall.getRule() == grammarAccess.getEXAMPLE_ROW_ENDRule())
-			return getEXAMPLE_ROW_ENDToken(semanticObject, ruleCall, node);
-		else if(ruleCall.getRule() == grammarAccess.getOpSingleAssignRule())
+		if(ruleCall.getRule() == grammarAccess.getOpSingleAssignRule())
 			return getOpSingleAssignToken(semanticObject, ruleCall, node);
-		else if(ruleCall.getRule() == grammarAccess.getPIPERule())
-			return getPIPEToken(semanticObject, ruleCall, node);
-		else if(ruleCall.getRule() == grammarAccess.getPIPE_SPACESRule())
-			return getPIPE_SPACESToken(semanticObject, ruleCall, node);
 		return "";
-	}
-	
-	/**
-	 * terminal EXAMPLE_ROW_END: (PIPE | PIPE_SPACES) '\r'? '\n';
-	 */
-	protected String getEXAMPLE_ROW_ENDToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "|\n";
 	}
 	
 	/**
@@ -94,24 +75,6 @@ public class FeatureSyntacticSequencer extends AbstractSyntacticSequencer {
 		return "=";
 	}
 	
-	/**
-	 * terminal PIPE : '|';
-	 */
-	protected String getPIPEToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "|";
-	}
-	
-	/**
-	 * terminal PIPE_SPACES: PIPE (' '|'\t')+;
-	 */
-	protected String getPIPE_SPACESToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "| ";
-	}
-	
 	@Override
 	protected void emitUnassignedTokens(EObject semanticObject, ISynTransition transition, INode fromNode, INode toNode) {
 		if (transition.getAmbiguousSyntaxes().isEmpty()) return;
@@ -122,10 +85,6 @@ public class FeatureSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_BlockExpression_SemicolonKeyword_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_Class_PublicKeyword_1_q.equals(syntax))
 				emit_Class_PublicKeyword_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_ExampleColumn_PIPETerminalRuleCall_0_0_or_PIPE_SPACESTerminalRuleCall_0_1.equals(syntax))
-				emit_ExampleColumn_PIPETerminalRuleCall_0_0_or_PIPE_SPACESTerminalRuleCall_0_1(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_ExampleRow_PIPETerminalRuleCall_0_0_0_or_PIPE_SPACESTerminalRuleCall_0_0_1.equals(syntax))
-				emit_ExampleRow_PIPETerminalRuleCall_0_0_0_or_PIPE_SPACESTerminalRuleCall_0_0_1(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_File_SemicolonKeyword_0_2_q.equals(syntax))
 				emit_File_SemicolonKeyword_0_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_Import_SemicolonKeyword_2_q.equals(syntax))
@@ -171,22 +130,6 @@ public class FeatureSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     'public'?
 	 */
 	protected void emit_Class_PublicKeyword_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Syntax:
-	 *     PIPE_SPACES | PIPE
-	 */
-	protected void emit_ExampleColumn_PIPETerminalRuleCall_0_0_or_PIPE_SPACESTerminalRuleCall_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Syntax:
-	 *     PIPE | PIPE_SPACES
-	 */
-	protected void emit_ExampleRow_PIPETerminalRuleCall_0_0_0_or_PIPE_SPACESTerminalRuleCall_0_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -296,7 +239,7 @@ public class FeatureSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     'throws' | ('should' 'throw')
+	 *     ('should' 'throw') | 'throws'
 	 */
 	protected void emit_XRelationalExpression_ThrowsKeyword_1_1_0_0_1_1_or___ShouldKeyword_1_1_0_0_1_0_0_ThrowKeyword_1_1_0_0_1_0_1__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

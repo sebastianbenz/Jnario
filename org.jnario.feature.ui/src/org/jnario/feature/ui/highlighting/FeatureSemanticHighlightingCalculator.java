@@ -67,11 +67,6 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 
 		@Override
 		public Boolean caseScenario(Scenario scenario) {
-			if(!scenario.getExamples().isEmpty()){
-				for (ExampleTable table : scenario.getExamples()	) {
-					highlightExampleHeader(table);
-				}
-			}
 			for (XtendMember member : scenario.getMembers()) {
 				if(member.eClass() == XtendPackage.Literals.XTEND_FIELD){
 					XtendField field = (XtendField) member;
@@ -183,29 +178,7 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 			}
 		}
 
-		private void highlightExampleHeader(ExampleTable table){
-			if(table == null){
-				return;
-			}
-			for (int i = 0; i < table.getColumns().size(); i++) {
-				XtendField element = table.getColumns().get(i);
-				INode node = NodeModelUtils.getNode(element);
-				highlightNode(node, FeatureHighlightingConfiguration.IDENTIFIERS_ID, acceptor);
-				if(table.getColumns().size() == i + 1){
-					highlightTableHeadingEnd(node.getNextSibling());
-				}
-			}
-		}
-
-		private void highlightTableHeadingEnd(INode node) {
-			while(node instanceof LeafNode){
-				if(!((LeafNode)node).isHidden()){
-					highlightNode(node, FeatureHighlightingConfiguration.IDENTIFIERS_ID, acceptor);
-					return;
-				}
-				node = node.getNextSibling();
-			}
-		}
+		
 	}
 	
 	@Inject
@@ -232,6 +205,9 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 			if (object instanceof XAbstractFeatureCall) {
 				computeFeatureCallHighlighting((XAbstractFeatureCall) object, acceptor);
 			}
+			if (object instanceof ExampleTable) {
+				highlightExampleHeader((ExampleTable) object, acceptor);
+			}
 			ICompositeNode node = NodeModelUtils.getNode(object);
 			if(node != null){
 				// Handle XAnnotation in a special way because we want the @ highlighted too
@@ -243,6 +219,30 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 					computeReferencedJvmTypeHighlighting(acceptor, object);
 				}
 			}
+		}
+	}
+	
+	private void highlightExampleHeader(ExampleTable table, IHighlightedPositionAcceptor acceptor){
+		if(table == null){
+			return;
+		}
+		for (int i = 0; i < table.getColumns().size(); i++) {
+			XtendField element = table.getColumns().get(i);
+			INode node = NodeModelUtils.getNode(element);
+			highlightNode(node, FeatureHighlightingConfiguration.IDENTIFIERS_ID, acceptor);
+			if(table.getColumns().size() == i + 1){
+				highlightTableHeadingEnd(node.getNextSibling(), acceptor);
+			}
+		}
+	}
+
+	private void highlightTableHeadingEnd(INode node, IHighlightedPositionAcceptor acceptor) {
+		while(node instanceof LeafNode){
+			if(!((LeafNode)node).isHidden()){
+				highlightNode(node, FeatureHighlightingConfiguration.IDENTIFIERS_ID, acceptor);
+				return;
+			}
+			node = node.getNextSibling();
 		}
 	}
 

@@ -12,7 +12,6 @@ import org.eclipse.xtend.core.xtend.XtendClass
 import org.jnario.doc.AbstractDocGenerator
 import org.jnario.doc.WhiteSpaceNormalizer
 import org.jnario.feature.feature.Feature
-import org.jnario.feature.feature.Scenario
 import org.jnario.feature.feature.Step
 import org.jnario.feature.naming.FeatureClassNameProvider
 import org.jnario.feature.naming.StepNameProvider
@@ -20,11 +19,11 @@ import org.jnario.feature.naming.StepNameProvider
 import static org.jnario.doc.HtmlFile.*
 
 import static extension org.jnario.util.Strings.*
+import org.jnario.feature.feature.Scenario
 
 class FeatureDocGenerator extends AbstractDocGenerator {
 	@Inject extension FeatureClassNameProvider 
 	@Inject extension StepNameProvider 
-	@Inject extension WhiteSpaceNormalizer
 
 	override createHtmlFile(XtendClass xtendClass) {
 		if(!(xtendClass instanceof Feature)){
@@ -55,12 +54,6 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 	def dispatch generate(Scenario scenario)'''
 		<h3>«scenario.name»</h3>
 		«generate(scenario.steps.filter(typeof(Step)))»
-		«IF !scenario.examples.empty»
-		<h4>Examples:</h4>
-		«FOR example : scenario.examples»
-		<p>«generate(example)»</p>
-		«ENDFOR»
-		«ENDIF»
 	'''
 	
 	def dispatch generate(Iterable<Step> steps)'''

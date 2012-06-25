@@ -81,39 +81,14 @@ Background:
 
 Scenario: Adding two numbers
   When I add two numbers "20" and "70"
-    result = calculator.add(20,70)
+    result = calculator.add(args.first.toInt, args.second.toInt)
   Then it prints "90"
     result =&gt; args.first.toInt
   
 Scenario: Dividing two numbers
  When I divide "70" by "10"
- 	 result = calculator.divide(70,10)
+ 	 result = calculator.divide(args.first.toInt, args.second.toInt)
  Then it prints "7"</pre>
-</p>
-</li><li><p  id="Example_tables"><strong>Example tables</strong>
-<p>Often you want to verify the behavior of a scenario with multiple examples. In case of the calculator you might want to define what happens using negative numbers or large numbers. In this case you can define a table with values that can be used by the scenario steps. Each scenario will be executed separately for each row in the table.</p><p>The header of the example table serves as field declaration of the header names. The type is derived from the common super type of all cells in a column.</p>
-<pre class="prettyprint lang-feature">
-package demo
-import org.jnario.feature.documentation.Calculator
-
-Feature: Calculator
-
-Scenario: Adding two numbers
-  Calculator calculator
-  int result
-  Given a calculator
-    calculator = new Calculator
-  When adding two numbers a and b. 
-    result = calculator.add(a, b)
-  Then it returns the result
-    result =&gt; expected
-    
-  Examples: additions
-
-    |  a  |  b  | expected |
-    |  0  |  0  |     0    |
-    | 21  | 21  |    42    |
-    | -3  | -5  |    -8    |</pre>
 </p>
 </li><li><p  id="Step_references"><strong>Step references</strong>
 <p>Once a step is defined including the execution code it can be referenced from other scenarios. The textual description of the step serves as identifier. When you reuse the step in a different scenario and provide no implementation the existing implementation from the referenced step will be used for this step.</p><p>Referenced steps are highlighted in grey so you see when you are actually using a referenced step. You can also jump directly to the original step declaration to have a look at the implementation.</p>
@@ -130,26 +105,15 @@ Background:
     calculator = new Calculator
 
 Scenario: Adding two numbers
-  When adding two numbers a and b. 
-    result = calculator.add(a, b)
-  Then it returns the expected result
-    result =&gt; expected
+  When adding two numbers "5" and "6". 
+    result = calculator.add(args.first.toInt, args.second.toInt)
+  Then it prints "11"
+    result =&gt; args.first.toInt
     
-  Examples:
-
-    |  a  |  b  | expected |
-    |  0  |  0  |   0    |
-    | -3  | -5  |  -8    |
-  
 Scenario: Dividing two numbers
- When entering two numbers a and b and pressing enter. 
-   result = calculator.divide(a,b)
- Then it returns the expected result
- 
- Examples:
- 
-   |  a  |  b  | expected |
-   |  8  |  1  |     8    |</pre>
+ When entering two numbers "10" and "5" and pressing enter. 
+   result = calculator.divide(args.first.toInt, args.second.toInt)
+ Then it prints "2"</pre>
 </p>
 </li></ul>
 				</div>

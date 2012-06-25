@@ -10,10 +10,8 @@ import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.jnario.ExampleTable;
 import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.HtmlFile;
-import org.jnario.doc.WhiteSpaceNormalizer;
 import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.Scenario;
@@ -29,9 +27,6 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
   
   @Inject
   private StepNameProvider _stepNameProvider;
-  
-  @Inject
-  private WhiteSpaceNormalizer _whiteSpaceNormalizer;
   
   public HtmlFile createHtmlFile(final XtendClass xtendClass) {
     HtmlFile _xblockexpression = null;
@@ -108,25 +103,6 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     CharSequence _generate = this.generate(_filter);
     _builder.append(_generate, "");
     _builder.newLineIfNotEmpty();
-    {
-      EList<ExampleTable> _examples = scenario.getExamples();
-      boolean _isEmpty = _examples.isEmpty();
-      boolean _not = (!_isEmpty);
-      if (_not) {
-        _builder.append("<h4>Examples:</h4>");
-        _builder.newLine();
-        {
-          EList<ExampleTable> _examples_1 = scenario.getExamples();
-          for(final ExampleTable example : _examples_1) {
-            _builder.append("<p>");
-            CharSequence _generate_1 = this.generate(example);
-            _builder.append(_generate_1, "");
-            _builder.append("</p>");
-            _builder.newLineIfNotEmpty();
-          }
-        }
-      }
-    }
     return _builder;
   }
   

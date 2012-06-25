@@ -8,10 +8,9 @@
 package org.jnario.feature.jvmmodel
 
 import com.google.inject.Inject
-import java.util.ArrayList
 import java.util.List
-import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtend.core.xtend.XtendClass
 import org.eclipse.xtend.core.xtend.XtendMember
 import org.eclipse.xtext.common.types.JvmConstructor
 import org.eclipse.xtext.common.types.JvmGenericType
@@ -25,14 +24,14 @@ import org.eclipse.xtext.xbase.XVariableDeclaration
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator
-import org.jnario.ExampleColumn
-import org.jnario.ExampleRow
 import org.jnario.feature.feature.Background
 import org.jnario.feature.feature.Feature
 import org.jnario.feature.feature.FeatureFile
+import org.jnario.feature.feature.Given
 import org.jnario.feature.feature.Scenario
 import org.jnario.feature.feature.Step
 import org.jnario.feature.feature.StepReference
+import org.jnario.feature.naming.FeatureClassNameProvider
 import org.jnario.feature.naming.StepNameProvider
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder
 import org.jnario.jvmmodel.JnarioJvmModelInferrer
@@ -44,11 +43,8 @@ import org.jnario.runner.Order
 import org.junit.Ignore
 
 import static com.google.common.collect.Iterators.*
-import static org.jnario.feature.jvmmodel.FeatureJvmModelInferrer.*
-import org.eclipse.xtend.core.xtend.XtendClass
 import static org.eclipse.xtext.EcoreUtil2.*
-import org.jnario.feature.naming.FeatureClassNameProvider
-import org.jnario.feature.feature.Given
+import static org.jnario.feature.jvmmodel.FeatureJvmModelInferrer.*
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -159,7 +155,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		scenario.copyXtendMemberForReferences
    		
    		val annotations = inferredJvmType.annotations
-   		annotations += scenario.runnerAnnotations
+   		annotations += scenario.featureRunner
    		annotations += scenario.toAnnotation(typeof(Named), scenario.name.trim)
 
    		val feature = scenario.feature
@@ -169,25 +165,9 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		if(!(scenario instanceof Background) && background != null){
 			start = background.steps.generateBackgroundStepCalls(inferredJvmType)
 		}
-		scenario.generateVariables(feature, inferredJvmType)
 		scenario.steps.generateSteps(inferredJvmType, start, scenario)
-		
-		if(!scenario.examples.empty){
-			val exampleClasses = scenario.generateExampleClasses(inferredJvmType)
-			if(!exampleClasses.empty){
-				annotations += scenario.toAnnotation(typeof(Contains), exampleClasses)
-			}
-		}
    	}
 
-   	def runnerAnnotations(Scenario scenario){
-		if(scenario.examples.empty){
-			scenario.featureRunner
-		}else{
-			scenario.featureExamplesRunner
-		}
-   	}
-   	
    	def generateStepValues(Step step){
 		var decs = filter(step.eAllContents, typeof(XVariableDeclaration))
 		val arguments = stepArgumentsProvider.findStepArguments(step)
@@ -305,79 +285,6 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		]
    	}
 
- 	def generateVariables(Scenario scenario, Feature feature, JvmGenericType inferredJvmType){		
-		if(!scenario.examples.empty){
-			var fieldNames = new ArrayList<String>()
-			for(table: scenario.examples){
-				for(field: table.columns){
-					if(!fieldNames.contains(field.name)){
-						inferredJvmType.members += field.toField
-						fieldNames.add(field.name)
-					}
-				}
-			}
-		}		
- 	}
-
-	def generateExampleClasses(Scenario scenario, JvmGenericType inferredJvmType){
-		val List<JvmGenericType> exampleClasses = newArrayList()
-		for(example: scenario.examples){
-			var fields = example.columns
-			if(!example.rows.empty){
-				for(row: example.rows){
-					exampleClasses += scenario.createExampleClass(row, fields, inferredJvmType)
-				}
-			}
-		}
-		exampleClasses
-	} 
-
-	def createExampleClass(Scenario scenario, ExampleRow row, EList<ExampleColumn> fields, JvmGenericType inferredJvmType){
-		val className = row.getClassName
-		row.toClass(className)[
-			superTypes += inferredJvmType.createTypeRef
-			val featureFile = scenario.xtendFile
-			featureFile.eResource.contents += it
-			packageName = featureFile.^package
-			members += row.generateExampleConstructor(fields, className)
-			annotations += row.featureRunner
-			
-			var description = "["
-			var i = 0
-			for(field: fields){
-				if(row.cells.size > i){
-					description = description + field.name + " = " + row.cells.get(i).serialize + ", "
-					i = i + 1
-				}
-			}
-			description = description.substring(0, description.length - 1 - 1) + "]"
-			annotations += row.toAnnotation(typeof(Named), description)
-		]
-	}
-
-	def cellToAppendable(ExampleRow row, int i, ITreeAppendable appendable){
-		if(row.cells.size > i){
-			compiler.toJavaExpression(row.cells.get(i), appendable)
-		}
-		appendable
-	}
-
-	def generateExampleConstructor(ExampleRow row, EList<ExampleColumn> fields, String className){
-		row.toConstructor[
-			simpleName = className
-			body = [ITreeAppendable a |
-				var i = 0
-				for(field: fields){
-					a.append("super.")
-					a.append(field.name)
-					a.append(" = ")
-					cellToAppendable(row, i, a)
-					a.append(";\n")
-					i = i + 1
-				}
-			]
-		]
-	}
 
 	def feature(EObject context){
    		getContainerOfType(context, typeof(Feature))
