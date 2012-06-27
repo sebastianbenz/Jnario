@@ -65,7 +65,9 @@ public class ExtendedJvmTypesBuilder extends JvmTypesBuilder {
 				if(annotationValue == null){
 					annotationValue = TypesFactory.eINSTANCE.createJvmTypeAnnotationValue();
 				}
-				((JvmTypeAnnotationValue)annotationValue).getValues().add(references.createTypeRef(type));
+				if(type != null){
+					((JvmTypeAnnotationValue)annotationValue).getValues().add(references.createTypeRef(type));
+				}
 			}else if(object instanceof JvmGenericType){
 				if(annotationValue == null){
 					annotationValue = TypesFactory.eINSTANCE.createJvmTypeAnnotationValue();
