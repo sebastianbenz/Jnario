@@ -74,6 +74,6 @@ public class FeatureBatchCompilerTest {
     File _file = new File(_plus);
     String[] _list = _file.list();
     int _size = ((List<String>)Conversions.doWrapArray(_list)).size();
-    Assert.assertEquals(5, _size);
+    Assert.assertEquals(3, _size);
   }
 }

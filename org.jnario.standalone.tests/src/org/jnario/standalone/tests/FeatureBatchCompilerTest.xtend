@@ -49,7 +49,7 @@ class FeatureBatchCompilerTest {
 	@Test
 	def void testCompileTestData() {
 		batchCompiler.compile
-		assertEquals(5, new File(OUTPUT_DIRECTORY+"/test").list.size)
+		assertEquals(3, new File(OUTPUT_DIRECTORY+"/test").list.size)
 	}
 
 }

@@ -54,7 +54,8 @@ class SuiteBatchCompilerTest {
 
 	@Test
 	def void testCompileTestData() {
-		batchCompiler.compile(resourceSet)
+		batchCompiler.setResourceSet(resourceSet)
+		batchCompiler.compile()
 		assertEquals(1, new File(OUTPUT_DIRECTORY+"/test").list.size)
 	}
 
