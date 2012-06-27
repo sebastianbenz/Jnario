@@ -247,9 +247,9 @@ https://github.com/bmwcarit/Jnario/issues
 		<url>http://www.bmw-carit.de/</url>
 	</organization>
 	<scm>
-		<developerConnection>https://github.com/bmwcarit/Jnario.git</developerConnection>
+		<developerConnection>scm:git:git@github.com:bmwcarit/Jnario.git</developerConnection>
 		<url>https://github.com/bmwcarit/Jnario</url>
-		<connection>git://github.com/bmwcarit/Jnario.git</connection>
+		<connection>scm:git:git://github.com/bmwcarit/Jnario.git</connection>
 	</scm>
 	<developers>
 		<developer>
