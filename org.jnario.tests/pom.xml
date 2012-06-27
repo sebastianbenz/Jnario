@@ -26,8 +26,7 @@
             			<include>**/Test*.java</include>
             			<include>**/*Test.java</include>
             			<include>**/*TestCase.java</include>
-            			<include>**/*Feature.java</include>
-            			<include>**/*Spec.java</include>
+            			<include>**/JnarioSuite.java</include>
 			         </includes>
 			         <explodedBundles> 
 						<!-- Make sure that nested junit.jar can be accessed by PDE/JDT. -->
