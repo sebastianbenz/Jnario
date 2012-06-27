@@ -35,35 +35,35 @@
 		<dependency>
 			<groupId>org.eclipse.xtend</groupId>
 			<artifactId>org.eclipse.xtend.lib</artifactId>
-			<version>2.3.0-SNAPSHOT</version>
+			<version>2.3.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jnario</groupId>
-			<artifactId>org.jnario.lib.maven</artifactId>
+			<artifactId>org.jnario.lib</artifactId>
 			<version>0.1.0-SNAPSHOT</version>
-			<scope>test</scope> 
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.8.1</version>
-			<scope>test</scope> 
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	<build>
-		<plugins> 
+		<plugins>
 			<plugin>
 				<groupId>org.eclipse.xtend</groupId>
 				<artifactId>xtend-maven-plugin</artifactId>
-				<version>2.3.0-SNAPSHOT</version>
+				<version>2.3.0</version>
 				<executions>
 					<execution>
 						<goals>
 							<goal>compile</goal>
-							<goal>testCompile</goal>
 						</goals>
 					</execution>
 				</executions>
+
 			</plugin>
 			<plugin>
 				<groupId>org.jnario</groupId>
@@ -76,6 +76,19 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.12</version>
+				<configuration>
+					<includes>
+            			<include>**/Test*.java</include>
+            			<include>**/*Test.java</include>
+            			<include>**/*TestCase.java</include>
+            			<include>**/*Suite.java</include>
+			         </includes>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

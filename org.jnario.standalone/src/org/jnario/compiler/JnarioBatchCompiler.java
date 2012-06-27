@@ -62,9 +62,8 @@ public abstract class JnarioBatchCompiler extends XtendBatchCompiler {
 	@Inject
 	private JvmModelGenerator generator;
 	
-	public boolean compile(ResourceSet resourceSet) {
+	public void setResourceSet(ResourceSet resourceSet) {
 		resourceSetProvider = new WrappedResourceSetProvider(resourceSet);
-		return super.compile();
 	}
 	
 	@Override

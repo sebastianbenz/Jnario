@@ -69,7 +69,8 @@ public class CompilerMain {
 				jnarioCompiler.setSourcePath(argument);
 			}
 		}
-		jnarioCompiler.compile(resourceSet);
+		jnarioCompiler.setResourceSet(resourceSet);
+		jnarioCompiler.compile();
 	}
 	
 	private static void printUsage() {

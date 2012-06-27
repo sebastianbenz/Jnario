@@ -8,12 +8,21 @@
 
 package org.jnario.maven;
 
+import org.apache.maven.plugin.MojoExecutionException;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
 import org.eclipse.xtend.maven.XtendTestCompile;
+import org.jnario.feature.FeatureStandaloneSetup;
+import org.jnario.feature.compiler.batch.FeatureBatchCompiler;
 import org.jnario.spec.SpecStandaloneSetup;
 import org.jnario.spec.compiler.batch.SpecBatchCompiler;
+import org.jnario.suite.SuiteStandaloneSetup;
+import org.jnario.suite.compiler.batch.SuiteBatchCompiler;
+import org.jnario.compiler.JnarioBatchCompiler;
+
 
 import com.google.inject.Injector;
+import com.google.inject.Provider;
 
 /**
  * Goal which compiles Jnario test sources.
@@ -27,8 +36,32 @@ import com.google.inject.Injector;
 public class JnarioTestCompile extends XtendTestCompile {
 
 	@Override
-	protected XtendBatchCompiler createXtendBatchCompiler() {
+	public void execute() throws MojoExecutionException {
+		if (isSkipped()) {
+			getLog().info("Xtend compiler skipped.");
+		}
+		configureLog4j();
 		Injector injector = new SpecStandaloneSetup().createInjectorAndDoEMFRegistration();
-		return injector.getInstance(SpecBatchCompiler.class);
+		Provider<ResourceSet> resourceSetProvider = injector.getProvider(ResourceSet.class);
+		ResourceSet resourceSet = resourceSetProvider.get();
+		
+		JnarioBatchCompiler compiler = injector.getInstance(SpecBatchCompiler.class);
+		internalExecute(compiler);
+		
+		compiler = createFeatureCompiler();
+		internalExecute(compiler);
+		
+		compiler = createSuiteCompiler();
+		internalExecute(compiler);
+	}
+	
+	protected XtendBatchCompiler createFeatureCompiler() {
+		Injector injector = new FeatureStandaloneSetup().createInjectorAndDoEMFRegistration();
+		return injector.getInstance(FeatureBatchCompiler.class);
+	}
+	
+	protected XtendBatchCompiler createSuiteCompiler() {
+		Injector injector = new SuiteStandaloneSetup().createInjectorAndDoEMFRegistration();
+		return injector.getInstance(SuiteBatchCompiler.class);
 	}
 }

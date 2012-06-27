@@ -11,7 +11,7 @@
 				<version>1.7</version>
 				<executions>
 					<execution>
-						<phase>install</phase>
+						<phase>compile</phase>
 						<configuration>
 							<tasks>
 								<ant antfile="create-uberjar.ant" />
@@ -29,6 +29,7 @@
 					<file>result/org.jnario.standalone.maven-0.1.0.jar</file>
 					<sources>result/org.jnario.standalone.maven-0.1.0-sources.jar</sources>
 					<pomFile>result/org.jnario.standalone.maven-0.1.0.pom</pomFile>
+					<javadoc>result/org.jnario.standalone.maven-0.1.0-javadoc.jar</javadoc>
 				</configuration>
 			</plugin>
 		</plugins>

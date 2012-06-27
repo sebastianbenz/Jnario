@@ -14,7 +14,6 @@
 	<property name="sourceJarTemp" value="sourceJarTemp" />
 
 	<target name="run" depends="clean,createSourcesUberjar">
-	
 		<loadfile property="modifiedPomXml" srcFile="pom-template.pom">
 			<filterchain>
 				<expandproperties />
@@ -101,6 +100,10 @@
 		<!-- Jar uber jar -->
 		<jar destfile="${output.folder}/org.jnario.standalone.maven-${maven.version}-sources.jar" basedir="${sourceJarTemp}">
 			<exclude name="META-INF/*" />
+		</jar>
+		
+		<jar destfile="${output.folder}/org.jnario.standalone.maven-${maven.version}-javadoc.jar">
+			<fileset file="README"/>
 		</jar>
 	</target>
 

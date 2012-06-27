@@ -7,11 +7,10 @@
  *******************************************************************************/
 package demo
 
-describe Calculator{
+describe "Calculator"{
 	
 	fact "should add two values"{
-//		new Calculator().add(1, 2) should be 3
-		"Hello" => "Hello"
+		new Calculator().add(1, 2) should be 3
 	}
-	 
-}       
+	  
+}          

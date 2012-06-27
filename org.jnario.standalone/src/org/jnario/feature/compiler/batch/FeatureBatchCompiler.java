@@ -53,11 +53,6 @@ public class FeatureBatchCompiler extends JnarioBatchCompiler {
 				Iterable<Scenario> scenarios = filter(feature.getMembers(), Scenario.class);
 				for (Scenario scenario : scenarios) {
 					result.add(scenario);
-					EList<ExampleTable> examples = scenario.getExamples();
-					for (ExampleTable exampleTable : examples) {
-						result.add(exampleTable);
-						result.addAll(exampleTable.getRows());
-					}
 				}
 				allContents.prune();
 			}

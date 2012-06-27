@@ -5,6 +5,13 @@
 	<artifactId>org.jnario.standalone.maven</artifactId>
 	<packaging>jar</packaging>
 	<version>0.1.0</version>
+	<name>Jnario Standalone Support</name>
+	<description>The required libraries to execute Jnario specifications without Eclipse.</description>
+	<parent>
+		<groupId>org.jnario</groupId>
+		<artifactId>jnario</artifactId>
+		<version>0.1.0-SNAPSHOT</version>
+	</parent>
 	<dependencies>
 		<dependency>
 			<groupId>com.google.guava</groupId>
@@ -65,8 +72,7 @@
 			</exclusions>
 		</dependency>
 	</dependencies>
-	
-		<licenses>
+	<licenses>
 		<license>
 			<name>Eclipse Public License v1.0</name>
 			<comments>
@@ -111,6 +117,48 @@ https://github.com/bmwcarit/Jnario/issues
 			</roles>
 		</developer>
 	</developers>
-	<name>Jnario Standalone Support</name>
-	<description>The required libraries to execute Jnario specifications without Eclipse.</description>
+	<distributionManagement>
+		<snapshotRepository>
+			<id>sonatype-nexus-snapshots</id>
+			<name>Sonatype Nexus snapshot repository</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>sonatype-nexus-staging</id>
+			<name>Sonatype Nexus release repository</name>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
+	<profiles>
+		<profile>
+			<id>release-sign-artifacts</id>
+			<activation>
+				<property>
+					<name>performRelease</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.4</version>
+						<configuration>
+							<passphrase>mypassphrase</passphrase>
+						</configuration>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
