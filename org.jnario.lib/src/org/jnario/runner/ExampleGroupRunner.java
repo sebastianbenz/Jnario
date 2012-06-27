@@ -20,6 +20,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -120,7 +121,8 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 						try {
 							return createExampleRunner(testClass, from);
 						} catch (InitializationError e) {
-							throw new RuntimeException(e);
+							Exceptions.sneakyThrow(e);
+							return null; // not reachable
 						} catch (NoTestsRemainException e) {
 							throw new Error(e); // should not happen
 						}
