@@ -6,21 +6,20 @@
 	 3. Where to put output = output.folder
 	-->
 	<property name="jnarioPluginFolder" value="../org.jnario.updatesite/target/repository/plugins" />
-	<property name="maven.version" value="0.1.0" />
-	<property name="output.folder" value="result" />
+	<property name="output.folder" value="target" />
 	<echo>${maven.version}</echo>
 
 	<property name="binJarTemp" value="binJarTemp" />
 	<property name="sourceJarTemp" value="sourceJarTemp" />
 
 	<target name="run" depends="clean,createSourcesUberjar">
-		<loadfile property="modifiedPomXml" srcFile="pom-template.pom">
+<!--		<loadfile property="modifiedPomXml" srcFile="pom-template.pom">
 			<filterchain>
 				<expandproperties />
 			</filterchain>
 		</loadfile>
 		<echo file="${output.folder}/org.jnario.standalone.maven-${maven.version}.pom">${modifiedPomXml}</echo>
-		<echo>Pom stored: ${output.folder}/org.jnario.standalone.maven-${maven.version}.pom</echo>
+		<echo>Pom stored: ${output.folder}/org.jnario.standalone.maven-${maven.version}.pom</echo> -->
 	</target>
 
 	<!-- - - - - - - - - - - - - - - - - - 
@@ -66,7 +65,7 @@
 		</antcall>
 
 		<!-- Jar uber jar -->
-		<jar destfile="${output.folder}/org.jnario.standalone.maven-${maven.version}.jar" basedir="${binJarTemp}" />
+		<jar destfile="${output.folder}/org.jnario.standalone.maven-${maven.project.version}.jar" basedir="${binJarTemp}" />
 	</target>
 
 
@@ -89,7 +88,7 @@
 		<unzip dest="${sourceJarTemp}" overwrite="true">
 			<fileset refid="sourceXtextJars" />
 			<fileset dir="${jnarioPluginFolder}">
-				<include name="org.jnario.standalone.source_0.1.0*.jar" />
+				<include name="org.jnario.standalone.source*.jar" />
 			</fileset>
 		</unzip>
 
@@ -98,11 +97,11 @@
 		</antcall>
 
 		<!-- Jar uber jar -->
-		<jar destfile="${output.folder}/org.jnario.standalone.maven-${maven.version}-sources.jar" basedir="${sourceJarTemp}">
+		<jar destfile="${output.folder}/org.jnario.standalone.maven-${maven.project.version}-sources.jar" basedir="${sourceJarTemp}">
 			<exclude name="META-INF/*" />
 		</jar>
 		
-		<jar destfile="${output.folder}/org.jnario.standalone.maven-${maven.version}-javadoc.jar">
+		<jar destfile="${output.folder}/org.jnario.standalone.maven-${maven.project.version}-javadoc.jar">
 			<fileset file="README"/>
 		</jar>
 	</target>

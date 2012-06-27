@@ -56,7 +56,8 @@ public class ExampleTableSpec {
     boolean _isValid = _first.isValid();
     Assert.assertTrue("\nExpected query.first(typeof(ExampleTable)).isValid() but"
      + "\n     query.first(typeof(ExampleTable)) is " + _first
-     + "\n     query is " + _query + "\n", _isValid);
+     + "\n     query is " + _query
+     + "\n      is " + this._modelStore + "\n", _isValid);
     
   }
   
@@ -94,7 +95,8 @@ public class ExampleTableSpec {
     Assert.assertTrue("\nExpected !query.first(typeof(ExampleTable)).isValid() but"
      + "\n     query.first(typeof(ExampleTable)).isValid() is " + _isValid
      + "\n     query.first(typeof(ExampleTable)) is " + _first
-     + "\n     query is " + _query + "\n", _not);
+     + "\n     query is " + _query
+     + "\n      is " + this._modelStore + "\n", _not);
     
   }
 }

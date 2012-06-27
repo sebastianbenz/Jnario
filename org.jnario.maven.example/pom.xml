@@ -83,11 +83,10 @@
 				<version>2.12</version>
 				<configuration>
 					<includes>
-            			<include>**/Test*.java</include>
-            			<include>**/*Test.java</include>
-            			<include>**/*TestCase.java</include>
-            			<include>**/*Suite.java</include>
-			         </includes>
+						<include>**/*Spec*.java</include>
+						<include>**/*Feature.java</include>
+						<include>**/*TestCase.java</include>
+					</includes>
 				</configuration>
 			</plugin>
 		</plugins>

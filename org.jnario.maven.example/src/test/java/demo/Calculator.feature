@@ -12,4 +12,4 @@ Feature: Addition
     When I entered "50" and "70"
     		result = calculator.add(args.first.toInt, args.second.toInt)
     Then the result should be "120" 
-	     result => args.first
+	     result => args.first.toInt

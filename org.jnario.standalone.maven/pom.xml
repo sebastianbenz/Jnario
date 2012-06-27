@@ -2,8 +2,74 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>org.jnario.standalone.maven</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>pom</packaging>
+	<name>Jnario Standalone Support</name>
+	<description>The required libraries to execute Jnario specifications without Eclipse.</description>
+	<parent>
+		<groupId>org.jnario</groupId>
+		<artifactId>jnario</artifactId>
+		<version>0.1.0-SNAPSHOT</version>
+	</parent>
+	<dependencies>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>10.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.2</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+			<version>3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-all</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.xtend</groupId>
+			<artifactId>org.eclipse.xtend.lib</artifactId>
+			<version>2.3.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.xtend</groupId>
+			<artifactId>org.eclipse.xtend.standalone</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.15</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>jmxtools</artifactId>
+					<groupId>com.sun.jdmk</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jmxri</artifactId>
+					<groupId>com.sun.jmx</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jms</artifactId>
+					<groupId>javax.jms</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>mail</artifactId>
+					<groupId>javax.mail</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
@@ -11,10 +77,11 @@
 				<version>1.7</version>
 				<executions>
 					<execution>
-						<phase>compile</phase>
+						<phase>package</phase>
 						<configuration>
 							<tasks>
-								<ant antfile="create-uberjar.ant" />
+								<property name="maven.project.version" value="${version}"/>
+								<ant antfile="create-uberjar.ant"/>
 							</tasks>
 						</configuration>
 						<goals>
@@ -24,19 +91,127 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<artifactId>maven-install-plugin</artifactId>
-				<configuration>
-					<file>result/org.jnario.standalone.maven-0.1.0.jar</file>
-					<sources>result/org.jnario.standalone.maven-0.1.0-sources.jar</sources>
-					<pomFile>result/org.jnario.standalone.maven-0.1.0.pom</pomFile>
-					<javadoc>result/org.jnario.standalone.maven-0.1.0-javadoc.jar</javadoc>
-				</configuration>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<id>attach-artifacts</id>
+						<phase>package</phase>
+						<goals>
+							<goal>attach-artifact</goal>
+						</goals>
+						<configuration>
+							<artifacts>
+								<artifact>
+									<file>target/org.jnario.standalone.maven-${version}.jar</file>
+									<type>jar</type>
+									<classifier></classifier>
+								</artifact><artifact>
+									<file>target/org.jnario.standalone.maven-${version}-sources.jar</file>
+									<type>jar</type>
+									<classifier>sources</classifier>
+								</artifact>
+								<artifact>
+									<file>target/org.jnario.standalone.maven-${version}-javadoc.jar</file>
+									<type>jar</type>
+									<classifier>javadoc</classifier>
+								</artifact>
+								
+							</artifacts>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
-	<parent>
-		<groupId>org.jnario</groupId>
-		<artifactId>jnario</artifactId>
-		<version>0.1.0-SNAPSHOT</version>
-	</parent>
+	<licenses>
+		<license>
+			<name>Eclipse Public License v1.0</name>
+			<comments>
+			All rights reserved. This program and the accompanying materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution, and is available at http://www.eclipse.org/legal/epl-v10.htm
+			</comments>
+		</license>
+	</licenses>
+	<url>
+		http://www.jnario.org/
+	</url>
+	<inceptionYear>2012</inceptionYear>
+	<issueManagement>
+		<system>Github Issues</system>
+		<url>
+https://github.com/bmwcarit/Jnario/issues
+</url>
+	</issueManagement>
+	<organization>
+		<name>BMW Car IT</name>
+		<url>http://www.bmw-carit.de/</url>
+	</organization>
+	<scm>
+		<developerConnection>scm:git:git@github.com:bmwcarit/Jnario.git</developerConnection>
+		<url>https://github.com/bmwcarit/Jnario</url>
+		<connection>scm:git:git://github.com/bmwcarit/Jnario.git</connection>
+	</scm>
+	<developers>
+		<developer>
+			<id>sebastianbenz</id>
+			<name>Sebastian Benz</name>
+			<email>sebastian.benz@gmail.com</email>
+			<timezone>GMT+2</timezone>
+			<roles>
+			</roles>
+		</developer>
+		<developer>
+			<id>birgitengelmann</id>
+			<name>Birgit Engelmann</name>
+			<email>birgit.engelmann@bmw-carit.de</email>
+			<timezone>GMT+2</timezone>
+			<roles>
+			</roles>
+		</developer>
+	</developers>
+	<distributionManagement>
+		<snapshotRepository>
+			<id>sonatype-nexus-snapshots</id>
+			<name>Sonatype Nexus snapshot repository</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>sonatype-nexus-staging</id>
+			<name>Sonatype Nexus release repository</name>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
+	<profiles>
+		<profile>
+			<id>release-sign-artifacts</id>
+			<activation>
+				<property>
+					<name>performRelease</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.4</version>
+						<configuration>
+							<passphrase>${gpg.passphrase}</passphrase>
+						</configuration>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>

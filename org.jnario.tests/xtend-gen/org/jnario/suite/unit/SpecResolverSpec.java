@@ -112,6 +112,7 @@ public class SpecResolverSpec {
     Assert.assertTrue("\nExpected resolvedSpecs(firstSuite) => set(\"MySpecSpec\", \"MyFeatureFeature\") but"
      + "\n     resolvedSpecs(firstSuite) is " + _resolvedSpecs
      + "\n     firstSuite is " + _firstSuite
+     + "\n      is " + this.m
      + "\n     set(\"MySpecSpec\", \"MyFeatureFeature\") is " + _set + "\n", _doubleArrow);
     
   }

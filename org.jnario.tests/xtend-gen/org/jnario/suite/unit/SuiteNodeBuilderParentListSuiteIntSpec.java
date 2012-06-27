@@ -56,6 +56,7 @@ public class SuiteNodeBuilderParentListSuiteIntSpec extends SuiteNodeBuilderSpec
           Assert.assertTrue("\nExpected parent(suites, position)?.name should be parent but"
            + "\n     parent(suites, position)?.name is " + "\"" + _name + "\""
            + "\n     parent(suites, position) is " + _parent
+           + "\n      is " + SuiteNodeBuilderParentListSuiteIntSpec.this._suiteNodeBuilder
            + "\n     suites is " + it.suites
            + "\n     position is " + it.position
            + "\n     parent is " + "\"" + it.parent + "\"" + "\n", _should_be);

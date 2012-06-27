@@ -1,7 +1,9 @@
 package demo;
 
 import demo.Calculator;
+import demo.CalculatorNestedCalculatorSpec;
 import org.jnario.lib.Should;
+import org.jnario.runner.Contains;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -9,6 +11,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+@Contains(CalculatorNestedCalculatorSpec.class)
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("Calculator")

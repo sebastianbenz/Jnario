@@ -10,16 +10,14 @@ package org.jnario.maven;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
 import org.eclipse.xtend.maven.XtendTestCompile;
+import org.jnario.compiler.JnarioBatchCompiler;
 import org.jnario.feature.FeatureStandaloneSetup;
 import org.jnario.feature.compiler.batch.FeatureBatchCompiler;
 import org.jnario.spec.SpecStandaloneSetup;
 import org.jnario.spec.compiler.batch.SpecBatchCompiler;
 import org.jnario.suite.SuiteStandaloneSetup;
 import org.jnario.suite.compiler.batch.SuiteBatchCompiler;
-import org.jnario.compiler.JnarioBatchCompiler;
-
 
 import com.google.inject.Injector;
 import com.google.inject.Provider;
@@ -46,21 +44,27 @@ public class JnarioTestCompile extends XtendTestCompile {
 		ResourceSet resourceSet = resourceSetProvider.get();
 		
 		JnarioBatchCompiler compiler = injector.getInstance(SpecBatchCompiler.class);
-		internalExecute(compiler);
+		execute(resourceSet, compiler);
 		
 		compiler = createFeatureCompiler();
-		internalExecute(compiler);
+		execute(resourceSet, compiler);
 		
 		compiler = createSuiteCompiler();
+		execute(resourceSet, compiler);
+	}
+
+	private void execute(ResourceSet resourceSet, JnarioBatchCompiler compiler)
+			throws MojoExecutionException {
+		compiler.setResourceSet(resourceSet);
 		internalExecute(compiler);
 	}
 	
-	protected XtendBatchCompiler createFeatureCompiler() {
+	protected JnarioBatchCompiler createFeatureCompiler() {
 		Injector injector = new FeatureStandaloneSetup().createInjectorAndDoEMFRegistration();
 		return injector.getInstance(FeatureBatchCompiler.class);
 	}
 	
-	protected XtendBatchCompiler createSuiteCompiler() {
+	protected JnarioBatchCompiler createSuiteCompiler() {
 		Injector injector = new SuiteStandaloneSetup().createInjectorAndDoEMFRegistration();
 		return injector.getInstance(SuiteBatchCompiler.class);
 	}
