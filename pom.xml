@@ -23,13 +23,14 @@
     <module>org.jnario</module>
     <module>org.jnario.ui</module>
     <module>org.jnario.lib</module>
-    <!-- <module>org.jnario.lib.maven</module> -->
     <module>org.jnario.spec</module>
     <module>org.jnario.suite</module>
     <module>org.jnario.suite.ui</module>
     <module>org.jnario.standalone</module>
     <module>org.jnario.standalone.tests</module>
     <module>org.jnario.standalone.maven</module>
+    <module>org.jnario.maven.plugin</module>
+    <module>org.jnario.maven.lib</module>
     <module>org.jnario-feature</module>
     <module>org.jnario.tests</module>
     <module>org.jnario.lib.tests</module>
@@ -38,7 +39,6 @@
     <module>org.jnario.ui-feature</module>
     <module>org.jnario.sdk</module>
     <module>org.jnario.updatesite</module>
-    <module>org.jnario.maven.lib</module>
   </modules>
 
   <repositories>
@@ -71,6 +71,14 @@
 
   <build>
     <plugins>
+       <plugin>
+         <groupId>org.apache.maven.plugins</groupId>
+         <artifactId>maven-deploy-plugin</artifactId>
+         <version>2.7</version>
+         <configuration>
+           <skip>true</skip>
+         </configuration>
+      </plugin>
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>tycho-compiler-plugin</artifactId>
