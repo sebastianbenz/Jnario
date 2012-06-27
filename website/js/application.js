@@ -12,8 +12,8 @@ $(document).ready(function() {
 		$('html,body').animate({
 			scrollTop: $(ziel).offset().top
 		}, 2000 , function (){location.hash = ziel;});
-	  */
 	});
+       */
 	return false;
 });
 
