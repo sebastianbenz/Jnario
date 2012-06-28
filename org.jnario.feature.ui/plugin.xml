@@ -60,9 +60,10 @@
     <extension
             point="org.eclipse.ui.preferencePages">
         <page
-            class="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="org.jnario.feature.Feature"
-            name="Jnario Features">
+              category="org.jnario.ui.preferences.JnarioPreferencePage"
+              class="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+              id="org.jnario.feature.Feature"
+              name="Features">
             <keywordReference id="org.jnario.feature.ui.keyword_Feature"/>
         </page>
         <page

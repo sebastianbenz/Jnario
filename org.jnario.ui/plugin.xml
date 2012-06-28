@@ -21,4 +21,13 @@
             id="org.jnario.JNARIO_CONTAINER">
       </classpathContainerPage>
    </extension>
+ <extension
+       point="org.eclipse.ui.preferencePages">
+    <page
+          class="org.jnario.ui.preferences.JnarioPreferencePage"
+          id="org.jnario.ui.preferences.JnarioPreferencePage"
+          name="Jnario">
+    </page>
+ </extension>
+   
 </plugin>
