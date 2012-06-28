@@ -503,7 +503,7 @@
             helpContextId="org.eclipse.jdt.junit.launch_shortcut"
             class="org.jnario.suite.ui.launching.SuiteJUnitLaunchShortcut"
             modes="run, debug"
-            id=".junitShortcut">
+            id="org.jnario.suite.ui.launching.junitShortcut">
          <contextualLaunch>
             <enablement>
                <with variable="selection">
