@@ -56,7 +56,6 @@ import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.hamcrest.Matcher;
 import org.jnario.Assertion;
-import org.jnario.feature.documentation.Calculator;
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.runner.Named;
 import org.jnario.spec.spec.SpecPackage;
@@ -263,7 +262,7 @@ public abstract class BehaviorExecutor {
 		javaCompiler.addClassPathOfClass(Token.class);
 		javaCompiler.addClassPathOfClass(Strings.class);
 		javaCompiler.addClassPathOfClass(Suite.class);
-		javaCompiler.addClassPathOfClass(Calculator.class);
+		javaCompiler.addClassPathOfClass(org.jnario.feature.tests.integration.Calculator.class);
 	}
 
 	public Result run(EObject object) {

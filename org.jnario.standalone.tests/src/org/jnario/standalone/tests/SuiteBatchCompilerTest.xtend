@@ -5,7 +5,7 @@ import java.io.File
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.jnario.suite.SuiteInjectorProvider
-import org.jnario.suite.compiler.batch.SuiteBatchCompiler
+import org.jnario.suite.compiler.SuiteBatchCompiler
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith

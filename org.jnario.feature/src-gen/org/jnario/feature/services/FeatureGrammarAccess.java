@@ -217,7 +217,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "XAnnotation");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cXAnnotationAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cCommercialAtKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final RuleCall cAT_SIGNTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
 		private final Assignment cAnnotationTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final CrossReference cAnnotationTypeJvmAnnotationTypeCrossReference_2_0 = (CrossReference)cAnnotationTypeAssignment_2.eContents().get(0);
 		private final RuleCall cAnnotationTypeJvmAnnotationTypeQualifiedNameParserRuleCall_2_0_1 = (RuleCall)cAnnotationTypeJvmAnnotationTypeCrossReference_2_0.eContents().get(1);
@@ -236,12 +236,12 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
 		
 		//XAnnotation returns xannotations::XAnnotation:
-		//	{xannotations::XAnnotation} "@" annotationType=[types::JvmAnnotationType|QualifiedName] ("("
+		//	{xannotations::XAnnotation} AT_SIGN annotationType=[types::JvmAnnotationType|QualifiedName] ("("
 		//	(elementValuePairs+=XAnnotationElementValuePair ("," elementValuePairs+=XAnnotationElementValuePair)* |
 		//	value=XAnnotationElementValue)? ")")?;
 		public ParserRule getRule() { return rule; }
 
-		//{xannotations::XAnnotation} "@" annotationType=[types::JvmAnnotationType|QualifiedName] ("("
+		//{xannotations::XAnnotation} AT_SIGN annotationType=[types::JvmAnnotationType|QualifiedName] ("("
 		//(elementValuePairs+=XAnnotationElementValuePair ("," elementValuePairs+=XAnnotationElementValuePair)* |
 		//value=XAnnotationElementValue)? ")")?
 		public Group getGroup() { return cGroup; }
@@ -249,8 +249,8 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		//{xannotations::XAnnotation}
 		public Action getXAnnotationAction_0() { return cXAnnotationAction_0; }
 
-		//"@"
-		public Keyword getCommercialAtKeyword_1() { return cCommercialAtKeyword_1; }
+		//AT_SIGN
+		public RuleCall getAT_SIGNTerminalRuleCall_1() { return cAT_SIGNTerminalRuleCall_1; }
 
 		//annotationType=[types::JvmAnnotationType|QualifiedName]
 		public Assignment getAnnotationTypeAssignment_2() { return cAnnotationTypeAssignment_2; }
@@ -317,15 +317,21 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cStepsGivenReferenceParserRuleCall_3_0_1 = (RuleCall)cStepsAlternatives_3_0.eContents().get(1);
 		
 		//Background:
-		//	{Background} name=BACKGROUND_TEXT members+=Member* steps+=(Given | GivenReference)*;
+		//	{Background} //	(annotations+=XAnnotation)*
+		//
+		//	name=BACKGROUND_TEXT members+=Member* steps+=(Given | GivenReference)*;
 		public ParserRule getRule() { return rule; }
 
-		//{Background} name=BACKGROUND_TEXT members+=Member* steps+=(Given | GivenReference)*
+		//{Background} //	(annotations+=XAnnotation)*
+		//
+		//name=BACKGROUND_TEXT members+=Member* steps+=(Given | GivenReference)*
 		public Group getGroup() { return cGroup; }
 
 		//{Background}
 		public Action getBackgroundAction_0() { return cBackgroundAction_0; }
 
+		////	(annotations+=XAnnotation)*
+		//
 		//name=BACKGROUND_TEXT
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 
@@ -373,17 +379,23 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cStepsThenReferenceParserRuleCall_5_0_1 = (RuleCall)cStepsAlternatives_5_0.eContents().get(1);
 		
 		//Scenario:
-		//	{Scenario} name=SCENARIO_TEXT members+=Member* steps+=(Given | GivenReference)? steps+=(When | WhenReference)?
-		//	steps+=(Then | ThenReference)?;
+		//	{Scenario} //	(annotations+=XAnnotation)*
+		//
+		//	name=SCENARIO_TEXT members+=Member* steps+=(Given | GivenReference)? steps+=(When | WhenReference)? steps+=(Then |
+		//	ThenReference)?;
 		public ParserRule getRule() { return rule; }
 
-		//{Scenario} name=SCENARIO_TEXT members+=Member* steps+=(Given | GivenReference)? steps+=(When | WhenReference)?
-		//steps+=(Then | ThenReference)?
+		//{Scenario} //	(annotations+=XAnnotation)*
+		//
+		//name=SCENARIO_TEXT members+=Member* steps+=(Given | GivenReference)? steps+=(When | WhenReference)? steps+=(Then |
+		//ThenReference)?
 		public Group getGroup() { return cGroup; }
 
 		//{Scenario}
 		public Action getScenarioAction_0() { return cScenarioAction_0; }
 
+		////	(annotations+=XAnnotation)*
+		//
 		//name=SCENARIO_TEXT
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 
@@ -1656,6 +1668,8 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	private XRelationalExpressionElements pXRelationalExpression;
 	private ShouldElements pShould;
 	private AssertionElements pAssertion;
+	private TerminalRule tML_COMMENT;
+	private TerminalRule tAT_SIGN;
 	private TerminalRule tBACKGROUND_TEXT;
 	private TerminalRule tSCENARIO_TEXT;
 	private TerminalRule tFEATURE_TEXT;
@@ -1744,7 +1758,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XAnnotation returns xannotations::XAnnotation:
-	//	{xannotations::XAnnotation} "@" annotationType=[types::JvmAnnotationType|QualifiedName] ("("
+	//	{xannotations::XAnnotation} AT_SIGN annotationType=[types::JvmAnnotationType|QualifiedName] ("("
 	//	(elementValuePairs+=XAnnotationElementValuePair ("," elementValuePairs+=XAnnotationElementValuePair)* |
 	//	value=XAnnotationElementValue)? ")")?;
 	public XAnnotationElements getXAnnotationAccess() {
@@ -1756,7 +1770,9 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Background:
-	//	{Background} name=BACKGROUND_TEXT members+=Member* steps+=(Given | GivenReference)*;
+	//	{Background} //	(annotations+=XAnnotation)*
+	//
+	//	name=BACKGROUND_TEXT members+=Member* steps+=(Given | GivenReference)*;
 	public BackgroundElements getBackgroundAccess() {
 		return (pBackground != null) ? pBackground : (pBackground = new BackgroundElements());
 	}
@@ -1766,8 +1782,10 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Scenario:
-	//	{Scenario} name=SCENARIO_TEXT members+=Member* steps+=(Given | GivenReference)? steps+=(When | WhenReference)?
-	//	steps+=(Then | ThenReference)?;
+	//	{Scenario} //	(annotations+=XAnnotation)*
+	//
+	//	name=SCENARIO_TEXT members+=Member* steps+=(Given | GivenReference)? steps+=(When | WhenReference)? steps+=(Then |
+	//	ThenReference)?;
 	public ScenarioElements getScenarioAccess() {
 		return (pScenario != null) ? pScenario : (pScenario = new ScenarioElements());
 	}
@@ -1965,6 +1983,18 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	public ParserRule getAssertionRule() {
 		return getAssertionAccess().getRule();
 	}
+
+	//terminal ML_COMMENT:
+	//	"/ *"->"* /";
+	public TerminalRule getML_COMMENTRule() {
+		return (tML_COMMENT != null) ? tML_COMMENT : (tML_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ML_COMMENT"));
+	} 
+
+	//terminal AT_SIGN:
+	//	"@";
+	public TerminalRule getAT_SIGNRule() {
+		return (tAT_SIGN != null) ? tAT_SIGN : (tAT_SIGN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "AT_SIGN"));
+	} 
 
 	//terminal BACKGROUND_TEXT:
 	//	"Background:" MNL;
@@ -3018,12 +3048,6 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
 	public TerminalRule getSTRINGRule() {
 		return gaXtend.getSTRINGRule();
-	} 
-
-	//terminal ML_COMMENT:
-	//	"/ *"->"* /";
-	public TerminalRule getML_COMMENTRule() {
-		return gaXtend.getML_COMMENTRule();
 	} 
 
 	//terminal SL_COMMENT:

@@ -54,6 +54,7 @@ import org.jnario.linking.JnarioLazyLinker;
 import org.jnario.linking.JnarioLinkingService;
 import org.jnario.scoping.JnarioExtensionClassNameProvider;
 import org.jnario.serializer.JnarioContextFinder;
+import org.jnario.spec.compiler.SpecBatchCompiler;
 import org.jnario.spec.conversion.SpecValueConverterService;
 import org.jnario.spec.doc.SpecDocGenerator;
 import org.jnario.spec.jvmmodel.SpecJvmModelInferrer;
@@ -190,4 +191,7 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 		return JnarioJavaIoFileSystemAccess.class;
 	}
 	
+	public Class<? extends org.jnario.compiler.JnarioBatchCompiler> bindJnarioBatchCompiler(){
+		return SpecBatchCompiler.class;
+	}
 }

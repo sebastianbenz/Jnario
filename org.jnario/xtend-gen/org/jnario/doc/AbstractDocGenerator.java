@@ -62,8 +62,7 @@ public abstract class AbstractDocGenerator implements IGenerator {
   }
   
   public HtmlFile createHtmlFile(final XtendClass xtendClass) {
-    UnsupportedOperationException _unsupportedOperationException = new UnsupportedOperationException();
-    throw _unsupportedOperationException;
+    return HtmlFile.EMPTY_FILE;
   }
   
   public String convertToTitle(final String string) {

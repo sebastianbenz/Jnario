@@ -38,9 +38,9 @@ abstract class AbstractDocGenerator implements IGenerator {
 			]
 		}
 	}
-	
-	def HtmlFile createHtmlFile(XtendClass xtendClass){
-		throw new UnsupportedOperationException
+
+	def createHtmlFile(XtendClass xtendClass){
+		return HtmlFile::EMPTY_FILE
 	}
 
 	def convertToTitle(String string){

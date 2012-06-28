@@ -15,9 +15,9 @@ import java.util.Iterator;
 import org.apache.log4j.BasicConfigurator;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.jnario.feature.FeatureStandaloneSetup;
-import org.jnario.feature.compiler.batch.FeatureBatchCompiler;
+import org.jnario.feature.compiler.FeatureBatchCompiler;
 import org.jnario.spec.SpecStandaloneSetup;
-import org.jnario.spec.compiler.batch.SpecBatchCompiler;
+import org.jnario.spec.compiler.SpecBatchCompiler;
 import org.jnario.suite.SuiteStandaloneSetup;
 
 import com.google.inject.Injector;

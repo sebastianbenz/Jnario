@@ -20,6 +20,7 @@ import static org.jnario.doc.HtmlFile.*
 
 import static extension org.jnario.util.Strings.*
 import org.jnario.feature.feature.Scenario
+import org.jnario.doc.HtmlFile
 
 class FeatureDocGenerator extends AbstractDocGenerator {
 	@Inject extension FeatureClassNameProvider 
@@ -30,7 +31,7 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 			return EMPTY_FILE
 		}
 		val feature = xtendClass as Feature
-		newHtmlFile[
+		return newHtmlFile[
 			fileName = feature.getClassName 
 			title = feature.name
 			content = feature.generateContent

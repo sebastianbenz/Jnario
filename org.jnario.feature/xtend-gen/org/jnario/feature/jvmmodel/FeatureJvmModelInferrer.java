@@ -1,6 +1,7 @@
 package org.jnario.feature.jvmmodel;
 
 import com.google.common.base.Objects;
+import com.google.common.base.Strings;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.UnmodifiableIterator;
 import com.google.inject.Inject;
@@ -103,8 +104,16 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
       return;
     }
     final Feature feature = this.resolveFeature(object);
+    boolean _or = false;
     boolean _equals = Objects.equal(feature, null);
     if (_equals) {
+      _or = true;
+    } else {
+      String _name = feature.getName();
+      boolean _isNullOrEmpty = Strings.isNullOrEmpty(_name);
+      _or = (_equals || _isNullOrEmpty);
+    }
+    if (_or) {
       return;
     }
     Background _background = feature.getBackground();
@@ -214,7 +223,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
       this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(annotations, _annotation);
     }
     String _name = feature.getName();
-    String _trim = _name.trim();
+    String _trim = _name==null?(String)null:_name.trim();
     JvmAnnotationReference _annotation_1 = this._extendedJvmTypesBuilder.toAnnotation(feature, Named.class, _trim);
     this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(annotations, _annotation_1);
   }
@@ -232,7 +241,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     JvmAnnotationReference _featureRunner = this.annotationProvider.getFeatureRunner(scenario);
     this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(annotations, _featureRunner);
     String _name = scenario.getName();
-    String _trim = _name.trim();
+    String _trim = _name==null?(String)null:_name.trim();
     JvmAnnotationReference _annotation = this._extendedJvmTypesBuilder.toAnnotation(scenario, Named.class, _trim);
     this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(annotations, _annotation);
     final Feature feature = this.feature(scenario);

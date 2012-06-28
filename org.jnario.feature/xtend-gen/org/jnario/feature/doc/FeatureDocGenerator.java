@@ -29,29 +29,24 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
   private StepNameProvider _stepNameProvider;
   
   public HtmlFile createHtmlFile(final XtendClass xtendClass) {
-    HtmlFile _xblockexpression = null;
-    {
-      boolean _not = (!(xtendClass instanceof Feature));
-      if (_not) {
-        return HtmlFile.EMPTY_FILE;
-      }
-      final Feature feature = ((Feature) xtendClass);
-      final Procedure1<HtmlFile> _function = new Procedure1<HtmlFile>() {
-          public void apply(final HtmlFile it) {
-            String _className = FeatureDocGenerator.this._featureClassNameProvider.getClassName(feature);
-            it.fileName = _className;
-            String _name = feature.getName();
-            it.title = _name;
-            CharSequence _generateContent = FeatureDocGenerator.this.generateContent(feature);
-            it.content = _generateContent;
-            String _root = FeatureDocGenerator.this.root(feature);
-            it.rootFolder = _root;
-          }
-        };
-      HtmlFile _newHtmlFile = HtmlFile.newHtmlFile(_function);
-      _xblockexpression = (_newHtmlFile);
+    boolean _not = (!(xtendClass instanceof Feature));
+    if (_not) {
+      return HtmlFile.EMPTY_FILE;
     }
-    return _xblockexpression;
+    final Feature feature = ((Feature) xtendClass);
+    final Procedure1<HtmlFile> _function = new Procedure1<HtmlFile>() {
+        public void apply(final HtmlFile it) {
+          String _className = FeatureDocGenerator.this._featureClassNameProvider.getClassName(feature);
+          it.fileName = _className;
+          String _name = feature.getName();
+          it.title = _name;
+          CharSequence _generateContent = FeatureDocGenerator.this.generateContent(feature);
+          it.content = _generateContent;
+          String _root = FeatureDocGenerator.this.root(feature);
+          it.rootFolder = _root;
+        }
+      };
+    return HtmlFile.newHtmlFile(_function);
   }
   
   public CharSequence generateContent(final Feature feature) {

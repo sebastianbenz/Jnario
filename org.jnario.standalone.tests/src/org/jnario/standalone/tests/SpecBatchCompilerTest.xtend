@@ -4,7 +4,7 @@ import com.google.inject.Inject
 import java.io.File
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
-import org.jnario.spec.compiler.batch.SpecBatchCompiler
+import org.jnario.spec.compiler.SpecBatchCompiler
 import org.junit.After
 import org.junit.Before
 import org.junit.Test

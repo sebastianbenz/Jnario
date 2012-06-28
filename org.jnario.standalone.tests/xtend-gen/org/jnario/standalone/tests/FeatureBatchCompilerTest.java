@@ -9,7 +9,7 @@ import org.eclipse.xtext.util.Files;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.jnario.feature.FeatureInjectorProvider;
-import org.jnario.feature.compiler.batch.FeatureBatchCompiler;
+import org.jnario.feature.compiler.FeatureBatchCompiler;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

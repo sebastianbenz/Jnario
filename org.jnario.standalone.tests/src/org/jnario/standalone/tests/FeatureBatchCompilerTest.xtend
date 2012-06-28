@@ -5,7 +5,7 @@ import java.io.File
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.jnario.feature.FeatureInjectorProvider
-import org.jnario.feature.compiler.batch.FeatureBatchCompiler
+import org.jnario.feature.compiler.FeatureBatchCompiler
 import org.junit.After
 import org.junit.Before
 import org.junit.Test

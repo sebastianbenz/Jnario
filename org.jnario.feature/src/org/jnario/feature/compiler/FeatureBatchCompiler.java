@@ -5,8 +5,9 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.jnario.suite.compiler.batch;
+package org.jnario.feature.compiler;
 
+import static com.google.common.collect.Iterables.*;
 import static com.google.common.collect.Lists.*;
 
 import java.util.List;
@@ -15,27 +16,24 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.jnario.Specification;
 import org.jnario.compiler.JnarioBatchCompiler;
-import org.jnario.suite.jvmmodel.SuiteClassNameProvider;
-import org.jnario.suite.suite.Suite;
+import org.jnario.feature.feature.Feature;
+import org.jnario.feature.feature.Scenario;
+import org.jnario.feature.naming.FeatureClassNameProvider;
 
 import com.google.inject.Inject;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
-public class SuiteBatchCompiler extends JnarioBatchCompiler {
+public class FeatureBatchCompiler extends JnarioBatchCompiler {
 	
 	@Inject
-	public SuiteClassNameProvider nameProvider;
+	public FeatureClassNameProvider nameProvider;
 
 	@Override
 	protected String getClassName(EObject eObject) {
-		if (eObject instanceof Specification) {
-			return nameProvider.getClassName((Specification) eObject);
-		}
-		return null;
+		return nameProvider.getClassName(eObject);
 	}
 	
 	@Override
@@ -44,9 +42,16 @@ public class SuiteBatchCompiler extends JnarioBatchCompiler {
 		List<EObject> result = newArrayList();
 		while (allContents.hasNext()) {
 			Notifier notifier = allContents.next();
-			if (notifier instanceof Suite) {
-				Suite suite = (Suite) notifier;
-				result.add(suite);
+			if (notifier instanceof Feature) {
+				Feature feature = (Feature) notifier;
+				result.add(feature);
+				if (feature.getBackground() != null) {
+					result.add(feature.getBackground());
+				}
+				Iterable<Scenario> scenarios = filter(feature.getMembers(), Scenario.class);
+				for (Scenario scenario : scenarios) {
+					result.add(scenario);
+				}
 				allContents.prune();
 			}
 		}

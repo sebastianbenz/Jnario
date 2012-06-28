@@ -42,6 +42,7 @@ import org.jnario.doc.DocOutputConfigurationProvider;
 import org.jnario.generator.JnarioJavaIoFileSystemAccess;
 import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
+import org.jnario.suite.compiler.SuiteBatchCompiler;
 import org.jnario.suite.conversion.SuiteValueConverterService;
 import org.jnario.suite.doc.SuiteDocGenerator;
 import org.jnario.suite.generator.SuiteGenerator;
@@ -147,5 +148,9 @@ public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeMod
 	@Override
 	public Class<? extends IResourceDescription.Manager> bindIResourceDescription$Manager() {
 		return SuiteResourceDescriptionManager.class;
+	}
+	
+	public Class<? extends org.jnario.compiler.JnarioBatchCompiler> bindJnarioBatchCompiler(){
+		return SuiteBatchCompiler.class;
 	}
 }

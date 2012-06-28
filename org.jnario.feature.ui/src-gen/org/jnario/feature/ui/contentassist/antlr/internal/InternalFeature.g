@@ -5328,11 +5328,9 @@ rule__XAnnotation__Group__1__Impl
     }
 :
 (
-{ before(grammarAccess.getXAnnotationAccess().getCommercialAtKeyword_1()); }
-
-	'@' 
-
-{ after(grammarAccess.getXAnnotationAccess().getCommercialAtKeyword_1()); }
+{ before(grammarAccess.getXAnnotationAccess().getAT_SIGNTerminalRuleCall_1()); }
+	RULE_AT_SIGN
+{ after(grammarAccess.getXAnnotationAccess().getAT_SIGNTerminalRuleCall_1()); }
 )
 
 ;
@@ -27400,6 +27398,10 @@ finally {
 }
 
 
+RULE_ML_COMMENT : '/*' ( options {greedy=false;} : . )*'*/';
+
+RULE_AT_SIGN : '@';
+
 RULE_BACKGROUND_TEXT : 'Background:' RULE_MNL;
 
 RULE_SCENARIO_TEXT : 'Scenario:' RULE_MNL;
@@ -27457,8 +27459,6 @@ RULE_DECIMAL : RULE_INT (('e'|'E') ('+'|'-')? RULE_INT)? (('b'|'B') ('i'|'I'|'d'
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'$'|'_') ('a'..'z'|'A'..'Z'|'$'|'_'|'0'..'9')*;
 
 RULE_STRING : ('"' ('\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|'\''|'\\')|~(('\\'|'"')))* '"'|'\'' ('\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|'\''|'\\')|~(('\\'|'\'')))* '\'');
-
-RULE_ML_COMMENT : '/*' ( options {greedy=false;} : . )*'*/';
 
 RULE_SL_COMMENT : '//' ~(('\n'|'\r'))* ('\r'? '\n')?;
 

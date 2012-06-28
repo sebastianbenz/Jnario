@@ -8,17 +8,22 @@
 
 package org.jnario.maven;
 
+import static com.google.common.collect.Lists.transform;
+import static java.util.Arrays.asList;
+
+import java.util.List;
+
 import org.apache.maven.plugin.MojoExecutionException;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtend.maven.XtendTestCompile;
+import org.eclipse.xtext.ISetup;
 import org.jnario.compiler.JnarioBatchCompiler;
+import org.jnario.compiler.JnarioDocCompiler;
 import org.jnario.feature.FeatureStandaloneSetup;
-import org.jnario.feature.compiler.batch.FeatureBatchCompiler;
 import org.jnario.spec.SpecStandaloneSetup;
-import org.jnario.spec.compiler.batch.SpecBatchCompiler;
 import org.jnario.suite.SuiteStandaloneSetup;
-import org.jnario.suite.compiler.batch.SuiteBatchCompiler;
 
+import com.google.common.base.Function;
 import com.google.inject.Injector;
 import com.google.inject.Provider;
 
@@ -32,6 +37,21 @@ import com.google.inject.Provider;
  * @requiresDependencyResolution test
  */
 public class JnarioTestCompile extends XtendTestCompile {
+	
+	/**
+	 * Location of the generated documentation.
+	 * 
+	 * @parameter default-value="${basedir}/target/jnario-doc"
+	 * @required
+	 */
+	private String docOutputDirectory;
+	
+	/**
+	 * Skip the documentation generation.
+	 * 
+	 * @parameter default-value=true
+	 */
+	private boolean skipDocGeneration;
 
 	@Override
 	public void execute() throws MojoExecutionException {
@@ -39,18 +59,44 @@ public class JnarioTestCompile extends XtendTestCompile {
 			getLog().info("Xtend compiler skipped.");
 		}
 		configureLog4j();
-		Injector injector = new SpecStandaloneSetup().createInjectorAndDoEMFRegistration();
-		Provider<ResourceSet> resourceSetProvider = injector.getProvider(ResourceSet.class);
+		
+		// the order is important, the suite compiler must be executed last
+		List<Injector> injectors = createInjectors(new SpecStandaloneSetup(), new FeatureStandaloneSetup(), new SuiteStandaloneSetup());
+		ResourceSet resourceSet = createResourceSet(injectors);
+		
+		for (Injector injector : injectors) {
+			compile(injector, resourceSet);
+			generateDoc(resourceSet, injector);
+		}
+	}
+
+	private void generateDoc(ResourceSet resourceSet, Injector injector) {
+		if(skipDocGeneration){
+			return;
+		}
+		JnarioDocCompiler docCompiler = injector.getInstance(JnarioDocCompiler.class);
+		docCompiler.setOutputPath(docOutputDirectory);
+		docCompiler.generateDocumentation(resourceSet);
+	}
+
+	private void compile(Injector injector, ResourceSet resourceSet)
+			throws MojoExecutionException {
+		JnarioBatchCompiler compiler = injector.getInstance(JnarioBatchCompiler.class);
+		execute(resourceSet, compiler);
+	}
+ 
+	private ResourceSet createResourceSet(List<Injector> injectors) {
+		Provider<ResourceSet> resourceSetProvider = injectors.get(0).getProvider(ResourceSet.class);
 		ResourceSet resourceSet = resourceSetProvider.get();
-		
-		JnarioBatchCompiler compiler = injector.getInstance(SpecBatchCompiler.class);
-		execute(resourceSet, compiler);
-		
-		compiler = createFeatureCompiler();
-		execute(resourceSet, compiler);
-		
-		compiler = createSuiteCompiler();
-		execute(resourceSet, compiler);
+		return resourceSet;
+	}
+
+	private List<Injector> createInjectors(ISetup... setups) {
+		return transform(asList(setups), new Function<ISetup, Injector>() {
+			public Injector apply(ISetup input) {
+				return input.createInjectorAndDoEMFRegistration();
+			}
+		});
 	}
 
 	private void execute(ResourceSet resourceSet, JnarioBatchCompiler compiler)
@@ -58,14 +104,5 @@ public class JnarioTestCompile extends XtendTestCompile {
 		compiler.setResourceSet(resourceSet);
 		internalExecute(compiler);
 	}
-	
-	protected JnarioBatchCompiler createFeatureCompiler() {
-		Injector injector = new FeatureStandaloneSetup().createInjectorAndDoEMFRegistration();
-		return injector.getInstance(FeatureBatchCompiler.class);
-	}
-	
-	protected JnarioBatchCompiler createSuiteCompiler() {
-		Injector injector = new SuiteStandaloneSetup().createInjectorAndDoEMFRegistration();
-		return injector.getInstance(SuiteBatchCompiler.class);
-	}
+
 }

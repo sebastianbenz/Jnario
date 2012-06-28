@@ -9,7 +9,7 @@ import org.eclipse.xtext.util.Files;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.jnario.spec.SpecInjectorProvider;
-import org.jnario.spec.compiler.batch.SpecBatchCompiler;
+import org.jnario.spec.compiler.SpecBatchCompiler;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

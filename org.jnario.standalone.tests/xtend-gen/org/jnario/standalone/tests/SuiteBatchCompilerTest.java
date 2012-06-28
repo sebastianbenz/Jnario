@@ -14,7 +14,7 @@ import org.jnario.feature.FeatureStandaloneSetup;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.spec.SpecStandaloneSetup;
 import org.jnario.suite.SuiteInjectorProvider;
-import org.jnario.suite.compiler.batch.SuiteBatchCompiler;
+import org.jnario.suite.compiler.SuiteBatchCompiler;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

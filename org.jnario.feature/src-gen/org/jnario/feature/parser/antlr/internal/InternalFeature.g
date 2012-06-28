@@ -403,9 +403,9 @@ ruleXAnnotation returns [EObject current=null]
             grammarAccess.getXAnnotationAccess().getXAnnotationAction_0(),
             $current);
     }
-)	otherlv_1='@' 
-    {
-    	newLeafNode(otherlv_1, grammarAccess.getXAnnotationAccess().getCommercialAtKeyword_1());
+)this_AT_SIGN_1=RULE_AT_SIGN
+    { 
+    newLeafNode(this_AT_SIGN_1, grammarAccess.getXAnnotationAccess().getAT_SIGNTerminalRuleCall_1()); 
     }
 (
 (
@@ -8897,6 +8897,10 @@ ruleVisibility returns [Enumerator current=null]
 
 
 
+RULE_ML_COMMENT : '/*' ( options {greedy=false;} : . )*'*/';
+
+RULE_AT_SIGN : '@';
+
 RULE_BACKGROUND_TEXT : 'Background:' RULE_MNL;
 
 RULE_SCENARIO_TEXT : 'Scenario:' RULE_MNL;
@@ -8954,8 +8958,6 @@ RULE_DECIMAL : RULE_INT (('e'|'E') ('+'|'-')? RULE_INT)? (('b'|'B') ('i'|'I'|'d'
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'$'|'_') ('a'..'z'|'A'..'Z'|'$'|'_'|'0'..'9')*;
 
 RULE_STRING : ('"' ('\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|'\''|'\\')|~(('\\'|'"')))* '"'|'\'' ('\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|'\''|'\\')|~(('\\'|'\'')))* '\'');
-
-RULE_ML_COMMENT : '/*' ( options {greedy=false;} : . )*'*/';
 
 RULE_SL_COMMENT : '//' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
