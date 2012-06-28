@@ -53,8 +53,8 @@ public abstract class AbstractDocGenerator implements IGenerator {
       EList<XtendClass> _xtendClasses = file.getXtendClasses();
       final Procedure1<XtendClass> _function = new Procedure1<XtendClass>() {
           public void apply(final XtendClass it) {
-            final HtmlFile htmlFile = AbstractDocGenerator.this.createHtmlFile(it);
-            AbstractDocGenerator.this._htmlFileBuilder.generate(it, fsa, htmlFile);
+            HtmlFile _createHtmlFile = AbstractDocGenerator.this.createHtmlFile(it);
+            AbstractDocGenerator.this._htmlFileBuilder.generate(it, fsa, _createHtmlFile);
           }
         };
       IterableExtensions.<XtendClass>forEach(_xtendClasses, _function);
@@ -65,13 +65,13 @@ public abstract class AbstractDocGenerator implements IGenerator {
     return HtmlFile.EMPTY_FILE;
   }
   
-  public String convertToTitle(final String string) {
-    String _convertToText = this.convertToText(string);
-    String _firstUpper = Strings.toFirstUpper(_convertToText);
+  public String toTitle(final String string) {
+    String _decode = this.decode(string);
+    String _firstUpper = Strings.toFirstUpper(_decode);
     return _firstUpper;
   }
   
-  public String convertToText(final String string) {
+  public String decode(final String string) {
     String _xtrycatchfinallyexpression = null;
     try {
       String _convertFromJavaString = Strings.convertFromJavaString(string, true);
@@ -108,14 +108,13 @@ public abstract class AbstractDocGenerator implements IGenerator {
     return _xblockexpression;
   }
   
-  protected String _toXtendCode(final XExpression expr, final List<Filter> filters) {
+  protected String _serialize(final XExpression expr, final List<Filter> filters) {
     String _serialize = this.serialize(expr);
-    String _normalize = this._whiteSpaceNormalizer.normalize(_serialize);
-    String _html = this.toHtml(_normalize);
-    return _html.trim();
+    String _codeToHtml = this.codeToHtml(_serialize);
+    return _codeToHtml.trim();
   }
   
-  protected String _toXtendCode(final XBlockExpression expr, final List<Filter> filters) {
+  protected String _serialize(final XBlockExpression expr, final List<Filter> filters) {
     String _serialize = this.serialize(expr);
     String code = _serialize.trim();
     String _apply = this.apply(filters, code);
@@ -129,8 +128,7 @@ public abstract class AbstractDocGenerator implements IGenerator {
     int _minus = (_length_1 - 1);
     String _substring = code.substring(1, _minus);
     code = _substring;
-    String _normalize = this._whiteSpaceNormalizer.normalize(code);
-    return this.toHtml(_normalize);
+    return this.codeToHtml(code);
   }
   
   public String codeToHtml(final String code) {
@@ -230,8 +228,8 @@ public abstract class AbstractDocGenerator implements IGenerator {
             _builder.append("\t");
             _builder.append("<td>");
             List<Filter> _emptyList = CollectionLiterals.<Filter>emptyList();
-            String _xtendCode = this.toXtendCode(cell, _emptyList);
-            _builder.append(_xtendCode, "		");
+            String _serialize = this.serialize(cell, _emptyList);
+            _builder.append(_serialize, "		");
             _builder.append("</td>");
             _builder.newLineIfNotEmpty();
           }
@@ -249,11 +247,11 @@ public abstract class AbstractDocGenerator implements IGenerator {
     return _builder;
   }
   
-  public String toXtendCode(final XExpression expr, final List<Filter> filters) {
+  public String serialize(final XExpression expr, final List<Filter> filters) {
     if (expr instanceof XBlockExpression) {
-      return _toXtendCode((XBlockExpression)expr, filters);
+      return _serialize((XBlockExpression)expr, filters);
     } else if (expr != null) {
-      return _toXtendCode(expr, filters);
+      return _serialize(expr, filters);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(expr, filters).toString());

@@ -8,7 +8,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.HtmlFile;
@@ -132,7 +131,7 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     return _builder;
   }
   
-  public String format(final Step step) {
+  private String format(final Step step) {
     String _xblockexpression = null;
     {
       String result = this._stepNameProvider.nameOf(step);
@@ -142,11 +141,9 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
       boolean _notEquals = (index != _minus);
       if (_notEquals) {
         String _substring = result.substring(index);
-        String _println = InputOutput.<String>println(_substring);
-        codeBlock = _println;
+        codeBlock = _substring;
         String _substring_1 = result.substring(0, index);
-        String _println_1 = InputOutput.<String>println(_substring_1);
-        result = _println_1;
+        result = _substring_1;
       }
       String _firstWord = Strings.getFirstWord(result);
       String _plus = ("(" + _firstWord);
@@ -165,7 +162,7 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     return _xblockexpression;
   }
   
-  public CharSequence addCodeBlock(final String code) {
+  private CharSequence addCodeBlock(final String code) {
     int _length = code.length();
     boolean _equals = (_length == 0);
     if (_equals) {

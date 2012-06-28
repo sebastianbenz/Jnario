@@ -13,8 +13,6 @@ import org.jnario.suite.suite.Suite
 import org.jnario.suite.suite.Heading
 import org.jnario.suite.jvmmodel.SpecResolver
 
-import static org.jnario.doc.HtmlFile.*
-
 import static extension org.jnario.util.Strings.*
 import static extension org.eclipse.xtext.util.Strings.*
 import org.eclipse.emf.ecore.resource.Resource
@@ -30,25 +28,25 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 	
 	override doGenerate(Resource input, IFileSystemAccess fsa) {
 		input.contents.filter(typeof(SuiteFile)).forEach[
-			val htmlFile = it.createHtmlFile()
-			it.xtendClasses.head.generate(fsa, htmlFile)	
+			val htmlFile = createHtmlFile()
+			xtendClasses.head.generate(fsa, htmlFile)	
 		]
 	}
- 
+   
 	def HtmlFile createHtmlFile(SuiteFile file) {
 		val suites = file.xtendClasses.filter(typeof(Suite))
 		if(suites.empty) return HtmlFile::EMPTY_FILE
-		newHtmlFile[
+		HtmlFile::newHtmlFile[
 			fileName = suites.head.className 
 			title = suites.head.describe.convertFromJavaString(true)
 			content = suites.generateContent
 			rootFolder = suites.head.root
 		]
 	}
-	
+
 	override HtmlFile createHtmlFile(XtendClass file) {
 		val suite = file as Suite
-		newHtmlFile[
+		HtmlFile::newHtmlFile[
 			fileName = suite.className 
 			title = suite.describe.convertFromJavaString(true)
 			content = suite.generateContent

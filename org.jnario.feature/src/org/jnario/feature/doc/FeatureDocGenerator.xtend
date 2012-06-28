@@ -10,28 +10,27 @@ package org.jnario.feature.doc
 import com.google.inject.Inject
 import org.eclipse.xtend.core.xtend.XtendClass
 import org.jnario.doc.AbstractDocGenerator
-import org.jnario.doc.WhiteSpaceNormalizer
 import org.jnario.feature.feature.Feature
 import org.jnario.feature.feature.Step
 import org.jnario.feature.naming.FeatureClassNameProvider
 import org.jnario.feature.naming.StepNameProvider
 
-import static org.jnario.doc.HtmlFile.*
 
 import static extension org.jnario.util.Strings.*
 import org.jnario.feature.feature.Scenario
 import org.jnario.doc.HtmlFile
 
 class FeatureDocGenerator extends AbstractDocGenerator {
+	
 	@Inject extension FeatureClassNameProvider 
 	@Inject extension StepNameProvider 
 
 	override createHtmlFile(XtendClass xtendClass) {
 		if(!(xtendClass instanceof Feature)){
-			return EMPTY_FILE
+			return HtmlFile::EMPTY_FILE
 		}
 		val feature = xtendClass as Feature
-		return newHtmlFile[
+		return HtmlFile::newHtmlFile[
 			fileName = feature.getClassName 
 			title = feature.name
 			content = feature.generateContent
@@ -70,13 +69,13 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 		«step.format»
 	'''
 
-	def format(Step step){
+	def private format(Step step){
 		var result = step.nameOf
 		var codeBlock = ""
 		val index = result.indexOf('\n')
 		if(index != -1){
-			codeBlock = println(result.substring(index))
-			result = println(result.substring(0, index))
+			codeBlock = result.substring(index)
+			result = result.substring(0, index)
 		}
 		result = result.replaceFirst("(" + result.firstWord + ")", "<strong>$1</strong>")
 		result = (" " + result).replaceAll("\"(.*?)\"", "<code>$1</code>")
@@ -84,7 +83,7 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 		result + addCodeBlock(codeBlock)
 	}
 
-	def CharSequence addCodeBlock(String code){
+	def private addCodeBlock(String code){
 		if(code.length == 0){
 			return ""
 		}

@@ -19,10 +19,10 @@ import org.eclipse.xtext.nodemodel.util.NodeModelUtils
 import org.eclipse.xtext.xbase.XBlockExpression
 import org.eclipse.xtext.xbase.XExpression
 import org.pegdown.PegDownProcessor
-
-import static extension org.eclipse.xtext.util.Strings.*
 import org.eclipse.xtext.EcoreUtil2
 import org.jnario.ExampleTable
+
+import static extension org.eclipse.xtext.util.Strings.*
 
 abstract class AbstractDocGenerator implements IGenerator {
 
@@ -33,8 +33,7 @@ abstract class AbstractDocGenerator implements IGenerator {
 	override doGenerate(Resource input, IFileSystemAccess fsa) {
 		for(file : input.contents.filter(typeof(XtendFile))){
 			file.xtendClasses.forEach[
-				val htmlFile = it.createHtmlFile()
-				it.generate(fsa, htmlFile)
+				generate(fsa, createHtmlFile())
 			]
 		}
 	}
@@ -43,11 +42,11 @@ abstract class AbstractDocGenerator implements IGenerator {
 		return HtmlFile::EMPTY_FILE
 	}
 
-	def convertToTitle(String string){
-		string.convertToText.toFirstUpper
+	def toTitle(String string){
+		string.decode.toFirstUpper
 	}
 	
-	def convertToText(String string){
+	def decode(String string){
 		try{
 			string.convertFromJavaString(true)
 		}catch(java.lang.IllegalArgumentException e){
@@ -65,18 +64,18 @@ abstract class AbstractDocGenerator implements IGenerator {
 				.replaceAll("</pre></code>", '</pre>')
 	}
 	
-	def dispatch toXtendCode(XExpression expr, List<Filter> filters){
-		return expr.serialize.normalize.toHtml.trim
+	def dispatch serialize(XExpression expr, List<Filter> filters){
+		return expr.serialize.codeToHtml.trim
 	}
 	
-	def dispatch toXtendCode(XBlockExpression expr, List<Filter> filters){
+	def dispatch serialize(XBlockExpression expr, List<Filter> filters){
 		var code = expr.serialize.trim
 		code = filters.apply(code)
 		if(code.length == 0){
 			return ""
 		}
 		code = code.substring(1, code.length-1) 
-		return code.normalize.toHtml
+		return code.codeToHtml
 	}
 	
 	def codeToHtml(String code){
@@ -130,7 +129,7 @@ abstract class AbstractDocGenerator implements IGenerator {
 			«FOR row : table.rows»
 			<tr>
 				«FOR cell : row.cells»
-				<td>«toXtendCode(cell, emptyList)»</td>
+				<td>«serialize(cell, emptyList)»</td>
 				«ENDFOR»
 			</tr>
 		  	«ENDFOR»

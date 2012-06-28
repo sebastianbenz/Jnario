@@ -208,8 +208,8 @@ public class SpecDocGenerator extends AbstractDocGenerator {
           _builder.append(_id, "");
           _builder.append("><strong>");
           String _describe = this._exampleNameProvider.describe(example);
-          String _convertToText = this.convertToText(_describe);
-          _builder.append(_convertToText, "");
+          String _decode = this.decode(_describe);
+          _builder.append(_decode, "");
           _builder.append("</strong>");
           _builder.newLineIfNotEmpty();
         } else {
@@ -231,7 +231,7 @@ public class SpecDocGenerator extends AbstractDocGenerator {
           _and = (_not && _notEquals_2);
         }
         if (_and) {
-          CharSequence _codeBlock = this.toCodeBlock(example, filters);
+          String _codeBlock = this.toCodeBlock(example, filters);
           _builder.append(_codeBlock, "");
           _builder.newLineIfNotEmpty();
         }
@@ -243,26 +243,25 @@ public class SpecDocGenerator extends AbstractDocGenerator {
     return _xblockexpression;
   }
   
-  public CharSequence toCodeBlock(final Example example, final List<Filter> filters) {
-    CharSequence _xblockexpression = null;
+  public String toCodeBlock(final Example example, final List<Filter> filters) {
+    String _xblockexpression = null;
     {
       String prefix = "<pre class=\"prettyprint lang-spec\">";
       String _apply = this.apply(filters, prefix);
       prefix = _apply;
       XExpression _implementation = example.getImplementation();
-      final String code = this.toXtendCode(_implementation, filters);
+      final String code = this.serialize(_implementation, filters);
       int _length = code.length();
       boolean _equals = (_length == 0);
       if (_equals) {
-        StringConcatenation _builder = new StringConcatenation();
-        return _builder;
+        return "";
       }
-      StringConcatenation _builder_1 = new StringConcatenation();
-      _builder_1.append(prefix, "");
-      _builder_1.newLineIfNotEmpty();
-      _builder_1.append(code, "");
-      _builder_1.append("</pre>");
-      _xblockexpression = (_builder_1);
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append(prefix, "");
+      _builder.newLineIfNotEmpty();
+      _builder.append(code, "");
+      _builder.append("</pre>");
+      _xblockexpression = (_builder.toString());
     }
     return _xblockexpression;
   }
@@ -275,8 +274,8 @@ public class SpecDocGenerator extends AbstractDocGenerator {
     _builder.append(_id, "");
     _builder.append(">");
     String _fieldName_1 = this._exampleNameProvider.toFieldName(table);
-    String _convertToTitle = this.convertToTitle(_fieldName_1);
-    _builder.append(_convertToTitle, "");
+    String _title = this.toTitle(_fieldName_1);
+    _builder.append(_title, "");
     _builder.append("</h4>");
     _builder.newLineIfNotEmpty();
     _builder.append("<p>");
@@ -315,14 +314,14 @@ public class SpecDocGenerator extends AbstractDocGenerator {
   
   protected String _asTitle(final ExampleGroup exampleGroup) {
     String _describe = this._exampleNameProvider.describe(exampleGroup);
-    String _convertToTitle = this.convertToTitle(_describe);
-    return _convertToTitle;
+    String _title = this.toTitle(_describe);
+    return _title;
   }
   
   protected String _asTitle(final Example example) {
     String _describe = this._exampleNameProvider.describe(example);
-    String _convertToTitle = this.convertToTitle(_describe);
-    return _convertToTitle;
+    String _title = this.toTitle(_describe);
+    return _title;
   }
   
   public CharSequence generate(final XtendMember example, final int level) {

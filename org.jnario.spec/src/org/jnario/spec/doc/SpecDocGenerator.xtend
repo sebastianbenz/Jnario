@@ -21,7 +21,7 @@ import org.jnario.jvmmodel.ExtendedJvmTypesBuilder
 import org.jnario.spec.naming.ExampleNameProvider
 import org.jnario.spec.spec.Example
 import org.jnario.spec.spec.ExampleGroup
-import static org.jnario.doc.HtmlFile.*
+import org.jnario.doc.HtmlFile
 
 class SpecDocGenerator extends AbstractDocGenerator {
 
@@ -31,10 +31,10 @@ class SpecDocGenerator extends AbstractDocGenerator {
 
 	override createHtmlFile(XtendClass xtendClass) {
 		if(!(xtendClass instanceof ExampleGroup)){
-			return EMPTY_FILE
+			return HtmlFile::EMPTY_FILE
 		}
 		val exampleGroup = xtendClass as ExampleGroup
-		newHtmlFile[
+		HtmlFile::newHtmlFile[
 			fileName = exampleGroup.toJavaClassName 
 			title = exampleGroup.asTitle
 			content = exampleGroup.generateContent
@@ -99,7 +99,7 @@ class SpecDocGenerator extends AbstractDocGenerator {
 		}
 		'''
 			«IF example.name != null»
-			<p «id(example.name)»><strong>«example.describe.convertToText»</strong>
+			<p «id(example.name)»><strong>«example.describe.decode»</strong>
 			«ELSE»
 			<p>
 			«ENDIF»
@@ -115,8 +115,8 @@ class SpecDocGenerator extends AbstractDocGenerator {
 	def toCodeBlock(Example example, List<Filter> filters){
 		var prefix = '<pre class="prettyprint lang-spec">'
 		prefix = filters.apply(prefix)
-		val code = example.implementation.toXtendCode(filters)
-		if(code.length == 0) return ''''''
+		val code = example.implementation.serialize(filters)
+		if(code.length == 0) return ""
 		'''
 		«prefix»
 		«code»</pre>'''
@@ -125,7 +125,7 @@ class SpecDocGenerator extends AbstractDocGenerator {
 
 	 
 	def dispatch generate(ExampleTable table, int level)'''
-		<h4«id(table.toFieldName)»>«table.toFieldName.convertToTitle»</h4>
+		<h4«id(table.toFieldName)»>«table.toFieldName.toTitle»</h4>
 		<p>«table.generateDoc»</p>
 		«super.generate(table)»
 	'''
@@ -137,11 +137,11 @@ class SpecDocGenerator extends AbstractDocGenerator {
 	'''
 	
 	def dispatch asTitle(ExampleGroup exampleGroup){
-		exampleGroup.describe.convertToTitle
+		exampleGroup.describe.toTitle
 	}
 	 
 	def dispatch asTitle(Example example){
-		example.describe.convertToTitle
+		example.describe.toTitle
 	}
 	
 }
