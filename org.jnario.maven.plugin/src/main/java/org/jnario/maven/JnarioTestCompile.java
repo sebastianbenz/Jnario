@@ -49,7 +49,7 @@ public class JnarioTestCompile extends XtendTestCompile {
 	/**
 	 * Skip the documentation generation.
 	 * 
-	 * @parameter default-value=true
+	 * @parameter default-value=false
 	 */
 	private boolean skipDocGeneration;
 
