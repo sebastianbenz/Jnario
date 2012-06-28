@@ -41,7 +41,7 @@ import org.jnario.runner.Contains
 import org.jnario.runner.Named
 import org.jnario.runner.Order
 import org.junit.Ignore
-
+import static extension com.google.common.base.Strings.*
 import static com.google.common.collect.Iterators.*
 import static org.eclipse.xtext.EcoreUtil2.*
 import static org.jnario.feature.jvmmodel.FeatureJvmModelInferrer.*
@@ -78,7 +78,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		}
 		
 		val feature = object.resolveFeature
-		if(feature == null){
+		if(feature == null || feature.name.isNullOrEmpty){
 			return
 		}
     	
@@ -147,7 +147,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		annotations += feature.featureRunner
    		if(!scenarios.empty)
    			annotations += feature.toAnnotation(typeof(Contains), scenarios)
-   		annotations += feature.toAnnotation(typeof(Named), feature.name.trim)
+   		annotations += feature.toAnnotation(typeof(Named), feature.name?.trim)
    	}
    	
    	def dispatch void init(Scenario scenario, JvmGenericType inferredJvmType, List<JvmGenericType> scenarios){
@@ -156,7 +156,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		
    		val annotations = inferredJvmType.annotations
    		annotations += scenario.featureRunner
-   		annotations += scenario.toAnnotation(typeof(Named), scenario.name.trim)
+   		annotations += scenario.toAnnotation(typeof(Named), scenario.name?.trim)
 
    		val feature = scenario.feature
 		var start = 0
