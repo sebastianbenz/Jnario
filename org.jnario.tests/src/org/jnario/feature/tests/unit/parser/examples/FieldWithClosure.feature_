@@ -1,0 +1,7 @@
+package test3
+
+Feature: Test
+
+Scenario: Hello World
+	val me = [String s | "Hello " + s]
+		

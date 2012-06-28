@@ -13,7 +13,6 @@ import org.eclipse.xtend.core.xtend.RichStringLiteral;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendFile;
-import org.eclipse.xtend.core.xtend.XtendFunction;
 import org.eclipse.xtend.core.xtend.XtendImport;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtend.core.xtend.XtendPackage;
@@ -1366,12 +1365,6 @@ public class FeatureSemanticSequencer extends XtendSemanticSequencer {
 					return; 
 				}
 				else break;
-			case XtendPackage.XTEND_FUNCTION:
-				if(context == grammarAccess.getMemberRule()) {
-					sequence_Member(context, (XtendFunction) semanticObject); 
-					return; 
-				}
-				else break;
 			case XtendPackage.XTEND_IMPORT:
 				if(context == grammarAccess.getImportRule()) {
 					sequence_Import(context, (XtendImport) semanticObject); 
@@ -1379,9 +1372,8 @@ public class FeatureSemanticSequencer extends XtendSemanticSequencer {
 				}
 				else break;
 			case XtendPackage.XTEND_MEMBER:
-				if(context == grammarAccess.getMemberAccess().getXtendFieldAnnotationInfoAction_2_0_0() ||
-				   context == grammarAccess.getMemberAccess().getXtendFunctionAnnotationInfoAction_2_1_0()) {
-					sequence_Member_XtendField_2_0_0_XtendFunction_2_1_0(context, (XtendMember) semanticObject); 
+				if(context == grammarAccess.getMemberAccess().getXtendFieldAnnotationInfoAction_2_0()) {
+					sequence_Member_XtendField_2_0(context, (XtendMember) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1511,7 +1503,7 @@ public class FeatureSemanticSequencer extends XtendSemanticSequencer {
 	 *     (
 	 *         (
 	 *             (
-	 *                 annotationInfo=Member_XtendField_2_0_0 
+	 *                 annotationInfo=Member_XtendField_2_0 
 	 *                 visibility=Visibility? 
 	 *                 (
 	 *                     (extension?='extension' final?='val'? type=JvmTypeReference name=ValidID?) | 
@@ -1519,7 +1511,7 @@ public class FeatureSemanticSequencer extends XtendSemanticSequencer {
 	 *                 )
 	 *             ) | 
 	 *             (
-	 *                 annotationInfo=Member_XtendField_2_0_0 
+	 *                 annotationInfo=Member_XtendField_2_0 
 	 *                 (
 	 *                     (extension?='extension' final?='val'? type=JvmTypeReference name=ValidID?) | 
 	 *                     (static?='static'? (type=JvmTypeReference | (final?='val'? type=JvmTypeReference?)) name=ValidID)
@@ -1538,32 +1530,7 @@ public class FeatureSemanticSequencer extends XtendSemanticSequencer {
 	 * Constraint:
 	 *     annotations+=XAnnotation+
 	 */
-	protected void sequence_Member_XtendField_2_0_0_XtendFunction_2_1_0(EObject context, XtendMember semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (
-	 *         annotationInfo=Member_XtendFunction_2_1_0 
-	 *         override?='override'? 
-	 *         visibility=Visibility? 
-	 *         static?='static'? 
-	 *         dispatch?='dispatch'? 
-	 *         (typeParameters+=JvmTypeParameter typeParameters+=JvmTypeParameter*)? 
-	 *         (
-	 *             (returnType=JvmTypeReference createExtensionInfo=CreateExtensionInfo name=ValidID) | 
-	 *             (returnType=JvmTypeReference name=ValidID) | 
-	 *             (createExtensionInfo=CreateExtensionInfo name=ValidID) | 
-	 *             name=ValidID
-	 *         ) 
-	 *         (parameters+=Parameter parameters+=Parameter*)? 
-	 *         (exceptions+=JvmTypeReference exceptions+=JvmTypeReference*)? 
-	 *         (expression=XBlockExpression | expression=RichString)?
-	 *     )
-	 */
-	protected void sequence_Member(EObject context, XtendFunction semanticObject) {
+	protected void sequence_Member_XtendField_2_0(EObject context, XtendMember semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

@@ -23,8 +23,8 @@ public class FeatureSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected AbstractElementAlias match_Class_PublicKeyword_1_q;
 	protected AbstractElementAlias match_File_SemicolonKeyword_0_2_q;
 	protected AbstractElementAlias match_Import_SemicolonKeyword_2_q;
-	protected AbstractElementAlias match_Member_SemicolonKeyword_2_0_4_q;
-	protected AbstractElementAlias match_Member_VarKeyword_2_0_2_0_1_1_q;
+	protected AbstractElementAlias match_Member_SemicolonKeyword_2_4_q;
+	protected AbstractElementAlias match_Member_VarKeyword_2_2_0_1_1_q;
 	protected AbstractElementAlias match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a;
 	protected AbstractElementAlias match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_p;
 	protected AbstractElementAlias match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q;
@@ -43,8 +43,8 @@ public class FeatureSyntacticSequencer extends AbstractSyntacticSequencer {
 		match_Class_PublicKeyword_1_q = new TokenAlias(false, true, grammarAccess.getClassAccess().getPublicKeyword_1());
 		match_File_SemicolonKeyword_0_2_q = new TokenAlias(false, true, grammarAccess.getFileAccess().getSemicolonKeyword_0_2());
 		match_Import_SemicolonKeyword_2_q = new TokenAlias(false, true, grammarAccess.getImportAccess().getSemicolonKeyword_2());
-		match_Member_SemicolonKeyword_2_0_4_q = new TokenAlias(false, true, grammarAccess.getMemberAccess().getSemicolonKeyword_2_0_4());
-		match_Member_VarKeyword_2_0_2_0_1_1_q = new TokenAlias(false, true, grammarAccess.getMemberAccess().getVarKeyword_2_0_2_0_1_1());
+		match_Member_SemicolonKeyword_2_4_q = new TokenAlias(false, true, grammarAccess.getMemberAccess().getSemicolonKeyword_2_4());
+		match_Member_VarKeyword_2_2_0_1_1_q = new TokenAlias(false, true, grammarAccess.getMemberAccess().getVarKeyword_2_2_0_1_1());
 		match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a = new TokenAlias(true, true, grammarAccess.getXAnnotationElementValueAccess().getLeftParenthesisKeyword_7_0());
 		match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_p = new TokenAlias(true, false, grammarAccess.getXAnnotationElementValueAccess().getLeftParenthesisKeyword_7_0());
 		match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getRightParenthesisKeyword_3_2()));
@@ -59,20 +59,9 @@ public class FeatureSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if(ruleCall.getRule() == grammarAccess.getAT_SIGNRule())
-			return getAT_SIGNToken(semanticObject, ruleCall, node);
-		else if(ruleCall.getRule() == grammarAccess.getOpSingleAssignRule())
+		if(ruleCall.getRule() == grammarAccess.getOpSingleAssignRule())
 			return getOpSingleAssignToken(semanticObject, ruleCall, node);
 		return "";
-	}
-	
-	/**
-	 * terminal AT_SIGN: '@';
-	 */
-	protected String getAT_SIGNToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "@";
 	}
 	
 	/**
@@ -100,10 +89,10 @@ public class FeatureSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_File_SemicolonKeyword_0_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_Import_SemicolonKeyword_2_q.equals(syntax))
 				emit_Import_SemicolonKeyword_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_Member_SemicolonKeyword_2_0_4_q.equals(syntax))
-				emit_Member_SemicolonKeyword_2_0_4_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_Member_VarKeyword_2_0_2_0_1_1_q.equals(syntax))
-				emit_Member_VarKeyword_2_0_2_0_1_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_Member_SemicolonKeyword_2_4_q.equals(syntax))
+				emit_Member_SemicolonKeyword_2_4_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_Member_VarKeyword_2_2_0_1_1_q.equals(syntax))
+				emit_Member_VarKeyword_2_2_0_1_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a.equals(syntax))
 				emit_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_p.equals(syntax))
@@ -164,7 +153,7 @@ public class FeatureSyntacticSequencer extends AbstractSyntacticSequencer {
 	 * Syntax:
 	 *     ';'?
 	 */
-	protected void emit_Member_SemicolonKeyword_2_0_4_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_Member_SemicolonKeyword_2_4_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -172,7 +161,7 @@ public class FeatureSyntacticSequencer extends AbstractSyntacticSequencer {
 	 * Syntax:
 	 *     'var'?
 	 */
-	protected void emit_Member_VarKeyword_2_0_2_0_1_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_Member_VarKeyword_2_2_0_1_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -250,7 +239,7 @@ public class FeatureSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     'throws' | ('should' 'throw')
+	 *     ('should' 'throw') | 'throws'
 	 */
 	protected void emit_XRelationalExpression_ThrowsKeyword_1_1_0_0_1_1_or___ShouldKeyword_1_1_0_0_1_0_0_ThrowKeyword_1_1_0_0_1_0_1__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

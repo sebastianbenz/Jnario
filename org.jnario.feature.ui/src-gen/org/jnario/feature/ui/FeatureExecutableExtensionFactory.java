@@ -4,11 +4,10 @@
 package org.jnario.feature.ui;
 
 import org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory;
+import org.jnario.feature.ui.internal.FeatureActivator;
 import org.osgi.framework.Bundle;
 
 import com.google.inject.Injector;
-
-import org.jnario.feature.ui.internal.FeatureActivator;
 
 /**
  * This class was generated. Customizations should only happen in a newly
