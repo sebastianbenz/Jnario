@@ -126,13 +126,6 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 	}
 	
 	@Override
-	public void complete_EXAMPLE_TEXT(EObject model, RuleCall ruleCall,
-			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		String proposal = "Examples: ";
-		acceptor.accept(createCompletionProposal(proposal, proposal, getLabelProvider().getImage(model), context));
-	}
-	
-	@Override
 	protected void lookupCrossReference(CrossReference crossReference, ContentAssistContext contentAssistContext,
 			ICompletionProposalAcceptor acceptor) {
 		lookupCrossReference(crossReference, contentAssistContext, acceptor, getFeatureDescriptionPredicate(contentAssistContext));
