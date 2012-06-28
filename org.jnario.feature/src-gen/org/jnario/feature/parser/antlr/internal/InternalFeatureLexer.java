@@ -2229,8 +2229,8 @@ public class InternalFeatureLexer extends Lexer {
     // $ANTLR start "RULE_STEP_WITH_ARGS"
     public final void mRULE_STEP_WITH_ARGS() throws RecognitionException {
         try {
-            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:8323:30: ( (~ ( ( '\\r' | '\\n' ) ) )* ( '\\r' )? '\\n' RULE_SPACES ( RULE_STRING )? )
-            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:8323:32: (~ ( ( '\\r' | '\\n' ) ) )* ( '\\r' )? '\\n' RULE_SPACES ( RULE_STRING )?
+            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:8323:30: ( (~ ( ( '\\r' | '\\n' ) ) )* ( '\\r' )? '\\n' RULE_SPACES ( RULE_RICH_TEXT )? )
+            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:8323:32: (~ ( ( '\\r' | '\\n' ) ) )* ( '\\r' )? '\\n' RULE_SPACES ( RULE_RICH_TEXT )?
             {
             // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:8323:32: (~ ( ( '\\r' | '\\n' ) ) )*
             loop4:
@@ -2285,18 +2285,18 @@ public class InternalFeatureLexer extends Lexer {
 
             match('\n'); 
             mRULE_SPACES(); 
-            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:8323:71: ( RULE_STRING )?
+            // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:8323:71: ( RULE_RICH_TEXT )?
             int alt6=2;
             int LA6_0 = input.LA(1);
 
-            if ( (LA6_0=='\"'||LA6_0=='\'') ) {
+            if ( (LA6_0=='\'') ) {
                 alt6=1;
             }
             switch (alt6) {
                 case 1 :
-                    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:8323:71: RULE_STRING
+                    // ../org.jnario.feature/src-gen/org/jnario/feature/parser/antlr/internal/InternalFeature.g:8323:71: RULE_RICH_TEXT
                     {
-                    mRULE_STRING(); 
+                    mRULE_RICH_TEXT(); 
 
                     }
                     break;

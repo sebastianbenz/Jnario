@@ -88,7 +88,7 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 			return ""
 		}
 		var codeBlock = code.trim
-		codeBlock = codeBlock.substring(1, codeBlock.length-1)
+		codeBlock = codeBlock.substring(3, codeBlock.length-3)
 		return '''<pre>«codeBlock.codeToHtml»</pre>'''
 	} 
 }

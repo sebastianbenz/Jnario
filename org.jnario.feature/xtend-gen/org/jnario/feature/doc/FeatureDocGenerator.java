@@ -170,8 +170,8 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     }
     String codeBlock = code.trim();
     int _length_1 = codeBlock.length();
-    int _minus = (_length_1 - 1);
-    String _substring = codeBlock.substring(1, _minus);
+    int _minus = (_length_1 - 3);
+    String _substring = codeBlock.substring(3, _minus);
     codeBlock = _substring;
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<pre>");

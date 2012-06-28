@@ -727,7 +727,7 @@
         <elements xsi:type="xtext:Keyword" cardinality="?" value="&#xD;"/>
         <elements xsi:type="xtext:Keyword" value="&#xA;"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.33"/>
-        <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/4/@rules.12"/>
+        <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.21"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:TerminalRule" name="MNL" fragment="true">

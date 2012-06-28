@@ -10,8 +10,6 @@ package org.jnario.feature.ui.launching;
 
 import static com.google.common.collect.Iterables.filter;
 
-import java.util.Set;
-
 import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.ecore.EObject;
@@ -26,9 +24,7 @@ import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.common.types.util.jdt.IJavaElementFinder;
 import org.eclipse.xtext.resource.XtextResource;
-import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.ui.launching.JavaElementDelegateJunitLaunch;
-import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeatureFile;
 
 import com.google.inject.Inject;

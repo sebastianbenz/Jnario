@@ -29,6 +29,9 @@ public class StepArgumentsProvider {
 		private final List<String> arguments = newArrayList();
 
 		public void accept(String arg, int offset, int length) {
+			if(arg.length() == 0){
+				return;
+			}
 			arguments.add(arg);
 		}
 	}

@@ -78,16 +78,16 @@ Feature: Step Parameters
 		
 	Scenario: Using multiline Strings
 		Given a feature
-			jnarioFile = '''
+			jnarioFile = "
 				package bootstrap 
 				Feature: Test feature
 					Scenario: using multiline strings in step definitions
 						String x
 						Given the multine string: 
-							"hello"
+							'''hello'''
 							x = args.first
-						Then it should be "hello"
+						Then it should be 'hello'
 							x should be args.first
-			'''
+			"
 		When this feature is executed
 		Then it should be successful
