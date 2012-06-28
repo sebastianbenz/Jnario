@@ -15,7 +15,6 @@ Feature: Examples.
 	Background: Some more info
 	
 	Given I have entered "333" into the calculator
-		""
 
 	Scenario: Example tables.
 		var a = 0
