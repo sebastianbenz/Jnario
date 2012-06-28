@@ -8,7 +8,9 @@ import java.io.InputStreamReader
 import static org.junit.Assume.*
 import java.net.URL
 import java.io.IOException
+import org.junit.Ignore
 
+@Ignore
 describe "Maven"{
 
 	@Rule public val tempFolder = new TemporaryFolder

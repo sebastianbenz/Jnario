@@ -18,6 +18,7 @@ import org.jnario.runner.Order;
 import org.junit.Assert;
 import org.junit.Assume;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
@@ -26,6 +27,7 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("Maven")
+@Ignore
 public class MavenSpec {
   @Rule
   public final TemporaryFolder tempFolder = new Function0<TemporaryFolder>() {
