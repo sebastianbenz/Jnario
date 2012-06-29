@@ -10,6 +10,8 @@ package org.jnario.lib;
 import java.util.List;
 
 /**
+ * The super class of all table rows.
+ * 
  * @author Sebastian Benz - Initial contribution and API
  */
 public abstract class ExampleTableRow {

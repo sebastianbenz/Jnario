@@ -13,6 +13,9 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
+ * An implementation of a table with rows and columns. It should
+ * be used together with {@link Each#forEach(ExampleTable, org.eclipse.xtext.xbase.lib.Procedures.Procedure1)}.
+ * 
  * @author Sebastian Benz - Initial contribution and API
  */
 public class ExampleTable<T extends ExampleTableRow> implements Iterable<T>{
@@ -33,22 +36,40 @@ public class ExampleTable<T extends ExampleTableRow> implements Iterable<T>{
 		this.rows = rows;
 	}
 
+	/**
+	 * Returns the table row at the specified index.
+	 * 
+	 * @param index
+	 * @return the table row
+	 */
 	public T get(int index){
 		return rows.get(index);
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Iterable#iterator()
+	 */
 	public Iterator<T> iterator() {
 		return rows.iterator();
 	}
 	
+	/**
+	 * @return the list of rows
+	 */
 	public List<T> getRows() {
 		return rows;
 	}
 	
+	/**
+	 * @return the column names
+	 */
 	public List<String> getColumnNames() {
 		return columns;
 	}
 	
+	/**
+	 * @return the name of this table
+	 */
 	public String getName() {
 		return name;
 	}

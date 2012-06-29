@@ -7,10 +7,13 @@
  *******************************************************************************/
 package org.jnario.runner;
 
+import org.jnario.lib.AbstractSpecCreator;
+
 /**
  * A factory for creating features or specs together with their subjects. It can 
  * be used to customize the creation of a specification to use, for example,
- * to use a dependency injection container or a mocking framework.
+ * to use a dependency injection container or a mocking framework. Implementations
+ * should override {@link AbstractSpecCreator}.
  * 
  * @author Sebastian Benz - Initial contribution and API
  */

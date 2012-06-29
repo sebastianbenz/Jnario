@@ -23,6 +23,13 @@ import org.jnario.lib.internal.RowResults;
  */
 public class ExampleTableIterators<T extends ExampleTableRow> {
 	
+	/**
+	 * Performs an assertion on each row in an {@link ExampleTable}. All
+	 * failures are collected and merged into a readable representation.
+	 * 
+	 * @param table a table with examples
+	 * @param assertion a closure which performs an assertion on each row.
+	 */
 	public static <T extends ExampleTableRow> void forEach(ExampleTable<T> table, Procedure1<T> assertion) {
 		new ExampleTableIterators<T>(table, assertion).perform();
 	}
@@ -31,7 +38,7 @@ public class ExampleTableIterators<T extends ExampleTableRow> {
 	private final ExampleTable<T> table;
 	private final Procedure1<T> assertion;
 
-	public ExampleTableIterators(ExampleTable<T> table, Procedure1<T> assertion) {
+	protected ExampleTableIterators(ExampleTable<T> table, Procedure1<T> assertion) {
 		super();
 		this.table = table;
 		this.assertion = assertion;

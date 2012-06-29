@@ -18,6 +18,20 @@ import org.hamcrest.Matcher;
 import com.google.common.base.Objects;
 
 /**
+ * The default should matchers provided by Jnario. These 
+ * can be used in Jnario for writing literate assertions. 
+ * 
+ * The name of a should method must conform to the following
+ * convention: 
+ * <p>
+ * {@code should_xxxx(Type1 actual, Type2 expected)}.
+ * </p>
+ * Then it can be used in a spec in the following way:
+ * <p>
+ * {@code fact actual should xxxx expected}
+ * </p>
+ * 
+ * 
  * @author Sebastian Benz - Initial contribution and API
  */
 public class Should{
@@ -36,7 +50,8 @@ public class Should{
 		}
 		return should_be(actual, expected);
 	}
-	
+
+// do not work due to a type inference problem in xtend
 //	public static boolean operator_doubleArrow(Object actual, Class<?> expected) {
 //		return should_be(actual, expected);
 //	}
