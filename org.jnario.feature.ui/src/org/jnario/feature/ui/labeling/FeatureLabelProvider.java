@@ -10,6 +10,8 @@
 */
 package org.jnario.feature.ui.labeling;
 
+import static org.eclipse.xtext.util.Strings.convertFromJavaString;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.xtend.ide.labeling.XtendImages;
@@ -65,7 +67,7 @@ public class FeatureLabelProvider extends XtendLabelProvider {
 	}
 	
 	public String text(Step element) {
-		return stepNameProvider.nameOf(element);
+		return convertFromJavaString(stepNameProvider.describe(element), true);
 	}
 	
 	public String text(Scenario element) {

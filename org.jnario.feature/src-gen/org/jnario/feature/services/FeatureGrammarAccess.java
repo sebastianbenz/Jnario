@@ -447,14 +447,16 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_2_2_0 = (Group)cAlternatives_2_2.eContents().get(0);
 		private final Assignment cExtensionAssignment_2_2_0_0 = (Assignment)cGroup_2_2_0.eContents().get(0);
 		private final Keyword cExtensionExtensionKeyword_2_2_0_0_0 = (Keyword)cExtensionAssignment_2_2_0_0.eContents().get(0);
-		private final Alternatives cAlternatives_2_2_0_1 = (Alternatives)cGroup_2_2_0.eContents().get(1);
-		private final Assignment cFinalAssignment_2_2_0_1_0 = (Assignment)cAlternatives_2_2_0_1.eContents().get(0);
-		private final Keyword cFinalValKeyword_2_2_0_1_0_0 = (Keyword)cFinalAssignment_2_2_0_1_0.eContents().get(0);
-		private final Keyword cVarKeyword_2_2_0_1_1 = (Keyword)cAlternatives_2_2_0_1.eContents().get(1);
-		private final Assignment cTypeAssignment_2_2_0_2 = (Assignment)cGroup_2_2_0.eContents().get(2);
-		private final RuleCall cTypeJvmTypeReferenceParserRuleCall_2_2_0_2_0 = (RuleCall)cTypeAssignment_2_2_0_2.eContents().get(0);
-		private final Assignment cNameAssignment_2_2_0_3 = (Assignment)cGroup_2_2_0.eContents().get(3);
-		private final RuleCall cNameValidIDParserRuleCall_2_2_0_3_0 = (RuleCall)cNameAssignment_2_2_0_3.eContents().get(0);
+		private final Assignment cStaticAssignment_2_2_0_1 = (Assignment)cGroup_2_2_0.eContents().get(1);
+		private final Keyword cStaticStaticKeyword_2_2_0_1_0 = (Keyword)cStaticAssignment_2_2_0_1.eContents().get(0);
+		private final Alternatives cAlternatives_2_2_0_2 = (Alternatives)cGroup_2_2_0.eContents().get(2);
+		private final Assignment cFinalAssignment_2_2_0_2_0 = (Assignment)cAlternatives_2_2_0_2.eContents().get(0);
+		private final Keyword cFinalValKeyword_2_2_0_2_0_0 = (Keyword)cFinalAssignment_2_2_0_2_0.eContents().get(0);
+		private final Keyword cVarKeyword_2_2_0_2_1 = (Keyword)cAlternatives_2_2_0_2.eContents().get(1);
+		private final Assignment cTypeAssignment_2_2_0_3 = (Assignment)cGroup_2_2_0.eContents().get(3);
+		private final RuleCall cTypeJvmTypeReferenceParserRuleCall_2_2_0_3_0 = (RuleCall)cTypeAssignment_2_2_0_3.eContents().get(0);
+		private final Assignment cNameAssignment_2_2_0_4 = (Assignment)cGroup_2_2_0.eContents().get(4);
+		private final RuleCall cNameValidIDParserRuleCall_2_2_0_4_0 = (RuleCall)cNameAssignment_2_2_0_4.eContents().get(0);
 		private final Group cGroup_2_2_1 = (Group)cAlternatives_2_2.eContents().get(1);
 		private final Assignment cStaticAssignment_2_2_1_0 = (Assignment)cGroup_2_2_1.eContents().get(0);
 		private final Keyword cStaticStaticKeyword_2_2_1_0_0 = (Keyword)cStaticAssignment_2_2_1_0.eContents().get(0);
@@ -478,15 +480,15 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//Member returns xtend::XtendMember:
 		//	{xtend::XtendMember} annotations+=XAnnotation* ({xtend::XtendField.annotationInfo=current} visibility=Visibility?
-		//	(extension?="extension" (final?="val" | "var")? type=JvmTypeReference name=ValidID? | static?="static"?
-		//	(type=JvmTypeReference | (final?="val" | "var") type=JvmTypeReference?) name=ValidID) ("=" initialValue=XExpression)?
-		//	";"?);
+		//	(extension?="extension" static?="static"? (final?="val" | "var")? type=JvmTypeReference name=ValidID? |
+		//	static?="static"? (type=JvmTypeReference | (final?="val" | "var") type=JvmTypeReference?) name=ValidID) ("="
+		//	initialValue=XExpression)? ";"?);
 		public ParserRule getRule() { return rule; }
 
 		//{xtend::XtendMember} annotations+=XAnnotation* ({xtend::XtendField.annotationInfo=current} visibility=Visibility?
-		//(extension?="extension" (final?="val" | "var")? type=JvmTypeReference name=ValidID? | static?="static"?
-		//(type=JvmTypeReference | (final?="val" | "var") type=JvmTypeReference?) name=ValidID) ("=" initialValue=XExpression)?
-		//";"?)
+		//(extension?="extension" static?="static"? (final?="val" | "var")? type=JvmTypeReference name=ValidID? |
+		//static?="static"? (type=JvmTypeReference | (final?="val" | "var") type=JvmTypeReference?) name=ValidID) ("="
+		//initialValue=XExpression)? ";"?)
 		public Group getGroup() { return cGroup; }
 
 		//{xtend::XtendMember}
@@ -498,9 +500,9 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		//XAnnotation
 		public RuleCall getAnnotationsXAnnotationParserRuleCall_1_0() { return cAnnotationsXAnnotationParserRuleCall_1_0; }
 
-		//{xtend::XtendField.annotationInfo=current} visibility=Visibility? (extension?="extension" (final?="val" | "var")?
-		//type=JvmTypeReference name=ValidID? | static?="static"? (type=JvmTypeReference | (final?="val" | "var")
-		//type=JvmTypeReference?) name=ValidID) ("=" initialValue=XExpression)? ";"?
+		//{xtend::XtendField.annotationInfo=current} visibility=Visibility? (extension?="extension" static?="static"?
+		//(final?="val" | "var")? type=JvmTypeReference name=ValidID? | static?="static"? (type=JvmTypeReference | (final?="val"
+		//| "var") type=JvmTypeReference?) name=ValidID) ("=" initialValue=XExpression)? ";"?
 		public Group getGroup_2() { return cGroup_2; }
 
 		//{xtend::XtendField.annotationInfo=current}
@@ -512,11 +514,11 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		//Visibility
 		public RuleCall getVisibilityVisibilityEnumRuleCall_2_1_0() { return cVisibilityVisibilityEnumRuleCall_2_1_0; }
 
-		//extension?="extension" (final?="val" | "var")? type=JvmTypeReference name=ValidID? | static?="static"?
+		//extension?="extension" static?="static"? (final?="val" | "var")? type=JvmTypeReference name=ValidID? | static?="static"?
 		//(type=JvmTypeReference | (final?="val" | "var") type=JvmTypeReference?) name=ValidID
 		public Alternatives getAlternatives_2_2() { return cAlternatives_2_2; }
 
-		//extension?="extension" (final?="val" | "var")? type=JvmTypeReference name=ValidID?
+		//extension?="extension" static?="static"? (final?="val" | "var")? type=JvmTypeReference name=ValidID?
 		public Group getGroup_2_2_0() { return cGroup_2_2_0; }
 
 		//extension?="extension"
@@ -525,29 +527,35 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		//"extension"
 		public Keyword getExtensionExtensionKeyword_2_2_0_0_0() { return cExtensionExtensionKeyword_2_2_0_0_0; }
 
+		//static?="static"?
+		public Assignment getStaticAssignment_2_2_0_1() { return cStaticAssignment_2_2_0_1; }
+
+		//"static"
+		public Keyword getStaticStaticKeyword_2_2_0_1_0() { return cStaticStaticKeyword_2_2_0_1_0; }
+
 		//(final?="val" | "var")?
-		public Alternatives getAlternatives_2_2_0_1() { return cAlternatives_2_2_0_1; }
+		public Alternatives getAlternatives_2_2_0_2() { return cAlternatives_2_2_0_2; }
 
 		//final?="val"
-		public Assignment getFinalAssignment_2_2_0_1_0() { return cFinalAssignment_2_2_0_1_0; }
+		public Assignment getFinalAssignment_2_2_0_2_0() { return cFinalAssignment_2_2_0_2_0; }
 
 		//"val"
-		public Keyword getFinalValKeyword_2_2_0_1_0_0() { return cFinalValKeyword_2_2_0_1_0_0; }
+		public Keyword getFinalValKeyword_2_2_0_2_0_0() { return cFinalValKeyword_2_2_0_2_0_0; }
 
 		//"var"
-		public Keyword getVarKeyword_2_2_0_1_1() { return cVarKeyword_2_2_0_1_1; }
+		public Keyword getVarKeyword_2_2_0_2_1() { return cVarKeyword_2_2_0_2_1; }
 
 		//type=JvmTypeReference
-		public Assignment getTypeAssignment_2_2_0_2() { return cTypeAssignment_2_2_0_2; }
+		public Assignment getTypeAssignment_2_2_0_3() { return cTypeAssignment_2_2_0_3; }
 
 		//JvmTypeReference
-		public RuleCall getTypeJvmTypeReferenceParserRuleCall_2_2_0_2_0() { return cTypeJvmTypeReferenceParserRuleCall_2_2_0_2_0; }
+		public RuleCall getTypeJvmTypeReferenceParserRuleCall_2_2_0_3_0() { return cTypeJvmTypeReferenceParserRuleCall_2_2_0_3_0; }
 
 		//name=ValidID?
-		public Assignment getNameAssignment_2_2_0_3() { return cNameAssignment_2_2_0_3; }
+		public Assignment getNameAssignment_2_2_0_4() { return cNameAssignment_2_2_0_4; }
 
 		//ValidID
-		public RuleCall getNameValidIDParserRuleCall_2_2_0_3_0() { return cNameValidIDParserRuleCall_2_2_0_3_0; }
+		public RuleCall getNameValidIDParserRuleCall_2_2_0_4_0() { return cNameValidIDParserRuleCall_2_2_0_4_0; }
 
 		//static?="static"? (type=JvmTypeReference | (final?="val" | "var") type=JvmTypeReference?) name=ValidID
 		public Group getGroup_2_2_1() { return cGroup_2_2_1; }
@@ -1465,9 +1473,9 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 
 	//Member returns xtend::XtendMember:
 	//	{xtend::XtendMember} annotations+=XAnnotation* ({xtend::XtendField.annotationInfo=current} visibility=Visibility?
-	//	(extension?="extension" (final?="val" | "var")? type=JvmTypeReference name=ValidID? | static?="static"?
-	//	(type=JvmTypeReference | (final?="val" | "var") type=JvmTypeReference?) name=ValidID) ("=" initialValue=XExpression)?
-	//	";"?);
+	//	(extension?="extension" static?="static"? (final?="val" | "var")? type=JvmTypeReference name=ValidID? |
+	//	static?="static"? (type=JvmTypeReference | (final?="val" | "var") type=JvmTypeReference?) name=ValidID) ("="
+	//	initialValue=XExpression)? ";"?);
 	public MemberElements getMemberAccess() {
 		return (pMember != null) ? pMember : (pMember = new MemberElements());
 	}

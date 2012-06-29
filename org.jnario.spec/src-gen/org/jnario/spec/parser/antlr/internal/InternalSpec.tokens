@@ -130,7 +130,7 @@ RULE_WS=18
 'for'=105
 '?.'=96
 '=>'=86
-'static'=45
+'static'=43
 'catch'=117
 'extends'=31
 '{'=22
@@ -138,7 +138,7 @@ RULE_WS=18
 'def'=40
 'package'=20
 'try'=115
-'var'=44
+'var'=45
 ':'=64
 'not'=54
 '('=24
@@ -150,7 +150,7 @@ RULE_WS=18
 'finally'=116
 'describe'=21
 'new'=109
-'val'=43
+'val'=44
 'ENDFOR'=70
 'throws'=50
 '='=46

@@ -59,7 +59,7 @@ Member returns xtend::XtendMember:
       	'}') 
 	|	{xtend::XtendField.annotationInfo = current}	
 			visibility=Visibility?   
-		 	(extension?='extension' (final?='val' | 'var')? type=JvmTypeReference name=ValidID?
+		 	(extension?='extension' static?='static'? (final?='val' | 'var')? type=JvmTypeReference name=ValidID?
 			| static?='static'? (type=JvmTypeReference | (final?='val' | 'var') type=JvmTypeReference?) name=ValidID)
 			('=' initialValue=XExpression)? ';'?
 	|	{xtend::XtendFunction.annotationInfo = current}

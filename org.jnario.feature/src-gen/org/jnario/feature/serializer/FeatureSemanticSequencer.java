@@ -1506,14 +1506,14 @@ public class FeatureSemanticSequencer extends XtendSemanticSequencer {
 	 *                 annotationInfo=Member_XtendField_2_0 
 	 *                 visibility=Visibility? 
 	 *                 (
-	 *                     (extension?='extension' final?='val'? type=JvmTypeReference name=ValidID?) | 
+	 *                     (extension?='extension' static?='static'? final?='val'? type=JvmTypeReference name=ValidID?) | 
 	 *                     (static?='static'? (type=JvmTypeReference | (final?='val'? type=JvmTypeReference?)) name=ValidID)
 	 *                 )
 	 *             ) | 
 	 *             (
 	 *                 annotationInfo=Member_XtendField_2_0 
 	 *                 (
-	 *                     (extension?='extension' final?='val'? type=JvmTypeReference name=ValidID?) | 
+	 *                     (extension?='extension' static?='static'? final?='val'? type=JvmTypeReference name=ValidID?) | 
 	 *                     (static?='static'? (type=JvmTypeReference | (final?='val'? type=JvmTypeReference?)) name=ValidID)
 	 *                 )
 	 *             )
