@@ -7,6 +7,7 @@
  *******************************************************************************/
 package org.jnario.runner;
 
+import org.junit.runner.Runner;
 import org.junit.runner.manipulation.NoTestsRemainException;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
@@ -15,6 +16,8 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 
 /**
+ * A spec {@link Runner} for Jnario features. It makes 
+ * 
  * @author Birgit Engelmann - Initial contribution and API
  */
 public class FeatureRunner extends ExampleGroupRunner {

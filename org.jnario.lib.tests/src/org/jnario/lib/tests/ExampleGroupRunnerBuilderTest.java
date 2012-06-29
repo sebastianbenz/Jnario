@@ -4,8 +4,8 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.ExampleGroupRunnerBuilder;
 import org.jnario.runner.NameProvider;
+import org.jnario.runner.internal.ExampleGroupRunnerBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;

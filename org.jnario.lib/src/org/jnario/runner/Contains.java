@@ -13,6 +13,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
+ * If a class is annotated with {@link Contains}, the {@link ExampleGroupRunner} will 
+ * invoke all specified classes as child specs.
+ * 
  * @author Sebastian Benz - Initial contribution and API
  */
 @Retention(RetentionPolicy.RUNTIME)

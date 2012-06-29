@@ -13,6 +13,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
+ * If a class is annotated with {@link CreateWith}, the {@link ExampleGroupRunner} will 
+ * use the given {@link SpecCreator} to instantiate the feature, spec and subject. 
+ * 
  * @author Sebastian Benz - Initial contribution and API
  */
 @Retention(RetentionPolicy.RUNTIME)

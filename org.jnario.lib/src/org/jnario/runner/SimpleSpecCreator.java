@@ -11,6 +11,8 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.jnario.lib.AbstractSpecCreator;
 
 /**
+ * A creator of spec instances using a constructor without arguments.
+ * 
  * @author Sebastian Benz - Initial contribution and API
  */
 public class SimpleSpecCreator extends AbstractSpecCreator {

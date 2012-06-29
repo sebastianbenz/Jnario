@@ -1,7 +1,9 @@
-package org.jnario.runner;
+package org.jnario.runner.internal;
 
 import java.lang.reflect.InvocationTargetException;
 
+import org.jnario.runner.ExampleGroupRunner;
+import org.jnario.runner.NameProvider;
 import org.junit.runner.RunWith;
 import org.junit.runner.Runner;
 import org.junit.runners.model.InitializationError;

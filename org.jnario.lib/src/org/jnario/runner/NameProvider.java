@@ -11,6 +11,8 @@ import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.TestClass;
 
 /**
+ * A converter from {@link Named} annotation values to unicode strings.
+ * 
  * @author Sebastian Benz - Initial contribution and API
  */
 public class NameProvider {

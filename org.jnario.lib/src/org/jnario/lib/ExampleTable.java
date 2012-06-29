@@ -41,6 +41,7 @@ public class ExampleTable<T extends ExampleTableRow> implements Iterable<T>{
 	 * 
 	 * @param index
 	 * @return the table row
+     * @throws IndexOutOfBoundsException if the index is out of range
 	 */
 	public T get(int index){
 		return rows.get(index);

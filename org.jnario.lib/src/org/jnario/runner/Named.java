@@ -13,10 +13,13 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
+ * Spec classes or methods annotated with {@link Named} can provide plain text
+ * description of the test. Use together with {@link ExampleGroupRunner}.
+ * 
  * @author Sebastian Benz - Initial contribution and API
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.TYPE, ElementType.METHOD})
+@Target({ ElementType.TYPE, ElementType.METHOD })
 public @interface Named {
 
 	String value();

@@ -17,11 +17,14 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.xtext.xbase.lib.Functions.Function3;
+import org.jnario.runner.internal.ExtensionClass;
+import org.jnario.runner.internal.NamedFrameworkMethod;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.internal.runners.statements.RunAfters;
 import org.junit.internal.runners.statements.RunBefores;
 import org.junit.runner.Description;
+import org.junit.runner.Runner;
 import org.junit.runner.manipulation.NoTestsRemainException;
 import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.BlockJUnit4ClassRunner;
@@ -33,25 +36,30 @@ import org.junit.runners.model.TestClass;
 
 import com.google.common.base.Function;
 
-
 /**
+ * A {@link Runner} for executing single examples. 
+ * 
  * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
 public class ExampleRunner extends BlockJUnit4ClassRunner {
 
-	private final class MethodNameConverter implements Function<FrameworkMethod, FrameworkMethod> {
+	private final class MethodNameConverter implements
+			Function<FrameworkMethod, FrameworkMethod> {
 		public FrameworkMethod apply(final FrameworkMethod from) {
-			return new NamedFrameworkMethod(from.getMethod(), nameProvider.nameOf(from));
+			return new NamedFrameworkMethod(from.getMethod(),
+					nameProvider.nameOf(from));
 		}
 	}
-	
+
 	private final NameProvider nameProvider;
 	private final FrameworkMethod method;
 	private SpecCreator testBuilder;
 	private List<ExtensionClass> extensions;
 
-	public ExampleRunner(final Class<?> testClass, List<ExtensionClass> extensions, final FrameworkMethod method, NameProvider nameProvider, SpecCreator testBuilder)
+	public ExampleRunner(final Class<?> testClass,
+			List<ExtensionClass> extensions, final FrameworkMethod method,
+			NameProvider nameProvider, SpecCreator testBuilder)
 			throws InitializationError, NoTestsRemainException {
 		super(testClass);
 		this.extensions = extensions;
@@ -60,10 +68,12 @@ public class ExampleRunner extends BlockJUnit4ClassRunner {
 		this.testBuilder = testBuilder;
 		filter(matchMethodDescription(getDescription()));
 	}
-	
+
 	public ExampleRunner(Class<?> testClass, FrameworkMethod from,
-			NameProvider nameProvider, SpecCreator delegate) throws InitializationError, NoTestsRemainException {
-		this(testClass, Collections.<ExtensionClass>emptyList(), from, nameProvider, delegate);
+			NameProvider nameProvider, SpecCreator delegate)
+			throws InitializationError, NoTestsRemainException {
+		this(testClass, Collections.<ExtensionClass> emptyList(), from,
+				nameProvider, delegate);
 	}
 
 	@Override
@@ -77,8 +87,10 @@ public class ExampleRunner extends BlockJUnit4ClassRunner {
 		return testBuilder.createSpec(testClass);
 	}
 
-	protected void initializeSubjects(TestClass testClass, Object test) throws InitializationError {
-		for (FrameworkField subjectField : testClass.getAnnotatedFields(Subject.class)) {
+	protected void initializeSubjects(TestClass testClass, Object test)
+			throws InitializationError {
+		for (FrameworkField subjectField : testClass
+				.getAnnotatedFields(Subject.class)) {
 			try {
 				Object value = newInstanceOf(subjectField.getField().getType());
 				subjectField.getField().set(test, value);
@@ -88,7 +100,7 @@ public class ExampleRunner extends BlockJUnit4ClassRunner {
 			}
 		}
 	}
-	
+
 	protected Statement classBlock(final RunNotifier notifier) {
 		return childrenInvoker(notifier);
 	}
@@ -99,16 +111,17 @@ public class ExampleRunner extends BlockJUnit4ClassRunner {
 		super.runChild(method, notifier);
 		testBuilder.afterSpecRun();
 	}
-	
+
 	private Class<?> targetClass() {
 		return getTestClass().getJavaClass();
 	}
-	
+
 	@Override
 	protected List<FrameworkMethod> getChildren() {
-		return newArrayList(transform(super.getChildren(), new MethodNameConverter()));
+		return newArrayList(transform(super.getChildren(),
+				new MethodNameConverter()));
 	}
-	
+
 	@Override
 	public Description getDescription() {
 		return createTestDescription(targetClass(), testName());
@@ -117,32 +130,43 @@ public class ExampleRunner extends BlockJUnit4ClassRunner {
 	protected String testName() {
 		return nameProvider.nameOf(method);
 	}
-	
+
 	@Override
 	protected Statement withBefores(FrameworkMethod method, Object target,
 			Statement statement) {
-		return withExtension(super.withBefores(method, target, statement), Before.class, target, newRunBefores());
+		return withExtension(super.withBefores(method, target, statement),
+				Before.class, target, newRunBefores());
 	}
-	
+
 	@Override
 	protected Statement withAfters(FrameworkMethod method, Object target,
 			Statement statement) {
-		return withExtension(super.withAfters(method, target, statement), After.class, target, newRunAfters());
+		return withExtension(super.withAfters(method, target, statement),
+				After.class, target, newRunAfters());
 	}
 
-	private Statement withExtension(Statement next, Class<? extends Annotation> annotationType, Object target, Function3<Statement, List<FrameworkMethod>, Object, Statement> statementFactory) {
+	private Statement withExtension(
+			Statement next,
+			Class<? extends Annotation> annotationType,
+			Object target,
+			Function3<Statement, List<FrameworkMethod>, Object, Statement> statementFactory) {
 		for (ExtensionClass extension : extensions) {
-			List<FrameworkMethod> methods = extension.allMethodsWithAnnotation(annotationType);
+			List<FrameworkMethod> methods = extension
+					.allMethodsWithAnnotation(annotationType);
 			try {
-				if(!methods.isEmpty()){
+				if (!methods.isEmpty()) {
 					try {
 						Object extensionValue = extension.get(target);
-						if(extensionValue == null){
-							throw new IllegalStateException(extension.getName() + " is not initialized");
+						if (extensionValue == null) {
+							throw new IllegalStateException(extension.getName()
+									+ " is not initialized");
 						}
-						next = statementFactory.apply(next, methods, extensionValue);
+						next = statementFactory.apply(next, methods,
+								extensionValue);
 					} catch (IllegalAccessException e) {
-						throw new IllegalStateException(extension.getName() + " is not accessible. Extension fields must be public.");
+						throw new IllegalStateException(
+								extension.getName()
+										+ " is not accessible. Extension fields must be public.");
 					}
 				}
 			} catch (IllegalArgumentException e) {
@@ -151,24 +175,25 @@ public class ExampleRunner extends BlockJUnit4ClassRunner {
 		}
 		return next;
 	}
-	
-	private Function3<Statement, List<FrameworkMethod>, Object, Statement> newRunBefores(){
+
+	private Function3<Statement, List<FrameworkMethod>, Object, Statement> newRunBefores() {
 		return new Function3<Statement, List<FrameworkMethod>, Object, Statement>() {
 
-			public Statement apply(Statement next, List<FrameworkMethod> methods, Object target) {
+			public Statement apply(Statement next,
+					List<FrameworkMethod> methods, Object target) {
 				return new RunBefores(next, methods, target);
 			}
 		};
 	}
 
-	private Function3<Statement, List<FrameworkMethod>, Object, Statement> newRunAfters(){
+	private Function3<Statement, List<FrameworkMethod>, Object, Statement> newRunAfters() {
 		return new Function3<Statement, List<FrameworkMethod>, Object, Statement>() {
 
-			public Statement apply(Statement next, List<FrameworkMethod> methods, Object target) {
+			public Statement apply(Statement next,
+					List<FrameworkMethod> methods, Object target) {
 				return new RunAfters(next, methods, target);
 			}
 		};
 	}
 
-	
 }

@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.jnario.runner;
+package org.jnario.runner.internal;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;

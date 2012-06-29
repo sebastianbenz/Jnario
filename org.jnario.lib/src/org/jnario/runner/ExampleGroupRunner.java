@@ -22,6 +22,8 @@ import java.util.List;
 
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function2;
+import org.jnario.runner.internal.ExampleGroupRunnerBuilder;
+import org.jnario.runner.internal.ExtensionClass;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -31,7 +33,9 @@ import org.junit.runner.Description;
 import org.junit.runner.Runner;
 import org.junit.runner.manipulation.NoTestsRemainException;
 import org.junit.runner.notification.RunNotifier;
+import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.ParentRunner;
+import org.junit.runners.Suite;
 import org.junit.runners.model.FrameworkField;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
@@ -41,30 +45,34 @@ import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
-
 /**
- * @author Sebastian Benz - Initial contribution and API 
+ * The Jnario spec {@link Runner} features full text descriptions for tests and
+ * classes annotated with {@link Named}. It combines the functionality of a
+ * {@link BlockJUnit4ClassRunner} with a {@link Suite} to enable nesting specs and facts.
+ * Nested specs can be declared using the {@link Contains} annotation.
+ * 
+ * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
 public class ExampleGroupRunner extends ParentRunner<Runner> {
-	
-	private final class IsTestMethod implements
-			Predicate<FrameworkMethod> {
+
+	private final class IsTestMethod implements Predicate<FrameworkMethod> {
 		public boolean apply(FrameworkMethod input) {
-			return input.getMethod().getDeclaringClass() == getTestClass().getJavaClass();
+			return input.getMethod().getDeclaringClass() == getTestClass()
+					.getJavaClass();
 		}
 	}
-
 
 	private final NameProvider nameProvider;
 	private List<Runner> children;
 	private List<ExtensionClass> extensions;
-	
+
 	public ExampleGroupRunner(Class<?> testClass) throws InitializationError {
 		this(testClass, NameProvider.create());
 	}
 
-	public ExampleGroupRunner(Class<?> testClass, NameProvider nameProvider) throws InitializationError {
+	public ExampleGroupRunner(Class<?> testClass, NameProvider nameProvider)
+			throws InitializationError {
 		super(testClass);
 		this.nameProvider = nameProvider;
 		setExtensions();
@@ -72,15 +80,17 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 	}
 
 	private void setChildren() throws InitializationError {
-		Iterable<Runner> allExamples = concat(collectExampleGroups(), collectExamples());
+		Iterable<Runner> allExamples = concat(collectExampleGroups(),
+				collectExamples());
 		this.children = newArrayList(Iterables.filter(allExamples, notNull()));
-		if(children.isEmpty()){
+		if (children.isEmpty()) {
 			throw new InitializationError("No examples");
 		}
 	}
-	
+
 	private void setExtensions() {
-		List<FrameworkField> extensionFields = getTestClass().getAnnotatedFields(Extension.class);
+		List<FrameworkField> extensionFields = getTestClass()
+				.getAnnotatedFields(Extension.class);
 		extensions = newArrayListWithExpectedSize(extensionFields.size());
 		for (FrameworkField frameworkField : extensionFields) {
 			extensions.add(new ExtensionClass(frameworkField));
@@ -91,18 +101,19 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 	protected String getName() {
 		return nameProvider.nameOf(getTestClass());
 	}
-	
+
 	@Override
 	protected List<Runner> getChildren() {
 		return children;
 	}
-	
-	protected NameProvider getNameProvider(){
+
+	protected NameProvider getNameProvider() {
 		return nameProvider;
 	}
 
 	protected Iterable<? extends Runner> collectExamples() {
-		List<FrameworkMethod> methods = getTestClass().getAnnotatedMethods(Test.class);
+		List<FrameworkMethod> methods = getTestClass().getAnnotatedMethods(
+				Test.class);
 		methods = newArrayList(Iterables.filter(methods, isTestMethod()));
 		orderMethods(methods);
 		return createRunners(getTestClass().getJavaClass(), methods);
@@ -111,9 +122,9 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 	protected Predicate<FrameworkMethod> isTestMethod() {
 		return new IsTestMethod();
 	}
-	
-	protected Iterable<? extends Runner> createRunners(final Class<?> testClass,
-			List<FrameworkMethod> annotatedMethods) {
+
+	protected Iterable<? extends Runner> createRunners(
+			final Class<?> testClass, List<FrameworkMethod> annotatedMethods) {
 		return transform(annotatedMethods,
 				new Function<FrameworkMethod, Runner>() {
 
@@ -131,38 +142,39 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 	}
 
 	protected void orderMethods(List<FrameworkMethod> annotatedMethods) {
-		Collections.sort(annotatedMethods, new Comparator<FrameworkMethod>(){
+		Collections.sort(annotatedMethods, new Comparator<FrameworkMethod>() {
 
 			public int compare(FrameworkMethod method1, FrameworkMethod method2) {
 				Order o1 = method1.getAnnotation(Order.class);
 				Order o2 = method2.getAnnotation(Order.class);
-				if(o1 == null && o2 == null){
+				if (o1 == null && o2 == null) {
 					return 0;
 				}
-				if(o1 != null && o2 == null){
+				if (o1 != null && o2 == null) {
 					return -1;
 				}
-				if(o1 == null && o2 != null){
+				if (o1 == null && o2 != null) {
 					return 1;
 				}
 				return o1.value() - o2.value();
 			}
-			
+
 		});
 	}
-	
+
 	protected ExampleRunner createExampleRunner(Class<?> testClass,
 			FrameworkMethod from) throws InitializationError,
 			NoTestsRemainException {
-		return new ExampleRunner(testClass, extensions, from, nameProvider, createTestInstantiator());
+		return new ExampleRunner(testClass, extensions, from, nameProvider,
+				createTestInstantiator());
 	}
 
 	protected SpecCreator createTestInstantiator() throws InitializationError {
 		CreateWith annotation = getCreateWithAnnotation();
 		try {
-			if(annotation == null){
+			if (annotation == null) {
 				return new SimpleSpecCreator();
-			}else{
+			} else {
 				return annotation.value().newInstance();
 			}
 		} catch (Exception e) {
@@ -173,9 +185,9 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 	protected CreateWith getCreateWithAnnotation() {
 		Class<?> klass = targetClass();
 		CreateWith annotation = null;
-		while(annotation == null && klass != null){
-			 annotation = klass.getAnnotation(CreateWith.class);
-			 klass = klass.getSuperclass();
+		while (annotation == null && klass != null) {
+			annotation = klass.getAnnotation(CreateWith.class);
+			klass = klass.getSuperclass();
 		}
 		return annotation;
 	}
@@ -192,17 +204,18 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 						}
 					}
 
-					
 				});
 	}
-	
-	protected Runner createExampleGroupRunner(
-			Class<?> declaredClass) throws InitializationError {
-		return new ExampleGroupRunnerBuilder(declaredClass, nameProvider).build();
+
+	protected Runner createExampleGroupRunner(Class<?> declaredClass)
+			throws InitializationError {
+		return new ExampleGroupRunnerBuilder(declaredClass, nameProvider)
+				.build();
 	}
 
-	public List<Class<?>> allDeclaredClasses() {
-		List<Class<?>> declaredClasses = asList(targetClass().getDeclaredClasses());
+	protected List<Class<?>> allDeclaredClasses() {
+		List<Class<?>> declaredClasses = asList(targetClass()
+				.getDeclaredClasses());
 		Iterable<? extends Class<?>> containedClasses = allContainedClasses();
 		return newArrayList(concat(declaredClasses, containedClasses));
 	}
@@ -210,13 +223,13 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 	protected Iterable<? extends Class<?>> allContainedClasses() {
 		Iterable<? extends Class<?>> containedClasses = emptyList();
 		Contains contains = targetClass().getAnnotation(Contains.class);
-		if(contains != null){
+		if (contains != null) {
 			containedClasses = asList(contains.value());
 		}
 		return containedClasses;
 	}
 
-	public Class<?> targetClass() {
+	protected Class<?> targetClass() {
 		return getTestClass().getJavaClass();
 	}
 
@@ -229,22 +242,28 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 	protected void runChild(Runner child, RunNotifier notifier) {
 		child.run(notifier);
 	}
-	
+
 	@Override
 	protected Statement withAfterClasses(Statement next) {
-		return withExtension(super.withAfterClasses(next), AfterClass.class, newRunAfters());
+		return withExtension(super.withAfterClasses(next), AfterClass.class,
+				newRunAfters());
 	}
 
 	@Override
 	protected Statement withBeforeClasses(Statement next) {
-		return withExtension(super.withBeforeClasses(next), BeforeClass.class, newRunBefores());
+		return withExtension(super.withBeforeClasses(next), BeforeClass.class,
+				newRunBefores());
 	}
-	
-	private Statement withExtension(Statement next, Class<? extends Annotation> annotationType, Function2<Statement, List<FrameworkMethod>, Statement> statementFactory) {
+
+	private Statement withExtension(
+			Statement next,
+			Class<? extends Annotation> annotationType,
+			Function2<Statement, List<FrameworkMethod>, Statement> statementFactory) {
 		for (ExtensionClass extension : extensions) {
-			List<FrameworkMethod> methods = extension.allMethodsWithAnnotation(annotationType);
+			List<FrameworkMethod> methods = extension
+					.allMethodsWithAnnotation(annotationType);
 			try {
-				if(!methods.isEmpty()){
+				if (!methods.isEmpty()) {
 					next = statementFactory.apply(next, methods);
 				}
 			} catch (IllegalArgumentException e) {
@@ -253,8 +272,8 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 		}
 		return next;
 	}
-	
-	private Function2<Statement, List<FrameworkMethod>, Statement> newRunBefores(){
+
+	private Function2<Statement, List<FrameworkMethod>, Statement> newRunBefores() {
 		return new Function2<Statement, List<FrameworkMethod>, Statement>() {
 
 			public Statement apply(Statement next, List<FrameworkMethod> methods) {
@@ -263,15 +282,13 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 		};
 	}
 
-
-	private Function2<Statement, List<FrameworkMethod>, Statement> newRunAfters(){
+	private Function2<Statement, List<FrameworkMethod>, Statement> newRunAfters() {
 		return new Function2<Statement, List<FrameworkMethod>, Statement>() {
-	
+
 			public Statement apply(Statement next, List<FrameworkMethod> methods) {
 				return new RunAfters(next, methods, null);
 			}
 		};
 	}
-
 
 }

@@ -13,6 +13,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
+ * The execution order of spec methods can be specified with the value of the
+ * {@link Order} annotation. Use together with {@link ExampleGroupRunner}.
+ * 
  * @author Birgit Engelmann - Initial contribution and API
  */
 @Retention(RetentionPolicy.RUNTIME)
