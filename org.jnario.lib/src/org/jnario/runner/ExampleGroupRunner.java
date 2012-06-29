@@ -157,11 +157,11 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 		return new ExampleRunner(testClass, extensions, from, nameProvider, createTestInstantiator());
 	}
 
-	protected TestInstantiator createTestInstantiator() throws InitializationError {
-		InstantiateWith annotation = getInstantiateWithAnnotation();
+	protected SpecCreator createTestInstantiator() throws InitializationError {
+		CreateWith annotation = getCreateWithAnnotation();
 		try {
 			if(annotation == null){
-				return new DefaultTestInstantiator();
+				return new SimpleSpecCreator();
 			}else{
 				return annotation.value().newInstance();
 			}
@@ -170,11 +170,11 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 		}
 	}
 
-	protected InstantiateWith getInstantiateWithAnnotation() {
+	protected CreateWith getCreateWithAnnotation() {
 		Class<?> klass = targetClass();
-		InstantiateWith annotation = null;
+		CreateWith annotation = null;
 		while(annotation == null && klass != null){
-			 annotation = klass.getAnnotation(InstantiateWith.class);
+			 annotation = klass.getAnnotation(CreateWith.class);
 			 klass = klass.getSuperclass();
 		}
 		return annotation;

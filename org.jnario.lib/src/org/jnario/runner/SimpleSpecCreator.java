@@ -7,19 +7,20 @@
  *******************************************************************************/
 package org.jnario.runner;
 
+import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.jnario.lib.AbstractSpecCreator;
+
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
-public class DefaultTestInstantiator implements TestInstantiator {
+public class SimpleSpecCreator extends AbstractSpecCreator {
 
-	public Object createTest(Class<?> klass) throws Exception {
-		return klass.newInstance();
+	protected <T> T create(Class<T> klass) {
+		try {
+			return klass.newInstance();
+		} catch (Exception e) {
+			Exceptions.sneakyThrow(e);
+			return null; // not reachable
+		}
 	}
-
-	public void beforeTestRun() {
-	}
-
-	public void afterTestRun() {
-	}
-
 }

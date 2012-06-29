@@ -4,11 +4,11 @@ import com.google.inject.Inject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.jnario.jnario.test.util.ModelStore;
-import org.jnario.jnario.test.util.SuiteTestInstantiator;
+import org.jnario.jnario.test.util.SuiteTestCreator;
 import org.jnario.lib.Should;
+import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Extension;
-import org.jnario.runner.InstantiateWith;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
@@ -21,7 +21,7 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("SuiteQualifiedNameProvider")
-@InstantiateWith(value = SuiteTestInstantiator.class)
+@CreateWith(value = SuiteTestCreator.class)
 public class SuiteQualifiedNameProviderSpec {
   @Subject
   public SuiteQualifiedNameProvider subject;

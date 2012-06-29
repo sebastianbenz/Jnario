@@ -13,10 +13,10 @@ import static org.junit.Assert.assertThat;
 
 import java.util.List;
 
-import org.jnario.runner.DefaultTestInstantiator;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.ExampleRunner;
 import org.jnario.runner.NameProvider;
+import org.jnario.runner.SimpleSpecCreator;
 import org.junit.Test;
 import org.junit.runner.Description;
 import org.junit.runner.RunWith;
@@ -50,7 +50,7 @@ public class ExampleRunnerTest {
 		TestClass testClass = new TestClass(ExampleDerivedClass.class);
 		List<FrameworkMethod> annotatedMethods = testClass.getAnnotatedMethods(Test.class);
 		for(FrameworkMethod method: annotatedMethods) {
-			ExampleRunner exampleRunner = new ExampleRunner(ExampleDerivedClass.class, method, new NameProvider(), new DefaultTestInstantiator());
+			ExampleRunner exampleRunner = new ExampleRunner(ExampleDerivedClass.class, method, new NameProvider(), new SimpleSpecCreator());
 			Description desiredDescription = Description.createTestDescription(ExampleDerivedClass.class, method.getName());
 			assertThat(exampleRunner.getDescription().getDisplayName(), is(desiredDescription.getDisplayName()));
 		}

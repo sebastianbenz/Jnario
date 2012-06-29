@@ -19,32 +19,36 @@ import com.google.common.base.Predicates;
  */
 public class FeatureRunner extends ExampleGroupRunner {
 
-	private final class RunnerWrapper implements TestInstantiator {
+	private final class RunnerWrapper implements SpecCreator {
 
-		private TestInstantiator instantiator;
+		private SpecCreator instantiator;
 		private Object test;
 
-		public RunnerWrapper(TestInstantiator instantiator){
+		public RunnerWrapper(SpecCreator instantiator){
 			this.instantiator = instantiator;
 		}
 
-		public Object createTest(Class<?> klass) throws Exception {
+		public <T> T createSpec(Class<T> klass){
 			if(test == null){
-				test = instantiator.createTest(klass);
+				test = instantiator.createSpec(klass);
 			}
-			return test;
+			return klass.cast(test);
+		}
+		
+		public <T> T createSubject(Class<T> klass) {
+			return instantiator.createSubject(klass);
 		}
 
-		public void beforeTestRun() {
-			instantiator.beforeTestRun();
+		public void beforeSpecRun() {
+			instantiator.beforeSpecRun();
 		}
 
-		public void afterTestRun() {
-			instantiator.afterTestRun();
+		public void afterSpecRun() {
+			instantiator.afterSpecRun();
 		}
 	}
 
-	private TestInstantiator delegate;
+	private SpecCreator delegate;
 
 	public FeatureRunner(Class<?> klass, NameProvider nameProvider) throws InitializationError {
 		super(klass, nameProvider);
@@ -71,7 +75,7 @@ public class FeatureRunner extends ExampleGroupRunner {
 	
 	
 	private void createTestWrapper() throws InitializationError{
-		TestInstantiator createTestInstantiator = createTestInstantiator();
+		SpecCreator createTestInstantiator = createTestInstantiator();
 		delegate = new RunnerWrapper(createTestInstantiator);
 	}
 	

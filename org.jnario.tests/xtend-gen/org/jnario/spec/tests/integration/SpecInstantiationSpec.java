@@ -32,21 +32,21 @@ public class SpecInstantiationSpec {
    * @filter('''|.executesSuccessfully)
    */
   @Test
-  @Named("how to use a custom test instantiator")
+  @Named("how to use a custom spec creator")
   @Order(99)
-  public void howToUseACustomTestInstantiator() throws Exception {
+  public void howToUseACustomSpecCreator() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("import org.jnario.runner.InstantiateWith");
+    _builder.append("import org.jnario.runner.CreateWith");
     _builder.newLine();
-    _builder.append("import org.jnario.jnario.test.util.GuiceBasedTestInstantiator");
+    _builder.append("import org.jnario.jnario.test.util.GuiceSpecCreator");
     _builder.newLine();
     _builder.append("import com.google.inject.Inject");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("@InstantiateWith(typeof(GuiceBasedTestInstantiator))");
+    _builder.append("@CreateWith(typeof(GuiceSpecCreator))");
     _builder.newLine();
     _builder.append("describe GuiceBasedTestInstantiator {");
     _builder.newLine();

@@ -7,14 +7,14 @@
  *******************************************************************************/
 package gameoflife;
 
-import org.jnario.runner.DefaultTestInstantiator;
+import org.jnario.runner.SimpleSpecCreator;
 import org.mockito.MockitoAnnotations;
 
-public class MockitoInstantiator extends DefaultTestInstantiator {
+public class MockitoInstantiator extends SimpleSpecCreator {
 
 	@Override
-	public Object createTest(Class<?> klass) throws Exception {
-		Object test = super.createTest(klass);
+	public <T> T createSpec(Class<T> klass) {
+		T test = super.createSpec(klass);
 		MockitoAnnotations.initMocks(test);
 		return test;
 	}

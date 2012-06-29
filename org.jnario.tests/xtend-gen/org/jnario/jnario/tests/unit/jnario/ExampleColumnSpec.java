@@ -9,14 +9,14 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.ExampleColumn;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.Query;
-import org.jnario.jnario.test.util.SpecTestInstantiator;
+import org.jnario.jnario.test.util.SpecTestCreator;
 import org.jnario.jnario.tests.unit.jnario.ExampleColumnSpecExamples;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.Should;
+import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Extension;
-import org.jnario.runner.InstantiateWith;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.junit.Assert;
@@ -27,7 +27,7 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("ExampleColumn")
-@InstantiateWith(value = SpecTestInstantiator.class)
+@CreateWith(value = SpecTestCreator.class)
 public class ExampleColumnSpec {
   @Inject
   @Extension

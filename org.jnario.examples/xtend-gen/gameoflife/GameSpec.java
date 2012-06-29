@@ -7,8 +7,8 @@ import gameoflife.MockitoInstantiator;
 import java.util.Set;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
+import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.InstantiateWith;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
@@ -23,7 +23,7 @@ import org.mockito.stubbing.OngoingStubbing;
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("Game")
-@InstantiateWith(value = MockitoInstantiator.class)
+@CreateWith(value = MockitoInstantiator.class)
 public class GameSpec {
   @Subject
   public Game subject;

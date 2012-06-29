@@ -7,7 +7,7 @@
  *******************************************************************************/
 package gameoflife
 
-import org.jnario.runner.InstantiateWith
+import org.jnario.runner.CreateWith
 import org.mockito.Mock
 
 import static gameoflife.AliveCell.*
@@ -16,7 +16,7 @@ import static org.mockito.Mockito.*
 
 import static extension org.jnario.lib.Should.*
 
-@InstantiateWith(typeof(MockitoInstantiator))
+@CreateWith(typeof(MockitoInstantiator))
 describe Game{
 
 	@Mock Cell cell

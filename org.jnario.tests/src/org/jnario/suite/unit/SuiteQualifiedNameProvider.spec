@@ -2,11 +2,11 @@ package org.jnario.suite.unit
 
 import org.jnario.suite.naming.SuiteQualifiedNameProvider
 import com.google.inject.Inject
-import org.jnario.runner.InstantiateWith
-import org.jnario.jnario.test.util.SuiteTestInstantiator
 import org.jnario.jnario.test.util.ModelStore
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SuiteTestCreator
 
-@InstantiateWith(typeof(SuiteTestInstantiator))
+@CreateWith(typeof(SuiteTestCreator))
 describe SuiteQualifiedNameProvider {
 
 	@Inject extension ModelStore

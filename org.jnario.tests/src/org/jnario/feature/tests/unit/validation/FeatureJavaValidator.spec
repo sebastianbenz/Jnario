@@ -16,16 +16,16 @@ import org.jnario.feature.feature.Feature
 import org.jnario.feature.feature.Scenario
 import org.jnario.feature.feature.Step
 import org.jnario.feature.validation.FeatureJavaValidator
-import org.jnario.jnario.test.util.FeatureTestInstantiator
 import org.jnario.jnario.test.util.ModelStore
-import org.jnario.runner.InstantiateWith
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.FeatureTestCreator
 
 import static org.jnario.jnario.test.util.Query.*
 
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
-@InstantiateWith(typeof(FeatureTestInstantiator))
+@CreateWith(typeof(FeatureTestCreator))
 describe FeatureJavaValidator{
 
 	@Inject ModelStore modelStore

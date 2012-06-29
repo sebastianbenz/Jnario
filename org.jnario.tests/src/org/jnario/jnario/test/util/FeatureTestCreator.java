@@ -7,17 +7,17 @@
  *******************************************************************************/
 package org.jnario.jnario.test.util;
 
-import org.jnario.lib.AbstractTestInstantiator;
+import org.eclipse.xtext.junit4.IInjectorProvider;
 
-import com.google.inject.Guice;
-import com.google.inject.util.Modules;
 /**
- * @author Sebastian Benz - Initial contribution and API
+ * @author Birgit Engelmann - Initial contribution and API
  */
-public class GuiceBasedTestInstantiator extends AbstractTestInstantiator {
-
-	public Object createTest(Class<?> klass) throws Exception {
-		return Guice.createInjector(Modules.EMPTY_MODULE).getInstance(klass);
+public class FeatureTestCreator extends JnarioTestCreator{
+	private static ExtendedFeatureInjectorProvider injectorProvider = new ExtendedFeatureInjectorProvider();
+	
+	@Override
+	protected IInjectorProvider getInjectorProvider() {
+		return injectorProvider;
 	}
 
 }

@@ -5,17 +5,19 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.jnario.runner;
+package org.jnario.jnario.test.util;
 
+import org.jnario.lib.AbstractSpecCreator;
+
+import com.google.inject.Guice;
+import com.google.inject.util.Modules;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
-public interface TestInstantiator {
+public class GuiceSpecCreator extends AbstractSpecCreator {
 
-	Object createTest(Class<?> klass) throws Exception;
-	
-	void beforeTestRun();
-	
-	void afterTestRun();
-	
+	public <T> T create(Class<T> klass) {
+		return Guice.createInjector(Modules.EMPTY_MODULE).getInstance(klass);
+	}
+
 }

@@ -9,17 +9,18 @@ package org.jnario.feature.tests.unit.naming
 
 import com.google.inject.Inject
 import org.jnario.jnario.test.util.ModelStore
-import org.jnario.jnario.test.util.SpecTestInstantiator
 import org.jnario.feature.feature.Step
 import org.jnario.feature.jvmmodel.StepExpressionProvider
-import org.jnario.runner.InstantiateWith
-import static org.jnario.jnario.test.util.Query.*
 import org.junit.Ignore
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SpecTestCreator
+
+import static org.jnario.jnario.test.util.Query.*
 
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
-@InstantiateWith(typeof(SpecTestInstantiator))
+@CreateWith(typeof(SpecTestCreator))
 describe StepExpressionProvider{
 
 	@Inject extension ModelStore modelStore

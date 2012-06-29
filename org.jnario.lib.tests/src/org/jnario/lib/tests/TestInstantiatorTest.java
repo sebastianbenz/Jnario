@@ -13,9 +13,9 @@ import static org.hamcrest.core.Is.is;
 
 import java.util.ArrayList;
 
+import org.jnario.lib.AbstractSpecCreator;
+import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.InstantiateWith;
-import org.jnario.runner.TestInstantiator;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,10 +33,11 @@ public class TestInstantiatorTest {
 	private static final String BEFORE = "Before";
 	private static final String AFTER = "After";
 
-	public static class MockTestInstantiator implements TestInstantiator {
+	public static class MockTestInstantiator extends AbstractSpecCreator {
 
-		public Object createTest(Class<?> klass) {
-			return new Example() {
+		@SuppressWarnings("unchecked")
+		public <T> T create(Class<T> klass) {
+			return (T) new Example() {
 				@Override
 				public void dummy() throws Exception {
 					callOrder.add(TEST_RUN);
@@ -44,18 +45,18 @@ public class TestInstantiatorTest {
 			};
 		}
 
-		public void beforeTestRun() {
+		public void beforeSpecRun() {
 			callOrder.add(BEFORE);
 		}
 
-		public void afterTestRun() {
+		public void afterSpecRun() {
 			callOrder.add(AFTER);
 		}
 
 	}
 
 	@RunWith(ExampleGroupRunner.class)
-	@InstantiateWith(MockTestInstantiator.class)
+	@CreateWith(MockTestInstantiator.class)
 	public static class Example {
 		@Test
 		public void dummy() throws Exception {

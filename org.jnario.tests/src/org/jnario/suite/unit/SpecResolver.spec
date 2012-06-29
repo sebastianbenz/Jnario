@@ -1,15 +1,15 @@
 package org.jnario.suite.unit
 
-import org.jnario.jnario.test.util.SuiteTestInstantiator
-import org.jnario.runner.InstantiateWith
 import com.google.inject.Inject
 import org.jnario.jnario.test.util.ModelStore
 import org.jnario.suite.suite.Suite
 import org.jnario.suite.suite.SuiteFactory
 import org.jnario.suite.jvmmodel.SuiteClassNameProvider
 import org.jnario.suite.jvmmodel.SpecResolver
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SuiteTestCreator
 
-@InstantiateWith(typeof(SuiteTestInstantiator))
+@CreateWith(typeof(SuiteTestCreator))
 describe SpecResolver {
 
 	@Inject extension ModelStore m

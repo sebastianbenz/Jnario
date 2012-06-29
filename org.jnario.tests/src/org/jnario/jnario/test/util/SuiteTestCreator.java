@@ -5,16 +5,15 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.jnario.lib;
+package org.jnario.jnario.test.util;
 
-import org.jnario.runner.TestInstantiator;
+import org.eclipse.xtext.junit4.IInjectorProvider;
 
-public abstract class AbstractTestInstantiator implements TestInstantiator{
-
-	public void beforeTestRun() {
+public class SuiteTestCreator extends JnarioTestCreator {
+	private static ExtendedSuiteInjectorProvider injectorProvider = new ExtendedSuiteInjectorProvider();
+	
+	@Override
+	protected IInjectorProvider getInjectorProvider() {
+		return injectorProvider;
 	}
-
-	public void afterTestRun() {
-	}
-
 }

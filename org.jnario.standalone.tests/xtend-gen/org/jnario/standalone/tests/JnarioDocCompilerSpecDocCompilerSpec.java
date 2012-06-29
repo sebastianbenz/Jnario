@@ -1,10 +1,10 @@
 package org.jnario.standalone.tests;
 
 import org.hamcrest.Matcher;
-import org.jnario.jnario.test.util.SpecTestInstantiator;
+import org.jnario.jnario.test.util.SpecTestCreator;
 import org.jnario.lib.Should;
+import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.InstantiateWith;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.standalone.tests.JnarioDocCompilerSpec;
@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("SpecDocCompiler")
-@InstantiateWith(value = SpecTestInstantiator.class)
+@CreateWith(value = SpecTestCreator.class)
 public class JnarioDocCompilerSpecDocCompilerSpec extends JnarioDocCompilerSpec {
   @Test
   @Named("\\\"test/SpecExampleSpec.html\\\" should be generated")

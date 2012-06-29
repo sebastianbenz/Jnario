@@ -5,15 +5,26 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.jnario.jnario.test.util;
+package org.jnario.lib;
 
-import org.eclipse.xtext.junit4.IInjectorProvider;
+import org.jnario.runner.SpecCreator;
 
-public class SuiteTestInstantiator extends SpecificationInstantiator {
-	private static ExtendedSuiteInjectorProvider injectorProvider = new ExtendedSuiteInjectorProvider();
-	
-	@Override
-	protected IInjectorProvider getInjectorProvider() {
-		return injectorProvider;
+public abstract class AbstractSpecCreator implements SpecCreator{
+
+	public <T> T createSpec(Class<T> klass) {
+		return create(klass);
 	}
+	
+	public <T> T createSubject(Class<T> klass) {
+		return create(klass);
+	}
+	
+	protected abstract <T> T create(Class<T> klass);
+	
+	public void beforeSpecRun() {
+	}
+
+	public void afterSpecRun() {
+	}
+
 }

@@ -10,10 +10,10 @@ import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.Query;
-import org.jnario.jnario.test.util.SpecTestInstantiator;
+import org.jnario.jnario.test.util.SpecTestCreator;
+import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Extension;
-import org.jnario.runner.InstantiateWith;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
@@ -27,7 +27,7 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("SpecScopeProvider")
-@InstantiateWith(value = SpecTestInstantiator.class)
+@CreateWith(value = SpecTestCreator.class)
 public class SpecScopeProviderSpec {
   @Subject
   public SpecScopeProvider subject;

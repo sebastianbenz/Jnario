@@ -1,10 +1,10 @@
 package org.jnario.standalone.tests;
 
 import org.hamcrest.Matcher;
-import org.jnario.jnario.test.util.FeatureTestInstantiator;
+import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.lib.Should;
+import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.InstantiateWith;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.standalone.tests.JnarioDocCompilerSpec;
@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("FeatureDocCompiler")
-@InstantiateWith(value = FeatureTestInstantiator.class)
+@CreateWith(value = FeatureTestCreator.class)
 public class JnarioDocCompilerFeatureDocCompilerSpec extends JnarioDocCompilerSpec {
   @Test
   @Named("\\\"test/ExamplesFeature.html\\\" should be generated")

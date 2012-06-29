@@ -5,19 +5,19 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.jnario.jnario.test.util;
+package org.jnario.runner;
 
-import org.eclipse.xtext.junit4.IInjectorProvider;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
- * @author Birgit Engelmann - Initial contribution and API
+ * @author Sebastian Benz - Initial contribution and API
  */
-public class FeatureTestInstantiator extends SpecificationInstantiator{
-	private static ExtendedFeatureInjectorProvider injectorProvider = new ExtendedFeatureInjectorProvider();
-	
-	@Override
-	protected IInjectorProvider getInjectorProvider() {
-		return injectorProvider;
-	}
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+public @interface CreateWith {
 
+	Class<? extends SpecCreator> value();
 }

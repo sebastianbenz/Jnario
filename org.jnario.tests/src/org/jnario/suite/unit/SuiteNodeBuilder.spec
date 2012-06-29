@@ -2,15 +2,15 @@ package org.jnario.suite.unit
 
 import com.google.inject.Inject
 import org.jnario.jnario.test.util.ModelStore
-import org.jnario.jnario.test.util.SuiteTestInstantiator
-import org.jnario.runner.InstantiateWith
 import org.jnario.suite.jvmmodel.SuiteNodeBuilder
 import org.jnario.suite.suite.SuiteFactory
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SuiteTestCreator
 
 import static extension org.jnario.lib.ExampleTableIterators.*
 import static extension org.jnario.lib.Should.*
 
-@InstantiateWith(typeof(SuiteTestInstantiator))
+@CreateWith(typeof(SuiteTestCreator))
 describe SuiteNodeBuilder {
 	
 	@Inject extension ModelStore m

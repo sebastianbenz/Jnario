@@ -10,12 +10,12 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.feature.tests.unit.validation.FeatureJavaValidatorFeaturesMustHaveDescriptionsSpec;
 import org.jnario.feature.tests.unit.validation.FeatureJavaValidatorScenariosMustHaveDescriptionsSpec;
 import org.jnario.feature.tests.unit.validation.FeatureJavaValidatorStepsMustHaveDescriptionsSpec;
-import org.jnario.jnario.test.util.FeatureTestInstantiator;
+import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.Query;
 import org.jnario.runner.Contains;
+import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.InstantiateWith;
 import org.jnario.runner.Named;
 import org.junit.runner.RunWith;
 
@@ -26,7 +26,7 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("FeatureJavaValidator")
-@InstantiateWith(value = FeatureTestInstantiator.class)
+@CreateWith(value = FeatureTestCreator.class)
 public class FeatureJavaValidatorSpec {
   @Inject
   ModelStore modelStore;

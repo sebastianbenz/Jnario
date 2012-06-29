@@ -1,10 +1,10 @@
 package org.jnario.standalone.tests;
 
 import org.hamcrest.Matcher;
-import org.jnario.jnario.test.util.SuiteTestInstantiator;
+import org.jnario.jnario.test.util.SuiteTestCreator;
 import org.jnario.lib.Should;
+import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.InstantiateWith;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.standalone.tests.JnarioDocCompilerSpec;
@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("SuiteDocCompiler")
-@InstantiateWith(value = SuiteTestInstantiator.class)
+@CreateWith(value = SuiteTestCreator.class)
 public class JnarioDocCompilerSuiteDocCompilerSpec extends JnarioDocCompilerSpec {
   @Test
   @Named("\\\"test/ExampleSuite.html\\\" should be generated")

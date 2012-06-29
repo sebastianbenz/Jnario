@@ -48,10 +48,10 @@ public class ExampleRunner extends BlockJUnit4ClassRunner {
 	
 	private final NameProvider nameProvider;
 	private final FrameworkMethod method;
-	private TestInstantiator testBuilder;
+	private SpecCreator testBuilder;
 	private List<ExtensionClass> extensions;
 
-	public ExampleRunner(final Class<?> testClass, List<ExtensionClass> extensions, final FrameworkMethod method, NameProvider nameProvider, TestInstantiator testBuilder)
+	public ExampleRunner(final Class<?> testClass, List<ExtensionClass> extensions, final FrameworkMethod method, NameProvider nameProvider, SpecCreator testBuilder)
 			throws InitializationError, NoTestsRemainException {
 		super(testClass);
 		this.extensions = extensions;
@@ -62,7 +62,7 @@ public class ExampleRunner extends BlockJUnit4ClassRunner {
 	}
 	
 	public ExampleRunner(Class<?> testClass, FrameworkMethod from,
-			NameProvider nameProvider, TestInstantiator delegate) throws InitializationError, NoTestsRemainException {
+			NameProvider nameProvider, SpecCreator delegate) throws InitializationError, NoTestsRemainException {
 		this(testClass, Collections.<ExtensionClass>emptyList(), from, nameProvider, delegate);
 	}
 
@@ -74,7 +74,7 @@ public class ExampleRunner extends BlockJUnit4ClassRunner {
 	}
 
 	protected Object newInstanceOf(Class<?> testClass) throws Exception {
-		return testBuilder.createTest(testClass);
+		return testBuilder.createSpec(testClass);
 	}
 
 	protected void initializeSubjects(TestClass testClass, Object test) throws InitializationError {
@@ -95,9 +95,9 @@ public class ExampleRunner extends BlockJUnit4ClassRunner {
 
 	@Override
 	protected void runChild(FrameworkMethod method, RunNotifier notifier) {
-		testBuilder.beforeTestRun();
+		testBuilder.beforeSpecRun();
 		super.runChild(method, notifier);
-		testBuilder.afterTestRun();
+		testBuilder.afterSpecRun();
 	}
 	
 	private Class<?> targetClass() {

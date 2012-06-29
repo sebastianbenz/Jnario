@@ -13,11 +13,11 @@ import org.jnario.feature.tests.unit.naming.StepNameProviderNameOfStepSpec;
 import org.jnario.feature.tests.unit.naming.StepNameProviderRemoveKeywordsAndArgumentsStringSpec;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.Query;
-import org.jnario.jnario.test.util.SpecTestInstantiator;
+import org.jnario.jnario.test.util.SpecTestCreator;
 import org.jnario.runner.Contains;
+import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Extension;
-import org.jnario.runner.InstantiateWith;
 import org.jnario.runner.Named;
 import org.jnario.runner.Subject;
 import org.junit.runner.RunWith;
@@ -29,7 +29,7 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("StepNameProvider")
-@InstantiateWith(value = SpecTestInstantiator.class)
+@CreateWith(value = SpecTestCreator.class)
 public class StepNameProviderSpec {
   @Subject
   public StepNameProvider subject;

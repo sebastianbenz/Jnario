@@ -11,7 +11,7 @@ import org.eclipse.xtext.junit4.IInjectorProvider;
 import org.jnario.spec.SpecInjectorProvider;
 
 
-public class SpecTestInstantiator extends SpecificationInstantiator {
+public class SpecTestCreator extends JnarioTestCreator {
 	
 	private static ExtendedSpecInjectorProvider injectorProvider = new ExtendedSpecInjectorProvider();
 	

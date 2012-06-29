@@ -4,13 +4,13 @@ import org.jnario.suite.doc.SuiteDocGenerator
 import com.google.inject.Inject
 import org.jnario.jnario.test.util.ModelStore
 import org.eclipse.xtext.generator.InMemoryFileSystemAccess
-import org.jnario.runner.InstantiateWith
-import org.jnario.jnario.test.util.SuiteTestInstantiator
 import org.jnario.suite.suite.SuiteFile
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SuiteTestCreator
 
 import static junit.framework.Assert.*
 
-@InstantiateWith(typeof(SuiteTestInstantiator))
+@CreateWith(typeof(SuiteTestCreator))
 describe SuiteDocGenerator {
 	
 	@Inject extension ModelStore 

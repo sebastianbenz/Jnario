@@ -7,21 +7,22 @@
  *******************************************************************************/
 package org.jnario.spec.tests.unit.scoping
 
-import static org.junit.Assert.*
-
 import com.google.inject.Inject
-import org.jnario.jnario.test.util.SpecTestInstantiator
 import org.jnario.jnario.test.util.ModelStore
 import org.jnario.spec.spec.ExampleGroup
 import org.jnario.spec.spec.SpecPackage
 import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.naming.QualifiedName
-import org.jnario.runner.InstantiateWith
 import org.eclipse.emf.ecore.EObject
 import org.jnario.spec.scoping.SpecScopeProvider
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SpecTestCreator
+
+import static org.junit.Assert.*
+
 import static extension org.jnario.jnario.test.util.Query.*
 
-@InstantiateWith(typeof(SpecTestInstantiator))
+@CreateWith(typeof(SpecTestCreator))
 describe SpecScopeProvider {
 	
 	@Inject extension ModelStore modelStore

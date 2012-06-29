@@ -2,11 +2,11 @@ package org.jnario.spec.tests.unit.naming
 
 import com.google.inject.Inject
 import org.jnario.jnario.test.util.ModelStore
-import org.jnario.runner.InstantiateWith
-import org.jnario.jnario.test.util.SpecTestInstantiator
 import org.jnario.spec.naming.SpecQualifiedNameProvider
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SpecTestCreator
 
-@InstantiateWith(typeof(SpecTestInstantiator))
+@CreateWith(typeof(SpecTestCreator))
 describe SpecQualifiedNameProvider {
 
 	@Inject extension ModelStore

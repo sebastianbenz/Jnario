@@ -10,14 +10,14 @@ package org.jnario.jnario.tests.unit.jnario
 import com.google.inject.Inject
 import org.jnario.ExampleColumn
 import org.jnario.ExampleTable
-import org.jnario.runner.InstantiateWith
 import org.eclipse.xtext.serializer.ISerializer
+import org.jnario.jnario.test.util.ModelStore
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SpecTestCreator
 
 import static extension org.jnario.lib.ExampleTableIterators.*
-import org.jnario.jnario.test.util.SpecTestInstantiator
-import org.jnario.jnario.test.util.ModelStore
 
-@InstantiateWith(typeof(SpecTestInstantiator))
+@CreateWith(typeof(SpecTestCreator))
 describe ExampleColumn{
 	
 	@Inject extension ModelStore 

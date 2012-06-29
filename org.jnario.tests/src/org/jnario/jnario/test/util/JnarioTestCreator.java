@@ -2,26 +2,26 @@ package org.jnario.jnario.test.util;
 
 import org.eclipse.xtext.junit4.IInjectorProvider;
 import org.eclipse.xtext.junit4.IRegistryConfigurator;
-import org.jnario.runner.TestInstantiator;
+import org.jnario.lib.AbstractSpecCreator;
 
 import com.google.inject.Injector;
 
-public abstract class SpecificationInstantiator implements TestInstantiator{
+public abstract class JnarioTestCreator extends AbstractSpecCreator{
 
 	protected Injector injector;
 
-	public Object createTest(Class<?> klass) throws Exception {
+	public <T> T create(Class<T> klass){
 		return injector.getInstance(klass);
 	}
 
-	public void beforeTestRun() {
+	public void beforeSpecRun() {
 		injector = getInjectorProvider().getInjector();
 		if (getInjectorProvider() instanceof IRegistryConfigurator) {
 			((IRegistryConfigurator) getInjectorProvider()).setupRegistry();
 		}
 	}
 
-	public void afterTestRun() {
+	public void afterSpecRun() {
 		if (getInjectorProvider() instanceof IRegistryConfigurator) {
 			((IRegistryConfigurator) getInjectorProvider()).restoreRegistry();
 		}

@@ -3,10 +3,10 @@ package org.jnario.spec.tests.unit.naming;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.Query;
-import org.jnario.jnario.test.util.SpecTestInstantiator;
+import org.jnario.jnario.test.util.SpecTestCreator;
 import org.jnario.runner.Contains;
+import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.InstantiateWith;
 import org.jnario.runner.Named;
 import org.jnario.spec.spec.Example;
 import org.jnario.spec.tests.unit.naming.ExampleImplementationSpec;
@@ -18,7 +18,7 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("Example")
-@InstantiateWith(value = SpecTestInstantiator.class)
+@CreateWith(value = SpecTestCreator.class)
 public class ExampleSpec {
   public Example parse(final String content) {
     ModelStore _modelStore = new ModelStore();

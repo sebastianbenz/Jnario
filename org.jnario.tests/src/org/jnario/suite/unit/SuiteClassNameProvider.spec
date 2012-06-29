@@ -2,10 +2,10 @@ package org.jnario.suite.unit
 
 import org.jnario.suite.jvmmodel.SuiteClassNameProvider
 import org.jnario.suite.suite.SuiteFactory
-import org.jnario.runner.InstantiateWith
-import org.jnario.jnario.test.util.SuiteTestInstantiator
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SuiteTestCreator
 
-@InstantiateWith(typeof(SuiteTestInstantiator))
+@CreateWith(typeof(SuiteTestCreator))
 describe SuiteClassNameProvider {
 	
 	context getClassName{

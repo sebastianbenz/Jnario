@@ -31,15 +31,15 @@ describe "Spec Instantiation" {
   /*
    *  @filter('''|.executesSuccessfully)  
    */
-  fact "how to use a custom test instantiator"{
+  fact "how to use a custom spec creator"{
     '''
       package bootstrap
       
-      import org.jnario.runner.InstantiateWith
-      import org.jnario.jnario.test.util.GuiceBasedTestInstantiator
+      import org.jnario.runner.CreateWith
+      import org.jnario.jnario.test.util.GuiceSpecCreator
       import com.google.inject.Inject
       
-      @InstantiateWith(typeof(GuiceBasedTestInstantiator))
+      @CreateWith(typeof(GuiceSpecCreator))
       describe GuiceBasedTestInstantiator {
         
         @Inject String toInject

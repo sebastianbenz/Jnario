@@ -12,14 +12,14 @@ import java.util.Map
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.common.types.access.ClasspathTypeProviderFactory
-import org.jnario.jnario.test.util.SpecTestInstantiator
-import org.jnario.runner.InstantiateWith
 import org.jnario.spec.naming.OperationNameProvider
 import org.junit.Before
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SpecTestCreator
 
 import static extension org.jnario.lib.Should.*
 
-@InstantiateWith(typeof(SpecTestInstantiator))
+@CreateWith(typeof(SpecTestCreator))
 describe OperationNameProvider{
 	
 	@Inject OperationNameProvider subject

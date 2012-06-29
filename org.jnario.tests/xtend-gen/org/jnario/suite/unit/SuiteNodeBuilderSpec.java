@@ -8,11 +8,11 @@ import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.jnario.jnario.test.util.ModelStore;
-import org.jnario.jnario.test.util.SuiteTestInstantiator;
+import org.jnario.jnario.test.util.SuiteTestCreator;
 import org.jnario.runner.Contains;
+import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Extension;
-import org.jnario.runner.InstantiateWith;
 import org.jnario.runner.Named;
 import org.jnario.suite.suite.Suite;
 import org.jnario.suite.suite.SuiteFactory;
@@ -24,7 +24,7 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("SuiteNodeBuilder")
-@InstantiateWith(value = SuiteTestInstantiator.class)
+@CreateWith(value = SuiteTestCreator.class)
 public class SuiteNodeBuilderSpec {
   @Inject
   @Extension

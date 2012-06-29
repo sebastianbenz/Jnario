@@ -10,10 +10,10 @@ package org.jnario.jnario.tests.unit.jnario
 import com.google.inject.Inject
 import org.jnario.ExampleTable
 import org.jnario.jnario.test.util.ModelStore
-import org.jnario.jnario.test.util.SpecTestInstantiator
-import org.jnario.runner.InstantiateWith
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SpecTestCreator
 
-@InstantiateWith(typeof(SpecTestInstantiator))
+@CreateWith(typeof(SpecTestCreator))
 describe ExampleTable{
 
 	@Inject extension ModelStore 

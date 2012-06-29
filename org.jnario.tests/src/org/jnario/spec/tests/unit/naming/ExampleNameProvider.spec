@@ -7,21 +7,21 @@
  *******************************************************************************/
 package org.jnario.spec.tests.unit.naming
 
-import org.jnario.runner.InstantiateWith
 import org.jnario.spec.spec.ExampleGroup
-import org.jnario.jnario.test.util.SpecTestInstantiator
 import org.jnario.jnario.test.util.ModelStore
-import static org.hamcrest.CoreMatchers.*
-import static org.hamcrest.Matchers.*
-import static org.jnario.jnario.test.util.Query.*
-
 import org.jnario.spec.spec.Example
 import org.jnario.spec.spec.Before
 import org.jnario.spec.spec.After
 import org.jnario.spec.naming.ExampleNameProvider
 import org.jnario.ExampleTable
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SpecTestCreator
 
-@InstantiateWith(typeof(SpecTestInstantiator))
+import static org.hamcrest.CoreMatchers.*
+import static org.hamcrest.Matchers.*
+import static org.jnario.jnario.test.util.Query.*
+
+@CreateWith(typeof(SpecTestCreator))
 describe ExampleNameProvider{
  
   context toJavaClassName{ 

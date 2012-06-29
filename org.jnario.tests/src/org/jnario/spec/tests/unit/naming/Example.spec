@@ -10,9 +10,9 @@
 import org.eclipse.xtext.xbase.XBlockExpression
 import org.jnario.Should
 import org.jnario.jnario.test.util.ModelStore
-import org.jnario.jnario.test.util.SpecTestInstantiator
-import org.jnario.runner.InstantiateWith
 import org.jnario.spec.spec.Example
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SpecTestCreator
 
 import static org.hamcrest.CoreMatchers.*
 import static org.jnario.jnario.test.util.Query.*
@@ -20,7 +20,7 @@ import static org.jnario.jnario.test.util.Query.*
 import static extension org.jnario.lib.ExampleTableIterators.*
 import static extension org.jnario.lib.Should.*
 
-@InstantiateWith(typeof(SpecTestInstantiator))
+@CreateWith(typeof(SpecTestCreator))
 describe Example {
 	 
 	describe "name"{

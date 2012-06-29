@@ -1,16 +1,17 @@
 package org.jnario.standalone.tests
 
 import java.io.File
-import org.jnario.jnario.test.util.FeatureTestInstantiator
-import org.jnario.jnario.test.util.SpecTestInstantiator
-import org.jnario.runner.InstantiateWith
+import org.jnario.runner.CreateWith
 import org.junit.Rule
 import org.junit.rules.TemporaryFolder
 import com.google.inject.Inject
-import static org.jnario.lib.Should.*
 import org.hamcrest.Matcher
 import org.jnario.compiler.JnarioDocCompiler
-import org.jnario.jnario.test.util.SuiteTestInstantiator
+import org.jnario.jnario.test.util.SpecTestCreator
+import org.jnario.jnario.test.util.SuiteTestCreator
+import org.jnario.jnario.test.util.FeatureTestCreator
+
+import static org.jnario.lib.Should.*
 
 describe "JnarioDocCompiler"{
 	
@@ -25,17 +26,17 @@ describe "JnarioDocCompiler"{
         compiler.compile
 	}
 	
-	@InstantiateWith(typeof(FeatureTestInstantiator))
+	@CreateWith(typeof(FeatureTestCreator))
 	describe "FeatureDocCompiler"{
 		fact "test/ExamplesFeature.html" should be generated 
 	}
 	
-	@InstantiateWith(typeof(SpecTestInstantiator))
+	@CreateWith(typeof(SpecTestCreator))
 	describe "SpecDocCompiler"{
 		fact "test/SpecExampleSpec.html" should be generated 
 	}
 	
-	@InstantiateWith(typeof(SuiteTestInstantiator))
+	@CreateWith(typeof(SuiteTestCreator))
 	describe "SuiteDocCompiler"{
 		fact "test/ExampleSuite.html" should be generated 
 	}

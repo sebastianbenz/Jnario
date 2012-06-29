@@ -8,19 +8,19 @@
 package org.jnario.feature.tests.unit.naming
 
 import com.google.inject.Inject
-import org.jnario.runner.InstantiateWith
-
-import static org.jnario.jnario.test.util.Query.*
-import org.jnario.jnario.test.util.SpecTestInstantiator
 import org.jnario.feature.naming.StepNameProvider
 import org.jnario.jnario.test.util.ModelStore
 import org.jnario.feature.feature.Step
 import org.jnario.feature.feature.FeatureFactory
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SpecTestCreator
+
+import static org.jnario.jnario.test.util.Query.*
 
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
-@InstantiateWith(typeof(SpecTestInstantiator))
+@CreateWith(typeof(SpecTestCreator))
 describe StepNameProvider{
 
 	@Inject extension ModelStore modelStore

@@ -1,17 +1,18 @@
 package org.jnario.feature.tests.unit.linking
 
 import org.jnario.feature.jvmmodel.StepArgumentsProvider
-import org.jnario.runner.InstantiateWith
 import com.google.inject.Inject
-import org.jnario.jnario.test.util.FeatureTestInstantiator
-import org.jnario.feature.feature.Step 
+import org.jnario.feature.feature.Step
 import org.eclipse.xtext.linking.lazy.LazyLinkingResource
 import org.eclipse.xtext.util.StringInputStream
 import org.jnario.jnario.test.util.Query
 import java.io.InputStreamReader
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.FeatureTestCreator
+
 import static org.jnario.lib.JnarioCollectionLiterals.*
 
-@InstantiateWith(typeof(FeatureTestInstantiator))
+@CreateWith(typeof(FeatureTestCreator))
 describe StepArgumentsProvider {
 
 	@Inject LazyLinkingResource resource

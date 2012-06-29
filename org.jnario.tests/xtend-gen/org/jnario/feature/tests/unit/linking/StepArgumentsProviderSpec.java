@@ -16,14 +16,14 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.jvmmodel.StepArgumentsProvider;
 import org.jnario.feature.tests.unit.linking.StepArgumentsProviderSpecExamples;
-import org.jnario.jnario.test.util.FeatureTestInstantiator;
+import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.jnario.test.util.Query;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
+import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.InstantiateWith;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
@@ -35,7 +35,7 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("StepArgumentsProvider")
-@InstantiateWith(value = FeatureTestInstantiator.class)
+@CreateWith(value = FeatureTestCreator.class)
 public class StepArgumentsProviderSpec {
   @Subject
   public StepArgumentsProvider subject;

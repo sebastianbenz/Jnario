@@ -11,16 +11,16 @@ import com.google.inject.Inject
 import org.jnario.Assertion
 import org.jnario.ExampleRow
 import org.jnario.ExampleTable
-import org.jnario.runner.InstantiateWith
 import org.jnario.jnario.test.util.ModelStore
-import org.jnario.jnario.test.util.SpecTestInstantiator
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.junit4.validation.RegisteredValidatorTester
+import org.jnario.spec.validation.SpecJavaValidator
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SpecTestCreator
 
 import static org.jnario.jnario.test.util.Query.*
-import org.jnario.spec.validation.SpecJavaValidator
 
-@InstantiateWith(typeof(SpecTestInstantiator))
+@CreateWith(typeof(SpecTestCreator))
 describe SpecJavaValidator{
 
 	@Inject extension ModelStore modelStore

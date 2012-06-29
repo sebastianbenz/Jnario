@@ -9,13 +9,13 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.jnario.Specification;
 import org.jnario.jnario.test.util.ModelStore;
-import org.jnario.jnario.test.util.SuiteTestInstantiator;
+import org.jnario.jnario.test.util.SuiteTestCreator;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
 import org.jnario.runner.Contains;
+import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Extension;
-import org.jnario.runner.InstantiateWith;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
@@ -32,7 +32,7 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("SpecResolver")
-@InstantiateWith(value = SuiteTestInstantiator.class)
+@CreateWith(value = SuiteTestCreator.class)
 public class SpecResolverSpec {
   @Subject
   public SpecResolver subject;

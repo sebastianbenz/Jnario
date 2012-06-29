@@ -13,8 +13,8 @@ import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.hamcrest.Matcher;
 import org.jnario.lib.Should;
+import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.InstantiateWith;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
@@ -28,7 +28,7 @@ import org.mockito.verification.VerificationMode;
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("World")
-@InstantiateWith(value = MockitoInstantiator.class)
+@CreateWith(value = MockitoInstantiator.class)
 public class WorldSpec {
   @Subject
   public World subject;

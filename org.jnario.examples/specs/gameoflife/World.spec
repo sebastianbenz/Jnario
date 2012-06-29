@@ -7,7 +7,7 @@
  *******************************************************************************/
 package gameoflife
 
-import org.jnario.runner.InstantiateWith
+import org.jnario.runner.CreateWith
 import org.mockito.Matchers
 import org.mockito.Mock
 
@@ -18,7 +18,7 @@ import static org.mockito.Matchers.*
 import static org.mockito.Mockito.*
 import org.jnario.lib.Should
 
-@InstantiateWith(typeof(MockitoInstantiator))
+@CreateWith(typeof(MockitoInstantiator))
 describe World{
  
 	@Mock WorldVisitor worldVisitor
