@@ -8,7 +8,9 @@
 
 package org.jnario.lib;
 
-import java.util.Arrays;
+import static java.util.Arrays.asList;
+import static java.util.Collections.unmodifiableList;
+
 import java.util.Iterator;
 import java.util.List;
 
@@ -23,13 +25,9 @@ public class StepArguments implements Iterable<String>{
 	private final List<String> values;
 	
 	public StepArguments(String... values) {
-		this(Arrays.asList(values));
+		this.values = asList(values);
 	}
 	
-	public StepArguments(List<String> values) {
-		this.values = values;
-	}
-
 	/**
      * Returns the element at the specified position in the arguments.
      *
