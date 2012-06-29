@@ -17,8 +17,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.diagnostics.IDiagnosticConsumer;
 import org.eclipse.xtext.xbase.XConstructorCall;
 import org.eclipse.xtext.xbase.XExpression;
-import org.eclipse.xtext.xbase.XFeatureCall;
-import org.eclipse.xtext.xbase.XMemberFeatureCall;
 import org.eclipse.xtext.xbase.XStringLiteral;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.XbaseFactory;
@@ -85,31 +83,24 @@ public class FeatureLazyLinker extends JnarioLazyLinker {
 		if(arguments.isEmpty()){
 			return;
 		}
+		XVariableDeclaration stepValuesDec = createVariableForStepArguments(arguments);
 		EList<XExpression> expressions = step.getStepExpression().getBlockExpression().getExpressions();
-		XVariableDeclaration stepValuesDec = createVariableForStepArguments();
 		expressions.add(0, stepValuesDec);
-		for(int i = 0; i < arguments.size(); i++){
-			expressions.add(i + 1, createFeatureCall(arguments.get(i), stepValuesDec));
-		}
+		
 	}
 	
-	private XVariableDeclaration createVariableForStepArguments(){
+	private XVariableDeclaration createVariableForStepArguments(List<String> arguments){
 		XVariableDeclaration variableDec = XbaseFactory.eINSTANCE.createXVariableDeclaration();
 		variableDec.setName(FeatureJvmModelInferrer.STEP_VALUES);
 		XConstructorCall constructor = XbaseFactory.eINSTANCE.createXConstructorCall();
+		for (String arg : arguments) {
+			XStringLiteral stringLiteral = XbaseFactory.eINSTANCE.createXStringLiteral();
+			stringLiteral.setValue(arg);
+			constructor.getArguments().add(stringLiteral);
+		}
 		variableDec.setRight(constructor);
 		return variableDec;
 	}
 
-	private XMemberFeatureCall createFeatureCall(String value, XVariableDeclaration dec){
-		XFeatureCall featureCall = XbaseFactory.eINSTANCE.createXFeatureCall();
-		featureCall.setFeature(dec);
-		XStringLiteral stringLiteral = XbaseFactory.eINSTANCE.createXStringLiteral();
-		stringLiteral.setValue(value);
-		XMemberFeatureCall memberFeatureCall = XbaseFactory.eINSTANCE.createXMemberFeatureCall();		
-		memberFeatureCall.setMemberCallTarget(featureCall);
-		memberFeatureCall.getMemberCallArguments().add(stringLiteral);
-		return memberFeatureCall;
-	}
 
 }

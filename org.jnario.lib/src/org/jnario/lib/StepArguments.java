@@ -14,6 +14,8 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
+ * String arguments that are defined in a step definition.
+ * 
  * @author Birgit Engelmann - Initial contribution and API
  * @author Sebastian Benz
  */
@@ -23,6 +25,10 @@ public class StepArguments implements Iterable<String>{
 	
 	public StepArguments() {
 		this(new ArrayList<String>());
+	}
+	
+	public StepArguments(String... values) {
+		this(Arrays.asList(values));
 	}
 	
 	public StepArguments(List<String> values) {

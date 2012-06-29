@@ -13,12 +13,10 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendClass;
-import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
 import org.eclipse.xtext.common.types.JvmConstructor;
 import org.eclipse.xtext.common.types.JvmGenericType;
-import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.common.types.JvmMember;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
@@ -28,26 +26,26 @@ import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XConstructorCall;
 import org.eclipse.xtext.xbase.XExpression;
-import org.eclipse.xtext.xbase.XFeatureCall;
-import org.eclipse.xtext.xbase.XMemberFeatureCall;
 import org.eclipse.xtext.xbase.XStringLiteral;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
+import org.eclipse.xtext.xbase.XbaseFactory;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor.IPostIndexingInitializing;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeatureFile;
-import org.jnario.feature.feature.Given;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepExpression;
-import org.jnario.feature.feature.StepReference;
+import org.jnario.feature.feature.StepImplementation;
+import org.jnario.feature.feature.Then;
 import org.jnario.feature.jvmmodel.StepArgumentsProvider;
 import org.jnario.feature.jvmmodel.StepExpressionProvider;
 import org.jnario.feature.jvmmodel.StepReferenceFieldCreator;
@@ -263,67 +261,44 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   }
   
   public void generateStepValues(final Step step) {
-    TreeIterator<EObject> _eAllContents = step.eAllContents();
-    UnmodifiableIterator<XVariableDeclaration> decs = Iterators.<XVariableDeclaration>filter(_eAllContents, XVariableDeclaration.class);
     final List<String> arguments = this.stepArgumentsProvider.findStepArguments(step);
     boolean _isEmpty = arguments.isEmpty();
     if (_isEmpty) {
       return;
     }
-    final Procedure1<XVariableDeclaration> _function = new Procedure1<XVariableDeclaration>() {
-        public void apply(final XVariableDeclaration dec) {
-          String _name = dec.getName();
+    TreeIterator<EObject> _eAllContents = step.eAllContents();
+    UnmodifiableIterator<XVariableDeclaration> _filter = Iterators.<XVariableDeclaration>filter(_eAllContents, XVariableDeclaration.class);
+    final Function1<XVariableDeclaration,Boolean> _function = new Function1<XVariableDeclaration,Boolean>() {
+        public Boolean apply(final XVariableDeclaration it) {
+          String _name = it.getName();
           boolean _equals = Objects.equal(_name, FeatureJvmModelInferrer.STEP_VALUES);
-          if (_equals) {
-            boolean _not = (!(step instanceof StepReference));
-            if (_not) {
-              FeatureJvmModelInferrer.this.setStepValueType(dec, ((Step) step));
-            }
-            TreeIterator<EObject> _eAllContents = step.eAllContents();
-            UnmodifiableIterator<XMemberFeatureCall> calls = Iterators.<XMemberFeatureCall>filter(_eAllContents, XMemberFeatureCall.class);
-            int index = 0;
-            Iterable<XMemberFeatureCall> _iterable = IteratorExtensions.<XMemberFeatureCall>toIterable(calls);
-            for (final XMemberFeatureCall call : _iterable) {
-              boolean _and = false;
-              int _size = arguments.size();
-              boolean _greaterThan = (_size > index);
-              if (!_greaterThan) {
-                _and = false;
-              } else {
-                XExpression _memberCallTarget = call.getMemberCallTarget();
-                _and = (_greaterThan && (_memberCallTarget instanceof XFeatureCall));
-              }
-              if (_and) {
-                XExpression _memberCallTarget_1 = call.getMemberCallTarget();
-                XFeatureCall featureCall = ((XFeatureCall) _memberCallTarget_1);
-                boolean _and_1 = false;
-                JvmIdentifiableElement _feature = featureCall.getFeature();
-                boolean _equals_1 = Objects.equal(_feature, dec);
-                if (!_equals_1) {
-                  _and_1 = false;
-                } else {
-                  boolean _or = false;
-                  if ((step instanceof StepReference)) {
-                    _or = true;
-                  } else {
-                    JvmIdentifiableElement _feature_1 = call.getFeature();
-                    boolean _equals_2 = Objects.equal(_feature_1, null);
-                    _or = ((step instanceof StepReference) || _equals_2);
-                  }
-                  _and_1 = (_equals_1 && _or);
-                }
-                if (_and_1) {
-                  String _get = arguments.get(index);
-                  FeatureJvmModelInferrer.this.addStepValue(call, dec, step, _get);
-                  int _plus = (index + 1);
-                  index = _plus;
-                }
-              }
-            }
-          }
+          return Boolean.valueOf(_equals);
         }
       };
-    IteratorExtensions.<XVariableDeclaration>forEach(decs, _function);
+    Iterator<XVariableDeclaration> decs = IteratorExtensions.<XVariableDeclaration>filter(_filter, _function);
+    boolean _isEmpty_1 = IteratorExtensions.isEmpty(decs);
+    if (_isEmpty_1) {
+      return;
+    }
+    final XVariableDeclaration dec = IteratorExtensions.<XVariableDeclaration>head(decs);
+    this.setStepValueType(dec, ((Step) step));
+    if ((step instanceof StepImplementation)) {
+      return;
+    }
+    TreeIterator<EObject> _eAllContents_1 = step.eAllContents();
+    UnmodifiableIterator<XConstructorCall> calls = Iterators.<XConstructorCall>filter(_eAllContents_1, XConstructorCall.class);
+    final XConstructorCall argsConstructor = IteratorExtensions.<XConstructorCall>head(calls);
+    EList<XExpression> _arguments = argsConstructor.getArguments();
+    _arguments.clear();
+    final Procedure1<String> _function_1 = new Procedure1<String>() {
+        public void apply(final String it) {
+          final XStringLiteral arg = XbaseFactory.eINSTANCE.createXStringLiteral();
+          arg.setValue(it);
+          EList<XExpression> _arguments = argsConstructor.getArguments();
+          FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<XStringLiteral>operator_add(_arguments, arg);
+        }
+      };
+    IterableExtensions.<String>forEach(arguments, _function_1);
   }
   
   public void setStepValueType(final XVariableDeclaration variableDec, final Step step) {
@@ -338,34 +313,6 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     UnmodifiableIterator<JvmConstructor> _filter = Iterators.<JvmConstructor>filter(_iterator, JvmConstructor.class);
     JvmConstructor _next = _filter.next();
     constructor.setConstructor(_next);
-  }
-  
-  public void addStepValue(final XMemberFeatureCall featureCall, final XVariableDeclaration dec, final XtendMember step, final String arg) {
-    JvmTypeReference typeRef = this._typeReferences.getTypeForName(StepArguments.class, step);
-    JvmType _type = typeRef.getType();
-    JvmGenericType type = ((JvmGenericType) _type);
-    EList<JvmMember> _members = type.getMembers();
-    Iterator<JvmMember> _iterator = _members.iterator();
-    UnmodifiableIterator<JvmOperation> operations = Iterators.<JvmOperation>filter(_iterator, JvmOperation.class);
-    Iterable<JvmOperation> _iterable = IteratorExtensions.<JvmOperation>toIterable(operations);
-    for (final JvmOperation operation : _iterable) {
-      String _simpleName = operation.getSimpleName();
-      boolean _equals = Objects.equal(_simpleName, "add");
-      if (_equals) {
-        boolean _not = (!(step instanceof StepReference));
-        if (_not) {
-          featureCall.setFeature(operation);
-        } else {
-          EList<XExpression> _memberCallArguments = featureCall.getMemberCallArguments();
-          for (final XExpression ref : _memberCallArguments) {
-            {
-              final XStringLiteral argument = ((XStringLiteral) ref);
-              argument.setValue(arg);
-            }
-          }
-        }
-      }
-    }
   }
   
   public int generateBackgroundStepCalls(final Iterable<Step> steps, final JvmGenericType inferredJvmType) {
@@ -461,13 +408,12 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
             FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_1, _annotation);
             String name = FeatureJvmModelInferrer.this._stepNameProvider.describe(step);
             boolean _and = false;
-            boolean _not = (!(step instanceof Given));
-            if (!_not) {
+            if (!(step instanceof Then)) {
               _and = false;
             } else {
               StepExpression _expressionOf_1 = FeatureJvmModelInferrer.this._stepExpressionProvider.expressionOf(step);
               boolean _equals = Objects.equal(_expressionOf_1, null);
-              _and = (_not && _equals);
+              _and = ((step instanceof Then) && _equals);
             }
             if (_and) {
               String _plus = ("[PENDING] " + name);

@@ -45,6 +45,10 @@ import static extension com.google.common.base.Strings.*
 import static com.google.common.collect.Iterators.*
 import static org.eclipse.xtext.EcoreUtil2.*
 import static org.jnario.feature.jvmmodel.FeatureJvmModelInferrer.*
+import org.eclipse.xtext.xbase.XbaseFactory
+import org.jnario.feature.feature.Then
+import org.jnario.feature.feature.Step
+import org.jnario.feature.feature.StepImplementation
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -169,27 +173,24 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	}
 
    	def generateStepValues(Step step){
-		var decs = filter(step.eAllContents, typeof(XVariableDeclaration))
 		val arguments = stepArgumentsProvider.findStepArguments(step)
 		if(arguments.empty) return;
-		decs.forEach[dec | 
-			if(dec.name == STEP_VALUES){
-				if(!(step instanceof StepReference)){				
-					dec.setStepValueType(step as Step)
-				}
-				var calls = filter(step.eAllContents, typeof(XMemberFeatureCall))
-				var int index = 0
-				for(call: calls.toIterable){
-					if(arguments.size > index && call.memberCallTarget instanceof XFeatureCall){
-						var featureCall = call.memberCallTarget as XFeatureCall
-						if(featureCall.feature == dec && (step instanceof StepReference ||call.feature == null)){
-							addStepValue(call, dec, step, arguments.get(index))
-							index = index + 1
-						}
-					}
-				}
-			}	
-		]
+
+		var decs = filter(step.eAllContents, typeof(XVariableDeclaration)).filter[name == STEP_VALUES]
+		if(decs.empty) return;
+		val dec = decs.head
+		dec.setStepValueType(step as Step)
+		if(step instanceof StepImplementation){
+			return				
+		}
+		var calls = filter(step.eAllContents, typeof(XConstructorCall))
+		val argsConstructor = calls.head
+		argsConstructor.arguments.clear
+		arguments.forEach[
+			val arg = XbaseFactory::eINSTANCE.createXStringLiteral
+			arg.value = it
+			argsConstructor.arguments += arg
+		]			
    	}
 
    	def setStepValueType(XVariableDeclaration variableDec, Step step){
@@ -200,23 +201,6 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		constructor.constructor = filter(type.members.iterator, typeof(JvmConstructor)).next
 	}
 
-	def addStepValue(XMemberFeatureCall featureCall, XVariableDeclaration dec, XtendMember step, String arg){
-		var typeRef = getTypeForName(typeof(StepArguments), step)
-		var type = typeRef.type as JvmGenericType
-		var operations = filter(type.members.iterator, typeof(JvmOperation))
-		for(operation: operations.toIterable){
-			if(operation.simpleName == "add"){
-				if(!(step instanceof StepReference)){
-					featureCall.feature = operation				
-				}else{
-					for(ref: featureCall.memberCallArguments){
-						val argument = ref as XStringLiteral
-						argument.value = arg
-					}
-				}
-			}
-		}
-	}
 
    	def generateBackgroundStepCalls(Iterable<Step> steps, JvmGenericType inferredJvmType){
    		var order = 0
@@ -260,7 +244,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			annotations += step.toAnnotation(typeof(Order), order.intValue)
 			var name = step.describe
 			
-			if(!(step instanceof Given) && step.expressionOf== null){
+			if((step instanceof Then) && step.expressionOf== null){
 				name = "[PENDING] " + name
 				annotations += step.toAnnotation(typeof(Ignore))
 			}
