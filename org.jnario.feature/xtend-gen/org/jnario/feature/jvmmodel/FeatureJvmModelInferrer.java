@@ -222,9 +222,8 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
       JvmAnnotationReference _annotation = this._extendedJvmTypesBuilder.toAnnotation(feature, Contains.class, scenarios);
       this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(annotations, _annotation);
     }
-    String _name = feature.getName();
-    String _trim = _name==null?(String)null:_name.trim();
-    JvmAnnotationReference _annotation_1 = this._extendedJvmTypesBuilder.toAnnotation(feature, Named.class, _trim);
+    String _describe = this._stepNameProvider.describe(feature);
+    JvmAnnotationReference _annotation_1 = this._extendedJvmTypesBuilder.toAnnotation(feature, Named.class, _describe);
     this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(annotations, _annotation_1);
   }
   
@@ -240,9 +239,8 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     final EList<JvmAnnotationReference> annotations = inferredJvmType.getAnnotations();
     JvmAnnotationReference _featureRunner = this.annotationProvider.getFeatureRunner(scenario);
     this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(annotations, _featureRunner);
-    String _name = scenario.getName();
-    String _trim = _name==null?(String)null:_name.trim();
-    JvmAnnotationReference _annotation = this._extendedJvmTypesBuilder.toAnnotation(scenario, Named.class, _trim);
+    String _describe = this._stepNameProvider.describe(scenario);
+    JvmAnnotationReference _annotation = this._extendedJvmTypesBuilder.toAnnotation(scenario, Named.class, _describe);
     this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(annotations, _annotation);
     final Feature feature = this.feature(scenario);
     int start = 0;

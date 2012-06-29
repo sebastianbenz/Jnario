@@ -221,7 +221,7 @@ describeSecond(text) =&gt; 'and \\"more\\"'</pre>
 </p>
 </li><li><p  id="should_replace_line_breaks_and_leading_whitespace_with_a_single_space"><strong>should replace line breaks and leading whitespace with a single space</strong>
 <pre class="prettyprint lang-spec">
-val text = '''describe 'Example\n\t 2'''.toString
+val text = '''describe "Example\n\t 2"'''.toString
 describeFirst(text) =&gt; 'Example 2'</pre>
 </p>
 </li></ul>
@@ -231,7 +231,7 @@ describeFirst(text) =&gt; 'Example 2'</pre>
 <pre class="prettyprint lang-spec">
 describeFirst("'should do stuff' {true}") =&gt; "should do stuff"</pre>
 </p>
-</li><li><p  id="apppends___PENDING___to_pending_example_descriptions"><strong>apppends '[PENDING]' to pending example descriptions</strong>
+</li><li><p  id="appends___PENDING___to_pending_example_descriptions"><strong>appends '[PENDING]' to pending example descriptions</strong>
 <pre class="prettyprint lang-spec">
 describeFirst("'should do stuff'") =&gt; "should do stuff [PENDING]"
 describeFirst("'should do stuff'{}") =&gt; "should do stuff [PENDING]"</pre>

@@ -147,7 +147,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		annotations += feature.featureRunner
    		if(!scenarios.empty)
    			annotations += feature.toAnnotation(typeof(Contains), scenarios)
-   		annotations += feature.toAnnotation(typeof(Named), feature.name?.trim)
+   		annotations += feature.toAnnotation(typeof(Named), feature.describe)
    	}
    	
    	def dispatch void init(Scenario scenario, JvmGenericType inferredJvmType, List<JvmGenericType> scenarios){
@@ -156,7 +156,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		
    		val annotations = inferredJvmType.annotations
    		annotations += scenario.featureRunner
-   		annotations += scenario.toAnnotation(typeof(Named), scenario.name?.trim)
+   		annotations += scenario.toAnnotation(typeof(Named), scenario.describe)
 
    		val feature = scenario.feature
 		var start = 0

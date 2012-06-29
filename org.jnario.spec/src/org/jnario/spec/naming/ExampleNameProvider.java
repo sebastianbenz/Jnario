@@ -59,8 +59,6 @@ public class ExampleNameProvider {
 		return convertToJavaString(makeJunitConform(result));
 	}
 
-	
-	
 	public String describe(Example example){
 		StringBuilder sb = new StringBuilder();
 		if(example.getName() != null){

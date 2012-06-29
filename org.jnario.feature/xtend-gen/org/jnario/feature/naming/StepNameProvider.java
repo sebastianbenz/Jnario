@@ -4,7 +4,9 @@ import com.google.common.base.Objects;
 import java.util.regex.Matcher;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
+import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeaturePackage;
+import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepReference;
 import org.jnario.feature.jvmmodel.StepArgumentsProvider;
@@ -74,6 +76,18 @@ public class StepNameProvider {
     return org.eclipse.xtext.util.Strings.toFirstLower(_convertToCamelCase);
   }
   
+  public String describe(final Feature feature) {
+    String _name = feature.getName();
+    String _makeJunitConform = Strings.makeJunitConform(_name);
+    return _makeJunitConform;
+  }
+  
+  public String describe(final Scenario scenario) {
+    String _name = scenario.getName();
+    String _makeJunitConform = Strings.makeJunitConform(_name);
+    return _makeJunitConform;
+  }
+  
   public String describe(final Step step) {
     String name = this.nameOf(step);
     final int index = Strings.indexOfNewLine(name);
@@ -83,7 +97,7 @@ public class StepNameProvider {
       String _substring = name.substring(0, index);
       name = _substring;
     }
-    return name;
+    return Strings.makeJunitConform(name);
   }
   
   private String removeExtraCharacters(final String string) {

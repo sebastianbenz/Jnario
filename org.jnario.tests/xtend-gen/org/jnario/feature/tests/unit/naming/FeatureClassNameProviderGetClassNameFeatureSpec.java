@@ -4,6 +4,7 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.tests.unit.naming.FeatureClassNameProviderGetClassNameFeatureSpecExamples;
 import org.jnario.feature.tests.unit.naming.FeatureClassNameProviderSpec;
+import org.jnario.jnario.test.util.Features;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.Should;
@@ -40,7 +41,7 @@ public class FeatureClassNameProviderGetClassNameFeatureSpec extends FeatureClas
   public void examplesWork() throws Exception {
     final Procedure1<FeatureClassNameProviderGetClassNameFeatureSpecExamples> _function = new Procedure1<FeatureClassNameProviderGetClassNameFeatureSpecExamples>() {
         public void apply(final FeatureClassNameProviderGetClassNameFeatureSpecExamples it) {
-          Feature _feature = FeatureClassNameProviderGetClassNameFeatureSpec.this.feature(it.name);
+          Feature _feature = Features.feature(it.name);
           String _className = FeatureClassNameProviderGetClassNameFeatureSpec.this.className(_feature);
           boolean _doubleArrow = Should.operator_doubleArrow(_className, it.expectedClassName);
           Assert.assertTrue("\nExpected className(feature(name)) => expectedClassName but"

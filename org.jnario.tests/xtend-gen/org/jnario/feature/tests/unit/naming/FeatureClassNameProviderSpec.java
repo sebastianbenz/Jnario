@@ -1,14 +1,13 @@
 package org.jnario.feature.tests.unit.naming;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeatureFactory;
-import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.naming.FeatureClassNameProvider;
 import org.jnario.feature.tests.unit.naming.FeatureClassNameProviderGetClassNameBackgroundSpec;
 import org.jnario.feature.tests.unit.naming.FeatureClassNameProviderGetClassNameFeatureSpec;
+import org.jnario.jnario.test.util.Features;
 import org.jnario.runner.Contains;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
@@ -34,24 +33,8 @@ public class FeatureClassNameProviderSpec {
     final Background result = FeatureClassNameProviderSpec.factory.createBackground();
     String _plus = ("Background: " + backgroundName);
     result.setName(_plus);
-    final Feature feature = this.feature(featureName);
+    final Feature feature = Features.feature(featureName);
     feature.setBackground(result);
     return result;
-  }
-  
-  public Scenario scenario(final String name, final String featureName) {
-    final Scenario scenario = FeatureClassNameProviderSpec.factory.createScenario();
-    String _plus = ("Scenario: " + name);
-    scenario.setName(_plus);
-    final Feature feature = this.feature(featureName);
-    EList<Scenario> _scenarios = feature.getScenarios();
-    _scenarios.add(scenario);
-    return scenario;
-  }
-  
-  public Feature feature(final String name) {
-    final Feature feature = FeatureClassNameProviderSpec.factory.createFeature();
-    feature.setName(name);
-    return feature;
   }
 }

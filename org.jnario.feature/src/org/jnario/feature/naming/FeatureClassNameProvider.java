@@ -44,7 +44,7 @@ public class FeatureClassNameProvider {
 		}
 		throw new UnsupportedOperationException("Missing getClassName for " + obj.eClass().getName());
 	}
-
+	
 	public String getClassName(Feature feature){
 		String name = feature.getName();
 		if(isNullOrEmpty(name)){

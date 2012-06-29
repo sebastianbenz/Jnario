@@ -97,6 +97,21 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
     
   }
   
+  @Test
+  @Named("should replace line breaks and leading whitespace with a single space")
+  @Order(99)
+  public void shouldReplaceLineBreaksAndLeadingWhitespaceWithASingleSpace() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("describe \"Example\\n\\t 2\"");
+    final String text = _builder.toString();
+    String _describeFirst = this.describeFirst(text);
+    boolean _doubleArrow = Should.operator_doubleArrow(_describeFirst, "Example 2");
+    Assert.assertTrue("\nExpected describeFirst(text) => \'Example 2\' but"
+     + "\n     describeFirst(text) is " + "\"" + _describeFirst + "\""
+     + "\n     text is " + "\"" + text + "\"" + "\n", _doubleArrow);
+    
+  }
+  
   public String describeFirst(final String content) {
     String _plus = (content + "{}");
     Query _parse = this.parse(_plus);

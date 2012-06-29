@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
 package org.jnario.feature.tests.unit.naming
-
+import static org.jnario.jnario.test.util.Features.*
 import com.google.inject.Inject
 import org.jnario.feature.naming.StepNameProvider
 import org.jnario.jnario.test.util.ModelStore
@@ -16,6 +16,8 @@ import org.jnario.runner.CreateWith
 import org.jnario.jnario.test.util.SpecTestCreator
 
 import static org.jnario.jnario.test.util.Query.*
+import org.jnario.feature.feature.Feature
+import org.jnario.feature.feature.Scenario
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -112,6 +114,24 @@ describe StepNameProvider{
 				subject.removeKeywordsAndArguments(step) => result
 			]
 		}
+	}
+	
+	context ^describe(Feature){
+		fact feature(" With whitespace ").desc =>  "With whitespace"
+		fact feature("With (parentheses)").desc =>  "With [parentheses]"
+	} 
+	
+	context ^describe(Scenario){
+		fact scenario(" With whitespace ").desc =>  "With whitespace"
+		fact scenario("With (parentheses)").desc =>  "With [parentheses]"
+	} 
+	
+	def desc(Feature feature){
+		subject.^describe(feature)
+	}
+	
+	def desc(Scenario scen){
+		subject.^describe(scen)
 	}
 	
 	def step(){

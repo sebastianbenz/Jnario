@@ -167,4 +167,15 @@ public class Strings extends org.eclipse.xtext.util.Strings{
 		}
 		return begin;
 	}
+	
+	public static String makeJunitConform(StringBuilder result) {
+		return makeJunitConform(result.toString());
+	}
+	
+	public static String makeJunitConform(String result) {
+		if(result == null){
+			return "";
+		}
+		return result.trim().replaceAll("\\r?\\n\\s*", " ").replace("(", "[").replace(")", "]").replace("#", "-");
+	}
 }

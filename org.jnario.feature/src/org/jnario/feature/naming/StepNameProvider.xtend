@@ -16,6 +16,8 @@ import org.jnario.feature.feature.StepReference
 import static org.jnario.feature.naming.StepNameProvider.*
 import static org.jnario.util.Nodes.*
 import org.jnario.feature.jvmmodel.StepArgumentsProvider
+import org.jnario.feature.feature.Feature
+import org.jnario.feature.feature.Scenario
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -53,6 +55,14 @@ class StepNameProvider {
 		return toFirstLower(convertToCamelCase(originalName));
 	}
 	
+	def describe(Feature feature){
+		feature.name.makeJunitConform
+	}
+	
+	def describe(Scenario scenario){
+		scenario.name.makeJunitConform
+	}
+	
 	def describe(Step step){
 		var name = nameOf(step)
 		
@@ -60,9 +70,8 @@ class StepNameProvider {
 		if(index != -1){
 			name = name.substring(0, index)	
 		}
-		return name
+		return name.makeJunitConform
 	}
-	
 	
 	def private removeExtraCharacters(String string){
 		return string.trim.replace("\"", "\\\"").replaceAll(MULTILINE,"")

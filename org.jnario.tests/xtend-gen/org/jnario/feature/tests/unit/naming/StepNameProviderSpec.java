@@ -3,12 +3,15 @@ package org.jnario.feature.tests.unit.naming;
 import com.google.inject.Inject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeatureFactory;
 import org.jnario.feature.feature.Given;
 import org.jnario.feature.feature.GivenReference;
+import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.naming.StepNameProvider;
-import org.jnario.feature.tests.unit.naming.StepNameProviderDescribeStepSpec;
+import org.jnario.feature.tests.unit.naming.StepNameProviderDescribeFeatureSpec;
+import org.jnario.feature.tests.unit.naming.StepNameProviderDescribeScenarioSpec;
 import org.jnario.feature.tests.unit.naming.StepNameProviderNameOfStepSpec;
 import org.jnario.feature.tests.unit.naming.StepNameProviderRemoveKeywordsAndArgumentsStringSpec;
 import org.jnario.jnario.test.util.ModelStore;
@@ -25,7 +28,7 @@ import org.junit.runner.RunWith;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
-@Contains({ StepNameProviderNameOfStepSpec.class, StepNameProviderDescribeStepSpec.class, StepNameProviderRemoveKeywordsAndArgumentsStringSpec.class })
+@Contains({ StepNameProviderNameOfStepSpec.class, StepNameProviderDescribeFeatureSpec.class, StepNameProviderRemoveKeywordsAndArgumentsStringSpec.class, StepNameProviderDescribeFeatureSpec.class, StepNameProviderDescribeScenarioSpec.class })
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("StepNameProvider")
@@ -37,6 +40,16 @@ public class StepNameProviderSpec {
   @Inject
   @Extension
   public ModelStore modelStore;
+  
+  public String desc(final Feature feature) {
+    String _describe = this.subject.describe(feature);
+    return _describe;
+  }
+  
+  public String desc(final Scenario scen) {
+    String _describe = this.subject.describe(scen);
+    return _describe;
+  }
   
   public Step step() {
     Query _query = Query.query(this.modelStore);

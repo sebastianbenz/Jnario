@@ -81,7 +81,7 @@ parseScenario('''
 stepName =&gt; 'Given a step with two values "a" and "b"'</pre>
 </p>
 </li></ul>
-<h3 id="null">Describe[Step]</h3>
+<h3 id="null">Describe[Feature]</h3>
 <p></p>
 <ul><li><p  id="removes_multilines_parameters"><strong>removes multilines parameters</strong>
 <pre class="prettyprint lang-spec">
@@ -142,6 +142,20 @@ examples.forEach[
 	''')
 	subject.removeKeywordsAndArguments(step) =&gt; result
 ]</pre>
+</p>
+</li></ul>
+<h3 id="null">Describe[Feature]</h3>
+<p></p>
+<ul><li><p  id="feature___With_whitespace____desc______With_whitespace_"><strong>feature[" With whitespace "].desc =>  "With whitespace"</strong>
+</p>
+</li><li><p  id="feature__With__parentheses____desc______With__parentheses__"><strong>feature["With [parentheses]"].desc =>  "With [parentheses]"</strong>
+</p>
+</li></ul>
+<h3 id="null">Describe[Scenario]</h3>
+<p></p>
+<ul><li><p  id="scenario___With_whitespace____desc______With_whitespace_"><strong>scenario[" With whitespace "].desc =>  "With whitespace"</strong>
+</p>
+</li><li><p  id="scenario__With__parentheses____desc______With__parentheses__"><strong>scenario["With [parentheses]"].desc =>  "With [parentheses]"</strong>
 </p>
 </li></ul>
 				</div>

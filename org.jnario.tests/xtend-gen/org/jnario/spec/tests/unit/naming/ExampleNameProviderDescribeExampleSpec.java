@@ -32,9 +32,9 @@ public class ExampleNameProviderDescribeExampleSpec extends ExampleNameProviderS
   }
   
   @Test
-  @Named("apppends \\\'[PENDING]\\\' to pending example descriptions")
+  @Named("appends \\\'[PENDING]\\\' to pending example descriptions")
   @Order(99)
-  public void apppendsPENDINGToPendingExampleDescriptions() throws Exception {
+  public void appendsPENDINGToPendingExampleDescriptions() throws Exception {
     String _describeFirst = this.describeFirst("\'should do stuff\'");
     boolean _doubleArrow = Should.operator_doubleArrow(_describeFirst, "should do stuff [PENDING]");
     Assert.assertTrue("\nExpected describeFirst(\"\'should do stuff\'\") => \"should do stuff [PENDING]\" but"

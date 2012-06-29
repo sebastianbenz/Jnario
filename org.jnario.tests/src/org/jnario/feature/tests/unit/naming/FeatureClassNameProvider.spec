@@ -1,5 +1,5 @@
 package org.jnario.feature.tests.unit.naming
-
+import static org.jnario.jnario.test.util.Features.*
 import org.eclipse.emf.ecore.EObject
 import org.jnario.feature.feature.FeatureFactory
 import org.jnario.feature.naming.FeatureClassNameProvider
@@ -57,18 +57,6 @@ describe FeatureClassNameProvider {
 		return result
 	}
 	
-	def scenario(String name, String featureName){
-		val scenario = factory.createScenario
-		scenario.name = "Scenario: " + name
-		val feature = feature(featureName)
-		feature.scenarios += scenario
-		return scenario
-	}
 	
-	def feature(String name){
-		val feature = factory.createFeature
-		feature.name = name
-		return feature
-	}
 
 }
