@@ -97,7 +97,7 @@
 				<executions>
 					<execution>
 						<id>attach-artifacts</id>
-						<phase>package</phase>
+						<phase>install</phase>
 						<goals>
 							<goal>attach-artifact</goal>
 						</goals>
