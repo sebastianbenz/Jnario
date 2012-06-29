@@ -219,6 +219,11 @@ val text = '''describe 'Example'{
            }'''.toString
 describeSecond(text) =&gt; 'and \\"more\\"'</pre>
 </p>
+</li><li><p  id="should_replace_line_breaks_and_leading_whitespace_with_a_single_space"><strong>should replace line breaks and leading whitespace with a single space</strong>
+<pre class="prettyprint lang-spec">
+val text = '''describe 'Example\n\t 2'''.toString
+describeFirst(text) =&gt; 'Example 2'</pre>
+</p>
 </li></ul>
 <h3 id="null">Describe[Example]</h3>
 <p></p>

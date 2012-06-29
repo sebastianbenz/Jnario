@@ -7,23 +7,24 @@
  *******************************************************************************/
 package org.jnario.spec.tests.unit.naming
 
-import org.jnario.spec.spec.ExampleGroup
-import org.jnario.jnario.test.util.ModelStore
-import org.jnario.spec.spec.Example
-import org.jnario.spec.spec.Before
-import org.jnario.spec.spec.After
-import org.jnario.spec.naming.ExampleNameProvider
 import org.jnario.ExampleTable
-import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.ModelStore
 import org.jnario.jnario.test.util.SpecTestCreator
+import org.jnario.runner.CreateWith
+import org.jnario.spec.naming.ExampleNameProvider
+import org.jnario.spec.spec.After
+import org.jnario.spec.spec.Before
+import org.jnario.spec.spec.Example
+import org.jnario.spec.spec.ExampleGroup
 
-import static org.hamcrest.CoreMatchers.*
 import static org.hamcrest.Matchers.*
 import static org.jnario.jnario.test.util.Query.*
 
+import static extension org.jnario.lib.Should.*
+
 @CreateWith(typeof(SpecTestCreator))
 describe ExampleNameProvider{
- 
+
   context toJavaClassName{ 
     
     fact "should remove all white spaces from ExampleGroup's description"{
@@ -247,6 +248,11 @@ describe ExampleNameProvider{
       describeSecond(text) => 'and \\"more\\"'
     }
     
+     fact "should replace line breaks and leading whitespace with a single space"{
+      val text = '''describe "Example\n\t 2"'''.toString
+      describeFirst(text) => 'Example 2'
+    }
+    
     def describeFirst(String content){
       subject.^describe(parse(content + "{}").first(typeof(ExampleGroup)))
     }
@@ -262,7 +268,7 @@ describe ExampleNameProvider{
       describeFirst("'should do stuff' {true}") => "should do stuff"
     }
     
-    fact "apppends '[PENDING]' to pending example descriptions"{
+    fact "appends '[PENDING]' to pending example descriptions"{
       describeFirst("'should do stuff'") => "should do stuff [PENDING]"
       describeFirst("'should do stuff'{}") => "should do stuff [PENDING]"
     }

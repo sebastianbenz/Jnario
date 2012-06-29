@@ -6,13 +6,13 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
 package org.jnario.spec.naming;
-
 import static java.lang.Character.isDigit;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 import static org.eclipse.xtext.util.Strings.convertToJavaString;
 import static org.eclipse.xtext.util.Strings.toFirstLower;
 import static org.eclipse.xtext.util.Strings.toFirstUpper;
 import static org.jnario.util.Strings.convertToCamelCase;
+import static org.jnario.util.Strings.makeJunitConform;
 
 import java.util.List;
 
@@ -59,9 +59,7 @@ public class ExampleNameProvider {
 		return convertToJavaString(makeJunitConform(result));
 	}
 
-	protected String makeJunitConform(StringBuilder result) {
-		return result.toString().replace("(", "[").replace(")", "]").replace("#", "-").trim();
-	}
+	
 	
 	public String describe(Example example){
 		StringBuilder sb = new StringBuilder();
