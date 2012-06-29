@@ -14,6 +14,7 @@ import static com.google.common.collect.Lists.newArrayList;
 import static com.google.common.collect.Lists.newArrayListWithExpectedSize;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
+import static org.eclipse.xtext.xbase.lib.Exceptions.sneakyThrow;
 
 import java.lang.annotation.Annotation;
 import java.util.Collections;
@@ -112,8 +113,7 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 	}
 
 	protected Iterable<? extends Runner> collectExamples() {
-		List<FrameworkMethod> methods = getTestClass().getAnnotatedMethods(
-				Test.class);
+		List<FrameworkMethod> methods = getTestClass().getAnnotatedMethods(Test.class);
 		methods = newArrayList(Iterables.filter(methods, isTestMethod()));
 		orderMethods(methods);
 		return createRunners(getTestClass().getJavaClass(), methods);
@@ -127,15 +127,15 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 			final Class<?> testClass, List<FrameworkMethod> annotatedMethods) {
 		return transform(annotatedMethods,
 				new Function<FrameworkMethod, Runner>() {
-
 					public Runner apply(FrameworkMethod from) {
 						try {
 							return createExampleRunner(testClass, from);
 						} catch (InitializationError e) {
-							Exceptions.sneakyThrow(e);
+							sneakyThrow(e);
 							return null; // not reachable
 						} catch (NoTestsRemainException e) {
-							throw new Error(e); // should not happen
+							Exceptions.sneakyThrow(e);
+							return null; // not reachable
 						}
 					}
 				});

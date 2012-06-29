@@ -78,13 +78,9 @@ public class ExampleRunner extends BlockJUnit4ClassRunner {
 
 	@Override
 	protected Object createTest() throws Exception {
-		Object test = newInstanceOf(getTestClass().getJavaClass());
+		Object test = testBuilder.createSpec(getTestClass().getJavaClass());
 		initializeSubjects(getTestClass(), test);
 		return test;
-	}
-
-	protected Object newInstanceOf(Class<?> testClass) throws Exception {
-		return testBuilder.createSpec(testClass);
 	}
 
 	protected void initializeSubjects(TestClass testClass, Object test)
@@ -92,7 +88,7 @@ public class ExampleRunner extends BlockJUnit4ClassRunner {
 		for (FrameworkField subjectField : testClass
 				.getAnnotatedFields(Subject.class)) {
 			try {
-				Object value = newInstanceOf(subjectField.getField().getType());
+				Object value = testBuilder.createSubject(subjectField.getField().getType());
 				subjectField.getField().set(test, value);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -195,5 +191,4 @@ public class ExampleRunner extends BlockJUnit4ClassRunner {
 			}
 		};
 	}
-
 }

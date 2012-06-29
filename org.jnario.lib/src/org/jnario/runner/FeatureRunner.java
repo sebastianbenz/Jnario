@@ -7,79 +7,96 @@
  *******************************************************************************/
 package org.jnario.runner;
 
+import java.util.List;
+
+import org.junit.Rule;
+import org.junit.internal.runners.model.EachTestNotifier;
+import org.junit.rules.RunRules;
+import org.junit.rules.TestRule;
 import org.junit.runner.Runner;
 import org.junit.runner.manipulation.NoTestsRemainException;
+import org.junit.runner.notification.RunNotifier;
+import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
+import org.junit.runners.model.Statement;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 
 /**
- * A spec {@link Runner} for Jnario features. It makes 
+ * A spec {@link Runner} for Jnario features. It does not reset the scenario's
+ * state between the execution of each step.
  * 
  * @author Birgit Engelmann - Initial contribution and API
+ * @author Sebastian Benz - Added support for {@link Rule}s.
  */
+@SuppressWarnings("restriction")
 public class FeatureRunner extends ExampleGroupRunner {
 
-	private final class RunnerWrapper implements SpecCreator {
+	private Object scenario;
 
-		private SpecCreator instantiator;
-		private Object test;
-
-		public RunnerWrapper(SpecCreator instantiator){
-			this.instantiator = instantiator;
-		}
-
-		public <T> T createSpec(Class<T> klass){
-			if(test == null){
-				test = instantiator.createSpec(klass);
-			}
-			return klass.cast(test);
-		}
-		
-		public <T> T createSubject(Class<T> klass) {
-			return instantiator.createSubject(klass);
-		}
-
-		public void beforeSpecRun() {
-			instantiator.beforeSpecRun();
-		}
-
-		public void afterSpecRun() {
-			instantiator.afterSpecRun();
-		}
-	}
-
-	private SpecCreator delegate;
-
-	public FeatureRunner(Class<?> klass, NameProvider nameProvider) throws InitializationError {
+	public FeatureRunner(Class<?> klass, NameProvider nameProvider)
+			throws InitializationError {
 		super(klass, nameProvider);
 	}
-	
+
 	public FeatureRunner(Class<?> klass) throws InitializationError {
 		super(klass);
 	}
-	
+
 	@Override
 	protected Predicate<FrameworkMethod> isTestMethod() {
 		return Predicates.alwaysTrue();
 	}
-	
+
 	@Override
 	protected ExampleRunner createExampleRunner(Class<?> testClass,
 			FrameworkMethod from) throws InitializationError,
 			NoTestsRemainException {
-		if(delegate == null){
-			createTestWrapper();
+		if(scenario == null){
+			scenario = createTestInstantiator().createSpec(targetClass());
 		}
-		return new ExampleRunner(testClass, from, getNameProvider(), delegate);
+		return new StepRunner(testClass, from, getNameProvider(), scenario);
 	}
 	
+	@Override
+	public void run(final RunNotifier notifier) {
+		EachTestNotifier testNotifier= new EachTestNotifier(notifier,
+				getDescription());
+		Statement executeChild = new Statement() {
+			
+			@Override
+			public void evaluate() throws Throwable {
+				FeatureRunner.super.run(notifier);
+			}
+		};
+		try {
+			withRules(scenario, executeChild).evaluate();
+		} catch (Throwable e) {
+			testNotifier.addFailure(e);
+		}
+	}
+
 	
-	private void createTestWrapper() throws InitializationError{
-		SpecCreator createTestInstantiator = createTestInstantiator();
-		delegate = new RunnerWrapper(createTestInstantiator);
+	/**
+	 * copied from {@link BlockJUnit4ClassRunner}.
+	 */
+	private Statement withRules(Object target, Statement statement) {
+		Statement result= statement;
+		result= withTestRules(target, result);
+		return result;
 	}
 	
+	private Statement withTestRules(Object target,
+			Statement statement) {
+		List<TestRule> testRules= getTestRules(target);
+		return testRules.isEmpty() ? statement :
+			new RunRules(statement, testRules, getDescription());
+	}
+
+	protected List<TestRule> getTestRules(Object target) {
+		return getTestClass().getAnnotatedFieldValues(target,
+				Rule.class, TestRule.class);
+	}
 }
