@@ -15,7 +15,6 @@ import static org.junit.Assert.assertThat;
 import java.net.MalformedURLException;
 
 import org.eclipse.emf.ecore.EObject;
-import org.jnario.feature.FeatureInjectorProvider;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeatureFile;
 import org.jnario.feature.naming.FeatureClassNameProvider;

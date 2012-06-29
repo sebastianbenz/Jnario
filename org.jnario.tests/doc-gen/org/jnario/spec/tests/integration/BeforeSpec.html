@@ -32,26 +32,26 @@
 <ul><li><p  id="should_be_executed_before_each_test"><strong>should be executed before each test</strong>
 <pre class="prettyprint lang-spec">
 val spec = '
-	package bootstrap
-	 
-	import org.jnario.runner.Order
-	
-	describe "Before"{
-		
-		static int beforeExecutionCount = 0
-		
-		before{
-			beforeExecutionCount = beforeExecutionCount + 1
-		}
+  package bootstrap
+   
+  import org.jnario.runner.Order
+  
+  describe "Before"{
+    
+    static int beforeExecutionCount = 0
+    
+    before{
+      beforeExecutionCount = beforeExecutionCount + 1
+    }
 
-		fact "should be executed before each test (1)"{
-			beforeExecutionCount should be 1
-		}	
+    fact "should be executed before each test (1)"{
+      beforeExecutionCount should be 1
+    }  
 
-		fact "should be executed before each test (2)"{
-			beforeExecutionCount should be 2
-		}	
-	}
+    fact "should be executed before each test (2)"{
+      beforeExecutionCount should be 2
+    }  
+  }
 '
 spec.executesSuccessfully</pre>
 </p>

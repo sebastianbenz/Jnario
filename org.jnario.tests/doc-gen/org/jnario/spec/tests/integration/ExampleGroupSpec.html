@@ -32,82 +32,82 @@
 <ul><li><p  id="should_resolve_target_class"><strong>should resolve target class</strong>
 <pre class="prettyprint lang-spec">
 val spec = '
-	package bootstrap
-	
-	import static org.junit.Assert.*
-	import org.junit.Assert
-	
-	describe Assert {
-	
-		fact "should resolve target class"{
-		}  
-				
-	}
+  package bootstrap
+  
+  import static org.junit.Assert.*
+  import org.junit.Assert
+  
+  describe Assert {
+  
+    fact "should resolve target class"{
+    }  
+        
+  }
 '
 assertThat(execute(spec), successful)</pre>
 </p>
 </li><li><p  id="should_be_able_to_declare_helper_methods"><strong>should be able to declare helper methods</strong>
 <pre class="prettyprint lang-spec">
 val spec = '
-	package bootstrap
+  package bootstrap
 
-	describe "ExampleGroup" {
-	
-		int i = 0
-	
-		fact "should be able to declare void helper methods"{
-			inc()
-			i =&gt; 1
-		}
-		
-		def void inc(){
-			i = i + 1 
-		}  
-		
-		fact "should be able to declare helper methods with parameter and return type"{
-			inc2(i) =&gt; 1 
-		}
-		
-		fact "should be able to use helper methods as extensions"{
-			i.inc2 =&gt; 1 
-		}
-		  
-		def int inc2(int value){
-			value + 1 
-		}
-		
-		fact "should be able to declare helper methods with inferred return type"{
-			// will not compile otherwise
-		}
-		
-		def int inc3(){
-			5
-		}
-		
-		fact "should automatically rethrow all exceptions"{
-			// will not compile otherwise
-		}
-		  
-		def inc4(){
-			throw new java.io.IOException()
-		}
-	
-		describe "Nested Examples"{
-			
-			fact "should support extensions methods from parent example group"{
-				i.inc2 =&gt; 1 
-			}
-			
-			fact "should support extension methods from nested example group"{
-				i.inc5 =&gt; 1 
-			}
-			
-			def inc5(int value){
-				value + 1 
-			}
-		}
-	   
-	} 
+  describe "ExampleGroup" {
+  
+    int i = 0
+  
+    fact "should be able to declare void helper methods"{
+      inc()
+      i =&gt; 1
+    }
+    
+    def void inc(){
+      i = i + 1 
+    }  
+    
+    fact "should be able to declare helper methods with parameter and return type"{
+      inc2(i) =&gt; 1 
+    }
+    
+    fact "should be able to use helper methods as extensions"{
+      i.inc2 =&gt; 1 
+    }
+      
+    def int inc2(int value){
+      value + 1 
+    }
+    
+    fact "should be able to declare helper methods with inferred return type"{
+      // will not compile otherwise
+    }
+    
+    def int inc3(){
+      5
+    }
+    
+    fact "should automatically rethrow all exceptions"{
+      // will not compile otherwise
+    }
+      
+    def inc4(){
+      throw new java.io.IOException()
+    }
+  
+    describe "Nested Examples"{
+      
+      fact "should support extensions methods from parent example group"{
+        i.inc2 =&gt; 1 
+      }
+      
+      fact "should support extension methods from nested example group"{
+        i.inc5 =&gt; 1 
+      }
+      
+      def inc5(int value){
+        value + 1 
+      }
+    }
+     
+  } 
 '
 assertThat(execute(spec), successful)</pre>
 </p>

@@ -31,112 +31,112 @@
 <ul><li><p  id="Splits_feature"><strong>Splits feature</strong>
 <pre class="prettyprint lang-spec">
 setInput('''
-	Feature: example
-	''')
+  Feature: example
+  ''')
 assertSplitsIn(
-	token(RULE_FEATURE_TEXT,  "Feature: example\n", 1)
+  token(RULE_FEATURE_TEXT,  "Feature: example\n", 1)
 )</pre>
 </p>
 </li><li><p  id="Splits_incomplete_feature"><strong>Splits incomplete feature</strong>
 <pre class="prettyprint lang-spec">
 setInput('''
-	Feature: example''')
+  Feature: example''')
 assertSplitsIn(
-	token(RULE_FEATURE_TEXT,  "Feature: example", 1)
+  token(RULE_FEATURE_TEXT,  "Feature: example", 1)
 )</pre>
 </p>
 </li><li><p  id="Splits_incomplete_feature_with_text"><strong>Splits incomplete feature with text</strong>
 <pre class="prettyprint lang-spec">
 setInput('''
-	Feature: example
-	 some text''')
+  Feature: example
+   some text''')
 assertSplitsIn(
-	token(RULE_FEATURE_TEXT,  "Feature: example\n", 1),
-	token(RULE_TEXT,  " some text", 2)
+  token(RULE_FEATURE_TEXT,  "Feature: example\n", 1),
+  token(RULE_TEXT,  " some text", 2)
 )</pre>
 </p>
 </li><li><p  id="Splits_incomplete_feature_with_text_and_new_line"><strong>Splits incomplete feature with text and new line</strong>
 <pre class="prettyprint lang-spec">
 setInput('''
-	Feature: example
-	some text
-	''')
+  Feature: example
+  some text
+  ''')
 assertSplitsIn(
-	token(RULE_FEATURE_TEXT,  "Feature: example\n", 1),
-	token(RULE_TEXT,  "some text\n", 2)
+  token(RULE_FEATURE_TEXT,  "Feature: example\n", 1),
+  token(RULE_TEXT,  "some text\n", 2)
 )</pre>
 </p>
 </li><li><p  id="Splits_feature_with_text_and_scenario"><strong>Splits feature with text and scenario</strong>
 <pre class="prettyprint lang-spec">
 setInput('''
-	Feature: example
-	  Text1
-	  Text2
-	Scenario: scenario1
-	''')
+  Feature: example
+    Text1
+    Text2
+  Scenario: scenario1
+  ''')
 assertSplitsIn(
-	token(RULE_FEATURE_TEXT,  "Feature: example\n", 1),
-	token(RULE_TEXT,  "  Text1\n  Text2\n", 2),
-	token(RULE_SCENARIO_TEXT,  "Scenario: scenario1\n", 4)
+  token(RULE_FEATURE_TEXT,  "Feature: example\n", 1),
+  token(RULE_TEXT,  "  Text1\n  Text2\n", 2),
+  token(RULE_SCENARIO_TEXT,  "Scenario: scenario1\n", 4)
 )</pre>
 </p>
 </li><li><p  id="splits_feature_with_text_and_background"><strong>splits feature with text and background</strong>
 <pre class="prettyprint lang-spec">
 setInput('''
-	Feature: example
-	  Text1
-	  Text2
-	  Background: scenario1
-	''')
+  Feature: example
+    Text1
+    Text2
+    Background: scenario1
+  ''')
 assertSplitsIn(
-	token(RULE_FEATURE_TEXT,  "Feature: example\n", 1),
-	token(RULE_TEXT,  "  Text1\n  Text2\n  ", 2),
-	token(RULE_BACKGROUND_TEXT,  "Background: scenario1\n", 4)
+  token(RULE_FEATURE_TEXT,  "Feature: example\n", 1),
+  token(RULE_TEXT,  "  Text1\n  Text2\n  ", 2),
+  token(RULE_BACKGROUND_TEXT,  "Background: scenario1\n", 4)
 )</pre>
 </p>
 </li><li><p  id="splits_feature_with_text"><strong>splits feature with text</strong>
 <pre class="prettyprint lang-spec">
 setInput('''
-	Feature: example
-	  Text1
-	  Text2
-	''')
+  Feature: example
+    Text1
+    Text2
+  ''')
 assertSplitsIn(
-	token(RULE_FEATURE_TEXT,  "Feature: example\n", 1),
-	token(RULE_TEXT,  "  Text1\n  Text2\n", 2)
+  token(RULE_FEATURE_TEXT,  "Feature: example\n", 1),
+  token(RULE_TEXT,  "  Text1\n  Text2\n", 2)
 )</pre>
 </p>
 </li><li><p  id="splits_feature_with_scenario"><strong>splits feature with scenario</strong>
 <pre class="prettyprint lang-spec">
 setInput('''
-	Feature: example
-	Scenario: scenario1''')
+  Feature: example
+  Scenario: scenario1''')
 assertSplitsIn(
-	token(RULE_FEATURE_TEXT,  "Feature: example\n", 1),
-	token(RULE_SCENARIO_TEXT,  "Scenario: scenario1", 2)
+  token(RULE_FEATURE_TEXT,  "Feature: example\n", 1),
+  token(RULE_SCENARIO_TEXT,  "Scenario: scenario1", 2)
 )</pre>
 </p>
 </li><li><p  id="splits_feature_with_scenario_and_line_break"><strong>splits feature with scenario and line break</strong>
 <pre class="prettyprint lang-spec">
 setInput('''
-	Feature: example
-	Scenario: scenario1
-	''')
+  Feature: example
+  Scenario: scenario1
+  ''')
 assertSplitsIn(
-	token(RULE_FEATURE_TEXT,  "Feature: example\n", 1),
-	token(RULE_SCENARIO_TEXT,  "Scenario: scenario1\n", 2)
+  token(RULE_FEATURE_TEXT,  "Feature: example\n", 1),
+  token(RULE_SCENARIO_TEXT,  "Scenario: scenario1\n", 2)
 )</pre>
 </p>
 </li><li><p  id="splits_feature_with_background"><strong>splits feature with background</strong>
 <pre class="prettyprint lang-spec">
 setInput('''
-	Feature: example
-	 Background:
-	''')
+  Feature: example
+   Background:
+  ''')
 assertSplitsIn(
-	token(RULE_FEATURE_TEXT,  "Feature: example\n", 1),
-	token(RULE_TEXT,  " ", 2),
-	token(RULE_BACKGROUND_TEXT,  "Background:\n", 2)
+  token(RULE_FEATURE_TEXT,  "Feature: example\n", 1),
+  token(RULE_TEXT,  " ", 2),
+  token(RULE_BACKGROUND_TEXT,  "Background:\n", 2)
 )</pre>
 </p>
 </li></ul>

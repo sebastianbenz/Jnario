@@ -32,80 +32,80 @@
 <ul><li><p  id="should_support_class_annotations_for__describe_"><strong>should support class annotations for 'describe'</strong>
 <pre class="prettyprint lang-spec">
 val spec = '
-	package bootstrap
-	import static org.hamcrest.CoreMatchers.*			
-	import com.google.inject.Singleton
+  package bootstrap
+  import static org.hamcrest.CoreMatchers.*      
+  import com.google.inject.Singleton
 
-	@Singleton			
-	describe "Annotations" {
-	
-	fact "should support class annotations for describe"{
-			val annotation = typeof(AnnotationsSpec).getAnnotation(typeof(Singleton))
-			annotation should not be null
-		} 
-				
-	}
+  @Singleton      
+  describe "Annotations" {
+  
+  fact "should support class annotations for describe"{
+      val annotation = typeof(AnnotationsSpec).getAnnotation(typeof(Singleton))
+      annotation should not be null
+    } 
+        
+  }
 '
 spec.executesSuccessfully</pre>
 </p>
 </li><li><p  id="should_support_method_annotations_for__examples_"><strong>should support method annotations for 'examples'</strong>
 <pre class="prettyprint lang-spec">
 val spec = '
-	package bootstrap
-	
-	import com.google.inject.Inject
-	import static org.hamcrest.CoreMatchers.*
+  package bootstrap
+  
+  import com.google.inject.Inject
+  import static org.hamcrest.CoreMatchers.*
 
-	describe "Annotations" {
-	
-		@Inject			
-		fact "example"{
-			val annotation = typeof(AnnotationsSpec).getMethod("example").getAnnotation(typeof(Inject))
-			annotation should not be null
-		} 
-				
-	}
+  describe "Annotations" {
+  
+    @Inject      
+    fact "example"{
+      val annotation = typeof(AnnotationsSpec).getMethod("example").getAnnotation(typeof(Inject))
+      annotation should not be null
+    } 
+        
+  }
 '
 spec.executesSuccessfully</pre>
 </p>
 </li><li><p  id="should_support_method_annotations_for__contexts_"><strong>should support method annotations for 'contexts'</strong>
 <pre class="prettyprint lang-spec">
 val spec = '
-	package bootstrap
-	
-	import com.google.inject.Singleton
-	
-	describe "Annotations" {
-	
-		@Singleton
-		context "Context"{
-			fact "example"{
-				assert typeof(AnnotationsContextSpec).isAnnotationPresent(typeof(Singleton))
-			} 
-		}			
-	}
+  package bootstrap
+  
+  import com.google.inject.Singleton
+  
+  describe "Annotations" {
+  
+    @Singleton
+    context "Context"{
+      fact "example"{
+        assert typeof(AnnotationsContextSpec).isAnnotationPresent(typeof(Singleton))
+      } 
+    }      
+  }
 '
 spec.executesSuccessfully</pre>
 </p>
 </li><li><p  id="should_support_annotations_for__fields_"><strong>should support annotations for 'fields'</strong>
 <pre class="prettyprint lang-spec">
 val spec = '
-	package bootstrap
-	
-	import com.google.inject.Inject
-	import static org.hamcrest.CoreMatchers.*
-	
-	describe "Annotations" {
-	
-		@Inject		
-		String myField
-			
-		fact "example"{
-			val annotation = typeof(AnnotationsSpec).getDeclaredField("myField").getAnnotation(typeof(Inject))
-			annotation should not be null
-		} 
-				
-	}
+  package bootstrap
+  
+  import com.google.inject.Inject
+  import static org.hamcrest.CoreMatchers.*
+  
+  describe "Annotations" {
+  
+    @Inject    
+    String myField
+      
+    fact "example"{
+      val annotation = typeof(AnnotationsSpec).getDeclaredField("myField").getAnnotation(typeof(Inject))
+      annotation should not be null
+    } 
+        
+  }
 '
 spec.executesSuccessfully</pre>
 </p>

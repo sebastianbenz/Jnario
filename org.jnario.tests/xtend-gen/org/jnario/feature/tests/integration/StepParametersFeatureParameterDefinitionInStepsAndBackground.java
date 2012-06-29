@@ -5,7 +5,6 @@ import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -50,8 +49,7 @@ public class StepParametersFeatureParameterDefinitionInStepsAndBackground {
   
   @Test
   @Order(1)
-  @Ignore
-  @Named("[PENDING] When this feature is executed")
+  @Named("When this feature is executed")
   public void whenThisFeatureIsExecuted() {
     
   }

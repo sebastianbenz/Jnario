@@ -12,14 +12,14 @@ Feature: Junit Rules
 		CharSequence jnarioFile
 		Given a feature
 			jnarioFile = '''
+				package demo
 				import org.junit.Rule
 				import org.junit.rules.TemporaryFolder
 				
 				Feature:  JUnit Rules
 				
 					Scenario: Using rules in a Feature
-						@Rule
-				  		public TemporaryFolder folder = new TemporaryFolder
+						@Rule public val folder = new TemporaryFolder
 					
 						Given a feature with a rule
 						Then the rule should be initialized
@@ -27,3 +27,4 @@ Feature: Junit Rules
 			'''
 		When it is executed
 		Then it should be successful
+ 

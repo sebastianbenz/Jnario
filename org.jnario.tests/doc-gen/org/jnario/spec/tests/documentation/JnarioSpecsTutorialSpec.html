@@ -146,7 +146,7 @@ Stack
 </pre><p>In this example we also use the <code>throws</code> statement in <code>subject.pop throws EmptyStackException</code>. It fails if the previous statement does not throw an instance of the specified exception.</p>
 <pre class="prettyprint lang-spec">
 package demo
-	      
+        
 import java.util.Stack
 import java.util.EmptyStackException
 
@@ -160,10 +160,10 @@ describe Stack{
     fact "pop decreases size"{
       subject.pop
       subject.size =&gt; 0
-    }	
+    }  
     fact "pop removes last element"{
       subject.pop =&gt; "an element"
-    }		
+    }    
   }
 }</pre>
 </p>
@@ -200,7 +200,7 @@ java.lang.AssertionError: additions failed
 <p align="center"><a href="/img/tutorial/doc_stack_example.png"><img src="/img/tutorial/doc_stack_example_small.png" alt="Generated documentation for the stack specification"/></a></p><p>This tutorial has actually been generated from a <a href="https://github.com/bmwcarit/Jnario/blob/master/org.jnario.tests/src/org/jnario/spec/tests/documentation/SpecTutorial.spec">specification</a>.</p>
 <pre class="prettyprint lang-spec">
 package demo
-				      
+              
 import java.util.Stack
 import java.util.EmptyStackException
 
@@ -225,10 +225,10 @@ describe Stack{
     fact "pop decreases size"{
       subject.pop
       subject.size =&gt; 0
-    }	
+    }  
     fact "pop removes last element"{
       subject.pop =&gt; "an element"
-    }		
+    }    
   }
 }</pre>
 </p>
@@ -297,7 +297,7 @@ closeDatabaseConnection
 <pre class="prettyprint lang-spec">
 describe "Spec Extensions"{
   extension DatabaseExtension db = new DatabaseExtension
-  fact query("SELECT * FROM content")	      
+  fact query("SELECT * FROM content")        
 }</pre>
 </p>
 </li><li><p  id="Helper_methods"><strong>Helper methods</strong>

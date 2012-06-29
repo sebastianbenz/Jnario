@@ -1,0 +1,43 @@
+package org.jnario.feature.tests.unit.naming;
+
+import org.jnario.feature.feature.Scenario;
+import org.jnario.feature.tests.unit.naming.StepNameProviderSpec;
+import org.jnario.jnario.test.util.Features;
+import org.jnario.lib.Should;
+import org.jnario.runner.ExampleGroupRunner;
+import org.jnario.runner.Named;
+import org.jnario.runner.Order;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+@SuppressWarnings("all")
+@RunWith(ExampleGroupRunner.class)
+@Named("describe[Scenario]")
+public class StepNameProviderDescribeScenarioSpec extends StepNameProviderSpec {
+  @Test
+  @Named("scenario[\\\" With whitespace \\\"].desc =>  \\\"With whitespace\\\"")
+  @Order(99)
+  public void scenarioWithWhitespaceDescWithWhitespace() throws Exception {
+    Scenario _scenario = Features.scenario(" With whitespace ");
+    String _desc = this.desc(_scenario);
+    boolean _doubleArrow = Should.operator_doubleArrow(_desc, "With whitespace");
+    Assert.assertTrue("\nExpected scenario(\" With whitespace \").desc =>  \"With whitespace\" but"
+     + "\n     scenario(\" With whitespace \").desc is " + "\"" + _desc + "\""
+     + "\n     scenario(\" With whitespace \") is " + _scenario + "\n", _doubleArrow);
+    
+  }
+  
+  @Test
+  @Named("scenario[\\\"With [parentheses]\\\"].desc =>  \\\"With [parentheses]\\\"")
+  @Order(99)
+  public void scenarioWithParenthesesDescWithParentheses() throws Exception {
+    Scenario _scenario = Features.scenario("With (parentheses)");
+    String _desc = this.desc(_scenario);
+    boolean _doubleArrow = Should.operator_doubleArrow(_desc, "With [parentheses]");
+    Assert.assertTrue("\nExpected scenario(\"With (parentheses)\").desc =>  \"With [parentheses]\" but"
+     + "\n     scenario(\"With (parentheses)\").desc is " + "\"" + _desc + "\""
+     + "\n     scenario(\"With (parentheses)\") is " + _scenario + "\n", _doubleArrow);
+    
+  }
+}

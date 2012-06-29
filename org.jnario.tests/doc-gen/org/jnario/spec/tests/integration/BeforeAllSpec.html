@@ -32,24 +32,24 @@
 <ul><li><p  id="should_be_executed_before_all_tests"><strong>should be executed before all tests</strong>
 <pre class="prettyprint lang-spec">
 val spec = '
-	package bootstrap 
-	
-	describe "BeforeAll"{
-		
-		static int beforeExecutionCount = 0
-		
-		before all{
-			beforeExecutionCount = beforeExecutionCount + 1
-		}
-		
-		fact "should be executed before all tests (1)"{
-			beforeExecutionCount should be 1
-		}	
-		
-		fact "should be executed before all tests (2)"{
-			beforeExecutionCount should be 1
-		}	
-	}
+  package bootstrap 
+  
+  describe "BeforeAll"{
+    
+    static int beforeExecutionCount = 0
+    
+    before all{
+      beforeExecutionCount = beforeExecutionCount + 1
+    }
+    
+    fact "should be executed before all tests (1)"{
+      beforeExecutionCount should be 1
+    }  
+    
+    fact "should be executed before all tests (2)"{
+      beforeExecutionCount should be 1
+    }  
+  }
 '
 spec.executesSuccessfully</pre>
 </p>

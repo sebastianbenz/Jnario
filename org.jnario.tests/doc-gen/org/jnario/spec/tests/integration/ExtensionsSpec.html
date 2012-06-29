@@ -32,32 +32,32 @@
 <ul><li><p  id="all_setup_and_tear_down_methods_in_extensions_will_be_executed"><strong>all setup and tear down methods in extensions will be executed</strong>
 <pre class="prettyprint lang-spec">
 execute('''
-	package bootstrap
+  package bootstrap
 
-	import org.jnario.spec.tests.integration.ExtensionExample
+  import org.jnario.spec.tests.integration.ExtensionExample
 
-	describe "Extension"{
-		extension ExtensionExample = new ExtensionExample()
+  describe "Extension"{
+    extension ExtensionExample = new ExtensionExample()
 
-		fact "test 1"{
-			ExtensionExample::executedMethods += "ExtensionSpec#test1"
-		}
-		
-		fact "test 2"{
-			ExtensionExample::executedMethods += "ExtensionSpec#test2"
-		}
-	}
+    fact "test 1"{
+      ExtensionExample::executedMethods += "ExtensionSpec#test1"
+    }
+    
+    fact "test 2"{
+      ExtensionExample::executedMethods += "ExtensionSpec#test2"
+    }
+  }
 ''')
 
 executedMethods =&gt; newArrayList(
-	"ExtensionExample#beforeClass", 
-	"ExtensionExample#before",  
-	"ExtensionSpec#test1",  
-	"ExtensionExample#after",  
-	"ExtensionExample#before",
-	"ExtensionSpec#test2",  
-	"ExtensionExample#after",
-	"ExtensionExample#afterClass"
+  "ExtensionExample#beforeClass", 
+  "ExtensionExample#before",  
+  "ExtensionSpec#test1",  
+  "ExtensionExample#after",  
+  "ExtensionExample#before",
+  "ExtensionSpec#test2",  
+  "ExtensionExample#after",
+  "ExtensionExample#afterClass"
 )</pre>
 </p>
 </li></ul>

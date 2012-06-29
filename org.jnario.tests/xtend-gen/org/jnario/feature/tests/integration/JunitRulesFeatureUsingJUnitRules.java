@@ -5,7 +5,6 @@ import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -18,6 +17,8 @@ public class JunitRulesFeatureUsingJUnitRules {
   @Named("Given a feature")
   public void givenAFeature() {
     StringConcatenation _builder = new StringConcatenation();
+    _builder.append("package demo");
+    _builder.newLine();
     _builder.append("import org.junit.Rule");
     _builder.newLine();
     _builder.append("import org.junit.rules.TemporaryFolder");
@@ -30,10 +31,7 @@ public class JunitRulesFeatureUsingJUnitRules {
     _builder.append("Scenario: Using rules in a Feature");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("@Rule");
-    _builder.newLine();
-    _builder.append("  \t\t");
-    _builder.append("public TemporaryFolder folder = new TemporaryFolder");
+    _builder.append("@Rule public val folder = new TemporaryFolder");
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
@@ -51,8 +49,7 @@ public class JunitRulesFeatureUsingJUnitRules {
   
   @Test
   @Order(1)
-  @Ignore
-  @Named("[PENDING] When it is executed")
+  @Named("When it is executed")
   public void whenItIsExecuted() {
     
   }

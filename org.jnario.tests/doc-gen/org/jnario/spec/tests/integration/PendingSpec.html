@@ -31,18 +31,18 @@
 <ul><li><p  id="ignores_empty_examples_during_example_runs"><strong>ignores empty examples during example runs</strong>
 <pre class="prettyprint lang-spec">
 val spec = '
-	package bootstrap
+  package bootstrap
 
-	import org.junit.*
+  import org.junit.*
 
-	describe "Pending" {
+  describe "Pending" {
 
-		fact "has no implementation in block expression"{
-		} 
-		
-		fact "has no body"
-				
-	}
+    fact "has no implementation in block expression"{
+    } 
+    
+    fact "has no body"
+        
+  }
 '
 assertThat(execute(spec), ignoreCountIs(2))</pre>
 </p>

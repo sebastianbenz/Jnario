@@ -32,24 +32,24 @@
 <ul><li><p  id="should_be_executed_after_all_tests"><strong>should be executed after all tests</strong>
 <pre class="prettyprint lang-spec">
 val spec = '
-	package bootstrap 
-	
-	describe "AfterAll"{
-		
-		static int afterExecutionCount = 0
-		
-		fact "should be executed after all tests (1)"{
-			afterExecutionCount should be 0
-		}	
-		
-		fact "should be executed after all tests (2)"{
-			afterExecutionCount should be 0
-		}	
-		
-		after all{
-			afterExecutionCount = afterExecutionCount + 1
-		}
-	}
+  package bootstrap 
+  
+  describe "AfterAll"{
+    
+    static int afterExecutionCount = 0
+    
+    fact "should be executed after all tests (1)"{
+      afterExecutionCount should be 0
+    }  
+    
+    fact "should be executed after all tests (2)"{
+      afterExecutionCount should be 0
+    }  
+    
+    after all{
+      afterExecutionCount = afterExecutionCount + 1
+    }
+  }
 '
 spec.executesSuccessfully</pre>
 </p>

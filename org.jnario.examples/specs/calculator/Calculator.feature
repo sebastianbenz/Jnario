@@ -14,4 +14,4 @@ Feature: Addition
     When I press "add"
       calculator.press(args.first)
     Then the result should be "120" 
-      calculator.result => args.first
+      calculator.result => args.first 

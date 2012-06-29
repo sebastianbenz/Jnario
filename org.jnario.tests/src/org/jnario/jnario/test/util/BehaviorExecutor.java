@@ -10,6 +10,7 @@ package org.jnario.jnario.test.util;
 import static com.google.common.collect.Iterables.concat;
 import static com.google.common.collect.Iterables.filter;
 import static com.google.common.collect.Iterables.toArray;
+import static com.google.common.collect.Iterables.transform;
 import static com.google.common.collect.Lists.newArrayList;
 import static junit.framework.Assert.assertFalse;
 import static org.eclipse.emf.common.util.URI.createURI;
@@ -61,6 +62,7 @@ import org.jnario.runner.Named;
 import org.jnario.spec.spec.SpecPackage;
 import org.jnario.suite.suite.Suite;
 import org.junit.Test;
+import org.junit.experimental.results.PrintableResult;
 import org.junit.rules.TemporaryFolder;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
@@ -188,6 +190,15 @@ public abstract class BehaviorExecutor {
 				runtime += child.getRunTime();
 			}
 			return runtime;
+		}
+		
+		@Override
+		public String toString() {
+			return Joiner.on("\n").join(transform(children, new Function<Result, PrintableResult>() {
+				public PrintableResult apply(Result result){
+					return new PrintableResult(result.getFailures());
+				}
+			}));
 		}
 		
 	}
