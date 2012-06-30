@@ -19,7 +19,6 @@ describe StepArgumentsProvider {
 
 	def examples{
 		| step										| expectedArgs  			|
-		| null    									| list()		 			|
 		| 'Given no values'    						| list()		 			|
 		| 'Given "hello"'     						| list("hello") 			|
 		| 'Given "hello" and "world"'				| list("hello", "world") 	|

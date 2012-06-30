@@ -25,21 +25,15 @@ import org.jnario.feature.feature.Scenario
  */
 class StepNameProvider {
  
-	private static String MULTILINE = "\\\\( |\t)*\r?\n?( |\t)*"
-	
-	def nameOf(Step step){
+	def dispatch nameOf(Step step){
 		if(step == null){
 			return "";
 		}
-		if(step instanceof StepReference){
-			nameOf(step as StepReference)
-		} else{
-			step.name 
-		}?.removeExtraCharacters
+		step.name?.trim 
 	}
 	
-	def String nameOf(StepReference ref){
-		if(ref.reference == null){
+	def dispatch nameOf(StepReference ref){
+		if(ref == null || ref.reference == null){
 			null
 		}else{
 			textForFeature(ref, FeaturePackage::eINSTANCE.stepReference_Reference)
@@ -47,11 +41,7 @@ class StepNameProvider {
 	} 
 	
 	def getMethodName(Step step){
-		var originalName = nameOf(step);
-		val index = originalName .lastIndexOf('\n');
-		if(index != -1){
-			originalName = originalName.substring(0, index - 1).trim(); 
-		}
+		var originalName = nameOf(step).firstLine.trim;
 		return toFirstLower(convertToCamelCase(originalName));
 	}
 	
@@ -65,16 +55,7 @@ class StepNameProvider {
 	
 	def describe(Step step){
 		var name = nameOf(step)
-		
-		val index = name.indexOfNewLine
-		if(index != -1){
-			name = name.substring(0, index)	
-		}
-		return name.makeJunitConform
-	}
-	
-	def private removeExtraCharacters(String string){
-		return string.trim.replace("\"", "\\\"").replaceAll(MULTILINE,"")
+		return name.firstLine.makeJunitConform
 	}
 	
 	def removeKeywords(String name){
@@ -93,6 +74,6 @@ class StepNameProvider {
 	}
 	
 	def removeKeywordsAndArguments(String name){
-		return name.removeKeywords.removeArguments.removeExtraCharacters
+		return name.firstLine.removeKeywords.removeArguments
 	}
 }

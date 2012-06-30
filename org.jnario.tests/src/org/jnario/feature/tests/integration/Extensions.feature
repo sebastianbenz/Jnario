@@ -21,7 +21,7 @@ Feature: Setup & Teardown with Feature Extensions
   operations between different features and/or specs. Whenever you are
   missing helper methods in feature definitions, you should use extensions
   instead. You can declare extension fields in scenarios to perform setup and
-  teardown operations before/after the scenario is executeds. 
+  teardown operations before/after the scenario is executed. 
 
   Scenario: Using an Extension
     var CharSequence feature

@@ -47,20 +47,18 @@ public class StepArgumentsProviderSpec {
   public void _initStepArgumentsProviderSpecExamples() {
     
     List<Object> _list = JnarioCollectionLiterals.<Object>list();
-    List<Object> _list_1 = JnarioCollectionLiterals.<Object>list();
-    List<String> _list_2 = JnarioCollectionLiterals.<String>list("hello");
+    List<String> _list_1 = JnarioCollectionLiterals.<String>list("hello");
+    List<String> _list_2 = JnarioCollectionLiterals.<String>list("hello", "world");
     List<String> _list_3 = JnarioCollectionLiterals.<String>list("hello", "world");
-    List<String> _list_4 = JnarioCollectionLiterals.<String>list("hello", "world");
-    List<String> _list_5 = JnarioCollectionLiterals.<String>list("hello");
-    List<Object> _list_6 = JnarioCollectionLiterals.<Object>list();examples = ExampleTable.create("examples", 
+    List<String> _list_4 = JnarioCollectionLiterals.<String>list("hello");
+    List<Object> _list_5 = JnarioCollectionLiterals.<Object>list();examples = ExampleTable.create("examples", 
       java.util.Arrays.asList("step", "expectedArgs"), 
-      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("null", "list()"), null, _list),
-      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\'Given no values\'", "list()"), "Given no values", _list_1),
-      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\'Given \"hello\"\'", "list(\"hello\")"), "Given \"hello\"", _list_2),
+      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\'Given no values\'", "list()"), "Given no values", _list),
+      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\'Given \"hello\"\'", "list(\"hello\")"), "Given \"hello\"", _list_1),
+      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\'Given \"hello\" and \"world\"\'", "list(\"hello\", \"world\")"), "Given \"hello\" and \"world\"", _list_2),
       new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\'Given \"hello\" and \"world\"\'", "list(\"hello\", \"world\")"), "Given \"hello\" and \"world\"", _list_3),
-      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\'Given \"hello\" and \"world\"\'", "list(\"hello\", \"world\")"), "Given \"hello\" and \"world\"", _list_4),
-      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\"Given a multiline \\n\'\'\'hello\'\'\'\"", "list(\"hello\")"), "Given a multiline \n\'\'\'hello\'\'\'", _list_5),
-      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\"Given a multiline \\n 1+1 => 2 \'\'\'hello\'\'\'\"", "list()"), "Given a multiline \n 1+1 => 2 \'\'\'hello\'\'\'", _list_6)
+      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\"Given a multiline \\n\'\'\'hello\'\'\'\"", "list(\"hello\")"), "Given a multiline \n\'\'\'hello\'\'\'", _list_4),
+      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\"Given a multiline \\n 1+1 => 2 \'\'\'hello\'\'\'\"", "list()"), "Given a multiline \n 1+1 => 2 \'\'\'hello\'\'\'", _list_5)
     );
   }
   
