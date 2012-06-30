@@ -29,6 +29,7 @@ import org.eclipse.xtext.xbase.XClosure;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.util.XExpressionHelper;
+import org.hamcrest.StringDescription;
 import org.jnario.Assertion;
 import org.jnario.Should;
 import org.jnario.ShouldThrow;
@@ -271,25 +272,15 @@ public class JnarioCompiler extends XtendCompiler {
 		valueMappings.add(expr);
 		b.append("\n + \"\\n     ");
 		b.append(expr);
-		b.append(" is \" + ");
-		boolean isString = isString(expression);
-		if (isString) {
-			b.append("\"\\\"\" + ");
-		}
+		b.append(" is \"");
+		b.append(" + new ");
+		b.append(jvmType(StringDescription.class, expression));
+		b.append("().appendValue(");
 		toJavaExpression(expression, b);
-		if (isString) {
-			b.append(" + \"\\\"\"");
-		}
+		b.append(").toString()");
 	}
 
-	private boolean isString(XExpression expression) {
-		JvmTypeReference expectedType = getTypeProvider().getType(expression,
-				true);
-		return expectedType != null
-				&& expectedType.getQualifiedName().equals(
-						String.class.getName());
-	}
-
+	
 	@Override
 	protected boolean isVariableDeclarationRequired(XExpression expr,
 			ITreeAppendable b) {
