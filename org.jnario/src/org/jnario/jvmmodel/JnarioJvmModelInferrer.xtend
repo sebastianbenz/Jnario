@@ -30,6 +30,9 @@ import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtend.core.xtend.XtendFile
 import org.eclipse.xtend.core.xtend.XtendField
 import org.eclipse.xtext.common.types.JvmGenericType
+import org.eclipse.xtext.common.types.JvmField
+import org.jnario.runner.Extension
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
 
 /**
  * @author Birgit Engelmann
@@ -42,6 +45,7 @@ class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
 	@Inject extension TypeConformanceComputer
 	@Inject extension TypeReferences
 	@Inject extension JvmTypesBuilder
+	@Inject extension IJvmModelAssociations 
 	
 	def checkClassPath(EObject context, JunitAnnotationProvider annotationProvider){
 		try{
@@ -85,11 +89,16 @@ class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
 		throw new UnsupportedOperationException("Auto-generated function stub")
 	}
 	
-	override protected void transform(XtendField source, JvmGenericType container) {
+	override protected transform(XtendField source, JvmGenericType container) {
 		if(source.visibility == JvmVisibility::PRIVATE){
 			source.visibility = JvmVisibility::DEFAULT
 		}
 		super.transform(source, container)
+		if (source.isExtension()){
+			val field = source.jvmElements.head as JvmField
+			field.setVisibility(JvmVisibility::PUBLIC)
+			field.annotations += source.toAnnotation(typeof(Extension))
+		}
 	}
 	
 	def serialize(EObject obj){

@@ -7,9 +7,11 @@
  *******************************************************************************/
 package org.jnario.spec.tests.integration
 
+import static org.junit.Assert.*
 import static extension org.jnario.jnario.test.util.SpecExecutor.*
 import static org.jnario.jnario.test.util.ResultMatchers.*
 import static org.jnario.spec.tests.integration.ExtensionExample.*
+
 /*
  * Extensions can be used to share common setup and tear down behavior across different specifications.
  */
@@ -22,7 +24,7 @@ describe "Extensions"{
 			import org.jnario.spec.tests.integration.ExtensionExample
 
 			describe "Extension"{
-				extension ExtensionExample = new ExtensionExample()
+				extension static ExtensionExample = new ExtensionExample()
 
 				fact "test 1"{
 					ExtensionExample::executedMethods += "ExtensionSpec#test1"
@@ -33,17 +35,16 @@ describe "Extensions"{
 				}
 			}
 		''')
-		
-		executedMethods => newArrayList(
-			"ExtensionExample#beforeClass", 
-			"ExtensionExample#before",  
-			"ExtensionSpec#test1",  
-			"ExtensionExample#after",  
-			"ExtensionExample#before",
-			"ExtensionSpec#test2",  
-			"ExtensionExample#after",
-			"ExtensionExample#afterClass"
-		)
+		 
+		executedMethods =>
+			   list("ExtensionExample#beforeClass", 
+					"ExtensionExample#before",  
+					"ExtensionSpec#test1",  
+					"ExtensionExample#after",  
+					"ExtensionExample#before",
+					"ExtensionSpec#test2",  
+					"ExtensionExample#after",
+					"ExtensionExample#afterClass")
 	}
 
 }

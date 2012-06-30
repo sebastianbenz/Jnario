@@ -6,7 +6,6 @@ import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -39,7 +38,6 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor.IPostIndexingInitializing;
-import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -54,7 +52,6 @@ import org.jnario.jvmmodel.JnarioJvmModelInferrer;
 import org.jnario.jvmmodel.JunitAnnotationProvider;
 import org.jnario.lib.ExampleTableRow;
 import org.jnario.runner.Contains;
-import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.spec.jvmmodel.ImplicitSubject;
@@ -85,9 +82,6 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
   
   @Inject
   private ImplicitSubject _implicitSubject;
-  
-  @Inject
-  private IJvmModelAssociations _iJvmModelAssociations;
   
   @Inject
   private IJvmModelAssociator _iJvmModelAssociator;
@@ -365,20 +359,6 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
       _xblockexpression = (_add);
     }
     return _xblockexpression;
-  }
-  
-  protected void transform(final XtendField source, final JvmGenericType container) {
-    super.transform(source, container);
-    boolean _isExtension = source.isExtension();
-    if (_isExtension) {
-      Set<EObject> _jvmElements = this._iJvmModelAssociations.getJvmElements(source);
-      EObject _head = IterableExtensions.<EObject>head(_jvmElements);
-      final JvmField field = ((JvmField) _head);
-      field.setVisibility(JvmVisibility.PUBLIC);
-      EList<JvmAnnotationReference> _annotations = field.getAnnotations();
-      JvmAnnotationReference _annotation = this._extendedJvmTypesBuilder.toAnnotation(source, Extension.class);
-      this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
-    }
   }
   
   public JvmOperation toMethod(final TestFunction element, final JvmAnnotationReference annotation, final boolean isStatic) {

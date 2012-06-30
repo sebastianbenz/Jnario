@@ -27,6 +27,7 @@ import org.eclipse.xtext.xbase.XFeatureCall;
 import org.eclipse.xtext.xbase.XbaseFactory;
 import org.eclipse.xtext.xbase.impl.FeatureCallToJavaMapping;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
+import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.Scenario;
 
@@ -94,7 +95,7 @@ public class FeatureFeatureCallToJavaMapping extends FeatureCallToJavaMapping {
 	}
 
 	private XFeatureCall createFeatureCall(JvmField field, Scenario scenario) {
-		Iterable<XtendField> fields = Iterables.filter(scenario.getMembers(), XtendField.class);
+		Iterable<XtendField> fields = filter(scenario.getMembers(), XtendField.class);
 		for(XtendField existingField: fields){
 			if(existingField.getName() == field.getSimpleName()){
 				XFeatureCall callToThis = XbaseFactory.eINSTANCE.createXFeatureCall();
@@ -104,8 +105,9 @@ public class FeatureFeatureCallToJavaMapping extends FeatureCallToJavaMapping {
 			}
 		}
 		Feature feature = getContainerOfType(scenario, Feature.class);
-		if(feature.getBackground() != null){
-			return createFeatureCall(field, feature.getBackground());
+		Background background = feature.getBackground();
+		if(background != null && scenario != background){
+			return createFeatureCall(field, background);
 		}
 		return null;
 	}

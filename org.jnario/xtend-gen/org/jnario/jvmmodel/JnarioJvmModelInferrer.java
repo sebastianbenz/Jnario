@@ -8,12 +8,14 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 import java.util.ArrayList;
+import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.jvmmodel.XtendJvmModelInferrer;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendFile;
 import org.eclipse.xtext.EcoreUtil2;
+import org.eclipse.xtext.common.types.JvmAnnotationReference;
 import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmType;
@@ -26,12 +28,15 @@ import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.jnario.ExampleColumn;
 import org.jnario.jvmmodel.JunitAnnotationProvider;
+import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 
 /**
@@ -54,6 +59,9 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
   
   @Inject
   private JvmTypesBuilder _jvmTypesBuilder;
+  
+  @Inject
+  private IJvmModelAssociations _iJvmModelAssociations;
   
   public boolean checkClassPath(final EObject context, final JunitAnnotationProvider annotationProvider) {
     try {
@@ -146,6 +154,16 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
       source.setVisibility(JvmVisibility.DEFAULT);
     }
     super.transform(source, container);
+    boolean _isExtension = source.isExtension();
+    if (_isExtension) {
+      Set<EObject> _jvmElements = this._iJvmModelAssociations.getJvmElements(source);
+      EObject _head = IterableExtensions.<EObject>head(_jvmElements);
+      final JvmField field = ((JvmField) _head);
+      field.setVisibility(JvmVisibility.PUBLIC);
+      EList<JvmAnnotationReference> _annotations = field.getAnnotations();
+      JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(source, Extension.class);
+      this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
+    }
   }
   
   public String serialize(final EObject obj) {

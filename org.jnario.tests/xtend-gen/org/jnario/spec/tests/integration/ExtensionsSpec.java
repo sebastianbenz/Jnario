@@ -1,10 +1,9 @@
 package org.jnario.spec.tests.integration;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.jnario.jnario.test.util.SpecExecutor;
+import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
@@ -35,7 +34,7 @@ public class ExtensionsSpec {
     _builder.append("describe \"Extension\"{");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("extension ExtensionExample = new ExtensionExample()");
+    _builder.append("extension static ExtensionExample = new ExtensionExample()");
     _builder.newLine();
     _builder.newLine();
     _builder.append("\t");
@@ -62,8 +61,7 @@ public class ExtensionsSpec {
     _builder.newLine();
     SpecExecutor.execute(_builder);
     List<String> _executedMethods = ExtensionExample.getExecutedMethods();
-    ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList(
-      "ExtensionExample#beforeClass", 
+    List<String> _list = JnarioCollectionLiterals.<String>list("ExtensionExample#beforeClass", 
       "ExtensionExample#before", 
       "ExtensionSpec#test1", 
       "ExtensionExample#after", 
@@ -71,10 +69,10 @@ public class ExtensionsSpec {
       "ExtensionSpec#test2", 
       "ExtensionExample#after", 
       "ExtensionExample#afterClass");
-    boolean _doubleArrow = Should.operator_doubleArrow(_executedMethods, _newArrayList);
-    Assert.assertTrue("\nExpected executedMethods => newArrayList(\n\t\t\t\"ExtensionExample#beforeClass\", \n\t\t\t\"ExtensionExample#before\",  \n\t\t\t\"ExtensionSpec#test1\",  \n\t\t\t\"ExtensionExample#after\",  \n\t\t\t\"ExtensionExample#before\",\n\t\t\t\"ExtensionSpec#test2\",  \n\t\t\t\"ExtensionExample#after\",\n\t\t\t\"ExtensionExample#afterClass\"\n\t\t) but"
+    boolean _doubleArrow = Should.operator_doubleArrow(_executedMethods, _list);
+    Assert.assertTrue("\nExpected executedMethods =>\n\t\t\t   list(\"ExtensionExample#beforeClass\", \n\t\t\t\t\t\"ExtensionExample#before\",  \n\t\t\t\t\t\"ExtensionSpec#test1\",  \n\t\t\t\t\t\"ExtensionExample#after\",  \n\t\t\t\t\t\"ExtensionExample#before\",\n\t\t\t\t\t\"ExtensionSpec#test2\",  \n\t\t\t\t\t\"ExtensionExample#after\",\n\t\t\t\t\t\"ExtensionExample#afterClass\") but"
      + "\n     executedMethods is " + _executedMethods
-     + "\n     newArrayList(\n\t\t\t\"ExtensionExample#beforeClass\", \n\t\t\t\"ExtensionExample#before\",  \n\t\t\t\"ExtensionSpec#test1\",  \n\t\t\t\"ExtensionExample#after\",  \n\t\t\t\"ExtensionExample#before\",\n\t\t\t\"ExtensionSpec#test2\",  \n\t\t\t\"ExtensionExample#after\",\n\t\t\t\"ExtensionExample#afterClass\"\n\t\t) is " + _newArrayList + "\n", _doubleArrow);
+     + "\n     list(\"ExtensionExample#beforeClass\", \n\t\t\t\t\t\"ExtensionExample#before\",  \n\t\t\t\t\t\"ExtensionSpec#test1\",  \n\t\t\t\t\t\"ExtensionExample#after\",  \n\t\t\t\t\t\"ExtensionExample#before\",\n\t\t\t\t\t\"ExtensionSpec#test2\",  \n\t\t\t\t\t\"ExtensionExample#after\",\n\t\t\t\t\t\"ExtensionExample#afterClass\") is " + _list + "\n", _doubleArrow);
     
   }
 }

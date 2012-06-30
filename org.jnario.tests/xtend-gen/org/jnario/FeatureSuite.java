@@ -6,6 +6,7 @@ import org.jnario.feature.tests.integration.BackgroundsFeature;
 import org.jnario.feature.tests.integration.JunitRulesFeature;
 import org.jnario.feature.tests.integration.ParsingSimpleJnarioFilesFeature;
 import org.jnario.feature.tests.integration.ReferencesForStepsFeature;
+import org.jnario.feature.tests.integration.SetupTeardownWithFeatureExtensionsFeature;
 import org.jnario.feature.tests.integration.StepParametersFeature;
 import org.jnario.feature.tests.integration.TestRunnerFeature;
 import org.jnario.feature.tests.integration.UsingMatchersInFeaturesFeature;
@@ -23,7 +24,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(ExampleGroupRunner.class)
 @Named("Feature")
-@Contains({ FeatureTokenSourceSpec.class, JnarioFeaturesTutorialSpec.class, BackgroundsFeature.class, UsingMatchersInFeaturesFeature.class, ParsingSimpleJnarioFilesFeature.class, AccessOfVariablesFeature.class, FeatureClassNameProviderSpec.class, TestRunnerFeature.class, JunitRulesFeature.class, ReferencesForStepsFeature.class, FeatureValueConverterSpec.class, StepNameProviderSpec.class, StepExpressionProviderSpec.class, StepArgumentsProviderSpec.class, StepParametersFeature.class, FeatureJavaValidatorSpec.class })
+@Contains({ FeatureTokenSourceSpec.class, JnarioFeaturesTutorialSpec.class, BackgroundsFeature.class, UsingMatchersInFeaturesFeature.class, ParsingSimpleJnarioFilesFeature.class, AccessOfVariablesFeature.class, FeatureClassNameProviderSpec.class, TestRunnerFeature.class, JunitRulesFeature.class, ReferencesForStepsFeature.class, FeatureValueConverterSpec.class, StepNameProviderSpec.class, StepExpressionProviderSpec.class, StepArgumentsProviderSpec.class, StepParametersFeature.class, FeatureJavaValidatorSpec.class, SetupTeardownWithFeatureExtensionsFeature.class })
 @SuppressWarnings("all")
 public class FeatureSuite {
 }

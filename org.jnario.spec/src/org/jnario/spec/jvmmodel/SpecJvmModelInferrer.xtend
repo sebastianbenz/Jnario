@@ -63,8 +63,6 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 	
 	@Inject extension ImplicitSubject 
 	
-	@Inject extension IJvmModelAssociations 
-	
 	@Inject extension IJvmModelAssociator 
 	
 	@Inject extension SyntheticNameClashResolver
@@ -190,15 +188,6 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 	def transform(After element, JvmGenericType container) {
 		val annotationType = element.getAfterAnnotation(element.afterAll)
 		container.members += element.toMethod(annotationType, element.afterAll)
-	}
-	
-	override protected transform(XtendField source, JvmGenericType container) {
-		super.transform(source, container)
-		if (source.isExtension()){
-			val field = source.jvmElements.head as JvmField
-			field.setVisibility(JvmVisibility::PUBLIC)
-			field.annotations += source.toAnnotation(typeof(Extension))
-		}
 	}
 	
 	def toMethod(TestFunction element, JvmAnnotationReference annotation, boolean isStatic){

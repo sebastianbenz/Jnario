@@ -16,20 +16,15 @@ import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 import static org.eclipse.xtext.xbase.lib.Exceptions.sneakyThrow;
 
-import java.lang.annotation.Annotation;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.jnario.runner.internal.ExampleGroupRunnerBuilder;
 import org.jnario.runner.internal.ExtensionClass;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.internal.runners.statements.RunAfters;
-import org.junit.internal.runners.statements.RunBefores;
+import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runner.Runner;
 import org.junit.runner.manipulation.NoTestsRemainException;
@@ -40,7 +35,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.model.FrameworkField;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
-import org.junit.runners.model.Statement;
+import org.junit.runners.model.TestClass;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
@@ -66,7 +61,7 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 
 	private final NameProvider nameProvider;
 	private List<Runner> children;
-	private List<ExtensionClass> extensions;
+	protected List<ExtensionClass> extensions;
 
 	public ExampleGroupRunner(Class<?> testClass) throws InitializationError {
 		this(testClass, NameProvider.create());
@@ -90,8 +85,8 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 	}
 
 	private void setExtensions() {
-		List<FrameworkField> extensionFields = getTestClass()
-				.getAnnotatedFields(Extension.class);
+		TestClass testClass = getTestClass();
+		List<FrameworkField> extensionFields = testClass.getAnnotatedFields(Extension.class);
 		extensions = newArrayListWithExpectedSize(extensionFields.size());
 		for (FrameworkField frameworkField : extensionFields) {
 			extensions.add(new ExtensionClass(frameworkField));
@@ -242,53 +237,21 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 	protected void runChild(Runner child, RunNotifier notifier) {
 		child.run(notifier);
 	}
-
+	
 	@Override
-	protected Statement withAfterClasses(Statement next) {
-		return withExtension(super.withAfterClasses(next), AfterClass.class,
-				newRunAfters());
+	protected List<TestRule> classRules() {
+		List<TestRule> rules = super.classRules();
+		rules.add(ExtensionRule.createClassExtensionRule(staticExtensions(), null));
+		return rules;
 	}
 
-	@Override
-	protected Statement withBeforeClasses(Statement next) {
-		return withExtension(super.withBeforeClasses(next), BeforeClass.class,
-				newRunBefores());
-	}
-
-	private Statement withExtension(
-			Statement next,
-			Class<? extends Annotation> annotationType,
-			Function2<Statement, List<FrameworkMethod>, Statement> statementFactory) {
-		for (ExtensionClass extension : extensions) {
-			List<FrameworkMethod> methods = extension
-					.allMethodsWithAnnotation(annotationType);
-			try {
-				if (!methods.isEmpty()) {
-					next = statementFactory.apply(next, methods);
-				}
-			} catch (IllegalArgumentException e) {
-				throw new RuntimeException(e);
+	private Iterable<ExtensionClass> staticExtensions() {
+		Iterable<ExtensionClass> staticExtensions =  Iterables.filter(extensions, new Predicate<ExtensionClass>() {
+			public boolean apply(ExtensionClass extension){
+				return extension.isStatis();
 			}
-		}
-		return next;
-	}
-
-	private Function2<Statement, List<FrameworkMethod>, Statement> newRunBefores() {
-		return new Function2<Statement, List<FrameworkMethod>, Statement>() {
-
-			public Statement apply(Statement next, List<FrameworkMethod> methods) {
-				return new RunBefores(next, methods, null);
-			}
-		};
-	}
-
-	private Function2<Statement, List<FrameworkMethod>, Statement> newRunAfters() {
-		return new Function2<Statement, List<FrameworkMethod>, Statement>() {
-
-			public Statement apply(Statement next, List<FrameworkMethod> methods) {
-				return new RunAfters(next, methods, null);
-			}
-		};
+		});
+		return staticExtensions;
 	}
 
 }

@@ -37,7 +37,7 @@ execute('''
   import org.jnario.spec.tests.integration.ExtensionExample
 
   describe "Extension"{
-    extension ExtensionExample = new ExtensionExample()
+    extension static ExtensionExample = new ExtensionExample()
 
     fact "test 1"{
       ExtensionExample::executedMethods += "ExtensionSpec#test1"
@@ -48,17 +48,16 @@ execute('''
     }
   }
 ''')
-
-executedMethods =&gt; newArrayList(
-  "ExtensionExample#beforeClass", 
-  "ExtensionExample#before",  
-  "ExtensionSpec#test1",  
-  "ExtensionExample#after",  
-  "ExtensionExample#before",
-  "ExtensionSpec#test2",  
-  "ExtensionExample#after",
-  "ExtensionExample#afterClass"
-)</pre>
+ 
+executedMethods =&gt;
+     list("ExtensionExample#beforeClass", 
+      "ExtensionExample#before",  
+      "ExtensionSpec#test1",  
+      "ExtensionExample#after",  
+      "ExtensionExample#before",
+      "ExtensionSpec#test2",  
+      "ExtensionExample#after",
+      "ExtensionExample#afterClass")</pre>
 </p>
 </li></ul>
 				</div>

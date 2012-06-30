@@ -149,7 +149,7 @@ public class ExampleGroupRunnerTest {
 	@RunWith(ExampleGroupRunner.class)
 	public static class ExampleWithExtension {
 
-		@Extension public Example extensionExample = new Example();
+		@Extension public static Example extensionExample = new Example();
 		
 		@Test
 		@Order(1)
