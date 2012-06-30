@@ -10,9 +10,10 @@ import static org.junit.experimental.results.ResultMatchers.isSuccessful;
 import java.util.List;
 
 import org.jnario.runner.Contains;
+import org.jnario.runner.Extension;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Order;
-import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestRule;
@@ -96,6 +97,28 @@ public class FeatureRunnerTest {
 		}
 	}
 	
+	@RunWith(FeatureRunner.class)
+	public static class FeatureWithExtension{
+		
+		@Extension public static MyRule rule = new MyRule();
+		
+		@Order(1)
+		@Test public void step4(){
+			LOG.add("step4");
+		}
+		
+		@Order(2)
+		@Test public void step5(){
+			LOG.add("step5");
+		}
+		
+		@Order(3)
+		@Test public void step6(){
+			LOG.add("step6");
+		}
+	}
+	
+	
 	private static List<String> LOG = newArrayList();
 	
 	@Test
@@ -106,7 +129,7 @@ public class FeatureRunnerTest {
 								"before", "step4", "step5", "step6", "after" ), LOG);
 	}
 	
-	@After public void clearLog(){
+	@Before public void clearLog(){
 		LOG.clear();
 	}
 	
