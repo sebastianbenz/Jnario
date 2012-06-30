@@ -206,7 +206,7 @@ public abstract class BehaviorExecutor {
 	
 	@Inject private JvmModelGenerator generator;
 	@Inject private JavaIoFileSystemAccess fsa;
-	@Inject private TemporaryFolder tempFolder;
+	private TemporaryFolder tempFolder = new TemporaryFolder();
 
 	@Inject private IResourceValidator validator;
 	protected boolean validate = true;

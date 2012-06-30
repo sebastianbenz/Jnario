@@ -31,16 +31,16 @@
 <ul><li><p  id="should_resolve_operations_from_surrounding_ExampleGroup_s_target"><strong>should resolve operations from surrounding ExampleGroup's target</strong>
 <pre class="prettyprint lang-spec">
 parseSpec('
-	package bootstrap
-	
-	import org.junit.Assert
+  package bootstrap
+  
+  import org.junit.Assert
 
-	describe Assert{
-		context assertNotNull(String, Object){
-			fact "assertNotNull(String, Object)"{
-			}
-		}
-	} 
+  describe Assert{
+    context assertNotNull(String, Object){
+      fact "assertNotNull(String, Object)"{
+      }
+    }
+  } 
 
 '    
 )

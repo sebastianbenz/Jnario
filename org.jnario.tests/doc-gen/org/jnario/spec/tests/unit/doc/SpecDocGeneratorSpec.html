@@ -49,22 +49,22 @@ generateEmptyExampleDoc()
 
 val scenarioDoc = generatedFile("ExampleSpec.html")
 assert scenarioDoc != null && 
-		scenarioDoc.contains("&lt;title&gt;Example&lt;/title&gt;")
-		scenarioDoc.contains("&lt;h1&gt;Example&lt;/h1&gt;")</pre>
+    scenarioDoc.contains("&lt;title&gt;Example&lt;/title&gt;")
+    scenarioDoc.contains("&lt;h1&gt;Example&lt;/h1&gt;")</pre>
 </p>
 </li><li><p  id="generates_scenario_documentation"><strong>generates scenario documentation</strong>
 <pre class="prettyprint lang-spec">
 generateDoc('''
-	/*
-	 * Irrelevant documentation.
-	 */
-	 
-	/*
-	 * This is an example.
-	 */
-	describe 'Example'{
-		
-	} 
+  /*
+   * Irrelevant documentation.
+   */
+   
+  /*
+   * This is an example.
+   */
+  describe 'Example'{
+    
+  } 
 ''')
 
 val scenarioDoc = generatedFile("ExampleSpec.html")
@@ -74,15 +74,15 @@ assert !scenarioDoc.contains("Irrelevant documentation.")</pre>
 </li><li><p  id="generates_example_documentation"><strong>generates example documentation</strong>
 <pre class="prettyprint lang-spec">
 generateDoc('''
-	describe 'Example'{
-		/*
-		 * Example documentation
-		 */
-		fact "should do stuff"{
-			var x = 0
-			x = x + 1
-		}
-	} 
+  describe 'Example'{
+    /*
+     * Example documentation
+     */
+    fact "should do stuff"{
+      var x = 0
+      x = x + 1
+    }
+  } 
 ''')
 val scenarioDoc = generatedFile("ExampleSpec.html")
 assert scenarioDoc.contains('''
@@ -96,12 +96,12 @@ x = x + 1&lt;/pre&gt;
 </li><li><p  id="should_support_markdown_for_documentation"><strong>should support markdown for documentation</strong>
 <pre class="prettyprint lang-spec">
 generateDoc('''
-	/*
-	 * #Example Heading
-	 */
-	describe 'Example'{
-		
-	} 
+  /*
+   * #Example Heading
+   */
+  describe 'Example'{
+    
+  } 
 ''')
 val scenarioDoc = generatedFile("ExampleSpec.html")
 assert scenarioDoc.contains("&lt;h1&gt;Example Heading&lt;/h1&gt;")</pre>
@@ -109,12 +109,12 @@ assert scenarioDoc.contains("&lt;h1&gt;Example Heading&lt;/h1&gt;")</pre>
 </li><li><p  id="generates_table_for_example_tables"><strong>generates table for example tables</strong>
 <pre class="prettyprint lang-spec">
 generateDoc('''
-	describe 'Example'{
-		def myExample{
-			| a | b |
-			| 1 | 2 |
-		}
-	} 
+  describe 'Example'{
+    def myExample{
+      | a | b |
+      | 1 | 2 |
+    }
+  } 
 ''')
 val scenarioDoc = generatedFile("ExampleSpec.html")
 assert scenarioDoc.contains('&lt;h4 id="myExample"&gt;MyExample&lt;/h4&gt;')
@@ -126,14 +126,14 @@ assert scenarioDoc.contains("&lt;td&gt;2&lt;/td&gt;")</pre>
 </li><li><p  id="filters_code_based_on_regex_in_filter_annotation"><strong>filters code based on regex in filter annotation</strong>
 <pre class="prettyprint lang-spec">
 generateDoc('''
-	describe 'Example'{
-		/*
-		 * @filter(bbb)
-		 */
-		fact "should do stuff"{
-			"aaabbbaaa"
-		}
-	} 
+  describe 'Example'{
+    /*
+     * @filter(bbb)
+     */
+    fact "should do stuff"{
+      "aaabbbaaa"
+    }
+  } 
 ''')
 val scenarioDoc = generatedFile("ExampleSpec.html")
 assert scenarioDoc.contains('"aaaaaa"')</pre>

@@ -64,21 +64,21 @@
 </li><li><p  id="calculates_cells_based_on_table"><strong>calculates cells based on table</strong>
 <pre class="prettyprint lang-spec">
 parseSpec('''
-	package bootstrap
-	describe "ExampleTable"{
-		def{
-			| a | b |
-			| 1 | 2 |
-			| 3 | 4 |
-		}
-	}
+  package bootstrap
+  describe "ExampleTable"{
+    def{
+      | a | b |
+      | 1 | 2 |
+      | 3 | 4 |
+    }
+  }
 ''')
 
 examples.forEach[
-	val columns = query.first(typeof(ExampleTable)).columns
-	val column = columns.get(columnIndex)
-	val cell = column.cells.get(cellIndex)
-	cell.serialize.trim =&gt; value
+  val columns = query.first(typeof(ExampleTable)).columns
+  val column = columns.get(columnIndex)
+  val cell = column.cells.get(cellIndex)
+  cell.serialize.trim =&gt; value
 ]</pre>
 </p>
 </li></ul>

@@ -11,7 +11,7 @@ import static extension org.jnario.jnario.test.util.SpecExecutor.*
 import static org.jnario.jnario.test.util.ResultMatchers.*
 import static org.jnario.spec.tests.integration.ExtensionExample.*
 /*
- * Extensions can be used to share common setup and teardown behavior across different specifications.
+ * Extensions can be used to share common setup and tear down behavior across different specifications.
  */
 describe "Extensions"{
 

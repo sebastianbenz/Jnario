@@ -5,6 +5,7 @@ import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -49,7 +50,8 @@ public class JunitRulesFeatureUsingJUnitRules {
   
   @Test
   @Order(1)
-  @Named("When it is executed")
+  @Ignore
+  @Named("[PENDING] When it is executed")
   public void whenItIsExecuted() {
     
   }

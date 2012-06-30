@@ -31,10 +31,10 @@
 <ul><li><p  id="_isNot__is_false_if_for__1_should_be_1"><strong>'isNot' is false if for '1 should be 1</strong>
 <pre class="prettyprint lang-spec">
 parseSpec('''
-	package bootstrap
-	describe "Should"{
-		fact 1 should be 1
-	}
+  package bootstrap
+  describe "Should"{
+    fact 1 should be 1
+  }
 ''')
 
 assert !query.first(typeof(Should)).isNot</pre>
@@ -42,10 +42,10 @@ assert !query.first(typeof(Should)).isNot</pre>
 </li><li><p  id="_isNot__is_true_if_for__1_should_not_be_1"><strong>'isNot' is true if for '1 should not be 1</strong>
 <pre class="prettyprint lang-spec">
 parseSpec('''
-	package bootstrap
-	describe "Should"{
-		fact 1 should not be 1
-	}
+  package bootstrap
+  describe "Should"{
+    fact 1 should not be 1
+  }
 ''')
 
 assert query.first(typeof(Should)).isNot</pre>

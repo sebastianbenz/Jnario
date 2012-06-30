@@ -15,7 +15,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- * Extensions can be used to share common setup and teardown behavior across different specifications.
+ * Extensions can be used to share common setup and tear down behavior across different specifications.
  */
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)

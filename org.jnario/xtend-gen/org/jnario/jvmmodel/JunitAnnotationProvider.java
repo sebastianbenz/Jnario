@@ -7,7 +7,6 @@ import org.eclipse.xtext.common.types.JvmAnnotationReference;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.FeatureExamplesRunner;
 import org.jnario.runner.FeatureRunner;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -31,10 +30,6 @@ public class JunitAnnotationProvider {
   
   public JvmAnnotationReference getFeatureRunner(final EObject context) {
     return this._extendedJvmTypesBuilder.toAnnotation(context, RunWith.class, FeatureRunner.class);
-  }
-  
-  public JvmAnnotationReference getFeatureExamplesRunner(final EObject context) {
-    return this._extendedJvmTypesBuilder.toAnnotation(context, RunWith.class, FeatureExamplesRunner.class);
   }
   
   public ArrayList<JvmAnnotationReference> getTestAnnotations(final EObject context, final boolean isPending) {

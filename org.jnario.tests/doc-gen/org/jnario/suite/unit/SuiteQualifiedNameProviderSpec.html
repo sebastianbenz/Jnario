@@ -31,21 +31,21 @@
 <ul><li><p  id="removes_suite_prefix"><strong>removes suite prefix</strong>
 <pre class="prettyprint lang-spec">
 parseSuite('''
-	#My Suite''')
+  #My Suite''')
 qualifiedName =&gt; "My Suite"</pre>
 </p>
 </li><li><p  id="removes_suite_trailing_text"><strong>removes suite trailing text</strong>
 <pre class="prettyprint lang-spec">
 parseSuite('''
-	#My Suite
-	with description''')
+  #My Suite
+  with description''')
 qualifiedName =&gt; "My Suite"</pre>
 </p>
 </li><li><p  id="add_suite_package"><strong>add suite package</strong>
 <pre class="prettyprint lang-spec">
 parseSuite('''
-	package test
-	#My Suite''')
+  package test
+  #My Suite''')
 qualifiedName =&gt; "test.My Suite"</pre>
 </p>
 </li></ul>

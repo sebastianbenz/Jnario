@@ -42,9 +42,9 @@ assert subject.nameOf(emptyRef) == null</pre>
 </li><li><p  id="returns_the_name_for_a_step_with_definition"><strong>returns the name for a step with definition</strong>
 <pre class="prettyprint lang-spec">
 parseScenario('''
-		Scenario: MyScenario
-			Given a step with an implementation
-				1 + 1 =&gt; 2
+    Scenario: MyScenario
+      Given a step with an implementation
+        1 + 1 =&gt; 2
 ''')
 
 stepName =&gt; "Given a step with an implementation"</pre>
@@ -52,11 +52,11 @@ stepName =&gt; "Given a step with an implementation"</pre>
 </li><li><p  id="returns_the_name_for_a_step_with_resolved_reference"><strong>returns the name for a step with resolved reference</strong>
 <pre class="prettyprint lang-spec">
 parseScenario('''
-		Scenario: MyScenario 2
-			Given a step with a resolved reference
-		Scenario: MyScenario 1
-			Given a step with a resolved reference
-				"implementation"
+    Scenario: MyScenario 2
+      Given a step with a resolved reference
+    Scenario: MyScenario 1
+      Given a step with a resolved reference
+        "implementation"
 ''')
 
 stepName =&gt; "Given a step with a resolved reference"</pre>
@@ -64,8 +64,8 @@ stepName =&gt; "Given a step with a resolved reference"</pre>
 </li><li><p  id="returns_the_name_for_a_step_with_unresolved_reference"><strong>returns the name for a step with unresolved reference</strong>
 <pre class="prettyprint lang-spec">
 parseScenario('''
-		Scenario: MyScenario 2
-			Given a step with an unresolved reference
+    Scenario: MyScenario 2
+      Given a step with an unresolved reference
 ''')
 
 stepName =&gt; "Given a step with an unresolved reference"</pre>
@@ -73,9 +73,9 @@ stepName =&gt; "Given a step with an unresolved reference"</pre>
 </li><li><p  id="keeps_parameter_values"><strong>keeps parameter values</strong>
 <pre class="prettyprint lang-spec">
 parseScenario('''
-		Scenario: MyScenario 2
-			Given a step with two values "a" and "b"
-			 1 + 1 =&gt; 2
+    Scenario: MyScenario 2
+      Given a step with two values "a" and "b"
+       1 + 1 =&gt; 2
 ''')
 
 stepName =&gt; 'Given a step with two values "a" and "b"'</pre>
@@ -86,10 +86,10 @@ stepName =&gt; 'Given a step with two values "a" and "b"'</pre>
 <ul><li><p  id="removes_multilines_parameters"><strong>removes multilines parameters</strong>
 <pre class="prettyprint lang-spec">
 parseScenario('''
-		Scenario: MyScenario 2
-			Given a step with multiline parameter
-				"the parameter"
-			 1 + 1 =&gt; 2
+    Scenario: MyScenario 2
+      Given a step with multiline parameter
+        "the parameter"
+       1 + 1 =&gt; 2
 ''')
 
 describeStep =&gt; 'Given a step with multiline parameter'</pre>
@@ -136,11 +136,11 @@ describeStep =&gt; 'Given a step with multiline parameter'</pre>
 </li><li><p  id="examples_do_pass"><strong>examples do pass</strong>
 <pre class="prettyprint lang-spec">
 examples.forEach[
-	parseScenario('''
-		Scenario: scenario
-		«step»
-	''')
-	subject.removeKeywordsAndArguments(step) =&gt; result
+  parseScenario('''
+    Scenario: scenario
+    «step»
+  ''')
+  subject.removeKeywordsAndArguments(step) =&gt; result
 ]</pre>
 </p>
 </li></ul>

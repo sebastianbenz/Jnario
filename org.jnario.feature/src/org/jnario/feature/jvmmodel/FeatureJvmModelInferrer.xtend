@@ -11,26 +11,22 @@ import com.google.inject.Inject
 import java.util.List
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtend.core.xtend.XtendClass
-import org.eclipse.xtend.core.xtend.XtendMember
 import org.eclipse.xtext.common.types.JvmConstructor
 import org.eclipse.xtext.common.types.JvmGenericType
-import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.xbase.XConstructorCall
-import org.eclipse.xtext.xbase.XFeatureCall
-import org.eclipse.xtext.xbase.XMemberFeatureCall
-import org.eclipse.xtext.xbase.XStringLiteral
 import org.eclipse.xtext.xbase.XVariableDeclaration
+import org.eclipse.xtext.xbase.XbaseFactory
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator
 import org.jnario.feature.feature.Background
 import org.jnario.feature.feature.Feature
 import org.jnario.feature.feature.FeatureFile
-import org.jnario.feature.feature.Given
 import org.jnario.feature.feature.Scenario
 import org.jnario.feature.feature.Step
-import org.jnario.feature.feature.StepReference
+import org.jnario.feature.feature.StepImplementation
+import org.jnario.feature.feature.Then
 import org.jnario.feature.naming.FeatureClassNameProvider
 import org.jnario.feature.naming.StepNameProvider
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder
@@ -41,14 +37,12 @@ import org.jnario.runner.Contains
 import org.jnario.runner.Named
 import org.jnario.runner.Order
 import org.junit.Ignore
-import static extension com.google.common.base.Strings.*
+
 import static com.google.common.collect.Iterators.*
 import static org.eclipse.xtext.EcoreUtil2.*
 import static org.jnario.feature.jvmmodel.FeatureJvmModelInferrer.*
-import org.eclipse.xtext.xbase.XbaseFactory
-import org.jnario.feature.feature.Then
-import org.jnario.feature.feature.Step
-import org.jnario.feature.feature.StepImplementation
+
+import static extension com.google.common.base.Strings.*
 
 /**
  * @author Birgit Engelmann - Initial contribution and API

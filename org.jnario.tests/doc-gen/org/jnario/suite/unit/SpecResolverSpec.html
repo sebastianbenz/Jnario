@@ -31,12 +31,12 @@
 <ul><li><p  id="resolves_referenced_specs"><strong>resolves referenced specs</strong>
 <pre class="prettyprint lang-spec">
 parseSuite('''
-	package demo
-	import demo.*
-	#My Suite
-	
-	- "My Spec"
-	- "My Feature"
+  package demo
+  import demo.*
+  #My Suite
+  
+  - "My Spec"
+  - "My Feature"
 ''')
 
 resolvedSpecs(firstSuite) =&gt; set("MySpecSpec", "MyFeatureFeature")</pre>
@@ -51,18 +51,18 @@ import demo.*
 #The Suite
 
 - \demo\.My.*\
-			''')
-			
-			resolvedSpecs(m.firstSuite) =&gt; set("MySpecSpec", "MyFeatureFeature")</pre>
+      ''')
+      
+      resolvedSpecs(m.firstSuite) =&gt; set("MySpecSpec", "MyFeatureFeature")</pre>
 </p>
 </li><li><p  id="example_2"><strong>example 2</strong>
 <pre class="prettyprint lang-spec">
 m.parseSuite('''
-	package demo
-	import demo.*
-	#My Suite
-	
-	- \.*Spec\
+  package demo
+  import demo.*
+  #My Suite
+  
+  - \.*Spec\
 ''')
 
 resolvedSpecs(m.firstSuite) =&gt; set("MySpecSpec")</pre>
@@ -74,11 +74,11 @@ subject.resolveSpecs(SuiteFactory::eINSTANCE.createPatternReference) =&gt; list(
 </li><li><p  id="ignores_unresolved_elements"><strong>ignores unresolved elements</strong>
 <pre class="prettyprint lang-spec">
 m.parseSuite('''
-	package demo
-	import demo.*
-	#My Suite
-	
-	- \NonExistent\
+  package demo
+  import demo.*
+  #My Suite
+  
+  - \NonExistent\
 ''')
 
 resolvedSpecs(m.firstSuite) =&gt; set()</pre>
@@ -86,11 +86,11 @@ resolvedSpecs(m.firstSuite) =&gt; set()</pre>
 </li><li><p  id="ignores_containing_suite"><strong>ignores containing suite</strong>
 <pre class="prettyprint lang-spec">
 m.parseSuite('''
-	package demo
-	import demo.*
-	#My Suite
-	
-	- \.*\
+  package demo
+  import demo.*
+  #My Suite
+  
+  - \.*\
 ''')
 
 resolvedSpecs(m.firstSuite) =&gt; set("MySpecSpec", "MyFeatureFeature", "StringSpec")</pre>

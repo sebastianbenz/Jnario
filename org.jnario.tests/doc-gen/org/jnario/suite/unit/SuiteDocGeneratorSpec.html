@@ -31,29 +31,29 @@
 <ul><li><p  id="Generates_suite_doc_with_resolved_specs"><strong>Generates suite doc with resolved specs</strong>
 <pre class="prettyprint lang-spec">
 val actual = generateDoc('''
-	package test
-	
-	#Heading
-	Heading description.
-	- "Red"
-	- "Blue": with a description
-	##Subheading
-	Subheading description with **markdown**.
-	- \.*G.*\
+  package test
+  
+  #Heading
+  Heading description.
+  - "Red"
+  - "Blue": with a description
+  ##Subheading
+  Subheading description with **markdown**.
+  - \.*G.*\
 ''')
 
 val expected = '''
-	&lt;p&gt;Heading description.&lt;/p&gt;
-	&lt;ul&gt;
-	&lt;li&gt;&lt;a href="../test/RedSpec.html"&gt;Red&lt;/a&gt; &lt;/li&gt;
-	&lt;li&gt;&lt;a href="../test/BlueSpec.html"&gt;Blue&lt;/a&gt; with a description&lt;/li&gt;
-	&lt;/ul&gt;
-	&lt;h2&gt;Subheading&lt;/h2&gt;
-	&lt;p&gt;Subheading description with &lt;strong&gt;markdown&lt;/strong&gt;.&lt;/p&gt;
-	&lt;ul&gt;
-	&lt;li&gt;&lt;a href="../test/GreenSpec.html"&gt;Green&lt;/a&gt; &lt;/li&gt;
-	&lt;li&gt;&lt;a href="../test/GreySpec.html"&gt;Grey&lt;/a&gt; &lt;/li&gt;
-	&lt;/ul&gt;
+  &lt;p&gt;Heading description.&lt;/p&gt;
+  &lt;ul&gt;
+  &lt;li&gt;&lt;a href="../test/RedSpec.html"&gt;Red&lt;/a&gt; &lt;/li&gt;
+  &lt;li&gt;&lt;a href="../test/BlueSpec.html"&gt;Blue&lt;/a&gt; with a description&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;h2&gt;Subheading&lt;/h2&gt;
+  &lt;p&gt;Subheading description with &lt;strong&gt;markdown&lt;/strong&gt;.&lt;/p&gt;
+  &lt;ul&gt;
+  &lt;li&gt;&lt;a href="../test/GreenSpec.html"&gt;Green&lt;/a&gt; &lt;/li&gt;
+  &lt;li&gt;&lt;a href="../test/GreySpec.html"&gt;Grey&lt;/a&gt; &lt;/li&gt;
+  &lt;/ul&gt;
 '''.toString
 
 assertEquals(expected, actual)</pre>

@@ -31,32 +31,32 @@
 <ul><li><p  id="uses_spec_description"><strong>uses spec description</strong>
 <pre class="prettyprint lang-spec">
 parseSpec('''
-	describe "My Spec"{}''')
+  describe "My Spec"{}''')
 qualifiedName =&gt; "My Spec"</pre>
 </p>
 </li><li><p  id="trims_spec_description_whitespace"><strong>trims spec description whitespace</strong>
 <pre class="prettyprint lang-spec">
 parseSpec('''
-	describe "My Spec  "{}''')
+  describe "My Spec  "{}''')
 qualifiedName =&gt; "My Spec"</pre>
 </p>
 </li><li><p  id="uses_referenced_type"><strong>uses referenced type</strong>
 <pre class="prettyprint lang-spec">
 parseSpec('''
-	describe org.junit.Assert{}''')
+  describe org.junit.Assert{}''')
 qualifiedName =&gt; "Assert"</pre>
 </p>
 </li><li><p  id="uses_referenced_type_and_description"><strong>uses referenced type and description</strong>
 <pre class="prettyprint lang-spec">
 parseSpec('''
-	describe org.junit.Assert "My Spec"{}''')
+  describe org.junit.Assert "My Spec"{}''')
 qualifiedName =&gt; "Assert My Spec"</pre>
 </p>
 </li><li><p  id="adds_spec_package"><strong>adds spec package</strong>
 <pre class="prettyprint lang-spec">
 parseSpec('''
-	package test
-	describe "My Spec"{}''')
+  package test
+  describe "My Spec"{}''')
 qualifiedName =&gt; "test.My Spec"</pre>
 </p>
 </li></ul>

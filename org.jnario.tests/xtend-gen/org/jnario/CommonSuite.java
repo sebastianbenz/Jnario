@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(ExampleGroupRunner.class)
 @Named("Common")
-@Contains({ ShouldSpec.class, ExampleColumnSpec.class, RegexFilterSpec.class, FilterExtractorSpec.class, StringsSpec.class, WhiteSpaceNormalizerSpec.class, ExampleTableSpec.class, MavenSpec.class })
+@Contains({ ShouldSpec.class, RegexFilterSpec.class, FilterExtractorSpec.class, StringsSpec.class, WhiteSpaceNormalizerSpec.class, MavenSpec.class, ExampleColumnSpec.class, ExampleTableSpec.class })
 @SuppressWarnings("all")
 public class CommonSuite {
 }

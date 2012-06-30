@@ -28,4 +28,3 @@ Feature: Examples.
 		Then the result should be "30"
 			result => args.first.toInt
  
- 

@@ -11,13 +11,12 @@ import com.google.inject.Inject
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmAnnotationReference
 import org.jnario.runner.ExampleGroupRunner
+import org.jnario.runner.FeatureRunner
 import org.junit.AfterClass
 import org.junit.BeforeClass
 import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.jnario.runner.FeatureExamplesRunner
-import org.jnario.runner.FeatureRunner
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -34,10 +33,6 @@ class JunitAnnotationProvider {
 		return context.toAnnotation(typeof(RunWith), typeof(FeatureRunner))
 	}
 	
-	def getFeatureExamplesRunner(EObject context){
-		return context.toAnnotation(typeof(RunWith), typeof(FeatureExamplesRunner))
-	}
- 
 	def getTestAnnotations(EObject context, boolean isPending){
 		val annotations = <JvmAnnotationReference>newArrayList()
 		annotations += context.toAnnotation(typeof(Test))
