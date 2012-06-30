@@ -10,4 +10,4 @@ Export-Package: org.jnario.lib,
  org.jnario.runner,
  org.jnario.runner.internal;x-friends:="org.jnario.lib.tests"
 Require-Bundle: org.eclipse.xtext.xbase.lib;bundle-version="2.3.0";visibility:=reexport,
- org.junit;bundle-version="4.8.0";visibility:=reexport
+ org.junit;bundle-version="4.10.0";visibility:=reexport

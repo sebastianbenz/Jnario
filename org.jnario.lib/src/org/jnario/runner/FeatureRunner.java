@@ -65,7 +65,6 @@ public class FeatureRunner extends ExampleGroupRunner {
 		EachTestNotifier testNotifier= new EachTestNotifier(notifier,
 				getDescription());
 		Statement executeChild = new Statement() {
-			
 			@Override
 			public void evaluate() throws Throwable {
 				FeatureRunner.super.run(notifier);

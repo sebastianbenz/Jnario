@@ -1,5 +1,6 @@
 package org.jnario.runner;
 
+import org.jnario.lib.AbstractSpecCreator;
 import org.junit.Ignore;
 import org.junit.runner.Description;
 import org.junit.runner.manipulation.NoTestsRemainException;
@@ -8,14 +9,21 @@ import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
 import org.junit.runners.model.Statement;
 
-@SuppressWarnings("restriction")
 public class StepRunner extends ExampleRunner {
+
+	private static final class NullSpecCreator extends
+			AbstractSpecCreator {
+		@Override
+		protected <T> T create(Class<T> klass) {
+			throw new UnsupportedOperationException();
+		}
+	}
 
 	private Object scenario;
 
 	public StepRunner(Class<?> testClass, FrameworkMethod method,
 			NameProvider nameProvider, Object scenario) throws InitializationError, NoTestsRemainException {
-		super(testClass, method, nameProvider, null);
+		super(testClass, method, nameProvider, new NullSpecCreator());
 		this.scenario = scenario;
 	}
 	
@@ -31,7 +39,6 @@ public class StepRunner extends ExampleRunner {
 
 	@Override
 	protected Statement methodBlock(FrameworkMethod method) {
-		Statement statement= methodInvoker(method, scenario);
-		return statement;
+		return methodInvoker(method, scenario);
 	}
 }

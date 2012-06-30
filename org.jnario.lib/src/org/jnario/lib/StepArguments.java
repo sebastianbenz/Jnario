@@ -9,7 +9,6 @@
 package org.jnario.lib;
 
 import static java.util.Arrays.asList;
-import static java.util.Collections.unmodifiableList;
 
 import java.util.Iterator;
 import java.util.List;
