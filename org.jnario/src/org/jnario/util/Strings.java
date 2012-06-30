@@ -174,8 +174,34 @@ public class Strings extends org.eclipse.xtext.util.Strings{
 	
 	public static String makeJunitConform(String result) {
 		if(result == null){
-			return "";
+			return null;
 		}
-		return result.trim().replaceAll("\\r?\\n\\s*", " ").replace("(", "[").replace(")", "]").replace("#", "-");
+		result = result.replaceAll("\\r?\\n\\s*", " ");
+		return replace(result, '(', '[', ')', ']', '#', '-').trim();
 	}
+	
+	private static String replace(String s, char... replacements){
+		if(s == null){
+			return null;
+		}
+		boolean isReplaced = false;
+		StringBuilder sb = new StringBuilder();
+		for(int i = 0; i < s.length(); i++){
+			isReplaced = false;
+			char c = s.charAt(i);
+			for(int j = 0; j < replacements.length; j = j + 2){
+				char pattern = replacements[j];
+				if(pattern == c){
+					sb.append(replacements[j+1]);
+					isReplaced = true;
+					break;
+				}
+			}
+			if(!isReplaced){
+				sb.append(c);
+			}
+		}
+		return sb.toString();
+	}
+
 }

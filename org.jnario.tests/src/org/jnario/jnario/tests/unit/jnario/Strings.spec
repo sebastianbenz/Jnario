@@ -26,4 +26,17 @@ describe Strings{
 		fact examples.forEach[string.startsWithWord(word) => index]
 	}
 	
+	context makeJunitConform{
+		def examples{
+			| string 				| result 			|
+			| null					| null				|
+			| "hello"				| "hello"			|
+			| "hello "				| "hello"			|
+			| "hello\n\tworld"		| "hello world"		|
+			| "hello(param)"		| "hello[param]"	|
+			| "hello #world#"		| "hello -world-"		|
+		}
+		
+		fact examples.forEach[string.makeJunitConform => result]
+	}
 }
