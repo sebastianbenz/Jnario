@@ -3,6 +3,7 @@ package org.jnario.suite.unit;
 import com.google.inject.Inject;
 import java.util.List;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.hamcrest.StringDescription;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.Should;
@@ -54,12 +55,12 @@ public class SuiteNodeBuilderParentListSuiteIntSpec extends SuiteNodeBuilderSpec
           String _name = _parent==null?(String)null:_parent.getName();
           boolean _should_be = Should.should_be(_name, it.parent);
           Assert.assertTrue("\nExpected parent(suites, position)?.name should be parent but"
-           + "\n     parent(suites, position)?.name is " + "\"" + _name + "\""
-           + "\n     parent(suites, position) is " + _parent
-           + "\n      is " + SuiteNodeBuilderParentListSuiteIntSpec.this._suiteNodeBuilder
-           + "\n     suites is " + it.suites
-           + "\n     position is " + it.position
-           + "\n     parent is " + "\"" + it.parent + "\"" + "\n", _should_be);
+           + "\n     parent(suites, position)?.name is " + new StringDescription().appendValue(_name).toString()
+           + "\n     parent(suites, position) is " + new StringDescription().appendValue(_parent).toString()
+           + "\n      is " + new StringDescription().appendValue(SuiteNodeBuilderParentListSuiteIntSpec.this._suiteNodeBuilder).toString()
+           + "\n     suites is " + new StringDescription().appendValue(it.suites).toString()
+           + "\n     position is " + new StringDescription().appendValue(it.position).toString()
+           + "\n     parent is " + new StringDescription().appendValue(it.parent).toString() + "\n", _should_be);
           
         }
       };

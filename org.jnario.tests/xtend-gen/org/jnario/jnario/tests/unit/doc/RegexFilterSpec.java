@@ -1,6 +1,7 @@
 package org.jnario.jnario.tests.unit.doc;
 
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.hamcrest.StringDescription;
 import org.jnario.doc.Filter;
 import org.jnario.doc.RegexFilter;
 import org.jnario.jnario.tests.unit.doc.RegexFilterSpecFilteringExamples;
@@ -43,10 +44,10 @@ public class RegexFilterSpec {
           String _apply = filter.apply(it.string);
           boolean _doubleArrow = Should.operator_doubleArrow(_apply, it.result);
           Assert.assertTrue("\nExpected filter.apply(string) => result but"
-           + "\n     filter.apply(string) is " + "\"" + _apply + "\""
-           + "\n     filter is " + filter
-           + "\n     string is " + "\"" + it.string + "\""
-           + "\n     result is " + "\"" + it.result + "\"" + "\n", _doubleArrow);
+           + "\n     filter.apply(string) is " + new StringDescription().appendValue(_apply).toString()
+           + "\n     filter is " + new StringDescription().appendValue(filter).toString()
+           + "\n     string is " + new StringDescription().appendValue(it.string).toString()
+           + "\n     result is " + new StringDescription().appendValue(it.result).toString() + "\n", _doubleArrow);
           
         }
       };

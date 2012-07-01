@@ -1,6 +1,7 @@
 package org.jnario.spec.tests.unit.naming;
 
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.hamcrest.StringDescription;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.Should;
@@ -41,9 +42,9 @@ public class ExamplePendingSpec extends ExampleSpec {
           boolean _pendingStateOf = ExamplePendingSpec.this.pendingStateOf(it.example);
           boolean _should_be = Should.<Boolean>should_be(Boolean.valueOf(_pendingStateOf), it.expected);
           Assert.assertTrue("\nExpected pendingStateOf(example) should be expected but"
-           + "\n     pendingStateOf(example) is " + Boolean.valueOf(_pendingStateOf)
-           + "\n     example is " + "\"" + it.example + "\""
-           + "\n     expected is " + it.expected + "\n", _should_be);
+           + "\n     pendingStateOf(example) is " + new StringDescription().appendValue(Boolean.valueOf(_pendingStateOf)).toString()
+           + "\n     example is " + new StringDescription().appendValue(it.example).toString()
+           + "\n     expected is " + new StringDescription().appendValue(it.expected).toString() + "\n", _should_be);
           
         }
       };

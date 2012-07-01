@@ -3,12 +3,13 @@ package org.jnario.spec.tests.documentation;
 import java.util.Stack;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.Helpers;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.jnario.spec.tests.documentation.JnarioSpecsTutorialSpec;
+import org.jnario.spec.tests.documentation.IntroducingJnarioSpecsSpec;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,7 +20,7 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("Writing Assertions")
-public class JnarioSpecsTutorialWritingAssertionsSpec extends JnarioSpecsTutorialSpec {
+public class IntroducingJnarioSpecsWritingAssertionsSpec extends IntroducingJnarioSpecsSpec {
   /**
    * The `assert` statement fails if
    * the following expression does not evaluate to `true`.
@@ -33,11 +34,11 @@ public class JnarioSpecsTutorialWritingAssertionsSpec extends JnarioSpecsTutoria
     Stack<?> _stack = new Stack<Object>();
     boolean _empty = _stack.empty();
     Assert.assertTrue("\nExpected new Stack().empty but"
-     + "\n     new Stack() is " + _stack + "\n", _empty);
+     + "\n     new Stack() is " + new StringDescription().appendValue(_stack).toString() + "\n", _empty);
     
     boolean _startsWith = "Hello".startsWith("H");
     Assert.assertTrue("\nExpected \"Hello\".startsWith(\"H\") but"
-     + "\n     \"Hello\".startsWith(\"H\") is " + _startsWith + "\n", _startsWith);
+     + "\n     \"Hello\".startsWith(\"H\") is " + new StringDescription().appendValue(_startsWith).toString() + "\n", _startsWith);
     
   }
   
@@ -55,28 +56,28 @@ public class JnarioSpecsTutorialWritingAssertionsSpec extends JnarioSpecsTutoria
     boolean _should_be = Should.<Boolean>should_be(
       Boolean.valueOf(true), true);
     Assert.assertTrue("\nExpected true should be true but"
-     + "\n     true should be true is " + null + "\n", _should_be);
+     + "\n     true should be true is " + new StringDescription().appendValue(null).toString() + "\n", _should_be);
     
     boolean _doubleArrow = Should.operator_doubleArrow(
       Boolean.valueOf(false), Boolean.valueOf(false));
     Assert.assertTrue("\nExpected false => false but"
-     + "\n     false => false is " + _doubleArrow + "\n", _doubleArrow);
+     + "\n     false => false is " + new StringDescription().appendValue(_doubleArrow).toString() + "\n", _doubleArrow);
     
     int _plus = (1 + 1);
     boolean _should_be_1 = Should.should_be(Integer.valueOf(_plus), Integer.valueOf(1));
     Assert.assertFalse("\nExpected 1 + 1 should not be 1 but"
-     + "\n     1 + 1 is " + Integer.valueOf(_plus) + "\n", _should_be_1);
+     + "\n     1 + 1 is " + new StringDescription().appendValue(Integer.valueOf(_plus)).toString() + "\n", _should_be_1);
     
     int _plus_1 = (1 + 1);
     boolean _doubleArrow_1 = Should.operator_doubleArrow(Integer.valueOf(_plus_1), Integer.valueOf(2));
     Assert.assertTrue("\nExpected 1 + 1 => 2 but"
-     + "\n     1 + 1 is " + Integer.valueOf(_plus_1) + "\n", _doubleArrow_1);
+     + "\n     1 + 1 is " + new StringDescription().appendValue(Integer.valueOf(_plus_1)).toString() + "\n", _doubleArrow_1);
     
   }
   
   /**
    * Assertions in Jnario are self-explainable. When an assertion fails, it tries to
-   * provide as much information as possible. It will
+   * provide as much information about the reason of its failure as possible. It will
    * print the exact expression that has failed together with the actual value
    * of all subexpressions. This means that you don't need to debug a test to
    * see why it actually has failed.
@@ -98,10 +99,10 @@ public class JnarioSpecsTutorialWritingAssertionsSpec extends JnarioSpecsTutoria
             _and = (_equals && _equals_1);
           }
           Assert.assertTrue("\nExpected x == 1 && y == 0 but"
-           + "\n     x == 1 is " + _equals
-           + "\n     x is " + x
-           + "\n     y == 0 is " + _equals_1
-           + "\n     y is " + y + "\n", _and);
+           + "\n     x == 1 is " + new StringDescription().appendValue(_equals).toString()
+           + "\n     x is " + new StringDescription().appendValue(x).toString()
+           + "\n     y == 0 is " + new StringDescription().appendValue(_equals_1).toString()
+           + "\n     y is " + new StringDescription().appendValue(y).toString() + "\n", _and);
           
         }
       };
@@ -110,16 +111,16 @@ public class JnarioSpecsTutorialWritingAssertionsSpec extends JnarioSpecsTutoria
     _builder.append("Expected x == 1 && y == 0 but");
     _builder.newLine();
     _builder.append("     ");
-    _builder.append("x == 1 is false");
+    _builder.append("x == 1 is <false>");
     _builder.newLine();
     _builder.append("     ");
-    _builder.append("x is 0");
+    _builder.append("x is <0>");
     _builder.newLine();
     _builder.append("     ");
-    _builder.append("y == 0 is false");
+    _builder.append("y == 0 is <false>");
     _builder.newLine();
     _builder.append("     ");
-    _builder.append("y is 1");
+    _builder.append("y is <1>");
     Helpers.is(_errorMessage, _builder);
     final String greeting = "hello";
     final Procedure1<Boolean> _function_1 = new Procedure1<Boolean>() {
@@ -127,8 +128,8 @@ public class JnarioSpecsTutorialWritingAssertionsSpec extends JnarioSpecsTutoria
           String _upperCase = greeting.toUpperCase();
           boolean _should_be = Should.should_be(_upperCase, "HELLO");
           Assert.assertFalse("\nExpected greeting.toUpperCase should not be \"HELLO\" but"
-           + "\n     greeting.toUpperCase is " + "\"" + _upperCase + "\""
-           + "\n     greeting is " + "\"" + greeting + "\"" + "\n", _should_be);
+           + "\n     greeting.toUpperCase is " + new StringDescription().appendValue(_upperCase).toString()
+           + "\n     greeting is " + new StringDescription().appendValue(greeting).toString() + "\n", _should_be);
           
         }
       };

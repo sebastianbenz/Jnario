@@ -31,31 +31,28 @@
 <p>@author Sebastian Benz - Initial contribution and API</p>
 <ul><li><p  id="should_be_executed_after_each_test"><strong>should be executed after each test</strong>
 <pre class="prettyprint lang-spec">
-val spec = '
-  package bootstrap 
+'''
+package bootstrap 
+
+describe "After"{
   
-  import org.jnario.runner.Order
+  static int afterExecutionCount = 0
   
-  describe "After"{
-    
-    static int afterExecutionCount = 0
-    
-    fact "should be executed after each test (1)"{
-      afterExecutionCount should be 0
-    }  
-    fact "should be executed after each test (2)"{
-      afterExecutionCount should be 1
-    }
-    fact "should be executed after each test (3)"{
-      afterExecutionCount should be 2
-    }  
-    
-    after{
-      afterExecutionCount = afterExecutionCount + 1
-    }
+  fact "should be executed after each test (1)"{
+    afterExecutionCount should be 0
+  }  
+  fact "should be executed after each test (2)"{
+    afterExecutionCount should be 1
   }
-'
-spec.executesSuccessfully</pre>
+  fact "should be executed after each test (3)"{
+    afterExecutionCount should be 2
+  }  
+  
+  after{
+    afterExecutionCount = afterExecutionCount + 1
+  }
+}
+    '''.executesSuccessfully</pre>
 </p>
 </li></ul>
 				</div>

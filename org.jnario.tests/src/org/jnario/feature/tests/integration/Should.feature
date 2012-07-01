@@ -16,7 +16,6 @@ Feature: Using Matchers in Features
 					Scenario: Features with should
 						
 						Given a Scenario
-						When defining the expected behavior
 						Then it should be possible to use 'should'
 							true should be true
 							1 + 1 should not be 1
@@ -25,6 +24,5 @@ Feature: Using Matchers in Features
 							1 + 1 => 2 
 							"a string" => typeof(String)
 			'''
-		When it is executed
 		Then it should be successful
 		

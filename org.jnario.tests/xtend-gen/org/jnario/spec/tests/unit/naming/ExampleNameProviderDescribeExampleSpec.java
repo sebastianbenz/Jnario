@@ -1,5 +1,6 @@
 package org.jnario.spec.tests.unit.naming;
 
+import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.Query;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -27,7 +28,7 @@ public class ExampleNameProviderDescribeExampleSpec extends ExampleNameProviderS
     String _describeFirst = this.describeFirst("\'should do stuff\' {true}");
     boolean _doubleArrow = Should.operator_doubleArrow(_describeFirst, "should do stuff");
     Assert.assertTrue("\nExpected describeFirst(\"\'should do stuff\' {true}\") => \"should do stuff\" but"
-     + "\n     describeFirst(\"\'should do stuff\' {true}\") is " + "\"" + _describeFirst + "\"" + "\n", _doubleArrow);
+     + "\n     describeFirst(\"\'should do stuff\' {true}\") is " + new StringDescription().appendValue(_describeFirst).toString() + "\n", _doubleArrow);
     
   }
   
@@ -38,12 +39,12 @@ public class ExampleNameProviderDescribeExampleSpec extends ExampleNameProviderS
     String _describeFirst = this.describeFirst("\'should do stuff\'");
     boolean _doubleArrow = Should.operator_doubleArrow(_describeFirst, "should do stuff [PENDING]");
     Assert.assertTrue("\nExpected describeFirst(\"\'should do stuff\'\") => \"should do stuff [PENDING]\" but"
-     + "\n     describeFirst(\"\'should do stuff\'\") is " + "\"" + _describeFirst + "\"" + "\n", _doubleArrow);
+     + "\n     describeFirst(\"\'should do stuff\'\") is " + new StringDescription().appendValue(_describeFirst).toString() + "\n", _doubleArrow);
     
     String _describeFirst_1 = this.describeFirst("\'should do stuff\'{}");
     boolean _doubleArrow_1 = Should.operator_doubleArrow(_describeFirst_1, "should do stuff [PENDING]");
     Assert.assertTrue("\nExpected describeFirst(\"\'should do stuff\'{}\") => \"should do stuff [PENDING]\" but"
-     + "\n     describeFirst(\"\'should do stuff\'{}\") is " + "\"" + _describeFirst_1 + "\"" + "\n", _doubleArrow_1);
+     + "\n     describeFirst(\"\'should do stuff\'{}\") is " + new StringDescription().appendValue(_describeFirst_1).toString() + "\n", _doubleArrow_1);
     
   }
   

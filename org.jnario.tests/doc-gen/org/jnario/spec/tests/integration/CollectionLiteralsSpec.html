@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>CollectionLiterals</title>
+<title>Collection Literals</title>
 <meta name="description" content="">
 <meta name="author" content="Jnario">
 
@@ -24,22 +24,32 @@
 	<div class="container">
 		<div class="content">
 			<div class="page-header">
-				<h1>CollectionLiterals</h1>
+				<h1>Collection Literals</h1>
 			</div>
 			<div class="row">
 				<div class="span12">
-<h3 id="List_Literal">List Literal</h3>
-<p></p>
-<ul><li><p  id="list__green____red______newArrayList__green____red__"><strong>list["green", "red"] => newArrayList["green", "red"]</strong>
+<p>Jnario provides shorter versions of the Xtend standard collection literals.</p>
+<ul><li><p  id="List_Literal"><strong>List Literal</strong>
+<pre class="prettyprint lang-spec">
+list("green", "red")             =&gt; newArrayList("green", "red")
+list(list("green"), list("red")) =&gt; newArrayList(newArrayList("green"), newArrayList("red"))</pre>
 </p>
-</li><li><p  id="list_list__green____list__red_______newArrayList_newArrayList__green____newArrayList__red___"><strong>list[list["green"], list["red"]] => newArrayList[newArrayList["green"], newArrayList["red"]]</strong>
+</li><li><p  id="Set_Literal"><strong>Set Literal</strong>
+<pre class="prettyprint lang-spec">
+set("green", "red")              =&gt; newHashSet("green", "red")
+set(set("green"), set("red"))    =&gt; newHashSet(newHashSet("green"), newHashSet("red"))</pre>
 </p>
-</li></ul>
-<h3 id="Set_Literal">Set Literal</h3>
-<p></p>
-<ul><li><p  id="set__green____red______newHashSet__green____red__"><strong>set["green", "red"] => newHashSet["green", "red"]</strong>
-</p>
-</li><li><p  id="set_set__green____set__red_______newHashSet_newHashSet__green____newHashSet__red___"><strong>set[set["green"], set["red"]] => newHashSet[newHashSet["green"], newHashSet["red"]]</strong>
+</li><li><p  id="Map_Literal"><strong>Map Literal</strong>
+<pre class="prettyprint lang-spec">
+map(
+  "green"  -&gt; "apple",
+  "yellow" -&gt; "banana",
+  "red"    -&gt; "tomato"
+) =&gt; newHashMap(
+  "green"  -&gt; "apple",
+  "yellow" -&gt; "banana",
+  "red"    -&gt; "tomato"
+)</pre>
 </p>
 </li></ul>
 				</div>

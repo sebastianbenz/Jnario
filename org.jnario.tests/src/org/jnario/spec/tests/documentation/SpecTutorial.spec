@@ -26,7 +26,7 @@ import java.util.Stack
  * the JUnit integration. You can download the jar [here](http://jnario.org/updates/snapshot/org.jnario.lib-0.1.0-SNAPSHOT.jar).
  *    
  */ 
-describe "Jnario Specs - Tutorial"{
+describe "Introducing Jnario Specs"{
 
 	/*
 	 * To get started create a new specification using the spec wizard
@@ -531,7 +531,7 @@ describe "Jnario Specs - Tutorial"{
 		
 		/*
 		 * Assertions in Jnario are self-explainable. When an assertion fails, it tries to 
-		 * provide as much information as possible. It will 
+		 * provide as much information about the reason of its failure as possible. It will 
 		 * print the exact expression that has failed together with the actual value
 		 * of all subexpressions. This means that you don't need to debug a test to 
 		 * see why it actually has failed.
@@ -541,10 +541,10 @@ describe "Jnario Specs - Tutorial"{
 			val y = 1 
 			errorMessage[assert x == 1 && y == 0].is('''
 			  Expected x == 1 && y == 0 but
-			       x == 1 is false
-			       x is 0
-			       y == 0 is false
-			       y is 1''')
+			       x == 1 is <false>
+			       x is <0>
+			       y == 0 is <false>
+			       y is <1>''')
 			       
 			val greeting = "hello"        
 			errorMessage[greeting.toUpperCase should not be "HELLO"].is('''

@@ -1,6 +1,6 @@
 package org.jnario.feature.documentation;
 
-import org.jnario.feature.documentation.JnarioFeaturesTutorialHowToWriteAFeatureSpec;
+import org.jnario.feature.documentation.IntroducingJnarioFeaturesHowToWriteAFeatureSpec;
 import org.jnario.runner.Contains;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
@@ -17,9 +17,9 @@ import org.junit.runner.RunWith;
  * You can install the most recent version from this update site: `http://www.jnario.org/updates/snapshot/`. Jnario requires a small runtime library that contains
  * the JUnit integration. You can download the jar [here](http://jnario.org/updates/snapshot/org.jnario.lib-0.1.0-SNAPSHOT.jar).
  */
-@Contains(JnarioFeaturesTutorialHowToWriteAFeatureSpec.class)
+@Contains(IntroducingJnarioFeaturesHowToWriteAFeatureSpec.class)
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
-@Named("Jnario Features - Tutorial")
-public class JnarioFeaturesTutorialSpec {
+@Named("Introducing Jnario Features")
+public class IntroducingJnarioFeaturesSpec {
 }

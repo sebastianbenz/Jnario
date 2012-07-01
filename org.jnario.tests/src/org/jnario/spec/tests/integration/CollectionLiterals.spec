@@ -8,17 +8,31 @@
 package org.jnario.spec.tests.integration
 import static org.jnario.lib.JnarioCollectionLiterals.*
 
+/*
+ * Jnario provides shorter versions of the Xtend standard collection literals.
+ */
+describe "Collection Literals"{
 
-describe "CollectionLiterals"{
-
-	describe "List Literal"{
-		fact list("green", "red") => newArrayList("green", "red")
-		fact list(list("green"), list("red")) => newArrayList(newArrayList("green"), newArrayList("red"))
+	fact "List Literal"{
+	  list("green", "red")             => newArrayList("green", "red")
+	  list(list("green"), list("red")) => newArrayList(newArrayList("green"), newArrayList("red"))
 	}
 	
-	describe "Set Literal"{
-		fact set("green", "red") => newHashSet("green", "red")
-		fact set(set("green"), set("red")) => newHashSet(newHashSet("green"), newHashSet("red"))
+	fact "Set Literal"{
+	  set("green", "red")              => newHashSet("green", "red")
+	  set(set("green"), set("red"))    => newHashSet(newHashSet("green"), newHashSet("red"))
+	}  
+	
+	fact "Map Literal"{
+	  map(
+	    "green"  -> "apple",
+	    "yellow" -> "banana",
+	    "red"    -> "tomato"
+	  ) => newHashMap(
+	    "green"  -> "apple",
+	    "yellow" -> "banana",
+	    "red"    -> "tomato"
+	  )
 	}    
 			
 }

@@ -9,7 +9,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- * It is possible to customize the instantiation of tests and subjects.
+ * It is possible to customize the instantiation of features, specs and subjects.
+ * This can be useful when a dependency injection container or a mocking
+ * framework should be used for creating specs. To do so, create a custom `SpecCreator` and
+ * annotate your spec with `CreateWith` and pass as a value the type of the custom `SpecCreator`.
+ * Here is an example for a custom `SpecCreator` that uses Google Guice to create the specification:
  * 
  * <pre class="prettyprint">
  * package org.jnario.lib;
@@ -17,24 +21,28 @@ import org.junit.runner.RunWith;
  * import com.google.inject.Guice;
  * import com.google.inject.util.Modules;
  * 
- * public class GuiceBasedTestInstantiator extends AbstractTestInstantiator {
- *   public Object createTest(Class<?> klass) throws Exception {
+ * public class GuiceSpecCreator extends AbstractSpecCreator {
+ *   public Object create(Class<?> klass) throws Exception {
  *     return Guice.createInjector(Modules.EMPTY_MODULE).getInstance(klass);
  *   }
  * }
  * </pre>
+ * 
+ * [Here](https://gist.github.com/2869959) is another example that demonstrates
+ * how to create a custom **SpecCreator** for [Mockito](http://code.google.com/p/mockito/).
  */
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
-@Named("Spec Instantiation")
-public class SpecInstantiationSpec {
+@Named("Customizing the Spec Creation")
+public class CustomizingTheSpecCreationSpec {
   /**
-   * @filter('''|.executesSuccessfully)
+   * This example uses the Google Guice to instantiate the specification.
+   *  @filter('''|.executesSuccessfully)
    */
   @Test
-  @Named("how to use a custom spec creator")
+  @Named("Example")
   @Order(99)
-  public void howToUseACustomSpecCreator() throws Exception {
+  public void example() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();
@@ -48,7 +56,7 @@ public class SpecInstantiationSpec {
     _builder.newLine();
     _builder.append("@CreateWith(typeof(GuiceSpecCreator))");
     _builder.newLine();
-    _builder.append("describe GuiceBasedTestInstantiator {");
+    _builder.append("describe \"Something\" {");
     _builder.newLine();
     _builder.append("  ");
     _builder.newLine();

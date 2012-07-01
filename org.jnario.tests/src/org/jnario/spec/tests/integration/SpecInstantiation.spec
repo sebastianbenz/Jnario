@@ -10,7 +10,11 @@ package org.jnario.spec.tests.integration
 import static extension org.jnario.jnario.test.util.SpecExecutor.*
 
 /*
- * It is possible to customize the instantiation of tests and subjects.
+ * It is possible to customize the instantiation of features, specs and subjects.
+ * This can be useful when a dependency injection container or a mocking
+ * framework should be used for creating specs. To do so, create a custom `SpecCreator` and 
+ * annotate your spec with `CreateWith` and pass as a value the type of the custom `SpecCreator`.
+ * Here is an example for a custom `SpecCreator` that uses Google Guice to create the specification:
  * 
  * <pre class="prettyprint">
  * package org.jnario.lib;
@@ -18,20 +22,23 @@ import static extension org.jnario.jnario.test.util.SpecExecutor.*
  * import com.google.inject.Guice;
  * import com.google.inject.util.Modules;
  * 
- * public class GuiceBasedTestInstantiator extends AbstractTestInstantiator {
- *   public Object createTest(Class<?> klass) throws Exception {
+ * public class GuiceSpecCreator extends AbstractSpecCreator {
+ *   public Object create(Class<?> klass) throws Exception {
  *     return Guice.createInjector(Modules.EMPTY_MODULE).getInstance(klass);
  *   }
  * }
  * </pre>
  * 
+ * [Here](https://gist.github.com/2869959) is another example that demonstrates 
+ * how to create a custom **SpecCreator** for [Mockito](http://code.google.com/p/mockito/).
  */
-describe "Spec Instantiation" {
+describe "Customizing the Spec Creation" {
 
   /*
+   * This example uses the Google Guice to instantiate the specification.
    *  @filter('''|.executesSuccessfully)  
    */
-  fact "how to use a custom spec creator"{
+  fact "Example"{
     '''
       package bootstrap
       
@@ -40,7 +47,7 @@ describe "Spec Instantiation" {
       import com.google.inject.Inject
       
       @CreateWith(typeof(GuiceSpecCreator))
-      describe GuiceBasedTestInstantiator {
+      describe "Something" {
         
         @Inject String toInject
         

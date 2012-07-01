@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.Query;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -38,8 +39,8 @@ public class ExampleNameProviderToMethodNameExampleSpec extends ExampleNameProvi
           String _firstMethodName = ExampleNameProviderToMethodNameExampleSpec.this.firstMethodName(it);
           boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "myExample");
           Assert.assertTrue("\nExpected firstMethodName(it) => \'myExample\' but"
-           + "\n     firstMethodName(it) is " + "\"" + _firstMethodName + "\""
-           + "\n     it is " + "\"" + it + "\"" + "\n", _doubleArrow);
+           + "\n     firstMethodName(it) is " + new StringDescription().appendValue(_firstMethodName).toString()
+           + "\n     it is " + new StringDescription().appendValue(it).toString() + "\n", _doubleArrow);
           
         }
       };

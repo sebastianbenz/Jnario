@@ -7,11 +7,15 @@
  *******************************************************************************/
 package org.jnario.feature.tests.integration
 
-Feature: Junit Rules
+Feature: Using JUnit Rules in Features
+
+You can use [JUnit rules](http://kentbeck.github.com/junit/javadoc/latest/org/junit/rules/TestRule.html) in your feature. Just define a field with the `@Rule` annotation
+like you would do in a normal JUnit test case. 
+
 	Scenario: Using JUnit Rules 
 		CharSequence jnarioFile
 		Given a feature
-			jnarioFile = '''
+			'''
 				package demo
 				import org.junit.Rule
 				import org.junit.rules.TemporaryFolder
@@ -25,6 +29,7 @@ Feature: Junit Rules
 						Then the rule should be initialized
 							folder.root should not be null	
 			'''
+			jnarioFile = args.first
 		When it is executed
 		Then it should be successful
  

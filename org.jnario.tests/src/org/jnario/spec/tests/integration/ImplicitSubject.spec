@@ -13,7 +13,7 @@ import static extension org.jnario.jnario.test.util.SpecExecutor.*
 import static org.jnario.jnario.test.util.ResultMatchers.*
 import static org.hamcrest.CoreMatchers.*
 
-describe "ImplicitSubject"{
+describe "Implicit Subject"{
   
   /*
    * @filter('''|.executesSuccessfully)  

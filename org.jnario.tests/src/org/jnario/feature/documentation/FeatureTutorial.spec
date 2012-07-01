@@ -25,7 +25,7 @@ import static extension org.jnario.jnario.test.util.FeatureExecutor.*
  * 
  *   
  */
-describe "Jnario Features - Tutorial"{
+describe "Introducing Jnario Features"{
   
   /* 
    * The first example for using Jnario Features is the specification of a calculator. Start out with creating
@@ -65,7 +65,7 @@ describe "Jnario Features - Tutorial"{
    * You will see the result of the run and it will be green. Since the steps from scenario are not implemented
    * yet all the steps will be marked as _PENDING_ as an reminder that there is still work to do.
    */
-   describe "How to write a Feature"{
+   describe "How to write a Feature?"{
      /*
      * 
      * @filter('''|.executesSuccessfully) 

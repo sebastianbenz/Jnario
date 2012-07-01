@@ -7,6 +7,7 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
+import org.hamcrest.StringDescription;
 import org.jnario.Specification;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.SuiteTestCreator;
@@ -110,10 +111,10 @@ public class SpecResolverSpec {
     Set<String> _set = JnarioCollectionLiterals.<String>set("MySpecSpec", "MyFeatureFeature");
     boolean _doubleArrow = Should.operator_doubleArrow(_resolvedSpecs, _set);
     Assert.assertTrue("\nExpected resolvedSpecs(firstSuite) => set(\"MySpecSpec\", \"MyFeatureFeature\") but"
-     + "\n     resolvedSpecs(firstSuite) is " + _resolvedSpecs
-     + "\n     firstSuite is " + _firstSuite
-     + "\n      is " + this.m
-     + "\n     set(\"MySpecSpec\", \"MyFeatureFeature\") is " + _set + "\n", _doubleArrow);
+     + "\n     resolvedSpecs(firstSuite) is " + new StringDescription().appendValue(_resolvedSpecs).toString()
+     + "\n     firstSuite is " + new StringDescription().appendValue(_firstSuite).toString()
+     + "\n      is " + new StringDescription().appendValue(this.m).toString()
+     + "\n     set(\"MySpecSpec\", \"MyFeatureFeature\") is " + new StringDescription().appendValue(_set).toString() + "\n", _doubleArrow);
     
   }
   

@@ -1,6 +1,7 @@
 package org.jnario.feature.tests.integration;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
@@ -30,9 +31,6 @@ public class UsingMatchersInFeaturesFeatureUsingMatchersInJnario {
     _builder.append("Given a Scenario");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("When defining the expected behavior");
-    _builder.newLine();
-    _builder.append("\t\t");
     _builder.append("Then it should be possible to use \'should\'");
     _builder.newLine();
     _builder.append("\t\t\t");
@@ -58,16 +56,10 @@ public class UsingMatchersInFeaturesFeatureUsingMatchersInJnario {
   
   @Test
   @Order(1)
-  @Named("When it is executed")
-  public void whenItIsExecuted() {
-    
-  }
-  
-  @Test
-  @Order(2)
   @Named("Then it should be successful")
   public void thenItShouldBeSuccessful() {
-    FeatureExecutor.executesSuccessfully(jnarioFile);
+      InputOutput.<String>println("executing scenario");
+      FeatureExecutor.executesSuccessfully(jnarioFile);
   }
   
   CharSequence jnarioFile;

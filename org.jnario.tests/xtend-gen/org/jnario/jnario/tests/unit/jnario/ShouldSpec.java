@@ -2,6 +2,7 @@ package org.jnario.jnario.tests.unit.jnario;
 
 import com.google.inject.Inject;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.hamcrest.StringDescription;
 import org.jnario.Should;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.Query;
@@ -44,10 +45,10 @@ public class ShouldSpec {
     boolean _isNot = _first.isNot();
     boolean _not = (!_isNot);
     Assert.assertTrue("\nExpected !query.first(typeof(Should)).isNot but"
-     + "\n     query.first(typeof(Should)).isNot is " + _isNot
-     + "\n     query.first(typeof(Should)) is " + _first
-     + "\n     query is " + _query
-     + "\n      is " + this._modelStore + "\n", _not);
+     + "\n     query.first(typeof(Should)).isNot is " + new StringDescription().appendValue(_isNot).toString()
+     + "\n     query.first(typeof(Should)) is " + new StringDescription().appendValue(_first).toString()
+     + "\n     query is " + new StringDescription().appendValue(_query).toString()
+     + "\n      is " + new StringDescription().appendValue(this._modelStore).toString() + "\n", _not);
     
   }
   
@@ -70,9 +71,9 @@ public class ShouldSpec {
     Should _first = _query.<Should>first(Should.class);
     boolean _isNot = _first.isNot();
     Assert.assertTrue("\nExpected query.first(typeof(Should)).isNot but"
-     + "\n     query.first(typeof(Should)) is " + _first
-     + "\n     query is " + _query
-     + "\n      is " + this._modelStore + "\n", _isNot);
+     + "\n     query.first(typeof(Should)) is " + new StringDescription().appendValue(_first).toString()
+     + "\n     query is " + new StringDescription().appendValue(_query).toString()
+     + "\n      is " + new StringDescription().appendValue(this._modelStore).toString() + "\n", _isNot);
     
   }
 }

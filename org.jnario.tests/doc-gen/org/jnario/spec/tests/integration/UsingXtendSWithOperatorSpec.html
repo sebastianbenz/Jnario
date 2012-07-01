@@ -28,14 +28,22 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<h3 id="initialize_fixtures">Initialize fixtures</h3>
-<p></p>
-<ul><li><p  id="stackWithTwoElements_size____2"><strong>stackWithTwoElements.size => 2</strong>
+<p>In Xtend you can use the <a href="http://www.eclipse.org/xtend/new_and_noteworthy/index.html#withOperator">with operator</a>  <code>=&gt;</code> as a let-expression, which allows binding any object to the scope of the block, which can be handy when initializing objects. In Jnario <code>=&gt;</code> also can be used to describe the expected behavior of objects. It works great together with Xtend's with operator. You can use it to:</p>
+<ul><li><p  id="initialize_fixtures"><strong>initialize fixtures</strong>
+<pre class="prettyprint lang-spec">
+val stackWithTwoElements = new Stack&lt;String&gt; =&gt; [
+  add("red")
+  add("blue")
+]
+stackWithTwoElements.size =&gt; 2</pre>
 </p>
-</li></ul>
-<h3 id="write_multiple_assertions">Write multiple assertions</h3>
-<p></p>
-<ul><li><p  id="_hello_world_______length____11_it_should_startWith__hello___it_should_endWith__world____"><strong>"hello world" => [ length => 11 it should startWith["hello"] it should endWith["world"] ]</strong>
+</li><li><p  id="write_multiple_assertions"><strong>write multiple assertions</strong>
+<pre class="prettyprint lang-spec">
+"hello world" =&gt; [
+  length =&gt; 11
+  it should startWith("hello")
+  it should endWith("world")
+]</pre>
 </p>
 </li></ul>
 				</div>

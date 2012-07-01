@@ -1,6 +1,7 @@
 package org.jnario.suite.unit;
 
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.hamcrest.StringDescription;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.Should;
@@ -44,10 +45,10 @@ public class PatternValueConverterToValueStringINodeSpec extends PatternValueCon
           String _value = PatternValueConverterToValueStringINodeSpec.this.subject.toValue(it.input, null);
           boolean _doubleArrow = Should.operator_doubleArrow(_value, it.result);
           Assert.assertTrue("\nExpected subject.toValue(input, null) => result but"
-           + "\n     subject.toValue(input, null) is " + "\"" + _value + "\""
-           + "\n     subject is " + PatternValueConverterToValueStringINodeSpec.this.subject
-           + "\n     input is " + "\"" + it.input + "\""
-           + "\n     result is " + "\"" + it.result + "\"" + "\n", _doubleArrow);
+           + "\n     subject.toValue(input, null) is " + new StringDescription().appendValue(_value).toString()
+           + "\n     subject is " + new StringDescription().appendValue(PatternValueConverterToValueStringINodeSpec.this.subject).toString()
+           + "\n     input is " + new StringDescription().appendValue(it.input).toString()
+           + "\n     result is " + new StringDescription().appendValue(it.result).toString() + "\n", _doubleArrow);
           
         }
       };

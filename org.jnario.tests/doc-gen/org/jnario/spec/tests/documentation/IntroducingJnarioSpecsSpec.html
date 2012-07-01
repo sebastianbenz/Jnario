@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Jnario Specs - Tutorial</title>
+<title>Introducing Jnario Specs</title>
 <meta name="description" content="">
 <meta name="author" content="Jnario">
 
@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="content">
 			<div class="page-header">
-				<h1>Jnario Specs - Tutorial</h1>
+				<h1>Introducing Jnario Specs</h1>
 			</div>
 			<div class="row">
 				<div class="span12">
@@ -342,16 +342,16 @@ false =&gt; false
 1 + 1 =&gt; 2</pre>
 </p>
 </li><li><p  id="Self_explaining_failures"><strong>Self-explaining failures</strong>
-<p>Assertions in Jnario are self-explainable. When an assertion fails, it tries to provide as much information as possible. It will print the exact expression that has failed together with the actual value of all subexpressions. This means that you don't need to debug a test to see why it actually has failed.</p>
+<p>Assertions in Jnario are self-explainable. When an assertion fails, it tries to provide as much information about the reason of its failure as possible. It will print the exact expression that has failed together with the actual value of all subexpressions. This means that you don't need to debug a test to see why it actually has failed.</p>
 <pre class="prettyprint lang-spec">
 val x = 0 
 val y = 1 
 errorMessage[assert x == 1 && y == 0].is('''
   Expected x == 1 && y == 0 but
-       x == 1 is false
-       x is 0
-       y == 0 is false
-       y is 1''')
+       x == 1 is &lt;false&gt;
+       x is &lt;0&gt;
+       y == 0 is &lt;false&gt;
+       y is &lt;1&gt;''')
        
 val greeting = "hello"        
 errorMessage[greeting.toUpperCase should not be "HELLO"].is('''

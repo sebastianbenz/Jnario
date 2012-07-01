@@ -6,6 +6,7 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.hamcrest.StringDescription;
 import org.jnario.doc.Filter;
 import org.jnario.doc.FilterExtractor;
 import org.jnario.doc.FilteringResult;
@@ -71,9 +72,9 @@ public class FilterExtractorSpec {
           String _stringAfterExtract = FilterExtractorSpec.this.stringAfterExtract(it.input);
           boolean _doubleArrow = Should.operator_doubleArrow(_stringAfterExtract, it.resultString);
           Assert.assertTrue("\nExpected stringAfterExtract(input) => resultString but"
-           + "\n     stringAfterExtract(input) is " + "\"" + _stringAfterExtract + "\""
-           + "\n     input is " + "\"" + it.input + "\""
-           + "\n     resultString is " + "\"" + it.resultString + "\"" + "\n", _doubleArrow);
+           + "\n     stringAfterExtract(input) is " + new StringDescription().appendValue(_stringAfterExtract).toString()
+           + "\n     input is " + new StringDescription().appendValue(it.input).toString()
+           + "\n     resultString is " + new StringDescription().appendValue(it.resultString).toString() + "\n", _doubleArrow);
           
         }
       };
@@ -89,9 +90,9 @@ public class FilterExtractorSpec {
           List<String> _extractedFilters = FilterExtractorSpec.this.extractedFilters(it.input);
           boolean _doubleArrow = Should.operator_doubleArrow(_extractedFilters, it.resultingFilters);
           Assert.assertTrue("\nExpected extractedFilters(input) => resultingFilters but"
-           + "\n     extractedFilters(input) is " + _extractedFilters
-           + "\n     input is " + "\"" + it.input + "\""
-           + "\n     resultingFilters is " + it.resultingFilters + "\n", _doubleArrow);
+           + "\n     extractedFilters(input) is " + new StringDescription().appendValue(_extractedFilters).toString()
+           + "\n     input is " + new StringDescription().appendValue(it.input).toString()
+           + "\n     resultingFilters is " + new StringDescription().appendValue(it.resultingFilters).toString() + "\n", _doubleArrow);
           
         }
       };

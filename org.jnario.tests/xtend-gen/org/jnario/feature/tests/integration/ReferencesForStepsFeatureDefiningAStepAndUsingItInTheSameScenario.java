@@ -1,5 +1,6 @@
 package org.jnario.feature.tests.integration;
 
+import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.lib.Should;
 import org.jnario.runner.FeatureRunner;
@@ -29,9 +30,9 @@ public class ReferencesForStepsFeatureDefiningAStepAndUsingItInTheSameScenario {
     int _failureCount = _execute.getFailureCount();
     boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_failureCount), Integer.valueOf(2));
     Assert.assertTrue("\nExpected jnarioFile.execute.failureCount => 2 but"
-     + "\n     jnarioFile.execute.failureCount is " + Integer.valueOf(_failureCount)
-     + "\n     jnarioFile.execute is " + _execute
-     + "\n     jnarioFile is " + "\"" + this.jnarioFile + "\"" + "\n", _doubleArrow);
+     + "\n     jnarioFile.execute.failureCount is " + new StringDescription().appendValue(Integer.valueOf(_failureCount)).toString()
+     + "\n     jnarioFile.execute is " + new StringDescription().appendValue(_execute).toString()
+     + "\n     jnarioFile is " + new StringDescription().appendValue(this.jnarioFile).toString() + "\n", _doubleArrow);
     
   }
   

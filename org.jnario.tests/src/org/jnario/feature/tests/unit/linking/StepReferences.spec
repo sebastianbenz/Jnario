@@ -7,12 +7,18 @@ import org.jnario.jnario.test.util.ModelStore
 import org.jnario.feature.feature.GivenReference
 import org.jnario.feature.feature.Given
 
+/*
+ * Scenario steps can reference other steps with an implementation. It is important
+ * to note that these references are aware of the respective namespaces. If you want
+ * to reference a step in a different package you need to add a corresponding import statement
+ * (see last example).  
+ */
 @CreateWith(typeof(FeatureTestCreator))
 describe "Referencing other Steps"{
 
 	@Inject extension ModelStore m
 	
-	fact "Steps can reference other steps in the same feature"{
+	fact "Steps can reference steps in the same feature"{
 		parseScenario('''
 			package test
 			
@@ -28,7 +34,7 @@ describe "Referencing other Steps"{
 		first(typeof(GivenReference)).reference => first(typeof(Given))
 	}
 	
-	fact "Steps with trailing whitespace can reference other steps in the same feature"{
+	fact "Steps ignore trailing whitespace when referencing steps"{
 		parseScenario('''
 			package test
 			
@@ -39,12 +45,13 @@ describe "Referencing other Steps"{
 						val x = "an implementation"
 				Scenario: Scenario 2
 					Given a step	
-					
+					//            ^ 
+					//   here is a whitespace
 		''')
 		first(typeof(GivenReference)).reference => first(typeof(Given))
 	}
 	
-	fact "Steps can reference other steps in different features in the same package"{
+	fact "Steps can reference steps in features in the same package"{
 		parseScenario('''
 			package test
 			
@@ -65,7 +72,7 @@ describe "Referencing other Steps"{
 		first(typeof(GivenReference)).reference => first(typeof(Given))
 	}
 	
-	fact "Steps can reference other steps in different features in different packages with an import statement"{
+	fact "Referencing steps in a different package requires an import statement"{
 		parseScenario('''
 			package test1
 			

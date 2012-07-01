@@ -1,6 +1,7 @@
 package org.jnario.spec.tests.unit.naming;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.hamcrest.StringDescription;
 import org.jnario.ExampleTable;
 import org.jnario.jnario.test.util.Query;
 import org.jnario.lib.Should;
@@ -41,9 +42,9 @@ public class ExampleNameProviderToFieldNameExampleTableSpec extends ExampleNameP
     String _fieldName = this.subject.toFieldName(exampleTable);
     boolean _doubleArrow = Should.operator_doubleArrow(_fieldName, "myExample");
     Assert.assertTrue("\nExpected subject.toFieldName(exampleTable) => \"myExample\" but"
-     + "\n     subject.toFieldName(exampleTable) is " + "\"" + _fieldName + "\""
-     + "\n     subject is " + this.subject
-     + "\n     exampleTable is " + exampleTable + "\n", _doubleArrow);
+     + "\n     subject.toFieldName(exampleTable) is " + new StringDescription().appendValue(_fieldName).toString()
+     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
+     + "\n     exampleTable is " + new StringDescription().appendValue(exampleTable).toString() + "\n", _doubleArrow);
     
   }
   
@@ -67,9 +68,9 @@ public class ExampleNameProviderToFieldNameExampleTableSpec extends ExampleNameP
     String _fieldName = this.subject.toFieldName(exampleTable);
     boolean _doubleArrow = Should.operator_doubleArrow(_fieldName, "examples");
     Assert.assertTrue("\nExpected subject.toFieldName(exampleTable) => \"examples\" but"
-     + "\n     subject.toFieldName(exampleTable) is " + "\"" + _fieldName + "\""
-     + "\n     subject is " + this.subject
-     + "\n     exampleTable is " + exampleTable + "\n", _doubleArrow);
+     + "\n     subject.toFieldName(exampleTable) is " + new StringDescription().appendValue(_fieldName).toString()
+     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
+     + "\n     exampleTable is " + new StringDescription().appendValue(exampleTable).toString() + "\n", _doubleArrow);
     
   }
 }

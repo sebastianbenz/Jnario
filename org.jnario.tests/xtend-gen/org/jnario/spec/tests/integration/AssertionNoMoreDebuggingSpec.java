@@ -3,6 +3,7 @@ package org.jnario.spec.tests.integration;
 import com.google.common.base.Objects;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.Helpers;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
@@ -33,7 +34,7 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
           Assert.assertTrue("\nExpected y but"
-           + "\n     y is " + y + "\n", y);
+           + "\n     y is " + new StringDescription().appendValue(y).toString() + "\n", y);
           
         }
       };
@@ -42,7 +43,7 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
     _builder.append("Expected y but");
     _builder.newLine();
     _builder.append("     ");
-    _builder.append("y is false");
+    _builder.append("y is <false>");
     Helpers.is(_errorMessage, _builder);
   }
   
@@ -58,7 +59,7 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
         public void apply(final Boolean it) {
           boolean _equals = (x == 42);
           Assert.assertTrue("\nExpected x == 42 but"
-           + "\n     x is " + x + "\n", _equals);
+           + "\n     x is " + new StringDescription().appendValue(x).toString() + "\n", _equals);
           
         }
       };
@@ -67,7 +68,7 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
     _builder.append("Expected x == 42 but");
     _builder.newLine();
     _builder.append("     ");
-    _builder.append("x is 0");
+    _builder.append("x is <0>");
     Helpers.is(_errorMessage, _builder);
   }
   
@@ -84,8 +85,8 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
           boolean _equals = (x == 42);
           boolean _not = (!_equals);
           Assert.assertTrue("\nExpected !(x == 42) but"
-           + "\n     x == 42 is " + _equals
-           + "\n     x is " + x + "\n", _not);
+           + "\n     x == 42 is " + new StringDescription().appendValue(_equals).toString()
+           + "\n     x is " + new StringDescription().appendValue(x).toString() + "\n", _not);
           
         }
       };
@@ -94,10 +95,10 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
     _builder.append("Expected !(x == 42) but");
     _builder.newLine();
     _builder.append("     ");
-    _builder.append("x == 42 is true");
+    _builder.append("x == 42 is <true>");
     _builder.newLine();
     _builder.append("     ");
-    _builder.append("x is 42");
+    _builder.append("x is <42>");
     Helpers.is(_errorMessage, _builder);
   }
   
@@ -113,7 +114,7 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
           String _greet = AssertionNoMoreDebuggingSpec.this.greet("World");
           boolean _equals = Objects.equal(_greet, "Hello World!");
           Assert.assertTrue("\nExpected greet(\"World\") == \"Hello World!\" but"
-           + "\n     greet(\"World\") is " + "\"" + _greet + "\"" + "\n", _equals);
+           + "\n     greet(\"World\") is " + new StringDescription().appendValue(_greet).toString() + "\n", _equals);
           
         }
       };
@@ -139,8 +140,8 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
           String _lowerCase = _upperCase.toLowerCase();
           boolean _equals = Objects.equal(_lowerCase, "HELLO");
           Assert.assertTrue("\nExpected \"Hello\".toUpperCase.toLowerCase == \"HELLO\" but"
-           + "\n     \"Hello\".toUpperCase.toLowerCase is " + "\"" + _lowerCase + "\""
-           + "\n     \"Hello\".toUpperCase is " + "\"" + _upperCase + "\"" + "\n", _equals);
+           + "\n     \"Hello\".toUpperCase.toLowerCase is " + new StringDescription().appendValue(_lowerCase).toString()
+           + "\n     \"Hello\".toUpperCase is " + new StringDescription().appendValue(_upperCase).toString() + "\n", _equals);
           
         }
       };
@@ -176,10 +177,10 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
             _and = (_equals && _equals_1);
           }
           Assert.assertTrue("\nExpected x == 1 && y == 0 but"
-           + "\n     x == 1 is " + _equals
-           + "\n     x is " + x
-           + "\n     y == 0 is " + _equals_1
-           + "\n     y is " + y + "\n", _and);
+           + "\n     x == 1 is " + new StringDescription().appendValue(_equals).toString()
+           + "\n     x is " + new StringDescription().appendValue(x).toString()
+           + "\n     y == 0 is " + new StringDescription().appendValue(_equals_1).toString()
+           + "\n     y is " + new StringDescription().appendValue(y).toString() + "\n", _and);
           
         }
       };
@@ -188,16 +189,16 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
     _builder.append("Expected x == 1 && y == 0 but");
     _builder.newLine();
     _builder.append("     ");
-    _builder.append("x == 1 is false");
+    _builder.append("x == 1 is <false>");
     _builder.newLine();
     _builder.append("     ");
-    _builder.append("x is 0");
+    _builder.append("x is <0>");
     _builder.newLine();
     _builder.append("     ");
-    _builder.append("y == 0 is false");
+    _builder.append("y == 0 is <false>");
     _builder.newLine();
     _builder.append("     ");
-    _builder.append("y is 1");
+    _builder.append("y is <1>");
     Helpers.is(_errorMessage, _builder);
   }
   
@@ -220,9 +221,9 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
             _and = (_greaterThan && _lessThan);
           }
           Assert.assertTrue("\nExpected x > 0 && x < 10 but"
-           + "\n     x > 0 is " + _greaterThan
-           + "\n     x is " + x
-           + "\n     x < 10 is " + _lessThan + "\n", _and);
+           + "\n     x > 0 is " + new StringDescription().appendValue(_greaterThan).toString()
+           + "\n     x is " + new StringDescription().appendValue(x).toString()
+           + "\n     x < 10 is " + new StringDescription().appendValue(_lessThan).toString() + "\n", _and);
           
         }
       };
@@ -231,13 +232,13 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
     _builder.append("Expected x > 0 && x < 10 but");
     _builder.newLine();
     _builder.append("     ");
-    _builder.append("x > 0 is false");
+    _builder.append("x > 0 is <false>");
     _builder.newLine();
     _builder.append("     ");
-    _builder.append("x is 0");
+    _builder.append("x is <0>");
     _builder.newLine();
     _builder.append("     ");
-    _builder.append("x < 10 is true");
+    _builder.append("x < 10 is <true>");
     Helpers.is(_errorMessage, _builder);
   }
   

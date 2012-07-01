@@ -1,6 +1,7 @@
 package org.jnario.feature.tests.unit.naming;
 
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.hamcrest.StringDescription;
 import org.jnario.feature.feature.Background;
 import org.jnario.feature.tests.unit.naming.FeatureClassNameProviderGetClassNameBackgroundSpecExamples;
 import org.jnario.feature.tests.unit.naming.FeatureClassNameProviderSpec;
@@ -42,11 +43,11 @@ public class FeatureClassNameProviderGetClassNameBackgroundSpec extends FeatureC
           String _className = FeatureClassNameProviderGetClassNameBackgroundSpec.this.className(_background);
           boolean _doubleArrow = Should.operator_doubleArrow(_className, it.expectedClassName);
           Assert.assertTrue("\nExpected className(background(name, feature)) => expectedClassName but"
-           + "\n     className(background(name, feature)) is " + "\"" + _className + "\""
-           + "\n     background(name, feature) is " + _background
-           + "\n     name is " + "\"" + it.name + "\""
-           + "\n     feature is " + "\"" + it.feature + "\""
-           + "\n     expectedClassName is " + "\"" + it.expectedClassName + "\"" + "\n", _doubleArrow);
+           + "\n     className(background(name, feature)) is " + new StringDescription().appendValue(_className).toString()
+           + "\n     background(name, feature) is " + new StringDescription().appendValue(_background).toString()
+           + "\n     name is " + new StringDescription().appendValue(it.name).toString()
+           + "\n     feature is " + new StringDescription().appendValue(it.feature).toString()
+           + "\n     expectedClassName is " + new StringDescription().appendValue(it.expectedClassName).toString() + "\n", _doubleArrow);
           
         }
       };

@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
-@Named("ImplicitSubject")
+@Named("Implicit Subject")
 public class ImplicitSubjectSpec {
   /**
    * @filter('''|.executesSuccessfully)

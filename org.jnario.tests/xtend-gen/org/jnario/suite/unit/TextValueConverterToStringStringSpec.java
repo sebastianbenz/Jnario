@@ -1,5 +1,6 @@
 package org.jnario.suite.unit;
 
+import org.hamcrest.StringDescription;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
@@ -20,8 +21,8 @@ public class TextValueConverterToStringStringSpec extends TextValueConverterSpec
     String _string = this.subject.toString("suite - with dash");
     boolean _doubleArrow = Should.operator_doubleArrow(_string, ":suite \\- with dash");
     Assert.assertTrue("\nExpected subject.toString(\"suite - with dash\") => \":suite \\\\- with dash\" but"
-     + "\n     subject.toString(\"suite - with dash\") is " + "\"" + _string + "\""
-     + "\n     subject is " + this.subject + "\n", _doubleArrow);
+     + "\n     subject.toString(\"suite - with dash\") is " + new StringDescription().appendValue(_string).toString()
+     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
     
   }
   
@@ -32,8 +33,8 @@ public class TextValueConverterToStringStringSpec extends TextValueConverterSpec
     String _string = this.subject.toString("suite - with dash");
     boolean _doubleArrow = Should.operator_doubleArrow(_string, ":suite \\- with dash");
     Assert.assertTrue("\nExpected subject.toString(\"suite - with dash\") => \":suite \\\\- with dash\" but"
-     + "\n     subject.toString(\"suite - with dash\") is " + "\"" + _string + "\""
-     + "\n     subject is " + this.subject + "\n", _doubleArrow);
+     + "\n     subject.toString(\"suite - with dash\") is " + new StringDescription().appendValue(_string).toString()
+     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
     
   }
   
@@ -44,8 +45,8 @@ public class TextValueConverterToStringStringSpec extends TextValueConverterSpec
     String _string = this.subject.toString("suite # with hash");
     boolean _doubleArrow = Should.operator_doubleArrow(_string, ":suite \\# with hash");
     Assert.assertTrue("\nExpected subject.toString(\"suite # with hash\") => \":suite \\\\# with hash\" but"
-     + "\n     subject.toString(\"suite # with hash\") is " + "\"" + _string + "\""
-     + "\n     subject is " + this.subject + "\n", _doubleArrow);
+     + "\n     subject.toString(\"suite # with hash\") is " + new StringDescription().appendValue(_string).toString()
+     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
     
   }
 }

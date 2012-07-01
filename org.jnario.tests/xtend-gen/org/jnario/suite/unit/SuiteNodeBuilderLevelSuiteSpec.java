@@ -1,5 +1,6 @@
 package org.jnario.suite.unit;
 
+import org.hamcrest.StringDescription;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
@@ -26,7 +27,7 @@ public class SuiteNodeBuilderLevelSuiteSpec extends SuiteNodeBuilderSpec {
     Integer _level = this.level("#Suite");
     boolean _doubleArrow = Should.operator_doubleArrow(_level, Integer.valueOf(1));
     Assert.assertTrue("\nExpected level(\"#Suite\")   => 1 but"
-     + "\n     level(\"#Suite\") is " + _level + "\n", _doubleArrow);
+     + "\n     level(\"#Suite\") is " + new StringDescription().appendValue(_level).toString() + "\n", _doubleArrow);
     
   }
   
@@ -37,7 +38,7 @@ public class SuiteNodeBuilderLevelSuiteSpec extends SuiteNodeBuilderSpec {
     Integer _level = this.level("##Suite");
     boolean _doubleArrow = Should.operator_doubleArrow(_level, Integer.valueOf(2));
     Assert.assertTrue("\nExpected level(\"##Suite\")  => 2 but"
-     + "\n     level(\"##Suite\") is " + _level + "\n", _doubleArrow);
+     + "\n     level(\"##Suite\") is " + new StringDescription().appendValue(_level).toString() + "\n", _doubleArrow);
     
   }
   
@@ -48,7 +49,7 @@ public class SuiteNodeBuilderLevelSuiteSpec extends SuiteNodeBuilderSpec {
     Integer _level = this.level("###Suite");
     boolean _doubleArrow = Should.operator_doubleArrow(_level, Integer.valueOf(3));
     Assert.assertTrue("\nExpected level(\"###Suite\") => 3 but"
-     + "\n     level(\"###Suite\") is " + _level + "\n", _doubleArrow);
+     + "\n     level(\"###Suite\") is " + new StringDescription().appendValue(_level).toString() + "\n", _doubleArrow);
     
   }
   

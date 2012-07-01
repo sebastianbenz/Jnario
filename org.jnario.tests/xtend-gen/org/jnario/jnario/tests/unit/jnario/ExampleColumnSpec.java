@@ -6,6 +6,7 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.serializer.ISerializer;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.hamcrest.StringDescription;
 import org.jnario.ExampleColumn;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.Query;
@@ -89,11 +90,11 @@ public class ExampleColumnSpec {
           String _trim = _serialize.trim();
           boolean _doubleArrow = Should.operator_doubleArrow(_trim, it.value);
           Assert.assertTrue("\nExpected cell.serialize.trim => value but"
-           + "\n     cell.serialize.trim is " + "\"" + _trim + "\""
-           + "\n     cell.serialize is " + "\"" + _serialize + "\""
-           + "\n      is " + ExampleColumnSpec.this._iSerializer
-           + "\n     cell is " + cell
-           + "\n     value is " + "\"" + it.value + "\"" + "\n", _doubleArrow);
+           + "\n     cell.serialize.trim is " + new StringDescription().appendValue(_trim).toString()
+           + "\n     cell.serialize is " + new StringDescription().appendValue(_serialize).toString()
+           + "\n      is " + new StringDescription().appendValue(ExampleColumnSpec.this._iSerializer).toString()
+           + "\n     cell is " + new StringDescription().appendValue(cell).toString()
+           + "\n     value is " + new StringDescription().appendValue(it.value).toString() + "\n", _doubleArrow);
           
         }
       };

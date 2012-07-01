@@ -1,5 +1,6 @@
 package org.jnario.feature.tests.unit.conversion;
 
+import org.hamcrest.StringDescription;
 import org.jnario.feature.tests.unit.conversion.FeatureValueConverterSpec;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -20,8 +21,8 @@ public class FeatureValueConverterToStringStringSpec extends FeatureValueConvert
     String _string = this.subject.toString("text");
     boolean _should_be = Should.should_be(_string, "Prefix:text\n");
     Assert.assertTrue("\nExpected subject.toString(\"text\") should be \"Prefix:text\\n\" but"
-     + "\n     subject.toString(\"text\") is " + "\"" + _string + "\""
-     + "\n     subject is " + this.subject + "\n", _should_be);
+     + "\n     subject.toString(\"text\") is " + new StringDescription().appendValue(_string).toString()
+     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _should_be);
     
   }
   
@@ -32,8 +33,8 @@ public class FeatureValueConverterToStringStringSpec extends FeatureValueConvert
     String _string = this.subject.toString(null);
     boolean _should_be = Should.<String>should_be(_string, null);
     Assert.assertTrue("\nExpected subject.toString(null) should be null but"
-     + "\n     subject.toString(null) is " + "\"" + _string + "\""
-     + "\n     subject is " + this.subject + "\n", _should_be);
+     + "\n     subject.toString(null) is " + new StringDescription().appendValue(_string).toString()
+     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _should_be);
     
   }
 }

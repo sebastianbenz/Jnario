@@ -1,6 +1,7 @@
 package org.jnario.suite.unit;
 
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.hamcrest.StringDescription;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.Should;
@@ -47,11 +48,11 @@ public class SuiteClassNameProviderGetClassNameSpecificationSpec extends SuiteCl
           String _className = SuiteClassNameProviderGetClassNameSpecificationSpec.this.subject.getClassName(_suite);
           boolean _doubleArrow = Should.operator_doubleArrow(_className, it.expectedClassName);
           Assert.assertTrue("\nExpected subject.getClassName(suite(name)) => expectedClassName but"
-           + "\n     subject.getClassName(suite(name)) is " + "\"" + _className + "\""
-           + "\n     subject is " + SuiteClassNameProviderGetClassNameSpecificationSpec.this.subject
-           + "\n     suite(name) is " + _suite
-           + "\n     name is " + "\"" + it.name + "\""
-           + "\n     expectedClassName is " + "\"" + it.expectedClassName + "\"" + "\n", _doubleArrow);
+           + "\n     subject.getClassName(suite(name)) is " + new StringDescription().appendValue(_className).toString()
+           + "\n     subject is " + new StringDescription().appendValue(SuiteClassNameProviderGetClassNameSpecificationSpec.this.subject).toString()
+           + "\n     suite(name) is " + new StringDescription().appendValue(_suite).toString()
+           + "\n     name is " + new StringDescription().appendValue(it.name).toString()
+           + "\n     expectedClassName is " + new StringDescription().appendValue(it.expectedClassName).toString() + "\n", _doubleArrow);
           
         }
       };

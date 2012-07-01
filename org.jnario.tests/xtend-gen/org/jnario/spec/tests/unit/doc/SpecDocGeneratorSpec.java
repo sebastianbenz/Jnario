@@ -6,6 +6,7 @@ import java.util.Map;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.InMemoryFileSystemAccess;
+import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.SpecTestCreator;
 import org.jnario.runner.CreateWith;
@@ -42,12 +43,12 @@ public class SpecDocGeneratorSpec {
     String _generatedFile = this.generatedFile("js/prettify.js");
     boolean _notEquals = (!Objects.equal(_generatedFile, null));
     Assert.assertTrue("\nExpected generatedFile(\"js/prettify.js\") != null but"
-     + "\n     generatedFile(\"js/prettify.js\") is " + "\"" + _generatedFile + "\"" + "\n", _notEquals);
+     + "\n     generatedFile(\"js/prettify.js\") is " + new StringDescription().appendValue(_generatedFile).toString() + "\n", _notEquals);
     
     String _generatedFile_1 = this.generatedFile("js/lang-jnario.js");
     boolean _notEquals_1 = (!Objects.equal(_generatedFile_1, null));
     Assert.assertTrue("\nExpected generatedFile(\"js/lang-jnario.js\") != null but"
-     + "\n     generatedFile(\"js/lang-jnario.js\") is " + "\"" + _generatedFile_1 + "\"" + "\n", _notEquals_1);
+     + "\n     generatedFile(\"js/lang-jnario.js\") is " + new StringDescription().appendValue(_generatedFile_1).toString() + "\n", _notEquals_1);
     
   }
   
@@ -59,17 +60,17 @@ public class SpecDocGeneratorSpec {
     String _generatedFile = this.generatedFile("css/bootstrap-responsive.min.css");
     boolean _notEquals = (!Objects.equal(_generatedFile, null));
     Assert.assertTrue("\nExpected generatedFile(\"css/bootstrap-responsive.min.css\") != null but"
-     + "\n     generatedFile(\"css/bootstrap-responsive.min.css\") is " + "\"" + _generatedFile + "\"" + "\n", _notEquals);
+     + "\n     generatedFile(\"css/bootstrap-responsive.min.css\") is " + new StringDescription().appendValue(_generatedFile).toString() + "\n", _notEquals);
     
     String _generatedFile_1 = this.generatedFile("css/custom.css");
     boolean _notEquals_1 = (!Objects.equal(_generatedFile_1, null));
     Assert.assertTrue("\nExpected generatedFile(\"css/custom.css\") != null but"
-     + "\n     generatedFile(\"css/custom.css\") is " + "\"" + _generatedFile_1 + "\"" + "\n", _notEquals_1);
+     + "\n     generatedFile(\"css/custom.css\") is " + new StringDescription().appendValue(_generatedFile_1).toString() + "\n", _notEquals_1);
     
     String _generatedFile_2 = this.generatedFile("css/prettify.css");
     boolean _notEquals_2 = (!Objects.equal(_generatedFile_2, null));
     Assert.assertTrue("\nExpected generatedFile(\"css/prettify.css\") != null but"
-     + "\n     generatedFile(\"css/prettify.css\") is " + "\"" + _generatedFile_2 + "\"" + "\n", _notEquals_2);
+     + "\n     generatedFile(\"css/prettify.css\") is " + new StringDescription().appendValue(_generatedFile_2).toString() + "\n", _notEquals_2);
     
   }
   
@@ -88,9 +89,9 @@ public class SpecDocGeneratorSpec {
       _and = (_notEquals && _contains);
     }
     Assert.assertTrue("\nExpected scenarioDoc != null && \r\n\t\t\t\tscenarioDoc.contains(\"<title>Example</title>\") but"
-     + "\n     scenarioDoc != null is " + _notEquals
-     + "\n     scenarioDoc is " + "\"" + scenarioDoc + "\""
-     + "\n     scenarioDoc.contains(\"<title>Example</title>\") is " + _contains + "\n", _and);
+     + "\n     scenarioDoc != null is " + new StringDescription().appendValue(_notEquals).toString()
+     + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString()
+     + "\n     scenarioDoc.contains(\"<title>Example</title>\") is " + new StringDescription().appendValue(_contains).toString() + "\n", _and);
     
     scenarioDoc.contains("<h1>Example</h1>");
   }
@@ -128,13 +129,13 @@ public class SpecDocGeneratorSpec {
     final String scenarioDoc = this.generatedFile("ExampleSpec.html");
     boolean _contains = scenarioDoc.contains("<p>This is an example.</p>");
     Assert.assertTrue("\nExpected scenarioDoc.contains(\"<p>This is an example.</p>\") but"
-     + "\n     scenarioDoc is " + "\"" + scenarioDoc + "\"" + "\n", _contains);
+     + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString() + "\n", _contains);
     
     boolean _contains_1 = scenarioDoc.contains("Irrelevant documentation.");
     boolean _not = (!_contains_1);
     Assert.assertTrue("\nExpected !scenarioDoc.contains(\"Irrelevant documentation.\") but"
-     + "\n     scenarioDoc.contains(\"Irrelevant documentation.\") is " + _contains_1
-     + "\n     scenarioDoc is " + "\"" + scenarioDoc + "\"" + "\n", _not);
+     + "\n     scenarioDoc.contains(\"Irrelevant documentation.\") is " + new StringDescription().appendValue(_contains_1).toString()
+     + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString() + "\n", _not);
     
   }
   
@@ -185,9 +186,9 @@ public class SpecDocGeneratorSpec {
     String _string = _builder_1.toString();
     boolean _contains = scenarioDoc.contains(_string);
     Assert.assertTrue("\nExpected scenarioDoc.contains(\'\'\'\r\n\t\t<strong>should do stuff</strong>\r\n\t\t<p>Example documentation</p>\r\n\t\t<pre class=\"prettyprint lang-spec\">\r\n\t\tvar x = 0\r\n\t\tx = x + 1</pre>\r\n\t\t</p>\'\'\'.toString()) but"
-     + "\n     scenarioDoc is " + "\"" + scenarioDoc + "\""
-     + "\n     \'\'\'\r\n\t\t<strong>should do stuff</strong>\r\n\t\t<p>Example documentation</p>\r\n\t\t<pre class=\"prettyprint lang-spec\">\r\n\t\tvar x = 0\r\n\t\tx = x + 1</pre>\r\n\t\t</p>\'\'\'.toString() is " + "\"" + _string + "\""
-     + "\n     \'\'\'\r\n\t\t<strong>should do stuff</strong>\r\n\t\t<p>Example documentation</p>\r\n\t\t<pre class=\"prettyprint lang-spec\">\r\n\t\tvar x = 0\r\n\t\tx = x + 1</pre>\r\n\t\t</p>\'\'\' is " + _builder_1 + "\n", _contains);
+     + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString()
+     + "\n     \'\'\'\r\n\t\t<strong>should do stuff</strong>\r\n\t\t<p>Example documentation</p>\r\n\t\t<pre class=\"prettyprint lang-spec\">\r\n\t\tvar x = 0\r\n\t\tx = x + 1</pre>\r\n\t\t</p>\'\'\'.toString() is " + new StringDescription().appendValue(_string).toString()
+     + "\n     \'\'\'\r\n\t\t<strong>should do stuff</strong>\r\n\t\t<p>Example documentation</p>\r\n\t\t<pre class=\"prettyprint lang-spec\">\r\n\t\tvar x = 0\r\n\t\tx = x + 1</pre>\r\n\t\t</p>\'\'\' is " + new StringDescription().appendValue(_builder_1).toString() + "\n", _contains);
     
   }
   
@@ -214,7 +215,7 @@ public class SpecDocGeneratorSpec {
     final String scenarioDoc = this.generatedFile("ExampleSpec.html");
     boolean _contains = scenarioDoc.contains("<h1>Example Heading</h1>");
     Assert.assertTrue("\nExpected scenarioDoc.contains(\"<h1>Example Heading</h1>\") but"
-     + "\n     scenarioDoc is " + "\"" + scenarioDoc + "\"" + "\n", _contains);
+     + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString() + "\n", _contains);
     
   }
   
@@ -243,23 +244,23 @@ public class SpecDocGeneratorSpec {
     final String scenarioDoc = this.generatedFile("ExampleSpec.html");
     boolean _contains = scenarioDoc.contains("<h4 id=\"myExample\">MyExample</h4>");
     Assert.assertTrue("\nExpected scenarioDoc.contains(\'<h4 id=\"myExample\">MyExample</h4>\') but"
-     + "\n     scenarioDoc is " + "\"" + scenarioDoc + "\"" + "\n", _contains);
+     + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString() + "\n", _contains);
     
     boolean _contains_1 = scenarioDoc.contains("<th>a</th>");
     Assert.assertTrue("\nExpected scenarioDoc.contains(\"<th>a</th>\") but"
-     + "\n     scenarioDoc is " + "\"" + scenarioDoc + "\"" + "\n", _contains_1);
+     + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString() + "\n", _contains_1);
     
     boolean _contains_2 = scenarioDoc.contains("<th>b</th>");
     Assert.assertTrue("\nExpected scenarioDoc.contains(\"<th>b</th>\") but"
-     + "\n     scenarioDoc is " + "\"" + scenarioDoc + "\"" + "\n", _contains_2);
+     + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString() + "\n", _contains_2);
     
     boolean _contains_3 = scenarioDoc.contains("<td>1</td>");
     Assert.assertTrue("\nExpected scenarioDoc.contains(\"<td>1</td>\") but"
-     + "\n     scenarioDoc is " + "\"" + scenarioDoc + "\"" + "\n", _contains_3);
+     + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString() + "\n", _contains_3);
     
     boolean _contains_4 = scenarioDoc.contains("<td>2</td>");
     Assert.assertTrue("\nExpected scenarioDoc.contains(\"<td>2</td>\") but"
-     + "\n     scenarioDoc is " + "\"" + scenarioDoc + "\"" + "\n", _contains_4);
+     + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString() + "\n", _contains_4);
     
   }
   
@@ -294,7 +295,7 @@ public class SpecDocGeneratorSpec {
     final String scenarioDoc = this.generatedFile("ExampleSpec.html");
     boolean _contains = scenarioDoc.contains("\"aaaaaa\"");
     Assert.assertTrue("\nExpected scenarioDoc.contains(\'\"aaaaaa\"\') but"
-     + "\n     scenarioDoc is " + "\"" + scenarioDoc + "\"" + "\n", _contains);
+     + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString() + "\n", _contains);
     
   }
   

@@ -3,6 +3,7 @@ package org.jnario.suite.unit;
 import java.util.List;
 import java.util.Set;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.hamcrest.StringDescription;
 import org.jnario.Specification;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
@@ -41,10 +42,10 @@ public class SpecResolverEvaluatesRegularExpressionsSpec extends SpecResolverSpe
     Set<String> _set = JnarioCollectionLiterals.<String>set("MySpecSpec", "MyFeatureFeature");
     boolean _doubleArrow = Should.operator_doubleArrow(_resolvedSpecs, _set);
     Assert.assertTrue("\nExpected resolvedSpecs(m.firstSuite) => set(\"MySpecSpec\", \"MyFeatureFeature\") but"
-     + "\n     resolvedSpecs(m.firstSuite) is " + _resolvedSpecs
-     + "\n     m.firstSuite is " + _firstSuite
-     + "\n     m is " + this.m
-     + "\n     set(\"MySpecSpec\", \"MyFeatureFeature\") is " + _set + "\n", _doubleArrow);
+     + "\n     resolvedSpecs(m.firstSuite) is " + new StringDescription().appendValue(_resolvedSpecs).toString()
+     + "\n     m.firstSuite is " + new StringDescription().appendValue(_firstSuite).toString()
+     + "\n     m is " + new StringDescription().appendValue(this.m).toString()
+     + "\n     set(\"MySpecSpec\", \"MyFeatureFeature\") is " + new StringDescription().appendValue(_set).toString() + "\n", _doubleArrow);
     
   }
   
@@ -68,10 +69,10 @@ public class SpecResolverEvaluatesRegularExpressionsSpec extends SpecResolverSpe
     Set<String> _set = JnarioCollectionLiterals.<String>set("MySpecSpec");
     boolean _doubleArrow = Should.operator_doubleArrow(_resolvedSpecs, _set);
     Assert.assertTrue("\nExpected resolvedSpecs(m.firstSuite) => set(\"MySpecSpec\") but"
-     + "\n     resolvedSpecs(m.firstSuite) is " + _resolvedSpecs
-     + "\n     m.firstSuite is " + _firstSuite
-     + "\n     m is " + this.m
-     + "\n     set(\"MySpecSpec\") is " + _set + "\n", _doubleArrow);
+     + "\n     resolvedSpecs(m.firstSuite) is " + new StringDescription().appendValue(_resolvedSpecs).toString()
+     + "\n     m.firstSuite is " + new StringDescription().appendValue(_firstSuite).toString()
+     + "\n     m is " + new StringDescription().appendValue(this.m).toString()
+     + "\n     set(\"MySpecSpec\") is " + new StringDescription().appendValue(_set).toString() + "\n", _doubleArrow);
     
   }
   
@@ -84,11 +85,11 @@ public class SpecResolverEvaluatesRegularExpressionsSpec extends SpecResolverSpe
     List<Object> _list = JnarioCollectionLiterals.<Object>list();
     boolean _doubleArrow = Should.operator_doubleArrow(_resolveSpecs, _list);
     Assert.assertTrue("\nExpected subject.resolveSpecs(SuiteFactory::eINSTANCE.createPatternReference) => list() but"
-     + "\n     subject.resolveSpecs(SuiteFactory::eINSTANCE.createPatternReference) is " + _resolveSpecs
-     + "\n     subject is " + this.subject
-     + "\n     SuiteFactory::eINSTANCE.createPatternReference is " + _createPatternReference
-     + "\n     SuiteFactory::eINSTANCE is " + SuiteFactory.eINSTANCE
-     + "\n     list() is " + _list + "\n", _doubleArrow);
+     + "\n     subject.resolveSpecs(SuiteFactory::eINSTANCE.createPatternReference) is " + new StringDescription().appendValue(_resolveSpecs).toString()
+     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
+     + "\n     SuiteFactory::eINSTANCE.createPatternReference is " + new StringDescription().appendValue(_createPatternReference).toString()
+     + "\n     SuiteFactory::eINSTANCE is " + new StringDescription().appendValue(SuiteFactory.eINSTANCE).toString()
+     + "\n     list() is " + new StringDescription().appendValue(_list).toString() + "\n", _doubleArrow);
     
   }
   
@@ -112,10 +113,10 @@ public class SpecResolverEvaluatesRegularExpressionsSpec extends SpecResolverSpe
     Set<Object> _set = JnarioCollectionLiterals.<Object>set();
     boolean _doubleArrow = Should.operator_doubleArrow(_resolvedSpecs, _set);
     Assert.assertTrue("\nExpected resolvedSpecs(m.firstSuite) => set() but"
-     + "\n     resolvedSpecs(m.firstSuite) is " + _resolvedSpecs
-     + "\n     m.firstSuite is " + _firstSuite
-     + "\n     m is " + this.m
-     + "\n     set() is " + _set + "\n", _doubleArrow);
+     + "\n     resolvedSpecs(m.firstSuite) is " + new StringDescription().appendValue(_resolvedSpecs).toString()
+     + "\n     m.firstSuite is " + new StringDescription().appendValue(_firstSuite).toString()
+     + "\n     m is " + new StringDescription().appendValue(this.m).toString()
+     + "\n     set() is " + new StringDescription().appendValue(_set).toString() + "\n", _doubleArrow);
     
   }
   
@@ -139,10 +140,10 @@ public class SpecResolverEvaluatesRegularExpressionsSpec extends SpecResolverSpe
     Set<String> _set = JnarioCollectionLiterals.<String>set("MySpecSpec", "MyFeatureFeature", "StringSpec");
     boolean _doubleArrow = Should.operator_doubleArrow(_resolvedSpecs, _set);
     Assert.assertTrue("\nExpected resolvedSpecs(m.firstSuite) => set(\"MySpecSpec\", \"MyFeatureFeature\", \"StringSpec\") but"
-     + "\n     resolvedSpecs(m.firstSuite) is " + _resolvedSpecs
-     + "\n     m.firstSuite is " + _firstSuite
-     + "\n     m is " + this.m
-     + "\n     set(\"MySpecSpec\", \"MyFeatureFeature\", \"StringSpec\") is " + _set + "\n", _doubleArrow);
+     + "\n     resolvedSpecs(m.firstSuite) is " + new StringDescription().appendValue(_resolvedSpecs).toString()
+     + "\n     m.firstSuite is " + new StringDescription().appendValue(_firstSuite).toString()
+     + "\n     m is " + new StringDescription().appendValue(this.m).toString()
+     + "\n     set(\"MySpecSpec\", \"MyFeatureFeature\", \"StringSpec\") is " + new StringDescription().appendValue(_set).toString() + "\n", _doubleArrow);
     
   }
 }

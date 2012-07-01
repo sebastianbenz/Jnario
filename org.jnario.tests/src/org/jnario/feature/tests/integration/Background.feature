@@ -23,15 +23,17 @@ Feature: Backgrounds
 				Feature: Some feature
 					Background:
 						Given a user name
+							val x = 'an implementation'
 					Scenario: Scenario 1
 					Scenario: Scenario 2
 			"
 		Then it should be successful
+			println("executing scenario")
 			jnarioFile.executesSuccessfully
 			
 
 	Scenario: Given methods from backgrounds are generated in every scenario class
-		public String jnarioFile
+		CharSequence jnarioFile
 		Given I have a feature with a background
 			jnarioFile = "
 				package bootstrap
@@ -46,8 +48,9 @@ Feature: Backgrounds
 			jnarioFile.execute.failureCount => 2
 			
 	Scenario: Using fields from background steps
+		CharSequence jnarioFile
 		Given a scenario with a field
-			jnarioFile = '''
+			 '''
 				package bootstrap
 				import java.util.*
 				Feature: Test
@@ -60,11 +63,13 @@ Feature: Backgrounds
 						Then it should have contents
 							values.size => 1
 				'''
-	 	Then it should be successful		
+			jnarioFile = args.first
+	 	Then it should be successful
 			
 	Scenario: Instantiating Objects in Backgrounds
+		CharSequence jnarioFile
 		Given I have a feature with a background
-			jnarioFile= '''
+			'''
 				package bootstrap
 				import org.jnario.feature.tests.integration.Calculator
 				Feature: Calculator
@@ -81,6 +86,7 @@ Feature: Backgrounds
 				  Scenario: Adding two numbers 2
 				    When I enter two numbers "20" and "80"
 				      Then it returns "100"
-			'''		
-	 	Then it should be successful	
+			'''	
+			jnarioFile = args.first	
+	 	Then it should be successful
 	 	

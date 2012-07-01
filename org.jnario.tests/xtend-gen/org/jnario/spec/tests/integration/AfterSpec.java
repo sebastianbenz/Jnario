@@ -1,5 +1,6 @@
 package org.jnario.spec.tests.integration;
 
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.jnario.jnario.test.util.SpecExecutor;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
@@ -18,7 +19,59 @@ public class AfterSpec {
   @Named("should be executed after each test")
   @Order(99)
   public void shouldBeExecutedAfterEachTest() throws Exception {
-    final String spec = "\r\n\t\t\tpackage bootstrap \r\n\t\t\t\r\n\t\t\timport org.jnario.runner.Order\r\n\t\t\t\r\n\t\t\tdescribe \"After\"{\r\n\t\t\t\t\r\n\t\t\t\tstatic int afterExecutionCount = 0\r\n\t\t\t\t\r\n\t\t\t\tfact \"should be executed after each test (1)\"{\r\n\t\t\t\t\tafterExecutionCount should be 0\r\n\t\t\t\t}\t\r\n\t\t\t\tfact \"should be executed after each test (2)\"{\r\n\t\t\t\t\tafterExecutionCount should be 1\r\n\t\t\t\t}\r\n\t\t\t\tfact \"should be executed after each test (3)\"{\r\n\t\t\t\t\tafterExecutionCount should be 2\r\n\t\t\t\t}\t\r\n\t\t\t\t\r\n\t\t\t\tafter{\r\n\t\t\t\t\tafterExecutionCount = afterExecutionCount + 1\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t";
-    SpecExecutor.executesSuccessfully(spec);
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("package bootstrap ");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("describe \"After\"{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("static int afterExecutionCount = 0");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fact \"should be executed after each test (1)\"{");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("afterExecutionCount should be 0");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fact \"should be executed after each test (2)\"{");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("afterExecutionCount should be 1");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fact \"should be executed after each test (3)\"{");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("afterExecutionCount should be 2");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("after{");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("afterExecutionCount = afterExecutionCount + 1");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    SpecExecutor.executesSuccessfully(_builder);
   }
 }

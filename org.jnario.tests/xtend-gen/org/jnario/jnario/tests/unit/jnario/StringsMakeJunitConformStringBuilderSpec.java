@@ -1,6 +1,7 @@
 package org.jnario.jnario.tests.unit.jnario;
 
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.hamcrest.StringDescription;
 import org.jnario.jnario.tests.unit.jnario.StringsMakeJunitConformStringBuilderSpecExamples;
 import org.jnario.jnario.tests.unit.jnario.StringsSpec;
 import org.jnario.lib.ExampleTable;
@@ -43,9 +44,9 @@ public class StringsMakeJunitConformStringBuilderSpec extends StringsSpec {
           String _makeJunitConform = Strings.makeJunitConform(it.string);
           boolean _doubleArrow = Should.operator_doubleArrow(_makeJunitConform, it.result);
           Assert.assertTrue("\nExpected string.makeJunitConform => result but"
-           + "\n     string.makeJunitConform is " + "\"" + _makeJunitConform + "\""
-           + "\n     string is " + "\"" + it.string + "\""
-           + "\n     result is " + "\"" + it.result + "\"" + "\n", _doubleArrow);
+           + "\n     string.makeJunitConform is " + new StringDescription().appendValue(_makeJunitConform).toString()
+           + "\n     string is " + new StringDescription().appendValue(it.string).toString()
+           + "\n     result is " + new StringDescription().appendValue(it.result).toString() + "\n", _doubleArrow);
           
         }
       };

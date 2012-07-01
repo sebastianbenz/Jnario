@@ -1,6 +1,7 @@
 package org.jnario.jnario.tests.unit.doc;
 
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.hamcrest.StringDescription;
 import org.jnario.doc.WhiteSpaceNormalizer;
 import org.jnario.jnario.tests.unit.doc.WhiteSpaceNormalizerSpecExamples;
 import org.jnario.lib.ExampleTable;
@@ -47,10 +48,10 @@ public class WhiteSpaceNormalizerSpec {
           String _normalize = WhiteSpaceNormalizerSpec.this.subject.normalize(it.input);
           boolean _doubleArrow = Should.operator_doubleArrow(_normalize, it.result);
           Assert.assertTrue("\nExpected subject.normalize(input) => result but"
-           + "\n     subject.normalize(input) is " + "\"" + _normalize + "\""
-           + "\n     subject is " + WhiteSpaceNormalizerSpec.this.subject
-           + "\n     input is " + "\"" + it.input + "\""
-           + "\n     result is " + "\"" + it.result + "\"" + "\n", _doubleArrow);
+           + "\n     subject.normalize(input) is " + new StringDescription().appendValue(_normalize).toString()
+           + "\n     subject is " + new StringDescription().appendValue(WhiteSpaceNormalizerSpec.this.subject).toString()
+           + "\n     input is " + new StringDescription().appendValue(it.input).toString()
+           + "\n     result is " + new StringDescription().appendValue(it.result).toString() + "\n", _doubleArrow);
           
         }
       };

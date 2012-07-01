@@ -3,6 +3,7 @@ package org.jnario.suite.unit;
 import com.google.inject.Inject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.naming.QualifiedName;
+import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.SuiteTestCreator;
 import org.jnario.lib.Should;
@@ -40,7 +41,7 @@ public class SuiteQualifiedNameProviderSpec {
     String _qualifiedName = this.qualifiedName();
     boolean _doubleArrow = Should.operator_doubleArrow(_qualifiedName, "My Suite");
     Assert.assertTrue("\nExpected qualifiedName => \"My Suite\" but"
-     + "\n     qualifiedName is " + "\"" + _qualifiedName + "\"" + "\n", _doubleArrow);
+     + "\n     qualifiedName is " + new StringDescription().appendValue(_qualifiedName).toString() + "\n", _doubleArrow);
     
   }
   
@@ -56,7 +57,7 @@ public class SuiteQualifiedNameProviderSpec {
     String _qualifiedName = this.qualifiedName();
     boolean _doubleArrow = Should.operator_doubleArrow(_qualifiedName, "My Suite");
     Assert.assertTrue("\nExpected qualifiedName => \"My Suite\" but"
-     + "\n     qualifiedName is " + "\"" + _qualifiedName + "\"" + "\n", _doubleArrow);
+     + "\n     qualifiedName is " + new StringDescription().appendValue(_qualifiedName).toString() + "\n", _doubleArrow);
     
   }
   
@@ -72,7 +73,7 @@ public class SuiteQualifiedNameProviderSpec {
     String _qualifiedName = this.qualifiedName();
     boolean _doubleArrow = Should.operator_doubleArrow(_qualifiedName, "test.My Suite");
     Assert.assertTrue("\nExpected qualifiedName => \"test.My Suite\" but"
-     + "\n     qualifiedName is " + "\"" + _qualifiedName + "\"" + "\n", _doubleArrow);
+     + "\n     qualifiedName is " + new StringDescription().appendValue(_qualifiedName).toString() + "\n", _doubleArrow);
     
   }
   

@@ -5,6 +5,7 @@ import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matcher;
+import org.hamcrest.StringDescription;
 import org.jnario.Should;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
@@ -45,11 +46,11 @@ public class ExampleImplementationSpec extends ExampleSpec {
           Matcher<Object> _instanceOf = CoreMatchers.instanceOf(it.type);
           boolean _should_be = org.jnario.lib.Should.<Object>should_be(_implementation, _instanceOf);
           Assert.assertTrue("\nExpected example.parse.implementation should be instanceOf(type) but"
-           + "\n     example.parse.implementation is " + _implementation
-           + "\n     example.parse is " + _parse
-           + "\n     example is " + "\"" + it.example + "\""
-           + "\n     instanceOf(type) is " + _instanceOf
-           + "\n     type is " + it.type + "\n", _should_be);
+           + "\n     example.parse.implementation is " + new StringDescription().appendValue(_implementation).toString()
+           + "\n     example.parse is " + new StringDescription().appendValue(_parse).toString()
+           + "\n     example is " + new StringDescription().appendValue(it.example).toString()
+           + "\n     instanceOf(type) is " + new StringDescription().appendValue(_instanceOf).toString()
+           + "\n     type is " + new StringDescription().appendValue(it.type).toString() + "\n", _should_be);
           
         }
       };

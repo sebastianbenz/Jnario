@@ -16,8 +16,9 @@ import static extension org.jnario.jnario.test.util.FeatureExecutor.*
 Feature: Backgrounds
 
 	Scenario: It is possible to add a background to a feature
+		CharSequence jnarioFile
 		Given I have a feature with a background
-			jnarioFile= '''
+			'''
 			package demo
 			Feature: Calculator
 			  Background:
@@ -31,6 +32,7 @@ Feature: Backgrounds
 			  Scenario: Adding two numbers wer
 			    When I enter two numbers "20" and "80"
 			    Then it returns "100"   
-			'''		
-	 	Then it should be successful	
+			'''	
+			jnarioFile = args.first	
+		Then it should be successful
 	 	

@@ -1,6 +1,7 @@
 package org.jnario.feature.tests.unit.naming;
 
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.hamcrest.StringDescription;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.tests.unit.naming.FeatureClassNameProviderGetClassNameFeatureSpecExamples;
 import org.jnario.feature.tests.unit.naming.FeatureClassNameProviderSpec;
@@ -45,10 +46,10 @@ public class FeatureClassNameProviderGetClassNameFeatureSpec extends FeatureClas
           String _className = FeatureClassNameProviderGetClassNameFeatureSpec.this.className(_feature);
           boolean _doubleArrow = Should.operator_doubleArrow(_className, it.expectedClassName);
           Assert.assertTrue("\nExpected className(feature(name)) => expectedClassName but"
-           + "\n     className(feature(name)) is " + "\"" + _className + "\""
-           + "\n     feature(name) is " + _feature
-           + "\n     name is " + "\"" + it.name + "\""
-           + "\n     expectedClassName is " + "\"" + it.expectedClassName + "\"" + "\n", _doubleArrow);
+           + "\n     className(feature(name)) is " + new StringDescription().appendValue(_className).toString()
+           + "\n     feature(name) is " + new StringDescription().appendValue(_feature).toString()
+           + "\n     name is " + new StringDescription().appendValue(it.name).toString()
+           + "\n     expectedClassName is " + new StringDescription().appendValue(it.expectedClassName).toString() + "\n", _doubleArrow);
           
         }
       };

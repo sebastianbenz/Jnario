@@ -1,6 +1,7 @@
 package org.jnario.jnario.tests.unit.jnario;
 
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.hamcrest.StringDescription;
 import org.jnario.jnario.tests.unit.jnario.StringsSpec;
 import org.jnario.jnario.tests.unit.jnario.StringsStartsWithWordStringStringSpecExamples;
 import org.jnario.lib.ExampleTable;
@@ -45,10 +46,10 @@ public class StringsStartsWithWordStringStringSpec extends StringsSpec {
           int _startsWithWord = Strings.startsWithWord(it.string, it.word);
           boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_startsWithWord), Integer.valueOf(it.index));
           Assert.assertTrue("\nExpected string.startsWithWord(word) => index but"
-           + "\n     string.startsWithWord(word) is " + Integer.valueOf(_startsWithWord)
-           + "\n     string is " + "\"" + it.string + "\""
-           + "\n     word is " + "\"" + it.word + "\""
-           + "\n     index is " + Integer.valueOf(it.index) + "\n", _doubleArrow);
+           + "\n     string.startsWithWord(word) is " + new StringDescription().appendValue(Integer.valueOf(_startsWithWord)).toString()
+           + "\n     string is " + new StringDescription().appendValue(it.string).toString()
+           + "\n     word is " + new StringDescription().appendValue(it.word).toString()
+           + "\n     index is " + new StringDescription().appendValue(Integer.valueOf(it.index)).toString() + "\n", _doubleArrow);
           
         }
       };

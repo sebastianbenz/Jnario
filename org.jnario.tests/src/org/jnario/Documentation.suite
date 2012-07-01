@@ -1,0 +1,46 @@
+package org.jnario
+
+import org.jnario.spec.tests.documentation.*
+import org.jnario.feature.documentation.*
+import org.jnario.suite.documentation.*
+import org.jnario.jnario.tests.unit.jnario.*
+import org.jnario.spec.tests.integration.*
+import org.jnario.feature.tests.integration.*
+import org.jnario.feature.tests.unit.linking.*
+
+#Jnario Documentation
+
+##Getting Started
+
+Learn how to write specifications in Jnario. It is also a good idea to have a look 
+at the [Xtend documentation](http://www.xtend\-lang.org).
+
+	- "Introducing Jnario Features": \- how to write executables acceptance specifications in Jnario.
+	- "Introducing Jnario Specs": \- how to write unit specifications in Jnario.
+	- "Introducing Jnario Suites": \- Orchestrate and document the execution of your specs and features.
+	
+##Common Concepts
+
+Features and concepts that are common to all Jnario languages. 
+
+	- "Collection Literals": shorter versions of the collections literals provided by xtend.
+	- "Using Should": writing expressive assertions with the build in should operator.
+	- "Customizing the Spec Creation": how to customize the spec creation process.
+	- "Using Xtend\'s with Operator"
+	
+##Features
+
+More about writing acceptance specifications in Jnario.
+
+	- "Extensions": define setup and teardown operations in Features.
+	- "Using JUnit Rules in Features" 
+	- "Referencing other Steps": more about referencing other steps.
+
+##Unit Specs
+
+More about writing unit specifications in Jnario.
+
+	- "Extensions": reuse setup and teardown operations in different specs.
+ 	- "Implicit Subject": let Jnario automatically create the spec's subject for you.'
+	- "Using Tables":  define test data sets in tables.
+	- "Using JUnit Rules in Specs"

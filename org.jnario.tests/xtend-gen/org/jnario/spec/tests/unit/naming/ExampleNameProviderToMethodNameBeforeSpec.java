@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.Query;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -38,7 +39,7 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
           String _firstMethodName = ExampleNameProviderToMethodNameBeforeSpec.this.firstMethodName(it);
           boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "myExample");
           Assert.assertTrue("\nExpected firstMethodName => \'myExample\' but"
-           + "\n     firstMethodName is " + "\"" + _firstMethodName + "\"" + "\n", _doubleArrow);
+           + "\n     firstMethodName is " + new StringDescription().appendValue(_firstMethodName).toString() + "\n", _doubleArrow);
           
         }
       };
@@ -52,7 +53,7 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
     String _firstMethodName = this.firstMethodName("before{}");
     boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "before");
     Assert.assertTrue("\nExpected firstMethodName(\"before{}\") => \"before\" but"
-     + "\n     firstMethodName(\"before{}\") is " + "\"" + _firstMethodName + "\"" + "\n", _doubleArrow);
+     + "\n     firstMethodName(\"before{}\") is " + new StringDescription().appendValue(_firstMethodName).toString() + "\n", _doubleArrow);
     
   }
   
@@ -63,7 +64,7 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
     String _secondMethodName = this.secondMethodName("before{}\r\n                 before{}");
     boolean _doubleArrow = Should.operator_doubleArrow(_secondMethodName, "before2");
     Assert.assertTrue("\nExpected secondMethodName(\"before{}\r\n                 before{}\") => \"before2\" but"
-     + "\n     secondMethodName(\"before{}\r\n                 before{}\") is " + "\"" + _secondMethodName + "\"" + "\n", _doubleArrow);
+     + "\n     secondMethodName(\"before{}\r\n                 before{}\") is " + new StringDescription().appendValue(_secondMethodName).toString() + "\n", _doubleArrow);
     
   }
   

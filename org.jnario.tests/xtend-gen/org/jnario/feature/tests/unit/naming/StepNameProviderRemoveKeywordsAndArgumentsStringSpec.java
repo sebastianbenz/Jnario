@@ -2,6 +2,7 @@ package org.jnario.feature.tests.unit.naming;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.hamcrest.StringDescription;
 import org.jnario.feature.tests.unit.naming.StepNameProviderRemoveKeywordsAndArgumentsStringSpecExamples;
 import org.jnario.feature.tests.unit.naming.StepNameProviderSpec;
 import org.jnario.lib.ExampleTable;
@@ -49,10 +50,10 @@ public class StepNameProviderRemoveKeywordsAndArgumentsStringSpec extends StepNa
           String _removeKeywordsAndArguments = StepNameProviderRemoveKeywordsAndArgumentsStringSpec.this.subject.removeKeywordsAndArguments(it.step);
           boolean _doubleArrow = Should.operator_doubleArrow(_removeKeywordsAndArguments, it.result);
           Assert.assertTrue("\nExpected subject.removeKeywordsAndArguments(step) => result but"
-           + "\n     subject.removeKeywordsAndArguments(step) is " + "\"" + _removeKeywordsAndArguments + "\""
-           + "\n     subject is " + StepNameProviderRemoveKeywordsAndArgumentsStringSpec.this.subject
-           + "\n     step is " + "\"" + it.step + "\""
-           + "\n     result is " + "\"" + it.result + "\"" + "\n", _doubleArrow);
+           + "\n     subject.removeKeywordsAndArguments(step) is " + new StringDescription().appendValue(_removeKeywordsAndArguments).toString()
+           + "\n     subject is " + new StringDescription().appendValue(StepNameProviderRemoveKeywordsAndArgumentsStringSpec.this.subject).toString()
+           + "\n     step is " + new StringDescription().appendValue(it.step).toString()
+           + "\n     result is " + new StringDescription().appendValue(it.result).toString() + "\n", _doubleArrow);
           
         }
       };

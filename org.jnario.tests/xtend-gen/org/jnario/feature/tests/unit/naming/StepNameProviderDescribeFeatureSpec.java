@@ -1,5 +1,6 @@
 package org.jnario.feature.tests.unit.naming;
 
+import org.hamcrest.StringDescription;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.tests.unit.naming.StepNameProviderSpec;
 import org.jnario.jnario.test.util.Features;
@@ -23,8 +24,8 @@ public class StepNameProviderDescribeFeatureSpec extends StepNameProviderSpec {
     String _desc = this.desc(_feature);
     boolean _doubleArrow = Should.operator_doubleArrow(_desc, "With whitespace");
     Assert.assertTrue("\nExpected feature(\" With whitespace \").desc =>  \"With whitespace\" but"
-     + "\n     feature(\" With whitespace \").desc is " + "\"" + _desc + "\""
-     + "\n     feature(\" With whitespace \") is " + _feature + "\n", _doubleArrow);
+     + "\n     feature(\" With whitespace \").desc is " + new StringDescription().appendValue(_desc).toString()
+     + "\n     feature(\" With whitespace \") is " + new StringDescription().appendValue(_feature).toString() + "\n", _doubleArrow);
     
   }
   
@@ -36,8 +37,8 @@ public class StepNameProviderDescribeFeatureSpec extends StepNameProviderSpec {
     String _desc = this.desc(_feature);
     boolean _doubleArrow = Should.operator_doubleArrow(_desc, "With [parentheses]");
     Assert.assertTrue("\nExpected feature(\"With (parentheses)\").desc =>  \"With [parentheses]\" but"
-     + "\n     feature(\"With (parentheses)\").desc is " + "\"" + _desc + "\""
-     + "\n     feature(\"With (parentheses)\") is " + _feature + "\n", _doubleArrow);
+     + "\n     feature(\"With (parentheses)\").desc is " + new StringDescription().appendValue(_desc).toString()
+     + "\n     feature(\"With (parentheses)\") is " + new StringDescription().appendValue(_feature).toString() + "\n", _doubleArrow);
     
   }
 }

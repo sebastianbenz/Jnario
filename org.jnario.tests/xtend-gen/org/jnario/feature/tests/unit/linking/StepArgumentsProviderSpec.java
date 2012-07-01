@@ -13,6 +13,7 @@ import org.eclipse.xtext.parser.IParser;
 import org.eclipse.xtext.util.StringInputStream;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.hamcrest.StringDescription;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.jvmmodel.StepArgumentsProvider;
 import org.jnario.feature.tests.unit.linking.StepArgumentsProviderSpecExamples;
@@ -77,11 +78,11 @@ public class StepArgumentsProviderSpec {
             List<String> _findStepArguments = StepArgumentsProviderSpec.this.subject.findStepArguments(_create);
             boolean _doubleArrow = Should.operator_doubleArrow(_findStepArguments, it.expectedArgs);
             Assert.assertTrue("\nExpected subject.findStepArguments(create(each)) => expectedArgs but"
-             + "\n     subject.findStepArguments(create(each)) is " + _findStepArguments
-             + "\n     subject is " + StepArgumentsProviderSpec.this.subject
-             + "\n     create(each) is " + _create
-             + "\n     each is " + "\"" + each + "\""
-             + "\n     expectedArgs is " + it.expectedArgs + "\n", _doubleArrow);
+             + "\n     subject.findStepArguments(create(each)) is " + new StringDescription().appendValue(_findStepArguments).toString()
+             + "\n     subject is " + new StringDescription().appendValue(StepArgumentsProviderSpec.this.subject).toString()
+             + "\n     create(each) is " + new StringDescription().appendValue(_create).toString()
+             + "\n     each is " + new StringDescription().appendValue(each).toString()
+             + "\n     expectedArgs is " + new StringDescription().appendValue(it.expectedArgs).toString() + "\n", _doubleArrow);
             
           }
         }

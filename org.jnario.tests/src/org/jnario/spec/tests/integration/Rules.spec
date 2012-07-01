@@ -7,21 +7,31 @@
  *******************************************************************************/
 package org.jnario.spec.tests.integration
 
-import org.junit.Rule
-import org.junit.rules.TemporaryFolder
+import static extension org.jnario.jnario.test.util.SpecExecutor.*
 
 /* 
- * JUnit rules work exactly as in JUnit. Just declare a public field with the rule annotation:
- * 
- * 	@Rule
- * 	public TemporaryFolder folder = new TemporaryFolder
+ * JUnit rules work exactly as in JUnit. Just declare a public field with the rule annotation.
  * 
  */
-describe "Using JUnit Rules"{
+describe "Using JUnit Rules in Specs"{
 
-  @Rule
-  public TemporaryFolder folder = new TemporaryFolder	
+	/*
+     * @filter('''|.executesSuccessfully)  
+     */
+	fact "Example Specification:"{
+		'''
+		package test
+				
+		import org.junit.Rule
+		import org.junit.rules.TemporaryFolder
+		
+		describe Rule{
+		  @Rule public val folder = new TemporaryFolder	
+		
+		  fact folder.root should not be null
+		}		
+		'''.executesSuccessfully
+	}
 
-  fact folder.root should not be null
 
 }

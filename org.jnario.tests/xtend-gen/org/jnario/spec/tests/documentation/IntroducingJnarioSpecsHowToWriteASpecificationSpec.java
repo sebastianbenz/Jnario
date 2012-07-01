@@ -5,7 +5,7 @@ import org.jnario.jnario.test.util.SpecExecutor;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.jnario.spec.tests.documentation.JnarioSpecsTutorialSpec;
+import org.jnario.spec.tests.documentation.IntroducingJnarioSpecsSpec;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -39,7 +39,7 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("How to write a Specification")
-public class JnarioSpecsTutorialHowToWriteASpecificationSpec extends JnarioSpecsTutorialSpec {
+public class IntroducingJnarioSpecsHowToWriteASpecificationSpec extends IntroducingJnarioSpecsSpec {
   /**
    * The next step is to enrich our facts with the required logic to
    * check whether our stack behaves as specified. Checks are implemented by adding

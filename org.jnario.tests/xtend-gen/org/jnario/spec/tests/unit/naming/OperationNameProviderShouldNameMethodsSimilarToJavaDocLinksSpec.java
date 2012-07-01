@@ -1,5 +1,6 @@
 package org.jnario.spec.tests.unit.naming;
 
+import org.hamcrest.StringDescription;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
@@ -20,7 +21,7 @@ public class OperationNameProviderShouldNameMethodsSimilarToJavaDocLinksSpec ext
     String _nameOf = this.nameOf("simpleOperation");
     boolean _doubleArrow = Should.operator_doubleArrow(_nameOf, "simpleOperation");
     Assert.assertTrue("\nExpected nameOf(\"simpleOperation\") => \"simpleOperation\" but"
-     + "\n     nameOf(\"simpleOperation\") is " + "\"" + _nameOf + "\"" + "\n", _doubleArrow);
+     + "\n     nameOf(\"simpleOperation\") is " + new StringDescription().appendValue(_nameOf).toString() + "\n", _doubleArrow);
     
   }
   
@@ -31,7 +32,7 @@ public class OperationNameProviderShouldNameMethodsSimilarToJavaDocLinksSpec ext
     String _nameOf = this.nameOf("operationWithSingleArgument");
     boolean _doubleArrow = Should.operator_doubleArrow(_nameOf, "operationWithSingleArgument(String)");
     Assert.assertTrue("\nExpected nameOf(\"operationWithSingleArgument\") => \"operationWithSingleArgument(String)\" but"
-     + "\n     nameOf(\"operationWithSingleArgument\") is " + "\"" + _nameOf + "\"" + "\n", _doubleArrow);
+     + "\n     nameOf(\"operationWithSingleArgument\") is " + new StringDescription().appendValue(_nameOf).toString() + "\n", _doubleArrow);
     
   }
   
@@ -42,7 +43,7 @@ public class OperationNameProviderShouldNameMethodsSimilarToJavaDocLinksSpec ext
     String _nameOf = this.nameOf("operationWithMultipleArguments");
     boolean _doubleArrow = Should.operator_doubleArrow(_nameOf, "operationWithMultipleArguments(String, Object, int)");
     Assert.assertTrue("\nExpected nameOf(\"operationWithMultipleArguments\") => \"operationWithMultipleArguments(String, Object, int)\" but"
-     + "\n     nameOf(\"operationWithMultipleArguments\") is " + "\"" + _nameOf + "\"" + "\n", _doubleArrow);
+     + "\n     nameOf(\"operationWithMultipleArguments\") is " + new StringDescription().appendValue(_nameOf).toString() + "\n", _doubleArrow);
     
   }
   
@@ -53,7 +54,7 @@ public class OperationNameProviderShouldNameMethodsSimilarToJavaDocLinksSpec ext
     String _nameOf = this.nameOf("operationWithTypedArguments");
     boolean _doubleArrow = Should.operator_doubleArrow(_nameOf, "operationWithTypedArguments(List<String>, List<? extends String>)");
     Assert.assertTrue("\nExpected nameOf(\"operationWithTypedArguments\") => \"operationWithTypedArguments(List<String>, List<? extends String>)\" but"
-     + "\n     nameOf(\"operationWithTypedArguments\") is " + "\"" + _nameOf + "\"" + "\n", _doubleArrow);
+     + "\n     nameOf(\"operationWithTypedArguments\") is " + new StringDescription().appendValue(_nameOf).toString() + "\n", _doubleArrow);
     
   }
   
@@ -64,7 +65,7 @@ public class OperationNameProviderShouldNameMethodsSimilarToJavaDocLinksSpec ext
     String _nameOf = this.nameOf("operationWithVarArg");
     boolean _doubleArrow = Should.operator_doubleArrow(_nameOf, "operationWithVarArg(String[])");
     Assert.assertTrue("\nExpected nameOf(\"operationWithVarArg\") => \"operationWithVarArg(String[])\" but"
-     + "\n     nameOf(\"operationWithVarArg\") is " + "\"" + _nameOf + "\"" + "\n", _doubleArrow);
+     + "\n     nameOf(\"operationWithVarArg\") is " + new StringDescription().appendValue(_nameOf).toString() + "\n", _doubleArrow);
     
   }
 }

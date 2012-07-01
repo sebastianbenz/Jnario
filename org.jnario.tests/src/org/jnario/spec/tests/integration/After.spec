@@ -18,10 +18,8 @@ import static extension org.jnario.jnario.test.util.SpecExecutor.*
 describe "After" {
  
 	fact "should be executed after each test"{
-		val spec = '
+			'''
 			package bootstrap 
-			
-			import org.jnario.runner.Order
 			
 			describe "After"{
 				
@@ -41,8 +39,7 @@ describe "After" {
 					afterExecutionCount = afterExecutionCount + 1
 				}
 			}
-		'
-		spec.executesSuccessfully
+		'''.executesSuccessfully
 	}
 
 }

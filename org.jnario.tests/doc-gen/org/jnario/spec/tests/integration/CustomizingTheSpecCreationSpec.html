@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Spec Instantiation</title>
+<title>Customizing the Spec Creation</title>
 <meta name="description" content="">
 <meta name="author" content="Jnario">
 
@@ -24,24 +24,25 @@
 	<div class="container">
 		<div class="content">
 			<div class="page-header">
-				<h1>Spec Instantiation</h1>
+				<h1>Customizing the Spec Creation</h1>
 			</div>
 			<div class="row">
 				<div class="span12">
-<p>It is possible to customize the instantiation of tests and subjects.</p>
+<p>It is possible to customize the instantiation of features, specs and subjects. This can be useful when a dependency injection container or a mocking framework should be used for creating specs. To do so, create a custom <code>SpecCreator</code> and annotate your spec with <code>CreateWith</code> and pass as a value the type of the custom <code>SpecCreator</code>. Here is an example for a custom <code>SpecCreator</code> that uses Google Guice to create the specification:</p>
 <pre class="prettyprint">
 package org.jnario.lib;
 
 import com.google.inject.Guice;
 import com.google.inject.util.Modules;
 
-public class GuiceBasedTestInstantiator extends AbstractTestInstantiator {
-  public Object createTest(Class<?> klass) throws Exception {
+public class GuiceSpecCreator extends AbstractSpecCreator {
+  public Object create(Class<?> klass) throws Exception {
     return Guice.createInjector(Modules.EMPTY_MODULE).getInstance(klass);
   }
 }
-</pre>
-<ul><li><p  id="how_to_use_a_custom_spec_creator"><strong>how to use a custom spec creator</strong>
+</pre><p><a href="https://gist.github.com/2869959">Here</a> is another example that demonstrates how to create a custom <strong>SpecCreator</strong> for <a href="http://code.google.com/p/mockito/">Mockito</a>.</p>
+<ul><li><p  id="Example"><strong>Example</strong>
+<p>This example uses the Google Guice to instantiate the specification.</p>
 <pre class="prettyprint lang-spec">
 package bootstrap
 
@@ -50,7 +51,7 @@ import org.jnario.jnario.test.util.GuiceSpecCreator
 import com.google.inject.Inject
 
 @CreateWith(typeof(GuiceSpecCreator))
-describe GuiceBasedTestInstantiator {
+describe "Something" {
   
   @Inject String toInject
   

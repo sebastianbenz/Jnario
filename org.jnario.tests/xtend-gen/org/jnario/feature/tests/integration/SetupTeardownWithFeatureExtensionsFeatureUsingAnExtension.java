@@ -22,14 +22,14 @@ public class SetupTeardownWithFeatureExtensionsFeatureUsingAnExtension {
   @Test
   @Order(0)
   @Named("Given a class **ExampleExtension** with JUnit before and after methods:")
-  public void givenAClassExampleExtensionWithJUnitBeforeAndAfterMethodsPackageOrgJnarioFeatureTestsIntegrationImportOrgJunitBeforeImportOrgJunitBeforeClassImportOrgJunitAfterImportOrgJunitAfterClassClassExampleExtensionBeforeDefBeforePrintlnBeforeAfterDefAfterPrintlnAfter() {
+  public void givenAClassExampleExtensionWithJUnitBeforeAndAfterMethods() {
     
   }
   
   @Test
   @Order(1)
   @Named("When I declare an extension field of type **ExampleExtension** in the background")
-  public void whenIDeclareAnExtensionFieldOfTypeExampleExtensionInTheBackgroundImportOrgJnarioFeatureTestsIntegrationExampleExtensionFeatureFeatureWithExtensionsBackgroundACommonExtensionToAllScenariosExtensionExampleExtensionNewExampleExtensionGivenAStaticExtensionFieldScenarioScenario1GivenAStepPrintlnStep1ThenWeHaveTwoStepsPrintlnStep2ScenarioScenario2GivenAStepPrintlnStep3ThenWeHaveTwoStepsPrintlnStep4() {
+  public void whenIDeclareAnExtensionFieldOfTypeExampleExtensionInTheBackground() {
       StepArguments _stepArguments = new StepArguments("\r\n        import org.jnario.feature.tests.integration.ExampleExtension\r\n\r\n        Feature: Feature with extensions\r\n          \r\n          Background: A common extension to all scenarios\r\n              extension ExampleExtension = new ExampleExtension \r\n            Given a static extension field\r\n            \r\n          Scenario: Scenario 1\r\n            Given a step \r\n              println(\"step 1\")\r\n            Then we have two steps\r\n            println(\"step 2\")\r\n          Scenario: Scenario 2\r\n            Given a step \r\n              println(\"step 3\")\r\n            Then we have two steps\r\n              println(\"step 4\")\r\n      ");
       final StepArguments args = _stepArguments;
       String _first = args.first();
@@ -48,7 +48,7 @@ public class SetupTeardownWithFeatureExtensionsFeatureUsingAnExtension {
   @Test
   @Order(3)
   @Named("Then the execution order is")
-  public void thenTheExecutionOrderIsBeforeStep1Step2AfterBeforeStep3Step4After() {
+  public void thenTheExecutionOrderIs() {
       StepArguments _stepArguments = new StepArguments("\r\n        before\r\n        step 1\r\n        step 2\r\n        after\r\n        before\r\n        step 3\r\n        step 4\r\n        after\r\n      ");
       final StepArguments args = _stepArguments;
       String _stop = this.recorder.stop();

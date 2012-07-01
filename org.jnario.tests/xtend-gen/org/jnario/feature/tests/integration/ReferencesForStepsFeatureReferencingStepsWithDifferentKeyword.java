@@ -1,5 +1,6 @@
 package org.jnario.feature.tests.integration;
 
+import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.lib.Should;
 import org.jnario.runner.FeatureRunner;
@@ -29,7 +30,7 @@ public class ReferencesForStepsFeatureReferencingStepsWithDifferentKeyword {
     int _failureCount = _execute.getFailureCount();
     boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_failureCount), Integer.valueOf(2));
     Assert.assertTrue("\nExpected  but"
-     + "\n      is " + Integer.valueOf(_failureCount) + "\n", _doubleArrow);
+     + "\n      is " + new StringDescription().appendValue(Integer.valueOf(_failureCount)).toString() + "\n", _doubleArrow);
     
   }
   

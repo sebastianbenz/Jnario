@@ -2,6 +2,7 @@ package org.jnario.spec.tests.integration;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.Helpers;
 import org.jnario.jnario.test.util.SpecExecutor;
 import org.jnario.lib.ExampleTable;
@@ -10,7 +11,7 @@ import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.jnario.spec.tests.integration.SpecsExampleTablesSpecExample;
+import org.jnario.spec.tests.integration.UsingTablesSpecExample;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -22,8 +23,8 @@ import org.junit.runner.RunWith;
  */
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
-@Named("Specs - Example Tables")
-public class SpecsExampleTablesSpec {
+@Named("Using Tables")
+public class UsingTablesSpec {
   /**
    * Examples are stored within a table. Assertions for the table's values are
    * best implemented by iterating over each table row using `forEach`.
@@ -298,16 +299,16 @@ public class SpecsExampleTablesSpec {
   }
   
   @Before
-  public void _initSpecsExampleTablesSpecExample() {
+  public void _initUsingTablesSpecExample() {
     example = ExampleTable.create("example", 
       java.util.Arrays.asList("value1", "value2", "sum"), 
-      new SpecsExampleTablesSpecExample(  java.util.Arrays.asList("1", "2", "3"), 1, 2, 3),
-      new SpecsExampleTablesSpecExample(  java.util.Arrays.asList("4", "5", "7"), 4, 5, 7),
-      new SpecsExampleTablesSpecExample(  java.util.Arrays.asList("7", "8", "14"), 7, 8, 14)
+      new UsingTablesSpecExample(  java.util.Arrays.asList("1", "2", "3"), 1, 2, 3),
+      new UsingTablesSpecExample(  java.util.Arrays.asList("4", "5", "7"), 4, 5, 7),
+      new UsingTablesSpecExample(  java.util.Arrays.asList("7", "8", "14"), 7, 8, 14)
     );
   }
   
-  protected ExampleTable<SpecsExampleTablesSpecExample> example;
+  protected ExampleTable<UsingTablesSpecExample> example;
   
   /**
    * `ExampleTable#forEach` executes the passed in procedure for all table rows.
@@ -320,19 +321,19 @@ public class SpecsExampleTablesSpec {
   public void errorMessage() throws Exception {
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
-          final Procedure1<SpecsExampleTablesSpecExample> _function = new Procedure1<SpecsExampleTablesSpecExample>() {
-              public void apply(final SpecsExampleTablesSpecExample it) {
+          final Procedure1<UsingTablesSpecExample> _function = new Procedure1<UsingTablesSpecExample>() {
+              public void apply(final UsingTablesSpecExample it) {
                 int _plus = (it.value1 + it.value2);
                 boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(it.sum));
                 Assert.assertTrue("\nExpected value1 + value2 => sum but"
-                 + "\n     value1 + value2 is " + Integer.valueOf(_plus)
-                 + "\n     value1 is " + it.value1
-                 + "\n     value2 is " + it.value2
-                 + "\n     sum is " + Integer.valueOf(it.sum) + "\n", _doubleArrow);
+                 + "\n     value1 + value2 is " + new StringDescription().appendValue(Integer.valueOf(_plus)).toString()
+                 + "\n     value1 is " + new StringDescription().appendValue(it.value1).toString()
+                 + "\n     value2 is " + new StringDescription().appendValue(it.value2).toString()
+                 + "\n     sum is " + new StringDescription().appendValue(Integer.valueOf(it.sum)).toString() + "\n", _doubleArrow);
                 
               }
             };
-          ExampleTableIterators.<SpecsExampleTablesSpecExample>forEach(SpecsExampleTablesSpec.this.example, _function);
+          ExampleTableIterators.<UsingTablesSpecExample>forEach(UsingTablesSpec.this.example, _function);
         }
       };
     String _errorMessage = Helpers.errorMessage(_function);

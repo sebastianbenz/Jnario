@@ -11,6 +11,7 @@ import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure2;
+import org.hamcrest.StringDescription;
 import org.jnario.feature.parser.FeatureTokenSource;
 import org.jnario.feature.parser.antlr.internal.InternalFeatureLexer;
 import org.jnario.lib.Should;
@@ -211,10 +212,10 @@ public class FeatureTokenSourceSpec {
     int _size_1 = ((List<CommonToken>)Conversions.doWrapArray(expectedTokens)).size();
     boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_size), Integer.valueOf(_size_1));
     Assert.assertTrue("\nExpected actualTokens.size => expectedTokens.size but"
-     + "\n     actualTokens.size is " + Integer.valueOf(_size)
-     + "\n     actualTokens is " + actualTokens
-     + "\n     expectedTokens.size is " + Integer.valueOf(_size_1)
-     + "\n     expectedTokens is " + ((List<CommonToken>)Conversions.doWrapArray(expectedTokens)) + "\n", _doubleArrow);
+     + "\n     actualTokens.size is " + new StringDescription().appendValue(Integer.valueOf(_size)).toString()
+     + "\n     actualTokens is " + new StringDescription().appendValue(actualTokens).toString()
+     + "\n     expectedTokens.size is " + new StringDescription().appendValue(Integer.valueOf(_size_1)).toString()
+     + "\n     expectedTokens is " + new StringDescription().appendValue(((List<CommonToken>)Conversions.doWrapArray(expectedTokens))).toString() + "\n", _doubleArrow);
     
     final Procedure2<Token,Integer> _function = new Procedure2<Token,Integer>() {
         public void apply(final Token e, final Integer i) {
@@ -224,28 +225,28 @@ public class FeatureTokenSourceSpec {
           int _type_1 = expected.getType();
           boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_type), Integer.valueOf(_type_1));
           Assert.assertTrue("\nExpected actual.type => expected.type but"
-           + "\n     actual.type is " + Integer.valueOf(_type)
-           + "\n     actual is " + actual
-           + "\n     expected.type is " + Integer.valueOf(_type_1)
-           + "\n     expected is " + expected + "\n", _doubleArrow);
+           + "\n     actual.type is " + new StringDescription().appendValue(Integer.valueOf(_type)).toString()
+           + "\n     actual is " + new StringDescription().appendValue(actual).toString()
+           + "\n     expected.type is " + new StringDescription().appendValue(Integer.valueOf(_type_1)).toString()
+           + "\n     expected is " + new StringDescription().appendValue(expected).toString() + "\n", _doubleArrow);
           
           String _text = actual.getText();
           String _text_1 = expected.getText();
           boolean _doubleArrow_1 = Should.operator_doubleArrow(_text, _text_1);
           Assert.assertTrue("\nExpected actual.text => expected.text but"
-           + "\n     actual.text is " + "\"" + _text + "\""
-           + "\n     actual is " + actual
-           + "\n     expected.text is " + "\"" + _text_1 + "\""
-           + "\n     expected is " + expected + "\n", _doubleArrow_1);
+           + "\n     actual.text is " + new StringDescription().appendValue(_text).toString()
+           + "\n     actual is " + new StringDescription().appendValue(actual).toString()
+           + "\n     expected.text is " + new StringDescription().appendValue(_text_1).toString()
+           + "\n     expected is " + new StringDescription().appendValue(expected).toString() + "\n", _doubleArrow_1);
           
           int _line = actual.getLine();
           int _line_1 = expected.getLine();
           boolean _doubleArrow_2 = Should.operator_doubleArrow(Integer.valueOf(_line), Integer.valueOf(_line_1));
           Assert.assertTrue("\nExpected actual.line => expected.line but"
-           + "\n     actual.line is " + Integer.valueOf(_line)
-           + "\n     actual is " + actual
-           + "\n     expected.line is " + Integer.valueOf(_line_1)
-           + "\n     expected is " + expected + "\n", _doubleArrow_2);
+           + "\n     actual.line is " + new StringDescription().appendValue(Integer.valueOf(_line)).toString()
+           + "\n     actual is " + new StringDescription().appendValue(actual).toString()
+           + "\n     expected.line is " + new StringDescription().appendValue(Integer.valueOf(_line_1)).toString()
+           + "\n     expected is " + new StringDescription().appendValue(expected).toString() + "\n", _doubleArrow_2);
           
         }
       };

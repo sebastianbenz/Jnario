@@ -1,5 +1,6 @@
 package org.jnario.spec.tests.integration;
 
+import org.hamcrest.StringDescription;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -27,7 +28,7 @@ public class AssertionIntroductionSpec extends AssertionSpec {
     
     boolean _equals = (1 == 1);
     Assert.assertTrue("\nExpected 1 == 1 but"
-     + "\n     1 == 1 is " + _equals + "\n", _equals);
+     + "\n     1 == 1 is " + new StringDescription().appendValue(_equals).toString() + "\n", _equals);
     
   }
   

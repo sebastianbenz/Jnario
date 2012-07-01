@@ -3,8 +3,8 @@ package org.jnario.spec.tests.documentation;
 import org.jnario.runner.Contains;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
-import org.jnario.spec.tests.documentation.JnarioSpecsTutorialHowToWriteASpecificationSpec;
-import org.jnario.spec.tests.documentation.JnarioSpecsTutorialWritingAssertionsSpec;
+import org.jnario.spec.tests.documentation.IntroducingJnarioSpecsHowToWriteASpecificationSpec;
+import org.jnario.spec.tests.documentation.IntroducingJnarioSpecsWritingAssertionsSpec;
 import org.junit.runner.RunWith;
 
 /**
@@ -19,9 +19,9 @@ import org.junit.runner.RunWith;
  * You can install the most recent version from this update site: `http://www.jnario.org/updates/snapshot/`. Jnario requires a small runtime library that contains
  * the JUnit integration. You can download the jar [here](http://jnario.org/updates/snapshot/org.jnario.lib-0.1.0-SNAPSHOT.jar).
  */
-@Contains({ JnarioSpecsTutorialHowToWriteASpecificationSpec.class, JnarioSpecsTutorialWritingAssertionsSpec.class })
+@Contains({ IntroducingJnarioSpecsHowToWriteASpecificationSpec.class, IntroducingJnarioSpecsWritingAssertionsSpec.class })
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
-@Named("Jnario Specs - Tutorial")
-public class JnarioSpecsTutorialSpec {
+@Named("Introducing Jnario Specs")
+public class IntroducingJnarioSpecsSpec {
 }

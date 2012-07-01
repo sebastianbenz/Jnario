@@ -3,6 +3,7 @@ package org.jnario.spec.tests.unit.naming;
 import com.google.inject.Inject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.naming.QualifiedName;
+import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.SpecTestCreator;
 import org.jnario.lib.Should;
@@ -40,7 +41,7 @@ public class SpecQualifiedNameProviderSpec {
     String _qualifiedName = this.qualifiedName();
     boolean _doubleArrow = Should.operator_doubleArrow(_qualifiedName, "My Spec");
     Assert.assertTrue("\nExpected qualifiedName => \"My Spec\" but"
-     + "\n     qualifiedName is " + "\"" + _qualifiedName + "\"" + "\n", _doubleArrow);
+     + "\n     qualifiedName is " + new StringDescription().appendValue(_qualifiedName).toString() + "\n", _doubleArrow);
     
   }
   
@@ -54,7 +55,7 @@ public class SpecQualifiedNameProviderSpec {
     String _qualifiedName = this.qualifiedName();
     boolean _doubleArrow = Should.operator_doubleArrow(_qualifiedName, "My Spec");
     Assert.assertTrue("\nExpected qualifiedName => \"My Spec\" but"
-     + "\n     qualifiedName is " + "\"" + _qualifiedName + "\"" + "\n", _doubleArrow);
+     + "\n     qualifiedName is " + new StringDescription().appendValue(_qualifiedName).toString() + "\n", _doubleArrow);
     
   }
   
@@ -68,7 +69,7 @@ public class SpecQualifiedNameProviderSpec {
     String _qualifiedName = this.qualifiedName();
     boolean _doubleArrow = Should.operator_doubleArrow(_qualifiedName, "Assert");
     Assert.assertTrue("\nExpected qualifiedName => \"Assert\" but"
-     + "\n     qualifiedName is " + "\"" + _qualifiedName + "\"" + "\n", _doubleArrow);
+     + "\n     qualifiedName is " + new StringDescription().appendValue(_qualifiedName).toString() + "\n", _doubleArrow);
     
   }
   
@@ -82,7 +83,7 @@ public class SpecQualifiedNameProviderSpec {
     String _qualifiedName = this.qualifiedName();
     boolean _doubleArrow = Should.operator_doubleArrow(_qualifiedName, "Assert My Spec");
     Assert.assertTrue("\nExpected qualifiedName => \"Assert My Spec\" but"
-     + "\n     qualifiedName is " + "\"" + _qualifiedName + "\"" + "\n", _doubleArrow);
+     + "\n     qualifiedName is " + new StringDescription().appendValue(_qualifiedName).toString() + "\n", _doubleArrow);
     
   }
   
@@ -98,7 +99,7 @@ public class SpecQualifiedNameProviderSpec {
     String _qualifiedName = this.qualifiedName();
     boolean _doubleArrow = Should.operator_doubleArrow(_qualifiedName, "test.My Spec");
     Assert.assertTrue("\nExpected qualifiedName => \"test.My Spec\" but"
-     + "\n     qualifiedName is " + "\"" + _qualifiedName + "\"" + "\n", _doubleArrow);
+     + "\n     qualifiedName is " + new StringDescription().appendValue(_qualifiedName).toString() + "\n", _doubleArrow);
     
   }
   

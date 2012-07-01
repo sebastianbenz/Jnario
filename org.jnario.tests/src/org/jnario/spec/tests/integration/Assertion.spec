@@ -47,7 +47,7 @@ describe "Assertion"{
 			errorMessage[assert y].is(  
 			'''
 			Expected y but
-			     y is false''')
+			     y is <false>''')
 		}                           
 		
 		/*
@@ -57,7 +57,7 @@ describe "Assertion"{
 			val x = 0  
 			errorMessage[assert x == 42].is('''
 			  Expected x == 42 but
-			       x is 0''')	 
+			       x is <0>''')	 
 		}      
 		
 		/*
@@ -67,8 +67,8 @@ describe "Assertion"{
 			val x = 42     
 			errorMessage[assert !(x == 42)].is('''
 			  Expected !(x == 42) but
-			       x == 42 is true
-			       x is 42''')	  
+			       x == 42 is <true>
+			       x is <42>''')	  
 		}   
 		
 		/*
@@ -98,10 +98,10 @@ describe "Assertion"{
 			val y = 1 
 			errorMessage[assert x == 1 && y == 0].is('''
 			  Expected x == 1 && y == 0 but
-			       x == 1 is false
-			       x is 0
-			       y == 0 is false
-			       y is 1''')
+			       x == 1 is <false>
+			       x is <0>
+			       y == 0 is <false>
+			       y is <1>''')
 		}    
  
   		/*
@@ -111,9 +111,9 @@ describe "Assertion"{
 			val x = 0 
 			errorMessage[assert x > 0 && x < 10].is('''
 			  Expected x > 0 && x < 10 but
-			       x > 0 is false
-			       x is 0
-			       x < 10 is true''')
+			       x > 0 is <false>
+			       x is <0>
+			       x < 10 is <true>''')
  		}
  		
  		/*

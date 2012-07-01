@@ -2,6 +2,7 @@ package org.jnario.suite.unit;
 
 import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.hamcrest.StringDescription;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.Should;
@@ -47,12 +48,12 @@ public class PatternValueConverterToStringStringSpec extends PatternValueConvert
           String _plus = (it.result + _newLine);
           boolean _doubleArrow = Should.operator_doubleArrow(_string, _plus);
           Assert.assertTrue("\nExpected subject.toString(input) => result + newLine but"
-           + "\n     subject.toString(input) is " + "\"" + _string + "\""
-           + "\n     subject is " + PatternValueConverterToStringStringSpec.this.subject
-           + "\n     input is " + "\"" + it.input + "\""
-           + "\n     result + newLine is " + "\"" + _plus + "\""
-           + "\n     result is " + "\"" + it.result + "\""
-           + "\n     newLine is " + "\"" + _newLine + "\"" + "\n", _doubleArrow);
+           + "\n     subject.toString(input) is " + new StringDescription().appendValue(_string).toString()
+           + "\n     subject is " + new StringDescription().appendValue(PatternValueConverterToStringStringSpec.this.subject).toString()
+           + "\n     input is " + new StringDescription().appendValue(it.input).toString()
+           + "\n     result + newLine is " + new StringDescription().appendValue(_plus).toString()
+           + "\n     result is " + new StringDescription().appendValue(it.result).toString()
+           + "\n     newLine is " + new StringDescription().appendValue(_newLine).toString() + "\n", _doubleArrow);
           
         }
       };

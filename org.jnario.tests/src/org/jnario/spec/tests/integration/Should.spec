@@ -72,8 +72,8 @@ describe "Using Should"{
 	 */
 	fact "Why did it fail?"{
 		errorMessage[1 + 1 => 1].is('''
-		  Expected 1 + 1 => 1 but
-		       1 + 1 is 2''')	
+		 Expected 1 + 1 => 1 but
+		      1 + 1 is <2>''')	
 		
 		val x = "hello"        
 		errorMessage[x.toUpperCase should not be "HELLO"].is('''

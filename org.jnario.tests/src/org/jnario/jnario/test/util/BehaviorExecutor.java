@@ -93,7 +93,9 @@ public abstract class BehaviorExecutor {
 			((IRegistryConfigurator)injectorProvider).setupRegistry();		
 			BehaviorExecutor executor = injectorProvider.getInjector().getInstance(BehaviorExecutor.class);
 			Resource resource = executor.parse(content.toString());	
-			return executor.run(resource.getContents().get(0));
+			Result result = executor.run(resource.getContents().get(0));
+			resource.unload();
+			return result;
 		} finally {
 			((IRegistryConfigurator)injectorProvider).restoreRegistry();
 		}
@@ -116,6 +118,7 @@ public abstract class BehaviorExecutor {
 		resourceSet.getResources().add(resource);
 		try {
 			resource.load(new StringInputStream(content), Collections.emptyMap());
+//			EcoreUtil.resolveAll(resource);
 			Resources.checkForParseErrors(resource);
 		} catch (IOException e) {
 			e.printStackTrace();

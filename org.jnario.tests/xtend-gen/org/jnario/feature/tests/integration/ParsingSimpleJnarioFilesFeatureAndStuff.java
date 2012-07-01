@@ -1,5 +1,6 @@
 package org.jnario.feature.tests.integration;
 
+import org.hamcrest.StringDescription;
 import org.jnario.lib.Should;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
@@ -34,10 +35,10 @@ public class ParsingSimpleJnarioFilesFeatureAndStuff {
     int _plus = (this.x + this.y);
     boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(this.z));
     Assert.assertTrue("\nExpected (x+y) => z but"
-     + "\n     x+y is " + Integer.valueOf(_plus)
-     + "\n     x is " + this.x
-     + "\n     y is " + this.y
-     + "\n     z is " + Integer.valueOf(this.z) + "\n", _doubleArrow);
+     + "\n     x+y is " + new StringDescription().appendValue(Integer.valueOf(_plus)).toString()
+     + "\n     x is " + new StringDescription().appendValue(this.x).toString()
+     + "\n     y is " + new StringDescription().appendValue(this.y).toString()
+     + "\n     z is " + new StringDescription().appendValue(Integer.valueOf(this.z)).toString() + "\n", _doubleArrow);
     
   }
   

@@ -1,7 +1,7 @@
 package org.jnario.feature.documentation;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.jnario.feature.documentation.JnarioFeaturesTutorialSpec;
+import org.jnario.feature.documentation.IntroducingJnarioFeaturesSpec;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
@@ -49,8 +49,8 @@ import org.junit.runner.RunWith;
  */
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
-@Named("How to write a Feature")
-public class JnarioFeaturesTutorialHowToWriteAFeatureSpec extends JnarioFeaturesTutorialSpec {
+@Named("How to write a Feature?")
+public class IntroducingJnarioFeaturesHowToWriteAFeatureSpec extends IntroducingJnarioFeaturesSpec {
   /**
    * @filter('''|.executesSuccessfully)
    * @lang(feature)

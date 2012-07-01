@@ -2,6 +2,7 @@ package org.jnario.spec.tests.integration;
 
 import java.util.List;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.SpecExecutor;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
@@ -71,8 +72,8 @@ public class ExtensionsSpec {
       "ExtensionExample#afterClass");
     boolean _doubleArrow = Should.operator_doubleArrow(_executedMethods, _list);
     Assert.assertTrue("\nExpected executedMethods =>\n\t\t\t   list(\"ExtensionExample#beforeClass\", \n\t\t\t\t\t\"ExtensionExample#before\",  \n\t\t\t\t\t\"ExtensionSpec#test1\",  \n\t\t\t\t\t\"ExtensionExample#after\",  \n\t\t\t\t\t\"ExtensionExample#before\",\n\t\t\t\t\t\"ExtensionSpec#test2\",  \n\t\t\t\t\t\"ExtensionExample#after\",\n\t\t\t\t\t\"ExtensionExample#afterClass\") but"
-     + "\n     executedMethods is " + _executedMethods
-     + "\n     list(\"ExtensionExample#beforeClass\", \n\t\t\t\t\t\"ExtensionExample#before\",  \n\t\t\t\t\t\"ExtensionSpec#test1\",  \n\t\t\t\t\t\"ExtensionExample#after\",  \n\t\t\t\t\t\"ExtensionExample#before\",\n\t\t\t\t\t\"ExtensionSpec#test2\",  \n\t\t\t\t\t\"ExtensionExample#after\",\n\t\t\t\t\t\"ExtensionExample#afterClass\") is " + _list + "\n", _doubleArrow);
+     + "\n     executedMethods is " + new StringDescription().appendValue(_executedMethods).toString()
+     + "\n     list(\"ExtensionExample#beforeClass\", \n\t\t\t\t\t\"ExtensionExample#before\",  \n\t\t\t\t\t\"ExtensionSpec#test1\",  \n\t\t\t\t\t\"ExtensionExample#after\",  \n\t\t\t\t\t\"ExtensionExample#before\",\n\t\t\t\t\t\"ExtensionSpec#test2\",  \n\t\t\t\t\t\"ExtensionExample#after\",\n\t\t\t\t\t\"ExtensionExample#afterClass\") is " + new StringDescription().appendValue(_list).toString() + "\n", _doubleArrow);
     
   }
 }

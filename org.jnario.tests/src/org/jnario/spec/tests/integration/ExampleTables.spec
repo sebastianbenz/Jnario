@@ -14,7 +14,7 @@ import org.junit.Ignore
 /*
  * Example tables are a great way to structure input and expected output data.
  */
-describe "Specs - Example Tables"{
+describe "Using Tables"{
   
   /*
    * Examples are stored within a table. Assertions for the table's values are

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.Query;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -38,7 +39,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
           String _firstMethodName = ExampleNameProviderToMethodNameAfterSpec.this.firstMethodName(it);
           boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "myExample");
           Assert.assertTrue("\nExpected firstMethodName => \'myExample\' but"
-           + "\n     firstMethodName is " + "\"" + _firstMethodName + "\"" + "\n", _doubleArrow);
+           + "\n     firstMethodName is " + new StringDescription().appendValue(_firstMethodName).toString() + "\n", _doubleArrow);
           
         }
       };
@@ -52,7 +53,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
     String _firstMethodName = this.firstMethodName("after{}");
     boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "after");
     Assert.assertTrue("\nExpected firstMethodName(\"after{}\") => \"after\" but"
-     + "\n     firstMethodName(\"after{}\") is " + "\"" + _firstMethodName + "\"" + "\n", _doubleArrow);
+     + "\n     firstMethodName(\"after{}\") is " + new StringDescription().appendValue(_firstMethodName).toString() + "\n", _doubleArrow);
     
   }
   
@@ -63,7 +64,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
     String _secondMethodName = this.secondMethodName("after{}\r\n                 after{}");
     boolean _doubleArrow = Should.operator_doubleArrow(_secondMethodName, "after2");
     Assert.assertTrue("\nExpected secondMethodName(\"after{}\r\n                 after{}\") => \"after2\" but"
-     + "\n     secondMethodName(\"after{}\r\n                 after{}\") is " + "\"" + _secondMethodName + "\"" + "\n", _doubleArrow);
+     + "\n     secondMethodName(\"after{}\r\n                 after{}\") is " + new StringDescription().appendValue(_secondMethodName).toString() + "\n", _doubleArrow);
     
   }
   
