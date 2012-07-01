@@ -137,19 +137,26 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
     String _markdown2Html = this.markdown2Html(_trimFirstLine);
     _builder.append(_markdown2Html, "");
     _builder.newLineIfNotEmpty();
-    _builder.append("<ul>");
-    _builder.newLine();
     {
       EList<SuiteElement> _elements = suite.getElements();
-      for(final SuiteElement spec : _elements) {
-        List<Specification> _resolveSpecs = this._specResolver.resolveSpecs(spec);
-        CharSequence _generate = this.generate(spec, _resolveSpecs);
-        _builder.append(_generate, "");
-        _builder.newLineIfNotEmpty();
+      boolean _isEmpty = _elements.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        _builder.append("<ul>");
+        _builder.newLine();
+        {
+          EList<SuiteElement> _elements_1 = suite.getElements();
+          for(final SuiteElement spec : _elements_1) {
+            List<Specification> _resolveSpecs = this._specResolver.resolveSpecs(spec);
+            CharSequence _generate = this.generate(spec, _resolveSpecs);
+            _builder.append(_generate, "");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        _builder.append("</ul>");
+        _builder.newLine();
       }
     }
-    _builder.append("</ul>");
-    _builder.newLine();
     return _builder;
   }
   

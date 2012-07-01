@@ -65,11 +65,13 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 
 	def generateContent(Suite suite)'''
 		«suite.name.trimFirstLine.markdown2Html»
+		«IF !suite.elements.empty»
 		<ul>
 		«FOR spec : suite.elements»
 			«generate(spec, spec.resolveSpecs)»
 		«ENDFOR»
 		</ul>
+		«ENDIF»
 	'''
 
 	def dispatch generate(Heading ref, List<Specification> specs)'''
