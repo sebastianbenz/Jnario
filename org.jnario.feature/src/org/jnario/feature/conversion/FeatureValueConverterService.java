@@ -9,18 +9,22 @@ package org.jnario.feature.conversion;
 
 import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.conversion.ValueConverter;
+import org.eclipse.xtext.conversion.ValueConverterException;
+import org.eclipse.xtext.conversion.impl.AbstractLexerBasedConverter;
+import org.eclipse.xtext.nodemodel.INode;
 import org.jnario.conversion.JnarioValueConverterService;
 
 public class FeatureValueConverterService extends JnarioValueConverterService {
 	
 	private FeatureValueConverter featureValueConverter = FeatureValueConverter.create("Feature:");
-//	private IValueConverter<String> backgroundValueConverter = FeatureValueConverter.create("Background:");
-//	private IValueConverter<String> scenarioValueConverter = FeatureValueConverter.create("Scenario:");
-//	private IValueConverter<String> givenValueConverter = FeatureValueConverter.create("Given ");
-//	private IValueConverter<String> whenValueConverter = FeatureValueConverter.create("When ");
-//	private IValueConverter<String> thenValueConverter = FeatureValueConverter.create("Then ");
-//	private IValueConverter<String> andValueConverter = FeatureValueConverter.create("And ");
-//	private IValueConverter<String> exampleValueConverter = FeatureValueConverter.create("Examples:");
+	private IValueConverter<String> stepValueConverter = new AbstractLexerBasedConverter<String>(){
+
+		public String toValue(String string, INode node)
+				throws ValueConverterException {
+			return string.trim();
+		}
+		
+	};
 //	
 	public String toString(Object value, String lexerRule) {
 		if(lexerRule.startsWith("GIVEN_TEXT")){
@@ -52,29 +56,24 @@ public class FeatureValueConverterService extends JnarioValueConverterService {
 //		return scenarioValueConverter;
 //	}
 //	
-//	@ValueConverter(rule = "GIVEN_TEXT")
-//	public IValueConverter<String> getGivenConverter() {
-//		return givenValueConverter;
-//	}
-//	
-//	@ValueConverter(rule = "WHEN_TEXT")
-//	public IValueConverter<String> getWhenConverter() {
-//		return whenValueConverter;
-//	}
-//	
-//	@ValueConverter(rule = "THEN_TEXT")
-//	public IValueConverter<String> getThenConverter() {
-//		return thenValueConverter;
-//	}
-//	
-//	@ValueConverter(rule = "AND_TEXT")
-//	public IValueConverter<String> getAndConverter() {
-//		return andValueConverter;
-//	}
-//	
-//	@ValueConverter(rule = "EXAMPLE_TEXT")
-//	public IValueConverter<String> getExampleConverter() {
-//		return exampleValueConverter;
-//	}
+	@ValueConverter(rule = "GIVEN_TEXT")
+	public IValueConverter<String> getGivenConverter() {
+		return stepValueConverter;
+	}
+	
+	@ValueConverter(rule = "WHEN_TEXT")
+	public IValueConverter<String> getWhenConverter() {
+		return stepValueConverter;
+	}
+	
+	@ValueConverter(rule = "THEN_TEXT")
+	public IValueConverter<String> getThenConverter() {
+		return stepValueConverter;
+	}
+	
+	@ValueConverter(rule = "AND_TEXT")
+	public IValueConverter<String> getAndConverter() {
+		return stepValueConverter;
+	}
 
 }
