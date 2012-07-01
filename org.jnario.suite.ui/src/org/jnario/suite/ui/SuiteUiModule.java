@@ -20,7 +20,7 @@ import org.eclipse.xtend.ide.autoedit.TokenTypeToPartitionMapper;
 import org.eclipse.xtend.ide.builder.XtendBuilderParticipant;
 import org.eclipse.xtend.ide.contentassist.ImportingTypesProposalProvider;
 import org.eclipse.xtend.ide.editor.OccurrenceComputer;
-import org.eclipse.xtend.ide.editor.XtendDoubleClickStrategyProvider;
+import org.eclipse.xtend.ide.editor.XtendFoldingRegionProvider;
 import org.eclipse.xtend.ide.editor.XtendNatureAddingEditorCallback;
 import org.eclipse.xtend.ide.hover.XtendAnnotationHover;
 import org.eclipse.xtend.ide.hover.XtendHoverDocumentationProvider;
@@ -43,6 +43,7 @@ import org.eclipse.xtext.ui.editor.IURIEditorOpener;
 import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
 import org.eclipse.xtext.ui.editor.autoedit.AbstractEditStrategyProvider;
 import org.eclipse.xtext.ui.editor.doubleClicking.DoubleClickStrategyProvider;
+import org.eclipse.xtext.ui.editor.folding.IFoldingRegionProvider;
 import org.eclipse.xtext.ui.editor.formatting.IContentFormatterFactory;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
 import org.eclipse.xtext.ui.editor.hover.html.IEObjectHoverDocumentationProvider;
@@ -64,6 +65,7 @@ import org.eclipse.xtext.xbase.ui.hover.XbaseDeclarativeHoverSignatureProvider;
 import org.eclipse.xtext.xbase.ui.jvmmodel.navigation.DerivedMemberAwareEditorOpener;
 import org.eclipse.xtext.xbase.ui.launching.JavaElementDelegate;
 import org.jnario.suite.generator.SuiteGenerator;
+import org.jnario.suite.ui.editor.SuiteDoubleClickStrategyProvider;
 import org.jnario.suite.ui.highlighting.SuiteHighlightingCalculator;
 import org.jnario.suite.ui.highlighting.SuiteHighlightingConfiguration;
 import org.jnario.suite.ui.highlighting.SuiteTokenHighlighting;
@@ -110,6 +112,9 @@ public class SuiteUiModule extends org.jnario.suite.ui.AbstractSuiteUiModule {
 		return SuiteHoverProvider.class;
 	}
 	
+	public Class<? extends IFoldingRegionProvider> bindIFoldingRegionProvider() {
+		return XtendFoldingRegionProvider.class;
+	}
 
 	@Override
 	public Class<? extends IOccurrenceComputer> bindIOccurrenceComputer() {
@@ -149,7 +154,7 @@ public class SuiteUiModule extends org.jnario.suite.ui.AbstractSuiteUiModule {
 	}
 
 	public Class<? extends DoubleClickStrategyProvider> bindDoubleClickStrategyProvider() {
-		return XtendDoubleClickStrategyProvider.class;
+		return SuiteDoubleClickStrategyProvider.class;
 	}
 
 	@Override
