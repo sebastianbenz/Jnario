@@ -100,7 +100,8 @@ public abstract class AbstractDocGenerator implements IGenerator {
         return "";
       }
       String _normalize = this._whiteSpaceNormalizer.normalize(string);
-      String _markdownToHtml = this._pegDownProcessor.markdownToHtml(_normalize);
+      final String normalized = (_normalize + "\n");
+      String _markdownToHtml = this._pegDownProcessor.markdownToHtml(normalized);
       String _replaceAll = _markdownToHtml.replaceAll("<pre><code>", "<pre class=\"prettyprint\">");
       String _replaceAll_1 = _replaceAll.replaceAll("</pre></code>", "</pre>");
       _xblockexpression = (_replaceAll_1);

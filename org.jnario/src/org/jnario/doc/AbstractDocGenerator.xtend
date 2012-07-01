@@ -59,7 +59,8 @@ abstract class AbstractDocGenerator implements IGenerator {
 		if(string == null){
 			return ""
 		}
-		string.normalize.markdownToHtml
+		val normalized = string.normalize + "\n" // line break is necessary to recognize single markdown headlines
+		normalized.markdownToHtml
 				.replaceAll("<pre><code>", '<pre class="prettyprint">')
 				.replaceAll("</pre></code>", '</pre>')
 	}
