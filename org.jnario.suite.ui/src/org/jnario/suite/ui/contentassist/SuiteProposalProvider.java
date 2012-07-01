@@ -23,7 +23,6 @@ import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
-import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal.IReplacementTextApplier;
 import org.eclipse.xtext.xbase.XbaseQualifiedNameConverter;
 import org.eclipse.xtext.xbase.conversion.XbaseQualifiedNameValueConverter;
 import org.jnario.suite.suite.SuitePackage;
@@ -57,17 +56,11 @@ public class SuiteProposalProvider extends AbstractSuiteProposalProvider {
 		IQualifiedNameConverter qualifiedNameConverter = new XbaseQualifiedNameConverter(){
 			@Override
 			public QualifiedName toQualifiedName(String qualifiedNameAsString) {
-				int lastIndexOf = qualifiedNameAsString.lastIndexOf(".");
-				if(lastIndexOf == -1){
-					return super.toQualifiedName(qualifiedNameAsString);
-				}
-				String[] segments = qualifiedNameAsString.split("\\.");
-				if(segments.length <= 1){
-					return super.toQualifiedName(qualifiedNameAsString);
-				}
-				segments[0] = segments[0].substring(1);
-				segments[segments.length-1] = "\"" + segments[segments.length-1]; 
-				return QualifiedName.create(segments);
+				return new QualifiedName(qualifiedNameAsString.split("\\.")){
+					public String getLastSegment() {
+						return "\"" + super.getLastSegment();
+					};
+				};
 			}
 		};
 		final FQNImporter fqnImporter = new FQNImporter(context.getResource(), context.getViewer(), scope, qualifiedNameConverter, null, qualifiedNameValueConverter);
