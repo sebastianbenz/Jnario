@@ -18,7 +18,7 @@ import com.google.inject.Singleton;
  * @author Birgit Engelmann - Initial contribution and API
  */
 @Singleton
-public class FeatureTaskTokenTypeToPartitionTypeMapper extends TokenTypeToPartitionMapper{
+public class FeatureTokenTypeToPartitionTypeMapper extends TokenTypeToPartitionMapper{
 
 	public static final String NONE_CODE_PARTITION = "__no_code";
 	

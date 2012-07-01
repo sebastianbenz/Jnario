@@ -43,6 +43,8 @@ import static org.eclipse.xtext.EcoreUtil2.*
 import static org.jnario.feature.jvmmodel.FeatureJvmModelInferrer.*
 
 import static extension com.google.common.base.Strings.*
+import org.jnario.feature.feature.Given
+import org.jnario.feature.feature.GivenReference
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -232,13 +234,13 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 
 	def transform(Step step, JvmGenericType inferredJvmType, int order, Scenario scenario) {
 		inferredJvmType.members += step.toMethod(step.methodName, getTypeForName(Void::TYPE, step))[
-			body = step.expressionOf?.blockExpression
+			val stepExpression = expressionOf(step)
+			body = stepExpression?.blockExpression
 			step.generateStepValues
 			annotations += step.getTestAnnotations(false)
 			annotations += step.toAnnotation(typeof(Order), order.intValue)
 			var name = step.describe
-			
-			if((step instanceof Then) && step.expressionOf== null){
+			if(stepExpression == null){
 				name = "[PENDING] " + name
 				annotations += step.toAnnotation(typeof(Ignore))
 			}

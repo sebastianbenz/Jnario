@@ -9,7 +9,7 @@ package org.jnario.feature.ui.editor;
 
 import static org.eclipse.jface.text.IDocumentExtension3.DEFAULT_PARTITIONING;
 import static org.eclipse.jface.text.TextUtilities.getContentType;
-import static org.jnario.feature.ui.editor.FeatureTaskTokenTypeToPartitionTypeMapper.NONE_CODE_PARTITION;
+import static org.jnario.feature.ui.editor.FeatureTokenTypeToPartitionTypeMapper.NONE_CODE_PARTITION;
 
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.source.AnnotationPainter.NullStrategy;

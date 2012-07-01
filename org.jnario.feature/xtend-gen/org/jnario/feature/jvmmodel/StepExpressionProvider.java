@@ -47,7 +47,18 @@ public class StepExpressionProvider {
       return ref.getStepExpression();
     }
     final Step step = ref==null?(Step)null:ref.getReference();
-    StepExpression _stepExpression_1 = step==null?(StepExpression)null:step.getStepExpression();
+    boolean _or = false;
+    boolean _equals = Objects.equal(step, null);
+    if (_equals) {
+      _or = true;
+    } else {
+      boolean _eIsProxy = step.eIsProxy();
+      _or = (_equals || _eIsProxy);
+    }
+    if (_or) {
+      return null;
+    }
+    StepExpression _stepExpression_1 = step.getStepExpression();
     StepExpression _cloneWithProxies = EcoreUtil2.<StepExpression>cloneWithProxies(_stepExpression_1);
     final StepExpression expr = ((StepExpression) _cloneWithProxies);
     ref.setStepExpression(expr);

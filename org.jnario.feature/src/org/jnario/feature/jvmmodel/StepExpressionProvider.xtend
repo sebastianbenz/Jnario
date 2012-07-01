@@ -45,7 +45,10 @@ class StepExpressionProvider {
 		if(ref.stepExpression != null)
 			return ref.stepExpression
 		val step = ref?.reference
-		val expr = EcoreUtil2::cloneWithProxies(step?.stepExpression) as StepExpression
+		if(step == null || step.eIsProxy){
+			return null
+		}
+		val expr = EcoreUtil2::cloneWithProxies(step.stepExpression) as StepExpression
 		ref.stepExpression = expr
 		return expr
 	}

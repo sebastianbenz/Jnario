@@ -17,7 +17,7 @@ public class FeatureDoubleClickStrategyProvider extends
 
 	
 	public ITextDoubleClickStrategy getStrategy(ISourceViewer sourceViewer, String contentType, String documentPartitioning) {
-		if (FeatureTaskTokenTypeToPartitionTypeMapper.NONE_CODE_PARTITION.equals(contentType))
+		if (FeatureTokenTypeToPartitionTypeMapper.NONE_CODE_PARTITION.equals(contentType))
 			return new FixedCharCountPartitionDoubleClickSelector(documentPartitioning, 0, 0);
 		return super.getStrategy(sourceViewer, contentType, documentPartitioning);
 	}

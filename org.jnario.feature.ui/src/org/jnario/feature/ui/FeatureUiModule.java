@@ -83,7 +83,7 @@ import org.jnario.feature.ui.editor.FeatureDoubleClickStrategyProvider;
 import org.jnario.feature.ui.editor.FeatureEditor;
 import org.jnario.feature.ui.editor.FeatureFoldingRegionProvider;
 import org.jnario.feature.ui.editor.FeatureFoldingStructureProvider;
-import org.jnario.feature.ui.editor.FeatureTaskTokenTypeToPartitionTypeMapper;
+import org.jnario.feature.ui.editor.FeatureTokenTypeToPartitionTypeMapper;
 import org.jnario.feature.ui.generator.FeatureGenerator;
 import org.jnario.feature.ui.highlighting.FeatureHighlightingConfiguration;
 import org.jnario.feature.ui.highlighting.FeatureSemanticHighlightingCalculator;
@@ -180,7 +180,7 @@ public class FeatureUiModule extends org.jnario.feature.ui.AbstractFeatureUiModu
 //	}
 	
 	public Class<? extends ITokenTypeToPartitionTypeMapper> bindITokenTypeToPartitionTypeMapper() {
-		return FeatureTaskTokenTypeToPartitionTypeMapper.class;
+		return FeatureTokenTypeToPartitionTypeMapper.class;
 	}
 
 	@Override

@@ -9,7 +9,7 @@ package org.jnario.feature.ui.autoedit;
 
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.xtend.ide.autoedit.AutoEditStrategyProvider;
-import org.jnario.feature.ui.editor.FeatureTaskTokenTypeToPartitionTypeMapper;
+import org.jnario.feature.ui.editor.FeatureTokenTypeToPartitionTypeMapper;
 
 public class FeatureAutoEditStrategyProvider extends AutoEditStrategyProvider{
 
@@ -17,7 +17,7 @@ public class FeatureAutoEditStrategyProvider extends AutoEditStrategyProvider{
 	protected void configureIndentationEditStrategy(IEditStrategyAcceptor acceptor) {
 		super.configureIndentationEditStrategy(acceptor);
 		acceptor.accept(defaultIndentLineAutoEditStrategy.get(), IDocument.DEFAULT_CONTENT_TYPE);
-		acceptor.accept(defaultIndentLineAutoEditStrategy.get(), FeatureTaskTokenTypeToPartitionTypeMapper.NONE_CODE_PARTITION);
+		acceptor.accept(defaultIndentLineAutoEditStrategy.get(), FeatureTokenTypeToPartitionTypeMapper.NONE_CODE_PARTITION);
 	}
 	
 }
