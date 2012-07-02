@@ -25,8 +25,10 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XBinaryOperation;
+import org.eclipse.xtext.xbase.XCasePart;
 import org.eclipse.xtext.xbase.XClosure;
 import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.XSwitchExpression;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.util.XExpressionHelper;
 import org.hamcrest.StringDescription;
@@ -232,7 +234,8 @@ public class JnarioCompiler extends XtendCompiler {
 		toLiteralValue(expression, b, valueExpressions);
 		Iterator<XExpression> subExpressions = allSubExpressions(expression);
 		while (subExpressions.hasNext()) {
-			appendActualValues(subExpressions.next(), b, valueExpressions);
+			XExpression subExpression = subExpressions.next();
+			appendActualValues(subExpression, b, valueExpressions);
 		}
 	}
 
@@ -242,6 +245,11 @@ public class JnarioCompiler extends XtendCompiler {
 			public boolean apply(XExpression e) {
 				// FIXME
 				return !"<unkown>".equals(e.toString());
+			}
+		};
+		Predicate<XExpression> noSwitchCases = new Predicate<XExpression>() {
+			public boolean apply(XExpression e) {
+				return !(e.eContainer() instanceof XSwitchExpression);
 			}
 		};
 		Predicate<XExpression> noLiteralExpressions = new Predicate<XExpression>() {
@@ -254,6 +262,7 @@ public class JnarioCompiler extends XtendCompiler {
 				XExpression.class);
 		subExpressions = filter(subExpressions, onlyKnownFeatures);
 		subExpressions = filter(subExpressions, noLiteralExpressions);
+		subExpressions = filter(subExpressions, noSwitchCases);
 		return subExpressions.iterator();
 	}
 
