@@ -69,7 +69,7 @@ public class FeatureRunner extends ExampleGroupRunner {
 	
 	protected List<TestRule> getTestRules() {
 		List<TestRule> rules = getTestClass().getAnnotatedFieldValues(scenario,	Rule.class, TestRule.class);
-		rules.add(createExtensionRule(extensions, scenario));
+		rules.add(createExtensionRule(getExtensions(), scenario));
 		return rules;
 	}
 

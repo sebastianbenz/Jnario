@@ -15,6 +15,7 @@ import static com.google.common.collect.Lists.newArrayListWithExpectedSize;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 import static org.eclipse.xtext.xbase.lib.Exceptions.sneakyThrow;
+import static org.jnario.runner.ExtensionRule.createClassExtensionRule;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -49,7 +50,6 @@ import com.google.common.collect.Iterables;
  * 
  * @author Sebastian Benz - Initial contribution and API
  */
-@SuppressWarnings("restriction")
 public class ExampleGroupRunner extends ParentRunner<Runner> {
 
 	private final class IsTestMethod implements Predicate<FrameworkMethod> {
@@ -61,7 +61,7 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 
 	private final NameProvider nameProvider;
 	private List<Runner> children;
-	protected List<ExtensionClass> extensions;
+	private List<ExtensionClass> extensions;
 
 	public ExampleGroupRunner(Class<?> testClass) throws InitializationError {
 		this(testClass, NameProvider.create());
@@ -241,7 +241,7 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 	@Override
 	protected List<TestRule> classRules() {
 		List<TestRule> rules = super.classRules();
-		rules.add(ExtensionRule.createClassExtensionRule(staticExtensions(), null));
+		rules.add(createClassExtensionRule(staticExtensions(), null));
 		return rules;
 	}
 
@@ -252,6 +252,10 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 			}
 		});
 		return staticExtensions;
+	}
+	
+	protected List<ExtensionClass> getExtensions() {
+		return extensions;
 	}
 
 }
