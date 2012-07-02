@@ -74,7 +74,10 @@ public class Strings extends org.eclipse.xtext.util.Strings{
 				if(lastWhiteSpace){
 					c = toUpperCase(c);
 				}
-				if(isValidJavarIndentifier(i, c)){
+				if(i == 0 && !isJavaIdentifierStart(c) && isJavaIdentifierPart(c)){
+					b.append("_");
+				}
+				if(isJavaIdentifierPart(c)){
 					b.append(c);
 				}
 				lastWhiteSpace = false;
@@ -85,10 +88,6 @@ public class Strings extends org.eclipse.xtext.util.Strings{
 		return b;
 	}
 
-	private static boolean isValidJavarIndentifier(int position, char c) {
-		return (position == 0 && isJavaIdentifierStart(c)) || isJavaIdentifierPart(c);
-	}
-	
 	public static String getFirstWord(String string){
 		if(string != null){
 			int begin = 0;

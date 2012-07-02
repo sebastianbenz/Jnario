@@ -88,6 +88,20 @@ public class ExampleNameProviderToJavaClassNameExampleGroupSpec extends ExampleN
   }
   
   @Test
+  @Named("should prefix numbers")
+  @Order(99)
+  public void shouldPrefixNumbers() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("describe \"2 Facts\"{}");
+    _builder.newLine();
+    final String name = this.firstJavaClassName(_builder);
+    boolean _doubleArrow = Should.operator_doubleArrow(name, "_2FactsSpec");
+    Assert.assertTrue("\nExpected name => \'_2FactsSpec\' but"
+     + "\n     name is " + new StringDescription().appendValue(name).toString() + "\n", _doubleArrow);
+    
+  }
+  
+  @Test
   @Named("should append the target operation\\\'s name and params")
   @Order(99)
   public void shouldAppendTheTargetOperationSNameAndParams() throws Exception {

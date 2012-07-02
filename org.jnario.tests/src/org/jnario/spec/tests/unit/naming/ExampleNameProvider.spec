@@ -46,6 +46,14 @@ describe ExampleNameProvider{
         firstJavaClassName(it) => 'MyExampleSpec'
       ] 
     } 
+    
+    fact "should prefix numbers"{
+      val name = firstJavaClassName('''
+      		describe "2 Facts"{}
+      ''')
+      name => '_2FactsSpec'
+    }
+    
     fact "should append the target operation's name and params"{
       secondJavaClassName(
         '''

@@ -53,6 +53,13 @@ newArrayList(
   firstJavaClassName(it) =&gt; 'MyExampleSpec'
 ]</pre>
 </p>
+</li><li><p  id="should_prefix_numbers"><strong>should prefix numbers</strong>
+<pre class="prettyprint lang-spec">
+val name = firstJavaClassName('''
+    describe "2 Facts"{}
+''')
+name =&gt; '_2FactsSpec'</pre>
+</p>
 </li><li><p  id="should_append_the_target_operation_s_name_and_params"><strong>should append the target operation's name and params</strong>
 <pre class="prettyprint lang-spec">
 secondJavaClassName(
