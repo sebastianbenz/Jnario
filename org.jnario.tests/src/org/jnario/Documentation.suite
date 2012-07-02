@@ -15,8 +15,8 @@ import org.jnario.feature.tests.unit.linking.*
 Learn how to write specifications in Jnario. It is also a good idea to have a look 
 at the [Xtend documentation](http://www.xtend\-lang.org).
 
-	- "Introducing Jnario Features": \- how to write executables acceptance specifications in Jnario.
-	- "Introducing Jnario Specs": \- how to write unit specifications in Jnario.
+	- "Introducing Jnario Features": \- how to write executables acceptance specifications.
+	- "Introducing Jnario Specs": \- how to write unit specifications.
 	- "Introducing Jnario Suites": \- Orchestrate and document the execution of your specs and features.
 	
 ##Common Concepts
