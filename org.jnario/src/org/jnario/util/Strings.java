@@ -70,7 +70,7 @@ public class Strings extends org.eclipse.xtext.util.Strings{
 		boolean lastWhiteSpace = true;
 		for(int i = 0; i < string.length(); i++){
 			char c = string.charAt(i);
-			if(isLetterOrDigit(c)){
+			if(isLetterOrDigit(c) || isTrailingEscapeCharactre(i, c)){
 				if(lastWhiteSpace){
 					c = toUpperCase(c);
 				}
@@ -86,6 +86,10 @@ public class Strings extends org.eclipse.xtext.util.Strings{
 			}
 		}
 		return b;
+	}
+
+	private static boolean isTrailingEscapeCharactre(int i, char c) {
+		return i == 0 && c == '_';
 	}
 
 	public static String getFirstWord(String string){
