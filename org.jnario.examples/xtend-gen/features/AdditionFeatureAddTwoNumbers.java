@@ -2,6 +2,7 @@ package features;
 
 import calculator.Calculator;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
+import org.hamcrest.StringDescription;
 import org.jnario.lib.Should;
 import org.jnario.lib.StepArguments;
 import org.jnario.runner.FeatureRunner;
@@ -56,10 +57,10 @@ public class AdditionFeatureAddTwoNumbers {
       String _first = args.first();
       boolean _doubleArrow = Should.operator_doubleArrow(_result, _first);
       Assert.assertTrue("\nExpected calculator.result => args.first but"
-       + "\n     calculator.result is " + "\"" + _result + "\""
-       + "\n     calculator is " + this.calculator
-       + "\n     args.first is " + "\"" + _first + "\""
-       + "\n     args is " + args + "\n", _doubleArrow);
+       + "\n     calculator.result is " + new StringDescription().appendValue(_result).toString()
+       + "\n     calculator is " + new StringDescription().appendValue(this.calculator).toString()
+       + "\n     args.first is " + new StringDescription().appendValue(_first).toString()
+       + "\n     args is " + new StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
       
   }
   

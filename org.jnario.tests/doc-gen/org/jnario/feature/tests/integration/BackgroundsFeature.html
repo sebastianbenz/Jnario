@@ -32,68 +32,19 @@
 <h3>Scenario: It is possible to add a background to a feature
 </h3>
 <ul>
-<li><p><strong>Given</strong> I have a feature with a background</p>
-<ul>
-</ul>
-</li>
-<li><p><strong>Then</strong> it should be successful</p>
-<ul>
-</ul>
-</li>
-</ul>
-<h3>Scenario: Given methods from backgrounds are generated in every scenario class
-</h3>
-<ul>
-<li><p><strong>Given</strong> I have a feature with a background</p>
-<ul>
-</ul>
-</li>
-<li><p><strong>Then</strong> every class should have a method that throws a RuntimeExeception</p>
-<ul>
-</ul>
-</li>
-</ul>
-<h3>Scenario: Using fields from background steps
-</h3>
-<ul>
-<li><p><strong>Given</strong> a scenario with a field</p><pre>package bootstrap
-import java.util.*
-Feature: Test
-  Background: 
-    List&lt;String&gt; values = new ArrayList()
-    Given a list
-      values += "hello"
-    
-  Scenario: TestScenario 2
-    Then it should have contents
-      values.size =&gt; 1</pre>
-<ul>
-</ul>
-</li>
-<li><p><strong>Then</strong> it should be successful</p>
-<ul>
-</ul>
-</li>
-</ul>
-<h3>Scenario: Instantiating Objects in Backgrounds
-</h3>
-<ul>
-<li><p><strong>Given</strong> I have a feature with a background</p><pre>package bootstrap
-import org.jnario.feature.tests.integration.Calculator
+<li><p><strong>Given</strong> I have a feature with a background</p><pre>package demo
 Feature: Calculator
   Background:
    int result 
-   Calculator calculator
    Given a calculator
-       calculator = new Calculator()
-  Scenario: Adding two numbers 1 
+  Scenario: Adding two numbers 2 
    When I enter two numbers "20" and "70"
-        result = calculator.add(args.first.toInt, args.second.toInt)
+       result = args.first.toInt + args.second.toInt
    Then it returns "90"
        result =&gt; args.first.toInt
-  Scenario: Adding two numbers 2
+  Scenario: Adding two numbers wer
     When I enter two numbers "20" and "80"
-      Then it returns "100"</pre>
+    Then it returns "100"</pre>
 <ul>
 </ul>
 </li>

@@ -2,6 +2,7 @@ package calculator;
 
 import calculator.Calculator;
 import calculator.CalculatorSpec;
+import org.hamcrest.StringDescription;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
@@ -25,8 +26,8 @@ public class CalculatorAddIntIntSpec extends CalculatorSpec {
     int _add = this.subject.add(1, 2);
     boolean _should_be = Should.should_be(Integer.valueOf(_add), Integer.valueOf(3));
     Assert.assertTrue("\nExpected subject.add(1, 2) should be 3 but"
-     + "\n     subject.add(1, 2) is " + Integer.valueOf(_add)
-     + "\n     subject is " + this.subject + "\n", _should_be);
+     + "\n     subject.add(1, 2) is " + new StringDescription().appendValue(Integer.valueOf(_add)).toString()
+     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _should_be);
     
   }
 }

@@ -4,6 +4,7 @@ import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -20,14 +21,16 @@ public class TestRunnerFeatureCreateOnlyOneTestInstanceForOneJnarioScenario {
   
   @Test
   @Order(1)
-  @Named("When I run the scenario")
+  @Ignore
+  @Named("[PENDING] When I run the scenario")
   public void whenIRunTheScenario() {
     
   }
   
   @Test
   @Order(2)
-  @Named("Then the scenario should have no validation errors that the variable was not defined")
+  @Ignore
+  @Named("[PENDING] Then the scenario should have no validation errors that the variable was not defined")
   public void thenTheScenarioShouldHaveNoValidationErrorsThatTheVariableWasNotDefined() {
     
   }

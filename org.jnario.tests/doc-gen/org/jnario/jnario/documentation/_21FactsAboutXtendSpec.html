@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>21 Facts about Xtend</title>
+<meta name="description" content="">
+<meta name="author" content="Jnario">
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<!-- Le styles -->
+<link rel="stylesheet" href="../../../..//css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../..//css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="../../../..//css/custom.css">
+<link rel="stylesheet" href="../../../..//css/prettify.css">
+<script type="text/javascript" src="../../../..//js/prettify.js"></script>
+<script type="text/javascript" src="../../../..//js/lang-jnario.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+	<div class="container">
+		<div class="content">
+			<div class="page-header">
+				<h1>21 Facts about Xtend</h1>
+			</div>
+			<div class="row">
+				<div class="span12">
+<p>This document will teach you all you need to know about Xtend to use <a href="http://www.jnario.org">Jnario</a>. All the shown examples work also in Jnario specifications. For a more detailed introduction see the offical <a href="http://www.eclipse.org/xtend/documentation.html">Xtend documentation</a>.</p>
+<h3 id="Syntax">Syntax</h3>
+<p></p>
+<ul><li><p  id="No_semicolons_"><strong>No semicolons!</strong>
+<pre class="prettyprint lang-spec">
+var greeting = ""
+greeting = "Hello World"
+println(greeting)</pre>
+</p>
+</li><li><p  id="Declaring_variables"><strong>Declaring variables</strong>
+<pre class="prettyprint lang-spec">
+var String x = "I might change" 
+val String y = "I'll never change" // final</pre>
+</p>
+</li><li><p  id="Less_typing_thanks_to_type_inference"><strong>Less typing thanks to type inference</strong>
+<pre class="prettyprint lang-spec">
+val greeting = "Hello World"
+greeting =&gt; typeof(String)
+
+val greetings = newHashMap(
+  "german"  -&gt; "Hallo",
+  "english" -&gt; "Hello"
+)
+greetings =&gt; typeof(HashMap)</pre>
+</p>
+</li><li><p  id="Good_to_know__Pairs"><strong>Good to know: Pairs</strong>
+<pre class="prettyprint lang-spec">
+val pair = "spain" -&gt; "italy"
+pair.key   =&gt; "spain"
+pair.value =&gt; "italy"</pre>
+</p>
+</li><li><p  id="Accessing_static_members"><strong>Accessing static members</strong>
+<p>Static members of a class are accessed via <code>::</code> and not via <code>.</code> like in Java.</p><p><span class="label label-warning">Attention</span> This is probably the most asked question on the Xtend mailing list.</p>
+<pre class="prettyprint lang-spec">
+val colors = list("red", "blue", "green")
+Collections::sort(colors)
+colors =&gt; list("blue", "green", "red")</pre>
+</p>
+</li><li><p  id="Declaring_fields___methods"><strong>Declaring fields & methods</strong>
+<p>Methods in Xtend are declared like in Java. The only difference is that methods declarations are preceded with <code>def</code>.</p>
+<pre class="prettyprint lang-spec">
+String greeting = "Hello "
+
+def public String sayHello(String name){
+  return greeting + name
+}
+</pre><p>The type inference also works for fields and methods. You can omit the return type of methods and the type of fields. Methods are by default public. So declaring fields and methods becomes a lot more concise:</p>
+<pre class="prettyprint lang-spec">
+val greeting = "Hello "
+
+def sayHello(String name){
+  greeting + name // return is optional
+}
+</pre><p>Calling fields and methods works exactly like in Java:</p>
+<pre class="prettyprint lang-spec">
+sayHello("Sebastian") =&gt; greeting + "Sebastian"</pre>
+</p>
+</li></ul>
+<h3 id="Extension_Methods">Extension Methods</h3>
+<p></p>
+<ul><li><p  id="More_readable_code_with_extension_methods"><strong>More readable code with extension methods</strong>
+<pre class="prettyprint lang-spec">
+val colors = list("red", "blue", "green")
+colors.sort
+list("blue", "green", "red")</pre>
+</p>
+</li></ul>
+<h3 id="The_Uber_Switch_Expression">The Uber-Switch Expression</h3>
+<p><p>Xtend's switch expression is very different from Java's switch statement. First, there is no fall through which means only one case is evaluated at most. Second, the use of switch is not limited to certain values but can be used for any object reference instead.</p>
+</p>
+<ul><li><p  id="Case_expressions"><strong>Case expressions</strong>
+<pre class="prettyprint lang-spec">
+val myString = "Hello"
+
+switch myString {
+  case myString.length &gt; 5 : "a long string."
+  case 'some'              : "It's some string."
+  default                  : "It's another short string."
+} 
+
+=&gt;  "It's another short string."</pre>
+</p>
+</li><li><p  id="Type_guards"><strong>Type guards</strong>
+<pre class="prettyprint lang-spec">
+val x = list(1, 2, 3) as Object
+
+switch x {
+  String case x.length &gt; 0 : x.length // length from String 
+  List&lt;?&gt;                  : x.size    // size from List
+  default : -1
+} 
+
+=&gt; 3</pre>
+</p>
+</li></ul>
+<h3 id="Functional_programming_FTW">Functional programming FTW</h3>
+<p></p>
+<ul><li><p  id="Closures_are_great"><strong>Closures are great</strong>
+<pre class="prettyprint lang-spec">
+var (String)=&gt;String shout
+
+shout = [String s | s.toUpperCase]
+shout = [it.toUpperCase]
+shout = [toUpperCase]
+
+shout.apply("hello") =&gt; "HELLO"</pre>
+</p>
+</li><li><p  id="Heads_or_tails"><strong>Heads or tails</strong>
+<p>Accessing elements in lists.</p>
+<pre class="prettyprint lang-spec">
+val colors = list("red", "blue", "green")
+colors.head =&gt; "red"
+colors.tail =&gt; iterable("blue", "green")
+colors.last =&gt; "green"
+colors.empty =&gt; false</pre>
+</p>
+</li><li><p  id="Filtering_by_type"><strong>Filtering by type</strong>
+<pre class="prettyprint lang-spec">
+list("a string", 42, true).filter(typeof(String)) =&gt; iterable("a string")</pre>
+</p>
+</li><li><p  id="Filtering_with_predicates"><strong>Filtering with predicates</strong>
+<pre class="prettyprint lang-spec">
+list("red", "blue", "green").filter[startsWith("b")] =&gt; list("blue")</pre>
+</p>
+</li><li><p  id="Map___Reduce"><strong>Map & Reduce</strong>
+<pre class="prettyprint lang-spec">
+list("red", "blue", "green").map[toUpperCase] =&gt; list("RED", "BLUE", "GREEN")
+list(5, 3, 1).reduce[result, element | result + element] =&gt; 9</pre>
+</p>
+</li><li><p  id="Flatten_collections"><strong>Flatten collections</strong>
+<pre class="prettyprint lang-spec">
+list(list("red", "blue"), list("yellow", "green")).flatten =&gt; iterable("red", "blue", "yellow", "green")</pre>
+</p>
+</li><li><p  id="Concatenating_collections"><strong>Concatenating collections</strong>
+<pre class="prettyprint lang-spec">
+list("red", "blue") + list("yellow", "green") =&gt; iterable("red", "blue", "yellow", "green")</pre>
+</p>
+</li></ul>
+				</div>
+			</div>
+		</div> <!-- /content -->
+		<footer>
+			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
+		</footer>
+
+	</div>
+	<!-- /container -->
+
+</body>
+</html>

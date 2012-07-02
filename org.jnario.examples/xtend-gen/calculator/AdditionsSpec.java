@@ -2,6 +2,7 @@ package calculator;
 
 import calculator.AdditionsSpecExamples;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.hamcrest.StringDescription;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.Should;
@@ -39,10 +40,10 @@ public class AdditionsSpec {
           int _plus = (it.a + it.b);
           boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(it.sum));
           Assert.assertTrue("\nExpected a + b => sum but"
-           + "\n     a + b is " + Integer.valueOf(_plus)
-           + "\n     a is " + it.a
-           + "\n     b is " + it.b
-           + "\n     sum is " + Integer.valueOf(it.sum) + "\n", _doubleArrow);
+           + "\n     a + b is " + new StringDescription().appendValue(Integer.valueOf(_plus)).toString()
+           + "\n     a is " + new StringDescription().appendValue(it.a).toString()
+           + "\n     b is " + new StringDescription().appendValue(it.b).toString()
+           + "\n     sum is " + new StringDescription().appendValue(Integer.valueOf(it.sum)).toString() + "\n", _doubleArrow);
           
         }
       };
@@ -57,8 +58,8 @@ public class AdditionsSpec {
     String _sayHello = this.sayHello(name);
     boolean _doubleArrow = Should.operator_doubleArrow(_sayHello, "Hello Sebastian");
     Assert.assertTrue("\nExpected sayHello(name) => \"Hello Sebastian\" but"
-     + "\n     sayHello(name) is " + "\"" + _sayHello + "\""
-     + "\n     name is " + "\"" + name + "\"" + "\n", _doubleArrow);
+     + "\n     sayHello(name) is " + new StringDescription().appendValue(_sayHello).toString()
+     + "\n     name is " + new StringDescription().appendValue(name).toString() + "\n", _doubleArrow);
     
   }
   

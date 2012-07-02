@@ -12,6 +12,7 @@ import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -21,7 +22,8 @@ import org.junit.runner.RunWith;
 public class SetupTeardownWithFeatureExtensionsFeatureUsingAnExtension {
   @Test
   @Order(0)
-  @Named("Given a class **ExampleExtension** with JUnit before and after methods:")
+  @Ignore
+  @Named("[PENDING] Given a class **ExampleExtension** with JUnit before and after methods:")
   public void givenAClassExampleExtensionWithJUnitBeforeAndAfterMethods() {
     
   }

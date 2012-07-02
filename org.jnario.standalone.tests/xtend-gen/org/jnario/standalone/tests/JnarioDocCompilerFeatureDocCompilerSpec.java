@@ -1,6 +1,7 @@
 package org.jnario.standalone.tests;
 
 import org.hamcrest.Matcher;
+import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.lib.Should;
 import org.jnario.runner.CreateWith;
@@ -24,7 +25,7 @@ public class JnarioDocCompilerFeatureDocCompilerSpec extends JnarioDocCompilerSp
     Matcher<String> _generated = this.generated();
     boolean _should_be = Should.<String>should_be("test/ExamplesFeature.html", _generated);
     Assert.assertTrue("\nExpected \"test/ExamplesFeature.html\" should be generated but"
-     + "\n     generated is " + _generated + "\n", _should_be);
+     + "\n     generated is " + new StringDescription().appendValue(_generated).toString() + "\n", _should_be);
     
   }
 }

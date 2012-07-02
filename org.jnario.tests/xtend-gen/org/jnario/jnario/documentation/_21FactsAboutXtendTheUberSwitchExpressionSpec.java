@@ -1,0 +1,93 @@
+package org.jnario.jnario.documentation;
+
+import com.google.common.base.Objects;
+import java.util.List;
+import org.hamcrest.StringDescription;
+import org.jnario.jnario.documentation._21FactsAboutXtendSpec;
+import org.jnario.lib.JnarioCollectionLiterals;
+import org.jnario.lib.Should;
+import org.jnario.runner.ExampleGroupRunner;
+import org.jnario.runner.Named;
+import org.jnario.runner.Order;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+/**
+ * Xtend's switch expression is very different from Java's switch statement.
+ * First, there is no fall through which means only one case is
+ * evaluated at most. Second, the use of switch is not limited to certain
+ * values but can be used for any object reference instead.
+ */
+@SuppressWarnings("all")
+@RunWith(ExampleGroupRunner.class)
+@Named("The Uber-Switch Expression")
+public class _21FactsAboutXtendTheUberSwitchExpressionSpec extends _21FactsAboutXtendSpec {
+  @Test
+  @Named("Case expressions")
+  @Order(99)
+  public void caseExpressions() throws Exception {
+    final String myString = "Hello";
+    String _switchResult = null;
+    boolean _matched = false;
+    if (!_matched) {
+      int _length = myString.length();
+      boolean _greaterThan = (_length > 5);
+      if (_greaterThan) {
+        _matched=true;
+        _switchResult = "a long string.";
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(myString,"some")) {
+        _matched=true;
+        _switchResult = "It\'s some string.";
+      }
+    }
+    if (!_matched) {
+      _switchResult = "It\'s another short string.";
+    }
+    boolean _doubleArrow = Should.operator_doubleArrow(_switchResult, "It\'s another short string.");
+    Assert.assertTrue("\nExpected switch myString {\n        case myString.length > 5 : \"a long string.\"\n        case \'some\'              : \"It\'s some string.\"\n        default                  : \"It\'s another short string.\"\n      } \n      \n      =>  \"It\'s another short string.\" but"
+     + "\n     switch myString {\n        case myString.length > 5 : \"a long string.\"\n        case \'some\'              : \"It\'s some string.\"\n        default                  : \"It\'s another short string.\"\n      } is " + new StringDescription().appendValue(_switchResult).toString() + "\n", _doubleArrow);
+    
+  }
+  
+  @Test
+  @Named("Type guards")
+  @Order(99)
+  public void typeGuards() throws Exception {
+    List<Integer> _list = JnarioCollectionLiterals.<Integer>list(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3));
+    final Object x = ((Object) _list);
+    int _switchResult = (int) 0;
+    boolean _matched = false;
+    if (!_matched) {
+      if (x instanceof String) {
+        final String _string = (String)x;
+        int _length = _string.length();
+        boolean _greaterThan = (_length > 0);
+        if (_greaterThan) {
+          _matched=true;
+          int _length_1 = _string.length();
+          _switchResult = _length_1;
+        }
+      }
+    }
+    if (!_matched) {
+      if (x instanceof List) {
+        final List<?> _list_1 = (List<?>)x;
+        _matched=true;
+        int _size = _list_1.size();
+        _switchResult = _size;
+      }
+    }
+    if (!_matched) {
+      int _minus = (-1);
+      _switchResult = _minus;
+    }
+    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_switchResult), Integer.valueOf(3));
+    Assert.assertTrue("\nExpected switch x {\n        String case x.length > 0 : x.length // length from String \n        List<?>                  : x.size    // size from List\n        default : -1\n      } \n      \n      => 3 but"
+     + "\n     switch x {\n        String case x.length > 0 : x.length // length from String \n        List<?>                  : x.size    // size from List\n        default : -1\n      } is " + new StringDescription().appendValue(Integer.valueOf(_switchResult)).toString() + "\n", _doubleArrow);
+    
+  }
+}

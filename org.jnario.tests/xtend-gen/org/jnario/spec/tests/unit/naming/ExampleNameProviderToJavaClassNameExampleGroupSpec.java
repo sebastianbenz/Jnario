@@ -102,6 +102,25 @@ public class ExampleNameProviderToJavaClassNameExampleGroupSpec extends ExampleN
   }
   
   @Test
+  @Named("should prefix numbers in nested specs")
+  @Order(99)
+  public void shouldPrefixNumbersInNestedSpecs() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("describe \"2 Facts\"{");
+    _builder.newLine();
+    _builder.append("      ");
+    _builder.append("context \"Context\"");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    final String name = this.secondJavaClassName(_builder);
+    boolean _doubleArrow = Should.operator_doubleArrow(name, "_2FactsContextSpec");
+    Assert.assertTrue("\nExpected name => \'_2FactsContextSpec\' but"
+     + "\n     name is " + new StringDescription().appendValue(name).toString() + "\n", _doubleArrow);
+    
+  }
+  
+  @Test
   @Named("should append the target operation\\\'s name and params")
   @Order(99)
   public void shouldAppendTheTargetOperationSNameAndParams() throws Exception {
@@ -138,8 +157,8 @@ public class ExampleNameProviderToJavaClassNameExampleGroupSpec extends ExampleN
     String _secondJavaClassName = this.secondJavaClassName(_builder);
     Matcher<String> _endsWith = Matchers.endsWith("AssertTrueSpec");
     boolean _doubleArrow = Should.operator_doubleArrow(_secondJavaClassName, _endsWith);
-    Assert.assertTrue("\nExpected secondJavaClassName(\r\n      \t\r\n      \'\'\'\r\n        describe org.junit.Assert{\r\n          context \'assertTrue\' \r\n        }\r\n      \'\'\') => endsWith(\'AssertTrueSpec\') but"
-     + "\n     secondJavaClassName(\r\n      \t\r\n      \'\'\'\r\n        describe org.junit.Assert{\r\n          context \'assertTrue\' \r\n        }\r\n      \'\'\') is " + new StringDescription().appendValue(_secondJavaClassName).toString()
+    Assert.assertTrue("\nExpected secondJavaClassName(\r\n      \'\'\'\r\n        describe org.junit.Assert{\r\n          context \'assertTrue\' \r\n        }\r\n      \'\'\') => endsWith(\'AssertTrueSpec\') but"
+     + "\n     secondJavaClassName(\r\n      \'\'\'\r\n        describe org.junit.Assert{\r\n          context \'assertTrue\' \r\n        }\r\n      \'\'\') is " + new StringDescription().appendValue(_secondJavaClassName).toString()
      + "\n     \'\'\'\r\n        describe org.junit.Assert{\r\n          context \'assertTrue\' \r\n        }\r\n      \'\'\' is " + new StringDescription().appendValue(_builder).toString()
      + "\n     endsWith(\'AssertTrueSpec\') is " + new StringDescription().appendValue(_endsWith).toString() + "\n", _doubleArrow);
     

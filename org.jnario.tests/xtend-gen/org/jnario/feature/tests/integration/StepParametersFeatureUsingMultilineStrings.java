@@ -1,9 +1,11 @@
 package org.jnario.feature.tests.integration;
 
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -20,7 +22,8 @@ public class StepParametersFeatureUsingMultilineStrings {
   
   @Test
   @Order(1)
-  @Named("When this feature is executed")
+  @Ignore
+  @Named("[PENDING] When this feature is executed")
   public void whenThisFeatureIsExecuted() {
     
   }
@@ -29,7 +32,8 @@ public class StepParametersFeatureUsingMultilineStrings {
   @Order(2)
   @Named("Then it should be successful")
   public void thenItShouldBeSuccessful() {
-    FeatureExecutor.executesSuccessfully(jnarioFile);
+      InputOutput.<String>println("executing scenario");
+      FeatureExecutor.executesSuccessfully(jnarioFile);
   }
   
   CharSequence jnarioFile;

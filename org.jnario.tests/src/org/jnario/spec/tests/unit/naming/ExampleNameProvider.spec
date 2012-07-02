@@ -36,6 +36,7 @@ describe ExampleNameProvider{
     fact "should prepend target type name"{
       firstJavaClassName("describe org.junit.Assert 'My Example'") => startsWith("Assert")
     }  
+    
     fact "should convert description to camel case"{
       newArrayList(
         "describe 'my example'",
@@ -54,6 +55,16 @@ describe ExampleNameProvider{
       name => '_2FactsSpec'
     }
     
+     fact "should prefix numbers in nested specs"{
+      val name = secondJavaClassName(
+        '''
+        describe "2 Facts"{
+              context "Context"
+        }
+        ''')
+      name => '_2FactsContextSpec'
+    }
+    
     fact "should append the target operation's name and params"{
       secondJavaClassName(
         '''
@@ -64,7 +75,6 @@ describe ExampleNameProvider{
     }
     fact "should append the description"{
       secondJavaClassName(
-      	
       '''
         describe org.junit.Assert{
           context 'assertTrue' 

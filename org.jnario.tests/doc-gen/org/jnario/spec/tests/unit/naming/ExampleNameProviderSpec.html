@@ -60,6 +60,16 @@ val name = firstJavaClassName('''
 ''')
 name =&gt; '_2FactsSpec'</pre>
 </p>
+</li><li><p  id="should_prefix_numbers_in_nested_specs"><strong>should prefix numbers in nested specs</strong>
+<pre class="prettyprint lang-spec">
+val name = secondJavaClassName(
+  '''
+  describe "2 Facts"{
+        context "Context"
+  }
+  ''')
+name =&gt; '_2FactsContextSpec'</pre>
+</p>
 </li><li><p  id="should_append_the_target_operation_s_name_and_params"><strong>should append the target operation's name and params</strong>
 <pre class="prettyprint lang-spec">
 secondJavaClassName(
@@ -72,7 +82,6 @@ secondJavaClassName(
 </li><li><p  id="should_append_the_description"><strong>should append the description</strong>
 <pre class="prettyprint lang-spec">
 secondJavaClassName(
-  
 '''
   describe org.junit.Assert{
     context 'assertTrue' 

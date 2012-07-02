@@ -5,6 +5,7 @@ import gameoflife.Cell;
 import gameoflife.CellSpecExamples;
 import gameoflife.DeadCell;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.hamcrest.StringDescription;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.Should;
@@ -56,10 +57,10 @@ public class CellSpec {
           Cell _evolve = it.cell.evolve(it.neighborCount);
           boolean _doubleArrow = Should.operator_doubleArrow(_evolve, it.newState);
           Assert.assertTrue("\nExpected cell.evolve(neighborCount) => newState but"
-           + "\n     cell.evolve(neighborCount) is " + _evolve
-           + "\n     cell is " + it.cell
-           + "\n     neighborCount is " + it.neighborCount
-           + "\n     newState is " + it.newState + "\n", _doubleArrow);
+           + "\n     cell.evolve(neighborCount) is " + new StringDescription().appendValue(_evolve).toString()
+           + "\n     cell is " + new StringDescription().appendValue(it.cell).toString()
+           + "\n     neighborCount is " + new StringDescription().appendValue(it.neighborCount).toString()
+           + "\n     newState is " + new StringDescription().appendValue(it.newState).toString() + "\n", _doubleArrow);
           
         }
       };

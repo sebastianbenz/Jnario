@@ -1,6 +1,7 @@
 package calculator;
 
 import calculator.Calculator;
+import org.hamcrest.StringDescription;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
@@ -24,8 +25,8 @@ public class CalculatorAMinimalSpecSpec {
     int _add = this.subject.add(4, 5);
     boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_add), Integer.valueOf(9));
     Assert.assertTrue("\nExpected subject.add(4, 5) => 9 but"
-     + "\n     subject.add(4, 5) is " + Integer.valueOf(_add)
-     + "\n     subject is " + this.subject + "\n", _doubleArrow);
+     + "\n     subject.add(4, 5) is " + new StringDescription().appendValue(Integer.valueOf(_add)).toString()
+     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
     
   }
   
@@ -36,8 +37,8 @@ public class CalculatorAMinimalSpecSpec {
     int _divide = this.subject.divide(10, 5);
     boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_divide), Integer.valueOf(1));
     Assert.assertTrue("\nExpected subject.divide(10, 5) => 1 but"
-     + "\n     subject.divide(10, 5) is " + Integer.valueOf(_divide)
-     + "\n     subject is " + this.subject + "\n", _doubleArrow);
+     + "\n     subject.divide(10, 5) is " + new StringDescription().appendValue(Integer.valueOf(_divide)).toString()
+     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
     
   }
   
@@ -48,7 +49,7 @@ public class CalculatorAMinimalSpecSpec {
     try{
       this.subject.divide(10, 0);
       Assert.fail("Expected " + ArithmeticException.class.getName() + " in \n     subject.divide(10, 0)\n with:"
-       + "\n     subject is " + this.subject);
+       + "\n     subject is " + new StringDescription().appendValue(this.subject).toString());
     }catch(ArithmeticException e){
       // expected
     }

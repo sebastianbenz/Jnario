@@ -2,6 +2,7 @@ package diverse;
 
 import java.util.EmptyStackException;
 import java.util.Stack;
+import org.hamcrest.StringDescription;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
@@ -25,8 +26,8 @@ public class StackSpec {
     boolean _empty = this.subject.empty();
     boolean _should_be = Should.<Boolean>should_be(Boolean.valueOf(_empty), true);
     Assert.assertTrue("\nExpected subject.empty should be true but"
-     + "\n     subject.empty is " + Boolean.valueOf(_empty)
-     + "\n     subject is " + this.subject + "\n", _should_be);
+     + "\n     subject.empty is " + new StringDescription().appendValue(Boolean.valueOf(_empty)).toString()
+     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _should_be);
     
   }
   
@@ -37,8 +38,8 @@ public class StackSpec {
     int _size = this.subject.size();
     boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_size), Integer.valueOf(0));
     Assert.assertTrue("\nExpected subject.size => 0 but"
-     + "\n     subject.size is " + Integer.valueOf(_size)
-     + "\n     subject is " + this.subject + "\n", _doubleArrow);
+     + "\n     subject.size is " + new StringDescription().appendValue(Integer.valueOf(_size)).toString()
+     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
     
   }
   
@@ -49,7 +50,7 @@ public class StackSpec {
     try{
       this.subject.pop();
       Assert.fail("Expected " + EmptyStackException.class.getName() + " in \n     subject.pop()\n with:"
-       + "\n     subject is " + this.subject);
+       + "\n     subject is " + new StringDescription().appendValue(this.subject).toString());
     }catch(EmptyStackException e){
       // expected
     }
@@ -63,8 +64,8 @@ public class StackSpec {
     int _size = this.subject.size();
     boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_size), Integer.valueOf(1));
     Assert.assertTrue("\nExpected subject.size => 1 but"
-     + "\n     subject.size is " + Integer.valueOf(_size)
-     + "\n     subject is " + this.subject + "\n", _doubleArrow);
+     + "\n     subject.size is " + new StringDescription().appendValue(Integer.valueOf(_size)).toString()
+     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
     
   }
   
@@ -77,8 +78,8 @@ public class StackSpec {
     int _size = this.subject.size();
     boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_size), Integer.valueOf(0));
     Assert.assertTrue("\nExpected subject.size => 0 but"
-     + "\n     subject.size is " + Integer.valueOf(_size)
-     + "\n     subject is " + this.subject + "\n", _doubleArrow);
+     + "\n     subject.size is " + new StringDescription().appendValue(Integer.valueOf(_size)).toString()
+     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
     
   }
   
@@ -91,14 +92,14 @@ public class StackSpec {
     Object _pop = this.subject.pop();
     boolean _doubleArrow = Should.operator_doubleArrow(_pop, "something else");
     Assert.assertTrue("\nExpected subject.pop() => \"something else\" but"
-     + "\n     subject.pop() is " + _pop
-     + "\n     subject is " + this.subject + "\n", _doubleArrow);
+     + "\n     subject.pop() is " + new StringDescription().appendValue(_pop).toString()
+     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
     
     Object _pop_1 = this.subject.pop();
     boolean _doubleArrow_1 = Should.operator_doubleArrow(_pop_1, "something");
     Assert.assertTrue("\nExpected subject.pop() => \"something\" but"
-     + "\n     subject.pop() is " + _pop_1
-     + "\n     subject is " + this.subject + "\n", _doubleArrow_1);
+     + "\n     subject.pop() is " + new StringDescription().appendValue(_pop_1).toString()
+     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow_1);
     
   }
 }

@@ -5,6 +5,7 @@ import gameoflife.Cell;
 import gameoflife.Game;
 import gameoflife.MockitoInstantiator;
 import java.util.Set;
+import org.hamcrest.StringDescription;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
 import org.jnario.runner.CreateWith;
@@ -44,11 +45,11 @@ public class GameSpec {
     Iterable<Cell> _evolve_1 = this.subject.evolve(_set);
     boolean _should_contain = Should.<Cell>should_contain(_evolve_1, newCell);
     Assert.assertTrue("\nExpected subject.evolve(set(cell)) should contain newCell but"
-     + "\n     subject.evolve(set(cell)) is " + _evolve_1
-     + "\n     subject is " + this.subject
-     + "\n     set(cell) is " + _set
-     + "\n     cell is " + this.cell
-     + "\n     newCell is " + newCell + "\n", _should_contain);
+     + "\n     subject.evolve(set(cell)) is " + new StringDescription().appendValue(_evolve_1).toString()
+     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
+     + "\n     set(cell) is " + new StringDescription().appendValue(_set).toString()
+     + "\n     cell is " + new StringDescription().appendValue(this.cell).toString()
+     + "\n     newCell is " + new StringDescription().appendValue(newCell).toString() + "\n", _should_contain);
     
   }
 }

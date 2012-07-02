@@ -1,6 +1,7 @@
 package org.jnario.feature.tests.integration;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
@@ -56,7 +57,8 @@ public class ReferencesForStepsFeatureUsingFieldsFromOtherSteps {
   @Order(1)
   @Named("Then it should be successful")
   public void thenItShouldBeSuccessful() {
-    FeatureExecutor.executesSuccessfully(jnarioFile);
+      InputOutput.<String>println("executing scenario");
+      FeatureExecutor.executesSuccessfully(jnarioFile);
   }
   
   CharSequence jnarioFile;
