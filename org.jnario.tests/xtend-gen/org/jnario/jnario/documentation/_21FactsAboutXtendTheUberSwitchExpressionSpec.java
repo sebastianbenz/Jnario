@@ -14,19 +14,19 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- * Xtend's switch expression is very different from Java's switch statement.
- * First, there is no fall through which means only one case is
- * evaluated at most. Second, the use of switch is not limited to certain
- * values but can be used for any object reference instead.
+ * Xtend's switch expression is greatly improved over the one from Java.
+ * There is no fall through which means only one case is
+ * evaluated at most and is not limited to certain
+ * values but can be used for any object.
  */
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("The Uber-Switch Expression")
 public class _21FactsAboutXtendTheUberSwitchExpressionSpec extends _21FactsAboutXtendSpec {
   @Test
-  @Named("Case expressions")
+  @Named("Supports case expressions")
   @Order(99)
-  public void caseExpressions() throws Exception {
+  public void supportsCaseExpressions() throws Exception {
     final String myString = "Hello";
     String _switchResult = null;
     boolean _matched = false;
@@ -53,10 +53,15 @@ public class _21FactsAboutXtendTheUberSwitchExpressionSpec extends _21FactsAbout
     
   }
   
+  /**
+   * You can also write type guards in the case statements. Note that
+   * on the right-hand side of the case statement you can directly
+   * access the features of the guarded type without an explicit cast;
+   */
   @Test
-  @Named("Type guards")
+  @Named("...and type guards [with type inference]")
   @Order(99)
-  public void typeGuards() throws Exception {
+  public void andTypeGuardsWithTypeInference() throws Exception {
     List<Integer> _list = JnarioCollectionLiterals.<Integer>list(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3));
     final Object x = ((Object) _list);
     int _switchResult = (int) 0;

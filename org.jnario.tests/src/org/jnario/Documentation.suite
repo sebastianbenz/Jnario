@@ -34,7 +34,7 @@ More about writing acceptance specifications in Jnario.
 
 	- "Extensions": define setup and teardown operations in Features.
 	- "Using JUnit Rules in Features" 
-	- "Referencing other Steps": more about referencing other steps.
+	- "Referencing other Steps": more facts about referencing other steps.
 
 ##Unit Specs
 

@@ -17,12 +17,20 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ * The syntax of Xtend is quite similar to Java, but Xtend code is usually
+ * a lot shorter than its Java counterpart. However, there are some important
+ * differences between Java and Xtend one should be aware of!
+ */
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
-@Named("Syntax")
-public class _21FactsAboutXtendSyntaxSpec extends _21FactsAboutXtendSpec {
+@Named("A modernized Java")
+public class _21FactsAboutXtendAModernizedJavaSpec extends _21FactsAboutXtendSpec {
+  /**
+   * Semicolons are optional in Xtend.
+   */
   @Test
-  @Named("No semicolons!")
+  @Named("No semicolons")
   @Order(99)
   public void noSemicolons() throws Exception {
     String greeting = "";
@@ -30,14 +38,24 @@ public class _21FactsAboutXtendSyntaxSpec extends _21FactsAboutXtendSpec {
     InputOutput.<String>println(greeting);
   }
   
+  /**
+   * Variable declarations are preceded by `var` or, for in case of
+   * final variables, by `val`.
+   */
   @Test
-  @Named("Declaring variables")
+  @Named("Declare variables with var and val")
   @Order(99)
-  public void declaringVariables() throws Exception {
+  public void declareVariablesWithVarAndVal() throws Exception {
     String x = "I might change";
     final String y = "I\'ll never change";
   }
   
+  /**
+   * Having to precede variable declarations with `var` or `val` seems like a
+   * step backwards at first glance, but the type of a variable can be inferred
+   * from the expression on the right-hand side. This means we can omit the
+   * type information for variable declarations, which makes code a lot more readable.
+   */
   @Test
   @Named("Less typing thanks to type inference")
   @Order(99)
@@ -56,10 +74,14 @@ public class _21FactsAboutXtendSyntaxSpec extends _21FactsAboutXtendSpec {
     
   }
   
+  /**
+   * In case you are wondering what the `->` does in the previous example,
+   * it is syntactic sugar for a tuple:
+   */
   @Test
-  @Named("Good to know: Pairs")
+  @Named("Syntactic sugar: Pairs")
   @Order(99)
-  public void goodToKnowPairs() throws Exception {
+  public void syntacticSugarPairs() throws Exception {
     final Pair<String,String> pair = Pair.<String, String>of("spain", "italy");
     String _key = pair.getKey();
     boolean _doubleArrow = Should.operator_doubleArrow(_key, "spain");
@@ -76,15 +98,15 @@ public class _21FactsAboutXtendSyntaxSpec extends _21FactsAboutXtendSpec {
   }
   
   /**
-   * Static members of a class are accessed via `::` and not via `.` like in Java.
+   * Static class members are accessed via `::` and not `.` like in Java.
    * 
-   * <span class="label label-warning">Attention</span> This is probably the most
-   * asked question on the Xtend mailing list.
+   * <span class="label label-warning">Important</span> This is probably the most
+   * often asked question on the Xtend [mailing list](https://groups.google.com/forum/?fromgroups#!forum/xtend-lang).
    */
   @Test
-  @Named("Accessing static members")
+  @Named("Accessing static members is different!")
   @Order(99)
-  public void accessingStaticMembers() throws Exception {
+  public void accessingStaticMembersIsDifferent() throws Exception {
     final List<String> colors = JnarioCollectionLiterals.<String>list("red", "blue", "green");
     Collections.<String>sort(colors);
     List<String> _list = JnarioCollectionLiterals.<String>list("blue", "green", "red");
@@ -95,11 +117,42 @@ public class _21FactsAboutXtendSyntaxSpec extends _21FactsAboutXtendSpec {
     
   }
   
+  /**
+   * Accessing classes has also a different syntax in Xtend. Instead of writing
+   * `String.class` like in Java, you need to write `typeof(String)` in Xtend.
+   * 
+   * <span class="label label-warning">Important</span> This is probably the second most
+   * most often asked question on the Xtend mailing list.
+   */
+  @Test
+  @Named("Accessing types")
+  @Order(99)
+  public void accessingTypes() throws Exception {
+    String _name = String.class.getName();
+    boolean _doubleArrow = Should.operator_doubleArrow(_name, "java.lang.String");
+    Assert.assertTrue("\nExpected typeof(String).name => \"java.lang.String\" but"
+     + "\n     typeof(String).name is " + new StringDescription().appendValue(_name).toString() + "\n", _doubleArrow);
+    
+  }
+  
+  /**
+   * Type casts behave exactly like in Java, but have a slightly more
+   * readable syntax:
+   */
+  @Test
+  @Named("Casts have a different syntax")
+  @Order(99)
+  public void castsHaveADifferentSyntax() throws Exception {
+    final Object obj = "a string";
+    final String s = ((String) obj);
+  }
+  
   final String greeting = "Hello ";
   
   /**
-   * Methods in Xtend are declared like in Java. The only difference is that methods
-   * declarations are preceded with `def`.
+   * Fields in Xtend can be declared exactly like in Java.
+   * Methods in Xtend are also declared like in Java, but with the difference that method
+   * declarations are preceded with `def`:
    * 
    * <pre class="prettyprint lang-spec">
    * String greeting = "Hello "
@@ -108,7 +161,6 @@ public class _21FactsAboutXtendSyntaxSpec extends _21FactsAboutXtendSpec {
    *   return greeting + name
    * }
    * </pre>
-   * 
    * 
    * The type inference also works for fields and methods. You can omit
    * the return type of methods and the type of fields. Methods are by default
@@ -122,12 +174,13 @@ public class _21FactsAboutXtendSyntaxSpec extends _21FactsAboutXtendSpec {
    * }
    * </pre>
    * 
-   * Calling fields and methods works exactly like in Java:
+   * Calling fields and methods works exactly like in Java, but it is possible to
+   * omit the parentheses when calling a method without parameters.
    */
   @Test
-  @Named("Declaring fields & methods")
+  @Named("Fields & methods work almost like in Java")
   @Order(99)
-  public void declaringFieldsMethods() throws Exception {
+  public void fieldsMethodsWorkAlmostLikeInJava() throws Exception {
     String _sayHello = this.sayHello("Sebastian");
     String _plus = (this.greeting + "Sebastian");
     boolean _doubleArrow = Should.operator_doubleArrow(_sayHello, _plus);
@@ -135,6 +188,11 @@ public class _21FactsAboutXtendSyntaxSpec extends _21FactsAboutXtendSpec {
      + "\n     sayHello(\"Sebastian\") is " + new StringDescription().appendValue(_sayHello).toString()
      + "\n     greeting + \"Sebastian\" is " + new StringDescription().appendValue(_plus).toString()
      + "\n     greeting is " + new StringDescription().appendValue(this.greeting).toString() + "\n", _doubleArrow);
+    
+    String _string = Integer.valueOf(42).toString();
+    boolean _doubleArrow_1 = Should.operator_doubleArrow(_string, "42");
+    Assert.assertTrue("\nExpected 42.toString => \"42\" but"
+     + "\n     42.toString is " + new StringDescription().appendValue(_string).toString() + "\n", _doubleArrow_1);
     
   }
   

@@ -6,9 +6,9 @@ import java.util.List;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.jnario.jnario.documentation._21FactsAboutXtendExtensionMethodsSpec;
+import org.jnario.jnario.documentation._21FactsAboutXtendAModernizedJavaSpec;
 import org.jnario.jnario.documentation._21FactsAboutXtendFunctionalProgrammingFTWSpec;
-import org.jnario.jnario.documentation._21FactsAboutXtendSyntaxSpec;
+import org.jnario.jnario.documentation._21FactsAboutXtendReadableCodeWithExtensionMethodsSpec;
 import org.jnario.jnario.documentation._21FactsAboutXtendTheUberSwitchExpressionSpec;
 import org.jnario.runner.Contains;
 import org.jnario.runner.ExampleGroupRunner;
@@ -16,13 +16,13 @@ import org.jnario.runner.Named;
 import org.junit.runner.RunWith;
 
 /**
- * This document will teach you all
- * you need to know about Xtend to use [Jnario](http://www.jnario.org). All the
- * shown examples work also in Jnario specifications. For a more detailed
+ * This document teaches you everything
+ * you need to know about Xtend in order to successfully use
+ * [Jnario](http://www.jnario.org). For a more detailed
  * introduction see the offical
  * [Xtend documentation](http://www.eclipse.org/xtend/documentation.html).
  */
-@Contains({ _21FactsAboutXtendSyntaxSpec.class, _21FactsAboutXtendExtensionMethodsSpec.class, _21FactsAboutXtendTheUberSwitchExpressionSpec.class, _21FactsAboutXtendFunctionalProgrammingFTWSpec.class })
+@Contains({ _21FactsAboutXtendAModernizedJavaSpec.class, _21FactsAboutXtendTheUberSwitchExpressionSpec.class, _21FactsAboutXtendReadableCodeWithExtensionMethodsSpec.class, _21FactsAboutXtendFunctionalProgrammingFTWSpec.class })
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("21 Facts about Xtend")

@@ -4,8 +4,10 @@ import com.google.common.collect.Iterables;
 import java.util.List;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.Functions.Function2;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.documentation._21FactsAboutXtendSpec;
 import org.jnario.lib.JnarioCollectionLiterals;
@@ -19,49 +21,15 @@ import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
-@Named("Functional programming FTW")
+@Named("Functional Programming FTW")
 public class _21FactsAboutXtendFunctionalProgrammingFTWSpec extends _21FactsAboutXtendSpec {
-  @Test
-  @Named("Closures are great")
-  @Order(99)
-  public void closuresAreGreat() throws Exception {
-    Function1<? super String,? extends String> shout = null;
-    final Function1<String,String> _function = new Function1<String,String>() {
-        public String apply(final String s) {
-          String _upperCase = s.toUpperCase();
-          return _upperCase;
-        }
-      };
-    shout = _function;
-    final Function1<String,String> _function_1 = new Function1<String,String>() {
-        public String apply(final String it) {
-          String _upperCase = it.toUpperCase();
-          return _upperCase;
-        }
-      };
-    shout = _function_1;
-    final Function1<String,String> _function_2 = new Function1<String,String>() {
-        public String apply(final String it) {
-          String _upperCase = it.toUpperCase();
-          return _upperCase;
-        }
-      };
-    shout = _function_2;
-    String _apply = shout.apply("hello");
-    boolean _doubleArrow = Should.operator_doubleArrow(_apply, "HELLO");
-    Assert.assertTrue("\nExpected shout.apply(\"hello\") => \"HELLO\" but"
-     + "\n     shout.apply(\"hello\") is " + new StringDescription().appendValue(_apply).toString()
-     + "\n     shout is " + new StringDescription().appendValue(shout).toString() + "\n", _doubleArrow);
-    
-  }
-  
   /**
    * Accessing elements in lists.
    */
   @Test
-  @Named("Heads or tails")
+  @Named("Simple access to list elements")
   @Order(99)
-  public void headsOrTails() throws Exception {
+  public void simpleAccessToListElements() throws Exception {
     final List<String> colors = JnarioCollectionLiterals.<String>list("red", "blue", "green");
     String _head = IterableExtensions.<String>head(colors);
     boolean _doubleArrow = Should.operator_doubleArrow(_head, "red");
@@ -91,10 +59,95 @@ public class _21FactsAboutXtendFunctionalProgrammingFTWSpec extends _21FactsAbou
     
   }
   
+  /**
+   * Here is another useful fact about Xtend, you can concatenate collections
+   * using the `+` operator.
+   */
   @Test
-  @Named("Filtering by type")
+  @Named("Concatenate collections with +")
   @Order(99)
-  public void filteringByType() throws Exception {
+  public void concatenateCollectionsWith() throws Exception {
+    List<String> _list = JnarioCollectionLiterals.<String>list("red", "blue");
+    List<String> _list_1 = JnarioCollectionLiterals.<String>list("yellow", "green");
+    Iterable<String> _plus = Iterables.<String>concat(_list, _list_1);
+    Iterable<String> _iterable = this.<String>iterable("red", "blue", "yellow", "green");
+    boolean _doubleArrow = this.<String>operator_doubleArrow(_plus, _iterable);
+    Assert.assertTrue("\nExpected list(\"red\", \"blue\") + list(\"yellow\", \"green\") => iterable(\"red\", \"blue\", \"yellow\", \"green\") but"
+     + "\n     list(\"red\", \"blue\") + list(\"yellow\", \"green\") is " + new StringDescription().appendValue(_plus).toString()
+     + "\n     list(\"red\", \"blue\") is " + new StringDescription().appendValue(_list).toString()
+     + "\n     list(\"yellow\", \"green\") is " + new StringDescription().appendValue(_list_1).toString()
+     + "\n     iterable(\"red\", \"blue\", \"yellow\", \"green\") is " + new StringDescription().appendValue(_iterable).toString() + "\n", _doubleArrow);
+    
+  }
+  
+  @Test
+  @Named("Concise Lambda Expressions")
+  @Order(99)
+  public void conciseLambdaExpressions() throws Exception {
+    Function1<? super String,? extends String> shout = null;
+    final Function1<String,String> _function = new Function1<String,String>() {
+        public String apply(final String s) {
+          String _upperCase = s.toUpperCase();
+          return _upperCase;
+        }
+      };
+    shout = _function;
+    final Function1<String,String> _function_1 = new Function1<String,String>() {
+        public String apply(final String s) {
+          String _upperCase = s.toUpperCase();
+          return _upperCase;
+        }
+      };
+    shout = _function_1;
+    final Function1<String,String> _function_2 = new Function1<String,String>() {
+        public String apply(final String it) {
+          String _upperCase = it.toUpperCase();
+          return _upperCase;
+        }
+      };
+    shout = _function_2;
+    final Function1<String,String> _function_3 = new Function1<String,String>() {
+        public String apply(final String it) {
+          String _upperCase = it.toUpperCase();
+          return _upperCase;
+        }
+      };
+    shout = _function_3;
+    String _apply = shout.apply("hello");
+    boolean _doubleArrow = Should.operator_doubleArrow(_apply, "HELLO");
+    Assert.assertTrue("\nExpected // apply the function to an object\n      shout.apply(\"hello\") => \"HELLO\" but"
+     + "\n     // apply the function to an object\n      shout.apply(\"hello\") is " + new StringDescription().appendValue(_apply).toString()
+     + "\n     // apply the function to an object\n      shout is " + new StringDescription().appendValue(shout).toString() + "\n", _doubleArrow);
+    
+  }
+  
+  /**
+   * Lambda expressions are especially useful when working with
+   * collections. For example, when applying side effects from a collection
+   * it is often better to use the implicit `forEach` extension method
+   * instead of a loop:
+   */
+  @Test
+  @Named("Better loops")
+  @Order(99)
+  public void betterLoops() throws Exception {
+    List<String> _list = JnarioCollectionLiterals.<String>list("red", "blue", "green");
+    final Procedure1<String> _function = new Procedure1<String>() {
+        public void apply(final String it) {
+          InputOutput.println();
+        }
+      };
+    IterableExtensions.<String>forEach(_list, _function);
+  }
+  
+  /**
+   * The `filter` extension method is really helpful when you are only interested
+   * in a subset of a collection. You can filter by type:
+   */
+  @Test
+  @Named("Filter iterables by type")
+  @Order(99)
+  public void filterIterablesByType() throws Exception {
     List<Object> _list = JnarioCollectionLiterals.<Object>list("a string", Integer.valueOf(42), Boolean.valueOf(true));
     Iterable<String> _filter = Iterables.<String>filter(_list, String.class);
     Iterable<String> _iterable = this.<String>iterable("a string");
@@ -106,10 +159,14 @@ public class _21FactsAboutXtendFunctionalProgrammingFTWSpec extends _21FactsAbou
     
   }
   
+  /**
+   * In this case we provide a lambda expressions that returns true for the
+   * elements we are interested in:
+   */
   @Test
-  @Named("Filtering with predicates")
+  @Named("... or via a custom predicate")
   @Order(99)
-  public void filteringWithPredicates() throws Exception {
+  public void orViaACustomPredicate() throws Exception {
     List<String> _list = JnarioCollectionLiterals.<String>list("red", "blue", "green");
     final Function1<String,Boolean> _function = new Function1<String,Boolean>() {
         public Boolean apply(final String it) {
@@ -127,73 +184,33 @@ public class _21FactsAboutXtendFunctionalProgrammingFTWSpec extends _21FactsAbou
     
   }
   
+  /**
+   * This examples demonstrates how you can realize complex operations by
+   * composing different functions. Here we are counting all characters in a list of Strings using the
+   * `map` and `reduce` extension methods.
+   */
   @Test
-  @Named("Map & Reduce")
+  @Named("Map/Reduce made easy")
   @Order(99)
-  public void mapReduce() throws Exception {
-    List<String> _list = JnarioCollectionLiterals.<String>list("red", "blue", "green");
-    final Function1<String,String> _function = new Function1<String,String>() {
-        public String apply(final String it) {
-          String _upperCase = it.toUpperCase();
-          return _upperCase;
+  public void mapReduceMadeEasy() throws Exception {
+    final List<String> strings = JnarioCollectionLiterals.<String>list("red", "blue", "green");
+    final Function1<String,Integer> _function = new Function1<String,Integer>() {
+        public Integer apply(final String s) {
+          int _length = s.length();
+          return Integer.valueOf(_length);
         }
       };
-    List<String> _map = ListExtensions.<String, String>map(_list, _function);
-    List<String> _list_1 = JnarioCollectionLiterals.<String>list("RED", "BLUE", "GREEN");
-    boolean _doubleArrow = this.<String>operator_doubleArrow(_map, _list_1);
-    Assert.assertTrue("\nExpected list(\"red\", \"blue\", \"green\").map[toUpperCase] => list(\"RED\", \"BLUE\", \"GREEN\") but"
-     + "\n     list(\"red\", \"blue\", \"green\").map[toUpperCase] is " + new StringDescription().appendValue(_map).toString()
-     + "\n     list(\"red\", \"blue\", \"green\") is " + new StringDescription().appendValue(_list).toString()
-     + "\n     list(\"RED\", \"BLUE\", \"GREEN\") is " + new StringDescription().appendValue(_list_1).toString() + "\n", _doubleArrow);
-    
-    List<Integer> _list_2 = JnarioCollectionLiterals.<Integer>list(Integer.valueOf(5), Integer.valueOf(3), Integer.valueOf(1));
+    List<Integer> _map = ListExtensions.<String, Integer>map(strings, _function);
     final Function2<Integer,Integer,Integer> _function_1 = new Function2<Integer,Integer,Integer>() {
-        public Integer apply(final Integer result, final Integer element) {
-          int _plus = ((result).intValue() + (element).intValue());
+        public Integer apply(final Integer sum, final Integer size) {
+          int _plus = ((sum).intValue() + (size).intValue());
           return Integer.valueOf(_plus);
         }
       };
-    Integer _reduce = IterableExtensions.<Integer>reduce(_list_2, _function_1);
-    boolean _doubleArrow_1 = Should.operator_doubleArrow(_reduce, Integer.valueOf(9));
-    Assert.assertTrue("\nExpected list(5, 3, 1).reduce[result, element | result + element] => 9 but"
-     + "\n     list(5, 3, 1).reduce[result, element | result + element] is " + new StringDescription().appendValue(_reduce).toString()
-     + "\n     list(5, 3, 1) is " + new StringDescription().appendValue(_list_2).toString() + "\n", _doubleArrow_1);
-    
-  }
-  
-  @Test
-  @Named("Flatten collections")
-  @Order(99)
-  public void flattenCollections() throws Exception {
-    List<String> _list = JnarioCollectionLiterals.<String>list("red", "blue");
-    List<String> _list_1 = JnarioCollectionLiterals.<String>list("yellow", "green");
-    List<List<String>> _list_2 = JnarioCollectionLiterals.<List<String>>list(_list, _list_1);
-    Iterable<String> _flatten = Iterables.<String>concat(_list_2);
-    Iterable<String> _iterable = this.<String>iterable("red", "blue", "yellow", "green");
-    boolean _doubleArrow = this.<String>operator_doubleArrow(_flatten, _iterable);
-    Assert.assertTrue("\nExpected list(list(\"red\", \"blue\"), list(\"yellow\", \"green\")).flatten => iterable(\"red\", \"blue\", \"yellow\", \"green\") but"
-     + "\n     list(list(\"red\", \"blue\"), list(\"yellow\", \"green\")).flatten is " + new StringDescription().appendValue(_flatten).toString()
-     + "\n     list(list(\"red\", \"blue\"), list(\"yellow\", \"green\")) is " + new StringDescription().appendValue(_list_2).toString()
-     + "\n     list(\"red\", \"blue\") is " + new StringDescription().appendValue(_list).toString()
-     + "\n     list(\"yellow\", \"green\") is " + new StringDescription().appendValue(_list_1).toString()
-     + "\n     iterable(\"red\", \"blue\", \"yellow\", \"green\") is " + new StringDescription().appendValue(_iterable).toString() + "\n", _doubleArrow);
-    
-  }
-  
-  @Test
-  @Named("Concatenating collections")
-  @Order(99)
-  public void concatenatingCollections() throws Exception {
-    List<String> _list = JnarioCollectionLiterals.<String>list("red", "blue");
-    List<String> _list_1 = JnarioCollectionLiterals.<String>list("yellow", "green");
-    Iterable<String> _plus = Iterables.<String>concat(_list, _list_1);
-    Iterable<String> _iterable = this.<String>iterable("red", "blue", "yellow", "green");
-    boolean _doubleArrow = this.<String>operator_doubleArrow(_plus, _iterable);
-    Assert.assertTrue("\nExpected list(\"red\", \"blue\") + list(\"yellow\", \"green\") => iterable(\"red\", \"blue\", \"yellow\", \"green\") but"
-     + "\n     list(\"red\", \"blue\") + list(\"yellow\", \"green\") is " + new StringDescription().appendValue(_plus).toString()
-     + "\n     list(\"red\", \"blue\") is " + new StringDescription().appendValue(_list).toString()
-     + "\n     list(\"yellow\", \"green\") is " + new StringDescription().appendValue(_list_1).toString()
-     + "\n     iterable(\"red\", \"blue\", \"yellow\", \"green\") is " + new StringDescription().appendValue(_iterable).toString() + "\n", _doubleArrow);
+    final Integer charCount = IterableExtensions.<Integer>reduce(_map, _function_1);
+    boolean _doubleArrow = Should.operator_doubleArrow(charCount, Integer.valueOf(12));
+    Assert.assertTrue("\nExpected charCount => 12 but"
+     + "\n     charCount is " + new StringDescription().appendValue(charCount).toString() + "\n", _doubleArrow);
     
   }
 }
