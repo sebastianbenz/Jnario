@@ -12,14 +12,14 @@ import org.jnario.suite.suite.SpecReference
 import org.jnario.suite.suite.Suite
 import org.jnario.suite.suite.Heading
 import org.jnario.suite.jvmmodel.SpecResolver
-
-import static extension org.jnario.util.Strings.*
-import static extension org.eclipse.xtext.util.Strings.*
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.jnario.suite.suite.SuiteFile
 import org.jnario.doc.HtmlFileBuilder
 import org.jnario.doc.HtmlFile
+
+import static extension org.jnario.util.Strings.*
+import static extension org.eclipse.xtext.util.Strings.*
 
 class SuiteDocGenerator extends AbstractDocGenerator {
 	@Inject extension SuiteClassNameProvider 
@@ -37,7 +37,7 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 		val suites = file.xtendClasses.filter(typeof(Suite))
 		if(suites.empty) return HtmlFile::EMPTY_FILE
 		HtmlFile::newHtmlFile[
-			fileName = suites.head.className 
+			name = suites.head.className
 			title = suites.head.describe.convertFromJavaString(true)
 			content = suites.generateContent
 			rootFolder = suites.head.root
@@ -47,7 +47,7 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 	override HtmlFile createHtmlFile(XtendClass file) {
 		val suite = file as Suite
 		HtmlFile::newHtmlFile[
-			fileName = suite.className 
+			name = suite.className 
 			title = suite.describe.convertFromJavaString(true)
 			content = suite.generateContent
 			rootFolder = suite.root
@@ -84,10 +84,10 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 	«FOR spec : specs»
 		<li><a href="«ref.linkTo(spec)»">«spec.describe»</a> «ref.text»</li>
 	«ENDFOR»
-	'''
+	''' 
 	
 	def linkTo(EObject context, Specification spec){
-		context.root + spec.packageName.replace(".", "/") + "/" + spec.className + ".html"
+		context.root + spec.packageName.replace(".", "/") + "/" + spec.className.htmlFileName
 	}
 	
 	def text(Reference ref){

@@ -36,13 +36,13 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     final Procedure1<HtmlFile> _function = new Procedure1<HtmlFile>() {
         public void apply(final HtmlFile it) {
           String _className = FeatureDocGenerator.this._featureClassNameProvider.getClassName(feature);
-          it.fileName = _className;
+          it.setName(_className);
           String _name = feature.getName();
-          it.title = _name;
+          it.setTitle(_name);
           CharSequence _generateContent = FeatureDocGenerator.this.generateContent(feature);
-          it.content = _generateContent;
+          it.setContent(_generateContent);
           String _root = FeatureDocGenerator.this.root(feature);
-          it.rootFolder = _root;
+          it.setRootFolder(_root);
         }
       };
     return HtmlFile.newHtmlFile(_function);

@@ -35,7 +35,7 @@ class SpecDocGenerator extends AbstractDocGenerator {
 		}
 		val exampleGroup = xtendClass as ExampleGroup
 		HtmlFile::newHtmlFile[
-			fileName = exampleGroup.toJavaClassName 
+			name = exampleGroup.toJavaClassName 
 			title = exampleGroup.asTitle
 			content = exampleGroup.generateContent
 			rootFolder = exampleGroup.root

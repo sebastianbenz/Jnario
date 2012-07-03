@@ -24,10 +24,10 @@ class HtmlFile {
 	
 	public static HtmlFile EMPTY_FILE = new HtmlFile
 	
-	public CharSequence fileName = ""
-	public CharSequence title = ""
-	public CharSequence content = ""
-	public String rootFolder = ""
+	@Property CharSequence name = ""
+	@Property CharSequence title = ""
+	@Property CharSequence content = ""
+	@Property String rootFolder = ""
 	
 	
 	def toText()'''
@@ -75,30 +75,6 @@ class HtmlFile {
 		</body>
 		</html>
 	'''
-	
-	def setTitle(String title){
-		this.title = title
-	}
-	
-	def setContent(String content){
-		this.content = content
-	}
-	
-	def setFileName(String fileName){
-		this.fileName = fileName
-	}
-	
-	def getTitle(){
-		return title
-	}
-	
-	def getContent(){
-		return content
-	}
-	
-	def getFileName(){
-		return content
-	}
 	
 	def getCssFiles(){
 		return cssFiles

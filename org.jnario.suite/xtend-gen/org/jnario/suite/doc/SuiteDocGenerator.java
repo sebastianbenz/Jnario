@@ -65,16 +65,16 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
           public void apply(final HtmlFile it) {
             Suite _head = IterableExtensions.<Suite>head(suites);
             String _className = SuiteDocGenerator.this._suiteClassNameProvider.getClassName(_head);
-            it.fileName = _className;
+            it.setName(_className);
             Suite _head_1 = IterableExtensions.<Suite>head(suites);
             String _describe = SuiteDocGenerator.this._suiteClassNameProvider.describe(_head_1);
             String _convertFromJavaString = Strings.convertFromJavaString(_describe, true);
-            it.title = _convertFromJavaString;
+            it.setTitle(_convertFromJavaString);
             CharSequence _generateContent = SuiteDocGenerator.this.generateContent(suites);
-            it.content = _generateContent;
+            it.setContent(_generateContent);
             Suite _head_2 = IterableExtensions.<Suite>head(suites);
             String _root = SuiteDocGenerator.this.root(_head_2);
-            it.rootFolder = _root;
+            it.setRootFolder(_root);
           }
         };
       HtmlFile _newHtmlFile = HtmlFile.newHtmlFile(_function);
@@ -90,14 +90,14 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
       final Procedure1<HtmlFile> _function = new Procedure1<HtmlFile>() {
           public void apply(final HtmlFile it) {
             String _className = SuiteDocGenerator.this._suiteClassNameProvider.getClassName(suite);
-            it.fileName = _className;
+            it.setName(_className);
             String _describe = SuiteDocGenerator.this._suiteClassNameProvider.describe(suite);
             String _convertFromJavaString = Strings.convertFromJavaString(_describe, true);
-            it.title = _convertFromJavaString;
+            it.setTitle(_convertFromJavaString);
             CharSequence _generateContent = SuiteDocGenerator.this.generateContent(suite);
-            it.content = _generateContent;
+            it.setContent(_generateContent);
             String _root = SuiteDocGenerator.this.root(suite);
-            it.rootFolder = _root;
+            it.setRootFolder(_root);
           }
         };
       HtmlFile _newHtmlFile = HtmlFile.newHtmlFile(_function);
@@ -200,9 +200,9 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
     String _plus = (_root + _replace);
     String _plus_1 = (_plus + "/");
     String _className = this._suiteClassNameProvider.getClassName(spec);
-    String _plus_2 = (_plus_1 + _className);
-    String _plus_3 = (_plus_2 + ".html");
-    return _plus_3;
+    String _htmlFileName = this.htmlFileName(_className);
+    String _plus_2 = (_plus_1 + _htmlFileName);
+    return _plus_2;
   }
   
   public String text(final Reference ref) {

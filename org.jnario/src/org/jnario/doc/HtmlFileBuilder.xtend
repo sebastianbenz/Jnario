@@ -22,10 +22,16 @@ class HtmlFileBuilder {
 		fsa.generateFile(filePath(context, htmlFile), DocOutputConfigurationProvider::DOC_OUTPUT, content)
 	}
 	
-	
+	def toHtmlFileName(CharSequence nameWithoutExtension){
+		var result = nameWithoutExtension.toString
+		if(result.startsWith("_")){
+			result = result.substring(1)
+		}
+		result + ".html"
+	}
 	
 	def private filePath(XtendClass xtendClass, HtmlFile htmlFile){
-		val fileName = "/" + htmlFile.fileName + ".html"
+		val fileName = "/" + htmlFile.name.toHtmlFileName
 		if(xtendClass.packageName == null){
 			return fileName
 		}

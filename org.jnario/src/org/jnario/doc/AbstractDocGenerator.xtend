@@ -23,6 +23,7 @@ import org.eclipse.xtext.EcoreUtil2
 import org.jnario.ExampleTable
 
 import static extension org.eclipse.xtext.util.Strings.*
+import org.apache.commons.lang.StringEscapeUtils
 
 abstract class AbstractDocGenerator implements IGenerator {
 
@@ -84,7 +85,7 @@ abstract class AbstractDocGenerator implements IGenerator {
 	}
 	
 	def toHtml(String input){
-		input.replaceAll("<", "&lt;").replaceAll(">", "&gt;")
+		StringEscapeUtils::escapeHtml(input)
 	}
 	
 	def serialize(EObject obj){
@@ -137,5 +138,9 @@ abstract class AbstractDocGenerator implements IGenerator {
 			</tbody>
 		</table>
 	'''
+	
+	def htmlFileName(String name){
+		name.toHtmlFileName
+	}
 
 }

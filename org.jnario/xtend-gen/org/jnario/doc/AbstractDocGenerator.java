@@ -5,6 +5,7 @@ import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import java.util.Arrays;
 import java.util.List;
+import org.apache.commons.lang.StringEscapeUtils;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -140,9 +141,8 @@ public abstract class AbstractDocGenerator implements IGenerator {
   }
   
   public String toHtml(final String input) {
-    String _replaceAll = input.replaceAll("<", "&lt;");
-    String _replaceAll_1 = _replaceAll.replaceAll(">", "&gt;");
-    return _replaceAll_1;
+    String _escapeHtml = StringEscapeUtils.escapeHtml(input);
+    return _escapeHtml;
   }
   
   public String serialize(final EObject obj) {
@@ -246,6 +246,11 @@ public abstract class AbstractDocGenerator implements IGenerator {
     _builder.append("</table>");
     _builder.newLine();
     return _builder;
+  }
+  
+  public String htmlFileName(final String name) {
+    String _htmlFileName = this._htmlFileBuilder.toHtmlFileName(name);
+    return _htmlFileName;
   }
   
   public String serialize(final XExpression expr, final List<Filter> filters) {

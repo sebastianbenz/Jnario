@@ -14,11 +14,10 @@ import org.jnario.feature.feature.Feature
 import org.jnario.feature.feature.Step
 import org.jnario.feature.naming.FeatureClassNameProvider
 import org.jnario.feature.naming.StepNameProvider
-
-
-import static extension org.jnario.util.Strings.*
 import org.jnario.feature.feature.Scenario
 import org.jnario.doc.HtmlFile
+
+import static extension org.jnario.util.Strings.*
 
 class FeatureDocGenerator extends AbstractDocGenerator {
 	
@@ -31,7 +30,7 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 		}
 		val feature = xtendClass as Feature
 		return HtmlFile::newHtmlFile[
-			fileName = feature.getClassName 
+			name = feature.getClassName 
 			title = feature.name
 			content = feature.generateContent
 			rootFolder = feature.root

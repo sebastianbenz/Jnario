@@ -119,7 +119,8 @@ public class SuiteDocGeneratorSpec {
       EList<EObject> _contents = resource.getContents();
       EObject _head = IterableExtensions.<EObject>head(_contents);
       HtmlFile _createHtmlFile = this.subject.createHtmlFile(((SuiteFile) _head));
-      String _string = _createHtmlFile.content.toString();
+      CharSequence _content = _createHtmlFile.getContent();
+      String _string = _content.toString();
       _xblockexpression = (_string);
     }
     return _xblockexpression;

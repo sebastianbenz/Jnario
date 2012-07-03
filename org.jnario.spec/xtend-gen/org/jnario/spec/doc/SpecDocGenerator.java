@@ -47,13 +47,13 @@ public class SpecDocGenerator extends AbstractDocGenerator {
       final Procedure1<HtmlFile> _function = new Procedure1<HtmlFile>() {
           public void apply(final HtmlFile it) {
             String _javaClassName = SpecDocGenerator.this._exampleNameProvider.toJavaClassName(exampleGroup);
-            it.fileName = _javaClassName;
+            it.setName(_javaClassName);
             String _asTitle = SpecDocGenerator.this.asTitle(exampleGroup);
-            it.title = _asTitle;
+            it.setTitle(_asTitle);
             CharSequence _generateContent = SpecDocGenerator.this.generateContent(exampleGroup);
-            it.content = _generateContent;
+            it.setContent(_generateContent);
             String _root = SpecDocGenerator.this.root(exampleGroup);
-            it.rootFolder = _root;
+            it.setRootFolder(_root);
           }
         };
       HtmlFile _newHtmlFile = HtmlFile.newHtmlFile(_function);

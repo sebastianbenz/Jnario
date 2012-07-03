@@ -6,6 +6,7 @@ import java.util.Map;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.InMemoryFileSystemAccess;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.SpecTestCreator;
@@ -293,8 +294,9 @@ public class SpecDocGeneratorSpec {
     _builder.newLine();
     this.generateDoc(_builder);
     final String scenarioDoc = this.generatedFile("ExampleSpec.html");
-    boolean _contains = scenarioDoc.contains("\"aaaaaa\"");
-    Assert.assertTrue("\nExpected scenarioDoc.contains(\'\"aaaaaa\"\') but"
+    InputOutput.<String>println(scenarioDoc);
+    boolean _contains = scenarioDoc.contains("aaaaaa");
+    Assert.assertTrue("\nExpected scenarioDoc.contains(\'aaaaaa\') but"
      + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString() + "\n", _contains);
     
   }

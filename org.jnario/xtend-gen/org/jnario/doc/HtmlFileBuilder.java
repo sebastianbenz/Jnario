@@ -22,9 +22,25 @@ public class HtmlFileBuilder {
     fsa.generateFile(_filePath, DocOutputConfigurationProvider.DOC_OUTPUT, content);
   }
   
+  public String toHtmlFileName(final CharSequence nameWithoutExtension) {
+    String _xblockexpression = null;
+    {
+      String result = nameWithoutExtension.toString();
+      boolean _startsWith = result.startsWith("_");
+      if (_startsWith) {
+        String _substring = result.substring(1);
+        result = _substring;
+      }
+      String _plus = (result + ".html");
+      _xblockexpression = (_plus);
+    }
+    return _xblockexpression;
+  }
+  
   private String filePath(final XtendClass xtendClass, final HtmlFile htmlFile) {
-    String _plus = ("/" + htmlFile.fileName);
-    final String fileName = (_plus + ".html");
+    CharSequence _name = htmlFile.getName();
+    String _htmlFileName = this.toHtmlFileName(_name);
+    final String fileName = ("/" + _htmlFileName);
     String _packageName = xtendClass.getPackageName();
     boolean _equals = Objects.equal(_packageName, null);
     if (_equals) {
@@ -32,8 +48,8 @@ public class HtmlFileBuilder {
     }
     String _packageName_1 = xtendClass.getPackageName();
     String _replaceAll = _packageName_1.replaceAll("\\.", "/");
-    String _plus_1 = ("/" + _replaceAll);
-    return (_plus_1 + fileName);
+    String _plus = ("/" + _replaceAll);
+    return (_plus + fileName);
   }
   
   private void copy(final IFileSystemAccess fsa, final String targetFolder, final Iterable<String> files) {

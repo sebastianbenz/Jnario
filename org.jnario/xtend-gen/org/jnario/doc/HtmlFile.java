@@ -37,13 +37,45 @@ public class HtmlFile {
     }
   }.apply();
   
-  public CharSequence fileName = "";
+  private CharSequence _name = "";
   
-  public CharSequence title = "";
+  public CharSequence getName() {
+    return this._name;
+  }
   
-  public CharSequence content = "";
+  public void setName(final CharSequence name) {
+    this._name = name;
+  }
   
-  public String rootFolder = "";
+  private CharSequence _title = "";
+  
+  public CharSequence getTitle() {
+    return this._title;
+  }
+  
+  public void setTitle(final CharSequence title) {
+    this._title = title;
+  }
+  
+  private CharSequence _content = "";
+  
+  public CharSequence getContent() {
+    return this._content;
+  }
+  
+  public void setContent(final CharSequence content) {
+    this._content = content;
+  }
+  
+  private String _rootFolder = "";
+  
+  public String getRootFolder() {
+    return this._rootFolder;
+  }
+  
+  public void setRootFolder(final String rootFolder) {
+    this._rootFolder = rootFolder;
+  }
   
   public CharSequence toText() {
     StringConcatenation _builder = new StringConcatenation();
@@ -56,7 +88,8 @@ public class HtmlFile {
     _builder.append("<meta charset=\"utf-8\">");
     _builder.newLine();
     _builder.append("<title>");
-    _builder.append(this.title, "");
+    CharSequence _title = this.getTitle();
+    _builder.append(_title, "");
     _builder.append("</title>");
     _builder.newLineIfNotEmpty();
     _builder.append("<meta name=\"description\" content=\"\">");
@@ -80,7 +113,8 @@ public class HtmlFile {
     {
       for(final String cssFile : this.cssFiles) {
         _builder.append("<link rel=\"stylesheet\" href=\"");
-        _builder.append(this.rootFolder, "");
+        String _rootFolder = this.getRootFolder();
+        _builder.append(_rootFolder, "");
         _builder.append("/css/");
         _builder.append(cssFile, "");
         _builder.append("\">");
@@ -90,7 +124,8 @@ public class HtmlFile {
     {
       for(final String jsFile : this.jsFiles) {
         _builder.append("<script type=\"text/javascript\" src=\"");
-        _builder.append(this.rootFolder, "");
+        String _rootFolder_1 = this.getRootFolder();
+        _builder.append(_rootFolder_1, "");
         _builder.append("/js/");
         _builder.append(jsFile, "");
         _builder.append("\"></script>");
@@ -113,7 +148,8 @@ public class HtmlFile {
     _builder.newLine();
     _builder.append("\t\t\t\t");
     _builder.append("<h1>");
-    _builder.append(this.title, "				");
+    CharSequence _title_1 = this.getTitle();
+    _builder.append(_title_1, "				");
     _builder.append("</h1>");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t");
@@ -125,7 +161,8 @@ public class HtmlFile {
     _builder.append("\t\t\t\t");
     _builder.append("<div class=\"span12\">");
     _builder.newLine();
-    _builder.append(this.content, "");
+    CharSequence _content = this.getContent();
+    _builder.append(_content, "");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t\t");
     _builder.append("</div>");
@@ -158,33 +195,6 @@ public class HtmlFile {
     _builder.append("</html>");
     _builder.newLine();
     return _builder;
-  }
-  
-  public CharSequence setTitle(final String title) {
-    CharSequence _title = this.title = title;
-    return _title;
-  }
-  
-  public CharSequence setContent(final String content) {
-    CharSequence _content = this.content = content;
-    return _content;
-  }
-  
-  public CharSequence setFileName(final String fileName) {
-    CharSequence _fileName = this.fileName = fileName;
-    return _fileName;
-  }
-  
-  public CharSequence getTitle() {
-    return this.title;
-  }
-  
-  public CharSequence getContent() {
-    return this.content;
-  }
-  
-  public CharSequence getFileName() {
-    return this.content;
   }
   
   public List<String> getCssFiles() {
