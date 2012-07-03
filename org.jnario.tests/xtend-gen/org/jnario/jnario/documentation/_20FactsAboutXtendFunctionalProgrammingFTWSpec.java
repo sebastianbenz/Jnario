@@ -4,12 +4,11 @@ import com.google.common.collect.Iterables;
 import java.util.List;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.Functions.Function2;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
-import org.jnario.jnario.documentation._21FactsAboutXtendSpec;
+import org.jnario.jnario.documentation._20FactsAboutXtendSpec;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -19,12 +18,18 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ * A great thing about Xtend is that it enables a more functional programming style,
+ * with its native support for anonymous functions, the so called lambda expressions,
+ * and its rich library of extension methods.
+ */
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("Functional Programming FTW")
-public class _21FactsAboutXtendFunctionalProgrammingFTWSpec extends _21FactsAboutXtendSpec {
+public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAboutXtendSpec {
   /**
-   * Accessing elements in lists.
+   * Xtend provides a rich set of extension methods for collections. Accessing elements
+   * in lists.
    */
   @Test
   @Named("Simple access to list elements")
@@ -64,80 +69,86 @@ public class _21FactsAboutXtendFunctionalProgrammingFTWSpec extends _21FactsAbou
    * using the `+` operator.
    */
   @Test
-  @Named("Concatenate collections with +")
+  @Named("\\\'+\\\' concatenates collections")
   @Order(99)
-  public void concatenateCollectionsWith() throws Exception {
-    List<String> _list = JnarioCollectionLiterals.<String>list("red", "blue");
-    List<String> _list_1 = JnarioCollectionLiterals.<String>list("yellow", "green");
-    Iterable<String> _plus = Iterables.<String>concat(_list, _list_1);
-    Iterable<String> _iterable = this.<String>iterable("red", "blue", "yellow", "green");
-    boolean _doubleArrow = this.<String>operator_doubleArrow(_plus, _iterable);
-    Assert.assertTrue("\nExpected list(\"red\", \"blue\") + list(\"yellow\", \"green\") => iterable(\"red\", \"blue\", \"yellow\", \"green\") but"
-     + "\n     list(\"red\", \"blue\") + list(\"yellow\", \"green\") is " + new StringDescription().appendValue(_plus).toString()
-     + "\n     list(\"red\", \"blue\") is " + new StringDescription().appendValue(_list).toString()
-     + "\n     list(\"yellow\", \"green\") is " + new StringDescription().appendValue(_list_1).toString()
-     + "\n     iterable(\"red\", \"blue\", \"yellow\", \"green\") is " + new StringDescription().appendValue(_iterable).toString() + "\n", _doubleArrow);
+  public void concatenatesCollections() throws Exception {
+    List<Integer> _list = JnarioCollectionLiterals.<Integer>list(Integer.valueOf(1), Integer.valueOf(2));
+    List<Integer> _list_1 = JnarioCollectionLiterals.<Integer>list(Integer.valueOf(3), Integer.valueOf(4));
+    Iterable<Integer> _plus = Iterables.<Integer>concat(_list, _list_1);
+    Iterable<Integer> _iterable = this.<Integer>iterable(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4));
+    boolean _doubleArrow = this.<Integer>operator_doubleArrow(_plus, _iterable);
+    Assert.assertTrue("\nExpected list(1, 2) + list(3, 4) => iterable(1, 2, 3, 4) but"
+     + "\n     list(1, 2) + list(3, 4) is " + new StringDescription().appendValue(_plus).toString()
+     + "\n     list(1, 2) is " + new StringDescription().appendValue(_list).toString()
+     + "\n     list(3, 4) is " + new StringDescription().appendValue(_list_1).toString()
+     + "\n     iterable(1, 2, 3, 4) is " + new StringDescription().appendValue(_iterable).toString() + "\n", _doubleArrow);
     
   }
   
+  /**
+   * Xtend has great support for lambda expressions. You can
+   * declare an anonymous function by surrounding the lambda
+   * expression by square brackets:
+   * 
+   * <pre class="prettyprint lang-spec">
+   * var lambda = [String s | s.length]
+   * </pre>
+   * 
+   * The parameter type can be omitted if the type can be coerced from
+   * the expression on the left-hand side:
+   * 
+   * <pre class="prettyprint lang-spec">
+   * var (String)=>int lambda = [s | s.length]
+   * </pre>
+   * 
+   * Single parameter functions don't need a parameter declaration and the
+   * parameter can be accessed via the implicit variable 'it':
+   * 
+   * <pre class="prettyprint lang-spec">
+   * var (String)=>int lambda = [it.length]
+   * </pre>
+   * 
+   * ...and we can even completely remove the 'it' variable:
+   */
   @Test
   @Named("Concise Lambda Expressions")
   @Order(99)
   public void conciseLambdaExpressions() throws Exception {
-    Function1<? super String,? extends String> shout = null;
-    final Function1<String,String> _function = new Function1<String,String>() {
-        public String apply(final String s) {
-          String _upperCase = s.toUpperCase();
-          return _upperCase;
+    final Function1<String,Integer> _function = new Function1<String,Integer>() {
+        public Integer apply(final String it) {
+          int _length = it.length();
+          return Integer.valueOf(_length);
         }
       };
-    shout = _function;
-    final Function1<String,String> _function_1 = new Function1<String,String>() {
-        public String apply(final String s) {
-          String _upperCase = s.toUpperCase();
-          return _upperCase;
-        }
-      };
-    shout = _function_1;
-    final Function1<String,String> _function_2 = new Function1<String,String>() {
-        public String apply(final String it) {
-          String _upperCase = it.toUpperCase();
-          return _upperCase;
-        }
-      };
-    shout = _function_2;
-    final Function1<String,String> _function_3 = new Function1<String,String>() {
-        public String apply(final String it) {
-          String _upperCase = it.toUpperCase();
-          return _upperCase;
-        }
-      };
-    shout = _function_3;
-    String _apply = shout.apply("hello");
-    boolean _doubleArrow = Should.operator_doubleArrow(_apply, "HELLO");
-    Assert.assertTrue("\nExpected // apply the function to an object\n      shout.apply(\"hello\") => \"HELLO\" but"
-     + "\n     // apply the function to an object\n      shout.apply(\"hello\") is " + new StringDescription().appendValue(_apply).toString()
-     + "\n     // apply the function to an object\n      shout is " + new StringDescription().appendValue(shout).toString() + "\n", _doubleArrow);
+    Function1<? super String,? extends Integer> lambda = _function;
+    Integer _apply = lambda.apply("hello");
+    boolean _doubleArrow = Should.operator_doubleArrow(_apply, Integer.valueOf(5));
+    Assert.assertTrue("\nExpected lambda.apply(\"hello\") => 5 but"
+     + "\n     lambda.apply(\"hello\") is " + new StringDescription().appendValue(_apply).toString()
+     + "\n     lambda is " + new StringDescription().appendValue(lambda).toString() + "\n", _doubleArrow);
     
   }
   
   /**
    * Lambda expressions are especially useful when working with
-   * collections. For example, when applying side effects from a collection
-   * it is often better to use the implicit `forEach` extension method
-   * instead of a loop:
+   * collections. For example, when performing the same assertion on each element
+   * in a collection, the implicit `forEach` extension method is a lot more readable than
+   * a loop:
    */
   @Test
   @Named("Better loops")
   @Order(99)
   public void betterLoops() throws Exception {
-    List<String> _list = JnarioCollectionLiterals.<String>list("red", "blue", "green");
-    final Procedure1<String> _function = new Procedure1<String>() {
-        public void apply(final String it) {
-          InputOutput.println();
+    List<Integer> _list = JnarioCollectionLiterals.<Integer>list(Integer.valueOf(11), Integer.valueOf(17), Integer.valueOf(19));
+    final Procedure1<Integer> _function = new Procedure1<Integer>() {
+        public void apply(final Integer it) {
+          boolean _greaterThan = ((it).intValue() > 10);
+          Assert.assertTrue("\nExpected it > 10 but"
+           + "\n     it is " + new StringDescription().appendValue((it).intValue()).toString() + "\n", _greaterThan);
+          
         }
       };
-    IterableExtensions.<String>forEach(_list, _function);
+    IterableExtensions.<Integer>forEach(_list, _function);
   }
   
   /**
@@ -186,8 +197,8 @@ public class _21FactsAboutXtendFunctionalProgrammingFTWSpec extends _21FactsAbou
   
   /**
    * This examples demonstrates how you can realize complex operations by
-   * composing different functions. Here we are counting all characters in a list of Strings using the
-   * `map` and `reduce` extension methods.
+   * reusing existing functions with lambda expressions. Here we are counting
+   * all characters in a list of Strings using the `map` and `reduce` extension methods.
    */
   @Test
   @Named("Map/Reduce made easy")

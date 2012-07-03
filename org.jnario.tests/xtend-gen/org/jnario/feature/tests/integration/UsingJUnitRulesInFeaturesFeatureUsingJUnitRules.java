@@ -1,6 +1,5 @@
 package org.jnario.feature.tests.integration;
 
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.lib.StepArguments;
 import org.jnario.runner.FeatureRunner;
@@ -36,8 +35,7 @@ public class UsingJUnitRulesInFeaturesFeatureUsingJUnitRules {
   @Order(2)
   @Named("Then it should be successful")
   public void thenItShouldBeSuccessful() {
-      InputOutput.<String>println("executing scenario");
-      FeatureExecutor.executesSuccessfully(jnarioFile);
+    FeatureExecutor.executesSuccessfully(jnarioFile);
   }
   
   CharSequence jnarioFile;

@@ -3,7 +3,7 @@ package org.jnario.jnario.documentation;
 import java.util.Collections;
 import java.util.List;
 import org.hamcrest.StringDescription;
-import org.jnario.jnario.documentation._21FactsAboutXtendSpec;
+import org.jnario.jnario.documentation._20FactsAboutXtendSpec;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
@@ -15,17 +15,38 @@ import org.junit.runner.RunWith;
 /**
  * Extension methods allow adding new methods to existing
  * types without modifying them. When writing specs this is really
- * helpful as they can greatly improve the readability.
+ * helpful as they can greatly improve the readability. They
+ * use a simple syntactic trick: the first parameter of a method
+ * can either be passed in after opening the parentheses or before the
+ * method call. For example, given a method:
+ * 
+ * <pre class="prettyprint lang-spec">
+ * def removeVowels (String s){
+ *   s.replaceAll("[aeiouAEIOU]", "")
+ * }
+ * </pre>
+ * 
+ * We can call this method either like in Java:
+ * 
+ * <pre class="prettyprint lang-spec">
+ * removeVowels("Hello")
+ * </pre>
+ * 
+ * or as an extension method of String:
+ * 
+ * <pre class="prettyprint lang-spec">
+ * "Hello".removeVowels
+ * </pre>
  */
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("Readable Code with Extension Methods")
-public class _21FactsAboutXtendReadableCodeWithExtensionMethodsSpec extends _21FactsAboutXtendSpec {
+public class _20FactsAboutXtendReadableCodeWithExtensionMethodsSpec extends _20FactsAboutXtendSpec {
   /**
    * You can import static methods as extensions, for example, when we import:
    * 
    * <pre class="prettyprint lang-spec">
-   * import static extension java.util.Collections.
+   * import static extension java.util.Collections.&#42;
    * </pre>
    * 
    * we can directly call the imported static methods on our list objects:
@@ -47,11 +68,11 @@ public class _21FactsAboutXtendReadableCodeWithExtensionMethodsSpec extends _21F
   /**
    * All visible non-static methods of the current class and its super
    * types are automatically available as extensions. In specs this can
-   * be used to write custom matcher:
+   * be used to write custom matchers:
    * 
    * <pre class="prettyprint lang-spec">
    * def hasOneElement(List<?> list){
-   * 	list.size == 1
+   *  list.size == 1
    * }
    * </pre>
    * 
@@ -80,8 +101,8 @@ public class _21FactsAboutXtendReadableCodeWithExtensionMethodsSpec extends _21F
    * extension ListHelpers = new ListHelpers
    * </pre>
    * 
-   * Then we can share our helper between different specs, but can still
-   * use the provided methods as extensions:
+   * Then we can share our helper between different specs, while still
+   * using the instance methods as extensions:
    */
   @Test
   @Named("Extension fields")

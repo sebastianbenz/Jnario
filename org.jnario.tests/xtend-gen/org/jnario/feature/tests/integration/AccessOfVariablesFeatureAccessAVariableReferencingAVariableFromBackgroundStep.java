@@ -1,6 +1,5 @@
 package org.jnario.feature.tests.integration;
 
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
@@ -32,8 +31,7 @@ public class AccessOfVariablesFeatureAccessAVariableReferencingAVariableFromBack
   @Order(2)
   @Named("Then it should be successful")
   public void thenItShouldBeSuccessful() {
-      InputOutput.<String>println("executing scenario");
-      FeatureExecutor.executesSuccessfully(jnarioFile);
+    FeatureExecutor.executesSuccessfully(jnarioFile);
   }
   
   CharSequence jnarioFile;

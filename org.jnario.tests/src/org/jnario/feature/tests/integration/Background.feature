@@ -28,7 +28,6 @@ Feature: Backgrounds
 					Scenario: Scenario 2
 			"
 		Then it should be successful
-			println("executing scenario")
 			jnarioFile.executesSuccessfully
 			
 

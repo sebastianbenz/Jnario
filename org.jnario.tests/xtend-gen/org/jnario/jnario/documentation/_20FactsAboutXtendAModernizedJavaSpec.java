@@ -1,14 +1,11 @@
 package org.jnario.jnario.documentation;
 
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.Pair;
 import org.hamcrest.StringDescription;
-import org.jnario.jnario.documentation._21FactsAboutXtendSpec;
-import org.jnario.lib.JnarioCollectionLiterals;
+import org.jnario.jnario.documentation._20FactsAboutXtendSpec;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
@@ -18,14 +15,15 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- * The syntax of Xtend is quite similar to Java, but Xtend code is usually
- * a lot shorter than its Java counterpart. However, there are some important
- * differences between Java and Xtend one should be aware of!
+ * The syntax of Xtend is quite similar to Java, but Xtend code
+ * is usually a lot shorter than its Java counterpart. However,
+ * there are some important differences between Java and Xtend
+ * one should be aware of.
  */
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("A modernized Java")
-public class _21FactsAboutXtendAModernizedJavaSpec extends _21FactsAboutXtendSpec {
+public class _20FactsAboutXtendAModernizedJavaSpec extends _20FactsAboutXtendSpec {
   /**
    * Semicolons are optional in Xtend.
    */
@@ -39,13 +37,13 @@ public class _21FactsAboutXtendAModernizedJavaSpec extends _21FactsAboutXtendSpe
   }
   
   /**
-   * Variable declarations are preceded by `var` or, for in case of
+   * Variable declarations are preceded by `var` or, in case of
    * final variables, by `val`.
    */
   @Test
-  @Named("Declare variables with var and val")
+  @Named("Variables are declared with var and val")
   @Order(99)
-  public void declareVariablesWithVarAndVal() throws Exception {
+  public void variablesAreDeclaredWithVarAndVal() throws Exception {
     String x = "I might change";
     final String y = "I\'ll never change";
   }
@@ -76,7 +74,8 @@ public class _21FactsAboutXtendAModernizedJavaSpec extends _21FactsAboutXtendSpe
   
   /**
    * In case you are wondering what the `->` does in the previous example,
-   * it is syntactic sugar for a tuple:
+   * it is syntactic sugar for a tuple. To further increase the confusion, the `=>`
+   * operator is part of Jnario and describes the expected behavior of objects.
    */
   @Test
   @Named("Syntactic sugar: Pairs")
@@ -97,62 +96,11 @@ public class _21FactsAboutXtendAModernizedJavaSpec extends _21FactsAboutXtendSpe
     
   }
   
-  /**
-   * Static class members are accessed via `::` and not `.` like in Java.
-   * 
-   * <span class="label label-warning">Important</span> This is probably the most
-   * often asked question on the Xtend [mailing list](https://groups.google.com/forum/?fromgroups#!forum/xtend-lang).
-   */
-  @Test
-  @Named("Accessing static members is different!")
-  @Order(99)
-  public void accessingStaticMembersIsDifferent() throws Exception {
-    final List<String> colors = JnarioCollectionLiterals.<String>list("red", "blue", "green");
-    Collections.<String>sort(colors);
-    List<String> _list = JnarioCollectionLiterals.<String>list("blue", "green", "red");
-    boolean _doubleArrow = this.<String>operator_doubleArrow(colors, _list);
-    Assert.assertTrue("\nExpected colors => list(\"blue\", \"green\", \"red\") but"
-     + "\n     colors is " + new StringDescription().appendValue(colors).toString()
-     + "\n     list(\"blue\", \"green\", \"red\") is " + new StringDescription().appendValue(_list).toString() + "\n", _doubleArrow);
-    
-  }
-  
-  /**
-   * Accessing classes has also a different syntax in Xtend. Instead of writing
-   * `String.class` like in Java, you need to write `typeof(String)` in Xtend.
-   * 
-   * <span class="label label-warning">Important</span> This is probably the second most
-   * most often asked question on the Xtend mailing list.
-   */
-  @Test
-  @Named("Accessing types")
-  @Order(99)
-  public void accessingTypes() throws Exception {
-    String _name = String.class.getName();
-    boolean _doubleArrow = Should.operator_doubleArrow(_name, "java.lang.String");
-    Assert.assertTrue("\nExpected typeof(String).name => \"java.lang.String\" but"
-     + "\n     typeof(String).name is " + new StringDescription().appendValue(_name).toString() + "\n", _doubleArrow);
-    
-  }
-  
-  /**
-   * Type casts behave exactly like in Java, but have a slightly more
-   * readable syntax:
-   */
-  @Test
-  @Named("Casts have a different syntax")
-  @Order(99)
-  public void castsHaveADifferentSyntax() throws Exception {
-    final Object obj = "a string";
-    final String s = ((String) obj);
-  }
-  
   final String greeting = "Hello ";
   
   /**
-   * Fields in Xtend can be declared exactly like in Java.
-   * Methods in Xtend are also declared like in Java, but with the difference that method
-   * declarations are preceded with `def`:
+   * Fields and methods can be declared in Xtend exactly like in Java. The only difference id
+   * that method declarations must be preceded with `def`:
    * 
    * <pre class="prettyprint lang-spec">
    * String greeting = "Hello "
@@ -163,8 +111,8 @@ public class _21FactsAboutXtendAModernizedJavaSpec extends _21FactsAboutXtendSpe
    * </pre>
    * 
    * The type inference also works for fields and methods. You can omit
-   * the return type of methods and the type of fields. Methods are by default
-   * public. So declaring fields and methods becomes a lot more concise:
+   * the return type of methods and the type of fields. Furthermore, methods are by default
+   * public, so we can rewrite our previous example as:
    * 
    * <pre class="prettyprint lang-spec">
    * val greeting = "Hello "

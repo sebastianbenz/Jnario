@@ -3,7 +3,7 @@ package org.jnario.jnario.documentation;
 import com.google.common.base.Objects;
 import java.util.List;
 import org.hamcrest.StringDescription;
-import org.jnario.jnario.documentation._21FactsAboutXtendSpec;
+import org.jnario.jnario.documentation._20FactsAboutXtendSpec;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -16,13 +16,17 @@ import org.junit.runner.RunWith;
 /**
  * Xtend's switch expression is greatly improved over the one from Java.
  * There is no fall through which means only one case is
- * evaluated at most and is not limited to certain
+ * evaluated at most and it is not limited to certain
  * values but can be used for any object.
  */
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("The Uber-Switch Expression")
-public class _21FactsAboutXtendTheUberSwitchExpressionSpec extends _21FactsAboutXtendSpec {
+public class _20FactsAboutXtendTheUberSwitchExpressionSpec extends _20FactsAboutXtendSpec {
+  /**
+   * Cases support arbitrary expressions, if they evaluate to a boolean value, it will
+   * be used as result, otherwise, the evaluation result will be compared using `Object#equals(Object)`.
+   */
   @Test
   @Named("Supports case expressions")
   @Order(99)

@@ -1,7 +1,7 @@
 package org.jnario;
 
 import org.jnario.feature.documentation.IntroducingJnarioFeaturesSpec;
-import org.jnario.jnario.documentation._21FactsAboutXtendSpec;
+import org.jnario.jnario.documentation._20FactsAboutXtendSpec;
 import org.jnario.runner.Contains;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(ExampleGroupRunner.class)
 @Named("Getting Started")
-@Contains({ _21FactsAboutXtendSpec.class, IntroducingJnarioFeaturesSpec.class, IntroducingJnarioSpecsSpec.class, IntroducingJnarioSuitesSpec.class })
+@Contains({ IntroducingJnarioFeaturesSpec.class, IntroducingJnarioSpecsSpec.class, IntroducingJnarioSuitesSpec.class, _20FactsAboutXtendSpec.class })
 @SuppressWarnings("all")
 public class GettingStartedSuite {
 }
