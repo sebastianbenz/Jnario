@@ -18,27 +18,27 @@
   </properties>
 
   <modules>
-    <module>org.jnario.target</module>
-    <module>org.jnario.feature</module>
-    <module>org.jnario</module>
-    <module>org.jnario.ui</module>
-    <module>org.jnario.lib</module>
-    <module>org.jnario.spec</module>
-    <module>org.jnario.suite</module>
-    <module>org.jnario.suite.ui</module>
-    <module>org.jnario.updatesite</module>
-    <module>org.jnario.standalone</module>
-    <module>org.jnario.standalone.tests</module>
-    <module>org.jnario-feature</module>
-    <module>org.jnario.tests</module>
-    <module>org.jnario.lib.tests</module>
-    <module>org.jnario.feature.ui</module>
-    <module>org.jnario.spec.ui</module>
-    <module>org.jnario.ui-feature</module>
-    <module>org.jnario.sdk</module>
-    <module>org.jnario.maven.lib</module>
-    <module>org.jnario.standalone.maven</module>
-    <module>org.jnario.maven.plugin</module>
+    <module>releng/org.jnario.target</module>
+    <module>plugins/org.jnario.feature</module>
+    <module>plugins/org.jnario</module>
+    <module>plugins/org.jnario.ui</module>
+    <module>plugins/org.jnario.lib</module>
+    <module>plugins/org.jnario.spec</module>
+    <module>plugins/org.jnario.suite</module>
+    <module>plugins/org.jnario.suite.ui</module>
+    <module>releng/org.jnario.updatesite</module>
+    <module>plugins/org.jnario.standalone</module>
+    <module>tests/org.jnario.standalone.tests</module>
+    <module>features/org.jnario-feature</module>
+    <module>tests/org.jnario.tests</module>
+    <module>tests/org.jnario.lib.tests</module>
+    <module>plugins/org.jnario.feature.ui</module>
+    <module>plugins/org.jnario.spec.ui</module>
+    <module>features/org.jnario.ui-feature</module>
+    <module>features/org.jnario.sdk</module>
+    <module>plugins/org.jnario.maven.lib</module>
+    <module>plugins/org.jnario.standalone.maven</module>
+    <module>plugins/org.jnario.maven.plugin</module>
   </modules>
 
   <repositories>
