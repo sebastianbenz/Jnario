@@ -5,11 +5,18 @@
 	<packaging>pom</packaging>
 	<name>Jnario Standalone Support</name>
 	<description>The required libraries to execute Jnario specifications without Eclipse.</description>
-	<parent>
-		<groupId>org.jnario</groupId>
-		<artifactId>jnario</artifactId>
-		<version>0.1.0-SNAPSHOT</version>
-	</parent>
+	<groupId>org.jnario</groupId>
+	<version>0.1.0-SNAPSHOT</version>
+	<repositories>
+		<repository>
+			<id>eclipse.xtend</id>
+			<url>http://build.eclipse.org/common/xtend/maven/</url>
+		</repository>
+		<repository>
+			<id>scala.tools</id>
+			<url>http://scala-tools.org/repo-releases</url>
+		</repository>
+	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>com.google.guava</groupId>
@@ -77,7 +84,7 @@
 				<version>1.7</version>
 				<executions>
 					<execution>
-						<phase>package</phase>
+						<phase>prepare-package</phase>
 						<configuration>
 							<tasks>
 								<property name="maven.project.version" value="${version}" />
@@ -97,7 +104,7 @@
 				<executions>
 					<execution>
 						<id>attach-artifacts</id>
-						<phase>install</phase>
+						<phase>package</phase>
 						<goals>
 							<goal>attach-artifact</goal>
 						</goals>
@@ -118,7 +125,6 @@
 									<type>jar</type>
 									<classifier>javadoc</classifier>
 								</artifact>
-
 							</artifacts>
 						</configuration>
 					</execution>
