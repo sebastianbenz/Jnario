@@ -163,7 +163,7 @@ describe FeatureTokenSource{
 	}
 	
 	def setInput(CharSequence input){
-		this.input = prefix + input
+		this.input = prefix + input.toString.replace("\r", "")
 	}
 	
 	def split(Token token){

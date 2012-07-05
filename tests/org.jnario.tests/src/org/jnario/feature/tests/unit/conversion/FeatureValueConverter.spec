@@ -8,6 +8,7 @@
 package org.jnario.feature.tests.unit.conversion
 
 import org.jnario.feature.conversion.FeatureValueConverter
+import org.eclipse.xtext.util.Strings
 
 describe FeatureValueConverter{
 	FeatureValueConverter subject = FeatureValueConverter::create("Prefix:")
@@ -19,7 +20,7 @@ describe FeatureValueConverter{
 	}
 	
 	context toString{
-		fact subject.toString("text") should be "Prefix:text\n"
+		fact subject.toString("text") should be "Prefix:text" + Strings::newLine
 		fact subject.toString(null) should be null
 	}
 

@@ -11,6 +11,7 @@ import static extension org.jnario.jnario.test.util.FeatureExecutor.*
 import static org.jnario.jnario.test.util.ResultMatchers.*
 import org.jnario.jnario.test.util.ConsoleRecorder
 import static org.junit.Assert.*
+import org.eclipse.xtext.util.Strings
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -83,5 +84,5 @@ Feature: Setup & Teardown with Feature Extensions
         after
       '''
       val actual = recorder.stop.trim
-      val expected = args.first.trim.split("\n").map[trim].join("\n")
+      val expected = args.first.trim.split("\n").map[trim].join(Strings::newLine)
       assertEquals(expected, actual) 

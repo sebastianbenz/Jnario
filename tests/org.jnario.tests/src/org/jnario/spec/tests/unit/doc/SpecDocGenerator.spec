@@ -128,7 +128,6 @@ describe SpecDocGenerator {
 			} 
 		''')
 		val scenarioDoc = generatedFile("ExampleSpec.html")
-		println(scenarioDoc)
 		assert scenarioDoc.contains('aaaaaa')
 	}
 	
