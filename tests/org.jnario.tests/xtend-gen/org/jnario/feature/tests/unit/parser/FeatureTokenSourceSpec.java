@@ -279,7 +279,9 @@ public class FeatureTokenSourceSpec {
   }
   
   public CharSequence setInput(final CharSequence input) {
-    String _plus = (FeatureTokenSourceSpec.prefix + input);
+    String _string = input.toString();
+    String _replace = _string.replace("\r", "");
+    String _plus = (FeatureTokenSourceSpec.prefix + _replace);
     CharSequence _input = this.input = _plus;
     return _input;
   }

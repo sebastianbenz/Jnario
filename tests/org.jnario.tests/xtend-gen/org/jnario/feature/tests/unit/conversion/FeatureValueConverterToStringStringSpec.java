@@ -1,5 +1,6 @@
 package org.jnario.feature.tests.unit.conversion;
 
+import org.eclipse.xtext.util.Strings;
 import org.hamcrest.StringDescription;
 import org.jnario.feature.tests.unit.conversion.FeatureValueConverterSpec;
 import org.jnario.lib.Should;
@@ -15,14 +16,18 @@ import org.junit.runner.RunWith;
 @Named("toString[String]")
 public class FeatureValueConverterToStringStringSpec extends FeatureValueConverterSpec {
   @Test
-  @Named("subject.toString[\\\"text\\\"] should be \\\"Prefix:text\\\\n\\\"")
+  @Named("subject.toString[\\\"text\\\"] should be \\\"Prefix:text\\\" + Strings::newLine")
   @Order(99)
-  public void subjectToStringTextShouldBePrefixTextN() throws Exception {
+  public void subjectToStringTextShouldBePrefixTextStringsNewLine() throws Exception {
     String _string = this.subject.toString("text");
-    boolean _should_be = Should.should_be(_string, "Prefix:text\n");
-    Assert.assertTrue("\nExpected subject.toString(\"text\") should be \"Prefix:text\\n\" but"
+    String _newLine = Strings.newLine();
+    String _plus = ("Prefix:text" + _newLine);
+    boolean _should_be = Should.should_be(_string, _plus);
+    Assert.assertTrue("\nExpected subject.toString(\"text\") should be \"Prefix:text\" + Strings::newLine but"
      + "\n     subject.toString(\"text\") is " + new StringDescription().appendValue(_string).toString()
-     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _should_be);
+     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
+     + "\n     \"Prefix:text\" + Strings::newLine is " + new StringDescription().appendValue(_plus).toString()
+     + "\n     Strings::newLine is " + new StringDescription().appendValue(_newLine).toString() + "\n", _should_be);
     
   }
   

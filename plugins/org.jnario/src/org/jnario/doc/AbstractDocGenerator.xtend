@@ -66,11 +66,11 @@ abstract class AbstractDocGenerator implements IGenerator {
 				.replaceAll("</pre></code>", '</pre>')
 	}
 	
-	def dispatch serialize(XExpression expr, List<Filter> filters){
+	def dispatch String serialize(XExpression expr, List<Filter> filters){
 		return expr.serialize.codeToHtml.trim
 	}
 	
-	def dispatch serialize(XBlockExpression expr, List<Filter> filters){
+	def dispatch String serialize(XBlockExpression expr, List<Filter> filters){
 		var code = expr.serialize.trim
 		code = filters.apply(code)
 		if(code.length == 0){

@@ -1,6 +1,7 @@
 package org.jnario.feature.tests.integration;
 
 import java.util.List;
+import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -65,7 +66,8 @@ public class SetupTeardownWithFeatureExtensionsFeatureUsingAnExtension {
           }
         };
       List<String> _map = ListExtensions.<String, String>map(((List<String>)Conversions.doWrapArray(_split)), _function);
-      final String expected = IterableExtensions.join(_map, "\n");
+      String _newLine = Strings.newLine();
+      final String expected = IterableExtensions.join(_map, _newLine);
       Assert.assertEquals(expected, actual);
   }
   
