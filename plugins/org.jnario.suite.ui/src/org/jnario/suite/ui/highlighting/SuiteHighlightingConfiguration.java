@@ -41,7 +41,7 @@ public class SuiteHighlightingConfiguration extends XbaseHighlightingConfigurati
 
 	public TextStyle suiteTextStyle() {
 		TextStyle textStyle = defaultTextStyle().copy();
-		textStyle.setFontData(fontWithHeight(DEFAULT_FONT_SIZE + 3, SWT.NORMAL));
+		textStyle.setFontData(fontWithHeight(DEFAULT_FONT_SIZE + 3, SWT.BOLD));
 		return textStyle;
 	}
 	
