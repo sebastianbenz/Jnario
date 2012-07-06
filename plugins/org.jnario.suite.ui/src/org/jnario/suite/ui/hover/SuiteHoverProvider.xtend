@@ -28,9 +28,9 @@ class SuiteHoverProvider extends JnarioHoverProvider {
 	
 	def document(List<Specification> specs)'''
 		<ul>
-			ÇFOR spec : specsÈ
-			<li>Çspec.describeÈ</li>
-			ÇENDFORÈ
+			«FOR spec : specs»
+			<li>«spec.describe»</li>
+			«ENDFOR»
 		</ul>
 	'''
 }
