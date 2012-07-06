@@ -2,7 +2,8 @@ bin
 classes
 target
 .metadata
-org.eclipse.*
+org.eclipse.xtext.*
+org.eclipse.xtend.*
 .DS_Store
 *._trace
 *.smap
