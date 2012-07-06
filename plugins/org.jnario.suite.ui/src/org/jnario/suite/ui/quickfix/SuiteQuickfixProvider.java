@@ -42,7 +42,7 @@ import org.jnario.util.Strings;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
-
+@SuppressWarnings("restriction")
 public class SuiteQuickfixProvider extends JnarioQuickFixProvider {
 
 	@Inject Provider<NewSpecWizard> newSpecWizardProvider;
@@ -92,6 +92,7 @@ public class SuiteQuickfixProvider extends JnarioQuickFixProvider {
 			public void apply(IModificationContext context) throws Exception {
 				runAsyncInDisplayThread(new Runnable(){
 
+					
 					public void run() {
 						IWorkbench workbench = PlatformUI.getWorkbench(); 
 						Shell shell = workbench.getActiveWorkbenchWindow().getShell(); 

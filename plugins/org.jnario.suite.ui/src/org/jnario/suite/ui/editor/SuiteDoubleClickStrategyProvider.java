@@ -12,6 +12,7 @@ import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.xtend.ide.editor.XtendDoubleClickStrategyProvider;
 import org.eclipse.xtext.ui.editor.doubleClicking.FixedCharCountPartitionDoubleClickSelector;
 
+@SuppressWarnings("restriction")
 public class SuiteDoubleClickStrategyProvider extends
 		XtendDoubleClickStrategyProvider {
 
