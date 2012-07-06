@@ -12,6 +12,8 @@ import java.util.List
 
 class HtmlFile {
 
+	public static HtmlFile EMPTY_FILE = new HtmlFile
+
 	def static newHtmlFile(Procedures$Procedure1<HtmlFile> initializer){
 		val htmlFile = new HtmlFile()
 		initializer.apply(htmlFile)
@@ -21,14 +23,10 @@ class HtmlFile {
 	List<String> cssFiles = newArrayList("bootstrap.min.css", "bootstrap-responsive.min.css", "custom.css", "prettify.css")
 	List<String> jsFiles = newArrayList("prettify.js", "lang-jnario.js")
 	
-	
-	public static HtmlFile EMPTY_FILE = new HtmlFile
-	
 	@Property CharSequence name = ""
 	@Property CharSequence title = ""
 	@Property CharSequence content = ""
 	@Property String rootFolder = ""
-	
 	
 	def toText()'''
 		<!DOCTYPE html>

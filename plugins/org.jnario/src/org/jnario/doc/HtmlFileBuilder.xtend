@@ -9,11 +9,10 @@ package org.jnario.doc
 
 import org.eclipse.xtend.core.xtend.XtendClass
 import org.eclipse.xtext.generator.IFileSystemAccess
-
+ 
 import static org.jnario.util.Strings.*
 
 class HtmlFileBuilder {
-	
 	
 	def generate(XtendClass context, IFileSystemAccess fsa, HtmlFile htmlFile){
 		fsa.copy("css", htmlFile.cssFiles)
@@ -45,7 +44,7 @@ class HtmlFileBuilder {
 	}
 	
 	def private load(String file){
-		val inputStream = typeof(DocumentationSupport).getResourceAsStream(file)
+		val inputStream = getClass().getResourceAsStream(file)
 		return convertStreamToString(inputStream)
 	}	
 	

@@ -6,7 +6,6 @@ import java.util.List;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.jnario.doc.DocOutputConfigurationProvider;
-import org.jnario.doc.DocumentationSupport;
 import org.jnario.doc.HtmlFile;
 import org.jnario.util.Strings;
 
@@ -63,7 +62,8 @@ public class HtmlFileBuilder {
   }
   
   private String load(final String file) {
-    final InputStream inputStream = DocumentationSupport.class.getResourceAsStream(file);
+    Class<? extends Object> _class = this.getClass();
+    final InputStream inputStream = _class.getResourceAsStream(file);
     return Strings.convertStreamToString(inputStream);
   }
 }

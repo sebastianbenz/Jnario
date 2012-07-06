@@ -50,16 +50,19 @@ public abstract class AbstractDocGenerator implements IGenerator {
   public void doGenerate(final Resource input, final IFileSystemAccess fsa) {
     EList<EObject> _contents = input.getContents();
     Iterable<XtendFile> _filter = Iterables.<XtendFile>filter(_contents, XtendFile.class);
-    for (final XtendFile file : _filter) {
-      EList<XtendClass> _xtendClasses = file.getXtendClasses();
-      final Procedure1<XtendClass> _function = new Procedure1<XtendClass>() {
-          public void apply(final XtendClass it) {
-            HtmlFile _createHtmlFile = AbstractDocGenerator.this.createHtmlFile(it);
-            AbstractDocGenerator.this._htmlFileBuilder.generate(it, fsa, _createHtmlFile);
-          }
-        };
-      IterableExtensions.<XtendClass>forEach(_xtendClasses, _function);
-    }
+    final Procedure1<XtendFile> _function = new Procedure1<XtendFile>() {
+        public void apply(final XtendFile it) {
+          EList<XtendClass> _xtendClasses = it.getXtendClasses();
+          final Procedure1<XtendClass> _function = new Procedure1<XtendClass>() {
+              public void apply(final XtendClass it) {
+                HtmlFile _createHtmlFile = AbstractDocGenerator.this.createHtmlFile(it);
+                AbstractDocGenerator.this._htmlFileBuilder.generate(it, fsa, _createHtmlFile);
+              }
+            };
+          IterableExtensions.<XtendClass>forEach(_xtendClasses, _function);
+        }
+      };
+    IterableExtensions.<XtendFile>forEach(_filter, _function);
   }
   
   public HtmlFile createHtmlFile(final XtendClass xtendClass) {

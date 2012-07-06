@@ -38,16 +38,15 @@ public class SuiteHoverProvider extends JnarioHoverProvider {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<ul>");
     _builder.newLine();
-    {
-      for(final Specification spec : specs) {
-        _builder.append("\t");
-        _builder.append("<li>");
-        Object _describe = this._suiteClassNameProvider.describe(spec);
-        _builder.append(_describe, "	");
-        _builder.append("</li>");
-        _builder.newLineIfNotEmpty();
-      }
-    }
+    _builder.append("\t");
+    _builder.append("\u00C7FOR spec : specs\u00C8");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<li>\u00C7spec.describe\u00C8</li>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("\u00C7ENDFOR\u00C8");
+    _builder.newLine();
     _builder.append("</ul>");
     _builder.newLine();
     return _builder;

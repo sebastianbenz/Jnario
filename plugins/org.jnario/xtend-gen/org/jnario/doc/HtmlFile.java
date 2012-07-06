@@ -9,6 +9,13 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 @SuppressWarnings("all")
 public class HtmlFile {
+  public static HtmlFile EMPTY_FILE = new Function0<HtmlFile>() {
+    public HtmlFile apply() {
+      HtmlFile _htmlFile = new HtmlFile();
+      return _htmlFile;
+    }
+  }.apply();
+  
   public static HtmlFile newHtmlFile(final Procedure1<HtmlFile> initializer) {
     HtmlFile _htmlFile = new HtmlFile();
     final HtmlFile htmlFile = _htmlFile;
@@ -27,13 +34,6 @@ public class HtmlFile {
     public List<String> apply() {
       ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("prettify.js", "lang-jnario.js");
       return _newArrayList;
-    }
-  }.apply();
-  
-  public static HtmlFile EMPTY_FILE = new Function0<HtmlFile>() {
-    public HtmlFile apply() {
-      HtmlFile _htmlFile = new HtmlFile();
-      return _htmlFile;
     }
   }.apply();
   

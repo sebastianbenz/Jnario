@@ -32,11 +32,11 @@ abstract class AbstractDocGenerator implements IGenerator {
 	@Inject extension HtmlFileBuilder
 
 	override doGenerate(Resource input, IFileSystemAccess fsa) {
-		for(file : input.contents.filter(typeof(XtendFile))){
-			file.xtendClasses.forEach[
+		input.contents.filter(typeof(XtendFile)).forEach[
+			xtendClasses.forEach[
 				generate(fsa, createHtmlFile())
 			]
-		}
+		]
 	}
 
 	def createHtmlFile(XtendClass xtendClass){
