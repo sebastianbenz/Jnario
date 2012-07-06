@@ -31,7 +31,7 @@ http://www.eclipse.org/legal/epl-v10.html Description here.
       <import plugin="org.eclipse.xtext.xbase.lib" version="2.3.0" match="greaterOrEqual"/>
       <import plugin="org.apache.log4j"/>
       <import plugin="org.apache.commons.logging"/>
-      <import plugin="org.junit" version="4.8.0" match="greaterOrEqual"/>
+      <import plugin="org.junit" version="4.10.0" match="greaterOrEqual"/>
       <import plugin="org.objectweb.asm"/>
       <import plugin="org.eclipse.jdt.core" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext" version="2.3.0" match="greaterOrEqual"/>
