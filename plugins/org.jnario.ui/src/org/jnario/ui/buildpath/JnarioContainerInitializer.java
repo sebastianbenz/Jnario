@@ -19,10 +19,14 @@ import org.eclipse.jdt.core.IClasspathContainer;
 import org.eclipse.jdt.core.IClasspathEntry;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
+import org.eclipse.jdt.internal.junit.buildpath.BuildPathSupport;
 import org.osgi.framework.Bundle;
 
+@SuppressWarnings("restriction")
 public class JnarioContainerInitializer extends ClasspathContainerInitializer {
 	
+	private static final String JUNIT_BUNDLE = "org.junit";
+
 	private static final String JNARIO_LIB_BUNDLE_ID = "org.jnario.lib";
 
 	private static final Logger LOG = Logger.getLogger(JnarioContainerInitializer.class);
@@ -33,7 +37,7 @@ public class JnarioContainerInitializer extends ClasspathContainerInitializer {
 
 	public static final Path JNARIO_LIBRARY_PATH = new Path("org.jnario.JNARIO_CONTAINER"); //$NON-NLS-1$
 
-	public static final String[] BUNDLE_IDS_TO_INCLUDE = new String[] { "org.junit", "org.hamcrest.core", "com.google.guava", XTEXT_XBASE_LIB_BUNDLE_ID, XTEND_LIB_BUNDLE_ID, JNARIO_LIB_BUNDLE_ID };
+	public static final String[] BUNDLE_IDS_TO_INCLUDE = new String[] {JUNIT_BUNDLE, "org.hamcrest.core", "com.google.guava", XTEXT_XBASE_LIB_BUNDLE_ID, XTEND_LIB_BUNDLE_ID, JNARIO_LIB_BUNDLE_ID };
 	
 	public void initialize(final IPath containerPath, final IJavaProject project) throws CoreException {
 		if (isJnarioPath(containerPath)) {
@@ -66,6 +70,7 @@ public class JnarioContainerInitializer extends ClasspathContainerInitializer {
 			for (String bundleId : BUNDLE_IDS_TO_INCLUDE) {
 				addEntry(cpEntries, bundleId);
 			}
+			cpEntries.add(BuildPathSupport.getJUnit4LibraryEntry());
 			return cpEntries.toArray(new IClasspathEntry[] {});
 		}
 
