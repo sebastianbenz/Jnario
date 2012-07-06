@@ -5,8 +5,8 @@ LESS_COMPRESSOR ?= `which lessc`
 WATCHR ?= `which watchr`
 
 GH_PAGES = ../../jnario-gh-pages
-LANG_JNARIO    = ../org.jnario/src/org/jnario/doc/lang-jnario.js 
-CUSTOM_CSS     = ../org.jnario/src/org/jnario/doc/custom.css
+LANG_JNARIO    = ../plugins/org.jnario/src/org/jnario/doc/lang-jnario.js 
+CUSTOM_CSS     = ../plugins/org.jnario/src/org/jnario/doc/custom.css
 
 
 #
@@ -44,15 +44,15 @@ gh-pages: jnario
 	done 
 	rm -r -f ${SNAPSHOT_UPDATES}
 	mkdir -p ${SNAPSHOT_UPDATES}
-	cp -r ../org.jnario.updatesite/target/repository/* ${SNAPSHOT_UPDATES}
+	cp -r ../releng/org.jnario.updatesite/target/repository/* ${SNAPSHOT_UPDATES}
 	rm -f ${SNAPSHOT_UPDATES}/${LIB_JAR}
-	cp ../org.jnario.lib/target/${LIB_JAR} ${SNAPSHOT_UPDATES}
+	cp ../plugins/org.jnario.lib/target/${LIB_JAR} ${SNAPSHOT_UPDATES}
 	rm -r -f ${GH_PAGES}/org
 	mkdir -p ${GH_PAGES}/org
-	cp -r -p ../org.jnario.tests/doc-gen/org ${GH_PAGES}
+	cp -r -p ../tests/org.jnario.tests/doc-gen/org ${GH_PAGES}
 	echo "This is the Jnario (www.jnario.org) snapshots update site." > ${GH_PAGES}/updates/snapshot/index.html 
 	cd ${GH_PAGES} ; \
-	git pull --rebase origin gh-pages ; \
+	git pull origin gh-pages ; \
 	git add --all ; \
 	git commit -a -m "new snapshot build" ; \
 	git push origin gh-pages
