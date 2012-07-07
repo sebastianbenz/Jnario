@@ -4,11 +4,10 @@
 package org.jnario.suite.ui;
 
 import org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory;
+import org.jnario.suite.ui.internal.SuiteActivator;
 import org.osgi.framework.Bundle;
 
 import com.google.inject.Injector;
-
-import org.jnario.suite.ui.internal.SuiteActivator;
 
 /**
  * This class was generated. Customizations should only happen in a newly

@@ -27,14 +27,14 @@ Suite :
 	{Suite}
 	annotations+=XAnnotation* 
 	name=SUITE_NAME
-	elements+=SuiteElement*
+	elements+=Reference*
 ;
 
 PatternReference:
 	'-' pattern=PATTERN
 ;
 
-SuiteElement:
+Reference: 
 	SpecReference | PatternReference
 ;
 

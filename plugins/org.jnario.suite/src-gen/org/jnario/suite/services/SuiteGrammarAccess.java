@@ -4,19 +4,29 @@
 
 package org.jnario.suite.services;
 
-import com.google.inject.Singleton;
-import com.google.inject.Inject;
-
 import java.util.List;
 
-import org.eclipse.xtext.*;
-import org.eclipse.xtext.service.GrammarProvider;
-import org.eclipse.xtext.service.AbstractElementFinder.*;
-
 import org.eclipse.xtend.core.services.XtendGrammarAccess;
+import org.eclipse.xtext.Action;
+import org.eclipse.xtext.Alternatives;
+import org.eclipse.xtext.Assignment;
+import org.eclipse.xtext.CrossReference;
+import org.eclipse.xtext.EnumRule;
+import org.eclipse.xtext.Grammar;
+import org.eclipse.xtext.GrammarUtil;
+import org.eclipse.xtext.Group;
+import org.eclipse.xtext.Keyword;
+import org.eclipse.xtext.ParserRule;
+import org.eclipse.xtext.RuleCall;
+import org.eclipse.xtext.TerminalRule;
+import org.eclipse.xtext.service.AbstractElementFinder.AbstractGrammarElementFinder;
+import org.eclipse.xtext.service.GrammarProvider;
 import org.eclipse.xtext.xbase.annotations.services.XbaseWithAnnotationsGrammarAccess;
 import org.eclipse.xtext.xbase.services.XbaseGrammarAccess;
 import org.eclipse.xtext.xbase.services.XtypeGrammarAccess;
+
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
 @Singleton
 public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
@@ -151,13 +161,13 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameSUITE_NAMETerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		private final Assignment cElementsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cElementsSuiteElementParserRuleCall_3_0 = (RuleCall)cElementsAssignment_3.eContents().get(0);
+		private final RuleCall cElementsReferenceParserRuleCall_3_0 = (RuleCall)cElementsAssignment_3.eContents().get(0);
 		
 		//Suite:
-		//	{Suite} annotations+=XAnnotation* name=SUITE_NAME elements+=SuiteElement*;
+		//	{Suite} annotations+=XAnnotation* name=SUITE_NAME elements+=Reference*;
 		public ParserRule getRule() { return rule; }
 
-		//{Suite} annotations+=XAnnotation* name=SUITE_NAME elements+=SuiteElement*
+		//{Suite} annotations+=XAnnotation* name=SUITE_NAME elements+=Reference*
 		public Group getGroup() { return cGroup; }
 
 		//{Suite}
@@ -175,11 +185,11 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 		//SUITE_NAME
 		public RuleCall getNameSUITE_NAMETerminalRuleCall_2_0() { return cNameSUITE_NAMETerminalRuleCall_2_0; }
 
-		//elements+=SuiteElement*
+		//elements+=Reference*
 		public Assignment getElementsAssignment_3() { return cElementsAssignment_3; }
 
-		//SuiteElement
-		public RuleCall getElementsSuiteElementParserRuleCall_3_0() { return cElementsSuiteElementParserRuleCall_3_0; }
+		//Reference
+		public RuleCall getElementsReferenceParserRuleCall_3_0() { return cElementsReferenceParserRuleCall_3_0; }
 	}
 
 	public class PatternReferenceElements extends AbstractParserRuleElementFinder {
@@ -206,13 +216,13 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getPatternPATTERNTerminalRuleCall_1_0() { return cPatternPATTERNTerminalRuleCall_1_0; }
 	}
 
-	public class SuiteElementElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SuiteElement");
+	public class ReferenceElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Reference");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cSpecReferenceParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cPatternReferenceParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
-		//SuiteElement:
+		//Reference:
 		//	SpecReference | PatternReference;
 		public ParserRule getRule() { return rule; }
 
@@ -226,22 +236,6 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getPatternReferenceParserRuleCall_1() { return cPatternReferenceParserRuleCall_1; }
 	}
 
-	public class HeadingElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Heading");
-		private final Assignment cNameAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cNameSUITE_NAMETerminalRuleCall_0 = (RuleCall)cNameAssignment.eContents().get(0);
-		
-		//Heading:
-		//	name=SUITE_NAME;
-		public ParserRule getRule() { return rule; }
-
-		//name=SUITE_NAME
-		public Assignment getNameAssignment() { return cNameAssignment; }
-
-		//SUITE_NAME
-		public RuleCall getNameSUITE_NAMETerminalRuleCall_0() { return cNameSUITE_NAMETerminalRuleCall_0; }
-	}
-
 	public class SpecReferenceElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SpecReference");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -252,9 +246,6 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cTextAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cTextTEXTTerminalRuleCall_2_0 = (RuleCall)cTextAssignment_2.eContents().get(0);
 		
-		////ReferenceExpression:
-		////	pattern=XClosure
-		////;
 		//SpecReference:
 		//	"-" spec=[jnario::Specification|STRING] text=TEXT?;
 		public ParserRule getRule() { return rule; }
@@ -315,8 +306,7 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	private QualifiedNameWithWildCardElements pQualifiedNameWithWildCard;
 	private SuiteElements pSuite;
 	private PatternReferenceElements pPatternReference;
-	private SuiteElementElements pSuiteElement;
-	private HeadingElements pHeading;
+	private ReferenceElements pReference;
 	private SpecReferenceElements pSpecReference;
 	private QualifiedNameElements pQualifiedName;
 	private TerminalRule tSUITE_NAME;
@@ -393,7 +383,7 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Suite:
-	//	{Suite} annotations+=XAnnotation* name=SUITE_NAME elements+=SuiteElement*;
+	//	{Suite} annotations+=XAnnotation* name=SUITE_NAME elements+=Reference*;
 	public SuiteElements getSuiteAccess() {
 		return (pSuite != null) ? pSuite : (pSuite = new SuiteElements());
 	}
@@ -412,29 +402,16 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 		return getPatternReferenceAccess().getRule();
 	}
 
-	//SuiteElement:
+	//Reference:
 	//	SpecReference | PatternReference;
-	public SuiteElementElements getSuiteElementAccess() {
-		return (pSuiteElement != null) ? pSuiteElement : (pSuiteElement = new SuiteElementElements());
+	public ReferenceElements getReferenceAccess() {
+		return (pReference != null) ? pReference : (pReference = new ReferenceElements());
 	}
 	
-	public ParserRule getSuiteElementRule() {
-		return getSuiteElementAccess().getRule();
+	public ParserRule getReferenceRule() {
+		return getReferenceAccess().getRule();
 	}
 
-	//Heading:
-	//	name=SUITE_NAME;
-	public HeadingElements getHeadingAccess() {
-		return (pHeading != null) ? pHeading : (pHeading = new HeadingElements());
-	}
-	
-	public ParserRule getHeadingRule() {
-		return getHeadingAccess().getRule();
-	}
-
-	////ReferenceExpression:
-	////	pattern=XClosure
-	////;
 	//SpecReference:
 	//	"-" spec=[jnario::Specification|STRING] text=TEXT?;
 	public SpecReferenceElements getSpecReferenceAccess() {
@@ -456,7 +433,7 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//terminal SUITE_NAME:
-	//	"#"+ !("-" | " " | "\t") ("\\" ("#" | "-") | !("-" | "#"))*;
+	//	"#"+ !"-" ("\\" ("#" | "-") | !("-" | "#"))*;
 	public TerminalRule getSUITE_NAMERule() {
 		return (tSUITE_NAME != null) ? tSUITE_NAME : (tSUITE_NAME = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "SUITE_NAME"));
 	} 

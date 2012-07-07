@@ -7,7 +7,7 @@
  *******************************************************************************/
 package org.jnario.suite.compiler;
 
-import static com.google.common.collect.Lists.*;
+import static com.google.common.collect.Lists.newArrayList;
 
 import java.util.List;
 

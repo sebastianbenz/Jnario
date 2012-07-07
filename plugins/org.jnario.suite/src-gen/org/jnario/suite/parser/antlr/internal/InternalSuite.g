@@ -319,9 +319,9 @@ ruleSuite returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getSuiteAccess().getElementsSuiteElementParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getSuiteAccess().getElementsReferenceParserRuleCall_3_0()); 
 	    }
-		lv_elements_3_0=ruleSuiteElement		{
+		lv_elements_3_0=ruleReference		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getSuiteRule());
 	        }
@@ -329,7 +329,7 @@ ruleSuite returns [EObject current=null]
        			$current, 
        			"elements",
         		lv_elements_3_0, 
-        		"SuiteElement");
+        		"Reference");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -384,23 +384,23 @@ rulePatternReference returns [EObject current=null]
 
 
 
-// Entry rule entryRuleSuiteElement
-entryRuleSuiteElement returns [EObject current=null] 
+// Entry rule entryRuleReference
+entryRuleReference returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getSuiteElementRule()); }
-	 iv_ruleSuiteElement=ruleSuiteElement 
-	 { $current=$iv_ruleSuiteElement.current; } 
+	{ newCompositeNode(grammarAccess.getReferenceRule()); }
+	 iv_ruleReference=ruleReference 
+	 { $current=$iv_ruleReference.current; } 
 	 EOF 
 ;
 
-// Rule SuiteElement
-ruleSuiteElement returns [EObject current=null] 
+// Rule Reference
+ruleReference returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
 (
     { 
-        newCompositeNode(grammarAccess.getSuiteElementAccess().getSpecReferenceParserRuleCall_0()); 
+        newCompositeNode(grammarAccess.getReferenceAccess().getSpecReferenceParserRuleCall_0()); 
     }
     this_SpecReference_0=ruleSpecReference
     { 
@@ -410,7 +410,7 @@ ruleSuiteElement returns [EObject current=null]
 
     |
     { 
-        newCompositeNode(grammarAccess.getSuiteElementAccess().getPatternReferenceParserRuleCall_1()); 
+        newCompositeNode(grammarAccess.getReferenceAccess().getPatternReferenceParserRuleCall_1()); 
     }
     this_PatternReference_1=rulePatternReference
     { 
@@ -419,8 +419,6 @@ ruleSuiteElement returns [EObject current=null]
     }
 )
 ;
-
-
 
 
 
@@ -7954,7 +7952,7 @@ ruleVisibility returns [Enumerator current=null]
 
 
 
-RULE_SUITE_NAME : '#'+ ~(('-'|' '|'\t')) ('\\' ('#'|'-')|~(('-'|'#')))*;
+RULE_SUITE_NAME : '#'+ ~('-') ('\\' ('#'|'-')|~(('-'|'#')))*;
 
 RULE_PATTERN : '\\' ~(('\r'|'\n'))* '\r'? '\n';
 
@@ -7964,17 +7962,17 @@ RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'$'|'_') ('a'..'z'|'A'..'Z'|'$'|'_'|'0'..'9')*
 
 RULE_RICH_TEXT : '\'\'\'' RULE_IN_RICH_STRING* ('\'\'\''|('\'' '\''?)? EOF);
 
-RULE_RICH_TEXT_START : '\'\'\'' RULE_IN_RICH_STRING* ('\'' '\''?)? '\u00B4';
+RULE_RICH_TEXT_START : '\'\'\'' RULE_IN_RICH_STRING* ('\'' '\''?)? '\u00AB';
 
-RULE_RICH_TEXT_END : '\u00AA' RULE_IN_RICH_STRING* ('\'\'\''|('\'' '\''?)? EOF);
+RULE_RICH_TEXT_END : '\u00BB' RULE_IN_RICH_STRING* ('\'\'\''|('\'' '\''?)? EOF);
 
-RULE_RICH_TEXT_INBETWEEN : '\u00AA' RULE_IN_RICH_STRING* ('\'' '\''?)? '\u00B4';
+RULE_RICH_TEXT_INBETWEEN : '\u00BB' RULE_IN_RICH_STRING* ('\'' '\''?)? '\u00AB';
 
-RULE_COMMENT_RICH_TEXT_INBETWEEN : '\u00B4\u00B4' ~(('\n'|'\r'))* ('\r'? '\n' RULE_IN_RICH_STRING* ('\'' '\''?)? '\u00B4')?;
+RULE_COMMENT_RICH_TEXT_INBETWEEN : '\u00AB\u00AB' ~(('\n'|'\r'))* ('\r'? '\n' RULE_IN_RICH_STRING* ('\'' '\''?)? '\u00AB')?;
 
-RULE_COMMENT_RICH_TEXT_END : '\u00B4\u00B4' ~(('\n'|'\r'))* ('\r'? '\n' RULE_IN_RICH_STRING* ('\'\'\''|('\'' '\''?)? EOF)|EOF);
+RULE_COMMENT_RICH_TEXT_END : '\u00AB\u00AB' ~(('\n'|'\r'))* ('\r'? '\n' RULE_IN_RICH_STRING* ('\'\'\''|('\'' '\''?)? EOF)|EOF);
 
-fragment RULE_IN_RICH_STRING : ('\'\'' ~(('\u00B4'|'\''))|'\'' ~(('\u00B4'|'\''))|~(('\u00B4'|'\'')));
+fragment RULE_IN_RICH_STRING : ('\'\'' ~(('\u00AB'|'\''))|'\'' ~(('\u00AB'|'\''))|~(('\u00AB'|'\'')));
 
 RULE_HEX : ('0x'|'0X') ('0'..'9'|'a'..'f'|'A'..'F'|'_')+ ('#' (('b'|'B') ('i'|'I')|('l'|'L')))?;
 

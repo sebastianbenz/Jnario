@@ -16,4 +16,5 @@ public class SuiteTestCreator extends JnarioTestCreator {
 	protected IInjectorProvider getInjectorProvider() {
 		return injectorProvider;
 	}
+	
 }

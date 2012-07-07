@@ -6,11 +6,9 @@
 package org.jnario.suite.suite.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.jnario.suite.suite.PatternReference;
 import org.jnario.suite.suite.SuitePackage;
 
@@ -27,7 +25,7 @@ import org.jnario.suite.suite.SuitePackage;
  *
  * @generated
  */
-public class PatternReferenceImpl extends SuiteElementImpl implements PatternReference
+public class PatternReferenceImpl extends MinimalEObjectImpl.Container implements PatternReference
 {
 	/**
 	 * The default value of the '{@link #getPattern() <em>Pattern</em>}' attribute.

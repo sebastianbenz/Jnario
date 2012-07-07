@@ -8,6 +8,7 @@
 package org.jnario.suite.ui.wizards;
 
 
+import org.eclipse.jdt.junit.wizards.NewTestCaseWizardPageOne;
 import org.jnario.ui.wizards.JnarioFileCreator;
 import org.jnario.ui.wizards.NewJnarioFileWizardPageOne;
 

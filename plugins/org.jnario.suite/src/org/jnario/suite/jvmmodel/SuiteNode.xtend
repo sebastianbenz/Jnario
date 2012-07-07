@@ -1,11 +1,12 @@
 package org.jnario.suite.jvmmodel
 
-import org.jnario.suite.suite.SuiteElement
+import org.jnario.suite.suite.Reference
 import org.jnario.suite.suite.Suite
 import com.google.inject.Inject
 import org.jnario.suite.suite.SuiteFile
 import java.util.List
 import org.jnario.Specification
+import org.eclipse.emf.ecore.EObject
 
 @Data class SuiteNode {
 	Suite suite
@@ -28,7 +29,7 @@ class SuiteNodeBuilder{
 		val suites = suiteFile.xtendClasses.filter(typeof(Suite)).toList
 		val result = <SuiteNode>newArrayList
 		if(suites.empty) return result
-		val mapping = <SuiteElement, SuiteNode>newHashMap
+		val mapping = <EObject, SuiteNode>newHashMap
 		for(i : 0..suites.size-1){
 			val current = suites.get(i)
 			val parentNode = mapping.get(suites.parent(i))

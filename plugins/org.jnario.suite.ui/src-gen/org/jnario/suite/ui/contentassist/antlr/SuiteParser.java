@@ -4,18 +4,17 @@
 package org.jnario.suite.ui.contentassist.antlr;
 
 import java.util.Collection;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 
 import org.antlr.runtime.RecognitionException;
 import org.eclipse.xtext.AbstractElement;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.AbstractContentAssistParser;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.FollowElement;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.internal.AbstractInternalContentAssistParser;
+import org.jnario.suite.services.SuiteGrammarAccess;
 
 import com.google.inject.Inject;
-
-import org.jnario.suite.services.SuiteGrammarAccess;
 
 public class SuiteParser extends AbstractContentAssistParser {
 	
@@ -38,7 +37,7 @@ public class SuiteParser extends AbstractContentAssistParser {
 				private static final long serialVersionUID = 1L;
 				{
 					put(grammarAccess.getImportAccess().getAlternatives_1(), "rule__Import__Alternatives_1");
-					put(grammarAccess.getSuiteElementAccess().getAlternatives(), "rule__SuiteElement__Alternatives");
+					put(grammarAccess.getReferenceAccess().getAlternatives(), "rule__Reference__Alternatives");
 					put(grammarAccess.getMemberAccess().getAlternatives_2(), "rule__Member__Alternatives_2");
 					put(grammarAccess.getMemberAccess().getAlternatives_2_0_2(), "rule__Member__Alternatives_2_0_2");
 					put(grammarAccess.getMemberAccess().getAlternatives_2_0_2_0_1(), "rule__Member__Alternatives_2_0_2_0_1");
@@ -312,7 +311,6 @@ public class SuiteParser extends AbstractContentAssistParser {
 					put(grammarAccess.getSuiteAccess().getNameAssignment_2(), "rule__Suite__NameAssignment_2");
 					put(grammarAccess.getSuiteAccess().getElementsAssignment_3(), "rule__Suite__ElementsAssignment_3");
 					put(grammarAccess.getPatternReferenceAccess().getPatternAssignment_1(), "rule__PatternReference__PatternAssignment_1");
-					put(grammarAccess.getHeadingAccess().getNameAssignment(), "rule__Heading__NameAssignment");
 					put(grammarAccess.getSpecReferenceAccess().getSpecAssignment_1(), "rule__SpecReference__SpecAssignment_1");
 					put(grammarAccess.getSpecReferenceAccess().getTextAssignment_2(), "rule__SpecReference__TextAssignment_2");
 					put(grammarAccess.getFileAccess().getPackageAssignment_0_1(), "rule__File__PackageAssignment_0_1");

@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="suite"
-    nsURI="http://www.jnario.org/suite/Suite" nsPrefix="suite">
-  <eClassifiers xsi:type="ecore:EClass" name="SuiteElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="PatternReference" eSuperTypes="#//SuiteElement #//Reference">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="suite" nsURI="http://www.jnario.org/suite/Suite" nsPrefix="suite">
+  <eClassifiers xsi:type="ecore:EClass" name="PatternReference" eSuperTypes="#//Reference">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="pattern" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SpecReference" eSuperTypes="#//SuiteElement #//Reference">
+  <eClassifiers xsi:type="ecore:EClass" name="SpecReference" eSuperTypes="#//Reference">
     <eStructuralFeatures xsi:type="ecore:EReference" name="spec" eType="ecore:EClass ../../org.jnario/model/Jnario.ecore#//Specification"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Suite" eSuperTypes="../../org.jnario/model/Jnario.ecore#//Specification #//SuiteElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Suite" eSuperTypes="../../org.jnario/model/Jnario.ecore#//Specification">
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
-        eType="#//SuiteElement" containment="true"/>
+        eType="#//Reference" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SuiteFile" eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendFile"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Heading" eSuperTypes="#//SuiteElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Reference" abstract="true" interface="true"/>
 </ecore:EPackage>

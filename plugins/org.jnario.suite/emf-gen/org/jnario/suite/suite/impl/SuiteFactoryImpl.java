@@ -8,12 +8,14 @@ package org.jnario.suite.suite.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.jnario.suite.suite.*;
+import org.jnario.suite.suite.PatternReference;
+import org.jnario.suite.suite.SpecReference;
+import org.jnario.suite.suite.Suite;
+import org.jnario.suite.suite.SuiteFactory;
+import org.jnario.suite.suite.SuiteFile;
+import org.jnario.suite.suite.SuitePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -67,26 +69,13 @@ public class SuiteFactoryImpl extends EFactoryImpl implements SuiteFactory
 	{
 		switch (eClass.getClassifierID())
 		{
-			case SuitePackage.SUITE_ELEMENT: return createSuiteElement();
 			case SuitePackage.PATTERN_REFERENCE: return createPatternReference();
 			case SuitePackage.SPEC_REFERENCE: return createSpecReference();
 			case SuitePackage.SUITE: return createSuite();
 			case SuitePackage.SUITE_FILE: return createSuiteFile();
-			case SuitePackage.HEADING: return createHeading();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SuiteElement createSuiteElement()
-	{
-		SuiteElementImpl suiteElement = new SuiteElementImpl();
-		return suiteElement;
 	}
 
 	/**
@@ -131,17 +120,6 @@ public class SuiteFactoryImpl extends EFactoryImpl implements SuiteFactory
 	{
 		SuiteFileImpl suiteFile = new SuiteFileImpl();
 		return suiteFile;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Heading createHeading()
-	{
-		HeadingImpl heading = new HeadingImpl();
-		return heading;
 	}
 
 	/**

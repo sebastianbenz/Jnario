@@ -3,10 +3,10 @@
 */
 package org.jnario.suite.parser.antlr;
 
-import com.google.inject.Inject;
-
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.jnario.suite.services.SuiteGrammarAccess;
+
+import com.google.inject.Inject;
 
 public class SuiteParser extends org.eclipse.xtext.parser.antlr.AbstractAntlrParser {
 	

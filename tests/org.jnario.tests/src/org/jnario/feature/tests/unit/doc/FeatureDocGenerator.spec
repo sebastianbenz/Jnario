@@ -55,30 +55,30 @@ describe FeatureDocGenerator {
 		".generateDoc
 		
 		val expected = '''
-			<p><p>This is a description.</p></p>
-			<h3>Scenario: Example Scenario
-			</h3>
-			<ul>
-			<li><p><strong>Given</strong> a step with an argument <code>"something"</code>, another <code>'argument'</code> and a multiline string:</p><pre>import java.util.Collections.*;
-			
-			public class Greeter{
-			  public static void main(String args[]){
-			    List&lt;String&gt; list = new ArrayList&lt;String&gt;(); // should escape angle brackets
-			    Systen.out.println('Hello World');
-			  }
-			}</pre>
-			<ul>
-			</ul>
-			</li>
-			<li><p><strong>When</strong> I do something that is pending. [PENDING]</p>
-			<ul>
-			</ul>
-			</li>
-			<li><p><strong>Then</strong> it results in <code>'something else'</code></p>
-			<ul>
-			</ul>
-			</li>
-			</ul>
+				<p><p>This is a description.</p></p>
+				<h3  id="Scenario_Example_Scenario_">Scenario: Example Scenario
+				</h3>
+				<ul>
+				<li><p><strong>Given</strong> a step with an argument <code>"something"</code>, another <code>'argument'</code> and a multiline string:</p><pre>import java.util.Collections.*;
+				
+				public class Greeter{
+				  public static void main(String args[]){
+				    List&lt;String&gt; list = new ArrayList&lt;String&gt;(); // should escape angle brackets
+				    Systen.out.println('Hello World');
+				  }
+				}</pre>
+				<ul>
+				</ul>
+				</li>
+				<li><p><strong>When</strong> I do something that is pending. [PENDING]</p>
+				<ul>
+				</ul>
+				</li>
+				<li><p><strong>Then</strong> it results in <code>'something else'</code></p>
+				<ul>
+				</ul>
+				</li>
+				</ul>
 			'''.toString
 			
 		assertEquals(expected, actual)

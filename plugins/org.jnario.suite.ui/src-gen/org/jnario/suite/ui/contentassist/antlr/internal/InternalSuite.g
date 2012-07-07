@@ -197,33 +197,31 @@ finally {
 
 
 
-// Entry rule entryRuleSuiteElement
-entryRuleSuiteElement 
+// Entry rule entryRuleReference
+entryRuleReference 
 :
-{ before(grammarAccess.getSuiteElementRule()); }
-	 ruleSuiteElement
-{ after(grammarAccess.getSuiteElementRule()); } 
+{ before(grammarAccess.getReferenceRule()); }
+	 ruleReference
+{ after(grammarAccess.getReferenceRule()); } 
 	 EOF 
 ;
 
-// Rule SuiteElement
-ruleSuiteElement
+// Rule Reference
+ruleReference
     @init {
 		int stackSize = keepStackSize();
     }
 	:
 (
-{ before(grammarAccess.getSuiteElementAccess().getAlternatives()); }
-(rule__SuiteElement__Alternatives)
-{ after(grammarAccess.getSuiteElementAccess().getAlternatives()); }
+{ before(grammarAccess.getReferenceAccess().getAlternatives()); }
+(rule__Reference__Alternatives)
+{ after(grammarAccess.getReferenceAccess().getAlternatives()); }
 )
 
 ;
 finally {
 	restoreStackSize(stackSize);
 }
-
-
 
 
 
@@ -2702,21 +2700,21 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__SuiteElement__Alternatives
+rule__Reference__Alternatives
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getSuiteElementAccess().getSpecReferenceParserRuleCall_0()); }
+{ before(grammarAccess.getReferenceAccess().getSpecReferenceParserRuleCall_0()); }
 	ruleSpecReference
-{ after(grammarAccess.getSuiteElementAccess().getSpecReferenceParserRuleCall_0()); }
+{ after(grammarAccess.getReferenceAccess().getSpecReferenceParserRuleCall_0()); }
 )
 
     |(
-{ before(grammarAccess.getSuiteElementAccess().getPatternReferenceParserRuleCall_1()); }
+{ before(grammarAccess.getReferenceAccess().getPatternReferenceParserRuleCall_1()); }
 	rulePatternReference
-{ after(grammarAccess.getSuiteElementAccess().getPatternReferenceParserRuleCall_1()); }
+{ after(grammarAccess.getReferenceAccess().getPatternReferenceParserRuleCall_1()); }
 )
 
 ;
@@ -21883,8 +21881,8 @@ rule__Suite__ElementsAssignment_3
     }
 :
 (
-{ before(grammarAccess.getSuiteAccess().getElementsSuiteElementParserRuleCall_3_0()); }
-	ruleSuiteElement{ after(grammarAccess.getSuiteAccess().getElementsSuiteElementParserRuleCall_3_0()); }
+{ before(grammarAccess.getSuiteAccess().getElementsReferenceParserRuleCall_3_0()); }
+	ruleReference{ after(grammarAccess.getSuiteAccess().getElementsReferenceParserRuleCall_3_0()); }
 )
 
 ;
@@ -21906,7 +21904,6 @@ rule__PatternReference__PatternAssignment_1
 finally {
 	restoreStackSize(stackSize);
 }
-
 
 rule__SpecReference__SpecAssignment_1
     @init {
@@ -25309,7 +25306,7 @@ finally {
 }
 
 
-RULE_SUITE_NAME : '#'+ ~(('-'|' '|'\t')) ('\\' ('#'|'-')|~(('-'|'#')))*;
+RULE_SUITE_NAME : '#'+ ~('-') ('\\' ('#'|'-')|~(('-'|'#')))*;
 
 RULE_PATTERN : '\\' ~(('\r'|'\n'))* '\r'? '\n';
 
@@ -25319,17 +25316,17 @@ RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'$'|'_') ('a'..'z'|'A'..'Z'|'$'|'_'|'0'..'9')*
 
 RULE_RICH_TEXT : '\'\'\'' RULE_IN_RICH_STRING* ('\'\'\''|('\'' '\''?)? EOF);
 
-RULE_RICH_TEXT_START : '\'\'\'' RULE_IN_RICH_STRING* ('\'' '\''?)? '\u00B4';
+RULE_RICH_TEXT_START : '\'\'\'' RULE_IN_RICH_STRING* ('\'' '\''?)? '\u00AB';
 
-RULE_RICH_TEXT_END : '\u00AA' RULE_IN_RICH_STRING* ('\'\'\''|('\'' '\''?)? EOF);
+RULE_RICH_TEXT_END : '\u00BB' RULE_IN_RICH_STRING* ('\'\'\''|('\'' '\''?)? EOF);
 
-RULE_RICH_TEXT_INBETWEEN : '\u00AA' RULE_IN_RICH_STRING* ('\'' '\''?)? '\u00B4';
+RULE_RICH_TEXT_INBETWEEN : '\u00BB' RULE_IN_RICH_STRING* ('\'' '\''?)? '\u00AB';
 
-RULE_COMMENT_RICH_TEXT_INBETWEEN : '\u00B4\u00B4' ~(('\n'|'\r'))* ('\r'? '\n' RULE_IN_RICH_STRING* ('\'' '\''?)? '\u00B4')?;
+RULE_COMMENT_RICH_TEXT_INBETWEEN : '\u00AB\u00AB' ~(('\n'|'\r'))* ('\r'? '\n' RULE_IN_RICH_STRING* ('\'' '\''?)? '\u00AB')?;
 
-RULE_COMMENT_RICH_TEXT_END : '\u00B4\u00B4' ~(('\n'|'\r'))* ('\r'? '\n' RULE_IN_RICH_STRING* ('\'\'\''|('\'' '\''?)? EOF)|EOF);
+RULE_COMMENT_RICH_TEXT_END : '\u00AB\u00AB' ~(('\n'|'\r'))* ('\r'? '\n' RULE_IN_RICH_STRING* ('\'\'\''|('\'' '\''?)? EOF)|EOF);
 
-fragment RULE_IN_RICH_STRING : ('\'\'' ~(('\u00B4'|'\''))|'\'' ~(('\u00B4'|'\''))|~(('\u00B4'|'\'')));
+fragment RULE_IN_RICH_STRING : ('\'\'' ~(('\u00AB'|'\''))|'\'' ~(('\u00AB'|'\''))|~(('\u00AB'|'\'')));
 
 RULE_HEX : ('0x'|'0X') ('0'..'9'|'a'..'f'|'A'..'F'|'_')+ ('#' (('b'|'B') ('i'|'I')|('l'|'L')))?;
 

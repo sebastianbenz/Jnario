@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
@@ -17,8 +18,8 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.jnario.Specification;
 import org.jnario.suite.jvmmodel.SpecResolver;
 import org.jnario.suite.jvmmodel.SuiteNode;
+import org.jnario.suite.suite.Reference;
 import org.jnario.suite.suite.Suite;
-import org.jnario.suite.suite.SuiteElement;
 import org.jnario.suite.suite.SuiteFile;
 
 @SuppressWarnings("all")
@@ -44,7 +45,7 @@ public class SuiteNodeBuilder {
       if (_isEmpty) {
         return result;
       }
-      final HashMap<SuiteElement,SuiteNode> mapping = CollectionLiterals.<SuiteElement, SuiteNode>newHashMap();
+      final HashMap<EObject,SuiteNode> mapping = CollectionLiterals.<EObject, SuiteNode>newHashMap();
       int _size = suites.size();
       int _minus = (_size - 1);
       IntegerRange _upTo = new IntegerRange(0, _minus);
@@ -67,14 +68,14 @@ public class SuiteNodeBuilder {
   }
   
   public SuiteNode createNode(final Suite current, final SuiteNode parent) {
-    EList<SuiteElement> _elements = current.getElements();
-    final Function1<SuiteElement,List<Specification>> _function = new Function1<SuiteElement,List<Specification>>() {
-        public List<Specification> apply(final SuiteElement it) {
+    EList<Reference> _elements = current.getElements();
+    final Function1<Reference,List<Specification>> _function = new Function1<Reference,List<Specification>>() {
+        public List<Specification> apply(final Reference it) {
           List<Specification> _resolveSpecs = SuiteNodeBuilder.this._specResolver.resolveSpecs(it);
           return _resolveSpecs;
         }
       };
-    List<List<Specification>> _map = ListExtensions.<SuiteElement, List<Specification>>map(_elements, _function);
+    List<List<Specification>> _map = ListExtensions.<Reference, List<Specification>>map(_elements, _function);
     final Iterable<Specification> specs = Iterables.<Specification>concat(_map);
     SuiteNode _suiteNode = new SuiteNode(current, specs);
     final SuiteNode node = _suiteNode;

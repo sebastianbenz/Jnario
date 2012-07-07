@@ -89,9 +89,13 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
   
   protected CharSequence _generate(final Scenario scenario) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<h3>");
+    _builder.append("<h3 ");
     String _name = scenario.getName();
-    _builder.append(_name, "");
+    String _id = this.id(_name);
+    _builder.append(_id, "");
+    _builder.append(">");
+    String _name_1 = scenario.getName();
+    _builder.append(_name_1, "");
     _builder.append("</h3>");
     _builder.newLineIfNotEmpty();
     EList<Step> _steps = scenario.getSteps();

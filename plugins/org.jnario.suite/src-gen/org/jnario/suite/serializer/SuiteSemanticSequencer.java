@@ -1,7 +1,5 @@
 package org.jnario.suite.serializer;
 
-import com.google.inject.Inject;
-import com.google.inject.Provider;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.serializer.XtendSemanticSequencer;
 import org.eclipse.xtend.core.xtend.CreateExtensionInfo;
@@ -27,14 +25,8 @@ import org.eclipse.xtext.common.types.JvmTypeParameter;
 import org.eclipse.xtext.common.types.JvmUpperBound;
 import org.eclipse.xtext.common.types.JvmWildcardTypeReference;
 import org.eclipse.xtext.common.types.TypesPackage;
-import org.eclipse.xtext.serializer.acceptor.ISemanticSequenceAcceptor;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
-import org.eclipse.xtext.serializer.diagnostic.ISemanticSequencerDiagnosticProvider;
-import org.eclipse.xtext.serializer.diagnostic.ISerializationDiagnostic.Acceptor;
-import org.eclipse.xtext.serializer.sequencer.GenericSequencer;
 import org.eclipse.xtext.serializer.sequencer.ISemanticNodeProvider.INodesForEObjectProvider;
-import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
-import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import org.eclipse.xtext.xbase.XAssignment;
 import org.eclipse.xtext.xbase.XBinaryOperation;
@@ -71,12 +63,13 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
 import org.eclipse.xtext.xtype.XFunctionTypeRef;
 import org.eclipse.xtext.xtype.XtypePackage;
 import org.jnario.suite.services.SuiteGrammarAccess;
-import org.jnario.suite.suite.Heading;
 import org.jnario.suite.suite.PatternReference;
 import org.jnario.suite.suite.SpecReference;
 import org.jnario.suite.suite.Suite;
 import org.jnario.suite.suite.SuiteFile;
 import org.jnario.suite.suite.SuitePackage;
+
+import com.google.inject.Inject;
 
 @SuppressWarnings("all")
 public class SuiteSemanticSequencer extends XtendSemanticSequencer {
@@ -86,22 +79,16 @@ public class SuiteSemanticSequencer extends XtendSemanticSequencer {
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == SuitePackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
-			case SuitePackage.HEADING:
-				if(context == grammarAccess.getHeadingRule()) {
-					sequence_Heading(context, (Heading) semanticObject); 
-					return; 
-				}
-				else break;
 			case SuitePackage.PATTERN_REFERENCE:
 				if(context == grammarAccess.getPatternReferenceRule() ||
-				   context == grammarAccess.getSuiteElementRule()) {
+				   context == grammarAccess.getReferenceRule()) {
 					sequence_PatternReference(context, (PatternReference) semanticObject); 
 					return; 
 				}
 				else break;
 			case SuitePackage.SPEC_REFERENCE:
-				if(context == grammarAccess.getSpecReferenceRule() ||
-				   context == grammarAccess.getSuiteElementRule()) {
+				if(context == grammarAccess.getReferenceRule() ||
+				   context == grammarAccess.getSpecReferenceRule()) {
 					sequence_SpecReference(context, (SpecReference) semanticObject); 
 					return; 
 				}
@@ -1197,22 +1184,6 @@ public class SuiteSemanticSequencer extends XtendSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     name=SUITE_NAME
-	 */
-	protected void sequence_Heading(EObject context, Heading semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, SuitePackage.Literals.HEADING__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SuitePackage.Literals.HEADING__NAME));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getHeadingAccess().getNameSUITE_NAMETerminalRuleCall_0(), semanticObject.getName());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
 	 *     (importedType=[JvmType|QualifiedName] | importedNamespace=QualifiedNameWithWildCard)
 	 */
 	protected void sequence_Import(EObject context, XtendImport semanticObject) {
@@ -1256,7 +1227,7 @@ public class SuiteSemanticSequencer extends XtendSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (annotations+=XAnnotation* name=SUITE_NAME elements+=SuiteElement*)
+	 *     (annotations+=XAnnotation* name=SUITE_NAME elements+=Reference*)
 	 */
 	protected void sequence_Suite(EObject context, Suite semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

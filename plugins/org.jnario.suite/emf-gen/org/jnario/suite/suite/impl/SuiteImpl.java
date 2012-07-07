@@ -8,19 +8,14 @@ package org.jnario.suite.suite.impl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.jnario.impl.SpecificationImpl;
-
+import org.jnario.suite.suite.Reference;
 import org.jnario.suite.suite.Suite;
-import org.jnario.suite.suite.SuiteElement;
 import org.jnario.suite.suite.SuitePackage;
 
 /**
@@ -46,7 +41,7 @@ public class SuiteImpl extends SpecificationImpl implements Suite
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<SuiteElement> elements;
+	protected EList<Reference> elements;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -74,11 +69,11 @@ public class SuiteImpl extends SpecificationImpl implements Suite
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<SuiteElement> getElements()
+	public EList<Reference> getElements()
 	{
 		if (elements == null)
 		{
-			elements = new EObjectContainmentEList<SuiteElement>(SuiteElement.class, this, SuitePackage.SUITE__ELEMENTS);
+			elements = new EObjectContainmentEList<Reference>(Reference.class, this, SuitePackage.SUITE__ELEMENTS);
 		}
 		return elements;
 	}
@@ -128,7 +123,7 @@ public class SuiteImpl extends SpecificationImpl implements Suite
 		{
 			case SuitePackage.SUITE__ELEMENTS:
 				getElements().clear();
-				getElements().addAll((Collection<? extends SuiteElement>)newValue);
+				getElements().addAll((Collection<? extends Reference>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

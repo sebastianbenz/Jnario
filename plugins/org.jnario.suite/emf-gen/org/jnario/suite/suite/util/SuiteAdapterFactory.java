@@ -7,18 +7,19 @@ package org.jnario.suite.suite.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.xtend.core.xtend.XtendAnnotationTarget;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendFile;
-
+import org.jnario.Executable;
 import org.jnario.Specification;
-
-import org.jnario.suite.suite.*;
+import org.jnario.suite.suite.PatternReference;
+import org.jnario.suite.suite.Reference;
+import org.jnario.suite.suite.SpecReference;
+import org.jnario.suite.suite.Suite;
+import org.jnario.suite.suite.SuiteFile;
+import org.jnario.suite.suite.SuitePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -84,11 +85,6 @@ public class SuiteAdapterFactory extends AdapterFactoryImpl
 		new SuiteSwitch<Adapter>()
 		{
 			@Override
-			public Adapter caseSuiteElement(SuiteElement object)
-			{
-				return createSuiteElementAdapter();
-			}
-			@Override
 			public Adapter casePatternReference(PatternReference object)
 			{
 				return createPatternReferenceAdapter();
@@ -109,11 +105,6 @@ public class SuiteAdapterFactory extends AdapterFactoryImpl
 				return createSuiteFileAdapter();
 			}
 			@Override
-			public Adapter caseHeading(Heading object)
-			{
-				return createHeadingAdapter();
-			}
-			@Override
 			public Adapter caseReference(Reference object)
 			{
 				return createReferenceAdapter();
@@ -127,6 +118,11 @@ public class SuiteAdapterFactory extends AdapterFactoryImpl
 			public Adapter caseXtendClass(XtendClass object)
 			{
 				return createXtendClassAdapter();
+			}
+			@Override
+			public Adapter caseExecutable(Executable object)
+			{
+				return createExecutableAdapter();
 			}
 			@Override
 			public Adapter caseSpecification(Specification object)
@@ -159,21 +155,6 @@ public class SuiteAdapterFactory extends AdapterFactoryImpl
 		return modelSwitch.doSwitch((EObject)target);
 	}
 
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.jnario.suite.suite.SuiteElement <em>Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.jnario.suite.suite.SuiteElement
-	 * @generated
-	 */
-	public Adapter createSuiteElementAdapter()
-	{
-		return null;
-	}
 
 	/**
 	 * Creates a new adapter for an object of class '{@link org.jnario.suite.suite.PatternReference <em>Pattern Reference</em>}'.
@@ -236,21 +217,6 @@ public class SuiteAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.jnario.suite.suite.Heading <em>Heading</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.jnario.suite.suite.Heading
-	 * @generated
-	 */
-	public Adapter createHeadingAdapter()
-	{
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.jnario.suite.suite.Reference <em>Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -291,6 +257,21 @@ public class SuiteAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createXtendClassAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.jnario.Executable <em>Executable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.jnario.Executable
+	 * @generated
+	 */
+	public Adapter createExecutableAdapter()
 	{
 		return null;
 	}

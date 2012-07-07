@@ -9,14 +9,17 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.xtend.core.xtend.XtendAnnotationTarget;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendFile;
-
+import org.jnario.Executable;
 import org.jnario.Specification;
-
-import org.jnario.suite.suite.*;
+import org.jnario.suite.suite.PatternReference;
+import org.jnario.suite.suite.Reference;
+import org.jnario.suite.suite.SpecReference;
+import org.jnario.suite.suite.Suite;
+import org.jnario.suite.suite.SuiteFile;
+import org.jnario.suite.suite.SuitePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -101,18 +104,10 @@ public class SuiteSwitch<T>
 	{
 		switch (classifierID)
 		{
-			case SuitePackage.SUITE_ELEMENT:
-			{
-				SuiteElement suiteElement = (SuiteElement)theEObject;
-				T result = caseSuiteElement(suiteElement);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case SuitePackage.PATTERN_REFERENCE:
 			{
 				PatternReference patternReference = (PatternReference)theEObject;
 				T result = casePatternReference(patternReference);
-				if (result == null) result = caseSuiteElement(patternReference);
 				if (result == null) result = caseReference(patternReference);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -121,7 +116,6 @@ public class SuiteSwitch<T>
 			{
 				SpecReference specReference = (SpecReference)theEObject;
 				T result = caseSpecReference(specReference);
-				if (result == null) result = caseSuiteElement(specReference);
 				if (result == null) result = caseReference(specReference);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -131,8 +125,8 @@ public class SuiteSwitch<T>
 				Suite suite = (Suite)theEObject;
 				T result = caseSuite(suite);
 				if (result == null) result = caseSpecification(suite);
-				if (result == null) result = caseSuiteElement(suite);
 				if (result == null) result = caseXtendClass(suite);
+				if (result == null) result = caseExecutable(suite);
 				if (result == null) result = caseXtendAnnotationTarget(suite);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -145,14 +139,6 @@ public class SuiteSwitch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SuitePackage.HEADING:
-			{
-				Heading heading = (Heading)theEObject;
-				T result = caseHeading(heading);
-				if (result == null) result = caseSuiteElement(heading);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case SuitePackage.REFERENCE:
 			{
 				Reference reference = (Reference)theEObject;
@@ -162,22 +148,6 @@ public class SuiteSwitch<T>
 			}
 			default: return defaultCase(theEObject);
 		}
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSuiteElement(SuiteElement object)
-	{
-		return null;
 	}
 
 	/**
@@ -245,22 +215,6 @@ public class SuiteSwitch<T>
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Heading</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Heading</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseHeading(Heading object)
-	{
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -304,6 +258,22 @@ public class SuiteSwitch<T>
 	 * @generated
 	 */
 	public T caseXtendClass(XtendClass object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Executable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Executable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExecutable(Executable object)
 	{
 		return null;
 	}

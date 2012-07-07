@@ -6,7 +6,6 @@
 package org.jnario.suite.suite;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.jnario.Specification;
 
 /**
@@ -25,11 +24,11 @@ import org.jnario.Specification;
  * @model
  * @generated
  */
-public interface Suite extends Specification, SuiteElement
+public interface Suite extends Specification
 {
 	/**
 	 * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
-	 * The list contents are of type {@link org.jnario.suite.suite.SuiteElement}.
+	 * The list contents are of type {@link org.jnario.suite.suite.Reference}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Elements</em>' containment reference list isn't clear,
@@ -41,6 +40,6 @@ public interface Suite extends Specification, SuiteElement
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<SuiteElement> getElements();
+	EList<Reference> getElements();
 
 } // Suite
