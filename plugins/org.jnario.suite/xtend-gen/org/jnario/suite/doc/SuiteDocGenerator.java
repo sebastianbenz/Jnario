@@ -3,7 +3,6 @@ package org.jnario.suite.doc;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
-import java.util.Arrays;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -20,11 +19,9 @@ import org.jnario.doc.HtmlFile;
 import org.jnario.doc.HtmlFileBuilder;
 import org.jnario.suite.jvmmodel.SpecResolver;
 import org.jnario.suite.jvmmodel.SuiteClassNameProvider;
-import org.jnario.suite.suite.Heading;
 import org.jnario.suite.suite.Reference;
 import org.jnario.suite.suite.SpecReference;
 import org.jnario.suite.suite.Suite;
-import org.jnario.suite.suite.SuiteElement;
 import org.jnario.suite.suite.SuiteFile;
 
 @SuppressWarnings("all")
@@ -132,23 +129,29 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
   
   public CharSequence generateContent(final Suite suite) {
     StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<span");
     String _name = suite.getName();
-    String _trimFirstLine = org.jnario.util.Strings.trimFirstLine(_name);
+    String _replace = _name.replace("#", "");
+    String _id = this.id(_replace);
+    _builder.append(_id, "");
+    _builder.append(">");
+    String _name_1 = suite.getName();
+    String _trimFirstLine = org.jnario.util.Strings.trimFirstLine(_name_1);
     String _markdown2Html = this.markdown2Html(_trimFirstLine);
     _builder.append(_markdown2Html, "");
+    _builder.append("</span>");
     _builder.newLineIfNotEmpty();
     {
-      EList<SuiteElement> _elements = suite.getElements();
+      EList<Reference> _elements = suite.getElements();
       boolean _isEmpty = _elements.isEmpty();
       boolean _not = (!_isEmpty);
       if (_not) {
         _builder.append("<ul>");
         _builder.newLine();
         {
-          EList<SuiteElement> _elements_1 = suite.getElements();
-          for(final SuiteElement spec : _elements_1) {
-            List<Specification> _resolveSpecs = this._specResolver.resolveSpecs(spec);
-            CharSequence _generate = this.generate(spec, _resolveSpecs);
+          EList<Reference> _elements_1 = suite.getElements();
+          for(final Reference spec : _elements_1) {
+            CharSequence _generate = this.generate(spec);
             _builder.append(_generate, "");
             _builder.newLineIfNotEmpty();
           }
@@ -160,23 +163,11 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
     return _builder;
   }
   
-  protected CharSequence _generate(final Heading ref, final List<Specification> specs) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("</ul>\t");
-    _builder.newLine();
-    String _name = ref.getName();
-    String _markdown2Html = this.markdown2Html(_name);
-    _builder.append(_markdown2Html, "");
-    _builder.newLineIfNotEmpty();
-    _builder.append("<ul>");
-    _builder.newLine();
-    return _builder;
-  }
-  
-  protected CharSequence _generate(final Reference ref, final List<Specification> specs) {
+  public CharSequence generate(final Reference ref) {
     StringConcatenation _builder = new StringConcatenation();
     {
-      for(final Specification spec : specs) {
+      List<Specification> _resolveSpecs = this._specResolver.resolveSpecs(ref);
+      for(final Specification spec : _resolveSpecs) {
         _builder.append("<li><a href=\"");
         String _linkTo = this.linkTo(ref, spec);
         _builder.append(_linkTo, "");
@@ -215,16 +206,5 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
       }
     }
     return "";
-  }
-  
-  public CharSequence generate(final EObject ref, final List<Specification> specs) {
-    if (ref instanceof Heading) {
-      return _generate((Heading)ref, specs);
-    } else if (ref instanceof Reference) {
-      return _generate((Reference)ref, specs);
-    } else {
-      throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(ref, specs).toString());
-    }
   }
 }

@@ -86,7 +86,7 @@ public class SuiteDocGeneratorSpec {
     _builder.newLine();
     final String actual = this.generateDoc(_builder);
     StringConcatenation _builder_1 = new StringConcatenation();
-    _builder_1.append("<p>Heading description.</p>");
+    _builder_1.append("<span id=\"Heading_Heading_description_\"><p>Heading description.</p></span>");
     _builder_1.newLine();
     _builder_1.append("<ul>");
     _builder_1.newLine();
@@ -98,7 +98,7 @@ public class SuiteDocGeneratorSpec {
     _builder_1.newLine();
     _builder_1.append("<h2>Subheading</h2>");
     _builder_1.newLine();
-    _builder_1.append("<p>Subheading description with <strong>markdown</strong>.</p>");
+    _builder_1.append("<span id=\"Subheading_Subheading_description_with_markdown_\"><p>Subheading description with <strong>markdown</strong>.</p></span>");
     _builder_1.newLine();
     _builder_1.append("<ul>");
     _builder_1.newLine();

@@ -158,7 +158,8 @@ public abstract class AbstractDocGenerator implements IGenerator {
   }
   
   public String id(final String id) {
-    String _replaceAll = id==null?(String)null:id.replaceAll("\\W", "_");
+    String _trim = id==null?(String)null:id.trim();
+    String _replaceAll = _trim==null?(String)null:_trim.replaceAll("\\W+", "_");
     String _plus = (" id=\"" + _replaceAll);
     return (_plus + "\"");
   }

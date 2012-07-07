@@ -1,7 +1,6 @@
 package org.jnario.suite.doc
 
 import com.google.inject.Inject
-import java.util.List
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtend.core.xtend.XtendClass
 import org.jnario.Specification
@@ -10,7 +9,6 @@ import org.jnario.suite.jvmmodel.SuiteClassNameProvider
 import org.jnario.suite.suite.Reference
 import org.jnario.suite.suite.SpecReference
 import org.jnario.suite.suite.Suite
-import org.jnario.suite.suite.Heading
 import org.jnario.suite.jvmmodel.SpecResolver
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
@@ -64,24 +62,18 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 	'''
 
 	def generateContent(Suite suite)'''
-		«suite.name.trimFirstLine.markdown2Html»
+		<span«suite.name.replace("#","").id»>«suite.name.trimFirstLine.markdown2Html»</span>
 		«IF !suite.elements.empty»
 		<ul>
 		«FOR spec : suite.elements»
-			«generate(spec, spec.resolveSpecs)»
+			«generate(spec)»
 		«ENDFOR»
 		</ul>
 		«ENDIF»
 	'''
 
-	def dispatch generate(Heading ref, List<Specification> specs)'''
-	</ul>	
-	«ref.name.markdown2Html»
-	<ul>
-	'''
-
-	def dispatch generate(Reference ref, List<Specification> specs)'''
-	«FOR spec : specs»
+	def generate(Reference ref)'''
+	«FOR spec : ref.resolveSpecs»
 		<li><a href="«ref.linkTo(spec)»">«spec.describe»</a> «ref.text»</li>
 	«ENDFOR»
 	''' 

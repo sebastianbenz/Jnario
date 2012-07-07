@@ -44,13 +44,13 @@ describe SuiteDocGenerator {
 		''')
 		
 		val expected = '''
-			<p>Heading description.</p>
+			<span id="Heading_Heading_description_"><p>Heading description.</p></span>
 			<ul>
 			<li><a href="../test/RedSpec.html">Red</a> </li>
 			<li><a href="../test/BlueSpec.html">Blue</a> with a description</li>
 			</ul>
 			<h2>Subheading</h2>
-			<p>Subheading description with <strong>markdown</strong>.</p>
+			<span id="Subheading_Subheading_description_with_markdown_"><p>Subheading description with <strong>markdown</strong>.</p></span>
 			<ul>
 			<li><a href="../test/GreenSpec.html">Green</a> </li>
 			<li><a href="../test/GreySpec.html">Grey</a> </li>

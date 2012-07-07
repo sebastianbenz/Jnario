@@ -95,7 +95,7 @@ abstract class AbstractDocGenerator implements IGenerator {
 	}
 	
 	def id(String id){
-		return ' id="' + id?.replaceAll("\\W", "_") + '"'
+		return ' id="' + id?.trim?.replaceAll("\\W+", "_") + '"'
 	}
 	
 	def apply(List<Filter> filters, String input){
