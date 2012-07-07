@@ -24,14 +24,13 @@ import com.google.inject.Inject;
  */
 public class StepArgumentsProvider {
 	
+	private static final String MULTILINE_STRING = "'''";
+	
 	private final class StringArgumentsAcceptor implements
 			ArgumentAcceptor {
 		private final List<String> arguments = newArrayList();
 
 		public void accept(String arg, int offset, int length) {
-			if(arg.length() == 0){
-				return;
-			}
 			arguments.add(arg);
 		}
 	}
@@ -51,8 +50,28 @@ public class StepArgumentsProvider {
 	}
 
 	public void findStepArguments(Step step, ArgumentAcceptor acceptor) {
-		String name = stepNameProvider.nameOf(step);
-		Matcher matcher = ARG_PATTERN.matcher(name);
+		String stepName = stepNameProvider.nameOf(step);
+		int multiLineBegin = stepName.indexOf("\n");
+		findArgsInFirstLine(acceptor, stepName, multiLineBegin);
+		addOptionalMultilineString(acceptor, stepName, multiLineBegin);
+	}
+
+	private void addOptionalMultilineString(ArgumentAcceptor acceptor,
+			String stepName, int multiLineBegin) {
+		if(multiLineBegin == -1){
+			return;
+		}
+		
+		int offset = stepName.indexOf(MULTILINE_STRING, multiLineBegin);
+		int end = stepName.length();
+		String string = stepName.substring(offset + MULTILINE_STRING.length(), end - MULTILINE_STRING.length());
+		int length = end - offset;
+		acceptor.accept(string, offset, length);
+	}
+
+	private void findArgsInFirstLine(ArgumentAcceptor acceptor, String name, int end) {
+		String firstLine = end == -1 ? name : name.substring(0, end);
+		Matcher matcher = ARG_PATTERN.matcher(firstLine);
 		while(matcher.find()){
 			for (int i : GROUPS) {
 				if(matcher.group(i) != null){

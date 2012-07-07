@@ -6,23 +6,27 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
 package org.jnario.feature.tests.unit.naming
-import static org.jnario.jnario.test.util.Features.*
-import com.google.inject.Inject
-import org.jnario.feature.naming.StepNameProvider
-import org.jnario.jnario.test.util.ModelStore
-import org.jnario.feature.feature.Step
-import org.jnario.feature.feature.FeatureFactory
-import org.jnario.runner.CreateWith
-import org.jnario.jnario.test.util.SpecTestCreator
 
-import static org.jnario.jnario.test.util.Query.*
+import com.google.inject.Inject
 import org.jnario.feature.feature.Feature
+import org.jnario.feature.feature.FeatureFactory
 import org.jnario.feature.feature.Scenario
+import org.jnario.feature.feature.Step
+import org.jnario.feature.naming.StepNameProvider
+import org.jnario.jnario.test.util.FeatureTestCreator
+import org.jnario.jnario.test.util.ModelStore
+import org.jnario.runner.CreateWith
+
+import static org.jnario.jnario.test.util.Features.*
+import static org.jnario.jnario.test.util.Query.*
+
+import static extension org.jnario.lib.ExampleTableIterators.*
+import static extension org.jnario.lib.Should.*
 
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
-@CreateWith(typeof(SpecTestCreator))
+@CreateWith(typeof(FeatureTestCreator))
 describe StepNameProvider{
 
 	@Inject extension ModelStore modelStore
