@@ -54,8 +54,11 @@ class StepNameProvider {
 	}
 	
 	def describe(Step step){
-		var name = nameOf(step)
-		return name.firstLine.makeJunitConform
+		var name = new StringBuilder(nameOf(step))
+		if(step.pending){
+			markAsPending(name)
+		}
+		return name.toString.firstLine.makeJunitConform
 	}
 	
 	def removeKeywords(String name){

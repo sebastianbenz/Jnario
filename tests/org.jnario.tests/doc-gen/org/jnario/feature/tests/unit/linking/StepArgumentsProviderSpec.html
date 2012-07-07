@@ -59,6 +59,14 @@
 		<td>list(&quot;hello&quot;)</td>
 	</tr>
 	<tr>
+		<td>&quot;Given a multiline \n'''hello 'nested' '''&quot;</td>
+		<td>list(&quot;hello 'nested' &quot;)</td>
+	</tr>
+	<tr>
+		<td>&quot;Given a multiline \n\t\t'''hello'''&quot;</td>
+		<td>list(&quot;hello&quot;)</td>
+	</tr>
+	<tr>
 		<td>&quot;Given a multiline \n 1+1 =&gt; 2 '''hello'''&quot;</td>
 		<td>list()</td>
 	</tr>
@@ -69,7 +77,8 @@
 examples.forEach[
   val singleOrDoubleQuotes = list(step, step?.replaceAll('&quot;', &quot;'&quot;))
   for(each : singleOrDoubleQuotes){
-    subject.findStepArguments(create(each)) =&gt; expectedArgs
+    val foundArgs = subject.findStepArguments(create(each))
+    foundArgs =&gt; expectedArgs
   }
 ]</pre>
 </p>

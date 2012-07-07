@@ -58,7 +58,7 @@ Workflow {
     component = Generator {
         pathRtProject = runtimeProject
         pathUiProject = "${runtimeProject}.ui"
-        pathTestProject = "../org.jnario.tests"
+        pathTestProject = "../../tests/org.jnario.tests"
         projectNameRt = projectName
         projectNameUi = "${projectName}.ui"
         language = {

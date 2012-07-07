@@ -16,7 +16,7 @@ public class UsingJUnitRulesInFeaturesFeatureUsingJUnitRules {
   @Order(0)
   @Named("When I have a feature with JUnit rules")
   public void whenIHaveAFeatureWithJUnitRules() {
-      StepArguments _stepArguments = new StepArguments("\r\n\t\t\t\tpackage demo\r\n\t\t\t\timport org.junit.Rule\r\n\t\t\t\timport org.junit.rules.TemporaryFolder\r\n\t\t\t\t\r\n\t\t\t\tFeature:  JUnit Rules\r\n\t\t\t\t\r\n\t\t\t\t\tScenario: Using rules in a Feature\r\n\t\t\t\t\t\t@Rule public val folder = new TemporaryFolder\r\n\t\t\t\t\t\r\n\t\t\t\t\t\tGiven a feature with a rule\r\n\t\t\t\t\t\tThen the rule should be initialized\r\n\t\t\t\t\t\t\tfolder.root should not be null\t\r\n\t\t\t");
+      StepArguments _stepArguments = new StepArguments("\n\t\t\t\tpackage demo\n\t\t\t\timport org.junit.Rule\n\t\t\t\timport org.junit.rules.TemporaryFolder\n\t\t\t\t\n\t\t\t\tFeature:  JUnit Rules\n\t\t\t\t\n\t\t\t\t\tScenario: Using rules in a Feature\n\t\t\t\t\t\t@Rule public val folder = new TemporaryFolder\n\t\t\t\t\t\n\t\t\t\t\t\tGiven a feature with a rule\n\t\t\t\t\t\tThen the rule should be initialized\n\t\t\t\t\t\t\tfolder.root should not be null\t\n\t\t\t");
       final StepArguments args = _stepArguments;
       String _first = args.first();
       this.jnarioFile = _first;

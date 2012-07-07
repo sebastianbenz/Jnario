@@ -4,6 +4,7 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import java.util.Arrays;
+import java.util.regex.Matcher;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendMember;
@@ -15,6 +16,7 @@ import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
+import org.jnario.feature.jvmmodel.StepArgumentsProvider;
 import org.jnario.feature.naming.FeatureClassNameProvider;
 import org.jnario.feature.naming.StepNameProvider;
 import org.jnario.util.Strings;
@@ -132,50 +134,55 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
   }
   
   private String format(final Step step) {
-    String _xblockexpression = null;
-    {
-      String result = this._stepNameProvider.nameOf(step);
-      String codeBlock = "";
-      final int index = result.indexOf("\n");
-      int _minus = (-1);
-      boolean _notEquals = (index != _minus);
-      if (_notEquals) {
-        String _substring = result.substring(index);
-        codeBlock = _substring;
-        String _substring_1 = result.substring(0, index);
-        result = _substring_1;
-      }
-      String _firstWord = Strings.getFirstWord(result);
-      String _plus = ("(" + _firstWord);
-      String _plus_1 = (_plus + ")");
-      String _replaceFirst = result.replaceFirst(_plus_1, "<strong>$1</strong>");
-      result = _replaceFirst;
-      String _plus_2 = (" " + result);
-      String _replaceAll = _plus_2.replaceAll("\"(.*?)\"", "<code>$1</code>");
-      result = _replaceAll;
-      String _markdown2Html = this.markdown2Html(result);
-      result = _markdown2Html;
-      CharSequence _addCodeBlock = this.addCodeBlock(codeBlock);
-      String _plus_3 = (result + _addCodeBlock);
-      _xblockexpression = (_plus_3);
-    }
-    return _xblockexpression;
+    String result = this._stepNameProvider.describe(step);
+    String _highlighFirstWord = this.highlighFirstWord(result);
+    result = _highlighFirstWord;
+    String _highlightArguments = this.highlightArguments(result);
+    result = _highlightArguments;
+    String _markdown2Html = this.markdown2Html(result);
+    result = _markdown2Html;
+    CharSequence _addCodeBlock = this.addCodeBlock(step);
+    String _plus = (result + _addCodeBlock);
+    result = _plus;
+    return result;
   }
   
-  private CharSequence addCodeBlock(final String code) {
-    int _length = code.length();
-    boolean _equals = (_length == 0);
+  private String highlightArguments(final String s) {
+    String _plus = (" " + s);
+    Matcher _matcher = StepArgumentsProvider.ARG_PATTERN.matcher(_plus);
+    String _replaceAll = _matcher.replaceAll("<code>$0</code>");
+    return _replaceAll;
+  }
+  
+  private String highlighFirstWord(final String s) {
+    String _firstWord = Strings.getFirstWord(s);
+    String _plus = ("(" + _firstWord);
+    String _plus_1 = (_plus + ")");
+    String _replaceFirst = s.replaceFirst(_plus_1, "<strong>$1</strong>");
+    return _replaceFirst;
+  }
+  
+  private CharSequence addCodeBlock(final Step step) {
+    final String text = this._stepNameProvider.nameOf(step);
+    final int multiLineStart = text.indexOf("\n");
+    int _minus = (-1);
+    boolean _equals = (multiLineStart == _minus);
     if (_equals) {
       return "";
     }
-    String codeBlock = code.trim();
+    String _substring = text.substring(multiLineStart);
+    String codeBlock = _substring.trim();
+    int _length = StepArgumentsProvider.MULTILINE_STRING.length();
     int _length_1 = codeBlock.length();
-    int _minus = (_length_1 - 3);
-    String _substring = codeBlock.substring(3, _minus);
-    codeBlock = _substring;
+    int _length_2 = StepArgumentsProvider.MULTILINE_STRING.length();
+    int _minus_1 = (_length_1 - _length_2);
+    String _substring_1 = codeBlock.substring(_length, _minus_1);
+    codeBlock = _substring_1;
+    String _codeToHtml = this.codeToHtml(codeBlock);
+    codeBlock = _codeToHtml;
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<pre>");
-    this.codeToHtml(codeBlock);
+    _builder.append(codeBlock, "");
     _builder.append("</pre>");
     return _builder;
   }

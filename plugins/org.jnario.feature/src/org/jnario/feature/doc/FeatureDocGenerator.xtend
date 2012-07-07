@@ -10,12 +10,14 @@ package org.jnario.feature.doc
 import com.google.inject.Inject
 import org.eclipse.xtend.core.xtend.XtendClass
 import org.jnario.doc.AbstractDocGenerator
+import org.jnario.doc.HtmlFile
 import org.jnario.feature.feature.Feature
+import org.jnario.feature.feature.Scenario
 import org.jnario.feature.feature.Step
 import org.jnario.feature.naming.FeatureClassNameProvider
 import org.jnario.feature.naming.StepNameProvider
-import org.jnario.feature.feature.Scenario
-import org.jnario.doc.HtmlFile
+
+import static org.jnario.feature.jvmmodel.StepArgumentsProvider.*
 
 import static extension org.jnario.util.Strings.*
 
@@ -69,25 +71,31 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 	'''
 
 	def private format(Step step){
-		var result = step.nameOf
-		var codeBlock = ""
-		val index = result.indexOf('\n')
-		if(index != -1){
-			codeBlock = result.substring(index)
-			result = result.substring(0, index)
-		}
-		result = result.replaceFirst("(" + result.firstWord + ")", "<strong>$1</strong>")
-		result = (" " + result).replaceAll("\"(.*?)\"", "<code>$1</code>")
+		var result = step.describe
+		result = result.highlighFirstWord
+		result = result.highlightArguments
 		result = result.markdown2Html
-		result + addCodeBlock(codeBlock)
+		result = result + addCodeBlock(step)
+		return result
 	}
 
-	def private addCodeBlock(String code){
-		if(code.length == 0){
-			return ""
+	def private highlightArguments(String s){
+		ARG_PATTERN.matcher(" " + s).replaceAll("<code>$0</code>")
+	}
+
+	def private highlighFirstWord(String s){
+		s.replaceFirst("(" + s.firstWord + ")", "<strong>$1</strong>")
+	}
+
+	def private addCodeBlock(Step step){
+		val text = step.nameOf
+		val multiLineStart = text.indexOf("\n")
+		if(multiLineStart == -1){
+			return "" 
 		}
-		var codeBlock = code.trim
-		codeBlock = codeBlock.substring(3, codeBlock.length-3)
-		return '''<pre>«codeBlock.codeToHtml»</pre>'''
+		var codeBlock = text.substring(multiLineStart).trim
+		codeBlock = codeBlock.substring(MULTILINE_STRING.length, codeBlock.length - MULTILINE_STRING.length)
+		codeBlock = codeBlock.codeToHtml
+		return '''<pre>«codeBlock»</pre>'''
 	} 
 }

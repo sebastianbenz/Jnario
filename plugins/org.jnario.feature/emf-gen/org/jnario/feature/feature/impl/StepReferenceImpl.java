@@ -29,7 +29,7 @@ import org.jnario.feature.feature.StepReference;
  *
  * @generated
  */
-public class StepReferenceImpl extends StepImpl implements StepReference
+public class StepReferenceImpl extends StepImplCustom implements StepReference
 {
 	/**
 	 * The cached value of the '{@link #getReference() <em>Reference</em>}' reference.

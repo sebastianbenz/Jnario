@@ -596,7 +596,9 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 		featureEClass.getESuperTypes().add(theJnarioPackage.getSpecification());
 		backgroundEClass.getESuperTypes().add(this.getScenario());
 		scenarioEClass.getESuperTypes().add(theXtendPackage.getXtendClass());
+		scenarioEClass.getESuperTypes().add(theJnarioPackage.getExecutable());
 		stepEClass.getESuperTypes().add(theXtendPackage.getXtendMember());
+		stepEClass.getESuperTypes().add(theJnarioPackage.getExecutable());
 		givenEClass.getESuperTypes().add(this.getStepImplementation());
 		whenEClass.getESuperTypes().add(this.getStepImplementation());
 		thenEClass.getESuperTypes().add(this.getStepImplementation());

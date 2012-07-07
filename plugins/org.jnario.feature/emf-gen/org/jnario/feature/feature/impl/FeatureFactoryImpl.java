@@ -95,7 +95,7 @@ public class FeatureFactoryImpl extends EFactoryImpl implements FeatureFactory
 	 */
 	public Feature createFeature()
 	{
-		FeatureImpl feature = new FeatureImpl();
+		FeatureImplCustom feature = new FeatureImplCustom();
 		return feature;
 	}
 
@@ -128,7 +128,7 @@ public class FeatureFactoryImpl extends EFactoryImpl implements FeatureFactory
 	 */
 	public Step createStep()
 	{
-		StepImpl step = new StepImpl();
+		StepImplCustom step = new StepImplCustom();
 		return step;
 	}
 

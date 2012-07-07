@@ -7,10 +7,14 @@
  *******************************************************************************/
 package org.jnario.spec.spec.impl;
 
+import static com.google.common.collect.Iterables.filter;
+import static com.google.common.collect.Iterables.isEmpty;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
+import org.jnario.Executable;
+import org.jnario.spec.spec.Example;
 import org.jnario.spec.spec.ExampleGroup;
 
 /**
@@ -47,5 +51,18 @@ public class ExampleGroupImplCustom extends org.jnario.spec.spec.impl.ExampleGro
 			return getAnnotationInfo().getAnnotations();
 		}
 		return super.getAnnotations();
+	}
+	
+	public boolean isPending(){
+		Iterable<Example> examples = filter(getMembers(), Example.class);
+		if(isEmpty(examples)){
+			return true;
+		}
+		for (Executable executable : examples) {
+			if(executable.isPending()){
+				return true;
+			}
+		}
+		return false;
 	}
 }

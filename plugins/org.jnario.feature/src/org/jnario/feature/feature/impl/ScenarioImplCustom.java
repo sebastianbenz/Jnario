@@ -10,6 +10,7 @@ package org.jnario.feature.feature.impl;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 
 import org.jnario.feature.feature.Feature;
+import org.jnario.feature.feature.Step;
 
 public class ScenarioImplCustom extends ScenarioImpl {
 
@@ -22,4 +23,16 @@ public class ScenarioImplCustom extends ScenarioImpl {
 		return feature.getPackageName();
 	}
 	
+	@Override
+	public boolean isPending() {
+		if(getSteps().isEmpty()){
+			return true;
+		}
+		for (Step step : getSteps()) {
+			if(step.isPending()){
+				return true;
+			}
+		}
+		return false;
+	}
 }

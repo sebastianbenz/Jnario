@@ -6,6 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
 package org.jnario.spec.naming;
+
 import static java.lang.Character.isDigit;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 import static org.eclipse.xtext.util.Strings.convertToJavaString;
@@ -13,6 +14,7 @@ import static org.eclipse.xtext.util.Strings.toFirstLower;
 import static org.eclipse.xtext.util.Strings.toFirstUpper;
 import static org.jnario.util.Strings.convertToCamelCase;
 import static org.jnario.util.Strings.makeJunitConform;
+import static org.jnario.util.Strings.markAsPending;
 
 import java.util.List;
 
@@ -63,10 +65,9 @@ public class ExampleNameProvider {
 		StringBuilder sb = new StringBuilder();
 		if(example.getName() != null){
 			sb.append(example.getName());
-			sb.append(" ");
 		}
 		if(example.isPending()){
-			sb.append("[PENDING]");
+			markAsPending(sb);
 		}
 		return convertToJavaString(makeJunitConform(sb)).trim();
 	}

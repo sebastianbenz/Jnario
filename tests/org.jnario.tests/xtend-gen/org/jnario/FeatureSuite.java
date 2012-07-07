@@ -12,6 +12,7 @@ import org.jnario.feature.tests.integration.TestRunnerFeature;
 import org.jnario.feature.tests.integration.UsingJUnitRulesInFeaturesFeature;
 import org.jnario.feature.tests.integration.UsingMatchersInFeaturesFeature;
 import org.jnario.feature.tests.unit.conversion.FeatureValueConverterSpec;
+import org.jnario.feature.tests.unit.doc.FeatureDocGeneratorSpec;
 import org.jnario.feature.tests.unit.linking.ReferencingOtherStepsSpec;
 import org.jnario.feature.tests.unit.linking.StepArgumentsProviderSpec;
 import org.jnario.feature.tests.unit.naming.FeatureClassNameProviderSpec;
@@ -26,7 +27,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(ExampleGroupRunner.class)
 @Named("Feature")
-@Contains({ FeatureTokenSourceSpec.class, IntroducingJnarioFeaturesSpec.class, CalculatorFeature.class, BackgroundsFeature.class, ReferencingOtherStepsSpec.class, UsingMatchersInFeaturesFeature.class, ParsingSimpleJnarioFilesFeature.class, AccessOfVariablesFeature.class, FeatureClassNameProviderSpec.class, TestRunnerFeature.class, UsingJUnitRulesInFeaturesFeature.class, ReferencesForStepsFeature.class, FeatureValueConverterSpec.class, StepNameProviderSpec.class, StepExpressionProviderSpec.class, StepArgumentsProviderSpec.class, StepParametersFeature.class, FeatureJavaValidatorSpec.class, SetupTeardownWithFeatureExtensionsFeature.class })
+@Contains({ FeatureTokenSourceSpec.class, IntroducingJnarioFeaturesSpec.class, CalculatorFeature.class, BackgroundsFeature.class, ReferencingOtherStepsSpec.class, UsingMatchersInFeaturesFeature.class, ParsingSimpleJnarioFilesFeature.class, AccessOfVariablesFeature.class, FeatureClassNameProviderSpec.class, TestRunnerFeature.class, UsingJUnitRulesInFeaturesFeature.class, ReferencesForStepsFeature.class, FeatureValueConverterSpec.class, StepNameProviderSpec.class, StepExpressionProviderSpec.class, StepArgumentsProviderSpec.class, StepParametersFeature.class, FeatureJavaValidatorSpec.class, FeatureDocGeneratorSpec.class, SetupTeardownWithFeatureExtensionsFeature.class })
 @SuppressWarnings("all")
 public class FeatureSuite {
 }

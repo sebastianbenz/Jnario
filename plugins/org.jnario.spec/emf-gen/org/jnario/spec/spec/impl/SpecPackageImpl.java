@@ -385,6 +385,7 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 		exampleGroupEClass.getESuperTypes().add(theJnarioPackage.getSpecification());
 		exampleGroupEClass.getESuperTypes().add(theXtendPackage.getXtendMember());
 		exampleEClass.getESuperTypes().add(this.getTestFunction());
+		exampleEClass.getESuperTypes().add(theJnarioPackage.getExecutable());
 		beforeEClass.getESuperTypes().add(this.getTestFunction());
 		afterEClass.getESuperTypes().add(this.getTestFunction());
 		testFunctionEClass.getESuperTypes().add(theXtendPackage.getXtendMember());

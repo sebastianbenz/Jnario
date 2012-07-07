@@ -19,6 +19,7 @@ import org.jnario.Assertion;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
+import org.jnario.Executable;
 import org.jnario.JnarioFactory;
 import org.jnario.JnarioPackage;
 import org.jnario.Should;
@@ -80,6 +81,13 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 	 * @generated
 	 */
 	private EClass specificationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass executableEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -312,6 +320,15 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getExecutable() {
+		return executableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public JnarioFactory getJnarioFactory() {
 		return (JnarioFactory)getEFactoryInstance();
 	}
@@ -359,6 +376,8 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		createEReference(shouldThrowEClass, SHOULD_THROW__EXPRESSION);
 
 		specificationEClass = createEClass(SPECIFICATION);
+
+		executableEClass = createEClass(EXECUTABLE);
 	}
 
 	/**
@@ -401,6 +420,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		shouldEClass.getESuperTypes().add(theXbasePackage.getXBinaryOperation());
 		shouldThrowEClass.getESuperTypes().add(theXbasePackage.getXExpression());
 		specificationEClass.getESuperTypes().add(theXtendPackage.getXtendClass());
+		specificationEClass.getESuperTypes().add(this.getExecutable());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(exampleTableEClass, ExampleTable.class, "ExampleTable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -429,6 +449,10 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		initEReference(getShouldThrow_Expression(), theXbasePackage.getXExpression(), null, "expression", null, 1, 1, ShouldThrow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(specificationEClass, Specification.class, "Specification", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(executableEClass, Executable.class, "Executable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		addEOperation(executableEClass, ecorePackage.getEBoolean(), "isPending", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

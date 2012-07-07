@@ -16,7 +16,7 @@ public class AccessOfVariablesFeatureAccessAVariableThatWasAssignedAValueOfAVari
   @Order(0)
   @Named("When I have a complex usage of variables")
   public void whenIHaveAComplexUsageOfVariables() {
-      StepArguments _stepArguments = new StepArguments("\r\n\t\t\t\tpackage bootstrap3\r\n\t\t\t\tFeature: Variable test\r\n\t\t\t\t\tScenario: Some scenario\r\n\t\t\t\t\t\tint x\r\n\t\t\t\t\t\tint y\r\n\t\t\t\t\t\tGiven a step with a variable\r\n\t\t\t\t\t\t\tx = 3\r\n\t\t\t\t\t\tWhen I assign it a different value\r\n\t\t\t\t\t\t\ty = x\r\n\t\t\t\t\t\tThen y should be 3\r\n\t\t\t\t\t\t\ty => 3\r\n\t\t\t");
+      StepArguments _stepArguments = new StepArguments("\n\t\t\t\tpackage bootstrap3\n\t\t\t\tFeature: Variable test\n\t\t\t\t\tScenario: Some scenario\n\t\t\t\t\t\tint x\n\t\t\t\t\t\tint y\n\t\t\t\t\t\tGiven a step with a variable\n\t\t\t\t\t\t\tx = 3\n\t\t\t\t\t\tWhen I assign it a different value\n\t\t\t\t\t\t\ty = x\n\t\t\t\t\t\tThen y should be 3\n\t\t\t\t\t\t\ty => 3\n\t\t\t");
       final StepArguments args = _stepArguments;
       String _first = args.first();
       this.jnarioFile = _first;

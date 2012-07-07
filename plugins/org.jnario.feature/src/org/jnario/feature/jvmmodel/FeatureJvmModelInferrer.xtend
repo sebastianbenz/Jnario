@@ -26,7 +26,6 @@ import org.jnario.feature.feature.FeatureFile
 import org.jnario.feature.feature.Scenario
 import org.jnario.feature.feature.Step
 import org.jnario.feature.feature.StepImplementation
-import org.jnario.feature.feature.Then
 import org.jnario.feature.naming.FeatureClassNameProvider
 import org.jnario.feature.naming.StepNameProvider
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder
@@ -43,8 +42,6 @@ import static org.eclipse.xtext.EcoreUtil2.*
 import static org.jnario.feature.jvmmodel.FeatureJvmModelInferrer.*
 
 import static extension com.google.common.base.Strings.*
-import org.jnario.feature.feature.Given
-import org.jnario.feature.feature.GivenReference
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -240,8 +237,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			annotations += step.getTestAnnotations(false)
 			annotations += step.toAnnotation(typeof(Order), order.intValue)
 			var name = step.describe
-			if(stepExpression == null){
-				name = "[PENDING] " + name
+			if(step.pending){
 				annotations += step.toAnnotation(typeof(Ignore))
 			}
 			annotations += step.toAnnotation(typeof(Named), name)

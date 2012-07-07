@@ -551,6 +551,26 @@ public interface JnarioPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.jnario.Executable <em>Executable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.jnario.Executable
+	 * @see org.jnario.impl.JnarioPackageImpl#getExecutable()
+	 * @generated
+	 */
+	int EXECUTABLE = 7;
+
+	/**
+	 * The number of structural features of the '<em>Executable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTABLE_FEATURE_COUNT = 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.jnario.ExampleTable <em>Example Table</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -742,6 +762,16 @@ public interface JnarioPackage extends EPackage {
 	EClass getSpecification();
 
 	/**
+	 * Returns the meta object for class '{@link org.jnario.Executable <em>Executable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Executable</em>'.
+	 * @see org.jnario.Executable
+	 * @generated
+	 */
+	EClass getExecutable();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -920,6 +950,16 @@ public interface JnarioPackage extends EPackage {
 		 * @generated
 		 */
 		EClass SPECIFICATION = eINSTANCE.getSpecification();
+
+		/**
+		 * The meta object literal for the '{@link org.jnario.Executable <em>Executable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.jnario.Executable
+		 * @see org.jnario.impl.JnarioPackageImpl#getExecutable()
+		 * @generated
+		 */
+		EClass EXECUTABLE = eINSTANCE.getExecutable();
 
 	}
 

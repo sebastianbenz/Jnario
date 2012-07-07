@@ -41,7 +41,7 @@ describe "Using Should"{
 		newArrayList("something") should contain "something"
 		newArrayList("something") should not contain "something else"
 		
-		// using the "with" operator
+		// using xtend's "with" operator
 		val greeting = "hello world" => [
 			length => 11
 			it should startWith("hello")
@@ -53,6 +53,15 @@ describe "Using Should"{
 	/*     
 	 * `should` throws an AssertionError if the result of the left 
 	 * expression does not equal the result of the right expression.
+	 * Here is a helper method we are going to use:
+	 * 
+	 * <pre class="prettyprint lang-spec">
+	 * def void method(){
+	 *   throw new IllegalArgumentException
+	 * }
+	 * </pre>
+	 * 
+	 * ...and here are the examples:
 	 */
 	fact "...or not to pass"{
 	  1 + 1 should be 1 throws AssertionError
@@ -91,17 +100,19 @@ describe "Using Should"{
     
 	/*
 	 * You can also the `should` and `=>` together with [hamcrest](http://code.google.com/p/hamcrest/) 
-	 * matchers. The following static import statements are needed to run the examples.
+	 * matchers. The following static import statements are needed to run the examples:
 	 *  
 	 *     import static org.hamcrest.CoreMatchers.startsWith
 	 *     import static org.hamcrest.CoreMatchers.equalTo
 	 *     import static org.hamcrest.Matchers.hasItem
 	 * 
+	 * If the right-hand side of a should expression is a matcher, the matcher will be evaluated instead
+	 * of testing for equality:
 	 */ 
 	fact "Combining hamcrest and should"{
 		"hello" => startsWith("h")
 		newArrayList("red", "green") => hasItem("red")
-		"hello" should be equalTo("hello")
+		9 should be greaterThan(5) 
 	}
 		
 }

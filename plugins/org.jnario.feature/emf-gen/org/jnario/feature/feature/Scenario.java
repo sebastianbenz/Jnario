@@ -9,6 +9,8 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.xtend.core.xtend.XtendClass;
 
+import org.jnario.Executable;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Scenario</b></em>'.
@@ -25,7 +27,7 @@ import org.eclipse.xtend.core.xtend.XtendClass;
  * @model
  * @generated
  */
-public interface Scenario extends XtendClass
+public interface Scenario extends XtendClass, Executable
 {
 	/**
 	 * Returns the value of the '<em><b>Steps</b></em>' containment reference list.

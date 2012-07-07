@@ -111,6 +111,10 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 				return createSpecificationAdapter();
 			}
 			@Override
+			public Adapter caseExecutable(Executable object) {
+				return createExecutableAdapter();
+			}
+			@Override
 			public Adapter caseXtendAnnotationTarget(XtendAnnotationTarget object) {
 				return createXtendAnnotationTargetAdapter();
 			}
@@ -253,6 +257,20 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSpecificationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.jnario.Executable <em>Executable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.jnario.Executable
+	 * @generated
+	 */
+	public Adapter createExecutableAdapter() {
 		return null;
 	}
 

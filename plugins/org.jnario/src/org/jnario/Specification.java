@@ -18,5 +18,5 @@ import org.eclipse.xtend.core.xtend.XtendClass;
  * @model abstract="true"
  * @generated
  */
-public interface Specification extends XtendClass {
+public interface Specification extends XtendClass, Executable {
 } // Specification

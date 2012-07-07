@@ -49,7 +49,7 @@ true should be true
 newArrayList(&quot;something&quot;) should contain &quot;something&quot;
 newArrayList(&quot;something&quot;) should not contain &quot;something else&quot;
 
-// using the &quot;with&quot; operator
+// using xtend's &quot;with&quot; operator
 val greeting = &quot;hello world&quot; =&gt; [
   length =&gt; 11
   it should startWith(&quot;hello&quot;)
@@ -58,7 +58,12 @@ val greeting = &quot;hello world&quot; =&gt; [
 greeting =&gt; typeof(String)</pre>
 </p>
 </li><li><p  id="___or_not_to_pass"><strong>...or not to pass</strong>
-<p><code>should</code> throws an AssertionError if the result of the left expression does not equal the result of the right expression.</p>
+<p><code>should</code> throws an AssertionError if the result of the left expression does not equal the result of the right expression. Here is a helper method we are going to use:</p>
+<pre class="prettyprint lang-spec">
+def void method(){
+  throw new IllegalArgumentException
+}
+</pre><p>...and here are the examples:</p>
 <pre class="prettyprint lang-spec">
 1 + 1 should be 1 throws AssertionError
 1 + 1 should not be 1 throws AssertionError
@@ -85,15 +90,15 @@ errorMessage[x =&gt; y].is('''
        y is &quot;world&quot;''')</pre>
 </p>
 </li><li><p  id="Combining_hamcrest_and_should"><strong>Combining hamcrest and should</strong>
-<p>You can also the <code>should</code> and <code>=&gt;</code> together with <a href="http://code.google.com/p/hamcrest/">hamcrest</a> matchers. The following static import statements are needed to run the examples.</p>
+<p>You can also the <code>should</code> and <code>=&gt;</code> together with <a href="http://code.google.com/p/hamcrest/">hamcrest</a> matchers. The following static import statements are needed to run the examples:</p>
 <pre class="prettyprint">import static org.hamcrest.CoreMatchers.startsWith
 import static org.hamcrest.CoreMatchers.equalTo
 import static org.hamcrest.Matchers.hasItem
-</code></pre>
+</code></pre><p>If the right-hand side of a should expression is a matcher, the matcher will be evaluated instead of testing for equality:</p>
 <pre class="prettyprint lang-spec">
 &quot;hello&quot; =&gt; startsWith(&quot;h&quot;)
 newArrayList(&quot;red&quot;, &quot;green&quot;) =&gt; hasItem(&quot;red&quot;)
-&quot;hello&quot; should be equalTo(&quot;hello&quot;)</pre>
+9 should be greaterThan(5)</pre>
 </p>
 </li></ul>
 				</div>

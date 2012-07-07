@@ -21,7 +21,7 @@ describe "20 Facts about Xtend"{
    */ 
   describe "A modernized Java"{
      
-      /*
+      /* 
        * Semicolons are optional in Xtend.
        */
       fact "No semicolons"{

@@ -42,5 +42,9 @@ public abstract class SpecificationImpl extends XtendClassImplCustom implements 
 	protected EClass eStaticClass() {
 		return JnarioPackage.Literals.SPECIFICATION;
 	}
+	
+	public boolean isPending(){
+		throw new UnsupportedOperationException();
+	}
 
 } //SpecificationImpl

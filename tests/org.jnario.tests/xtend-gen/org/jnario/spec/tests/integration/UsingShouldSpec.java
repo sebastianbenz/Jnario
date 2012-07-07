@@ -5,7 +5,6 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.hamcrest.StringDescription;
@@ -107,6 +106,15 @@ public class UsingShouldSpec {
   /**
    * `should` throws an AssertionError if the result of the left
    * expression does not equal the result of the right expression.
+   * Here is a helper method we are going to use:
+   * 
+   * <pre class="prettyprint lang-spec">
+   * def void method(){
+   *   throw new IllegalArgumentException
+   * }
+   * </pre>
+   * 
+   * ...and here are the examples:
    */
   @Test
   @Named("...or not to pass")
@@ -222,11 +230,14 @@ public class UsingShouldSpec {
   
   /**
    * You can also the `should` and `=>` together with [hamcrest](http://code.google.com/p/hamcrest/)
-   * matchers. The following static import statements are needed to run the examples.
+   * matchers. The following static import statements are needed to run the examples:
    * 
    *     import static org.hamcrest.CoreMatchers.startsWith
    *     import static org.hamcrest.CoreMatchers.equalTo
    *     import static org.hamcrest.Matchers.hasItem
+   * 
+   * If the right-hand side of a should expression is a matcher, the matcher will be evaluated instead
+   * of testing for equality:
    */
   @Test
   @Named("Combining hamcrest and should")
@@ -245,11 +256,11 @@ public class UsingShouldSpec {
      + "\n     newArrayList(\"red\", \"green\") is " + new StringDescription().appendValue(_newArrayList).toString()
      + "\n     hasItem(\"red\") is " + new StringDescription().appendValue(_hasItem).toString() + "\n", _doubleArrow_1);
     
-    Matcher<String> _equalTo = CoreMatchers.<String>equalTo("hello");
-    boolean _should_be = Should.<String>should_be(
-      "hello", _equalTo);
-    Assert.assertTrue("\nExpected \"hello\" should be equalTo(\"hello\") but"
-     + "\n     equalTo(\"hello\") is " + new StringDescription().appendValue(_equalTo).toString() + "\n", _should_be);
+    Matcher<Integer> _greaterThan = Matchers.<Integer>greaterThan(Integer.valueOf(5));
+    boolean _should_be = Should.<Integer>should_be(
+      Integer.valueOf(9), _greaterThan);
+    Assert.assertTrue("\nExpected 9 should be greaterThan(5) but"
+     + "\n     greaterThan(5) is " + new StringDescription().appendValue(_greaterThan).toString() + "\n", _should_be);
     
   }
   

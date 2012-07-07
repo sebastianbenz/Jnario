@@ -206,5 +206,9 @@ public class Strings extends org.eclipse.xtext.util.Strings{
 		}
 		return sb.toString();
 	}
+	
+	public static StringBuilder markAsPending(StringBuilder sb){
+		return sb.append(" [PENDING]");
+	}
 
 }

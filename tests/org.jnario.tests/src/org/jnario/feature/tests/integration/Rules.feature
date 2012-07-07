@@ -31,4 +31,3 @@ like you would do in a normal JUnit test case.
 			'''
 			jnarioFile = args.first
 		Then it should execute successfully
- 

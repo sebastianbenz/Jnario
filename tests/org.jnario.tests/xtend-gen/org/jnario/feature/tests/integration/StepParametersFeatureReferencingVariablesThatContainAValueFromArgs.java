@@ -16,7 +16,7 @@ public class StepParametersFeatureReferencingVariablesThatContainAValueFromArgs 
   @Order(0)
   @Named("When I have a scenario that references a step with arguments")
   public void whenIHaveAScenarioThatReferencesAStepWithArguments() {
-      StepArguments _stepArguments = new StepArguments("\r\n\t\t\t\tpackage bootstrap \r\n\t\t\t\tFeature: Test feature\r\n\t\t\t\t\tScenario: using fields in step definitions\r\n\t\t\t\t\t\tString x\r\n\t\t\t\t\t\tString y \r\n\t\t\t\t\t\tGiven the value \"hello\"\r\n\t\t\t\t\t\t\tx = args.first\r\n\t\t\t\t\t\tWhen I add \" world\"\r\n\t\t\t\t\t\t\ty = x + args.first\r\n\t\t\t\t\t\tThen it should be \"hello world\"\r\n\t\t\t\t\t\t\ty should be args.first\r\n\t\t\t\t\t\t\t\r\n\t\t\t");
+      StepArguments _stepArguments = new StepArguments("\n\t\t\t\tpackage bootstrap \n\t\t\t\tFeature: Test feature\n\t\t\t\t\tScenario: using fields in step definitions\n\t\t\t\t\t\tString x\n\t\t\t\t\t\tString y \n\t\t\t\t\t\tGiven the value \"hello\"\n\t\t\t\t\t\t\tx = args.first\n\t\t\t\t\t\tWhen I add \" world\"\n\t\t\t\t\t\t\ty = x + args.first\n\t\t\t\t\t\tThen it should be \"hello world\"\n\t\t\t\t\t\t\ty should be args.first\n\t\t\t\t\t\t\t\n\t\t\t");
       final StepArguments args = _stepArguments;
       String _first = args.first();
       this.jnarioFile = _first;

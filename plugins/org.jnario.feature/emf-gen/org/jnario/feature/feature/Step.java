@@ -9,6 +9,8 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.xtend.core.xtend.XtendMember;
 
+import org.jnario.Executable;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Step</b></em>'.
@@ -27,7 +29,7 @@ import org.eclipse.xtend.core.xtend.XtendMember;
  * @model
  * @generated
  */
-public interface Step extends XtendMember
+public interface Step extends XtendMember, Executable
 {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.

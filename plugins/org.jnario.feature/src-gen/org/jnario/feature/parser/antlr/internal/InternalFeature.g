@@ -8335,7 +8335,7 @@ RULE_AND_TEXT : 'And ' RULE_STEP_WITH_ARGS;
 
 RULE_TEXT : '____dummy____'+;
 
-fragment RULE_STEP_WITH_ARGS : ~(('\r'|'\n'))* '\r'? '\n' RULE_SPACES RULE_RICH_TEXT?;
+fragment RULE_STEP_WITH_ARGS : ~(('\r'|'\n'))* '\r'? ('\n' RULE_SPACES RULE_RICH_TEXT?|EOF);
 
 fragment RULE_MNL : ~(('\r'|'\n'))* RULE_NL;
 

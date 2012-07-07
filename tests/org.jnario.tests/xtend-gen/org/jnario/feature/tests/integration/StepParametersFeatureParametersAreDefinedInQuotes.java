@@ -16,7 +16,7 @@ public class StepParametersFeatureParametersAreDefinedInQuotes {
   @Order(0)
   @Named("When I have a feature with parameters")
   public void whenIHaveAFeatureWithParameters() {
-      StepArguments _stepArguments = new StepArguments("\r\n\t\t\t\tpackage bootstrap\r\n\t\t\t\tFeature: Test feature\r\n\t\t\t\t\tScenario: using fields in step definitions\r\n\t\t\t\t\t\tString x\r\n\t\t\t\t\t\tGiven some values \"3\", \"4\"\r\n\t\t\t\t\t\t\tx = args.get(0)\r\n\t\t\t\t\t\tThen it should be possible to get the value\r\n\t\t\t\t\t\t\tx => \"3\"\r\n\t\t\t");
+      StepArguments _stepArguments = new StepArguments("\n\t\t\t\tpackage bootstrap\n\t\t\t\tFeature: Test feature\n\t\t\t\t\tScenario: using fields in step definitions\n\t\t\t\t\t\tString x\n\t\t\t\t\t\tGiven some values \"3\", \"4\"\n\t\t\t\t\t\t\tx = args.get(0)\n\t\t\t\t\t\tThen it should be possible to get the value\n\t\t\t\t\t\t\tx => \"3\"\n\t\t\t");
       final StepArguments args = _stepArguments;
       String _first = args.first();
       this.jnarioFile = _first;

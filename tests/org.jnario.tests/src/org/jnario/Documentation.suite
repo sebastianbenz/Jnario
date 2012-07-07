@@ -8,6 +8,7 @@ import org.jnario.spec.tests.integration.*
 import org.jnario.feature.tests.integration.*
 import org.jnario.feature.tests.unit.linking.*
 import org.jnario.jnario.documentation.*
+import spec.tests.integration.*
 
 #Jnario Documentation
 
@@ -23,10 +24,11 @@ Learn how to write specifications in Jnario.
 ##Common Concepts
 
 Features and concepts that are common to all Jnario languages. 
-	- "Collection Literals": shorter versions of the collections literals provided by xtend.
-	- "Using Should": writing expressive assertions with the build in should operator.
-	- "Customizing the Spec Creation": how to customize the spec creation process.
-	- "Using Xtend\'s with Operator"
+	- "Collection Literals": \- shorter versions of the collections literals provided by xtend.
+	- "Using Should": \- writing expressive assertions with the build in should operator.
+	- "Customizing the Spec Creation": \- how to customize the spec creation process.
+	- "Using Xtend\'s with Operator": \- how to define nested assertions.
+	- "Collection Literals": \- creating collections in Jnario 
 	
 ##Features
 

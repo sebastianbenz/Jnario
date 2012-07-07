@@ -1707,7 +1707,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//terminal fragment STEP_WITH_ARGS:
-	//	!("\r" | "\n")* "\r"? "\n" SPACES RICH_TEXT?;
+	//	!("\r" | "\n")* "\r"? ("\n" SPACES RICH_TEXT? | EOF);
 	public TerminalRule getSTEP_WITH_ARGSRule() {
 		return (tSTEP_WITH_ARGS != null) ? tSTEP_WITH_ARGS : (tSTEP_WITH_ARGS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "STEP_WITH_ARGS"));
 	} 

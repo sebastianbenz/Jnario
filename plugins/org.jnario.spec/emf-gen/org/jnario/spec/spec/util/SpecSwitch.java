@@ -14,6 +14,7 @@ import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendFile;
 import org.eclipse.xtend.core.xtend.XtendMember;
 
+import org.jnario.Executable;
 import org.jnario.Specification;
 
 import org.jnario.spec.spec.*;
@@ -116,6 +117,7 @@ public class SpecSwitch<T>
 				if (result == null) result = caseSpecification(exampleGroup);
 				if (result == null) result = caseXtendMember(exampleGroup);
 				if (result == null) result = caseXtendClass(exampleGroup);
+				if (result == null) result = caseExecutable(exampleGroup);
 				if (result == null) result = caseXtendAnnotationTarget(exampleGroup);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -125,6 +127,7 @@ public class SpecSwitch<T>
 				Example example = (Example)theEObject;
 				T result = caseExample(example);
 				if (result == null) result = caseTestFunction(example);
+				if (result == null) result = caseExecutable(example);
 				if (result == null) result = caseXtendMember(example);
 				if (result == null) result = caseXtendAnnotationTarget(example);
 				if (result == null) result = defaultCase(theEObject);
@@ -303,6 +306,22 @@ public class SpecSwitch<T>
 	 * @generated
 	 */
 	public T caseXtendClass(XtendClass object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Executable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Executable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExecutable(Executable object)
 	{
 		return null;
 	}

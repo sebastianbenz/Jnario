@@ -24,7 +24,7 @@ import com.google.inject.Inject;
  */
 public class StepArgumentsProvider {
 	
-	private static final String MULTILINE_STRING = "'''";
+	public static final String MULTILINE_STRING = "'''";
 	
 	private final class StringArgumentsAcceptor implements
 			ArgumentAcceptor {

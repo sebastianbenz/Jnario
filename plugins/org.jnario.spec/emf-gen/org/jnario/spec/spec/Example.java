@@ -6,6 +6,8 @@ package org.jnario.spec.spec;
 
 import org.eclipse.xtext.xbase.XExpression;
 
+import org.jnario.Executable;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Example</b></em>'.
@@ -23,7 +25,7 @@ import org.eclipse.xtext.xbase.XExpression;
  * @model
  * @generated
  */
-public interface Example extends TestFunction
+public interface Example extends TestFunction, Executable
 {
 	/**
 	 * Returns the value of the '<em><b>Expr</b></em>' containment reference.

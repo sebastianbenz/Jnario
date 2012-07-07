@@ -151,7 +151,14 @@ public class JnarioSwitch<T> {
 				Specification specification = (Specification)theEObject;
 				T result = caseSpecification(specification);
 				if (result == null) result = caseXtendClass(specification);
+				if (result == null) result = caseExecutable(specification);
 				if (result == null) result = caseXtendAnnotationTarget(specification);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case JnarioPackage.EXECUTABLE: {
+				Executable executable = (Executable)theEObject;
+				T result = caseExecutable(executable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -261,6 +268,21 @@ public class JnarioSwitch<T> {
 	 * @generated
 	 */
 	public T caseSpecification(Specification object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Executable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Executable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExecutable(Executable object) {
 		return null;
 	}
 
