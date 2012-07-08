@@ -38,15 +38,12 @@ import org.eclipse.jdt.internal.junit.util.CoreTestSearchEngine;
 import org.eclipse.jdt.internal.junit.util.JUnitStatus;
 import org.eclipse.jdt.internal.junit.util.JUnitStubUtility;
 import org.eclipse.jdt.internal.junit.util.LayoutUtil;
-import org.eclipse.jdt.internal.ui.dialogs.TextFieldNavigationHandler;
+import org.eclipse.jdt.internal.junit.wizards.WizardMessages;
 import org.eclipse.jdt.internal.ui.refactoring.contentassist.ControlContentAssistHelper;
 import org.eclipse.jdt.internal.ui.refactoring.contentassist.JavaTypeCompletionProcessor;
-import org.eclipse.jdt.internal.ui.wizards.dialogfields.DialogField;
-import org.eclipse.jdt.internal.ui.wizards.dialogfields.StringDialogField;
 import org.eclipse.jdt.junit.wizards.NewTestCaseWizardPageOne;
 import org.eclipse.jdt.ui.IJavaElementSearchConstants;
 import org.eclipse.jdt.ui.JavaUI;
-import org.eclipse.jdt.ui.wizards.NewTypeWizardPage;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -65,13 +62,14 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.SelectionDialog;
+import org.jnario.ui.wizards.NewJnarioFileWizardPageOne;
 
 
 /**
  * partially copied from {@link NewTestCaseWizardPageOne}
  */
 @SuppressWarnings("restriction")
-public class NewSpecWizardPageOne extends NewTypeWizardPage {
+public class NewSpecWizardPageOne extends NewJnarioFileWizardPageOne {
 
 	private final static String PAGE_NAME= "NewTestCaseCreationWizardPage"; //$NON-NLS-1$
 
@@ -95,15 +93,10 @@ public class NewSpecWizardPageOne extends NewTypeWizardPage {
 
 	private SpecCreator specUtil;
 
-	private StringDialogField descriptionDialogField;
-
-
 	public NewSpecWizardPageOne(NewSpecWizardPageTwo page2, SpecCreator specUtil) {
-		super(true, PAGE_NAME);
+		super(specUtil);
 		fPage2= page2;
 		this.specUtil = specUtil;
-
-		setTitle("Spec");
 		setDescription("Select the name of the new Spec file. You have the options to specify\nthe description and/or the class under test.");
 
 		fClassToTestCompletionProcessor= new JavaTypeCompletionProcessor(false, false, true);
@@ -111,9 +104,6 @@ public class NewSpecWizardPageOne extends NewTypeWizardPage {
 		fClassUnderTestStatus= new JUnitStatus();
 
 		fClassUnderTestText= ""; //$NON-NLS-1$
-		
-		descriptionDialogField = new StringDialogField();
-		descriptionDialogField.setLabelText("Description:");
 	}
 
 	public void init(IStructuredSelection selection) {
@@ -224,17 +214,6 @@ public class NewSpecWizardPageOne extends NewTypeWizardPage {
 		Dialog.applyDialogFont(composite);
 
 		setFocus();
-	}
-
-
-	private void createDescriptionControls(Composite composite, int nColumns) {
-		descriptionDialogField.setText("");
-		descriptionDialogField.doFillIntoGrid(composite, nColumns - 1);
-		DialogField.createEmptySpace(composite);
-
-		Text text= descriptionDialogField.getTextControl(null);
-		org.eclipse.jdt.internal.ui.wizards.dialogfields.LayoutUtil.setWidthHint(text, getMaxFieldWidth());
-		TextFieldNavigationHandler.install(text);
 	}
 
 	protected void createClassUnderTestControls(Composite composite, int nColumns) {
@@ -459,7 +438,7 @@ public class NewSpecWizardPageOne extends NewTypeWizardPage {
 	 */
 	@Override
 	public boolean canFlipToNextPage() {
-		return super.canFlipToNextPage() && getClassUnderTest() != null;
+		return getClassUnderTest() != null;
 	}
 
 	private IType resolveClassNameToType(IJavaProject jproject, IPackageFragment pack, String classToTestName) throws JavaModelException {
@@ -499,7 +478,7 @@ public class NewSpecWizardPageOne extends NewTypeWizardPage {
 		try {
 			String contents = specUtil.create(
 					getJavaProject(), 
-					descriptionDialogField.getText(), 
+					getDescriptionFieldValue(), 
 					getPackageFragment(),
 					getClassUnderTestText(),
 					fPage2.getCheckedMethods(),
@@ -524,15 +503,20 @@ public class NewSpecWizardPageOne extends NewTypeWizardPage {
 		});
 	}
 	
-	public void setSpecificationDescription(String text){
-		descriptionDialogField.setText(text);
-		updateStatus(getStatusList());
-	}
-	
 	@Override
 	public void setTypeName(String name, boolean canBeModified) {
 		super.setTypeName(name, canBeModified);
 		fTypeNameStatus = typeNameChanged();
+	}
+
+	@Override
+	protected String title() {
+		return "Spec";
+	}
+
+	@Override
+	protected String fileExtension() {
+		return "spec";
 	}
 	
 }

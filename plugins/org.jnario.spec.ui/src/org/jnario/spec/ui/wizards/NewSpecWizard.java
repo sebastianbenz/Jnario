@@ -7,11 +7,9 @@
  *******************************************************************************/
 package org.jnario.spec.ui.wizards;
 
-import org.eclipse.core.resources.IResource;
-import org.eclipse.jdt.internal.junit.ui.JUnitPlugin;
-import org.eclipse.jdt.internal.junit.wizards.JUnitWizard;
 import org.eclipse.jdt.internal.junit.wizards.NewTestCaseCreationWizard;
-import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.jnario.ui.wizards.NewJnarioFileWizard;
+import org.jnario.ui.wizards.NewJnarioFileWizardPageOne;
 
 import com.google.inject.Inject;
 
@@ -19,7 +17,7 @@ import com.google.inject.Inject;
  * partially copied from {@link NewTestCaseCreationWizard}
  */
 @SuppressWarnings("restriction")
-public class NewSpecWizard extends JUnitWizard {
+public class NewSpecWizard extends NewJnarioFileWizard {
 
 	@Inject
 	private SpecCreator specUtil;
@@ -28,14 +26,7 @@ public class NewSpecWizard extends JUnitWizard {
 	private NewSpecWizardPageTwo fPage2;
 
 	public NewSpecWizard() {
-		super();
-		setWindowTitle("Jnario Unit Spec");
-		initDialogSettings();
-	}
-
-	@Override
-	protected void initializeDefaultPageImageDescriptor() {
-		setDefaultPageImageDescriptor(JUnitPlugin.getImageDescriptor("wizban/newtest_wiz.png")); //$NON-NLS-1$
+		super("Jnario Unit Spec");
 	}
 
 	/*
@@ -51,22 +42,9 @@ public class NewSpecWizard extends JUnitWizard {
 		addPage(fPage2);
 	}
 
-	/*
-	 * @see Wizard#performFinish
-	 */
 	@Override
-	public boolean performFinish() {
-		IRunnableWithProgress runnable= fPage1.getRunnable();
-
-		if (finishPage(runnable)) {
-			IResource resource= fPage1.getResource();
-			if (resource != null) {
-				selectAndReveal(resource);
-				openResource(resource);
-			}
-			return true;
-		}
-		return false;
+	public NewJnarioFileWizardPageOne getFirstPage() {
+		return fPage1;
 	}
 
 }

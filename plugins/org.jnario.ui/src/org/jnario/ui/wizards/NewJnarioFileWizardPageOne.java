@@ -95,7 +95,7 @@ public abstract class NewJnarioFileWizardPageOne extends NewTypeWizardPage {
 		setFocus();
 	}
 
-	private void createDescriptionControls(Composite composite, int nColumns) {
+	protected void createDescriptionControls(Composite composite, int nColumns) {
 		descriptionDialogField.setText("");
 		descriptionDialogField.doFillIntoGrid(composite, nColumns - 1);
 		DialogField.createEmptySpace(composite);
@@ -164,6 +164,9 @@ public abstract class NewJnarioFileWizardPageOne extends NewTypeWizardPage {
 
 	public void setSpecDescription(String text) {
 		descriptionDialogField.setText(text);
-		updateStatus(getStatusList());
+	}
+
+	public String getDescriptionFieldValue() {
+		return descriptionDialogField.getText();
 	}
 }

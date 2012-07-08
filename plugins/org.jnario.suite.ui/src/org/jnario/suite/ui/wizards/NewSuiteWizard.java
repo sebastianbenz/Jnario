@@ -7,20 +7,13 @@
  *******************************************************************************/
 package org.jnario.suite.ui.wizards;
 
-import org.eclipse.core.resources.IResource;
-import org.eclipse.jdt.internal.junit.ui.JUnitPlugin;
-import org.eclipse.jdt.internal.junit.wizards.JUnitWizard;
-import org.eclipse.jdt.internal.junit.wizards.NewTestCaseCreationWizard;
-import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.jnario.ui.wizards.NewJnarioFileWizard;
 import org.jnario.ui.wizards.NewJnarioFileWizardPageOne;
 
 import com.google.inject.Inject;
 
-/**
- * partially copied from {@link NewTestCaseCreationWizard}
- */
 @SuppressWarnings("restriction")
-public class NewSuiteWizard extends JUnitWizard {
+public class NewSuiteWizard extends NewJnarioFileWizard {
 
 	@Inject
 	private SuiteCreator featureCreator;
@@ -28,14 +21,7 @@ public class NewSuiteWizard extends JUnitWizard {
 	private NewJnarioFileWizardPageOne fPage1;
 
 	public NewSuiteWizard() {
-		super();
-		setWindowTitle("New Jnario Feature");
-		initDialogSettings();
-	}
-
-	@Override
-	protected void initializeDefaultPageImageDescriptor() {
-		setDefaultPageImageDescriptor(JUnitPlugin.getImageDescriptor("wizban/newtest_wiz.png")); //$NON-NLS-1$
+		super("New Jnario Suite");
 	}
 
 	/*
@@ -49,21 +35,9 @@ public class NewSuiteWizard extends JUnitWizard {
 		fPage1.init(getSelection());
 	}
 
-	/*
-	 * @see Wizard#performFinish
-	 */
 	@Override
-	public boolean performFinish() {
-		IRunnableWithProgress runnable= fPage1.getRunnable();
-		if (finishPage(runnable)) {
-			IResource resource= fPage1.getResource();
-			if (resource != null) {
-				selectAndReveal(resource);
-				openResource(resource);
-			}
-			return true;
-		}
-		return false;
+	public NewJnarioFileWizardPageOne getFirstPage() {
+		return fPage1;
 	}
 
 }

@@ -31,13 +31,12 @@ import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.eclipse.xtext.validation.Issue;
 import org.jnario.feature.ui.wizards.NewFeatureWizard;
-import org.jnario.feature.ui.wizards.NewFeatureWizardPageOne;
 import org.jnario.spec.ui.wizards.NewSpecWizard;
-import org.jnario.spec.ui.wizards.NewSpecWizardPageOne;
 import org.jnario.suite.suite.SuitePackage;
 import org.jnario.suite.ui.wizards.NewSuiteWizard;
-import org.jnario.suite.ui.wizards.NewSuiteWizardPageOne;
 import org.jnario.ui.quickfix.JnarioQuickFixProvider;
+import org.jnario.ui.wizards.NewJnarioFileWizard;
+import org.jnario.ui.wizards.NewJnarioFileWizardPageOne;
 import org.jnario.util.Strings;
 
 import com.google.inject.Inject;
@@ -75,9 +74,24 @@ public class SuiteQuickfixProvider extends JnarioQuickFixProvider {
 						IPackageFragment packageFragmentRoot = javaProject.findPackageFragment(new Path(path));
 						IPackageFragmentRoot root = (IPackageFragmentRoot) packageFragmentRoot.getAncestor(IJavaElement.PACKAGE_FRAGMENT_ROOT);
 						issueString = issueString.substring(1, issueString.length()-1);
-						issueResolutionAcceptor.accept(issue, "New Unit Spec", "Create a new Jnario Unit Specification '" + issueString + "'", "spec_file.png", doFixMissingSpec(root, packageFragmentRoot, issueString));
-						issueResolutionAcceptor.accept(issue, "New Feature", "Create a new Jnario Feature '" + issueString + "'", "feature_file.png", doFixMissingFeature(root, packageFragmentRoot, issueString));
-						issueResolutionAcceptor.accept(issue, "New Suite", "Create a new Jnario Suite '" + issueString + "'", "suite_file.png", doFixMissingSuite(root, packageFragmentRoot, issueString));
+						issueResolutionAcceptor.accept(
+								issue, 
+								"New Unit Spec", 
+								"Create a new Jnario Unit Specification '" + issueString + "'", 
+								"spec_file.png", 
+								doFixMissingSpecification(root, packageFragmentRoot, issueString, newSpecWizardProvider));
+						issueResolutionAcceptor.accept(
+								issue, 
+								"New Feature", 
+								"Create a new Jnario Feature '" + issueString + "'", 
+								"feature_file.png", 
+								doFixMissingSpecification(root, packageFragmentRoot, issueString, newFeatureWizardProvider));
+						issueResolutionAcceptor.accept(
+								issue, 
+								"New Suite", 
+								"Create a new Jnario Suite '" + issueString + "'", 
+								"suite_file.png", 
+								doFixMissingSpecification(root, packageFragmentRoot, issueString, newSuiteWizardProvider));
 					}
 				}
 				
@@ -85,83 +99,29 @@ public class SuiteQuickfixProvider extends JnarioQuickFixProvider {
 			super.createLinkingIssueResolutions(issue, issueResolutionAcceptor);
 		}
 	}
-	
-	private IModification doFixMissingSuite(final IPackageFragmentRoot root, final IPackageFragment packageFragment, final String issueString) {
+
+	private IModification doFixMissingSpecification(
+							final IPackageFragmentRoot root, 
+							final IPackageFragment packageFragment, 
+							final String issueString, 
+							final Provider<? extends NewJnarioFileWizard> wizardProvider) {
 		return new IModification() {
 			
 			public void apply(IModificationContext context) throws Exception {
 				runAsyncInDisplayThread(new Runnable(){
 
-					
 					public void run() {
 						IWorkbench workbench = PlatformUI.getWorkbench(); 
 						Shell shell = workbench.getActiveWorkbenchWindow().getShell(); 
-						NewSuiteWizard wizard = newSuiteWizardProvider.get();
-						wizard.addPages();
+						NewJnarioFileWizard wizard = wizardProvider.get();
 						wizard.init(workbench, new StructuredSelection());
 						WizardDialog dialog = new WizardDialog(shell, wizard); 
 						dialog.create(); 
-						NewSuiteWizardPageOne page = (NewSuiteWizardPageOne) wizard.getStartingPage();
+						NewJnarioFileWizardPageOne page = wizard.getFirstPage();
+						page.setPackageFragment(packageFragment, true);
+						page.setPackageFragmentRoot(root, true);
+						page.setTypeName(Strings.toClassName(issueString), true);
 						page.setSpecDescription(issueString);
-						page.setPackageFragment(packageFragment, true);
-						page.setPackageFragmentRoot(root, true);
-						page.setTypeName(Strings.toClassName(issueString), true);
-						dialog.open(); 
-					}
-					
-				});
-				
-			}
-		};
-	}
-
-	private IModification doFixMissingFeature(final IPackageFragmentRoot root, final IPackageFragment packageFragment, final String issueString) {
-		return new IModification() {
-			
-			public void apply(IModificationContext context) throws Exception {
-				runAsyncInDisplayThread(new Runnable(){
-
-					public void run() {
-						IWorkbench workbench = PlatformUI.getWorkbench(); 
-						Shell shell = workbench.getActiveWorkbenchWindow().getShell(); 
-						NewFeatureWizard wizard = newFeatureWizardProvider.get();
-						wizard.addPages();
-						wizard.init(workbench, new StructuredSelection());
-						WizardDialog dialog = new WizardDialog(shell, wizard); 
-						dialog.create(); 
-						NewFeatureWizardPageOne page = (NewFeatureWizardPageOne) wizard.getStartingPage();
-						page.setSpecDescription(issueString);
-						page.setPackageFragment(packageFragment, true);
-						page.setPackageFragmentRoot(root, true);
-						page.setTypeName(Strings.toClassName(issueString), true);
-						dialog.open(); 
-					}
-					
-				});
-				
-			}
-		};
-	}
-
-	private IModification doFixMissingSpec(final IPackageFragmentRoot root, final IPackageFragment packageFragment, final String issueString) {
-		return new IModification() {
-			
-			public void apply(IModificationContext context) throws Exception {
-				runAsyncInDisplayThread(new Runnable(){
-
-					public void run() {
-						IWorkbench workbench = PlatformUI.getWorkbench(); 
-						Shell shell = workbench.getActiveWorkbenchWindow().getShell(); 
-						NewSpecWizard wizard = newSpecWizardProvider.get();
-						wizard.addPages();
-						wizard.init(workbench, new StructuredSelection());
-						WizardDialog dialog = new WizardDialog(shell, wizard); 
-						NewSpecWizardPageOne page = (NewSpecWizardPageOne) wizard.getStartingPage();
-						page.setSpecificationDescription(issueString);
-						page.setPackageFragment(packageFragment, true);
-						page.setPackageFragmentRoot(root, true);
-						page.setTypeName(Strings.toClassName(issueString), true);
-						dialog.create(); 
 						dialog.open(); 
 					}
 					

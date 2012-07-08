@@ -9,9 +9,11 @@ package org.jnario.suite.validation;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.xtext.validation.ComposedChecks;
 import org.eclipse.xtext.validation.ValidationMessageAcceptor;
+import org.jnario.validation.JnarioJavaValidator;
  
-
+@ComposedChecks(validators={JnarioJavaValidator.class})
 public class SuiteJavaValidator extends AbstractSuiteJavaValidator {
 
 //	@Check
