@@ -24,6 +24,7 @@ import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.eclipse.xtext.xbase.XbaseQualifiedNameConverter;
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
 import org.eclipse.xtext.xbase.conversion.XbaseQualifiedNameValueConverter;
 import org.jnario.suite.suite.SuitePackage;
 /**
@@ -32,6 +33,13 @@ import org.jnario.suite.suite.SuitePackage;
 @SuppressWarnings("restriction")
 public class SuiteProposalProvider extends AbstractSuiteProposalProvider {
 
+	@Override
+	public void completeXAnnotation_AnnotationType(EObject model, Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		completeJavaTypes(context, XAnnotationsPackage.Literals.XANNOTATION__ANNOTATION_TYPE, 
+				TypeMatchFilters.all(IJavaSearchConstants.ANNOTATION_TYPE), acceptor);
+	}
+	
 	@Override
 	public void completeImport_ImportedType(EObject model, Assignment assignment, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {

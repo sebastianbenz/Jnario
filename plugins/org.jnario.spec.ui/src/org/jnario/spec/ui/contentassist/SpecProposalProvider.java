@@ -12,16 +12,32 @@ package org.jnario.spec.ui.contentassist;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.core.search.IJavaSearchConstants;
+import org.eclipse.xtend.core.xtend.XtendPackage;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.common.types.xtext.ui.TypeMatchFilters;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
 import org.jnario.spec.spec.SpecPackage;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
 public class SpecProposalProvider extends AbstractSpecProposalProvider {
+	
+	@Override
+	public void completeImport_ImportedType(EObject model, Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		completeJavaTypes(context, XtendPackage.Literals.XTEND_IMPORT__IMPORTED_TYPE, true,
+				getQualifiedNameValueConverter(), new TypeMatchFilters.All(IJavaSearchConstants.TYPE), acceptor);
+	}
+	
+	@Override
+	public void completeXAnnotation_AnnotationType(EObject model, Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		completeJavaTypes(context, XAnnotationsPackage.Literals.XANNOTATION__ANNOTATION_TYPE, 
+				TypeMatchFilters.all(IJavaSearchConstants.ANNOTATION_TYPE), acceptor);
+	}
 	
 	@Override
 	public void completeExampleGroup_TargetType(EObject model,
