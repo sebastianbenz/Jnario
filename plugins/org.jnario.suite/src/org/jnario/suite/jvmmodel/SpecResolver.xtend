@@ -41,7 +41,7 @@ class SpecResolver {
 			pattern.matcher(toString(it.qualifiedName)).matches
 		]
 		val specs = allElements.map[resolve(EObjectOrProxy, specRef)].filter(typeof(Specification)).filter[
-			!eIsProxy && eContainer instanceof XtendFile  && it.eResource.URI != specRef.eResource.URI
+			!eIsProxy && eContainer instanceof XtendFile && it.eResource.URI != specRef.eResource.URI
 		]
 		specs.toMap[qualifiedClassName].values.toList
 	}
