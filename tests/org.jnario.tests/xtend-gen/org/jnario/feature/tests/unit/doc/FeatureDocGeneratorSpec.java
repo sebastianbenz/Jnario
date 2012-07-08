@@ -46,7 +46,7 @@ public class FeatureDocGeneratorSpec {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<p><p>This is a description.</p></p>");
     _builder.newLine();
-    _builder.append("<h3>Scenario: Example Scenario");
+    _builder.append("<h3  id=\"Scenario_Example_Scenario\">Scenario: Example Scenario");
     _builder.newLine();
     _builder.append("</h3>");
     _builder.newLine();

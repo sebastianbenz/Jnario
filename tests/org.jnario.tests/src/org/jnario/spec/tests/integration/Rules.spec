@@ -8,13 +8,18 @@
 package org.jnario.spec.tests.integration
 
 import static extension org.jnario.jnario.test.util.SpecExecutor.*
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SpecTestCreator
+import com.google.inject.Inject
+import org.jnario.jnario.test.util.BehaviorExecutor
 
 /* 
  * JUnit rules work exactly as in JUnit. Just declare a public field with the rule annotation.
  * 
  */
+@CreateWith(typeof(SpecTestCreator))
 describe "Using JUnit Rules in Specs"{
-
+	@Inject extension BehaviorExecutor
 	/*
      * @filter('''|.executesSuccessfully)  
      */

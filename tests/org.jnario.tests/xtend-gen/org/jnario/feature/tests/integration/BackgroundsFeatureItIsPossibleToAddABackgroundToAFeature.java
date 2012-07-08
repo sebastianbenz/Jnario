@@ -26,7 +26,7 @@ public class BackgroundsFeatureItIsPossibleToAddABackgroundToAFeature {
   @Order(1)
   @Named("Then it should execute successfully")
   public void thenItShouldExecuteSuccessfully() {
-    FeatureExecutor.executesSuccessfully(this.jnarioFile);
+    FeatureExecutor.isSuccessful(this.jnarioFile);
   }
   
   CharSequence jnarioFile;

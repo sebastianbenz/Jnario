@@ -56,7 +56,7 @@ describe FeatureDocGenerator {
 		
 		val expected = '''
 				<p><p>This is a description.</p></p>
-				<h3  id="Scenario_Example_Scenario_">Scenario: Example Scenario
+				<h3  id="Scenario_Example_Scenario">Scenario: Example Scenario
 				</h3>
 				<ul>
 				<li><p><strong>Given</strong> a step with an argument <code>"something"</code>, another <code>'argument'</code> and a multiline string:</p><pre>import java.util.Collections.*;
@@ -80,7 +80,7 @@ describe FeatureDocGenerator {
 				</li>
 				</ul>
 			'''.toString
-			
+		
 		assertEquals(expected, actual)
 	}
 	

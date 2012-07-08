@@ -135,6 +135,10 @@ public class ModelStore implements Iterable<EObject> {
 		return query().first(type);
 	}
 	
+	public <T> T second(Class<? extends T> type){
+		return query().second(type);
+	}
+	
 	public Suite suite(String name){
 		Iterable<Suite> suites = query().all(Suite.class);
 		SuiteClassNameProvider nameProvider = new SuiteClassNameProvider(null, null);

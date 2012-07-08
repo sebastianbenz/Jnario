@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.parsetree.reconstr.XtextSerializationException;
 import org.eclipse.xtext.resource.SaveOptions;
@@ -56,6 +57,21 @@ public class Resources {
 			Assert.fail(ex.getMessage());
 		}
 		return outputStream.toString();
+	}
+	
+	public static int nrOfParseAndLinkingErrors(Resource resource){
+		link(resource);
+		return resource.getErrors().size();
+	}
+
+	protected static void link(Resource resource) {
+		addContainerStateAdapter(resource.getResourceSet());
+		EcoreUtil.resolveAll(resource);
+	}
+	
+	public static void hasNoParseAndLinkingErrors(Resource resource){
+		link(resource);
+		assertNoErrorsOrWarnings(resource);
 	}
 
 	public static void printErrors(Resource eResource) {

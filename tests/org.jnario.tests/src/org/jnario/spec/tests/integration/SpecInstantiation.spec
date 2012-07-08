@@ -8,6 +8,10 @@
 package org.jnario.spec.tests.integration
 
 import static extension org.jnario.jnario.test.util.SpecExecutor.*
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SpecTestCreator
+import com.google.inject.Inject
+import org.jnario.jnario.test.util.BehaviorExecutor
 
 /*
  * It is possible to customize the instantiation of features, specs and subjects.
@@ -32,8 +36,9 @@ import static extension org.jnario.jnario.test.util.SpecExecutor.*
  * [Here](https://gist.github.com/2869959) is another example that demonstrates 
  * how to create a custom **SpecCreator** for [Mockito](http://code.google.com/p/mockito/).
  */
+@CreateWith(typeof(SpecTestCreator))
 describe "Customizing the Spec Creation" {
-
+	@Inject extension BehaviorExecutor
   /*
    * This example uses the Google Guice to instantiate the specification.
    *  @filter('''|.executesSuccessfully)  

@@ -10,13 +10,19 @@ package org.jnario.spec.tests.integration
 import static org.jnario.jnario.test.util.ResultMatchers.*
 
 import static extension org.jnario.jnario.test.util.SpecExecutor.*
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SpecTestCreator
+import com.google.inject.Inject
+import org.jnario.jnario.test.util.BehaviorExecutor
 
 
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
+@CreateWith(typeof(SpecTestCreator))
 describe "After" {
- 
+ 	@Inject extension BehaviorExecutor
+ 	
 	fact "should be executed after each test"{
 			'''
 			package bootstrap 

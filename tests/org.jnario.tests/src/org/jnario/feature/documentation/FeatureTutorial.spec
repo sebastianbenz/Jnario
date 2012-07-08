@@ -68,7 +68,7 @@ describe "Introducing Jnario Features"{
    describe "How to write a Feature?"{
      /*
      * 
-     * @filter('''|.executesSuccessfully) 
+     * @filter('''|.isSuccessful) 
      * @lang(feature)
      *
         * To turn our scenario into an executable specification you have to add the necessary code to each
@@ -105,7 +105,7 @@ describe "Introducing Jnario Features"{
         * described [here](/org/jnario/spec/tests/integration/AssertionSpec.html).
         * Here we use for describing the expected outcome of an expression `=>`.
         * 
-        * @filter('''|.executesSuccessfully)
+        * @filter('''|.isSuccessful)
         * @lang(feature)
         */
        fact "Implementing Steps"{
@@ -125,7 +125,7 @@ describe "Introducing Jnario Features"{
            result = calculator.add(args.first.toInt, args.second.toInt)
          Then it prints "90"
            result => args.first.toInt
-         '''.executesSuccessfully
+         '''.isSuccessful
        }
        
        /*
@@ -134,7 +134,7 @@ describe "Introducing Jnario Features"{
         * **Given** step together with it's used fields to a **Background**. 
         * All steps defined as background steps will be executed before each steps of a scenario.
         * 
-        * @filter('''|.executesSuccessfully)
+        * @filter('''|.isSuccessful)
         * @lang(feature)
         */
        fact "Background"{
@@ -161,8 +161,7 @@ describe "Introducing Jnario Features"{
         When I divide "70" by "10"
         	 result = calculator.divide(args.first.toInt, args.second.toInt)
         Then it prints "7"
-        
-       '''.executesSuccessfully
+       '''.isSuccessful
        }
       
        
@@ -176,7 +175,7 @@ describe "Introducing Jnario Features"{
         * a referenced step. You can also jump directly to the original step declaration
         * to have a look at the implementation.
         * 
-        * @filter('''|.executesSuccessfully)
+        * @filter('''|.isSuccessful)
         * @lang(feature)
         */
        fact "Step references"{
@@ -202,7 +201,7 @@ describe "Introducing Jnario Features"{
 	        When entering two numbers "10" and "5" and pressing enter. 
 	          result = calculator.divide(args.first.toInt, args.second.toInt)
 	        Then it prints "2"
-         '''.executesSuccessfully
+         '''.isSuccessful
        }
    }   
   

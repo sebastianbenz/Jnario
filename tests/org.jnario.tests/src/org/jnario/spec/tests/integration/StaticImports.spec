@@ -8,14 +8,19 @@
 
 package org.jnario.spec.tests.integration
 
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SpecTestCreator
+import com.google.inject.Inject
+import org.jnario.jnario.test.util.BehaviorExecutor
+
+@CreateWith(typeof(SpecTestCreator))
 describe "StaticImports" {
- 
+ 	@Inject extension BehaviorExecutor
 	fact "should resolve static imports"{
-		val spec = '
+		'''
 			package bootstrap
 			
 			import static org.junit.Assert.*
-	
 			describe "Example" {
 			
 				fact "should resolve static imports"{
@@ -23,9 +28,7 @@ describe "StaticImports" {
 				} 
 						
 			}
-		'
-		val result = org::jnario::jnario::test::util::SpecExecutor::execute(spec)
-		org::junit::Assert::assertThat(result, org::jnario::jnario::test::util::ResultMatchers::successful)
+		'''.executesSuccessfully
 	} 
 			
 }

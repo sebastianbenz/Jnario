@@ -26,7 +26,7 @@ public class BackgroundsFeatureInstantiatingObjectsInBackgrounds {
   @Order(1)
   @Named("Then it should execute successfully")
   public void thenItShouldExecuteSuccessfully() {
-    FeatureExecutor.executesSuccessfully(jnarioFile);
+    FeatureExecutor.isSuccessful(jnarioFile);
   }
   
   CharSequence jnarioFile;

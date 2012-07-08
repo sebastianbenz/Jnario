@@ -12,9 +12,14 @@ import static org.junit.Assert.*
 import static extension org.jnario.jnario.test.util.SpecExecutor.*
 import static org.jnario.jnario.test.util.ResultMatchers.*
 import static org.hamcrest.CoreMatchers.*
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SpecTestCreator
+import org.jnario.jnario.test.util.BehaviorExecutor
+import com.google.inject.Inject
 
+@CreateWith(typeof(SpecTestCreator))
 describe "Implicit Subject"{
-  
+  @Inject extension BehaviorExecutor
   /*
    * @filter('''|.executesSuccessfully)  
    */

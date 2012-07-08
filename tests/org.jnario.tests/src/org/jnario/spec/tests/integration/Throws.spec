@@ -8,9 +8,14 @@
 package org.jnario.spec.tests.integration
 
 import static extension org.jnario.jnario.test.util.SpecExecutor.*
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SpecTestCreator
+import com.google.inject.Inject
+import org.jnario.jnario.test.util.BehaviorExecutor
 
+@CreateWith(typeof(SpecTestCreator))
 describe "Throws"{
-	
+	@Inject extension BehaviorExecutor
 	fact "passes if exception is thrown"{
 		'''
 			package bootstrap

@@ -18,6 +18,8 @@ import org.jnario.runner.CreateWith
 import org.jnario.jnario.test.util.SpecTestCreator
 
 import static extension org.jnario.lib.Should.*
+import org.jnario.jnario.test.util.ModelStore
+import org.jnario.spec.spec.ExampleGroup
 
 @CreateWith(typeof(SpecTestCreator))
 describe OperationNameProvider{
@@ -27,6 +29,8 @@ describe OperationNameProvider{
 	@Inject	ClasspathTypeProviderFactory typeProviderFactory = new ClasspathTypeProviderFactory(getClass().classLoader)
 	
 	Map<String, JvmOperation> operations
+	
+	@Inject extension ModelStore 
 	
 	@Before
 	def void setup(){

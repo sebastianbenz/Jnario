@@ -12,6 +12,10 @@ import static extension org.jnario.lib.Each.*
 import static extension org.jnario.lib.Should.*
 import static extension org.jnario.jnario.test.util.SpecExecutor.*
 import java.util.Stack
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SpecTestCreator
+import org.jnario.jnario.test.util.BehaviorExecutor
+import com.google.inject.Inject
  
 /*
  * This tutorial gives you an introduction on how to write unit specifications with Jnario.
@@ -21,11 +25,14 @@ import java.util.Stack
  *  
  * ### Installation & Runtime Library
  *
- * Jnario currently requires [Eclipse](http://www.eclipse.org) 3.5 or higher with [Xtext](http://www.xtext.org) 2.3,  and a Java SDK version 5 or above. 
- * You can install the most recent version from this update site: `http://www.jnario.org/updates/snapshot/`. Jnario requires a small runtime library that contains
- * the JUnit integration. You can download the jar [here](http://jnario.org/updates/snapshot/org.jnario.lib-0.1.0-SNAPSHOT.jar).
+ * Jnario currently requires [Eclipse](http://www.eclipse.org) 3.5 or higher with [Xtext](http://www.xtext.org) 2.3, 
+ *  and a Java SDK version 5 or above. You can install the most recent version from this update site: 
+ * `http://www.jnario.org/updates/snapshot/`. Jnario requires a small runtime library that contains
+ * the JUnit integration. You can download the jar 
+ * [here](http://jnario.org/updates/snapshot/org.jnario.lib-0.1.0-SNAPSHOT.jar).
  *    
  */ 
+@CreateWith(typeof(SpecTestCreator))
 describe "Introducing Jnario Specs"{
 
 	/*
@@ -33,6 +40,7 @@ describe "Introducing Jnario Specs"{
 	 * (**File** -> **New** -> **Other** -> **Jnario** -> **Spec**).
 	 * 
 	 * <p align="center"><img src="/img/tutorial/spec_wizard.png" alt="New Spec Wizard"/></p> 
+	 * 
 	 * In Jnario we *describe facts* about our program. Here are two simple facts about a stack:
 	 * 
 	 * <pre class="prettyprint lang-spec">
@@ -56,7 +64,7 @@ describe "Introducing Jnario Specs"{
 	 * in the `xtend-gen` folder.  
 	 */
 	describe "How to write a Specification"{
-  
+  		@Inject extension BehaviorExecutor
 		/*
 		 * The next step is to enrich our facts with the required logic to
 		 * check whether our stack behaves as specified. Checks are implemented by adding  

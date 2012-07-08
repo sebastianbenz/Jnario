@@ -11,11 +11,16 @@ import static org.jnario.jnario.test.util.SpecExecutor.*
 import static org.junit.Assert.*
 import static org.jnario.jnario.test.util.ResultMatchers.*
 import org.jnario.spec.spec.ExampleGroup
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SpecTestCreator
+import org.jnario.jnario.test.util.BehaviorExecutor
+import com.google.inject.Inject
 /** 
  * @author Sebastian Benz - Initial contribution and API
  */
+@CreateWith(typeof(SpecTestCreator))
 describe ExampleGroup {
-  
+  	@Inject extension BehaviorExecutor
 	fact "should resolve target class"{
 		val spec = '
 			package bootstrap

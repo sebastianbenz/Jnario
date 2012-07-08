@@ -9,10 +9,16 @@
 
 import static org.jnario.jnario.test.util.ResultMatchers.*
 import static extension org.jnario.jnario.test.util.SpecExecutor.*
+import org.jnario.jnario.test.util.BehaviorExecutor
+import com.google.inject.Inject
+import org.jnario.jnario.test.util.SpecTestCreator
+import org.jnario.runner.CreateWith
 /**
  * @author Sebastian Benz - Initial contribution and API
  */ 
+@CreateWith(typeof(SpecTestCreator))
 describe "AfterAll" {
+	@Inject extension BehaviorExecutor
  
 	fact "should be executed after all tests"{
 		val spec = '

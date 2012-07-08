@@ -11,12 +11,17 @@ import static org.junit.Assert.*
 import static extension org.jnario.jnario.test.util.SpecExecutor.*
 import static org.jnario.jnario.test.util.ResultMatchers.*
 import static org.jnario.spec.tests.integration.ExtensionExample.*
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SpecTestCreator
+import org.jnario.jnario.test.util.BehaviorExecutor
+import com.google.inject.Inject
 
 /*
  * Extensions can be used to share common setup and tear down behavior across different specifications.
  */
+@CreateWith(typeof(SpecTestCreator))
 describe "Extensions"{
-
+	@Inject extension BehaviorExecutor
 	fact "all setup and tear down methods in extensions will be executed"{
 		execute('''
 			package bootstrap

@@ -7,18 +7,42 @@
  *******************************************************************************/
 package org.jnario.jnario.test.util;
 
+import static org.junit.Assert.assertFalse;
+
 import java.net.MalformedURLException;
 
 import org.eclipse.emf.ecore.EObject;
+import org.jnario.suite.jvmmodel.SuiteClassNameProvider;
+import org.jnario.suite.suite.Suite;
+import org.jnario.suite.suite.SuiteFile;
 import org.junit.runner.Result;
 
+import com.google.common.collect.Iterables;
+import com.google.inject.Inject;
+
+@SuppressWarnings("restriction")
 public class SuiteExecutor extends BehaviorExecutor {
 	
+	@Inject private SuiteClassNameProvider nameProvider;
 
-	@Override
-	protected Result runExamples(EObject object) throws MalformedURLException,
-			ClassNotFoundException {
-		throw new UnsupportedOperationException();
+	public SuiteExecutor() {
+		super();
+		validate = false;
 	}
-
+	
+	protected Result runExamples(EObject object) throws MalformedURLException, ClassNotFoundException {
+		SuiteFile suiteFile = (SuiteFile) object;
+		CompositeResult result = new CompositeResult();
+		for (Suite suite : Iterables.filter(suiteFile.getXtendClasses(), Suite.class)) {
+			String suiteClassName = nameProvider.getClassName(suite);
+			String packageName = suite.getPackageName();
+			result.add(runTestsInClass(suiteClassName, packageName));
+		}
+		return result;
+	}
+	
+	protected void generateJava(EObject object) {
+		super.generateJava(object);
+		assertFalse("has no examples", ((SuiteFile)object).getXtendClasses().isEmpty());
+	}
 }

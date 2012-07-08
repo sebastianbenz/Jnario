@@ -37,6 +37,13 @@ describe ExampleNameProvider{
       firstJavaClassName("describe org.junit.Assert 'My Example'") => startsWith("Assert")
     }  
     
+    fact "should prepend unresolved target type name"{
+      firstJavaClassName("describe Unresolved") => startsWith("UnresolvedSpec")
+      firstJavaClassName("describe java.Unresolved") => startsWith("UnresolvedSpec")
+      firstJavaClassName("describe Unresolved$SubClass") => startsWith("SubClassSpec")
+      firstJavaClassName("describe java.Unresolved<String>") => startsWith("UnresolvedSpec")
+    }  
+    
     fact "should convert description to camel case"{
       newArrayList(
         "describe 'my example'",
@@ -241,6 +248,11 @@ describe ExampleNameProvider{
     
     fact "should use the target type"{
       describeFirst("describe org.junit.Assert") => "Assert"
+    }
+    
+    fact "should use the unresolved target type"{
+      describeFirst("describe Unresolved") => "Unresolved"
+      describeFirst("describe org.Unresolved") => "Unresolved"
     }
     
     fact "should combine target type and description"{

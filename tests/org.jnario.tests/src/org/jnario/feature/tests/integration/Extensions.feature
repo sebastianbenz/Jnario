@@ -71,7 +71,7 @@ Feature: Setup & Teardown with Feature Extensions
       feature = args.first
       And execute the feature
             recorder = ConsoleRecorder::start
-          feature.executesSuccessfully
+          feature.isSuccessful
     Then the execution order is
           '''
         before

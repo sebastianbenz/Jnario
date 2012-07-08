@@ -11,9 +11,14 @@ import static org.junit.Assert.*
 import static org.jnario.jnario.test.util.ResultMatchers.*
 import static org.hamcrest.CoreMatchers.*
 import static org.jnario.jnario.test.util.SpecExecutor.*
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SpecTestCreator
+import org.jnario.jnario.test.util.BehaviorExecutor
+import com.google.inject.Inject
 
+@CreateWith(typeof(SpecTestCreator))
 describe "Pending"{
-	
+	@Inject extension BehaviorExecutor
 	fact "ignores empty examples during example runs"{
 		val spec = '
 			package bootstrap

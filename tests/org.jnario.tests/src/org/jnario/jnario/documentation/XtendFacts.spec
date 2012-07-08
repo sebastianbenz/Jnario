@@ -12,7 +12,7 @@ import static extension java.util.Collections.*
  * (http://www.eclipse.org/xtend/documentation.html).
  */
 describe "20 Facts about Xtend"{
-  
+
   /*
    * The syntax of Xtend is quite similar to Java, but Xtend code 
    * is usually a lot shorter than its Java counterpart. However, 

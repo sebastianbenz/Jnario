@@ -15,6 +15,9 @@ import static com.google.common.collect.Lists.newArrayList;
 import static junit.framework.Assert.assertFalse;
 import static org.eclipse.emf.common.util.URI.createURI;
 import static org.eclipse.xtext.util.Exceptions.throwUncheckedException;
+import static org.jnario.jnario.test.util.ResultMatchers.failureCountIs;
+import static org.jnario.jnario.test.util.ResultMatchers.isSuccessful;
+import static org.junit.Assert.assertThat;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -26,12 +29,15 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Singleton;
+
 import org.antlr.runtime.Token;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtend.core.xtend.XtendPackage;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.Constants;
@@ -92,13 +98,29 @@ public abstract class BehaviorExecutor {
 		try {
 			((IRegistryConfigurator)injectorProvider).setupRegistry();		
 			BehaviorExecutor executor = injectorProvider.getInjector().getInstance(BehaviorExecutor.class);
-			Resource resource = executor.parse(content.toString());	
-			Result result = executor.run(resource.getContents().get(0));
-			resource.unload();
-			return result;
+			return executor.execute(content);
 		} finally {
 			((IRegistryConfigurator)injectorProvider).restoreRegistry();
 		}
+	}
+	
+	public void executesSuccessfully(CharSequence content) {
+		assertThat(execute(content), isSuccessful());
+	}
+	
+	public void executionFails(CharSequence content) {
+		assertThat(execute(content), failureCountIs(1));
+	}
+	
+	public Result execute(CharSequence content) {
+		return execute(content, fileExtension);
+	}
+	
+	protected Result execute(CharSequence content, String fileExtension) {
+		Resource resource = parse(content.toString(), fileExtension);	
+		Resources.addContainerStateAdapter(resourceSet);
+		Result result = run(resource.getContents().get(0));
+		return result;
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -110,14 +132,19 @@ public abstract class BehaviorExecutor {
 		}
 		return (T) injectorProvider;
 	}
+
+	private XtextResourceSet resourceSet = new XtextResourceSet();
 	
-	protected Resource parse(String content) {
-		XtextResourceSet resourceSet = new XtextResourceSet();
+	protected Resource parse(CharSequence content) {
+		return parse(content, fileExtension);
+	}
+
+	private Resource parse(CharSequence content, String file) {
 		installJvmTypeProvider(resourceSet);
-		Resource resource = resourceFactory.createResource(createURI("dummy." + fileExtension));
+		Resource resource = resourceSet.createResource(createURI("dummy." + file));
 		resourceSet.getResources().add(resource);
 		try {
-			resource.load(new StringInputStream(content), Collections.emptyMap());
+			resource.load(new StringInputStream(content.toString()), Collections.emptyMap());
 //			EcoreUtil.resolveAll(resource);
 			Resources.checkForParseErrors(resource);
 		} catch (IOException e) {
@@ -209,28 +236,29 @@ public abstract class BehaviorExecutor {
 	
 	@Inject private JvmModelGenerator generator;
 	@Inject private JavaIoFileSystemAccess fsa;
+	
 	private TemporaryFolder tempFolder = new TemporaryFolder();
 
 	@Inject private IResourceValidator validator;
 	protected boolean validate = true;
 	private FeatureJavaCompiler javaCompiler = FeatureJavaCompiler.getInstance();
-	@Inject private IResourceFactory resourceFactory;
+
 	@Inject
 	@com.google.inject.name.Named(Constants.FILE_EXTENSIONS)
 	public String fileExtension;
 	
 	@Inject
+	@Singleton
 	private IndexedJvmTypeAccess indexedJvmTypeAccess;
 	
 	protected void installJvmTypeProvider(ResourceSet resourceSet) {
-		Iterable<String> classPathEntries = concat(javaCompiler.getClasspathPathEntries());
+		Iterable<? extends String> classPathEntries = javaCompiler.getClasspathPathEntries();
 		classPathEntries = filter(classPathEntries, new Predicate<String>() {
 			public boolean apply(String input) {
 				return !Strings.isEmpty(input.trim());
 			}
 		});
 		Iterable<URL> classPathUrls = Iterables.transform(classPathEntries, new Function<String, URL>() {
-
 			public URL apply(String from) {
 				try {
 					return new File(from).toURI().toURL();

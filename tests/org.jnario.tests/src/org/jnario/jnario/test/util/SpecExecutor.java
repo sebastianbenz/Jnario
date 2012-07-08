@@ -7,10 +7,7 @@
  *******************************************************************************/
 package org.jnario.jnario.test.util;
 
-import static org.jnario.jnario.test.util.ResultMatchers.failureCountIs;
-import static org.jnario.jnario.test.util.ResultMatchers.isSuccessful;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
 
 import java.net.MalformedURLException;
 
@@ -25,18 +22,6 @@ import com.google.inject.Inject;
 @SuppressWarnings("restriction")
 public class SpecExecutor extends BehaviorExecutor{
 	
-	public static void executesSuccessfully(CharSequence content) {
-		assertThat(execute(content), isSuccessful());
-	}
-	
-	public static void executionFails(CharSequence content) {
-		assertThat(execute(content), failureCountIs(1));
-	}
-
-	public static Result execute(CharSequence content) {
-		return execute(ExtendedSpecInjectorProvider.class, content);
-	}
-
 	@Inject private ExampleNameProvider nameProvider;
 
 	public SpecExecutor() {

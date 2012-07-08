@@ -10,12 +10,17 @@ package org.jnario.spec.tests.integration
 import static extension org.jnario.jnario.test.util.Helpers.*
 import static extension org.jnario.jnario.test.util.SpecExecutor.*
 import org.junit.Ignore
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SpecTestCreator
+import org.jnario.jnario.test.util.BehaviorExecutor
+import com.google.inject.Inject
 
 /*
  * Example tables are a great way to structure input and expected output data.
  */
+@CreateWith(typeof(SpecTestCreator))
 describe "Using Tables"{
-  
+  @Inject extension BehaviorExecutor
   /*
    * Examples are stored within a table. Assertions for the table's values are
    * best implemented by iterating over each table row using `forEach`. 

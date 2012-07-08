@@ -9,7 +9,6 @@ package org.jnario.jnario.test.util;
 
 import static junit.framework.Assert.assertFalse;
 import static org.jnario.jnario.test.util.ResultMatchers.failureCountIs;
-import static org.jnario.jnario.test.util.ResultMatchers.isSuccessful;
 import static org.junit.Assert.assertThat;
 
 import java.net.MalformedURLException;
@@ -29,16 +28,16 @@ import com.google.inject.Inject;
 @SuppressWarnings("restriction")
 public class FeatureExecutor extends BehaviorExecutor{
 
-	public static Result execute(CharSequence content) {
+	public static Result run(CharSequence content) {
 		return execute(ExtendedFeatureInjectorProvider.class, content);
 	}
 	
-	public static void executesSuccessfully(CharSequence content) {
-		assertThat(execute(content), isSuccessful());
+	public static void isSuccessful(CharSequence content) {
+		assertThat(run(content), ResultMatchers.isSuccessful());
 	}
 	
-	public static void executionFails(CharSequence content) {
-		assertThat(execute(content), failureCountIs(1));
+	public static void fails(CharSequence content) {
+		assertThat(run(content), failureCountIs(1));
 	}
 	
 	@Inject

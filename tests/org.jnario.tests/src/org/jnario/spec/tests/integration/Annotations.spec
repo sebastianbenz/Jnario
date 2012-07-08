@@ -11,13 +11,18 @@ import static org.jnario.jnario.test.util.ResultMatchers.*
 
 
 import static extension org.jnario.jnario.test.util.SpecExecutor.*
+import org.jnario.jnario.test.util.SpecTestCreator
+import org.jnario.runner.CreateWith
+import com.google.inject.Inject
+import org.jnario.jnario.test.util.BehaviorExecutor
 
 
 /**
  * @author Sebastian Benz - Initial contribution and API
  */ 
+@CreateWith(typeof(SpecTestCreator))
 describe "Annotations" {
- 
+  	@Inject extension BehaviorExecutor
 	fact "should support class annotations for 'describe'"{
 		val spec = '
 			package bootstrap
