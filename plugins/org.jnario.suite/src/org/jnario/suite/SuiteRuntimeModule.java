@@ -24,7 +24,6 @@ import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.generator.OutputConfigurationProvider;
 import org.eclipse.xtext.linking.ILinkingDiagnosticMessageProvider;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
-import org.eclipse.xtext.parser.IParser;
 import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
 import org.eclipse.xtext.resource.IResourceDescription;
 import org.eclipse.xtext.resource.XtextResource;
@@ -36,19 +35,20 @@ import org.eclipse.xtext.xbase.featurecalls.IdentifiableSimpleNameProvider;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.JvmModelAssociator;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
+import org.eclipse.xtext.xbase.resource.JvmDeclaredTypeSignatureHashProvider.SignatureHashBuilder;
 import org.eclipse.xtext.xbase.validation.EarlyExitValidator;
 import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.DocOutputConfigurationProvider;
 import org.jnario.generator.JnarioJavaIoFileSystemAccess;
 import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
+import org.jnario.jvmmodel.JnarioSignatureHashBuilder;
 import org.jnario.suite.compiler.SuiteBatchCompiler;
 import org.jnario.suite.conversion.SuiteValueConverterService;
 import org.jnario.suite.doc.SuiteDocGenerator;
 import org.jnario.suite.generator.SuiteGenerator;
 import org.jnario.suite.jvmmodel.SuiteJvmModelInferrer;
 import org.jnario.suite.naming.SuiteQualifiedNameProvider;
-import org.jnario.suite.parser.CustomSuiteParser;
 import org.jnario.suite.resource.SuiteResourceDescriptionManager;
 
 import com.google.inject.Binder;
@@ -64,16 +64,12 @@ public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeMod
 	public void configure(Binder binder) {
 		super.configure(binder);
 		binder.bind(AbstractDocGenerator.class).to(SuiteDocGenerator.class);
+		binder.bind(SignatureHashBuilder.class).to(JnarioSignatureHashBuilder.class);
 	}
 	
 	@Override
 	public Class<? extends IValueConverterService> bindIValueConverterService() {
 		return SuiteValueConverterService.class;
-	}
-	
-	@Override
-	public Class<? extends IParser> bindIParser() {
-		return CustomSuiteParser.class;
 	}
 	
 	public Class<? extends org.eclipse.xtext.generator.IGenerator> bindIGenerator() {

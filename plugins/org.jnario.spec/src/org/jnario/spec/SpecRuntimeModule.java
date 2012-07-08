@@ -40,6 +40,7 @@ import org.eclipse.xtext.xbase.featurecalls.IdentifiableSimpleNameProvider;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.JvmModelAssociator;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
+import org.eclipse.xtext.xbase.resource.JvmDeclaredTypeSignatureHashProvider.SignatureHashBuilder;
 import org.eclipse.xtext.xbase.scoping.featurecalls.StaticImplicitMethodsFeatureForTypeProvider.ExtensionClassNameProvider;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.eclipse.xtext.xbase.validation.EarlyExitValidator;
@@ -50,6 +51,7 @@ import org.jnario.generator.JnarioJavaIoFileSystemAccess;
 import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.jvmmodel.JnarioDispatchUtil;
+import org.jnario.jvmmodel.JnarioSignatureHashBuilder;
 import org.jnario.linking.JnarioLazyLinker;
 import org.jnario.linking.JnarioLinkingService;
 import org.jnario.scoping.JnarioExtensionClassNameProvider;
@@ -76,6 +78,7 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 	public void configure(Binder binder) {
 		super.configure(binder);
 		binder.bind(AbstractDocGenerator.class).to(SpecDocGenerator.class);
+		binder.bind(SignatureHashBuilder.class).to(JnarioSignatureHashBuilder.class);
 	}
 	
 	

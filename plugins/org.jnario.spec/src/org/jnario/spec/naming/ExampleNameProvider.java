@@ -8,10 +8,12 @@
 package org.jnario.spec.naming;
 
 import static java.lang.Character.isDigit;
+import static java.lang.Math.max;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 import static org.eclipse.xtext.util.Strings.convertToJavaString;
 import static org.eclipse.xtext.util.Strings.toFirstLower;
 import static org.eclipse.xtext.util.Strings.toFirstUpper;
+import static org.jnario.util.Nodes.textForFeature;
 import static org.jnario.util.Strings.convertToCamelCase;
 import static org.jnario.util.Strings.makeJunitConform;
 import static org.jnario.util.Strings.markAsPending;
@@ -20,6 +22,10 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendMember;
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
+import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.common.types.TypesPackage;
+import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.util.SimpleAttributeResolver;
 import org.eclipse.xtext.xbase.compiler.JavaKeywords;
 import org.jnario.ExampleTable;
@@ -27,6 +33,7 @@ import org.jnario.spec.spec.After;
 import org.jnario.spec.spec.Before;
 import org.jnario.spec.spec.Example;
 import org.jnario.spec.spec.ExampleGroup;
+import org.jnario.spec.spec.SpecPackage;
 import org.jnario.spec.spec.TestFunction;
 import org.jnario.spec.spec.util.SpecSwitch;
 
@@ -48,17 +55,26 @@ public class ExampleNameProvider {
 	public String describe(ExampleGroup exampleGroup) {
 		StringBuilder result = new StringBuilder();
 		if(exampleGroup.getTargetType() != null){
-			result.append(exampleGroup.getTargetType().getSimpleName());
+			result.append(getTargetTypeName(exampleGroup));
 			result.append(" ");
 		}
-		if(exampleGroup.getTargetOperation() != null){
-			result.append(new OperationNameProvider().apply(exampleGroup.getTargetOperation()));
+		if(hasTargetOperation(exampleGroup)){
+			result.append(getOperationName(exampleGroup));
 			result.append(" ");
 		}
 		if(exampleGroup.getName() != null){
 			result.append(exampleGroup.getName());
 		}
 		return convertToJavaString(makeJunitConform(result));
+	}
+
+	protected QualifiedName getOperationName(ExampleGroup exampleGroup) {
+		EObject operation = (EObject) exampleGroup.eGet(SpecPackage.Literals.EXAMPLE_GROUP__TARGET_OPERATION, false);
+		if(operation.eIsProxy()){
+			String name = textForFeature(exampleGroup, SpecPackage.Literals.EXAMPLE_GROUP__TARGET_OPERATION);
+			return QualifiedName.create(name);
+		}
+		return operationNameProvider.apply(exampleGroup.getTargetOperation());
 	}
 
 	public String describe(Example example){
@@ -158,15 +174,49 @@ public class ExampleNameProvider {
 			result.append(internalGetName(parent));
 		}
 		if(exampleGroup.getTargetType() != null){
-			result.append(exampleGroup.getTargetType().getSimpleName());
+			result.append(getTargetTypeName(exampleGroup));
 		}
-		if(exampleGroup.getTargetOperation() != null){
-			String operationName = operationNameProvider.apply(exampleGroup.getTargetOperation()).toString();
+		if(hasTargetOperation(exampleGroup)){
+			String operationName = getOperationName(exampleGroup).toString();
 			result.append(toFirstUpper(operationName));
 		}
 		result.append(toFirstUpper(memberDescriptionOf(exampleGroup)));
 		result = convertToCamelCase(result);
 		return result;
+	}
+
+	protected String getTargetTypeName(ExampleGroup exampleGroup) {
+		String targetName;
+		if(isProxy(exampleGroup.getTargetType())){
+			targetName = resolveProxyTypeName(exampleGroup);
+		}else{
+			targetName = exampleGroup.getTargetType().getSimpleName();
+		}
+		return targetName;
+	}
+
+	protected boolean hasTargetOperation(ExampleGroup exampleGroup) {
+		return exampleGroup.eIsSet(SpecPackage.Literals.EXAMPLE_GROUP__TARGET_OPERATION);
+	}
+
+	private String resolveProxyTypeName(ExampleGroup exampleGroup) {
+		String text = textForFeature(exampleGroup, SpecPackage.Literals.EXAMPLE_GROUP__TARGET_TYPE);
+		int begin = max(text.lastIndexOf('.'), text.lastIndexOf('$')) + 1;
+		int end = text.indexOf('<');
+		if(end == -1){
+			end = text.length();
+		}
+		return text.substring(begin, end);
+	}
+
+	private boolean isProxy(JvmTypeReference jvmTypeReference) {
+		if (jvmTypeReference instanceof JvmParameterizedTypeReference) {
+			JvmParameterizedTypeReference parameterizedTypeReference = (JvmParameterizedTypeReference) jvmTypeReference;
+			EObject value = (EObject) parameterizedTypeReference.eGet(TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE, false);
+			return value.eIsProxy();
+		}else{
+			return true;
+		}
 	}
 	
 	private String memberDescriptionOf(XtendMember member) {

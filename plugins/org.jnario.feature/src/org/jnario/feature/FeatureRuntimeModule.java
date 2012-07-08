@@ -41,6 +41,7 @@ import org.eclipse.xtext.xbase.impl.FeatureCallToJavaMapping;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.JvmModelAssociator;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
+import org.eclipse.xtext.xbase.resource.JvmDeclaredTypeSignatureHashProvider.SignatureHashBuilder;
 import org.eclipse.xtext.xbase.scoping.featurecalls.StaticImplicitMethodsFeatureForTypeProvider.ExtensionClassNameProvider;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.eclipse.xtext.xbase.validation.EarlyExitValidator;
@@ -65,6 +66,7 @@ import org.jnario.feature.validation.FeatureClasspathBasedChecks;
 import org.jnario.feature.validation.FeatureResourceValidator;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.jvmmodel.JnarioDispatchUtil;
+import org.jnario.jvmmodel.JnarioSignatureHashBuilder;
 import org.jnario.scoping.JnarioExtensionClassNameProvider;
 import org.jnario.typing.JnarioTypeProvider;
 
@@ -80,6 +82,7 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 	public void configure(Binder binder) {
 		super.configure(binder);
 		binder.bind(AbstractDocGenerator.class).to(FeatureDocGenerator.class);
+		binder.bind(SignatureHashBuilder.class).to(JnarioSignatureHashBuilder.class);
 	}
 	
 	public Class<? extends ILinkingDiagnosticMessageProvider> bindILinkingDiagnosticMessageProvider() {
