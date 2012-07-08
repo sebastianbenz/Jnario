@@ -54,7 +54,7 @@ public class FeatureHighlightingConfiguration extends XtendHighlightingConfigura
 		acceptor.acceptDefaultHighlighting(STEP_REFERENCE_ID, "Step reference",
 				stepRefKeyWordStyle());
 		acceptor.acceptDefaultHighlighting(STEP_UNRESOLVED_REFERENCE_ID, "Unresolved step reference",
-				stepRefKeyWordStyle());
+				stepUnresolvedRefKeyWordStyle());
 		acceptor.acceptDefaultHighlighting(IDENTIFIERS_ID, "Identifiers", identifiersTextStyle());
 	}
 

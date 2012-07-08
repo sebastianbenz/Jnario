@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendMember;
@@ -104,8 +105,8 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 		@Override
 		public Boolean caseStep(Step step) {
 			String description;
-			if(step.getName() != null){
-				description = getFirstWord(step.getName());
+			if(step != null && step.getName() != null){
+				description = getFirstWord(stepReferenceName(step, FeaturePackage.Literals.STEP__NAME));
 				highlightStep(description, step, FeaturePackage.Literals.STEP__NAME);
 			}else if(step instanceof StepReference){
 				StepReference ref = (StepReference) step;
@@ -126,8 +127,9 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 		}
 		
 		private void highlightFirstWordOfReference(Step reference, Step referencedStep){
-			String description = getFirstWord(referencedStep.getName());
-			if(description != ""){
+			String description;
+			if(referencedStep.getName() != null){
+				description = getFirstWord(stepReferenceName(reference, FeaturePackage.Literals.STEP_REFERENCE__REFERENCE));
 				highlightReference(description, reference, FeaturePackage.Literals.STEP_REFERENCE__REFERENCE, FeatureHighlightingConfiguration.STEP_REFERENCE_ID);
 				
 			}
@@ -138,8 +140,8 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 			}
 		}
 		
-		private String stepReferenceName(Step step, EReference ref){
-			List<INode> nodes = NodeModelUtils.findNodesForFeature(step, ref);
+		private String stepReferenceName(Step step, EStructuralFeature feature){
+			List<INode> nodes = NodeModelUtils.findNodesForFeature(step, feature);
 			// works only if keyword exists only once in Step
 			return nodes.iterator().next().getText();
 		}
