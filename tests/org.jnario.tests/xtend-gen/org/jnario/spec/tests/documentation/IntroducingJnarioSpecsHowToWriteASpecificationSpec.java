@@ -1,8 +1,10 @@
 package org.jnario.spec.tests.documentation;
 
+import com.google.inject.Inject;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.jnario.jnario.test.util.SpecExecutor;
+import org.jnario.jnario.test.util.BehaviorExecutor;
 import org.jnario.runner.ExampleGroupRunner;
+import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.spec.tests.documentation.IntroducingJnarioSpecsSpec;
@@ -14,6 +16,7 @@ import org.junit.runner.RunWith;
  * (**File** -> **New** -> **Other** -> **Jnario** -> **Spec**).
  * 
  * <p align="center"><img src="/img/tutorial/spec_wizard.png" alt="New Spec Wizard"/></p>
+ * 
  * In Jnario we *describe facts* about our program. Here are two simple facts about a stack:
  * 
  * <pre class="prettyprint lang-spec">
@@ -40,6 +43,10 @@ import org.junit.runner.RunWith;
 @RunWith(ExampleGroupRunner.class)
 @Named("How to write a Specification")
 public class IntroducingJnarioSpecsHowToWriteASpecificationSpec extends IntroducingJnarioSpecsSpec {
+  @Inject
+  @Extension
+  public BehaviorExecutor _behaviorExecutor;
+  
   /**
    * The next step is to enrich our facts with the required logic to
    * check whether our stack behaves as specified. Checks are implemented by adding
@@ -98,7 +105,7 @@ public class IntroducingJnarioSpecsHowToWriteASpecificationSpec extends Introduc
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
-    SpecExecutor.executesSuccessfully(_builder);
+    this._behaviorExecutor.executesSuccessfully(_builder);
   }
   
   /**
@@ -165,7 +172,7 @@ public class IntroducingJnarioSpecsHowToWriteASpecificationSpec extends Introduc
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
-    SpecExecutor.executesSuccessfully(_builder);
+    this._behaviorExecutor.executesSuccessfully(_builder);
   }
   
   /**
@@ -215,7 +222,7 @@ public class IntroducingJnarioSpecsHowToWriteASpecificationSpec extends Introduc
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
-    SpecExecutor.executesSuccessfully(_builder);
+    this._behaviorExecutor.executesSuccessfully(_builder);
   }
   
   /**
@@ -276,7 +283,7 @@ public class IntroducingJnarioSpecsHowToWriteASpecificationSpec extends Introduc
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
-    SpecExecutor.executesSuccessfully(_builder);
+    this._behaviorExecutor.executesSuccessfully(_builder);
   }
   
   /**
@@ -362,7 +369,7 @@ public class IntroducingJnarioSpecsHowToWriteASpecificationSpec extends Introduc
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
-    SpecExecutor.executesSuccessfully(_builder);
+    this._behaviorExecutor.executesSuccessfully(_builder);
   }
   
   /**
@@ -440,7 +447,7 @@ public class IntroducingJnarioSpecsHowToWriteASpecificationSpec extends Introduc
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
-    SpecExecutor.executesSuccessfully(_builder);
+    this._behaviorExecutor.executesSuccessfully(_builder);
   }
   
   /**
@@ -548,7 +555,7 @@ public class IntroducingJnarioSpecsHowToWriteASpecificationSpec extends Introduc
     _builder.newLine();
     _builder.append("} ");
     _builder.newLine();
-    SpecExecutor.executesSuccessfully(_builder);
+    this._behaviorExecutor.executesSuccessfully(_builder);
   }
   
   /**
@@ -631,7 +638,7 @@ public class IntroducingJnarioSpecsHowToWriteASpecificationSpec extends Introduc
     _builder.newLine();
     _builder.append("}  ");
     _builder.newLine();
-    SpecExecutor.executesSuccessfully(_builder);
+    this._behaviorExecutor.executesSuccessfully(_builder);
   }
   
   /**
@@ -759,6 +766,6 @@ public class IntroducingJnarioSpecsHowToWriteASpecificationSpec extends Introduc
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
-    SpecExecutor.executesSuccessfully(_builder);
+    this._behaviorExecutor.executesSuccessfully(_builder);
   }
 }

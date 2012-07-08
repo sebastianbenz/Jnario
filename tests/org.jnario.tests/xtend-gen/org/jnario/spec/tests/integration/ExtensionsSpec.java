@@ -1,12 +1,16 @@
 package org.jnario.spec.tests.integration;
 
+import com.google.inject.Inject;
 import java.util.List;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.hamcrest.StringDescription;
-import org.jnario.jnario.test.util.SpecExecutor;
+import org.jnario.jnario.test.util.BehaviorExecutor;
+import org.jnario.jnario.test.util.SpecTestCreator;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
+import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
+import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.spec.tests.integration.ExtensionExample;
@@ -20,7 +24,12 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("Extensions")
+@CreateWith(value = SpecTestCreator.class)
 public class ExtensionsSpec {
+  @Inject
+  @Extension
+  public BehaviorExecutor _behaviorExecutor;
+  
   @Test
   @Named("all setup and tear down methods in extensions will be executed")
   @Order(99)
@@ -60,7 +69,7 @@ public class ExtensionsSpec {
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
-    SpecExecutor.execute(_builder);
+    this._behaviorExecutor.execute(_builder);
     List<String> _executedMethods = ExtensionExample.getExecutedMethods();
     List<String> _list = JnarioCollectionLiterals.<String>list("ExtensionExample#beforeClass", 
       "ExtensionExample#before", 

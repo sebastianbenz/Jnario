@@ -30,12 +30,12 @@ public class BackgroundsFeatureGivenMethodsFromBackgroundsAreGeneratedInEverySce
   @Order(1)
   @Named("Then every class should have a method that throws a RuntimeExeception")
   public void thenEveryClassShouldHaveAMethodThatThrowsARuntimeExeception() {
-    Result _execute = FeatureExecutor.execute(this.jnarioFile);
-    int _failureCount = _execute.getFailureCount();
+    Result _run = FeatureExecutor.run(this.jnarioFile);
+    int _failureCount = _run.getFailureCount();
     boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_failureCount), Integer.valueOf(2));
-    Assert.assertTrue("\nExpected jnarioFile.execute.failureCount => 2 but"
-     + "\n     jnarioFile.execute.failureCount is " + new StringDescription().appendValue(Integer.valueOf(_failureCount)).toString()
-     + "\n     jnarioFile.execute is " + new StringDescription().appendValue(_execute).toString()
+    Assert.assertTrue("\nExpected jnarioFile.run.failureCount => 2 but"
+     + "\n     jnarioFile.run.failureCount is " + new StringDescription().appendValue(Integer.valueOf(_failureCount)).toString()
+     + "\n     jnarioFile.run is " + new StringDescription().appendValue(_run).toString()
      + "\n     jnarioFile is " + new StringDescription().appendValue(this.jnarioFile).toString() + "\n", _doubleArrow);
     
   }

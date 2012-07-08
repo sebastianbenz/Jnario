@@ -30,11 +30,10 @@
 				<div class="span12">
 <ul><li><p  id="should_resolve_static_imports"><strong>should resolve static imports</strong>
 <pre class="prettyprint lang-spec">
-val spec = '
+'''
   package bootstrap
   
   import static org.junit.Assert.*
-  
   describe &quot;Example&quot; {
   
     fact &quot;should resolve static imports&quot;{
@@ -42,9 +41,7 @@ val spec = '
     } 
         
   }
-'
-val result = org::jnario::jnario::test::util::SpecExecutor::execute(spec)
-org::junit::Assert::assertThat(result, org::jnario::jnario::test::util::ResultMatchers::successful)</pre>
+'''.executesSuccessfully</pre>
 </p>
 </li></ul>
 				</div>

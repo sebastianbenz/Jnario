@@ -28,7 +28,76 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<ul><li><p  id="Coming_soon___"><strong>Coming soon... [PENDING]</strong>
+<p>Suites in Jnario serve two purposes:</p>
+<ol>
+  <li><strong>Grouping:</strong> A suite groups multiple specifications and executes them together. For example, a single  Jnario suite could run all specifications in a project or there are different two suites, one containing  all unit specifications and one containing all acceptance specifications.</li>
+  <li><strong>Documentation:</strong> Jnario generates HTML reports for suites making them a great way to provide additional  documentation. For example, one can create an overview page describing the overall architecture  of an application, which then links to other specifications describing the different parts  in more detail.  The overview page of the <a href="http://jnario.org/org/jnario/JnarioDocumentationSuite.html">Jnario documentation</a>  is a good example for this.</li>
+</ol>
+<h3 id="Getting_Started">Getting Started</h3>
+<p><p>First of all you need a running installation of Jnario. If you haven't installed Jnario yet, follow the <a href="../../jnario/documentation/InstallingJnarioSpec.html">install guide</a>. To get started first create a new Java project and a new Jnario suite using the suite wizard (<strong>File</strong> -&gt; <strong>New</strong> -&gt; <strong>Other</strong> -&gt; <strong>Jnario</strong> -&gt; <strong>Suite</strong>). <p align="center"><img src="/img/tutorial/suite_wizard.png" alt="New Suite Wizard"/></p> Name the suite file "MySuite" and as description use "My Jnario Suite". The created suite will look like:</p><p><span class="label label-info">Tip</span> If the editor shows a validation error, because of the missing jnario libraries, add them to the classpath using the quickfix.</p>
+<p align="center"><img src="/img/tutorial/suite_buildpath.png" alt="New Suite Error"/></p>
+</p>
+<ul><li><p  id="A_simple_Suite"><strong>A simple Suite</strong>
+<p>A suite consists of a title and a list of references to other specifications, where a specification is either feature definition, a unit spec or another suite. The suite title is defined by '<strong>#</strong>' followed by the title. In our example suite it is: <code>#My Suite</code>. Referenced specifications are listed after '<strong>-</strong>' by their name in quotes.</p><p><span class="label label-info">Info</span> In order to reference specifications defined in different packages it is necessary to add corresponding import statements. The best thing is to use the code-completion as it will automatically add the required imports.</p>
+<pre class="prettyprint lang-none">
+package demo
+
+#My Suite
+
+- &quot;My Feature&quot;
+- &quot;My Spec&quot;</pre>
+</p>
+</li><li><p  id="Fixing_the_Errors"><strong>Fixing the Errors [PENDING]</strong>
+<p>The editor will show two validation errors as the referenced specifications cannot be resolved. Fix this by adding a new feature file "MyFeature.feature" in the same package:</p>
+<pre class="prettyprint lang-feature">
+package demo
+Feature: My Feature
+Scenario: My Scenario
+  When something happens
+  Then it happens
+</pre><p>and a new spec file "MySpec.spec":</p>
+<pre class="prettyprint lang-feature">
+package demo
+
+describe "My Spec"{
+  fact "hello".length => 5
+}
+</pre><p>When the validation errors are fixed we can execute the suite as a normal JUnit test via right-click and <strong>run-as-&gt;JUnit Test</strong>.</p><p><span class="label label-info">Tip</span> There is a quick fix (CMD/Ctrl + 1)  available for unresolved specifications to create a new one.</p>
+</p>
+</li><li><p  id="Structuring_a_Suite"><strong>Structuring a Suite</strong>
+<p>Suites can be structured hierarchically:</p>
+<pre class="prettyprint">#Headline
+##Section 1
+###Subsection 1.1
+###Subsection 1.2
+##Section 2
+###Subsection 2.1
+###Subsection 2.2
+</code></pre><p>Each subsection can separately list specifications. The specifications will be executed in the same hierarchy:</p>
+<p align="center"><img src="/img/tutorial/suite_execution.png" alt="Running a suite"/></p><p>Each section can have additional text written in <a href="http://daringfireball.net/projects/markdown/syntax">Markdown Syntax</a>. This text will also be generated into the HTML reports. The referenced specs can also have a text description after a colon.</p><p><span class="label label-info">Important</span> The characters '#' and '-' are keywords in Jnario suites. They must be escaped like this '\#' and '\-' if they are used in normal text.</p>
+<pre class="prettyprint lang-none">
+package demo
+
+#My Suite
+
+This is the description of  suite. It is possible to use 
+[Markdown Syntax](http://daringfireball.net/projects/markdown/syntax)
+for **formatting** the text and adding images or links. 
+
+##My Features
+
+Here we list all our features...
+
+- &quot;My Feature&quot;: this is an example feature.
+
+##My Specs
+
+...and here are all our unit specs:
+
+- &quot;My Spec&quot;: this is an example unit spec.
+   with a multiline description.</pre>
+</p>
+</li><li><p  id="Selecting_multiple_Specifications"><strong>Selecting multiple Specifications [PENDING]</strong>
 </p>
 </li></ul>
 				</div>

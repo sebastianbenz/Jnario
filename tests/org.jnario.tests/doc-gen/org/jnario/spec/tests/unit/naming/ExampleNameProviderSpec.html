@@ -42,6 +42,13 @@ firstJavaClassName(&quot;describe 'My Example'&quot;) =&gt; endsWith('Spec')</pr
 <pre class="prettyprint lang-spec">
 firstJavaClassName(&quot;describe org.junit.Assert 'My Example'&quot;) =&gt; startsWith(&quot;Assert&quot;)</pre>
 </p>
+</li><li><p  id="should_prepend_unresolved_target_type_name"><strong>should prepend unresolved target type name</strong>
+<pre class="prettyprint lang-spec">
+firstJavaClassName(&quot;describe Unresolved&quot;) =&gt; startsWith(&quot;UnresolvedSpec&quot;)
+firstJavaClassName(&quot;describe java.Unresolved&quot;) =&gt; startsWith(&quot;UnresolvedSpec&quot;)
+firstJavaClassName(&quot;describe Unresolved$SubClass&quot;) =&gt; startsWith(&quot;SubClassSpec&quot;)
+firstJavaClassName(&quot;describe java.Unresolved&lt;String&gt;&quot;) =&gt; startsWith(&quot;UnresolvedSpec&quot;)</pre>
+</p>
 </li><li><p  id="should_convert_description_to_camel_case"><strong>should convert description to camel case</strong>
 <pre class="prettyprint lang-spec">
 newArrayList(
@@ -211,6 +218,11 @@ describeFirst(&quot;describe 'My Description'&quot;) =&gt; &quot;My Description&
 </li><li><p  id="should_use_the_target_type"><strong>should use the target type</strong>
 <pre class="prettyprint lang-spec">
 describeFirst(&quot;describe org.junit.Assert&quot;) =&gt; &quot;Assert&quot;</pre>
+</p>
+</li><li><p  id="should_use_the_unresolved_target_type"><strong>should use the unresolved target type</strong>
+<pre class="prettyprint lang-spec">
+describeFirst(&quot;describe Unresolved&quot;) =&gt; &quot;Unresolved&quot;
+describeFirst(&quot;describe org.Unresolved&quot;) =&gt; &quot;Unresolved&quot;</pre>
 </p>
 </li><li><p  id="should_combine_target_type_and_description"><strong>should combine target type and description</strong>
 <pre class="prettyprint lang-spec">

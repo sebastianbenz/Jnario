@@ -90,9 +90,9 @@ public class SuiteDocGeneratorSpec {
     _builder_1.newLine();
     _builder_1.append("<ul>");
     _builder_1.newLine();
-    _builder_1.append("<li><a href=\"../test/RedSpec.html\">Red</a> </li>");
+    _builder_1.append("<li><a href=\"../test/RedSpec.html\">Red</a></li>");
     _builder_1.newLine();
-    _builder_1.append("<li><a href=\"../test/BlueSpec.html\">Blue</a> with a description</li>");
+    _builder_1.append("<li><a href=\"../test/BlueSpec.html\">Blue</a>: with a description</li>");
     _builder_1.newLine();
     _builder_1.append("</ul>");
     _builder_1.newLine();
@@ -102,9 +102,9 @@ public class SuiteDocGeneratorSpec {
     _builder_1.newLine();
     _builder_1.append("<ul>");
     _builder_1.newLine();
-    _builder_1.append("<li><a href=\"../test/GreenSpec.html\">Green</a> </li>");
+    _builder_1.append("<li><a href=\"../test/GreenSpec.html\">Green</a></li>");
     _builder_1.newLine();
-    _builder_1.append("<li><a href=\"../test/GreySpec.html\">Grey</a> </li>");
+    _builder_1.append("<li><a href=\"../test/GreySpec.html\">Grey</a></li>");
     _builder_1.newLine();
     _builder_1.append("</ul>");
     _builder_1.newLine();

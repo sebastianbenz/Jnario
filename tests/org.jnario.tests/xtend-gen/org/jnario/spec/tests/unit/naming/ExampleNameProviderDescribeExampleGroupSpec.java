@@ -45,6 +45,22 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   }
   
   @Test
+  @Named("should use the unresolved target type")
+  @Order(99)
+  public void shouldUseTheUnresolvedTargetType() throws Exception {
+    String _describeFirst = this.describeFirst("describe Unresolved");
+    boolean _doubleArrow = Should.operator_doubleArrow(_describeFirst, "Unresolved");
+    Assert.assertTrue("\nExpected describeFirst(\"describe Unresolved\") => \"Unresolved\" but"
+     + "\n     describeFirst(\"describe Unresolved\") is " + new StringDescription().appendValue(_describeFirst).toString() + "\n", _doubleArrow);
+    
+    String _describeFirst_1 = this.describeFirst("describe org.Unresolved");
+    boolean _doubleArrow_1 = Should.operator_doubleArrow(_describeFirst_1, "Unresolved");
+    Assert.assertTrue("\nExpected describeFirst(\"describe org.Unresolved\") => \"Unresolved\" but"
+     + "\n     describeFirst(\"describe org.Unresolved\") is " + new StringDescription().appendValue(_describeFirst_1).toString() + "\n", _doubleArrow_1);
+    
+  }
+  
+  @Test
   @Named("should combine target type and description")
   @Order(99)
   public void shouldCombineTargetTypeAndDescription() throws Exception {

@@ -52,7 +52,7 @@ import org.junit.runner.RunWith;
 @Named("How to write a Feature?")
 public class IntroducingJnarioFeaturesHowToWriteAFeatureSpec extends IntroducingJnarioFeaturesSpec {
   /**
-   * @filter('''|.executesSuccessfully)
+   * @filter('''|.isSuccessful)
    * @lang(feature)
    * 
    * To turn our scenario into an executable specification you have to add the necessary code to each
@@ -89,7 +89,7 @@ public class IntroducingJnarioFeaturesHowToWriteAFeatureSpec extends Introducing
    * described [here](/org/jnario/spec/tests/integration/AssertionSpec.html).
    * Here we use for describing the expected outcome of an expression `=>`.
    * 
-   * @filter('''|.executesSuccessfully)
+   * @filter('''|.isSuccessful)
    * @lang(feature)
    */
   @Test
@@ -132,7 +132,7 @@ public class IntroducingJnarioFeaturesHowToWriteAFeatureSpec extends Introducing
     _builder.append("    ");
     _builder.append("result => args.first.toInt");
     _builder.newLine();
-    FeatureExecutor.executesSuccessfully(_builder);
+    FeatureExecutor.isSuccessful(_builder);
   }
   
   /**
@@ -141,7 +141,7 @@ public class IntroducingJnarioFeaturesHowToWriteAFeatureSpec extends Introducing
    * **Given** step together with it's used fields to a **Background**.
    * All steps defined as background steps will be executed before each steps of a scenario.
    * 
-   * @filter('''|.executesSuccessfully)
+   * @filter('''|.isSuccessful)
    * @lang(feature)
    */
   @Test
@@ -200,9 +200,7 @@ public class IntroducingJnarioFeaturesHowToWriteAFeatureSpec extends Introducing
     _builder.append(" ");
     _builder.append("Then it prints \"7\"");
     _builder.newLine();
-    _builder.append(" ");
-    _builder.newLine();
-    FeatureExecutor.executesSuccessfully(_builder);
+    FeatureExecutor.isSuccessful(_builder);
   }
   
   /**
@@ -215,7 +213,7 @@ public class IntroducingJnarioFeaturesHowToWriteAFeatureSpec extends Introducing
    * a referenced step. You can also jump directly to the original step declaration
    * to have a look at the implementation.
    * 
-   * @filter('''|.executesSuccessfully)
+   * @filter('''|.isSuccessful)
    * @lang(feature)
    */
   @Test
@@ -273,6 +271,6 @@ public class IntroducingJnarioFeaturesHowToWriteAFeatureSpec extends Introducing
     _builder.append(" ");
     _builder.append("Then it prints \"2\"");
     _builder.newLine();
-    FeatureExecutor.executesSuccessfully(_builder);
+    FeatureExecutor.isSuccessful(_builder);
   }
 }

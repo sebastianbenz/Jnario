@@ -66,6 +66,40 @@ public class ExampleNameProviderToJavaClassNameExampleGroupSpec extends ExampleN
   }
   
   @Test
+  @Named("should prepend unresolved target type name")
+  @Order(99)
+  public void shouldPrependUnresolvedTargetTypeName() throws Exception {
+    String _firstJavaClassName = this.firstJavaClassName("describe Unresolved");
+    Matcher<String> _startsWith = Matchers.startsWith("UnresolvedSpec");
+    boolean _doubleArrow = Should.operator_doubleArrow(_firstJavaClassName, _startsWith);
+    Assert.assertTrue("\nExpected firstJavaClassName(\"describe Unresolved\") => startsWith(\"UnresolvedSpec\") but"
+     + "\n     firstJavaClassName(\"describe Unresolved\") is " + new StringDescription().appendValue(_firstJavaClassName).toString()
+     + "\n     startsWith(\"UnresolvedSpec\") is " + new StringDescription().appendValue(_startsWith).toString() + "\n", _doubleArrow);
+    
+    String _firstJavaClassName_1 = this.firstJavaClassName("describe java.Unresolved");
+    Matcher<String> _startsWith_1 = Matchers.startsWith("UnresolvedSpec");
+    boolean _doubleArrow_1 = Should.operator_doubleArrow(_firstJavaClassName_1, _startsWith_1);
+    Assert.assertTrue("\nExpected firstJavaClassName(\"describe java.Unresolved\") => startsWith(\"UnresolvedSpec\") but"
+     + "\n     firstJavaClassName(\"describe java.Unresolved\") is " + new StringDescription().appendValue(_firstJavaClassName_1).toString()
+     + "\n     startsWith(\"UnresolvedSpec\") is " + new StringDescription().appendValue(_startsWith_1).toString() + "\n", _doubleArrow_1);
+    
+    String _firstJavaClassName_2 = this.firstJavaClassName("describe Unresolved$SubClass");
+    Matcher<String> _startsWith_2 = Matchers.startsWith("SubClassSpec");
+    boolean _doubleArrow_2 = Should.operator_doubleArrow(_firstJavaClassName_2, _startsWith_2);
+    Assert.assertTrue("\nExpected firstJavaClassName(\"describe Unresolved$SubClass\") => startsWith(\"SubClassSpec\") but"
+     + "\n     firstJavaClassName(\"describe Unresolved$SubClass\") is " + new StringDescription().appendValue(_firstJavaClassName_2).toString()
+     + "\n     startsWith(\"SubClassSpec\") is " + new StringDescription().appendValue(_startsWith_2).toString() + "\n", _doubleArrow_2);
+    
+    String _firstJavaClassName_3 = this.firstJavaClassName("describe java.Unresolved<String>");
+    Matcher<String> _startsWith_3 = Matchers.startsWith("UnresolvedSpec");
+    boolean _doubleArrow_3 = Should.operator_doubleArrow(_firstJavaClassName_3, _startsWith_3);
+    Assert.assertTrue("\nExpected firstJavaClassName(\"describe java.Unresolved<String>\") => startsWith(\"UnresolvedSpec\") but"
+     + "\n     firstJavaClassName(\"describe java.Unresolved<String>\") is " + new StringDescription().appendValue(_firstJavaClassName_3).toString()
+     + "\n     startsWith(\"UnresolvedSpec\") is " + new StringDescription().appendValue(_startsWith_3).toString() + "\n", _doubleArrow_3);
+    
+  }
+  
+  @Test
   @Named("should convert description to camel case")
   @Order(99)
   public void shouldConvertDescriptionToCamelCase() throws Exception {

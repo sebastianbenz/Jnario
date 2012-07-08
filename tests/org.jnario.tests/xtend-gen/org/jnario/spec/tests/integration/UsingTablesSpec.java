@@ -1,14 +1,18 @@
 package org.jnario.spec.tests.integration;
 
+import com.google.inject.Inject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
+import org.jnario.jnario.test.util.BehaviorExecutor;
 import org.jnario.jnario.test.util.Helpers;
-import org.jnario.jnario.test.util.SpecExecutor;
+import org.jnario.jnario.test.util.SpecTestCreator;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.Should;
+import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
+import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.spec.tests.integration.UsingTablesSpecExample;
@@ -24,7 +28,12 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("Using Tables")
+@CreateWith(value = SpecTestCreator.class)
 public class UsingTablesSpec {
+  @Inject
+  @Extension
+  public BehaviorExecutor _behaviorExecutor;
+  
   /**
    * Examples are stored within a table. Assertions for the table's values are
    * best implemented by iterating over each table row using `forEach`.
@@ -79,7 +88,7 @@ public class UsingTablesSpec {
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
-    SpecExecutor.executesSuccessfully(_builder);
+    this._behaviorExecutor.executesSuccessfully(_builder);
   }
   
   /**
@@ -122,7 +131,7 @@ public class UsingTablesSpec {
     _builder.newLine();
     _builder.append("} ");
     _builder.newLine();
-    SpecExecutor.executesSuccessfully(_builder);
+    this._behaviorExecutor.executesSuccessfully(_builder);
   }
   
   /**
@@ -174,7 +183,7 @@ public class UsingTablesSpec {
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
-    SpecExecutor.executesSuccessfully(_builder);
+    this._behaviorExecutor.executesSuccessfully(_builder);
   }
   
   /**
@@ -241,7 +250,7 @@ public class UsingTablesSpec {
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
-    SpecExecutor.executesSuccessfully(_builder);
+    this._behaviorExecutor.executesSuccessfully(_builder);
   }
   
   /**
@@ -295,7 +304,7 @@ public class UsingTablesSpec {
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
-    SpecExecutor.executesSuccessfully(_builder);
+    this._behaviorExecutor.executesSuccessfully(_builder);
   }
   
   @Before

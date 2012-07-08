@@ -45,7 +45,7 @@ public class SetupTeardownWithFeatureExtensionsFeatureUsingAnExtension {
   public void andExecuteTheFeature() {
       ConsoleRecorder _start = ConsoleRecorder.start();
       this.recorder = _start;
-      FeatureExecutor.executesSuccessfully(this.feature);
+      FeatureExecutor.isSuccessful(this.feature);
   }
   
   @Test

@@ -14,10 +14,12 @@ import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.SpecTestCreator;
 import org.jnario.runner.Contains;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
+import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.spec.naming.OperationNameProvider;
 import org.jnario.spec.tests.unit.naming.OperationNameProviderShouldNameMethodsSimilarToJavaDocLinksSpec;
@@ -45,6 +47,10 @@ public class OperationNameProviderSpec {
   }.apply();
   
   Map<String,JvmOperation> operations;
+  
+  @Inject
+  @Extension
+  public ModelStore _modelStore;
   
   @Before
   public void setup() {
