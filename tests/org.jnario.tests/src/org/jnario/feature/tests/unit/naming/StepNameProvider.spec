@@ -93,16 +93,12 @@ describe StepNameProvider{
 		}
 	}
 	
-	context removeKeywordsAndArguments{
+	context removeArguments{
 		
 		def examples{
 			| step 									| result 		|
-			| 'Given a step' 						| 'a step'		|
-			| 'Then a step' 						| 'a step'		|
-			| 'When a step' 						| 'a step'		|
-			| 'And a step' 							| 'a step'		|
-			| 'Given a "value"' 					| 'a ""'		| 			
-			| 'Given a "value" and "anothervalue"' 	| 'a "" and ""'	| 			
+			| 'Given a "value"' 					| 'Given a ""'		| 			
+			| 'Given a "value" and "anothervalue"' 	| 'Given a "" and ""'	| 			
 		}
 		
 		fact "examples do pass"{ 
@@ -111,7 +107,7 @@ describe StepNameProvider{
 					Scenario: scenario
 					«step»
 				''')
-				subject.removeKeywordsAndArguments(step) => result
+				subject.removeArguments(step) => result
 			]
 		}
 	}

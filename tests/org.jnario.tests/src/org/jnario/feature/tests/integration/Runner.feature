@@ -16,23 +16,21 @@ import static org.jnario.jnario.test.util.ResultMatchers.*
 Feature: Test Runner
 
 	Scenario: Create only one test instance for one jnario scenario
-		public String jnarioFile
-		Given a jnario-file that uses one variable in different steps
-		
-			jnarioFile = "
-				package bootstrap
-				Feature: a feature
-					Scenario: a scenario with field
-						public int x
-						Given a variable access
-							x = 3
-						When the variable is accessed
-							x = x + 1 
-						Then it is accessed
-							x => 4
-				"
-				
-		When I run the scenario
+		CharSequence jnarioFile
+		When I have a scenario that uses one variable in different steps
+		'''
+			package bootstrap
+			Feature: a feature
+				Scenario: a scenario with field
+					public int x
+					Given a variable access
+						x = 3
+					When the variable is accessed
+						x = x + 1 
+					Then it is accessed
+						x => 4
+		'''
+		jnarioFile = args.first				
 		Then the scenario should have no validation errors that the variable was not defined
-		And it should pass
-			jnarioFile.executesSuccessfully
+		And it should execute successfully
+		

@@ -13,11 +13,11 @@ import static extension org.jnario.jnario.test.util.FeatureExecutor.*
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
-Feature: Backgrounds
+Feature: Calculator
 
-	Scenario: It is possible to add a background to a feature
+	Scenario: Simple calculator test with background and references
 		CharSequence jnarioFile
-		Given I have a feature with a background
+		When I have a feature with a background and references
 			'''
 			package demo
 			Feature: Calculator
@@ -34,5 +34,5 @@ Feature: Backgrounds
 			    Then it returns "100"   
 			'''	
 			jnarioFile = args.first	
-		Then it should be successful
+		Then it should execute successfully
 	 	

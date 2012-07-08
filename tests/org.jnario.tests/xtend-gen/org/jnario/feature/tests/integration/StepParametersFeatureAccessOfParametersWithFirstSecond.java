@@ -1,11 +1,10 @@
 package org.jnario.feature.tests.integration;
 
-import org.eclipse.xtend2.lib.StringConcatenation;
 import org.jnario.jnario.test.util.FeatureExecutor;
+import org.jnario.lib.StepArguments;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -15,46 +14,18 @@ import org.junit.runner.RunWith;
 public class StepParametersFeatureAccessOfParametersWithFirstSecond {
   @Test
   @Order(0)
-  @Named("Given a feature")
-  public void givenAFeature() {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("package bootstrap");
-    _builder.newLine();
-    _builder.append("Feature: Test feature");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("Scenario: using fields in step definitions");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("String x");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("Given some values \"3\", \"4\"");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("x = args.first");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("Then it should be possible to get the value");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("x => \"3\"");
-    _builder.newLine();
-    this.jnarioFile = _builder;
+  @Named("When I access those parameters")
+  public void whenIAccessThoseParameters() {
+      StepArguments _stepArguments = new StepArguments("\r\n\t\t\t\tpackage bootstrap\r\n\t\t\t\tFeature: Test feature\r\n\t\t\t\t\tScenario: using fields in step definitions\r\n\t\t\t\t\t\tString x\r\n\t\t\t\t\t\tGiven some values \"3\", \"4\"\r\n\t\t\t\t\t\t\tx = args.first\r\n\t\t\t\t\t\tThen it should be possible to get the value\r\n\t\t\t\t\t\t\tx => \"3\"\r\n\t\t\t");
+      final StepArguments args = _stepArguments;
+      String _first = args.first();
+      this.jnarioFile = _first;
   }
   
   @Test
   @Order(1)
-  @Ignore
-  @Named("[PENDING] When this feature is executed")
-  public void whenThisFeatureIsExecuted() {
-    
-  }
-  
-  @Test
-  @Order(2)
-  @Named("Then it should be successful")
-  public void thenItShouldBeSuccessful() {
+  @Named("Then it should execute successfully")
+  public void thenItShouldExecuteSuccessfully() {
     FeatureExecutor.executesSuccessfully(jnarioFile);
   }
   

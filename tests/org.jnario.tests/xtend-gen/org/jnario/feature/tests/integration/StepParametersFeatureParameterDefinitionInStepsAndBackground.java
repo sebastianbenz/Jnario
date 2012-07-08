@@ -1,11 +1,10 @@
 package org.jnario.feature.tests.integration;
 
-import org.eclipse.xtend2.lib.StringConcatenation;
 import org.jnario.jnario.test.util.FeatureExecutor;
+import org.jnario.lib.StepArguments;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -15,51 +14,18 @@ import org.junit.runner.RunWith;
 public class StepParametersFeatureParameterDefinitionInStepsAndBackground {
   @Test
   @Order(0)
-  @Named("Given a feature")
-  public void givenAFeature() {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("package bootstrap ");
-    _builder.newLine();
-    _builder.append("Feature: Test feature");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("Background:");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("String x");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("Given some values \"3\", \"4\"");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("x = args.get(1)");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("Scenario: using fields in step definitions");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("Then those values should be accessible");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("x => \"4\"");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.newLine();
-    this.jnarioFile = _builder;
+  @Named("When I define parameters in a background")
+  public void whenIDefineParametersInABackground() {
+      StepArguments _stepArguments = new StepArguments("\r\n\t\t\t\tpackage bootstrap \r\n\t\t\t\tFeature: Test feature\r\n\t\t\t\t\tBackground:\r\n\t\t\t\t\t\tString x\r\n\t\t\t\t\t\tGiven some values \"3\", \"4\"\r\n\t\t\t\t\t\t\tx = args.get(1)\r\n\t\t\t\t\tScenario: using fields in step definitions\r\n\t\t\t\t\t\tThen those values should be accessible\r\n\t\t\t\t\t\t\tx => \"4\"\r\n\t\t\t\t\t\t\t\r\n\t\t\t");
+      final StepArguments args = _stepArguments;
+      String _first = args.first();
+      this.jnarioFile = _first;
   }
   
   @Test
   @Order(1)
-  @Ignore
-  @Named("[PENDING] When this feature is executed")
-  public void whenThisFeatureIsExecuted() {
-    
-  }
-  
-  @Test
-  @Order(2)
-  @Named("Then it should be successful")
-  public void thenItShouldBeSuccessful() {
+  @Named("Then it should execute successfully")
+  public void thenItShouldExecuteSuccessfully() {
     FeatureExecutor.executesSuccessfully(jnarioFile);
   }
   

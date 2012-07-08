@@ -10,8 +10,8 @@ package org.jnario.feature.tests.integration
 Feature: Step Parameters
 	
 	Scenario: Parameters are defined in quotes
-		Given a feature
-			jnarioFile = '''
+		When I have a feature with parameters
+			'''
 				package bootstrap
 				Feature: Test feature
 					Scenario: using fields in step definitions
@@ -21,12 +21,12 @@ Feature: Step Parameters
 						Then it should be possible to get the value
 							x => "3"
 			'''
-		When this feature is executed
-		Then it should be successful
+			jnarioFile = args.first
+		Then it should execute successfully
 
 	Scenario: Access of parameters with first, second, ...
-		Given a feature
-			jnarioFile = '''
+		When I access those parameters
+			'''
 				package bootstrap
 				Feature: Test feature
 					Scenario: using fields in step definitions
@@ -36,12 +36,11 @@ Feature: Step Parameters
 						Then it should be possible to get the value
 							x => "3"
 			'''
-		When this feature is executed
-		Then it should be successful
+			jnarioFile = args.first
+		Then it should execute successfully
 
 	Scenario: Parameter definition in steps and Background
-		Given a feature
-			jnarioFile = 
+		When I define parameters in a background
 			'''
 				package bootstrap 
 				Feature: Test feature
@@ -53,13 +52,13 @@ Feature: Step Parameters
 						Then those values should be accessible
 							x => "4"
 							
-			''' 
-		When this feature is executed
-		Then it should be successful
+			'''
+			jnarioFile = args.first
+		Then it should execute successfully
 		
 	Scenario: Referencing variables that contain a value from args
-		Given a feature
-			jnarioFile = '''
+		When I have a scenario that references a step with arguments
+			'''
 				package bootstrap 
 				Feature: Test feature
 					Scenario: using fields in step definitions
@@ -73,11 +72,11 @@ Feature: Step Parameters
 							y should be args.first
 							
 			'''
-		When this feature is executed
-		Then it should be successful
+			jnarioFile = args.first
+		Then it should execute successfully
 		
 	Scenario: Using multiline Strings
-		Given a feature
+		When I have a scenario with multiline strings
 			jnarioFile = "
 				package bootstrap 
 				Feature: Test feature
@@ -89,5 +88,4 @@ Feature: Step Parameters
 						Then it should be 'hello'
 							x should be args.first
 			"
-		When this feature is executed
-		Then it should be successful
+		Then it should execute successfully

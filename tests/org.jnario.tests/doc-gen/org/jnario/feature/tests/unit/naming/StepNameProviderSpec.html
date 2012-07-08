@@ -95,7 +95,7 @@ parseScenario('''
 describeStep =&gt; 'Given a step with multiline parameter'</pre>
 </p>
 </li></ul>
-<h3 id="null">RemoveKeywordsAndArguments[String]</h3>
+<h3 id="null">RemoveArguments[String]</h3>
 <p></p>
 <ul><li><h4 id="examples">Examples</h4>
 <p></p>
@@ -108,28 +108,12 @@ describeStep =&gt; 'Given a step with multiline parameter'</pre>
 	</thead>
 	<tbody>
 	<tr>
-		<td>'Given a step'</td>
-		<td>'a step'</td>
-	</tr>
-	<tr>
-		<td>'Then a step'</td>
-		<td>'a step'</td>
-	</tr>
-	<tr>
-		<td>'When a step'</td>
-		<td>'a step'</td>
-	</tr>
-	<tr>
-		<td>'And a step'</td>
-		<td>'a step'</td>
-	</tr>
-	<tr>
 		<td>'Given a &quot;value&quot;'</td>
-		<td>'a &quot;&quot;'</td>
+		<td>'Given a &quot;&quot;'</td>
 	</tr>
 	<tr>
 		<td>'Given a &quot;value&quot; and &quot;anothervalue&quot;'</td>
-		<td>'a &quot;&quot; and &quot;&quot;'</td>
+		<td>'Given a &quot;&quot; and &quot;&quot;'</td>
 	</tr>
 	</tbody>
 </table>
@@ -140,7 +124,7 @@ examples.forEach[
     Scenario: scenario
     &laquo;step&raquo;
   ''')
-  subject.removeKeywordsAndArguments(step) =&gt; result
+  subject.removeArguments(step) =&gt; result
 ]</pre>
 </p>
 </li></ul>

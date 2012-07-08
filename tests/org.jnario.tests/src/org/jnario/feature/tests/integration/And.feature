@@ -12,9 +12,9 @@ package org.jnario.feature.tests.integration
  */
 Feature: Parsing simple jnario files.
 Scenario: And stuff.
-public int x
-public int y
-public int z
+	int x
+	int y
+	int z
 Given two numbers.
 	x = 3
 	y = 5

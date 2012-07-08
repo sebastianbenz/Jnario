@@ -13,21 +13,21 @@ package org.jnario.feature.tests.integration
 Feature: Access of variables
 
 	Scenario: Access a variable in the same step it was declared in
-		Given a jnario file
-			jnarioFile = '
+		When I have scenario with a reference to a variable
+			'''
 				package bootstrap1
 				Feature: Variable test
 					Scenario: Some scenario
 						Given a step with a variable
 							var x = 3
 							x = 5
-			'
-		When it is executed
-		Then it should be successful
+			'''
+			jnarioFile = args.first
+		Then it should execute successfully
 	
 	Scenario: Access a variable that was declared in a different step
-		Given a jnario file
-			jnarioFile = '
+		When I use a variable in different steps
+			'''
 				package bootstrap2
 				Feature: Variable test
 					Scenario: Some scenario
@@ -36,13 +36,13 @@ Feature: Access of variables
 							x = 3
 						When I assign it a different value
 							x = 5
-			'
-		When it is executed
-		Then it should be successful
+			'''
+			jnarioFile = args.first
+		Then it should execute successfully
 	
 	Scenario: Access a variable that was assigned a value of a variable defined in a different step
-		Given a jnario file
-			jnarioFile = '
+		When I have a complex usage of variables
+			'''
 				package bootstrap3
 				Feature: Variable test
 					Scenario: Some scenario
@@ -54,13 +54,13 @@ Feature: Access of variables
 							y = x
 						Then y should be 3
 							y => 3
-			'
-		When it is executed
-		Then it should be successful
+			'''
+			jnarioFile = args.first
+		Then it should execute successfully
 	
 	Scenario: Access a variable declared in background step
-		Given a jnario file
-			jnarioFile = '
+		When I define a variable in the background
+			'''
 				package bootstrap4
 				Feature: Variable test
 					Background:
@@ -70,13 +70,13 @@ Feature: Access of variables
 					Scenario: Some scenario
 							Then x should be 3
 								x => 3
-			'
-		When it is executed
-		Then it should be successful
+			'''
+			jnarioFile = args.first
+		Then it should execute successfully
 	
 	Scenario: Access a variable referencing a variable from background step
-		Given a jnario file
-			jnarioFile = '
+		When I reference a variable from the background
+			'''
 				package bootstrap5
 				Feature: Variable test
 					Background:
@@ -89,7 +89,7 @@ Feature: Access of variables
 								y = x
 							Then it should be accessible
 								y => 3
-			'
-		When it is executed
-		Then it should be successful
+			'''
+			jnarioFile = args.first
+		Then it should execute successfully
 		

@@ -14,7 +14,7 @@ like you would do in a normal JUnit test case.
 
 	Scenario: Using JUnit Rules 
 		CharSequence jnarioFile
-		Given a feature
+		When I have a feature with JUnit rules
 			'''
 				package demo
 				import org.junit.Rule
@@ -30,6 +30,5 @@ like you would do in a normal JUnit test case.
 							folder.root should not be null	
 			'''
 			jnarioFile = args.first
-		When it is executed
-		Then it should be successful
+		Then it should execute successfully
  

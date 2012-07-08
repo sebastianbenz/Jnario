@@ -16,24 +16,26 @@ import static org.jnario.jnario.test.util.ResultMatchers.*
 Feature: References for steps
 
 	Scenario: Defining a step and using it in the same scenario
-		public String jnarioFile
-		Given a scenario with reused steps
-			jnarioFile = "
-				package bootstrap
-				Feature: Test
-					Scenario: TestScenario 1
-						Given step
-							throw new RuntimeException()
-						
-					Scenario: TestScenario 2
-						Given step
-				"
-		When I run it it should fail
-			jnarioFile.execute.failureCount => 2
+		CharSequence jnarioFile
+		When I have a scenario with reused steps that throw an exception
+			'''
+			package bootstrap
+			Feature: Test
+				Scenario: TestScenario 1
+					Given step
+						throw new RuntimeException()
+					
+				Scenario: TestScenario 2
+					Given step
+			'''
+			jnarioFile = args.first
+		Then the number of failures should be "2"
+			jnarioFile.execute.failureCount => args.first.toInt
 			
 	Scenario: Referencing steps with different keyword
-		Given a scenario with reused steps
-			jnarioFile = '
+		CharSequence jnarioFile
+		When I have a scenario with reused steps with different keywords that throw an exception
+			'''
 				package bootstrap
 				Feature: Test
 					Scenario: TestScenario 1
@@ -42,12 +44,13 @@ Feature: References for steps
 						
 					Scenario: TestScenario 2
 						When step
-				'
-	 	When I run it it should fail
+			'''
+			jnarioFile = args.first
+	 	Then the number of failures should be "2"
 	 
 	 Scenario: Using fields from other steps
-		Given a scenario with a field
-			jnarioFile = '''
+		When I have a scenario with a field
+			'''
 				package bootstrap
 				import java.util.*
 				Feature: Test
@@ -60,7 +63,7 @@ Feature: References for steps
 						Given a list
 						Then it should have contents
 							values.size => 1
-				'''
-	 	Then it should be successful
-	 	
+			'''
+			jnarioFile = args.first
+	 	Then it should execute successfully	
 	 	

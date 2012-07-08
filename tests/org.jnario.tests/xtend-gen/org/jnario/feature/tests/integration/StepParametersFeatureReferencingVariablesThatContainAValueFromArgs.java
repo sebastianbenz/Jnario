@@ -1,11 +1,10 @@
 package org.jnario.feature.tests.integration;
 
-import org.eclipse.xtend2.lib.StringConcatenation;
 import org.jnario.jnario.test.util.FeatureExecutor;
+import org.jnario.lib.StepArguments;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -15,57 +14,18 @@ import org.junit.runner.RunWith;
 public class StepParametersFeatureReferencingVariablesThatContainAValueFromArgs {
   @Test
   @Order(0)
-  @Named("Given a feature")
-  public void givenAFeature() {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("package bootstrap ");
-    _builder.newLine();
-    _builder.append("Feature: Test feature");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("Scenario: using fields in step definitions");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("String x");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("String y ");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("Given the value \"hello\"");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("x = args.first");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("When I add \" world\"");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("y = x + args.first");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("Then it should be \"hello world\"");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("y should be args.first");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.newLine();
-    this.jnarioFile = _builder;
+  @Named("When I have a scenario that references a step with arguments")
+  public void whenIHaveAScenarioThatReferencesAStepWithArguments() {
+      StepArguments _stepArguments = new StepArguments("\r\n\t\t\t\tpackage bootstrap \r\n\t\t\t\tFeature: Test feature\r\n\t\t\t\t\tScenario: using fields in step definitions\r\n\t\t\t\t\t\tString x\r\n\t\t\t\t\t\tString y \r\n\t\t\t\t\t\tGiven the value \"hello\"\r\n\t\t\t\t\t\t\tx = args.first\r\n\t\t\t\t\t\tWhen I add \" world\"\r\n\t\t\t\t\t\t\ty = x + args.first\r\n\t\t\t\t\t\tThen it should be \"hello world\"\r\n\t\t\t\t\t\t\ty should be args.first\r\n\t\t\t\t\t\t\t\r\n\t\t\t");
+      final StepArguments args = _stepArguments;
+      String _first = args.first();
+      this.jnarioFile = _first;
   }
   
   @Test
   @Order(1)
-  @Ignore
-  @Named("[PENDING] When this feature is executed")
-  public void whenThisFeatureIsExecuted() {
-    
-  }
-  
-  @Test
-  @Order(2)
-  @Named("Then it should be successful")
-  public void thenItShouldBeSuccessful() {
+  @Named("Then it should execute successfully")
+  public void thenItShouldExecuteSuccessfully() {
     FeatureExecutor.executesSuccessfully(jnarioFile);
   }
   

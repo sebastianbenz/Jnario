@@ -32,11 +32,47 @@
 <h3>Scenario: It is possible to add a background to a feature
 </h3>
 <ul>
-<li><p><strong>Given</strong> I have a feature with a background</p><pre></pre>
+<li><p><strong>When</strong> I have a feature with a background</p><pre></pre>
 <ul>
 </ul>
 </li>
-<li><p><strong>Then</strong> it should be successful</p>
+<li><p><strong>Then</strong> it should execute successfully</p>
+<ul>
+</ul>
+</li>
+</ul>
+<h3>Scenario: Given methods from backgrounds are generated in every scenario class
+</h3>
+<ul>
+<li><p><strong>When</strong> I have a feature with a background</p><pre></pre>
+<ul>
+</ul>
+</li>
+<li><p><strong>Then</strong> every class should have a method that throws a RuntimeExeception</p>
+<ul>
+</ul>
+</li>
+</ul>
+<h3>Scenario: Using fields from background steps
+</h3>
+<ul>
+<li><p><strong>When</strong> I have a scenario with a field</p><pre></pre>
+<ul>
+</ul>
+</li>
+<li><p><strong>Then</strong> it should execute successfully</p>
+<ul>
+</ul>
+</li>
+</ul>
+<h3>Scenario: Instantiating Objects in Backgrounds
+</h3>
+<ul>
+<li><p><strong>When</strong> I have a feature with a background</p><pre></pre>
+<ul>
+</ul>
+</li>
+<li><p><strong>Then</strong> it should execute successfully</p>
 <ul>
 </ul>
 </li>

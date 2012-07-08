@@ -32,11 +32,11 @@
 <h3>Scenario: Defining a step and using it in the same scenario
 </h3>
 <ul>
-<li><p><strong>Given</strong> a scenario with reused steps</p>
+<li><p><strong>When</strong> I have a scenario with reused steps that throw an exception</p><pre></pre>
 <ul>
 </ul>
 </li>
-<li><p><strong>When</strong> I run it it should fail</p>
+<li><p><strong>Then</strong> the number of failures should be <code>2</code></p>
 <ul>
 </ul>
 </li>
@@ -44,11 +44,11 @@
 <h3>Scenario: Referencing steps with different keyword
 </h3>
 <ul>
-<li><p><strong>Given</strong> a scenario with reused steps</p>
+<li><p><strong>When</strong> I have a scenario with reused steps with different keywords that throw an exception</p><pre></pre>
 <ul>
 </ul>
 </li>
-<li><p><strong>When</strong> I run it it should fail</p>
+<li><p><strong>Then</strong> the number of failures should be <code>2</code></p>
 <ul>
 </ul>
 </li>
@@ -56,11 +56,11 @@
 <h3>Scenario: Using fields from other steps
 </h3>
 <ul>
-<li><p><strong>Given</strong> a scenario with a field</p>
+<li><p><strong>When</strong> I have a scenario with a field</p><pre></pre>
 <ul>
 </ul>
 </li>
-<li><p><strong>Then</strong> it should be successful</p>
+<li><p><strong>Then</strong> it should execute successfully</p>
 <ul>
 </ul>
 </li>

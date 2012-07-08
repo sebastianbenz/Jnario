@@ -1,7 +1,7 @@
 package org.jnario.feature.tests.integration;
 
-import org.eclipse.xtend2.lib.StringConcatenation;
 import org.jnario.jnario.test.util.FeatureExecutor;
+import org.jnario.lib.StepArguments;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -14,49 +14,18 @@ import org.junit.runner.RunWith;
 public class UsingMatchersInFeaturesFeatureUsingMatchersInJnario {
   @Test
   @Order(0)
-  @Named("Given a scenario which uses the Jnario matchers")
-  public void givenAScenarioWhichUsesTheJnarioMatchers() {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("Feature: Should");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("Scenario: Features with should");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("Given a Scenario");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("Then it should be possible to use \'should\'");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("true should be true");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("1 + 1 should not be 1");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("\"something\" should not be null ");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("And the shortcut \'=>\'");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("1 + 1 => 2 ");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("\"a string\" => typeof(String)");
-    _builder.newLine();
-    this.jnarioFile = _builder;
+  @Named("When I have a scenario which uses the Jnario matchers")
+  public void whenIHaveAScenarioWhichUsesTheJnarioMatchers() {
+      StepArguments _stepArguments = new StepArguments("\r\n\t\t\t\tFeature: Should\r\n\t\t\t\t\t\r\n\t\t\t\t\tScenario: Features with should\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\tGiven a Scenario\r\n\t\t\t\t\t\tThen it should be possible to use \"should\"\r\n\t\t\t\t\t\t\ttrue should be true\r\n\t\t\t\t\t\t\t1 + 1 should not be 1\r\n\t\t\t\t\t\t\t\"something\" should not be null \r\n\t\t\t\t\t\tAnd the shortcut \"=>\"\r\n\t\t\t\t\t\t\t1 + 1 => 2 \r\n\t\t\t\t\t\t\t\"a string\" => typeof(String)\r\n\t\t\t");
+      final StepArguments args = _stepArguments;
+      String _first = args.first();
+      this.jnarioFile = _first;
   }
   
   @Test
   @Order(1)
-  @Named("Then it should be successful")
-  public void thenItShouldBeSuccessful() {
+  @Named("Then it should execute successfully")
+  public void thenItShouldExecuteSuccessfully() {
     FeatureExecutor.executesSuccessfully(jnarioFile);
   }
   

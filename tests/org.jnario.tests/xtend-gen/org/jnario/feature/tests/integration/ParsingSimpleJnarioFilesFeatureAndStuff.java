@@ -42,9 +42,9 @@ public class ParsingSimpleJnarioFilesFeatureAndStuff {
     
   }
   
-  public int x;
+  int x;
   
-  public int y;
+  int y;
   
-  public int z;
+  int z;
 }

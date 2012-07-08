@@ -3,6 +3,8 @@ package org.jnario.feature.tests.integration;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.lib.Should;
+import org.jnario.lib.StepArguments;
+import org.jnario.lib.StringConversions;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -17,24 +19,34 @@ import org.junit.runner.RunWith;
 public class ReferencesForStepsFeatureDefiningAStepAndUsingItInTheSameScenario {
   @Test
   @Order(0)
-  @Named("Given a scenario with reused steps")
-  public void givenAScenarioWithReusedSteps() {
-    this.jnarioFile = "\r\n\t\t\t\tpackage bootstrap\r\n\t\t\t\tFeature: Test\r\n\t\t\t\t\tScenario: TestScenario 1\r\n\t\t\t\t\t\tGiven step\r\n\t\t\t\t\t\t\tthrow new RuntimeException()\r\n\t\t\t\t\t\t\r\n\t\t\t\t\tScenario: TestScenario 2\r\n\t\t\t\t\t\tGiven step\r\n\t\t\t\t";
+  @Named("When I have a scenario with reused steps that throw an exception")
+  public void whenIHaveAScenarioWithReusedStepsThatThrowAnException() {
+      StepArguments _stepArguments = new StepArguments("\r\n\t\t\tpackage bootstrap\r\n\t\t\tFeature: Test\r\n\t\t\t\tScenario: TestScenario 1\r\n\t\t\t\t\tGiven step\r\n\t\t\t\t\t\tthrow new RuntimeException()\r\n\t\t\t\t\t\r\n\t\t\t\tScenario: TestScenario 2\r\n\t\t\t\t\tGiven step\r\n\t\t\t");
+      final StepArguments args = _stepArguments;
+      String _first = args.first();
+      this.jnarioFile = _first;
   }
   
   @Test
   @Order(1)
-  @Named("When I run it it should fail")
-  public void whenIRunItItShouldFail() {
-    Result _execute = FeatureExecutor.execute(this.jnarioFile);
-    int _failureCount = _execute.getFailureCount();
-    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_failureCount), Integer.valueOf(2));
-    Assert.assertTrue("\nExpected jnarioFile.execute.failureCount => 2 but"
-     + "\n     jnarioFile.execute.failureCount is " + new StringDescription().appendValue(Integer.valueOf(_failureCount)).toString()
-     + "\n     jnarioFile.execute is " + new StringDescription().appendValue(_execute).toString()
-     + "\n     jnarioFile is " + new StringDescription().appendValue(this.jnarioFile).toString() + "\n", _doubleArrow);
-    
+  @Named("Then the number of failures should be \"2\"")
+  public void thenTheNumberOfFailuresShouldBe2() {
+      StepArguments _stepArguments = new StepArguments("2");
+      final StepArguments args = _stepArguments;
+      Result _execute = FeatureExecutor.execute(this.jnarioFile);
+      int _failureCount = _execute.getFailureCount();
+      String _first = args.first();
+      int _int = StringConversions.toInt(_first);
+      boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_failureCount), Integer.valueOf(_int));
+      Assert.assertTrue("\nExpected jnarioFile.execute.failureCount => args.first.toInt but"
+       + "\n     jnarioFile.execute.failureCount is " + new StringDescription().appendValue(Integer.valueOf(_failureCount)).toString()
+       + "\n     jnarioFile.execute is " + new StringDescription().appendValue(_execute).toString()
+       + "\n     jnarioFile is " + new StringDescription().appendValue(this.jnarioFile).toString()
+       + "\n     args.first.toInt is " + new StringDescription().appendValue(Integer.valueOf(_int)).toString()
+       + "\n     args.first is " + new StringDescription().appendValue(_first).toString()
+       + "\n     args is " + new StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
+      
   }
   
-  public String jnarioFile;
+  CharSequence jnarioFile;
 }

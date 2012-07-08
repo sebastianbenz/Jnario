@@ -9,20 +9,21 @@ package org.jnario.feature.tests.integration
 
 Feature: Using Matchers in Features
 	Scenario: Using Matchers in Jnario
-		Given a scenario which uses the Jnario matchers
-			jnarioFile = '''
+		When I have a scenario which uses the Jnario matchers
+			'''
 				Feature: Should
 					
 					Scenario: Features with should
 						
 						Given a Scenario
-						Then it should be possible to use 'should'
+						Then it should be possible to use "should"
 							true should be true
 							1 + 1 should not be 1
 							"something" should not be null 
-						And the shortcut '=>'
+						And the shortcut "=>"
 							1 + 1 => 2 
 							"a string" => typeof(String)
 			'''
-		Then it should be successful
+			jnarioFile = args.first
+		Then it should execute successfully
 		

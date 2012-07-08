@@ -17,24 +17,25 @@ Feature: Backgrounds
 
 	Scenario: It is possible to add a background to a feature
 		CharSequence jnarioFile
-		Given I have a feature with a background
-			jnarioFile = "
+		When I have a feature with a background
+			'''
 				package bootstrap
 				Feature: Some feature
 					Background:
 						Given a user name
-							val x = 'an implementation'
+							val x = "an implementation"
 					Scenario: Scenario 1
 					Scenario: Scenario 2
-			"
-		Then it should be successful
+			'''
+			jnarioFile = args.first
+		Then it should execute successfully
 			jnarioFile.executesSuccessfully
 			
 
 	Scenario: Given methods from backgrounds are generated in every scenario class
 		CharSequence jnarioFile
-		Given I have a feature with a background
-			jnarioFile = "
+		When I have a feature with a background
+			'''
 				package bootstrap
 				Feature: Some feature
 					Background:
@@ -42,13 +43,14 @@ Feature: Backgrounds
 							throw new RuntimeException()
 					Scenario: Scenario 1
 					Scenario: Scenario 2
-			"
+			'''
+			jnarioFile = args.first
 		Then every class should have a method that throws a RuntimeExeception
 			jnarioFile.execute.failureCount => 2
 			
 	Scenario: Using fields from background steps
 		CharSequence jnarioFile
-		Given a scenario with a field
+		When I have a scenario with a field
 			 '''
 				package bootstrap
 				import java.util.*
@@ -61,13 +63,13 @@ Feature: Backgrounds
 					Scenario: TestScenario 2
 						Then it should have contents
 							values.size => 1
-				'''
+			'''
 			jnarioFile = args.first
-	 	Then it should be successful
+	 	Then it should execute successfully
 			
 	Scenario: Instantiating Objects in Backgrounds
 		CharSequence jnarioFile
-		Given I have a feature with a background
+		When I have a feature with a background
 			'''
 				package bootstrap
 				import org.jnario.feature.tests.integration.Calculator
@@ -87,5 +89,5 @@ Feature: Backgrounds
 				      Then it returns "100"
 			'''	
 			jnarioFile = args.first	
-	 	Then it should be successful
+	 	Then it should execute successfully
 	 	
