@@ -65,5 +65,23 @@ Feature: References for steps
 							values.size => 1
 			'''
 			jnarioFile = args.first
+	 	Then it should execute successfully
+	 	
+	 Scenario: Steps with short names
+	 	When I have a scenario with references and short step names (1 word)
+	 		'''
+	 			package bootstrap
+	 			import java.util.*
+	 			Feature: Test
+	 				Scenario: TestScenario1
+	 					int x
+	 					Given step
+	 						x = 3
+	 				Scenario: TestScenario2
+	 					Given step
+	 					Then step
+	 						x => 3
+	 		'''
+	 		jnarioFile = args.first
 	 	Then it should execute successfully	
 	 	

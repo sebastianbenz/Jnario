@@ -66,15 +66,22 @@ public class IntroducingJnarioFeaturesHowToWriteAFeatureSpec extends Introducing
    * 
    * First we will declare a field `Calculator calculator` which we initialize in our **Given** step (we could
    * also directly initialize the field `Calculator calculator = new Calculator`). We will also create a
-   * integer field named `result` to store the result of our calculation.
-   * In the **When** step we call `add` on the calculator and pass in the two parameters specified in the step.
-   * The return value is assigned to the `result` field.
+   * integer field named `result` to store the result of our calculation. Variables that are defined after the
+   * scenario description and before the first step are fields inside of the scenario. This means every step
+   * can use fields that were declared after the scenario description. Variables that are declared with var or val
+   * after a step description can only be used locally inside the step.
    * 
-   * Parameters can be defined in steps using quotes: `"I am a parameter"`. Within your step implementation,
-   * you can access these parameters by an implicitly created variable `args`. Jnario provides some
+   * 
+   * In the **When** step we call `add` on the calculator that also needs the two numbers that should be added.
+   * In a Jnario feature it is possible to define parameters inside of a step description. Parameters can be
+   * defined in steps using quotes: `"I am a parameter"`. Within your step implementation,
+   * you can access these parameters by an implicitly created variable `args`.
+   * 
+   * The parameters from the when step are passed to the add method. Jnario provides some
    * [extension methods](http://www.eclipse.org/xtend/documentation/index.html#extensionMethods) that
    * simplify converting strings to other primitives. Here we use the `toInt` extension to convert the
    * string parameter into an integer.
+   * Finally, the return value of the add method is assigned to the `result` field.
    * 
    * Now we need to define a method `add` in our calculator to remove the compile errors.
    * In the **Then** step we will assert the behavior of our calculator. For writing readable short assertions
