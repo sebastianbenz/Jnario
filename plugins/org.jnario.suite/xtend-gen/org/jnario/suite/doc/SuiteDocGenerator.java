@@ -174,7 +174,7 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
         _builder.append("\">");
         String _describe = this._suiteClassNameProvider.describe(spec);
         _builder.append(_describe, "");
-        _builder.append("</a> ");
+        _builder.append("</a>");
         String _text = this.text(ref);
         _builder.append(_text, "");
         _builder.append("</li>");
@@ -201,8 +201,13 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
     if (!_matched) {
       if (ref instanceof SpecReference) {
         final SpecReference _specReference = (SpecReference)ref;
-        _matched=true;
-        return _specReference.getText();
+        String _text = _specReference.getText();
+        boolean _notEquals = (!Objects.equal(_text, null));
+        if (_notEquals) {
+          _matched=true;
+          String _text_1 = _specReference.getText();
+          return (": " + _text_1);
+        }
       }
     }
     return "";

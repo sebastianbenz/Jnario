@@ -30,7 +30,7 @@ Feature: References for steps
 			'''
 			jnarioFile = args.first
 		Then the number of failures should be "2"
-			jnarioFile.execute.failureCount => args.first.toInt
+			jnarioFile.run.failureCount => args.first.toInt
 			
 	Scenario: Referencing steps with different keyword
 		CharSequence jnarioFile

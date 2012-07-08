@@ -29,7 +29,7 @@ Feature: Backgrounds
 			'''
 			jnarioFile = args.first
 		Then it should execute successfully
-			jnarioFile.executesSuccessfully
+			jnarioFile.successful
 			
 
 	Scenario: Given methods from backgrounds are generated in every scenario class
@@ -46,7 +46,7 @@ Feature: Backgrounds
 			'''
 			jnarioFile = args.first
 		Then every class should have a method that throws a RuntimeExeception
-			jnarioFile.execute.failureCount => 2
+			jnarioFile.run.failureCount => 2
 			
 	Scenario: Using fields from background steps
 		CharSequence jnarioFile

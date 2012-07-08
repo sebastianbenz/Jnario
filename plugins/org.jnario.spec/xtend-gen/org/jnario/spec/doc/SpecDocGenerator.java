@@ -339,7 +339,7 @@ public class SpecDocGenerator extends AbstractDocGenerator {
     }
   }
   
-  public String asTitle(final XtendMember example) {
+  public String asTitle(final EObject example) {
     if (example instanceof Example) {
       return _asTitle((Example)example);
     } else if (example instanceof ExampleGroup) {

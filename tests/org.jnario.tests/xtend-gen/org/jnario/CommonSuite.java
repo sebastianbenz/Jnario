@@ -7,6 +7,7 @@ import org.jnario.jnario.tests.unit.doc.RegexFilterSpec;
 import org.jnario.jnario.tests.unit.doc.WhiteSpaceNormalizerSpec;
 import org.jnario.jnario.tests.unit.jnario.ExampleColumnSpec;
 import org.jnario.jnario.tests.unit.jnario.ExampleTableSpec;
+import org.jnario.jnario.tests.unit.jnario.ExecutableSpec;
 import org.jnario.jnario.tests.unit.jnario.ShouldSpec;
 import org.jnario.jnario.tests.unit.jnario.StringsSpec;
 import org.jnario.runner.Contains;
@@ -16,7 +17,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(ExampleGroupRunner.class)
 @Named("Common")
-@Contains({ ShouldSpec.class, RegexFilterSpec.class, FilterExtractorSpec.class, StringsSpec.class, InstallingJnarioSpec.class, WhiteSpaceNormalizerSpec.class, ExampleColumnSpec.class, _20FactsAboutXtendSpec.class, ExampleTableSpec.class })
+@Contains({ ShouldSpec.class, RegexFilterSpec.class, ExecutableSpec.class, FilterExtractorSpec.class, StringsSpec.class, InstallingJnarioSpec.class, WhiteSpaceNormalizerSpec.class, ExampleColumnSpec.class, _20FactsAboutXtendSpec.class, ExampleTableSpec.class })
 @SuppressWarnings("all")
 public class CommonSuite {
 }
