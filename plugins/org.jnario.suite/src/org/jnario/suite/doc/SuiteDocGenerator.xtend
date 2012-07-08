@@ -74,7 +74,7 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 
 	def generate(Reference ref)'''
 	«FOR spec : ref.resolveSpecs»
-		<li><a href="«ref.linkTo(spec)»">«spec.describe»</a> «ref.text»</li>
+		<li><a href="«ref.linkTo(spec)»">«spec.describe»</a>«ref.text»</li>
 	«ENDFOR»
 	''' 
 	
@@ -84,7 +84,7 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 	
 	def text(Reference ref){
 		switch ref{
-			SpecReference: return ref.text
+			SpecReference case ref.text != null : return ': ' + ref.text
 		}
 		return ""
 	}
