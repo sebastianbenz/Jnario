@@ -13,7 +13,7 @@ import org.jnario.feature.naming.StepNameProvider;
 import org.jnario.feature.tests.unit.naming.StepNameProviderDescribeFeatureSpec;
 import org.jnario.feature.tests.unit.naming.StepNameProviderDescribeScenarioSpec;
 import org.jnario.feature.tests.unit.naming.StepNameProviderNameOfStepSpec;
-import org.jnario.feature.tests.unit.naming.StepNameProviderRemoveKeywordsAndArgumentsStringSpec;
+import org.jnario.feature.tests.unit.naming.StepNameProviderRemoveArgumentsStringSpec;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.Query;
 import org.jnario.jnario.test.util.SpecTestCreator;
@@ -28,7 +28,7 @@ import org.junit.runner.RunWith;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
-@Contains({ StepNameProviderNameOfStepSpec.class, StepNameProviderDescribeFeatureSpec.class, StepNameProviderRemoveKeywordsAndArgumentsStringSpec.class, StepNameProviderDescribeFeatureSpec.class, StepNameProviderDescribeScenarioSpec.class })
+@Contains({ StepNameProviderNameOfStepSpec.class, StepNameProviderDescribeFeatureSpec.class, StepNameProviderRemoveArgumentsStringSpec.class, StepNameProviderDescribeFeatureSpec.class, StepNameProviderDescribeScenarioSpec.class })
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("StepNameProvider")

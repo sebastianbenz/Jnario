@@ -9,22 +9,15 @@ package org.jnario.feature.conversion;
 
 import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.conversion.ValueConverter;
-import org.eclipse.xtext.conversion.ValueConverterException;
-import org.eclipse.xtext.conversion.impl.AbstractLexerBasedConverter;
-import org.eclipse.xtext.nodemodel.INode;
 import org.jnario.conversion.JnarioValueConverterService;
 
 public class FeatureValueConverterService extends JnarioValueConverterService {
 	
 	private FeatureValueConverter featureValueConverter = FeatureValueConverter.create("Feature:");
-	private IValueConverter<String> stepValueConverter = new AbstractLexerBasedConverter<String>(){
-
-		public String toValue(String string, INode node)
-				throws ValueConverterException {
-			return string.trim();
-		}
-		
-	};
+	private FeatureValueConverter givenValueConverter = FeatureValueConverter.create("Given ");
+	private FeatureValueConverter whenValueConverter = FeatureValueConverter.create("When ");
+	private FeatureValueConverter thenValueConverter = FeatureValueConverter.create("Then ");
+	private FeatureValueConverter andValueConverter = FeatureValueConverter.create("And ");
 //	
 	public String toString(Object value, String lexerRule) {
 		if(lexerRule.startsWith("GIVEN_TEXT")){
@@ -58,22 +51,22 @@ public class FeatureValueConverterService extends JnarioValueConverterService {
 //	
 	@ValueConverter(rule = "GIVEN_TEXT")
 	public IValueConverter<String> getGivenConverter() {
-		return stepValueConverter;
+		return givenValueConverter;
 	}
 	
 	@ValueConverter(rule = "WHEN_TEXT")
 	public IValueConverter<String> getWhenConverter() {
-		return stepValueConverter;
+		return whenValueConverter;
 	}
 	
 	@ValueConverter(rule = "THEN_TEXT")
 	public IValueConverter<String> getThenConverter() {
-		return stepValueConverter;
+		return thenValueConverter;
 	}
 	
 	@ValueConverter(rule = "AND_TEXT")
 	public IValueConverter<String> getAndConverter() {
-		return stepValueConverter;
+		return andValueConverter;
 	}
 
 }

@@ -3,6 +3,7 @@ package org.jnario.feature.naming;
 import com.google.common.base.Objects;
 import java.util.Arrays;
 import java.util.regex.Matcher;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EReference;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeaturePackage;
@@ -22,13 +23,21 @@ public class StepNameProvider {
   protected String _nameOf(final Step step) {
     String _xblockexpression = null;
     {
+      boolean _or = false;
       boolean _equals = Objects.equal(step, null);
       if (_equals) {
-        return "";
+        _or = true;
+      } else {
+        String _name = step.getName();
+        boolean _equals_1 = Objects.equal(_name, null);
+        _or = (_equals || _equals_1);
       }
-      String _name = step.getName();
-      String _trim = _name==null?(String)null:_name.trim();
-      _xblockexpression = (_trim);
+      if (_or) {
+        return null;
+      }
+      EAttribute _step_Name = FeaturePackage.eINSTANCE.getStep_Name();
+      String _textForFeature = Nodes.textForFeature(step, _step_Name);
+      _xblockexpression = (_textForFeature);
     }
     return _xblockexpression;
   }
@@ -95,15 +104,10 @@ public class StepNameProvider {
     return name.substring(_plus);
   }
   
-  private String removeArguments(final String name) {
-    Matcher _matcher = StepArgumentsProvider.ARG_PATTERN.matcher(name);
+  public String removeArguments(final String name) {
+    String firstLine = Strings.firstLine(name);
+    Matcher _matcher = StepArgumentsProvider.ARG_PATTERN.matcher(firstLine);
     return _matcher.replaceAll("\"\"");
-  }
-  
-  public String removeKeywordsAndArguments(final String name) {
-    String _firstLine = Strings.firstLine(name);
-    String _removeKeywords = this.removeKeywords(_firstLine);
-    return this.removeArguments(_removeKeywords);
   }
   
   public String nameOf(final Step ref) {

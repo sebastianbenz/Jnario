@@ -68,7 +68,7 @@ public class FeatureLinkingService extends DefaultLinkingService {
 
 	private String getReferencedStepName(INode node) {
 		String crossRefString = getCrossRefNodeAsString(node);
-		crossRefString = stepNameProvider.removeKeywordsAndArguments(crossRefString);
+		crossRefString = stepNameProvider.removeArguments(crossRefString);
 		return crossRefString;
 	}
 }

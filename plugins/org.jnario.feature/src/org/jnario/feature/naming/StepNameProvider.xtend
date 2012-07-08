@@ -26,10 +26,10 @@ import org.jnario.feature.feature.Scenario
 class StepNameProvider {
  
 	def dispatch nameOf(Step step){
-		if(step == null){
-			return "";
+		if(step == null || step.getName == null){
+			return null
 		}
-		step.name?.trim 
+		textForFeature(step, FeaturePackage::eINSTANCE.step_Name)
 	}
 	
 	def dispatch nameOf(StepReference ref){
@@ -69,11 +69,8 @@ class StepNameProvider {
 		return name.substring(index + 1)
 	}
 	
-	def private removeArguments(String name){
-		return StepArgumentsProvider::ARG_PATTERN.matcher(name).replaceAll('""')
-	}
-	
-	def removeKeywordsAndArguments(String name){
-		return name.firstLine.removeKeywords.removeArguments
+	def removeArguments(String name){
+		var firstLine = name.firstLine
+		return StepArgumentsProvider::ARG_PATTERN.matcher(firstLine).replaceAll('""')
 	}
 }

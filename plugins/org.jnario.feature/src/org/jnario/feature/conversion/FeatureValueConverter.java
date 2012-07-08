@@ -39,6 +39,6 @@ public class FeatureValueConverter implements IValueConverter<String> {
 		if(value == null){
 			return null;
 		}
-		return prefix + value + Strings.newLine();
+		return prefix + value.trim() + Strings.newLine();
 	}
 }

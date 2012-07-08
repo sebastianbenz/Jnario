@@ -52,7 +52,7 @@ public class FeatureQualifiedNameProvider extends XtendQualifiedNameProvider {
 	}
 
 	private String getName(String name) {
-		name = stepNameProvider.removeKeywordsAndArguments(name);
+		name = stepNameProvider.removeArguments(name);
 		if(name.endsWith(".")){
 			name = name.substring(0, name.length()-1);
 		}
