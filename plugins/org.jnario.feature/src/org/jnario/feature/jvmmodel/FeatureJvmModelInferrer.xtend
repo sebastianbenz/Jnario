@@ -42,6 +42,7 @@ import static org.eclipse.xtext.EcoreUtil2.*
 import static org.jnario.feature.jvmmodel.FeatureJvmModelInferrer.*
 
 import static extension com.google.common.base.Strings.*
+import org.eclipse.xtend.core.xtend.XtendField
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -149,6 +150,8 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	
    	def dispatch void init(Scenario scenario, JvmGenericType inferredJvmType, List<JvmGenericType> scenarios){
    		scenario.steps.forEach[it.generateStepValues]
+		scenario.members.filter(typeof(XtendField)).forEach[initializeName]   		
+   		
    		scenario.copyXtendMemberForReferences
    		
    		val annotations = inferredJvmType.annotations
@@ -163,6 +166,11 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			start = background.steps.generateBackgroundStepCalls(inferredJvmType)
 		}
 		scenario.steps.generateSteps(inferredJvmType, start, scenario)
+   	}
+   	
+   	def void initializeName(XtendField field){
+   		if(field.name != null) return;
+   		field.name = field.computeFieldName(null)
    	}
 
    	def generateStepValues(Step step){
