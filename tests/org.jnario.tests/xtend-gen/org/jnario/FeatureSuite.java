@@ -4,6 +4,7 @@ import org.jnario.feature.documentation.IntroducingJnarioFeaturesSpec;
 import org.jnario.feature.tests.integration.AccessOfVariablesFeature;
 import org.jnario.feature.tests.integration.BackgroundsFeature;
 import org.jnario.feature.tests.integration.CalculatorFeature;
+import org.jnario.feature.tests.integration.FieldInferenceFeature;
 import org.jnario.feature.tests.integration.ParsingSimpleJnarioFilesFeature;
 import org.jnario.feature.tests.integration.ReferencesForStepsFeature;
 import org.jnario.feature.tests.integration.SetupTeardownWithFeatureExtensionsFeature;
@@ -27,7 +28,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(ExampleGroupRunner.class)
 @Named("Feature")
-@Contains({ FeatureTokenSourceSpec.class, IntroducingJnarioFeaturesSpec.class, CalculatorFeature.class, BackgroundsFeature.class, ReferencingOtherStepsSpec.class, UsingMatchersInFeaturesFeature.class, ParsingSimpleJnarioFilesFeature.class, AccessOfVariablesFeature.class, FeatureClassNameProviderSpec.class, TestRunnerFeature.class, UsingJUnitRulesInFeaturesFeature.class, ReferencesForStepsFeature.class, FeatureValueConverterSpec.class, StepNameProviderSpec.class, StepExpressionProviderSpec.class, StepArgumentsProviderSpec.class, StepParametersFeature.class, FeatureJavaValidatorSpec.class, FeatureDocGeneratorSpec.class, SetupTeardownWithFeatureExtensionsFeature.class })
+@Contains({ FeatureTokenSourceSpec.class, IntroducingJnarioFeaturesSpec.class, CalculatorFeature.class, BackgroundsFeature.class, ReferencingOtherStepsSpec.class, UsingMatchersInFeaturesFeature.class, ParsingSimpleJnarioFilesFeature.class, AccessOfVariablesFeature.class, FeatureClassNameProviderSpec.class, TestRunnerFeature.class, UsingJUnitRulesInFeaturesFeature.class, ReferencesForStepsFeature.class, FeatureValueConverterSpec.class, StepNameProviderSpec.class, StepExpressionProviderSpec.class, StepArgumentsProviderSpec.class, StepParametersFeature.class, FieldInferenceFeature.class, FeatureJavaValidatorSpec.class, FeatureDocGeneratorSpec.class, SetupTeardownWithFeatureExtensionsFeature.class })
 @SuppressWarnings("all")
 public class FeatureSuite {
 }

@@ -141,7 +141,7 @@ public abstract class BehaviorExecutor {
 
 	private Resource parse(CharSequence content, String file) {
 		installJvmTypeProvider(resourceSet);
-		Resource resource = resourceSet.createResource(createURI("dummy." + file));
+		Resource resource = resourceSet.createResource(createURI("dummy" + resourceSet.getResources().size() +"." + file));
 		resourceSet.getResources().add(resource);
 		try {
 			resource.load(new StringInputStream(content.toString()), Collections.emptyMap());
@@ -251,6 +251,9 @@ public abstract class BehaviorExecutor {
 	@Singleton
 	private IndexedJvmTypeAccess indexedJvmTypeAccess;
 	
+	
+	
+	
 	protected void installJvmTypeProvider(ResourceSet resourceSet) {
 		Iterable<? extends String> classPathEntries = javaCompiler.getClasspathPathEntries();
 		classPathEntries = filter(classPathEntries, new Predicate<String>() {
@@ -274,6 +277,11 @@ public abstract class BehaviorExecutor {
 	
 	public BehaviorExecutor() {
 		initCompiler();
+		try {
+			tempFolder.create();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	protected void initCompiler() {
@@ -347,7 +355,6 @@ public abstract class BehaviorExecutor {
 	}
 
 	private void configureOutlet() throws IOException {
-		tempFolder.create();
 		fsa.setOutputPath(tempFolder.getRoot().getAbsolutePath());
 	}
 

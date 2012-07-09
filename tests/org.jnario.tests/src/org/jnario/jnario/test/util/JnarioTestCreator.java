@@ -11,6 +11,9 @@ public abstract class JnarioTestCreator extends AbstractSpecCreator{
 	protected Injector injector;
 
 	public <T> T create(Class<T> klass){
+		if(injector == null){
+			beforeSpecRun();
+		}
 		return injector.getInstance(klass);
 	}
 

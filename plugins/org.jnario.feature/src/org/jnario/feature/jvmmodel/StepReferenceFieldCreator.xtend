@@ -12,12 +12,14 @@ import org.eclipse.xtext.EcoreUtil2
 import org.jnario.feature.feature.StepReference
 import org.jnario.feature.feature.Scenario
 import org.eclipse.xtend.core.xtend.XtendField
-import org.eclipse.emf.common.util.EList
-import org.jnario.feature.feature.Background
 import org.eclipse.xtend.core.xtend.XtendMember
 import org.jnario.feature.feature.Step
 import java.util.Set
 import java.util.List
+import org.eclipse.xtend.core.xtend.XtendClass
+import org.jnario.feature.feature.Background
+import static org.eclipse.xtext.EcoreUtil2.*
+import org.jnario.feature.feature.Feature
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -25,7 +27,7 @@ import java.util.List
 class StepReferenceFieldCreator {
 
 	def copyXtendMemberForReferences(EObject objectWithReference){
-		val refs = EcoreUtil2::getAllContentsOfType(objectWithReference, typeof(StepReference))
+		val refs = getAllContentsOfType(objectWithReference, typeof(StepReference))
 		for(ref: refs){
 			if(ref.reference?.stepExpression != null){
 				val fieldNames = ref.existingFieldNamesForContainerOfStepReference
@@ -36,50 +38,41 @@ class StepReferenceFieldCreator {
    	}
    	
    	def getExistingFieldNamesForContainerOfStepReference(StepReference ref){
-   		val refScenario = EcoreUtil2::getContainerOfType(ref, typeof(Scenario))
-		var Set<String> fieldNames
-		if(refScenario != null)
-			fieldNames = refScenario.members.existingFieldNames
-		else{
-			val refBackground = EcoreUtil2::getContainerOfType(ref, typeof(Background))
-			if(refBackground != null){
-				fieldNames = refBackground.members.existingFieldNames
-			}
-		}
-		return fieldNames
+   		ref.membersOfReferencedStep.existingFieldNames
    	}
    	
-   	def getExistingFieldNames(EList<XtendMember> members){
+   	def getExistingFieldNames(Iterable<XtendMember> members){
    		members.filter(typeof(XtendField)).map[name].toSet
    	}
    	
    	def getMembersOfReferencedStep(Step step){
-   		val scenario = EcoreUtil2::getContainerOfType(step, typeof(Scenario))
-		var EList<XtendMember> members
-		if(scenario != null){
-			members = scenario.members
-		}else{   							
-			val refBackground = EcoreUtil2::getContainerOfType(step, typeof(Background))
-			members = refBackground.members
+   		val scenario = getContainerOfType(step, typeof(Scenario))
+		if(scenario == null){
+			return <XtendMember>emptyList
 		}
+		var members = scenario.members
+		return members
+//		if(scenario instanceof Background){
+//			return members
+//		}
+//		val feature = getContainerOfType(scenario, typeof(Feature))
+//		if(feature.background == null){
+//			return members
+//		}
+//		return members + feature.background.members
+		
    	}
    	
-   	def copyFields(EObject objectWithReference, List<XtendMember> members, Set<String> fieldNames){
-   		for(member: members){
-			if(member instanceof XtendField){
-				val field = member as XtendField
-				if(!fieldNames.contains(field.name)){
-					val copiedMember = EcoreUtil2::cloneWithProxies(field)
-					if(objectWithReference instanceof Scenario){
-						val scen = objectWithReference as Scenario	
-						scen.members += copiedMember
-					}
-					if(objectWithReference instanceof Background){
-						val back = objectWithReference as Background
-						back.members += copiedMember
-					}
-					fieldNames.add(field.name)
-				}
+   	def copyFields(EObject objectWithReference, Iterable<XtendMember> members, Set<String> fieldNames){
+   		if(!(objectWithReference instanceof XtendClass)){
+   			return
+   		}
+   		val type = objectWithReference as XtendClass
+   		for(field: members.filter(typeof(XtendField))){
+			if(!fieldNames.contains(field.name)){
+				val copiedMember = copy(field)
+				type.members += copiedMember as XtendField
+				fieldNames += field.name
 			}
 		}
    	}
