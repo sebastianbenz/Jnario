@@ -56,6 +56,30 @@ Feature: Step Parameters
 			jnarioFile = args.first
 		Then it should execute successfully
 		
+	Scenario: Parameter definition in and steps
+		When I define parameters in a an and step
+			'''
+				Feature: Test feature
+				Scenario: "And" args in step definition
+					var strings = <String>list()
+					Given a string "hello"
+						strings += args.first
+						And another string "world"
+							strings += args.first
+					Then the string is
+						strings => list("hello", "world")
+						
+				Scenario: "And" args in step reference
+					var strings = <String>list()
+					Given a string "hello"
+						strings += args.first
+						And a string "world"
+					Then the string is
+						strings => list("hello", "world")
+			'''
+			jnarioFile = args.first
+		Then it should execute successfully
+		
 	Scenario: Referencing variables that contain a value from args
 		When I have a scenario that references a step with arguments
 			'''

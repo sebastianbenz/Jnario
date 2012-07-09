@@ -51,6 +51,9 @@ public class StepArgumentsProvider {
 
 	public void findStepArguments(Step step, ArgumentAcceptor acceptor) {
 		String stepName = stepNameProvider.nameOf(step);
+		if(stepName == null){
+			return;
+		}
 		int multiLineBegin = stepName.indexOf("\n");
 		findArgsInFirstLine(acceptor, stepName, multiLineBegin);
 		addOptionalMultilineString(acceptor, stepName, multiLineBegin);

@@ -14,10 +14,12 @@ import org.eclipse.xtext.util.StringInputStream;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
+import org.jnario.feature.feature.Given;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.jvmmodel.StepArgumentsProvider;
 import org.jnario.feature.tests.unit.linking.StepArgumentsProviderSpecExamples;
 import org.jnario.jnario.test.util.FeatureTestCreator;
+import org.jnario.jnario.test.util.Features;
 import org.jnario.jnario.test.util.Query;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
@@ -91,6 +93,22 @@ public class StepArgumentsProviderSpec {
         }
       };
     ExampleTableIterators.<StepArgumentsProviderSpecExamples>forEach(this.examples, _function);
+  }
+  
+  @Test
+  @Named("returns empty list if step has no name")
+  @Order(99)
+  public void returnsEmptyListIfStepHasNoName() throws Exception {
+    Given _step = Features.step(null);
+    List<String> _findStepArguments = this.subject.findStepArguments(_step);
+    List<Object> _list = JnarioCollectionLiterals.<Object>list();
+    boolean _doubleArrow = Should.operator_doubleArrow(_findStepArguments, _list);
+    Assert.assertTrue("\nExpected subject.findStepArguments(step(null)) => list() but"
+     + "\n     subject.findStepArguments(step(null)) is " + new StringDescription().appendValue(_findStepArguments).toString()
+     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
+     + "\n     step(null) is " + new StringDescription().appendValue(_step).toString()
+     + "\n     list() is " + new StringDescription().appendValue(_list).toString() + "\n", _doubleArrow);
+    
   }
   
   public Step create(final String step) {

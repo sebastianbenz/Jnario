@@ -1,5 +1,6 @@
 package org.jnario.feature.tests.unit.linking
 
+import static org.jnario.jnario.test.util.Features.*
 import org.jnario.feature.jvmmodel.StepArgumentsProvider
 import com.google.inject.Inject
 import org.jnario.feature.feature.Step
@@ -37,6 +38,10 @@ describe StepArgumentsProvider {
 				foundArgs => expectedArgs
 			}
 		]
+	}
+	
+	facts "returns empty list if step has no name"{
+		subject.findStepArguments(step(null)) => list()
 	}
  
 	def create(String step){

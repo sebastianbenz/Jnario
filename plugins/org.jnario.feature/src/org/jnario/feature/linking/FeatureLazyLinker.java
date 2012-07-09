@@ -7,9 +7,6 @@
  *******************************************************************************/
 package org.jnario.feature.linking;
 
-import static com.google.common.collect.Iterables.concat;
-import static java.util.Collections.emptyList;
-
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -20,15 +17,12 @@ import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XStringLiteral;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.XbaseFactory;
-import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeatureFile;
-import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.jvmmodel.FeatureJvmModelInferrer;
 import org.jnario.feature.jvmmodel.StepArgumentsProvider;
 import org.jnario.linking.JnarioLazyLinker;
 
-import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 
 /**
@@ -38,6 +32,7 @@ import com.google.inject.Inject;
 public class FeatureLazyLinker extends JnarioLazyLinker {
 	
 	@Inject StepArgumentsProvider stepArgumentsProvider;
+	@Inject FeatureQuery featureQuery;
 
 	@Override
 	protected void beforeModelLinked(EObject model,
@@ -51,30 +46,12 @@ public class FeatureLazyLinker extends JnarioLazyLinker {
 			return;
 		}
 		FeatureFile featureFile = (FeatureFile) model;
-		generateArguments(allSteps(featureFile));		
-	}
-	
-	private Iterable<Step> allSteps(FeatureFile featureFile){
-		Iterable<Step> result = emptyList();
-		for (Feature feature : Iterables.filter(featureFile.getXtendClasses(), Feature.class)) {
-			if(feature == null){
-				return result;
-			}
-			if(feature.getBackground() != null){
-				result = concat(result, feature.getBackground().getSteps());		
-			}
-			for(Scenario scenario : feature.getScenarios()){
-				result = concat(result, scenario.getSteps());
-			}
-		}
-		return result;
+		generateArguments(featureQuery.allSteps(featureFile));		
 	}
 	
 	private void generateArguments(Iterable<Step> steps) {
 		for(Step step: steps){
-			if(step.getName() != null){
-				generateArguments(step);
-			}
+			generateArguments(step);
 		}
 	}
 

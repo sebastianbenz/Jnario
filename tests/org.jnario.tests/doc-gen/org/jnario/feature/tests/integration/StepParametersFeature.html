@@ -87,6 +87,34 @@ Feature: Test feature
 </ul>
 </li>
 </ul>
+<h3  id="Scenario_Parameter_definition_in_and_steps">Scenario: Parameter definition in and steps
+</h3>
+<ul>
+<li><p><strong>When</strong> I define parameters in a an and step</p><pre>Feature: Test feature
+Scenario: &quot;And&quot; args in step definition
+  var strings = &lt;String&gt;list()
+  Given a string &quot;hello&quot;
+    strings += args.first
+    And another string &quot;world&quot;
+      strings += args.first
+  Then the string is
+    strings =&gt; list(&quot;hello&quot;, &quot;world&quot;)
+    
+Scenario: &quot;And&quot; args in step reference
+  var strings = &lt;String&gt;list()
+  Given a string &quot;hello&quot;
+    strings += args.first
+    And a string &quot;world&quot;
+  Then the string is
+    strings =&gt; list(&quot;hello&quot;, &quot;world&quot;)</pre>
+<ul>
+</ul>
+</li>
+<li><p><strong>Then</strong> it should execute successfully</p>
+<ul>
+</ul>
+</li>
+</ul>
 <h3  id="Scenario_Referencing_variables_that_contain_a_value_from_args">Scenario: Referencing variables that contain a value from args
 </h3>
 <ul>
