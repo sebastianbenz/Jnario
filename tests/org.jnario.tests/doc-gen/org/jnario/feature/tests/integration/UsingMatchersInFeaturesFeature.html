@@ -29,10 +29,21 @@
 			<div class="row">
 				<div class="span12">
 <p></p>
-<h3>Scenario: Using Matchers in Jnario
+<h3  id="Scenario_Using_Matchers_in_Jnario">Scenario: Using Matchers in Jnario
 </h3>
 <ul>
-<li><p><strong>When</strong> I have a scenario which uses the Jnario matchers</p><pre></pre>
+<li><p><strong>When</strong> I have a scenario which uses the Jnario matchers</p><pre>Feature: Should
+  
+  Scenario: Features with should
+    
+    Given a Scenario
+    Then it should be possible to use &quot;should&quot;
+      true should be true
+      1 + 1 should not be 1
+      &quot;something&quot; should not be null 
+    And the shortcut &quot;=&gt;&quot;
+      1 + 1 =&gt; 2 
+      &quot;a string&quot; =&gt; typeof(String)</pre>
 <ul>
 </ul>
 </li>

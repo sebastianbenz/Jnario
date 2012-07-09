@@ -12,8 +12,8 @@ import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
-@Named("toString[String]")
-public class SuiteValueConverterToStringStringSpec extends SuiteValueConverterSpec {
+@Named("toString")
+public class SuiteValueConverterToStringSpec extends SuiteValueConverterSpec {
   @Test
   @Named("escapes dashes")
   @Order(99)

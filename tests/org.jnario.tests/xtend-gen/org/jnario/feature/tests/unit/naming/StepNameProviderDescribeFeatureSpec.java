@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
-@Named("describe[Feature]")
+@Named("^describe[Feature]")
 public class StepNameProviderDescribeFeatureSpec extends StepNameProviderSpec {
   @Test
   @Named("feature[\\\" With whitespace \\\"].desc =>  \\\"With whitespace\\\"")

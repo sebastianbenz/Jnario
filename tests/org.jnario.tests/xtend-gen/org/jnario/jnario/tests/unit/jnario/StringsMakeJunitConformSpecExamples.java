@@ -3,8 +3,8 @@ package org.jnario.jnario.tests.unit.jnario;
 import java.util.List;
 import org.jnario.lib.ExampleTableRow;
 
-public class StringsMakeJunitConformStringBuilderSpecExamples extends ExampleTableRow {
-  public StringsMakeJunitConformStringBuilderSpecExamples(final List<String> cellNames, final String string, final String result) {
+public class StringsMakeJunitConformSpecExamples extends ExampleTableRow {
+  public StringsMakeJunitConformSpecExamples(final List<String> cellNames, final String string, final String result) {
     super(cellNames);
     this.string = string;
     this.result = result;

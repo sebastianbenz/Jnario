@@ -12,8 +12,8 @@ import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
-@Named("toString[String]")
-public class TextValueConverterToStringStringSpec extends TextValueConverterSpec {
+@Named("toString")
+public class TextValueConverterToStringSpec extends TextValueConverterSpec {
   @Test
   @Named("adds colon")
   @Order(99)

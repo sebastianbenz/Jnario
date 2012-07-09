@@ -6,11 +6,11 @@ import org.jnario.runner.Contains;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.suite.conversion.SuiteValueConverterService;
-import org.jnario.suite.unit.TextValueConverterToStringStringSpec;
-import org.jnario.suite.unit.TextValueConverterToValueStringINodeSpec;
+import org.jnario.suite.unit.TextValueConverterToStringSpec;
+import org.jnario.suite.unit.TextValueConverterToValueSpec;
 import org.junit.runner.RunWith;
 
-@Contains({ TextValueConverterToStringStringSpec.class, TextValueConverterToValueStringINodeSpec.class })
+@Contains({ TextValueConverterToStringSpec.class, TextValueConverterToValueSpec.class })
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("TextValueConverter")

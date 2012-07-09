@@ -16,8 +16,8 @@ import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
-@Named("nameOf[Step]")
-public class StepNameProviderNameOfStepSpec extends StepNameProviderSpec {
+@Named("nameOf")
+public class StepNameProviderNameOfSpec extends StepNameProviderSpec {
   @Test
   @Named("returns null if the step has no name")
   @Order(99)

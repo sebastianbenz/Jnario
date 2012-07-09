@@ -15,8 +15,8 @@ import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
-@Named("level[Suite]")
-public class SuiteNodeBuilderLevelSuiteSpec extends SuiteNodeBuilderSpec {
+@Named("level")
+public class SuiteNodeBuilderLevelSpec extends SuiteNodeBuilderSpec {
   @Subject
   public SuiteNodeBuilder subject;
   

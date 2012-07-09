@@ -29,10 +29,17 @@
 			<div class="row">
 				<div class="span12">
 <p></p>
-<h3>Scenario: Parameters are defined in quotes
+<h3  id="Scenario_Parameters_are_defined_in_quotes">Scenario: Parameters are defined in quotes
 </h3>
 <ul>
-<li><p><strong>When</strong> I have a feature with parameters</p><pre></pre>
+<li><p><strong>When</strong> I have a feature with parameters</p><pre>package bootstrap
+Feature: Test feature
+  Scenario: using fields in step definitions
+    String x
+    Given some values &quot;3&quot;, &quot;4&quot;
+      x = args.get(0)
+    Then it should be possible to get the value
+      x =&gt; &quot;3&quot;</pre>
 <ul>
 </ul>
 </li>
@@ -41,10 +48,17 @@
 </ul>
 </li>
 </ul>
-<h3>Scenario: Access of parameters with first, second, ...
+<h3  id="Scenario_Access_of_parameters_with_first_second">Scenario: Access of parameters with first, second, ...
 </h3>
 <ul>
-<li><p><strong>When</strong> I access those parameters</p><pre></pre>
+<li><p><strong>When</strong> I access those parameters</p><pre>package bootstrap
+Feature: Test feature
+  Scenario: using fields in step definitions
+    String x
+    Given some values &quot;3&quot;, &quot;4&quot;
+      x = args.first
+    Then it should be possible to get the value
+      x =&gt; &quot;3&quot;</pre>
 <ul>
 </ul>
 </li>
@@ -53,10 +67,18 @@
 </ul>
 </li>
 </ul>
-<h3>Scenario: Parameter definition in steps and Background
+<h3  id="Scenario_Parameter_definition_in_steps_and_Background">Scenario: Parameter definition in steps and Background
 </h3>
 <ul>
-<li><p><strong>When</strong> I define parameters in a background</p><pre></pre>
+<li><p><strong>When</strong> I define parameters in a background</p><pre>package bootstrap 
+Feature: Test feature
+  Background:
+    String x
+    Given some values &quot;3&quot;, &quot;4&quot;
+      x = args.get(1)
+  Scenario: using fields in step definitions
+    Then those values should be accessible
+      x =&gt; &quot;4&quot;</pre>
 <ul>
 </ul>
 </li>
@@ -65,10 +87,20 @@
 </ul>
 </li>
 </ul>
-<h3>Scenario: Referencing variables that contain a value from args
+<h3  id="Scenario_Referencing_variables_that_contain_a_value_from_args">Scenario: Referencing variables that contain a value from args
 </h3>
 <ul>
-<li><p><strong>When</strong> I have a scenario that references a step with arguments</p><pre></pre>
+<li><p><strong>When</strong> I have a scenario that references a step with arguments</p><pre>package bootstrap 
+Feature: Test feature
+  Scenario: using fields in step definitions
+    String x
+    String y 
+    Given the value &quot;hello&quot;
+      x = args.first
+    When I add &quot; world&quot;
+      y = x + args.first
+    Then it should be &quot;hello world&quot;
+      y should be args.first</pre>
 <ul>
 </ul>
 </li>
@@ -77,7 +109,7 @@
 </ul>
 </li>
 </ul>
-<h3>Scenario: Using multiline Strings
+<h3  id="Scenario_Using_multiline_Strings">Scenario: Using multiline Strings
 </h3>
 <ul>
 <li><p><strong>When</strong> I have a scenario with multiline strings</p>

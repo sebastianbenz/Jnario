@@ -29,7 +29,7 @@
 			<div class="row">
 				<div class="span12">
 <p>You can use the <code>should</code> statement to express the expected behavior of objects.</p>
-<ul><li><p  id="To_pass__"><strong>To pass..</strong>
+<ul><li><p  id="To_pass"><strong>To pass..</strong>
 <p><code>should</code> passes if the result of the left expression is equal to the result of the right expression. You can use <code>not</code> to assert that the expressions have different results. There is also a short cut available: <code>=&gt;</code> which has the same effect as <code>should be</code>.</p>
 <pre class="prettyprint lang-spec">
 // equality
@@ -57,7 +57,7 @@ val greeting = &quot;hello world&quot; =&gt; [
 ]
 greeting =&gt; typeof(String)</pre>
 </p>
-</li><li><p  id="___or_not_to_pass"><strong>...or not to pass</strong>
+</li><li><p  id="or_not_to_pass"><strong>...or not to pass</strong>
 <p><code>should</code> throws an AssertionError if the result of the left expression does not equal the result of the right expression. Here is a helper method we are going to use:</p>
 <pre class="prettyprint lang-spec">
 def void method(){
@@ -70,7 +70,7 @@ def void method(){
 1 + 1 =&gt; 1 throws AssertionError
 method() throws IllegalArgumentException</pre>
 </p>
-</li><li><p  id="Why_did_it_fail_"><strong>Why did it fail?</strong>
+</li><li><p  id="Why_did_it_fail"><strong>Why did it fail?</strong>
 <p>When failing, <code>should</code> and <code>=&gt;</code> try to give you as much context information as possible. The error message will print the values of all expressions and their subexpressions.</p>
 <pre class="prettyprint lang-spec">
 errorMessage[1 + 1 =&gt; 1].is('''

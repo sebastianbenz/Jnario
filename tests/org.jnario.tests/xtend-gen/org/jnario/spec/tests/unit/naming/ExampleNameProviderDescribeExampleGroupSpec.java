@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
-@Named("describe[ExampleGroup]")
+@Named("^describe[ExampleGroup]")
 public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProviderSpec {
   @Subject
   public ExampleNameProvider subject;

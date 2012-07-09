@@ -14,8 +14,8 @@ import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
-@Named("substract[int, int]")
-public class CalculatorSubstractIntIntSpec extends CalculatorSpec {
+@Named("substract")
+public class CalculatorSubstractSpec extends CalculatorSpec {
   @Subject
   public Calculator subject;
   

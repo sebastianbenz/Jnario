@@ -232,7 +232,7 @@ describe Stack{
   }
 }</pre>
 </p>
-</li><li><p  id="Setup___Teardown"><strong>Setup & Teardown</strong>
+</li><li><p  id="Setup_Teardown"><strong>Setup & Teardown</strong>
 <p>Setting up a fixture or tearing it down works similar to JUnit, but the syntax is less verbose. The following specification will print:</p>
 <pre class="prettyprint lang-none">
 	before all
@@ -326,14 +326,14 @@ describe &quot;Helper Methods &amp; Fields&quot;{
 <h3 id="Writing_Assertions">Writing Assertions</h3>
 <p><p>Jnario provides different statements for writing assertions (<a href="/org/jnario/spec/tests/integration/AssertionSpec.html">more...</a>).</p>
 </p>
-<ul><li><p  id="_assert_"><strong>'assert'</strong>
+<ul><li><p  id="assert"><strong>'assert'</strong>
 <p>The <code>assert</code> statement fails if the following expression does not evaluate to <code>true</code>.</p>
 <pre class="prettyprint lang-spec">
 assert true
 assert new Stack().empty
 assert &quot;Hello&quot;.startsWith(&quot;H&quot;)</pre>
 </p>
-</li><li><p  id="_should__and_____"><strong>'should' and `=>`</strong>
+</li><li><p  id="should_and"><strong>'should' and `=>`</strong>
 <p>If you want to express how an object should behave, you can use <code>should</code>. It passes if the result of the left expression is equal to the result of the right expression. You can also use <code>not</code> to assert that both expressions have different results. You have already seen the short cut <code>=&gt;</code> which has the same effect as <code>should be</code>.</p>
 <pre class="prettyprint lang-spec">
 true should be true

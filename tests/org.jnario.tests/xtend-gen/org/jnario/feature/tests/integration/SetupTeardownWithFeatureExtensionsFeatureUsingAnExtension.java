@@ -24,7 +24,7 @@ public class SetupTeardownWithFeatureExtensionsFeatureUsingAnExtension {
   @Test
   @Order(0)
   @Ignore
-  @Named("[PENDING] Given a class **ExampleExtension** with JUnit before and after methods:")
+  @Named("Given a class **ExampleExtension** with JUnit before and after methods:")
   public void givenAClassExampleExtensionWithJUnitBeforeAndAfterMethods() {
     
   }

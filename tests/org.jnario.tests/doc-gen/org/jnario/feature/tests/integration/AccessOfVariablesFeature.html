@@ -29,10 +29,15 @@
 			<div class="row">
 				<div class="span12">
 <p></p>
-<h3>Scenario: Access a variable in the same step it was declared in
+<h3  id="Scenario_Access_a_variable_in_the_same_step_it_was_declared_in">Scenario: Access a variable in the same step it was declared in
 </h3>
 <ul>
-<li><p><strong>When</strong> I have scenario with a reference to a variable</p><pre></pre>
+<li><p><strong>When</strong> I have scenario with a reference to a variable</p><pre>package bootstrap1
+Feature: Variable test
+  Scenario: Some scenario
+    Given a step with a variable
+      var x = 3
+      x = 5</pre>
 <ul>
 </ul>
 </li>
@@ -41,10 +46,17 @@
 </ul>
 </li>
 </ul>
-<h3>Scenario: Access a variable that was declared in a different step
+<h3  id="Scenario_Access_a_variable_that_was_declared_in_a_different_step">Scenario: Access a variable that was declared in a different step
 </h3>
 <ul>
-<li><p><strong>When</strong> I use a variable in different steps</p><pre></pre>
+<li><p><strong>When</strong> I use a variable in different steps</p><pre>package bootstrap2
+Feature: Variable test
+  Scenario: Some scenario
+    int x
+    Given a step with a variable
+      x = 3
+    When I assign it a different value
+      x = 5</pre>
 <ul>
 </ul>
 </li>
@@ -53,10 +65,20 @@
 </ul>
 </li>
 </ul>
-<h3>Scenario: Access a variable that was assigned a value of a variable defined in a different step
+<h3  id="Scenario_Access_a_variable_that_was_assigned_a_value_of_a_variable_defined_in_a_different_step">Scenario: Access a variable that was assigned a value of a variable defined in a different step
 </h3>
 <ul>
-<li><p><strong>When</strong> I have a complex usage of variables</p><pre></pre>
+<li><p><strong>When</strong> I have a complex usage of variables</p><pre>package bootstrap3
+Feature: Variable test
+  Scenario: Some scenario
+    int x
+    int y
+    Given a step with a variable
+      x = 3
+    When I assign it a different value
+      y = x
+    Then y should be 3
+      y =&gt; 3</pre>
 <ul>
 </ul>
 </li>
@@ -65,10 +87,18 @@
 </ul>
 </li>
 </ul>
-<h3>Scenario: Access a variable declared in background step
+<h3  id="Scenario_Access_a_variable_declared_in_background_step">Scenario: Access a variable declared in background step
 </h3>
 <ul>
-<li><p><strong>When</strong> I define a variable in the background</p><pre></pre>
+<li><p><strong>When</strong> I define a variable in the background</p><pre>package bootstrap4
+Feature: Variable test
+  Background:
+    int x
+    Given some variable
+      x = 3
+  Scenario: Some scenario
+      Then x should be 3
+        x =&gt; 3</pre>
 <ul>
 </ul>
 </li>
@@ -77,10 +107,21 @@
 </ul>
 </li>
 </ul>
-<h3>Scenario: Access a variable referencing a variable from background step
+<h3  id="Scenario_Access_a_variable_referencing_a_variable_from_background_step">Scenario: Access a variable referencing a variable from background step
 </h3>
 <ul>
-<li><p><strong>When</strong> I reference a variable from the background</p><pre></pre>
+<li><p><strong>When</strong> I reference a variable from the background</p><pre>package bootstrap5
+Feature: Variable test
+  Background:
+    int x
+    Given some variable
+      x = 3
+  Scenario: Some scenario
+      int y
+      When assigning the variable
+        y = x
+      Then it should be accessible
+        y =&gt; 3</pre>
 <ul>
 </ul>
 </li>

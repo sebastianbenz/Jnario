@@ -38,6 +38,8 @@ import org.pegdown.PegDownProcessor;
 
 @SuppressWarnings("all")
 public abstract class AbstractDocGenerator implements IGenerator {
+  private final static String SEP = "_";
+  
   @Inject
   private WhiteSpaceNormalizer _whiteSpaceNormalizer;
   
@@ -158,9 +160,10 @@ public abstract class AbstractDocGenerator implements IGenerator {
   }
   
   public String id(final String id) {
-    String _trim = id==null?(String)null:id.trim();
-    String _replaceAll = _trim==null?(String)null:_trim.replaceAll("\\W+", "_");
-    String _plus = (" id=\"" + _replaceAll);
+    String _replaceAll = id==null?(String)null:id.replaceAll("\\W+", AbstractDocGenerator.SEP);
+    char _charAt = AbstractDocGenerator.SEP.charAt(0);
+    String _trim = _replaceAll==null?(String)null:org.jnario.util.Strings.trim(_replaceAll, _charAt);
+    String _plus = (" id=\"" + _trim);
     return (_plus + "\"");
   }
   

@@ -13,8 +13,8 @@ import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
-@Named("toString[String]")
-public class FeatureValueConverterToStringStringSpec extends FeatureValueConverterSpec {
+@Named("toString")
+public class FeatureValueConverterToStringSpec extends FeatureValueConverterSpec {
   @Test
   @Named("subject.toString[\\\"text\\\"] should be \\\"Prefix:text\\\" + Strings::newLine")
   @Order(99)

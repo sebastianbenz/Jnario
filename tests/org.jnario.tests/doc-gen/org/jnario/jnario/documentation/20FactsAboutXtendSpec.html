@@ -57,14 +57,14 @@ val greetings = newHashMap(
 )
 greetings =&gt; typeof(HashMap)</pre>
 </p>
-</li><li><p  id="Syntactic_sugar__Pairs"><strong>Syntactic sugar: Pairs</strong>
+</li><li><p  id="Syntactic_sugar_Pairs"><strong>Syntactic sugar: Pairs</strong>
 <p>In case you are wondering what the <code>-&gt;</code> does in the previous example, it is syntactic sugar for a tuple. To further increase the confusion, the <code>=&gt;</code> operator is part of Jnario and describes the expected behavior of objects.</p>
 <pre class="prettyprint lang-spec">
 val pair = &quot;spain&quot; -&gt; &quot;italy&quot;
 pair.key   =&gt; &quot;spain&quot;
 pair.value =&gt; &quot;italy&quot;</pre>
 </p>
-</li><li><p  id="Fields___methods_work_almost_like_in_Java"><strong>Fields & methods work almost like in Java</strong>
+</li><li><p  id="Fields_methods_work_almost_like_in_Java"><strong>Fields & methods work almost like in Java</strong>
 <p>Fields and methods can be declared in Xtend exactly like in Java. The only difference id that method declarations must be preceded with <code>def</code>:</p>
 <pre class="prettyprint lang-spec">
 String greeting = "Hello "
@@ -94,7 +94,7 @@ val colors = list(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;)
 Collections::sort(colors)
 colors =&gt; list(&quot;blue&quot;, &quot;green&quot;, &quot;red&quot;)</pre>
 </p>
-</li><li><p  id="___as_well_as_accessing_types"><strong>...as well as accessing types</strong>
+</li><li><p  id="as_well_as_accessing_types"><strong>...as well as accessing types</strong>
 <p>Accessing classes has also a different syntax in Xtend. Instead of writing <code>String.class</code> like in Java, you need to write <code>typeof(String)</code> in Xtend.</p><p><span class="label label-warning">Important</span> This is probably the second most most often asked question on the Xtend mailing list.</p>
 <pre class="prettyprint lang-spec">
 typeof(String).name =&gt; &quot;java.lang.String&quot;</pre>
@@ -122,7 +122,7 @@ switch myString {
 
 =&gt;  &quot;It's another short string.&quot;</pre>
 </p>
-</li><li><p  id="___and_type_guards__with_type_inference_"><strong>...and type guards [with type inference]</strong>
+</li><li><p  id="and_type_guards_with_type_inference"><strong>...and type guards [with type inference]</strong>
 <p>You can also write type guards in the case statements. Note that on the right-hand side of the case statement you can directly access the features of the guarded type without an explicit cast;</p>
 <pre class="prettyprint lang-spec">
 val x = list(1, 2, 3) as Object
@@ -150,7 +150,7 @@ removeVowels("Hello")
 "Hello".removeVowels
 </pre>
 </p>
-<ul><li><p  id="Import_static_extension_methods_"><strong>Import static extension methods.</strong>
+<ul><li><p  id="Import_static_extension_methods"><strong>Import static extension methods.</strong>
 <p>You can import static methods as extensions, for example, when we import:</p>
 <pre class="prettyprint lang-spec">
 import static extension java.util.Collections.&#42;
@@ -160,7 +160,7 @@ val colors = list(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;)
 colors.sort // sort is implemented by Collections#sort(List&lt;T&gt;)
 colors =&gt; list(&quot;blue&quot;, &quot;green&quot;, &quot;red&quot;)</pre>
 </p>
-</li><li><p  id="Local_extension_methods_"><strong>Local extension methods.</strong>
+</li><li><p  id="Local_extension_methods"><strong>Local extension methods.</strong>
 <p>All visible non-static methods of the current class and its super types are automatically available as extensions. In specs this can be used to write custom matchers:</p>
 <pre class="prettyprint lang-spec">
 def hasOneElement(List<?> list){
@@ -191,7 +191,7 @@ colors.tail =&gt; iterable(&quot;blue&quot;, &quot;green&quot;)
 colors.last =&gt; &quot;green&quot;
 colors.empty =&gt; false</pre>
 </p>
-</li><li><p  id="____concatenates_collections"><strong>'+' concatenates collections</strong>
+</li><li><p  id="concatenates_collections"><strong>'+' concatenates collections</strong>
 <p>Here is another useful fact about Xtend, you can concatenate collections using the <code>+</code> operator.</p>
 <pre class="prettyprint lang-spec">
 list(1, 2) + list(3, 4) =&gt; iterable(1, 2, 3, 4)</pre>
@@ -221,7 +221,7 @@ list(11, 17, 19).forEach[assert it &gt; 10]</pre>
 <pre class="prettyprint lang-spec">
 list(&quot;a string&quot;, 42, true).filter(typeof(String)) =&gt; iterable(&quot;a string&quot;)</pre>
 </p>
-</li><li><p  id="____or_via_a_custom_predicate"><strong>... or via a custom predicate</strong>
+</li><li><p  id="or_via_a_custom_predicate"><strong>... or via a custom predicate</strong>
 <p>In this case we provide a lambda expressions that returns true for the elements we are interested in:</p>
 <pre class="prettyprint lang-spec">
 list(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;).filter[startsWith(&quot;b&quot;)] =&gt; list(&quot;blue&quot;)</pre>

@@ -12,8 +12,8 @@ import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
-@Named("toValue[String, INode]")
-public class SuiteValueConverterToValueStringINodeSpec extends SuiteValueConverterSpec {
+@Named("toValue")
+public class SuiteValueConverterToValueSpec extends SuiteValueConverterSpec {
   @Test
   @Named("removes escape character for dashes")
   @Order(99)

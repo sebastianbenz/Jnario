@@ -29,14 +29,46 @@
 			<div class="row">
 				<div class="span12">
 <p><p>Feature extensions can be used to share common setup and teardown operations between different features and/or specs. Whenever you are missing helper methods in feature definitions, you should use extensions instead. You can declare extension fields in scenarios to perform setup and teardown operations before/after the scenario is executed.</p></p>
-<h3>Scenario: Using an Extension
+<h3  id="Scenario_Using_an_Extension">Scenario: Using an Extension
 </h3>
 <ul>
-<li><p><strong>Given</strong> a class <strong>ExampleExtension</strong> with JUnit before and after methods:</p><pre></pre>
+<li><p><strong>Given</strong> a class <strong>ExampleExtension</strong> with JUnit before and after methods:</p><pre>package org.jnario.feature.tests.integration
+  
+import org.junit.Before
+import org.junit.BeforeClass
+import org.junit.After
+import org.junit.AfterClass
+
+class ExampleExtension {
+  @Before def before(){
+    println(&quot;before&quot;)
+  }
+  
+  @After def after(){
+    println(&quot;after&quot;)
+  }
+}</pre>
 <ul>
 </ul>
 </li>
-<li><p><strong>When</strong> I declare an extension field of type <strong>ExampleExtension</strong> in the background</p><pre></pre>
+<li><p><strong>When</strong> I declare an extension field of type <strong>ExampleExtension</strong> in the background</p><pre>import org.jnario.feature.tests.integration.ExampleExtension
+
+Feature: Feature with extensions
+  
+  Background: A common extension to all scenarios
+      extension ExampleExtension = new ExampleExtension 
+    Given a static extension field
+    
+  Scenario: Scenario 1
+    Given a step 
+      println(&quot;step 1&quot;)
+    Then we have two steps
+    println(&quot;step 2&quot;)
+  Scenario: Scenario 2
+    Given a step 
+      println(&quot;step 3&quot;)
+    Then we have two steps
+      println(&quot;step 4&quot;)</pre>
 <ul>
 <li><p><strong>And</strong> execute the feature</p>
 <ul>
@@ -44,7 +76,14 @@
 </li>
 </ul>
 </li>
-<li><p><strong>Then</strong> the execution order is</p><pre></pre>
+<li><p><strong>Then</strong> the execution order is</p><pre>before
+step 1
+step 2
+after
+before
+step 3
+step 4
+after</pre>
 <ul>
 </ul>
 </li>

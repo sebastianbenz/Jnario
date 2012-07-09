@@ -3,8 +3,8 @@ package org.jnario.feature.tests.unit.naming;
 import java.util.List;
 import org.jnario.lib.ExampleTableRow;
 
-public class StepNameProviderRemoveArgumentsStringSpecExamples extends ExampleTableRow {
-  public StepNameProviderRemoveArgumentsStringSpecExamples(final List<String> cellNames, final String step, final String result) {
+public class StepNameProviderRemoveArgumentsSpecExamples extends ExampleTableRow {
+  public StepNameProviderRemoveArgumentsSpecExamples(final List<String> cellNames, final String step, final String result) {
     super(cellNames);
     this.step = step;
     this.result = result;

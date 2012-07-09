@@ -34,7 +34,7 @@
 <pre class="prettyprint lang-spec">
 firstJavaClassName(&quot;describe 'My Example'&quot;) should not contain &quot; &quot;</pre>
 </p>
-</li><li><p  id="should_append__Spec__to_class_name"><strong>should append 'Spec' to class name</strong>
+</li><li><p  id="should_append_Spec_to_class_name"><strong>should append 'Spec' to class name</strong>
 <pre class="prettyprint lang-spec">
 firstJavaClassName(&quot;describe 'My Example'&quot;) =&gt; endsWith('Spec')</pre>
 </p>
@@ -186,7 +186,7 @@ secondMethodName(&quot;after{}
          after{}&quot;) =&gt; &quot;after2&quot;</pre>
 </p>
 </li></ul>
-<h3 id="toFieldName_ExampleTable_">ToFieldName[ExampleTable]</h3>
+<h3 id="toFieldName_ExampleTable">ToFieldName[ExampleTable]</h3>
 <p></p>
 <ul><li><p  id="should_use_the_example_name"><strong>should use the example name</strong>
 <pre class="prettyprint lang-spec">
@@ -198,7 +198,7 @@ val exampleTable = '''
 '''.parse.first(typeof(ExampleTable))
 subject.toFieldName(exampleTable) =&gt; &quot;myExample&quot;</pre>
 </p>
-</li><li><p  id="should_use__examples__if_no_name_is_given"><strong>should use 'examples' if no name is given</strong>
+</li><li><p  id="should_use_examples_if_no_name_is_given"><strong>should use 'examples' if no name is given</strong>
 <pre class="prettyprint lang-spec">
 val exampleTable = '''
   describe 'My Context'{
@@ -259,7 +259,7 @@ describeFirst(text) =&gt; 'Example 2'</pre>
 <pre class="prettyprint lang-spec">
 describeFirst(&quot;'should do stuff' {true}&quot;) =&gt; &quot;should do stuff&quot;</pre>
 </p>
-</li><li><p  id="appends___PENDING___to_pending_example_descriptions"><strong>appends '[PENDING]' to pending example descriptions</strong>
+</li><li><p  id="appends_PENDING_to_pending_example_descriptions"><strong>appends '[PENDING]' to pending example descriptions</strong>
 <pre class="prettyprint lang-spec">
 describeFirst(&quot;'should do stuff'&quot;) =&gt; &quot;should do stuff [PENDING]&quot;
 describeFirst(&quot;'should do stuff'{}&quot;) =&gt; &quot;should do stuff [PENDING]&quot;</pre>

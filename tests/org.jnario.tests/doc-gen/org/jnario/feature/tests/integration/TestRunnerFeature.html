@@ -29,14 +29,23 @@
 			<div class="row">
 				<div class="span12">
 <p></p>
-<h3>Scenario: Create only one test instance for one jnario scenario
+<h3  id="Scenario_Create_only_one_test_instance_for_one_jnario_scenario">Scenario: Create only one test instance for one jnario scenario
 </h3>
 <ul>
-<li><p><strong>When</strong> I have a scenario that uses one variable in different steps</p><pre></pre>
+<li><p><strong>When</strong> I have a scenario that uses one variable in different steps</p><pre>package bootstrap
+Feature: a feature
+  Scenario: a scenario with field
+    public int x
+    Given a variable access
+      x = 3
+    When the variable is accessed
+      x = x + 1 
+    Then it is accessed
+      x =&gt; 4</pre>
 <ul>
 </ul>
 </li>
-<li><p><strong>Then</strong> the scenario should have no validation errors that the variable was not defined</p>
+<li><p><strong>Then</strong> the scenario should have no validation errors that the variable was not defined [PENDING]</p>
 <ul>
 <li><p><strong>And</strong> it should execute successfully</p>
 <ul>

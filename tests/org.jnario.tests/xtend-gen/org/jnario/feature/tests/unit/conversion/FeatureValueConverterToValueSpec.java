@@ -12,8 +12,8 @@ import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
-@Named("toValue[String, INode]")
-public class FeatureValueConverterToValueStringINodeSpec extends FeatureValueConverterSpec {
+@Named("toValue")
+public class FeatureValueConverterToValueSpec extends FeatureValueConverterSpec {
   @Test
   @Named("subject.toValue[\\\"Prefix: text\\\\n\\\", null] should be \\\"text\\\"")
   @Order(99)

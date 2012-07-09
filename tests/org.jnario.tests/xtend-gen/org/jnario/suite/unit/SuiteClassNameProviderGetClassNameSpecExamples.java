@@ -3,8 +3,8 @@ package org.jnario.suite.unit;
 import java.util.List;
 import org.jnario.lib.ExampleTableRow;
 
-public class SuiteClassNameProviderGetClassNameSpecificationSpecExamples extends ExampleTableRow {
-  public SuiteClassNameProviderGetClassNameSpecificationSpecExamples(final List<String> cellNames, final String name, final String expectedClassName) {
+public class SuiteClassNameProviderGetClassNameSpecExamples extends ExampleTableRow {
+  public SuiteClassNameProviderGetClassNameSpecExamples(final List<String> cellNames, final String name, final String expectedClassName) {
     super(cellNames);
     this.name = name;
     this.expectedClassName = expectedClassName;

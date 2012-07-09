@@ -3,7 +3,7 @@ package org.jnario.feature.tests.unit.naming;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
-import org.jnario.feature.tests.unit.naming.StepNameProviderRemoveArgumentsStringSpecExamples;
+import org.jnario.feature.tests.unit.naming.StepNameProviderRemoveArgumentsSpecExamples;
 import org.jnario.feature.tests.unit.naming.StepNameProviderSpec;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
@@ -18,41 +18,41 @@ import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
-@Named("removeArguments[String]")
-public class StepNameProviderRemoveArgumentsStringSpec extends StepNameProviderSpec {
+@Named("removeArguments")
+public class StepNameProviderRemoveArgumentsSpec extends StepNameProviderSpec {
   @Before
-  public void _initStepNameProviderRemoveArgumentsStringSpecExamples() {
+  public void _initStepNameProviderRemoveArgumentsSpecExamples() {
     examples = ExampleTable.create("examples", 
       java.util.Arrays.asList("step", "result"), 
-      new StepNameProviderRemoveArgumentsStringSpecExamples(  java.util.Arrays.asList("\'Given a \"value\"\'", "\'Given a \"\"\'"), "Given a \"value\"", "Given a \"\""),
-      new StepNameProviderRemoveArgumentsStringSpecExamples(  java.util.Arrays.asList("\'Given a \"value\" and \"anothervalue\"\'", "\'Given a \"\" and \"\"\'"), "Given a \"value\" and \"anothervalue\"", "Given a \"\" and \"\"")
+      new StepNameProviderRemoveArgumentsSpecExamples(  java.util.Arrays.asList("\'Given a \"value\"\'", "\'Given a \"\"\'"), "Given a \"value\"", "Given a \"\""),
+      new StepNameProviderRemoveArgumentsSpecExamples(  java.util.Arrays.asList("\'Given a \"value\" and \"anothervalue\"\'", "\'Given a \"\" and \"\"\'"), "Given a \"value\" and \"anothervalue\"", "Given a \"\" and \"\"")
     );
   }
   
-  protected ExampleTable<StepNameProviderRemoveArgumentsStringSpecExamples> examples;
+  protected ExampleTable<StepNameProviderRemoveArgumentsSpecExamples> examples;
   
   @Test
   @Named("examples do pass")
   @Order(99)
   public void examplesDoPass() throws Exception {
-    final Procedure1<StepNameProviderRemoveArgumentsStringSpecExamples> _function = new Procedure1<StepNameProviderRemoveArgumentsStringSpecExamples>() {
-        public void apply(final StepNameProviderRemoveArgumentsStringSpecExamples it) {
+    final Procedure1<StepNameProviderRemoveArgumentsSpecExamples> _function = new Procedure1<StepNameProviderRemoveArgumentsSpecExamples>() {
+        public void apply(final StepNameProviderRemoveArgumentsSpecExamples it) {
           StringConcatenation _builder = new StringConcatenation();
           _builder.append("Scenario: scenario");
           _builder.newLine();
           _builder.append(it.step, "");
           _builder.newLineIfNotEmpty();
-          StepNameProviderRemoveArgumentsStringSpec.this.parseScenario(_builder);
-          String _removeArguments = StepNameProviderRemoveArgumentsStringSpec.this.subject.removeArguments(it.step);
+          StepNameProviderRemoveArgumentsSpec.this.parseScenario(_builder);
+          String _removeArguments = StepNameProviderRemoveArgumentsSpec.this.subject.removeArguments(it.step);
           boolean _doubleArrow = Should.operator_doubleArrow(_removeArguments, it.result);
           Assert.assertTrue("\nExpected subject.removeArguments(step) => result but"
            + "\n     subject.removeArguments(step) is " + new StringDescription().appendValue(_removeArguments).toString()
-           + "\n     subject is " + new StringDescription().appendValue(StepNameProviderRemoveArgumentsStringSpec.this.subject).toString()
+           + "\n     subject is " + new StringDescription().appendValue(StepNameProviderRemoveArgumentsSpec.this.subject).toString()
            + "\n     step is " + new StringDescription().appendValue(it.step).toString()
            + "\n     result is " + new StringDescription().appendValue(it.result).toString() + "\n", _doubleArrow);
           
         }
       };
-    ExampleTableIterators.<StepNameProviderRemoveArgumentsStringSpecExamples>forEach(this.examples, _function);
+    ExampleTableIterators.<StepNameProviderRemoveArgumentsSpecExamples>forEach(this.examples, _function);
   }
 }

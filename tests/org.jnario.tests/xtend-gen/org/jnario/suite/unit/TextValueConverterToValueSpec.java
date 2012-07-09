@@ -12,8 +12,8 @@ import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
-@Named("toValue[String, INode]")
-public class TextValueConverterToValueStringINodeSpec extends TextValueConverterSpec {
+@Named("toValue")
+public class TextValueConverterToValueSpec extends TextValueConverterSpec {
   @Test
   @Named("removes colon")
   @Order(99)

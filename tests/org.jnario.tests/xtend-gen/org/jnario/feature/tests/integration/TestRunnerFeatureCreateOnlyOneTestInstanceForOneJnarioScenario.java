@@ -26,7 +26,7 @@ public class TestRunnerFeatureCreateOnlyOneTestInstanceForOneJnarioScenario {
   @Test
   @Order(1)
   @Ignore
-  @Named("[PENDING] Then the scenario should have no validation errors that the variable was not defined")
+  @Named("Then the scenario should have no validation errors that the variable was not defined [PENDING]")
   public void thenTheScenarioShouldHaveNoValidationErrorsThatTheVariableWasNotDefined() {
     
   }

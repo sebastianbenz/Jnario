@@ -16,11 +16,11 @@ import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.suite.suite.Suite;
 import org.jnario.suite.suite.SuiteFactory;
-import org.jnario.suite.unit.SuiteNodeBuilderLevelSuiteSpec;
-import org.jnario.suite.unit.SuiteNodeBuilderParentListSuiteIntSpec;
+import org.jnario.suite.unit.SuiteNodeBuilderLevelSpec;
+import org.jnario.suite.unit.SuiteNodeBuilderParentSpec;
 import org.junit.runner.RunWith;
 
-@Contains({ SuiteNodeBuilderParentListSuiteIntSpec.class, SuiteNodeBuilderLevelSuiteSpec.class })
+@Contains({ SuiteNodeBuilderParentSpec.class, SuiteNodeBuilderLevelSpec.class })
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("SuiteNodeBuilder")

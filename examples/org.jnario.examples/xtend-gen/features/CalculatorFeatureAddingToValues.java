@@ -14,7 +14,7 @@ public class CalculatorFeatureAddingToValues {
   @Test
   @Order(0)
   @Ignore
-  @Named("[PENDING] Given I have a Calculator")
+  @Named("Given I have a Calculator [PENDING]")
   public void givenIHaveACalculator() {
     
   }
@@ -22,7 +22,7 @@ public class CalculatorFeatureAddingToValues {
   @Test
   @Order(1)
   @Ignore
-  @Named("[PENDING] When I add two values")
+  @Named("When I add two values [PENDING]")
   public void whenIAddTwoValues() {
     
   }
@@ -30,7 +30,7 @@ public class CalculatorFeatureAddingToValues {
   @Test
   @Order(2)
   @Ignore
-  @Named("[PENDING] Then it should print the result.")
+  @Named("Then it should print the result. [PENDING]")
   public void thenItShouldPrintTheResult() {
     
   }

@@ -29,10 +29,16 @@
 			<div class="row">
 				<div class="span12">
 <p></p>
-<h3>Scenario: It is possible to add a background to a feature
+<h3  id="Scenario_It_is_possible_to_add_a_background_to_a_feature">Scenario: It is possible to add a background to a feature
 </h3>
 <ul>
-<li><p><strong>When</strong> I have a feature with a background</p><pre></pre>
+<li><p><strong>When</strong> I have a feature with a background</p><pre>package bootstrap
+Feature: Some feature
+  Background:
+    Given a user name
+      val x = &quot;an implementation&quot;
+  Scenario: Scenario 1
+  Scenario: Scenario 2</pre>
 <ul>
 </ul>
 </li>
@@ -41,10 +47,16 @@
 </ul>
 </li>
 </ul>
-<h3>Scenario: Given methods from backgrounds are generated in every scenario class
+<h3  id="Scenario_Given_methods_from_backgrounds_are_generated_in_every_scenario_class">Scenario: Given methods from backgrounds are generated in every scenario class
 </h3>
 <ul>
-<li><p><strong>When</strong> I have a feature with a background</p><pre></pre>
+<li><p><strong>When</strong> I have a feature with a background</p><pre>package bootstrap
+Feature: Some feature
+  Background:
+    Given a user name
+      throw new RuntimeException()
+  Scenario: Scenario 1
+  Scenario: Scenario 2</pre>
 <ul>
 </ul>
 </li>
@@ -53,10 +65,20 @@
 </ul>
 </li>
 </ul>
-<h3>Scenario: Using fields from background steps
+<h3  id="Scenario_Using_fields_from_background_steps">Scenario: Using fields from background steps
 </h3>
 <ul>
-<li><p><strong>When</strong> I have a scenario with a field</p><pre></pre>
+<li><p><strong>When</strong> I have a scenario with a field</p><pre>package bootstrap
+import java.util.*
+Feature: Test
+  Background: 
+    List&lt;String&gt; values = new ArrayList()
+    Given a list
+      values += &quot;hello&quot;
+    
+  Scenario: TestScenario 2
+    Then it should have contents
+      values.size =&gt; 1</pre>
 <ul>
 </ul>
 </li>
@@ -65,10 +87,25 @@
 </ul>
 </li>
 </ul>
-<h3>Scenario: Instantiating Objects in Backgrounds
+<h3  id="Scenario_Instantiating_Objects_in_Backgrounds">Scenario: Instantiating Objects in Backgrounds
 </h3>
 <ul>
-<li><p><strong>When</strong> I have a feature with a background</p><pre></pre>
+<li><p><strong>When</strong> I have a feature with a background</p><pre>package bootstrap
+import org.jnario.feature.tests.integration.Calculator
+Feature: Calculator
+  Background:
+   int result 
+   Calculator calculator
+   Given a calculator
+       calculator = new Calculator()
+  Scenario: Adding two numbers 1 
+   When I enter two numbers &quot;20&quot; and &quot;70&quot;
+        result = calculator.add(args.first.toInt, args.second.toInt)
+   Then it returns &quot;90&quot;
+       result =&gt; args.first.toInt
+  Scenario: Adding two numbers 2
+    When I enter two numbers &quot;20&quot; and &quot;80&quot;
+      Then it returns &quot;100&quot;</pre>
 <ul>
 </ul>
 </li>

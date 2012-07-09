@@ -3,7 +3,7 @@ package org.jnario.jnario.tests.unit.jnario;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.tests.unit.jnario.StringsSpec;
-import org.jnario.jnario.tests.unit.jnario.StringsStartsWithWordStringStringSpecExamples;
+import org.jnario.jnario.tests.unit.jnario.StringsStartsWithWordSpecExamples;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.Should;
@@ -18,31 +18,31 @@ import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
-@Named("startsWithWord[String, String]")
-public class StringsStartsWithWordStringStringSpec extends StringsSpec {
+@Named("startsWithWord")
+public class StringsStartsWithWordSpec extends StringsSpec {
   @Before
-  public void _initStringsStartsWithWordStringStringSpecExamples() {
+  public void _initStringsStartsWithWordSpecExamples() {
     
     int _minus = (-1);
     int _minus_1 = (-1);examples = ExampleTable.create("examples", 
       java.util.Arrays.asList("string", "word", "index"), 
-      new StringsStartsWithWordStringStringSpecExamples(  java.util.Arrays.asList("\"\"", "\"hello\"", "-1"), "", "hello", _minus),
-      new StringsStartsWithWordStringStringSpecExamples(  java.util.Arrays.asList("\"hello hi\"", "\"hello\"", "0"), "hello hi", "hello", 0),
-      new StringsStartsWithWordStringStringSpecExamples(  java.util.Arrays.asList("\" hello\"", "\"hello\"", "1"), " hello", "hello", 1),
-      new StringsStartsWithWordStringStringSpecExamples(  java.util.Arrays.asList("\"\\thello\"", "\"hello\"", "1"), "\thello", "hello", 1),
-      new StringsStartsWithWordStringStringSpecExamples(  java.util.Arrays.asList("\"\\t hello\"", "\"hello\"", "2"), "\t hello", "hello", 2),
-      new StringsStartsWithWordStringStringSpecExamples(  java.util.Arrays.asList("\"\\t hell o\"", "\"hello\"", "-1"), "\t hell o", "hello", _minus_1)
+      new StringsStartsWithWordSpecExamples(  java.util.Arrays.asList("\"\"", "\"hello\"", "-1"), "", "hello", _minus),
+      new StringsStartsWithWordSpecExamples(  java.util.Arrays.asList("\"hello hi\"", "\"hello\"", "0"), "hello hi", "hello", 0),
+      new StringsStartsWithWordSpecExamples(  java.util.Arrays.asList("\" hello\"", "\"hello\"", "1"), " hello", "hello", 1),
+      new StringsStartsWithWordSpecExamples(  java.util.Arrays.asList("\"\\thello\"", "\"hello\"", "1"), "\thello", "hello", 1),
+      new StringsStartsWithWordSpecExamples(  java.util.Arrays.asList("\"\\t hello\"", "\"hello\"", "2"), "\t hello", "hello", 2),
+      new StringsStartsWithWordSpecExamples(  java.util.Arrays.asList("\"\\t hell o\"", "\"hello\"", "-1"), "\t hell o", "hello", _minus_1)
     );
   }
   
-  protected ExampleTable<StringsStartsWithWordStringStringSpecExamples> examples;
+  protected ExampleTable<StringsStartsWithWordSpecExamples> examples;
   
   @Test
   @Named("examples.forEach[string.startsWithWord[word] => index]")
   @Order(99)
   public void examplesForEachStringStartsWithWordWordIndex() throws Exception {
-    final Procedure1<StringsStartsWithWordStringStringSpecExamples> _function = new Procedure1<StringsStartsWithWordStringStringSpecExamples>() {
-        public void apply(final StringsStartsWithWordStringStringSpecExamples it) {
+    final Procedure1<StringsStartsWithWordSpecExamples> _function = new Procedure1<StringsStartsWithWordSpecExamples>() {
+        public void apply(final StringsStartsWithWordSpecExamples it) {
           int _startsWithWord = Strings.startsWithWord(it.string, it.word);
           boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_startsWithWord), Integer.valueOf(it.index));
           Assert.assertTrue("\nExpected string.startsWithWord(word) => index but"
@@ -53,6 +53,6 @@ public class StringsStartsWithWordStringStringSpec extends StringsSpec {
           
         }
       };
-    ExampleTableIterators.<StringsStartsWithWordStringStringSpecExamples>forEach(this.examples, _function);
+    ExampleTableIterators.<StringsStartsWithWordSpecExamples>forEach(this.examples, _function);
   }
 }

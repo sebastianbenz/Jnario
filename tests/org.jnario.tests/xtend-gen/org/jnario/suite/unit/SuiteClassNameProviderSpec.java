@@ -7,11 +7,11 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.suite.suite.Suite;
 import org.jnario.suite.suite.SuiteFactory;
-import org.jnario.suite.unit.SuiteClassNameProviderDescribeSpecificationSpec;
-import org.jnario.suite.unit.SuiteClassNameProviderGetClassNameSpecificationSpec;
+import org.jnario.suite.unit.SuiteClassNameProviderDescribeSpec;
+import org.jnario.suite.unit.SuiteClassNameProviderGetClassNameSpec;
 import org.junit.runner.RunWith;
 
-@Contains({ SuiteClassNameProviderGetClassNameSpecificationSpec.class, SuiteClassNameProviderDescribeSpecificationSpec.class })
+@Contains({ SuiteClassNameProviderGetClassNameSpec.class, SuiteClassNameProviderDescribeSpec.class })
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("SuiteClassNameProvider")

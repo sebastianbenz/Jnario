@@ -29,10 +29,22 @@
 			<div class="row">
 				<div class="span12">
 <p></p>
-<h3>Scenario: Simple calculator test with background and references
+<h3  id="Scenario_Simple_calculator_test_with_background_and_references">Scenario: Simple calculator test with background and references
 </h3>
 <ul>
-<li><p><strong>When</strong> I have a feature with a background and references</p><pre></pre>
+<li><p><strong>When</strong> I have a feature with a background and references</p><pre>package demo
+Feature: Calculator
+  Background:
+   int result 
+   Given a calculator
+  Scenario: Adding two numbers 2 
+   When I enter two numbers &quot;20&quot; and &quot;70&quot;
+       result = args.first.toInt + args.second.toInt
+   Then it returns &quot;90&quot;
+       result =&gt; args.first.toInt
+  Scenario: Adding two numbers wer
+    When I enter two numbers &quot;20&quot; and &quot;80&quot;
+    Then it returns &quot;100&quot;</pre>
 <ul>
 </ul>
 </li>

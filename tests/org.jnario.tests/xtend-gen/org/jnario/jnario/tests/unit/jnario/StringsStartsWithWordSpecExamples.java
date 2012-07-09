@@ -3,8 +3,8 @@ package org.jnario.jnario.tests.unit.jnario;
 import java.util.List;
 import org.jnario.lib.ExampleTableRow;
 
-public class StringsStartsWithWordStringStringSpecExamples extends ExampleTableRow {
-  public StringsStartsWithWordStringStringSpecExamples(final List<String> cellNames, final String string, final String word, final int index) {
+public class StringsStartsWithWordSpecExamples extends ExampleTableRow {
+  public StringsStartsWithWordSpecExamples(final List<String> cellNames, final String string, final String word, final int index) {
     super(cellNames);
     this.string = string;
     this.word = word;

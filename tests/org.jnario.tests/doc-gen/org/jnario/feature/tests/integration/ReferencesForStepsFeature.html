@@ -29,34 +29,59 @@
 			<div class="row">
 				<div class="span12">
 <p></p>
-<h3>Scenario: Defining a step and using it in the same scenario
+<h3  id="Scenario_Defining_a_step_and_using_it_in_the_same_scenario">Scenario: Defining a step and using it in the same scenario
 </h3>
 <ul>
-<li><p><strong>When</strong> I have a scenario with reused steps that throw an exception</p><pre></pre>
+<li><p><strong>When</strong> I have a scenario with reused steps that throw an exception</p><pre>package bootstrap
+Feature: Test
+  Scenario: TestScenario 1
+    Given step
+      throw new RuntimeException()
+    
+  Scenario: TestScenario 2
+    Given step</pre>
 <ul>
 </ul>
 </li>
-<li><p><strong>Then</strong> the number of failures should be <code>2</code></p>
+<li><p><strong>Then</strong> the number of failures should be <code>"2"</code></p>
 <ul>
 </ul>
 </li>
 </ul>
-<h3>Scenario: Referencing steps with different keyword
+<h3  id="Scenario_Referencing_steps_with_different_keyword">Scenario: Referencing steps with different keyword
 </h3>
 <ul>
-<li><p><strong>When</strong> I have a scenario with reused steps with different keywords that throw an exception</p><pre></pre>
+<li><p><strong>When</strong> I have a scenario with reused steps with different keywords that throw an exception</p><pre>package bootstrap
+Feature: Test
+  Scenario: TestScenario 1
+    Given step
+      throw new RuntimeException()
+    
+  Scenario: TestScenario 2
+    When step</pre>
 <ul>
 </ul>
 </li>
-<li><p><strong>Then</strong> the number of failures should be <code>2</code></p>
+<li><p><strong>Then</strong> the number of failures should be <code>"2"</code></p>
 <ul>
 </ul>
 </li>
 </ul>
-<h3>Scenario: Using fields from other steps
+<h3  id="Scenario_Using_fields_from_other_steps">Scenario: Using fields from other steps
 </h3>
 <ul>
-<li><p><strong>When</strong> I have a scenario with a field</p><pre></pre>
+<li><p><strong>When</strong> I have a scenario with a field</p><pre>package bootstrap
+import java.util.*
+Feature: Test
+  Scenario: TestScenario 1
+    List&lt;String&gt; values = new ArrayList()
+    Given a list
+      values += &quot;hello&quot;
+    
+  Scenario: TestScenario 2
+    Given a list
+    Then it should have contents
+      values.size =&gt; 1</pre>
 <ul>
 </ul>
 </li>
@@ -65,10 +90,20 @@
 </ul>
 </li>
 </ul>
-<h3>Scenario: Steps with short names
+<h3  id="Scenario_Steps_with_short_names">Scenario: Steps with short names
 </h3>
 <ul>
-<li><p><strong>When</strong> I have a scenario with references and short step names (1 word)</p><pre></pre>
+<li><p><strong>When</strong> I have a scenario with references and short step names [1 word]</p><pre>package bootstrap
+import java.util.*
+Feature: Test
+  Scenario: TestScenario1
+    int x
+    Given step
+      x = 3
+  Scenario: TestScenario2
+    Given step
+    Then step
+      x =&gt; 3</pre>
 <ul>
 </ul>
 </li>

@@ -10,14 +10,14 @@ import org.jnario.runner.Named;
 import org.jnario.spec.tests.unit.naming.ExampleNameProviderDescribeExampleGroupSpec;
 import org.jnario.spec.tests.unit.naming.ExampleNameProviderDescribeExampleSpec;
 import org.jnario.spec.tests.unit.naming.ExampleNameProviderToFieldNameExampleTableSpec;
-import org.jnario.spec.tests.unit.naming.ExampleNameProviderToJavaClassNameExampleGroupSpec;
 import org.jnario.spec.tests.unit.naming.ExampleNameProviderToJavaClassNameExampleTableSpec;
+import org.jnario.spec.tests.unit.naming.ExampleNameProviderToJavaClassNameSpec;
 import org.jnario.spec.tests.unit.naming.ExampleNameProviderToMethodNameAfterSpec;
 import org.jnario.spec.tests.unit.naming.ExampleNameProviderToMethodNameBeforeSpec;
 import org.jnario.spec.tests.unit.naming.ExampleNameProviderToMethodNameExampleSpec;
 import org.junit.runner.RunWith;
 
-@Contains({ ExampleNameProviderToJavaClassNameExampleGroupSpec.class, ExampleNameProviderToJavaClassNameExampleTableSpec.class, ExampleNameProviderToMethodNameExampleSpec.class, ExampleNameProviderToMethodNameBeforeSpec.class, ExampleNameProviderToMethodNameAfterSpec.class, ExampleNameProviderToFieldNameExampleTableSpec.class, ExampleNameProviderDescribeExampleGroupSpec.class, ExampleNameProviderDescribeExampleSpec.class })
+@Contains({ ExampleNameProviderToJavaClassNameSpec.class, ExampleNameProviderToJavaClassNameExampleTableSpec.class, ExampleNameProviderToMethodNameExampleSpec.class, ExampleNameProviderToMethodNameBeforeSpec.class, ExampleNameProviderToMethodNameAfterSpec.class, ExampleNameProviderToFieldNameExampleTableSpec.class, ExampleNameProviderDescribeExampleGroupSpec.class, ExampleNameProviderDescribeExampleSpec.class })
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("ExampleNameProvider")
