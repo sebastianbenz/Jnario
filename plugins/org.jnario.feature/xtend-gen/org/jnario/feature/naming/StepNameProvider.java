@@ -44,16 +44,8 @@ public class StepNameProvider {
   
   protected String _nameOf(final StepReference ref) {
     String _xifexpression = null;
-    boolean _or = false;
     boolean _equals = Objects.equal(ref, null);
     if (_equals) {
-      _or = true;
-    } else {
-      Step _reference = ref.getReference();
-      boolean _equals_1 = Objects.equal(_reference, null);
-      _or = (_equals || _equals_1);
-    }
-    if (_or) {
       _xifexpression = null;
     } else {
       EReference _stepReference_Reference = FeaturePackage.eINSTANCE.getStepReference_Reference();

@@ -67,7 +67,15 @@ public class StepArgumentsProvider {
 		
 		int offset = stepName.indexOf(MULTILINE_STRING, multiLineBegin);
 		int end = stepName.length();
-		String string = stepName.substring(offset + MULTILINE_STRING.length(), end - MULTILINE_STRING.length());
+		
+		int stringBegin = offset + MULTILINE_STRING.length();
+		
+		int stringEnd = stepName.lastIndexOf("'''");
+		if(stringEnd < stringBegin){
+			return;
+		}
+		
+		String string = stepName.substring(stringBegin, stringEnd);
 		int length = end - offset;
 		acceptor.accept(string, offset, length);
 	}
@@ -89,7 +97,5 @@ public class StepArgumentsProvider {
 		findStepArguments(step, acceptor);
 		return acceptor.arguments;
 	}
-	
-	
 
 }

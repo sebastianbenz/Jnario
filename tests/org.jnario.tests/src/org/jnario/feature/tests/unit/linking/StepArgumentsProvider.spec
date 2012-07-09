@@ -24,10 +24,12 @@ describe StepArgumentsProvider {
 		| 'Given "hello"'     								| list("hello") 			|
 		| 'Given "hello" and "world"'						| list("hello", "world") 	|
 		| 'Given "hello" and "world"'						| list("hello", "world") 	|
-		| "Given a multiline \n'''hello'''"					| list("hello") 	|
+		| "Given a multiline \n'''hello'''"					| list("hello") 			|
 		| "Given a multiline \n'''hello 'nested' '''"		| list("hello 'nested' ") 	|
-		| "Given a multiline \n\t\t'''hello'''"				| list("hello") 	|
+		| "Given a multiline \n\t\t'''hello'''"				| list("hello") 			|		
 		| "Given a multiline \n 1+1 => 2 '''hello'''" 		| list() 					|
+		| "Given a multiline \n\t\t'''hello"				| list() 					|
+		| "Given a multiline \n\t\t'''"						| list() 					|
 	}
 	
 	fact "extracts arguments from step descriptions"{
@@ -52,7 +54,7 @@ describe StepArgumentsProvider {
 			Feature: dummy
 				Scenario: dummy 
 					«step»
-					1 + 1 => 1
+					
 		'''
 		// we have to access the model before linking
 		val parseResult = resource.parser.parse(new InputStreamReader(new StringInputStream(scenario.toString)))

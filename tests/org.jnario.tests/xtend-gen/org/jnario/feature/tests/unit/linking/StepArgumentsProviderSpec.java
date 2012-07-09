@@ -56,7 +56,9 @@ public class StepArgumentsProviderSpec {
     List<String> _list_4 = JnarioCollectionLiterals.<String>list("hello");
     List<String> _list_5 = JnarioCollectionLiterals.<String>list("hello \'nested\' ");
     List<String> _list_6 = JnarioCollectionLiterals.<String>list("hello");
-    List<Object> _list_7 = JnarioCollectionLiterals.<Object>list();examples = ExampleTable.create("examples", 
+    List<Object> _list_7 = JnarioCollectionLiterals.<Object>list();
+    List<Object> _list_8 = JnarioCollectionLiterals.<Object>list();
+    List<Object> _list_9 = JnarioCollectionLiterals.<Object>list();examples = ExampleTable.create("examples", 
       java.util.Arrays.asList("step", "expectedArgs"), 
       new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\'Given no values\'", "list()"), "Given no values", _list),
       new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\'Given \"hello\"\'", "list(\"hello\")"), "Given \"hello\"", _list_1),
@@ -65,7 +67,9 @@ public class StepArgumentsProviderSpec {
       new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\"Given a multiline \\n\'\'\'hello\'\'\'\"", "list(\"hello\")"), "Given a multiline \n\'\'\'hello\'\'\'", _list_4),
       new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\"Given a multiline \\n\'\'\'hello \'nested\' \'\'\'\"", "list(\"hello \'nested\' \")"), "Given a multiline \n\'\'\'hello \'nested\' \'\'\'", _list_5),
       new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\"Given a multiline \\n\\t\\t\'\'\'hello\'\'\'\"", "list(\"hello\")"), "Given a multiline \n\t\t\'\'\'hello\'\'\'", _list_6),
-      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\"Given a multiline \\n 1+1 => 2 \'\'\'hello\'\'\'\"", "list()"), "Given a multiline \n 1+1 => 2 \'\'\'hello\'\'\'", _list_7)
+      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\"Given a multiline \\n 1+1 => 2 \'\'\'hello\'\'\'\"", "list()"), "Given a multiline \n 1+1 => 2 \'\'\'hello\'\'\'", _list_7),
+      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\"Given a multiline \\n\\t\\t\'\'\'hello\"", "list()"), "Given a multiline \n\t\t\'\'\'hello", _list_8),
+      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\"Given a multiline \\n\\t\\t\'\'\'\"", "list()"), "Given a multiline \n\t\t\'\'\'", _list_9)
     );
   }
   
@@ -128,7 +132,6 @@ public class StepArgumentsProviderSpec {
       _builder.append(step, "		");
       _builder.newLineIfNotEmpty();
       _builder.append("\t\t");
-      _builder.append("1 + 1 => 1");
       _builder.newLine();
       final CharSequence scenario = _builder;
       IParser _parser = this.resource.getParser();

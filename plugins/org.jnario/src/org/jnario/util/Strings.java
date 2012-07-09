@@ -37,11 +37,16 @@ public class Strings extends org.eclipse.xtext.util.Strings{
 		while(start < s.length() && s.charAt(start) == c){
 			start++;
 		}
+		int end = trimTrailingChar(s, c);
+		return s.substring(start, end);
+	}
+
+	public static int trimTrailingChar(String s, char c) {
 		int end = s.length();
-		while(end > start && s.charAt(end-1) == c){
+		while(end > 0 && s.charAt(end-1) == c){
 			end--;
 		}
-		return s.substring(start, end);
+		return end;
 	}
 	
 	public static String trimFirstLine(String s){

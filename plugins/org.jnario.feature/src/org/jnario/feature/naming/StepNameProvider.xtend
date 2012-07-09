@@ -29,11 +29,12 @@ class StepNameProvider {
 		if(step == null || step.getName == null){
 			return null
 		}
+		// restore Given, Then, When keywords
 		textForFeature(step, FeaturePackage::eINSTANCE.step_Name)
 	}
 	
 	def dispatch nameOf(StepReference ref){
-		if(ref == null || ref.reference == null){
+		if(ref == null){
 			null
 		}else{
 			textForFeature(ref, FeaturePackage::eINSTANCE.stepReference_Reference)
