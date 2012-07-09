@@ -17,7 +17,6 @@ import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.xtend.ide.XtendResourceUiServiceProvider;
 import org.eclipse.xtend.ide.autoedit.AutoEditStrategyProvider;
 import org.eclipse.xtend.ide.autoedit.TokenTypeToPartitionMapper;
-import org.eclipse.xtend.ide.builder.XtendBuilderParticipant;
 import org.eclipse.xtend.ide.contentassist.ImportingTypesProposalProvider;
 import org.eclipse.xtend.ide.editor.OccurrenceComputer;
 import org.eclipse.xtend.ide.editor.XtendFoldingRegionProvider;
@@ -71,6 +70,7 @@ import org.jnario.suite.ui.highlighting.SuiteHighlightingConfiguration;
 import org.jnario.suite.ui.highlighting.SuiteTokenHighlighting;
 import org.jnario.suite.ui.hover.SuiteHoverProvider;
 import org.jnario.suite.ui.launching.SuiteJavaElementDelegate;
+import org.jnario.ui.builder.JnarioBuilderParticipant;
 import org.jnario.ui.builder.JnarioSourceRelativeFileSystemAccess;
 
 import com.google.inject.Binder;
@@ -183,7 +183,7 @@ public class SuiteUiModule extends org.jnario.suite.ui.AbstractSuiteUiModule {
 	
 	@Override
 	public Class<? extends IXtextBuilderParticipant> bindIXtextBuilderParticipant() {
-		return XtendBuilderParticipant.class;
+		return JnarioBuilderParticipant.class;
 	}
 	
 	@Override

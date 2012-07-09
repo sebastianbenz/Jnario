@@ -1,11 +1,10 @@
 package org.jnario.doc;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.jnario.doc.HtmlAssets;
 
 @SuppressWarnings("all")
 public class HtmlFile {
@@ -23,19 +22,20 @@ public class HtmlFile {
     return htmlFile;
   }
   
-  private List<String> cssFiles = new Function0<List<String>>() {
-    public List<String> apply() {
-      ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("bootstrap.min.css", "bootstrap-responsive.min.css", "custom.css", "prettify.css");
-      return _newArrayList;
+  private HtmlAssets _assets = new Function0<HtmlAssets>() {
+    public HtmlAssets apply() {
+      HtmlAssets _htmlAssets = new HtmlAssets();
+      return _htmlAssets;
     }
   }.apply();
   
-  private List<String> jsFiles = new Function0<List<String>>() {
-    public List<String> apply() {
-      ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("prettify.js", "lang-jnario.js");
-      return _newArrayList;
-    }
-  }.apply();
+  public HtmlAssets getAssets() {
+    return this._assets;
+  }
+  
+  public void setAssets(final HtmlAssets assets) {
+    this._assets = assets;
+  }
   
   private CharSequence _name = "";
   
@@ -111,7 +111,9 @@ public class HtmlFile {
     _builder.append("<!-- Le styles -->");
     _builder.newLine();
     {
-      for(final String cssFile : this.cssFiles) {
+      HtmlAssets _assets = this.getAssets();
+      List<String> _cssFiles = _assets.getCssFiles();
+      for(final String cssFile : _cssFiles) {
         _builder.append("<link rel=\"stylesheet\" href=\"");
         String _rootFolder = this.getRootFolder();
         _builder.append(_rootFolder, "");
@@ -122,7 +124,9 @@ public class HtmlFile {
       }
     }
     {
-      for(final String jsFile : this.jsFiles) {
+      HtmlAssets _assets_1 = this.getAssets();
+      List<String> _jsFiles = _assets_1.getJsFiles();
+      for(final String jsFile : _jsFiles) {
         _builder.append("<script type=\"text/javascript\" src=\"");
         String _rootFolder_1 = this.getRootFolder();
         _builder.append(_rootFolder_1, "");
@@ -197,11 +201,11 @@ public class HtmlFile {
     return _builder;
   }
   
-  public List<String> getCssFiles() {
-    return this.cssFiles;
+  public Object getCssFiles() {
+    return this.getCssFiles();
   }
   
-  public List<String> getJsFiles() {
-    return this.jsFiles;
+  public Object getJsFiles() {
+    return this.getJsFiles();
   }
 }

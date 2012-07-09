@@ -7,13 +7,14 @@ import java.util.List;
 import org.apache.log4j.BasicConfigurator;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.jnario.compiler.HtmlAssetsCompiler;
 import org.jnario.compiler.JnarioDocCompiler;
 import org.jnario.feature.FeatureStandaloneSetup;
 import org.jnario.spec.SpecStandaloneSetup;
 import org.jnario.suite.SuiteStandaloneSetup;
 
 @SuppressWarnings("all")
-public class DocGeneratorMain {
+public class DocCompilerMain {
   public static void main(final String[] args) {
     boolean _or = false;
     boolean _equals = Objects.equal(args, null);
@@ -25,27 +26,29 @@ public class DocGeneratorMain {
       _or = (_equals || _equals_1);
     }
     if (_or) {
-      DocGeneratorMain.printUsage();
+      DocCompilerMain.printUsage();
       return;
     }
     BasicConfigurator.configure();
     {
       SpecStandaloneSetup _specStandaloneSetup = new SpecStandaloneSetup();
       final Injector injector = _specStandaloneSetup.createInjectorAndDoEMFRegistration();
+      final HtmlAssetsCompiler assetsCompiler = injector.<HtmlAssetsCompiler>getInstance(HtmlAssetsCompiler.class);
+      DocCompilerMain.run(assetsCompiler, args);
       final JnarioDocCompiler compiler = injector.<JnarioDocCompiler>getInstance(JnarioDocCompiler.class);
-      DocGeneratorMain.run(compiler, args);
+      DocCompilerMain.run(compiler, args);
     }
     {
       FeatureStandaloneSetup _featureStandaloneSetup = new FeatureStandaloneSetup();
       final Injector injector = _featureStandaloneSetup.createInjectorAndDoEMFRegistration();
       final JnarioDocCompiler compiler = injector.<JnarioDocCompiler>getInstance(JnarioDocCompiler.class);
-      DocGeneratorMain.run(compiler, args);
+      DocCompilerMain.run(compiler, args);
     }
     {
       SuiteStandaloneSetup _suiteStandaloneSetup = new SuiteStandaloneSetup();
       final Injector injector = _suiteStandaloneSetup.createInjectorAndDoEMFRegistration();
       final JnarioDocCompiler compiler = injector.<JnarioDocCompiler>getInstance(JnarioDocCompiler.class);
-      DocGeneratorMain.run(compiler, args);
+      DocCompilerMain.run(compiler, args);
     }
   }
   

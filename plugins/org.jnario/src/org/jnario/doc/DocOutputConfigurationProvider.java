@@ -15,6 +15,7 @@ import org.eclipse.xtext.generator.OutputConfiguration;
 public class DocOutputConfigurationProvider extends XtendOutputConfigurationProvider{
 
 	public static final String DOC_OUTPUT = "DOC_OUTPUT";
+	public static final String ASSET_OUTPUT = "ASSET_OUTPUT";
 
 	@Override
 	public Set<OutputConfiguration> getOutputConfigurations() {
@@ -28,6 +29,17 @@ public class DocOutputConfigurationProvider extends XtendOutputConfigurationProv
 		docOutput.setCleanUpDerivedResources(true);
 		docOutput.setSetDerivedProperty(true);
 		configuration.add(docOutput);
+		
+		OutputConfiguration assetOutput = new OutputConfiguration(ASSET_OUTPUT);
+		assetOutput.setDescription("Output folder for generated css and js files");
+		assetOutput.setOutputDirectory("doc-gen");
+		assetOutput.setOverrideExistingResources(false);
+		assetOutput.setCreateOutputDirectory(false);
+		assetOutput.setCanClearOutputDirectory(false);
+		assetOutput.setCleanUpDerivedResources(false);
+		assetOutput.setSetDerivedProperty(false);
+		configuration.add(assetOutput);
+		
 		return configuration;
 	}
 	

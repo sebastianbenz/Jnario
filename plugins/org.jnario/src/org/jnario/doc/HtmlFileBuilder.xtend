@@ -7,26 +7,22 @@
  *******************************************************************************/
 package org.jnario.doc
 
+import static extension org.jnario.util.Strings.*
 import org.eclipse.xtend.core.xtend.XtendClass
 import org.eclipse.xtext.generator.IFileSystemAccess
  
-import static org.jnario.util.Strings.*
+import static org.jnario.doc.DocOutputConfigurationProvider.*
 
 class HtmlFileBuilder {
 	
 	def generate(XtendClass context, IFileSystemAccess fsa, HtmlFile htmlFile){
-		fsa.copy("css", htmlFile.cssFiles)
-		fsa.copy("js", htmlFile.jsFiles)
 		val content = htmlFile.toText
-		fsa.generateFile(filePath(context, htmlFile), DocOutputConfigurationProvider::DOC_OUTPUT, content)
+		fsa.generateFile(filePath(context, htmlFile), DOC_OUTPUT, content)
 	}
 	
 	def toHtmlFileName(CharSequence nameWithoutExtension){
 		var result = nameWithoutExtension.toString
-		if(result.startsWith("_")){
-			result = result.substring(1)
-		}
-		result + ".html"
+		return result.trim("_".charAt(0)) + ".html"
 	}
 	
 	def private filePath(XtendClass xtendClass, HtmlFile htmlFile){
@@ -36,16 +32,5 @@ class HtmlFileBuilder {
 		}
 		return "/" + xtendClass.packageName.replaceAll("\\.", "/") + fileName
 	}
-	
-	def private copy(IFileSystemAccess fsa, String targetFolder, Iterable<String> files){
-		for(file : files){
-			fsa.generateFile("/" + targetFolder + "/" + file, DocOutputConfigurationProvider::DOC_OUTPUT, load(file)) 
-		}
-	}
-	
-	def private load(String file){
-		val inputStream = getClass().getResourceAsStream(file)
-		return convertStreamToString(inputStream)
-	}	
 	
 }

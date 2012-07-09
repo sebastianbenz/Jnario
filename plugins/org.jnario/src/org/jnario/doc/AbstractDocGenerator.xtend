@@ -25,8 +25,11 @@ import org.jnario.ExampleTable
 import static extension org.eclipse.xtext.util.Strings.*
 import org.apache.commons.lang.StringEscapeUtils
 import static extension org.jnario.util.Strings.*
+import org.apache.log4j.Logger
 
 abstract class AbstractDocGenerator implements IGenerator {
+
+	static val LOG = Logger::getLogger(typeof(AbstractDocGenerator))
 
 	static val SEP = "_"
 
@@ -52,10 +55,10 @@ abstract class AbstractDocGenerator implements IGenerator {
 	
 	def decode(String string){
 		try{
-			string.convertFromJavaString(true)
+			return string.convertFromJavaString(true)
 		}catch(java.lang.IllegalArgumentException e){
-			e.printStackTrace
-			string
+			LOG.error("Exception when converting string", e)
+			return string
 		}
 	}
 	
@@ -108,7 +111,6 @@ abstract class AbstractDocGenerator implements IGenerator {
 		}
 		return result
 	}
-	
 	
 	def root(EObject xtendClass){
 		val specFile = EcoreUtil2::getContainerOfType(xtendClass, typeof(XtendFile))

@@ -4,8 +4,8 @@ import com.google.inject.Inject
 import java.io.File
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
-import org.jnario.feature.FeatureInjectorProvider
 import org.jnario.feature.compiler.FeatureBatchCompiler
+import org.jnario.jnario.test.util.ExtendedFeatureInjectorProvider
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -16,7 +16,7 @@ import static org.jnario.standalone.tests.FeatureBatchCompilerTest.*
 import static org.junit.Assert.*
 
 @RunWith(typeof(XtextRunner))
-@InjectWith(typeof(FeatureInjectorProvider))
+@InjectWith(typeof(ExtendedFeatureInjectorProvider))
 class FeatureBatchCompilerTest {
 
 	@Inject	FeatureBatchCompiler batchCompiler

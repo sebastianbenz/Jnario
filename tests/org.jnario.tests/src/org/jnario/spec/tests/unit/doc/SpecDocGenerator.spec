@@ -20,21 +20,6 @@ describe SpecDocGenerator {
 	@Inject extension ModelStore 
 	@Inject InMemoryFileSystemAccess fsa
 	
-	fact "generates java script helper files"{
-		generateEmptyExampleDoc()
-		
-		assert generatedFile("js/prettify.js") != null
-		assert generatedFile("js/lang-jnario.js") != null
-	}
-	
-	fact "generates css helper files"{
-		generateEmptyExampleDoc()
-		
-		assert generatedFile("css/bootstrap-responsive.min.css") != null
-		assert generatedFile("css/custom.css") != null
-		assert generatedFile("css/prettify.css") != null
-	}
-	
 	fact "generates scenario title and heading"{
 		generateEmptyExampleDoc()
 		

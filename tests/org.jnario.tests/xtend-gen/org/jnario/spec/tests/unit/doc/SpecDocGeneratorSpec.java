@@ -36,45 +36,6 @@ public class SpecDocGeneratorSpec {
   InMemoryFileSystemAccess fsa;
   
   @Test
-  @Named("generates java script helper files")
-  @Order(99)
-  public void generatesJavaScriptHelperFiles() throws Exception {
-    this.generateEmptyExampleDoc();
-    String _generatedFile = this.generatedFile("js/prettify.js");
-    boolean _notEquals = (!Objects.equal(_generatedFile, null));
-    Assert.assertTrue("\nExpected generatedFile(\"js/prettify.js\") != null but"
-     + "\n     generatedFile(\"js/prettify.js\") is " + new StringDescription().appendValue(_generatedFile).toString() + "\n", _notEquals);
-    
-    String _generatedFile_1 = this.generatedFile("js/lang-jnario.js");
-    boolean _notEquals_1 = (!Objects.equal(_generatedFile_1, null));
-    Assert.assertTrue("\nExpected generatedFile(\"js/lang-jnario.js\") != null but"
-     + "\n     generatedFile(\"js/lang-jnario.js\") is " + new StringDescription().appendValue(_generatedFile_1).toString() + "\n", _notEquals_1);
-    
-  }
-  
-  @Test
-  @Named("generates css helper files")
-  @Order(99)
-  public void generatesCssHelperFiles() throws Exception {
-    this.generateEmptyExampleDoc();
-    String _generatedFile = this.generatedFile("css/bootstrap-responsive.min.css");
-    boolean _notEquals = (!Objects.equal(_generatedFile, null));
-    Assert.assertTrue("\nExpected generatedFile(\"css/bootstrap-responsive.min.css\") != null but"
-     + "\n     generatedFile(\"css/bootstrap-responsive.min.css\") is " + new StringDescription().appendValue(_generatedFile).toString() + "\n", _notEquals);
-    
-    String _generatedFile_1 = this.generatedFile("css/custom.css");
-    boolean _notEquals_1 = (!Objects.equal(_generatedFile_1, null));
-    Assert.assertTrue("\nExpected generatedFile(\"css/custom.css\") != null but"
-     + "\n     generatedFile(\"css/custom.css\") is " + new StringDescription().appendValue(_generatedFile_1).toString() + "\n", _notEquals_1);
-    
-    String _generatedFile_2 = this.generatedFile("css/prettify.css");
-    boolean _notEquals_2 = (!Objects.equal(_generatedFile_2, null));
-    Assert.assertTrue("\nExpected generatedFile(\"css/prettify.css\") != null but"
-     + "\n     generatedFile(\"css/prettify.css\") is " + new StringDescription().appendValue(_generatedFile_2).toString() + "\n", _notEquals_2);
-    
-  }
-  
-  @Test
   @Named("generates scenario title and heading")
   @Order(99)
   public void generatesScenarioTitleAndHeading() throws Exception {

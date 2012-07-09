@@ -2,10 +2,14 @@ package org.jnario.standalone.tests
 
 import com.google.inject.Inject
 import java.io.File
+import org.eclipse.emf.common.util.URI
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
-import org.jnario.suite.SuiteInjectorProvider
+import org.jnario.feature.FeatureStandaloneSetup
+import org.jnario.jnario.test.util.ModelStore
+import org.jnario.spec.SpecStandaloneSetup
 import org.jnario.suite.compiler.SuiteBatchCompiler
+import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -13,14 +17,10 @@ import org.junit.runner.RunWith
 import static org.eclipse.xtext.util.Files.*
 import static org.jnario.standalone.tests.SuiteBatchCompilerTest.*
 import static org.junit.Assert.*
-import org.jnario.jnario.test.util.ModelStore
-import org.eclipse.emf.common.util.URI
-import org.jnario.spec.SpecStandaloneSetup
-import org.jnario.feature.FeatureStandaloneSetup
-import org.junit.After
+import org.jnario.jnario.test.util.ExtendedSuiteInjectorProvider
 
 @RunWith(typeof(XtextRunner))
-@InjectWith(typeof(SuiteInjectorProvider))
+@InjectWith(typeof(ExtendedSuiteInjectorProvider))
 class SuiteBatchCompilerTest {
 
 	@Inject	SuiteBatchCompiler batchCompiler

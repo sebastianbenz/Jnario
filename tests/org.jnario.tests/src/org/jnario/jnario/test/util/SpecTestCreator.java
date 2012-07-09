@@ -8,7 +8,6 @@
 package org.jnario.jnario.test.util;
 
 import org.eclipse.xtext.junit4.IInjectorProvider;
-import org.jnario.spec.SpecInjectorProvider;
 
 
 public class SpecTestCreator extends JnarioTestCreator {

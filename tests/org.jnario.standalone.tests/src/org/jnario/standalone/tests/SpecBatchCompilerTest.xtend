@@ -11,11 +11,12 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 import static org.eclipse.xtext.util.Files.*
+import static org.jnario.standalone.tests.SpecBatchCompilerTest.*
 import static org.junit.Assert.*
-import org.jnario.spec.SpecInjectorProvider
+import org.jnario.jnario.test.util.ExtendedSpecInjectorProvider
 
 @RunWith(typeof(XtextRunner))
-@InjectWith(typeof(SpecInjectorProvider))
+@InjectWith(typeof(ExtendedSpecInjectorProvider))
 class SpecBatchCompilerTest {
 
 	@Inject	SpecBatchCompiler batchCompiler

@@ -11,9 +11,9 @@ import org.eclipse.xtext.util.Files;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.jnario.feature.FeatureStandaloneSetup;
+import org.jnario.jnario.test.util.ExtendedSuiteInjectorProvider;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.spec.SpecStandaloneSetup;
-import org.jnario.suite.SuiteInjectorProvider;
 import org.jnario.suite.compiler.SuiteBatchCompiler;
 import org.junit.After;
 import org.junit.Assert;
@@ -22,7 +22,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(value = XtextRunner.class)
-@InjectWith(value = SuiteInjectorProvider.class)
+@InjectWith(value = ExtendedSuiteInjectorProvider.class)
 @SuppressWarnings("all")
 public class SuiteBatchCompilerTest {
   @Inject

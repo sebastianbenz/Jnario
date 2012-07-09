@@ -6,6 +6,7 @@ import com.google.inject.Inject;
 import java.util.Arrays;
 import java.util.List;
 import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -23,6 +24,7 @@ import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
@@ -38,6 +40,13 @@ import org.pegdown.PegDownProcessor;
 
 @SuppressWarnings("all")
 public abstract class AbstractDocGenerator implements IGenerator {
+  private final static Logger LOG = new Function0<Logger>() {
+    public Logger apply() {
+      Logger _logger = Logger.getLogger(AbstractDocGenerator.class);
+      return _logger;
+    }
+  }.apply();
+  
   private final static String SEP = "_";
   
   @Inject
@@ -78,24 +87,17 @@ public abstract class AbstractDocGenerator implements IGenerator {
   }
   
   public String decode(final String string) {
-    String _xtrycatchfinallyexpression = null;
     try {
-      String _convertFromJavaString = Strings.convertFromJavaString(string, true);
-      _xtrycatchfinallyexpression = _convertFromJavaString;
+      return Strings.convertFromJavaString(string, true);
     } catch (final Throwable _t) {
       if (_t instanceof IllegalArgumentException) {
         final IllegalArgumentException e = (IllegalArgumentException)_t;
-        String _xblockexpression = null;
-        {
-          e.printStackTrace();
-          _xblockexpression = (string);
-        }
-        _xtrycatchfinallyexpression = _xblockexpression;
+        AbstractDocGenerator.LOG.error("Exception when converting string", e);
+        return string;
       } else {
         throw Exceptions.sneakyThrow(_t);
       }
     }
-    return _xtrycatchfinallyexpression;
   }
   
   public String markdown2Html(final String string) {

@@ -7,8 +7,8 @@
  *******************************************************************************/
 package org.jnario.doc
 
+import org.eclipse.xtend.lib.Property
 import org.eclipse.xtext.xbase.lib.Procedures$Procedure1
-import java.util.List
 
 class HtmlFile {
 
@@ -19,10 +19,8 @@ class HtmlFile {
 		initializer.apply(htmlFile)
 		return htmlFile
 	}
-
-	List<String> cssFiles = newArrayList("bootstrap.min.css", "bootstrap-responsive.min.css", "custom.css", "prettify.css")
-	List<String> jsFiles = newArrayList("prettify.js", "lang-jnario.js")
 	
+	@Property HtmlAssets assets = new HtmlAssets	
 	@Property CharSequence name = ""
 	@Property CharSequence title = ""
 	@Property CharSequence content = ""
@@ -43,10 +41,10 @@ class HtmlFile {
 		    <![endif]-->
 
 		<!-- Le styles -->
-		«FOR cssFile : cssFiles»
+		«FOR cssFile : assets.cssFiles»
 		<link rel="stylesheet" href="«rootFolder»/css/«cssFile»">
 		«ENDFOR»
-		«FOR jsFile : jsFiles»
+		«FOR jsFile : assets.jsFiles»
 		<script type="text/javascript" src="«rootFolder»/js/«jsFile»"></script>
 		«ENDFOR»
 		</head>
