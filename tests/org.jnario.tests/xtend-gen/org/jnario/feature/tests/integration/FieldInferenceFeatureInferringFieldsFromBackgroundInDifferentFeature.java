@@ -10,6 +10,7 @@ import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.Should;
 import org.jnario.lib.StepArguments;
 import org.jnario.runner.CreateWith;
+import org.jnario.runner.Extension;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -19,15 +20,15 @@ import org.junit.runner.Result;
 import org.junit.runner.RunWith;
 
 @RunWith(FeatureRunner.class)
-@Named("Scenario: Inferring Fields from Scenario in different Features")
+@Named("Scenario: Inferring Fields from Background in different Feature")
 @CreateWith(value = FeatureTestCreator.class)
 @SuppressWarnings("all")
-public class FieldInferenceFeatureInferringFieldsFromScenarioInDifferentFeatures {
+public class FieldInferenceFeatureInferringFieldsFromBackgroundInDifferentFeature {
   @Test
   @Order(0)
   @Named("When I have a feature")
   public void whenIHaveAFeature() {
-      StepArguments _stepArguments = new StepArguments("\n\t\t\tFeature: Feature 1\n\t\t\t\tScenario: My Scenario\n\t\t\t\t\tString myString\n\t\t\t\t\tGiven a string \"value\"\n\t\t\t\t\t\tmyString = args.first\n\t\t\t");
+      StepArguments _stepArguments = new StepArguments("\n\t\t\tFeature: Feature 1\n\t\t\t\tBackground:\n\t\t\t\t\tString myString\n\t\t\t\t\n\t\t\t\tScenario: My Scenario\n\t\t\t\t\tGiven a string \"value\"\n\t\t\t\t\t\tmyString = args.first\n\t\t\t");
       final StepArguments args = _stepArguments;
       String _first = JnarioIterableExtensions.<String>first(args);
       this.feature1 = _first;
@@ -47,25 +48,23 @@ public class FieldInferenceFeatureInferringFieldsFromScenarioInDifferentFeatures
   @Order(2)
   @Named("Then both should execute successfully")
   public void thenBothShouldExecuteSuccessfully() {
-      Result _execute = this.runner.execute(this.feature1);
+      Result _execute = runner.execute(feature1);
       Matcher<Result> _isSuccessful = ResultMatchers.isSuccessful();
       boolean _doubleArrow = Should.operator_doubleArrow(_execute, _isSuccessful);
-      Assert.assertTrue("\nExpected runner.execute(feature1) => isSuccessful but"
-       + "\n     runner.execute(feature1) is " + new StringDescription().appendValue(_execute).toString()
-       + "\n     runner is " + new StringDescription().appendValue(this.runner).toString()
-       + "\n     feature1 is " + new StringDescription().appendValue(this.feature1).toString()
-       + "\n     isSuccessful is " + new StringDescription().appendValue(_isSuccessful).toString() + "\n", _doubleArrow);
+      Assert.assertTrue("\nExpected  but"
+       + "\n      is " + new StringDescription().appendValue(_execute).toString() + "\n", _doubleArrow);
       
-      Result _execute_1 = this.runner.execute(this.feature2);
+      Result _execute_1 = runner.execute(feature2);
       Matcher<Result> _isSuccessful_1 = ResultMatchers.isSuccessful();
       boolean _doubleArrow_1 = Should.operator_doubleArrow(_execute_1, _isSuccessful_1);
-      Assert.assertTrue("\nExpected runner.execute(feature2) => isSuccessful but"
-       + "\n     runner.execute(feature2) is " + new StringDescription().appendValue(_execute_1).toString()
-       + "\n     runner is " + new StringDescription().appendValue(this.runner).toString()
-       + "\n     feature2 is " + new StringDescription().appendValue(this.feature2).toString()
-       + "\n     isSuccessful is " + new StringDescription().appendValue(_isSuccessful_1).toString() + "\n", _doubleArrow_1);
+      Assert.assertTrue("\nExpected  but"
+       + "\n      is " + new StringDescription().appendValue(_execute_1).toString() + "\n", _doubleArrow_1);
       
   }
+  
+  @Inject
+  @Extension
+  public FeatureExecutor _featureExecutor;
   
   @Inject
   FeatureExecutor runner;

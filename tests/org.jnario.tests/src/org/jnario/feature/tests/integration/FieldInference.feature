@@ -28,7 +28,7 @@ Feature: Field Inference
 		Then it should execute successfully
 
 	Scenario: Inferring Fields from Scenario in different Features
-		@Inject extension FeatureExecutor 
+		@Inject FeatureExecutor runner
 		CharSequence feature1
 		CharSequence feature2
 	
@@ -51,6 +51,47 @@ Feature: Field Inference
 			'''
 			feature2 = args.first
 		Then both should execute successfully 
-			feature1.execute => isSuccessful
-			feature2.execute => isSuccessful
+			runner.execute(feature1) => isSuccessful
+			runner.execute(feature2) => isSuccessful
 
+	Scenario: Inferring Fields from Background
+		When I have a feature with a background and two scenarios
+			'''
+			Feature: My Feature
+				Background: with field
+					String myString
+					
+				Scenario: My Scenario
+					Given a string "value"
+						myString = args.first
+				Scenario: My Scenario 2
+					Given a string "test"
+					Then my string is "test"
+						myString => args.first  
+			'''
+			jnarioFile = args.first
+		Then it should execute successfully
+		
+	Scenario: Inferring Fields from Background in different Feature
+		@Inject extension FeatureExecutor 
+		When I have a feature
+			'''
+			Feature: Feature 1
+				Background:
+					String myString
+				
+				Scenario: My Scenario
+					Given a string "value"
+						myString = args.first
+			'''
+			feature1 = args.first
+		And another feature
+			'''
+			Feature: Feature 2
+				Scenario: My Scenario 2
+					Given a string "test"
+					Then my string is "test"
+						myString => args.first   
+			'''
+			feature2 = args.first
+		Then both should execute successfully 

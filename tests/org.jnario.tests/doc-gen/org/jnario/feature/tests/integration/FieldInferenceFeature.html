@@ -73,6 +73,54 @@
 </ul>
 </li>
 </ul>
+<h3  id="Scenario_Inferring_Fields_from_Background">Scenario: Inferring Fields from Background
+</h3>
+<ul>
+<li><p><strong>When</strong> I have a feature with a background and two scenarios</p><pre>Feature: My Feature
+  Background: with field
+    String myString
+    
+  Scenario: My Scenario
+    Given a string &quot;value&quot;
+      myString = args.first
+  Scenario: My Scenario 2
+    Given a string &quot;test&quot;
+    Then my string is &quot;test&quot;
+      myString =&gt; args.first</pre>
+<ul>
+</ul>
+</li>
+<li><p><strong>Then</strong> it should execute successfully</p>
+<ul>
+</ul>
+</li>
+</ul>
+<h3  id="Scenario_Inferring_Fields_from_Background_in_different_Feature">Scenario: Inferring Fields from Background in different Feature
+</h3>
+<ul>
+<li><p><strong>When</strong> I have a feature</p><pre>Feature: Feature 1
+  Background:
+    String myString
+  
+  Scenario: My Scenario
+    Given a string &quot;value&quot;
+      myString = args.first</pre>
+<ul>
+<li><p><strong>And</strong> another feature</p><pre>Feature: Feature 2
+  Scenario: My Scenario 2
+    Given a string &quot;test&quot;
+    Then my string is &quot;test&quot;
+      myString =&gt; args.first</pre>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Then</strong> both should execute successfully</p>
+<ul>
+</ul>
+</li>
+</ul>
 				</div>
 			</div>
 		</div> <!-- /content -->

@@ -51,15 +51,14 @@ class StepReferenceFieldCreator {
 			return <XtendMember>emptyList
 		}
 		var members = scenario.members
-		return members
-//		if(scenario instanceof Background){
-//			return members
-//		}
-//		val feature = getContainerOfType(scenario, typeof(Feature))
-//		if(feature.background == null){
-//			return members
-//		}
-//		return members + feature.background.members
+		if(scenario instanceof Background){
+			return members
+		}
+		val feature = getContainerOfType(scenario, typeof(Feature))
+		if(feature.background == null){
+			return members
+		}
+		return members + feature.background.members
 		
    	}
    	
