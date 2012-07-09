@@ -36,10 +36,6 @@ describe StepNameProvider{
 			assert subject.nameOf(emptyStep) == null
 		}
 		
-		fact "returns null if the step has no reference"{
-			assert subject.nameOf(emptyRef) == null
-		}
-		
 		fact "returns the name for a step with definition"{
 			parseScenario('''
 					Scenario: MyScenario

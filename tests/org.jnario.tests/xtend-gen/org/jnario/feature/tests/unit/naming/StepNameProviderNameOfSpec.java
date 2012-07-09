@@ -4,7 +4,6 @@ import com.google.common.base.Objects;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.hamcrest.StringDescription;
 import org.jnario.feature.feature.Given;
-import org.jnario.feature.feature.GivenReference;
 import org.jnario.feature.tests.unit.naming.StepNameProviderSpec;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -29,20 +28,6 @@ public class StepNameProviderNameOfSpec extends StepNameProviderSpec {
      + "\n     subject.nameOf(emptyStep) is " + new StringDescription().appendValue(_nameOf).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
      + "\n     emptyStep is " + new StringDescription().appendValue(_emptyStep).toString() + "\n", _equals);
-    
-  }
-  
-  @Test
-  @Named("returns null if the step has no reference")
-  @Order(99)
-  public void returnsNullIfTheStepHasNoReference() throws Exception {
-    GivenReference _emptyRef = this.emptyRef();
-    String _nameOf = this.subject.nameOf(_emptyRef);
-    boolean _equals = Objects.equal(_nameOf, null);
-    Assert.assertTrue("\nExpected subject.nameOf(emptyRef) == null but"
-     + "\n     subject.nameOf(emptyRef) is " + new StringDescription().appendValue(_nameOf).toString()
-     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
-     + "\n     emptyRef is " + new StringDescription().appendValue(_emptyRef).toString() + "\n", _equals);
     
   }
   

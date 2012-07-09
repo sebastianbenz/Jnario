@@ -7,6 +7,8 @@
  *******************************************************************************/
 package org.jnario.feature.linking;
 
+import static com.google.common.collect.Iterables.filter;
+
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -19,10 +21,12 @@ import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.XbaseFactory;
 import org.jnario.feature.feature.FeatureFile;
 import org.jnario.feature.feature.Step;
+import org.jnario.feature.feature.StepImplementation;
 import org.jnario.feature.jvmmodel.FeatureJvmModelInferrer;
 import org.jnario.feature.jvmmodel.StepArgumentsProvider;
 import org.jnario.linking.JnarioLazyLinker;
 
+import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 
 /**
@@ -50,7 +54,7 @@ public class FeatureLazyLinker extends JnarioLazyLinker {
 	}
 	
 	private void generateArguments(Iterable<Step> steps) {
-		for(Step step: steps){
+		for(Step step: filter(steps, StepImplementation.class)){
 			generateArguments(step);
 		}
 	}
