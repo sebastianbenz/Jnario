@@ -32,6 +32,7 @@ import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XStringLiteral;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.XbaseFactory;
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor.IPostIndexingInitializing;
@@ -252,6 +253,8 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(annotations, _annotation);
     final Feature feature = this.feature(scenario);
     int start = 0;
+    EList<XAnnotation> _annotations = feature.getAnnotations();
+    this._extendedJvmTypesBuilder.translateAnnotationsTo(_annotations, inferredJvmType);
     final Background background = feature.getBackground();
     boolean _and = false;
     boolean _not = (!(scenario instanceof Background));

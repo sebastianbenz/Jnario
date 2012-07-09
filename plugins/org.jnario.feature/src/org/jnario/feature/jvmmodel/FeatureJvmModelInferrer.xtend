@@ -157,9 +157,10 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		val annotations = inferredJvmType.annotations
    		annotations += scenario.featureRunner
    		annotations += scenario.toAnnotation(typeof(Named), scenario.describe)
-
    		val feature = scenario.feature
 		var start = 0
+   		
+   		feature.annotations.translateAnnotationsTo(inferredJvmType)
    		
    		val background = feature.background
 		if(!(scenario instanceof Background) && background != null){
