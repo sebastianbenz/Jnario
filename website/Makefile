@@ -5,8 +5,8 @@ LESS_COMPRESSOR ?= `which lessc`
 WATCHR ?= `which watchr`
 
 GH_PAGES = ../../jnario-gh-pages
-LANG_JNARIO    = ../plugins/org.jnario/src/org/jnario/doc/lang-jnario.js 
-CUSTOM_CSS     = ../plugins/org.jnario/src/org/jnario/doc/custom.css
+LANG_JNARIO    = ../plugins/org.jnario/src/org/jnario/doc/js/lang-jnario.js 
+CUSTOM_CSS     = ../plugins/org.jnario/src/org/jnario/doc/css/custom.css
 
 
 #

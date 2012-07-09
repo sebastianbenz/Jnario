@@ -31,7 +31,9 @@ describe "Introducing Jnario Suites"{
 	 * Jnario yet, follow the [install guide](../../jnario/documentation/InstallingJnarioSpec.html).
 	 * To get started first create a new Java project and a new Jnario suite using the suite wizard
  	 * (**File** -> **New** -> **Other** -> **Jnario** -> **Suite**).
- 	 * <p align="center"><img src="/img/tutorial/suite_wizard.png" alt="New Suite Wizard"/></p>
+ 	 * 
+ 	 * <p align="center"><img width="500px" src="/img/tutorial/suite_wizard.png" alt="New Suite Wizard"/></p>
+ 	 * 
  	 * Name the suite file "MySuite" and as description use "My Jnario Suite". The created suite will
  	 * look like:
  	 * 
@@ -39,7 +41,7 @@ describe "Introducing Jnario Suites"{
 	 * because of the missing jnario libraries, add them 
  	 * to the classpath using the quickfix.
  	 * 
- 	 * <p align="center"><img src="/img/tutorial/suite_buildpath.png" alt="New Suite Error"/></p>
+ 	 * <p align="center"><img width="600px" src="/img/tutorial/suite_buildpath.png" alt="New Suite Error"/></p>
 	 *
 	 */
 	describe "Getting Started"{
@@ -146,7 +148,7 @@ describe "Introducing Jnario Suites"{
 		 * Each subsection can separately list specifications. The specifications
 		 * will be executed in the same hierarchy:
 		 * 
- 	 	 * <p align="center"><img src="/img/tutorial/suite_execution.png" alt="Running a suite"/></p>
+ 	 	 * <p align="center"><img width="400px" src="/img/tutorial/suite_execution.png" alt="Running a suite"/></p>
 		 * 
 		 * Each section can have additional text written in [Markdown Syntax]
 		 * (http://daringfireball.net/projects/markdown/syntax). This text will
