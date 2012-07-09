@@ -13,7 +13,6 @@ import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.suite.documentation.IntroducingJnarioSuitesSpec;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -109,16 +108,32 @@ public class IntroducingJnarioSuitesGettingStartedSpec extends IntroducingJnario
    * 
    * <span class="label label-info">Tip</span> There is a quick fix (CMD/Ctrl + 1)
    *  available for unresolved specifications to create a new one.
+   * 
+   * @lang(none)
+   * @filter(.*)
    */
   @Test
-  @Ignore
-  @Named("Fixing the Errors [PENDING]")
+  @Named("Fixing the Errors")
   @Order(99)
   public void fixingTheErrors() throws Exception {
+    this.parseExampleScenarioAndSpec();
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("package demo");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("#My Suite");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("- \"My Feature\"");
+    _builder.newLine();
+    _builder.append("- \"My Spec\"");
+    _builder.newLine();
+    Resource _parseSuite = this._modelStore.parseSuite(_builder);
+    Resources.hasNoParseAndLinkingErrors(_parseSuite);
   }
   
   /**
-   * Suites can be structured hierarchically:
+   * Suites can be structured hierarchically by the number of '#' in front of the name:
    * 
    *     #Headline
    *     ##Section 1
@@ -135,12 +150,14 @@ public class IntroducingJnarioSuitesGettingStartedSpec extends IntroducingJnario
    * 
    * Each section can have additional text written in [Markdown Syntax]
    * (http://daringfireball.net/projects/markdown/syntax). This text will
-   * also be generated into the HTML reports. The referenced specs can also have
-   * a text description after a colon.
+   * be generated into the HTML reports. Referenced specs can also have a text
+   * description after a colon. The
+   * next example shows the previous suite separated by features and specs
+   * with additional descriptions.
    * 
    * <span class="label label-info">Important</span> The characters '#' and '-' are
    * keywords in Jnario suites. They must be escaped like this '\\#' and '\\-' if
-   * they are used in normal text.
+   * they are used in normal text (this will be fixed in the near future).
    * 
    * @filter(parseExampleScenarioAndSpec|'''|\.parseSuite.hasNoParseAndLinkingErrors)
    * @lang(none)
@@ -188,12 +205,44 @@ public class IntroducingJnarioSuitesGettingStartedSpec extends IntroducingJnario
     Resources.hasNoParseAndLinkingErrors(_parseSuite);
   }
   
+  /**
+   * When you want to run all specifications in your project you probably don't want
+   * to list every single spec by hand. In Jnario suites you can define regular expressions
+   * to select specific sets of specifications by matching the fully qualified name of a specification.
+   * The generated HTML documentation will still list all matched specifications. A pattern is defined by
+   * after a dash between two "\":
+   * 
+   *     - \.*\
+   * 
+   * <span class="label label-info">Tip</span> When hovering the cursor of a regex pattern,
+   * the Eclipse editor will show all resolved specs.
+   * 
+   * @filter(parseExampleScenarioAndSpec|'''|\.parseSuite.hasNoParseAndLinkingErrors)
+   * @lang(none)
+   */
   @Test
-  @Ignore
-  @Named("Selecting multiple Specifications [PENDING]")
+  @Named("Selecting multiple Specifications")
   @Order(99)
   public void selectingMultipleSpecifications() throws Exception {
-    throw new UnsupportedOperationException("selectingMultipleSpecificationsis not implemented");
+    this.parseExampleScenarioAndSpec();
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("package demo");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("#My Suite");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("// this will select all specs in the project");
+    _builder.newLine();
+    _builder.append("- \\.*\\ ");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("// this will select all specs that end with feature");
+    _builder.newLine();
+    _builder.append("- \\.*Feature\\");
+    _builder.newLine();
+    Resource _parseSuite = this._modelStore.parseSuite(_builder);
+    Resources.hasNoParseAndLinkingErrors(_parseSuite);
   }
   
   public Resource parseExampleScenarioAndSpec() {

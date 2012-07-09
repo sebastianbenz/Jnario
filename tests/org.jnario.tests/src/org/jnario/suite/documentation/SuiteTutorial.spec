@@ -11,11 +11,13 @@ import static extension org.jnario.jnario.test.util.Resources.*
 /*
  * Suites in Jnario serve two purposes:
  * 
- * 1. **Grouping:** A suite groups multiple specifications and executes them together. For example, a single 
- *    Jnario suite could run all specifications in a project or there are different two suites, one containing 
+ * 1. **Grouping:** A suite groups multiple specifications and executes them together. 
+ *    For example, you could create a single 
+ *    Jnario suite thats runs all your specifications in a project. Another possibility would
+ *    be to create two different suites, one containing 
  *    all unit specifications and one containing all acceptance specifications.  
  * 2. **Documentation:** Jnario generates HTML reports for suites making them a great way to provide additional
- *    documentation. For example, one can create an overview page describing the overall architecture
+ *    documentation. For example, you can create a suite as an overview page describing the overall architecture
  *    of an application, which then links to other specifications describing the different parts 
  *    in more detail. 
  *    The overview page of the [Jnario documentation](http://jnario.org/org/jnario/JnarioDocumentationSuite.html)
@@ -96,8 +98,20 @@ describe "Introducing Jnario Suites"{
 		 * 
 	 	 * <span class="label label-info">Tip</span> There is a quick fix (CMD/Ctrl + 1)
 	 	 *  available for unresolved specifications to create a new one.
+	 	 * 
+		 * @lang(none)
+		 * @filter(.*) 
 		 */
 		fact "Fixing the Errors"{
+			parseExampleScenarioAndSpec
+			'''
+			package demo
+			
+			#My Suite
+			
+			- "My Feature"
+			- "My Spec"
+			'''.parseSuite.hasNoParseAndLinkingErrors
 		}
 		
 		def parseExampleScenarioAndSpec(){
@@ -119,7 +133,7 @@ describe "Introducing Jnario Suites"{
 		}
 		
 		/*
-		 * Suites can be structured hierarchically:
+		 * Suites can be structured hierarchically by the number of '#' in front of the name:
 		 * 
 		 *     #Headline
 		 *     ##Section 1
@@ -136,12 +150,14 @@ describe "Introducing Jnario Suites"{
 		 * 
 		 * Each section can have additional text written in [Markdown Syntax]
 		 * (http://daringfireball.net/projects/markdown/syntax). This text will
-		 * also be generated into the HTML reports. The referenced specs can also have
-		 * a text description after a colon.
+		 * be generated into the HTML reports. Referenced specs can also have a text 
+		 * description after a colon. The
+		 * next example shows the previous suite separated by features and specs
+		 * with additional descriptions.
 		 * 
 		 * <span class="label label-info">Important</span> The characters '#' and '-' are
 		 * keywords in Jnario suites. They must be escaped like this '\\#' and '\\-' if 
-		 * they are used in normal text.
+		 * they are used in normal text (this will be fixed in the near future). 
  	 	 *  
 	 	 * @filter(parseExampleScenarioAndSpec|'''|\.parseSuite.hasNoParseAndLinkingErrors) 
 	 	 * @lang(none)
@@ -172,7 +188,35 @@ describe "Introducing Jnario Suites"{
 			'''.parseSuite.hasNoParseAndLinkingErrors
 		}
 		
-		fact "Selecting multiple Specifications"
+		/*
+		 * When you want to run all specifications in your project you probably don't want
+		 * to list every single spec by hand. In Jnario suites you can define regular expressions
+		 * to select specific sets of specifications by matching the fully qualified name of a specification.
+		 * The generated HTML documentation will still list all matched specifications. A pattern is defined by
+		 * after a dash between two "\":
+		 * 
+		 *     - \.*\  
+		 * 
+	 	 * <span class="label label-info">Tip</span> When hovering the cursor of a regex pattern,
+	 	 * the Eclipse editor will show all resolved specs.
+	 	 * 
+	     * @filter(parseExampleScenarioAndSpec|'''|\.parseSuite.hasNoParseAndLinkingErrors) 
+	 	 * @lang(none)
+		 */
+		fact "Selecting multiple Specifications"{
+			parseExampleScenarioAndSpec
+			'''
+			package demo
+
+			#My Suite
+			
+			// this will select all specs in the project
+			- \.*\ 
+			
+			// this will select all specs that end with feature
+			- \.*Feature\
+			'''.parseSuite.hasNoParseAndLinkingErrors
+		}
 	}
 
 }

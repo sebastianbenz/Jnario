@@ -30,8 +30,8 @@
 				<div class="span12">
 <p>Suites in Jnario serve two purposes:</p>
 <ol>
-  <li><strong>Grouping:</strong> A suite groups multiple specifications and executes them together. For example, a single  Jnario suite could run all specifications in a project or there are different two suites, one containing  all unit specifications and one containing all acceptance specifications.</li>
-  <li><strong>Documentation:</strong> Jnario generates HTML reports for suites making them a great way to provide additional  documentation. For example, one can create an overview page describing the overall architecture  of an application, which then links to other specifications describing the different parts  in more detail.  The overview page of the <a href="http://jnario.org/org/jnario/JnarioDocumentationSuite.html">Jnario documentation</a>  is a good example for this.</li>
+  <li><strong>Grouping:</strong> A suite groups multiple specifications and executes them together.  For example, you could create a single  Jnario suite thats runs all your specifications in a project. Another possibility would  be to create two different suites, one containing  all unit specifications and one containing all acceptance specifications.</li>
+  <li><strong>Documentation:</strong> Jnario generates HTML reports for suites making them a great way to provide additional  documentation. For example, you can create a suite as an overview page describing the overall architecture  of an application, which then links to other specifications describing the different parts  in more detail.  The overview page of the <a href="http://jnario.org/org/jnario/JnarioDocumentationSuite.html">Jnario documentation</a>  is a good example for this.</li>
 </ol>
 <h3 id="Getting_Started">Getting Started</h3>
 <p><p>First of all you need a running installation of Jnario. If you haven't installed Jnario yet, follow the <a href="../../jnario/documentation/InstallingJnarioSpec.html">install guide</a>. To get started first create a new Java project and a new Jnario suite using the suite wizard (<strong>File</strong> -&gt; <strong>New</strong> -&gt; <strong>Other</strong> -&gt; <strong>Jnario</strong> -&gt; <strong>Suite</strong>). <p align="center"><img src="/img/tutorial/suite_wizard.png" alt="New Suite Wizard"/></p> Name the suite file "MySuite" and as description use "My Jnario Suite". The created suite will look like:</p><p><span class="label label-info">Tip</span> If the editor shows a validation error, because of the missing jnario libraries, add them to the classpath using the quickfix.</p>
@@ -47,7 +47,7 @@ package demo
 - &quot;My Feature&quot;
 - &quot;My Spec&quot;</pre>
 </p>
-</li><li><p  id="Fixing_the_Errors"><strong>Fixing the Errors [PENDING]</strong>
+</li><li><p  id="Fixing_the_Errors"><strong>Fixing the Errors</strong>
 <p>The editor will show two validation errors as the referenced specifications cannot be resolved. Fix this by adding a new feature file "MyFeature.feature" in the same package:</p>
 <pre class="prettyprint lang-feature">
 package demo
@@ -65,7 +65,7 @@ describe "My Spec"{
 </pre><p>When the validation errors are fixed we can execute the suite as a normal JUnit test via right-click and <strong>run-as-&gt;JUnit Test</strong>.</p><p><span class="label label-info">Tip</span> There is a quick fix (CMD/Ctrl + 1)  available for unresolved specifications to create a new one.</p>
 </p>
 </li><li><p  id="Structuring_a_Suite"><strong>Structuring a Suite</strong>
-<p>Suites can be structured hierarchically:</p>
+<p>Suites can be structured hierarchically by the number of '#' in front of the name:</p>
 <pre class="prettyprint">#Headline
 ##Section 1
 ###Subsection 1.1
@@ -74,7 +74,7 @@ describe "My Spec"{
 ###Subsection 2.1
 ###Subsection 2.2
 </code></pre><p>Each subsection can separately list specifications. The specifications will be executed in the same hierarchy:</p>
-<p align="center"><img src="/img/tutorial/suite_execution.png" alt="Running a suite"/></p><p>Each section can have additional text written in <a href="http://daringfireball.net/projects/markdown/syntax">Markdown Syntax</a>. This text will also be generated into the HTML reports. The referenced specs can also have a text description after a colon.</p><p><span class="label label-info">Important</span> The characters '#' and '-' are keywords in Jnario suites. They must be escaped like this '\#' and '\-' if they are used in normal text.</p>
+<p align="center"><img src="/img/tutorial/suite_execution.png" alt="Running a suite"/></p><p>Each section can have additional text written in <a href="http://daringfireball.net/projects/markdown/syntax">Markdown Syntax</a>. This text will be generated into the HTML reports. Referenced specs can also have a text description after a colon. The next example shows the previous suite separated by features and specs with additional descriptions.</p><p><span class="label label-info">Important</span> The characters '#' and '-' are keywords in Jnario suites. They must be escaped like this '\#' and '\-' if they are used in normal text (this will be fixed in the near future).</p>
 <pre class="prettyprint lang-none">
 package demo
 
@@ -97,7 +97,20 @@ Here we list all our features...
 - &quot;My Spec&quot;: this is an example unit spec.
    with a multiline description.</pre>
 </p>
-</li><li><p  id="Selecting_multiple_Specifications"><strong>Selecting multiple Specifications [PENDING]</strong>
+</li><li><p  id="Selecting_multiple_Specifications"><strong>Selecting multiple Specifications</strong>
+<p>When you want to run all specifications in your project you probably don't want to list every single spec by hand. In Jnario suites you can define regular expressions to select specific sets of specifications by matching the fully qualified name of a specification. The generated HTML documentation will still list all matched specifications. A pattern is defined by after a dash between two "&quot;:</p>
+<pre class="prettyprint">- \.*\
+</code></pre><p><span class="label label-info">Tip</span> When hovering the cursor of a regex pattern, the Eclipse editor will show all resolved specs.</p>
+<pre class="prettyprint lang-none">
+package demo
+
+#My Suite
+
+// this will select all specs in the project
+- \.*\ 
+
+// this will select all specs that end with feature
+- \.*Feature\</pre>
 </p>
 </li></ul>
 				</div>

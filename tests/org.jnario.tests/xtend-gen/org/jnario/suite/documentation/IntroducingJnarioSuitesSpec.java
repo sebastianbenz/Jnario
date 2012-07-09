@@ -11,11 +11,13 @@ import org.junit.runner.RunWith;
 /**
  * Suites in Jnario serve two purposes:
  * 
- * 1. **Grouping:** A suite groups multiple specifications and executes them together. For example, a single
- *    Jnario suite could run all specifications in a project or there are different two suites, one containing
+ * 1. **Grouping:** A suite groups multiple specifications and executes them together.
+ *    For example, you could create a single
+ *    Jnario suite thats runs all your specifications in a project. Another possibility would
+ *    be to create two different suites, one containing
  *    all unit specifications and one containing all acceptance specifications.
  * 2. **Documentation:** Jnario generates HTML reports for suites making them a great way to provide additional
- *    documentation. For example, one can create an overview page describing the overall architecture
+ *    documentation. For example, you can create a suite as an overview page describing the overall architecture
  *    of an application, which then links to other specifications describing the different parts
  *    in more detail.
  *    The overview page of the [Jnario documentation](http://jnario.org/org/jnario/JnarioDocumentationSuite.html)
