@@ -11,8 +11,10 @@ import static org.jnario.runner.ExtensionRule.createExtensionRule;
 
 import java.util.List;
 
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.junit.Rule;
 import org.junit.rules.TestRule;
+import org.junit.runner.Description;
 import org.junit.runner.Runner;
 import org.junit.runner.manipulation.NoTestsRemainException;
 import org.junit.runner.notification.RunNotifier;
@@ -32,7 +34,28 @@ import com.google.common.base.Predicates;
  */
 public class FeatureRunner extends ExampleGroupRunner {
 
+	private final class TestInstantiatorRule implements TestRule {
+		private final SpecCreator testInstantiator;
+
+		private TestInstantiatorRule(SpecCreator testInstantiator) {
+			this.testInstantiator = testInstantiator;
+		}
+
+		public Statement apply(final Statement base, Description description) {
+			return new Statement() {
+				
+				@Override
+				public void evaluate() throws Throwable {
+					testInstantiator.beforeSpecRun();
+					base.evaluate();
+					testInstantiator.afterSpecRun();
+				}
+			};
+		}
+	}
+
 	private Object scenario;
+	private SpecCreator testInstantiator;
 
 	public FeatureRunner(Class<?> klass, NameProvider nameProvider)
 			throws InitializationError {
@@ -52,9 +75,21 @@ public class FeatureRunner extends ExampleGroupRunner {
 	protected ExampleRunner createExampleRunner(Class<?> testClass,	FrameworkMethod from) throws InitializationError,
 			NoTestsRemainException {
 		if(scenario == null){
-			scenario = createTestInstantiator().createSpec(targetClass());
+			scenario = getOrCreateTestInstantiator().createSpec(targetClass());
 		}
 		return new StepRunner(testClass, from, getNameProvider(), scenario);
+	}
+
+	public SpecCreator getOrCreateTestInstantiator()  {
+		if(testInstantiator == null){
+			try {
+				testInstantiator = createTestInstantiator();
+			} catch (InitializationError e) {
+				Exceptions.sneakyThrow(e);
+				return null; // not reachable
+			}
+		}
+		return testInstantiator;
 	}
 	
 	
@@ -70,7 +105,12 @@ public class FeatureRunner extends ExampleGroupRunner {
 	protected List<TestRule> getTestRules() {
 		List<TestRule> rules = getTestClass().getAnnotatedFieldValues(scenario,	Rule.class, TestRule.class);
 		rules.add(createExtensionRule(getExtensions(), scenario));
+		rules.add(0, createInstantiatorRule());
 		return rules;
+	}
+
+	private TestRule createInstantiatorRule() {
+		return new TestInstantiatorRule(getOrCreateTestInstantiator());
 	}
 
 }

@@ -40,7 +40,7 @@ public class ExampleGroupRunnerBuilder {
 					}
 				}
 			} catch (InvocationTargetException e) {
-				throw new InitializationError(e);
+				throw new InitializationError(e.getTargetException());
 			} catch (IllegalAccessException e) {
 				throw new InitializationError(e);
 			} catch (InstantiationException e) {

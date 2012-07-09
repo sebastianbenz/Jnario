@@ -79,9 +79,6 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 		Iterable<Runner> allExamples = concat(collectExampleGroups(),
 				collectExamples());
 		this.children = newArrayList(Iterables.filter(allExamples, notNull()));
-		if (children.isEmpty()) {
-			throw new InitializationError("No examples");
-		}
 	}
 
 	private void setExtensions() {
@@ -195,7 +192,8 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 						try {
 							return createExampleGroupRunner(declaredClass);
 						} catch (InitializationError e) {
-							return null;
+							Exceptions.sneakyThrow(e);
+							return null; //not reachable
 						}
 					}
 
