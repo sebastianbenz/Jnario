@@ -2,6 +2,7 @@ package org.jnario.feature.tests.integration;
 
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.FeatureExecutor;
+import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.Should;
 import org.jnario.lib.StepArguments;
 import org.jnario.lib.StringConversions;
@@ -23,7 +24,7 @@ public class ReferencesForStepsFeatureReferencingStepsWithDifferentKeyword {
   public void whenIHaveAScenarioWithReusedStepsWithDifferentKeywordsThatThrowAnException() {
       StepArguments _stepArguments = new StepArguments("\r\n\t\t\t\tpackage bootstrap\r\n\t\t\t\tFeature: Test\r\n\t\t\t\t\tScenario: TestScenario 1\r\n\t\t\t\t\t\tGiven step\r\n\t\t\t\t\t\t\tthrow new RuntimeException()\r\n\t\t\t\t\t\t\r\n\t\t\t\t\tScenario: TestScenario 2\r\n\t\t\t\t\t\tWhen step\r\n\t\t\t");
       final StepArguments args = _stepArguments;
-      String _first = args.first();
+      String _first = JnarioIterableExtensions.<String>first(args);
       this.jnarioFile = _first;
   }
   
@@ -36,7 +37,7 @@ public class ReferencesForStepsFeatureReferencingStepsWithDifferentKeyword {
       Result _run = FeatureExecutor.run(jnarioFile);
       int _failureCount = _run.getFailureCount();
       StepArguments _args = args;
-      String _first = _args.first();
+      String _first = JnarioIterableExtensions.<String>first(_args);
       int _int = StringConversions.toInt(_first);
       boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_failureCount), Integer.valueOf(_int));
       Assert.assertTrue("\nExpected  but"

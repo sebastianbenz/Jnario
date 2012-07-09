@@ -14,6 +14,7 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure2;
 import org.hamcrest.StringDescription;
 import org.jnario.feature.parser.FeatureTokenSource;
 import org.jnario.feature.parser.antlr.internal.InternalFeatureLexer;
+import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
@@ -219,7 +220,7 @@ public class FeatureTokenSourceSpec {
     
     final Procedure2<Token,Integer> _function = new Procedure2<Token,Integer>() {
         public void apply(final Token e, final Integer i) {
-          final CommonToken expected = ((List<CommonToken>)Conversions.doWrapArray(expectedTokens)).get((i).intValue());
+          final CommonToken expected = JnarioIterableExtensions.<CommonToken>get(((Iterable<CommonToken>)Conversions.doWrapArray(expectedTokens)), (i).intValue());
           final CommonToken actual = ((CommonToken) e);
           int _type = actual.getType();
           int _type_1 = expected.getType();

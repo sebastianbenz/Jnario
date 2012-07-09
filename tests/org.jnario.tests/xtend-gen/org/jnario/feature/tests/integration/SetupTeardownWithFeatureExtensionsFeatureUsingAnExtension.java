@@ -8,6 +8,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.jnario.jnario.test.util.ConsoleRecorder;
 import org.jnario.jnario.test.util.FeatureExecutor;
+import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.StepArguments;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
@@ -35,7 +36,7 @@ public class SetupTeardownWithFeatureExtensionsFeatureUsingAnExtension {
   public void whenIDeclareAnExtensionFieldOfTypeExampleExtensionInTheBackground() {
       StepArguments _stepArguments = new StepArguments("\r\n        import org.jnario.feature.tests.integration.ExampleExtension\r\n\r\n        Feature: Feature with extensions\r\n          \r\n          Background: A common extension to all scenarios\r\n              extension ExampleExtension = new ExampleExtension \r\n            Given a static extension field\r\n            \r\n          Scenario: Scenario 1\r\n            Given a step \r\n              println(\"step 1\")\r\n            Then we have two steps\r\n            println(\"step 2\")\r\n          Scenario: Scenario 2\r\n            Given a step \r\n              println(\"step 3\")\r\n            Then we have two steps\r\n              println(\"step 4\")\r\n      ");
       final StepArguments args = _stepArguments;
-      String _first = args.first();
+      String _first = JnarioIterableExtensions.<String>first(args);
       this.feature = _first;
   }
   
@@ -56,7 +57,7 @@ public class SetupTeardownWithFeatureExtensionsFeatureUsingAnExtension {
       final StepArguments args = _stepArguments;
       String _stop = this.recorder.stop();
       final String actual = _stop.trim();
-      String _first = args.first();
+      String _first = JnarioIterableExtensions.<String>first(args);
       String _trim = _first.trim();
       String[] _split = _trim.split("\n");
       final Function1<String,String> _function = new Function1<String,String>() {

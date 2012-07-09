@@ -1,6 +1,7 @@
 package org.jnario.feature.tests.integration;
 
 import org.jnario.jnario.test.util.FeatureExecutor;
+import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.StepArguments;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
@@ -18,7 +19,7 @@ public class ReferencesForStepsFeatureUsingFieldsFromOtherSteps {
   public void whenIHaveAScenarioWithAField() {
       StepArguments _stepArguments = new StepArguments("\r\n\t\t\t\tpackage bootstrap\r\n\t\t\t\timport java.util.*\r\n\t\t\t\tFeature: Test\r\n\t\t\t\t\tScenario: TestScenario 1\r\n\t\t\t\t\t\tList<String> values = new ArrayList()\r\n\t\t\t\t\t\tGiven a list\r\n\t\t\t\t\t\t\tvalues += \"hello\"\r\n\t\t\t\t\t\t\r\n\t\t\t\t\tScenario: TestScenario 2\r\n\t\t\t\t\t\tGiven a list\r\n\t\t\t\t\t\tThen it should have contents\r\n\t\t\t\t\t\t\tvalues.size => 1\r\n\t\t\t");
       final StepArguments args = _stepArguments;
-      String _first = args.first();
+      String _first = JnarioIterableExtensions.<String>first(args);
       this.jnarioFile = _first;
   }
   

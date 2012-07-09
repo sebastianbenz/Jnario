@@ -8,6 +8,7 @@
 package org.jnario.scoping;
 
 import java.util.Collection;
+import java.util.Iterator;
 
 import org.eclipse.xtext.xbase.scoping.featurecalls.StaticImplicitMethodsFeatureForTypeProvider.ExtensionClassNameProvider;
 import org.hamcrest.CoreMatchers;
@@ -15,6 +16,8 @@ import org.jnario.lib.Each;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.JnarioCollectionLiterals;
+import org.jnario.lib.JnarioIterableExtensions;
+import org.jnario.lib.JnarioIteratorExtensions;
 import org.jnario.lib.Should;
 import org.jnario.lib.StringConversions;
 
@@ -35,6 +38,8 @@ public class JnarioExtensionClassNameProvider extends ExtensionClassNameProvider
 		result.put(Object.class, Should.class);
 		result.put(Object.class, Each.class);
 		result.put(String.class, StringConversions.class);
+		result.put(Iterable.class, JnarioIterableExtensions.class);
+		result.put(Iterator.class, JnarioIteratorExtensions.class);
 		return result;
 	}
 	
