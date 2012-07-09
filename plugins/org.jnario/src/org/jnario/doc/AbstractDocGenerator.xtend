@@ -24,8 +24,11 @@ import org.jnario.ExampleTable
 
 import static extension org.eclipse.xtext.util.Strings.*
 import org.apache.commons.lang.StringEscapeUtils
+import static extension org.jnario.util.Strings.*
 
 abstract class AbstractDocGenerator implements IGenerator {
+
+	static val SEP = "_"
 
 	@Inject extension WhiteSpaceNormalizer
 	@Inject extension PegDownProcessor
@@ -95,7 +98,7 @@ abstract class AbstractDocGenerator implements IGenerator {
 	}
 	
 	def id(String id){
-		return ' id="' + id?.trim?.replaceAll("\\W+", "_") + '"'
+		return ' id="' + id?.replaceAll("\\W+", SEP)?.trim(SEP.charAt(0)) + '"'
 	}
 	
 	def apply(List<Filter> filters, String input){

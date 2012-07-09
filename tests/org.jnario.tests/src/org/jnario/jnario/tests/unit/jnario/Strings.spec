@@ -39,4 +39,21 @@ describe Strings{
 		
 		fact examples.forEach[string.makeJunitConform => result]
 	}
+	
+	context trim{
+		def examples{
+			| string 				| result 			|
+			| null					| null				|
+			| ""					| ""				|
+			| "_hello"				| "hello"			|
+			| "hello_world_"		| "hello_world"		|
+			| "_hello_"				| "hello"			|
+			| "__hello__"			| "hello"			|
+			| "____"				| ""				|
+		}
+		
+		fact "removes the specified leading and trailing character"{
+			examples.forEach[string.trim('_'.charAt(0)) => result]
+		}
+	}
 }

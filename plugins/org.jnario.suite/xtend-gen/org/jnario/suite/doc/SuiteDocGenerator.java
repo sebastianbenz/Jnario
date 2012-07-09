@@ -10,7 +10,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
-import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.Specification;
@@ -23,6 +22,7 @@ import org.jnario.suite.suite.Reference;
 import org.jnario.suite.suite.SpecReference;
 import org.jnario.suite.suite.Suite;
 import org.jnario.suite.suite.SuiteFile;
+import org.jnario.util.Strings;
 
 @SuppressWarnings("all")
 public class SuiteDocGenerator extends AbstractDocGenerator {
@@ -58,19 +58,17 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
       if (_isEmpty) {
         return HtmlFile.EMPTY_FILE;
       }
+      final Suite rootSuite = IterableExtensions.<Suite>head(suites);
       final Procedure1<HtmlFile> _function = new Procedure1<HtmlFile>() {
           public void apply(final HtmlFile it) {
-            Suite _head = IterableExtensions.<Suite>head(suites);
-            String _className = SuiteDocGenerator.this._suiteClassNameProvider.getClassName(_head);
+            String _className = SuiteDocGenerator.this._suiteClassNameProvider.getClassName(rootSuite);
             it.setName(_className);
-            Suite _head_1 = IterableExtensions.<Suite>head(suites);
-            String _describe = SuiteDocGenerator.this._suiteClassNameProvider.describe(_head_1);
-            String _convertFromJavaString = Strings.convertFromJavaString(_describe, true);
-            it.setTitle(_convertFromJavaString);
+            String _describe = SuiteDocGenerator.this._suiteClassNameProvider.describe(rootSuite);
+            String _decode = SuiteDocGenerator.this.decode(_describe);
+            it.setTitle(_decode);
             CharSequence _generateContent = SuiteDocGenerator.this.generateContent(suites);
             it.setContent(_generateContent);
-            Suite _head_2 = IterableExtensions.<Suite>head(suites);
-            String _root = SuiteDocGenerator.this.root(_head_2);
+            String _root = SuiteDocGenerator.this.root(rootSuite);
             it.setRootFolder(_root);
           }
         };
@@ -89,8 +87,8 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
             String _className = SuiteDocGenerator.this._suiteClassNameProvider.getClassName(suite);
             it.setName(_className);
             String _describe = SuiteDocGenerator.this._suiteClassNameProvider.describe(suite);
-            String _convertFromJavaString = Strings.convertFromJavaString(_describe, true);
-            it.setTitle(_convertFromJavaString);
+            String _decode = SuiteDocGenerator.this.decode(_describe);
+            it.setTitle(_decode);
             CharSequence _generateContent = SuiteDocGenerator.this.generateContent(suite);
             it.setContent(_generateContent);
             String _root = SuiteDocGenerator.this.root(suite);
@@ -112,10 +110,8 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
           boolean _equals = Objects.equal(suite, _head);
           boolean _not = (!_equals);
           if (_not) {
-            String _name = suite.getName();
-            String _firstLine = org.jnario.util.Strings.firstLine(_name);
-            String _markdown2Html = this.markdown2Html(_firstLine);
-            _builder.append(_markdown2Html, "");
+            CharSequence _title = this.title(suite);
+            _builder.append(_title, "");
             _builder.newLineIfNotEmpty();
           }
         }
@@ -127,19 +123,33 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
     return _builder;
   }
   
-  public CharSequence generateContent(final Suite suite) {
+  public CharSequence title(final Suite suite) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<span");
     String _name = suite.getName();
-    String _replace = _name.replace("#", "");
-    String _id = this.id(_replace);
+    final String title = Strings.firstLine(_name);
+    _builder.newLineIfNotEmpty();
+    _builder.append("<span");
+    String _id = this.id(title);
     _builder.append(_id, "");
     _builder.append(">");
-    String _name_1 = suite.getName();
-    String _trimFirstLine = org.jnario.util.Strings.trimFirstLine(_name_1);
-    String _markdown2Html = this.markdown2Html(_trimFirstLine);
+    String _markdown2Html = this.markdown2Html(title);
     _builder.append(_markdown2Html, "");
     _builder.append("</span>");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  public String desc(final Suite suite) {
+    String _name = suite.getName();
+    String _trimFirstLine = Strings.trimFirstLine(_name);
+    String _markdown2Html = this.markdown2Html(_trimFirstLine);
+    return _markdown2Html;
+  }
+  
+  public CharSequence generateContent(final Suite suite) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _desc = this.desc(suite);
+    _builder.append(_desc, "");
     _builder.newLineIfNotEmpty();
     {
       EList<Reference> _elements = suite.getElements();
@@ -151,8 +161,9 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
         {
           EList<Reference> _elements_1 = suite.getElements();
           for(final Reference spec : _elements_1) {
+            _builder.append("\t");
             CharSequence _generate = this.generate(spec);
-            _builder.append(_generate, "");
+            _builder.append(_generate, "	");
             _builder.newLineIfNotEmpty();
           }
         }
@@ -206,7 +217,8 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
         if (_notEquals) {
           _matched=true;
           String _text_1 = _specReference.getText();
-          return (": " + _text_1);
+          String _markdown2Html = this.markdown2Html(_text_1);
+          return (": " + _markdown2Html);
         }
       }
     }

@@ -7,6 +7,7 @@
  *******************************************************************************/
 package org.jnario.util;
 
+import static com.google.common.base.Strings.isNullOrEmpty;
 import static java.lang.Character.isJavaIdentifierPart;
 import static java.lang.Character.isJavaIdentifierStart;
 import static java.lang.Character.isLetterOrDigit;
@@ -26,6 +27,21 @@ public class Strings extends org.eclipse.xtext.util.Strings{
 			count++;
 		}
 		return count;
+	}
+	
+	public static String trim(String s, char c){
+		if(isNullOrEmpty(s)){
+			return s;
+		}
+		int start = 0;
+		while(start < s.length() && s.charAt(start) == c){
+			start++;
+		}
+		int end = s.length();
+		while(end > start && s.charAt(end-1) == c){
+			end--;
+		}
+		return s.substring(start, end);
 	}
 	
 	public static String trimFirstLine(String s){

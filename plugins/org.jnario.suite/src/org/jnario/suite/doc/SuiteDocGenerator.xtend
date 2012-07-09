@@ -20,6 +20,7 @@ import static extension org.jnario.util.Strings.*
 import static extension org.eclipse.xtext.util.Strings.*
 
 class SuiteDocGenerator extends AbstractDocGenerator {
+	
 	@Inject extension SuiteClassNameProvider 
 	@Inject extension SpecResolver
 	@Inject extension HtmlFileBuilder
@@ -34,11 +35,12 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 	def HtmlFile createHtmlFile(SuiteFile file) {
 		val suites = file.xtendClasses.filter(typeof(Suite))
 		if(suites.empty) return HtmlFile::EMPTY_FILE
+		val rootSuite = suites.head
 		HtmlFile::newHtmlFile[
-			name = suites.head.className
-			title = suites.head.describe.convertFromJavaString(true)
+			name = rootSuite.className
+			title = rootSuite.describe.decode
 			content = suites.generateContent
-			rootFolder = suites.head.root
+			rootFolder = rootSuite.root
 		]
 	}
 
@@ -46,7 +48,7 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 		val suite = file as Suite
 		HtmlFile::newHtmlFile[
 			name = suite.className 
-			title = suite.describe.convertFromJavaString(true)
+			title = suite.describe.decode
 			content = suite.generateContent
 			rootFolder = suite.root
 		]
@@ -54,20 +56,29 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 	
 	def generateContent(Iterable<Suite> suites)'''
 		«FOR suite : suites»
-		«IF !(suite == suites.head)»
-		«suite.name.firstLine.markdown2Html»
-		«ENDIF»
-		«suite.generateContent»
+			«IF !(suite == suites.head)»
+			«suite.title»
+			«ENDIF»
+			«suite.generateContent»
 		«ENDFOR»
 	'''
+	
+	def title(Suite suite)'''
+		«val title = suite.name.firstLine»
+		<span«title.id»>«title.markdown2Html»</span>
+	'''
+	
+	def desc(Suite suite){
+		suite.name.trimFirstLine.markdown2Html
+	}
 
 	def generateContent(Suite suite)'''
-		<span«suite.name.replace("#","").id»>«suite.name.trimFirstLine.markdown2Html»</span>
+		«suite.desc»
 		«IF !suite.elements.empty»
 		<ul>
-		«FOR spec : suite.elements»
-			«generate(spec)»
-		«ENDFOR»
+			«FOR spec : suite.elements»
+				«generate(spec)»
+			«ENDFOR»
 		</ul>
 		«ENDIF»
 	'''
@@ -84,7 +95,7 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 	
 	def text(Reference ref){
 		switch ref{
-			SpecReference case ref.text != null : return ': ' + ref.text
+			SpecReference case ref.text != null : return ': ' + ref.text.markdown2Html
 		}
 		return ""
 	}
