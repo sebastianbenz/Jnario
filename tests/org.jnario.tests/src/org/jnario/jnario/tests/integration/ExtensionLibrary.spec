@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.jnario.spec.tests.integration
+package org.jnario.jnario.tests.integration
 
 import static extension org.jnario.lib.StringConversions.*
 import static org.jnario.lib.JnarioCollectionLiterals.*
@@ -47,8 +47,9 @@ describe "Extension Library"{
 	}
 	
 	/*
-	 * Here are some helper methods to simplify accessing 
-	 * elements in collections, iterables & iterators.
+	 * Another common use case when writing speces is to access specific 
+	 * elements collections, iterables & iterators. Jnario provides helper 
+	 * methods to simplify accessing elements by index.
 	 */
 	describe "Iterable & Iterator Helpers"{
 		

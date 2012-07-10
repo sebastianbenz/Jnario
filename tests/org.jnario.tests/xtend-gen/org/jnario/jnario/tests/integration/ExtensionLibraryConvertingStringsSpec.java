@@ -1,16 +1,16 @@
-package org.jnario.spec.tests.integration;
+package org.jnario.jnario.tests.integration;
 
 import java.util.List;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.hamcrest.StringDescription;
+import org.jnario.jnario.tests.integration.ExtensionLibrarySpec;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
 import org.jnario.lib.StringConversions;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.jnario.spec.tests.integration.ExtensionLibrarySpec;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

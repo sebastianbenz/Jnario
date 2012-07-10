@@ -6,6 +6,7 @@ import org.jnario.suite.documentation.*
 import org.jnario.jnario.tests.unit.jnario.*
 import org.jnario.spec.tests.integration.*
 import org.jnario.feature.tests.integration.*
+import org.jnario.jnario.tests.integration.*
 import org.jnario.feature.tests.unit.linking.*
 import org.jnario.jnario.documentation.*
 import spec.tests.integration.*
@@ -28,7 +29,6 @@ Features and concepts that are common to all Jnario languages.
 	- "Using Should": \- writing expressive assertions with the build in should operator.
 	- "Customizing the Spec Creation": \- how to customize the spec creation process.
 	- "Using Xtend\'s with Operator": \- how to define nested assertions.
-	- "Extension Library": \- creating collections in Jnario 
 	
 ##Features
 

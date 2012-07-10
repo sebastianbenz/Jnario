@@ -1,10 +1,11 @@
-package org.jnario.spec.tests.integration;
+package org.jnario.jnario.tests.integration;
 
 import java.util.Iterator;
 import java.util.List;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.hamcrest.StringDescription;
+import org.jnario.jnario.tests.integration.ExtensionLibrarySpec;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.JnarioIteratorExtensions;
@@ -12,14 +13,14 @@ import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.jnario.spec.tests.integration.ExtensionLibrarySpec;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- * Here are some helper methods to simplify accessing
- * elements in collections, iterables & iterators.
+ * Another common use case when writing speces is to access specific
+ * elements collections, iterables & iterators. Jnario provides helper
+ * methods to simplify accessing elements by index.
  */
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)

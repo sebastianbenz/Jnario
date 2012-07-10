@@ -1,11 +1,11 @@
-package org.jnario.spec.tests.integration;
+package org.jnario.jnario.tests.integration;
 
+import org.jnario.jnario.tests.integration.ExtensionLibraryCollectionLiteralsSpec;
+import org.jnario.jnario.tests.integration.ExtensionLibraryConvertingStringsSpec;
+import org.jnario.jnario.tests.integration.ExtensionLibraryIterableIteratorHelpersSpec;
 import org.jnario.runner.Contains;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
-import org.jnario.spec.tests.integration.ExtensionLibraryCollectionLiteralsSpec;
-import org.jnario.spec.tests.integration.ExtensionLibraryConvertingStringsSpec;
-import org.jnario.spec.tests.integration.ExtensionLibraryIterableIteratorHelpersSpec;
 import org.junit.runner.RunWith;
 
 /**
