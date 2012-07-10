@@ -10,6 +10,8 @@
 */
 package org.jnario.suite.ui.contentassist;
 
+import static org.jnario.util.Strings.trim;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.core.search.IJavaSearchConstants;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
@@ -19,6 +21,7 @@ import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.common.types.xtext.ui.TypeMatchFilters;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
+import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
@@ -27,6 +30,9 @@ import org.eclipse.xtext.xbase.XbaseQualifiedNameConverter;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
 import org.eclipse.xtext.xbase.conversion.XbaseQualifiedNameValueConverter;
 import org.jnario.suite.suite.SuitePackage;
+import org.jnario.util.Strings;
+
+import com.google.common.base.Joiner;
 /**
  * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#contentAssist on how to customize content assistant
  */
@@ -52,7 +58,7 @@ public class SuiteProposalProvider extends AbstractSuiteProposalProvider {
 			Assignment assignment, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
 		
-		IScope scope = getScopeProvider().getScope(model, SuitePackage.Literals.SPEC_REFERENCE__SPEC);
+		final IScope scope = getScopeProvider().getScope(model, SuitePackage.Literals.SPEC_REFERENCE__SPEC);
 		XbaseQualifiedNameValueConverter qualifiedNameValueConverter = new XbaseQualifiedNameValueConverter(){
 			@Override
 			public String toString(String value) {
@@ -61,7 +67,7 @@ public class SuiteProposalProvider extends AbstractSuiteProposalProvider {
 				return result;
 			}
 		};
-		IQualifiedNameConverter qualifiedNameConverter = new XbaseQualifiedNameConverter(){
+		final IQualifiedNameConverter qualifiedNameConverter = new XbaseQualifiedNameConverter(){
 			@Override
 			public QualifiedName toQualifiedName(String qualifiedNameAsString) {
 				return new QualifiedName(qualifiedNameAsString.split("\\.")){
@@ -76,7 +82,15 @@ public class SuiteProposalProvider extends AbstractSuiteProposalProvider {
 			@Override
 			public void accept(ICompletionProposal proposal) {
 				if (proposal instanceof ConfigurableCompletionProposal) {
-					((ConfigurableCompletionProposal) proposal).setTextApplier(fqnImporter);
+					ConfigurableCompletionProposal configurableCompletionProposal = (ConfigurableCompletionProposal) proposal;
+					String string = configurableCompletionProposal.getReplacementString();
+					string = trim(string, '"');
+					QualifiedName qualifiedName = qualifiedNameConverter.toQualifiedName(string);
+					IEObjectDescription element = scope.getSingleElement(qualifiedName);
+					if(element == null){
+						return;
+					}
+					configurableCompletionProposal.setTextApplier(fqnImporter);
 				}
 				super.accept(proposal);
 			}
