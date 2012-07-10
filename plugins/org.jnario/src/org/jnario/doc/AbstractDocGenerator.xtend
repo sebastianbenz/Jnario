@@ -55,7 +55,11 @@ abstract class AbstractDocGenerator implements IGenerator {
 	
 	def decode(String string){
 		try{
-			return string.convertFromJavaString(true)
+			if(string == null){
+				return ""
+			}else{
+				return string.convertFromJavaString(true)
+			}
 		}catch(java.lang.IllegalArgumentException e){
 			LOG.error("Exception when converting string", e)
 			return string

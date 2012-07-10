@@ -16,6 +16,7 @@ import static org.jnario.doc.DocOutputConfigurationProvider.*
 class HtmlFileBuilder {
 	
 	def generate(XtendClass context, IFileSystemAccess fsa, HtmlFile htmlFile){
+		if(htmlFile.name == null) return
 		val content = htmlFile.toText
 		fsa.generateFile(filePath(context, htmlFile), DOC_OUTPUT, content)
 	}
@@ -26,7 +27,7 @@ class HtmlFileBuilder {
 	}
 	
 	def private filePath(XtendClass xtendClass, HtmlFile htmlFile){
-		val fileName = "/" + htmlFile.name.toHtmlFileName
+		val fileName = "/" + htmlFile.name?.toHtmlFileName
 		if(xtendClass.packageName == null){
 			return fileName
 		}

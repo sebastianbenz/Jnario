@@ -88,7 +88,12 @@ public abstract class AbstractDocGenerator implements IGenerator {
   
   public String decode(final String string) {
     try {
-      return Strings.convertFromJavaString(string, true);
+      boolean _equals = Objects.equal(string, null);
+      if (_equals) {
+        return "";
+      } else {
+        return Strings.convertFromJavaString(string, true);
+      }
     } catch (final Throwable _t) {
       if (_t instanceof IllegalArgumentException) {
         final IllegalArgumentException e = (IllegalArgumentException)_t;
