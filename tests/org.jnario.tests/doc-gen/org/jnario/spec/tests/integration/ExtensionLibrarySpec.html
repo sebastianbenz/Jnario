@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Extension Library</title>
+<meta name="description" content="">
+<meta name="author" content="Jnario">
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<!-- Le styles -->
+<link rel="stylesheet" href="../../../../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../../../css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="../../../../../css/custom.css">
+<link rel="stylesheet" href="../../../../../css/prettify.css">
+<script type="text/javascript" src="../../../../../js/prettify.js"></script>
+<script type="text/javascript" src="../../../../../js/lang-jnario.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+	<div class="container">
+		<div class="content">
+			<div class="page-header">
+				<h1>Extension Library</h1>
+			</div>
+			<div class="row">
+				<div class="span12">
+<p>Jnario extends the extension library of Xtend with additional functions which can be useful when writing tests.</p>
+<h3 id="Collection_Literals">Collection Literals</h3>
+<p><p>When writing tests the concrete implementation of a collection usually doesn't matter so much. Therefore, Jnario provides shorter versions of Xtend's collection literals.</p>
+</p>
+<ul><li><p  id="List_Literal"><strong>List Literal</strong>
+<pre class="prettyprint lang-spec">
+list(&quot;green&quot;, &quot;red&quot;)             =&gt; newArrayList(&quot;green&quot;, &quot;red&quot;)
+list(list(&quot;green&quot;), list(&quot;red&quot;)) =&gt; newArrayList(newArrayList(&quot;green&quot;), newArrayList(&quot;red&quot;))</pre>
+</p>
+</li><li><p  id="Set_Literal"><strong>Set Literal</strong>
+<pre class="prettyprint lang-spec">
+set(&quot;green&quot;, &quot;red&quot;)              =&gt; newHashSet(&quot;green&quot;, &quot;red&quot;)
+set(set(&quot;green&quot;), set(&quot;red&quot;))    =&gt; newHashSet(newHashSet(&quot;green&quot;), newHashSet(&quot;red&quot;))</pre>
+</p>
+</li><li><p  id="Map_Literal"><strong>Map Literal</strong>
+<pre class="prettyprint lang-spec">
+map(
+  &quot;green&quot;  -&gt; &quot;apple&quot;,
+  &quot;yellow&quot; -&gt; &quot;banana&quot;,
+  &quot;red&quot;    -&gt; &quot;tomato&quot;
+) =&gt; newHashMap(
+  &quot;green&quot;  -&gt; &quot;apple&quot;,
+  &quot;yellow&quot; -&gt; &quot;banana&quot;,
+  &quot;red&quot;    -&gt; &quot;tomato&quot;
+)</pre>
+</p>
+</li></ul>
+<h3 id="Iterable_Iterator_Helpers">Iterable & Iterator Helpers</h3>
+<p><p>Here are some helper methods to simplify accessing elements in collections, iterables &amp; iterators.</p>
+</p>
+<ul><li><p  id="Iterables"><strong>Iterables</strong>
+<p>Accessing elements in Iterables by index or type. These extensions work also with Lists and other Collections.</p>
+<pre class="prettyprint lang-spec">
+val values = list(1, 2, 3, 4 , 5)
+
+values.first  =&gt; 1
+values.last   =&gt; 5
+
+values.second =&gt; 2
+values.third  =&gt; 3
+values.forth  =&gt; 4
+values.fifth  =&gt; 5
+
+values.get(3) =&gt; 4
+
+val objects = list(1, &quot;string&quot;, true, &quot;other string&quot;)
+objects.first(typeof(String))  =&gt; &quot;string&quot;
+objects.second(typeof(String)) =&gt; &quot;other string&quot;</pre>
+</p>
+</li><li><p  id="Iterators"><strong>Iterators</strong>
+<p>These methods work also for Iterators. Note that calling one of these methods will consume the iterator to the position of the returned element.</p>
+<pre class="prettyprint lang-spec">
+val values = list(1, 2, 3, 4 , 5)
+
+values.iterator.first  =&gt; 1
+values.iterator.last   =&gt; 5
+
+values.iterator.get(3) =&gt; 4
+
+values.iterator.second =&gt; 2
+values.iterator.third  =&gt; 3
+values.iterator.forth  =&gt; 4
+values.iterator.fifth  =&gt; 5
+
+val objects = list(1, &quot;string&quot;, true, &quot;other string&quot;)
+objects.iterator.first(typeof(String))  =&gt; &quot;string&quot;
+objects.iterator.second(typeof(String)) =&gt; &quot;other string&quot;</pre>
+</p>
+</li></ul>
+<h3 id="Converting_Strings">Converting Strings</h3>
+<p><p>Arguments passed in from step definitions in Jnario Features are always of type String. These extension methods simplify converting these string parameters into other types or representations.</p>
+</p>
+<ul><li><p  id="Converting_Strings_to_Primitives"><strong>Converting Strings to Primitives</strong>
+<p>Converting strings to other primitive types.</p>
+<pre class="prettyprint lang-spec">
+&quot;true&quot;.toBool  =&gt; true
+&quot;5&quot;.toInt      =&gt; 5
+&quot;5.5&quot;.toDouble =&gt; 5.5
+&quot;5&quot;.toLong     =&gt; 5l</pre>
+</p>
+</li><li><p  id="Converting_Strings_to_Lists"><strong>Converting Strings to Lists</strong>
+<p>Converting comma separated value strings into a list of strings.</p>
+<pre class="prettyprint lang-spec">
+&quot;1,2,3&quot;.toList              =&gt; list(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;)
+&quot;1, 2, 3&quot;.toList            =&gt; list(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;)
+&quot;1, 2, 3&quot;.toList.map[toInt] =&gt; list(1, 2, 3)</pre>
+</p>
+</li></ul>
+				</div>
+			</div>
+		</div> <!-- /content -->
+		<footer>
+			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
+		</footer>
+
+	</div>
+	<!-- /container -->
+
+</body>
+</html>
