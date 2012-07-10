@@ -4,7 +4,6 @@ import com.google.common.base.Predicates
 import com.google.inject.Inject
 import java.util.List
 import java.util.regex.Pattern
-import org.eclipse.xtend.core.xtend.XtendFile
 import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.eclipse.xtext.scoping.IScopeProvider
 import org.jnario.Specification
@@ -41,7 +40,7 @@ class SpecResolver {
 			pattern.matcher(toString(it.qualifiedName)).matches
 		]
 		val specs = allElements.map[resolve(EObjectOrProxy, specRef)].filter(typeof(Specification)).filter[
-			!eIsProxy && eContainer instanceof XtendFile && it.eResource.URI != specRef.eResource.URI
+			it.eResource.URI != specRef.eResource.URI
 		]
 		specs.toMap[qualifiedClassName].values.toList
 	}

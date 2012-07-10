@@ -10,15 +10,31 @@
  */
 package org.jnario.suite.scoping;
 
-import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.xtend.core.scoping.XtendScopeProvider;
+import org.eclipse.xtext.scoping.IScope;
+import org.eclipse.xtext.scoping.impl.FilteringScope;
+import org.jnario.suite.suite.SuitePackage;
 
-/**
- * This class contains custom scoping description.
- * 
- * see : http://www.eclipse.org/Xtext/documentation/latest/xtext.html#scoping
- * on how and when to use it 
- *
- */
-public class SuiteScopeProvider extends AbstractDeclarativeScopeProvider {
+import com.google.inject.Inject;
 
+@SuppressWarnings("restriction")
+public class SuiteScopeProvider extends XtendScopeProvider {
+
+	@Inject SuiteSpecFilter specFilter;
+	
+	@Override
+	public IScope getScope(EObject context, EReference reference) {
+		if(reference == SuitePackage.Literals.SPEC_REFERENCE__SPEC){
+			return specReferenceScope(context, reference);
+		}
+		return super.getScope(context, reference);
+	}
+
+	private IScope specReferenceScope(EObject context, EReference reference) {
+		IScope delegate = super.getScope(context, reference);
+		return new FilteringScope(delegate, specFilter);
+	}
+	
 }

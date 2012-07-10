@@ -10,13 +10,15 @@ import org.jnario.suite.unit.SuiteClassNameProviderSpec;
 import org.jnario.suite.unit.SuiteDocGeneratorSpec;
 import org.jnario.suite.unit.SuiteNodeBuilderSpec;
 import org.jnario.suite.unit.SuiteQualifiedNameProviderSpec;
+import org.jnario.suite.unit.SuiteScopeProviderSpec;
+import org.jnario.suite.unit.SuiteSpecFilterSpec;
 import org.jnario.suite.unit.SuiteValueConverterSpec;
 import org.jnario.suite.unit.TextValueConverterSpec;
 import org.junit.runner.RunWith;
 
 @RunWith(ExampleGroupRunner.class)
 @Named("Suite")
-@Contains({ SuiteValueConverterSpec.class, SuiteQualifiedNameProviderSpec.class, PatternValueConverterSpec.class, SpecResolverSpec.class, SuiteNodeBuilderSpec.class, SuiteClassNameProviderSpec.class, SuiteDocGeneratorSpec.class, IntroducingJnarioSuitesSpec.class, TextValueConverterSpec.class })
+@Contains({ SuiteValueConverterSpec.class, SuiteQualifiedNameProviderSpec.class, PatternValueConverterSpec.class, SpecResolverSpec.class, SuiteSpecFilterSpec.class, SuiteNodeBuilderSpec.class, SuiteClassNameProviderSpec.class, SuiteDocGeneratorSpec.class, IntroducingJnarioSuitesSpec.class, TextValueConverterSpec.class, SuiteScopeProviderSpec.class })
 @SuppressWarnings("all")
 public class SuiteSuite {
 }

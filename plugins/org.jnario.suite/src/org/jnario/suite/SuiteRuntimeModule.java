@@ -16,7 +16,6 @@ import org.eclipse.xtend.core.linking.XtendLinkingDiagnosticMessageProvider;
 import org.eclipse.xtend.core.resource.XtendResource;
 import org.eclipse.xtend.core.resource.XtendResourceDescriptionStrategy;
 import org.eclipse.xtend.core.scoping.XtendImportedNamespaceScopeProvider;
-import org.eclipse.xtend.core.scoping.XtendScopeProvider;
 import org.eclipse.xtend.core.validation.XtendEarlyExitValidator;
 import org.eclipse.xtext.conversion.IValueConverterService;
 import org.eclipse.xtext.generator.IFilePostProcessor;
@@ -50,6 +49,7 @@ import org.jnario.suite.generator.SuiteGenerator;
 import org.jnario.suite.jvmmodel.SuiteJvmModelInferrer;
 import org.jnario.suite.naming.SuiteQualifiedNameProvider;
 import org.jnario.suite.resource.SuiteResourceDescriptionManager;
+import org.jnario.suite.scoping.SuiteScopeProvider;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -94,7 +94,7 @@ public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeMod
 	
 	@Override
 	public java.lang.Class<? extends IScopeProvider> bindIScopeProvider() {
-		return XtendScopeProvider.class;
+		return SuiteScopeProvider.class;
 	}
 
 	@Override

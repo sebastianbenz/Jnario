@@ -8,24 +8,19 @@
 package org.jnario.spec.tests.unit.scoping
 
 import com.google.inject.Inject
-import org.jnario.jnario.test.util.ModelStore
+import org.jnario.jnario.test.util.ScopeTestExtension
+import org.jnario.jnario.test.util.SpecTestCreator
+import org.jnario.runner.CreateWith
+import org.jnario.spec.scoping.SpecScopeProvider
 import org.jnario.spec.spec.ExampleGroup
 import org.jnario.spec.spec.SpecPackage
-import org.eclipse.xtext.scoping.IScope
-import org.eclipse.xtext.naming.QualifiedName
-import org.eclipse.emf.ecore.EObject
-import org.jnario.spec.scoping.SpecScopeProvider
-import org.jnario.runner.CreateWith
-import org.jnario.jnario.test.util.SpecTestCreator
 
-import static org.junit.Assert.*
-
-import static extension org.jnario.jnario.test.util.Query.*
+import static extension org.jnario.lib.Should.*
 
 @CreateWith(typeof(SpecTestCreator))
 describe SpecScopeProvider {
 	
-	@Inject extension ModelStore modelStore
+	@Inject extension ScopeTestExtension 
 	
 	fact "should resolve operations from surrounding ExampleGroup's target"{
 		parseSpec('
@@ -42,24 +37,13 @@ describe SpecScopeProvider {
 
 		'    
 		)
-		val exampleGroup = query.second(typeof(ExampleGroup))
-		contains(targetOperation(exampleGroup), "assertNotNull(String, Object)") 
-		contains(targetOperation(exampleGroup), "assertNotNull") 
+		targetOperationScope should contain "assertNotNull(String, Object)" 
+		targetOperationScope should contain  "assertNotNull" 
 	}    
 	
-	def void contains(IScope scope, String element){
-		val result = scope.getSingleElement(QualifiedName::create(element.split("//.")))
-		assertNotNull("scope did not contain:" + element, result);
+	def targetOperationScope(){
+		val source = second(typeof(ExampleGroup))
+		return scope(source, SpecPackage::eINSTANCE.exampleGroup_TargetOperation)
 	}
-	
-	def void containsNot(IScope scope, String element){
-		val result = scope.getSingleElement(QualifiedName::create(element.split("//.")))
-		assertNull("scope did not contain:" + element, result);
-	}
-	
-	def IScope targetOperation(EObject source){
-		return subject.getScope(source, SpecPackage::eINSTANCE.exampleGroup_TargetOperation)
-	}
-	
 		
 }

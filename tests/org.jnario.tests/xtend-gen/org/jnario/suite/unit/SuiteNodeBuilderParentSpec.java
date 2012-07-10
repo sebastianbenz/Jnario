@@ -57,7 +57,6 @@ public class SuiteNodeBuilderParentSpec extends SuiteNodeBuilderSpec {
           Assert.assertTrue("\nExpected parent(suites, position)?.name should be parent but"
            + "\n     parent(suites, position)?.name is " + new StringDescription().appendValue(_name).toString()
            + "\n     parent(suites, position) is " + new StringDescription().appendValue(_parent).toString()
-           + "\n      is " + new StringDescription().appendValue(SuiteNodeBuilderParentSpec.this._suiteNodeBuilder).toString()
            + "\n     suites is " + new StringDescription().appendValue(it.suites).toString()
            + "\n     position is " + new StringDescription().appendValue(it.position).toString()
            + "\n     parent is " + new StringDescription().appendValue(it.parent).toString() + "\n", _should_be);

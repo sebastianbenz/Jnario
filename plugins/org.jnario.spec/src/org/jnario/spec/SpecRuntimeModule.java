@@ -15,7 +15,6 @@ import org.eclipse.xtend.core.jvmmodel.DispatchUtil;
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
 import org.eclipse.xtend.core.linking.XtendLinkingDiagnosticMessageProvider;
 import org.eclipse.xtend.core.resource.XtendResource;
-import org.eclipse.xtend.core.resource.XtendResourceDescriptionStrategy;
 import org.eclipse.xtend.core.scoping.XtendImportedNamespaceScopeProvider;
 import org.eclipse.xtend.core.validation.ClasspathBasedChecks;
 import org.eclipse.xtend.core.validation.XtendEarlyExitValidator;
@@ -61,6 +60,7 @@ import org.jnario.spec.conversion.SpecValueConverterService;
 import org.jnario.spec.doc.SpecDocGenerator;
 import org.jnario.spec.jvmmodel.SpecJvmModelInferrer;
 import org.jnario.spec.naming.SpecQualifiedNameProvider;
+import org.jnario.spec.scoping.SpecResourceDescriptionStrategy;
 import org.jnario.spec.scoping.SpecScopeProvider;
 import org.jnario.spec.validation.SpecClassPathBasedChecks;
 import org.jnario.typing.JnarioTypeProvider;
@@ -80,7 +80,6 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 		binder.bind(AbstractDocGenerator.class).to(SpecDocGenerator.class);
 		binder.bind(SignatureHashBuilder.class).to(JnarioSignatureHashBuilder.class);
 	}
-	
 	
 	public Class<? extends ILinkingDiagnosticMessageProvider> bindILinkingDiagnosticMessageProvider() {
 		return XtendLinkingDiagnosticMessageProvider.class;
@@ -143,7 +142,7 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 	}
 	
 	public Class <? extends IDefaultResourceDescriptionStrategy> bindIDefaultResourceDescriptionStrategy() {
-		return XtendResourceDescriptionStrategy.class;
+		return SpecResourceDescriptionStrategy.class;
 	}
 
 	public Class<? extends JvmModelAssociator> bindJvmModelAssociator() {

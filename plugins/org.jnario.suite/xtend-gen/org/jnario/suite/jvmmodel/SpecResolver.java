@@ -18,7 +18,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.xtend.core.xtend.XtendFile;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.IEObjectDescription;
@@ -109,27 +108,12 @@ public class SpecResolver {
       Iterable<Specification> _filter = Iterables.<Specification>filter(_map, Specification.class);
       final Function1<Specification,Boolean> _function_2 = new Function1<Specification,Boolean>() {
           public Boolean apply(final Specification it) {
-            boolean _and = false;
-            boolean _and_1 = false;
-            boolean _eIsProxy = it.eIsProxy();
-            boolean _not = (!_eIsProxy);
-            if (!_not) {
-              _and_1 = false;
-            } else {
-              EObject _eContainer = it.eContainer();
-              _and_1 = (_not && (_eContainer instanceof XtendFile));
-            }
-            if (!_and_1) {
-              _and = false;
-            } else {
-              Resource _eResource = it.eResource();
-              URI _uRI = _eResource.getURI();
-              Resource _eResource_1 = specRef.eResource();
-              URI _uRI_1 = _eResource_1.getURI();
-              boolean _notEquals = (!Objects.equal(_uRI, _uRI_1));
-              _and = (_and_1 && _notEquals);
-            }
-            return Boolean.valueOf(_and);
+            Resource _eResource = it.eResource();
+            URI _uRI = _eResource.getURI();
+            Resource _eResource_1 = specRef.eResource();
+            URI _uRI_1 = _eResource_1.getURI();
+            boolean _notEquals = (!Objects.equal(_uRI, _uRI_1));
+            return Boolean.valueOf(_notEquals);
           }
         };
       final Iterable<Specification> specs = IterableExtensions.<Specification>filter(_filter, _function_2);

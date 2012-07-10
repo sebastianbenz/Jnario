@@ -12,12 +12,12 @@
     <![endif]-->
 
 <!-- Le styles -->
-<link rel="stylesheet" href="../../../../../..//css/bootstrap.min.css">
-<link rel="stylesheet" href="../../../../../..//css/bootstrap-responsive.min.css">
-<link rel="stylesheet" href="../../../../../..//css/custom.css">
-<link rel="stylesheet" href="../../../../../..//css/prettify.css">
-<script type="text/javascript" src="../../../../../..//js/prettify.js"></script>
-<script type="text/javascript" src="../../../../../..//js/lang-jnario.js"></script>
+<link rel="stylesheet" href="../../../../../..//css/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../../../..//css/css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="../../../../../..//css/css/custom.css">
+<link rel="stylesheet" href="../../../../../..//css/css/prettify.css">
+<script type="text/javascript" src="../../../../../..//js/js/prettify.js"></script>
+<script type="text/javascript" src="../../../../../..//js/js/lang-jnario.js"></script>
 </head>
 
 <body onload="prettyPrint()">
@@ -44,9 +44,8 @@ parseSpec('
 
 '    
 )
-val exampleGroup = query.second(typeof(ExampleGroup))
-contains(targetOperation(exampleGroup), &quot;assertNotNull(String, Object)&quot;) 
-contains(targetOperation(exampleGroup), &quot;assertNotNull&quot;)</pre>
+targetOperationScope should contain &quot;assertNotNull(String, Object)&quot; 
+targetOperationScope should contain  &quot;assertNotNull&quot;</pre>
 </p>
 </li></ul>
 				</div>
