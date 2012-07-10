@@ -56,10 +56,10 @@ map(
 </p>
 </li></ul>
 <h3 id="Iterable_Iterator_Helpers">Iterable & Iterator Helpers</h3>
-<p><p>Another common use case when writing speces is to access specific elements collections, iterables &amp; iterators. Jnario provides helper methods to simplify accessing elements by index.</p>
+<p><p>Another common use case when writing specs is to access specific elements collections, iterables or iterators. Jnario provides helper methods to simplify accessing elements by index.</p>
 </p>
 <ul><li><p  id="Iterables"><strong>Iterables</strong>
-<p>Accessing elements in Iterables by index or type. These extensions work also with Lists and other Collections.</p>
+<p>Accessing elements in iterables by index or type. These extensions work also with lists and other collections.</p>
 <pre class="prettyprint lang-spec">
 val values = list(1, 2, 3, 4 , 5)
 
@@ -78,7 +78,7 @@ objects.first(typeof(String))  =&gt; &quot;string&quot;
 objects.second(typeof(String)) =&gt; &quot;other string&quot;</pre>
 </p>
 </li><li><p  id="Iterators"><strong>Iterators</strong>
-<p>These methods work also for Iterators. Note that calling one of these methods will consume the iterator to the position of the returned element.</p>
+<p>These methods work also for iterators. Note that calling one of these methods will consume the iterator to the position of the returned element.</p>
 <pre class="prettyprint lang-spec">
 val values = list(1, 2, 3, 4 , 5)
 
@@ -98,7 +98,7 @@ objects.iterator.second(typeof(String)) =&gt; &quot;other string&quot;</pre>
 </p>
 </li></ul>
 <h3 id="Converting_Strings">Converting Strings</h3>
-<p><p>Arguments passed in from step definitions in Jnario Features are always of type String. These extension methods simplify converting these string parameters into other types or representations.</p>
+<p><p>Arguments passed in from step definitions in Jnario Features are always of type string. These extension methods simplify converting these string parameters into other types or representations.</p>
 </p>
 <ul><li><p  id="Converting_Strings_to_Primitives"><strong>Converting Strings to Primitives</strong>
 <p>Converting strings to other primitive types.</p>

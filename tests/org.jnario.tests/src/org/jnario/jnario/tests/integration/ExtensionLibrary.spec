@@ -47,15 +47,15 @@ describe "Extension Library"{
 	}
 	
 	/*
-	 * Another common use case when writing speces is to access specific 
-	 * elements collections, iterables & iterators. Jnario provides helper 
+	 * Another common use case when writing specs is to access specific 
+	 * elements collections, iterables or iterators. Jnario provides helper 
 	 * methods to simplify accessing elements by index.
 	 */
 	describe "Iterable & Iterator Helpers"{
 		
 		/*
-		 * Accessing elements in Iterables by index or type.
-		 * These extensions work also with Lists and other Collections.
+		 * Accessing elements in iterables by index or type.
+		 * These extensions work also with lists and other collections.
 		 */
 		fact "Iterables"{
 			val values = list(1, 2, 3, 4 , 5)
@@ -76,7 +76,7 @@ describe "Extension Library"{
 		}
 		
 		/*
-		 * These methods work also for Iterators. Note 
+		 * These methods work also for iterators. Note 
 		 * that calling one of these methods will consume
 		 * the iterator to the position of the returned element.
 		 */
@@ -101,7 +101,7 @@ describe "Extension Library"{
 	
 	/*
 	 * Arguments passed in from step definitions in Jnario Features
-	 * are always of type String. These extension methods simplify 
+	 * are always of type string. These extension methods simplify 
 	 * converting these string parameters into other types or representations.
 	 */
 	describe "Converting Strings"{

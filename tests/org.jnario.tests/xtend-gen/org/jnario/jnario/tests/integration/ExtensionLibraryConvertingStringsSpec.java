@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
 
 /**
  * Arguments passed in from step definitions in Jnario Features
- * are always of type String. These extension methods simplify
+ * are always of type string. These extension methods simplify
  * converting these string parameters into other types or representations.
  */
 @SuppressWarnings("all")

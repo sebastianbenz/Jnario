@@ -18,8 +18,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- * Another common use case when writing speces is to access specific
- * elements collections, iterables & iterators. Jnario provides helper
+ * Another common use case when writing specs is to access specific
+ * elements collections, iterables or iterators. Jnario provides helper
  * methods to simplify accessing elements by index.
  */
 @SuppressWarnings("all")
@@ -27,8 +27,8 @@ import org.junit.runner.RunWith;
 @Named("Iterable & Iterator Helpers")
 public class ExtensionLibraryIterableIteratorHelpersSpec extends ExtensionLibrarySpec {
   /**
-   * Accessing elements in Iterables by index or type.
-   * These extensions work also with Lists and other Collections.
+   * Accessing elements in iterables by index or type.
+   * These extensions work also with lists and other collections.
    */
   @Test
   @Named("Iterables")
@@ -93,7 +93,7 @@ public class ExtensionLibraryIterableIteratorHelpersSpec extends ExtensionLibrar
   }
   
   /**
-   * These methods work also for Iterators. Note
+   * These methods work also for iterators. Note
    * that calling one of these methods will consume
    * the iterator to the position of the returned element.
    */
