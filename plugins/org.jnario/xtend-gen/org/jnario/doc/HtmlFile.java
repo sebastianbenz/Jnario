@@ -117,7 +117,6 @@ public class HtmlFile {
         _builder.append("<link rel=\"stylesheet\" href=\"");
         String _rootFolder = this.getRootFolder();
         _builder.append(_rootFolder, "");
-        _builder.append("/css/");
         _builder.append(cssFile, "");
         _builder.append("\">");
         _builder.newLineIfNotEmpty();
@@ -130,7 +129,6 @@ public class HtmlFile {
         _builder.append("<script type=\"text/javascript\" src=\"");
         String _rootFolder_1 = this.getRootFolder();
         _builder.append(_rootFolder_1, "");
-        _builder.append("/js/");
         _builder.append(jsFile, "");
         _builder.append("\"></script>");
         _builder.newLineIfNotEmpty();
@@ -199,13 +197,5 @@ public class HtmlFile {
     _builder.append("</html>");
     _builder.newLine();
     return _builder;
-  }
-  
-  public Object getCssFiles() {
-    return this.getCssFiles();
-  }
-  
-  public Object getJsFiles() {
-    return this.getJsFiles();
   }
 }

@@ -42,10 +42,10 @@ class HtmlFile {
 
 		<!-- Le styles -->
 		«FOR cssFile : assets.cssFiles»
-		<link rel="stylesheet" href="«rootFolder»/css/«cssFile»">
+		<link rel="stylesheet" href="«rootFolder»«cssFile»">
 		«ENDFOR»
 		«FOR jsFile : assets.jsFiles»
-		<script type="text/javascript" src="«rootFolder»/js/«jsFile»"></script>
+		<script type="text/javascript" src="«rootFolder»«jsFile»"></script>
 		«ENDFOR»
 		</head>
 		
@@ -72,12 +72,4 @@ class HtmlFile {
 		</html>
 	'''
 	
-	def getCssFiles(){
-		return cssFiles
-	}
-	
-	def getJsFiles(){
-		return jsFiles
-	}
-
 } 
