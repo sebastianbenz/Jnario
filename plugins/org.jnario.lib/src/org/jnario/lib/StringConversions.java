@@ -7,7 +7,15 @@
  *******************************************************************************/
 package org.jnario.lib;
 
+import static com.google.common.collect.Lists.transform;
+import static java.util.Arrays.asList;
+
 import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.List;
+
+import com.google.common.base.Function;
+import com.google.common.collect.Lists;
 
 /**
  * Jnario extensions to convert string values into other formats. 
@@ -114,5 +122,19 @@ public class StringConversions {
 			return BigDecimal.TEN;
 		}
 		return new BigDecimal(s);
+	}
+	
+	/**
+	 * Convert a comma separated value string into a {@link List}.
+	 * 
+	 * @param s a list with comma separated values
+	 * @return a list with the trimmed values
+	 */
+	public static List<String> toList(String s){
+		return transform(asList(s.split(",\\s*")), new Function<String, String>() {
+			public String apply(String input){
+				return input.trim();
+			}
+		});
 	}
 }

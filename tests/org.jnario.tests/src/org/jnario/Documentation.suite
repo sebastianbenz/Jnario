@@ -24,11 +24,11 @@ Learn how to write specifications in Jnario.
 ##Common Concepts
 
 Features and concepts that are common to all Jnario languages. 
-	- "Collection Literals": \- shorter versions of the collections literals provided by xtend.
+	- "Extension Library": \- helpful extension methods provided by Jnario.
 	- "Using Should": \- writing expressive assertions with the build in should operator.
 	- "Customizing the Spec Creation": \- how to customize the spec creation process.
 	- "Using Xtend\'s with Operator": \- how to define nested assertions.
-	- "Collection Literals": \- creating collections in Jnario 
+	- "Extension Library": \- creating collections in Jnario 
 	
 ##Features
 
