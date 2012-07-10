@@ -1,5 +1,7 @@
 package org.jnario.lib;
 
+import static com.google.common.collect.Iterators.filter;
+
 import java.util.Iterator;
 
 import com.google.common.collect.Iterators;
@@ -51,5 +53,19 @@ public class JnarioIteratorExtensions {
 	 */
 	public static <T> T  fifth(Iterator<T> iterator){
 		return get(iterator, 4);
+	}
+	
+	/**
+	 * @return the first argument with the specified type
+	 */
+	public static <T> T first(Iterator<?> iterator, Class<T> type){
+		return first(filter(iterator, type));
+	}
+	
+	/**
+	 * @return the second argument with the specified type
+	 */
+	public static <T> T  second(Iterator<?> iterator, Class<T> type){
+		return  second(filter(iterator, type));
 	}
 }

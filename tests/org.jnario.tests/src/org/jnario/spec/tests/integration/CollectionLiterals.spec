@@ -34,5 +34,18 @@ describe "Collection Literals"{
 	    "red"    -> "tomato"
 	  )
 	}    
+	
+	fact "Iterable & Iterator Helpers"{
+		val values = list(1, 2, 3, 4 , 5)
+		values.first  => 1
+		values.second => 2
+		values.third  => 3
+		values.forth  => 4
+		values.fifth  => 5
+		
+		val objects = list(1, "string", true, "other string")
+		objects.first(typeof(String))  => "string"
+		objects.second(typeof(String)) => "other string"
+	}
 			
 }
