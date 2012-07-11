@@ -35,4 +35,4 @@ Export-Package: org.jnario.spec.ui.contentassist,
  org.jnario.spec.ui.contentassist.antlr,
  org.jnario.spec.ui.internal,
  org.jnario.spec.ui.wizards
-Bundle-Activator: org.jnario.spec.ui.internal.SpecActivator
+Bundle-Activator: org.jnario.spec.ui.internal.SpecActivatorImpl

@@ -52,7 +52,7 @@
     <extension
             point="org.eclipse.ui.preferencePages">
         <page
-              category="org.jnario.ui.preferences.JnarioPreferencePage"
+              category="org.jnario.ui.preferences"
               class="org.jnario.suite.ui.SuiteExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
               id="org.jnario.suite.Suite"
               name="Suite">
@@ -71,19 +71,6 @@
             id="org.jnario.suite.Suite.templates"
             name="Templates">
             <keywordReference id="org.jnario.suite.ui.keyword_Suite"/>
-        </page>
-    </extension>
-    <extension
-            point="org.eclipse.ui.propertyPages">
-        <page
-            class="org.jnario.suite.ui.SuiteExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="org.jnario.suite.Suite"
-            name="Suite">
-            <keywordReference id="org.jnario.suite.ui.keyword_Suite"/>
-            <enabledWhen>
-	            <adapt type="org.eclipse.core.resources.IProject"/>
-			</enabledWhen>
-	        <filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
         </page>
     </extension>
     <extension
@@ -183,30 +170,6 @@
             class="org.jnario.suite.ui.SuiteExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant">
       </participant>
    </extension>
-   <extension
-            point="org.eclipse.ui.preferencePages">
-        <page
-            category="org.jnario.suite.Suite"
-            class="org.jnario.suite.ui.SuiteExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-            id="org.jnario.suite.Suite.compiler.preferencePage"
-            name="Compiler">
-            <keywordReference id="org.jnario.suite.ui.keyword_Suite"/>
-        </page>
-    </extension>
-    <extension
-            point="org.eclipse.ui.propertyPages">
-        <page
-            category="org.jnario.suite.Suite"
-            class="org.jnario.suite.ui.SuiteExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-            id="org.jnario.suite.Suite.compiler.propertyPage"
-            name="Compiler">
-            <keywordReference id="org.jnario.suite.ui.keyword_Suite"/>
-            <enabledWhen>
-	            <adapt type="org.eclipse.core.resources.IProject"/>
-			</enabledWhen>
-	        <filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
-        </page>
-    </extension>
 
 	<!-- Quick Outline -->
 	<extension
@@ -294,15 +257,6 @@
          </command>
       </menuContribution>
    </extension>
-   <extension point="org.eclipse.ui.preferencePages">
-	    <page
-	        category="org.jnario.suite.Suite"
-	        class="org.jnario.suite.ui.SuiteExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
-	        id="org.jnario.suite.Suite.refactoring"
-	        name="Refactoring">
-	        <keywordReference id="org.jnario.suite.ui.keyword_Suite"/>
-	    </page>
-	</extension>
 
 <!-- Type Hierarchy  -->
 	<extension

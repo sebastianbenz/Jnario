@@ -25,9 +25,50 @@
        point="org.eclipse.ui.preferencePages">
     <page
           class="org.jnario.ui.preferences.JnarioPreferencePage"
-          id="org.jnario.ui.preferences.JnarioPreferencePage"
+          id="org.jnario.ui.preferences"
           name="Jnario">
     </page>
  </extension>
-   
+    <extension
+            point="org.eclipse.ui.preferencePages">
+        <page
+            category="org.jnario.ui.preferences"
+            class="org.jnario.ui.internal.JnarioExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+            id="org.jnario.compiler.preferencePage"
+            name="Compiler">
+        </page>
+    </extension>
+    <extension point="org.eclipse.ui.preferencePages">
+	    <page
+	        category="org.jnario.ui.preferences"
+	        class="org.jnario.ui.internal.JnarioExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
+	        id="org.jnario.refactoring"
+	        name="Refactoring">
+	    </page>
+	</extension>
+     <extension
+            point="org.eclipse.ui.propertyPages">
+        <page
+            class="org.jnario.ui.internal.JnarioExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="org.jnario.Jnario"
+            name="Jnario">
+            <enabledWhen>
+	            <adapt type="org.eclipse.core.resources.IProject"/>
+			</enabledWhen>
+	        <filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
+        </page>
+    </extension>
+       <extension
+            point="org.eclipse.ui.propertyPages">
+        <page
+            category="org.jnario.Jnario"
+            class="org.jnario.ui.internal.JnarioExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+            id="org.jnario.compiler.propertyPage"
+            name="Compiler">
+            <enabledWhen>
+	            <adapt type="org.eclipse.core.resources.IProject"/>
+			</enabledWhen>
+	        <filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
+        </page>
+    </extension>
 </plugin>
