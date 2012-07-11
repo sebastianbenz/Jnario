@@ -130,7 +130,7 @@ class SpecDocGenerator extends AbstractDocGenerator {
 	'''
 		
 	def dispatch generate(ExampleGroup exampleGroup, int level)'''
-		<h3«id(exampleGroup.name)»>«exampleGroup.asTitle»</h3>
+		<h3«id(exampleGroup.describe)»>«exampleGroup.asTitle»</h3>
 		<p>«exampleGroup.generateDoc»</p>
 		«generateMembers(exampleGroup, level + 1)»
 	'''

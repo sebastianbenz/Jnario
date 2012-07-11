@@ -288,8 +288,8 @@ public class SpecDocGenerator extends AbstractDocGenerator {
   protected CharSequence _generate(final ExampleGroup exampleGroup, final int level) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<h3");
-    String _name = exampleGroup.getName();
-    String _id = this.id(_name);
+    String _describe = this._exampleNameProvider.describe(exampleGroup);
+    String _id = this.id(_describe);
     _builder.append(_id, "");
     _builder.append(">");
     String _asTitle = this.asTitle(exampleGroup);
