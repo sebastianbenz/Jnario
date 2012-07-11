@@ -39,7 +39,7 @@ describe "Introducing Jnario Suites"{
  	 * 
 	 * <span class="label label-info">Tip</span> If the editor shows a validation error, 
 	 * because of the missing jnario libraries, add them 
- 	 * to the classpath using the quickfix.
+ 	 * to the classpath using the quickfix (CMD/Ctrl + 1).
  	 * 
  	 * <p align="center"><img width="600px" src="/img/tutorial/suite_buildpath.png" alt="New Suite Error"/></p>
 	 *
