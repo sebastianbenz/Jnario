@@ -17,6 +17,7 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtend.maven.XtendTestCompile;
 import org.eclipse.xtext.ISetup;
+import org.jnario.compiler.HtmlAssetsCompiler;
 import org.jnario.compiler.JnarioBatchCompiler;
 import org.jnario.compiler.JnarioDocCompiler;
 import org.jnario.feature.FeatureStandaloneSetup;
@@ -63,6 +64,10 @@ public class JnarioTestCompile extends XtendTestCompile {
 		// the order is important, the suite compiler must be executed last
 		List<Injector> injectors = createInjectors(new SpecStandaloneSetup(), new FeatureStandaloneSetup(), new SuiteStandaloneSetup());
 		ResourceSet resourceSet = createResourceSet(injectors);
+		
+		HtmlAssetsCompiler docCompiler = injectors.get(0).getInstance(HtmlAssetsCompiler.class);
+		docCompiler.setOutputPath(docOutputDirectory);
+		docCompiler.compile();
 		
 		for (Injector injector : injectors) {
 			compile(injector, resourceSet);

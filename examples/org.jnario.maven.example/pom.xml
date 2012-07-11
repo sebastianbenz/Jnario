@@ -3,31 +3,27 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>org.jnario.maven.example</artifactId>
 	<name>Jnario Maven Example</name>
-	<parent>
-		<artifactId>jnario</artifactId>
-		<groupId>org.jnario</groupId>
-		<version>0.1.0-SNAPSHOT</version>
-	</parent>
+	<version>0.1.0-SNAPSHOT</version>
+	<groupId>org.jnario</groupId>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
-	<description>An example project demonstrating how to use Jnario with Maven</description>
 	<repositories>
 		<repository>
-			<id>Xtend</id>
+			<id>Jnario Snapshots</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</repository>
+		<repository>
+			<id>xtend</id>
 			<url>http://build.eclipse.org/common/xtend/maven/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
 		</repository>
 	</repositories>
+
 	<pluginRepositories>
 		<pluginRepository>
-			<id>xtend</id>
+			<id>Jnario Snapshots</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>Xtend</id>
 			<url>http://build.eclipse.org/common/xtend/maven/</url>
 		</pluginRepository>
 	</pluginRepositories>
@@ -41,12 +37,6 @@
 			<groupId>org.jnario</groupId>
 			<artifactId>org.jnario.lib.maven</artifactId>
 			<version>0.1.0-SNAPSHOT</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.8.1</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -85,6 +75,7 @@
 					<includes>
 						<include>**/*Spec*.java</include>
 						<include>**/*Feature.java</include>
+						<include>**/*Test.java</include>
 						<include>**/*TestCase.java</include>
 					</includes>
 				</configuration>

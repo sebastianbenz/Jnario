@@ -593,7 +593,7 @@
 				id="org.jnarioToolbar">
 				<command
           commandId="org.jnario.feature.ui.showCodeCommand"
-          icon="icons/feature_button.png"
+          icon="icons/feature_button.gif"
           id="org.jnario.feature.ui.showCodeCommand"
           label="Show/Hide Code"
           style="push"
