@@ -32,6 +32,7 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
+import org.jnario.doc.DocumentationProvider;
 import org.jnario.doc.Filter;
 import org.jnario.doc.HtmlFile;
 import org.jnario.doc.HtmlFileBuilder;
@@ -57,6 +58,9 @@ public abstract class AbstractDocGenerator implements IGenerator {
   
   @Inject
   private HtmlFileBuilder _htmlFileBuilder;
+  
+  @Inject
+  private DocumentationProvider documentationProvider;
   
   public void doGenerate(final Resource input, final IFileSystemAccess fsa) {
     EList<EObject> _contents = input.getContents();
@@ -265,6 +269,11 @@ public abstract class AbstractDocGenerator implements IGenerator {
   public String htmlFileName(final String name) {
     String _htmlFileName = this._htmlFileBuilder.toHtmlFileName(name);
     return _htmlFileName;
+  }
+  
+  public String documentation(final EObject obj) {
+    String _documentation = this.documentationProvider.getDocumentation(obj);
+    return _documentation;
   }
   
   public String serialize(final XExpression expr, final List<Filter> filters) {

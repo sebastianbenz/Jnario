@@ -28,6 +28,71 @@
 			</div>
 			<div class="row">
 				<div class="span12">
+<h3 id="Eclipse_Tooling">Eclipse Tooling</h3>
+<p><p>Xtend requires Eclipse 3.5 or higher and a Java SDK 5 or higher. Use one of the update sites from above to install the full SDK into your running Eclipse. If you do not yet have an Eclipse on your machine, you can download one of the pre-packaged distributions on the right. Standalone compilation is supported as well, the simplest way to do that is using the Maven plug-in.</p>
+</p>
+<h3 id="Maven">Maven</h3>
+<p></p>
+<ul><li><p  id="Jnario_Dependencies"><strong>Jnario Dependencies [PENDING]</strong>
+<p>The runtime library as well as a plug-in to run the compiler in a Maven build can be be obtained from the following Maven repository: http://build.eclipse.org/common/xtend/maven/.</p>
+<pre class="prettyprint">    &lt;repositories&gt;
+      &lt;repository&gt;
+        &lt;id&gt;xtend&lt;/id&gt;
+        &lt;url&gt;http://build.eclipse.org/common/xtend/maven/&lt;/url&gt;
+      &lt;/repository&gt;
+    &lt;/repositories&gt;
+    &lt;pluginRepositories&gt;
+      &lt;pluginRepository&gt;
+        &lt;id&gt;xtend&lt;/id&gt;
+        &lt;url&gt;http://build.eclipse.org/common/xtend/maven/&lt;/url&gt;
+      &lt;/pluginRepository&gt;
+    &lt;/pluginRepositories&gt;
+</code></pre>
+</p>
+</li><li><p  id="Jnario_Runtime"><strong>Jnario Runtime [PENDING]</strong>
+<p>The XML for the dependency is:</p>
+<pre class="prettyprint">&lt;dependency&gt;
+  &lt;groupId&gt;org.eclipse.xtend&lt;/groupId&gt;
+  &lt;artifactId&gt;org.eclipse.xtend.lib&lt;/artifactId&gt;
+  &lt;version&gt;2.3.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+</p>
+</li><li><p  id="Jnario_Compiler"><strong>Jnario Compiler [PENDING]</strong>
+<p>The runtime library as well as a plug-in to run the compiler in a Maven build can be be obtained from the following Maven repository: http://build.eclipse.org/common/xtend/maven/.</p>
+<pre class="prettyprint">    &lt;plugins&gt;
+      &lt;plugin&gt;
+    &lt;groupId&gt;org.jnario&lt;/groupId&gt;
+        &lt;artifactId&gt;jnario-maven-plugin&lt;/artifactId&gt;
+        &lt;version&gt;0.1.0-SNAPSHOT&lt;/version&gt;
+        &lt;executions&gt;
+          &lt;execution&gt;
+            &lt;goals&gt;
+              &lt;goal&gt;testCompile&lt;/goal&gt;
+            &lt;/goals&gt;
+          &lt;/execution&gt;
+        &lt;/executions&gt;
+      &lt;/plugin&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
+        &lt;version&gt;2.12&lt;/version&gt;
+        &lt;configuration&gt;
+          &lt;includes&gt;
+            &lt;include&gt;**\/*Spec*.java&lt;/include&gt;
+            &lt;include&gt;**\/*Feature.java&lt;/include&gt;
+            &lt;include&gt;**\/*Test.java&lt;/include&gt;
+            &lt;include&gt;**\/*TestCase.java&lt;/include&gt;
+          &lt;/includes&gt;
+        &lt;/configuration&gt;
+      &lt;/plugin&gt;
+    &lt;/plugins&gt;
+</code></pre>
+</p>
+</li><li><p  id="Configuring_Eclipse"><strong>Configuring Eclipse [PENDING]</strong>
+<p>As you see the outputDirectory can be specified to match the default of the Eclipse plug-in (xtend-gen). Of course you can also change the configuration in Eclipse to match the Maven default (generated-sources). To do so right-click on the project and select Properties or if you prefer a global setting choose Eclipse-&gt;Preferences. In the category Xtend/Compiler enter the directory name (see screenshot). It is interpreted as a relative path to the parent of the source folder, which includes the to-be-compiled Xtend file.</p>
+</p>
+</li></ul>
 				</div>
 			</div>
 		</div> <!-- /content -->

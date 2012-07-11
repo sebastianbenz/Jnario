@@ -20,7 +20,6 @@ import org.jnario.doc.Filter;
 import org.jnario.doc.FilterExtractor;
 import org.jnario.doc.FilteringResult;
 import org.jnario.doc.HtmlFile;
-import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.spec.naming.ExampleNameProvider;
 import org.jnario.spec.spec.Example;
 import org.jnario.spec.spec.ExampleGroup;
@@ -29,9 +28,6 @@ import org.jnario.spec.spec.ExampleGroup;
 public class SpecDocGenerator extends AbstractDocGenerator {
   @Inject
   private ExampleNameProvider _exampleNameProvider;
-  
-  @Inject
-  private ExtendedJvmTypesBuilder _extendedJvmTypesBuilder;
   
   @Inject
   private FilterExtractor _filterExtractor;
@@ -165,10 +161,10 @@ public class SpecDocGenerator extends AbstractDocGenerator {
   private CharSequence generateDoc(final EObject eObject) {
     StringConcatenation _builder = new StringConcatenation();
     {
-      String _documentation = this._extendedJvmTypesBuilder.getDocumentation(eObject);
+      String _documentation = this.documentation(eObject);
       boolean _notEquals = (!Objects.equal(_documentation, null));
       if (_notEquals) {
-        String _documentation_1 = this._extendedJvmTypesBuilder.getDocumentation(eObject);
+        String _documentation_1 = this.documentation(eObject);
         String _markdown2Html = this.markdown2Html(_documentation_1);
         _builder.append(_markdown2Html, "");
         _builder.newLineIfNotEmpty();
@@ -185,7 +181,7 @@ public class SpecDocGenerator extends AbstractDocGenerator {
   protected CharSequence _generate(final Example example, final int level) {
     CharSequence _xblockexpression = null;
     {
-      String docString = this._extendedJvmTypesBuilder.getDocumentation(example);
+      String docString = this.documentation(example);
       List<Filter> filters = CollectionLiterals.<Filter>emptyList();
       boolean _notEquals = (!Objects.equal(docString, null));
       if (_notEquals) {

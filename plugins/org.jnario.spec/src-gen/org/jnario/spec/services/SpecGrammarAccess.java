@@ -1455,6 +1455,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	private AssertionElements pAssertion;
 	private ExampleColumnElements pExampleColumn;
 	private ExampleRowElements pExampleRow;
+	private TerminalRule tML_COMMENT;
 	
 	private final Grammar grammar;
 
@@ -1635,6 +1636,12 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	public ParserRule getExampleRowRule() {
 		return getExampleRowAccess().getRule();
 	}
+
+	//terminal ML_COMMENT:
+	//	"/ *"->!"\\" "* /";
+	public TerminalRule getML_COMMENTRule() {
+		return (tML_COMMENT != null) ? tML_COMMENT : (tML_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ML_COMMENT"));
+	} 
 
 	//File returns XtendFile:
 	//	("package" package=QualifiedName ";"?)? imports+=Import* xtendClasses+=Class*;
@@ -2607,12 +2614,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
 	public TerminalRule getSTRINGRule() {
 		return gaXtend.getSTRINGRule();
-	} 
-
-	//terminal ML_COMMENT:
-	//	"/ *"->"* /";
-	public TerminalRule getML_COMMENTRule() {
-		return gaXtend.getML_COMMENTRule();
 	} 
 
 	//terminal SL_COMMENT:

@@ -1,7 +1,5 @@
 package org.jnario.runner.internal;
 
-import java.lang.reflect.InvocationTargetException;
-
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.NameProvider;

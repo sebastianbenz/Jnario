@@ -36,6 +36,7 @@ abstract class AbstractDocGenerator implements IGenerator {
 	@Inject extension WhiteSpaceNormalizer
 	@Inject extension PegDownProcessor
 	@Inject extension HtmlFileBuilder
+	@Inject extension DocumentationProvider documentationProvider
 
 	override doGenerate(Resource input, IFileSystemAccess fsa) {
 		input.contents.filter(typeof(XtendFile)).forEach[
@@ -150,6 +151,10 @@ abstract class AbstractDocGenerator implements IGenerator {
 	
 	def htmlFileName(String name){
 		name.toHtmlFileName
+	}
+	
+	def documentation(EObject obj){
+		documentationProvider.getDocumentation(obj)
 	}
 
 }

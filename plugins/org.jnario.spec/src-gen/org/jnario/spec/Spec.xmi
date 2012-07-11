@@ -618,6 +618,20 @@
         </elements>
       </alternatives>
     </rules>
+    <rules xsi:type="xtext:TerminalRule" name="ML_COMMENT">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="/*"/>
+        <elements xsi:type="xtext:UntilToken">
+          <terminal xsi:type="xtext:NegatedToken">
+            <terminal xsi:type="xtext:Keyword" value="\"/>
+          </terminal>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="*/"/>
+      </alternatives>
+    </rules>
   </xtext:Grammar>
   <xtext:Grammar name="org.eclipse.xtend.core.Xtend" usedGrammars="/2">
     <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel">
@@ -3029,7 +3043,7 @@
       </alternatives>
     </rules>
   </xtext:Grammar>
-  <xtext:Grammar name="org.eclipse.xtext.xbase.Xtype" definesHiddenTokens="true" hiddenTokens="/4/@rules.15 /4/@rules.13 /4/@rules.14">
+  <xtext:Grammar name="org.eclipse.xtext.xbase.Xtype" definesHiddenTokens="true" hiddenTokens="/4/@rules.15 /0/@rules.12 /4/@rules.14">
     <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel">
       <ePackage href="http://www.eclipse.org/xtext/xbase/Xtype#/"/>
     </metamodelDeclarations>

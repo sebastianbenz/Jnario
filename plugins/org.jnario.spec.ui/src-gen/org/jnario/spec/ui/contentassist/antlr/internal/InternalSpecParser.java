@@ -1,22 +1,29 @@
 package org.jnario.spec.ui.contentassist.antlr.internal; 
 
-import org.antlr.runtime.BaseRecognizer;
-import org.antlr.runtime.BitSet;
-import org.antlr.runtime.IntStream;
-import org.antlr.runtime.NoViableAltException;
-import org.antlr.runtime.RecognitionException;
-import org.antlr.runtime.RecognizerSharedState;
-import org.antlr.runtime.TokenStream;
-import org.eclipse.xtext.Grammar;
+import java.io.InputStream;
+import org.eclipse.xtext.*;
+import org.eclipse.xtext.parser.*;
+import org.eclipse.xtext.parser.impl.*;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.internal.AbstractInternalContentAssistParser;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.internal.DFA;
 import org.jnario.spec.services.SpecGrammarAccess;
+
+
+
+import org.antlr.runtime.*;
+import java.util.Stack;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalSpecParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_HEX", "RULE_INT", "RULE_DECIMAL", "RULE_STRING", "RULE_RICH_TEXT", "RULE_RICH_TEXT_START", "RULE_RICH_TEXT_INBETWEEN", "RULE_COMMENT_RICH_TEXT_INBETWEEN", "RULE_RICH_TEXT_END", "RULE_COMMENT_RICH_TEXT_END", "RULE_IN_RICH_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'='", "'+='", "'||'", "'&&'", "'extends'", "'super'", "'fact'", "'facts'", "'var'", "'def'", "'throws'", "'create'", "'=='", "'!='", "'>='", "'<='", "'>'", "'<'", "'->'", "'..'", "'=>'", "'<>'", "'?:'", "'<=>'", "'+'", "'-'", "'*'", "'**'", "'/'", "'%'", "'!'", "'.'", "'val'", "'false'", "'public'", "'protected'", "'private'", "'package'", "'{'", "'}'", "'('", "')'", "','", "'[]'", "'?'", "'before'", "'after'", "'|'", "';'", "'should'", "'throw'", "'instanceof'", "'not'", "'assert'", "'import'", "'class'", "'implements'", "':'", "'FOR'", "'ENDFOR'", "'BEFORE'", "'SEPARATOR'", "'AFTER'", "'IF'", "'ENDIF'", "'ELSE'", "'ELSEIF'", "'@'", "'as'", "']'", "'['", "'if'", "'else'", "'switch'", "'default'", "'case'", "'for'", "'while'", "'do'", "'::'", "'new'", "'null'", "'typeof'", "'return'", "'try'", "'finally'", "'catch'", "'&'", "'describe'", "'pending'", "'all'", "'context'", "'extension'", "'static'", "'override'", "'dispatch'", "'abstract'", "'...'", "'?.'", "'*.'", "'true'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_HEX", "RULE_INT", "RULE_DECIMAL", "RULE_STRING", "RULE_RICH_TEXT", "RULE_RICH_TEXT_START", "RULE_RICH_TEXT_INBETWEEN", "RULE_COMMENT_RICH_TEXT_INBETWEEN", "RULE_RICH_TEXT_END", "RULE_COMMENT_RICH_TEXT_END", "RULE_ML_COMMENT", "RULE_IN_RICH_STRING", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'='", "'+='", "'||'", "'&&'", "'extends'", "'super'", "'fact'", "'facts'", "'var'", "'def'", "'throws'", "'create'", "'=='", "'!='", "'>='", "'<='", "'>'", "'<'", "'->'", "'..'", "'=>'", "'<>'", "'?:'", "'<=>'", "'+'", "'-'", "'*'", "'**'", "'/'", "'%'", "'!'", "'.'", "'val'", "'false'", "'public'", "'protected'", "'private'", "'package'", "'{'", "'}'", "'('", "')'", "','", "'[]'", "'?'", "'before'", "'after'", "'|'", "';'", "'should'", "'throw'", "'instanceof'", "'not'", "'assert'", "'import'", "'class'", "'implements'", "':'", "'FOR'", "'ENDFOR'", "'BEFORE'", "'SEPARATOR'", "'AFTER'", "'IF'", "'ENDIF'", "'ELSE'", "'ELSEIF'", "'@'", "'as'", "']'", "'['", "'if'", "'else'", "'switch'", "'default'", "'case'", "'for'", "'while'", "'do'", "'::'", "'new'", "'null'", "'typeof'", "'return'", "'try'", "'finally'", "'catch'", "'&'", "'describe'", "'pending'", "'all'", "'context'", "'extension'", "'static'", "'override'", "'dispatch'", "'abstract'", "'...'", "'?.'", "'*.'", "'true'"
     };
     public static final int RULE_COMMENT_RICH_TEXT_INBETWEEN=12;
     public static final int RULE_ID=4;
@@ -53,11 +60,11 @@ public class InternalSpecParser extends AbstractInternalContentAssistParser {
     public static final int T__85=85;
     public static final int T__84=84;
     public static final int T__87=87;
-    public static final int RULE_IN_RICH_STRING=15;
+    public static final int RULE_IN_RICH_STRING=16;
     public static final int T__86=86;
     public static final int T__89=89;
     public static final int T__88=88;
-    public static final int RULE_ML_COMMENT=16;
+    public static final int RULE_ML_COMMENT=15;
     public static final int RULE_STRING=8;
     public static final int T__71=71;
     public static final int T__72=72;

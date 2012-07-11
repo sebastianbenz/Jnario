@@ -48,10 +48,10 @@ public class InternalSpecLexer extends Lexer {
     public static final int T__84=84;
     public static final int T__87=87;
     public static final int T__86=86;
-    public static final int RULE_IN_RICH_STRING=15;
+    public static final int RULE_IN_RICH_STRING=16;
     public static final int T__89=89;
     public static final int T__88=88;
-    public static final int RULE_ML_COMMENT=16;
+    public static final int RULE_ML_COMMENT=15;
     public static final int RULE_STRING=4;
     public static final int T__71=71;
     public static final int T__72=72;
@@ -2242,50 +2242,53 @@ public class InternalSpecLexer extends Lexer {
     }
     // $ANTLR end "T__120"
 
-    // $ANTLR start "RULE_RICH_TEXT"
-    public final void mRULE_RICH_TEXT() throws RecognitionException {
+    // $ANTLR start "RULE_ML_COMMENT"
+    public final void mRULE_ML_COMMENT() throws RecognitionException {
         try {
-            int _type = RULE_RICH_TEXT;
+            int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8700:16: ( '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8700:18: '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8700:17: ( '/*' ( options {greedy=false; } : . )* ~ ( '\\\\' ) '*/' )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8700:19: '/*' ( options {greedy=false; } : . )* ~ ( '\\\\' ) '*/'
             {
-            match("'''"); 
+            match("/*"); 
 
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8700:27: ( RULE_IN_RICH_STRING )*
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8700:24: ( options {greedy=false; } : . )*
             loop1:
             do {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( (LA1_0=='\'') ) {
+                if ( ((LA1_0>='\u0000' && LA1_0<='[')||(LA1_0>=']' && LA1_0<='\uFFFF')) ) {
                     int LA1_1 = input.LA(2);
 
-                    if ( (LA1_1=='\'') ) {
-                        int LA1_4 = input.LA(3);
+                    if ( (LA1_1=='*') ) {
+                        int LA1_3 = input.LA(3);
 
-                        if ( ((LA1_4>='\u0000' && LA1_4<='&')||(LA1_4>='(' && LA1_4<='\u00AA')||(LA1_4>='\u00AC' && LA1_4<='\uFFFF')) ) {
+                        if ( (LA1_3=='/') ) {
+                            alt1=2;
+                        }
+                        else if ( ((LA1_3>='\u0000' && LA1_3<='.')||(LA1_3>='0' && LA1_3<='\uFFFF')) ) {
                             alt1=1;
                         }
 
 
                     }
-                    else if ( ((LA1_1>='\u0000' && LA1_1<='&')||(LA1_1>='(' && LA1_1<='\u00AA')||(LA1_1>='\u00AC' && LA1_1<='\uFFFF')) ) {
+                    else if ( ((LA1_1>='\u0000' && LA1_1<=')')||(LA1_1>='+' && LA1_1<='\uFFFF')) ) {
                         alt1=1;
                     }
 
 
                 }
-                else if ( ((LA1_0>='\u0000' && LA1_0<='&')||(LA1_0>='(' && LA1_0<='\u00AA')||(LA1_0>='\u00AC' && LA1_0<='\uFFFF')) ) {
+                else if ( (LA1_0=='\\') ) {
                     alt1=1;
                 }
 
 
                 switch (alt1) {
             	case 1 :
-            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8700:27: RULE_IN_RICH_STRING
+            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8700:52: .
             	    {
-            	    mRULE_IN_RICH_STRING(); 
+            	    matchAny(); 
 
             	    }
             	    break;
@@ -2295,30 +2298,105 @@ public class InternalSpecLexer extends Lexer {
                 }
             } while (true);
 
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8700:48: ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
-            int alt4=2;
-            int LA4_0 = input.LA(1);
+            if ( (input.LA(1)>='\u0000' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
+                input.consume();
 
-            if ( (LA4_0=='\'') ) {
-                int LA4_1 = input.LA(2);
-
-                if ( (LA4_1=='\'') ) {
-                    int LA4_3 = input.LA(3);
-
-                    if ( (LA4_3=='\'') ) {
-                        alt4=1;
-                    }
-                    else {
-                        alt4=2;}
-                }
-                else {
-                    alt4=2;}
             }
             else {
-                alt4=2;}
-            switch (alt4) {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+            match("*/"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "RULE_ML_COMMENT"
+
+    // $ANTLR start "RULE_RICH_TEXT"
+    public final void mRULE_RICH_TEXT() throws RecognitionException {
+        try {
+            int _type = RULE_RICH_TEXT;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8702:16: ( '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8702:18: '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
+            {
+            match("'''"); 
+
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8702:27: ( RULE_IN_RICH_STRING )*
+            loop2:
+            do {
+                int alt2=2;
+                int LA2_0 = input.LA(1);
+
+                if ( (LA2_0=='\'') ) {
+                    int LA2_1 = input.LA(2);
+
+                    if ( (LA2_1=='\'') ) {
+                        int LA2_4 = input.LA(3);
+
+                        if ( ((LA2_4>='\u0000' && LA2_4<='&')||(LA2_4>='(' && LA2_4<='\u00AA')||(LA2_4>='\u00AC' && LA2_4<='\uFFFF')) ) {
+                            alt2=1;
+                        }
+
+
+                    }
+                    else if ( ((LA2_1>='\u0000' && LA2_1<='&')||(LA2_1>='(' && LA2_1<='\u00AA')||(LA2_1>='\u00AC' && LA2_1<='\uFFFF')) ) {
+                        alt2=1;
+                    }
+
+
+                }
+                else if ( ((LA2_0>='\u0000' && LA2_0<='&')||(LA2_0>='(' && LA2_0<='\u00AA')||(LA2_0>='\u00AC' && LA2_0<='\uFFFF')) ) {
+                    alt2=1;
+                }
+
+
+                switch (alt2) {
+            	case 1 :
+            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8702:27: RULE_IN_RICH_STRING
+            	    {
+            	    mRULE_IN_RICH_STRING(); 
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop2;
+                }
+            } while (true);
+
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8702:48: ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
+            int alt5=2;
+            int LA5_0 = input.LA(1);
+
+            if ( (LA5_0=='\'') ) {
+                int LA5_1 = input.LA(2);
+
+                if ( (LA5_1=='\'') ) {
+                    int LA5_3 = input.LA(3);
+
+                    if ( (LA5_3=='\'') ) {
+                        alt5=1;
+                    }
+                    else {
+                        alt5=2;}
+                }
+                else {
+                    alt5=2;}
+            }
+            else {
+                alt5=2;}
+            switch (alt5) {
                 case 1 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8700:49: '\\'\\'\\''
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8702:49: '\\'\\'\\''
                     {
                     match("'''"); 
 
@@ -2326,30 +2404,30 @@ public class InternalSpecLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8700:58: ( '\\'' ( '\\'' )? )? EOF
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8702:58: ( '\\'' ( '\\'' )? )? EOF
                     {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8700:58: ( '\\'' ( '\\'' )? )?
-                    int alt3=2;
-                    int LA3_0 = input.LA(1);
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8702:58: ( '\\'' ( '\\'' )? )?
+                    int alt4=2;
+                    int LA4_0 = input.LA(1);
 
-                    if ( (LA3_0=='\'') ) {
-                        alt3=1;
+                    if ( (LA4_0=='\'') ) {
+                        alt4=1;
                     }
-                    switch (alt3) {
+                    switch (alt4) {
                         case 1 :
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8700:59: '\\'' ( '\\'' )?
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8702:59: '\\'' ( '\\'' )?
                             {
                             match('\''); 
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8700:64: ( '\\'' )?
-                            int alt2=2;
-                            int LA2_0 = input.LA(1);
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8702:64: ( '\\'' )?
+                            int alt3=2;
+                            int LA3_0 = input.LA(1);
 
-                            if ( (LA2_0=='\'') ) {
-                                alt2=1;
+                            if ( (LA3_0=='\'') ) {
+                                alt3=1;
                             }
-                            switch (alt2) {
+                            switch (alt3) {
                                 case 1 :
-                                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8700:64: '\\''
+                                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8702:64: '\\''
                                     {
                                     match('\''); 
 
@@ -2387,43 +2465,43 @@ public class InternalSpecLexer extends Lexer {
         try {
             int _type = RULE_RICH_TEXT_START;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8702:22: ( '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB' )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8702:24: '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB'
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8704:22: ( '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB' )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8704:24: '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB'
             {
             match("'''"); 
 
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8702:33: ( RULE_IN_RICH_STRING )*
-            loop5:
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8704:33: ( RULE_IN_RICH_STRING )*
+            loop6:
             do {
-                int alt5=2;
-                int LA5_0 = input.LA(1);
+                int alt6=2;
+                int LA6_0 = input.LA(1);
 
-                if ( (LA5_0=='\'') ) {
-                    int LA5_1 = input.LA(2);
+                if ( (LA6_0=='\'') ) {
+                    int LA6_1 = input.LA(2);
 
-                    if ( (LA5_1=='\'') ) {
-                        int LA5_4 = input.LA(3);
+                    if ( (LA6_1=='\'') ) {
+                        int LA6_4 = input.LA(3);
 
-                        if ( ((LA5_4>='\u0000' && LA5_4<='&')||(LA5_4>='(' && LA5_4<='\u00AA')||(LA5_4>='\u00AC' && LA5_4<='\uFFFF')) ) {
-                            alt5=1;
+                        if ( ((LA6_4>='\u0000' && LA6_4<='&')||(LA6_4>='(' && LA6_4<='\u00AA')||(LA6_4>='\u00AC' && LA6_4<='\uFFFF')) ) {
+                            alt6=1;
                         }
 
 
                     }
-                    else if ( ((LA5_1>='\u0000' && LA5_1<='&')||(LA5_1>='(' && LA5_1<='\u00AA')||(LA5_1>='\u00AC' && LA5_1<='\uFFFF')) ) {
-                        alt5=1;
+                    else if ( ((LA6_1>='\u0000' && LA6_1<='&')||(LA6_1>='(' && LA6_1<='\u00AA')||(LA6_1>='\u00AC' && LA6_1<='\uFFFF')) ) {
+                        alt6=1;
                     }
 
 
                 }
-                else if ( ((LA5_0>='\u0000' && LA5_0<='&')||(LA5_0>='(' && LA5_0<='\u00AA')||(LA5_0>='\u00AC' && LA5_0<='\uFFFF')) ) {
-                    alt5=1;
+                else if ( ((LA6_0>='\u0000' && LA6_0<='&')||(LA6_0>='(' && LA6_0<='\u00AA')||(LA6_0>='\u00AC' && LA6_0<='\uFFFF')) ) {
+                    alt6=1;
                 }
 
 
-                switch (alt5) {
+                switch (alt6) {
             	case 1 :
-            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8702:33: RULE_IN_RICH_STRING
+            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8704:33: RULE_IN_RICH_STRING
             	    {
             	    mRULE_IN_RICH_STRING(); 
 
@@ -2431,32 +2509,32 @@ public class InternalSpecLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop5;
+            	    break loop6;
                 }
             } while (true);
 
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8702:54: ( '\\'' ( '\\'' )? )?
-            int alt7=2;
-            int LA7_0 = input.LA(1);
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8704:54: ( '\\'' ( '\\'' )? )?
+            int alt8=2;
+            int LA8_0 = input.LA(1);
 
-            if ( (LA7_0=='\'') ) {
-                alt7=1;
+            if ( (LA8_0=='\'') ) {
+                alt8=1;
             }
-            switch (alt7) {
+            switch (alt8) {
                 case 1 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8702:55: '\\'' ( '\\'' )?
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8704:55: '\\'' ( '\\'' )?
                     {
                     match('\''); 
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8702:60: ( '\\'' )?
-                    int alt6=2;
-                    int LA6_0 = input.LA(1);
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8704:60: ( '\\'' )?
+                    int alt7=2;
+                    int LA7_0 = input.LA(1);
 
-                    if ( (LA6_0=='\'') ) {
-                        alt6=1;
+                    if ( (LA7_0=='\'') ) {
+                        alt7=1;
                     }
-                    switch (alt6) {
+                    switch (alt7) {
                         case 1 :
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8702:60: '\\''
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8704:60: '\\''
                             {
                             match('\''); 
 
@@ -2488,42 +2566,42 @@ public class InternalSpecLexer extends Lexer {
         try {
             int _type = RULE_RICH_TEXT_END;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8704:20: ( '\\u00BB' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8704:22: '\\u00BB' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8706:20: ( '\\u00BB' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8706:22: '\\u00BB' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
             {
             match('\u00BB'); 
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8704:31: ( RULE_IN_RICH_STRING )*
-            loop8:
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8706:31: ( RULE_IN_RICH_STRING )*
+            loop9:
             do {
-                int alt8=2;
-                int LA8_0 = input.LA(1);
+                int alt9=2;
+                int LA9_0 = input.LA(1);
 
-                if ( (LA8_0=='\'') ) {
-                    int LA8_1 = input.LA(2);
+                if ( (LA9_0=='\'') ) {
+                    int LA9_1 = input.LA(2);
 
-                    if ( (LA8_1=='\'') ) {
-                        int LA8_4 = input.LA(3);
+                    if ( (LA9_1=='\'') ) {
+                        int LA9_4 = input.LA(3);
 
-                        if ( ((LA8_4>='\u0000' && LA8_4<='&')||(LA8_4>='(' && LA8_4<='\u00AA')||(LA8_4>='\u00AC' && LA8_4<='\uFFFF')) ) {
-                            alt8=1;
+                        if ( ((LA9_4>='\u0000' && LA9_4<='&')||(LA9_4>='(' && LA9_4<='\u00AA')||(LA9_4>='\u00AC' && LA9_4<='\uFFFF')) ) {
+                            alt9=1;
                         }
 
 
                     }
-                    else if ( ((LA8_1>='\u0000' && LA8_1<='&')||(LA8_1>='(' && LA8_1<='\u00AA')||(LA8_1>='\u00AC' && LA8_1<='\uFFFF')) ) {
-                        alt8=1;
+                    else if ( ((LA9_1>='\u0000' && LA9_1<='&')||(LA9_1>='(' && LA9_1<='\u00AA')||(LA9_1>='\u00AC' && LA9_1<='\uFFFF')) ) {
+                        alt9=1;
                     }
 
 
                 }
-                else if ( ((LA8_0>='\u0000' && LA8_0<='&')||(LA8_0>='(' && LA8_0<='\u00AA')||(LA8_0>='\u00AC' && LA8_0<='\uFFFF')) ) {
-                    alt8=1;
+                else if ( ((LA9_0>='\u0000' && LA9_0<='&')||(LA9_0>='(' && LA9_0<='\u00AA')||(LA9_0>='\u00AC' && LA9_0<='\uFFFF')) ) {
+                    alt9=1;
                 }
 
 
-                switch (alt8) {
+                switch (alt9) {
             	case 1 :
-            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8704:31: RULE_IN_RICH_STRING
+            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8706:31: RULE_IN_RICH_STRING
             	    {
             	    mRULE_IN_RICH_STRING(); 
 
@@ -2531,34 +2609,34 @@ public class InternalSpecLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop8;
+            	    break loop9;
                 }
             } while (true);
 
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8704:52: ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
-            int alt11=2;
-            int LA11_0 = input.LA(1);
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8706:52: ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
+            int alt12=2;
+            int LA12_0 = input.LA(1);
 
-            if ( (LA11_0=='\'') ) {
-                int LA11_1 = input.LA(2);
+            if ( (LA12_0=='\'') ) {
+                int LA12_1 = input.LA(2);
 
-                if ( (LA11_1=='\'') ) {
-                    int LA11_3 = input.LA(3);
+                if ( (LA12_1=='\'') ) {
+                    int LA12_3 = input.LA(3);
 
-                    if ( (LA11_3=='\'') ) {
-                        alt11=1;
+                    if ( (LA12_3=='\'') ) {
+                        alt12=1;
                     }
                     else {
-                        alt11=2;}
+                        alt12=2;}
                 }
                 else {
-                    alt11=2;}
+                    alt12=2;}
             }
             else {
-                alt11=2;}
-            switch (alt11) {
+                alt12=2;}
+            switch (alt12) {
                 case 1 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8704:53: '\\'\\'\\''
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8706:53: '\\'\\'\\''
                     {
                     match("'''"); 
 
@@ -2566,30 +2644,30 @@ public class InternalSpecLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8704:62: ( '\\'' ( '\\'' )? )? EOF
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8706:62: ( '\\'' ( '\\'' )? )? EOF
                     {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8704:62: ( '\\'' ( '\\'' )? )?
-                    int alt10=2;
-                    int LA10_0 = input.LA(1);
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8706:62: ( '\\'' ( '\\'' )? )?
+                    int alt11=2;
+                    int LA11_0 = input.LA(1);
 
-                    if ( (LA10_0=='\'') ) {
-                        alt10=1;
+                    if ( (LA11_0=='\'') ) {
+                        alt11=1;
                     }
-                    switch (alt10) {
+                    switch (alt11) {
                         case 1 :
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8704:63: '\\'' ( '\\'' )?
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8706:63: '\\'' ( '\\'' )?
                             {
                             match('\''); 
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8704:68: ( '\\'' )?
-                            int alt9=2;
-                            int LA9_0 = input.LA(1);
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8706:68: ( '\\'' )?
+                            int alt10=2;
+                            int LA10_0 = input.LA(1);
 
-                            if ( (LA9_0=='\'') ) {
-                                alt9=1;
+                            if ( (LA10_0=='\'') ) {
+                                alt10=1;
                             }
-                            switch (alt9) {
+                            switch (alt10) {
                                 case 1 :
-                                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8704:68: '\\''
+                                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8706:68: '\\''
                                     {
                                     match('\''); 
 
@@ -2627,42 +2705,42 @@ public class InternalSpecLexer extends Lexer {
         try {
             int _type = RULE_RICH_TEXT_INBETWEEN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8706:26: ( '\\u00BB' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB' )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8706:28: '\\u00BB' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB'
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8708:26: ( '\\u00BB' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB' )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8708:28: '\\u00BB' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB'
             {
             match('\u00BB'); 
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8706:37: ( RULE_IN_RICH_STRING )*
-            loop12:
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8708:37: ( RULE_IN_RICH_STRING )*
+            loop13:
             do {
-                int alt12=2;
-                int LA12_0 = input.LA(1);
+                int alt13=2;
+                int LA13_0 = input.LA(1);
 
-                if ( (LA12_0=='\'') ) {
-                    int LA12_1 = input.LA(2);
+                if ( (LA13_0=='\'') ) {
+                    int LA13_1 = input.LA(2);
 
-                    if ( (LA12_1=='\'') ) {
-                        int LA12_4 = input.LA(3);
+                    if ( (LA13_1=='\'') ) {
+                        int LA13_4 = input.LA(3);
 
-                        if ( ((LA12_4>='\u0000' && LA12_4<='&')||(LA12_4>='(' && LA12_4<='\u00AA')||(LA12_4>='\u00AC' && LA12_4<='\uFFFF')) ) {
-                            alt12=1;
+                        if ( ((LA13_4>='\u0000' && LA13_4<='&')||(LA13_4>='(' && LA13_4<='\u00AA')||(LA13_4>='\u00AC' && LA13_4<='\uFFFF')) ) {
+                            alt13=1;
                         }
 
 
                     }
-                    else if ( ((LA12_1>='\u0000' && LA12_1<='&')||(LA12_1>='(' && LA12_1<='\u00AA')||(LA12_1>='\u00AC' && LA12_1<='\uFFFF')) ) {
-                        alt12=1;
+                    else if ( ((LA13_1>='\u0000' && LA13_1<='&')||(LA13_1>='(' && LA13_1<='\u00AA')||(LA13_1>='\u00AC' && LA13_1<='\uFFFF')) ) {
+                        alt13=1;
                     }
 
 
                 }
-                else if ( ((LA12_0>='\u0000' && LA12_0<='&')||(LA12_0>='(' && LA12_0<='\u00AA')||(LA12_0>='\u00AC' && LA12_0<='\uFFFF')) ) {
-                    alt12=1;
+                else if ( ((LA13_0>='\u0000' && LA13_0<='&')||(LA13_0>='(' && LA13_0<='\u00AA')||(LA13_0>='\u00AC' && LA13_0<='\uFFFF')) ) {
+                    alt13=1;
                 }
 
 
-                switch (alt12) {
+                switch (alt13) {
             	case 1 :
-            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8706:37: RULE_IN_RICH_STRING
+            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8708:37: RULE_IN_RICH_STRING
             	    {
             	    mRULE_IN_RICH_STRING(); 
 
@@ -2670,32 +2748,32 @@ public class InternalSpecLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop12;
+            	    break loop13;
                 }
             } while (true);
 
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8706:58: ( '\\'' ( '\\'' )? )?
-            int alt14=2;
-            int LA14_0 = input.LA(1);
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8708:58: ( '\\'' ( '\\'' )? )?
+            int alt15=2;
+            int LA15_0 = input.LA(1);
 
-            if ( (LA14_0=='\'') ) {
-                alt14=1;
+            if ( (LA15_0=='\'') ) {
+                alt15=1;
             }
-            switch (alt14) {
+            switch (alt15) {
                 case 1 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8706:59: '\\'' ( '\\'' )?
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8708:59: '\\'' ( '\\'' )?
                     {
                     match('\''); 
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8706:64: ( '\\'' )?
-                    int alt13=2;
-                    int LA13_0 = input.LA(1);
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8708:64: ( '\\'' )?
+                    int alt14=2;
+                    int LA14_0 = input.LA(1);
 
-                    if ( (LA13_0=='\'') ) {
-                        alt13=1;
+                    if ( (LA14_0=='\'') ) {
+                        alt14=1;
                     }
-                    switch (alt13) {
+                    switch (alt14) {
                         case 1 :
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8706:64: '\\''
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8708:64: '\\''
                             {
                             match('\''); 
 
@@ -2727,25 +2805,25 @@ public class InternalSpecLexer extends Lexer {
         try {
             int _type = RULE_COMMENT_RICH_TEXT_INBETWEEN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8708:34: ( '\\u00AB\\u00AB' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB' )? )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8708:36: '\\u00AB\\u00AB' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB' )?
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:34: ( '\\u00AB\\u00AB' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB' )? )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:36: '\\u00AB\\u00AB' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB' )?
             {
             match("\u00AB\u00AB"); 
 
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8708:51: (~ ( ( '\\n' | '\\r' ) ) )*
-            loop15:
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:51: (~ ( ( '\\n' | '\\r' ) ) )*
+            loop16:
             do {
-                int alt15=2;
-                int LA15_0 = input.LA(1);
+                int alt16=2;
+                int LA16_0 = input.LA(1);
 
-                if ( ((LA15_0>='\u0000' && LA15_0<='\t')||(LA15_0>='\u000B' && LA15_0<='\f')||(LA15_0>='\u000E' && LA15_0<='\uFFFF')) ) {
-                    alt15=1;
+                if ( ((LA16_0>='\u0000' && LA16_0<='\t')||(LA16_0>='\u000B' && LA16_0<='\f')||(LA16_0>='\u000E' && LA16_0<='\uFFFF')) ) {
+                    alt16=1;
                 }
 
 
-                switch (alt15) {
+                switch (alt16) {
             	case 1 :
-            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8708:51: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:51: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -2761,31 +2839,31 @@ public class InternalSpecLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop15;
+            	    break loop16;
                 }
             } while (true);
 
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8708:67: ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB' )?
-            int alt20=2;
-            int LA20_0 = input.LA(1);
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:67: ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB' )?
+            int alt21=2;
+            int LA21_0 = input.LA(1);
 
-            if ( (LA20_0=='\n'||LA20_0=='\r') ) {
-                alt20=1;
+            if ( (LA21_0=='\n'||LA21_0=='\r') ) {
+                alt21=1;
             }
-            switch (alt20) {
+            switch (alt21) {
                 case 1 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8708:68: ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB'
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:68: ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB'
                     {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8708:68: ( '\\r' )?
-                    int alt16=2;
-                    int LA16_0 = input.LA(1);
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:68: ( '\\r' )?
+                    int alt17=2;
+                    int LA17_0 = input.LA(1);
 
-                    if ( (LA16_0=='\r') ) {
-                        alt16=1;
+                    if ( (LA17_0=='\r') ) {
+                        alt17=1;
                     }
-                    switch (alt16) {
+                    switch (alt17) {
                         case 1 :
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8708:68: '\\r'
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:68: '\\r'
                             {
                             match('\r'); 
 
@@ -2795,38 +2873,38 @@ public class InternalSpecLexer extends Lexer {
                     }
 
                     match('\n'); 
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8708:79: ( RULE_IN_RICH_STRING )*
-                    loop17:
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:79: ( RULE_IN_RICH_STRING )*
+                    loop18:
                     do {
-                        int alt17=2;
-                        int LA17_0 = input.LA(1);
+                        int alt18=2;
+                        int LA18_0 = input.LA(1);
 
-                        if ( (LA17_0=='\'') ) {
-                            int LA17_1 = input.LA(2);
+                        if ( (LA18_0=='\'') ) {
+                            int LA18_1 = input.LA(2);
 
-                            if ( (LA17_1=='\'') ) {
-                                int LA17_4 = input.LA(3);
+                            if ( (LA18_1=='\'') ) {
+                                int LA18_4 = input.LA(3);
 
-                                if ( ((LA17_4>='\u0000' && LA17_4<='&')||(LA17_4>='(' && LA17_4<='\u00AA')||(LA17_4>='\u00AC' && LA17_4<='\uFFFF')) ) {
-                                    alt17=1;
+                                if ( ((LA18_4>='\u0000' && LA18_4<='&')||(LA18_4>='(' && LA18_4<='\u00AA')||(LA18_4>='\u00AC' && LA18_4<='\uFFFF')) ) {
+                                    alt18=1;
                                 }
 
 
                             }
-                            else if ( ((LA17_1>='\u0000' && LA17_1<='&')||(LA17_1>='(' && LA17_1<='\u00AA')||(LA17_1>='\u00AC' && LA17_1<='\uFFFF')) ) {
-                                alt17=1;
+                            else if ( ((LA18_1>='\u0000' && LA18_1<='&')||(LA18_1>='(' && LA18_1<='\u00AA')||(LA18_1>='\u00AC' && LA18_1<='\uFFFF')) ) {
+                                alt18=1;
                             }
 
 
                         }
-                        else if ( ((LA17_0>='\u0000' && LA17_0<='&')||(LA17_0>='(' && LA17_0<='\u00AA')||(LA17_0>='\u00AC' && LA17_0<='\uFFFF')) ) {
-                            alt17=1;
+                        else if ( ((LA18_0>='\u0000' && LA18_0<='&')||(LA18_0>='(' && LA18_0<='\u00AA')||(LA18_0>='\u00AC' && LA18_0<='\uFFFF')) ) {
+                            alt18=1;
                         }
 
 
-                        switch (alt17) {
+                        switch (alt18) {
                     	case 1 :
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8708:79: RULE_IN_RICH_STRING
+                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:79: RULE_IN_RICH_STRING
                     	    {
                     	    mRULE_IN_RICH_STRING(); 
 
@@ -2834,32 +2912,32 @@ public class InternalSpecLexer extends Lexer {
                     	    break;
 
                     	default :
-                    	    break loop17;
+                    	    break loop18;
                         }
                     } while (true);
 
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8708:100: ( '\\'' ( '\\'' )? )?
-                    int alt19=2;
-                    int LA19_0 = input.LA(1);
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:100: ( '\\'' ( '\\'' )? )?
+                    int alt20=2;
+                    int LA20_0 = input.LA(1);
 
-                    if ( (LA19_0=='\'') ) {
-                        alt19=1;
+                    if ( (LA20_0=='\'') ) {
+                        alt20=1;
                     }
-                    switch (alt19) {
+                    switch (alt20) {
                         case 1 :
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8708:101: '\\'' ( '\\'' )?
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:101: '\\'' ( '\\'' )?
                             {
                             match('\''); 
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8708:106: ( '\\'' )?
-                            int alt18=2;
-                            int LA18_0 = input.LA(1);
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:106: ( '\\'' )?
+                            int alt19=2;
+                            int LA19_0 = input.LA(1);
 
-                            if ( (LA18_0=='\'') ) {
-                                alt18=1;
+                            if ( (LA19_0=='\'') ) {
+                                alt19=1;
                             }
-                            switch (alt18) {
+                            switch (alt19) {
                                 case 1 :
-                                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8708:106: '\\''
+                                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:106: '\\''
                                     {
                                     match('\''); 
 
@@ -2897,25 +2975,25 @@ public class InternalSpecLexer extends Lexer {
         try {
             int _type = RULE_COMMENT_RICH_TEXT_END;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:28: ( '\\u00AB\\u00AB' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) | EOF ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:30: '\\u00AB\\u00AB' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) | EOF )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8712:28: ( '\\u00AB\\u00AB' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) | EOF ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8712:30: '\\u00AB\\u00AB' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) | EOF )
             {
             match("\u00AB\u00AB"); 
 
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:45: (~ ( ( '\\n' | '\\r' ) ) )*
-            loop21:
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8712:45: (~ ( ( '\\n' | '\\r' ) ) )*
+            loop22:
             do {
-                int alt21=2;
-                int LA21_0 = input.LA(1);
+                int alt22=2;
+                int LA22_0 = input.LA(1);
 
-                if ( ((LA21_0>='\u0000' && LA21_0<='\t')||(LA21_0>='\u000B' && LA21_0<='\f')||(LA21_0>='\u000E' && LA21_0<='\uFFFF')) ) {
-                    alt21=1;
+                if ( ((LA22_0>='\u0000' && LA22_0<='\t')||(LA22_0>='\u000B' && LA22_0<='\f')||(LA22_0>='\u000E' && LA22_0<='\uFFFF')) ) {
+                    alt22=1;
                 }
 
 
-                switch (alt21) {
+                switch (alt22) {
             	case 1 :
-            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:45: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8712:45: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -2931,33 +3009,33 @@ public class InternalSpecLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop21;
+            	    break loop22;
                 }
             } while (true);
 
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:61: ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) | EOF )
-            int alt27=2;
-            int LA27_0 = input.LA(1);
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8712:61: ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) | EOF )
+            int alt28=2;
+            int LA28_0 = input.LA(1);
 
-            if ( (LA27_0=='\n'||LA27_0=='\r') ) {
-                alt27=1;
+            if ( (LA28_0=='\n'||LA28_0=='\r') ) {
+                alt28=1;
             }
             else {
-                alt27=2;}
-            switch (alt27) {
+                alt28=2;}
+            switch (alt28) {
                 case 1 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:62: ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8712:62: ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
                     {
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:62: ( '\\r' )?
-                    int alt22=2;
-                    int LA22_0 = input.LA(1);
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8712:62: ( '\\r' )?
+                    int alt23=2;
+                    int LA23_0 = input.LA(1);
 
-                    if ( (LA22_0=='\r') ) {
-                        alt22=1;
+                    if ( (LA23_0=='\r') ) {
+                        alt23=1;
                     }
-                    switch (alt22) {
+                    switch (alt23) {
                         case 1 :
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:62: '\\r'
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8712:62: '\\r'
                             {
                             match('\r'); 
 
@@ -2967,38 +3045,38 @@ public class InternalSpecLexer extends Lexer {
                     }
 
                     match('\n'); 
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:73: ( RULE_IN_RICH_STRING )*
-                    loop23:
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8712:73: ( RULE_IN_RICH_STRING )*
+                    loop24:
                     do {
-                        int alt23=2;
-                        int LA23_0 = input.LA(1);
+                        int alt24=2;
+                        int LA24_0 = input.LA(1);
 
-                        if ( (LA23_0=='\'') ) {
-                            int LA23_1 = input.LA(2);
+                        if ( (LA24_0=='\'') ) {
+                            int LA24_1 = input.LA(2);
 
-                            if ( (LA23_1=='\'') ) {
-                                int LA23_4 = input.LA(3);
+                            if ( (LA24_1=='\'') ) {
+                                int LA24_4 = input.LA(3);
 
-                                if ( ((LA23_4>='\u0000' && LA23_4<='&')||(LA23_4>='(' && LA23_4<='\u00AA')||(LA23_4>='\u00AC' && LA23_4<='\uFFFF')) ) {
-                                    alt23=1;
+                                if ( ((LA24_4>='\u0000' && LA24_4<='&')||(LA24_4>='(' && LA24_4<='\u00AA')||(LA24_4>='\u00AC' && LA24_4<='\uFFFF')) ) {
+                                    alt24=1;
                                 }
 
 
                             }
-                            else if ( ((LA23_1>='\u0000' && LA23_1<='&')||(LA23_1>='(' && LA23_1<='\u00AA')||(LA23_1>='\u00AC' && LA23_1<='\uFFFF')) ) {
-                                alt23=1;
+                            else if ( ((LA24_1>='\u0000' && LA24_1<='&')||(LA24_1>='(' && LA24_1<='\u00AA')||(LA24_1>='\u00AC' && LA24_1<='\uFFFF')) ) {
+                                alt24=1;
                             }
 
 
                         }
-                        else if ( ((LA23_0>='\u0000' && LA23_0<='&')||(LA23_0>='(' && LA23_0<='\u00AA')||(LA23_0>='\u00AC' && LA23_0<='\uFFFF')) ) {
-                            alt23=1;
+                        else if ( ((LA24_0>='\u0000' && LA24_0<='&')||(LA24_0>='(' && LA24_0<='\u00AA')||(LA24_0>='\u00AC' && LA24_0<='\uFFFF')) ) {
+                            alt24=1;
                         }
 
 
-                        switch (alt23) {
+                        switch (alt24) {
                     	case 1 :
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:73: RULE_IN_RICH_STRING
+                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8712:73: RULE_IN_RICH_STRING
                     	    {
                     	    mRULE_IN_RICH_STRING(); 
 
@@ -3006,34 +3084,34 @@ public class InternalSpecLexer extends Lexer {
                     	    break;
 
                     	default :
-                    	    break loop23;
+                    	    break loop24;
                         }
                     } while (true);
 
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:94: ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
-                    int alt26=2;
-                    int LA26_0 = input.LA(1);
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8712:94: ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
+                    int alt27=2;
+                    int LA27_0 = input.LA(1);
 
-                    if ( (LA26_0=='\'') ) {
-                        int LA26_1 = input.LA(2);
+                    if ( (LA27_0=='\'') ) {
+                        int LA27_1 = input.LA(2);
 
-                        if ( (LA26_1=='\'') ) {
-                            int LA26_3 = input.LA(3);
+                        if ( (LA27_1=='\'') ) {
+                            int LA27_3 = input.LA(3);
 
-                            if ( (LA26_3=='\'') ) {
-                                alt26=1;
+                            if ( (LA27_3=='\'') ) {
+                                alt27=1;
                             }
                             else {
-                                alt26=2;}
+                                alt27=2;}
                         }
                         else {
-                            alt26=2;}
+                            alt27=2;}
                     }
                     else {
-                        alt26=2;}
-                    switch (alt26) {
+                        alt27=2;}
+                    switch (alt27) {
                         case 1 :
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:95: '\\'\\'\\''
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8712:95: '\\'\\'\\''
                             {
                             match("'''"); 
 
@@ -3041,30 +3119,30 @@ public class InternalSpecLexer extends Lexer {
                             }
                             break;
                         case 2 :
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:104: ( '\\'' ( '\\'' )? )? EOF
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8712:104: ( '\\'' ( '\\'' )? )? EOF
                             {
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:104: ( '\\'' ( '\\'' )? )?
-                            int alt25=2;
-                            int LA25_0 = input.LA(1);
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8712:104: ( '\\'' ( '\\'' )? )?
+                            int alt26=2;
+                            int LA26_0 = input.LA(1);
 
-                            if ( (LA25_0=='\'') ) {
-                                alt25=1;
+                            if ( (LA26_0=='\'') ) {
+                                alt26=1;
                             }
-                            switch (alt25) {
+                            switch (alt26) {
                                 case 1 :
-                                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:105: '\\'' ( '\\'' )?
+                                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8712:105: '\\'' ( '\\'' )?
                                     {
                                     match('\''); 
-                                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:110: ( '\\'' )?
-                                    int alt24=2;
-                                    int LA24_0 = input.LA(1);
+                                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8712:110: ( '\\'' )?
+                                    int alt25=2;
+                                    int LA25_0 = input.LA(1);
 
-                                    if ( (LA24_0=='\'') ) {
-                                        alt24=1;
+                                    if ( (LA25_0=='\'') ) {
+                                        alt25=1;
                                     }
-                                    switch (alt24) {
+                                    switch (alt25) {
                                         case 1 :
-                                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:110: '\\''
+                                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8712:110: '\\''
                                             {
                                             match('\''); 
 
@@ -3090,7 +3168,7 @@ public class InternalSpecLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8710:123: EOF
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8712:123: EOF
                     {
                     match(EOF); 
 
@@ -3113,41 +3191,41 @@ public class InternalSpecLexer extends Lexer {
     // $ANTLR start "RULE_IN_RICH_STRING"
     public final void mRULE_IN_RICH_STRING() throws RecognitionException {
         try {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8712:30: ( ( '\\'\\'' ~ ( ( '\\u00AB' | '\\'' ) ) | '\\'' ~ ( ( '\\u00AB' | '\\'' ) ) | ~ ( ( '\\u00AB' | '\\'' ) ) ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8712:32: ( '\\'\\'' ~ ( ( '\\u00AB' | '\\'' ) ) | '\\'' ~ ( ( '\\u00AB' | '\\'' ) ) | ~ ( ( '\\u00AB' | '\\'' ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8714:30: ( ( '\\'\\'' ~ ( ( '\\u00AB' | '\\'' ) ) | '\\'' ~ ( ( '\\u00AB' | '\\'' ) ) | ~ ( ( '\\u00AB' | '\\'' ) ) ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8714:32: ( '\\'\\'' ~ ( ( '\\u00AB' | '\\'' ) ) | '\\'' ~ ( ( '\\u00AB' | '\\'' ) ) | ~ ( ( '\\u00AB' | '\\'' ) ) )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8712:32: ( '\\'\\'' ~ ( ( '\\u00AB' | '\\'' ) ) | '\\'' ~ ( ( '\\u00AB' | '\\'' ) ) | ~ ( ( '\\u00AB' | '\\'' ) ) )
-            int alt28=3;
-            int LA28_0 = input.LA(1);
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8714:32: ( '\\'\\'' ~ ( ( '\\u00AB' | '\\'' ) ) | '\\'' ~ ( ( '\\u00AB' | '\\'' ) ) | ~ ( ( '\\u00AB' | '\\'' ) ) )
+            int alt29=3;
+            int LA29_0 = input.LA(1);
 
-            if ( (LA28_0=='\'') ) {
-                int LA28_1 = input.LA(2);
+            if ( (LA29_0=='\'') ) {
+                int LA29_1 = input.LA(2);
 
-                if ( (LA28_1=='\'') ) {
-                    alt28=1;
+                if ( (LA29_1=='\'') ) {
+                    alt29=1;
                 }
-                else if ( ((LA28_1>='\u0000' && LA28_1<='&')||(LA28_1>='(' && LA28_1<='\u00AA')||(LA28_1>='\u00AC' && LA28_1<='\uFFFF')) ) {
-                    alt28=2;
+                else if ( ((LA29_1>='\u0000' && LA29_1<='&')||(LA29_1>='(' && LA29_1<='\u00AA')||(LA29_1>='\u00AC' && LA29_1<='\uFFFF')) ) {
+                    alt29=2;
                 }
                 else {
                     NoViableAltException nvae =
-                        new NoViableAltException("", 28, 1, input);
+                        new NoViableAltException("", 29, 1, input);
 
                     throw nvae;
                 }
             }
-            else if ( ((LA28_0>='\u0000' && LA28_0<='&')||(LA28_0>='(' && LA28_0<='\u00AA')||(LA28_0>='\u00AC' && LA28_0<='\uFFFF')) ) {
-                alt28=3;
+            else if ( ((LA29_0>='\u0000' && LA29_0<='&')||(LA29_0>='(' && LA29_0<='\u00AA')||(LA29_0>='\u00AC' && LA29_0<='\uFFFF')) ) {
+                alt29=3;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 28, 0, input);
+                    new NoViableAltException("", 29, 0, input);
 
                 throw nvae;
             }
-            switch (alt28) {
+            switch (alt29) {
                 case 1 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8712:33: '\\'\\'' ~ ( ( '\\u00AB' | '\\'' ) )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8714:33: '\\'\\'' ~ ( ( '\\u00AB' | '\\'' ) )
                     {
                     match("''"); 
 
@@ -3164,7 +3242,7 @@ public class InternalSpecLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8712:59: '\\'' ~ ( ( '\\u00AB' | '\\'' ) )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8714:59: '\\'' ~ ( ( '\\u00AB' | '\\'' ) )
                     {
                     match('\''); 
                     if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='\u00AA')||(input.LA(1)>='\u00AC' && input.LA(1)<='\uFFFF') ) {
@@ -3180,7 +3258,7 @@ public class InternalSpecLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8712:83: ~ ( ( '\\u00AB' | '\\'' ) )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8714:83: ~ ( ( '\\u00AB' | '\\'' ) )
                     {
                     if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='\u00AA')||(input.LA(1)>='\u00AC' && input.LA(1)<='\uFFFF') ) {
                         input.consume();
@@ -3211,38 +3289,38 @@ public class InternalSpecLexer extends Lexer {
         try {
             int _type = RULE_HEX;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8714:10: ( ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )? )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8714:12: ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8716:10: ( ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )? )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8716:12: ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8714:12: ( '0x' | '0X' )
-            int alt29=2;
-            int LA29_0 = input.LA(1);
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8716:12: ( '0x' | '0X' )
+            int alt30=2;
+            int LA30_0 = input.LA(1);
 
-            if ( (LA29_0=='0') ) {
-                int LA29_1 = input.LA(2);
+            if ( (LA30_0=='0') ) {
+                int LA30_1 = input.LA(2);
 
-                if ( (LA29_1=='x') ) {
-                    alt29=1;
+                if ( (LA30_1=='x') ) {
+                    alt30=1;
                 }
-                else if ( (LA29_1=='X') ) {
-                    alt29=2;
+                else if ( (LA30_1=='X') ) {
+                    alt30=2;
                 }
                 else {
                     NoViableAltException nvae =
-                        new NoViableAltException("", 29, 1, input);
+                        new NoViableAltException("", 30, 1, input);
 
                     throw nvae;
                 }
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 29, 0, input);
+                    new NoViableAltException("", 30, 0, input);
 
                 throw nvae;
             }
-            switch (alt29) {
+            switch (alt30) {
                 case 1 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8714:13: '0x'
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8716:13: '0x'
                     {
                     match("0x"); 
 
@@ -3250,7 +3328,7 @@ public class InternalSpecLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8714:18: '0X'
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8716:18: '0X'
                     {
                     match("0X"); 
 
@@ -3260,19 +3338,19 @@ public class InternalSpecLexer extends Lexer {
 
             }
 
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8714:24: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+
-            int cnt30=0;
-            loop30:
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8716:24: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+
+            int cnt31=0;
+            loop31:
             do {
-                int alt30=2;
-                int LA30_0 = input.LA(1);
+                int alt31=2;
+                int LA31_0 = input.LA(1);
 
-                if ( ((LA30_0>='0' && LA30_0<='9')||(LA30_0>='A' && LA30_0<='F')||LA30_0=='_'||(LA30_0>='a' && LA30_0<='f')) ) {
-                    alt30=1;
+                if ( ((LA31_0>='0' && LA31_0<='9')||(LA31_0>='A' && LA31_0<='F')||LA31_0=='_'||(LA31_0>='a' && LA31_0<='f')) ) {
+                    alt31=1;
                 }
 
 
-                switch (alt30) {
+                switch (alt31) {
             	case 1 :
             	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:
             	    {
@@ -3290,45 +3368,45 @@ public class InternalSpecLexer extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt30 >= 1 ) break loop30;
+            	    if ( cnt31 >= 1 ) break loop31;
                         EarlyExitException eee =
-                            new EarlyExitException(30, input);
+                            new EarlyExitException(31, input);
                         throw eee;
                 }
-                cnt30++;
+                cnt31++;
             } while (true);
 
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8714:58: ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
-            int alt32=2;
-            int LA32_0 = input.LA(1);
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8716:58: ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
+            int alt33=2;
+            int LA33_0 = input.LA(1);
 
-            if ( (LA32_0=='#') ) {
-                alt32=1;
+            if ( (LA33_0=='#') ) {
+                alt33=1;
             }
-            switch (alt32) {
+            switch (alt33) {
                 case 1 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8714:59: '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8716:59: '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
                     {
                     match('#'); 
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8714:63: ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
-                    int alt31=2;
-                    int LA31_0 = input.LA(1);
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8716:63: ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
+                    int alt32=2;
+                    int LA32_0 = input.LA(1);
 
-                    if ( (LA31_0=='B'||LA31_0=='b') ) {
-                        alt31=1;
+                    if ( (LA32_0=='B'||LA32_0=='b') ) {
+                        alt32=1;
                     }
-                    else if ( (LA31_0=='L'||LA31_0=='l') ) {
-                        alt31=2;
+                    else if ( (LA32_0=='L'||LA32_0=='l') ) {
+                        alt32=2;
                     }
                     else {
                         NoViableAltException nvae =
-                            new NoViableAltException("", 31, 0, input);
+                            new NoViableAltException("", 32, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt31) {
+                    switch (alt32) {
                         case 1 :
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8714:64: ( 'b' | 'B' ) ( 'i' | 'I' )
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8716:64: ( 'b' | 'B' ) ( 'i' | 'I' )
                             {
                             if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                                 input.consume();
@@ -3352,7 +3430,7 @@ public class InternalSpecLexer extends Lexer {
                             }
                             break;
                         case 2 :
-                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8714:84: ( 'l' | 'L' )
+                            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8716:84: ( 'l' | 'L' )
                             {
                             if ( input.LA(1)=='L'||input.LA(1)=='l' ) {
                                 input.consume();
@@ -3391,22 +3469,22 @@ public class InternalSpecLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8716:10: ( '0' .. '9' ( '0' .. '9' | '_' )* )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8716:12: '0' .. '9' ( '0' .. '9' | '_' )*
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8718:10: ( '0' .. '9' ( '0' .. '9' | '_' )* )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8718:12: '0' .. '9' ( '0' .. '9' | '_' )*
             {
             matchRange('0','9'); 
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8716:21: ( '0' .. '9' | '_' )*
-            loop33:
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8718:21: ( '0' .. '9' | '_' )*
+            loop34:
             do {
-                int alt33=2;
-                int LA33_0 = input.LA(1);
+                int alt34=2;
+                int LA34_0 = input.LA(1);
 
-                if ( ((LA33_0>='0' && LA33_0<='9')||LA33_0=='_') ) {
-                    alt33=1;
+                if ( ((LA34_0>='0' && LA34_0<='9')||LA34_0=='_') ) {
+                    alt34=1;
                 }
 
 
-                switch (alt33) {
+                switch (alt34) {
             	case 1 :
             	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:
             	    {
@@ -3424,7 +3502,7 @@ public class InternalSpecLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop33;
+            	    break loop34;
                 }
             } while (true);
 
@@ -3444,20 +3522,20 @@ public class InternalSpecLexer extends Lexer {
         try {
             int _type = RULE_DECIMAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8718:14: ( RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )? )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8718:16: RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8720:14: ( RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )? )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8720:16: RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
             {
             mRULE_INT(); 
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8718:25: ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )?
-            int alt35=2;
-            int LA35_0 = input.LA(1);
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8720:25: ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )?
+            int alt36=2;
+            int LA36_0 = input.LA(1);
 
-            if ( (LA35_0=='E'||LA35_0=='e') ) {
-                alt35=1;
+            if ( (LA36_0=='E'||LA36_0=='e') ) {
+                alt36=1;
             }
-            switch (alt35) {
+            switch (alt36) {
                 case 1 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8718:26: ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8720:26: ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT
                     {
                     if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                         input.consume();
@@ -3468,14 +3546,14 @@ public class InternalSpecLexer extends Lexer {
                         recover(mse);
                         throw mse;}
 
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8718:36: ( '+' | '-' )?
-                    int alt34=2;
-                    int LA34_0 = input.LA(1);
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8720:36: ( '+' | '-' )?
+                    int alt35=2;
+                    int LA35_0 = input.LA(1);
 
-                    if ( (LA34_0=='+'||LA34_0=='-') ) {
-                        alt34=1;
+                    if ( (LA35_0=='+'||LA35_0=='-') ) {
+                        alt35=1;
                     }
-                    switch (alt34) {
+                    switch (alt35) {
                         case 1 :
                             // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:
                             {
@@ -3501,19 +3579,19 @@ public class InternalSpecLexer extends Lexer {
 
             }
 
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8718:58: ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
-            int alt36=3;
-            int LA36_0 = input.LA(1);
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8720:58: ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
+            int alt37=3;
+            int LA37_0 = input.LA(1);
 
-            if ( (LA36_0=='B'||LA36_0=='b') ) {
-                alt36=1;
+            if ( (LA37_0=='B'||LA37_0=='b') ) {
+                alt37=1;
             }
-            else if ( (LA36_0=='D'||LA36_0=='F'||LA36_0=='L'||LA36_0=='d'||LA36_0=='f'||LA36_0=='l') ) {
-                alt36=2;
+            else if ( (LA37_0=='D'||LA37_0=='F'||LA37_0=='L'||LA37_0=='d'||LA37_0=='f'||LA37_0=='l') ) {
+                alt37=2;
             }
-            switch (alt36) {
+            switch (alt37) {
                 case 1 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8718:59: ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8720:59: ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' )
                     {
                     if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                         input.consume();
@@ -3537,7 +3615,7 @@ public class InternalSpecLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8718:87: ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' )
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8720:87: ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' )
                     {
                     if ( input.LA(1)=='D'||input.LA(1)=='F'||input.LA(1)=='L'||input.LA(1)=='d'||input.LA(1)=='f'||input.LA(1)=='l' ) {
                         input.consume();
@@ -3570,19 +3648,19 @@ public class InternalSpecLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8720:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )* )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8720:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8722:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )* )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8722:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8720:11: ( '^' )?
-            int alt37=2;
-            int LA37_0 = input.LA(1);
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8722:11: ( '^' )?
+            int alt38=2;
+            int LA38_0 = input.LA(1);
 
-            if ( (LA37_0=='^') ) {
-                alt37=1;
+            if ( (LA38_0=='^') ) {
+                alt38=1;
             }
-            switch (alt37) {
+            switch (alt38) {
                 case 1 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8720:11: '^'
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8722:11: '^'
                     {
                     match('^'); 
 
@@ -3600,18 +3678,18 @@ public class InternalSpecLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8720:44: ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
-            loop38:
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8722:44: ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
+            loop39:
             do {
-                int alt38=2;
-                int LA38_0 = input.LA(1);
+                int alt39=2;
+                int LA39_0 = input.LA(1);
 
-                if ( (LA38_0=='$'||(LA38_0>='0' && LA38_0<='9')||(LA38_0>='A' && LA38_0<='Z')||LA38_0=='_'||(LA38_0>='a' && LA38_0<='z')) ) {
-                    alt38=1;
+                if ( (LA39_0=='$'||(LA39_0>='0' && LA39_0<='9')||(LA39_0>='A' && LA39_0<='Z')||LA39_0=='_'||(LA39_0>='a' && LA39_0<='z')) ) {
+                    alt39=1;
                 }
 
 
-                switch (alt38) {
+                switch (alt39) {
             	case 1 :
             	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:
             	    {
@@ -3629,7 +3707,7 @@ public class InternalSpecLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop38;
+            	    break loop39;
                 }
             } while (true);
 
@@ -3649,47 +3727,47 @@ public class InternalSpecLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8722:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8722:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8724:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8724:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8722:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
-            int alt41=2;
-            int LA41_0 = input.LA(1);
+            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8724:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            int alt42=2;
+            int LA42_0 = input.LA(1);
 
-            if ( (LA41_0=='\"') ) {
-                alt41=1;
+            if ( (LA42_0=='\"') ) {
+                alt42=1;
             }
-            else if ( (LA41_0=='\'') ) {
-                alt41=2;
+            else if ( (LA42_0=='\'') ) {
+                alt42=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 41, 0, input);
+                    new NoViableAltException("", 42, 0, input);
 
                 throw nvae;
             }
-            switch (alt41) {
+            switch (alt42) {
                 case 1 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8722:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8724:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8722:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
-                    loop39:
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8724:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    loop40:
                     do {
-                        int alt39=3;
-                        int LA39_0 = input.LA(1);
+                        int alt40=3;
+                        int LA40_0 = input.LA(1);
 
-                        if ( (LA39_0=='\\') ) {
-                            alt39=1;
+                        if ( (LA40_0=='\\') ) {
+                            alt40=1;
                         }
-                        else if ( ((LA39_0>='\u0000' && LA39_0<='!')||(LA39_0>='#' && LA39_0<='[')||(LA39_0>=']' && LA39_0<='\uFFFF')) ) {
-                            alt39=2;
+                        else if ( ((LA40_0>='\u0000' && LA40_0<='!')||(LA40_0>='#' && LA40_0<='[')||(LA40_0>=']' && LA40_0<='\uFFFF')) ) {
+                            alt40=2;
                         }
 
 
-                        switch (alt39) {
+                        switch (alt40) {
                     	case 1 :
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8722:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8724:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -3705,7 +3783,7 @@ public class InternalSpecLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8722:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8724:66: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -3721,7 +3799,7 @@ public class InternalSpecLexer extends Lexer {
                     	    break;
 
                     	default :
-                    	    break loop39;
+                    	    break loop40;
                         }
                     } while (true);
 
@@ -3730,26 +3808,26 @@ public class InternalSpecLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8722:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8724:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8722:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
-                    loop40:
+                    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8724:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    loop41:
                     do {
-                        int alt40=3;
-                        int LA40_0 = input.LA(1);
+                        int alt41=3;
+                        int LA41_0 = input.LA(1);
 
-                        if ( (LA40_0=='\\') ) {
-                            alt40=1;
+                        if ( (LA41_0=='\\') ) {
+                            alt41=1;
                         }
-                        else if ( ((LA40_0>='\u0000' && LA40_0<='&')||(LA40_0>='(' && LA40_0<='[')||(LA40_0>=']' && LA40_0<='\uFFFF')) ) {
-                            alt40=2;
+                        else if ( ((LA41_0>='\u0000' && LA41_0<='&')||(LA41_0>='(' && LA41_0<='[')||(LA41_0>=']' && LA41_0<='\uFFFF')) ) {
+                            alt41=2;
                         }
 
 
-                        switch (alt40) {
+                        switch (alt41) {
                     	case 1 :
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8722:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8724:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -3765,7 +3843,7 @@ public class InternalSpecLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8722:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8724:137: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -3781,7 +3859,7 @@ public class InternalSpecLexer extends Lexer {
                     	    break;
 
                     	default :
-                    	    break loop40;
+                    	    break loop41;
                         }
                     } while (true);
 
@@ -3802,66 +3880,6 @@ public class InternalSpecLexer extends Lexer {
         }
     }
     // $ANTLR end "RULE_STRING"
-
-    // $ANTLR start "RULE_ML_COMMENT"
-    public final void mRULE_ML_COMMENT() throws RecognitionException {
-        try {
-            int _type = RULE_ML_COMMENT;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8724:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8724:19: '/*' ( options {greedy=false; } : . )* '*/'
-            {
-            match("/*"); 
-
-            // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8724:24: ( options {greedy=false; } : . )*
-            loop42:
-            do {
-                int alt42=2;
-                int LA42_0 = input.LA(1);
-
-                if ( (LA42_0=='*') ) {
-                    int LA42_1 = input.LA(2);
-
-                    if ( (LA42_1=='/') ) {
-                        alt42=2;
-                    }
-                    else if ( ((LA42_1>='\u0000' && LA42_1<='.')||(LA42_1>='0' && LA42_1<='\uFFFF')) ) {
-                        alt42=1;
-                    }
-
-
-                }
-                else if ( ((LA42_0>='\u0000' && LA42_0<=')')||(LA42_0>='+' && LA42_0<='\uFFFF')) ) {
-                    alt42=1;
-                }
-
-
-                switch (alt42) {
-            	case 1 :
-            	    // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:8724:52: .
-            	    {
-            	    matchAny(); 
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop42;
-                }
-            } while (true);
-
-            match("*/"); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "RULE_ML_COMMENT"
 
     // $ANTLR start "RULE_SL_COMMENT"
     public final void mRULE_SL_COMMENT() throws RecognitionException {
@@ -4031,7 +4049,7 @@ public class InternalSpecLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:1:8: ( T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | T__88 | T__89 | T__90 | T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | T__99 | T__100 | T__101 | T__102 | T__103 | T__104 | T__105 | T__106 | T__107 | T__108 | T__109 | T__110 | T__111 | T__112 | T__113 | T__114 | T__115 | T__116 | T__117 | T__118 | T__119 | T__120 | RULE_RICH_TEXT | RULE_RICH_TEXT_START | RULE_RICH_TEXT_END | RULE_RICH_TEXT_INBETWEEN | RULE_COMMENT_RICH_TEXT_INBETWEEN | RULE_COMMENT_RICH_TEXT_END | RULE_HEX | RULE_INT | RULE_DECIMAL | RULE_ID | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:1:8: ( T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | T__88 | T__89 | T__90 | T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | T__99 | T__100 | T__101 | T__102 | T__103 | T__104 | T__105 | T__106 | T__107 | T__108 | T__109 | T__110 | T__111 | T__112 | T__113 | T__114 | T__115 | T__116 | T__117 | T__118 | T__119 | T__120 | RULE_ML_COMMENT | RULE_RICH_TEXT | RULE_RICH_TEXT_START | RULE_RICH_TEXT_END | RULE_RICH_TEXT_INBETWEEN | RULE_COMMENT_RICH_TEXT_INBETWEEN | RULE_COMMENT_RICH_TEXT_END | RULE_HEX | RULE_INT | RULE_DECIMAL | RULE_ID | RULE_STRING | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
         int alt47=116;
         alt47 = dfa47.predict(input);
         switch (alt47) {
@@ -4743,86 +4761,86 @@ public class InternalSpecLexer extends Lexer {
                 }
                 break;
             case 102 :
-                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:1:637: RULE_RICH_TEXT
+                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:1:637: RULE_ML_COMMENT
+                {
+                mRULE_ML_COMMENT(); 
+
+                }
+                break;
+            case 103 :
+                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:1:653: RULE_RICH_TEXT
                 {
                 mRULE_RICH_TEXT(); 
 
                 }
                 break;
-            case 103 :
-                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:1:652: RULE_RICH_TEXT_START
+            case 104 :
+                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:1:668: RULE_RICH_TEXT_START
                 {
                 mRULE_RICH_TEXT_START(); 
 
                 }
                 break;
-            case 104 :
-                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:1:673: RULE_RICH_TEXT_END
+            case 105 :
+                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:1:689: RULE_RICH_TEXT_END
                 {
                 mRULE_RICH_TEXT_END(); 
 
                 }
                 break;
-            case 105 :
-                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:1:692: RULE_RICH_TEXT_INBETWEEN
+            case 106 :
+                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:1:708: RULE_RICH_TEXT_INBETWEEN
                 {
                 mRULE_RICH_TEXT_INBETWEEN(); 
 
                 }
                 break;
-            case 106 :
-                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:1:717: RULE_COMMENT_RICH_TEXT_INBETWEEN
+            case 107 :
+                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:1:733: RULE_COMMENT_RICH_TEXT_INBETWEEN
                 {
                 mRULE_COMMENT_RICH_TEXT_INBETWEEN(); 
 
                 }
                 break;
-            case 107 :
-                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:1:750: RULE_COMMENT_RICH_TEXT_END
+            case 108 :
+                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:1:766: RULE_COMMENT_RICH_TEXT_END
                 {
                 mRULE_COMMENT_RICH_TEXT_END(); 
 
                 }
                 break;
-            case 108 :
-                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:1:777: RULE_HEX
+            case 109 :
+                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:1:793: RULE_HEX
                 {
                 mRULE_HEX(); 
 
                 }
                 break;
-            case 109 :
-                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:1:786: RULE_INT
+            case 110 :
+                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:1:802: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
-            case 110 :
-                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:1:795: RULE_DECIMAL
+            case 111 :
+                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:1:811: RULE_DECIMAL
                 {
                 mRULE_DECIMAL(); 
 
                 }
                 break;
-            case 111 :
-                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:1:808: RULE_ID
+            case 112 :
+                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:1:824: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
-            case 112 :
-                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:1:816: RULE_STRING
+            case 113 :
+                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:1:832: RULE_STRING
                 {
                 mRULE_STRING(); 
-
-                }
-                break;
-            case 113 :
-                // ../org.jnario.spec/src-gen/org/jnario/spec/parser/antlr/internal/InternalSpec.g:1:828: RULE_ML_COMMENT
-                {
-                mRULE_ML_COMMENT(); 
 
                 }
                 break;
@@ -4857,24 +4875,24 @@ public class InternalSpecLexer extends Lexer {
     static final String DFA47_eotS =
         "\1\uffff\2\73\5\uffff\1\106\1\110\1\112\1\115\6\73\1\141\1\73\1"+
         "\145\1\uffff\4\73\1\162\1\165\1\167\6\73\1\uffff\1\u0081\1\u0083"+
-        "\1\u0085\1\u0087\1\u008a\2\uffff\2\73\1\66\1\u0093\1\66\2\u0098"+
+        "\1\u0085\1\u0087\1\u008a\2\uffff\2\73\1\66\1\u0094\1\66\2\u0098"+
         "\1\66\1\uffff\1\66\2\uffff\4\73\1\uffff\2\73\1\u00a3\5\uffff\1\u00a5"+
         "\11\uffff\14\73\1\u00b4\5\73\2\uffff\1\73\4\uffff\6\73\1\u00c4\3"+
         "\73\1\u00c9\6\uffff\6\73\1\u00d0\16\uffff\2\73\1\u0090\1\uffff\2"+
-        "\u0093\2\uffff\1\u00d9\1\uffff\1\u0098\3\uffff\6\73\1\u00e1\1\73"+
+        "\u0094\2\uffff\1\u00d9\1\uffff\1\u0098\3\uffff\6\73\1\u00e1\1\73"+
         "\3\uffff\10\73\1\u00eb\2\73\1\u00ee\2\73\1\uffff\6\73\1\u00f7\1"+
         "\u00f8\3\73\1\u00fc\3\73\1\uffff\1\u0101\1\u0102\1\73\2\uffff\1"+
-        "\u0104\5\73\1\uffff\2\73\1\u010f\2\u0093\1\u00d9\1\uffff\1\u0114"+
+        "\u0104\5\73\1\uffff\2\73\1\u0110\2\u0094\1\u00d9\1\uffff\1\u0114"+
         "\1\uffff\7\73\1\uffff\2\73\1\u011e\4\73\1\u0124\1\73\1\uffff\2\73"+
         "\1\uffff\6\73\1\u012e\1\73\2\uffff\2\73\1\u0132\1\uffff\4\73\2\uffff"+
-        "\1\u0137\1\uffff\5\73\1\u013e\2\73\2\u010f\2\uffff\1\u0093\2\u0114"+
+        "\1\u0137\1\uffff\5\73\1\u013e\2\73\2\u0110\2\uffff\1\u0094\2\u0114"+
         "\1\uffff\11\73\1\uffff\1\u014f\3\73\1\u0153\1\uffff\1\u0154\2\73"+
         "\1\u0157\3\73\1\u015b\1\73\1\uffff\1\u015d\1\73\1\u0160\1\uffff"+
         "\4\73\1\uffff\2\73\1\u0167\1\73\1\u0169\1\73\1\uffff\1\u016b\1\73"+
-        "\2\u010f\2\u0114\2\73\1\u0171\7\73\1\uffff\1\u0179\1\u017a\1\u017b"+
+        "\2\u0110\2\u0114\2\73\1\u0171\7\73\1\uffff\1\u0179\1\u017a\1\u017b"+
         "\2\uffff\1\73\1\u017d\1\uffff\1\u017e\2\73\1\uffff\1\u0181\1\uffff"+
         "\1\73\1\u0183\1\uffff\1\u0184\1\73\1\u0186\1\73\1\u0188\1\73\1\uffff"+
-        "\1\u018a\1\uffff\1\u018b\1\uffff\1\u018c\1\u010f\1\u0114\1\u018d"+
+        "\1\u018a\1\uffff\1\u018b\1\uffff\1\u018c\1\u0110\1\u0114\1\u018d"+
         "\1\u018e\1\uffff\1\73\1\u0190\1\73\1\u0192\1\73\1\u0194\1\73\3\uffff"+
         "\1\u0196\2\uffff\1\73\1\u0198\1\uffff\1\73\2\uffff\1\73\1\uffff"+
         "\1\73\1\uffff\1\73\5\uffff\1\73\1\uffff\1\u019e\1\uffff\1\u019f"+
@@ -4952,16 +4970,16 @@ public class InternalSpecLexer extends Lexer {
         "\uffff\2\172\3\uffff";
     static final String DFA47_acceptS =
         "\3\uffff\1\3\1\4\1\5\1\6\1\7\15\uffff\1\34\15\uffff\1\70\5\uffff"+
-        "\1\112\1\120\10\uffff\1\157\1\uffff\1\163\1\164\4\uffff\1\157\3"+
+        "\1\112\1\120\10\uffff\1\160\1\uffff\1\163\1\164\4\uffff\1\160\3"+
         "\uffff\1\3\1\4\1\5\1\6\1\7\1\uffff\1\104\1\10\1\77\1\11\1\12\1\117"+
         "\1\105\1\115\1\13\22\uffff\1\73\1\26\1\uffff\1\75\1\103\1\33\1\34"+
         "\13\uffff\1\46\1\110\1\116\1\47\1\131\1\55\7\uffff\1\70\1\72\1\71"+
-        "\1\74\1\143\1\76\1\113\1\101\1\107\1\161\1\162\1\111\1\112\1\120"+
-        "\3\uffff\1\160\2\uffff\1\150\1\151\1\uffff\1\154\1\uffff\1\155\1"+
-        "\156\1\163\10\uffff\1\130\1\106\1\100\16\uffff\1\114\17\uffff\1"+
-        "\121\3\uffff\1\56\1\102\6\uffff\1\64\10\uffff\1\152\7\uffff\1\25"+
+        "\1\74\1\143\1\76\1\113\1\101\1\107\1\146\1\162\1\111\1\112\1\120"+
+        "\3\uffff\1\161\2\uffff\1\152\1\151\1\uffff\1\155\1\uffff\1\156\1"+
+        "\157\1\163\10\uffff\1\130\1\106\1\100\16\uffff\1\114\17\uffff\1"+
+        "\121\3\uffff\1\56\1\102\6\uffff\1\64\10\uffff\1\153\7\uffff\1\25"+
         "\11\uffff\1\126\2\uffff\1\22\10\uffff\1\31\1\32\3\uffff\1\140\4"+
-        "\uffff\1\43\1\132\1\uffff\1\57\12\uffff\1\146\1\147\3\uffff\1\153"+
+        "\uffff\1\43\1\132\1\uffff\1\57\12\uffff\1\150\1\147\3\uffff\1\154"+
         "\11\uffff\1\122\5\uffff\1\17\11\uffff\1\125\3\uffff\1\134\4\uffff"+
         "\1\135\6\uffff\1\65\20\uffff\1\15\3\uffff\1\20\1\133\2\uffff\1\23"+
         "\3\uffff\1\52\1\uffff\1\142\2\uffff\1\41\6\uffff\1\62\1\uffff\1"+
@@ -4971,10 +4989,10 @@ public class InternalSpecLexer extends Lexer {
         "\1\uffff\1\14\1\uffff\1\141\1\uffff\1\24\5\uffff\1\2\1\36\1\uffff"+
         "\1\51\1\35\3\uffff\1\144\1\27\2\uffff\1\61\1\42\1\53";
     static final String DFA47_specialS =
-        "\1\3\54\uffff\1\11\1\2\5\uffff\1\4\134\uffff\1\22\1\23\2\uffff\1"+
-        "\10\75\uffff\1\1\1\5\1\24\1\0\1\uffff\1\12\64\uffff\1\6\1\15\2\uffff"+
-        "\1\25\1\20\1\16\55\uffff\1\26\1\14\1\7\1\17\50\uffff\1\13\1\21\76"+
-        "\uffff}>";
+        "\1\26\54\uffff\1\24\1\23\5\uffff\1\4\134\uffff\1\6\1\15\2\uffff"+
+        "\1\2\75\uffff\1\10\1\1\1\17\1\20\1\uffff\1\7\64\uffff\1\5\1\21\2"+
+        "\uffff\1\16\1\25\1\13\55\uffff\1\22\1\3\1\14\1\12\50\uffff\1\0\1"+
+        "\11\76\uffff}>";
     static final String[] DFA47_transitionS = {
             "\11\66\2\65\2\66\1\65\22\66\1\65\1\46\1\64\1\66\1\63\1\51\1"+
             "\45\1\55\1\5\1\7\1\33\1\44\1\6\1\47\1\32\1\50\1\60\11\61\1\34"+
@@ -5028,7 +5046,7 @@ public class InternalSpecLexer extends Lexer {
             "\1\u008d",
             "\1\u008e",
             "\47\u0090\1\u008f\uffd8\u0090",
-            "\47\u0092\1\u0091\u0083\u0092\1\u0094\uff54\u0092",
+            "\47\u0092\1\u0091\u0083\u0092\1\u0093\uff54\u0092",
             "\1\u0095",
             "\12\u0097\10\uffff\1\u0099\1\uffff\3\u0099\5\uffff\1\u0099"+
             "\13\uffff\1\u0096\6\uffff\1\u0097\2\uffff\1\u0099\1\uffff\3"+
@@ -5135,8 +5153,8 @@ public class InternalSpecLexer extends Lexer {
             "\1\u00d2",
             "\1\u00d3",
             "",
-            "\47\u00d5\1\u00d4\u0083\u00d5\1\u0094\uff54\u00d5",
-            "\47\u0092\1\u0091\u0083\u0092\1\u0094\uff54\u0092",
+            "\47\u00d5\1\u00d4\u0083\u00d5\1\u0093\uff54\u00d5",
+            "\47\u0092\1\u0091\u0083\u0092\1\u0093\uff54\u0092",
             "",
             "",
             "\12\u00d6\1\u00d8\2\u00d6\1\u00d7\ufff2\u00d6",
@@ -5212,9 +5230,9 @@ public class InternalSpecLexer extends Lexer {
             "",
             "\1\u010b",
             "\1\u010c",
-            "\47\u010e\1\u010d\u0083\u010e\1\u0110\uff54\u010e",
-            "\47\u0111\1\uffff\u0083\u0111\1\u0094\uff54\u0111",
-            "\47\u0092\1\u0091\u0083\u0092\1\u0094\uff54\u0092",
+            "\47\u010e\1\u010d\u0083\u010e\1\u010f\uff54\u010e",
+            "\47\u0111\1\uffff\u0083\u0111\1\u0093\uff54\u0111",
+            "\47\u0092\1\u0091\u0083\u0092\1\u0093\uff54\u0092",
             "\12\u00d6\1\u00d8\2\u00d6\1\u00d7\ufff2\u00d6",
             "\1\u00d8",
             "\47\u0113\1\u0112\u0083\u0113\1\u00d9\uff54\u0113",
@@ -5276,11 +5294,11 @@ public class InternalSpecLexer extends Lexer {
             "\73\1\uffff\32\73",
             "\1\u013f",
             "\1\u0140",
-            "\47\u0142\1\u0141\u0083\u0142\1\u0110\uff54\u0142",
-            "\47\u010e\1\u010d\u0083\u010e\1\u0110\uff54\u010e",
+            "\47\u0142\1\u0141\u0083\u0142\1\u010f\uff54\u0142",
+            "\47\u010e\1\u010d\u0083\u010e\1\u010f\uff54\u010e",
             "",
             "",
-            "\47\u0092\1\u0091\u0083\u0092\1\u0094\uff54\u0092",
+            "\47\u0092\1\u0091\u0083\u0092\1\u0093\uff54\u0092",
             "\47\u0144\1\u0143\u0083\u0144\1\u00d9\uff54\u0144",
             "\47\u0113\1\u0112\u0083\u0113\1\u00d9\uff54\u0113",
             "",
@@ -5338,8 +5356,8 @@ public class InternalSpecLexer extends Lexer {
             "\1\73\13\uffff\12\73\7\uffff\32\73\4\uffff\1\73\1\uffff\32"+
             "\73",
             "\1\u016c",
-            "\47\u016d\1\uffff\u0083\u016d\1\u0110\uff54\u016d",
-            "\47\u010e\1\u010d\u0083\u010e\1\u0110\uff54\u010e",
+            "\47\u016d\1\uffff\u0083\u016d\1\u010f\uff54\u016d",
+            "\47\u010e\1\u010d\u0083\u010e\1\u010f\uff54\u010e",
             "\47\u016e\1\uffff\u0083\u016e\1\u00d9\uff54\u016e",
             "\47\u0113\1\u0112\u0083\u0113\1\u00d9\uff54\u0113",
             "\1\u016f",
@@ -5396,7 +5414,7 @@ public class InternalSpecLexer extends Lexer {
             "",
             "\1\73\13\uffff\12\73\7\uffff\32\73\4\uffff\1\73\1\uffff\32"+
             "\73",
-            "\47\u010e\1\u010d\u0083\u010e\1\u0110\uff54\u010e",
+            "\47\u010e\1\u010d\u0083\u010e\1\u010f\uff54\u010e",
             "\47\u0113\1\u0112\u0083\u0113\1\u00d9\uff54\u0113",
             "\1\73\13\uffff\12\73\7\uffff\32\73\4\uffff\1\73\1\uffff\32"+
             "\73",
@@ -5508,13 +5526,229 @@ public class InternalSpecLexer extends Lexer {
             this.transition = DFA47_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | T__88 | T__89 | T__90 | T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | T__99 | T__100 | T__101 | T__102 | T__103 | T__104 | T__105 | T__106 | T__107 | T__108 | T__109 | T__110 | T__111 | T__112 | T__113 | T__114 | T__115 | T__116 | T__117 | T__118 | T__119 | T__120 | RULE_RICH_TEXT | RULE_RICH_TEXT_START | RULE_RICH_TEXT_END | RULE_RICH_TEXT_INBETWEEN | RULE_COMMENT_RICH_TEXT_INBETWEEN | RULE_COMMENT_RICH_TEXT_END | RULE_HEX | RULE_INT | RULE_DECIMAL | RULE_ID | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
+            return "1:1: Tokens : ( T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | T__88 | T__89 | T__90 | T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | T__99 | T__100 | T__101 | T__102 | T__103 | T__104 | T__105 | T__106 | T__107 | T__108 | T__109 | T__110 | T__111 | T__112 | T__113 | T__114 | T__115 | T__116 | T__117 | T__118 | T__119 | T__120 | RULE_ML_COMMENT | RULE_RICH_TEXT | RULE_RICH_TEXT_START | RULE_RICH_TEXT_END | RULE_RICH_TEXT_INBETWEEN | RULE_COMMENT_RICH_TEXT_INBETWEEN | RULE_COMMENT_RICH_TEXT_END | RULE_HEX | RULE_INT | RULE_DECIMAL | RULE_ID | RULE_STRING | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
+                        int LA47_365 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA47_365=='\'') ) {s = 269;}
+
+                        else if ( ((LA47_365>='\u0000' && LA47_365<='&')||(LA47_365>='(' && LA47_365<='\u00AA')||(LA47_365>='\u00AC' && LA47_365<='\uFFFF')) ) {s = 270;}
+
+                        else if ( (LA47_365=='\u00AB') ) {s = 271;}
+
+                        else s = 272;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 1 : 
+                        int LA47_212 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA47_212>='\u0000' && LA47_212<='&')||(LA47_212>='(' && LA47_212<='\u00AA')||(LA47_212>='\u00AC' && LA47_212<='\uFFFF')) ) {s = 273;}
+
+                        else if ( (LA47_212=='\u00AB') ) {s = 147;}
+
+                        else s = 148;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
+                        int LA47_149 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA47_149>='\u0000' && LA47_149<='\t')||(LA47_149>='\u000B' && LA47_149<='\f')||(LA47_149>='\u000E' && LA47_149<='\uFFFF')) ) {s = 214;}
+
+                        else if ( (LA47_149=='\r') ) {s = 215;}
+
+                        else if ( (LA47_149=='\n') ) {s = 216;}
+
+                        else s = 217;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 3 : 
+                        int LA47_322 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA47_322=='\'') ) {s = 269;}
+
+                        else if ( ((LA47_322>='\u0000' && LA47_322<='&')||(LA47_322>='(' && LA47_322<='\u00AA')||(LA47_322>='\u00AC' && LA47_322<='\uFFFF')) ) {s = 270;}
+
+                        else if ( (LA47_322=='\u00AB') ) {s = 271;}
+
+                        else s = 272;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 4 : 
+                        int LA47_52 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA47_52>='\u0000' && LA47_52<='\uFFFF')) ) {s = 144;}
+
+                        else s = 54;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 5 : 
+                        int LA47_269 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA47_269=='\'') ) {s = 321;}
+
+                        else if ( ((LA47_269>='\u0000' && LA47_269<='&')||(LA47_269>='(' && LA47_269<='\u00AA')||(LA47_269>='\u00AC' && LA47_269<='\uFFFF')) ) {s = 322;}
+
+                        else if ( (LA47_269=='\u00AB') ) {s = 271;}
+
+                        else s = 272;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 6 : 
+                        int LA47_145 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA47_145=='\'') ) {s = 212;}
+
+                        else if ( ((LA47_145>='\u0000' && LA47_145<='&')||(LA47_145>='(' && LA47_145<='\u00AA')||(LA47_145>='\u00AC' && LA47_145<='\uFFFF')) ) {s = 213;}
+
+                        else if ( (LA47_145=='\u00AB') ) {s = 147;}
+
+                        else s = 148;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 7 : 
+                        int LA47_216 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA47_216=='\'') ) {s = 274;}
+
+                        else if ( ((LA47_216>='\u0000' && LA47_216<='&')||(LA47_216>='(' && LA47_216<='\u00AA')||(LA47_216>='\u00AC' && LA47_216<='\uFFFF')) ) {s = 275;}
+
+                        else if ( (LA47_216=='\u00AB') ) {s = 217;}
+
+                        else s = 276;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 8 : 
+                        int LA47_211 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA47_211=='\'') ) {s = 269;}
+
+                        else if ( ((LA47_211>='\u0000' && LA47_211<='&')||(LA47_211>='(' && LA47_211<='\u00AA')||(LA47_211>='\u00AC' && LA47_211<='\uFFFF')) ) {s = 270;}
+
+                        else if ( (LA47_211=='\u00AB') ) {s = 271;}
+
+                        else s = 272;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 9 : 
+                        int LA47_366 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA47_366=='\'') ) {s = 274;}
+
+                        else if ( (LA47_366=='\u00AB') ) {s = 217;}
+
+                        else if ( ((LA47_366>='\u0000' && LA47_366<='&')||(LA47_366>='(' && LA47_366<='\u00AA')||(LA47_366>='\u00AC' && LA47_366<='\uFFFF')) ) {s = 275;}
+
+                        else s = 276;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 10 : 
+                        int LA47_324 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA47_324=='\'') ) {s = 274;}
+
+                        else if ( ((LA47_324>='\u0000' && LA47_324<='&')||(LA47_324>='(' && LA47_324<='\u00AA')||(LA47_324>='\u00AC' && LA47_324<='\uFFFF')) ) {s = 275;}
+
+                        else if ( (LA47_324=='\u00AB') ) {s = 217;}
+
+                        else s = 276;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 11 : 
+                        int LA47_275 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA47_275=='\'') ) {s = 274;}
+
+                        else if ( (LA47_275=='\u00AB') ) {s = 217;}
+
+                        else if ( ((LA47_275>='\u0000' && LA47_275<='&')||(LA47_275>='(' && LA47_275<='\u00AA')||(LA47_275>='\u00AC' && LA47_275<='\uFFFF')) ) {s = 275;}
+
+                        else s = 276;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 12 : 
+                        int LA47_323 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA47_323>='\u0000' && LA47_323<='&')||(LA47_323>='(' && LA47_323<='\u00AA')||(LA47_323>='\u00AC' && LA47_323<='\uFFFF')) ) {s = 366;}
+
+                        else if ( (LA47_323=='\u00AB') ) {s = 217;}
+
+                        else s = 276;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 13 : 
+                        int LA47_146 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA47_146=='\'') ) {s = 145;}
+
+                        else if ( (LA47_146=='\u00AB') ) {s = 147;}
+
+                        else if ( ((LA47_146>='\u0000' && LA47_146<='&')||(LA47_146>='(' && LA47_146<='\u00AA')||(LA47_146>='\u00AC' && LA47_146<='\uFFFF')) ) {s = 146;}
+
+                        else s = 148;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 14 : 
+                        int LA47_273 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA47_273=='\'') ) {s = 145;}
+
+                        else if ( ((LA47_273>='\u0000' && LA47_273<='&')||(LA47_273>='(' && LA47_273<='\u00AA')||(LA47_273>='\u00AC' && LA47_273<='\uFFFF')) ) {s = 146;}
+
+                        else if ( (LA47_273=='\u00AB') ) {s = 147;}
+
+                        else s = 148;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 15 : 
+                        int LA47_213 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA47_213=='\'') ) {s = 145;}
+
+                        else if ( ((LA47_213>='\u0000' && LA47_213<='&')||(LA47_213>='(' && LA47_213<='\u00AA')||(LA47_213>='\u00AC' && LA47_213<='\uFFFF')) ) {s = 146;}
+
+                        else if ( (LA47_213=='\u00AB') ) {s = 147;}
+
+                        else s = 148;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 16 : 
                         int LA47_214 = input.LA(1);
 
                         s = -1;
@@ -5528,21 +5762,33 @@ public class InternalSpecLexer extends Lexer {
 
                         if ( s>=0 ) return s;
                         break;
-                    case 1 : 
-                        int LA47_211 = input.LA(1);
+                    case 17 : 
+                        int LA47_270 = input.LA(1);
 
                         s = -1;
-                        if ( (LA47_211=='\'') ) {s = 269;}
+                        if ( (LA47_270=='\'') ) {s = 269;}
 
-                        else if ( ((LA47_211>='\u0000' && LA47_211<='&')||(LA47_211>='(' && LA47_211<='\u00AA')||(LA47_211>='\u00AC' && LA47_211<='\uFFFF')) ) {s = 270;}
+                        else if ( (LA47_270=='\u00AB') ) {s = 271;}
 
-                        else if ( (LA47_211=='\u00AB') ) {s = 272;}
+                        else if ( ((LA47_270>='\u0000' && LA47_270<='&')||(LA47_270>='(' && LA47_270<='\u00AA')||(LA47_270>='\u00AC' && LA47_270<='\uFFFF')) ) {s = 270;}
 
-                        else s = 271;
+                        else s = 272;
 
                         if ( s>=0 ) return s;
                         break;
-                    case 2 : 
+                    case 18 : 
+                        int LA47_321 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA47_321>='\u0000' && LA47_321<='&')||(LA47_321>='(' && LA47_321<='\u00AA')||(LA47_321>='\u00AC' && LA47_321<='\uFFFF')) ) {s = 365;}
+
+                        else if ( (LA47_321=='\u00AB') ) {s = 271;}
+
+                        else s = 272;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 19 : 
                         int LA47_46 = input.LA(1);
 
                         s = -1;
@@ -5550,13 +5796,39 @@ public class InternalSpecLexer extends Lexer {
 
                         else if ( ((LA47_46>='\u0000' && LA47_46<='&')||(LA47_46>='(' && LA47_46<='\u00AA')||(LA47_46>='\u00AC' && LA47_46<='\uFFFF')) ) {s = 146;}
 
-                        else if ( (LA47_46=='\u00AB') ) {s = 148;}
+                        else if ( (LA47_46=='\u00AB') ) {s = 147;}
 
-                        else s = 147;
+                        else s = 148;
 
                         if ( s>=0 ) return s;
                         break;
-                    case 3 : 
+                    case 20 : 
+                        int LA47_45 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA47_45=='\'') ) {s = 143;}
+
+                        else if ( ((LA47_45>='\u0000' && LA47_45<='&')||(LA47_45>='(' && LA47_45<='\uFFFF')) ) {s = 144;}
+
+                        else s = 54;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 21 : 
+                        int LA47_274 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA47_274=='\'') ) {s = 323;}
+
+                        else if ( ((LA47_274>='\u0000' && LA47_274<='&')||(LA47_274>='(' && LA47_274<='\u00AA')||(LA47_274>='\u00AC' && LA47_274<='\uFFFF')) ) {s = 324;}
+
+                        else if ( (LA47_274=='\u00AB') ) {s = 217;}
+
+                        else s = 276;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 22 : 
                         int LA47_0 = input.LA(1);
 
                         s = -1;
@@ -5667,260 +5939,6 @@ public class InternalSpecLexer extends Lexer {
                         else if ( ((LA47_0>='\t' && LA47_0<='\n')||LA47_0=='\r'||LA47_0==' ') ) {s = 53;}
 
                         else if ( ((LA47_0>='\u0000' && LA47_0<='\b')||(LA47_0>='\u000B' && LA47_0<='\f')||(LA47_0>='\u000E' && LA47_0<='\u001F')||LA47_0=='#'||LA47_0=='\\'||LA47_0=='`'||(LA47_0>='~' && LA47_0<='\u00AA')||(LA47_0>='\u00AC' && LA47_0<='\u00BA')||(LA47_0>='\u00BC' && LA47_0<='\uFFFF')) ) {s = 54;}
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 4 : 
-                        int LA47_52 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA47_52>='\u0000' && LA47_52<='\uFFFF')) ) {s = 144;}
-
-                        else s = 54;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 5 : 
-                        int LA47_212 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA47_212>='\u0000' && LA47_212<='&')||(LA47_212>='(' && LA47_212<='\u00AA')||(LA47_212>='\u00AC' && LA47_212<='\uFFFF')) ) {s = 273;}
-
-                        else if ( (LA47_212=='\u00AB') ) {s = 148;}
-
-                        else s = 147;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 6 : 
-                        int LA47_269 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA47_269=='\'') ) {s = 321;}
-
-                        else if ( ((LA47_269>='\u0000' && LA47_269<='&')||(LA47_269>='(' && LA47_269<='\u00AA')||(LA47_269>='\u00AC' && LA47_269<='\uFFFF')) ) {s = 322;}
-
-                        else if ( (LA47_269=='\u00AB') ) {s = 272;}
-
-                        else s = 271;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 7 : 
-                        int LA47_323 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA47_323>='\u0000' && LA47_323<='&')||(LA47_323>='(' && LA47_323<='\u00AA')||(LA47_323>='\u00AC' && LA47_323<='\uFFFF')) ) {s = 366;}
-
-                        else if ( (LA47_323=='\u00AB') ) {s = 217;}
-
-                        else s = 276;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 8 : 
-                        int LA47_149 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA47_149>='\u0000' && LA47_149<='\t')||(LA47_149>='\u000B' && LA47_149<='\f')||(LA47_149>='\u000E' && LA47_149<='\uFFFF')) ) {s = 214;}
-
-                        else if ( (LA47_149=='\r') ) {s = 215;}
-
-                        else if ( (LA47_149=='\n') ) {s = 216;}
-
-                        else s = 217;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 9 : 
-                        int LA47_45 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA47_45=='\'') ) {s = 143;}
-
-                        else if ( ((LA47_45>='\u0000' && LA47_45<='&')||(LA47_45>='(' && LA47_45<='\uFFFF')) ) {s = 144;}
-
-                        else s = 54;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 10 : 
-                        int LA47_216 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA47_216=='\'') ) {s = 274;}
-
-                        else if ( ((LA47_216>='\u0000' && LA47_216<='&')||(LA47_216>='(' && LA47_216<='\u00AA')||(LA47_216>='\u00AC' && LA47_216<='\uFFFF')) ) {s = 275;}
-
-                        else if ( (LA47_216=='\u00AB') ) {s = 217;}
-
-                        else s = 276;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 11 : 
-                        int LA47_365 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA47_365=='\'') ) {s = 269;}
-
-                        else if ( ((LA47_365>='\u0000' && LA47_365<='&')||(LA47_365>='(' && LA47_365<='\u00AA')||(LA47_365>='\u00AC' && LA47_365<='\uFFFF')) ) {s = 270;}
-
-                        else if ( (LA47_365=='\u00AB') ) {s = 272;}
-
-                        else s = 271;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 12 : 
-                        int LA47_322 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA47_322=='\'') ) {s = 269;}
-
-                        else if ( ((LA47_322>='\u0000' && LA47_322<='&')||(LA47_322>='(' && LA47_322<='\u00AA')||(LA47_322>='\u00AC' && LA47_322<='\uFFFF')) ) {s = 270;}
-
-                        else if ( (LA47_322=='\u00AB') ) {s = 272;}
-
-                        else s = 271;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 13 : 
-                        int LA47_270 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA47_270=='\'') ) {s = 269;}
-
-                        else if ( ((LA47_270>='\u0000' && LA47_270<='&')||(LA47_270>='(' && LA47_270<='\u00AA')||(LA47_270>='\u00AC' && LA47_270<='\uFFFF')) ) {s = 270;}
-
-                        else if ( (LA47_270=='\u00AB') ) {s = 272;}
-
-                        else s = 271;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 14 : 
-                        int LA47_275 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA47_275=='\'') ) {s = 274;}
-
-                        else if ( ((LA47_275>='\u0000' && LA47_275<='&')||(LA47_275>='(' && LA47_275<='\u00AA')||(LA47_275>='\u00AC' && LA47_275<='\uFFFF')) ) {s = 275;}
-
-                        else if ( (LA47_275=='\u00AB') ) {s = 217;}
-
-                        else s = 276;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 15 : 
-                        int LA47_324 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA47_324=='\'') ) {s = 274;}
-
-                        else if ( (LA47_324=='\u00AB') ) {s = 217;}
-
-                        else if ( ((LA47_324>='\u0000' && LA47_324<='&')||(LA47_324>='(' && LA47_324<='\u00AA')||(LA47_324>='\u00AC' && LA47_324<='\uFFFF')) ) {s = 275;}
-
-                        else s = 276;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 16 : 
-                        int LA47_274 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA47_274=='\'') ) {s = 323;}
-
-                        else if ( ((LA47_274>='\u0000' && LA47_274<='&')||(LA47_274>='(' && LA47_274<='\u00AA')||(LA47_274>='\u00AC' && LA47_274<='\uFFFF')) ) {s = 324;}
-
-                        else if ( (LA47_274=='\u00AB') ) {s = 217;}
-
-                        else s = 276;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 17 : 
-                        int LA47_366 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA47_366=='\'') ) {s = 274;}
-
-                        else if ( ((LA47_366>='\u0000' && LA47_366<='&')||(LA47_366>='(' && LA47_366<='\u00AA')||(LA47_366>='\u00AC' && LA47_366<='\uFFFF')) ) {s = 275;}
-
-                        else if ( (LA47_366=='\u00AB') ) {s = 217;}
-
-                        else s = 276;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 18 : 
-                        int LA47_145 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA47_145=='\'') ) {s = 212;}
-
-                        else if ( ((LA47_145>='\u0000' && LA47_145<='&')||(LA47_145>='(' && LA47_145<='\u00AA')||(LA47_145>='\u00AC' && LA47_145<='\uFFFF')) ) {s = 213;}
-
-                        else if ( (LA47_145=='\u00AB') ) {s = 148;}
-
-                        else s = 147;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 19 : 
-                        int LA47_146 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA47_146=='\'') ) {s = 145;}
-
-                        else if ( (LA47_146=='\u00AB') ) {s = 148;}
-
-                        else if ( ((LA47_146>='\u0000' && LA47_146<='&')||(LA47_146>='(' && LA47_146<='\u00AA')||(LA47_146>='\u00AC' && LA47_146<='\uFFFF')) ) {s = 146;}
-
-                        else s = 147;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 20 : 
-                        int LA47_213 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA47_213=='\'') ) {s = 145;}
-
-                        else if ( ((LA47_213>='\u0000' && LA47_213<='&')||(LA47_213>='(' && LA47_213<='\u00AA')||(LA47_213>='\u00AC' && LA47_213<='\uFFFF')) ) {s = 146;}
-
-                        else if ( (LA47_213=='\u00AB') ) {s = 148;}
-
-                        else s = 147;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 21 : 
-                        int LA47_273 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA47_273=='\'') ) {s = 145;}
-
-                        else if ( (LA47_273=='\u00AB') ) {s = 148;}
-
-                        else if ( ((LA47_273>='\u0000' && LA47_273<='&')||(LA47_273>='(' && LA47_273<='\u00AA')||(LA47_273>='\u00AC' && LA47_273<='\uFFFF')) ) {s = 146;}
-
-                        else s = 147;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 22 : 
-                        int LA47_321 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA47_321>='\u0000' && LA47_321<='&')||(LA47_321>='(' && LA47_321<='\u00AA')||(LA47_321>='\u00AC' && LA47_321<='\uFFFF')) ) {s = 365;}
-
-                        else if ( (LA47_321=='\u00AB') ) {s = 272;}
-
-                        else s = 271;
 
                         if ( s>=0 ) return s;
                         break;

@@ -116,3 +116,5 @@ ExampleColumn:
 ExampleRow: 
 	'|' {ExampleRow} (cells+=XExpression '|')*
 ;
+
+terminal ML_COMMENT: '/*' -> (!('\\')'*/');
