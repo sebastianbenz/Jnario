@@ -91,13 +91,20 @@
             &lt;goals&gt;
               &lt;goal&gt;testCompile&lt;/goal&gt;
             &lt;/goals&gt;
+         &lt;!-- optionally you can configure a different target folder --&gt;
+         &lt;!--
+         &lt;configuration&gt;
+           &lt;outputDirectory&gt;xtend-gen&lt;/outputDirectory&gt;
+         &lt;/configuration&gt;
+         --&gt;
           &lt;/execution&gt;
         &lt;/executions&gt;
       &lt;/plugin&gt;
 </code></pre>
 </p>
 </li><li><p  id="Configuring_Eclipse"><strong>Configuring Eclipse</strong>
-<p>As you see the outputDirectory can be specified to match the default of the Eclipse plug-in (xtend-gen). Of course you can also change the configuration in Eclipse to match the Maven default (generated-sources). To do so right-click on the project and select Properties or if you prefer a global setting choose Eclipse-&gt;Preferences. In the category Xtend/Compiler enter the directory name (see screenshot). It is interpreted as a relative path to the parent of the source folder, which includes the to-be-compiled Xtend file.</p>
+<p>The outputDirectory can be specified to match the default of the Eclipse plug-in (xtend-gen). You can also change the configuration in Eclipse to match the Maven default (generated-sources). To do so right-click on the project and select Properties or if you prefer a global setting choose <strong>Eclipse-&gt;Preferences</strong>. In the category <strong>Jnario/Compiler</strong> enter  the directory name (see screenshot). It is interpreted as a relative path to the parent of the source folder, which includes the to-be-compiled Xtend file.</p>
+<p align="center"><img width="500px" src="/img/tutorial/project_compiler_settings.png" alt="Configuring project specific compiler settings."/></p>
 </p>
 </li></ul>
 				</div>

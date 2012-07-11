@@ -103,6 +103,12 @@ describe "Installing Jnario"{
 		 *	            <goals>
 		 *	              <goal>testCompile</goal>
 		 *	            </goals>
+		 *              <!-- optionally you can configure a different target folder -->
+         *              <!--
+         *              <configuration>
+         *                <outputDirectory>xtend-gen</outputDirectory>
+         *              </configuration>
+         *              -->
 		 *	          </execution>
 		 *	        </executions>
 		 *	      </plugin>
@@ -115,13 +121,15 @@ describe "Installing Jnario"{
 		}
 		
 		/*
-		 * As you see the outputDirectory can be specified to match the default of 
-		 * the Eclipse plug-in (xtend-gen). Of course you can also change the 
+		 * The outputDirectory can be specified to match the default of 
+		 * the Eclipse plug-in (xtend-gen). You can also change the 
 		 * configuration in Eclipse to match the Maven default (generated-sources). 
 		 * To do so right-click on the project and select Properties or if you prefer 
-		 * a global setting choose Eclipse->Preferences. In the category Xtend/Compiler 
-		 * enter the directory name (see screenshot). It is interpreted as a relative 
+		 * a global setting choose **Eclipse->Preferences**. In the category **Jnario/Compiler** enter
+		 *  the directory name (see screenshot). It is interpreted as a relative 
 		 * path to the parent of the source folder, which includes the to-be-compiled Xtend file.
+		 * 
+		 * <p align="center"><img width="500px" src="/img/tutorial/project_compiler_settings.png" alt="Configuring project specific compiler settings."/></p>
 		 * 
 		 * @filter(.*)
 		 */
