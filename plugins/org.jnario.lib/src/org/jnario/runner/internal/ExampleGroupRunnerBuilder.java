@@ -2,6 +2,7 @@ package org.jnario.runner.internal;
 
 import java.lang.reflect.InvocationTargetException;
 
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.NameProvider;
 import org.junit.runner.RunWith;
@@ -39,12 +40,9 @@ public class ExampleGroupRunnerBuilder {
 								+ runnerType.getName());
 					}
 				}
-			} catch (InvocationTargetException e) {
-				throw new InitializationError(e.getTargetException());
-			} catch (IllegalAccessException e) {
-				throw new InitializationError(e);
-			} catch (InstantiationException e) {
-				throw new InitializationError(e);
+			} catch (Exception e) {
+				Exceptions.sneakyThrow(e);
+				return null; // not reachable
 			}
 		}
 	}
