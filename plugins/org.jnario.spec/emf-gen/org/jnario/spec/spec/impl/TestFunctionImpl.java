@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.xtend.core.xtend.impl.XtendMemberImpl;
+import org.eclipse.xtend.core.xtend.impl.XtendMemberImplCustom;
 
 import org.eclipse.xtext.xbase.XExpression;
 
@@ -33,7 +33,7 @@ import org.jnario.spec.spec.TestFunction;
  *
  * @generated
  */
-public class TestFunctionImpl extends XtendMemberImpl implements TestFunction
+public class TestFunctionImpl extends XtendMemberImplCustom implements TestFunction
 {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.

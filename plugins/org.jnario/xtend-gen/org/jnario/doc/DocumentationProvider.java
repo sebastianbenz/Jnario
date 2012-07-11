@@ -1,5 +1,6 @@
 package org.jnario.doc;
 
+import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
@@ -17,6 +18,10 @@ public class DocumentationProvider {
     String _xblockexpression = null;
     {
       final String doc = this.delegate.getDocumentation(eObject);
+      boolean _equals = Objects.equal(doc, null);
+      if (_equals) {
+        return null;
+      }
       String _replaceAll = doc.replaceAll("\\\\/\\*", "/*");
       String _replaceAll_1 = _replaceAll.replaceAll("\\\\\\*/", "*/");
       _xblockexpression = (_replaceAll_1);

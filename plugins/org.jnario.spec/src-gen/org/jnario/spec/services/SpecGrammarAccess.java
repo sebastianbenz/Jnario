@@ -1638,7 +1638,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//terminal ML_COMMENT:
-	//	"/ *"->!"\\" "* /";
+	//	"/ *"->(!"\\" "* /");
 	public TerminalRule getML_COMMENTRule() {
 		return (tML_COMMENT != null) ? tML_COMMENT : (tML_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ML_COMMENT"));
 	} 

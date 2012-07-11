@@ -4,6 +4,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.Matcher;
 import org.hamcrest.StringDescription;
 import org.jnario.doc.DocumentationProvider;
 import org.jnario.lib.Should;
@@ -35,6 +37,19 @@ public class DocumentationProviderSpec {
       return _documentationProvider;
     }
   }.apply();
+  
+  @Test
+  @Named("returns null if no comment")
+  @Order(99)
+  public void returnsNullIfNoComment() throws Exception {
+    String _documentation = this.documentation(null);
+    Matcher<?> _nullValue = CoreMatchers.nullValue();
+    boolean _doubleArrow = Should.operator_doubleArrow(_documentation, _nullValue);
+    Assert.assertTrue("\nExpected documentation(null) => nullValue but"
+     + "\n     documentation(null) is " + new StringDescription().appendValue(_documentation).toString()
+     + "\n     nullValue is " + new StringDescription().appendValue(_nullValue).toString() + "\n", _doubleArrow);
+    
+  }
   
   @Test
   @Named("returns comment")

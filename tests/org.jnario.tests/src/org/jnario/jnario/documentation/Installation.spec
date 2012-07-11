@@ -1,78 +1,74 @@
 package org.jnario.jnario.documentation
 
+/*
+ * Jnario is fully integrated into Eclipse. There are editors with syntax highlighting, 
+ * code completion, validation and debugger for each of Jnario's languages together with 
+ * an incremental compiler. However, Jnario is **not** restricted to Eclipse. Specs can 
+ *  be compiled and executed standalone, for example, using Maven.
+ */
 describe "Installing Jnario"{
 
 	/*
-	 * Xtend requires Eclipse 3.5 or higher and a Java SDK 5 or higher. Use one of the update sites 
-	 * from above to install the full SDK into your running Eclipse. If you do not yet have an Eclipse 
-	 * on your machine, you can download one of the pre-packaged distributions on the right. 
-	 * Standalone compilation is supported as well, the simplest way to do that is using the Maven plug-in.
+	 * Jnario requires Eclipse 3.5 or higher and a Java SDK 5 or higher. You can install Jnario runtime and tooling
+	 * via the [Eclipse Marketplact](http://marketplace.eclipse.org/content/jnario)
+	 * or via the following update sites: 
+	 * 
+	 * <p align="center"><code>http://www.jnario.org/updates/releases/</code></p>
+	 * 
+	 * The most recent snapshot builds can be installed via:
+	 * 
+	 * <p align="center"><code>http://www.jnario.org/updates/snapshot/</code></p>
+	 * 
+	 *  If you do not yet have an Eclipse on your machine, you can download one of the pre-packaged 
+	 * [Xtend distributions](http://www.eclipse.org/xtend/download.html). 
 	 */
-	describe "Eclipse Tooling"{
-		
-		/*
-		 * Latest Release
-		 * Latest Milestone
-		 */
+	describe "Installing the Eclipse Tooling"{
 		
 	}
 	
-	describe "Maven"{
+	describe "Using Jnario with Maven"{
 		
 		/*
 		 * The runtime library as well as a plug-in to run the compiler in a 
 		 * Maven build can be be obtained from the following Maven repository: 
 		 * http://build.eclipse.org/common/xtend/maven/.
 		 * 
-		 *     	<repositories>
-		 *      	  <repository>
-		 *     	    <id>xtend</id>
-		 *     	    <url>http://build.eclipse.org/common/xtend/maven/</url>
-		 *     	  </repository>
-		 *     	</repositories>
-		 *     	<pluginRepositories>
-		 *     	  <pluginRepository>
-		 *     	    <id>xtend</id>
-		 *     	    <url>http://build.eclipse.org/common/xtend/maven/</url>
-		 *     	  </pluginRepository>
-		 *     	</pluginRepositories>
+		 *     <repositories>
+		 *       <repository>
+		 *         <id>xtend</id>
+		 *           <url>http://build.eclipse.org/common/xtend/maven/</url>
+		 *      	</repository>
+		 *     </repositories>
+		 *     <pluginRepositories>
+		 *       <pluginRepository>
+		 *         <id>xtend</id>
+		 *         <url>http://build.eclipse.org/common/xtend/maven/</url>
+		 *       </pluginRepository>
+		 *     </pluginRepositories>
 		 * 
+		 * @filter(.*)
 		 */
 		fact "Jnario Dependencies"{
-			
+			"not yet implemented"
 		}
 		
 		/*
 		 * The XML for the dependency is:
 		 * 
 		 *     <dependency>
-		 *       <groupId>org.eclipse.xtend</groupId>
-		 *       <artifactId>org.eclipse.xtend.lib</artifactId>
-		 *       <version>2.3.0</version>
+		 *       <groupId>org.jnario</groupId>
+		 *       <artifactId>org.jnario.lib</artifactId>
+		 *       <version>0.1.0</version>
 		 *     </dependency>
+		 * 
+		 *  @filter(.*)
 		 */
 		fact "Jnario Runtime"{
-			
+			"not yet implemented"
 		}
 		
-		/*
-		 * The runtime library as well as a plug-in to run the compiler in a 
-		 * Maven build can be be obtained from the following Maven repository: 
-		 * http://build.eclipse.org/common/xtend/maven/.
-		 *
-		 *		<plugins>
-		 *	      <plugin>
-		 *         <groupId>org.jnario</groupId>
-		 *	        <artifactId>jnario-maven-plugin</artifactId>
-		 *	        <version>0.1.0-SNAPSHOT</version>
-		 *	        <executions>
-		 *	          <execution>
-		 *	            <goals>
-		 *	              <goal>testCompile</goal>
-		 *	            </goals>
-		 *	          </execution>
-		 *	        </executions>
-		 *	      </plugin>
+		/* You should also configure Surefire to execute specs and features:
+		 * 
 		 *	      <plugin>
 		 *	        <groupId>org.apache.maven.plugins</groupId>
 		 *	        <artifactId>maven-surefire-plugin</artifactId>
@@ -88,9 +84,34 @@ describe "Installing Jnario"{
 		 *	      </plugin>
 		 *	    </plugins>
 		 * 
+		 *  @filter(.*)
+		 */
+		fact "Executing specs"{
+			"not yet implemented"
+		}
+		
+		/*
+		 * You can use the Jnario plugin to compile specs from Maven:
+		 *
+		 *		<plugins>
+		 *	      <plugin>
+		 *         <groupId>org.jnario</groupId>
+		 *	        <artifactId>jnario-maven-plugin</artifactId>
+		 *	        <version>0.1.0</version>
+		 *	        <executions>
+		 *	          <execution>
+		 *	            <goals>
+		 *	              <goal>testCompile</goal>
+		 *	            </goals>
+		 *	          </execution>
+		 *	        </executions>
+		 *	      </plugin>
+		 * 
+		 * @filter(.*)
+		 * 
 		 */
 		fact "Jnario Compiler"{
-			
+			"not yet implemented"
 		}
 		
 		/*
@@ -101,9 +122,11 @@ describe "Installing Jnario"{
 		 * a global setting choose Eclipse->Preferences. In the category Xtend/Compiler 
 		 * enter the directory name (see screenshot). It is interpreted as a relative 
 		 * path to the parent of the source folder, which includes the to-be-compiled Xtend file.
+		 * 
+		 * @filter(.*)
 		 */
 		fact "Configuring Eclipse"{
-			
+			"not yet implemented"
 		}
 		
 	}

@@ -7,6 +7,10 @@ describe DocumentationProvider {
 	var comment = ""
 	val subject = new DocumentationProvider[comment]
 	
+	fact "returns null if no comment"{
+		documentation(null) => nullValue
+	}
+	
 	fact "returns comment"{
 		documentation("Hello World") => "Hello World"
 	}

@@ -14,6 +14,9 @@ class DocumentationProvider {
 	
 	def getDocumentation(EObject eObject){
 		val doc = delegate.getDocumentation(eObject)
+		if(doc == null){ 
+			return null
+		}
 		doc.replaceAll("\\\\/\\*", "/*")
 		   .replaceAll("\\\\\\*/", "*/")
 	}
