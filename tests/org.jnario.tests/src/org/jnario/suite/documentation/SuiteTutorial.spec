@@ -15,7 +15,7 @@ import static extension org.jnario.jnario.test.util.Resources.*
  *    For example, you could create a single 
  *    Jnario suite thats runs all your specifications in a project. Another possibility would
  *    be to create two different suites, one containing 
- *    all unit specifications and one containing all acceptance specifications.  
+ *    all specs and one containing all features.  
  * 2. **Documentation:** Jnario generates HTML reports for suites making them a great way to provide additional
  *    documentation. For example, you can create a suite as an overview page describing the overall architecture
  *    of an application, which then links to other specifications describing the different parts 
@@ -48,7 +48,7 @@ describe "Introducing Jnario Suites"{
 		@Inject extension ModelStore 
 		/*
 		 * A suite consists of a title and a list of references to other specifications, where 
-		 * a specification is either feature definition, a unit spec or another suite. The suite 
+		 * a specification is either feature definition, a spec or another suite. The suite 
 		 * title is defined by '**#**' followed by the title. In our example suite 
 		 * it is: `#My Suite`. Referenced specifications are listed after '**-**' by their name
 		 * in quotes. 
@@ -183,9 +183,9 @@ describe "Introducing Jnario Suites"{
 			
 			##My Specs
 			
-			...and here are all our unit specs:
+			...and here are all our specs:
 			
-			- "My Spec": this is an example unit spec.
+			- "My Spec": this is an example spec.
 			   with a multiline description.
 			'''.parseSuite.hasNoParseAndLinkingErrors
 		}

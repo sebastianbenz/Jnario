@@ -39,9 +39,9 @@ More about writing acceptance specifications in Jnario.
 	- "Using JUnit Rules in Features" 
 	- "Referencing other Steps": more facts about referencing other steps.
 
-##Unit Specs
+##Specs
 
-More about writing unit specifications in Jnario.
+More about writing specifications in Jnario.
 
 	- "Extensions": reuse setup and teardown operations in different specs.
  	- "Implicit Subject": let Jnario automatically create the spec's subject for you.'

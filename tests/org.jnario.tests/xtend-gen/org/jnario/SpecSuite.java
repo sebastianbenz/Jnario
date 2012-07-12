@@ -1,10 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2012 BMW Car IT and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
 package org.jnario;
 
 import org.jnario.runner.Contains;
@@ -39,7 +32,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(ExampleGroupRunner.class)
 @Named("Spec")
-@Contains({ OperationNameProviderSpec.class, UsingJUnitRulesInSpecsSpec.class, ExampleGroupSpec.class, BeforeSpec.class, ImplicitSubjectSpec.class, ThrowsSpec.class, SpecQualifiedNameProviderSpec.class, UsingTablesSpec.class, AssertionSpec.class, BeforeAllSpec.class, SpecDocGeneratorSpec.class, CustomizingTheSpecCreationSpec.class, AfterAllSpec.class, AnnotationsSpec.class, UsingXtendSWithOperatorSpec.class, SpecScopeProviderSpec.class, UsingShouldSpec.class, IntroducingJnarioSpecsSpec.class, AfterSpec.class, ExtensionsSpec.class, PendingSpec.class, StaticImportsSpec.class, ExampleNameProviderSpec.class, ExampleSpec.class, SpecJavaValidatorSpec.class })
+@Contains({ UsingJUnitRulesInSpecsSpec.class, OperationNameProviderSpec.class, ExampleGroupSpec.class, BeforeSpec.class, ImplicitSubjectSpec.class, ThrowsSpec.class, SpecQualifiedNameProviderSpec.class, UsingTablesSpec.class, AssertionSpec.class, BeforeAllSpec.class, SpecDocGeneratorSpec.class, CustomizingTheSpecCreationSpec.class, AfterAllSpec.class, AnnotationsSpec.class, UsingXtendSWithOperatorSpec.class, SpecScopeProviderSpec.class, UsingShouldSpec.class, IntroducingJnarioSpecsSpec.class, AfterSpec.class, ExtensionsSpec.class, PendingSpec.class, StaticImportsSpec.class, ExampleNameProviderSpec.class, ExampleSpec.class, SpecJavaValidatorSpec.class })
 @SuppressWarnings("all")
 public class SpecSuite {
 }

@@ -13,7 +13,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Subjects are implicitly created fixtures in Jnario unit specs. Fields
+ * Subjects are implicitly created fixtures in Jnario specs. Fields
  * annotated with {@link Subject} will be automatically instantiated by the
  * respective {@link SpecCreator}.
  * 

@@ -20,7 +20,7 @@ import org.jnario.lib.AbstractSpecCreator;
 public interface SpecCreator {
 
 	/**
-	 * Creates a spec or feature instance. For example, given the following unit spec:
+	 * Creates a spec or feature instance. For example, given the following spec:
 	 * 
 	 * <pre>
 	 * {@code
@@ -39,7 +39,7 @@ public interface SpecCreator {
 	<T> T createSpec(Class<T> klass) ;
 	
 	/**
-	 * Creates the subject of a spec. For example, given the following unit spec:
+	 * Creates the subject of a spec. For example, given the following spec:
 	 * 
 	 * <pre>
 	 * {@code

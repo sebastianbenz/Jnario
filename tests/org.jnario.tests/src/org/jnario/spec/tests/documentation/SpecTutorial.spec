@@ -18,7 +18,7 @@ import org.jnario.jnario.test.util.BehaviorExecutor
 import com.google.inject.Inject
  
 /*
- * This tutorial gives you an introduction on how to write unit specifications with Jnario.
+ * This tutorial gives you an introduction on how to write specifications with Jnario.
  * Jnario Specs are based on [Xtend](http://www.xtend-lang.org). it might be a good idea
  * to read the Xtend [documentation](http://www.eclipse.org/xtend/documentation/index.html) as well, 
  * because Jnario's expressions, fields, methods and extensions work exactly as in Xtend.

@@ -26,7 +26,7 @@ public class NewSpecWizard extends NewJnarioFileWizard {
 	private NewSpecWizardPageTwo fPage2;
 
 	public NewSpecWizard() {
-		super("Jnario Unit Spec");
+		super("Jnario Spec");
 	}
 
 	/*

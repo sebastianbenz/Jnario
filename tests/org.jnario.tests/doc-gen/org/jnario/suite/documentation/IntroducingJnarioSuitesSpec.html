@@ -30,7 +30,7 @@
 				<div class="span12">
 <p>Suites in Jnario serve two purposes:</p>
 <ol>
-  <li><strong>Grouping:</strong> A suite groups multiple specifications and executes them together.  For example, you could create a single  Jnario suite thats runs all your specifications in a project. Another possibility would  be to create two different suites, one containing  all unit specifications and one containing all acceptance specifications.</li>
+  <li><strong>Grouping:</strong> A suite groups multiple specifications and executes them together.  For example, you could create a single  Jnario suite thats runs all your specifications in a project. Another possibility would  be to create two different suites, one containing  all specs and one containing all features.</li>
   <li><strong>Documentation:</strong> Jnario generates HTML reports for suites making them a great way to provide additional  documentation. For example, you can create a suite as an overview page describing the overall architecture  of an application, which then links to other specifications describing the different parts  in more detail.  The overview page of the <a href="http://jnario.org/org/jnario/JnarioDocumentationSuite.html">Jnario documentation</a>  is a good example for this.</li>
 </ol>
 <h3 id="Getting_Started">Getting Started</h3>
@@ -39,7 +39,7 @@
 <p align="center"><img width="600px" src="/img/tutorial/suite_buildpath.png" alt="New Suite Error"/></p>
 </p>
 <ul><li><p  id="A_simple_Suite"><strong>A simple Suite</strong>
-<p>A suite consists of a title and a list of references to other specifications, where a specification is either feature definition, a unit spec or another suite. The suite title is defined by '<strong>#</strong>' followed by the title. In our example suite it is: <code>#My Suite</code>. Referenced specifications are listed after '<strong>-</strong>' by their name in quotes.</p><p><span class="label label-info">Info</span> In order to reference specifications defined in different packages it is necessary to add corresponding import statements. The best thing is to use the code-completion as it will automatically add the required imports.</p>
+<p>A suite consists of a title and a list of references to other specifications, where a specification is either feature definition, a spec or another suite. The suite title is defined by '<strong>#</strong>' followed by the title. In our example suite it is: <code>#My Suite</code>. Referenced specifications are listed after '<strong>-</strong>' by their name in quotes.</p><p><span class="label label-info">Info</span> In order to reference specifications defined in different packages it is necessary to add corresponding import statements. The best thing is to use the code-completion as it will automatically add the required imports.</p>
 <pre class="prettyprint lang-none">
 package demo
 
@@ -93,9 +93,9 @@ Here we list all our features...
 
 ##My Specs
 
-...and here are all our unit specs:
+...and here are all our specs:
 
-- &quot;My Spec&quot;: this is an example unit spec.
+- &quot;My Spec&quot;: this is an example spec.
    with a multiline description.</pre>
 </p>
 </li><li><p  id="Selecting_multiple_Specifications"><strong>Selecting multiple Specifications</strong>

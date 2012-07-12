@@ -1,10 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2012 BMW Car IT and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
 package org.jnario.suite.documentation;
 
 import com.google.inject.Inject;
@@ -50,7 +43,7 @@ public class IntroducingJnarioSuitesGettingStartedSpec extends IntroducingJnario
   
   /**
    * A suite consists of a title and a list of references to other specifications, where
-   * a specification is either feature definition, a unit spec or another suite. The suite
+   * a specification is either feature definition, a spec or another suite. The suite
    * title is defined by '**#**' followed by the title. In our example suite
    * it is: `#My Suite`. Referenced specifications are listed after '**-**' by their name
    * in quotes.
@@ -202,10 +195,10 @@ public class IntroducingJnarioSuitesGettingStartedSpec extends IntroducingJnario
     _builder.append("##My Specs");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("...and here are all our unit specs:");
+    _builder.append("...and here are all our specs:");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("- \"My Spec\": this is an example unit spec.");
+    _builder.append("- \"My Spec\": this is an example spec.");
     _builder.newLine();
     _builder.append("   ");
     _builder.append("with a multiline description.");

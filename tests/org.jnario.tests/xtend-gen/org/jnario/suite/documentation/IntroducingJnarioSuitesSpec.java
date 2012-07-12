@@ -1,10 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2012 BMW Car IT and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
 package org.jnario.suite.documentation;
 
 import org.jnario.jnario.test.util.SuiteTestCreator;
@@ -22,7 +15,7 @@ import org.junit.runner.RunWith;
  *    For example, you could create a single
  *    Jnario suite thats runs all your specifications in a project. Another possibility would
  *    be to create two different suites, one containing
- *    all unit specifications and one containing all acceptance specifications.
+ *    all specs and one containing all features.
  * 2. **Documentation:** Jnario generates HTML reports for suites making them a great way to provide additional
  *    documentation. For example, you can create a suite as an overview page describing the overall architecture
  *    of an application, which then links to other specifications describing the different parts

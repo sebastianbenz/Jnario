@@ -76,8 +76,8 @@ public class SuiteQuickfixProvider extends JnarioQuickFixProvider {
 						issueString = issueString.substring(1, issueString.length()-1);
 						issueResolutionAcceptor.accept(
 								issue, 
-								"New Unit Spec", 
-								"Create a new Jnario Unit Specification '" + issueString + "'", 
+								"New Spec", 
+								"Create a new Jnario Specification '" + issueString + "'", 
 								"spec_file.png", 
 								doFixMissingSpecification(root, packageFragmentRoot, issueString, newSpecWizardProvider));
 						issueResolutionAcceptor.accept(
