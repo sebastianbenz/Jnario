@@ -1,10 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2012 BMW Car IT and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
 package org.jnario.spec.tests.unit.naming;
 
 import java.util.ArrayList;
@@ -79,21 +72,21 @@ public class ExampleNameProviderToJavaClassNameSpec extends ExampleNameProviderS
     String _firstJavaClassName = this.firstJavaClassName("describe Unresolved");
     Matcher<String> _startsWith = Matchers.startsWith("UnresolvedSpec");
     boolean _doubleArrow = Should.operator_doubleArrow(_firstJavaClassName, _startsWith);
-    Assert.assertTrue("\nExpected firstJavaClassName(\"describe Unresolved\") => startsWith(\"UnresolvedSpec\") but"
+    Assert.assertTrue("\nExpected firstJavaClassName(\"describe Unresolved\")              => startsWith(\"UnresolvedSpec\") but"
      + "\n     firstJavaClassName(\"describe Unresolved\") is " + new StringDescription().appendValue(_firstJavaClassName).toString()
      + "\n     startsWith(\"UnresolvedSpec\") is " + new StringDescription().appendValue(_startsWith).toString() + "\n", _doubleArrow);
     
     String _firstJavaClassName_1 = this.firstJavaClassName("describe java.Unresolved");
     Matcher<String> _startsWith_1 = Matchers.startsWith("UnresolvedSpec");
     boolean _doubleArrow_1 = Should.operator_doubleArrow(_firstJavaClassName_1, _startsWith_1);
-    Assert.assertTrue("\nExpected firstJavaClassName(\"describe java.Unresolved\") => startsWith(\"UnresolvedSpec\") but"
+    Assert.assertTrue("\nExpected firstJavaClassName(\"describe java.Unresolved\")         => startsWith(\"UnresolvedSpec\") but"
      + "\n     firstJavaClassName(\"describe java.Unresolved\") is " + new StringDescription().appendValue(_firstJavaClassName_1).toString()
      + "\n     startsWith(\"UnresolvedSpec\") is " + new StringDescription().appendValue(_startsWith_1).toString() + "\n", _doubleArrow_1);
     
     String _firstJavaClassName_2 = this.firstJavaClassName("describe Unresolved$SubClass");
     Matcher<String> _startsWith_2 = Matchers.startsWith("SubClassSpec");
     boolean _doubleArrow_2 = Should.operator_doubleArrow(_firstJavaClassName_2, _startsWith_2);
-    Assert.assertTrue("\nExpected firstJavaClassName(\"describe Unresolved$SubClass\") => startsWith(\"SubClassSpec\") but"
+    Assert.assertTrue("\nExpected firstJavaClassName(\"describe Unresolved$SubClass\")     => startsWith(\"SubClassSpec\") but"
      + "\n     firstJavaClassName(\"describe Unresolved$SubClass\") is " + new StringDescription().appendValue(_firstJavaClassName_2).toString()
      + "\n     startsWith(\"SubClassSpec\") is " + new StringDescription().appendValue(_startsWith_2).toString() + "\n", _doubleArrow_2);
     

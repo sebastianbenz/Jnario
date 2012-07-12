@@ -38,9 +38,9 @@ describe ExampleNameProvider{
     }  
     
     fact "should prepend unresolved target type name"{
-      firstJavaClassName("describe Unresolved") => startsWith("UnresolvedSpec")
-      firstJavaClassName("describe java.Unresolved") => startsWith("UnresolvedSpec")
-      firstJavaClassName("describe Unresolved$SubClass") => startsWith("SubClassSpec")
+      firstJavaClassName("describe Unresolved")              => startsWith("UnresolvedSpec")
+      firstJavaClassName("describe java.Unresolved")         => startsWith("UnresolvedSpec")
+      firstJavaClassName("describe Unresolved$SubClass")     => startsWith("SubClassSpec")
       firstJavaClassName("describe java.Unresolved<String>") => startsWith("UnresolvedSpec")
     }  
     
