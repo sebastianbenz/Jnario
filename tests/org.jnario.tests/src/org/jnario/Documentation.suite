@@ -17,10 +17,10 @@ import spec.tests.integration.*
 
 Learn how to write specifications in Jnario. 
 
-	- "Introducing Jnario Features": \- how to write executables acceptance specifications.
-	- "Introducing Jnario Specs": \- how to write unit specifications.
+	- "Introducing Jnario Features": \- how to write cucumber\-style executables acceptance specifications.
+	- "Introducing Jnario Specs": \- how to write specifications.
 	- "Introducing Jnario Suites": \- Orchestrate and document the execution of your specs and features.
-	- "20 Facts about Xtend": \- all you need to know about Xtend.
+	- "20 Facts about Xtend": \- all you need to know about Xtend to effectively use Jnario.
 	 
 ##Common Concepts
 
