@@ -138,6 +138,17 @@
 						</lifecycleMappingMetadata>
 					</configuration>
 				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-gpg-plugin</artifactId>
+					<goals>
+						<goal>sign-and-deploy-file</goal>
+					</goals>
+					<configuration>
+						<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+						<repositoryId>sonatype-nexus-staging</repositoryId>
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
