@@ -1,5 +1,6 @@
 package org.jnario.suite.jvmmodel;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import java.util.List;
@@ -115,24 +116,32 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
   }
   
   public Iterable<JvmType> children(final Suite suite) {
-    List<JvmType> _xblockexpression = null;
+    Iterable<JvmType> _xblockexpression = null;
     {
-      final List<Specification> specs = this._specResolver.resolveSpecs(suite);
-      final Function1<Specification,String> _function = new Function1<Specification,String>() {
+      List<Specification> _resolveSpecs = this._specResolver.resolveSpecs(suite);
+      final Function1<Specification,Boolean> _function = new Function1<Specification,Boolean>() {
+          public Boolean apply(final Specification it) {
+            String _className = SuiteJvmModelInferrer.this._suiteClassNameProvider.getClassName(it);
+            boolean _notEquals = (!Objects.equal(_className, null));
+            return Boolean.valueOf(_notEquals);
+          }
+        };
+      final Iterable<Specification> specs = IterableExtensions.<Specification>filter(_resolveSpecs, _function);
+      final Function1<Specification,String> _function_1 = new Function1<Specification,String>() {
           public String apply(final Specification it) {
             String _qualifiedClassName = SuiteJvmModelInferrer.this._suiteClassNameProvider.getQualifiedClassName(it);
             return _qualifiedClassName;
           }
         };
-      final List<String> types = ListExtensions.<Specification, String>map(specs, _function);
-      final Function1<String,JvmType> _function_1 = new Function1<String,JvmType>() {
+      final Iterable<String> types = IterableExtensions.<Specification, String>map(specs, _function_1);
+      final Function1<String,JvmType> _function_2 = new Function1<String,JvmType>() {
           public JvmType apply(final String it) {
             JvmTypeReference _typeForName = SuiteJvmModelInferrer.this.types.getTypeForName(it, suite);
             JvmType _type = _typeForName==null?(JvmType)null:_typeForName.getType();
             return _type;
           }
         };
-      List<JvmType> _map = ListExtensions.<String, JvmType>map(types, _function_1);
+      Iterable<JvmType> _map = IterableExtensions.<String, JvmType>map(types, _function_2);
       _xblockexpression = (_map);
     }
     return _xblockexpression;

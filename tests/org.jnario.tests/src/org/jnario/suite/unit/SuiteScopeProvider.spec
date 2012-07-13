@@ -43,7 +43,7 @@ describe SuiteScopeProvider {
 			}
 			
 		}
-	'''.parseSpec
+		'''.parseSpec
 
 	fact "spec references are only root specs"{
 		specScope should contain "RootSpec"

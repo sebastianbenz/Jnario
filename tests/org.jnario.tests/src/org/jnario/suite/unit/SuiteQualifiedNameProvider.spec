@@ -52,6 +52,6 @@ describe SuiteQualifiedNameProvider {
 	}
 	
 	def qualifiedName(){
-		subject.getFullyQualifiedName(firstSuite).toString		
+		subject.getFullyQualifiedName(firstSuite)?.toString		
 	}
 }

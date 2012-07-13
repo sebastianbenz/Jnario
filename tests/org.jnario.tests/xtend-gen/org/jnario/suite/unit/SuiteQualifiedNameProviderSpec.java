@@ -109,7 +109,7 @@ public class SuiteQualifiedNameProviderSpec {
   public String qualifiedName() {
     Suite _firstSuite = this._modelStore.firstSuite();
     QualifiedName _fullyQualifiedName = this.subject.getFullyQualifiedName(_firstSuite);
-    String _string = _fullyQualifiedName.toString();
+    String _string = _fullyQualifiedName==null?(String)null:_fullyQualifiedName.toString();
     return _string;
   }
 }
