@@ -94,6 +94,44 @@
 </li><li><p  id="examples_forEach_subject_describe_suite_name_expectedClassName"><strong>examples.forEach[subject.^describe[suite[name]] => expectedClassName]</strong>
 </p>
 </li></ul>
+<h3 id="getQualifiedClassName_Specification">GetQualifiedClassName[Specification]</h3>
+<p></p>
+<ul><li><h4 id="examples">Examples</h4>
+<p></p>
+<table class="table table-striped table-bordered table-condensed">
+	<thead>
+		<tr>
+		<th>name</th>
+		<th>packageName</th>
+		<th>qualifiedName</th>
+		</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>null</td>
+		<td>null</td>
+		<td>null</td>
+	</tr>
+	<tr>
+		<td>&quot;#&quot;</td>
+		<td>&quot;test&quot;</td>
+		<td>null</td>
+	</tr>
+	<tr>
+		<td>&quot;#my Suite&quot;</td>
+		<td>null</td>
+		<td>&quot;MySuiteSuite&quot;</td>
+	</tr>
+	<tr>
+		<td>&quot;##My Suite \n with multiple lines&quot;</td>
+		<td>&quot;test&quot;</td>
+		<td>&quot;test.MySuiteSuite&quot;</td>
+	</tr>
+	</tbody>
+</table>
+</li><li><p  id="examples_forEach_val_actualName_subject_getQualifiedClassName_suite_name_packageName_actualName_qualifiedName"><strong>examples.forEach[ val actualName = subject.getQualifiedClassName[suite[name, packageName]] actualName => qualifiedName ]</strong>
+</p>
+</li></ul>
 				</div>
 			</div>
 		</div> <!-- /content -->

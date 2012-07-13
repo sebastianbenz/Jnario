@@ -196,15 +196,28 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
   }
   
   public String linkTo(final EObject context, final Specification spec) {
-    String _root = this.root(context);
-    String _packageName = spec.getPackageName();
-    String _replace = _packageName.replace(".", "/");
-    String _plus = (_root + _replace);
-    String _plus_1 = (_plus + "/");
-    String _className = this._suiteClassNameProvider.getClassName(spec);
-    String _htmlFileName = this.htmlFileName(_className);
-    String _plus_2 = (_plus_1 + _htmlFileName);
-    return _plus_2;
+    String _xblockexpression = null;
+    {
+      String _xifexpression = null;
+      String _packageName = spec.getPackageName();
+      boolean _equals = Objects.equal(_packageName, null);
+      if (_equals) {
+        _xifexpression = "";
+      } else {
+        String _packageName_1 = spec.getPackageName();
+        String _replace = _packageName_1.replace(".", "/");
+        _xifexpression = _replace;
+      }
+      final String path = _xifexpression;
+      String _root = this.root(context);
+      String _plus = (_root + path);
+      String _plus_1 = (_plus + "/");
+      String _className = this._suiteClassNameProvider.getClassName(spec);
+      String _htmlFileName = this.htmlFileName(_className);
+      String _plus_2 = (_plus_1 + _htmlFileName);
+      _xblockexpression = (_plus_2);
+    }
+    return _xblockexpression;
   }
   
   public String text(final Reference ref) {

@@ -32,6 +32,30 @@ public class SpecQualifiedNameProviderSpec {
   public ModelStore _modelStore;
   
   @Test
+  @Named("null if spec description is empty")
+  @Order(99)
+  public void nullIfSpecDescriptionIsEmpty() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("package test");
+    _builder.newLine();
+    _builder.append("describe \"\"{}");
+    this._modelStore.parseSpec(_builder);
+    String _qualifiedName = this.qualifiedName();
+    boolean _should_be = Should.<String>should_be(_qualifiedName, null);
+    Assert.assertTrue("\nExpected qualifiedName should be null but"
+     + "\n     qualifiedName is " + new StringDescription().appendValue(_qualifiedName).toString() + "\n", _should_be);
+    
+    StringConcatenation _builder_1 = new StringConcatenation();
+    _builder_1.append("describe \"\"{}");
+    this._modelStore.parseSpec(_builder_1);
+    String _qualifiedName_1 = this.qualifiedName();
+    boolean _should_be_1 = Should.<String>should_be(_qualifiedName_1, null);
+    Assert.assertTrue("\nExpected qualifiedName should be null but"
+     + "\n     qualifiedName is " + new StringDescription().appendValue(_qualifiedName_1).toString() + "\n", _should_be_1);
+    
+  }
+  
+  @Test
   @Named("uses spec description")
   @Order(99)
   public void usesSpecDescription() throws Exception {
@@ -106,7 +130,7 @@ public class SpecQualifiedNameProviderSpec {
   public String qualifiedName() {
     ExampleGroup _firstSpec = this._modelStore.firstSpec();
     QualifiedName _fullyQualifiedName = this.subject.getFullyQualifiedName(_firstSpec);
-    String _string = _fullyQualifiedName.toString();
+    String _string = _fullyQualifiedName==null?(String)null:_fullyQualifiedName.toString();
     return _string;
   }
 }

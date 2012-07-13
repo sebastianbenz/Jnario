@@ -38,6 +38,19 @@ describe SuiteQualifiedNameProvider {
 		qualifiedName => "test.My Suite"
 	}
 	
+	fact "handles empty packages"{
+		parseSuite('''
+			#My Suite''')
+		qualifiedName => "My Suite"
+	}
+	
+	fact "handles empty suites"{
+		parseSuite('''
+			#
+		''')
+		qualifiedName should be null
+	}
+	
 	def qualifiedName(){
 		subject.getFullyQualifiedName(firstSuite).toString		
 	}

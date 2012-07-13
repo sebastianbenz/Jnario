@@ -48,6 +48,19 @@ parseSuite('''
   #My Suite''')
 qualifiedName =&gt; &quot;test.My Suite&quot;</pre>
 </p>
+</li><li><p  id="handles_empty_packages"><strong>handles empty packages</strong>
+<pre class="prettyprint lang-spec">
+parseSuite('''
+  #My Suite''')
+qualifiedName =&gt; &quot;My Suite&quot;</pre>
+</p>
+</li><li><p  id="handles_empty_suites"><strong>handles empty suites</strong>
+<pre class="prettyprint lang-spec">
+parseSuite('''
+  #
+''')
+qualifiedName should be null</pre>
+</p>
 </li></ul>
 				</div>
 			</div>

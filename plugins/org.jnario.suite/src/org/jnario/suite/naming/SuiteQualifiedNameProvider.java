@@ -7,6 +7,7 @@
  *******************************************************************************/
 package org.jnario.suite.naming;
 
+import static org.eclipse.xtext.util.Strings.isEmpty;
 import static org.jnario.util.Strings.lastIndexOfPrefix;
 
 import org.eclipse.emf.ecore.EObject;
@@ -29,12 +30,11 @@ public class SuiteQualifiedNameProvider extends XtendQualifiedNameProvider {
 		if (obj instanceof Suite) {
 			Suite suite = (Suite)obj;
 			String lastSegment = suite.getName();
-			if(lastSegment == null){
-				return null;
-			}
 			lastSegment = Strings.firstLine(lastSegment);
 			lastSegment = trimPrefix(lastSegment);
-			
+			if(isEmpty(lastSegment)){
+				return null;
+			}
 			final String qualifiedName = (suite.getPackageName() != null ? suite.getPackageName() + "." : "")
 					+ lastSegment;
 			return qualifiedNameConverter.toQualifiedName(qualifiedName);

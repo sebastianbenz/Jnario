@@ -19,4 +19,13 @@ class Suites {
 		suite
 	}
 	
+	def static suite(String name, String packageName){
+		val suite = factory.createSuite
+		suite.name = name
+		val file = factory.createSuiteFile
+		file.^package = packageName
+		file.xtendClasses += suite 
+		suite
+	}
+	
 }

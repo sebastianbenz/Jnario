@@ -46,7 +46,7 @@ public class SpecQualifiedNameProvider extends XtendQualifiedNameProvider {
 			description = description.trim();
 			name = isEmpty(name) ? description : (name + " " + description);
 		}
-		if(name == null){
+		if(isEmpty(name)){
 			return null;
 		}
 		

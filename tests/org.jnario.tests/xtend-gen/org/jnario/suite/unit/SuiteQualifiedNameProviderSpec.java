@@ -77,6 +77,35 @@ public class SuiteQualifiedNameProviderSpec {
     
   }
   
+  @Test
+  @Named("handles empty packages")
+  @Order(99)
+  public void handlesEmptyPackages() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("#My Suite");
+    this._modelStore.parseSuite(_builder);
+    String _qualifiedName = this.qualifiedName();
+    boolean _doubleArrow = Should.operator_doubleArrow(_qualifiedName, "My Suite");
+    Assert.assertTrue("\nExpected qualifiedName => \"My Suite\" but"
+     + "\n     qualifiedName is " + new StringDescription().appendValue(_qualifiedName).toString() + "\n", _doubleArrow);
+    
+  }
+  
+  @Test
+  @Named("handles empty suites")
+  @Order(99)
+  public void handlesEmptySuites() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("#");
+    _builder.newLine();
+    this._modelStore.parseSuite(_builder);
+    String _qualifiedName = this.qualifiedName();
+    boolean _should_be = Should.<String>should_be(_qualifiedName, null);
+    Assert.assertTrue("\nExpected qualifiedName should be null but"
+     + "\n     qualifiedName is " + new StringDescription().appendValue(_qualifiedName).toString() + "\n", _should_be);
+    
+  }
+  
   public String qualifiedName() {
     Suite _firstSuite = this._modelStore.firstSuite();
     QualifiedName _fullyQualifiedName = this.subject.getFullyQualifiedName(_firstSuite);

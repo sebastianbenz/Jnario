@@ -8,10 +8,9 @@
 package org.jnario.suite.unit
 
 import org.jnario.suite.jvmmodel.SuiteClassNameProvider
-import org.jnario.suite.suite.SuiteFactory
 import org.jnario.runner.CreateWith
 import org.jnario.jnario.test.util.SuiteTestCreator
-
+import static org.jnario.jnario.test.util.Suites.*
 @CreateWith(typeof(SuiteTestCreator))
 describe SuiteClassNameProvider {
 	
@@ -38,10 +37,20 @@ describe SuiteClassNameProvider {
 		
 		fact examples.forEach[subject.^describe(suite(name)) => expectedClassName]
 	}	
- 
-	def suite(String name){
-		val suite = SuiteFactory::eINSTANCE.createSuite
-		suite.name = name
-		suite
+	
+	context getQualifiedClassName{
+		def examples{
+			| name 										| packageName 		| qualifiedName		  |
+			| null										| null			  	| null				  |
+			| "#"										| "test"			| null				  |
+			| "#my Suite"								| null				| "MySuiteSuite"			  |
+			| "##My Suite \n with multiple lines"		| "test"			| "test.MySuiteSuite" |
+		}
+		
+		fact examples.forEach[
+				val actualName = subject.getQualifiedClassName(suite(name, packageName))
+				actualName => qualifiedName
+			]
 	}
+ 
 }

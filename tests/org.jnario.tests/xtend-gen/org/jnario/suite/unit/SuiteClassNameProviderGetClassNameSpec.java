@@ -2,6 +2,7 @@ package org.jnario.suite.unit;
 
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
+import org.jnario.jnario.test.util.Suites;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.Should;
@@ -44,7 +45,7 @@ public class SuiteClassNameProviderGetClassNameSpec extends SuiteClassNameProvid
   public void examplesForEachSubjectGetClassNameSuiteNameExpectedClassName() throws Exception {
     final Procedure1<SuiteClassNameProviderGetClassNameSpecExamples> _function = new Procedure1<SuiteClassNameProviderGetClassNameSpecExamples>() {
         public void apply(final SuiteClassNameProviderGetClassNameSpecExamples it) {
-          Suite _suite = SuiteClassNameProviderGetClassNameSpec.this.suite(it.name);
+          Suite _suite = Suites.suite(it.name);
           String _className = SuiteClassNameProviderGetClassNameSpec.this.subject.getClassName(_suite);
           boolean _doubleArrow = Should.operator_doubleArrow(_className, it.expectedClassName);
           Assert.assertTrue("\nExpected subject.getClassName(suite(name)) => expectedClassName but"

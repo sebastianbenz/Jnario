@@ -7,6 +7,8 @@
  *******************************************************************************/
 package org.jnario.feature.naming;
 
+import static org.eclipse.xtext.util.Strings.isEmpty;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.naming.XtendQualifiedNameProvider;
 import org.eclipse.xtend.core.xtend.XtendFile;
@@ -33,7 +35,7 @@ public class FeatureQualifiedNameProvider extends XtendQualifiedNameProvider {
 		if (obj instanceof Step) {
 			Step step = (Step)obj;
 			String name = step.getName();
-			if(name == null){
+			if(isEmpty(name)){
 				return null;
 			}
 			name = getName(name);

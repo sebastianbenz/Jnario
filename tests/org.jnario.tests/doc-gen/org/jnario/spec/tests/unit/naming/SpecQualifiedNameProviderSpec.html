@@ -28,7 +28,18 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<ul><li><p  id="uses_spec_description"><strong>uses spec description</strong>
+<ul><li><p  id="null_if_spec_description_is_empty"><strong>null if spec description is empty</strong>
+<pre class="prettyprint lang-spec">
+parseSpec('''
+  package test
+  describe &quot;&quot;{}''')
+qualifiedName should be null
+
+parseSpec('''
+  describe &quot;&quot;{}''')
+qualifiedName should be null</pre>
+</p>
+</li><li><p  id="uses_spec_description"><strong>uses spec description</strong>
 <pre class="prettyprint lang-spec">
 parseSpec('''
   describe &quot;My Spec&quot;{}''')

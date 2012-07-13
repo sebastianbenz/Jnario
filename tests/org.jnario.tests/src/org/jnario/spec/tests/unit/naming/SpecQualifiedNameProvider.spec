@@ -18,6 +18,17 @@ describe SpecQualifiedNameProvider {
 
 	@Inject extension ModelStore
 
+	fact "null if spec description is empty"{
+		parseSpec('''
+			package test
+			describe ""{}''')
+		qualifiedName should be null
+		
+		parseSpec('''
+			describe ""{}''')
+		qualifiedName should be null
+	}
+
 	fact "uses spec description"{
 		parseSpec('''
 			describe "My Spec"{}''')
@@ -50,6 +61,6 @@ describe SpecQualifiedNameProvider {
 	}
 	
 	def qualifiedName(){
-		subject.getFullyQualifiedName(firstSpec).toString		
+		subject.getFullyQualifiedName(firstSpec)?.toString		
 	}
 }

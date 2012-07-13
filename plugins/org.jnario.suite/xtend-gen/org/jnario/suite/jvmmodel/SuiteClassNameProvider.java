@@ -68,11 +68,24 @@ public class SuiteClassNameProvider {
   }
   
   public String getQualifiedClassName(final Specification spec) {
-    String _packageName = spec.getPackageName();
-    String _plus = (_packageName + ".");
-    String _className = this.getClassName(spec);
-    String _plus_1 = (_plus + _className);
-    return _plus_1;
+    String _xblockexpression = null;
+    {
+      final String className = this.getClassName(spec);
+      boolean _isNullOrEmpty = com.google.common.base.Strings.isNullOrEmpty(className);
+      if (_isNullOrEmpty) {
+        return null;
+      }
+      String _packageName = spec.getPackageName();
+      boolean _isNullOrEmpty_1 = com.google.common.base.Strings.isNullOrEmpty(_packageName);
+      if (_isNullOrEmpty_1) {
+        return className;
+      }
+      String _packageName_1 = spec.getPackageName();
+      String _plus = (_packageName_1 + ".");
+      String _plus_1 = (_plus + className);
+      _xblockexpression = (_plus_1);
+    }
+    return _xblockexpression;
   }
   
   protected String _getClassName(final Suite suite) {

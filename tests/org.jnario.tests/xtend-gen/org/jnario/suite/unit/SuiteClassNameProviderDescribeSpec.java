@@ -2,6 +2,7 @@ package org.jnario.suite.unit;
 
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
+import org.jnario.jnario.test.util.Suites;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.Should;
@@ -44,7 +45,7 @@ public class SuiteClassNameProviderDescribeSpec extends SuiteClassNameProviderSp
   public void examplesForEachSubjectDescribeSuiteNameExpectedClassName() throws Exception {
     final Procedure1<SuiteClassNameProviderDescribeSpecExamples> _function = new Procedure1<SuiteClassNameProviderDescribeSpecExamples>() {
         public void apply(final SuiteClassNameProviderDescribeSpecExamples it) {
-          Suite _suite = SuiteClassNameProviderDescribeSpec.this.suite(it.name);
+          Suite _suite = Suites.suite(it.name);
           String _describe = SuiteClassNameProviderDescribeSpec.this.subject.describe(_suite);
           boolean _doubleArrow = Should.operator_doubleArrow(_describe, it.expectedClassName);
           Assert.assertTrue("\nExpected subject.^describe(suite(name)) => expectedClassName but"

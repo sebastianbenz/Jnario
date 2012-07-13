@@ -7,6 +7,7 @@
  *******************************************************************************/
 package org.jnario.suite.jvmmodel
 
+import static org.eclipse.xtext.util.Strings.*
 import com.google.inject.Inject
 import org.jnario.Specification
 import org.jnario.feature.feature.Feature
@@ -18,7 +19,6 @@ import org.jnario.suite.suite.Suite
 import static org.jnario.suite.jvmmodel.SuiteClassNameProvider.*
 
 import static extension com.google.common.base.Strings.*
-import static extension org.eclipse.xtext.util.Strings.*
 import static extension org.jnario.util.Strings.*
 class SuiteClassNameProvider {
 	
@@ -55,7 +55,14 @@ class SuiteClassNameProvider {
 	}
 	
 	def getQualifiedClassName(Specification spec){
-		spec.packageName + "." + spec.className
+		val className = spec.className
+		if(className.nullOrEmpty){
+			return null
+		}
+		if(spec.packageName.nullOrEmpty){
+			return className
+		}
+		spec.packageName + "." + className
 	}
 	
 	def dispatch getClassName(Suite suite){
