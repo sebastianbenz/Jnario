@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
 @RunWith(FeatureRunner.class)
 @Named("Scenario: Referencing steps with extensions")
 @SuppressWarnings("all")
-public class ExtensionsFeatureReferencingStepsWithExtensions {
+public class FeatureExtensionsFeatureReferencingStepsWithExtensions {
   @Test
   @Order(0)
   @Named("Given the number \"12\" as string")

@@ -12,9 +12,9 @@ import org.jnario.spec.tests.integration.BeforeAllSpec;
 import org.jnario.spec.tests.integration.BeforeSpec;
 import org.jnario.spec.tests.integration.CustomizingTheSpecCreationSpec;
 import org.jnario.spec.tests.integration.ExampleGroupSpec;
-import org.jnario.spec.tests.integration.ExtensionsSpec;
 import org.jnario.spec.tests.integration.ImplicitSubjectSpec;
 import org.jnario.spec.tests.integration.PendingSpec;
+import org.jnario.spec.tests.integration.SpecExtensionsSpec;
 import org.jnario.spec.tests.integration.StaticImportsSpec;
 import org.jnario.spec.tests.integration.ThrowsSpec;
 import org.jnario.spec.tests.integration.UsingJUnitRulesInSpecsSpec;
@@ -32,7 +32,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(ExampleGroupRunner.class)
 @Named("Spec")
-@Contains({ UsingJUnitRulesInSpecsSpec.class, OperationNameProviderSpec.class, ExampleGroupSpec.class, BeforeSpec.class, ImplicitSubjectSpec.class, ThrowsSpec.class, SpecQualifiedNameProviderSpec.class, UsingTablesSpec.class, AssertionSpec.class, BeforeAllSpec.class, SpecDocGeneratorSpec.class, CustomizingTheSpecCreationSpec.class, AfterAllSpec.class, AnnotationsSpec.class, UsingXtendSWithOperatorSpec.class, SpecScopeProviderSpec.class, UsingShouldSpec.class, IntroducingJnarioSpecsSpec.class, AfterSpec.class, ExtensionsSpec.class, PendingSpec.class, StaticImportsSpec.class, ExampleNameProviderSpec.class, ExampleSpec.class, SpecJavaValidatorSpec.class })
+@Contains({ OperationNameProviderSpec.class, UsingJUnitRulesInSpecsSpec.class, ExampleGroupSpec.class, BeforeSpec.class, ImplicitSubjectSpec.class, ThrowsSpec.class, SpecQualifiedNameProviderSpec.class, UsingTablesSpec.class, AssertionSpec.class, BeforeAllSpec.class, SpecDocGeneratorSpec.class, CustomizingTheSpecCreationSpec.class, AfterAllSpec.class, AnnotationsSpec.class, UsingXtendSWithOperatorSpec.class, SpecScopeProviderSpec.class, UsingShouldSpec.class, IntroducingJnarioSpecsSpec.class, AfterSpec.class, SpecExtensionsSpec.class, PendingSpec.class, StaticImportsSpec.class, ExampleNameProviderSpec.class, ExampleSpec.class, SpecJavaValidatorSpec.class })
 @SuppressWarnings("all")
 public class SpecSuite {
 }

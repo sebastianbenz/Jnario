@@ -10,7 +10,7 @@ package org.jnario.feature.tests.integration
 import static extension java.lang.Math.*
 import java.util.List
 
-Feature: Extensions
+Feature: Feature Extensions
 
 	Scenario: Using jnario predefined extensions
 		String numberString

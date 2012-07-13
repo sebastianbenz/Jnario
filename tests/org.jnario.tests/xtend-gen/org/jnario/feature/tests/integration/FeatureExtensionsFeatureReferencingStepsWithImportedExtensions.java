@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
 @RunWith(FeatureRunner.class)
 @Named("Scenario: Referencing steps with imported extensions")
 @SuppressWarnings("all")
-public class ExtensionsFeatureReferencingStepsWithImportedExtensions {
+public class FeatureExtensionsFeatureReferencingStepsWithImportedExtensions {
   @Test
   @Order(0)
   @Named("Given the value \"13.9\"")

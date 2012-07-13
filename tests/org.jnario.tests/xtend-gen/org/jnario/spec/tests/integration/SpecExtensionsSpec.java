@@ -23,9 +23,9 @@ import org.junit.runner.RunWith;
  */
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
-@Named("Extensions")
+@Named("Spec Extensions")
 @CreateWith(value = SpecTestCreator.class)
-public class ExtensionsSpec {
+public class SpecExtensionsSpec {
   @Inject
   @Extension
   public BehaviorExecutor _behaviorExecutor;

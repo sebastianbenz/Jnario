@@ -20,7 +20,7 @@ import org.junit.runner.RunWith;
 @RunWith(FeatureRunner.class)
 @Named("Scenario: Using Multiple extensions")
 @SuppressWarnings("all")
-public class ExtensionsFeatureUsingMultipleExtensions {
+public class FeatureExtensionsFeatureUsingMultipleExtensions {
   @Test
   @Order(0)
   @Named("When sorting the colors \"red, green, blue\"")

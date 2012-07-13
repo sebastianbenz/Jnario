@@ -10,6 +10,7 @@ import org.jnario.jnario.tests.integration.*
 import org.jnario.feature.tests.unit.linking.*
 import org.jnario.jnario.documentation.*
 import spec.tests.integration.*
+import org.jnario.spec.tests.integration.*
 
 #Jnario Documentation
 
@@ -35,7 +36,7 @@ Features and concepts that are common to all Jnario languages.
 
 More about writing acceptance specifications in Jnario.
 
-	- "Extensions": define setup and teardown operations in Features.
+	- "Feature Extensions": define setup and teardown operations in Features.
 	- "Using JUnit Rules in Features" 
 	- "Referencing other Steps": more facts about referencing other steps.
 
@@ -43,7 +44,7 @@ More about writing acceptance specifications in Jnario.
 
 More about writing specifications in Jnario.
 
-	- "Extensions": reuse setup and teardown operations in different specs.
+	- "Spec Extensions": reuse setup and teardown operations in different specs.
  	- "Implicit Subject": let Jnario automatically create the spec's subject for you.'
 	- "Using Tables":  define test data sets in tables.
 	- "Using JUnit Rules in Specs"

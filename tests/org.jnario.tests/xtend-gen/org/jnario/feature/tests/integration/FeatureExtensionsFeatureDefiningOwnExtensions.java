@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
 @RunWith(FeatureRunner.class)
 @Named("Scenario: Defining own extensions")
 @SuppressWarnings("all")
-public class ExtensionsFeatureDefiningOwnExtensions {
+public class FeatureExtensionsFeatureDefiningOwnExtensions {
   @Test
   @Order(0)
   @Named("Given the value \"12.5\"")

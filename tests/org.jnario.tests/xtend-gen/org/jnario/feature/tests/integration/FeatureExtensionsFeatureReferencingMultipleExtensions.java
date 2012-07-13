@@ -21,7 +21,7 @@ import org.junit.runner.RunWith;
 @RunWith(FeatureRunner.class)
 @Named("Scenario: Referencing multiple extensions")
 @SuppressWarnings("all")
-public class ExtensionsFeatureReferencingMultipleExtensions {
+public class FeatureExtensionsFeatureReferencingMultipleExtensions {
   @Test
   @Order(0)
   @Named("When sorting the colors \"yellow, red\"")

@@ -4,7 +4,7 @@ import org.jnario.feature.documentation.IntroducingJnarioFeaturesSpec;
 import org.jnario.feature.tests.integration.AccessOfVariablesFeature;
 import org.jnario.feature.tests.integration.BackgroundsFeature;
 import org.jnario.feature.tests.integration.CalculatorFeature;
-import org.jnario.feature.tests.integration.ExtensionsFeature;
+import org.jnario.feature.tests.integration.FeatureExtensionsFeature;
 import org.jnario.feature.tests.integration.FieldInferenceFeature;
 import org.jnario.feature.tests.integration.ParsingSimpleJnarioFilesFeature;
 import org.jnario.feature.tests.integration.ReferencesForStepsFeature;
@@ -29,7 +29,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(ExampleGroupRunner.class)
 @Named("Feature")
-@Contains({ FeatureTokenSourceSpec.class, IntroducingJnarioFeaturesSpec.class, CalculatorFeature.class, BackgroundsFeature.class, SetupTeardownWithFeatureExtensionsFeature.class, ReferencingOtherStepsSpec.class, UsingMatchersInFeaturesFeature.class, ParsingSimpleJnarioFilesFeature.class, AccessOfVariablesFeature.class, FeatureClassNameProviderSpec.class, TestRunnerFeature.class, UsingJUnitRulesInFeaturesFeature.class, ReferencesForStepsFeature.class, FeatureValueConverterSpec.class, StepNameProviderSpec.class, StepExpressionProviderSpec.class, StepArgumentsProviderSpec.class, StepParametersFeature.class, FieldInferenceFeature.class, FeatureJavaValidatorSpec.class, FeatureDocGeneratorSpec.class, ExtensionsFeature.class })
+@Contains({ FeatureTokenSourceSpec.class, IntroducingJnarioFeaturesSpec.class, CalculatorFeature.class, BackgroundsFeature.class, SetupTeardownWithFeatureExtensionsFeature.class, ReferencingOtherStepsSpec.class, UsingMatchersInFeaturesFeature.class, ParsingSimpleJnarioFilesFeature.class, AccessOfVariablesFeature.class, FeatureClassNameProviderSpec.class, TestRunnerFeature.class, UsingJUnitRulesInFeaturesFeature.class, ReferencesForStepsFeature.class, FeatureValueConverterSpec.class, StepNameProviderSpec.class, StepExpressionProviderSpec.class, StepArgumentsProviderSpec.class, StepParametersFeature.class, FieldInferenceFeature.class, FeatureJavaValidatorSpec.class, FeatureDocGeneratorSpec.class, FeatureExtensionsFeature.class })
 @SuppressWarnings("all")
 public class FeatureSuite {
 }

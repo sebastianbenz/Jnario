@@ -20,7 +20,7 @@ import com.google.inject.Inject
  * Extensions can be used to share common setup and tear down behavior across different specifications.
  */
 @CreateWith(typeof(SpecTestCreator))
-describe "Extensions"{
+describe "Spec Extensions"{
 	@Inject extension BehaviorExecutor
 	fact "all setup and tear down methods in extensions will be executed"{
 		execute('''

@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
 @RunWith(FeatureRunner.class)
 @Named("Scenario: Using jnario predefined extensions")
 @SuppressWarnings("all")
-public class ExtensionsFeatureUsingJnarioPredefinedExtensions {
+public class FeatureExtensionsFeatureUsingJnarioPredefinedExtensions {
   @Test
   @Order(0)
   @Named("Given the number \"5\" as string")
