@@ -31,7 +31,7 @@ describe "Introducing Jnario Features"{
    * The first example for using Jnario Features is the specification of a calculator. Start out with creating
    * a new file (**File** -> **New** -> **File**) and giving it the file extension _*.feature_.
    * 
-   * A feature file consists of the a feature and the scenarios that are the acceptance criteria for the feature.
+   * A feature file consists of a feature and the scenarios that are the acceptance criteria for the feature.
    * For the calculator the the feature description in form of a story and one scenario for adding
    * numbers looks as follows:
    * 
@@ -52,18 +52,19 @@ describe "Introducing Jnario Features"{
    * A feature consists of the name of the feature, it's narrative and a number of scenarios. The narrative can be arbitrary
    * text. You should use it to describe the rationale of the feature.
    * Those scenarios
-   * are examples for the behavior expected from the feature. For the calculator possible
-   * scenarios are, for example, addition or subtraction.
+   * are examples for the behavior expected from the feature. Possible scenarios for the calculator
+   * are, for example, addition or subtraction.
    * 
    * Each scenario is defined by the steps that describe the expected behavior. **Given** steps give
    * all the necessary information about the context of the scenario. **When** describes the action
    * and **Then** describes the expected outcome that we want to verify. You can use the keyword **And** to 
-   + split a step into different sub steps.
+   * split a step into different sub steps.
    *   
    * When you save the file an xtend-gen folder will be created and the corresponding generated java files will
-   * be created. Those files can be executed as JUnit-Tests. Right click and select **Run As** -> **JUnit Test**
+   * be created. Those files can be executed as JUnit-Tests. It is possible to run those tests directly from
+   * the feature file. Right click in the feature file after saving it and select **Run As** -> **JUnit Test**.
    * You will see the result of the run and it will be green. Since the steps from scenario are not implemented
-   * yet all the steps will be marked as _PENDING_ as an reminder that there is still work to do.
+   * yet all the steps will be marked as _PENDING_ as a reminder that there is still work to do.
    */
    describe "How to write a Feature?"{
      /*
@@ -202,6 +203,69 @@ describe "Introducing Jnario Features"{
 	          result = calculator.divide(args.first.toInt, args.second.toInt)
 	        Then it prints "2"
          '''.isSuccessful
+       }
+	}
+	
+   /*
+    * There are two different views available for features - one displaying everything
+    * including steps and their definition (code), the other one only displaying
+    * the steps and definition of arguments.
+    * To expand or collapse the definition of the steps use the feature button
+    * that you can find in the main button bar while being in a feature file.
+    */
+   describe "Views"{
+   	/*
+   	 * @filter('''|.isSuccessful)
+     * @lang(feature)
+   	 */
+       fact "Displaying step definitions"{
+       		         '''
+	       package demo
+	       import org.jnario.feature.documentation.Calculator
+
+	       Feature: Calculator
+	       
+	       Background:
+	         Calculator calculator
+	         int result
+	         Given a calculator
+	           calculator = new Calculator
+	       
+	       Scenario: Adding two numbers
+	         When adding two numbers "5" and "6". 
+	           result = calculator.add(args.first.toInt, args.second.toInt)
+	         Then it prints "11"
+	           result => args.first.toInt
+	           
+	       Scenario: Dividing two numbers
+	        When entering two numbers "10" and "5" and pressing enter. 
+	          result = calculator.divide(args.first.toInt, args.second.toInt)
+	        Then it prints "2"
+         '''.isSuccessful	
+       }
+  	/*
+   	 * @filter('''|.isSuccessful)
+     * @lang(feature)
+   	 */
+       fact "Hiding step definitions"{
+       	         '''
+	       package demo
+	       import org.jnario.feature.documentation.Calculator
+
+	       Feature: Calculator
+	       
+	       Background:
+	         Given a calculator
+	       
+	       Scenario: Adding two numbers
+	         When adding two numbers "5" and "6". 
+	         Then it prints "11"
+	           
+	       Scenario: Dividing two numbers
+	        When entering two numbers "10" and "5" and pressing enter. 
+	        Then it prints "2"
+         '''.isSuccessful
+       	
        }
    }   
   
