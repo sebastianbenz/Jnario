@@ -44,7 +44,7 @@
          ================================= -->
 	<target name="createUberjar">
 		<mkdir dir="${output.folder}" />
-		<mkdir dir="${binJarTemp}" />
+		<mkdir dir="${binJarTemp}/" />
 		<mkdir dir="${sourceJarTemp}" />
 		<!-- Jnario bundles -->
 		<fileset dir="${jnarioPluginFolder}" id="binJnarioJars">
@@ -63,7 +63,9 @@
 		<antcall target="cleanUpContent">
 			<param name="contentDir" value="${binJarTemp}" />
 		</antcall>
-
+		
+		<!-- EMF logs error if this property is not found -->
+		<echo file="${binJarTemp}/plugin.properties">_UI_DiagnosticRoot_diagnostic=_UI_DiagnosticRoot_diagnostic</echo>
 		<!-- Jar uber jar -->
 		<jar destfile="${output.folder}/org.jnario.standalone.maven-${maven.project.version}.jar" basedir="${binJarTemp}" />
 	</target>
@@ -111,11 +113,15 @@
 		<delete>
 			<fileset dir="${contentDir}">
 				<include name="about*" />
+				<include name="**/*.jar" />
 				<include name=".*" />
 				<include name="plugin.*" />
+				<include name="model" />
 				<include name="modeling32.png" />
 				<include name="**/*.ecore" />
+				<include name="**/*.genmodel" />
 				<include name="META-INF/**" />
+				<include name="OSGI-INF" />
 			</fileset>
 		</delete>
 		<delete dir="${contentDir}/about_files"/>

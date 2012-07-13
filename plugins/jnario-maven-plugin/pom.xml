@@ -5,7 +5,7 @@
 	<packaging>maven-plugin</packaging>
 	<name>Jnario Maven Plugin</name>
 	<groupId>org.jnario</groupId>
-	<version>0.1.0-SNAPSHOT</version>
+	<version>0.1.0</version>
 	<repositories>
 		<repository>
 			<id>eclipse.xtend</id>
@@ -26,7 +26,7 @@
 		<dependency>
 			<groupId>org.jnario</groupId>
 			<artifactId>org.jnario.standalone.maven</artifactId>
-			<version>0.1.0-SNAPSHOT</version>
+			<version>0.1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.xtend</groupId>
@@ -156,68 +156,6 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>1.7</version>
-				<executions>
-					<execution>
-						<phase>pre-integration-test</phase>
-						<configuration>
-							<target unless="maven.test.skip">
-								<property name="src.jar"
-									value="${project.build.directory}/${project.build.finalName}.jar" />
-								<property name="it.jar.name" value="${project.build.finalName}-it" />
-								<property name="it.jar.directory"
-									value="${project.build.directory}/${it.jar.name}" />
-								<unzip src="${src.jar}" dest="${it.jar.directory}" />
-								<replaceregexp file="${it.jar.directory}/META-INF/maven/plugin.xml"
-									match="&lt;version&gt;(.*)&lt;/version&gt;" replace="&lt;version&gt;IT-SNAPSHOT&lt;/version&gt;"
-									byline="false" />
-								<jar destfile="${project.build.directory}/${it.jar.name}.jar"
-									basedir="${it.jar.directory}" />
-							</target>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<artifactId>maven-install-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>pre-integration-test</phase>
-						<goals>
-							<goal>install-file</goal>
-						</goals>
-						<configuration>
-							<file>${project.build.directory}/${project.build.finalName}-it.jar</file>
-							<groupId>${project.groupId}</groupId>
-							<artifactId>${project.artifactId}</artifactId>
-							<version>IT-SNAPSHOT</version>
-							<packaging>maven-plugin</packaging>
-							<pomFile>pom.xml</pomFile>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>integration-test</phase>
-						<goals>
-							<goal>test</goal>
-						</goals>
-						<configuration>
-							<includes>
-								<include>**/*IT.java</include>
-							</includes>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
 				<version>2.3.2</version>
@@ -305,35 +243,24 @@ https://github.com/bmwcarit/Jnario/issues
 	</distributionManagement>
 	<profiles>
 		<profile>
-			<id>release-sign-artifacts</id>
-			<activation>
-				<property>
-					<name>performRelease</name>
-					<value>true</value>
-				</property>
-			</activation>
+			<id>stage-release</id>
 			<build>
 				<plugins>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
-						<version>1.4</version>
+						<goals>
+							<goal>sign-and-deploy-file</goal>
+						</goals>
 						<configuration>
+							<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+							<repositoryId>sonatype-nexus-staging</repositoryId>
 							<passphrase>${gpg.passphrase}</passphrase>
 						</configuration>
-						<executions>
-							<execution>
-								<id>sign-artifacts</id>
-								<phase>verify</phase>
-								<goals>
-									<goal>sign</goal>
-								</goals>
-							</execution>
-						</executions>
 					</plugin>
 				</plugins>
 			</build>
 		</profile>
 	</profiles>
-
+	<description>The Jnario spec compiler.</description>
 </project>

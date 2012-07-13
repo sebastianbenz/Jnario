@@ -6,7 +6,7 @@
 	<name>Jnario Standalone Support</name>
 	<description>The required libraries to execute Jnario specifications without Eclipse.</description>
 	<groupId>org.jnario</groupId>
-	<version>0.1.0-SNAPSHOT</version>
+	<version>0.1.0</version>
 	<repositories>
 		<repository>
 			<id>eclipse.xtend</id>
@@ -46,7 +46,7 @@
 		<dependency>
 			<groupId>org.eclipse.xtend</groupId>
 			<artifactId>org.eclipse.xtend.lib</artifactId>
-			<version>2.3.0-SNAPSHOT</version>
+			<version>2.3.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.xtend</groupId>
@@ -218,31 +218,20 @@ https://github.com/bmwcarit/Jnario/issues
 	</distributionManagement>
 	<profiles>
 		<profile>
-			<id>release-sign-artifacts</id>
-			<activation>
-				<property>
-					<name>performRelease</name>
-					<value>true</value>
-				</property>
-			</activation>
+			<id>stage-release</id>
 			<build>
 				<plugins>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
-						<version>1.4</version>
+						<goals>
+							<goal>sign-and-deploy-file</goal>
+						</goals>
 						<configuration>
+							<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+							<repositoryId>sonatype-nexus-staging</repositoryId>
 							<passphrase>${gpg.passphrase}</passphrase>
 						</configuration>
-						<executions>
-							<execution>
-								<id>sign-artifacts</id>
-								<phase>verify</phase>
-								<goals>
-									<goal>sign</goal>
-								</goals>
-							</execution>
-						</executions>
 					</plugin>
 				</plugins>
 			</build>
