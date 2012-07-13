@@ -55,7 +55,7 @@ public class SpecHighlightingCalculator extends JnarioHighlightingCalculator {
 			IHighlightedPositionAcceptor acceptor) {
 		if (exampleGroup != null) {
 			for (XtendMember member : exampleGroup.getMembers()) {
-				if (member.eClass() == XtendPackage.Literals.XTEND_FUNCTION) {
+				if (XtendPackage.Literals.XTEND_FUNCTION.isSuperTypeOf(member.eClass())) {
 					XtendFunction function = (XtendFunction) member;
 					XExpression rootExpression = function.getExpression();
 					highlightRichStrings(rootExpression, acceptor);
