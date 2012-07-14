@@ -25,6 +25,6 @@ mvn gpg:sign-and-deploy-file -Dpackaging=jar -Durl=$URL -DrepositoryId=$REPO -Dp
 cd ../..
 done
 
-echo "Successfully staged maven artifacts. Manually close & release from https://oss.sonatype.org/index.html#stagingRepositories"
+echo "Successfully staged maven artifacts. Manually close & release via https://oss.sonatype.org/index.html#stagingRepositories"
 
 exit 1 
