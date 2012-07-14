@@ -107,7 +107,11 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 	
 	def text(Reference ref){
 		switch ref{
-			SpecReference case ref.text != null : return ': ' + ref.text.markdown2Html
+			SpecReference case !ref.text?.trim.nullOrEmpty : {
+				var result = ref.text.markdown2Html
+				result = result.substring(3, result.length-4) // remove <p>..</p>
+				return ': ' + result
+			}
 		}
 		return ""
 	}

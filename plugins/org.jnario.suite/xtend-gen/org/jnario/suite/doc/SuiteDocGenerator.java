@@ -12,6 +12,7 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.jnario.Specification;
 import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.HtmlFile;
@@ -226,12 +227,18 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
       if (ref instanceof SpecReference) {
         final SpecReference _specReference = (SpecReference)ref;
         String _text = _specReference.getText();
-        boolean _notEquals = (!Objects.equal(_text, null));
-        if (_notEquals) {
+        String _trim = _text==null?(String)null:_text.trim();
+        boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(_trim);
+        boolean _not = (!_isNullOrEmpty);
+        if (_not) {
           _matched=true;
           String _text_1 = _specReference.getText();
-          String _markdown2Html = this.markdown2Html(_text_1);
-          return (": " + _markdown2Html);
+          String result = this.markdown2Html(_text_1);
+          int _length = result.length();
+          int _minus = (_length - 4);
+          String _substring = result.substring(3, _minus);
+          result = _substring;
+          return (": " + result);
         }
       }
     }

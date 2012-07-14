@@ -54,7 +54,7 @@ describe SuiteDocGenerator {
 			<p>Heading description.</p>
 			<ul>
 				<li><a href="../test/RedSpec.html">Red</a></li>
-				<li><a href="../test/BlueSpec.html">Blue</a>: <p>with a description</p></li>
+				<li><a href="../test/BlueSpec.html">Blue</a>: with a description</li>
 			</ul>
 			<span id="Subheading"><h2>Subheading</h2></span>
 			<p>Subheading description with <strong>markdown</strong>.</p>

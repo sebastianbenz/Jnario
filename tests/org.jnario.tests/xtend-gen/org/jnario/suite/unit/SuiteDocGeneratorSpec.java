@@ -94,7 +94,7 @@ public class SuiteDocGeneratorSpec {
     _builder_1.append("<li><a href=\"../test/RedSpec.html\">Red</a></li>");
     _builder_1.newLine();
     _builder_1.append("\t");
-    _builder_1.append("<li><a href=\"../test/BlueSpec.html\">Blue</a>: <p>with a description</p></li>");
+    _builder_1.append("<li><a href=\"../test/BlueSpec.html\">Blue</a>: with a description</li>");
     _builder_1.newLine();
     _builder_1.append("</ul>");
     _builder_1.newLine();
