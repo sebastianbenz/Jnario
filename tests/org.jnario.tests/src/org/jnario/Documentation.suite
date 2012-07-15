@@ -56,6 +56,6 @@ More about writing acceptance specifications in Jnario.
 More about writing specifications in Jnario.
 
 	- "Spec Extensions": reuse setup and teardown operations in different specs.
- 	- "Implicit Subject": let Jnario automatically create the spec's subject for you.'
+ 	- "Implicit Subject": let Jnario automatically create the spec's subject for you.
 	- "Using Tables":  define test data sets in tables.
 	- "Using JUnit Rules in Specs"
