@@ -14,6 +14,10 @@ import org.jnario.spec.tests.integration.*
 
 #Jnario Documentation
 
+##Installation
+
+	- "Installing Jnario": how to install Jnario.
+
 ##Getting Started
 
 Learn how to write specifications in Jnario. 

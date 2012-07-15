@@ -87,7 +87,28 @@ PR['registerLangHandler'](
 		         // A character literal has single quotes on either side
 		         [PR['PR_STRING'],      /^'(?:[^\r\n\\']|\\(?:'|[^\r\n']+))'/],
 		         [PR['PR_LITERAL'],     /^(?:(?:0(?:[0-7]+|X[0-9A-F]+))L?|(?:(?:0|[1-9][0-9]*)(?:(?:\.[0-9]+)?(?:E[+\-]?[0-9]+)?F?|L?))|\\.[0-9]+(?:E[+\-]?[0-9]+)?F?)/i],
-		         [PR['PR_COMMENT'],     /^\/(?:\/.*|\*(?:\/|\**[^*/])*(?:\*+\/?)?)/],
 		         [PR['PR_PUNCTUATION'], /^(?:\.+|\/)/]
 		        ]),
 		    ['none']);
+		    
+PR['registerLangHandler'](
+	   PR['createSimpleLexer'](
+	        [
+	         [PR['PR_PLAIN'],       /^[\t\n\r \xA0]+/, null, '\t\n\r \xA0'],
+	         // A double or single quoted, possibly multi-line, string.
+	         [PR['PR_STRING'],      /^(?:"(?:[^\"\\]|\\.)*"|'(?:[^\'\\]|\\.)*'|\[(?:[^\]\\]|\\.)*\])/, null,
+	          '"\''],
+	         [PR['PR_PUNCTUATION'], /^[!#%&()*+,\-:;<=>?@\[\\\]^{|}~]+/, null,
+	          '!#%&()*+,-:;<=>?@[\\]^{|}~']
+	        ],
+	        [
+	         // A symbol literal is a single quote followed by an identifier with no
+	         // single quote following
+	         // A character literal has single quotes on either side
+	         [PR['PR_STRING'],      /^'(?:[^\r\n\\']|\\(?:'|[^\r\n']+))'/],
+	         [PR['PR_TAG'],     	/(?:#+[^\r\n]+)\b/],
+	         [PR['PR_KEYWORD'],     /^(?:package|import)\b/],
+	         [PR['PR_LITERAL'],     /^(?:(?:0(?:[0-7]+|X[0-9A-F]+))L?|(?:(?:0|[1-9][0-9]*)(?:(?:\.[0-9]+)?(?:E[+\-]?[0-9]+)?F?|L?))|\\.[0-9]+(?:E[+\-]?[0-9]+)?F?)/i],
+	         [PR['PR_PUNCTUATION'], /^(?:\.+|\/)/]
+	        ]),
+	    ['suite']);

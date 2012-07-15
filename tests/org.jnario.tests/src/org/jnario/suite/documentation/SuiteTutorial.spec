@@ -171,7 +171,7 @@ describe "Introducing Jnario Suites"{
 
 			#My Suite
 			
-			This is the description of  suite. It is possible to use 
+			This is the description of the suite. It is possible to use 
 			[Markdown Syntax](http://daringfireball.net/projects/markdown/syntax)
 			for **formatting** the text and adding images or links. 
 			

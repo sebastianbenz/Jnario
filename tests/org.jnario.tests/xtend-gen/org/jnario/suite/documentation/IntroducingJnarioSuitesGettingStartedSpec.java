@@ -176,7 +176,7 @@ public class IntroducingJnarioSuitesGettingStartedSpec extends IntroducingJnario
     _builder.append("#My Suite");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("This is the description of  suite. It is possible to use ");
+    _builder.append("This is the description of the suite. It is possible to use ");
     _builder.newLine();
     _builder.append("[Markdown Syntax](http://daringfireball.net/projects/markdown/syntax)");
     _builder.newLine();

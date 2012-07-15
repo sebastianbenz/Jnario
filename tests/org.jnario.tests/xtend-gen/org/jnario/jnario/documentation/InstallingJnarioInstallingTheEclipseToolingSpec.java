@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 
 /**
  * Jnario requires Eclipse 3.5 or higher and a Java SDK 5 or higher. You can install Jnario runtime and tooling
- * via the [Eclipse Marketplact](http://marketplace.eclipse.org/content/jnario)
+ * via the [Eclipse Marketplace](http://marketplace.eclipse.org/content/jnario)
  * or using the following update sites:
  * 
  * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**For official releases:** <code>http://www.jnario.org/updates/releases/</code>
