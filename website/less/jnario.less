@@ -2,7 +2,6 @@
 
 body{
   // padding-bottom: 40px;
-  padding-top: 40px; /* 40px to make the container go all the way to the bottom of the topbar */
 }
 
 container>footer p {
@@ -27,7 +26,7 @@ container>footer p {
 .header {
   display:block;
   position:absolute;
-  padding-top: 40px;
+
   position: relative;
   
   background: #333; /* Old browsers */
@@ -39,8 +38,7 @@ container>footer p {
   background: radial-gradient(center, ellipse cover, #333 0%,#000 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#333', endColorstr='#000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
   
-  height:     auto !important;
-  height:     100%;
+  height:     400px;
   padding:     0 auto 100px; /* -44px being the size of the footer */
 
   @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
@@ -61,30 +59,70 @@ container>footer p {
    margin-left: 5px;
 }
 
-/* Container */
-
-.content{
-  background: #ffffed; /* Old browsers */
-  background: -moz-radial-gradient(center, ellipse cover,  #ffffed 0%, #fffefb 100%); /* FF3.6+ */
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#ffffed), color-stop(100%,#fffefb)); /* Chrome,Safari4+ */
-  background: -webkit-radial-gradient(center, ellipse cover,  #ffffed 0%,#fffefb 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-radial-gradient(center, ellipse cover,  #ffffed 0%,#fffefb 100%); /* Opera 12+ */
-  background: -ms-radial-gradient(center, ellipse cover,  #ffffed 0%,#fffefb 100%); /* IE10+ */
-  background: radial-gradient(center, ellipse cover,  #ffffed 0%,#fffefb 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffed', endColorstr='#fffefb',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-}
 
 /* Section */
 
 section {
-  border-bottom: 2px solid #ddd;
   h1, h2, h3, h4 {
     color: #444;
   }
   h1 {
-  margin-bottom: 10px;
-  margin-top: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
   }
+  padding-top: 30px;
+
+}
+
+.light{
+  background: #fdf6e3; 
+}
+
+
+.dark{
+  background: #333; /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover, #333 0%, #000 100%); /* FF3.6+ */
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#333), color-stop(100%,#000)); /* Chrome,Safari4+ */
+  background: -webkit-radial-gradient(center, ellipse cover, #333 0%,#000 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-radial-gradient(center, ellipse cover, #333 0%,#000 100%); /* Opera 12+ */
+  background: -ms-radial-gradient(center, ellipse cover, #333 0%,#000 100%); /* IE10+ */
+  background: radial-gradient(center, ellipse cover, #333 0%,#000 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#333', endColorstr='#000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  
+  color: #fdf6e3;
+
+  h1, h2, h3, h4{
+    color: #fdf6e3;    
+  }
+
+  a {
+    color: #BCD279;    
+  }
+
+  code{
+    background: #fdf6e3;
+    color: black;
+  }
+
+  pre{
+    background:#fdf6e3;
+    color: black;
+  }
+}
+
+.green{
+    background-color: #BCD279; 
+
+    h1, h2{
+      color: #fdf6e3;    
+    }
+
+    /*background-color: #A3D979; */
+}
+
+.row{
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 /* Footer */ 
@@ -123,4 +161,29 @@ footer {
 .quick-links .follow-btn {
   position: relative;
   top: 5px;
+}
+
+.flex-video {
+  position: relative;
+  padding-top: 25px;
+  padding-bottom: 67.5%;
+  height: 0;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.flex-video.widescreen { padding-bottom: 57.25%; }
+.flex-video.vimeo { padding-top: 0; }
+
+.flex-video iframe,
+.flex-video object,
+.flex-video embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+@media only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px) {
+  .flex-video { padding-top: 0; }
 }
