@@ -22,6 +22,11 @@ container>footer p {
           box-shadow: @shadow;
 }
 
+img, iframe{
+  padding: (@baseLineHeight - 1) / 2;
+  margin: 0 0 @baseLineHeight / 2;
+}
+
 .header {
   display:block;
   position:absolute;
@@ -59,7 +64,7 @@ container>footer p {
 
 /* Section */
 
-section {
+section, footer {
   h1, h2, h3, h4 {
     color: #444;
   }
