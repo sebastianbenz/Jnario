@@ -449,11 +449,6 @@
 // Button backgrounds
 // ------------------
 .buttonBackground(@startColor, @endColor) {
-  // gradientBar will set the background to a pleasing blend of these, to support IE<=9
-  .gradientBar(@startColor, @endColor);
-  *background-color: @endColor; /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-  .reset-filter();
-
   // in these cases the gradient won't cover the background, so we override
   &:hover, &:active, &.active, &.disabled, &[disabled] {
     background-color: @endColor;
@@ -465,6 +460,8 @@
   &.active {
     background-color: darken(@endColor, 10%) e("\9");
   }
+  
+  background-color: @startColor;
 }
 
 // Navbar vertical align

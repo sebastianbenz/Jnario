@@ -401,7 +401,7 @@
 }
 @media (min-width: 1200px) {
   .row {
-    margin-left: -25px;
+    margin-left: -20px;
     *zoom: 1;
   }
   .row:before,
@@ -414,81 +414,81 @@
   }
   [class*="span"] {
     float: left;
-    margin-left: 25px;
+    margin-left: 20px;
   }
   .container,
   .navbar-fixed-top .container,
   .navbar-fixed-bottom .container {
-    width: 875px;
+    width: 940px;
   }
   .span12 {
-    width: 875px;
+    width: 940px;
   }
   .span11 {
-    width: 800px;
+    width: 860px;
   }
   .span10 {
-    width: 725px;
+    width: 780px;
   }
   .span9 {
-    width: 650px;
+    width: 700px;
   }
   .span8 {
-    width: 575px;
+    width: 620px;
   }
   .span7 {
-    width: 500px;
+    width: 540px;
   }
   .span6 {
-    width: 425px;
+    width: 460px;
   }
   .span5 {
-    width: 350px;
+    width: 380px;
   }
   .span4 {
-    width: 275px;
+    width: 300px;
   }
   .span3 {
-    width: 200px;
+    width: 220px;
   }
   .span2 {
-    width: 125px;
+    width: 140px;
   }
   .span1 {
-    width: 50px;
+    width: 60px;
   }
   .offset12 {
-    margin-left: 925px;
+    margin-left: 980px;
   }
   .offset11 {
-    margin-left: 850px;
+    margin-left: 900px;
   }
   .offset10 {
-    margin-left: 775px;
+    margin-left: 820px;
   }
   .offset9 {
-    margin-left: 700px;
+    margin-left: 740px;
   }
   .offset8 {
-    margin-left: 625px;
+    margin-left: 660px;
   }
   .offset7 {
-    margin-left: 550px;
+    margin-left: 580px;
   }
   .offset6 {
-    margin-left: 475px;
+    margin-left: 500px;
   }
   .offset5 {
-    margin-left: 400px;
+    margin-left: 420px;
   }
   .offset4 {
-    margin-left: 325px;
+    margin-left: 340px;
   }
   .offset3 {
-    margin-left: 250px;
+    margin-left: 260px;
   }
   .offset2 {
-    margin-left: 175px;
+    margin-left: 180px;
   }
   .offset1 {
     margin-left: 100px;
@@ -574,40 +574,40 @@
     margin-left: 0;
   }
   input.span12, textarea.span12, .uneditable-input.span12 {
-    width: 865px;
+    width: 930px;
   }
   input.span11, textarea.span11, .uneditable-input.span11 {
-    width: 790px;
+    width: 850px;
   }
   input.span10, textarea.span10, .uneditable-input.span10 {
-    width: 715px;
+    width: 770px;
   }
   input.span9, textarea.span9, .uneditable-input.span9 {
-    width: 640px;
+    width: 690px;
   }
   input.span8, textarea.span8, .uneditable-input.span8 {
-    width: 565px;
+    width: 610px;
   }
   input.span7, textarea.span7, .uneditable-input.span7 {
-    width: 490px;
+    width: 530px;
   }
   input.span6, textarea.span6, .uneditable-input.span6 {
-    width: 415px;
+    width: 450px;
   }
   input.span5, textarea.span5, .uneditable-input.span5 {
-    width: 340px;
+    width: 370px;
   }
   input.span4, textarea.span4, .uneditable-input.span4 {
-    width: 265px;
+    width: 290px;
   }
   input.span3, textarea.span3, .uneditable-input.span3 {
-    width: 190px;
+    width: 210px;
   }
   input.span2, textarea.span2, .uneditable-input.span2 {
-    width: 115px;
+    width: 130px;
   }
   input.span1, textarea.span1, .uneditable-input.span1 {
-    width: 40px;
+    width: 50px;
   }
   .thumbnails {
     margin-left: -30px;
