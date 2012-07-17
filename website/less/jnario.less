@@ -45,18 +45,21 @@ container>footer p {
   .box-shadow(@shadow);
 }
 
-/* Images */
-
-.carousel img {
-   padding:8px;
-   border:1px solid #BCD279;
-   backround: #333;
-   .border-radius(4px);
-}
-
 #install_button{
    margin-top: -3px;
    margin-left: 5px;
+}
+
+.btn-large {
+  padding: 9px 14px;
+  font-size: 16px;
+  line-height: normal;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  width: 150px;
+  color: #333;
+  background-color: #BCD279;
 }
 
 
@@ -76,6 +79,7 @@ section {
 
 .light{
   background: #fdf6e3; 
+  color: #333;
 }
 
 
@@ -92,22 +96,15 @@ section {
     color: #BCD279;    
   }
 
-  code{
-    color: #333;
-  }
-
-  pre{
-    color: #333;
-  }
 }
 
 .green{
     background-color: #BCD279; 
 
-    h1, h2{
+    /* h1, h2, h3, h4{
       color: #fdf6e3;    
-    }
-
+    } */
+    color: #333;
     /*background-color: #A3D979; */
 }
 
@@ -118,11 +115,17 @@ section {
 /* Footer */ 
 
 footer {
-  padding-top: 50px;
-  p {
-    color: #555;
+   
+  color: #fdf6e3;
+
+  h1, h2, h3, h4{
+    color: #BCD279;    
   }
-  text-align: center
+
+  a {
+    color: #BCD279;    
+  }
+
 }
 
 /* Quick links */

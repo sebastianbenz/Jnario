@@ -18,6 +18,7 @@
 	<link href="css/jnario.min.css" rel="stylesheet">
 	<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
 	<link href="css/jnario-responsive.min.css" rel="stylesheet">
+	<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700' rel='stylesheet' type='text/css'>
 	<!-- <link
 	href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
 	rel="stylesheet" type="text/css">
@@ -42,6 +43,7 @@
 	<link rel="apple-touch-icon-precomposed"
 	href="ico/apple-touch-icon-57-precomposed.png">
 
+
 	<script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 </head>
@@ -49,26 +51,37 @@
 <body data-spy="scroll">
 	<!-- the header -->
 	<header class="header">
-		<div id="home" class="hero-unit container">
-			<h1>Jnario</h1>
-			<!--
+		<div class="container hero-unit">
+			<div class="row">
+			<div class="offset9 span1">
+				<p><a class="btn btn-primary btn-large" href="org/jnario/JnarioDocumentationSuite.html">Documentation</a></p>
+				<p><a class="btn btn-primary btn-large" href="org/jnario/JnarioDocumentationSuite.html">Download</a></p>
+				<p><a class="btn btn-primary btn-large" href="org/jnario/JnarioDocumentationSuite.html">Support</a></p>
+			</div>
+			<div id="home" class="">
+				<h1>Jnario</h1>
+				<p>Executable Specifications for java.</p>
+				
+				<!--
+				<p>
+				<a href="http://jnario.org/org/jnario/JnarioDocumentationSuite.html">
+					<button class="btn btn-primary .btn-large" href="">
+						Documentation <i class="icon-download icon-white .btn-large"></i>
+					</button>
+				</a>
+			</p>
 			<p>
-			<a href="http://jnario.org/org/jnario/JnarioDocumentationSuite.html">
-				<button class="btn btn-primary .btn-large" href="">
-					Documentation <i class="icon-download icon-white .btn-large"></i>
-				</button>
-			</a>
-		</p>
-		<p>
-			<a href="http://jnario.org/org/jnario/JnarioDocumentationSuite.html">
-				<button class="btn btn-primary .btn-large" href="">
-					Installation <i class="icon-download icon-white .btn-large"></i>
-				</button>
-			</a>
-		</p>
-		-->
-	</div>
-</header>
+				<a href="http://jnario.org/org/jnario/JnarioDocumentationSuite.html">
+					<button class="btn btn-primary .btn-large" href="">
+						Installation <i class="icon-download icon-white .btn-large"></i>
+					</button>
+				</a>
+			</p>
+			-->
+			</div>
+		</div>
+		</div>
+	</header>
 
 <!-- the content -->
 <div class="content light">
@@ -76,49 +89,43 @@
 		<section >
 			<div class="row">
 				<div class="span12">
-					<h1>Synopsis</h1>
+					<h1>Overview</h1>
 					<p>Jnario is a new test framework for Java focusing on the design and documentation aspects of testing. Jnario consists of two domain-specific languages, one for writing readable acceptance specifications, the other for clutter-free unit specifications. Together they are well suited for behavior driven development (BDD) of Java programs.</p>
 				</div>
 			</div>
-		</section>
-	</div>
-</div>
-<div class="content green">
-	<div class="container">
-		<section >
 			<div class="row">
-				<div class="span12">
-					<h1>Jnario Specs</h1>
-				</div>
-
 				<div class="span4">
-					<h4>Write Facts about your Code</h4>
-					<p>
-						Jnario Specs describe facts about your code. Facts are examples describing the intended behavior of 
-							your code. A fact can be 
-						as simple as a single expression asserting a certain property. You can use
-						<code>should</code>
-						or
-						<code>=></code>
-						to describe the desired behavior of your objects.
+					<h4>Clutter-free Specs</h4>
+					<p>Jnario specs compile to plain
+					Java classes, which are easy to understand and can be executed as normal JUnit tests. This makes Jnario really easy to integrate into existing Java projects.
 					</p>
 				</div>
 				<div class="span7 offset1">
-					<pre class="prettyprint lang-spec  linenums">
+<!--
+									<pre class="prettyprint lang-spec  linenums">
 describe "The String 'Hello World'"{
   fact "Hello World".length should be 11
   fact "Hello World" should startWith "Hello"
   fact "Hello World" should endWith "World"
   fact "Hello World" should contain "Wor"	
 }</pre>
+-->
+<pre class="prettyprint lang-spec  linenums">
+describe "The String 'Hello World'"{
+  facts "Hello World" => [
+    length should be 11
+    it should startWith "Hello"
+    it should endWith "World"
+    it should contain "Wor"
+  ]
+}</pre>
+
 				</div>
-			</div>
+			 	</div>
 			<div class="row">
 				<div class="span4">
 					<h4>Compile to Java - Run with JUnit</h4>
-					<p>
-						Jnario specs compile to plain
-					Java classes, which are easy to understand and can be executed as normal JUnit tests. This makes Jnario really easy to integrate into existing Java projects.
+					<p>Specs compile to plain Java classes and can be executed as normal JUnit tests. 
 					</p>
 				</div>
 				<div class="span7 offset1">
@@ -127,15 +134,11 @@ describe "The String 'Hello World'"{
 			<div class="row">
 				<div class="span4">
 					<h4>Full Java interoperability</h4>
-					<p>
-						Jnario is completely type-safe and its type system
-							resembles the one of Java. This
-						makes it really easy to interact with Java objects	.
-					</p>
+					<p>Jnario's type system resembles the one of Java. This makes it really easy to interact with Java.</p>
 				</div>
 				<div class="span7 offset1">
 					<pre class="prettyprint lang-spec linenums">
-import java.util.ArrayList						
+import java.util.ArrayList
 
 describe ArrayList{
   fact "adding increases size"{
@@ -147,30 +150,37 @@ describe ArrayList{
 }</pre>
 				</div>
 			</div>
-
 			<div class="row">
 				<div class="span4">
-					<h4>More about Facts</h4>
-					<p>
-						You can also add a description to you facts to 
-							make the intention more clear.
-					</p>
+					<h4>Build with Xtend</h4>
+					<p>In Jnario you can leverage the expressivness of <a href="http://www.xtend-lang.org">Xtend</a> for writing specs using closures, type inference, multi-line strings and more.</p>
 				</div>
 				<div class="span7 offset1">
 					<pre class="prettyprint lang-spec linenums">
-describe "Arithmetic"{
-  facts "about addition"{
-    1 + 1 => 2
-    3 + 2 => 5
+describe "Map/Reduce"{
+  fact "count chars in a list"{
+    val strings = list("red", "blue", "green")
+    strings.map[length].reduce[sum, size | sum + size] => 12
   }
 }</pre>
 				</div>
 			</div>
+		</section>
+	</div>
+</div>
+<div class="content green">
+	<div class="container">
+		<section >
 			<div class="row">
+				<div class="span12">
+					<h1>Unit & Integration Specs</h1>
+				</div>
+
 				<div class="span4">
+					<h4>Write Facts about your Code</h4>
 					<p>
-						As we are living in a mutable world, sometimes facts are only true in a certain context. Such contexts
-							can be described by hierarchically structuring specs.
+						Describe the intended behavior of your code using examples. Such a fact can be 
+						as simple as a single expression asserting a certain property. You can use <code>should</code> or <code>=></code> to describe the desired behavior of your objects.
 					</p>
 				</div>
 				<div class="span7 offset1">
@@ -191,7 +201,7 @@ describe Stack{
 				<div class="span4">
 					<h4>A DSL designed for Testing</h4>
 					<p>
-						Jnario is domain-specific language with the syntax being specifially tailored to the purpose of writing tests. For example, specifying different sets of input parameters with the expected output values for an algorithm is simple with Jnario's table syntax. Tables in Jnario are type safe: the type of a column will be automatically inferred to the common super type of all cells in a column.
+						Jnario syntax is specifially tailored to the purpose of writing tests. For example, specifying different sets of inputs and expected outputs is simple with Jnario's table syntax. 
 					</p>
 				</div>
 				<div class="span7 offset1">
@@ -210,9 +220,9 @@ describe "Arithmetic"{
 			</div>
 			<div class="row">
 				<div class="span4">
-					<h4>Selfexplaining Assertions</h4>
+					<h4>Self-explaining Assertions</h4>
 					<p>
-						When an assertion fails, Jnario tries to give you as much information as possible about why it has failed. A failed assertion prints the values of all evaluated sub-expressions. This means you don’t need to debug your tests anymore to find the exact reason why an assertion failed. This works out of the box, without any additional constraints such as “your source files must reside in a specific folder”.
+						When an assertion fails, Jnario tries to give you as much information as possible about why it has failed. A failed assertion prints the values of all evaluated sub-expressions. This means you don’t need to debug your tests anymore to find the exact reason why an assertion failed.
 					</p>
 				</div>
 				<div class="span7 offset1">
@@ -240,7 +250,7 @@ java.lang.AssertionError: additions failed
 		<section>
 			<div class="row">
 				<div class="span12">
-					<h1>Jnario Feature Specs</h1>
+					<h1>Acceptance Specs</h1>
 				</div>
 			</div>
 			<div class="row">
@@ -308,7 +318,7 @@ Feature: addition
 	<section id="suites">
 		<div class="row">
 			<div class="span12">
-				<h1>Jnario Suite</h1>
+				<h1>Jnario Suites</h1>
 			</div>
 		</div>
 		<div class="row">
@@ -367,7 +377,7 @@ and here we list all our features using a regular expression:
 	</section>
 </div>
 </div>
-<div class="content dark">
+<div class="content green">
 <div class="container">
 	<section>
 		<div class="row">
@@ -376,14 +386,12 @@ and here we list all our features using a regular expression:
 			</div>
 		</div>
 		<div class="row">
-			<div class="span4">
+			<div class="span12">
 				<p>
 					Learn how to write specifications in Jnario. For more information visit the
 					<a href="org/jnario/JnarioDocumentationSuite.html">official documentation</a>
 					.
 				</p>
-			</div>
-			<div class="span7 offset1">
 				<ul>
 					<li>
 						<a href="org/jnario/spec/tests/documentation/IntroducingJnarioSpecsSpec.html">Specs Tutorial</a>
@@ -406,33 +414,26 @@ and here we list all our features using a regular expression:
 			</div>
 		</div>
 		<div class="row">
-			<div class="span4">
+			<div class="span12">
 				<p>
 					The Jnario tooling can be installed via the
 					<a href="http://marketplace.eclipse.org/content/jnario">Eclipse Marketplace</a>	or update site.
 				</p>
-			</div>
-			<div class="span7 offset1">
 				<p>Official releases:&nbsp;&nbsp;
 						<strong><a href="http://www.jnario.org/updates/releases/">http://www.jnario.org/updates/releases/</a></strong></p>
 				<p>Stable Snapshots:	<strong><a href="http://www.jnario.org/updates/snapshot/">http://www.jnario.org/updates/snapshot/</a></strong></p>
 			</div>
 		</div>
 		<div class="row">
-			<div class="span4">
-				<h2>Maven Setup</h2>
-				<p>Jnario is not restricted to Eclipse. Specs can be compiled and executed standalone, for example, using Maven.</p>
-			</div>
-		</div>
-		<div class="row">
 			<div class="span12">
-				<h4>Runtime Library</h4>
+				<h2>Maven Setup</h2>
 			</div>
 		</div>
+
 		<div class="row">
 			<div class="span4">
 				<p>
-					Installing the runtime library for executing specs.
+					Installing the runtime library to execute specs.
 				</p>
 			</div>
 			<div class="span7 offset1">
@@ -443,11 +444,6 @@ and here we list all our features using a regular expression:
   &lt;version&gt;0.1.0&lt;/version&gt;
   &lt;scope&gt;test&lt;/scope&gt;
 &lt;/dependency&gt;</pre></p>
-			</div>
-		</div>
-		<div class="row">	
-			<div class="span12">
-				<h3>Compiler</h3>
 			</div>
 		</div>
 		<div class="row">
@@ -475,16 +471,12 @@ and here we list all our features using a regular expression:
 </pre></p>
 			</div>	
 		</div>
+
 		<div class="row">
-			<div class="span4">
-				<h3>Surefire Configuration</h3>
-			</div>
-		</div>
-		<div class="row">
-			<div class="span4">
+			<div class="span5">
 				<p>Configuring Surefire for executing generated specs.</p>
 			</div>
-			<div class="span7 offset1">
+			<div class="span7 ">
 					<p><pre class="prettyprint">
 &lt;plugin&gt;
   &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
@@ -501,9 +493,16 @@ and here we list all our features using a regular expression:
 </pre></p>
 			</div>
 		</div>
+	</div>
+</div>
+<!-- /container -->
+<div class="content header ">
+  <div class="container">
+	<footer>
 		<div class="row">
 			<div class="span12">
 				<h1>Support</h1>
+				<p>
 				<ul>
 					<li>
 						Submit issues and feature request at
@@ -523,7 +522,10 @@ and here we list all our features using a regular expression:
 						for the source code.
 					</li>
 				</ul>
+				</p>
 			</div>
+		</div>
+		<div class="row">
 			<div class="span12">
 				<h1>About</h1>
 
@@ -552,7 +554,7 @@ and here we list all our features using a regular expression:
 		</div>
 		<div class="row">&nbsp;</div>
 		<div class="row">&nbsp;</div>
-	</section>
+	</footer>
 </div>
 </div>
 <!-- /container -->
