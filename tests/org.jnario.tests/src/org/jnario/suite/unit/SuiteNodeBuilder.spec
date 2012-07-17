@@ -41,6 +41,7 @@ describe SuiteNodeBuilder {
 	}
 	
 	context level{
+		fact level("#")        => 1
 		fact level("#Suite")   => 1
 		fact level("##Suite")  => 2
 		fact level("###Suite") => 3 

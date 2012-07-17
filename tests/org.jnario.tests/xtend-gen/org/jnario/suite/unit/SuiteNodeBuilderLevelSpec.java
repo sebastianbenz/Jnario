@@ -21,13 +21,24 @@ public class SuiteNodeBuilderLevelSpec extends SuiteNodeBuilderSpec {
   public SuiteNodeBuilder subject;
   
   @Test
+  @Named("level[\\\"-\\\"]        => 1")
+  @Order(99)
+  public void level1() throws Exception {
+    int _level = this.level("#");
+    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_level), Integer.valueOf(1));
+    Assert.assertTrue("\nExpected level(\"#\")        => 1 but"
+     + "\n     level(\"#\") is " + new StringDescription().appendValue(Integer.valueOf(_level)).toString() + "\n", _doubleArrow);
+    
+  }
+  
+  @Test
   @Named("level[\\\"-Suite\\\"]   => 1")
   @Order(99)
   public void levelSuite1() throws Exception {
-    Integer _level = this.level("#Suite");
-    boolean _doubleArrow = Should.operator_doubleArrow(_level, Integer.valueOf(1));
+    int _level = this.level("#Suite");
+    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_level), Integer.valueOf(1));
     Assert.assertTrue("\nExpected level(\"#Suite\")   => 1 but"
-     + "\n     level(\"#Suite\") is " + new StringDescription().appendValue(_level).toString() + "\n", _doubleArrow);
+     + "\n     level(\"#Suite\") is " + new StringDescription().appendValue(Integer.valueOf(_level)).toString() + "\n", _doubleArrow);
     
   }
   
@@ -35,10 +46,10 @@ public class SuiteNodeBuilderLevelSpec extends SuiteNodeBuilderSpec {
   @Named("level[\\\"--Suite\\\"]  => 2")
   @Order(99)
   public void levelSuite2() throws Exception {
-    Integer _level = this.level("##Suite");
-    boolean _doubleArrow = Should.operator_doubleArrow(_level, Integer.valueOf(2));
+    int _level = this.level("##Suite");
+    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_level), Integer.valueOf(2));
     Assert.assertTrue("\nExpected level(\"##Suite\")  => 2 but"
-     + "\n     level(\"##Suite\") is " + new StringDescription().appendValue(_level).toString() + "\n", _doubleArrow);
+     + "\n     level(\"##Suite\") is " + new StringDescription().appendValue(Integer.valueOf(_level)).toString() + "\n", _doubleArrow);
     
   }
   
@@ -46,16 +57,16 @@ public class SuiteNodeBuilderLevelSpec extends SuiteNodeBuilderSpec {
   @Named("level[\\\"---Suite\\\"] => 3")
   @Order(99)
   public void levelSuite3() throws Exception {
-    Integer _level = this.level("###Suite");
-    boolean _doubleArrow = Should.operator_doubleArrow(_level, Integer.valueOf(3));
+    int _level = this.level("###Suite");
+    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_level), Integer.valueOf(3));
     Assert.assertTrue("\nExpected level(\"###Suite\") => 3 but"
-     + "\n     level(\"###Suite\") is " + new StringDescription().appendValue(_level).toString() + "\n", _doubleArrow);
+     + "\n     level(\"###Suite\") is " + new StringDescription().appendValue(Integer.valueOf(_level)).toString() + "\n", _doubleArrow);
     
   }
   
-  public Integer level(final String name) {
+  public int level(final String name) {
     Suite _suite = this.suite(name);
-    Integer _level = this.subject.level(_suite);
+    int _level = this.subject.level(_suite);
     return _level;
   }
 }

@@ -89,14 +89,14 @@ public class SuiteNodeBuilder {
       return null;
     }
     Suite _get = suites.get(i);
-    final Integer current = this.level(_get);
+    final int current = this.level(_get);
     int _minus = (i - 1);
     IntegerRange _upTo = new IntegerRange(_minus, 0);
     for (final Integer j : _upTo) {
       {
         final Suite candidate = suites.get((j).intValue());
-        Integer _level = this.level(candidate);
-        boolean _greaterThan = (current.compareTo(_level) > 0);
+        int _level = this.level(candidate);
+        boolean _greaterThan = (current > _level);
         if (_greaterThan) {
           return candidate;
         }
@@ -105,17 +105,26 @@ public class SuiteNodeBuilder {
     return null;
   }
   
-  public Integer level(final Suite suite) {
+  public int level(final Suite suite) {
     final String name = suite.getName();
+    int i = 0;
     int _length = name.length();
-    IntegerRange _upTo = new IntegerRange(0, _length);
-    for (final Integer i : _upTo) {
-      char _charAt = name.charAt((i).intValue());
-      boolean _notEquals = (_charAt != SuiteNodeBuilder.PREFIX);
-      if (_notEquals) {
-        return i;
+    boolean _lessThan = (i < _length);
+    boolean _while = _lessThan;
+    while (_while) {
+      {
+        char _charAt = name.charAt(i);
+        boolean _notEquals = (_charAt != SuiteNodeBuilder.PREFIX);
+        if (_notEquals) {
+          return i;
+        }
+        int _plus = (i + 1);
+        i = _plus;
       }
+      int _length_1 = name.length();
+      boolean _lessThan_1 = (i < _length_1);
+      _while = _lessThan_1;
     }
-    return Integer.valueOf((-1));
+    return i;
   }
 }

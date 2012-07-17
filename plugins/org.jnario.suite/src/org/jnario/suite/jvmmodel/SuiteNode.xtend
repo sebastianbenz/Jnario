@@ -69,12 +69,14 @@ class SuiteNodeBuilder{
 	
 	def level(Suite suite){
 		val name = suite.name
-		for (i : 0..name.length){
+		var i = 0
+		while (i < name.length){
 			if(name.charAt(i) != PREFIX){
 				return i
 			}
+			i = i + 1
 		}
-		return -1
+		return i
 	}
 	
 }
