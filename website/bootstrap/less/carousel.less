@@ -5,7 +5,6 @@
   position: relative;
   margin-bottom: @baseLineHeight;
   line-height: 1;
-  vertical-align: middle;   
 }
 
 .carousel-inner {
@@ -15,8 +14,7 @@
 }
 
 .carousel {
-  padding-top: 40px;
-  
+
   .item {
     display: none;
     position: relative;
@@ -27,8 +25,6 @@
   .item > img {
     display: block;
     line-height: 1;
-    margin-left: auto;
-    margin-right: auto;
   }
 
   .active,
@@ -72,7 +68,7 @@
 .carousel-control {
   position: absolute;
   top: 40%;
-  left: -15px;
+  left: 15px;
   width: 40px;
   height: 40px;
   margin-top: -20px;
@@ -96,7 +92,7 @@
   // Reposition the right one
   &.right {
     left: auto;
-    right: -15px;
+    right: 15px;
   }
 
   // Hover state
@@ -107,18 +103,17 @@
   }
 }
 
-
 // Caption for text below images
 // -----------------------------
 
 .carousel-caption {
-  position: relative;
+  position: absolute;
   left: 0;
   right: 0;
-  text-align: center;
-  bottom: 0px;
+  bottom: 0;
   padding: 10px 15px 5px;
-  //background: rgba(0,0,0,.75);
+  background: @grayDark;
+  background: rgba(0,0,0,.75);
 }
 .carousel-caption h4,
 .carousel-caption p {
