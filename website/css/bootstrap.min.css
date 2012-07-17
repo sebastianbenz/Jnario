@@ -1,12 +1,15 @@
 
-img,iframe{padding:9px;margin:0 0 9.5px;}
+img,iframe{padding:0;padding-bottom:20px;float:right;border-width:1px;border-color:black;}
 .header{display:block;position:relative;background:#333;background:-moz-radial-gradient(center, ellipse cover, #333333 0%, #000000 100%);background:-webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #333333), color-stop(100%, #000000));background:-webkit-radial-gradient(center, ellipse cover, #333333 0%, #000000 100%);background:-o-radial-gradient(center, ellipse cover, #333333 0%, #000000 100%);background:-ms-radial-gradient(center, ellipse cover, #333333 0%, #000000 100%);background:radial-gradient(center, ellipse cover, #333333 0%, #000000 100%);filter:progid:dximagetransform.microsoft.gradient(startColorstr='#333', endColorstr='#000', GradientType=1);height:400px;padding:0 auto 100px;-webkit-box-shadow:0 1px 3px rgba(0, 0, 0, 0.25),inset 0 -1px 0 rgba(0, 0, 0, 0.1);-moz-box-shadow:0 1px 3px rgba(0, 0, 0, 0.25),inset 0 -1px 0 rgba(0, 0, 0, 0.1);box-shadow:0 1px 3px rgba(0, 0, 0, 0.25),inset 0 -1px 0 rgba(0, 0, 0, 0.1);-webkit-box-shadow:0 1px 3px rgba(0, 0, 0, 0.25),inset 0 -1px 0 rgba(0, 0, 0, 0.1);-moz-box-shadow:0 1px 3px rgba(0, 0, 0, 0.25),inset 0 -1px 0 rgba(0, 0, 0, 0.1);box-shadow:0 1px 3px rgba(0, 0, 0, 0.25),inset 0 -1px 0 rgba(0, 0, 0, 0.1);}
+.shadow{-moz-box-shadow:3px 3px 4px #000;-webkit-box-shadow:3px 3px 4px #000;box-shadow:3px 3px 4px #000;-ms-filter:"progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";filter:progid:dximagetransform.microsoft.shadow(Strength=4, Direction=135, Color='#000000');}
 section,footer{padding-top:30px;}section h1,footer h1,section h2,footer h2,section h3,footer h3,section h4,footer h4{color:#444;}
 section h1,footer h1{margin-bottom:10px;margin-top:10px;}
 .light{background:#fdf6e3;color:#333;}
 .dark{background:#333;color:#fdf6e3;}.dark h1,.dark h2,.dark h3,.dark h4{color:#BCD279;}
 .dark a{color:#BCD279;}
 .green{background-color:#BCD279;color:#333;}.green code{background-color:#BCD279;border-width:0px;}
+.green pre{border-width:0px;}
+.green a{color:#333;text-decoration:underline;}
 .row{padding-top:0px;}
 footer{color:#fdf6e3;padding-bottom:40px;}footer h1,footer h2,footer h3,footer h4{color:#BCD279;}
 footer a{color:#BCD279;}
