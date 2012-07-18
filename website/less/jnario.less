@@ -21,9 +21,11 @@ body{
 
 img, iframe{
   padding:0;
-  padding-bottom: 20px;
+  margin-bottom: 20px;
   float:right;
 }
+
+
 
 .header {
   display:block;
@@ -44,16 +46,10 @@ img, iframe{
   .box-shadow(@shadow);
 }
 
-.shadow {
-  -moz-box-shadow: 3px 3px 4px #000;
-  -webkit-box-shadow: 3px 3px 4px #000;
-  box-shadow: 3px 3px 4px #000;
-  /* For IE 8 */
-  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
-  /* For IE 5.5 - 7 */
-  filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+img{
+  @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
+  .box-shadow(@shadow);
 }
-
 
 /* Section */
 
@@ -132,7 +128,6 @@ footer {
     color: #BCD279;    
   }
 
-  padding-bottom: 40px;
 }
 
 /* Quick links */

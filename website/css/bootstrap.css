@@ -12,10 +12,8 @@
 img,
 iframe {
   padding: 0;
-  padding-bottom: 20px;
+  margin-bottom: 20px;
   float: right;
-  border-width: 1px;
-  border-color: black;
 }
 .header {
   display: block;
@@ -55,16 +53,13 @@ iframe {
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
-.shadow {
-  -moz-box-shadow: 3px 3px 4px #000;
-  -webkit-box-shadow: 3px 3px 4px #000;
-  box-shadow: 3px 3px 4px #000;
-  /* For IE 8 */
-
-  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
-  /* For IE 5.5 - 7 */
-
-  filter: progid:dximagetransform.microsoft.shadow(Strength=4, Direction=135, Color='#000000');
+img {
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
 /* Section */
 section,
@@ -131,7 +126,6 @@ footer h1 {
 }
 /* Footer */footer {
   color: #fdf6e3;
-  padding-bottom: 40px;
 }
 footer h1,
 footer h2,

@@ -100,19 +100,10 @@
 		<section >
 			<div class="row">
 				<div class="span4">
-					<h3>Write clutter-free Specs</h3>
-					<p>Jnario provides severals languages, specifically designed for the purpose of specifying the behavior of your applications. </p>
+					<h3>Clutter-free Specs for Java</h3>
+					<p>Jnario is a language making it possible to write concise tests effectively documenting the behavior of your Java programs.</p>
 				</div>
 				<div class="span7 offset1">
-<!--
-									<pre class="prettyprint lang-spec  linenums">
-describe "The String 'Hello World'"{
-  fact "Hello World".length should be 11
-  fact "Hello World" should startWith "Hello"
-  fact "Hello World" should endWith "World"
-  fact "Hello World" should contain "Wor"	
-}</pre>
--->
 <pre class="prettyprint lang-spec  linenums">
 describe "The String 'Hello World'"{
   facts "about Hello World" => [
@@ -124,11 +115,31 @@ describe "The String 'Hello World'"{
 }</pre>
 
 				</div>
-			 	</div>
+			   </div>
+			<div class="row">
+				<div class="span4">
+					<h3>Specify executable Scenarios</h3>
+					<p>Jnario features a second language for writing executable acceptance specifications in a business-readable textual format.</p>
+				</div>
+				<div class="span7 offset1">
+<pre class="prettyprint lang-feature  linenums">
+Feature: Jnario Introduction
+  In order to demonstrate Jnario
+  As a Developer
+  I want the Jnario homepage to show examples 
+
+  Scenario: Example on Homepage
+    Given the Jnario homepage
+    When I open it in the browser
+    Then it should show an example specification
+</pre>
+
+				</div>
+			   </div>
 			<div class="row">
 				<div class="span4">
 					<h3>Compile to Java - run with JUnit</h3>
-					<p>Jnario is easy to integrate into existin projects as specs compile into idiomatic Java source code being executable with Junit. 
+					<p>Jnario is easy to integrate into existing projects as specs compile into idiomatic Java source code being executable with Junit. 
 					</p>
 				</div>
 				<div class="span7 offset1">
@@ -137,7 +148,7 @@ describe "The String 'Hello World'"{
 			<div class="row">
 				<div class="span4">
 					<h3>Full Java interoperability</h3>
-					<p>Jnario's type system resembles the one of Java making it really easy to interact with Java objects.</p>
+					<p>Jnario's type system resembles the one of Java making it easy to interact with Java objects.</p>
 				</div>
 				<div class="span7 offset1">
 					<pre class="prettyprint lang-spec linenums">
@@ -156,14 +167,14 @@ describe ArrayList{
 			<div class="row">
 				<div class="span4">
 					<h3>Built with Xtend</h3>
-					<p>In Jnario you can leverage the expressivness of <a href="http://www.xtend-lang.org">Xtend</a> for writing specs using closures, type inference, multi-line strings and <a href="org/jnario/jnario/documentation/20FactsAboutXtendSpec.html">more...</a></p>
+					<p>Jnario you can leverage the expressivness of <a href="http://www.xtend-lang.org">Xtend</a> for writing specs using closures, type inference, multi-line strings and <a href="org/jnario/jnario/documentation/20FactsAboutXtendSpec.html">more...</a></p>
 				</div>
 				<div class="span7 offset1">
 					<pre class="prettyprint lang-spec linenums">
 describe "Map/Reduce"{
   fact "count chars in a list"{
     val l = list("red", "blue", "green")
-    l.map[length].reduce[sum, size | sum + size] => 12
+    l.map[length].reduce[sum, length | sum + length] => 12
   }
 }</pre>
 				</div>
@@ -307,8 +318,8 @@ Feature: addition
 						Mixing code and text in your specs is not a problem, as you can hide the code in the editor to improve readability. 
 					</p>
 				</div>
-				<div class="span7 offset1">
-					<iframe src="http://player.vimeo.com/video/45933775?title=0&byline=0&portrait=0" width="540" height="340" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+				<div class="span7 offset1" >
+					<iframe  src="http://player.vimeo.com/video/45933775?title=0&byline=0&portrait=0" width="540" height="340" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 				</div>
 			</div>
 		</div>
@@ -327,7 +338,7 @@ Feature: addition
 			<div class="span4">
 				<h3>Orchestrate Spec execution</h3>
 				<p>
-					A suite groups multiple specifications and executes them together. For example, create a single Jnario suite thats runs all your specifications in a project or create two different suites, one running all unit specifications and one running all acceptance specifications.
+					Use suites to groups multiple specifications and execute them together. 
 				</p>
 			</div>
 			<div class="span7 offset1">
@@ -347,7 +358,7 @@ import features.*
 			<div class="span4">
 				<h3>...and document</h3>
 				<p>
-					Jnario generates HTML reports for suites making them a great way to provide additional documentation. Use suites to create an overview page describing the overall architecture of your application, linking to other specifications describing the different parts in more detail.
+					Jnario generates HTML reports for suites making them a great way to provide additional documentation. You can use suites to document the overall architecture of your application with links to other specifications describing the different parts in more detail.
 				</p>
 			</div>
 			<div class="span7 offset1">
@@ -384,31 +395,32 @@ This is a subsection in which we list all our unit specs:
 		<section>
 			<div class="row">
 				<div class="span12">
-					<h1>Documentation</h1>
+					<h1>Generate Documentation from your Specs</h1>
+					<p>Specs written in Jnario are a great way to document the behavior of your code. For example, the complete <a href="org/jnario/JnarioDocumentationSuite.html">Jnario documentation</a> is generated from specs written with Jnario. Specs can be transformed into a corresponding HTML description. Here are some example specs with their generated documentation (you can click on the images to enlarge).</p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="span5">
-					<img src="img/spec.png" width="400px" height="355px"></img>
+					<a href="img/spec.png"><img src="img/spec.png" width="400" height="355"></a>
 				</div>
 				<div class="span6 offset1">
-					<img src="img/spec_doc.png" width="400px" height="355px"></img>
+					<a href="img/spec_doc.png"><img src="img/spec_doc.png" width="400" height="355"></a>
 				</div>
 			</div>
 			<div class="row">
 				<div class="span5">
-					<img src="img/feature.png" width="400px" height="270px"></img>
+					<a href="img/feature.png"><img src="img/feature.png" width="400" height="270"></a>
 				</div>
 				<div class="span6 offset1">
-					<img src="img/feature_doc.png" width="400px" height="270px"></img>
+					<a href="img/feature_doc.png"><img src="img/feature_doc.png" width="400" height="270"></a>
 				</div>
 			</div>
 			<div class="row">
 				<div class="span5">
-					<img src="img/suite.png" width="400px" height="302px"></img>
+					<a href="img/suite.png"><img src="img/suite.png" width="400" height="302"></a>
 				</div>
 				<div class="span6 offset1">
-					<img src="img/suite_doc.png" width="400px" height="302px"></img>
+					<a href="img/suite_doc.png"><img src="img/suite_doc.png" width="400" height="302"></a>
 				</div>
 			</div>
 	</section>
@@ -423,10 +435,9 @@ This is a subsection in which we list all our unit specs:
 			</div>
 		</div>
 		<div class="row">
-			<div class="span6">
+			<div class="span8">
 				<p>
-					Learn how to write specifications in Jnario. For more information visit the
-					<a href="org/jnario/JnarioDocumentationSuite.html">official documentation</a> (which is by the way generated from specs written with Jnario).
+					Learn how to write specifications in Jnario. 
 				</p>
 				<ul>
 					<li>
@@ -442,15 +453,17 @@ This is a subsection in which we list all our unit specs:
 						<a href="org/jnario/jnario/documentation/20FactsAboutXtendSpec.html">All you need to know about Xtend</a>
 					</li>
 				</ul>
+				<p>For more information visit the
+					<a href="org/jnario/JnarioDocumentationSuite.html">official documentation</a>.</p>
 			</div>
 		</div>
 		<div class="row">
 			<div class="span4">
-				<h3>Eclipse Setup</h3>
+				<h2>Eclipse Setup</h2>
 			</div>
 		</div>
 		<div class="row">
-			<div class="span6 ">
+			<div class="span8">
 				<p>
 					The Jnario tooling can be installed via the
 					<a href="http://marketplace.eclipse.org/content/jnario">Eclipse Marketplace</a>	or update site.
@@ -462,7 +475,7 @@ This is a subsection in which we list all our unit specs:
 		</div>
 		<div class="row">
 			<div class="span12">
-				<h3>Maven Setup</h3>
+				<h2>Maven Setup</h2>
 			</div>
 		</div>
 
