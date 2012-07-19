@@ -7,44 +7,24 @@ import org.jnario.runner.Order;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ * The runtime library as well as a plug-in to run the compiler in a
+ * Maven build can be be installed from [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Cjnario).
+ * There is also an [example project](https://github.com/bmwcarit/Jnario/tree/master/examples/org.jnario.maven.example)
+ * demonstrating the usage of Jnario with Maven.
+ */
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("Using Jnario with Maven")
 public class InstallingJnarioUsingJnarioWithMavenSpec extends InstallingJnarioSpec {
   /**
-   * The runtime library as well as a plug-in to run the compiler in a
-   * Maven build can be be obtained from the following Maven repository:
-   * http://build.eclipse.org/common/xtend/maven/.
-   * 
-   *     <repositories>
-   *       <repository>
-   *         <id>xtend</id>
-   *           <url>http://build.eclipse.org/common/xtend/maven/</url>
-   *      	</repository>
-   *     </repositories>
-   *     <pluginRepositories>
-   *       <pluginRepository>
-   *         <id>xtend</id>
-   *         <url>http://build.eclipse.org/common/xtend/maven/</url>
-   *       </pluginRepository>
-   *     </pluginRepositories>
-   * 
-   * @filter(.*)
-   */
-  @Test
-  @Named("Jnario Dependencies")
-  @Order(99)
-  public void jnarioDependencies() throws Exception {
-    /* "not yet implemented" */
-  }
-  
-  /**
-   * The XML for the dependency is:
+   * The XML for the Jnario runtime library is:
    * 
    *     <dependency>
    *       <groupId>org.jnario</groupId>
    *       <artifactId>org.jnario.lib.maven</artifactId>
    *       <version>0.1.0</version>
+   *       <scope>test</scope>
    *     </dependency>
    * 
    *  @filter(.*)
@@ -59,20 +39,20 @@ public class InstallingJnarioUsingJnarioWithMavenSpec extends InstallingJnarioSp
   /**
    * You should also configure Surefire to execute specs and features:
    * 
-   * 	      <plugin>
-   * 	        <groupId>org.apache.maven.plugins</groupId>
-   * 	        <artifactId>maven-surefire-plugin</artifactId>
-   * 	        <version>2.12</version>
-   * 	        <configuration>
-   * 	          <includes>
-   * 	            <include>**\/*Spec*.java</include>
-   * 	            <include>**\/*Feature.java</include>
-   * 	            <include>**\/*Test.java</include>
-   * 	            <include>**\/*TestCase.java</include>
-   * 	          </includes>
-   * 	        </configuration>
-   * 	      </plugin>
-   * 	    </plugins>
+   *     <plugin>
+   *       <groupId>org.apache.maven.plugins</groupId>
+   *         <artifactId>maven-surefire-plugin</artifactId>
+   *         <version>2.12</version>
+   *         <configuration>
+   *           <includes>
+   *             <include>**\/*Spec*.java</include>
+   *             <include>**\/*Feature.java</include>
+   *             <include>**\/*Test.java</include>
+   *             <include>**\/*TestCase.java</include>
+   *           </includes>
+   *         </configuration>
+   *       </plugin>
+   *     </plugins>
    * 
    *  @filter(.*)
    */
@@ -86,25 +66,18 @@ public class InstallingJnarioUsingJnarioWithMavenSpec extends InstallingJnarioSp
   /**
    * You can use the Jnario plugin to compile specs from Maven:
    * 
-   * 		<plugins>
-   * 	      <plugin>
-   *         <groupId>org.jnario</groupId>
-   * 	        <artifactId>jnario-maven-plugin</artifactId>
-   * 	        <version>0.1.0</version>
-   * 	        <executions>
-   * 	          <execution>
-   * 	            <goals>
-   * 	              <goal>testCompile</goal>
-   * 	            </goals>
-   *              <!-- optionally you can configure a different target folder -->
-   *              <!--
-   *              <configuration>
-   *                <outputDirectory>xtend-gen</outputDirectory>
-   *              </configuration>
-   *              -->
-   * 	          </execution>
-   * 	        </executions>
-   * 	      </plugin>
+   *     <plugin>
+   *       <groupId>org.jnario</groupId>
+   *       <artifactId>jnario-maven-plugin</artifactId>
+   *       <version>0.1.0</version>
+   *       <executions>
+   *         <execution>
+   *           <goals>
+   *             <goal>testCompile</goal>
+   *           </goals>
+   *         </execution>
+   *       </executions>
+   *     </plugin>
    * 
    * @filter(.*)
    */

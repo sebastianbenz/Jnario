@@ -33,71 +33,50 @@
 <p><p>Jnario requires Eclipse 3.5 or higher and a Java SDK 5 or higher. You can install Jnario runtime and tooling via the <a href="http://marketplace.eclipse.org/content/jnario">Eclipse Marketplace</a> or using the following update sites:</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>For official releases:</strong> <code>http://www.jnario.org/updates/releases/</code></p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>For the latest stable snapshot:</strong> <code>http://www.jnario.org/updates/snapshot/</code></p><p>If you do not yet have an Eclipse on your machine, you can download one of the pre-packaged <a href="http://www.eclipse.org/xtend/download.html">Xtend distributions</a>.</p>
 </p>
 <h3 id="Using_Jnario_with_Maven">Using Jnario with Maven</h3>
-<p></p>
-<ul><li><p  id="Jnario_Dependencies"><strong>Jnario Dependencies</strong>
-<p>The runtime library as well as a plug-in to run the compiler in a Maven build can be be obtained from the following Maven repository: http://build.eclipse.org/common/xtend/maven/.</p>
-<pre class="prettyprint">&lt;repositories&gt;
-  &lt;repository&gt;
-    &lt;id&gt;xtend&lt;/id&gt;
-      &lt;url&gt;http://build.eclipse.org/common/xtend/maven/&lt;/url&gt;
-    &lt;/repository&gt;
-&lt;/repositories&gt;
-&lt;pluginRepositories&gt;
-  &lt;pluginRepository&gt;
-    &lt;id&gt;xtend&lt;/id&gt;
-    &lt;url&gt;http://build.eclipse.org/common/xtend/maven/&lt;/url&gt;
-  &lt;/pluginRepository&gt;
-&lt;/pluginRepositories&gt;
-</code></pre>
+<p><p>The runtime library as well as a plug-in to run the compiler in a Maven build can be be installed from <a href="http://search.maven.org/#search%7Cga%7C1%7Cjnario">Maven Central</a>. There is also an <a href="https://github.com/bmwcarit/Jnario/tree/master/examples/org.jnario.maven.example">example project</a> demonstrating the usage of Jnario with Maven.</p>
 </p>
-</li><li><p  id="Jnario_Runtime"><strong>Jnario Runtime</strong>
-<p>The XML for the dependency is:</p>
+<ul><li><p  id="Jnario_Runtime"><strong>Jnario Runtime</strong>
+<p>The XML for the Jnario runtime library is:</p>
 <pre class="prettyprint">&lt;dependency&gt;
   &lt;groupId&gt;org.jnario&lt;/groupId&gt;
   &lt;artifactId&gt;org.jnario.lib.maven&lt;/artifactId&gt;
   &lt;version&gt;0.1.0&lt;/version&gt;
+  &lt;scope&gt;test&lt;/scope&gt;
 &lt;/dependency&gt;
 </code></pre>
 </p>
 </li><li><p  id="Executing_specs"><strong>Executing specs</strong>
 <p>You should also configure Surefire to execute specs and features:</p>
-<pre class="prettyprint">      &lt;plugin&gt;
-        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-        &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
-        &lt;version&gt;2.12&lt;/version&gt;
-        &lt;configuration&gt;
-          &lt;includes&gt;
-            &lt;include&gt;**/*Spec*.java&lt;/include&gt;
-            &lt;include&gt;**/*Feature.java&lt;/include&gt;
-            &lt;include&gt;**/*Test.java&lt;/include&gt;
-            &lt;include&gt;**/*TestCase.java&lt;/include&gt;
-          &lt;/includes&gt;
-        &lt;/configuration&gt;
-      &lt;/plugin&gt;
-    &lt;/plugins&gt;
+<pre class="prettyprint">&lt;plugin&gt;
+  &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+    &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
+    &lt;version&gt;2.12&lt;/version&gt;
+    &lt;configuration&gt;
+      &lt;includes&gt;
+        &lt;include&gt;**/*Spec*.java&lt;/include&gt;
+        &lt;include&gt;**/*Feature.java&lt;/include&gt;
+        &lt;include&gt;**/*Test.java&lt;/include&gt;
+        &lt;include&gt;**/*TestCase.java&lt;/include&gt;
+      &lt;/includes&gt;
+    &lt;/configuration&gt;
+  &lt;/plugin&gt;
+&lt;/plugins&gt;
 </code></pre>
 </p>
 </li><li><p  id="Jnario_Compiler"><strong>Jnario Compiler</strong>
 <p>You can use the Jnario plugin to compile specs from Maven:</p>
-<pre class="prettyprint">    &lt;plugins&gt;
-      &lt;plugin&gt;
-    &lt;groupId&gt;org.jnario&lt;/groupId&gt;
-        &lt;artifactId&gt;jnario-maven-plugin&lt;/artifactId&gt;
-        &lt;version&gt;0.1.0&lt;/version&gt;
-        &lt;executions&gt;
-          &lt;execution&gt;
-            &lt;goals&gt;
-              &lt;goal&gt;testCompile&lt;/goal&gt;
-            &lt;/goals&gt;
-         &lt;!-- optionally you can configure a different target folder --&gt;
-         &lt;!--
-         &lt;configuration&gt;
-           &lt;outputDirectory&gt;xtend-gen&lt;/outputDirectory&gt;
-         &lt;/configuration&gt;
-         --&gt;
-          &lt;/execution&gt;
-        &lt;/executions&gt;
-      &lt;/plugin&gt;
+<pre class="prettyprint">&lt;plugin&gt;
+  &lt;groupId&gt;org.jnario&lt;/groupId&gt;
+  &lt;artifactId&gt;jnario-maven-plugin&lt;/artifactId&gt;
+  &lt;version&gt;0.1.0&lt;/version&gt;
+  &lt;executions&gt;
+    &lt;execution&gt;
+      &lt;goals&gt;
+        &lt;goal&gt;testCompile&lt;/goal&gt;
+      &lt;/goals&gt;
+    &lt;/execution&gt;
+  &lt;/executions&gt;
+&lt;/plugin&gt;
 </code></pre>
 </p>
 </li><li><p  id="Configuring_Eclipse"><strong>Configuring Eclipse</strong>
