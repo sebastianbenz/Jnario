@@ -101,7 +101,7 @@
 			<div class="row">
 				<div class="span4">
 					<h3>Clutter-free Specs for Java</h3>
-					<p>Jnario is a language making it possible to write concise tests effectively documenting the behavior of your Java programs.</p>
+					<p>Jnario is a language making it possible to write concise tests that can effectively document the behavior of your Java programs.</p>
 				</div>
 				<div class="span7 offset1">
 <pre class="prettyprint lang-spec  linenums">
@@ -119,7 +119,7 @@ describe "The String 'Hello World'"{
 			<div class="row">
 				<div class="span4">
 					<h3>Specify executable Scenarios</h3>
-					<p>Jnario features a second language for writing executable acceptance specifications in a business-readable textual format.</p>
+					<p>It is also possible to write executable acceptance specifications similiar to <a href="http://www.cukes.info">Cucumber</a>, but with less maintenance overhead.</p>
 				</div>
 				<div class="span7 offset1">
 <pre class="prettyprint lang-feature  linenums">
@@ -167,7 +167,7 @@ describe ArrayList{
 			<div class="row">
 				<div class="span4">
 					<h3>Built with Xtend</h3>
-					<p>Jnario you can leverage the expressivness of <a href="http://www.xtend-lang.org">Xtend</a> for writing specs using closures, type inference, multi-line strings and <a href="org/jnario/jnario/documentation/20FactsAboutXtendSpec.html">more...</a></p>
+					<p>This means when writing specs with Jnario, you can use all the goodness of <a href="http://www.xtend-lang.org">Xtend</a> resulting in less boilerplate code in your specs.</p>
 				</div>
 				<div class="span7 offset1">
 					<pre class="prettyprint lang-spec linenums">
@@ -338,7 +338,7 @@ Feature: addition
 			<div class="span4">
 				<h3>Orchestrate Spec execution</h3>
 				<p>
-					Use suites to groups multiple specifications and execute them together. 
+					Use suites to groups multiple specifications and execute them together. You can either directly reference specs or include multiple specs at the same time using regular expressions.
 				</p>
 			</div>
 			<div class="span7 offset1">
@@ -358,7 +358,7 @@ import features.*
 			<div class="span4">
 				<h3>...and document</h3>
 				<p>
-					Jnario generates HTML reports for suites making them a great way to provide additional documentation. You can use suites to document the overall architecture of your application with links to other specifications describing the different parts in more detail.
+					Jnario generates HTML documents for suites making them a great way to provide additional documentation. You can use suites to document the overall architecture of your application with links to other specifications describing the different parts in more detail.
 				</p>
 			</div>
 			<div class="span7 offset1">
@@ -396,7 +396,7 @@ This is a subsection in which we list all our unit specs:
 			<div class="row">
 				<div class="span12">
 					<h1>Generate Documentation from your Specs</h1>
-					<p>Specs written in Jnario are a great way to document the behavior of your code. For example, the complete <a href="org/jnario/JnarioDocumentationSuite.html">Jnario documentation</a> is generated from specs written with Jnario. Specs can be transformed into a corresponding HTML description. Here are some example specs with their generated documentation (you can click on the images to enlarge).</p>
+					<p>Specs are a great way to document the behavior of your code. For example, the complete <a href="org/jnario/JnarioDocumentationSuite.html">Jnario documentation</a> is generated from specs written with Jnario. Specs can be transformed into a corresponding HTML documents. Here are some example specs with their generated documentation (you can click on the images to enlarge).</p>
 				</div>
 			</div>
 			<div class="row">
@@ -454,9 +454,10 @@ This is a subsection in which we list all our unit specs:
 					</li>
 				</ul>
 				<p>For more information visit the
-					<a href="org/jnario/JnarioDocumentationSuite.html">official documentation</a>.</p>
+					<a href="org/jnario/JnarioDocumentationSuite.html">Jnario documentation</a>.</p>
 			</div>
 		</div>
+
 		<div class="row">
 			<div class="span4">
 				<h2>Eclipse Setup</h2>
@@ -520,7 +521,7 @@ This is a subsection in which we list all our unit specs:
 </pre></p>
 			</div>	
 		</div>
-
+<!--
 		<div class="row">
 			<div class="span5">
 				<p>Configure Surefire for executing the generated specs.</p>
@@ -543,11 +544,7 @@ This is a subsection in which we list all our unit specs:
 			</div>
 		</div>
 	</div>
-</div>
-<!-- /container -->
-<div class="content header ">
-  <div class="container">
-	<footer>
+-->
 		<div class="row">
 			<div class="span12">
 				<h1>Support</h1>
@@ -574,6 +571,11 @@ This is a subsection in which we list all our unit specs:
 				</p>
 			</div>
 		</div>
+</div>
+<!-- /container -->
+<div class="content header ">
+  <div class="container">
+	<footer>
 		<div class="row">
 			<div class="span12">
 				<h1>About</h1>

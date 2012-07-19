@@ -7,26 +7,31 @@
  *******************************************************************************/
 package org.jnario
 
-import jnario.tests.unit.doc.*
-  
 #Jnario 
-
-All Jnario Features.  
 
 ##Common
 
+Run all specs of the commonly used Jnario features.
 - \org\.jnario\.jnario\..*\ 
 
 ##Suite 
- 
+
+Run all specs of the Jnario suite lang.
 - \org\.jnario\.suite\..*\
  
 ##Feature
 
+Run all specs of the Jnario feature lang.
 - \org\.jnario\.feature\..*\
 
 ##Spec
 
+Run all specs of the Jnario spec lang.
 - \org\.jnario\.spec\..*\
+
+
+
+
+
 
   

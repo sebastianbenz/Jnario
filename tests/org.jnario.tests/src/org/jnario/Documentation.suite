@@ -29,19 +29,26 @@ import org.jnario.spec.tests.integration.*
 
 Learn how to write specifications in Jnario. 
 
-	- "Introducing Jnario Features":  how to write cucumber\-style executables acceptance specifications.
+	- "Introducing Jnario Features":  how to write cucumber\-style executables 
+	     acceptance specifications.
 	- "Introducing Jnario Specs":  how to write specifications.
-	- "Introducing Jnario Suites":  Orchestrate and document the execution of your specs and features.
-	- "20 Facts about Xtend":  all you need to know about Xtend to effectively use Jnario.
+	- "Introducing Jnario Suites":  Orchestrate and document the execution of 
+	     your specs and features.
+	- "20 Facts about Xtend":  all you need to know about Xtend to effectively 
+	     use Jnario.
 	 
 ##Common Concepts
 
 Features and concepts that are common to all Jnario languages. 
 
 	- "Extension Library":  helpful extension methods provided by Jnario.
-	- "Using Should":  writing expressive assertions with the build in should operator.
-	- "Customizing the Spec Creation":  how to customize the spec creation process.
+	- "Using Should":  writing expressive assertions with the build in 
+	     should operator.
+	- "Customizing the Spec Creation":  how to customize the spec 
+	     creation process.
 	- "Using Xtend\'s with Operator":  how to define nested assertions.
+	
+	
 	
 ##Features
 
