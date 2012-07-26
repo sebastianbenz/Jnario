@@ -28,27 +28,23 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<h3 id="toString_String">ToString[String]</h3>
+<h3 id="toString">ToString</h3>
 <p></p>
-<ul><li><p  id="escapes_dashes"><strong>escapes dashes</strong>
+<ul><li><p id="escapes_dashes"><strong>escapes dashes</strong></p>
 <pre class="prettyprint lang-spec">
 subject.toString(&quot;##suite - with dash&quot;) =&gt; &quot;##suite \\- with dash&quot;</pre>
-</p>
-</li><li><p  id="escapes_hashs"><strong>escapes hashs</strong>
+</li><li><p id="escapes_hashs"><strong>escapes hashs</strong></p>
 <pre class="prettyprint lang-spec">
 subject.toString(&quot;##suite # with hash&quot;) =&gt; &quot;##suite \\# with hash&quot;</pre>
-</p>
 </li></ul>
-<h3 id="toValue_String_INode">ToValue[String, INode]</h3>
+<h3 id="toValue">ToValue</h3>
 <p></p>
-<ul><li><p  id="removes_escape_character_for_dashes"><strong>removes escape character for dashes</strong>
+<ul><li><p id="removes_escape_character_for_dashes"><strong>removes escape character for dashes</strong></p>
 <pre class="prettyprint lang-spec">
 subject.toValue(&quot;##suite \\- with dash&quot;, null) =&gt; &quot;##suite - with dash&quot;</pre>
-</p>
-</li><li><p  id="removes_escape_character_for_hashs"><strong>removes escape character for  hashs</strong>
+</li><li><p id="removes_escape_character_for_hashs"><strong>removes escape character for  hashs</strong></p>
 <pre class="prettyprint lang-spec">
 subject.toValue(&quot;##suite \\# with hash&quot;, null) =&gt; &quot;##suite # with hash&quot;</pre>
-</p>
 </li></ul>
 				</div>
 			</div>

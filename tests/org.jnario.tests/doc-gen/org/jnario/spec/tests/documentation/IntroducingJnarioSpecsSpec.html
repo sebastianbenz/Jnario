@@ -43,7 +43,7 @@ describe "A Stack"{
   - increases its size when pushing an element [PENDING]
 </pre><p>In the background, Jnario automatically translates the stack specification into a JUnit test case <code>AStackSpec.java</code> in the <code>xtend-gen</code> folder.</p>
 </p>
-<ul><li><p  id="Checking_your_facts"><strong>Checking your facts</strong>
+<ul><li><p id="Checking_your_facts"><strong>Checking your facts</strong></p>
 <p>The next step is to enrich our facts with the required logic to check whether our stack behaves as specified. Checks are implemented by adding a block expression to your facts. We use <code>=&gt;</code> to describe the expected result of an expression. For example, <code>new Stack.size =&gt; 0</code> will fail if the size is not <code>0</code>. If we execute our specification we will see that all specifications pass and that they are not marked as <em>PENDING</em> anymore. You can also mark <em>facts</em> explicitly as pending using the <strong>pending</strong> keyword:</p>
 <pre class="prettyprint lang-spec">
   pending fact assert 1 != 2
@@ -63,8 +63,7 @@ describe &quot;A Stack&quot;{
     subject.size =&gt; 1
   }
 }</pre>
-</p>
-</li><li><p  id="Less_boilerplate"><strong>Less boilerplate</strong>
+</li><li><p id="Less_boilerplate"><strong>Less boilerplate</strong></p>
 <p>Looking at our first fact:</p>
 <pre class="prettyprint lang-spec">
 describe "A Stack"{
@@ -90,8 +89,7 @@ describe &quot;A Stack&quot;{
     subject.size =&gt; 1
   }
 }</pre>
-</p>
-</li><li><p  id="Using_Fields"><strong>Using Fields</strong>
+</li><li><p id="Using_Fields"><strong>Using Fields</strong></p>
 <p>In the previous specification we have a little redundancy: the creation of the Stack. We can get rid of it by creating a field for the Stack. Declaring fields works exactly as in <a href="http://www.eclipse.org/xtend/documentation/index.html#fields">Xtend</a>.</p>
 <pre class="prettyprint lang-spec">
 package demo
@@ -108,8 +106,7 @@ describe &quot;A Stack&quot;{
     subject.size =&gt; 1
   }
 }</pre>
-</p>
-</li><li><p  id="Implicit_Subjects"><strong>Implicit Subjects</strong>
+</li><li><p id="Implicit_Subjects"><strong>Implicit Subjects</strong></p>
 <p>In our example we specify the behavior of a single class, which is actually a common use case. In Jnario you can directly reference the specified class in the <em>describe</em> clause:</p>
 <pre class="prettyprint lang-spec">
 package demo
@@ -132,8 +129,7 @@ describe Stack{
     subject.size =&gt; 1
   }
 }</pre>
-</p>
-</li><li><p  id="Defining_Contexts"><strong>Defining Contexts</strong>
+</li><li><p id="Defining_Contexts"><strong>Defining Contexts</strong></p>
 <p>Sometimes a class behaves differently in different contexts. For example, the behavior when calling pop on a stack depends on whether the stack is empty or not. You can define contexts within Jnario specs to further structure your facts:</p>
 <pre class="prettyprint lang-none">
 Stack
@@ -166,8 +162,7 @@ describe Stack{
     }    
   }
 }</pre>
-</p>
-</li><li><p  id="Example_Tables"><strong>Example Tables</strong>
+</li><li><p id="Example_Tables"><strong>Example Tables</strong></p>
 <p>You can structure your example data in tables. The type of each column will be automatically inferred from all column values. A cell in a table can have an arbitrary non-void expression as a value. You can perform assertions on tables using the <code>forEach</code> extension method:</p>
 <pre class="prettyprint lang-spec">
 describe "Addition" {
@@ -194,8 +189,7 @@ java.lang.AssertionError: additions failed
          b is 2
          sum is 4
 </pre>
-</p>
-</li><li><p  id="Generating_Documentation"><strong>Generating Documentation</strong>
+</li><li><p id="Generating_Documentation"><strong>Generating Documentation</strong></p>
 <p>Jnario can generate html documents from your specifications. The documentation will be generated automatically when you create a folder <code>doc-gen</code> in the project root. You can further extend the documentation by enriching your specification with Javadoc like comments. You can even use <a href="http//daringfireball.net/projects/markdown/">Markdown Syntax</a> to format your specifications.</p>
 <p align="center"><a href="/img/tutorial/doc_stack_example.png"><img src="/img/tutorial/doc_stack_example_small.png" alt="Generated documentation for the stack specification"/></a></p><p>This tutorial has actually been generated from a <a href="https://github.com/bmwcarit/Jnario/blob/master/org.jnario.tests/src/org/jnario/spec/tests/documentation/SpecTutorial.spec">specification</a>.</p>
 <pre class="prettyprint lang-spec">
@@ -231,8 +225,7 @@ describe Stack{
     }    
   }
 }</pre>
-</p>
-</li><li><p  id="Setup_Teardown"><strong>Setup & Teardown</strong>
+</li><li><p id="Setup_Teardown"><strong>Setup & Teardown</strong></p>
 <p>Setting up a fixture or tearing it down works similar to JUnit, but the syntax is less verbose. The following specification will print:</p>
 <pre class="prettyprint lang-none">
 	before all
@@ -265,8 +258,7 @@ describe &quot;Setup &amp; Teardown&quot; {
     println(&quot;after all&quot;)
   }
 }</pre>
-</p>
-</li><li><p  id="Spec_extensions"><strong>Spec extensions</strong>
+</li><li><p id="Spec_extensions"><strong>Spec extensions</strong></p>
 <p>When you have to perform the same setup and tear down operations for different specs you can use spec extensions. For example, we need to open and close a database connection before and after each test case. With Jnario you can encapsulate these operations into a separate class and use the normal JUnit @before and @after annotations to mark the methods that should be executed before and after a spec run.</p>
 <pre class="prettyprint">package demo
 
@@ -299,8 +291,7 @@ describe &quot;Spec Extensions&quot;{
   extension DatabaseExtension db = new DatabaseExtension
   fact query(&quot;SELECT * FROM content&quot;)        
 }</pre>
-</p>
-</li><li><p  id="Helper_methods"><strong>Helper methods</strong>
+</li><li><p id="Helper_methods"><strong>Helper methods</strong></p>
 <p>Helper methods can be directly declared in Jnario files. They have the same syntax as in Xtend. Helper methods and fields can also be defined in nested contexts.</p>
 <pre class="prettyprint lang-spec">
 describe &quot;Helper Methods &amp; Fields&quot;{
@@ -321,27 +312,24 @@ describe &quot;Helper Methods &amp; Fields&quot;{
     }
   }
 }</pre>
-</p>
 </li></ul>
 <h3 id="Writing_Assertions">Writing Assertions</h3>
 <p><p>Jnario provides different statements for writing assertions (<a href="/org/jnario/spec/tests/integration/AssertionSpec.html">more...</a>).</p>
 </p>
-<ul><li><p  id="assert"><strong>'assert'</strong>
+<ul><li><p id="assert"><strong>'assert'</strong></p>
 <p>The <code>assert</code> statement fails if the following expression does not evaluate to <code>true</code>.</p>
 <pre class="prettyprint lang-spec">
 assert true
 assert new Stack().empty
 assert &quot;Hello&quot;.startsWith(&quot;H&quot;)</pre>
-</p>
-</li><li><p  id="should_and"><strong>'should' and `=>`</strong>
+</li><li><p id="should_and"><strong>'should' and `=>`</strong></p>
 <p>If you want to express how an object should behave, you can use <code>should</code>. It passes if the result of the left expression is equal to the result of the right expression. You can also use <code>not</code> to assert that both expressions have different results. You have already seen the short cut <code>=&gt;</code> which has the same effect as <code>should be</code>.</p>
 <pre class="prettyprint lang-spec">
 true should be true
 false =&gt; false
 1 + 1 should not be 1 
 1 + 1 =&gt; 2</pre>
-</p>
-</li><li><p  id="Self_explaining_failures"><strong>Self-explaining failures</strong>
+</li><li><p id="Self_explaining_failures"><strong>Self-explaining failures</strong></p>
 <p>Assertions in Jnario are self-explainable. When an assertion fails, it tries to provide as much information about the reason of its failure as possible. It will print the exact expression that has failed together with the actual value of all subexpressions. This means that you don't need to debug a test to see why it actually has failed.</p>
 <pre class="prettyprint lang-spec">
 val x = 0 
@@ -358,7 +346,6 @@ errorMessage[greeting.toUpperCase should not be &quot;HELLO&quot;].is('''
   Expected greeting.toUpperCase should not be &quot;HELLO&quot; but
        greeting.toUpperCase is &quot;HELLO&quot;
        greeting is &quot;hello&quot;''')</pre>
-</p>
 </li></ul>
 				</div>
 			</div>

@@ -29,7 +29,7 @@
 			<div class="row">
 				<div class="span12">
 <p>Scenario steps can reference other steps with an implementation. It is important to note that these references are aware of the respective namespaces. If you want to reference a step in a different package you need to add a corresponding import statement (see last example).</p>
-<ul><li><p  id="Steps_can_reference_steps_in_the_same_feature"><strong>Steps can reference steps in the same feature</strong>
+<ul><li><p id="Steps_can_reference_steps_in_the_same_feature"><strong>Steps can reference steps in the same feature</strong></p>
 <pre class="prettyprint lang-spec">
 parseScenario('''
   package test
@@ -44,8 +44,7 @@ parseScenario('''
       
 ''')
 first(typeof(GivenReference)).reference =&gt; first(typeof(Given))</pre>
-</p>
-</li><li><p  id="Steps_ignore_trailing_whitespace_when_referencing_steps"><strong>Steps ignore trailing whitespace when referencing steps</strong>
+</li><li><p id="Steps_ignore_trailing_whitespace_when_referencing_steps"><strong>Steps ignore trailing whitespace when referencing steps</strong></p>
 <pre class="prettyprint lang-spec">
 parseScenario('''
   package test
@@ -61,8 +60,7 @@ parseScenario('''
       //   here is a whitespace
 ''')
 first(typeof(GivenReference)).reference =&gt; first(typeof(Given))</pre>
-</p>
-</li><li><p  id="Steps_can_reference_steps_in_features_in_the_same_package"><strong>Steps can reference steps in features in the same package</strong>
+</li><li><p id="Steps_can_reference_steps_in_features_in_the_same_package"><strong>Steps can reference steps in features in the same package</strong></p>
 <pre class="prettyprint lang-spec">
 parseScenario('''
   package test
@@ -82,8 +80,7 @@ parseScenario('''
       
 ''')
 first(typeof(GivenReference)).reference =&gt; first(typeof(Given))</pre>
-</p>
-</li><li><p  id="Referencing_steps_in_a_different_package_requires_an_import_statement"><strong>Referencing steps in a different package requires an import statement</strong>
+</li><li><p id="Referencing_steps_in_a_different_package_requires_an_import_statement"><strong>Referencing steps in a different package requires an import statement</strong></p>
 <pre class="prettyprint lang-spec">
 parseScenario('''
   package test1
@@ -103,7 +100,6 @@ parseScenario('''
       
 ''')
 first(typeof(GivenReference)).reference =&gt; first(typeof(Given))</pre>
-</p>
 </li></ul>
 				</div>
 			</div>

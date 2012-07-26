@@ -62,12 +62,11 @@ describe SpecDocGenerator {
 		''')
 		val scenarioDoc = generatedFile("ExampleSpec.html")
 		assert scenarioDoc.contains('''
-		<strong>should do stuff</strong>
+		<p id="should_do_stuff"><strong>should do stuff</strong></p>
 		<p>Example documentation</p>
 		<pre class="prettyprint lang-spec">
 		var x = 0
-		x = x + 1</pre>
-		</p>'''.toString())
+		x = x + 1</pre>'''.toString())
 	}
 	
 	fact "should support markdown for documentation"{

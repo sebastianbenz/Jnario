@@ -28,7 +28,7 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<ul><li><p  id="null_if_spec_description_is_empty"><strong>null if spec description is empty</strong>
+<ul><li><p id="null_if_spec_description_is_empty"><strong>null if spec description is empty</strong></p>
 <pre class="prettyprint lang-spec">
 parseSpec('''
   package test
@@ -38,38 +38,32 @@ qualifiedName should be null
 parseSpec('''
   describe &quot;&quot;{}''')
 qualifiedName should be null</pre>
-</p>
-</li><li><p  id="uses_spec_description"><strong>uses spec description</strong>
+</li><li><p id="uses_spec_description"><strong>uses spec description</strong></p>
 <pre class="prettyprint lang-spec">
 parseSpec('''
   describe &quot;My Spec&quot;{}''')
 qualifiedName =&gt; &quot;My Spec&quot;</pre>
-</p>
-</li><li><p  id="trims_spec_description_whitespace"><strong>trims spec description whitespace</strong>
+</li><li><p id="trims_spec_description_whitespace"><strong>trims spec description whitespace</strong></p>
 <pre class="prettyprint lang-spec">
 parseSpec('''
   describe &quot;My Spec  &quot;{}''')
 qualifiedName =&gt; &quot;My Spec&quot;</pre>
-</p>
-</li><li><p  id="uses_referenced_type"><strong>uses referenced type</strong>
+</li><li><p id="uses_referenced_type"><strong>uses referenced type</strong></p>
 <pre class="prettyprint lang-spec">
 parseSpec('''
   describe org.junit.Assert{}''')
 qualifiedName =&gt; &quot;Assert&quot;</pre>
-</p>
-</li><li><p  id="uses_referenced_type_and_description"><strong>uses referenced type and description</strong>
+</li><li><p id="uses_referenced_type_and_description"><strong>uses referenced type and description</strong></p>
 <pre class="prettyprint lang-spec">
 parseSpec('''
   describe org.junit.Assert &quot;My Spec&quot;{}''')
 qualifiedName =&gt; &quot;Assert My Spec&quot;</pre>
-</p>
-</li><li><p  id="adds_spec_package"><strong>adds spec package</strong>
+</li><li><p id="adds_spec_package"><strong>adds spec package</strong></p>
 <pre class="prettyprint lang-spec">
 parseSpec('''
   package test
   describe &quot;My Spec&quot;{}''')
 qualifiedName =&gt; &quot;test.My Spec&quot;</pre>
-</p>
 </li></ul>
 				</div>
 			</div>

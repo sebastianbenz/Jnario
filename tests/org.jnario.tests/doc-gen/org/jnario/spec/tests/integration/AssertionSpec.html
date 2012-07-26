@@ -31,22 +31,20 @@
 <h3 id="Introduction">Introduction</h3>
 <p><p>Jnario provides a special <code>assert</code> statement that makes it really easy to write meaningful assertions.</p>
 </p>
-<ul><li><p  id="To_pass"><strong>To pass..</strong>
+<ul><li><p id="To_pass"><strong>To pass..</strong></p>
 <p><code>assert</code> passes if the expression evaluates to true.</p>
 <pre class="prettyprint lang-spec">
 assert true
 assert 1 == 1</pre>
-</p>
-</li><li><p  id="or_not_to_pass"><strong>...or not to pass</strong>
+</li><li><p id="or_not_to_pass"><strong>...or not to pass</strong></p>
 <p><code>assert</code> throws an AssertionError if the expression evaluates to false.</p>
 <pre class="prettyprint lang-spec">
 {assert false} throws AssertionError</pre>
-</p>
 </li></ul>
 <h3 id="No_more_debugging">No more debugging...</h3>
 <p><p>Assertions in Jnario are selfexplainable. This means, when failing, they try to provide as as much information as possible. In that case, they print the exact expression that has failed together with the actual value of all subexpressions.</p>
 </p>
-<ul><li><p  id="Variable_Access"><strong>Variable Access</strong>
+<ul><li><p id="Variable_Access"><strong>Variable Access</strong></p>
 <p>For example, it will print the value of all referenced variables.</p>
 <pre class="prettyprint lang-spec">
 val y = false
@@ -54,16 +52,14 @@ errorMessage[assert y].is(
 '''
 Expected y but
      y is &lt;false&gt;''')</pre>
-</p>
-</li><li><p  id="Filters_literals"><strong>Filters literals</strong>
+</li><li><p id="Filters_literals"><strong>Filters literals</strong></p>
 <p>Literal values obviously won't be printed.</p>
 <pre class="prettyprint lang-spec">
 val x = 0  
 errorMessage[assert x == 42].is('''
   Expected x == 42 but
        x is &lt;0&gt;''')</pre>
-</p>
-</li><li><p  id="Not_Equals"><strong>Not Equals</strong>
+</li><li><p id="Not_Equals"><strong>Not Equals</strong></p>
 <p>Here is another example .</p>
 <pre class="prettyprint lang-spec">
 val x = 42     
@@ -71,23 +67,20 @@ errorMessage[assert !(x == 42)].is('''
   Expected !(x == 42) but
        x == 42 is &lt;true&gt;
        x is &lt;42&gt;''')</pre>
-</p>
-</li><li><p  id="Function_Calls"><strong>Function Calls</strong>
+</li><li><p id="Function_Calls"><strong>Function Calls</strong></p>
 <p>The result of a function call will be printed as well.</p>
 <pre class="prettyprint lang-spec">
 errorMessage[assert greet(&quot;World&quot;) == &quot;Hello World!&quot;].is('''
   Expected greet(&quot;World&quot;) == &quot;Hello World!&quot; but
        greet(&quot;World&quot;) is &quot;Hello World&quot;''')</pre>
-</p>
-</li><li><p  id="Feature_Calls"><strong>Feature Calls</strong>
+</li><li><p id="Feature_Calls"><strong>Feature Calls</strong></p>
 <p>The result of each feature call will be printed.</p>
 <pre class="prettyprint lang-spec">
 errorMessage[assert &quot;Hello&quot;.toUpperCase.toLowerCase == &quot;HELLO&quot;].is('''
   Expected &quot;Hello&quot;.toUpperCase.toLowerCase == &quot;HELLO&quot; but
        &quot;Hello&quot;.toUpperCase.toLowerCase is &quot;hello&quot;
        &quot;Hello&quot;.toUpperCase is &quot;HELLO&quot;''')</pre>
-</p>
-</li><li><p  id="And_expressions"><strong>And expressions</strong>
+</li><li><p id="And_expressions"><strong>And expressions</strong></p>
 <p>This example involves two expressions with <code>&amp;&amp;</code>.</p>
 <pre class="prettyprint lang-spec">
 val x = 0 
@@ -98,8 +91,7 @@ errorMessage[assert x == 1 &amp;&amp; y == 0].is('''
        x is &lt;0&gt;
        y == 0 is &lt;false&gt;
        y is &lt;1&gt;''')</pre>
-</p>
-</li><li><p  id="Removes_duplicate_feature_calls"><strong>Removes duplicate feature calls</strong>
+</li><li><p id="Removes_duplicate_feature_calls"><strong>Removes duplicate feature calls</strong></p>
 <p>If the same variable is accessed multiple times it will be printed only once.</p>
 <pre class="prettyprint lang-spec">
 val x = 0 
@@ -108,7 +100,6 @@ errorMessage[assert x &gt; 0 &amp;&amp; x &lt; 10].is('''
        x &gt; 0 is &lt;false&gt;
        x is &lt;0&gt;
        x &lt; 10 is &lt;true&gt;''')</pre>
-</p>
 </li></ul>
 				</div>
 			</div>

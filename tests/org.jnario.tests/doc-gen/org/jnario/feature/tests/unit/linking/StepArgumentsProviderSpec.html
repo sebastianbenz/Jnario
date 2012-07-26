@@ -80,7 +80,7 @@
 	</tr>
 	</tbody>
 </table>
-</li><li><p  id="extracts_arguments_from_step_descriptions"><strong>extracts arguments from step descriptions</strong>
+</li><li><p id="extracts_arguments_from_step_descriptions"><strong>extracts arguments from step descriptions</strong></p>
 <pre class="prettyprint lang-spec">
 examples.forEach[
   val singleOrDoubleQuotes = list(step, step?.replaceAll('&quot;', &quot;'&quot;))
@@ -89,11 +89,9 @@ examples.forEach[
     foundArgs =&gt; expectedArgs
   }
 ]</pre>
-</p>
-</li><li><p  id="returns_empty_list_if_step_has_no_name"><strong>returns empty list if step has no name</strong>
+</li><li><p id="returns_empty_list_if_step_has_no_name"><strong>returns empty list if step has no name</strong></p>
 <pre class="prettyprint lang-spec">
 subject.findStepArguments(step(null)) =&gt; list()</pre>
-</p>
 </li></ul>
 				</div>
 			</div>

@@ -35,7 +35,7 @@
 <h3 id="Using_Jnario_with_Maven">Using Jnario with Maven</h3>
 <p><p>The runtime library as well as a plug-in to run the compiler in a Maven build can be be installed from <a href="http://search.maven.org/#search%7Cga%7C1%7Cjnario">Maven Central</a>. There is also an <a href="https://github.com/bmwcarit/Jnario/tree/master/examples/org.jnario.maven.example">example project</a> demonstrating the usage of Jnario with Maven.</p>
 </p>
-<ul><li><p  id="Jnario_Runtime"><strong>Jnario Runtime</strong>
+<ul><li><p id="Jnario_Runtime"><strong>Jnario Runtime</strong></p>
 <p>The XML for the Jnario runtime library is:</p>
 <pre class="prettyprint">&lt;dependency&gt;
   &lt;groupId&gt;org.jnario&lt;/groupId&gt;
@@ -44,8 +44,7 @@
   &lt;scope&gt;test&lt;/scope&gt;
 &lt;/dependency&gt;
 </code></pre>
-</p>
-</li><li><p  id="Executing_specs"><strong>Executing specs</strong>
+</li><li><p id="Executing_specs"><strong>Executing specs</strong></p>
 <p>You should also configure Surefire to execute specs and features:</p>
 <pre class="prettyprint">&lt;plugin&gt;
   &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
@@ -62,8 +61,7 @@
   &lt;/plugin&gt;
 &lt;/plugins&gt;
 </code></pre>
-</p>
-</li><li><p  id="Jnario_Compiler"><strong>Jnario Compiler</strong>
+</li><li><p id="Jnario_Compiler"><strong>Jnario Compiler</strong></p>
 <p>You can use the Jnario plugin to compile specs from Maven:</p>
 <pre class="prettyprint">&lt;plugin&gt;
   &lt;groupId&gt;org.jnario&lt;/groupId&gt;
@@ -78,11 +76,9 @@
   &lt;/executions&gt;
 &lt;/plugin&gt;
 </code></pre>
-</p>
-</li><li><p  id="Configuring_Eclipse"><strong>Configuring Eclipse</strong>
+</li><li><p id="Configuring_Eclipse"><strong>Configuring Eclipse</strong></p>
 <p>The outputDirectory can be specified to match the default of the Eclipse plug-in (xtend-gen). You can also change the configuration in Eclipse to match the Maven default (generated-sources). To do so right-click on the project and select Properties or if you prefer a global setting choose <strong>Eclipse-&gt;Preferences</strong>. In the category <strong>Jnario/Compiler</strong> enter  the directory name (see screenshot). It is interpreted as a relative path to the parent of the source folder, which includes the to-be-compiled Xtend file.</p>
 <p align="center"><img width="500px" src="/img/tutorial/project_compiler_settings.png" alt="Configuring project specific compiler settings."/></p>
-</p>
 </li></ul>
 				</div>
 			</div>

@@ -29,22 +29,20 @@
 			<div class="row">
 				<div class="span12">
 <p>In Xtend you can use the <a href="http://www.eclipse.org/xtend/new_and_noteworthy/index.html#withOperator">with operator</a>  <code>=&gt;</code> as a let-expression, which allows binding any object to the scope of the block, which can be handy when initializing objects. In Jnario <code>=&gt;</code> also can be used to describe the expected behavior of objects. It works great together with Xtend's with operator. You can use it to:</p>
-<ul><li><p  id="initialize_fixtures"><strong>initialize fixtures</strong>
+<ul><li><p id="initialize_fixtures"><strong>initialize fixtures</strong></p>
 <pre class="prettyprint lang-spec">
 val stackWithTwoElements = new Stack&lt;String&gt; =&gt; [
   add(&quot;red&quot;)
   add(&quot;blue&quot;)
 ]
 stackWithTwoElements.size =&gt; 2</pre>
-</p>
-</li><li><p  id="write_multiple_assertions"><strong>write multiple assertions</strong>
+</li><li><p id="write_multiple_assertions"><strong>write multiple assertions</strong></p>
 <pre class="prettyprint lang-spec">
 &quot;hello world&quot; =&gt; [
   length =&gt; 11
   it should startWith(&quot;hello&quot;)
   it should endWith(&quot;world&quot;)
 ]</pre>
-</p>
 </li></ul>
 				</div>
 			</div>

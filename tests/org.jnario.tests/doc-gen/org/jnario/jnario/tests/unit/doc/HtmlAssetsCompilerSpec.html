@@ -28,20 +28,18 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<ul><li><p  id="compiles_css_js_files_to_specified_folder"><strong>compiles css & js files to specified folder</strong>
+<ul><li><p id="compiles_css_js_files_to_specified_folder"><strong>compiles css & js files to specified folder</strong></p>
 <pre class="prettyprint lang-spec">
 doCompile
 assert file(&quot;js/prettify.js&quot;).exists
 assert file(&quot;css/prettify.css&quot;).exists</pre>
-</p>
-</li><li><p  id="does_not_override_existing_file"><strong>does not override existing file</strong>
+</li><li><p id="does_not_override_existing_file"><strong>does not override existing file</strong></p>
 <pre class="prettyprint lang-spec">
 mkdir(&quot;js&quot;)
 val file = file(&quot;js/prettify.js&quot;).toString
 file.writeStringIntoFile(&quot;Hello World&quot;)
 doCompile
 readFileIntoString(file) =&gt; &quot;Hello World&quot;</pre>
-</p>
 </li></ul>
 				</div>
 			</div>

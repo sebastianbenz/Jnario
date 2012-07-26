@@ -1,14 +1,14 @@
 package org.jnario.spec.tests.integration;
 
-import java.util.ArrayList;
+import java.util.List;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.Helpers;
+import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
@@ -69,15 +69,15 @@ public class UsingShouldSpec {
     Assert.assertFalse("\nExpected \"something\" should not contain \"any\" but"
      + "\n     \"something\" should not contain \"any\" is " + new StringDescription().appendValue(null).toString() + "\n", _should_contain_1);
     
-    ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("something");
-    boolean _should_contain_2 = Should.<String>should_contain(_newArrayList, "something");
-    Assert.assertTrue("\nExpected // iterables\n\t\tnewArrayList(\"something\") should contain \"something\" but"
-     + "\n     // iterables\n\t\tnewArrayList(\"something\") is " + new StringDescription().appendValue(_newArrayList).toString() + "\n", _should_contain_2);
+    List<String> _list = JnarioCollectionLiterals.<String>list("something");
+    boolean _should_contain_2 = Should.<String>should_contain(_list, "something");
+    Assert.assertTrue("\nExpected // iterables\n\t\tlist(\"something\") should contain \"something\" but"
+     + "\n     // iterables\n\t\tlist(\"something\") is " + new StringDescription().appendValue(_list).toString() + "\n", _should_contain_2);
     
-    ArrayList<String> _newArrayList_1 = CollectionLiterals.<String>newArrayList("something");
-    boolean _should_contain_3 = Should.<String>should_contain(_newArrayList_1, "something else");
-    Assert.assertFalse("\nExpected newArrayList(\"something\") should not contain \"something else\" but"
-     + "\n     newArrayList(\"something\") is " + new StringDescription().appendValue(_newArrayList_1).toString() + "\n", _should_contain_3);
+    List<String> _list_1 = JnarioCollectionLiterals.<String>list("something");
+    boolean _should_contain_3 = Should.<String>should_contain(_list_1, "something else");
+    Assert.assertFalse("\nExpected list(\"something\") should not contain \"something else\" but"
+     + "\n     list(\"something\") is " + new StringDescription().appendValue(_list_1).toString() + "\n", _should_contain_3);
     
     final Procedure1<String> _function = new Procedure1<String>() {
         public void apply(final String it) {
@@ -249,11 +249,11 @@ public class UsingShouldSpec {
     Assert.assertTrue("\nExpected \"hello\" => startsWith(\"h\") but"
      + "\n     startsWith(\"h\") is " + new StringDescription().appendValue(_startsWith).toString() + "\n", _doubleArrow);
     
-    ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("red", "green");
+    List<String> _list = JnarioCollectionLiterals.<String>list("red", "green");
     Matcher<Iterable<String>> _hasItem = Matchers.<String>hasItem("red");
-    boolean _doubleArrow_1 = Should.operator_doubleArrow(_newArrayList, _hasItem);
-    Assert.assertTrue("\nExpected newArrayList(\"red\", \"green\") => hasItem(\"red\") but"
-     + "\n     newArrayList(\"red\", \"green\") is " + new StringDescription().appendValue(_newArrayList).toString()
+    boolean _doubleArrow_1 = Should.operator_doubleArrow(_list, _hasItem);
+    Assert.assertTrue("\nExpected list(\"red\", \"green\") => hasItem(\"red\") but"
+     + "\n     list(\"red\", \"green\") is " + new StringDescription().appendValue(_list).toString()
      + "\n     hasItem(\"red\") is " + new StringDescription().appendValue(_hasItem).toString() + "\n", _doubleArrow_1);
     
     Matcher<Integer> _greaterThan = Matchers.<Integer>greaterThan(Integer.valueOf(5));

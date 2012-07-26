@@ -28,7 +28,7 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<ul><li><p  id="resolves_referenced_specs"><strong>resolves referenced specs</strong>
+<ul><li><p id="resolves_referenced_specs"><strong>resolves referenced specs</strong></p>
 <pre class="prettyprint lang-spec">
 parseSuite('''
   package demo
@@ -40,10 +40,9 @@ parseSuite('''
 ''')
 
 resolvedSpecs(firstSuite) =&gt; set(&quot;MySpecSpec&quot;, &quot;MyFeatureFeature&quot;)</pre>
-</p>
 </li></ul><h3 id="evaluates_regular_expressions">Evaluates regular expressions</h3>
 <p></p>
-<ul><li><p  id="example_1"><strong>example 1</strong>
+<ul><li><p id="example_1"><strong>example 1</strong></p>
 <pre class="prettyprint lang-spec">
 m.parseSuite('''
 package demo
@@ -54,8 +53,7 @@ import demo.*
       ''')
       
       resolvedSpecs(m.firstSuite) =&gt; set(&quot;MySpecSpec&quot;, &quot;MyFeatureFeature&quot;)</pre>
-</p>
-</li><li><p  id="example_2"><strong>example 2</strong>
+</li><li><p id="example_2"><strong>example 2</strong></p>
 <pre class="prettyprint lang-spec">
 m.parseSuite('''
   package demo
@@ -66,12 +64,10 @@ m.parseSuite('''
 ''')
 
 resolvedSpecs(m.firstSuite) =&gt; set(&quot;MySpecSpec&quot;)</pre>
-</p>
-</li><li><p  id="returns_empty_list_on_null_input"><strong>returns empty list on null input</strong>
+</li><li><p id="returns_empty_list_on_null_input"><strong>returns empty list on null input</strong></p>
 <pre class="prettyprint lang-spec">
 subject.resolveSpecs(SuiteFactory::eINSTANCE.createPatternReference) =&gt; list()</pre>
-</p>
-</li><li><p  id="ignores_unresolved_elements"><strong>ignores unresolved elements</strong>
+</li><li><p id="ignores_unresolved_elements"><strong>ignores unresolved elements</strong></p>
 <pre class="prettyprint lang-spec">
 m.parseSuite('''
   package demo
@@ -82,8 +78,7 @@ m.parseSuite('''
 ''')
 
 resolvedSpecs(m.firstSuite) =&gt; set()</pre>
-</p>
-</li><li><p  id="ignores_containing_suite"><strong>ignores containing suite</strong>
+</li><li><p id="ignores_containing_suite"><strong>ignores containing suite</strong></p>
 <pre class="prettyprint lang-spec">
 m.parseSuite('''
   package demo
@@ -94,7 +89,6 @@ m.parseSuite('''
 ''')
 
 resolvedSpecs(m.firstSuite) =&gt; set(&quot;MySpecSpec&quot;, &quot;MyFeatureFeature&quot;, &quot;StringSpec&quot;)</pre>
-</p>
 </li></ul>
 				</div>
 			</div>

@@ -98,14 +98,13 @@ class SpecDocGenerator extends AbstractDocGenerator {
 		}
 		'''
 			«IF example.name != null»
-			<p «id(example.name)»><strong>«example.describe.decode»</strong>
+			<p«id(example.name)»><strong>«example.describe.decode»</strong></p>
 			«ELSE»
-			<p>
 			«ENDIF»
 			«docString»
 			«IF !example.pending && example.body != null»
 			«example.toCodeBlock(filters)»
-			«ENDIF»</p>
+			«ENDIF»
 		'''
 	}
 	

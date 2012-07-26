@@ -38,14 +38,14 @@ describe "Using Should"{
 		"something" should not contain "any"
 
 		// iterables
-		newArrayList("something") should contain "something"
-		newArrayList("something") should not contain "something else"
+		list("something") should contain "something"
+		list("something") should not contain "something else"
 		
 		// using xtend's "with" operator
 		val greeting = "hello world" => [
 			length => 11
 			it should startWith("hello")
-			it should endWith("world")
+			it should endWith("world") 
 		]
 		greeting => typeof(String)
 	}     
@@ -111,7 +111,7 @@ describe "Using Should"{
 	 */ 
 	fact "Combining hamcrest and should"{
 		"hello" => startsWith("h")
-		newArrayList("red", "green") => hasItem("red")
+		list("red", "green") => hasItem("red")
 		9 should be greaterThan(5) 
 	}
 		

@@ -28,7 +28,7 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-<ul><li><p  id="generates_scenario_title_and_heading"><strong>generates scenario title and heading</strong>
+<ul><li><p id="generates_scenario_title_and_heading"><strong>generates scenario title and heading</strong></p>
 <pre class="prettyprint lang-spec">
 generateEmptyExampleDoc()
 
@@ -36,8 +36,7 @@ val scenarioDoc = generatedFile(&quot;ExampleSpec.html&quot;)
 assert scenarioDoc != null &amp;&amp; 
     scenarioDoc.contains(&quot;&lt;title&gt;Example&lt;/title&gt;&quot;)
     scenarioDoc.contains(&quot;&lt;h1&gt;Example&lt;/h1&gt;&quot;)</pre>
-</p>
-</li><li><p  id="generates_scenario_documentation"><strong>generates scenario documentation</strong>
+</li><li><p id="generates_scenario_documentation"><strong>generates scenario documentation</strong></p>
 <pre class="prettyprint lang-spec">
 generateDoc('''
   /*
@@ -55,8 +54,7 @@ generateDoc('''
 val scenarioDoc = generatedFile(&quot;ExampleSpec.html&quot;)
 assert scenarioDoc.contains(&quot;&lt;p&gt;This is an example.&lt;/p&gt;&quot;)
 assert !scenarioDoc.contains(&quot;Irrelevant documentation.&quot;)</pre>
-</p>
-</li><li><p  id="generates_example_documentation"><strong>generates example documentation</strong>
+</li><li><p id="generates_example_documentation"><strong>generates example documentation</strong></p>
 <pre class="prettyprint lang-spec">
 generateDoc('''
   describe 'Example'{
@@ -71,14 +69,12 @@ generateDoc('''
 ''')
 val scenarioDoc = generatedFile(&quot;ExampleSpec.html&quot;)
 assert scenarioDoc.contains('''
-&lt;strong&gt;should do stuff&lt;/strong&gt;
+&lt;p id=&quot;should_do_stuff&quot;&gt;&lt;strong&gt;should do stuff&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Example documentation&lt;/p&gt;
 &lt;pre class=&quot;prettyprint lang-spec&quot;&gt;
 var x = 0
-x = x + 1&lt;/pre&gt;
-&lt;/p&gt;'''.toString())</pre>
-</p>
-</li><li><p  id="should_support_markdown_for_documentation"><strong>should support markdown for documentation</strong>
+x = x + 1&lt;/pre&gt;'''.toString())</pre>
+</li><li><p id="should_support_markdown_for_documentation"><strong>should support markdown for documentation</strong></p>
 <pre class="prettyprint lang-spec">
 generateDoc('''
   /*
@@ -90,8 +86,7 @@ generateDoc('''
 ''')
 val scenarioDoc = generatedFile(&quot;ExampleSpec.html&quot;)
 assert scenarioDoc.contains(&quot;&lt;h1&gt;Example Heading&lt;/h1&gt;&quot;)</pre>
-</p>
-</li><li><p  id="generates_table_for_example_tables"><strong>generates table for example tables</strong>
+</li><li><p id="generates_table_for_example_tables"><strong>generates table for example tables</strong></p>
 <pre class="prettyprint lang-spec">
 generateDoc('''
   describe 'Example'{
@@ -107,8 +102,7 @@ assert scenarioDoc.contains(&quot;&lt;th&gt;a&lt;/th&gt;&quot;)
 assert scenarioDoc.contains(&quot;&lt;th&gt;b&lt;/th&gt;&quot;)
 assert scenarioDoc.contains(&quot;&lt;td&gt;1&lt;/td&gt;&quot;)
 assert scenarioDoc.contains(&quot;&lt;td&gt;2&lt;/td&gt;&quot;)</pre>
-</p>
-</li><li><p  id="filters_code_based_on_regex_in_filter_annotation"><strong>filters code based on regex in filter annotation</strong>
+</li><li><p id="filters_code_based_on_regex_in_filter_annotation"><strong>filters code based on regex in filter annotation</strong></p>
 <pre class="prettyprint lang-spec">
 generateDoc('''
   describe 'Example'{
@@ -122,7 +116,6 @@ generateDoc('''
 ''')
 val scenarioDoc = generatedFile(&quot;ExampleSpec.html&quot;)
 assert scenarioDoc.contains('aaaaaa')</pre>
-</p>
 </li></ul>
 				</div>
 			</div>

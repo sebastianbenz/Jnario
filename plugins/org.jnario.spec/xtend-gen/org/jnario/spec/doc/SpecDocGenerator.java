@@ -198,7 +198,7 @@ public class SpecDocGenerator extends AbstractDocGenerator {
         String _name = example.getName();
         boolean _notEquals_1 = (!Objects.equal(_name, null));
         if (_notEquals_1) {
-          _builder.append("<p ");
+          _builder.append("<p");
           String _name_1 = example.getName();
           String _id = this.id(_name_1);
           _builder.append(_id, "");
@@ -206,11 +206,9 @@ public class SpecDocGenerator extends AbstractDocGenerator {
           String _describe = this._exampleNameProvider.describe(example);
           String _decode = this.decode(_describe);
           _builder.append(_decode, "");
-          _builder.append("</strong>");
+          _builder.append("</strong></p>");
           _builder.newLineIfNotEmpty();
         } else {
-          _builder.append("<p>");
-          _builder.newLine();
         }
       }
       _builder.append(docString, "");
@@ -232,8 +230,6 @@ public class SpecDocGenerator extends AbstractDocGenerator {
           _builder.newLineIfNotEmpty();
         }
       }
-      _builder.append("</p>");
-      _builder.newLineIfNotEmpty();
       _xblockexpression = (_builder);
     }
     return _xblockexpression;
