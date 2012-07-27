@@ -13,11 +13,14 @@ package org.jnario.ui.quickfix;
 import static org.eclipse.xtext.ui.util.DisplayRunHelper.runAsyncInDisplayThread;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.jdt.internal.ui.wizards.NewClassCreationWizard;
 import org.eclipse.jdt.internal.ui.wizards.NewElementWizard;
+import org.eclipse.jdt.ui.wizards.NewClassWizardPage;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Shell;
@@ -57,6 +60,9 @@ public class JnarioQuickFixProvider extends XtendQuickfixProvider{
 	@Inject
 	private JnarioLibClasspathAdder jnarioLibAdder;
 	
+	@Inject
+	private NewTypePageConfigurer newTypePageConfigurer;
+	
 	@Inject Provider<NewXtendClassWizard> newXtendClassWizardProvider;
 	
 	@Override
@@ -81,42 +87,67 @@ public class JnarioQuickFixProvider extends XtendQuickfixProvider{
 					
 					if(reference == XbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR || 
 							reference == TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE){
+						URI context = state.getURI();
 						String issueString = xtextDocument.get(issue.getOffset(), issue.getLength());
-						IModification modification = doFixMissingType(issueString);
-						issueResolutionAcceptor.accept(issue, "New Xtend Class", "Create a new Xtend Class '" + issueString + "'", "xtend_file.png", modification);
+						issueResolutionAcceptor.accept(
+								issue, 
+								"Create Xtend class", 
+								"Opens the new Xtend class wizard to create the type '" + issueString + "'", 
+								"xtend_file.png", openNewXtendClassWizardFor(context, issueString));
+						issueResolutionAcceptor.accept(issue, 
+								"Create Java class", 
+								"Opens the new Java class wizard to create the type '" + issueString + "'", 
+								"xtend_file.png", 
+								openNewJavaClassWizardFor(context, issueString));
 					}
 				}
-
-				
 			});
 			super.createLinkingIssueResolutions(issue, issueResolutionAcceptor);
 		}
 	}
 	
-	
-	private IModification doFixMissingType(final String typeName) {
+	private IModification openNewJavaClassWizardFor(final URI contextUri, final String typeName) {
 		return new IModification() {
-			
 			public void apply(IModificationContext context) throws Exception {
 				runAsyncInDisplayThread(new Runnable(){
 
 					public void run() {
-						IWorkbench workbench = PlatformUI.getWorkbench(); 
-						Shell shell = workbench.getActiveWorkbenchWindow().getShell(); 
-						NewElementWizard newXtendClassWizard = newXtendClassWizardProvider.get();
-						newXtendClassWizard.addPages();
-						newXtendClassWizard.init(workbench, new StructuredSelection());
-						WizardDialog dialog = new WizardDialog(shell, newXtendClassWizard); 
-						dialog.create(); 
-						NewXtendClassWizardPage page = (NewXtendClassWizardPage) newXtendClassWizard.getStartingPage();
-						page.setTypeName(typeName, false);
+						NewClassWizardPage classWizardPage = new NewClassWizardPage();
+						NewClassCreationWizard wizard = new NewClassCreationWizard(classWizardPage, false);
+						WizardDialog dialog = createWizardDialog(wizard); 
+						newTypePageConfigurer.configure(classWizardPage, contextUri, typeName);
 						dialog.open(); 
 					}
-					
 				});
-				
 			}
 		};
+	}
+
+	private IModification openNewXtendClassWizardFor(final URI contextUri, final String typeName) {
+		return new IModification() {
+			public void apply(IModificationContext context) throws Exception {
+				runAsyncInDisplayThread(new Runnable(){
+
+					public void run() {
+						NewElementWizard newXtendClassWizard = newXtendClassWizardProvider.get();
+						WizardDialog dialog = createWizardDialog(newXtendClassWizard); 
+						NewXtendClassWizardPage page = (NewXtendClassWizardPage) newXtendClassWizard.getStartingPage();
+						newTypePageConfigurer.configure(page, contextUri, typeName);
+						dialog.open(); 
+					}
+				});
+			}
+		};
+	}
+	
+	private WizardDialog createWizardDialog(
+			NewElementWizard newXtendClassWizard) {
+		IWorkbench workbench = PlatformUI.getWorkbench(); 
+		Shell shell = workbench.getActiveWorkbenchWindow().getShell(); 
+		newXtendClassWizard.init(workbench, new StructuredSelection());
+		WizardDialog dialog = new WizardDialog(shell, newXtendClassWizard);
+		dialog.create(); 
+		return dialog;
 	}
 	
 	@Fix(JnarioIssueCodes.JNARIO_LIB_NOT_ON_CLASSPATH)
