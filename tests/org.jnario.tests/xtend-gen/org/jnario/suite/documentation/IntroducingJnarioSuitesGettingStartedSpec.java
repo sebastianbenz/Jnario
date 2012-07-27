@@ -22,7 +22,7 @@ import org.junit.runner.RunWith;
  * To get started first create a new Java project and a new Jnario suite using the suite wizard
  * (**File** -> **New** -> **Other** -> **Jnario** -> **Suite**).
  * 
- * <img width="500px" src="img/tutorial/suite_wizard.png" alt="New Suite Wizard"/>
+ * <img width="500px" src="/img/tutorial/suite_wizard.png" alt="New Suite Wizard"/>
  * 
  * Name the suite file "MySuite" and as description use "My Jnario Suite". The created suite will
  * look like:
@@ -31,7 +31,7 @@ import org.junit.runner.RunWith;
  * because of the missing jnario libraries, add them
  * to the classpath using the quickfix (CMD/Ctrl + 1).
  * 
- * <img width="600px" src="img/tutorial/suite_buildpath.png" alt="New Suite Error"/>
+ * <img width="600px" src="/img/tutorial/suite_buildpath.png" alt="New Suite Error"/>
  */
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
