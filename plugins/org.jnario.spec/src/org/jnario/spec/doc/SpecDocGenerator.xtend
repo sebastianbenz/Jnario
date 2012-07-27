@@ -124,13 +124,13 @@ class SpecDocGenerator extends AbstractDocGenerator {
 	 
 	def dispatch generate(ExampleTable table, int level)'''
 		<h4«id(table.toFieldName)»>«table.toFieldName.toTitle»</h4>
-		<p>«table.generateDoc»</p>
+		«table.generateDoc»
 		«super.generate(table)»
 	'''
 		
 	def dispatch generate(ExampleGroup exampleGroup, int level)'''
 		<h3«id(exampleGroup.describe)»>«exampleGroup.asTitle»</h3>
-		<p>«exampleGroup.generateDoc»</p>
+		«exampleGroup.generateDoc»
 		«generateMembers(exampleGroup, level + 1)»
 	'''
 	

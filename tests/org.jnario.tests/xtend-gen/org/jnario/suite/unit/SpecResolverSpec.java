@@ -113,7 +113,6 @@ public class SpecResolverSpec {
     Assert.assertTrue("\nExpected resolvedSpecs(firstSuite) => set(\"MySpecSpec\", \"MyFeatureFeature\") but"
      + "\n     resolvedSpecs(firstSuite) is " + new StringDescription().appendValue(_resolvedSpecs).toString()
      + "\n     firstSuite is " + new StringDescription().appendValue(_firstSuite).toString()
-     + "\n      is " + new StringDescription().appendValue(this.m).toString()
      + "\n     set(\"MySpecSpec\", \"MyFeatureFeature\") is " + new StringDescription().appendValue(_set).toString() + "\n", _doubleArrow);
     
   }

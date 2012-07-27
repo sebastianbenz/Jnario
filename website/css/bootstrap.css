@@ -9,12 +9,6 @@
  */
 /* body */
 /* Header */
-img,
-iframe {
-  padding: 0;
-  margin-bottom: 20px;
-  float: right;
-}
 .header {
   display: block;
   position: relative;
@@ -66,6 +60,14 @@ section,
 footer {
   padding-top: 30px;
   padding-bottom: 30px;
+}
+section img,
+footer img,
+section iframe,
+footer iframe {
+  padding: 0;
+  margin-bottom: 20px;
+  float: right;
 }
 section h1,
 footer h1,

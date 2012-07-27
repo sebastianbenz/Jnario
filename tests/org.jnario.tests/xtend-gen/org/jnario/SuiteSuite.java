@@ -18,7 +18,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(ExampleGroupRunner.class)
 @Named("Suite")
-@Contains({ SuiteValueConverterSpec.class, SuiteQualifiedNameProviderSpec.class, PatternValueConverterSpec.class, SpecResolverSpec.class, SuiteSpecFilterSpec.class, SuiteNodeBuilderSpec.class, SuiteClassNameProviderSpec.class, SuiteDocGeneratorSpec.class, IntroducingJnarioSuitesSpec.class, TextValueConverterSpec.class, SuiteScopeProviderSpec.class })
+@Contains({ SuiteValueConverterSpec.class, SuiteQualifiedNameProviderSpec.class, PatternValueConverterSpec.class, SuiteDocGeneratorSpec.class, IntroducingJnarioSuitesSpec.class, SpecResolverSpec.class, SuiteSpecFilterSpec.class, SuiteNodeBuilderSpec.class, TextValueConverterSpec.class, SuiteClassNameProviderSpec.class, SuiteScopeProviderSpec.class })
 @SuppressWarnings("all")
 public class SuiteSuite {
 }

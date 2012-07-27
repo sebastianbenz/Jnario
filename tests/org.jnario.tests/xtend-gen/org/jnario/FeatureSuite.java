@@ -29,7 +29,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(ExampleGroupRunner.class)
 @Named("Feature")
-@Contains({ FeatureTokenSourceSpec.class, IntroducingJnarioFeaturesSpec.class, CalculatorFeature.class, BackgroundsFeature.class, SetupTeardownWithFeatureExtensionsFeature.class, ReferencingOtherStepsSpec.class, UsingMatchersInFeaturesFeature.class, ParsingSimpleJnarioFilesFeature.class, AccessOfVariablesFeature.class, FeatureClassNameProviderSpec.class, TestRunnerFeature.class, UsingJUnitRulesInFeaturesFeature.class, ReferencesForStepsFeature.class, FeatureValueConverterSpec.class, StepNameProviderSpec.class, StepExpressionProviderSpec.class, StepArgumentsProviderSpec.class, StepParametersFeature.class, FieldInferenceFeature.class, FeatureJavaValidatorSpec.class, FeatureDocGeneratorSpec.class, FeatureExtensionsFeature.class })
+@Contains({ StepNameProviderSpec.class, FeatureTokenSourceSpec.class, IntroducingJnarioFeaturesSpec.class, CalculatorFeature.class, BackgroundsFeature.class, SetupTeardownWithFeatureExtensionsFeature.class, ReferencingOtherStepsSpec.class, UsingMatchersInFeaturesFeature.class, ParsingSimpleJnarioFilesFeature.class, AccessOfVariablesFeature.class, FeatureClassNameProviderSpec.class, StepExpressionProviderSpec.class, TestRunnerFeature.class, StepArgumentsProviderSpec.class, StepParametersFeature.class, UsingJUnitRulesInFeaturesFeature.class, FieldInferenceFeature.class, ReferencesForStepsFeature.class, FeatureJavaValidatorSpec.class, FeatureDocGeneratorSpec.class, FeatureExtensionsFeature.class, FeatureValueConverterSpec.class })
 @SuppressWarnings("all")
 public class FeatureSuite {
 }

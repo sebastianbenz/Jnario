@@ -39,7 +39,7 @@ describe "Introducing Jnario Suites"{
 	 * To get started first create a new Java project and a new Jnario suite using the suite wizard
  	 * (**File** -> **New** -> **Other** -> **Jnario** -> **Suite**).
  	 * 
- 	 * <p align="center"><img width="500px" src="/img/tutorial/suite_wizard.png" alt="New Suite Wizard"/></p>
+ 	 * <img width="500px" src="img/tutorial/suite_wizard.png" alt="New Suite Wizard"/>
  	 * 
  	 * Name the suite file "MySuite" and as description use "My Jnario Suite". The created suite will
  	 * look like:
@@ -48,7 +48,7 @@ describe "Introducing Jnario Suites"{
 	 * because of the missing jnario libraries, add them 
  	 * to the classpath using the quickfix (CMD/Ctrl + 1).
  	 * 
- 	 * <p align="center"><img width="600px" src="/img/tutorial/suite_buildpath.png" alt="New Suite Error"/></p>
+ 	 * <img width="600px" src="img/tutorial/suite_buildpath.png" alt="New Suite Error"/>
 	 *
 	 */
 	describe "Getting Started"{
@@ -155,8 +155,8 @@ describe "Introducing Jnario Suites"{
 		 * Each subsection can separately list specifications. The specifications
 		 * will be executed in the same hierarchy:
 		 * 
- 	 	 * <p align="center"><img width="400px" src="/img/tutorial/suite_execution.png" alt="Running a suite"/></p>
-		 * 
+ 	 	 * <img width="400px" src="/img/tutorial/suite_execution.png" alt="Running a suite"/>
+		 *  
 		 * Each section can have additional text written in [Markdown Syntax]
 		 * (http://daringfireball.net/projects/markdown/syntax). This text will
 		 * be generated into the HTML reports. Referenced specs can also have a text 

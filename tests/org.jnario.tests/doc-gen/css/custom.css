@@ -45,6 +45,9 @@ img{
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   border: white 0.5em solid;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 

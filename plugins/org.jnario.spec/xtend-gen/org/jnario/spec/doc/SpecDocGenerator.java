@@ -270,10 +270,8 @@ public class SpecDocGenerator extends AbstractDocGenerator {
     _builder.append(_title, "");
     _builder.append("</h4>");
     _builder.newLineIfNotEmpty();
-    _builder.append("<p>");
     CharSequence _generateDoc = this.generateDoc(table);
     _builder.append(_generateDoc, "");
-    _builder.append("</p>");
     _builder.newLineIfNotEmpty();
     CharSequence _generate = super.generate(table);
     _builder.append(_generate, "");
@@ -292,10 +290,8 @@ public class SpecDocGenerator extends AbstractDocGenerator {
     _builder.append(_asTitle, "");
     _builder.append("</h3>");
     _builder.newLineIfNotEmpty();
-    _builder.append("<p>");
     CharSequence _generateDoc = this.generateDoc(exampleGroup);
     _builder.append(_generateDoc, "");
-    _builder.append("</p>");
     _builder.newLineIfNotEmpty();
     int _plus = (level + 1);
     StringConcatenation _generateMembers = this.generateMembers(exampleGroup, _plus);
