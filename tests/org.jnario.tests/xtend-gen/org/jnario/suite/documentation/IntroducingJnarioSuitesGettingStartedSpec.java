@@ -77,7 +77,6 @@ public class IntroducingJnarioSuitesGettingStartedSpec extends IntroducingJnario
     Assert.assertTrue("\nExpected \'\'\'\n\t\t\tpackage demo\n\t\t\t\n\t\t\t#My Suite\n\t\t\t\n\t\t\t- \"My Feature\"\n\t\t\t- \"My Spec\"\n\t\t\t\'\'\'.parseSuite.nrOfParseAndLinkingErrors => 2 but"
      + "\n     \'\'\'\n\t\t\tpackage demo\n\t\t\t\n\t\t\t#My Suite\n\t\t\t\n\t\t\t- \"My Feature\"\n\t\t\t- \"My Spec\"\n\t\t\t\'\'\'.parseSuite.nrOfParseAndLinkingErrors is " + new StringDescription().appendValue(Integer.valueOf(_nrOfParseAndLinkingErrors)).toString()
      + "\n     \'\'\'\n\t\t\tpackage demo\n\t\t\t\n\t\t\t#My Suite\n\t\t\t\n\t\t\t- \"My Feature\"\n\t\t\t- \"My Spec\"\n\t\t\t\'\'\'.parseSuite is " + new StringDescription().appendValue(_parseSuite).toString()
-     + "\n      is " + new StringDescription().appendValue(this._modelStore).toString()
      + "\n     \'\'\'\n\t\t\tpackage demo\n\t\t\t\n\t\t\t#My Suite\n\t\t\t\n\t\t\t- \"My Feature\"\n\t\t\t- \"My Spec\"\n\t\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
     
   }

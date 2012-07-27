@@ -32,7 +32,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(ExampleGroupRunner.class)
 @Named("Spec")
-@Contains({ UsingJUnitRulesInSpecsSpec.class, OperationNameProviderSpec.class, ExampleGroupSpec.class, AnnotationsSpec.class, BeforeSpec.class, UsingXtendSWithOperatorSpec.class, SpecScopeProviderSpec.class, UsingShouldSpec.class, ImplicitSubjectSpec.class, IntroducingJnarioSpecsSpec.class, AfterSpec.class, SpecExtensionsSpec.class, ThrowsSpec.class, SpecQualifiedNameProviderSpec.class, UsingTablesSpec.class, AssertionSpec.class, BeforeAllSpec.class, SpecDocGeneratorSpec.class, PendingSpec.class, CustomizingTheSpecCreationSpec.class, StaticImportsSpec.class, AfterAllSpec.class, ExampleNameProviderSpec.class, ExampleSpec.class, SpecJavaValidatorSpec.class })
+@Contains({ OperationNameProviderSpec.class, UsingJUnitRulesInSpecsSpec.class, ExampleGroupSpec.class, BeforeSpec.class, ImplicitSubjectSpec.class, ThrowsSpec.class, SpecQualifiedNameProviderSpec.class, UsingTablesSpec.class, AssertionSpec.class, BeforeAllSpec.class, SpecDocGeneratorSpec.class, CustomizingTheSpecCreationSpec.class, AfterAllSpec.class, AnnotationsSpec.class, UsingXtendSWithOperatorSpec.class, SpecScopeProviderSpec.class, UsingShouldSpec.class, IntroducingJnarioSpecsSpec.class, AfterSpec.class, SpecExtensionsSpec.class, PendingSpec.class, StaticImportsSpec.class, ExampleNameProviderSpec.class, ExampleSpec.class, SpecJavaValidatorSpec.class })
 @SuppressWarnings("all")
 public class SpecSuite {
 }
