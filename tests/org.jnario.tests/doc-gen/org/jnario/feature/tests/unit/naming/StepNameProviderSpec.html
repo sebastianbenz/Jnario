@@ -29,7 +29,8 @@
 			<div class="row">
 				<div class="span12">
 <p>@author Sebastian Benz - Initial contribution and API</p>
-<h3 id="nameOf_Step">NameOf[Step]</h3>
+<h3 id="nameOf">NameOf</h3>
+<p></p>
 <ul><li><p id="returns_null_if_the_step_has_no_name"><strong>returns null if the step has no name</strong></p>
 <pre class="prettyprint lang-spec">
 assert subject.nameOf(emptyStep) == null</pre>
@@ -71,7 +72,8 @@ parseScenario('''
 
 stepName =&gt; 'Given a step with two values &quot;a&quot; and &quot;b&quot;'</pre>
 </li></ul>
-<h3 id="describe_Feature">Describe[Feature]</h3>
+<h3 id="describe">^describe</h3>
+<p></p>
 <ul><li><p id="removes_multilines_parameters"><strong>removes multilines parameters</strong></p>
 <pre class="prettyprint lang-spec">
 parseScenario('''
@@ -83,8 +85,10 @@ parseScenario('''
 
 describeStep =&gt; 'Given a step with multiline parameter'</pre>
 </li></ul>
-<h3 id="removeArguments_String">RemoveArguments[String]</h3>
+<h3 id="removeArguments">RemoveArguments</h3>
+<p></p>
 <ul><li><h4 id="examples">Examples</h4>
+<p></p>
 <table class="table table-striped table-bordered table-condensed">
 	<thead>
 		<tr>
@@ -113,11 +117,13 @@ examples.forEach[
   subject.removeArguments(step) =&gt; result
 ]</pre>
 </li></ul>
-<h3 id="describe_Feature">Describe[Feature]</h3>
+<h3 id="describe_Feature">^describe[Feature]</h3>
+<p></p>
 <ul><li><p id="feature_With_whitespace_desc_With_whitespace"><strong>feature[" With whitespace "].desc =>  "With whitespace"</strong></p>
 </li><li><p id="feature_With_parentheses_desc_With_parentheses"><strong>feature["With [parentheses]"].desc =>  "With [parentheses]"</strong></p>
 </li></ul>
-<h3 id="describe_Scenario">Describe[Scenario]</h3>
+<h3 id="describe_Scenario">^describe[Scenario]</h3>
+<p></p>
 <ul><li><p id="scenario_With_whitespace_desc_With_whitespace"><strong>scenario[" With whitespace "].desc =>  "With whitespace"</strong></p>
 </li><li><p id="scenario_With_parentheses_desc_With_parentheses"><strong>scenario["With [parentheses]"].desc =>  "With [parentheses]"</strong></p>
 </li></ul>

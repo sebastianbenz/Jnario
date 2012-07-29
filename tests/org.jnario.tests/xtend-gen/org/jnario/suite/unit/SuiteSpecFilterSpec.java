@@ -54,7 +54,8 @@ public class SuiteSpecFilterSpec {
      + "\n     subject.apply(desc(suite)) is " + new StringDescription().appendValue(Boolean.valueOf(_apply)).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
      + "\n     desc(suite) is " + new StringDescription().appendValue(_desc).toString()
-     + "\n     suite is " + new StringDescription().appendValue(_suite).toString() + "\n", _doubleArrow);
+     + "\n     suite is " + new StringDescription().appendValue(_suite).toString()
+     + "\n      is " + new StringDescription().appendValue(this._suitePackage).toString() + "\n", _doubleArrow);
     
   }
   
@@ -70,7 +71,8 @@ public class SuiteSpecFilterSpec {
      + "\n     subject.apply(desc(feature)) is " + new StringDescription().appendValue(Boolean.valueOf(_apply)).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
      + "\n     desc(feature) is " + new StringDescription().appendValue(_desc).toString()
-     + "\n     feature is " + new StringDescription().appendValue(_feature).toString() + "\n", _doubleArrow);
+     + "\n     feature is " + new StringDescription().appendValue(_feature).toString()
+     + "\n      is " + new StringDescription().appendValue(this._featurePackage).toString() + "\n", _doubleArrow);
     
   }
   

@@ -21,6 +21,7 @@ import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.internal.ui.wizards.NewClassCreationWizard;
 import org.eclipse.jdt.internal.ui.wizards.NewElementWizard;
 import org.eclipse.jdt.ui.wizards.NewClassWizardPage;
+import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Shell;
@@ -40,6 +41,7 @@ import org.eclipse.xtext.ui.editor.quickfix.Fix;
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.eclipse.xtext.validation.Issue;
+import org.eclipse.xtext.xbase.XMemberFeatureCall;
 import org.eclipse.xtext.xbase.XbasePackage;
 import org.jnario.ui.buildpath.JnarioLibClasspathAdder;
 import org.jnario.validation.JnarioIssueCodes;
@@ -60,6 +62,8 @@ public class JnarioQuickFixProvider extends XtendQuickfixProvider{
 	@Inject
 	private JnarioLibClasspathAdder jnarioLibAdder;
 	
+	@Inject CreateMissingMethod createMissingMethod;
+	
 	@Inject
 	private NewTypePageConfigurer newTypePageConfigurer;
 	
@@ -69,6 +73,30 @@ public class JnarioQuickFixProvider extends XtendQuickfixProvider{
 	public void putXtendOnClasspath(Issue issue,
 			IssueResolutionAcceptor acceptor) {
 	}
+	
+	protected void createXtendLinkingIssueResolutions(final Issue issue, final IssueResolutionAcceptor issueResolutionAcceptor) {
+		super.createXtendLinkingIssueResolutions(issue, issueResolutionAcceptor);
+		final IModificationContext modificationContext = getModificationContextFactory().createModificationContext(issue);
+		final IXtextDocument xtextDocument = modificationContext.getXtextDocument();
+		if(issue.getData() != null && xtextDocument != null){
+			final String elementName = issue.getData()[0];
+			if(elementName == null){
+				return;
+			}
+				
+			xtextDocument.modify(new IUnitOfWork.Void<XtextResource>(){
+				@Override
+				public void process(XtextResource state) throws Exception {
+					EObject eObject = state.getEObject(issue.getUriToProblem().fragment());
+					if(eObject instanceof XMemberFeatureCall){
+						XMemberFeatureCall call = (XMemberFeatureCall) eObject;
+						createMissingMethod.apply(issue, issueResolutionAcceptor, call, getIssueString(issue, xtextDocument));
+					} 
+				}
+			});
+		}
+	}
+		
 	
 	@Override
 	public void createLinkingIssueResolutions(final Issue issue,
@@ -88,7 +116,7 @@ public class JnarioQuickFixProvider extends XtendQuickfixProvider{
 					if(reference == XbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR || 
 							reference == TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE){
 						URI context = state.getURI();
-						String issueString = xtextDocument.get(issue.getOffset(), issue.getLength());
+						String issueString = getIssueString(issue, xtextDocument);
 						issueResolutionAcceptor.accept(
 								issue, 
 								"Create Xtend class", 
@@ -101,6 +129,7 @@ public class JnarioQuickFixProvider extends XtendQuickfixProvider{
 								openNewJavaClassWizardFor(context, issueString));
 					}
 				}
+
 			});
 			super.createLinkingIssueResolutions(issue, issueResolutionAcceptor);
 		}
@@ -159,5 +188,11 @@ public class JnarioQuickFixProvider extends XtendQuickfixProvider{
 				jnarioLibAdder.addLibsToClasspath(javaProject, new NullProgressMonitor());
 			}
 		});
+	}
+	
+	protected String getIssueString(final Issue issue,
+			final IXtextDocument xtextDocument)
+			throws BadLocationException {
+		return xtextDocument.get(issue.getOffset(), issue.getLength());
 	}
 }

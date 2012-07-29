@@ -111,6 +111,10 @@ public class ModelStore implements Iterable<EObject> {
 		return parse("Scenario" + resourceCount() + ".feature", input.toString());
 	}
 	
+	public Resource parseXtend(CharSequence input) {
+		return parse("Xtend" + resourceCount() + ".xtend", input.toString());
+	}
+	
 	public Resource parseSpec(CharSequence input) {
 		return parse("Spec" + resourceCount() + ".spec", input.toString());
 	}
