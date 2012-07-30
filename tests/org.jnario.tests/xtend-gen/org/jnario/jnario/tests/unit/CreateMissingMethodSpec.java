@@ -17,6 +17,7 @@ import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.ui.quickfix.CreateMissingMethod;
+import org.jnario.ui.quickfix.MethodBuilderProvider;
 import org.junit.runner.RunWith;
 
 @Contains({ CreateMissingMethodHasMissingMethodSpec.class, CreateMissingMethodReceiverIsReadOnlyXMemberFeatureCallSpec.class, CreateMissingMethodCreateModificationSpec.class })
@@ -38,8 +39,8 @@ public class CreateMissingMethodSpec {
   CreateMissingMethod subject;
   
   @Inject
-  public CreateMissingMethod createSubject(final ITypeProvider typeProvider, final IXtendJvmAssociations jvmAssociations) {
-    CreateMissingMethod _createMissingMethod = new CreateMissingMethod(this.javaElementProvider, typeProvider, jvmAssociations);
+  public CreateMissingMethod createSubject(final ITypeProvider typeProvider, final IXtendJvmAssociations jvmAssociations, final MethodBuilderProvider builderProvider) {
+    CreateMissingMethod _createMissingMethod = new CreateMissingMethod(this.javaElementProvider, typeProvider, jvmAssociations, builderProvider);
     CreateMissingMethod _subject = this.subject = _createMissingMethod;
     return _subject;
   }

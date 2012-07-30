@@ -13,6 +13,7 @@ import static extension org.jnario.lib.Should.*
 import org.jnario.ui.quickfix.CreateJavaMethod
 import org.jnario.ui.quickfix.CreateXtendMethod
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations
+import org.jnario.ui.quickfix.MethodBuilderProvider
 
 @CreateWith(typeof(SpecTestCreator))
 describe CreateMissingMethod{
@@ -22,8 +23,8 @@ describe CreateMissingMethod{
 	CreateMissingMethod subject
 	
 	@Inject
-	def createSubject(ITypeProvider typeProvider, IXtendJvmAssociations jvmAssociations){
-		subject = new CreateMissingMethod(javaElementProvider, typeProvider, jvmAssociations)
+	def createSubject(ITypeProvider typeProvider, IXtendJvmAssociations jvmAssociations, MethodBuilderProvider builderProvider){
+		subject = new CreateMissingMethod(javaElementProvider, typeProvider, jvmAssociations, builderProvider)
 	}
 
 	context hasMissingMethod{

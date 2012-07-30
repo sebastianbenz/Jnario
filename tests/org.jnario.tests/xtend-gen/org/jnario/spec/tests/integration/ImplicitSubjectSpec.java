@@ -9,6 +9,7 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -56,9 +57,6 @@ public class ImplicitSubjectSpec {
     _builder.append("package bootstrap");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("import static org.hamcrest.CoreMatchers.*");
-    _builder.newLine();
-    _builder.newLine();
     _builder.append("describe String {");
     _builder.newLine();
     _builder.append("  ");
@@ -87,14 +85,47 @@ public class ImplicitSubjectSpec {
    * @filter('''|.executesSuccessfully)
    */
   @Test
+  @Ignore
+  @Named("can be overridden by manually calling the constructor [PENDING]")
+  @Order(99)
+  public void canBeOverriddenByManuallyCallingTheConstructor() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("package bootstrap");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("describe Integer {");
+    _builder.newLine();
+    _builder.append("  ");
+    _builder.newLine();
+    _builder.append("  ");
+    _builder.append("before subject = new Integer(42)");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("  ");
+    _builder.append("fact \"subject should be overridden\"{");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("subject should be 42");
+    _builder.newLine();
+    _builder.append("  ");
+    _builder.append("} ");
+    _builder.newLine();
+    _builder.append("      ");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    this._behaviorExecutor.executesSuccessfully(_builder);
+  }
+  
+  /**
+   * @filter('''|.executesSuccessfully)
+   */
+  @Test
   @Named("will be only created if is used")
   @Order(99)
   public void willBeOnlyCreatedIfIsUsed() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("import static org.hamcrest.CoreMatchers.*");
     _builder.newLine();
     _builder.newLine();
     _builder.append("describe String {");
@@ -161,9 +192,6 @@ public class ImplicitSubjectSpec {
   public void canBeOverriddenFromNestedExampleGroups() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("import static org.hamcrest.CoreMatchers.*");
     _builder.newLine();
     _builder.newLine();
     _builder.append("describe String {");

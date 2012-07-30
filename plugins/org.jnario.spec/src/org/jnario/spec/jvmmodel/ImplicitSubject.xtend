@@ -25,6 +25,7 @@ import static org.eclipse.xtext.EcoreUtil2.*
 
 import static extension com.google.common.collect.Iterables.*
 import static extension com.google.common.collect.Iterators.*
+import org.eclipse.xtext.xbase.XAbstractFeatureCall
  
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -75,13 +76,10 @@ class ImplicitSubject {
 	}
 	
 	def neverUsesSubject(ExampleGroup exampleGroup){
-		var Iterator<XFeatureCall> allFeatureCalls = emptyIterator
+		var Iterator<XAbstractFeatureCall> allFeatureCalls = emptyIterator
 		val members = exampleGroup.members
-		for(example : members.filter(typeof(XtendFunction))){
-			allFeatureCalls = concat(allFeatureCalls, example.eAllContents.filter(typeof(XFeatureCall)))
-		}
-		for(example : members.filter(typeof(TestFunction))){
-			allFeatureCalls = concat(allFeatureCalls, example.eAllContents.filter(typeof(XFeatureCall)))
+		for(example : members.filter(typeof(XtendFunction)) + members.filter(typeof(TestFunction))){
+			allFeatureCalls = concat(allFeatureCalls, example.eAllContents.filter(typeof(XAbstractFeatureCall)))
 		}
 		return null == allFeatureCalls.findFirst[it.concreteSyntaxFeatureName == SUBJECT_FIELD_NAME]
 	}

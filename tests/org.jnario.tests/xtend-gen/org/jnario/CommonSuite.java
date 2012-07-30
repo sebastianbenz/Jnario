@@ -5,6 +5,7 @@ import org.jnario.jnario.documentation._20FactsAboutXtendSpec;
 import org.jnario.jnario.tests.integration.ExtensionLibrarySpec;
 import org.jnario.jnario.tests.unit.CreateMissingMethodSpec;
 import org.jnario.jnario.tests.unit.DocumentationProviderSpec;
+import org.jnario.jnario.tests.unit.MethodBuilderSpec;
 import org.jnario.jnario.tests.unit.doc.FilterExtractorSpec;
 import org.jnario.jnario.tests.unit.doc.HtmlAssetsCompilerSpec;
 import org.jnario.jnario.tests.unit.doc.HtmlAssetsSpec;
@@ -23,7 +24,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(ExampleGroupRunner.class)
 @Named("Common")
-@Contains({ ShouldSpec.class, CreateMissingMethodSpec.class, RegexFilterSpec.class, ExecutableSpec.class, FilterExtractorSpec.class, StringsSpec.class, InstallingJnarioSpec.class, DocumentationProviderSpec.class, WhiteSpaceNormalizerSpec.class, HtmlFileSpec.class, HtmlAssetsSpec.class, ExtensionLibrarySpec.class, HtmlAssetsCompilerSpec.class, ExampleColumnSpec.class, _20FactsAboutXtendSpec.class, ExampleTableSpec.class })
+@Contains({ ShouldSpec.class, CreateMissingMethodSpec.class, RegexFilterSpec.class, ExecutableSpec.class, FilterExtractorSpec.class, StringsSpec.class, InstallingJnarioSpec.class, DocumentationProviderSpec.class, MethodBuilderSpec.class, WhiteSpaceNormalizerSpec.class, HtmlFileSpec.class, HtmlAssetsSpec.class, ExtensionLibrarySpec.class, HtmlAssetsCompilerSpec.class, ExampleColumnSpec.class, _20FactsAboutXtendSpec.class, ExampleTableSpec.class })
 @SuppressWarnings("all")
 public class CommonSuite {
 }

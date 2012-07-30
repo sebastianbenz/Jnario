@@ -41,14 +41,30 @@ describe "Implicit Subject"{
     '''
       package bootstrap
 
-      import static org.hamcrest.CoreMatchers.*
-      
       describe String {
         
         String subject = "overridden"
       
         fact "subject should be overridden"{
           subject should be "overridden"
+        } 
+            
+      }
+    '''.executesSuccessfully
+  }
+    /*
+   * @filter('''|.executesSuccessfully)  
+   */
+  pending fact "can be overridden by manually calling the constructor"{
+    '''
+      package bootstrap
+
+      describe Integer {
+        
+        before subject = new Integer(42)
+      
+        fact "subject should be overridden"{
+          subject should be 42
         } 
             
       }
@@ -61,8 +77,6 @@ describe "Implicit Subject"{
     '''
       package bootstrap
 
-      import static org.hamcrest.CoreMatchers.*
-      
       describe String {
         
         fact "throws NoSuchFieldException because subject will not be created"{
@@ -97,8 +111,6 @@ describe "Implicit Subject"{
     '''
     package bootstrap
 
-    import static org.hamcrest.CoreMatchers.*
-    
     describe String {
       
       describe java.util.ArrayList "Nested ExampleGroup with different target type"{

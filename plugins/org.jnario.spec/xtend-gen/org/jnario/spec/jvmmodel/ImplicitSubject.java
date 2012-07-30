@@ -19,7 +19,7 @@ import org.eclipse.xtext.common.types.JvmMember;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmVisibility;
-import org.eclipse.xtext.xbase.XFeatureCall;
+import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
@@ -118,30 +118,25 @@ public class ImplicitSubject {
   }
   
   public boolean neverUsesSubject(final ExampleGroup exampleGroup) {
-    Iterator<XFeatureCall> allFeatureCalls = Iterators.<XFeatureCall>emptyIterator();
+    Iterator<XAbstractFeatureCall> allFeatureCalls = Iterators.<XAbstractFeatureCall>emptyIterator();
     final EList<XtendMember> members = exampleGroup.getMembers();
     Iterable<XtendFunction> _filter = Iterables.<XtendFunction>filter(members, XtendFunction.class);
-    for (final XtendFunction example : _filter) {
+    Iterable<TestFunction> _filter_1 = Iterables.<TestFunction>filter(members, TestFunction.class);
+    Iterable<XtendMember> _plus = Iterables.<XtendMember>concat(_filter, _filter_1);
+    for (final XtendMember example : _plus) {
       TreeIterator<EObject> _eAllContents = example.eAllContents();
-      UnmodifiableIterator<XFeatureCall> _filter_1 = Iterators.<XFeatureCall>filter(_eAllContents, XFeatureCall.class);
-      Iterator<XFeatureCall> _concat = Iterators.<XFeatureCall>concat(allFeatureCalls, _filter_1);
+      UnmodifiableIterator<XAbstractFeatureCall> _filter_2 = Iterators.<XAbstractFeatureCall>filter(_eAllContents, XAbstractFeatureCall.class);
+      Iterator<XAbstractFeatureCall> _concat = Iterators.<XAbstractFeatureCall>concat(allFeatureCalls, _filter_2);
       allFeatureCalls = _concat;
     }
-    Iterable<TestFunction> _filter_2 = Iterables.<TestFunction>filter(members, TestFunction.class);
-    for (final TestFunction example_1 : _filter_2) {
-      TreeIterator<EObject> _eAllContents_1 = example_1.eAllContents();
-      UnmodifiableIterator<XFeatureCall> _filter_3 = Iterators.<XFeatureCall>filter(_eAllContents_1, XFeatureCall.class);
-      Iterator<XFeatureCall> _concat_1 = Iterators.<XFeatureCall>concat(allFeatureCalls, _filter_3);
-      allFeatureCalls = _concat_1;
-    }
-    final Function1<XFeatureCall,Boolean> _function = new Function1<XFeatureCall,Boolean>() {
-        public Boolean apply(final XFeatureCall it) {
+    final Function1<XAbstractFeatureCall,Boolean> _function = new Function1<XAbstractFeatureCall,Boolean>() {
+        public Boolean apply(final XAbstractFeatureCall it) {
           String _concreteSyntaxFeatureName = it.getConcreteSyntaxFeatureName();
           boolean _equals = Objects.equal(_concreteSyntaxFeatureName, Constants.SUBJECT_FIELD_NAME);
           return Boolean.valueOf(_equals);
         }
       };
-    XFeatureCall _findFirst = IteratorExtensions.<XFeatureCall>findFirst(allFeatureCalls, _function);
+    XAbstractFeatureCall _findFirst = IteratorExtensions.<XAbstractFeatureCall>findFirst(allFeatureCalls, _function);
     return Objects.equal(null, _findFirst);
   }
 }

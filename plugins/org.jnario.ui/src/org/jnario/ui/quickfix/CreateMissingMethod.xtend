@@ -12,17 +12,25 @@ import org.eclipse.xtext.ui.editor.model.edit.IModification
 import org.eclipse.xtext.ui.editor.model.edit.IModificationContext
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations
 import org.eclipse.xtext.xbase.resource.XbaseResource
+import org.eclipse.jdt.core.IType
+import org.eclipse.core.runtime.NullProgressMonitor
+import org.eclipse.xtext.xbase.compiler.StringBuilderBasedAppendable
+import org.eclipse.xtext.common.types.xtext.ui.JdtHyperlink
+import org.eclipse.jdt.core.IJavaElement
+import org.eclipse.xtext.xbase.compiler.ImportManager
 
 class CreateMissingMethod {
 	
 	extension IJavaElementFinder elementProvider
 	extension ITypeProvider typeProvider
 	extension IXtendJvmAssociations jvmAssociations
+	extension MethodBuilderProvider methodBuilderProvider
 	
-	@Inject new(IJavaElementFinder elementProvider, ITypeProvider typeProvider, IXtendJvmAssociations jvmAssociations){
+	@Inject new(IJavaElementFinder elementProvider, ITypeProvider typeProvider, IXtendJvmAssociations jvmAssociations, MethodBuilderProvider methodBuilderProvider){
 		this.elementProvider = elementProvider
 		this.typeProvider = typeProvider
 		this.jvmAssociations = jvmAssociations
+		this.methodBuilderProvider = methodBuilderProvider
 	}
 		
 	def apply(Issue issue, IssueResolutionAcceptor issueResolutionAcceptor, XMemberFeatureCall featureCall, String issueString){
@@ -44,17 +52,27 @@ class CreateMissingMethod {
 	}
 	
 	def boolean receiverIsReadOnly(XMemberFeatureCall call) {
-		val targetType = call.targetType
-		val javaElement = findElementFor(targetType)
-		return javaElement.isReadOnly
+		return call.targetJavaElement.isReadOnly
 	}
 	
 	def IModification createModification(XMemberFeatureCall call, String methodName) { 
 		if(isXtendClass(call)){
-			return new CreateXtendMethod
+			val methodBuilder = newXtendMethodBuilder(methodName)
+			methodBuilder.configureWith(call)
+			return new CreateXtendMethod(methodBuilder)
 		}else{
-			return new CreateJavaMethod
+			val methodBuilder = newJavaMethodBuilder(methodName)
+			methodBuilder.configureWith(call)
+			return new CreateJavaMethod(methodBuilder, call.targetJavaElement as IType)
 		}
+	}
+	
+	def private configureWith(XtendMethodBuilder methodBuilder, XMemberFeatureCall call){
+		methodBuilder.featureCall = call
+	}
+	
+	def private targetJavaElement(XMemberFeatureCall call){
+		findElementFor(call.targetType)
 	}
 	
 	def private isXtendClass(XMemberFeatureCall call) {
@@ -78,13 +96,34 @@ class CreateMissingMethod {
 	}
 }
 
+@Data
 class CreateJavaMethod implements IModification{
+	
+	XtendMethodBuilder methodBuilder
+	IType type
+	
 	override apply(IModificationContext context) throws Exception {
-		throw new UnsupportedOperationException("Auto-generated function stub")
+		generateMethod.openInEditor
+	}
+	
+	def private generateMethod(){
+		val content = new StringBuilderBasedAppendable
+		methodBuilder.build(content)
+		type.createMethod(content.toString, null, true, new NullProgressMonitor)
+	}
+	
+	def private openInEditor(IJavaElement element){
+		val link = new JdtHyperlink()
+		link.javaElement = element
+		link.open
 	}
 }
 
+@Data
 class CreateXtendMethod implements IModification{
+	
+	XtendMethodBuilder methodBuilder
+	
 	override apply(IModificationContext context) throws Exception {
 		throw new UnsupportedOperationException("Auto-generated function stub")
 	}

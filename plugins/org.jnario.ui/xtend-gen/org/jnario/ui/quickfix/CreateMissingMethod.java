@@ -5,6 +5,7 @@ import com.google.inject.Inject;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jdt.core.IJavaElement;
+import org.eclipse.jdt.core.IType;
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
 import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.common.types.JvmType;
@@ -20,6 +21,9 @@ import org.eclipse.xtext.xbase.resource.XbaseResource;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.jnario.ui.quickfix.CreateJavaMethod;
 import org.jnario.ui.quickfix.CreateXtendMethod;
+import org.jnario.ui.quickfix.JavaMethodBuilder;
+import org.jnario.ui.quickfix.MethodBuilderProvider;
+import org.jnario.ui.quickfix.XtendMethodBuilder;
 
 @SuppressWarnings("all")
 public class CreateMissingMethod {
@@ -29,11 +33,14 @@ public class CreateMissingMethod {
   
   private IXtendJvmAssociations jvmAssociations;
   
+  private MethodBuilderProvider methodBuilderProvider;
+  
   @Inject
-  public CreateMissingMethod(final IJavaElementFinder elementProvider, final ITypeProvider typeProvider, final IXtendJvmAssociations jvmAssociations) {
+  public CreateMissingMethod(final IJavaElementFinder elementProvider, final ITypeProvider typeProvider, final IXtendJvmAssociations jvmAssociations, final MethodBuilderProvider methodBuilderProvider) {
     this.elementProvider = elementProvider;
     this.typeProvider = typeProvider;
     this.jvmAssociations = jvmAssociations;
+    this.methodBuilderProvider = methodBuilderProvider;
   }
   
   public void apply(final Issue issue, final IssueResolutionAcceptor issueResolutionAcceptor, final XMemberFeatureCall featureCall, final String issueString) {
@@ -71,20 +78,34 @@ public class CreateMissingMethod {
   }
   
   public boolean receiverIsReadOnly(final XMemberFeatureCall call) {
-    final JvmType targetType = this.targetType(call);
-    final IJavaElement javaElement = this.elementProvider.findElementFor(targetType);
-    return javaElement.isReadOnly();
+    IJavaElement _targetJavaElement = this.targetJavaElement(call);
+    return _targetJavaElement.isReadOnly();
   }
   
   public IModification createModification(final XMemberFeatureCall call, final String methodName) {
     boolean _isXtendClass = this.isXtendClass(call);
     if (_isXtendClass) {
-      CreateXtendMethod _createXtendMethod = new CreateXtendMethod();
+      final XtendMethodBuilder methodBuilder = this.methodBuilderProvider.newXtendMethodBuilder(methodName);
+      this.configureWith(methodBuilder, call);
+      CreateXtendMethod _createXtendMethod = new CreateXtendMethod(methodBuilder);
       return _createXtendMethod;
     } else {
-      CreateJavaMethod _createJavaMethod = new CreateJavaMethod();
+      final JavaMethodBuilder methodBuilder_1 = this.methodBuilderProvider.newJavaMethodBuilder(methodName);
+      this.configureWith(methodBuilder_1, call);
+      IJavaElement _targetJavaElement = this.targetJavaElement(call);
+      CreateJavaMethod _createJavaMethod = new CreateJavaMethod(methodBuilder_1, ((IType) _targetJavaElement));
       return _createJavaMethod;
     }
+  }
+  
+  private void configureWith(final XtendMethodBuilder methodBuilder, final XMemberFeatureCall call) {
+    methodBuilder.setFeatureCall(call);
+  }
+  
+  private IJavaElement targetJavaElement(final XMemberFeatureCall call) {
+    JvmType _targetType = this.targetType(call);
+    IJavaElement _findElementFor = this.elementProvider.findElementFor(_targetType);
+    return _findElementFor;
   }
   
   private boolean isXtendClass(final XMemberFeatureCall call) {
