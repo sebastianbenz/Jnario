@@ -52,6 +52,31 @@ public class MethodBuilderXtendMethodBuilderSpec extends MethodBuilderSpec {
   }
   
   @Test
+  @Named("ignores feature call target")
+  @Order(99)
+  public void ignoresFeatureCallTarget() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("describe \"Something\"{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("String x");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fact x.myMethod(true, 4)");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    this.setContext(_builder);
+    String _generatedMethod = this.generatedMethod();
+    StringConcatenation _builder_1 = new StringConcatenation();
+    _builder_1.append("def myMethod(boolean b, int i){");
+    _builder_1.newLine();
+    _builder_1.append("}");
+    _builder_1.newLine();
+    this.is(_generatedMethod, _builder_1);
+  }
+  
+  @Test
   @Named("returns false for boolean")
   @Order(99)
   public void returnsFalseForBoolean() throws Exception {

@@ -1,6 +1,13 @@
 package org.jnario.ui.quickfix;
 
+import com.google.common.base.Objects;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.lib.Data;
+import org.eclipse.xtext.Keyword;
+import org.eclipse.xtext.nodemodel.ICompositeNode;
+import org.eclipse.xtext.nodemodel.ILeafNode;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.ui.editor.model.edit.IModification;
 import org.eclipse.xtext.ui.editor.model.edit.IModificationContext;
 import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
@@ -16,8 +23,49 @@ public class CreateXtendMethod implements IModification {
   }
   
   public void apply(final IModificationContext context) throws Exception {
-    UnsupportedOperationException _unsupportedOperationException = new UnsupportedOperationException("Auto-generated function stub");
-    throw _unsupportedOperationException;
+  }
+  
+  public int getFunctionInsertOffset(final XtendClass clazz) {
+    int _xblockexpression = (int) 0;
+    {
+      final ICompositeNode clazzNode = NodeModelUtils.findActualNodeFor(clazz);
+      boolean _equals = Objects.equal(clazzNode, null);
+      if (_equals) {
+        String _name = clazz.getName();
+        String _plus = ("Cannot determine node for clazz " + _name);
+        IllegalStateException _illegalStateException = new IllegalStateException(_plus);
+        throw _illegalStateException;
+      }
+      int lastClosingBraceOffset = (-1);
+      Iterable<ILeafNode> _leafNodes = clazzNode.getLeafNodes();
+      for (final ILeafNode leafNode : _leafNodes) {
+        boolean _and = false;
+        EObject _grammarElement = leafNode.getGrammarElement();
+        if (!(_grammarElement instanceof Keyword)) {
+          _and = false;
+        } else {
+          EObject _grammarElement_1 = leafNode.getGrammarElement();
+          String _value = ((Keyword) _grammarElement_1).getValue();
+          boolean _equals_1 = Objects.equal("}", _value);
+          _and = ((_grammarElement instanceof Keyword) && _equals_1);
+        }
+        if (_and) {
+          int _offset = leafNode.getOffset();
+          lastClosingBraceOffset = _offset;
+        }
+      }
+      int _xifexpression = (int) 0;
+      int _minus = (-1);
+      boolean _equals_2 = (lastClosingBraceOffset == _minus);
+      if (_equals_2) {
+        int _totalEndOffset = clazzNode.getTotalEndOffset();
+        _xifexpression = _totalEndOffset;
+      } else {
+        _xifexpression = lastClosingBraceOffset;
+      }
+      _xblockexpression = (_xifexpression);
+    }
+    return _xblockexpression;
   }
   
   public CreateXtendMethod(final XtendMethodBuilder methodBuilder) {

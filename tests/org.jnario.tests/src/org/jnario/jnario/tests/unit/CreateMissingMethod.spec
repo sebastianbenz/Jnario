@@ -14,6 +14,8 @@ import org.jnario.ui.quickfix.CreateJavaMethod
 import org.jnario.ui.quickfix.CreateXtendMethod
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations
 import org.jnario.ui.quickfix.MethodBuilderProvider
+import org.jnario.jnario.test.util.Resources
+import org.eclipse.emf.ecore.util.EcoreUtil
 
 @CreateWith(typeof(SpecTestCreator))
 describe CreateMissingMethod{
@@ -72,6 +74,24 @@ describe CreateMissingMethod{
 			'''.hasMissingMethod => true
 		}
 		
+		fact "true if method exists with different parameter count"{
+			'''
+			describe "Something"{
+				String x
+				fact x.toString("hello")
+			}
+			'''.hasMissingMethod => true
+		}
+		
+		fact "true if method exists with different parameter types"{
+			'''
+			describe "Something"{
+				String x
+				fact x.concat(4)
+			}
+			'''.hasMissingMethod => true
+		}
+		
 		def hasMissingMethod(CharSequence s){
 			parseSpec(s)
 			subject.hasMissingMethod(firstFeatureCall)
@@ -116,7 +136,7 @@ describe CreateMissingMethod{
 			'''.createModification => typeof(CreateJavaMethod)
 		}
 		
-		fact "creates CreateXtendMethod modification for Xtend class"{
+		pending fact "creates CreateXtendMethod modification for Xtend class"{
 			m.parseXtend('''
 				class Example{
 					

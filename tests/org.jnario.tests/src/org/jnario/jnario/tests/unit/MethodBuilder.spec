@@ -42,6 +42,19 @@ describe "MethodBuilder" {
 			''')
 		}
 		
+		fact "ignores feature call target"{
+			setContext('''
+				describe "Something"{
+					String x
+					fact x.myMethod(true, 4)
+				}
+			''')
+			generatedMethod.is('''
+				def myMethod(boolean b, int i){
+				}
+			''')
+		}
+		
 		fact "returns false for boolean"{
 			setContext('''
 				describe "Something"{

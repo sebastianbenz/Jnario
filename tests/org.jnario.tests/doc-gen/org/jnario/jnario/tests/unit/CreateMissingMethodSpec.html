@@ -68,6 +68,22 @@ describe &quot;Something&quot;{
   fact x.unresolved
 }
 '''.hasMissingMethod =&gt; true</pre>
+</li><li><p id="true_if_method_exists_with_different_parameter_count"><strong>true if method exists with different parameter count</strong></p>
+<pre class="prettyprint lang-spec">
+'''
+describe &quot;Something&quot;{
+  String x
+  fact x.toString(&quot;hello&quot;)
+}
+'''.hasMissingMethod =&gt; true</pre>
+</li><li><p id="true_if_method_exists_with_different_parameter_types"><strong>true if method exists with different parameter types</strong></p>
+<pre class="prettyprint lang-spec">
+'''
+describe &quot;Something&quot;{
+  String x
+  fact x.concat(4)
+}
+'''.hasMissingMethod =&gt; true</pre>
 </li></ul>
 <h3 id="receiverIsReadOnly_XMemberFeatureCall">ReceiverIsReadOnly[XMemberFeatureCall]</h3>
 <p></p>
@@ -99,20 +115,7 @@ describe &quot;Something&quot;{
   fact x.unresolved
 }
 '''.createModification =&gt; typeof(CreateJavaMethod)</pre>
-</li><li><p id="creates_CreateXtendMethod_modification_for_Xtend_class"><strong>creates CreateXtendMethod modification for Xtend class</strong></p>
-<pre class="prettyprint lang-spec">
-m.parseXtend('''
-  class Example{
-    
-  }
-''')
-
-'''
-describe &quot;Something&quot;{
-  Example x
-  fact x.unresolved
-}
-'''.createModification =&gt; typeof(CreateXtendMethod)</pre>
+</li><li><p id="creates_CreateXtendMethod_modification_for_Xtend_class"><strong>creates CreateXtendMethod modification for Xtend class [PENDING]</strong></p>
 </li></ul>
 				</div>
 			</div>

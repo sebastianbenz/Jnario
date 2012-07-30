@@ -15,6 +15,7 @@ import org.eclipse.xtext.common.types.util.Primitives
 import org.eclipse.xtext.common.types.xtext.ui.JdtVariableCompletions
 import org.eclipse.xtext.common.types.xtext.ui.JdtVariableCompletions$CompletionDataAcceptor
 import org.eclipse.xtext.xbase.XAbstractFeatureCall
+import org.eclipse.xtext.xbase.XMemberFeatureCall
 import org.eclipse.xtext.xbase.compiler.IAppendable
 import org.eclipse.xtext.xbase.compiler.ImportManager
 import org.eclipse.xtext.xbase.typing.ITypeProvider
@@ -47,7 +48,8 @@ class XtendMethodBuilder {
 	@Inject extension JdtVariableCompletions 
 	@Inject extension XtendTypeReferenceSerializer 
 	@Inject extension Primitives 
-
+	@Inject extension TypeSubstitutionHelper 
+	 
 	@Property String methodName 
 	@Property XAbstractFeatureCall featureCall
 	@Property ImportManager importManager =  new ImportManager(false, "$".charAt(0))
@@ -64,7 +66,6 @@ class XtendMethodBuilder {
 	def protected addName(IAppendable appendable){
 		appendable.append(methodName)
 	}
-	
 	
 	def protected addPrefix(IAppendable appendable){
 		appendable.append("def ")
@@ -115,9 +116,14 @@ class XtendMethodBuilder {
 		if(featureCall == null){
 			return appendable.append("()")
 		}
-		val iterator = featureCall.getExplicitArguments().iterator()
+		var iterator = if(featureCall instanceof XMemberFeatureCall){
+			(featureCall as XMemberFeatureCall).memberCallArguments.iterator
+		}else{
+			featureCall.explicitArguments.iterator
+		}
 		val notallowed = <String>newHashSet()
-		appendable.append("(")
+		appendable.append("(") 
+		
 		while(iterator.hasNext()){
 			val expression = iterator.next()
 			val typeRef = expression.type
@@ -143,14 +149,15 @@ class XtendMethodBuilder {
 			typeRef.type.eAllContents.filter(typeof(JvmTypeReference)).filter[type != null].forEach[
 				importManager.appendType(it.type, typeString)
 			]		
-			typeRef.serialize(featureCall, appendable)
+			val resolvedExpectedType= typeParameterByConstraintSubstitutor.substitute(typeRef);
+			resolvedExpectedType.serialize(featureCall, appendable)
 		}
 		appendable
 	}
 	
 	def imports(){
 		importManager.imports
-	}
+	} 
 	
 }
 

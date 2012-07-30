@@ -125,6 +125,52 @@ public class CreateMissingMethodHasMissingMethodSpec extends CreateMissingMethod
     
   }
   
+  @Test
+  @Named("true if method exists with different parameter count")
+  @Order(99)
+  public void trueIfMethodExistsWithDifferentParameterCount() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("describe \"Something\"{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("String x");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fact x.toString(\"hello\")");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    boolean _hasMissingMethod = this.hasMissingMethod(_builder);
+    boolean _doubleArrow = Should.operator_doubleArrow(Boolean.valueOf(_hasMissingMethod), Boolean.valueOf(true));
+    Assert.assertTrue("\nExpected \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tString x\n\t\t\t\tfact x.toString(\"hello\")\n\t\t\t}\n\t\t\t\'\'\'.hasMissingMethod => true but"
+     + "\n     \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tString x\n\t\t\t\tfact x.toString(\"hello\")\n\t\t\t}\n\t\t\t\'\'\'.hasMissingMethod is " + new StringDescription().appendValue(Boolean.valueOf(_hasMissingMethod)).toString()
+     + "\n     \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tString x\n\t\t\t\tfact x.toString(\"hello\")\n\t\t\t}\n\t\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
+    
+  }
+  
+  @Test
+  @Named("true if method exists with different parameter types")
+  @Order(99)
+  public void trueIfMethodExistsWithDifferentParameterTypes() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("describe \"Something\"{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("String x");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fact x.concat(4)");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    boolean _hasMissingMethod = this.hasMissingMethod(_builder);
+    boolean _doubleArrow = Should.operator_doubleArrow(Boolean.valueOf(_hasMissingMethod), Boolean.valueOf(true));
+    Assert.assertTrue("\nExpected \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tString x\n\t\t\t\tfact x.concat(4)\n\t\t\t}\n\t\t\t\'\'\'.hasMissingMethod => true but"
+     + "\n     \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tString x\n\t\t\t\tfact x.concat(4)\n\t\t\t}\n\t\t\t\'\'\'.hasMissingMethod is " + new StringDescription().appendValue(Boolean.valueOf(_hasMissingMethod)).toString()
+     + "\n     \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tString x\n\t\t\t\tfact x.concat(4)\n\t\t\t}\n\t\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
+    
+  }
+  
   public boolean hasMissingMethod(final CharSequence s) {
     boolean _xblockexpression = false;
     {

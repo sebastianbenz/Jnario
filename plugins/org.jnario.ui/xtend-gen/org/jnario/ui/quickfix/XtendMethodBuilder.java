@@ -20,6 +20,7 @@ import org.eclipse.xtext.common.types.xtext.ui.JdtVariableCompletions;
 import org.eclipse.xtext.common.types.xtext.ui.JdtVariableCompletions.VariableType;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.XMemberFeatureCall;
 import org.eclipse.xtext.xbase.compiler.IAppendable;
 import org.eclipse.xtext.xbase.compiler.ImportManager;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
@@ -28,7 +29,9 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.eclipse.xtext.xbase.typesystem.util.TypeParameterByConstraintSubstitutor;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
+import org.jnario.ui.quickfix.TypeSubstitutionHelper;
 import org.jnario.ui.quickfix.VariableNameAcceptor;
 
 @SuppressWarnings("all")
@@ -44,6 +47,9 @@ public class XtendMethodBuilder {
   
   @Inject
   private Primitives _primitives;
+  
+  @Inject
+  private TypeSubstitutionHelper _typeSubstitutionHelper;
   
   private String _methodName;
   
@@ -181,9 +187,20 @@ public class XtendMethodBuilder {
       if (_equals) {
         return appendable.append("()");
       }
+      Iterator<XExpression> _xifexpression = null;
       XAbstractFeatureCall _featureCall_1 = this.getFeatureCall();
-      EList<XExpression> _explicitArguments = _featureCall_1.getExplicitArguments();
-      final Iterator<XExpression> iterator = _explicitArguments.iterator();
+      if ((_featureCall_1 instanceof XMemberFeatureCall)) {
+        XAbstractFeatureCall _featureCall_2 = this.getFeatureCall();
+        EList<XExpression> _memberCallArguments = ((XMemberFeatureCall) _featureCall_2).getMemberCallArguments();
+        Iterator<XExpression> _iterator = _memberCallArguments.iterator();
+        _xifexpression = _iterator;
+      } else {
+        XAbstractFeatureCall _featureCall_3 = this.getFeatureCall();
+        EList<XExpression> _explicitArguments = _featureCall_3.getExplicitArguments();
+        Iterator<XExpression> _iterator_1 = _explicitArguments.iterator();
+        _xifexpression = _iterator_1;
+      }
+      Iterator<XExpression> iterator = _xifexpression;
       final HashSet<String> notallowed = CollectionLiterals.<String>newHashSet();
       appendable.append("(");
       boolean _hasNext = iterator.hasNext();
@@ -199,8 +216,8 @@ public class XtendMethodBuilder {
             VariableNameAcceptor _variableNameAcceptor = new VariableNameAcceptor(notallowed);
             final VariableNameAcceptor acceptor = _variableNameAcceptor;
             String _identifier = typeRef.getIdentifier();
-            XAbstractFeatureCall _featureCall_2 = this.getFeatureCall();
-            this._jdtVariableCompletions.getVariableProposals(_identifier, _featureCall_2, VariableType.PARAMETER, notallowed, acceptor);
+            XAbstractFeatureCall _featureCall_4 = this.getFeatureCall();
+            this._jdtVariableCompletions.getVariableProposals(_identifier, _featureCall_4, VariableType.PARAMETER, notallowed, acceptor);
             String _variableName = acceptor.getVariableName();
             appendable.append(_variableName);
           }
@@ -249,8 +266,10 @@ public class XtendMethodBuilder {
             }
           };
         IteratorExtensions.<JvmTypeReference>forEach(_filter_1, _function_1);
+        TypeParameterByConstraintSubstitutor _typeParameterByConstraintSubstitutor = this._typeSubstitutionHelper.typeParameterByConstraintSubstitutor();
+        final JvmTypeReference resolvedExpectedType = _typeParameterByConstraintSubstitutor.substitute(typeRef);
         XAbstractFeatureCall _featureCall = this.getFeatureCall();
-        this._xtendTypeReferenceSerializer.serialize(typeRef, _featureCall, appendable);
+        this._xtendTypeReferenceSerializer.serialize(resolvedExpectedType, _featureCall, appendable);
       }
       _xblockexpression = (appendable);
     }

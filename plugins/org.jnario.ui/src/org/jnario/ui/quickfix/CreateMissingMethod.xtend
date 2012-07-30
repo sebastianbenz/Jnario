@@ -18,6 +18,14 @@ import org.eclipse.xtext.xbase.compiler.StringBuilderBasedAppendable
 import org.eclipse.xtext.common.types.xtext.ui.JdtHyperlink
 import org.eclipse.jdt.core.IJavaElement
 import org.eclipse.xtext.xbase.compiler.ImportManager
+import org.eclipse.xtext.common.types.JvmIdentifiableElement
+import org.eclipse.xtext.common.types.JvmOperation
+import org.eclipse.xtend.core.xtend.XtendFunction
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils
+import org.eclipse.xtext.EcoreUtil2
+import org.eclipse.xtend.ide.contentassist.ReplacingAppendable
+import org.eclipse.xtend.core.xtend.XtendClass
+import org.eclipse.xtext.Keyword
 
 class CreateMissingMethod {
 	
@@ -48,7 +56,34 @@ class CreateMissingMethod {
 		if(featureCall.targetType.isUnknown){
 			return false
 		}
-		featureCall.feature?.eIsProxy
+		val method = featureCall.feature
+		if(method == null){
+			return false
+		}
+		if(method.eIsProxy){
+			return true
+		}
+		if(!(method instanceof JvmOperation)){
+			return false
+		}
+		return hasDifferentArguments(method as JvmOperation, featureCall)
+	}
+	
+	def hasDifferentArguments(JvmOperation operation, XMemberFeatureCall featureCall){
+		val left = operation.parameters
+		val right = featureCall.memberCallArguments
+		if(left.size != right.size){
+			return true
+		}
+		var i = 0
+		
+		while(i < operation.parameters.size){
+			if(left.get(i).parameterType != right.get(i).type){
+				return true
+			}
+			i = i + 1
+		}		
+		return false
 	}
 	
 	def boolean receiverIsReadOnly(XMemberFeatureCall call) {
@@ -76,7 +111,7 @@ class CreateMissingMethod {
 	}
 	
 	def private isXtendClass(XMemberFeatureCall call) {
-		return call.targetType.eResource instanceof XbaseResource
+		return call.targetType?.eResource instanceof XbaseResource
 	}
 
 	def private targetType(XMemberFeatureCall featureCall){
@@ -123,9 +158,29 @@ class CreateJavaMethod implements IModification{
 class CreateXtendMethod implements IModification{
 	
 	XtendMethodBuilder methodBuilder
-	
+
 	override apply(IModificationContext context) throws Exception {
-		throw new UnsupportedOperationException("Auto-generated function stub")
+//		var offset = getFunctionInsertOffset(xtendClazz);
+//		val appendable = appendableFactory.get(context., call, offset, 0, 1, false);
+//		appendable.newLine().increaseIndentation()
+//		methodBuilder.build(appendable)
+//		appendable.commit
+	}
+	
+	def getFunctionInsertOffset(XtendClass clazz) {
+		val clazzNode = NodeModelUtils::findActualNodeFor(clazz)
+		if (clazzNode == null)
+			throw new IllegalStateException("Cannot determine node for clazz " + clazz.getName())
+		var lastClosingBraceOffset = -1
+		for (leafNode : clazzNode.getLeafNodes()) {
+			if ((leafNode.getGrammarElement() instanceof Keyword)
+					&& "}" == (leafNode.getGrammarElement() as Keyword).getValue()) {
+				lastClosingBraceOffset = leafNode.getOffset();
+			}
+		}
+		if(lastClosingBraceOffset == -1)
+			clazzNode.getTotalEndOffset() 
+		else lastClosingBraceOffset
 	}
 }
 

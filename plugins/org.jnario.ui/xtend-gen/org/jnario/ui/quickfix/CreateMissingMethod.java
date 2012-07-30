@@ -2,12 +2,15 @@ package org.jnario.ui.quickfix;
 
 import com.google.common.base.Objects;
 import com.google.inject.Inject;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
+import org.eclipse.xtext.common.types.JvmFormalParameter;
 import org.eclipse.xtext.common.types.JvmIdentifiableElement;
+import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.util.jdt.IJavaElementFinder;
@@ -63,18 +66,60 @@ public class CreateMissingMethod {
   }
   
   public boolean hasMissingMethod(final XMemberFeatureCall featureCall) {
-    boolean _xblockexpression = false;
-    {
-      JvmType _targetType = this.targetType(featureCall);
-      boolean _isUnknown = this.isUnknown(_targetType);
-      if (_isUnknown) {
-        return false;
-      }
-      JvmIdentifiableElement _feature = featureCall.getFeature();
-      boolean _eIsProxy = _feature==null?false:_feature.eIsProxy();
-      _xblockexpression = (_eIsProxy);
+    JvmType _targetType = this.targetType(featureCall);
+    boolean _isUnknown = this.isUnknown(_targetType);
+    if (_isUnknown) {
+      return false;
     }
-    return Boolean.valueOf(_xblockexpression);
+    final JvmIdentifiableElement method = featureCall.getFeature();
+    boolean _equals = Objects.equal(method, null);
+    if (_equals) {
+      return false;
+    }
+    boolean _eIsProxy = method.eIsProxy();
+    if (_eIsProxy) {
+      return true;
+    }
+    boolean _not = (!(method instanceof JvmOperation));
+    if (_not) {
+      return false;
+    }
+    return this.hasDifferentArguments(((JvmOperation) method), featureCall);
+  }
+  
+  public boolean hasDifferentArguments(final JvmOperation operation, final XMemberFeatureCall featureCall) {
+    final EList<JvmFormalParameter> left = operation.getParameters();
+    final EList<XExpression> right = featureCall.getMemberCallArguments();
+    int _size = left.size();
+    int _size_1 = right.size();
+    boolean _notEquals = (_size != _size_1);
+    if (_notEquals) {
+      return true;
+    }
+    int i = 0;
+    EList<JvmFormalParameter> _parameters = operation.getParameters();
+    int _size_2 = _parameters.size();
+    boolean _lessThan = (i < _size_2);
+    boolean _while = _lessThan;
+    while (_while) {
+      {
+        JvmFormalParameter _get = left.get(i);
+        JvmTypeReference _parameterType = _get.getParameterType();
+        XExpression _get_1 = right.get(i);
+        JvmTypeReference _type = this.typeProvider.getType(_get_1);
+        boolean _notEquals_1 = (!Objects.equal(_parameterType, _type));
+        if (_notEquals_1) {
+          return true;
+        }
+        int _plus = (i + 1);
+        i = _plus;
+      }
+      EList<JvmFormalParameter> _parameters_1 = operation.getParameters();
+      int _size_3 = _parameters_1.size();
+      boolean _lessThan_1 = (i < _size_3);
+      _while = _lessThan_1;
+    }
+    return false;
   }
   
   public boolean receiverIsReadOnly(final XMemberFeatureCall call) {
@@ -110,7 +155,7 @@ public class CreateMissingMethod {
   
   private boolean isXtendClass(final XMemberFeatureCall call) {
     JvmType _targetType = this.targetType(call);
-    Resource _eResource = _targetType.eResource();
+    Resource _eResource = _targetType==null?(Resource)null:_targetType.eResource();
     return (_eResource instanceof XbaseResource);
   }
   

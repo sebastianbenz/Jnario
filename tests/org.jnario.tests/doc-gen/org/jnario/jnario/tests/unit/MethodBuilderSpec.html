@@ -47,6 +47,18 @@ generatedMethod.is('''
   def myMethod(boolean b, int i){
   }
 ''')</pre>
+</li><li><p id="ignores_feature_call_target"><strong>ignores feature call target</strong></p>
+<pre class="prettyprint lang-spec">
+setContext('''
+  describe &quot;Something&quot;{
+    String x
+    fact x.myMethod(true, 4)
+  }
+''')
+generatedMethod.is('''
+  def myMethod(boolean b, int i){
+  }
+''')</pre>
 </li><li><p id="returns_false_for_boolean"><strong>returns false for boolean</strong></p>
 <pre class="prettyprint lang-spec">
 setContext('''

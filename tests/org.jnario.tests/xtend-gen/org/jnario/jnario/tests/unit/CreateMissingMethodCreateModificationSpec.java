@@ -12,6 +12,7 @@ import org.jnario.runner.Order;
 import org.jnario.ui.quickfix.CreateJavaMethod;
 import org.jnario.ui.quickfix.CreateXtendMethod;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -43,7 +44,8 @@ public class CreateMissingMethodCreateModificationSpec extends CreateMissingMeth
   }
   
   @Test
-  @Named("creates CreateXtendMethod modification for Xtend class")
+  @Ignore
+  @Named("creates CreateXtendMethod modification for Xtend class [PENDING]")
   @Order(99)
   public void createsCreateXtendMethodModificationForXtendClass() throws Exception {
     StringConcatenation _builder = new StringConcatenation();

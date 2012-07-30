@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.internal.ui.wizards.NewClassCreationWizard;
 import org.eclipse.jdt.internal.ui.wizards.NewElementWizard;
@@ -30,6 +31,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.xtend.ide.quickfix.XtendQuickfixProvider;
 import org.eclipse.xtend.ide.wizards.NewXtendClassWizard;
 import org.eclipse.xtend.ide.wizards.NewXtendClassWizardPage;
+import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.TypesPackage;
 import org.eclipse.xtext.common.types.access.jdt.IJavaProjectProvider;
 import org.eclipse.xtext.resource.XtextResource;
@@ -43,7 +45,9 @@ import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.eclipse.xtext.validation.Issue;
 import org.eclipse.xtext.xbase.XMemberFeatureCall;
 import org.eclipse.xtext.xbase.XbasePackage;
+import org.eclipse.xtext.xbase.validation.IssueCodes;
 import org.jnario.ui.buildpath.JnarioLibClasspathAdder;
+import org.jnario.util.Nodes;
 import org.jnario.validation.JnarioIssueCodes;
 
 import com.google.inject.Inject;
@@ -74,29 +78,40 @@ public class JnarioQuickFixProvider extends XtendQuickfixProvider{
 			IssueResolutionAcceptor acceptor) {
 	}
 	
+	@Fix(IssueCodes.INCOMPATIBLE_TYPES)
+	public void fixIncompatibleTypes(final Issue issue, IssueResolutionAcceptor acceptor) {
+		createMissingMethod(issue, acceptor);
+	}
+	
+	@Fix(IssueCodes.INVALID_NUMBER_OF_ARGUMENTS)
+	public void fixInvalidNumberOfArguments(final Issue issue, IssueResolutionAcceptor acceptor) {
+		createMissingMethod(issue, acceptor);
+	}
+	
 	protected void createXtendLinkingIssueResolutions(final Issue issue, final IssueResolutionAcceptor issueResolutionAcceptor) {
 		super.createXtendLinkingIssueResolutions(issue, issueResolutionAcceptor);
+		createMissingMethod(issue, issueResolutionAcceptor);
+	}
+
+	protected void createMissingMethod(final Issue issue,
+			final IssueResolutionAcceptor issueResolutionAcceptor) {
 		final IModificationContext modificationContext = getModificationContextFactory().createModificationContext(issue);
 		final IXtextDocument xtextDocument = modificationContext.getXtextDocument();
-		if(issue.getData() != null && xtextDocument != null){
-			final String elementName = issue.getData()[0];
-			if(elementName == null){
-				return;
-			}
-				
+		if(xtextDocument != null){
 			xtextDocument.modify(new IUnitOfWork.Void<XtextResource>(){
 				@Override
 				public void process(XtextResource state) throws Exception {
 					EObject eObject = state.getEObject(issue.getUriToProblem().fragment());
-					if(eObject instanceof XMemberFeatureCall){
-						XMemberFeatureCall call = (XMemberFeatureCall) eObject;
-						createMissingMethod.apply(issue, issueResolutionAcceptor, call, getIssueString(issue, xtextDocument));
-					} 
+					XMemberFeatureCall memberFeatureCall = EcoreUtil2.getContainerOfType(eObject, XMemberFeatureCall.class);
+					if(memberFeatureCall == null){
+						return;
+					}
+					String issueString = Nodes.textForFeature(memberFeatureCall, XbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE);
+					createMissingMethod.apply(issue, issueResolutionAcceptor, memberFeatureCall, issueString);
 				}
 			});
 		}
 	}
-		
 	
 	@Override
 	public void createLinkingIssueResolutions(final Issue issue,
