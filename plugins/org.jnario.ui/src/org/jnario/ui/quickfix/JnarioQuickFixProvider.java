@@ -17,7 +17,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.internal.ui.wizards.NewClassCreationWizard;
 import org.eclipse.jdt.internal.ui.wizards.NewElementWizard;
@@ -47,7 +46,6 @@ import org.eclipse.xtext.xbase.XMemberFeatureCall;
 import org.eclipse.xtext.xbase.XbasePackage;
 import org.eclipse.xtext.xbase.validation.IssueCodes;
 import org.jnario.ui.buildpath.JnarioLibClasspathAdder;
-import org.jnario.util.Nodes;
 import org.jnario.validation.JnarioIssueCodes;
 
 import com.google.inject.Inject;
@@ -66,7 +64,7 @@ public class JnarioQuickFixProvider extends XtendQuickfixProvider{
 	@Inject
 	private JnarioLibClasspathAdder jnarioLibAdder;
 	
-	@Inject CreateMissingMethod createMissingMethod;
+	@Inject UndefinedMethodFix createMissingMethod;
 	
 	@Inject
 	private NewTypePageConfigurer newTypePageConfigurer;
@@ -80,20 +78,20 @@ public class JnarioQuickFixProvider extends XtendQuickfixProvider{
 	
 	@Fix(IssueCodes.INCOMPATIBLE_TYPES)
 	public void fixIncompatibleTypes(final Issue issue, IssueResolutionAcceptor acceptor) {
-		createMissingMethod(issue, acceptor);
+		fixUndefinedMethod(issue, acceptor);
 	}
 	
 	@Fix(IssueCodes.INVALID_NUMBER_OF_ARGUMENTS)
 	public void fixInvalidNumberOfArguments(final Issue issue, IssueResolutionAcceptor acceptor) {
-		createMissingMethod(issue, acceptor);
+		fixUndefinedMethod(issue, acceptor);
 	}
 	
 	protected void createXtendLinkingIssueResolutions(final Issue issue, final IssueResolutionAcceptor issueResolutionAcceptor) {
 		super.createXtendLinkingIssueResolutions(issue, issueResolutionAcceptor);
-		createMissingMethod(issue, issueResolutionAcceptor);
+		fixUndefinedMethod(issue, issueResolutionAcceptor);
 	}
 
-	protected void createMissingMethod(final Issue issue,
+	protected void fixUndefinedMethod(final Issue issue,
 			final IssueResolutionAcceptor issueResolutionAcceptor) {
 		final IModificationContext modificationContext = getModificationContextFactory().createModificationContext(issue);
 		final IXtextDocument xtextDocument = modificationContext.getXtextDocument();
@@ -106,8 +104,7 @@ public class JnarioQuickFixProvider extends XtendQuickfixProvider{
 					if(memberFeatureCall == null){
 						return;
 					}
-					String issueString = Nodes.textForFeature(memberFeatureCall, XbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE);
-					createMissingMethod.apply(issue, issueResolutionAcceptor, memberFeatureCall, issueString);
+					createMissingMethod.apply(issue, issueResolutionAcceptor, memberFeatureCall);
 				}
 			});
 		}
@@ -140,7 +137,7 @@ public class JnarioQuickFixProvider extends XtendQuickfixProvider{
 						issueResolutionAcceptor.accept(issue, 
 								"Create Java class", 
 								"Opens the new Java class wizard to create the type '" + issueString + "'", 
-								"xtend_file.png", 
+								"java_file.png", 
 								openNewJavaClassWizardFor(context, issueString));
 					}
 				}

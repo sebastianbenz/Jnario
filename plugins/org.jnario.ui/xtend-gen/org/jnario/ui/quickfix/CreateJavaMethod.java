@@ -1,6 +1,8 @@
 package org.jnario.ui.quickfix;
 
+import java.util.List;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
@@ -8,8 +10,11 @@ import org.eclipse.xtend.lib.Data;
 import org.eclipse.xtext.common.types.xtext.ui.JdtHyperlink;
 import org.eclipse.xtext.ui.editor.model.edit.IModification;
 import org.eclipse.xtext.ui.editor.model.edit.IModificationContext;
+import org.eclipse.xtext.xbase.compiler.ImportManager;
 import org.eclipse.xtext.xbase.compiler.StringBuilderBasedAppendable;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
 import org.jnario.ui.quickfix.XtendMethodBuilder;
 
@@ -37,20 +42,42 @@ public class CreateJavaMethod implements IModification {
     try {
       IMethod _xblockexpression = null;
       {
-        StringBuilderBasedAppendable _stringBuilderBasedAppendable = new StringBuilderBasedAppendable();
+        char _charAt = ".".charAt(0);
+        ImportManager _importManager = new ImportManager(true, _charAt);
+        final ImportManager importManager = _importManager;
+        StringBuilderBasedAppendable _stringBuilderBasedAppendable = new StringBuilderBasedAppendable(importManager);
         final StringBuilderBasedAppendable content = _stringBuilderBasedAppendable;
         XtendMethodBuilder _methodBuilder = this.getMethodBuilder();
         _methodBuilder.build(content);
+        List<String> _imports = importManager.getImports();
+        final Procedure1<String> _function = new Procedure1<String>() {
+            public void apply(final String it) {
+              try {
+                IType _type = CreateJavaMethod.this.getType();
+                ICompilationUnit _compilationUnit = _type.getCompilationUnit();
+                NullProgressMonitor _monitor = CreateJavaMethod.this.monitor();
+                _compilationUnit.createImport(it, null, _monitor);
+              } catch (Exception _e) {
+                throw Exceptions.sneakyThrow(_e);
+              }
+            }
+          };
+        IterableExtensions.<String>forEach(_imports, _function);
         IType _type = this.getType();
         String _string = content.toString();
-        NullProgressMonitor _nullProgressMonitor = new NullProgressMonitor();
-        IMethod _createMethod = _type.createMethod(_string, null, true, _nullProgressMonitor);
+        NullProgressMonitor _monitor = this.monitor();
+        IMethod _createMethod = _type.createMethod(_string, null, true, _monitor);
         _xblockexpression = (_createMethod);
       }
       return _xblockexpression;
     } catch (Exception _e) {
       throw Exceptions.sneakyThrow(_e);
     }
+  }
+  
+  public NullProgressMonitor monitor() {
+    NullProgressMonitor _nullProgressMonitor = new NullProgressMonitor();
+    return _nullProgressMonitor;
   }
   
   private void openInEditor(final IJavaElement element) {

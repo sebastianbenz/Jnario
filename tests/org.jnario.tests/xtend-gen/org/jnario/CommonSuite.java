@@ -3,9 +3,7 @@ package org.jnario;
 import org.jnario.jnario.documentation.InstallingJnarioSpec;
 import org.jnario.jnario.documentation._20FactsAboutXtendSpec;
 import org.jnario.jnario.tests.integration.ExtensionLibrarySpec;
-import org.jnario.jnario.tests.unit.CreateMissingMethodSpec;
 import org.jnario.jnario.tests.unit.DocumentationProviderSpec;
-import org.jnario.jnario.tests.unit.MethodBuilderSpec;
 import org.jnario.jnario.tests.unit.doc.FilterExtractorSpec;
 import org.jnario.jnario.tests.unit.doc.HtmlAssetsCompilerSpec;
 import org.jnario.jnario.tests.unit.doc.HtmlAssetsSpec;
@@ -17,6 +15,9 @@ import org.jnario.jnario.tests.unit.jnario.ExampleTableSpec;
 import org.jnario.jnario.tests.unit.jnario.ExecutableSpec;
 import org.jnario.jnario.tests.unit.jnario.ShouldSpec;
 import org.jnario.jnario.tests.unit.jnario.StringsSpec;
+import org.jnario.jnario.tests.unit.quickfix.MethodBuilderSpec;
+import org.jnario.jnario.tests.unit.quickfix.NewMethodModificationProviderSpec;
+import org.jnario.jnario.tests.unit.quickfix.UndefinedMethodFixSpec;
 import org.jnario.runner.Contains;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
@@ -24,7 +25,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(ExampleGroupRunner.class)
 @Named("Common")
-@Contains({ ShouldSpec.class, CreateMissingMethodSpec.class, RegexFilterSpec.class, ExecutableSpec.class, FilterExtractorSpec.class, StringsSpec.class, InstallingJnarioSpec.class, DocumentationProviderSpec.class, MethodBuilderSpec.class, WhiteSpaceNormalizerSpec.class, HtmlFileSpec.class, HtmlAssetsSpec.class, ExtensionLibrarySpec.class, HtmlAssetsCompilerSpec.class, ExampleColumnSpec.class, _20FactsAboutXtendSpec.class, ExampleTableSpec.class })
+@Contains({ ShouldSpec.class, RegexFilterSpec.class, ExecutableSpec.class, FilterExtractorSpec.class, StringsSpec.class, InstallingJnarioSpec.class, DocumentationProviderSpec.class, WhiteSpaceNormalizerSpec.class, HtmlFileSpec.class, HtmlAssetsSpec.class, UndefinedMethodFixSpec.class, MethodBuilderSpec.class, ExtensionLibrarySpec.class, HtmlAssetsCompilerSpec.class, ExampleColumnSpec.class, _20FactsAboutXtendSpec.class, NewMethodModificationProviderSpec.class, ExampleTableSpec.class })
 @SuppressWarnings("all")
 public class CommonSuite {
 }

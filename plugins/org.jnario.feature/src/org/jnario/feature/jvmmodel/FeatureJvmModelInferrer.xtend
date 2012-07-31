@@ -49,7 +49,7 @@ import org.eclipse.xtend.core.xtend.XtendField
  * @author Sebastian Benz
  */
 class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
-	
+
 	public static val STEP_VALUES = "args"
 
 	@Inject extension ExtendedJvmTypesBuilder

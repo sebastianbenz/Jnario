@@ -17,7 +17,7 @@ import org.eclipse.xtext.xbase.lib.Functions.Function2;
 public class VariableNameAcceptor implements CompletionDataAcceptor {
   private final Set<String> notallowed;
   
-  private Set<String> variableNames = new Function0<Set<String>>() {
+  private final Set<String> variableNames = new Function0<Set<String>>() {
     public Set<String> apply() {
       HashSet<String> _newHashSet = CollectionLiterals.<String>newHashSet();
       return _newHashSet;

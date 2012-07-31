@@ -9,6 +9,7 @@ import org.eclipse.xtext.xbase.typesystem.util.TypeParameterByConstraintSubstitu
 
 import com.google.inject.Inject;
 
+@SuppressWarnings("restriction")
 public class TypeSubstitutionHelper {
 
 	@Inject CommonTypeComputationServices computationServices;

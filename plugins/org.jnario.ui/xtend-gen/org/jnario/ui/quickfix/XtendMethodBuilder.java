@@ -1,14 +1,10 @@
 package org.jnario.ui.quickfix;
 
 import com.google.common.base.Objects;
-import com.google.common.collect.Iterators;
 import com.google.inject.Inject;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.ide.quickfix.XtendTypeReferenceSerializer;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.common.types.JvmPrimitiveType;
@@ -22,11 +18,7 @@ import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XMemberFeatureCall;
 import org.eclipse.xtext.xbase.compiler.IAppendable;
-import org.eclipse.xtext.xbase.compiler.ImportManager;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.typesystem.util.TypeParameterByConstraintSubstitutor;
@@ -69,22 +61,6 @@ public class XtendMethodBuilder {
   
   public void setFeatureCall(final XAbstractFeatureCall featureCall) {
     this._featureCall = featureCall;
-  }
-  
-  private ImportManager _importManager = new Function0<ImportManager>() {
-    public ImportManager apply() {
-      char _charAt = "$".charAt(0);
-      ImportManager _importManager = new ImportManager(false, _charAt);
-      return _importManager;
-    }
-  }.apply();
-  
-  public ImportManager getImportManager() {
-    return this._importManager;
-  }
-  
-  public void setImportManager(final ImportManager importManager) {
-    this._importManager = importManager;
   }
   
   public IAppendable build(final IAppendable appendable) {
@@ -242,30 +218,6 @@ public class XtendMethodBuilder {
       if (_equals) {
         appendable.append("void");
       } else {
-        StringBuilder _stringBuilder = new StringBuilder();
-        final StringBuilder typeString = _stringBuilder;
-        ImportManager _importManager = this.getImportManager();
-        JvmType _type = typeRef.getType();
-        _importManager.appendType(_type, typeString);
-        JvmType _type_1 = typeRef.getType();
-        TreeIterator<EObject> _eAllContents = _type_1.eAllContents();
-        Iterator<JvmTypeReference> _filter = Iterators.<JvmTypeReference>filter(_eAllContents, JvmTypeReference.class);
-        final Function1<JvmTypeReference,Boolean> _function = new Function1<JvmTypeReference,Boolean>() {
-            public Boolean apply(final JvmTypeReference it) {
-              JvmType _type = it.getType();
-              boolean _notEquals = (!Objects.equal(_type, null));
-              return Boolean.valueOf(_notEquals);
-            }
-          };
-        Iterator<JvmTypeReference> _filter_1 = IteratorExtensions.<JvmTypeReference>filter(_filter, _function);
-        final Procedure1<JvmTypeReference> _function_1 = new Procedure1<JvmTypeReference>() {
-            public void apply(final JvmTypeReference it) {
-              ImportManager _importManager = XtendMethodBuilder.this.getImportManager();
-              JvmType _type = it.getType();
-              _importManager.appendType(_type, typeString);
-            }
-          };
-        IteratorExtensions.<JvmTypeReference>forEach(_filter_1, _function_1);
         TypeParameterByConstraintSubstitutor _typeParameterByConstraintSubstitutor = this._typeSubstitutionHelper.typeParameterByConstraintSubstitutor();
         final JvmTypeReference resolvedExpectedType = _typeParameterByConstraintSubstitutor.substitute(typeRef);
         XAbstractFeatureCall _featureCall = this.getFeatureCall();
@@ -274,11 +226,5 @@ public class XtendMethodBuilder {
       _xblockexpression = (appendable);
     }
     return _xblockexpression;
-  }
-  
-  public List<String> imports() {
-    ImportManager _importManager = this.getImportManager();
-    List<String> _imports = _importManager.getImports();
-    return _imports;
   }
 }

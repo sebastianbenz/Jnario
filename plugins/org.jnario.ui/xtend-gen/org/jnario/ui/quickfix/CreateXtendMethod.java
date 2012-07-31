@@ -1,15 +1,24 @@
 package org.jnario.ui.quickfix;
 
 import com.google.common.base.Objects;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.xtend.core.xtend.XtendClass;
+import org.eclipse.xtend.ide.contentassist.ReplacingAppendable;
+import org.eclipse.xtend.ide.contentassist.ReplacingAppendable.Factory;
 import org.eclipse.xtend.lib.Data;
 import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
+import org.eclipse.xtext.ui.editor.IURIEditorOpener;
+import org.eclipse.xtext.ui.editor.XtextEditor;
+import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.ui.editor.model.edit.IModification;
 import org.eclipse.xtext.ui.editor.model.edit.IModificationContext;
+import org.eclipse.xtext.xbase.compiler.IAppendable;
 import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
 import org.jnario.ui.quickfix.XtendMethodBuilder;
 
@@ -22,7 +31,50 @@ public class CreateXtendMethod implements IModification {
     return this._methodBuilder;
   }
   
+  private final XtendClass _xtendClass;
+  
+  public XtendClass getXtendClass() {
+    return this._xtendClass;
+  }
+  
+  private final IURIEditorOpener _editorOpener;
+  
+  public IURIEditorOpener getEditorOpener() {
+    return this._editorOpener;
+  }
+  
+  private final Factory _appendableFactory;
+  
+  public Factory getAppendableFactory() {
+    return this._appendableFactory;
+  }
+  
   public void apply(final IModificationContext context) throws Exception {
+    IURIEditorOpener _editorOpener = this.getEditorOpener();
+    XtendClass _xtendClass = this.getXtendClass();
+    URI _uRI = EcoreUtil.getURI(_xtendClass);
+    final IEditorPart editor = _editorOpener.open(_uRI, false);
+    boolean _not = (!(editor instanceof XtextEditor));
+    if (_not) {
+      return;
+    }
+    final XtextEditor xtextEditor = ((XtextEditor) editor);
+    final IXtextDocument document = xtextEditor.getDocument();
+    XtendClass _xtendClass_1 = this.getXtendClass();
+    int offset = this.getFunctionInsertOffset(_xtendClass_1);
+    Factory _appendableFactory = this.getAppendableFactory();
+    XtendClass _xtendClass_2 = this.getXtendClass();
+    int _minus = (offset - 1);
+    final ReplacingAppendable appendable = _appendableFactory.get(document, _xtendClass_2, _minus, 0, 1, false);
+    appendable.newLine();
+    XtendMethodBuilder _methodBuilder = this.getMethodBuilder();
+    _methodBuilder.build(appendable);
+    IAppendable _decreaseIndentation = appendable.decreaseIndentation();
+    _decreaseIndentation.newLine();
+    appendable.commitChanges();
+    int _plus = (offset + 1);
+    int _length = appendable.length();
+    xtextEditor.setHighlightRange(_plus, _length, true);
   }
   
   public int getFunctionInsertOffset(final XtendClass clazz) {
@@ -68,9 +120,12 @@ public class CreateXtendMethod implements IModification {
     return _xblockexpression;
   }
   
-  public CreateXtendMethod(final XtendMethodBuilder methodBuilder) {
+  public CreateXtendMethod(final XtendMethodBuilder methodBuilder, final XtendClass xtendClass, final IURIEditorOpener editorOpener, final Factory appendableFactory) {
     super();
     this._methodBuilder = methodBuilder;
+    this._xtendClass = xtendClass;
+    this._editorOpener = editorOpener;
+    this._appendableFactory = appendableFactory;
   }
   
   @Override
@@ -78,6 +133,9 @@ public class CreateXtendMethod implements IModification {
     final int prime = 31;
     int result = 1;
     result = prime * result + ((_methodBuilder== null) ? 0 : _methodBuilder.hashCode());
+    result = prime * result + ((_xtendClass== null) ? 0 : _xtendClass.hashCode());
+    result = prime * result + ((_editorOpener== null) ? 0 : _editorOpener.hashCode());
+    result = prime * result + ((_appendableFactory== null) ? 0 : _appendableFactory.hashCode());
     return result;
   }
   
@@ -94,6 +152,21 @@ public class CreateXtendMethod implements IModification {
       if (other._methodBuilder != null)
         return false;
     } else if (!_methodBuilder.equals(other._methodBuilder))
+      return false;
+    if (_xtendClass == null) {
+      if (other._xtendClass != null)
+        return false;
+    } else if (!_xtendClass.equals(other._xtendClass))
+      return false;
+    if (_editorOpener == null) {
+      if (other._editorOpener != null)
+        return false;
+    } else if (!_editorOpener.equals(other._editorOpener))
+      return false;
+    if (_appendableFactory == null) {
+      if (other._appendableFactory != null)
+        return false;
+    } else if (!_appendableFactory.equals(other._appendableFactory))
       return false;
     return true;
   }

@@ -1,7 +1,8 @@
-package org.jnario.jnario.tests.unit
+package org.jnario.jnario.tests.unit.quickfix
 
 import com.google.inject.Inject
 import org.eclipse.xtext.xbase.XAbstractFeatureCall
+import org.eclipse.xtext.xbase.compiler.ImportManager
 import org.eclipse.xtext.xbase.compiler.StringBuilderBasedAppendable
 import org.jnario.jnario.test.util.ModelStore
 import org.jnario.jnario.test.util.SpecTestCreator
@@ -16,14 +17,18 @@ import static org.junit.Assert.*
 describe "MethodBuilder" {
 	
 	@Inject extension ModelStore m
-	XtendMethodBuilder subject 
+	@Inject MethodBuilderProvider builderProvider 
+	
+	XtendMethodBuilder builder 
 	
 	describe XtendMethodBuilder{
-		@Inject def createSubject(MethodBuilderProvider provider){
-			 subject = provider.newXtendMethodBuilder("myMethod")
-		}
 		
 		fact "creates method with specified name"{
+			setContext('''
+				describe "Something"{
+					fact myMethod()
+				}
+			''')
 			generatedMethod.is('''
 				def myMethod(){
 				}
@@ -94,7 +99,7 @@ describe "MethodBuilder" {
 			''')
 		}
 		
-		pending fact "uses simple name for parameters"{
+		fact "uses simple name for parameters"{
 			setContext('''
 				describe "Something"{
 					Object o = myMethod(<String>newArrayList)
@@ -118,14 +123,21 @@ describe "MethodBuilder" {
 				}
 			''')
 		}
+		
+		def setContext(CharSequence s){
+			m.parseSpec(s)
+			builder = builderProvider.newXtendMethodBuilder("myMethod", m.first(typeof(XAbstractFeatureCall)))
+		}
 	}
 	
 	describe JavaMethodBuilder{
-		@Inject def createSubject(MethodBuilderProvider provider){
-			 subject = provider.newJavaMethodBuilder("myMethod")
-		}
 		
 		fact "creates public void method with specified name"{
+			setContext('''
+				describe "Something"{
+					fact myMethod()
+				}
+			''')
 			generatedMethod.is('''
 				public void myMethod(){
 				}
@@ -194,21 +206,23 @@ describe "MethodBuilder" {
 				}
 			''')
 		}
+		
+		def setContext(CharSequence s){
+			m.parseSpec(s)
+			builder = builderProvider.newJavaMethodBuilder("myMethod", m.first(typeof(XAbstractFeatureCall)))
+		}
 	}
 	
-	def setContext(CharSequence s){
-		parseSpec(s)
-		subject.featureCall = first(typeof(XAbstractFeatureCall))
-	}
 	
 	def is(String actual, CharSequence expected){
 		assertEquals(expected.toString, actual)
 	}
 	
 	def generatedMethod(){
-		val appendable = new StringBuilderBasedAppendable
-		subject.build(appendable)
-		appendable.toString
+		val importManager = new ImportManager(true, ".".charAt(0))
+		val content = new StringBuilderBasedAppendable(importManager)
+		builder.build(content)
+		content.toString
 	}	
 
 }

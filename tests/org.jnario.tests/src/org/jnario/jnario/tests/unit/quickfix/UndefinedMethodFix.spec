@@ -1,33 +1,25 @@
-package org.jnario.jnario.tests.unit
+package org.jnario.jnario.tests.unit.quickfix
 
 import com.google.inject.Inject
 import org.eclipse.xtext.xbase.XMemberFeatureCall
-import org.eclipse.xtext.xbase.typing.ITypeProvider
 import org.jnario.jnario.test.util.JavaElementFinderStub
 import org.jnario.jnario.test.util.ModelStore
 import org.jnario.jnario.test.util.SpecTestCreator
 import org.jnario.runner.CreateWith
-import org.jnario.ui.quickfix.CreateMissingMethod
+import org.jnario.ui.quickfix.CallsReadOnlyType
+import org.jnario.ui.quickfix.FeatureCallTargetTypeProvider
+import org.jnario.ui.quickfix.IsUndefinedMethod
+import org.jnario.ui.quickfix.UndefinedMethodFix
 
 import static extension org.jnario.lib.Should.*
-import org.jnario.ui.quickfix.CreateJavaMethod
-import org.jnario.ui.quickfix.CreateXtendMethod
-import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations
-import org.jnario.ui.quickfix.MethodBuilderProvider
 
 @CreateWith(typeof(SpecTestCreator))
-describe CreateMissingMethod{
+describe UndefinedMethodFix{
 
-	@Inject ModelStore m
-	JavaElementFinderStub javaElementProvider = new JavaElementFinderStub
-	CreateMissingMethod subject
+	@Inject extension ModelStore m
+	@Inject FeatureCallTargetTypeProvider targetTypeProvider
 	
-	@Inject
-	def createSubject(ITypeProvider typeProvider, IXtendJvmAssociations jvmAssociations, MethodBuilderProvider builderProvider){
-		subject = new CreateMissingMethod(javaElementProvider, typeProvider, jvmAssociations, builderProvider)
-	}
-
-	context hasMissingMethod{
+	describe IsUndefinedMethod{
 		
 		fact "false if method can be resolved"{
 			'''
@@ -92,11 +84,15 @@ describe CreateMissingMethod{
 		
 		def hasMissingMethod(CharSequence s){
 			parseSpec(s)
-			subject.hasMissingMethod(firstFeatureCall)
+			subject.callsUndefinedMethod(firstFeatureCall)
 		}
 	}
 	
-	context receiverIsReadOnly(XMemberFeatureCall){
+	describe CallsReadOnlyType{
+		
+		JavaElementFinderStub javaElementProvider = new JavaElementFinderStub
+		
+		before subject = new CallsReadOnlyType(javaElementProvider, targetTypeProvider)
 		
 		fact "true if java element is read-only"{
 			javaElementProvider.setReadOnly
@@ -123,45 +119,12 @@ describe CreateMissingMethod{
 		} 
 	}
 	
-	context createModification{
-		
-		fact "creates CreateJavaMethod modification for Java class"{
-			'''
-			describe "Something"{
-				String x
-				fact x.unresolved
-			}
-			'''.createModification => typeof(CreateJavaMethod)
-		}
-		
-		fact "creates CreateXtendMethod modification for Xtend class"{
-			m.parseXtend('''
-				class Example{
-					
-				}
-			''')
-			'''
-			describe "Something"{
-				Example example
-				fact example.unresolved
-			}
-			'''.createModification => typeof(CreateXtendMethod)
-		} 
-		
-		def createModification(CharSequence s){
-			parseSpec(s)
-			return subject.createModification(firstFeatureCall, "unresolved")
-		} 
-		
-	}
-	
 	def parseSpec(CharSequence content){
 		m.parseSpec(content)
 	}
 	
 	def firstFeatureCall(){
-		m.first(typeof(XMemberFeatureCall))
+		first(typeof(XMemberFeatureCall))
 	}	
-	
 }
 

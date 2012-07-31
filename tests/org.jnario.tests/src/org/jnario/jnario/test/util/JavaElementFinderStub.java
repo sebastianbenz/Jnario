@@ -32,81 +32,81 @@ import org.eclipse.xtext.common.types.util.jdt.IJavaElementFinder;
 
 public class JavaElementFinderStub implements IJavaElementFinder{
 
-	private IType result = new IType() {
-		
+	public final class TypeStub implements IType {
+
 		public Object getAdapter(Class adapter) {
 			return null;
 		}
-		
+
 		public boolean isStructureKnown() throws JavaModelException {
 			return false;
 		}
-		
+
 		public boolean isReadOnly() {
 			return isReadable;
 		}
-		
+
 		public IResource getUnderlyingResource() throws JavaModelException {
 			return null;
 		}
-		
+
 		public ISchedulingRule getSchedulingRule() {
 			return null;
 		}
-		
+
 		public IResource getResource() {
 			return null;
 		}
-		
+
 		public IJavaElement getPrimaryElement() {
 			return null;
 		}
-		
+
 		public IPath getPath() {
 			return null;
 		}
-		
+
 		public IJavaElement getParent() {
 			return null;
 		}
-		
+
 		public IOpenable getOpenable() {
 			return null;
 		}
-		
+
 		public IJavaProject getJavaProject() {
 			return null;
 		}
-		
+
 		public IJavaModel getJavaModel() {
 			return null;
 		}
-		
+
 		public String getHandleIdentifier() {
 			return null;
 		}
-		
+
 		public int getElementType() {
 			return 0;
 		}
-		
+
 		public String getElementName() {
 			return null;
 		}
-		
+
 		public IResource getCorrespondingResource() throws JavaModelException {
 			return null;
 		}
-		
+
 		public String getAttachedJavadoc(IProgressMonitor monitor)
 				throws JavaModelException {
 			return null;
 		}
-		
+
 		public IJavaElement getAncestor(int ancestorType) {
 			return null;
 		}
-		
+
 		public boolean exists() {
 			return false;
 		}
@@ -470,7 +470,9 @@ public class JavaElementFinderStub implements IJavaElementFinder{
 				throws JavaModelException {
 			return null;
 		}
-	};
+	}
+
+	private IType result = new TypeStub();
 	
 	private boolean isReadable = false;
 

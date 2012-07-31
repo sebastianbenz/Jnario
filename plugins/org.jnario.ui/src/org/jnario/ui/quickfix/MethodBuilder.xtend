@@ -17,7 +17,6 @@ import org.eclipse.xtext.common.types.xtext.ui.JdtVariableCompletions$Completion
 import org.eclipse.xtext.xbase.XAbstractFeatureCall
 import org.eclipse.xtext.xbase.XMemberFeatureCall
 import org.eclipse.xtext.xbase.compiler.IAppendable
-import org.eclipse.xtext.xbase.compiler.ImportManager
 import org.eclipse.xtext.xbase.typing.ITypeProvider
 
 import static org.eclipse.xtext.common.types.util.Primitives$Primitive.*
@@ -28,16 +27,18 @@ class MethodBuilderProvider{
 	@Inject Provider<XtendMethodBuilder> xtendMethodBuilderProvider
 	@Inject Provider<JavaMethodBuilder> javaMethodBuilderProvider
 	
-	def newXtendMethodBuilder(String methodName){
-		val builder = xtendMethodBuilderProvider.get
-		builder.methodName = methodName
-		builder
+	def newXtendMethodBuilder(String methodName, XAbstractFeatureCall call){
+		xtendMethodBuilderProvider.invoke(methodName, call)
 	}
 
-	def newJavaMethodBuilder(String methodName){
-		val builder = javaMethodBuilderProvider.get
+	def newJavaMethodBuilder(String methodName, XAbstractFeatureCall call){
+		javaMethodBuilderProvider.invoke(methodName, call)
+	}
+	
+	def private invoke(Provider<?extends XtendMethodBuilder> provider, String methodName, XAbstractFeatureCall call){
+		val builder = provider.get
 		builder.methodName = methodName
-		builder.importManager = new ImportManager(false, ".".charAt(0))
+		builder.featureCall = call
 		builder
 	}
 }
@@ -52,7 +53,6 @@ class XtendMethodBuilder {
 	 
 	@Property String methodName 
 	@Property XAbstractFeatureCall featureCall
-	@Property ImportManager importManager =  new ImportManager(false, "$".charAt(0))
 	
 	def build(IAppendable appendable){
 		appendable => [
@@ -144,20 +144,11 @@ class XtendMethodBuilder {
 		if(typeRef == null){
 			appendable.append("void")			
 		}else{
-			val typeString = new StringBuilder
-			importManager.appendType(typeRef.type, typeString)
-			typeRef.type.eAllContents.filter(typeof(JvmTypeReference)).filter[type != null].forEach[
-				importManager.appendType(it.type, typeString)
-			]		
 			val resolvedExpectedType= typeParameterByConstraintSubstitutor.substitute(typeRef);
 			resolvedExpectedType.serialize(featureCall, appendable)
 		}
 		appendable
 	}
-	
-	def imports(){
-		importManager.imports
-	} 
 	
 }
 
@@ -177,7 +168,7 @@ class JavaMethodBuilder extends XtendMethodBuilder{
 class VariableNameAcceptor implements JdtVariableCompletions$CompletionDataAcceptor {
 
 	val Set<String> notallowed
-	Set<String> variableNames = newHashSet()
+	val Set<String> variableNames = newHashSet()
 
 	new(Set<String> notallowed) {
 		this.notallowed = notallowed;

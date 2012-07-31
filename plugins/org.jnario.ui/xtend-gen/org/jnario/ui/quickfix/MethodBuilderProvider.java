@@ -2,7 +2,7 @@ package org.jnario.ui.quickfix;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
-import org.eclipse.xtext.xbase.compiler.ImportManager;
+import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.jnario.ui.quickfix.JavaMethodBuilder;
 import org.jnario.ui.quickfix.XtendMethodBuilder;
 
@@ -14,24 +14,22 @@ public class MethodBuilderProvider {
   @Inject
   private Provider<JavaMethodBuilder> javaMethodBuilderProvider;
   
-  public XtendMethodBuilder newXtendMethodBuilder(final String methodName) {
-    XtendMethodBuilder _xblockexpression = null;
-    {
-      final XtendMethodBuilder builder = this.xtendMethodBuilderProvider.get();
-      builder.setMethodName(methodName);
-      _xblockexpression = (builder);
-    }
-    return _xblockexpression;
+  public XtendMethodBuilder newXtendMethodBuilder(final String methodName, final XAbstractFeatureCall call) {
+    XtendMethodBuilder _invoke = this.invoke(this.xtendMethodBuilderProvider, methodName, call);
+    return _invoke;
   }
   
-  public JavaMethodBuilder newJavaMethodBuilder(final String methodName) {
-    JavaMethodBuilder _xblockexpression = null;
+  public XtendMethodBuilder newJavaMethodBuilder(final String methodName, final XAbstractFeatureCall call) {
+    XtendMethodBuilder _invoke = this.invoke(this.javaMethodBuilderProvider, methodName, call);
+    return _invoke;
+  }
+  
+  private XtendMethodBuilder invoke(final Provider<? extends XtendMethodBuilder> provider, final String methodName, final XAbstractFeatureCall call) {
+    XtendMethodBuilder _xblockexpression = null;
     {
-      final JavaMethodBuilder builder = this.javaMethodBuilderProvider.get();
+      final XtendMethodBuilder builder = provider.get();
       builder.setMethodName(methodName);
-      char _charAt = ".".charAt(0);
-      ImportManager _importManager = new ImportManager(false, _charAt);
-      builder.setImportManager(_importManager);
+      builder.setFeatureCall(call);
       _xblockexpression = (builder);
     }
     return _xblockexpression;

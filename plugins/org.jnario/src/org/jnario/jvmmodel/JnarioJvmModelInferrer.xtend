@@ -20,7 +20,6 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.eclipse.xtext.xbase.typing.ITypeProvider
 import org.jnario.ExampleColumn
-import org.jnario.runner.Named
 
 import static com.google.common.base.Predicates.*
 import static extension org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
