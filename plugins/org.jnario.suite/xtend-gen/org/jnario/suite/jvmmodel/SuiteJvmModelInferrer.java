@@ -52,13 +52,8 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
   private SuiteNodeBuilder _suiteNodeBuilder;
   
   public void infer(final EObject e, final IJvmDeclaredTypeAcceptor acceptor, final boolean preIndexingPhase) {
-    boolean _checkClassPath = this.checkClassPath(e, this.annotationProvider);
-    boolean _not = (!_checkClassPath);
+    boolean _not = (!(e instanceof SuiteFile));
     if (_not) {
-      return;
-    }
-    boolean _not_1 = (!(e instanceof SuiteFile));
-    if (_not_1) {
       return;
     }
     final SuiteFile suiteFile = ((SuiteFile) e);

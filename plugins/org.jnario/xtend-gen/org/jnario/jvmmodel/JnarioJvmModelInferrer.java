@@ -30,14 +30,11 @@ import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
-import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.jnario.ExampleColumn;
-import org.jnario.jvmmodel.JunitAnnotationProvider;
 import org.jnario.runner.Extension;
-import org.jnario.runner.Named;
 
 /**
  * @author Birgit Engelmann
@@ -62,25 +59,6 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
   
   @Inject
   private IJvmModelAssociations _iJvmModelAssociations;
-  
-  public boolean checkClassPath(final EObject context, final JunitAnnotationProvider annotationProvider) {
-    try {
-      annotationProvider.getBeforeAnnotation(context);
-    } catch (final Throwable _t) {
-      if (_t instanceof RuntimeException) {
-        final RuntimeException e = (RuntimeException)_t;
-        return false;
-      } else {
-        throw Exceptions.sneakyThrow(_t);
-      }
-    }
-    JvmType _findDeclaredType = this._typeReferences.findDeclaredType(Named.class, context);
-    boolean _equals = Objects.equal(_findDeclaredType, null);
-    if (_equals) {
-      return false;
-    }
-    return true;
-  }
   
   public JvmField toField(final ExampleColumn column) {
     String _name = column.getName();

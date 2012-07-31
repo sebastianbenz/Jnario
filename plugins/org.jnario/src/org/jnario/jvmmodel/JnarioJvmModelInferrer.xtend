@@ -47,18 +47,6 @@ class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
 	@Inject extension JvmTypesBuilder
 	@Inject extension IJvmModelAssociations 
 	
-	def checkClassPath(EObject context, JunitAnnotationProvider annotationProvider){
-		try{
-			annotationProvider.getBeforeAnnotation(context)
-		}catch(RuntimeException e){
-			return false
-		}
-		if (typeof(Named).findDeclaredType(context) == null) {
-			return false;
-		}
-		return true
-	}
-	  
 	def toField(ExampleColumn column){
 		val field = column.toField(column.name, column.getOrCreateType)
 		if(field != null){

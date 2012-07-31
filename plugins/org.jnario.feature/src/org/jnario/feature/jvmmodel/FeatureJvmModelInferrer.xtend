@@ -71,10 +71,6 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 	@Inject extension IJvmModelAssociator 
 
    override infer(EObject object, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
-    	if(!checkClassPath(object, annotationProvider)){
-			return
-		}
-		
 		val feature = object.resolveFeature
 		if(feature == null || feature.name.isNullOrEmpty){
 			return
@@ -197,6 +193,9 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 
    	def setStepValueType(XVariableDeclaration variableDec, Step step){
 		var typeRef = getTypeForName(typeof(StepArguments), step)
+		if(typeRef == null){
+			return
+		}
 		variableDec.type = typeRef		
 		val type = typeRef.type as JvmGenericType
 		var constructor = variableDec.right as XConstructorCall

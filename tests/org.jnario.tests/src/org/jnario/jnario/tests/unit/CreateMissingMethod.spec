@@ -14,8 +14,6 @@ import org.jnario.ui.quickfix.CreateJavaMethod
 import org.jnario.ui.quickfix.CreateXtendMethod
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations
 import org.jnario.ui.quickfix.MethodBuilderProvider
-import org.jnario.jnario.test.util.Resources
-import org.eclipse.emf.ecore.util.EcoreUtil
 
 @CreateWith(typeof(SpecTestCreator))
 describe CreateMissingMethod{
@@ -136,17 +134,16 @@ describe CreateMissingMethod{
 			'''.createModification => typeof(CreateJavaMethod)
 		}
 		
-		pending fact "creates CreateXtendMethod modification for Xtend class"{
+		fact "creates CreateXtendMethod modification for Xtend class"{
 			m.parseXtend('''
 				class Example{
 					
 				}
 			''')
-			
 			'''
 			describe "Something"{
-				Example x
-				fact x.unresolved
+				Example example
+				fact example.unresolved
 			}
 			'''.createModification => typeof(CreateXtendMethod)
 		} 
@@ -167,3 +164,4 @@ describe CreateMissingMethod{
 	}	
 	
 }
+

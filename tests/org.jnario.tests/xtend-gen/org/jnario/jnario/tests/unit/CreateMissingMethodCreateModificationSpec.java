@@ -12,7 +12,6 @@ import org.jnario.runner.Order;
 import org.jnario.ui.quickfix.CreateJavaMethod;
 import org.jnario.ui.quickfix.CreateXtendMethod;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -44,8 +43,7 @@ public class CreateMissingMethodCreateModificationSpec extends CreateMissingMeth
   }
   
   @Test
-  @Ignore
-  @Named("creates CreateXtendMethod modification for Xtend class [PENDING]")
+  @Named("creates CreateXtendMethod modification for Xtend class")
   @Order(99)
   public void createsCreateXtendMethodModificationForXtendClass() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
@@ -60,18 +58,18 @@ public class CreateMissingMethodCreateModificationSpec extends CreateMissingMeth
     _builder_1.append("describe \"Something\"{");
     _builder_1.newLine();
     _builder_1.append("\t");
-    _builder_1.append("Example x");
+    _builder_1.append("Example example");
     _builder_1.newLine();
     _builder_1.append("\t");
-    _builder_1.append("fact x.unresolved");
+    _builder_1.append("fact example.unresolved");
     _builder_1.newLine();
     _builder_1.append("}");
     _builder_1.newLine();
     IModification _createModification = this.createModification(_builder_1);
     boolean _doubleArrow = Should.operator_doubleArrow(_createModification, CreateXtendMethod.class);
-    Assert.assertTrue("\nExpected \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tExample x\n\t\t\t\tfact x.unresolved\n\t\t\t}\n\t\t\t\'\'\'.createModification => typeof(CreateXtendMethod) but"
-     + "\n     \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tExample x\n\t\t\t\tfact x.unresolved\n\t\t\t}\n\t\t\t\'\'\'.createModification is " + new StringDescription().appendValue(_createModification).toString()
-     + "\n     \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tExample x\n\t\t\t\tfact x.unresolved\n\t\t\t}\n\t\t\t\'\'\' is " + new StringDescription().appendValue(_builder_1).toString() + "\n", _doubleArrow);
+    Assert.assertTrue("\nExpected \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tExample example\n\t\t\t\tfact example.unresolved\n\t\t\t}\n\t\t\t\'\'\'.createModification => typeof(CreateXtendMethod) but"
+     + "\n     \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tExample example\n\t\t\t\tfact example.unresolved\n\t\t\t}\n\t\t\t\'\'\'.createModification is " + new StringDescription().appendValue(_createModification).toString()
+     + "\n     \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tExample example\n\t\t\t\tfact example.unresolved\n\t\t\t}\n\t\t\t\'\'\' is " + new StringDescription().appendValue(_builder_1).toString() + "\n", _doubleArrow);
     
   }
   

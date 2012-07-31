@@ -68,9 +68,6 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 	@Inject extension SyntheticNameClashResolver
 	
 	override infer(EObject e, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
-		if(!checkClassPath(e, annotationProvider)){
-			return
-		}
 		if (!(e instanceof SpecFile)){
 			return
 		}
@@ -202,7 +199,7 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 			body = element.implementation
 			element.annotations.translateAnnotationsTo(it)
 			exceptions += typeof(Exception).getTypeForName(element)
-			it.annotations.addAll(annotations)
+			it.annotations.addAll(annotations.filter[it != null])
 		]
 	}
 	

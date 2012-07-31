@@ -115,7 +115,19 @@ describe &quot;Something&quot;{
   fact x.unresolved
 }
 '''.createModification =&gt; typeof(CreateJavaMethod)</pre>
-</li><li><p id="creates_CreateXtendMethod_modification_for_Xtend_class"><strong>creates CreateXtendMethod modification for Xtend class [PENDING]</strong></p>
+</li><li><p id="creates_CreateXtendMethod_modification_for_Xtend_class"><strong>creates CreateXtendMethod modification for Xtend class</strong></p>
+<pre class="prettyprint lang-spec">
+m.parseXtend('''
+  class Example{
+    
+  }
+''')
+'''
+describe &quot;Something&quot;{
+  Example example
+  fact example.unresolved
+}
+'''.createModification =&gt; typeof(CreateXtendMethod)</pre>
 </li></ul>
 				</div>
 			</div>

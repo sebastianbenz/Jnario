@@ -30,9 +30,6 @@ class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
 	@Inject extension SuiteNodeBuilder
 	
 	override infer(EObject e, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
-		if(!checkClassPath(e, annotationProvider)){
-			return
-		}
 		if (!(e instanceof SuiteFile)){
 			return
 		}

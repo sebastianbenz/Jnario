@@ -85,5 +85,5 @@ public class JnarioJavaValidator extends AbstractDeclarativeValidator {
 			error("Examples rows have to have the same number of columns", JnarioPackage.Literals.EXAMPLE_TABLE__NAME);
 		}
 	}
-
+	
 }

@@ -99,11 +99,6 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   private IJvmModelAssociator _iJvmModelAssociator;
   
   public void infer(final EObject object, final IJvmDeclaredTypeAcceptor acceptor, final boolean preIndexingPhase) {
-    boolean _checkClassPath = this.checkClassPath(object, this.annotationProvider);
-    boolean _not = (!_checkClassPath);
-    if (_not) {
-      return;
-    }
     final Feature feature = this.resolveFeature(object);
     boolean _or = false;
     boolean _equals = Objects.equal(feature, null);
@@ -326,6 +321,10 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   
   public void setStepValueType(final XVariableDeclaration variableDec, final Step step) {
     JvmTypeReference typeRef = this._typeReferences.getTypeForName(StepArguments.class, step);
+    boolean _equals = Objects.equal(typeRef, null);
+    if (_equals) {
+      return;
+    }
     variableDec.setType(typeRef);
     JvmType _type = typeRef.getType();
     final JvmGenericType type = ((JvmGenericType) _type);

@@ -90,13 +90,8 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
   private SyntheticNameClashResolver _syntheticNameClashResolver;
   
   public void infer(final EObject e, final IJvmDeclaredTypeAcceptor acceptor, final boolean preIndexingPhase) {
-    boolean _checkClassPath = this.checkClassPath(e, this.annotationProvider);
-    boolean _not = (!_checkClassPath);
+    boolean _not = (!(e instanceof SpecFile));
     if (_not) {
-      return;
-    }
-    boolean _not_1 = (!(e instanceof SpecFile));
-    if (_not_1) {
       return;
     }
     final SpecFile specFile = ((SpecFile) e);
@@ -383,7 +378,14 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
           JvmTypeReference _typeForName = SpecJvmModelInferrer.this._typeReferences.getTypeForName(Exception.class, element);
           SpecJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmTypeReference>operator_add(_exceptions, _typeForName);
           EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
-          _annotations_1.addAll(annotations);
+          final Function1<JvmAnnotationReference,Boolean> _function = new Function1<JvmAnnotationReference,Boolean>() {
+              public Boolean apply(final JvmAnnotationReference it) {
+                boolean _notEquals = (!Objects.equal(it, null));
+                return Boolean.valueOf(_notEquals);
+              }
+            };
+          Iterable<JvmAnnotationReference> _filter = IterableExtensions.<JvmAnnotationReference>filter(annotations, _function);
+          Iterables.<JvmAnnotationReference>addAll(_annotations_1, _filter);
         }
       };
     JvmOperation _method = this._extendedJvmTypesBuilder.toMethod(element, _methodName, _typeForName, _function);
