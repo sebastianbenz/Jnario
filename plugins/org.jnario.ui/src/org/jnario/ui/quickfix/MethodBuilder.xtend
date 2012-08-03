@@ -105,7 +105,8 @@ class XtendMethodBuilder {
 	}
 	
 	def private isVoid(XAbstractFeatureCall featureCall){
-		return returnType.simpleName == "void"
+		val returnType = returnType()
+		return returnType == null || returnType.simpleName == "void"
 	}
 	
 	def protected returnType(){

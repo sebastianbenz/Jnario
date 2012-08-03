@@ -144,9 +144,17 @@ public class XtendMethodBuilder {
   }
   
   private boolean isVoid(final XAbstractFeatureCall featureCall) {
-    JvmTypeReference _returnType = this.returnType();
-    String _simpleName = _returnType.getSimpleName();
-    return Objects.equal(_simpleName, "void");
+    final JvmTypeReference returnType = this.returnType();
+    boolean _or = false;
+    boolean _equals = Objects.equal(returnType, null);
+    if (_equals) {
+      _or = true;
+    } else {
+      String _simpleName = returnType.getSimpleName();
+      boolean _equals_1 = Objects.equal(_simpleName, "void");
+      _or = (_equals || _equals_1);
+    }
+    return _or;
   }
   
   protected JvmTypeReference returnType() {
