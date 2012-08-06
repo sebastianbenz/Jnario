@@ -8,24 +8,23 @@
 package org.jnario.spec.jvmmodel
 
 import com.google.inject.Inject
-import org.jnario.jvmmodel.ExtendedJvmTypesBuilder
-import org.jnario.runner.Subject
-import org.jnario.spec.spec.ExampleGroup
-import org.jnario.spec.spec.TestFunction
 import java.util.Iterator
+import org.eclipse.xtend.core.xtend.XtendFunction
 import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.common.types.JvmVisibility
-import org.eclipse.xtext.xbase.XFeatureCall
-import org.eclipse.xtend.core.xtend.XtendFunction
+import org.eclipse.xtext.xbase.XAbstractFeatureCall
+import org.jnario.jvmmodel.ExtendedJvmTypesBuilder
+import org.jnario.runner.Subject
+import org.jnario.spec.spec.ExampleGroup
+import org.jnario.spec.spec.TestFunction
 
-import static org.jnario.spec.jvmmodel.Constants.*
 import static org.eclipse.xtext.EcoreUtil2.*
+import static org.jnario.spec.jvmmodel.Constants.*
 
 import static extension com.google.common.collect.Iterables.*
 import static extension com.google.common.collect.Iterators.*
-import org.eclipse.xtext.xbase.XAbstractFeatureCall
  
 /**
  * @author Sebastian Benz - Initial contribution and API

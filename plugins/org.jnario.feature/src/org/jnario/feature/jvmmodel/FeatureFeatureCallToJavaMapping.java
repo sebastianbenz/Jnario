@@ -31,6 +31,7 @@ import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.Scenario;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 
@@ -75,8 +76,9 @@ public class FeatureFeatureCallToJavaMapping extends FeatureCallToJavaMapping {
 		if (isStaticJavaFeature(feature) || feature instanceof JvmConstructor) {
 			return null;
 		}
-		if (implicitReceiver!=null)
+		if (implicitReceiver!=null && !Objects.equal(implicitReceiver.toString(), "<unkown>")){
 			return implicitReceiver;
+		}
 		final List<? extends XExpression> allArguments = featureCall.getExplicitArguments();
 		if (allArguments.isEmpty())
 			return null;

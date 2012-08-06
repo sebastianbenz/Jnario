@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendMember;
@@ -41,13 +40,13 @@ public class StepReferenceFieldCreator {
     }
   }
   
-  public Set<String> getExistingFieldNamesForContainerOfStepReference(final StepReference ref) {
+  private Set<String> getExistingFieldNamesForContainerOfStepReference(final StepReference ref) {
     Iterable<XtendMember> _membersOfReferencedStep = this.getMembersOfReferencedStep(ref);
     Set<String> _existingFieldNames = this.getExistingFieldNames(_membersOfReferencedStep);
     return _existingFieldNames;
   }
   
-  public Set<String> getExistingFieldNames(final Iterable<XtendMember> members) {
+  private Set<String> getExistingFieldNames(final Iterable<XtendMember> members) {
     Iterable<XtendField> _filter = Iterables.<XtendField>filter(members, XtendField.class);
     final Function1<XtendField,String> _function = new Function1<XtendField,String>() {
         public String apply(final XtendField it) {
@@ -60,7 +59,7 @@ public class StepReferenceFieldCreator {
     return _set;
   }
   
-  public Iterable<XtendMember> getMembersOfReferencedStep(final Step step) {
+  private Iterable<XtendMember> getMembersOfReferencedStep(final Step step) {
     final Scenario scenario = EcoreUtil2.<Scenario>getContainerOfType(step, Scenario.class);
     boolean _equals = Objects.equal(scenario, null);
     if (_equals) {
@@ -81,7 +80,7 @@ public class StepReferenceFieldCreator {
     return Iterables.<XtendMember>concat(members, _members);
   }
   
-  public void copyFields(final EObject objectWithReference, final Iterable<XtendMember> members, final Set<String> fieldNames) {
+  private void copyFields(final EObject objectWithReference, final Iterable<XtendMember> members, final Set<String> fieldNames) {
     boolean _not = (!(objectWithReference instanceof XtendClass));
     if (_not) {
       return;
@@ -93,7 +92,7 @@ public class StepReferenceFieldCreator {
       boolean _contains = fieldNames.contains(_name);
       boolean _not_1 = (!_contains);
       if (_not_1) {
-        final EObject copiedMember = EcoreUtil.copy(field);
+        final XtendField copiedMember = EcoreUtil2.<XtendField>cloneWithProxies(field);
         EList<XtendMember> _members = type.getMembers();
         _members.add(((XtendField) copiedMember));
         String _name_1 = field.getName();

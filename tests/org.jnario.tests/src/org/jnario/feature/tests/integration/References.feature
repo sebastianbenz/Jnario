@@ -83,5 +83,32 @@ Feature: References for steps
 	 						x => 3
 	 		'''
 	 		jnarioFile = args.first
+	 	Then it should execute successfully
+	 		
+/* PENDING
+	 Scenario: Steps with short names
+	 	When I have a scenario with field initialized in a given step
+	 		'''
+				import java.util.Stack
+				
+				Feature: Stack
+				
+				
+				Scenario: Stack adding elements
+					Stack<String> stack
+					Given a stack
+						stack= new Stack<String>()
+					When I add a value "something"
+						stack.add("something")
+					Then the stack should contain "something"
+						assert stack.contains("something")
+				
+				Scenario: Stack adding more elements
+					Given a stack
+					When I add a value "something else"
+					Then the stack should contain "something else"
+	 		'''
+	 		jnarioFile = args.first
 	 	Then it should execute successfully	
+*/	 	
 	 	

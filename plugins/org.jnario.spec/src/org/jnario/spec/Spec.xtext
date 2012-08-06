@@ -45,7 +45,7 @@ Member returns xtend::XtendMember:
       		members+=Member*
       	'}')
     |	{Before.annotationInfo = current}
-		('before' (beforeAll?='all')? =>name=STRING? body=XExpression)
+		('before' (beforeAll?='all'|'each')? =>name=STRING? body=XExpression)
 	|	{After.annotationInfo = current}
 		('after' (afterAll?='all')? =>name=STRING? body=XExpression)
     |	{ExampleGroup.annotationInfo = current}

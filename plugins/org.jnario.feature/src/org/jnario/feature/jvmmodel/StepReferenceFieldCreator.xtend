@@ -37,15 +37,15 @@ class StepReferenceFieldCreator {
 		}
    	}
    	
-   	def getExistingFieldNamesForContainerOfStepReference(StepReference ref){
+   	def private getExistingFieldNamesForContainerOfStepReference(StepReference ref){
    		ref.membersOfReferencedStep.existingFieldNames
    	}
    	
-   	def getExistingFieldNames(Iterable<XtendMember> members){
+   	def private getExistingFieldNames(Iterable<XtendMember> members){
    		members.filter(typeof(XtendField)).map[name].toSet
    	}
    	
-   	def getMembersOfReferencedStep(Step step){
+   	def private getMembersOfReferencedStep(Step step){
    		val scenario = getContainerOfType(step, typeof(Scenario))
 		if(scenario == null){
 			return <XtendMember>emptyList
@@ -59,17 +59,16 @@ class StepReferenceFieldCreator {
 			return members
 		}
 		return members + feature.background.members
-		
    	}
    	
-   	def copyFields(EObject objectWithReference, Iterable<XtendMember> members, Set<String> fieldNames){
+   	def private copyFields(EObject objectWithReference, Iterable<XtendMember> members, Set<String> fieldNames){
    		if(!(objectWithReference instanceof XtendClass)){
    			return
    		}
    		val type = objectWithReference as XtendClass
    		for(field: members.filter(typeof(XtendField))){
 			if(!fieldNames.contains(field.name)){
-				val copiedMember = copy(field)
+				val copiedMember = cloneWithProxies(field)
 				type.members += copiedMember as XtendField
 				fieldNames += field.name
 			}

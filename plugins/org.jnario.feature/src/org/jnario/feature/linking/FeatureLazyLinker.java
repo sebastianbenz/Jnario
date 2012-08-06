@@ -26,7 +26,6 @@ import org.jnario.feature.jvmmodel.FeatureJvmModelInferrer;
 import org.jnario.feature.jvmmodel.StepArgumentsProvider;
 import org.jnario.linking.JnarioLazyLinker;
 
-import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 
 /**

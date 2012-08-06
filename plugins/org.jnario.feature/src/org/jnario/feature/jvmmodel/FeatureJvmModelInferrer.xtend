@@ -43,6 +43,7 @@ import static org.jnario.feature.jvmmodel.FeatureJvmModelInferrer.*
 
 import static extension com.google.common.base.Strings.*
 import org.eclipse.xtend.core.xtend.XtendField
+import org.jnario.feature.feature.StepReference
 
 /**
  * @author Birgit Engelmann - Initial contribution and API

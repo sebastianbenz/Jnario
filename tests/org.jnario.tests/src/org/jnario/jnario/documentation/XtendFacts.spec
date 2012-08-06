@@ -71,7 +71,8 @@ describe "20 Facts about Xtend"{
       pair.key   => "spain"
       pair.value => "italy"
     }
-        val greeting = "Hello "
+    
+    val greeting = "Hello "
     
     def sayHello(String name){
       greeting + name

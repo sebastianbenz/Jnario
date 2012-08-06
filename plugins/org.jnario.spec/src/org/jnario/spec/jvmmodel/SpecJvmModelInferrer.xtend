@@ -11,19 +11,21 @@ import com.google.common.base.Joiner
 import com.google.inject.Inject
 import java.util.List
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtend.core.jvmmodel.SyntheticNameClashResolver
 import org.eclipse.xtend.core.xtend.XtendClass
+import org.eclipse.xtend.core.xtend.XtendConstructor
 import org.eclipse.xtend.core.xtend.XtendField
+import org.eclipse.xtend.core.xtend.XtendFunction
 import org.eclipse.xtend.core.xtend.XtendMember
 import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.common.types.JvmAnnotationReference
-import org.eclipse.xtext.common.types.JvmField
+import org.eclipse.xtext.common.types.JvmAnnotationType
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.util.Strings
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
-import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator
 import org.jnario.ExampleTable
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder
@@ -31,7 +33,6 @@ import org.jnario.jvmmodel.JnarioJvmModelInferrer
 import org.jnario.jvmmodel.JunitAnnotationProvider
 import org.jnario.lib.ExampleTableRow
 import org.jnario.runner.Contains
-import org.jnario.runner.Extension
 import org.jnario.runner.Named
 import org.jnario.runner.Order
 import org.jnario.spec.naming.ExampleNameProvider
@@ -43,10 +44,6 @@ import org.jnario.spec.spec.SpecFile
 import org.jnario.spec.spec.TestFunction
 
 import static extension org.eclipse.xtext.util.Strings.*
-import org.eclipse.xtend.core.xtend.XtendFunction
-import org.eclipse.xtend.core.xtend.XtendConstructor
-import org.eclipse.xtext.common.types.JvmAnnotationType
-import org.eclipse.xtend.core.jvmmodel.SyntheticNameClashResolver
  
 /**
  * @author Sebastian Benz - Initial contribution and API
