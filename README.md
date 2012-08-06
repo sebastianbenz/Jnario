@@ -1,4 +1,4 @@
-
+[![Build Status](https://sebastianbenz.ci.cloudbees.com/job/jnario-snapshot/badge/icon)](https://sebastianbenz.ci.cloudbees.com/job/jnario-snapshot/)
 
 ##Overview
 
