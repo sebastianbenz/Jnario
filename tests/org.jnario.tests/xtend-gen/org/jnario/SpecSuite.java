@@ -21,6 +21,7 @@ import org.jnario.spec.tests.integration.UsingJUnitRulesInSpecsSpec;
 import org.jnario.spec.tests.integration.UsingShouldSpec;
 import org.jnario.spec.tests.integration.UsingTablesSpec;
 import org.jnario.spec.tests.integration.UsingXtendSWithOperatorSpec;
+import org.jnario.spec.tests.unit.compiler.CompilerSpec;
 import org.jnario.spec.tests.unit.doc.SpecDocGeneratorSpec;
 import org.jnario.spec.tests.unit.naming.ExampleNameProviderSpec;
 import org.jnario.spec.tests.unit.naming.ExampleSpec;
@@ -32,7 +33,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(ExampleGroupRunner.class)
 @Named("Spec")
-@Contains({ OperationNameProviderSpec.class, UsingJUnitRulesInSpecsSpec.class, ExampleGroupSpec.class, BeforeSpec.class, ImplicitSubjectSpec.class, ThrowsSpec.class, SpecQualifiedNameProviderSpec.class, UsingTablesSpec.class, AssertionSpec.class, BeforeAllSpec.class, SpecDocGeneratorSpec.class, CustomizingTheSpecCreationSpec.class, AfterAllSpec.class, AnnotationsSpec.class, UsingXtendSWithOperatorSpec.class, SpecScopeProviderSpec.class, UsingShouldSpec.class, IntroducingJnarioSpecsSpec.class, AfterSpec.class, SpecExtensionsSpec.class, PendingSpec.class, StaticImportsSpec.class, ExampleNameProviderSpec.class, ExampleSpec.class, SpecJavaValidatorSpec.class })
+@Contains({ UsingJUnitRulesInSpecsSpec.class, OperationNameProviderSpec.class, ExampleGroupSpec.class, BeforeSpec.class, ImplicitSubjectSpec.class, ThrowsSpec.class, SpecQualifiedNameProviderSpec.class, UsingTablesSpec.class, AssertionSpec.class, BeforeAllSpec.class, SpecDocGeneratorSpec.class, CustomizingTheSpecCreationSpec.class, AfterAllSpec.class, AnnotationsSpec.class, UsingXtendSWithOperatorSpec.class, SpecScopeProviderSpec.class, UsingShouldSpec.class, IntroducingJnarioSpecsSpec.class, AfterSpec.class, SpecExtensionsSpec.class, PendingSpec.class, StaticImportsSpec.class, ExampleNameProviderSpec.class, CompilerSpec.class, ExampleSpec.class, SpecJavaValidatorSpec.class })
 @SuppressWarnings("all")
 public class SpecSuite {
 }

@@ -299,50 +299,6 @@ public class JnarioCompiler extends XtendCompiler {
 		return super.isVariableDeclarationRequired(expr, b);
 	}
 
-	/*
-	 * Overridden to evaluate all expressions first to be visible when
-	 * generating the assertion message.
-	 */
-	protected void generateShortCircuitInvocation(
-			final XAbstractFeatureCall binaryOperation, final ITreeAppendable b) {
-		if (getContainerOfType(binaryOperation, Assertion.class) == null
-				&& getContainerOfType(binaryOperation, Should.class) == null) {
-			super.generateShortCircuitInvocation(binaryOperation, b);
-		}
-		XExpression leftOperand = ((XBinaryOperation) binaryOperation)
-				.getLeftOperand();
-		declareSyntheticVariable(binaryOperation, b);
-		prepareExpression(leftOperand, b);
-
-		for (XExpression arg : binaryOperation.getExplicitArguments()) {
-			if (arg != leftOperand)
-				prepareExpression(arg, b);
-		}
-
-		b.append("\nif (");
-		if (binaryOperation.getConcreteSyntaxFeatureName().equals(
-				expressionHelper.getAndOperator())) {
-			b.append("!");
-		}
-		toJavaExpression(leftOperand, b);
-		b.append(") {").increaseIndentation();
-		boolean rightOperand = binaryOperation.getConcreteSyntaxFeatureName()
-				.equals(expressionHelper.getOrOperator());
-		b.append("\n").append(b.getName(binaryOperation)).append(" = ")
-				.append(Boolean.toString(rightOperand)).append(";");
-
-		b.decreaseIndentation().append("\n} else {").increaseIndentation();
-
-		if (binaryOperation.getImplicitReceiver() != null) {
-			internalToJavaStatement(binaryOperation.getImplicitReceiver(), b,
-					true);
-		}
-
-		b.append("\n").append(b.getName(binaryOperation)).append(" = ");
-		featureCalltoJavaExpression(binaryOperation, b, true);
-		b.append(";");
-		b.decreaseIndentation().append("\n}");
-	}
 
 	@Override
 	protected void _toJavaStatement(XAbstractFeatureCall expr,

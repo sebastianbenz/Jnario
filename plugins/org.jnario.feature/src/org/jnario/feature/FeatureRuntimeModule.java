@@ -10,6 +10,7 @@
  */
 package org.jnario.feature;
 
+import org.eclipse.xtend.core.compiler.XtendOutputConfigurationProvider;
 import org.eclipse.xtend.core.jvmmodel.DispatchUtil;
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
 import org.eclipse.xtend.core.linking.XtendLinkingDiagnosticMessageProvider;
@@ -21,6 +22,7 @@ import org.eclipse.xtend.core.validation.XtendEarlyExitValidator;
 import org.eclipse.xtext.conversion.IValueConverterService;
 import org.eclipse.xtext.generator.IFilePostProcessor;
 import org.eclipse.xtext.generator.IGenerator;
+import org.eclipse.xtext.generator.IOutputConfigurationProvider;
 import org.eclipse.xtext.generator.OutputConfigurationProvider;
 import org.eclipse.xtext.linking.ILinker;
 import org.eclipse.xtext.linking.ILinkingDiagnosticMessageProvider;
@@ -44,8 +46,10 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.resource.JvmDeclaredTypeSignatureHashProvider.SignatureHashBuilder;
 import org.eclipse.xtext.xbase.scoping.featurecalls.StaticImplicitMethodsFeatureForTypeProvider.ExtensionClassNameProvider;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
+import org.eclipse.xtext.xbase.util.XExpressionHelper;
 import org.eclipse.xtext.xbase.validation.EarlyExitValidator;
 import org.jnario.compiler.JnarioBatchCompiler;
+import org.jnario.compiler.JnarioExpressionHelper;
 import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.DocOutputConfigurationProvider;
 import org.jnario.feature.compiler.FeatureBatchCompiler;
@@ -211,4 +215,13 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 	public Class<? extends JnarioBatchCompiler> bindJnarioBatchCompiler(){
 		return FeatureBatchCompiler.class;
 	}
+	
+	public Class<? extends XExpressionHelper> bindXExpressionHelper() {
+		return JnarioExpressionHelper.class;
+	}
+	
+	public Class<? extends IOutputConfigurationProvider> bindIOutputConfigurationProvider() {
+		return XtendOutputConfigurationProvider.class;
+	}
+	
 }
