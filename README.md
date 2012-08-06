@@ -61,8 +61,8 @@ describe Stack{
 
 ##Setting up a development environment
 
-* Download the latest [Eclipse for RCP Developers](http://www.eclipse.org/downloads/packages/eclipse-rcp-and-rap-developers/indigosr2) 
-* Install the latest Xtext 2.3 release from: `http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/`
+* If you haven't got an Eclipse installation, download the [Xtend Distribution](http://www.eclipse.org/xtend/download.html). 
+* Install the latest Xtext 2.3 release from: `http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/` (this is not required if you have downloaded the Xtend distribution).
 * Install the latest Jnario snapshot: `http://www.jnario.org/updates/snapshot/`.
 * Clone the jnario repository: 
 
@@ -71,7 +71,7 @@ $ git clone git://github.com/bmwcarit/Jnario.git
 ``` 
 
 * Start Eclipse and import all projects from jnario/* into your Eclipse workspace
-* Open the target definition **org.jnario.target/juno.target** and click **Set as Target Plattform** in the upper right corner
+* Open the target definition **tools/org.jnario.target/juno.target** and click **Set as Target Plattform** in the upper right corner
 * If you want to change the grammar import **org.eclipse.xtend.core** and **org.eclipse.xtext.xbase** into your workspace via **import->Plug-in Development->Plug-ins and Fragments** with **Import As->Projects with source folder**. This is necessary for the workflow to find the custom source classes of Xtend and Xbase.
 
 ##Build
