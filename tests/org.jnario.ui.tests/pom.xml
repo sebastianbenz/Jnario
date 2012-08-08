@@ -8,7 +8,7 @@
 		<groupId>org.jnario</groupId><relativePath>../../pom.xml</relativePath>
 		<version>0.2.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>org.jnario.tests</artifactId>
+	<artifactId>org.jnario.ui.tests</artifactId>
 	<version>0.2.0-SNAPSHOT</version>
 	<packaging>eclipse-test-plugin</packaging>
 
@@ -19,13 +19,14 @@
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
-					<useUIHarness>false</useUIHarness>
+					<useUIHarness>true</useUIHarness>
 					<argLine>${tycho.test.jvmArgs}</argLine>
 					<includes>
             			<include>**/Test*.java</include>
             			<include>**/*Test.java</include>
             			<include>**/*TestCase.java</include>
-            			<include>**/JnarioSuite.java</include>
+            			<include>**/*Spec.java</include>
+            			<include>**/*Feature.java</include>
 			         </includes>
 			         <explodedBundles> 
 						<!-- Make sure that nested junit.jar can be accessed by PDE/JDT. -->

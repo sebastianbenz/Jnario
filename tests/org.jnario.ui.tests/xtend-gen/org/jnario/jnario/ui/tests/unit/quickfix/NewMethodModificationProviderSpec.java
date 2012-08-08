@@ -1,4 +1,4 @@
-package org.jnario.jnario.tests.unit.quickfix;
+package org.jnario.jnario.ui.tests.unit.quickfix;
 
 import com.google.inject.Inject;
 import org.eclipse.xtend2.lib.StringConcatenation;

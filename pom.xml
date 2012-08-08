@@ -42,6 +42,7 @@
     <module>features/org.jnario-feature</module>
     <module>tests/org.jnario.tests</module>
     <module>tests/org.jnario.lib.tests</module>
+    <module>tests/org.jnario.ui.tests</module>
     <module>plugins/org.jnario.feature.ui</module>
     <module>plugins/org.jnario.spec.ui</module>
     <module>features/org.jnario.ui-feature</module>

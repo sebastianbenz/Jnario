@@ -1,8 +1,7 @@
-package org.jnario.jnario.tests.unit.quickfix
+ package org.jnario.jnario.ui.tests.unit.quickfix
 
 import com.google.inject.Inject
 import org.eclipse.xtext.xbase.XMemberFeatureCall
-import org.jnario.jnario.test.util.JavaElementFinderStub
 import org.jnario.jnario.test.util.ModelStore
 import org.jnario.jnario.test.util.SpecTestCreator
 import org.jnario.runner.CreateWith
@@ -116,7 +115,7 @@ describe UndefinedMethodFix{
 		def receiverIsReadOnly(CharSequence s){
 			parseSpec(s)
 			return subject.receiverIsReadOnly(firstFeatureCall)
-		} 
+		}
 	}
 	
 	def parseSpec(CharSequence content){

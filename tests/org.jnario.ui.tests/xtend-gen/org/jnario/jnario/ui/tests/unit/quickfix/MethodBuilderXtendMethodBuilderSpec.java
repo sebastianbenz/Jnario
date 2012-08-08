@@ -1,8 +1,8 @@
-package org.jnario.jnario.tests.unit.quickfix;
+package org.jnario.jnario.ui.tests.unit.quickfix;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
-import org.jnario.jnario.tests.unit.quickfix.MethodBuilderSpec;
+import org.jnario.jnario.ui.tests.unit.quickfix.MethodBuilderSpec;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;

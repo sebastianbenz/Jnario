@@ -1,12 +1,12 @@
-package org.jnario.jnario.tests.unit.quickfix;
+package org.jnario.jnario.ui.tests.unit.quickfix;
 
 import com.google.inject.Inject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.xbase.XMemberFeatureCall;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.SpecTestCreator;
-import org.jnario.jnario.tests.unit.quickfix.UndefinedMethodFixCallsReadOnlyTypeSpec;
-import org.jnario.jnario.tests.unit.quickfix.UndefinedMethodFixIsUndefinedMethodSpec;
+import org.jnario.jnario.ui.tests.unit.quickfix.UndefinedMethodFixCallsReadOnlyTypeSpec;
+import org.jnario.jnario.ui.tests.unit.quickfix.UndefinedMethodFixIsUndefinedMethodSpec;
 import org.jnario.runner.Contains;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;

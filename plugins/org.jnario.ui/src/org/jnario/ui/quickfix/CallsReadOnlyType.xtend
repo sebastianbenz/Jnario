@@ -9,7 +9,7 @@ class CallsReadOnlyType {
 	
 	extension IJavaElementFinder elementFinder
 	extension FeatureCallTargetTypeProvider targetTypeProvider
-	
+
 	@Inject 
 	new(IJavaElementFinder elementFinder, FeatureCallTargetTypeProvider targetTypeProvider){
 		this.elementFinder = elementFinder

@@ -1,4 +1,4 @@
-package org.jnario.jnario.test.util;
+package org.jnario.jnario.ui.tests.unit.quickfix;
 
 import java.io.InputStream;
 

@@ -1,12 +1,12 @@
-package org.jnario.jnario.tests.unit.quickfix;
+package org.jnario.jnario.ui.tests.unit.quickfix;
 
 import com.google.inject.Inject;
 import org.eclipse.xtext.xbase.compiler.ImportManager;
 import org.eclipse.xtext.xbase.compiler.StringBuilderBasedAppendable;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.SpecTestCreator;
-import org.jnario.jnario.tests.unit.quickfix.MethodBuilderJavaMethodBuilderSpec;
-import org.jnario.jnario.tests.unit.quickfix.MethodBuilderXtendMethodBuilderSpec;
+import org.jnario.jnario.ui.tests.unit.quickfix.MethodBuilderJavaMethodBuilderSpec;
+import org.jnario.jnario.ui.tests.unit.quickfix.MethodBuilderXtendMethodBuilderSpec;
 import org.jnario.runner.Contains;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;

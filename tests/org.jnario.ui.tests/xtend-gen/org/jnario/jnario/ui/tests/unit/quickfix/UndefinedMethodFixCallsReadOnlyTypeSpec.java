@@ -1,11 +1,11 @@
-package org.jnario.jnario.tests.unit.quickfix;
+package org.jnario.jnario.ui.tests.unit.quickfix;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.XMemberFeatureCall;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.hamcrest.StringDescription;
-import org.jnario.jnario.test.util.JavaElementFinderStub;
-import org.jnario.jnario.tests.unit.quickfix.UndefinedMethodFixSpec;
+import org.jnario.jnario.ui.tests.unit.quickfix.JavaElementFinderStub;
+import org.jnario.jnario.ui.tests.unit.quickfix.UndefinedMethodFixSpec;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;

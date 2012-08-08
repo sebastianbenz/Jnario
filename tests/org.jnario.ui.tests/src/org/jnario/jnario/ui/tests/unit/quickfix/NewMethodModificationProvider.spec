@@ -1,4 +1,4 @@
-package org.jnario.jnario.tests.unit.quickfix
+package org.jnario.jnario.ui.tests.unit.quickfix
 
 import com.google.inject.Inject
 import org.eclipse.xtext.xbase.XMemberFeatureCall
@@ -44,12 +44,12 @@ describe NewMethodModificationProvider{
 		}
 		'''.createModification => typeof(CreateXtendMethod)
 	} 
-	
+
 	def createModification(CharSequence s){
 		parseSpec(s)
 		subject.createModification(firstFeatureCall, "unresolved")
 	} 
-		
+
 	def firstFeatureCall(){
 		first(typeof(XMemberFeatureCall))
 	}		
