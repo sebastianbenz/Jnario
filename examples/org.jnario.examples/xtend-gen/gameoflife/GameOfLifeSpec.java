@@ -3,7 +3,7 @@ package gameoflife;
 import gameoflife.CellPosition;
 import gameoflife.GameOfLifeCellPositionSpec;
 import gameoflife.GameOfLifeEvolutionSpec;
-import gameoflife.GameOfLifeRulesSpec;
+import gameoflife.GameOfLifeGameOfLifeRulesSpec;
 import gameoflife.GameOfLifeWorldSpec;
 import gameoflife.World;
 import java.util.List;
@@ -14,7 +14,7 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.junit.runner.RunWith;
 
-@Contains({ GameOfLifeEvolutionSpec.class, GameOfLifeRulesSpec.class, GameOfLifeCellPositionSpec.class, GameOfLifeWorldSpec.class })
+@Contains({ GameOfLifeEvolutionSpec.class, GameOfLifeGameOfLifeRulesSpec.class, GameOfLifeCellPositionSpec.class, GameOfLifeWorldSpec.class })
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("Game of Life")

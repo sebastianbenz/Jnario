@@ -49,6 +49,18 @@ class EvolveDeadCells implements Rule{
 class World{
 	Set<CellPosition> livingCells
 	
+	def static parseWorld(CharSequence grid){
+		val cells = <CellPosition>newArrayList
+		grid.toString.split("\r?\n").forEach[line, x | 
+			line.toCharArray.forEach[c, y|
+				if(c.toString == "X"){
+					cells.add(cell(x, y))
+				}
+			]
+		]
+		worldWith(cells)
+	}
+	
 	def static worldWith(Iterable<CellPosition> cells) {
 		new World(cells.toSet)
 	} 

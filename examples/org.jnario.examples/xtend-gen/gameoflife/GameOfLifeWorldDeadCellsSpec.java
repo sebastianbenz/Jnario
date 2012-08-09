@@ -54,9 +54,9 @@ public class GameOfLifeWorldDeadCellsSpec extends GameOfLifeWorldSpec {
   }
   
   @Test
-  @Named("with a live cell all neighbours are dead cells if they do not life")
+  @Named("with a live cell all non-living neighbours are dead cells")
   @Order(99)
-  public void withALiveCellAllNeighboursAreDeadCellsIfTheyDoNotLife() throws Exception {
+  public void withALiveCellAllNonLivingNeighboursAreDeadCells() throws Exception {
     Set<CellPosition> _neighbours = this.livingCell.neighbours();
     Set<CellPosition> _neighbours_1 = this.anotherLivingCell.neighbours();
     Iterable<CellPosition> _plus = Iterables.<CellPosition>concat(_neighbours, _neighbours_1);

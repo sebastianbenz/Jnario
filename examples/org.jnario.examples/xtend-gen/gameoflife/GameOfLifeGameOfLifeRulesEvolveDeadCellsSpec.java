@@ -1,8 +1,8 @@
 package gameoflife;
 
 import gameoflife.EvolveDeadCells;
-import gameoflife.GameOfLifeRulesEvolveDeadCellsSpecExamples;
-import gameoflife.GameOfLifeRulesSpec;
+import gameoflife.GameOfLifeGameOfLifeRulesEvolveDeadCellsSpecExamples;
+import gameoflife.GameOfLifeGameOfLifeRulesSpec;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
 import org.jnario.lib.ExampleTable;
@@ -20,38 +20,38 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("EvolveDeadCells")
-public class GameOfLifeRulesEvolveDeadCellsSpec extends GameOfLifeRulesSpec {
+public class GameOfLifeGameOfLifeRulesEvolveDeadCellsSpec extends GameOfLifeGameOfLifeRulesSpec {
   @Subject
   public EvolveDeadCells subject;
   
   @Before
-  public void _initGameOfLifeRulesEvolveDeadCellsSpecExamples() {
+  public void _initGameOfLifeGameOfLifeRulesEvolveDeadCellsSpecExamples() {
     examples = ExampleTable.create("examples", 
       java.util.Arrays.asList("livingNeighbours", "becomesAlive"), 
-      new GameOfLifeRulesEvolveDeadCellsSpecExamples(  java.util.Arrays.asList("2", "false"), 2, false),
-      new GameOfLifeRulesEvolveDeadCellsSpecExamples(  java.util.Arrays.asList("3", "true"), 3, true),
-      new GameOfLifeRulesEvolveDeadCellsSpecExamples(  java.util.Arrays.asList("4", "false"), 4, false)
+      new GameOfLifeGameOfLifeRulesEvolveDeadCellsSpecExamples(  java.util.Arrays.asList("2", "false"), 2, false),
+      new GameOfLifeGameOfLifeRulesEvolveDeadCellsSpecExamples(  java.util.Arrays.asList("3", "true"), 3, true),
+      new GameOfLifeGameOfLifeRulesEvolveDeadCellsSpecExamples(  java.util.Arrays.asList("4", "false"), 4, false)
     );
   }
   
-  protected ExampleTable<GameOfLifeRulesEvolveDeadCellsSpecExamples> examples;
+  protected ExampleTable<GameOfLifeGameOfLifeRulesEvolveDeadCellsSpecExamples> examples;
   
   @Test
   @Named("examples.forEach[ subject.becomesAlive[livingNeighbours] => becomesAlive ]")
   @Order(99)
   public void examplesForEachSubjectBecomesAliveLivingNeighboursBecomesAlive() throws Exception {
-    final Procedure1<GameOfLifeRulesEvolveDeadCellsSpecExamples> _function = new Procedure1<GameOfLifeRulesEvolveDeadCellsSpecExamples>() {
-        public void apply(final GameOfLifeRulesEvolveDeadCellsSpecExamples it) {
-          boolean _becomesAlive = GameOfLifeRulesEvolveDeadCellsSpec.this.subject.becomesAlive(it.livingNeighbours);
+    final Procedure1<GameOfLifeGameOfLifeRulesEvolveDeadCellsSpecExamples> _function = new Procedure1<GameOfLifeGameOfLifeRulesEvolveDeadCellsSpecExamples>() {
+        public void apply(final GameOfLifeGameOfLifeRulesEvolveDeadCellsSpecExamples it) {
+          boolean _becomesAlive = GameOfLifeGameOfLifeRulesEvolveDeadCellsSpec.this.subject.becomesAlive(it.livingNeighbours);
           boolean _doubleArrow = Should.operator_doubleArrow(Boolean.valueOf(_becomesAlive), Boolean.valueOf(it.becomesAlive));
           Assert.assertTrue("\nExpected subject.becomesAlive(livingNeighbours) => becomesAlive but"
            + "\n     subject.becomesAlive(livingNeighbours) is " + new StringDescription().appendValue(Boolean.valueOf(_becomesAlive)).toString()
-           + "\n     subject is " + new StringDescription().appendValue(GameOfLifeRulesEvolveDeadCellsSpec.this.subject).toString()
+           + "\n     subject is " + new StringDescription().appendValue(GameOfLifeGameOfLifeRulesEvolveDeadCellsSpec.this.subject).toString()
            + "\n     livingNeighbours is " + new StringDescription().appendValue(it.livingNeighbours).toString()
            + "\n     becomesAlive is " + new StringDescription().appendValue(Boolean.valueOf(it.becomesAlive)).toString() + "\n", _doubleArrow);
           
         }
       };
-    ExampleTableIterators.<GameOfLifeRulesEvolveDeadCellsSpecExamples>forEach(this.examples, _function);
+    ExampleTableIterators.<GameOfLifeGameOfLifeRulesEvolveDeadCellsSpecExamples>forEach(this.examples, _function);
   }
 }

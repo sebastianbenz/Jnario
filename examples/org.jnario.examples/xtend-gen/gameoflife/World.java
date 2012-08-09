@@ -1,11 +1,16 @@
 package gameoflife;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import gameoflife.CellPosition;
+import java.util.ArrayList;
 import java.util.Set;
 import org.eclipse.xtend.lib.Data;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure2;
 import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
 
 @Data
@@ -15,6 +20,35 @@ public class World {
   
   public Set<CellPosition> getLivingCells() {
     return this._livingCells;
+  }
+  
+  public static World parseWorld(final CharSequence grid) {
+    World _xblockexpression = null;
+    {
+      final ArrayList<CellPosition> cells = CollectionLiterals.<CellPosition>newArrayList();
+      String _string = grid.toString();
+      String[] _split = _string.split("\r?\n");
+      final Procedure2<String,Integer> _function = new Procedure2<String,Integer>() {
+          public void apply(final String line, final Integer x) {
+            char[] _charArray = line.toCharArray();
+            final Procedure2<Character,Integer> _function = new Procedure2<Character,Integer>() {
+                public void apply(final Character c, final Integer y) {
+                  String _string = c.toString();
+                  boolean _equals = Objects.equal(_string, "X");
+                  if (_equals) {
+                    CellPosition _cell = CellPosition.cell((x).intValue(), (y).intValue());
+                    cells.add(_cell);
+                  }
+                }
+              };
+            IterableExtensions.<Character>forEach(((Iterable<Character>)Conversions.doWrapArray(_charArray)), _function);
+          }
+        };
+      IterableExtensions.<String>forEach(((Iterable<String>)Conversions.doWrapArray(_split)), _function);
+      World _worldWith = World.worldWith(cells);
+      _xblockexpression = (_worldWith);
+    }
+    return _xblockexpression;
   }
   
   public static World worldWith(final Iterable<CellPosition> cells) {

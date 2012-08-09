@@ -3,8 +3,8 @@ package gameoflife;
 import java.util.List;
 import org.jnario.lib.ExampleTableRow;
 
-public class GameOfLifeRulesEvolveLivingCellsSpecExamples extends ExampleTableRow {
-  public GameOfLifeRulesEvolveLivingCellsSpecExamples(final List<String> cellNames, final int livingNeighbours, final boolean becomesAlive) {
+public class GameOfLifeGameOfLifeRulesEvolveLivingCellsSpecExamples extends ExampleTableRow {
+  public GameOfLifeGameOfLifeRulesEvolveLivingCellsSpecExamples(final List<String> cellNames, final int livingNeighbours, final boolean becomesAlive) {
     super(cellNames);
     this.livingNeighbours = livingNeighbours;
     this.becomesAlive = becomesAlive;

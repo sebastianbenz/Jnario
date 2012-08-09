@@ -4,6 +4,7 @@ import static gameoflife.CellPosition.*
 import static gameoflife.World.*
 
 describe "Game of Life"{
+	
 	val livingCell = cell(0,0)
 	val anotherLivingCell = cell(1, 1)
 	
@@ -28,7 +29,7 @@ describe "Game of Life"{
 		}				
 	}
 
-	describe "Rules"{
+	describe "Game of Life rules"{
 		describe EvolveLivingCells{
 			def examples{
 				| livingNeighbours | becomesAlive |
@@ -75,7 +76,7 @@ describe "Game of Life"{
 			fact "with a live cell all neighbours are dead cells"{
 				worldWithLiveCell.deadCells => livingCell.neighbours
 			}
-			fact "with a live cell all neighbours are dead cells if they do not life"{
+			fact "with a live cell all non-living neighbours are dead cells"{
 				val deadCells = (livingCell.neighbours + anotherLivingCell.neighbours).toSet
 				deadCells.remove(anotherLivingCell)
 				deadCells.remove(livingCell)

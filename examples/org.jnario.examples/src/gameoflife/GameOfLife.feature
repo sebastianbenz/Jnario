@@ -1,8 +1,12 @@
 package gameoflife
 
-Feature: Game of Life
+import static gameoflife.Evolution.*
+import static gameoflife.World.*
+
+Feature: Simulating Game of Life
 
 	Scenario: Box
+		World world
 		Given a world 
 			'''
 				------
@@ -10,7 +14,9 @@ Feature: Game of Life
 				--XX--
 				------
 			'''
+			world = parseWorld(args.first)
 		When the world evolves
+			world = gameOfLife.evolve(world)
 		Then the world is
 			'''
 				------
@@ -18,7 +24,7 @@ Feature: Game of Life
 				--XX--
 				------
 			'''
-		
+			world => parseWorld(args.first)
 	Scenario: Blinker
 		Given a world 
 			'''
