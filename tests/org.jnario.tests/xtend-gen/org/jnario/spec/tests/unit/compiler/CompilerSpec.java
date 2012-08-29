@@ -121,4 +121,33 @@ public class CompilerSpec {
     _builder.newLine();
     this._behaviorExecutor.executesSuccessfully(_builder);
   }
+  
+  @Test
+  @Named("automatically converts lists to arrays")
+  @Order(99)
+  public void automaticallyConvertsListsToArrays() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("describe \"Something with an expression\"{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fact \"any fact\"{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("def String[] x(){");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("list(\"some string\")");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    this._behaviorExecutor.executesSuccessfully(_builder);
+  }
 }

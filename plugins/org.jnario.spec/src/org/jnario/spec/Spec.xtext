@@ -27,7 +27,7 @@ Method:
 ;
 
 TypeName:
-	ID ('<' TypeRef (',' TypeRef)* '>')? ('[]')?
+	ID ('<' TypeRef (',' TypeRef)* '>')? ('['']')?
 ;
 
 TypeRef:
@@ -91,7 +91,6 @@ XPrimaryExpression returns xbase::XExpression:
 	XTryCatchFinallyExpression |
 	XParenthesizedExpression |
 	Assertion;
-
 
 XRelationalExpression returns xbase::XExpression:
 	XOtherOperatorExpression

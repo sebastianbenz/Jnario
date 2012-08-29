@@ -58,5 +58,18 @@ describe "Compiler"{
 		}
 		'''.executesSuccessfully
 	}
+	
+	fact "automatically converts lists to arrays"{
+		'''
+		describe "Something with an expression"{
+			fact "any fact"{
+			}
+			
+			def String[] x(){
+			list("some string")
+			}
+		}
+		'''.executesSuccessfully
+	}
 
 }

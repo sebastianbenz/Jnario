@@ -70,6 +70,18 @@ describe &quot;Something with an expression&quot;{
   }
 }
 '''.executesSuccessfully</pre>
+</li><li><p id="automatically_converts_lists_to_arrays"><strong>automatically converts lists to arrays</strong></p>
+<pre class="prettyprint lang-spec">
+'''
+describe &quot;Something with an expression&quot;{
+  fact &quot;any fact&quot;{
+  }
+  
+  def String[] x(){
+  list(&quot;some string&quot;)
+  }
+}
+'''.executesSuccessfully</pre>
 </li></ul>
 				</div>
 			</div>
