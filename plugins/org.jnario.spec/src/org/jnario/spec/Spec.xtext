@@ -41,7 +41,7 @@ Member returns xtend::XtendMember:
 		{Example.annotationInfo = current}
 			( pending?='pending'? ('fact' | 'facts') expr=XExpression body=XBlockExpression?)
 	|	{ExampleGroup.annotationInfo = current}
-			(=>preamble=('describe') targetType=JvmTypeReference? =>name=STRING? '{'
+			(preamble='describe' targetType=JvmTypeReference? name=STRING? '{'
       		members+=Member*
       	'}')
     |	{Before.annotationInfo = current}
@@ -49,11 +49,11 @@ Member returns xtend::XtendMember:
 	|	{After.annotationInfo = current}
 		('after' (afterAll?='all')? =>name=STRING? body=XExpression)
     |	{ExampleGroup.annotationInfo = current}
-			(=>preamble=('context') targetOperation=[types::JvmOperation|Method]? =>name=STRING? '{'
+			(preamble=('context') targetOperation=[types::JvmOperation|Method]? name=STRING? '{'
       		members+=Member*
       	'}')
 	|	{ExampleTable.annotationInfo = current} 
-		(=>'def' =>name=ID? '{'
+		('def' name=ID? '{'
 			('|' (columns+=ExampleColumn)*
 			(rows += ExampleRow)*)?
       	'}') 
