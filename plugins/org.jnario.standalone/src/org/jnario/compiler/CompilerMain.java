@@ -14,46 +14,31 @@ import java.util.Iterator;
 
 import org.apache.log4j.BasicConfigurator;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.xtext.ISetup;
 import org.jnario.feature.FeatureStandaloneSetup;
-import org.jnario.feature.compiler.FeatureBatchCompiler;
 import org.jnario.spec.SpecStandaloneSetup;
-import org.jnario.spec.compiler.SpecBatchCompiler;
 import org.jnario.suite.SuiteStandaloneSetup;
 
 import com.google.inject.Injector;
-import com.google.inject.Provider;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
 public class CompilerMain {
 
+	public static final int COMPILATION_ERROR = -1;
+	public static final int OK = 0;
+
 	public static void main(String[] args) {
 		if ((args == null) || (args.length == 0)) {
 			printUsage();
-			return;
 		}
-
-		BasicConfigurator.configure();
 		
-		Injector injector = new SpecStandaloneSetup().createInjectorAndDoEMFRegistration();
-		
-		Provider<ResourceSet> resourceSetProvider = injector.getProvider(ResourceSet.class);
-		ResourceSet resourceSet = resourceSetProvider.get();
-		
-		JnarioBatchCompiler compiler = injector.getInstance(SpecBatchCompiler.class);
-		run(compiler, args, resourceSet);
-		
-		injector = new FeatureStandaloneSetup().createInjectorAndDoEMFRegistration();
-		compiler = injector.getInstance(FeatureBatchCompiler.class);
-		run(compiler, args, resourceSet);
-		
-		injector = new SuiteStandaloneSetup().createInjectorAndDoEMFRegistration();
-		compiler = injector.getInstance(FeatureBatchCompiler.class);
-		run(compiler, args, resourceSet);
+		run(args, new SpecStandaloneSetup(), new FeatureStandaloneSetup(), new SuiteStandaloneSetup());
 	}
 
-	private static void run(JnarioBatchCompiler jnarioCompiler, String[] args, ResourceSet resourceSet) {
+	private static void run(String[] args, ISetup...injectors) {
+		CompilerMain jnarioCompiler = new CompilerMain();
 		Iterator<String> arguments = Arrays.asList(args).iterator();
 		while (arguments.hasNext()) {
 			String argument = arguments.next();
@@ -69,8 +54,7 @@ public class CompilerMain {
 				jnarioCompiler.setSourcePath(argument);
 			}
 		}
-		jnarioCompiler.setResourceSet(resourceSet);
-		jnarioCompiler.compile();
+		jnarioCompiler.compile(injectors);
 	}
 	
 	private static void printUsage() {
@@ -80,6 +64,55 @@ public class CompilerMain {
 		System.out.println("-tp <path>                 Temp directory to hold generated stubs and classes");
 		System.out.println("-cp <path>                 Specify where to find user class files");
 		System.out.println("-encoding <encoding>       Specify character encoding used by source files");
+	}
+	
+	private String outputPath;
+	private String classPath;
+	private String tempDirectory;
+	private String fileEncoding;
+	private String sourcePath;
+
+	public void setOutputPath(String outputPath) {
+		this.outputPath = outputPath;
+	}
+
+	public void setClassPath(String classPath) {
+		this.classPath = classPath;
+	}
+
+	public void setTempDirectory(String tempDirectory) {
+		this.tempDirectory = tempDirectory;
+	}
+
+	public void setFileEncoding(String fileEncoding) {
+		this.fileEncoding = fileEncoding;
+	}
+
+	public void setSourcePath(String sourcePath) {
+		this.sourcePath = sourcePath;
+	}
+
+	public int compile(ISetup... setups) {
+		if(setups.length == 0){
+			throw new IllegalArgumentException("no compiler setups");
+		}
+		BasicConfigurator.configure();
+		
+		ResourceSet resourceSet = setups[0].createInjectorAndDoEMFRegistration().getInstance(ResourceSet.class);
+		for (ISetup setup : setups) {
+			Injector injector = setup.createInjectorAndDoEMFRegistration();
+			JnarioBatchCompiler jnarioCompiler = injector.getInstance(JnarioBatchCompiler.class);
+			jnarioCompiler.setOutputPath(outputPath);
+			jnarioCompiler.setClassPath(classPath);
+			jnarioCompiler.setTempDirectory(tempDirectory);
+			jnarioCompiler.setFileEncoding(fileEncoding);
+			jnarioCompiler.setSourcePath(sourcePath);
+			jnarioCompiler.setResourceSet(resourceSet);
+			if(!jnarioCompiler.compile()){
+				return COMPILATION_ERROR;
+			}
+		}
+		return OK;
 	}
 
 }
