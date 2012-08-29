@@ -41,7 +41,7 @@ public class Should{
 		if (expected instanceof Matcher<?>) {
 			return ((Matcher<?>)expected).matches(actual);
 		}
-		if (expected instanceof Class<?>) {
+		if (!(actual instanceof Class<?>) && (expected instanceof Class<?>)) {
 			return should_be(actual, (Class<?>) expected);
 		}
 		if (expected instanceof Procedures.Procedure1<?>) {

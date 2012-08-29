@@ -32,6 +32,7 @@ describe "Using Should"{
 		
 		// types
 		"a string" => typeof(String)
+		"a string".getClass => typeof(String)
 
 		// strings
 		"something" should contain "thing"

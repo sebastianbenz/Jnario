@@ -59,6 +59,11 @@ public class UsingShouldSpec {
     Assert.assertTrue("\nExpected // types\n\t\t\"a string\" => typeof(String) but"
      + "\n     // types\n\t\t\"a string\" => typeof(String) is " + new StringDescription().appendValue(_doubleArrow_1).toString() + "\n", _doubleArrow_1);
     
+    Class<? extends Object> _class = "a string".getClass();
+    boolean _doubleArrow_2 = Should.operator_doubleArrow(_class, String.class);
+    Assert.assertTrue("\nExpected \"a string\".getClass => typeof(String) but"
+     + "\n     \"a string\".getClass is " + new StringDescription().appendValue(_class).toString() + "\n", _doubleArrow_2);
+    
     boolean _should_contain = Should.should_contain(
       "something", "thing");
     Assert.assertTrue("\nExpected // strings\n\t\t\"something\" should contain \"thing\" but"
@@ -97,9 +102,9 @@ public class UsingShouldSpec {
         }
       };
     final String greeting = ObjectExtensions.<String>operator_doubleArrow("hello world", _function);
-    boolean _doubleArrow_2 = Should.operator_doubleArrow(greeting, String.class);
+    boolean _doubleArrow_3 = Should.operator_doubleArrow(greeting, String.class);
     Assert.assertTrue("\nExpected greeting => typeof(String) but"
-     + "\n     greeting is " + new StringDescription().appendValue(greeting).toString() + "\n", _doubleArrow_2);
+     + "\n     greeting is " + new StringDescription().appendValue(greeting).toString() + "\n", _doubleArrow_3);
     
   }
   
