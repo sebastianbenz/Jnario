@@ -113,7 +113,7 @@ describe 'My Context'{
 ''') =&gt; &quot;MyContextSpecMyExample&quot;</pre>
 </li></ul>
 <h3 id="toMethodName_Example">ToMethodName[Example]</h3>
-<ul><li><p id="should_convert_method_description_to_camel_case_starting_in_lowercase"><strong>should convert method description to camel case starting in lowercase</strong></p>
+<ul><li><p id="converts_method_description_to_camel_case_starting_in_lowercase"><strong>converts method description to camel case starting in lowercase</strong></p>
 <pre class="prettyprint lang-spec">
 newArrayList(
   &quot;'my example'&quot;,
@@ -123,6 +123,9 @@ newArrayList(
 ).forEach[
  firstMethodName(it) =&gt; '_myExample'
 ]</pre>
+</li><li><p id="shortens_method_name_to_250_chars"><strong>shortens method name to 250 chars</strong></p>
+<pre class="prettyprint lang-spec">
+firstMethodName(nameOfLength(251)).length =&gt; 250</pre>
 </li></ul>
 <h3 id="toMethodName_Before">ToMethodName[Before]</h3>
 <ul><li><p id="should_convert_before_description_to_camel_case_starting_in_lowercase"><strong>should convert before description to camel case starting in lowercase</strong></p>

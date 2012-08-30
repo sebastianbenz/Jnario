@@ -2,6 +2,7 @@ package org.jnario.spec.tests.unit.naming;
 
 import java.util.ArrayList;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.IntegerRange;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
@@ -26,9 +27,9 @@ public class ExampleNameProviderToMethodNameExampleSpec extends ExampleNameProvi
   public ExampleNameProvider subject;
   
   @Test
-  @Named("should convert method description to camel case starting in lowercase")
+  @Named("converts method description to camel case starting in lowercase")
   @Order(99)
-  public void shouldConvertMethodDescriptionToCamelCaseStartingInLowercase() throws Exception {
+  public void convertsMethodDescriptionToCamelCaseStartingInLowercase() throws Exception {
     ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList(
       "\'my example\'", 
       "\'my\nexample\'", 
@@ -45,6 +46,35 @@ public class ExampleNameProviderToMethodNameExampleSpec extends ExampleNameProvi
         }
       };
     IterableExtensions.<String>forEach(_newArrayList, _function);
+  }
+  
+  @Test
+  @Named("shortens method name to 250 chars")
+  @Order(99)
+  public void shortensMethodNameTo250Chars() throws Exception {
+    String _nameOfLength = this.nameOfLength(251);
+    String _firstMethodName = this.firstMethodName(_nameOfLength);
+    int _length = _firstMethodName.length();
+    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_length), Integer.valueOf(250));
+    Assert.assertTrue("\nExpected firstMethodName(nameOfLength(251)).length => 250 but"
+     + "\n     firstMethodName(nameOfLength(251)).length is " + new StringDescription().appendValue(Integer.valueOf(_length)).toString()
+     + "\n     firstMethodName(nameOfLength(251)) is " + new StringDescription().appendValue(_firstMethodName).toString()
+     + "\n     nameOfLength(251) is " + new StringDescription().appendValue(_nameOfLength).toString() + "\n", _doubleArrow);
+    
+  }
+  
+  public String nameOfLength(final int i) {
+    String _xblockexpression = null;
+    {
+      String result = "";
+      IntegerRange _upTo = new IntegerRange(0, i);
+      for (final Integer j : _upTo) {
+        String _plus = (result + "a");
+        result = _plus;
+      }
+      _xblockexpression = (result);
+    }
+    return _xblockexpression;
   }
   
   public String firstMethodName(final String content) {

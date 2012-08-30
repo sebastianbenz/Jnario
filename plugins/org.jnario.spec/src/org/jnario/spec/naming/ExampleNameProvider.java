@@ -119,7 +119,11 @@ public class ExampleNameProvider {
 		StringBuilder result = new StringBuilder();
 		result.append("_");
 		result.append(toFirstLower(convertToCamelCase(name)));
-		return result.toString();
+		if(result.length() > 249){
+			return result.substring(0, 250);
+		}else{
+			return result.toString();
+		}
 	}
 	
 	public String toMethodName(Before before){

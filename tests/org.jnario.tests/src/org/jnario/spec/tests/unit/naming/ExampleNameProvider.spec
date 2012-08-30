@@ -134,7 +134,7 @@ describe ExampleNameProvider{
   
     context toMethodName(Example){
       
-      fact "should convert method description to camel case starting in lowercase"{
+      fact "converts method description to camel case starting in lowercase"{
         newArrayList(
           "'my example'",
           "'my\nexample'",
@@ -144,6 +144,18 @@ describe ExampleNameProvider{
          firstMethodName(it) => '_myExample'
         ] 
       } 
+      
+      fact "shortens method name to 250 chars"{
+      	firstMethodName(nameOfLength(251)).length => 250
+      }
+      
+      def nameOfLength(int i){
+      	var result = ""
+      	for(j : 0..i){
+      		result = result + "a"
+      	}
+      	result
+      }
     
       def firstMethodName(String content){
         val contentWithContext = "describe 'Context'{ fact " + content + "}"
