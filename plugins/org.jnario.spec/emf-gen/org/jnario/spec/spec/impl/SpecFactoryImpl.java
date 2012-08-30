@@ -1,6 +1,9 @@
 /**
- * Copyright (c) 2012 BMW Car IT and others. All rights reserved. This program and the accompanying materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
- *
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  */
 package org.jnario.spec.spec.impl;
 
@@ -23,6 +26,13 @@ import org.jnario.spec.spec.*;
 public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
 {
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "Copyright (c) 2012 BMW Car IT and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html";
+
+	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -42,7 +52,7 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
 		{
 			EcorePlugin.INSTANCE.log(exception);
 		}
-		return new SpecFactoryImpl();
+		return new SpecFactoryImplCustom();
 	}
 
 	/**

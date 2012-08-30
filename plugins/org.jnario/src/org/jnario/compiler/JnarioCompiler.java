@@ -315,4 +315,5 @@ public class JnarioCompiler extends XtendCompiler {
 			_toShouldExpression(expr, b, false);
 		}
 	}
+
 }

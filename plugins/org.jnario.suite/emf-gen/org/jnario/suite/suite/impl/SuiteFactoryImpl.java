@@ -1,21 +1,21 @@
 /**
- * <copyright>
- * </copyright>
- *
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  */
 package org.jnario.suite.suite.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
+
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.jnario.suite.suite.PatternReference;
-import org.jnario.suite.suite.SpecReference;
-import org.jnario.suite.suite.Suite;
-import org.jnario.suite.suite.SuiteFactory;
-import org.jnario.suite.suite.SuiteFile;
-import org.jnario.suite.suite.SuitePackage;
+
+import org.jnario.suite.suite.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,6 +25,13 @@ import org.jnario.suite.suite.SuitePackage;
  */
 public class SuiteFactoryImpl extends EFactoryImpl implements SuiteFactory
 {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "Copyright (c) 2012 BMW Car IT and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html";
+
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->

@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<genmodel:GenModel xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.jnario.suite/emf-gen"
-    editDirectory="/org.jnario.suite.edit/src" editorDirectory="/org.jnario.suite.editor/src"
-    modelPluginID="org.jnario.suite" forceOverwrite="true" modelName="Suite" updateClasspath="false"
-    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" complianceLevel="5.0"
-    copyrightFields="false" editPluginID="org.jnario.suite.edit" editorPluginID="org.jnario.suite.editor"
-    runtimeVersion="2.5" usedGenPackages="platform:/resource/org.eclipse.xtend.core/model/Xtend.genmodel#//xtend platform:/resource/org.jnario/model/Jnario.genmodel#//jnario">
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2012 BMW Car IT and others.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html"
+    modelDirectory="/org.jnario.suite/emf-gen" editDirectory="/org.jnario.suite.edit/src"
+    editorDirectory="/org.jnario.suite.editor/src" modelPluginID="org.jnario.suite"
+    forceOverwrite="true" modelName="Suite" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" editPluginID="org.jnario.suite.edit" editorPluginID="org.jnario.suite.editor"
+    runtimeVersion="2.5" usedGenPackages="../../org.eclipse.xtend.core/model/Xtend.genmodel#//xtend ../../org.jnario/model/Jnario.genmodel#//jnario ../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types ../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xAnnotations ../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase">
   <genPackages prefix="Suite" basePackage="org.jnario.suite" disposableProviderFactory="true"
       ecorePackage="Suite.ecore#/">
-    <genClasses ecoreClass="Suite.ecore#//Reference"/>
     <genClasses ecoreClass="Suite.ecore#//PatternReference">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Suite.ecore#//PatternReference/pattern"/>
     </genClasses>
@@ -18,7 +16,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Suite.ecore#//SpecReference/text"/>
     </genClasses>
     <genClasses ecoreClass="Suite.ecore#//Suite">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Suite.ecore#//Suite/specs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Suite.ecore#//Suite/elements"/>
     </genClasses>
+    <genClasses ecoreClass="Suite.ecore#//SuiteFile"/>
+    <genClasses ecoreClass="Suite.ecore#//Reference"/>
   </genPackages>
 </genmodel:GenModel>

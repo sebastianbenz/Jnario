@@ -1,7 +1,9 @@
 /**
- * <copyright>
- * </copyright>
- *
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  */
 package org.jnario.suite.suite.util;
 
@@ -9,17 +11,15 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.xtend.core.xtend.XtendAnnotationTarget;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendFile;
+
 import org.jnario.Executable;
 import org.jnario.Specification;
-import org.jnario.suite.suite.PatternReference;
-import org.jnario.suite.suite.Reference;
-import org.jnario.suite.suite.SpecReference;
-import org.jnario.suite.suite.Suite;
-import org.jnario.suite.suite.SuiteFile;
-import org.jnario.suite.suite.SuitePackage;
+
+import org.jnario.suite.suite.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,6 +36,13 @@ import org.jnario.suite.suite.SuitePackage;
  */
 public class SuiteSwitch<T>
 {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "Copyright (c) 2012 BMW Car IT and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html";
+
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
