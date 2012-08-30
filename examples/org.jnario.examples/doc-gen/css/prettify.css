@@ -1,0 +1,46 @@
+.pln{color:#839496}
+@media screen{
+    .str{color:#2aa198}
+    .kwd{color:#859900}
+    .com{color:#586175}
+    .typ{color:#b58900}
+    .lit{color:#2aa198}
+    .pun,.opn,.clo{color:#839496}
+    .tag{color:#268bd2}
+    .atn{color:#586175}
+    .atv{color:#2aa198}
+    .dec,.var{color:#268bd2}
+    .fun{color:red}
+}
+@media print,projection{
+    .str{color:#060}
+    .kwd{color:#006;font-weight:bold}
+    .com{color:#600;font-style:italic}
+    .typ{color:#404;font-weight:bold}
+    .lit{color:#044}
+    .pun{color:#440}
+    .tag{color:#006;font-weight:bold}
+    .atn{color:#404}
+    .atv{color:#060}
+}
+pre.prettyprint{padding:5px;border:1px solid #888;
+	 display: block; 
+	background: #2d2d2d; /* Old browsers */
+	background: -moz-radial-gradient(center, ellipse cover,  #2d2d2d 0%, #212121 50%, #212121 100%); /* FF3.6+ */
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#2d2d2d), color-stop(50%,#212121), color-stop(100%,#212121)); /* Chrome,Safari4+ */
+	background: -webkit-radial-gradient(center, ellipse cover,  #2d2d2d 0%,#212121 50%,#212121 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-radial-gradient(center, ellipse cover,  #2d2d2d 0%,#212121 50%,#212121 100%); /* Opera 12+ */
+	background: -ms-radial-gradient(center, ellipse cover,  #2d2d2d 0%,#212121 50%,#212121 100%); /* IE10+ */
+	background: radial-gradient(center, ellipse cover,  #2d2d2d 0%,#212121 50%,#212121 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2d2d2d', endColorstr='#212121',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+ol.linenums{margin-top:0;margin-bottom:0}
+li.L1,li.L3,li.L5,li.L7,li.L9{background:#111}
+li.L0, li.L1, li.L2, li.L3, li.L4, li.L5, li.L6, li.L7, li.L8, li.L9
+{
+    color: #555;
+    list-style-type: decimal;
+}
+.code{
+	background: #002b36;
+}

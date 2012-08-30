@@ -15,7 +15,7 @@ class Evolution{
 	Rule livingCellRule
 	Rule deadCellRule
 	
-	def World evolve(World world) {
+	def evolve(World world) {
 		worldWith(
 			world.livingCells.filter[livingCellRule.apply(world, it)] +
 			world.deadCells.filter[deadCellRule.apply(world, it)]
@@ -76,7 +76,7 @@ class World{
  
 @Data
 class CellPosition {
-	public static val NEIGHBOUR_OFFSETS = newHashSet(
+	static val NEIGHBOUR_OFFSETS = newHashSet(
 		cell(1, 0), cell(1, 1), cell(0, 1), cell(-1, -1), cell(-1, 0), cell(-1, 1), cell(0, -1), cell(1, -1)
 	)
 	

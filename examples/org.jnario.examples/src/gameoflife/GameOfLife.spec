@@ -29,27 +29,27 @@ describe "Game of Life"{
 		}				
 	}
 
-	describe "Game of Life rules"{
+	describe "rules"{
 		describe EvolveLivingCells{
-			def examples{
+			def livingCells{
 				| livingNeighbours | becomesAlive |
 				| 1				   |   false      |
 				| 2				   |   true       |
 				| 3				   |   true       |
 				| 4				   |   false      |
 			}
-			fact examples.forEach[
+			fact livingCells.forEach[
 				subject.becomesAlive(livingNeighbours) => becomesAlive
 			]
 		}
 		describe EvolveDeadCells {
-			def examples{
+			def deadcells{
 				| livingNeighbours | becomesAlive |
 				| 2				   |   false      |
 				| 3				   |   true       |
 				| 4				   |   false      |
 			}
-			fact examples.forEach[
+			fact deadcells.forEach[
 				subject.becomesAlive(livingNeighbours) => becomesAlive
 			] 
 		}
@@ -58,12 +58,16 @@ describe "Game of Life"{
 	describe CellPosition{
 		context plus{
 			fact cell(-1, 1).plus(cell(3,4)) => cell(2,5)
-		}
+		} 
 		context neighbours {
 			fact "are adjacent cells"{
-				val cell = cell(0, 0)
-				val neighbours = NEIGHBOUR_OFFSETS
-				neighbours.forEach[cell.neighbours() should contain it]
+				val cell = cell(5, 5)
+				val expectedNeighbours = set(
+					cell(4, 6), cell(5, 6), cell(6, 6), 
+					cell(4, 5),             cell(6, 5), 
+					cell(4, 4), cell(5, 4), cell(6, 4)
+				)
+				cell.neighbours => expectedNeighbours
 			}
 		}
 	}
@@ -77,10 +81,10 @@ describe "Game of Life"{
 				worldWithLiveCell.deadCells => livingCell.neighbours
 			}
 			fact "with a live cell all non-living neighbours are dead cells"{
-				val deadCells = (livingCell.neighbours + anotherLivingCell.neighbours).toSet
-				deadCells.remove(anotherLivingCell)
-				deadCells.remove(livingCell)
-				worldWithTwoLiveNeighbours.deadCells => deadCells
+				val expectedDeadCells = (livingCell.neighbours + anotherLivingCell.neighbours).toSet
+				expectedDeadCells.remove(anotherLivingCell)
+				expectedDeadCells.remove(livingCell)
+				worldWithTwoLiveNeighbours.deadCells => expectedDeadCells
 			}
 		}
 		context livingNeighbours{

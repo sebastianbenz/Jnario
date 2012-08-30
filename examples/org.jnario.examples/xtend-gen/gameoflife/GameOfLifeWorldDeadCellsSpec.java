@@ -60,15 +60,15 @@ public class GameOfLifeWorldDeadCellsSpec extends GameOfLifeWorldSpec {
     Set<CellPosition> _neighbours = this.livingCell.neighbours();
     Set<CellPosition> _neighbours_1 = this.anotherLivingCell.neighbours();
     Iterable<CellPosition> _plus = Iterables.<CellPosition>concat(_neighbours, _neighbours_1);
-    final Set<CellPosition> deadCells = IterableExtensions.<CellPosition>toSet(_plus);
-    deadCells.remove(this.anotherLivingCell);
-    deadCells.remove(this.livingCell);
+    final Set<CellPosition> expectedDeadCells = IterableExtensions.<CellPosition>toSet(_plus);
+    expectedDeadCells.remove(this.anotherLivingCell);
+    expectedDeadCells.remove(this.livingCell);
     Set<CellPosition> _deadCells = this.worldWithTwoLiveNeighbours.deadCells();
-    boolean _doubleArrow = Should.operator_doubleArrow(_deadCells, deadCells);
-    Assert.assertTrue("\nExpected worldWithTwoLiveNeighbours.deadCells => deadCells but"
+    boolean _doubleArrow = Should.operator_doubleArrow(_deadCells, expectedDeadCells);
+    Assert.assertTrue("\nExpected worldWithTwoLiveNeighbours.deadCells => expectedDeadCells but"
      + "\n     worldWithTwoLiveNeighbours.deadCells is " + new StringDescription().appendValue(_deadCells).toString()
      + "\n     worldWithTwoLiveNeighbours is " + new StringDescription().appendValue(this.worldWithTwoLiveNeighbours).toString()
-     + "\n     deadCells is " + new StringDescription().appendValue(deadCells).toString() + "\n", _doubleArrow);
+     + "\n     expectedDeadCells is " + new StringDescription().appendValue(expectedDeadCells).toString() + "\n", _doubleArrow);
     
   }
 }

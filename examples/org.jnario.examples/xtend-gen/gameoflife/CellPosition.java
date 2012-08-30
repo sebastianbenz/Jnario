@@ -11,7 +11,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 @Data
 @SuppressWarnings("all")
 public class CellPosition {
-  public final static HashSet<CellPosition> NEIGHBOUR_OFFSETS = new Function0<HashSet<CellPosition>>() {
+  private final static HashSet<CellPosition> NEIGHBOUR_OFFSETS = new Function0<HashSet<CellPosition>>() {
     public HashSet<CellPosition> apply() {
       CellPosition _cell = CellPosition.cell(1, 0);
       CellPosition _cell_1 = CellPosition.cell(1, 1);
