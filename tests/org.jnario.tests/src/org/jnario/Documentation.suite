@@ -66,3 +66,8 @@ More about writing specifications in Jnario.
  	- "Implicit Subject": let Jnario automatically create the spec's subject for you.
 	- "Using Tables":  define test data sets in tables.
 	- "Using JUnit Rules in Specs"
+	
+## Support
+
+The best place to ask questions about Jnario is the [mailing list](https://groups.google.com/forum/?fromgroups\#!forum/jnario). You can file bug reports or feature requests at [Github](https://github.com/bmwcarit/Jnario/issues).
+	
