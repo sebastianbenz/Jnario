@@ -121,7 +121,7 @@ newArrayList(
   &quot;'my\texample'&quot;,
   &quot;'my_example'&quot;
 ).forEach[
- firstMethodName(it) =&gt; 'myExample'
+ firstMethodName(it) =&gt; '_myExample'
 ]</pre>
 </li></ul>
 <h3 id="toMethodName_Before">ToMethodName[Before]</h3>
@@ -133,7 +133,7 @@ newArrayList(
   &quot;before 'my\texample'&quot;,
   &quot;before 'my_example'&quot; 
 ).forEach[
-  firstMethodName =&gt; 'myExample'
+  firstMethodName =&gt; '_myExample'
 ]</pre>
 </li><li><p id="should_use_before_as_default_name"><strong>should use before as default name</strong></p>
 <pre class="prettyprint lang-spec">
@@ -142,6 +142,9 @@ firstMethodName(&quot;before{}&quot;) =&gt; &quot;before&quot;</pre>
 <pre class="prettyprint lang-spec">
 secondMethodName(&quot;before{}
          before{}&quot;) =&gt; &quot;before2&quot;</pre>
+</li><li><p id="should_escape_invalid_names"><strong>should escape invalid names</strong></p>
+<pre class="prettyprint lang-spec">
+firstMethodName(&quot;before 'null'{}&quot;) =&gt; &quot;_null&quot;</pre>
 </li></ul>
 <h3 id="toMethodName_After">ToMethodName[After]</h3>
 <ul><li><p id="should_convert_after_description_to_camel_case_starting_in_lowercase"><strong>should convert after description to camel case starting in lowercase</strong></p>
@@ -152,7 +155,7 @@ newArrayList(
   &quot;after 'my\texample'&quot;,
   &quot;after 'my_example'&quot; 
 ).forEach[
- firstMethodName =&gt; 'myExample'
+ firstMethodName =&gt; '_myExample'
 ]</pre>
 </li><li><p id="should_use_after_as_default_name"><strong>should use after as default name</strong></p>
 <pre class="prettyprint lang-spec">

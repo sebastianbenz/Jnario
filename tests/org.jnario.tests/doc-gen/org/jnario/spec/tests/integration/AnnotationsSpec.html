@@ -59,7 +59,7 @@ val spec = '
   
     @Inject      
     fact &quot;example&quot;{
-      val annotation = typeof(AnnotationsSpec).getMethod(&quot;example&quot;).getAnnotation(typeof(Inject))
+      val annotation = typeof(AnnotationsSpec).getMethod(&quot;_example&quot;).getAnnotation(typeof(Inject))
       annotation should not be null
     } 
         

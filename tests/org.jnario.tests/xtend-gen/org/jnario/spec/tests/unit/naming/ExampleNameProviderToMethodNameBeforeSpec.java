@@ -37,8 +37,8 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
     final Procedure1<String> _function = new Procedure1<String>() {
         public void apply(final String it) {
           String _firstMethodName = ExampleNameProviderToMethodNameBeforeSpec.this.firstMethodName(it);
-          boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "myExample");
-          Assert.assertTrue("\nExpected firstMethodName => \'myExample\' but"
+          boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "_myExample");
+          Assert.assertTrue("\nExpected firstMethodName => \'_myExample\' but"
            + "\n     firstMethodName is " + new StringDescription().appendValue(_firstMethodName).toString() + "\n", _doubleArrow);
           
         }
@@ -65,6 +65,17 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
     boolean _doubleArrow = Should.operator_doubleArrow(_secondMethodName, "before2");
     Assert.assertTrue("\nExpected secondMethodName(\"before{}\r\n                 before{}\") => \"before2\" but"
      + "\n     secondMethodName(\"before{}\r\n                 before{}\") is " + new StringDescription().appendValue(_secondMethodName).toString() + "\n", _doubleArrow);
+    
+  }
+  
+  @Test
+  @Named("should escape invalid names")
+  @Order(99)
+  public void shouldEscapeInvalidNames() throws Exception {
+    String _firstMethodName = this.firstMethodName("before \'null\'{}");
+    boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "_null");
+    Assert.assertTrue("\nExpected firstMethodName(\"before \'null\'{}\") => \"_null\" but"
+     + "\n     firstMethodName(\"before \'null\'{}\") is " + new StringDescription().appendValue(_firstMethodName).toString() + "\n", _doubleArrow);
     
   }
   

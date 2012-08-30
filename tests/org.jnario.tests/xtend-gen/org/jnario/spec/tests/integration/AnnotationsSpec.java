@@ -35,7 +35,7 @@ public class AnnotationsSpec {
   @Named("should support method annotations for \\\'examples\\\'")
   @Order(99)
   public void shouldSupportMethodAnnotationsForExamples() throws Exception {
-    final String spec = "\r\n\t\t\tpackage bootstrap\r\n\t\t\t\r\n\t\t\timport com.google.inject.Inject\r\n\t\t\timport static org.hamcrest.CoreMatchers.*\r\n\r\n\t\t\tdescribe \"Annotations\" {\r\n\t\t\t\r\n\t\t\t\t@Inject\t\t\t\r\n\t\t\t\tfact \"example\"{\r\n\t\t\t\t\tval annotation = typeof(AnnotationsSpec).getMethod(\"example\").getAnnotation(typeof(Inject))\r\n\t\t\t\t\tannotation should not be null\r\n\t\t\t\t} \r\n\t\t\t\t\t\t\r\n\t\t\t}\r\n\t\t";
+    final String spec = "\r\n\t\t\tpackage bootstrap\r\n\t\t\t\r\n\t\t\timport com.google.inject.Inject\r\n\t\t\timport static org.hamcrest.CoreMatchers.*\r\n\r\n\t\t\tdescribe \"Annotations\" {\r\n\t\t\t\r\n\t\t\t\t@Inject\t\t\t\r\n\t\t\t\tfact \"example\"{\r\n\t\t\t\t\tval annotation = typeof(AnnotationsSpec).getMethod(\"_example\").getAnnotation(typeof(Inject))\r\n\t\t\t\t\tannotation should not be null\r\n\t\t\t\t} \r\n\t\t\t\t\t\t\r\n\t\t\t}\r\n\t\t";
     this._behaviorExecutor.executesSuccessfully(spec);
   }
   

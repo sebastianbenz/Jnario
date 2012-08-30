@@ -7,7 +7,6 @@
  *******************************************************************************/
 package org.jnario.spec.naming;
 
-import static java.lang.Character.isDigit;
 import static java.lang.Math.max;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 import static org.eclipse.xtext.util.Strings.convertToJavaString;
@@ -109,18 +108,18 @@ public class ExampleNameProvider {
 	}
 	
 	public String toMethodName(Example example){
-		StringBuilder result = new StringBuilder();
+		String name = "";
 		if(example.getName() != null){
-			result.append(memberDescriptionOf(example));
+			name = memberDescriptionOf(example);
 		}
-		String name = toFirstLower(convertToCamelCase(result).toString());
-		if(name.length() == 0){
-			return "";
-		}
-		if(javaUtils.isJavaKeyword(name) || "null".equals(name) || isDigit(name.charAt(0))){
-			name = "_" + name;
-		}
-		return name;
+		return toMethodName(name);
+	}
+
+	protected String toMethodName(String name) {
+		StringBuilder result = new StringBuilder();
+		result.append("_");
+		result.append(toFirstLower(convertToCamelCase(name)));
+		return result.toString();
 	}
 	
 	public String toMethodName(Before before){
@@ -133,7 +132,7 @@ public class ExampleNameProvider {
 	
 	public String toMethodName(TestFunction target, String defaultName){
 		if(target.getName() != null){
-			return toFirstLower(convertToCamelCase(target.getName()));
+			return toMethodName(target.getName());
 		}
 		int count = countPreviousWithDefaultName(target);
 		if(count > 1){

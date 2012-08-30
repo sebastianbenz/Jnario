@@ -1,7 +1,6 @@
 package org.jnario.suite.ui.highlighting;
 
 import java.util.Arrays;
-
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
@@ -17,6 +16,7 @@ import org.jnario.suite.suite.PatternReference;
 import org.jnario.suite.suite.SpecReference;
 import org.jnario.suite.suite.Suite;
 import org.jnario.suite.suite.SuitePackage;
+import org.jnario.suite.ui.highlighting.SuiteHighlightingConfiguration;
 import org.jnario.util.Strings;
 
 @SuppressWarnings("all")

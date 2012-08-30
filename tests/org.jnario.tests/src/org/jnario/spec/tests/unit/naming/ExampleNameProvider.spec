@@ -141,7 +141,7 @@ describe ExampleNameProvider{
           "'my\texample'",
           "'my_example'"
         ).forEach[
-         firstMethodName(it) => 'myExample'
+         firstMethodName(it) => '_myExample'
         ] 
       } 
     
@@ -160,7 +160,7 @@ describe ExampleNameProvider{
           "before 'my\texample'",
           "before 'my_example'" 
         ).forEach[
-          firstMethodName => 'myExample'
+          firstMethodName => '_myExample'
         ] 
       } 
       fact "should use before as default name"{
@@ -169,6 +169,10 @@ describe ExampleNameProvider{
       fact "should enumerate befores without description"{
         secondMethodName("before{}
                  before{}") => "before2"
+      }
+      
+      fact "should escape invalid names"{
+        firstMethodName("before 'null'{}") => "_null"
       }
       
       def firstMethodName(String content){
@@ -191,7 +195,7 @@ describe ExampleNameProvider{
         "after 'my\texample'",
         "after 'my_example'" 
       ).forEach[
-       firstMethodName => 'myExample'
+       firstMethodName => '_myExample'
       ] 
       } 
       

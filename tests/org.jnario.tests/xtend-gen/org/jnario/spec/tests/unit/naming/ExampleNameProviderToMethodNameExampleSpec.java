@@ -37,8 +37,8 @@ public class ExampleNameProviderToMethodNameExampleSpec extends ExampleNameProvi
     final Procedure1<String> _function = new Procedure1<String>() {
         public void apply(final String it) {
           String _firstMethodName = ExampleNameProviderToMethodNameExampleSpec.this.firstMethodName(it);
-          boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "myExample");
-          Assert.assertTrue("\nExpected firstMethodName(it) => \'myExample\' but"
+          boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "_myExample");
+          Assert.assertTrue("\nExpected firstMethodName(it) => \'_myExample\' but"
            + "\n     firstMethodName(it) is " + new StringDescription().appendValue(_firstMethodName).toString()
            + "\n     it is " + new StringDescription().appendValue(it).toString() + "\n", _doubleArrow);
           
