@@ -47,6 +47,24 @@ public class SpecJavaValidatorSpec {
   }
   
   @Test
+  @Named("specs without description but different types are OK")
+  @Order(99)
+  public void specsWithoutDescriptionButDifferentTypesAreOK() throws Exception {
+    this.modelStore.parseSpec("\r\n\t\t  package bootstrap\r\n\r\n\t\t  describe \"something\"{\r\n\t\t\t  describe String{\r\n\t\t\t  }\r\n\t\t\t  describe Integer{\r\n\t\t\t  }\t\r\n\t\t  }\r\n\t\t");
+    final AssertableDiagnostics validationResult = this.validate(ExampleGroup.class);
+    validationResult.assertOK();
+  }
+  
+  @Test
+  @Named("specs without description and same types are not OK")
+  @Order(99)
+  public void specsWithoutDescriptionAndSameTypesAreNotOK() throws Exception {
+    this.modelStore.parseSpec("\r\n\t\t  package bootstrap\r\n\r\n\t\t  describe \"something\"{\r\n\t\t\t  describe String{\r\n\t\t\t  }\r\n\t\t\t  describe String{\r\n\t\t\t  }\t\r\n\t\t  }\r\n\t\t");
+    final AssertableDiagnostics validationResult = this.validate(ExampleGroup.class);
+    validationResult.assertErrorContains("The spec \'String\' is already defined.");
+  }
+  
+  @Test
   @Named("example table values must not be void")
   @Order(99)
   public void exampleTableValuesMustNotBeVoid() throws Exception {

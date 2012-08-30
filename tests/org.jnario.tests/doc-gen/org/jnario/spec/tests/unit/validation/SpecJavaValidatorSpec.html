@@ -55,6 +55,34 @@ parseSpec('
 
 val validationResult = validate(typeof(ExampleGroup))
 validationResult.assertOK</pre>
+</li><li><p id="specs_without_description_but_different_types_are_OK"><strong>specs without description but different types are OK</strong></p>
+<pre class="prettyprint lang-spec">
+parseSpec('
+  package bootstrap
+
+  describe &quot;something&quot;{
+    describe String{
+    }
+    describe Integer{
+    }  
+  }
+')
+val validationResult = validate(typeof(ExampleGroup))
+validationResult.assertOK</pre>
+</li><li><p id="specs_without_description_and_same_types_are_not_OK"><strong>specs without description and same types are not OK</strong></p>
+<pre class="prettyprint lang-spec">
+parseSpec('
+  package bootstrap
+
+  describe &quot;something&quot;{
+    describe String{
+    }
+    describe String{
+    }  
+  }
+')
+val validationResult = validate(typeof(ExampleGroup))
+validationResult.assertErrorContains(&quot;The spec 'String' is already defined.&quot;)</pre>
 </li><li><p id="example_table_values_must_not_be_void"><strong>example table values must not be void</strong></p>
 <pre class="prettyprint lang-spec">
 parseSpec('

@@ -8,20 +8,18 @@
 package org.jnario.spec.tests.unit.validation
 
 import com.google.inject.Inject
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.junit4.validation.RegisteredValidatorTester
 import org.jnario.Assertion
 import org.jnario.ExampleRow
 import org.jnario.ExampleTable
 import org.jnario.jnario.test.util.ModelStore
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.junit4.validation.RegisteredValidatorTester
-import org.jnario.spec.validation.SpecJavaValidator
-import org.jnario.runner.CreateWith
 import org.jnario.jnario.test.util.SpecTestCreator
+import org.jnario.runner.CreateWith
+import org.jnario.spec.spec.ExampleGroup
+import org.jnario.spec.validation.SpecJavaValidator
 
 import static org.jnario.jnario.test.util.Query.*
-import org.jnario.spec.spec.Example
-import org.eclipse.xtext.common.types.JvmExecutable
-import org.jnario.spec.spec.ExampleGroup
 
 @CreateWith(typeof(SpecTestCreator))
 describe SpecJavaValidator{
@@ -55,6 +53,36 @@ describe SpecJavaValidator{
 		
 		val validationResult = validate(typeof(ExampleGroup))
 		validationResult.assertOK
+	}
+	
+	fact "specs without description but different types are OK"{
+		parseSpec('
+		  package bootstrap
+
+		  describe "something"{
+			  describe String{
+			  }
+			  describe Integer{
+			  }	
+		  }
+		')
+		val validationResult = validate(typeof(ExampleGroup))
+		validationResult.assertOK
+	}
+	
+	fact "specs without description and same types are not OK"{
+		parseSpec('
+		  package bootstrap
+
+		  describe "something"{
+			  describe String{
+			  }
+			  describe String{
+			  }	
+		  }
+		')
+		val validationResult = validate(typeof(ExampleGroup))
+		validationResult.assertErrorContains("The spec 'String' is already defined.")
 	}
 	
 	fact "example table values must not be void"{
@@ -93,4 +121,5 @@ describe SpecJavaValidator{
 		val target = query(modelStore).first(type)
 		return RegisteredValidatorTester::validateObj(target)
 	}
+	
 }

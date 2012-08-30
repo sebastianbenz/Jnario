@@ -8,9 +8,12 @@
 package org.jnario.spec.validation;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
+import static com.google.common.collect.Iterables.filter;
 import static com.google.common.collect.Maps.newHashMap;
+import static com.google.common.collect.Sets.newLinkedHashSet;
 
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -22,9 +25,8 @@ import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendFile;
 import org.eclipse.xtend.core.xtend.XtendImport;
+import org.eclipse.xtend.core.xtend.XtendPackage;
 import org.eclipse.xtext.CrossReference;
-import org.eclipse.xtext.common.types.JvmExecutable;
-import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.TypesPackage;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
@@ -32,7 +34,6 @@ import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.ComposedChecks;
-import org.eclipse.xtext.validation.ValidationMessageAcceptor;
 import org.eclipse.xtext.xbase.XExpression;
 import org.jnario.ExampleColumn;
 import org.jnario.spec.naming.ExampleNameProvider;
@@ -42,7 +43,6 @@ import org.jnario.spec.spec.SpecPackage;
 import org.jnario.spec.spec.TestFunction;
 import org.jnario.validation.JnarioJavaValidator;
 
-import com.google.common.collect.Multimap;
 import com.google.inject.Inject;
  
 /**
@@ -54,6 +54,25 @@ public class SpecJavaValidator extends AbstractSpecJavaValidator {
 	
 	@Inject
 	private ExampleNameProvider exampleNameProvider;
+	
+	@Check
+	public void checkClasses(XtendFile file) {
+		checkClasses(file.getXtendClasses());
+	}
+
+	@Check
+	public void checkClasses(ExampleGroup exampleGroup) {
+		checkClasses(filter(exampleGroup.getMembers(), XtendClass.class));
+	}
+
+	protected void checkClasses(Iterable<XtendClass> xtendClasses) {
+		Set<String> names = newLinkedHashSet();
+		for (XtendClass clazz : xtendClasses) {	
+			String name = exampleNameProvider.toJavaClassName(clazz);
+			if (!names.add(name))
+				error("The spec '"+exampleNameProvider.describe((ExampleGroup) clazz)+"' is already defined.", clazz, XtendPackage.Literals.XTEND_CLASS__NAME, -1, IssueCodes.DUPLICATE_CLASS);
+		}
+	}
 	
 	
 	protected void error(String message, EObject source, EStructuralFeature feature, String code, String... issueData) {
