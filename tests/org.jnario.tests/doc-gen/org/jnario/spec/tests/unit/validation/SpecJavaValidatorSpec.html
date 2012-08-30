@@ -42,6 +42,19 @@ parseSpec('
 
 val validationResult = validate(typeof(Assertion))
 validationResult.assertErrorContains(&quot;invalid type&quot;)</pre>
+</li><li><p id="duplicate_names_of_example_methods_are_ignored"><strong>duplicate names of example methods are ignored</strong></p>
+<pre class="prettyprint lang-spec">
+parseSpec('
+  package bootstrap
+
+  describe &quot;Example&quot;{
+    fact &quot;a***&quot; 
+            fact &quot;a???&quot; 
+  } 
+')
+
+val validationResult = validate(typeof(ExampleGroup))
+validationResult.assertOK</pre>
 </li><li><p id="example_table_values_must_not_be_void"><strong>example table values must not be void</strong></p>
 <pre class="prettyprint lang-spec">
 parseSpec('

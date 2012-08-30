@@ -150,4 +150,26 @@ public class CompilerSpec {
     _builder.newLine();
     this._behaviorExecutor.executesSuccessfully(_builder);
   }
+  
+  @Test
+  @Named("resolve fact method name clashes")
+  @Order(99)
+  public void resolveFactMethodNameClashes() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("describe \"Using Should\"{");
+    _builder.newLine();
+    _builder.append("  ");
+    _builder.newLine();
+    _builder.append(" \t  ");
+    _builder.append("fact \"a***\"  ");
+    _builder.newLine();
+    _builder.append("      ");
+    _builder.append("fact \"a???\" ");
+    _builder.newLine();
+    _builder.append("   \t\t");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    this._behaviorExecutor.executesSuccessfully(_builder);
+  }
 }

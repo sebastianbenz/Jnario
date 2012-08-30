@@ -82,6 +82,16 @@ describe &quot;Something with an expression&quot;{
   }
 }
 '''.executesSuccessfully</pre>
+</li><li><p id="resolve_fact_method_name_clashes"><strong>resolve fact method name clashes</strong></p>
+<pre class="prettyprint lang-spec">
+'''
+  describe &quot;Using Should&quot;{
+    
+       fact &quot;a***&quot;  
+        fact &quot;a???&quot; 
+         
+  }
+'''.executesSuccessfully</pre>
 </li></ul>
 				</div>
 			</div>

@@ -14,6 +14,7 @@ import org.eclipse.xtend.core.compiler.XtendOutputConfigurationProvider;
 import org.eclipse.xtend.core.featurecalls.XtendIdentifiableSimpleNameProvider;
 import org.eclipse.xtend.core.jvmmodel.DispatchUtil;
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
+import org.eclipse.xtend.core.jvmmodel.SyntheticNameClashResolver;
 import org.eclipse.xtend.core.linking.XtendLinkingDiagnosticMessageProvider;
 import org.eclipse.xtend.core.resource.XtendLocationInFileProvider;
 import org.eclipse.xtend.core.resource.XtendResource;
@@ -65,6 +66,7 @@ import org.jnario.spec.compiler.SpecBatchCompiler;
 import org.jnario.spec.conversion.SpecValueConverterService;
 import org.jnario.spec.doc.SpecDocGenerator;
 import org.jnario.spec.jvmmodel.SpecJvmModelInferrer;
+import org.jnario.spec.jvmmodel.SpecSyntheticNameClashResolver;
 import org.jnario.spec.naming.SpecQualifiedNameProvider;
 import org.jnario.spec.scoping.SpecResourceDescriptionStrategy;
 import org.jnario.spec.scoping.SpecScopeProvider;
@@ -85,6 +87,7 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 		super.configure(binder);
 		binder.bind(AbstractDocGenerator.class).to(SpecDocGenerator.class);
 		binder.bind(SignatureHashBuilder.class).to(JnarioSignatureHashBuilder.class);
+		binder.bind(SyntheticNameClashResolver.class).to(SpecSyntheticNameClashResolver.class);
 	}
 	
 	public Class<? extends ILinkingDiagnosticMessageProvider> bindILinkingDiagnosticMessageProvider() {
@@ -215,5 +218,5 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 	public Class<? extends ILocationInFileProvider> bindILocationInFileProvider() {
 		return XtendLocationInFileProvider.class;
 	}
-
+	
 }

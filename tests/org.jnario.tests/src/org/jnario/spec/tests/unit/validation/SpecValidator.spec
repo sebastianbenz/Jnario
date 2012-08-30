@@ -19,6 +19,9 @@ import org.jnario.runner.CreateWith
 import org.jnario.jnario.test.util.SpecTestCreator
 
 import static org.jnario.jnario.test.util.Query.*
+import org.jnario.spec.spec.Example
+import org.eclipse.xtext.common.types.JvmExecutable
+import org.jnario.spec.spec.ExampleGroup
 
 @CreateWith(typeof(SpecTestCreator))
 describe SpecJavaValidator{
@@ -38,6 +41,20 @@ describe SpecJavaValidator{
 		
 		val validationResult = validate(typeof(Assertion))
 		validationResult.assertErrorContains("invalid type")
+	}
+	
+	fact "duplicate names of example methods are ignored"{
+		parseSpec('
+			package bootstrap
+
+			describe "Example"{
+				fact "a***" 
+      			fact "a???" 
+			} 
+		')
+		
+		val validationResult = validate(typeof(ExampleGroup))
+		validationResult.assertOK
 	}
 	
 	fact "example table values must not be void"{

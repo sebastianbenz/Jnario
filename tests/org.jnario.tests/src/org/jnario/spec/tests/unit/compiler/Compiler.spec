@@ -72,4 +72,15 @@ describe "Compiler"{
 		'''.executesSuccessfully
 	}
 	
+	fact "resolve fact method name clashes"{
+		'''
+			describe "Using Should"{
+			  
+			 	  fact "a***"  
+			      fact "a???" 
+			   		
+			}
+		'''.executesSuccessfully
+	}
+	
 }

@@ -16,12 +16,15 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtend.core.validation.IssueCodes;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendFile;
 import org.eclipse.xtend.core.xtend.XtendImport;
 import org.eclipse.xtext.CrossReference;
+import org.eclipse.xtext.common.types.JvmExecutable;
+import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.TypesPackage;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
@@ -29,14 +32,17 @@ import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.ComposedChecks;
+import org.eclipse.xtext.validation.ValidationMessageAcceptor;
 import org.eclipse.xtext.xbase.XExpression;
 import org.jnario.ExampleColumn;
 import org.jnario.spec.naming.ExampleNameProvider;
+import org.jnario.spec.spec.Example;
 import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.spec.spec.SpecPackage;
 import org.jnario.spec.spec.TestFunction;
 import org.jnario.validation.JnarioJavaValidator;
 
+import com.google.common.collect.Multimap;
 import com.google.inject.Inject;
  
 /**
@@ -48,6 +54,13 @@ public class SpecJavaValidator extends AbstractSpecJavaValidator {
 	
 	@Inject
 	private ExampleNameProvider exampleNameProvider;
+	
+	
+	protected void error(String message, EObject source, EStructuralFeature feature, String code, String... issueData) {
+		if(issueData.length == 0 && !(source instanceof Example) && !IssueCodes.DUPLICATE_METHOD.equals(issueData[0])){
+			super.error(message, source, feature, code, issueData);
+		}
+	}
 	
 	@Override
 	public void checkLocalUsageOfDeclaredFields(XtendField field) {

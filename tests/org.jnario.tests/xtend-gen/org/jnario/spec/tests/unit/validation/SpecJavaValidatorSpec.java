@@ -15,6 +15,7 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.jnario.spec.spec.ExampleGroup;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -34,6 +35,15 @@ public class SpecJavaValidatorSpec {
     this.modelStore.parseSpec("\r\n\t\t\tpackage bootstrap\r\n\r\n\t\t\tdescribe \"Example\"{\r\n\t\t\t\tfact \"invalid assert\"{\r\n\t\t\t\t\tassert 1\r\n\t\t\t\t}\r\n\t\t\t} \r\n\t\t");
     final AssertableDiagnostics validationResult = this.validate(Assertion.class);
     validationResult.assertErrorContains("invalid type");
+  }
+  
+  @Test
+  @Named("duplicate names of example methods are ignored")
+  @Order(99)
+  public void duplicateNamesOfExampleMethodsAreIgnored() throws Exception {
+    this.modelStore.parseSpec("\r\n\t\t\tpackage bootstrap\r\n\r\n\t\t\tdescribe \"Example\"{\r\n\t\t\t\tfact \"a***\" \r\n      \t\t\tfact \"a???\" \r\n\t\t\t} \r\n\t\t");
+    final AssertableDiagnostics validationResult = this.validate(ExampleGroup.class);
+    validationResult.assertOK();
   }
   
   @Test
