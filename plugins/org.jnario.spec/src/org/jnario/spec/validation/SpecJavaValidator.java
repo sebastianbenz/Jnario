@@ -76,7 +76,13 @@ public class SpecJavaValidator extends AbstractSpecJavaValidator {
 	
 	
 	protected void error(String message, EObject source, EStructuralFeature feature, String code, String... issueData) {
-		if(issueData.length == 0 && !(source instanceof Example) && !IssueCodes.DUPLICATE_METHOD.equals(issueData[0])){
+		if(issueData.length == 0){
+			super.error(message, source, feature, code, issueData);
+		}
+		if(!IssueCodes.DUPLICATE_METHOD.equals(issueData[0])){
+			super.error(message, source, feature, code, issueData);
+		}
+		if(!(source instanceof Example)){
 			super.error(message, source, feature, code, issueData);
 		}
 	}
