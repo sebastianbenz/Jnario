@@ -54,7 +54,7 @@ Features and concepts that are common to all Jnario languages.
 
 More about writing acceptance specifications in Jnario.
 
-	- "Feature Extensions": define setup and teardown operations in Features.
+	- "Setup & Teardown with Feature Extensions": define setup and teardown operations in Features.
 	- "Using JUnit Rules in Features" 
 	- "Referencing other Steps": more facts about referencing other steps.
 

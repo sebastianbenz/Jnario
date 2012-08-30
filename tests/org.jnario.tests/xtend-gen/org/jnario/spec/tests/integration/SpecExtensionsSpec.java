@@ -20,6 +20,46 @@ import org.junit.runner.RunWith;
 
 /**
  * Extensions can be used to share common setup and tear down behavior across different specifications.
+ * For example, given a normal java class with some JUnit setup and tear down methods:
+ * 
+ * <pre class="prettify">
+ * public class ExtensionExample {
+ *   private static List<String> EXECUTED_METHODS = new ArrayList<String>();
+ * 
+ *   @BeforeClass
+ *   public static void beforeClass(){
+ *     run("ExtensionExample#beforeClass");
+ *   }
+ * 
+ *   @Before
+ *   public void before(){
+ *     run("ExtensionExample#before");
+ *   }
+ * 
+ *   @AfterClass
+ *   public static void afterClass(){
+ *     run("ExtensionExample#afterClass");
+ *   }
+ * 
+ *   @After
+ *   public void after(){
+ *     run("ExtensionExample#after");
+ *   }
+ * 
+ *   private static void run(String name) {
+ *     EXECUTED_METHODS.add(name);
+ *   }
+ * 
+ *   public static List<String> getExecutedMethods() {
+ *     return EXECUTED_METHODS;
+ *   }
+ * }
+ * </pre>
+ * 
+ * When you declare an instance of this class
+ * as an extension field in your spec, all the setup
+ * and tear down methods will be executed before/after
+ * each fact/spec, respectively:
  */
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
@@ -31,9 +71,9 @@ public class SpecExtensionsSpec {
   public BehaviorExecutor _behaviorExecutor;
   
   @Test
-  @Named("all setup and tear down methods in extensions will be executed")
+  @Named("Example:")
   @Order(99)
-  public void allSetupAndTearDownMethodsInExtensionsWillBeExecuted() throws Exception {
+  public void example() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();
