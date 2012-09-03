@@ -7,58 +7,40 @@
  *******************************************************************************/
 package org.jnario.feature.jvmmodel
 
+import com.google.inject.Inject
+import java.util.Set
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.EcoreUtil2
-import org.jnario.feature.feature.StepReference
-import org.jnario.feature.feature.Scenario
+import org.eclipse.xtend.core.xtend.XtendClass
 import org.eclipse.xtend.core.xtend.XtendField
 import org.eclipse.xtend.core.xtend.XtendMember
-import org.jnario.feature.feature.Step
-import java.util.Set
-import java.util.List
-import org.eclipse.xtend.core.xtend.XtendClass
-import org.jnario.feature.feature.Background
+import org.jnario.feature.feature.StepReference
+
 import static org.eclipse.xtext.EcoreUtil2.*
-import org.jnario.feature.feature.Feature
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
 class StepReferenceFieldCreator {
 
+	@Inject extension VisibleMembersCalculator
+
 	def copyXtendMemberForReferences(EObject objectWithReference){
 		val refs = getAllContentsOfType(objectWithReference, typeof(StepReference))
 		for(ref: refs){
 			if(ref.reference?.stepExpression != null){
 				val fieldNames = ref.existingFieldNamesForContainerOfStepReference
-				val members = ref.reference.membersOfReferencedStep
+				val members = ref.reference.allVisibleMembers
 				objectWithReference.copyFields(members, fieldNames)					
 			}
 		}
    	}
    	
    	def private getExistingFieldNamesForContainerOfStepReference(StepReference ref){
-   		ref.membersOfReferencedStep.existingFieldNames
+   		ref.allVisibleMembers.existingFieldNames
    	}
    	
    	def private getExistingFieldNames(Iterable<XtendMember> members){
    		members.filter(typeof(XtendField)).map[name].toSet
-   	}
-   	
-   	def private getMembersOfReferencedStep(Step step){
-   		val scenario = getContainerOfType(step, typeof(Scenario))
-		if(scenario == null){
-			return <XtendMember>emptyList
-		}
-		var members = scenario.members
-		if(scenario instanceof Background){
-			return members
-		}
-		val feature = getContainerOfType(scenario, typeof(Feature))
-		if(feature.background == null){
-			return members
-		}
-		return members + feature.background.members
    	}
    	
    	def private copyFields(EObject objectWithReference, Iterable<XtendMember> members, Set<String> fieldNames){

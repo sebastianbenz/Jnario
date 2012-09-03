@@ -7,8 +7,8 @@
  *******************************************************************************/
 package org.jnario.feature.jvmmodel
 
+import com.google.inject.Inject
 import java.util.List
-import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.xbase.XExpression
 import org.jnario.feature.feature.Step
 import org.jnario.feature.feature.StepExpression
@@ -18,6 +18,8 @@ import org.jnario.feature.feature.StepReference
  * @author Sebastian Benz - Initial contribution and API
  */
 class StepExpressionProvider {
+ 
+ 	@Inject extension ExpressionCopier
  
  	def List<XExpression> getExpressions(Step step){
  		if(step == null){
@@ -41,14 +43,14 @@ class StepExpressionProvider {
 		return step.stepExpression
 	}
 	
-	def getOrCreateExpression(StepReference ref){
+	def private getOrCreateExpression(StepReference ref){
 		if(ref.stepExpression != null)
 			return ref.stepExpression
 		val step = ref?.reference
 		if(step == null || step.eIsProxy){
 			return null
 		}
-		val expr = EcoreUtil2::cloneWithProxies(step.stepExpression) as StepExpression
+		val expr = cloneWithProxies(step.stepExpression) as StepExpression
 		ref.stepExpression = expr
 		return expr
 	}

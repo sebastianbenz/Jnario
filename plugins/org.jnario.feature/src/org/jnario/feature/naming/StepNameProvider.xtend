@@ -18,6 +18,7 @@ import static org.jnario.util.Nodes.*
 import org.jnario.feature.jvmmodel.StepArgumentsProvider
 import org.jnario.feature.feature.Feature
 import org.jnario.feature.feature.Scenario
+import org.eclipse.xtend.core.xtend.XtendPackage
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -30,7 +31,7 @@ class StepNameProvider {
 			return null
 		}
 		// restore Given, Then, When keywords
-		textForFeature(step, FeaturePackage::eINSTANCE.step_Name)
+		textForFeature(step, XtendPackage::eINSTANCE.xtendClass_Name)
 	}
 	
 	def dispatch nameOf(StepReference ref){

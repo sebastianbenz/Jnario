@@ -39,7 +39,6 @@ import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
 import org.eclipse.xtext.xbase.compiler.output.TraceAwarePostProcessor;
 import org.eclipse.xtext.xbase.featurecalls.IdentifiableSimpleNameProvider;
-import org.eclipse.xtext.xbase.impl.FeatureCallToJavaMapping;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.JvmModelAssociator;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
@@ -57,7 +56,6 @@ import org.jnario.feature.conversion.FeatureValueConverterService;
 import org.jnario.feature.doc.FeatureDocGenerator;
 import org.jnario.feature.generator.FeatureCompiler;
 import org.jnario.feature.generator.FeatureJvmModelGenerator;
-import org.jnario.feature.jvmmodel.FeatureFeatureCallToJavaMapping;
 import org.jnario.feature.jvmmodel.FeatureJvmModelInferrer;
 import org.jnario.feature.linking.FeatureLazyLinker;
 import org.jnario.feature.linking.FeatureLinkingService;
@@ -153,10 +151,6 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 
 	public Class<? extends OutputConfigurationProvider> bindOutputConfigurationProvider() {
 		return DocOutputConfigurationProvider.class;
-	}
-	
-	public Class<? extends FeatureCallToJavaMapping> bindFeatureCallToJavaMapping(){
-		return FeatureFeatureCallToJavaMapping.class;
 	}
 	
 	public Class<? extends ClasspathBasedChecks> bindClasspathBasedChecks(){

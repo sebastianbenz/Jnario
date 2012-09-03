@@ -57,6 +57,7 @@ import org.eclipse.xtext.validation.IResourceValidator;
 import org.eclipse.xtext.validation.Issue;
 import org.eclipse.xtext.xbase.XbasePackage;
 import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.hamcrest.Matcher;
 import org.jnario.Assertion;
@@ -327,7 +328,8 @@ public abstract class BehaviorExecutor {
 			}catch (AssertionError ex) {
 				System.err.println(ex.getMessage());
 			}
-			throw new RuntimeException(e);
+			Exceptions.sneakyThrow(e);
+			return null;
 		} finally {
 			tempFolder.delete();
 		}

@@ -85,5 +85,4 @@ describe "Jnario Specs fact BDD for Java"{
       '''.executesSuccessfully
   }  
   
-  
 }

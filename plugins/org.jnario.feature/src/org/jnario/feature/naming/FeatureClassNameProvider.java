@@ -9,6 +9,8 @@ package org.jnario.feature.naming;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
+import static org.jnario.util.Strings.toClassName;
+import static org.eclipse.xtext.util.Strings.*;
 
 import org.eclipse.emf.ecore.EObject;
 import org.jnario.ExampleRow;
@@ -16,7 +18,10 @@ import org.jnario.ExampleTable;
 import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.Scenario;
+import org.jnario.feature.feature.Step;
 import org.jnario.util.Strings;
+
+import com.google.inject.Inject;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -25,6 +30,12 @@ import org.jnario.util.Strings;
 public class FeatureClassNameProvider {
 	
 	private static final String FEATURE_KEYWORD = "Feature";
+	private StepNameProvider stepNameProvider;
+	
+	@Inject
+	public FeatureClassNameProvider(StepNameProvider stepNameProvider) {
+		this.stepNameProvider = stepNameProvider;
+	}
 
 	public String getClassName(EObject obj) {
 		if (obj instanceof Feature) {
@@ -50,7 +61,7 @@ public class FeatureClassNameProvider {
 		if(isNullOrEmpty(name)){
 			return null;
 		}
-		return Strings.toClassName(name) + FEATURE_KEYWORD;
+		return toClassName(name) + FEATURE_KEYWORD;
 	}
 
 	public String getClassName(Scenario scenario){

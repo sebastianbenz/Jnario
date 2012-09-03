@@ -18,6 +18,7 @@ import org.eclipse.xtend.core.resource.XtendLocationInFileProvider;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.util.ITextRegion;
 import org.eclipse.xtext.util.TextRegion;
+import org.eclipse.xtext.util.TextRegionWithLineInformation;
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepReference;
@@ -39,20 +40,27 @@ public class FeatureLocationInFileProvider extends XtendLocationInFileProvider {
 			nodes = findNodesForFeature(element, FeaturePackage.Literals.STEP__NAME);
 		}
 		if (!nodes.isEmpty()) {
-			ITextRegion result = ITextRegion.EMPTY_REGION;
+			int length = 0;
+			int offset = 0;
+			int lineNumber = 0;
+			int endLineNumber = 0;
+			boolean isFirstNode = true;
 			for (int i=0; i<nodes.size(); i++) {
 				INode node = nodes.get(i);
 				if (!isHidden(node)) {
-					int length = node.getLength();
-					if (length != 0){
-						if(isLastNode(nodes, i)){
-							length = length - trimWhitespaceAtEnd(node.getText());
-						}
-						result = result.merge(new TextRegion(node.getOffset(), length));
+					if(isFirstNode){
+						offset = node.getOffset();
+						lineNumber = node.getStartLine();
+						isFirstNode = false;
+					}
+					length += node.getLength();
+					if(isLastNode(nodes, i)){
+						endLineNumber = node.getEndLine();
+						length = length - trimWhitespaceAtEnd(node.getText());
 					}
 				}
 			}
-			return result;
+			return new TextRegionWithLineInformation(offset, length, lineNumber, endLineNumber);
 		}
 		return createRegion(Collections.<INode>emptyList());
 	}

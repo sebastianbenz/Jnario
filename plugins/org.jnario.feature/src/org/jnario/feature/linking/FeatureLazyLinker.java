@@ -66,7 +66,6 @@ public class FeatureLazyLinker extends JnarioLazyLinker {
 		XVariableDeclaration stepValuesDec = createVariableForStepArguments(arguments);
 		EList<XExpression> expressions = step.getStepExpression().getBlockExpression().getExpressions();
 		expressions.add(0, stepValuesDec);
-		
 	}
 	
 	private XVariableDeclaration createVariableForStepArguments(List<String> arguments){
@@ -81,6 +80,5 @@ public class FeatureLazyLinker extends JnarioLazyLinker {
 		variableDec.setRight(constructor);
 		return variableDec;
 	}
-
 
 }

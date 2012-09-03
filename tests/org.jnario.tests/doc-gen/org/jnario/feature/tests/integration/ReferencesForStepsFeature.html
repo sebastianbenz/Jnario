@@ -112,6 +112,107 @@ Feature: Test
 </ul>
 </li>
 </ul>
+<h3  id="Scenario_Field_initialization">Scenario: Field initialization
+</h3>
+<ul>
+<li><p><strong>When</strong> I have a scenario with field initialized in a given step</p><pre>import java.util.Stack
+
+Feature: Stack
+
+
+Scenario: Stack adding elements
+  Stack&lt;String&gt; stack
+  Given a stack
+    stack= new Stack&lt;String&gt;()
+  When I add a value &quot;something&quot;
+    stack.add(&quot;something&quot;)
+  Then the stack should contain &quot;something&quot;
+    assert stack.contains(&quot;something&quot;)
+
+Scenario: Stack adding more elements
+  Given a stack
+  When I add a value &quot;something else&quot;
+  Then the stack should contain &quot;something else&quot;</pre>
+<ul>
+</ul>
+</li>
+<li><p><strong>Then</strong> it should execute successfully</p>
+<ul>
+</ul>
+</li>
+</ul>
+<h3  id="Scenario_Steps">Scenario: Steps 
+</h3>
+<ul>
+<li><p><strong>When</strong> I have a scenario with a variable that is initialized</p><pre>import java.util.concurrent.TimeUnit
+
+    Feature: Test
+    
+    Scenario: Scenario
+    When test
+    val test = TimeUnit::MINUTES
+    
+    Scenario: Scenario 2
+    When test</pre>
+<ul>
+</ul>
+</li>
+<li><p><strong>Then</strong> it should execute successfully</p>
+<ul>
+</ul>
+</li>
+</ul>
+<h3  id="Scenario_Extension_fields">Scenario: Extension fields 
+</h3>
+<ul>
+<li><p><strong>When</strong> I have a scenario with a variable that is initialized</p><pre>import org.jnario.feature.tests.integration.MyExtension
+    Feature: Extension Fields
+      Scenario: A scenario with an extension field
+        extension MyExtension myExtension = new MyExtension
+        val x = &lt;String&gt;newArrayList
+        Given an implementation that uses the extension
+          x.myExtensionMethod
+        Then extension is called
+          assert myExtension.called
+                
+      Scenario: Another scenario that uses the extension
+        Given an implementation that uses the extension
+        Then extension is called
+          And we can use it inside other steps
+            x.myExtensionMethod</pre>
+<ul>
+</ul>
+</li>
+<li><p><strong>Then</strong> it should execute successfully</p>
+<ul>
+</ul>
+</li>
+</ul>
+<h3  id="Scenario_Using_closures_in_steps">Scenario: Using closures in steps
+</h3>
+<ul>
+<li><p><strong>When</strong> I have a scenario which uses closures</p><pre>Feature: Using Closures
+
+      Scenario: Steps which define closures
+        var colors = list(&quot;green&quot;, &quot;blue&quot;)
+        When we convert all strings to uppercase
+          colors = colors.map[toUpperCase]
+        Then they are uppercase
+          colors =&gt; list(&quot;GREEN&quot;, &quot;BLUE&quot;)
+    
+      Scenario: Steps which reference steps with closures
+        var colors = list(&quot;red&quot;, &quot;blue&quot;)
+        When we convert all strings to uppercase
+        Then they are uppercase
+          colors =&gt; list(&quot;RED&quot;, &quot;BLUE&quot;)</pre>
+<ul>
+</ul>
+</li>
+<li><p><strong>Then</strong> it should execute successfully</p>
+<ul>
+</ul>
+</li>
+</ul>
 				</div>
 			</div>
 		</div> <!-- /content -->

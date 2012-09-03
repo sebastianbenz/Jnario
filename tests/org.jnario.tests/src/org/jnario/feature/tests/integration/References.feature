@@ -85,8 +85,7 @@ Feature: References for steps
 	 		jnarioFile = args.first
 	 	Then it should execute successfully
 	 		
-/* PENDING
-	 Scenario: Steps with short names
+	 Scenario: Field initialization
 	 	When I have a scenario with field initialized in a given step
 	 		'''
 				import java.util.Stack
@@ -110,5 +109,65 @@ Feature: References for steps
 	 		'''
 	 		jnarioFile = args.first
 	 	Then it should execute successfully	
-*/	 	
 	 	
+	 	
+	 Scenario: Steps 
+	 	When I have a scenario with a variable that is initialized 
+	 	'''
+	 	import java.util.concurrent.TimeUnit
+
+		Feature: Test
+		
+		Scenario: Scenario
+		When test
+		val test = TimeUnit::MINUTES
+		
+		Scenario: Scenario 2
+		When test
+	 	'''
+	 	 	jnarioFile = args.first
+	 	Then it should execute successfully	
+	 	
+	 Scenario: Extension fields 
+	 	When I have a scenario with a variable that is initialized 
+	 	'''
+	 	import org.jnario.feature.tests.integration.MyExtension
+		Feature: Extension Fields
+			Scenario: A scenario with an extension field
+				extension MyExtension myExtension = new MyExtension
+				val x = <String>newArrayList
+				Given an implementation that uses the extension
+					x.myExtensionMethod
+				Then extension is called
+					assert myExtension.called
+								
+			Scenario: Another scenario that uses the extension
+				Given an implementation that uses the extension
+				Then extension is called
+					And we can use it inside other steps
+						x.myExtensionMethod
+	 	'''
+	 	 	jnarioFile = args.first
+	 	Then it should execute successfully	
+	 	
+	 Scenario: Using closures in steps
+	  	When I have a scenario which uses closures
+	  	'''
+	  	Feature: Using Closures
+
+			Scenario: Steps which define closures
+				var colors = list("green", "blue")
+				When we convert all strings to uppercase
+					colors = colors.map[toUpperCase]
+				Then they are uppercase
+					colors => list("GREEN", "BLUE")
+		
+			Scenario: Steps which reference steps with closures
+				var colors = list("red", "blue")
+				When we convert all strings to uppercase
+				Then they are uppercase
+					colors => list("RED", "BLUE")
+	  	'''
+	  		jnarioFile = args.first
+	  	Then it should execute successfully	
+	 

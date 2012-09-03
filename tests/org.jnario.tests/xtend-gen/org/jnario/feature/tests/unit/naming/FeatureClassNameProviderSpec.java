@@ -8,7 +8,9 @@ import org.jnario.feature.naming.FeatureClassNameProvider;
 import org.jnario.feature.tests.unit.naming.FeatureClassNameProviderGetClassNameBackgroundSpec;
 import org.jnario.feature.tests.unit.naming.FeatureClassNameProviderGetClassNameFeatureSpec;
 import org.jnario.jnario.test.util.Features;
+import org.jnario.jnario.test.util.SpecTestCreator;
 import org.jnario.runner.Contains;
+import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Subject;
@@ -18,6 +20,7 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("FeatureClassNameProvider")
+@CreateWith(value = SpecTestCreator.class)
 public class FeatureClassNameProviderSpec {
   @Subject
   public FeatureClassNameProvider subject;

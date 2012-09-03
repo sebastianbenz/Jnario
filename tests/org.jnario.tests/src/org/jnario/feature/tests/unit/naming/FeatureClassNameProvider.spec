@@ -15,7 +15,11 @@ import static org.jnario.feature.tests.unit.naming.FeatureClassNameProviderSpec.
 
 import static extension org.jnario.lib.ExampleTableIterators.*
 import static extension org.jnario.lib.Should.*
+import org.jnario.feature.naming.StepNameProvider
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SpecTestCreator
 
+@CreateWith(typeof(SpecTestCreator))
 describe FeatureClassNameProvider {
 
 	static FeatureFactory factory = FeatureFactory::eINSTANCE

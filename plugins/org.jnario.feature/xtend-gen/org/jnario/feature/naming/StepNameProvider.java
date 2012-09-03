@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.regex.Matcher;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.xtend.core.xtend.XtendPackage;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.Scenario;
@@ -35,8 +36,8 @@ public class StepNameProvider {
       if (_or) {
         return null;
       }
-      EAttribute _step_Name = FeaturePackage.eINSTANCE.getStep_Name();
-      String _textForFeature = Nodes.textForFeature(step, _step_Name);
+      EAttribute _xtendClass_Name = XtendPackage.eINSTANCE.getXtendClass_Name();
+      String _textForFeature = Nodes.textForFeature(step, _xtendClass_Name);
       _xblockexpression = (_textForFeature);
     }
     return _xblockexpression;

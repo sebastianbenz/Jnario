@@ -1,20 +1,24 @@
 package org.jnario.feature.jvmmodel;
 
 import com.google.common.base.Objects;
+import com.google.inject.Inject;
 import java.util.List;
-import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepExpression;
 import org.jnario.feature.feature.StepReference;
+import org.jnario.feature.jvmmodel.ExpressionCopier;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("all")
 public class StepExpressionProvider {
+  @Inject
+  private ExpressionCopier _expressionCopier;
+  
   public List<XExpression> getExpressions(final Step step) {
     boolean _equals = Objects.equal(step, null);
     if (_equals) {
@@ -40,7 +44,7 @@ public class StepExpressionProvider {
     return step.getStepExpression();
   }
   
-  public StepExpression getOrCreateExpression(final StepReference ref) {
+  private StepExpression getOrCreateExpression(final StepReference ref) {
     StepExpression _stepExpression = ref.getStepExpression();
     boolean _notEquals = (!Objects.equal(_stepExpression, null));
     if (_notEquals) {
@@ -59,7 +63,7 @@ public class StepExpressionProvider {
       return null;
     }
     StepExpression _stepExpression_1 = step.getStepExpression();
-    StepExpression _cloneWithProxies = EcoreUtil2.<StepExpression>cloneWithProxies(_stepExpression_1);
+    StepExpression _cloneWithProxies = this._expressionCopier.<StepExpression>cloneWithProxies(_stepExpression_1);
     final StepExpression expr = ((StepExpression) _cloneWithProxies);
     ref.setStepExpression(expr);
     return expr;
