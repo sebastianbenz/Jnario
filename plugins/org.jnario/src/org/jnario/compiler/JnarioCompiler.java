@@ -104,10 +104,19 @@ public class JnarioCompiler extends XtendCompiler {
 		_toShouldExpression(should, b, should.isNot());
 	}
 
-	private void _toShouldExpression(XAbstractFeatureCall should,
+	private void _toShouldExpression(XBinaryOperation should,
 			ITreeAppendable b, boolean isNot) {
-		super._toJavaStatement(should, b, true);
-		b.newLine().append(assertType(should));
+		String declareVariable = b.declareVariable(should, "result");
+		super.toJavaStatement(should.getLeftOperand(), b, true);
+		super.toJavaStatement(should.getRightOperand(), b, true);
+		b.newLine().append("boolean " + declareVariable + " = ");
+		b.append(getTypeReferences().getTypeForName(org.jnario.lib.Should.class, should).getType())
+		.append(".operator_doubleArrow(");
+		toJavaExpression(should.getLeftOperand(), b);
+		b.append(", ");
+		toJavaExpression(should.getRightOperand(), b);
+		b.append(");").newLine();
+		b.append(assertType(should));
 		if (isNot) {
 			b.append(".assertFalse(");
 		} else {
@@ -115,8 +124,7 @@ public class JnarioCompiler extends XtendCompiler {
 		}
 		generateMessageFor(should, b);
 		b.append(" + \"" + javaStringNewLine() + "\", ");
-		super._toJavaExpression(should, b);
-		b.append(");").newLine();
+		b.append(declareVariable + ");").newLine();
 	}
 
 	private String javaStringNewLine() {
@@ -312,7 +320,7 @@ public class JnarioCompiler extends XtendCompiler {
 			super._toJavaStatement(expr, b, isReferenced);
 			return;
 		}else{
-			_toShouldExpression(expr, b, false);
+			_toShouldExpression((XBinaryOperation) expr, b, false);
 		}
 	}
 
