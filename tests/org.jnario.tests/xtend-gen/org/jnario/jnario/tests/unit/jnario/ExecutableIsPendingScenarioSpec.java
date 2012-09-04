@@ -20,7 +20,7 @@ public class ExecutableIsPendingScenarioSpec extends ExecutableIsPendingSpec {
   @Test
   @Named("scenario[\\\"Without steps\\\"].isPending[] should be true")
   @Order(99)
-  public void scenarioWithoutStepsIsPendingShouldBeTrue() throws Exception {
+  public void _scenarioWithoutStepsIsPendingShouldBeTrue() throws Exception {
     Scenario _scenario = Features.scenario("Without steps");
     boolean _isPending = _scenario.isPending();
     boolean _should_be = Should.<Boolean>should_be(Boolean.valueOf(_isPending), true);
@@ -33,7 +33,7 @@ public class ExecutableIsPendingScenarioSpec extends ExecutableIsPendingSpec {
   @Test
   @Named("scenarioWith[stepWithoutImplementation].isPending[] should be true")
   @Order(99)
-  public void scenarioWithStepWithoutImplementationIsPendingShouldBeTrue() throws Exception {
+  public void _scenarioWithStepWithoutImplementationIsPendingShouldBeTrue() throws Exception {
     Given _stepWithoutImplementation = Features.stepWithoutImplementation();
     Scenario _scenarioWith = Features.scenarioWith(_stepWithoutImplementation);
     boolean _isPending = _scenarioWith.isPending();
@@ -48,7 +48,7 @@ public class ExecutableIsPendingScenarioSpec extends ExecutableIsPendingSpec {
   @Test
   @Named("scenarioWith[implementedStep].isPending[] should be false")
   @Order(99)
-  public void scenarioWithImplementedStepIsPendingShouldBeFalse() throws Exception {
+  public void _scenarioWithImplementedStepIsPendingShouldBeFalse() throws Exception {
     Given _implementedStep = Features.implementedStep();
     Scenario _scenarioWith = Features.scenarioWith(_implementedStep);
     boolean _isPending = _scenarioWith.isPending();
@@ -63,7 +63,7 @@ public class ExecutableIsPendingScenarioSpec extends ExecutableIsPendingSpec {
   @Test
   @Named("scenarioWith[stepWithoutImplementation, implementedStep].isPending[] should be true")
   @Order(99)
-  public void scenarioWithStepWithoutImplementationImplementedStepIsPendingShouldBeTrue() throws Exception {
+  public void _scenarioWithStepWithoutImplementationImplementedStepIsPendingShouldBeTrue() throws Exception {
     Given _stepWithoutImplementation = Features.stepWithoutImplementation();
     Given _implementedStep = Features.implementedStep();
     Scenario _scenarioWith = Features.scenarioWith(_stepWithoutImplementation, _implementedStep);

@@ -80,7 +80,7 @@ describe StepNameProvider{
 		
 	}
 	
-	context ^describe{
+	context ^describe(Feature){
 		fact "removes multilines parameters"{
 			parseScenario('''
 					Scenario: MyScenario 2
@@ -91,6 +91,9 @@ describe StepNameProvider{
 			
 			describeStep => 'Given a step with multiline parameter'
 		}
+		
+		fact feature(" With whitespace ").desc =>  "With whitespace"
+		fact feature("With (parentheses)").desc =>  "With [parentheses]"
 	}
 	
 	context removeArguments{
@@ -111,11 +114,6 @@ describe StepNameProvider{
 			]
 		}
 	}
-	
-	context ^describe(Feature){
-		fact feature(" With whitespace ").desc =>  "With whitespace"
-		fact feature("With (parentheses)").desc =>  "With [parentheses]"
-	} 
 	
 	context ^describe(Scenario){
 		fact scenario(" With whitespace ").desc =>  "With whitespace"

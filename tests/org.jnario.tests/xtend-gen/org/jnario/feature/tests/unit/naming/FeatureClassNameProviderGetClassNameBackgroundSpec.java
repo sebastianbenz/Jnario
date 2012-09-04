@@ -36,7 +36,7 @@ public class FeatureClassNameProviderGetClassNameBackgroundSpec extends FeatureC
   @Test
   @Named("examples work")
   @Order(99)
-  public void examplesWork() throws Exception {
+  public void _examplesWork() throws Exception {
     final Procedure1<FeatureClassNameProviderGetClassNameBackgroundSpecExamples> _function = new Procedure1<FeatureClassNameProviderGetClassNameBackgroundSpecExamples>() {
         public void apply(final FeatureClassNameProviderGetClassNameBackgroundSpecExamples it) {
           Background _background = FeatureClassNameProviderGetClassNameBackgroundSpec.this.background(it.name, it.feature);

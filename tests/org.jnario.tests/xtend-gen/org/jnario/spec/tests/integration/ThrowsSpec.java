@@ -24,7 +24,7 @@ public class ThrowsSpec {
   @Test
   @Named("passes if exception is thrown")
   @Order(99)
-  public void passesIfExceptionIsThrown() throws Exception {
+  public void _passesIfExceptionIsThrown() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();
@@ -47,7 +47,7 @@ public class ThrowsSpec {
   @Test
   @Named("passes if exception of expected sub type is thrown")
   @Order(99)
-  public void passesIfExceptionOfExpectedSubTypeIsThrown() throws Exception {
+  public void _passesIfExceptionOfExpectedSubTypeIsThrown() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();
@@ -68,7 +68,7 @@ public class ThrowsSpec {
   @Test
   @Named("fails if no exception is thrown")
   @Order(99)
-  public void failsIfNoExceptionIsThrown() throws Exception {
+  public void _failsIfNoExceptionIsThrown() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();

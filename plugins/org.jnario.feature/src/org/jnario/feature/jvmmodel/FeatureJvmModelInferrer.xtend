@@ -173,7 +173,9 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    			if(original == null){
    				return
    			}
-   			val originalType = original.jvmElements.filter(typeof(JvmGenericType)).head
+   			val originalType = original.jvmElements.filter(typeof(JvmGenericType)).findFirst[
+   				it.primarySourceElement == original
+   			]
    			expressionOf(it).updateReferences(originalType, inferredJvmType)
    		]
    	}

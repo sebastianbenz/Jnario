@@ -45,7 +45,7 @@ public class FeatureTokenSourceSpec {
   @Test
   @Named("Splits feature")
   @Order(99)
-  public void splitsFeature() throws Exception {
+  public void _splitsFeature() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Feature: example");
     _builder.newLine();
@@ -57,7 +57,7 @@ public class FeatureTokenSourceSpec {
   @Test
   @Named("Splits incomplete feature")
   @Order(99)
-  public void splitsIncompleteFeature() throws Exception {
+  public void _splitsIncompleteFeature() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Feature: example");
     this.setInput(_builder);
@@ -68,7 +68,7 @@ public class FeatureTokenSourceSpec {
   @Test
   @Named("Splits incomplete feature with text")
   @Order(99)
-  public void splitsIncompleteFeatureWithText() throws Exception {
+  public void _splitsIncompleteFeatureWithText() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Feature: example");
     _builder.newLine();
@@ -83,7 +83,7 @@ public class FeatureTokenSourceSpec {
   @Test
   @Named("Splits incomplete feature with text and new line")
   @Order(99)
-  public void splitsIncompleteFeatureWithTextAndNewLine() throws Exception {
+  public void _splitsIncompleteFeatureWithTextAndNewLine() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Feature: example");
     _builder.newLine();
@@ -98,7 +98,7 @@ public class FeatureTokenSourceSpec {
   @Test
   @Named("Splits feature with text and scenario")
   @Order(99)
-  public void splitsFeatureWithTextAndScenario() throws Exception {
+  public void _splitsFeatureWithTextAndScenario() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Feature: example");
     _builder.newLine();
@@ -120,7 +120,7 @@ public class FeatureTokenSourceSpec {
   @Test
   @Named("splits feature with text and background")
   @Order(99)
-  public void splitsFeatureWithTextAndBackground() throws Exception {
+  public void _splitsFeatureWithTextAndBackground() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Feature: example");
     _builder.newLine();
@@ -143,7 +143,7 @@ public class FeatureTokenSourceSpec {
   @Test
   @Named("splits feature with text")
   @Order(99)
-  public void splitsFeatureWithText() throws Exception {
+  public void _splitsFeatureWithText() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Feature: example");
     _builder.newLine();
@@ -162,7 +162,7 @@ public class FeatureTokenSourceSpec {
   @Test
   @Named("splits feature with scenario")
   @Order(99)
-  public void splitsFeatureWithScenario() throws Exception {
+  public void _splitsFeatureWithScenario() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Feature: example");
     _builder.newLine();
@@ -176,7 +176,7 @@ public class FeatureTokenSourceSpec {
   @Test
   @Named("splits feature with scenario and line break")
   @Order(99)
-  public void splitsFeatureWithScenarioAndLineBreak() throws Exception {
+  public void _splitsFeatureWithScenarioAndLineBreak() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Feature: example");
     _builder.newLine();
@@ -191,7 +191,7 @@ public class FeatureTokenSourceSpec {
   @Test
   @Named("splits feature with background")
   @Order(99)
-  public void splitsFeatureWithBackground() throws Exception {
+  public void _splitsFeatureWithBackground() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Feature: example");
     _builder.newLine();

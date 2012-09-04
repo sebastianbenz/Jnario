@@ -17,7 +17,7 @@ public class SuiteValueConverterToValueSpec extends SuiteValueConverterSpec {
   @Test
   @Named("removes escape character for dashes")
   @Order(99)
-  public void removesEscapeCharacterForDashes() throws Exception {
+  public void _removesEscapeCharacterForDashes() throws Exception {
     String _value = this.subject.toValue("##suite \\- with dash", null);
     boolean _doubleArrow = Should.operator_doubleArrow(_value, "##suite - with dash");
     Assert.assertTrue("\nExpected subject.toValue(\"##suite \\\\- with dash\", null) => \"##suite - with dash\" but"
@@ -29,7 +29,7 @@ public class SuiteValueConverterToValueSpec extends SuiteValueConverterSpec {
   @Test
   @Named("removes escape character for  hashs")
   @Order(99)
-  public void removesEscapeCharacterForHashs() throws Exception {
+  public void _removesEscapeCharacterForHashs() throws Exception {
     String _value = this.subject.toValue("##suite \\# with hash", null);
     boolean _doubleArrow = Should.operator_doubleArrow(_value, "##suite # with hash");
     Assert.assertTrue("\nExpected subject.toValue(\"##suite \\\\# with hash\", null) => \"##suite # with hash\" but"

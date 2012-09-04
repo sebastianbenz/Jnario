@@ -1,6 +1,5 @@
 package org.jnario.feature.tests.integration;
 
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.hamcrest.StringDescription;
 import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.Should;
@@ -21,37 +20,33 @@ public class FeatureExtensionsFeatureReferencingStepsWithImportedExtensions {
   @Order(0)
   @Named("Given the value \"13.9\"")
   public void givenTheValue139() {
-      StepArguments _stepArguments = new StepArguments("13.9");
-      final StepArguments args = _stepArguments;
-      this.value = StringConversions.toDouble(new Function0<String>() {
-        public String apply() {
-          StepArguments _args = args;
-          String _first = JnarioIterableExtensions.<String>first(_args);
-          return _first;
-        }
-      }.apply());
+    StepArguments _stepArguments = new StepArguments("13.9");
+    final StepArguments args = _stepArguments;
+    String _first = JnarioIterableExtensions.<String>first(args);
+    double _double = StringConversions.toDouble(_first);
+    this.value = _double;
   }
   
   @Test
   @Order(1)
   @Named("When I floor it")
   public void whenIFloorIt() {
-    this.flooredValue = Math.floor(value);
+    double _floor = Math.floor(this.value);
+    this.flooredValue = _floor;
   }
   
   @Test
   @Order(2)
   @Named("Then the value should be \"13.0\"")
   public void thenTheValueShouldBe130() {
-      StepArguments _stepArguments = new StepArguments("13.0");
-      final StepArguments args = _stepArguments;
-      StepArguments _args = args;
-      String _first = JnarioIterableExtensions.<String>first(_args);
-      double _double = StringConversions.toDouble(_first);
-      boolean _doubleArrow = Should.operator_doubleArrow(Double.valueOf(flooredValue), Double.valueOf(_double));
-      Assert.assertTrue("\nExpected  but"
-       + "\n      is " + new StringDescription().appendValue(Double.valueOf(_double)).toString() + "\n", _doubleArrow);
-      
+    StepArguments _stepArguments = new StepArguments("13.0");
+    final StepArguments args = _stepArguments;
+    String _first = JnarioIterableExtensions.<String>first(args);
+    double _double = StringConversions.toDouble(_first);
+    boolean _doubleArrow = Should.operator_doubleArrow(Double.valueOf(this.flooredValue), Double.valueOf(_double));
+    Assert.assertTrue("\nExpected  but"
+     + "\n      is " + new StringDescription().appendValue(Double.valueOf(_double)).toString() + "\n", _doubleArrow);
+    
   }
   
   double value;

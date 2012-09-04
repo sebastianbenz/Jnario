@@ -25,7 +25,7 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   @Test
   @Named("should use the description")
   @Order(99)
-  public void shouldUseTheDescription() throws Exception {
+  public void _shouldUseTheDescription() throws Exception {
     String _describeFirst = this.describeFirst("describe \'My Description\'");
     boolean _doubleArrow = Should.operator_doubleArrow(_describeFirst, "My Description");
     Assert.assertTrue("\nExpected describeFirst(\"describe \'My Description\'\") => \"My Description\" but"
@@ -36,7 +36,7 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   @Test
   @Named("should use the target type")
   @Order(99)
-  public void shouldUseTheTargetType() throws Exception {
+  public void _shouldUseTheTargetType() throws Exception {
     String _describeFirst = this.describeFirst("describe org.junit.Assert");
     boolean _doubleArrow = Should.operator_doubleArrow(_describeFirst, "Assert");
     Assert.assertTrue("\nExpected describeFirst(\"describe org.junit.Assert\") => \"Assert\" but"
@@ -47,7 +47,7 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   @Test
   @Named("should use the unresolved target type")
   @Order(99)
-  public void shouldUseTheUnresolvedTargetType() throws Exception {
+  public void _shouldUseTheUnresolvedTargetType() throws Exception {
     String _describeFirst = this.describeFirst("describe Unresolved");
     boolean _doubleArrow = Should.operator_doubleArrow(_describeFirst, "Unresolved");
     Assert.assertTrue("\nExpected describeFirst(\"describe Unresolved\") => \"Unresolved\" but"
@@ -63,7 +63,7 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   @Test
   @Named("should combine target type and description")
   @Order(99)
-  public void shouldCombineTargetTypeAndDescription() throws Exception {
+  public void _shouldCombineTargetTypeAndDescription() throws Exception {
     String _describeFirst = this.describeFirst("describe org.junit.Assert \'and more\'");
     boolean _doubleArrow = Should.operator_doubleArrow(_describeFirst, "Assert and more");
     Assert.assertTrue("\nExpected describeFirst(\"describe org.junit.Assert \'and more\'\") => \"Assert and more\" but"
@@ -74,7 +74,7 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   @Test
   @Named("should use the target operation")
   @Order(99)
-  public void shouldUseTheTargetOperation() throws Exception {
+  public void _shouldUseTheTargetOperation() throws Exception {
     String _describeSecond = this.describeSecond("describe org.junit.Assert{\r\n                    context assertTrue(boolean) {}\r\n                 }");
     boolean _doubleArrow = Should.operator_doubleArrow(_describeSecond, "assertTrue[boolean]");
     Assert.assertTrue("\nExpected describeSecond(\"describe org.junit.Assert{\r\n                    context assertTrue(boolean) {}\r\n                 }\") => \"assertTrue[boolean]\" but"
@@ -85,7 +85,7 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   @Test
   @Named("should combine target operation and description")
   @Order(99)
-  public void shouldCombineTargetOperationAndDescription() throws Exception {
+  public void _shouldCombineTargetOperationAndDescription() throws Exception {
     String _describeSecond = this.describeSecond("describe org.junit.Assert{\r\n                    context assertTrue(boolean) \'and more\'{}\r\n                 }");
     boolean _doubleArrow = Should.operator_doubleArrow(_describeSecond, "assertTrue[boolean] and more");
     Assert.assertTrue("\nExpected describeSecond(\"describe org.junit.Assert{\r\n                    context assertTrue(boolean) \'and more\'{}\r\n                 }\") => \"assertTrue[boolean] and more\" but"
@@ -96,7 +96,7 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   @Test
   @Named("should escape quotes")
   @Order(99)
-  public void shouldEscapeQuotes() throws Exception {
+  public void _shouldEscapeQuotes() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \'Example\'{");
     _builder.newLine();
@@ -117,7 +117,7 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   @Test
   @Named("should replace line breaks and leading whitespace with a single space")
   @Order(99)
-  public void shouldReplaceLineBreaksAndLeadingWhitespaceWithASingleSpace() throws Exception {
+  public void _shouldReplaceLineBreaksAndLeadingWhitespaceWithASingleSpace() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Example\\n\\t 2\"");
     final String text = _builder.toString();

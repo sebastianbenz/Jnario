@@ -19,7 +19,7 @@ public class ExecutableIsPendingStepSpec extends ExecutableIsPendingSpec {
   @Test
   @Named("stepWithoutImplementation.isPending[] should be true")
   @Order(99)
-  public void stepWithoutImplementationIsPendingShouldBeTrue() throws Exception {
+  public void _stepWithoutImplementationIsPendingShouldBeTrue() throws Exception {
     Given _stepWithoutImplementation = Features.stepWithoutImplementation();
     boolean _isPending = _stepWithoutImplementation.isPending();
     boolean _should_be = Should.<Boolean>should_be(Boolean.valueOf(_isPending), true);
@@ -32,7 +32,7 @@ public class ExecutableIsPendingStepSpec extends ExecutableIsPendingSpec {
   @Test
   @Named("implementedStep.isPending[] should be false")
   @Order(99)
-  public void implementedStepIsPendingShouldBeFalse() throws Exception {
+  public void _implementedStepIsPendingShouldBeFalse() throws Exception {
     Given _implementedStep = Features.implementedStep();
     boolean _isPending = _implementedStep.isPending();
     boolean _should_be = Should.<Boolean>should_be(Boolean.valueOf(_isPending), false);

@@ -28,7 +28,7 @@ public class ImplicitSubjectSpec {
   @Test
   @Named("should create instance of target type")
   @Order(99)
-  public void shouldCreateInstanceOfTargetType() throws Exception {
+  public void _shouldCreateInstanceOfTargetType() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();
@@ -52,7 +52,7 @@ public class ImplicitSubjectSpec {
   @Test
   @Named("can be overridden within example group")
   @Order(99)
-  public void canBeOverriddenWithinExampleGroup() throws Exception {
+  public void _canBeOverriddenWithinExampleGroup() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();
@@ -88,7 +88,7 @@ public class ImplicitSubjectSpec {
   @Ignore
   @Named("can be overridden by manually calling the constructor [PENDING]")
   @Order(99)
-  public void canBeOverriddenByManuallyCallingTheConstructor() throws Exception {
+  public void _canBeOverriddenByManuallyCallingTheConstructor() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();
@@ -123,7 +123,7 @@ public class ImplicitSubjectSpec {
   @Test
   @Named("will be only created if is used")
   @Order(99)
-  public void willBeOnlyCreatedIfIsUsed() throws Exception {
+  public void _willBeOnlyCreatedIfIsUsed() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();
@@ -154,7 +154,7 @@ public class ImplicitSubjectSpec {
   @Test
   @Named("can be accessed from nested ExampleGroups")
   @Order(99)
-  public void canBeAccessedFromNestedExampleGroups() throws Exception {
+  public void _canBeAccessedFromNestedExampleGroups() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();
@@ -189,7 +189,7 @@ public class ImplicitSubjectSpec {
   @Test
   @Named("can be overridden from nested ExampleGroups")
   @Order(99)
-  public void canBeOverriddenFromNestedExampleGroups() throws Exception {
+  public void _canBeOverriddenFromNestedExampleGroups() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();
@@ -224,7 +224,7 @@ public class ImplicitSubjectSpec {
   @Test
   @Named("will be only created in the subexample if is not used in the parent example group")
   @Order(99)
-  public void willBeOnlyCreatedInTheSubexampleIfIsNotUsedInTheParentExampleGroup() throws Exception {
+  public void _willBeOnlyCreatedInTheSubexampleIfIsNotUsedInTheParentExampleGroup() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();
@@ -268,7 +268,7 @@ public class ImplicitSubjectSpec {
   @Test
   @Named("will not be created in a sub example if is used in the parent example group")
   @Order(99)
-  public void willNotBeCreatedInASubExampleIfIsUsedInTheParentExampleGroup() throws Exception {
+  public void _willNotBeCreatedInASubExampleIfIsUsedInTheParentExampleGroup() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();

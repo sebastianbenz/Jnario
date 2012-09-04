@@ -39,7 +39,7 @@ public class StringsTrimSpec extends StringsSpec {
   @Test
   @Named("removes the specified leading and trailing character")
   @Order(99)
-  public void removesTheSpecifiedLeadingAndTrailingCharacter() throws Exception {
+  public void _removesTheSpecifiedLeadingAndTrailingCharacter() throws Exception {
     final Procedure1<StringsTrimSpecExamples> _function = new Procedure1<StringsTrimSpecExamples>() {
         public void apply(final StringsTrimSpecExamples it) {
           char _charAt = "_".charAt(0);

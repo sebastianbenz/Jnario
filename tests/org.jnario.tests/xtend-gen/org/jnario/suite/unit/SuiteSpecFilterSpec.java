@@ -45,7 +45,7 @@ public class SuiteSpecFilterSpec {
   @Test
   @Named("Suites pass")
   @Order(99)
-  public void suitesPass() throws Exception {
+  public void _suitesPass() throws Exception {
     EClass _suite = this._suitePackage.getSuite();
     IEObjectDescription _desc = this.desc(_suite);
     boolean _apply = this.subject.apply(_desc);
@@ -62,7 +62,7 @@ public class SuiteSpecFilterSpec {
   @Test
   @Named("Features pass")
   @Order(99)
-  public void featuresPass() throws Exception {
+  public void _featuresPass() throws Exception {
     EClass _feature = this._featurePackage.getFeature();
     IEObjectDescription _desc = this.desc(_feature);
     boolean _apply = this.subject.apply(_desc);
@@ -79,7 +79,7 @@ public class SuiteSpecFilterSpec {
   @Test
   @Named("Root Specs pass")
   @Order(99)
-  public void rootSpecsPass() throws Exception {
+  public void _rootSpecsPass() throws Exception {
     IEObjectDescription _rootSpec = this.rootSpec();
     boolean _apply = this.subject.apply(_rootSpec);
     boolean _doubleArrow = Should.operator_doubleArrow(Boolean.valueOf(_apply), Boolean.valueOf(true));
@@ -93,7 +93,7 @@ public class SuiteSpecFilterSpec {
   @Test
   @Named("Child Specs fail")
   @Order(99)
-  public void childSpecsFail() throws Exception {
+  public void _childSpecsFail() throws Exception {
     IEObjectDescription _childSpec = this.childSpec();
     boolean _apply = this.subject.apply(_childSpec);
     boolean _doubleArrow = Should.operator_doubleArrow(Boolean.valueOf(_apply), Boolean.valueOf(false));

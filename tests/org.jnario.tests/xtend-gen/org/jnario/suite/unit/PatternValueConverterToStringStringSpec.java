@@ -40,7 +40,7 @@ public class PatternValueConverterToStringStringSpec extends PatternValueConvert
   @Test
   @Named("examples.forEach[subject.toString[input] => result + newLine]")
   @Order(99)
-  public void examplesForEachSubjectToStringInputResultNewLine() throws Exception {
+  public void _examplesForEachSubjectToStringInputResultNewLine() throws Exception {
     final Procedure1<PatternValueConverterToStringStringSpecExamples> _function = new Procedure1<PatternValueConverterToStringStringSpecExamples>() {
         public void apply(final PatternValueConverterToStringStringSpecExamples it) {
           String _string = PatternValueConverterToStringStringSpec.this.subject.toString(it.input);

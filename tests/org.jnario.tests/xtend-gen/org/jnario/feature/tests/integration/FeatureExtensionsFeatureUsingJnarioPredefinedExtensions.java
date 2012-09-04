@@ -20,10 +20,10 @@ public class FeatureExtensionsFeatureUsingJnarioPredefinedExtensions {
   @Order(0)
   @Named("Given the number \"5\" as string")
   public void givenTheNumber5AsString() {
-      StepArguments _stepArguments = new StepArguments("5");
-      final StepArguments args = _stepArguments;
-      String _first = JnarioIterableExtensions.<String>first(args);
-      this.numberString = _first;
+    StepArguments _stepArguments = new StepArguments("5");
+    final StepArguments args = _stepArguments;
+    String _first = JnarioIterableExtensions.<String>first(args);
+    this.numberString = _first;
   }
   
   @Test
@@ -38,17 +38,17 @@ public class FeatureExtensionsFeatureUsingJnarioPredefinedExtensions {
   @Order(2)
   @Named("Then it should be \"5\"")
   public void thenItShouldBe5() {
-      StepArguments _stepArguments = new StepArguments("5");
-      final StepArguments args = _stepArguments;
-      String _first = JnarioIterableExtensions.<String>first(args);
-      int _int = StringConversions.toInt(_first);
-      boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(this.number), Integer.valueOf(_int));
-      Assert.assertTrue("\nExpected number => args.first.toInt but"
-       + "\n     number is " + new StringDescription().appendValue(Integer.valueOf(this.number)).toString()
-       + "\n     args.first.toInt is " + new StringDescription().appendValue(Integer.valueOf(_int)).toString()
-       + "\n     args.first is " + new StringDescription().appendValue(_first).toString()
-       + "\n     args is " + new StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
-      
+    StepArguments _stepArguments = new StepArguments("5");
+    final StepArguments args = _stepArguments;
+    String _first = JnarioIterableExtensions.<String>first(args);
+    int _int = StringConversions.toInt(_first);
+    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(this.number), Integer.valueOf(_int));
+    Assert.assertTrue("\nExpected number => args.first.toInt but"
+     + "\n     number is " + new StringDescription().appendValue(Integer.valueOf(this.number)).toString()
+     + "\n     args.first.toInt is " + new StringDescription().appendValue(Integer.valueOf(_int)).toString()
+     + "\n     args.first is " + new StringDescription().appendValue(_first).toString()
+     + "\n     args is " + new StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
+    
   }
   
   String numberString;

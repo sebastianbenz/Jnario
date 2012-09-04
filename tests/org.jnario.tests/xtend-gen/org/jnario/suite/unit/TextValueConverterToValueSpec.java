@@ -17,7 +17,7 @@ public class TextValueConverterToValueSpec extends TextValueConverterSpec {
   @Test
   @Named("removes colon")
   @Order(99)
-  public void removesColon() throws Exception {
+  public void _removesColon() throws Exception {
     String _value = this.subject.toValue(":suite", null);
     boolean _doubleArrow = Should.operator_doubleArrow(_value, "suite");
     Assert.assertTrue("\nExpected subject.toValue(\":suite\", null) => \"suite\" but"
@@ -29,7 +29,7 @@ public class TextValueConverterToValueSpec extends TextValueConverterSpec {
   @Test
   @Named("removes whitespace after colon")
   @Order(99)
-  public void removesWhitespaceAfterColon() throws Exception {
+  public void _removesWhitespaceAfterColon() throws Exception {
     String _value = this.subject.toValue(": suite", null);
     boolean _doubleArrow = Should.operator_doubleArrow(_value, "suite");
     Assert.assertTrue("\nExpected subject.toValue(\": suite\", null) => \"suite\" but"
@@ -41,7 +41,7 @@ public class TextValueConverterToValueSpec extends TextValueConverterSpec {
   @Test
   @Named("removes escape character for dashes")
   @Order(99)
-  public void removesEscapeCharacterForDashes() throws Exception {
+  public void _removesEscapeCharacterForDashes() throws Exception {
     String _value = this.subject.toValue(":suite \\- with dash", null);
     boolean _doubleArrow = Should.operator_doubleArrow(_value, "suite - with dash");
     Assert.assertTrue("\nExpected subject.toValue(\":suite \\\\- with dash\", null) => \"suite - with dash\" but"
@@ -53,7 +53,7 @@ public class TextValueConverterToValueSpec extends TextValueConverterSpec {
   @Test
   @Named("removes escape character for  hashs")
   @Order(99)
-  public void removesEscapeCharacterForHashs() throws Exception {
+  public void _removesEscapeCharacterForHashs() throws Exception {
     String _value = this.subject.toValue(":suite \\# with hash", null);
     boolean _doubleArrow = Should.operator_doubleArrow(_value, "suite # with hash");
     Assert.assertTrue("\nExpected subject.toValue(\":suite \\\\# with hash\", null) => \"suite # with hash\" but"

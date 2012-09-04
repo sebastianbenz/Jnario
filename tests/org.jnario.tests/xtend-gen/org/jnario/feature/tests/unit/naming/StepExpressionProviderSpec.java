@@ -31,7 +31,7 @@ public class StepExpressionProviderSpec {
   @Test
   @Named("should return the name for a step with definition")
   @Order(99)
-  public void shouldReturnTheNameForAStepWithDefinition() throws Exception {
+  public void _shouldReturnTheNameForAStepWithDefinition() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Feature: Example");
     _builder.newLine();
@@ -51,7 +51,7 @@ public class StepExpressionProviderSpec {
   @Test
   @Named("should copy the referenced step\\\'s implementation and set the referencing step")
   @Order(99)
-  public void shouldCopyTheReferencedStepSImplementationAndSetTheReferencingStep() throws Exception {
+  public void _shouldCopyTheReferencedStepSImplementationAndSetTheReferencingStep() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Feature: Example");
     _builder.newLine();

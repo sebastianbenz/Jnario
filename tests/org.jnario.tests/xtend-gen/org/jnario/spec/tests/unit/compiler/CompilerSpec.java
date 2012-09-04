@@ -24,7 +24,7 @@ public class CompilerSpec {
   @Test
   @Named("long boolean expressions compile correctly")
   @Order(99)
-  public void longBooleanExpressionsCompileCorrectly() throws Exception {
+  public void _longBooleanExpressionsCompileCorrectly() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something with an expression\"{");
     _builder.newLine();
@@ -53,7 +53,7 @@ public class CompilerSpec {
   @Test
   @Named("assert with multiple bool expressions")
   @Order(99)
-  public void assertWithMultipleBoolExpressions() throws Exception {
+  public void _assertWithMultipleBoolExpressions() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something with an expression\"{");
     _builder.newLine();
@@ -77,7 +77,7 @@ public class CompilerSpec {
   @Test
   @Named("=> with multiple bool expressions")
   @Order(99)
-  public void withMultipleBoolExpressions() throws Exception {
+  public void _withMultipleBoolExpressions() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something with an expression\"{");
     _builder.newLine();
@@ -101,7 +101,7 @@ public class CompilerSpec {
   @Test
   @Named("should with multiple bool expressions")
   @Order(99)
-  public void shouldWithMultipleBoolExpressions() throws Exception {
+  public void _shouldWithMultipleBoolExpressions() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something with an expression\"{");
     _builder.newLine();
@@ -125,7 +125,7 @@ public class CompilerSpec {
   @Test
   @Named("automatically converts lists to arrays")
   @Order(99)
-  public void automaticallyConvertsListsToArrays() throws Exception {
+  public void _automaticallyConvertsListsToArrays() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something with an expression\"{");
     _builder.newLine();
@@ -154,7 +154,7 @@ public class CompilerSpec {
   @Test
   @Named("resolve fact method name clashes")
   @Order(99)
-  public void resolveFactMethodNameClashes() throws Exception {
+  public void _resolveFactMethodNameClashes() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Using Should\"{");
     _builder.newLine();

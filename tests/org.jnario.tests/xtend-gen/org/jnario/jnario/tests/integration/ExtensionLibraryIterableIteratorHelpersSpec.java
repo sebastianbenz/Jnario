@@ -33,7 +33,7 @@ public class ExtensionLibraryIterableIteratorHelpersSpec extends ExtensionLibrar
   @Test
   @Named("Iterables")
   @Order(99)
-  public void iterables() throws Exception {
+  public void _iterables() throws Exception {
     final List<Integer> values = JnarioCollectionLiterals.<Integer>list(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4), Integer.valueOf(5));
     Integer _first = JnarioIterableExtensions.<Integer>first(values);
     boolean _doubleArrow = Should.operator_doubleArrow(_first, Integer.valueOf(1));
@@ -100,7 +100,7 @@ public class ExtensionLibraryIterableIteratorHelpersSpec extends ExtensionLibrar
   @Test
   @Named("Iterators")
   @Order(99)
-  public void iterators() throws Exception {
+  public void _iterators() throws Exception {
     final List<Integer> values = JnarioCollectionLiterals.<Integer>list(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4), Integer.valueOf(5));
     Iterator<Integer> _iterator = values.iterator();
     Integer _first = JnarioIteratorExtensions.<Integer>first(_iterator);

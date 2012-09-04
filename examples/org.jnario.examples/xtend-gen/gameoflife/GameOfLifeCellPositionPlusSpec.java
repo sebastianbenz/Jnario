@@ -18,7 +18,7 @@ public class GameOfLifeCellPositionPlusSpec extends GameOfLifeCellPositionSpec {
   @Test
   @Named("cell[-1, 1].plus[cell[3,4]] => cell[2,5]")
   @Order(99)
-  public void cell11PlusCell34Cell25() throws Exception {
+  public void _cell11PlusCell34Cell25() throws Exception {
     int _minus = (-1);
     CellPosition _cell = CellPosition.cell(_minus, 1);
     CellPosition _cell_1 = CellPosition.cell(3, 4);

@@ -35,7 +35,7 @@ public class HtmlAssetsCompilerSpec {
   @Test
   @Named("compiles css & js files to specified folder")
   @Order(99)
-  public void compilesCssJsFilesToSpecifiedFolder() throws Exception {
+  public void _compilesCssJsFilesToSpecifiedFolder() throws Exception {
     this.doCompile();
     File _file = this.file("js/prettify.js");
     boolean _exists = _file.exists();
@@ -52,7 +52,7 @@ public class HtmlAssetsCompilerSpec {
   @Test
   @Named("does not override existing file")
   @Order(99)
-  public void doesNotOverrideExistingFile() throws Exception {
+  public void _doesNotOverrideExistingFile() throws Exception {
     this.mkdir("js");
     File _file = this.file("js/prettify.js");
     final String file = _file.toString();

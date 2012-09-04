@@ -37,7 +37,7 @@ public class HtmlAssetsSpec {
   @Test
   @Named("generates java script helper files")
   @Order(99)
-  public void generatesJavaScriptHelperFiles() throws Exception {
+  public void _generatesJavaScriptHelperFiles() throws Exception {
     String _generatedFile = this.generatedFile("js/prettify.js");
     boolean _notEquals = (!Objects.equal(_generatedFile, null));
     Assert.assertTrue("\nExpected generatedFile(\"js/prettify.js\") != null but"
@@ -53,7 +53,7 @@ public class HtmlAssetsSpec {
   @Test
   @Named("generates css helper files")
   @Order(99)
-  public void generatesCssHelperFiles() throws Exception {
+  public void _generatesCssHelperFiles() throws Exception {
     String _generatedFile = this.generatedFile("css/bootstrap-responsive.min.css");
     boolean _notEquals = (!Objects.equal(_generatedFile, null));
     Assert.assertTrue("\nExpected generatedFile(\"css/bootstrap-responsive.min.css\") != null but"

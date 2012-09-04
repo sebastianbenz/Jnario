@@ -3,6 +3,8 @@ package org.jnario.suite.unit;
 import com.google.inject.Inject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.naming.QualifiedName;
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.Matcher;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.SuiteTestCreator;
@@ -34,7 +36,7 @@ public class SuiteQualifiedNameProviderSpec {
   @Test
   @Named("removes suite prefix")
   @Order(99)
-  public void removesSuitePrefix() throws Exception {
+  public void _removesSuitePrefix() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("#My Suite");
     this._modelStore.parseSuite(_builder);
@@ -48,7 +50,7 @@ public class SuiteQualifiedNameProviderSpec {
   @Test
   @Named("removes suite trailing text")
   @Order(99)
-  public void removesSuiteTrailingText() throws Exception {
+  public void _removesSuiteTrailingText() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("#My Suite");
     _builder.newLine();
@@ -64,7 +66,7 @@ public class SuiteQualifiedNameProviderSpec {
   @Test
   @Named("add suite package")
   @Order(99)
-  public void addSuitePackage() throws Exception {
+  public void _addSuitePackage() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package test");
     _builder.newLine();
@@ -80,7 +82,7 @@ public class SuiteQualifiedNameProviderSpec {
   @Test
   @Named("handles empty packages")
   @Order(99)
-  public void handlesEmptyPackages() throws Exception {
+  public void _handlesEmptyPackages() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("#My Suite");
     this._modelStore.parseSuite(_builder);
@@ -94,13 +96,14 @@ public class SuiteQualifiedNameProviderSpec {
   @Test
   @Named("handles empty suites")
   @Order(99)
-  public void handlesEmptySuites() throws Exception {
+  public void _handlesEmptySuites() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("#");
     _builder.newLine();
     this._modelStore.parseSuite(_builder);
     String _qualifiedName = this.qualifiedName();
-    boolean _should_be = Should.<String>should_be(_qualifiedName, null);
+    Matcher<String> _nullValue = CoreMatchers.<String>nullValue();
+    boolean _should_be = Should.<String>should_be(_qualifiedName, _nullValue);
     Assert.assertTrue("\nExpected qualifiedName should be null but"
      + "\n     qualifiedName is " + new StringDescription().appendValue(_qualifiedName).toString() + "\n", _should_be);
     

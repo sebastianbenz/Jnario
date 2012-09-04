@@ -42,8 +42,8 @@ describe StepArgumentsProvider {
 	fact "extracts arguments from step descriptions"{
 		examples.forEach[
 			val singleOrDoubleQuotes = list(step, step?.replaceAll('"', "'"))
-			for(each : singleOrDoubleQuotes){
-				val foundArgs = subject.findStepArguments(create(each))
+			for(^each : singleOrDoubleQuotes){
+				val foundArgs = subject.findStepArguments(create(^each))
 				foundArgs => expectedArgs
 			}
 		]

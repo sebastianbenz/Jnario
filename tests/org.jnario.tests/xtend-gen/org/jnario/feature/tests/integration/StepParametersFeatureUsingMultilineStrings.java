@@ -22,7 +22,7 @@ public class StepParametersFeatureUsingMultilineStrings {
   @Order(1)
   @Named("Then it should execute successfully")
   public void thenItShouldExecuteSuccessfully() {
-    FeatureExecutor.isSuccessful(jnarioFile);
+    FeatureExecutor.isSuccessful(this.jnarioFile);
   }
   
   CharSequence jnarioFile;

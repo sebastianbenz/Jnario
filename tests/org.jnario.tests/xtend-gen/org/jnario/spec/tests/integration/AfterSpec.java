@@ -27,7 +27,7 @@ public class AfterSpec {
   @Test
   @Named("should be executed after each test")
   @Order(99)
-  public void shouldBeExecutedAfterEachTest() throws Exception {
+  public void _shouldBeExecutedAfterEachTest() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap ");
     _builder.newLine();

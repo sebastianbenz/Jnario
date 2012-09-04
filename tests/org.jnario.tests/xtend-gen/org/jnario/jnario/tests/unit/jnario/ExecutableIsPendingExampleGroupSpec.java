@@ -20,7 +20,7 @@ public class ExecutableIsPendingExampleGroupSpec extends ExecutableIsPendingSpec
   @Test
   @Named("exampleGroupWith[pendingExample].isPending should be true")
   @Order(99)
-  public void exampleGroupWithPendingExampleIsPendingShouldBeTrue() throws Exception {
+  public void _exampleGroupWithPendingExampleIsPendingShouldBeTrue() throws Exception {
     Example _pendingExample = Specs.pendingExample();
     ExampleGroup _exampleGroupWith = Specs.exampleGroupWith(_pendingExample);
     boolean _isPending = _exampleGroupWith.isPending();
@@ -35,7 +35,7 @@ public class ExecutableIsPendingExampleGroupSpec extends ExecutableIsPendingSpec
   @Test
   @Named("exampleGroupWith[implementedExample].isPending should be false")
   @Order(99)
-  public void exampleGroupWithImplementedExampleIsPendingShouldBeFalse() throws Exception {
+  public void _exampleGroupWithImplementedExampleIsPendingShouldBeFalse() throws Exception {
     Example _implementedExample = Specs.implementedExample();
     ExampleGroup _exampleGroupWith = Specs.exampleGroupWith(_implementedExample);
     boolean _isPending = _exampleGroupWith.isPending();
@@ -50,7 +50,7 @@ public class ExecutableIsPendingExampleGroupSpec extends ExecutableIsPendingSpec
   @Test
   @Named("exampleGroupWith[pendingExample, implementedExample].isPending should be true")
   @Order(99)
-  public void exampleGroupWithPendingExampleImplementedExampleIsPendingShouldBeTrue() throws Exception {
+  public void _exampleGroupWithPendingExampleImplementedExampleIsPendingShouldBeTrue() throws Exception {
     Example _pendingExample = Specs.pendingExample();
     Example _implementedExample = Specs.implementedExample();
     ExampleGroup _exampleGroupWith = Specs.exampleGroupWith(_pendingExample, _implementedExample);

@@ -30,7 +30,7 @@ public class ExtensionLibraryCollectionLiteralsSpec extends ExtensionLibrarySpec
   @Test
   @Named("List Literal")
   @Order(99)
-  public void listLiteral() throws Exception {
+  public void _listLiteral() throws Exception {
     List<String> _list = JnarioCollectionLiterals.<String>list("green", "red");
     ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("green", "red");
     boolean _doubleArrow = Should.operator_doubleArrow(_list, _newArrayList);
@@ -58,7 +58,7 @@ public class ExtensionLibraryCollectionLiteralsSpec extends ExtensionLibrarySpec
   @Test
   @Named("Set Literal")
   @Order(99)
-  public void setLiteral() throws Exception {
+  public void _setLiteral() throws Exception {
     Set<String> _set = JnarioCollectionLiterals.<String>set("green", "red");
     HashSet<String> _newHashSet = CollectionLiterals.<String>newHashSet("green", "red");
     boolean _doubleArrow = Should.operator_doubleArrow(_set, _newHashSet);
@@ -86,7 +86,7 @@ public class ExtensionLibraryCollectionLiteralsSpec extends ExtensionLibrarySpec
   @Test
   @Named("Map Literal")
   @Order(99)
-  public void mapLiteral() throws Exception {
+  public void _mapLiteral() throws Exception {
     Pair<String,String> _mappedTo = Pair.<String, String>of("green", "apple");
     Pair<String,String> _mappedTo_1 = Pair.<String, String>of("yellow", "banana");
     Pair<String,String> _mappedTo_2 = Pair.<String, String>of("red", "tomato");

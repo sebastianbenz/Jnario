@@ -36,7 +36,7 @@ public class ExamplePendingSpec extends ExampleSpec {
   @Test
   @Named("examples.forEach[pendingStateOf[example] should be expected]")
   @Order(99)
-  public void examplesForEachPendingStateOfExampleShouldBeExpected() throws Exception {
+  public void _examplesForEachPendingStateOfExampleShouldBeExpected() throws Exception {
     final Procedure1<ExamplePendingSpecExamples> _function = new Procedure1<ExamplePendingSpecExamples>() {
         public void apply(final ExamplePendingSpecExamples it) {
           boolean _pendingStateOf = ExamplePendingSpec.this.pendingStateOf(it.example);

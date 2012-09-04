@@ -170,4 +170,32 @@ Feature: References for steps
 	  	'''
 	  		jnarioFile = args.first
 	  	Then it should execute successfully	
+	  	
+		Scenario: Multiple Step References (causes problem when copier does not clear its cache)
+			When I have a feature with multiple scenarios
+			'''
+			Feature: Field Inference
+			 
+				Scenario: Scenario 1
+					CharSequence jnarioFile2
+			 		Then it should execute successfully
+						println(jnarioFile2)
+			                  
+				Scenario: Scenario 2
+					CharSequence feature1
+					Then both should execute successfully 
+						println(feature1)
+			                          
+				Scenario: Scenario 3
+					When I have a feature with a background and two scenarios 'Feature: Feature 1'         
+						jnarioFile2 = args.first
+					Then it should execute successfully
+					     
+				Scenario: Scenario 4
+					When I have a feature 'Feature: Feature 1'
+						feature1 = args.first
+					Then both should execute successfully 
+					'''
+				jnarioFile = args.first
+			Then it should execute successfully	
 	 

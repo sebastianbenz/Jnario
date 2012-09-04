@@ -26,7 +26,7 @@ public class UsingXtendSWithOperatorSpec {
   @Test
   @Named("initialize fixtures")
   @Order(99)
-  public void initializeFixtures() throws Exception {
+  public void _initializeFixtures() throws Exception {
     Stack<String> _stack = new Stack<String>();
     final Procedure1<Stack<String>> _function = new Procedure1<Stack<String>>() {
         public void apply(final Stack<String> it) {
@@ -46,7 +46,7 @@ public class UsingXtendSWithOperatorSpec {
   @Test
   @Named("write multiple assertions")
   @Order(99)
-  public void writeMultipleAssertions() throws Exception {
+  public void _writeMultipleAssertions() throws Exception {
     final Procedure1<String> _function = new Procedure1<String>() {
         public void apply(final String it) {
           int _length = it.length();

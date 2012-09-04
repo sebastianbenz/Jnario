@@ -59,7 +59,7 @@ public class IntroducingJnarioSuitesGettingStartedSpec extends IntroducingJnario
   @Test
   @Named("A simple Suite")
   @Order(99)
-  public void aSimpleSuite() throws Exception {
+  public void _aSimpleSuite() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
     _builder.newLine();
@@ -117,7 +117,7 @@ public class IntroducingJnarioSuitesGettingStartedSpec extends IntroducingJnario
   @Test
   @Named("Fixing the Errors")
   @Order(99)
-  public void fixingTheErrors() throws Exception {
+  public void _fixingTheErrors() throws Exception {
     this.parseExampleScenarioAndSpec();
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
@@ -167,7 +167,7 @@ public class IntroducingJnarioSuitesGettingStartedSpec extends IntroducingJnario
   @Test
   @Named("Structuring a Suite")
   @Order(99)
-  public void structuringASuite() throws Exception {
+  public void _structuringASuite() throws Exception {
     this.parseExampleScenarioAndSpec();
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
@@ -225,7 +225,7 @@ public class IntroducingJnarioSuitesGettingStartedSpec extends IntroducingJnario
   @Test
   @Named("Selecting multiple Specifications")
   @Order(99)
-  public void selectingMultipleSpecifications() throws Exception {
+  public void _selectingMultipleSpecifications() throws Exception {
     this.parseExampleScenarioAndSpec();
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");

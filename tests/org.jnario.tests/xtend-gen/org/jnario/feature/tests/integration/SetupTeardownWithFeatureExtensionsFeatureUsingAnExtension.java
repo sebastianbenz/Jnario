@@ -34,42 +34,42 @@ public class SetupTeardownWithFeatureExtensionsFeatureUsingAnExtension {
   @Order(1)
   @Named("When I declare an extension field of type **ExampleExtension** in the background")
   public void whenIDeclareAnExtensionFieldOfTypeExampleExtensionInTheBackground() {
-      StepArguments _stepArguments = new StepArguments("\n        import org.jnario.feature.tests.integration.ExampleExtension\n\n        Feature: Feature with extensions\n          \n          Background: A common extension to all scenarios\n              extension ExampleExtension = new ExampleExtension \n            Given a static extension field\n            \n          Scenario: Scenario 1\n            Given a step \n              println(\"step 1\")\n            Then we have two steps\n            println(\"step 2\")\n          Scenario: Scenario 2\n            Given a step \n              println(\"step 3\")\n            Then we have two steps\n              println(\"step 4\")\n      ");
-      final StepArguments args = _stepArguments;
-      String _first = JnarioIterableExtensions.<String>first(args);
-      this.feature = _first;
+    StepArguments _stepArguments = new StepArguments("\n        import org.jnario.feature.tests.integration.ExampleExtension\n\n        Feature: Feature with extensions\n          \n          Background: A common extension to all scenarios\n              extension ExampleExtension = new ExampleExtension \n            Given a static extension field\n            \n          Scenario: Scenario 1\n            Given a step \n              println(\"step 1\")\n            Then we have two steps\n            println(\"step 2\")\n          Scenario: Scenario 2\n            Given a step \n              println(\"step 3\")\n            Then we have two steps\n              println(\"step 4\")\n      ");
+    final StepArguments args = _stepArguments;
+    String _first = JnarioIterableExtensions.<String>first(args);
+    this.feature = _first;
   }
   
   @Test
   @Order(2)
   @Named("And execute the feature")
   public void andExecuteTheFeature() {
-      ConsoleRecorder _start = ConsoleRecorder.start();
-      this.recorder = _start;
-      FeatureExecutor.isSuccessful(this.feature);
+    ConsoleRecorder _start = ConsoleRecorder.start();
+    this.recorder = _start;
+    FeatureExecutor.isSuccessful(this.feature);
   }
   
   @Test
   @Order(3)
   @Named("Then the execution order is")
   public void thenTheExecutionOrderIs() {
-      StepArguments _stepArguments = new StepArguments("\n        before\n        step 1\n        step 2\n        after\n        before\n        step 3\n        step 4\n        after\n      ");
-      final StepArguments args = _stepArguments;
-      String _stop = this.recorder.stop();
-      final String actual = _stop.trim();
-      String _first = JnarioIterableExtensions.<String>first(args);
-      String _trim = _first.trim();
-      String[] _split = _trim.split("\n");
-      final Function1<String,String> _function = new Function1<String,String>() {
-          public String apply(final String it) {
-            String _trim = it.trim();
-            return _trim;
-          }
-        };
-      List<String> _map = ListExtensions.<String, String>map(((List<String>)Conversions.doWrapArray(_split)), _function);
-      String _newLine = Strings.newLine();
-      final String expected = IterableExtensions.join(_map, _newLine);
-      Assert.assertEquals(expected, actual);
+    StepArguments _stepArguments = new StepArguments("\n        before\n        step 1\n        step 2\n        after\n        before\n        step 3\n        step 4\n        after\n      ");
+    final StepArguments args = _stepArguments;
+    String _stop = this.recorder.stop();
+    final String actual = _stop.trim();
+    String _first = JnarioIterableExtensions.<String>first(args);
+    String _trim = _first.trim();
+    String[] _split = _trim.split("\n");
+    final Function1<String,String> _function = new Function1<String,String>() {
+        public String apply(final String it) {
+          String _trim = it.trim();
+          return _trim;
+        }
+      };
+    List<String> _map = ListExtensions.<String, String>map(((List<String>)Conversions.doWrapArray(_split)), _function);
+    String _newLine = Strings.newLine();
+    final String expected = IterableExtensions.join(_map, _newLine);
+    Assert.assertEquals(expected, actual);
   }
   
   CharSequence feature;

@@ -66,7 +66,7 @@ public class FilterExtractorSpec {
   @Test
   @Named("should remove all filter annotations from a string")
   @Order(99)
-  public void shouldRemoveAllFilterAnnotationsFromAString() throws Exception {
+  public void _shouldRemoveAllFilterAnnotationsFromAString() throws Exception {
     final Procedure1<FilterExtractorSpecFilterExtractions> _function = new Procedure1<FilterExtractorSpecFilterExtractions>() {
         public void apply(final FilterExtractorSpecFilterExtractions it) {
           String _stringAfterExtract = FilterExtractorSpec.this.stringAfterExtract(it.input);
@@ -84,7 +84,7 @@ public class FilterExtractorSpec {
   @Test
   @Named("should extract and create filters")
   @Order(99)
-  public void shouldExtractAndCreateFilters() throws Exception {
+  public void _shouldExtractAndCreateFilters() throws Exception {
     final Procedure1<FilterExtractorSpecFilterCreation> _function = new Procedure1<FilterExtractorSpecFilterCreation>() {
         public void apply(final FilterExtractorSpecFilterCreation it) {
           List<String> _extractedFilters = FilterExtractorSpec.this.extractedFilters(it.input);

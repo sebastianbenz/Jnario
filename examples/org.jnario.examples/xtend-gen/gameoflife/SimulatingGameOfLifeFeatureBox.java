@@ -21,11 +21,11 @@ public class SimulatingGameOfLifeFeatureBox {
   @Order(0)
   @Named("Given a world")
   public void givenAWorld() {
-      StepArguments _stepArguments = new StepArguments("\n\t\t\t\t------\n\t\t\t\t--XX--\n\t\t\t\t--XX--\n\t\t\t\t------\n\t\t\t");
-      final StepArguments args = _stepArguments;
-      String _first = JnarioIterableExtensions.<String>first(args);
-      World _parseWorld = World.parseWorld(_first);
-      this.world = _parseWorld;
+    StepArguments _stepArguments = new StepArguments("\n\t\t\t\t------\n\t\t\t\t--XX--\n\t\t\t\t--XX--\n\t\t\t\t------\n\t\t\t");
+    final StepArguments args = _stepArguments;
+    String _first = JnarioIterableExtensions.<String>first(args);
+    World _parseWorld = World.parseWorld(_first);
+    this.world = _parseWorld;
   }
   
   @Test
@@ -41,18 +41,18 @@ public class SimulatingGameOfLifeFeatureBox {
   @Order(2)
   @Named("Then the world is")
   public void thenTheWorldIs() {
-      StepArguments _stepArguments = new StepArguments("\n\t\t\t\t------\n\t\t\t\t--XX--\n\t\t\t\t--XX--\n\t\t\t\t------\n\t\t\t");
-      final StepArguments args = _stepArguments;
-      String _first = JnarioIterableExtensions.<String>first(args);
-      World _parseWorld = World.parseWorld(_first);
-      boolean _doubleArrow = Should.operator_doubleArrow(
-        this.world, _parseWorld);
-      Assert.assertTrue("\nExpected world => parseWorld(args.first) but"
-       + "\n     world is " + new StringDescription().appendValue(this.world).toString()
-       + "\n     parseWorld(args.first) is " + new StringDescription().appendValue(_parseWorld).toString()
-       + "\n     args.first is " + new StringDescription().appendValue(_first).toString()
-       + "\n     args is " + new StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
-      
+    StepArguments _stepArguments = new StepArguments("\n\t\t\t\t------\n\t\t\t\t--XX--\n\t\t\t\t--XX--\n\t\t\t\t------\n\t\t\t");
+    final StepArguments args = _stepArguments;
+    String _first = JnarioIterableExtensions.<String>first(args);
+    World _parseWorld = World.parseWorld(_first);
+    boolean _doubleArrow = Should.operator_doubleArrow(
+      this.world, _parseWorld);
+    Assert.assertTrue("\nExpected world => parseWorld(args.first) but"
+     + "\n     world is " + new StringDescription().appendValue(this.world).toString()
+     + "\n     parseWorld(args.first) is " + new StringDescription().appendValue(_parseWorld).toString()
+     + "\n     args.first is " + new StringDescription().appendValue(_first).toString()
+     + "\n     args is " + new StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
+    
   }
   
   World world;

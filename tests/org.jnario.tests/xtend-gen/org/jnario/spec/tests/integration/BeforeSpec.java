@@ -26,7 +26,7 @@ public class BeforeSpec {
   @Test
   @Named("should be executed before each test")
   @Order(99)
-  public void shouldBeExecutedBeforeEachTest() throws Exception {
+  public void _shouldBeExecutedBeforeEachTest() throws Exception {
     final String spec = "\r\n\t\t\tpackage bootstrap\r\n\t\t\t \r\n\t\t\timport org.jnario.runner.Order\r\n\t\t\t\r\n\t\t\tdescribe \"Before\"{\r\n\t\t\t\t\r\n\t\t\t\tstatic int beforeExecutionCount = 0\r\n\t\t\t\t\r\n\t\t\t\tbefore{\r\n\t\t\t\t\tbeforeExecutionCount = beforeExecutionCount + 1\r\n\t\t\t\t}\r\n\r\n\t\t\t\tfact \"should be executed before each test (1)\"{\r\n\t\t\t\t\tbeforeExecutionCount should be 1\r\n\t\t\t\t}\t\r\n\r\n\t\t\t\tfact \"should be executed before each test (2)\"{\r\n\t\t\t\t\tbeforeExecutionCount should be 2\r\n\t\t\t\t}\t\r\n\t\t\t}\r\n\t\t";
     this._behaviorExecutor.executesSuccessfully(spec);
   }

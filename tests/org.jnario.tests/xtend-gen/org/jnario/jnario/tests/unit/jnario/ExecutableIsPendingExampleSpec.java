@@ -19,7 +19,7 @@ public class ExecutableIsPendingExampleSpec extends ExecutableIsPendingSpec {
   @Test
   @Named("pendingExample.isPending[] should be true")
   @Order(99)
-  public void pendingExampleIsPendingShouldBeTrue() throws Exception {
+  public void _pendingExampleIsPendingShouldBeTrue() throws Exception {
     Example _pendingExample = Specs.pendingExample();
     boolean _isPending = _pendingExample.isPending();
     boolean _should_be = Should.<Boolean>should_be(Boolean.valueOf(_isPending), true);
@@ -32,7 +32,7 @@ public class ExecutableIsPendingExampleSpec extends ExecutableIsPendingSpec {
   @Test
   @Named("implementedExample.isPending[] should be false")
   @Order(99)
-  public void implementedExampleIsPendingShouldBeFalse() throws Exception {
+  public void _implementedExampleIsPendingShouldBeFalse() throws Exception {
     Example _implementedExample = Specs.implementedExample();
     boolean _isPending = _implementedExample.isPending();
     boolean _should_be = Should.<Boolean>should_be(Boolean.valueOf(_isPending), false);

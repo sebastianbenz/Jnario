@@ -92,7 +92,7 @@ public class SpecResolverSpec {
   @Test
   @Named("resolves referenced specs")
   @Order(99)
-  public void resolvesReferencedSpecs() throws Exception {
+  public void _resolvesReferencedSpecs() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
     _builder.newLine();

@@ -2,7 +2,6 @@ package gameoflife;
 
 import gameoflife.Evolution;
 import gameoflife.World;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.hamcrest.StringDescription;
 import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.Should;
@@ -22,37 +21,34 @@ public class SimulatingGameOfLifeFeatureBlinker {
   @Order(0)
   @Named("Given a world")
   public void givenAWorld() {
-      StepArguments _stepArguments = new StepArguments("\n\t\t\t\t-----\n\t\t\t\t--X--\n\t\t\t\t--X--\n\t\t\t\t--X--\n\t\t\t\t-----\n\t\t\t");
-      final StepArguments args = _stepArguments;
-      this.world = World.parseWorld(new Function0<CharSequence>() {
-        public CharSequence apply() {
-          StepArguments _args = args;
-          String _first = JnarioIterableExtensions.<String>first(_args);
-          return _first;
-        }
-      }.apply());
+    StepArguments _stepArguments = new StepArguments("\n\t\t\t\t-----\n\t\t\t\t--X--\n\t\t\t\t--X--\n\t\t\t\t--X--\n\t\t\t\t-----\n\t\t\t");
+    final StepArguments args = _stepArguments;
+    String _first = JnarioIterableExtensions.<String>first(args);
+    World _parseWorld = World.parseWorld(_first);
+    this.world = _parseWorld;
   }
   
   @Test
   @Order(1)
   @Named("When the world evolves")
   public void whenTheWorldEvolves() {
-    this.world = Evolution.gameOfLife().evolve(world);
+    Evolution _gameOfLife = Evolution.gameOfLife();
+    World _evolve = _gameOfLife.evolve(this.world);
+    this.world = _evolve;
   }
   
   @Test
   @Order(2)
   @Named("Then the world is")
   public void thenTheWorldIs() {
-      StepArguments _stepArguments = new StepArguments("\n\t\t\t\t-----\n\t\t\t\t-----\n\t\t\t\t-XXX-\n\t\t\t\t-----\n\t\t\t\t-----\n\t\t\t");
-      final StepArguments args = _stepArguments;
-      StepArguments _args = args;
-      String _first = JnarioIterableExtensions.<String>first(_args);
-      World _parseWorld = World.parseWorld(_first);
-      boolean _doubleArrow = Should.operator_doubleArrow(world, _parseWorld);
-      Assert.assertTrue("\nExpected  but"
-       + "\n      is " + new StringDescription().appendValue(_parseWorld).toString() + "\n", _doubleArrow);
-      
+    StepArguments _stepArguments = new StepArguments("\n\t\t\t\t-----\n\t\t\t\t-----\n\t\t\t\t-XXX-\n\t\t\t\t-----\n\t\t\t\t-----\n\t\t\t");
+    final StepArguments args = _stepArguments;
+    String _first = JnarioIterableExtensions.<String>first(args);
+    World _parseWorld = World.parseWorld(_first);
+    boolean _doubleArrow = Should.operator_doubleArrow(this.world, _parseWorld);
+    Assert.assertTrue("\nExpected  but"
+     + "\n      is " + new StringDescription().appendValue(_parseWorld).toString() + "\n", _doubleArrow);
+    
   }
   
   World world;

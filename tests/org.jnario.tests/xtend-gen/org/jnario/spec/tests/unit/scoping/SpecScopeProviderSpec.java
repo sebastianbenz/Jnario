@@ -31,7 +31,7 @@ public class SpecScopeProviderSpec {
   @Test
   @Named("should resolve operations from surrounding ExampleGroup\\\'s target")
   @Order(99)
-  public void shouldResolveOperationsFromSurroundingExampleGroupSTarget() throws Exception {
+  public void _shouldResolveOperationsFromSurroundingExampleGroupSTarget() throws Exception {
     this._scopeTestExtension.parseSpec("\r\n\t\t\tpackage bootstrap\r\n\t\t\t\r\n\t\t\timport org.junit.Assert\r\n\r\n\t\t\tdescribe Assert{\r\n\t\t\t\tcontext assertNotNull(String, Object){\r\n\t\t\t\t\tfact \"assertNotNull(String, Object)\"{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t} \r\n\r\n\t\t");
     Set<String> _targetOperationScope = this.targetOperationScope();
     boolean _should_contain = Should.<String>should_contain(_targetOperationScope, "assertNotNull(String, Object)");

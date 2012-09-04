@@ -24,7 +24,7 @@ public class GameOfLifeWorldDeadCellsSpec extends GameOfLifeWorldSpec {
   @Test
   @Named("with no live cells there are no dead cells")
   @Order(99)
-  public void withNoLiveCellsThereAreNoDeadCells() throws Exception {
+  public void _withNoLiveCellsThereAreNoDeadCells() throws Exception {
     List<CellPosition> _emptyList = CollectionLiterals.<CellPosition>emptyList();
     World _worldWith = World.worldWith(_emptyList);
     Set<CellPosition> _deadCells = _worldWith.deadCells();
@@ -41,7 +41,7 @@ public class GameOfLifeWorldDeadCellsSpec extends GameOfLifeWorldSpec {
   @Test
   @Named("with a live cell all neighbours are dead cells")
   @Order(99)
-  public void withALiveCellAllNeighboursAreDeadCells() throws Exception {
+  public void _withALiveCellAllNeighboursAreDeadCells() throws Exception {
     Set<CellPosition> _deadCells = this.worldWithLiveCell.deadCells();
     Set<CellPosition> _neighbours = this.livingCell.neighbours();
     boolean _doubleArrow = Should.operator_doubleArrow(_deadCells, _neighbours);
@@ -56,7 +56,7 @@ public class GameOfLifeWorldDeadCellsSpec extends GameOfLifeWorldSpec {
   @Test
   @Named("with a live cell all non-living neighbours are dead cells")
   @Order(99)
-  public void withALiveCellAllNonLivingNeighboursAreDeadCells() throws Exception {
+  public void _withALiveCellAllNonLivingNeighboursAreDeadCells() throws Exception {
     Set<CellPosition> _neighbours = this.livingCell.neighbours();
     Set<CellPosition> _neighbours_1 = this.anotherLivingCell.neighbours();
     Iterable<CellPosition> _plus = Iterables.<CellPosition>concat(_neighbours, _neighbours_1);

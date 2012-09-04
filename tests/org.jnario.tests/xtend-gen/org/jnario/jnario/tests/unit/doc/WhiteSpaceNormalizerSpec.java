@@ -42,7 +42,7 @@ public class WhiteSpaceNormalizerSpec {
   @Test
   @Named("should remove trailing whitespace")
   @Order(99)
-  public void shouldRemoveTrailingWhitespace() throws Exception {
+  public void _shouldRemoveTrailingWhitespace() throws Exception {
     final Procedure1<WhiteSpaceNormalizerSpecExamples> _function = new Procedure1<WhiteSpaceNormalizerSpecExamples>() {
         public void apply(final WhiteSpaceNormalizerSpecExamples it) {
           String _normalize = WhiteSpaceNormalizerSpec.this.subject.normalize(it.input);

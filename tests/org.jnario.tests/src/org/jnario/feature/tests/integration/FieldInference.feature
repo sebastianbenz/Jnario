@@ -7,12 +7,11 @@
  *******************************************************************************/
 package org.jnario.feature.tests.integration
 
-import static extension org.jnario.jnario.test.util.FeatureExecutor.*
 import org.jnario.runner.CreateWith
 import org.jnario.jnario.test.util.FeatureTestCreator
 import com.google.inject.Inject
-import org.jnario.jnario.test.util.FeatureExecutor
 import static extension org.jnario.jnario.test.util.ResultMatchers.*
+import org.jnario.jnario.test.util.FeatureExecutor
  
 @CreateWith(typeof(FeatureTestCreator))
 Feature: Field Inference
@@ -80,7 +79,6 @@ Feature: Field Inference
 		Then it should execute successfully
 		
 	Scenario: Inferring Fields from Background in different Feature
-		@Inject extension FeatureExecutor 
 		When I have a feature
 			'''
 			Feature: Feature 1
@@ -92,7 +90,7 @@ Feature: Field Inference
 						myString = args.first
 			'''
 			feature1 = args.first
-		And another feature
+		And another feature 
 			'''
 			Feature: Feature 2
 				Scenario: My Scenario 2
@@ -102,3 +100,4 @@ Feature: Field Inference
 			'''
 			feature2 = args.first
 		Then both should execute successfully 
+ 

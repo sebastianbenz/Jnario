@@ -21,11 +21,11 @@ public class JnarioDocCompilerSuiteDocCompilerSpec extends JnarioDocCompilerSpec
   @Test
   @Named("\\\"test/ExampleSuite.html\\\" should be generated")
   @Order(99)
-  public void testExampleSuiteHtmlShouldBeGenerated() throws Exception {
+  public void _testExampleSuiteHtmlShouldBeGenerated() throws Exception {
     Matcher<String> _generated = this.generated();
-    boolean _should_be = Should.<String>should_be("test/ExampleSuite.html", _generated);
+    boolean result = Should.operator_doubleArrow("test/ExampleSuite.html", _generated);
     Assert.assertTrue("\nExpected \"test/ExampleSuite.html\" should be generated but"
-     + "\n     generated is " + new StringDescription().appendValue(_generated).toString() + "\n", _should_be);
+     + "\n     generated is " + new StringDescription().appendValue(_generated).toString() + "\n", result);
     
   }
 }

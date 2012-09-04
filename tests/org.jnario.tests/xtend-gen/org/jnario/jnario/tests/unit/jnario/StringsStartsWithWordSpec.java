@@ -40,7 +40,7 @@ public class StringsStartsWithWordSpec extends StringsSpec {
   @Test
   @Named("examples.forEach[string.startsWithWord[word] => index]")
   @Order(99)
-  public void examplesForEachStringStartsWithWordWordIndex() throws Exception {
+  public void _examplesForEachStringStartsWithWordWordIndex() throws Exception {
     final Procedure1<StringsStartsWithWordSpecExamples> _function = new Procedure1<StringsStartsWithWordSpecExamples>() {
         public void apply(final StringsStartsWithWordSpecExamples it) {
           int _startsWithWord = Strings.startsWithWord(it.string, it.word);

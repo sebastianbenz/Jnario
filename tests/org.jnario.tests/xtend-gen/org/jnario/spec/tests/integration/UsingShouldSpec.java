@@ -4,6 +4,7 @@ import java.util.List;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.hamcrest.StringDescription;
@@ -33,7 +34,7 @@ public class UsingShouldSpec {
   @Test
   @Named("To pass..")
   @Order(99)
-  public void toPass() throws Exception {
+  public void _toPass() throws Exception {
     boolean _should_be = Should.<Boolean>should_be(
       Boolean.valueOf(true), true);
     Assert.assertTrue("\nExpected // equality\n\t\ttrue should be true but"
@@ -44,8 +45,9 @@ public class UsingShouldSpec {
     Assert.assertFalse("\nExpected 1 + 1 should not be 1 but"
      + "\n     1 + 1 is " + new StringDescription().appendValue(Integer.valueOf(_plus)).toString() + "\n", _should_be_1);
     
+    Matcher<String> _nullValue = CoreMatchers.<String>nullValue();
     boolean _should_be_2 = Should.<String>should_be(
-      "something", null);
+      "something", _nullValue);
     Assert.assertFalse("\nExpected \"something\" should not be null but"
      + "\n     \"something\" should not be null is " + new StringDescription().appendValue(null).toString() + "\n", _should_be_2);
     
@@ -124,7 +126,7 @@ public class UsingShouldSpec {
   @Test
   @Named("...or not to pass")
   @Order(99)
-  public void orNotToPass() throws Exception {
+  public void _orNotToPass() throws Exception {
     try{
       int _plus = (1 + 1);
       boolean _should_be = Should.should_be(Integer.valueOf(_plus), Integer.valueOf(1));
@@ -159,6 +161,30 @@ public class UsingShouldSpec {
       // expected
     }
     try{
+      Object _object = new Object();
+      Matcher<?> _nullValue = CoreMatchers.nullValue();
+      boolean _doubleArrow_1 = Should.operator_doubleArrow(_object, _nullValue);
+      Assert.assertTrue("\nExpected new Object => null but"
+       + "\n     new Object is " + new StringDescription().appendValue(_object).toString() + "\n", _doubleArrow_1);
+      
+      Assert.fail("Expected " + AssertionError.class.getName() + " in \n     new Object => null\n with:"
+       + "\n     new Object is " + new StringDescription().appendValue(_object).toString());
+    }catch(AssertionError e){
+      // expected
+    }
+    try{
+      Object _object_1 = new Object();
+      Matcher<Object> _nullValue_1 = CoreMatchers.<Object>nullValue();
+      boolean _should_be_2 = Should.<Object>should_be(_object_1, _nullValue_1);
+      Assert.assertTrue("\nExpected new Object should be null but"
+       + "\n     new Object is " + new StringDescription().appendValue(_object_1).toString() + "\n", _should_be_2);
+      
+      Assert.fail("Expected " + AssertionError.class.getName() + " in \n     new Object should be null\n with:"
+       + "\n     new Object is " + new StringDescription().appendValue(_object_1).toString());
+    }catch(AssertionError e){
+      // expected
+    }
+    try{
       this.method();
       Assert.fail("Expected " + IllegalArgumentException.class.getName() + " in \n     method()\n with:");
     }catch(IllegalArgumentException e){
@@ -173,7 +199,7 @@ public class UsingShouldSpec {
   @Test
   @Named("Why did it fail?")
   @Order(99)
-  public void whyDidItFail() throws Exception {
+  public void _whyDidItFail() throws Exception {
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
           int _plus = (1 + 1);
@@ -247,7 +273,7 @@ public class UsingShouldSpec {
   @Test
   @Named("Combining hamcrest and should")
   @Order(99)
-  public void combiningHamcrestAndShould() throws Exception {
+  public void _combiningHamcrestAndShould() throws Exception {
     Matcher<String> _startsWith = Matchers.startsWith("h");
     boolean _doubleArrow = Should.operator_doubleArrow(
       "hello", _startsWith);

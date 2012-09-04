@@ -78,7 +78,7 @@ public class StepArgumentsProviderSpec {
   @Test
   @Named("extracts arguments from step descriptions")
   @Order(99)
-  public void extractsArgumentsFromStepDescriptions() throws Exception {
+  public void _extractsArgumentsFromStepDescriptions() throws Exception {
     final Procedure1<StepArgumentsProviderSpecExamples> _function = new Procedure1<StepArgumentsProviderSpecExamples>() {
         public void apply(final StepArgumentsProviderSpecExamples it) {
           String _replaceAll = it.step==null?(String)null:it.step.replaceAll("\"", "\'");
@@ -102,7 +102,7 @@ public class StepArgumentsProviderSpec {
   @Test
   @Named("returns empty list if step has no name")
   @Order(99)
-  public void returnsEmptyListIfStepHasNoName() throws Exception {
+  public void _returnsEmptyListIfStepHasNoName() throws Exception {
     Given _step = Features.step(null);
     List<String> _findStepArguments = this.subject.findStepArguments(_step);
     List<Object> _list = JnarioCollectionLiterals.<Object>list();

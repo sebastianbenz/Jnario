@@ -18,7 +18,7 @@ public class ExecutableIsPendingSuiteSpec extends ExecutableIsPendingSpec {
   @Test
   @Named("Suites do not support isPending")
   @Order(99)
-  public void suitesDoNotSupportIsPending() throws Exception {
+  public void _suitesDoNotSupportIsPending() throws Exception {
     try{
       Suite _suite = Suites.suite("A suite");
       _suite.isPending();

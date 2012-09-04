@@ -73,7 +73,7 @@ public class SpecExtensionsSpec {
   @Test
   @Named("Example:")
   @Order(99)
-  public void example() throws Exception {
+  public void _example() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();

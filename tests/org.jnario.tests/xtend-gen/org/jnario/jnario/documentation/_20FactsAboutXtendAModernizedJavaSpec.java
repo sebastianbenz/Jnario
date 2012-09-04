@@ -30,7 +30,7 @@ public class _20FactsAboutXtendAModernizedJavaSpec extends _20FactsAboutXtendSpe
   @Test
   @Named("No semicolons")
   @Order(99)
-  public void noSemicolons() throws Exception {
+  public void _noSemicolons() throws Exception {
     String greeting = "";
     greeting = "Hello World";
     InputOutput.<String>println(greeting);
@@ -43,7 +43,7 @@ public class _20FactsAboutXtendAModernizedJavaSpec extends _20FactsAboutXtendSpe
   @Test
   @Named("Variables are declared with var and val")
   @Order(99)
-  public void variablesAreDeclaredWithVarAndVal() throws Exception {
+  public void _variablesAreDeclaredWithVarAndVal() throws Exception {
     String x = "I might change";
     final String y = "I\'ll never change";
   }
@@ -57,7 +57,7 @@ public class _20FactsAboutXtendAModernizedJavaSpec extends _20FactsAboutXtendSpe
   @Test
   @Named("Less typing thanks to type inference")
   @Order(99)
-  public void lessTypingThanksToTypeInference() throws Exception {
+  public void _lessTypingThanksToTypeInference() throws Exception {
     final String greeting = "Hello World";
     boolean _doubleArrow = Should.operator_doubleArrow(greeting, String.class);
     Assert.assertTrue("\nExpected greeting => typeof(String) but"
@@ -80,7 +80,7 @@ public class _20FactsAboutXtendAModernizedJavaSpec extends _20FactsAboutXtendSpe
   @Test
   @Named("Syntactic sugar: Pairs")
   @Order(99)
-  public void syntacticSugarPairs() throws Exception {
+  public void _syntacticSugarPairs() throws Exception {
     final Pair<String,String> pair = Pair.<String, String>of("spain", "italy");
     String _key = pair.getKey();
     boolean _doubleArrow = Should.operator_doubleArrow(_key, "spain");
@@ -128,7 +128,7 @@ public class _20FactsAboutXtendAModernizedJavaSpec extends _20FactsAboutXtendSpe
   @Test
   @Named("Fields & methods work almost like in Java")
   @Order(99)
-  public void fieldsMethodsWorkAlmostLikeInJava() throws Exception {
+  public void _fieldsMethodsWorkAlmostLikeInJava() throws Exception {
     String _sayHello = this.sayHello("Sebastian");
     String _plus = (this.greeting + "Sebastian");
     boolean _doubleArrow = Should.operator_doubleArrow(_sayHello, _plus);

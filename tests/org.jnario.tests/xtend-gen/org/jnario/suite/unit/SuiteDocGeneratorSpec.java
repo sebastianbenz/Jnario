@@ -65,7 +65,7 @@ public class SuiteDocGeneratorSpec {
   @Test
   @Named("Generates suite doc with resolved specs")
   @Order(99)
-  public void generatesSuiteDocWithResolvedSpecs() throws Exception {
+  public void _generatesSuiteDocWithResolvedSpecs() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package test");
     _builder.newLine();

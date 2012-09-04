@@ -20,7 +20,7 @@ public class StepNameProviderNameOfSpec extends StepNameProviderSpec {
   @Test
   @Named("returns null if the step has no name")
   @Order(99)
-  public void returnsNullIfTheStepHasNoName() throws Exception {
+  public void _returnsNullIfTheStepHasNoName() throws Exception {
     Given _emptyStep = this.emptyStep();
     String _nameOf = this.subject.nameOf(_emptyStep);
     boolean _equals = Objects.equal(_nameOf, null);
@@ -34,7 +34,7 @@ public class StepNameProviderNameOfSpec extends StepNameProviderSpec {
   @Test
   @Named("returns the name for a step with definition")
   @Order(99)
-  public void returnsTheNameForAStepWithDefinition() throws Exception {
+  public void _returnsTheNameForAStepWithDefinition() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Scenario: MyScenario");
     _builder.newLine();
@@ -55,7 +55,7 @@ public class StepNameProviderNameOfSpec extends StepNameProviderSpec {
   @Test
   @Named("returns the name for a step with resolved reference")
   @Order(99)
-  public void returnsTheNameForAStepWithResolvedReference() throws Exception {
+  public void _returnsTheNameForAStepWithResolvedReference() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Scenario: MyScenario 2");
     _builder.newLine();
@@ -81,7 +81,7 @@ public class StepNameProviderNameOfSpec extends StepNameProviderSpec {
   @Test
   @Named("returns the name for a step with unresolved reference")
   @Order(99)
-  public void returnsTheNameForAStepWithUnresolvedReference() throws Exception {
+  public void _returnsTheNameForAStepWithUnresolvedReference() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Scenario: MyScenario 2");
     _builder.newLine();
@@ -99,7 +99,7 @@ public class StepNameProviderNameOfSpec extends StepNameProviderSpec {
   @Test
   @Named("keeps parameter values")
   @Order(99)
-  public void keepsParameterValues() throws Exception {
+  public void _keepsParameterValues() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Scenario: MyScenario 2");
     _builder.newLine();

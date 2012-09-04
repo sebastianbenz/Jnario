@@ -25,7 +25,7 @@ public class ExampleNameProviderToJavaClassNameExampleTableSpec extends ExampleN
   @Test
   @Named("should combine example and parent name")
   @Order(99)
-  public void shouldCombineExampleAndParentName() throws Exception {
+  public void _shouldCombineExampleAndParentName() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \'My Context\'{");
     _builder.newLine();
@@ -48,7 +48,7 @@ public class ExampleNameProviderToJavaClassNameExampleTableSpec extends ExampleN
   @Test
   @Named("should convert example name to first upper")
   @Order(99)
-  public void shouldConvertExampleNameToFirstUpper() throws Exception {
+  public void _shouldConvertExampleNameToFirstUpper() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \'My Context\'{");
     _builder.newLine();

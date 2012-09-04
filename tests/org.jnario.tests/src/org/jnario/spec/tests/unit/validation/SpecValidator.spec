@@ -20,6 +20,8 @@ import org.jnario.spec.spec.ExampleGroup
 import org.jnario.spec.validation.SpecJavaValidator
 
 import static org.jnario.jnario.test.util.Query.*
+import org.eclipse.xtext.xbase.XBinaryOperation
+import org.jnario.jnario.test.util.Resources
 
 @CreateWith(typeof(SpecTestCreator))
 describe SpecJavaValidator{
@@ -65,6 +67,20 @@ describe SpecJavaValidator{
 			  describe Integer{
 			  }	
 		  }
+		')
+		val validationResult = validate(typeof(ExampleGroup))
+		validationResult.assertOK
+	}
+	
+	fact "specs with different method contexts are OK"{
+		parseSpec('
+			import java.util.Stack
+		  	describe Stack{
+				context push(E){
+				}
+				context push{
+				}
+			}  
 		')
 		val validationResult = validate(typeof(ExampleGroup))
 		validationResult.assertOK
@@ -116,8 +132,40 @@ describe SpecJavaValidator{
 		val validationResult = validate(typeof(ExampleTable))
 		validationResult.assertErrorContains("number")
 	}
-	   
+	
+	fact "should can compare objects of the same type"{
+		parseSpec('
+			describe "Example"{
+				fact 1 => 1
+			} 
+		')
+		val validationResult = validate(typeof(XBinaryOperation))
+		validationResult.assertOK
+	}
+	
+	fact "should can compare object with a class"{
+		parseSpec('
+			describe "Example"{
+				fact 1 => typeof(int)
+			} 
+		')
+		val validationResult = validate(typeof(XBinaryOperation))
+		validationResult.assertOK
+	}
+	
+	fact "should can compare with matcher"{
+		parseSpec('
+			import static org.hamcrest.CoreMatchers.*
+			describe "Example"{
+				fact 1 => notNullValue
+			} 
+		')
+		val validationResult = validate(typeof(XBinaryOperation))
+		validationResult.assertOK
+	}
+	
 	def validate(Class<? extends EObject> type){
+		Resources::addContainerStateAdapter(resourceSet);
 		val target = query(modelStore).first(type)
 		return RegisteredValidatorTester::validateObj(target)
 	}

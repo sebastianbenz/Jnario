@@ -22,7 +22,7 @@ public class CalculatorSubstractSpec extends CalculatorSpec {
   @Test
   @Named("subject.substract[5, 3] should be 2")
   @Order(99)
-  public void subjectSubstract53ShouldBe2() throws Exception {
+  public void _subjectSubstract53ShouldBe2() throws Exception {
     int _substract = this.subject.substract(5, 3);
     boolean _should_be = Should.should_be(Integer.valueOf(_substract), Integer.valueOf(2));
     Assert.assertTrue("\nExpected subject.substract(5, 3) should be 2 but"

@@ -20,11 +20,11 @@ public class FeatureExtensionsFeatureDefiningOwnExtensions {
   @Order(0)
   @Named("Given the value \"12.5\"")
   public void givenTheValue125() {
-      StepArguments _stepArguments = new StepArguments("12.5");
-      final StepArguments args = _stepArguments;
-      String _first = JnarioIterableExtensions.<String>first(args);
-      double _double = StringConversions.toDouble(_first);
-      this.value = _double;
+    StepArguments _stepArguments = new StepArguments("12.5");
+    final StepArguments args = _stepArguments;
+    String _first = JnarioIterableExtensions.<String>first(args);
+    double _double = StringConversions.toDouble(_first);
+    this.value = _double;
   }
   
   @Test
@@ -39,17 +39,17 @@ public class FeatureExtensionsFeatureDefiningOwnExtensions {
   @Order(2)
   @Named("Then the value should be \"12.0\"")
   public void thenTheValueShouldBe120() {
-      StepArguments _stepArguments = new StepArguments("12.0");
-      final StepArguments args = _stepArguments;
-      String _first = JnarioIterableExtensions.<String>first(args);
-      double _double = StringConversions.toDouble(_first);
-      boolean _doubleArrow = Should.operator_doubleArrow(Double.valueOf(this.flooredValue), Double.valueOf(_double));
-      Assert.assertTrue("\nExpected flooredValue => args.first.toDouble but"
-       + "\n     flooredValue is " + new StringDescription().appendValue(Double.valueOf(this.flooredValue)).toString()
-       + "\n     args.first.toDouble is " + new StringDescription().appendValue(Double.valueOf(_double)).toString()
-       + "\n     args.first is " + new StringDescription().appendValue(_first).toString()
-       + "\n     args is " + new StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
-      
+    StepArguments _stepArguments = new StepArguments("12.0");
+    final StepArguments args = _stepArguments;
+    String _first = JnarioIterableExtensions.<String>first(args);
+    double _double = StringConversions.toDouble(_first);
+    boolean _doubleArrow = Should.operator_doubleArrow(Double.valueOf(this.flooredValue), Double.valueOf(_double));
+    Assert.assertTrue("\nExpected flooredValue => args.first.toDouble but"
+     + "\n     flooredValue is " + new StringDescription().appendValue(Double.valueOf(this.flooredValue)).toString()
+     + "\n     args.first.toDouble is " + new StringDescription().appendValue(Double.valueOf(_double)).toString()
+     + "\n     args.first is " + new StringDescription().appendValue(_first).toString()
+     + "\n     args is " + new StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
+    
   }
   
   double value;

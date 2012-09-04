@@ -1,5 +1,6 @@
 package org.jnario.feature.tests.unit.naming;
 
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.hamcrest.StringDescription;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.tests.unit.naming.StepNameProviderSpec;
@@ -17,9 +18,33 @@ import org.junit.runner.RunWith;
 @Named("^describe[Feature]")
 public class StepNameProviderDescribeFeatureSpec extends StepNameProviderSpec {
   @Test
+  @Named("removes multilines parameters")
+  @Order(99)
+  public void _removesMultilinesParameters() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("Scenario: MyScenario 2");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("Given a step with multiline parameter");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("\"the parameter\"");
+    _builder.newLine();
+    _builder.append("\t ");
+    _builder.append("1 + 1 => 2");
+    _builder.newLine();
+    this.parseScenario(_builder);
+    String _describeStep = this.describeStep();
+    boolean _doubleArrow = Should.operator_doubleArrow(_describeStep, "Given a step with multiline parameter");
+    Assert.assertTrue("\nExpected describeStep => \'Given a step with multiline parameter\' but"
+     + "\n     describeStep is " + new StringDescription().appendValue(_describeStep).toString() + "\n", _doubleArrow);
+    
+  }
+  
+  @Test
   @Named("feature[\\\" With whitespace \\\"].desc =>  \\\"With whitespace\\\"")
   @Order(99)
-  public void featureWithWhitespaceDescWithWhitespace() throws Exception {
+  public void _featureWithWhitespaceDescWithWhitespace() throws Exception {
     Feature _feature = Features.feature(" With whitespace ");
     String _desc = this.desc(_feature);
     boolean _doubleArrow = Should.operator_doubleArrow(_desc, "With whitespace");
@@ -32,7 +57,7 @@ public class StepNameProviderDescribeFeatureSpec extends StepNameProviderSpec {
   @Test
   @Named("feature[\\\"With [parentheses]\\\"].desc =>  \\\"With [parentheses]\\\"")
   @Order(99)
-  public void featureWithParenthesesDescWithParentheses() throws Exception {
+  public void _featureWithParenthesesDescWithParentheses() throws Exception {
     Feature _feature = Features.feature("With (parentheses)");
     String _desc = this.desc(_feature);
     boolean _doubleArrow = Should.operator_doubleArrow(_desc, "With [parentheses]");

@@ -52,7 +52,7 @@ public class IntroducingJnarioSpecsWritingAssertionsSpec extends IntroducingJnar
   @Test
   @Named("\\\'should\\\' and `=>`")
   @Order(99)
-  public void shouldAnd() throws Exception {
+  public void _shouldAnd() throws Exception {
     boolean _should_be = Should.<Boolean>should_be(
       Boolean.valueOf(true), true);
     Assert.assertTrue("\nExpected true should be true but"
@@ -85,19 +85,14 @@ public class IntroducingJnarioSpecsWritingAssertionsSpec extends IntroducingJnar
   @Test
   @Named("Self-explaining failures")
   @Order(99)
-  public void selfExplainingFailures() throws Exception {
+  public void _selfExplainingFailures() throws Exception {
     final int x = 0;
     final int y = 1;
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
-          boolean _and = false;
           boolean _equals = (x == 1);
           boolean _equals_1 = (y == 0);
-          if (!_equals) {
-            _and = false;
-          } else {
-            _and = (_equals && _equals_1);
-          }
+          boolean _and = (_equals && _equals_1);
           Assert.assertTrue("\nExpected x == 1 && y == 0 but"
            + "\n     x == 1 is " + new StringDescription().appendValue(_equals).toString()
            + "\n     x is " + new StringDescription().appendValue(x).toString()

@@ -45,7 +45,7 @@ public class UsingTablesSpec {
   @Test
   @Named("accessing values")
   @Order(99)
-  public void accessingValues() throws Exception {
+  public void _accessingValues() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();
@@ -98,7 +98,7 @@ public class UsingTablesSpec {
   @Test
   @Named("Naming examples")
   @Order(99)
-  public void namingExamples() throws Exception {
+  public void _namingExamples() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();
@@ -141,7 +141,7 @@ public class UsingTablesSpec {
   @Test
   @Named("expressions in tables")
   @Order(99)
-  public void expressionsInTables() throws Exception {
+  public void _expressionsInTables() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();
@@ -193,7 +193,7 @@ public class UsingTablesSpec {
   @Test
   @Named("referencing members")
   @Order(99)
-  public void referencingMembers() throws Exception {
+  public void _referencingMembers() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();
@@ -261,7 +261,7 @@ public class UsingTablesSpec {
   @Test
   @Named("Specifying column types")
   @Order(99)
-  public void specifyingColumnTypes() throws Exception {
+  public void _specifyingColumnTypes() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();
@@ -327,7 +327,7 @@ public class UsingTablesSpec {
   @Test
   @Named("Error message")
   @Order(99)
-  public void errorMessage() throws Exception {
+  public void _errorMessage() throws Exception {
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
           final Procedure1<UsingTablesSpecExample> _function = new Procedure1<UsingTablesSpecExample>() {

@@ -54,7 +54,7 @@ public class _20FactsAboutXtendReadableCodeWithExtensionMethodsSpec extends _20F
   @Test
   @Named("Import static extension methods.")
   @Order(99)
-  public void importStaticExtensionMethods() throws Exception {
+  public void _importStaticExtensionMethods() throws Exception {
     final List<String> colors = JnarioCollectionLiterals.<String>list("red", "blue", "green");
     Collections.<String>sort(colors);
     List<String> _list = JnarioCollectionLiterals.<String>list("blue", "green", "red");
@@ -81,7 +81,7 @@ public class _20FactsAboutXtendReadableCodeWithExtensionMethodsSpec extends _20F
   @Test
   @Named("Local extension methods.")
   @Order(99)
-  public void localExtensionMethods() throws Exception {
+  public void _localExtensionMethods() throws Exception {
     List<String> _list = JnarioCollectionLiterals.<String>list("red");
     boolean _hasOneElement = this.hasOneElement(_list);
     Assert.assertTrue("\nExpected list(\"red\").hasOneElement but"
@@ -107,7 +107,7 @@ public class _20FactsAboutXtendReadableCodeWithExtensionMethodsSpec extends _20F
   @Test
   @Named("Extension fields")
   @Order(99)
-  public void extensionFields() throws Exception {
+  public void _extensionFields() throws Exception {
     List<String> _list = JnarioCollectionLiterals.<String>list("red");
     boolean _hasOneElement = this.hasOneElement(_list);
     Assert.assertTrue("\nExpected list(\"red\").hasOneElement but"

@@ -34,7 +34,7 @@ public class StepNameProviderRemoveArgumentsSpec extends StepNameProviderSpec {
   @Test
   @Named("examples do pass")
   @Order(99)
-  public void examplesDoPass() throws Exception {
+  public void _examplesDoPass() throws Exception {
     final Procedure1<StepNameProviderRemoveArgumentsSpecExamples> _function = new Procedure1<StepNameProviderRemoveArgumentsSpecExamples>() {
         public void apply(final StepNameProviderRemoveArgumentsSpecExamples it) {
           StringConcatenation _builder = new StringConcatenation();

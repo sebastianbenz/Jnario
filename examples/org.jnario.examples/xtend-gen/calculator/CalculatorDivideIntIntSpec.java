@@ -22,7 +22,7 @@ public class CalculatorDivideIntIntSpec extends CalculatorSpec {
   @Test
   @Named("should divide two values")
   @Order(99)
-  public void shouldDivideTwoValues() throws Exception {
+  public void _shouldDivideTwoValues() throws Exception {
     int _divide = this.subject.divide(6, 2);
     boolean _should_be = Should.should_be(Integer.valueOf(_divide), Integer.valueOf(2));
     Assert.assertTrue("\nExpected subject.divide(6, 2) should be 2 but"
@@ -34,7 +34,7 @@ public class CalculatorDivideIntIntSpec extends CalculatorSpec {
   @Test
   @Named("on division by zero")
   @Order(99)
-  public void onDivisionByZero() throws Exception {
+  public void _onDivisionByZero() throws Exception {
     try{
       this.subject.divide(1, 0);
       Assert.fail("Expected " + ArithmeticException.class.getName() + " in \n     subject.divide(1, 0)\n with:"

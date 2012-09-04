@@ -25,7 +25,7 @@ public class SpecResolverEvaluatesRegularExpressionsSpec extends SpecResolverSpe
   @Test
   @Named("example 1")
   @Order(99)
-  public void example1() throws Exception {
+  public void _example1() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
     _builder.newLine();
@@ -52,7 +52,7 @@ public class SpecResolverEvaluatesRegularExpressionsSpec extends SpecResolverSpe
   @Test
   @Named("example 2")
   @Order(99)
-  public void example2() throws Exception {
+  public void _example2() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
     _builder.newLine();
@@ -79,7 +79,7 @@ public class SpecResolverEvaluatesRegularExpressionsSpec extends SpecResolverSpe
   @Test
   @Named("returns empty list on null input")
   @Order(99)
-  public void returnsEmptyListOnNullInput() throws Exception {
+  public void _returnsEmptyListOnNullInput() throws Exception {
     PatternReference _createPatternReference = SuiteFactory.eINSTANCE.createPatternReference();
     List<Specification> _resolveSpecs = this.subject.resolveSpecs(_createPatternReference);
     List<Object> _list = JnarioCollectionLiterals.<Object>list();
@@ -96,7 +96,7 @@ public class SpecResolverEvaluatesRegularExpressionsSpec extends SpecResolverSpe
   @Test
   @Named("ignores unresolved elements")
   @Order(99)
-  public void ignoresUnresolvedElements() throws Exception {
+  public void _ignoresUnresolvedElements() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
     _builder.newLine();
@@ -123,7 +123,7 @@ public class SpecResolverEvaluatesRegularExpressionsSpec extends SpecResolverSpe
   @Test
   @Named("ignores containing suite")
   @Order(99)
-  public void ignoresContainingSuite() throws Exception {
+  public void _ignoresContainingSuite() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
     _builder.newLine();

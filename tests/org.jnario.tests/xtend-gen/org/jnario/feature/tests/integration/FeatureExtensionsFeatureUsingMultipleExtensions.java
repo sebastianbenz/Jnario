@@ -25,19 +25,19 @@ public class FeatureExtensionsFeatureUsingMultipleExtensions {
   @Order(0)
   @Named("When sorting the colors \"red, green, blue\"")
   public void whenSortingTheColorsRedGreenBlue() {
-      StepArguments _stepArguments = new StepArguments("red, green, blue");
-      final StepArguments args = _stepArguments;
-      String _first = JnarioIterableExtensions.<String>first(args);
-      String[] _split = _first.split(",");
-      final Function1<String,String> _function = new Function1<String,String>() {
-          public String apply(final String it) {
-            String _trim = it.trim();
-            return _trim;
-          }
-        };
-      List<String> _map = ListExtensions.<String, String>map(((List<String>)Conversions.doWrapArray(_split)), _function);
-      List<String> _sort = IterableExtensions.<String>sort(_map);
-      this.list = _sort;
+    StepArguments _stepArguments = new StepArguments("red, green, blue");
+    final StepArguments args = _stepArguments;
+    String _first = JnarioIterableExtensions.<String>first(args);
+    String[] _split = _first.split(",");
+    final Function1<String,String> _function = new Function1<String,String>() {
+        public String apply(final String it) {
+          String _trim = it.trim();
+          return _trim;
+        }
+      };
+    List<String> _map = ListExtensions.<String, String>map(((List<String>)Conversions.doWrapArray(_split)), _function);
+    List<String> _sort = IterableExtensions.<String>sort(_map);
+    this.list = _sort;
   }
   
   @Test

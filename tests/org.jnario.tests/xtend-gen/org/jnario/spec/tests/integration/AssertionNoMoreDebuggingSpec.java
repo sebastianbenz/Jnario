@@ -29,7 +29,7 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
   @Test
   @Named("Variable Access")
   @Order(99)
-  public void variableAccess() throws Exception {
+  public void _variableAccess() throws Exception {
     final boolean y = false;
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
@@ -53,7 +53,7 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
   @Test
   @Named("Filters literals")
   @Order(99)
-  public void filtersLiterals() throws Exception {
+  public void _filtersLiterals() throws Exception {
     final int x = 0;
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
@@ -78,7 +78,7 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
   @Test
   @Named("Not Equals")
   @Order(99)
-  public void notEquals() throws Exception {
+  public void _notEquals() throws Exception {
     final int x = 42;
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
@@ -108,7 +108,7 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
   @Test
   @Named("Function Calls")
   @Order(99)
-  public void functionCalls() throws Exception {
+  public void _functionCalls() throws Exception {
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
           String _greet = AssertionNoMoreDebuggingSpec.this.greet("World");
@@ -133,7 +133,7 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
   @Test
   @Named("Feature Calls")
   @Order(99)
-  public void featureCalls() throws Exception {
+  public void _featureCalls() throws Exception {
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
           String _upperCase = "Hello".toUpperCase();
@@ -163,19 +163,14 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
   @Test
   @Named("And expressions")
   @Order(99)
-  public void andExpressions() throws Exception {
+  public void _andExpressions() throws Exception {
     final int x = 0;
     final int y = 1;
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
-          boolean _and = false;
           boolean _equals = (x == 1);
           boolean _equals_1 = (y == 0);
-          if (!_equals) {
-            _and = false;
-          } else {
-            _and = (_equals && _equals_1);
-          }
+          boolean _and = (_equals && _equals_1);
           Assert.assertTrue("\nExpected x == 1 && y == 0 but"
            + "\n     x == 1 is " + new StringDescription().appendValue(_equals).toString()
            + "\n     x is " + new StringDescription().appendValue(x).toString()
@@ -208,18 +203,13 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
   @Test
   @Named("Removes duplicate feature calls")
   @Order(99)
-  public void removesDuplicateFeatureCalls() throws Exception {
+  public void _removesDuplicateFeatureCalls() throws Exception {
     final int x = 0;
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
-          boolean _and = false;
           boolean _greaterThan = (x > 0);
           boolean _lessThan = (x < 10);
-          if (!_greaterThan) {
-            _and = false;
-          } else {
-            _and = (_greaterThan && _lessThan);
-          }
+          boolean _and = (_greaterThan && _lessThan);
           Assert.assertTrue("\nExpected x > 0 && x < 10 but"
            + "\n     x > 0 is " + new StringDescription().appendValue(_greaterThan).toString()
            + "\n     x is " + new StringDescription().appendValue(x).toString()

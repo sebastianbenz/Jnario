@@ -290,7 +290,14 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           }
           Set<EObject> _jvmElements = FeatureJvmModelInferrer.this._iJvmModelAssociations.getJvmElements(original);
           Iterable<JvmGenericType> _filter = Iterables.<JvmGenericType>filter(_jvmElements, JvmGenericType.class);
-          final JvmGenericType originalType = IterableExtensions.<JvmGenericType>head(_filter);
+          final Function1<JvmGenericType,Boolean> _function = new Function1<JvmGenericType,Boolean>() {
+              public Boolean apply(final JvmGenericType it) {
+                EObject _primarySourceElement = FeatureJvmModelInferrer.this._iJvmModelAssociations.getPrimarySourceElement(it);
+                boolean _equals = Objects.equal(_primarySourceElement, original);
+                return Boolean.valueOf(_equals);
+              }
+            };
+          final JvmGenericType originalType = IterableExtensions.<JvmGenericType>findFirst(_filter, _function);
           StepExpression _expressionOf = FeatureJvmModelInferrer.this._stepExpressionProvider.expressionOf(it);
           FeatureJvmModelInferrer.this._jvmFieldReferenceUpdater.updateReferences(_expressionOf, originalType, inferredJvmType);
         }

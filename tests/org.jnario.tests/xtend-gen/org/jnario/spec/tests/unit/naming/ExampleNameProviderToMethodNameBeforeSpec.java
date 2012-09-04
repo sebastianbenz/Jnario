@@ -28,7 +28,7 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
   @Test
   @Named("should convert before description to camel case starting in lowercase")
   @Order(99)
-  public void shouldConvertBeforeDescriptionToCamelCaseStartingInLowercase() throws Exception {
+  public void _shouldConvertBeforeDescriptionToCamelCaseStartingInLowercase() throws Exception {
     ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList(
       "before \'my example\'", 
       "before \'my\nexample\'", 
@@ -49,7 +49,7 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
   @Test
   @Named("should use before as default name")
   @Order(99)
-  public void shouldUseBeforeAsDefaultName() throws Exception {
+  public void _shouldUseBeforeAsDefaultName() throws Exception {
     String _firstMethodName = this.firstMethodName("before{}");
     boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "before");
     Assert.assertTrue("\nExpected firstMethodName(\"before{}\") => \"before\" but"
@@ -60,7 +60,7 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
   @Test
   @Named("should enumerate befores without description")
   @Order(99)
-  public void shouldEnumerateBeforesWithoutDescription() throws Exception {
+  public void _shouldEnumerateBeforesWithoutDescription() throws Exception {
     String _secondMethodName = this.secondMethodName("before{}\r\n                 before{}");
     boolean _doubleArrow = Should.operator_doubleArrow(_secondMethodName, "before2");
     Assert.assertTrue("\nExpected secondMethodName(\"before{}\r\n                 before{}\") => \"before2\" but"
@@ -71,7 +71,7 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
   @Test
   @Named("should escape invalid names")
   @Order(99)
-  public void shouldEscapeInvalidNames() throws Exception {
+  public void _shouldEscapeInvalidNames() throws Exception {
     String _firstMethodName = this.firstMethodName("before \'null\'{}");
     boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "_null");
     Assert.assertTrue("\nExpected firstMethodName(\"before \'null\'{}\") => \"_null\" but"

@@ -31,7 +31,7 @@ public class ExampleNameProviderToJavaClassNameSpec extends ExampleNameProviderS
   @Test
   @Named("should remove all white spaces from ExampleGroup\\\'s description")
   @Order(99)
-  public void shouldRemoveAllWhiteSpacesFromExampleGroupSDescription() throws Exception {
+  public void _shouldRemoveAllWhiteSpacesFromExampleGroupSDescription() throws Exception {
     String _firstJavaClassName = this.firstJavaClassName("describe \'My Example\'");
     boolean _should_contain = Should.should_contain(_firstJavaClassName, " ");
     Assert.assertFalse("\nExpected firstJavaClassName(\"describe \'My Example\'\") should not contain \" \" but"
@@ -42,7 +42,7 @@ public class ExampleNameProviderToJavaClassNameSpec extends ExampleNameProviderS
   @Test
   @Named("should append \\\'Spec\\\' to class name")
   @Order(99)
-  public void shouldAppendSpecToClassName() throws Exception {
+  public void _shouldAppendSpecToClassName() throws Exception {
     String _firstJavaClassName = this.firstJavaClassName("describe \'My Example\'");
     Matcher<String> _endsWith = Matchers.endsWith("Spec");
     boolean _doubleArrow = Should.operator_doubleArrow(_firstJavaClassName, _endsWith);
@@ -55,7 +55,7 @@ public class ExampleNameProviderToJavaClassNameSpec extends ExampleNameProviderS
   @Test
   @Named("should prepend target type name")
   @Order(99)
-  public void shouldPrependTargetTypeName() throws Exception {
+  public void _shouldPrependTargetTypeName() throws Exception {
     String _firstJavaClassName = this.firstJavaClassName("describe org.junit.Assert \'My Example\'");
     Matcher<String> _startsWith = Matchers.startsWith("Assert");
     boolean _doubleArrow = Should.operator_doubleArrow(_firstJavaClassName, _startsWith);
@@ -68,7 +68,7 @@ public class ExampleNameProviderToJavaClassNameSpec extends ExampleNameProviderS
   @Test
   @Named("should prepend unresolved target type name")
   @Order(99)
-  public void shouldPrependUnresolvedTargetTypeName() throws Exception {
+  public void _shouldPrependUnresolvedTargetTypeName() throws Exception {
     String _firstJavaClassName = this.firstJavaClassName("describe Unresolved");
     Matcher<String> _startsWith = Matchers.startsWith("UnresolvedSpec");
     boolean _doubleArrow = Should.operator_doubleArrow(_firstJavaClassName, _startsWith);
@@ -102,7 +102,7 @@ public class ExampleNameProviderToJavaClassNameSpec extends ExampleNameProviderS
   @Test
   @Named("should convert description to camel case")
   @Order(99)
-  public void shouldConvertDescriptionToCamelCase() throws Exception {
+  public void _shouldConvertDescriptionToCamelCase() throws Exception {
     ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList(
       "describe \'my example\'", 
       "describe \'my\nexample\'", 
@@ -124,7 +124,7 @@ public class ExampleNameProviderToJavaClassNameSpec extends ExampleNameProviderS
   @Test
   @Named("should prefix numbers")
   @Order(99)
-  public void shouldPrefixNumbers() throws Exception {
+  public void _shouldPrefixNumbers() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"2 Facts\"{}");
     _builder.newLine();
@@ -138,7 +138,7 @@ public class ExampleNameProviderToJavaClassNameSpec extends ExampleNameProviderS
   @Test
   @Named("should prefix numbers in nested specs")
   @Order(99)
-  public void shouldPrefixNumbersInNestedSpecs() throws Exception {
+  public void _shouldPrefixNumbersInNestedSpecs() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"2 Facts\"{");
     _builder.newLine();
@@ -157,7 +157,7 @@ public class ExampleNameProviderToJavaClassNameSpec extends ExampleNameProviderS
   @Test
   @Named("should append the target operation\\\'s name and params")
   @Order(99)
-  public void shouldAppendTheTargetOperationSNameAndParams() throws Exception {
+  public void _shouldAppendTheTargetOperationSNameAndParams() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe org.junit.Assert{");
     _builder.newLine();
@@ -179,7 +179,7 @@ public class ExampleNameProviderToJavaClassNameSpec extends ExampleNameProviderS
   @Test
   @Named("should append the description")
   @Order(99)
-  public void shouldAppendTheDescription() throws Exception {
+  public void _shouldAppendTheDescription() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe org.junit.Assert{");
     _builder.newLine();
@@ -201,7 +201,7 @@ public class ExampleNameProviderToJavaClassNameSpec extends ExampleNameProviderS
   @Test
   @Named("should prepend the parent ExampleGroup\\\'s name")
   @Order(99)
-  public void shouldPrependTheParentExampleGroupSName() throws Exception {
+  public void _shouldPrependTheParentExampleGroupSName() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe org.junit.Assert{");
     _builder.newLine();

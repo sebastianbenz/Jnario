@@ -30,7 +30,7 @@ public class ExtensionLibraryConvertingStringsSpec extends ExtensionLibrarySpec 
   @Test
   @Named("Converting Strings to Primitives")
   @Order(99)
-  public void convertingStringsToPrimitives() throws Exception {
+  public void _convertingStringsToPrimitives() throws Exception {
     boolean _bool = StringConversions.toBool("true");
     boolean _doubleArrow = Should.operator_doubleArrow(Boolean.valueOf(_bool), Boolean.valueOf(true));
     Assert.assertTrue("\nExpected \"true\".toBool  => true but"
@@ -59,7 +59,7 @@ public class ExtensionLibraryConvertingStringsSpec extends ExtensionLibrarySpec 
   @Test
   @Named("Converting Strings to Lists")
   @Order(99)
-  public void convertingStringsToLists() throws Exception {
+  public void _convertingStringsToLists() throws Exception {
     List<String> _list = StringConversions.toList("1,2,3");
     List<String> _list_1 = JnarioCollectionLiterals.<String>list("1", "2", "3");
     boolean _doubleArrow = Should.operator_doubleArrow(_list, _list_1);

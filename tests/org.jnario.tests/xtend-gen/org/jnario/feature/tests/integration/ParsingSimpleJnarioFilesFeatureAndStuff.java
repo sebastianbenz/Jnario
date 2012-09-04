@@ -17,8 +17,8 @@ public class ParsingSimpleJnarioFilesFeatureAndStuff {
   @Order(0)
   @Named("Given two numbers.")
   public void givenTwoNumbers() {
-      this.x = 3;
-      this.y = 5;
+    this.x = 3;
+    this.y = 5;
   }
   
   @Test

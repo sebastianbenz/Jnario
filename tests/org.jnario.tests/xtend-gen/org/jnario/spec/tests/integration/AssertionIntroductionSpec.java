@@ -23,7 +23,7 @@ public class AssertionIntroductionSpec extends AssertionSpec {
   @Test
   @Named("To pass..")
   @Order(99)
-  public void toPass() throws Exception {
+  public void _toPass() throws Exception {
     Assert.assertTrue("\nExpected true but" + " did not." + "\n", true);
     
     boolean _equals = (1 == 1);
@@ -38,7 +38,7 @@ public class AssertionIntroductionSpec extends AssertionSpec {
   @Test
   @Named("...or not to pass")
   @Order(99)
-  public void orNotToPass() throws Exception {
+  public void _orNotToPass() throws Exception {
     try{
       Assert.assertTrue("\nExpected false but" + " did not." + "\n", false);
       

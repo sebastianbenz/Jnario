@@ -51,7 +51,7 @@ class StepReferenceFieldCreator {
    		for(field: members.filter(typeof(XtendField))){
 			if(!fieldNames.contains(field.name)){
 				val copiedMember = cloneWithProxies(field)
-				type.members += copiedMember as XtendField
+				type.members.add(copiedMember as XtendField)
 				fieldNames += field.name
 			}
 		}

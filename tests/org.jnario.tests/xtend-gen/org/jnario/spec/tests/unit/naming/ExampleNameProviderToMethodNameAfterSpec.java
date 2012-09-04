@@ -28,7 +28,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
   @Test
   @Named("should convert after description to camel case starting in lowercase")
   @Order(99)
-  public void shouldConvertAfterDescriptionToCamelCaseStartingInLowercase() throws Exception {
+  public void _shouldConvertAfterDescriptionToCamelCaseStartingInLowercase() throws Exception {
     ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList(
       "after \'my example\'", 
       "after \'my\nexample\'", 
@@ -49,7 +49,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
   @Test
   @Named("should use after as default name")
   @Order(99)
-  public void shouldUseAfterAsDefaultName() throws Exception {
+  public void _shouldUseAfterAsDefaultName() throws Exception {
     String _firstMethodName = this.firstMethodName("after{}");
     boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "after");
     Assert.assertTrue("\nExpected firstMethodName(\"after{}\") => \"after\" but"
@@ -60,7 +60,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
   @Test
   @Named("should enumerate afters without description")
   @Order(99)
-  public void shouldEnumerateAftersWithoutDescription() throws Exception {
+  public void _shouldEnumerateAftersWithoutDescription() throws Exception {
     String _secondMethodName = this.secondMethodName("after{}\r\n                 after{}");
     boolean _doubleArrow = Should.operator_doubleArrow(_secondMethodName, "after2");
     Assert.assertTrue("\nExpected secondMethodName(\"after{}\r\n                 after{}\") => \"after2\" but"

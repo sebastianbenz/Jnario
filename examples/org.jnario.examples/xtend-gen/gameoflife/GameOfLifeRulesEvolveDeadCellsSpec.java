@@ -39,7 +39,7 @@ public class GameOfLifeRulesEvolveDeadCellsSpec extends GameOfLifeRulesSpec {
   @Test
   @Named("deadcells.forEach[ subject.becomesAlive[livingNeighbours] => becomesAlive ]")
   @Order(99)
-  public void deadcellsForEachSubjectBecomesAliveLivingNeighboursBecomesAlive() throws Exception {
+  public void _deadcellsForEachSubjectBecomesAliveLivingNeighboursBecomesAlive() throws Exception {
     final Procedure1<GameOfLifeRulesEvolveDeadCellsSpecDeadcells> _function = new Procedure1<GameOfLifeRulesEvolveDeadCellsSpecDeadcells>() {
         public void apply(final GameOfLifeRulesEvolveDeadCellsSpecDeadcells it) {
           boolean _becomesAlive = GameOfLifeRulesEvolveDeadCellsSpec.this.subject.becomesAlive(it.livingNeighbours);

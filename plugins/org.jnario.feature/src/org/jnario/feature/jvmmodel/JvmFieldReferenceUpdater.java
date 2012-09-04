@@ -40,7 +40,7 @@ public class JvmFieldReferenceUpdater {
 			if(sourceField.isStatic()){
 				return false;
 			}
-			if(!sourceField.getDeclaringType().getSimpleName().equals(newType.getSimpleName())){
+			if(!sourceField.getDeclaringType().getSimpleName().equals(originalType.getSimpleName())){
 				return false;
 			}
 			JvmField newField = findMatchingField(sourceField);

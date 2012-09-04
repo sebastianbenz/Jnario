@@ -213,6 +213,38 @@ Scenario: Stack adding more elements
 </ul>
 </li>
 </ul>
+<h3  id="Scenario_Multiple_Step_References_causes_problem_when_copier_does_not_clear_its_cache">Scenario: Multiple Step References (causes problem when copier does not clear its cache)
+</h3>
+<ul>
+<li><p><strong>When</strong> I have a feature with multiple scenarios</p><pre>Feature: Field Inference
+ 
+  Scenario: Scenario 1
+    CharSequence jnarioFile2
+     Then it should execute successfully
+      println(jnarioFile2)
+                  
+  Scenario: Scenario 2
+    CharSequence feature1
+    Then both should execute successfully 
+      println(feature1)
+                          
+  Scenario: Scenario 3
+    When I have a feature with a background and two scenarios 'Feature: Feature 1'         
+      jnarioFile2 = args.first
+    Then it should execute successfully
+         
+  Scenario: Scenario 4
+    When I have a feature 'Feature: Feature 1'
+      feature1 = args.first
+    Then both should execute successfully</pre>
+<ul>
+</ul>
+</li>
+<li><p><strong>Then</strong> it should execute successfully</p>
+<ul>
+</ul>
+</li>
+</ul>
 				</div>
 			</div>
 		</div> <!-- /content -->

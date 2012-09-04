@@ -34,7 +34,7 @@ public class AdditionsSpec {
   @Test
   @Named("examples.forEach[a + b => sum]")
   @Order(99)
-  public void examplesForEachABSum() throws Exception {
+  public void _examplesForEachABSum() throws Exception {
     final Procedure1<AdditionsSpecExamples> _function = new Procedure1<AdditionsSpecExamples>() {
         public void apply(final AdditionsSpecExamples it) {
           int _plus = (it.a + it.b);
@@ -53,7 +53,7 @@ public class AdditionsSpec {
   @Test
   @Named("examples")
   @Order(99)
-  public void examples() throws Exception {
+  public void _examples() throws Exception {
     final String name = "Sebastian";
     String _sayHello = this.sayHello(name);
     boolean _doubleArrow = Should.operator_doubleArrow(_sayHello, "Hello Sebastian");

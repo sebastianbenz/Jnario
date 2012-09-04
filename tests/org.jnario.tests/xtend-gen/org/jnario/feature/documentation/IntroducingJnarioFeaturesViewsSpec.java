@@ -27,7 +27,7 @@ public class IntroducingJnarioFeaturesViewsSpec extends IntroducingJnarioFeature
   @Test
   @Named("Displaying step definitions")
   @Order(99)
-  public void displayingStepDefinitions() throws Exception {
+  public void _displayingStepDefinitions() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
     _builder.newLine();
@@ -89,7 +89,7 @@ public class IntroducingJnarioFeaturesViewsSpec extends IntroducingJnarioFeature
   @Test
   @Named("Hiding step definitions")
   @Order(99)
-  public void hidingStepDefinitions() throws Exception {
+  public void _hidingStepDefinitions() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
     _builder.newLine();

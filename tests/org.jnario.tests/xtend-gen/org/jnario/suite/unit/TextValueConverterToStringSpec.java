@@ -17,7 +17,7 @@ public class TextValueConverterToStringSpec extends TextValueConverterSpec {
   @Test
   @Named("adds colon")
   @Order(99)
-  public void addsColon() throws Exception {
+  public void _addsColon() throws Exception {
     String _string = this.subject.toString("suite - with dash");
     boolean _doubleArrow = Should.operator_doubleArrow(_string, ":suite \\- with dash");
     Assert.assertTrue("\nExpected subject.toString(\"suite - with dash\") => \":suite \\\\- with dash\" but"
@@ -29,7 +29,7 @@ public class TextValueConverterToStringSpec extends TextValueConverterSpec {
   @Test
   @Named("escapes dashes")
   @Order(99)
-  public void escapesDashes() throws Exception {
+  public void _escapesDashes() throws Exception {
     String _string = this.subject.toString("suite - with dash");
     boolean _doubleArrow = Should.operator_doubleArrow(_string, ":suite \\- with dash");
     Assert.assertTrue("\nExpected subject.toString(\"suite - with dash\") => \":suite \\\\- with dash\" but"
@@ -41,7 +41,7 @@ public class TextValueConverterToStringSpec extends TextValueConverterSpec {
   @Test
   @Named("escapes hashs")
   @Order(99)
-  public void escapesHashs() throws Exception {
+  public void _escapesHashs() throws Exception {
     String _string = this.subject.toString("suite # with hash");
     boolean _doubleArrow = Should.operator_doubleArrow(_string, ":suite \\# with hash");
     Assert.assertTrue("\nExpected subject.toString(\"suite # with hash\") => \":suite \\\\# with hash\" but"

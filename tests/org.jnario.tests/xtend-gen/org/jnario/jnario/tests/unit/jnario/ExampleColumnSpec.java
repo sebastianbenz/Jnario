@@ -54,7 +54,7 @@ public class ExampleColumnSpec {
   @Test
   @Named("calculates cells based on table")
   @Order(99)
-  public void calculatesCellsBasedOnTable() throws Exception {
+  public void _calculatesCellsBasedOnTable() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();

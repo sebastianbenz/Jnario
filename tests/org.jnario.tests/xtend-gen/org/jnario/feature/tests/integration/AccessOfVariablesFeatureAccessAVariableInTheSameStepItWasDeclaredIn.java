@@ -17,17 +17,17 @@ public class AccessOfVariablesFeatureAccessAVariableInTheSameStepItWasDeclaredIn
   @Order(0)
   @Named("When I have scenario with a reference to a variable")
   public void whenIHaveScenarioWithAReferenceToAVariable() {
-      StepArguments _stepArguments = new StepArguments("\n\t\t\t\tpackage bootstrap1\n\t\t\t\tFeature: Variable test\n\t\t\t\t\tScenario: Some scenario\n\t\t\t\t\t\tGiven a step with a variable\n\t\t\t\t\t\t\tvar x = 3\n\t\t\t\t\t\t\tx = 5\n\t\t\t");
-      final StepArguments args = _stepArguments;
-      String _first = JnarioIterableExtensions.<String>first(args);
-      this.jnarioFile = _first;
+    StepArguments _stepArguments = new StepArguments("\n\t\t\t\tpackage bootstrap1\n\t\t\t\tFeature: Variable test\n\t\t\t\t\tScenario: Some scenario\n\t\t\t\t\t\tGiven a step with a variable\n\t\t\t\t\t\t\tvar x = 3\n\t\t\t\t\t\t\tx = 5\n\t\t\t");
+    final StepArguments args = _stepArguments;
+    String _first = JnarioIterableExtensions.<String>first(args);
+    this.jnarioFile = _first;
   }
   
   @Test
   @Order(1)
   @Named("Then it should execute successfully")
   public void thenItShouldExecuteSuccessfully() {
-    FeatureExecutor.isSuccessful(jnarioFile);
+    FeatureExecutor.isSuccessful(this.jnarioFile);
   }
   
   CharSequence jnarioFile;

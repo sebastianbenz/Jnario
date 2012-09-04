@@ -9,34 +9,38 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator;
 import com.google.inject.Inject;
 
 @SuppressWarnings("serial")
-public class ExpressionCopier extends Copier{
+public class ExpressionCopier{
+	
+	private class Implementation extends Copier{
+		public Implementation() {
+			super(false);
+		}
+		
+		@Override
+		public EObject copy(EObject source) {
+			EObject target = super.copy(source);
+			modelAssociator.associate(source, target);
+			if (source instanceof XAbstractFeatureCall) {
+				XAbstractFeatureCall sourceFeatureCall = (XAbstractFeatureCall) source;
+				XAbstractFeatureCall targetFeatureCall = (XAbstractFeatureCall) target;
+				targetFeatureCall.setImplicitFirstArgument((XExpression) copy(sourceFeatureCall.getImplicitFirstArgument()));
+				targetFeatureCall.setImplicitReceiver((XExpression) copy(sourceFeatureCall.getImplicitReceiver()));
+			}
+			return target;
+		}
+	}
 
 	@Inject IJvmModelAssociator modelAssociator;
 	
-	public ExpressionCopier() {
-		super(true);
-	}
-
 	public <T extends EObject> T cloneWithProxies(T original) {
 		if (original == null)
 			return original;
+		
+		Implementation copier = new Implementation();
 		@SuppressWarnings("unchecked")
-		T copy = (T) copy(original);
-		copyReferences();
+		T copy = (T) copier.copy(original);
+		copier.copyReferences();
 		return copy;
-	}
-	
-	@Override
-	public EObject copy(EObject source) {
-		EObject target = super.copy(source);
-		modelAssociator.associate(source, target);
-		if (source instanceof XAbstractFeatureCall) {
-			XAbstractFeatureCall sourceFeatureCall = (XAbstractFeatureCall) source;
-			XAbstractFeatureCall targetFeatureCall = (XAbstractFeatureCall) target;
-			targetFeatureCall.setImplicitFirstArgument((XExpression) copy(sourceFeatureCall.getImplicitFirstArgument()));
-			targetFeatureCall.setImplicitReceiver((XExpression) copy(sourceFeatureCall.getImplicitReceiver()));
-		}
-		return target;
 	}
 	
 }

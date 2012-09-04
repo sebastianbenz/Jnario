@@ -17,7 +17,7 @@ public class GameOfLifeWorldLivingNeighboursSpec extends GameOfLifeWorldSpec {
   @Test
   @Named("returns number of live neighbours")
   @Order(99)
-  public void returnsNumberOfLiveNeighbours() throws Exception {
+  public void _returnsNumberOfLiveNeighbours() throws Exception {
     int _livingNeighbours = this.worldWithTwoLiveNeighbours.livingNeighbours(this.livingCell);
     boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_livingNeighbours), Integer.valueOf(1));
     Assert.assertTrue("\nExpected worldWithTwoLiveNeighbours.livingNeighbours(livingCell) => 1 but"

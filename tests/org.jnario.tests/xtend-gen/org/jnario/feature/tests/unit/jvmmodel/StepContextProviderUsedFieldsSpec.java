@@ -20,7 +20,7 @@ public class StepContextProviderUsedFieldsSpec extends StepContextProviderSpec {
   @Test
   @Named("returns all called fields of scenario")
   @Order(99)
-  public void returnsAllCalledFieldsOfScenario() throws Exception {
+  public void _returnsAllCalledFieldsOfScenario() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Feature: My Feature");
     _builder.newLine();
@@ -52,7 +52,7 @@ public class StepContextProviderUsedFieldsSpec extends StepContextProviderSpec {
   @Test
   @Named("returns all called fields of scenario and background")
   @Order(99)
-  public void returnsAllCalledFieldsOfScenarioAndBackground() throws Exception {
+  public void _returnsAllCalledFieldsOfScenarioAndBackground() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Feature: My Feature");
     _builder.newLine();

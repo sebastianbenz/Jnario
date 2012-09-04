@@ -1,6 +1,8 @@
 package org.jnario.feature.tests.unit.conversion;
 
 import org.eclipse.xtext.util.Strings;
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.Matcher;
 import org.hamcrest.StringDescription;
 import org.jnario.feature.tests.unit.conversion.FeatureValueConverterSpec;
 import org.jnario.lib.Should;
@@ -18,7 +20,7 @@ public class FeatureValueConverterToStringSpec extends FeatureValueConverterSpec
   @Test
   @Named("subject.toString[\\\"text\\\"] should be \\\"Prefix:text\\\" + Strings::newLine")
   @Order(99)
-  public void subjectToStringTextShouldBePrefixTextStringsNewLine() throws Exception {
+  public void _subjectToStringTextShouldBePrefixTextStringsNewLine() throws Exception {
     String _string = this.subject.toString("text");
     String _newLine = Strings.newLine();
     String _plus = ("Prefix:text" + _newLine);
@@ -34,9 +36,10 @@ public class FeatureValueConverterToStringSpec extends FeatureValueConverterSpec
   @Test
   @Named("subject.toString[null] should be null")
   @Order(99)
-  public void subjectToStringNullShouldBeNull() throws Exception {
+  public void _subjectToStringNullShouldBeNull() throws Exception {
     String _string = this.subject.toString(null);
-    boolean _should_be = Should.<String>should_be(_string, null);
+    Matcher<String> _nullValue = CoreMatchers.<String>nullValue();
+    boolean _should_be = Should.<String>should_be(_string, _nullValue);
     Assert.assertTrue("\nExpected subject.toString(null) should be null but"
      + "\n     subject.toString(null) is " + new StringDescription().appendValue(_string).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _should_be);

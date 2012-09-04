@@ -69,6 +69,19 @@ parseSpec('
 ')
 val validationResult = validate(typeof(ExampleGroup))
 validationResult.assertOK</pre>
+</li><li><p id="specs_with_different_method_contexts_are_OK"><strong>specs with different method contexts are OK</strong></p>
+<pre class="prettyprint lang-spec">
+parseSpec('
+  import java.util.Stack
+    describe Stack{
+    context push(E){
+    }
+    context push{
+    }
+  }  
+')
+val validationResult = validate(typeof(ExampleGroup))
+validationResult.assertOK</pre>
 </li><li><p id="specs_without_description_and_same_types_are_not_OK"><strong>specs without description and same types are not OK</strong></p>
 <pre class="prettyprint lang-spec">
 parseSpec('
@@ -113,6 +126,34 @@ parseSpec('
 
 val validationResult = validate(typeof(ExampleTable))
 validationResult.assertErrorContains(&quot;number&quot;)</pre>
+</li><li><p id="should_can_compare_objects_of_the_same_type"><strong>should can compare objects of the same type</strong></p>
+<pre class="prettyprint lang-spec">
+parseSpec('
+  describe &quot;Example&quot;{
+    fact 1 =&gt; 1
+  } 
+')
+val validationResult = validate(typeof(XBinaryOperation))
+validationResult.assertOK</pre>
+</li><li><p id="should_can_compare_object_with_a_class"><strong>should can compare object with a class</strong></p>
+<pre class="prettyprint lang-spec">
+parseSpec('
+  describe &quot;Example&quot;{
+    fact 1 =&gt; typeof(int)
+  } 
+')
+val validationResult = validate(typeof(XBinaryOperation))
+validationResult.assertOK</pre>
+</li><li><p id="should_can_compare_with_matcher"><strong>should can compare with matcher</strong></p>
+<pre class="prettyprint lang-spec">
+parseSpec('
+  import static org.hamcrest.CoreMatchers.*
+  describe &quot;Example&quot;{
+    fact 1 =&gt; notNullValue
+  } 
+')
+val validationResult = validate(typeof(XBinaryOperation))
+validationResult.assertOK</pre>
 </li></ul>
 				</div>
 			</div>

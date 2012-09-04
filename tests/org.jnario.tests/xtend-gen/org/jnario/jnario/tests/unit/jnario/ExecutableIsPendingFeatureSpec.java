@@ -21,7 +21,7 @@ public class ExecutableIsPendingFeatureSpec extends ExecutableIsPendingSpec {
   @Test
   @Named("feature[\\\"Without scenarios and without background\\\"].isPending[] should be true")
   @Order(99)
-  public void featureWithoutScenariosAndWithoutBackgroundIsPendingShouldBeTrue() throws Exception {
+  public void _featureWithoutScenariosAndWithoutBackgroundIsPendingShouldBeTrue() throws Exception {
     Feature _feature = Features.feature("Without scenarios and without background");
     boolean _isPending = _feature.isPending();
     boolean _should_be = Should.<Boolean>should_be(Boolean.valueOf(_isPending), true);
@@ -34,7 +34,7 @@ public class ExecutableIsPendingFeatureSpec extends ExecutableIsPendingSpec {
   @Test
   @Named("featureWith[implementedScenario].isPending[] should be false")
   @Order(99)
-  public void featureWithImplementedScenarioIsPendingShouldBeFalse() throws Exception {
+  public void _featureWithImplementedScenarioIsPendingShouldBeFalse() throws Exception {
     Scenario _implementedScenario = Features.implementedScenario();
     Feature _featureWith = Features.featureWith(_implementedScenario);
     boolean _isPending = _featureWith.isPending();
@@ -49,7 +49,7 @@ public class ExecutableIsPendingFeatureSpec extends ExecutableIsPendingSpec {
   @Test
   @Named("featureWith[scenarioWithoutSteps, implementedScenario].isPending[] should be true")
   @Order(99)
-  public void featureWithScenarioWithoutStepsImplementedScenarioIsPendingShouldBeTrue() throws Exception {
+  public void _featureWithScenarioWithoutStepsImplementedScenarioIsPendingShouldBeTrue() throws Exception {
     Scenario _scenarioWithoutSteps = Features.scenarioWithoutSteps();
     Scenario _implementedScenario = Features.implementedScenario();
     Feature _featureWith = Features.featureWith(_scenarioWithoutSteps, _implementedScenario);
@@ -66,7 +66,7 @@ public class ExecutableIsPendingFeatureSpec extends ExecutableIsPendingSpec {
   @Test
   @Named("featureWithBackground[implementedBackground].isPending[] should be true")
   @Order(99)
-  public void featureWithBackgroundImplementedBackgroundIsPendingShouldBeTrue() throws Exception {
+  public void _featureWithBackgroundImplementedBackgroundIsPendingShouldBeTrue() throws Exception {
     Background _implementedBackground = Features.implementedBackground();
     Feature _featureWithBackground = Features.featureWithBackground(_implementedBackground);
     boolean _isPending = _featureWithBackground.isPending();
@@ -81,7 +81,7 @@ public class ExecutableIsPendingFeatureSpec extends ExecutableIsPendingSpec {
   @Test
   @Named("featureWithBackground[backgroundWithoutSteps].isPending[] should be true")
   @Order(99)
-  public void featureWithBackgroundBackgroundWithoutStepsIsPendingShouldBeTrue() throws Exception {
+  public void _featureWithBackgroundBackgroundWithoutStepsIsPendingShouldBeTrue() throws Exception {
     Background _backgroundWithoutSteps = Features.backgroundWithoutSteps();
     Feature _featureWithBackground = Features.featureWithBackground(_backgroundWithoutSteps);
     boolean _isPending = _featureWithBackground.isPending();
@@ -96,7 +96,7 @@ public class ExecutableIsPendingFeatureSpec extends ExecutableIsPendingSpec {
   @Test
   @Named("featureWithBackgroundAndScenario[backgroundWithoutSteps, implementedScenario].isPending[] should be true")
   @Order(99)
-  public void featureWithBackgroundAndScenarioBackgroundWithoutStepsImplementedScenarioIsPendingShouldBeTrue() throws Exception {
+  public void _featureWithBackgroundAndScenarioBackgroundWithoutStepsImplementedScenarioIsPendingShouldBeTrue() throws Exception {
     Background _backgroundWithoutSteps = Features.backgroundWithoutSteps();
     Scenario _implementedScenario = Features.implementedScenario();
     Feature _featureWithBackgroundAndScenario = Features.featureWithBackgroundAndScenario(_backgroundWithoutSteps, _implementedScenario);
@@ -113,7 +113,7 @@ public class ExecutableIsPendingFeatureSpec extends ExecutableIsPendingSpec {
   @Test
   @Named("featureWithBackgroundAndScenario[implementedBackground, implementedScenario].isPending[] should be false")
   @Order(99)
-  public void featureWithBackgroundAndScenarioImplementedBackgroundImplementedScenarioIsPendingShouldBeFalse() throws Exception {
+  public void _featureWithBackgroundAndScenarioImplementedBackgroundImplementedScenarioIsPendingShouldBeFalse() throws Exception {
     Background _implementedBackground = Features.implementedBackground();
     Scenario _implementedScenario = Features.implementedScenario();
     Feature _featureWithBackgroundAndScenario = Features.featureWithBackgroundAndScenario(_implementedBackground, _implementedScenario);

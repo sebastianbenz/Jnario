@@ -38,17 +38,12 @@ public class SpecDocGeneratorSpec {
   @Test
   @Named("generates scenario title and heading")
   @Order(99)
-  public void generatesScenarioTitleAndHeading() throws Exception {
+  public void _generatesScenarioTitleAndHeading() throws Exception {
     this.generateEmptyExampleDoc();
     final String scenarioDoc = this.generatedFile("ExampleSpec.html");
-    boolean _and = false;
     boolean _notEquals = (!Objects.equal(scenarioDoc, null));
     boolean _contains = scenarioDoc.contains("<title>Example</title>");
-    if (!_notEquals) {
-      _and = false;
-    } else {
-      _and = (_notEquals && _contains);
-    }
+    boolean _and = (_notEquals && _contains);
     Assert.assertTrue("\nExpected scenarioDoc != null && \r\n\t\t\t\tscenarioDoc.contains(\"<title>Example</title>\") but"
      + "\n     scenarioDoc != null is " + new StringDescription().appendValue(_notEquals).toString()
      + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString()
@@ -60,7 +55,7 @@ public class SpecDocGeneratorSpec {
   @Test
   @Named("generates scenario documentation")
   @Order(99)
-  public void generatesScenarioDocumentation() throws Exception {
+  public void _generatesScenarioDocumentation() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("/*");
     _builder.newLine();
@@ -103,7 +98,7 @@ public class SpecDocGeneratorSpec {
   @Test
   @Named("generates example documentation")
   @Order(99)
-  public void generatesExampleDocumentation() throws Exception {
+  public void _generatesExampleDocumentation() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \'Example\'{");
     _builder.newLine();
@@ -154,7 +149,7 @@ public class SpecDocGeneratorSpec {
   @Test
   @Named("should support markdown for documentation")
   @Order(99)
-  public void shouldSupportMarkdownForDocumentation() throws Exception {
+  public void _shouldSupportMarkdownForDocumentation() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("/*");
     _builder.newLine();
@@ -181,7 +176,7 @@ public class SpecDocGeneratorSpec {
   @Test
   @Named("generates table for example tables")
   @Order(99)
-  public void generatesTableForExampleTables() throws Exception {
+  public void _generatesTableForExampleTables() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \'Example\'{");
     _builder.newLine();
@@ -226,7 +221,7 @@ public class SpecDocGeneratorSpec {
   @Test
   @Named("filters code based on regex in filter annotation")
   @Order(99)
-  public void filtersCodeBasedOnRegexInFilterAnnotation() throws Exception {
+  public void _filtersCodeBasedOnRegexInFilterAnnotation() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \'Example\'{");
     _builder.newLine();

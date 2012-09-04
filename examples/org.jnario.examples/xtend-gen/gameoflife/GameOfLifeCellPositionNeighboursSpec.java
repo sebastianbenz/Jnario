@@ -20,7 +20,7 @@ public class GameOfLifeCellPositionNeighboursSpec extends GameOfLifeCellPosition
   @Test
   @Named("are adjacent cells")
   @Order(99)
-  public void areAdjacentCells() throws Exception {
+  public void _areAdjacentCells() throws Exception {
     final CellPosition cell = CellPosition.cell(5, 5);
     CellPosition _cell = CellPosition.cell(4, 6);
     CellPosition _cell_1 = CellPosition.cell(5, 6);

@@ -22,27 +22,26 @@ public class ReferencesForStepsFeatureReferencingStepsWithDifferentKeyword {
   @Order(0)
   @Named("When I have a scenario with reused steps with different keywords that throw an exception")
   public void whenIHaveAScenarioWithReusedStepsWithDifferentKeywordsThatThrowAnException() {
-      StepArguments _stepArguments = new StepArguments("\r\n\t\t\t\tpackage bootstrap\r\n\t\t\t\tFeature: Test\r\n\t\t\t\t\tScenario: TestScenario 1\r\n\t\t\t\t\t\tGiven step\r\n\t\t\t\t\t\t\tthrow new RuntimeException()\r\n\t\t\t\t\t\t\r\n\t\t\t\t\tScenario: TestScenario 2\r\n\t\t\t\t\t\tWhen step\r\n\t\t\t");
-      final StepArguments args = _stepArguments;
-      String _first = JnarioIterableExtensions.<String>first(args);
-      this.jnarioFile = _first;
+    StepArguments _stepArguments = new StepArguments("\r\n\t\t\t\tpackage bootstrap\r\n\t\t\t\tFeature: Test\r\n\t\t\t\t\tScenario: TestScenario 1\r\n\t\t\t\t\t\tGiven step\r\n\t\t\t\t\t\t\tthrow new RuntimeException()\r\n\t\t\t\t\t\t\r\n\t\t\t\t\tScenario: TestScenario 2\r\n\t\t\t\t\t\tWhen step\r\n\t\t\t");
+    final StepArguments args = _stepArguments;
+    String _first = JnarioIterableExtensions.<String>first(args);
+    this.jnarioFile = _first;
   }
   
   @Test
   @Order(1)
   @Named("Then the number of failures should be \"2\"")
   public void thenTheNumberOfFailuresShouldBe2() {
-      StepArguments _stepArguments = new StepArguments("2");
-      final StepArguments args = _stepArguments;
-      Result _run = FeatureExecutor.run(jnarioFile);
-      int _failureCount = _run.getFailureCount();
-      StepArguments _args = args;
-      String _first = JnarioIterableExtensions.<String>first(_args);
-      int _int = StringConversions.toInt(_first);
-      boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_failureCount), Integer.valueOf(_int));
-      Assert.assertTrue("\nExpected  but"
-       + "\n      is " + new StringDescription().appendValue(Integer.valueOf(_failureCount)).toString() + "\n", _doubleArrow);
-      
+    StepArguments _stepArguments = new StepArguments("2");
+    final StepArguments args = _stepArguments;
+    Result _run = FeatureExecutor.run(this.jnarioFile);
+    int _failureCount = _run.getFailureCount();
+    String _first = JnarioIterableExtensions.<String>first(args);
+    int _int = StringConversions.toInt(_first);
+    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_failureCount), Integer.valueOf(_int));
+    Assert.assertTrue("\nExpected  but"
+     + "\n      is " + new StringDescription().appendValue(Integer.valueOf(_failureCount)).toString() + "\n", _doubleArrow);
+    
   }
   
   CharSequence jnarioFile;

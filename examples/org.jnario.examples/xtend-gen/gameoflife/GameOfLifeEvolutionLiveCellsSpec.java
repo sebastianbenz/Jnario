@@ -40,7 +40,7 @@ public class GameOfLifeEvolutionLiveCellsSpec extends GameOfLifeEvolutionSpec {
   @Test
   @Named("become alive if rule says so")
   @Order(99)
-  public void becomeAliveIfRuleSaysSo() throws Exception {
+  public void _becomeAliveIfRuleSaysSo() throws Exception {
     Evolution _evolution = new Evolution(this.allLiveStayAlive, this.dontCare);
     final Evolution evolution = _evolution;
     World _evolve = evolution.evolve(this.worldWithLiveCell);

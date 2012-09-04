@@ -42,7 +42,7 @@ public class SuiteClassNameProviderGetQualifiedClassNameSpec extends SuiteClassN
   @Test
   @Named("examples.forEach[ val actualName = subject.getQualifiedClassName[suite[name, packageName]] actualName => qualifiedName ]")
   @Order(99)
-  public void examplesForEachValActualNameSubjectGetQualifiedClassNameSuiteNamePackageNameActualNameQualifiedName() throws Exception {
+  public void _examplesForEachValActualNameSubjectGetQualifiedClassNameSuiteNamePackageNameActualNameQualifiedName() throws Exception {
     final Procedure1<SuiteClassNameProviderGetQualifiedClassNameSpecExamples> _function = new Procedure1<SuiteClassNameProviderGetQualifiedClassNameSpecExamples>() {
         public void apply(final SuiteClassNameProviderGetQualifiedClassNameSpecExamples it) {
           Suite _suite = Suites.suite(it.name, it.packageName);

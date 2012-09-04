@@ -24,7 +24,7 @@ public class ExampleNameProviderDescribeExampleSpec extends ExampleNameProviderS
   @Test
   @Named("should use the description")
   @Order(99)
-  public void shouldUseTheDescription() throws Exception {
+  public void _shouldUseTheDescription() throws Exception {
     String _describeFirst = this.describeFirst("\'should do stuff\' {true}");
     boolean _doubleArrow = Should.operator_doubleArrow(_describeFirst, "should do stuff");
     Assert.assertTrue("\nExpected describeFirst(\"\'should do stuff\' {true}\") => \"should do stuff\" but"
@@ -35,7 +35,7 @@ public class ExampleNameProviderDescribeExampleSpec extends ExampleNameProviderS
   @Test
   @Named("appends \\\'[PENDING]\\\' to pending example descriptions")
   @Order(99)
-  public void appendsPENDINGToPendingExampleDescriptions() throws Exception {
+  public void _appendsPENDINGToPendingExampleDescriptions() throws Exception {
     String _describeFirst = this.describeFirst("\'should do stuff\'");
     boolean _doubleArrow = Should.operator_doubleArrow(_describeFirst, "should do stuff [PENDING]");
     Assert.assertTrue("\nExpected describeFirst(\"\'should do stuff\'\") => \"should do stuff [PENDING]\" but"

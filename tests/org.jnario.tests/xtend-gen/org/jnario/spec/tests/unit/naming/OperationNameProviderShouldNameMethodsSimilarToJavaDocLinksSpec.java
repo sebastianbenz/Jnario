@@ -17,7 +17,7 @@ public class OperationNameProviderShouldNameMethodsSimilarToJavaDocLinksSpec ext
   @Test
   @Named("nameOf[\\\"simpleOperation\\\"] => \\\"simpleOperation\\\"")
   @Order(99)
-  public void nameOfSimpleOperationSimpleOperation() throws Exception {
+  public void _nameOfSimpleOperationSimpleOperation() throws Exception {
     String _nameOf = this.nameOf("simpleOperation");
     boolean _doubleArrow = Should.operator_doubleArrow(_nameOf, "simpleOperation");
     Assert.assertTrue("\nExpected nameOf(\"simpleOperation\") => \"simpleOperation\" but"
@@ -28,7 +28,7 @@ public class OperationNameProviderShouldNameMethodsSimilarToJavaDocLinksSpec ext
   @Test
   @Named("nameOf[\\\"operationWithSingleArgument\\\"] => \\\"operationWithSingleArgument[String]\\\"")
   @Order(99)
-  public void nameOfOperationWithSingleArgumentOperationWithSingleArgumentString() throws Exception {
+  public void _nameOfOperationWithSingleArgumentOperationWithSingleArgumentString() throws Exception {
     String _nameOf = this.nameOf("operationWithSingleArgument");
     boolean _doubleArrow = Should.operator_doubleArrow(_nameOf, "operationWithSingleArgument(String)");
     Assert.assertTrue("\nExpected nameOf(\"operationWithSingleArgument\") => \"operationWithSingleArgument(String)\" but"
@@ -39,7 +39,7 @@ public class OperationNameProviderShouldNameMethodsSimilarToJavaDocLinksSpec ext
   @Test
   @Named("nameOf[\\\"operationWithMultipleArguments\\\"] => \\\"operationWithMultipleArguments[String, Object, int]\\\"")
   @Order(99)
-  public void nameOfOperationWithMultipleArgumentsOperationWithMultipleArgumentsStringObjectInt() throws Exception {
+  public void _nameOfOperationWithMultipleArgumentsOperationWithMultipleArgumentsStringObjectInt() throws Exception {
     String _nameOf = this.nameOf("operationWithMultipleArguments");
     boolean _doubleArrow = Should.operator_doubleArrow(_nameOf, "operationWithMultipleArguments(String, Object, int)");
     Assert.assertTrue("\nExpected nameOf(\"operationWithMultipleArguments\") => \"operationWithMultipleArguments(String, Object, int)\" but"
@@ -50,7 +50,7 @@ public class OperationNameProviderShouldNameMethodsSimilarToJavaDocLinksSpec ext
   @Test
   @Named("nameOf[\\\"operationWithTypedArguments\\\"] => \\\"operationWithTypedArguments[List<String>, List<? extends String>]\\\"")
   @Order(99)
-  public void nameOfOperationWithTypedArgumentsOperationWithTypedArgumentsListStringListExtendsString() throws Exception {
+  public void _nameOfOperationWithTypedArgumentsOperationWithTypedArgumentsListStringListExtendsString() throws Exception {
     String _nameOf = this.nameOf("operationWithTypedArguments");
     boolean _doubleArrow = Should.operator_doubleArrow(_nameOf, "operationWithTypedArguments(List<String>, List<? extends String>)");
     Assert.assertTrue("\nExpected nameOf(\"operationWithTypedArguments\") => \"operationWithTypedArguments(List<String>, List<? extends String>)\" but"
@@ -61,7 +61,7 @@ public class OperationNameProviderShouldNameMethodsSimilarToJavaDocLinksSpec ext
   @Test
   @Named("nameOf[\\\"operationWithVarArg\\\"] => \\\"operationWithVarArg[String[]]\\\"")
   @Order(99)
-  public void nameOfOperationWithVarArgOperationWithVarArgString() throws Exception {
+  public void _nameOfOperationWithVarArgOperationWithVarArgString() throws Exception {
     String _nameOf = this.nameOf("operationWithVarArg");
     boolean _doubleArrow = Should.operator_doubleArrow(_nameOf, "operationWithVarArg(String[])");
     Assert.assertTrue("\nExpected nameOf(\"operationWithVarArg\") => \"operationWithVarArg(String[])\" but"

@@ -8,6 +8,7 @@
 package org.jnario.validation;
 
 import static org.eclipse.xtend.core.xtend.XtendPackage.Literals.XTEND_CLASS__NAME;
+import static org.jnario.jvmmodel.DoubleArrowSupport.isDoubleArrow;
 
 import java.util.List;
 
@@ -17,12 +18,15 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.validation.AbstractDeclarativeValidator;
 import org.eclipse.xtext.validation.Check;
+import org.eclipse.xtext.xbase.XBinaryOperation;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.jnario.Assertion;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
 import org.jnario.JnarioPackage;
+import org.jnario.Should;
+import org.jnario.jvmmodel.DoubleArrowSupport;
 import org.jnario.runner.Named;
 import org.junit.Test;
 
@@ -51,6 +55,13 @@ public class JnarioJavaValidator extends AbstractDeclarativeValidator {
 		if (typeReferences.findDeclaredType(Test.class, clazz) == null) {
 			error("Mandatory library bundle 'org.junit' 4.8.0 or higher not found on the classpath.", clazz,
 					XTEND_CLASS__NAME, JnarioIssueCodes.JUNIT_NOT_ON_CLASSPATH);
+		}
+	}
+	
+	@Check
+	public void checkTypesForShould(XBinaryOperation should){
+		if(!isDoubleArrow(should)){
+			return;
 		}
 	}
 

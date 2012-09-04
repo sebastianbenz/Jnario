@@ -22,7 +22,7 @@ public class StackSpec {
   @Test
   @Named("subject.empty should be true")
   @Order(99)
-  public void subjectEmptyShouldBeTrue() throws Exception {
+  public void _subjectEmptyShouldBeTrue() throws Exception {
     boolean _empty = this.subject.empty();
     boolean _should_be = Should.<Boolean>should_be(Boolean.valueOf(_empty), true);
     Assert.assertTrue("\nExpected subject.empty should be true but"
@@ -34,7 +34,7 @@ public class StackSpec {
   @Test
   @Named("initially empty")
   @Order(99)
-  public void initiallyEmpty() throws Exception {
+  public void _initiallyEmpty() throws Exception {
     int _size = this.subject.size();
     boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_size), Integer.valueOf(0));
     Assert.assertTrue("\nExpected subject.size => 0 but"
@@ -46,7 +46,7 @@ public class StackSpec {
   @Test
   @Named("subject.pop[] throws EmptyStackException")
   @Order(99)
-  public void subjectPopThrowsEmptyStackException() throws Exception {
+  public void _subjectPopThrowsEmptyStackException() throws Exception {
     try{
       this.subject.pop();
       Assert.fail("Expected " + EmptyStackException.class.getName() + " in \n     subject.pop()\n with:"
@@ -59,7 +59,7 @@ public class StackSpec {
   @Test
   @Named("increases size when pushing")
   @Order(99)
-  public void increasesSizeWhenPushing() throws Exception {
+  public void _increasesSizeWhenPushing() throws Exception {
     this.subject.push("something");
     int _size = this.subject.size();
     boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_size), Integer.valueOf(1));
@@ -72,7 +72,7 @@ public class StackSpec {
   @Test
   @Named("decreases size when popping")
   @Order(99)
-  public void decreasesSizeWhenPopping() throws Exception {
+  public void _decreasesSizeWhenPopping() throws Exception {
     this.subject.push("something");
     this.subject.pop();
     int _size = this.subject.size();
@@ -86,7 +86,7 @@ public class StackSpec {
   @Test
   @Named("pop returns last pushed element")
   @Order(99)
-  public void popReturnsLastPushedElement() throws Exception {
+  public void _popReturnsLastPushedElement() throws Exception {
     this.subject.push("something");
     this.subject.push("something else");
     Object _pop = this.subject.pop();
