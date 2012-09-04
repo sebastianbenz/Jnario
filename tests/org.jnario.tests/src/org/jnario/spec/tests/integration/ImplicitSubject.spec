@@ -55,7 +55,7 @@ describe "Implicit Subject"{
     /*
    * @filter('''|.executesSuccessfully)  
    */
-  pending fact "can be overridden by manually calling the constructor"{
+  fact "can be overridden by manually calling the constructor"{
     '''
       package bootstrap
 
@@ -70,6 +70,7 @@ describe "Implicit Subject"{
       }
     '''.executesSuccessfully
   }
+  
   /*
    * @filter('''|.executesSuccessfully)  
    */

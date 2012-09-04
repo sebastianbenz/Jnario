@@ -9,6 +9,7 @@ import java.util.Iterator;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtend.core.xtend.XtendFunction;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.EcoreUtil2;
@@ -20,6 +21,8 @@ import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
+import org.eclipse.xtext.xbase.XAssignment;
+import org.eclipse.xtext.xbase.XbasePackage;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
@@ -29,6 +32,7 @@ import org.jnario.runner.Subject;
 import org.jnario.spec.jvmmodel.Constants;
 import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.spec.spec.TestFunction;
+import org.jnario.util.Nodes;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -62,9 +66,12 @@ public class ImplicitSubject {
     EList<JvmMember> _members = type.getMembers();
     final Procedure1<JvmField> _function = new Procedure1<JvmField>() {
         public void apply(final JvmField it) {
-          EList<JvmAnnotationReference> _annotations = it.getAnnotations();
-          JvmAnnotationReference _annotation = ImplicitSubject.this._extendedJvmTypesBuilder.toAnnotation(exampleGroup, Subject.class);
-          ImplicitSubject.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
+          boolean _doesNotInitializeSubject = ImplicitSubject.this.doesNotInitializeSubject(exampleGroup);
+          if (_doesNotInitializeSubject) {
+            EList<JvmAnnotationReference> _annotations = it.getAnnotations();
+            JvmAnnotationReference _annotation = ImplicitSubject.this._extendedJvmTypesBuilder.toAnnotation(exampleGroup, Subject.class);
+            ImplicitSubject.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
+          }
           it.setVisibility(JvmVisibility.PUBLIC);
         }
       };
@@ -137,6 +144,29 @@ public class ImplicitSubject {
         }
       };
     XAbstractFeatureCall _findFirst = IteratorExtensions.<XAbstractFeatureCall>findFirst(allFeatureCalls, _function);
+    return Objects.equal(null, _findFirst);
+  }
+  
+  public boolean doesNotInitializeSubject(final ExampleGroup exampleGroup) {
+    Iterator<XAssignment> allAssignments = Iterators.<XAssignment>emptyIterator();
+    final EList<XtendMember> members = exampleGroup.getMembers();
+    Iterable<XtendFunction> _filter = Iterables.<XtendFunction>filter(members, XtendFunction.class);
+    Iterable<TestFunction> _filter_1 = Iterables.<TestFunction>filter(members, TestFunction.class);
+    Iterable<XtendMember> _plus = Iterables.<XtendMember>concat(_filter, _filter_1);
+    for (final XtendMember example : _plus) {
+      TreeIterator<EObject> _eAllContents = example.eAllContents();
+      UnmodifiableIterator<XAssignment> _filter_2 = Iterators.<XAssignment>filter(_eAllContents, XAssignment.class);
+      Iterator<XAssignment> _concat = Iterators.<XAssignment>concat(allAssignments, _filter_2);
+      allAssignments = _concat;
+    }
+    final Function1<XAssignment,Boolean> _function = new Function1<XAssignment,Boolean>() {
+        public Boolean apply(final XAssignment it) {
+          EReference _xAbstractFeatureCall_Feature = XbasePackage.eINSTANCE.getXAbstractFeatureCall_Feature();
+          final String assignable = Nodes.textForFeature(it, _xAbstractFeatureCall_Feature);
+          return Boolean.valueOf(Objects.equal(assignable, Constants.SUBJECT_FIELD_NAME));
+        }
+      };
+    XAssignment _findFirst = IteratorExtensions.<XAssignment>findFirst(allAssignments, _function);
     return Objects.equal(null, _findFirst);
   }
 }

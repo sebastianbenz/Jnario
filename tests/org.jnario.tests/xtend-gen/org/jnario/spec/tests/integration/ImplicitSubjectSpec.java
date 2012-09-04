@@ -9,7 +9,6 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -85,8 +84,7 @@ public class ImplicitSubjectSpec {
    * @filter('''|.executesSuccessfully)
    */
   @Test
-  @Ignore
-  @Named("can be overridden by manually calling the constructor [PENDING]")
+  @Named("can be overridden by manually calling the constructor")
   @Order(99)
   public void _canBeOverriddenByManuallyCallingTheConstructor() throws Exception {
     StringConcatenation _builder = new StringConcatenation();

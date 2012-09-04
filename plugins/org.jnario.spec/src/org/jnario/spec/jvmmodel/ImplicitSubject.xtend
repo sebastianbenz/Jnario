@@ -15,10 +15,13 @@ import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.xbase.XAbstractFeatureCall
+import org.eclipse.xtext.xbase.XAssignment
+import org.eclipse.xtext.xbase.XbasePackage
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder
 import org.jnario.runner.Subject
 import org.jnario.spec.spec.ExampleGroup
 import org.jnario.spec.spec.TestFunction
+import org.jnario.util.Nodes
 
 import static org.eclipse.xtext.EcoreUtil2.*
 import static org.jnario.spec.jvmmodel.Constants.*
@@ -40,7 +43,9 @@ class ImplicitSubject {
 		if(exampleGroup.neverUsesSubject()) return;
 		
 		type.members.add(0, exampleGroup.toField(SUBJECT_FIELD_NAME, targetType)[
-			annotations += exampleGroup.toAnnotation(typeof(Subject))
+			if(exampleGroup.doesNotInitializeSubject){
+				annotations += exampleGroup.toAnnotation(typeof(Subject))
+			}
 			visibility = JvmVisibility::PUBLIC
 		])
 	}
@@ -81,6 +86,18 @@ class ImplicitSubject {
 			allFeatureCalls = concat(allFeatureCalls, example.eAllContents.filter(typeof(XAbstractFeatureCall)))
 		}
 		return null == allFeatureCalls.findFirst[it.concreteSyntaxFeatureName == SUBJECT_FIELD_NAME]
+	}
+	
+	def doesNotInitializeSubject(ExampleGroup exampleGroup){
+		var Iterator<XAssignment> allAssignments = emptyIterator
+		val members = exampleGroup.members
+		for(example : members.filter(typeof(XtendFunction)) + members.filter(typeof(TestFunction))){
+			allAssignments = concat(allAssignments, example.eAllContents.filter(typeof(XAssignment)))
+		}
+		return null == allAssignments.findFirst[
+			val assignable = Nodes::textForFeature(it, XbasePackage::eINSTANCE.XAbstractFeatureCall_Feature)
+			return assignable == SUBJECT_FIELD_NAME
+		]
 	}
 	
 }

@@ -50,7 +50,19 @@ describe String {
   } 
       
 }</pre>
-</li><li><p id="can_be_overridden_by_manually_calling_the_constructor"><strong>can be overridden by manually calling the constructor [PENDING]</strong></p>
+</li><li><p id="can_be_overridden_by_manually_calling_the_constructor"><strong>can be overridden by manually calling the constructor</strong></p>
+<pre class="prettyprint lang-spec">
+package bootstrap
+
+describe Integer {
+  
+  before subject = new Integer(42)
+
+  fact &quot;subject should be overridden&quot;{
+    subject should be 42
+  } 
+      
+}</pre>
 </li><li><p id="will_be_only_created_if_is_used"><strong>will be only created if is used</strong></p>
 <pre class="prettyprint lang-spec">
 package bootstrap
