@@ -2,7 +2,6 @@ package org.jnario.suite.unit;
 
 import com.google.inject.Inject;
 import java.util.List;
-import java.util.Set;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -107,18 +106,18 @@ public class SpecResolverSpec {
     _builder.newLine();
     this.m.parseSuite(_builder);
     Suite _firstSuite = this.m.firstSuite();
-    Set<String> _resolvedSpecs = this.resolvedSpecs(_firstSuite);
-    Set<String> _set = JnarioCollectionLiterals.<String>set("MySpecSpec", "MyFeatureFeature");
-    boolean _doubleArrow = Should.operator_doubleArrow(_resolvedSpecs, _set);
-    Assert.assertTrue("\nExpected resolvedSpecs(firstSuite) => set(\"MySpecSpec\", \"MyFeatureFeature\") but"
+    List<String> _resolvedSpecs = this.resolvedSpecs(_firstSuite);
+    List<String> _list = JnarioCollectionLiterals.<String>list("MySpecSpec", "MyFeatureFeature");
+    boolean _doubleArrow = Should.operator_doubleArrow(_resolvedSpecs, _list);
+    Assert.assertTrue("\nExpected resolvedSpecs(firstSuite) => list(\"MySpecSpec\", \"MyFeatureFeature\") but"
      + "\n     resolvedSpecs(firstSuite) is " + new StringDescription().appendValue(_resolvedSpecs).toString()
      + "\n     firstSuite is " + new StringDescription().appendValue(_firstSuite).toString()
      + "\n      is " + new StringDescription().appendValue(this.m).toString()
-     + "\n     set(\"MySpecSpec\", \"MyFeatureFeature\") is " + new StringDescription().appendValue(_set).toString() + "\n", _doubleArrow);
+     + "\n     list(\"MySpecSpec\", \"MyFeatureFeature\") is " + new StringDescription().appendValue(_list).toString() + "\n", _doubleArrow);
     
   }
   
-  public Set<String> resolvedSpecs(final Suite suite) {
+  public List<String> resolvedSpecs(final Suite suite) {
     List<Specification> _resolveSpecs = this.subject.resolveSpecs(suite);
     final Function1<Specification,String> _function = new Function1<Specification,String>() {
         public String apply(final Specification it) {
@@ -127,7 +126,7 @@ public class SpecResolverSpec {
         }
       };
     List<String> _map = ListExtensions.<Specification, String>map(_resolveSpecs, _function);
-    Set<String> _set = IterableExtensions.<String>toSet(_map);
-    return _set;
+    List<String> _list = IterableExtensions.<String>toList(_map);
+    return _list;
   }
 }

@@ -32,7 +32,7 @@ class SpecResolver {
 	
 	def dispatch List<Specification> resolveSpecs(Suite suite){
 		val notNull = Predicates::<Specification>notNull
-		suite.elements.map[resolveSpecs].flatten.filter(notNull).toList
+		suite.elements.map[resolveSpecs].flatten.filter(notNull).toList.sort[left, right|left.className.compareTo(right.className)]
 	}
 	
 	def dispatch List<Specification> resolveSpecs(SpecReference specRef){

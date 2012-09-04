@@ -54,7 +54,7 @@ describe SpecResolver {
 			- "My Feature"
 		''')
 		
-		resolvedSpecs(firstSuite) => set("MySpecSpec", "MyFeatureFeature")
+		resolvedSpecs(firstSuite) => list("MySpecSpec", "MyFeatureFeature")
 	}
 	
 	describe "evaluates regular expressions"{
@@ -67,7 +67,7 @@ describe SpecResolver {
 				- \demo\.My.*\
 			''')
 			
-			resolvedSpecs(m.firstSuite) => set("MySpecSpec", "MyFeatureFeature")
+			resolvedSpecs(m.firstSuite).toSet => set("MySpecSpec", "MyFeatureFeature")
 		}
 
 		fact "example 2"{
@@ -79,7 +79,7 @@ describe SpecResolver {
 				- \.*Spec\
 			''')
 			
-			resolvedSpecs(m.firstSuite) => set("MySpecSpec")
+			resolvedSpecs(m.firstSuite) => list("MySpecSpec")
 		}
 		
 		fact "returns empty list on null input"{
@@ -95,7 +95,7 @@ describe SpecResolver {
 				- \NonExistent\
 			''')
 			
-			resolvedSpecs(m.firstSuite) => set()
+			resolvedSpecs(m.firstSuite) => list()
 		}
 		
 		fact "ignores containing suite"{
@@ -107,12 +107,24 @@ describe SpecResolver {
 				- \.*\
 			''')
 			
-			resolvedSpecs(m.firstSuite) => set("MySpecSpec", "MyFeatureFeature", "StringSpec")
+			resolvedSpecs(m.firstSuite).toSet => set("MySpecSpec", "MyFeatureFeature", "StringSpec")
+		}
+		
+		fact "orders specs alphabetically"{
+			m.parseSuite('''
+				package demo
+				import demo.*
+				#My Suite
+				
+				- \.*\
+			''')
+			
+			resolvedSpecs(m.firstSuite) => list("MyFeatureFeature", "MySpecSpec", "StringSpec")
 		}
 	}
 	
 	def resolvedSpecs(Suite suite){
-		subject.resolveSpecs(suite).map[className].toSet
+		subject.resolveSpecs(suite).map[className].toList
 	}
 
 }

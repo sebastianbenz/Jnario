@@ -39,7 +39,7 @@ parseSuite('''
   - &quot;My Feature&quot;
 ''')
 
-resolvedSpecs(firstSuite) =&gt; set(&quot;MySpecSpec&quot;, &quot;MyFeatureFeature&quot;)</pre>
+resolvedSpecs(firstSuite) =&gt; list(&quot;MySpecSpec&quot;, &quot;MyFeatureFeature&quot;)</pre>
 </li></ul><h3 id="evaluates_regular_expressions">Evaluates regular expressions</h3>
 <ul><li><p id="example_1"><strong>example 1</strong></p>
 <pre class="prettyprint lang-spec">
@@ -51,7 +51,7 @@ import demo.*
 - \demo\.My.*\
       ''')
       
-      resolvedSpecs(m.firstSuite) =&gt; set(&quot;MySpecSpec&quot;, &quot;MyFeatureFeature&quot;)</pre>
+      resolvedSpecs(m.firstSuite).toSet =&gt; set(&quot;MySpecSpec&quot;, &quot;MyFeatureFeature&quot;)</pre>
 </li><li><p id="example_2"><strong>example 2</strong></p>
 <pre class="prettyprint lang-spec">
 m.parseSuite('''
@@ -62,7 +62,7 @@ m.parseSuite('''
   - \.*Spec\
 ''')
 
-resolvedSpecs(m.firstSuite) =&gt; set(&quot;MySpecSpec&quot;)</pre>
+resolvedSpecs(m.firstSuite) =&gt; list(&quot;MySpecSpec&quot;)</pre>
 </li><li><p id="returns_empty_list_on_null_input"><strong>returns empty list on null input</strong></p>
 <pre class="prettyprint lang-spec">
 subject.resolveSpecs(SuiteFactory::eINSTANCE.createPatternReference) =&gt; list()</pre>
@@ -76,7 +76,7 @@ m.parseSuite('''
   - \NonExistent\
 ''')
 
-resolvedSpecs(m.firstSuite) =&gt; set()</pre>
+resolvedSpecs(m.firstSuite) =&gt; list()</pre>
 </li><li><p id="ignores_containing_suite"><strong>ignores containing suite</strong></p>
 <pre class="prettyprint lang-spec">
 m.parseSuite('''
@@ -87,7 +87,18 @@ m.parseSuite('''
   - \.*\
 ''')
 
-resolvedSpecs(m.firstSuite) =&gt; set(&quot;MySpecSpec&quot;, &quot;MyFeatureFeature&quot;, &quot;StringSpec&quot;)</pre>
+resolvedSpecs(m.firstSuite).toSet =&gt; set(&quot;MySpecSpec&quot;, &quot;MyFeatureFeature&quot;, &quot;StringSpec&quot;)</pre>
+</li><li><p id="orders_specs_alphabetically"><strong>orders specs alphabetically</strong></p>
+<pre class="prettyprint lang-spec">
+m.parseSuite('''
+  package demo
+  import demo.*
+  #My Suite
+  
+  - \.*\
+''')
+
+resolvedSpecs(m.firstSuite) =&gt; list(&quot;MyFeatureFeature&quot;, &quot;MySpecSpec&quot;, &quot;StringSpec&quot;)</pre>
 </li></ul>
 				</div>
 			</div>

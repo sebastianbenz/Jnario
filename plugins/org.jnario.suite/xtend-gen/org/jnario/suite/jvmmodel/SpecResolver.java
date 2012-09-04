@@ -9,6 +9,7 @@ import com.google.inject.Inject;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -24,6 +25,7 @@ import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.jnario.Specification;
@@ -64,7 +66,20 @@ public class SpecResolver {
           }
       });
       List<Specification> _list = IterableExtensions.<Specification>toList(_filter);
-      _xblockexpression = (_list);
+      final Function2<Specification,Specification,Integer> _function_1 = new Function2<Specification,Specification,Integer>() {
+          public Integer apply(final Specification left, final Specification right) {
+            String _className = SpecResolver.this._suiteClassNameProvider.getClassName(left);
+            String _className_1 = SpecResolver.this._suiteClassNameProvider.getClassName(right);
+            int _compareTo = _className.compareTo(_className_1);
+            return _compareTo;
+          }
+        };
+      List<Specification> _sort = IterableExtensions.<Specification>sort(_list, new Comparator<Specification>() {
+          public int compare(Specification o1,Specification o2) {
+            return _function_1.apply(o1,o2);
+          }
+      });
+      _xblockexpression = (_sort);
     }
     return _xblockexpression;
   }
