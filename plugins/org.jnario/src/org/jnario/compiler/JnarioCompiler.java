@@ -9,7 +9,6 @@ package org.jnario.compiler;
 
 import static com.google.common.collect.Iterables.filter;
 import static com.google.common.collect.Sets.newHashSet;
-import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.getNode;
 import static org.eclipse.xtext.util.Strings.convertToJavaString;
 import static org.jnario.jvmmodel.DoubleArrowSupport.isDoubleArrow;
@@ -20,17 +19,24 @@ import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.compiler.XtendCompiler;
+import org.eclipse.xtext.common.types.JvmGenericType;
+import org.eclipse.xtext.common.types.JvmIdentifiableElement;
+import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XBinaryOperation;
-import org.eclipse.xtext.xbase.XCasePart;
 import org.eclipse.xtext.xbase.XClosure;
 import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.XFeatureCall;
+import org.eclipse.xtext.xbase.XNullLiteral;
 import org.eclipse.xtext.xbase.XSwitchExpression;
+import org.eclipse.xtext.xbase.XbaseFactory;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.util.XExpressionHelper;
+import org.hamcrest.CoreMatchers;
 import org.hamcrest.StringDescription;
 import org.jnario.Assertion;
 import org.jnario.Should;
@@ -38,6 +44,7 @@ import org.jnario.ShouldThrow;
 import org.junit.Assert;
 
 import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 
 /**
@@ -106,17 +113,9 @@ public class JnarioCompiler extends XtendCompiler {
 
 	private void _toShouldExpression(XBinaryOperation should,
 			ITreeAppendable b, boolean isNot) {
-		String declareVariable = b.declareVariable(should, "result");
-		super.toJavaStatement(should.getLeftOperand(), b, true);
-		super.toJavaStatement(should.getRightOperand(), b, true);
-		b.newLine().append("boolean " + declareVariable + " = ");
-		b.append(getTypeReferences().getTypeForName(org.jnario.lib.Should.class, should).getType())
-		.append(".operator_doubleArrow(");
-		toJavaExpression(should.getLeftOperand(), b);
-		b.append(", ");
-		toJavaExpression(should.getRightOperand(), b);
-		b.append(");").newLine();
-		b.append(assertType(should));
+		handleNullOnRightHandSide(should);
+		super._toJavaStatement(should, b, true);
+		b.newLine().append(assertType(should));
 		if (isNot) {
 			b.append(".assertFalse(");
 		} else {
@@ -124,7 +123,43 @@ public class JnarioCompiler extends XtendCompiler {
 		}
 		generateMessageFor(should, b);
 		b.append(" + \"" + javaStringNewLine() + "\", ");
-		b.append(declareVariable + ");").newLine();
+		super._toJavaExpression(should, b);
+		b.append(");").newLine();
+	}
+
+	protected void handleNullOnRightHandSide(XBinaryOperation should) {
+		if(should.getRightOperand() instanceof XNullLiteral){
+			JvmIdentifiableElement nullValueMatcher = getNullValueMatcher(should);
+			XFeatureCall featureCall = createFeatureCall(nullValueMatcher);
+			should.setRightOperand(featureCall);
+			if(ObjectExtensions.class.getSimpleName().equals(((JvmOperation)should.getFeature()).getDeclaringType().getSimpleName())){
+				JvmIdentifiableElement operation = getMethod(should, org.jnario.lib.Should.class, "operator_doubleArrow");
+				should.setFeature(operation);
+			}
+		}
+	}
+
+	protected XFeatureCall createFeatureCall(
+			JvmIdentifiableElement nullValueMatcher) {
+		XFeatureCall featureCall = XbaseFactory.eINSTANCE.createXFeatureCall();
+		featureCall.setFeature(nullValueMatcher);
+		return featureCall;
+	}
+
+	protected JvmIdentifiableElement getNullValueMatcher(XBinaryOperation should) {
+		return getMethod(should, CoreMatchers.class, "nullValue");
+	}
+
+	protected JvmIdentifiableElement getMethod(XBinaryOperation should,
+			Class<?> type, String methodName) {
+		JvmGenericType coreMatchersType = (JvmGenericType) jvmType(type, should);
+		Iterable<JvmOperation> operations = Iterables.filter(coreMatchersType.getMembers(), JvmOperation.class);
+		for (JvmOperation jvmOperation : operations) {
+			if(methodName.equals(jvmOperation.getSimpleName())){
+				return jvmOperation;
+			}
+		}
+		return null;
 	}
 
 	private String javaStringNewLine() {

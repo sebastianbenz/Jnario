@@ -29,7 +29,6 @@ describe "Using Should"{
 		1 + 1 should not be 1 
 		"something" should not be null 
 		1 + 1 => 2 
-		
 		// types
 		"a string" => typeof(String)
 		"a string".getClass => typeof(String)
@@ -68,6 +67,8 @@ describe "Using Should"{
 	  1 + 1 should be 1 throws AssertionError
 	  1 + 1 should not be 1 throws AssertionError
 	  1 + 1 => 1 throws AssertionError
+	  new Object => null throws AssertionError
+	  new Object should be null throws AssertionError
 	  method() throws IllegalArgumentException
 	}
 	

@@ -37,7 +37,6 @@ true should be true
 1 + 1 should not be 1 
 &quot;something&quot; should not be null 
 1 + 1 =&gt; 2 
-
 // types
 &quot;a string&quot; =&gt; typeof(String)
 &quot;a string&quot;.getClass =&gt; typeof(String)
@@ -68,6 +67,8 @@ def void method(){
 1 + 1 should be 1 throws AssertionError
 1 + 1 should not be 1 throws AssertionError
 1 + 1 =&gt; 1 throws AssertionError
+new Object =&gt; null throws AssertionError
+new Object should be null throws AssertionError
 method() throws IllegalArgumentException</pre>
 </li><li><p id="Why_did_it_fail"><strong>Why did it fail?</strong></p>
 <p>When failing, <code>should</code> and <code>=&gt;</code> try to give you as much context information as possible. The error message will print the values of all expressions and their subexpressions.</p>

@@ -64,7 +64,7 @@ public class Should{
 //		return should_be(actual, expected);
 //	}
 	
-	public static boolean should_be(Object actual, Object expected){
+	public static <T> boolean should_be(Object actual, Object expected){
 		return Objects.equal(actual, expected);
 	}
 	
