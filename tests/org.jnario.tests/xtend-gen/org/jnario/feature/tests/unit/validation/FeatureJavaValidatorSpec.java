@@ -3,6 +3,8 @@ package org.jnario.feature.tests.unit.validation;
 import com.google.inject.Inject;
 import java.util.Iterator;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtend.core.xtend.XtendFile;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.junit4.validation.AssertableDiagnostics;
 import org.eclipse.xtext.junit4.validation.RegisteredValidatorTester;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
@@ -16,7 +18,10 @@ import org.jnario.jnario.test.util.Query;
 import org.jnario.runner.Contains;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
+import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
+import org.jnario.runner.Order;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
@@ -29,7 +34,27 @@ import org.junit.runner.RunWith;
 @CreateWith(value = FeatureTestCreator.class)
 public class FeatureJavaValidatorSpec {
   @Inject
-  ModelStore modelStore;
+  @Extension
+  public ModelStore modelStore;
+  
+  @Test
+  @Named("no name clash between features and imported types")
+  @Order(99)
+  public void _noNameClashBetweenFeaturesAndImportedTypes() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("import java.util.Stack");
+    _builder.newLine();
+    _builder.append("Feature: Stack");
+    _builder.newLine();
+    _builder.append("Scenario: Example");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("Stack stack");
+    _builder.newLine();
+    this.modelStore.parseScenario(_builder);
+    AssertableDiagnostics _validate = this.validate(XtendFile.class);
+    _validate.assertOK();
+  }
   
   public AssertableDiagnostics select(final CharSequence input, final Class<? extends EObject> type) {
     AssertableDiagnostics _xblockexpression = null;

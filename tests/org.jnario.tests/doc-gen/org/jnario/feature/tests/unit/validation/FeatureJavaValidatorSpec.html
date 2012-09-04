@@ -38,6 +38,16 @@
 <h3 id="Steps_must_have_descriptions">Steps must have descriptions</h3>
 <ul><li><p id="Feature_A_feature_Scenario_A_scenario_Given_When_Then_allOf_typeof_Step_assertErrorContains_description"><strong>''' Feature: A feature Scenario: A scenario Given When Then '''.allOf[typeof[Step]][assertErrorContains["description"]]</strong></p>
 </li></ul>
+<ul><li><p id="no_name_clash_between_features_and_imported_types"><strong>no name clash between features and imported types</strong></p>
+<pre class="prettyprint lang-spec">
+'''
+  import java.util.Stack
+  Feature: Stack
+  Scenario: Example
+    Stack stack
+'''.parseScenario
+validate(typeof(XtendFile)).assertOK</pre>
+</li></ul>
 				</div>
 			</div>
 		</div> <!-- /content -->

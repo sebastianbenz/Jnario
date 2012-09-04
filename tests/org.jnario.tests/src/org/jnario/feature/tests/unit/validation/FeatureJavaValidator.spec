@@ -9,6 +9,7 @@ package org.jnario.feature.tests.unit.validation
 
 import com.google.inject.Inject
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtend.core.xtend.XtendFile
 import org.eclipse.xtext.junit4.validation.AssertableDiagnostics
 import org.eclipse.xtext.junit4.validation.RegisteredValidatorTester
 import org.eclipse.xtext.xbase.lib.Procedures$Procedure1
@@ -16,9 +17,9 @@ import org.jnario.feature.feature.Feature
 import org.jnario.feature.feature.Scenario
 import org.jnario.feature.feature.Step
 import org.jnario.feature.validation.FeatureJavaValidator
+import org.jnario.jnario.test.util.FeatureTestCreator
 import org.jnario.jnario.test.util.ModelStore
 import org.jnario.runner.CreateWith
-import org.jnario.jnario.test.util.FeatureTestCreator
 
 import static org.jnario.jnario.test.util.Query.*
 
@@ -28,7 +29,7 @@ import static org.jnario.jnario.test.util.Query.*
 @CreateWith(typeof(FeatureTestCreator))
 describe FeatureJavaValidator{
 
-	@Inject ModelStore modelStore
+	@Inject extension ModelStore modelStore
 
 	context "Features must have descriptions"{
 		fact '''
@@ -53,6 +54,16 @@ describe FeatureJavaValidator{
 				 	Then 
 				 	
 		'''.allOf(typeof(Step))[assertErrorContains("description")]
+	}
+	
+	fact "no name clash between features and imported types"{
+		'''
+			import java.util.Stack
+			Feature: Stack
+			Scenario: Example
+				Stack stack
+		'''.parseScenario
+		validate(typeof(XtendFile)).assertOK
 	}
 	
 	def select(CharSequence input, Class<? extends EObject> type){
