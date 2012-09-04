@@ -54,7 +54,7 @@ describe SpecResolver {
 			- "My Feature"
 		''')
 		
-		resolvedSpecs(firstSuite) => list("MySpecSpec", "MyFeatureFeature")
+		resolvedSpecs(firstSuite).toSet => set("MySpecSpec", "MyFeatureFeature")
 	}
 	
 	describe "evaluates regular expressions"{

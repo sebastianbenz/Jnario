@@ -7,7 +7,6 @@
  *******************************************************************************/
 package org.jnario.suite.jvmmodel
 
-import com.google.common.base.Predicates
 import com.google.inject.Inject
 import java.util.List
 import java.util.regex.Pattern
@@ -31,8 +30,9 @@ class SpecResolver {
 	@Inject extension SuiteClassNameProvider
 	
 	def dispatch List<Specification> resolveSpecs(Suite suite){
-		val notNull = Predicates::<Specification>notNull
-		suite.elements.map[resolveSpecs].flatten.filter(notNull).toList.sort[left, right|left.className.compareTo(right.className)]
+		suite.elements.map[resolveSpecs].flatten.filter[it != null && it.className != null].toList.sort[left, right|
+			left.className.compareTo(right.className)
+		]
 	}
 	
 	def dispatch List<Specification> resolveSpecs(SpecReference specRef){

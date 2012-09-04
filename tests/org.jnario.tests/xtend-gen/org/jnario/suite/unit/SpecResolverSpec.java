@@ -2,6 +2,7 @@ package org.jnario.suite.unit;
 
 import com.google.inject.Inject;
 import java.util.List;
+import java.util.Set;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -107,13 +108,15 @@ public class SpecResolverSpec {
     this.m.parseSuite(_builder);
     Suite _firstSuite = this.m.firstSuite();
     List<String> _resolvedSpecs = this.resolvedSpecs(_firstSuite);
-    List<String> _list = JnarioCollectionLiterals.<String>list("MySpecSpec", "MyFeatureFeature");
-    boolean _doubleArrow = Should.operator_doubleArrow(_resolvedSpecs, _list);
-    Assert.assertTrue("\nExpected resolvedSpecs(firstSuite) => list(\"MySpecSpec\", \"MyFeatureFeature\") but"
+    Set<String> _set = IterableExtensions.<String>toSet(_resolvedSpecs);
+    Set<String> _set_1 = JnarioCollectionLiterals.<String>set("MySpecSpec", "MyFeatureFeature");
+    boolean _doubleArrow = Should.operator_doubleArrow(_set, _set_1);
+    Assert.assertTrue("\nExpected resolvedSpecs(firstSuite).toSet => set(\"MySpecSpec\", \"MyFeatureFeature\") but"
+     + "\n     resolvedSpecs(firstSuite).toSet is " + new StringDescription().appendValue(_set).toString()
      + "\n     resolvedSpecs(firstSuite) is " + new StringDescription().appendValue(_resolvedSpecs).toString()
      + "\n     firstSuite is " + new StringDescription().appendValue(_firstSuite).toString()
      + "\n      is " + new StringDescription().appendValue(this.m).toString()
-     + "\n     list(\"MySpecSpec\", \"MyFeatureFeature\") is " + new StringDescription().appendValue(_list).toString() + "\n", _doubleArrow);
+     + "\n     set(\"MySpecSpec\", \"MyFeatureFeature\") is " + new StringDescription().appendValue(_set_1).toString() + "\n", _doubleArrow);
     
   }
   
