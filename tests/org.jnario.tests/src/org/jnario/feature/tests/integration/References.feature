@@ -148,6 +148,30 @@ Feature: References for steps
 						x.myExtensionMethod
 	 	'''
 	 	 	jnarioFile = args.first
+	 	Then it should execute successfully
+	 
+	 Scenario: Extension fields in And step
+		 When I have a scenario with a variable that is initialized 
+		 '''
+		 	import org.jnario.feature.tests.integration.MyExtension
+			Feature: Extension Fields
+				Scenario: A scenario with an extension field
+					extension MyExtension myExtension = new MyExtension
+					val x = <String>newArrayList
+					Given an empty step
+					And an implementation that uses the extension
+						x.myExtensionMethod
+					Then extension is called
+						assert myExtension.called
+									
+				Scenario: Another scenario that uses the extension
+					Given an empty step
+					And an implementation that uses the extension
+					Then extension is called
+						And we can use it inside other steps
+							x.myExtensionMethod
+		'''
+	 	 	jnarioFile = args.first
 	 	Then it should execute successfully	
 	 	
 	 Scenario: Using closures in steps

@@ -45,6 +45,7 @@ import static extension com.google.common.base.Strings.*
 import org.eclipse.xtend.core.xtend.XtendField
 import org.jnario.feature.feature.StepReference
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
+import org.eclipse.xtext.EcoreUtil2
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -169,7 +170,10 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		scenario.steps.generateSteps(inferredJvmType, start, scenario)
    		super.initialize(scenario, inferredJvmType)
    		scenario.allSteps.filter(typeof(StepReference)).forEach[
-   			val original = it.reference?.eContainer as Scenario
+   			if(it.reference == null){
+   				return
+   			}
+   			val original = EcoreUtil2::getContainerOfType(it.reference,typeof(Scenario))
    			if(original == null){
    				return
    			}

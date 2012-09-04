@@ -282,10 +282,14 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     final Procedure1<StepReference> _function_2 = new Procedure1<StepReference>() {
         public void apply(final StepReference it) {
           Step _reference = it.getReference();
-          EObject _eContainer = _reference==null?(EObject)null:_reference.eContainer();
-          final Scenario original = ((Scenario) _eContainer);
-          boolean _equals = Objects.equal(original, null);
+          boolean _equals = Objects.equal(_reference, null);
           if (_equals) {
+            return;
+          }
+          Step _reference_1 = it.getReference();
+          final Scenario original = EcoreUtil2.<Scenario>getContainerOfType(_reference_1, Scenario.class);
+          boolean _equals_1 = Objects.equal(original, null);
+          if (_equals_1) {
             return;
           }
           Set<EObject> _jvmElements = FeatureJvmModelInferrer.this._iJvmModelAssociations.getJvmElements(original);
