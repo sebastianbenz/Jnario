@@ -7,21 +7,35 @@
  *******************************************************************************/
 package org.jnario.suite.validation;
 
+import static com.google.common.collect.Iterables.filter;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.ComposedChecks;
 import org.eclipse.xtext.validation.ValidationMessageAcceptor;
+import org.jnario.suite.suite.SpecReference;
+import org.jnario.suite.suite.Suite;
+import org.jnario.suite.suite.SuiteFile;
+import org.jnario.suite.suite.SuitePackage;
 import org.jnario.validation.JnarioJavaValidator;
  
 @ComposedChecks(validators={JnarioJavaValidator.class})
 public class SuiteJavaValidator extends AbstractSuiteJavaValidator {
 
-//	@Check
-//	public void checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character.isUpperCase(greeting.getName().charAt(0))) {
-//			warning("Name should start with a capital", MyDslPackage.Literals.GREETING__NAME);
-//		}
-//	}
+	@Check
+	public void checkSuitesDoesNotReferenceItself(SpecReference specReference) {
+		for (Suite rootSuite : rootSuites(specReference)) {
+			if(rootSuite.equals(specReference.getSpec())){
+				error("Suites cannot include themselves", SuitePackage.Literals.SPEC_REFERENCE__SPEC);
+			}
+		}
+	}
+	
+	@SuppressWarnings("restriction")
+	public Iterable<Suite> rootSuites(EObject context){
+		return filter(((SuiteFile)context.eResource().getContents().get(0)).getXtendClasses(), Suite.class);
+	}
 
 	protected void warning(String message, EObject source, EStructuralFeature feature, String code, String... issueData) {
 		// avoids overriding the whole method
@@ -30,5 +44,6 @@ public class SuiteJavaValidator extends AbstractSuiteJavaValidator {
 		}
 		getMessageAcceptor().acceptWarning(message, source, feature, ValidationMessageAcceptor.INSIGNIFICANT_INDEX, code, issueData);
 	}
+	
 	
 }
