@@ -1,6 +1,6 @@
 package gameoflife;
 
-import gameoflife.CellPosition;
+import gameoflife.CellLocation;
 import gameoflife.Evolution;
 import gameoflife.GameOfLifeEvolutionSpec;
 import gameoflife.Rule;
@@ -43,8 +43,8 @@ public class GameOfLifeEvolutionDeadCellsSpec extends GameOfLifeEvolutionSpec {
     Evolution _evolution = new Evolution(this.dontCare, this.allDeadLive);
     final Evolution evolution = _evolution;
     World _evolve = evolution.evolve(this.worldWithLiveCell);
-    Set<CellPosition> _livingCells = _evolve.getLivingCells();
-    Set<CellPosition> _neighbours = this.livingCell.neighbours();
+    Set<CellLocation> _livingCells = _evolve.getLivingCells();
+    Set<CellLocation> _neighbours = this.livingCell.neighbours();
     boolean _doubleArrow = Should.operator_doubleArrow(_livingCells, _neighbours);
     Assert.assertTrue("\nExpected evolution.evolve(worldWithLiveCell).livingCells => livingCell.neighbours but"
      + "\n     evolution.evolve(worldWithLiveCell).livingCells is " + new StringDescription().appendValue(_livingCells).toString()

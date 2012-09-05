@@ -3,7 +3,7 @@ package gameoflife
 import java.util.Set
 import org.eclipse.xtend.lib.Data
 
-import static gameoflife.CellPosition.*
+import static gameoflife.CellLocation.*
 import static gameoflife.World.*
 
 @Data
@@ -22,7 +22,7 @@ class Evolution{
 		)
 	} 
 	
-	def apply(Rule rule, World world, CellPosition cell){
+	def private apply(Rule rule, World world, CellLocation cell){
 		rule.becomesAlive(world.livingNeighbours(cell))
 	}	
 }
@@ -47,10 +47,10 @@ class EvolveDeadCells implements Rule{
 
 @Data
 class World{
-	Set<CellPosition> livingCells
+	Set<CellLocation> livingCells
 	
 	def static parseWorld(CharSequence grid){
-		val cells = <CellPosition>newArrayList
+		val cells = <CellLocation>newArrayList
 		grid.toString.split("\r?\n").forEach[line, x | 
 			line.toCharArray.forEach[c, y|
 				if(c.toString == "X"){
@@ -61,7 +61,7 @@ class World{
 		worldWith(cells)
 	}
 	
-	def static worldWith(Iterable<CellPosition> cells) {
+	def static worldWith(Iterable<CellLocation> cells) {
 		new World(cells.toSet)
 	} 
 	
@@ -69,33 +69,29 @@ class World{
 		livingCells.map[neighbours].flatten.filter[!livingCells.contains(it)].toSet
 	}
 	
-	def livingNeighbours(CellPosition cell){
+	def livingNeighbours(CellLocation cell){
 		cell.neighbours.filter[livingCells.contains(it)].size
 	}
 }
  
 @Data
-class CellPosition {
+class CellLocation {
 	static val NEIGHBOUR_OFFSETS = newHashSet(
 		cell(1, 0), cell(1, 1), cell(0, 1), cell(-1, -1), cell(-1, 0), cell(-1, 1), cell(0, -1), cell(1, -1)
 	)
 	
 	def static cell(int x, int y){
-		new CellPosition(x, y)
+		new CellLocation(x, y)
 	}
 	
 	int x
 	int y
 	
-	def Set<CellPosition> neighbours(){
+	def Set<CellLocation> neighbours(){
 		NEIGHBOUR_OFFSETS.map[this.plus(it)].toSet
 	}
 	
-	def plus(CellPosition other){
+	def plus(CellLocation other){
 		cell(x + other.x, y + other.y)
-	}
-	
-	override toString(){
-		"[" + x + "," + y + "]"
 	}
 }

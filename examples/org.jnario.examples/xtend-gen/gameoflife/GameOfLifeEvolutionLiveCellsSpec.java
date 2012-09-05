@@ -1,6 +1,6 @@
 package gameoflife;
 
-import gameoflife.CellPosition;
+import gameoflife.CellLocation;
 import gameoflife.Evolution;
 import gameoflife.GameOfLifeEvolutionSpec;
 import gameoflife.Rule;
@@ -38,14 +38,14 @@ public class GameOfLifeEvolutionLiveCellsSpec extends GameOfLifeEvolutionSpec {
   }.apply();
   
   @Test
-  @Named("become alive if rule says so")
+  @Named("stay alive if rule says so")
   @Order(99)
-  public void _becomeAliveIfRuleSaysSo() throws Exception {
+  public void _stayAliveIfRuleSaysSo() throws Exception {
     Evolution _evolution = new Evolution(this.allLiveStayAlive, this.dontCare);
     final Evolution evolution = _evolution;
     World _evolve = evolution.evolve(this.worldWithLiveCell);
-    Set<CellPosition> _livingCells = _evolve.getLivingCells();
-    Set<CellPosition> _set = JnarioCollectionLiterals.<CellPosition>set(this.livingCell);
+    Set<CellLocation> _livingCells = _evolve.getLivingCells();
+    Set<CellLocation> _set = JnarioCollectionLiterals.<CellLocation>set(this.livingCell);
     boolean _doubleArrow = Should.operator_doubleArrow(_livingCells, _set);
     Assert.assertTrue("\nExpected evolution.evolve(worldWithLiveCell).livingCells => set(livingCell) but"
      + "\n     evolution.evolve(worldWithLiveCell).livingCells is " + new StringDescription().appendValue(_livingCells).toString()

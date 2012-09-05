@@ -1,7 +1,7 @@
 package gameoflife;
 
-import gameoflife.CellPosition;
-import gameoflife.GameOfLifeCellPositionSpec;
+import gameoflife.CellLocation;
+import gameoflife.GameOfLifeCellLocationSpec;
 import gameoflife.GameOfLifeEvolutionSpec;
 import gameoflife.GameOfLifeRulesSpec;
 import gameoflife.GameOfLifeWorldSpec;
@@ -14,28 +14,28 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.junit.runner.RunWith;
 
-@Contains({ GameOfLifeEvolutionSpec.class, GameOfLifeRulesSpec.class, GameOfLifeCellPositionSpec.class, GameOfLifeWorldSpec.class })
+@Contains({ GameOfLifeEvolutionSpec.class, GameOfLifeRulesSpec.class, GameOfLifeCellLocationSpec.class, GameOfLifeWorldSpec.class })
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("Game of Life")
 public class GameOfLifeSpec {
-  final CellPosition livingCell = new Function0<CellPosition>() {
-    public CellPosition apply() {
-      CellPosition _cell = CellPosition.cell(0, 0);
+  final CellLocation livingCell = new Function0<CellLocation>() {
+    public CellLocation apply() {
+      CellLocation _cell = CellLocation.cell(0, 0);
       return _cell;
     }
   }.apply();
   
-  final CellPosition anotherLivingCell = new Function0<CellPosition>() {
-    public CellPosition apply() {
-      CellPosition _cell = CellPosition.cell(1, 1);
+  final CellLocation anotherLivingCell = new Function0<CellLocation>() {
+    public CellLocation apply() {
+      CellLocation _cell = CellLocation.cell(1, 1);
       return _cell;
     }
   }.apply();
   
   final World worldWithLiveCell = new Function0<World>() {
     public World apply() {
-      List<CellPosition> _list = JnarioCollectionLiterals.<CellPosition>list(GameOfLifeSpec.this.livingCell);
+      List<CellLocation> _list = JnarioCollectionLiterals.<CellLocation>list(GameOfLifeSpec.this.livingCell);
       World _worldWith = World.worldWith(_list);
       return _worldWith;
     }
@@ -43,7 +43,7 @@ public class GameOfLifeSpec {
   
   final World worldWithTwoLiveNeighbours = new Function0<World>() {
     public World apply() {
-      List<CellPosition> _list = JnarioCollectionLiterals.<CellPosition>list(GameOfLifeSpec.this.livingCell, GameOfLifeSpec.this.anotherLivingCell);
+      List<CellLocation> _list = JnarioCollectionLiterals.<CellLocation>list(GameOfLifeSpec.this.livingCell, GameOfLifeSpec.this.anotherLivingCell);
       World _worldWith = World.worldWith(_list);
       return _worldWith;
     }

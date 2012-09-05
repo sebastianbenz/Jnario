@@ -36,7 +36,7 @@ val evolution = new Evolution(dontCare, allDeadLive)
 evolution.evolve(worldWithLiveCell).livingCells =&gt; livingCell.neighbours</pre>
 </li></ul>
 <h3 id="live_cells">Live cells</h3>
-<ul><li><p id="become_alive_if_rule_says_so"><strong>become alive if rule says so</strong></p>
+<ul><li><p id="stay_alive_if_rule_says_so"><strong>stay alive if rule says so</strong></p>
 <pre class="prettyprint lang-spec">
 val evolution = new Evolution(allLiveStayAlive, dontCare)
 evolution.evolve(worldWithLiveCell).livingCells =&gt; set(livingCell)</pre>
@@ -98,8 +98,8 @@ evolution.evolve(worldWithLiveCell).livingCells =&gt; set(livingCell)</pre>
 </table>
 </li><li><p id="deadcells_forEach_subject_becomesAlive_livingNeighbours_becomesAlive"><strong>deadcells.forEach[ subject.becomesAlive[livingNeighbours] => becomesAlive ]</strong></p>
 </li></ul>
-<h3 id="CellPosition">CellPosition</h3>
-<h3 id="plus_CellPosition">Plus[CellPosition]</h3>
+<h3 id="CellLocation">CellLocation</h3>
+<h3 id="adding_cell_locations">Adding cell locations</h3>
 <ul><li><p id="cell_1_1_plus_cell_3_4_cell_2_5"><strong>cell[-1, 1].plus[cell[3,4]] => cell[2,5]</strong></p>
 </li></ul>
 <h3 id="neighbours">Neighbours</h3>
@@ -128,7 +128,7 @@ expectedDeadCells.remove(anotherLivingCell)
 expectedDeadCells.remove(livingCell)
 worldWithTwoLiveNeighbours.deadCells =&gt; expectedDeadCells</pre>
 </li></ul>
-<h3 id="livingNeighbours_CellPosition">LivingNeighbours[CellPosition]</h3>
+<h3 id="livingNeighbours_CellLocation">LivingNeighbours[CellLocation]</h3>
 <ul><li><p id="returns_number_of_live_neighbours"><strong>returns number of live neighbours</strong></p>
 <pre class="prettyprint lang-spec">
 worldWithTwoLiveNeighbours.livingNeighbours(livingCell) =&gt; 1</pre>

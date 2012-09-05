@@ -1,6 +1,6 @@
 package gameoflife
 
-import static gameoflife.CellPosition.*
+import static gameoflife.CellLocation.*
 import static gameoflife.World.*
 
 describe "Game of Life"{
@@ -22,7 +22,7 @@ describe "Game of Life"{
 		}	
 		context "live cells"{
 			val Rule allLiveStayAlive  = [true]
-			fact "become alive if rule says so" {
+			fact "stay alive if rule says so" {
 				val evolution = new Evolution(allLiveStayAlive, dontCare)
 				evolution.evolve(worldWithLiveCell).livingCells => set(livingCell)
 			}
@@ -55,8 +55,8 @@ describe "Game of Life"{
 		}
 	}
 	
-	describe CellPosition{
-		context plus{
+	describe CellLocation{
+		context "adding cell locations"{
 			fact cell(-1, 1).plus(cell(3,4)) => cell(2,5)
 		} 
 		context neighbours {

@@ -2,7 +2,7 @@ package gameoflife;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
-import gameoflife.CellPosition;
+import gameoflife.CellLocation;
 import java.util.ArrayList;
 import java.util.Set;
 import org.eclipse.xtend.lib.Data;
@@ -16,16 +16,16 @@ import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
 @Data
 @SuppressWarnings("all")
 public class World {
-  private final Set<CellPosition> _livingCells;
+  private final Set<CellLocation> _livingCells;
   
-  public Set<CellPosition> getLivingCells() {
+  public Set<CellLocation> getLivingCells() {
     return this._livingCells;
   }
   
   public static World parseWorld(final CharSequence grid) {
     World _xblockexpression = null;
     {
-      final ArrayList<CellPosition> cells = CollectionLiterals.<CellPosition>newArrayList();
+      final ArrayList<CellLocation> cells = CollectionLiterals.<CellLocation>newArrayList();
       String _string = grid.toString();
       String[] _split = _string.split("\r?\n");
       final Procedure2<String,Integer> _function = new Procedure2<String,Integer>() {
@@ -36,7 +36,7 @@ public class World {
                   String _string = c.toString();
                   boolean _equals = Objects.equal(_string, "X");
                   if (_equals) {
-                    CellPosition _cell = CellPosition.cell((x).intValue(), (y).intValue());
+                    CellLocation _cell = CellLocation.cell((x).intValue(), (y).intValue());
                     cells.add(_cell);
                   }
                 }
@@ -51,50 +51,50 @@ public class World {
     return _xblockexpression;
   }
   
-  public static World worldWith(final Iterable<CellPosition> cells) {
-    Set<CellPosition> _set = IterableExtensions.<CellPosition>toSet(cells);
+  public static World worldWith(final Iterable<CellLocation> cells) {
+    Set<CellLocation> _set = IterableExtensions.<CellLocation>toSet(cells);
     World _world = new World(_set);
     return _world;
   }
   
-  public Set<CellPosition> deadCells() {
-    Set<CellPosition> _livingCells = this.getLivingCells();
-    final Function1<CellPosition,Set<CellPosition>> _function = new Function1<CellPosition,Set<CellPosition>>() {
-        public Set<CellPosition> apply(final CellPosition it) {
-          Set<CellPosition> _neighbours = it.neighbours();
+  public Set<CellLocation> deadCells() {
+    Set<CellLocation> _livingCells = this.getLivingCells();
+    final Function1<CellLocation,Set<CellLocation>> _function = new Function1<CellLocation,Set<CellLocation>>() {
+        public Set<CellLocation> apply(final CellLocation it) {
+          Set<CellLocation> _neighbours = it.neighbours();
           return _neighbours;
         }
       };
-    Iterable<Set<CellPosition>> _map = IterableExtensions.<CellPosition, Set<CellPosition>>map(_livingCells, _function);
-    Iterable<CellPosition> _flatten = Iterables.<CellPosition>concat(_map);
-    final Function1<CellPosition,Boolean> _function_1 = new Function1<CellPosition,Boolean>() {
-        public Boolean apply(final CellPosition it) {
-          Set<CellPosition> _livingCells = World.this.getLivingCells();
+    Iterable<Set<CellLocation>> _map = IterableExtensions.<CellLocation, Set<CellLocation>>map(_livingCells, _function);
+    Iterable<CellLocation> _flatten = Iterables.<CellLocation>concat(_map);
+    final Function1<CellLocation,Boolean> _function_1 = new Function1<CellLocation,Boolean>() {
+        public Boolean apply(final CellLocation it) {
+          Set<CellLocation> _livingCells = World.this.getLivingCells();
           boolean _contains = _livingCells.contains(it);
           boolean _not = (!_contains);
           return Boolean.valueOf(_not);
         }
       };
-    Iterable<CellPosition> _filter = IterableExtensions.<CellPosition>filter(_flatten, _function_1);
-    Set<CellPosition> _set = IterableExtensions.<CellPosition>toSet(_filter);
+    Iterable<CellLocation> _filter = IterableExtensions.<CellLocation>filter(_flatten, _function_1);
+    Set<CellLocation> _set = IterableExtensions.<CellLocation>toSet(_filter);
     return _set;
   }
   
-  public int livingNeighbours(final CellPosition cell) {
-    Set<CellPosition> _neighbours = cell.neighbours();
-    final Function1<CellPosition,Boolean> _function = new Function1<CellPosition,Boolean>() {
-        public Boolean apply(final CellPosition it) {
-          Set<CellPosition> _livingCells = World.this.getLivingCells();
+  public int livingNeighbours(final CellLocation cell) {
+    Set<CellLocation> _neighbours = cell.neighbours();
+    final Function1<CellLocation,Boolean> _function = new Function1<CellLocation,Boolean>() {
+        public Boolean apply(final CellLocation it) {
+          Set<CellLocation> _livingCells = World.this.getLivingCells();
           boolean _contains = _livingCells.contains(it);
           return Boolean.valueOf(_contains);
         }
       };
-    Iterable<CellPosition> _filter = IterableExtensions.<CellPosition>filter(_neighbours, _function);
+    Iterable<CellLocation> _filter = IterableExtensions.<CellLocation>filter(_neighbours, _function);
     int _size = IterableExtensions.size(_filter);
     return _size;
   }
   
-  public World(final Set<CellPosition> livingCells) {
+  public World(final Set<CellLocation> livingCells) {
     super();
     this._livingCells = livingCells;
   }

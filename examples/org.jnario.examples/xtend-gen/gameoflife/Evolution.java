@@ -1,7 +1,7 @@
 package gameoflife;
 
 import com.google.common.collect.Iterables;
-import gameoflife.CellPosition;
+import gameoflife.CellLocation;
 import gameoflife.EvolveDeadCells;
 import gameoflife.EvolveLivingCells;
 import gameoflife.Rule;
@@ -35,30 +35,30 @@ public class Evolution {
   }
   
   public World evolve(final World world) {
-    Set<CellPosition> _livingCells = world.getLivingCells();
-    final Function1<CellPosition,Boolean> _function = new Function1<CellPosition,Boolean>() {
-        public Boolean apply(final CellPosition it) {
+    Set<CellLocation> _livingCells = world.getLivingCells();
+    final Function1<CellLocation,Boolean> _function = new Function1<CellLocation,Boolean>() {
+        public Boolean apply(final CellLocation it) {
           Rule _livingCellRule = Evolution.this.getLivingCellRule();
           boolean _apply = Evolution.this.apply(_livingCellRule, world, it);
           return Boolean.valueOf(_apply);
         }
       };
-    Iterable<CellPosition> _filter = IterableExtensions.<CellPosition>filter(_livingCells, _function);
-    Set<CellPosition> _deadCells = world.deadCells();
-    final Function1<CellPosition,Boolean> _function_1 = new Function1<CellPosition,Boolean>() {
-        public Boolean apply(final CellPosition it) {
+    Iterable<CellLocation> _filter = IterableExtensions.<CellLocation>filter(_livingCells, _function);
+    Set<CellLocation> _deadCells = world.deadCells();
+    final Function1<CellLocation,Boolean> _function_1 = new Function1<CellLocation,Boolean>() {
+        public Boolean apply(final CellLocation it) {
           Rule _deadCellRule = Evolution.this.getDeadCellRule();
           boolean _apply = Evolution.this.apply(_deadCellRule, world, it);
           return Boolean.valueOf(_apply);
         }
       };
-    Iterable<CellPosition> _filter_1 = IterableExtensions.<CellPosition>filter(_deadCells, _function_1);
-    Iterable<CellPosition> _plus = Iterables.<CellPosition>concat(_filter, _filter_1);
+    Iterable<CellLocation> _filter_1 = IterableExtensions.<CellLocation>filter(_deadCells, _function_1);
+    Iterable<CellLocation> _plus = Iterables.<CellLocation>concat(_filter, _filter_1);
     World _worldWith = World.worldWith(_plus);
     return _worldWith;
   }
   
-  public boolean apply(final Rule rule, final World world, final CellPosition cell) {
+  private boolean apply(final Rule rule, final World world, final CellLocation cell) {
     int _livingNeighbours = world.livingNeighbours(cell);
     boolean _becomesAlive = rule.becomesAlive(_livingNeighbours);
     return _becomesAlive;
