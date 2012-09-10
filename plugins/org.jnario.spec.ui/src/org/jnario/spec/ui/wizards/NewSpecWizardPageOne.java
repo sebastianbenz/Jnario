@@ -167,7 +167,7 @@ public class NewSpecWizardPageOne extends NewJnarioFileWizardPageOne {
 			updateBuildPathMessage();
 		} 
 		if(fieldName.equals(CLASS_UNDER_TEST)){
-			if(isNullOrEmpty(getTypeName())){
+			if(fClassUnderTest != null && isNullOrEmpty(getTypeName())){
 				setTypeName(fClassUnderTest.getElementName(), true);
 			}
 		}
