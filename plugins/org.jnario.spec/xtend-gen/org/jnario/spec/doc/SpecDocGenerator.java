@@ -260,15 +260,15 @@ public class SpecDocGenerator extends AbstractDocGenerator {
   
   protected CharSequence _generate(final ExampleTable table, final int level) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<h4");
+    _builder.append("<p");
     String _fieldName = this._exampleNameProvider.toFieldName(table);
     String _id = this.id(_fieldName);
     _builder.append(_id, "");
-    _builder.append(">");
+    _builder.append("><strong>");
     String _fieldName_1 = this._exampleNameProvider.toFieldName(table);
     String _title = this.toTitle(_fieldName_1);
     _builder.append(_title, "");
-    _builder.append("</h4>");
+    _builder.append("</strong></p>");
     _builder.newLineIfNotEmpty();
     CharSequence _generateDoc = this.generateDoc(table);
     _builder.append(_generateDoc, "");
@@ -281,14 +281,26 @@ public class SpecDocGenerator extends AbstractDocGenerator {
   
   protected CharSequence _generate(final ExampleGroup exampleGroup, final int level) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<h3");
+    {
+      boolean _greaterThan = (level > 1);
+      if (_greaterThan) {
+        _builder.append("<div class=\"level\">");
+        _builder.newLine();
+      }
+    }
+    _builder.append("<h");
+    String _header = this.header(exampleGroup, level);
+    _builder.append(_header, "");
     String _describe = this._exampleNameProvider.describe(exampleGroup);
     String _id = this.id(_describe);
     _builder.append(_id, "");
     _builder.append(">");
     String _asTitle = this.asTitle(exampleGroup);
     _builder.append(_asTitle, "");
-    _builder.append("</h3>");
+    _builder.append("</h");
+    String _header_1 = this.header(exampleGroup, level);
+    _builder.append(_header_1, "");
+    _builder.append(">");
     _builder.newLineIfNotEmpty();
     CharSequence _generateDoc = this.generateDoc(exampleGroup);
     _builder.append(_generateDoc, "");
@@ -297,7 +309,32 @@ public class SpecDocGenerator extends AbstractDocGenerator {
     StringConcatenation _generateMembers = this.generateMembers(exampleGroup, _plus);
     _builder.append(_generateMembers, "");
     _builder.newLineIfNotEmpty();
+    {
+      boolean _greaterThan_1 = (level > 1);
+      if (_greaterThan_1) {
+        _builder.append("</div>");
+        _builder.newLine();
+      }
+    }
     return _builder;
+  }
+  
+  private String header(final ExampleGroup exampleGroup, final int level) {
+    String _xifexpression = null;
+    boolean _lessEqualsThan = (level <= 1);
+    if (_lessEqualsThan) {
+      _xifexpression = "2";
+    } else {
+      String _xifexpression_1 = null;
+      boolean _equals = (level == 2);
+      if (_equals) {
+        _xifexpression_1 = "3";
+      } else {
+        _xifexpression_1 = "4";
+      }
+      _xifexpression = _xifexpression_1;
+    }
+    return _xifexpression;
   }
   
   protected String _asTitle(final ExampleGroup exampleGroup) {

@@ -89,7 +89,7 @@ class SpecDocGenerator extends AbstractDocGenerator {
 	
 	def dispatch generate(Example example, int level){
 		var String docString = example.documentation
-		var List<Filter> filters = emptyList
+		var filters = <Filter>emptyList
 		if(docString != null){
 			val filterResult = docString.apply
 			filters = filterResult.filters
@@ -123,16 +123,32 @@ class SpecDocGenerator extends AbstractDocGenerator {
 
 	 
 	def dispatch generate(ExampleTable table, int level)'''
-		<h4«id(table.toFieldName)»>«table.toFieldName.toTitle»</h4>
+		<p«id(table.toFieldName)»><strong>«table.toFieldName.toTitle»</strong></p>
 		«table.generateDoc»
 		«super.generate(table)»
 	'''
 		
 	def dispatch generate(ExampleGroup exampleGroup, int level)'''
-		<h3«id(exampleGroup.describe)»>«exampleGroup.asTitle»</h3>
+		«IF level > 1»
+		<div class="level">
+		«ENDIF»
+		<h«exampleGroup.header(level)»«id(exampleGroup.describe)»>«exampleGroup.asTitle»</h«exampleGroup.header(level)»>
 		«exampleGroup.generateDoc»
 		«generateMembers(exampleGroup, level + 1)»
+		«IF level > 1»
+		</div>
+		«ENDIF»
 	'''
+	
+	def private header(ExampleGroup exampleGroup, int level){
+		if(level <= 1){
+			"2"
+		}else if(level == 2){
+			"3"
+		}else {
+			"4"
+		}
+	}
 	
 	def dispatch asTitle(ExampleGroup exampleGroup){
 		exampleGroup.describe.toTitle
