@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>org.jnario.maven.example</artifactId>
 	<name>Jnario Maven Example</name>
-	<version>0.1.0-SNAPSHOT</version>
+	<version>0.3.0</version>
 	<groupId>org.jnario</groupId>
 	<repositories>
 		<repository>
@@ -27,12 +27,12 @@
 		<dependency>
 			<groupId>org.eclipse.xtend</groupId>
 			<artifactId>org.eclipse.xtend.lib</artifactId>
-			<version>2.3.0</version>
+			<version>2.3.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jnario</groupId>
 			<artifactId>org.jnario.lib.maven</artifactId>
-			<version>0.1.0</version>
+			<version>0.2.0</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -41,7 +41,7 @@
 			<plugin>
 				<groupId>org.eclipse.xtend</groupId>
 				<artifactId>xtend-maven-plugin</artifactId>
-				<version>2.3.0</version>
+				<version>2.3.1</version>
 				<executions>
 					<execution>
 						<goals>
@@ -56,7 +56,7 @@
 			<plugin>
 				<groupId>org.jnario</groupId>
 				<artifactId>jnario-maven-plugin</artifactId>
-				<version>0.1.0</version>
+				<version>0.2.0</version>
 				<executions>
 					<execution>
 						<goals>
