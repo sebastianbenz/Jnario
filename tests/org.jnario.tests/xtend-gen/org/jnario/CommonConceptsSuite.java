@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(ExampleGroupRunner.class)
 @Named("Common Concepts")
-@Contains({ ExtensionLibrarySpec.class, UsingShouldSpec.class, CustomizingTheSpecCreationSpec.class, UsingXtendSWithOperatorSpec.class })
+@Contains({ CustomizingTheSpecCreationSpec.class, ExtensionLibrarySpec.class, UsingShouldSpec.class, UsingXtendSWithOperatorSpec.class })
 @SuppressWarnings("all")
 public class CommonConceptsSuite {
 }

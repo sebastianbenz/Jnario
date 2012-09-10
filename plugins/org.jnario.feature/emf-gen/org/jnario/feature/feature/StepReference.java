@@ -27,13 +27,6 @@ package org.jnario.feature.feature;
 public interface StepReference extends Step
 {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "Copyright (c) 2012 BMW Car IT and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html";
-
-	/**
 	 * Returns the value of the '<em><b>Reference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -42,12 +35,12 @@ public interface StepReference extends Step
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Reference</em>' reference.
-	 * @see #setReference(Step)
+	 * @see #setReference(StepImplementation)
 	 * @see org.jnario.feature.feature.FeaturePackage#getStepReference_Reference()
 	 * @model
 	 * @generated
 	 */
-	Step getReference();
+	StepImplementation getReference();
 
 	/**
 	 * Sets the value of the '{@link org.jnario.feature.feature.StepReference#getReference <em>Reference</em>}' reference.
@@ -57,6 +50,6 @@ public interface StepReference extends Step
 	 * @see #getReference()
 	 * @generated
 	 */
-	void setReference(Step value);
+	void setReference(StepImplementation value);
 
 } // StepReference

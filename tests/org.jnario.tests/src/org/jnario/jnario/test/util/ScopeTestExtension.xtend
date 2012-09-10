@@ -28,6 +28,10 @@ class ScopeTestExtension implements Iterable{
 		store.parseSuite(content)
 	}
 	
+	def parseFeature(CharSequence content){
+		store.parseScenario(content)
+	}
+	
 	def scope(EObject context, EReference ref){
 		addContainerStateAdapter(store.resourceSet)
 		scope(getScope(context, ref))

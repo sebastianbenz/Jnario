@@ -5,7 +5,7 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.hamcrest.StringDescription;
 import org.jnario.feature.feature.Given;
 import org.jnario.feature.feature.GivenReference;
-import org.jnario.feature.feature.Step;
+import org.jnario.feature.feature.StepImplementation;
 import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.lib.Should;
@@ -63,7 +63,7 @@ public class ReferencingOtherStepsSpec {
     _builder.newLine();
     this.m.parseScenario(_builder);
     GivenReference _first = this.m.<GivenReference>first(GivenReference.class);
-    Step _reference = _first.getReference();
+    StepImplementation _reference = _first.getReference();
     Given _first_1 = this.m.<Given>first(Given.class);
     boolean _doubleArrow = Should.operator_doubleArrow(_reference, _first_1);
     Assert.assertTrue("\nExpected first(typeof(GivenReference)).reference => first(typeof(Given)) but"
@@ -108,7 +108,7 @@ public class ReferencingOtherStepsSpec {
     _builder.newLine();
     this.m.parseScenario(_builder);
     GivenReference _first = this.m.<GivenReference>first(GivenReference.class);
-    Step _reference = _first.getReference();
+    StepImplementation _reference = _first.getReference();
     Given _first_1 = this.m.<Given>first(Given.class);
     boolean _doubleArrow = Should.operator_doubleArrow(_reference, _first_1);
     Assert.assertTrue("\nExpected first(typeof(GivenReference)).reference => first(typeof(Given)) but"
@@ -156,7 +156,7 @@ public class ReferencingOtherStepsSpec {
     _builder_1.newLine();
     this.m.parseScenario(_builder_1);
     GivenReference _first = this.m.<GivenReference>first(GivenReference.class);
-    Step _reference = _first.getReference();
+    StepImplementation _reference = _first.getReference();
     Given _first_1 = this.m.<Given>first(Given.class);
     boolean _doubleArrow = Should.operator_doubleArrow(_reference, _first_1);
     Assert.assertTrue("\nExpected first(typeof(GivenReference)).reference => first(typeof(Given)) but"
@@ -205,7 +205,7 @@ public class ReferencingOtherStepsSpec {
     _builder_1.newLine();
     this.m.parseScenario(_builder_1);
     GivenReference _first = this.m.<GivenReference>first(GivenReference.class);
-    Step _reference = _first.getReference();
+    StepImplementation _reference = _first.getReference();
     Given _first_1 = this.m.<Given>first(Given.class);
     boolean _doubleArrow = Should.operator_doubleArrow(_reference, _first_1);
     Assert.assertTrue("\nExpected first(typeof(GivenReference)).reference => first(typeof(Given)) but"

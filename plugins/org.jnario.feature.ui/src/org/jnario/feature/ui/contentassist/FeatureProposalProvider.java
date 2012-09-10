@@ -10,12 +10,12 @@
  */
 package org.jnario.feature.ui.contentassist;
 
-import static com.google.common.collect.Iterators.filter;
-import static org.jnario.util.Nodes.textForFeature;
+import static org.eclipse.emf.ecore.util.EcoreUtil.resolve;
 
-import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jdt.core.search.IJavaSearchConstants;
 import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.xtend.core.xtend.XtendPackage;
@@ -23,16 +23,29 @@ import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.CrossReference;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.common.types.xtext.ui.TypeMatchFilters;
+import org.eclipse.xtext.resource.IContainer;
+import org.eclipse.xtext.resource.IEObjectDescription;
+import org.eclipse.xtext.resource.IResourceDescription;
+import org.eclipse.xtext.resource.IResourceDescriptions;
+import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.StepReference;
+import org.jnario.feature.naming.StepNameProvider;
+
+import com.google.common.base.Strings;
+import com.google.inject.Inject;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
 public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
+	
+	@Inject private IResourceDescriptions resourceDescriptions;
+	@Inject private IContainer.Manager containerManager;
+	@Inject private StepNameProvider stepNameProvider;
 	
 	@Override
 	public void completeImport_ImportedType(EObject model, Assignment assignment, ContentAssistContext context,
@@ -84,21 +97,32 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 	private void completeStepReference(EObject model,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor,
 			String stepPrefix) {
-		Iterator<EObject> allContents = model.eResource().getAllContents();
-		Iterator<StepReference> steps = filter(allContents, StepReference.class);
-		while (steps.hasNext()) {
-			StepReference ref = (StepReference) steps.next();
-			if(ref.getName() == null){
-				String string = textForFeature(ref, FeaturePackage.Literals.STEP_REFERENCE__REFERENCE);
-				int index = string.indexOf(" ");
-				if(index != -1){
-					String proposal = string.substring(index);
-					proposal = stepPrefix + proposal;
-					proposal = proposal.trim();
-					acceptor.accept(createCompletionProposal(proposal, string, getLabelProvider().getImage(ref) , context));
-				}
+		for (IContainer container : visibleContainers(model)) {
+			Iterable<IEObjectDescription> descs = container.getExportedObjectsByType(FeaturePackage.Literals.STEP_REFERENCE);
+			for (IEObjectDescription desc : descs) {
+				StepReference ref = (StepReference) resolve(desc.getEObjectOrProxy(), model);
+				createProposal(context, acceptor, stepPrefix, ref);
 			}
 		}
+	}
+
+	public void createProposal(ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor, String stepPrefix,
+			StepReference ref) {
+		String name = stepNameProvider.nameOf(ref);
+		name = stepNameProvider.removeKeywords(name);
+		if(Strings.isNullOrEmpty(name)){
+			return;
+		}
+		String proposal = stepPrefix + " " + name;
+		acceptor.accept(createCompletionProposal(proposal, name, getLabelProvider().getImage(ref) , context));
+	}
+
+	public List<IContainer> visibleContainers(EObject model) {
+		IResourceDescription.Manager resourceDescManager = ((XtextResource)model.eResource()).getResourceServiceProvider().getResourceDescriptionManager();
+		IResourceDescription resourceDescription = resourceDescManager.getResourceDescription(model.eResource());
+		List<IContainer> visibleContainers = containerManager.getVisibleContainers(resourceDescription, resourceDescriptions);
+		return visibleContainers;
 	}
 
 	@Override

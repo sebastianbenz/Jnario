@@ -196,8 +196,8 @@ public class SpecDocGeneratorSpec {
     _builder.newLine();
     this.generateDoc(_builder);
     final String scenarioDoc = this.generatedFile("ExampleSpec.html");
-    boolean _contains = scenarioDoc.contains("<h4 id=\"myExample\">MyExample</h4>");
-    Assert.assertTrue("\nExpected scenarioDoc.contains(\'<h4 id=\"myExample\">MyExample</h4>\') but"
+    boolean _contains = scenarioDoc.contains("<p id=\"myExample\"><strong>MyExample</strong></p>");
+    Assert.assertTrue("\nExpected scenarioDoc.contains(\'<p id=\"myExample\"><strong>MyExample</strong></p>\') but"
      + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString() + "\n", _contains);
     
     boolean _contains_1 = scenarioDoc.contains("<th>a</th>");

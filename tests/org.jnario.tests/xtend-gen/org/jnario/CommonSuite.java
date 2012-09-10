@@ -22,7 +22,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(ExampleGroupRunner.class)
 @Named("Common")
-@Contains({ ShouldSpec.class, RegexFilterSpec.class, ExecutableSpec.class, FilterExtractorSpec.class, StringsSpec.class, InstallingJnarioSpec.class, DocumentationProviderSpec.class, WhiteSpaceNormalizerSpec.class, HtmlFileSpec.class, HtmlAssetsSpec.class, ExtensionLibrarySpec.class, HtmlAssetsCompilerSpec.class, ExampleColumnSpec.class, _20FactsAboutXtendSpec.class, ExampleTableSpec.class })
+@Contains({ _20FactsAboutXtendSpec.class, DocumentationProviderSpec.class, ExampleColumnSpec.class, ExampleTableSpec.class, ExecutableSpec.class, ExtensionLibrarySpec.class, FilterExtractorSpec.class, HtmlAssetsSpec.class, HtmlAssetsCompilerSpec.class, HtmlFileSpec.class, InstallingJnarioSpec.class, RegexFilterSpec.class, ShouldSpec.class, StringsSpec.class, WhiteSpaceNormalizerSpec.class })
 @SuppressWarnings("all")
 public class CommonSuite {
 }

@@ -97,7 +97,7 @@ generateDoc('''
   } 
 ''')
 val scenarioDoc = generatedFile(&quot;ExampleSpec.html&quot;)
-assert scenarioDoc.contains('&lt;h4 id=&quot;myExample&quot;&gt;MyExample&lt;/h4&gt;')
+assert scenarioDoc.contains('&lt;p id=&quot;myExample&quot;&gt;&lt;strong&gt;MyExample&lt;/strong&gt;&lt;/p&gt;')
 assert scenarioDoc.contains(&quot;&lt;th&gt;a&lt;/th&gt;&quot;)
 assert scenarioDoc.contains(&quot;&lt;th&gt;b&lt;/th&gt;&quot;)
 assert scenarioDoc.contains(&quot;&lt;td&gt;1&lt;/td&gt;&quot;)

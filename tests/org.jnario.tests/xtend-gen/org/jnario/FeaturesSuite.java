@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(ExampleGroupRunner.class)
 @Named("Features")
-@Contains({ SetupTeardownWithFeatureExtensionsFeature.class, UsingJUnitRulesInFeaturesFeature.class, ReferencingOtherStepsSpec.class })
+@Contains({ ReferencingOtherStepsSpec.class, SetupTeardownWithFeatureExtensionsFeature.class, UsingJUnitRulesInFeaturesFeature.class })
 @SuppressWarnings("all")
 public class FeaturesSuite {
 }

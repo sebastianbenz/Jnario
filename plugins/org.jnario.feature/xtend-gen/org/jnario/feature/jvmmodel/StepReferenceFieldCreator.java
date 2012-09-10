@@ -13,8 +13,8 @@ import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepExpression;
+import org.jnario.feature.feature.StepImplementation;
 import org.jnario.feature.feature.StepReference;
 import org.jnario.feature.jvmmodel.VisibleMembersCalculator;
 
@@ -29,12 +29,12 @@ public class StepReferenceFieldCreator {
   public void copyXtendMemberForReferences(final EObject objectWithReference) {
     final List<StepReference> refs = EcoreUtil2.<StepReference>getAllContentsOfType(objectWithReference, StepReference.class);
     for (final StepReference ref : refs) {
-      Step _reference = ref.getReference();
+      StepImplementation _reference = ref.getReference();
       StepExpression _stepExpression = _reference==null?(StepExpression)null:_reference.getStepExpression();
       boolean _notEquals = (!Objects.equal(_stepExpression, null));
       if (_notEquals) {
         final Set<String> fieldNames = this.getExistingFieldNamesForContainerOfStepReference(ref);
-        Step _reference_1 = ref.getReference();
+        StepImplementation _reference_1 = ref.getReference();
         final Iterable<XtendMember> members = this._visibleMembersCalculator.allVisibleMembers(_reference_1);
         this.copyFields(objectWithReference, members, fieldNames);
       }

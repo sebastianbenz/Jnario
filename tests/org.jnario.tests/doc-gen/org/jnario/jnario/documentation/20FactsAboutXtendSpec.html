@@ -29,7 +29,7 @@
 			<div class="row">
 				<div class="span12">
 <p>This document teaches you everything you need to know about Xtend to effectively use <a href="http://www.jnario.org">Jnario</a>. For a more detailed introduction see the offical <a href="http://www.eclipse.org/xtend/documentation.html">Xtend documentation</a>.</p>
-<h3 id="A_modernized_Java">A modernized Java</h3>
+<h2 id="A_modernized_Java">A modernized Java</h2>
 <p>The syntax of Xtend is quite similar to Java, but Xtend code is usually a lot shorter than its Java counterpart. However, there are some important differences between Java and Xtend one should be aware of.</p>
 <ul><li><p id="No_semicolons"><strong>No semicolons</strong></p>
 <p>Semicolons are optional in Xtend.</p>
@@ -79,7 +79,7 @@ def sayHello(String name){
 sayHello(&quot;Sebastian&quot;) =&gt; greeting + &quot;Sebastian&quot;
 42.toString =&gt; &quot;42&quot;</pre>
 </li></ul>
-<h3 id="Some_important_differences">Some important differences</h3>
+<h2 id="Some_important_differences">Some important differences</h2>
 <ul><li><p id="Accessing_static_members_differs_from_Java"><strong>Accessing static members differs from Java</strong></p>
 <p>Static class members are accessed via <code>::</code> and not <code>.</code> like in Java.</p><p><span class="label label-warning">Important</span> This is probably the most often asked question on the Xtend <a href="https://groups.google.com/forum/?fromgroups#!forum/xtend-lang">mailing list</a>.</p>
 <pre class="prettyprint lang-spec">
@@ -96,7 +96,7 @@ typeof(String).name =&gt; &quot;java.lang.String&quot;</pre>
 val Object obj = &quot;a string&quot;
 val String s = obj as String</pre>
 </li></ul>
-<h3 id="The_Uber_Switch_Expression">The Uber-Switch Expression</h3>
+<h2 id="The_Uber_Switch_Expression">The Uber-Switch Expression</h2>
 <p>Xtend's switch expression is greatly improved over the one from Java. There is no fall through which means only one case is evaluated at most and it is not limited to certain values but can be used for any object.</p>
 <ul><li><p id="Supports_case_expressions"><strong>Supports case expressions</strong></p>
 <p>Cases support arbitrary expressions, if they evaluate to a boolean value, it will be used as result, otherwise, the evaluation result will be compared using <code>Object#equals(Object)</code>.</p>
@@ -123,7 +123,7 @@ switch x {
 
 =&gt; 3</pre>
 </li></ul>
-<h3 id="Readable_Code_with_Extension_Methods">Readable Code with Extension Methods</h3>
+<h2 id="Readable_Code_with_Extension_Methods">Readable Code with Extension Methods</h2>
 <p>Extension methods allow adding new methods to existing types without modifying them. When writing specs this is really helpful as they can greatly improve the readability. They use a simple syntactic trick: the first parameter of a method can either be passed in after opening the parentheses or before the method call. For example, given a method:</p>
 <pre class="prettyprint lang-spec">
 def removeVowels (String s){
@@ -162,7 +162,7 @@ extension ListHelpers = new ListHelpers
 <pre class="prettyprint lang-spec">
 assert list(&quot;red&quot;).hasOneElement</pre>
 </li></ul>
-<h3 id="Functional_Programming_FTW">Functional Programming FTW</h3>
+<h2 id="Functional_Programming_FTW">Functional Programming FTW</h2>
 <p>A great thing about Xtend is that it enables a more functional programming style, with its native support for anonymous functions, the so called lambda expressions, and its rich library of extension methods.</p>
 <ul><li><p id="Simple_access_to_list_elements"><strong>Simple access to list elements</strong></p>
 <p>Xtend provides a rich set of extension methods for collections. Accessing elements in lists.</p>

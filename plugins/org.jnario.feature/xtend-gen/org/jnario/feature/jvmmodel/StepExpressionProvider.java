@@ -8,6 +8,7 @@ import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepExpression;
+import org.jnario.feature.feature.StepImplementation;
 import org.jnario.feature.feature.StepReference;
 import org.jnario.feature.jvmmodel.ExpressionCopier;
 
@@ -50,7 +51,7 @@ public class StepExpressionProvider {
     if (_notEquals) {
       return ref.getStepExpression();
     }
-    final Step step = ref==null?(Step)null:ref.getReference();
+    final StepImplementation step = ref==null?(StepImplementation)null:ref.getReference();
     boolean _or = false;
     boolean _equals = Objects.equal(step, null);
     if (_equals) {

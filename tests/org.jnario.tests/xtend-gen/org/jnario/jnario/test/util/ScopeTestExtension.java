@@ -34,6 +34,11 @@ public class ScopeTestExtension implements Iterable {
     return _parseSuite;
   }
   
+  public Resource parseFeature(final CharSequence content) {
+    Resource _parseScenario = this.store.parseScenario(content);
+    return _parseScenario;
+  }
+  
   public Set<String> scope(final EObject context, final EReference ref) {
     Set<String> _xblockexpression = null;
     {

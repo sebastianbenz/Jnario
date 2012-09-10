@@ -18,7 +18,7 @@ import org.jnario.feature.feature.StepReference
  * @author Sebastian Benz - Initial contribution and API
  */
 class StepExpressionProvider {
- 
+  
  	@Inject extension ExpressionCopier
  
  	def List<XExpression> getExpressions(Step step){

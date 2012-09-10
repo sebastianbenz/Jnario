@@ -7,19 +7,24 @@
  *******************************************************************************/
 package org.jnario.feature.naming;
 
+import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 import static org.eclipse.xtext.util.Strings.isEmpty;
+
+import java.util.LinkedList;
+import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.naming.XtendQualifiedNameProvider;
 import org.eclipse.xtend.core.xtend.XtendFile;
-import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.jnario.feature.feature.Step;
+import org.jnario.feature.feature.StepReference;
 
 import com.google.inject.Inject;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
+ * @author Sebastian Benz 
  */
 public class FeatureQualifiedNameProvider extends XtendQualifiedNameProvider {
 
@@ -33,27 +38,53 @@ public class FeatureQualifiedNameProvider extends XtendQualifiedNameProvider {
 	@Override
 	public QualifiedName getFullyQualifiedName(EObject obj) {
 		if (obj instanceof Step) {
-			Step step = (Step)obj;
-			String name = step.getName();
-			if(isEmpty(name)){
-				return null;
-			}
-			name = getName(name);
-			return toQualifiedName(step, name);
+			return getStepName((Step) obj);
+		}else{
+			return super.getFullyQualifiedName(obj);
 		}
-		return super.getFullyQualifiedName(obj);
+	}
+
+	public QualifiedName getStepName(Step step) {
+		String name = null;
+		if (step instanceof StepReference) {
+			name  = stepNameProvider.nameOf((StepReference)step);
+			name = stepNameProvider.removeKeywords(name);
+		}else{
+			name = step.getName();
+		}
+		if(isEmpty(name)){
+			return null;
+		}else{
+			return toQualifiedName(step, format(name));
+		}
 	}
 
 	private QualifiedName toQualifiedName(EObject obj, String name) {
-		XtendFile file = EcoreUtil2.getContainerOfType(obj, XtendFile.class);
-		String[] parentSegments = file.getPackage().split("\\.");
-		String[] segments = new String[parentSegments.length + 1];
-		System.arraycopy(parentSegments, 0, segments, 0, parentSegments.length);
-		segments[parentSegments.length] = name;
+		String packageName = getPackageName(obj);
+		List<String> segments = new LinkedList<String>();
+		StringBuilder segment = new StringBuilder();
+		for(int i = 0; i < packageName.length(); i++){
+			char c = packageName.charAt(i);
+			if(c == '.'){
+				segments.add(segment.toString());
+				segment = new StringBuilder();
+			}else{
+				segment.append(c);
+			}
+		}
+		if(segment.length() > 0){
+			segments.add(segment.toString());
+		}
+		segments.add(name);
 		return QualifiedName.create(segments);
 	}
 
-	private String getName(String name) {
+	public String getPackageName(EObject obj) {
+		XtendFile file = getContainerOfType(obj, XtendFile.class);
+		return file.getPackage();
+	}
+
+	private String format(String name) {
 		name = stepNameProvider.removeArguments(name);
 		if(name.endsWith(".")){
 			name = name.substring(0, name.length()-1);

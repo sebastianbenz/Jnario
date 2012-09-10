@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.jnario.feature.feature.FeaturePackage;
-import org.jnario.feature.feature.Step;
+import org.jnario.feature.feature.StepImplementation;
 import org.jnario.feature.feature.StepReference;
 
 /**
@@ -34,13 +34,6 @@ import org.jnario.feature.feature.StepReference;
 public class StepReferenceImpl extends StepImplCustom implements StepReference
 {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) 2012 BMW Car IT and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html";
-
-	/**
 	 * The cached value of the '{@link #getReference() <em>Reference</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -48,7 +41,7 @@ public class StepReferenceImpl extends StepImplCustom implements StepReference
 	 * @generated
 	 * @ordered
 	 */
-	protected Step reference;
+	protected StepImplementation reference;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -76,12 +69,12 @@ public class StepReferenceImpl extends StepImplCustom implements StepReference
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Step getReference()
+	public StepImplementation getReference()
 	{
 		if (reference != null && reference.eIsProxy())
 		{
 			InternalEObject oldReference = (InternalEObject)reference;
-			reference = (Step)eResolveProxy(oldReference);
+			reference = (StepImplementation)eResolveProxy(oldReference);
 			if (reference != oldReference)
 			{
 				if (eNotificationRequired())
@@ -96,7 +89,7 @@ public class StepReferenceImpl extends StepImplCustom implements StepReference
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Step basicGetReference()
+	public StepImplementation basicGetReference()
 	{
 		return reference;
 	}
@@ -106,9 +99,9 @@ public class StepReferenceImpl extends StepImplCustom implements StepReference
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setReference(Step newReference)
+	public void setReference(StepImplementation newReference)
 	{
-		Step oldReference = reference;
+		StepImplementation oldReference = reference;
 		reference = newReference;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FeaturePackage.STEP_REFERENCE__REFERENCE, oldReference, reference));
@@ -142,7 +135,7 @@ public class StepReferenceImpl extends StepImplCustom implements StepReference
 		switch (featureID)
 		{
 			case FeaturePackage.STEP_REFERENCE__REFERENCE:
-				setReference((Step)newValue);
+				setReference((StepImplementation)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -159,7 +152,7 @@ public class StepReferenceImpl extends StepImplCustom implements StepReference
 		switch (featureID)
 		{
 			case FeaturePackage.STEP_REFERENCE__REFERENCE:
-				setReference((Step)null);
+				setReference((StepImplementation)null);
 				return;
 		}
 		super.eUnset(featureID);

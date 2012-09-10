@@ -37,7 +37,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="ThenReference" eSuperTypes="#//StepReference"/>
   <eClassifiers xsi:type="ecore:EClass" name="AndReference" eSuperTypes="#//StepReference"/>
   <eClassifiers xsi:type="ecore:EClass" name="StepReference" eSuperTypes="#//Step">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//Step"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//StepImplementation"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StepImplementation" eSuperTypes="#//Step"/>
 </ecore:EPackage>
