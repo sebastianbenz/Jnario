@@ -26,7 +26,7 @@ describe "Game of Life"{
 				val evolution = new Evolution(allLiveStayAlive, dontCare)
 				evolution.evolve(worldWithLiveCell).livingCells => set(livingCell)
 			}
-		}				
+		}
 	}
 
 	describe "rules"{
