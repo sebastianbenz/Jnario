@@ -241,4 +241,5 @@ https://github.com/bmwcarit/Jnario/issues
 			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 		</repository>
 	</distributionManagement>
+	<description>The compiler library for the Jnario testing language.</description>
 </project>

@@ -7,6 +7,24 @@ echo "next version:"
 read nextversion
 echo "Releasing $version"
 
+#pull the latest state from the repository
+git pull --rebase
+
+#prepare update site
+cd ../jnario-gh-pages
+git pull
+cd ../jnario
+
+#run all tests
+mvn clean verify
+
+#create release branch
+git branch rb-$version
+
+#change the releng/update-site/category.xml file. Replace <version>.qualifier by <version+1>
+sed -i "s/$version/$nextversion/g" releng/org.jnario.updatesite/category.xml
+
+#update master to the next -SNAPSHOT version. 
 
 #update tycho managed plugins
 mvn -Dtycho.mode=maven org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=$nextversion-SNAPSHOT
@@ -27,7 +45,7 @@ git push
 git checkout rb-$version
 
 #pick release BUILDQUALIFIER (eg, 20100924-1107) and update release branch to the release version
-mvn -Dtycho.mode=maven org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=<version>.$timestamp
+mvn -Dtycho.mode=maven org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=$version.$timestamp
   
 #commit and tag your changes
 git commit -s -a -m "new release $version"
