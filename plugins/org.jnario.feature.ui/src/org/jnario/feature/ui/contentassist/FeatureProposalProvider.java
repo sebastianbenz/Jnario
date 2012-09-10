@@ -10,27 +10,37 @@
  */
 package org.jnario.feature.ui.contentassist;
 
+import static com.google.common.collect.Iterables.addAll;
+import static com.google.common.collect.Lists.newArrayList;
 import static org.eclipse.emf.ecore.util.EcoreUtil.resolve;
 
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jdt.core.search.IJavaSearchConstants;
+import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.xtend.core.xtend.XtendPackage;
+import org.eclipse.xtend.ide.contentassist.ImportingTypesProposalProvider.FQNImporter;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.CrossReference;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.common.types.xtext.ui.TypeMatchFilters;
+import org.eclipse.xtext.naming.IQualifiedNameConverter;
+import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.IContainer;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.resource.IResourceDescription;
 import org.eclipse.xtext.resource.IResourceDescriptions;
 import org.eclipse.xtext.resource.XtextResource;
+import org.eclipse.xtext.scoping.IScope;
+import org.eclipse.xtext.scoping.impl.SimpleScope;
+import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
+import org.eclipse.xtext.xbase.XbaseQualifiedNameConverter;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
+import org.eclipse.xtext.xbase.conversion.XbaseQualifiedNameValueConverter;
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.StepReference;
 import org.jnario.feature.naming.StepNameProvider;
@@ -66,7 +76,7 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 	public void completeAndReference_Reference(EObject model,
 			Assignment assignment, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
-		completeStepReference(model, context, acceptor, "And");
+		acceptor = createStepShortener(model, context, acceptor, "And");
 		super.completeAndReference_Reference(model, assignment, context, acceptor);
 	}
 	
@@ -74,7 +84,7 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 	public void completeGivenReference_Reference(EObject model,
 			Assignment assignment, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
-		completeStepReference(model, context, acceptor, "Given");
+		acceptor = createStepShortener(model, context, acceptor, "Given");
 		super.completeGivenReference_Reference(model, assignment, context, acceptor);
 	}
 	
@@ -82,7 +92,7 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 	public void completeWhenReference_Reference(EObject model,
 			Assignment assignment, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
-		completeStepReference(model, context, acceptor, "When");
+		acceptor = createStepShortener(model, context, acceptor, "When");
 		super.completeWhenReference_Reference(model, assignment, context, acceptor);
 	}
 	
@@ -90,20 +100,28 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 	public void completeThenReference_Reference(EObject model,
 			Assignment assignment, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
-		completeStepReference(model, context, acceptor, "Then");
+		acceptor = createStepShortener(model, context, acceptor, "Then");
 		super.completeThenReference_Reference(model, assignment, context, acceptor);
 	}
 
 	private void completeStepReference(EObject model,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor,
 			String stepPrefix) {
+		IScope scope = createStepScope(model);
+		for (IEObjectDescription desc : scope.getAllElements()) {
+			StepReference ref = (StepReference) resolve(desc.getEObjectOrProxy(), model);
+			createProposal(context, acceptor, stepPrefix, ref);
+		}
+	}
+
+	protected IScope createStepScope(EObject model) {
+		List<IEObjectDescription> scopedElements = newArrayList();
 		for (IContainer container : visibleContainers(model)) {
 			Iterable<IEObjectDescription> descs = container.getExportedObjectsByType(FeaturePackage.Literals.STEP_REFERENCE);
-			for (IEObjectDescription desc : descs) {
-				StepReference ref = (StepReference) resolve(desc.getEObjectOrProxy(), model);
-				createProposal(context, acceptor, stepPrefix, ref);
-			}
+			addAll(scopedElements, descs);
 		}
+		IScope scope = new SimpleScope(scopedElements);
+		return scope;
 	}
 
 	public void createProposal(ContentAssistContext context,
@@ -111,6 +129,7 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 			StepReference ref) {
 		String name = stepNameProvider.nameOf(ref);
 		name = stepNameProvider.removeKeywords(name);
+		name = stepNameProvider.removeArguments(name);
 		if(Strings.isNullOrEmpty(name)){
 			return;
 		}
@@ -166,6 +185,14 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 		String proposal = "Then ";
 		acceptor.accept(createCompletionProposal(proposal, proposal, getLabelProvider().getImage(model), context));
 	}
+
+	protected ICompletionProposalAcceptor createStepShortener(EObject model,
+			ContentAssistContext context, ICompletionProposalAcceptor acceptor, String prefix) {
+		IScope scope = getScopeProvider().getScope(model, FeaturePackage.Literals.STEP_REFERENCE__REFERENCE);
+		acceptor = createStepFqnShorterner(context, acceptor, scope, prefix);
+		completeStepReference(model, context, acceptor, prefix);
+		return acceptor;
+	}
 	
 	@Override
 	protected void lookupCrossReference(CrossReference crossReference, ContentAssistContext contentAssistContext,
@@ -175,6 +202,42 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 	
 	protected StyledString getStyledDisplayString(EObject element, String qualifiedName, String shortName) {
 		return new StyledString(getDisplayString(element, qualifiedName, shortName));
+	}
+	
+	public ICompletionProposalAcceptor createStepFqnShorterner(ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor, IScope scope, final String prefix) {
+		
+		XbaseQualifiedNameValueConverter qualifiedNameValueConverter = new XbaseQualifiedNameValueConverter(){
+			@Override
+			public String toString(String value) {
+				value = value.substring(prefix.length() + 1);
+				int end = value.lastIndexOf('.');
+				String result = value.substring(0, end) + ".*";
+				return result;
+			}
+		};
+		final IQualifiedNameConverter qualifiedNameConverter = new XbaseQualifiedNameConverter(){
+			@Override
+			public QualifiedName toQualifiedName(String qualifiedNameAsString) {
+				return new QualifiedName(qualifiedNameAsString.split("\\.")){
+					public String getLastSegment() {
+						return prefix + " " + super.getLastSegment();
+					};
+				};
+			}
+		};
+		final FQNImporter fqnImporter = new FQNImporter(context.getResource(), context.getViewer(), scope, qualifiedNameConverter, null, qualifiedNameValueConverter);
+		final ICompletionProposalAcceptor scopeAware = new ICompletionProposalAcceptor.Delegate(acceptor) {
+			@Override
+			public void accept(ICompletionProposal proposal) {
+				if (proposal instanceof ConfigurableCompletionProposal) {
+					ConfigurableCompletionProposal configurableCompletionProposal = (ConfigurableCompletionProposal) proposal;
+					configurableCompletionProposal.setTextApplier(fqnImporter);
+				}
+				super.accept(proposal);
+			}
+		};
+		return scopeAware;
 	}
 	
 }
