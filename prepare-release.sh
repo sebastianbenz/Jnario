@@ -8,7 +8,7 @@ read nextversion
 echo "Releasing $version"
 
 #pull the latest state from the repository
-pull --rebase
+git pull --rebase
 
 #prepare update site
 cd ../jnario-gh-pages
