@@ -4,8 +4,9 @@
     modelDirectory="/org.jnario.spec/emf-gen" editDirectory="/org.jnario.spec.edit/src"
     editorDirectory="/org.jnario.spec.editor/src" modelPluginID="org.jnario.spec"
     forceOverwrite="true" modelName="Spec" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
-    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" editPluginID="org.jnario.spec.edit"
-    editorPluginID="org.jnario.spec.editor" runtimeVersion="2.5" language="" usedGenPackages="../../org.jnario/model/Jnario.genmodel#//jnario ../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types ../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xAnnotations ../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase ../../org.eclipse.xtend.core/model/Xtend.genmodel#//xtend">
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
+    editPluginID="org.jnario.spec.edit" editorPluginID="org.jnario.spec.editor" runtimeVersion="2.5"
+    language="" usedGenPackages="../../org.jnario/model/Jnario.genmodel#//jnario ../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types ../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xAnnotations ../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase ../../org.eclipse.xtend.core/model/Xtend.genmodel#//xtend">
   <foreignModel>Spec.ecore</foreignModel>
   <genPackages prefix="Spec" basePackage="org.jnario.spec" disposableProviderFactory="true"
       ecorePackage="Spec.ecore#/">

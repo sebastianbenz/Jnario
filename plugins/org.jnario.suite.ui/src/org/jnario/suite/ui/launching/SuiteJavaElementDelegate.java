@@ -9,12 +9,20 @@ package org.jnario.suite.ui.launching;
 
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jdt.core.IAnnotation;
+import org.eclipse.jdt.core.ICompilationUnit;
+import org.eclipse.jdt.core.IJavaElement;
+import org.eclipse.jdt.core.IType;
+import org.eclipse.jdt.core.JavaCore;
+import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendFile;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.JvmIdentifiableElement;
+import org.eclipse.xtext.resource.FileExtensionProvider;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.ui.launching.JavaElementDelegateJunitLaunch;
 
@@ -29,9 +37,25 @@ public class SuiteJavaElementDelegate extends JavaElementDelegateJunitLaunch {
 	@Inject
 	private IJvmModelAssociations associations;
 
+	@Inject private FileExtensionProvider fileExtensionProvider;
+	
 	@Override
 	protected boolean containsElementsSearchedFor(IFile file) {
-		return true;
+		IJavaElement element = JavaCore.create(file);
+		if (element == null || !element.exists() || ! (element instanceof ICompilationUnit)) {
+			return false;
+		}
+		try {
+			ICompilationUnit cu = (ICompilationUnit) element;
+			for (IType type : cu.getAllTypes()) {
+				IAnnotation annotation= type.getAnnotation("RunWith"); //$NON-NLS-1$
+				if (annotation.exists())
+					return true;
+			}
+		} catch (JavaModelException e) {
+			Logger.getLogger(SuiteJavaElementDelegate.class).error(e);
+		}
+		return super.containsElementsSearchedFor(file);
 	}
 	
 	@Override

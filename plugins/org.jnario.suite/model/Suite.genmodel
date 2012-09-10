@@ -4,8 +4,8 @@
     modelDirectory="/org.jnario.suite/emf-gen" editDirectory="/org.jnario.suite.edit/src"
     editorDirectory="/org.jnario.suite.editor/src" modelPluginID="org.jnario.suite"
     forceOverwrite="true" modelName="Suite" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
-    complianceLevel="5.0" editPluginID="org.jnario.suite.edit" editorPluginID="org.jnario.suite.editor"
-    runtimeVersion="2.5" usedGenPackages="../../org.eclipse.xtend.core/model/Xtend.genmodel#//xtend ../../org.jnario/model/Jnario.genmodel#//jnario ../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types ../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xAnnotations ../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase">
+    complianceLevel="5.0" copyrightFields="false" editPluginID="org.jnario.suite.edit"
+    editorPluginID="org.jnario.suite.editor" runtimeVersion="2.5" usedGenPackages="../../org.eclipse.xtend.core/model/Xtend.genmodel#//xtend ../../org.jnario/model/Jnario.genmodel#//jnario ../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types ../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xAnnotations ../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase">
   <genPackages prefix="Suite" basePackage="org.jnario.suite" disposableProviderFactory="true"
       ecorePackage="Suite.ecore#/">
     <genClasses ecoreClass="Suite.ecore#//PatternReference">
