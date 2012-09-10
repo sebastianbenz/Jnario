@@ -20,7 +20,7 @@ public class CalculatorSpec {
   @Test
   @Named("should add two values")
   @Order(99)
-  public void shouldAddTwoValues() throws Exception {
+  public void _shouldAddTwoValues() throws Exception {
     Calculator _calculator = new Calculator();
     int _add = _calculator.add(1, 2);
     boolean _should_be = Should.should_be(Integer.valueOf(_add), Integer.valueOf(3));

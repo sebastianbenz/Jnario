@@ -22,31 +22,31 @@ public class AdditionFeatureAddTwoNumbers {
   @Order(0)
   @Named("When I entered \"50\" and \"70\"")
   public void whenIEntered50And70() {
-      StepArguments _stepArguments = new StepArguments("50", "70");
-      final StepArguments args = _stepArguments;
-      String _first = JnarioIterableExtensions.<String>first(args);
-      int _int = StringConversions.toInt(_first);
-      String _second = JnarioIterableExtensions.<String>second(args);
-      int _int_1 = StringConversions.toInt(_second);
-      int _add = this.calculator.add(_int, _int_1);
-      this.result = _add;
+    StepArguments _stepArguments = new StepArguments("50", "70");
+    final StepArguments args = _stepArguments;
+    String _first = JnarioIterableExtensions.<String>first(args);
+    int _int = StringConversions.toInt(_first);
+    String _second = JnarioIterableExtensions.<String>second(args);
+    int _int_1 = StringConversions.toInt(_second);
+    int _add = this.calculator.add(_int, _int_1);
+    this.result = _add;
   }
   
   @Test
   @Order(1)
   @Named("Then the result should be \"120\"")
   public void thenTheResultShouldBe120() {
-      StepArguments _stepArguments = new StepArguments("120");
-      final StepArguments args = _stepArguments;
-      String _first = JnarioIterableExtensions.<String>first(args);
-      int _int = StringConversions.toInt(_first);
-      boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(this.result), Integer.valueOf(_int));
-      Assert.assertTrue("\nExpected result => args.first.toInt but"
-       + "\n     result is " + new StringDescription().appendValue(Integer.valueOf(this.result)).toString()
-       + "\n     args.first.toInt is " + new StringDescription().appendValue(Integer.valueOf(_int)).toString()
-       + "\n     args.first is " + new StringDescription().appendValue(_first).toString()
-       + "\n     args is " + new StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
-      
+    StepArguments _stepArguments = new StepArguments("120");
+    final StepArguments args = _stepArguments;
+    String _first = JnarioIterableExtensions.<String>first(args);
+    int _int = StringConversions.toInt(_first);
+    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(this.result), Integer.valueOf(_int));
+    Assert.assertTrue("\nExpected result => args.first.toInt but"
+     + "\n     result is " + new StringDescription().appendValue(Integer.valueOf(this.result)).toString()
+     + "\n     args.first.toInt is " + new StringDescription().appendValue(Integer.valueOf(_int)).toString()
+     + "\n     args.first is " + new StringDescription().appendValue(_first).toString()
+     + "\n     args is " + new StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
+    
   }
   
   final Calculator calculator = new Function0<Calculator>() {

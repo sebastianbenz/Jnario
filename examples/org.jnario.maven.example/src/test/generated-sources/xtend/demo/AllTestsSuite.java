@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(ExampleGroupRunner.class)
 @Named("AllTests")
-@Contains({ CalculatorSpec.class, AdditionFeature.class })
+@Contains({ AdditionFeature.class, CalculatorSpec.class })
 @SuppressWarnings("all")
 public class AllTestsSuite {
 }

@@ -17,7 +17,7 @@ public class CalculatorNestedCalculatorSpec extends CalculatorSpec {
   @Test
   @Named("\\\"hello\\\" => \\\"hello\\\"")
   @Order(99)
-  public void helloHello() throws Exception {
+  public void _helloHello() throws Exception {
     boolean _doubleArrow = Should.operator_doubleArrow("hello", "hello");
     Assert.assertTrue("\nExpected \"hello\" => \"hello\" but"
      + "\n     \"hello\" => \"hello\" is " + new StringDescription().appendValue(Boolean.valueOf(_doubleArrow)).toString() + "\n", _doubleArrow);
