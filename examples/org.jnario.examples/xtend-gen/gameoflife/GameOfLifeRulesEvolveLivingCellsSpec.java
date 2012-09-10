@@ -27,7 +27,7 @@ public class GameOfLifeRulesEvolveLivingCellsSpec extends GameOfLifeRulesSpec {
   @Before
   public void _initGameOfLifeRulesEvolveLivingCellsSpecLivingCells() {
     livingCells = ExampleTable.create("livingCells", 
-      java.util.Arrays.asList("livingNeighbours", "becomesAlive"), 
+      java.util.Arrays.asList("liveNeighbourCount", "becomesAlive"), 
       new GameOfLifeRulesEvolveLivingCellsSpecLivingCells(  java.util.Arrays.asList("1", "false"), 1, false),
       new GameOfLifeRulesEvolveLivingCellsSpecLivingCells(  java.util.Arrays.asList("2", "true"), 2, true),
       new GameOfLifeRulesEvolveLivingCellsSpecLivingCells(  java.util.Arrays.asList("3", "true"), 3, true),
@@ -38,17 +38,17 @@ public class GameOfLifeRulesEvolveLivingCellsSpec extends GameOfLifeRulesSpec {
   protected ExampleTable<GameOfLifeRulesEvolveLivingCellsSpecLivingCells> livingCells;
   
   @Test
-  @Named("livingCells.forEach[ subject.becomesAlive[livingNeighbours] => becomesAlive ]")
+  @Named("livingCells.forEach[ subject.becomesAlive[liveNeighbourCount] => becomesAlive ]")
   @Order(99)
-  public void _livingCellsForEachSubjectBecomesAliveLivingNeighboursBecomesAlive() throws Exception {
+  public void _livingCellsForEachSubjectBecomesAliveLiveNeighbourCountBecomesAlive() throws Exception {
     final Procedure1<GameOfLifeRulesEvolveLivingCellsSpecLivingCells> _function = new Procedure1<GameOfLifeRulesEvolveLivingCellsSpecLivingCells>() {
         public void apply(final GameOfLifeRulesEvolveLivingCellsSpecLivingCells it) {
-          boolean _becomesAlive = GameOfLifeRulesEvolveLivingCellsSpec.this.subject.becomesAlive(it.livingNeighbours);
+          boolean _becomesAlive = GameOfLifeRulesEvolveLivingCellsSpec.this.subject.becomesAlive(it.liveNeighbourCount);
           boolean _doubleArrow = Should.operator_doubleArrow(Boolean.valueOf(_becomesAlive), Boolean.valueOf(it.becomesAlive));
-          Assert.assertTrue("\nExpected subject.becomesAlive(livingNeighbours) => becomesAlive but"
-           + "\n     subject.becomesAlive(livingNeighbours) is " + new StringDescription().appendValue(Boolean.valueOf(_becomesAlive)).toString()
+          Assert.assertTrue("\nExpected subject.becomesAlive(liveNeighbourCount) => becomesAlive but"
+           + "\n     subject.becomesAlive(liveNeighbourCount) is " + new StringDescription().appendValue(Boolean.valueOf(_becomesAlive)).toString()
            + "\n     subject is " + new StringDescription().appendValue(GameOfLifeRulesEvolveLivingCellsSpec.this.subject).toString()
-           + "\n     livingNeighbours is " + new StringDescription().appendValue(it.livingNeighbours).toString()
+           + "\n     liveNeighbourCount is " + new StringDescription().appendValue(it.liveNeighbourCount).toString()
            + "\n     becomesAlive is " + new StringDescription().appendValue(Boolean.valueOf(it.becomesAlive)).toString() + "\n", _doubleArrow);
           
         }

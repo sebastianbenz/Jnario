@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtend.core.validation.IssueCodes;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendFile;
@@ -36,6 +37,7 @@ import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.CheckType;
 import org.eclipse.xtext.validation.ComposedChecks;
+import org.eclipse.xtext.validation.ValidationMessageAcceptor;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
@@ -227,6 +229,14 @@ public class FeatureJavaValidator extends AbstractFeatureJavaValidator {
 	
 	@Override
 	public  void checkLocalUsageOfDeclared(XVariableDeclaration variableDeclaration) {
+	}
+	
+	protected void warning(String message, EObject source, EStructuralFeature feature, String code, String... issueData) {
+		// avoids overriding the whole method
+		if("The use of wildcard imports is deprecated.".equals(message)){
+			return;
+		}
+		getMessageAcceptor().acceptWarning(message, source, feature, ValidationMessageAcceptor.INSIGNIFICANT_INDEX, code, issueData);
 	}
 
 }

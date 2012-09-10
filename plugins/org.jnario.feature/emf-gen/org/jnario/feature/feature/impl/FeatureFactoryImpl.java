@@ -251,7 +251,7 @@ public class FeatureFactoryImpl extends EFactoryImpl implements FeatureFactory
 	 */
 	public StepReference createStepReference()
 	{
-		StepReferenceImpl stepReference = new StepReferenceImpl();
+		StepReferenceImplCustom stepReference = new StepReferenceImplCustom();
 		return stepReference;
 	}
 

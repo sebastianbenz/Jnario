@@ -21,7 +21,7 @@ import org.jnario.feature.feature.GivenReference;
  *
  * @generated
  */
-public class GivenReferenceImpl extends StepReferenceImpl implements GivenReference
+public class GivenReferenceImpl extends StepReferenceImplCustom implements GivenReference
 {
 	/**
 	 * <!-- begin-user-doc -->

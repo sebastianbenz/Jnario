@@ -21,7 +21,7 @@ import org.jnario.feature.feature.ThenReference;
  *
  * @generated
  */
-public class ThenReferenceImpl extends StepReferenceImpl implements ThenReference
+public class ThenReferenceImpl extends StepReferenceImplCustom implements ThenReference
 {
 	/**
 	 * <!-- begin-user-doc -->

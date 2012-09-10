@@ -8,7 +8,7 @@ import gameoflife.*
 ##Features
 
  	The acceptance specs written using the Jnario feature langauge.
-	- "Simulating Game of Life":
+	- "Playing Game of Life":
 	
 ##Unit Specifications
 

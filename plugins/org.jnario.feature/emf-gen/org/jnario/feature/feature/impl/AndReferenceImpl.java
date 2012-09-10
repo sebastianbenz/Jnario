@@ -21,7 +21,7 @@ import org.jnario.feature.feature.FeaturePackage;
  *
  * @generated
  */
-public class AndReferenceImpl extends StepReferenceImpl implements AndReference
+public class AndReferenceImpl extends StepReferenceImplCustom implements AndReference
 {
 	/**
 	 * <!-- begin-user-doc -->

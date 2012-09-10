@@ -8,11 +8,11 @@ Feature: Simulating Game of Life
 	Scenario: Box
 		World world
 		Given a world 
-			'''
+			''' 
 				------
 				--XX--
 				--XX--
-				------
+				------ 
 			'''
 			world = parseWorld(args.first)
 		When the world evolves
@@ -25,6 +25,7 @@ Feature: Simulating Game of Life
 				------
 			'''
 			world => parseWorld(args.first)
+			
 	Scenario: Blinker
 		Given a world 
 			'''

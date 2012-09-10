@@ -21,7 +21,7 @@ public class SimulatingGameOfLifeFeatureBox {
   @Order(0)
   @Named("Given a world")
   public void givenAWorld() {
-    StepArguments _stepArguments = new StepArguments("\n\t\t\t\t------\n\t\t\t\t--XX--\n\t\t\t\t--XX--\n\t\t\t\t------\n\t\t\t");
+    StepArguments _stepArguments = new StepArguments(" \n\t\t\t\t------\n\t\t\t\t--XX--\n\t\t\t\t--XX--\n\t\t\t\t------ \n\t\t\t");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
     World _parseWorld = World.parseWorld(_first);

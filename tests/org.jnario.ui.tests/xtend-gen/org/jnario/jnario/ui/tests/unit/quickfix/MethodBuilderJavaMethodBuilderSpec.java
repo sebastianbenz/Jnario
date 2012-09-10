@@ -17,7 +17,7 @@ public class MethodBuilderJavaMethodBuilderSpec extends MethodBuilderSpec {
   @Test
   @Named("creates public void method with specified name")
   @Order(99)
-  public void createsPublicVoidMethodWithSpecifiedName() throws Exception {
+  public void _createsPublicVoidMethodWithSpecifiedName() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
     _builder.newLine();
@@ -39,7 +39,7 @@ public class MethodBuilderJavaMethodBuilderSpec extends MethodBuilderSpec {
   @Test
   @Named("adds method parameters")
   @Order(99)
-  public void addsMethodParameters() throws Exception {
+  public void _addsMethodParameters() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
     _builder.newLine();
@@ -61,7 +61,7 @@ public class MethodBuilderJavaMethodBuilderSpec extends MethodBuilderSpec {
   @Test
   @Named("returns false for boolean")
   @Order(99)
-  public void returnsFalseForBoolean() throws Exception {
+  public void _returnsFalseForBoolean() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
     _builder.newLine();
@@ -86,7 +86,7 @@ public class MethodBuilderJavaMethodBuilderSpec extends MethodBuilderSpec {
   @Test
   @Named("returns default value for numbers")
   @Order(99)
-  public void returnsDefaultValueForNumbers() throws Exception {
+  public void _returnsDefaultValueForNumbers() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
     _builder.newLine();
@@ -111,7 +111,7 @@ public class MethodBuilderJavaMethodBuilderSpec extends MethodBuilderSpec {
   @Test
   @Named("returns null for objects")
   @Order(99)
-  public void returnsNullForObjects() throws Exception {
+  public void _returnsNullForObjects() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
     _builder.newLine();
@@ -136,7 +136,7 @@ public class MethodBuilderJavaMethodBuilderSpec extends MethodBuilderSpec {
   @Test
   @Named("returns nothing if void")
   @Order(99)
-  public void returnsNothingIfVoid() throws Exception {
+  public void _returnsNothingIfVoid() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
     _builder.newLine();

@@ -32,25 +32,25 @@ describe "Game of Life"{
 	describe "rules"{
 		describe EvolveLivingCells{
 			def livingCells{
-				| livingNeighbours | becomesAlive |
+				| liveNeighbourCount | becomesAlive |
 				| 1				   |   false      |
 				| 2				   |   true       |
 				| 3				   |   true       |
 				| 4				   |   false      |
 			}
 			fact livingCells.forEach[
-				subject.becomesAlive(livingNeighbours) => becomesAlive
+				subject.becomesAlive(liveNeighbourCount) => becomesAlive
 			]
 		}
 		describe EvolveDeadCells {
 			def deadcells{
-				| livingNeighbours | becomesAlive |
+				| liveNeighbourCount | becomesAlive |
 				| 2				   |   false      |
 				| 3				   |   true       |
 				| 4				   |   false      |
 			}
 			fact deadcells.forEach[
-				subject.becomesAlive(livingNeighbours) => becomesAlive
+				subject.becomesAlive(liveNeighbourCount) => becomesAlive
 			] 
 		}
 	}

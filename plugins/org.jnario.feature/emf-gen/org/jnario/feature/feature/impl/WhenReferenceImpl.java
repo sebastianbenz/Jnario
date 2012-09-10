@@ -21,7 +21,7 @@ import org.jnario.feature.feature.WhenReference;
  *
  * @generated
  */
-public class WhenReferenceImpl extends StepReferenceImpl implements WhenReference
+public class WhenReferenceImpl extends StepReferenceImplCustom implements WhenReference
 {
 	/**
 	 * <!-- begin-user-doc -->

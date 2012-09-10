@@ -10,7 +10,6 @@ import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.jnario.runner.Subject;
 import org.jnario.ui.quickfix.CallsReadOnlyType;
 import org.junit.Assert;
 import org.junit.Before;
@@ -21,7 +20,6 @@ import org.junit.runner.RunWith;
 @RunWith(ExampleGroupRunner.class)
 @Named("CallsReadOnlyType")
 public class UndefinedMethodFixCallsReadOnlyTypeSpec extends UndefinedMethodFixSpec {
-  @Subject
   public CallsReadOnlyType subject;
   
   JavaElementFinderStub javaElementProvider = new Function0<JavaElementFinderStub>() {
@@ -40,7 +38,7 @@ public class UndefinedMethodFixCallsReadOnlyTypeSpec extends UndefinedMethodFixS
   @Test
   @Named("true if java element is read-only")
   @Order(99)
-  public void trueIfJavaElementIsReadOnly() throws Exception {
+  public void _trueIfJavaElementIsReadOnly() throws Exception {
     this.javaElementProvider.setReadOnly();
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
@@ -64,7 +62,7 @@ public class UndefinedMethodFixCallsReadOnlyTypeSpec extends UndefinedMethodFixS
   @Test
   @Named("false if java element is changeable")
   @Order(99)
-  public void falseIfJavaElementIsChangeable() throws Exception {
+  public void _falseIfJavaElementIsChangeable() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
     _builder.newLine();

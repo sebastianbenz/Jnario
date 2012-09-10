@@ -4,16 +4,16 @@ import java.util.List;
 import org.jnario.lib.ExampleTableRow;
 
 public class GameOfLifeRulesEvolveDeadCellsSpecDeadcells extends ExampleTableRow {
-  public GameOfLifeRulesEvolveDeadCellsSpecDeadcells(final List<String> cellNames, final int livingNeighbours, final boolean becomesAlive) {
+  public GameOfLifeRulesEvolveDeadCellsSpecDeadcells(final List<String> cellNames, final int liveNeighbourCount, final boolean becomesAlive) {
     super(cellNames);
-    this.livingNeighbours = livingNeighbours;
+    this.liveNeighbourCount = liveNeighbourCount;
     this.becomesAlive = becomesAlive;
   }
   
-  public int livingNeighbours;
+  public int liveNeighbourCount;
   
-  public int getLivingNeighbours() {
-    return livingNeighbours;
+  public int getLiveNeighbourCount() {
+    return liveNeighbourCount;
   }
   
   public boolean becomesAlive;
@@ -23,6 +23,6 @@ public class GameOfLifeRulesEvolveDeadCellsSpecDeadcells extends ExampleTableRow
   }
   
   public List<String> getCells() {
-    return java.util.Arrays.asList(String.valueOf(livingNeighbours) , String.valueOf(becomesAlive));
+    return java.util.Arrays.asList(String.valueOf(liveNeighbourCount) , String.valueOf(becomesAlive));
   }
 }
