@@ -30,9 +30,7 @@ class SpecResolver {
 	@Inject extension SuiteClassNameProvider
 	
 	def dispatch List<Specification> resolveSpecs(Suite suite){
-		suite.elements.map[resolveSpecs].flatten.filter[it != null && it.className != null].toList.sort[left, right|
-			left.className.compareTo(right.className)
-		]
+		suite.elements.map[resolveSpecs].flatten.filter[it != null].sort
 	}
 	
 	def dispatch List<Specification> resolveSpecs(SpecReference specRef){
@@ -49,7 +47,13 @@ class SpecResolver {
 		val specs = allElements.map[resolve(EObjectOrProxy, specRef)].filter(typeof(Specification)).filter[
 			it.eResource.URI != specRef.eResource.URI
 		]
-		specs.toMap[qualifiedClassName].values.toList
+		specs.toMap[qualifiedClassName].values.sort
+	}
+	
+	def private sort(Iterable<Specification> specs){
+		specs.sort[left, right|
+			left.describe?.compareToIgnoreCase(right?.describe)
+		]
 	}
 	
 }
