@@ -6,45 +6,52 @@
 <meta name="description" content="">
 <meta name="author" content="Jnario">
 
-<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
 <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-<!-- Le styles -->
 <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
 <link rel="stylesheet" href="../../../../css/bootstrap-responsive.min.css">
 <link rel="stylesheet" href="../../../../css/custom.css">
 <link rel="stylesheet" href="../../../../css/prettify.css">
 <script type="text/javascript" src="../../../../js/prettify.js"></script>
 <script type="text/javascript" src="../../../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../../js/bootstrap-tab.js"></script>
 </head>
 
 <body onload="prettyPrint()">
 	<div class="container">
-		<div class="content">
-			<div class="page-header">
-				<h1>20 Facts about Xtend</h1>
-			</div>
-			<div class="row">
-				<div class="span12">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header">
+					  <ul class="nav nav-tabs pull-right">
+					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+					<h1>20 Facts about Xtend</h1>
+				</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
 <p>This document teaches you everything you need to know about Xtend to effectively use <a href="http://www.jnario.org">Jnario</a>. For a more detailed introduction see the offical <a href="http://www.eclipse.org/xtend/documentation.html">Xtend documentation</a>.</p>
 <h2 id="A_modernized_Java">A modernized Java</h2>
 <p>The syntax of Xtend is quite similar to Java, but Xtend code is usually a lot shorter than its Java counterpart. However, there are some important differences between Java and Xtend one should be aware of.</p>
 <ul><li><p id="No_semicolons"><strong>No semicolons</strong></p>
 <p>Semicolons are optional in Xtend.</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 var greeting = &quot;&quot;
 greeting = &quot;Hello World&quot;
 println(greeting)</pre>
 </li><li><p id="Variables_are_declared_with_var_and_val"><strong>Variables are declared with var and val</strong></p>
 <p>Variable declarations are preceded by <code>var</code> or, in case of final variables, by <code>val</code>.</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 var String x = &quot;I might change&quot; 
 val String y = &quot;I'll never change&quot; // final</pre>
 </li><li><p id="Less_typing_thanks_to_type_inference"><strong>Less typing thanks to type inference</strong></p>
 <p>Having to precede variable declarations with <code>var</code> or <code>val</code> seems like a step backwards at first glance, but the type of a variable can be inferred from the expression on the right-hand side. This means we can omit the type information for variable declarations, which makes code a lot more readable.</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 val greeting = &quot;Hello World&quot;
 greeting =&gt; typeof(String)
 
@@ -55,7 +62,7 @@ val greetings = newHashMap(
 greetings =&gt; typeof(HashMap)</pre>
 </li><li><p id="Syntactic_sugar_Pairs"><strong>Syntactic sugar: Pairs</strong></p>
 <p>In case you are wondering what the <code>-&gt;</code> does in the previous example, it is syntactic sugar for a tuple. To further increase the confusion, the <code>=&gt;</code> operator is part of Jnario and describes the expected behavior of objects.</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 val pair = &quot;spain&quot; -&gt; &quot;italy&quot;
 pair.key   =&gt; &quot;spain&quot;
 pair.value =&gt; &quot;italy&quot;</pre>
@@ -75,24 +82,24 @@ def sayHello(String name){
   greeting + name // return is optional
 }
 </pre><p>Calling fields and methods works exactly like in Java, but it is possible to omit the parentheses when calling a method without parameters.</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 sayHello(&quot;Sebastian&quot;) =&gt; greeting + &quot;Sebastian&quot;
 42.toString =&gt; &quot;42&quot;</pre>
 </li></ul>
 <h2 id="Some_important_differences">Some important differences</h2>
 <ul><li><p id="Accessing_static_members_differs_from_Java"><strong>Accessing static members differs from Java</strong></p>
 <p>Static class members are accessed via <code>::</code> and not <code>.</code> like in Java.</p><p><span class="label label-warning">Important</span> This is probably the most often asked question on the Xtend <a href="https://groups.google.com/forum/?fromgroups#!forum/xtend-lang">mailing list</a>.</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 val colors = list(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;)
 Collections::sort(colors)
 colors =&gt; list(&quot;blue&quot;, &quot;green&quot;, &quot;red&quot;)</pre>
 </li><li><p id="as_well_as_accessing_types"><strong>...as well as accessing types</strong></p>
 <p>Accessing classes has also a different syntax in Xtend. Instead of writing <code>String.class</code> like in Java, you need to write <code>typeof(String)</code> in Xtend.</p><p><span class="label label-warning">Important</span> This is probably the second most most often asked question on the Xtend mailing list.</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 typeof(String).name =&gt; &quot;java.lang.String&quot;</pre>
 </li><li><p id="Casts_have_a_different_syntax"><strong>Casts have a different syntax</strong></p>
 <p>Type casts behave exactly like in Java, but have a slightly more readable syntax:</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 val Object obj = &quot;a string&quot;
 val String s = obj as String</pre>
 </li></ul>
@@ -100,7 +107,7 @@ val String s = obj as String</pre>
 <p>Xtend's switch expression is greatly improved over the one from Java. There is no fall through which means only one case is evaluated at most and it is not limited to certain values but can be used for any object.</p>
 <ul><li><p id="Supports_case_expressions"><strong>Supports case expressions</strong></p>
 <p>Cases support arbitrary expressions, if they evaluate to a boolean value, it will be used as result, otherwise, the evaluation result will be compared using <code>Object#equals(Object)</code>.</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 val myString = &quot;Hello&quot;
 
 switch myString {
@@ -112,7 +119,7 @@ switch myString {
 =&gt;  &quot;It's another short string.&quot;</pre>
 </li><li><p id="and_type_guards_with_type_inference"><strong>...and type guards [with type inference]</strong></p>
 <p>You can also write type guards in the case statements. Note that on the right-hand side of the case statement you can directly access the features of the guarded type without an explicit cast;</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 val x = list(1, 2, 3) as Object
 
 switch x {
@@ -141,7 +148,7 @@ removeVowels("Hello")
 <pre class="prettyprint lang-spec">
 import static extension java.util.Collections.&#42;
 </pre><p>we can directly call the imported static methods on our list objects:</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 val colors = list(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;)
 colors.sort // sort is implemented by Collections#sort(List&lt;T&gt;)
 colors =&gt; list(&quot;blue&quot;, &quot;green&quot;, &quot;red&quot;)</pre>
@@ -152,21 +159,21 @@ def hasOneElement(List<?> list){
  list.size == 1
 }
 </pre><p>We can then use this method in our assertion:</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 assert list(&quot;red&quot;).hasOneElement</pre>
 </li><li><p id="Extension_fields"><strong>Extension fields</strong></p>
 <p>By adding the extension keyword to a field declaration, its instance methods become extension methods. We use this feature a lot to share helper methods or setup and tear-down operations between different specs. For example, we could move our <code>hasOneElement</code> method to a separate helper class <code>ListHelpers</code> and declare it as an extension field:</p>
 <pre class="prettyprint lang-spec">
 extension ListHelpers = new ListHelpers
 </pre><p>Then we can share our helper between different specs, while still using the instance methods as extensions:</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 assert list(&quot;red&quot;).hasOneElement</pre>
 </li></ul>
 <h2 id="Functional_Programming_FTW">Functional Programming FTW</h2>
 <p>A great thing about Xtend is that it enables a more functional programming style, with its native support for anonymous functions, the so called lambda expressions, and its rich library of extension methods.</p>
 <ul><li><p id="Simple_access_to_list_elements"><strong>Simple access to list elements</strong></p>
 <p>Xtend provides a rich set of extension methods for collections. Accessing elements in lists.</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 val colors = list(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;)
 colors.head =&gt; &quot;red&quot;
 colors.tail =&gt; iterable(&quot;blue&quot;, &quot;green&quot;)
@@ -174,7 +181,7 @@ colors.last =&gt; &quot;green&quot;
 colors.empty =&gt; false</pre>
 </li><li><p id="concatenates_collections"><strong>'+' concatenates collections</strong></p>
 <p>Here is another useful fact about Xtend, you can concatenate collections using the <code>+</code> operator.</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 list(1, 2) + list(3, 4) =&gt; iterable(1, 2, 3, 4)</pre>
 </li><li><p id="Concise_Lambda_Expressions"><strong>Concise Lambda Expressions</strong></p>
 <p>Xtend has great support for lambda expressions. You can declare an anonymous function by surrounding the lambda expression by square brackets:</p>
@@ -187,37 +194,425 @@ var (String)=>int lambda = [s | s.length]
 <pre class="prettyprint lang-spec">
 var (String)=>int lambda = [it.length]
 </pre><p>...and we can even completely remove the 'it' variable:</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 var (String)=&gt;int lambda = [length] 
 lambda.apply(&quot;hello&quot;) =&gt; 5</pre>
 </li><li><p id="Better_loops"><strong>Better loops</strong></p>
 <p>Lambda expressions are especially useful when working with collections. For example, when performing the same assertion on each element in a collection, the implicit <code>forEach</code> extension method is a lot more readable than a loop:</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 list(11, 17, 19).forEach[assert it &gt; 10]</pre>
 </li><li><p id="Filter_iterables_by_type"><strong>Filter iterables by type</strong></p>
 <p>The <code>filter</code> extension method is really helpful when you are only interested in a subset of a collection. You can filter by type:</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 list(&quot;a string&quot;, 42, true).filter(typeof(String)) =&gt; iterable(&quot;a string&quot;)</pre>
 </li><li><p id="or_via_a_custom_predicate"><strong>... or via a custom predicate</strong></p>
 <p>In this case we provide a lambda expressions that returns true for the elements we are interested in:</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 list(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;).filter[startsWith(&quot;b&quot;)] =&gt; list(&quot;blue&quot;)</pre>
 </li><li><p id="Map_Reduce_made_easy"><strong>Map/Reduce made easy</strong></p>
 <p>This examples demonstrates how you can realize complex operations by reusing existing functions with lambda expressions. Here we are counting all characters in a list of Strings using the <code>map</code> and <code>reduce</code> extension methods.</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 val strings = list(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;)
 val charCount = strings.map[s|s.length].reduce[sum, size | sum + size]
 charCount =&gt; 12</pre>
 </li></ul>
-				</div>
-			</div>
-		</div> <!-- /content -->
+							</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>XtendFacts.spec</h3>
+						    	<p>
+<pre class="prettyprint lang-spec linenums">
+/*******************************************************************************
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
+package org.jnario.jnario.documentation
+
+import java.util.Collections
+import java.util.HashMap
+import java.util.List
+import static extension java.util.Collections.*
+/*
+ * This document teaches you everything 
+ * you need to know about Xtend to effectively use
+ * [Jnario](http://www.jnario.org). For a more detailed 
+ * introduction see the offical [Xtend documentation]
+ * (http://www.eclipse.org/xtend/documentation.html).
+ */
+describe &quot;20 Facts about Xtend&quot;{
+  /*
+   * The syntax of Xtend is quite similar to Java, but Xtend code 
+   * is usually a lot shorter than its Java counterpart. However, 
+   * there are some important differences between Java and Xtend 
+   * one should be aware of.
+   */
+  describe &quot;A modernized Java&quot;{
+     
+      /* 
+       * Semicolons are optional in Xtend.
+       */
+      fact &quot;No semicolons&quot;{
+        var greeting = &quot;&quot;
+        greeting = &quot;Hello World&quot;
+        println(greeting)
+      }
+    /*
+     * Variable declarations are preceded by `var` or, in case of 
+     * final variables, by `val`.
+     */
+    fact &quot;Variables are declared with var and val&quot;{
+      var String x = &quot;I might change&quot; 
+      val String y = &quot;I'll never change&quot; // final  
+    }
+    
+    /*
+     * Having to precede variable declarations with `var` or `val` seems like a 
+     * step backwards at first glance, but the type of a variable can be inferred
+     * from the expression on the right-hand side. This means we can omit the 
+     * type information for variable declarations, which makes code a lot more readable.  
+     */
+    fact &quot;Less typing thanks to type inference&quot;{
+      val greeting = &quot;Hello World&quot;
+      greeting =&gt; typeof(String)
+      
+      val greetings = newHashMap(
+        &quot;german&quot;  -&gt; &quot;Hallo&quot;,
+        &quot;english&quot; -&gt; &quot;Hello&quot;
+      )
+      greetings =&gt; typeof(HashMap)
+    }
+    
+    /*
+     * In case you are wondering what the `-&gt;` does in the previous example,
+     * it is syntactic sugar for a tuple. To further increase the confusion, the `=&gt;` 
+     * operator is part of Jnario and describes the expected behavior of objects. 
+     */
+    fact &quot;Syntactic sugar: Pairs&quot;{
+      val pair = &quot;spain&quot; -&gt; &quot;italy&quot;
+      pair.key   =&gt; &quot;spain&quot;
+      pair.value =&gt; &quot;italy&quot;
+    }
+    
+    val greeting = &quot;Hello &quot;
+    
+    def sayHello(String name){
+      greeting + name
+    }
+    
+    /*
+     * Fields and methods can be declared in Xtend exactly like in Java. The only difference id 
+     * that method declarations must be preceded with `def`:
+     * 
+     * &lt;pre class=&quot;prettyprint lang-spec&quot;&gt;
+     * String greeting = &quot;Hello &quot;
+     * 
+     * def public String sayHello(String name){
+     *   return greeting + name 
+     * }
+     * &lt;/pre&gt;
+     * 
+     * The type inference also works for fields and methods. You can omit 
+     * the return type of methods and the type of fields. Furthermore, methods are by default
+     * public, so we can rewrite our previous example as:
+     * 
+     * &lt;pre class=&quot;prettyprint lang-spec&quot;&gt; 
+     * val greeting = &quot;Hello &quot;
+     * 
+     * def sayHello(String name){
+     *   greeting + name // return is optional
+     * }
+     * &lt;/pre&gt;
+     * 
+     * Calling fields and methods works exactly like in Java, but it is possible to 
+     * omit the parentheses when calling a method without parameters.
+     */
+    fact &quot;Fields &amp; methods work almost like in Java&quot;{
+      sayHello(&quot;Sebastian&quot;) =&gt; greeting + &quot;Sebastian&quot;
+      42.toString =&gt; &quot;42&quot;
+    }
+  }
+  describe &quot;Some important differences&quot;{
+    
+    /*
+     * Static class members are accessed via `::` and not `.` like in Java.
+     * 
+     * &lt;span class=&quot;label label-warning&quot;&gt;Important&lt;/span&gt; This is probably the most 
+     * often asked question on the Xtend [mailing list](https://groups.google.com/forum/?fromgroups#!forum/xtend-lang). 
+     */
+    fact &quot;Accessing static members differs from Java&quot;{
+      val colors = list(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;)
+      Collections::sort(colors)
+      colors =&gt; list(&quot;blue&quot;, &quot;green&quot;, &quot;red&quot;)
+    }
+    
+    /*
+     * Accessing classes has also a different syntax in Xtend. Instead of writing
+     * `String.class` like in Java, you need to write `typeof(String)` in Xtend.
+     * 
+     * &lt;span class=&quot;label label-warning&quot;&gt;Important&lt;/span&gt; This is probably the second most 
+     * most often asked question on the Xtend mailing list.
+     * 
+     */
+    fact &quot;...as well as accessing types&quot;{
+      typeof(String).name =&gt; &quot;java.lang.String&quot;
+    }
+     
+    /*
+     * Type casts behave exactly like in Java, but have a slightly more 
+     * readable syntax:
+     */
+    fact &quot;Casts have a different syntax&quot;{
+      val Object obj = &quot;a string&quot;
+      val String s = obj as String
+    }
+    
+  }
+  
+  
+  /*
+   * Xtend's switch expression is greatly improved over the one from Java.
+   * There is no fall through which means only one case is 
+   * evaluated at most and it is not limited to certain 
+   * values but can be used for any object.
+   */  
+  describe &quot;The Uber-Switch Expression&quot;{
+  
+    /*
+     * Cases support arbitrary expressions, if they evaluate to a boolean value, it will 
+     * be used as result, otherwise, the evaluation result will be compared using `Object#equals(Object)`. 
+     */
+    fact &quot;Supports case expressions&quot;{
+      val myString = &quot;Hello&quot;
+      
+      switch myString {
+        case myString.length &gt; 5 : &quot;a long string.&quot;
+        case 'some'              : &quot;It's some string.&quot;
+        default                  : &quot;It's another short string.&quot;
+      } 
+      
+      =&gt;  &quot;It's another short string.&quot;
+    }
+    
+    /*
+     * You can also write type guards in the case statements. Note that 
+     * on the right-hand side of the case statement you can directly 
+     * access the features of the guarded type without an explicit cast; 
+     */
+    fact &quot;...and type guards (with type inference)&quot;{
+      val x = list(1, 2, 3) as Object
+      
+      switch x {
+        String case x.length &gt; 0 : x.length // length from String 
+        List&lt;?&gt;                  : x.size    // size from List
+        default : -1
+      } 
+      
+      =&gt; 3
+    }
+    
+  }
+  
+  /*
+   * Extension methods allow adding new methods to existing 
+   * types without modifying them. When writing specs this is really 
+   * helpful as they can greatly improve the readability. They  
+   * use a simple syntactic trick: the first parameter of a method
+   * can either be passed in after opening the parentheses or before the 
+   * method call. For example, given a method:
+   * 
+   * &lt;pre class=&quot;prettyprint lang-spec&quot;&gt; 
+   * def removeVowels (String s){
+   *   s.replaceAll(&quot;[aeiouAEIOU]&quot;, &quot;&quot;)
+   * }
+   * &lt;/pre&gt;
+   * 
+   * We can call this method either like in Java:
+   * 
+   * &lt;pre class=&quot;prettyprint lang-spec&quot;&gt; 
+   * removeVowels(&quot;Hello&quot;)
+   * &lt;/pre&gt;
+   * 
+   * or as an extension method of String:
+   * 
+   * &lt;pre class=&quot;prettyprint lang-spec&quot;&gt; 
+   * &quot;Hello&quot;.removeVowels
+   * &lt;/pre&gt;
+   */
+  describe &quot;Readable Code with Extension Methods&quot;{
+    
+    /*
+     * You can import static methods as extensions, for example, when we import:
+     * 
+     * &lt;pre class=&quot;prettyprint lang-spec&quot;&gt; 
+     * import static extension java.util.Collections.&amp;#42;
+     * &lt;/pre&gt;
+     * 
+     * we can directly call the imported static methods on our list objects:
+     */
+    fact &quot;Import static extension methods.&quot;{
+      val colors = list(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;)
+      colors.sort // sort is implemented by Collections#sort(List&lt;T&gt;)
+      colors =&gt; list(&quot;blue&quot;, &quot;green&quot;, &quot;red&quot;)
+    }
+    
+    /*
+     * All visible non-static methods of the current class and its super 
+     * types are automatically available as extensions. In specs this can 
+     * be used to write custom matchers:
+     * 
+     * &lt;pre class=&quot;prettyprint lang-spec&quot;&gt; 
+     * def hasOneElement(List&lt;?&gt; list){
+     *  list.size == 1
+     * }
+     * &lt;/pre&gt;
+     * 
+     * We can then use this method in our assertion:
+     */
+    fact &quot;Local extension methods.&quot;{
+      assert list(&quot;red&quot;).hasOneElement
+    }
+    
+    def hasOneElement(List&lt;?&gt; list){
+      list.size == 1
+    }
+    
+    /*
+     * By adding the extension keyword to a field declaration, 
+     * its instance methods become extension methods. We use this
+     * feature a lot to share helper methods or
+     * setup and tear-down operations between different specs. For example,
+     * we could move our `hasOneElement` method to a separate helper class 
+     * `ListHelpers` and declare it as an extension field:
+     * 
+     * &lt;pre class=&quot;prettyprint lang-spec&quot;&gt; 
+     * extension ListHelpers = new ListHelpers
+     * &lt;/pre&gt;
+     * 
+     * Then we can share our helper between different specs, while still
+     * using the instance methods as extensions:
+     */
+    fact &quot;Extension fields&quot;{
+      assert list(&quot;red&quot;).hasOneElement
+    }
+  }
+  
+  /*
+   * A great thing about Xtend is that it enables a more functional programming style,
+   * with its native support for anonymous functions, the so called lambda expressions, 
+   * and its rich library of extension methods. 
+   */
+  describe &quot;Functional Programming FTW&quot;{
+    
+    /*
+     * Xtend provides a rich set of extension methods for collections. Accessing elements 
+     * in lists.
+     */
+    fact &quot;Simple access to list elements&quot;{
+      val colors = list(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;)
+      colors.head =&gt; &quot;red&quot;
+      colors.tail =&gt; iterable(&quot;blue&quot;, &quot;green&quot;)
+      colors.last =&gt; &quot;green&quot;
+      colors.empty =&gt; false
+    }
+    
+    /*
+     * Here is another useful fact about Xtend, you can concatenate collections 
+     * using the `+` operator. 
+     */
+    fact &quot;'+' concatenates collections&quot;{
+      list(1, 2) + list(3, 4) =&gt; iterable(1, 2, 3, 4)
+    }
+    
+    /*
+     * Xtend has great support for lambda expressions. You can 
+     * declare an anonymous function by surrounding the lambda 
+     * expression by square brackets:
+     * 
+     * &lt;pre class=&quot;prettyprint lang-spec&quot;&gt; 
+     * var lambda = [String s | s.length] 
+     * &lt;/pre&gt;
+     * 
+     * The parameter type can be omitted if the type can be coerced from 
+     * the expression on the left-hand side:
+     * 
+     * &lt;pre class=&quot;prettyprint lang-spec&quot;&gt; 
+     * var (String)=&gt;int lambda = [s | s.length] 
+     * &lt;/pre&gt;
+     * 
+     * Single parameter functions don't need a parameter declaration and the
+     * parameter can be accessed via the implicit variable 'it':
+     * 
+     * &lt;pre class=&quot;prettyprint lang-spec&quot;&gt; 
+     * var (String)=&gt;int lambda = [it.length] 
+     * &lt;/pre&gt;
+     * 
+     * ...and we can even completely remove the 'it' variable:
+     * 
+     */
+    fact &quot;Concise Lambda Expressions&quot;{
+      var (String)=&gt;int lambda = [length] 
+      lambda.apply(&quot;hello&quot;) =&gt; 5
+    }
+    
+    /*
+     * Lambda expressions are especially useful when working with 
+     * collections. For example, when performing the same assertion on each element 
+     * in a collection, the implicit `forEach` extension method is a lot more readable than 
+     * a loop:
+     */
+    fact &quot;Better loops&quot;{
+      list(11, 17, 19).forEach[assert it &gt; 10]
+    }
+    
+    /*
+     * The `filter` extension method is really helpful when you are only interested
+     * in a subset of a collection. You can filter by type:
+     */
+    fact &quot;Filter iterables by type&quot;{
+      list(&quot;a string&quot;, 42, true).filter(typeof(String)) =&gt; iterable(&quot;a string&quot;)
+    }
+    
+    /*
+     * In this case we provide a lambda expressions that returns true for the 
+     * elements we are interested in:
+     */
+    fact &quot;... or via a custom predicate&quot;{
+      list(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;).filter[startsWith(&quot;b&quot;)] =&gt; list(&quot;blue&quot;)
+    }
+    
+    /*
+     * This examples demonstrates how you can realize complex operations by
+     * reusing existing functions with lambda expressions. Here we are counting 
+     * all characters in a list of Strings using the `map` and `reduce` extension methods.
+     */
+    fact &quot;Map/Reduce made easy&quot;{
+      val strings = list(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;)
+      val charCount = strings.map[s|s.length].reduce[sum, size | sum + size]
+      charCount =&gt; 12
+    }
+  }
+  
+  def &lt;T&gt; Iterable&lt;T&gt; iterable(T... elements){
+    [|elements.iterator]
+  }
+  
+  def &lt;T&gt; operator_doubleArrow(Iterable&lt;T&gt; actual, Iterable&lt;T&gt; expected){
+    actual.toList == expected.toList
+  }
+}
+</pre>
+						    </p></div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
 		<footer>
 			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
 		</footer>
-
-	</div>
-	<!-- /container -->
+	</div> <!-- /container -->
 
 </body>
 </html>

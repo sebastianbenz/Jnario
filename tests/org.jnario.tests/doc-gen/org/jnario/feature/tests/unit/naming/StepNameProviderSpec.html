@@ -6,35 +6,42 @@
 <meta name="description" content="">
 <meta name="author" content="Jnario">
 
-<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
 <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-<!-- Le styles -->
 <link rel="stylesheet" href="../../../../../../css/bootstrap.min.css">
 <link rel="stylesheet" href="../../../../../../css/bootstrap-responsive.min.css">
 <link rel="stylesheet" href="../../../../../../css/custom.css">
 <link rel="stylesheet" href="../../../../../../css/prettify.css">
 <script type="text/javascript" src="../../../../../../js/prettify.js"></script>
 <script type="text/javascript" src="../../../../../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../../../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../../../../js/bootstrap-tab.js"></script>
 </head>
 
 <body onload="prettyPrint()">
 	<div class="container">
-		<div class="content">
-			<div class="page-header">
-				<h1>StepNameProvider</h1>
-			</div>
-			<div class="row">
-				<div class="span12">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header">
+					  <ul class="nav nav-tabs pull-right">
+					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+					<h1>StepNameProvider</h1>
+				</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
 <p>@author Sebastian Benz - Initial contribution and API</p>
 <h2 id="nameOf_Step">NameOf[Step]</h2>
 <ul><li><p id="returns_null_if_the_step_has_no_name"><strong>returns null if the step has no name</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 assert subject.nameOf(emptyStep) == null</pre>
 </li><li><p id="returns_the_name_for_a_step_with_definition"><strong>returns the name for a step with definition</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 parseScenario('''
     Scenario: MyScenario
       Given a step with an implementation
@@ -43,7 +50,7 @@ parseScenario('''
 
 stepName =&gt; &quot;Given a step with an implementation&quot;</pre>
 </li><li><p id="returns_the_name_for_a_step_with_resolved_reference"><strong>returns the name for a step with resolved reference</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 parseScenario('''
     Scenario: MyScenario 2
       Given a step with a resolved reference
@@ -54,7 +61,7 @@ parseScenario('''
 
 stepName =&gt; &quot;Given a step with a resolved reference&quot;</pre>
 </li><li><p id="returns_the_name_for_a_step_with_unresolved_reference"><strong>returns the name for a step with unresolved reference</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 parseScenario('''
     Scenario: MyScenario 2
       Given a step with an unresolved reference
@@ -62,7 +69,7 @@ parseScenario('''
 
 stepName =&gt; &quot;Given a step with an unresolved reference&quot;</pre>
 </li><li><p id="keeps_parameter_values"><strong>keeps parameter values</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 parseScenario('''
     Scenario: MyScenario 2
       Given a step with two values &quot;a&quot; and &quot;b&quot;
@@ -73,7 +80,7 @@ stepName =&gt; 'Given a step with two values &quot;a&quot; and &quot;b&quot;'</p
 </li></ul>
 <h2 id="describe_Feature">Describe[Feature]</h2>
 <ul><li><p id="removes_multilines_parameters"><strong>removes multilines parameters</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 parseScenario('''
     Scenario: MyScenario 2
       Given a step with multiline parameter
@@ -106,7 +113,7 @@ describeStep =&gt; 'Given a step with multiline parameter'</pre>
 	</tbody>
 </table>
 </li><li><p id="examples_do_pass"><strong>examples do pass</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 examples.forEach[
   parseScenario('''
     Scenario: scenario
@@ -119,15 +126,181 @@ examples.forEach[
 <ul><li><p id="scenario_With_whitespace_desc_With_whitespace"><strong>scenario[" With whitespace "].desc =>  "With whitespace"</strong></p>
 </li><li><p id="scenario_With_parentheses_desc_With_parentheses"><strong>scenario["With [parentheses]"].desc =>  "With [parentheses]"</strong></p>
 </li></ul>
-				</div>
-			</div>
-		</div> <!-- /content -->
+							</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>StepNameProvider.spec</h3>
+						    	<p>
+<pre class="prettyprint lang-spec linenums">
+/*******************************************************************************
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
+package org.jnario.feature.tests.unit.naming
+
+import com.google.inject.Inject
+import org.jnario.feature.feature.Feature
+import org.jnario.feature.feature.FeatureFactory
+import org.jnario.feature.feature.Scenario
+import org.jnario.feature.feature.Step
+import org.jnario.feature.naming.StepNameProvider
+import org.jnario.jnario.test.util.FeatureTestCreator
+import org.jnario.jnario.test.util.ModelStore
+import org.jnario.runner.CreateWith
+
+import static org.jnario.jnario.test.util.Features.*
+import static org.jnario.jnario.test.util.Query.*
+
+import static extension org.jnario.lib.ExampleTableIterators.*
+import static extension org.jnario.lib.Should.*
+
+/**
+ * @author Sebastian Benz - Initial contribution and API
+ */
+@CreateWith(typeof(FeatureTestCreator))
+describe StepNameProvider{
+
+  @Inject extension ModelStore modelStore
+  
+  context nameOf{
+    fact &quot;returns null if the step has no name&quot;{
+      assert subject.nameOf(emptyStep) == null
+    }
+    
+    fact &quot;returns the name for a step with definition&quot;{
+      parseScenario('''
+          Scenario: MyScenario
+            Given a step with an implementation
+              1 + 1 =&gt; 2
+      ''')
+      
+      stepName =&gt; &quot;Given a step with an implementation&quot;
+    }
+    
+    fact &quot;returns the name for a step with resolved reference&quot;{
+      parseScenario('''
+          Scenario: MyScenario 2
+            Given a step with a resolved reference
+          Scenario: MyScenario 1
+            Given a step with a resolved reference
+              &quot;implementation&quot;
+      ''')
+      
+      stepName =&gt; &quot;Given a step with a resolved reference&quot;
+    }
+    
+    fact &quot;returns the name for a step with unresolved reference&quot;{
+      parseScenario('''
+          Scenario: MyScenario 2
+            Given a step with an unresolved reference
+      ''')
+      
+      stepName =&gt; &quot;Given a step with an unresolved reference&quot;
+    }
+    
+    
+    fact &quot;keeps parameter values&quot;{
+      parseScenario('''
+          Scenario: MyScenario 2
+            Given a step with two values &quot;a&quot; and &quot;b&quot;
+             1 + 1 =&gt; 2
+      ''')
+      
+      stepName =&gt; 'Given a step with two values &quot;a&quot; and &quot;b&quot;'
+    }
+    
+  }
+  
+  context ^describe(Feature){
+    fact &quot;removes multilines parameters&quot;{
+      parseScenario('''
+          Scenario: MyScenario 2
+            Given a step with multiline parameter
+              &quot;the parameter&quot;
+             1 + 1 =&gt; 2
+      ''')
+      
+      describeStep =&gt; 'Given a step with multiline parameter'
+    }
+    
+    fact feature(&quot; With whitespace &quot;).desc =&gt;  &quot;With whitespace&quot;
+    fact feature(&quot;With (parentheses)&quot;).desc =&gt;  &quot;With [parentheses]&quot;
+  }
+  
+  context removeArguments{
+    
+    def examples{
+      | step                   | result     |
+      | 'Given a &quot;value&quot;'           | 'Given a &quot;&quot;'    |       
+      | 'Given a &quot;value&quot; and &quot;anothervalue&quot;'   | 'Given a &quot;&quot; and &quot;&quot;'  |       
+    }
+    
+    fact &quot;examples do pass&quot;{ 
+      examples.forEach[
+        parseScenario('''
+          Scenario: scenario
+          &laquo;step&raquo;
+        ''')
+        subject.removeArguments(step) =&gt; result
+      ]
+    }
+  }
+  
+  context ^describe(Scenario){
+    fact scenario(&quot; With whitespace &quot;).desc =&gt;  &quot;With whitespace&quot;
+    fact scenario(&quot;With (parentheses)&quot;).desc =&gt;  &quot;With [parentheses]&quot;
+  } 
+  
+  def desc(Feature feature){
+    subject.^describe(feature)
+  }
+  
+  def desc(Scenario scen){
+    subject.^describe(scen)
+  }
+  
+  def step(){
+    query(modelStore).first(typeof(Step))
+  }
+  
+  def stepName(){
+    return subject.nameOf(step)
+  }
+  
+  def String describeStep(){
+    return subject.^describe(step)
+  }
+  
+  def emptyStep(){
+    return FeatureFactory::eINSTANCE.createGiven
+  }
+  
+  def emptyRef(){
+    return FeatureFactory::eINSTANCE.createGivenReference
+  }
+  
+  def parseScenario(CharSequence s){
+    val input = '''
+      Feature: example
+      &laquo;s&raquo;
+    '''
+    modelStore.parseScenario(input)
+  }
+  
+}
+</pre>
+						    </p></div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
 		<footer>
 			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
 		</footer>
-
-	</div>
-	<!-- /container -->
+	</div> <!-- /container -->
 
 </body>
 </html>

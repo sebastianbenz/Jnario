@@ -6,28 +6,35 @@
 <meta name="description" content="">
 <meta name="author" content="Jnario">
 
-<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
 <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-<!-- Le styles -->
 <link rel="stylesheet" href="../../../../../css/bootstrap.min.css">
 <link rel="stylesheet" href="../../../../../css/bootstrap-responsive.min.css">
 <link rel="stylesheet" href="../../../../../css/custom.css">
 <link rel="stylesheet" href="../../../../../css/prettify.css">
 <script type="text/javascript" src="../../../../../js/prettify.js"></script>
 <script type="text/javascript" src="../../../../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../../../js/bootstrap-tab.js"></script>
 </head>
 
 <body onload="prettyPrint()">
 	<div class="container">
-		<div class="content">
-			<div class="page-header">
-				<h1>References for steps</h1>
-			</div>
-			<div class="row">
-				<div class="span12">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header">
+					  <ul class="nav nav-tabs pull-right">
+					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+					<h1>References for steps</h1>
+				</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
 <p></p>
 <h3  id="Scenario_Defining_a_step_and_using_it_in_the_same_scenario">Scenario: Defining a step and using it in the same scenario
 </h3>
@@ -273,15 +280,246 @@ Scenario: Stack adding more elements
 </ul>
 </li>
 </ul>
-				</div>
-			</div>
-		</div> <!-- /content -->
+							</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>References.feature</h3>
+						    	<p>
+<pre class="prettyprint lang-feature linenums">
+/*******************************************************************************
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
+package org.jnario.feature.tests.integration
+
+import static extension org.jnario.jnario.test.util.FeatureExecutor.*
+import static org.jnario.jnario.test.util.ResultMatchers.*
+
+/**
+ * @author Birgit Engelmann - Initial contribution and API
+ */
+Feature: References for steps
+
+  Scenario: Defining a step and using it in the same scenario
+    CharSequence jnarioFile
+    When I have a scenario with reused steps that throw an exception
+      '''
+      package bootstrap
+      Feature: Test
+        Scenario: TestScenario 1
+          Given step
+            throw new RuntimeException()
+          
+        Scenario: TestScenario 2
+          Given step
+      '''
+      jnarioFile = args.first
+    Then the number of failures should be &quot;2&quot;
+      jnarioFile.run.failureCount =&gt; args.first.toInt
+      
+  Scenario: Referencing steps with different keyword
+    CharSequence jnarioFile
+    When I have a scenario with reused steps with different keywords that throw an exception
+      '''
+        package bootstrap
+        Feature: Test
+          Scenario: TestScenario 1
+            Given step
+              throw new RuntimeException()
+            
+          Scenario: TestScenario 2
+            When step
+      '''
+      jnarioFile = args.first
+     Then the number of failures should be &quot;2&quot;
+   
+   Scenario: Using fields from other steps
+    When I have a scenario with a field
+      '''
+        package bootstrap
+        import java.util.*
+        Feature: Test
+          Scenario: TestScenario 1
+            List&lt;String&gt; values = new ArrayList()
+            Given a list
+              values += &quot;hello&quot;
+            
+          Scenario: TestScenario 2
+            Given a list
+            Then it should have contents
+              values.size =&gt; 1
+      '''
+      jnarioFile = args.first
+     Then it should execute successfully
+     
+   Scenario: Steps with short names
+     When I have a scenario with references and short step names (1 word)
+       '''
+         package bootstrap
+         import java.util.*
+         Feature: Test
+           Scenario: TestScenario1
+             int x
+             Given step
+               x = 3
+           Scenario: TestScenario2
+             Given step
+             Then step
+               x =&gt; 3
+       '''
+       jnarioFile = args.first
+     Then it should execute successfully
+       
+   Scenario: Field initialization
+     When I have a scenario with field initialized in a given step
+       '''
+        import java.util.Stack
+        
+        Feature: Stack
+        
+        
+        Scenario: Stack adding elements
+          Stack&lt;String&gt; stack
+          Given a stack
+            stack= new Stack&lt;String&gt;()
+          When I add a value &quot;something&quot;
+            stack.add(&quot;something&quot;)
+          Then the stack should contain &quot;something&quot;
+            assert stack.contains(&quot;something&quot;)
+        
+        Scenario: Stack adding more elements
+          Given a stack
+          When I add a value &quot;something else&quot;
+          Then the stack should contain &quot;something else&quot;
+       '''
+       jnarioFile = args.first
+     Then it should execute successfully  
+     
+     
+   Scenario: Steps 
+     When I have a scenario with a variable that is initialized 
+     '''
+     import java.util.concurrent.TimeUnit
+
+    Feature: Test
+    
+    Scenario: Scenario
+    When test
+    val test = TimeUnit::MINUTES
+    
+    Scenario: Scenario 2
+    When test
+     '''
+        jnarioFile = args.first
+     Then it should execute successfully  
+     
+   Scenario: Extension fields 
+     When I have a scenario with a variable that is initialized 
+     '''
+     import org.jnario.feature.tests.integration.MyExtension
+    Feature: Extension Fields
+      Scenario: A scenario with an extension field
+        extension MyExtension myExtension = new MyExtension
+        val x = &lt;String&gt;newArrayList
+        Given an implementation that uses the extension
+          x.myExtensionMethod
+        Then extension is called
+          assert myExtension.called
+                
+      Scenario: Another scenario that uses the extension
+        Given an implementation that uses the extension
+        Then extension is called
+          And we can use it inside other steps
+            x.myExtensionMethod
+     '''
+        jnarioFile = args.first
+     Then it should execute successfully
+   
+   Scenario: Extension fields in And step
+     When I have a scenario with a variable that is initialized 
+     '''
+       import org.jnario.feature.tests.integration.MyExtension
+      Feature: Extension Fields
+        Scenario: A scenario with an extension field
+          extension MyExtension myExtension = new MyExtension
+          val x = &lt;String&gt;newArrayList
+          Given an empty step
+          And an implementation that uses the extension
+            x.myExtensionMethod
+          Then extension is called
+            assert myExtension.called
+                  
+        Scenario: Another scenario that uses the extension
+          Given an empty step
+          And an implementation that uses the extension
+          Then extension is called
+            And we can use it inside other steps
+              x.myExtensionMethod
+    '''
+        jnarioFile = args.first
+     Then it should execute successfully  
+     
+   Scenario: Using closures in steps
+      When I have a scenario which uses closures
+      '''
+      Feature: Using Closures
+
+      Scenario: Steps which define closures
+        var colors = list(&quot;green&quot;, &quot;blue&quot;)
+        When we convert all strings to uppercase
+          colors = colors.map[toUpperCase]
+        Then they are uppercase
+          colors =&gt; list(&quot;GREEN&quot;, &quot;BLUE&quot;)
+    
+      Scenario: Steps which reference steps with closures
+        var colors = list(&quot;red&quot;, &quot;blue&quot;)
+        When we convert all strings to uppercase
+        Then they are uppercase
+          colors =&gt; list(&quot;RED&quot;, &quot;BLUE&quot;)
+      '''
+        jnarioFile = args.first
+      Then it should execute successfully  
+      
+    Scenario: Multiple Step References (causes problem when copier does not clear its cache)
+      When I have a feature with multiple scenarios
+      '''
+      Feature: Field Inference
+       
+        Scenario: Scenario 1
+          CharSequence jnarioFile2
+           Then it should execute successfully
+            println(jnarioFile2)
+                        
+        Scenario: Scenario 2
+          CharSequence feature1
+          Then both should execute successfully 
+            println(feature1)
+                                
+        Scenario: Scenario 3
+          When I have a feature with a background and two scenarios 'Feature: Feature 1'         
+            jnarioFile2 = args.first
+          Then it should execute successfully
+               
+        Scenario: Scenario 4
+          When I have a feature 'Feature: Feature 1'
+            feature1 = args.first
+          Then both should execute successfully 
+          '''
+        jnarioFile = args.first
+      Then it should execute successfully
+</pre>
+						    </p></div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
 		<footer>
 			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
 		</footer>
-
-	</div>
-	<!-- /container -->
+	</div> <!-- /container -->
 
 </body>
 </html>

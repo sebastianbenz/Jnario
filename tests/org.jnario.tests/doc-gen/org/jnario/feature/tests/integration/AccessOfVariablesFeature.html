@@ -6,28 +6,35 @@
 <meta name="description" content="">
 <meta name="author" content="Jnario">
 
-<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
 <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-<!-- Le styles -->
 <link rel="stylesheet" href="../../../../../css/bootstrap.min.css">
 <link rel="stylesheet" href="../../../../../css/bootstrap-responsive.min.css">
 <link rel="stylesheet" href="../../../../../css/custom.css">
 <link rel="stylesheet" href="../../../../../css/prettify.css">
 <script type="text/javascript" src="../../../../../js/prettify.js"></script>
 <script type="text/javascript" src="../../../../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../../../js/bootstrap-tab.js"></script>
 </head>
 
 <body onload="prettyPrint()">
 	<div class="container">
-		<div class="content">
-			<div class="page-header">
-				<h1>Access of variables</h1>
-			</div>
-			<div class="row">
-				<div class="span12">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header">
+					  <ul class="nav nav-tabs pull-right">
+					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+					<h1>Access of variables</h1>
+				</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
 <p></p>
 <h3  id="Scenario_Access_a_variable_in_the_same_step_it_was_declared_in">Scenario: Access a variable in the same step it was declared in
 </h3>
@@ -130,15 +137,116 @@ Feature: Variable test
 </ul>
 </li>
 </ul>
-				</div>
-			</div>
-		</div> <!-- /content -->
+							</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>Variables.feature</h3>
+						    	<p>
+<pre class="prettyprint lang-feature linenums">
+/*******************************************************************************
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
+package org.jnario.feature.tests.integration
+
+/**
+ * @author Birgit Engelmann - Initial contribution and API
+ */
+Feature: Access of variables
+
+  Scenario: Access a variable in the same step it was declared in
+    When I have scenario with a reference to a variable
+      '''
+        package bootstrap1
+        Feature: Variable test
+          Scenario: Some scenario
+            Given a step with a variable
+              var x = 3
+              x = 5
+      '''
+      jnarioFile = args.first
+    Then it should execute successfully
+  
+  Scenario: Access a variable that was declared in a different step
+    When I use a variable in different steps
+      '''
+        package bootstrap2
+        Feature: Variable test
+          Scenario: Some scenario
+            int x
+            Given a step with a variable
+              x = 3
+            When I assign it a different value
+              x = 5
+      '''
+      jnarioFile = args.first
+    Then it should execute successfully
+  
+  Scenario: Access a variable that was assigned a value of a variable defined in a different step
+    When I have a complex usage of variables
+      '''
+        package bootstrap3
+        Feature: Variable test
+          Scenario: Some scenario
+            int x
+            int y
+            Given a step with a variable
+              x = 3
+            When I assign it a different value
+              y = x
+            Then y should be 3
+              y =&gt; 3
+      '''
+      jnarioFile = args.first
+    Then it should execute successfully
+  
+  Scenario: Access a variable declared in background step
+    When I define a variable in the background
+      '''
+        package bootstrap4
+        Feature: Variable test
+          Background:
+            int x
+            Given some variable
+              x = 3
+          Scenario: Some scenario
+              Then x should be 3
+                x =&gt; 3
+      '''
+      jnarioFile = args.first
+    Then it should execute successfully
+  
+  Scenario: Access a variable referencing a variable from background step
+    When I reference a variable from the background
+      '''
+        package bootstrap5
+        Feature: Variable test
+          Background:
+            int x
+            Given some variable
+              x = 3
+          Scenario: Some scenario
+              int y
+              When assigning the variable
+                y = x
+              Then it should be accessible
+                y =&gt; 3
+      '''
+      jnarioFile = args.first
+    Then it should execute successfully
+</pre>
+						    </p></div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
 		<footer>
 			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
 		</footer>
-
-	</div>
-	<!-- /container -->
+	</div> <!-- /container -->
 
 </body>
 </html>

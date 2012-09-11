@@ -6,30 +6,37 @@
 <meta name="description" content="">
 <meta name="author" content="Jnario">
 
-<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
 <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-<!-- Le styles -->
 <link rel="stylesheet" href="../../../../../css/bootstrap.min.css">
 <link rel="stylesheet" href="../../../../../css/bootstrap-responsive.min.css">
 <link rel="stylesheet" href="../../../../../css/custom.css">
 <link rel="stylesheet" href="../../../../../css/prettify.css">
 <script type="text/javascript" src="../../../../../js/prettify.js"></script>
 <script type="text/javascript" src="../../../../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../../../js/bootstrap-tab.js"></script>
 </head>
 
 <body onload="prettyPrint()">
 	<div class="container">
-		<div class="content">
-			<div class="page-header">
-				<h1>Implicit Subject</h1>
-			</div>
-			<div class="row">
-				<div class="span12">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header">
+					  <ul class="nav nav-tabs pull-right">
+					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+					<h1>Implicit Subject</h1>
+				</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
 <ul><li><p id="should_create_instance_of_target_type"><strong>should create instance of target type</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 package bootstrap
 
 describe String {
@@ -38,7 +45,7 @@ describe String {
       
 }</pre>
 </li><li><p id="can_be_overridden_within_example_group"><strong>can be overridden within example group</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 package bootstrap
 
 describe String {
@@ -51,7 +58,7 @@ describe String {
       
 }</pre>
 </li><li><p id="can_be_overridden_by_manually_calling_the_constructor"><strong>can be overridden by manually calling the constructor</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 package bootstrap
 
 describe Integer {
@@ -64,7 +71,7 @@ describe Integer {
       
 }</pre>
 </li><li><p id="will_be_only_created_if_is_used"><strong>will be only created if is used</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 package bootstrap
 
 describe String {
@@ -75,7 +82,7 @@ describe String {
       
 }</pre>
 </li><li><p id="can_be_accessed_from_nested_ExampleGroups"><strong>can be accessed from nested ExampleGroups</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 package bootstrap
 
 describe String {
@@ -88,7 +95,7 @@ describe String {
     
 }</pre>
 </li><li><p id="can_be_overridden_from_nested_ExampleGroups"><strong>can be overridden from nested ExampleGroups</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 package bootstrap
 
 describe String {
@@ -100,7 +107,7 @@ describe String {
   }
 }</pre>
 </li><li><p id="will_be_only_created_in_the_subexample_if_is_not_used_in_the_parent_example_group"><strong>will be only created in the subexample if is not used in the parent example group</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 package bootstrap
 
 describe Integer{
@@ -116,7 +123,7 @@ describe Integer{
   
 }</pre>
 </li><li><p id="will_not_be_created_in_a_sub_example_if_is_used_in_the_parent_example_group"><strong>will not be created in a sub example if is used in the parent example group</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 package bootstrap
 
 describe String {
@@ -137,15 +144,194 @@ describe String {
   }
 }</pre>
 </li></ul>
-				</div>
-			</div>
-		</div> <!-- /content -->
+							</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>ImplicitSubject.spec</h3>
+						    	<p>
+<pre class="prettyprint lang-spec linenums">
+/*******************************************************************************
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
+package org.jnario.spec.tests.integration
+
+
+import static org.junit.Assert.*
+import static extension org.jnario.jnario.test.util.SpecExecutor.*
+import static org.jnario.jnario.test.util.ResultMatchers.*
+import static org.hamcrest.CoreMatchers.*
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SpecTestCreator
+import org.jnario.jnario.test.util.BehaviorExecutor
+import com.google.inject.Inject
+
+@CreateWith(typeof(SpecTestCreator))
+describe &quot;Implicit Subject&quot;{
+  @Inject extension BehaviorExecutor
+  /*
+   * @filter('''|.executesSuccessfully)  
+   */
+  fact &quot;should create instance of target type&quot;{
+    '''
+      package bootstrap
+      
+      describe String {
+      
+        fact subject should not be null
+            
+      }
+    '''.executesSuccessfully
+  }
+  /*
+   * @filter('''|.executesSuccessfully)  
+   */
+  fact &quot;can be overridden within example group&quot;{
+    '''
+      package bootstrap
+
+      describe String {
+        
+        String subject = &quot;overridden&quot;
+      
+        fact &quot;subject should be overridden&quot;{
+          subject should be &quot;overridden&quot;
+        } 
+            
+      }
+    '''.executesSuccessfully
+  }
+    /*
+   * @filter('''|.executesSuccessfully)  
+   */
+  fact &quot;can be overridden by manually calling the constructor&quot;{
+    '''
+      package bootstrap
+
+      describe Integer {
+        
+        before subject = new Integer(42)
+      
+        fact &quot;subject should be overridden&quot;{
+          subject should be 42
+        } 
+            
+      }
+    '''.executesSuccessfully
+  }
+  
+  /*
+   * @filter('''|.executesSuccessfully)  
+   */
+  fact &quot;will be only created if is used&quot;{
+    '''
+      package bootstrap
+
+      describe String {
+        
+        fact &quot;throws NoSuchFieldException because subject will not be created&quot;{
+          typeof(StringSpec).getField(&quot;subject&quot;) throws NoSuchFieldException
+        } 
+            
+      }
+    '''.executesSuccessfully
+  }
+  /*
+   * @filter('''|.executesSuccessfully)  
+   */
+  fact &quot;can be accessed from nested ExampleGroups&quot;{
+    '''
+      package bootstrap
+
+      describe String {
+      
+        describe &quot;Nested ExampleGroup&quot;{
+          fact &quot;should inherit the subject&quot;{
+          subject should be &quot;&quot;
+        }
+      }
+          
+      }
+    '''.executesSuccessfully
+  }
+  /*
+   * @filter('''|.executesSuccessfully)  
+   */
+  fact &quot;can be overridden from nested ExampleGroups&quot;{
+    '''
+    package bootstrap
+
+    describe String {
+      
+      describe java.util.ArrayList &quot;Nested ExampleGroup with different target type&quot;{
+        fact &quot;can override the subject&quot;{
+          assert subject.empty
+        }
+      }
+    }
+    '''.executesSuccessfully
+  }
+  /*
+   * @filter('''|.executesSuccessfully)  
+   */
+  fact &quot;will be only created in the subexample if is not used in the parent example group&quot;{
+    '''
+      package bootstrap
+
+      describe Integer{
+        
+        describe Integer {
+          
+          Integer subject = 0
+          
+          fact &quot;can be manually assigned from within sub specification&quot;{
+            subject should be 0
+          } 
+        }
+        
+      }
+    '''.executesSuccessfully
+  }
+  /*
+   * @filter('''|.executesSuccessfully)  
+   */
+  fact &quot;will not be created in a sub example if is used in the parent example group&quot;{
+    '''
+      package bootstrap
+
+      describe String {
+        describe String{
+          fact &quot;should generate subject for superclass&quot;{
+            assert typeof(StringSpec).getDeclaredField(&quot;subject&quot;) != null
+          }
+          fact &quot;should not generate subject for subclass&quot;{
+            typeof(StringStringSpec).getDeclaredField(&quot;subject&quot;) throws NoSuchFieldException
+          }
+          fact &quot;uses subject&quot;{
+          subject.toString
+        }
+        }
+        
+        fact &quot;uses subject&quot;{
+          subject.toString
+        }
+      }
+    '''.executesSuccessfully
+  }
+}
+</pre>
+						    </p></div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
 		<footer>
 			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
 		</footer>
-
-	</div>
-	<!-- /container -->
+	</div> <!-- /container -->
 
 </body>
 </html>

@@ -6,30 +6,37 @@
 <meta name="description" content="">
 <meta name="author" content="Jnario">
 
-<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
 <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-<!-- Le styles -->
 <link rel="stylesheet" href="../../../../../../css/bootstrap.min.css">
 <link rel="stylesheet" href="../../../../../../css/bootstrap-responsive.min.css">
 <link rel="stylesheet" href="../../../../../../css/custom.css">
 <link rel="stylesheet" href="../../../../../../css/prettify.css">
 <script type="text/javascript" src="../../../../../../js/prettify.js"></script>
 <script type="text/javascript" src="../../../../../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../../../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../../../../js/bootstrap-tab.js"></script>
 </head>
 
 <body onload="prettyPrint()">
 	<div class="container">
-		<div class="content">
-			<div class="page-header">
-				<h1>SpecJavaValidator</h1>
-			</div>
-			<div class="row">
-				<div class="span12">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header">
+					  <ul class="nav nav-tabs pull-right">
+					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+					<h1>SpecJavaValidator</h1>
+				</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
 <ul><li><p id="assert_statement_must_be_boolean"><strong>assert statement must be boolean</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 parseSpec('
   package bootstrap
 
@@ -43,7 +50,7 @@ parseSpec('
 val validationResult = validate(typeof(Assertion))
 validationResult.assertErrorContains(&quot;invalid type&quot;)</pre>
 </li><li><p id="duplicate_names_of_example_methods_are_ignored"><strong>duplicate names of example methods are ignored</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 parseSpec('
   package bootstrap
 
@@ -56,7 +63,7 @@ parseSpec('
 val validationResult = validate(typeof(ExampleGroup))
 validationResult.assertOK</pre>
 </li><li><p id="specs_without_description_but_different_types_are_OK"><strong>specs without description but different types are OK</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 parseSpec('
   package bootstrap
 
@@ -70,7 +77,7 @@ parseSpec('
 val validationResult = validate(typeof(ExampleGroup))
 validationResult.assertOK</pre>
 </li><li><p id="specs_with_different_method_contexts_are_OK"><strong>specs with different method contexts are OK</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 parseSpec('
   import java.util.Stack
     describe Stack{
@@ -83,7 +90,7 @@ parseSpec('
 val validationResult = validate(typeof(ExampleGroup))
 validationResult.assertOK</pre>
 </li><li><p id="specs_without_description_and_same_types_are_not_OK"><strong>specs without description and same types are not OK</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 parseSpec('
   package bootstrap
 
@@ -97,7 +104,7 @@ parseSpec('
 val validationResult = validate(typeof(ExampleGroup))
 validationResult.assertErrorContains(&quot;The spec 'String' is already defined.&quot;)</pre>
 </li><li><p id="example_table_values_must_not_be_void"><strong>example table values must not be void</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 parseSpec('
   package bootstrap
 
@@ -112,7 +119,7 @@ parseSpec('
 val validationResult = validate(typeof(ExampleRow))
 validationResult.assertErrorContains(&quot;void&quot;)</pre>
 </li><li><p id="example_table_rows_must_have_the_same_size"><strong>example table rows must have the same size</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 parseSpec('
   package bootstrap
 
@@ -127,7 +134,7 @@ parseSpec('
 val validationResult = validate(typeof(ExampleTable))
 validationResult.assertErrorContains(&quot;number&quot;)</pre>
 </li><li><p id="should_can_compare_objects_of_the_same_type"><strong>should can compare objects of the same type</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 parseSpec('
   describe &quot;Example&quot;{
     fact 1 =&gt; 1
@@ -136,7 +143,7 @@ parseSpec('
 val validationResult = validate(typeof(XBinaryOperation))
 validationResult.assertOK</pre>
 </li><li><p id="should_can_compare_object_with_a_class"><strong>should can compare object with a class</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 parseSpec('
   describe &quot;Example&quot;{
     fact 1 =&gt; typeof(int)
@@ -145,7 +152,7 @@ parseSpec('
 val validationResult = validate(typeof(XBinaryOperation))
 validationResult.assertOK</pre>
 </li><li><p id="should_can_compare_with_matcher"><strong>should can compare with matcher</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 parseSpec('
   import static org.hamcrest.CoreMatchers.*
   describe &quot;Example&quot;{
@@ -155,15 +162,195 @@ parseSpec('
 val validationResult = validate(typeof(XBinaryOperation))
 validationResult.assertOK</pre>
 </li></ul>
-				</div>
-			</div>
-		</div> <!-- /content -->
+							</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>SpecValidator.spec</h3>
+						    	<p>
+<pre class="prettyprint lang-spec linenums">
+/*******************************************************************************
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
+package org.jnario.spec.tests.unit.validation
+
+import com.google.inject.Inject
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.junit4.validation.RegisteredValidatorTester
+import org.jnario.Assertion
+import org.jnario.ExampleRow
+import org.jnario.ExampleTable
+import org.jnario.jnario.test.util.ModelStore
+import org.jnario.jnario.test.util.SpecTestCreator
+import org.jnario.runner.CreateWith
+import org.jnario.spec.spec.ExampleGroup
+import org.jnario.spec.validation.SpecJavaValidator
+
+import static org.jnario.jnario.test.util.Query.*
+import org.eclipse.xtext.xbase.XBinaryOperation
+import org.jnario.jnario.test.util.Resources
+
+@CreateWith(typeof(SpecTestCreator))
+describe SpecJavaValidator{
+
+  @Inject extension ModelStore modelStore
+
+  fact &quot;assert statement must be boolean&quot;{
+    parseSpec('
+      package bootstrap
+
+      describe &quot;Example&quot;{
+        fact &quot;invalid assert&quot;{
+          assert 1
+        }
+      } 
+    ')
+    
+    val validationResult = validate(typeof(Assertion))
+    validationResult.assertErrorContains(&quot;invalid type&quot;)
+  }
+  
+  fact &quot;duplicate names of example methods are ignored&quot;{
+    parseSpec('
+      package bootstrap
+
+      describe &quot;Example&quot;{
+        fact &quot;a***&quot; 
+            fact &quot;a???&quot; 
+      } 
+    ')
+    
+    val validationResult = validate(typeof(ExampleGroup))
+    validationResult.assertOK
+  }
+  
+  fact &quot;specs without description but different types are OK&quot;{
+    parseSpec('
+      package bootstrap
+
+      describe &quot;something&quot;{
+        describe String{
+        }
+        describe Integer{
+        }  
+      }
+    ')
+    val validationResult = validate(typeof(ExampleGroup))
+    validationResult.assertOK
+  }
+  
+  fact &quot;specs with different method contexts are OK&quot;{
+    parseSpec('
+      import java.util.Stack
+        describe Stack{
+        context push(E){
+        }
+        context push{
+        }
+      }  
+    ')
+    val validationResult = validate(typeof(ExampleGroup))
+    validationResult.assertOK
+  }
+  
+  fact &quot;specs without description and same types are not OK&quot;{
+    parseSpec('
+      package bootstrap
+
+      describe &quot;something&quot;{
+        describe String{
+        }
+        describe String{
+        }  
+      }
+    ')
+    val validationResult = validate(typeof(ExampleGroup))
+    validationResult.assertErrorContains(&quot;The spec 'String' is already defined.&quot;)
+  }
+  
+  fact &quot;example table values must not be void&quot;{
+    parseSpec('
+      package bootstrap
+
+      describe &quot;Example&quot;{
+        def examples{
+          | a         |
+          | throw new Exception() |
+        }
+      } 
+    ')
+    
+    val validationResult = validate(typeof(ExampleRow))
+    validationResult.assertErrorContains(&quot;void&quot;)
+  }
+  
+  fact &quot;example table rows must have the same size&quot;{
+    parseSpec('
+      package bootstrap
+
+      describe &quot;Example&quot;{
+        def examples{
+          | a | b |
+          | 0 |
+        }
+      } 
+    ')
+    
+    val validationResult = validate(typeof(ExampleTable))
+    validationResult.assertErrorContains(&quot;number&quot;)
+  }
+  
+  fact &quot;should can compare objects of the same type&quot;{
+    parseSpec('
+      describe &quot;Example&quot;{
+        fact 1 =&gt; 1
+      } 
+    ')
+    val validationResult = validate(typeof(XBinaryOperation))
+    validationResult.assertOK
+  }
+  
+  fact &quot;should can compare object with a class&quot;{
+    parseSpec('
+      describe &quot;Example&quot;{
+        fact 1 =&gt; typeof(int)
+      } 
+    ')
+    val validationResult = validate(typeof(XBinaryOperation))
+    validationResult.assertOK
+  }
+  
+  fact &quot;should can compare with matcher&quot;{
+    parseSpec('
+      import static org.hamcrest.CoreMatchers.*
+      describe &quot;Example&quot;{
+        fact 1 =&gt; notNullValue
+      } 
+    ')
+    val validationResult = validate(typeof(XBinaryOperation))
+    validationResult.assertOK
+  }
+  
+  def validate(Class&lt;? extends EObject&gt; type){
+    Resources::addContainerStateAdapter(resourceSet);
+    val target = query(modelStore).first(type)
+    return RegisteredValidatorTester::validateObj(target)
+  }
+  
+}
+</pre>
+						    </p></div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
 		<footer>
 			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
 		</footer>
-
-	</div>
-	<!-- /container -->
+	</div> <!-- /container -->
 
 </body>
 </html>

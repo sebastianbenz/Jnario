@@ -6,30 +6,37 @@
 <meta name="description" content="">
 <meta name="author" content="Jnario">
 
-<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
 <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-<!-- Le styles -->
 <link rel="stylesheet" href="../../../../../../css/bootstrap.min.css">
 <link rel="stylesheet" href="../../../../../../css/bootstrap-responsive.min.css">
 <link rel="stylesheet" href="../../../../../../css/custom.css">
 <link rel="stylesheet" href="../../../../../../css/prettify.css">
 <script type="text/javascript" src="../../../../../../js/prettify.js"></script>
 <script type="text/javascript" src="../../../../../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../../../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../../../../js/bootstrap-tab.js"></script>
 </head>
 
 <body onload="prettyPrint()">
 	<div class="container">
-		<div class="content">
-			<div class="page-header">
-				<h1>FeatureTokenSource</h1>
-			</div>
-			<div class="row">
-				<div class="span12">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header">
+					  <ul class="nav nav-tabs pull-right">
+					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+					<h1>FeatureTokenSource</h1>
+				</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
 <ul><li><p id="Splits_feature"><strong>Splits feature</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 setInput('''
   Feature: example
   ''')
@@ -37,14 +44,14 @@ assertSplitsIn(
   token(RULE_FEATURE_TEXT,  &quot;Feature: example\n&quot;, 1)
 )</pre>
 </li><li><p id="Splits_incomplete_feature"><strong>Splits incomplete feature</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 setInput('''
   Feature: example''')
 assertSplitsIn(
   token(RULE_FEATURE_TEXT,  &quot;Feature: example&quot;, 1)
 )</pre>
 </li><li><p id="Splits_incomplete_feature_with_text"><strong>Splits incomplete feature with text</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 setInput('''
   Feature: example
    some text''')
@@ -53,7 +60,7 @@ assertSplitsIn(
   token(RULE_TEXT,  &quot; some text&quot;, 2)
 )</pre>
 </li><li><p id="Splits_incomplete_feature_with_text_and_new_line"><strong>Splits incomplete feature with text and new line</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 setInput('''
   Feature: example
   some text
@@ -63,7 +70,7 @@ assertSplitsIn(
   token(RULE_TEXT,  &quot;some text\n&quot;, 2)
 )</pre>
 </li><li><p id="Splits_feature_with_text_and_scenario"><strong>Splits feature with text and scenario</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 setInput('''
   Feature: example
     Text1
@@ -76,7 +83,7 @@ assertSplitsIn(
   token(RULE_SCENARIO_TEXT,  &quot;Scenario: scenario1\n&quot;, 4)
 )</pre>
 </li><li><p id="splits_feature_with_text_and_background"><strong>splits feature with text and background</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 setInput('''
   Feature: example
     Text1
@@ -89,7 +96,7 @@ assertSplitsIn(
   token(RULE_BACKGROUND_TEXT,  &quot;Background: scenario1\n&quot;, 4)
 )</pre>
 </li><li><p id="splits_feature_with_text"><strong>splits feature with text</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 setInput('''
   Feature: example
     Text1
@@ -100,7 +107,7 @@ assertSplitsIn(
   token(RULE_TEXT,  &quot;  Text1\n  Text2\n&quot;, 2)
 )</pre>
 </li><li><p id="splits_feature_with_scenario"><strong>splits feature with scenario</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 setInput('''
   Feature: example
   Scenario: scenario1''')
@@ -109,7 +116,7 @@ assertSplitsIn(
   token(RULE_SCENARIO_TEXT,  &quot;Scenario: scenario1&quot;, 2)
 )</pre>
 </li><li><p id="splits_feature_with_scenario_and_line_break"><strong>splits feature with scenario and line break</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 setInput('''
   Feature: example
   Scenario: scenario1
@@ -119,7 +126,7 @@ assertSplitsIn(
   token(RULE_SCENARIO_TEXT,  &quot;Scenario: scenario1\n&quot;, 2)
 )</pre>
 </li><li><p id="splits_feature_with_background"><strong>splits feature with background</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 setInput('''
   Feature: example
    Background:
@@ -130,15 +137,195 @@ assertSplitsIn(
   token(RULE_BACKGROUND_TEXT,  &quot;Background:\n&quot;, 2)
 )</pre>
 </li></ul>
-				</div>
-			</div>
-		</div> <!-- /content -->
+							</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>FeatureTokenSource.spec</h3>
+						    	<p>
+<pre class="prettyprint lang-spec linenums">
+/*******************************************************************************
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
+package org.jnario.feature.tests.unit.parser
+
+
+import org.antlr.runtime.ANTLRStringStream
+import org.antlr.runtime.CommonToken
+import org.antlr.runtime.Token
+import org.eclipse.xtext.parser.antlr.TokenAcceptor
+import org.jnario.feature.parser.FeatureTokenSource
+
+import static org.jnario.feature.parser.antlr.internal.InternalFeatureLexer.*
+
+import static extension org.jnario.lib.Should.*
+describe FeatureTokenSource{
+  
+  TokenAcceptor tokenAcceptor = new TokenAcceptor
+  static String prefix = &quot;package test\n&quot;
+  CharSequence input
+  
+  fact &quot;Splits feature&quot;{
+    setInput('''
+      Feature: example
+      ''')
+    assertSplitsIn(
+      token(RULE_FEATURE_TEXT,  &quot;Feature: example\n&quot;, 1)
+    )
+  }
+  
+  fact &quot;Splits incomplete feature&quot;{
+    setInput('''
+      Feature: example''')
+    assertSplitsIn(
+      token(RULE_FEATURE_TEXT,  &quot;Feature: example&quot;, 1)
+    )
+  }
+  
+  fact &quot;Splits incomplete feature with text&quot;{
+    setInput('''
+      Feature: example
+       some text''')
+    assertSplitsIn(
+      token(RULE_FEATURE_TEXT,  &quot;Feature: example\n&quot;, 1),
+      token(RULE_TEXT,  &quot; some text&quot;, 2)
+    )
+  }
+  
+  
+  fact &quot;Splits incomplete feature with text and new line&quot;{
+    setInput('''
+      Feature: example
+      some text
+      ''')
+    assertSplitsIn(
+      token(RULE_FEATURE_TEXT,  &quot;Feature: example\n&quot;, 1),
+      token(RULE_TEXT,  &quot;some text\n&quot;, 2)
+    )
+  }
+  
+  
+  fact &quot;Splits feature with text and scenario&quot;{
+    setInput('''
+      Feature: example
+        Text1
+        Text2
+      Scenario: scenario1
+      ''')
+    assertSplitsIn(
+      token(RULE_FEATURE_TEXT,  &quot;Feature: example\n&quot;, 1),
+      token(RULE_TEXT,  &quot;  Text1\n  Text2\n&quot;, 2),
+      token(RULE_SCENARIO_TEXT,  &quot;Scenario: scenario1\n&quot;, 4)
+    )
+  }
+  
+  fact &quot;splits feature with text and background&quot;{
+    setInput('''
+      Feature: example
+        Text1
+        Text2
+        Background: scenario1
+      ''')
+    assertSplitsIn(
+      token(RULE_FEATURE_TEXT,  &quot;Feature: example\n&quot;, 1),
+      token(RULE_TEXT,  &quot;  Text1\n  Text2\n  &quot;, 2),
+      token(RULE_BACKGROUND_TEXT,  &quot;Background: scenario1\n&quot;, 4)
+    )
+  }
+  
+  fact &quot;splits feature with text&quot;{
+    setInput('''
+      Feature: example
+        Text1
+        Text2
+      ''')
+    assertSplitsIn(
+      token(RULE_FEATURE_TEXT,  &quot;Feature: example\n&quot;, 1),
+      token(RULE_TEXT,  &quot;  Text1\n  Text2\n&quot;, 2)
+    )
+  }
+  
+  fact &quot;splits feature with scenario&quot;{
+    setInput('''
+      Feature: example
+      Scenario: scenario1''')
+    assertSplitsIn(
+      token(RULE_FEATURE_TEXT,  &quot;Feature: example\n&quot;, 1),
+      token(RULE_SCENARIO_TEXT,  &quot;Scenario: scenario1&quot;, 2)
+    )
+  }
+  
+  fact &quot;splits feature with scenario and line break&quot;{
+    setInput('''
+      Feature: example
+      Scenario: scenario1
+      ''')
+    assertSplitsIn(
+      token(RULE_FEATURE_TEXT,  &quot;Feature: example\n&quot;, 1),
+      token(RULE_SCENARIO_TEXT,  &quot;Scenario: scenario1\n&quot;, 2)
+    )
+  }
+  
+  fact &quot;splits feature with background&quot;{
+    setInput('''
+      Feature: example
+       Background:
+      ''')
+    assertSplitsIn(
+      token(RULE_FEATURE_TEXT,  &quot;Feature: example\n&quot;, 1),
+      token(RULE_TEXT,  &quot; &quot;, 2),
+      token(RULE_BACKGROUND_TEXT,  &quot;Background:\n&quot;, 2)
+    )
+  }
+
+  def void assertSplitsIn(CommonToken... expectedTokens){
+    split(token(input))
+    val actualTokens = tokenAcceptor.toList
+    actualTokens.size =&gt; expectedTokens.size
+    actualTokens.forEach[e, i|
+      val expected = expectedTokens.get(i)
+      val actual = e as CommonToken
+      actual.type =&gt; expected.type
+      actual.text =&gt; expected.text
+      actual.line =&gt; expected.line
+    ]
+  }
+
+  def token(int type, String text, int line){
+    val result = new CommonToken(type, text)
+    result.line = line
+    return result
+  }
+
+  def token(CharSequence text){
+    val input = new ANTLRStringStream(text.toString)
+    val start = prefix.length
+    val stop = text.toString.length-1
+    new CommonToken(input, -1, -1, start, stop)
+  }
+  
+  def setInput(CharSequence input){
+    this.input = prefix + input.toString.replace(&quot;\r&quot;, &quot;&quot;)
+  }
+  
+  def split(Token token){
+    subject.doSplitToken(token, tokenAcceptor)
+  }
+
+}
+</pre>
+						    </p></div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
 		<footer>
 			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
 		</footer>
-
-	</div>
-	<!-- /container -->
+	</div> <!-- /container -->
 
 </body>
 </html>

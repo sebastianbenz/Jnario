@@ -6,28 +6,35 @@
 <meta name="description" content="">
 <meta name="author" content="Jnario">
 
-<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
 <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-<!-- Le styles -->
 <link rel="stylesheet" href="../../../../../../css/bootstrap.min.css">
 <link rel="stylesheet" href="../../../../../../css/bootstrap-responsive.min.css">
 <link rel="stylesheet" href="../../../../../../css/custom.css">
 <link rel="stylesheet" href="../../../../../../css/prettify.css">
 <script type="text/javascript" src="../../../../../../js/prettify.js"></script>
 <script type="text/javascript" src="../../../../../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../../../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../../../../js/bootstrap-tab.js"></script>
 </head>
 
 <body onload="prettyPrint()">
 	<div class="container">
-		<div class="content">
-			<div class="page-header">
-				<h1>FeatureJavaValidator</h1>
-			</div>
-			<div class="row">
-				<div class="span12">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header">
+					  <ul class="nav nav-tabs pull-right">
+					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+					<h1>FeatureJavaValidator</h1>
+				</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
 <p>@author Sebastian Benz - Initial contribution and API</p>
 <h2 id="Features_must_have_descriptions">Features must have descriptions</h2>
 <ul><li><p id="Feature_select_typeof_Feature_assertErrorContains_description"><strong>''' Feature: '''.select[typeof[Feature]].assertErrorContains["description"]</strong></p>
@@ -39,7 +46,7 @@
 <ul><li><p id="Feature_A_feature_Scenario_A_scenario_Given_When_Then_allOf_typeof_Step_assertErrorContains_description"><strong>''' Feature: A feature Scenario: A scenario Given When Then '''.allOf[typeof[Step]][assertErrorContains["description"]]</strong></p>
 </li></ul>
 <ul><li><p id="no_name_clash_between_features_and_imported_types"><strong>no name clash between features and imported types</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 '''
   import java.util.Stack
   Feature: Stack
@@ -48,15 +55,109 @@
 '''.parseScenario
 validate(typeof(XtendFile)).assertOK</pre>
 </li></ul>
-				</div>
-			</div>
-		</div> <!-- /content -->
+							</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>FeatureJavaValidator.spec</h3>
+						    	<p>
+<pre class="prettyprint lang-spec linenums">
+/*******************************************************************************
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
+package org.jnario.feature.tests.unit.validation
+
+import com.google.inject.Inject
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtend.core.xtend.XtendFile
+import org.eclipse.xtext.junit4.validation.AssertableDiagnostics
+import org.eclipse.xtext.junit4.validation.RegisteredValidatorTester
+import org.eclipse.xtext.xbase.lib.Procedures$Procedure1
+import org.jnario.feature.feature.Feature
+import org.jnario.feature.feature.Scenario
+import org.jnario.feature.feature.Step
+import org.jnario.feature.validation.FeatureJavaValidator
+import org.jnario.jnario.test.util.FeatureTestCreator
+import org.jnario.jnario.test.util.ModelStore
+import org.jnario.runner.CreateWith
+
+import static org.jnario.jnario.test.util.Query.*
+
+/**
+ * @author Sebastian Benz - Initial contribution and API
+ */
+@CreateWith(typeof(FeatureTestCreator))
+describe FeatureJavaValidator{
+
+  @Inject extension ModelStore modelStore
+
+  context &quot;Features must have descriptions&quot;{
+    fact '''
+      Feature: 
+    '''.select(typeof(Feature)).assertErrorContains(&quot;description&quot;)
+  }
+  
+  context &quot;Scenarios must have descriptions&quot;{
+    fact '''
+      Feature: A Feature
+        Scenario:
+        
+    '''.select(typeof(Scenario)).assertErrorContains(&quot;description&quot;)
+  }
+  
+  context &quot;Steps must have descriptions&quot;{
+    fact '''
+      Feature: A feature
+        Scenario: A scenario
+           Given 
+           When 
+           Then 
+           
+    '''.allOf(typeof(Step))[assertErrorContains(&quot;description&quot;)]
+  }
+  
+  fact &quot;no name clash between features and imported types&quot;{
+    '''
+      import java.util.Stack
+      Feature: Stack
+      Scenario: Example
+        Stack stack
+    '''.parseScenario
+    validate(typeof(XtendFile)).assertOK
+  }
+  
+  def select(CharSequence input, Class&lt;? extends EObject&gt; type){
+    modelStore.parseScenario(input)
+    validate(type)
+  }
+  
+  def allOf(CharSequence input, Class&lt;? extends EObject&gt; type, Procedures$Procedure1&lt;AssertableDiagnostics&gt; test){
+    modelStore.parseScenario(input)
+    val steps = query(modelStore).allOf(type)
+    steps.forEach[
+      val result = RegisteredValidatorTester::validateObj(it)
+      test.apply(result)
+    ]
+  }
+  
+  def validate(Class&lt;? extends EObject&gt; type){
+    val target = query(modelStore).first(type)
+    return RegisteredValidatorTester::validateObj(target)
+  }
+}
+</pre>
+						    </p></div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
 		<footer>
 			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
 		</footer>
-
-	</div>
-	<!-- /container -->
+	</div> <!-- /container -->
 
 </body>
 </html>

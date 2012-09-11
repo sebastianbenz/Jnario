@@ -6,32 +6,39 @@
 <meta name="description" content="">
 <meta name="author" content="Jnario">
 
-<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
 <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-<!-- Le styles -->
 <link rel="stylesheet" href="../../../../../css/bootstrap.min.css">
 <link rel="stylesheet" href="../../../../../css/bootstrap-responsive.min.css">
 <link rel="stylesheet" href="../../../../../css/custom.css">
 <link rel="stylesheet" href="../../../../../css/prettify.css">
 <script type="text/javascript" src="../../../../../js/prettify.js"></script>
 <script type="text/javascript" src="../../../../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../../../js/bootstrap-tab.js"></script>
 </head>
 
 <body onload="prettyPrint()">
 	<div class="container">
-		<div class="content">
-			<div class="page-header">
-				<h1>Using Should</h1>
-			</div>
-			<div class="row">
-				<div class="span12">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header">
+					  <ul class="nav nav-tabs pull-right">
+					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+					<h1>Using Should</h1>
+				</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
 <p>You can use the <code>should</code> statement to express the expected behavior of objects.</p>
 <ul><li><p id="To_pass"><strong>To pass..</strong></p>
 <p><code>should</code> passes if the result of the left expression is equal to the result of the right expression. You can use <code>not</code> to assert that the expressions have different results. There is also a short cut available: <code>=&gt;</code> which has the same effect as <code>should be</code>.</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 // equality
 true should be true
 1 + 1 should not be 1 
@@ -63,7 +70,7 @@ def void method(){
   throw new IllegalArgumentException
 }
 </pre><p>...and here are the examples:</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 1 + 1 should be 1 throws AssertionError
 1 + 1 should not be 1 throws AssertionError
 1 + 1 =&gt; 1 throws AssertionError
@@ -72,7 +79,7 @@ new Object should be null throws AssertionError
 method() throws IllegalArgumentException</pre>
 </li><li><p id="Why_did_it_fail"><strong>Why did it fail?</strong></p>
 <p>When failing, <code>should</code> and <code>=&gt;</code> try to give you as much context information as possible. The error message will print the values of all expressions and their subexpressions.</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 errorMessage[1 + 1 =&gt; 1].is('''
  Expected 1 + 1 =&gt; 1 but
       1 + 1 is &lt;2&gt;''')  
@@ -94,20 +101,147 @@ errorMessage[x =&gt; y].is('''
 import static org.hamcrest.CoreMatchers.equalTo
 import static org.hamcrest.Matchers.hasItem
 </code></pre><p>If the right-hand side of a should expression is a matcher, the matcher will be evaluated instead of testing for equality:</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 &quot;hello&quot; =&gt; startsWith(&quot;h&quot;)
 list(&quot;red&quot;, &quot;green&quot;) =&gt; hasItem(&quot;red&quot;)
 9 should be greaterThan(5)</pre>
 </li></ul>
-				</div>
-			</div>
-		</div> <!-- /content -->
+							</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>Should.spec</h3>
+						    	<p>
+<pre class="prettyprint lang-spec linenums">
+/*******************************************************************************
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
+package org.jnario.spec.tests.integration
+
+
+import static extension org.jnario.jnario.test.util.Helpers.*
+import static org.hamcrest.CoreMatchers.*
+import static org.hamcrest.Matchers.*
+
+/*
+ * You can use the `should` statement to express the expected behavior of objects.
+ */
+describe &quot;Using Should&quot;{
+ 
+  /*
+   * `should` passes if the result of the left expression is 
+   * equal to the result of the right expression. You can use `not` to  
+   * assert that the expressions have different results. There is also 
+   * a short cut available: `=&gt;` which has the same effect as `should be`.
+   */
+  fact &quot;To pass..&quot;{
+    // equality
+    true should be true
+    1 + 1 should not be 1 
+    &quot;something&quot; should not be null 
+    1 + 1 =&gt; 2 
+    // types
+    &quot;a string&quot; =&gt; typeof(String)
+    &quot;a string&quot;.getClass =&gt; typeof(String)
+
+    // strings
+    &quot;something&quot; should contain &quot;thing&quot;
+    &quot;something&quot; should not contain &quot;any&quot;
+
+    // iterables
+    list(&quot;something&quot;) should contain &quot;something&quot;
+    list(&quot;something&quot;) should not contain &quot;something else&quot;
+    
+    // using xtend's &quot;with&quot; operator
+    val greeting = &quot;hello world&quot; =&gt; [
+      length =&gt; 11
+      it should startWith(&quot;hello&quot;)
+      it should endWith(&quot;world&quot;) 
+    ]
+    greeting =&gt; typeof(String)
+  }     
+
+  /*     
+   * `should` throws an AssertionError if the result of the left 
+   * expression does not equal the result of the right expression.
+   * Here is a helper method we are going to use:
+   * 
+   * &lt;pre class=&quot;prettyprint lang-spec&quot;&gt;
+   * def void method(){
+   *   throw new IllegalArgumentException
+   * }
+   * &lt;/pre&gt;
+   * 
+   * ...and here are the examples:
+   */
+  fact &quot;...or not to pass&quot;{
+    1 + 1 should be 1 throws AssertionError
+    1 + 1 should not be 1 throws AssertionError
+    1 + 1 =&gt; 1 throws AssertionError
+    new Object =&gt; null throws AssertionError
+    new Object should be null throws AssertionError
+    method() throws IllegalArgumentException
+  }
+  
+  def void method(){
+    throw new IllegalArgumentException
+  }
+ 
+  /*
+   * When failing, `should` and `=&gt;` try to give you as much context information as possible. 
+   * The error message will print the values of all expressions and their subexpressions.
+   *  
+   */
+  fact &quot;Why did it fail?&quot;{
+    errorMessage[1 + 1 =&gt; 1].is('''
+     Expected 1 + 1 =&gt; 1 but
+          1 + 1 is &lt;2&gt;''')  
+    
+    val x = &quot;hello&quot;        
+    errorMessage[x.toUpperCase should not be &quot;HELLO&quot;].is('''
+      Expected x.toUpperCase should not be &quot;HELLO&quot; but
+           x.toUpperCase is &quot;HELLO&quot;
+           x is &quot;hello&quot;''')    
+           
+    val y = &quot;world&quot;        
+    errorMessage[x =&gt; y].is('''
+      Expected x =&gt; y but
+           x is &quot;hello&quot;
+           y is &quot;world&quot;''')    
+  }  
+    
+    
+  /*
+   * You can also the `should` and `=&gt;` together with [hamcrest](http://code.google.com/p/hamcrest/) 
+   * matchers. The following static import statements are needed to run the examples:
+   *  
+   *     import static org.hamcrest.CoreMatchers.startsWith
+   *     import static org.hamcrest.CoreMatchers.equalTo
+   *     import static org.hamcrest.Matchers.hasItem
+   * 
+   * If the right-hand side of a should expression is a matcher, the matcher will be evaluated instead
+   * of testing for equality:
+   */ 
+  fact &quot;Combining hamcrest and should&quot;{
+    &quot;hello&quot; =&gt; startsWith(&quot;h&quot;)
+    list(&quot;red&quot;, &quot;green&quot;) =&gt; hasItem(&quot;red&quot;)
+    9 should be greaterThan(5) 
+  }
+    
+}
+</pre>
+						    </p></div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
 		<footer>
 			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
 		</footer>
-
-	</div>
-	<!-- /container -->
+	</div> <!-- /container -->
 
 </body>
 </html>

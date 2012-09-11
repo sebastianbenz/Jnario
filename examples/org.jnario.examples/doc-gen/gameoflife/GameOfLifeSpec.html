@@ -6,12 +6,10 @@
 <meta name="description" content="">
 <meta name="author" content="Jnario">
 
-<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
 <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-<!-- Le styles -->
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/bootstrap-responsive.min.css">
 <link rel="stylesheet" href="../css/custom.css">
@@ -23,45 +21,49 @@
 </head>
 
 <body onload="prettyPrint()">
-  <div class="container">
-    <div class="content">
-      <div class="page-header">
-        <h1>Game of Life</h1>
-      </div>
-      <div class="row">
-        <div class="span12">
-<div class="tabbable tabs-below"> <!-- Only required for left/right tabs -->
-  <div class="tab-content">
-  <div class="tab-pane active" id="tab1">
+	<div class="container">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header">
+					  <ul class="nav nav-tabs pull-right">
+					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+					<h1>Game of Life</h1>
+				</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
 <h2 id="Rule">Rule</h2>
 <div class="level">
 <h3 id="EvolveLiveCells">EvolveLiveCells</h3>
 <ul><li><p id="liveCells"><strong>LiveCells</strong></p>
 <table class="table table-striped table-bordered table-condensed">
-  <thead>
-    <tr>
-    <th>liveNeighbourCount</th>
-    <th>result</th>
-    </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>1</td>
-    <td>false</td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>true</td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>true</td>
-  </tr>
-  <tr>
-    <td>4</td>
-    <td>false</td>
-  </tr>
-  </tbody>
+	<thead>
+		<tr>
+		<th>liveNeighbourCount</th>
+		<th>result</th>
+		</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>1</td>
+		<td>false</td>
+	</tr>
+	<tr>
+		<td>2</td>
+		<td>true</td>
+	</tr>
+	<tr>
+		<td>3</td>
+		<td>true</td>
+	</tr>
+	<tr>
+		<td>4</td>
+		<td>false</td>
+	</tr>
+	</tbody>
 </table>
 </li><li><p id="liveCells_forEach_subject_becomesAlive_liveNeighbourCount_result"><strong>liveCells.forEach[ subject.becomesAlive[liveNeighbourCount] => result ]</strong></p>
 </li></ul>
@@ -70,26 +72,26 @@
 <h3 id="EvolveDeadCells">EvolveDeadCells</h3>
 <ul><li><p id="deadcells"><strong>Deadcells</strong></p>
 <table class="table table-striped table-bordered table-condensed">
-  <thead>
-    <tr>
-    <th>liveNeighbourCount</th>
-    <th>result</th>
-    </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>2</td>
-    <td>false</td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>true</td>
-  </tr>
-  <tr>
-    <td>4</td>
-    <td>false</td>
-  </tr>
-  </tbody>
+	<thead>
+		<tr>
+		<th>liveNeighbourCount</th>
+		<th>result</th>
+		</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>2</td>
+		<td>false</td>
+	</tr>
+	<tr>
+		<td>3</td>
+		<td>true</td>
+	</tr>
+	<tr>
+		<td>4</td>
+		<td>false</td>
+	</tr>
+	</tbody>
 </table>
 </li><li><p id="deadcells_forEach_subject_becomesAlive_liveNeighbourCount_result"><strong>deadcells.forEach[ subject.becomesAlive[liveNeighbourCount] => result ]</strong></p>
 </li></ul>
@@ -103,7 +105,7 @@
 <div class="level">
 <h3 id="neighbours">Neighbours</h3>
 <ul><li><p id="are_adjacent_cells"><strong>are adjacent cells</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 val cell = cell(5, 5)
 val expectedNeighbours = set(
   cell(4, 6), cell(5, 6), cell(6, 6), 
@@ -117,20 +119,20 @@ cell.neighbours =&gt; expectedNeighbours</pre>
 <div class="level">
 <h3 id="deadCells">DeadCells</h3>
 <ul><li><p id="with_no_live_cells_there_are_no_dead_cells"><strong>with no live cells there are no dead cells</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 worldWith(emptyList).deadCells =&gt; emptySet</pre>
 </li><li><p id="with_a_live_cell_all_neighbours_are_dead_cells"><strong>with a live cell all neighbours are dead cells</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 worldWithLiveCell.deadCells =&gt; livingCell.neighbours</pre>
 </li><li><p id="with_a_live_cell_all_non_living_neighbours_are_dead_cells"><strong>with a live cell all non-living neighbours are dead cells</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 worldWithTwoLiveNeighbours.deadCells =&gt; allNonLivingNeighbours</pre>
 </li></ul>
 </div>
 <div class="level">
-<h3 id="livingNeighbours_CellLocation">LivingNeighbours[CellLocation]</h3>
+<h3 id="livingNeighbours">LivingNeighbours</h3>
 <ul><li><p id="returns_number_of_live_neighbours"><strong>returns number of live neighbours</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 worldWithTwoLiveNeighbours.livingNeighbours(livingCell) =&gt; 1</pre>
 </li></ul>
 </div>
@@ -138,7 +140,7 @@ worldWithTwoLiveNeighbours.livingNeighbours(livingCell) =&gt; 1</pre>
 <div class="level">
 <h3 id="dead_cells">Dead cells</h3>
 <ul><li><p id="become_alive_if_rule_says_so"><strong>become alive if rule says so</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 val evolution = new Evolution(dontCare, allDeadLive)
 evolution.evolve(worldWithLiveCell).livingCells =&gt; livingCell.neighbours</pre>
 </li></ul>
@@ -146,14 +148,16 @@ evolution.evolve(worldWithLiveCell).livingCells =&gt; livingCell.neighbours</pre
 <div class="level">
 <h3 id="live_cells">Live cells</h3>
 <ul><li><p id="stay_alive_if_rule_says_so"><strong>stay alive if rule says so</strong></p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 val evolution = new Evolution(allLiveStayAlive, dontCare)
 evolution.evolve(worldWithLiveCell).livingCells =&gt; set(livingCell)</pre>
 </li></ul>
 </div>
-</div>
-    <div class="tab-pane" id="tab2">
-<pre class="prettyprint lang-spec">
+							</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>GameOfLife.spec</h3>
+						    	<p>
+<pre class="prettyprint lang-spec linenums">
 package gameoflife
 
 import gameoflife.Rule
@@ -161,7 +165,7 @@ import gameoflife.Rule
 import static gameoflife.CellLocation.*
 import static gameoflife.World.*
 
-describe "Game of Life"{
+describe &quot;Game of Life&quot;{
   
   val livingCell = cell(0,0)
   val anotherLivingCell = cell(1, 1)
@@ -179,7 +183,7 @@ describe "Game of Life"{
         | 4             |   false      |
       }
       fact liveCells.forEach[
-        subject.becomesAlive(liveNeighbourCount) => result
+        subject.becomesAlive(liveNeighbourCount) =&gt; result
       ]
     }
     describe EvolveDeadCells {
@@ -190,38 +194,38 @@ describe "Game of Life"{
         | 4             |   false      |
       }
       fact deadcells.forEach[
-        subject.becomesAlive(liveNeighbourCount) => result
+        subject.becomesAlive(liveNeighbourCount) =&gt; result
       ] 
     }
   }
   
   describe CellLocation{
-    context "adding cell locations"{
-      fact cell(-1, 1).plus(cell(3,4)) => cell(2,5)
+    context &quot;adding cell locations&quot;{
+      fact cell(-1, 1).plus(cell(3,4)) =&gt; cell(2,5)
     } 
     context neighbours {
-      fact "are adjacent cells"{
+      fact &quot;are adjacent cells&quot;{
         val cell = cell(5, 5)
         val expectedNeighbours = set(
           cell(4, 6), cell(5, 6), cell(6, 6), 
           cell(4, 5),             cell(6, 5), 
           cell(4, 4), cell(5, 4), cell(6, 4)
         )
-        cell.neighbours => expectedNeighbours
+        cell.neighbours =&gt; expectedNeighbours
       }
     }
   }
   
   describe World{
     context deadCells{
-      fact "with no live cells there are no dead cells"{
-        worldWith(emptyList).deadCells => emptySet
+      fact &quot;with no live cells there are no dead cells&quot;{
+        worldWith(emptyList).deadCells =&gt; emptySet
       }
-      fact "with a live cell all neighbours are dead cells"{
-        worldWithLiveCell.deadCells => livingCell.neighbours
+      fact &quot;with a live cell all neighbours are dead cells&quot;{
+        worldWithLiveCell.deadCells =&gt; livingCell.neighbours
       }
-      fact "with a live cell all non-living neighbours are dead cells"{
-        worldWithTwoLiveNeighbours.deadCells => allNonLivingNeighbours
+      fact &quot;with a live cell all non-living neighbours are dead cells&quot;{
+        worldWithTwoLiveNeighbours.deadCells =&gt; allNonLivingNeighbours
       }
       
       def allNonLivingNeighbours(){
@@ -232,47 +236,41 @@ describe "Game of Life"{
       }
     }
     context livingNeighbours{
-      fact "returns number of live neighbours"{
-        worldWithTwoLiveNeighbours.livingNeighbours(livingCell) => 1
+      fact &quot;returns number of live neighbours&quot;{
+        worldWithTwoLiveNeighbours.livingNeighbours(livingCell) =&gt; 1
       }
     }
   }
   
   describe Evolution{
     val Rule dontCare  = [false]
-    context "dead cells"{
+    context &quot;dead cells&quot;{
       val Rule allDeadLive = [true]
-      fact "become alive if rule says so" {
+      fact &quot;become alive if rule says so&quot; {
         val evolution = new Evolution(dontCare, allDeadLive)
-        evolution.evolve(worldWithLiveCell).livingCells => livingCell.neighbours
+        evolution.evolve(worldWithLiveCell).livingCells =&gt; livingCell.neighbours
       }
     }  
-    context "live cells"{
+    context &quot;live cells&quot;{
       val Rule allLiveStayAlive  = [true]
-      fact "stay alive if rule says so" {
+      fact &quot;stay alive if rule says so&quot; {
         val evolution = new Evolution(allLiveStayAlive, dontCare)
-        evolution.evolve(worldWithLiveCell).livingCells => set(livingCell)
+        evolution.evolve(worldWithLiveCell).livingCells =&gt; set(livingCell)
       }
     }
   }
 }
-</pre>  
-    </div>
-  </div>
-  <ul class="nav nav-tabs">
-    <li class="active"><a href="#tab1" data-toggle="tab">Spec</a></li>
-    <li><a href="#tab2" data-toggle="tab">Source</a></li>
-  </ul>
-</div>
-        </div>
-      </div>
-    </div> <!-- /content -->
-    <footer>
-      <p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
-    </footer>
-
-  </div>
-  <!-- /container -->
+</pre>
+						    </p></div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
+		<footer>
+			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
+		</footer>
+	</div> <!-- /container -->
 
 </body>
 </html>
