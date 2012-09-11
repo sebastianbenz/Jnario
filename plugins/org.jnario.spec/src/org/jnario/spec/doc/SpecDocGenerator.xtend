@@ -22,6 +22,8 @@ import org.jnario.spec.spec.Example
 import org.jnario.spec.spec.ExampleGroup
 import org.jnario.doc.HtmlFile
 
+import static org.jnario.util.Strings.*
+
 class SpecDocGenerator extends AbstractDocGenerator {
 
 	@Inject extension ExampleNameProvider 
@@ -38,6 +40,8 @@ class SpecDocGenerator extends AbstractDocGenerator {
 			title = exampleGroup.asTitle
 			content = exampleGroup.generateContent
 			rootFolder = exampleGroup.root
+			sourceCode = xtendClass.eContainer.pre("lang-spec")
+			fileName = xtendClass.fileName
 		]
 	}
 
@@ -111,7 +115,7 @@ class SpecDocGenerator extends AbstractDocGenerator {
 
 	
 	def toCodeBlock(Example example, List<Filter> filters){
-		var prefix = '<pre class="prettyprint lang-spec">'
+		var prefix = '<pre class="prettyprint lang-spec linenums">'
 		prefix = filters.apply(prefix)
 		val code = example.implementation.serialize(filters)
 		if(code.length == 0) return ""

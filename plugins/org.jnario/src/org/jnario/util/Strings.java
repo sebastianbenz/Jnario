@@ -13,9 +13,19 @@ import static java.lang.Character.isJavaIdentifierStart;
 import static java.lang.Character.isLetterOrDigit;
 import static java.lang.Character.isWhitespace;
 import static java.lang.Character.toUpperCase;
+import static java.util.Collections.singletonMap;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Scanner;
+
+import junit.framework.Assert;
+
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtext.parsetree.reconstr.XtextSerializationException;
+import org.eclipse.xtext.resource.SaveOptions;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
@@ -226,6 +236,16 @@ public class Strings extends org.eclipse.xtext.util.Strings{
 	
 	public static StringBuilder markAsPending(StringBuilder sb){
 		return sb.append(" [PENDING]");
+	}
+
+	public static String toString(Resource resource) {
+		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+		try {
+			resource.save(outputStream, singletonMap(SaveOptions.defaultOptions(), true));
+		} catch (Exception ex) {
+			Exceptions.sneakyThrow(ex);
+		}
+		return outputStream.toString();
 	}
 
 }

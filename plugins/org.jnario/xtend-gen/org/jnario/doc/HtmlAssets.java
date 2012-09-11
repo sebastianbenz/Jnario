@@ -49,7 +49,9 @@ public class HtmlAssets {
     public List<String> apply() {
       ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList(
         "prettify.js", 
-        "lang-jnario.js");
+        "lang-jnario.js", 
+        "jquery.js", 
+        "bootstrap-tab.js");
       final Function1<String,String> _function = new Function1<String,String>() {
           public String apply(final String it) {
             String _plus = ("js/" + it);

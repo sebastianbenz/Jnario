@@ -27,7 +27,9 @@ class HtmlAssets {
 						"prettify.css").map["css/" + it]
 	val jsFiles = newArrayList(
 						"prettify.js", 
-						"lang-jnario.js").map["js/" + it]
+						"lang-jnario.js",
+						"jquery.js",
+						"bootstrap-tab.js").map["js/" + it]
 	
 	def generate(IFileSystemAccess fsa){
 		fsa.copy(cssFiles)

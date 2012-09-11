@@ -1,5 +1,7 @@
 package gameoflife
 
+import gameoflife.Rule
+
 import static gameoflife.CellLocation.*
 import static gameoflife.World.*
 
@@ -11,46 +13,28 @@ describe "Game of Life"{
 	val worldWithLiveCell = worldWith(list(livingCell))
 	val worldWithTwoLiveNeighbours = worldWith(list(livingCell, anotherLivingCell))
 	
-	describe Evolution{
-		val Rule dontCare  = [false]
-		context "dead cells"{
-			val Rule allDeadLive = [true]
-			fact "become alive if rule says so" {
-				val evolution = new Evolution(dontCare, allDeadLive)
-				evolution.evolve(worldWithLiveCell).livingCells => livingCell.neighbours
+	describe Rule{
+		describe EvolveLiveCells{
+			def liveCells{
+				| liveNeighbourCount | result |
+				| 1				     |   false      |
+				| 2				     |   true       |
+				| 3				     |   true       |
+				| 4				     |   false      |
 			}
-		}	
-		context "live cells"{
-			val Rule allLiveStayAlive  = [true]
-			fact "stay alive if rule says so" {
-				val evolution = new Evolution(allLiveStayAlive, dontCare)
-				evolution.evolve(worldWithLiveCell).livingCells => set(livingCell)
-			}
-		}
-	}
-
-	describe "rules"{
-		describe EvolveLivingCells{
-			def livingCells{
-				| liveNeighbourCount | becomesAlive |
-				| 1				   |   false      |
-				| 2				   |   true       |
-				| 3				   |   true       |
-				| 4				   |   false      |
-			}
-			fact livingCells.forEach[
-				subject.becomesAlive(liveNeighbourCount) => becomesAlive
+			fact liveCells.forEach[
+				subject.becomesAlive(liveNeighbourCount) => result
 			]
 		}
 		describe EvolveDeadCells {
 			def deadcells{
-				| liveNeighbourCount | becomesAlive |
-				| 2				   |   false      |
-				| 3				   |   true       |
-				| 4				   |   false      |
+				| liveNeighbourCount | result |
+				| 2				   	 |   false      |
+				| 3				     |   true       |
+				| 4				     |   false      |
 			}
 			fact deadcells.forEach[
-				subject.becomesAlive(liveNeighbourCount) => becomesAlive
+				subject.becomesAlive(liveNeighbourCount) => result
 			] 
 		}
 	}
@@ -81,15 +65,37 @@ describe "Game of Life"{
 				worldWithLiveCell.deadCells => livingCell.neighbours
 			}
 			fact "with a live cell all non-living neighbours are dead cells"{
-				val expectedDeadCells = (livingCell.neighbours + anotherLivingCell.neighbours).toSet
-				expectedDeadCells.remove(anotherLivingCell)
-				expectedDeadCells.remove(livingCell)
-				worldWithTwoLiveNeighbours.deadCells => expectedDeadCells
+				worldWithTwoLiveNeighbours.deadCells => allNonLivingNeighbours
+			}
+			
+			def allNonLivingNeighbours(){
+				val allNonLivingNeighbours = (livingCell.neighbours + anotherLivingCell.neighbours).toSet
+				allNonLivingNeighbours.remove(anotherLivingCell)
+				allNonLivingNeighbours.remove(livingCell)
+				allNonLivingNeighbours
 			}
 		}
 		context livingNeighbours{
 			fact "returns number of live neighbours"{
 				worldWithTwoLiveNeighbours.livingNeighbours(livingCell) => 1
+			}
+		}
+	}
+	
+	describe Evolution{
+		val Rule dontCare  = [false]
+		context "dead cells"{
+			val Rule allDeadLive = [true]
+			fact "become alive if rule says so" {
+				val evolution = new Evolution(dontCare, allDeadLive)
+				evolution.evolve(worldWithLiveCell).livingCells => livingCell.neighbours
+			}
+		}	
+		context "live cells"{
+			val Rule allLiveStayAlive  = [true]
+			fact "stay alive if rule says so" {
+				val evolution = new Evolution(allLiveStayAlive, dontCare)
+				evolution.evolve(worldWithLiveCell).livingCells => set(livingCell)
 			}
 		}
 	}

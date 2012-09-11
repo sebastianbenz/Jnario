@@ -9,16 +9,16 @@ import static gameoflife.World.*
 @Data
 class Evolution{
 	def static gameOfLife() {
-		new Evolution(new EvolveLivingCells, new EvolveDeadCells)
+		new Evolution(new EvolveLiveCells, new EvolveDeadCells)
 	}
 	
-	Rule livingCellRule
-	Rule deadCellRule
+	Rule staysAlive
+	Rule becomesAlive
 	
 	def evolve(World world) {
 		worldWith(
-			world.livingCells.filter[livingCellRule.apply(world, it)] +
-			world.deadCells.filter[deadCellRule.apply(world, it)]
+			world.livingCells.filter[getStaysAlive.apply(world, it)] +
+			world.deadCells.filter[getBecomesAlive.apply(world, it)]
 		)
 	} 
 	
@@ -27,7 +27,7 @@ class Evolution{
 	}	
 }
 
-class EvolveLivingCells implements Rule{
+class EvolveLiveCells implements Rule{
 	override becomesAlive(int neighbourCount) {
 		!neighbourCount.underPopulated && !neighbourCount.overPopulated
 	}

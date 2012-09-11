@@ -36,6 +36,8 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 			title = feature.name
 			content = feature.generateContent
 			rootFolder = feature.root
+			sourceCode = xtendClass.eContainer.pre("lang-feature")
+			fileName = xtendClass.fileName
 		]
 	}
 

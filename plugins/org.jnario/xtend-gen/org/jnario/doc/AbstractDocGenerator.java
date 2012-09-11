@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend.core.xtend.XtendClass;
@@ -274,6 +275,28 @@ public abstract class AbstractDocGenerator implements IGenerator {
   public String documentation(final EObject obj) {
     String _documentation = this.documentationProvider.getDocumentation(obj);
     return _documentation;
+  }
+  
+  public String fileName(final EObject eObject) {
+    Resource _eResource = eObject.eResource();
+    URI _uRI = _eResource.getURI();
+    String _lastSegment = _uRI.lastSegment();
+    return _lastSegment;
+  }
+  
+  public CharSequence pre(final EObject eObject, final String lang) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<pre class=\"prettyprint ");
+    _builder.append(lang, "");
+    _builder.append(" linenums\">");
+    _builder.newLineIfNotEmpty();
+    String _serialize = this.serialize(eObject);
+    String _codeToHtml = this.codeToHtml(_serialize);
+    _builder.append(_codeToHtml, "");
+    _builder.newLineIfNotEmpty();
+    _builder.append("</pre>");
+    _builder.newLine();
+    return _builder;
   }
   
   public String serialize(final XExpression expr, final List<Filter> filters) {

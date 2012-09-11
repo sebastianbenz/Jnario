@@ -6,6 +6,7 @@ import com.google.inject.Inject;
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -45,6 +46,11 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
           it.setContent(_generateContent);
           String _root = FeatureDocGenerator.this.root(feature);
           it.setRootFolder(_root);
+          EObject _eContainer = xtendClass.eContainer();
+          CharSequence _pre = FeatureDocGenerator.this.pre(_eContainer, "lang-feature");
+          it.setSourceCode(_pre);
+          String _fileName = FeatureDocGenerator.this.fileName(xtendClass);
+          it.setFileName(_fileName);
         }
       };
     return HtmlFile.newHtmlFile(_function);

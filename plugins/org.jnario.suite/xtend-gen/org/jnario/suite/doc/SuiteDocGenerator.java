@@ -71,6 +71,10 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
             it.setContent(_generateContent);
             String _root = SuiteDocGenerator.this.root(rootSuite);
             it.setRootFolder(_root);
+            CharSequence _pre = SuiteDocGenerator.this.pre(file, "lang-suite");
+            it.setSourceCode(_pre);
+            String _fileName = SuiteDocGenerator.this.fileName(file);
+            it.setFileName(_fileName);
           }
         };
       HtmlFile _newHtmlFile = HtmlFile.newHtmlFile(_function);
@@ -94,6 +98,10 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
             it.setContent(_generateContent);
             String _root = SuiteDocGenerator.this.root(suite);
             it.setRootFolder(_root);
+            CharSequence _pre = SuiteDocGenerator.this.pre(file, "lang-suite");
+            it.setSourceCode(_pre);
+            String _fileName = SuiteDocGenerator.this.fileName(file);
+            it.setFileName(_fileName);
           }
         };
       HtmlFile _newHtmlFile = HtmlFile.newHtmlFile(_function);

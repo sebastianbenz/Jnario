@@ -39,8 +39,8 @@ public class SimulatingGameOfLifeFeatureBlinker {
   
   @Test
   @Order(2)
-  @Named("Then the world is")
-  public void thenTheWorldIs() {
+  @Named("Then the world becomes")
+  public void thenTheWorldBecomes() {
     StepArguments _stepArguments = new StepArguments("\n\t\t\t\t-----\n\t\t\t\t-----\n\t\t\t\t-XXX-\n\t\t\t\t-----\n\t\t\t\t-----\n\t\t\t");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);

@@ -156,5 +156,15 @@ abstract class AbstractDocGenerator implements IGenerator {
 	def documentation(EObject obj){
 		documentationProvider.getDocumentation(obj)
 	}
-
+	
+	def fileName(EObject eObject){
+		eObject.eResource.URI.lastSegment
+	}
+	
+	def pre(EObject eObject, String lang)'''
+		<pre class="prettyprint «lang» linenums">
+		«eObject.serialize.codeToHtml»
+		</pre>
+	'''
+	
 }

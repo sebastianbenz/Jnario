@@ -53,7 +53,7 @@ generateDoc('''
 
 val scenarioDoc = generatedFile(&quot;ExampleSpec.html&quot;)
 assert scenarioDoc.contains(&quot;&lt;p&gt;This is an example.&lt;/p&gt;&quot;)
-assert !scenarioDoc.contains(&quot;Irrelevant documentation.&quot;)</pre>
+assert !scenarioDoc.contains(&quot;&lt;p&gt;Irrelevant documentation.&lt;/p&gt;&quot;)</pre>
 </li><li><p id="generates_example_documentation"><strong>generates example documentation</strong></p>
 <pre class="prettyprint lang-spec">
 generateDoc('''
@@ -71,7 +71,7 @@ val scenarioDoc = generatedFile(&quot;ExampleSpec.html&quot;)
 assert scenarioDoc.contains('''
 &lt;p id=&quot;should_do_stuff&quot;&gt;&lt;strong&gt;should do stuff&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Example documentation&lt;/p&gt;
-&lt;pre class=&quot;prettyprint lang-spec&quot;&gt;
+&lt;pre class=&quot;prettyprint lang-spec linenums&quot;&gt;
 var x = 0
 x = x + 1&lt;/pre&gt;'''.toString())</pre>
 </li><li><p id="should_support_markdown_for_documentation"><strong>should support markdown for documentation</strong></p>

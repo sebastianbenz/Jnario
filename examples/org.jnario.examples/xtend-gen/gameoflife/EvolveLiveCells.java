@@ -3,7 +3,7 @@ package gameoflife;
 import gameoflife.Rule;
 
 @SuppressWarnings("all")
-public class EvolveLivingCells implements Rule {
+public class EvolveLiveCells implements Rule {
   public boolean becomesAlive(final int neighbourCount) {
     boolean _and = false;
     boolean _underPopulated = this.underPopulated(neighbourCount);

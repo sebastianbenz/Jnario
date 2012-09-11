@@ -48,6 +48,8 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 			title = rootSuite.describe.decode
 			content = suites.generateContent
 			rootFolder = rootSuite.root
+			sourceCode = file.pre("lang-suite")
+			fileName = file.fileName
 		]
 	}
 
@@ -58,6 +60,8 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 			title = suite.describe.decode
 			content = suite.generateContent
 			rootFolder = suite.root
+			sourceCode = file.pre("lang-suite")
+			fileName = file.fileName
 		]
 	}
 	

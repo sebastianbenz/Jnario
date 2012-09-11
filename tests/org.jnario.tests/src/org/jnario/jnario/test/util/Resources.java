@@ -7,9 +7,7 @@
  *******************************************************************************/
 package org.jnario.jnario.test.util;
 
-import static java.util.Collections.singletonMap;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.Iterator;
@@ -27,8 +25,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
-import org.eclipse.xtext.parsetree.reconstr.XtextSerializationException;
-import org.eclipse.xtext.resource.SaveOptions;
 import org.eclipse.xtext.resource.containers.DelegatingIAllContainerAdapter;
 import org.eclipse.xtext.resource.containers.ResourceSetBasedAllContainersState;
 import org.eclipse.xtext.util.StringInputStream;
@@ -44,20 +40,6 @@ import com.google.common.collect.Lists;
  * @author Sebastian Benz - Initial contribution and API
  */
 public class Resources {
-	
-	public static String toString(Resource resource) {
-		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-		try {
-			resource.save(outputStream, singletonMap(SaveOptions.defaultOptions(), true));
-		} catch (IOException ex) {
-			ex.printStackTrace();
-			Assert.fail(ex.getMessage());
-		} catch (XtextSerializationException ex) {
-			ex.printStackTrace();
-			Assert.fail(ex.getMessage());
-		}
-		return outputStream.toString();
-	}
 	
 	public static int nrOfParseAndLinkingErrors(Resource resource){
 		link(resource);

@@ -77,6 +77,26 @@ public class HtmlFile {
     this._rootFolder = rootFolder;
   }
   
+  private CharSequence _sourceCode = "";
+  
+  public CharSequence getSourceCode() {
+    return this._sourceCode;
+  }
+  
+  public void setSourceCode(final CharSequence sourceCode) {
+    this._sourceCode = sourceCode;
+  }
+  
+  private CharSequence _fileName = "";
+  
+  public CharSequence getFileName() {
+    return this._fileName;
+  }
+  
+  public void setFileName(final CharSequence fileName) {
+    this._fileName = fileName;
+  }
+  
   public CharSequence toText() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<!DOCTYPE html>");
@@ -97,8 +117,6 @@ public class HtmlFile {
     _builder.append("<meta name=\"author\" content=\"Jnario\">");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->");
-    _builder.newLine();
     _builder.append("<!--[if lt IE 9]>");
     _builder.newLine();
     _builder.append("      ");
@@ -107,8 +125,6 @@ public class HtmlFile {
     _builder.append("    ");
     _builder.append("<![endif]-->");
     _builder.newLine();
-    _builder.newLine();
-    _builder.append("<!-- Le styles -->");
     _builder.newLine();
     {
       HtmlAssets _assets = this.getAssets();
@@ -143,37 +159,85 @@ public class HtmlFile {
     _builder.append("<div class=\"container\">");
     _builder.newLine();
     _builder.append("\t\t");
+    _builder.append("<div class=\"tabbable\">");
+    _builder.newLine();
+    _builder.append("\t\t\t");
     _builder.append("<div class=\"content\">");
     _builder.newLine();
-    _builder.append("\t\t\t");
+    _builder.append("\t\t\t\t");
     _builder.append("<div class=\"page-header\">");
     _builder.newLine();
-    _builder.append("\t\t\t\t");
+    _builder.append("\t\t\t\t\t  ");
+    _builder.append("<ul class=\"nav nav-tabs pull-right\">");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t    ");
+    _builder.append("<li class=\"active\"><a href=\"#spec\" data-toggle=\"tab\">Spec</a></li>");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t\t");
+    _builder.append("<li><a href=\"#source\" data-toggle=\"tab\">Source</a></li>");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t  ");
+    _builder.append("</ul>");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t");
     _builder.append("<h1>");
     CharSequence _title_1 = this.getTitle();
-    _builder.append(_title_1, "				");
+    _builder.append(_title_1, "					");
     _builder.append("</h1>");
     _builder.newLineIfNotEmpty();
-    _builder.append("\t\t\t");
+    _builder.append("\t\t\t\t");
     _builder.append("</div>");
     _builder.newLine();
-    _builder.append("\t\t\t");
+    _builder.append("\t\t\t\t");
     _builder.append("<div class=\"row\">");
     _builder.newLine();
-    _builder.append("\t\t\t\t");
+    _builder.append("\t\t\t\t\t");
     _builder.append("<div class=\"span12\">");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t\t  ");
+    _builder.append("<div class=\"tab-content\">");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t\t\t  \t");
+    _builder.append("<div class=\"tab-pane active\" id=\"spec\">");
     _builder.newLine();
     CharSequence _content = this.getContent();
     _builder.append(_content, "");
     _builder.newLineIfNotEmpty();
-    _builder.append("\t\t\t\t");
+    _builder.append("\t\t\t\t\t\t\t");
     _builder.append("</div>");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t\t    ");
+    _builder.append("<div class=\"tab-pane\" id=\"source\">");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t\t    \t");
+    _builder.append("<h3>");
+    CharSequence _fileName = this.getFileName();
+    _builder.append(_fileName, "						    	");
+    _builder.append("</h3>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t\t\t\t\t    \t");
+    _builder.append("<p>");
+    _builder.newLine();
+    CharSequence _sourceCode = this.getSourceCode();
+    _builder.append(_sourceCode, "");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t\t\t\t\t    ");
+    _builder.append("</p></div>");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t\t  ");
+    _builder.append("</div>");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t");
+    _builder.append("</div> ");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.append("</div> <!-- /row -->");
     _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.append("</div>");
+    _builder.append("</div> <!-- /content -->");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("</div> <!-- /content -->");
+    _builder.append("</div> <!-- /tabbable -->");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("<footer>");
@@ -184,12 +248,8 @@ public class HtmlFile {
     _builder.append("\t\t");
     _builder.append("</footer>");
     _builder.newLine();
-    _builder.newLine();
     _builder.append("\t");
-    _builder.append("</div>");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("<!-- /container -->");
+    _builder.append("</div> <!-- /container -->");
     _builder.newLine();
     _builder.newLine();
     _builder.append("</body>");

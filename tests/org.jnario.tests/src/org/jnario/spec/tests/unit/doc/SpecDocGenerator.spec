@@ -45,7 +45,7 @@ describe SpecDocGenerator {
 		
 		val scenarioDoc = generatedFile("ExampleSpec.html")
 		assert scenarioDoc.contains("<p>This is an example.</p>")
-		assert !scenarioDoc.contains("Irrelevant documentation.")
+		assert !scenarioDoc.contains("<p>Irrelevant documentation.</p>")
 	}
 	
 	fact "generates example documentation"{
@@ -64,7 +64,7 @@ describe SpecDocGenerator {
 		assert scenarioDoc.contains('''
 		<p id="should_do_stuff"><strong>should do stuff</strong></p>
 		<p>Example documentation</p>
-		<pre class="prettyprint lang-spec">
+		<pre class="prettyprint lang-spec linenums">
 		var x = 0
 		x = x + 1</pre>'''.toString())
 	}

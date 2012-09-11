@@ -3,7 +3,7 @@ package gameoflife;
 import com.google.common.collect.Iterables;
 import gameoflife.CellLocation;
 import gameoflife.EvolveDeadCells;
-import gameoflife.EvolveLivingCells;
+import gameoflife.EvolveLiveCells;
 import gameoflife.Rule;
 import gameoflife.World;
 import java.util.Set;
@@ -16,30 +16,30 @@ import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
 @SuppressWarnings("all")
 public class Evolution {
   public static Evolution gameOfLife() {
-    EvolveLivingCells _evolveLivingCells = new EvolveLivingCells();
+    EvolveLiveCells _evolveLiveCells = new EvolveLiveCells();
     EvolveDeadCells _evolveDeadCells = new EvolveDeadCells();
-    Evolution _evolution = new Evolution(_evolveLivingCells, _evolveDeadCells);
+    Evolution _evolution = new Evolution(_evolveLiveCells, _evolveDeadCells);
     return _evolution;
   }
   
-  private final Rule _livingCellRule;
+  private final Rule _staysAlive;
   
-  public Rule getLivingCellRule() {
-    return this._livingCellRule;
+  public Rule getStaysAlive() {
+    return this._staysAlive;
   }
   
-  private final Rule _deadCellRule;
+  private final Rule _becomesAlive;
   
-  public Rule getDeadCellRule() {
-    return this._deadCellRule;
+  public Rule getBecomesAlive() {
+    return this._becomesAlive;
   }
   
   public World evolve(final World world) {
     Set<CellLocation> _livingCells = world.getLivingCells();
     final Function1<CellLocation,Boolean> _function = new Function1<CellLocation,Boolean>() {
         public Boolean apply(final CellLocation it) {
-          Rule _livingCellRule = Evolution.this.getLivingCellRule();
-          boolean _apply = Evolution.this.apply(_livingCellRule, world, it);
+          Rule _staysAlive = Evolution.this.getStaysAlive();
+          boolean _apply = Evolution.this.apply(_staysAlive, world, it);
           return Boolean.valueOf(_apply);
         }
       };
@@ -47,8 +47,8 @@ public class Evolution {
     Set<CellLocation> _deadCells = world.deadCells();
     final Function1<CellLocation,Boolean> _function_1 = new Function1<CellLocation,Boolean>() {
         public Boolean apply(final CellLocation it) {
-          Rule _deadCellRule = Evolution.this.getDeadCellRule();
-          boolean _apply = Evolution.this.apply(_deadCellRule, world, it);
+          Rule _becomesAlive = Evolution.this.getBecomesAlive();
+          boolean _apply = Evolution.this.apply(_becomesAlive, world, it);
           return Boolean.valueOf(_apply);
         }
       };
@@ -64,18 +64,18 @@ public class Evolution {
     return _becomesAlive;
   }
   
-  public Evolution(final Rule livingCellRule, final Rule deadCellRule) {
+  public Evolution(final Rule staysAlive, final Rule becomesAlive) {
     super();
-    this._livingCellRule = livingCellRule;
-    this._deadCellRule = deadCellRule;
+    this._staysAlive = staysAlive;
+    this._becomesAlive = becomesAlive;
   }
   
   @Override
   public int hashCode() {
     final int prime = 31;
     int result = 1;
-    result = prime * result + ((_livingCellRule== null) ? 0 : _livingCellRule.hashCode());
-    result = prime * result + ((_deadCellRule== null) ? 0 : _deadCellRule.hashCode());
+    result = prime * result + ((_staysAlive== null) ? 0 : _staysAlive.hashCode());
+    result = prime * result + ((_becomesAlive== null) ? 0 : _becomesAlive.hashCode());
     return result;
   }
   
@@ -88,15 +88,15 @@ public class Evolution {
     if (getClass() != obj.getClass())
       return false;
     Evolution other = (Evolution) obj;
-    if (_livingCellRule == null) {
-      if (other._livingCellRule != null)
+    if (_staysAlive == null) {
+      if (other._staysAlive != null)
         return false;
-    } else if (!_livingCellRule.equals(other._livingCellRule))
+    } else if (!_staysAlive.equals(other._staysAlive))
       return false;
-    if (_deadCellRule == null) {
-      if (other._deadCellRule != null)
+    if (_becomesAlive == null) {
+      if (other._becomesAlive != null)
         return false;
-    } else if (!_deadCellRule.equals(other._deadCellRule))
+    } else if (!_becomesAlive.equals(other._becomesAlive))
       return false;
     return true;
   }

@@ -57,18 +57,27 @@ public class GameOfLifeWorldDeadCellsSpec extends GameOfLifeWorldSpec {
   @Named("with a live cell all non-living neighbours are dead cells")
   @Order(99)
   public void _withALiveCellAllNonLivingNeighboursAreDeadCells() throws Exception {
-    Set<CellLocation> _neighbours = this.livingCell.neighbours();
-    Set<CellLocation> _neighbours_1 = this.anotherLivingCell.neighbours();
-    Iterable<CellLocation> _plus = Iterables.<CellLocation>concat(_neighbours, _neighbours_1);
-    final Set<CellLocation> expectedDeadCells = IterableExtensions.<CellLocation>toSet(_plus);
-    expectedDeadCells.remove(this.anotherLivingCell);
-    expectedDeadCells.remove(this.livingCell);
     Set<CellLocation> _deadCells = this.worldWithTwoLiveNeighbours.deadCells();
-    boolean _doubleArrow = Should.operator_doubleArrow(_deadCells, expectedDeadCells);
-    Assert.assertTrue("\nExpected worldWithTwoLiveNeighbours.deadCells => expectedDeadCells but"
+    Set<CellLocation> _allNonLivingNeighbours = this.allNonLivingNeighbours();
+    boolean _doubleArrow = Should.operator_doubleArrow(_deadCells, _allNonLivingNeighbours);
+    Assert.assertTrue("\nExpected worldWithTwoLiveNeighbours.deadCells => allNonLivingNeighbours but"
      + "\n     worldWithTwoLiveNeighbours.deadCells is " + new StringDescription().appendValue(_deadCells).toString()
      + "\n     worldWithTwoLiveNeighbours is " + new StringDescription().appendValue(this.worldWithTwoLiveNeighbours).toString()
-     + "\n     expectedDeadCells is " + new StringDescription().appendValue(expectedDeadCells).toString() + "\n", _doubleArrow);
+     + "\n     allNonLivingNeighbours is " + new StringDescription().appendValue(_allNonLivingNeighbours).toString() + "\n", _doubleArrow);
     
+  }
+  
+  public Set<CellLocation> allNonLivingNeighbours() {
+    Set<CellLocation> _xblockexpression = null;
+    {
+      Set<CellLocation> _neighbours = this.livingCell.neighbours();
+      Set<CellLocation> _neighbours_1 = this.anotherLivingCell.neighbours();
+      Iterable<CellLocation> _plus = Iterables.<CellLocation>concat(_neighbours, _neighbours_1);
+      final Set<CellLocation> allNonLivingNeighbours = IterableExtensions.<CellLocation>toSet(_plus);
+      allNonLivingNeighbours.remove(this.anotherLivingCell);
+      allNonLivingNeighbours.remove(this.livingCell);
+      _xblockexpression = (allNonLivingNeighbours);
+    }
+    return _xblockexpression;
   }
 }

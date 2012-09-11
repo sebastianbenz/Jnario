@@ -87,10 +87,10 @@ public class SpecDocGeneratorSpec {
     Assert.assertTrue("\nExpected scenarioDoc.contains(\"<p>This is an example.</p>\") but"
      + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString() + "\n", _contains);
     
-    boolean _contains_1 = scenarioDoc.contains("Irrelevant documentation.");
+    boolean _contains_1 = scenarioDoc.contains("<p>Irrelevant documentation.</p>");
     boolean _not = (!_contains_1);
-    Assert.assertTrue("\nExpected !scenarioDoc.contains(\"Irrelevant documentation.\") but"
-     + "\n     scenarioDoc.contains(\"Irrelevant documentation.\") is " + new StringDescription().appendValue(_contains_1).toString()
+    Assert.assertTrue("\nExpected !scenarioDoc.contains(\"<p>Irrelevant documentation.</p>\") but"
+     + "\n     scenarioDoc.contains(\"<p>Irrelevant documentation.</p>\") is " + new StringDescription().appendValue(_contains_1).toString()
      + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString() + "\n", _not);
     
   }
@@ -132,17 +132,17 @@ public class SpecDocGeneratorSpec {
     _builder_1.newLine();
     _builder_1.append("<p>Example documentation</p>");
     _builder_1.newLine();
-    _builder_1.append("<pre class=\"prettyprint lang-spec\">");
+    _builder_1.append("<pre class=\"prettyprint lang-spec linenums\">");
     _builder_1.newLine();
     _builder_1.append("var x = 0");
     _builder_1.newLine();
     _builder_1.append("x = x + 1</pre>");
     String _string = _builder_1.toString();
     boolean _contains = scenarioDoc.contains(_string);
-    Assert.assertTrue("\nExpected scenarioDoc.contains(\'\'\'\r\n\t\t<p id=\"should_do_stuff\"><strong>should do stuff</strong></p>\r\n\t\t<p>Example documentation</p>\r\n\t\t<pre class=\"prettyprint lang-spec\">\r\n\t\tvar x = 0\r\n\t\tx = x + 1</pre>\'\'\'.toString()) but"
+    Assert.assertTrue("\nExpected scenarioDoc.contains(\'\'\'\r\n\t\t<p id=\"should_do_stuff\"><strong>should do stuff</strong></p>\r\n\t\t<p>Example documentation</p>\r\n\t\t<pre class=\"prettyprint lang-spec linenums\">\r\n\t\tvar x = 0\r\n\t\tx = x + 1</pre>\'\'\'.toString()) but"
      + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString()
-     + "\n     \'\'\'\r\n\t\t<p id=\"should_do_stuff\"><strong>should do stuff</strong></p>\r\n\t\t<p>Example documentation</p>\r\n\t\t<pre class=\"prettyprint lang-spec\">\r\n\t\tvar x = 0\r\n\t\tx = x + 1</pre>\'\'\'.toString() is " + new StringDescription().appendValue(_string).toString()
-     + "\n     \'\'\'\r\n\t\t<p id=\"should_do_stuff\"><strong>should do stuff</strong></p>\r\n\t\t<p>Example documentation</p>\r\n\t\t<pre class=\"prettyprint lang-spec\">\r\n\t\tvar x = 0\r\n\t\tx = x + 1</pre>\'\'\' is " + new StringDescription().appendValue(_builder_1).toString() + "\n", _contains);
+     + "\n     \'\'\'\r\n\t\t<p id=\"should_do_stuff\"><strong>should do stuff</strong></p>\r\n\t\t<p>Example documentation</p>\r\n\t\t<pre class=\"prettyprint lang-spec linenums\">\r\n\t\tvar x = 0\r\n\t\tx = x + 1</pre>\'\'\'.toString() is " + new StringDescription().appendValue(_string).toString()
+     + "\n     \'\'\'\r\n\t\t<p id=\"should_do_stuff\"><strong>should do stuff</strong></p>\r\n\t\t<p>Example documentation</p>\r\n\t\t<pre class=\"prettyprint lang-spec linenums\">\r\n\t\tvar x = 0\r\n\t\tx = x + 1</pre>\'\'\' is " + new StringDescription().appendValue(_builder_1).toString() + "\n", _contains);
     
   }
   

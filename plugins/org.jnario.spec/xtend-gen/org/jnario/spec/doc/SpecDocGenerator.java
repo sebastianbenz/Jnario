@@ -50,6 +50,11 @@ public class SpecDocGenerator extends AbstractDocGenerator {
             it.setContent(_generateContent);
             String _root = SpecDocGenerator.this.root(exampleGroup);
             it.setRootFolder(_root);
+            EObject _eContainer = xtendClass.eContainer();
+            CharSequence _pre = SpecDocGenerator.this.pre(_eContainer, "lang-spec");
+            it.setSourceCode(_pre);
+            String _fileName = SpecDocGenerator.this.fileName(xtendClass);
+            it.setFileName(_fileName);
           }
         };
       HtmlFile _newHtmlFile = HtmlFile.newHtmlFile(_function);
@@ -238,7 +243,7 @@ public class SpecDocGenerator extends AbstractDocGenerator {
   public String toCodeBlock(final Example example, final List<Filter> filters) {
     String _xblockexpression = null;
     {
-      String prefix = "<pre class=\"prettyprint lang-spec\">";
+      String prefix = "<pre class=\"prettyprint lang-spec linenums\">";
       String _apply = this.apply(filters, prefix);
       prefix = _apply;
       XExpression _implementation = example.getImplementation();
