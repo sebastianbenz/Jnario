@@ -146,11 +146,11 @@ class SpecDocGenerator extends AbstractDocGenerator {
 	
 	def private header(ExampleGroup exampleGroup, int level){
 		if(level <= 1){
-			"2"
-		}else if(level == 2){
 			"3"
-		}else {
+		}else if(level == 2){
 			"4"
+		}else {
+			"5"
 		}
 	}
 	

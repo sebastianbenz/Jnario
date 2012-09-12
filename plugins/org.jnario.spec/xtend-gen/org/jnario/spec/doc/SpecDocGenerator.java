@@ -328,14 +328,14 @@ public class SpecDocGenerator extends AbstractDocGenerator {
     String _xifexpression = null;
     boolean _lessEqualsThan = (level <= 1);
     if (_lessEqualsThan) {
-      _xifexpression = "2";
+      _xifexpression = "3";
     } else {
       String _xifexpression_1 = null;
       boolean _equals = (level == 2);
       if (_equals) {
-        _xifexpression_1 = "3";
-      } else {
         _xifexpression_1 = "4";
+      } else {
+        _xifexpression_1 = "5";
       }
       _xifexpression = _xifexpression_1;
     }
