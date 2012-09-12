@@ -16,15 +16,15 @@ Feature: Playing Game of Life
 				------ 
 			'''
 			world = parseWorld(args.first)
-		When the world evolves
+			
+		Then the world evolves into
+			'''
+				------
+				--XX--
+				--XX--
+				------
+			'''
 			world = gameOfLife.evolve(world)
-		Then the world is
-			'''
-				------
-				--XX--
-				--XX--
-				------
-			'''
 			world => parseWorld(args.first)
 			
 	Scenario: Blinker
@@ -36,13 +36,20 @@ Feature: Playing Game of Life
 				--X--
 				-----
 			'''
-		When the world evolves
-		Then the world is
+		Then the world evolves into
 			'''
 				-----
 				-----
 				-XXX-
 				-----
+				-----
+			'''
+		And the world evolves into
+			'''
+				-----
+				--X--
+				--X--
+				--X--
 				-----
 			'''
 		

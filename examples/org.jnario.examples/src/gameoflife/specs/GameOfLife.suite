@@ -6,7 +6,7 @@ import gameoflife.features.*
 
 #Game of Life with Jnario & Xtend
 
-This is the documentation generated from a specification for 
+This documentation is generated from a specification for 
 [Conway's Game of Life](http://en.wikipedia.org/wiki/Conway's_Game_of_Life) 
 written in [Jnario](http://www.jnario.org). 
 It has been created during the code retreat 
@@ -16,7 +16,7 @@ The acual game of life is implemented  with Xtend: [GameOfLife.xtend](GameOfLife
 
 <span class="label label\-info">Info</span> You can look at 
 the corrresponding Jnario source code by clicking on the "source" tab in the upper
-right corner. This file is generated from a [Jnario Suite](http://sebastianbenz.de/introducing\-jnario\-suites).
+right corner. For example, this file is generated from a [Jnario Suite](http://sebastianbenz.de/introducing\-jnario\-suites).
 
 ##Features
 

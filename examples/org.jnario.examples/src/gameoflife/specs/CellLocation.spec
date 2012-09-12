@@ -4,9 +4,6 @@ import static gameoflife.CellLocation.*
 import static gameoflife.World.*
 import gameoflife.CellLocation
 
-/*
- * The location of cells in a world.
- */
 describe CellLocation{
   describe "Calculating relative cell locations"{
     fact cell(-1, 1).plus(cell(3,4)) => cell(2,5)
