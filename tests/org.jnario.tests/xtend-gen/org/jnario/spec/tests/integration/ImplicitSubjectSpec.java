@@ -12,6 +12,15 @@ import org.jnario.runner.Order;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ * If your spec describes a specific type, Jnario
+ * will automatically create an instance variable
+ * ```subject``` of this type. By default it will
+ * use the no arg constructor to instantiate the subject
+ * field, but it is possible to use Guice or other tools
+ * to instantiate the subject by providing a custom
+ * **SpecCreator**.
+ */
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("Implicit Subject")
@@ -25,9 +34,9 @@ public class ImplicitSubjectSpec {
    * @filter('''|.executesSuccessfully)
    */
   @Test
-  @Named("should create instance of target type")
+  @Named("spec creates instance of target type")
   @Order(99)
-  public void _shouldCreateInstanceOfTargetType() throws Exception {
+  public void _specCreatesInstanceOfTargetType() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();
@@ -38,7 +47,9 @@ public class ImplicitSubjectSpec {
     _builder.append("  ");
     _builder.append("fact subject should not be null");
     _builder.newLine();
-    _builder.append("      ");
+    _builder.append("  ");
+    _builder.append("fact subject should be typeof(String)");
+    _builder.newLine();
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
@@ -49,9 +60,9 @@ public class ImplicitSubjectSpec {
    * @filter('''|.executesSuccessfully)
    */
   @Test
-  @Named("can be overridden within example group")
+  @Named("subject can be overridden within example group")
   @Order(99)
-  public void _canBeOverriddenWithinExampleGroup() throws Exception {
+  public void _subjectCanBeOverriddenWithinExampleGroup() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();
@@ -84,9 +95,9 @@ public class ImplicitSubjectSpec {
    * @filter('''|.executesSuccessfully)
    */
   @Test
-  @Named("can be overridden by manually calling the constructor")
+  @Named("subjects can be instantiated manually")
   @Order(99)
-  public void _canBeOverriddenByManuallyCallingTheConstructor() throws Exception {
+  public void _subjectsCanBeInstantiatedManually() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();
@@ -119,9 +130,9 @@ public class ImplicitSubjectSpec {
    * @filter('''|.executesSuccessfully)
    */
   @Test
-  @Named("will be only created if is used")
+  @Named("subjects will be only created if used")
   @Order(99)
-  public void _willBeOnlyCreatedIfIsUsed() throws Exception {
+  public void _subjectsWillBeOnlyCreatedIfUsed() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();
@@ -150,9 +161,9 @@ public class ImplicitSubjectSpec {
    * @filter('''|.executesSuccessfully)
    */
   @Test
-  @Named("can be accessed from nested ExampleGroups")
+  @Named("subjects can be accessed from nested ExampleGroups")
   @Order(99)
-  public void _canBeAccessedFromNestedExampleGroups() throws Exception {
+  public void _subjectsCanBeAccessedFromNestedExampleGroups() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();
@@ -185,9 +196,9 @@ public class ImplicitSubjectSpec {
    * @filter('''|.executesSuccessfully)
    */
   @Test
-  @Named("can be overridden from nested ExampleGroups")
+  @Named("subjects can be overridden from nested ExampleGroups")
   @Order(99)
-  public void _canBeOverriddenFromNestedExampleGroups() throws Exception {
+  public void _subjectsCanBeOverriddenFromNestedExampleGroups() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();
@@ -220,9 +231,9 @@ public class ImplicitSubjectSpec {
    * @filter('''|.executesSuccessfully)
    */
   @Test
-  @Named("will be only created in the subexample if is not used in the parent example group")
+  @Named("subject will be only created in the subexample if is not used in the parent example group")
   @Order(99)
-  public void _willBeOnlyCreatedInTheSubexampleIfIsNotUsedInTheParentExampleGroup() throws Exception {
+  public void _subjectWillBeOnlyCreatedInTheSubexampleIfIsNotUsedInTheParentExampleGroup() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();
@@ -264,9 +275,9 @@ public class ImplicitSubjectSpec {
    * @filter('''|.executesSuccessfully)
    */
   @Test
-  @Named("will not be created in a sub example if is used in the parent example group")
+  @Named("subject will not be created in a sub example if is used in the parent example group")
   @Order(99)
-  public void _willNotBeCreatedInASubExampleIfIsUsedInTheParentExampleGroup() throws Exception {
+  public void _subjectWillNotBeCreatedInASubExampleIfIsUsedInTheParentExampleGroup() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();

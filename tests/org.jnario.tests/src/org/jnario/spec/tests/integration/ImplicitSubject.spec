@@ -17,27 +17,37 @@ import org.jnario.jnario.test.util.SpecTestCreator
 import org.jnario.jnario.test.util.BehaviorExecutor
 import com.google.inject.Inject
 
+/*
+ * If your spec describes a specific type, Jnario 
+ * will automatically create an instance variable 
+ * ```subject``` of this type. By default it will 
+ * use the no arg constructor to instantiate the subject
+ * field, but it is possible to use Guice or other tools
+ * to instantiate the subject by providing a custom 
+ * **SpecCreator**.
+ */
 @CreateWith(typeof(SpecTestCreator))
 describe "Implicit Subject"{
   @Inject extension BehaviorExecutor
   /*
    * @filter('''|.executesSuccessfully)  
    */
-  fact "should create instance of target type"{
+  fact "spec creates instance of target type"{
     '''
       package bootstrap
       
       describe String {
       
         fact subject should not be null
-            
+        fact subject should be typeof(String)
+
       }
     '''.executesSuccessfully
   }
   /*
    * @filter('''|.executesSuccessfully)  
    */
-  fact "can be overridden within example group"{
+  fact "subject can be overridden within example group"{
     '''
       package bootstrap
 
@@ -55,7 +65,7 @@ describe "Implicit Subject"{
     /*
    * @filter('''|.executesSuccessfully)  
    */
-  fact "can be overridden by manually calling the constructor"{
+  fact "subjects can be instantiated manually"{
     '''
       package bootstrap
 
@@ -74,7 +84,7 @@ describe "Implicit Subject"{
   /*
    * @filter('''|.executesSuccessfully)  
    */
-  fact "will be only created if is used"{
+  fact "subjects will be only created if used"{
     '''
       package bootstrap
 
@@ -90,7 +100,7 @@ describe "Implicit Subject"{
   /*
    * @filter('''|.executesSuccessfully)  
    */
-  fact "can be accessed from nested ExampleGroups"{
+  fact "subjects can be accessed from nested ExampleGroups"{
     '''
       package bootstrap
 
@@ -108,7 +118,7 @@ describe "Implicit Subject"{
   /*
    * @filter('''|.executesSuccessfully)  
    */
-  fact "can be overridden from nested ExampleGroups"{
+  fact "subjects can be overridden from nested ExampleGroups"{
     '''
     package bootstrap
 
@@ -125,7 +135,7 @@ describe "Implicit Subject"{
   /*
    * @filter('''|.executesSuccessfully)  
    */
-  fact "will be only created in the subexample if is not used in the parent example group"{
+  fact "subject will be only created in the subexample if is not used in the parent example group"{
     '''
       package bootstrap
 
@@ -146,7 +156,7 @@ describe "Implicit Subject"{
   /*
    * @filter('''|.executesSuccessfully)  
    */
-  fact "will not be created in a sub example if is used in the parent example group"{
+  fact "subject will not be created in a sub example if is used in the parent example group"{
     '''
       package bootstrap
 

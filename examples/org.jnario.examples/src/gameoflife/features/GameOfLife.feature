@@ -1,10 +1,10 @@
-
-package gameoflife
+package gameoflife.features
 
 import static gameoflife.Evolution.*
 import static gameoflife.World.*
+import gameoflife.* 
 
-Feature: Simulating Game of Life
+Feature: Playing Game of Life
 
 	Scenario: Box
 		World world
@@ -18,7 +18,7 @@ Feature: Simulating Game of Life
 			world = parseWorld(args.first)
 		When the world evolves
 			world = gameOfLife.evolve(world)
-		Then the world becomes
+		Then the world is
 			'''
 				------
 				--XX--
@@ -37,7 +37,7 @@ Feature: Simulating Game of Life
 				-----
 			'''
 		When the world evolves
-		Then the world becomes
+		Then the world is
 			'''
 				-----
 				-----

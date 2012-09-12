@@ -36,7 +36,7 @@
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
 <p>This tutorial gives you an introduction on how to write specifications with Jnario. Jnario Specs are based on <a href="http://www.xtend-lang.org">Xtend</a>. it might be a good idea to read the Xtend <a href="http://www.eclipse.org/xtend/documentation/index.html">documentation</a> as well, because Jnario's expressions, fields, methods and extensions work exactly as in Xtend.</p><h3>Installation &amp; Runtime Library</h3><p>Jnario currently requires <a href="http://www.eclipse.org">Eclipse</a> 3.5 or higher with <a href="http://www.xtext.org">Xtext</a> 2.3,  and a Java SDK version 5 or above. You can install the most recent version from this update site: <code>http://www.jnario.org/updates/snapshot/</code>. Jnario requires a small runtime library that contains the JUnit integration. You can download the jar <a href="http://jnario.org/updates/snapshot/org.jnario.lib-0.1.0-SNAPSHOT.jar">here</a>.</p>
-<h2 id="How_to_write_a_Specification">How to write a Specification</h2>
+<h3 id="How_to_write_a_Specification">How to write a Specification</h3>
 <p>To get started create a new specification using the spec wizard (<strong>File</strong> -&gt; <strong>New</strong> -&gt; <strong>Other</strong> -&gt; <strong>Jnario</strong> -&gt; <strong>Spec</strong>).</p>
 <p align="center"><img src="/img/tutorial/spec_wizard.png" alt="New Spec Wizard"/></p><p>In Jnario we <em>describe facts</em> about our program. Here are two simple facts about a stack:</p>
 <pre class="prettyprint lang-spec">
@@ -319,7 +319,7 @@ describe &quot;Helper Methods &amp; Fields&quot;{
   }
 }</pre>
 </li></ul>
-<h2 id="Writing_Assertions">Writing Assertions</h2>
+<h3 id="Writing_Assertions">Writing Assertions</h3>
 <p>Jnario provides different statements for writing assertions (<a href="/org/jnario/spec/tests/integration/AssertionSpec.html">more...</a>).</p>
 <ul><li><p id="assert"><strong>'assert'</strong></p>
 <p>The <code>assert</code> statement fails if the following expression does not evaluate to <code>true</code>.</p>

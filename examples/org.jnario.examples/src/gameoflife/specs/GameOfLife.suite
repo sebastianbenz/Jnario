@@ -1,0 +1,37 @@
+package gameoflife.specs
+
+import org.jnario.jnario.documentation.*
+import gameoflife.specs.*
+import gameoflife.features.*
+
+#Game of Life with Jnario & Xtend
+
+This is the documentation generated from a specification for 
+[Conway's Game of Life](http://en.wikipedia.org/wiki/Conway's_Game_of_Life) 
+written in [Jnario](http://www.jnario.org). 
+It has been created during the code retreat 
+at the [Socrates conference](http://socrates\-conference.de) by 
+[Jaroslaw](https://www.xing.com/profile/Jaroslaw_Klose) and [Sebastian](https://twitter.com/sebabenz).
+The acual game of life is implemented  with Xtend: [GameOfLife.xtend](GameOfLife.html). 
+
+<span class="label label\-info">Info</span> You can look at 
+the corrresponding Jnario source code by clicking on the "source" tab in the upper
+right corner. This file is generated from a [Jnario Suite](http://sebastianbenz.de/introducing\-jnario\-suites).
+
+##Features
+
+   The acceptance specs for game of life are written using the Jnario feature language, 
+   which is similar to Cucumber. However, there is one big difference between Jnario and Cucumber.
+    You don’t need to create separate step definitions to make your steps executable. 
+    You can directly add the necessary code below your steps.
+   
+  - "Playing Game of Life":
+  
+##Unit Specifications
+
+   The unit specs are written using Jnario specs language, which has a syntax that is specifially 
+   tailored to the purpose of writing tests. For example, Jnario supports tables for simplify 
+   specifying different sets of inputs and expected outputs.
+   
+  - \.*specs.*\
+  
