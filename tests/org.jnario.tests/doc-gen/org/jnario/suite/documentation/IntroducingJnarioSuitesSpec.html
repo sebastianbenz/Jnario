@@ -35,7 +35,7 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<p>Suites in Jnario serve two purposes:</p>
+<p>Suites in Jnario are a great way to structure and document your specifications (<a href="http://sebastianbenz.de/introducing-jnario-suites">more</a>):</p>
 <ol>
   <li><strong>Grouping:</strong> A suite groups multiple specifications and executes them together.  For example, you could create a single  Jnario suite thats runs all your specifications in a project. Another possibility would  be to create two different suites, one containing  all specs and one containing all features.</li>
   <li><strong>Documentation:</strong> Jnario generates HTML reports for suites making them a great way to provide additional  documentation. For example, you can create a suite as an overview page describing the overall architecture  of an application, which then links to other specifications describing the different parts  in more detail.  The overview page of the <a href="http://jnario.org/org/jnario/JnarioDocumentationSuite.html">Jnario documentation</a>  is a good example for this.</li>
@@ -43,7 +43,7 @@
 <h3 id="Getting_Started">Getting Started</h3>
 <p>First of all you need a running installation of Jnario. If you haven't installed Jnario yet, follow the <a href="../../jnario/documentation/InstallingJnarioSpec.html">install guide</a>. To get started first create a new Java project and a new Jnario suite using the suite wizard (<strong>File</strong> -&gt; <strong>New</strong> -&gt; <strong>Other</strong> -&gt; <strong>Jnario</strong> -&gt; <strong>Suite</strong>).</p><p><img width="500px" src="/img/tutorial/suite_wizard.png" alt="New Suite Wizard"/></p><p>Name the suite file "MySuite" and as description use "My Jnario Suite". The created suite will look like:</p><p><span class="label label-info">Tip</span> If the editor shows a validation error, because of the missing jnario libraries, add them to the classpath using the quickfix (CMD/Ctrl + 1).</p><p><img width="600px" src="/img/tutorial/suite_buildpath.png" alt="New Suite Error"/></p>
 <ul><li><p id="A_simple_Suite"><strong>A simple Suite</strong></p>
-<p>A suite consists of a title and a list of references to other specifications, where a specification is either feature definition, a spec or another suite. The suite title is defined by '<strong>#</strong>' followed by the title. In our example suite it is: <code>#My Suite</code>. Referenced specifications are listed after '<strong>-</strong>' by their name in quotes.</p><p><span class="label label-info">Info</span> In order to reference specifications defined in different packages it is necessary to add corresponding import statements. The best thing is to use the code-completion as it will automatically add the required imports.</p>
+<p>A suite consists of a title and a list of references to other specifications, where a specification is either a feature definition, a spec or another suite. The suite title is defined by '<strong>#</strong>' followed by the title. In our example suite it is: <code>#My Suite</code>. Referenced specifications are listed after '<strong>-</strong>' by their name in quotes.</p><p><span class="label label-info">Info</span> In order to reference specifications defined in different packages it is necessary to add corresponding import statements. The best thing is to use the code-completion as it will automatically add the required imports.</p>
 <pre class="prettyprint lang-spec linenums">
 package demo
 
@@ -136,7 +136,7 @@ import static extension org.jnario.jnario.test.util.SuiteExecutor.*
 import static extension org.jnario.jnario.test.util.Resources.*
 
 /*
- * Suites in Jnario serve two purposes:
+ * Suites in Jnario are a great way to structure and document your specifications ([more](http://sebastianbenz.de/introducing-jnario-suites)): 
  * 
  * 1. **Grouping:** A suite groups multiple specifications and executes them together. 
  *    For example, you could create a single 
@@ -148,7 +148,7 @@ import static extension org.jnario.jnario.test.util.Resources.*
  *    of an application, which then links to other specifications describing the different parts 
  *    in more detail. 
  *    The overview page of the [Jnario documentation](http://jnario.org/org/jnario/JnarioDocumentationSuite.html)
- *    is a good example for this.
+ *    is a good example for this. 
  */
 @CreateWith(typeof(SuiteTestCreator))
 describe &quot;Introducing Jnario Suites&quot;{
@@ -175,7 +175,7 @@ describe &quot;Introducing Jnario Suites&quot;{
     @Inject extension ModelStore 
     /*
      * A suite consists of a title and a list of references to other specifications, where 
-     * a specification is either feature definition, a spec or another suite. The suite 
+     * a specification is either a feature definition, a spec or another suite. The suite 
      * title is defined by '**#**' followed by the title. In our example suite 
      * it is: `#My Suite`. Referenced specifications are listed after '**-**' by their name
      * in quotes. 

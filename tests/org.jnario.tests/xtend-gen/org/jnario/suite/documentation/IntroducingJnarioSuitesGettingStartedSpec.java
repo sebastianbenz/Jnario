@@ -43,7 +43,7 @@ public class IntroducingJnarioSuitesGettingStartedSpec extends IntroducingJnario
   
   /**
    * A suite consists of a title and a list of references to other specifications, where
-   * a specification is either feature definition, a spec or another suite. The suite
+   * a specification is either a feature definition, a spec or another suite. The suite
    * title is defined by '**#**' followed by the title. In our example suite
    * it is: `#My Suite`. Referenced specifications are listed after '**-**' by their name
    * in quotes.

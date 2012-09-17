@@ -9,7 +9,7 @@ import org.jnario.suite.documentation.IntroducingJnarioSuitesGettingStartedSpec;
 import org.junit.runner.RunWith;
 
 /**
- * Suites in Jnario serve two purposes:
+ * Suites in Jnario are a great way to structure and document your specifications ([more](http://sebastianbenz.de/introducing-jnario-suites)):
  * 
  * 1. **Grouping:** A suite groups multiple specifications and executes them together.
  *    For example, you could create a single

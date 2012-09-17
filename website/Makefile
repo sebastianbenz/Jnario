@@ -56,6 +56,28 @@ gh-pages: jnario
 	git commit -a -m "new snapshot build" ; \
 	git push origin gh-pages
 
+html:
+	rm -f ${GH_PAGES}/*.html
+	cp -r *.html ${GH_PAGES} 
+	for f in $(RES_FOLDERS) ; \
+	do \
+		echo ${GH_PAGES}/$$f ; \
+		rm -f -r ${GH_PAGES}/$$f ; \
+		mkdir -p ${GH_PAGES}/$$f ; \
+		cp -r $$f/* ${GH_PAGES}/$$f ; \
+	done 
+	rm -r -f ${GH_PAGES}/org
+	mkdir -p ${GH_PAGES}/org
+	cp -r -p ../tests/org.jnario.tests/doc-gen/org ${GH_PAGES}
+	find ${GH_PAGES}/ -type f -iname "*.html" | xargs sed -i "" -e 's/<!-- \/container -->/<\!-- Start Google Analytics Installation --><script type="text\/javascript">var _gaq=_gaq\|\|\[\]\;_gaq.push\(\["_setAccount"\,"UA-30225034-1"\]\)\;_gaq.push\(\["_setDomainName"\,"jnario.org"\]\)\;_gaq.push\(\["_trackPageview"\]\)\;\(function\(\)\{var a=document.createElement\("script"\)\;a.type="text\/javascript"\;a.async=true\;a.src=\("https\:"==document.location.protocol\?"https\:\/\/ssl"\:"http:\/\/www"\)\+".google-analytics.com\/ga.js"\;var b=document.getElementsByTagName\("script"\)\[0\]\;b.parentNode.insertBefore\(a\,b\)\}\)\(\)<\/script><\!-- End Google Analytics Installation -->/'
+	echo "This is the Jnario (www.jnario.org) snapshots update site." > ${GH_PAGES}/updates/snapshot/index.html 
+	cd ${GH_PAGES} ; \
+	git pull origin gh-pages ; \
+	git add --all ; \
+	git commit -a -m "updated documentation" ; \
+	git push origin gh-pages
+
+
 #
 # WATCH LESS FILES
 #

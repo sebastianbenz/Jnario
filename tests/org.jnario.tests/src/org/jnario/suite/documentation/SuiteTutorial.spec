@@ -16,7 +16,7 @@ import static extension org.jnario.jnario.test.util.SuiteExecutor.*
 import static extension org.jnario.jnario.test.util.Resources.*
 
 /*
- * Suites in Jnario serve two purposes:
+ * Suites in Jnario are a great way to structure and document your specifications ([more](http://sebastianbenz.de/introducing-jnario-suites)): 
  * 
  * 1. **Grouping:** A suite groups multiple specifications and executes them together. 
  *    For example, you could create a single 
@@ -28,7 +28,7 @@ import static extension org.jnario.jnario.test.util.Resources.*
  *    of an application, which then links to other specifications describing the different parts 
  *    in more detail. 
  *    The overview page of the [Jnario documentation](http://jnario.org/org/jnario/JnarioDocumentationSuite.html)
- *    is a good example for this.
+ *    is a good example for this. 
  */
 @CreateWith(typeof(SuiteTestCreator))
 describe "Introducing Jnario Suites"{
@@ -55,7 +55,7 @@ describe "Introducing Jnario Suites"{
 		@Inject extension ModelStore 
 		/*
 		 * A suite consists of a title and a list of references to other specifications, where 
-		 * a specification is either feature definition, a spec or another suite. The suite 
+		 * a specification is either a feature definition, a spec or another suite. The suite 
 		 * title is defined by '**#**' followed by the title. In our example suite 
 		 * it is: `#My Suite`. Referenced specifications are listed after '**-**' by their name
 		 * in quotes. 
