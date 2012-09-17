@@ -22,25 +22,23 @@ import com.google.inject.Inject
  * Jnario Specs are based on [Xtend](http://www.xtend-lang.org). it might be a good idea
  * to read the Xtend [documentation](http://www.eclipse.org/xtend/documentation/index.html) as well, 
  * because Jnario's expressions, fields, methods and extensions work exactly as in Xtend.
- *  
- * ### Installation & Runtime Library
- *
- * Jnario currently requires [Eclipse](http://www.eclipse.org) 3.5 or higher with [Xtext](http://www.xtext.org) 2.3, 
- *  and a Java SDK version 5 or above. You can install the most recent version from this update site: 
- * `http://www.jnario.org/updates/snapshot/`. Jnario requires a small runtime library that contains
- * the JUnit integration. You can download the jar 
- * [here](http://jnario.org/updates/snapshot/org.jnario.lib-0.1.0-SNAPSHOT.jar).
  *    
  */ 
 @CreateWith(typeof(SpecTestCreator))
 describe "Introducing Jnario Specs"{
 
 	/*
+	 * First of all you need a running installation of Jnario. If you haven't installed 
+	 * Jnario yet, follow the [install guide](../../jnario/documentation/InstallingJnarioSpec.html).
 	 * To get started create a new specification using the spec wizard
 	 * (**File** -> **New** -> **Other** -> **Jnario** -> **Spec**).
 	 * 
-	 * <p align="center"><img src="/img/tutorial/spec_wizard.png" alt="New Spec Wizard"/></p> 
-	 * 
+	 * <p align="center"><img src="/img/tutorial/spec_wizard.png" alt="New Spec Wizard"/></p>
+	 *  
+	 * <span class="label label-info">Tip</span> If the editor shows a validation error, 
+	 * because of the missing jnario libraries, add them 
+ 	 * to the classpath using the quickfix (CMD/Ctrl + 1).
+ 	 * 
 	 * In Jnario we *describe facts* about our program. Here are two simple facts about a stack:
 	 * 
 	 * <pre class="prettyprint lang-spec">

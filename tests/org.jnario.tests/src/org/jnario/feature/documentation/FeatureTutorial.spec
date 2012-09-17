@@ -17,19 +17,21 @@ import static extension org.jnario.jnario.test.util.FeatureExecutor.*
  * to read the Xtend [documentation](http://www.eclipse.org/xtend/documentation/index.html)
  * before you get started with Jnario, because expressions, fields, methods and extensions in Jnario work exactly as in Xtend.
  *  
- * ### Installation
- * 
- * Jnario currently requires [Eclipse](http://www.eclipse.org) 3.5 or higher with [Xtext](http://www.xtext.org) 2.3,  and a Java SDK version 5 or above. 
- * You can install the most recent version from this update site: `http://www.jnario.org/updates/snapshot/`. Jnario requires a small runtime library that contains
- * the JUnit integration. You can download the jar [here](http://jnario.org/updates/snapshot/org.jnario.lib-0.1.0-SNAPSHOT.jar).
- * 
  *   
  */
 describe "Introducing Jnario Features"{
   
   /* 
-   * The first example for using Jnario Features is the specification of a calculator. Start out with creating
-   * a new file (**File** -> **New** -> **File**) and giving it the file extension _*.feature_.
+   * First of all you need a running installation of Jnario. If you haven't installed 
+   * Jnario yet, follow the [install guide](../../jnario/documentation/InstallingJnarioSpec.html).
+   * To get started create a new specification using the spec wizard
+   * (**File** -> **New** -> **Other** -> **Jnario** -> **Feature**).
+   * 
+   *  <p align="center"><img src="/img/tutorial/feature_wizard.png" alt="New Feature Wizard"/></p>
+   *
+   * <span class="label label-info">Tip</span> If the editor shows a validation error, 
+   * because of the missing jnario libraries, add them 
+   * to the classpath using the quickfix (CMD/Ctrl + 1).
    * 
    * A feature file consists of a feature and the scenarios that are the acceptance criteria for the feature.
    * For the calculator the the feature description in form of a story and one scenario for adding

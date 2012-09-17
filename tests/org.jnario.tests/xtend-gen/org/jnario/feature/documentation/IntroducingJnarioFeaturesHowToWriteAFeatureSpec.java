@@ -10,8 +10,16 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- * The first example for using Jnario Features is the specification of a calculator. Start out with creating
- * a new file (**File** -> **New** -> **File**) and giving it the file extension _*.feature_.
+ * First of all you need a running installation of Jnario. If you haven't installed
+ * Jnario yet, follow the [install guide](../../jnario/documentation/InstallingJnarioSpec.html).
+ * To get started create a new specification using the spec wizard
+ * (**File** -> **New** -> **Other** -> **Jnario** -> **Feature**).
+ * 
+ *  <p align="center"><img src="/img/tutorial/feature_wizard.png" alt="New Feature Wizard"/></p>
+ * 
+ * <span class="label label-info">Tip</span> If the editor shows a validation error,
+ * because of the missing jnario libraries, add them
+ * to the classpath using the quickfix (CMD/Ctrl + 1).
  * 
  * A feature file consists of a feature and the scenarios that are the acceptance criteria for the feature.
  * For the calculator the the feature description in form of a story and one scenario for adding

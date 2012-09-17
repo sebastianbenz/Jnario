@@ -12,10 +12,16 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
+ * First of all you need a running installation of Jnario. If you haven't installed
+ * Jnario yet, follow the [install guide](../../jnario/documentation/InstallingJnarioSpec.html).
  * To get started create a new specification using the spec wizard
  * (**File** -> **New** -> **Other** -> **Jnario** -> **Spec**).
  * 
  * <p align="center"><img src="/img/tutorial/spec_wizard.png" alt="New Spec Wizard"/></p>
+ * 
+ * <span class="label label-info">Tip</span> If the editor shows a validation error,
+ * because of the missing jnario libraries, add them
+ * to the classpath using the quickfix (CMD/Ctrl + 1).
  * 
  * In Jnario we *describe facts* about our program. Here are two simple facts about a stack:
  * 
