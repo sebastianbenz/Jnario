@@ -13,9 +13,14 @@ describe "Calculator"{
 		new Calculator().add(1, 2) should be 3
 	}
 	
-	describe "Nested Calculator"{
-		fact "hello" => "hello"
+	def examples{
+		| a | b | sum |
+		| 1 | 2 |  4  |
+		| 1 | 3 |  4  |
 	}
 	
+	fact "should handle tables"{
+		examples.forEach[a + b => sum]
+	}	
 	  
 }          

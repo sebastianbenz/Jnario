@@ -6,6 +6,7 @@ import org.jnario.runner.Named;
 import org.jnario.suite.documentation.IntroducingJnarioSuitesSpec;
 import org.jnario.suite.unit.PatternValueConverterSpec;
 import org.jnario.suite.unit.SpecResolverSpec;
+import org.jnario.suite.unit.SpecResultParserSpec;
 import org.jnario.suite.unit.SuiteClassNameProviderSpec;
 import org.jnario.suite.unit.SuiteDocGeneratorSpec;
 import org.jnario.suite.unit.SuiteJavaValidatorSpec;
@@ -19,7 +20,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(ExampleGroupRunner.class)
 @Named("Suite")
-@Contains({ IntroducingJnarioSuitesSpec.class, PatternValueConverterSpec.class, SpecResolverSpec.class, SuiteClassNameProviderSpec.class, SuiteDocGeneratorSpec.class, SuiteJavaValidatorSpec.class, SuiteNodeBuilderSpec.class, SuiteQualifiedNameProviderSpec.class, SuiteScopeProviderSpec.class, SuiteSpecFilterSpec.class, SuiteValueConverterSpec.class, TextValueConverterSpec.class })
+@Contains({ IntroducingJnarioSuitesSpec.class, PatternValueConverterSpec.class, SpecResolverSpec.class, SpecResultParserSpec.class, SuiteClassNameProviderSpec.class, SuiteDocGeneratorSpec.class, SuiteJavaValidatorSpec.class, SuiteNodeBuilderSpec.class, SuiteQualifiedNameProviderSpec.class, SuiteScopeProviderSpec.class, SuiteSpecFilterSpec.class, SuiteValueConverterSpec.class, TextValueConverterSpec.class })
 @SuppressWarnings("all")
 public class SuiteSuite {
 }

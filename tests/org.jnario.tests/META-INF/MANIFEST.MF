@@ -29,7 +29,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.objectweb.asm;bundle-version="3.2.0",
  org.hamcrest;bundle-version="1.1.0",
  org.jnario.suite,
- org.jnario.suite.ui;bundle-version="0.3.0"
+ org.jnario.suite.ui;bundle-version="0.3.0",
+ org.mockito;bundle-version="1.8.4",
+ org.objenesis;bundle-version="1.0.0"
 Import-Package: org.apache.log4j,
  org.apache.commons.logging,
  org.junit;version="4.5.0",

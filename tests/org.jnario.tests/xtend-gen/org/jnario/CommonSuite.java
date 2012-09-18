@@ -3,6 +3,7 @@ package org.jnario;
 import org.jnario.jnario.documentation.InstallingJnarioSpec;
 import org.jnario.jnario.documentation._20FactsAboutXtendSpec;
 import org.jnario.jnario.tests.integration.ExtensionLibrarySpec;
+import org.jnario.jnario.tests.integration.ParsingSpecResultsFromJUnitXMLReportsFeature;
 import org.jnario.jnario.tests.unit.DocumentationProviderSpec;
 import org.jnario.jnario.tests.unit.doc.FilterExtractorSpec;
 import org.jnario.jnario.tests.unit.doc.HtmlAssetsCompilerSpec;
@@ -21,7 +22,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(ExampleGroupRunner.class)
 @Named("Common")
-@Contains({ _20FactsAboutXtendSpec.class, DocumentationProviderSpec.class, ExampleColumnSpec.class, ExampleTableSpec.class, ExecutableSpec.class, ExtensionLibrarySpec.class, FilterExtractorSpec.class, HtmlAssetsSpec.class, HtmlAssetsCompilerSpec.class, InstallingJnarioSpec.class, RegexFilterSpec.class, ShouldSpec.class, StringsSpec.class, WhiteSpaceNormalizerSpec.class })
+@Contains({ _20FactsAboutXtendSpec.class, DocumentationProviderSpec.class, ExampleColumnSpec.class, ExampleTableSpec.class, ExecutableSpec.class, ExtensionLibrarySpec.class, FilterExtractorSpec.class, HtmlAssetsSpec.class, HtmlAssetsCompilerSpec.class, InstallingJnarioSpec.class, ParsingSpecResultsFromJUnitXMLReportsFeature.class, RegexFilterSpec.class, ShouldSpec.class, StringsSpec.class, WhiteSpaceNormalizerSpec.class })
 @SuppressWarnings("all")
 public class CommonSuite {
 }
