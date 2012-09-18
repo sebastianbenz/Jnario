@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.jnario</groupId>
   <artifactId>jnario</artifactId>
-  <version>0.2.0.201209110000</version>
+  <version>0.2.1.201209181003</version>
   <packaging>pom</packaging>
 
   <properties>
