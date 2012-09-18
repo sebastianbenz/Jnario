@@ -24,6 +24,7 @@ import org.eclipse.xtend.core.xtend.XtendPackage;
 import org.eclipse.xtend.ide.contentassist.ImportingTypesProposalProvider.FQNImporter;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.CrossReference;
+import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.common.types.xtext.ui.TypeMatchFilters;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
@@ -41,6 +42,7 @@ import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.eclipse.xtext.xbase.XbaseQualifiedNameConverter;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
 import org.eclipse.xtext.xbase.conversion.XbaseQualifiedNameValueConverter;
+import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.StepReference;
 import org.jnario.feature.naming.StepNameProvider;
@@ -145,10 +147,25 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 	}
 
 	@Override
+	public void completeKeyword(Keyword keyword,
+			ContentAssistContext contentAssistContext,
+			ICompletionProposalAcceptor acceptor) {
+		if("import".equals(keyword.getValue()) && contentAssistContext.getPreviousModel() instanceof Feature){
+			return;
+		}
+		super.completeKeyword(keyword, contentAssistContext, acceptor);
+	}
+	
+	@Override
 	public void complete_FEATURE_TEXT(EObject model, RuleCall ruleCall,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		String proposal = "Feature: ";
-		acceptor.accept(createCompletionProposal(proposal, proposal, getLabelProvider().getImage(model), context));
+		if (context.getPreviousModel() instanceof Feature) {
+			complete_BACKGROUND_TEXT(model, ruleCall, context, acceptor);
+			complete_SCENARIO_TEXT(model, ruleCall, context, acceptor);
+		}else{
+			acceptor.accept(createCompletionProposal(proposal, proposal, getLabelProvider().getImage(model), context));
+		}
 	}
 	
 	@Override
@@ -157,6 +174,7 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 		String proposal = "Background: ";
 		acceptor.accept(createCompletionProposal(proposal, proposal, getLabelProvider().getImage(model), context));
 	}
+	
 	
 	@Override
 	public void complete_SCENARIO_TEXT(EObject model, RuleCall ruleCall,
