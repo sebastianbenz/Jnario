@@ -10,6 +10,7 @@
  */
 package org.jnario.feature.ui;
 
+import org.eclipse.jface.text.DefaultIndentLineAutoEditStrategy;
 import org.eclipse.jface.text.rules.ITokenScanner;
 import org.eclipse.jface.text.source.DefaultCharacterPairMatcher;
 import org.eclipse.jface.text.source.ICharacterPairMatcher;
@@ -78,6 +79,7 @@ import org.eclipse.xtext.xbase.ui.hover.XbaseDeclarativeHoverSignatureProvider;
 import org.eclipse.xtext.xbase.ui.jvmmodel.navigation.DerivedMemberAwareEditorOpener;
 import org.eclipse.xtext.xbase.ui.launching.JavaElementDelegate;
 import org.jnario.feature.ui.autoedit.FeatureAutoEditStrategyProvider;
+import org.jnario.feature.ui.autoedit.FeatureIndentLineAutoEditStrategy;
 import org.jnario.feature.ui.editor.FeatureDoubleClickStrategyProvider;
 import org.jnario.feature.ui.editor.FeatureEditor;
 import org.jnario.feature.ui.editor.FeatureFoldingRegionProvider;
@@ -139,6 +141,7 @@ public class FeatureUiModule extends org.jnario.feature.ui.AbstractFeatureUiModu
 	public void configure(Binder binder) {
 		super.configure(binder);
 		binder.bind(XtextEditor.class).to(FeatureEditor.class);
+		binder.bind(DefaultIndentLineAutoEditStrategy.class).to(FeatureIndentLineAutoEditStrategy.class);
 	}
 
 	public void configureDebugMode(Binder binder) {
