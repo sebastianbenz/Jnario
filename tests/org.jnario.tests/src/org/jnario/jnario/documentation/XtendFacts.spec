@@ -24,7 +24,7 @@ describe "20 Facts about Xtend"{
    * is usually a lot shorter than its Java counterpart. However, 
    * there are some important differences between Java and Xtend 
    * one should be aware of.
-   */
+   */ 
   describe "A modernized Java"{
      
       /* 

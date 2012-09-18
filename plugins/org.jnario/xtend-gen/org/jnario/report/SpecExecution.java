@@ -1,13 +1,23 @@
-package org.jnario.doc;
+package org.jnario.report;
 
 import java.util.List;
 import org.eclipse.xtend.lib.Data;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
-import org.jnario.doc.Failure;
+import org.jnario.report.SpecFailure;
 
 @Data
 @SuppressWarnings("all")
 public class SpecExecution {
+  public final static SpecExecution NO_EXECUTION = new Function0<SpecExecution>() {
+    public SpecExecution apply() {
+      List<SpecFailure> _emptyList = CollectionLiterals.<SpecFailure>emptyList();
+      SpecExecution _specExecution = new SpecExecution("", "", 0.0, _emptyList);
+      return _specExecution;
+    }
+  }.apply();
+  
   private final String _className;
   
   public String getClassName() {
@@ -26,9 +36,9 @@ public class SpecExecution {
     return this._executionTimeInSeconds;
   }
   
-  private final List<Failure> _failures;
+  private final List<SpecFailure> _failures;
   
-  public List<Failure> getFailures() {
+  public List<SpecFailure> getFailures() {
     return this._failures;
   }
   
@@ -36,7 +46,7 @@ public class SpecExecution {
     return true;
   }
   
-  public SpecExecution(final String className, final String name, final double executionTimeInSeconds, final List<Failure> failures) {
+  public SpecExecution(final String className, final String name, final double executionTimeInSeconds, final List<SpecFailure> failures) {
     super();
     this._className = className;
     this._name = name;

@@ -1,16 +1,18 @@
-package org.jnario.doc
+package org.jnario.report
 
 import java.util.List
 
 @Data
 class SpecExecution {
+	
+	public static val NO_EXECUTION = new SpecExecution("", "", 0.0, emptyList)
+	
 	String className
 	String name
 	double executionTimeInSeconds 
-	List<Failure> failures
+	List<SpecFailure> failures
+	
 	def hasPassed(){
 		return true
 	}
-	
-
 }

@@ -1,6 +1,7 @@
-package org.jnario.doc
+package org.jnario.report
 
-class Failure {
+@Data
+class SpecFailure {
 	
 	String message
 	String type

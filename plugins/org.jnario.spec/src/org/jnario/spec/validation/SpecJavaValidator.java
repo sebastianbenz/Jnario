@@ -80,7 +80,6 @@ public class SpecJavaValidator extends AbstractSpecJavaValidator {
 			super.error(message, source, feature, code, issueData);
 		}else if(!IssueCodes.DUPLICATE_METHOD.equals(issueData[0])){
 			super.error(message, source, feature, code, issueData);
-			return;
 		}else if(!(source instanceof Example)){
 			super.error(message, source, feature, code, issueData);
 		}

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SpecResultParser</title>
+<meta name="description" content="">
+<meta name="author" content="Jnario">
+
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<link rel="stylesheet" href="../../../../../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../../../../css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="../../../../../../css/custom.css">
+<link rel="stylesheet" href="../../../../../../css/prettify.css">
+<script type="text/javascript" src="../../../../../../js/prettify.js"></script>
+<script type="text/javascript" src="../../../../../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../../../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../../../../js/bootstrap-tab.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+	<div class="container">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header">
+					  <ul class="nav nav-tabs pull-right">
+					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+					<h1>SpecResultParser</h1>
+				</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
+<ul><li><p id="parses_successfull_specs_from_xml"><strong>parses successfull specs from xml</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+  &lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;&laquo;NAME&raquo;&quot;/&gt;
+'''.toXml.parse 
+
+verify(acceptor).accept(passingSpec)</pre>
+</li><li><p id="parses_specs_with_failure_from_xml"><strong>parses specs with failure from xml</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+   &lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;&laquo;NAME&raquo;&quot;&gt;
+    &lt;failure message=&quot;&laquo;FAILURE_MESSAGE&raquo;&quot; type=&quot;&laquo;FAILURE_TYPE&raquo;&quot;&gt;&laquo;STACKTRACE&raquo;&lt;/failure&gt;
+   &lt;/testcase&gt;
+'''.toXml.parse 
+
+verify(acceptor).accept(failingSpec)</pre>
+</li><li><p id="parses_specs_with_error_from_xml"><strong>parses specs with error from xml</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+   &lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;&laquo;NAME&raquo;&quot;&gt;
+    &lt;error message=&quot;&laquo;FAILURE_MESSAGE&raquo;&quot; type=&quot;&laquo;FAILURE_TYPE&raquo;&quot;&gt;&laquo;STACKTRACE&raquo;&lt;/error&gt;
+   &lt;/testcase&gt;
+'''.toXml.parse 
+
+verify(acceptor).accept(failingSpec)</pre>
+</li><li><p id="parses_multiple_spec_results"><strong>parses multiple spec results</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+   &lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;&laquo;NAME&raquo;&quot;/&gt;
+   &lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;&laquo;NAME&raquo;&quot;&gt;
+    &lt;error message=&quot;&laquo;FAILURE_MESSAGE&raquo;&quot; type=&quot;&laquo;FAILURE_TYPE&raquo;&quot;&gt;&laquo;STACKTRACE&raquo;&lt;/error&gt;
+   &lt;/testcase&gt;
+'''.toXml.parse 
+
+verify(acceptor).accept(passingSpec)
+verify(acceptor).accept(failingSpec)</pre>
+</li></ul>
+							</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>SpecResultParser.spec</h3>
+						    	<p>
+<pre class="prettyprint lang-spec linenums">
+package org.jnario.jnario.tests.unit.report
+
+import org.eclipse.xtext.util.StringInputStream
+import org.jnario.report.SpecExecutionAcceptor
+import org.jnario.report.SpecExecution
+import org.jnario.report.SpecResultParser
+import org.jnario.report.SpecFailure
+
+import static org.jnario.lib.JnarioCollectionLiterals.*
+import static org.mockito.Mockito.*
+
+describe SpecResultParser{
+  
+  static val CLASSNAME = &quot;demo.CalculatorSpec&quot;
+  static val NAME = &quot;adding values&quot;
+  static val EXECUTION_TIME = 0.01
+  static val FAILURE_MESSAGE = &quot;a message&quot;
+  static val FAILURE_TYPE = &quot;java.lang.AssertionError&quot;
+  static val STACKTRACE = &quot;the stacktrace&quot;
+  
+  val SpecExecutionAcceptor acceptor = mock(typeof(SpecExecutionAcceptor))
+  
+  fact &quot;parses successfull specs from xml&quot;{ 
+    '''
+      &lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;&laquo;NAME&raquo;&quot;/&gt;
+    '''.toXml.parse 
+    
+    verify(acceptor).accept(passingSpec)
+  }
+  
+  fact &quot;parses specs with failure from xml&quot;{ 
+    '''
+       &lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;&laquo;NAME&raquo;&quot;&gt;
+        &lt;failure message=&quot;&laquo;FAILURE_MESSAGE&raquo;&quot; type=&quot;&laquo;FAILURE_TYPE&raquo;&quot;&gt;&laquo;STACKTRACE&raquo;&lt;/failure&gt;
+       &lt;/testcase&gt;
+    '''.toXml.parse 
+    
+    verify(acceptor).accept(failingSpec)
+  }
+  
+  fact &quot;parses specs with error from xml&quot;{ 
+    '''
+       &lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;&laquo;NAME&raquo;&quot;&gt;
+        &lt;error message=&quot;&laquo;FAILURE_MESSAGE&raquo;&quot; type=&quot;&laquo;FAILURE_TYPE&raquo;&quot;&gt;&laquo;STACKTRACE&raquo;&lt;/error&gt;
+       &lt;/testcase&gt;
+    '''.toXml.parse 
+    
+    verify(acceptor).accept(failingSpec)
+  }
+  
+  fact &quot;parses multiple spec results&quot;{ 
+    '''
+       &lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;&laquo;NAME&raquo;&quot;/&gt;
+       &lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;&laquo;NAME&raquo;&quot;&gt;
+        &lt;error message=&quot;&laquo;FAILURE_MESSAGE&raquo;&quot; type=&quot;&laquo;FAILURE_TYPE&raquo;&quot;&gt;&laquo;STACKTRACE&raquo;&lt;/error&gt;
+       &lt;/testcase&gt;
+    '''.toXml.parse 
+    
+    verify(acceptor).accept(passingSpec)
+    verify(acceptor).accept(failingSpec)
+  }
+  
+  def passingSpec(){
+    newSpecExecution()
+  }
+  
+  def failingSpec(){
+    newSpecExecution(new SpecFailure(&quot;a message&quot;, &quot;java.lang.AssertionError&quot;, &quot;the stacktrace&quot;))
+  }
+  
+  def newSpecExecution(SpecFailure... failures){
+    new SpecExecution(CLASSNAME, NAME, EXECUTION_TIME, failures)
+  }
+  
+  def toXml(CharSequence content)'''
+    &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+    &lt;testsuite failures=&quot;1&quot; time=&quot;0.017&quot; errors=&quot;0&quot; skipped=&quot;0&quot; tests=&quot;1&quot; name=&quot;example.AddingValuesSpec&quot;&gt;
+      &laquo;content&raquo;
+    &lt;/testsuite&gt;  
+  '''
+  
+  def parse(CharSequence content){
+    subject.parse(new StringInputStream(content.toString), acceptor)
+  }
+}
+</pre>
+						    </p></div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
+		<footer>
+			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
+		</footer>
+	</div> <!-- /container -->
+
+</body>
+</html>
