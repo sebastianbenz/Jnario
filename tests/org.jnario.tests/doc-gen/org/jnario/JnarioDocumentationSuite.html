@@ -6,28 +6,35 @@
 <meta name="description" content="">
 <meta name="author" content="Jnario">
 
-<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
 <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-<!-- Le styles -->
 <link rel="stylesheet" href="../../css/bootstrap.min.css">
 <link rel="stylesheet" href="../../css/bootstrap-responsive.min.css">
 <link rel="stylesheet" href="../../css/custom.css">
 <link rel="stylesheet" href="../../css/prettify.css">
 <script type="text/javascript" src="../../js/prettify.js"></script>
 <script type="text/javascript" src="../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript" src="../../js/bootstrap-tab.js"></script>
 </head>
 
 <body onload="prettyPrint()">
 	<div class="container">
-		<div class="content">
-			<div class="page-header">
-				<h1>Jnario Documentation</h1>
-			</div>
-			<div class="row">
-				<div class="span12">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header">
+					  <ul class="nav nav-tabs pull-right">
+					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+					<h1>Jnario Documentation</h1>
+				</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
 <span id="Installation"><h2>Installation</h2></span>
 <ul>
 	<li><a href="../../org/jnario/jnario/documentation/InstallingJnarioSpec.html">Installing Jnario</a>: how to install Jnario.</li>
@@ -65,15 +72,94 @@
 </ul>
 <span id="Support"><h2>Support</h2></span>
 <p>The best place to ask questions about Jnario is the <a href="https://groups.google.com/forum/?fromgroups#!forum/jnario">mailing list</a>. You can file bug reports or feature requests at <a href="https://github.com/bmwcarit/Jnario/issues">Github</a>.</p>
-				</div>
-			</div>
-		</div> <!-- /content -->
+							</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>Documentation.suite</h3>
+						    	<p>
+<pre class="prettyprint lang-suite linenums">
+/*******************************************************************************
+ * Copyright (c) 2011 itemis AG (http://www.itemis.eu) and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
+package org.jnario
+
+import org.jnario.spec.tests.documentation.*
+import org.jnario.feature.documentation.*
+import org.jnario.suite.documentation.*
+import org.jnario.jnario.tests.unit.jnario.*
+import org.jnario.spec.tests.integration.*
+import org.jnario.feature.tests.integration.*
+import org.jnario.jnario.tests.integration.*
+import org.jnario.feature.tests.unit.linking.*
+import org.jnario.jnario.documentation.*
+import spec.tests.integration.*
+import org.jnario.spec.tests.integration.*
+
+#Jnario Documentation
+
+##Installation
+
+  - &quot;Installing Jnario&quot;: how to install Jnario.
+
+##Getting Started
+
+Learn how to write specifications in Jnario. 
+
+  - &quot;Introducing Jnario Features&quot;:  how to write cucumber\-style executables 
+       acceptance specifications.
+  - &quot;Introducing Jnario Specs&quot;:  how to write specifications.
+  - &quot;Introducing Jnario Suites&quot;:  Orchestrate and document the execution of 
+       your specs and features.
+  - &quot;20 Facts about Xtend&quot;:  all you need to know about Xtend to effectively 
+       use Jnario.
+   
+##Common Concepts
+
+Features and concepts that are common to all Jnario languages. 
+
+  - &quot;Extension Library&quot;:  helpful extension methods provided by Jnario.
+  - &quot;Using Should&quot;:  writing expressive assertions with the build in 
+       should operator.
+  - &quot;Customizing the Spec Creation&quot;:  how to customize the spec 
+       creation process.
+  - &quot;Using Xtend\'s with Operator&quot;:  how to define nested assertions.
+  
+  
+  
+##Features
+
+More about writing acceptance specifications in Jnario.
+
+  - &quot;Setup &amp; Teardown with Feature Extensions&quot;: define setup and teardown operations in Features.
+  - &quot;Using JUnit Rules in Features&quot; 
+  - &quot;Referencing other Steps&quot;: more facts about referencing other steps.
+
+##Specs
+
+More about writing specifications in Jnario.
+
+  - &quot;Spec Extensions&quot;: reuse setup and teardown operations in different specs.
+   - &quot;Implicit Subject&quot;: let Jnario automatically create the spec's subject for you.
+  - &quot;Using Tables&quot;:  define test data sets in tables.
+  - &quot;Using JUnit Rules in Specs&quot;
+  
+## Support
+
+The best place to ask questions about Jnario is the [mailing list](https://groups.google.com/forum/?fromgroups\#!forum/jnario). You can file bug reports or feature requests at [Github](https://github.com/bmwcarit/Jnario/issues).
+</pre>
+						    </p></div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
 		<footer>
 			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
 		</footer>
-
-	</div>
-	<!-- /container -->
+	</div> <!-- /container -->
 
 </body>
 </html>

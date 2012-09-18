@@ -6,30 +6,37 @@
 <meta name="description" content="">
 <meta name="author" content="Jnario">
 
-<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
 <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-<!-- Le styles -->
 <link rel="stylesheet" href="../../../../../css/bootstrap.min.css">
 <link rel="stylesheet" href="../../../../../css/bootstrap-responsive.min.css">
 <link rel="stylesheet" href="../../../../../css/custom.css">
 <link rel="stylesheet" href="../../../../../css/prettify.css">
 <script type="text/javascript" src="../../../../../js/prettify.js"></script>
 <script type="text/javascript" src="../../../../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../../../js/bootstrap-tab.js"></script>
 </head>
 
 <body onload="prettyPrint()">
 	<div class="container">
-		<div class="content">
-			<div class="page-header">
-				<h1>Introducing Jnario Specs</h1>
-			</div>
-			<div class="row">
-				<div class="span12">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header">
+					  <ul class="nav nav-tabs pull-right">
+					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+					<h1>Introducing Jnario Specs</h1>
+				</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
 <p>This tutorial gives you an introduction on how to write specifications with Jnario. Jnario Specs are based on <a href="http://www.xtend-lang.org">Xtend</a>. it might be a good idea to read the Xtend <a href="http://www.eclipse.org/xtend/documentation/index.html">documentation</a> as well, because Jnario's expressions, fields, methods and extensions work exactly as in Xtend.</p><h3>Installation &amp; Runtime Library</h3><p>Jnario currently requires <a href="http://www.eclipse.org">Eclipse</a> 3.5 or higher with <a href="http://www.xtext.org">Xtext</a> 2.3,  and a Java SDK version 5 or above. You can install the most recent version from this update site: <code>http://www.jnario.org/updates/snapshot/</code>. Jnario requires a small runtime library that contains the JUnit integration. You can download the jar <a href="http://jnario.org/updates/snapshot/org.jnario.lib-0.1.0-SNAPSHOT.jar">here</a>.</p>
-<h2 id="How_to_write_a_Specification">How to write a Specification</h2>
+<h3 id="How_to_write_a_Specification">How to write a Specification</h3>
 <p>To get started create a new specification using the spec wizard (<strong>File</strong> -&gt; <strong>New</strong> -&gt; <strong>Other</strong> -&gt; <strong>Jnario</strong> -&gt; <strong>Spec</strong>).</p>
 <p align="center"><img src="/img/tutorial/spec_wizard.png" alt="New Spec Wizard"/></p><p>In Jnario we <em>describe facts</em> about our program. Here are two simple facts about a stack:</p>
 <pre class="prettyprint lang-spec">
@@ -47,7 +54,7 @@ describe "A Stack"{
 <pre class="prettyprint lang-spec">
   pending fact assert 1 != 2
 </pre><p><span class="label label-info">Info</span> Declaring and importing other packages works similar to Xtend (static imports work as well).</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 package demo
 
 import java.util.Stack
@@ -75,7 +82,7 @@ describe "A Stack"{
 <pre class="prettyprint lang-none">A Stack
   - new Stack().size should be 0
   - increases its size when pushing an element</pre><p><span class="label label-important">Important</span> Facts without description can only have a single statement. If you need more statements, you should add a description.</p><p>Here is the updated version of our specification:</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 package demo
 
 import java.util.Stack
@@ -90,7 +97,7 @@ describe &quot;A Stack&quot;{
 }</pre>
 </li><li><p id="Using_Fields"><strong>Using Fields</strong></p>
 <p>In the previous specification we have a little redundancy: the creation of the Stack. We can get rid of it by creating a field for the Stack. Declaring fields works exactly as in <a href="http://www.eclipse.org/xtend/documentation/index.html#fields">Xtend</a>.</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 package demo
 
 import java.util.Stack
@@ -116,7 +123,7 @@ describe Stack{
   ...
 }
 </pre><p>This way you achieve a strong link between specification and its target that works even if the target class is renamed. Jnario will also implicitly create a field called <code>subject</code> of the target type (<a href="/org/jnario/spec/tests/integration/ImplicitSubjectSpec.html">more...</a>). Therefore we can get rid of the subject field in our stack specification.</p><p><span class="label label-important">Important</span> The implicit subject works only if the target class has a default constructor without any arguments, but it is also possible to use Guice or other frameworks to automatically create the subjects (<a href="/org/jnario/spec/tests/integration/SpecInstantiationSpec.html">more...</a>).</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 package demo
 
 import java.util.Stack
@@ -139,7 +146,7 @@ Stack
     - pop decreases size
     - pop removes last element"
 </pre><p>In this example we also use the <code>throws</code> statement in <code>subject.pop throws EmptyStackException</code>. It fails if the previous statement does not throw an instance of the specified exception.</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 package demo
         
 import java.util.Stack
@@ -191,7 +198,7 @@ java.lang.AssertionError: additions failed
 </li><li><p id="Generating_Documentation"><strong>Generating Documentation</strong></p>
 <p>Jnario can generate html documents from your specifications. The documentation will be generated automatically when you create a folder <code>doc-gen</code> in the project root. You can further extend the documentation by enriching your specification with Javadoc like comments. You can even use <a href="http//daringfireball.net/projects/markdown/">Markdown Syntax</a> to format your specifications.</p>
 <p align="center"><a href="/img/tutorial/doc_stack_example.png"><img src="/img/tutorial/doc_stack_example_small.png" alt="Generated documentation for the stack specification"/></a></p><p>This tutorial has actually been generated from a <a href="https://github.com/bmwcarit/Jnario/blob/master/org.jnario.tests/src/org/jnario/spec/tests/documentation/SpecTutorial.spec">specification</a>.</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 package demo
               
 import java.util.Stack
@@ -236,7 +243,7 @@ describe Stack{
 	after
 	after all
 </pre>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 describe &quot;Setup &amp; Teardown&quot; {
   before all{
     println(&quot;before all&quot;)
@@ -285,14 +292,14 @@ openDatabaseConnection
 query: SELECT * FROM content
 closeDatabaseConnection
 </pre>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 describe &quot;Spec Extensions&quot;{
   extension DatabaseExtension db = new DatabaseExtension
   fact query(&quot;SELECT * FROM content&quot;)        
 }</pre>
 </li><li><p id="Helper_methods"><strong>Helper methods</strong></p>
 <p>Helper methods can be directly declared in Jnario files. They have the same syntax as in Xtend. Helper methods and fields can also be defined in nested contexts.</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 describe &quot;Helper Methods &amp; Fields&quot;{
   String subject = &quot;World&quot; 
   fact &quot;can access fields and methods&quot;{
@@ -312,24 +319,24 @@ describe &quot;Helper Methods &amp; Fields&quot;{
   }
 }</pre>
 </li></ul>
-<h2 id="Writing_Assertions">Writing Assertions</h2>
+<h3 id="Writing_Assertions">Writing Assertions</h3>
 <p>Jnario provides different statements for writing assertions (<a href="/org/jnario/spec/tests/integration/AssertionSpec.html">more...</a>).</p>
 <ul><li><p id="assert"><strong>'assert'</strong></p>
 <p>The <code>assert</code> statement fails if the following expression does not evaluate to <code>true</code>.</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 assert true
 assert new Stack().empty
 assert &quot;Hello&quot;.startsWith(&quot;H&quot;)</pre>
 </li><li><p id="should_and"><strong>'should' and `=>`</strong></p>
 <p>If you want to express how an object should behave, you can use <code>should</code>. It passes if the result of the left expression is equal to the result of the right expression. You can also use <code>not</code> to assert that both expressions have different results. You have already seen the short cut <code>=&gt;</code> which has the same effect as <code>should be</code>.</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 true should be true
 false =&gt; false
 1 + 1 should not be 1 
 1 + 1 =&gt; 2</pre>
 </li><li><p id="Self_explaining_failures"><strong>Self-explaining failures</strong></p>
 <p>Assertions in Jnario are self-explainable. When an assertion fails, it tries to provide as much information about the reason of its failure as possible. It will print the exact expression that has failed together with the actual value of all subexpressions. This means that you don't need to debug a test to see why it actually has failed.</p>
-<pre class="prettyprint lang-spec">
+<pre class="prettyprint lang-spec linenums">
 val x = 0 
 val y = 1 
 errorMessage[assert x == 1 &amp;&amp; y == 0].is('''
@@ -345,15 +352,589 @@ errorMessage[greeting.toUpperCase should not be &quot;HELLO&quot;].is('''
        greeting.toUpperCase is &quot;HELLO&quot;
        greeting is &quot;hello&quot;''')</pre>
 </li></ul>
-				</div>
-			</div>
-		</div> <!-- /content -->
+							</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>SpecTutorial.spec</h3>
+						    	<p>
+<pre class="prettyprint lang-spec linenums">
+/*******************************************************************************
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
+package org.jnario.spec.tests.documentation
+
+import static extension org.jnario.jnario.test.util.Helpers.*
+import static extension org.jnario.lib.Each.*
+import static extension org.jnario.lib.Should.*
+import static extension org.jnario.jnario.test.util.SpecExecutor.*
+import java.util.Stack
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SpecTestCreator
+import org.jnario.jnario.test.util.BehaviorExecutor
+import com.google.inject.Inject
+ 
+/*
+ * This tutorial gives you an introduction on how to write specifications with Jnario.
+ * Jnario Specs are based on [Xtend](http://www.xtend-lang.org). it might be a good idea
+ * to read the Xtend [documentation](http://www.eclipse.org/xtend/documentation/index.html) as well, 
+ * because Jnario's expressions, fields, methods and extensions work exactly as in Xtend.
+ *  
+ * ### Installation &amp; Runtime Library
+ *
+ * Jnario currently requires [Eclipse](http://www.eclipse.org) 3.5 or higher with [Xtext](http://www.xtext.org) 2.3, 
+ *  and a Java SDK version 5 or above. You can install the most recent version from this update site: 
+ * `http://www.jnario.org/updates/snapshot/`. Jnario requires a small runtime library that contains
+ * the JUnit integration. You can download the jar 
+ * [here](http://jnario.org/updates/snapshot/org.jnario.lib-0.1.0-SNAPSHOT.jar).
+ *    
+ */ 
+@CreateWith(typeof(SpecTestCreator))
+describe &quot;Introducing Jnario Specs&quot;{
+
+  /*
+   * To get started create a new specification using the spec wizard
+   * (**File** -&gt; **New** -&gt; **Other** -&gt; **Jnario** -&gt; **Spec**).
+   * 
+   * &lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/img/tutorial/spec_wizard.png&quot; alt=&quot;New Spec Wizard&quot;/&gt;&lt;/p&gt; 
+   * 
+   * In Jnario we *describe facts* about our program. Here are two simple facts about a stack:
+   * 
+   * &lt;pre class=&quot;prettyprint lang-spec&quot;&gt;
+   * describe &quot;A Stack&quot;{
+   *   fact &quot;initial size is 0&quot; 
+   *   fact &quot;increases its size when pushing an element&quot;
+   * }
+   * &lt;/pre&gt;
+   *  
+   * To execute this specification, right click
+   * in the editor and select **Run As** -&gt; **JUnit Test**. 
+   * The specification will
+   * pass, but the facts in our specification will be marked as _PENDING_ as they are not implemented yet.
+   * 
+   * &lt;pre class=&quot;prettyprint lang-none&quot;&gt;A Stack
+   *   - initial size is 0 [PENDING]
+   *   - increases its size when pushing an element [PENDING]
+   * &lt;/pre&gt;
+   * 
+   * In the background, Jnario automatically translates the stack specification into a JUnit test case `AStackSpec.java` 
+   * in the `xtend-gen` folder.  
+   */
+  describe &quot;How to write a Specification&quot;{
+      @Inject extension BehaviorExecutor
+    /*
+     * The next step is to enrich our facts with the required logic to
+     * check whether our stack behaves as specified. Checks are implemented by adding  
+     * a block expression to your facts.
+     * We use `=&gt;` to describe the expected result of an expression. For 
+     * example, `new Stack.size =&gt; 0` will fail if the size is not `0`.
+     * If we execute our specification we will see that all specifications
+     * pass and that they are not marked as _PENDING_ anymore. You can also mark *facts* explicitly as 
+     * pending using the **pending** keyword: 
+     * 
+     * &lt;pre class=&quot;prettyprint lang-spec&quot;&gt;
+     *   pending fact assert 1 != 2
+     * &lt;/pre&gt;
+     * 
+     * &lt;span class=&quot;label label-info&quot;&gt;Info&lt;/span&gt; Declaring and importing other packages works similar 
+     * to Xtend (static imports work as well). 
+     * 
+     * @filter('''|.executesSuccessfully) 
+     */
+     fact &quot;Checking your facts&quot; {
+        '''
+        package demo
+        
+        import java.util.Stack
+        
+        describe &quot;A Stack&quot;{
+          fact &quot;initial size is 0&quot; {
+            new Stack().size =&gt; 0
+          }
+          fact &quot;increases its size when pushing an element&quot;{
+            val subject = new Stack&lt;String&gt;
+            subject.push(&quot;A String&quot;)
+            subject.size =&gt; 1
+          }
+        }
+        '''.executesSuccessfully
+       }
+       
+       /*
+        * Looking at our first fact:
+        *  
+        * &lt;pre class=&quot;prettyprint lang-spec&quot;&gt;
+        * describe &quot;A Stack&quot;{
+        *   fact &quot;initial size is 0&quot; {
+        *    new Stack().size =&gt; 0
+        *  }
+        *  // ... 
+        * }
+        * &lt;/pre&gt;
+        *   
+        * we see that the string description looks pretty similar to the actual code.
+        * We can make this even more obvious by replacing `new Stack().size =&gt; 0` 
+        * with `new Stack().size should be 0`, using the more descriptive `should be`
+        * assertion &#147;instead of `=&gt;`. In Jnario you can avoid such redundancies between code 
+        * and description by leaving the description out. The code becomes 
+        * the actual description:
+        * 
+        * &lt;pre class=&quot;prettyprint lang-none&quot;&gt;A Stack
+        *   - new Stack().size should be 0
+        *   - increases its size when pushing an element&lt;/pre&gt;
+        *  
+        * &lt;span class=&quot;label label-important&quot;&gt;Important&lt;/span&gt; Facts without description
+        * can only have a single statement. If you need more statements, you should 
+        * add a description. 
+        * 
+        * Here is the updated version of our specification:
+        * 
+        * @filter('''|.executesSuccessfully) 
+        */ 
+       fact &quot;Less boilerplate&quot;{
+         '''
+        package demo
+        
+        import java.util.Stack
+        
+        describe &quot;A Stack&quot;{
+          fact new Stack().size should be 0
+          fact &quot;increases its size when pushing an element&quot;{
+            val subject = new Stack&lt;String&gt;
+            subject.push(&quot;A String&quot;)
+            subject.size =&gt; 1
+          }
+        }
+          '''.executesSuccessfully
+       }
+       
+       /* 
+        * In the previous specification we have a little redundancy:
+        * the creation of the Stack. We can get rid of it by creating 
+        * a field for the Stack. Declaring fields works exactly as in
+        * [Xtend](http://www.eclipse.org/xtend/documentation/index.html#fields).
+        * 
+        * @filter('''|.executesSuccessfully)  
+        */
+       fact &quot;Using Fields&quot;{
+         '''
+          package demo
+          
+          import java.util.Stack
+          
+          describe &quot;A Stack&quot;{
+            Stack&lt;String&gt; subject = new Stack&lt;String&gt;
+            fact &quot;initially empty&quot; {
+              subject.size =&gt; 0
+            }
+            fact &quot;increases its size when pushing an element&quot;{
+              subject.push(&quot;A String&quot;)
+              subject.size =&gt; 1
+            }
+          }
+          '''.executesSuccessfully
+       }
+       
+       /* 
+        * In our example we specify the behavior
+        * of a single class, which is actually a common use case. In Jnario you can 
+        * directly reference the specified class in the _describe_ clause:
+        * 
+        * &lt;pre class=&quot;prettyprint lang-spec&quot;&gt;  
+        * package demo
+        * 
+        * import java.util.Stack
+        * 
+        * describe Stack{
+        *   ...
+        * }
+        * &lt;/pre&gt;
+        * This way you achieve a strong link between specification
+        * and its target that works even if the target class is renamed.  
+        * Jnario will also implicitly create a field called `subject` of
+        * the target type ([more...](/org/jnario/spec/tests/integration/ImplicitSubjectSpec.html)). Therefore we can get rid of the subject field in
+        * our stack specification. 
+        * 
+        * &lt;span class=&quot;label label-important&quot;&gt;Important&lt;/span&gt; The implicit subject works
+        * only if the target class has a default constructor without any arguments, but it 
+        * is also possible to use Guice or other frameworks to automatically create
+        * the subjects ([more...](/org/jnario/spec/tests/integration/SpecInstantiationSpec.html)).
+        * 
+        *
+        * @filter('''|.executesSuccessfully)  
+        */
+       fact &quot;Implicit Subjects&quot;{
+         '''
+          package demo
+          
+          import java.util.Stack
+          
+          describe Stack{
+            fact subject.size should be 0
+            fact &quot;increases its size when pushing an element&quot;{
+              subject.push(&quot;A String&quot;)
+              subject.size =&gt; 1
+            }
+          }
+          '''.executesSuccessfully
+       }
+       
+      /*
+       * Sometimes a class behaves differently in different contexts. 
+       * For example, the behavior when calling pop on a stack depends on whether 
+       * the stack is empty or not. You can define
+       * contexts within Jnario specs to further structure your facts:
+       * 
+       * &lt;pre class=&quot;prettyprint lang-none&quot;&gt;
+       * Stack
+     *   when empty
+     *     - subject.size =&gt; 0
+     *     - subject.pop throws EmptyStackException
+     *   with elements
+     *     - pop decreases size
+     *     - pop removes last element&quot;
+       * &lt;/pre&gt;
+       * 
+       * In this example we also use the `throws` statement in 
+       * `subject.pop throws EmptyStackException`. It fails
+       * if the previous statement does not throw an instance of the 
+       * specified exception.
+       * 
+     * @filter('''|.executesSuccessfully) 
+     */
+     fact &quot;Defining Contexts&quot; {
+        ''' 
+      package demo
+              
+      import java.util.Stack
+      import java.util.EmptyStackException
+      
+      describe Stack{
+        context &quot;when empty&quot;{
+          fact subject.size =&gt; 0
+          fact subject.pop throws EmptyStackException
+        }
+        context &quot;with elements&quot;{
+          before subject.add(&quot;an element&quot;)
+          fact &quot;pop decreases size&quot;{
+            subject.pop
+            subject.size =&gt; 0
+          }  
+          fact &quot;pop removes last element&quot;{
+            subject.pop =&gt; &quot;an element&quot;
+          }    
+        }
+      }
+        '''.executesSuccessfully
+       }
+ 
+    /*
+     * You can structure your example data in tables. The
+     * type of each column will be automatically inferred from
+     * all column values. A cell in a table can have an arbitrary 
+     * non-void expression as a value. You can perform assertions 
+     * on tables using the `forEach` extension method:
+     * 
+     * &lt;pre class=&quot;prettyprint lang-spec&quot;&gt;
+     * describe &quot;Addition&quot; {
+     *   def additions{
+     *     | a | b | sum |
+     *     | 0 | 0 |  0  |
+     *     | 1 | 2 |  3  |
+     *     | 4 | 5 |  9  | 
+     *  }
+     *  fact additions.forEach[a + b should be sum]
+     * }
+     * &lt;/pre&gt; 
+     * 
+     * The `forEach` extension method expects a closure as argument. 
+     * Within the closure you can directly access all values in a row 
+     * by their column name. The great thing about example tables is that
+     * they will give you detailed error messages when one of the 
+     * assertions fails ([more...](/org/jnario/spec/tests/integration/SpecsExampleTablesSpec.html)):
+     * 
+     * &lt;pre class=&quot;prettyprint lang-none&quot;&gt;
+     * java.lang.AssertionError: additions failed
+     * 
+     *         | a     | b     | sum     |
+     *         | 0     | 0     | 0       | OK
+     *         | 1     | 2     | 4       | FAILED     (1)
+     *         | 4     | 5     | 9       | OK
+     * 
+     * (1) Expected a + b should be sum but
+     *          a + b is 3
+     *          a is 1
+     *          b is 2
+     *          sum is 4
+     * &lt;/pre&gt;
+     * 
+     * @filter(.*) 
+     */        
+    fact &quot;Example Tables&quot;{
+      '''
+      package demo 
+      
+      describe &quot;Addition&quot; {
+        def additions{
+          | a | b | sum |
+          | 0 | 0 |  0  |
+          | 1 | 2 |  3  |
+          | 4 | 5 |  9  |
+        }
+        fact additions.forEach[a + b should be sum]
+      }
+      '''.executesSuccessfully
+    } 
+
+    /* 
+     * Jnario can generate html documents from your specifications. The documentation will
+     * be generated automatically when you create a folder `doc-gen` in the project root.
+     * You can further extend the documentation by enriching your specification with 
+     * Javadoc like comments. You can even use [Markdown Syntax](http//daringfireball.net/projects/markdown/) 
+     * to format your specifications.
+     *
+     * &lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;/img/tutorial/doc_stack_example.png&quot;&gt;&lt;img src=&quot;/img/tutorial/doc_stack_example_small.png&quot; alt=&quot;Generated documentation for the stack specification&quot;/&gt;&lt;/a&gt;&lt;/p&gt;  
+     * 
+     * This tutorial has actually been generated from a [specification](https://github.com/bmwcarit/Jnario/blob/master/org.jnario.tests/src/org/jnario/spec/tests/documentation/SpecTutorial.spec).
+     * 
+     * @filter('''|.executesSuccessfully) 
+     */
+     fact &quot;Generating Documentation&quot; {
+        '''
+      package demo
+                    
+      import java.util.Stack
+      import java.util.EmptyStackException
+      
+      /*
+       * In computer science, a **stack** is a last in, first out 
+       * (LIFO) abstract data type and linear data structure. A 
+       * stack can have any abstract data type as an element, 
+       * but is characterized by two fundamental operations, 
+       * called push and pop. 
+       * (source [Wikipedia](http://en.wikipedia.org/wiki/Stack)).
+       */
+      describe Stack{
+        context &quot;when empty&quot;{
+          fact subject.size =&gt; 0
+          fact subject.pop throws EmptyStackException
+        }
+        /*
+         * A stack with a single element: &quot;an element&quot;.
+         */
+        context &quot;with elements&quot;{
+          before subject.add(&quot;an element&quot;)
+          fact &quot;pop decreases size&quot;{
+            subject.pop
+            subject.size =&gt; 0
+          }  
+          fact &quot;pop removes last element&quot;{
+            subject.pop =&gt; &quot;an element&quot;
+          }    
+        }
+      } 
+        '''.executesSuccessfully
+       }
+    
+
+    /*
+     * Setting up a fixture or tearing it down works similar to JUnit,
+     * but the syntax is less verbose. The following specification will print:
+     * 
+     * &lt;pre class=&quot;prettyprint lang-none&quot;&gt;
+     *   before all
+     *   before
+     *   do stuff
+     *   after
+     *   before
+     *   do more stuff
+     *   after
+     *   after all
+     * &lt;/pre&gt;
+     * 
+     * @filter('''|.executesSuccessfully) 
+     */ 
+    fact &quot;Setup &amp; Teardown&quot;{ 
+        '''
+          describe &quot;Setup &amp; Teardown&quot; {
+            before all{
+              println(&quot;before all&quot;)
+            }  
+            before{
+              println(&quot;before&quot;)
+            }
+            fact &quot;should do stuff&quot; {
+              println(&quot;do stuff&quot;)
+            }
+            fact &quot;should do more stuff&quot; {
+              println(&quot;do more stuff&quot;)
+            }
+            after{
+              println(&quot;after&quot;)
+            }
+            after all{
+              println(&quot;after all&quot;)
+            }
+          }  
+      '''.executesSuccessfully
+      
+    }
+     
+    /*
+     * When you have to perform the same setup and tear down operations 
+     * for different specs you can use spec extensions.
+     * For example, we need to open and close a database connection before and 
+     * after each test case. With Jnario you can encapsulate these operations 
+     * into a separate class and use the normal JUnit @before and @after annotations
+     * to mark the methods that should be executed before and after a spec run. 
+     *
+     *  package demo
+     *  
+     *  import org.junit.Before
+     *  import org.junit.After
+     *  
+     *  class DatabaseExtension {
+     *    @Before
+     *    def void openDatabaseConnection(){
+     *      println(&quot;openDatabaseConnection&quot;)
+     *    }
+     *    def query(String statement){
+     *      println(&quot;query: &quot; + statement)
+     *    }
+     *    @After
+     *    def void closeDatabaseConnection(){
+     *      println(&quot;closeDatabaseConnection&quot;)
+     *    }
+     *  }
+     * 
+     * If we create an [extension field](http://www.eclipse.org/xtend/documentation/index.html#Extension_Fields)  
+     * for our database helper class in our spec:
+     * 
+     *   extension DatabaseExtension db = new DatabaseExtension
+     * 
+     * its setup and tear down methods will be automatically executed before and after each fact.  
+     * Due to Xtends extension mechanism, this has the additional benefit that we can directly access all methods in thw
+     * database extension without the field name. 
+     * 
+     * &lt;pre class=&quot;prettyprint lang-none&quot;&gt;
+     * openDatabaseConnection
+     * query: SELECT * FROM content
+     * closeDatabaseConnection
+     * &lt;/pre&gt;
+     * 
+     * @filter('''|.executesSuccessfully) 
+     */
+    fact &quot;Spec extensions&quot;{
+      '''
+      describe &quot;Spec Extensions&quot;{
+        extension DatabaseExtension db = new DatabaseExtension
+        fact query(&quot;SELECT * FROM content&quot;)        
+      }
+      '''
+    }
+ 
+    /*
+     * Helper methods can be directly declared in Jnario files. 
+     * They have the same syntax as in Xtend. Helper methods and fields
+     * can also be defined in nested contexts. 
+     * 
+     * @filter('''|.executesSuccessfully) 
+     */
+     fact &quot;Helper methods&quot;{
+      '''
+        describe &quot;Helper Methods &amp; Fields&quot;{
+          String subject = &quot;World&quot; 
+          fact &quot;can access fields and methods&quot;{
+            subject.greeting =&gt; &quot;Hello World&quot;
+          }
+          def greeting(String s){
+            return &quot;Hello &quot; + s
+          }
+          context &quot;shouting&quot;{
+            String emphasize = &quot;!&quot; 
+            fact &quot;can access fields and methods from parent&quot;{
+               subject.greeting.shout =&gt; &quot;HELLO WORLD!&quot;
+            }
+            def shout(String s){
+              return s.toUpperCase + emphasize
+            }
+          }
+        }
+        '''.executesSuccessfully
+     }
+  
+  }    
+ 
+  /*
+   * Jnario provides different statements for writing assertions ([more...](/org/jnario/spec/tests/integration/AssertionSpec.html)).
+   */
+  describe &quot;Writing Assertions&quot;{
+  
+    /*
+     * The `assert` statement fails if 
+     * the following expression does not evaluate to `true`.
+     */
+    fact &quot;'assert'&quot;{
+      assert true
+      assert new Stack().empty
+      assert &quot;Hello&quot;.startsWith(&quot;H&quot;)
+    }
+
+    /*
+     * If you want to express how an object should behave, you can use  
+     * `should`. It passes if the result of the left expression is 
+     * equal to the result of the right expression. You can also use `not` to 
+     * assert that both expressions have different results. You have already seen 
+     * the short cut `=&gt;` which has the same effect as `should be`.
+     */  
+    fact &quot;'should' and `=&gt;`&quot;{
+      true should be true
+      false =&gt; false
+      1 + 1 should not be 1 
+      1 + 1 =&gt; 2 
+    }   
+    
+    /*
+     * Assertions in Jnario are self-explainable. When an assertion fails, it tries to 
+     * provide as much information about the reason of its failure as possible. It will 
+     * print the exact expression that has failed together with the actual value
+     * of all subexpressions. This means that you don't need to debug a test to 
+     * see why it actually has failed.
+     */
+    fact &quot;Self-explaining failures&quot;{
+      val x = 0 
+      val y = 1 
+      errorMessage[assert x == 1 &amp;&amp; y == 0].is('''
+        Expected x == 1 &amp;&amp; y == 0 but
+             x == 1 is &lt;false&gt;
+             x is &lt;0&gt;
+             y == 0 is &lt;false&gt;
+             y is &lt;1&gt;''')
+             
+      val greeting = &quot;hello&quot;        
+      errorMessage[greeting.toUpperCase should not be &quot;HELLO&quot;].is('''
+        Expected greeting.toUpperCase should not be &quot;HELLO&quot; but
+             greeting.toUpperCase is &quot;HELLO&quot;
+             greeting is &quot;hello&quot;''')    
+    }
+    
+  }
+  
+  
+}
+</pre>
+						    </p></div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
 		<footer>
 			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
 		</footer>
-
-	</div>
-	<!-- /container -->
+	</div> <!-- /container -->
 
 </body>
 </html>
