@@ -39,19 +39,19 @@
 <h3  id="Scenario_Add_two_numbers">Scenario: Add two numbers
 </h3>
 <ul>
-<li><p><strong>Given</strong> I have entered <code>"50"</code> into the calculator</p>
+<li><p><strong>Given</strong> I have entered <code>"50"</code> into the calculator [PENDING]</p>
 <ul>
-<li><p><strong>And</strong> I have entered <code>"70"</code> into the calculator</p>
-<ul>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>When</strong> I press <code>"add"</code></p>
+<li><p><strong>And</strong> I have entered <code>"70"</code> into the calculator [PENDING]</p>
 <ul>
 </ul>
 </li>
-<li><p><strong>Then</strong> the result should be <code>"120"</code></p>
+</ul>
+</li>
+<li><p><strong>When</strong> I press <code>"add"</code> [PENDING]</p>
+<ul>
+</ul>
+</li>
+<li><p><strong>Then</strong> the result should be <code>"120"</code> [PENDING]</p>
 <ul>
 </ul>
 </li>
@@ -62,13 +62,11 @@
 						    	<p>
 <pre class="prettyprint lang-feature linenums">
 /*******************************************************************************
- * Copyright (c) 2012 BMW Car IT and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-import calculator.Calculator
 
 Feature: Addition
 
@@ -77,14 +75,10 @@ Feature: Addition
   I want to be told the sum of two numbers
   
   Scenario: Add two numbers
-    Calculator calculator = new Calculator()
-    Given I have entered &quot;50&quot; into the calculator
-      calculator.enter(args.first)
+   Given I have entered &quot;50&quot; into the calculator
     And I have entered &quot;70&quot; into the calculator
     When I press &quot;add&quot;
-      calculator.press(args.first)
-    Then the result should be &quot;120&quot; 
-      calculator.result =&gt; args.first
+    Then the result should be &quot;120&quot;
 </pre>
 						    </p></div>
 						  </div>
