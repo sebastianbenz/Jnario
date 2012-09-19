@@ -60,7 +60,7 @@ describe Spec2ResultMatcher {
 			example should match passingSpec("example.SomethingSpec", factName, anyExecutionTime)
 		}
 	}
-
+	
 	
 	def should_match(Example example, SpecExecution execution){
 		subject.matches(example, execution) 

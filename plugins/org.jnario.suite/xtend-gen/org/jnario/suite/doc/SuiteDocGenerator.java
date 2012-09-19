@@ -17,6 +17,7 @@ import org.jnario.Specification;
 import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.HtmlFile;
 import org.jnario.doc.HtmlFileBuilder;
+import org.jnario.report.Spec2ResultMapping;
 import org.jnario.suite.jvmmodel.SpecResolver;
 import org.jnario.suite.jvmmodel.SuiteClassNameProvider;
 import org.jnario.suite.suite.Reference;
@@ -36,12 +37,12 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
   @Inject
   private HtmlFileBuilder _htmlFileBuilder;
   
-  public void doGenerate(final Resource input, final IFileSystemAccess fsa) {
+  public void doGenerate(final Resource input, final IFileSystemAccess fsa, final Spec2ResultMapping spec2ResultMapping) {
     EList<EObject> _contents = input.getContents();
     Iterable<SuiteFile> _filter = Iterables.<SuiteFile>filter(_contents, SuiteFile.class);
     final Procedure1<SuiteFile> _function = new Procedure1<SuiteFile>() {
         public void apply(final SuiteFile it) {
-          final HtmlFile htmlFile = SuiteDocGenerator.this.createHtmlFile(it);
+          final HtmlFile htmlFile = SuiteDocGenerator.this.createHtmlFile(it, spec2ResultMapping);
           EList<XtendClass> _xtendClasses = it.getXtendClasses();
           XtendClass _head = IterableExtensions.<XtendClass>head(_xtendClasses);
           SuiteDocGenerator.this._htmlFileBuilder.generate(_head, fsa, htmlFile);
@@ -50,7 +51,7 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
     IterableExtensions.<SuiteFile>forEach(_filter, _function);
   }
   
-  public HtmlFile createHtmlFile(final SuiteFile file) {
+  public HtmlFile createHtmlFile(final SuiteFile file, final Spec2ResultMapping spec2ResultMapping) {
     HtmlFile _xblockexpression = null;
     {
       EList<XtendClass> _xtendClasses = file.getXtendClasses();
@@ -83,7 +84,7 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
     return _xblockexpression;
   }
   
-  public HtmlFile createHtmlFile(final XtendClass file) {
+  public HtmlFile createHtmlFile(final XtendClass file, final Spec2ResultMapping spec2ResultMapping) {
     HtmlFile _xblockexpression = null;
     {
       final Suite suite = ((Suite) file);

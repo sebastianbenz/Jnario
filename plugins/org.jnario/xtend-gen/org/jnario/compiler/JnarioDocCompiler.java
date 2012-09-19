@@ -33,12 +33,31 @@ public class JnarioDocCompiler extends XtendBatchCompiler {
   private AbstractDocGenerator docGenerator;
   
   public boolean compile() {
-    boolean _xblockexpression = false;
+    final ResourceSet resourceSet = this.loadResources();
+    boolean _hasValidationErrors = this.hasValidationErrors(resourceSet);
+    if (_hasValidationErrors) {
+      return false;
+    } else {
+      this.generateDocumentation(resourceSet);
+      return true;
+    }
+  }
+  
+  public ResourceSet loadResources() {
+    ResourceSet _xblockexpression = null;
     {
       final ResourceSet resourceSet = this.loadXtendFiles();
       final File classDirectory = this.createTempDir("classes");
       this.installJvmTypeProvider(resourceSet, classDirectory);
       EcoreUtil.resolveAll(resourceSet);
+      _xblockexpression = (resourceSet);
+    }
+    return _xblockexpression;
+  }
+  
+  public boolean hasValidationErrors(final ResourceSet resourceSet) {
+    boolean _xblockexpression = false;
+    {
       final List<Issue> issues = this.validate(resourceSet);
       final Iterable<Issue> errors = Iterables.<Issue>filter(issues, SeverityFilter.ERROR);
       final Iterable<Issue> warnings = Iterables.<Issue>filter(issues, SeverityFilter.WARNING);
@@ -46,11 +65,7 @@ public class JnarioDocCompiler extends XtendBatchCompiler {
       this.reportIssues(_plus);
       boolean _isEmpty = IterableExtensions.isEmpty(errors);
       boolean _not = (!_isEmpty);
-      if (_not) {
-        return false;
-      }
-      this.generateDocumentation(resourceSet);
-      _xblockexpression = (true);
+      _xblockexpression = (_not);
     }
     return _xblockexpression;
   }

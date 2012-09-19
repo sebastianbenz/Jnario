@@ -26,3 +26,14 @@ class Spec2ResultMapping implements SpecExecutionAcceptor{
 	}
 	
 } 
+
+class NoResultsMapping extends Spec2ResultMapping{
+	
+	new(){
+		super(null)
+	}
+	
+	override SpecExecution getResult(Executable executable){
+		return SpecExecution::NO_EXECUTION
+	}
+}

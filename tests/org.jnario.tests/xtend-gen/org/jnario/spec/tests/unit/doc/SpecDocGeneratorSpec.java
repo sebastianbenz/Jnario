@@ -253,6 +253,27 @@ public class SpecDocGeneratorSpec {
     
   }
   
+  @Test
+  @Named("includes failing state for examples")
+  @Order(99)
+  public void _includesFailingStateForExamples() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("describe \'Example\'{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fact \"should do stuff\"{");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("\"aaabbbaaa\"");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("} ");
+    _builder.newLine();
+    this.generateDoc(_builder);
+  }
+  
   public void generateEmptyExampleDoc() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \'Example\'{");

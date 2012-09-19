@@ -23,6 +23,7 @@ import org.jnario.spec.spec.ExampleGroup
 import org.jnario.doc.HtmlFile
 
 import static org.jnario.util.Strings.*
+import org.jnario.report.Spec2ResultMapping
 
 class SpecDocGenerator extends AbstractDocGenerator {
 
@@ -30,7 +31,7 @@ class SpecDocGenerator extends AbstractDocGenerator {
 	
 	@Inject extension FilterExtractor
 
-	override createHtmlFile(XtendClass xtendClass) {
+	override createHtmlFile(XtendClass xtendClass, Spec2ResultMapping spec2ResultMapping) {
 		if(!(xtendClass instanceof ExampleGroup)){
 			return HtmlFile::EMPTY_FILE
 		}

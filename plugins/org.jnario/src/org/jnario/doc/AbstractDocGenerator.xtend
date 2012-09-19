@@ -26,6 +26,8 @@ import static extension org.eclipse.xtext.util.Strings.*
 import org.apache.commons.lang.StringEscapeUtils
 import static extension org.jnario.util.Strings.*
 import org.apache.log4j.Logger
+import org.jnario.report.Spec2ResultMapping
+import org.jnario.report.NoResultsMapping
 
 abstract class AbstractDocGenerator implements IGenerator {
 
@@ -39,22 +41,30 @@ abstract class AbstractDocGenerator implements IGenerator {
 	@Inject extension DocumentationProvider documentationProvider
 
 	override doGenerate(Resource input, IFileSystemAccess fsa) {
+		doGenerate(input, fsa, new NoResultsMapping)
+	}
+
+	def doGenerate(Resource input, IFileSystemAccess fsa, Spec2ResultMapping spec2ResultMapping) {
 		input.contents.filter(typeof(XtendFile)).forEach[
 			xtendClasses.forEach[
-				generate(fsa, createHtmlFile())
+				generate(fsa, createHtmlFile(spec2ResultMapping))
 			]
 		]
 	}
-
+	
 	def createHtmlFile(XtendClass xtendClass){
+		return createHtmlFile(xtendClass, new NoResultsMapping)
+	}
+
+	def createHtmlFile(XtendClass xtendClass, Spec2ResultMapping spec2ResultMapping){
 		return HtmlFile::EMPTY_FILE
 	}
 
-	def toTitle(String string){
+	def protected toTitle(String string){
 		string.decode.toFirstUpper
 	}
 	
-	def decode(String string){
+	def protected decode(String string){
 		try{
 			if(string == null){
 				return ""
@@ -67,7 +77,7 @@ abstract class AbstractDocGenerator implements IGenerator {
 		}
 	}
 	
-	def markdown2Html(String string){
+	def protected markdown2Html(String string){
 		if(string == null){
 			return ""
 		}
@@ -77,11 +87,11 @@ abstract class AbstractDocGenerator implements IGenerator {
 				.replaceAll("</pre></code>", '</pre>')
 	}
 	
-	def dispatch String serialize(XExpression expr, List<Filter> filters){
+	def protected dispatch String serialize(XExpression expr, List<Filter> filters){
 		return expr.serialize.codeToHtml.trim
 	}
 	
-	def dispatch String serialize(XBlockExpression expr, List<Filter> filters){
+	def protected dispatch String serialize(XBlockExpression expr, List<Filter> filters){
 		var code = expr.serialize.trim
 		code = filters.apply(code)
 		if(code.length == 0){
@@ -91,25 +101,25 @@ abstract class AbstractDocGenerator implements IGenerator {
 		return code.codeToHtml
 	}
 	
-	def String codeToHtml(String code){
+	def protected String codeToHtml(String code){
 		code.normalize.toHtml.replace("\t", "  ")
 	}
 	
-	def toHtml(String input){
+	def protected toHtml(String input){
 		StringEscapeUtils::escapeHtml(input)
 	}
 	
-	def serialize(EObject obj){
+	def protected serialize(EObject obj){
 		val node = NodeModelUtils::getNode(obj)
 		if(node == null) return ""
 		return node.text
 	}
 	
-	def id(String id){
+	def protected id(String id){
 		return ' id="' + id?.replaceAll("\\W+", SEP)?.trim(SEP.charAt(0)) + '"'
 	}
 	
-	def apply(List<Filter> filters, String input){
+	def protected apply(List<Filter> filters, String input){
 		var result = input
 		for(filter : filters){
 			result = filter.apply(result)
@@ -117,7 +127,7 @@ abstract class AbstractDocGenerator implements IGenerator {
 		return result
 	}
 	
-	def root(EObject xtendClass){
+	def protected root(EObject xtendClass){
 		val specFile = EcoreUtil2::getContainerOfType(xtendClass, typeof(XtendFile))
 		val packageName= specFile.^package
 		if(packageName == null){
@@ -128,7 +138,7 @@ abstract class AbstractDocGenerator implements IGenerator {
 		return path.join("")
 	}
 	
-	def generate(ExampleTable table)'''
+	def protected generate(ExampleTable table)'''
 		<table class="table table-striped table-bordered table-condensed">
 			<thead>
 				<tr>
@@ -149,19 +159,19 @@ abstract class AbstractDocGenerator implements IGenerator {
 		</table>
 	'''
 	
-	def htmlFileName(String name){
+	def protected htmlFileName(String name){
 		name.toHtmlFileName
 	}
 	
-	def documentation(EObject obj){
+	def protected documentation(EObject obj){
 		documentationProvider.getDocumentation(obj)
 	}
 	
-	def fileName(EObject eObject){
+	def protected fileName(EObject eObject){
 		eObject.eResource.URI.lastSegment
 	}
 	
-	def pre(EObject eObject, String lang)'''
+	def protected pre(EObject eObject, String lang)'''
 		<pre class="prettyprint «lang» linenums">
 		«eObject.serialize.codeToHtml»
 		</pre>

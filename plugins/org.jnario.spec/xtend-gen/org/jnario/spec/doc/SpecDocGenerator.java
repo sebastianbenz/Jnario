@@ -20,6 +20,7 @@ import org.jnario.doc.Filter;
 import org.jnario.doc.FilterExtractor;
 import org.jnario.doc.FilteringResult;
 import org.jnario.doc.HtmlFile;
+import org.jnario.report.Spec2ResultMapping;
 import org.jnario.spec.naming.ExampleNameProvider;
 import org.jnario.spec.spec.Example;
 import org.jnario.spec.spec.ExampleGroup;
@@ -32,7 +33,7 @@ public class SpecDocGenerator extends AbstractDocGenerator {
   @Inject
   private FilterExtractor _filterExtractor;
   
-  public HtmlFile createHtmlFile(final XtendClass xtendClass) {
+  public HtmlFile createHtmlFile(final XtendClass xtendClass, final Spec2ResultMapping spec2ResultMapping) {
     HtmlFile _xblockexpression = null;
     {
       boolean _not = (!(xtendClass instanceof ExampleGroup));

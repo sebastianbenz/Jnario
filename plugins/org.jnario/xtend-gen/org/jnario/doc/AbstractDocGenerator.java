@@ -38,6 +38,8 @@ import org.jnario.doc.Filter;
 import org.jnario.doc.HtmlFile;
 import org.jnario.doc.HtmlFileBuilder;
 import org.jnario.doc.WhiteSpaceNormalizer;
+import org.jnario.report.NoResultsMapping;
+import org.jnario.report.Spec2ResultMapping;
 import org.pegdown.PegDownProcessor;
 
 @SuppressWarnings("all")
@@ -64,6 +66,11 @@ public abstract class AbstractDocGenerator implements IGenerator {
   private DocumentationProvider documentationProvider;
   
   public void doGenerate(final Resource input, final IFileSystemAccess fsa) {
+    NoResultsMapping _noResultsMapping = new NoResultsMapping();
+    this.doGenerate(input, fsa, _noResultsMapping);
+  }
+  
+  public void doGenerate(final Resource input, final IFileSystemAccess fsa, final Spec2ResultMapping spec2ResultMapping) {
     EList<EObject> _contents = input.getContents();
     Iterable<XtendFile> _filter = Iterables.<XtendFile>filter(_contents, XtendFile.class);
     final Procedure1<XtendFile> _function = new Procedure1<XtendFile>() {
@@ -71,7 +78,7 @@ public abstract class AbstractDocGenerator implements IGenerator {
           EList<XtendClass> _xtendClasses = it.getXtendClasses();
           final Procedure1<XtendClass> _function = new Procedure1<XtendClass>() {
               public void apply(final XtendClass it) {
-                HtmlFile _createHtmlFile = AbstractDocGenerator.this.createHtmlFile(it);
+                HtmlFile _createHtmlFile = AbstractDocGenerator.this.createHtmlFile(it, spec2ResultMapping);
                 AbstractDocGenerator.this._htmlFileBuilder.generate(it, fsa, _createHtmlFile);
               }
             };
@@ -82,16 +89,21 @@ public abstract class AbstractDocGenerator implements IGenerator {
   }
   
   public HtmlFile createHtmlFile(final XtendClass xtendClass) {
+    NoResultsMapping _noResultsMapping = new NoResultsMapping();
+    return this.createHtmlFile(xtendClass, _noResultsMapping);
+  }
+  
+  public HtmlFile createHtmlFile(final XtendClass xtendClass, final Spec2ResultMapping spec2ResultMapping) {
     return HtmlFile.EMPTY_FILE;
   }
   
-  public String toTitle(final String string) {
+  protected String toTitle(final String string) {
     String _decode = this.decode(string);
     String _firstUpper = Strings.toFirstUpper(_decode);
     return _firstUpper;
   }
   
-  public String decode(final String string) {
+  protected String decode(final String string) {
     try {
       boolean _equals = Objects.equal(string, null);
       if (_equals) {
@@ -110,7 +122,7 @@ public abstract class AbstractDocGenerator implements IGenerator {
     }
   }
   
-  public String markdown2Html(final String string) {
+  protected String markdown2Html(final String string) {
     String _xblockexpression = null;
     {
       boolean _equals = Objects.equal(string, null);
@@ -150,19 +162,19 @@ public abstract class AbstractDocGenerator implements IGenerator {
     return this.codeToHtml(code);
   }
   
-  public String codeToHtml(final String code) {
+  protected String codeToHtml(final String code) {
     String _normalize = this._whiteSpaceNormalizer.normalize(code);
     String _html = this.toHtml(_normalize);
     String _replace = _html.replace("\t", "  ");
     return _replace;
   }
   
-  public String toHtml(final String input) {
+  protected String toHtml(final String input) {
     String _escapeHtml = StringEscapeUtils.escapeHtml(input);
     return _escapeHtml;
   }
   
-  public String serialize(final EObject obj) {
+  protected String serialize(final EObject obj) {
     final ICompositeNode node = NodeModelUtils.getNode(obj);
     boolean _equals = Objects.equal(node, null);
     if (_equals) {
@@ -171,7 +183,7 @@ public abstract class AbstractDocGenerator implements IGenerator {
     return node.getText();
   }
   
-  public String id(final String id) {
+  protected String id(final String id) {
     String _replaceAll = id==null?(String)null:id.replaceAll("\\W+", AbstractDocGenerator.SEP);
     char _charAt = AbstractDocGenerator.SEP.charAt(0);
     String _trim = _replaceAll==null?(String)null:org.jnario.util.Strings.trim(_replaceAll, _charAt);
@@ -179,7 +191,7 @@ public abstract class AbstractDocGenerator implements IGenerator {
     return (_plus + "\"");
   }
   
-  public String apply(final List<Filter> filters, final String input) {
+  protected String apply(final List<Filter> filters, final String input) {
     String result = input;
     for (final Filter filter : filters) {
       String _apply = filter.apply(result);
@@ -188,7 +200,7 @@ public abstract class AbstractDocGenerator implements IGenerator {
     return result;
   }
   
-  public String root(final EObject xtendClass) {
+  protected String root(final EObject xtendClass) {
     final XtendFile specFile = EcoreUtil2.<XtendFile>getContainerOfType(xtendClass, XtendFile.class);
     final String packageName = specFile.getPackage();
     boolean _equals = Objects.equal(packageName, null);
@@ -205,7 +217,7 @@ public abstract class AbstractDocGenerator implements IGenerator {
     return IterableExtensions.join(path, "");
   }
   
-  public CharSequence generate(final ExampleTable table) {
+  protected CharSequence generate(final ExampleTable table) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<table class=\"table table-striped table-bordered table-condensed\">");
     _builder.newLine();
@@ -267,24 +279,24 @@ public abstract class AbstractDocGenerator implements IGenerator {
     return _builder;
   }
   
-  public String htmlFileName(final String name) {
+  protected String htmlFileName(final String name) {
     String _htmlFileName = this._htmlFileBuilder.toHtmlFileName(name);
     return _htmlFileName;
   }
   
-  public String documentation(final EObject obj) {
+  protected String documentation(final EObject obj) {
     String _documentation = this.documentationProvider.getDocumentation(obj);
     return _documentation;
   }
   
-  public String fileName(final EObject eObject) {
+  protected String fileName(final EObject eObject) {
     Resource _eResource = eObject.eResource();
     URI _uRI = _eResource.getURI();
     String _lastSegment = _uRI.lastSegment();
     return _lastSegment;
   }
   
-  public CharSequence pre(final EObject eObject, final String lang) {
+  protected CharSequence pre(final EObject eObject, final String lang) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<pre class=\"prettyprint ");
     _builder.append(lang, "");
@@ -299,7 +311,7 @@ public abstract class AbstractDocGenerator implements IGenerator {
     return _builder;
   }
   
-  public String serialize(final XExpression expr, final List<Filter> filters) {
+  protected String serialize(final XExpression expr, final List<Filter> filters) {
     if (expr instanceof XBlockExpression) {
       return _serialize((XBlockExpression)expr, filters);
     } else if (expr != null) {

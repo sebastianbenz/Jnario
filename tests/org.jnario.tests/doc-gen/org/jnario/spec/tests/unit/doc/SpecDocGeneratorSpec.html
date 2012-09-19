@@ -123,6 +123,15 @@ generateDoc('''
 ''')
 val scenarioDoc = generatedFile(&quot;ExampleSpec.html&quot;)
 assert scenarioDoc.contains('aaaaaa')</pre>
+</li><li><p id="includes_failing_state_for_examples"><strong>includes failing state for examples</strong></p>
+<pre class="prettyprint lang-spec linenums">
+generateDoc('''
+  describe 'Example'{
+    fact &quot;should do stuff&quot;{
+      &quot;aaabbbaaa&quot;
+    }
+  } 
+''')</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -244,6 +253,16 @@ describe SpecDocGenerator {
     ''')
     val scenarioDoc = generatedFile(&quot;ExampleSpec.html&quot;)
     assert scenarioDoc.contains('aaaaaa')
+  }
+  
+  fact &quot;includes failing state for examples&quot;{
+    generateDoc('''
+      describe 'Example'{
+        fact &quot;should do stuff&quot;{
+          &quot;aaabbbaaa&quot;
+        }
+      } 
+    ''')
   }
   
   def generateEmptyExampleDoc(){

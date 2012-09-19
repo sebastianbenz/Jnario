@@ -235,6 +235,15 @@ img{
   }
 }
 
+.failed{
+	background-color:#f00;
+	padding: 10px;
+	 -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    border-radius: 10px;
+}
+
 .nav-tabs > li > a{
 	margin-top: 10px;
 	padding-bottom: 2px;

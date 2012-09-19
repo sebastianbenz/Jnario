@@ -25,6 +25,7 @@ import org.jnario.doc.HtmlFile
 
 import static extension org.jnario.util.Strings.*
 import static extension org.eclipse.xtext.util.Strings.*
+import org.jnario.report.Spec2ResultMapping
 
 class SuiteDocGenerator extends AbstractDocGenerator {
 	
@@ -32,14 +33,14 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 	@Inject extension SpecResolver
 	@Inject extension HtmlFileBuilder
 	
-	override doGenerate(Resource input, IFileSystemAccess fsa) {
+	override doGenerate(Resource input, IFileSystemAccess fsa, Spec2ResultMapping spec2ResultMapping) {
 		input.contents.filter(typeof(SuiteFile)).forEach[
-			val htmlFile = createHtmlFile()
+			val htmlFile = createHtmlFile(spec2ResultMapping)
 			xtendClasses.head.generate(fsa, htmlFile)	
 		]
 	}
    
-	def HtmlFile createHtmlFile(SuiteFile file) {
+	def HtmlFile createHtmlFile(SuiteFile file, Spec2ResultMapping spec2ResultMapping) {
 		val suites = file.xtendClasses.filter(typeof(Suite))
 		if(suites.empty) return HtmlFile::EMPTY_FILE
 		val rootSuite = suites.head
@@ -53,7 +54,7 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 		]
 	}
 
-	override HtmlFile createHtmlFile(XtendClass file) {
+	override HtmlFile createHtmlFile(XtendClass file, Spec2ResultMapping spec2ResultMapping) {
 		val suite = file as Suite
 		HtmlFile::newHtmlFile[
 			name = suite.className 

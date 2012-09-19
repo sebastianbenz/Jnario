@@ -22,19 +22,29 @@ class JnarioDocCompiler extends XtendBatchCompiler{
 	@Inject AbstractDocGenerator docGenerator
 	
 	override compile() {
+		val resourceSet = loadResources()
+		if (hasValidationErrors(resourceSet)) {
+			return false;
+		}else{
+			generateDocumentation(resourceSet);
+			return true		
+		}
+	}
+	
+	def loadResources(){
 		val resourceSet = loadXtendFiles()
 		val classDirectory = createTempDir("classes")
-		installJvmTypeProvider(resourceSet, classDirectory);
-		EcoreUtil::resolveAll(resourceSet);
+		installJvmTypeProvider(resourceSet, classDirectory)
+		EcoreUtil::resolveAll(resourceSet)
+		resourceSet
+	}
+	
+	def hasValidationErrors(ResourceSet resourceSet){
 		val issues = validate(resourceSet);
 		val errors = Iterables::filter(issues, SeverityFilter::ERROR);
 		val warnings = Iterables::filter(issues, SeverityFilter::WARNING);
 		reportIssues(errors + warnings);
-		if (!errors.empty) {
-			return false;
-		}
-		generateDocumentation(resourceSet);
-		true
+		!errors.empty 
 	}
 	
 	def generateDocumentation(ResourceSet rs){

@@ -115,6 +115,16 @@ describe SpecDocGenerator {
 		assert scenarioDoc.contains('aaaaaa')
 	}
 	
+	fact "includes failing state for examples"{
+		generateDoc('''
+			describe 'Example'{
+				fact "should do stuff"{
+					"aaabbbaaa"
+				}
+			} 
+		''')
+	}
+	
 	def generateEmptyExampleDoc(){
 		generateDoc('''
 			describe 'Example'{
