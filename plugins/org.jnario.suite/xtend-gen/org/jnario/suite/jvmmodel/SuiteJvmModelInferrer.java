@@ -70,8 +70,8 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
     JvmGenericType _xblockexpression = null;
     {
       final Suite suite = node.getSuite();
-      String _qualifiedClassName = this._suiteClassNameProvider.getQualifiedClassName(suite);
-      final JvmGenericType suiteClass = this._extendedJvmTypesBuilder.toClass(suite, _qualifiedClassName);
+      String _qualifiedJavaClassName = this._suiteClassNameProvider.toQualifiedJavaClassName(suite);
+      final JvmGenericType suiteClass = this._extendedJvmTypesBuilder.toClass(suite, _qualifiedJavaClassName);
       List<SuiteNode> _children = node.getChildren();
       final Function1<SuiteNode,JvmGenericType> _function = new Function1<SuiteNode,JvmGenericType>() {
           public JvmGenericType apply(final SuiteNode it) {
@@ -124,8 +124,8 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
       final Iterable<Specification> specs = IterableExtensions.<Specification>filter(_resolveSpecs, _function);
       final Function1<Specification,String> _function_1 = new Function1<Specification,String>() {
           public String apply(final Specification it) {
-            String _qualifiedClassName = SuiteJvmModelInferrer.this._suiteClassNameProvider.getQualifiedClassName(it);
-            return _qualifiedClassName;
+            String _qualifiedJavaClassName = SuiteJvmModelInferrer.this._suiteClassNameProvider.toQualifiedJavaClassName(it);
+            return _qualifiedJavaClassName;
           }
         };
       final Iterable<String> types = IterableExtensions.<Specification, String>map(specs, _function_1);

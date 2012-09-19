@@ -38,7 +38,7 @@ describe SuiteClassNameProvider {
 		fact examples.forEach[subject.^describe(suite(name)) => expectedClassName]
 	}	
 	
-	context getQualifiedClassName{
+	context "toQualifiedJavaClassName"{
 		def examples{
 			| name 										| packageName 		| qualifiedName		  |
 			| null										| null			  	| null				  |
@@ -48,7 +48,7 @@ describe SuiteClassNameProvider {
 		}
 		
 		fact examples.forEach[
-				val actualName = subject.getQualifiedClassName(suite(name, packageName))
+				val actualName = subject.toQualifiedJavaClassName(suite(name, packageName))
 				actualName => qualifiedName
 			]
 	}

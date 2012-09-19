@@ -41,11 +41,13 @@ import org.jnario.doc.DocOutputConfigurationProvider;
 import org.jnario.generator.JnarioJavaIoFileSystemAccess;
 import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
+import org.jnario.jvmmodel.JnarioNameProvider;
 import org.jnario.jvmmodel.JnarioSignatureHashBuilder;
 import org.jnario.suite.compiler.SuiteBatchCompiler;
 import org.jnario.suite.conversion.SuiteValueConverterService;
 import org.jnario.suite.doc.SuiteDocGenerator;
 import org.jnario.suite.generator.SuiteGenerator;
+import org.jnario.suite.jvmmodel.SuiteClassNameProvider;
 import org.jnario.suite.jvmmodel.SuiteJvmModelInferrer;
 import org.jnario.suite.naming.SuiteQualifiedNameProvider;
 import org.jnario.suite.resource.SuiteResourceDescriptionManager;
@@ -65,6 +67,7 @@ public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeMod
 		super.configure(binder);
 		binder.bind(AbstractDocGenerator.class).to(SuiteDocGenerator.class);
 		binder.bind(SignatureHashBuilder.class).to(JnarioSignatureHashBuilder.class);
+		binder.bind(JnarioNameProvider.class).to(SuiteClassNameProvider.class);
 	}
 	
 	@Override

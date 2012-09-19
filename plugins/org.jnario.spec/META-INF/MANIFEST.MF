@@ -29,7 +29,6 @@ Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.jnario.spec,
  org.jnario.spec.compiler,
  org.jnario.spec.doc,
- org.jnario.spec.report,
  org.jnario.spec.formatting,
  org.jnario.spec.jvmmodel,
  org.jnario.spec.naming,

@@ -1,7 +1,7 @@
 package org.jnario.suite.ui.hover;
 
+import com.google.inject.Inject;
 import java.util.List;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.IRegion;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -10,8 +10,6 @@ import org.jnario.suite.jvmmodel.SpecResolver;
 import org.jnario.suite.jvmmodel.SuiteClassNameProvider;
 import org.jnario.suite.suite.PatternReference;
 import org.jnario.ui.doc.JnarioHoverProvider;
-
-import com.google.inject.Inject;
 
 @SuppressWarnings("all")
 public class SuiteHoverProvider extends JnarioHoverProvider {
@@ -44,7 +42,7 @@ public class SuiteHoverProvider extends JnarioHoverProvider {
       for(final Specification spec : specs) {
         _builder.append("\t");
         _builder.append("<li>");
-        Object _describe = this._suiteClassNameProvider.describe(spec);
+        String _describe = this._suiteClassNameProvider.describe(spec);
         _builder.append(_describe, "	");
         _builder.append("</li>");
         _builder.newLineIfNotEmpty();

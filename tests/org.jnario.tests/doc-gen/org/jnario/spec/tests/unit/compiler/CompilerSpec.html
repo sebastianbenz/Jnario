@@ -18,9 +18,6 @@
 <script type="text/javascript" src="../../../../../../js/lang-jnario.js"></script>
 <script type="text/javascript" src="../../../../../../js/jquery.js"></script>
 <script type="text/javascript" src="../../../../../../js/bootstrap-tab.js"></script>
-<script type="text/javascript" src="../../../../../../js/bootstrap-tooltip.js"></script>
-<script type="text/javascript" src="../../../../../../js/bootstrap-popover.js"></script>
-<script type="text/javascript">$('.has-popover').popover();</script>
 </head>
 
 <body onload="prettyPrint()">
@@ -50,7 +47,7 @@ describe &quot;Something with an expression&quot;{
   }
 }
 '''.executesSuccessfully</pre>
-</li><li><p id="assert_with_multiple_bool_expressions"><strong>assert with multiple bool expressions</strong> <span class="label label-success">Success</span></p>
+</li><li><p id="assert_with_multiple_bool_expressions"><strong>assert with multiple bool expressions</strong></p>
 <pre class="prettyprint lang-spec linenums">
 '''
 describe &quot;Something with an expression&quot;{
@@ -60,9 +57,7 @@ describe &quot;Something with an expression&quot;{
   }
 }
 '''.executesSuccessfully</pre>
-</li><li><div><p id="with_multiple_bool_expressions"><strong>=> with multiple bool expressions</strong> <span class="label label-important">Failed</span>
-<a href="#" class="has-popover btn btn-large btn-danger" rel="popover" data-content="And here's some amazing content. It's very engaging. right?" data-original-title="A Title">Failed</a>
-</p>
+</li><li><p id="with_multiple_bool_expressions"><strong>=> with multiple bool expressions</strong></p>
 <pre class="prettyprint lang-spec linenums">
 '''
 describe &quot;Something with an expression&quot;{
@@ -71,7 +66,7 @@ describe &quot;Something with an expression&quot;{
     (x &gt; 4 &amp;&amp; x &gt; 5) =&gt; true
   }
 }
-'''.executesSuccessfully</pre></div>
+'''.executesSuccessfully</pre>
 </li><li><p id="should_with_multiple_bool_expressions"><strong>should with multiple bool expressions</strong></p>
 <pre class="prettyprint lang-spec linenums">
 '''

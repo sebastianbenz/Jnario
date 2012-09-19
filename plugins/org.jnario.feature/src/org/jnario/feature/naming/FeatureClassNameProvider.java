@@ -10,7 +10,6 @@ package org.jnario.feature.naming;
 import static com.google.common.base.Strings.isNullOrEmpty;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 import static org.jnario.util.Strings.toClassName;
-import static org.eclipse.xtext.util.Strings.*;
 
 import org.eclipse.emf.ecore.EObject;
 import org.jnario.ExampleRow;
@@ -19,6 +18,7 @@ import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
+import org.jnario.jvmmodel.JnarioNameProvider;
 import org.jnario.util.Strings;
 
 import com.google.inject.Inject;
@@ -27,7 +27,7 @@ import com.google.inject.Inject;
  * @author Birgit Engelmann - Initial contribution and API
  * @author Sebastian Benz
  */
-public class FeatureClassNameProvider {
+public class FeatureClassNameProvider extends JnarioNameProvider{
 	
 	private static final String FEATURE_KEYWORD = "Feature";
 	private StepNameProvider stepNameProvider;
@@ -37,7 +37,7 @@ public class FeatureClassNameProvider {
 		this.stepNameProvider = stepNameProvider;
 	}
 
-	public String getClassName(EObject obj) {
+	public String toJavaClassName(EObject obj) {
 		if (obj instanceof Feature) {
 			return getClassName((Feature)obj);
 		}
@@ -85,5 +85,20 @@ public class FeatureClassNameProvider {
 	private String parentFeatureName(EObject obj) {
 		Feature feature = getContainerOfType(obj, Feature.class);
 		return getClassName(feature);
+	}
+
+
+	@Override
+	public String describe(EObject eObject) {
+		if (eObject instanceof Feature) {
+			return stepNameProvider.describe((Feature) eObject);
+		}
+		if (eObject instanceof Scenario) {
+			return stepNameProvider.describe((Scenario) eObject);
+		}
+		if (eObject instanceof Step) {
+			return stepNameProvider.describe((Step) eObject);
+		}
+		throw new UnsupportedOperationException("Cannote describe " + eObject.eClass().getName());
 	}
 }

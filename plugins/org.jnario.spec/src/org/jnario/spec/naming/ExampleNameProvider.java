@@ -20,7 +20,6 @@ import static org.jnario.util.Strings.markAsPending;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmTypeReference;
@@ -29,6 +28,7 @@ import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.util.SimpleAttributeResolver;
 import org.eclipse.xtext.xbase.compiler.JavaKeywords;
 import org.jnario.ExampleTable;
+import org.jnario.jvmmodel.JnarioNameProvider;
 import org.jnario.spec.spec.After;
 import org.jnario.spec.spec.Before;
 import org.jnario.spec.spec.Example;
@@ -42,7 +42,7 @@ import com.google.inject.Inject;
  * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
-public class ExampleNameProvider {
+public class ExampleNameProvider extends JnarioNameProvider{
 
 	private static final String SPEC_POSTFIX = "Spec";
 
@@ -244,11 +244,6 @@ public class ExampleNameProvider {
 		throw new UnsupportedOperationException("Cannote describe " + eObject.eClass().getName());
 	}
 	
-	public String toQualifiedJavaClassName(EObject eObject) {
-		String className = toJavaClassName(eObject);
-		XtendClass xtendClass = getContainerOfType(eObject, XtendClass.class);
-		return xtendClass.getPackageName() + "." + className;
-	}
 	
 	public String toJavaClassName(EObject eObject) {
 		if (eObject instanceof ExampleGroup) {

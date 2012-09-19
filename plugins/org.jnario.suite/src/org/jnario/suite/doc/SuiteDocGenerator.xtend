@@ -34,13 +34,14 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 	@Inject extension HtmlFileBuilder
 	
 	override doGenerate(Resource input, IFileSystemAccess fsa, Spec2ResultMapping spec2ResultMapping) {
+		initResultMapping(spec2ResultMapping)
 		input.contents.filter(typeof(SuiteFile)).forEach[
-			val htmlFile = createHtmlFile(spec2ResultMapping)
+			val htmlFile = createHtmlFile()
 			xtendClasses.head.generate(fsa, htmlFile)	
 		]
 	}
    
-	def HtmlFile createHtmlFile(SuiteFile file, Spec2ResultMapping spec2ResultMapping) {
+	def HtmlFile createHtmlFile(SuiteFile file) {
 		val suites = file.xtendClasses.filter(typeof(Suite))
 		if(suites.empty) return HtmlFile::EMPTY_FILE
 		val rootSuite = suites.head
@@ -54,7 +55,7 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 		]
 	}
 
-	override HtmlFile createHtmlFile(XtendClass file, Spec2ResultMapping spec2ResultMapping) {
+	override HtmlFile createHtmlFile(XtendClass file) {
 		val suite = file as Suite
 		HtmlFile::newHtmlFile[
 			name = suite.className 

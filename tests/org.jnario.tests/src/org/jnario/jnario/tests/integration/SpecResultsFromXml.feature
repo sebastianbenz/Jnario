@@ -1,15 +1,18 @@
 package org.jnario.jnario.tests.integration
 
 import com.google.inject.Inject
-import org.jnario.jnario.test.util.ModelStore
-import org.jnario.runner.CreateWith
-import org.jnario.report.Spec2ResultMapping
-import org.jnario.Specification
-import org.jnario.report.SpecResultParser
-import org.jnario.jnario.test.util.SpecTestCreator
 import org.eclipse.xtext.util.StringInputStream
 import org.jnario.Executable
+import org.jnario.jnario.test.util.ModelStore
+import org.jnario.jnario.test.util.SpecTestCreator
+import org.jnario.report.HashBasedSpec2ResultMapping
+import org.jnario.report.SpecResultParser
+import org.jnario.runner.CreateWith
 import org.jnario.spec.spec.Example
+
+import static extension org.jnario.lib.JnarioIterableExtensions.*
+import static extension org.jnario.lib.JnarioIteratorExtensions.*
+import static extension org.jnario.lib.Should.*
 
 @CreateWith(typeof(SpecTestCreator))
 Feature: Parsing spec results from JUnit XML reports
@@ -17,7 +20,7 @@ Feature: Parsing spec results from JUnit XML reports
 	Scenario: Matching successfull Spec Runs
 		
 		@Inject extension ModelStore
-		@Inject Spec2ResultMapping spec2ResultMapping
+		@Inject HashBasedSpec2ResultMapping spec2ResultMapping
 		@Inject SpecResultParser resultParser
 		Executable specification
 		

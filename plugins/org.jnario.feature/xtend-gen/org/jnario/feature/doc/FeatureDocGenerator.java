@@ -20,7 +20,6 @@ import org.jnario.feature.feature.Step;
 import org.jnario.feature.jvmmodel.StepArgumentsProvider;
 import org.jnario.feature.naming.FeatureClassNameProvider;
 import org.jnario.feature.naming.StepNameProvider;
-import org.jnario.report.Spec2ResultMapping;
 import org.jnario.util.Strings;
 
 @SuppressWarnings("all")
@@ -31,7 +30,7 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
   @Inject
   private StepNameProvider _stepNameProvider;
   
-  public HtmlFile createHtmlFile(final XtendClass xtendClass, final Spec2ResultMapping spec2ResultMapping) {
+  public HtmlFile createHtmlFile(final XtendClass xtendClass) {
     boolean _not = (!(xtendClass instanceof Feature));
     if (_not) {
       return HtmlFile.EMPTY_FILE;

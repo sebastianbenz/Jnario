@@ -36,16 +36,16 @@ import org.jnario.runner.Contains
 import org.jnario.runner.Named
 import org.jnario.runner.Order
 import org.junit.Ignore
+import org.eclipse.xtend.core.xtend.XtendField
+import org.jnario.feature.feature.StepReference
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
+import org.eclipse.xtext.EcoreUtil2
 
 import static com.google.common.collect.Iterators.*
 import static org.eclipse.xtext.EcoreUtil2.*
 import static org.jnario.feature.jvmmodel.FeatureJvmModelInferrer.*
 
 import static extension com.google.common.base.Strings.*
-import org.eclipse.xtend.core.xtend.XtendField
-import org.jnario.feature.feature.StepReference
-import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
-import org.eclipse.xtext.EcoreUtil2
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -133,7 +133,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		if(superClass != null){
 	   		xtendClass.^extends = superClass.createTypeRef()
    		} 
-   		xtendClass.toClass(xtendClass.className)[
+   		xtendClass.toClass(xtendClass.toJavaClassName)[
 			packageName = xtendClass.packageName
    		]	
    	}

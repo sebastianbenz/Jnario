@@ -20,14 +20,13 @@ import org.jnario.feature.naming.StepNameProvider
 import static org.jnario.feature.jvmmodel.StepArgumentsProvider.*
 
 import static extension org.jnario.util.Strings.*
-import org.jnario.report.Spec2ResultMapping
 
 class FeatureDocGenerator extends AbstractDocGenerator {
 	
 	@Inject extension FeatureClassNameProvider 
 	@Inject extension StepNameProvider 
 
-	override createHtmlFile(XtendClass xtendClass, Spec2ResultMapping spec2ResultMapping) {
+	override createHtmlFile(XtendClass xtendClass) {
 		if(!(xtendClass instanceof Feature)){
 			return HtmlFile::EMPTY_FILE
 		}

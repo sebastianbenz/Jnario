@@ -33,7 +33,7 @@ public class FeatureBatchCompiler extends JnarioBatchCompiler {
 
 	@Override
 	protected String getClassName(EObject eObject) {
-		return nameProvider.getClassName(eObject);
+		return nameProvider.toJavaClassName(eObject);
 	}
 	
 	@Override

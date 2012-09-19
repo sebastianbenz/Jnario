@@ -33,12 +33,13 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
+import org.jnario.Executable;
 import org.jnario.doc.DocumentationProvider;
 import org.jnario.doc.Filter;
 import org.jnario.doc.HtmlFile;
 import org.jnario.doc.HtmlFileBuilder;
 import org.jnario.doc.WhiteSpaceNormalizer;
-import org.jnario.report.NoResultsMapping;
+import org.jnario.report.EmptyMapping;
 import org.jnario.report.Spec2ResultMapping;
 import org.pegdown.PegDownProcessor;
 
@@ -65,12 +66,15 @@ public abstract class AbstractDocGenerator implements IGenerator {
   @Inject
   private DocumentationProvider documentationProvider;
   
+  private Spec2ResultMapping spec2ResultMapping;
+  
   public void doGenerate(final Resource input, final IFileSystemAccess fsa) {
-    NoResultsMapping _noResultsMapping = new NoResultsMapping();
-    this.doGenerate(input, fsa, _noResultsMapping);
+    EmptyMapping _emptyMapping = new EmptyMapping();
+    this.doGenerate(input, fsa, _emptyMapping);
   }
   
   public void doGenerate(final Resource input, final IFileSystemAccess fsa, final Spec2ResultMapping spec2ResultMapping) {
+    this.initResultMapping(spec2ResultMapping);
     EList<EObject> _contents = input.getContents();
     Iterable<XtendFile> _filter = Iterables.<XtendFile>filter(_contents, XtendFile.class);
     final Procedure1<XtendFile> _function = new Procedure1<XtendFile>() {
@@ -78,7 +82,7 @@ public abstract class AbstractDocGenerator implements IGenerator {
           EList<XtendClass> _xtendClasses = it.getXtendClasses();
           final Procedure1<XtendClass> _function = new Procedure1<XtendClass>() {
               public void apply(final XtendClass it) {
-                HtmlFile _createHtmlFile = AbstractDocGenerator.this.createHtmlFile(it, spec2ResultMapping);
+                HtmlFile _createHtmlFile = AbstractDocGenerator.this.createHtmlFile(it);
                 AbstractDocGenerator.this._htmlFileBuilder.generate(it, fsa, _createHtmlFile);
               }
             };
@@ -88,12 +92,12 @@ public abstract class AbstractDocGenerator implements IGenerator {
     IterableExtensions.<XtendFile>forEach(_filter, _function);
   }
   
-  public HtmlFile createHtmlFile(final XtendClass xtendClass) {
-    NoResultsMapping _noResultsMapping = new NoResultsMapping();
-    return this.createHtmlFile(xtendClass, _noResultsMapping);
+  protected Spec2ResultMapping initResultMapping(final Spec2ResultMapping spec2ResultMapping) {
+    Spec2ResultMapping _spec2ResultMapping = this.spec2ResultMapping = spec2ResultMapping;
+    return _spec2ResultMapping;
   }
   
-  public HtmlFile createHtmlFile(final XtendClass xtendClass, final Spec2ResultMapping spec2ResultMapping) {
+  public HtmlFile createHtmlFile(final XtendClass xtendClass) {
     return HtmlFile.EMPTY_FILE;
   }
   
@@ -309,6 +313,11 @@ public abstract class AbstractDocGenerator implements IGenerator {
     _builder.append("</pre>");
     _builder.newLine();
     return _builder;
+  }
+  
+  protected void executionState(final Executable executable) {
+    final String x = "<span class=\"label label-success\">Success</span>";
+    final String y = "<span class=\"label label-important\">Important</span>";
   }
   
   protected String serialize(final XExpression expr, final List<Filter> filters) {

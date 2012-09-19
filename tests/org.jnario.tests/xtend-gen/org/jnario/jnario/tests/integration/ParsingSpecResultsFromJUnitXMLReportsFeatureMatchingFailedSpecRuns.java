@@ -16,7 +16,7 @@ import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.JnarioIteratorExtensions;
 import org.jnario.lib.Should;
 import org.jnario.lib.StepArguments;
-import org.jnario.report.Spec2ResultMapping;
+import org.jnario.report.HashBasedSpec2ResultMapping;
 import org.jnario.report.SpecExecution;
 import org.jnario.report.SpecResultParser;
 import org.jnario.runner.CreateWith;
@@ -81,7 +81,7 @@ public class ParsingSpecResultsFromJUnitXMLReportsFeatureMatchingFailedSpecRuns 
   public ModelStore _modelStore;
   
   @Inject
-  Spec2ResultMapping spec2ResultMapping;
+  HashBasedSpec2ResultMapping spec2ResultMapping;
   
   @Inject
   SpecResultParser resultParser;

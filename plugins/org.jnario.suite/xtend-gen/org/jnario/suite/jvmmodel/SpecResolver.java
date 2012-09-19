@@ -116,8 +116,8 @@ public class SpecResolver {
       final Iterable<Specification> specs = IterableExtensions.<Specification>filter(_filter, _function_2);
       final Function1<Specification,String> _function_3 = new Function1<Specification,String>() {
           public String apply(final Specification it) {
-            String _qualifiedClassName = SpecResolver.this._suiteClassNameProvider.getQualifiedClassName(it);
-            return _qualifiedClassName;
+            String _qualifiedJavaClassName = SpecResolver.this._suiteClassNameProvider.toQualifiedJavaClassName(it);
+            return _qualifiedJavaClassName;
           }
         };
       Map<String,Specification> _map_1 = IterableExtensions.<String, Specification>toMap(specs, _function_3);

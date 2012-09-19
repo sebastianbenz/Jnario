@@ -20,15 +20,16 @@ import static org.jnario.suite.jvmmodel.SuiteClassNameProvider.*
 
 import static extension com.google.common.base.Strings.*
 import static extension org.jnario.util.Strings.*
-class SuiteClassNameProvider {
+import org.jnario.jvmmodel.JnarioNameProvider
+import org.eclipse.emf.ecore.EObject
+
+class SuiteClassNameProvider extends JnarioNameProvider{
 	
 	ExampleNameProvider exampleNameProvider
 	FeatureClassNameProvider featureNameProvider
 	
 	@Inject
-	new(ExampleNameProvider exampleNameProvider, 
-		FeatureClassNameProvider featureNameProvider
-	){
+	new(ExampleNameProvider exampleNameProvider, FeatureClassNameProvider featureNameProvider){
 		this.exampleNameProvider = exampleNameProvider
 		this.featureNameProvider = featureNameProvider
 	}
@@ -40,29 +41,6 @@ class SuiteClassNameProvider {
 		if(name.nullOrEmpty) return null
 		name = name.substring(name.lastIndexOf('#')+1).trim
 		if(name.nullOrEmpty) return null else name
-	}
-	
-	def dispatch describe(Suite suite){
-		suite.removePrefix?.convertToJavaString(true)
-	}
-	
-	def dispatch describe(ExampleGroup element){
-		exampleNameProvider.describe(element)
-	}
-	
-	def dispatch describe(Feature element){
-		element.name
-	}
-	
-	def getQualifiedClassName(Specification spec){
-		val className = spec.className
-		if(className.nullOrEmpty){
-			return null
-		}
-		if(spec.packageName.nullOrEmpty){
-			return className
-		}
-		spec.packageName + "." + className
 	}
 	
 	def dispatch getClassName(Suite suite){
@@ -77,5 +55,35 @@ class SuiteClassNameProvider {
 
 	def dispatch getClassName(Feature element){
 		featureNameProvider.getClassName(element)
+	}
+	
+	def dispatch String getClassName(EObject element){
+		throw new UnsupportedOperationException("Cannot get class name for " + element.eClass.name)
 	}	
+
+	override describe(EObject eObject) {
+		doDescribe(eObject)
+	}
+	
+	def dispatch doDescribe(Suite suite){
+		suite.removePrefix?.convertToJavaString(true)
+	}
+	
+	def dispatch doDescribe(ExampleGroup element){
+		exampleNameProvider.describe(element)
+	}
+	
+	def dispatch doDescribe(Feature element){
+		element.name
+	}
+	
+	def dispatch String doDescribe(EObject element){
+		throw new UnsupportedOperationException("Cannot describe " + element.eClass.name)
+	}
+	
+	override toJavaClassName(EObject eObject) {
+		getClassName(eObject)
+		
+	}
+	
 }

@@ -21,13 +21,14 @@ import org.eclipse.xtext.xbase.XExpression
 import org.pegdown.PegDownProcessor
 import org.eclipse.xtext.EcoreUtil2
 import org.jnario.ExampleTable
-
-import static extension org.eclipse.xtext.util.Strings.*
 import org.apache.commons.lang.StringEscapeUtils
-import static extension org.jnario.util.Strings.*
 import org.apache.log4j.Logger
 import org.jnario.report.Spec2ResultMapping
-import org.jnario.report.NoResultsMapping
+import org.jnario.report.EmptyMapping
+import org.jnario.Executable
+
+import static extension org.eclipse.xtext.util.Strings.*
+import static extension org.jnario.util.Strings.*
 
 abstract class AbstractDocGenerator implements IGenerator {
 
@@ -39,24 +40,26 @@ abstract class AbstractDocGenerator implements IGenerator {
 	@Inject extension PegDownProcessor
 	@Inject extension HtmlFileBuilder
 	@Inject extension DocumentationProvider documentationProvider
+	Spec2ResultMapping spec2ResultMapping
 
 	override doGenerate(Resource input, IFileSystemAccess fsa) {
-		doGenerate(input, fsa, new NoResultsMapping)
+		doGenerate(input, fsa, new EmptyMapping)
 	}
 
 	def doGenerate(Resource input, IFileSystemAccess fsa, Spec2ResultMapping spec2ResultMapping) {
+		initResultMapping(spec2ResultMapping)
 		input.contents.filter(typeof(XtendFile)).forEach[
 			xtendClasses.forEach[
-				generate(fsa, createHtmlFile(spec2ResultMapping))
+				generate(fsa, createHtmlFile())
 			]
 		]
 	}
 	
-	def createHtmlFile(XtendClass xtendClass){
-		return createHtmlFile(xtendClass, new NoResultsMapping)
+	def protected initResultMapping(Spec2ResultMapping spec2ResultMapping){
+		this.spec2ResultMapping = spec2ResultMapping
 	}
 
-	def createHtmlFile(XtendClass xtendClass, Spec2ResultMapping spec2ResultMapping){
+	def createHtmlFile(XtendClass xtendClass){
 		return HtmlFile::EMPTY_FILE
 	}
 
@@ -176,5 +179,10 @@ abstract class AbstractDocGenerator implements IGenerator {
 		«eObject.serialize.codeToHtml»
 		</pre>
 	'''
+	
+	def protected executionState(Executable executable){
+		val x = '<span class="label label-success">Success</span>'
+		val y = '<span class="label label-important">Important</span>'
+	}
 	
 }

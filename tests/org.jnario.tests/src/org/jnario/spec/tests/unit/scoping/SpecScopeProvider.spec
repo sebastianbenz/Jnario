@@ -22,7 +22,7 @@ describe SpecScopeProvider {
 	
 	@Inject extension ScopeTestExtension 
 	
-	fact "should resolve operations from surrounding ExampleGroup's target"{
+	fact "resolves operations from surrounding ExampleGroup's target"{
 		parseSpec('
 			package bootstrap
 			

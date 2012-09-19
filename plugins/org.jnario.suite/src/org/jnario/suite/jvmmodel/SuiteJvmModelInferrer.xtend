@@ -42,7 +42,7 @@ class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
 
    	def infer(SuiteNode node, IJvmDeclaredTypeAcceptor acceptor) {
    		val suite = node.suite
-   		val suiteClass = suite.toClass(suite.qualifiedClassName)
+   		val suiteClass = suite.toClass(suite.toQualifiedJavaClassName)
 		val subSuites = node.children.map[infer(acceptor)].toSet
    		acceptor.accept(suiteClass).initializeLater([
    				it.annotations += suite.exampleGroupRunnerAnnotation
@@ -58,7 +58,7 @@ class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
 
    	def Iterable<JvmType> children(Suite suite){
    		val specs = suite.resolveSpecs.filter[className != null]
-   		val types = specs.map[it.qualifiedClassName]
+   		val types = specs.map[it.toQualifiedJavaClassName]
    		types.map[getTypeForName(it, suite)?.type] 
    	}
 }

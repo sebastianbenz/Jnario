@@ -176,7 +176,7 @@ public class FeatureJavaValidator extends AbstractFeatureJavaValidator {
 		}
 
 		for (final XtendClass xtendClass : file.getXtendClasses()) {
-			String clazzName = classNameProvider.getClassName(xtendClass);
+			String clazzName = classNameProvider.toJavaClassName(xtendClass);
 			if(importedNames.containsKey(clazzName)){
 				JvmType importedType = importedNames.get(clazzName);
 				if(importedType != null){

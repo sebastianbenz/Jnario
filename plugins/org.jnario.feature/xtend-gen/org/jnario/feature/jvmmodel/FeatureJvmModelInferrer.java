@@ -200,14 +200,14 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
         JvmParameterizedTypeReference _createTypeRef = this._typeReferences.createTypeRef(superClass);
         xtendClass.setExtends(_createTypeRef);
       }
-      String _className = this._featureClassNameProvider.getClassName(xtendClass);
+      String _javaClassName = this._featureClassNameProvider.toJavaClassName(xtendClass);
       final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
           public void apply(final JvmGenericType it) {
             String _packageName = xtendClass.getPackageName();
             it.setPackageName(_packageName);
           }
         };
-      JvmGenericType _class = this._extendedJvmTypesBuilder.toClass(xtendClass, _className, _function);
+      JvmGenericType _class = this._extendedJvmTypesBuilder.toClass(xtendClass, _javaClassName, _function);
       _xblockexpression = (_class);
     }
     return _xblockexpression;

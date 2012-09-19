@@ -7,16 +7,15 @@
  *******************************************************************************/
 package org.jnario.suite.unit
 
-import org.jnario.suite.doc.SuiteDocGenerator
 import com.google.inject.Inject
-import org.jnario.jnario.test.util.ModelStore
 import org.eclipse.xtext.generator.InMemoryFileSystemAccess
-import org.jnario.suite.suite.SuiteFile
-import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.ModelStore
 import org.jnario.jnario.test.util.SuiteTestCreator
+import org.jnario.runner.CreateWith
+import org.jnario.suite.doc.SuiteDocGenerator
+import org.jnario.suite.suite.SuiteFile
 
 import static junit.framework.Assert.*
-import org.jnario.report.NoResultsMapping
 
 @CreateWith(typeof(SuiteTestCreator))
 describe SuiteDocGenerator {
@@ -70,7 +69,7 @@ describe SuiteDocGenerator {
 
 	def generateDoc(CharSequence input){
 		val resource = parseSuite(input)
-		subject.createHtmlFile(resource.contents.head as SuiteFile, new NoResultsMapping).content.toString
+		subject.createHtmlFile(resource.contents.head as SuiteFile).content.toString
 	}
 
 }

@@ -11,7 +11,6 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.jnario.doc.HtmlFile;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.SuiteTestCreator;
-import org.jnario.report.NoResultsMapping;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Extension;
@@ -123,8 +122,7 @@ public class SuiteDocGeneratorSpec {
       final Resource resource = this._modelStore.parseSuite(input);
       EList<EObject> _contents = resource.getContents();
       EObject _head = IterableExtensions.<EObject>head(_contents);
-      NoResultsMapping _noResultsMapping = new NoResultsMapping();
-      HtmlFile _createHtmlFile = this.subject.createHtmlFile(((SuiteFile) _head), _noResultsMapping);
+      HtmlFile _createHtmlFile = this.subject.createHtmlFile(((SuiteFile) _head));
       CharSequence _content = _createHtmlFile.getContent();
       String _string = _content.toString();
       _xblockexpression = (_string);

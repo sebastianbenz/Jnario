@@ -17,13 +17,10 @@ import org.jnario.ExampleTable
 import org.jnario.doc.AbstractDocGenerator
 import org.jnario.doc.Filter
 import org.jnario.doc.FilterExtractor
+import org.jnario.doc.HtmlFile
 import org.jnario.spec.naming.ExampleNameProvider
 import org.jnario.spec.spec.Example
 import org.jnario.spec.spec.ExampleGroup
-import org.jnario.doc.HtmlFile
-
-import static org.jnario.util.Strings.*
-import org.jnario.report.Spec2ResultMapping
 
 class SpecDocGenerator extends AbstractDocGenerator {
 
@@ -31,7 +28,7 @@ class SpecDocGenerator extends AbstractDocGenerator {
 	
 	@Inject extension FilterExtractor
 
-	override createHtmlFile(XtendClass xtendClass, Spec2ResultMapping spec2ResultMapping) {
+	override createHtmlFile(XtendClass xtendClass) {
 		if(!(xtendClass instanceof ExampleGroup)){
 			return HtmlFile::EMPTY_FILE
 		}
