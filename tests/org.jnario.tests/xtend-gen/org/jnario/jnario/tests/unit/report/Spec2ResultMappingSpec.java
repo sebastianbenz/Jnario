@@ -4,7 +4,7 @@ import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.hamcrest.StringDescription;
 import org.jnario.Specification;
 import org.jnario.lib.Should;
-import org.jnario.report.IsMatchingSpec;
+import org.jnario.report.Executable2ResultMatcher;
 import org.jnario.report.Spec2ResultMapping;
 import org.jnario.report.SpecExecution;
 import org.jnario.runner.ExampleGroupRunner;
@@ -23,9 +23,9 @@ import org.mockito.stubbing.OngoingStubbing;
 public class Spec2ResultMappingSpec {
   public Spec2ResultMapping subject;
   
-  final IsMatchingSpec isSpecPredicate = new Function0<IsMatchingSpec>() {
-    public IsMatchingSpec apply() {
-      IsMatchingSpec _mock = Mockito.<IsMatchingSpec>mock(IsMatchingSpec.class);
+  final Executable2ResultMatcher isSpecPredicate = new Function0<Executable2ResultMatcher>() {
+    public Executable2ResultMatcher apply() {
+      Executable2ResultMatcher _mock = Mockito.<Executable2ResultMatcher>mock(Executable2ResultMatcher.class);
       return _mock;
     }
   }.apply();

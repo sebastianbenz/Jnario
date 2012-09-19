@@ -132,19 +132,19 @@ abstract class AbstractDocGenerator implements IGenerator {
 		<table class="table table-striped table-bordered table-condensed">
 			<thead>
 				<tr>
-				«FOR headingCell : table.columns»
-					<th>«headingCell.name»</th>
-				«ENDFOR»
+				Â«FOR headingCell : table.columnsÂ»
+					<th>Â«headingCell.nameÂ»</th>
+				Â«ENDFORÂ»
 				</tr>
 			</thead>
 			<tbody>
-			«FOR row : table.rows»
+			Â«FOR row : table.rowsÂ»
 			<tr>
-				«FOR cell : row.cells»
-				<td>«serialize(cell, emptyList)»</td>
-				«ENDFOR»
+				Â«FOR cell : row.cellsÂ»
+				<td>Â«serialize(cell, emptyList)Â»</td>
+				Â«ENDFORÂ»
 			</tr>
-		  	«ENDFOR»
+		  	Â«ENDFORÂ»
 			</tbody>
 		</table>
 	'''
@@ -162,8 +162,8 @@ abstract class AbstractDocGenerator implements IGenerator {
 	}
 	
 	def pre(EObject eObject, String lang)'''
-		<pre class="prettyprint «lang» linenums">
-		«eObject.serialize.codeToHtml»
+		<pre class="prettyprint Â«langÂ» linenums">
+		Â«eObject.serialize.codeToHtmlÂ»
 		</pre>
 	'''
 	

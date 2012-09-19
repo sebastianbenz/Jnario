@@ -22,7 +22,7 @@ describe SpecResultParser{
   
 	fact "parses successfull specs from xml"{ 
 		'''
-		  <testcase time="«EXECUTION_TIME»" classname="«CLASSNAME»" name="«NAME»"/>
+		  <testcase time="Â«EXECUTION_TIMEÂ»" classname="Â«CLASSNAMEÂ»" name="Â«NAMEÂ»"/>
 		'''.toXml.parse 
 		
 		verify(acceptor).accept(passingSpec)
@@ -30,8 +30,8 @@ describe SpecResultParser{
 	
 	fact "parses specs with failure from xml"{ 
 		'''
-		   <testcase time="«EXECUTION_TIME»" classname="«CLASSNAME»" name="«NAME»">
-		    <failure message="«FAILURE_MESSAGE»" type="«FAILURE_TYPE»">«STACKTRACE»</failure>
+		   <testcase time="Â«EXECUTION_TIMEÂ»" classname="Â«CLASSNAMEÂ»" name="Â«NAMEÂ»">
+		    <failure message="Â«FAILURE_MESSAGEÂ»" type="Â«FAILURE_TYPEÂ»">Â«STACKTRACEÂ»</failure>
 		   </testcase>
 		'''.toXml.parse 
 		
@@ -40,8 +40,8 @@ describe SpecResultParser{
 	
 	fact "parses specs with error from xml"{ 
 		'''
-		   <testcase time="«EXECUTION_TIME»" classname="«CLASSNAME»" name="«NAME»">
-		    <error message="«FAILURE_MESSAGE»" type="«FAILURE_TYPE»">«STACKTRACE»</error>
+		   <testcase time="Â«EXECUTION_TIMEÂ»" classname="Â«CLASSNAMEÂ»" name="Â«NAMEÂ»">
+		    <error message="Â«FAILURE_MESSAGEÂ»" type="Â«FAILURE_TYPEÂ»">Â«STACKTRACEÂ»</error>
 		   </testcase>
 		'''.toXml.parse 
 		
@@ -50,9 +50,9 @@ describe SpecResultParser{
 	
 	fact "parses multiple spec results"{ 
 		'''
-		   <testcase time="«EXECUTION_TIME»" classname="«CLASSNAME»" name="«NAME»"/>
-		   <testcase time="«EXECUTION_TIME»" classname="«CLASSNAME»" name="«NAME»">
-		    <error message="«FAILURE_MESSAGE»" type="«FAILURE_TYPE»">«STACKTRACE»</error>
+		   <testcase time="Â«EXECUTION_TIMEÂ»" classname="Â«CLASSNAMEÂ»" name="Â«NAMEÂ»"/>
+		   <testcase time="Â«EXECUTION_TIMEÂ»" classname="Â«CLASSNAMEÂ»" name="Â«NAMEÂ»">
+		    <error message="Â«FAILURE_MESSAGEÂ»" type="Â«FAILURE_TYPEÂ»">Â«STACKTRACEÂ»</error>
 		   </testcase>
 		'''.toXml.parse 
 		
@@ -75,7 +75,7 @@ describe SpecResultParser{
 	def toXml(CharSequence content)'''
 		<?xml version="1.0" encoding="UTF-8" ?>
 		<testsuite failures="1" time="0.017" errors="0" skipped="0" tests="1" name="example.AddingValuesSpec">
-			«content»
+			Â«contentÂ»
 		</testsuite>	
 	'''
 	

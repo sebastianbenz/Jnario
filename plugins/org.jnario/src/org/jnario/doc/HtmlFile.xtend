@@ -33,7 +33,7 @@ class HtmlFile {
 		<html lang="en">
 		<head>
 		<meta charset="utf-8">
-		<title>«title»</title>
+		<title>Â«titleÂ»</title>
 		<meta name="description" content="">
 		<meta name="author" content="Jnario">
 
@@ -41,12 +41,12 @@ class HtmlFile {
 		      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		    <![endif]-->
 
-		«FOR cssFile : assets.cssFiles»
-		<link rel="stylesheet" href="«rootFolder»«cssFile»">
-		«ENDFOR»
-		«FOR jsFile : assets.jsFiles»
-		<script type="text/javascript" src="«rootFolder»«jsFile»"></script>
-		«ENDFOR»
+		Â«FOR cssFile : assets.cssFilesÂ»
+		<link rel="stylesheet" href="Â«rootFolderÂ»Â«cssFileÂ»">
+		Â«ENDFORÂ»
+		Â«FOR jsFile : assets.jsFilesÂ»
+		<script type="text/javascript" src="Â«rootFolderÂ»Â«jsFileÂ»"></script>
+		Â«ENDFORÂ»
 		</head>
 		
 		<body onload="prettyPrint()">
@@ -58,18 +58,18 @@ class HtmlFile {
 							    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
 								<li><a href="#source" data-toggle="tab">Source</a></li>
 							  </ul>
-							<h1>«title»</h1>
+							<h1>Â«titleÂ»</h1>
 						</div>
 						<div class="row">
 							<div class="span12">
 								  <div class="tab-content">
 									  	<div class="tab-pane active" id="spec">
-		«content»
+		Â«contentÂ»
 									</div>
 								    <div class="tab-pane" id="source">
-								    	<h3>«fileName»</h3>
+								    	<h3>Â«fileNameÂ»</h3>
 								    	<p>
-		«sourceCode»
+		Â«sourceCodeÂ»
 								    </p></div>
 								  </div>
 							</div> 

@@ -264,7 +264,7 @@ public class SpecUiModule extends org.jnario.spec.ui.AbstractSpecUiModule {
 
 	@Override
 	public ICharacterPairMatcher bindICharacterPairMatcher() {
-		return new DefaultCharacterPairMatcher(new char[] { '(', ')', '{', '}', '[', ']', '«', '»' });
+		return new DefaultCharacterPairMatcher(new char[] { '(', ')', '{', '}', '[', ']', 'Â«', 'Â»' });
 	}
 	
 	public Class<? extends RenameElementProcessor> bindRenameElementProcessor() {

@@ -116,7 +116,7 @@ describe "Introducing Jnario Specs"{
 	      * we see that the string description looks pretty similar to the actual code.
 	      * We can make this even more obvious by replacing `new Stack().size => 0` 
 	      * with `new Stack().size should be 0`, using the more descriptive `should be`
-	      * assertion “instead of `=>`. In Jnario you can avoid such redundancies between code 
+	      * assertion instead of `=>`. In Jnario you can avoid such redundancies between code 
 	      * and description by leaving the description out. The code becomes 
 	      * the actual description:
 	      * 

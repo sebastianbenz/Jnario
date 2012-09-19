@@ -74,7 +74,7 @@ class XtendMethodBuilder {
 	def protected addBody(IAppendable appendable){
 		appendable.append('''
 			{
-				«returnStatement»
+				Â«returnStatementÂ»
 			}
 		''')
 	}

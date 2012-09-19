@@ -60,7 +60,7 @@ describe StepArgumentsProvider {
 		val scenario = '''
 			Feature: dummy
 				Scenario: dummy 
-					«step»
+					Â«stepÂ»
 					
 		'''
 		// we have to access the model before linking

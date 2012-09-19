@@ -66,17 +66,17 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 	}
 	
 	def generateContent(Iterable<Suite> suites)'''
-		«FOR suite : suites»
-			«IF !(suite == suites.head)»
-			«suite.title»
-			«ENDIF»
-			«suite.generateContent»
-		«ENDFOR»
+		Â«FOR suite : suitesÂ»
+			Â«IF !(suite == suites.head)Â»
+			Â«suite.titleÂ»
+			Â«ENDIFÂ»
+			Â«suite.generateContentÂ»
+		Â«ENDFORÂ»
 	'''
 	
 	def title(Suite suite)'''
-		«val title = suite.name.firstLine»
-		<span«title.id»>«title.markdown2Html»</span>
+		Â«val title = suite.name.firstLineÂ»
+		<spanÂ«title.idÂ»>Â«title.markdown2HtmlÂ»</span>
 	'''
 	
 	def desc(Suite suite){
@@ -84,20 +84,20 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 	}
 
 	def generateContent(Suite suite)'''
-		«suite.desc»
-		«IF !suite.elements.empty»
+		Â«suite.descÂ»
+		Â«IF !suite.elements.emptyÂ»
 		<ul>
-			«FOR spec : suite.elements»
-				«generate(spec)»
-			«ENDFOR»
+			Â«FOR spec : suite.elementsÂ»
+				Â«generate(spec)Â»
+			Â«ENDFORÂ»
 		</ul>
-		«ENDIF»
+		Â«ENDIFÂ»
 	'''
 
 	def generate(Reference ref)'''
-	«FOR spec : ref.resolveSpecs»
-		<li><a href="«ref.linkTo(spec)»">«spec.describe»</a>«ref.text»</li>
-	«ENDFOR»
+	Â«FOR spec : ref.resolveSpecsÂ»
+		<li><a href="Â«ref.linkTo(spec)Â»">Â«spec.describeÂ»</a>Â«ref.textÂ»</li>
+	Â«ENDFORÂ»
 	''' 
 	
 	def linkTo(EObject context, Specification spec){

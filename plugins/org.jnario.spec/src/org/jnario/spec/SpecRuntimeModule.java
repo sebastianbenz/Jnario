@@ -60,6 +60,7 @@ import org.jnario.jvmmodel.JnarioDispatchUtil;
 import org.jnario.jvmmodel.JnarioSignatureHashBuilder;
 import org.jnario.linking.JnarioLazyLinker;
 import org.jnario.linking.JnarioLinkingService;
+import org.jnario.report.Executable2ResultMatcher;
 import org.jnario.scoping.JnarioExtensionClassNameProvider;
 import org.jnario.serializer.JnarioContextFinder;
 import org.jnario.spec.compiler.SpecBatchCompiler;
@@ -68,6 +69,7 @@ import org.jnario.spec.doc.SpecDocGenerator;
 import org.jnario.spec.jvmmodel.SpecJvmModelInferrer;
 import org.jnario.spec.jvmmodel.SpecSyntheticNameClashResolver;
 import org.jnario.spec.naming.SpecQualifiedNameProvider;
+import org.jnario.spec.report.Spec2ResultMatcher;
 import org.jnario.spec.scoping.SpecResourceDescriptionStrategy;
 import org.jnario.spec.scoping.SpecScopeProvider;
 import org.jnario.spec.validation.SpecClassPathBasedChecks;
@@ -88,6 +90,7 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 		binder.bind(AbstractDocGenerator.class).to(SpecDocGenerator.class);
 		binder.bind(SignatureHashBuilder.class).to(JnarioSignatureHashBuilder.class);
 		binder.bind(SyntheticNameClashResolver.class).to(SpecSyntheticNameClashResolver.class);
+		binder.bind(Executable2ResultMatcher.class).to(Spec2ResultMatcher.class);
 	}
 	
 	public Class<? extends ILinkingDiagnosticMessageProvider> bindILinkingDiagnosticMessageProvider() {

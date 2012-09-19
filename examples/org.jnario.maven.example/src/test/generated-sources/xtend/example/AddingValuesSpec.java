@@ -6,6 +6,7 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -22,5 +23,13 @@ public class AddingValuesSpec {
     Assert.assertTrue("\nExpected 4 + 3 => 8 but"
      + "\n     4 + 3 is " + new StringDescription().appendValue(Integer.valueOf(_plus)).toString() + "\n", _doubleArrow);
     
+  }
+  
+  @Test
+  @Ignore
+  @Named("With special \\\"chars\\\" and uml\\u00E4uts [PENDING]")
+  @Order(99)
+  public void _withSpecialCharsAndUmläuts() throws Exception {
+    throw new UnsupportedOperationException("_withSpecialCharsAndUmläutsis not implemented");
   }
 }

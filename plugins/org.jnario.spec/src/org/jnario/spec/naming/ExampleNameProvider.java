@@ -20,6 +20,7 @@ import static org.jnario.util.Strings.markAsPending;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmTypeReference;
@@ -230,6 +231,25 @@ public class ExampleNameProvider {
 		return newName;
 	}
 
+	public String describe(EObject eObject) {
+		if (eObject instanceof ExampleGroup) {
+			return describe((ExampleGroup) eObject);
+		}
+		if (eObject instanceof ExampleTable) {
+			return describe((ExampleTable) eObject);
+		}
+		if (eObject instanceof Example) {
+			return describe((Example) eObject);
+		}
+		throw new UnsupportedOperationException("Cannote describe " + eObject.eClass().getName());
+	}
+	
+	public String toQualifiedJavaClassName(EObject eObject) {
+		String className = toJavaClassName(eObject);
+		XtendClass xtendClass = getContainerOfType(eObject, XtendClass.class);
+		return xtendClass.getPackageName() + "." + className;
+	}
+	
 	public String toJavaClassName(EObject eObject) {
 		if (eObject instanceof ExampleGroup) {
 			return toJavaClassName((ExampleGroup) eObject);

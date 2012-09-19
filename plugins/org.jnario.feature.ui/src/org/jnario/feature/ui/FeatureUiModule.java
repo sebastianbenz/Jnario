@@ -278,7 +278,7 @@ public class FeatureUiModule extends org.jnario.feature.ui.AbstractFeatureUiModu
 	
 	@Override
 	public ICharacterPairMatcher bindICharacterPairMatcher() {
-		return new DefaultCharacterPairMatcher(new char[] { '(', ')', '{', '}', '[', ']', '«', '»' });
+		return new DefaultCharacterPairMatcher(new char[] { '(', ')', '{', '}', '[', ']', 'Â«', 'Â»' });
 	}
 
 	public Class<? extends XtextSourceViewer.Factory> bindSourceViewerFactory() {

@@ -54,7 +54,8 @@ describe SuiteNodeBuilder {
 	def parseSuite(CharSequence s){
 		val input = '''
 		package test
-		«s»
+		
+		Â«sÂ»
 		'''
 		m.parseSuite(input)
 	}

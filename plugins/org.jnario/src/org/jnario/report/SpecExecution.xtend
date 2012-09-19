@@ -6,6 +6,14 @@ import java.util.List
 class SpecExecution {
 	
 	public static val NO_EXECUTION = new SpecExecution("", "", 0.0, emptyList)
+
+	def static passingSpec(String className, String name, double executionTimeInSeconds){
+		new SpecExecution(className, name, executionTimeInSeconds, emptyList)
+	}
+	
+	def static failingSpec(String className, String name, double executionTimeInSeconds, SpecFailure... failures){
+		new SpecExecution(className, name, executionTimeInSeconds, failures)
+	}
 	
 	String className
 	String name
@@ -13,6 +21,6 @@ class SpecExecution {
 	List<SpecFailure> failures
 	
 	def hasPassed(){
-		return true
+		return failures.empty
 	}
 }

@@ -46,8 +46,8 @@ class SpecDocGenerator extends AbstractDocGenerator {
 	}
 
 	def private generateContent(ExampleGroup exampleGroup)'''
-		«exampleGroup.generateDoc()»
-		«exampleGroup.generateMembers(1)»
+		Â«exampleGroup.generateDoc()Â»
+		Â«exampleGroup.generateMembers(1)Â»
 	'''
 	
 	def private generateMembers(ExampleGroup exampleGroup, int level){
@@ -84,9 +84,9 @@ class SpecDocGenerator extends AbstractDocGenerator {
 	}
 	
 	def private generateDoc(EObject eObject)'''
-		«IF eObject.documentation != null»
-			«eObject.documentation.markdown2Html»
-		«ENDIF»
+		Â«IF eObject.documentation != nullÂ»
+			Â«eObject.documentation.markdown2HtmlÂ»
+		Â«ENDIFÂ»
 	'''
 	def dispatch generate(XtendMember member, int level)'''
 	'''
@@ -101,14 +101,14 @@ class SpecDocGenerator extends AbstractDocGenerator {
 			docString = docString.markdown2Html
 		}
 		'''
-			«IF example.name != null»
-			<p«id(example.name)»><strong>«example.describe.decode»</strong></p>
-			«ELSE»
-			«ENDIF»
-			«docString»
-			«IF !example.pending && example.body != null»
-			«example.toCodeBlock(filters)»
-			«ENDIF»
+			Â«IF example.name != nullÂ»
+			<pÂ«id(example.name)Â»><strong>Â«example.describe.decodeÂ»</strong></p>
+			Â«ELSEÂ»
+			Â«ENDIFÂ»
+			Â«docStringÂ»
+			Â«IF !example.pending && example.body != nullÂ»
+			Â«example.toCodeBlock(filters)Â»
+			Â«ENDIFÂ»
 		'''
 	}
 	
@@ -120,28 +120,28 @@ class SpecDocGenerator extends AbstractDocGenerator {
 		val code = example.implementation.serialize(filters)
 		if(code.length == 0) return ""
 		'''
-		«prefix»
-		«code»</pre>'''
+		Â«prefixÂ»
+		Â«codeÂ»</pre>'''
 	}
 	
 
 	 
 	def dispatch generate(ExampleTable table, int level)'''
-		<p«id(table.toFieldName)»><strong>«table.toFieldName.toTitle»</strong></p>
-		«table.generateDoc»
-		«super.generate(table)»
+		<pÂ«id(table.toFieldName)Â»><strong>Â«table.toFieldName.toTitleÂ»</strong></p>
+		Â«table.generateDocÂ»
+		Â«super.generate(table)Â»
 	'''
 		
 	def dispatch generate(ExampleGroup exampleGroup, int level)'''
-		«IF level > 1»
+		Â«IF level > 1Â»
 		<div class="level">
-		«ENDIF»
-		<h«exampleGroup.header(level)»«id(exampleGroup.describe)»>«exampleGroup.asTitle»</h«exampleGroup.header(level)»>
-		«exampleGroup.generateDoc»
-		«generateMembers(exampleGroup, level + 1)»
-		«IF level > 1»
+		Â«ENDIFÂ»
+		<hÂ«exampleGroup.header(level)Â»Â«id(exampleGroup.describe)Â»>Â«exampleGroup.asTitleÂ»</hÂ«exampleGroup.header(level)Â»>
+		Â«exampleGroup.generateDocÂ»
+		Â«generateMembers(exampleGroup, level + 1)Â»
+		Â«IF level > 1Â»
 		</div>
-		«ENDIF»
+		Â«ENDIFÂ»
 	'''
 	
 	def private header(ExampleGroup exampleGroup, int level){
@@ -163,4 +163,3 @@ class SpecDocGenerator extends AbstractDocGenerator {
 	}
 	
 }
-

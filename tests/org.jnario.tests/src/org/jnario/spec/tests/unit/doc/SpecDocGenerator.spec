@@ -16,7 +16,7 @@ import org.jnario.jnario.test.util.SpecTestCreator
 
 @CreateWith(typeof(SpecTestCreator))
 describe SpecDocGenerator {
-	
+
 	@Inject extension ModelStore 
 	@Inject InMemoryFileSystemAccess fsa
 	

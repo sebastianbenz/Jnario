@@ -22,7 +22,7 @@ right corner. For example, this file is generated from a [Jnario Suite](http://s
 
    The acceptance specs for game of life are written using the Jnario feature language, 
    which is similar to Cucumber. However, there is one big difference between Jnario and Cucumber.
-    You don’t need to create separate step definitions to make your steps executable. 
+    You don't need to create separate step definitions to make your steps executable. 
     You can directly add the necessary code below your steps.
    
   - "Playing Game of Life":

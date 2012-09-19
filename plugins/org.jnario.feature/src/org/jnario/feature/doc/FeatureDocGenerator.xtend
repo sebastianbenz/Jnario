@@ -42,34 +42,34 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 	}
 
 	def generateContent(Feature feature)'''
-		<p>«feature.description?.markdown2Html»</p>
-		«IF feature.background != null»
-		«generate(feature.background)»
-		«ENDIF»
-		«FOR scenario : feature.scenarios»
-		«generate(scenario)»
-		«ENDFOR»
-		«FOR member : feature.members»
-		«generate(member)»
-		«ENDFOR»
+		<p>Â«feature.description?.markdown2HtmlÂ»</p>
+		Â«IF feature.background != nullÂ»
+		Â«generate(feature.background)Â»
+		Â«ENDIFÂ»
+		Â«FOR scenario : feature.scenariosÂ»
+		Â«generate(scenario)Â»
+		Â«ENDFORÂ»
+		Â«FOR member : feature.membersÂ»
+		Â«generate(member)Â»
+		Â«ENDFORÂ»
 	'''
 
 	def dispatch generate(Scenario scenario)'''
-		<h3 «id(scenario.name)»>«scenario.name»</h3>
-		«generate(scenario.steps.filter(typeof(Step)))»
+		<h3 Â«id(scenario.name)Â»>Â«scenario.nameÂ»</h3>
+		Â«generate(scenario.steps.filter(typeof(Step)))Â»
 	'''
 	
 	def dispatch generate(Iterable<Step> steps)'''
 		<ul>
-		«FOR step : steps»
-		<li>«generate(step)»
-		«generate(step.and.filter(typeof(Step)))»</li>
-		«ENDFOR»
+		Â«FOR step : stepsÂ»
+		<li>Â«generate(step)Â»
+		Â«generate(step.and.filter(typeof(Step)))Â»</li>
+		Â«ENDFORÂ»
 		</ul>
 	'''
 	
 	def dispatch generate(Step step)'''
-		«step.format»
+		Â«step.formatÂ»
 	'''
 
 	def private format(Step step){
@@ -98,6 +98,6 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 		var codeBlock = text.substring(multiLineStart).trim
 		codeBlock = codeBlock.substring(MULTILINE_STRING.length, codeBlock.length - MULTILINE_STRING.length)
 		codeBlock = codeBlock.codeToHtml
-		return '''<pre>«codeBlock»</pre>'''
+		return '''<pre>Â«codeBlockÂ»</pre>'''
 	} 
 }

@@ -63,7 +63,7 @@ describe Example {
 		val modelStore = new ModelStore()
 		modelStore.parseSpec('''
 			describe "test"{
-				«content»
+				Â«contentÂ»
 			}
 		''')
 		return query(modelStore).first(typeof(Example))

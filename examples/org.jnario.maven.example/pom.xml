@@ -1,83 +1,217 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<artifactId>org.jnario.maven.example</artifactId>
-	<name>Jnario Maven Example</name>
-	<version>0.3.0</version>
-	<groupId>org.jnario</groupId>
-	<repositories>
-		<repository>
-			<id>xtend</id>
-			<url>http://build.eclipse.org/common/xtend/maven/</url>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>xtend</id>
-			<url>http://build.eclipse.org/common/xtend/maven/</url>
-		</pluginRepository>
-	</pluginRepositories>
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.10</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.xtend</groupId>
-			<artifactId>org.eclipse.xtend.lib</artifactId>
-			<version>2.3.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jnario</groupId>
-			<artifactId>org.jnario.lib.maven</artifactId>
-			<version>0.2.1</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.eclipse.xtend</groupId>
-				<artifactId>xtend-maven-plugin</artifactId>
-				<version>2.3.1</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>compile</goal>
-							<!-- <goal>testCompile</goal> -->
-						</goals>
-						<!-- optionally you can configure a different target folder -->
-						<!-- <configuration> <outputDirectory>xtend-gen</outputDirectory> </configuration> -->
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.jnario</groupId>
-				<artifactId>jnario-maven-plugin</artifactId>
-				<version>0.2.1</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>testCompile</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.12</version>
-				<configuration>
-					<includes>
-						<include>**\/*Spec.java</include>
-						<include>**\/*Feature.java</include>
-						<include>**\/*Test.java</include>
-						<include>**\/*TestCase.java</include>
-					</includes>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" >
+
+    <properties>
+        <project.build.sourceEncoding>
+UTF-8
+        </project.build.sourceEncoding>
+    </properties>
+
+    <modelVersion>
+4.0.0
+    </modelVersion>
+
+    <artifactId>
+org.jnario.maven.example
+    </artifactId>
+
+    <name>
+Jnario Maven Example
+    </name>
+
+    <version>
+0.3.0
+    </version>
+
+    <groupId>
+org.jnario
+    </groupId>
+
+    <repositories>
+
+        <repository>
+
+            <id>
+xtend
+            </id>
+
+            <url>
+http://build.eclipse.org/common/xtend/maven/
+            </url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+
+        <pluginRepository>
+
+            <id>
+xtend
+            </id>
+
+            <url>
+http://build.eclipse.org/common/xtend/maven/
+            </url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <dependencies>
+
+        <dependency>
+
+            <groupId>
+junit
+            </groupId>
+
+            <artifactId>
+junit
+            </artifactId>
+
+            <version>
+4.10
+            </version>
+
+            <scope>
+test
+            </scope>
+        </dependency>
+
+        <dependency>
+
+            <groupId>
+org.eclipse.xtend
+            </groupId>
+
+            <artifactId>
+org.eclipse.xtend.lib
+            </artifactId>
+
+            <version>
+2.3.1
+            </version>
+        </dependency>
+
+        <dependency>
+
+            <groupId>
+org.jnario
+            </groupId>
+
+            <artifactId>
+org.jnario.lib.maven
+            </artifactId>
+
+            <version>
+0.2.1
+            </version>
+
+            <scope>
+test
+            </scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+
+        <plugins>
+
+            <plugin>
+
+                <groupId>
+org.eclipse.xtend
+                </groupId>
+
+                <artifactId>
+xtend-maven-plugin
+                </artifactId>
+
+                <version>
+2.3.1
+                </version>
+
+                <executions>
+
+                    <execution>
+
+                        <goals>
+
+                            <goal>
+compile
+                            </goal>
+                            <!-- <goal>testCompile</goal> -->
+                        </goals>
+                        <!-- optionally you can configure a different target folder -->
+                        <!-- <configuration> <outputDirectory>xtend-gen</outputDirectory> </configuration> -->
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+
+                <groupId>
+org.jnario
+                </groupId>
+
+                <artifactId>
+jnario-maven-plugin
+                </artifactId>
+
+                <version>
+0.2.1
+                </version>
+
+                <executions>
+
+                    <execution>
+
+                        <goals>
+
+                            <goal>
+testCompile
+                            </goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+
+                <groupId>
+org.apache.maven.plugins
+                </groupId>
+
+                <artifactId>
+maven-surefire-plugin
+                </artifactId>
+
+                <version>
+2.12
+                </version>
+
+                <configuration>
+
+                    <includes>
+
+                        <include>
+**\/*Spec.java
+                        </include>
+
+                        <include>
+**\/*Feature.java
+                        </include>
+
+                        <include>
+**\/*Test.java
+                        </include>
+
+                        <include>
+**\/*TestCase.java
+                        </include>
+                    </includes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

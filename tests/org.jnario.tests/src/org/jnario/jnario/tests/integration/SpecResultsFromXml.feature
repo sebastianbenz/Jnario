@@ -8,6 +8,8 @@ import org.jnario.Specification
 import org.jnario.report.SpecResultParser
 import org.jnario.jnario.test.util.SpecTestCreator
 import org.eclipse.xtext.util.StringInputStream
+import org.jnario.Executable
+import org.jnario.spec.spec.Example
 
 @CreateWith(typeof(SpecTestCreator))
 Feature: Parsing spec results from JUnit XML reports
@@ -17,7 +19,7 @@ Feature: Parsing spec results from JUnit XML reports
 		@Inject extension ModelStore
 		@Inject Spec2ResultMapping spec2ResultMapping
 		@Inject SpecResultParser resultParser
-		Specification specification
+		Executable specification
 		
 		Given a specification 
 		'''
@@ -28,7 +30,7 @@ Feature: Parsing spec results from JUnit XML reports
 				}
 			}
 		'''
-			specification = args.first.parseSpec.allContents.filter(typeof(Specification)).first
+			specification = args.first.parseSpec.allContents.filter(typeof(Example)).first
 		And a test result xml file 
 		'''
 			<?xml version="1.0" encoding="UTF-8" ?>
@@ -44,37 +46,37 @@ Feature: Parsing spec results from JUnit XML reports
 		 	val shouldPass = args.first == "passed"
 			spec2ResultMapping.getResult(specification).hasPassed => shouldPass
 			
-//	Scenario: Matching failed Spec runs
-//	
-//		Given a specification 
-//			'''
-//			package example
-//			
-//			describe "Adding values"{
-//				fact "4 + 3 is 8"{
-//					4 + 3 => 8
-//				}
-//			}
-//			'''
-//		And a test result xml file 
-//			'''
-//			<?xml version="1.0" encoding="UTF-8" ?>
-//			<testsuite failures="1" time="0.017" errors="0" skipped="0" tests="1" name="example.AddingValuesSpec">
-//			  <properties>
-//			    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
-//			  </properties>
-//			  <testcase time="0.017" classname="example.AddingValuesSpec" name="4 + 3 is 8">
-//			    <failure message="
-//			Expected 4 + 3 =&gt; 8 but
-//			     4 + 3 is &lt;7&gt;
-//			" type="java.lang.AssertionError">java.lang.AssertionError: 
-//			Expected 4 + 3 =&gt; 8 but
-//			     4 + 3 is &lt;7&gt;
-//				at org.junit.Assert.fail(Assert.java:93)
-//				at org.junit.Assert.assertTrue(Assert.java:43)
-//				at example.AddingValuesSpec.__43Is8(AddingValuesSpec.java:22)
-//			</failure>
-//			  </testcase>
-//			</testsuite>	
-//			'''
-//		Then the spec execution "failed"
+	Scenario: Matching failed Spec runs
+	
+		Given a specification 
+			'''
+			package example
+			
+			describe "Adding values"{
+				fact "4 + 3 is 8"{
+					4 + 3 => 8
+				}
+			}
+			'''
+		And a test result xml file 
+			'''
+			<?xml version="1.0" encoding="UTF-8" ?>
+			<testsuite failures="1" time="0.017" errors="0" skipped="0" tests="1" name="example.AddingValuesSpec">
+			  <properties>
+			    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+			  </properties>
+			  <testcase time="0.017" classname="example.AddingValuesSpec" name="4 + 3 is 8">
+			    <failure message="
+			Expected 4 + 3 =&gt; 8 but
+			     4 + 3 is &lt;7&gt;
+			" type="java.lang.AssertionError">java.lang.AssertionError: 
+			Expected 4 + 3 =&gt; 8 but
+			     4 + 3 is &lt;7&gt;
+				at org.junit.Assert.fail(Assert.java:93)
+				at org.junit.Assert.assertTrue(Assert.java:43)
+				at example.AddingValuesSpec.__43Is8(AddingValuesSpec.java:22)
+			</failure>
+			  </testcase>
+			</testsuite>	
+			'''
+		Then the spec execution "failed"

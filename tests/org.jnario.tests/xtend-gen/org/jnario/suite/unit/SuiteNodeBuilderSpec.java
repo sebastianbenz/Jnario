@@ -36,6 +36,7 @@ public class SuiteNodeBuilderSpec {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("package test");
       _builder.newLine();
+      _builder.newLine();
       _builder.append(s, "");
       _builder.newLineIfNotEmpty();
       final CharSequence input = _builder;

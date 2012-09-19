@@ -3,6 +3,7 @@ package org.jnario.report;
 import java.util.List;
 import org.eclipse.xtend.lib.Data;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
 import org.jnario.report.SpecFailure;
@@ -17,6 +18,17 @@ public class SpecExecution {
       return _specExecution;
     }
   }.apply();
+  
+  public static SpecExecution passingSpec(final String className, final String name, final double executionTimeInSeconds) {
+    List<SpecFailure> _emptyList = CollectionLiterals.<SpecFailure>emptyList();
+    SpecExecution _specExecution = new SpecExecution(className, name, executionTimeInSeconds, _emptyList);
+    return _specExecution;
+  }
+  
+  public static SpecExecution failingSpec(final String className, final String name, final double executionTimeInSeconds, final SpecFailure... failures) {
+    SpecExecution _specExecution = new SpecExecution(className, name, executionTimeInSeconds, ((List<SpecFailure>)Conversions.doWrapArray(failures)));
+    return _specExecution;
+  }
   
   private final String _className;
   
@@ -43,7 +55,8 @@ public class SpecExecution {
   }
   
   public boolean hasPassed() {
-    return true;
+    List<SpecFailure> _failures = this.getFailures();
+    return _failures.isEmpty();
   }
   
   public SpecExecution(final String className, final String name, final double executionTimeInSeconds, final List<SpecFailure> failures) {

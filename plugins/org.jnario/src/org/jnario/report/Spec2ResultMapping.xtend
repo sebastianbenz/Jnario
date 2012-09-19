@@ -1,21 +1,20 @@
 package org.jnario.report
 
-import org.jnario.Specification
-import org.jnario.report.SpecExecution
-import java.util.List
 import com.google.inject.Inject
+import java.util.List
+import org.jnario.Executable
 
 class Spec2ResultMapping implements SpecExecutionAcceptor{
 
 	val List<SpecExecution> results = newLinkedList
-	val IsMatchingSpec matcher
+	val Executable2ResultMatcher matcher
 
-	@Inject	new(IsMatchingSpec matcher){
+	@Inject	new(Executable2ResultMatcher matcher){
 		this.matcher = matcher
 	}
 
-	def SpecExecution getResult(Specification specification){
-		val result = results.filter[matcher.matches(specification, it)].head
+	def SpecExecution getResult(Executable executable){
+		val result = results.filter[matcher.matches(executable, it)].head
 		if(result == null){
 			return SpecExecution::NO_EXECUTION
 		}

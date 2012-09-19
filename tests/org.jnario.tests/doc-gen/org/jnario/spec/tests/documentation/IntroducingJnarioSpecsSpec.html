@@ -78,7 +78,7 @@ describe "A Stack"{
  }
  // ...
 }
-</pre><p>we see that the string description looks pretty similar to the actual code. We can make this even more obvious by replacing <code>new Stack().size =&gt; 0</code> with <code>new Stack().size should be 0</code>, using the more descriptive <code>should be</code> assertion instead of <code>=&gt;</code>. In Jnario you can avoid such redundancies between code and description by leaving the description out. The code becomes the actual description:</p>
+</pre><p>we see that the string description looks pretty similar to the actual code. We can make this even more obvious by replacing <code>new Stack().size =&gt; 0</code> with <code>new Stack().size should be 0</code>, using the more descriptive <code>should be</code> assertion instead of <code>=&gt;</code>. In Jnario you can avoid such redundancies between code and description by leaving the description out. The code becomes the actual description:</p>
 <pre class="prettyprint lang-none">A Stack
   - new Stack().size should be 0
   - increases its size when pushing an element</pre><p><span class="label label-important">Important</span> Facts without description can only have a single statement. If you need more statements, you should add a description.</p><p>Here is the updated version of our specification:</p>
@@ -475,7 +475,7 @@ describe &quot;Introducing Jnario Specs&quot;{
         * we see that the string description looks pretty similar to the actual code.
         * We can make this even more obvious by replacing `new Stack().size =&gt; 0` 
         * with `new Stack().size should be 0`, using the more descriptive `should be`
-        * assertion &#147;instead of `=&gt;`. In Jnario you can avoid such redundancies between code 
+        * assertion instead of `=&gt;`. In Jnario you can avoid such redundancies between code 
         * and description by leaving the description out. The code becomes 
         * the actual description:
         * 

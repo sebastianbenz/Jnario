@@ -108,7 +108,7 @@ describe StepNameProvider{
 			examples.forEach[
 				parseScenario('''
 					Scenario: scenario
-					«step»
+					Â«stepÂ»
 				''')
 				subject.removeArguments(step) => result
 			]
@@ -151,7 +151,7 @@ describe StepNameProvider{
 	def parseScenario(CharSequence s){
 		val input = '''
 			Feature: example
-			«s»
+			Â«sÂ»
 		'''
 		modelStore.parseScenario(input)
 	}

@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.util.StringInputStream;
 import org.hamcrest.StringDescription;
-import org.jnario.Specification;
+import org.jnario.Executable;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.SpecTestCreator;
 import org.jnario.lib.JnarioIterableExtensions;
@@ -24,6 +24,7 @@ import org.jnario.runner.Extension;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.jnario.spec.spec.Example;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -42,8 +43,8 @@ public class ParsingSpecResultsFromJUnitXMLReportsFeatureMatchingSuccessfullSpec
     String _first = JnarioIterableExtensions.<String>first(args);
     Resource _parseSpec = this._modelStore.parseSpec(_first);
     TreeIterator<EObject> _allContents = _parseSpec.getAllContents();
-    Iterator<Specification> _filter = Iterators.<Specification>filter(_allContents, Specification.class);
-    Specification _first_1 = JnarioIteratorExtensions.<Specification>first(_filter);
+    Iterator<Example> _filter = Iterators.<Example>filter(_allContents, Example.class);
+    Example _first_1 = JnarioIteratorExtensions.<Example>first(_filter);
     this.specification = _first_1;
   }
   
@@ -89,5 +90,5 @@ public class ParsingSpecResultsFromJUnitXMLReportsFeatureMatchingSuccessfullSpec
   @Inject
   SpecResultParser resultParser;
   
-  Specification specification;
+  Executable specification;
 }

@@ -8,8 +8,8 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.jnario.Specification;
-import org.jnario.report.IsMatchingSpec;
+import org.jnario.Executable;
+import org.jnario.report.Executable2ResultMatcher;
 import org.jnario.report.SpecExecution;
 import org.jnario.report.SpecExecutionAcceptor;
 
@@ -22,17 +22,17 @@ public class Spec2ResultMapping implements SpecExecutionAcceptor {
     }
   }.apply();
   
-  private final IsMatchingSpec matcher;
+  private final Executable2ResultMatcher matcher;
   
   @Inject
-  public Spec2ResultMapping(final IsMatchingSpec matcher) {
+  public Spec2ResultMapping(final Executable2ResultMatcher matcher) {
     this.matcher = matcher;
   }
   
-  public SpecExecution getResult(final Specification specification) {
+  public SpecExecution getResult(final Executable executable) {
     final Function1<SpecExecution,Boolean> _function = new Function1<SpecExecution,Boolean>() {
         public Boolean apply(final SpecExecution it) {
-          boolean _matches = Spec2ResultMapping.this.matcher.matches(specification, it);
+          boolean _matches = Spec2ResultMapping.this.matcher.matches(executable, it);
           return Boolean.valueOf(_matches);
         }
       };
