@@ -16,7 +16,9 @@ import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.JnarioIteratorExtensions;
 import org.jnario.lib.Should;
 import org.jnario.lib.StepArguments;
+import org.jnario.report.Failed;
 import org.jnario.report.HashBasedSpec2ResultMapping;
+import org.jnario.report.Passed;
 import org.jnario.report.SpecExecution;
 import org.jnario.report.SpecResultParser;
 import org.jnario.runner.CreateWith;
@@ -66,14 +68,20 @@ public class ParsingSpecResultsFromJUnitXMLReportsFeatureMatchingFailedSpecRuns 
   public void thenTheSpecExecutionFailed() {
     StepArguments _stepArguments = new StepArguments("failed");
     final StepArguments args = _stepArguments;
+    final SpecExecution result = this.spec2ResultMapping.getResult(this.specification);
     String _first = JnarioIterableExtensions.<String>first(args);
-    final boolean shouldPass = Objects.equal(_first, "passed");
-    SpecExecution _result = this.spec2ResultMapping.getResult(this.specification);
-    boolean _hasPassed = _result.hasPassed();
-    boolean _doubleArrow = Should.operator_doubleArrow(Boolean.valueOf(_hasPassed), Boolean.valueOf(shouldPass));
-    Assert.assertTrue("\nExpected  but"
-     + "\n      is " + new StringDescription().appendValue(Boolean.valueOf(_hasPassed)).toString() + "\n", _doubleArrow);
-    
+    boolean _equals = Objects.equal(_first, "passed");
+    if (_equals) {
+      boolean _doubleArrow = Should.operator_doubleArrow(result, Passed.class);
+      Assert.assertTrue("\nExpected  but"
+       + "\n      is " + new StringDescription().appendValue(Boolean.valueOf(_doubleArrow)).toString() + "\n", _doubleArrow);
+      
+    } else {
+      boolean _doubleArrow_1 = Should.operator_doubleArrow(result, Failed.class);
+      Assert.assertTrue("\nExpected  but"
+       + "\n      is " + new StringDescription().appendValue(Boolean.valueOf(_doubleArrow_1)).toString() + "\n", _doubleArrow_1);
+      
+    }
   }
   
   @Inject

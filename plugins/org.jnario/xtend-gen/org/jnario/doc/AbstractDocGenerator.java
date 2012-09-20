@@ -39,7 +39,6 @@ import org.jnario.doc.Filter;
 import org.jnario.doc.HtmlFile;
 import org.jnario.doc.HtmlFileBuilder;
 import org.jnario.doc.WhiteSpaceNormalizer;
-import org.jnario.report.EmptyMapping;
 import org.jnario.report.Spec2ResultMapping;
 import org.pegdown.PegDownProcessor;
 
@@ -66,11 +65,11 @@ public abstract class AbstractDocGenerator implements IGenerator {
   @Inject
   private DocumentationProvider documentationProvider;
   
+  @Inject
   private Spec2ResultMapping spec2ResultMapping;
   
   public void doGenerate(final Resource input, final IFileSystemAccess fsa) {
-    EmptyMapping _emptyMapping = new EmptyMapping();
-    this.doGenerate(input, fsa, _emptyMapping);
+    this.doGenerate(input, fsa, this.spec2ResultMapping);
   }
   
   public void doGenerate(final Resource input, final IFileSystemAccess fsa, final Spec2ResultMapping spec2ResultMapping) {

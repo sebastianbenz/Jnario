@@ -16,14 +16,10 @@ import static java.lang.Character.toUpperCase;
 import static java.util.Collections.singletonMap;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.Scanner;
 
-import junit.framework.Assert;
-
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.xtext.parsetree.reconstr.XtextSerializationException;
 import org.eclipse.xtext.resource.SaveOptions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 /**
@@ -97,7 +93,7 @@ public class Strings extends org.eclipse.xtext.util.Strings{
 		boolean lastWhiteSpace = true;
 		for(int i = 0; i < string.length(); i++){
 			char c = string.charAt(i);
-			if(isLetterOrDigit(c) || isTrailingEscapeCharactre(i, c)){
+			if(isLetterOrDigit(c) || isTrailingEscapeCharacter(i, c)){
 				if(lastWhiteSpace){
 					c = toUpperCase(c);
 				}
@@ -115,7 +111,7 @@ public class Strings extends org.eclipse.xtext.util.Strings{
 		return b;
 	}
 
-	private static boolean isTrailingEscapeCharactre(int i, char c) {
+	private static boolean isTrailingEscapeCharacter(int i, char c) {
 		return i == 0 && c == '_';
 	}
 
@@ -207,7 +203,7 @@ public class Strings extends org.eclipse.xtext.util.Strings{
 			return null;
 		}
 		result = result.replaceAll("\\r?\\n\\s*", " ");
-		return replace(result, '(', '[', ')', ']', '#', '-').trim();
+		return convertToJavaString(replace(result, '(', '[', ')', ']', '#', '-'), true).trim();
 	}
 	
 	private static String replace(String s, char... replacements){

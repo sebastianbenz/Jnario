@@ -16,7 +16,9 @@ import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.JnarioIteratorExtensions;
 import org.jnario.lib.Should;
 import org.jnario.lib.StepArguments;
+import org.jnario.report.Failed;
 import org.jnario.report.HashBasedSpec2ResultMapping;
+import org.jnario.report.Passed;
 import org.jnario.report.SpecExecution;
 import org.jnario.report.SpecResultParser;
 import org.jnario.runner.CreateWith;
@@ -66,18 +68,20 @@ public class ParsingSpecResultsFromJUnitXMLReportsFeatureMatchingSuccessfullSpec
   public void thenTheSpecExecutionPassed() {
     StepArguments _stepArguments = new StepArguments("passed");
     final StepArguments args = _stepArguments;
+    final SpecExecution result = this.spec2ResultMapping.getResult(this.specification);
     String _first = JnarioIterableExtensions.<String>first(args);
-    final boolean shouldPass = Objects.equal(_first, "passed");
-    SpecExecution _result = this.spec2ResultMapping.getResult(this.specification);
-    boolean _hasPassed = _result.hasPassed();
-    boolean _doubleArrow = Should.operator_doubleArrow(Boolean.valueOf(_hasPassed), Boolean.valueOf(shouldPass));
-    Assert.assertTrue("\nExpected spec2ResultMapping.getResult(specification).hasPassed => shouldPass but"
-     + "\n     spec2ResultMapping.getResult(specification).hasPassed is " + new StringDescription().appendValue(Boolean.valueOf(_hasPassed)).toString()
-     + "\n     spec2ResultMapping.getResult(specification) is " + new StringDescription().appendValue(_result).toString()
-     + "\n     spec2ResultMapping is " + new StringDescription().appendValue(this.spec2ResultMapping).toString()
-     + "\n     specification is " + new StringDescription().appendValue(this.specification).toString()
-     + "\n     shouldPass is " + new StringDescription().appendValue(Boolean.valueOf(shouldPass)).toString() + "\n", _doubleArrow);
-    
+    boolean _equals = Objects.equal(_first, "passed");
+    if (_equals) {
+      boolean _doubleArrow = Should.operator_doubleArrow(result, Passed.class);
+      Assert.assertTrue("\nExpected result => typeof(Passed) but"
+       + "\n     result is " + new StringDescription().appendValue(result).toString() + "\n", _doubleArrow);
+      
+    } else {
+      boolean _doubleArrow_1 = Should.operator_doubleArrow(result, Failed.class);
+      Assert.assertTrue("\nExpected result => typeof(Failed) but"
+       + "\n     result is " + new StringDescription().appendValue(result).toString() + "\n", _doubleArrow_1);
+      
+    }
   }
   
   @Inject

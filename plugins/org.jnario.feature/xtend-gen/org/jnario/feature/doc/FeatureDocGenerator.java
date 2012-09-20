@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.HtmlFile;
@@ -20,7 +21,6 @@ import org.jnario.feature.feature.Step;
 import org.jnario.feature.jvmmodel.StepArgumentsProvider;
 import org.jnario.feature.naming.FeatureClassNameProvider;
 import org.jnario.feature.naming.StepNameProvider;
-import org.jnario.util.Strings;
 
 @SuppressWarnings("all")
 public class FeatureDocGenerator extends AbstractDocGenerator {
@@ -144,7 +144,8 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
   }
   
   private String format(final Step step) {
-    String result = this._stepNameProvider.describe(step);
+    String _describe = this._stepNameProvider.describe(step);
+    String result = Strings.convertFromJavaString(_describe, true);
     String _highlighFirstWord = this.highlighFirstWord(result);
     result = _highlighFirstWord;
     String _highlightArguments = this.highlightArguments(result);
@@ -165,7 +166,7 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
   }
   
   private String highlighFirstWord(final String s) {
-    String _firstWord = Strings.getFirstWord(s);
+    String _firstWord = org.jnario.util.Strings.getFirstWord(s);
     String _plus = ("(" + _firstWord);
     String _plus_1 = (_plus + ")");
     String _replaceFirst = s.replaceFirst(_plus_1, "<strong>$1</strong>");

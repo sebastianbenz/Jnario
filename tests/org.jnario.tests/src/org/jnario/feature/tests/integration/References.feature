@@ -211,12 +211,12 @@ Feature: References for steps
 						println(feature1)
 			                          
 				Scenario: Scenario 3
-					When I have a feature with a background and two scenarios 'Feature: Feature 1'         
+					When I have a feature with a background and two scenarios "Feature: Feature 1"         
 						jnarioFile2 = args.first
 					Then it should execute successfully
 					     
 				Scenario: Scenario 4
-					When I have a feature 'Feature: Feature 1'
+					When I have a feature "Feature: Feature 1"
 						feature1 = args.first
 					Then both should execute successfully 
 					'''

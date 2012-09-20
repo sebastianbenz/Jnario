@@ -2,32 +2,23 @@ package org.jnario.report;
 
 import java.util.List;
 import org.eclipse.xtend.lib.Data;
-import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
+import org.jnario.report.Failed;
+import org.jnario.report.Passed;
 import org.jnario.report.SpecFailure;
 
 @Data
 @SuppressWarnings("all")
-public class SpecExecution {
-  public final static SpecExecution NO_EXECUTION = new Function0<SpecExecution>() {
-    public SpecExecution apply() {
-      List<SpecFailure> _emptyList = CollectionLiterals.<SpecFailure>emptyList();
-      SpecExecution _specExecution = new SpecExecution("", "", 0.0, _emptyList);
-      return _specExecution;
-    }
-  }.apply();
-  
-  public static SpecExecution passingSpec(final String className, final String name, final double executionTimeInSeconds) {
-    List<SpecFailure> _emptyList = CollectionLiterals.<SpecFailure>emptyList();
-    SpecExecution _specExecution = new SpecExecution(className, name, executionTimeInSeconds, _emptyList);
-    return _specExecution;
+public abstract class SpecExecution {
+  public static Passed passingSpec(final String className, final String name, final double executionTimeInSeconds) {
+    Passed _passed = new Passed(className, name, executionTimeInSeconds);
+    return _passed;
   }
   
-  public static SpecExecution failingSpec(final String className, final String name, final double executionTimeInSeconds, final SpecFailure... failures) {
-    SpecExecution _specExecution = new SpecExecution(className, name, executionTimeInSeconds, ((List<SpecFailure>)Conversions.doWrapArray(failures)));
-    return _specExecution;
+  public static Failed failingSpec(final String className, final String name, final double executionTimeInSeconds, final SpecFailure... failures) {
+    Failed _failed = new Failed(className, name, executionTimeInSeconds, ((Iterable<SpecFailure>)Conversions.doWrapArray(failures)));
+    return _failed;
   }
   
   private final String _className;
@@ -52,11 +43,6 @@ public class SpecExecution {
   
   public List<SpecFailure> getFailures() {
     return this._failures;
-  }
-  
-  public boolean hasPassed() {
-    List<SpecFailure> _failures = this.getFailures();
-    return _failures.isEmpty();
   }
   
   public SpecExecution(final String className, final String name, final double executionTimeInSeconds, final List<SpecFailure> failures) {

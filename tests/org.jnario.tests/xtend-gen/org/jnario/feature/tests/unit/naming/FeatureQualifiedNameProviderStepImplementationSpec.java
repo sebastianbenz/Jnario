@@ -40,10 +40,10 @@ public class FeatureQualifiedNameProviderStepImplementationSpec extends FeatureQ
   @Named("strips argument values")
   @Order(99)
   public void _stripsArgumentValues() throws Exception {
-    String _implementedStepName = this.implementedStepName("Given a step with \'arg\'.");
+    String _implementedStepName = this.implementedStepName("Given a step with \"arg\".");
     boolean _doubleArrow = Should.operator_doubleArrow(_implementedStepName, "myPackage.a step with \"\"");
-    Assert.assertTrue("\nExpected \"Given a step with \'arg\'.\".implementedStepName => \'myPackage.a step with \"\"\' but"
-     + "\n     \"Given a step with \'arg\'.\".implementedStepName is " + new StringDescription().appendValue(_implementedStepName).toString() + "\n", _doubleArrow);
+    Assert.assertTrue("\nExpected \"Given a step with \\\"arg\\\".\".implementedStepName => \'myPackage.a step with \"\"\' but"
+     + "\n     \"Given a step with \\\"arg\\\".\".implementedStepName is " + new StringDescription().appendValue(_implementedStepName).toString() + "\n", _doubleArrow);
     
   }
 }

@@ -73,7 +73,7 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 	'''
 
 	def private format(Step step){
-		var result = step.describe
+		var result = step.describe.convertFromJavaString(true)
 		result = result.highlighFirstWord
 		result = result.highlightArguments
 		result = result.markdown2Html

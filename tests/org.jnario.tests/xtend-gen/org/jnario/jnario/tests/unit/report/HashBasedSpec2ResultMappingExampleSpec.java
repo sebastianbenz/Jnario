@@ -1,78 +1,43 @@
-package org.jnario.spec.tests.unit.report;
+package org.jnario.jnario.tests.unit.report;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.hamcrest.StringDescription;
-import org.jnario.lib.Should;
+import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingSpec;
+import org.jnario.report.Passed;
 import org.jnario.report.SpecExecution;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.spec.spec.Example;
-import org.jnario.spec.tests.unit.report.HashBasedSpec2ResultMappingSpec;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("Example")
 public class HashBasedSpec2ResultMappingExampleSpec extends HashBasedSpec2ResultMappingSpec {
-  final Example anyExecutable = new Function0<Example>() {
-    public Example apply() {
-      Example _mock = Mockito.<Example>mock(Example.class);
-      return _mock;
-    }
-  }.apply();
-  
-  final SpecExecution aResult = new Function0<SpecExecution>() {
-    public SpecExecution apply() {
-      SpecExecution _passingSpec = SpecExecution.passingSpec("example.SomethingSpec", "a fact", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
+  final Passed aResult = new Function0<Passed>() {
+    public Passed apply() {
+      Passed _passingSpec = SpecExecution.passingSpec("example.SomethingSpec", "a fact", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
       return _passingSpec;
     }
   }.apply();
   
-  final SpecExecution aResultWithDifferentClassName = new Function0<SpecExecution>() {
-    public SpecExecution apply() {
-      SpecExecution _passingSpec = SpecExecution.passingSpec("example.DifferentSpec", "a fact", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
+  final Passed aResultWithDifferentClassName = new Function0<Passed>() {
+    public Passed apply() {
+      Passed _passingSpec = SpecExecution.passingSpec("example.DifferentSpec", "a fact", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
       return _passingSpec;
     }
   }.apply();
   
-  final SpecExecution aResultWithDifferentName = new Function0<SpecExecution>() {
-    public SpecExecution apply() {
-      SpecExecution _passingSpec = SpecExecution.passingSpec("example.SomethingSpec", "another fact", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
+  final Passed aResultWithDifferentName = new Function0<Passed>() {
+    public Passed apply() {
+      Passed _passingSpec = SpecExecution.passingSpec("example.SomethingSpec", "another fact", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
       return _passingSpec;
     }
   }.apply();
-  
-  @Test
-  @Named("returns empty execution for null")
-  @Order(99)
-  public void _returnsEmptyExecutionForNull() throws Exception {
-    SpecExecution _result = this.subject.getResult(null);
-    boolean _doubleArrow = Should.operator_doubleArrow(_result, SpecExecution.NO_EXECUTION);
-    Assert.assertTrue("\nExpected subject.getResult(null) => NO_EXECUTION but"
-     + "\n     subject.getResult(null) is " + new StringDescription().appendValue(_result).toString()
-     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
-     + "\n     NO_EXECUTION is " + new StringDescription().appendValue(SpecExecution.NO_EXECUTION).toString() + "\n", _doubleArrow);
-    
-  }
-  
-  @Test
-  @Named("returns empty execution if no matching spec exists")
-  @Order(99)
-  public void _returnsEmptyExecutionIfNoMatchingSpecExists() throws Exception {
-    SpecExecution _result = this.subject.getResult(this.anyExecutable);
-    boolean _doubleArrow = Should.operator_doubleArrow(_result, SpecExecution.NO_EXECUTION);
-    Assert.assertTrue("\nExpected subject.getResult(anyExecutable) => NO_EXECUTION but"
-     + "\n     subject.getResult(anyExecutable) is " + new StringDescription().appendValue(_result).toString()
-     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
-     + "\n     anyExecutable is " + new StringDescription().appendValue(this.anyExecutable).toString()
-     + "\n     NO_EXECUTION is " + new StringDescription().appendValue(SpecExecution.NO_EXECUTION).toString() + "\n", _doubleArrow);
-    
-  }
   
   @Test
   @Named("matches if classname and name are equal")
@@ -125,7 +90,7 @@ public class HashBasedSpec2ResultMappingExampleSpec extends HashBasedSpec2Result
     _builder.append("}");
     _builder.newLine();
     this.m.parseSpec(_builder);
-    final SpecExecution pendingResult = SpecExecution.passingSpec("example.SomethingSpec", "a fact [PENDING]", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
+    final Passed pendingResult = SpecExecution.passingSpec("example.SomethingSpec", "a fact [PENDING]", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
     this.subject.accept(pendingResult);
     Example _example = this.example();
     boolean _should_match = this.should_match(_example, pendingResult);
@@ -155,7 +120,7 @@ public class HashBasedSpec2ResultMappingExampleSpec extends HashBasedSpec2Result
     _builder_1.newLine();
     String _string = _builder_1.toString();
     final String factName = _string.trim();
-    final SpecExecution resultWithUnicodeChars = SpecExecution.passingSpec("example.SomethingSpec", factName, HashBasedSpec2ResultMappingSpec.anyExecutionTime);
+    final Passed resultWithUnicodeChars = SpecExecution.passingSpec("example.SomethingSpec", factName, HashBasedSpec2ResultMappingSpec.anyExecutionTime);
     this.subject.accept(resultWithUnicodeChars);
     Example _example = this.example();
     boolean _should_match = this.should_match(_example, resultWithUnicodeChars);

@@ -9,23 +9,24 @@ package org.jnario.doc
 
 import com.google.inject.Inject
 import java.util.List
+import org.apache.commons.lang.StringEscapeUtils
+import org.apache.log4j.Logger
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtend.core.xtend.XtendClass
 import org.eclipse.xtend.core.xtend.XtendFile
+import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils
 import org.eclipse.xtext.xbase.XBlockExpression
 import org.eclipse.xtext.xbase.XExpression
-import org.pegdown.PegDownProcessor
-import org.eclipse.xtext.EcoreUtil2
 import org.jnario.ExampleTable
-import org.apache.commons.lang.StringEscapeUtils
-import org.apache.log4j.Logger
-import org.jnario.report.Spec2ResultMapping
-import org.jnario.report.EmptyMapping
 import org.jnario.Executable
+import org.jnario.report.Spec2ResultMapping
+import org.pegdown.PegDownProcessor
+
+import static org.jnario.doc.AbstractDocGenerator.*
 
 import static extension org.eclipse.xtext.util.Strings.*
 import static extension org.jnario.util.Strings.*
@@ -40,10 +41,10 @@ abstract class AbstractDocGenerator implements IGenerator {
 	@Inject extension PegDownProcessor
 	@Inject extension HtmlFileBuilder
 	@Inject extension DocumentationProvider documentationProvider
-	Spec2ResultMapping spec2ResultMapping
+	@Inject Spec2ResultMapping spec2ResultMapping
 
 	override doGenerate(Resource input, IFileSystemAccess fsa) {
-		doGenerate(input, fsa, new EmptyMapping)
+		doGenerate(input, fsa, spec2ResultMapping)
 	}
 
 	def doGenerate(Resource input, IFileSystemAccess fsa, Spec2ResultMapping spec2ResultMapping) {

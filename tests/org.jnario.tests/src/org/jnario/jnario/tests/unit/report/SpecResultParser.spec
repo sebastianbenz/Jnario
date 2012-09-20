@@ -1,12 +1,13 @@
 package org.jnario.jnario.tests.unit.report
 
 import org.eclipse.xtext.util.StringInputStream
+import org.jnario.report.Failed
+import org.jnario.report.Passed
 import org.jnario.report.SpecExecutionAcceptor
-import org.jnario.report.SpecExecution
-import org.jnario.report.SpecResultParser
 import org.jnario.report.SpecFailure
+import org.jnario.report.SpecResultParser
 
-import static org.jnario.lib.JnarioCollectionLiterals.*
+import static org.jnario.jnario.tests.unit.report.SpecResultParserSpec.*
 import static org.mockito.Mockito.*
 
 describe SpecResultParser{
@@ -26,7 +27,7 @@ describe SpecResultParser{
 		'''.toXml.parse 
 		
 		verify(acceptor).accept(passingSpec)
-	}
+	} 
 	
 	fact "parses specs with failure from xml"{ 
 		'''
@@ -61,16 +62,13 @@ describe SpecResultParser{
 	}
 	
 	def passingSpec(){
-		newSpecExecution()
+		new Passed(CLASSNAME, NAME, EXECUTION_TIME)
 	}
 	
 	def failingSpec(){
-		newSpecExecution(new SpecFailure("a message", "java.lang.AssertionError", "the stacktrace"))
+		new Failed(CLASSNAME, NAME, EXECUTION_TIME, newArrayList(new SpecFailure("a message", "java.lang.AssertionError", "the stacktrace")))
 	}
 	
-	def newSpecExecution(SpecFailure... failures){
-		new SpecExecution(CLASSNAME, NAME, EXECUTION_TIME, failures)
-	}
 	
 	def toXml(CharSequence content)'''
 		<?xml version="1.0" encoding="UTF-8" ?>

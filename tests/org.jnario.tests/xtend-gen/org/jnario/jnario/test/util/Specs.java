@@ -41,9 +41,14 @@ public class Specs {
   }
   
   public static ExampleGroup exampleGroupWith(final Example... examples) {
+    ExampleGroup _exampleGroup = Specs.exampleGroup("with examples", examples);
+    return _exampleGroup;
+  }
+  
+  public static ExampleGroup exampleGroup(final String name, final Example... examples) {
     ExampleGroup _xblockexpression = null;
     {
-      final ExampleGroup group = Specs.exampleGroup("with examples");
+      final ExampleGroup group = Specs.exampleGroup(name);
       EList<XtendMember> _members = group.getMembers();
       _members.addAll(((Collection<? extends XtendMember>)Conversions.doWrapArray(examples)));
       _xblockexpression = (group);

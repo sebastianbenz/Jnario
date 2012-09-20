@@ -31,7 +31,11 @@ class Specs {
 	}
 	
 	def static exampleGroupWith(Example... examples){
-		val group = exampleGroup("with examples")
+		exampleGroup("with examples", examples)
+	}
+	
+	def static exampleGroup(String name, Example... examples){
+		val group = exampleGroup(name)
 		group.members.addAll(examples)
 		group
 	}

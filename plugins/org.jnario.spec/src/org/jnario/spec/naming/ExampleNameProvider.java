@@ -9,7 +9,6 @@ package org.jnario.spec.naming;
 
 import static java.lang.Math.max;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
-import static org.eclipse.xtext.util.Strings.convertToJavaString;
 import static org.eclipse.xtext.util.Strings.toFirstLower;
 import static org.eclipse.xtext.util.Strings.toFirstUpper;
 import static org.jnario.util.Nodes.textForFeature;
@@ -21,6 +20,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendMember;
+import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.TypesPackage;
@@ -65,7 +65,7 @@ public class ExampleNameProvider extends JnarioNameProvider{
 		if(exampleGroup.getName() != null){
 			result.append(exampleGroup.getName());
 		}
-		return convertToJavaString(makeJunitConform(result));
+		return makeJunitConform(result);
 	}
 
 	protected QualifiedName getOperationName(ExampleGroup exampleGroup) {
@@ -85,7 +85,7 @@ public class ExampleNameProvider extends JnarioNameProvider{
 		if(example.isPending()){
 			markAsPending(sb);
 		}
-		return convertToJavaString(makeJunitConform(sb)).trim();
+		return makeJunitConform(sb).trim();
 	}
 
 	public String toJavaClassName(ExampleGroup exampleGroup) {
@@ -173,9 +173,11 @@ public class ExampleNameProvider extends JnarioNameProvider{
 	
 	protected StringBuilder internalGetName(ExampleGroup exampleGroup) {
 		StringBuilder result = new StringBuilder();
-		ExampleGroup parent = getContainerOfType(exampleGroup.eContainer(), ExampleGroup.class);
-		if(parent != null){
-			result.append(internalGetName(parent));
+		if(exampleGroup.eContainer() != null){
+			ExampleGroup parent = getContainerOfType(exampleGroup.eContainer(), ExampleGroup.class);
+			if(parent != null){
+				result.append(internalGetName(parent));
+			}
 		}
 		if(exampleGroup.getTargetType() != null){
 			result.append(getTargetTypeName(exampleGroup));
@@ -232,6 +234,9 @@ public class ExampleNameProvider extends JnarioNameProvider{
 	}
 
 	public String describe(EObject eObject) {
+		if(eObject == null){
+			return null;
+		}
 		if (eObject instanceof ExampleGroup) {
 			return describe((ExampleGroup) eObject);
 		}
@@ -246,13 +251,20 @@ public class ExampleNameProvider extends JnarioNameProvider{
 	
 	
 	public String toJavaClassName(EObject eObject) {
+		if(eObject == null){
+			return null;
+		}
 		if (eObject instanceof ExampleGroup) {
 			return toJavaClassName((ExampleGroup) eObject);
 		}
 		if (eObject instanceof ExampleTable) {
 			return toJavaClassName((ExampleTable) eObject);
 		}
-		throw new UnsupportedOperationException("Unknown java class name for " + eObject.eClass().getName());
+		ExampleGroup exampleGroup = EcoreUtil2.getContainerOfType(eObject, ExampleGroup.class);
+		if(exampleGroup == null){
+			return null;
+		}
+		return toJavaClassName(exampleGroup);
 	}
 
 }

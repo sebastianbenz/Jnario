@@ -55,7 +55,7 @@ stepName(&quot;Given a step&quot;, null) should startWith(&quot;features.&quot;)
 &quot;Given a step with implementation.&quot;.implementedStepName =&gt; &quot;myPackage.a step with implementation&quot;</pre>
 </li><li><p id="strips_argument_values"><strong>strips argument values</strong></p>
 <pre class="prettyprint lang-spec linenums">
-&quot;Given a step with 'arg'.&quot;.implementedStepName =&gt; 'myPackage.a step with &quot;&quot;'</pre>
+&quot;Given a step with \&quot;arg\&quot;.&quot;.implementedStepName =&gt; 'myPackage.a step with &quot;&quot;'</pre>
 </li></ul>
 <h3 id="StepReference">StepReference</h3>
 <ul><li><p id="strips_keyword"><strong>strips keyword</strong></p>
@@ -66,7 +66,7 @@ stepName(&quot;Given a step&quot;, null) should startWith(&quot;features.&quot;)
 &quot;Given a step with implementation.&quot;.stepName =&gt; &quot;myPackage.a step with implementation&quot;</pre>
 </li><li><p id="strips_argument_values"><strong>strips argument values</strong></p>
 <pre class="prettyprint lang-spec linenums">
-&quot;Given a step with 'arg'.&quot;.stepName =&gt; 'myPackage.a step with &quot;&quot;'</pre>
+&quot;Given a step with \&quot;arg\&quot;.&quot;.stepName =&gt; 'myPackage.a step with &quot;&quot;'</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -112,7 +112,7 @@ describe FeatureQualifiedNameProvider {
       &quot;Given a step with implementation.&quot;.implementedStepName =&gt; &quot;myPackage.a step with implementation&quot;
     }
     fact &quot;strips argument values&quot;{
-      &quot;Given a step with 'arg'.&quot;.implementedStepName =&gt; 'myPackage.a step with &quot;&quot;'
+      &quot;Given a step with \&quot;arg\&quot;.&quot;.implementedStepName =&gt; 'myPackage.a step with &quot;&quot;'
     }
   }
   
@@ -124,7 +124,7 @@ describe FeatureQualifiedNameProvider {
       &quot;Given a step with implementation.&quot;.stepName =&gt; &quot;myPackage.a step with implementation&quot;
     }
     fact &quot;strips argument values&quot;{
-      &quot;Given a step with 'arg'.&quot;.stepName =&gt; 'myPackage.a step with &quot;&quot;'
+      &quot;Given a step with \&quot;arg\&quot;.&quot;.stepName =&gt; 'myPackage.a step with &quot;&quot;'
     }
   }
 

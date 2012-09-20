@@ -5,16 +5,21 @@ import javax.xml.parsers.SAXParserFactory
 import org.xml.sax.helpers.DefaultHandler
 import org.xml.sax.Attributes
 import org.xml.sax.SAXException
+import java.util.List
 
 class SpecResultParser extends DefaultHandler{
+	double currentExecutionTime
+	String currentClassName
+	String currentName
 	
 	SpecExecutionAcceptor acceptor
-	SpecExecution currentExecution
 	
 	String currentFailureType
 	String currentFailureMessage
 	String currentFailureStacktrace
-		
+	
+	List<SpecFailure> failures
+	
 	def parse(InputStream stream, SpecExecutionAcceptor acceptor){
 		this.acceptor = acceptor
 		val factory = SAXParserFactory::newInstance
@@ -25,7 +30,10 @@ class SpecResultParser extends DefaultHandler{
 	override startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
 		switch(qName){
 			case SpecResultTags::NODE_TESTCASE:{
-				acceptor.accept(newSpecExecution(attributes))
+				currentClassName = attributes.getValue(SpecResultTags::ATTR_CLASSNAME)
+				currentName = attributes.getValue(SpecResultTags::ATTR_NAME)
+				currentExecutionTime = attributes.readTime
+				failures = newArrayList
 			}		
 			case SpecResultTags::NODE_ERROR: {
 				saveFailureAttributes(attributes)
@@ -43,6 +51,12 @@ class SpecResultParser extends DefaultHandler{
 	
 	override endElement(String uri, String localName, String qName) throws SAXException {
 		switch(qName){
+			case SpecResultTags::NODE_TESTCASE:{
+				acceptor.accept(newSpecExecution())
+				currentClassName = null
+				currentName = null
+				currentExecutionTime = 0.0
+			}	
 			case SpecResultTags::NODE_ERROR: {
 				addFailure
 			}
@@ -53,7 +67,7 @@ class SpecResultParser extends DefaultHandler{
 	}
 	
 	def addFailure(){
-		currentExecution.failures += new SpecFailure(
+		failures += new SpecFailure(
 			currentFailureMessage,
 			currentFailureType,
 			currentFailureStacktrace
@@ -68,12 +82,12 @@ class SpecResultParser extends DefaultHandler{
 		currentFailureStacktrace = String::valueOf(ch, start, length)
 	}
 	
-	def SpecExecution newSpecExecution(Attributes attributes) {
-		currentExecution = new SpecExecution(
-			attributes.getValue(SpecResultTags::ATTR_CLASSNAME),
-			attributes.getValue(SpecResultTags::ATTR_NAME),
-			attributes.readTime, newArrayList
-		)
+	def SpecExecution newSpecExecution() {
+		if(failures.empty){
+			new Passed(currentClassName, currentName, currentExecutionTime)
+		}else{
+			new Failed(currentClassName, currentName, currentExecutionTime, failures)
+		}
 	}
 	
 	def private readTime(Attributes attributes) {

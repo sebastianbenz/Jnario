@@ -37,7 +37,7 @@ describe FeatureQualifiedNameProvider {
 			"Given a step with implementation.".implementedStepName => "myPackage.a step with implementation"
 		}
 		fact "strips argument values"{
-			"Given a step with 'arg'.".implementedStepName => 'myPackage.a step with ""'
+			"Given a step with \"arg\".".implementedStepName => 'myPackage.a step with ""'
 		}
 	}
 	
@@ -49,7 +49,7 @@ describe FeatureQualifiedNameProvider {
 			"Given a step with implementation.".stepName => "myPackage.a step with implementation"
 		}
 		fact "strips argument values"{
-			"Given a step with 'arg'.".stepName => 'myPackage.a step with ""'
+			"Given a step with \"arg\".".stepName => 'myPackage.a step with ""'
 		}
 	}
 

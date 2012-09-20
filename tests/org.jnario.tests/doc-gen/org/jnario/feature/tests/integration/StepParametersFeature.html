@@ -272,7 +272,7 @@ Feature: Step Parameters
             Given the multine string: 
               '''hello'''
               x = args.first
-            Then it should be 'hello'
+            Then it should be \&quot;hello\&quot;
               x should be args.first
       &quot;
     Then it should execute successfully

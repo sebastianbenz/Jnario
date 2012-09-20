@@ -49,7 +49,7 @@ val actual =
     
       String input
     
-      Given a step with an argument \&quot;something\&quot;, another 'argument' and a multiline string:
+      Given a step with an argument \&quot;something\&quot;, another \&quot;argument\&quot; and a multiline string:
       '''
         import java.util.Collections.*;
         
@@ -63,7 +63,7 @@ val actual =
         input = args.first
         println(args.last)
       When I do something that is pending.
-      Then it results in 'something else'
+      Then it results in \&quot;something else\&quot;
         input + ' else' =&gt; args.first                                    
 &quot;.generateDoc
 
@@ -72,7 +72,7 @@ val expected = '''
     &lt;h3  id=&quot;Scenario_Example_Scenario&quot;&gt;Scenario: Example Scenario
     &lt;/h3&gt;
     &lt;ul&gt;
-    &lt;li&gt;&lt;p&gt;&lt;strong&gt;Given&lt;/strong&gt; a step with an argument &lt;code&gt;&quot;something&quot;&lt;/code&gt;, another &lt;code&gt;'argument'&lt;/code&gt; and a multiline string:&lt;/p&gt;&lt;pre&gt;import java.util.Collections.*;
+    &lt;li&gt;&lt;p&gt;&lt;strong&gt;Given&lt;/strong&gt; a step with an argument &lt;code&gt;&quot;something&quot;&lt;/code&gt;, another &lt;code&gt;&quot;argument&quot;&lt;/code&gt; and a multiline string:&lt;/p&gt;&lt;pre&gt;import java.util.Collections.*;
     
     public class Greeter{
       public static void main(String args[]){
@@ -87,7 +87,7 @@ val expected = '''
     &lt;ul&gt;
     &lt;/ul&gt;
     &lt;/li&gt;
-    &lt;li&gt;&lt;p&gt;&lt;strong&gt;Then&lt;/strong&gt; it results in &lt;code&gt;'something else'&lt;/code&gt;&lt;/p&gt;
+    &lt;li&gt;&lt;p&gt;&lt;strong&gt;Then&lt;/strong&gt; it results in &lt;code&gt;&quot;something else&quot;&lt;/code&gt;&lt;/p&gt;
     &lt;ul&gt;
     &lt;/ul&gt;
     &lt;/li&gt;
@@ -139,7 +139,7 @@ describe FeatureDocGenerator {
         
           String input
         
-          Given a step with an argument \&quot;something\&quot;, another 'argument' and a multiline string:
+          Given a step with an argument \&quot;something\&quot;, another \&quot;argument\&quot; and a multiline string:
           '''
             import java.util.Collections.*;
             
@@ -153,7 +153,7 @@ describe FeatureDocGenerator {
             input = args.first
             println(args.last)
           When I do something that is pending.
-          Then it results in 'something else'
+          Then it results in \&quot;something else\&quot;
             input + ' else' =&gt; args.first                                    
     &quot;.generateDoc
     
@@ -162,7 +162,7 @@ describe FeatureDocGenerator {
         &lt;h3  id=&quot;Scenario_Example_Scenario&quot;&gt;Scenario: Example Scenario
         &lt;/h3&gt;
         &lt;ul&gt;
-        &lt;li&gt;&lt;p&gt;&lt;strong&gt;Given&lt;/strong&gt; a step with an argument &lt;code&gt;&quot;something&quot;&lt;/code&gt;, another &lt;code&gt;'argument'&lt;/code&gt; and a multiline string:&lt;/p&gt;&lt;pre&gt;import java.util.Collections.*;
+        &lt;li&gt;&lt;p&gt;&lt;strong&gt;Given&lt;/strong&gt; a step with an argument &lt;code&gt;&quot;something&quot;&lt;/code&gt;, another &lt;code&gt;&quot;argument&quot;&lt;/code&gt; and a multiline string:&lt;/p&gt;&lt;pre&gt;import java.util.Collections.*;
         
         public class Greeter{
           public static void main(String args[]){
@@ -177,7 +177,7 @@ describe FeatureDocGenerator {
         &lt;ul&gt;
         &lt;/ul&gt;
         &lt;/li&gt;
-        &lt;li&gt;&lt;p&gt;&lt;strong&gt;Then&lt;/strong&gt; it results in &lt;code&gt;'something else'&lt;/code&gt;&lt;/p&gt;
+        &lt;li&gt;&lt;p&gt;&lt;strong&gt;Then&lt;/strong&gt; it results in &lt;code&gt;&quot;something else&quot;&lt;/code&gt;&lt;/p&gt;
         &lt;ul&gt;
         &lt;/ul&gt;
         &lt;/li&gt;

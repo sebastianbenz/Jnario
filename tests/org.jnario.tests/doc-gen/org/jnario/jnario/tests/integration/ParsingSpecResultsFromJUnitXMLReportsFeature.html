@@ -122,6 +122,8 @@ import org.jnario.spec.spec.Example
 import static extension org.jnario.lib.JnarioIterableExtensions.*
 import static extension org.jnario.lib.JnarioIteratorExtensions.*
 import static extension org.jnario.lib.Should.*
+import org.jnario.report.Passed
+import org.jnario.report.Failed
 
 @CreateWith(typeof(SpecTestCreator))
 Feature: Parsing spec results from JUnit XML reports
@@ -155,8 +157,12 @@ Feature: Parsing spec results from JUnit XML reports
     '''
       resultParser.parse(new StringInputStream(args.first.trim), spec2ResultMapping)
     Then the spec execution &quot;passed&quot; 
-       val shouldPass = args.first == &quot;passed&quot;
-      spec2ResultMapping.getResult(specification).hasPassed =&gt; shouldPass
+      val result = spec2ResultMapping.getResult(specification)
+       if(args.first == &quot;passed&quot;){
+         result =&gt; typeof(Passed)
+       }else{
+         result =&gt; typeof(Failed)
+       }
       
   Scenario: Matching failed Spec runs
   

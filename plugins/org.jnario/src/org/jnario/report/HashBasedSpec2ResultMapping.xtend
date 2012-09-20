@@ -7,9 +7,8 @@ import org.jnario.Executable
 import org.jnario.jvmmodel.JnarioNameProvider
 
 import static extension org.apache.commons.lang.StringEscapeUtils.*
-import org.jnario.report.SpecExecution
 
-class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor{
+class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Spec2ResultMapping{
 
 	val Map<Pair<String, String>, SpecExecution> results = newHashMap
 	extension JnarioNameProvider nameProvider
@@ -18,23 +17,55 @@ class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor{
 		this.nameProvider = nameProvider
 	}
 
-	def SpecExecution getResult(Executable executable){
-		val result = results.get(executable?.asKey)
-		if(result == null){
-			SpecExecution::NO_EXECUTION
+	override SpecExecution getResult(Executable executable){
+		var result = results.get(executable?.asKey)
+		if(result != null){
+			return result
+		}
+		result = executable.calculateResult
+		accept(result)
+		result
+	}
+	
+	def private SpecExecution calculateResult(Executable specification){
+		val children = specification.eContents.filter(typeof(Executable))
+		val results = children.map[result].toList
+		specification.createResult(results)
+	}
+	
+	def private SpecExecution createResult(Executable specification, Iterable<SpecExecution> children){
+		val specId = specification.asKey
+		if(children.areNotExecuted){
+			return new NotRun(specId.key, specId.value)
+		}
+		
+		val executionTime = children.executionTime
+		val failures = children.map[failures].flatten
+		if(failures.empty){
+			new Passed(specId.key, specId.value, executionTime)
 		}else{
-			result
+			new Failed(specId.key, specId.value, executionTime, failures)
 		}
 	}
 	
+	def private executionTime(Iterable<SpecExecution> results){
+		results.fold(0.0)[sum, result | sum + result.executionTimeInSeconds]
+	}
+	
+	def private areNotExecuted(Iterable<SpecExecution> executions) {
+		executions.empty || !executions.filter(typeof(NotRun)).empty
+	}
+	
 	def private asKey(Executable executable){
-		val expectedClassName = executable.eContainer.toQualifiedJavaClassName
+		val expectedClassName = executable.toQualifiedJavaClassName
 		val expectedName = executable.describe.escapeXml
-		expectedClassName -> expectedName
+		val key = expectedClassName -> expectedName
+		key
 	}
 
 	override accept(SpecExecution result) {
-		results.put(result.className -> result.name, result)
+		val key = result.className -> result.name
+		results.put(key, result)
 	}
 	
 } 

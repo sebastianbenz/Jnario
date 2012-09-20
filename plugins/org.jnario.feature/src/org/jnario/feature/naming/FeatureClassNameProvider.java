@@ -12,6 +12,7 @@ import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 import static org.jnario.util.Strings.toClassName;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.EcoreUtil2;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
 import org.jnario.feature.feature.Background;
@@ -52,6 +53,10 @@ public class FeatureClassNameProvider extends JnarioNameProvider{
 		}
 		if (obj instanceof ExampleRow) {
 			return getClassName((ExampleRow)obj);
+		}
+		Scenario scenario = EcoreUtil2.getContainerOfType(obj, Scenario.class);
+		if(scenario != null){
+			return getClassName(scenario);
 		}
 		throw new UnsupportedOperationException("Missing getClassName for " + obj.eClass().getName());
 	}

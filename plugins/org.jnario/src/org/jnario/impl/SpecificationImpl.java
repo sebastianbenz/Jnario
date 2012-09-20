@@ -7,10 +7,7 @@
 package org.jnario.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.xtend.core.xtend.impl.XtendClassImpl;
 import org.eclipse.xtend.core.xtend.impl.XtendClassImplCustom;
-
 import org.jnario.JnarioPackage;
 import org.jnario.Specification;
 
@@ -46,5 +43,5 @@ public abstract class SpecificationImpl extends XtendClassImplCustom implements 
 	public boolean isPending(){
 		throw new UnsupportedOperationException();
 	}
-
+	
 } //SpecificationImpl

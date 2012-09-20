@@ -50,7 +50,7 @@ class StepNameProvider {
 	def describe(Feature feature){
 		feature.name.makeJunitConform
 	}
-	
+		
 	def describe(Scenario scenario){
 		scenario.name.makeJunitConform
 	}

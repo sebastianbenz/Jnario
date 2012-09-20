@@ -31,6 +31,7 @@ describe StepArgumentsProvider {
 		| 'Given "hello"'     								| list("hello") 			|
 		| 'Given "hello" and "world"'						| list("hello", "world") 	|
 		| 'Given "hello" and "world"'						| list("hello", "world") 	|
+		| 'Given an escaped quote in "\\\"hello\\\""'		| list('"hello"') 			|
 		| "Given a multiline \n'''hello'''"					| list("hello") 			|
 		| "Given a multiline \n'''hello 'nested' '''"		| list("hello 'nested' ") 	|
 		| "Given a multiline \n\t\t'''hello'''"				| list("hello") 			|		
@@ -41,11 +42,8 @@ describe StepArgumentsProvider {
 	
 	fact "extracts arguments from step descriptions"{
 		examples.forEach[
-			val singleOrDoubleQuotes = list(step, step?.replaceAll('"', "'"))
-			for(^each : singleOrDoubleQuotes){
-				val foundArgs = subject.findStepArguments(create(^each))
-				foundArgs => expectedArgs
-			}
+			val foundArgs = subject.findStepArguments(create(step))
+			foundArgs => expectedArgs
 		]
 	}
 	

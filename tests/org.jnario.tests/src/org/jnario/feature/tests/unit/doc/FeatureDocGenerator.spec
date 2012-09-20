@@ -36,7 +36,7 @@ describe FeatureDocGenerator {
 				
 					String input
 				
-					Given a step with an argument \"something\", another 'argument' and a multiline string:
+					Given a step with an argument \"something\", another \"argument\" and a multiline string:
 					'''
 						import java.util.Collections.*;
 						
@@ -50,7 +50,7 @@ describe FeatureDocGenerator {
 						input = args.first
 						println(args.last)
 					When I do something that is pending.
-					Then it results in 'something else'
+					Then it results in \"something else\"
 						input + ' else' => args.first                                    
 		".generateDoc
 		
@@ -59,7 +59,7 @@ describe FeatureDocGenerator {
 				<h3  id="Scenario_Example_Scenario">Scenario: Example Scenario
 				</h3>
 				<ul>
-				<li><p><strong>Given</strong> a step with an argument <code>"something"</code>, another <code>'argument'</code> and a multiline string:</p><pre>import java.util.Collections.*;
+				<li><p><strong>Given</strong> a step with an argument <code>"something"</code>, another <code>"argument"</code> and a multiline string:</p><pre>import java.util.Collections.*;
 				
 				public class Greeter{
 				  public static void main(String args[]){
@@ -74,7 +74,7 @@ describe FeatureDocGenerator {
 				<ul>
 				</ul>
 				</li>
-				<li><p><strong>Then</strong> it results in <code>'something else'</code></p>
+				<li><p><strong>Then</strong> it results in <code>"something else"</code></p>
 				<ul>
 				</ul>
 				</li>

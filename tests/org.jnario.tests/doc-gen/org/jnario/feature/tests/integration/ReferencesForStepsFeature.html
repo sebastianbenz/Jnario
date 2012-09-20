@@ -264,12 +264,12 @@ Scenario: Stack adding more elements
       println(feature1)
                           
   Scenario: Scenario 3
-    When I have a feature with a background and two scenarios 'Feature: Feature 1'         
+    When I have a feature with a background and two scenarios &quot;Feature: Feature 1&quot;         
       jnarioFile2 = args.first
     Then it should execute successfully
          
   Scenario: Scenario 4
-    When I have a feature 'Feature: Feature 1'
+    When I have a feature &quot;Feature: Feature 1&quot;
       feature1 = args.first
     Then both should execute successfully</pre>
 <ul>
@@ -498,12 +498,12 @@ Feature: References for steps
             println(feature1)
                                 
         Scenario: Scenario 3
-          When I have a feature with a background and two scenarios 'Feature: Feature 1'         
+          When I have a feature with a background and two scenarios &quot;Feature: Feature 1&quot;         
             jnarioFile2 = args.first
           Then it should execute successfully
                
         Scenario: Scenario 4
-          When I have a feature 'Feature: Feature 1'
+          When I have a feature &quot;Feature: Feature 1&quot;
             feature1 = args.first
           Then both should execute successfully 
           '''

@@ -37,7 +37,9 @@ public class ExampleGroupImplCustom extends org.jnario.spec.spec.impl.ExampleGro
 		if(packageName != null){
 			return packageName;
 		}
-		
+		if(eContainer() == null){
+			return null;
+		}
 		ExampleGroup parent = getContainerOfType(eContainer(), ExampleGroup.class);
 		if(parent == null){
 			return null;

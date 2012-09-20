@@ -8,6 +8,8 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.jnario.report.Failed;
+import org.jnario.report.Passed;
 import org.jnario.report.SpecExecution;
 import org.jnario.report.SpecExecutionAcceptor;
 import org.jnario.report.SpecFailure;
@@ -18,15 +20,21 @@ import org.xml.sax.helpers.DefaultHandler;
 
 @SuppressWarnings("all")
 public class SpecResultParser extends DefaultHandler {
-  private SpecExecutionAcceptor acceptor;
+  private double currentExecutionTime;
   
-  private SpecExecution currentExecution;
+  private String currentClassName;
+  
+  private String currentName;
+  
+  private SpecExecutionAcceptor acceptor;
   
   private String currentFailureType;
   
   private String currentFailureMessage;
   
   private String currentFailureStacktrace;
+  
+  private List<SpecFailure> failures;
   
   public void parse(final InputStream stream, final SpecExecutionAcceptor acceptor) {
     try {
@@ -44,8 +52,14 @@ public class SpecResultParser extends DefaultHandler {
     if (!_matched) {
       if (Objects.equal(qName,SpecResultTags.NODE_TESTCASE)) {
         _matched=true;
-        SpecExecution _newSpecExecution = this.newSpecExecution(attributes);
-        this.acceptor.accept(_newSpecExecution);
+        String _value = attributes.getValue(SpecResultTags.ATTR_CLASSNAME);
+        this.currentClassName = _value;
+        String _value_1 = attributes.getValue(SpecResultTags.ATTR_NAME);
+        this.currentName = _value_1;
+        double _readTime = this.readTime(attributes);
+        this.currentExecutionTime = _readTime;
+        ArrayList<SpecFailure> _newArrayList = CollectionLiterals.<SpecFailure>newArrayList();
+        this.failures = _newArrayList;
       }
     }
     if (!_matched) {
@@ -77,6 +91,16 @@ public class SpecResultParser extends DefaultHandler {
   public void endElement(final String uri, final String localName, final String qName) throws SAXException {
     boolean _matched = false;
     if (!_matched) {
+      if (Objects.equal(qName,SpecResultTags.NODE_TESTCASE)) {
+        _matched=true;
+        SpecExecution _newSpecExecution = this.newSpecExecution();
+        this.acceptor.accept(_newSpecExecution);
+        this.currentClassName = null;
+        this.currentName = null;
+        this.currentExecutionTime = 0.0;
+      }
+    }
+    if (!_matched) {
       if (Objects.equal(qName,SpecResultTags.NODE_ERROR)) {
         _matched=true;
         this.addFailure();
@@ -93,12 +117,11 @@ public class SpecResultParser extends DefaultHandler {
   public String addFailure() {
     String _xblockexpression = null;
     {
-      List<SpecFailure> _failures = this.currentExecution.getFailures();
       SpecFailure _specFailure = new SpecFailure(
         this.currentFailureMessage, 
         this.currentFailureType, 
         this.currentFailureStacktrace);
-      _failures.add(_specFailure);
+      this.failures.add(_specFailure);
       this.currentFailureMessage = null;
       this.currentFailureType = null;
       String _currentFailureStacktrace = this.currentFailureStacktrace = null;
@@ -112,14 +135,17 @@ public class SpecResultParser extends DefaultHandler {
     this.currentFailureStacktrace = _valueOf;
   }
   
-  public SpecExecution newSpecExecution(final Attributes attributes) {
-    String _value = attributes.getValue(SpecResultTags.ATTR_CLASSNAME);
-    String _value_1 = attributes.getValue(SpecResultTags.ATTR_NAME);
-    double _readTime = this.readTime(attributes);
-    ArrayList<SpecFailure> _newArrayList = CollectionLiterals.<SpecFailure>newArrayList();
-    SpecExecution _specExecution = new SpecExecution(_value, _value_1, _readTime, _newArrayList);
-    SpecExecution _currentExecution = this.currentExecution = _specExecution;
-    return _currentExecution;
+  public SpecExecution newSpecExecution() {
+    SpecExecution _xifexpression = null;
+    boolean _isEmpty = this.failures.isEmpty();
+    if (_isEmpty) {
+      Passed _passed = new Passed(this.currentClassName, this.currentName, this.currentExecutionTime);
+      _xifexpression = _passed;
+    } else {
+      Failed _failed = new Failed(this.currentClassName, this.currentName, this.currentExecutionTime, this.failures);
+      _xifexpression = _failed;
+    }
+    return _xifexpression;
   }
   
   private double readTime(final Attributes attributes) {

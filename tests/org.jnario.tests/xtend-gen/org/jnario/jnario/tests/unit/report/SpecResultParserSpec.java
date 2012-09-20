@@ -1,11 +1,12 @@
 package org.jnario.jnario.tests.unit.report;
 
-import java.util.List;
+import java.util.ArrayList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.util.StringInputStream;
-import org.eclipse.xtext.xbase.lib.Conversions;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
-import org.jnario.report.SpecExecution;
+import org.jnario.report.Failed;
+import org.jnario.report.Passed;
 import org.jnario.report.SpecExecutionAcceptor;
 import org.jnario.report.SpecFailure;
 import org.jnario.report.SpecResultParser;
@@ -59,7 +60,7 @@ public class SpecResultParserSpec {
     CharSequence _xml = this.toXml(_builder);
     this.parse(_xml);
     SpecExecutionAcceptor _verify = Mockito.<SpecExecutionAcceptor>verify(this.acceptor);
-    SpecExecution _passingSpec = this.passingSpec();
+    Passed _passingSpec = this.passingSpec();
     _verify.accept(_passingSpec);
   }
   
@@ -90,7 +91,7 @@ public class SpecResultParserSpec {
     CharSequence _xml = this.toXml(_builder);
     this.parse(_xml);
     SpecExecutionAcceptor _verify = Mockito.<SpecExecutionAcceptor>verify(this.acceptor);
-    SpecExecution _failingSpec = this.failingSpec();
+    Failed _failingSpec = this.failingSpec();
     _verify.accept(_failingSpec);
   }
   
@@ -121,7 +122,7 @@ public class SpecResultParserSpec {
     CharSequence _xml = this.toXml(_builder);
     this.parse(_xml);
     SpecExecutionAcceptor _verify = Mockito.<SpecExecutionAcceptor>verify(this.acceptor);
-    SpecExecution _failingSpec = this.failingSpec();
+    Failed _failingSpec = this.failingSpec();
     _verify.accept(_failingSpec);
   }
   
@@ -160,27 +161,23 @@ public class SpecResultParserSpec {
     CharSequence _xml = this.toXml(_builder);
     this.parse(_xml);
     SpecExecutionAcceptor _verify = Mockito.<SpecExecutionAcceptor>verify(this.acceptor);
-    SpecExecution _passingSpec = this.passingSpec();
+    Passed _passingSpec = this.passingSpec();
     _verify.accept(_passingSpec);
     SpecExecutionAcceptor _verify_1 = Mockito.<SpecExecutionAcceptor>verify(this.acceptor);
-    SpecExecution _failingSpec = this.failingSpec();
+    Failed _failingSpec = this.failingSpec();
     _verify_1.accept(_failingSpec);
   }
   
-  public SpecExecution passingSpec() {
-    SpecExecution _newSpecExecution = this.newSpecExecution();
-    return _newSpecExecution;
+  public Passed passingSpec() {
+    Passed _passed = new Passed(SpecResultParserSpec.CLASSNAME, SpecResultParserSpec.NAME, SpecResultParserSpec.EXECUTION_TIME);
+    return _passed;
   }
   
-  public SpecExecution failingSpec() {
+  public Failed failingSpec() {
     SpecFailure _specFailure = new SpecFailure("a message", "java.lang.AssertionError", "the stacktrace");
-    SpecExecution _newSpecExecution = this.newSpecExecution(_specFailure);
-    return _newSpecExecution;
-  }
-  
-  public SpecExecution newSpecExecution(final SpecFailure... failures) {
-    SpecExecution _specExecution = new SpecExecution(SpecResultParserSpec.CLASSNAME, SpecResultParserSpec.NAME, SpecResultParserSpec.EXECUTION_TIME, ((List<SpecFailure>)Conversions.doWrapArray(failures)));
-    return _specExecution;
+    ArrayList<SpecFailure> _newArrayList = CollectionLiterals.<SpecFailure>newArrayList(_specFailure);
+    Failed _failed = new Failed(SpecResultParserSpec.CLASSNAME, SpecResultParserSpec.NAME, SpecResultParserSpec.EXECUTION_TIME, _newArrayList);
+    return _failed;
   }
   
   public CharSequence toXml(final CharSequence content) {

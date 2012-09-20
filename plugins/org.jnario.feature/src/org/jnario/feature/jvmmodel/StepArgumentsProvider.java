@@ -39,8 +39,17 @@ public class StepArgumentsProvider {
 		void accept(String arg, int offset, int length);
 	}
 	
-	public static final Pattern ARG_PATTERN = Pattern.compile("(\"([^\"]*)\"|'([^\']*)')");
-	private static final int[] GROUPS = {2, 3};
+	public static final Pattern ARG_PATTERN = Pattern.compile(
+		    		"\"          # Match a quote\n" +
+		    	    "(           # Capture in group number 1:\n" +
+		    	    " (?:        # Match either...\n" +
+		    	    "  \\\\.     # an escaped character\n" +
+		    	    " |          # or\n" +
+		    	    "  [^\"\\\\] # any character except quotes or backslashes\n" +
+		    	    " )*         # Repeat as needed\n" +
+		    	    ")           # End of capturing group\n" +
+		    	    "\"          # Match a quote", 
+		    	    Pattern.COMMENTS);
 	
 	private final StepNameProvider stepNameProvider;
 	
@@ -84,12 +93,16 @@ public class StepArgumentsProvider {
 		String firstLine = end == -1 ? name : name.substring(0, end);
 		Matcher matcher = ARG_PATTERN.matcher(firstLine);
 		while(matcher.find()){
-			for (int i : GROUPS) {
-				if(matcher.group(i) != null){
-					acceptor.accept(matcher.group(i), matcher.start(), matcher.end() - matcher.start());
-				}
+			String value = matcher.group(1);
+			if(value != null){
+				value = replaceEscapedQuotes(value);
+				acceptor.accept(value, matcher.start(), matcher.end() - matcher.start());
 			}
 		}
+	}
+
+	public String replaceEscapedQuotes(String value) {
+		return value.replace("\\\"", "\"");
 	}
 	
 	public List<String> findStepArguments(Step step) {

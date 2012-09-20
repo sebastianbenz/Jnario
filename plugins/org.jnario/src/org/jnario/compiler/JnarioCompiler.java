@@ -296,7 +296,6 @@ public class JnarioCompiler extends XtendCompiler {
 			}
 		};
 		Predicate<XExpression> noLiteralExpressions = new Predicate<XExpression>() {
-
 			public boolean apply(XExpression expr) {
 				return !expressionHelper.isLiteral(expr);
 			}
