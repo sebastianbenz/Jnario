@@ -3,7 +3,6 @@ package org.jnario.jnario.tests.unit.report;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matcher;
 import org.hamcrest.StringDescription;
-import org.jnario.Executable;
 import org.jnario.jnario.test.util.Specs;
 import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingSpec;
 import org.jnario.lib.Should;
@@ -135,11 +134,6 @@ public class HashBasedSpec2ResultMappingExampleGroupSpec extends HashBasedSpec2R
      + "\n     sameInstance(second) is " + new StringDescription().appendValue(_sameInstance).toString()
      + "\n     second is " + new StringDescription().appendValue(second).toString() + "\n", _doubleArrow);
     
-  }
-  
-  public SpecExecution result(final Executable executable) {
-    SpecExecution _result = this.subject.getResult(executable);
-    return _result;
   }
   
   public Example exampleExecutedIn(final String name, final double time) {

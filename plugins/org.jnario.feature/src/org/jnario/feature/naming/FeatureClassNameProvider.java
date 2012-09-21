@@ -89,6 +89,9 @@ public class FeatureClassNameProvider extends JnarioNameProvider{
 
 	private String parentFeatureName(EObject obj) {
 		Feature feature = getContainerOfType(obj, Feature.class);
+		if(feature == null){
+			return null;
+		}
 		return getClassName(feature);
 	}
 

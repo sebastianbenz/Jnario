@@ -61,9 +61,14 @@ public class Features {
   }
   
   public static Scenario scenarioWith(final Step... steps) {
+    Scenario _scenarioWith = Features.scenarioWith("Scenario: with steps", steps);
+    return _scenarioWith;
+  }
+  
+  public static Scenario scenarioWith(final String name, final Step... steps) {
     Scenario _xblockexpression = null;
     {
-      final Scenario scenario = Features.scenario("Scenario: with steps");
+      final Scenario scenario = Features.scenario(name);
       EList<Step> _steps = scenario.getSteps();
       _steps.addAll(((Collection<? extends Step>)Conversions.doWrapArray(steps)));
       _xblockexpression = (scenario);

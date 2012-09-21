@@ -41,7 +41,11 @@ class Features {
 	}
 	
 	def static scenarioWith(Step... steps){
-		val scenario = scenario("Scenario: with steps")
+		scenarioWith("Scenario: with steps", steps)
+	}
+	
+	def static scenarioWith(String name, Step... steps){
+		val scenario = scenario(name)
 		scenario.steps.addAll(steps)
 		scenario
 	}

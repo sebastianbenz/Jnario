@@ -5,12 +5,14 @@ import com.google.inject.Inject;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.hamcrest.StringDescription;
 import org.jnario.Executable;
+import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.SpecTestCreator;
 import org.jnario.jnario.test.util.Specs;
 import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingExampleGroupSpec;
 import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingExampleSpec;
+import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingScenarioSpec;
 import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingStepSpec;
 import org.jnario.lib.Should;
 import org.jnario.report.HashBasedSpec2ResultMapping;
@@ -29,7 +31,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@Contains({ HashBasedSpec2ResultMappingExampleSpec.class, HashBasedSpec2ResultMappingStepSpec.class, HashBasedSpec2ResultMappingExampleGroupSpec.class })
+@Contains({ HashBasedSpec2ResultMappingExampleSpec.class, HashBasedSpec2ResultMappingExampleGroupSpec.class, HashBasedSpec2ResultMappingStepSpec.class, HashBasedSpec2ResultMappingScenarioSpec.class })
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("HashBasedSpec2ResultMapping")
@@ -85,5 +87,15 @@ public class HashBasedSpec2ResultMappingSpec {
   public Step step() {
     Step _first = this.m.<Step>first(Step.class);
     return _first;
+  }
+  
+  public Scenario scenario() {
+    Scenario _first = this.m.<Scenario>first(Scenario.class);
+    return _first;
+  }
+  
+  public SpecExecution result(final Executable executable) {
+    SpecExecution _result = this.subject.getResult(executable);
+    return _result;
   }
 }
