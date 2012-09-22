@@ -27,6 +27,7 @@ import org.jnario.spec.spec.Example;
 import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.spec.spec.SpecFile;
 import org.jnario.spec.spec.SpecPackage;
+import org.jnario.spec.spec.TestFunction;
 import org.jnario.ui.highlighting.JnarioHighlightingCalculator;
 
 import com.google.common.collect.Iterables;
@@ -47,8 +48,8 @@ public class SpecHighlightingCalculator extends JnarioHighlightingCalculator {
 		for (ExampleGroup exampleGroup : Iterables.filter(file.getXtendClasses(), ExampleGroup.class)) {
 			highlightDeprectedXtendAnnotationTarget(acceptor, exampleGroup);
 			provideHighlightingFor(exampleGroup, acceptor);
-			super.doProvideHighlightingFor(resource, acceptor);
 		}
+		super.doProvideHighlightingFor(resource, acceptor);
 	}
 
 	protected void provideHighlightingFor(ExampleGroup exampleGroup,
@@ -70,6 +71,9 @@ public class SpecHighlightingCalculator extends JnarioHighlightingCalculator {
 					provideHighlightingFor(subExampleGroup,acceptor);
 				}else if(member.eClass() == JnarioPackage.Literals.EXAMPLE_TABLE){
 					provideHighlightingFor((ExampleTable)member,acceptor);
+				}else if(member.eClass() == SpecPackage.Literals.TEST_FUNCTION){
+					TestFunction function = (TestFunction) member;
+					highlightRichStrings(function.getBody() ,acceptor);
 				}
 				highlightDeprectedXtendAnnotationTarget(acceptor, member);
 			}
