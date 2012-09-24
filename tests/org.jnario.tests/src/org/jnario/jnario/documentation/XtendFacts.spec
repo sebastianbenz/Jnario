@@ -17,6 +17,9 @@ import static extension java.util.Collections.*
  * [Jnario](http://www.jnario.org). For a more detailed 
  * introduction see the offical [Xtend documentation]
  * (http://www.eclipse.org/xtend/documentation.html).
+ * This document is automatically generated from a specification
+ * written in Jnario. You can see the original source code 
+ * by clicking on **source** in the upper right corner.
  */
 describe "20 Facts about Xtend"{
   /*

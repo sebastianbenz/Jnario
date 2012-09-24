@@ -22,6 +22,9 @@ import org.junit.runner.RunWith;
  * [Jnario](http://www.jnario.org). For a more detailed
  * introduction see the offical [Xtend documentation]
  * (http://www.eclipse.org/xtend/documentation.html).
+ * This document is automatically generated from a specification
+ * written in Jnario. You can see the original source code
+ * by clicking on **source** in the upper right corner.
  */
 @Contains({ _20FactsAboutXtendAModernizedJavaSpec.class, _20FactsAboutXtendSomeImportantDifferencesSpec.class, _20FactsAboutXtendTheUberSwitchExpressionSpec.class, _20FactsAboutXtendReadableCodeWithExtensionMethodsSpec.class, _20FactsAboutXtendFunctionalProgrammingFTWSpec.class })
 @SuppressWarnings("all")
