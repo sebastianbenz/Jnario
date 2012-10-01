@@ -25,7 +25,7 @@ import org.jnario.doc.HtmlFile
 
 import static extension org.jnario.util.Strings.*
 import static extension org.eclipse.xtext.util.Strings.*
-import org.jnario.report.Spec2ResultMapping
+import org.jnario.report.Executable2ResultMapping
 
 class SuiteDocGenerator extends AbstractDocGenerator {
 	
@@ -33,7 +33,7 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 	@Inject extension SpecResolver
 	@Inject extension HtmlFileBuilder
 	
-	override doGenerate(Resource input, IFileSystemAccess fsa, Spec2ResultMapping spec2ResultMapping) {
+	override doGenerate(Resource input, IFileSystemAccess fsa, Executable2ResultMapping spec2ResultMapping) {
 		initResultMapping(spec2ResultMapping)
 		input.contents.filter(typeof(SuiteFile)).forEach[
 			val htmlFile = createHtmlFile()

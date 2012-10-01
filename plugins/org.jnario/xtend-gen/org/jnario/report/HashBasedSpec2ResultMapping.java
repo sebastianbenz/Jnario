@@ -18,16 +18,16 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Pair;
 import org.jnario.Executable;
 import org.jnario.jvmmodel.JnarioNameProvider;
+import org.jnario.report.Executable2ResultMapping;
 import org.jnario.report.Failed;
 import org.jnario.report.NotRun;
 import org.jnario.report.Passed;
-import org.jnario.report.Spec2ResultMapping;
 import org.jnario.report.SpecExecution;
 import org.jnario.report.SpecExecutionAcceptor;
 import org.jnario.report.SpecFailure;
 
 @SuppressWarnings("all")
-public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Spec2ResultMapping {
+public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Executable2ResultMapping {
   private final Map<Pair<String,String>,SpecExecution> results = new Function0<Map<Pair<String,String>,SpecExecution>>() {
     public Map<Pair<String,String>,SpecExecution> apply() {
       HashMap<Pair<String,String>,SpecExecution> _newHashMap = CollectionLiterals.<Pair<String,String>, SpecExecution>newHashMap();

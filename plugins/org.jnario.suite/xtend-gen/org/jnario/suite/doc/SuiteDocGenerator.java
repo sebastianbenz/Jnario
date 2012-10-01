@@ -17,7 +17,7 @@ import org.jnario.Specification;
 import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.HtmlFile;
 import org.jnario.doc.HtmlFileBuilder;
-import org.jnario.report.Spec2ResultMapping;
+import org.jnario.report.Executable2ResultMapping;
 import org.jnario.suite.jvmmodel.SpecResolver;
 import org.jnario.suite.jvmmodel.SuiteClassNameProvider;
 import org.jnario.suite.suite.Reference;
@@ -37,7 +37,7 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
   @Inject
   private HtmlFileBuilder _htmlFileBuilder;
   
-  public void doGenerate(final Resource input, final IFileSystemAccess fsa, final Spec2ResultMapping spec2ResultMapping) {
+  public void doGenerate(final Resource input, final IFileSystemAccess fsa, final Executable2ResultMapping spec2ResultMapping) {
     this.initResultMapping(spec2ResultMapping);
     EList<EObject> _contents = input.getContents();
     Iterable<SuiteFile> _filter = Iterables.<SuiteFile>filter(_contents, SuiteFile.class);

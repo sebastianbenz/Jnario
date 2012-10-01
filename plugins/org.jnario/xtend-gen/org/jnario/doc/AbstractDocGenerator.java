@@ -39,7 +39,7 @@ import org.jnario.doc.Filter;
 import org.jnario.doc.HtmlFile;
 import org.jnario.doc.HtmlFileBuilder;
 import org.jnario.doc.WhiteSpaceNormalizer;
-import org.jnario.report.Spec2ResultMapping;
+import org.jnario.report.Executable2ResultMapping;
 import org.pegdown.PegDownProcessor;
 
 @SuppressWarnings("all")
@@ -66,13 +66,13 @@ public abstract class AbstractDocGenerator implements IGenerator {
   private DocumentationProvider documentationProvider;
   
   @Inject
-  private Spec2ResultMapping spec2ResultMapping;
+  private Executable2ResultMapping spec2ResultMapping;
   
   public void doGenerate(final Resource input, final IFileSystemAccess fsa) {
     this.doGenerate(input, fsa, this.spec2ResultMapping);
   }
   
-  public void doGenerate(final Resource input, final IFileSystemAccess fsa, final Spec2ResultMapping spec2ResultMapping) {
+  public void doGenerate(final Resource input, final IFileSystemAccess fsa, final Executable2ResultMapping spec2ResultMapping) {
     this.initResultMapping(spec2ResultMapping);
     EList<EObject> _contents = input.getContents();
     Iterable<XtendFile> _filter = Iterables.<XtendFile>filter(_contents, XtendFile.class);
@@ -91,8 +91,8 @@ public abstract class AbstractDocGenerator implements IGenerator {
     IterableExtensions.<XtendFile>forEach(_filter, _function);
   }
   
-  protected Spec2ResultMapping initResultMapping(final Spec2ResultMapping spec2ResultMapping) {
-    Spec2ResultMapping _spec2ResultMapping = this.spec2ResultMapping = spec2ResultMapping;
+  protected Executable2ResultMapping initResultMapping(final Executable2ResultMapping spec2ResultMapping) {
+    Executable2ResultMapping _spec2ResultMapping = this.spec2ResultMapping = spec2ResultMapping;
     return _spec2ResultMapping;
   }
   

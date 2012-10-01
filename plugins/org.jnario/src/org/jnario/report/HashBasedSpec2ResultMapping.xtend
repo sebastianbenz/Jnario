@@ -8,7 +8,7 @@ import org.jnario.jvmmodel.JnarioNameProvider
 
 import static extension org.apache.commons.lang.StringEscapeUtils.*
 
-class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Spec2ResultMapping{
+class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Executable2ResultMapping{
 
 	val Map<Pair<String, String>, SpecExecution> results = newHashMap
 	extension JnarioNameProvider nameProvider

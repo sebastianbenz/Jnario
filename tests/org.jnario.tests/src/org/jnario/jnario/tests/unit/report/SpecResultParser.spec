@@ -27,7 +27,7 @@ describe SpecResultParser{
 		'''.toXml.parse 
 		
 		verify(acceptor).accept(passingSpec)
-	} 
+	}  
 	
 	fact "parses specs with failure from xml"{ 
 		'''
