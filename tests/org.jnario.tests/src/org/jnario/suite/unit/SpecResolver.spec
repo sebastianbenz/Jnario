@@ -7,6 +7,7 @@
  *******************************************************************************/
 package org.jnario.suite.unit
 
+import static org.jnario.jnario.test.util.Suites.*
 import com.google.inject.Inject
 import org.jnario.jnario.test.util.ModelStore
 import org.jnario.suite.suite.Suite
@@ -15,6 +16,7 @@ import org.jnario.suite.jvmmodel.SuiteClassNameProvider
 import org.jnario.suite.jvmmodel.SpecResolver
 import org.jnario.runner.CreateWith
 import org.jnario.jnario.test.util.SuiteTestCreator
+import static org.jnario.jnario.test.util.Specs.*
 
 @CreateWith(typeof(SuiteTestCreator))
 describe SpecResolver {
@@ -56,6 +58,18 @@ describe SpecResolver {
 		
 		resolvedSpecs(firstSuite).toSet => set("MySpecSpec", "MyFeatureFeature")
 	}
+	
+	fact "filters unresolved specs"{
+		val suite = suiteWith("A Suite", specReference(null), specReference(null))
+		suite.resolvedSpecs => emptyList
+	}
+	
+	fact "ignores specs without name"{
+		val specWithoutName = exampleGroup(null)
+		val suite = suiteWith("A Suite", specReference(specWithoutName))
+		subject.resolveSpecs(suite) => list(specWithoutName)
+	}
+	
 	
 	describe "evaluates regular expressions"{
 		fact "example 1"{

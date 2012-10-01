@@ -55,14 +55,7 @@ public class SpecResolver {
       };
     List<List<Specification>> _map = ListExtensions.<Reference, List<Specification>>map(_elements, _function);
     Iterable<Specification> _flatten = Iterables.<Specification>concat(_map);
-    final Function1<Specification,Boolean> _function_1 = new Function1<Specification,Boolean>() {
-        public Boolean apply(final Specification it) {
-          boolean _notEquals = (!Objects.equal(it, null));
-          return Boolean.valueOf(_notEquals);
-        }
-      };
-    Iterable<Specification> _filter = IterableExtensions.<Specification>filter(_flatten, _function_1);
-    List<Specification> _sort = this.sort(_filter);
+    List<Specification> _sort = this.sort(_flatten);
     return _sort;
   }
   
@@ -129,17 +122,39 @@ public class SpecResolver {
   }
   
   private List<Specification> sort(final Iterable<Specification> specs) {
-    final Function2<Specification,Specification,Integer> _function = new Function2<Specification,Specification,Integer>() {
-        public Integer apply(final Specification left, final Specification right) {
-          String _describe = SpecResolver.this._suiteClassNameProvider.describe(left);
-          String _describe_1 = right==null?(String)null:SpecResolver.this._suiteClassNameProvider.describe(right);
-          int _compareToIgnoreCase = _describe==null?0:_describe.compareToIgnoreCase(_describe_1);
-          return _compareToIgnoreCase;
+    final Function1<Specification,Boolean> _function = new Function1<Specification,Boolean>() {
+        public Boolean apply(final Specification it) {
+          boolean _notEquals = (!Objects.equal(it, null));
+          return Boolean.valueOf(_notEquals);
         }
       };
-    List<Specification> _sort = IterableExtensions.<Specification>sort(specs, new Comparator<Specification>() {
+    Iterable<Specification> _filter = IterableExtensions.<Specification>filter(specs, _function);
+    final Function2<Specification,Specification,Integer> _function_1 = new Function2<Specification,Specification,Integer>() {
+        public Integer apply(final Specification left, final Specification right) {
+          int _xblockexpression = (int) 0;
+          {
+            final String leftName = SpecResolver.this._suiteClassNameProvider.describe(left);
+            final String rightName = SpecResolver.this._suiteClassNameProvider.describe(right);
+            boolean _or = false;
+            boolean _equals = Objects.equal(leftName, null);
+            if (_equals) {
+              _or = true;
+            } else {
+              boolean _equals_1 = Objects.equal(rightName, null);
+              _or = (_equals || _equals_1);
+            }
+            if (_or) {
+              return 0;
+            }
+            int _compareToIgnoreCase = leftName.compareToIgnoreCase(rightName);
+            _xblockexpression = (_compareToIgnoreCase);
+          }
+          return _xblockexpression;
+        }
+      };
+    List<Specification> _sort = IterableExtensions.<Specification>sort(_filter, new Comparator<Specification>() {
         public int compare(Specification o1,Specification o2) {
-          return _function.apply(o1,o2);
+          return _function_1.apply(o1,o2);
         }
     });
     return _sort;

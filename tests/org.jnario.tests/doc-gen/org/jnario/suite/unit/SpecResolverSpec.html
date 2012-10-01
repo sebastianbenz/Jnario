@@ -47,6 +47,15 @@ parseSuite('''
 ''')
 
 resolvedSpecs(firstSuite).toSet =&gt; set(&quot;MySpecSpec&quot;, &quot;MyFeatureFeature&quot;)</pre>
+</li><li><p id="filters_unresolved_specs"><strong>filters unresolved specs</strong></p>
+<pre class="prettyprint lang-spec linenums">
+val suite = suiteWith(&quot;A Suite&quot;, specReference(null), specReference(null))
+suite.resolvedSpecs =&gt; emptyList</pre>
+</li><li><p id="ignores_specs_without_name"><strong>ignores specs without name</strong></p>
+<pre class="prettyprint lang-spec linenums">
+val specWithoutName = exampleGroup(null)
+val suite = suiteWith(&quot;A Suite&quot;, specReference(specWithoutName))
+subject.resolveSpecs(suite) =&gt; list(specWithoutName)</pre>
 </li></ul><h3 id="evaluates_regular_expressions">Evaluates regular expressions</h3>
 <ul><li><p id="example_1"><strong>example 1</strong></p>
 <pre class="prettyprint lang-spec linenums">
@@ -121,6 +130,7 @@ resolvedSpecs(m.firstSuite) =&gt; list(&quot;MyFeatureFeature&quot;, &quot;MySpe
  *******************************************************************************/
 package org.jnario.suite.unit
 
+import static org.jnario.jnario.test.util.Suites.*
 import com.google.inject.Inject
 import org.jnario.jnario.test.util.ModelStore
 import org.jnario.suite.suite.Suite
@@ -129,6 +139,7 @@ import org.jnario.suite.jvmmodel.SuiteClassNameProvider
 import org.jnario.suite.jvmmodel.SpecResolver
 import org.jnario.runner.CreateWith
 import org.jnario.jnario.test.util.SuiteTestCreator
+import static org.jnario.jnario.test.util.Specs.*
 
 @CreateWith(typeof(SuiteTestCreator))
 describe SpecResolver {
@@ -170,6 +181,18 @@ describe SpecResolver {
     
     resolvedSpecs(firstSuite).toSet =&gt; set(&quot;MySpecSpec&quot;, &quot;MyFeatureFeature&quot;)
   }
+  
+  fact &quot;filters unresolved specs&quot;{
+    val suite = suiteWith(&quot;A Suite&quot;, specReference(null), specReference(null))
+    suite.resolvedSpecs =&gt; emptyList
+  }
+  
+  fact &quot;ignores specs without name&quot;{
+    val specWithoutName = exampleGroup(null)
+    val suite = suiteWith(&quot;A Suite&quot;, specReference(specWithoutName))
+    subject.resolveSpecs(suite) =&gt; list(specWithoutName)
+  }
+  
   
   describe &quot;evaluates regular expressions&quot;{
     fact &quot;example 1&quot;{

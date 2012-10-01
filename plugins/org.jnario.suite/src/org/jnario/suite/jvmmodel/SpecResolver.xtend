@@ -30,7 +30,7 @@ class SpecResolver {
 	@Inject extension SuiteClassNameProvider
 	
 	def dispatch List<Specification> resolveSpecs(Suite suite){
-		suite.elements.map[resolveSpecs].flatten.filter[it != null].sort
+		suite.elements.map[resolveSpecs].flatten.sort
 	}
 	
 	def dispatch List<Specification> resolveSpecs(SpecReference specRef){
@@ -51,8 +51,13 @@ class SpecResolver {
 	}
 	
 	def private sort(Iterable<Specification> specs){
-		specs.sort[left, right|
-			left.describe?.compareToIgnoreCase(right?.describe)
+		specs.filter[it != null].sort[left, right|
+			val leftName = left.describe
+			val rightName = right.describe
+			if(leftName == null || rightName == null){
+				return 0
+			}
+			leftName.compareToIgnoreCase(rightName)
 		]
 	}
 	

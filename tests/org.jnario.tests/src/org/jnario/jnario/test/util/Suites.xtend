@@ -8,10 +8,18 @@
 package org.jnario.jnario.test.util
 
 import org.jnario.suite.suite.SuiteFactory
+import org.jnario.Specification
+import org.jnario.suite.suite.SpecReference
 
 class Suites {
 	
 	static val SuiteFactory factory = SuiteFactory::eINSTANCE
+	
+	def static suiteWith(String name, SpecReference... references){
+		val suite = suite(name)
+		suite.elements.addAll(references)
+		suite
+	}
 	
 	def static suite(String name){
 		val suite = factory.createSuite
@@ -26,6 +34,12 @@ class Suites {
 		file.^package = packageName
 		file.xtendClasses += suite 
 		suite
+	}
+	
+	def static specReference(Specification spec){
+		val result = factory.createSpecReference
+		result.spec = spec
+		result
 	}
 	
 }

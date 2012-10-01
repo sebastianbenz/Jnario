@@ -30,7 +30,6 @@ import static org.jnario.doc.AbstractDocGenerator.*
 
 import static extension org.eclipse.xtext.util.Strings.*
 import static extension org.jnario.util.Strings.*
-import org.jnario.report.Executable2ResultMapping
 
 abstract class AbstractDocGenerator implements IGenerator {
 
