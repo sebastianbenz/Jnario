@@ -53,7 +53,7 @@ val suite = suiteWith(&quot;A Suite&quot;, specReference(null), specReference(nu
 suite.resolvedSpecs =&gt; emptyList</pre>
 </li><li><p id="ignores_specs_without_name"><strong>ignores specs without name</strong></p>
 <pre class="prettyprint lang-spec linenums">
-val specWithoutName = exampleGroup(null)
+val specWithoutName = Specs::exampleGroup(null)
 val suite = suiteWith(&quot;A Suite&quot;, specReference(specWithoutName))
 subject.resolveSpecs(suite) =&gt; list(specWithoutName)</pre>
 </li></ul><h3 id="evaluates_regular_expressions">Evaluates regular expressions</h3>
@@ -140,10 +140,11 @@ import org.jnario.suite.jvmmodel.SpecResolver
 import org.jnario.runner.CreateWith
 import org.jnario.jnario.test.util.SuiteTestCreator
 import static org.jnario.jnario.test.util.Specs.*
+import org.jnario.jnario.test.util.Specs
 
 @CreateWith(typeof(SuiteTestCreator))
 describe SpecResolver {
-
+ 
   @Inject extension ModelStore m
   @Inject extension SuiteClassNameProvider
   
@@ -188,7 +189,7 @@ describe SpecResolver {
   }
   
   fact &quot;ignores specs without name&quot;{
-    val specWithoutName = exampleGroup(null)
+    val specWithoutName = Specs::exampleGroup(null)
     val suite = suiteWith(&quot;A Suite&quot;, specReference(specWithoutName))
     subject.resolveSpecs(suite) =&gt; list(specWithoutName)
   }

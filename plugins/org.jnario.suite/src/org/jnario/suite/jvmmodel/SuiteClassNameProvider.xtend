@@ -9,11 +9,8 @@ package org.jnario.suite.jvmmodel
 
 import static org.eclipse.xtext.util.Strings.*
 import com.google.inject.Inject
-import org.jnario.Specification
-import org.jnario.feature.feature.Feature
 import org.jnario.feature.naming.FeatureClassNameProvider
 import org.jnario.spec.naming.ExampleNameProvider
-import org.jnario.spec.spec.ExampleGroup
 import org.jnario.suite.suite.Suite
 
 import static org.jnario.suite.jvmmodel.SuiteClassNameProvider.*
@@ -22,6 +19,7 @@ import static extension com.google.common.base.Strings.*
 import static extension org.jnario.util.Strings.*
 import org.jnario.jvmmodel.JnarioNameProvider
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.resource.XtextResource
 
 class SuiteClassNameProvider extends JnarioNameProvider{
 	
@@ -49,16 +47,8 @@ class SuiteClassNameProvider extends JnarioNameProvider{
 		name.toClassName + POSTFIX
 	}
 	
-	def dispatch getClassName(ExampleGroup element){
-		exampleNameProvider.toJavaClassName(element)
-	}
-
-	def dispatch getClassName(Feature element){
-		featureNameProvider.getClassName(element)
-	}
-	
 	def dispatch String getClassName(EObject element){
-		throw new UnsupportedOperationException("Cannot get class name for " + element.eClass.name)
+		element.classNameProvider.toJavaClassName(element)
 	}	
 
 	override describe(EObject eObject) {
@@ -69,16 +59,14 @@ class SuiteClassNameProvider extends JnarioNameProvider{
 		suite.removePrefix?.convertToJavaString(true)
 	}
 	
-	def dispatch doDescribe(ExampleGroup element){
-		exampleNameProvider.describe(element)
-	}
-	
-	def dispatch doDescribe(Feature element){
-		element.name
-	}
-	
 	def dispatch String doDescribe(EObject element){
-		throw new UnsupportedOperationException("Cannot describe " + element.eClass.name)
+		element.classNameProvider.describe(element)
+	}
+	
+	def private classNameProvider(EObject element){
+		val resource = element.eResource as XtextResource
+		val resourceServiceProvider = resource.resourceServiceProvider
+		resourceServiceProvider.get(typeof(JnarioNameProvider)) 
 	}
 	
 	override toJavaClassName(EObject eObject) {

@@ -7,16 +7,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.apache.commons.lang.StringEscapeUtils;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtext.resource.IResourceServiceProvider;
+import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.Functions.Function2;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Pair;
 import org.jnario.Executable;
+import org.jnario.jvmmodel.ExecutableProvider;
 import org.jnario.jvmmodel.JnarioNameProvider;
 import org.jnario.report.Executable2ResultMapping;
 import org.jnario.report.Failed;
@@ -46,10 +48,7 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
     SpecExecution _xblockexpression = null;
     {
       Pair<String,String> _asKey = executable==null?(Pair<String,String>)null:this.asKey(executable);
-      String _plus = ("find " + _asKey);
-      InputOutput.<String>println(_plus);
-      Pair<String,String> _asKey_1 = executable==null?(Pair<String,String>)null:this.asKey(executable);
-      SpecExecution result = this.results.get(_asKey_1);
+      SpecExecution result = this.results.get(_asKey);
       boolean _notEquals = (!Objects.equal(result, null));
       if (_notEquals) {
         return result;
@@ -65,15 +64,14 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
   private SpecExecution calculateResult(final Executable specification) {
     SpecExecution _xblockexpression = null;
     {
-      EList<EObject> _eContents = specification.eContents();
-      final Iterable<Executable> children = Iterables.<Executable>filter(_eContents, Executable.class);
+      final List<? extends Executable> children = this.executables(specification);
       final Function1<Executable,SpecExecution> _function = new Function1<Executable,SpecExecution>() {
           public SpecExecution apply(final Executable it) {
             SpecExecution _result = HashBasedSpec2ResultMapping.this.getResult(it);
             return _result;
           }
         };
-      Iterable<SpecExecution> _map = IterableExtensions.<Executable, SpecExecution>map(children, _function);
+      List<SpecExecution> _map = ListExtensions.map(children, _function);
       final List<SpecExecution> results = IterableExtensions.<SpecExecution>toList(_map);
       SpecExecution _createResult = this.createResult(specification, results);
       _xblockexpression = (_createResult);
@@ -157,12 +155,27 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
     return _xblockexpression;
   }
   
+  private List<? extends Executable> executables(final Executable element) {
+    List<? extends Executable> _xblockexpression = null;
+    {
+      Resource _eResource = element.eResource();
+      final XtextResource resource = ((XtextResource) _eResource);
+      boolean _equals = Objects.equal(resource, null);
+      if (_equals) {
+        return CollectionLiterals.<Executable>emptyList();
+      }
+      final IResourceServiceProvider resourceServiceProvider = resource.getResourceServiceProvider();
+      ExecutableProvider _get = resourceServiceProvider.<ExecutableProvider>get(ExecutableProvider.class);
+      List<? extends Executable> _executables = _get.getExecutables(element);
+      _xblockexpression = (_executables);
+    }
+    return _xblockexpression;
+  }
+  
   public void accept(final SpecExecution result) {
     String _className = result.getClassName();
     String _name = result.getName();
     final Pair<String,String> key = Pair.<String, String>of(_className, _name);
-    String _plus = ("accept " + key);
-    InputOutput.<String>println(_plus);
     this.results.put(key, result);
   }
 }

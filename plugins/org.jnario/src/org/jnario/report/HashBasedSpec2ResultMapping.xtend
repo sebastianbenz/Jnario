@@ -1,9 +1,12 @@
 package org.jnario.report
 
 import com.google.inject.Inject
+import java.util.List
 import java.util.Map
+import org.eclipse.xtext.resource.XtextResource
 import org.eclipse.xtext.xbase.lib.Pair
 import org.jnario.Executable
+import org.jnario.jvmmodel.ExecutableProvider
 import org.jnario.jvmmodel.JnarioNameProvider
 
 import static extension org.apache.commons.lang.StringEscapeUtils.*
@@ -18,7 +21,6 @@ class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Executable2R
 	}
 
 	override SpecExecution getResult(Executable executable){
-		println("find " + executable?.asKey)
 		var result = results.get(executable?.asKey)
 		if(result != null){
 			return result
@@ -29,7 +31,7 @@ class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Executable2R
 	}
 	
 	def private SpecExecution calculateResult(Executable specification){
-		val children = specification.eContents.filter(typeof(Executable))
+		val children = specification.executables
 		val results = children.map[result].toList
 		specification.createResult(results)
 	}
@@ -63,10 +65,18 @@ class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Executable2R
 		val key = expectedClassName -> expectedName
 		key
 	}
+	
+	def private List<? extends Executable> executables(Executable element){
+		val resource = element.eResource as XtextResource
+		if(resource == null){
+			return emptyList
+		}
+		val resourceServiceProvider = resource.resourceServiceProvider
+		resourceServiceProvider.get(typeof(ExecutableProvider)).getExecutables(element)
+	}
 
 	override accept(SpecExecution result) {
 		val key = result.className -> result.name
-		println("accept " + key)
 		results.put(key, result)
 	}
 	

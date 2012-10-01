@@ -53,6 +53,7 @@ import org.jnario.feature.feature.StepExpression;
 import org.jnario.feature.feature.StepImplementation;
 import org.jnario.feature.feature.StepReference;
 import org.jnario.feature.jvmmodel.JvmFieldReferenceUpdater;
+import org.jnario.feature.jvmmodel.Scenarios;
 import org.jnario.feature.jvmmodel.StepArgumentsProvider;
 import org.jnario.feature.jvmmodel.StepExpressionProvider;
 import org.jnario.feature.jvmmodel.StepReferenceFieldCreator;
@@ -277,7 +278,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     EList<Step> _steps_2 = scenario.getSteps();
     this.generateSteps(_steps_2, inferredJvmType, start, scenario);
     super.initialize(scenario, inferredJvmType);
-    ArrayList<Step> _allSteps = this.allSteps(scenario);
+    ArrayList<Step> _allSteps = Scenarios.allSteps(scenario);
     Iterable<StepReference> _filter_1 = Iterables.<StepReference>filter(_allSteps, StepReference.class);
     final Procedure1<StepReference> _function_2 = new Procedure1<StepReference>() {
         public void apply(final StepReference it) {
@@ -307,24 +308,6 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
         }
       };
     IterableExtensions.<StepReference>forEach(_filter_1, _function_2);
-  }
-  
-  public ArrayList<Step> allSteps(final Scenario scenario) {
-    ArrayList<Step> _xblockexpression = null;
-    {
-      final ArrayList<Step> steps = CollectionLiterals.<Step>newArrayList();
-      EList<Step> _steps = scenario.getSteps();
-      final Procedure1<Step> _function = new Procedure1<Step>() {
-          public void apply(final Step it) {
-            steps.add(it);
-            EList<Step> _and = it.getAnd();
-            Iterables.<Step>addAll(steps, _and);
-          }
-        };
-      IterableExtensions.<Step>forEach(_steps, _function);
-      _xblockexpression = (steps);
-    }
-    return _xblockexpression;
   }
   
   public void initializeName(final XtendField field) {

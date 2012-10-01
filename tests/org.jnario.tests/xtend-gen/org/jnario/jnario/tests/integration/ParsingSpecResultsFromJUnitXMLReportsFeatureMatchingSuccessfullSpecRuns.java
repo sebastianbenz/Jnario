@@ -26,7 +26,7 @@ import org.jnario.runner.Extension;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.jnario.spec.spec.Example;
+import org.jnario.spec.spec.ExampleGroup;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -45,8 +45,8 @@ public class ParsingSpecResultsFromJUnitXMLReportsFeatureMatchingSuccessfullSpec
     String _first = JnarioIterableExtensions.<String>first(args);
     Resource _parseSpec = this._modelStore.parseSpec(_first);
     TreeIterator<EObject> _allContents = _parseSpec.getAllContents();
-    Iterator<Example> _filter = Iterators.<Example>filter(_allContents, Example.class);
-    Example _first_1 = JnarioIteratorExtensions.<Example>first(_filter);
+    Iterator<ExampleGroup> _filter = Iterators.<ExampleGroup>filter(_allContents, ExampleGroup.class);
+    ExampleGroup _first_1 = JnarioIteratorExtensions.<ExampleGroup>first(_filter);
     this.specification = _first_1;
   }
   

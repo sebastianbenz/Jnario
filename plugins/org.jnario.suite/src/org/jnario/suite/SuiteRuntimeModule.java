@@ -39,6 +39,7 @@ import org.eclipse.xtext.xbase.validation.EarlyExitValidator;
 import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.DocOutputConfigurationProvider;
 import org.jnario.generator.JnarioJavaIoFileSystemAccess;
+import org.jnario.jvmmodel.ExecutableProvider;
 import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.jvmmodel.JnarioNameProvider;
@@ -48,6 +49,7 @@ import org.jnario.suite.conversion.SuiteValueConverterService;
 import org.jnario.suite.doc.SuiteDocGenerator;
 import org.jnario.suite.generator.SuiteGenerator;
 import org.jnario.suite.jvmmodel.SuiteClassNameProvider;
+import org.jnario.suite.jvmmodel.SuiteExecutableProvider;
 import org.jnario.suite.jvmmodel.SuiteJvmModelInferrer;
 import org.jnario.suite.naming.SuiteQualifiedNameProvider;
 import org.jnario.suite.resource.SuiteResourceDescriptionManager;
@@ -68,6 +70,7 @@ public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeMod
 		binder.bind(AbstractDocGenerator.class).to(SuiteDocGenerator.class);
 		binder.bind(SignatureHashBuilder.class).to(JnarioSignatureHashBuilder.class);
 		binder.bind(JnarioNameProvider.class).to(SuiteClassNameProvider.class);
+		binder.bind(ExecutableProvider.class).to(SuiteExecutableProvider.class);
 	}
 	
 	@Override

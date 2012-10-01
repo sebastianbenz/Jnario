@@ -7,6 +7,7 @@
  *******************************************************************************/
 package org.jnario.feature.jvmmodel
 
+import static extension org.jnario.feature.jvmmodel.Scenarios.*
 import com.google.inject.Inject
 import java.util.List
 import org.eclipse.emf.ecore.EObject
@@ -184,14 +185,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		]
    	}
    	
-   	def allSteps(Scenario scenario){
-   		val steps = <Step>newArrayList
-   		scenario.steps.forEach[
-			steps += it
-			steps.addAll(it.and)   			
-   		]
-   		steps
-   	}
+   
    	
    	def void initializeName(XtendField field){
    		if(field.name != null) return;

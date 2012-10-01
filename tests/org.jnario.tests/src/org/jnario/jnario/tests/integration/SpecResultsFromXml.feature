@@ -5,16 +5,16 @@ import org.eclipse.xtext.util.StringInputStream
 import org.jnario.Executable
 import org.jnario.jnario.test.util.ModelStore
 import org.jnario.jnario.test.util.SpecTestCreator
+import org.jnario.report.Failed
 import org.jnario.report.HashBasedSpec2ResultMapping
+import org.jnario.report.Passed
 import org.jnario.report.SpecResultParser
 import org.jnario.runner.CreateWith
-import org.jnario.spec.spec.Example
+import org.jnario.spec.spec.ExampleGroup
 
 import static extension org.jnario.lib.JnarioIterableExtensions.*
 import static extension org.jnario.lib.JnarioIteratorExtensions.*
 import static extension org.jnario.lib.Should.*
-import org.jnario.report.Passed
-import org.jnario.report.Failed
 
 @CreateWith(typeof(SpecTestCreator))
 Feature: Parsing spec results from JUnit XML reports
@@ -35,7 +35,7 @@ Feature: Parsing spec results from JUnit XML reports
 				}
 			}
 		'''
-			specification = args.first.parseSpec.allContents.filter(typeof(Example)).first
+			specification = args.first.parseSpec.allContents.filter(typeof(ExampleGroup)).first
 		And a test result xml file 
 		'''
 			<?xml version="1.0" encoding="UTF-8" ?>

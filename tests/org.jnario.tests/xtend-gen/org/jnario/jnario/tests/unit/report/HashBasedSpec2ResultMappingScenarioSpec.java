@@ -15,7 +15,6 @@ import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -47,7 +46,7 @@ public class HashBasedSpec2ResultMappingScenarioSpec extends HashBasedSpec2Resul
   @Order(99)
   public void _returnsPassedIfAllChildrenPassed() throws Exception {
     this.passedStep("Given my Step");
-    this.passedStep("And My other Step");
+    this.passedStep("And other Step");
     Scenario _scenario = this.scenario();
     SpecExecution _result = this.result(_scenario);
     boolean _doubleArrow = Should.operator_doubleArrow(_result, Passed.class);
@@ -58,11 +57,11 @@ public class HashBasedSpec2ResultMappingScenarioSpec extends HashBasedSpec2Resul
   }
   
   @Test
-  @Ignore
-  @Named("returns **Failed** if one child failed [PENDING]")
+  @Named("returns **Failed** if one child failed")
   @Order(99)
   public void _returnsFailedIfOneChildFailed() throws Exception {
     this.passedStep("Given my Step");
+    this.failedStep("And other Step");
     Scenario _scenario = this.scenario();
     SpecExecution _result = this.result(_scenario);
     boolean _doubleArrow = Should.operator_doubleArrow(_result, Failed.class);
@@ -74,7 +73,13 @@ public class HashBasedSpec2ResultMappingScenarioSpec extends HashBasedSpec2Resul
   
   public void passedStep(final String name) {
     String _plus = (name + " [PENDING]");
-    Passed _passed = new Passed(HashBasedSpec2ResultMappingScenarioSpec.SCENARIO_CLASSNAME, _plus, 0.0);
-    this.subject.accept(_passed);
+    Passed _passingSpec = SpecExecution.passingSpec(HashBasedSpec2ResultMappingScenarioSpec.SCENARIO_CLASSNAME, _plus, 0.0);
+    this.subject.accept(_passingSpec);
+  }
+  
+  public void failedStep(final String name) {
+    String _plus = (name + " [PENDING]");
+    Failed _failingSpec = SpecExecution.failingSpec(HashBasedSpec2ResultMappingScenarioSpec.SCENARIO_CLASSNAME, _plus, 0.0, this.anyFailure);
+    this.subject.accept(_failingSpec);
   }
 }

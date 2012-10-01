@@ -17,10 +17,11 @@ import org.jnario.suite.jvmmodel.SpecResolver
 import org.jnario.runner.CreateWith
 import org.jnario.jnario.test.util.SuiteTestCreator
 import static org.jnario.jnario.test.util.Specs.*
+import org.jnario.jnario.test.util.Specs
 
 @CreateWith(typeof(SuiteTestCreator))
 describe SpecResolver {
-
+ 
 	@Inject extension ModelStore m
 	@Inject extension SuiteClassNameProvider
 	
@@ -65,7 +66,7 @@ describe SpecResolver {
 	}
 	
 	fact "ignores specs without name"{
-		val specWithoutName = exampleGroup(null)
+		val specWithoutName = Specs::exampleGroup(null)
 		val suite = suiteWith("A Suite", specReference(specWithoutName))
 		subject.resolveSpecs(suite) => list(specWithoutName)
 	}

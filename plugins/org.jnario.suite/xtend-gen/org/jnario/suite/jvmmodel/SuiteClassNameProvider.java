@@ -3,13 +3,13 @@ package org.jnario.suite.jvmmodel;
 import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import java.util.Arrays;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.jnario.feature.feature.Feature;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtext.resource.IResourceServiceProvider;
+import org.eclipse.xtext.resource.XtextResource;
 import org.jnario.feature.naming.FeatureClassNameProvider;
 import org.jnario.jvmmodel.JnarioNameProvider;
 import org.jnario.spec.naming.ExampleNameProvider;
-import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.suite.suite.Suite;
 import org.jnario.util.Strings;
 
@@ -68,22 +68,10 @@ public class SuiteClassNameProvider extends JnarioNameProvider {
     return _xblockexpression;
   }
   
-  protected String _getClassName(final ExampleGroup element) {
-    String _javaClassName = this.exampleNameProvider.toJavaClassName(element);
-    return _javaClassName;
-  }
-  
-  protected String _getClassName(final Feature element) {
-    String _className = this.featureNameProvider.getClassName(element);
-    return _className;
-  }
-  
   protected String _getClassName(final EObject element) {
-    EClass _eClass = element.eClass();
-    String _name = _eClass.getName();
-    String _plus = ("Cannot get class name for " + _name);
-    UnsupportedOperationException _unsupportedOperationException = new UnsupportedOperationException(_plus);
-    throw _unsupportedOperationException;
+    JnarioNameProvider _classNameProvider = this.classNameProvider(element);
+    String _javaClassName = _classNameProvider.toJavaClassName(element);
+    return _javaClassName;
   }
   
   public String describe(final EObject eObject) {
@@ -97,22 +85,22 @@ public class SuiteClassNameProvider extends JnarioNameProvider {
     return _convertToJavaString;
   }
   
-  protected String _doDescribe(final ExampleGroup element) {
-    String _describe = this.exampleNameProvider.describe(element);
+  protected String _doDescribe(final EObject element) {
+    JnarioNameProvider _classNameProvider = this.classNameProvider(element);
+    String _describe = _classNameProvider.describe(element);
     return _describe;
   }
   
-  protected String _doDescribe(final Feature element) {
-    String _name = element.getName();
-    return _name;
-  }
-  
-  protected String _doDescribe(final EObject element) {
-    EClass _eClass = element.eClass();
-    String _name = _eClass.getName();
-    String _plus = ("Cannot describe " + _name);
-    UnsupportedOperationException _unsupportedOperationException = new UnsupportedOperationException(_plus);
-    throw _unsupportedOperationException;
+  private JnarioNameProvider classNameProvider(final EObject element) {
+    JnarioNameProvider _xblockexpression = null;
+    {
+      Resource _eResource = element.eResource();
+      final XtextResource resource = ((XtextResource) _eResource);
+      final IResourceServiceProvider resourceServiceProvider = resource.getResourceServiceProvider();
+      JnarioNameProvider _get = resourceServiceProvider.<JnarioNameProvider>get(JnarioNameProvider.class);
+      _xblockexpression = (_get);
+    }
+    return _xblockexpression;
   }
   
   public String toJavaClassName(final EObject eObject) {
@@ -120,33 +108,25 @@ public class SuiteClassNameProvider extends JnarioNameProvider {
     return _className;
   }
   
-  public String getClassName(final EObject element) {
-    if (element instanceof Feature) {
-      return _getClassName((Feature)element);
-    } else if (element instanceof ExampleGroup) {
-      return _getClassName((ExampleGroup)element);
-    } else if (element instanceof Suite) {
-      return _getClassName((Suite)element);
-    } else if (element != null) {
-      return _getClassName(element);
+  public String getClassName(final EObject suite) {
+    if (suite instanceof Suite) {
+      return _getClassName((Suite)suite);
+    } else if (suite != null) {
+      return _getClassName(suite);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(element).toString());
+        Arrays.<Object>asList(suite).toString());
     }
   }
   
-  public String doDescribe(final EObject element) {
-    if (element instanceof Feature) {
-      return _doDescribe((Feature)element);
-    } else if (element instanceof ExampleGroup) {
-      return _doDescribe((ExampleGroup)element);
-    } else if (element instanceof Suite) {
-      return _doDescribe((Suite)element);
-    } else if (element != null) {
-      return _doDescribe(element);
+  public String doDescribe(final EObject suite) {
+    if (suite instanceof Suite) {
+      return _doDescribe((Suite)suite);
+    } else if (suite != null) {
+      return _doDescribe(suite);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(element).toString());
+        Arrays.<Object>asList(suite).toString());
     }
   }
 }

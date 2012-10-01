@@ -20,6 +20,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.util.StringInputStream;
+import org.jnario.feature.feature.Feature;
+import org.jnario.feature.feature.Scenario;
+import org.jnario.feature.feature.Step;
+import org.jnario.feature.naming.StepNameProvider;
+import org.jnario.spec.naming.ExampleNameProvider;
+import org.jnario.spec.spec.Example;
 import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.suite.jvmmodel.SuiteClassNameProvider;
 import org.jnario.suite.suite.Suite;
@@ -141,6 +147,53 @@ public class ModelStore implements Iterable<EObject> {
 	
 	public <T> T second(Class<? extends T> type){
 		return query().second(type);
+	}
+	
+	public ExampleGroup exampleGroup(String name){
+		Iterable<ExampleGroup> exampleGroups = query().all(ExampleGroup.class);
+		ExampleNameProvider nameProvider = new ExampleNameProvider();
+		for (ExampleGroup exampleGroup : exampleGroups) {
+			if(name.equals(nameProvider.describe(exampleGroup))){
+				return exampleGroup;
+			}
+		}
+		throw new NoSuchElementException();
+	}
+	
+	public Example example(String name){
+		Iterable<Example> exampleGroups = query().all(Example.class);
+		for (Example exampleGroup : exampleGroups) {
+			if(name.equals(exampleGroup.getName())){
+				return exampleGroup;
+			}
+		}
+		throw new NoSuchElementException();
+	}
+	
+	public Feature feature(){
+		return first(Feature.class);
+	}
+	
+	@SuppressWarnings("restriction")
+	public Scenario scenario(String name){
+		Iterable<Scenario> scenarios = query().all(Scenario.class);
+		for (Scenario scenario : scenarios) {
+			if(name.equals(scenario.getName().trim())){
+				return scenario;
+			}
+		}
+		throw new NoSuchElementException();
+	}
+	
+	public Step step(String name){
+		Iterable<Step> steps = query().all(Step.class);
+		StepNameProvider nameProvider = new StepNameProvider();
+		for (Step step : steps) {
+			if(name.equals(nameProvider.nameOf(step))){
+				return step;
+			}
+		}
+		throw new NoSuchElementException();
 	}
 	
 	public Suite suite(String name){

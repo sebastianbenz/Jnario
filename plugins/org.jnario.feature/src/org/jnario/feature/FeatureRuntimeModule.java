@@ -56,6 +56,7 @@ import org.jnario.feature.conversion.FeatureValueConverterService;
 import org.jnario.feature.doc.FeatureDocGenerator;
 import org.jnario.feature.generator.FeatureCompiler;
 import org.jnario.feature.generator.FeatureJvmModelGenerator;
+import org.jnario.feature.jvmmodel.FeatureExecutableProvider;
 import org.jnario.feature.jvmmodel.FeatureJvmModelInferrer;
 import org.jnario.feature.linking.FeatureLazyLinker;
 import org.jnario.feature.linking.FeatureLinkingService;
@@ -67,6 +68,7 @@ import org.jnario.feature.resource.FeatureLocationInFileProvider;
 import org.jnario.feature.scoping.FeatureScopeProvider;
 import org.jnario.feature.validation.FeatureClasspathBasedChecks;
 import org.jnario.feature.validation.FeatureResourceValidator;
+import org.jnario.jvmmodel.ExecutableProvider;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.jvmmodel.JnarioDispatchUtil;
 import org.jnario.jvmmodel.JnarioNameProvider;
@@ -88,6 +90,7 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 		binder.bind(AbstractDocGenerator.class).to(FeatureDocGenerator.class);
 		binder.bind(SignatureHashBuilder.class).to(JnarioSignatureHashBuilder.class);
 		binder.bind(JnarioNameProvider.class).to(FeatureClassNameProvider.class);
+		binder.bind(ExecutableProvider.class).to(FeatureExecutableProvider.class);
 	}
 	
 	public Class<? extends ILinkingDiagnosticMessageProvider> bindILinkingDiagnosticMessageProvider() {

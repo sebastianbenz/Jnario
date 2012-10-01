@@ -85,38 +85,75 @@ example should match resultWithUnicodeChars</pre>
 <h3 id="ExampleGroup">ExampleGroup</h3>
 <ul><li><p id="returns_NotRun_if_children_are_not_executed"><strong>returns NotRun if children are not executed</strong></p>
 <pre class="prettyprint lang-spec linenums">
-val exampleGroup = exampleGroup(&quot;ExampleGroup&quot;, example(&quot;Example 1&quot;),
-                         example(&quot;Example 2&quot;))
-               
-exampleGroup.result =&gt; typeof(NotRun)</pre>
+m.parseSpec('''
+describe &quot;Root&quot;{
+  fact &quot;fact 1&quot;
+  fact &quot;fact 2&quot;
+}
+''')                     
+m.exampleGroup(&quot;Root&quot;).result =&gt; typeof(NotRun)</pre>
 </li><li><p id="passes_if_all_children_pass"><strong>passes if all children pass</strong></p>
 <pre class="prettyprint lang-spec linenums">
-val exampleGroup = exampleGroup(&quot;ExampleGroup&quot;, passingExample(&quot;Example 1&quot;),
-                         passingExample(&quot;Example 2&quot;))
-               
-exampleGroup.result =&gt; typeof(Passed)</pre>
+m.parseSpec('''
+describe &quot;Root&quot;{
+  fact &quot;Example 1&quot;
+  fact &quot;Example 2&quot;
+}
+''')               
+passes(&quot;Example 1&quot;, &quot;Example 2&quot;)
+m.exampleGroup(&quot;Root&quot;).result =&gt; typeof(Passed)</pre>
 </li><li><p id="fails_if_one_child_has_failed"><strong>fails if one child has failed</strong></p>
 <pre class="prettyprint lang-spec linenums">
-val exampleGroup = exampleGroup(&quot;ExampleGroup&quot;, passingExample(&quot;Example 1&quot;),
-                         failingExample(&quot;Example 2&quot;))
-               
-exampleGroup.result =&gt; typeof(Failed)</pre>
+m.parseSpec('''
+describe &quot;Root&quot;{
+  fact &quot;Example 1&quot;
+  fact &quot;Example 2&quot;
+}
+''')               
+passes(&quot;Example 1&quot;)
+fails(&quot;Example 2&quot;)
+m.exampleGroup(&quot;Root&quot;).result =&gt; typeof(Failed)</pre>
 </li><li><p id="execution_time_is_sum_of_all_child_examples"><strong>execution time is sum of all child examples</strong></p>
 <pre class="prettyprint lang-spec linenums">
-val exampleGroup = exampleGroup(&quot;ExampleGroup&quot;, exampleExecutedIn(&quot;Example 1&quot;, 1.0),
-                         exampleExecutedIn(&quot;Example 2&quot;, 2.0))
-exampleGroup.result.executionTimeInSeconds =&gt; 3.0</pre>
+m.parseSpec('''
+describe &quot;Root&quot;{
+  fact &quot;Example 1&quot;
+  fact &quot;Example 2&quot;
+}
+''')  
+exampleExecutedIn(&quot;Example 1&quot;, 1.0)
+exampleExecutedIn(&quot;Example 2&quot;, 2.0)
+m.exampleGroup(&quot;Root&quot;).result.executionTimeInSeconds =&gt; 3.0</pre>
 </li><li><p id="class_name_is_from_spec"><strong>class name is from spec</strong></p>
 <pre class="prettyprint lang-spec linenums">
-val exampleGroup = exampleGroup(&quot;ExampleGroup&quot;, passingExample(&quot;Example 1&quot;))
-exampleGroup.result.className =&gt; &quot;ExampleGroupSpec&quot;</pre>
+m.parseSpec('''
+describe &quot;Root&quot;{
+  fact &quot;Example 1&quot;
+  fact &quot;Example 2&quot;
+}
+''')  
+passes(&quot;Example 1&quot;)
+m.exampleGroup(&quot;Root&quot;).result.className =&gt; &quot;RootSpec&quot;</pre>
 </li><li><p id="name_is_from_spec"><strong>name is from spec</strong></p>
 <pre class="prettyprint lang-spec linenums">
-val exampleGroup = exampleGroup(&quot;ExampleGroup&quot;, passingExample(&quot;Example 1&quot;))
-exampleGroup.result.name =&gt; &quot;ExampleGroup&quot;</pre>
+m.parseSpec('''
+describe &quot;Root&quot;{
+  fact &quot;Example 1&quot;
+  fact &quot;Example 2&quot;
+}
+''')  
+passes(&quot;Example 1&quot;)
+m.exampleGroup(&quot;Root&quot;).result.name =&gt; &quot;Root&quot;</pre>
 </li><li><p id="caches_calculated_results"><strong>caches calculated results</strong></p>
 <pre class="prettyprint lang-spec linenums">
-val exampleGroup = exampleGroup(&quot;ExampleGroup&quot;, passingExample(&quot;Example 1&quot;))
+m.parseSpec('''
+describe &quot;Root&quot;{
+  fact &quot;Example 1&quot;
+  fact &quot;Example 2&quot;
+}
+''')  
+passes(&quot;Example 1&quot;)
+val exampleGroup = m.exampleGroup(&quot;Root&quot;)
 val first = exampleGroup.result
 val second = exampleGroup.result
 first =&gt; sameInstance(second)</pre>
@@ -179,9 +216,13 @@ step should match resultWithArgs</pre>
 <ul><li><p id="returns_Passed_if_all_children_passed"><strong>returns **Passed** if all children passed</strong></p>
 <pre class="prettyprint lang-spec linenums">
 passedStep(&quot;Given my Step&quot;)
-passedStep(&quot;And My other Step&quot;)
+passedStep(&quot;And other Step&quot;)
 scenario.result =&gt; typeof(Passed)</pre>
-</li><li><p id="returns_Failed_if_one_child_failed"><strong>returns **Failed** if one child failed [PENDING]</strong></p>
+</li><li><p id="returns_Failed_if_one_child_failed"><strong>returns **Failed** if one child failed</strong></p>
+<pre class="prettyprint lang-spec linenums">
+passedStep(&quot;Given my Step&quot;)
+failedStep(&quot;And other Step&quot;)
+scenario.result =&gt; typeof(Failed)</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -214,6 +255,7 @@ import org.jnario.report.NotRun
 import org.jnario.report.Passed
 import org.jnario.report.Failed
 import org.jnario.feature.feature.Scenario
+import org.jnario.jnario.test.util.Specs
 
 @CreateWith(typeof(SpecTestCreator))
 describe HashBasedSpec2ResultMapping {
@@ -221,7 +263,7 @@ describe HashBasedSpec2ResultMapping {
   @Inject extension ModelStore m
   
   static val anyExecutionTime = 0.0
-  val anyExecutable = example(&quot;&quot;)
+  val anyExecutable = Specs::example(&quot;&quot;)
   val anyFailure = new SpecFailure(&quot;&quot;, &quot;&quot;, &quot;&quot;)
   
   fact &quot;returns empty execution if no matching spec exists&quot;{
@@ -282,47 +324,84 @@ describe HashBasedSpec2ResultMapping {
   
   context &quot;ExampleGroup&quot;{
     
-    static val CLASSNAME = &quot;ExampleGroupSpec&quot;
+    static val CLASSNAME = &quot;RootSpec&quot;
     
     fact &quot;returns NotRun if children are not executed&quot;{
-      val exampleGroup = exampleGroup(&quot;ExampleGroup&quot;, example(&quot;Example 1&quot;),
-                               example(&quot;Example 2&quot;))
-                     
-      exampleGroup.result =&gt; typeof(NotRun)
+      m.parseSpec('''
+      describe &quot;Root&quot;{
+        fact &quot;fact 1&quot;
+        fact &quot;fact 2&quot;
+      }
+      ''')                     
+      m.exampleGroup(&quot;Root&quot;).result =&gt; typeof(NotRun)
     }
     
     fact &quot;passes if all children pass&quot;{
-      val exampleGroup = exampleGroup(&quot;ExampleGroup&quot;, passingExample(&quot;Example 1&quot;),
-                               passingExample(&quot;Example 2&quot;))
-                     
-      exampleGroup.result =&gt; typeof(Passed)
+      m.parseSpec('''
+      describe &quot;Root&quot;{
+        fact &quot;Example 1&quot;
+        fact &quot;Example 2&quot;
+      }
+      ''')               
+      passes(&quot;Example 1&quot;, &quot;Example 2&quot;)
+      m.exampleGroup(&quot;Root&quot;).result =&gt; typeof(Passed)
     }
     
     fact &quot;fails if one child has failed&quot;{
-      val exampleGroup = exampleGroup(&quot;ExampleGroup&quot;, passingExample(&quot;Example 1&quot;),
-                               failingExample(&quot;Example 2&quot;))
-                     
-      exampleGroup.result =&gt; typeof(Failed)
+      m.parseSpec('''
+      describe &quot;Root&quot;{
+        fact &quot;Example 1&quot;
+        fact &quot;Example 2&quot;
+      }
+      ''')               
+      passes(&quot;Example 1&quot;)
+      fails(&quot;Example 2&quot;)
+      m.exampleGroup(&quot;Root&quot;).result =&gt; typeof(Failed)
     }
     
     fact &quot;execution time is sum of all child examples&quot;{
-      val exampleGroup = exampleGroup(&quot;ExampleGroup&quot;, exampleExecutedIn(&quot;Example 1&quot;, 1.0),
-                               exampleExecutedIn(&quot;Example 2&quot;, 2.0))
-      exampleGroup.result.executionTimeInSeconds =&gt; 3.0
+      m.parseSpec('''
+      describe &quot;Root&quot;{
+        fact &quot;Example 1&quot;
+        fact &quot;Example 2&quot;
+      }
+      ''')  
+      exampleExecutedIn(&quot;Example 1&quot;, 1.0)
+      exampleExecutedIn(&quot;Example 2&quot;, 2.0)
+      m.exampleGroup(&quot;Root&quot;).result.executionTimeInSeconds =&gt; 3.0
     }
     
     fact &quot;class name is from spec&quot;{
-      val exampleGroup = exampleGroup(&quot;ExampleGroup&quot;, passingExample(&quot;Example 1&quot;))
-      exampleGroup.result.className =&gt; &quot;ExampleGroupSpec&quot;
+      m.parseSpec('''
+      describe &quot;Root&quot;{
+        fact &quot;Example 1&quot;
+        fact &quot;Example 2&quot;
+      }
+      ''')  
+      passes(&quot;Example 1&quot;)
+      m.exampleGroup(&quot;Root&quot;).result.className =&gt; &quot;RootSpec&quot;
     }
     
     fact &quot;name is from spec&quot;{
-      val exampleGroup = exampleGroup(&quot;ExampleGroup&quot;, passingExample(&quot;Example 1&quot;))
-      exampleGroup.result.name =&gt; &quot;ExampleGroup&quot;
+      m.parseSpec('''
+      describe &quot;Root&quot;{
+        fact &quot;Example 1&quot;
+        fact &quot;Example 2&quot;
+      }
+      ''')  
+      passes(&quot;Example 1&quot;)
+      m.exampleGroup(&quot;Root&quot;).result.name =&gt; &quot;Root&quot;
     }
     
     fact &quot;caches calculated results&quot;{
-      val exampleGroup = exampleGroup(&quot;ExampleGroup&quot;, passingExample(&quot;Example 1&quot;))
+      m.parseSpec('''
+      describe &quot;Root&quot;{
+        fact &quot;Example 1&quot;
+        fact &quot;Example 2&quot;
+      }
+      ''')  
+      passes(&quot;Example 1&quot;)
+      val exampleGroup = m.exampleGroup(&quot;Root&quot;)
       val first = exampleGroup.result
       val second = exampleGroup.result
       first =&gt; sameInstance(second)
@@ -330,17 +409,16 @@ describe HashBasedSpec2ResultMapping {
     
     def exampleExecutedIn(String name, double time){
       subject.accept(passingSpec(CLASSNAME, name + &quot; [PENDING]&quot;, time))
-      example(name)
     }
     
-    def failingExample(String name){
+    def fails(String name){
       subject.accept(failingSpec(CLASSNAME, name + &quot; [PENDING]&quot;, anyExecutionTime, anyFailure))
-      example(name)
     }
     
-    def passingExample(String name){
-      subject.accept(passingSpec(CLASSNAME, name + &quot; [PENDING]&quot;, anyExecutionTime))
-      example(name)
+    def passes(String... names){
+      names.forEach[
+        subject.accept(passingSpec(CLASSNAME, it + &quot; [PENDING]&quot;, anyExecutionTime))
+      ]
     }
   }
   
@@ -414,7 +492,6 @@ describe HashBasedSpec2ResultMapping {
   context &quot;Scenario&quot;{
     static val SCENARIO_CLASSNAME = &quot;test.MyFeatureFeatureMyScenario&quot; 
     
-    
     before{
       m.parseScenario('''
         package test 
@@ -427,17 +504,22 @@ describe HashBasedSpec2ResultMapping {
     
     fact &quot;returns **Passed** if all children passed&quot;{
       passedStep(&quot;Given my Step&quot;)
-      passedStep(&quot;And My other Step&quot;)
+      passedStep(&quot;And other Step&quot;)
       scenario.result =&gt; typeof(Passed)
     }
     
-    pending fact &quot;returns **Failed** if one child failed&quot;{
+    fact &quot;returns **Failed** if one child failed&quot;{
       passedStep(&quot;Given my Step&quot;)
+      failedStep(&quot;And other Step&quot;)
       scenario.result =&gt; typeof(Failed)
     }
     
     def passedStep(String name){
-      subject.accept(new Passed(SCENARIO_CLASSNAME, name + &quot; [PENDING]&quot;, 0.0))
+      subject.accept(passingSpec(SCENARIO_CLASSNAME, name + &quot; [PENDING]&quot;, 0.0))
+    }
+    
+    def failedStep(String name){
+      subject.accept(failingSpec(SCENARIO_CLASSNAME, name + &quot; [PENDING]&quot;, 0.0, anyFailure))
     }
   }
   

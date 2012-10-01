@@ -15,6 +15,13 @@ import org.jnario.suite.suite.SuiteFile;
 public class Suites {
   private final static SuiteFactory factory = SuiteFactory.eINSTANCE;
   
+  public static SuiteFile suiteFile(final Suite... suites) {
+    final SuiteFile file = Suites.factory.createSuiteFile();
+    EList<XtendClass> _xtendClasses = file.getXtendClasses();
+    _xtendClasses.addAll(((Collection<? extends XtendClass>)Conversions.doWrapArray(suites)));
+    return file;
+  }
+  
   public static Suite suiteWith(final String name, final SpecReference... references) {
     Suite _xblockexpression = null;
     {

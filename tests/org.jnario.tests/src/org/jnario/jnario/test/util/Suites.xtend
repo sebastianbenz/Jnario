@@ -10,10 +10,17 @@ package org.jnario.jnario.test.util
 import org.jnario.suite.suite.SuiteFactory
 import org.jnario.Specification
 import org.jnario.suite.suite.SpecReference
+import org.jnario.suite.suite.Suite
 
 class Suites {
 	
 	static val SuiteFactory factory = SuiteFactory::eINSTANCE
+	
+	def static suiteFile(Suite... suites){
+		val file = factory.createSuiteFile
+		file.xtendClasses.addAll(suites)
+		return file
+	}
 	
 	def static suiteWith(String name, SpecReference... references){
 		val suite = suite(name)
