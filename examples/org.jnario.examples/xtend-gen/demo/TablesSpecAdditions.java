@@ -1,10 +1,10 @@
-package calculator;
+package demo;
 
 import java.util.List;
 import org.jnario.lib.ExampleTableRow;
 
-public class AdditionsSpecExamples extends ExampleTableRow {
-  public AdditionsSpecExamples(final List<String> cellNames, final int a, final int b, final int sum) {
+public class TablesSpecAdditions extends ExampleTableRow {
+  public TablesSpecAdditions(final List<String> cellNames, final int a, final int b, final int sum) {
     super(cellNames);
     this.a = a;
     this.b = b;

@@ -14,14 +14,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(FeatureRunner.class)
-@Named("Scenario: Blinker")
+@Named("Scenario: Blinker 2")
 @SuppressWarnings("all")
-public class PlayingGameOfLifeFeatureBlinker {
+public class PlayingGameOfLifeFeatureBlinker2 {
   @Test
   @Order(0)
   @Named("Given a world")
   public void givenAWorld() {
-    StepArguments _stepArguments = new StepArguments("\n\t\t\t\t-----\n\t\t\t\t--X--\n\t\t\t\t--X--\n\t\t\t\t--X--\n\t\t\t\t-----\n\t\t\t");
+    StepArguments _stepArguments = new StepArguments("\n\t\t\t\t-----\n\t\t\t\t-----\n\t\t\t\t-XXX-\n\t\t\t\t-----\n\t\t\t\t-----\n\t\t\t");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
     World _parseWorld = World.parseWorld(_first);
@@ -32,23 +32,6 @@ public class PlayingGameOfLifeFeatureBlinker {
   @Order(1)
   @Named("Then the world evolves into")
   public void thenTheWorldEvolvesInto() {
-    StepArguments _stepArguments = new StepArguments("\n\t\t\t\t-----\n\t\t\t\t-----\n\t\t\t\t-XXX-\n\t\t\t\t-----\n\t\t\t\t-----\n\t\t\t");
-    final StepArguments args = _stepArguments;
-    Evolution _gameOfLife = Evolution.gameOfLife();
-    World _evolve = _gameOfLife.evolve(this.world);
-    this.world = _evolve;
-    String _first = JnarioIterableExtensions.<String>first(args);
-    World _parseWorld = World.parseWorld(_first);
-    boolean _doubleArrow = Should.operator_doubleArrow(this.world, _parseWorld);
-    Assert.assertTrue("\nExpected  but"
-     + "\n      is " + new StringDescription().appendValue(_parseWorld).toString() + "\n", _doubleArrow);
-    
-  }
-  
-  @Test
-  @Order(2)
-  @Named("And the world evolves into")
-  public void andTheWorldEvolvesInto() {
     StepArguments _stepArguments = new StepArguments("\n\t\t\t\t-----\n\t\t\t\t--X--\n\t\t\t\t--X--\n\t\t\t\t--X--\n\t\t\t\t-----\n\t\t\t");
     final StepArguments args = _stepArguments;
     Evolution _gameOfLife = Evolution.gameOfLife();

@@ -12,6 +12,12 @@ import static extension org.jnario.jnario.test.util.Helpers.*
 import static extension org.jnario.lib.Each.*
 import static extension org.jnario.lib.Should.*
 import static extension org.jnario.jnario.test.util.SpecExecutor.*
+import org.jnario.jnario.test.util.BehaviorExecutor
+import com.google.inject.Inject
+import org.jnario.runner.CreateWith
+import org.jnario.runner.SpecCreator
+import org.jnario.jnario.test.util.SpecExecutor
+import org.jnario.jnario.test.util.SpecTestCreator
 /*
  * <p align="center"><img src="file://localhost/Users/sebastian/Desktop/Specs.png"/></p>
  *  
@@ -26,8 +32,10 @@ import static extension org.jnario.jnario.test.util.SpecExecutor.*
  * your software at the same time.
  * For example, this document is actually generated from a [spec](https://gist.github.com/1762405) written 
  * with *Jnario Specs*.
- */ 
+ */
+@CreateWith(typeof(SpecTestCreator))
 describe "Jnario Specs fact BDD for Java"{
+  @Inject extension SpecExecutor
  
   /* 
    * Jnario improves the readability of tests by providing assertion methods which can extend 

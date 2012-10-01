@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Additions</title>
+<title>Tables</title>
 <meta name="description" content="">
 <meta name="author" content="Jnario">
 
@@ -29,13 +29,13 @@
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
 						<li><a href="#source" data-toggle="tab">Source</a></li>
 					  </ul>
-					<h1>Additions</h1>
+					<h1>Tables</h1>
 				</div>
 				<div class="row">
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<ul><li><p id="examples"><strong>Examples</strong></p>
+<ul><li><p id="additions"><strong>Additions</strong></p>
 <table class="table table-striped table-bordered table-condensed">
 	<thead>
 		<tr>
@@ -67,45 +67,26 @@
 	</tr>
 	</tbody>
 </table>
-</li><li><p id="examples_forEach_a_b_sum"><strong>examples.forEach[a + b => sum]</strong></p>
-</li><li><p id="examples"><strong>examples</strong></p>
-<pre class="prettyprint lang-spec linenums">
-val name = &quot;Sebastian&quot;
-sayHello(name) =&gt; &quot;Hello Sebastian&quot;</pre>
+</li><li><p id="additions_forEach_a_b_sum"><strong>additions.forEach[ a + b => sum ]</strong></p>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
-						    	<h3>Additions.spec</h3>
+						    	<h3>Example2.spec</h3>
 						    	<p>
 <pre class="prettyprint lang-spec linenums">
-/*******************************************************************************
- * Copyright (c) 2012 BMW Car IT and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
-package calculator
+package demo
 
-describe &quot;Additions&quot;{
+describe &quot;Tables&quot;{
 
-  def examples{
+  def additions{
       |  a  |  b  |  sum  |
       |  1  |  2  |   3   |
       |  4  |  5  |   9   |
       | 10  | 11  |  20   | 
       | 21  | 21  |  42   | 
   }
-  fact examples.forEach[a + b =&gt; sum]
   
-  fact &quot;examples&quot;{
-    val name = &quot;Sebastian&quot;
-    sayHello(name) =&gt; &quot;Hello Sebastian&quot;
-  }
-  
-  def sayHello(String name){
-    return &quot;Hello &quot; + name.toUpperCase
-  }
+  fact additions.forEach[ a + b =&gt; sum ]
   
 }
 </pre>

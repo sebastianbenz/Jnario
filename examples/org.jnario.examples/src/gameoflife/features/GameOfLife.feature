@@ -5,7 +5,7 @@ import static gameoflife.World.*
 import gameoflife.* 
 
 Feature: Playing Game of Life
-
+ 
 	Scenario: Box
 		World world
 		Given a world 
@@ -27,7 +27,7 @@ Feature: Playing Game of Life
 			world = gameOfLife.evolve(world)
 			world => parseWorld(args.first)
 			
-	Scenario: Blinker
+	Scenario: Blinker 1
 		Given a world 
 			'''
 				-----
@@ -44,7 +44,17 @@ Feature: Playing Game of Life
 				-----
 				-----
 			'''
-		And the world evolves into
+			
+	Scenario: Blinker 2
+		Given a world 
+			'''
+				-----
+				-----
+				-XXX-
+				-----
+				-----
+			'''
+		Then the world evolves into
 			'''
 				-----
 				--X--
@@ -52,4 +62,3 @@ Feature: Playing Game of Life
 				--X--
 				-----
 			'''
-		

@@ -54,7 +54,7 @@
 </ul>
 </li>
 </ul>
-<h3  id="Scenario_Blinker">Scenario: Blinker
+<h3  id="Scenario_Blinker_1">Scenario: Blinker 1
 </h3>
 <ul>
 <li><p><strong>Given</strong> a world</p><pre>-----
@@ -71,14 +71,26 @@
 -----
 -----</pre>
 <ul>
-<li><p><strong>And</strong> the world evolves into</p><pre>-----
+</ul>
+</li>
+</ul>
+<h3  id="Scenario_Blinker_2">Scenario: Blinker 2
+</h3>
+<ul>
+<li><p><strong>Given</strong> a world</p><pre>-----
+-----
+-XXX-
+-----
+-----</pre>
+<ul>
+</ul>
+</li>
+<li><p><strong>Then</strong> the world evolves into</p><pre>-----
 --X--
 --X--
 --X--
 -----</pre>
 <ul>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -94,7 +106,7 @@ import static gameoflife.World.*
 import gameoflife.* 
 
 Feature: Playing Game of Life
-
+ 
   Scenario: Box
     World world
     Given a world 
@@ -116,7 +128,7 @@ Feature: Playing Game of Life
       world = gameOfLife.evolve(world)
       world =&gt; parseWorld(args.first)
       
-  Scenario: Blinker
+  Scenario: Blinker 1
     Given a world 
       '''
         -----
@@ -133,7 +145,17 @@ Feature: Playing Game of Life
         -----
         -----
       '''
-    And the world evolves into
+      
+  Scenario: Blinker 2
+    Given a world 
+      '''
+        -----
+        -----
+        -XXX-
+        -----
+        -----
+      '''
+    Then the world evolves into
       '''
         -----
         --X--

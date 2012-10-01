@@ -17,16 +17,4 @@ public class Calculator {
   public String toString() {
     return "Calculator";
   }
-  
-  public Object enter(final String a) {
-    return null;
-  }
-  
-  public Object press(final String command) {
-    return null;
-  }
-  
-  public String result() {
-    return "120";
-  }
 }

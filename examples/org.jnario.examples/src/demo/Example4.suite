@@ -1,0 +1,16 @@
+package demo
+
+import demo.*
+
+#Test Suites on Steroids
+
+Describe your test suite in plain **formatted** text.
+
+##List existing Specs
+
+- "Stack": this is a reference to our Stack specification.
+- "Addition": this is reference to our feature specification.
+
+##Select multiple specs 
+
+- \demo.*\
