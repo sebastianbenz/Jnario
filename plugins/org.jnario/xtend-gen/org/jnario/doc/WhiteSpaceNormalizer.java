@@ -1,9 +1,11 @@
 package org.jnario.doc;
 
-import com.google.common.base.Objects;
 import java.util.Arrays;
+
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+
+import com.google.common.base.Objects;
 
 @SuppressWarnings("all")
 public class WhiteSpaceNormalizer {

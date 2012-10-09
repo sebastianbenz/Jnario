@@ -18,7 +18,7 @@ import org.junit.runner.RunWith;
 public class FeatureExtensionsFeatureUsingJnarioPredefinedExtensions {
   @Test
   @Order(0)
-  @Named("Given the number \"5\" as string")
+  @Named("Given the number \\\"5\\\" as string")
   public void givenTheNumber5AsString() {
     StepArguments _stepArguments = new StepArguments("5");
     final StepArguments args = _stepArguments;
@@ -36,7 +36,7 @@ public class FeatureExtensionsFeatureUsingJnarioPredefinedExtensions {
   
   @Test
   @Order(2)
-  @Named("Then it should be \"5\"")
+  @Named("Then it should be \\\"5\\\"")
   public void thenItShouldBe5() {
     StepArguments _stepArguments = new StepArguments("5");
     final StepArguments args = _stepArguments;

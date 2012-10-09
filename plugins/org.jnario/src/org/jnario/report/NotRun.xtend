@@ -5,3 +5,4 @@ class NotRun extends SpecExecution{
 		super(className, name, 0.0, <SpecFailure>emptyList)
 	}
 }
+ 

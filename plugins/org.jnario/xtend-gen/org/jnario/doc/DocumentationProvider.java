@@ -1,9 +1,10 @@
 package org.jnario.doc;
 
-import com.google.common.base.Objects;
-import com.google.inject.Inject;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
+
+import com.google.common.base.Objects;
+import com.google.inject.Inject;
 
 @SuppressWarnings("all")
 public class DocumentationProvider {

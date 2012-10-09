@@ -1,10 +1,10 @@
 package org.jnario.jvmmodel;
 
+import static com.google.common.base.Strings.isNullOrEmpty;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendClass;
-import static com.google.common.base.Strings.isNullOrEmpty;
 public abstract class JnarioNameProvider {
 
 	public String toQualifiedJavaClassName(EObject eObject) {

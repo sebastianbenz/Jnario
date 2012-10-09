@@ -19,7 +19,7 @@ describe SpecResultParser{
 	static val FAILURE_TYPE = "java.lang.AssertionError"
 	static val STACKTRACE = "the stacktrace"
 	
-	val SpecExecutionAcceptor acceptor = mock(typeof(SpecExecutionAcceptor))
+	val SpecExecutionAcceptor acceptor = mock(SpecExecutionAcceptor)
   
 	fact "parses successfull specs from xml"{ 
 		'''

@@ -18,7 +18,7 @@ import org.junit.runner.RunWith;
 public class FeatureExtensionsFeatureReferencingStepsWithExtensions {
   @Test
   @Order(0)
-  @Named("Given the number \"12\" as string")
+  @Named("Given the number \\\"12\\\" as string")
   public void givenTheNumber12AsString() {
     StepArguments _stepArguments = new StepArguments("12");
     final StepArguments args = _stepArguments;
@@ -36,7 +36,7 @@ public class FeatureExtensionsFeatureReferencingStepsWithExtensions {
   
   @Test
   @Order(2)
-  @Named("Then it should be \"12\"")
+  @Named("Then it should be \\\"12\\\"")
   public void thenItShouldBe12() {
     StepArguments _stepArguments = new StepArguments("12");
     final StepArguments args = _stepArguments;

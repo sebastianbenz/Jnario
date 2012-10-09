@@ -14,7 +14,6 @@ import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
-import org.eclipse.xtext.xbase.XTypeLiteral;
 import org.jnario.Assertion;
 import org.jnario.MockLiteral;
 import org.jnario.Should;

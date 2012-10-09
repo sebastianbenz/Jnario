@@ -18,14 +18,16 @@ import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XBinaryOperation;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XTypeLiteral;
-import org.jnario.*;
 import org.jnario.Assertion;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
+import org.jnario.Executable;
 import org.jnario.JnarioPackage;
+import org.jnario.MockLiteral;
 import org.jnario.Should;
 import org.jnario.ShouldThrow;
+import org.jnario.Specification;
 
 /**
  * <!-- begin-user-doc -->

@@ -23,7 +23,7 @@ import org.junit.runner.RunWith;
 public class FeatureExtensionsFeatureUsingMultipleExtensions {
   @Test
   @Order(0)
-  @Named("When sorting the colors \"red, green, blue\"")
+  @Named("When sorting the colors \\\"red, green, blue\\\"")
   public void whenSortingTheColorsRedGreenBlue() {
     StepArguments _stepArguments = new StepArguments("red, green, blue");
     final StepArguments args = _stepArguments;

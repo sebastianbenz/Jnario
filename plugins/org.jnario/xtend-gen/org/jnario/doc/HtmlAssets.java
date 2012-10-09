@@ -1,10 +1,10 @@
 package org.jnario.doc;
 
-import com.google.inject.Singleton;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.xtend.lib.Data;
@@ -16,8 +16,9 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
-import org.jnario.doc.DocOutputConfigurationProvider;
 import org.jnario.util.Strings;
+
+import com.google.inject.Singleton;
 
 @Data
 @Singleton

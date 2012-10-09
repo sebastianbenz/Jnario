@@ -1,10 +1,8 @@
 package org.jnario.doc;
 
-import com.google.common.base.Objects;
-import com.google.common.collect.Iterables;
-import com.google.inject.Inject;
 import java.util.Arrays;
 import java.util.List;
+
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.EList;
@@ -34,13 +32,12 @@ import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
 import org.jnario.Executable;
-import org.jnario.doc.DocumentationProvider;
-import org.jnario.doc.Filter;
-import org.jnario.doc.HtmlFile;
-import org.jnario.doc.HtmlFileBuilder;
-import org.jnario.doc.WhiteSpaceNormalizer;
 import org.jnario.report.Executable2ResultMapping;
 import org.pegdown.PegDownProcessor;
+
+import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
+import com.google.inject.Inject;
 
 @SuppressWarnings("all")
 public abstract class AbstractDocGenerator implements IGenerator {

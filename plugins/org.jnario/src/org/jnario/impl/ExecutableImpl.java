@@ -10,9 +10,7 @@
 package org.jnario.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.jnario.Executable;
 import org.jnario.JnarioPackage;
 

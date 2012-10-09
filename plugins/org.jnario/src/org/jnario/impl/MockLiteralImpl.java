@@ -8,9 +8,7 @@
 package org.jnario.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.xtext.xbase.impl.XTypeLiteralImpl;
-
 import org.jnario.JnarioPackage;
 import org.jnario.MockLiteral;
 

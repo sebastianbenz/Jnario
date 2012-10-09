@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.util.StringInputStream;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.jnario.report.Failed;
 import org.jnario.report.Passed;
 import org.jnario.report.SpecExecutionAcceptor;
@@ -37,12 +36,7 @@ public class SpecResultParserSpec {
   
   final static String STACKTRACE = "the stacktrace";
   
-  final SpecExecutionAcceptor acceptor = new Function0<SpecExecutionAcceptor>() {
-    public SpecExecutionAcceptor apply() {
-      SpecExecutionAcceptor _mock = Mockito.<SpecExecutionAcceptor>mock(SpecExecutionAcceptor.class);
-      return _mock;
-    }
-  }.apply();
+  final SpecExecutionAcceptor acceptor = Mockito.mock(SpecExecutionAcceptor.class);
   
   @Test
   @Named("parses successfull specs from xml")

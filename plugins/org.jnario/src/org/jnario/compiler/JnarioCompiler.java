@@ -32,7 +32,6 @@ import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XFeatureCall;
 import org.eclipse.xtext.xbase.XNullLiteral;
 import org.eclipse.xtext.xbase.XSwitchExpression;
-import org.eclipse.xtext.xbase.XTypeLiteral;
 import org.eclipse.xtext.xbase.XbaseFactory;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
@@ -43,8 +42,8 @@ import org.jnario.Assertion;
 import org.jnario.MockLiteral;
 import org.jnario.Should;
 import org.jnario.ShouldThrow;
+import org.jnario.util.MockingSupport;
 import org.junit.Assert;
-import org.mockito.Mockito;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -174,7 +173,7 @@ public class JnarioCompiler extends XtendCompiler {
 	}
 
 	public void _toJavaExpression(MockLiteral expr, ITreeAppendable b) {
-		JvmType mockito = jvmType(Mockito.class, expr);
+		JvmType mockito = getTypeReferences().findDeclaredType(MockingSupport.CLASS_NAME, expr);
 		b.append(mockito).append(".mock(");
 		b.append(expr.getType()).append(".class");
 		b.append(")");

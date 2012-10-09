@@ -1,10 +1,11 @@
 package org.jnario.util;
 
-import com.google.common.base.Predicate;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.xtend.lib.Data;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
+
+import com.google.common.base.Predicate;
 
 @Data
 @SuppressWarnings("all")

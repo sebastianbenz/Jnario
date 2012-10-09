@@ -30,7 +30,7 @@ public class ReferencesForStepsFeatureDefiningAStepAndUsingItInTheSameScenario {
   
   @Test
   @Order(1)
-  @Named("Then the number of failures should be \"2\"")
+  @Named("Then the number of failures should be \\\"2\\\"")
   public void thenTheNumberOfFailuresShouldBe2() {
     StepArguments _stepArguments = new StepArguments("2");
     final StepArguments args = _stepArguments;

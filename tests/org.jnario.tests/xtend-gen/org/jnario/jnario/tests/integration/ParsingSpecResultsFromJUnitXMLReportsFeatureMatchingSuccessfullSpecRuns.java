@@ -64,7 +64,7 @@ public class ParsingSpecResultsFromJUnitXMLReportsFeatureMatchingSuccessfullSpec
   
   @Test
   @Order(2)
-  @Named("Then the spec execution \"passed\"")
+  @Named("Then the spec execution \\\"passed\\\"")
   public void thenTheSpecExecutionPassed() {
     StepArguments _stepArguments = new StepArguments("passed");
     final StepArguments args = _stepArguments;

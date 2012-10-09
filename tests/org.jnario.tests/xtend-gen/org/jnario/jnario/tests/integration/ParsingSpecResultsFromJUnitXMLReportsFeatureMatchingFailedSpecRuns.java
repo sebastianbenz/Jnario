@@ -64,7 +64,7 @@ public class ParsingSpecResultsFromJUnitXMLReportsFeatureMatchingFailedSpecRuns 
   
   @Test
   @Order(2)
-  @Named("Then the spec execution \"failed\"")
+  @Named("Then the spec execution \\\"failed\\\"")
   public void thenTheSpecExecutionFailed() {
     StepArguments _stepArguments = new StepArguments("failed");
     final StepArguments args = _stepArguments;

@@ -9,4 +9,4 @@ class Failed extends SpecExecution{
 	new(String className, String name, double executionTimeInSeconds, Iterable<SpecFailure> failures) {
 		super(className, name, executionTimeInSeconds, ImmutableList::of(failures))
 	}
-} 
+}  

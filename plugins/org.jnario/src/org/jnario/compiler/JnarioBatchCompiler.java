@@ -7,9 +7,10 @@
  *******************************************************************************/
 package org.jnario.compiler;
 
-import static com.google.common.collect.Iterables.*;
-import static com.google.common.collect.Lists.*;
-import static org.eclipse.xtext.EcoreUtil2.*;
+import static com.google.common.collect.Iterables.addAll;
+import static com.google.common.collect.Iterables.filter;
+import static com.google.common.collect.Lists.newArrayList;
+import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 
 import java.io.File;
 import java.util.List;
