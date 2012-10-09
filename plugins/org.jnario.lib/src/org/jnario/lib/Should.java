@@ -124,4 +124,13 @@ public class Should{
 			}
 		};
 	}
+	
+	/**
+	 * A helper method to mark irrelevant values.
+	 * 
+	 * @return always null
+	 */
+	public static <T> T _(){
+		return null;
+	}
 }
