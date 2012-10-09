@@ -125,8 +125,9 @@ public class JnarioQuickFixProvider extends XtendQuickfixProvider{
 					if (reference == null)
 						return;
 					
-					if(reference == XbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR || 
-							reference == TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE){
+					if( reference == XbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR ||
+						reference == XbasePackage.Literals.XTYPE_LITERAL__TYPE ||
+						reference == TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE){
 						URI context = state.getURI();
 						String issueString = getIssueString(issue, xtextDocument);
 						issueResolutionAcceptor.accept(
