@@ -7,7 +7,6 @@ import org.jnario.feature.feature.Step;
 import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingSpec;
 import org.jnario.report.Passed;
-import org.jnario.report.SpecExecution;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
@@ -23,28 +22,28 @@ import org.junit.runner.RunWith;
 public class HashBasedSpec2ResultMappingStepSpec extends HashBasedSpec2ResultMappingSpec {
   final Passed aResult = new Function0<Passed>() {
     public Passed apply() {
-      Passed _passingSpec = SpecExecution.passingSpec("example.SomethingFeatureMyScenario", "Given a step", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
+      Passed _passingSpec = Passed.passingSpec("example.SomethingFeatureMyScenario", "Given a step", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
       return _passingSpec;
     }
   }.apply();
   
   final Passed aResultWithDifferentClassName = new Function0<Passed>() {
     public Passed apply() {
-      Passed _passingSpec = SpecExecution.passingSpec("example.DifferentSpec", "a fact", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
+      Passed _passingSpec = Passed.passingSpec("example.DifferentSpec", "a fact", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
       return _passingSpec;
     }
   }.apply();
   
   final Passed aResultWithDifferentName = new Function0<Passed>() {
     public Passed apply() {
-      Passed _passingSpec = SpecExecution.passingSpec("example.SomethingSpec", "another fact", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
+      Passed _passingSpec = Passed.passingSpec("example.SomethingSpec", "another fact", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
       return _passingSpec;
     }
   }.apply();
   
   final Passed pendingResult = new Function0<Passed>() {
     public Passed apply() {
-      Passed _passingSpec = SpecExecution.passingSpec("example.SomethingFeatureMyScenario", "Given a pending step [PENDING]", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
+      Passed _passingSpec = Passed.passingSpec("example.SomethingFeatureMyScenario", "Given a pending step [PENDING]", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
       return _passingSpec;
     }
   }.apply();
@@ -53,7 +52,7 @@ public class HashBasedSpec2ResultMappingStepSpec extends HashBasedSpec2ResultMap
     public Passed apply() {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Given step with uml\\u00E4uts");
-      Passed _passingSpec = SpecExecution.passingSpec("example.SomethingFeatureMyScenario", _builder.toString(), HashBasedSpec2ResultMappingSpec.anyExecutionTime);
+      Passed _passingSpec = Passed.passingSpec("example.SomethingFeatureMyScenario", _builder.toString(), HashBasedSpec2ResultMappingSpec.anyExecutionTime);
       return _passingSpec;
     }
   }.apply();
@@ -62,7 +61,7 @@ public class HashBasedSpec2ResultMappingStepSpec extends HashBasedSpec2ResultMap
     public Passed apply() {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Given step with \\&quot;args\\&quot;");
-      Passed _passingSpec = SpecExecution.passingSpec("example.SomethingFeatureMyScenario", _builder.toString(), HashBasedSpec2ResultMappingSpec.anyExecutionTime);
+      Passed _passingSpec = Passed.passingSpec("example.SomethingFeatureMyScenario", _builder.toString(), HashBasedSpec2ResultMappingSpec.anyExecutionTime);
       return _passingSpec;
     }
   }.apply();

@@ -10,6 +10,7 @@ import org.jnario.jvmmodel.ExecutableProvider
 import org.jnario.jvmmodel.JnarioNameProvider
 
 import static extension org.apache.commons.lang.StringEscapeUtils.*
+import org.jnario.report.SpecExecution
 
 class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Executable2ResultMapping{
 
@@ -29,7 +30,7 @@ class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Executable2R
 		accept(result)
 		result
 	}
-	
+
 	def private SpecExecution calculateResult(Executable specification){
 		val children = specification.executables
 		val results = children.map[result].toList

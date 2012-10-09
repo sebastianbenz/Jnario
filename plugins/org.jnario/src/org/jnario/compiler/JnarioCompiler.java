@@ -32,6 +32,7 @@ import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XFeatureCall;
 import org.eclipse.xtext.xbase.XNullLiteral;
 import org.eclipse.xtext.xbase.XSwitchExpression;
+import org.eclipse.xtext.xbase.XTypeLiteral;
 import org.eclipse.xtext.xbase.XbaseFactory;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
@@ -39,9 +40,11 @@ import org.eclipse.xtext.xbase.util.XExpressionHelper;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.StringDescription;
 import org.jnario.Assertion;
+import org.jnario.MockLiteral;
 import org.jnario.Should;
 import org.jnario.ShouldThrow;
 import org.junit.Assert;
+import org.mockito.Mockito;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -64,6 +67,8 @@ public class JnarioCompiler extends XtendCompiler {
 			_toJavaExpression((Should) obj, appendable);
 		} else if (obj instanceof ShouldThrow) {
 			_toJavaExpression((ShouldThrow) obj, appendable);
+		} else if (obj instanceof MockLiteral) {
+			_toJavaExpression((MockLiteral) obj, appendable);
 		} else {
 			super.internalToConvertedExpression(obj, appendable);
 		}
@@ -78,6 +83,8 @@ public class JnarioCompiler extends XtendCompiler {
 			_toJavaStatement((Should) obj, appendable, isReferenced);
 		} else if (obj instanceof ShouldThrow) {
 			_toJavaStatement((ShouldThrow) obj, appendable, isReferenced);
+		} else if (obj instanceof MockLiteral) {
+			_toJavaStatement((MockLiteral) obj, appendable, isReferenced);
 		} else
 			super.doInternalToJavaStatement(obj, appendable, isReferenced);
 	}
@@ -166,6 +173,17 @@ public class JnarioCompiler extends XtendCompiler {
 		return convertToJavaString("\n");
 	}
 
+	public void _toJavaExpression(MockLiteral expr, ITreeAppendable b) {
+		JvmType mockito = jvmType(Mockito.class, expr);
+		b.append(mockito).append(".mock(");
+		b.append(expr.getType()).append(".class");
+		b.append(")");
+	}
+	
+	public void _toJavaStatement(MockLiteral expr, ITreeAppendable b, boolean isReferenced) {
+		generateComment(expr, b, isReferenced);
+	}
+	
 	public void _toJavaExpression(Should should, ITreeAppendable b) {
 		b.append("null");
 	}

@@ -92,6 +92,20 @@ XPrimaryExpression returns xbase::XExpression:
 	XParenthesizedExpression |
 	Assertion;
 
+XLiteral returns xbase::XExpression:
+	XClosure |
+	XBooleanLiteral |
+	XNumberLiteral |
+	XNullLiteral |
+	XStringLiteral |
+	XTypeLiteral | 
+	MockLiteral 
+;
+
+MockLiteral:
+	{MockLiteral} ('mock'|'stub') '(' type=[types::JvmType|QualifiedName] ')'
+;
+
 XRelationalExpression returns xbase::XExpression:
 	XOtherOperatorExpression
 	( 

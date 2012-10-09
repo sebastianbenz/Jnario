@@ -1160,6 +1160,94 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getAssertionParserRuleCall_13() { return cAssertionParserRuleCall_13; }
 	}
 
+	public class XLiteralElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "XLiteral");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cXClosureParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cXBooleanLiteralParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cXNumberLiteralParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cXNullLiteralParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cXStringLiteralParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cXTypeLiteralParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cMockLiteralParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
+		
+		//XLiteral returns xbase::XExpression:
+		//	XClosure | XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral | MockLiteral;
+		public ParserRule getRule() { return rule; }
+
+		//XClosure | XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral | MockLiteral
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//XClosure
+		public RuleCall getXClosureParserRuleCall_0() { return cXClosureParserRuleCall_0; }
+
+		//XBooleanLiteral
+		public RuleCall getXBooleanLiteralParserRuleCall_1() { return cXBooleanLiteralParserRuleCall_1; }
+
+		//XNumberLiteral
+		public RuleCall getXNumberLiteralParserRuleCall_2() { return cXNumberLiteralParserRuleCall_2; }
+
+		//XNullLiteral
+		public RuleCall getXNullLiteralParserRuleCall_3() { return cXNullLiteralParserRuleCall_3; }
+
+		//XStringLiteral
+		public RuleCall getXStringLiteralParserRuleCall_4() { return cXStringLiteralParserRuleCall_4; }
+
+		//XTypeLiteral
+		public RuleCall getXTypeLiteralParserRuleCall_5() { return cXTypeLiteralParserRuleCall_5; }
+
+		//MockLiteral
+		public RuleCall getMockLiteralParserRuleCall_6() { return cMockLiteralParserRuleCall_6; }
+	}
+
+	public class MockLiteralElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MockLiteral");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cMockLiteralAction_0 = (Action)cGroup.eContents().get(0);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Keyword cMockKeyword_1_0 = (Keyword)cAlternatives_1.eContents().get(0);
+		private final Keyword cStubKeyword_1_1 = (Keyword)cAlternatives_1.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cTypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final CrossReference cTypeJvmTypeCrossReference_3_0 = (CrossReference)cTypeAssignment_3.eContents().get(0);
+		private final RuleCall cTypeJvmTypeQualifiedNameParserRuleCall_3_0_1 = (RuleCall)cTypeJvmTypeCrossReference_3_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//MockLiteral:
+		//	{MockLiteral} ("mock" | "stub") "(" type=[types::JvmType|QualifiedName] ")";
+		public ParserRule getRule() { return rule; }
+
+		//{MockLiteral} ("mock" | "stub") "(" type=[types::JvmType|QualifiedName] ")"
+		public Group getGroup() { return cGroup; }
+
+		//{MockLiteral}
+		public Action getMockLiteralAction_0() { return cMockLiteralAction_0; }
+
+		//"mock" | "stub"
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+
+		//"mock"
+		public Keyword getMockKeyword_1_0() { return cMockKeyword_1_0; }
+
+		//"stub"
+		public Keyword getStubKeyword_1_1() { return cStubKeyword_1_1; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
+
+		//type=[types::JvmType|QualifiedName]
+		public Assignment getTypeAssignment_3() { return cTypeAssignment_3; }
+
+		//[types::JvmType|QualifiedName]
+		public CrossReference getTypeJvmTypeCrossReference_3_0() { return cTypeJvmTypeCrossReference_3_0; }
+
+		//QualifiedName
+		public RuleCall getTypeJvmTypeQualifiedNameParserRuleCall_3_0_1() { return cTypeJvmTypeQualifiedNameParserRuleCall_3_0_1; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
+	}
+
 	public class XRelationalExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "XRelationalExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -1203,15 +1291,15 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRightOperandXOtherOperatorExpressionParserRuleCall_1_3_1_0 = (RuleCall)cRightOperandAssignment_1_3_1.eContents().get(0);
 		
 		//XRelationalExpression returns xbase::XExpression:
-		//	XOtherOperatorExpression (=> ({Should.leftOperand=current} feature=[types::JvmIdentifiableElement|Should])
-		//	rightOperand=XOtherOperatorExpression | => ({ShouldThrow.expression=current} ("should" "throw" | "throws"))
+		//	XOtherOperatorExpression (=> ({Should.leftOperand=current} feature=[types::JvmIdentifiableElement|Should]) =>
+		//	rightOperand=XOtherOperatorExpression? | => ({ShouldThrow.expression=current} ("should" "throw" | "throws"))
 		//	type=JvmTypeReference | => ({xbase::XInstanceOfExpression.expression=current} "instanceof") type=JvmTypeReference | =>
 		//	({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare])
 		//	rightOperand=XOtherOperatorExpression)*;
 		public ParserRule getRule() { return rule; }
 
-		//XOtherOperatorExpression (=> ({Should.leftOperand=current} feature=[types::JvmIdentifiableElement|Should])
-		//rightOperand=XOtherOperatorExpression | => ({ShouldThrow.expression=current} ("should" "throw" | "throws"))
+		//XOtherOperatorExpression (=> ({Should.leftOperand=current} feature=[types::JvmIdentifiableElement|Should]) =>
+		//rightOperand=XOtherOperatorExpression? | => ({ShouldThrow.expression=current} ("should" "throw" | "throws"))
 		//type=JvmTypeReference | => ({xbase::XInstanceOfExpression.expression=current} "instanceof") type=JvmTypeReference | =>
 		//({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare])
 		//rightOperand=XOtherOperatorExpression)*
@@ -1220,14 +1308,15 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//XOtherOperatorExpression
 		public RuleCall getXOtherOperatorExpressionParserRuleCall_0() { return cXOtherOperatorExpressionParserRuleCall_0; }
 
-		//(=> ({Should.leftOperand=current} feature=[types::JvmIdentifiableElement|Should]) rightOperand=XOtherOperatorExpression
-		//| => ({ShouldThrow.expression=current} ("should" "throw" | "throws")) type=JvmTypeReference | =>
-		//({xbase::XInstanceOfExpression.expression=current} "instanceof") type=JvmTypeReference | =>
+		//(=> ({Should.leftOperand=current} feature=[types::JvmIdentifiableElement|Should]) =>
+		//rightOperand=XOtherOperatorExpression? | => ({ShouldThrow.expression=current} ("should" "throw" | "throws"))
+		//type=JvmTypeReference | => ({xbase::XInstanceOfExpression.expression=current} "instanceof") type=JvmTypeReference | =>
 		//({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare])
 		//rightOperand=XOtherOperatorExpression)*
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 
-		//=> ({Should.leftOperand=current} feature=[types::JvmIdentifiableElement|Should]) rightOperand=XOtherOperatorExpression
+		//=> ({Should.leftOperand=current} feature=[types::JvmIdentifiableElement|Should]) =>
+		//rightOperand=XOtherOperatorExpression?
 		public Group getGroup_1_0() { return cGroup_1_0; }
 
 		//=> ({Should.leftOperand=current} feature=[types::JvmIdentifiableElement|Should])
@@ -1248,7 +1337,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//Should
 		public RuleCall getFeatureJvmIdentifiableElementShouldParserRuleCall_1_0_0_0_1_0_1() { return cFeatureJvmIdentifiableElementShouldParserRuleCall_1_0_0_0_1_0_1; }
 
-		//rightOperand=XOtherOperatorExpression
+		//=> rightOperand=XOtherOperatorExpression?
 		public Assignment getRightOperandAssignment_1_0_1() { return cRightOperandAssignment_1_0_1; }
 
 		//XOtherOperatorExpression
@@ -1465,6 +1554,8 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	private TypeRefElements pTypeRef;
 	private MemberElements pMember;
 	private XPrimaryExpressionElements pXPrimaryExpression;
+	private XLiteralElements pXLiteral;
+	private MockLiteralElements pMockLiteral;
 	private XRelationalExpressionElements pXRelationalExpression;
 	private ShouldElements pShould;
 	private AssertionElements pAssertion;
@@ -1598,9 +1689,29 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		return getXPrimaryExpressionAccess().getRule();
 	}
 
+	//XLiteral returns xbase::XExpression:
+	//	XClosure | XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral | MockLiteral;
+	public XLiteralElements getXLiteralAccess() {
+		return (pXLiteral != null) ? pXLiteral : (pXLiteral = new XLiteralElements());
+	}
+	
+	public ParserRule getXLiteralRule() {
+		return getXLiteralAccess().getRule();
+	}
+
+	//MockLiteral:
+	//	{MockLiteral} ("mock" | "stub") "(" type=[types::JvmType|QualifiedName] ")";
+	public MockLiteralElements getMockLiteralAccess() {
+		return (pMockLiteral != null) ? pMockLiteral : (pMockLiteral = new MockLiteralElements());
+	}
+	
+	public ParserRule getMockLiteralRule() {
+		return getMockLiteralAccess().getRule();
+	}
+
 	//XRelationalExpression returns xbase::XExpression:
-	//	XOtherOperatorExpression (=> ({Should.leftOperand=current} feature=[types::JvmIdentifiableElement|Should])
-	//	rightOperand=XOtherOperatorExpression | => ({ShouldThrow.expression=current} ("should" "throw" | "throws"))
+	//	XOtherOperatorExpression (=> ({Should.leftOperand=current} feature=[types::JvmIdentifiableElement|Should]) =>
+	//	rightOperand=XOtherOperatorExpression? | => ({ShouldThrow.expression=current} ("should" "throw" | "throws"))
 	//	type=JvmTypeReference | => ({xbase::XInstanceOfExpression.expression=current} "instanceof") type=JvmTypeReference | =>
 	//	({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare])
 	//	rightOperand=XOtherOperatorExpression)*;
@@ -2193,16 +2304,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getXMemberFeatureCallRule() {
 		return getXMemberFeatureCallAccess().getRule();
-	}
-
-	//XLiteral returns XExpression:
-	//	XClosure | XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral;
-	public XbaseGrammarAccess.XLiteralElements getXLiteralAccess() {
-		return gaXtend.getXLiteralAccess();
-	}
-	
-	public ParserRule getXLiteralRule() {
-		return getXLiteralAccess().getRule();
 	}
 
 	//XClosure returns XExpression:

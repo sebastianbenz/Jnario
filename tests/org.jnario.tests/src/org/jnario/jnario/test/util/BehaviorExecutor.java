@@ -71,6 +71,7 @@ import org.junit.rules.TemporaryFolder;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
+import org.mockito.Mockito;
 import org.objectweb.asm.Type;
 
 import testdata.Properties1;
@@ -310,6 +311,7 @@ public abstract class BehaviorExecutor {
 		javaCompiler.addClassPathOfClass(Token.class);
 		javaCompiler.addClassPathOfClass(Strings.class);
 		javaCompiler.addClassPathOfClass(Suite.class);
+		javaCompiler.addClassPathOfClass(Mockito.class);
 		javaCompiler.addClassPathOfClass(org.jnario.feature.tests.integration.Calculator.class);
 	}
 

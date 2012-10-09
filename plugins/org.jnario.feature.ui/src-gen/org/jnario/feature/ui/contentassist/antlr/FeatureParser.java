@@ -56,6 +56,8 @@ public class FeatureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXPrimaryExpressionAccess().getAlternatives(), "rule__XPrimaryExpression__Alternatives");
 					put(grammarAccess.getXRelationalExpressionAccess().getAlternatives_1(), "rule__XRelationalExpression__Alternatives_1");
 					put(grammarAccess.getXRelationalExpressionAccess().getAlternatives_1_1_0_0_1(), "rule__XRelationalExpression__Alternatives_1_1_0_0_1");
+					put(grammarAccess.getXLiteralAccess().getAlternatives(), "rule__XLiteral__Alternatives");
+					put(grammarAccess.getMockLiteralAccess().getAlternatives_1(), "rule__MockLiteral__Alternatives_1");
 					put(grammarAccess.getValidIDAccess().getAlternatives(), "rule__ValidID__Alternatives");
 					put(grammarAccess.getXStringLiteralAccess().getAlternatives(), "rule__XStringLiteral__Alternatives");
 					put(grammarAccess.getRichStringAccess().getAlternatives_1(), "rule__RichString__Alternatives_1");
@@ -76,7 +78,6 @@ public class FeatureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXMemberFeatureCallAccess().getAlternatives_1(), "rule__XMemberFeatureCall__Alternatives_1");
 					put(grammarAccess.getXMemberFeatureCallAccess().getAlternatives_1_1_0_0_1(), "rule__XMemberFeatureCall__Alternatives_1_1_0_0_1");
 					put(grammarAccess.getXMemberFeatureCallAccess().getAlternatives_1_1_3_1(), "rule__XMemberFeatureCall__Alternatives_1_1_3_1");
-					put(grammarAccess.getXLiteralAccess().getAlternatives(), "rule__XLiteral__Alternatives");
 					put(grammarAccess.getXSwitchExpressionAccess().getAlternatives_2(), "rule__XSwitchExpression__Alternatives_2");
 					put(grammarAccess.getXExpressionInsideBlockAccess().getAlternatives(), "rule__XExpressionInsideBlock__Alternatives");
 					put(grammarAccess.getXVariableDeclarationAccess().getAlternatives_1(), "rule__XVariableDeclaration__Alternatives_1");
@@ -136,6 +137,7 @@ public class FeatureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXRelationalExpressionAccess().getGroup_1_3_0(), "rule__XRelationalExpression__Group_1_3_0__0");
 					put(grammarAccess.getXRelationalExpressionAccess().getGroup_1_3_0_0(), "rule__XRelationalExpression__Group_1_3_0_0__0");
 					put(grammarAccess.getShouldAccess().getGroup(), "rule__Should__Group__0");
+					put(grammarAccess.getMockLiteralAccess().getGroup(), "rule__MockLiteral__Group__0");
 					put(grammarAccess.getAssertionAccess().getGroup(), "rule__Assertion__Group__0");
 					put(grammarAccess.getFileAccess().getGroup(), "rule__File__Group__0");
 					put(grammarAccess.getFileAccess().getGroup_0(), "rule__File__Group_0__0");
@@ -373,6 +375,7 @@ public class FeatureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXRelationalExpressionAccess().getTypeAssignment_1_2_1(), "rule__XRelationalExpression__TypeAssignment_1_2_1");
 					put(grammarAccess.getXRelationalExpressionAccess().getFeatureAssignment_1_3_0_0_1(), "rule__XRelationalExpression__FeatureAssignment_1_3_0_0_1");
 					put(grammarAccess.getXRelationalExpressionAccess().getRightOperandAssignment_1_3_1(), "rule__XRelationalExpression__RightOperandAssignment_1_3_1");
+					put(grammarAccess.getMockLiteralAccess().getTypeAssignment_3(), "rule__MockLiteral__TypeAssignment_3");
 					put(grammarAccess.getAssertionAccess().getExpressionAssignment_2(), "rule__Assertion__ExpressionAssignment_2");
 					put(grammarAccess.getFileAccess().getPackageAssignment_0_1(), "rule__File__PackageAssignment_0_1");
 					put(grammarAccess.getFileAccess().getImportsAssignment_1(), "rule__File__ImportsAssignment_1");

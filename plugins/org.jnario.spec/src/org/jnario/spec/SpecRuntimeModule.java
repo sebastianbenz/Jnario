@@ -62,6 +62,8 @@ import org.jnario.jvmmodel.JnarioNameProvider;
 import org.jnario.jvmmodel.JnarioSignatureHashBuilder;
 import org.jnario.linking.JnarioLazyLinker;
 import org.jnario.linking.JnarioLinkingService;
+import org.jnario.report.Executable2ResultMapping;
+import org.jnario.report.HashBasedSpec2ResultMapping;
 import org.jnario.scoping.JnarioExtensionClassNameProvider;
 import org.jnario.serializer.JnarioContextFinder;
 import org.jnario.spec.compiler.SpecBatchCompiler;
@@ -94,6 +96,7 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 		binder.bind(SyntheticNameClashResolver.class).to(SpecSyntheticNameClashResolver.class);
 		binder.bind(JnarioNameProvider.class).to(ExampleNameProvider.class);
 		binder.bind(ExecutableProvider.class).to(SpecExecutableProvider.class);
+		binder.bind(Executable2ResultMapping.class).to(HashBasedSpec2ResultMapping.class);
 	}
 	
 	public Class<? extends ILinkingDiagnosticMessageProvider> bindILinkingDiagnosticMessageProvider() {

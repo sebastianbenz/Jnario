@@ -39,6 +39,7 @@ import org.eclipse.xtext.scoping.impl.SimpleScope;
 import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
+import org.eclipse.xtext.xbase.XbasePackage;
 import org.eclipse.xtext.xbase.XbaseQualifiedNameConverter;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
 import org.eclipse.xtext.xbase.conversion.XbaseQualifiedNameValueConverter;
@@ -73,6 +74,12 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 				TypeMatchFilters.all(IJavaSearchConstants.ANNOTATION_TYPE), acceptor);
 	}
 	
+	@Override
+	public void completeMockLiteral_Type(EObject model, Assignment assignment,
+			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeJavaTypes(context, XbasePackage.Literals.XTYPE_LITERAL__TYPE, 
+				TypeMatchFilters.all(IJavaSearchConstants.CLASS_AND_INTERFACE), acceptor);
+	}
 	
 	@Override
 	public void completeAndReference_Reference(EObject model,

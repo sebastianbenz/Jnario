@@ -29,6 +29,7 @@ http://www.eclipse.org/legal/epl-v10.html Description here.
    <includes
          id="org.jnario.ui"
          version="0.0.0"/>
+
    <plugin
          id="org.jnario.feature.source"
          download-size="0"
@@ -84,8 +85,23 @@ http://www.eclipse.org/legal/epl-v10.html Description here.
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+
    <plugin
          id="org.hamcrest.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.mockito"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.objenesis"
          download-size="0"
          install-size="0"
          version="0.0.0"

@@ -10,10 +10,13 @@ package org.jnario.typing;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtend.core.typing.XtendTypeProvider;
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.XTypeLiteral;
 import org.jnario.Assertion;
+import org.jnario.MockLiteral;
 import org.jnario.Should;
 import org.jnario.ShouldThrow;
 
@@ -50,15 +53,23 @@ public class JnarioTypeProvider extends XtendTypeProvider {
 	protected JvmTypeReference type(XExpression expression, JvmTypeReference rawExpectation, boolean rawType) {
 		if (expression instanceof Assertion) {
 			return _type((Assertion)expression, rawExpectation, rawType);
-		}if (expression instanceof Should) {
+		}else if (expression instanceof Should) {
 			return _type((Should)expression, rawExpectation, rawType);
-		}if (expression instanceof ShouldThrow) {
+		}else if (expression instanceof ShouldThrow) {
 			return _type((ShouldThrow)expression, rawExpectation, rawType);
+		}else if (expression instanceof MockLiteral) {
+			return _type((MockLiteral)expression, rawExpectation, rawType);
 		}else {
 			return super.type(expression, rawExpectation, rawType);
 		}
 	}
 
+	protected JvmTypeReference _type(MockLiteral object, JvmTypeReference rawExpectation, boolean rawType) {
+		JvmParameterizedTypeReference typeRef = getTypesFactory().createJvmParameterizedTypeReference();
+		typeRef.setType(object.getType());
+		return typeRef;
+	}
+	
 	protected JvmTypeReference _type(Assertion assertion, JvmTypeReference rawExpectation, boolean rawType) {
 		return getPrimitiveVoid(assertion);
 	}

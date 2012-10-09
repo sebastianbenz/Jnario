@@ -1,26 +1,10 @@
 package org.jnario.report;
 
 import java.util.List;
-import org.eclipse.xtend.lib.Data;
-import org.eclipse.xtext.xbase.lib.Conversions;
-import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
-import org.jnario.report.Failed;
-import org.jnario.report.Passed;
-import org.jnario.report.SpecFailure;
 
-@Data
-@SuppressWarnings("all")
+import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
+
 public abstract class SpecExecution {
-  public static Passed passingSpec(final String className, final String name, final double executionTimeInSeconds) {
-    Passed _passed = new Passed(className, name, executionTimeInSeconds);
-    return _passed;
-  }
-  
-  public static Failed failingSpec(final String className, final String name, final double executionTimeInSeconds, final SpecFailure... failures) {
-    Failed _failed = new Failed(className, name, executionTimeInSeconds, ((Iterable<SpecFailure>)Conversions.doWrapArray(failures)));
-    return _failed;
-  }
-  
   private final String _className;
   
   public String getClassName() {

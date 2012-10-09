@@ -73,13 +73,13 @@ public class HashBasedSpec2ResultMappingScenarioSpec extends HashBasedSpec2Resul
   
   public void passedStep(final String name) {
     String _plus = (name + " [PENDING]");
-    Passed _passingSpec = SpecExecution.passingSpec(HashBasedSpec2ResultMappingScenarioSpec.SCENARIO_CLASSNAME, _plus, 0.0);
+    Passed _passingSpec = Passed.passingSpec(HashBasedSpec2ResultMappingScenarioSpec.SCENARIO_CLASSNAME, _plus, 0.0);
     this.subject.accept(_passingSpec);
   }
   
   public void failedStep(final String name) {
     String _plus = (name + " [PENDING]");
-    Failed _failingSpec = SpecExecution.failingSpec(HashBasedSpec2ResultMappingScenarioSpec.SCENARIO_CLASSNAME, _plus, 0.0, this.anyFailure);
+    Failed _failingSpec = Failed.failingSpec(HashBasedSpec2ResultMappingScenarioSpec.SCENARIO_CLASSNAME, _plus, 0.0, this.anyFailure);
     this.subject.accept(_failingSpec);
   }
 }

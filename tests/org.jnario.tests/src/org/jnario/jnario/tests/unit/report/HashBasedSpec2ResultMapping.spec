@@ -23,6 +23,9 @@ import static extension org.jnario.lib.Should.*
 import org.jnario.report.NotRun
 import org.jnario.report.Passed
 import org.jnario.report.Failed
+import static org.jnario.report.NotRun.*
+import static org.jnario.report.Passed.*
+import static org.jnario.report.Failed.*
 import org.jnario.feature.feature.Scenario
 import org.jnario.jnario.test.util.Specs
 
@@ -55,7 +58,7 @@ describe HashBasedSpec2ResultMapping {
 			''')
 			
 			subject.accept(aResult)
-			
+
 			example should match aResult
 			example should not match aResultWithDifferentClassName
 			example should not match aResultWithDifferentName	
@@ -199,7 +202,7 @@ describe HashBasedSpec2ResultMapping {
 		val pendingResult = passingSpec("example.SomethingFeatureMyScenario", "Given a pending step [PENDING]", anyExecutionTime)
 		val resultWithUnicodeChars = passingSpec("example.SomethingFeatureMyScenario", '''Given step with uml\u00E4uts''', anyExecutionTime)
 		val resultWithArgs = passingSpec("example.SomethingFeatureMyScenario", '''Given step with \&quot;args\&quot;''', anyExecutionTime)
-		
+
 		fact "matches if classname and name are equal"{
 			m.parseScenario(
 			'''

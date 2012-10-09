@@ -571,6 +571,35 @@ public interface JnarioPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.jnario.impl.MockLiteralImpl <em>Mock Literal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.jnario.impl.MockLiteralImpl
+	 * @see org.jnario.impl.JnarioPackageImpl#getMockLiteral()
+	 * @generated
+	 */
+	int MOCK_LITERAL = 8;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOCK_LITERAL__TYPE = XbasePackage.XTYPE_LITERAL__TYPE;
+
+	/**
+	 * The number of structural features of the '<em>Mock Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOCK_LITERAL_FEATURE_COUNT = XbasePackage.XTYPE_LITERAL_FEATURE_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.jnario.ExampleTable <em>Example Table</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -772,6 +801,16 @@ public interface JnarioPackage extends EPackage {
 	EClass getExecutable();
 
 	/**
+	 * Returns the meta object for class '{@link org.jnario.MockLiteral <em>Mock Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Mock Literal</em>'.
+	 * @see org.jnario.MockLiteral
+	 * @generated
+	 */
+	EClass getMockLiteral();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -960,6 +999,16 @@ public interface JnarioPackage extends EPackage {
 		 * @generated
 		 */
 		EClass EXECUTABLE = eINSTANCE.getExecutable();
+
+		/**
+		 * The meta object literal for the '{@link org.jnario.impl.MockLiteralImpl <em>Mock Literal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.jnario.impl.MockLiteralImpl
+		 * @see org.jnario.impl.JnarioPackageImpl#getMockLiteral()
+		 * @generated
+		 */
+		EClass MOCK_LITERAL = eINSTANCE.getMockLiteral();
 
 	}
 

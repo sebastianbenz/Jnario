@@ -25,10 +25,10 @@ import org.jnario.Assertion;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
 import org.jnario.JnarioPackage;
-import org.jnario.Should;
-import org.jnario.jvmmodel.DoubleArrowSupport;
+import org.jnario.MockLiteral;
 import org.jnario.runner.Named;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
@@ -45,6 +45,14 @@ public class JnarioJavaValidator extends AbstractDeclarativeValidator {
 	
 	@Inject 
 	private TypeReferences typeReferences;
+	
+	@Check
+	public void checkClassPath(MockLiteral clazz) {
+		if (typeReferences.findDeclaredType(Mockito.class, clazz) == null) {
+			error("If you want to use mocking, you need the mandatory library bundle 'org.mockito' 0.1.0 or higher on the classpath.", clazz,
+					null, JnarioIssueCodes.JNARIO_LIB_NOT_ON_CLASSPATH);
+		}
+	}
 	
 	@Check
 	public void checkClassPath(XtendClass clazz) {

@@ -5,7 +5,6 @@ import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingSpec;
 import org.jnario.report.Passed;
-import org.jnario.report.SpecExecution;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -20,21 +19,21 @@ import org.junit.runner.RunWith;
 public class HashBasedSpec2ResultMappingExampleSpec extends HashBasedSpec2ResultMappingSpec {
   final Passed aResult = new Function0<Passed>() {
     public Passed apply() {
-      Passed _passingSpec = SpecExecution.passingSpec("example.SomethingSpec", "a fact", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
+      Passed _passingSpec = Passed.passingSpec("example.SomethingSpec", "a fact", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
       return _passingSpec;
     }
   }.apply();
   
   final Passed aResultWithDifferentClassName = new Function0<Passed>() {
     public Passed apply() {
-      Passed _passingSpec = SpecExecution.passingSpec("example.DifferentSpec", "a fact", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
+      Passed _passingSpec = Passed.passingSpec("example.DifferentSpec", "a fact", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
       return _passingSpec;
     }
   }.apply();
   
   final Passed aResultWithDifferentName = new Function0<Passed>() {
     public Passed apply() {
-      Passed _passingSpec = SpecExecution.passingSpec("example.SomethingSpec", "another fact", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
+      Passed _passingSpec = Passed.passingSpec("example.SomethingSpec", "another fact", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
       return _passingSpec;
     }
   }.apply();
@@ -90,7 +89,7 @@ public class HashBasedSpec2ResultMappingExampleSpec extends HashBasedSpec2Result
     _builder.append("}");
     _builder.newLine();
     this.m.parseSpec(_builder);
-    final Passed pendingResult = SpecExecution.passingSpec("example.SomethingSpec", "a fact [PENDING]", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
+    final Passed pendingResult = Passed.passingSpec("example.SomethingSpec", "a fact [PENDING]", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
     this.subject.accept(pendingResult);
     Example _example = this.example();
     boolean _should_match = this.should_match(_example, pendingResult);
@@ -120,7 +119,7 @@ public class HashBasedSpec2ResultMappingExampleSpec extends HashBasedSpec2Result
     _builder_1.newLine();
     String _string = _builder_1.toString();
     final String factName = _string.trim();
-    final Passed resultWithUnicodeChars = SpecExecution.passingSpec("example.SomethingSpec", factName, HashBasedSpec2ResultMappingSpec.anyExecutionTime);
+    final Passed resultWithUnicodeChars = Passed.passingSpec("example.SomethingSpec", factName, HashBasedSpec2ResultMappingSpec.anyExecutionTime);
     this.subject.accept(resultWithUnicodeChars);
     Example _example = this.example();
     boolean _should_match = this.should_match(_example, resultWithUnicodeChars);

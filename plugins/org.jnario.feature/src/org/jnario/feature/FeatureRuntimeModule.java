@@ -73,6 +73,8 @@ import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.jvmmodel.JnarioDispatchUtil;
 import org.jnario.jvmmodel.JnarioNameProvider;
 import org.jnario.jvmmodel.JnarioSignatureHashBuilder;
+import org.jnario.report.Executable2ResultMapping;
+import org.jnario.report.HashBasedSpec2ResultMapping;
 import org.jnario.scoping.JnarioExtensionClassNameProvider;
 import org.jnario.typing.JnarioTypeProvider;
 
@@ -91,6 +93,7 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 		binder.bind(SignatureHashBuilder.class).to(JnarioSignatureHashBuilder.class);
 		binder.bind(JnarioNameProvider.class).to(FeatureClassNameProvider.class);
 		binder.bind(ExecutableProvider.class).to(FeatureExecutableProvider.class);
+		binder.bind(Executable2ResultMapping.class).to(HashBasedSpec2ResultMapping.class);
 	}
 	
 	public Class<? extends ILinkingDiagnosticMessageProvider> bindILinkingDiagnosticMessageProvider() {

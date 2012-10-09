@@ -44,6 +44,8 @@ import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.jvmmodel.JnarioNameProvider;
 import org.jnario.jvmmodel.JnarioSignatureHashBuilder;
+import org.jnario.report.Executable2ResultMapping;
+import org.jnario.report.HashBasedSpec2ResultMapping;
 import org.jnario.suite.compiler.SuiteBatchCompiler;
 import org.jnario.suite.conversion.SuiteValueConverterService;
 import org.jnario.suite.doc.SuiteDocGenerator;
@@ -71,6 +73,7 @@ public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeMod
 		binder.bind(SignatureHashBuilder.class).to(JnarioSignatureHashBuilder.class);
 		binder.bind(JnarioNameProvider.class).to(SuiteClassNameProvider.class);
 		binder.bind(ExecutableProvider.class).to(SuiteExecutableProvider.class);
+		binder.bind(Executable2ResultMapping.class).to(HashBasedSpec2ResultMapping.class);
 	}
 	
 	@Override

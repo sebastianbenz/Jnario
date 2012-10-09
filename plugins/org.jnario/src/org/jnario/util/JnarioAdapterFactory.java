@@ -17,6 +17,7 @@ import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XBinaryOperation;
 import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.XTypeLiteral;
 import org.jnario.*;
 import org.jnario.Assertion;
 import org.jnario.ExampleColumn;
@@ -115,6 +116,10 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 				return createExecutableAdapter();
 			}
 			@Override
+			public Adapter caseMockLiteral(MockLiteral object) {
+				return createMockLiteralAdapter();
+			}
+			@Override
 			public Adapter caseXtendAnnotationTarget(XtendAnnotationTarget object) {
 				return createXtendAnnotationTargetAdapter();
 			}
@@ -141,6 +146,10 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseXtendClass(XtendClass object) {
 				return createXtendClassAdapter();
+			}
+			@Override
+			public Adapter caseXTypeLiteral(XTypeLiteral object) {
+				return createXTypeLiteralAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -275,6 +284,20 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.jnario.MockLiteral <em>Mock Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.jnario.MockLiteral
+	 * @generated
+	 */
+	public Adapter createMockLiteralAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.xtend.core.xtend.XtendAnnotationTarget <em>Annotation Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -369,6 +392,20 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createXtendClassAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.xtext.xbase.XTypeLiteral <em>XType Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.xtext.xbase.XTypeLiteral
+	 * @generated
+	 */
+	public Adapter createXTypeLiteralAdapter() {
 		return null;
 	}
 

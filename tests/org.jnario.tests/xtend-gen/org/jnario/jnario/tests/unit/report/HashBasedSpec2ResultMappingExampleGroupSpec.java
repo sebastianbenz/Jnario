@@ -227,13 +227,13 @@ public class HashBasedSpec2ResultMappingExampleGroupSpec extends HashBasedSpec2R
   
   public void exampleExecutedIn(final String name, final double time) {
     String _plus = (name + " [PENDING]");
-    Passed _passingSpec = SpecExecution.passingSpec(HashBasedSpec2ResultMappingExampleGroupSpec.CLASSNAME, _plus, time);
+    Passed _passingSpec = Passed.passingSpec(HashBasedSpec2ResultMappingExampleGroupSpec.CLASSNAME, _plus, time);
     this.subject.accept(_passingSpec);
   }
   
   public void fails(final String name) {
     String _plus = (name + " [PENDING]");
-    Failed _failingSpec = SpecExecution.failingSpec(HashBasedSpec2ResultMappingExampleGroupSpec.CLASSNAME, _plus, HashBasedSpec2ResultMappingSpec.anyExecutionTime, this.anyFailure);
+    Failed _failingSpec = Failed.failingSpec(HashBasedSpec2ResultMappingExampleGroupSpec.CLASSNAME, _plus, HashBasedSpec2ResultMappingSpec.anyExecutionTime, this.anyFailure);
     this.subject.accept(_failingSpec);
   }
   
@@ -241,7 +241,7 @@ public class HashBasedSpec2ResultMappingExampleGroupSpec extends HashBasedSpec2R
     final Procedure1<String> _function = new Procedure1<String>() {
         public void apply(final String it) {
           String _plus = (it + " [PENDING]");
-          Passed _passingSpec = SpecExecution.passingSpec(HashBasedSpec2ResultMappingExampleGroupSpec.CLASSNAME, _plus, HashBasedSpec2ResultMappingSpec.anyExecutionTime);
+          Passed _passingSpec = Passed.passingSpec(HashBasedSpec2ResultMappingExampleGroupSpec.CLASSNAME, _plus, HashBasedSpec2ResultMappingSpec.anyExecutionTime);
           HashBasedSpec2ResultMappingExampleGroupSpec.this.subject.accept(_passingSpec);
         }
       };

@@ -27,6 +27,7 @@ public class SpecSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected AbstractElementAlias match_Member_SemicolonKeyword_2_6_4_q;
 	protected AbstractElementAlias match_Member_VarKeyword_2_6_2_0_2_1_q;
 	protected AbstractElementAlias match_Member_VerticalLineKeyword_2_5_1_3_0_q;
+	protected AbstractElementAlias match_MockLiteral_MockKeyword_1_0_or_StubKeyword_1_1;
 	protected AbstractElementAlias match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a;
 	protected AbstractElementAlias match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_p;
 	protected AbstractElementAlias match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q;
@@ -49,6 +50,7 @@ public class SpecSyntacticSequencer extends AbstractSyntacticSequencer {
 		match_Member_SemicolonKeyword_2_6_4_q = new TokenAlias(false, true, grammarAccess.getMemberAccess().getSemicolonKeyword_2_6_4());
 		match_Member_VarKeyword_2_6_2_0_2_1_q = new TokenAlias(false, true, grammarAccess.getMemberAccess().getVarKeyword_2_6_2_0_2_1());
 		match_Member_VerticalLineKeyword_2_5_1_3_0_q = new TokenAlias(false, true, grammarAccess.getMemberAccess().getVerticalLineKeyword_2_5_1_3_0());
+		match_MockLiteral_MockKeyword_1_0_or_StubKeyword_1_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getMockLiteralAccess().getMockKeyword_1_0()), new TokenAlias(false, false, grammarAccess.getMockLiteralAccess().getStubKeyword_1_1()));
 		match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a = new TokenAlias(true, true, grammarAccess.getXAnnotationElementValueAccess().getLeftParenthesisKeyword_7_0());
 		match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_p = new TokenAlias(true, false, grammarAccess.getXAnnotationElementValueAccess().getLeftParenthesisKeyword_7_0());
 		match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getRightParenthesisKeyword_3_2()));
@@ -101,6 +103,8 @@ public class SpecSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_Member_VarKeyword_2_6_2_0_2_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_Member_VerticalLineKeyword_2_5_1_3_0_q.equals(syntax))
 				emit_Member_VerticalLineKeyword_2_5_1_3_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_MockLiteral_MockKeyword_1_0_or_StubKeyword_1_1.equals(syntax))
+				emit_MockLiteral_MockKeyword_1_0_or_StubKeyword_1_1(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a.equals(syntax))
 				emit_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_p.equals(syntax))
@@ -159,7 +163,7 @@ public class SpecSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     'fact' | 'facts'
+	 *     'facts' | 'fact'
 	 */
 	protected void emit_Member_FactKeyword_2_0_1_1_0_or_FactsKeyword_2_0_1_1_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -186,6 +190,14 @@ public class SpecSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     '|'?
 	 */
 	protected void emit_Member_VerticalLineKeyword_2_5_1_3_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     'stub' | 'mock'
+	 */
+	protected void emit_MockLiteral_MockKeyword_1_0_or_StubKeyword_1_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -263,7 +275,7 @@ public class SpecSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     ('should' 'throw') | 'throws'
+	 *     'throws' | ('should' 'throw')
 	 */
 	protected void emit_XRelationalExpression_ThrowsKeyword_1_1_0_0_1_1_or___ShouldKeyword_1_1_0_0_1_0_0_ThrowKeyword_1_1_0_0_1_0_1__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

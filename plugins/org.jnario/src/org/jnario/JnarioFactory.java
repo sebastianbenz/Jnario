@@ -81,6 +81,15 @@ public interface JnarioFactory extends EFactory {
 	ShouldThrow createShouldThrow();
 
 	/**
+	 * Returns a new object of class '<em>Mock Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Mock Literal</em>'.
+	 * @generated
+	 */
+	MockLiteral createMockLiteral();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

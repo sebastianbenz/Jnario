@@ -22,6 +22,7 @@ import org.jnario.ExampleTable;
 import org.jnario.Executable;
 import org.jnario.JnarioFactory;
 import org.jnario.JnarioPackage;
+import org.jnario.MockLiteral;
 import org.jnario.Should;
 import org.jnario.ShouldThrow;
 import org.jnario.Specification;
@@ -88,6 +89,13 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 	 * @generated
 	 */
 	private EClass executableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass mockLiteralEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -329,6 +337,15 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getMockLiteral() {
+		return mockLiteralEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public JnarioFactory getJnarioFactory() {
 		return (JnarioFactory)getEFactoryInstance();
 	}
@@ -378,6 +395,8 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		specificationEClass = createEClass(SPECIFICATION);
 
 		executableEClass = createEClass(EXECUTABLE);
+
+		mockLiteralEClass = createEClass(MOCK_LITERAL);
 	}
 
 	/**
@@ -421,6 +440,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		shouldThrowEClass.getESuperTypes().add(theXbasePackage.getXExpression());
 		specificationEClass.getESuperTypes().add(theXtendPackage.getXtendClass());
 		specificationEClass.getESuperTypes().add(this.getExecutable());
+		mockLiteralEClass.getESuperTypes().add(theXbasePackage.getXTypeLiteral());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(exampleTableEClass, ExampleTable.class, "ExampleTable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -453,6 +473,8 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		initEClass(executableEClass, Executable.class, "Executable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		addEOperation(executableEClass, ecorePackage.getEBoolean(), "isPending", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(mockLiteralEClass, MockLiteral.class, "MockLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

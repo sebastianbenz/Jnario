@@ -41,4 +41,5 @@
   <eClassifiers xsi:type="ecore:EClass" name="Executable" abstract="true" interface="true">
     <eOperations name="isPending" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MockLiteral" eSuperTypes="../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XTypeLiteral"/>
 </ecore:EPackage>

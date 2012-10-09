@@ -13,7 +13,7 @@ class SpecResultParser extends DefaultHandler{
 	String currentName
 	
 	SpecExecutionAcceptor acceptor
-	
+
 	String currentFailureType
 	String currentFailureMessage
 	String currentFailureStacktrace
@@ -81,8 +81,8 @@ class SpecResultParser extends DefaultHandler{
 	override characters(char[] ch, int start, int length) throws SAXException {
 		currentFailureStacktrace = String::valueOf(ch, start, length)
 	}
-	
-	def SpecExecution newSpecExecution() {
+
+	def newSpecExecution() {
 		if(failures.empty){
 			new Passed(currentClassName, currentName, currentExecutionTime)
 		}else{
