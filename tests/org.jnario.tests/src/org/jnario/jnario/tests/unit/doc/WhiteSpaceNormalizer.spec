@@ -7,7 +7,10 @@
  *******************************************************************************/
 package org.jnario.jnario.tests.unit.doc
 
-import org.jnario.doc.WhiteSpaceNormalizer
+import org.jnario.lib.WhiteSpaceNormalizer
+
+import static extension org.jnario.lib.ExampleTableIterators.*
+import static extension org.jnario.lib.Should.*
 
 describe WhiteSpaceNormalizer{
 
@@ -20,6 +23,8 @@ describe WhiteSpaceNormalizer{
 		| "\thello\n\tworld" 		| "hello\nworld"	|
 		| "\t\thello\n\t\tworld" 	| "hello\nworld"	|
 		| "\t\thello\n\tworld" 		| "hello\n\tworld"	|
+		| "\n\t\thello\n\tworld" 	| "hello\n\tworld"	|
+		| "\n\t\thello\n\tworld\n" 	| "hello\n\tworld"	|
 	}
 	
 	fact "should remove trailing whitespace"{

@@ -8,6 +8,7 @@
 package org.jnario.feature.jvmmodel;
 
 import static com.google.common.collect.Lists.newArrayList;
+import static org.jnario.lib.StringConversions.normalize;
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -15,6 +16,7 @@ import java.util.regex.Pattern;
 
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.naming.StepNameProvider;
+import org.jnario.lib.StringConversions;
 
 import com.google.inject.Inject;
 
@@ -85,7 +87,9 @@ public class StepArgumentsProvider {
 		}
 		
 		String string = stepName.substring(stringBegin, stringEnd);
+		string = normalize(string);
 		int length = end - offset;
+		
 		acceptor.accept(string, offset, length);
 	}
 

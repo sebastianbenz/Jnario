@@ -15,7 +15,7 @@ describe DocumentationProvider {
 	val subject = new DocumentationProvider[comment]
 	
 	fact "returns null if no comment"{
-		documentation(null) => nullValue
+		documentation(null) => null
 	}
 	
 	fact "returns comment"{

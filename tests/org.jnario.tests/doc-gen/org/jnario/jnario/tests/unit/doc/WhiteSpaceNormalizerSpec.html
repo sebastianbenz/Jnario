@@ -72,6 +72,14 @@
 		<td>&quot;\t\thello\n\tworld&quot;</td>
 		<td>&quot;hello\n\tworld&quot;</td>
 	</tr>
+	<tr>
+		<td>&quot;\n\t\thello\n\tworld&quot;</td>
+		<td>&quot;hello\n\tworld&quot;</td>
+	</tr>
+	<tr>
+		<td>&quot;\n\t\thello\n\tworld\n&quot;</td>
+		<td>&quot;hello\n\tworld&quot;</td>
+	</tr>
 	</tbody>
 </table>
 </li><li><p id="should_remove_trailing_whitespace"><strong>should remove trailing whitespace</strong></p>
@@ -94,7 +102,10 @@ examples.forEach[
  *******************************************************************************/
 package org.jnario.jnario.tests.unit.doc
 
-import org.jnario.doc.WhiteSpaceNormalizer
+import org.jnario.lib.WhiteSpaceNormalizer
+
+import static extension org.jnario.lib.ExampleTableIterators.*
+import static extension org.jnario.lib.Should.*
 
 describe WhiteSpaceNormalizer{
 
@@ -107,6 +118,8 @@ describe WhiteSpaceNormalizer{
     | &quot;\thello\n\tworld&quot;     | &quot;hello\nworld&quot;  |
     | &quot;\t\thello\n\t\tworld&quot;   | &quot;hello\nworld&quot;  |
     | &quot;\t\thello\n\tworld&quot;     | &quot;hello\n\tworld&quot;  |
+    | &quot;\n\t\thello\n\tworld&quot;   | &quot;hello\n\tworld&quot;  |
+    | &quot;\n\t\thello\n\tworld\n&quot;   | &quot;hello\n\tworld&quot;  |
   }
   
   fact &quot;should remove trailing whitespace&quot;{

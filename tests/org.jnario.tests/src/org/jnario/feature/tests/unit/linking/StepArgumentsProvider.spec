@@ -33,7 +33,7 @@ describe StepArgumentsProvider {
 		| 'Given "hello" and "world"'						| list("hello", "world") 	|
 		| 'Given an escaped quote in "\\\"hello\\\""'		| list('"hello"') 			|
 		| "Given a multiline \n'''hello'''"					| list("hello") 			|
-		| "Given a multiline \n'''hello 'nested' '''"		| list("hello 'nested' ") 	|
+		| "Given a multiline \n'''hello 'nested' '''"		| list("hello 'nested'") 	|
 		| "Given a multiline \n\t\t'''hello'''"				| list("hello") 			|		
 		| "Given a multiline \n 1+1 => 2 '''hello'''" 		| list() 					|
 		| "Given a multiline \n\t\t'''hello"				| list() 					|

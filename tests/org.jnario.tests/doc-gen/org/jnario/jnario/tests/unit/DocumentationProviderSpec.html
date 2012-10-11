@@ -37,7 +37,7 @@
 							  	<div class="tab-pane active" id="spec">
 <ul><li><p id="returns_null_if_no_comment"><strong>returns null if no comment</strong></p>
 <pre class="prettyprint lang-spec linenums">
-documentation(null) =&gt; nullValue</pre>
+documentation(null) =&gt; null</pre>
 </li><li><p id="returns_comment"><strong>returns comment</strong></p>
 <pre class="prettyprint lang-spec linenums">
 documentation(&quot;Hello World&quot;) =&gt; &quot;Hello World&quot;</pre>
@@ -76,7 +76,7 @@ describe DocumentationProvider {
   val subject = new DocumentationProvider[comment]
   
   fact &quot;returns null if no comment&quot;{
-    documentation(null) =&gt; nullValue
+    documentation(null) =&gt; null
   }
   
   fact &quot;returns comment&quot;{

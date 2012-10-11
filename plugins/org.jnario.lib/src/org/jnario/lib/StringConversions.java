@@ -11,11 +11,9 @@ import static com.google.common.collect.Lists.transform;
 import static java.util.Arrays.asList;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
 import java.util.List;
 
 import com.google.common.base.Function;
-import com.google.common.collect.Lists;
 
 /**
  * Jnario extensions to convert string values into other formats. 
@@ -136,5 +134,17 @@ public class StringConversions {
 				return input.trim();
 			}
 		});
+	}
+	
+	/**
+	 * Removes for each line in a string all similiar white spaces.
+	 * This is useful when 
+	 * processing multiline strings arguments from steps in feature files.
+	 * 
+	 * @param the input {@link CharSequence}
+	 * @return the normalized string
+	 */
+	public static String normalize(CharSequence input){
+		return new WhiteSpaceNormalizer().normalize(input);
 	}
 }

@@ -45,9 +45,8 @@ public class DocumentationProviderSpec {
     String _documentation = this.documentation(null);
     Matcher<?> _nullValue = CoreMatchers.nullValue();
     boolean _doubleArrow = Should.operator_doubleArrow(_documentation, _nullValue);
-    Assert.assertTrue("\nExpected documentation(null) => nullValue but"
-     + "\n     documentation(null) is " + new StringDescription().appendValue(_documentation).toString()
-     + "\n     nullValue is " + new StringDescription().appendValue(_nullValue).toString() + "\n", _doubleArrow);
+    Assert.assertTrue("\nExpected documentation(null) => null but"
+     + "\n     documentation(null) is " + new StringDescription().appendValue(_documentation).toString() + "\n", _doubleArrow);
     
   }
   

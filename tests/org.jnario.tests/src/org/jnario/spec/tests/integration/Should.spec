@@ -7,10 +7,11 @@
  *******************************************************************************/
 package org.jnario.spec.tests.integration
 
+import static org.hamcrest.Matchers.*
+import static org.jnario.lib.JnarioCollectionLiterals.*
 
 import static extension org.jnario.jnario.test.util.Helpers.*
-import static org.hamcrest.CoreMatchers.*
-import static org.hamcrest.Matchers.*
+import static extension org.jnario.lib.Should.*
 
 /*
  * You can use the `should` statement to express the expected behavior of objects.

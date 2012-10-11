@@ -1,5 +1,6 @@
 package org.jnario.jnario.tests.unit.report
 
+import static org.hamcrest.CoreMatchers.*
 import com.google.inject.Inject
 import org.jnario.Executable
 import org.jnario.feature.feature.Step
