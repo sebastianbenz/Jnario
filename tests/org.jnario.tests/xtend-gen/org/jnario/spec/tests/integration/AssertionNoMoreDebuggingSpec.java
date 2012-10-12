@@ -28,7 +28,7 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
    */
   @Test
   @Named("Variable Access")
-  @Order(99)
+  @Order(2)
   public void _variableAccess() throws Exception {
     final boolean y = false;
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
@@ -52,7 +52,7 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
    */
   @Test
   @Named("Filters literals")
-  @Order(99)
+  @Order(3)
   public void _filtersLiterals() throws Exception {
     final int x = 0;
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
@@ -77,7 +77,7 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
    */
   @Test
   @Named("Not Equals")
-  @Order(99)
+  @Order(4)
   public void _notEquals() throws Exception {
     final int x = 42;
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
@@ -107,7 +107,7 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
    */
   @Test
   @Named("Function Calls")
-  @Order(99)
+  @Order(5)
   public void _functionCalls() throws Exception {
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
@@ -132,7 +132,7 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
    */
   @Test
   @Named("Feature Calls")
-  @Order(99)
+  @Order(6)
   public void _featureCalls() throws Exception {
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
@@ -162,7 +162,7 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
    */
   @Test
   @Named("And expressions")
-  @Order(99)
+  @Order(7)
   public void _andExpressions() throws Exception {
     final int x = 0;
     final int y = 1;
@@ -202,7 +202,7 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
    */
   @Test
   @Named("Removes duplicate feature calls")
-  @Order(99)
+  @Order(8)
   public void _removesDuplicateFeatureCalls() throws Exception {
     final int x = 0;
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {

@@ -17,7 +17,7 @@ public class ReferencesForStepsFeatureFieldInitialization {
   @Order(0)
   @Named("When I have a scenario with field initialized in a given step")
   public void whenIHaveAScenarioWithFieldInitializedInAGivenStep() {
-    StepArguments _stepArguments = new StepArguments("\r\n\t\t\t\timport java.util.Stack\r\n\t\t\t\t\r\n\t\t\t\tFeature: Stack\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\tScenario: Stack adding elements\r\n\t\t\t\t\tStack<String> stack\r\n\t\t\t\t\tGiven a stack\r\n\t\t\t\t\t\tstack= new Stack<String>()\r\n\t\t\t\t\tWhen I add a value \"something\"\r\n\t\t\t\t\t\tstack.add(\"something\")\r\n\t\t\t\t\tThen the stack should contain \"something\"\r\n\t\t\t\t\t\tassert stack.contains(\"something\")\r\n\t\t\t\t\r\n\t\t\t\tScenario: Stack adding more elements\r\n\t\t\t\t\tGiven a stack\r\n\t\t\t\t\tWhen I add a value \"something else\"\r\n\t\t\t\t\tThen the stack should contain \"something else\"\r\n\t \t\t");
+    StepArguments _stepArguments = new StepArguments("import java.util.Stack\r\n\r\nFeature: Stack\r\n\r\n\r\nScenario: Stack adding elements\r\n\tStack<String> stack\r\n\tGiven a stack\r\n\t\tstack= new Stack<String>()\r\n\tWhen I add a value \"something\"\r\n\t\tstack.add(\"something\")\r\n\tThen the stack should contain \"something\"\r\n\t\tassert stack.contains(\"something\")\r\n\r\nScenario: Stack adding more elements\r\n\tGiven a stack\r\n\tWhen I add a value \"something else\"\r\n\tThen the stack should contain \"something else\"");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
     this.jnarioFile = _first;

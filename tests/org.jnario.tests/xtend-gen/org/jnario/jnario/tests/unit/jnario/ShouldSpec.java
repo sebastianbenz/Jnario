@@ -27,7 +27,7 @@ public class ShouldSpec {
   
   @Test
   @Named("\\\'isNot\\\' is false if for \\\'1 should be 1")
-  @Order(99)
+  @Order(0)
   public void _isNotIsFalseIfFor1ShouldBe1() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
@@ -54,7 +54,7 @@ public class ShouldSpec {
   
   @Test
   @Named("\\\'isNot\\\' is true if for \\\'1 should not be 1")
-  @Order(99)
+  @Order(1)
   public void _isNotIsTrueIfFor1ShouldNotBe1() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");

@@ -18,7 +18,7 @@ import org.junit.runner.RunWith;
 public class StepNameProviderDescribeScenarioSpec extends StepNameProviderSpec {
   @Test
   @Named("scenario[\\\" With whitespace \\\"].desc =>  \\\"With whitespace\\\"")
-  @Order(99)
+  @Order(9)
   public void _scenarioWithWhitespaceDescWithWhitespace() throws Exception {
     Scenario _scenario = Features.scenario(" With whitespace ");
     String _desc = this.desc(_scenario);
@@ -31,7 +31,7 @@ public class StepNameProviderDescribeScenarioSpec extends StepNameProviderSpec {
   
   @Test
   @Named("scenario[\\\"With [parentheses]\\\"].desc =>  \\\"With [parentheses]\\\"")
-  @Order(99)
+  @Order(10)
   public void _scenarioWithParenthesesDescWithParentheses() throws Exception {
     Scenario _scenario = Features.scenario("With (parentheses)");
     String _desc = this.desc(_scenario);

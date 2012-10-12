@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
 public class FeatureQualifiedNameProviderPackageNameSpec extends FeatureQualifiedNameProviderSpec {
   @Test
   @Named("package name is prepended")
-  @Order(99)
+  @Order(0)
   public void _packageNameIsPrepended() throws Exception {
     String _stepName = this.stepName("Given a step", "myPackage");
     boolean _should_startWith = Should.should_startWith(_stepName, "myPackage.");
@@ -27,7 +27,7 @@ public class FeatureQualifiedNameProviderPackageNameSpec extends FeatureQualifie
   
   @Test
   @Named("package name is separated by \\\'.\\\'")
-  @Order(99)
+  @Order(1)
   public void _packageNameIsSeparatedBy() throws Exception {
     String _stepName = this.stepName("Given a step", "myPackage.subpackage");
     boolean _should_startWith = Should.should_startWith(_stepName, "myPackage.subpackage.");
@@ -38,7 +38,7 @@ public class FeatureQualifiedNameProviderPackageNameSpec extends FeatureQualifie
   
   @Test
   @Named("default package name is \\\'features\\\'")
-  @Order(99)
+  @Order(2)
   public void _defaultPackageNameIsFeatures() throws Exception {
     String _stepName = this.stepName("Given a step", null);
     boolean _should_startWith = Should.should_startWith(_stepName, "features.");

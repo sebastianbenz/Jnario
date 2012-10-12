@@ -40,7 +40,7 @@ public class DocumentationProviderSpec {
   
   @Test
   @Named("returns null if no comment")
-  @Order(99)
+  @Order(0)
   public void _returnsNullIfNoComment() throws Exception {
     String _documentation = this.documentation(null);
     Matcher<?> _nullValue = CoreMatchers.nullValue();
@@ -52,7 +52,7 @@ public class DocumentationProviderSpec {
   
   @Test
   @Named("returns comment")
-  @Order(99)
+  @Order(1)
   public void _returnsComment() throws Exception {
     String _documentation = this.documentation("Hello World");
     boolean _doubleArrow = Should.operator_doubleArrow(_documentation, "Hello World");
@@ -63,7 +63,7 @@ public class DocumentationProviderSpec {
   
   @Test
   @Named("\\\'/*\\\' can be escaped with \\\'\\\'")
-  @Order(99)
+  @Order(2)
   public void _canBeEscapedWith() throws Exception {
     String _documentation = this.documentation("Hello \\/*World");
     boolean _doubleArrow = Should.operator_doubleArrow(_documentation, "Hello /*World");
@@ -74,7 +74,7 @@ public class DocumentationProviderSpec {
   
   @Test
   @Named("\\\'\\\\/*\\\' can be unescaped with \\\'\\\'")
-  @Order(99)
+  @Order(3)
   public void _canBeUnescapedWith() throws Exception {
     String _documentation = this.documentation("Hello \\\\/*World");
     boolean _doubleArrow = Should.operator_doubleArrow(_documentation, "Hello \\/*World");
@@ -85,7 +85,7 @@ public class DocumentationProviderSpec {
   
   @Test
   @Named("\\\'*/\\\' can also be escaped with \\\'\\\'")
-  @Order(99)
+  @Order(4)
   public void _canAlsoBeEscapedWith() throws Exception {
     String _documentation = this.documentation("Hello \\*/World");
     boolean _doubleArrow = Should.operator_doubleArrow(_documentation, "Hello */World");
@@ -96,7 +96,7 @@ public class DocumentationProviderSpec {
   
   @Test
   @Named("\\\'\\\\*/\\\' can also be unescaped with \\\'\\\'")
-  @Order(99)
+  @Order(5)
   public void _canAlsoBeUnescapedWith() throws Exception {
     String _documentation = this.documentation("Hello \\\\*/World");
     boolean _doubleArrow = Should.operator_doubleArrow(_documentation, "Hello \\*/World");

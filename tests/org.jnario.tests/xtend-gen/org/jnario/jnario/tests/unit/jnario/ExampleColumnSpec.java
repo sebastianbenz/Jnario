@@ -53,7 +53,7 @@ public class ExampleColumnSpec {
   
   @Test
   @Named("calculates cells based on table")
-  @Order(99)
+  @Order(0)
   public void _calculatesCellsBasedOnTable() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");

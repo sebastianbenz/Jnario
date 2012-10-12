@@ -84,7 +84,7 @@ public class SuiteExecutableProviderSpec {
   
   @Test
   @Named("returns contained suites")
-  @Order(99)
+  @Order(0)
   public void _returnsContainedSuites() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
@@ -120,7 +120,7 @@ public class SuiteExecutableProviderSpec {
   
   @Test
   @Named("returns resolved specs")
-  @Order(99)
+  @Order(1)
   public void _returnsResolvedSpecs() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");

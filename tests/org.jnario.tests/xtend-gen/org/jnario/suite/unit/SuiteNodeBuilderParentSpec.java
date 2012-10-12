@@ -47,7 +47,7 @@ public class SuiteNodeBuilderParentSpec extends SuiteNodeBuilderSpec {
   
   @Test
   @Named("parent is suite with less hashes")
-  @Order(99)
+  @Order(0)
   public void _parentIsSuiteWithLessHashes() throws Exception {
     final Procedure1<SuiteNodeBuilderParentSpecExamples> _function = new Procedure1<SuiteNodeBuilderParentSpecExamples>() {
         public void apply(final SuiteNodeBuilderParentSpecExamples it) {

@@ -25,7 +25,7 @@ public class _20FactsAboutXtendSomeImportantDifferencesSpec extends _20FactsAbou
    */
   @Test
   @Named("Accessing static members differs from Java")
-  @Order(99)
+  @Order(5)
   public void _accessingStaticMembersDiffersFromJava() throws Exception {
     final List<String> colors = JnarioCollectionLiterals.<String>list("red", "blue", "green");
     Collections.<String>sort(colors);
@@ -46,7 +46,7 @@ public class _20FactsAboutXtendSomeImportantDifferencesSpec extends _20FactsAbou
    */
   @Test
   @Named("...as well as accessing types")
-  @Order(99)
+  @Order(6)
   public void _asWellAsAccessingTypes() throws Exception {
     String _name = String.class.getName();
     boolean _doubleArrow = Should.operator_doubleArrow(_name, "java.lang.String");
@@ -61,7 +61,7 @@ public class _20FactsAboutXtendSomeImportantDifferencesSpec extends _20FactsAbou
    */
   @Test
   @Named("Casts have a different syntax")
-  @Order(99)
+  @Order(7)
   public void _castsHaveADifferentSyntax() throws Exception {
     final Object obj = "a string";
     final String s = ((String) obj);

@@ -27,7 +27,7 @@ public class IntroducingJnarioSpecsWritingAssertionsSpec extends IntroducingJnar
    */
   @Test
   @Named("\\\'assert\\\'")
-  @Order(99)
+  @Order(10)
   public void _assert() throws Exception {
     Assert.assertTrue("\nExpected true but" + " did not." + "\n", true);
     
@@ -51,7 +51,7 @@ public class IntroducingJnarioSpecsWritingAssertionsSpec extends IntroducingJnar
    */
   @Test
   @Named("\\\'should\\\' and `=>`")
-  @Order(99)
+  @Order(11)
   public void _shouldAnd() throws Exception {
     boolean _should_be = Should.<Boolean>should_be(
       Boolean.valueOf(true), true);
@@ -84,7 +84,7 @@ public class IntroducingJnarioSpecsWritingAssertionsSpec extends IntroducingJnar
    */
   @Test
   @Named("Self-explaining failures")
-  @Order(99)
+  @Order(12)
   public void _selfExplainingFailures() throws Exception {
     final int x = 0;
     final int y = 1;

@@ -34,7 +34,7 @@ public class SetupTeardownWithFeatureExtensionsFeatureUsingAnExtension {
   @Order(1)
   @Named("When I declare an extension field of type **ExampleExtension** in the background")
   public void whenIDeclareAnExtensionFieldOfTypeExampleExtensionInTheBackground() {
-    StepArguments _stepArguments = new StepArguments("\n        import org.jnario.feature.tests.integration.ExampleExtension\n\n        Feature: Feature with extensions\n          \n          Background: A common extension to all scenarios\n              extension ExampleExtension = new ExampleExtension \n            Given a static extension field\n            \n          Scenario: Scenario 1\n            Given a step \n              println(\"step 1\")\n            Then we have two steps\n            println(\"step 2\")\n          Scenario: Scenario 2\n            Given a step \n              println(\"step 3\")\n            Then we have two steps\n              println(\"step 4\")\n      ");
+    StepArguments _stepArguments = new StepArguments("import org.jnario.feature.tests.integration.ExampleExtension\n\nFeature: Feature with extensions\n  \n  Background: A common extension to all scenarios\n      extension ExampleExtension = new ExampleExtension \n    Given a static extension field\n    \n  Scenario: Scenario 1\n    Given a step \n      println(\"step 1\")\n    Then we have two steps\n    println(\"step 2\")\n  Scenario: Scenario 2\n    Given a step \n      println(\"step 3\")\n    Then we have two steps\n      println(\"step 4\")");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
     this.feature = _first;
@@ -53,7 +53,7 @@ public class SetupTeardownWithFeatureExtensionsFeatureUsingAnExtension {
   @Order(3)
   @Named("Then the execution order is")
   public void thenTheExecutionOrderIs() {
-    StepArguments _stepArguments = new StepArguments("\n        before\n        step 1\n        step 2\n        after\n        before\n        step 3\n        step 4\n        after\n      ");
+    StepArguments _stepArguments = new StepArguments("before\nstep 1\nstep 2\nafter\nbefore\nstep 3\nstep 4\nafter");
     final StepArguments args = _stepArguments;
     String _stop = this.recorder.stop();
     final String actual = _stop.trim();

@@ -17,7 +17,7 @@ public class AccessOfVariablesFeatureAccessAVariableDeclaredInBackgroundStep {
   @Order(0)
   @Named("When I define a variable in the background")
   public void whenIDefineAVariableInTheBackground() {
-    StepArguments _stepArguments = new StepArguments("\n\t\t\t\tpackage bootstrap4\n\t\t\t\tFeature: Variable test\n\t\t\t\t\tBackground:\n\t\t\t\t\t\tint x\n\t\t\t\t\t\tGiven some variable\n\t\t\t\t\t\t\tx = 3\n\t\t\t\t\tScenario: Some scenario\n\t\t\t\t\t\t\tThen x should be 3\n\t\t\t\t\t\t\t\tx => 3\n\t\t\t");
+    StepArguments _stepArguments = new StepArguments("package bootstrap4\nFeature: Variable test\n\tBackground:\n\t\tint x\n\t\tGiven some variable\n\t\t\tx = 3\n\tScenario: Some scenario\n\t\t\tThen x should be 3\n\t\t\t\tx => 3");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
     this.jnarioFile = _first;

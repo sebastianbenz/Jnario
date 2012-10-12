@@ -1,10 +1,11 @@
 package org.jnario.doc;
 
+import com.google.common.base.Objects;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtext.generator.IFileSystemAccess;
+import org.jnario.doc.DocOutputConfigurationProvider;
+import org.jnario.doc.HtmlFile;
 import org.jnario.util.Strings;
-
-import com.google.common.base.Objects;
 
 @SuppressWarnings("all")
 public class HtmlFileBuilder {

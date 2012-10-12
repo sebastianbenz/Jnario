@@ -38,7 +38,7 @@ import org.jnario.doc.DocumentationProvider;
 import org.jnario.doc.Filter;
 import org.jnario.doc.HtmlFile;
 import org.jnario.doc.HtmlFileBuilder;
-import org.jnario.lib.WhiteSpaceNormalizer;
+import org.jnario.doc.WhiteSpaceNormalizer;
 import org.jnario.report.Executable2ResultMapping;
 import org.pegdown.PegDownProcessor;
 

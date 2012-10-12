@@ -1,11 +1,11 @@
 package org.jnario.compiler;
 
-import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
-import org.jnario.doc.DocOutputConfigurationProvider;
-import org.jnario.doc.HtmlAssets;
-
 import com.google.inject.Inject;
 import com.google.inject.Provider;
+import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
+import org.jnario.compiler.JnarioDocCompiler;
+import org.jnario.doc.DocOutputConfigurationProvider;
+import org.jnario.doc.HtmlAssets;
 
 @SuppressWarnings("all")
 public class HtmlAssetsCompiler extends JnarioDocCompiler {

@@ -1,10 +1,10 @@
 package org.jnario.doc;
 
 import java.util.List;
-
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.jnario.doc.HtmlAssets;
 
 @SuppressWarnings("all")
 public class HtmlFile {

@@ -21,7 +21,7 @@ public class BackgroundsFeatureGivenMethodsFromBackgroundsAreGeneratedInEverySce
   @Order(0)
   @Named("When I have a feature with a background")
   public void whenIHaveAFeatureWithABackground() {
-    StepArguments _stepArguments = new StepArguments("\r\n\t\t\t\tpackage bootstrap\r\n\t\t\t\tFeature: Some feature\r\n\t\t\t\t\tBackground:\r\n\t\t\t\t\t\tGiven a user name\r\n\t\t\t\t\t\t\tthrow new RuntimeException()\r\n\t\t\t\t\tScenario: Scenario 1\r\n\t\t\t\t\tScenario: Scenario 2\r\n\t\t\t");
+    StepArguments _stepArguments = new StepArguments("package bootstrap\r\nFeature: Some feature\r\n\tBackground:\r\n\t\tGiven a user name\r\n\t\t\tthrow new RuntimeException()\r\n\tScenario: Scenario 1\r\n\tScenario: Scenario 2");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
     this.jnarioFile = _first;

@@ -1,4 +1,4 @@
-package org.jnario.lib;
+package org.jnario.doc;
 
 import com.google.common.base.Objects;
 import java.util.Arrays;

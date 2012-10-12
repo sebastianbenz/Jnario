@@ -41,7 +41,7 @@ public class SuiteClassNameProviderToQualifiedJavaClassNameSpec extends SuiteCla
   
   @Test
   @Named("examples.forEach[ val actualName = subject.toQualifiedJavaClassName[suite[name, packageName]] actualName => qualifiedName ]")
-  @Order(99)
+  @Order(2)
   public void _examplesForEachValActualNameSubjectToQualifiedJavaClassNameSuiteNamePackageNameActualNameQualifiedName() throws Exception {
     final Procedure1<SuiteClassNameProviderToQualifiedJavaClassNameSpecExamples> _function = new Procedure1<SuiteClassNameProviderToQualifiedJavaClassNameSpecExamples>() {
         public void apply(final SuiteClassNameProviderToQualifiedJavaClassNameSpecExamples it) {

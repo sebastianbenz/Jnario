@@ -25,7 +25,7 @@ public class BeforeAllSpec {
   
   @Test
   @Named("should be executed before all tests")
-  @Order(99)
+  @Order(0)
   public void _shouldBeExecutedBeforeAllTests() throws Exception {
     final String spec = "\r\n\t\t\tpackage bootstrap \r\n\t\t\t\r\n\t\t\tdescribe \"BeforeAll\"{\r\n\t\t\t\t\r\n\t\t\t\tstatic int beforeExecutionCount = 0\r\n\t\t\t\t\r\n\t\t\t\tbefore all{\r\n\t\t\t\t\tbeforeExecutionCount = beforeExecutionCount + 1\r\n\t\t\t\t}\r\n\t\t\t\t\r\n\t\t\t\tfact \"should be executed before all tests (1)\"{\r\n\t\t\t\t\tbeforeExecutionCount should be 1\r\n\t\t\t\t}\t\r\n\t\t\t\t\r\n\t\t\t\tfact \"should be executed before all tests (2)\"{\r\n\t\t\t\t\tbeforeExecutionCount should be 1\r\n\t\t\t\t}\t\r\n\t\t\t}\r\n\t\t";
     this._behaviorExecutor.executesSuccessfully(spec);

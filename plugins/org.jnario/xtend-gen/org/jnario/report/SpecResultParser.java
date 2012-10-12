@@ -1,19 +1,22 @@
 package org.jnario.report;
 
+import com.google.common.base.Objects;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.jnario.report.Failed;
+import org.jnario.report.Passed;
+import org.jnario.report.SpecExecution;
+import org.jnario.report.SpecExecutionAcceptor;
+import org.jnario.report.SpecFailure;
+import org.jnario.report.SpecResultTags;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-
-import com.google.common.base.Objects;
 
 @SuppressWarnings("all")
 public class SpecResultParser extends DefaultHandler {

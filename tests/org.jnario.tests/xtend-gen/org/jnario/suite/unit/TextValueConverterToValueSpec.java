@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
 public class TextValueConverterToValueSpec extends TextValueConverterSpec {
   @Test
   @Named("removes colon")
-  @Order(99)
+  @Order(3)
   public void _removesColon() throws Exception {
     String _value = this.subject.toValue(":suite", null);
     boolean _doubleArrow = Should.operator_doubleArrow(_value, "suite");
@@ -28,7 +28,7 @@ public class TextValueConverterToValueSpec extends TextValueConverterSpec {
   
   @Test
   @Named("removes whitespace after colon")
-  @Order(99)
+  @Order(4)
   public void _removesWhitespaceAfterColon() throws Exception {
     String _value = this.subject.toValue(": suite", null);
     boolean _doubleArrow = Should.operator_doubleArrow(_value, "suite");
@@ -40,7 +40,7 @@ public class TextValueConverterToValueSpec extends TextValueConverterSpec {
   
   @Test
   @Named("removes escape character for dashes")
-  @Order(99)
+  @Order(5)
   public void _removesEscapeCharacterForDashes() throws Exception {
     String _value = this.subject.toValue(":suite \\- with dash", null);
     boolean _doubleArrow = Should.operator_doubleArrow(_value, "suite - with dash");
@@ -52,7 +52,7 @@ public class TextValueConverterToValueSpec extends TextValueConverterSpec {
   
   @Test
   @Named("removes escape character for  hashs")
-  @Order(99)
+  @Order(6)
   public void _removesEscapeCharacterForHashs() throws Exception {
     String _value = this.subject.toValue(":suite \\# with hash", null);
     boolean _doubleArrow = Should.operator_doubleArrow(_value, "suite # with hash");

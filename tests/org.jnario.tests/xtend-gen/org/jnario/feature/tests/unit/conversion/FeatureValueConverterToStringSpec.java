@@ -19,7 +19,7 @@ import org.junit.runner.RunWith;
 public class FeatureValueConverterToStringSpec extends FeatureValueConverterSpec {
   @Test
   @Named("subject.toString[\\\"text\\\"] should be \\\"Prefix:text\\\" + Strings::newLine")
-  @Order(99)
+  @Order(3)
   public void _subjectToStringTextShouldBePrefixTextStringsNewLine() throws Exception {
     String _string = this.subject.toString("text");
     String _newLine = Strings.newLine();
@@ -35,7 +35,7 @@ public class FeatureValueConverterToStringSpec extends FeatureValueConverterSpec
   
   @Test
   @Named("subject.toString[null] should be null")
-  @Order(99)
+  @Order(4)
   public void _subjectToStringNullShouldBeNull() throws Exception {
     String _string = this.subject.toString(null);
     Matcher<String> _nullValue = CoreMatchers.<String>nullValue();

@@ -1,9 +1,11 @@
 package org.jnario.report;
 
+import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
+import com.google.inject.Inject;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.commons.lang.StringEscapeUtils;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.resource.IResourceServiceProvider;
@@ -18,10 +20,13 @@ import org.eclipse.xtext.xbase.lib.Pair;
 import org.jnario.Executable;
 import org.jnario.jvmmodel.ExecutableProvider;
 import org.jnario.jvmmodel.JnarioNameProvider;
-
-import com.google.common.base.Objects;
-import com.google.common.collect.Iterables;
-import com.google.inject.Inject;
+import org.jnario.report.Executable2ResultMapping;
+import org.jnario.report.Failed;
+import org.jnario.report.NotRun;
+import org.jnario.report.Passed;
+import org.jnario.report.SpecExecution;
+import org.jnario.report.SpecExecutionAcceptor;
+import org.jnario.report.SpecFailure;
 
 @SuppressWarnings("all")
 public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Executable2ResultMapping {

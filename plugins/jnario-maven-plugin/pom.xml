@@ -6,6 +6,11 @@
 	<name>Jnario Maven Plugin</name>
 	<groupId>org.jnario</groupId>
 	<version>0.3.0-SNAPSHOT</version>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
+		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+	</properties>
 	<repositories>
 		<repository>
 			<id>eclipse.xtend</id>
@@ -139,6 +144,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9</version>
 				<executions>
 					<execution>
 						<id>attach-javadocs</id>
@@ -174,12 +180,22 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.4</version>
 				<goals>
 					<goal>sign-and-deploy-file</goal>
 				</goals>
 				<configuration>
 					<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 					<repositoryId>sonatype-nexus-staging</repositoryId>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
 				</configuration>
 			</plugin>
 		</plugins>

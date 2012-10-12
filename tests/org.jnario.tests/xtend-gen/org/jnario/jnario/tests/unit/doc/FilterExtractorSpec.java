@@ -65,7 +65,7 @@ public class FilterExtractorSpec {
   
   @Test
   @Named("should remove all filter annotations from a string")
-  @Order(99)
+  @Order(0)
   public void _shouldRemoveAllFilterAnnotationsFromAString() throws Exception {
     final Procedure1<FilterExtractorSpecFilterExtractions> _function = new Procedure1<FilterExtractorSpecFilterExtractions>() {
         public void apply(final FilterExtractorSpecFilterExtractions it) {
@@ -83,7 +83,7 @@ public class FilterExtractorSpec {
   
   @Test
   @Named("should extract and create filters")
-  @Order(99)
+  @Order(1)
   public void _shouldExtractAndCreateFilters() throws Exception {
     final Procedure1<FilterExtractorSpecFilterCreation> _function = new Procedure1<FilterExtractorSpecFilterCreation>() {
         public void apply(final FilterExtractorSpecFilterCreation it) {

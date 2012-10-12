@@ -40,7 +40,7 @@ public class HashBasedSpec2ResultMappingExampleSpec extends HashBasedSpec2Result
   
   @Test
   @Named("matches if classname and name are equal")
-  @Order(99)
+  @Order(1)
   public void _matchesIfClassnameAndNameAreEqual() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package example");
@@ -76,7 +76,7 @@ public class HashBasedSpec2ResultMappingExampleSpec extends HashBasedSpec2Result
   
   @Test
   @Named("includes pending state when matching")
-  @Order(99)
+  @Order(2)
   public void _includesPendingStateWhenMatching() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package example");
@@ -101,7 +101,7 @@ public class HashBasedSpec2ResultMappingExampleSpec extends HashBasedSpec2Result
   
   @Test
   @Named("handles escaped characters")
-  @Order(99)
+  @Order(3)
   public void _handlesEscapedCharacters() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package example");

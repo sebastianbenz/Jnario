@@ -68,6 +68,8 @@ import org.jnario.spec.spec.TestFunction;
  */
 @SuppressWarnings("all")
 public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
+  private int exampleIndex = 0;
+  
   @Inject
   private ExtendedJvmTypesBuilder _extendedJvmTypesBuilder;
   
@@ -103,6 +105,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
         }
       };
     IterableExtensions.<ExampleGroup>forEach(_filter, _function);
+    this.exampleIndex = 0;
   }
   
   public JvmGenericType infer(final IJvmDeclaredTypeAcceptor acceptor, final ExampleGroup exampleGroup, final JvmGenericType superType) {
@@ -318,8 +321,10 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
       String _describe = this._exampleNameProvider.describe(element);
       JvmAnnotationReference _annotation = this._extendedJvmTypesBuilder.toAnnotation(element, Named.class, _describe);
       annotations.add(_annotation);
-      JvmAnnotationReference _annotation_1 = this._extendedJvmTypesBuilder.toAnnotation(element, Order.class, Integer.valueOf(99));
+      JvmAnnotationReference _annotation_1 = this._extendedJvmTypesBuilder.toAnnotation(element, Order.class, Integer.valueOf(this.exampleIndex));
       annotations.add(_annotation_1);
+      int _plus = (this.exampleIndex + 1);
+      this.exampleIndex = _plus;
       EList<JvmMember> _members = container.getMembers();
       JvmOperation _method = this.toMethod(element, annotations);
       boolean _add = this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, _method);

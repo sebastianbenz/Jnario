@@ -40,7 +40,7 @@ public class SpecResultParserSpec {
   
   @Test
   @Named("parses successfull specs from xml")
-  @Order(99)
+  @Order(0)
   public void _parsesSuccessfullSpecsFromXml() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<testcase time=\"");
@@ -60,7 +60,7 @@ public class SpecResultParserSpec {
   
   @Test
   @Named("parses specs with failure from xml")
-  @Order(99)
+  @Order(1)
   public void _parsesSpecsWithFailureFromXml() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<testcase time=\"");
@@ -91,7 +91,7 @@ public class SpecResultParserSpec {
   
   @Test
   @Named("parses specs with error from xml")
-  @Order(99)
+  @Order(2)
   public void _parsesSpecsWithErrorFromXml() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<testcase time=\"");
@@ -122,7 +122,7 @@ public class SpecResultParserSpec {
   
   @Test
   @Named("parses multiple spec results")
-  @Order(99)
+  @Order(3)
   public void _parsesMultipleSpecResults() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<testcase time=\"");

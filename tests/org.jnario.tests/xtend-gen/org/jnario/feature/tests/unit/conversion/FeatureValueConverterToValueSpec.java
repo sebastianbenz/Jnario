@@ -18,7 +18,7 @@ import org.junit.runner.RunWith;
 public class FeatureValueConverterToValueSpec extends FeatureValueConverterSpec {
   @Test
   @Named("subject.toValue[\\\"Prefix: text\\\\n\\\", null] should be \\\"text\\\"")
-  @Order(99)
+  @Order(0)
   public void _subjectToValuePrefixTextNNullShouldBeText() throws Exception {
     String _value = this.subject.toValue("Prefix: text\n", null);
     boolean _should_be = Should.should_be(_value, "text");
@@ -30,7 +30,7 @@ public class FeatureValueConverterToValueSpec extends FeatureValueConverterSpec 
   
   @Test
   @Named("subject.toValue[null, null] should be null")
-  @Order(99)
+  @Order(1)
   public void _subjectToValueNullNullShouldBeNull() throws Exception {
     String _value = this.subject.toValue(null, null);
     Matcher<String> _nullValue = CoreMatchers.<String>nullValue();
@@ -43,7 +43,7 @@ public class FeatureValueConverterToValueSpec extends FeatureValueConverterSpec 
   
   @Test
   @Named("subject.toValue[\\\"xxx\\\", null] should be \\\"xxx\\\"")
-  @Order(99)
+  @Order(2)
   public void _subjectToValueXxxNullShouldBeXxx() throws Exception {
     String _value = this.subject.toValue("xxx", null);
     boolean _should_be = Should.should_be(_value, "xxx");

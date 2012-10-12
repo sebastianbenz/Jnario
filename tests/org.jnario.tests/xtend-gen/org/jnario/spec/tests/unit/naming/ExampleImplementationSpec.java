@@ -37,7 +37,7 @@ public class ExampleImplementationSpec extends ExampleSpec {
   
   @Test
   @Named("examples.forEach[example.parse.implementation should be instanceOf[type]]")
-  @Order(99)
+  @Order(1)
   public void _examplesForEachExampleParseImplementationShouldBeInstanceOfType() throws Exception {
     final Procedure1<ExampleImplementationSpecExamples> _function = new Procedure1<ExampleImplementationSpecExamples>() {
         public void apply(final ExampleImplementationSpecExamples it) {

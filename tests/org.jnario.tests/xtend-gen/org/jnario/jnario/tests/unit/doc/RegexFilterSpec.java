@@ -36,7 +36,7 @@ public class RegexFilterSpec {
   
   @Test
   @Named("removes all matched elements")
-  @Order(99)
+  @Order(0)
   public void _removesAllMatchedElements() throws Exception {
     final Procedure1<RegexFilterSpecFilteringExamples> _function = new Procedure1<RegexFilterSpecFilteringExamples>() {
         public void apply(final RegexFilterSpecFilteringExamples it) {

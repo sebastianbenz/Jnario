@@ -7,6 +7,11 @@
 	<description>The required libraries to execute Jnario specifications without Eclipse.</description>
 	<groupId>org.jnario</groupId>
 	<version>0.3.0-SNAPSHOT</version>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
+		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+	</properties>
 	<repositories>
 		<repository>
 			<id>eclipse.xtend</id>
@@ -87,7 +92,7 @@
 						<phase>prepare-package</phase>
 						<configuration>
 							<tasks>
-								<property name="maven.project.version" value="${version}" />
+								<property name="maven.project.version" value="${project.version}" />
 								<ant antfile="create-uberjar.ant" />
 							</tasks>
 						</configuration>
@@ -111,17 +116,17 @@
 						<configuration>
 							<artifacts>
 								<artifact>
-									<file>target/org.jnario.standalone.maven-${version}.jar</file>
+									<file>target/org.jnario.standalone.maven-${project.version}.jar</file>
 									<type>jar</type>
 									<classifier></classifier>
 								</artifact>
 								<artifact>
-									<file>target/org.jnario.standalone.maven-${version}-sources.jar</file>
+									<file>target/org.jnario.standalone.maven-${project.version}-sources.jar</file>
 									<type>jar</type>
 									<classifier>sources</classifier>
 								</artifact>
 								<artifact>
-									<file>target/org.jnario.standalone.maven-${version}-javadoc.jar</file>
+									<file>target/org.jnario.standalone.maven-${project.version}-javadoc.jar</file>
 									<type>jar</type>
 									<classifier>javadoc</classifier>
 								</artifact>
@@ -149,12 +154,22 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.4</version>
 				<goals>
 					<goal>sign-and-deploy-file</goal>
 				</goals>
 				<configuration>
 					<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 					<repositoryId>sonatype-nexus-staging</repositoryId>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
 				</configuration>
 			</plugin>
 		</plugins>

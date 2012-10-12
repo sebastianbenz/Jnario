@@ -36,7 +36,7 @@ public class SpecExecutableProviderSpec {
   
   @Test
   @Named("returns all examples")
-  @Order(99)
+  @Order(0)
   public void _returnsAllExamples() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
@@ -68,7 +68,7 @@ public class SpecExecutableProviderSpec {
   
   @Test
   @Named("returns all sub example groups")
-  @Order(99)
+  @Order(1)
   public void _returnsAllSubExampleGroups() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");

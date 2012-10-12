@@ -79,7 +79,7 @@ public class StepArgumentsProviderSpec {
   
   @Test
   @Named("extracts arguments from step descriptions")
-  @Order(99)
+  @Order(0)
   public void _extractsArgumentsFromStepDescriptions() throws Exception {
     final Procedure1<StepArgumentsProviderSpecExamples> _function = new Procedure1<StepArgumentsProviderSpecExamples>() {
         public void apply(final StepArgumentsProviderSpecExamples it) {
@@ -97,7 +97,7 @@ public class StepArgumentsProviderSpec {
   
   @Test
   @Named("returns empty list if step has no name")
-  @Order(99)
+  @Order(1)
   public void _returnsEmptyListIfStepHasNoName() throws Exception {
     Given _step = Features.step(null);
     List<String> _findStepArguments = this.subject.findStepArguments(_step);

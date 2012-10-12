@@ -6,6 +6,11 @@
 	<artifactId>org.jnario.lib.maven</artifactId>
 	<name>Jnario Runtime Library</name>
 	<description>The runtime library for the Jnario testing language.</description>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
+		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+	</properties>
 	<repositories>
 		<repository>
 			<id>Xtend</id>
@@ -78,6 +83,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9</version>
 				<executions>
 					<execution>
 						<id>attach-javadocs</id>
@@ -101,6 +107,15 @@
 				<version>2.3.2</version>
 				<configuration>
 					<arguments>-Dgpg.passphrase=${gpg.passphrase}</arguments>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -141,6 +156,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-gpg-plugin</artifactId>
+					<version>1.4</version>
 					<goals>
 						<goal>sign-and-deploy-file</goal>
 					</goals>

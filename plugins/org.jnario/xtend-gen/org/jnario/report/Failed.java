@@ -1,9 +1,10 @@
 package org.jnario.report;
 
+import com.google.common.collect.ImmutableList;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
-
-import com.google.common.collect.ImmutableList;
+import org.jnario.report.SpecExecution;
+import org.jnario.report.SpecFailure;
 
 @SuppressWarnings("all")
 public class Failed extends SpecExecution {

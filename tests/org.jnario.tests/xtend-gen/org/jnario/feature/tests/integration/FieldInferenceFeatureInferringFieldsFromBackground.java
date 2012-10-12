@@ -20,7 +20,7 @@ public class FieldInferenceFeatureInferringFieldsFromBackground {
   @Order(0)
   @Named("When I have a feature with a background and two scenarios")
   public void whenIHaveAFeatureWithABackgroundAndTwoScenarios() {
-    StepArguments _stepArguments = new StepArguments("\n\t\t\tFeature: My Feature\n\t\t\t\tBackground: with field\n\t\t\t\t\tString myString\n\t\t\t\t\t\n\t\t\t\tScenario: My Scenario\n\t\t\t\t\tGiven a string \"value\"\n\t\t\t\t\t\tmyString = args.first\n\t\t\t\tScenario: My Scenario 2\n\t\t\t\t\tGiven a string \"test\"\n\t\t\t\t\tThen my string is \"test\"\n\t\t\t\t\t\tmyString => args.first  \n\t\t\t");
+    StepArguments _stepArguments = new StepArguments("Feature: My Feature\n\tBackground: with field\n\t\tString myString\n\t\t\n\tScenario: My Scenario\n\t\tGiven a string \"value\"\n\t\t\tmyString = args.first\n\tScenario: My Scenario 2\n\t\tGiven a string \"test\"\n\t\tThen my string is \"test\"\n\t\t\tmyString => args.first");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
     this.jnarioFile = _first;

@@ -7,7 +7,7 @@
  *******************************************************************************/
 package org.jnario.jnario.tests.unit.doc
 
-import org.jnario.lib.WhiteSpaceNormalizer
+import org.jnario.doc.WhiteSpaceNormalizer
 
 import static extension org.jnario.lib.ExampleTableIterators.*
 import static extension org.jnario.lib.Should.*

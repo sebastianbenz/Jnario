@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.jnario.lib
+package org.jnario.doc
 
 import static extension java.lang.Character.*
 import static extension java.util.Arrays.*

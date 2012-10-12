@@ -39,7 +39,7 @@ public class FeatureJavaValidatorSpec {
   
   @Test
   @Named("no name clash between features and imported types")
-  @Order(99)
+  @Order(0)
   public void _noNameClashBetweenFeaturesAndImportedTypes() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("import java.util.Stack");

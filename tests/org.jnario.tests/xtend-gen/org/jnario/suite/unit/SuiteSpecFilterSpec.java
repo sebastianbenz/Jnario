@@ -44,7 +44,7 @@ public class SuiteSpecFilterSpec {
   
   @Test
   @Named("Suites pass")
-  @Order(99)
+  @Order(0)
   public void _suitesPass() throws Exception {
     EClass _suite = this._suitePackage.getSuite();
     IEObjectDescription _desc = this.desc(_suite);
@@ -61,7 +61,7 @@ public class SuiteSpecFilterSpec {
   
   @Test
   @Named("Features pass")
-  @Order(99)
+  @Order(1)
   public void _featuresPass() throws Exception {
     EClass _feature = this._featurePackage.getFeature();
     IEObjectDescription _desc = this.desc(_feature);
@@ -78,7 +78,7 @@ public class SuiteSpecFilterSpec {
   
   @Test
   @Named("Root Specs pass")
-  @Order(99)
+  @Order(2)
   public void _rootSpecsPass() throws Exception {
     IEObjectDescription _rootSpec = this.rootSpec();
     boolean _apply = this.subject.apply(_rootSpec);
@@ -92,7 +92,7 @@ public class SuiteSpecFilterSpec {
   
   @Test
   @Named("Child Specs fail")
-  @Order(99)
+  @Order(3)
   public void _childSpecsFail() throws Exception {
     IEObjectDescription _childSpec = this.childSpec();
     boolean _apply = this.subject.apply(_childSpec);

@@ -40,7 +40,7 @@ public class ParsingSpecResultsFromJUnitXMLReportsFeatureMatchingSuccessfullSpec
   @Order(0)
   @Named("Given a specification")
   public void givenASpecification() {
-    StepArguments _stepArguments = new StepArguments("\n\t\t\tpackage example\n\t\t\tdescribe \"Adding values\"{\n\t\t\t\tfact \"4 + 3 is 7\"{\n\t\t\t\t\t4 + 3 => 7\n\t\t\t\t}\n\t\t\t}\n\t\t");
+    StepArguments _stepArguments = new StepArguments("package example\ndescribe \"Adding values\"{\n\tfact \"4 + 3 is 7\"{\n\t\t4 + 3 => 7\n\t}\n}");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
     Resource _parseSpec = this._modelStore.parseSpec(_first);
@@ -54,7 +54,7 @@ public class ParsingSpecResultsFromJUnitXMLReportsFeatureMatchingSuccessfullSpec
   @Order(1)
   @Named("And a test result xml file")
   public void andATestResultXmlFile() {
-    StepArguments _stepArguments = new StepArguments("\n\t\t\t<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n\t\t\t<testsuite failures=\"0\" time=\"0.001\" errors=\"0\" skipped=\"0\" tests=\"1\" name=\"example.AddingValuesSpec\">\n\t\t\t  <properties>\n\t\t\t    <property name=\"java.runtime.name\" value=\"Java(TM) SE Runtime Environment\"/>\n\t\t\t  </properties>\n\t\t\t  <testcase time=\"0.001\" classname=\"example.AddingValuesSpec\" name=\"4 + 3 is 7\"/>\n\t\t\t</testsuite>\n\t\t");
+    StepArguments _stepArguments = new StepArguments("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<testsuite failures=\"0\" time=\"0.001\" errors=\"0\" skipped=\"0\" tests=\"1\" name=\"example.AddingValuesSpec\">\n  <properties>\n    <property name=\"java.runtime.name\" value=\"Java(TM) SE Runtime Environment\"/>\n  </properties>\n  <testcase time=\"0.001\" classname=\"example.AddingValuesSpec\" name=\"4 + 3 is 7\"/>\n</testsuite>");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
     String _trim = _first.trim();

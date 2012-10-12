@@ -29,7 +29,7 @@ public class _20FactsAboutXtendAModernizedJavaSpec extends _20FactsAboutXtendSpe
    */
   @Test
   @Named("No semicolons")
-  @Order(99)
+  @Order(0)
   public void _noSemicolons() throws Exception {
     String greeting = "";
     greeting = "Hello World";
@@ -42,7 +42,7 @@ public class _20FactsAboutXtendAModernizedJavaSpec extends _20FactsAboutXtendSpe
    */
   @Test
   @Named("Variables are declared with var and val")
-  @Order(99)
+  @Order(1)
   public void _variablesAreDeclaredWithVarAndVal() throws Exception {
     String x = "I might change";
     final String y = "I\'ll never change";
@@ -56,7 +56,7 @@ public class _20FactsAboutXtendAModernizedJavaSpec extends _20FactsAboutXtendSpe
    */
   @Test
   @Named("Less typing thanks to type inference")
-  @Order(99)
+  @Order(2)
   public void _lessTypingThanksToTypeInference() throws Exception {
     final String greeting = "Hello World";
     boolean _doubleArrow = Should.operator_doubleArrow(greeting, String.class);
@@ -79,7 +79,7 @@ public class _20FactsAboutXtendAModernizedJavaSpec extends _20FactsAboutXtendSpe
    */
   @Test
   @Named("Syntactic sugar: Pairs")
-  @Order(99)
+  @Order(3)
   public void _syntacticSugarPairs() throws Exception {
     final Pair<String,String> pair = Pair.<String, String>of("spain", "italy");
     String _key = pair.getKey();
@@ -127,7 +127,7 @@ public class _20FactsAboutXtendAModernizedJavaSpec extends _20FactsAboutXtendSpe
    */
   @Test
   @Named("Fields & methods work almost like in Java")
-  @Order(99)
+  @Order(4)
   public void _fieldsMethodsWorkAlmostLikeInJava() throws Exception {
     String _sayHello = this.sayHello("Sebastian");
     String _plus = (this.greeting + "Sebastian");

@@ -32,7 +32,7 @@ public class ExtensionLibraryIterableIteratorHelpersSpec extends ExtensionLibrar
    */
   @Test
   @Named("Iterables")
-  @Order(99)
+  @Order(3)
   public void _iterables() throws Exception {
     final List<Integer> values = JnarioCollectionLiterals.<Integer>list(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4), Integer.valueOf(5));
     Integer _first = JnarioIterableExtensions.<Integer>first(values);
@@ -99,7 +99,7 @@ public class ExtensionLibraryIterableIteratorHelpersSpec extends ExtensionLibrar
    */
   @Test
   @Named("Iterators")
-  @Order(99)
+  @Order(4)
   public void _iterators() throws Exception {
     final List<Integer> values = JnarioCollectionLiterals.<Integer>list(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4), Integer.valueOf(5));
     Iterator<Integer> _iterator = values.iterator();

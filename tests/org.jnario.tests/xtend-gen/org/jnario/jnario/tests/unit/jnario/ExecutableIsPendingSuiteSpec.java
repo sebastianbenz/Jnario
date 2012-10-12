@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
 public class ExecutableIsPendingSuiteSpec extends ExecutableIsPendingSpec {
   @Test
   @Named("Suites do not support isPending")
-  @Order(99)
+  @Order(18)
   public void _suitesDoNotSupportIsPending() throws Exception {
     try{
       Suite _suite = Suites.suite("A suite");

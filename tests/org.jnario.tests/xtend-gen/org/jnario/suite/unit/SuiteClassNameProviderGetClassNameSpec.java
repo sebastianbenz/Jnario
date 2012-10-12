@@ -41,7 +41,7 @@ public class SuiteClassNameProviderGetClassNameSpec extends SuiteClassNameProvid
   
   @Test
   @Named("examples.forEach[subject.getClassName[suite[name]] => expectedClassName]")
-  @Order(99)
+  @Order(0)
   public void _examplesForEachSubjectGetClassNameSuiteNameExpectedClassName() throws Exception {
     final Procedure1<SuiteClassNameProviderGetClassNameSpecExamples> _function = new Procedure1<SuiteClassNameProviderGetClassNameSpecExamples>() {
         public void apply(final SuiteClassNameProviderGetClassNameSpecExamples it) {

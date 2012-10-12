@@ -23,7 +23,7 @@ public class ExampleNameProviderDescribeExampleSpec extends ExampleNameProviderS
   
   @Test
   @Named("should use the description")
-  @Order(99)
+  @Order(31)
   public void _shouldUseTheDescription() throws Exception {
     String _describeFirst = this.describeFirst("\'should do stuff\' {true}");
     boolean _doubleArrow = Should.operator_doubleArrow(_describeFirst, "should do stuff");
@@ -34,7 +34,7 @@ public class ExampleNameProviderDescribeExampleSpec extends ExampleNameProviderS
   
   @Test
   @Named("appends \\\'[PENDING]\\\' to pending example descriptions")
-  @Order(99)
+  @Order(32)
   public void _appendsPENDINGToPendingExampleDescriptions() throws Exception {
     String _describeFirst = this.describeFirst("\'should do stuff\'");
     boolean _doubleArrow = Should.operator_doubleArrow(_describeFirst, "should do stuff [PENDING]");

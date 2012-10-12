@@ -50,6 +50,8 @@ import static extension org.eclipse.xtext.util.Strings.*
  */
 class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 	
+	var exampleIndex = 0
+	
 	@Inject extension ExtendedJvmTypesBuilder
 	
 	@Inject extension TypeReferences
@@ -73,6 +75,7 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 		specFile.xtendClasses.filter(typeof(ExampleGroup)).forEach[
 			infer(acceptor, it, null)
 		]
+		exampleIndex = 0
 	}
 
 	def infer(IJvmDeclaredTypeAcceptor acceptor, ExampleGroup exampleGroup, JvmGenericType superType){
@@ -170,7 +173,8 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 	def transform(Example element, JvmGenericType container) {
 		val annotations = element.getTestAnnotations(element.pending)
 		annotations += element.toAnnotation(typeof(Named), element.describe)
-		annotations += element.toAnnotation(typeof(Order), 99)
+		annotations += element.toAnnotation(typeof(Order), exampleIndex)
+		exampleIndex = exampleIndex + 1
 		container.members += toMethod(element, annotations)
 	}
 	

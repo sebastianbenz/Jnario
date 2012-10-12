@@ -47,7 +47,7 @@ public class NewMethodModificationProviderSpec {
   
   @Test
   @Named("creates CreateJavaMethod modification for Java class")
-  @Order(99)
+  @Order(0)
   public void _createsCreateJavaMethodModificationForJavaClass() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
@@ -70,7 +70,7 @@ public class NewMethodModificationProviderSpec {
   
   @Test
   @Named("creates CreateXtendMethod modification for Xtend class")
-  @Order(99)
+  @Order(1)
   public void _createsCreateXtendMethodModificationForXtendClass() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("class Example{");

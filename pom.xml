@@ -10,9 +10,9 @@
   <properties>
     <tycho-version>0.15.0</tycho-version>
     <tycho-groupid>org.eclipse.tycho</tycho-groupid>
-    <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
-    <project.build.resourceEncoding>ISO-8859-1</project.build.resourceEncoding>
-    <maven.compiler.encoding>ISO-8859-1</maven.compiler.encoding>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
+    <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
     <platform-version-name>juno</platform-version-name>
     <eclipse-site>http://download.eclipse.org/releases/${platform-version-name}</eclipse-site>
   </properties>
@@ -112,19 +112,6 @@
         </executions>
       </plugin>
       <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>tycho-source-plugin</artifactId>
-        <version>${tycho-version}</version>
-        <executions>
-          <execution>
-            <id>plugin-source</id>
-            <goals>
-              <goal>plugin-source</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
         <groupId>${tycho-groupid}</groupId>
         <artifactId>tycho-maven-plugin</artifactId>
         <version>${tycho-version}</version>
@@ -133,6 +120,7 @@
       <plugin>
         <groupId>${tycho-groupid}</groupId>
         <artifactId>tycho-packaging-plugin</artifactId>
+        <version>${tycho-version}</version>
         <configuration>
           <archiveSite>true</archiveSite>
         </configuration>
@@ -173,8 +161,22 @@
               <ws>gtk</ws>
               <arch>x86</arch>
             </environment>
+            <environment>
+              <os>linux</os>
+              <ws>gtk</ws>
+              <arch>x86_64</arch>
+            </environment>
           </environments>
         </configuration>
+      </plugin>
+      <plugin>  
+        <groupId>org.apache.maven.plugins</groupId>  
+        <artifactId>maven-compiler-plugin</artifactId>  
+        <version>2.3.2</version>
+        <configuration>  
+          <source>1.5</source>  
+          <target>1.5</target>  
+        </configuration>  
       </plugin>
     </plugins>
   </build>

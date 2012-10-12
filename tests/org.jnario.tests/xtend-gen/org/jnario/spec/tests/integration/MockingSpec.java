@@ -26,7 +26,7 @@ public class MockingSpec {
    */
   @Test
   @Named("Mocking types")
-  @Order(99)
+  @Order(0)
   public void _mockingTypes() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("import java.util.Stack");
@@ -46,7 +46,7 @@ public class MockingSpec {
    */
   @Test
   @Named("Stubbing types")
-  @Order(99)
+  @Order(1)
   public void _stubbingTypes() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("import java.util.Stack");

@@ -30,7 +30,7 @@ import static org.jnario.doc.AbstractDocGenerator.*
 
 import static extension org.eclipse.xtext.util.Strings.*
 import static extension org.jnario.util.Strings.*
-import org.jnario.lib.WhiteSpaceNormalizer
+import org.jnario.doc.WhiteSpaceNormalizer
 
 abstract class AbstractDocGenerator implements IGenerator {
 

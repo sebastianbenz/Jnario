@@ -27,7 +27,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
   
   @Test
   @Named("should convert after description to camel case starting in lowercase")
-  @Order(99)
+  @Order(18)
   public void _shouldConvertAfterDescriptionToCamelCaseStartingInLowercase() throws Exception {
     ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList(
       "after \'my example\'", 
@@ -48,7 +48,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
   
   @Test
   @Named("should use after as default name")
-  @Order(99)
+  @Order(19)
   public void _shouldUseAfterAsDefaultName() throws Exception {
     String _firstMethodName = this.firstMethodName("after{}");
     boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "after");
@@ -59,7 +59,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
   
   @Test
   @Named("should enumerate afters without description")
-  @Order(99)
+  @Order(20)
   public void _shouldEnumerateAftersWithoutDescription() throws Exception {
     String _secondMethodName = this.secondMethodName("after{}\r\n                 after{}");
     boolean _doubleArrow = Should.operator_doubleArrow(_secondMethodName, "after2");

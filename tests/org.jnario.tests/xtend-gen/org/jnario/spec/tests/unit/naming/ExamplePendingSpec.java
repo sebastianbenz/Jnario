@@ -35,7 +35,7 @@ public class ExamplePendingSpec extends ExampleSpec {
   
   @Test
   @Named("examples.forEach[pendingStateOf[example] should be expected]")
-  @Order(99)
+  @Order(2)
   public void _examplesForEachPendingStateOfExampleShouldBeExpected() throws Exception {
     final Procedure1<ExamplePendingSpecExamples> _function = new Procedure1<ExamplePendingSpecExamples>() {
         public void apply(final ExamplePendingSpecExamples it) {

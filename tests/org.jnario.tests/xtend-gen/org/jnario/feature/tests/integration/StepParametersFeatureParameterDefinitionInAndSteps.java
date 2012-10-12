@@ -17,7 +17,7 @@ public class StepParametersFeatureParameterDefinitionInAndSteps {
   @Order(0)
   @Named("When I define parameters in a an and step")
   public void whenIDefineParametersInAAnAndStep() {
-    StepArguments _stepArguments = new StepArguments("\n\t\t\t\tFeature: Test feature\n\t\t\t\tScenario: \"And\" args in step definition\n\t\t\t\t\tvar strings = <String>list()\n\t\t\t\t\tGiven a string \"hello\"\n\t\t\t\t\t\tstrings += args.first\n\t\t\t\t\t\tAnd another string \"world\"\n\t\t\t\t\t\t\tstrings += args.first\n\t\t\t\t\tThen the string is\n\t\t\t\t\t\tstrings => list(\"hello\", \"world\")\n\t\t\t\t\t\t\n\t\t\t\tScenario: \"And\" args in step reference\n\t\t\t\t\tvar strings = <String>list()\n\t\t\t\t\tGiven a string \"hello\"\n\t\t\t\t\t\tstrings += args.first\n\t\t\t\t\t\tAnd a string \"world\"\n\t\t\t\t\tThen the string is\n\t\t\t\t\t\tstrings => list(\"hello\", \"world\")\n\t\t\t");
+    StepArguments _stepArguments = new StepArguments("Feature: Test feature\nScenario: \"And\" args in step definition\n\tvar strings = <String>list()\n\tGiven a string \"hello\"\n\t\tstrings += args.first\n\t\tAnd another string \"world\"\n\t\t\tstrings += args.first\n\tThen the string is\n\t\tstrings => list(\"hello\", \"world\")\n\t\t\nScenario: \"And\" args in step reference\n\tvar strings = <String>list()\n\tGiven a string \"hello\"\n\t\tstrings += args.first\n\t\tAnd a string \"world\"\n\tThen the string is\n\t\tstrings => list(\"hello\", \"world\")");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
     this.jnarioFile = _first;

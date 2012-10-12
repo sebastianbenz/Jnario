@@ -37,7 +37,7 @@ public class StringsMakeJunitConformSpec extends StringsSpec {
   
   @Test
   @Named("examples.forEach[string.makeJunitConform => result]")
-  @Order(99)
+  @Order(1)
   public void _examplesForEachStringMakeJunitConformResult() throws Exception {
     final Procedure1<StringsMakeJunitConformSpecExamples> _function = new Procedure1<StringsMakeJunitConformSpecExamples>() {
         public void apply(final StringsMakeJunitConformSpecExamples it) {

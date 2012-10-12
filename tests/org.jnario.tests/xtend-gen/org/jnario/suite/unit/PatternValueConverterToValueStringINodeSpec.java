@@ -38,7 +38,7 @@ public class PatternValueConverterToValueStringINodeSpec extends PatternValueCon
   
   @Test
   @Named("examples.forEach[subject.toValue[input, null] => result]")
-  @Order(99)
+  @Order(1)
   public void _examplesForEachSubjectToValueInputNullResult() throws Exception {
     final Procedure1<PatternValueConverterToValueStringINodeSpecExamples> _function = new Procedure1<PatternValueConverterToValueStringINodeSpecExamples>() {
         public void apply(final PatternValueConverterToValueStringINodeSpecExamples it) {

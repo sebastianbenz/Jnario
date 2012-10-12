@@ -35,7 +35,7 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<h3 id="toString_String">ToString[String]</h3>
+<h3 id="toString">ToString</h3>
 <ul><li><p id="escapes_dashes"><strong>escapes dashes</strong></p>
 <pre class="prettyprint lang-spec linenums">
 subject.toString(&quot;##suite - with dash&quot;) =&gt; &quot;##suite \\- with dash&quot;</pre>
@@ -43,7 +43,7 @@ subject.toString(&quot;##suite - with dash&quot;) =&gt; &quot;##suite \\- with d
 <pre class="prettyprint lang-spec linenums">
 subject.toString(&quot;##suite # with hash&quot;) =&gt; &quot;##suite \\# with hash&quot;</pre>
 </li></ul>
-<h3 id="toValue_String_INode">ToValue[String, INode]</h3>
+<h3 id="toValue">ToValue</h3>
 <ul><li><p id="removes_escape_character_for_dashes"><strong>removes escape character for dashes</strong></p>
 <pre class="prettyprint lang-spec linenums">
 subject.toValue(&quot;##suite \\- with dash&quot;, null) =&gt; &quot;##suite - with dash&quot;</pre>

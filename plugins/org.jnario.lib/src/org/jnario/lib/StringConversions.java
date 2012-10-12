@@ -136,15 +136,4 @@ public class StringConversions {
 		});
 	}
 	
-	/**
-	 * Removes for each line in a string all similiar white spaces.
-	 * This is useful when 
-	 * processing multiline strings arguments from steps in feature files.
-	 * 
-	 * @param the input {@link CharSequence}
-	 * @return the normalized string
-	 */
-	public static String normalize(CharSequence input){
-		return new WhiteSpaceNormalizer().normalize(input);
-	}
 }

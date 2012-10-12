@@ -31,7 +31,7 @@ public class SuiteJavaValidatorSpec {
   
   @Test
   @Named("Suite cannot include itself")
-  @Order(99)
+  @Order(0)
   public void _suiteCannotIncludeItself() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("#MySuite");

@@ -38,7 +38,7 @@ public class FeatureClassNameProviderGetClassNameFeatureSpec extends FeatureClas
   
   @Test
   @Named("examples work")
-  @Order(99)
+  @Order(0)
   public void _examplesWork() throws Exception {
     final Procedure1<FeatureClassNameProviderGetClassNameFeatureSpecExamples> _function = new Procedure1<FeatureClassNameProviderGetClassNameFeatureSpecExamples>() {
         public void apply(final FeatureClassNameProviderGetClassNameFeatureSpecExamples it) {

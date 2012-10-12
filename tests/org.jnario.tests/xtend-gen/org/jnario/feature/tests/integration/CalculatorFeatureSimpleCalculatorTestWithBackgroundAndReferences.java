@@ -17,7 +17,7 @@ public class CalculatorFeatureSimpleCalculatorTestWithBackgroundAndReferences {
   @Order(0)
   @Named("When I have a feature with a background and references")
   public void whenIHaveAFeatureWithABackgroundAndReferences() {
-    StepArguments _stepArguments = new StepArguments("\n\t\t\tpackage demo\n\t\t\tFeature: Calculator\n\t\t\t  Background:\n\t\t\t   int result \n\t\t\t   Given a calculator\n\t\t\t  Scenario: Adding two numbers 2 \n\t\t\t   When I enter two numbers \"20\" and \"70\"\n\t\t\t       result = args.first.toInt + args.second.toInt\n\t\t\t   Then it returns \"90\"\n\t\t\t     \tresult => args.first.toInt\n\t\t\t  Scenario: Adding two numbers wer\n\t\t\t    When I enter two numbers \"20\" and \"80\"\n\t\t\t    Then it returns \"100\"   \n\t\t\t");
+    StepArguments _stepArguments = new StepArguments("package demo\nFeature: Calculator\n  Background:\n   int result \n   Given a calculator\n  Scenario: Adding two numbers 2 \n   When I enter two numbers \"20\" and \"70\"\n       result = args.first.toInt + args.second.toInt\n   Then it returns \"90\"\n     \tresult => args.first.toInt\n  Scenario: Adding two numbers wer\n    When I enter two numbers \"20\" and \"80\"\n    Then it returns \"100\"");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
     this.jnarioFile = _first;

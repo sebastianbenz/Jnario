@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
 public class MethodBuilderXtendMethodBuilderSpec extends MethodBuilderSpec {
   @Test
   @Named("creates method with specified name")
-  @Order(99)
+  @Order(0)
   public void _createsMethodWithSpecifiedName() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
@@ -38,7 +38,7 @@ public class MethodBuilderXtendMethodBuilderSpec extends MethodBuilderSpec {
   
   @Test
   @Named("adds method parameters")
-  @Order(99)
+  @Order(1)
   public void _addsMethodParameters() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
@@ -60,7 +60,7 @@ public class MethodBuilderXtendMethodBuilderSpec extends MethodBuilderSpec {
   
   @Test
   @Named("ignores feature call target")
-  @Order(99)
+  @Order(2)
   public void _ignoresFeatureCallTarget() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
@@ -85,7 +85,7 @@ public class MethodBuilderXtendMethodBuilderSpec extends MethodBuilderSpec {
   
   @Test
   @Named("returns false for boolean")
-  @Order(99)
+  @Order(3)
   public void _returnsFalseForBoolean() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
@@ -110,7 +110,7 @@ public class MethodBuilderXtendMethodBuilderSpec extends MethodBuilderSpec {
   
   @Test
   @Named("returns default value for numbers")
-  @Order(99)
+  @Order(4)
   public void _returnsDefaultValueForNumbers() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
@@ -135,7 +135,7 @@ public class MethodBuilderXtendMethodBuilderSpec extends MethodBuilderSpec {
   
   @Test
   @Named("returns null for objects")
-  @Order(99)
+  @Order(5)
   public void _returnsNullForObjects() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
@@ -160,7 +160,7 @@ public class MethodBuilderXtendMethodBuilderSpec extends MethodBuilderSpec {
   
   @Test
   @Named("uses simple name for parameters")
-  @Order(99)
+  @Order(6)
   public void _usesSimpleNameForParameters() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
@@ -185,7 +185,7 @@ public class MethodBuilderXtendMethodBuilderSpec extends MethodBuilderSpec {
   
   @Test
   @Named("returns nothing if void")
-  @Order(99)
+  @Order(7)
   public void _returnsNothingIfVoid() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");

@@ -40,7 +40,7 @@ public class FeatureDocGeneratorSpec {
   
   @Test
   @Named("generates scenario documentation")
-  @Order(99)
+  @Order(0)
   public void _generatesScenarioDocumentation() throws Exception {
     final String actual = this.generateDoc("\r\n\t\t\tpackage test\r\n\r\n\t\t\tFeature: Example Feature\r\n\t\t\t\t\r\n\t\t\t\tThis is a description.\r\n\t\t\t\t\r\n\t\t\t\tScenario: Example Scenario\r\n\t\t\t\t\r\n\t\t\t\t\tString input\r\n\t\t\t\t\r\n\t\t\t\t\tGiven a step with an argument \"something\", another \"argument\" and a multiline string:\r\n\t\t\t\t\t\'\'\'\r\n\t\t\t\t\t\timport java.util.Collections.*;\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\tpublic class Greeter{\r\n\t\t\t\t\t\t\tpublic static void main(String args[]){\r\n\t\t\t\t\t\t\t\tList<String> list = new ArrayList<String>(); // should escape angle brackets\r\n\t\t\t\t\t\t\t\tSysten.out.println(\'Hello World\');\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\'\'\' \r\n\t\t\t\t\t\tinput = args.first\r\n\t\t\t\t\t\tprintln(args.last)\r\n\t\t\t\t\tWhen I do something that is pending.\r\n\t\t\t\t\tThen it results in \"something else\"\r\n\t\t\t\t\t\tinput + \' else\' => args.first                                    \r\n\t\t");
     StringConcatenation _builder = new StringConcatenation();

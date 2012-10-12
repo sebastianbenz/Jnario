@@ -17,7 +17,7 @@ public class StepParametersFeatureParameterDefinitionInStepsAndBackground {
   @Order(0)
   @Named("When I define parameters in a background")
   public void whenIDefineParametersInABackground() {
-    StepArguments _stepArguments = new StepArguments("\n\t\t\t\tpackage bootstrap \n\t\t\t\tFeature: Test feature\n\t\t\t\t\tBackground:\n\t\t\t\t\t\tString x\n\t\t\t\t\t\tGiven some values \"3\", \"4\"\n\t\t\t\t\t\t\tx = args.get(1)\n\t\t\t\t\tScenario: using fields in step definitions\n\t\t\t\t\t\tThen those values should be accessible\n\t\t\t\t\t\t\tx => \"4\"\n\t\t\t\t\t\t\t\n\t\t\t");
+    StepArguments _stepArguments = new StepArguments("package bootstrap \nFeature: Test feature\n\tBackground:\n\t\tString x\n\t\tGiven some values \"3\", \"4\"\n\t\t\tx = args.get(1)\n\tScenario: using fields in step definitions\n\t\tThen those values should be accessible\n\t\t\tx => \"4\"");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
     this.jnarioFile = _first;

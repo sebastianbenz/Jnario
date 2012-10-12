@@ -35,7 +35,7 @@ public class ExampleNameSpec extends ExampleSpec {
   
   @Test
   @Named("examples.forEach[println[example.parse.name] should be name]")
-  @Order(99)
+  @Order(0)
   public void _examplesForEachPrintlnExampleParseNameShouldBeName() throws Exception {
     final Procedure1<ExampleNameSpecExamples> _function = new Procedure1<ExampleNameSpecExamples>() {
         public void apply(final ExampleNameSpecExamples it) {

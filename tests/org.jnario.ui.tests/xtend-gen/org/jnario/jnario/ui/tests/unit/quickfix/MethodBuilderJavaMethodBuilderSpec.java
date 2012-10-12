@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
 public class MethodBuilderJavaMethodBuilderSpec extends MethodBuilderSpec {
   @Test
   @Named("creates public void method with specified name")
-  @Order(99)
+  @Order(8)
   public void _createsPublicVoidMethodWithSpecifiedName() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
@@ -38,7 +38,7 @@ public class MethodBuilderJavaMethodBuilderSpec extends MethodBuilderSpec {
   
   @Test
   @Named("adds method parameters")
-  @Order(99)
+  @Order(9)
   public void _addsMethodParameters() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
@@ -60,7 +60,7 @@ public class MethodBuilderJavaMethodBuilderSpec extends MethodBuilderSpec {
   
   @Test
   @Named("returns false for boolean")
-  @Order(99)
+  @Order(10)
   public void _returnsFalseForBoolean() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
@@ -85,7 +85,7 @@ public class MethodBuilderJavaMethodBuilderSpec extends MethodBuilderSpec {
   
   @Test
   @Named("returns default value for numbers")
-  @Order(99)
+  @Order(11)
   public void _returnsDefaultValueForNumbers() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
@@ -110,7 +110,7 @@ public class MethodBuilderJavaMethodBuilderSpec extends MethodBuilderSpec {
   
   @Test
   @Named("returns null for objects")
-  @Order(99)
+  @Order(12)
   public void _returnsNullForObjects() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
@@ -135,7 +135,7 @@ public class MethodBuilderJavaMethodBuilderSpec extends MethodBuilderSpec {
   
   @Test
   @Named("returns nothing if void")
-  @Order(99)
+  @Order(13)
   public void _returnsNothingIfVoid() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");

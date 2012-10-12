@@ -35,7 +35,7 @@ public class FeatureClassNameProviderGetClassNameBackgroundSpec extends FeatureC
   
   @Test
   @Named("examples work")
-  @Order(99)
+  @Order(1)
   public void _examplesWork() throws Exception {
     final Procedure1<FeatureClassNameProviderGetClassNameBackgroundSpecExamples> _function = new Procedure1<FeatureClassNameProviderGetClassNameBackgroundSpecExamples>() {
         public void apply(final FeatureClassNameProviderGetClassNameBackgroundSpecExamples it) {

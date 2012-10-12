@@ -22,7 +22,7 @@ public class ReferencesForStepsFeatureDefiningAStepAndUsingItInTheSameScenario {
   @Order(0)
   @Named("When I have a scenario with reused steps that throw an exception")
   public void whenIHaveAScenarioWithReusedStepsThatThrowAnException() {
-    StepArguments _stepArguments = new StepArguments("\r\n\t\t\tpackage bootstrap\r\n\t\t\tFeature: Test\r\n\t\t\t\tScenario: TestScenario 1\r\n\t\t\t\t\tGiven step\r\n\t\t\t\t\t\tthrow new RuntimeException()\r\n\t\t\t\t\t\r\n\t\t\t\tScenario: TestScenario 2\r\n\t\t\t\t\tGiven step\r\n\t\t\t");
+    StepArguments _stepArguments = new StepArguments("package bootstrap\r\nFeature: Test\r\n\tScenario: TestScenario 1\r\n\t\tGiven step\r\n\t\t\tthrow new RuntimeException()\r\n\t\t\r\n\tScenario: TestScenario 2\r\n\t\tGiven step");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
     this.jnarioFile = _first;

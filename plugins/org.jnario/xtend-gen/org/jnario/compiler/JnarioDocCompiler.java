@@ -1,8 +1,9 @@
 package org.jnario.compiler;
 
+import com.google.common.collect.Iterables;
+import com.google.inject.Inject;
 import java.io.File;
 import java.util.List;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -12,11 +13,9 @@ import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.validation.Issue;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.jnario.compiler.SeverityFilter;
 import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.DocOutputConfigurationProvider;
-
-import com.google.common.collect.Iterables;
-import com.google.inject.Inject;
 
 @SuppressWarnings("all")
 public class JnarioDocCompiler extends XtendBatchCompiler {
