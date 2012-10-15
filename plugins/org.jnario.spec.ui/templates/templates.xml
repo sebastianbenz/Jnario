@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template id="context" autoinsert="true" context="org.jnario.spec.Spec.kw_context" deleted="false" description="new context block" enabled="true" name="context">context "${TEXT}"{
+	${cursor}
+}</template><template id="describe" autoinsert="true" context="org.jnario.spec.Spec.kw_describe" deleted="false" description="new describe block" enabled="true" name="describe">describe "${TEXT}"{
+	${cursor}
+}</template><template id="fact" autoinsert="true" context="org.jnario.spec.Spec.kw_fact" deleted="false" description="new fact" enabled="true" name="fact">fact "${TEXT}"{
+	${cursor}
+}</template></templates>

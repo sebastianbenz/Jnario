@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template id="scenario1" autoinsert="true" context="org.jnario.feature.Feature.Scenario" deleted="false" description="new Scenario" enabled="true" name="Scenario">Scenario: ${name}
+
+	Given ${context}
+	When ${trigger}
+	Then ${expectation}</template><template id="scenario2" autoinsert="true" context="org.jnario.feature.Feature.Feature" deleted="false" description="new Scenario" enabled="true" name="Scenario">Scenario: ${name}
+
+	Given ${context}
+	When ${trigger}
+	Then ${expectation}</template></templates>
