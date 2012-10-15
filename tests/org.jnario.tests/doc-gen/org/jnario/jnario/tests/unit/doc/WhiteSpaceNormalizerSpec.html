@@ -72,6 +72,22 @@
 		<td>&quot;\t\thello\n\tworld&quot;</td>
 		<td>&quot;hello\n\tworld&quot;</td>
 	</tr>
+	<tr>
+		<td>&quot;\n\t\thello\n\tworld&quot;</td>
+		<td>&quot;hello\n\tworld&quot;</td>
+	</tr>
+	<tr>
+		<td>&quot;\n\t\thello\n\tworld\n&quot;</td>
+		<td>&quot;hello\n\tworld\n&quot;</td>
+	</tr>
+	<tr>
+		<td>&quot;\thello\n\t&quot;</td>
+		<td>&quot;hello\n&quot;</td>
+	</tr>
+	<tr>
+		<td>&quot;\thello\t&quot;</td>
+		<td>&quot;hello\t&quot;</td>
+	</tr>
 	</tbody>
 </table>
 </li><li><p id="should_remove_trailing_whitespace"><strong>should remove trailing whitespace</strong></p>
@@ -110,9 +126,10 @@ describe WhiteSpaceNormalizer{
     | &quot;\thello\n\tworld&quot;     | &quot;hello\nworld&quot;  |
     | &quot;\t\thello\n\t\tworld&quot;   | &quot;hello\nworld&quot;  |
     | &quot;\t\thello\n\tworld&quot;     | &quot;hello\n\tworld&quot;  |
-//    | &quot;\n\t\thello\n\tworld&quot;   | &quot;hello\n\tworld&quot;  |
-//    | &quot;\n\t\thello\n\tworld\n&quot;   | &quot;hello\n\tworld\n&quot;|
-//    | &quot;\t\thello\n\t\n&quot;   | &quot;hello\n\n&quot;|
+    | &quot;\n\t\thello\n\tworld&quot;   | &quot;hello\n\tworld&quot;  |
+    | &quot;\n\t\thello\n\tworld\n&quot;   | &quot;hello\n\tworld\n&quot;|
+    | &quot;\thello\n\t&quot;       | &quot;hello\n&quot;      |
+    | &quot;\thello\t&quot;         | &quot;hello\t&quot;      |
   }
   
   fact &quot;should remove trailing whitespace&quot;{

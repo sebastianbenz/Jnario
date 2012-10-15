@@ -107,7 +107,7 @@ abstract class AbstractDocGenerator implements IGenerator {
 	}
 	
 	def protected String codeToHtml(String code){
-		code.normalize.toHtml.replace("\t", "  ")
+		code.normalize.trimWhitespaceAtEnd.toString.toHtml.replace("\t", "  ")
 	}
 	
 	def protected toHtml(String input){

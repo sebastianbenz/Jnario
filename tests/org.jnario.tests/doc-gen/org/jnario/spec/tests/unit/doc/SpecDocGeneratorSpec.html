@@ -72,8 +72,7 @@ generateDoc('''
       var x = 0
       x = x + 1
     }
-  } 
-''')
+  }''')
 val scenarioDoc = generatedFile(&quot;ExampleSpec.html&quot;)
 assert scenarioDoc.contains('''
 &lt;p id=&quot;should_do_stuff&quot;&gt;&lt;strong&gt;should do stuff&lt;/strong&gt;&lt;/p&gt;
@@ -198,8 +197,7 @@ describe SpecDocGenerator {
           var x = 0
           x = x + 1
         }
-      } 
-    ''')
+      }''')
     val scenarioDoc = generatedFile(&quot;ExampleSpec.html&quot;)
     assert scenarioDoc.contains('''
     &lt;p id=&quot;should_do_stuff&quot;&gt;&lt;strong&gt;should do stuff&lt;/strong&gt;&lt;/p&gt;

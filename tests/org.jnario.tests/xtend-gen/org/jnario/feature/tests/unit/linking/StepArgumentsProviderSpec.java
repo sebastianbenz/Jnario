@@ -55,7 +55,7 @@ public class StepArgumentsProviderSpec {
     List<String> _list_3 = JnarioCollectionLiterals.<String>list("hello", "world");
     List<String> _list_4 = JnarioCollectionLiterals.<String>list("\"hello\"");
     List<String> _list_5 = JnarioCollectionLiterals.<String>list("hello");
-    List<String> _list_6 = JnarioCollectionLiterals.<String>list("hello \'nested\'");
+    List<String> _list_6 = JnarioCollectionLiterals.<String>list("hello \'nested\' ");
     List<String> _list_7 = JnarioCollectionLiterals.<String>list("hello");
     List<Object> _list_8 = JnarioCollectionLiterals.<Object>list();
     List<Object> _list_9 = JnarioCollectionLiterals.<Object>list();
@@ -67,7 +67,7 @@ public class StepArgumentsProviderSpec {
       new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\'Given \"hello\" and \"world\"\'", "list(\"hello\", \"world\")"), "Given \"hello\" and \"world\"", _list_3),
       new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\'Given an escaped quote in \"\\\\\\\"hello\\\\\\\"\"\'", "list(\'\"hello\"\')"), "Given an escaped quote in \"\\\"hello\\\"\"", _list_4),
       new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\"Given a multiline \\n\'\'\'hello\'\'\'\"", "list(\"hello\")"), "Given a multiline \n\'\'\'hello\'\'\'", _list_5),
-      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\"Given a multiline \\n\'\'\'hello \'nested\' \'\'\'\"", "list(\"hello \'nested\'\")"), "Given a multiline \n\'\'\'hello \'nested\' \'\'\'", _list_6),
+      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\"Given a multiline \\n\'\'\'hello \'nested\' \'\'\'\"", "list(\"hello \'nested\' \")"), "Given a multiline \n\'\'\'hello \'nested\' \'\'\'", _list_6),
       new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\"Given a multiline \\n\\t\\t\'\'\'hello\'\'\'\"", "list(\"hello\")"), "Given a multiline \n\t\t\'\'\'hello\'\'\'", _list_7),
       new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\"Given a multiline \\n 1+1 => 2 \'\'\'hello\'\'\'\"", "list()"), "Given a multiline \n 1+1 => 2 \'\'\'hello\'\'\'", _list_8),
       new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\"Given a multiline \\n\\t\\t\'\'\'hello\"", "list()"), "Given a multiline \n\t\t\'\'\'hello", _list_9),

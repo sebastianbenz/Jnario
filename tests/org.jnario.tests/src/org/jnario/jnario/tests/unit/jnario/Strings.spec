@@ -56,4 +56,31 @@ describe Strings{
 			examples.forEach[string.trim('_'.charAt(0)) => result]
 		}
 	}
+	
+	context trailingWhitespace{
+		def examples{
+			| string						 | result			|
+			| null 							 | ""				|
+			| ""							 | ""				|
+			| "no whitespace"				 | ""				|
+			| "space at the end "			 | " "				|
+			| "tab at the end\t"	 		 | "\t"				|
+			| "new line at the end\r"		 | "\r"				|
+			| "new line at the end\n"		 | "\n"				|
+			| "multiple whitespaces\t \n"	 | "\t \n"			|
+			| "\t \n"						 | "\t \n"			|
+		}
+		
+		fact "returns whitespaces at the end"{
+			examples.forEach[
+				string.trailingWhitespace => result
+			]
+		}
+	}
+	
+	context endsWith{
+		fact assert '''hello'''.endsWith('''lo''')
+		fact assert !'''hello'''.endsWith('''he''')
+		fact assert !'''short'''.endsWith('''longer''') 
+	}
 }

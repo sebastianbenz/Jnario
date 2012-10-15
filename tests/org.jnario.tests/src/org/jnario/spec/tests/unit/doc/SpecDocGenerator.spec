@@ -58,8 +58,7 @@ describe SpecDocGenerator {
 					var x = 0
 					x = x + 1
 				}
-			} 
-		''')
+			}''')
 		val scenarioDoc = generatedFile("ExampleSpec.html")
 		assert scenarioDoc.contains('''
 		<p id="should_do_stuff"><strong>should do stuff</strong></p>

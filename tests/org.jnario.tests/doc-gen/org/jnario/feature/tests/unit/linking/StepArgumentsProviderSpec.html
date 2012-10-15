@@ -70,7 +70,7 @@
 	</tr>
 	<tr>
 		<td>&quot;Given a multiline \n'''hello 'nested' '''&quot;</td>
-		<td>list(&quot;hello 'nested'&quot;)</td>
+		<td>list(&quot;hello 'nested' &quot;)</td>
 	</tr>
 	<tr>
 		<td>&quot;Given a multiline \n\t\t'''hello'''&quot;</td>
@@ -140,7 +140,7 @@ describe StepArgumentsProvider {
     | 'Given &quot;hello&quot; and &quot;world&quot;'            | list(&quot;hello&quot;, &quot;world&quot;)   |
     | 'Given an escaped quote in &quot;\\\&quot;hello\\\&quot;&quot;'    | list('&quot;hello&quot;')       |
     | &quot;Given a multiline \n'''hello'''&quot;          | list(&quot;hello&quot;)       |
-    | &quot;Given a multiline \n'''hello 'nested' '''&quot;    | list(&quot;hello 'nested'&quot;)   |
+    | &quot;Given a multiline \n'''hello 'nested' '''&quot;    | list(&quot;hello 'nested' &quot;)   |
     | &quot;Given a multiline \n\t\t'''hello'''&quot;        | list(&quot;hello&quot;)       |    
     | &quot;Given a multiline \n 1+1 =&gt; 2 '''hello'''&quot;     | list()           |
     | &quot;Given a multiline \n\t\t'''hello&quot;        | list()           |

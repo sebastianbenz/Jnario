@@ -27,12 +27,17 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
  */
 public class Strings extends org.eclipse.xtext.util.Strings{
 	
-	public static int trimWhitespaceAtEnd(String s){
+	public static int countWhitespaceAtEnd(CharSequence s){
 		int count = 0;
 		for(int j = s.length()-1; j >= 0 && isWhitespace(s.charAt(j)); j--){
 			count++;
 		}
 		return count;
+	}
+	
+	public static CharSequence trimWhitespaceAtEnd(CharSequence s){
+		int count = countWhitespaceAtEnd(s);
+		return s.subSequence(0, s.length() - count);
 	}
 	
 	public static String trim(String s, char c){
@@ -242,6 +247,40 @@ public class Strings extends org.eclipse.xtext.util.Strings{
 			Exceptions.sneakyThrow(ex);
 		}
 		return outputStream.toString();
+	}
+	
+	public static String trailingWhitespace(CharSequence s){
+		if(s == null || s.length() == 0){
+			return "";
+		}
+		String result = "";
+		int i = s.length()-1;
+		char lastChar = s.charAt(i);
+		while(isWhitespace(lastChar)){
+			result = lastChar + result;
+			i--;
+			if(i < 0){
+				break;
+			}
+			lastChar = s.charAt(i);
+		}
+		return result;
+	}
+	
+	public static boolean endsWith(CharSequence s, CharSequence postfix){
+		if(s.length() < postfix.length()){
+			return false;
+		}
+		int offset = s.length() - postfix.length();
+		for(int i = 0; i < postfix.length(); i++){
+			char left = s.charAt(i + offset);
+			char right = postfix.charAt(i);
+			if(left != right){
+				return false;
+			}
+			
+		}
+		return true;
 	}
 
 }

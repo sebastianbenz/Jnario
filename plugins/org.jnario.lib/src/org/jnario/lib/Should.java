@@ -74,11 +74,11 @@ public class Should{
 		return Objects.equal(actual, expected);
 	}
 
-	private static boolean haveSameTypeAndAreStrings(Object actual,
-			Object expected) {
-		return actual != null && expected != null && actual.getClass().equals(expected.getClass()) && actual instanceof CharSequence;
-	}
-	
+//	private static boolean haveSameTypeAndAreStrings(Object actual,
+//			Object expected) {
+//		return actual != null && expected != null && actual.getClass().equals(expected.getClass()) && actual instanceof CharSequence;
+//	}
+
 	public static boolean should_be(Object actual, Class<?> expectedType){
 		return expectedType.isInstance(actual);
 	}

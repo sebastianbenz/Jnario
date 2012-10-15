@@ -123,8 +123,7 @@ public class SpecDocGeneratorSpec {
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
-    _builder.append("} ");
-    _builder.newLine();
+    _builder.append("}");
     this.generateDoc(_builder);
     final String scenarioDoc = this.generatedFile("ExampleSpec.html");
     StringConcatenation _builder_1 = new StringConcatenation();

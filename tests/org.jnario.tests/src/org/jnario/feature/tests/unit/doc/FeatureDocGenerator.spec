@@ -45,8 +45,7 @@ describe FeatureDocGenerator {
 								List<String> list = new ArrayList<String>(); // should escape angle brackets
 								Systen.out.println('Hello World');
 							}
-						}
-					''' 
+						}''' 
 						input = args.first
 						println(args.last)
 					When I do something that is pending.

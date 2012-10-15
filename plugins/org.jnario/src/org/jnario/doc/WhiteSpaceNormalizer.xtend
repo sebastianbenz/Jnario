@@ -7,15 +7,17 @@
  *******************************************************************************/
 package org.jnario.doc
 
+import static java.util.Arrays.*
+
 import static extension java.lang.Character.*
-import static extension java.util.Arrays.*
+import static extension org.jnario.util.Strings.*
 
 class WhiteSpaceNormalizer {
 
 	def String normalize(CharSequence input){
 		if(input == null || input.length == 0) return ""
 		
-		var Iterable<String> lines = asList(input.toString.split("\n"))
+		var Iterable<String> lines = asList(input.toString.split("\r?\n"))
 		if(lines.empty){
 			return ""
 		}
@@ -28,13 +30,13 @@ class WhiteSpaceNormalizer {
 			}
 		}
 		val whitespace = whitespaceAtBeginning(firstLine)
+		var ending = ""
+		if(input.endsWith("\n")){
+			ending = "\n"
+		}
 		
-		val result = new StringBuilder()
-		lines.forEach[
-			result.append(it.remove(whitespace))
-			result.append("\n")
-		]
-		return result.toString().trim()
+		var result = lines.map[it.remove(whitespace)].join("\n") + ending
+		result
 	}
 	
 	def whitespaceAtBeginning(String string){

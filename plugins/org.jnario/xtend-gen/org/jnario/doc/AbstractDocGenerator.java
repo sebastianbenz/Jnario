@@ -167,7 +167,9 @@ public abstract class AbstractDocGenerator implements IGenerator {
   
   protected String codeToHtml(final String code) {
     String _normalize = this._whiteSpaceNormalizer.normalize(code);
-    String _html = this.toHtml(_normalize);
+    CharSequence _trimWhitespaceAtEnd = org.jnario.util.Strings.trimWhitespaceAtEnd(_normalize);
+    String _string = _trimWhitespaceAtEnd.toString();
+    String _html = this.toHtml(_string);
     String _replace = _html.replace("\t", "  ");
     return _replace;
   }

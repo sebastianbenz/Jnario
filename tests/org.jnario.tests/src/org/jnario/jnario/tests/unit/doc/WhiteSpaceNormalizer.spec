@@ -23,9 +23,10 @@ describe WhiteSpaceNormalizer{
 		| "\thello\n\tworld" 		| "hello\nworld"	|
 		| "\t\thello\n\t\tworld" 	| "hello\nworld"	|
 		| "\t\thello\n\tworld" 		| "hello\n\tworld"	|
-//		| "\n\t\thello\n\tworld" 	| "hello\n\tworld"	|
-//		| "\n\t\thello\n\tworld\n" 	| "hello\n\tworld\n"|
-//		| "\t\thello\n\t\n" 	| "hello\n\n"|
+		| "\n\t\thello\n\tworld" 	| "hello\n\tworld"	|
+		| "\n\t\thello\n\tworld\n" 	| "hello\n\tworld\n"|
+		| "\thello\n\t" 			| "hello\n"			|
+		| "\thello\t" 				| "hello\t"			|
 	}
 	
 	fact "should remove trailing whitespace"{

@@ -8,7 +8,7 @@
 package org.jnario.feature.resource;
 
 import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.findNodesForFeature;
-import static org.jnario.util.Strings.trimWhitespaceAtEnd;
+import static org.jnario.util.Strings.countWhitespaceAtEnd;
 
 import java.util.Collections;
 import java.util.List;
@@ -56,7 +56,7 @@ public class FeatureLocationInFileProvider extends XtendLocationInFileProvider {
 					length += node.getLength();
 					if(isLastNode(nodes, i)){
 						endLineNumber = node.getEndLine();
-						length = length - trimWhitespaceAtEnd(node.getText());
+						length = length - countWhitespaceAtEnd(node.getText());
 					}
 				}
 			}
