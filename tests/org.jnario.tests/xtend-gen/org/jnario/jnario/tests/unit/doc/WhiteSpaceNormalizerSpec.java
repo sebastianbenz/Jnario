@@ -33,9 +33,7 @@ public class WhiteSpaceNormalizerSpec {
       new WhiteSpaceNormalizerSpecExamples(  java.util.Arrays.asList("\"\\thello\"", "\"hello\""), "\thello", "hello"),
       new WhiteSpaceNormalizerSpecExamples(  java.util.Arrays.asList("\"\\thello\\n\\tworld\"", "\"hello\\nworld\""), "\thello\n\tworld", "hello\nworld"),
       new WhiteSpaceNormalizerSpecExamples(  java.util.Arrays.asList("\"\\t\\thello\\n\\t\\tworld\"", "\"hello\\nworld\""), "\t\thello\n\t\tworld", "hello\nworld"),
-      new WhiteSpaceNormalizerSpecExamples(  java.util.Arrays.asList("\"\\t\\thello\\n\\tworld\"", "\"hello\\n\\tworld\""), "\t\thello\n\tworld", "hello\n\tworld"),
-      new WhiteSpaceNormalizerSpecExamples(  java.util.Arrays.asList("\"\\n\\t\\thello\\n\\tworld\"", "\"hello\\n\\tworld\""), "\n\t\thello\n\tworld", "hello\n\tworld"),
-      new WhiteSpaceNormalizerSpecExamples(  java.util.Arrays.asList("\"\\n\\t\\thello\\n\\tworld\\n\"", "\"hello\\n\\tworld\""), "\n\t\thello\n\tworld\n", "hello\n\tworld")
+      new WhiteSpaceNormalizerSpecExamples(  java.util.Arrays.asList("\"\\t\\thello\\n\\tworld\"", "\"hello\\n\\tworld\""), "\t\thello\n\tworld", "hello\n\tworld")
     );
   }
   

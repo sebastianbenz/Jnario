@@ -266,7 +266,7 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 
 			exampleTableType.members += table.toMethod("getCells", listType)[
 				setBody[ITreeAppendable a |
-					a.append('return java.util.Arrays.asList(String.valueOf(' + table.columnNames.join(') , String.valueOf(') + '));')
+					a.append('return java.util.Arrays.asList(toString(' + table.columnNames.join(') ,toString(') + '));')
 				]
 			]
 		]

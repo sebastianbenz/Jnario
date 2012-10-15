@@ -9,6 +9,8 @@ package org.jnario.lib;
 
 import java.util.List;
 
+import org.hamcrest.StringDescription;
+
 /**
  * The super class of all table rows.
  * 
@@ -24,6 +26,10 @@ public abstract class ExampleTableRow {
 	
 	public List<String> getCells(){
 		return cells;
+	}
+	
+	public String toString(Object value) {
+		return new StringDescription().appendValue(value).toString();
 	}
 	
 }

@@ -44,7 +44,7 @@ public class UsingTablesSpec {
    */
   @Test
   @Named("accessing values")
-  @Order(0)
+  @Order(3)
   public void _accessingValues() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
@@ -97,7 +97,7 @@ public class UsingTablesSpec {
    */
   @Test
   @Named("Naming examples")
-  @Order(1)
+  @Order(4)
   public void _namingExamples() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
@@ -140,7 +140,7 @@ public class UsingTablesSpec {
    */
   @Test
   @Named("expressions in tables")
-  @Order(2)
+  @Order(5)
   public void _expressionsInTables() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
@@ -192,7 +192,7 @@ public class UsingTablesSpec {
    */
   @Test
   @Named("referencing members")
-  @Order(3)
+  @Order(6)
   public void _referencingMembers() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
@@ -260,7 +260,7 @@ public class UsingTablesSpec {
    */
   @Test
   @Named("Specifying column types")
-  @Order(4)
+  @Order(7)
   public void _specifyingColumnTypes() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
@@ -326,7 +326,7 @@ public class UsingTablesSpec {
   @Ignore
   @Test
   @Named("Error message")
-  @Order(5)
+  @Order(8)
   public void _errorMessage() throws Exception {
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {

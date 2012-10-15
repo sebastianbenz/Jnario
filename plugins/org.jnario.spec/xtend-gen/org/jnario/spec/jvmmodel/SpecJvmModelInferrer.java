@@ -527,8 +527,8 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
                   final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
                       public void apply(final ITreeAppendable a) {
                         List<String> _columnNames = SpecJvmModelInferrer.this.columnNames(table);
-                        String _join = IterableExtensions.join(_columnNames, ") , String.valueOf(");
-                        String _plus = ("return java.util.Arrays.asList(String.valueOf(" + _join);
+                        String _join = IterableExtensions.join(_columnNames, ") ,toString(");
+                        String _plus = ("return java.util.Arrays.asList(toString(" + _join);
                         String _plus_1 = (_plus + "));");
                         a.append(_plus_1);
                       }

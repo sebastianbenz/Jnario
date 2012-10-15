@@ -7,3 +7,4 @@ org.eclipse.xtend.*
 .DS_Store
 *._trace
 *.smap
+.launch

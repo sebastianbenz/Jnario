@@ -19,6 +19,7 @@ import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.JnarioIteratorExtensions;
 import org.jnario.lib.Should;
 import org.jnario.lib.StringConversions;
+import org.junit.Assert;
 
 import com.google.common.collect.Multimap;
 import com.google.inject.Singleton;
@@ -48,6 +49,7 @@ public class JnarioExtensionClassNameProvider extends ExtensionClassNameProvider
 		result.add(Each.class.getName());
 		result.add(Should.class.getName());
 		result.add(JnarioCollectionLiterals.class.getName());
+		result.add(Assert.class.getName());
 		return result;
 	}
 	

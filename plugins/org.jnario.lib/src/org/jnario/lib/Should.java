@@ -8,12 +8,14 @@
 package org.jnario.lib;
 
 import static com.google.common.collect.Iterables.contains;
+import static org.junit.Assert.assertEquals;
 
 import org.eclipse.xtext.xbase.lib.Functions;
 import org.eclipse.xtext.xbase.lib.Procedures;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
+import org.junit.Assert;
 
 import com.google.common.base.Objects;
 
@@ -65,7 +67,16 @@ public class Should{
 //	}
 	
 	public static <T> boolean should_be(Object actual, Object expected){
+//		if(haveSameTypeAndAreStrings(actual, expected)){
+//			assertEquals(expected.toString(), actual.toString());
+//			return true;
+//		}
 		return Objects.equal(actual, expected);
+	}
+
+	private static boolean haveSameTypeAndAreStrings(Object actual,
+			Object expected) {
+		return actual != null && expected != null && actual.getClass().equals(expected.getClass()) && actual instanceof CharSequence;
 	}
 	
 	public static boolean should_be(Object actual, Class<?> expectedType){
