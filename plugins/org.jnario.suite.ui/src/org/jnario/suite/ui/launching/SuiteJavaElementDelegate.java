@@ -7,11 +7,17 @@
  *******************************************************************************/
 package org.jnario.suite.ui.launching;
 
+import java.util.List;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jdt.core.IAnnotation;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IJavaElement;
@@ -22,10 +28,16 @@ import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendFile;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.JvmIdentifiableElement;
+import org.eclipse.xtext.generator.IDerivedResourceMarkers;
 import org.eclipse.xtext.resource.FileExtensionProvider;
+import org.eclipse.xtext.ui.resource.IResourceSetProvider;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.ui.launching.JavaElementDelegateJunitLaunch;
+import org.jnario.suite.jvmmodel.SuiteClassNameProvider;
+import org.jnario.suite.suite.Suite;
+import org.jnario.suite.suite.SuiteFile;
 
+import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 
 /**
@@ -34,10 +46,16 @@ import com.google.inject.Inject;
 @SuppressWarnings("restriction")
 public class SuiteJavaElementDelegate extends JavaElementDelegateJunitLaunch {
 
+	private final static Logger log = Logger.getLogger(SuiteJavaElementDelegate.class);
+	
 	@Inject
 	private IJvmModelAssociations associations;
 
 	@Inject private FileExtensionProvider fileExtensionProvider;
+	@Inject private IResourceSetProvider resourceSetProvider;
+	@Inject private SuiteClassNameProvider nameProvider;
+	@Inject	private IDerivedResourceMarkers derivedResourceMarkers;
+
 	
 	@Override
 	protected boolean containsElementsSearchedFor(IFile file) {
@@ -56,6 +74,41 @@ public class SuiteJavaElementDelegate extends JavaElementDelegateJunitLaunch {
 			Logger.getLogger(SuiteJavaElementDelegate.class).error(e);
 		}
 		return super.containsElementsSearchedFor(file);
+	}
+	
+	protected IJavaElement getJavaElementForResource(IResource resource) {
+		try {
+			final URI uri = URI.createPlatformResourceURI(resource.getFullPath().toString(), true);
+			String mainClassName = loadSuite(resource, uri);
+			if(mainClassName == null){
+				return null;
+			}
+			List<IFile> resources = derivedResourceMarkers.findDerivedResources(resource.getProject(), uri.toString());
+			for (IFile file : resources) {
+				if (file.getName().equals(mainClassName)){
+					return JavaCore.create(file);
+				}
+			}
+		} catch (CoreException e) {
+			if (log.isDebugEnabled()) {
+				log.debug(e.getMessage(), e);
+			}
+		}
+		return null;
+	}
+
+	protected String loadSuite(IResource resource, final URI uri) {
+		ResourceSet resourceSet = resourceSetProvider.get(resource.getProject());
+		Resource r = resourceSet.getResource(uri, true);
+		if(r == null || r.getContents().isEmpty()){
+			return null;
+		}
+		SuiteFile suiteFile = Iterables.filter(r.getContents(), SuiteFile.class).iterator().next();
+		if(suiteFile.getXtendClasses().isEmpty()){
+			return null;
+		}
+		Suite suite = (Suite) suiteFile.getXtendClasses().get(0);
+		return nameProvider.getClassName(suite) + ".java";
 	}
 	
 	@Override
