@@ -23,6 +23,6 @@ public class PatternValueConverterToStringStringSpecExamples extends ExampleTabl
   }
   
   public List<String> getCells() {
-    return java.util.Arrays.asList(String.valueOf(input) , String.valueOf(result));
+    return java.util.Arrays.asList(toString(input) ,toString(result));
   }
 }

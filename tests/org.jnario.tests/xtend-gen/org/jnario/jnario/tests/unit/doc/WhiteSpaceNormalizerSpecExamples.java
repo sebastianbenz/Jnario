@@ -23,6 +23,6 @@ public class WhiteSpaceNormalizerSpecExamples extends ExampleTableRow {
   }
   
   public List<String> getCells() {
-    return java.util.Arrays.asList(String.valueOf(input) , String.valueOf(result));
+    return java.util.Arrays.asList(toString(input) ,toString(result));
   }
 }

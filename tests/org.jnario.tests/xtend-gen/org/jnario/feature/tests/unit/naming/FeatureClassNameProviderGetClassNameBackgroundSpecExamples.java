@@ -30,6 +30,6 @@ public class FeatureClassNameProviderGetClassNameBackgroundSpecExamples extends 
   }
   
   public List<String> getCells() {
-    return java.util.Arrays.asList(String.valueOf(name) , String.valueOf(feature) , String.valueOf(expectedClassName));
+    return java.util.Arrays.asList(toString(name) ,toString(feature) ,toString(expectedClassName));
   }
 }

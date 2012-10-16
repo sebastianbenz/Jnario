@@ -24,6 +24,6 @@ public class ExampleImplementationSpecExamples extends ExampleTableRow {
   }
   
   public List<String> getCells() {
-    return java.util.Arrays.asList(String.valueOf(example) , String.valueOf(type));
+    return java.util.Arrays.asList(toString(example) ,toString(type));
   }
 }

@@ -23,6 +23,6 @@ public class ExampleNameSpecExamples extends ExampleTableRow {
   }
   
   public List<String> getCells() {
-    return java.util.Arrays.asList(String.valueOf(example) , String.valueOf(name));
+    return java.util.Arrays.asList(toString(example) ,toString(name));
   }
 }

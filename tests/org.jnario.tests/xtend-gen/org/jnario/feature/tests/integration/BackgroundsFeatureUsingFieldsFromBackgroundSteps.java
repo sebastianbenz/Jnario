@@ -17,7 +17,7 @@ public class BackgroundsFeatureUsingFieldsFromBackgroundSteps {
   @Order(0)
   @Named("When I have a scenario with a field")
   public void whenIHaveAScenarioWithAField() {
-    StepArguments _stepArguments = new StepArguments("package bootstrap\r\nimport java.util.*\r\nFeature: Test\r\n\tBackground: \r\n\t\tList<String> values = new ArrayList()\r\n\t\tGiven a list\r\n\t\t\tvalues += \"hello\"\r\n\t\t\r\n\tScenario: TestScenario 2\r\n\t\tThen it should have contents\r\n\t\t\tvalues.size => 1");
+    StepArguments _stepArguments = new StepArguments("package bootstrap\nimport java.util.*\nFeature: Test\n\tBackground: \n\t\tList<String> values = new ArrayList()\n\t\tGiven a list\n\t\t\tvalues += \"hello\"\n\t\t\n\tScenario: TestScenario 2\n\t\tThen it should have contents\n\t\t\tvalues.size => 1\n\t\t\t");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
     this.jnarioFile = _first;

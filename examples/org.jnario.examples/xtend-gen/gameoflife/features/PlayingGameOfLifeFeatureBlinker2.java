@@ -21,7 +21,7 @@ public class PlayingGameOfLifeFeatureBlinker2 {
   @Order(0)
   @Named("Given a world")
   public void givenAWorld() {
-    StepArguments _stepArguments = new StepArguments("-----\n-----\n-XXX-\n-----\n-----");
+    StepArguments _stepArguments = new StepArguments("-----\n-----\n-XXX-\n-----\n-----\n\t\t\t");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
     World _parseWorld = World.parseWorld(_first);
@@ -32,7 +32,7 @@ public class PlayingGameOfLifeFeatureBlinker2 {
   @Order(1)
   @Named("Then the world evolves into")
   public void thenTheWorldEvolvesInto() {
-    StepArguments _stepArguments = new StepArguments("-----\n--X--\n--X--\n--X--\n-----");
+    StepArguments _stepArguments = new StepArguments("-----\n--X--\n--X--\n--X--\n-----\n\t\t\t");
     final StepArguments args = _stepArguments;
     Evolution _gameOfLife = Evolution.gameOfLife();
     World _evolve = _gameOfLife.evolve(this.world);

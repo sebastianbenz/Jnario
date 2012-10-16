@@ -23,6 +23,6 @@ public class StepArgumentsProviderSpecExamples extends ExampleTableRow {
   }
   
   public List<String> getCells() {
-    return java.util.Arrays.asList(String.valueOf(step) , String.valueOf(expectedArgs));
+    return java.util.Arrays.asList(toString(step) ,toString(expectedArgs));
   }
 }

@@ -30,6 +30,6 @@ public class RegexFilterSpecFilteringExamples extends ExampleTableRow {
   }
   
   public List<String> getCells() {
-    return java.util.Arrays.asList(String.valueOf(string) , String.valueOf(regex) , String.valueOf(result));
+    return java.util.Arrays.asList(toString(string) ,toString(regex) ,toString(result));
   }
 }

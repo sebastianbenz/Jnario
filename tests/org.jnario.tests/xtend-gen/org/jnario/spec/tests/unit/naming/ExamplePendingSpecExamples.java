@@ -23,6 +23,6 @@ public class ExamplePendingSpecExamples extends ExampleTableRow {
   }
   
   public List<String> getCells() {
-    return java.util.Arrays.asList(String.valueOf(example) , String.valueOf(expected));
+    return java.util.Arrays.asList(toString(example) ,toString(expected));
   }
 }

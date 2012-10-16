@@ -23,6 +23,6 @@ public class RulesEvolveLiveCellsSpecLiveCells extends ExampleTableRow {
   }
   
   public List<String> getCells() {
-    return java.util.Arrays.asList(String.valueOf(liveNeighbourCount) , String.valueOf(result));
+    return java.util.Arrays.asList(toString(liveNeighbourCount) ,toString(result));
   }
 }

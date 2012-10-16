@@ -27,7 +27,7 @@ public class FieldInferenceFeatureInferringFieldsFromScenarioInDifferentFeatures
   @Order(0)
   @Named("When I have a feature")
   public void whenIHaveAFeature() {
-    StepArguments _stepArguments = new StepArguments("Feature: Feature 1\n\tScenario: My Scenario\n\t\tString myString\n\t\tGiven a string \"value\"\n\t\t\tmyString = args.first");
+    StepArguments _stepArguments = new StepArguments("Feature: Feature 1\n\tScenario: My Scenario\n\t\tString myString\n\t\tGiven a string \"value\"\n\t\t\tmyString = args.first\n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
     this.feature1 = _first;
@@ -37,7 +37,7 @@ public class FieldInferenceFeatureInferringFieldsFromScenarioInDifferentFeatures
   @Order(1)
   @Named("And another feature")
   public void andAnotherFeature() {
-    StepArguments _stepArguments = new StepArguments("Feature: Feature 2\n\tScenario: My Scenario 2\n\t\tGiven a string \"test\"\n\t\tThen my string is \"test\"\n\t\t\tmyString => args.first");
+    StepArguments _stepArguments = new StepArguments("Feature: Feature 2\n\tScenario: My Scenario 2\n\t\tGiven a string \"test\"\n\t\tThen my string is \"test\"\n\t\t\tmyString => args.first   \n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
     this.feature2 = _first;

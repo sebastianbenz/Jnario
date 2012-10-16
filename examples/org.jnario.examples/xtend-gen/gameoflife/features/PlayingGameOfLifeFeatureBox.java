@@ -21,7 +21,7 @@ public class PlayingGameOfLifeFeatureBox {
   @Order(0)
   @Named("Given a world")
   public void givenAWorld() {
-    StepArguments _stepArguments = new StepArguments("------\n--XX--\n--XX--\n------");
+    StepArguments _stepArguments = new StepArguments("------\n--XX--\n--XX--\n------ \n\t\t\t");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
     World _parseWorld = World.parseWorld(_first);
@@ -32,7 +32,7 @@ public class PlayingGameOfLifeFeatureBox {
   @Order(1)
   @Named("Then the world evolves into")
   public void thenTheWorldEvolvesInto() {
-    StepArguments _stepArguments = new StepArguments("------\n--XX--\n--XX--\n------");
+    StepArguments _stepArguments = new StepArguments("------\n--XX--\n--XX--\n------\n\t\t\t");
     final StepArguments args = _stepArguments;
     Evolution _gameOfLife = Evolution.gameOfLife();
     World _evolve = _gameOfLife.evolve(this.world);

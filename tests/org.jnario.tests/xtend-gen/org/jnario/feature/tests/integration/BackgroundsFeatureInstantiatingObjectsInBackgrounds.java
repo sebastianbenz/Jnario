@@ -17,7 +17,7 @@ public class BackgroundsFeatureInstantiatingObjectsInBackgrounds {
   @Order(0)
   @Named("When I have a feature with a background")
   public void whenIHaveAFeatureWithABackground() {
-    StepArguments _stepArguments = new StepArguments("package bootstrap\r\nimport org.jnario.feature.tests.integration.Calculator\r\nFeature: Calculator\r\n  Background:\r\n   int result \r\n   Calculator calculator\r\n   Given a calculator\r\n       calculator = new Calculator()\r\n  Scenario: Adding two numbers 1 \r\n   When I enter two numbers \"20\" and \"70\"\r\n        result = calculator.add(args.first.toInt, args.second.toInt)\r\n   Then it returns \"90\"\r\n     \tresult => args.first.toInt\r\n  Scenario: Adding two numbers 2\r\n    When I enter two numbers \"20\" and \"80\"\r\n      Then it returns \"100\"");
+    StepArguments _stepArguments = new StepArguments("package bootstrap\nimport org.jnario.feature.tests.integration.Calculator\nFeature: Calculator\n  Background:\n   int result \n   Calculator calculator\n   Given a calculator\n       calculator = new Calculator()\n  Scenario: Adding two numbers 1 \n   When I enter two numbers \"20\" and \"70\"\n        result = calculator.add(args.first.toInt, args.second.toInt)\n   Then it returns \"90\"\n     \tresult => args.first.toInt\n  Scenario: Adding two numbers 2\n    When I enter two numbers \"20\" and \"80\"\n      Then it returns \"100\"\n\t\t\t");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
     this.jnarioFile = _first;

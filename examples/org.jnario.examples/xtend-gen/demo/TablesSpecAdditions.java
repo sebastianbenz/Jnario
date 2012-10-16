@@ -30,6 +30,6 @@ public class TablesSpecAdditions extends ExampleTableRow {
   }
   
   public List<String> getCells() {
-    return java.util.Arrays.asList(String.valueOf(a) , String.valueOf(b) , String.valueOf(sum));
+    return java.util.Arrays.asList(toString(a) ,toString(b) ,toString(sum));
   }
 }

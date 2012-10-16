@@ -30,6 +30,6 @@ public class StringsStartsWithWordSpecExamples extends ExampleTableRow {
   }
   
   public List<String> getCells() {
-    return java.util.Arrays.asList(String.valueOf(string) , String.valueOf(word) , String.valueOf(index));
+    return java.util.Arrays.asList(toString(string) ,toString(word) ,toString(index));
   }
 }
