@@ -10,3 +10,4 @@ class Failed extends SpecExecution{
 		super(className, name, executionTimeInSeconds, ImmutableList::of(failures))
 	}
 }
+

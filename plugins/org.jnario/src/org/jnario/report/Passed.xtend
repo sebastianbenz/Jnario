@@ -8,5 +8,3 @@ class Passed extends SpecExecution{
 		super(className, name, executionTimeInSeconds, <SpecFailure>emptyList)
 	}
 }
-
- 
