@@ -15,7 +15,7 @@ describe "Calculator"{
 	
 	def examples{
 		| a | b | sum |
-		| 1 | 2 |  4  |
+		| 1 | 2 |  3  |
 		| 1 | 3 |  4  |
 	}
 	

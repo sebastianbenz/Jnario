@@ -2,12 +2,11 @@
     xmlns="http://maven.apache.org/POM/4.0.0"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" >
 
-    <properties>
-        <project.build.sourceEncoding>
-UTF-8
-        </project.build.sourceEncoding>
-    </properties>
-
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
+    <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+  </properties>
     <modelVersion>
 4.0.0
     </modelVersion>
