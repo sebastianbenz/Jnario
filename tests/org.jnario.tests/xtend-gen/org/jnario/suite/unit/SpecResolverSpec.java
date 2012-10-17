@@ -96,7 +96,7 @@ public class SpecResolverSpec {
   
   @Test
   @Named("resolves referenced specs")
-  @Order(5)
+  @Order(0)
   public void _resolvesReferencedSpecs() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
@@ -127,7 +127,7 @@ public class SpecResolverSpec {
   
   @Test
   @Named("filters unresolved specs")
-  @Order(7)
+  @Order(1)
   public void _filtersUnresolvedSpecs() throws Exception {
     SpecReference _specReference = Suites.specReference(null);
     SpecReference _specReference_1 = Suites.specReference(null);
@@ -144,7 +144,7 @@ public class SpecResolverSpec {
   
   @Test
   @Named("ignores specs without name")
-  @Order(8)
+  @Order(2)
   public void _ignoresSpecsWithoutName() throws Exception {
     final ExampleGroup specWithoutName = Specs.exampleGroup(null);
     SpecReference _specReference = Suites.specReference(specWithoutName);

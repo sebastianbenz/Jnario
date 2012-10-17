@@ -51,7 +51,7 @@ describe HashBasedSpec2ResultMapping {
 		
 		fact "matches if classname and name are equal"{
 			m.parseSpec(
-			'''
+			''' 
 				package example
 				describe "Something"{
 					fact "a fact"{""}

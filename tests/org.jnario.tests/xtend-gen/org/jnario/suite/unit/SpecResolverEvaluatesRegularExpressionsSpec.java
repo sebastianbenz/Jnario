@@ -25,7 +25,7 @@ import org.junit.runner.RunWith;
 public class SpecResolverEvaluatesRegularExpressionsSpec extends SpecResolverSpec {
   @Test
   @Named("example 1")
-  @Order(9)
+  @Order(3)
   public void _example1() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
@@ -54,7 +54,7 @@ public class SpecResolverEvaluatesRegularExpressionsSpec extends SpecResolverSpe
   
   @Test
   @Named("example 2")
-  @Order(10)
+  @Order(4)
   public void _example2() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
@@ -81,7 +81,7 @@ public class SpecResolverEvaluatesRegularExpressionsSpec extends SpecResolverSpe
   
   @Test
   @Named("returns empty list on null input")
-  @Order(11)
+  @Order(5)
   public void _returnsEmptyListOnNullInput() throws Exception {
     PatternReference _createPatternReference = SuiteFactory.eINSTANCE.createPatternReference();
     List<Specification> _resolveSpecs = this.subject.resolveSpecs(_createPatternReference);
@@ -98,7 +98,7 @@ public class SpecResolverEvaluatesRegularExpressionsSpec extends SpecResolverSpe
   
   @Test
   @Named("ignores unresolved elements")
-  @Order(12)
+  @Order(6)
   public void _ignoresUnresolvedElements() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
@@ -125,7 +125,7 @@ public class SpecResolverEvaluatesRegularExpressionsSpec extends SpecResolverSpe
   
   @Test
   @Named("ignores containing suite")
-  @Order(13)
+  @Order(7)
   public void _ignoresContainingSuite() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
@@ -154,7 +154,7 @@ public class SpecResolverEvaluatesRegularExpressionsSpec extends SpecResolverSpe
   
   @Test
   @Named("orders specs alphabetically")
-  @Order(14)
+  @Order(8)
   public void _ordersSpecsAlphabetically() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
