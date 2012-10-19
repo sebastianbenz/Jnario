@@ -54,11 +54,11 @@ class HtmlFile {
 				<div class="tabbable">
 					<div class="content">
 						<div class="page-header">
+							<h1>«title»</h1>
 							  <ul class="nav nav-tabs pull-right">
 							    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
 								<li><a href="#source" data-toggle="tab">Source</a></li>
 							  </ul>
-							<h1>«title»</h1>
 						</div>
 						<div class="row">
 							<div class="span12">

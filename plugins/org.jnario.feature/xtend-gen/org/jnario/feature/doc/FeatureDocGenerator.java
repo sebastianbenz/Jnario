@@ -41,7 +41,8 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
           String _className = FeatureDocGenerator.this._featureClassNameProvider.getClassName(feature);
           it.setName(_className);
           String _name = feature.getName();
-          it.setTitle(_name);
+          String _substring = _name==null?(String)null:_name.substring(8);
+          it.setTitle(_substring);
           CharSequence _generateContent = FeatureDocGenerator.this.generateContent(feature);
           it.setContent(_generateContent);
           String _root = FeatureDocGenerator.this.root(feature);
@@ -68,6 +69,8 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
       Background _background = feature.getBackground();
       boolean _notEquals = (!Objects.equal(_background, null));
       if (_notEquals) {
+        _builder.append("<h2>Background</h2>");
+        _builder.newLine();
         Background _background_1 = feature.getBackground();
         CharSequence _generate = this.generate(_background_1);
         _builder.append(_generate, "");
@@ -76,7 +79,16 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     }
     {
       EList<Scenario> _scenarios = feature.getScenarios();
-      for(final Scenario scenario : _scenarios) {
+      boolean _isEmpty = _scenarios.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        _builder.append("<h2>Scenarios</h2>");
+        _builder.newLine();
+      }
+    }
+    {
+      EList<Scenario> _scenarios_1 = feature.getScenarios();
+      for(final Scenario scenario : _scenarios_1) {
         CharSequence _generate_1 = this.generate(scenario);
         _builder.append(_generate_1, "");
         _builder.newLineIfNotEmpty();
@@ -101,7 +113,8 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     _builder.append(_id, "");
     _builder.append(">");
     String _name_1 = scenario.getName();
-    _builder.append(_name_1, "");
+    String _substring = _name_1==null?(String)null:_name_1.substring(9);
+    _builder.append(_substring, "");
     _builder.append("</h3>");
     _builder.newLineIfNotEmpty();
     EList<Step> _steps = scenario.getSteps();

@@ -33,7 +33,7 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 		val feature = xtendClass as Feature
 		return HtmlFile::newHtmlFile[
 			name = feature.getClassName 
-			title = feature.name
+			title = feature.name?.substring(8)
 			content = feature.generateContent
 			rootFolder = feature.root
 			sourceCode = xtendClass.eContainer.pre("lang-feature")
@@ -44,7 +44,11 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 	def generateContent(Feature feature)'''
 		<p>«feature.description?.markdown2Html»</p>
 		«IF feature.background != null»
+		<h2>Background</h2>
 		«generate(feature.background)»
+		«ENDIF»
+		«IF !feature.scenarios.empty»
+		<h2>Scenarios</h2>
 		«ENDIF»
 		«FOR scenario : feature.scenarios»
 		«generate(scenario)»
@@ -55,7 +59,7 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 	'''
 
 	def dispatch generate(Scenario scenario)'''
-		<h3 «id(scenario.name)»>«scenario.name»</h3>
+		<h3 «id(scenario.name)»>«scenario.name?.substring(9)»</h3>
 		«generate(scenario.steps.filter(typeof(Step)))»
 	'''
 	

@@ -4,6 +4,9 @@ import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.conversion.ValueConverter;
 import org.eclipse.xtext.xbase.conversion.XbaseValueConverterService;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
+import org.jnario.suite.conversion.PatternValueConverter;
+import org.jnario.suite.conversion.SuiteValueConverter;
+import org.jnario.suite.conversion.TextValueConverter;
 
 @SuppressWarnings("all")
 public class SuiteValueConverterService extends XbaseValueConverterService {

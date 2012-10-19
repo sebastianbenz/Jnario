@@ -1,10 +1,10 @@
 package org.jnario.suite.conversion;
 
+import com.google.common.base.Objects;
 import org.eclipse.xtext.conversion.ValueConverterException;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
-
-import com.google.common.base.Objects;
+import org.jnario.suite.conversion.SuiteValueConverter;
 
 @SuppressWarnings("all")
 public class TextValueConverter extends SuiteValueConverter {

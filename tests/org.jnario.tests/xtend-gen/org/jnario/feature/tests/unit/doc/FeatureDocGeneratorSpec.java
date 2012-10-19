@@ -20,6 +20,7 @@ import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -97,6 +98,13 @@ public class FeatureDocGeneratorSpec {
     _builder.newLine();
     final String expected = _builder.toString();
     Assert.assertEquals(expected, actual);
+  }
+  
+  @Test
+  @Ignore
+  @Named("Includes failure state in Feature [PENDING]")
+  @Order(1)
+  public void _includesFailureStateInFeature() throws Exception {
   }
   
   public String generateDoc(final CharSequence input) {

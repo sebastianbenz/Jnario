@@ -83,6 +83,10 @@ describe FeatureDocGenerator {
 		assertEquals(expected, actual)
 	}
 	
+	fact "Includes failure state in Feature"{
+		
+	}
+	
 	def generateDoc(CharSequence input){
 		val resource = parseScenario(input)
 		val featureFile= resource.contents.head as FeatureFile

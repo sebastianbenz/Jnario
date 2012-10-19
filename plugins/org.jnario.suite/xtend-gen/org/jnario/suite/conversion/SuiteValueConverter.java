@@ -1,11 +1,10 @@
 package org.jnario.suite.conversion;
 
+import com.google.common.base.Objects;
 import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.conversion.ValueConverterException;
 import org.eclipse.xtext.nodemodel.INode;
 import org.jnario.util.Strings;
-
-import com.google.common.base.Objects;
 
 @SuppressWarnings("all")
 public class SuiteValueConverter implements IValueConverter<String> {

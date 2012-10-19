@@ -1,12 +1,11 @@
 package org.jnario.suite.scoping;
 
+import com.google.common.base.Objects;
+import com.google.common.base.Predicate;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.jnario.spec.scoping.SpecResourceDescriptionStrategy;
 import org.jnario.spec.spec.SpecPackage;
-
-import com.google.common.base.Objects;
-import com.google.common.base.Predicate;
 
 @SuppressWarnings("all")
 public class SuiteSpecFilter implements Predicate<IEObjectDescription> {

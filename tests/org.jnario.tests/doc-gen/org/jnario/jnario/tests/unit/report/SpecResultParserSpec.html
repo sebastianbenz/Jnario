@@ -25,11 +25,11 @@
 		<div class="tabbable">
 			<div class="content">
 				<div class="page-header">
+					<h1>SpecResultParser</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
 						<li><a href="#source" data-toggle="tab">Source</a></li>
 					  </ul>
-					<h1>SpecResultParser</h1>
 				</div>
 				<div class="row">
 					<div class="span12">
@@ -98,7 +98,7 @@ describe SpecResultParser{
   static val FAILURE_TYPE = &quot;java.lang.AssertionError&quot;
   static val STACKTRACE = &quot;the stacktrace&quot;
   
-  val SpecExecutionAcceptor acceptor = mock(SpecExecutionAcceptor)
+  val SpecExecutionAcceptor acceptor = mock(typeof(SpecExecutionAcceptor))
   
   fact &quot;parses successfull specs from xml&quot;{ 
     '''

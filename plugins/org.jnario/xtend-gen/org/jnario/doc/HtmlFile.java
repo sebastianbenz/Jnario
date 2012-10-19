@@ -167,6 +167,12 @@ public class HtmlFile {
     _builder.append("\t\t\t\t");
     _builder.append("<div class=\"page-header\">");
     _builder.newLine();
+    _builder.append("\t\t\t\t\t");
+    _builder.append("<h1>");
+    CharSequence _title_1 = this.getTitle();
+    _builder.append(_title_1, "					");
+    _builder.append("</h1>");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t\t\t  ");
     _builder.append("<ul class=\"nav nav-tabs pull-right\">");
     _builder.newLine();
@@ -179,12 +185,6 @@ public class HtmlFile {
     _builder.append("\t\t\t\t\t  ");
     _builder.append("</ul>");
     _builder.newLine();
-    _builder.append("\t\t\t\t\t");
-    _builder.append("<h1>");
-    CharSequence _title_1 = this.getTitle();
-    _builder.append(_title_1, "					");
-    _builder.append("</h1>");
-    _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t\t");
     _builder.append("</div>");
     _builder.newLine();
