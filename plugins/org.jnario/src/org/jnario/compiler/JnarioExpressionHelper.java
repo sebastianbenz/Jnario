@@ -3,8 +3,10 @@ package org.jnario.compiler;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 import static org.jnario.jvmmodel.DoubleArrowSupport.isDoubleArrow;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.typing.XtendExpressionHelper;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
+import org.eclipse.xtext.xbase.XClosure;
 import org.jnario.Assertion;
 import org.jnario.Should;
 
@@ -20,21 +22,18 @@ public class JnarioExpressionHelper extends XtendExpressionHelper {
 	}
 
 	protected boolean isInAssertion(XAbstractFeatureCall featureCall) {
-		if(!isDoubleArrow(featureCall)){
-			return true;
+		EObject parent = featureCall.eContainer();
+		while(parent != null){
+			if(parent instanceof Should){
+				return true;
+			}else if(parent instanceof Assertion){
+				return true;
+			}else if (parent instanceof XClosure) {
+				return false;
+			}
+			parent = parent.eContainer();
 		}
-		if(isAssertion(featureCall)){
-			return true;
-		}
-		return isShould(featureCall);
+		return false;
 	}
 
-	protected boolean isShould(XAbstractFeatureCall featureCall) {
-		return getContainerOfType(featureCall, Should.class) != null;
-	}
-
-	protected boolean isAssertion(XAbstractFeatureCall featureCall) {
-		return getContainerOfType(featureCall, Assertion.class) != null;
-	}
-	
 }

@@ -1,5 +1,6 @@
 package org.jnario.spec.tests.integration;
 
+import com.google.common.base.Objects;
 import java.util.List;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
@@ -260,6 +261,37 @@ public class UsingShouldSpec {
   }
   
   /**
+   * In order to be able to print the value of all subexpressions when an assertion failed,
+   * we disabled the short circuit semantics of '&&' and '||' within assertions.
+   */
+  @Test
+  @Named("Short Circuit Invocation")
+  @Order(3)
+  public void _shortCircuitInvocation() throws Exception {
+    final String aString = null;
+    try{
+      boolean _notEquals = (!Objects.equal(aString, null));
+      int _length = aString.length();
+      boolean _equals = (_length == 0);
+      boolean _and = (_notEquals && _equals);
+      Assert.assertTrue("\nExpected aString != null && aString.length == 0 but"
+       + "\n     aString != null is " + new StringDescription().appendValue(_notEquals).toString()
+       + "\n     aString is " + new StringDescription().appendValue(aString).toString()
+       + "\n     aString.length == 0 is " + new StringDescription().appendValue(_equals).toString()
+       + "\n     aString.length is " + new StringDescription().appendValue(_length).toString() + "\n", _and);
+      
+      Assert.fail("Expected " + NullPointerException.class.getName() + " in \n     assert aString != null && aString.length == 0\n with:"
+       + "\n     aString != null && aString.length == 0 is " + new StringDescription().appendValue(_and).toString()
+       + "\n     aString != null is " + new StringDescription().appendValue(_notEquals).toString()
+       + "\n     aString is " + new StringDescription().appendValue(aString).toString()
+       + "\n     aString.length == 0 is " + new StringDescription().appendValue(_equals).toString()
+       + "\n     aString.length is " + new StringDescription().appendValue(_length).toString());
+    }catch(NullPointerException e){
+      // expected
+    }
+  }
+  
+  /**
    * You can also the `should` and `=>` together with [hamcrest](http://code.google.com/p/hamcrest/)
    * matchers. The following static import statements are needed to run the examples:
    * 
@@ -272,7 +304,7 @@ public class UsingShouldSpec {
    */
   @Test
   @Named("Combining hamcrest and should")
-  @Order(3)
+  @Order(4)
   public void _combiningHamcrestAndShould() throws Exception {
     Matcher<String> _startsWith = Matchers.startsWith("h");
     boolean _doubleArrow = Should.operator_doubleArrow(

@@ -99,6 +99,17 @@ describe "Using Should"{
 		       x is "hello"
 		       y is "world"''')	  
 	}  
+	
+	/*
+	 * In order to be able to print the value of all subexpressions when an assertion failed, 
+	 * we disabled the short circuit semantics of '&&' and '||' within assertions. 
+	 */
+	fact "Short Circuit Invocation"{
+		val String aString = null
+		(assert aString != null && aString.length == 0) throws NullPointerException 
+	}
+	
+	
 		
     
 	/*

@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.hamcrest.StringDescription;
 import org.jnario.Should;
+import org.jnario.jnario.test.util.BehaviorExecutor;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.Query;
 import org.jnario.jnario.test.util.SpecTestCreator;
@@ -24,6 +25,10 @@ public class ShouldSpec {
   @Inject
   @Extension
   public ModelStore _modelStore;
+  
+  @Inject
+  @Extension
+  public BehaviorExecutor _behaviorExecutor;
   
   @Test
   @Named("\\\'isNot\\\' is false if for \\\'1 should be 1")
@@ -75,5 +80,20 @@ public class ShouldSpec {
      + "\n     query is " + new StringDescription().appendValue(_query).toString()
      + "\n      is " + new StringDescription().appendValue(this._modelStore).toString() + "\n", _isNot);
     
+  }
+  
+  @Test
+  @Named("short circuit invocation works in closures within assertions")
+  @Order(2)
+  public void _shortCircuitInvocationWorksInClosuresWithinAssertions() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("describe \"Test\"{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fact assert list(null, \"\").filter [ it != null && it.length > 2 ].empty");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    this._behaviorExecutor.executesSuccessfully(_builder);
   }
 }

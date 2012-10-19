@@ -12,11 +12,13 @@ import org.jnario.Should
 import org.jnario.jnario.test.util.ModelStore
 import org.jnario.runner.CreateWith
 import org.jnario.jnario.test.util.SpecTestCreator
+import org.jnario.jnario.test.util.BehaviorExecutor
 
 @CreateWith(typeof(SpecTestCreator))
 describe Should{
 
-	@Inject extension ModelStore 
+	@Inject extension ModelStore
+	@Inject extension BehaviorExecutor 
 
 	fact "'isNot' is false if for '1 should be 1"{
 		parseSpec('''
@@ -38,6 +40,14 @@ describe Should{
 		''')
 		
 		assert query.first(typeof(Should)).isNot
+	}
+	
+	fact "short circuit invocation works in closures within assertions"{
+		'''
+			describe "Test"{
+				fact assert list(null, "").filter [ it != null && it.length > 2 ].empty
+			}
+		'''.executesSuccessfully
 	}
 	
 }
