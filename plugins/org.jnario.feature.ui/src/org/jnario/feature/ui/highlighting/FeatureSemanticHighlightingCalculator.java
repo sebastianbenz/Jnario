@@ -73,8 +73,8 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 				if(member.eClass() == XtendPackage.Literals.XTEND_FIELD){
 					XtendField field = (XtendField) member;
 					highlightXtendField(field, acceptor);
-					XExpression initializer = field.getInitialValue();
-					highlightRichStrings(initializer, acceptor);
+//					XExpression initializer = field.getInitialValue();
+//					highlightRichStrings(initializer, acceptor);
 				}
 				highlightDeprectedXtendAnnotationTarget(acceptor, member);
 			}
