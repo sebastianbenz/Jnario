@@ -43,6 +43,24 @@
 					definitionId="org.jnario.feature.Feature.Editor.opened">
 				</reference>
 			</activeWhen>
+			<handler
+            class="org.eclipse.xtend.ide.edit.InsertStringHandler$LeftGuillemet"
+            commandId="org.eclipse.xtend.ide.insertLeftGuillemet">
+            <activeWhen>
+				<reference
+					definitionId="org.jnario.feature.Feature.Editor.opened">
+				</reference>
+			</activeWhen>
+      </handler>
+      <handler
+            class="org.eclipse.xtend.ide.edit.InsertStringHandler$RightGuillemet"
+            commandId="org.eclipse.xtend.ide.insertRightGuillemet">
+           	<activeWhen>
+				<reference
+					definitionId="org.jnario.feature.Feature.Editor.opened">
+				</reference>
+			</activeWhen>
+      </handler>
       </handler>
     </extension>
     <extension point="org.eclipse.core.expressions.definitions">
@@ -513,15 +531,171 @@
             parentId="org.eclipse.xtext.ui.XtextEditorScope">
       </context>
    </extension>
-    <extension
+   
+   
+   <extension
          point="org.eclipse.ui.bindings">
       <key
-            contextId="org.eclipse.xtext.ui.XtextEditorScope"
+            contextId="org.jnario.feature.ui.FeatureEditorScope"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+&lt;"
+            commandId="org.eclipse.xtend.ide.insertLeftGuillemet">
+      </key>
+      <key
+            contextId="org.jnario.feature.ui.FeatureEditorScope"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+&gt;"
+            commandId="org.eclipse.xtend.ide.insertRightGuillemet">
+      </key>
+      <key
+            contextId="org.jnario.feature.ui.FeatureEditorScope"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M4+&lt;"
+            commandId="org.eclipse.xtend.ide.insertLeftGuillemet">
+      </key>
+      <key
+            contextId="org.jnario.feature.ui.FeatureEditorScope"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M4+&gt;"
+            commandId="org.eclipse.xtend.ide.insertRightGuillemet">
+      </key>
+      <key
+            contextId="org.jnario.feature.ui.FeatureEditorScope"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
             sequence="M1+M2+O"
             commandId="org.eclipse.xtext.xbase.ui.organizeImports">
       </key>
+<!--
+      <key
+            contextId="org.jnario.feature.ui.FeatureEditorScope"
+            sequence="M1+M2+T"
+            commandId="org.eclipse.jdt.ui.navigate.open.type"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+      <key
+            contextId="org.jnario.feature.ui.FeatureEditorScope"
+            sequence="M1+M2+H"
+            commandId="org.eclipse.jdt.ui.navigate.open.type.in.hierarchy"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+-->
+
+		<!--
+			known bug in JDT:
+			Launch using shortcut key Alt+Shift+X doesn't work until launch actions are loaded
+			https://bugs.eclipse.org/bugs/show_bug.cgi?id=218881
+		-->
+
+		<!-- run Java application -->
+       <key
+             commandId="org.eclipse.xtend.ide.launching.localJavaShortcut.debug"
+             contextId="org.jnario.feature.ui.FeatureEditorScope"
+             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+             sequence="M3+M4+D J"/>
+       <!-- On carbon: Shift+Option+D is a character, Command+Option+D is Show/Hide Dock, Command+Control+D is dictionary lookup -->
+       <key
+             contextId="org.jnario.feature.ui.FeatureEditorScope"
+             platform="carbon"
+             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+             sequence="M3+M4+D J"/>
+       <key
+             commandId="org.eclipse.xtend.ide.launching.localJavaShortcut.debug"
+             contextId="org.jnario.feature.ui.FeatureEditorScope"
+             platform="carbon"
+             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+             sequence="M1+M3+M4+D J"/>
+       <key
+             commandId="org.eclipse.xtend.ide.launching.localJavaShortcut.run"
+             contextId="org.jnario.feature.ui.FeatureEditorScope"
+             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+             sequence="M2+M3+X J"/>
+       <key
+             platform="carbon"
+             contextId="org.jnario.feature.ui.FeatureEditorScope"
+             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+             sequence="M2+M3+X J"/>
+       <key
+             commandId="org.eclipse.xtend.ide.launching.localJavaShortcut.run"
+             contextId="org.jnario.feature.ui.FeatureEditorScope"
+             platform="carbon"
+             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+             sequence="M1+M3+X J">
+       </key>
+      
+      
+      <!-- run JUnit test -->
+      <key
+            commandId="org.eclipse.xtend.ide.launching.junitShortcut.debug"
+            contextId="org.jnario.feature.ui.FeatureEditorScope"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M2+M3+D T"/>
+      <!-- On carbon: Shift+Option+D is a character, Command+Option+D is Show/Hide Dock, Command+Control+D is dictionary lookup -->
+      <key
+            contextId="org.jnario.feature.ui.FeatureEditorScope"
+            platform="carbon"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M2+M3+D T"/>
+      <key
+            commandId="org.eclipse.xtend.ide.launching.junitShortcut.debug"
+            contextId="org.jnario.feature.ui.FeatureEditorScope"
+            platform="carbon"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M3+M4+D T"/>
+      <key
+            commandId="org.eclipse.xtend.ide.launching.junitShortcut.run"
+            contextId="org.jnario.feature.ui.FeatureEditorScope"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M2+M3+X T"/>
+      <key
+            contextId="org.jnario.feature.ui.FeatureEditorScope"
+            platform="carbon"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M2+M3+X T"/>
+      <key
+            commandId="org.eclipse.xtend.ide.launching.junitShortcut.run"
+            contextId="org.jnario.feature.ui.FeatureEditorScope"
+            platform="carbon"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M3+X T"/>
+            
+            
+      <!-- run JUnit Plug-In test -->      
+      <key
+            commandId="org.eclipse.xtend.ide.launching.junitPdeShortcut.debug"
+            contextId="org.jnario.feature.ui.FeatureEditorScope"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M2+M3+D P"/>
+      <!-- On carbon: Shift+Option+D is a character, Command+Option+D is Show/Hide Dock, Command+Control+D is dictionary lookup -->
+      <key
+            contextId="org.jnario.feature.ui.FeatureEditorScope"
+            platform="carbon"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M2+M3+D P"/>
+      <key
+            commandId="org.eclipse.xtend.ide.launching.junitPdeShortcut.debug"
+            contextId="org.jnario.feature.ui.FeatureEditorScope"
+            platform="carbon"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M3+M4+D P"/>
+      <key
+            commandId="org.eclipse.xtend.ide.launching.junitPdeShortcut.run"
+            contextId="org.jnario.feature.ui.FeatureEditorScope"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M2+M3+X P"/>
+      <key
+            contextId="org.jnario.feature.ui.FeatureEditorScope"
+            platform="carbon"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M2+M3+X P"/>
+      <key
+            commandId="org.eclipse.xtend.ide.launching.junitPdeShortcut.run"
+            contextId="org.jnario.feature.ui.FeatureEditorScope"
+            platform="carbon"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M3+X P"/>
    </extension>
+   
+   
        <extension point="org.eclipse.ui.menus">
         <menuContribution
             locationURI="popup:#TextEditorContext?after=group.edit">
@@ -698,6 +872,7 @@
          </newWizardShortcut>
       </perspectiveExtension>
    </extension>
+   
 	<extension
          id="org.jnario.feature.ui.wizard"
          name="newFeatureClass"
