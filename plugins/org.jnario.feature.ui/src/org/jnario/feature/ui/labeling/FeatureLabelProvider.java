@@ -63,7 +63,7 @@ public class FeatureLabelProvider extends XtendLabelProvider {
 	}
 
 	public String text(Background element) {
-		return element.getName();
+		return element.getName().trim();
 	}
 	
 	public String text(Step element) {
@@ -71,10 +71,10 @@ public class FeatureLabelProvider extends XtendLabelProvider {
 	}
 	
 	public String text(Scenario element) {
-		return element.getName();
+		return element.getName().trim();
 	}
 	
 	public String text(Feature element) {
-		return "Feature: " + element.getName();
+		return "Feature: " + element.getName().trim();
 	}
 }
