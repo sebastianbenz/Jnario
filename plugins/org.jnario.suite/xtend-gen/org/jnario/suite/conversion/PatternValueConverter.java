@@ -1,13 +1,15 @@
 package org.jnario.suite.conversion;
 
-import com.google.common.base.Objects;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
+
 import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.conversion.ValueConverterException;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+
+import com.google.common.base.Objects;
 
 @SuppressWarnings("all")
 public class PatternValueConverter implements IValueConverter<String> {

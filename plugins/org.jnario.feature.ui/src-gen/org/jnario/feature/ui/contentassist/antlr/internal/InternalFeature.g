@@ -652,34 +652,6 @@ finally {
 
 
 
-// Entry rule entryRuleMockLiteral
-entryRuleMockLiteral 
-:
-{ before(grammarAccess.getMockLiteralRule()); }
-	 ruleMockLiteral
-{ after(grammarAccess.getMockLiteralRule()); } 
-	 EOF 
-;
-
-// Rule MockLiteral
-ruleMockLiteral
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getMockLiteralAccess().getGroup()); }
-(rule__MockLiteral__Group__0)
-{ after(grammarAccess.getMockLiteralAccess().getGroup()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
 // Entry rule entryRuleAssertion
 entryRuleAssertion 
 :
@@ -3522,38 +3494,6 @@ rule__XLiteral__Alternatives
 { before(grammarAccess.getXLiteralAccess().getXTypeLiteralParserRuleCall_5()); }
 	ruleXTypeLiteral
 { after(grammarAccess.getXLiteralAccess().getXTypeLiteralParserRuleCall_5()); }
-)
-
-    |(
-{ before(grammarAccess.getXLiteralAccess().getMockLiteralParserRuleCall_6()); }
-	ruleMockLiteral
-{ after(grammarAccess.getXLiteralAccess().getMockLiteralParserRuleCall_6()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__MockLiteral__Alternatives_1
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getMockLiteralAccess().getMockKeyword_1_0()); }
-
-	'mock' 
-
-{ after(grammarAccess.getMockLiteralAccess().getMockKeyword_1_0()); }
-)
-
-    |(
-{ before(grammarAccess.getMockLiteralAccess().getStubKeyword_1_1()); }
-
-	'stub' 
-
-{ after(grammarAccess.getMockLiteralAccess().getStubKeyword_1_1()); }
 )
 
 ;
@@ -8236,166 +8176,6 @@ rule__Should__Group__2__Impl
 finally {
 	restoreStackSize(stackSize);
 }
-
-
-
-
-
-
-
-
-rule__MockLiteral__Group__0
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__MockLiteral__Group__0__Impl
-	rule__MockLiteral__Group__1
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__MockLiteral__Group__0__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getMockLiteralAccess().getMockLiteralAction_0()); }
-(
-
-)
-{ after(grammarAccess.getMockLiteralAccess().getMockLiteralAction_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__MockLiteral__Group__1
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__MockLiteral__Group__1__Impl
-	rule__MockLiteral__Group__2
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__MockLiteral__Group__1__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getMockLiteralAccess().getAlternatives_1()); }
-(rule__MockLiteral__Alternatives_1)
-{ after(grammarAccess.getMockLiteralAccess().getAlternatives_1()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__MockLiteral__Group__2
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__MockLiteral__Group__2__Impl
-	rule__MockLiteral__Group__3
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__MockLiteral__Group__2__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getMockLiteralAccess().getLeftParenthesisKeyword_2()); }
-
-	'(' 
-
-{ after(grammarAccess.getMockLiteralAccess().getLeftParenthesisKeyword_2()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__MockLiteral__Group__3
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__MockLiteral__Group__3__Impl
-	rule__MockLiteral__Group__4
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__MockLiteral__Group__3__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getMockLiteralAccess().getTypeAssignment_3()); }
-(rule__MockLiteral__TypeAssignment_3)
-{ after(grammarAccess.getMockLiteralAccess().getTypeAssignment_3()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__MockLiteral__Group__4
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__MockLiteral__Group__4__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__MockLiteral__Group__4__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getMockLiteralAccess().getRightParenthesisKeyword_4()); }
-
-	')' 
-
-{ after(grammarAccess.getMockLiteralAccess().getRightParenthesisKeyword_4()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-
 
 
 
@@ -23025,25 +22805,6 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__MockLiteral__TypeAssignment_3
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getMockLiteralAccess().getTypeJvmTypeCrossReference_3_0()); }
-(
-{ before(grammarAccess.getMockLiteralAccess().getTypeJvmTypeQualifiedNameParserRuleCall_3_0_1()); }
-	ruleQualifiedName{ after(grammarAccess.getMockLiteralAccess().getTypeJvmTypeQualifiedNameParserRuleCall_3_0_1()); }
-)
-{ after(grammarAccess.getMockLiteralAccess().getTypeJvmTypeCrossReference_3_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
 rule__Assertion__ExpressionAssignment_2
     @init {
 		int stackSize = keepStackSize();
@@ -25593,17 +25354,17 @@ fragment RULE_SPACES : (' '|'\t')*;
 
 RULE_RICH_TEXT : '\'\'\'' RULE_IN_RICH_STRING* ('\'\'\''|('\'' '\''?)? EOF);
 
-RULE_RICH_TEXT_START : '\'\'\'' RULE_IN_RICH_STRING* ('\'' '\''?)? '\uFFFD';
+RULE_RICH_TEXT_START : '\'\'\'' RULE_IN_RICH_STRING* ('\'' '\''?)? '\u00AB';
 
-RULE_RICH_TEXT_END : '\uFFFD' RULE_IN_RICH_STRING* ('\'\'\''|('\'' '\''?)? EOF);
+RULE_RICH_TEXT_END : '\u00BB' RULE_IN_RICH_STRING* ('\'\'\''|('\'' '\''?)? EOF);
 
-RULE_RICH_TEXT_INBETWEEN : '\uFFFD' RULE_IN_RICH_STRING* ('\'' '\''?)? '\uFFFD';
+RULE_RICH_TEXT_INBETWEEN : '\u00BB' RULE_IN_RICH_STRING* ('\'' '\''?)? '\u00AB';
 
-RULE_COMMENT_RICH_TEXT_INBETWEEN : '\uFFFD\uFFFD' ~(('\n'|'\r'))* ('\r'? '\n' RULE_IN_RICH_STRING* ('\'' '\''?)? '\uFFFD')?;
+RULE_COMMENT_RICH_TEXT_INBETWEEN : '\u00AB\u00AB' ~(('\n'|'\r'))* ('\r'? '\n' RULE_IN_RICH_STRING* ('\'' '\''?)? '\u00AB')?;
 
-RULE_COMMENT_RICH_TEXT_END : '\uFFFD\uFFFD' ~(('\n'|'\r'))* ('\r'? '\n' RULE_IN_RICH_STRING* ('\'\'\''|('\'' '\''?)? EOF)|EOF);
+RULE_COMMENT_RICH_TEXT_END : '\u00AB\u00AB' ~(('\n'|'\r'))* ('\r'? '\n' RULE_IN_RICH_STRING* ('\'\'\''|('\'' '\''?)? EOF)|EOF);
 
-fragment RULE_IN_RICH_STRING : ('\'\'' ~(('\uFFFD'|'\''))|'\'' ~(('\uFFFD'|'\''))|~(('\uFFFD'|'\'')));
+fragment RULE_IN_RICH_STRING : ('\'\'' ~(('\u00AB'|'\''))|'\'' ~(('\u00AB'|'\''))|~(('\u00AB'|'\'')));
 
 RULE_HEX : ('0x'|'0X') ('0'..'9'|'a'..'f'|'A'..'F'|'_')+ ('#' (('b'|'B') ('i'|'I')|('l'|'L')))?;
 

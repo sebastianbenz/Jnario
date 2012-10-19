@@ -1,8 +1,8 @@
 package org.jnario.suite.resource;
 
-import com.google.common.base.Objects;
 import java.util.Collection;
 import java.util.HashSet;
+
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.xtext.resource.DerivedStateAwareResourceDescriptionManager;
 import org.eclipse.xtext.resource.IResourceDescription;
@@ -12,6 +12,8 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+
+import com.google.common.base.Objects;
 
 @SuppressWarnings("all")
 public class SuiteResourceDescriptionManager extends DerivedStateAwareResourceDescriptionManager {

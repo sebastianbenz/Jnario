@@ -10,17 +10,12 @@ package org.jnario.suite.suite.impl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.jnario.impl.SpecificationImpl;
-
 import org.jnario.suite.suite.Reference;
 import org.jnario.suite.suite.Suite;
 import org.jnario.suite.suite.SuitePackage;

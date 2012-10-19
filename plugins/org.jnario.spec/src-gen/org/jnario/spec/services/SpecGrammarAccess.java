@@ -1169,13 +1169,14 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cXNullLiteralParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		private final RuleCall cXStringLiteralParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		private final RuleCall cXTypeLiteralParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
-		private final RuleCall cMockLiteralParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
 		
+		////	| MockLiteral 
+		//
 		//XLiteral returns xbase::XExpression:
-		//	XClosure | XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral | MockLiteral;
+		//	XClosure | XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral;
 		public ParserRule getRule() { return rule; }
 
-		//XClosure | XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral | MockLiteral
+		//XClosure | XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//XClosure
@@ -1195,57 +1196,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 
 		//XTypeLiteral
 		public RuleCall getXTypeLiteralParserRuleCall_5() { return cXTypeLiteralParserRuleCall_5; }
-
-		//MockLiteral
-		public RuleCall getMockLiteralParserRuleCall_6() { return cMockLiteralParserRuleCall_6; }
-	}
-
-	public class MockLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MockLiteral");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cMockLiteralAction_0 = (Action)cGroup.eContents().get(0);
-		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
-		private final Keyword cMockKeyword_1_0 = (Keyword)cAlternatives_1.eContents().get(0);
-		private final Keyword cStubKeyword_1_1 = (Keyword)cAlternatives_1.eContents().get(1);
-		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cTypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final CrossReference cTypeJvmTypeCrossReference_3_0 = (CrossReference)cTypeAssignment_3.eContents().get(0);
-		private final RuleCall cTypeJvmTypeQualifiedNameParserRuleCall_3_0_1 = (RuleCall)cTypeJvmTypeCrossReference_3_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		
-		//MockLiteral:
-		//	{MockLiteral} ("mock" | "stub") "(" type=[types::JvmType|QualifiedName] ")";
-		public ParserRule getRule() { return rule; }
-
-		//{MockLiteral} ("mock" | "stub") "(" type=[types::JvmType|QualifiedName] ")"
-		public Group getGroup() { return cGroup; }
-
-		//{MockLiteral}
-		public Action getMockLiteralAction_0() { return cMockLiteralAction_0; }
-
-		//"mock" | "stub"
-		public Alternatives getAlternatives_1() { return cAlternatives_1; }
-
-		//"mock"
-		public Keyword getMockKeyword_1_0() { return cMockKeyword_1_0; }
-
-		//"stub"
-		public Keyword getStubKeyword_1_1() { return cStubKeyword_1_1; }
-
-		//"("
-		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
-
-		//type=[types::JvmType|QualifiedName]
-		public Assignment getTypeAssignment_3() { return cTypeAssignment_3; }
-
-		//[types::JvmType|QualifiedName]
-		public CrossReference getTypeJvmTypeCrossReference_3_0() { return cTypeJvmTypeCrossReference_3_0; }
-
-		//QualifiedName
-		public RuleCall getTypeJvmTypeQualifiedNameParserRuleCall_3_0_1() { return cTypeJvmTypeQualifiedNameParserRuleCall_3_0_1; }
-
-		//")"
-		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
 	}
 
 	public class XRelationalExpressionElements extends AbstractParserRuleElementFinder {
@@ -1290,6 +1240,12 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cRightOperandAssignment_1_3_1 = (Assignment)cGroup_1_3.eContents().get(1);
 		private final RuleCall cRightOperandXOtherOperatorExpressionParserRuleCall_1_3_1_0 = (RuleCall)cRightOperandAssignment_1_3_1.eContents().get(0);
 		
+		////MockLiteral:
+		//
+		////	{MockLiteral} ('mock'|'stub') '(' type=[types::JvmType|QualifiedName] ')'
+		//
+		////;
+		//
 		//XRelationalExpression returns xbase::XExpression:
 		//	XOtherOperatorExpression (=> ({Should.leftOperand=current} feature=[types::JvmIdentifiableElement|Should]) =>
 		//	rightOperand=XOtherOperatorExpression? | => ({ShouldThrow.expression=current} ("should" "throw" | "throws"))
@@ -1555,7 +1511,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	private MemberElements pMember;
 	private XPrimaryExpressionElements pXPrimaryExpression;
 	private XLiteralElements pXLiteral;
-	private MockLiteralElements pMockLiteral;
 	private XRelationalExpressionElements pXRelationalExpression;
 	private ShouldElements pShould;
 	private AssertionElements pAssertion;
@@ -1689,8 +1644,10 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		return getXPrimaryExpressionAccess().getRule();
 	}
 
+	////	| MockLiteral 
+	//
 	//XLiteral returns xbase::XExpression:
-	//	XClosure | XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral | MockLiteral;
+	//	XClosure | XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral;
 	public XLiteralElements getXLiteralAccess() {
 		return (pXLiteral != null) ? pXLiteral : (pXLiteral = new XLiteralElements());
 	}
@@ -1699,16 +1656,12 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		return getXLiteralAccess().getRule();
 	}
 
-	//MockLiteral:
-	//	{MockLiteral} ("mock" | "stub") "(" type=[types::JvmType|QualifiedName] ")";
-	public MockLiteralElements getMockLiteralAccess() {
-		return (pMockLiteral != null) ? pMockLiteral : (pMockLiteral = new MockLiteralElements());
-	}
-	
-	public ParserRule getMockLiteralRule() {
-		return getMockLiteralAccess().getRule();
-	}
-
+	////MockLiteral:
+	//
+	////	{MockLiteral} ('mock'|'stub') '(' type=[types::JvmType|QualifiedName] ')'
+	//
+	////;
+	//
 	//XRelationalExpression returns xbase::XExpression:
 	//	XOtherOperatorExpression (=> ({Should.leftOperand=current} feature=[types::JvmIdentifiableElement|Should]) =>
 	//	rightOperand=XOtherOperatorExpression? | => ({ShouldThrow.expression=current} ("should" "throw" | "throws"))
@@ -1984,37 +1937,37 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//terminal RICH_TEXT_START:
-	//	"\'\'\'" IN_RICH_STRING* ("\'" "\'"?)? "«";
+	//	"\'\'\'" IN_RICH_STRING* ("\'" "\'"?)? "Â«";
 	public TerminalRule getRICH_TEXT_STARTRule() {
 		return gaXtend.getRICH_TEXT_STARTRule();
 	} 
 
 	//terminal RICH_TEXT_END:
-	//	"»" IN_RICH_STRING* ("\'\'\'" | ("\'" "\'"?)? EOF);
+	//	"Â»" IN_RICH_STRING* ("\'\'\'" | ("\'" "\'"?)? EOF);
 	public TerminalRule getRICH_TEXT_ENDRule() {
 		return gaXtend.getRICH_TEXT_ENDRule();
 	} 
 
 	//terminal RICH_TEXT_INBETWEEN:
-	//	"»" IN_RICH_STRING* ("\'" "\'"?)? "«";
+	//	"Â»" IN_RICH_STRING* ("\'" "\'"?)? "Â«";
 	public TerminalRule getRICH_TEXT_INBETWEENRule() {
 		return gaXtend.getRICH_TEXT_INBETWEENRule();
 	} 
 
 	//terminal COMMENT_RICH_TEXT_INBETWEEN:
-	//	"««" !("\n" | "\r")* ("\r"? "\n" IN_RICH_STRING* ("\'" "\'"?)? "«")?;
+	//	"Â«Â«" !("\n" | "\r")* ("\r"? "\n" IN_RICH_STRING* ("\'" "\'"?)? "Â«")?;
 	public TerminalRule getCOMMENT_RICH_TEXT_INBETWEENRule() {
 		return gaXtend.getCOMMENT_RICH_TEXT_INBETWEENRule();
 	} 
 
 	//terminal COMMENT_RICH_TEXT_END:
-	//	"««" !("\n" | "\r")* ("\r"? "\n" IN_RICH_STRING* ("\'\'\'" | ("\'" "\'"?)? EOF) | EOF);
+	//	"Â«Â«" !("\n" | "\r")* ("\r"? "\n" IN_RICH_STRING* ("\'\'\'" | ("\'" "\'"?)? EOF) | EOF);
 	public TerminalRule getCOMMENT_RICH_TEXT_ENDRule() {
 		return gaXtend.getCOMMENT_RICH_TEXT_ENDRule();
 	} 
 
 	//terminal fragment IN_RICH_STRING:
-	//	"\'\'" !("«" | "\'") | "\'" !("«" | "\'") | !("«" | "\'");
+	//	"\'\'" !("Â«" | "\'") | "\'" !("Â«" | "\'") | !("Â«" | "\'");
 	public TerminalRule getIN_RICH_STRINGRule() {
 		return gaXtend.getIN_RICH_STRINGRule();
 	} 

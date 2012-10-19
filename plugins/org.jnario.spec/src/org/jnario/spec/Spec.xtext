@@ -98,13 +98,13 @@ XLiteral returns xbase::XExpression:
 	XNumberLiteral |
 	XNullLiteral |
 	XStringLiteral |
-	XTypeLiteral | 
-	MockLiteral 
+	XTypeLiteral 
+//	| MockLiteral 
 ;
 
-MockLiteral:
-	{MockLiteral} ('mock'|'stub') '(' type=[types::JvmType|QualifiedName] ')'
-;
+//MockLiteral:
+//	{MockLiteral} ('mock'|'stub') '(' type=[types::JvmType|QualifiedName] ')'
+//;
 
 XRelationalExpression returns xbase::XExpression:
 	XOtherOperatorExpression

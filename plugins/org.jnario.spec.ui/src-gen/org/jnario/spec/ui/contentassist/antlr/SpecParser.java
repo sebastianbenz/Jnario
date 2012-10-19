@@ -49,7 +49,6 @@ public class SpecParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMemberAccess().getAlternatives_2_7_10(), "rule__Member__Alternatives_2_7_10");
 					put(grammarAccess.getXPrimaryExpressionAccess().getAlternatives(), "rule__XPrimaryExpression__Alternatives");
 					put(grammarAccess.getXLiteralAccess().getAlternatives(), "rule__XLiteral__Alternatives");
-					put(grammarAccess.getMockLiteralAccess().getAlternatives_1(), "rule__MockLiteral__Alternatives_1");
 					put(grammarAccess.getXRelationalExpressionAccess().getAlternatives_1(), "rule__XRelationalExpression__Alternatives_1");
 					put(grammarAccess.getXRelationalExpressionAccess().getAlternatives_1_1_0_0_1(), "rule__XRelationalExpression__Alternatives_1_1_0_0_1");
 					put(grammarAccess.getImportAccess().getAlternatives_1(), "rule__Import__Alternatives_1");
@@ -136,7 +135,6 @@ public class SpecParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMemberAccess().getGroup_2_7_7_1(), "rule__Member__Group_2_7_7_1__0");
 					put(grammarAccess.getMemberAccess().getGroup_2_7_9(), "rule__Member__Group_2_7_9__0");
 					put(grammarAccess.getMemberAccess().getGroup_2_7_9_2(), "rule__Member__Group_2_7_9_2__0");
-					put(grammarAccess.getMockLiteralAccess().getGroup(), "rule__MockLiteral__Group__0");
 					put(grammarAccess.getXRelationalExpressionAccess().getGroup(), "rule__XRelationalExpression__Group__0");
 					put(grammarAccess.getXRelationalExpressionAccess().getGroup_1_0(), "rule__XRelationalExpression__Group_1_0__0");
 					put(grammarAccess.getXRelationalExpressionAccess().getGroup_1_0_0(), "rule__XRelationalExpression__Group_1_0_0__0");
@@ -394,7 +392,6 @@ public class SpecParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMemberAccess().getExceptionsAssignment_2_7_9_2_1(), "rule__Member__ExceptionsAssignment_2_7_9_2_1");
 					put(grammarAccess.getMemberAccess().getExpressionAssignment_2_7_10_0(), "rule__Member__ExpressionAssignment_2_7_10_0");
 					put(grammarAccess.getMemberAccess().getExpressionAssignment_2_7_10_1(), "rule__Member__ExpressionAssignment_2_7_10_1");
-					put(grammarAccess.getMockLiteralAccess().getTypeAssignment_3(), "rule__MockLiteral__TypeAssignment_3");
 					put(grammarAccess.getXRelationalExpressionAccess().getFeatureAssignment_1_0_0_0_1(), "rule__XRelationalExpression__FeatureAssignment_1_0_0_0_1");
 					put(grammarAccess.getXRelationalExpressionAccess().getRightOperandAssignment_1_0_1(), "rule__XRelationalExpression__RightOperandAssignment_1_0_1");
 					put(grammarAccess.getXRelationalExpressionAccess().getTypeAssignment_1_1_1(), "rule__XRelationalExpression__TypeAssignment_1_1_1");

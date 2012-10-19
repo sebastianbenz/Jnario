@@ -8,31 +8,31 @@ import org.jnario.jnario.test.util.BehaviorExecutor
 @CreateWith(typeof(SpecTestCreator))
 describe "Mocking"{
 
-	@Inject extension BehaviorExecutor
-	
-	/*
-     * @filter('''|.executesSuccessfully)  
-     */
-	fact "Mocking types"{
-		'''
-		import java.util.Stack
-		describe Rule{
-		  fact mock(Stack) should be typeof(Stack)
-		}		
-		'''.executesSuccessfully
-	}
-	
-	/*
-     * @filter('''|.executesSuccessfully)  
-     */
-	fact "Stubbing types"{
-		'''
-		import java.util.Stack
-		describe Rule{
-		  val myStub = stub(Stack)
-		  fact myStub should be typeof(Stack)
-		}
-		'''.executesSuccessfully
-	}
+//	@Inject extension BehaviorExecutor
+//	
+//	/*
+//     * @filter('''|.executesSuccessfully)  
+//     */
+//	fact "Mocking types"{
+//		'''
+//		import java.util.Stack
+//		describe Rule{
+//		  fact mock(Stack) should be typeof(Stack)
+//		}		
+//		'''.executesSuccessfully
+//	}
+//	
+//	/*
+//     * @filter('''|.executesSuccessfully)  
+//     */
+//	fact "Stubbing types"{
+//		'''
+//		import java.util.Stack
+//		describe Rule{
+//		  val myStub = stub(Stack)
+//		  fact myStub should be typeof(Stack)
+//		}
+//		'''.executesSuccessfully
+//	}
 
 }

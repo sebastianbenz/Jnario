@@ -35,20 +35,22 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<p><p>You can use the special <code>mock</code> and <code>stub</code> literals to create mocks with mockito.</p></p>
-<h3  id="Scenario_Creating_Mocks">Scenario: Creating Mocks
+<p><p>You can use <a href="http://kentbeck.github.com/junit/javadoc/latest/org/junit/rules/TestRule.html">JUnit rules</a> in your feature. Just define a field with the <code>@Rule</code> annotation like you would do in a normal JUnit test case. </p></p>
+<h3  id="Scenario_Using_JUnit_Rules">Scenario: Using JUnit Rules 
 </h3>
 <ul>
-<li><p><strong>When</strong> I have a feature which creates a mock</p><pre>package demo
-import java.util.Stack
-Feature:  Mocking
+<li><p><strong>When</strong> I have a feature with JUnit rules</p><pre>package demo
+import org.junit.Rule
+import org.junit.rules.TemporaryFolder
 
-  Scenario: Create a mock in a Feature
-    var Stack x
-    Given a field with a mock
-      x = mock(Stack)
-    Then the mock should be created
-      x =&gt; typeof(Stack)</pre>
+Feature:  JUnit Rules
+
+  Scenario: Using rules in a Feature
+    @Rule public val folder = new TemporaryFolder
+  
+    Given a feature with a rule
+    Then the rule should be initialized
+      folder.root should not be null</pre>
 <ul>
 </ul>
 </li>
@@ -59,7 +61,7 @@ Feature:  Mocking
 </ul>
 							</div>
 						    <div class="tab-pane" id="source">
-						    	<h3>Mocking.feature</h3>
+						    	<h3>Rules.feature</h3>
 						    	<p>
 <pre class="prettyprint lang-feature linenums">
 /*******************************************************************************
@@ -73,22 +75,25 @@ package org.jnario.feature.tests.integration
 
 Feature: Using JUnit Rules in Features
 
-You can use the special ```mock```  and ```stub``` literals to create mocks with mockito.
+You can use [JUnit rules](http://kentbeck.github.com/junit/javadoc/latest/org/junit/rules/TestRule.html) in your feature. Just define a field with the `@Rule` annotation
+like you would do in a normal JUnit test case. 
 
-  Scenario: Creating Mocks
+  Scenario: Using JUnit Rules 
     CharSequence jnarioFile
-    When I have a feature which creates a mock
+    When I have a feature with JUnit rules
       '''
         package demo
-        import java.util.Stack
-        Feature:  Mocking
+        import org.junit.Rule
+        import org.junit.rules.TemporaryFolder
         
-          Scenario: Create a mock in a Feature
-            var Stack x
-            Given a field with a mock
-              x = mock(Stack)
-            Then the mock should be created
-              x =&gt; typeof(Stack)  
+        Feature:  JUnit Rules
+        
+          Scenario: Using rules in a Feature
+            @Rule public val folder = new TemporaryFolder
+          
+            Given a feature with a rule
+            Then the rule should be initialized
+              folder.root should not be null  
       '''
       jnarioFile = args.first
     Then it should execute successfully

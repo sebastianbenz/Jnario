@@ -21,9 +21,7 @@ import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.common.types.xtext.ui.TypeMatchFilters;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
-import org.eclipse.xtext.xbase.XbasePackage;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
-import org.jnario.JnarioPackage;
 import org.jnario.spec.spec.SpecPackage;
 import org.jnario.spec.spec.TestFunction;
 /**
@@ -46,12 +44,12 @@ public class SpecProposalProvider extends AbstractSpecProposalProvider {
 				TypeMatchFilters.all(IJavaSearchConstants.ANNOTATION_TYPE), acceptor);
 	}
 	
-	@Override
-	public void completeMockLiteral_Type(EObject model, Assignment assignment,
-			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		completeJavaTypes(context, XbasePackage.Literals.XTYPE_LITERAL__TYPE, 
-				TypeMatchFilters.all(IJavaSearchConstants.CLASS_AND_INTERFACE), acceptor);
-	}
+//	@Override
+//	public void completeMockLiteral_Type(EObject model, Assignment assignment,
+//			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+//		completeJavaTypes(context, XbasePackage.Literals.XTYPE_LITERAL__TYPE, 
+//				TypeMatchFilters.all(IJavaSearchConstants.CLASS_AND_INTERFACE), acceptor);
+//	}
 	
 	@Override
 	public void completeExampleGroup_TargetType(EObject model,
