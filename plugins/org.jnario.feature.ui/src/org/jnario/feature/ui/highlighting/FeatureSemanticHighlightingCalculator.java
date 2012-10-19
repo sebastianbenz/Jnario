@@ -30,6 +30,7 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XBlockExpression;
+import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XNumberLiteral;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 import org.jnario.ExampleTable;
@@ -71,7 +72,9 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 			for (XtendMember member : scenario.getMembers()) {
 				if(member.eClass() == XtendPackage.Literals.XTEND_FIELD){
 					XtendField field = (XtendField) member;
-					highlightXtendField(field,acceptor);
+					highlightXtendField(field, acceptor);
+					XExpression initializer = field.getInitialValue();
+					highlightRichStrings(initializer, acceptor);
 				}
 				highlightDeprectedXtendAnnotationTarget(acceptor, member);
 			}

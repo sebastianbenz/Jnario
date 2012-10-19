@@ -63,6 +63,8 @@ public class SpecHighlightingCalculator extends JnarioHighlightingCalculator {
 				}else if(member.eClass() == XtendPackage.Literals.XTEND_FIELD){
 					XtendField field = (XtendField) member;
 					highlightXtendField(field,acceptor);
+					XExpression initializer = field.getInitialValue();
+					highlightRichStrings(initializer, acceptor);
 				}else if(member.eClass() == SpecPackage.Literals.EXAMPLE){
 					Example example = (Example) member;
 					highlightRichStrings(example.getBody() ,acceptor);
