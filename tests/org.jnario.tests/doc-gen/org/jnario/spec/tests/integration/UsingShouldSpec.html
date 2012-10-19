@@ -95,6 +95,11 @@ errorMessage[x =&gt; y].is('''
   Expected x =&gt; y but
        x is &quot;hello&quot;
        y is &quot;world&quot;''')</pre>
+</li><li><p id="Short_Circuit_Invocation"><strong>Short Circuit Invocation</strong></p>
+<p>In order to be able to print the value of all subexpressions when an assertion failed, we disabled the short circuit semantics of '&amp;&amp;' and '||' within assertions.</p>
+<pre class="prettyprint lang-spec linenums">
+val String aString = null
+(assert aString != null &amp;&amp; aString.length == 0) throws NullPointerException</pre>
 </li><li><p id="Combining_hamcrest_and_should"><strong>Combining hamcrest and should</strong></p>
 <p>You can also the <code>should</code> and <code>=&gt;</code> together with <a href="http://code.google.com/p/hamcrest/">hamcrest</a> matchers. The following static import statements are needed to run the examples:</p>
 <pre class="prettyprint">import static org.hamcrest.CoreMatchers.startsWith
@@ -212,6 +217,17 @@ describe &quot;Using Should&quot;{
            x is &quot;hello&quot;
            y is &quot;world&quot;''')    
   }  
+  
+  /*
+   * In order to be able to print the value of all subexpressions when an assertion failed, 
+   * we disabled the short circuit semantics of '&amp;&amp;' and '||' within assertions. 
+   */
+  fact &quot;Short Circuit Invocation&quot;{
+    val String aString = null
+    (assert aString != null &amp;&amp; aString.length == 0) throws NullPointerException 
+  }
+  
+  
     
     
   /*

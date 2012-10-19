@@ -10,9 +10,17 @@ package org.jnario.jvmmodel;
 import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XBinaryOperation;
+import org.eclipse.xtext.xbase.XExpression;
 import org.jnario.Should;
 
 public class DoubleArrowSupport {
+	
+	public static boolean isDoubleArrow(XExpression expr) {
+		if (expr instanceof XAbstractFeatureCall) {
+			return isDoubleArrow((XAbstractFeatureCall) expr);
+		}
+		return false;
+	}
 
 	public static boolean isDoubleArrow(XAbstractFeatureCall expr) {
 		if(expr instanceof Should){
