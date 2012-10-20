@@ -43,6 +43,10 @@ describe HashBasedSpec2ResultMapping {
 		subject.getResult(anyExecutable) => typeof(NotRun)
 	}
 	
+	fact "returns empty execution if executable is null"{
+		subject.getResult(null) => typeof(NotRun)
+	}
+	
 	context "Example"{
 		
 		val aResult = passingSpec("example.SomethingSpec", "a fact", anyExecutionTime)

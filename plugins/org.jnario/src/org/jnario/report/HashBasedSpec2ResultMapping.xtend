@@ -22,7 +22,10 @@ class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Executable2R
 	}
 
 	override SpecExecution getResult(Executable executable){
-		var result = results.get(executable?.asKey)
+		if(executable == null){
+			return new NotRun("", "")
+		}
+		var result = results.get(executable.asKey)
 		if(result != null){
 			return result
 		}

@@ -73,6 +73,18 @@ public class HashBasedSpec2ResultMappingSpec {
     
   }
   
+  @Test
+  @Named("returns empty execution if executable is null")
+  @Order(1)
+  public void _returnsEmptyExecutionIfExecutableIsNull() throws Exception {
+    SpecExecution _result = this.subject.getResult(null);
+    boolean _doubleArrow = Should.operator_doubleArrow(_result, NotRun.class);
+    Assert.assertTrue("\nExpected subject.getResult(null) => typeof(NotRun) but"
+     + "\n     subject.getResult(null) is " + new StringDescription().appendValue(_result).toString()
+     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
+    
+  }
+  
   public boolean should_match(final Executable example, final SpecExecution execution) {
     SpecExecution _result = this.subject.getResult(example);
     boolean _equals = Objects.equal(_result, execution);

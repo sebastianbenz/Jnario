@@ -38,6 +38,9 @@
 <ul><li><p id="returns_empty_execution_if_no_matching_spec_exists"><strong>returns empty execution if no matching spec exists</strong></p>
 <pre class="prettyprint lang-spec linenums">
 subject.getResult(anyExecutable) =&gt; typeof(NotRun)</pre>
+</li><li><p id="returns_empty_execution_if_executable_is_null"><strong>returns empty execution if executable is null</strong></p>
+<pre class="prettyprint lang-spec linenums">
+subject.getResult(null) =&gt; typeof(NotRun)</pre>
 </li></ul><h3 id="Example">Example</h3>
 <ul><li><p id="matches_if_classname_and_name_are_equal"><strong>matches if classname and name are equal</strong></p>
 <pre class="prettyprint lang-spec linenums">
@@ -272,6 +275,10 @@ describe HashBasedSpec2ResultMapping {
   
   fact &quot;returns empty execution if no matching spec exists&quot;{
     subject.getResult(anyExecutable) =&gt; typeof(NotRun)
+  }
+  
+  fact &quot;returns empty execution if executable is null&quot;{
+    subject.getResult(null) =&gt; typeof(NotRun)
   }
   
   context &quot;Example&quot;{

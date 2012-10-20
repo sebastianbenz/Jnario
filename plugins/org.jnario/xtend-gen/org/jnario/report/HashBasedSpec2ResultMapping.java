@@ -47,7 +47,12 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
   public SpecExecution getResult(final Executable executable) {
     SpecExecution _xblockexpression = null;
     {
-      Pair<String,String> _asKey = executable==null?(Pair<String,String>)null:this.asKey(executable);
+      boolean _equals = Objects.equal(executable, null);
+      if (_equals) {
+        NotRun _notRun = new NotRun("", "");
+        return _notRun;
+      }
+      Pair<String,String> _asKey = this.asKey(executable);
       SpecExecution result = this.results.get(_asKey);
       boolean _notEquals = (!Objects.equal(result, null));
       if (_notEquals) {
