@@ -81,6 +81,14 @@ describe UndefinedMethodFix{
 			'''.hasMissingMethod => true
 		}
 		
+		fact "true if context is constructor call"{
+			'''
+			describe "Something"{
+				fact new String().missing
+			}
+			'''.hasMissingMethod => true
+		}
+		
 		def hasMissingMethod(CharSequence s){
 			parseSpec(s)
 			subject.callsUndefinedMethod(firstFeatureCall)

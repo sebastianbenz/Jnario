@@ -37,7 +37,7 @@ public class UndefinedMethodFixCallsReadOnlyTypeSpec extends UndefinedMethodFixS
   
   @Test
   @Named("true if java element is read-only")
-  @Order(7)
+  @Order(8)
   public void _trueIfJavaElementIsReadOnly() throws Exception {
     this.javaElementProvider.setReadOnly();
     StringConcatenation _builder = new StringConcatenation();
@@ -61,7 +61,7 @@ public class UndefinedMethodFixCallsReadOnlyTypeSpec extends UndefinedMethodFixS
   
   @Test
   @Named("false if java element is changeable")
-  @Order(8)
+  @Order(9)
   public void _falseIfJavaElementIsChangeable() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");

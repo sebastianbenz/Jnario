@@ -1,9 +1,11 @@
 package org.jnario.ui.quickfix
 
-import org.eclipse.xtext.xbase.XMemberFeatureCall
-import org.eclipse.xtext.xbase.XAbstractFeatureCall
-import org.eclipse.xtext.xbase.typing.ITypeProvider
 import com.google.inject.Inject
+import org.eclipse.xtext.common.types.JvmIdentifiableElement
+import org.eclipse.xtext.xbase.XAbstractFeatureCall
+import org.eclipse.xtext.xbase.XConstructorCall
+import org.eclipse.xtext.xbase.XMemberFeatureCall
+import org.eclipse.xtext.xbase.typing.ITypeProvider
 
 class FeatureCallTargetTypeProvider {
 	
@@ -13,8 +15,11 @@ class FeatureCallTargetTypeProvider {
 		featureCall.targetFeature?.typeForIdentifiable?.type
 	}
 	
-	def private targetFeature(XMemberFeatureCall featureCall){
+	def private JvmIdentifiableElement targetFeature(XMemberFeatureCall featureCall){
 		val memberCallTarget = featureCall.memberCallTarget
+		if(memberCallTarget instanceof XConstructorCall){
+			return (memberCallTarget as XConstructorCall).constructor?.declaringType
+		}
 		if(!(memberCallTarget instanceof XAbstractFeatureCall)){
 			return null
 		}

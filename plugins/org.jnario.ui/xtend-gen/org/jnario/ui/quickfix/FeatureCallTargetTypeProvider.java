@@ -1,10 +1,13 @@
 package org.jnario.ui.quickfix;
 
 import com.google.inject.Inject;
+import org.eclipse.xtext.common.types.JvmConstructor;
+import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
+import org.eclipse.xtext.xbase.XConstructorCall;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XMemberFeatureCall;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
@@ -25,6 +28,10 @@ public class FeatureCallTargetTypeProvider {
     JvmIdentifiableElement _xblockexpression = null;
     {
       final XExpression memberCallTarget = featureCall.getMemberCallTarget();
+      if ((memberCallTarget instanceof XConstructorCall)) {
+        JvmConstructor _constructor = ((XConstructorCall) memberCallTarget).getConstructor();
+        return _constructor==null?(JvmDeclaredType)null:_constructor.getDeclaringType();
+      }
       boolean _not = (!(memberCallTarget instanceof XAbstractFeatureCall));
       if (_not) {
         return null;
