@@ -77,8 +77,10 @@ public class FeatureEditor extends XbaseEditor {
 		}
 
 		public void dispose() {
-			getBackgroundColor().dispose();
-			background = null;
+			if(background != null){
+				background.dispose();
+				background = null;
+			}
 		}
 	}
 
