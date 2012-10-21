@@ -71,6 +71,13 @@ verify(acceptor).accept(failingSpec)</pre>
 
 verify(acceptor).accept(passingSpec)
 verify(acceptor).accept(failingSpec)</pre>
+</li><li><p id="decodes_escaped_strings"><strong>decodes escaped strings</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+   &lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;When I entered \&amp;quot;50\&amp;quot; and \&amp;quot;70\&amp;quot;&quot;/&gt;
+'''.toXml.parse 
+
+verify(acceptor).accept(new Passed(CLASSNAME, 'When I entered \\\&quot;50\\\&quot; and \\\&quot;70\\\&quot;', EXECUTION_TIME))</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -138,6 +145,14 @@ describe SpecResultParser{
     
     verify(acceptor).accept(passingSpec)
     verify(acceptor).accept(failingSpec)
+  }
+  
+  fact &quot;decodes escaped strings&quot;{
+    '''
+       &lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;When I entered \&amp;quot;50\&amp;quot; and \&amp;quot;70\&amp;quot;&quot;/&gt;
+    '''.toXml.parse 
+    
+    verify(acceptor).accept(new Passed(CLASSNAME, 'When I entered \\\&quot;50\\\&quot; and \\\&quot;70\\\&quot;', EXECUTION_TIME))
   }
   
   def passingSpec(){
