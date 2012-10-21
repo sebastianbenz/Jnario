@@ -40,6 +40,10 @@ import org.jnario.doc.HtmlFile;
 import org.jnario.doc.HtmlFileBuilder;
 import org.jnario.doc.WhiteSpaceNormalizer;
 import org.jnario.report.Executable2ResultMapping;
+import org.jnario.report.Failed;
+import org.jnario.report.Passed;
+import org.jnario.report.SpecExecution;
+import org.jnario.report.SpecFailure;
 import org.pegdown.PegDownProcessor;
 
 @SuppressWarnings("all")
@@ -316,9 +320,86 @@ public abstract class AbstractDocGenerator implements IGenerator {
     return _builder;
   }
   
-  protected void executionState(final Executable executable) {
-    final String x = "<span class=\"label label-success\">Success</span>";
-    final String y = "<span class=\"label label-important\">Important</span>";
+  protected String executionState(final Executable executable) {
+    String _xblockexpression = null;
+    {
+      final SpecExecution result = this.spec2ResultMapping.getResult(executable);
+      String _switchResult = null;
+      boolean _matched = false;
+      if (!_matched) {
+        if (result instanceof Failed) {
+          final Failed _failed = (Failed)result;
+          _matched=true;
+          _switchResult = "<span class=\"label label-important\">Failure</span>";
+        }
+      }
+      if (!_matched) {
+        _switchResult = "";
+      }
+      _xblockexpression = (_switchResult);
+    }
+    return _xblockexpression;
+  }
+  
+  protected String executionStateClass(final Executable executable) {
+    String _xblockexpression = null;
+    {
+      final SpecExecution result = this.spec2ResultMapping.getResult(executable);
+      String _switchResult = null;
+      boolean _matched = false;
+      if (!_matched) {
+        if (result instanceof Failed) {
+          final Failed _failed = (Failed)result;
+          _matched=true;
+          _switchResult = "failed";
+        }
+      }
+      if (!_matched) {
+        if (result instanceof Passed) {
+          final Passed _passed = (Passed)result;
+          _matched=true;
+          _switchResult = "passed";
+        }
+      }
+      if (!_matched) {
+        _switchResult = "";
+      }
+      _xblockexpression = (_switchResult);
+    }
+    return _xblockexpression;
+  }
+  
+  protected CharSequence errorMessage(final Executable executable) {
+    CharSequence _xblockexpression = null;
+    {
+      final SpecExecution result = this.spec2ResultMapping.getResult(executable);
+      CharSequence _switchResult = null;
+      boolean _matched = false;
+      if (!_matched) {
+        if (result instanceof Failed) {
+          final Failed _failed = (Failed)result;
+          _matched=true;
+          StringConcatenation _builder = new StringConcatenation();
+          {
+            List<SpecFailure> _failures = _failed.getFailures();
+            for(final SpecFailure failure : _failures) {
+              _builder.append("<pre class=\"errormessage\"><strong>Execution failed:</strong>");
+              _builder.newLine();
+              String _message = failure.getMessage();
+              _builder.append(_message, "");
+              _builder.append("</pre>");
+              _builder.newLineIfNotEmpty();
+            }
+          }
+          _switchResult = _builder;
+        }
+      }
+      if (!_matched) {
+        _switchResult = "";
+      }
+      _xblockexpression = (_switchResult);
+    }
+    return _xblockexpression;
   }
   
   protected String serialize(final XExpression expr, final List<Filter> filters) {

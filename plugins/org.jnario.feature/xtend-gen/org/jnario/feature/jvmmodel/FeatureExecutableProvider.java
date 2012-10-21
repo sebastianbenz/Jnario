@@ -38,7 +38,7 @@ public class FeatureExecutableProvider implements ExecutableProvider {
       Background _background = feature.getBackground();
       boolean _equals = Objects.equal(_background, null);
       if (_equals) {
-        feature.getScenarios();
+        return feature.getScenarios();
       }
       Background _background_1 = feature.getBackground();
       final ArrayList<Scenario> result = CollectionLiterals.<Scenario>newArrayList(_background_1);

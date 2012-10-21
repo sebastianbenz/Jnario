@@ -10,29 +10,55 @@ package org.jnario.compiler
 import com.google.common.collect.Iterables
 import com.google.inject.Inject
 import org.eclipse.emf.ecore.resource.ResourceSet
+import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler
 import org.eclipse.xtend.lib.Property
+import org.eclipse.xtext.mwe.NameBasedFilter
+import org.eclipse.xtext.mwe.PathTraverser
+import org.eclipse.xtext.resource.XtextResource
 import org.jnario.doc.AbstractDocGenerator
 import org.jnario.doc.DocOutputConfigurationProvider
-import org.eclipse.emf.ecore.util.EcoreUtil
+import org.jnario.report.Executable2ResultMapping
 
 class JnarioDocCompiler extends XtendBatchCompiler{
 	
+	@Property ResourceSet resourceSet
+	Executable2ResultMapping resultMapping
 	@Property String resultFolder
 	@Inject AbstractDocGenerator docGenerator
 	
 	override compile() {
-		val resourceSet = loadResources()
+		resourceSet = loadResources()
 		if (hasValidationErrors(resourceSet)) {
 			return false;
 		}else{
-			generateDocumentation(resourceSet);
-			return true		
+			generateDocumentation(resourceSet, resultMapping);
+			return true
 		}
 	}
 	
+	@Inject 
+	def setExecutable2ResultMapping(Executable2ResultMapping resultMapping){
+		this.resultMapping = resultMapping
+	}
+	
 	def loadResources(){
-		val resourceSet = loadXtendFiles()
+		if(resourceSet == null){
+			resourceSet = resourceSetProvider.get
+		}
+		resourceSet.getLoadOptions().put(XtextResource::OPTION_ENCODING, getFileEncoding());
+		val nameBasedFilter = new NameBasedFilter();
+		nameBasedFilter.setExtension(fileExtensionProvider.getPrimaryFileExtension());
+		val pathTraverser = new PathTraverser();
+		println("loading resource")
+		pathTraverser.resolvePathes(getSourcePathDirectories(), [input |
+				val matches = nameBasedFilter.matches(input);
+				if (matches) {
+					println("loading " + input)
+					resourceSet.getResource(input, true);
+				}
+				return matches;
+			])
 		val classDirectory = createTempDir("classes")
 		installJvmTypeProvider(resourceSet, classDirectory)
 		EcoreUtil::resolveAll(resourceSet)
@@ -42,17 +68,17 @@ class JnarioDocCompiler extends XtendBatchCompiler{
 	def hasValidationErrors(ResourceSet resourceSet){
 		val issues = validate(resourceSet);
 		val errors = Iterables::filter(issues, SeverityFilter::ERROR);
-		val warnings = Iterables::filter(issues, SeverityFilter::WARNING);
-		reportIssues(errors + warnings);
 		!errors.empty 
 	}
 	
-	def generateDocumentation(ResourceSet rs){
+	def generateDocumentation(ResourceSet rs, Executable2ResultMapping executable2ResultMapping){
 		val javaIoFileSystemAccess = javaIoFileSystemAccessProvider.get()
 		javaIoFileSystemAccess.setOutputPath(DocOutputConfigurationProvider::DOC_OUTPUT, outputPath)
+		println("generating documentation")
 		for(r : rs.resources){
 			if(fileExtensionProvider.isValid(r.URI.fileExtension)){
-				docGenerator.doGenerate(r, javaIoFileSystemAccess)
+				println("generating for " + r.URI)
+				docGenerator.doGenerate(r, javaIoFileSystemAccess, executable2ResultMapping);
 			}
 		}
 	}

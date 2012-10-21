@@ -41,17 +41,18 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
           String _className = FeatureDocGenerator.this._featureClassNameProvider.getClassName(feature);
           it.setName(_className);
           String _name = feature.getName();
-          String _substring = _name==null?(String)null:_name.substring(8);
-          it.setTitle(_substring);
+          it.setTitle(_name);
           CharSequence _generateContent = FeatureDocGenerator.this.generateContent(feature);
           it.setContent(_generateContent);
           String _root = FeatureDocGenerator.this.root(feature);
           it.setRootFolder(_root);
-          EObject _eContainer = xtendClass.eContainer();
+          EObject _eContainer = feature.eContainer();
           CharSequence _pre = FeatureDocGenerator.this.pre(_eContainer, "lang-feature");
           it.setSourceCode(_pre);
-          String _fileName = FeatureDocGenerator.this.fileName(xtendClass);
+          String _fileName = FeatureDocGenerator.this.fileName(feature);
           it.setFileName(_fileName);
+          String _executionStateClass = FeatureDocGenerator.this.executionStateClass(feature);
+          it.setExecutionStatus(_executionStateClass);
         }
       };
     return HtmlFile.newHtmlFile(_function);
@@ -69,8 +70,6 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
       Background _background = feature.getBackground();
       boolean _notEquals = (!Objects.equal(_background, null));
       if (_notEquals) {
-        _builder.append("<h2>Background</h2>");
-        _builder.newLine();
         Background _background_1 = feature.getBackground();
         CharSequence _generate = this.generate(_background_1);
         _builder.append(_generate, "");
@@ -79,16 +78,7 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     }
     {
       EList<Scenario> _scenarios = feature.getScenarios();
-      boolean _isEmpty = _scenarios.isEmpty();
-      boolean _not = (!_isEmpty);
-      if (_not) {
-        _builder.append("<h2>Scenarios</h2>");
-        _builder.newLine();
-      }
-    }
-    {
-      EList<Scenario> _scenarios_1 = feature.getScenarios();
-      for(final Scenario scenario : _scenarios_1) {
+      for(final Scenario scenario : _scenarios) {
         CharSequence _generate_1 = this.generate(scenario);
         _builder.append(_generate_1, "");
         _builder.newLineIfNotEmpty();
@@ -107,20 +97,23 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
   
   protected CharSequence _generate(final Scenario scenario) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<h3 ");
+    _builder.append("<div class=\"");
+    String _executionStateClass = this.executionStateClass(scenario);
+    _builder.append(_executionStateClass, "");
+    _builder.append("\"><h3 ");
     String _name = scenario.getName();
     String _id = this.id(_name);
     _builder.append(_id, "");
     _builder.append(">");
     String _name_1 = scenario.getName();
-    String _substring = _name_1==null?(String)null:_name_1.substring(9);
-    _builder.append(_substring, "");
+    _builder.append(_name_1, "");
     _builder.append("</h3>");
     _builder.newLineIfNotEmpty();
     EList<Step> _steps = scenario.getSteps();
     Iterable<Step> _filter = Iterables.<Step>filter(_steps, Step.class);
     CharSequence _generate = this.generate(_filter);
     _builder.append(_generate, "");
+    _builder.append("</div>");
     _builder.newLineIfNotEmpty();
     return _builder;
   }
@@ -139,8 +132,9 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
         Iterable<Step> _filter = Iterables.<Step>filter(_and, Step.class);
         CharSequence _generate_1 = this.generate(_filter);
         _builder.append(_generate_1, "");
-        _builder.append("</li>");
         _builder.newLineIfNotEmpty();
+        _builder.append("</li>");
+        _builder.newLine();
       }
     }
     _builder.append("</ul>");
@@ -150,8 +144,16 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
   
   protected CharSequence _generate(final Step step) {
     StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<div class=\"step ");
+    String _executionStateClass = this.executionStateClass(step);
+    _builder.append(_executionStateClass, "");
+    _builder.append("\">");
     String _format = this.format(step);
     _builder.append(_format, "");
+    _builder.newLineIfNotEmpty();
+    CharSequence _errorMessage = this.errorMessage(step);
+    _builder.append(_errorMessage, "");
+    _builder.append("</div>");
     _builder.newLineIfNotEmpty();
     return _builder;
   }

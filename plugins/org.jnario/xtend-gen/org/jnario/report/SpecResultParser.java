@@ -52,10 +52,10 @@ public class SpecResultParser extends DefaultHandler {
     if (!_matched) {
       if (Objects.equal(qName,SpecResultTags.NODE_TESTCASE)) {
         _matched=true;
-        String _value = attributes.getValue(SpecResultTags.ATTR_CLASSNAME);
-        this.currentClassName = _value;
-        String _value_1 = attributes.getValue(SpecResultTags.ATTR_NAME);
-        this.currentName = _value_1;
+        String _convertValue = this.convertValue(attributes, SpecResultTags.ATTR_CLASSNAME);
+        this.currentClassName = _convertValue;
+        String _convertValue_1 = this.convertValue(attributes, SpecResultTags.ATTR_NAME);
+        this.currentName = _convertValue_1;
         double _readTime = this.readTime(attributes);
         this.currentExecutionTime = _readTime;
         ArrayList<SpecFailure> _newArrayList = CollectionLiterals.<SpecFailure>newArrayList();
@@ -79,10 +79,10 @@ public class SpecResultParser extends DefaultHandler {
   public String saveFailureAttributes(final Attributes attributes) {
     String _xblockexpression = null;
     {
-      String _value = attributes.getValue(SpecResultTags.ATTR_MESSAGE);
-      this.currentFailureMessage = _value;
-      String _value_1 = attributes.getValue(SpecResultTags.ATTR_TYPE);
-      String _currentFailureType = this.currentFailureType = _value_1;
+      String _convertValue = this.convertValue(attributes, SpecResultTags.ATTR_MESSAGE);
+      this.currentFailureMessage = _convertValue;
+      String _convertValue_1 = this.convertValue(attributes, SpecResultTags.ATTR_TYPE);
+      String _currentFailureType = this.currentFailureType = _convertValue_1;
       _xblockexpression = (_currentFailureType);
     }
     return _xblockexpression;
@@ -149,7 +149,7 @@ public class SpecResultParser extends DefaultHandler {
   }
   
   private double readTime(final Attributes attributes) {
-    final String timeString = attributes.getValue(SpecResultTags.ATTR_TIME);
+    final String timeString = this.convertValue(attributes, SpecResultTags.ATTR_TIME);
     boolean _notEquals = (!Objects.equal(timeString, null));
     if (_notEquals) {
       try {
@@ -163,5 +163,10 @@ public class SpecResultParser extends DefaultHandler {
       }
     }
     return 0.0;
+  }
+  
+  public String convertValue(final Attributes attributes, final String key) {
+    String _value = attributes.getValue(key);
+    return _value;
   }
 }

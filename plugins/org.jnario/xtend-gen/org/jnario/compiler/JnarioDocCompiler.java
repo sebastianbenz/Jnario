@@ -1,9 +1,12 @@
 package org.jnario.compiler;
 
+import com.google.common.base.Objects;
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import java.io.File;
 import java.util.List;
+import java.util.Map;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -11,14 +14,32 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
+import org.eclipse.xtext.mwe.NameBasedFilter;
+import org.eclipse.xtext.mwe.PathTraverser;
+import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.validation.Issue;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.jnario.compiler.SeverityFilter;
 import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.DocOutputConfigurationProvider;
+import org.jnario.report.Executable2ResultMapping;
 
 @SuppressWarnings("all")
 public class JnarioDocCompiler extends XtendBatchCompiler {
+  private ResourceSet _resourceSet;
+  
+  public ResourceSet getResourceSet() {
+    return this._resourceSet;
+  }
+  
+  public void setResourceSet(final ResourceSet resourceSet) {
+    this._resourceSet = resourceSet;
+  }
+  
+  private Executable2ResultMapping resultMapping;
+  
   private String _resultFolder;
   
   public String getResultFolder() {
@@ -33,24 +54,70 @@ public class JnarioDocCompiler extends XtendBatchCompiler {
   private AbstractDocGenerator docGenerator;
   
   public boolean compile() {
-    final ResourceSet resourceSet = this.loadResources();
-    boolean _hasValidationErrors = this.hasValidationErrors(resourceSet);
+    ResourceSet _loadResources = this.loadResources();
+    this.setResourceSet(_loadResources);
+    ResourceSet _resourceSet = this.getResourceSet();
+    boolean _hasValidationErrors = this.hasValidationErrors(_resourceSet);
     if (_hasValidationErrors) {
       return false;
     } else {
-      this.generateDocumentation(resourceSet);
+      ResourceSet _resourceSet_1 = this.getResourceSet();
+      this.generateDocumentation(_resourceSet_1, this.resultMapping);
       return true;
     }
+  }
+  
+  @Inject
+  public Executable2ResultMapping setExecutable2ResultMapping(final Executable2ResultMapping resultMapping) {
+    Executable2ResultMapping _resultMapping = this.resultMapping = resultMapping;
+    return _resultMapping;
   }
   
   public ResourceSet loadResources() {
     ResourceSet _xblockexpression = null;
     {
-      final ResourceSet resourceSet = this.loadXtendFiles();
+      ResourceSet _resourceSet = this.getResourceSet();
+      boolean _equals = Objects.equal(_resourceSet, null);
+      if (_equals) {
+        ResourceSet _get = this.resourceSetProvider.get();
+        this.setResourceSet(_get);
+      }
+      ResourceSet _resourceSet_1 = this.getResourceSet();
+      Map<Object,Object> _loadOptions = _resourceSet_1.getLoadOptions();
+      String _fileEncoding = this.getFileEncoding();
+      _loadOptions.put(XtextResource.OPTION_ENCODING, _fileEncoding);
+      NameBasedFilter _nameBasedFilter = new NameBasedFilter();
+      final NameBasedFilter nameBasedFilter = _nameBasedFilter;
+      String _primaryFileExtension = this.fileExtensionProvider.getPrimaryFileExtension();
+      nameBasedFilter.setExtension(_primaryFileExtension);
+      PathTraverser _pathTraverser = new PathTraverser();
+      final PathTraverser pathTraverser = _pathTraverser;
+      InputOutput.<String>println("loading resource");
+      List<String> _sourcePathDirectories = this.getSourcePathDirectories();
+      final Function1<URI,Boolean> _function = new Function1<URI,Boolean>() {
+          public Boolean apply(final URI input) {
+            final boolean matches = nameBasedFilter.matches(input);
+            if (matches) {
+              String _plus = ("loading " + input);
+              InputOutput.<String>println(_plus);
+              ResourceSet _resourceSet = JnarioDocCompiler.this.getResourceSet();
+              _resourceSet.getResource(input, true);
+            }
+            return matches;
+          }
+        };
+      pathTraverser.resolvePathes(_sourcePathDirectories, new Predicate<URI>() {
+          public boolean apply(URI input) {
+            return _function.apply(input);
+          }
+      });
       final File classDirectory = this.createTempDir("classes");
-      this.installJvmTypeProvider(resourceSet, classDirectory);
-      EcoreUtil.resolveAll(resourceSet);
-      _xblockexpression = (resourceSet);
+      ResourceSet _resourceSet_2 = this.getResourceSet();
+      this.installJvmTypeProvider(_resourceSet_2, classDirectory);
+      ResourceSet _resourceSet_3 = this.getResourceSet();
+      EcoreUtil.resolveAll(_resourceSet_3);
+      ResourceSet _resourceSet_4 = this.getResourceSet();
+      _xblockexpression = (_resourceSet_4);
     }
     return _xblockexpression;
   }
@@ -60,9 +127,6 @@ public class JnarioDocCompiler extends XtendBatchCompiler {
     {
       final List<Issue> issues = this.validate(resourceSet);
       final Iterable<Issue> errors = Iterables.<Issue>filter(issues, SeverityFilter.ERROR);
-      final Iterable<Issue> warnings = Iterables.<Issue>filter(issues, SeverityFilter.WARNING);
-      Iterable<Issue> _plus = Iterables.<Issue>concat(errors, warnings);
-      this.reportIssues(_plus);
       boolean _isEmpty = IterableExtensions.isEmpty(errors);
       boolean _not = (!_isEmpty);
       _xblockexpression = (_not);
@@ -70,16 +134,20 @@ public class JnarioDocCompiler extends XtendBatchCompiler {
     return _xblockexpression;
   }
   
-  public void generateDocumentation(final ResourceSet rs) {
+  public void generateDocumentation(final ResourceSet rs, final Executable2ResultMapping executable2ResultMapping) {
     final JavaIoFileSystemAccess javaIoFileSystemAccess = this.javaIoFileSystemAccessProvider.get();
     javaIoFileSystemAccess.setOutputPath(DocOutputConfigurationProvider.DOC_OUTPUT, this.outputPath);
+    InputOutput.<String>println("generating documentation");
     EList<Resource> _resources = rs.getResources();
     for (final Resource r : _resources) {
       URI _uRI = r.getURI();
       String _fileExtension = _uRI.fileExtension();
       boolean _isValid = this.fileExtensionProvider.isValid(_fileExtension);
       if (_isValid) {
-        this.docGenerator.doGenerate(r, javaIoFileSystemAccess);
+        URI _uRI_1 = r.getURI();
+        String _plus = ("generating for " + _uRI_1);
+        InputOutput.<String>println(_plus);
+        this.docGenerator.doGenerate(r, javaIoFileSystemAccess, executable2ResultMapping);
       }
     }
   }

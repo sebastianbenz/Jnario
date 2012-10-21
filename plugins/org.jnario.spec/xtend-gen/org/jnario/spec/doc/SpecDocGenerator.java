@@ -55,6 +55,8 @@ public class SpecDocGenerator extends AbstractDocGenerator {
             it.setSourceCode(_pre);
             String _fileName = SpecDocGenerator.this.fileName(xtendClass);
             it.setFileName(_fileName);
+            String _executionStateClass = SpecDocGenerator.this.executionStateClass(exampleGroup);
+            it.setExecutionStatus(_executionStateClass);
           }
         };
       HtmlFile _newHtmlFile = HtmlFile.newHtmlFile(_function);
@@ -233,6 +235,9 @@ public class SpecDocGenerator extends AbstractDocGenerator {
           String _codeBlock = this.toCodeBlock(example, filters);
           _builder.append(_codeBlock, "");
           _builder.newLineIfNotEmpty();
+          CharSequence _errorMessage = this.errorMessage(example);
+          _builder.append(_errorMessage, "");
+          _builder.newLineIfNotEmpty();
         }
       }
       _xblockexpression = (_builder);
@@ -306,6 +311,8 @@ public class SpecDocGenerator extends AbstractDocGenerator {
     String _header_1 = this.header(exampleGroup, level);
     _builder.append(_header_1, "");
     _builder.append(">");
+    String _executionState = this.executionState(exampleGroup);
+    _builder.append(_executionState, "");
     _builder.newLineIfNotEmpty();
     CharSequence _generateDoc = this.generateDoc(exampleGroup);
     _builder.append(_generateDoc, "");

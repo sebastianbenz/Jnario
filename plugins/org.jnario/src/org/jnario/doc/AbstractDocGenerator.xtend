@@ -31,6 +31,9 @@ import static org.jnario.doc.AbstractDocGenerator.*
 import static extension org.eclipse.xtext.util.Strings.*
 import static extension org.jnario.util.Strings.*
 import org.jnario.doc.WhiteSpaceNormalizer
+import org.junit.runner.notification.Failure
+import org.jnario.report.Failed
+import org.jnario.report.Passed
 
 abstract class AbstractDocGenerator implements IGenerator {
 
@@ -42,7 +45,7 @@ abstract class AbstractDocGenerator implements IGenerator {
 	@Inject extension PegDownProcessor
 	@Inject extension HtmlFileBuilder
 	@Inject extension DocumentationProvider documentationProvider
-	@Inject Executable2ResultMapping spec2ResultMapping
+	@Inject extension Executable2ResultMapping spec2ResultMapping
  
 	override doGenerate(Resource input, IFileSystemAccess fsa) {
 		doGenerate(input, fsa, spec2ResultMapping)
@@ -183,8 +186,33 @@ abstract class AbstractDocGenerator implements IGenerator {
 	'''
 	
 	def protected executionState(Executable executable){
-		val x = '<span class="label label-success">Success</span>'
-		val y = '<span class="label label-important">Important</span>'
+		val result = executable.result
+		switch result {
+			Failed: '<span class="label label-important">Failure</span>'
+			default: ""
+		}
+	}
+	
+	def protected executionStateClass(Executable executable){
+		val result = executable.result
+		switch result {
+			Failed: 'failed'
+			Passed: 'passed'
+			default: ""
+		}
+	}
+	
+	def protected errorMessage(Executable executable){
+		val result = executable.result
+		switch result {
+			Failed: '''
+				«FOR failure : result.failures»
+				 <pre class="errormessage"><strong>Execution failed:</strong>
+				 «failure.message»</pre>
+				«ENDFOR»
+			'''
+			default: ""
+		}
 	}
 	
 }

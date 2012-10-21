@@ -33,22 +33,19 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 		val feature = xtendClass as Feature
 		return HtmlFile::newHtmlFile[
 			name = feature.getClassName 
-			title = feature.name?.substring(8)
+			title = feature.name
 			content = feature.generateContent
 			rootFolder = feature.root
-			sourceCode = xtendClass.eContainer.pre("lang-feature")
-			fileName = xtendClass.fileName
+			sourceCode = feature.eContainer.pre("lang-feature")
+			fileName = feature.fileName
+			executionStatus = feature.executionStateClass
 		]
 	}
 
 	def generateContent(Feature feature)'''
 		<p>«feature.description?.markdown2Html»</p>
 		«IF feature.background != null»
-		<h2>Background</h2>
 		«generate(feature.background)»
-		«ENDIF»
-		«IF !feature.scenarios.empty»
-		<h2>Scenarios</h2>
 		«ENDIF»
 		«FOR scenario : feature.scenarios»
 		«generate(scenario)»
@@ -59,21 +56,23 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 	'''
 
 	def dispatch generate(Scenario scenario)'''
-		<h3 «id(scenario.name)»>«scenario.name?.substring(9)»</h3>
-		«generate(scenario.steps.filter(typeof(Step)))»
+		<div class="«scenario.executionStateClass»"><h3 «id(scenario.name)»>«scenario.name»</h3>
+		«generate(scenario.steps.filter(typeof(Step)))»</div>
 	'''
 	
 	def dispatch generate(Iterable<Step> steps)'''
 		<ul>
 		«FOR step : steps»
 		<li>«generate(step)»
-		«generate(step.and.filter(typeof(Step)))»</li>
+		«generate(step.and.filter(typeof(Step)))»
+		</li>
 		«ENDFOR»
 		</ul>
 	'''
 	
 	def dispatch generate(Step step)'''
-		«step.format»
+		<div class="step «step.executionStateClass»">«step.format»
+		«step.errorMessage»</div>
 	'''
 
 	def private format(Step step){

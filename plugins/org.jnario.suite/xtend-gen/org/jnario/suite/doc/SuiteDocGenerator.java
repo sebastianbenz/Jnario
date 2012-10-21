@@ -77,6 +77,8 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
             it.setSourceCode(_pre);
             String _fileName = SuiteDocGenerator.this.fileName(file);
             it.setFileName(_fileName);
+            String _executionStateClass = SuiteDocGenerator.this.executionStateClass(rootSuite);
+            it.setExecutionStatus(_executionStateClass);
           }
         };
       HtmlFile _newHtmlFile = HtmlFile.newHtmlFile(_function);
@@ -104,6 +106,8 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
             it.setSourceCode(_pre);
             String _fileName = SuiteDocGenerator.this.fileName(file);
             it.setFileName(_fileName);
+            String _executionStateClass = SuiteDocGenerator.this.executionStateClass(suite);
+            it.setExecutionStatus(_executionStateClass);
           }
         };
       HtmlFile _newHtmlFile = HtmlFile.newHtmlFile(_function);
@@ -142,7 +146,10 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
     _builder.append("<span");
     String _id = this.id(title);
     _builder.append(_id, "");
-    _builder.append(">");
+    _builder.append(" class=\"");
+    String _executionStateClass = this.executionStateClass(suite);
+    _builder.append(_executionStateClass, "");
+    _builder.append("\">");
     String _markdown2Html = this.markdown2Html(title);
     _builder.append(_markdown2Html, "");
     _builder.append("</span>");
@@ -190,7 +197,10 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
     {
       List<Specification> _resolveSpecs = this._specResolver.resolveSpecs(ref);
       for(final Specification spec : _resolveSpecs) {
-        _builder.append("<li><a href=\"");
+        _builder.append("<li><a ");
+        String _executionStateClass = this.executionStateClass(spec);
+        _builder.append(_executionStateClass, "");
+        _builder.append(" href=\"");
         String _linkTo = this.linkTo(ref, spec);
         _builder.append(_linkTo, "");
         _builder.append("\">");

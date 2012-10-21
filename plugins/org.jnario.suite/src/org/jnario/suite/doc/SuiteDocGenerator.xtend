@@ -52,6 +52,7 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 			rootFolder = rootSuite.root
 			sourceCode = file.pre("lang-suite")
 			fileName = file.fileName
+			executionStatus = rootSuite.executionStateClass
 		]
 	}
 
@@ -64,6 +65,7 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 			rootFolder = suite.root
 			sourceCode = file.pre("lang-suite")
 			fileName = file.fileName
+			executionStatus = suite.executionStateClass
 		]
 	}
 	
@@ -78,7 +80,7 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 	
 	def title(Suite suite)'''
 		«val title = suite.name.firstLine»
-		<span«title.id»>«title.markdown2Html»</span>
+		<span«title.id» class="«suite.executionStateClass»">«title.markdown2Html»</span>
 	'''
 	
 	def desc(Suite suite){
@@ -98,7 +100,7 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 
 	def generate(Reference ref)'''
 	«FOR spec : ref.resolveSpecs»
-		<li><a href="«ref.linkTo(spec)»">«spec.describe»</a>«ref.text»</li>
+		<li><a «spec.executionStateClass» href="«ref.linkTo(spec)»">«spec.describe»</a>«ref.text»</li>
 	«ENDFOR»
 	''' 
 	

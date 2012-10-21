@@ -27,6 +27,7 @@ class HtmlFile {
 	@Property String rootFolder = ""
 	@Property CharSequence sourceCode = ""
 	@Property CharSequence fileName = ""
+	@Property String executionStatus = ""
 	
 	def toText()'''
 		<!DOCTYPE html>
@@ -53,7 +54,7 @@ class HtmlFile {
 			<div class="container">
 				<div class="tabbable">
 					<div class="content">
-						<div class="page-header">
+						<div class="page-header «executionStatus»">
 							<h1>«title»</h1>
 							  <ul class="nav nav-tabs pull-right">
 							    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>

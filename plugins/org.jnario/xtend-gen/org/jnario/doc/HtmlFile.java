@@ -97,6 +97,16 @@ public class HtmlFile {
     this._fileName = fileName;
   }
   
+  private String _executionStatus = "";
+  
+  public String getExecutionStatus() {
+    return this._executionStatus;
+  }
+  
+  public void setExecutionStatus(final String executionStatus) {
+    this._executionStatus = executionStatus;
+  }
+  
   public CharSequence toText() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<!DOCTYPE html>");
@@ -165,8 +175,11 @@ public class HtmlFile {
     _builder.append("<div class=\"content\">");
     _builder.newLine();
     _builder.append("\t\t\t\t");
-    _builder.append("<div class=\"page-header\">");
-    _builder.newLine();
+    _builder.append("<div class=\"page-header ");
+    String _executionStatus = this.getExecutionStatus();
+    _builder.append(_executionStatus, "				");
+    _builder.append("\">");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t\t\t");
     _builder.append("<h1>");
     CharSequence _title_1 = this.getTitle();

@@ -87,8 +87,7 @@ public class JnarioDocGenerate extends XtendTestCompile {
 		}
 	}
 
-	protected HashBasedSpec2ResultMapping createSpec2ResultMapping(
-			List<Injector> injectors) {
+	protected HashBasedSpec2ResultMapping createSpec2ResultMapping(List<Injector> injectors) {
 		HashBasedSpec2ResultMapping resultMapping = injectors.get(2).getInstance(HashBasedSpec2ResultMapping.class);
 		File reportFolder = new File(reportsDirectory);
 		if(reportFolder.exists()){

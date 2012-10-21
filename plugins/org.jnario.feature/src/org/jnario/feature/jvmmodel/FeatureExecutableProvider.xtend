@@ -23,7 +23,7 @@ class FeatureExecutableProvider implements ExecutableProvider {
 	
 	def dispatch List<? extends Executable> doGetExecutables(Feature feature){
 		if(feature.background == null){
-			feature.scenarios
+			return feature.scenarios
 		}
 		val result = <Scenario>newArrayList(feature.background)
 		result.addAll(feature.scenarios)

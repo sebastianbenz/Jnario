@@ -40,6 +40,7 @@ class SpecDocGenerator extends AbstractDocGenerator {
 			rootFolder = exampleGroup.root
 			sourceCode = xtendClass.eContainer.pre("lang-spec")
 			fileName = xtendClass.fileName
+			executionStatus = exampleGroup.executionStateClass
 		]
 	}
 
@@ -106,6 +107,7 @@ class SpecDocGenerator extends AbstractDocGenerator {
 			«docString»
 			«IF !example.pending && example.body != null»
 			«example.toCodeBlock(filters)»
+			«example.errorMessage»
 			«ENDIF»
 		'''
 	}
@@ -134,7 +136,7 @@ class SpecDocGenerator extends AbstractDocGenerator {
 		«IF level > 1»
 		<div class="level">
 		«ENDIF»
-		<h«exampleGroup.header(level)»«id(exampleGroup.describe)»>«exampleGroup.asTitle»</h«exampleGroup.header(level)»>
+		<h«exampleGroup.header(level)»«id(exampleGroup.describe)»>«exampleGroup.asTitle»</h«exampleGroup.header(level)»>«exampleGroup.executionState»
 		«exampleGroup.generateDoc»
 		«generateMembers(exampleGroup, level + 1)»
 		«IF level > 1»
