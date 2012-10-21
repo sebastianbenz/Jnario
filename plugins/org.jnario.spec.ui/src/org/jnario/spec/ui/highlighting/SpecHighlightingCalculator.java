@@ -75,6 +75,7 @@ public class SpecHighlightingCalculator extends JnarioHighlightingCalculator {
 					provideHighlightingFor((ExampleTable)member,acceptor);
 				}else if(member.eClass() == SpecPackage.Literals.TEST_FUNCTION){
 					TestFunction function = (TestFunction) member;
+					highlightRichStrings(function.getImplementation() ,acceptor);
 					highlightRichStrings(function.getBody() ,acceptor);
 				}
 				highlightDeprectedXtendAnnotationTarget(acceptor, member);
