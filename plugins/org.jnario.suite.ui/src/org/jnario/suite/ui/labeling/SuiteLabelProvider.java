@@ -11,7 +11,10 @@
 package org.jnario.suite.ui.labeling;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.xtend.ide.labeling.XtendImages;
 import org.eclipse.xtend.ide.labeling.XtendLabelProvider;
+import org.eclipse.xtext.common.types.JvmVisibility;
 import org.jnario.suite.jvmmodel.SuiteClassNameProvider;
 import org.jnario.suite.suite.Suite;
 
@@ -30,6 +33,13 @@ public class SuiteLabelProvider extends XtendLabelProvider {
 	@Inject
 	public SuiteLabelProvider(AdapterFactoryLabelProvider delegate) {
 		super(delegate);
+	}
+	
+	@Inject
+	private XtendImages images;
+	
+	public Image image(Suite element) {
+		return images.forClass(JvmVisibility.PUBLIC);
 	}
 	
 	public String text(Suite element) {
