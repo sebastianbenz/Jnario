@@ -65,7 +65,7 @@ class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Executable2R
 	
 	def private asKey(Executable executable){
 		val expectedClassName = executable.toQualifiedJavaClassName
-		val expectedName = executable.describe.escapeXml
+		val expectedName = executable.describe
 		val key = expectedClassName -> expectedName
 		key
 	}

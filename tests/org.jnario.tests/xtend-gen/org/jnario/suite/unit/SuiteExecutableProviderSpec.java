@@ -153,4 +153,41 @@ public class SuiteExecutableProviderSpec {
      + "\n     feature() is " + new StringDescription().appendValue(_feature).toString() + "\n", _doubleArrow);
     
   }
+  
+  @Test
+  @Named("returns resolved specs")
+  @Order(2)
+  public void _returnsResolvedSpecs_1() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("package demo");
+    _builder.newLine();
+    _builder.append("import demo.*");
+    _builder.newLine();
+    _builder.append("#My Suite");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("- \\demo.*\\");
+    _builder.newLine();
+    _builder.newLine();
+    this.m.parseSuite(_builder);
+    Suite _suite = this.m.suite("My Suite");
+    List<Executable> _executables = this.subject.getExecutables(_suite);
+    Set<Executable> _set = IterableExtensions.<Executable>toSet(_executables);
+    ExampleGroup _exampleGroup = this.m.exampleGroup("My Spec");
+    ExampleGroup _exampleGroup_1 = this.m.exampleGroup("String");
+    Feature _feature = this.m.feature();
+    Set<Specification> _set_1 = JnarioCollectionLiterals.<Specification>set(_exampleGroup, _exampleGroup_1, _feature);
+    boolean _doubleArrow = Should.operator_doubleArrow(_set, _set_1);
+    Assert.assertTrue("\nExpected subject.getExecutables(suite(\"My Suite\")).toSet => set(exampleGroup(\"My Spec\"), exampleGroup(\"String\"), feature()) but"
+     + "\n     subject.getExecutables(suite(\"My Suite\")).toSet is " + new StringDescription().appendValue(_set).toString()
+     + "\n     subject.getExecutables(suite(\"My Suite\")) is " + new StringDescription().appendValue(_executables).toString()
+     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
+     + "\n     suite(\"My Suite\") is " + new StringDescription().appendValue(_suite).toString()
+     + "\n      is " + new StringDescription().appendValue(this.m).toString()
+     + "\n     set(exampleGroup(\"My Spec\"), exampleGroup(\"String\"), feature()) is " + new StringDescription().appendValue(_set_1).toString()
+     + "\n     exampleGroup(\"My Spec\") is " + new StringDescription().appendValue(_exampleGroup).toString()
+     + "\n     exampleGroup(\"String\") is " + new StringDescription().appendValue(_exampleGroup_1).toString()
+     + "\n     feature() is " + new StringDescription().appendValue(_feature).toString() + "\n", _doubleArrow);
+    
+  }
 }

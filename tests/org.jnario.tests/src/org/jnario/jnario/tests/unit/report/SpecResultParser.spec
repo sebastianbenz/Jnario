@@ -61,6 +61,14 @@ describe SpecResultParser{
 		verify(acceptor).accept(failingSpec)
 	}
 	
+	fact "decodes escaped strings"{
+		'''
+		   <testcase time="«EXECUTION_TIME»" classname="«CLASSNAME»" name="When I entered \&quot;50\&quot; and \&quot;70\&quot;"/>
+		'''.toXml.parse 
+		
+		verify(acceptor).accept(new Passed(CLASSNAME, 'When I entered \\\"50\\\" and \\\"70\\\"', EXECUTION_TIME))
+	}
+	
 	def passingSpec(){
 		new Passed(CLASSNAME, NAME, EXECUTION_TIME)
 	}

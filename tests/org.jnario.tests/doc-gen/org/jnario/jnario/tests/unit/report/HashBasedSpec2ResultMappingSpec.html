@@ -69,21 +69,6 @@ m.parseSpec(
 val pendingResult = passingSpec(&quot;example.SomethingSpec&quot;, &quot;a fact [PENDING]&quot;, anyExecutionTime)
 subject.accept(pendingResult)
 example should match pendingResult</pre>
-</li><li><p id="handles_escaped_characters"><strong>handles escaped characters</strong></p>
-<pre class="prettyprint lang-spec linenums">
-m.parseSpec(
-'''
-  package example
-  describe &quot;Something&quot;{
-    fact 'With special &quot;chars&quot; and uml&auml;uts'
-  }
-''')
-val factName = '''
-  With special \&amp;quot;chars\&amp;quot; and uml\u00E4uts [PENDING]
-'''.toString.trim
-val resultWithUnicodeChars = passingSpec(&quot;example.SomethingSpec&quot;, factName, anyExecutionTime)
-subject.accept(resultWithUnicodeChars)
-example should match resultWithUnicodeChars</pre>
 </li></ul>
 <h3 id="ExampleGroup">ExampleGroup</h3>
 <ul><li><p id="returns_NotRun_if_children_are_not_executed"><strong>returns NotRun if children are not executed</strong></p>
@@ -227,6 +212,21 @@ passedStep(&quot;Given my Step&quot;)
 failedStep(&quot;And other Step&quot;)
 scenario.result =&gt; typeof(Failed)</pre>
 </li></ul>
+<h3 id="Feature">Feature</h3>
+<ul><li><p id="returns_Passed_if_all_scenarios_passed"><strong>returns **Passed** if all scenarios passed</strong></p>
+<pre class="prettyprint lang-spec linenums">
+passedStep(&quot;Given a step&quot;)
+passedStep(OTHER_SCENARIO_CLASSNAME, &quot;Given another step&quot;)
+feature.result =&gt; typeof(Passed)</pre>
+</li><li><p id="returns_Failed_if_one_scenario_failed"><strong>returns **Failed** if one scenario failed</strong></p>
+<pre class="prettyprint lang-spec linenums">
+passedStep(&quot;Given a step&quot;)
+failedStep(OTHER_SCENARIO_CLASSNAME, &quot;Given another step&quot;)
+feature.result =&gt; typeof(Failed)</pre>
+</li></ul>
+<h3 id="Suite">Suite</h3>
+<ul><li><p id="matches_referenced_suites"><strong>matches referenced suites [PENDING]</strong></p>
+</li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
 						    	<h3>HashBasedSpec2ResultMapping.spec</h3>
@@ -263,10 +263,14 @@ import static org.jnario.report.Passed.*
 import static org.jnario.report.Failed.*
 import org.jnario.feature.feature.Scenario
 import org.jnario.jnario.test.util.Specs
+import org.jnario.feature.feature.Feature
 
 @CreateWith(typeof(SpecTestCreator))
 describe HashBasedSpec2ResultMapping {
-
+  
+  static val SCENARIO_CLASSNAME = &quot;test.MyFeatureFeatureMyScenario&quot;
+  static val OTHER_SCENARIO_CLASSNAME = &quot;test.MyFeatureFeatureMyOtherScenario&quot; 
+  
   @Inject extension ModelStore m
   
   static val anyExecutionTime = 0.0
@@ -316,21 +320,6 @@ describe HashBasedSpec2ResultMapping {
       example should match pendingResult
     }
     
-    fact &quot;handles escaped characters&quot;{
-      m.parseSpec(
-      '''
-        package example
-        describe &quot;Something&quot;{
-          fact 'With special &quot;chars&quot; and uml&auml;uts'
-        }
-      ''')
-      val factName = '''
-        With special \&amp;quot;chars\&amp;quot; and uml\u00E4uts [PENDING]
-      '''.toString.trim
-      val resultWithUnicodeChars = passingSpec(&quot;example.SomethingSpec&quot;, factName, anyExecutionTime)
-      subject.accept(resultWithUnicodeChars)
-      example should match resultWithUnicodeChars
-    }
   }
   
   context &quot;ExampleGroup&quot;{
@@ -440,7 +429,7 @@ describe HashBasedSpec2ResultMapping {
     val aResultWithDifferentName = passingSpec(&quot;example.SomethingSpec&quot;, &quot;another fact&quot;, anyExecutionTime)
     val pendingResult = passingSpec(&quot;example.SomethingFeatureMyScenario&quot;, &quot;Given a pending step [PENDING]&quot;, anyExecutionTime)
     val resultWithUnicodeChars = passingSpec(&quot;example.SomethingFeatureMyScenario&quot;, '''Given step with uml\u00E4uts''', anyExecutionTime)
-    val resultWithArgs = passingSpec(&quot;example.SomethingFeatureMyScenario&quot;, '''Given step with \&amp;quot;args\&amp;quot;''', anyExecutionTime)
+    val resultWithArgs = passingSpec(&quot;example.SomethingFeatureMyScenario&quot;, '''Given step with \&quot;args\&quot;''', anyExecutionTime)
 
     fact &quot;matches if classname and name are equal&quot;{
       m.parseScenario(
@@ -501,7 +490,6 @@ describe HashBasedSpec2ResultMapping {
   
   @CreateWith(typeof(FeatureTestCreator))
   context &quot;Scenario&quot;{
-    static val SCENARIO_CLASSNAME = &quot;test.MyFeatureFeatureMyScenario&quot; 
     
     before{
       m.parseScenario('''
@@ -525,14 +513,41 @@ describe HashBasedSpec2ResultMapping {
       scenario.result =&gt; typeof(Failed)
     }
     
-    def passedStep(String name){
-      subject.accept(passingSpec(SCENARIO_CLASSNAME, name + &quot; [PENDING]&quot;, 0.0))
+  }
+  
+  @CreateWith(typeof(FeatureTestCreator))
+  context &quot;Feature&quot;{
+    before{
+      m.parseScenario('''
+        package test 
+        Feature: My Feature
+        Scenario: My Scenario
+        Given a step
+        Scenario: My other Scenario
+        Given another step
+      ''')
+    }
+
+    fact &quot;returns **Passed** if all scenarios passed&quot;{
+      passedStep(&quot;Given a step&quot;)
+      passedStep(OTHER_SCENARIO_CLASSNAME, &quot;Given another step&quot;)
+      feature.result =&gt; typeof(Passed)
     }
     
-    def failedStep(String name){
-      subject.accept(failingSpec(SCENARIO_CLASSNAME, name + &quot; [PENDING]&quot;, 0.0, anyFailure))
+    fact &quot;returns **Failed** if one scenario failed&quot;{
+      passedStep(&quot;Given a step&quot;)
+      failedStep(OTHER_SCENARIO_CLASSNAME, &quot;Given another step&quot;)
+      feature.result =&gt; typeof(Failed)
     }
+    
   }
+  
+  context &quot;Suite&quot;{
+    
+    fact &quot;matches referenced suites&quot;
+    
+  }  
+  
   
   def should_match(Executable example, SpecExecution execution){
     subject.getResult(example) == execution
@@ -545,6 +560,10 @@ describe HashBasedSpec2ResultMapping {
   def step(){
     first(typeof(Step))
   } 
+
+  def feature(){
+    first(typeof(Feature))
+  } 
   
   def scenario(){
     first(typeof(Scenario))
@@ -552,6 +571,22 @@ describe HashBasedSpec2ResultMapping {
   
   def result(Executable executable){
     subject.getResult(executable)
+  }
+  
+  def passedStep(String name){
+    passedStep(SCENARIO_CLASSNAME, name)
+  }
+  
+  def passedStep(String className, String name){
+    subject.accept(passingSpec(className, name + &quot; [PENDING]&quot;, 0.0))
+  }
+    
+  def failedStep(String name){
+    failedStep(SCENARIO_CLASSNAME, name)
+  }
+  
+  def failedStep(String className, String name){
+    subject.accept(failingSpec(className, name + &quot; [PENDING]&quot;, 0.0, anyFailure))
   }
 }
 </pre>

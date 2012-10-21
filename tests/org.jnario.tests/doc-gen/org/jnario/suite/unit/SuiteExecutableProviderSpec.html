@@ -60,6 +60,18 @@ parseSuite('''
 ''')
 
 subject.getExecutables(suite(&quot;My Suite&quot;)).toSet =&gt; set(exampleGroup(&quot;My Spec&quot;), feature())</pre>
+</li><li><p id="returns_resolved_specs"><strong>returns resolved specs</strong></p>
+<pre class="prettyprint lang-spec linenums">
+parseSuite('''
+  package demo
+  import demo.*
+  #My Suite
+  
+  - \demo.*\
+  
+''')
+
+subject.getExecutables(suite(&quot;My Suite&quot;)).toSet =&gt; set(exampleGroup(&quot;My Spec&quot;), exampleGroup(&quot;String&quot;), feature())</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -132,6 +144,18 @@ describe SuiteExecutableProvider {
     subject.getExecutables(suite(&quot;My Suite&quot;)).toSet =&gt; set(exampleGroup(&quot;My Spec&quot;), feature())
   }
    
+  fact &quot;returns resolved specs&quot;{
+    parseSuite('''
+      package demo
+      import demo.*
+      #My Suite
+      
+      - \demo.*\
+      
+    ''')
+    
+    subject.getExecutables(suite(&quot;My Suite&quot;)).toSet =&gt; set(exampleGroup(&quot;My Spec&quot;), exampleGroup(&quot;String&quot;), feature())
+  }
 }
 </pre>
 						    </p></div>

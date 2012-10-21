@@ -98,34 +98,4 @@ public class HashBasedSpec2ResultMappingExampleSpec extends HashBasedSpec2Result
      + "\n     pendingResult is " + new StringDescription().appendValue(pendingResult).toString() + "\n", _should_match);
     
   }
-  
-  @Test
-  @Named("handles escaped characters")
-  @Order(4)
-  public void _handlesEscapedCharacters() throws Exception {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("package example");
-    _builder.newLine();
-    _builder.append("describe \"Something\"{");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("fact \'With special \"chars\" and uml\u00E4uts\'");
-    _builder.newLine();
-    _builder.append("}");
-    _builder.newLine();
-    this.m.parseSpec(_builder);
-    StringConcatenation _builder_1 = new StringConcatenation();
-    _builder_1.append("With special \\&quot;chars\\&quot; and uml\\u00E4uts [PENDING]");
-    _builder_1.newLine();
-    String _string = _builder_1.toString();
-    final String factName = _string.trim();
-    final Passed resultWithUnicodeChars = Passed.passingSpec("example.SomethingSpec", factName, HashBasedSpec2ResultMappingSpec.anyExecutionTime);
-    this.subject.accept(resultWithUnicodeChars);
-    Example _example = this.example();
-    boolean _should_match = this.should_match(_example, resultWithUnicodeChars);
-    Assert.assertTrue("\nExpected example should match resultWithUnicodeChars but"
-     + "\n     example is " + new StringDescription().appendValue(_example).toString()
-     + "\n     resultWithUnicodeChars is " + new StringDescription().appendValue(resultWithUnicodeChars).toString() + "\n", _should_match);
-    
-  }
 }

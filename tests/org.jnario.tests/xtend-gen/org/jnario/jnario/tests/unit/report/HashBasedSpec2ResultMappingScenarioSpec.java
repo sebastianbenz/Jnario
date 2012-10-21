@@ -23,8 +23,6 @@ import org.junit.runner.RunWith;
 @Named("Scenario")
 @CreateWith(value = FeatureTestCreator.class)
 public class HashBasedSpec2ResultMappingScenarioSpec extends HashBasedSpec2ResultMappingSpec {
-  final static String SCENARIO_CLASSNAME = "test.MyFeatureFeatureMyScenario";
-  
   @Before
   public void before() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
@@ -43,7 +41,7 @@ public class HashBasedSpec2ResultMappingScenarioSpec extends HashBasedSpec2Resul
   
   @Test
   @Named("returns **Passed** if all children passed")
-  @Order(16)
+  @Order(15)
   public void _returnsPassedIfAllChildrenPassed() throws Exception {
     this.passedStep("Given my Step");
     this.passedStep("And other Step");
@@ -58,7 +56,7 @@ public class HashBasedSpec2ResultMappingScenarioSpec extends HashBasedSpec2Resul
   
   @Test
   @Named("returns **Failed** if one child failed")
-  @Order(17)
+  @Order(16)
   public void _returnsFailedIfOneChildFailed() throws Exception {
     this.passedStep("Given my Step");
     this.failedStep("And other Step");
@@ -69,17 +67,5 @@ public class HashBasedSpec2ResultMappingScenarioSpec extends HashBasedSpec2Resul
      + "\n     scenario.result is " + new StringDescription().appendValue(_result).toString()
      + "\n     scenario is " + new StringDescription().appendValue(_scenario).toString() + "\n", _doubleArrow);
     
-  }
-  
-  public void passedStep(final String name) {
-    String _plus = (name + " [PENDING]");
-    Passed _passingSpec = Passed.passingSpec(HashBasedSpec2ResultMappingScenarioSpec.SCENARIO_CLASSNAME, _plus, 0.0);
-    this.subject.accept(_passingSpec);
-  }
-  
-  public void failedStep(final String name) {
-    String _plus = (name + " [PENDING]");
-    Failed _failingSpec = Failed.failingSpec(HashBasedSpec2ResultMappingScenarioSpec.SCENARIO_CLASSNAME, _plus, 0.0, this.anyFailure);
-    this.subject.accept(_failingSpec);
   }
 }

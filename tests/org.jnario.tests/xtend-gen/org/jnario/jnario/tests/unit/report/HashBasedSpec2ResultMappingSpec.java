@@ -5,6 +5,7 @@ import com.google.inject.Inject;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.hamcrest.StringDescription;
 import org.jnario.Executable;
+import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
 import org.jnario.jnario.test.util.ModelStore;
@@ -12,11 +13,15 @@ import org.jnario.jnario.test.util.SpecTestCreator;
 import org.jnario.jnario.test.util.Specs;
 import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingExampleGroupSpec;
 import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingExampleSpec;
+import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingFeatureSpec;
 import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingScenarioSpec;
 import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingStepSpec;
+import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingSuiteSpec;
 import org.jnario.lib.Should;
+import org.jnario.report.Failed;
 import org.jnario.report.HashBasedSpec2ResultMapping;
 import org.jnario.report.NotRun;
+import org.jnario.report.Passed;
 import org.jnario.report.SpecExecution;
 import org.jnario.report.SpecFailure;
 import org.jnario.runner.Contains;
@@ -31,7 +36,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@Contains({ HashBasedSpec2ResultMappingExampleSpec.class, HashBasedSpec2ResultMappingExampleGroupSpec.class, HashBasedSpec2ResultMappingStepSpec.class, HashBasedSpec2ResultMappingScenarioSpec.class })
+@Contains({ HashBasedSpec2ResultMappingExampleSpec.class, HashBasedSpec2ResultMappingExampleGroupSpec.class, HashBasedSpec2ResultMappingStepSpec.class, HashBasedSpec2ResultMappingScenarioSpec.class, HashBasedSpec2ResultMappingFeatureSpec.class, HashBasedSpec2ResultMappingSuiteSpec.class })
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("HashBasedSpec2ResultMapping")
@@ -39,6 +44,10 @@ import org.junit.runner.RunWith;
 public class HashBasedSpec2ResultMappingSpec {
   @Subject
   public HashBasedSpec2ResultMapping subject;
+  
+  final static String SCENARIO_CLASSNAME = "test.MyFeatureFeatureMyScenario";
+  
+  final static String OTHER_SCENARIO_CLASSNAME = "test.MyFeatureFeatureMyOtherScenario";
   
   @Inject
   @Extension
@@ -101,6 +110,11 @@ public class HashBasedSpec2ResultMappingSpec {
     return _first;
   }
   
+  public Feature feature() {
+    Feature _first = this.m.<Feature>first(Feature.class);
+    return _first;
+  }
+  
   public Scenario scenario() {
     Scenario _first = this.m.<Scenario>first(Scenario.class);
     return _first;
@@ -109,5 +123,25 @@ public class HashBasedSpec2ResultMappingSpec {
   public SpecExecution result(final Executable executable) {
     SpecExecution _result = this.subject.getResult(executable);
     return _result;
+  }
+  
+  public void passedStep(final String name) {
+    this.passedStep(HashBasedSpec2ResultMappingSpec.SCENARIO_CLASSNAME, name);
+  }
+  
+  public void passedStep(final String className, final String name) {
+    String _plus = (name + " [PENDING]");
+    Passed _passingSpec = Passed.passingSpec(className, _plus, 0.0);
+    this.subject.accept(_passingSpec);
+  }
+  
+  public void failedStep(final String name) {
+    this.failedStep(HashBasedSpec2ResultMappingSpec.SCENARIO_CLASSNAME, name);
+  }
+  
+  public void failedStep(final String className, final String name) {
+    String _plus = (name + " [PENDING]");
+    Failed _failingSpec = Failed.failingSpec(className, _plus, 0.0, this.anyFailure);
+    this.subject.accept(_failingSpec);
   }
 }

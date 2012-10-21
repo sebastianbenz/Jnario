@@ -64,4 +64,16 @@ describe SuiteExecutableProvider {
 		subject.getExecutables(suite("My Suite")).toSet => set(exampleGroup("My Spec"), feature())
 	}
 	 
+	fact "returns resolved specs"{
+		parseSuite('''
+			package demo
+			import demo.*
+			#My Suite
+			
+			- \demo.*\
+			
+		''')
+		
+		subject.getExecutables(suite("My Suite")).toSet => set(exampleGroup("My Spec"), exampleGroup("String"), feature())
+	}
 }

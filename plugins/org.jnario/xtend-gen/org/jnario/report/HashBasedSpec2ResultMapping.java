@@ -6,7 +6,6 @@ import com.google.inject.Inject;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.apache.commons.lang.StringEscapeUtils;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.resource.IResourceServiceProvider;
 import org.eclipse.xtext.resource.XtextResource;
@@ -152,8 +151,7 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
     Pair<String,String> _xblockexpression = null;
     {
       final String expectedClassName = this.nameProvider.toQualifiedJavaClassName(executable);
-      String _describe = this.nameProvider.describe(executable);
-      final String expectedName = StringEscapeUtils.escapeXml(_describe);
+      final String expectedName = this.nameProvider.describe(executable);
       final Pair<String,String> key = Pair.<String, String>of(expectedClassName, expectedName);
       _xblockexpression = (key);
     }

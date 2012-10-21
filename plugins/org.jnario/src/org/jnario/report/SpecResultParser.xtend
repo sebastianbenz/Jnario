@@ -6,6 +6,7 @@ import org.xml.sax.helpers.DefaultHandler
 import org.xml.sax.Attributes
 import org.xml.sax.SAXException
 import java.util.List
+import static extension org.apache.commons.lang.StringEscapeUtils.*
 
 class SpecResultParser extends DefaultHandler{
 	double currentExecutionTime
@@ -30,8 +31,8 @@ class SpecResultParser extends DefaultHandler{
 	override startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
 		switch(qName){
 			case SpecResultTags::NODE_TESTCASE:{
-				currentClassName = attributes.getValue(SpecResultTags::ATTR_CLASSNAME)
-				currentName = attributes.getValue(SpecResultTags::ATTR_NAME)
+				currentClassName = attributes.convertValue(SpecResultTags::ATTR_CLASSNAME)
+				currentName = attributes.convertValue(SpecResultTags::ATTR_NAME)
 				currentExecutionTime = attributes.readTime
 				failures = newArrayList
 			}		
@@ -45,8 +46,8 @@ class SpecResultParser extends DefaultHandler{
 	}
 	
 	def saveFailureAttributes(Attributes attributes){
-		currentFailureMessage = attributes.getValue(SpecResultTags::ATTR_MESSAGE)
-				currentFailureType = attributes.getValue(SpecResultTags::ATTR_TYPE)
+		currentFailureMessage = attributes.convertValue(SpecResultTags::ATTR_MESSAGE)
+		currentFailureType = attributes.convertValue(SpecResultTags::ATTR_TYPE)
 	}
 	
 	override endElement(String uri, String localName, String qName) throws SAXException {
@@ -91,7 +92,7 @@ class SpecResultParser extends DefaultHandler{
 	}
 	
 	def private readTime(Attributes attributes) {
-		val timeString= attributes.getValue(SpecResultTags::ATTR_TIME);
+		val timeString= attributes.convertValue(SpecResultTags::ATTR_TIME);
 		if (timeString != null) {
 			try {
 				return Double::parseDouble(timeString)
@@ -99,6 +100,10 @@ class SpecResultParser extends DefaultHandler{
 			}
 		}
 		return 0.0
+	}
+	
+	def convertValue(Attributes attributes, String key) {
+		attributes.getValue(key)
 	}
 	
 }

@@ -168,6 +168,24 @@ public class SpecResultParserSpec {
     _verify_1.accept(_failingSpec);
   }
   
+  @Test
+  @Named("decodes escaped strings")
+  @Order(4)
+  public void _decodesEscapedStrings() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<testcase time=\"");
+    _builder.append(SpecResultParserSpec.EXECUTION_TIME, "");
+    _builder.append("\" classname=\"");
+    _builder.append(SpecResultParserSpec.CLASSNAME, "");
+    _builder.append("\" name=\"When I entered \\&quot;50\\&quot; and \\&quot;70\\&quot;\"/>");
+    _builder.newLineIfNotEmpty();
+    CharSequence _xml = this.toXml(_builder);
+    this.parse(_xml);
+    SpecExecutionAcceptor _verify = Mockito.<SpecExecutionAcceptor>verify(this.acceptor);
+    Passed _passed = new Passed(SpecResultParserSpec.CLASSNAME, "When I entered \\\"50\\\" and \\\"70\\\"", SpecResultParserSpec.EXECUTION_TIME);
+    _verify.accept(_passed);
+  }
+  
   public Passed passingSpec() {
     Passed _passed = new Passed(SpecResultParserSpec.CLASSNAME, SpecResultParserSpec.NAME, SpecResultParserSpec.EXECUTION_TIME);
     return _passed;
