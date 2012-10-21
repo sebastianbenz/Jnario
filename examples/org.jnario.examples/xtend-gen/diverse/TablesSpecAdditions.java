@@ -1,4 +1,4 @@
-package demo;
+package diverse;
 
 import java.util.List;
 import org.jnario.lib.ExampleTableRow;

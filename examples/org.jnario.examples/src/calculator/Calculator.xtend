@@ -6,8 +6,13 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
 package calculator 
+import static java.lang.Integer.*
 
 class Calculator {
+	
+	def add(String a, String b){
+		add(valueOf(a), valueOf(b))
+	}
 	
 	def add(int a, int b){
 		return a + b

@@ -1,9 +1,9 @@
-package demo;
+package diverse;
 
-import demo.AdditionFeature;
-import demo.HelloWorldSpec;
-import demo.StackSpec;
-import demo.TablesSpec;
+import diverse.AdditionFeature;
+import diverse.HelloWorldSpec;
+import diverse.StackSpec;
+import diverse.TablesSpec;
 import org.jnario.runner.Contains;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;

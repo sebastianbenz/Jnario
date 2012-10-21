@@ -2,7 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Tables</title>
+<title>Additionorg.jnario.feature.feature.impl.FeatureImplCustom@7f8656d3 (name: Addition, abstract: false) (description: 	
+	  In order to avoid silly mistakes
+	  As a math idiot
+	  I want to be told the sum of two numbers
+	  
+	  )</title>
 <meta name="description" content="">
 <meta name="author" content="Jnario">
 
@@ -25,70 +30,54 @@
 		<div class="tabbable">
 			<div class="content">
 				<div class="page-header">
+					<h1>Additionorg.jnario.feature.feature.impl.FeatureImplCustom@7f8656d3 (name: Addition, abstract: false) (description: 	
+						  In order to avoid silly mistakes
+						  As a math idiot
+						  I want to be told the sum of two numbers
+						  
+						  )</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
 						<li><a href="#source" data-toggle="tab">Source</a></li>
 					  </ul>
-					<h1>Tables</h1>
 				</div>
 				<div class="row">
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<ul><li><p id="additions"><strong>Additions</strong></p>
-<table class="table table-striped table-bordered table-condensed">
-	<thead>
-		<tr>
-		<th>a</th>
-		<th>b</th>
-		<th>sum</th>
-		</tr>
-	</thead>
-	<tbody>
-	<tr>
-		<td>1</td>
-		<td>2</td>
-		<td>3</td>
-	</tr>
-	<tr>
-		<td>4</td>
-		<td>5</td>
-		<td>9</td>
-	</tr>
-	<tr>
-		<td>10</td>
-		<td>11</td>
-		<td>20</td>
-	</tr>
-	<tr>
-		<td>21</td>
-		<td>21</td>
-		<td>42</td>
-	</tr>
-	</tbody>
-</table>
-</li><li><p id="additions_forEach_a_b_sum"><strong>additions.forEach[ a + b => sum ]</strong></p>
-</li></ul>
+<p><p>In order to avoid silly mistakes As a math idiot I want to be told the sum of two numbers</p></p>
+<h3  id="Scenario_Add_two_numbers">Scenario: Add two numbers
+</h3>
+<ul>
+<li><p><strong>When</strong> I entered <code>"50"</code> and <code>"70"</code></p>
+<ul>
+</ul>
+</li>
+<li><p><strong>Then</strong> the result should be <code>"120"</code></p>
+<ul>
+</ul>
+</li>
+</ul>
 							</div>
 						    <div class="tab-pane" id="source">
-						    	<h3>Example2.spec</h3>
+						    	<h3>Calculator.feature</h3>
 						    	<p>
-<pre class="prettyprint lang-spec linenums">
-package demo
+<pre class="prettyprint lang-feature linenums">
+package calculator
 
-describe &quot;Tables&quot;{
-
-  def additions{
-      |  a  |  b  |  sum  |
-      |  1  |  2  |   3   |
-      |  4  |  5  |   9   |
-      | 10  | 11  |  20   | 
-      | 21  | 21  |  42   | 
-  }
+  Feature: Addition
   
-  fact additions.forEach[ a + b =&gt; sum ]
-  
-}
+    In order to avoid silly mistakes
+    As a math idiot
+    I want to be told the sum of two numbers
+    
+    Scenario: Add two numbers
+      val calculator = new Calculator()
+      int result
+      When I entered &quot;50&quot; and &quot;70&quot;
+             result = calculator.add(args.first, args.second)
+      Then the result should be &quot;120&quot; 
+         result =&gt; args.first.toInt
 </pre>
 						    </p></div>
 						  </div>

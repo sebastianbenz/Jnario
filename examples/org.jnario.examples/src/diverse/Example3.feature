@@ -1,4 +1,4 @@
-package demo
+package diverse
 
 import calculator.SimpleCalculator
 

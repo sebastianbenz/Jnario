@@ -1,4 +1,4 @@
-package demo
+package diverse
 
 describe "Hello World"{
 	

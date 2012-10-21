@@ -21,11 +21,11 @@ class Evolution{
       world.deadCells.filter[getBecomesAlive.apply(world, it)]
     )
   } 
-  
   def private apply(Rule rule, World world, CellLocation cell){
     rule.becomesAlive(world.livingNeighbours(cell))
   }  
 }
+
 
 class EvolveLiveCells implements Rule{
   override becomesAlive(int neighbourCount) {

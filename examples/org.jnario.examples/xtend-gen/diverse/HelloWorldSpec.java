@@ -1,4 +1,4 @@
-package demo;
+package diverse;
 
 import org.hamcrest.StringDescription;
 import org.jnario.lib.Should;

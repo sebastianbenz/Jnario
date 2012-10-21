@@ -1,6 +1,6 @@
 package gameoflife.specs;
 
-import demo.SelectMultipleSpecsSuite;
+import diverse.SelectMultipleSpecsSuite;
 import gameoflife.specs.CellLocationSpec;
 import gameoflife.specs.EvolutionSpec;
 import gameoflife.specs.RulesSpec;

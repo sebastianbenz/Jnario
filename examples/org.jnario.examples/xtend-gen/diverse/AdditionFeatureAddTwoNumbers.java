@@ -1,4 +1,4 @@
-package demo;
+package diverse;
 
 import calculator.SimpleCalculator;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;

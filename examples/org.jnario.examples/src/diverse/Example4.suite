@@ -1,4 +1,4 @@
-package demo
+package diverse
 
 import demo.*
 
@@ -8,9 +8,12 @@ Describe your test suite in plain **formatted** text.
 
 ##List existing Specs
 
+Reference existing specs.
+
 - "Stack": this is a reference to our Stack specification.
-- "Addition": this is reference to our feature specification.
 
 ##Select multiple specs 
 
-- \demo.*\
+Select multiple specs using regular expressions.
+
+- \diverse.*\

@@ -1,7 +1,7 @@
-package demo;
+package diverse;
 
-import demo.ListExistingSpecsSuite;
-import demo.SelectMultipleSpecsSuite;
+import diverse.ListExistingSpecsSuite;
+import diverse.SelectMultipleSpecsSuite;
 import org.jnario.runner.Contains;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;

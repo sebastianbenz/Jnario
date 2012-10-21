@@ -1,6 +1,6 @@
-package demo;
+package diverse;
 
-import demo.AdditionFeatureAddTwoNumbers;
+import diverse.AdditionFeatureAddTwoNumbers;
 import org.jnario.runner.Contains;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;

@@ -1,6 +1,6 @@
-package demo;
+package diverse;
 
-import demo.StackSpec;
+import diverse.StackSpec;
 import java.util.EmptyStackException;
 import java.util.Stack;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;

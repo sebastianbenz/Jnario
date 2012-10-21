@@ -11,28 +11,19 @@ import java.util.EmptyStackException
 import java.util.Stack
 
 describe Stack{
-	
-	fact subject.empty should be true
- 	   
-	fact "initially empty" {subject.size => 0}
-	
-	fact subject.pop() throws EmptyStackException
-	
-	fact "increases size when pushing"{
-		subject.push("something")
-		subject.size => 1
-	} 	 
-	
-	fact "decreases size when popping"{
-		subject.push("something")
-		subject.pop()
-		subject.size => 0
-	} 	
-	 
-	fact "pop returns last pushed element"{
-		subject.push("something")
-		subject.push("something else")
-		subject.pop() => "something else"
-		subject.pop() => "something"
+	context "empty"{
+		fact subject.empty should be true
+		fact subject.pop() throws EmptyStackException
 	}
- }  
+ 	context "not empty"{
+		fact "increases size when pushing"{
+			subject.push("something")
+			subject.size => 1
+		} 	 
+		fact "decreases size when popping"{
+			subject.push("something")
+			subject.pop()
+			subject.size => 0
+		} 	
+ 	}
+}	

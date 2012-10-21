@@ -1,6 +1,6 @@
-package demo;
+package diverse;
 
-import demo.TablesSpecAdditions;
+import diverse.TablesSpecAdditions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
 import org.jnario.lib.ExampleTable;
@@ -24,7 +24,7 @@ public class TablesSpec {
       java.util.Arrays.asList("a", "b", "sum"), 
       new TablesSpecAdditions(  java.util.Arrays.asList("1", "2", "3"), 1, 2, 3),
       new TablesSpecAdditions(  java.util.Arrays.asList("4", "5", "9"), 4, 5, 9),
-      new TablesSpecAdditions(  java.util.Arrays.asList("10", "11", "20"), 10, 11, 20),
+      new TablesSpecAdditions(  java.util.Arrays.asList("10", "11", "21"), 10, 11, 21),
       new TablesSpecAdditions(  java.util.Arrays.asList("21", "21", "42"), 21, 21, 42)
     );
   }

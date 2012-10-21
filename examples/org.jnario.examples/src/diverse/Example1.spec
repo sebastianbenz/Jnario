@@ -1,4 +1,4 @@
-package demo
+package diverse
 
 import java.util.Stack
 import java.util.EmptyStackException

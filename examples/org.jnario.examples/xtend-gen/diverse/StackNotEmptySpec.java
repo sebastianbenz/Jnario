@@ -1,6 +1,6 @@
-package demo;
+package diverse;
 
-import demo.StackSpec;
+import diverse.StackSpec;
 import java.util.Stack;
 import org.hamcrest.StringDescription;
 import org.jnario.lib.Should;
