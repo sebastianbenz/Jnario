@@ -39,25 +39,10 @@ import com.google.inject.Provider;
  */
 public class JnarioTestCompile extends XtendTestCompile {
 	
-	/**
-	 * Location of the generated documentation.
-	 * 
-	 * @parameter default-value="${basedir}/target/jnario-doc"
-	 * @required
-	 */
-	private String docOutputDirectory;
-	
-	/**
-	 * Skip the documentation generation.
-	 * 
-	 * @parameter default-value=false
-	 */
-	private boolean skipDocGeneration;
-
 	@Override
 	public void execute() throws MojoExecutionException {
 		if (isSkipped()) {
-			getLog().info("Xtend compiler skipped.");
+			getLog().info("Jnario compiler skipped.");
 		}
 		configureLog4j();
 		
@@ -65,23 +50,9 @@ public class JnarioTestCompile extends XtendTestCompile {
 		List<Injector> injectors = createInjectors(new SpecStandaloneSetup(), new FeatureStandaloneSetup(), new SuiteStandaloneSetup());
 		ResourceSet resourceSet = createResourceSet(injectors);
 		
-		HtmlAssetsCompiler docCompiler = injectors.get(0).getInstance(HtmlAssetsCompiler.class);
-		docCompiler.setOutputPath(docOutputDirectory);
-		docCompiler.compile();
-		
 		for (Injector injector : injectors) {
 			compile(injector, resourceSet);
-			generateDoc(resourceSet, injector);
 		}
-	}
-
-	private void generateDoc(ResourceSet resourceSet, Injector injector) {
-		if(skipDocGeneration){
-			return;
-		}
-		JnarioDocCompiler docCompiler = injector.getInstance(JnarioDocCompiler.class);
-		docCompiler.setOutputPath(docOutputDirectory);
-		docCompiler.generateDocumentation(resourceSet);
 	}
 
 	private void compile(Injector injector, ResourceSet resourceSet)
