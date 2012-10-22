@@ -31,7 +31,7 @@
     <module>releng/org.jnario.target</module>
     <module>plugins/org.jnario.feature</module>
     <module>plugins/org.jnario</module>
-    <module>plugins/org.jnario.ui</module>
+   <module>plugins/org.jnario.ui</module>
     <module>plugins/org.jnario.lib</module>
     <module>plugins/org.jnario.spec</module>
     <module>plugins/org.jnario.suite</module>
@@ -50,6 +50,7 @@
     <module>plugins/org.jnario.lib.maven</module>
     <module>plugins/org.jnario.standalone.maven</module>
     <module>plugins/jnario-maven-plugin</module>
+    <module>plugins/jnario-maven-report-plugin</module>
   </modules>
 
   <repositories>
