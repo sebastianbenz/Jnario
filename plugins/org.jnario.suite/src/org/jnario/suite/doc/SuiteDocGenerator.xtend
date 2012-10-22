@@ -100,7 +100,7 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 
 	def generate(Reference ref)'''
 	«FOR spec : ref.resolveSpecs»
-		<li><a «spec.executionStateClass» href="«ref.linkTo(spec)»">«spec.describe»</a>«ref.text»</li>
+		<li><a class="«spec.executionStateClass»" href="«ref.linkTo(spec)»">«spec.describe»</a>«ref.text»</li>«spec.executionState»
 	«ENDFOR»
 	''' 
 	

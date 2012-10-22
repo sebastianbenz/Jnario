@@ -188,7 +188,8 @@ abstract class AbstractDocGenerator implements IGenerator {
 	def protected executionState(Executable executable){
 		val result = executable.result
 		switch result {
-			Failed: '<span class="label label-important">Failure</span>'
+			Failed: '<span class="badge badge-important">✘</span>'
+			Passed: '<span class="badge badge-success">✓</span>'
 			default: ""
 		}
 	}

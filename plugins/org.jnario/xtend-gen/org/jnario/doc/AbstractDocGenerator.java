@@ -330,7 +330,14 @@ public abstract class AbstractDocGenerator implements IGenerator {
         if (result instanceof Failed) {
           final Failed _failed = (Failed)result;
           _matched=true;
-          _switchResult = "<span class=\"label label-important\">Failure</span>";
+          _switchResult = "<span class=\"badge badge-important\">\u2718</span>";
+        }
+      }
+      if (!_matched) {
+        if (result instanceof Passed) {
+          final Passed _passed = (Passed)result;
+          _matched=true;
+          _switchResult = "<span class=\"badge badge-success\">\u2713</span>";
         }
       }
       if (!_matched) {
