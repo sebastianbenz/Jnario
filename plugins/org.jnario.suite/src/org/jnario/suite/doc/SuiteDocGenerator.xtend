@@ -80,7 +80,7 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 	
 	def title(Suite suite)'''
 		«val title = suite.name.firstLine»
-		<span«title.id» class="«suite.executionStateClass»">«title.markdown2Html»</span>
+		<span«title.id» class="suite «suite.executionStateClass»">«title.markdown2Html»</span>
 	'''
 	
 	def desc(Suite suite){
@@ -100,7 +100,7 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 
 	def generate(Reference ref)'''
 	«FOR spec : ref.resolveSpecs»
-		<li><a class="«spec.executionStateClass»" href="«ref.linkTo(spec)»">«spec.describe»</a>«ref.text»</li>«spec.executionState»
+		<li><a class="specref «spec.executionStateClass»" href="«ref.linkTo(spec)»">«spec.describe»</a>«ref.text» «spec.executionState»</li>
 	«ENDFOR»
 	''' 
 	

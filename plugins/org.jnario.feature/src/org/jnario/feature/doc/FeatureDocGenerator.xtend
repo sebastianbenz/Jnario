@@ -43,7 +43,7 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 	}
 
 	def generateContent(Feature feature)'''
-		<p>«feature.description?.markdown2Html»</p>
+		«feature.description?.markdown2Html»
 		«IF feature.background != null»
 		«generate(feature.background)»
 		«ENDIF»

@@ -209,7 +209,10 @@ public class SpecDocGenerator extends AbstractDocGenerator {
           String _name_1 = example.getName();
           String _id = this.id(_name_1);
           _builder.append(_id, "");
-          _builder.append("><strong>");
+          _builder.append(" class=\"example ");
+          String _executionStateClass = this.executionStateClass(example);
+          _builder.append(_executionStateClass, "");
+          _builder.append("\"><strong>");
           String _describe = this._exampleNameProvider.describe(example);
           String _decode = this.decode(_describe);
           _builder.append(_decode, "");
@@ -301,6 +304,10 @@ public class SpecDocGenerator extends AbstractDocGenerator {
     _builder.append("<h");
     String _header = this.header(exampleGroup, level);
     _builder.append(_header, "");
+    _builder.append(" class=\"exampleGroup ");
+    String _executionStateClass = this.executionStateClass(exampleGroup);
+    _builder.append(_executionStateClass, "");
+    _builder.append("\" ");
     String _describe = this._exampleNameProvider.describe(exampleGroup);
     String _id = this.id(_describe);
     _builder.append(_id, "");
@@ -310,7 +317,7 @@ public class SpecDocGenerator extends AbstractDocGenerator {
     _builder.append("</h");
     String _header_1 = this.header(exampleGroup, level);
     _builder.append(_header_1, "");
-    _builder.append(">");
+    _builder.append("> ");
     String _executionState = this.executionState(exampleGroup);
     _builder.append(_executionState, "");
     _builder.newLineIfNotEmpty();

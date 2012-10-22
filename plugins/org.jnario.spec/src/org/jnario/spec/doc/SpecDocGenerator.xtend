@@ -101,7 +101,7 @@ class SpecDocGenerator extends AbstractDocGenerator {
 		}
 		'''
 			«IF example.name != null»
-			<p«id(example.name)»><strong>«example.describe.decode»</strong></p>
+			<p«id(example.name)» class="example «example.executionStateClass»"><strong>«example.describe.decode»</strong></p>
 			«ELSE»
 			«ENDIF»
 			«docString»
@@ -136,7 +136,7 @@ class SpecDocGenerator extends AbstractDocGenerator {
 		«IF level > 1»
 		<div class="level">
 		«ENDIF»
-		<h«exampleGroup.header(level)»«id(exampleGroup.describe)»>«exampleGroup.asTitle»</h«exampleGroup.header(level)»>«exampleGroup.executionState»
+		<h«exampleGroup.header(level)» class="exampleGroup «exampleGroup.executionStateClass»" «id(exampleGroup.describe)»>«exampleGroup.asTitle»</h«exampleGroup.header(level)»> «exampleGroup.executionState»
 		«exampleGroup.generateDoc»
 		«generateMembers(exampleGroup, level + 1)»
 		«IF level > 1»

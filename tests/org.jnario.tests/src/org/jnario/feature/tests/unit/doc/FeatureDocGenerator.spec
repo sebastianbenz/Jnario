@@ -62,7 +62,7 @@ describe FeatureDocGenerator {
 		".generateDoc
 		
 		val expected = '''
-				<p><p>This is a description.</p></p>
+				<p>This is a description.</p>
 				<div class=""><h3  id="Scenario_Example_Scenario">Scenario: Example Scenario
 				</h3>
 				<ul>

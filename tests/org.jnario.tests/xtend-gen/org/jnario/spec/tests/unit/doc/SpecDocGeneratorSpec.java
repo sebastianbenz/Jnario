@@ -127,7 +127,7 @@ public class SpecDocGeneratorSpec {
     this.generateDoc(_builder);
     final String scenarioDoc = this.generatedFile("ExampleSpec.html");
     StringConcatenation _builder_1 = new StringConcatenation();
-    _builder_1.append("<p id=\"should_do_stuff\"><strong>should do stuff</strong></p>");
+    _builder_1.append("<p id=\"should_do_stuff\" class=\"example \"><strong>should do stuff</strong></p>");
     _builder_1.newLine();
     _builder_1.append("<p>Example documentation</p>");
     _builder_1.newLine();
@@ -138,10 +138,10 @@ public class SpecDocGeneratorSpec {
     _builder_1.append("x = x + 1</pre>");
     String _string = _builder_1.toString();
     boolean _contains = scenarioDoc.contains(_string);
-    Assert.assertTrue("\nExpected scenarioDoc.contains(\'\'\'\r\n\t\t<p id=\"should_do_stuff\"><strong>should do stuff</strong></p>\r\n\t\t<p>Example documentation</p>\r\n\t\t<pre class=\"prettyprint lang-spec linenums\">\r\n\t\tvar x = 0\r\n\t\tx = x + 1</pre>\'\'\'.toString()) but"
+    Assert.assertTrue("\nExpected scenarioDoc.contains(\'\'\'\r\n\t\t<p id=\"should_do_stuff\" class=\"example \"><strong>should do stuff</strong></p>\r\n\t\t<p>Example documentation</p>\r\n\t\t<pre class=\"prettyprint lang-spec linenums\">\r\n\t\tvar x = 0\r\n\t\tx = x + 1</pre>\'\'\'.toString()) but"
      + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString()
-     + "\n     \'\'\'\r\n\t\t<p id=\"should_do_stuff\"><strong>should do stuff</strong></p>\r\n\t\t<p>Example documentation</p>\r\n\t\t<pre class=\"prettyprint lang-spec linenums\">\r\n\t\tvar x = 0\r\n\t\tx = x + 1</pre>\'\'\'.toString() is " + new StringDescription().appendValue(_string).toString()
-     + "\n     \'\'\'\r\n\t\t<p id=\"should_do_stuff\"><strong>should do stuff</strong></p>\r\n\t\t<p>Example documentation</p>\r\n\t\t<pre class=\"prettyprint lang-spec linenums\">\r\n\t\tvar x = 0\r\n\t\tx = x + 1</pre>\'\'\' is " + new StringDescription().appendValue(_builder_1).toString() + "\n", _contains);
+     + "\n     \'\'\'\r\n\t\t<p id=\"should_do_stuff\" class=\"example \"><strong>should do stuff</strong></p>\r\n\t\t<p>Example documentation</p>\r\n\t\t<pre class=\"prettyprint lang-spec linenums\">\r\n\t\tvar x = 0\r\n\t\tx = x + 1</pre>\'\'\'.toString() is " + new StringDescription().appendValue(_string).toString()
+     + "\n     \'\'\'\r\n\t\t<p id=\"should_do_stuff\" class=\"example \"><strong>should do stuff</strong></p>\r\n\t\t<p>Example documentation</p>\r\n\t\t<pre class=\"prettyprint lang-spec linenums\">\r\n\t\tvar x = 0\r\n\t\tx = x + 1</pre>\'\'\' is " + new StringDescription().appendValue(_builder_1).toString() + "\n", _contains);
     
   }
   

@@ -31,7 +31,6 @@ import static org.jnario.doc.AbstractDocGenerator.*
 import static extension org.eclipse.xtext.util.Strings.*
 import static extension org.jnario.util.Strings.*
 import org.jnario.doc.WhiteSpaceNormalizer
-import org.junit.runner.notification.Failure
 import org.jnario.report.Failed
 import org.jnario.report.Passed
 

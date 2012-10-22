@@ -146,7 +146,7 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
     _builder.append("<span");
     String _id = this.id(title);
     _builder.append(_id, "");
-    _builder.append(" class=\"");
+    _builder.append(" class=\"suite ");
     String _executionStateClass = this.executionStateClass(suite);
     _builder.append(_executionStateClass, "");
     _builder.append("\">");
@@ -197,7 +197,7 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
     {
       List<Specification> _resolveSpecs = this._specResolver.resolveSpecs(ref);
       for(final Specification spec : _resolveSpecs) {
-        _builder.append("<li><a class=\"");
+        _builder.append("<li><a class=\"specref ");
         String _executionStateClass = this.executionStateClass(spec);
         _builder.append(_executionStateClass, "");
         _builder.append("\" href=\"");
@@ -209,9 +209,10 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
         _builder.append("</a>");
         String _text = this.text(ref);
         _builder.append(_text, "");
-        _builder.append("</li>");
+        _builder.append(" ");
         String _executionState = this.executionState(spec);
         _builder.append(_executionState, "");
+        _builder.append("</li>");
         _builder.newLineIfNotEmpty();
       }
     }
