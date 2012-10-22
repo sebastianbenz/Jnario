@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header">
+				<div class="page-header ">
 					<h1>TextValueConverter</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -35,7 +35,7 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<h3 id="toString_String">ToString[String]</h3>
+<h3 id="toString">ToString</h3>
 <ul><li><p id="adds_colon"><strong>adds colon</strong></p>
 <pre class="prettyprint lang-spec linenums">
 subject.toString(&quot;suite - with dash&quot;) =&gt; &quot;:suite \\- with dash&quot;</pre>
@@ -46,7 +46,7 @@ subject.toString(&quot;suite - with dash&quot;) =&gt; &quot;:suite \\- with dash
 <pre class="prettyprint lang-spec linenums">
 subject.toString(&quot;suite # with hash&quot;) =&gt; &quot;:suite \\# with hash&quot;</pre>
 </li></ul>
-<h3 id="toValue_String_INode">ToValue[String, INode]</h3>
+<h3 id="toValue">ToValue</h3>
 <ul><li><p id="removes_colon"><strong>removes colon</strong></p>
 <pre class="prettyprint lang-spec linenums">
 subject.toValue(&quot;:suite&quot;, null) =&gt; &quot;suite&quot;</pre>

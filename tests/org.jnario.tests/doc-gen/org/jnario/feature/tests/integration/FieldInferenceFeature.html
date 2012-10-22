@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Field Inferenceorg.jnario.feature.feature.impl.FeatureImplCustom@45ef3e6 (name: Field Inference, abstract: false) (description: 
-	)</title>
+<title>Field Inference</title>
 <meta name="description" content="">
 <meta name="author" content="Jnario">
 
@@ -25,9 +24,8 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header">
-					<h1>Field Inferenceorg.jnario.feature.feature.impl.FeatureImplCustom@45ef3e6 (name: Field Inference, abstract: false) (description: 
-						)</h1>
+				<div class="page-header ">
+					<h1>Field Inference</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
 						<li><a href="#source" data-toggle="tab">Source</a></li>
@@ -38,10 +36,10 @@
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
 <p></p>
-<h3  id="Scenario_Inferring_Fields_from_other_Scenario">Scenario: Inferring Fields from other Scenario
+<div class=""><h3  id="Scenario_Inferring_Fields_from_other_Scenario">Scenario: Inferring Fields from other Scenario
 </h3>
 <ul>
-<li><p><strong>When</strong> I have a feature with two scenarios</p><pre>Feature: Feature 1
+<li><div class="step "><p><strong>When</strong> I have a feature with two scenarios</p><pre>Feature: Feature 1
   Scenario: My Scenario
     String myString
     Given a string &quot;value&quot;
@@ -50,42 +48,49 @@
     Given a string &quot;test&quot;
     Then my string is &quot;test&quot;
       myString =&gt; args.first</pre>
+</div>
 <ul>
 </ul>
 </li>
-<li><p><strong>Then</strong> it should execute successfully</p>
+<li><div class="step "><p><strong>Then</strong> it should execute successfully</p>
+</div>
 <ul>
 </ul>
 </li>
 </ul>
-<h3  id="Scenario_Inferring_Fields_from_Scenario_in_different_Features">Scenario: Inferring Fields from Scenario in different Features
+</div>
+<div class=""><h3  id="Scenario_Inferring_Fields_from_Scenario_in_different_Features">Scenario: Inferring Fields from Scenario in different Features
 </h3>
 <ul>
-<li><p><strong>When</strong> I have a feature</p><pre>Feature: Feature 1
+<li><div class="step "><p><strong>When</strong> I have a feature</p><pre>Feature: Feature 1
   Scenario: My Scenario
     String myString
     Given a string &quot;value&quot;
       myString = args.first</pre>
+</div>
 <ul>
-<li><p><strong>And</strong> another feature</p><pre>Feature: Feature 2
+<li><div class="step "><p><strong>And</strong> another feature</p><pre>Feature: Feature 2
   Scenario: My Scenario 2
     Given a string &quot;test&quot;
     Then my string is &quot;test&quot;
       myString =&gt; args.first</pre>
+</div>
 <ul>
 </ul>
 </li>
 </ul>
 </li>
-<li><p><strong>Then</strong> both should execute successfully</p>
+<li><div class="step "><p><strong>Then</strong> both should execute successfully</p>
+</div>
 <ul>
 </ul>
 </li>
 </ul>
-<h3  id="Scenario_Inferring_Fields_from_Background">Scenario: Inferring Fields from Background
+</div>
+<div class=""><h3  id="Scenario_Inferring_Fields_from_Background">Scenario: Inferring Fields from Background
 </h3>
 <ul>
-<li><p><strong>When</strong> I have a feature with a background and two scenarios</p><pre>Feature: My Feature
+<li><div class="step "><p><strong>When</strong> I have a feature with a background and two scenarios</p><pre>Feature: My Feature
   Background: with field
     String myString
     
@@ -96,40 +101,47 @@
     Given a string &quot;test&quot;
     Then my string is &quot;test&quot;
       myString =&gt; args.first</pre>
+</div>
 <ul>
 </ul>
 </li>
-<li><p><strong>Then</strong> it should execute successfully</p>
+<li><div class="step "><p><strong>Then</strong> it should execute successfully</p>
+</div>
 <ul>
 </ul>
 </li>
 </ul>
-<h3  id="Scenario_Inferring_Fields_from_Background_in_different_Feature">Scenario: Inferring Fields from Background in different Feature
+</div>
+<div class=""><h3  id="Scenario_Inferring_Fields_from_Background_in_different_Feature">Scenario: Inferring Fields from Background in different Feature
 </h3>
 <ul>
-<li><p><strong>When</strong> I have a feature</p><pre>Feature: Feature 1
+<li><div class="step "><p><strong>When</strong> I have a feature</p><pre>Feature: Feature 1
   Background:
     String myString
   
   Scenario: My Scenario
     Given a string &quot;value&quot;
       myString = args.first</pre>
+</div>
 <ul>
-<li><p><strong>And</strong> another feature</p><pre>Feature: Feature 2
+<li><div class="step "><p><strong>And</strong> another feature</p><pre>Feature: Feature 2
   Scenario: My Scenario 2
     Given a string &quot;test&quot;
     Then my string is &quot;test&quot;
       myString =&gt; args.first</pre>
+</div>
 <ul>
 </ul>
 </li>
 </ul>
 </li>
-<li><p><strong>Then</strong> both should execute successfully</p>
+<li><div class="step "><p><strong>Then</strong> both should execute successfully</p>
+</div>
 <ul>
 </ul>
 </li>
 </ul>
+</div>
 							</div>
 						    <div class="tab-pane" id="source">
 						    	<h3>FieldInference.feature</h3>

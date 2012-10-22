@@ -32,7 +32,7 @@ describe "20 Facts about Xtend"{
    * one should be aware of.
    */ 
   describe "A modernized Java"{
-
+  
       /* 
        * Semicolons are optional in Xtend.
        */

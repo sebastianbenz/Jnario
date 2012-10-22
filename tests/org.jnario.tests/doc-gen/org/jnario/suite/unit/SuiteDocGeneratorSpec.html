@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header">
+				<div class="page-header ">
 					<h1>SuiteDocGenerator</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -52,14 +52,14 @@ val actual = generateDoc('''
 val expected = '''
   &lt;p&gt;Heading description.&lt;/p&gt;
   &lt;ul&gt;
-    &lt;li&gt;&lt;a  href=&quot;../test/RedSpec.html&quot;&gt;Red&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a  href=&quot;../test/BlueSpec.html&quot;&gt;Blue&lt;/a&gt;: with a description&lt;/li&gt;
+    &lt;li&gt;&lt;a class=&quot;&quot; href=&quot;../test/RedSpec.html&quot;&gt;Red&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class=&quot;&quot; href=&quot;../test/BlueSpec.html&quot;&gt;Blue&lt;/a&gt;: with a description&lt;/li&gt;
   &lt;/ul&gt;
   &lt;span id=&quot;Subheading&quot; class=&quot;&quot;&gt;&lt;h2&gt;Subheading&lt;/h2&gt;&lt;/span&gt;
   &lt;p&gt;Subheading description with &lt;strong&gt;markdown&lt;/strong&gt;.&lt;/p&gt;
   &lt;ul&gt;
-    &lt;li&gt;&lt;a  href=&quot;../test/GreenSpec.html&quot;&gt;Green&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a  href=&quot;../test/GreySpec.html&quot;&gt;Grey&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class=&quot;&quot; href=&quot;../test/GreenSpec.html&quot;&gt;Green&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class=&quot;&quot; href=&quot;../test/GreySpec.html&quot;&gt;Grey&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 '''.toString
 
@@ -125,14 +125,14 @@ describe SuiteDocGenerator {
     val expected = '''
       &lt;p&gt;Heading description.&lt;/p&gt;
       &lt;ul&gt;
-        &lt;li&gt;&lt;a  href=&quot;../test/RedSpec.html&quot;&gt;Red&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a  href=&quot;../test/BlueSpec.html&quot;&gt;Blue&lt;/a&gt;: with a description&lt;/li&gt;
+        &lt;li&gt;&lt;a class=&quot;&quot; href=&quot;../test/RedSpec.html&quot;&gt;Red&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a class=&quot;&quot; href=&quot;../test/BlueSpec.html&quot;&gt;Blue&lt;/a&gt;: with a description&lt;/li&gt;
       &lt;/ul&gt;
       &lt;span id=&quot;Subheading&quot; class=&quot;&quot;&gt;&lt;h2&gt;Subheading&lt;/h2&gt;&lt;/span&gt;
       &lt;p&gt;Subheading description with &lt;strong&gt;markdown&lt;/strong&gt;.&lt;/p&gt;
       &lt;ul&gt;
-        &lt;li&gt;&lt;a  href=&quot;../test/GreenSpec.html&quot;&gt;Green&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a  href=&quot;../test/GreySpec.html&quot;&gt;Grey&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a class=&quot;&quot; href=&quot;../test/GreenSpec.html&quot;&gt;Green&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a class=&quot;&quot; href=&quot;../test/GreySpec.html&quot;&gt;Grey&lt;/a&gt;&lt;/li&gt;
       &lt;/ul&gt;
     '''.toString
     
