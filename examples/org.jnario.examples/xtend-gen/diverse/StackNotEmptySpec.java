@@ -7,7 +7,6 @@ import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.jnario.runner.Subject;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,33 +15,18 @@ import org.junit.runner.RunWith;
 @RunWith(ExampleGroupRunner.class)
 @Named("not empty")
 public class StackNotEmptySpec extends StackSpec {
-  @Subject
-  public Stack subject;
-  
   @Test
-  @Named("increases size when pushing")
+  @Named("pop removes last element")
   @Order(2)
-  public void _increasesSizeWhenPushing() throws Exception {
-    this.subject.push("something");
-    int _size = this.subject.size();
-    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_size), Integer.valueOf(1));
-    Assert.assertTrue("\nExpected subject.size => 1 but"
-     + "\n     subject.size is " + new StringDescription().appendValue(Integer.valueOf(_size)).toString()
-     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
-    
-  }
-  
-  @Test
-  @Named("decreases size when popping")
-  @Order(3)
-  public void _decreasesSizeWhenPopping() throws Exception {
-    this.subject.push("something");
-    this.subject.pop();
-    int _size = this.subject.size();
-    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_size), Integer.valueOf(0));
-    Assert.assertTrue("\nExpected subject.size => 0 but"
-     + "\n     subject.size is " + new StringDescription().appendValue(Integer.valueOf(_size)).toString()
-     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
+  public void _popRemovesLastElement() throws Exception {
+    Stack<String> _stack = new Stack<String>();
+    final Stack<String> stack = _stack;
+    stack.add("something");
+    String _pop = stack.pop();
+    boolean _doubleArrow = Should.operator_doubleArrow(_pop, "something");
+    Assert.assertTrue("\nExpected stack.pop => \"something\" but"
+     + "\n     stack.pop is " + new StringDescription().appendValue(_pop).toString()
+     + "\n     stack is " + new StringDescription().appendValue(stack).toString() + "\n", _doubleArrow);
     
   }
 }

@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header ">
+				<div class="page-header">
 					<h1>ExampleNameProvider</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -35,7 +35,7 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<h3 id="toJavaClassName">ToJavaClassName</h3>
+<h3 id="toJavaClassName_ExampleGroup">ToJavaClassName[ExampleGroup]</h3>
 <ul><li><p id="should_remove_all_white_spaces_from_ExampleGroup_s_description"><strong>should remove all white spaces from ExampleGroup's description</strong></p>
 <pre class="prettyprint lang-spec linenums">
 firstJavaClassName(&quot;describe 'My Example'&quot;) should not contain &quot; &quot;</pre>
@@ -195,7 +195,7 @@ val exampleTable = '''
 '''.parse.first(typeof(ExampleTable))
 subject.toFieldName(exampleTable) =&gt; &quot;examples&quot;</pre>
 </li></ul>
-<h3 id="describe_ExampleGroup">^describe[ExampleGroup]</h3>
+<h3 id="describe_ExampleGroup">Describe[ExampleGroup]</h3>
 <ul><li><p id="should_use_the_description"><strong>should use the description</strong></p>
 <pre class="prettyprint lang-spec linenums">
 describeFirst(&quot;describe 'My Description'&quot;) =&gt; &quot;My Description&quot;</pre>
@@ -230,7 +230,7 @@ describeSecond(text) =&gt; 'and \\&quot;more\\&quot;'</pre>
 val text = '''describe &quot;Example\n\t 2&quot;'''.toString
 describeFirst(text) =&gt; 'Example 2'</pre>
 </li></ul>
-<h3 id="describe_Example">^describe[Example]</h3>
+<h3 id="describe_Example">Describe[Example]</h3>
 <ul><li><p id="should_use_the_description"><strong>should use the description</strong></p>
 <pre class="prettyprint lang-spec linenums">
 describeFirst(&quot;'should do stuff' {true}&quot;) =&gt; &quot;should do stuff&quot;</pre>

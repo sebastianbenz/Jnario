@@ -23,6 +23,7 @@ import org.jnario.report.Executable2ResultMapping
 import org.jnario.report.Failed
 import org.junit.runner.notification.Failure
 import org.jnario.report.SpecFailure
+import org.jnario.report.Passed
 
 @CreateWith(typeof(FeatureTestCreator))
 describe FeatureDocGenerator {
@@ -62,34 +63,31 @@ describe FeatureDocGenerator {
 		".generateDoc
 		
 		val expected = '''
-				<p>This is a description.</p>
-				<div class=""><h3  id="Scenario_Example_Scenario">Scenario: Example Scenario
-				</h3>
-				<ul>
-				<li><div class="step "><p><strong>Given</strong> a step with an argument <code>"something"</code>, another <code>"argument"</code> and a multiline string:</p><pre>import java.util.Collections.*;
-				
-				public class Greeter{
-				  public static void main(String args[]){
-				    List&lt;String&gt; list = new ArrayList&lt;String&gt;(); // should escape angle brackets
-				    Systen.out.println('Hello World');
-				  }
-				}</pre>
-				</div>
-				<ul>
-				</ul>
-				</li>
-				<li><div class="step "><p><strong>When</strong> I do something that is pending. [PENDING]</p>
-				</div>
-				<ul>
-				</ul>
-				</li>
-				<li><div class="step "><p><strong>Then</strong> it results in <code>"something else"</code></p>
-				</div>
-				<ul>
-				</ul>
-				</li>
-				</ul>
-				</div>
+			<p>This is a description.</p>
+			<div><h3 class="scenario "  id="Scenario_Example_Scenario">Scenario: Example Scenario
+			</h3>
+			<ul>
+			<li><span class="step "><p><strong>Given</strong> a step with an argument <code>"something"</code>, another <code>"argument"</code> and a multiline string:</p><pre>import java.util.Collections.*;
+			
+			public class Greeter{
+			  public static void main(String args[]){
+			    List&lt;String&gt; list = new ArrayList&lt;String&gt;(); // should escape angle brackets
+			    Systen.out.println('Hello World');
+			  }
+			}</pre></span>
+			<ul>
+			</ul>
+			</li>
+			<li><span class="step "><p><strong>When</strong> I do something that is pending. [PENDING]</p></span>
+			<ul>
+			</ul>
+			</li>
+			<li><span class="step "><p><strong>Then</strong> it results in <code>"something else"</code></p></span>
+			<ul>
+			</ul>
+			</li>
+			</ul>
+			</div>
 			'''.toString
 		
 		assertEquals(expected, actual)
@@ -104,11 +102,31 @@ describe FeatureDocGenerator {
 			Given something
 			When something happens 
 			Then there is an error
+			
+			Scenario: Another scnario
+			Given something
+				1 + 1 => 2
+			Then something else
+				""       
 		'''.generateDocWithError
 	}
 	
 	@Inject JavaIoFileSystemAccess fsa2
-	Executable2ResultMapping mapping = [Failed::failingSpec("org.jnario.Class", "This Feature", 0.3,  new SpecFailure("There was a problem", "Exception", '''
+	
+	val message = '''
+		Expected result => args.first.toInt but      
+		 		result is <122>     
+		 		args.first.toInt is <120>       
+		 		args.first is "120"     
+		 		args is <[120]>
+	'''
+	
+	var toggle = true
+	
+	Executable2ResultMapping mapping = [
+		if(toggle){
+			toggle = !toggle
+			Failed::failingSpec("org.jnario.Class", "This Feature", 0.3,  new SpecFailure(message.toString, "Exception", '''
 		java.lang.StringIndexOutOfBoundsException: String index out of range: -1
 			at java.lang.String.substring(String.java:1937)
 			at java.lang.String.substring(String.java:1904)
@@ -117,7 +135,13 @@ describe FeatureDocGenerator {
 			at org.jnario.doc.HtmlFile.newHtmlFile(HtmlFile.java:21)
 			at org.jnario.feature.doc.FeatureDocGenerator.createHtmlFile(FeatureDocGenerator.java:57)
 			at org.jnario.doc.AbstractDocGenerator$2$1.apply(AbstractDocGenerator.java:88)
-	'''.toString))]
+	'''.toString))
+		}else{
+			toggle = !toggle
+			Passed::passingSpec("org.jnario.class", "Something", 0.4)
+			
+		}
+		]
 	
 	def generateDocWithError(CharSequence input){
 		val resource = parseScenario(input)

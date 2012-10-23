@@ -33,6 +33,7 @@ import static extension org.jnario.util.Strings.*
 import org.jnario.doc.WhiteSpaceNormalizer
 import org.jnario.report.Failed
 import org.jnario.report.Passed
+import org.jnario.report.Pending
 
 abstract class AbstractDocGenerator implements IGenerator {
 
@@ -187,8 +188,9 @@ abstract class AbstractDocGenerator implements IGenerator {
 	def protected executionState(Executable executable){
 		val result = executable.result
 		switch result {
-			Failed: '<span class="badge badge-important">✘</span>'
-			Passed: '<span class="badge badge-success">✓</span>'
+			Failed: ' <strong class="icon failed">✘</strong>'
+			Passed: ' <strong class="icon passed">✓</strong>'
+			Pending: ' <strong class="icon pending">~</strong>'
 			default: ""
 		}
 	}
@@ -198,6 +200,7 @@ abstract class AbstractDocGenerator implements IGenerator {
 		switch result {
 			Failed: 'failed'
 			Passed: 'passed'
+			Pending: 'pending'
 			default: ""
 		}
 	}
@@ -207,7 +210,7 @@ abstract class AbstractDocGenerator implements IGenerator {
 		switch result {
 			Failed: '''
 				«FOR failure : result.failures»
-				 <pre class="errormessage"><strong>Execution failed:</strong>
+				 <pre class="errormessage">
 				 «failure.message»</pre>
 				«ENDFOR»
 			'''

@@ -95,10 +95,10 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
   
   protected CharSequence _generate(final Scenario scenario) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<div class=\"");
+    _builder.append("<div><h3 class=\"scenario ");
     String _executionStateClass = this.executionStateClass(scenario);
     _builder.append(_executionStateClass, "");
-    _builder.append("\"><h3 ");
+    _builder.append("\" ");
     String _name = scenario.getName();
     String _id = this.id(_name);
     _builder.append(_id, "");
@@ -142,16 +142,16 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
   
   protected CharSequence _generate(final Step step) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<div class=\"step ");
+    _builder.append("<span class=\"step ");
     String _executionStateClass = this.executionStateClass(step);
     _builder.append(_executionStateClass, "");
     _builder.append("\">");
     String _format = this.format(step);
     _builder.append(_format, "");
+    _builder.append("</span>");
     _builder.newLineIfNotEmpty();
     CharSequence _errorMessage = this.errorMessage(step);
     _builder.append(_errorMessage, "");
-    _builder.append("</div>");
     _builder.newLineIfNotEmpty();
     return _builder;
   }

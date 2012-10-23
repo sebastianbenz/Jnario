@@ -42,6 +42,7 @@ import org.jnario.doc.WhiteSpaceNormalizer;
 import org.jnario.report.Executable2ResultMapping;
 import org.jnario.report.Failed;
 import org.jnario.report.Passed;
+import org.jnario.report.Pending;
 import org.jnario.report.SpecExecution;
 import org.jnario.report.SpecFailure;
 import org.pegdown.PegDownProcessor;
@@ -330,14 +331,21 @@ public abstract class AbstractDocGenerator implements IGenerator {
         if (result instanceof Failed) {
           final Failed _failed = (Failed)result;
           _matched=true;
-          _switchResult = "<span class=\"badge badge-important\">\u2718</span>";
+          _switchResult = " <strong class=\"icon failed\">\u2718</strong>";
         }
       }
       if (!_matched) {
         if (result instanceof Passed) {
           final Passed _passed = (Passed)result;
           _matched=true;
-          _switchResult = "<span class=\"badge badge-success\">\u2713</span>";
+          _switchResult = " <strong class=\"icon passed\">\u2713</strong>";
+        }
+      }
+      if (!_matched) {
+        if (result instanceof Pending) {
+          final Pending _pending = (Pending)result;
+          _matched=true;
+          _switchResult = " <strong class=\"icon pending\">~</strong>";
         }
       }
       if (!_matched) {
@@ -369,6 +377,13 @@ public abstract class AbstractDocGenerator implements IGenerator {
         }
       }
       if (!_matched) {
+        if (result instanceof Pending) {
+          final Pending _pending = (Pending)result;
+          _matched=true;
+          _switchResult = "pending";
+        }
+      }
+      if (!_matched) {
         _switchResult = "";
       }
       _xblockexpression = (_switchResult);
@@ -390,7 +405,7 @@ public abstract class AbstractDocGenerator implements IGenerator {
           {
             List<SpecFailure> _failures = _failed.getFailures();
             for(final SpecFailure failure : _failures) {
-              _builder.append("<pre class=\"errormessage\"><strong>Execution failed:</strong>");
+              _builder.append("<pre class=\"errormessage\">");
               _builder.newLine();
               String _message = failure.getMessage();
               _builder.append(_message, "");

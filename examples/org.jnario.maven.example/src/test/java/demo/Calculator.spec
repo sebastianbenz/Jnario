@@ -22,5 +22,6 @@ describe "Calculator"{
 	fact "should handle tables"{
 		examples.forEach[a + b => sum]
 	}	
-	  
+
+	fact "this one is pending"
 }          

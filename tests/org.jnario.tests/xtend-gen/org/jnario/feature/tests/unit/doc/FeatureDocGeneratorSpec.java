@@ -19,6 +19,7 @@ import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.report.Executable2ResultMapping;
 import org.jnario.report.Failed;
+import org.jnario.report.Passed;
 import org.jnario.report.SpecExecution;
 import org.jnario.report.SpecFailure;
 import org.jnario.runner.CreateWith;
@@ -54,13 +55,13 @@ public class FeatureDocGeneratorSpec {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<p>This is a description.</p>");
     _builder.newLine();
-    _builder.append("<div class=\"\"><h3  id=\"Scenario_Example_Scenario\">Scenario: Example Scenario");
+    _builder.append("<div><h3 class=\"scenario \"  id=\"Scenario_Example_Scenario\">Scenario: Example Scenario");
     _builder.newLine();
     _builder.append("</h3>");
     _builder.newLine();
     _builder.append("<ul>");
     _builder.newLine();
-    _builder.append("<li><div class=\"step \"><p><strong>Given</strong> a step with an argument <code>\"something\"</code>, another <code>\"argument\"</code> and a multiline string:</p><pre>import java.util.Collections.*;");
+    _builder.append("<li><span class=\"step \"><p><strong>Given</strong> a step with an argument <code>\"something\"</code>, another <code>\"argument\"</code> and a multiline string:</p><pre>import java.util.Collections.*;");
     _builder.newLine();
     _builder.newLine();
     _builder.append("public class Greeter{");
@@ -77,9 +78,7 @@ public class FeatureDocGeneratorSpec {
     _builder.append("  ");
     _builder.append("}");
     _builder.newLine();
-    _builder.append("}</pre>");
-    _builder.newLine();
-    _builder.append("</div>");
+    _builder.append("}</pre></span>");
     _builder.newLine();
     _builder.append("<ul>");
     _builder.newLine();
@@ -87,9 +86,7 @@ public class FeatureDocGeneratorSpec {
     _builder.newLine();
     _builder.append("</li>");
     _builder.newLine();
-    _builder.append("<li><div class=\"step \"><p><strong>When</strong> I do something that is pending. [PENDING]</p>");
-    _builder.newLine();
-    _builder.append("</div>");
+    _builder.append("<li><span class=\"step \"><p><strong>When</strong> I do something that is pending. [PENDING]</p></span>");
     _builder.newLine();
     _builder.append("<ul>");
     _builder.newLine();
@@ -97,9 +94,7 @@ public class FeatureDocGeneratorSpec {
     _builder.newLine();
     _builder.append("</li>");
     _builder.newLine();
-    _builder.append("<li><div class=\"step \"><p><strong>Then</strong> it results in <code>\"something else\"</code></p>");
-    _builder.newLine();
-    _builder.append("</div>");
+    _builder.append("<li><span class=\"step \"><p><strong>Then</strong> it results in <code>\"something else\"</code></p></span>");
     _builder.newLine();
     _builder.append("<ul>");
     _builder.newLine();
@@ -132,44 +127,100 @@ public class FeatureDocGeneratorSpec {
     _builder.newLine();
     _builder.append("Then there is an error");
     _builder.newLine();
+    _builder.newLine();
+    _builder.append("Scenario: Another scnario");
+    _builder.newLine();
+    _builder.append("Given something");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("1 + 1 => 2");
+    _builder.newLine();
+    _builder.append("Then something else");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("\"\"       ");
+    _builder.newLine();
     this.generateDocWithError(_builder);
   }
   
   @Inject
   JavaIoFileSystemAccess fsa2;
   
+  final CharSequence message = new Function0<CharSequence>() {
+    public CharSequence apply() {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Expected result => args.first.toInt but      ");
+      _builder.newLine();
+      _builder.append(" \t\t");
+      _builder.append("result is <122>     ");
+      _builder.newLine();
+      _builder.append(" \t\t");
+      _builder.append("args.first.toInt is <120>       ");
+      _builder.newLine();
+      _builder.append(" \t\t");
+      _builder.append("args.first is \"120\"     ");
+      _builder.newLine();
+      _builder.append(" \t\t");
+      _builder.append("args is <[120]>");
+      _builder.newLine();
+      return _builder;
+    }
+  }.apply();
+  
+  boolean toggle = true;
+  
   Executable2ResultMapping mapping = new Function0<Executable2ResultMapping>() {
     public Executable2ResultMapping apply() {
-      final Function1<Executable,Failed> _function = new Function1<Executable,Failed>() {
-          public Failed apply(final Executable it) {
-            StringConcatenation _builder = new StringConcatenation();
-            _builder.append("java.lang.StringIndexOutOfBoundsException: String index out of range: -1");
-            _builder.newLine();
-            _builder.append("\t");
-            _builder.append("at java.lang.String.substring(String.java:1937)");
-            _builder.newLine();
-            _builder.append("\t");
-            _builder.append("at java.lang.String.substring(String.java:1904)");
-            _builder.newLine();
-            _builder.append("\t");
-            _builder.append("at org.jnario.feature.doc.FeatureDocGenerator$1.apply(FeatureDocGenerator.java:44)");
-            _builder.newLine();
-            _builder.append("\t");
-            _builder.append("at org.jnario.feature.doc.FeatureDocGenerator$1.apply(FeatureDocGenerator.java:1)");
-            _builder.newLine();
-            _builder.append("\t");
-            _builder.append("at org.jnario.doc.HtmlFile.newHtmlFile(HtmlFile.java:21)");
-            _builder.newLine();
-            _builder.append("\t");
-            _builder.append("at org.jnario.feature.doc.FeatureDocGenerator.createHtmlFile(FeatureDocGenerator.java:57)");
-            _builder.newLine();
-            _builder.append("\t");
-            _builder.append("at org.jnario.doc.AbstractDocGenerator$2$1.apply(AbstractDocGenerator.java:88)");
-            _builder.newLine();
-            String _string = _builder.toString();
-            SpecFailure _specFailure = new SpecFailure("There was a problem", "Exception", _string);
-            Failed _failingSpec = Failed.failingSpec("org.jnario.Class", "This Feature", 0.3, _specFailure);
-            return _failingSpec;
+      final Function1<Executable,SpecExecution> _function = new Function1<Executable,SpecExecution>() {
+          public SpecExecution apply(final Executable it) {
+            SpecExecution _xifexpression = null;
+            if (FeatureDocGeneratorSpec.this.toggle) {
+              Failed _xblockexpression = null;
+              {
+                boolean _not = (!FeatureDocGeneratorSpec.this.toggle);
+                FeatureDocGeneratorSpec.this.toggle = _not;
+                String _string = FeatureDocGeneratorSpec.this.message.toString();
+                StringConcatenation _builder = new StringConcatenation();
+                _builder.append("java.lang.StringIndexOutOfBoundsException: String index out of range: -1");
+                _builder.newLine();
+                _builder.append("\t");
+                _builder.append("at java.lang.String.substring(String.java:1937)");
+                _builder.newLine();
+                _builder.append("\t");
+                _builder.append("at java.lang.String.substring(String.java:1904)");
+                _builder.newLine();
+                _builder.append("\t");
+                _builder.append("at org.jnario.feature.doc.FeatureDocGenerator$1.apply(FeatureDocGenerator.java:44)");
+                _builder.newLine();
+                _builder.append("\t");
+                _builder.append("at org.jnario.feature.doc.FeatureDocGenerator$1.apply(FeatureDocGenerator.java:1)");
+                _builder.newLine();
+                _builder.append("\t");
+                _builder.append("at org.jnario.doc.HtmlFile.newHtmlFile(HtmlFile.java:21)");
+                _builder.newLine();
+                _builder.append("\t");
+                _builder.append("at org.jnario.feature.doc.FeatureDocGenerator.createHtmlFile(FeatureDocGenerator.java:57)");
+                _builder.newLine();
+                _builder.append("\t");
+                _builder.append("at org.jnario.doc.AbstractDocGenerator$2$1.apply(AbstractDocGenerator.java:88)");
+                _builder.newLine();
+                String _string_1 = _builder.toString();
+                SpecFailure _specFailure = new SpecFailure(_string, "Exception", _string_1);
+                Failed _failingSpec = Failed.failingSpec("org.jnario.Class", "This Feature", 0.3, _specFailure);
+                _xblockexpression = (_failingSpec);
+              }
+              _xifexpression = _xblockexpression;
+            } else {
+              Passed _xblockexpression_1 = null;
+              {
+                boolean _not = (!FeatureDocGeneratorSpec.this.toggle);
+                FeatureDocGeneratorSpec.this.toggle = _not;
+                Passed _passingSpec = Passed.passingSpec("org.jnario.class", "Something", 0.4);
+                _xblockexpression_1 = (_passingSpec);
+              }
+              _xifexpression = _xblockexpression_1;
+            }
+            return _xifexpression;
           }
         };
       return new Executable2ResultMapping() {

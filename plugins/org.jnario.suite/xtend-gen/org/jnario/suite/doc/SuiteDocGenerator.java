@@ -207,11 +207,10 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
         String _describe = this._suiteClassNameProvider.describe(spec);
         _builder.append(_describe, "");
         _builder.append("</a>");
-        String _text = this.text(ref);
-        _builder.append(_text, "");
-        _builder.append(" ");
         String _executionState = this.executionState(spec);
         _builder.append(_executionState, "");
+        String _text = this.text(ref);
+        _builder.append(_text, "");
         _builder.append("</li>");
         _builder.newLineIfNotEmpty();
       }

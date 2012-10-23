@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Using JUnit Rules in Features</title>
+<title>Using JUnit Rules in Featuresorg.jnario.feature.feature.impl.FeatureImplCustom@5f0b9404 (name: Using JUnit Rules in Features, abstract: false) (description: 
+You can use [JUnit rules](http://kentbeck.github.com/junit/javadoc/latest/org/junit/rules/TestRule.html) in your feature. Just define a field with the `@Rule` annotation
+like you would do in a normal JUnit test case. 
+
+	)</title>
 <meta name="description" content="">
 <meta name="author" content="Jnario">
 
@@ -24,8 +28,12 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header ">
-					<h1>Using JUnit Rules in Features</h1>
+				<div class="page-header">
+					<h1>Using JUnit Rules in Featuresorg.jnario.feature.feature.impl.FeatureImplCustom@5f0b9404 (name: Using JUnit Rules in Features, abstract: false) (description: 
+					You can use [JUnit rules](http://kentbeck.github.com/junit/javadoc/latest/org/junit/rules/TestRule.html) in your feature. Just define a field with the `@Rule` annotation
+					like you would do in a normal JUnit test case. 
+					
+						)</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
 						<li><a href="#source" data-toggle="tab">Source</a></li>
@@ -36,10 +44,10 @@
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
 <p><p>You can use <a href="http://kentbeck.github.com/junit/javadoc/latest/org/junit/rules/TestRule.html">JUnit rules</a> in your feature. Just define a field with the <code>@Rule</code> annotation like you would do in a normal JUnit test case. </p></p>
-<div class=""><h3  id="Scenario_Using_JUnit_Rules">Scenario: Using JUnit Rules 
+<h3  id="Scenario_Using_JUnit_Rules">Scenario: Using JUnit Rules 
 </h3>
 <ul>
-<li><div class="step "><p><strong>When</strong> I have a feature with JUnit rules</p><pre>package demo
+<li><p><strong>When</strong> I have a feature with JUnit rules</p><pre>package demo
 import org.junit.Rule
 import org.junit.rules.TemporaryFolder
 
@@ -51,17 +59,14 @@ Feature:  JUnit Rules
     Given a feature with a rule
     Then the rule should be initialized
       folder.root should not be null</pre>
-</div>
 <ul>
 </ul>
 </li>
-<li><div class="step "><p><strong>Then</strong> it should execute successfully</p>
-</div>
+<li><p><strong>Then</strong> it should execute successfully</p>
 <ul>
 </ul>
 </li>
 </ul>
-</div>
 							</div>
 						    <div class="tab-pane" id="source">
 						    	<h3>Rules.feature</h3>
