@@ -50,11 +50,9 @@ class JnarioDocCompiler extends XtendBatchCompiler{
 		val nameBasedFilter = new NameBasedFilter();
 		nameBasedFilter.setExtension(fileExtensionProvider.getPrimaryFileExtension());
 		val pathTraverser = new PathTraverser();
-		println("loading resource")
 		pathTraverser.resolvePathes(getSourcePathDirectories(), [input |
 				val matches = nameBasedFilter.matches(input);
 				if (matches) {
-					println("loading " + input)
 					resourceSet.getResource(input, true);
 				}
 				return matches;
@@ -74,10 +72,8 @@ class JnarioDocCompiler extends XtendBatchCompiler{
 	def generateDocumentation(ResourceSet rs, Executable2ResultMapping executable2ResultMapping){
 		val javaIoFileSystemAccess = javaIoFileSystemAccessProvider.get()
 		javaIoFileSystemAccess.setOutputPath(DocOutputConfigurationProvider::DOC_OUTPUT, outputPath)
-		println("generating documentation")
 		for(r : rs.resources){
 			if(fileExtensionProvider.isValid(r.URI.fileExtension)){
-				println("generating for " + r.URI)
 				docGenerator.doGenerate(r, javaIoFileSystemAccess, executable2ResultMapping);
 			}
 		}

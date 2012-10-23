@@ -109,4 +109,25 @@ public class FeatureClassNameProvider extends JnarioNameProvider{
 		}
 		throw new UnsupportedOperationException("Cannote describe " + eObject.eClass().getName());
 	}
+	
+	@Override
+	public String toQualifiedJavaClassName(EObject eObject) {
+		if (eObject instanceof Step) {
+			Step step = (Step) eObject;
+			Feature feature = (Feature) step.eContainer().eContainer();
+			if(feature.getScenarios().isEmpty()){
+				return super.toQualifiedJavaClassName(eObject);
+			}
+			String className = toJavaClassName(feature.getScenarios().get(0));
+			if(isNullOrEmpty(className)){
+				return null;
+			}
+			String packageName = getPackageName(eObject);
+			if(isNullOrEmpty(packageName)){
+				return className;
+			}
+			return packageName + "." + className;
+		}
+		return super.toQualifiedJavaClassName(eObject);
+	}
 }

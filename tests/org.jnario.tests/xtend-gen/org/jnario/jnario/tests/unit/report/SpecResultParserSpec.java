@@ -32,7 +32,7 @@ public class SpecResultParserSpec {
   
   final static double EXECUTION_TIME = 0.01;
   
-  final static String FAILURE_MESSAGE = "a message";
+  final static String FAILURE_MESSAGE = "a message\nwithnewline";
   
   final static String FAILURE_TYPE = "java.lang.AssertionError";
   
@@ -223,7 +223,7 @@ public class SpecResultParserSpec {
   }
   
   public Failed failingSpec() {
-    SpecFailure _specFailure = new SpecFailure("a message", "java.lang.AssertionError", "the stacktrace");
+    SpecFailure _specFailure = new SpecFailure(SpecResultParserSpec.FAILURE_MESSAGE, "java.lang.AssertionError", "the stacktrace");
     ArrayList<SpecFailure> _newArrayList = CollectionLiterals.<SpecFailure>newArrayList(_specFailure);
     Failed _failed = new Failed(SpecResultParserSpec.CLASSNAME, SpecResultParserSpec.NAME, SpecResultParserSpec.EXECUTION_TIME, _newArrayList);
     return _failed;

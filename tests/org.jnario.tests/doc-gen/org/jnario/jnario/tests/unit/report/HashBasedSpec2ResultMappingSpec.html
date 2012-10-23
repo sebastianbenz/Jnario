@@ -224,6 +224,17 @@ passedStep(&quot;Given a step&quot;)
 failedStep(OTHER_SCENARIO_CLASSNAME, &quot;Given another step&quot;)
 feature.result =&gt; typeof(Failed)</pre>
 </li></ul>
+<h3 class="exampleGroup "  id="Background">Background</h3> 
+<ul><li><p id="returns_Passed_if_all_scenarios_passed" class="example "><strong>returns **Passed** if all scenarios passed</strong></p>
+<pre class="prettyprint lang-spec linenums">
+passedStep(&quot;Given a step&quot;)
+passedStep(&quot;Given another step&quot;)
+background.result =&gt; typeof(Passed)</pre>
+</li><li><p id="returns_Failed_if_one_scenario_failed" class="example "><strong>returns **Failed** if one scenario failed</strong></p>
+<pre class="prettyprint lang-spec linenums">
+failedStep(&quot;Given a step&quot;)
+background.result =&gt; typeof(Failed)</pre>
+</li></ul>
 <h3 class="exampleGroup "  id="Suite">Suite</h3> 
 <ul><li><p id="matches_referenced_suites" class="example "><strong>matches referenced suites [PENDING]</strong></p>
 </li></ul>
@@ -264,6 +275,7 @@ import static org.jnario.report.Failed.*
 import org.jnario.feature.feature.Scenario
 import org.jnario.jnario.test.util.Specs
 import org.jnario.feature.feature.Feature
+import org.jnario.feature.feature.Background
 
 @CreateWith(typeof(SpecTestCreator))
 describe HashBasedSpec2ResultMapping {
@@ -542,6 +554,32 @@ describe HashBasedSpec2ResultMapping {
     
   }
   
+  @CreateWith(typeof(FeatureTestCreator))
+  context &quot;Background&quot;{
+    before{
+      m.parseScenario('''
+        package test 
+        Feature: My Feature
+        Background:
+          Given a step
+        Scenario: My Scenario
+        Given another step
+      ''')
+    }
+
+    fact &quot;returns **Passed** if all scenarios passed&quot;{
+      passedStep(&quot;Given a step&quot;)
+      passedStep(&quot;Given another step&quot;)
+      background.result =&gt; typeof(Passed)
+    }
+    
+    fact &quot;returns **Failed** if one scenario failed&quot;{
+      failedStep(&quot;Given a step&quot;)
+      background.result =&gt; typeof(Failed)
+    }
+    
+  }
+  
   context &quot;Suite&quot;{
     
     fact &quot;matches referenced suites&quot;
@@ -563,6 +601,10 @@ describe HashBasedSpec2ResultMapping {
 
   def feature(){
     first(typeof(Feature))
+  } 
+  
+  def background(){
+    first(typeof(Background))
   } 
   
   def scenario(){

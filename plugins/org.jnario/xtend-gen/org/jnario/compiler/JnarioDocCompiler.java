@@ -19,7 +19,6 @@ import org.eclipse.xtext.mwe.PathTraverser;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.validation.Issue;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.jnario.compiler.SeverityFilter;
 import org.jnario.doc.AbstractDocGenerator;
@@ -92,14 +91,11 @@ public class JnarioDocCompiler extends XtendBatchCompiler {
       nameBasedFilter.setExtension(_primaryFileExtension);
       PathTraverser _pathTraverser = new PathTraverser();
       final PathTraverser pathTraverser = _pathTraverser;
-      InputOutput.<String>println("loading resource");
       List<String> _sourcePathDirectories = this.getSourcePathDirectories();
       final Function1<URI,Boolean> _function = new Function1<URI,Boolean>() {
           public Boolean apply(final URI input) {
             final boolean matches = nameBasedFilter.matches(input);
             if (matches) {
-              String _plus = ("loading " + input);
-              InputOutput.<String>println(_plus);
               ResourceSet _resourceSet = JnarioDocCompiler.this.getResourceSet();
               _resourceSet.getResource(input, true);
             }
@@ -137,16 +133,12 @@ public class JnarioDocCompiler extends XtendBatchCompiler {
   public void generateDocumentation(final ResourceSet rs, final Executable2ResultMapping executable2ResultMapping) {
     final JavaIoFileSystemAccess javaIoFileSystemAccess = this.javaIoFileSystemAccessProvider.get();
     javaIoFileSystemAccess.setOutputPath(DocOutputConfigurationProvider.DOC_OUTPUT, this.outputPath);
-    InputOutput.<String>println("generating documentation");
     EList<Resource> _resources = rs.getResources();
     for (final Resource r : _resources) {
       URI _uRI = r.getURI();
       String _fileExtension = _uRI.fileExtension();
       boolean _isValid = this.fileExtensionProvider.isValid(_fileExtension);
       if (_isValid) {
-        URI _uRI_1 = r.getURI();
-        String _plus = ("generating for " + _uRI_1);
-        InputOutput.<String>println(_plus);
         this.docGenerator.doGenerate(r, javaIoFileSystemAccess, executable2ResultMapping);
       }
     }

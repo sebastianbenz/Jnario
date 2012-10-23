@@ -16,7 +16,23 @@ html,body {
 }
 
 .nav-tabs > li > a{
+  color: black;
+}
+
+.passed > .nav-tabs > li > a{
   color: white;
+}
+
+.failed > .nav-tabs > li > a{
+  color: white;
+}
+
+.passed > .nav-tabs > .active > a, .nav-tabs > .active{
+  color: black;
+}
+
+.failed > .nav-tabs > .active > a, .nav-tabs > .active{
+  color: black;
 }
 
 div .page-header{
@@ -49,7 +65,7 @@ div .page-header{
   color: #77cd00;
 }
 
-.scenario.failed, .step.failed, .example.failed, .exampleGroup.failed, .icon.failed{
+.suite.failed, .scenario.failed, .step.failed, .example.failed, .exampleGroup.failed, .icon.failed{
   color: #d30202;
 }
 
@@ -196,14 +212,12 @@ img{
     width: 1070px;
   }
   .span12 {
-    width: 1070px;
+    width: 700px  ;
   }
-  .span12 {
-    width: 1160px;
+  .container{
+    width: 700px;
   }
-  .container {
-    width: 1160px;
-  }
+
   .offset1 {
     margin-left: 130px;
   }

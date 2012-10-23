@@ -136,7 +136,7 @@ class SpecDocGenerator extends AbstractDocGenerator {
 		«IF level > 1»
 		<div class="level">
 		«ENDIF»
-		<h«exampleGroup.header(level)» class="exampleGroup «exampleGroup.executionStateClass»" «id(exampleGroup.describe)»>«exampleGroup.asTitle»</h«exampleGroup.header(level)»> «exampleGroup.executionState»
+		<h«exampleGroup.header(level)» class="exampleGroup «exampleGroup.executionStateClass»" «id(exampleGroup.describe)»>«exampleGroup.asTitle»</h«exampleGroup.header(level)»>
 		«exampleGroup.generateDoc»
 		«generateMembers(exampleGroup, level + 1)»
 		«IF level > 1»

@@ -15,7 +15,7 @@ public class HashBasedSpec2ResultMappingSuiteSpec extends HashBasedSpec2ResultMa
   @Test
   @Ignore
   @Named("matches referenced suites [PENDING]")
-  @Order(19)
+  @Order(21)
   public void _matchesReferencedSuites() throws Exception {
     throw new UnsupportedOperationException("_matchesReferencedSuitesis not implemented");
   }

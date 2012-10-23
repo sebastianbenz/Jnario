@@ -13,6 +13,7 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.Functions.Function2;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Pair;
@@ -52,7 +53,10 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
         return _notRun;
       }
       Pair<String,String> _asKey = this.asKey(executable);
-      SpecExecution result = this.results.get(_asKey);
+      String _plus = ("search: " + _asKey);
+      InputOutput.<String>println(_plus);
+      Pair<String,String> _asKey_1 = this.asKey(executable);
+      SpecExecution result = this.results.get(_asKey_1);
       boolean _notEquals = (!Objects.equal(result, null));
       if (_notEquals) {
         return result;
@@ -179,6 +183,8 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
     String _className = result.getClassName();
     String _name = result.getName();
     final Pair<String,String> key = Pair.<String, String>of(_className, _name);
+    String _plus = ("accept: " + key);
+    InputOutput.<String>println(_plus);
     this.results.put(key, result);
   }
 }

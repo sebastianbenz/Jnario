@@ -34,6 +34,7 @@ import org.jnario.doc.WhiteSpaceNormalizer
 import org.jnario.report.Failed
 import org.jnario.report.Passed
 import org.jnario.report.Pending
+import org.jnario.report.SpecFailure
 
 abstract class AbstractDocGenerator implements IGenerator {
 
@@ -211,10 +212,19 @@ abstract class AbstractDocGenerator implements IGenerator {
 			Failed: '''
 				«FOR failure : result.failures»
 				 <pre class="errormessage">
-				 «failure.message»</pre>
+				 «failure.formatStackTrace»</pre>
 				«ENDFOR»
 			'''
 			default: ""
+		}
+	}
+	
+	def private formatStackTrace(SpecFailure failure){
+		val end = failure.stacktrace.indexOf("	at ")
+		if(end == -1){
+			failure.stacktrace
+		}else{
+			failure.stacktrace.substring(0, end)
 		}
 	}
 	

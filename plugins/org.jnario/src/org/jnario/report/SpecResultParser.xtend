@@ -17,7 +17,7 @@ class SpecResultParser extends DefaultHandler{
 
 	String currentFailureType
 	String currentFailureMessage
-	String currentFailureStacktrace
+	StringBuilder currentFailureStacktrace = new StringBuilder
 	
 	boolean isPending = false
 	
@@ -43,6 +43,7 @@ class SpecResultParser extends DefaultHandler{
 			}
 			case SpecResultTags::NODE_FAILURE: {
 				saveFailureAttributes(attributes)
+				currentFailureStacktrace = new StringBuilder
 			}
 			case SpecResultTags::NODE_SKIPPED: {
 				isPending = true
@@ -76,16 +77,16 @@ class SpecResultParser extends DefaultHandler{
 		failures += new SpecFailure(
 			currentFailureMessage,
 			currentFailureType,
-			currentFailureStacktrace
+			currentFailureStacktrace.toString
 		)
 		currentFailureMessage = null
 		currentFailureType = null
-		currentFailureStacktrace = null
+		currentFailureStacktrace = new StringBuilder
 	}
 	
 	
 	override characters(char[] ch, int start, int length) throws SAXException {
-		currentFailureStacktrace = String::valueOf(ch, start, length)
+		currentFailureStacktrace.append(String::valueOf(ch, start, length))
 	}
 
 	def newSpecExecution() {

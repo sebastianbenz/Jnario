@@ -317,9 +317,7 @@ public class SpecDocGenerator extends AbstractDocGenerator {
     _builder.append("</h");
     String _header_1 = this.header(exampleGroup, level);
     _builder.append(_header_1, "");
-    _builder.append("> ");
-    String _executionState = this.executionState(exampleGroup);
-    _builder.append(_executionState, "");
+    _builder.append(">");
     _builder.newLineIfNotEmpty();
     CharSequence _generateDoc = this.generateDoc(exampleGroup);
     _builder.append(_generateDoc, "");

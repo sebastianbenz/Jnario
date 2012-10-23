@@ -407,8 +407,8 @@ public abstract class AbstractDocGenerator implements IGenerator {
             for(final SpecFailure failure : _failures) {
               _builder.append("<pre class=\"errormessage\">");
               _builder.newLine();
-              String _message = failure.getMessage();
-              _builder.append(_message, "");
+              String _formatStackTrace = this.formatStackTrace(failure);
+              _builder.append(_formatStackTrace, "");
               _builder.append("</pre>");
               _builder.newLineIfNotEmpty();
             }
@@ -420,6 +420,27 @@ public abstract class AbstractDocGenerator implements IGenerator {
         _switchResult = "";
       }
       _xblockexpression = (_switchResult);
+    }
+    return _xblockexpression;
+  }
+  
+  private String formatStackTrace(final SpecFailure failure) {
+    String _xblockexpression = null;
+    {
+      String _stacktrace = failure.getStacktrace();
+      final int end = _stacktrace.indexOf("\tat ");
+      String _xifexpression = null;
+      int _minus = (-1);
+      boolean _equals = (end == _minus);
+      if (_equals) {
+        String _stacktrace_1 = failure.getStacktrace();
+        _xifexpression = _stacktrace_1;
+      } else {
+        String _stacktrace_2 = failure.getStacktrace();
+        String _substring = _stacktrace_2.substring(0, end);
+        _xifexpression = _substring;
+      }
+      _xblockexpression = (_xifexpression);
     }
     return _xblockexpression;
   }

@@ -5,12 +5,14 @@ import com.google.inject.Inject;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.hamcrest.StringDescription;
 import org.jnario.Executable;
+import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.SpecTestCreator;
 import org.jnario.jnario.test.util.Specs;
+import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingBackgroundSpec;
 import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingExampleGroupSpec;
 import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingExampleSpec;
 import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingFeatureSpec;
@@ -36,7 +38,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@Contains({ HashBasedSpec2ResultMappingExampleSpec.class, HashBasedSpec2ResultMappingExampleGroupSpec.class, HashBasedSpec2ResultMappingStepSpec.class, HashBasedSpec2ResultMappingScenarioSpec.class, HashBasedSpec2ResultMappingFeatureSpec.class, HashBasedSpec2ResultMappingSuiteSpec.class })
+@Contains({ HashBasedSpec2ResultMappingExampleSpec.class, HashBasedSpec2ResultMappingExampleGroupSpec.class, HashBasedSpec2ResultMappingStepSpec.class, HashBasedSpec2ResultMappingScenarioSpec.class, HashBasedSpec2ResultMappingFeatureSpec.class, HashBasedSpec2ResultMappingBackgroundSpec.class, HashBasedSpec2ResultMappingSuiteSpec.class })
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
 @Named("HashBasedSpec2ResultMapping")
@@ -112,6 +114,11 @@ public class HashBasedSpec2ResultMappingSpec {
   
   public Feature feature() {
     Feature _first = this.m.<Feature>first(Feature.class);
+    return _first;
+  }
+  
+  public Background background() {
+    Background _first = this.m.<Background>first(Background.class);
     return _first;
   }
   

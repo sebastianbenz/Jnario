@@ -8,6 +8,7 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.jnario.report.Failed;
 import org.jnario.report.Passed;
 import org.jnario.report.Pending;
@@ -33,7 +34,12 @@ public class SpecResultParser extends DefaultHandler {
   
   private String currentFailureMessage;
   
-  private String currentFailureStacktrace;
+  private StringBuilder currentFailureStacktrace = new Function0<StringBuilder>() {
+    public StringBuilder apply() {
+      StringBuilder _stringBuilder = new StringBuilder();
+      return _stringBuilder;
+    }
+  }.apply();
   
   private boolean isPending = false;
   
@@ -75,6 +81,8 @@ public class SpecResultParser extends DefaultHandler {
       if (Objects.equal(qName,SpecResultTags.NODE_FAILURE)) {
         _matched=true;
         this.saveFailureAttributes(attributes);
+        StringBuilder _stringBuilder = new StringBuilder();
+        this.currentFailureStacktrace = _stringBuilder;
       }
     }
     if (!_matched) {
@@ -123,17 +131,18 @@ public class SpecResultParser extends DefaultHandler {
     }
   }
   
-  public String addFailure() {
-    String _xblockexpression = null;
+  public StringBuilder addFailure() {
+    StringBuilder _xblockexpression = null;
     {
+      String _string = this.currentFailureStacktrace.toString();
       SpecFailure _specFailure = new SpecFailure(
         this.currentFailureMessage, 
-        this.currentFailureType, 
-        this.currentFailureStacktrace);
+        this.currentFailureType, _string);
       this.failures.add(_specFailure);
       this.currentFailureMessage = null;
       this.currentFailureType = null;
-      String _currentFailureStacktrace = this.currentFailureStacktrace = null;
+      StringBuilder _stringBuilder = new StringBuilder();
+      StringBuilder _currentFailureStacktrace = this.currentFailureStacktrace = _stringBuilder;
       _xblockexpression = (_currentFailureStacktrace);
     }
     return _xblockexpression;
@@ -141,7 +150,7 @@ public class SpecResultParser extends DefaultHandler {
   
   public void characters(final char[] ch, final int start, final int length) throws SAXException {
     String _valueOf = String.valueOf(ch, start, length);
-    this.currentFailureStacktrace = _valueOf;
+    this.currentFailureStacktrace.append(_valueOf);
   }
   
   public SpecExecution newSpecExecution() {

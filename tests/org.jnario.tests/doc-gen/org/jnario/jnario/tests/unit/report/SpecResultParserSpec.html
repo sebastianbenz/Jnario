@@ -111,7 +111,7 @@ describe SpecResultParser{
   static val CLASSNAME = &quot;demo.CalculatorSpec&quot;
   static val NAME = &quot;adding values&quot;
   static val EXECUTION_TIME = 0.01
-  static val FAILURE_MESSAGE = &quot;a message&quot;
+  static val FAILURE_MESSAGE = &quot;a message\nwithnewline&quot;
   static val FAILURE_TYPE = &quot;java.lang.AssertionError&quot;
   static val STACKTRACE = &quot;the stacktrace&quot;
   
@@ -184,7 +184,7 @@ describe SpecResultParser{
   }
   
   def failingSpec(){
-    new Failed(CLASSNAME, NAME, EXECUTION_TIME, newArrayList(new SpecFailure(&quot;a message&quot;, &quot;java.lang.AssertionError&quot;, &quot;the stacktrace&quot;)))
+    new Failed(CLASSNAME, NAME, EXECUTION_TIME, newArrayList(new SpecFailure(FAILURE_MESSAGE, &quot;java.lang.AssertionError&quot;, &quot;the stacktrace&quot;)))
   }
   
   

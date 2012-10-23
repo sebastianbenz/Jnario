@@ -30,6 +30,7 @@ import static org.jnario.report.Failed.*
 import org.jnario.feature.feature.Scenario
 import org.jnario.jnario.test.util.Specs
 import org.jnario.feature.feature.Feature
+import org.jnario.feature.feature.Background
 
 @CreateWith(typeof(SpecTestCreator))
 describe HashBasedSpec2ResultMapping {
@@ -308,6 +309,32 @@ describe HashBasedSpec2ResultMapping {
 		
 	}
 	
+	@CreateWith(typeof(FeatureTestCreator))
+	context "Background"{
+		before{
+			m.parseScenario('''
+				package test 
+				Feature: My Feature
+				Background:
+					Given a step
+				Scenario: My Scenario
+				Given another step
+			''')
+		}
+
+		fact "returns **Passed** if all scenarios passed"{
+			passedStep("Given a step")
+			passedStep("Given another step")
+			background.result => typeof(Passed)
+		}
+		
+		fact "returns **Failed** if one scenario failed"{
+			failedStep("Given a step")
+			background.result => typeof(Failed)
+		}
+		
+	}
+	
 	context "Suite"{
 		
 		fact "matches referenced suites"
@@ -329,6 +356,10 @@ describe HashBasedSpec2ResultMapping {
 
 	def feature(){
 		first(typeof(Feature))
+	} 
+	
+	def background(){
+		first(typeof(Background))
 	} 
 	
 	def scenario(){
