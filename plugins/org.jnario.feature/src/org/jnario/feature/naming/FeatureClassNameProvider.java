@@ -54,9 +54,8 @@ public class FeatureClassNameProvider extends JnarioNameProvider{
 		if (obj instanceof ExampleRow) {
 			return getClassName((ExampleRow)obj);
 		}
-		Scenario scenario = EcoreUtil2.getContainerOfType(obj, Scenario.class);
-		if(scenario != null){
-			return getClassName(scenario);
+		if (obj instanceof Step) {
+			return getClassName((Step)obj);
 		}
 		throw new UnsupportedOperationException("Missing getClassName for " + obj.eClass().getName());
 	}
@@ -114,12 +113,8 @@ public class FeatureClassNameProvider extends JnarioNameProvider{
 	public String toQualifiedJavaClassName(EObject eObject) {
 		if (eObject instanceof Step) {
 			Step step = (Step) eObject;
-			Feature feature = (Feature) step.eContainer().eContainer();
-			if(feature.getScenarios().isEmpty()){
-				return super.toQualifiedJavaClassName(eObject);
-			}
-			String className = toJavaClassName(feature.getScenarios().get(0));
-			if(isNullOrEmpty(className)){
+			String className = getClassName(step);
+			if(className == null){
 				return null;
 			}
 			String packageName = getPackageName(eObject);
@@ -129,5 +124,21 @@ public class FeatureClassNameProvider extends JnarioNameProvider{
 			return packageName + "." + className;
 		}
 		return super.toQualifiedJavaClassName(eObject);
+	}
+
+	protected String getClassName(Step step) {
+		Scenario scenario = getContainerOfType(step, Scenario.class);
+		if (scenario instanceof Background) {
+			Feature feature = getContainerOfType(scenario, Feature.class);
+			if(feature.getScenarios().isEmpty()){
+				return null;
+			}
+			scenario = feature.getScenarios().get(0);
+		}
+		String className = toJavaClassName(scenario);
+		if(isNullOrEmpty(className)){
+			return null;
+		}
+		return className;
 	}
 }

@@ -16,7 +16,6 @@ class SpecResultParser extends DefaultHandler{
 	SpecExecutionAcceptor acceptor
 
 	String currentFailureType
-	String currentFailureMessage
 	StringBuilder currentFailureStacktrace = new StringBuilder
 	
 	boolean isPending = false
@@ -52,7 +51,6 @@ class SpecResultParser extends DefaultHandler{
 	}
 	
 	def saveFailureAttributes(Attributes attributes){
-		currentFailureMessage = attributes.convertValue(SpecResultTags::ATTR_MESSAGE)
 		currentFailureType = attributes.convertValue(SpecResultTags::ATTR_TYPE)
 	}
 	
@@ -74,16 +72,25 @@ class SpecResultParser extends DefaultHandler{
 	}
 	
 	def addFailure(){
+		val stacktrace = currentFailureStacktrace.toString.replaceAll("\n\t", "\n")
+		val errorMessage = extractMessage(stacktrace)
 		failures += new SpecFailure(
-			currentFailureMessage,
+			errorMessage.key,
 			currentFailureType,
-			currentFailureStacktrace.toString
+			errorMessage.value
 		)
-		currentFailureMessage = null
 		currentFailureType = null
 		currentFailureStacktrace = new StringBuilder
 	}
 	
+	def private extractMessage(String message){
+		val end = message.indexOf("	at ")
+		if(end == -1){
+			message.trim -> ""
+		}else{
+			message.substring(0, end).trim -> message.substring(end, message.length)
+		}
+	}
 	
 	override characters(char[] ch, int start, int length) throws SAXException {
 		currentFailureStacktrace.append(String::valueOf(ch, start, length))

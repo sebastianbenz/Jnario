@@ -16,9 +16,18 @@ describe SpecResultParser{
 	static val CLASSNAME = "demo.CalculatorSpec"
 	static val NAME = "adding values"
 	static val EXECUTION_TIME = 0.01
-	static val FAILURE_MESSAGE = "a message\nwithnewline"
+	static val FAILURE_MESSAGE = '''
+									a message
+									withnewline'''.toString
 	static val FAILURE_TYPE = "java.lang.AssertionError"
-	static val STACKTRACE = "the stacktrace"
+	static val STACKTRACE = 
+					'''	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+					'''.toString
+							
+	static val XML_STACKTRACE = FAILURE_MESSAGE + "\n" + STACKTRACE
 	
 	val SpecExecutionAcceptor acceptor = mock(typeof(SpecExecutionAcceptor))
   
@@ -33,7 +42,7 @@ describe SpecResultParser{
 	fact "parses specs with failure from xml"{ 
 		'''
 		   <testcase time="«EXECUTION_TIME»" classname="«CLASSNAME»" name="«NAME»">
-		    <failure message="«FAILURE_MESSAGE»" type="«FAILURE_TYPE»">«STACKTRACE»</failure>
+		   <failure message="«FAILURE_MESSAGE»" type="«FAILURE_TYPE»">«XML_STACKTRACE»</failure>
 		   </testcase>
 		'''.toXml.parse 
 		
@@ -43,7 +52,7 @@ describe SpecResultParser{
 	fact "parses specs with error from xml"{ 
 		'''
 		   <testcase time="«EXECUTION_TIME»" classname="«CLASSNAME»" name="«NAME»">
-		    <error message="«FAILURE_MESSAGE»" type="«FAILURE_TYPE»">«STACKTRACE»</error>
+		   <error message="«FAILURE_MESSAGE»" type="«FAILURE_TYPE»">«XML_STACKTRACE»</error>
 		   </testcase>
 		'''.toXml.parse 
 		
@@ -54,7 +63,7 @@ describe SpecResultParser{
 		'''
 		   <testcase time="«EXECUTION_TIME»" classname="«CLASSNAME»" name="«NAME»"/>
 		   <testcase time="«EXECUTION_TIME»" classname="«CLASSNAME»" name="«NAME»">
-		    <error message="«FAILURE_MESSAGE»" type="«FAILURE_TYPE»">«STACKTRACE»</error>
+		   <error message="«FAILURE_MESSAGE»" type="«FAILURE_TYPE»">«XML_STACKTRACE»</error>
 		   </testcase>
 		'''.toXml.parse 
 		
@@ -89,7 +98,7 @@ describe SpecResultParser{
 	}
 	
 	def failingSpec(){
-		new Failed(CLASSNAME, NAME, EXECUTION_TIME, newArrayList(new SpecFailure(FAILURE_MESSAGE, "java.lang.AssertionError", "the stacktrace")))
+		new Failed(CLASSNAME, NAME, EXECUTION_TIME, newArrayList(new SpecFailure(FAILURE_MESSAGE, "java.lang.AssertionError", STACKTRACE)))
 	}
 	
 	

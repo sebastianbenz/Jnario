@@ -25,7 +25,6 @@ class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Executable2R
 		if(executable == null){
 			return new NotRun("", "")
 		}
-		println("search: " + executable.asKey)
 		var result = results.get(executable.asKey)
 		if(result != null){
 			return result
@@ -82,7 +81,6 @@ class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Executable2R
 
 	override accept(SpecExecution result) {
 		val key = result.className -> result.name
-		println("accept: " + key)
 		results.put(key, result)
 	}
 	

@@ -98,10 +98,10 @@ a:hover{color:#2c5d8d;text-decoration:underline;}
 p{margin:0 0 9.5px;}p small{font-size:12px;color:#999999;}
 .lead{margin-bottom:19px;font-size:20px;font-weight:200;line-height:28.5px;}
 h1,h2,h3,h4,h5,h6{margin:0;font-family:inherit;font-weight:bold;color:inherit;text-rendering:optimizelegibility;}h1 small,h2 small,h3 small,h4 small,h5 small,h6 small{font-weight:normal;color:#999999;}
-h1{font-size:30px;line-height:38px;}h1 small{font-size:18px;}
-h2{font-size:24px;line-height:38px;}h2 small{font-size:18px;}
-h3{font-size:18px;line-height:28.5px;}h3 small{font-size:14px;}
-h4,h5,h6{line-height:19px;}
+h1{font-size:30px;line-height:57px;}h1 small{font-size:18px;}
+h2{font-size:24px;line-height:57px;}h2 small{font-size:18px;}
+h3{font-size:18px;line-height:38px;}h3 small{font-size:14px;}
+h4,h5,h6{line-height:28.5px;}
 h4{font-size:14px;}h4 small{font-size:12px;}
 h5{font-size:12px;}
 h6{font-size:11px;color:#999999;text-transform:uppercase;}
@@ -205,7 +205,7 @@ input:focus:required:invalid,textarea:focus:required:invalid,select:focus:requir
 .input-prepend .uneditable-input,.input-append .uneditable-input{border-left-color:#ccc;}
 .input-prepend .add-on,.input-append .add-on{display:inline-block;width:auto;height:19px;min-width:16px;padding:4px 5px;font-weight:normal;line-height:19px;text-align:center;text-shadow:0 1px 0 #ffffff;vertical-align:middle;background-color:#eeeeee;border:1px solid #ccc;}
 .input-prepend .add-on,.input-append .add-on,.input-prepend .btn,.input-append .btn{margin-left:-1px;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;}
-.input-prepend .active,.input-append .active{background-color:#a9dba9;border-color:#46a546;}
+.input-prepend .active,.input-append .active{background-color:#bfff67;border-color:#77cd00;}
 .input-prepend .add-on,.input-prepend .btn{margin-right:-1px;}
 .input-prepend .add-on:first-child,.input-prepend .btn:first-child{-webkit-border-radius:3px 0 0 3px;-moz-border-radius:3px 0 0 3px;border-radius:3px 0 0 3px;-webkit-border-radius:3px 0 0 3px;-moz-border-radius:3px 0 0 3px;border-radius:3px 0 0 3px;}
 .input-append input,.input-append select,.input-append .uneditable-input{-webkit-border-radius:3px 0 0 3px;-moz-border-radius:3px 0 0 3px;border-radius:3px 0 0 3px;-webkit-border-radius:3px 0 0 3px;-moz-border-radius:3px 0 0 3px;border-radius:3px 0 0 3px;}

@@ -67,31 +67,25 @@ val actual =
 &quot;.generateDoc
 
 val expected = '''
-  &lt;p&gt;This is a description.&lt;/p&gt;
-  &lt;div&gt;&lt;h3 class=&quot;scenario &quot;  id=&quot;Scenario_Example_Scenario&quot;&gt;Scenario: Example Scenario
-  &lt;/h3&gt;
-  &lt;ul&gt;
-  &lt;li&gt;&lt;span class=&quot;step &quot;&gt;&lt;p&gt;&lt;strong&gt;Given&lt;/strong&gt; a step with an argument &lt;code&gt;&quot;something&quot;&lt;/code&gt;, another &lt;code&gt;&quot;argument&quot;&lt;/code&gt; and a multiline string:&lt;/p&gt;&lt;pre&gt;import java.util.Collections.*;
-  
-  public class Greeter{
-    public static void main(String args[]){
-      List&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;String&amp;gt;(); // should escape angle brackets
-      Systen.out.println('Hello World');
-    }
-  }&lt;/pre&gt;&lt;/span&gt;
-  &lt;ul&gt;
-  &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;span class=&quot;step &quot;&gt;&lt;p&gt;&lt;strong&gt;When&lt;/strong&gt; I do something that is pending. [PENDING]&lt;/p&gt;&lt;/span&gt;
-  &lt;ul&gt;
-  &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;span class=&quot;step &quot;&gt;&lt;p&gt;&lt;strong&gt;Then&lt;/strong&gt; it results in &lt;code&gt;&quot;something else&quot;&lt;/code&gt;&lt;/p&gt;&lt;/span&gt;
-  &lt;ul&gt;
-  &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;/ul&gt;
-  &lt;/div&gt;
+&lt;p&gt;This is a description.&lt;/p&gt;
+&lt;div&gt;&lt;h3 class=&quot;scenario &quot;  id=&quot;Scenario_Example_Scenario&quot;&gt;Scenario: Example Scenario
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&quot;step &quot;&gt;&lt;p&gt;Given a step with an argument &lt;code&gt;&quot;something&quot;&lt;/code&gt;, another &lt;code&gt;&quot;argument&quot;&lt;/code&gt; and a multiline string:&lt;/p&gt;&lt;pre&gt;import java.util.Collections.*;
+
+public class Greeter{
+  public static void main(String args[]){
+    List&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;String&amp;gt;(); // should escape angle brackets
+    Systen.out.println('Hello World');
+  }
+}&lt;/pre&gt;&lt;/span&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span class=&quot;step &quot;&gt;&lt;p&gt;When I do something that is pending. [PENDING]&lt;/p&gt;&lt;/span&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span class=&quot;step &quot;&gt;&lt;p&gt;Then it results in &lt;code&gt;&quot;something else&quot;&lt;/code&gt;&lt;/p&gt;&lt;/span&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
   '''.toString
 
 assertEquals(expected, actual)</pre>
@@ -183,31 +177,25 @@ describe FeatureDocGenerator {
     &quot;.generateDoc
     
     val expected = '''
-      &lt;p&gt;This is a description.&lt;/p&gt;
-      &lt;div&gt;&lt;h3 class=&quot;scenario &quot;  id=&quot;Scenario_Example_Scenario&quot;&gt;Scenario: Example Scenario
-      &lt;/h3&gt;
-      &lt;ul&gt;
-      &lt;li&gt;&lt;span class=&quot;step &quot;&gt;&lt;p&gt;&lt;strong&gt;Given&lt;/strong&gt; a step with an argument &lt;code&gt;&quot;something&quot;&lt;/code&gt;, another &lt;code&gt;&quot;argument&quot;&lt;/code&gt; and a multiline string:&lt;/p&gt;&lt;pre&gt;import java.util.Collections.*;
-      
-      public class Greeter{
-        public static void main(String args[]){
-          List&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;String&amp;gt;(); // should escape angle brackets
-          Systen.out.println('Hello World');
-        }
-      }&lt;/pre&gt;&lt;/span&gt;
-      &lt;ul&gt;
-      &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;span class=&quot;step &quot;&gt;&lt;p&gt;&lt;strong&gt;When&lt;/strong&gt; I do something that is pending. [PENDING]&lt;/p&gt;&lt;/span&gt;
-      &lt;ul&gt;
-      &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;span class=&quot;step &quot;&gt;&lt;p&gt;&lt;strong&gt;Then&lt;/strong&gt; it results in &lt;code&gt;&quot;something else&quot;&lt;/code&gt;&lt;/p&gt;&lt;/span&gt;
-      &lt;ul&gt;
-      &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;/ul&gt;
-      &lt;/div&gt;
+&lt;p&gt;This is a description.&lt;/p&gt;
+&lt;div&gt;&lt;h3 class=&quot;scenario &quot;  id=&quot;Scenario_Example_Scenario&quot;&gt;Scenario: Example Scenario
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&quot;step &quot;&gt;&lt;p&gt;Given a step with an argument &lt;code&gt;&quot;something&quot;&lt;/code&gt;, another &lt;code&gt;&quot;argument&quot;&lt;/code&gt; and a multiline string:&lt;/p&gt;&lt;pre&gt;import java.util.Collections.*;
+
+public class Greeter{
+  public static void main(String args[]){
+    List&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;String&amp;gt;(); // should escape angle brackets
+    Systen.out.println('Hello World');
+  }
+}&lt;/pre&gt;&lt;/span&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span class=&quot;step &quot;&gt;&lt;p&gt;When I do something that is pending. [PENDING]&lt;/p&gt;&lt;/span&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span class=&quot;step &quot;&gt;&lt;p&gt;Then it results in &lt;code&gt;&quot;something else&quot;&lt;/code&gt;&lt;/p&gt;&lt;/span&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
       '''.toString
     
     assertEquals(expected, actual)

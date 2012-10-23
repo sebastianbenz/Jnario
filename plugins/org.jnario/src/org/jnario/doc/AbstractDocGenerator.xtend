@@ -212,19 +212,10 @@ abstract class AbstractDocGenerator implements IGenerator {
 			Failed: '''
 				«FOR failure : result.failures»
 				 <pre class="errormessage">
-				 «failure.formatStackTrace»</pre>
+				 «failure.message»</pre>
 				«ENDFOR»
 			'''
 			default: ""
-		}
-	}
-	
-	def private formatStackTrace(SpecFailure failure){
-		val end = failure.stacktrace.indexOf("	at ")
-		if(end == -1){
-			failure.stacktrace
-		}else{
-			failure.stacktrace.substring(0, end)
 		}
 	}
 	

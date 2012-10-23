@@ -9,6 +9,7 @@ import javax.xml.parsers.SAXParserFactory;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
+import org.eclipse.xtext.xbase.lib.Pair;
 import org.jnario.report.Failed;
 import org.jnario.report.Passed;
 import org.jnario.report.Pending;
@@ -31,8 +32,6 @@ public class SpecResultParser extends DefaultHandler {
   private SpecExecutionAcceptor acceptor;
   
   private String currentFailureType;
-  
-  private String currentFailureMessage;
   
   private StringBuilder currentFailureStacktrace = new Function0<StringBuilder>() {
     public StringBuilder apply() {
@@ -94,15 +93,9 @@ public class SpecResultParser extends DefaultHandler {
   }
   
   public String saveFailureAttributes(final Attributes attributes) {
-    String _xblockexpression = null;
-    {
-      String _convertValue = this.convertValue(attributes, SpecResultTags.ATTR_MESSAGE);
-      this.currentFailureMessage = _convertValue;
-      String _convertValue_1 = this.convertValue(attributes, SpecResultTags.ATTR_TYPE);
-      String _currentFailureType = this.currentFailureType = _convertValue_1;
-      _xblockexpression = (_currentFailureType);
-    }
-    return _xblockexpression;
+    String _convertValue = this.convertValue(attributes, SpecResultTags.ATTR_TYPE);
+    String _currentFailureType = this.currentFailureType = _convertValue;
+    return _currentFailureType;
   }
   
   public void endElement(final String uri, final String localName, final String qName) throws SAXException {
@@ -135,15 +128,41 @@ public class SpecResultParser extends DefaultHandler {
     StringBuilder _xblockexpression = null;
     {
       String _string = this.currentFailureStacktrace.toString();
-      SpecFailure _specFailure = new SpecFailure(
-        this.currentFailureMessage, 
-        this.currentFailureType, _string);
+      final String stacktrace = _string.replaceAll("\n\t", "\n");
+      final Pair<String,String> errorMessage = this.extractMessage(stacktrace);
+      String _key = errorMessage.getKey();
+      String _value = errorMessage.getValue();
+      SpecFailure _specFailure = new SpecFailure(_key, 
+        this.currentFailureType, _value);
       this.failures.add(_specFailure);
-      this.currentFailureMessage = null;
       this.currentFailureType = null;
       StringBuilder _stringBuilder = new StringBuilder();
       StringBuilder _currentFailureStacktrace = this.currentFailureStacktrace = _stringBuilder;
       _xblockexpression = (_currentFailureStacktrace);
+    }
+    return _xblockexpression;
+  }
+  
+  private Pair<String,String> extractMessage(final String message) {
+    Pair<String,String> _xblockexpression = null;
+    {
+      final int end = message.indexOf("\tat ");
+      Pair<String,String> _xifexpression = null;
+      int _minus = (-1);
+      boolean _equals = (end == _minus);
+      if (_equals) {
+        String _trim = message.trim();
+        Pair<String,String> _mappedTo = Pair.<String, String>of(_trim, "");
+        _xifexpression = _mappedTo;
+      } else {
+        String _substring = message.substring(0, end);
+        String _trim_1 = _substring.trim();
+        int _length = message.length();
+        String _substring_1 = message.substring(end, _length);
+        Pair<String,String> _mappedTo_1 = Pair.<String, String>of(_trim_1, _substring_1);
+        _xifexpression = _mappedTo_1;
+      }
+      _xblockexpression = (_xifexpression);
     }
     return _xblockexpression;
   }

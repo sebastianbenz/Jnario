@@ -63,9 +63,10 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 	def dispatch generate(Iterable<Step> steps)'''
 		<ul>
 		«FOR step : steps»
-		<li>«generate(step)»
-		«generate(step.and.filter(typeof(Step)))»
-		</li>
+		<li>«generate(step)»</li>
+		«FOR and : step.and»
+		<li>«generate(step)»</li>
+		«ENDFOR»
 		«ENDFOR»
 		</ul>
 	'''
@@ -89,7 +90,8 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 	}
 
 	def private highlighFirstWord(String s){
-		s.replaceFirst("(" + s.firstWord + ")", "<strong>$1</strong>")
+//		s.replaceFirst("(" + s.firstWord + ")", "<strong>$1</strong>")
+		s
 	}
 
 	def private addCodeBlock(Step step){

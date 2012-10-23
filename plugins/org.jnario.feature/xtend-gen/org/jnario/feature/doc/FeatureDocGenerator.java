@@ -125,14 +125,18 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
         _builder.append("<li>");
         CharSequence _generate = this.generate(step);
         _builder.append(_generate, "");
-        _builder.newLineIfNotEmpty();
-        EList<Step> _and = step.getAnd();
-        Iterable<Step> _filter = Iterables.<Step>filter(_and, Step.class);
-        CharSequence _generate_1 = this.generate(_filter);
-        _builder.append(_generate_1, "");
-        _builder.newLineIfNotEmpty();
         _builder.append("</li>");
-        _builder.newLine();
+        _builder.newLineIfNotEmpty();
+        {
+          EList<Step> _and = step.getAnd();
+          for(final Step and : _and) {
+            _builder.append("<li>");
+            CharSequence _generate_1 = this.generate(step);
+            _builder.append(_generate_1, "");
+            _builder.append("</li>");
+            _builder.newLineIfNotEmpty();
+          }
+        }
       }
     }
     _builder.append("</ul>");
@@ -179,11 +183,7 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
   }
   
   private String highlighFirstWord(final String s) {
-    String _firstWord = org.jnario.util.Strings.getFirstWord(s);
-    String _plus = ("(" + _firstWord);
-    String _plus_1 = (_plus + ")");
-    String _replaceFirst = s.replaceFirst(_plus_1, "<strong>$1</strong>");
-    return _replaceFirst;
+    return s;
   }
   
   private CharSequence addCodeBlock(final Step step) {

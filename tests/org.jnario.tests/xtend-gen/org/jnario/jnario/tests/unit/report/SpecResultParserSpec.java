@@ -32,11 +32,46 @@ public class SpecResultParserSpec {
   
   final static double EXECUTION_TIME = 0.01;
   
-  final static String FAILURE_MESSAGE = "a message\nwithnewline";
+  final static String FAILURE_MESSAGE = new Function0<String>() {
+    public String apply() {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("a message");
+      _builder.newLine();
+      _builder.append("withnewline");
+      String _string = _builder.toString();
+      return _string;
+    }
+  }.apply();
   
   final static String FAILURE_TYPE = "java.lang.AssertionError";
   
-  final static String STACKTRACE = "the stacktrace";
+  final static String STACKTRACE = new Function0<String>() {
+    public String apply() {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("\t");
+      _builder.append("at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("at java.lang.reflect.Constructor.newInstance(Constructor.java:513)");
+      _builder.newLine();
+      String _string = _builder.toString();
+      return _string;
+    }
+  }.apply();
+  
+  final static String XML_STACKTRACE = new Function0<String>() {
+    public String apply() {
+      String _plus = (SpecResultParserSpec.FAILURE_MESSAGE + "\n");
+      String _plus_1 = (_plus + SpecResultParserSpec.STACKTRACE);
+      return _plus_1;
+    }
+  }.apply();
   
   final SpecExecutionAcceptor acceptor = new Function0<SpecExecutionAcceptor>() {
     public SpecExecutionAcceptor apply() {
@@ -78,13 +113,12 @@ public class SpecResultParserSpec {
     _builder.append(SpecResultParserSpec.NAME, "");
     _builder.append("\">");
     _builder.newLineIfNotEmpty();
-    _builder.append(" ");
     _builder.append("<failure message=\"");
-    _builder.append(SpecResultParserSpec.FAILURE_MESSAGE, " ");
+    _builder.append(SpecResultParserSpec.FAILURE_MESSAGE, "");
     _builder.append("\" type=\"");
-    _builder.append(SpecResultParserSpec.FAILURE_TYPE, " ");
+    _builder.append(SpecResultParserSpec.FAILURE_TYPE, "");
     _builder.append("\">");
-    _builder.append(SpecResultParserSpec.STACKTRACE, " ");
+    _builder.append(SpecResultParserSpec.XML_STACKTRACE, "");
     _builder.append("</failure>");
     _builder.newLineIfNotEmpty();
     _builder.append("</testcase>");
@@ -109,13 +143,12 @@ public class SpecResultParserSpec {
     _builder.append(SpecResultParserSpec.NAME, "");
     _builder.append("\">");
     _builder.newLineIfNotEmpty();
-    _builder.append(" ");
     _builder.append("<error message=\"");
-    _builder.append(SpecResultParserSpec.FAILURE_MESSAGE, " ");
+    _builder.append(SpecResultParserSpec.FAILURE_MESSAGE, "");
     _builder.append("\" type=\"");
-    _builder.append(SpecResultParserSpec.FAILURE_TYPE, " ");
+    _builder.append(SpecResultParserSpec.FAILURE_TYPE, "");
     _builder.append("\">");
-    _builder.append(SpecResultParserSpec.STACKTRACE, " ");
+    _builder.append(SpecResultParserSpec.XML_STACKTRACE, "");
     _builder.append("</error>");
     _builder.newLineIfNotEmpty();
     _builder.append("</testcase>");
@@ -148,13 +181,12 @@ public class SpecResultParserSpec {
     _builder.append(SpecResultParserSpec.NAME, "");
     _builder.append("\">");
     _builder.newLineIfNotEmpty();
-    _builder.append(" ");
     _builder.append("<error message=\"");
-    _builder.append(SpecResultParserSpec.FAILURE_MESSAGE, " ");
+    _builder.append(SpecResultParserSpec.FAILURE_MESSAGE, "");
     _builder.append("\" type=\"");
-    _builder.append(SpecResultParserSpec.FAILURE_TYPE, " ");
+    _builder.append(SpecResultParserSpec.FAILURE_TYPE, "");
     _builder.append("\">");
-    _builder.append(SpecResultParserSpec.STACKTRACE, " ");
+    _builder.append(SpecResultParserSpec.XML_STACKTRACE, "");
     _builder.append("</error>");
     _builder.newLineIfNotEmpty();
     _builder.append("</testcase>");
@@ -223,7 +255,7 @@ public class SpecResultParserSpec {
   }
   
   public Failed failingSpec() {
-    SpecFailure _specFailure = new SpecFailure(SpecResultParserSpec.FAILURE_MESSAGE, "java.lang.AssertionError", "the stacktrace");
+    SpecFailure _specFailure = new SpecFailure(SpecResultParserSpec.FAILURE_MESSAGE, "java.lang.AssertionError", SpecResultParserSpec.STACKTRACE);
     ArrayList<SpecFailure> _newArrayList = CollectionLiterals.<SpecFailure>newArrayList(_specFailure);
     Failed _failed = new Failed(SpecResultParserSpec.CLASSNAME, SpecResultParserSpec.NAME, SpecResultParserSpec.EXECUTION_TIME, _newArrayList);
     return _failed;

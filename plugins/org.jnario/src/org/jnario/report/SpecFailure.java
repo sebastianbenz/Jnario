@@ -70,7 +70,6 @@ public class SpecFailure {
   
   @Override
   public String toString() {
-    String result = new ToStringHelper().toString(this);
-    return result;
+    return _message + "\n" + _stacktrace;
   }
 }
