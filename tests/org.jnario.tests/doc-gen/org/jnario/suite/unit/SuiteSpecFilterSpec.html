@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header">
+				<div class="page-header ">
 					<h1>SuiteSpecFilter</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -35,16 +35,16 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<ul><li><p id="Suites_pass"><strong>Suites pass</strong></p>
+<ul><li><p id="Suites_pass" class="example "><strong>Suites pass</strong></p>
 <pre class="prettyprint lang-spec linenums">
 subject.apply(desc(suite)) =&gt; true</pre>
-</li><li><p id="Features_pass"><strong>Features pass</strong></p>
+</li><li><p id="Features_pass" class="example "><strong>Features pass</strong></p>
 <pre class="prettyprint lang-spec linenums">
 subject.apply(desc(feature)) =&gt; true</pre>
-</li><li><p id="Root_Specs_pass"><strong>Root Specs pass</strong></p>
+</li><li><p id="Root_Specs_pass" class="example "><strong>Root Specs pass</strong></p>
 <pre class="prettyprint lang-spec linenums">
 subject.apply(rootSpec) =&gt; true</pre>
-</li><li><p id="Child_Specs_fail"><strong>Child Specs fail</strong></p>
+</li><li><p id="Child_Specs_fail" class="example "><strong>Child Specs fail</strong></p>
 <pre class="prettyprint lang-spec linenums">
 subject.apply(childSpec) =&gt; false</pre>
 </li></ul>

@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header">
+				<div class="page-header ">
 					<h1>StepNameProvider</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -36,11 +36,11 @@
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
 <p>@author Sebastian Benz - Initial contribution and API</p>
-<h3 id="nameOf">NameOf</h3>
-<ul><li><p id="returns_null_if_the_step_has_no_name"><strong>returns null if the step has no name</strong></p>
+<h3 class="exampleGroup "  id="nameOf_Step">NameOf[Step]</h3> 
+<ul><li><p id="returns_null_if_the_step_has_no_name" class="example "><strong>returns null if the step has no name</strong></p>
 <pre class="prettyprint lang-spec linenums">
 assert subject.nameOf(emptyStep) == null</pre>
-</li><li><p id="returns_the_name_for_a_step_with_definition"><strong>returns the name for a step with definition</strong></p>
+</li><li><p id="returns_the_name_for_a_step_with_definition" class="example "><strong>returns the name for a step with definition</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseScenario('''
     Scenario: MyScenario
@@ -49,7 +49,7 @@ parseScenario('''
 ''')
 
 stepName =&gt; &quot;Given a step with an implementation&quot;</pre>
-</li><li><p id="returns_the_name_for_a_step_with_resolved_reference"><strong>returns the name for a step with resolved reference</strong></p>
+</li><li><p id="returns_the_name_for_a_step_with_resolved_reference" class="example "><strong>returns the name for a step with resolved reference</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseScenario('''
     Scenario: MyScenario 2
@@ -60,7 +60,7 @@ parseScenario('''
 ''')
 
 stepName =&gt; &quot;Given a step with a resolved reference&quot;</pre>
-</li><li><p id="returns_the_name_for_a_step_with_unresolved_reference"><strong>returns the name for a step with unresolved reference</strong></p>
+</li><li><p id="returns_the_name_for_a_step_with_unresolved_reference" class="example "><strong>returns the name for a step with unresolved reference</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseScenario('''
     Scenario: MyScenario 2
@@ -68,7 +68,7 @@ parseScenario('''
 ''')
 
 stepName =&gt; &quot;Given a step with an unresolved reference&quot;</pre>
-</li><li><p id="keeps_parameter_values"><strong>keeps parameter values</strong></p>
+</li><li><p id="keeps_parameter_values" class="example "><strong>keeps parameter values</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseScenario('''
     Scenario: MyScenario 2
@@ -78,8 +78,8 @@ parseScenario('''
 
 stepName =&gt; 'Given a step with two values &quot;a&quot; and &quot;b&quot;'</pre>
 </li></ul>
-<h3 id="describe_Feature">^describe[Feature]</h3>
-<ul><li><p id="removes_multilines_parameters"><strong>removes multilines parameters</strong></p>
+<h3 class="exampleGroup "  id="describe_Feature">Describe[Feature]</h3> 
+<ul><li><p id="removes_multilines_parameters" class="example "><strong>removes multilines parameters</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseScenario('''
     Scenario: MyScenario 2
@@ -89,10 +89,10 @@ parseScenario('''
 ''')
 
 describeStep =&gt; 'Given a step with multiline parameter'</pre>
-</li><li><p id="feature_With_whitespace_desc_With_whitespace"><strong>feature[" With whitespace "].desc =>  "With whitespace"</strong></p>
-</li><li><p id="feature_With_parentheses_desc_With_parentheses"><strong>feature["With [parentheses]"].desc =>  "With [parentheses]"</strong></p>
+</li><li><p id="feature_With_whitespace_desc_With_whitespace" class="example "><strong>feature[" With whitespace "].desc =>  "With whitespace"</strong></p>
+</li><li><p id="feature_With_parentheses_desc_With_parentheses" class="example "><strong>feature["With [parentheses]"].desc =>  "With [parentheses]"</strong></p>
 </li></ul>
-<h3 id="removeArguments">RemoveArguments</h3>
+<h3 class="exampleGroup "  id="removeArguments_String">RemoveArguments[String]</h3> 
 <ul><li><p id="examples"><strong>Examples</strong></p>
 <table class="table table-striped table-bordered table-condensed">
 	<thead>
@@ -112,7 +112,7 @@ describeStep =&gt; 'Given a step with multiline parameter'</pre>
 	</tr>
 	</tbody>
 </table>
-</li><li><p id="examples_do_pass"><strong>examples do pass</strong></p>
+</li><li><p id="examples_do_pass" class="example "><strong>examples do pass</strong></p>
 <pre class="prettyprint lang-spec linenums">
 examples.forEach[
   parseScenario('''
@@ -122,9 +122,9 @@ examples.forEach[
   subject.removeArguments(step) =&gt; result
 ]</pre>
 </li></ul>
-<h3 id="describe_Scenario">^describe[Scenario]</h3>
-<ul><li><p id="scenario_With_whitespace_desc_With_whitespace"><strong>scenario[" With whitespace "].desc =>  "With whitespace"</strong></p>
-</li><li><p id="scenario_With_parentheses_desc_With_parentheses"><strong>scenario["With [parentheses]"].desc =>  "With [parentheses]"</strong></p>
+<h3 class="exampleGroup "  id="describe_Scenario">Describe[Scenario]</h3> 
+<ul><li><p id="scenario_With_whitespace_desc_With_whitespace" class="example "><strong>scenario[" With whitespace "].desc =>  "With whitespace"</strong></p>
+</li><li><p id="scenario_With_parentheses_desc_With_parentheses" class="example "><strong>scenario["With [parentheses]"].desc =>  "With [parentheses]"</strong></p>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">

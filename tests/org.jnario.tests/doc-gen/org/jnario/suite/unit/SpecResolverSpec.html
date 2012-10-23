@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header">
+				<div class="page-header ">
 					<h1>SpecResolver</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -35,7 +35,7 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<ul><li><p id="resolves_referenced_specs"><strong>resolves referenced specs</strong></p>
+<ul><li><p id="resolves_referenced_specs" class="example "><strong>resolves referenced specs</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseSuite('''
   package demo
@@ -47,17 +47,17 @@ parseSuite('''
 ''')
 
 resolvedSpecs(firstSuite).toSet =&gt; set(&quot;MySpecSpec&quot;, &quot;MyFeatureFeature&quot;)</pre>
-</li><li><p id="filters_unresolved_specs"><strong>filters unresolved specs</strong></p>
+</li><li><p id="filters_unresolved_specs" class="example "><strong>filters unresolved specs</strong></p>
 <pre class="prettyprint lang-spec linenums">
 val suite = suiteWith(&quot;A Suite&quot;, specReference(null), specReference(null))
 suite.resolvedSpecs =&gt; emptyList</pre>
-</li><li><p id="ignores_specs_without_name"><strong>ignores specs without name</strong></p>
+</li><li><p id="ignores_specs_without_name" class="example "><strong>ignores specs without name</strong></p>
 <pre class="prettyprint lang-spec linenums">
 val specWithoutName = Specs::exampleGroup(null)
 val suite = suiteWith(&quot;A Suite&quot;, specReference(specWithoutName))
 subject.resolveSpecs(suite) =&gt; list(specWithoutName)</pre>
-</li></ul><h3 id="evaluates_regular_expressions">Evaluates regular expressions</h3>
-<ul><li><p id="example_1"><strong>example 1</strong></p>
+</li></ul><h3 class="exampleGroup "  id="evaluates_regular_expressions">Evaluates regular expressions</h3> 
+<ul><li><p id="example_1" class="example "><strong>example 1</strong></p>
 <pre class="prettyprint lang-spec linenums">
 m.parseSuite('''
 package demo
@@ -68,7 +68,7 @@ import demo.*
       ''')
       
       resolvedSpecs(m.firstSuite).toSet =&gt; set(&quot;MySpecSpec&quot;, &quot;MyFeatureFeature&quot;)</pre>
-</li><li><p id="example_2"><strong>example 2</strong></p>
+</li><li><p id="example_2" class="example "><strong>example 2</strong></p>
 <pre class="prettyprint lang-spec linenums">
 m.parseSuite('''
   package demo
@@ -79,10 +79,10 @@ m.parseSuite('''
 ''')
 
 resolvedSpecs(m.firstSuite) =&gt; list(&quot;MySpecSpec&quot;)</pre>
-</li><li><p id="returns_empty_list_on_null_input"><strong>returns empty list on null input</strong></p>
+</li><li><p id="returns_empty_list_on_null_input" class="example "><strong>returns empty list on null input</strong></p>
 <pre class="prettyprint lang-spec linenums">
 subject.resolveSpecs(SuiteFactory::eINSTANCE.createPatternReference) =&gt; list()</pre>
-</li><li><p id="ignores_unresolved_elements"><strong>ignores unresolved elements</strong></p>
+</li><li><p id="ignores_unresolved_elements" class="example "><strong>ignores unresolved elements</strong></p>
 <pre class="prettyprint lang-spec linenums">
 m.parseSuite('''
   package demo
@@ -93,7 +93,7 @@ m.parseSuite('''
 ''')
 
 resolvedSpecs(m.firstSuite) =&gt; list()</pre>
-</li><li><p id="ignores_containing_suite"><strong>ignores containing suite</strong></p>
+</li><li><p id="ignores_containing_suite" class="example "><strong>ignores containing suite</strong></p>
 <pre class="prettyprint lang-spec linenums">
 m.parseSuite('''
   package demo
@@ -104,7 +104,7 @@ m.parseSuite('''
 ''')
 
 resolvedSpecs(m.firstSuite).toSet =&gt; set(&quot;MySpecSpec&quot;, &quot;MyFeatureFeature&quot;, &quot;StringSpec&quot;)</pre>
-</li><li><p id="orders_specs_alphabetically"><strong>orders specs alphabetically</strong></p>
+</li><li><p id="orders_specs_alphabetically" class="example "><strong>orders specs alphabetically</strong></p>
 <pre class="prettyprint lang-spec linenums">
 m.parseSuite('''
   package demo

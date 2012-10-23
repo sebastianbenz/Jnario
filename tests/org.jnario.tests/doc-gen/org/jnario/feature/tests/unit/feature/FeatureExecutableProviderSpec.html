@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header">
+				<div class="page-header ">
 					<h1>FeatureExecutableProvider</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -35,7 +35,7 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<ul><li><p id="returns_background_and_scenarios"><strong>returns background and scenarios</strong></p>
+<ul><li><p id="returns_background_and_scenarios" class="example "><strong>returns background and scenarios</strong></p>
 <pre class="prettyprint lang-spec linenums">
 '''
 Feature: My feature
@@ -44,7 +44,7 @@ Scenario: My first Scenario
 Scenario: My second Scenario
 '''.parseScenario
 feature().executables =&gt; list(scenario(&quot;Background: My Background&quot;), scenario(&quot;Scenario: My first Scenario&quot;), scenario(&quot;Scenario: My second Scenario&quot;))</pre>
-</li><li><p id="returns_steps"><strong>returns steps</strong></p>
+</li><li><p id="returns_steps" class="example "><strong>returns steps</strong></p>
 <pre class="prettyprint lang-spec linenums">
 '''
 Feature: My feature
@@ -52,7 +52,7 @@ Scenario: My first Scenario
   Given something
 '''.parseScenario
 scenario(&quot;Scenario: My first Scenario&quot;).executables =&gt; list(step(&quot;Given something&quot;))</pre>
-</li><li><p id="returns_sub_steps"><strong>returns sub steps</strong></p>
+</li><li><p id="returns_sub_steps" class="example "><strong>returns sub steps</strong></p>
 <pre class="prettyprint lang-spec linenums">
 '''
 Feature: My feature

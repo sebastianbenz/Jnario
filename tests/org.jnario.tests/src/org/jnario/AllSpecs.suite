@@ -14,7 +14,7 @@ package org.jnario
 Run all specs of the commonly used Jnario features.
 - \org\.jnario\.jnario\..*\ 
 
-##Suite 
+##Suite
 
 Run all specs of the Jnario suite lang.
 - \org\.jnario\.suite\..*\

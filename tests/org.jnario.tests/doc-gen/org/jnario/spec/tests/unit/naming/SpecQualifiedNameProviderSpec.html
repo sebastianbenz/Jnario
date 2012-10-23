@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header">
+				<div class="page-header ">
 					<h1>SpecQualifiedNameProvider</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -35,7 +35,7 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<ul><li><p id="null_if_spec_description_is_empty"><strong>null if spec description is empty</strong></p>
+<ul><li><p id="null_if_spec_description_is_empty" class="example "><strong>null if spec description is empty</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseSpec('''
   package test
@@ -45,27 +45,27 @@ qualifiedName should be null
 parseSpec('''
   describe &quot;&quot;{}''')
 qualifiedName should be null</pre>
-</li><li><p id="uses_spec_description"><strong>uses spec description</strong></p>
+</li><li><p id="uses_spec_description" class="example "><strong>uses spec description</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseSpec('''
   describe &quot;My Spec&quot;{}''')
 qualifiedName =&gt; &quot;My Spec&quot;</pre>
-</li><li><p id="trims_spec_description_whitespace"><strong>trims spec description whitespace</strong></p>
+</li><li><p id="trims_spec_description_whitespace" class="example "><strong>trims spec description whitespace</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseSpec('''
   describe &quot;My Spec  &quot;{}''')
 qualifiedName =&gt; &quot;My Spec&quot;</pre>
-</li><li><p id="uses_referenced_type"><strong>uses referenced type</strong></p>
+</li><li><p id="uses_referenced_type" class="example "><strong>uses referenced type</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseSpec('''
   describe org.junit.Assert{}''')
 qualifiedName =&gt; &quot;Assert&quot;</pre>
-</li><li><p id="uses_referenced_type_and_description"><strong>uses referenced type and description</strong></p>
+</li><li><p id="uses_referenced_type_and_description" class="example "><strong>uses referenced type and description</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseSpec('''
   describe org.junit.Assert &quot;My Spec&quot;{}''')
 qualifiedName =&gt; &quot;Assert My Spec&quot;</pre>
-</li><li><p id="adds_spec_package"><strong>adds spec package</strong></p>
+</li><li><p id="adds_spec_package" class="example "><strong>adds spec package</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseSpec('''
   package test

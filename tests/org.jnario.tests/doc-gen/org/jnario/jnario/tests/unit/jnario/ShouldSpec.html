@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header">
+				<div class="page-header ">
 					<h1>Should</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -35,7 +35,7 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<ul><li><p id="isNot_is_false_if_for_1_should_be_1"><strong>'isNot' is false if for '1 should be 1</strong></p>
+<ul><li><p id="isNot_is_false_if_for_1_should_be_1" class="example "><strong>'isNot' is false if for '1 should be 1</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseSpec('''
   package bootstrap
@@ -45,7 +45,7 @@ parseSpec('''
 ''')
 
 assert !query.first(typeof(Should)).isNot</pre>
-</li><li><p id="isNot_is_true_if_for_1_should_not_be_1"><strong>'isNot' is true if for '1 should not be 1</strong></p>
+</li><li><p id="isNot_is_true_if_for_1_should_not_be_1" class="example "><strong>'isNot' is true if for '1 should not be 1</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseSpec('''
   package bootstrap
@@ -55,7 +55,7 @@ parseSpec('''
 ''')
 
 assert query.first(typeof(Should)).isNot</pre>
-</li><li><p id="short_circuit_invocation_works_in_closures_within_assertions"><strong>short circuit invocation works in closures within assertions</strong></p>
+</li><li><p id="short_circuit_invocation_works_in_closures_within_assertions" class="example "><strong>short circuit invocation works in closures within assertions</strong></p>
 <pre class="prettyprint lang-spec linenums">
 '''
   describe &quot;Test&quot;{

@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Access of variablesorg.jnario.feature.feature.impl.FeatureImplCustom@4dccb549 (name: Access of variables, abstract: false) (description: 
-	)</title>
+<title>Access of variables</title>
 <meta name="description" content="">
 <meta name="author" content="Jnario">
 
@@ -25,9 +24,8 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header">
-					<h1>Access of variablesorg.jnario.feature.feature.impl.FeatureImplCustom@4dccb549 (name: Access of variables, abstract: false) (description: 
-						)</h1>
+				<div class="page-header ">
+					<h1>Access of variables</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
 						<li><a href="#source" data-toggle="tab">Source</a></li>
@@ -37,47 +35,48 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<p></p>
-<h3  id="Scenario_Access_a_variable_in_the_same_step_it_was_declared_in">Scenario: Access a variable in the same step it was declared in
+<div><h3 class="scenario "  id="Scenario_Access_a_variable_in_the_same_step_it_was_declared_in">Scenario: Access a variable in the same step it was declared in
 </h3>
 <ul>
-<li><p><strong>When</strong> I have scenario with a reference to a variable</p><pre>package bootstrap1
+<li><span class="step "><p><strong>When</strong> I have scenario with a reference to a variable</p><pre>package bootstrap1
 Feature: Variable test
   Scenario: Some scenario
     Given a step with a variable
       var x = 3
-      x = 5</pre>
+      x = 5</pre></span>
 <ul>
 </ul>
 </li>
-<li><p><strong>Then</strong> it should execute successfully</p>
+<li><span class="step "><p><strong>Then</strong> it should execute successfully</p></span>
 <ul>
 </ul>
 </li>
 </ul>
-<h3  id="Scenario_Access_a_variable_that_was_declared_in_a_different_step">Scenario: Access a variable that was declared in a different step
+</div>
+<div><h3 class="scenario "  id="Scenario_Access_a_variable_that_was_declared_in_a_different_step">Scenario: Access a variable that was declared in a different step
 </h3>
 <ul>
-<li><p><strong>When</strong> I use a variable in different steps</p><pre>package bootstrap2
+<li><span class="step "><p><strong>When</strong> I use a variable in different steps</p><pre>package bootstrap2
 Feature: Variable test
   Scenario: Some scenario
     int x
     Given a step with a variable
       x = 3
     When I assign it a different value
-      x = 5</pre>
+      x = 5</pre></span>
 <ul>
 </ul>
 </li>
-<li><p><strong>Then</strong> it should execute successfully</p>
+<li><span class="step "><p><strong>Then</strong> it should execute successfully</p></span>
 <ul>
 </ul>
 </li>
 </ul>
-<h3  id="Scenario_Access_a_variable_that_was_assigned_a_value_of_a_variable_defined_in_a_different_step">Scenario: Access a variable that was assigned a value of a variable defined in a different step
+</div>
+<div><h3 class="scenario "  id="Scenario_Access_a_variable_that_was_assigned_a_value_of_a_variable_defined_in_a_different_step">Scenario: Access a variable that was assigned a value of a variable defined in a different step
 </h3>
 <ul>
-<li><p><strong>When</strong> I have a complex usage of variables</p><pre>package bootstrap3
+<li><span class="step "><p><strong>When</strong> I have a complex usage of variables</p><pre>package bootstrap3
 Feature: Variable test
   Scenario: Some scenario
     int x
@@ -87,19 +86,20 @@ Feature: Variable test
     When I assign it a different value
       y = x
     Then y should be 3
-      y =&gt; 3</pre>
+      y =&gt; 3</pre></span>
 <ul>
 </ul>
 </li>
-<li><p><strong>Then</strong> it should execute successfully</p>
+<li><span class="step "><p><strong>Then</strong> it should execute successfully</p></span>
 <ul>
 </ul>
 </li>
 </ul>
-<h3  id="Scenario_Access_a_variable_declared_in_background_step">Scenario: Access a variable declared in background step
+</div>
+<div><h3 class="scenario "  id="Scenario_Access_a_variable_declared_in_background_step">Scenario: Access a variable declared in background step
 </h3>
 <ul>
-<li><p><strong>When</strong> I define a variable in the background</p><pre>package bootstrap4
+<li><span class="step "><p><strong>When</strong> I define a variable in the background</p><pre>package bootstrap4
 Feature: Variable test
   Background:
     int x
@@ -107,19 +107,20 @@ Feature: Variable test
       x = 3
   Scenario: Some scenario
       Then x should be 3
-        x =&gt; 3</pre>
+        x =&gt; 3</pre></span>
 <ul>
 </ul>
 </li>
-<li><p><strong>Then</strong> it should execute successfully</p>
+<li><span class="step "><p><strong>Then</strong> it should execute successfully</p></span>
 <ul>
 </ul>
 </li>
 </ul>
-<h3  id="Scenario_Access_a_variable_referencing_a_variable_from_background_step">Scenario: Access a variable referencing a variable from background step
+</div>
+<div><h3 class="scenario "  id="Scenario_Access_a_variable_referencing_a_variable_from_background_step">Scenario: Access a variable referencing a variable from background step
 </h3>
 <ul>
-<li><p><strong>When</strong> I reference a variable from the background</p><pre>package bootstrap5
+<li><span class="step "><p><strong>When</strong> I reference a variable from the background</p><pre>package bootstrap5
 Feature: Variable test
   Background:
     int x
@@ -130,15 +131,16 @@ Feature: Variable test
       When assigning the variable
         y = x
       Then it should be accessible
-        y =&gt; 3</pre>
+        y =&gt; 3</pre></span>
 <ul>
 </ul>
 </li>
-<li><p><strong>Then</strong> it should execute successfully</p>
+<li><span class="step "><p><strong>Then</strong> it should execute successfully</p></span>
 <ul>
 </ul>
 </li>
 </ul>
+</div>
 							</div>
 						    <div class="tab-pane" id="source">
 						    	<h3>Variables.feature</h3>

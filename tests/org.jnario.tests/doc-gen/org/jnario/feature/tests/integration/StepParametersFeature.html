@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Step Parametersorg.jnario.feature.feature.impl.FeatureImplCustom@29d4d758 (name: Step Parameters, abstract: false) (description: 	
-	)</title>
+<title>Step Parameters</title>
 <meta name="description" content="">
 <meta name="author" content="Jnario">
 
@@ -25,9 +24,8 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header">
-					<h1>Step Parametersorg.jnario.feature.feature.impl.FeatureImplCustom@29d4d758 (name: Step Parameters, abstract: false) (description: 	
-						)</h1>
+				<div class="page-header ">
+					<h1>Step Parameters</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
 						<li><a href="#source" data-toggle="tab">Source</a></li>
@@ -37,49 +35,50 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<p></p>
-<h3  id="Scenario_Parameters_are_defined_in_quotes">Scenario: Parameters are defined in quotes
+<div><h3 class="scenario "  id="Scenario_Parameters_are_defined_in_quotes">Scenario: Parameters are defined in quotes
 </h3>
 <ul>
-<li><p><strong>When</strong> I have a feature with parameters</p><pre>package bootstrap
+<li><span class="step "><p><strong>When</strong> I have a feature with parameters</p><pre>package bootstrap
 Feature: Test feature
   Scenario: using fields in step definitions
     String x
     Given some values &quot;3&quot;, &quot;4&quot;
       x = args.get(0)
     Then it should be possible to get the value
-      x =&gt; &quot;3&quot;</pre>
+      x =&gt; &quot;3&quot;</pre></span>
 <ul>
 </ul>
 </li>
-<li><p><strong>Then</strong> it should execute successfully</p>
+<li><span class="step "><p><strong>Then</strong> it should execute successfully</p></span>
 <ul>
 </ul>
 </li>
 </ul>
-<h3  id="Scenario_Access_of_parameters_with_first_second">Scenario: Access of parameters with first, second, ...
+</div>
+<div><h3 class="scenario "  id="Scenario_Access_of_parameters_with_first_second">Scenario: Access of parameters with first, second, ...
 </h3>
 <ul>
-<li><p><strong>When</strong> I access those parameters</p><pre>package bootstrap
+<li><span class="step "><p><strong>When</strong> I access those parameters</p><pre>package bootstrap
 Feature: Test feature
   Scenario: using fields in step definitions
     String x
     Given some values &quot;3&quot;, &quot;4&quot;
       x = args.first
     Then it should be possible to get the value
-      x =&gt; &quot;3&quot;</pre>
+      x =&gt; &quot;3&quot;</pre></span>
 <ul>
 </ul>
 </li>
-<li><p><strong>Then</strong> it should execute successfully</p>
+<li><span class="step "><p><strong>Then</strong> it should execute successfully</p></span>
 <ul>
 </ul>
 </li>
 </ul>
-<h3  id="Scenario_Parameter_definition_in_steps_and_Background">Scenario: Parameter definition in steps and Background
+</div>
+<div><h3 class="scenario "  id="Scenario_Parameter_definition_in_steps_and_Background">Scenario: Parameter definition in steps and Background
 </h3>
 <ul>
-<li><p><strong>When</strong> I define parameters in a background</p><pre>package bootstrap 
+<li><span class="step "><p><strong>When</strong> I define parameters in a background</p><pre>package bootstrap 
 Feature: Test feature
   Background:
     String x
@@ -87,19 +86,20 @@ Feature: Test feature
       x = args.get(1)
   Scenario: using fields in step definitions
     Then those values should be accessible
-      x =&gt; &quot;4&quot;</pre>
+      x =&gt; &quot;4&quot;</pre></span>
 <ul>
 </ul>
 </li>
-<li><p><strong>Then</strong> it should execute successfully</p>
+<li><span class="step "><p><strong>Then</strong> it should execute successfully</p></span>
 <ul>
 </ul>
 </li>
 </ul>
-<h3  id="Scenario_Parameter_definition_in_and_steps">Scenario: Parameter definition in and steps
+</div>
+<div><h3 class="scenario "  id="Scenario_Parameter_definition_in_and_steps">Scenario: Parameter definition in and steps
 </h3>
 <ul>
-<li><p><strong>When</strong> I define parameters in a an and step</p><pre>Feature: Test feature
+<li><span class="step "><p><strong>When</strong> I define parameters in a an and step</p><pre>Feature: Test feature
 Scenario: &quot;And&quot; args in step definition
   var strings = &lt;String&gt;list()
   Given a string &quot;hello&quot;
@@ -115,19 +115,20 @@ Scenario: &quot;And&quot; args in step reference
     strings += args.first
     And a string &quot;world&quot;
   Then the string is
-    strings =&gt; list(&quot;hello&quot;, &quot;world&quot;)</pre>
+    strings =&gt; list(&quot;hello&quot;, &quot;world&quot;)</pre></span>
 <ul>
 </ul>
 </li>
-<li><p><strong>Then</strong> it should execute successfully</p>
+<li><span class="step "><p><strong>Then</strong> it should execute successfully</p></span>
 <ul>
 </ul>
 </li>
 </ul>
-<h3  id="Scenario_Referencing_variables_that_contain_a_value_from_args">Scenario: Referencing variables that contain a value from args
+</div>
+<div><h3 class="scenario "  id="Scenario_Referencing_variables_that_contain_a_value_from_args">Scenario: Referencing variables that contain a value from args
 </h3>
 <ul>
-<li><p><strong>When</strong> I have a scenario that references a step with arguments</p><pre>package bootstrap 
+<li><span class="step "><p><strong>When</strong> I have a scenario that references a step with arguments</p><pre>package bootstrap 
 Feature: Test feature
   Scenario: using fields in step definitions
     String x
@@ -137,27 +138,29 @@ Feature: Test feature
     When I add &quot; world&quot;
       y = x + args.first
     Then it should be &quot;hello world&quot;
-      y should be args.first</pre>
+      y should be args.first</pre></span>
 <ul>
 </ul>
 </li>
-<li><p><strong>Then</strong> it should execute successfully</p>
+<li><span class="step "><p><strong>Then</strong> it should execute successfully</p></span>
 <ul>
 </ul>
 </li>
 </ul>
-<h3  id="Scenario_Using_multiline_Strings">Scenario: Using multiline Strings
+</div>
+<div><h3 class="scenario "  id="Scenario_Using_multiline_Strings">Scenario: Using multiline Strings
 </h3>
 <ul>
-<li><p><strong>When</strong> I have a scenario with multiline strings</p>
+<li><span class="step "><p><strong>When</strong> I have a scenario with multiline strings</p></span>
 <ul>
 </ul>
 </li>
-<li><p><strong>Then</strong> it should execute successfully</p>
+<li><span class="step "><p><strong>Then</strong> it should execute successfully</p></span>
 <ul>
 </ul>
 </li>
 </ul>
+</div>
 							</div>
 						    <div class="tab-pane" id="source">
 						    	<h3>StepParameters.feature</h3>

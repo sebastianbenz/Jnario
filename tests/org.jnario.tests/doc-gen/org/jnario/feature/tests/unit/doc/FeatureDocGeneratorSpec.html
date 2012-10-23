@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header">
+				<div class="page-header ">
 					<h1>FeatureDocGenerator</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -35,7 +35,7 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<ul><li><p id="generates_scenario_documentation"><strong>generates scenario documentation</strong></p>
+<ul><li><p id="generates_scenario_documentation" class="example "><strong>generates scenario documentation</strong></p>
 <pre class="prettyprint lang-spec linenums">
 val actual = 
 &quot;
@@ -95,7 +95,7 @@ val expected = '''
   '''.toString
 
 assertEquals(expected, actual)</pre>
-</li><li><p id="Includes_failure_state_in_Feature"><strong>Includes failure state in Feature</strong></p>
+</li><li><p id="Includes_failure_state_in_Feature" class="example "><strong>Includes failure state in Feature</strong></p>
 <pre class="prettyprint lang-spec linenums">
 '''
   Feature: Example

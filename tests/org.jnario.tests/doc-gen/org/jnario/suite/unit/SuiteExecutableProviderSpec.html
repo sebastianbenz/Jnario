@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header">
+				<div class="page-header ">
 					<h1>SuiteExecutableProvider</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -35,7 +35,7 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<ul><li><p id="returns_contained_suites"><strong>returns contained suites</strong></p>
+<ul><li><p id="returns_contained_suites" class="example "><strong>returns contained suites</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseSuite('''
   package demo
@@ -48,7 +48,7 @@ parseSuite('''
 ''')
 
 subject.getExecutables(suite(&quot;My Suite&quot;)) =&gt; list(suite(&quot;Child 1&quot;), suite(&quot;Child 2&quot;))</pre>
-</li><li><p id="returns_resolved_specs"><strong>returns resolved specs</strong></p>
+</li><li><p id="returns_resolved_specs" class="example "><strong>returns resolved specs</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseSuite('''
   package demo
@@ -60,7 +60,7 @@ parseSuite('''
 ''')
 
 subject.getExecutables(suite(&quot;My Suite&quot;)).toSet =&gt; set(exampleGroup(&quot;My Spec&quot;), feature())</pre>
-</li><li><p id="returns_resolved_specs"><strong>returns resolved specs</strong></p>
+</li><li><p id="returns_resolved_specs" class="example "><strong>returns resolved specs</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseSuite('''
   package demo

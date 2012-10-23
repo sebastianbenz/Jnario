@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header">
+				<div class="page-header ">
 					<h1>DocumentationProvider</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -35,22 +35,22 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<ul><li><p id="returns_null_if_no_comment"><strong>returns null if no comment</strong></p>
+<ul><li><p id="returns_null_if_no_comment" class="example "><strong>returns null if no comment</strong></p>
 <pre class="prettyprint lang-spec linenums">
 documentation(null) =&gt; null</pre>
-</li><li><p id="returns_comment"><strong>returns comment</strong></p>
+</li><li><p id="returns_comment" class="example "><strong>returns comment</strong></p>
 <pre class="prettyprint lang-spec linenums">
 documentation(&quot;Hello World&quot;) =&gt; &quot;Hello World&quot;</pre>
-</li><li><p id="can_be_escaped_with"><strong>'/*' can be escaped with ''</strong></p>
+</li><li><p id="can_be_escaped_with" class="example "><strong>'/*' can be escaped with ''</strong></p>
 <pre class="prettyprint lang-spec linenums">
 documentation(&quot;Hello \\/*World&quot;) =&gt; &quot;Hello /*World&quot;</pre>
-</li><li><p id="can_be_unescaped_with"><strong>'\/*' can be unescaped with ''</strong></p>
+</li><li><p id="can_be_unescaped_with" class="example "><strong>'\/*' can be unescaped with ''</strong></p>
 <pre class="prettyprint lang-spec linenums">
 documentation(&quot;Hello \\\\/*World&quot;) =&gt; &quot;Hello \\/*World&quot;</pre>
-</li><li><p id="can_also_be_escaped_with"><strong>'*/' can also be escaped with ''</strong></p>
+</li><li><p id="can_also_be_escaped_with" class="example "><strong>'*/' can also be escaped with ''</strong></p>
 <pre class="prettyprint lang-spec linenums">
 documentation(&quot;Hello \\*/World&quot;) =&gt; &quot;Hello */World&quot;</pre>
-</li><li><p id="can_also_be_unescaped_with"><strong>'\*/' can also be unescaped with ''</strong></p>
+</li><li><p id="can_also_be_unescaped_with" class="example "><strong>'\*/' can also be unescaped with ''</strong></p>
 <pre class="prettyprint lang-spec linenums">
 documentation(&quot;Hello \\\\*/World&quot;) =&gt; &quot;Hello \\*/World&quot;</pre>
 </li></ul>

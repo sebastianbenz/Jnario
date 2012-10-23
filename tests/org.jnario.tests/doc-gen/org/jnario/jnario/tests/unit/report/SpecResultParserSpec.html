@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header">
+				<div class="page-header ">
 					<h1>SpecResultParser</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -35,14 +35,14 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<ul><li><p id="parses_successfull_specs_from_xml"><strong>parses successfull specs from xml</strong></p>
+<ul><li><p id="parses_successfull_specs_from_xml" class="example "><strong>parses successfull specs from xml</strong></p>
 <pre class="prettyprint lang-spec linenums">
 '''
   &lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;&laquo;NAME&raquo;&quot;/&gt;
 '''.toXml.parse 
 
 verify(acceptor).accept(passingSpec)</pre>
-</li><li><p id="parses_specs_with_failure_from_xml"><strong>parses specs with failure from xml</strong></p>
+</li><li><p id="parses_specs_with_failure_from_xml" class="example "><strong>parses specs with failure from xml</strong></p>
 <pre class="prettyprint lang-spec linenums">
 '''
    &lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;&laquo;NAME&raquo;&quot;&gt;
@@ -51,7 +51,7 @@ verify(acceptor).accept(passingSpec)</pre>
 '''.toXml.parse 
 
 verify(acceptor).accept(failingSpec)</pre>
-</li><li><p id="parses_specs_with_error_from_xml"><strong>parses specs with error from xml</strong></p>
+</li><li><p id="parses_specs_with_error_from_xml" class="example "><strong>parses specs with error from xml</strong></p>
 <pre class="prettyprint lang-spec linenums">
 '''
    &lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;&laquo;NAME&raquo;&quot;&gt;
@@ -60,7 +60,7 @@ verify(acceptor).accept(failingSpec)</pre>
 '''.toXml.parse 
 
 verify(acceptor).accept(failingSpec)</pre>
-</li><li><p id="parses_multiple_spec_results"><strong>parses multiple spec results</strong></p>
+</li><li><p id="parses_multiple_spec_results" class="example "><strong>parses multiple spec results</strong></p>
 <pre class="prettyprint lang-spec linenums">
 '''
    &lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;&laquo;NAME&raquo;&quot;/&gt;
@@ -71,7 +71,7 @@ verify(acceptor).accept(failingSpec)</pre>
 
 verify(acceptor).accept(passingSpec)
 verify(acceptor).accept(failingSpec)</pre>
-</li><li><p id="created_pending_results"><strong>created pending results</strong></p>
+</li><li><p id="created_pending_results" class="example "><strong>created pending results</strong></p>
 <pre class="prettyprint lang-spec linenums">
 '''
    &lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;&laquo;NAME&raquo;&quot;&gt;
@@ -80,7 +80,7 @@ verify(acceptor).accept(failingSpec)</pre>
 '''.toXml.parse 
 
 verify(acceptor).accept(pendingSpec)</pre>
-</li><li><p id="decodes_escaped_strings"><strong>decodes escaped strings</strong></p>
+</li><li><p id="decodes_escaped_strings" class="example "><strong>decodes escaped strings</strong></p>
 <pre class="prettyprint lang-spec linenums">
 '''
    &lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;When I entered \&amp;quot;50\&amp;quot; and \&amp;quot;70\&amp;quot;&quot;/&gt;

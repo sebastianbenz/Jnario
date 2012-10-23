@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header">
+				<div class="page-header ">
 					<h1>HtmlAssetsCompiler</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -35,12 +35,12 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<ul><li><p id="compiles_css_js_files_to_specified_folder"><strong>compiles css & js files to specified folder</strong></p>
+<ul><li><p id="compiles_css_js_files_to_specified_folder" class="example "><strong>compiles css & js files to specified folder</strong></p>
 <pre class="prettyprint lang-spec linenums">
 doCompile
 assert file(&quot;js/prettify.js&quot;).exists
 assert file(&quot;css/prettify.css&quot;).exists</pre>
-</li><li><p id="does_not_override_existing_file"><strong>does not override existing file</strong></p>
+</li><li><p id="does_not_override_existing_file" class="example "><strong>does not override existing file</strong></p>
 <pre class="prettyprint lang-spec linenums">
 mkdir(&quot;js&quot;)
 val file = file(&quot;js/prettify.js&quot;).toString

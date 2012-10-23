@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header">
+				<div class="page-header ">
 					<h1>StepArgumentsProvider</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -90,13 +90,13 @@
 	</tr>
 	</tbody>
 </table>
-</li><li><p id="extracts_arguments_from_step_descriptions"><strong>extracts arguments from step descriptions</strong></p>
+</li><li><p id="extracts_arguments_from_step_descriptions" class="example "><strong>extracts arguments from step descriptions</strong></p>
 <pre class="prettyprint lang-spec linenums">
 examples.forEach[
   val foundArgs = subject.findStepArguments(create(step))
   foundArgs =&gt; expectedArgs
 ]</pre>
-</li><li><p id="returns_empty_list_if_step_has_no_name"><strong>returns empty list if step has no name</strong></p>
+</li><li><p id="returns_empty_list_if_step_has_no_name" class="example "><strong>returns empty list if step has no name</strong></p>
 <pre class="prettyprint lang-spec linenums">
 subject.findStepArguments(step(null)) =&gt; list()</pre>
 </li></ul>

@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header">
+				<div class="page-header ">
 					<h1>Using Xtend's with Operator</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -36,14 +36,14 @@
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
 <p>In Xtend you can use the <a href="http://www.eclipse.org/xtend/new_and_noteworthy/index.html#withOperator">with operator</a>  <code>=&gt;</code> as a let-expression, which allows binding any object to the scope of the block, which can be handy when initializing objects. In Jnario <code>=&gt;</code> also can be used to describe the expected behavior of objects. It works great together with Xtend's with operator. You can use it to:</p>
-<ul><li><p id="initialize_fixtures"><strong>initialize fixtures</strong></p>
+<ul><li><p id="initialize_fixtures" class="example "><strong>initialize fixtures</strong></p>
 <pre class="prettyprint lang-spec linenums">
 val stackWithTwoElements = new Stack&lt;String&gt; =&gt; [
   add(&quot;red&quot;)
   add(&quot;blue&quot;)
 ]
 stackWithTwoElements.size =&gt; 2</pre>
-</li><li><p id="write_multiple_assertions"><strong>write multiple assertions</strong></p>
+</li><li><p id="write_multiple_assertions" class="example "><strong>write multiple assertions</strong></p>
 <pre class="prettyprint lang-spec linenums">
 &quot;hello world&quot; =&gt; [
   length =&gt; 11

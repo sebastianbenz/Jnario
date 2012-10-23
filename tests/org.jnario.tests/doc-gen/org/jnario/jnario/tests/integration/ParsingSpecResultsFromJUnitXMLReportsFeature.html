@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Parsing spec results from JUnit XML reportsorg.jnario.feature.feature.impl.FeatureImplCustom@446ba7e4 (name: Parsing spec results from JUnit XML reports, abstract: false) (description: 
-	)</title>
+<title>Parsing spec results from JUnit XML reports</title>
 <meta name="description" content="">
 <meta name="author" content="Jnario">
 
@@ -25,9 +24,8 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header">
-					<h1>Parsing spec results from JUnit XML reportsorg.jnario.feature.feature.impl.FeatureImplCustom@446ba7e4 (name: Parsing spec results from JUnit XML reports, abstract: false) (description: 
-						)</h1>
+				<div class="page-header ">
+					<h1>Parsing spec results from JUnit XML reports</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
 						<li><a href="#source" data-toggle="tab">Source</a></li>
@@ -37,46 +35,46 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<p></p>
-<h3  id="Scenario_Matching_successfull_Spec_Runs">Scenario: Matching successfull Spec Runs
+<div><h3 class="scenario "  id="Scenario_Matching_successfull_Spec_Runs">Scenario: Matching successfull Spec Runs
 </h3>
 <ul>
-<li><p><strong>Given</strong> a specification</p><pre>package example
+<li><span class="step "><p><strong>Given</strong> a specification</p><pre>package example
 describe &quot;Adding values&quot;{
   fact &quot;4 + 3 is 7&quot;{
     4 + 3 =&gt; 7
   }
-}</pre>
+}</pre></span>
 <ul>
-<li><p><strong>And</strong> a test result xml file</p><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+<li><span class="step "><p><strong>And</strong> a test result xml file</p><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
 &lt;testsuite failures=&quot;0&quot; time=&quot;0.001&quot; errors=&quot;0&quot; skipped=&quot;0&quot; tests=&quot;1&quot; name=&quot;example.AddingValuesSpec&quot;&gt;
   &lt;properties&gt;
     &lt;property name=&quot;java.runtime.name&quot; value=&quot;Java(TM) SE Runtime Environment&quot;/&gt;
   &lt;/properties&gt;
   &lt;testcase time=&quot;0.001&quot; classname=&quot;example.AddingValuesSpec&quot; name=&quot;4 + 3 is 7&quot;/&gt;
-&lt;/testsuite&gt;</pre>
+&lt;/testsuite&gt;</pre></span>
 <ul>
 </ul>
 </li>
 </ul>
 </li>
-<li><p><strong>Then</strong> the spec execution <code>"passed"</code></p>
+<li><span class="step "><p><strong>Then</strong> the spec execution <code>"passed"</code></p></span>
 <ul>
 </ul>
 </li>
 </ul>
-<h3  id="Scenario_Matching_failed_Spec_runs">Scenario: Matching failed Spec runs
+</div>
+<div><h3 class="scenario "  id="Scenario_Matching_failed_Spec_runs">Scenario: Matching failed Spec runs
 </h3>
 <ul>
-<li><p><strong>Given</strong> a specification</p><pre>package example
+<li><span class="step "><p><strong>Given</strong> a specification</p><pre>package example
 
 describe &quot;Adding values&quot;{
   fact &quot;4 + 3 is 8&quot;{
     4 + 3 =&gt; 8
   }
-}</pre>
+}</pre></span>
 <ul>
-<li><p><strong>And</strong> a test result xml file</p><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+<li><span class="step "><p><strong>And</strong> a test result xml file</p><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
 &lt;testsuite failures=&quot;1&quot; time=&quot;0.017&quot; errors=&quot;0&quot; skipped=&quot;0&quot; tests=&quot;1&quot; name=&quot;example.AddingValuesSpec&quot;&gt;
   &lt;properties&gt;
     &lt;property name=&quot;java.runtime.name&quot; value=&quot;Java(TM) SE Runtime Environment&quot;/&gt;
@@ -93,17 +91,18 @@ Expected 4 + 3 =&amp;gt; 8 but
   at example.AddingValuesSpec.__43Is8(AddingValuesSpec.java:22)
 &lt;/failure&gt;
   &lt;/testcase&gt;
-&lt;/testsuite&gt;</pre>
+&lt;/testsuite&gt;</pre></span>
 <ul>
 </ul>
 </li>
 </ul>
 </li>
-<li><p><strong>Then</strong> the spec execution <code>"failed"</code></p>
+<li><span class="step "><p><strong>Then</strong> the spec execution <code>"failed"</code></p></span>
 <ul>
 </ul>
 </li>
 </ul>
+</div>
 							</div>
 						    <div class="tab-pane" id="source">
 						    	<h3>SpecResultsFromXml.feature</h3>

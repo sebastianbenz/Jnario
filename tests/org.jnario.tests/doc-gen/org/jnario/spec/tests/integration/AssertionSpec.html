@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header">
+				<div class="page-header ">
 					<h1>Assertion</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -35,21 +35,21 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<h3 id="Introduction">Introduction</h3>
+<h3 class="exampleGroup "  id="Introduction">Introduction</h3> 
 <p>Jnario provides a special <code>assert</code> statement that makes it really easy to write meaningful assertions.</p>
-<ul><li><p id="To_pass"><strong>To pass..</strong></p>
+<ul><li><p id="To_pass" class="example "><strong>To pass..</strong></p>
 <p><code>assert</code> passes if the expression evaluates to true.</p>
 <pre class="prettyprint lang-spec linenums">
 assert true
 assert 1 == 1</pre>
-</li><li><p id="or_not_to_pass"><strong>...or not to pass</strong></p>
+</li><li><p id="or_not_to_pass" class="example "><strong>...or not to pass</strong></p>
 <p><code>assert</code> throws an AssertionError if the expression evaluates to false.</p>
 <pre class="prettyprint lang-spec linenums">
 {assert false} throws AssertionError</pre>
 </li></ul>
-<h3 id="No_more_debugging">No more debugging...</h3>
+<h3 class="exampleGroup "  id="No_more_debugging">No more debugging...</h3> 
 <p>Assertions in Jnario are selfexplainable. This means, when failing, they try to provide as as much information as possible. In that case, they print the exact expression that has failed together with the actual value of all subexpressions.</p>
-<ul><li><p id="Variable_Access"><strong>Variable Access</strong></p>
+<ul><li><p id="Variable_Access" class="example "><strong>Variable Access</strong></p>
 <p>For example, it will print the value of all referenced variables.</p>
 <pre class="prettyprint lang-spec linenums">
 val y = false
@@ -57,14 +57,14 @@ errorMessage[assert y].is(
 '''
 Expected y but
      y is &lt;false&gt;''')</pre>
-</li><li><p id="Filters_literals"><strong>Filters literals</strong></p>
+</li><li><p id="Filters_literals" class="example "><strong>Filters literals</strong></p>
 <p>Literal values obviously won't be printed.</p>
 <pre class="prettyprint lang-spec linenums">
 val x = 0  
 errorMessage[assert x == 42].is('''
   Expected x == 42 but
        x is &lt;0&gt;''')</pre>
-</li><li><p id="Not_Equals"><strong>Not Equals</strong></p>
+</li><li><p id="Not_Equals" class="example "><strong>Not Equals</strong></p>
 <p>Here is another example .</p>
 <pre class="prettyprint lang-spec linenums">
 val x = 42     
@@ -72,20 +72,20 @@ errorMessage[assert !(x == 42)].is('''
   Expected !(x == 42) but
        x == 42 is &lt;true&gt;
        x is &lt;42&gt;''')</pre>
-</li><li><p id="Function_Calls"><strong>Function Calls</strong></p>
+</li><li><p id="Function_Calls" class="example "><strong>Function Calls</strong></p>
 <p>The result of a function call will be printed as well.</p>
 <pre class="prettyprint lang-spec linenums">
 errorMessage[assert greet(&quot;World&quot;) == &quot;Hello World!&quot;].is('''
   Expected greet(&quot;World&quot;) == &quot;Hello World!&quot; but
        greet(&quot;World&quot;) is &quot;Hello World&quot;''')</pre>
-</li><li><p id="Feature_Calls"><strong>Feature Calls</strong></p>
+</li><li><p id="Feature_Calls" class="example "><strong>Feature Calls</strong></p>
 <p>The result of each feature call will be printed.</p>
 <pre class="prettyprint lang-spec linenums">
 errorMessage[assert &quot;Hello&quot;.toUpperCase.toLowerCase == &quot;HELLO&quot;].is('''
   Expected &quot;Hello&quot;.toUpperCase.toLowerCase == &quot;HELLO&quot; but
        &quot;Hello&quot;.toUpperCase.toLowerCase is &quot;hello&quot;
        &quot;Hello&quot;.toUpperCase is &quot;HELLO&quot;''')</pre>
-</li><li><p id="And_expressions"><strong>And expressions</strong></p>
+</li><li><p id="And_expressions" class="example "><strong>And expressions</strong></p>
 <p>This example involves two expressions with <code>&amp;&amp;</code>.</p>
 <pre class="prettyprint lang-spec linenums">
 val x = 0 
@@ -96,7 +96,7 @@ errorMessage[assert x == 1 &amp;&amp; y == 0].is('''
        x is &lt;0&gt;
        y == 0 is &lt;false&gt;
        y is &lt;1&gt;''')</pre>
-</li><li><p id="Removes_duplicate_feature_calls"><strong>Removes duplicate feature calls</strong></p>
+</li><li><p id="Removes_duplicate_feature_calls" class="example "><strong>Removes duplicate feature calls</strong></p>
 <p>If the same variable is accessed multiple times it will be printed only once.</p>
 <pre class="prettyprint lang-spec linenums">
 val x = 0 
