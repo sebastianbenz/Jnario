@@ -7,6 +7,7 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.jnario.report.Failed;
 import org.jnario.report.Passed;
+import org.jnario.report.Pending;
 import org.jnario.report.SpecExecutionAcceptor;
 import org.jnario.report.SpecFailure;
 import org.jnario.report.SpecResultParser;
@@ -169,8 +170,33 @@ public class SpecResultParserSpec {
   }
   
   @Test
-  @Named("decodes escaped strings")
+  @Named("created pending results")
   @Order(4)
+  public void _createdPendingResults() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<testcase time=\"");
+    _builder.append(SpecResultParserSpec.EXECUTION_TIME, "");
+    _builder.append("\" classname=\"");
+    _builder.append(SpecResultParserSpec.CLASSNAME, "");
+    _builder.append("\" name=\"");
+    _builder.append(SpecResultParserSpec.NAME, "");
+    _builder.append("\">");
+    _builder.newLineIfNotEmpty();
+    _builder.append(" ");
+    _builder.append("<skipped/>");
+    _builder.newLine();
+    _builder.append("</testcase>");
+    _builder.newLine();
+    CharSequence _xml = this.toXml(_builder);
+    this.parse(_xml);
+    SpecExecutionAcceptor _verify = Mockito.<SpecExecutionAcceptor>verify(this.acceptor);
+    Pending _pendingSpec = this.pendingSpec();
+    _verify.accept(_pendingSpec);
+  }
+  
+  @Test
+  @Named("decodes escaped strings")
+  @Order(5)
   public void _decodesEscapedStrings() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<testcase time=\"");
@@ -189,6 +215,11 @@ public class SpecResultParserSpec {
   public Passed passingSpec() {
     Passed _passed = new Passed(SpecResultParserSpec.CLASSNAME, SpecResultParserSpec.NAME, SpecResultParserSpec.EXECUTION_TIME);
     return _passed;
+  }
+  
+  public Pending pendingSpec() {
+    Pending _pending = new Pending(SpecResultParserSpec.CLASSNAME, SpecResultParserSpec.NAME, SpecResultParserSpec.EXECUTION_TIME);
+    return _pending;
   }
   
   public Failed failingSpec() {

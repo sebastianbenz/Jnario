@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header ">
+				<div class="page-header">
 					<h1>SpecResultParser</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -71,6 +71,15 @@ verify(acceptor).accept(failingSpec)</pre>
 
 verify(acceptor).accept(passingSpec)
 verify(acceptor).accept(failingSpec)</pre>
+</li><li><p id="created_pending_results"><strong>created pending results</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+   &lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;&laquo;NAME&raquo;&quot;&gt;
+    &lt;skipped/&gt;
+   &lt;/testcase&gt;
+'''.toXml.parse 
+
+verify(acceptor).accept(pendingSpec)</pre>
 </li><li><p id="decodes_escaped_strings"><strong>decodes escaped strings</strong></p>
 <pre class="prettyprint lang-spec linenums">
 '''
@@ -95,6 +104,7 @@ import org.jnario.report.SpecResultParser
 
 import static org.jnario.jnario.tests.unit.report.SpecResultParserSpec.*
 import static org.mockito.Mockito.*
+import org.jnario.report.Pending
 
 describe SpecResultParser{
   
@@ -147,6 +157,16 @@ describe SpecResultParser{
     verify(acceptor).accept(failingSpec)
   }
   
+  fact &quot;created pending results&quot;{
+    '''
+       &lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;&laquo;NAME&raquo;&quot;&gt;
+        &lt;skipped/&gt;
+       &lt;/testcase&gt;
+    '''.toXml.parse 
+    
+    verify(acceptor).accept(pendingSpec)
+  }
+  
   fact &quot;decodes escaped strings&quot;{
     '''
        &lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;When I entered \&amp;quot;50\&amp;quot; and \&amp;quot;70\&amp;quot;&quot;/&gt;
@@ -157,6 +177,10 @@ describe SpecResultParser{
   
   def passingSpec(){
     new Passed(CLASSNAME, NAME, EXECUTION_TIME)
+  }
+  
+  def pendingSpec(){
+    new Pending(CLASSNAME, NAME, EXECUTION_TIME)
   }
   
   def failingSpec(){

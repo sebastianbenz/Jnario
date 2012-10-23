@@ -9,6 +9,7 @@ import org.jnario.report.SpecResultParser
 
 import static org.jnario.jnario.tests.unit.report.SpecResultParserSpec.*
 import static org.mockito.Mockito.*
+import org.jnario.report.Pending
 
 describe SpecResultParser{
 	
@@ -61,6 +62,16 @@ describe SpecResultParser{
 		verify(acceptor).accept(failingSpec)
 	}
 	
+	fact "created pending results"{
+		'''
+		   <testcase time="«EXECUTION_TIME»" classname="«CLASSNAME»" name="«NAME»">
+		    <skipped/>
+		   </testcase>
+		'''.toXml.parse 
+		
+		verify(acceptor).accept(pendingSpec)
+	}
+	
 	fact "decodes escaped strings"{
 		'''
 		   <testcase time="«EXECUTION_TIME»" classname="«CLASSNAME»" name="When I entered \&quot;50\&quot; and \&quot;70\&quot;"/>
@@ -71,6 +82,10 @@ describe SpecResultParser{
 	
 	def passingSpec(){
 		new Passed(CLASSNAME, NAME, EXECUTION_TIME)
+	}
+	
+	def pendingSpec(){
+		new Pending(CLASSNAME, NAME, EXECUTION_TIME)
 	}
 	
 	def failingSpec(){

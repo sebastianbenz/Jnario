@@ -19,6 +19,8 @@ class SpecResultParser extends DefaultHandler{
 	String currentFailureMessage
 	String currentFailureStacktrace
 	
+	boolean isPending = false
+	
 	List<SpecFailure> failures
 	
 	def parse(InputStream stream, SpecExecutionAcceptor acceptor){
@@ -41,6 +43,9 @@ class SpecResultParser extends DefaultHandler{
 			}
 			case SpecResultTags::NODE_FAILURE: {
 				saveFailureAttributes(attributes)
+			}
+			case SpecResultTags::NODE_SKIPPED: {
+				isPending = true
 			}
 		}
 	}
@@ -84,7 +89,9 @@ class SpecResultParser extends DefaultHandler{
 	}
 
 	def newSpecExecution() {
-		if(failures.empty){
+		if(isPending){
+			new Pending(currentClassName, currentName, currentExecutionTime)
+		}else if(failures.empty){
 			new Passed(currentClassName, currentName, currentExecutionTime)
 		}else{
 			new Failed(currentClassName, currentName, currentExecutionTime, failures)

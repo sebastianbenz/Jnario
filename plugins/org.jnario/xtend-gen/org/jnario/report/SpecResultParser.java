@@ -10,6 +10,7 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.jnario.report.Failed;
 import org.jnario.report.Passed;
+import org.jnario.report.Pending;
 import org.jnario.report.SpecExecution;
 import org.jnario.report.SpecExecutionAcceptor;
 import org.jnario.report.SpecFailure;
@@ -33,6 +34,8 @@ public class SpecResultParser extends DefaultHandler {
   private String currentFailureMessage;
   
   private String currentFailureStacktrace;
+  
+  private boolean isPending = false;
   
   private List<SpecFailure> failures;
   
@@ -72,6 +75,12 @@ public class SpecResultParser extends DefaultHandler {
       if (Objects.equal(qName,SpecResultTags.NODE_FAILURE)) {
         _matched=true;
         this.saveFailureAttributes(attributes);
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(qName,SpecResultTags.NODE_SKIPPED)) {
+        _matched=true;
+        this.isPending = true;
       }
     }
   }
@@ -137,13 +146,20 @@ public class SpecResultParser extends DefaultHandler {
   
   public SpecExecution newSpecExecution() {
     SpecExecution _xifexpression = null;
-    boolean _isEmpty = this.failures.isEmpty();
-    if (_isEmpty) {
-      Passed _passed = new Passed(this.currentClassName, this.currentName, this.currentExecutionTime);
-      _xifexpression = _passed;
+    if (this.isPending) {
+      Pending _pending = new Pending(this.currentClassName, this.currentName, this.currentExecutionTime);
+      _xifexpression = _pending;
     } else {
-      Failed _failed = new Failed(this.currentClassName, this.currentName, this.currentExecutionTime, this.failures);
-      _xifexpression = _failed;
+      SpecExecution _xifexpression_1 = null;
+      boolean _isEmpty = this.failures.isEmpty();
+      if (_isEmpty) {
+        Passed _passed = new Passed(this.currentClassName, this.currentName, this.currentExecutionTime);
+        _xifexpression_1 = _passed;
+      } else {
+        Failed _failed = new Failed(this.currentClassName, this.currentName, this.currentExecutionTime, this.failures);
+        _xifexpression_1 = _failed;
+      }
+      _xifexpression = _xifexpression_1;
     }
     return _xifexpression;
   }
