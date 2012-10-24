@@ -319,7 +319,7 @@ textarea {
 }
 body {
   margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 19px;
   color: #333333;
@@ -548,7 +548,7 @@ h5,
 h6 {
   margin: 0;
   font-family: inherit;
-  font-weight: bold;
+  font-weight: 505;
   color: inherit;
   text-rendering: optimizelegibility;
 }
@@ -562,21 +562,21 @@ h6 small {
   color: #999999;
 }
 h1 {
-  font-size: 30px;
+  font-size: 32px;
   line-height: 57px;
 }
 h1 small {
   font-size: 18px;
 }
 h2 {
-  font-size: 24px;
+  font-size: 26px;
   line-height: 57px;
 }
 h2 small {
   font-size: 18px;
 }
 h3 {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 38px;
 }
 h3 small {
@@ -588,16 +588,16 @@ h6 {
   line-height: 28.5px;
 }
 h4 {
-  font-size: 14px;
+  font-size: 16px;
 }
 h4 small {
   font-size: 12px;
 }
 h5 {
-  font-size: 12px;
+  font-size: 14px;
 }
 h6 {
-  font-size: 11px;
+  font-size: 12px;
   color: #999999;
   text-transform: uppercase;
 }
@@ -734,7 +734,7 @@ cite {
 code,
 pre {
   padding: 0 3px 2px;
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: "Droid Sans Mono", Menlo, Monaco, Consolas, "Courier New", monospace;
   font-size: 13px;
   color: #333333;
   -webkit-border-radius: 3px;
@@ -819,7 +819,7 @@ input,
 button,
 select,
 textarea {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 label {
   display: block;
@@ -3332,7 +3332,7 @@ input[type="submit"].btn.btn-mini {
 }
 .navbar-search .search-query {
   padding: 4px 9px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
   font-weight: normal;
   line-height: 1;
