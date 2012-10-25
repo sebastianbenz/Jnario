@@ -41,7 +41,7 @@ subject.getResult(anyExecutable) =&gt; typeof(NotRun)</pre>
 </li><li><p id="returns_empty_execution_if_executable_is_null" class="example "><strong>returns empty execution if executable is null</strong></p>
 <pre class="prettyprint lang-spec linenums">
 subject.getResult(null) =&gt; typeof(NotRun)</pre>
-</li></ul><h3 class="exampleGroup "  id="Example">Example</h3> 
+</li></ul><h3 class="exampleGroup "  id="Example">Example</h3>
 <ul><li><p id="matches_if_classname_and_name_are_equal" class="example "><strong>matches if classname and name are equal</strong></p>
 <pre class="prettyprint lang-spec linenums">
 m.parseSpec(
@@ -70,7 +70,7 @@ val pendingResult = passingSpec(&quot;example.SomethingSpec&quot;, &quot;a fact 
 subject.accept(pendingResult)
 example should match pendingResult</pre>
 </li></ul>
-<h3 class="exampleGroup "  id="ExampleGroup">ExampleGroup</h3> 
+<h3 class="exampleGroup "  id="ExampleGroup">ExampleGroup</h3>
 <ul><li><p id="returns_NotRun_if_children_are_not_executed" class="example "><strong>returns NotRun if children are not executed</strong></p>
 <pre class="prettyprint lang-spec linenums">
 m.parseSpec('''
@@ -146,7 +146,7 @@ val first = exampleGroup.result
 val second = exampleGroup.result
 first =&gt; sameInstance(second)</pre>
 </li></ul>
-<h3 class="exampleGroup "  id="Step">Step</h3> 
+<h3 class="exampleGroup "  id="Step">Step</h3>
 <ul><li><p id="matches_if_classname_and_name_are_equal" class="example "><strong>matches if classname and name are equal</strong></p>
 <pre class="prettyprint lang-spec linenums">
 m.parseScenario(
@@ -200,7 +200,7 @@ m.parseScenario(
 subject.accept(resultWithArgs)
 step should match resultWithArgs</pre>
 </li></ul>
-<h3 class="exampleGroup "  id="Scenario">Scenario</h3> 
+<h3 class="exampleGroup "  id="Scenario">Scenario</h3>
 <ul><li><p id="returns_Passed_if_all_children_passed" class="example "><strong>returns **Passed** if all children passed</strong></p>
 <pre class="prettyprint lang-spec linenums">
 passedStep(&quot;Given my Step&quot;)
@@ -212,7 +212,7 @@ passedStep(&quot;Given my Step&quot;)
 failedStep(&quot;And other Step&quot;)
 scenario.result =&gt; typeof(Failed)</pre>
 </li></ul>
-<h3 class="exampleGroup "  id="Feature">Feature</h3> 
+<h3 class="exampleGroup "  id="Feature">Feature</h3>
 <ul><li><p id="returns_Passed_if_all_scenarios_passed" class="example "><strong>returns **Passed** if all scenarios passed</strong></p>
 <pre class="prettyprint lang-spec linenums">
 passedStep(&quot;Given a step&quot;)
@@ -224,7 +224,7 @@ passedStep(&quot;Given a step&quot;)
 failedStep(OTHER_SCENARIO_CLASSNAME, &quot;Given another step&quot;)
 feature.result =&gt; typeof(Failed)</pre>
 </li></ul>
-<h3 class="exampleGroup "  id="Background">Background</h3> 
+<h3 class="exampleGroup "  id="Background">Background</h3>
 <ul><li><p id="returns_Passed_if_all_scenarios_passed" class="example "><strong>returns **Passed** if all scenarios passed</strong></p>
 <pre class="prettyprint lang-spec linenums">
 passedStep(&quot;Given a step&quot;)
@@ -235,7 +235,7 @@ background.result =&gt; typeof(Passed)</pre>
 failedStep(&quot;Given a step&quot;)
 background.result =&gt; typeof(Failed)</pre>
 </li></ul>
-<h3 class="exampleGroup "  id="Suite">Suite</h3> 
+<h3 class="exampleGroup "  id="Suite">Suite</h3>
 <ul><li><p id="matches_referenced_suites" class="example "><strong>matches referenced suites [PENDING]</strong></p>
 </li></ul>
 							</div>

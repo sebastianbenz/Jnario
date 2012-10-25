@@ -127,8 +127,7 @@ public class SpecResultParser extends DefaultHandler {
   public StringBuilder addFailure() {
     StringBuilder _xblockexpression = null;
     {
-      String _string = this.currentFailureStacktrace.toString();
-      final String stacktrace = _string.replaceAll("\n\t", "\n");
+      final String stacktrace = this.currentFailureStacktrace.toString();
       final Pair<String,String> errorMessage = this.extractMessage(stacktrace);
       String _key = errorMessage.getKey();
       String _value = errorMessage.getValue();
@@ -143,28 +142,35 @@ public class SpecResultParser extends DefaultHandler {
     return _xblockexpression;
   }
   
-  private Pair<String,String> extractMessage(final String message) {
+  private Pair<String,String> extractMessage(final String messageAndStacktrace) {
     Pair<String,String> _xblockexpression = null;
     {
-      final int end = message.indexOf("\tat ");
-      Pair<String,String> _xifexpression = null;
+      final int end = messageAndStacktrace.indexOf("\tat ");
+      String message = "";
+      String stacktrace = "";
       int _minus = (-1);
-      boolean _equals = (end == _minus);
-      if (_equals) {
-        String _trim = message.trim();
-        Pair<String,String> _mappedTo = Pair.<String, String>of(_trim, "");
-        _xifexpression = _mappedTo;
-      } else {
-        String _substring = message.substring(0, end);
-        String _trim_1 = _substring.trim();
-        int _length = message.length();
-        String _substring_1 = message.substring(end, _length);
-        Pair<String,String> _mappedTo_1 = Pair.<String, String>of(_trim_1, _substring_1);
-        _xifexpression = _mappedTo_1;
+      boolean _greaterThan = (end > _minus);
+      if (_greaterThan) {
+        int _minus_1 = (end - 1);
+        String _substring = messageAndStacktrace.substring(0, _minus_1);
+        message = _substring;
+        int _length = messageAndStacktrace.length();
+        String _substring_1 = messageAndStacktrace.substring(end, _length);
+        stacktrace = _substring_1;
       }
-      _xblockexpression = (_xifexpression);
+      String _trim = message.trim();
+      String _cleanUp = this.cleanUp(_trim);
+      message = _cleanUp;
+      String _cleanUp_1 = this.cleanUp(stacktrace);
+      Pair<String,String> _mappedTo = Pair.<String, String>of(message, _cleanUp_1);
+      _xblockexpression = (_mappedTo);
     }
     return _xblockexpression;
+  }
+  
+  private String cleanUp(final String s) {
+    String _replaceAll = s.replaceAll("\n\t", "\n");
+    return _replaceAll;
   }
   
   public void characters(final char[] ch, final int start, final int length) throws SAXException {

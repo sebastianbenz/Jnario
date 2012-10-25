@@ -72,7 +72,7 @@ class SpecResultParser extends DefaultHandler{
 	}
 	
 	def addFailure(){
-		val stacktrace = currentFailureStacktrace.toString.replaceAll("\n\t", "\n")
+		val stacktrace = currentFailureStacktrace.toString
 		val errorMessage = extractMessage(stacktrace)
 		failures += new SpecFailure(
 			errorMessage.key,
@@ -83,13 +83,20 @@ class SpecResultParser extends DefaultHandler{
 		currentFailureStacktrace = new StringBuilder
 	}
 	
-	def private extractMessage(String message){
-		val end = message.indexOf("	at ")
-		if(end == -1){
-			message.trim -> ""
-		}else{
-			message.substring(0, end).trim -> message.substring(end, message.length)
+	def private extractMessage(String messageAndStacktrace){
+		val end = messageAndStacktrace.indexOf("	at ")
+		var message = ""
+		var stacktrace = ""
+		if(end > -1){
+			message = messageAndStacktrace.substring(0, end-1) 
+			stacktrace = messageAndStacktrace.substring(end, messageAndStacktrace.length)
 		}
+		message = message.trim.cleanUp
+		message -> stacktrace.cleanUp
+	}
+	
+	def private cleanUp(String s){
+		s.replaceAll("\n\t", "\n")
 	}
 	
 	override characters(char[] ch, int start, int length) throws SAXException {

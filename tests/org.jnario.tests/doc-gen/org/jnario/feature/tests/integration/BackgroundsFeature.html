@@ -38,45 +38,37 @@
 <div><h3 class="scenario "  id="Scenario_It_is_possible_to_add_a_background_to_a_feature">Scenario: It is possible to add a background to a feature
 </h3>
 <ul>
-<li><span class="step "><p><strong>When</strong> I have a feature with a background</p><pre>package bootstrap
+<li><span class="step "><p>When I have a feature with a background</p><pre>package bootstrap
 Feature: Some feature
   Background:
     Given a user name
       val x = &quot;an implementation&quot;
   Scenario: Scenario 1
   Scenario: Scenario 2</pre></span>
-<ul>
-</ul>
 </li>
-<li><span class="step "><p><strong>Then</strong> it should execute successfully</p></span>
-<ul>
-</ul>
+<li><span class="step "><p>Then it should execute successfully</p></span>
 </li>
 </ul>
 </div>
 <div><h3 class="scenario "  id="Scenario_Given_methods_from_backgrounds_are_generated_in_every_scenario_class">Scenario: Given methods from backgrounds are generated in every scenario class
 </h3>
 <ul>
-<li><span class="step "><p><strong>When</strong> I have a feature with a background</p><pre>package bootstrap
+<li><span class="step "><p>When I have a feature with a background</p><pre>package bootstrap
 Feature: Some feature
   Background:
     Given a user name
       throw new RuntimeException()
   Scenario: Scenario 1
   Scenario: Scenario 2</pre></span>
-<ul>
-</ul>
 </li>
-<li><span class="step "><p><strong>Then</strong> every class should have a method that throws a RuntimeExeception</p></span>
-<ul>
-</ul>
+<li><span class="step "><p>Then every class should have a method that throws a RuntimeExeception</p></span>
 </li>
 </ul>
 </div>
 <div><h3 class="scenario "  id="Scenario_Using_fields_from_background_steps">Scenario: Using fields from background steps
 </h3>
 <ul>
-<li><span class="step "><p><strong>When</strong> I have a scenario with a field</p><pre>package bootstrap
+<li><span class="step "><p>When I have a scenario with a field</p><pre>package bootstrap
 import java.util.*
 Feature: Test
   Background: 
@@ -87,19 +79,15 @@ Feature: Test
   Scenario: TestScenario 2
     Then it should have contents
       values.size =&gt; 1</pre></span>
-<ul>
-</ul>
 </li>
-<li><span class="step "><p><strong>Then</strong> it should execute successfully</p></span>
-<ul>
-</ul>
+<li><span class="step "><p>Then it should execute successfully</p></span>
 </li>
 </ul>
 </div>
 <div><h3 class="scenario "  id="Scenario_Instantiating_Objects_in_Backgrounds">Scenario: Instantiating Objects in Backgrounds
 </h3>
 <ul>
-<li><span class="step "><p><strong>When</strong> I have a feature with a background</p><pre>package bootstrap
+<li><span class="step "><p>When I have a feature with a background</p><pre>package bootstrap
 import org.jnario.feature.tests.integration.Calculator
 Feature: Calculator
   Background:
@@ -115,12 +103,8 @@ Feature: Calculator
   Scenario: Adding two numbers 2
     When I enter two numbers &quot;20&quot; and &quot;80&quot;
       Then it returns &quot;100&quot;</pre></span>
-<ul>
-</ul>
 </li>
-<li><span class="step "><p><strong>Then</strong> it should execute successfully</p></span>
-<ul>
-</ul>
+<li><span class="step "><p>Then it should execute successfully</p></span>
 </li>
 </ul>
 </div>

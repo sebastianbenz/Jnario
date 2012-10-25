@@ -36,7 +36,7 @@
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
 <p>Jnario Features are based on <a href="http://www.xtend-lang.org">Xtend</a>. It is a good idea to read the Xtend <a href="http://www.eclipse.org/xtend/documentation/index.html">documentation</a> before you get started with Jnario, because expressions, fields, methods and extensions in Jnario work exactly as in Xtend.</p>
-<h3 class="exampleGroup "  id="How_to_write_a_Feature">How to write a Feature?</h3> 
+<h3 class="exampleGroup "  id="How_to_write_a_Feature">How to write a Feature?</h3>
 <p>First of all you need a running installation of Jnario. If you haven't installed Jnario yet, follow the <a href="../../jnario/documentation/InstallingJnarioSpec.html">install guide</a>. To get started create a new specification using the spec wizard (<strong>File</strong> -&gt; <strong>New</strong> -&gt; <strong>Other</strong> -&gt; <strong>Jnario</strong> -&gt; <strong>Feature</strong>).</p><p><p align="center"><img src="/img/tutorial/feature_wizard.png" alt="New Feature Wizard"/></p></p><p><span class="label label-info">Tip</span> If the editor shows a validation error, because of the missing jnario libraries, add them to the classpath using the quickfix (CMD/Ctrl + 1).</p><p>A feature file consists of a feature and the scenarios that are the acceptance criteria for the feature. For the calculator the the feature description in form of a story and one scenario for adding numbers looks as follows:</p>
 <pre class="prettyprint lang-feature">
 Feature: Calculator
@@ -119,7 +119,7 @@ Scenario: Dividing two numbers
    result = calculator.divide(args.first.toInt, args.second.toInt)
  Then it prints &quot;2&quot;</pre>
 </li></ul>
-<h3 class="exampleGroup "  id="Views">Views</h3> 
+<h3 class="exampleGroup "  id="Views">Views</h3>
 <p>There are two different views available for features - one displaying everything including steps and their definition (code), the other one only displaying the steps and definition of arguments. To expand or collapse the definition of the steps use the feature button that you can find in the main button bar while being in a feature file.</p>
 <ul><li><p id="Displaying_step_definitions" class="example "><strong>Displaying step definitions</strong></p>
 <pre class="prettyprint lang-spec linenums">

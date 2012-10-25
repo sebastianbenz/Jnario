@@ -1,25 +1,28 @@
 package org.jnario.feature.tests.unit.doc;
 
 import com.google.inject.Inject;
+import java.util.Collection;
+import java.util.Map;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.InMemoryFileSystemAccess;
-import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.hamcrest.StringDescription;
 import org.jnario.Executable;
 import org.jnario.feature.doc.FeatureDocGenerator;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeatureFile;
 import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.jnario.test.util.ModelStore;
+import org.jnario.lib.JnarioIterableExtensions;
+import org.jnario.lib.Should;
 import org.jnario.report.Executable2ResultMapping;
 import org.jnario.report.Failed;
-import org.jnario.report.Passed;
 import org.jnario.report.SpecExecution;
 import org.jnario.report.SpecFailure;
 import org.jnario.runner.CreateWith;
@@ -46,6 +49,9 @@ public class FeatureDocGeneratorSpec {
   
   @Inject
   InMemoryFileSystemAccess fsa;
+  
+  @Inject
+  Executable2ResultMapping mapping;
   
   @Test
   @Named("generates scenario documentation")
@@ -128,11 +134,13 @@ public class FeatureDocGeneratorSpec {
     _builder.append("\t");
     _builder.append("\"\"       ");
     _builder.newLine();
-    this.generateDocWithError(_builder);
+    CharSequence _generateDocWithErrors = this.generateDocWithErrors(_builder);
+    boolean _should_contain = Should.should_contain(_generateDocWithErrors, "failed");
+    Assert.assertTrue("\nExpected \'\'\'\n\t\t\tFeature: Example\n\t\t\t\n\t\t\tScenario: A failing Scenario\n\t\t\t\n\t\t\tGiven something\n\t\t\tWhen something happens \n\t\t\tThen there is an error\n\t\t\t\n\t\t\tScenario: Another scnario\n\t\t\tGiven something\n\t\t\t\t1 + 1 => 2\n\t\t\tThen something else\n\t\t\t\t\"\"       \n\t\t\'\'\'.generateDocWithErrors should contain \"failed\" but"
+     + "\n     \'\'\'\n\t\t\tFeature: Example\n\t\t\t\n\t\t\tScenario: A failing Scenario\n\t\t\t\n\t\t\tGiven something\n\t\t\tWhen something happens \n\t\t\tThen there is an error\n\t\t\t\n\t\t\tScenario: Another scnario\n\t\t\tGiven something\n\t\t\t\t1 + 1 => 2\n\t\t\tThen something else\n\t\t\t\t\"\"       \n\t\t\'\'\'.generateDocWithErrors is " + new StringDescription().appendValue(_generateDocWithErrors).toString()
+     + "\n     \'\'\'\n\t\t\tFeature: Example\n\t\t\t\n\t\t\tScenario: A failing Scenario\n\t\t\t\n\t\t\tGiven something\n\t\t\tWhen something happens \n\t\t\tThen there is an error\n\t\t\t\n\t\t\tScenario: Another scnario\n\t\t\tGiven something\n\t\t\t\t1 + 1 => 2\n\t\t\tThen something else\n\t\t\t\t\"\"       \n\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _should_contain);
+    
   }
-  
-  @Inject
-  JavaIoFileSystemAccess fsa2;
   
   final CharSequence message = new Function0<CharSequence>() {
     public CharSequence apply() {
@@ -155,74 +163,60 @@ public class FeatureDocGeneratorSpec {
     }
   }.apply();
   
-  boolean toggle = true;
-  
-  Executable2ResultMapping mapping = new Function0<Executable2ResultMapping>() {
-    public Executable2ResultMapping apply() {
-      final Function1<Executable,SpecExecution> _function = new Function1<Executable,SpecExecution>() {
-          public SpecExecution apply(final Executable it) {
-            SpecExecution _xifexpression = null;
-            if (FeatureDocGeneratorSpec.this.toggle) {
-              Failed _xblockexpression = null;
-              {
-                boolean _not = (!FeatureDocGeneratorSpec.this.toggle);
-                FeatureDocGeneratorSpec.this.toggle = _not;
-                String _string = FeatureDocGeneratorSpec.this.message.toString();
-                StringConcatenation _builder = new StringConcatenation();
-                _builder.append("java.lang.StringIndexOutOfBoundsException: String index out of range: -1");
-                _builder.newLine();
-                _builder.append("\t");
-                _builder.append("at java.lang.String.substring(String.java:1937)");
-                _builder.newLine();
-                _builder.append("\t");
-                _builder.append("at java.lang.String.substring(String.java:1904)");
-                _builder.newLine();
-                _builder.append("\t");
-                _builder.append("at org.jnario.feature.doc.FeatureDocGenerator$1.apply(FeatureDocGenerator.java:44)");
-                _builder.newLine();
-                _builder.append("\t");
-                _builder.append("at org.jnario.feature.doc.FeatureDocGenerator$1.apply(FeatureDocGenerator.java:1)");
-                _builder.newLine();
-                _builder.append("\t");
-                _builder.append("at org.jnario.doc.HtmlFile.newHtmlFile(HtmlFile.java:21)");
-                _builder.newLine();
-                _builder.append("\t");
-                _builder.append("at org.jnario.feature.doc.FeatureDocGenerator.createHtmlFile(FeatureDocGenerator.java:57)");
-                _builder.newLine();
-                _builder.append("\t");
-                _builder.append("at org.jnario.doc.AbstractDocGenerator$2$1.apply(AbstractDocGenerator.java:88)");
-                _builder.newLine();
-                String _string_1 = _builder.toString();
-                SpecFailure _specFailure = new SpecFailure(_string, "Exception", _string_1);
-                Failed _failingSpec = Failed.failingSpec("org.jnario.Class", "This Feature", 0.3, _specFailure);
-                _xblockexpression = (_failingSpec);
-              }
-              _xifexpression = _xblockexpression;
-            } else {
-              Passed _xblockexpression_1 = null;
-              {
-                boolean _not = (!FeatureDocGeneratorSpec.this.toggle);
-                FeatureDocGeneratorSpec.this.toggle = _not;
-                Passed _passingSpec = Passed.passingSpec("org.jnario.class", "Something", 0.4);
-                _xblockexpression_1 = (_passingSpec);
-              }
-              _xifexpression = _xblockexpression_1;
-            }
-            return _xifexpression;
-          }
-        };
-      return new Executable2ResultMapping() {
-          public SpecExecution getResult(Executable executable) {
-            return _function.apply(executable);
-          }
+  public Executable2ResultMapping mappingWithFailures() {
+    final Function1<Executable,Failed> _function = new Function1<Executable,Failed>() {
+        public Failed apply(final Executable it) {
+          String _string = FeatureDocGeneratorSpec.this.message.toString();
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("java.lang.StringIndexOutOfBoundsException: String index out of range: -1");
+          _builder.newLine();
+          _builder.append("\t");
+          _builder.append("at java.lang.String.substring(String.java:1937)");
+          _builder.newLine();
+          _builder.append("\t");
+          _builder.append("at java.lang.String.substring(String.java:1904)");
+          _builder.newLine();
+          _builder.append("\t");
+          _builder.append("at org.jnario.feature.doc.FeatureDocGenerator$1.apply(FeatureDocGenerator.java:44)");
+          _builder.newLine();
+          _builder.append("\t");
+          _builder.append("at org.jnario.feature.doc.FeatureDocGenerator$1.apply(FeatureDocGenerator.java:1)");
+          _builder.newLine();
+          _builder.append("\t");
+          _builder.append("at org.jnario.doc.HtmlFile.newHtmlFile(HtmlFile.java:21)");
+          _builder.newLine();
+          _builder.append("\t");
+          _builder.append("at org.jnario.feature.doc.FeatureDocGenerator.createHtmlFile(FeatureDocGenerator.java:57)");
+          _builder.newLine();
+          _builder.append("\t");
+          _builder.append("at org.jnario.doc.AbstractDocGenerator$2$1.apply(AbstractDocGenerator.java:88)");
+          _builder.newLine();
+          String _string_1 = _builder.toString();
+          SpecFailure _specFailure = new SpecFailure(_string, "Exception", _string_1);
+          Failed _failingSpec = Failed.failingSpec("org.jnario.Class", "This Feature", 0.3, _specFailure);
+          return _failingSpec;
+        }
       };
-    }
-  }.apply();
+    Executable2ResultMapping _mapping = this.mapping = new Executable2ResultMapping() {
+        public SpecExecution getResult(Executable executable) {
+          return _function.apply(executable);
+        }
+    };
+    return _mapping;
+  }
   
-  public void generateDocWithError(final CharSequence input) {
-    final Resource resource = this._modelStore.parseScenario(input);
-    this.fsa2.setOutputPath("DOC_OUTPUT", "tmp/");
-    this.subject.doGenerate(resource, this.fsa2, this.mapping);
+  public CharSequence generateDocWithErrors(final CharSequence input) {
+    CharSequence _xblockexpression = null;
+    {
+      final Resource resource = this._modelStore.parseScenario(input);
+      Executable2ResultMapping _mappingWithFailures = this.mappingWithFailures();
+      this.subject.doGenerate(resource, this.fsa, _mappingWithFailures);
+      Map<String,CharSequence> _files = this.fsa.getFiles();
+      Collection<CharSequence> _values = _files.values();
+      CharSequence _first = JnarioIterableExtensions.<CharSequence>first(_values);
+      _xblockexpression = (_first);
+    }
+    return _xblockexpression;
   }
   
   public String generateDoc(final CharSequence input) {

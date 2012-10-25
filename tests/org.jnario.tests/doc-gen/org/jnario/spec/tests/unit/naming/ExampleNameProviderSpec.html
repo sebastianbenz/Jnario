@@ -35,7 +35,7 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<h3 class="exampleGroup "  id="toJavaClassName_ExampleGroup">ToJavaClassName[ExampleGroup]</h3> 
+<h3 class="exampleGroup "  id="toJavaClassName_ExampleGroup">ToJavaClassName[ExampleGroup]</h3>
 <ul><li><p id="should_remove_all_white_spaces_from_ExampleGroup_s_description" class="example "><strong>should remove all white spaces from ExampleGroup's description</strong></p>
 <pre class="prettyprint lang-spec linenums">
 firstJavaClassName(&quot;describe 'My Example'&quot;) should not contain &quot; &quot;</pre>
@@ -101,7 +101,7 @@ describe org.junit.Assert{
 }
 ''') =&gt; 'AssertAssertTrueBooleanSpec'</pre>
 </li></ul>
-<h3 class="exampleGroup "  id="toJavaClassName_ExampleTable">ToJavaClassName[ExampleTable]</h3> 
+<h3 class="exampleGroup "  id="toJavaClassName_ExampleTable">ToJavaClassName[ExampleTable]</h3>
 <ul><li><p id="should_combine_example_and_parent_name" class="example "><strong>should combine example and parent name</strong></p>
 <pre class="prettyprint lang-spec linenums">
 exampleTableClassName('''
@@ -119,7 +119,7 @@ describe 'My Context'{
 }
 ''') =&gt; &quot;MyContextSpecMyExample&quot;</pre>
 </li></ul>
-<h3 class="exampleGroup "  id="toMethodName_Example">ToMethodName[Example]</h3> 
+<h3 class="exampleGroup "  id="toMethodName_Example">ToMethodName[Example]</h3>
 <ul><li><p id="converts_method_description_to_camel_case_starting_in_lowercase" class="example "><strong>converts method description to camel case starting in lowercase</strong></p>
 <pre class="prettyprint lang-spec linenums">
 newArrayList(
@@ -134,7 +134,7 @@ newArrayList(
 <pre class="prettyprint lang-spec linenums">
 firstMethodName(nameOfLength(251)).length =&gt; 250</pre>
 </li></ul>
-<h3 class="exampleGroup "  id="toMethodName_Before">ToMethodName[Before]</h3> 
+<h3 class="exampleGroup "  id="toMethodName_Before">ToMethodName[Before]</h3>
 <ul><li><p id="should_convert_before_description_to_camel_case_starting_in_lowercase" class="example "><strong>should convert before description to camel case starting in lowercase</strong></p>
 <pre class="prettyprint lang-spec linenums">
 newArrayList(
@@ -156,7 +156,7 @@ secondMethodName(&quot;before{}
 <pre class="prettyprint lang-spec linenums">
 firstMethodName(&quot;before 'null'{}&quot;) =&gt; &quot;_null&quot;</pre>
 </li></ul>
-<h3 class="exampleGroup "  id="toMethodName_After">ToMethodName[After]</h3> 
+<h3 class="exampleGroup "  id="toMethodName_After">ToMethodName[After]</h3>
 <ul><li><p id="should_convert_after_description_to_camel_case_starting_in_lowercase" class="example "><strong>should convert after description to camel case starting in lowercase</strong></p>
 <pre class="prettyprint lang-spec linenums">
 newArrayList(
@@ -175,7 +175,7 @@ firstMethodName(&quot;after{}&quot;) =&gt; &quot;after&quot;</pre>
 secondMethodName(&quot;after{}
          after{}&quot;) =&gt; &quot;after2&quot;</pre>
 </li></ul>
-<h3 class="exampleGroup "  id="toFieldName_ExampleTable">ToFieldName[ExampleTable]</h3> 
+<h3 class="exampleGroup "  id="toFieldName_ExampleTable">ToFieldName[ExampleTable]</h3>
 <ul><li><p id="should_use_the_example_name" class="example "><strong>should use the example name</strong></p>
 <pre class="prettyprint lang-spec linenums">
 val exampleTable = '''
@@ -195,7 +195,7 @@ val exampleTable = '''
 '''.parse.first(typeof(ExampleTable))
 subject.toFieldName(exampleTable) =&gt; &quot;examples&quot;</pre>
 </li></ul>
-<h3 class="exampleGroup "  id="describe_ExampleGroup">Describe[ExampleGroup]</h3> 
+<h3 class="exampleGroup "  id="describe_ExampleGroup">Describe[ExampleGroup]</h3>
 <ul><li><p id="should_use_the_description" class="example "><strong>should use the description</strong></p>
 <pre class="prettyprint lang-spec linenums">
 describeFirst(&quot;describe 'My Description'&quot;) =&gt; &quot;My Description&quot;</pre>
@@ -230,7 +230,7 @@ describeSecond(text) =&gt; 'and \\&quot;more\\&quot;'</pre>
 val text = '''describe &quot;Example\n\t 2&quot;'''.toString
 describeFirst(text) =&gt; 'Example 2'</pre>
 </li></ul>
-<h3 class="exampleGroup "  id="describe_Example">Describe[Example]</h3> 
+<h3 class="exampleGroup "  id="describe_Example">Describe[Example]</h3>
 <ul><li><p id="should_use_the_description" class="example "><strong>should use the description</strong></p>
 <pre class="prettyprint lang-spec linenums">
 describeFirst(&quot;'should do stuff' {true}&quot;) =&gt; &quot;should do stuff&quot;</pre>

@@ -7,30 +7,29 @@
  *******************************************************************************/
 package org.jnario.feature.tests.unit.doc
 
-import static org.junit.Assert.*
 import com.google.inject.Inject
-import org.jnario.jnario.test.util.ModelStore
 import org.eclipse.xtext.generator.InMemoryFileSystemAccess
-import org.jnario.runner.CreateWith
-import org.jnario.jnario.test.util.FeatureTestCreator
 import org.jnario.feature.doc.FeatureDocGenerator
-import org.jnario.feature.feature.FeatureFile
 import org.jnario.feature.feature.Feature
-import java.io.File
-import java.io.FileOutputStream
-import org.eclipse.xtext.generator.JavaIoFileSystemAccess
+import org.jnario.feature.feature.FeatureFile
+import org.jnario.jnario.test.util.FeatureTestCreator
+import org.jnario.jnario.test.util.ModelStore
 import org.jnario.report.Executable2ResultMapping
 import org.jnario.report.Failed
-import org.junit.runner.notification.Failure
 import org.jnario.report.SpecFailure
-import org.jnario.report.Passed
+import org.jnario.runner.CreateWith
+
+import static org.junit.Assert.*
+
+import static extension org.jnario.lib.JnarioIterableExtensions.*
+import static extension org.jnario.lib.Should.*
 
 @CreateWith(typeof(FeatureTestCreator))
 describe FeatureDocGenerator {
 	
-	
 	@Inject extension ModelStore 
 	@Inject InMemoryFileSystemAccess fsa
+	@Inject Executable2ResultMapping mapping
 	
 	fact "generates scenario documentation"{
 		val actual = 
@@ -102,10 +101,8 @@ public class Greeter{
 				1 + 1 => 2
 			Then something else
 				""       
-		'''.generateDocWithError
+		'''.generateDocWithErrors should contain "failed"
 	}
-	
-	@Inject JavaIoFileSystemAccess fsa2
 	
 	val message = '''
 		Expected result => args.first.toInt but      
@@ -115,32 +112,25 @@ public class Greeter{
 		 		args is <[120]>
 	'''
 	
-	var toggle = true
-	
-	Executable2ResultMapping mapping = [
-		if(toggle){
-			toggle = !toggle
+	def mappingWithFailures(){
+		mapping = [
 			Failed::failingSpec("org.jnario.Class", "This Feature", 0.3,  new SpecFailure(message.toString, "Exception", '''
-		java.lang.StringIndexOutOfBoundsException: String index out of range: -1
-			at java.lang.String.substring(String.java:1937)
-			at java.lang.String.substring(String.java:1904)
-			at org.jnario.feature.doc.FeatureDocGenerator$1.apply(FeatureDocGenerator.java:44)
-			at org.jnario.feature.doc.FeatureDocGenerator$1.apply(FeatureDocGenerator.java:1)
-			at org.jnario.doc.HtmlFile.newHtmlFile(HtmlFile.java:21)
-			at org.jnario.feature.doc.FeatureDocGenerator.createHtmlFile(FeatureDocGenerator.java:57)
-			at org.jnario.doc.AbstractDocGenerator$2$1.apply(AbstractDocGenerator.java:88)
-	'''.toString))
-		}else{
-			toggle = !toggle
-			Passed::passingSpec("org.jnario.class", "Something", 0.4)
-			
-		}
+				java.lang.StringIndexOutOfBoundsException: String index out of range: -1
+					at java.lang.String.substring(String.java:1937)
+					at java.lang.String.substring(String.java:1904)
+					at org.jnario.feature.doc.FeatureDocGenerator$1.apply(FeatureDocGenerator.java:44)
+					at org.jnario.feature.doc.FeatureDocGenerator$1.apply(FeatureDocGenerator.java:1)
+					at org.jnario.doc.HtmlFile.newHtmlFile(HtmlFile.java:21)
+					at org.jnario.feature.doc.FeatureDocGenerator.createHtmlFile(FeatureDocGenerator.java:57)
+					at org.jnario.doc.AbstractDocGenerator$2$1.apply(AbstractDocGenerator.java:88)
+			'''.toString))
 		]
+	}
 	
-	def generateDocWithError(CharSequence input){
+	def generateDocWithErrors(CharSequence input){
 		val resource = parseScenario(input)
-		fsa2.setOutputPath("DOC_OUTPUT", "tmp/")
-		subject.doGenerate(resource, fsa2, mapping)
+		subject.doGenerate(resource, fsa, mappingWithFailures)
+		fsa.files.values.first
 	}
 	
 	def generateDoc(CharSequence input){

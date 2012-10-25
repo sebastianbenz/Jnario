@@ -39,7 +39,7 @@
 <div><h3 class="scenario "  id="Scenario_Using_an_Extension">Scenario: Using an Extension
 </h3>
 <ul>
-<li><span class="step "><p><strong>Given</strong> a class <strong>ExampleExtension</strong> with JUnit before and after methods:</p><pre>package org.jnario.feature.tests.integration
+<li><span class="step "><p>Given a class <strong>ExampleExtension</strong> with JUnit before and after methods:</p><pre>package org.jnario.feature.tests.integration
   
 import org.junit.Before
 import org.junit.BeforeClass
@@ -55,10 +55,8 @@ class ExampleExtension {
     println(&quot;after&quot;)
   }
 }</pre></span>
-<ul>
-</ul>
 </li>
-<li><span class="step "><p><strong>When</strong> I declare an extension field of type <strong>ExampleExtension</strong> in the background</p><pre>import org.jnario.feature.tests.integration.ExampleExtension
+<li><span class="step "><p>When I declare an extension field of type <strong>ExampleExtension</strong> in the background</p><pre>import org.jnario.feature.tests.integration.ExampleExtension
 
 Feature: Feature with extensions
   
@@ -76,14 +74,27 @@ Feature: Feature with extensions
       println(&quot;step 3&quot;)
     Then we have two steps
       println(&quot;step 4&quot;)</pre></span>
-<ul>
-<li><span class="step "><p><strong>And</strong> execute the feature</p></span>
-<ul>
-</ul>
 </li>
-</ul>
+<li><span class="step "><p>When I declare an extension field of type <strong>ExampleExtension</strong> in the background</p><pre>import org.jnario.feature.tests.integration.ExampleExtension
+
+Feature: Feature with extensions
+  
+  Background: A common extension to all scenarios
+      extension ExampleExtension = new ExampleExtension 
+    Given a static extension field
+    
+  Scenario: Scenario 1
+    Given a step 
+      println(&quot;step 1&quot;)
+    Then we have two steps
+    println(&quot;step 2&quot;)
+  Scenario: Scenario 2
+    Given a step 
+      println(&quot;step 3&quot;)
+    Then we have two steps
+      println(&quot;step 4&quot;)</pre></span>
 </li>
-<li><span class="step "><p><strong>Then</strong> the execution order is</p><pre>before
+<li><span class="step "><p>Then the execution order is</p><pre>before
 step 1
 step 2
 after
@@ -91,8 +102,6 @@ before
 step 3
 step 4
 after</pre></span>
-<ul>
-</ul>
 </li>
 </ul>
 </div>
