@@ -25,6 +25,7 @@ import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.nodemodel.INode;
+import org.eclipse.xtext.serializer.ISerializer;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XBinaryOperation;
 import org.eclipse.xtext.xbase.XClosure;
@@ -43,6 +44,7 @@ import org.jnario.MockLiteral;
 import org.jnario.Should;
 import org.jnario.ShouldThrow;
 import org.jnario.util.MockingSupport;
+import org.jnario.util.SourceAdapter;
 import org.junit.Assert;
 
 import com.google.common.base.Predicate;
@@ -56,6 +58,8 @@ public class JnarioCompiler extends XtendCompiler {
 
 	@Inject
 	private XExpressionHelper expressionHelper;
+	
+	@Inject ISerializer serializer;
 
 	@Override
 	public void internalToConvertedExpression(XExpression obj,
@@ -93,6 +97,9 @@ public class JnarioCompiler extends XtendCompiler {
 		if (should.getType() == null || should.getType().getType() == null) {
 			return;
 		}
+		b.newLine().append(should.getType().getType());
+		String variableName = b.declareSyntheticVariable(should, "expectedException");
+		b.append(" ").append(variableName).append(" = null;");
 		b.newLine().append("try{").increaseIndentation();
 		toJavaStatement(should.getExpression(), b, false);
 		b.newLine()
@@ -108,7 +115,7 @@ public class JnarioCompiler extends XtendCompiler {
 		appendValues(should.getExpression(), b, new HashSet<String>());
 		b.append(");").decreaseIndentation().newLine().append("}catch(")
 				.append(should.getType().getType()).append(" e){")
-				.increaseIndentation().newLine().append("// expected")
+				.increaseIndentation().newLine().append("expectedException = e;")
 				.decreaseIndentation().newLine().append("}");
 	}
 
@@ -273,10 +280,15 @@ public class JnarioCompiler extends XtendCompiler {
 
 	protected String serialize(XExpression expression) {
 		INode node = getNode(expression);
+		String result;
 		if (node == null) {
-			return "";
+			 EObject source = SourceAdapter.find(expression);
+			 if(source == null || !(source instanceof XExpression)){
+				 return "";
+			 }
+			node = getNode(source);
 		}
-		String result = node.getText();
+		result = node.getText();
 		result = result.trim();
 		result = removeSurroundingParentheses(result);
 		return convertToJavaString(result);

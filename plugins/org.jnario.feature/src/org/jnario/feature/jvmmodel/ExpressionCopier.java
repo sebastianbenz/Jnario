@@ -5,6 +5,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator;
+import org.jnario.util.SourceAdapter;
 
 import com.google.inject.Inject;
 
@@ -25,6 +26,9 @@ public class ExpressionCopier{
 				XAbstractFeatureCall targetFeatureCall = (XAbstractFeatureCall) target;
 				targetFeatureCall.setImplicitFirstArgument((XExpression) copy(sourceFeatureCall.getImplicitFirstArgument()));
 				targetFeatureCall.setImplicitReceiver((XExpression) copy(sourceFeatureCall.getImplicitReceiver()));
+			}
+			if(source instanceof XExpression){
+				SourceAdapter.adapt(target, source);
 			}
 			return target;
 		}
