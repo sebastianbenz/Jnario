@@ -62,7 +62,11 @@ val greeting = &quot;hello world&quot; =&gt; [
   it should startWith(&quot;hello&quot;)
   it should endWith(&quot;world&quot;) 
 ]
-greeting =&gt; typeof(String)</pre>
+greeting =&gt; typeof(String)
+
+// expecting exceptions
+new Stack&lt;String&gt;().pop should throw EmptyStackException
+new Stack&lt;String&gt;().pop throws EmptyStackException</pre>
 </li><li><p id="or_not_to_pass" class="example "><strong>...or not to pass</strong></p>
 <p><code>should</code> throws an AssertionError if the result of the left expression does not equal the result of the right expression. Here is a helper method we are going to use:</p>
 <pre class="prettyprint lang-spec">
@@ -130,6 +134,8 @@ import static org.jnario.lib.JnarioCollectionLiterals.*
 
 import static extension org.jnario.jnario.test.util.Helpers.*
 import static extension org.jnario.lib.Should.*
+import java.util.Stack
+import java.util.EmptyStackException
 
 /*
  * You can use the `should` statement to express the expected behavior of objects.
@@ -167,7 +173,11 @@ describe &quot;Using Should&quot;{
       it should endWith(&quot;world&quot;) 
     ]
     greeting =&gt; typeof(String)
-  }     
+    
+    // expecting exceptions
+    new Stack&lt;String&gt;().pop should throw EmptyStackException
+    new Stack&lt;String&gt;().pop throws EmptyStackException
+  }
 
   /*     
    * `should` throws an AssertionError if the result of the left 

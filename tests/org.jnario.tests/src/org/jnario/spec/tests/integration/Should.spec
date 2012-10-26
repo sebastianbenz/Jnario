@@ -12,6 +12,8 @@ import static org.jnario.lib.JnarioCollectionLiterals.*
 
 import static extension org.jnario.jnario.test.util.Helpers.*
 import static extension org.jnario.lib.Should.*
+import java.util.Stack
+import java.util.EmptyStackException
 
 /*
  * You can use the `should` statement to express the expected behavior of objects.
@@ -49,7 +51,11 @@ describe "Using Should"{
 			it should endWith("world") 
 		]
 		greeting => typeof(String)
-	}     
+		
+		// expecting exceptions
+		new Stack<String>().pop should throw EmptyStackException
+		new Stack<String>().pop throws EmptyStackException
+	}
 
 	/*     
 	 * `should` throws an AssertionError if the result of the left 

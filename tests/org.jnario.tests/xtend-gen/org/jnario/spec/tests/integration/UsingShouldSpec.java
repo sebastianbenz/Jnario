@@ -1,7 +1,9 @@
 package org.jnario.spec.tests.integration;
 
 import com.google.common.base.Objects;
+import java.util.EmptyStackException;
 import java.util.List;
+import java.util.Stack;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
@@ -109,6 +111,22 @@ public class UsingShouldSpec {
     Assert.assertTrue("\nExpected greeting => typeof(String) but"
      + "\n     greeting is " + new StringDescription().appendValue(greeting).toString() + "\n", _doubleArrow_3);
     
+    try{
+      Stack<String> _stack = new Stack<String>();
+      _stack.pop();
+      Assert.fail("Expected " + EmptyStackException.class.getName() + " in \n     // expecting exceptions\n\t\tnew Stack<String>().pop\n with:"
+       + "\n     // expecting exceptions\n\t\tnew Stack<String>() is " + new StringDescription().appendValue(_stack).toString());
+    }catch(EmptyStackException e){
+      // expected
+    }
+    try{
+      Stack<String> _stack_1 = new Stack<String>();
+      _stack_1.pop();
+      Assert.fail("Expected " + EmptyStackException.class.getName() + " in \n     new Stack<String>().pop\n with:"
+       + "\n     new Stack<String>() is " + new StringDescription().appendValue(_stack_1).toString());
+    }catch(EmptyStackException e){
+      // expected
+    }
   }
   
   /**
