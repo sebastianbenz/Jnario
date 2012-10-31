@@ -50,5 +50,18 @@ describe "Throws"{
 			}
 		'''.executionFails
 	} 
+	
+//	fact "returns the caught exception"{
+//		'''
+//			package bootstrap
+//			import java.util.Stack
+//			describe "throws" {
+//			  fact "example"{
+//			  	val exception = new Stack<String> throws EmptyStackException
+//			  	exception => typeof(EmptyStackException)
+//			  } 
+//			}
+//		'''.executesSuccessfully
+//	} 
  
 }

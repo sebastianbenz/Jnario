@@ -51,17 +51,17 @@ describe SuiteDocGenerator {
 		''')
 		
 		val expected = '''
-			<p>Heading description.</p>
-			<ul>
-				<li><a class="specref " href="../test/RedSpec.html">Red</a></li>
-				<li><a class="specref " href="../test/BlueSpec.html">Blue</a>: with a description</li>
-			</ul>
-			<span id="Subheading" class="suite "><h2>Subheading</h2></span>
-			<p>Subheading description with <strong>markdown</strong>.</p>
-			<ul>
-				<li><a class="specref " href="../test/GreenSpec.html">Green</a></li>
-				<li><a class="specref " href="../test/GreySpec.html">Grey</a></li>
-			</ul>
+		<p>Heading description.</p>
+		<ul>
+			<li><a class="specref notrun" href="../test/RedSpec.html">Red</a></li>
+			<li><a class="specref notrun" href="../test/BlueSpec.html">Blue</a>: with a description</li>
+		</ul>
+		<span id="Subheading" class="suite notrun"><h2>Subheading</h2></span>
+		<p>Subheading description with <strong>markdown</strong>.</p>
+		<ul>
+			<li><a class="specref notrun" href="../test/GreenSpec.html">Green</a></li>
+			<li><a class="specref notrun" href="../test/GreySpec.html">Grey</a></li>
+		</ul>
 		'''.toString
 		
 		assertEquals(expected, actual)

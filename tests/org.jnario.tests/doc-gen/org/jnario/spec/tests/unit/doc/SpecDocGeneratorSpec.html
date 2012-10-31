@@ -75,7 +75,7 @@ generateDoc('''
   }''')
 val scenarioDoc = generatedFile(&quot;ExampleSpec.html&quot;)
 assert scenarioDoc.contains('''
-&lt;p id=&quot;should_do_stuff&quot; class=&quot;example &quot;&gt;&lt;strong&gt;should do stuff&lt;/strong&gt;&lt;/p&gt;
+&lt;p id=&quot;should_do_stuff&quot; class=&quot;example notrun&quot;&gt;&lt;strong&gt;should do stuff&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Example documentation&lt;/p&gt;
 &lt;pre class=&quot;prettyprint lang-spec linenums&quot;&gt;
 var x = 0
@@ -200,7 +200,7 @@ describe SpecDocGenerator {
       }''')
     val scenarioDoc = generatedFile(&quot;ExampleSpec.html&quot;)
     assert scenarioDoc.contains('''
-    &lt;p id=&quot;should_do_stuff&quot; class=&quot;example &quot;&gt;&lt;strong&gt;should do stuff&lt;/strong&gt;&lt;/p&gt;
+    &lt;p id=&quot;should_do_stuff&quot; class=&quot;example notrun&quot;&gt;&lt;strong&gt;should do stuff&lt;/strong&gt;&lt;/p&gt;
     &lt;p&gt;Example documentation&lt;/p&gt;
     &lt;pre class=&quot;prettyprint lang-spec linenums&quot;&gt;
     var x = 0

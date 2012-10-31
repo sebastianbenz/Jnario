@@ -174,7 +174,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    			if(it.reference == null){
    				return
    			}
-   			val original = EcoreUtil2::getContainerOfType(it.reference,typeof(Scenario))
+   			val original = getContainerOfType(it.reference,typeof(Scenario))
    			if(original == null){
    				return
    			}

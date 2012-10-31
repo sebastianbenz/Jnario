@@ -154,7 +154,7 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     _builder.append(_format, "");
     _builder.append("</span>");
     _builder.newLineIfNotEmpty();
-    CharSequence _errorMessage = this.errorMessage(step);
+    String _errorMessage = this.errorMessage(step);
     _builder.append(_errorMessage, "");
     _builder.newLineIfNotEmpty();
     return _builder;

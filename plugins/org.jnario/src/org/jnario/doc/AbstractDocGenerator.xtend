@@ -35,6 +35,8 @@ import org.jnario.report.Failed
 import org.jnario.report.Passed
 import org.jnario.report.Pending
 import org.jnario.report.SpecFailure
+import org.jnario.report.ExecutableStateSwitch
+import org.jnario.report.NotRun
 
 abstract class AbstractDocGenerator implements IGenerator {
 
@@ -188,35 +190,41 @@ abstract class AbstractDocGenerator implements IGenerator {
 	
 	def protected executionState(Executable executable){
 		val result = executable.result
-		switch result {
-			Failed: ' <strong class="icon failed">✘</strong>'
-			Passed: ' <strong class="icon passed">✓</strong>'
-			Pending: ' <strong class="icon pending">~</strong>'
-			default: ""
-		}
+		new IconProvider().doSwitch(result)
 	}
 	
 	def protected executionStateClass(Executable executable){
-		val result = executable.result
-		switch result {
-			Failed: 'failed'
-			Passed: 'passed'
-			Pending: 'pending'
-			default: ""
-		}
+		new CssClassProvider().doSwitch(executable.result)
 	}
 	
 	def protected errorMessage(Executable executable){
-		val result = executable.result
-		switch result {
-			Failed: '''
-				«FOR failure : result.failures»
-				 <pre class="errormessage">
-				 «failure.message»</pre>
-				«ENDFOR»
-			'''
-			default: ""
-		}
+		new ErrorMessageProvider().doSwitch(executable.result)
 	}
 	
+}
+
+class IconProvider extends ExecutableStateSwitch<String> {
+	override protected handleFailed(Failed result) ''' <strong class="icon failed">✘</strong>'''
+	override protected handleNotRun(NotRun execution) ''''''
+	override protected handlePassed(Passed execution) ''' <strong class="icon passed">✓</strong>'''
+	override protected handlePending(Pending execution) ''' <strong class="icon pending">~</strong>'''
+}
+
+class CssClassProvider extends ExecutableStateSwitch<String> {
+	override protected handleFailed(Failed result) '''failed'''
+	override protected handleNotRun(NotRun execution) '''notrun'''
+	override protected handlePassed(Passed execution) '''passed'''
+	override protected handlePending(Pending execution) '''pending'''
+}
+
+class ErrorMessageProvider extends ExecutableStateSwitch<String> {
+	override protected handleFailed(Failed result) '''
+			«FOR failure : result.failures»
+			 <pre class="errormessage">
+			 «failure.message»</pre>
+			«ENDFOR»
+	'''
+	override protected handleNotRun(NotRun execution) ''''''
+	override protected handlePassed(Passed execution) ''''''
+	override protected handlePending(Pending execution) ''''''
 }

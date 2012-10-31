@@ -2,19 +2,15 @@ package org.jnario.report
 
 import com.google.inject.Inject
 import java.util.List
-import java.util.Map
 import org.eclipse.xtext.resource.XtextResource
 import org.eclipse.xtext.xbase.lib.Pair
 import org.jnario.Executable
 import org.jnario.jvmmodel.ExecutableProvider
 import org.jnario.jvmmodel.JnarioNameProvider
 
-import static extension org.apache.commons.lang.StringEscapeUtils.*
-import org.jnario.report.SpecExecution
-
 class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Executable2ResultMapping{
 
-	val Map<Pair<String, String>, SpecExecution> results = newHashMap
+	val results = <Pair<String, String>, SpecExecution>newHashMap
 	extension JnarioNameProvider nameProvider
 
 	@Inject	new(JnarioNameProvider nameProvider){

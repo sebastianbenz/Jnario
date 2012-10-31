@@ -63,10 +63,10 @@ describe FeatureDocGenerator {
 		
 		val expected = '''
 <p>This is a description.</p>
-<div><h3 class="scenario "  id="Scenario_Example_Scenario">Scenario: Example Scenario
+<div><h3 class="scenario notrun"  id="Scenario_Example_Scenario">Scenario: Example Scenario
 </h3>
 <ul>
-<li><span class="step "><p>Given a step with an argument <code>"something"</code>, another <code>"argument"</code> and a multiline string:</p><pre>import java.util.Collections.*;
+<li><span class="step notrun"><p>Given a step with an argument <code>"something"</code>, another <code>"argument"</code> and a multiline string:</p><pre>import java.util.Collections.*;
 
 public class Greeter{
   public static void main(String args[]){
@@ -75,9 +75,9 @@ public class Greeter{
   }
 }</pre></span>
 </li>
-<li><span class="step "><p>When I do something that is pending. [PENDING]</p></span>
+<li><span class="step notrun"><p>When I do something that is pending. [PENDING]</p></span>
 </li>
-<li><span class="step "><p>Then it results in <code>"something else"</code></p></span>
+<li><span class="step notrun"><p>Then it results in <code>"something else"</code></p></span>
 </li>
 </ul>
 </div>

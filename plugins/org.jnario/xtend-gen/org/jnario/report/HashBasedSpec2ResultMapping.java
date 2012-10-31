@@ -5,7 +5,6 @@ import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.resource.IResourceServiceProvider;
 import org.eclipse.xtext.resource.XtextResource;
@@ -29,8 +28,8 @@ import org.jnario.report.SpecFailure;
 
 @SuppressWarnings("all")
 public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Executable2ResultMapping {
-  private final Map<Pair<String,String>,SpecExecution> results = new Function0<Map<Pair<String,String>,SpecExecution>>() {
-    public Map<Pair<String,String>,SpecExecution> apply() {
+  private final HashMap<Pair<String,String>,SpecExecution> results = new Function0<HashMap<Pair<String,String>,SpecExecution>>() {
+    public HashMap<Pair<String,String>,SpecExecution> apply() {
       HashMap<Pair<String,String>,SpecExecution> _newHashMap = CollectionLiterals.<Pair<String,String>, SpecExecution>newHashMap();
       return _newHashMap;
     }

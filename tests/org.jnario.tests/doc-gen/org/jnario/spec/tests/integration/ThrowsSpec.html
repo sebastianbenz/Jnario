@@ -125,6 +125,19 @@ describe &quot;Throws&quot;{
       }
     '''.executionFails
   } 
+  
+//  fact &quot;returns the caught exception&quot;{
+//    '''
+//      package bootstrap
+//      import java.util.Stack
+//      describe &quot;throws&quot; {
+//        fact &quot;example&quot;{
+//          val exception = new Stack&lt;String&gt; throws EmptyStackException
+//          exception =&gt; typeof(EmptyStackException)
+//        } 
+//      }
+//    '''.executesSuccessfully
+//  } 
  
 }
 </pre>

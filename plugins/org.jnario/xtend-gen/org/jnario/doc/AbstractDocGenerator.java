@@ -34,17 +34,16 @@ import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
 import org.jnario.Executable;
+import org.jnario.doc.CssClassProvider;
 import org.jnario.doc.DocumentationProvider;
+import org.jnario.doc.ErrorMessageProvider;
 import org.jnario.doc.Filter;
 import org.jnario.doc.HtmlFile;
 import org.jnario.doc.HtmlFileBuilder;
+import org.jnario.doc.IconProvider;
 import org.jnario.doc.WhiteSpaceNormalizer;
 import org.jnario.report.Executable2ResultMapping;
-import org.jnario.report.Failed;
-import org.jnario.report.Passed;
-import org.jnario.report.Pending;
 import org.jnario.report.SpecExecution;
-import org.jnario.report.SpecFailure;
 import org.pegdown.PegDownProcessor;
 
 @SuppressWarnings("all")
@@ -325,103 +324,25 @@ public abstract class AbstractDocGenerator implements IGenerator {
     String _xblockexpression = null;
     {
       final SpecExecution result = this.spec2ResultMapping.getResult(executable);
-      String _switchResult = null;
-      boolean _matched = false;
-      if (!_matched) {
-        if (result instanceof Failed) {
-          final Failed _failed = (Failed)result;
-          _matched=true;
-          _switchResult = " <strong class=\"icon failed\">\u2718</strong>";
-        }
-      }
-      if (!_matched) {
-        if (result instanceof Passed) {
-          final Passed _passed = (Passed)result;
-          _matched=true;
-          _switchResult = " <strong class=\"icon passed\">\u2713</strong>";
-        }
-      }
-      if (!_matched) {
-        if (result instanceof Pending) {
-          final Pending _pending = (Pending)result;
-          _matched=true;
-          _switchResult = " <strong class=\"icon pending\">~</strong>";
-        }
-      }
-      if (!_matched) {
-        _switchResult = "";
-      }
-      _xblockexpression = (_switchResult);
+      IconProvider _iconProvider = new IconProvider();
+      String _doSwitch = _iconProvider.doSwitch(result);
+      _xblockexpression = (_doSwitch);
     }
     return _xblockexpression;
   }
   
   protected String executionStateClass(final Executable executable) {
-    String _xblockexpression = null;
-    {
-      final SpecExecution result = this.spec2ResultMapping.getResult(executable);
-      String _switchResult = null;
-      boolean _matched = false;
-      if (!_matched) {
-        if (result instanceof Failed) {
-          final Failed _failed = (Failed)result;
-          _matched=true;
-          _switchResult = "failed";
-        }
-      }
-      if (!_matched) {
-        if (result instanceof Passed) {
-          final Passed _passed = (Passed)result;
-          _matched=true;
-          _switchResult = "passed";
-        }
-      }
-      if (!_matched) {
-        if (result instanceof Pending) {
-          final Pending _pending = (Pending)result;
-          _matched=true;
-          _switchResult = "pending";
-        }
-      }
-      if (!_matched) {
-        _switchResult = "";
-      }
-      _xblockexpression = (_switchResult);
-    }
-    return _xblockexpression;
+    CssClassProvider _cssClassProvider = new CssClassProvider();
+    SpecExecution _result = this.spec2ResultMapping.getResult(executable);
+    String _doSwitch = _cssClassProvider.doSwitch(_result);
+    return _doSwitch;
   }
   
-  protected CharSequence errorMessage(final Executable executable) {
-    CharSequence _xblockexpression = null;
-    {
-      final SpecExecution result = this.spec2ResultMapping.getResult(executable);
-      CharSequence _switchResult = null;
-      boolean _matched = false;
-      if (!_matched) {
-        if (result instanceof Failed) {
-          final Failed _failed = (Failed)result;
-          _matched=true;
-          StringConcatenation _builder = new StringConcatenation();
-          {
-            List<SpecFailure> _failures = _failed.getFailures();
-            for(final SpecFailure failure : _failures) {
-              _builder.append("<pre class=\"errormessage\">");
-              _builder.newLine();
-              String _message = failure.getMessage();
-              _builder.append(_message, "");
-              _builder.append("</pre>");
-              _builder.newLineIfNotEmpty();
-            }
-          }
-          _switchResult = _builder;
-        }
-      }
-      if (!_matched) {
-        _switchResult = "";
-      }
-      _xblockexpression = (_switchResult);
-    }
-    return _xblockexpression;
+  protected String errorMessage(final Executable executable) {
+    ErrorMessageProvider _errorMessageProvider = new ErrorMessageProvider();
+    SpecExecution _result = this.spec2ResultMapping.getResult(executable);
+    String _doSwitch = _errorMessageProvider.doSwitch(_result);
+    return _doSwitch;
   }
   
   protected String serialize(final XExpression expr, final List<Filter> filters) {

@@ -238,7 +238,7 @@ public class SpecDocGenerator extends AbstractDocGenerator {
           String _codeBlock = this.toCodeBlock(example, filters);
           _builder.append(_codeBlock, "");
           _builder.newLineIfNotEmpty();
-          CharSequence _errorMessage = this.errorMessage(example);
+          String _errorMessage = this.errorMessage(example);
           _builder.append(_errorMessage, "");
           _builder.newLineIfNotEmpty();
         }
